@@ -2,17 +2,18 @@
 <html lang="ko">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W1HCP269F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W1HCP269F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9W1HCP269F');
+  </script>
 
-  gtag('config', 'G-9W1HCP269F');
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VNL | K-Volley Lab</title>
+
   <style>
     body {
       margin: 0;
@@ -85,9 +86,14 @@
       background: rgba(214,178,94,0.12);
     }
 
-    .flag {
-      font-size: 28px;
-      margin-bottom: 10px;
+    .flag-img {
+      width: 72px;
+      height: 48px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.25);
+      margin-bottom: 14px;
+      background: #ffffff;
     }
 
     .team-name {
@@ -131,6 +137,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -153,113 +160,115 @@
     </p>
 
     <section class="team-grid">
+
       <a class="team-card" href="#">
-        <div class="flag">🇦🇷</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/ar.png" alt="Argentina flag">
         <div class="team-name">Argentina</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇧🇷</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/br.png" alt="Brazil flag">
         <div class="team-name">Brazil</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇧🇬</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/bg.png" alt="Bulgaria flag">
         <div class="team-name">Bulgaria</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇨🇦</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/ca.png" alt="Canada flag">
         <div class="team-name">Canada</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇨🇳</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/cn.png" alt="China flag">
         <div class="team-name">China</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇨🇺</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/cu.png" alt="Cuba flag">
         <div class="team-name">Cuba</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇫🇷</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/fr.png" alt="France flag">
         <div class="team-name">France</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇩🇪</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/de.png" alt="Germany flag">
         <div class="team-name">Germany</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇮🇷</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/ir.png" alt="Iran flag">
         <div class="team-name">Iran</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇮🇹</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/it.png" alt="Italy flag">
         <div class="team-name">Italy</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
-      <a class="team-card" href="#">
-        <div class="flag">🇯🇵</div>
+      <a class="team-card" href="japan.html">
+        <img class="flag-img" src="https://flagcdn.com/w160/jp.png" alt="Japan flag">
         <div class="team-name">Japan</div>
-        <div class="status">선수 DB 준비중</div>
+        <div class="status">선수 DB 준비 예정</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇳🇱</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/nl.png" alt="Netherlands flag">
         <div class="team-name">Netherlands</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇵🇱</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/pl.png" alt="Poland flag">
         <div class="team-name">Poland</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇷🇸</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/rs.png" alt="Serbia flag">
         <div class="team-name">Serbia</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇸🇮</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/si.png" alt="Slovenia flag">
         <div class="team-name">Slovenia</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇹🇷</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/tr.png" alt="Türkiye flag">
         <div class="team-name">Türkiye</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇺🇦</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/ua.png" alt="Ukraine flag">
         <div class="team-name">Ukraine</div>
         <div class="status">선수 DB 준비중</div>
       </a>
 
       <a class="team-card" href="#">
-        <div class="flag">🇺🇸</div>
+        <img class="flag-img" src="https://flagcdn.com/w160/us.png" alt="USA flag">
         <div class="team-name">USA</div>
         <div class="status">선수 DB 준비중</div>
       </a>
+
     </section>
 
     <section class="request-box">
