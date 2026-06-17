@@ -34,34 +34,77 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 80px 20px;
+      padding: 70px 20px;
     }
 
     h1 {
       color: #d6b25e;
       font-size: 44px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
-    p {
+    .intro {
       color: #d9e2ec;
       line-height: 1.7;
       font-size: 17px;
+      margin-bottom: 40px;
     }
 
-    .notice {
-      margin-top: 40px;
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .team-card {
+      display: block;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 22px;
+      text-decoration: none;
+      color: #ffffff;
+      transition: 0.2s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      border-color: #d6b25e;
+      background: rgba(214,178,94,0.12);
+    }
+
+    .flag {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .team-name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #d6b25e;
+      margin-bottom: 6px;
+    }
+
+    .status {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .request-box {
+      margin-top: 50px;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 16px;
       padding: 28px;
+      text-align: center;
     }
 
     .button {
       display: inline-block;
-      margin-top: 24px;
+      margin-top: 18px;
       background: #d6b25e;
       color: #071827;
       padding: 14px 24px;
@@ -94,24 +137,129 @@
   </header>
 
   <main class="container">
-    <h1>VNL National Team Database</h1>
-    <p>
-      K-Volley Lab의 첫 번째 데이터 프로젝트입니다.
+    <h1>2026 VNL Men National Team Database</h1>
+    <p class="intro">
       2026 VNL 남자부 참가국의 대표팀 선수 정보, 포지션, 신장, 생년월일,
-      엔트리 변화, Volleybox 프로필 링크를 정리할 예정입니다.
+      엔트리 변화, Volleybox 프로필 링크를 국가별로 정리하는 페이지입니다.
     </p>
 
-    <div class="notice">
-      <h2>현재 구축 중입니다</h2>
-      <p>
-        국가별 30인 예비 명단과 주차별 엔트리 정보를 순차적으로 정리하고 있습니다.
-        잘못된 정보나 추가할 선수가 있다면 아래 요청 폼으로 제보해 주세요.
-      </p>
+    <section class="team-grid">
+      <a class="team-card" href="#">
+        <div class="flag">🇦🇷</div>
+        <div class="team-name">Argentina</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
 
+      <a class="team-card" href="#">
+        <div class="flag">🇧🇷</div>
+        <div class="team-name">Brazil</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇧🇬</div>
+        <div class="team-name">Bulgaria</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇨🇦</div>
+        <div class="team-name">Canada</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇨🇳</div>
+        <div class="team-name">China</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇨🇺</div>
+        <div class="team-name">Cuba</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇫🇷</div>
+        <div class="team-name">France</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇩🇪</div>
+        <div class="team-name">Germany</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇮🇷</div>
+        <div class="team-name">Iran</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇮🇹</div>
+        <div class="team-name">Italy</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇯🇵</div>
+        <div class="team-name">Japan</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇳🇱</div>
+        <div class="team-name">Netherlands</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇵🇱</div>
+        <div class="team-name">Poland</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇷🇸</div>
+        <div class="team-name">Serbia</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇸🇮</div>
+        <div class="team-name">Slovenia</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇹🇷</div>
+        <div class="team-name">Türkiye</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇺🇦</div>
+        <div class="team-name">Ukraine</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+
+      <a class="team-card" href="#">
+        <div class="flag">🇺🇸</div>
+        <div class="team-name">USA</div>
+        <div class="status">선수 DB 준비중</div>
+      </a>
+    </section>
+
+    <section class="request-box">
+      <h2>정보 수정 및 등록 요청</h2>
+      <p>대표팀 명단, 선수 정보, 엔트리 변동사항을 제보해 주세요.</p>
       <a class="button" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">
         정보 수정 및 등록 요청하기
       </a>
-    </div>
+    </section>
   </main>
 
   <footer>
