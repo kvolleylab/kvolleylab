@@ -91,6 +91,27 @@ a{
 .top-menu nav a:hover{
     color:#fbbf24;
 }
+
+.filters{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.filters button{
+    margin:5px;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    background:#1e293b;
+    color:white;
+    cursor:pointer;
+}
+
+.filters button:hover{
+    background:#fbbf24;
+    color:black;
+}
+
 </style>
 </head>
 
@@ -114,6 +135,13 @@ a{
 
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="선수 이름 검색...">
+</div>
+
+<div class="filters">
+<button onclick="filterCountry('All')">All</button>
+<button onclick="filterCountry('Japan')">Japan</button>
+<button onclick="filterCountry('Brazil')">Brazil</button>
+<button onclick="filterCountry('Poland')">Poland</button>
 </div>
 
 <div class="player-grid" id="playerGrid"></div>
@@ -244,6 +272,17 @@ Volleybox →
 }
 
 renderPlayers(players);
+
+function filterCountry(country){
+
+    if(country==="All"){
+        renderPlayers(players);
+        return;
+    }
+
+    const filtered=players.filter(player=>player.country===country);
+    renderPlayers(filtered);
+}
 
 document.getElementById("searchInput").addEventListener("keyup",function(){
 
