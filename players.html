@@ -66,10 +66,47 @@ a{
     color:#fbbf24;
     text-decoration:none;
 }
+
+.top-menu{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:#111827;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#fbbf24;
+}
+
+.top-menu nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.top-menu nav a:hover{
+    color:#fbbf24;
+}
 </style>
 </head>
 
 <body>
+
+<header class="top-menu">
+    <div class="logo">K-Volley Lab</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="vnl.html">VNL</a>
+        <a href="players.html">Players</a>
+        <a href="#">Simulator</a>
+        <a href="#">Transfers</a>
+    </nav>
+</header>
 
 <header>
 <h1>K-Volley Lab Player Search</h1>
