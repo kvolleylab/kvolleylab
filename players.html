@@ -131,6 +131,11 @@ a{
 
 <header>
 <h1>K-Volley Lab Player Search</h1>
+
+<div id="stats" style="margin-top:15px;color:#94a3b8;">
+Loading...
+</div>
+
 </header>
 
 <div class="search-box">
@@ -157,6 +162,12 @@ fetch("players.json")
       players = data;
 
       renderPlayers(players);
+
+      const countries =
+          [...new Set(players.map(p => p.country))];
+
+      document.getElementById("stats").innerHTML =
+          `Total Players : ${players.length} | Countries : ${countries.length}`;
 
   });
 
