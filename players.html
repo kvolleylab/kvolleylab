@@ -148,99 +148,17 @@ a{
 
 <script>
 
-const players = [
+let players = [];
 
-{
-name:"Yuji Nishida",
-korean:"유지 니시다",
-country:"Japan",
-pos:"O",
-height:"187",
-volleybox:"https://volleybox.net/yuji-nishida-p11693"
-},
+fetch("players.json")
+  .then(response => response.json())
+  .then(data => {
 
-{
-name:"Ran Takahashi",
-korean:"란 다카하시",
-country:"Japan",
-pos:"OH",
-height:"188",
-volleybox:"https://volleybox.net/ran-takahashi-p49198"
-},
+      players = data;
 
-{
-name:"Yuki Ishikawa",
-korean:"유키 이시카와",
-country:"Japan",
-pos:"OH",
-height:"191",
-volleybox:"https://volleybox.net/yuki-ishikawa-p705"
-},
+      renderPlayers(players);
 
-{
-name:"Masahiro Sekita",
-korean:"마사히로 세키타",
-country:"Japan",
-pos:"S",
-height:"175",
-volleybox:"https://volleybox.net/masahiro-sekita-p11681"
-},
-
-{
-name:"Ricardo Lucarelli",
-korean:"리카르도 루카렐리",
-country:"Brazil",
-pos:"OH",
-height:"196",
-volleybox:"https://volleybox.net/ricardo-lucarelli-p218"
-},
-
-{
-name:"Fernando Kreling",
-korean:"페르난도 크렐링",
-country:"Brazil",
-pos:"S",
-height:"186",
-volleybox:"https://volleybox.net/fernando-kreling-p3022"
-},
-
-{
-name:"Darlan Souza",
-korean:"다를란 소우자",
-country:"Brazil",
-pos:"O",
-height:"192",
-volleybox:"https://volleybox.net/darlan-souza-p29039"
-},
-
-{
-name:"Wilfredo Leon",
-korean:"윌프레도 레온",
-country:"Poland",
-pos:"OH",
-height:"201",
-volleybox:"https://volleybox.net/wilfredo-leon-p319"
-},
-
-{
-name:"Tomasz Fornal",
-korean:"토마시 포르날",
-country:"Poland",
-pos:"OH",
-height:"200",
-volleybox:"https://volleybox.net/tomasz-fornal-p4105"
-},
-
-{
-name:"Mateusz Bieniek",
-korean:"마테우시 비에니에크",
-country:"Poland",
-pos:"MB",
-height:"210",
-volleybox:"https://volleybox.net/mateusz-bieniek-p2692"
-}
-
-];
+  });
 
 function renderPlayers(list){
 
@@ -270,8 +188,6 @@ Volleybox →
 `).join("");
 
 }
-
-renderPlayers(players);
 
 function filterCountry(country){
 
