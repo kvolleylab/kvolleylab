@@ -171,6 +171,19 @@ fetch("players.json")
 
   });
 
+function getFlag(flag){
+    const flagMap = {
+        "BR": "🇧🇷",
+        "JP": "🇯🇵",
+        "PL": "🇵🇱",
+        "Brazil": "🇧🇷",
+        "Japan": "🇯🇵",
+        "Poland": "🇵🇱"
+    };
+
+    return flagMap[flag] || flag || "";
+}
+    
 function renderPlayers(list){
 
 const grid=document.getElementById("playerGrid");
@@ -182,7 +195,7 @@ grid.innerHTML=list.map(player=>`
 
 <div>${player.korean}</div>
 
-<div class="country">${player.flag || ""} ${player.country}</div>
+<div class="country">${getFlag(player.flag)} ${player.country}</div>
 
 <div>Position : ${player.position}</div>
 
