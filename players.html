@@ -178,20 +178,24 @@ const grid=document.getElementById("playerGrid");
 grid.innerHTML=list.map(player=>`
 
 <div class="card">
-<h3>${player.name}</h3>
+<h3>#${player.number} ${player.name}</h3>
 
 <div>${player.korean}</div>
 
-<div class="country">${player.country}</div>
+<div class="country">${player.flag || ""} ${player.country}</div>
 
 <div>Position : ${player.position}</div>
 
 <div>Height : ${player.height}cm</div>
 
+<div>DOB : ${player.dob || "-"}</div>
+
 <div style="margin-top:10px;">
 <a href="${player.volleybox}" target="_blank">
 Volleybox →
 </a>
+</div>
+
 </div>
 
 </div>
