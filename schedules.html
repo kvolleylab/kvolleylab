@@ -178,6 +178,36 @@ h1{
         font-size:10px;
     }
 }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: #d7e4ef;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.18s ease;
+}
+
+.site-nav a:hover {
+  background: rgba(225, 184, 79, 0.14);
+  color: #e1b84f;
+}
+
+.site-nav a.active {
+  background: #e1b84f;
+  color: #071b2a;
+}
+    
 </style>
 </head>
 
