@@ -149,6 +149,15 @@ Loading...
 <button onclick="filterCountry('Poland')">Poland</button>
 </div>
 
+<div class="filters">
+<button onclick="filterPosition('All')">ALL</button>
+<button onclick="filterPosition('OH')">OH</button>
+<button onclick="filterPosition('MB')">MB</button>
+<button onclick="filterPosition('S')">S</button>
+<button onclick="filterPosition('O')">O</button>
+<button onclick="filterPosition('L')">L</button>
+</div>
+
 <div class="player-grid" id="playerGrid"></div>
 
 <script>
@@ -224,6 +233,17 @@ Volleybox →
 
 }
 
+function filterPosition(position){
+
+    if(position==="All"){
+        renderPlayers(players);
+        return;
+    }
+
+    const filtered=players.filter(player=>player.position===position);
+    renderPlayers(filtered);
+}
+    
 function filterCountry(country){
 
     if(country==="All"){
