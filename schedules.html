@@ -461,7 +461,15 @@ function renderCalendar(month, title){
     return html;
 }
 
-showTournament("vnl", document.querySelector(".tabs button"));
+const scheduleParams = new URLSearchParams(window.location.search);
+const selectedTournament = scheduleParams.get("tournament") || "vnl";
+
+const selectedButton =
+  selectedTournament === "avc"
+    ? document.querySelector(".tabs button:nth-child(2)")
+    : document.querySelector(".tabs button:nth-child(1)");
+
+showTournament(selectedTournament, selectedButton);
 </script>
 
 </body>
