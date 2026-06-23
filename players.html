@@ -172,14 +172,15 @@ fetch("players.json")
   });
 
 function getFlag(flag){
-    const flagMap = {
-        "BR": "🇧🇷",
-        "JP": "🇯🇵",
-        "PL": "🇵🇱",
-        "Brazil": "🇧🇷",
-        "Japan": "🇯🇵",
-        "Poland": "🇵🇱"
-    };
+const flagMap = {
+    "BR": "🇧🇷",
+    "JP": "🇯🇵",
+    "PL": "🇵🇱",
+
+    "Brazil": "🇧🇷",
+    "Japan": "🇯🇵",
+    "Poland": "🇵🇱"
+};
 
     return flagMap[flag] || flag || "";
 }
