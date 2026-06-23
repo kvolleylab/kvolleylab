@@ -163,6 +163,8 @@ Loading...
 <script>
 
 let players = [];
+let selectedCountry = "All";
+let selectedPosition = "All";
 
 fetch("players.json")
   .then(response => response.json())
@@ -234,25 +236,28 @@ Volleybox →
 }
 
 function filterPosition(position){
+    selectedPosition = position;
+    applyFilters();
+}
 
-    if(position==="All"){
-        renderPlayers(players);
-        return;
+function applyFilters(){
+
+    let filtered = players;
+
+    if(selectedCountry !== "All"){
+        filtered = filtered.filter(player => player.country === selectedCountry);
     }
 
-    const filtered=players.filter(player=>player.position===position);
+    if(selectedPosition !== "All"){
+        filtered = filtered.filter(player => player.position === selectedPosition);
+    }
+
     renderPlayers(filtered);
 }
     
 function filterCountry(country){
-
-    if(country==="All"){
-        renderPlayers(players);
-        return;
-    }
-
-    const filtered=players.filter(player=>player.country===country);
-    renderPlayers(filtered);
+    selectedCountry = country;
+    applyFilters();
 }
 
 document.getElementById("searchInput").addEventListener("keyup",function(){
