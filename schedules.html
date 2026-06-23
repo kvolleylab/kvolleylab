@@ -2,9 +2,223 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Schedules | K-Volley Lab</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#071827;
+    color:white;
+}
+
+header{
+    padding:24px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#d6b25e;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+.container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:60px 20px;
+}
+
+h1{
+    color:#d6b25e;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+.tournament-tabs{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:34px;
+}
+
+.tournament-tabs button{
+    background:#1e293b;
+    color:white;
+    border:none;
+    padding:13px 20px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.tournament-tabs button.active{
+    background:#d6b25e;
+    color:#071827;
+}
+
+.schedule-box{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:18px;
+    padding:24px;
+}
+
+.schedule-title{
+    color:#d6b25e;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.notice{
+    color:#94a3b8;
+    margin-bottom:20px;
+}
+
+.month-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:16px;
+}
+
+.month-card{
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px;
+    padding:18px;
+}
+
+.month-card h3{
+    color:#d6b25e;
+    margin-top:0;
+}
+
+.game{
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    font-size:14px;
+    line-height:1.5;
+}
+
+.game:last-child{
+    border-bottom:none;
+}
+
+.time{
+    color:#93c5fd;
+    font-weight:bold;
+}
+</style>
 </head>
+
 <body>
-<h1>K-Volley Lab Schedules</h1>
+
+<header>
+    <div class="logo">K-Volley Lab</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="vnl.html">VNL</a>
+        <a href="players.html">Players</a>
+        <a href="schedules.html">Schedules</a>
+        <a href="simulator.html">Simulator</a>
+        <a href="transfers.html">Transfers</a>
+    </nav>
+</header>
+
+<main class="container">
+
+<h1>Tournament Schedules</h1>
+<p class="subtitle">대회별 남자배구 일정을 한국시간 기준으로 비교 확인합니다.</p>
+
+<div class="tournament-tabs">
+    <button class="active" onclick="showSchedule('vnl', this)">VNL 2026 Men</button>
+    <button onclick="showSchedule('avc', this)">AVC Men’s Cup 2026</button>
+</div>
+
+<section class="schedule-box">
+    <div class="schedule-title" id="scheduleTitle">VNL 2026 Men</div>
+    <div class="notice" id="scheduleNotice">한국시간 기준 일정입니다.</div>
+
+    <div class="month-grid" id="scheduleContent"></div>
+</section>
+
+</main>
+
+<script>
+const schedules = {
+    vnl: {
+        title: "VNL 2026 Men",
+        notice: "2026 VNL 남자부 예선전 일정입니다. 한국시간 기준.",
+        months: [
+            {
+                month: "June 2026",
+                games: [
+                    {date:"6/10", time:"TBD", match:"경기 일정 입력 예정"},
+                    {date:"6/11", time:"TBD", match:"경기 일정 입력 예정"},
+                    {date:"6/12", time:"TBD", match:"경기 일정 입력 예정"}
+                ]
+            }
+        ]
+    },
+    avc: {
+        title: "AVC Men’s Cup 2026",
+        notice: "2026 AVC 남자컵 일정입니다. 한국시간 기준.",
+        months: [
+            {
+                month: "August 2026",
+                games: [
+                    {date:"8월", time:"TBD", match:"경기 일정 입력 예정"}
+                ]
+            }
+        ]
+    }
+};
+
+function showSchedule(key, button){
+    document.querySelectorAll(".tournament-tabs button").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    const data = schedules[key];
+
+    document.getElementById("scheduleTitle").innerText = data.title;
+    document.getElementById("scheduleNotice").innerText = data.notice;
+
+    document.getElementById("scheduleContent").innerHTML =
+        data.months.map(month => `
+            <div class="month-card">
+                <h3>${month.month}</h3>
+                ${month.games.map(game => `
+                    <div class="game">
+                        <div><strong>${game.date}</strong></div>
+                        <div class="time">${game.time}</div>
+                        <div>${game.match}</div>
+                    </div>
+                `).join("")}
+            </div>
+        `).join("");
+}
+
+showSchedule("vnl", document.querySelector(".tournament-tabs button"));
+</script>
+
 </body>
 </html>
