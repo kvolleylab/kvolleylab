@@ -112,6 +112,12 @@ a{
     color:black;
 }
 
+.filter-btn.active{
+  background:#d6b25e;
+  color:#071827;
+  font-weight:bold;
+}
+    
 </style>
 </head>
 
@@ -143,19 +149,19 @@ Loading...
 </div>
 
 <div class="filters">
-<button onclick="filterCountry('All')">All</button>
-<button onclick="filterCountry('Japan')">Japan</button>
-<button onclick="filterCountry('Brazil')">Brazil</button>
-<button onclick="filterCountry('Poland')">Poland</button>
+<button class="country-btn" onclick="filterCountry('All', this)">All</button>
+<button class="country-btn" onclick="filterCountry('Japan', this)">Japan</button>
+<button class="country-btn" onclick="filterCountry('Brazil', this)">Brazil</button>
+<button class="country-btn" onclick="filterCountry('Poland', this)">Poland</button>
 </div>
 
 <div class="filters">
-<button onclick="filterPosition('All')">ALL</button>
-<button onclick="filterPosition('OH')">OH</button>
-<button onclick="filterPosition('MB')">MB</button>
-<button onclick="filterPosition('S')">S</button>
-<button onclick="filterPosition('O')">O</button>
-<button onclick="filterPosition('L')">L</button>
+<button class="position-btn" onclick="filterPosition('All', this)">ALL</button>
+<button class="position-btn" onclick="filterPosition('OH', this)">OH</button>
+<button class="position-btn" onclick="filterPosition('MB', this)">MB</button>
+<button class="position-btn" onclick="filterPosition('S', this)">S</button>
+<button class="position-btn" onclick="filterPosition('O', this)">OP</button>
+<button class="position-btn" onclick="filterPosition('L', this)">L</button>
 </div>
 
 <div class="player-grid" id="playerGrid"></div>
@@ -183,30 +189,30 @@ fetch("players.json")
   });
 
 function getFlag(flag){
-const flagMap = {
-    "BR":"🇧🇷",
-    "JP":"🇯🇵",
-    "PL":"🇵🇱",
-    "IR":"🇮🇷",
-    "US":"🇺🇸",
-    "FR":"🇫🇷",
-    "IT":"🇮🇹",
-    "AR":"🇦🇷",
-    "DE":"🇩🇪",
-    "CU":"🇨🇺",
-    "CA":"🇨🇦",
-    "RS":"🇷🇸",
-    "SI":"🇸🇮"
-};
+    const flagMap = {
+        "BR":"🇧🇷",
+        "JP":"🇯🇵",
+        "PL":"🇵🇱",
+        "IR":"🇮🇷",
+        "US":"🇺🇸",
+        "FR":"🇫🇷",
+        "IT":"🇮🇹",
+        "AR":"🇦🇷",
+        "DE":"🇩🇪",
+        "CU":"🇨🇺",
+        "CA":"🇨🇦",
+        "RS":"🇷🇸",
+        "SI":"🇸🇮"
+    };
 
     return flagMap[flag] || flag || "";
 }
-    
+
 function renderPlayers(list){
 
-const grid=document.getElementById("playerGrid");
+    const grid=document.getElementById("playerGrid");
 
-grid.innerHTML=list.map(player=>`
+    grid.innerHTML=list.map(player=>`
 
 <div class="card">
 <h3>#${player.number} ${player.name}</h3>
@@ -229,15 +235,8 @@ Volleybox →
 
 </div>
 
-</div>
-
 `).join("");
 
-}
-
-function filterPosition(position){
-    selectedPosition = position;
-    applyFilters();
 }
 
 function applyFilters(){
@@ -254,28 +253,51 @@ function applyFilters(){
 
     renderPlayers(filtered);
 }
-    
-function filterCountry(country){
+
+function setActiveButton(buttonClass, clickedButton){
+
+    document.querySelectorAll(buttonClass).forEach(button => {
+        button.classList.remove("active");
+    });
+
+    clickedButton.classList.add("active");
+}
+
+function filterCountry(country, clickedButton){
+
     selectedCountry = country;
+
+    setActiveButton(".country-btn", clickedButton);
+
+    applyFilters();
+}
+
+function filterPosition(position, clickedButton){
+
+    selectedPosition = position;
+
+    setActiveButton(".position-btn", clickedButton);
+
     applyFilters();
 }
 
 document.getElementById("searchInput").addEventListener("keyup",function(){
 
-const value=this.value.toLowerCase();
+    const value=this.value.toLowerCase();
 
-const filtered=players.filter(player=>
+    const filtered=players.filter(player=>
 
-player.name.toLowerCase().includes(value) ||
-player.korean.includes(value)
+        player.name.toLowerCase().includes(value) ||
+        player.korean.includes(value) ||
+        player.country.toLowerCase().includes(value) ||
+        player.position.toLowerCase().includes(value)
 
-);
+    );
 
-renderPlayers(filtered);
+    renderPlayers(filtered);
 
 });
 
 </script>
-
 </body>
 </html>
