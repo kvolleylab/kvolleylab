@@ -1,0 +1,48 @@
+{
+  "version": "Domestic Player Schema v1",
+  "principles": [
+    "공개 자료만 사용",
+    "민감 개인정보 제외",
+    "모든 주요 데이터는 source_id로 출처 연결",
+    "선수 기본정보와 성장 이력 분리"
+  ],
+  "files": [
+    "players.json",
+    "growth_history.json",
+    "sources.json"
+  ],
+  "player_fields": [
+    "player_id",
+    "name_ko",
+    "name_en",
+    "birth_year",
+    "position",
+    "sub_position",
+    "height_cm",
+    "current_team",
+    "current_level",
+    "tags",
+    "source_ids"
+  ],
+  "growth_fields": [
+    "growth_id",
+    "player_id",
+    "year",
+    "level",
+    "team",
+    "position",
+    "height_cm",
+    "jersey_number",
+    "note",
+    "source_id"
+  ],
+  "source_fields": [
+    "source_id",
+    "source_type",
+    "title",
+    "year",
+    "organization",
+    "url",
+    "memo"
+  ]
+}
