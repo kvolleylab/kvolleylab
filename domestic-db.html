@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>국내 선수 성장 DB | K-Volley Lab</title>
+  <style>
+    :root {
+      --bg: #071827;
+      --panel: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.14);
+      --gold: #d6b25e;
+      --text: #ffffff;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --green: #2dd4bf;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: radial-gradient(circle at top, #102a43 0, var(--bg) 52%, #04111d 100%); color: var(--text); }
+    header { padding: 22px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.12); background: rgba(7,24,39,.92); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); }
+    .logo { font-size: 24px; font-weight: bold; color: var(--gold); }
+    nav { display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: flex-end; }
+    nav a { color: var(--text); text-decoration: none; font-size: 14px; opacity: .92; }
+    nav a:hover, nav a.active { color: var(--gold); }
+    main { max-width: 1120px; margin: 0 auto; padding: 58px 20px 80px; }
+    .hero { display: grid; grid-template-columns: 1.35fr .65fr; gap: 24px; align-items: stretch; }
+    .hero-box, .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 28px; }
+    .eyebrow { color: var(--green); font-weight: bold; font-size: 13px; margin-bottom: 12px; display: inline-block; }
+    h1 { color: var(--gold); font-size: clamp(34px, 5vw, 56px); line-height: 1.1; margin: 0 0 16px; letter-spacing: -1px; }
+    .lead { color: #d9e2ec; font-size: 18px; line-height: 1.7; margin: 0; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .btn { display: inline-block; border-radius: 999px; padding: 13px 18px; text-decoration: none; font-weight: bold; font-size: 14px; }
+    .btn.primary { background: var(--gold); color: var(--bg); }
+    .btn.secondary { color: var(--text); border: 1px solid var(--line); background: rgba(255,255,255,.06); }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 18px; }
+    .stat strong { display: block; color: var(--gold); font-size: 26px; margin-bottom: 4px; }
+    .stat span { color: var(--muted); font-size: 13px; }
+    .section { margin-top: 34px; }
+    .section h2 { margin: 0 0 12px; color: var(--text); font-size: 24px; }
+    .section-desc { color: var(--soft); line-height: 1.65; margin: 0 0 18px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; text-decoration: none; color: inherit; display: block; }
+    .card:hover { border-color: rgba(214,178,94,.48); transform: translateY(-2px); transition: .18s ease; }
+    .card h3 { color: var(--gold); margin: 0 0 10px; }
+    .card p, .card li { color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .card ul { padding-left: 18px; margin: 10px 0 0; }
+    .search-box { display: flex; gap: 10px; background: var(--panel); border: 1px solid var(--line); padding: 16px; border-radius: 18px; }
+    .search-box input { flex: 1; min-width: 0; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.12); color: var(--text); border-radius: 12px; padding: 14px; font-size: 15px; }
+    .search-box button { background: var(--gold); color: var(--bg); border: 0; border-radius: 12px; padding: 0 18px; font-weight: bold; cursor: pointer; }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); }
+    th, td { padding: 14px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 14px; }
+    th { color: var(--gold); background: rgba(255,255,255,.06); }
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: 0; }
+    .source-note { background: rgba(45,212,191,.1); border: 1px solid rgba(45,212,191,.28); color: #d7fffb; padding: 18px; border-radius: 18px; line-height: 1.7; }
+    footer { text-align: center; padding: 30px; color: var(--soft); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.12); }
+    @media (max-width: 780px) { header { padding: 18px; flex-direction: column; align-items: flex-start; gap: 14px; } nav { justify-content: flex-start; } main { padding-top: 34px; } .hero { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr 1fr; } .search-box { flex-direction: column; } .search-box button { padding: 14px; } table { display: block; overflow-x: auto; white-space: nowrap; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">K-Volley Lab</div>
+    <nav>
+      <a href="index.html">홈</a>
+      <a class="active" href="domestic-db.html">국내 선수 DB</a>
+      <a href="player-search.html">선수 검색</a>
+      <a href="pamphlet-archive.html">팜플렛</a>
+      <a href="schedules.html">일정</a>
+      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">제보</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-box">
+        <span class="eyebrow">Domestic Player Growth Tracking DB</span>
+        <h1>국내 선수 성장 추적 DB</h1>
+        <p class="lead">공개 팜플렛, 대회자료, 기사, 협회·연맹 자료를 기반으로 초·중·고·대학·실업·프로까지 이어지는 국내 엘리트 선수의 성장 이력을 정리합니다.</p>
+        <div class="buttons">
+          <a class="btn primary" href="player-search.html">선수 검색하기</a>
+          <a class="btn secondary" href="player-profile-sample.html">프로필 예시 보기</a>
+          <a class="btn secondary" href="growth-timeline.html">성장 타임라인 보기</a>
+        </div>
+      </div>
+      <div class="panel stats">
+        <div class="stat"><strong>12,458</strong><span>샘플 등록 선수</span></div>
+        <div class="stat"><strong>1,382</strong><span>샘플 등록 대회</span></div>
+        <div class="stat"><strong>4,891</strong><span>샘플 팜플렛</span></div>
+        <div class="stat"><strong>2,145</strong><span>샘플 추적 선수</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>빠른 선수 검색</h2>
+      <p class="section-desc">지금은 화면 구조 확인용 검색창입니다. 이후 Excel 또는 JSON 데이터와 연결할 예정입니다.</p>
+      <div class="search-box">
+        <input type="text" placeholder="선수명, 학교, 포지션, 연도 검색 예: 김민준, 세터, 2026" />
+        <button onclick="location.href='player-search.html'">검색</button>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>추적 항목</h2>
+      <div class="grid">
+        <a class="card" href="growth-timeline.html"><h3>성장 이력</h3><p>초등·중등·고등·대학·실업·프로 단계별 소속, 대회 출전, 대표 경력을 시간순으로 확인합니다.</p></a>
+        <a class="card" href="player-profile-sample.html"><h3>선수 프로필</h3><p>키 변화, 포지션 변화, 수상 이력, 진학 경로, 프로 연결 이력을 선수별로 정리합니다.</p></a>
+        <a class="card" href="pamphlet-archive.html"><h3>팜플렛 아카이브</h3><p>대회 팜플렛과 공개 자료를 출처 단위로 보관하고 선수 정보의 근거로 연결합니다.</p></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>최근 등록 선수 예시</h2>
+      <table>
+        <thead><tr><th>선수</th><th>포지션</th><th>현재 단계</th><th>최근 확인 자료</th><th>상태</th></tr></thead>
+        <tbody>
+          <tr><td>김민준</td><td>Setter</td><td>고등부</td><td>2026 전국대회 팜플렛</td><td>샘플</td></tr>
+          <tr><td>박도윤</td><td>Outside Hitter</td><td>대학부</td><td>2026 대학리그 프로필북</td><td>샘플</td></tr>
+          <tr><td>이서준</td><td>Middle Blocker</td><td>중등부</td><td>2025 유소년 대회자료</td><td>샘플</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>데이터 운영 원칙</h2>
+      <div class="source-note">
+        개인정보 보호를 위해 공개 자료만 사용하고 주민등록번호, 연락처, 주소 등 민감 개인정보는 수집·공개하지 않습니다. 모든 주요 데이터는 출처를 저장하며, 선수·보호자·학교의 정정 또는 삭제 요청에 대응 가능한 구조를 지향합니다.
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+</body>
+</html>
