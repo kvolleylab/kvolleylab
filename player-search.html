@@ -1,1 +1,89 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>선수 검색 | K-Volley Lab</title><link rel="stylesheet" href="domestic-style.css"/></head><body><header><div class="logo">K-Volley Lab</div><nav><a href="index.html">Home</a><a href="domestic-db.html">국내 선수 DB</a><a href="vnl.html">VNL</a><a class="active" href="player-search.html">선수 검색</a><a href="pamphlet-archive.html">팜플렛</a><a href="schedules.html">일정</a></nav></header><main><div class="eyebrow">Domestic Player Search · JSON v1</div><h1>선수 검색</h1><p>샘플 JSON 데이터와 연결된 검색 화면입니다. 이름, 소속, 포지션, 성장 단계로 검색할 수 있습니다.</p><div class="search-box"><input id="searchInput" placeholder="선수명, 학교, 포지션, 단계 검색 예: 김민준, OH, 대학"/><button onclick="renderPlayers()">검색</button></div><div class="filters"><button class="chip active" onclick="setLevel('', this)">전체</button><button class="chip" onclick="setLevel('초등', this)">초등</button><button class="chip" onclick="setLevel('중등', this)">중등</button><button class="chip" onclick="setLevel('고등', this)">고등</button><button class="chip" onclick="setLevel('대학', this)">대학</button><button class="chip" onclick="setLevel('실업', this)">실업</button><button class="chip" onclick="setLevel('프로', this)">프로</button></div><section id="results" class="grid"></section></main><script>let players=[];let activeLevel="";async function loadPlayers(){const res=await fetch("players.json");players=await res.json();renderPlayers();}function setLevel(level,btn){activeLevel=level;document.querySelectorAll(".chip").forEach(b=>b.classList.remove("active"));btn.classList.add("active");renderPlayers();}function renderPlayers(){const q=document.getElementById("searchInput").value.trim().toLowerCase();const filtered=players.filter(p=>{const text=[p.name_ko,p.name_en,p.position,p.sub_position,p.current_team,p.current_level,(p.tags||[]).join(" ")].join(" ").toLowerCase();return(!q||text.includes(q))&&(!activeLevel||p.current_level===activeLevel)});document.getElementById("results").innerHTML=filtered.map(p=>`<article class="card"><h3>${p.name_ko} <span class="meta">${p.position}</span></h3><p><b>현재:</b> ${p.current_team}<br><b>신장:</b> ${p.height_cm}cm · <b>출생:</b> ${p.birth_year}<br><b>단계:</b> ${p.current_level}</p><div>${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join("")}</div><div class="actions"><a class="btn" href="player-profile-sample.html?id=${p.player_id}">프로필 보기</a><a class="btn ghost" href="growth-timeline.html?id=${p.player_id}">타임라인</a></div><p class="small">ID: ${p.player_id} · 출처 ${p.source_ids?.length||0}건</p></article>`).join("")||`<p>검색 결과가 없습니다.</p>`;}document.getElementById("searchInput").addEventListener("input",renderPlayers);loadPlayers();</script></body></html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>선수 검색 | K-Volley Lab</title>
+  <link rel="stylesheet" href="domestic-style.css" />
+</head>
+<body>
+<header>
+  <div class="logo">K-Volley Lab</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="domestic-db.html">국내 선수 DB</a>
+    <a href="vnl.html">VNL</a>
+    <a class="active" href="player-search.html">선수 검색</a>
+    <a href="pamphlet-archive.html">팜플렛</a>
+    <a href="schedules.html">일정</a>
+  </nav>
+</header>
+<main>
+  <div class="eyebrow">Domestic Player Search · JSON v2</div>
+  <h1>선수 검색</h1>
+  <p>이름, 영문명, 소속, 포지션, 성장 단계로 검색할 수 있습니다. 선수 카드는 JSON 샘플 데이터와 연결되어 있습니다.</p>
+
+  <div class="search-box">
+    <input id="searchInput" placeholder="선수명, 학교, 포지션, 단계 검색 예: 김민준, OH, 대학" />
+    <button onclick="renderPlayers()">검색</button>
+  </div>
+
+  <div class="filters">
+    <button class="chip active" onclick="setLevel('', this)">전체</button>
+    <button class="chip" onclick="setLevel('초등', this)">초등</button>
+    <button class="chip" onclick="setLevel('중등', this)">중등</button>
+    <button class="chip" onclick="setLevel('고등', this)">고등</button>
+    <button class="chip" onclick="setLevel('대학', this)">대학</button>
+    <button class="chip" onclick="setLevel('실업', this)">실업</button>
+    <button class="chip" onclick="setLevel('프로', this)">프로</button>
+  </div>
+
+  <section id="results" class="grid"></section>
+</main>
+<script>
+let players = [];
+let activeLevel = "";
+
+async function loadPlayers() {
+  const res = await fetch("players.json");
+  players = await res.json();
+  renderPlayers();
+}
+
+function setLevel(level, btn) {
+  activeLevel = level;
+  document.querySelectorAll(".chip").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  renderPlayers();
+}
+
+function renderPlayers() {
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+  const filtered = players.filter(p => {
+    const text = [p.player_id, p.name_ko, p.name_en, p.position, p.sub_position, p.current_team, p.current_level, (p.tags || []).join(" ")].join(" ").toLowerCase();
+    return (!q || text.includes(q)) && (!activeLevel || p.current_level === activeLevel);
+  });
+
+  document.getElementById("results").innerHTML = filtered.map(p => `
+    <article class="card">
+      <h3>${p.name_ko} <span class="meta">${p.position}</span></h3>
+      <p>
+        <b>현재:</b> ${p.current_team}<br>
+        <b>신장:</b> ${p.height_cm}cm · <b>출생:</b> ${p.birth_year}<br>
+        <b>단계:</b> ${p.current_level}
+      </p>
+      <div>${(p.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}</div>
+      <div class="actions">
+        <a class="btn" href="player-profile.html?id=${p.player_id}">프로필 보기</a>
+        <a class="btn ghost" href="growth-timeline.html?id=${p.player_id}">타임라인</a>
+      </div>
+      <p class="small">ID: ${p.player_id} · 출처 ${p.source_ids?.length || 0}건</p>
+    </article>
+  `).join("") || `<p>검색 결과가 없습니다.</p>`;
+}
+
+document.getElementById("searchInput").addEventListener("input", renderPlayers);
+loadPlayers();
+</script>
+</body>
+</html>
