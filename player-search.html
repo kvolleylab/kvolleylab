@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>선수 검색 | K-Volley Lab</title>
+  <style>
+    :root{--bg:#071827;--panel:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--gold:#d6b25e;--text:#fff;--muted:#cbd5e1;--green:#2dd4bf;}
+    *{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#071827,#04111d);color:var(--text)}
+    header{padding:18px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.12);position:sticky;top:0;background:rgba(7,24,39,.94);backdrop-filter:blur(10px);z-index:5}
+    .logo{font-size:24px;font-weight:bold;color:var(--gold);text-decoration:none} nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end} nav a{color:#fff;text-decoration:none;font-size:14px} nav a.active{color:var(--gold);font-weight:bold}
+    main{max-width:1120px;margin:0 auto;padding:56px 20px 80px}.eyebrow{color:var(--green);font-weight:bold;font-size:14px}.title{font-size:44px;color:var(--gold);margin:12px 0 12px}.desc{color:#d9e2ec;font-size:17px;line-height:1.7;max-width:760px}
+    .searchbox{margin:34px 0 22px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;grid-template-columns:1fr auto;gap:12px} input,select{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;padding:14px;font-size:15px} input::placeholder{color:#94a3b8} button,.btn{border:0;background:var(--gold);color:#071827;padding:14px 22px;border-radius:12px;font-weight:bold;text-decoration:none;display:inline-block;cursor:pointer}
+    .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:20px 0 34px}.filter{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:999px;padding:12px 14px;text-align:center;color:var(--muted);font-size:14px}.filter.active{background:rgba(214,178,94,.18);color:var(--gold);border-color:rgba(214,178,94,.45)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}.card h3{margin:0 0 8px;color:var(--gold)}.meta{color:var(--muted);font-size:14px;line-height:1.7}.tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.tag{font-size:12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 9px;color:#d9e2ec}.source{color:#94a3b8;font-size:12px;margin-top:10px}
+    @media(max-width:720px){header{align-items:flex-start;gap:14px;flex-direction:column}.title{font-size:34px}.searchbox{grid-template-columns:1fr}nav{justify-content:flex-start}}
+  </style>
+</head>
+<body>
+<header><a class="logo" href="index.html">K-Volley Lab</a><nav><a href="index.html">홈</a><a class="active" href="domestic-db.html">국내 선수 DB</a><a href="player-search.html">선수 검색</a><a href="pamphlet-archive.html">팜플렛</a><a href="schedules.html">일정</a><a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">제보</a></nav></header>
+<main>
+  <div class="eyebrow">Domestic Player Search</div><h1 class="title">선수 검색</h1><p class="desc">샘플 화면입니다. 나중에 Excel 또는 JSON 데이터와 연결해 선수명, 학교, 포지션, 연도, 출처 기준으로 검색할 수 있게 확장합니다.</p>
+  <section class="searchbox"><input placeholder="선수명, 학교, 포지션, 연도 검색 예: 김민준, OH, 2026" /><button>검색</button></section>
+  <section class="filters"><div class="filter active">전체</div><div class="filter">초등</div><div class="filter">중등</div><div class="filter">고등</div><div class="filter">대학</div><div class="filter">실업</div><div class="filter">프로</div><div class="filter">대표 경력</div></section>
+  <section class="grid">
+    <article class="card"><h3>김민준 <span style="font-size:14px;color:#cbd5e1">OH</span></h3><div class="meta">현재: 인하대학교<br>신장: 198cm · 출생: 2005<br>성장 경로: 초등 → 중등 → 고등 → 대학</div><div class="tags"><span class="tag">키 변화</span><span class="tag">U대표</span><span class="tag">진학 경로</span></div><a class="btn" href="player-profile-sample.html">프로필 보기</a><div class="source">출처: 샘플 팜플렛 / 협회 자료 예시</div></article>
+    <article class="card"><h3>박태윤 <span style="font-size:14px;color:#cbd5e1">S</span></h3><div class="meta">현재: 고교 3학년<br>신장: 187cm · 출생: 2007<br>성장 경로: 중등 → 고등</div><div class="tags"><span class="tag">세터</span><span class="tag">수상 이력</span></div><a class="btn" href="player-profile-sample.html">프로필 보기</a><div class="source">출처: 샘플 대회자료</div></article>
+    <article class="card"><h3>정도현 <span style="font-size:14px;color:#cbd5e1">MB</span></h3><div class="meta">현재: 대학 2학년<br>신장: 203cm · 출생: 2006<br>성장 경로: 고등 → 대학</div><div class="tags"><span class="tag">장신 MB</span><span class="tag">포지션 변화</span></div><a class="btn" href="player-profile-sample.html">프로필 보기</a><div class="source">출처: 샘플 기사 / 팜플렛</div></article>
+  </section>
+</main>
+</body>
+</html>
