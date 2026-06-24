@@ -2,193 +2,481 @@
 <html lang="ko">
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W1HCP269F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9W1HCP269F');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W1HCP269F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9W1HCP269F');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>K-Volley Lab</title>
   <style>
+    :root {
+      --bg: #071827;
+      --bg2: #04111d;
+      --panel: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.14);
+      --gold: #d6b25e;
+      --mint: #22d4bf;
+      --text: #ffffff;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #071827;
-      color: #ffffff;
+      background:
+        radial-gradient(circle at top, #102a43 0%, var(--bg) 45%, var(--bg2) 100%);
+      color: var(--text);
     }
 
     header {
-      padding: 24px 40px;
+      padding: 18px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
       border-bottom: 1px solid rgba(255,255,255,0.12);
+      position: sticky;
+      top: 0;
+      background: rgba(7,24,39,0.94);
+      backdrop-filter: blur(12px);
+      z-index: 10;
     }
 
     .logo {
       font-size: 24px;
       font-weight: bold;
-      color: #d6b25e;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     nav a {
-      color: #ffffff;
+      color: var(--text);
       text-decoration: none;
-      margin-left: 20px;
+      padding: 9px 14px;
+      border-radius: 999px;
       font-size: 14px;
+      font-weight: 700;
+      opacity: 0.94;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: var(--gold);
+      color: var(--bg);
     }
 
     .hero {
-      text-align: center;
-      padding: 90px 20px 60px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 90px 22px 44px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .hero h1 {
-      font-size: 52px;
-      margin-bottom: 16px;
-      color: #d6b25e;
+    .hero-main,
+    .hero-side,
+    .card,
+    .request,
+    .notice {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
     }
 
-    .hero p {
-      font-size: 20px;
+    .hero-main {
+      padding: 38px;
+    }
+
+    .eyebrow {
+      color: var(--mint);
+      font-size: 14px;
+      font-weight: 800;
+      margin: 0 0 14px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.04;
+      margin: 0 0 18px;
+      color: var(--gold);
+      letter-spacing: -2px;
+    }
+
+    .hero-main p {
+      font-size: 18px;
       color: #d9e2ec;
-      margin: 8px 0;
+      line-height: 1.75;
+      margin: 0 0 26px;
+      max-width: 760px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .btn.primary {
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+
+    .hero-side {
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-content: center;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
+      min-height: 110px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--gold);
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      color: #d9e2ec;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px 70px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-end;
+      margin: 34px 0 16px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      margin: 0;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--soft);
+      line-height: 1.6;
+      max-width: 620px;
     }
 
     .cards {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
     .card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
       padding: 24px;
-      min-height: 120px;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(214,178,94,0.55);
     }
 
     .card h3 {
-      margin-top: 0;
-      color: #d6b25e;
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: 21px;
     }
 
     .card p {
-      color: #cbd5e1;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0 0 20px;
+    }
+
+    .card a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
       font-size: 14px;
-      line-height: 1.6;
+    }
+
+    .card.featured {
+      border-color: rgba(214,178,94,0.65);
+      background: linear-gradient(145deg, rgba(214,178,94,0.16), rgba(255,255,255,0.07));
+    }
+
+    .notice {
+      margin-top: 28px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .notice h2 {
+      margin: 0 0 10px;
+      color: var(--gold);
+    }
+
+    .notice p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     .request {
+      margin-top: 28px;
+      padding: 32px;
       text-align: center;
-      padding: 50px 20px 80px;
     }
 
-    .request a {
-      display: inline-block;
-      background: #d6b25e;
-      color: #071827;
-      padding: 16px 28px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
+    .request h2 {
+      margin: 0 0 12px;
+      font-size: 28px;
+    }
+
+    .request p {
+      color: var(--muted);
+      margin: 0 0 22px;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      color: #94a3b8;
+      color: var(--soft);
       font-size: 13px;
       border-top: 1px solid rgba(255,255,255,0.12);
     }
 
-.site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
+    @media (max-width: 900px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
 
-.site-nav a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 13px;
-  border-radius: 999px;
-  color: #d7e4ef;
-  font-weight: 700;
-  text-decoration: none;
-  transition: 0.18s ease;
-}
+      nav {
+        justify-content: flex-start;
+      }
 
-.site-nav a:hover {
-  background: rgba(225, 184, 79, 0.14);
-  color: #e1b84f;
-}
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 52px;
+      }
 
-.site-nav a.active {
-  background: #e1b84f;
-  color: #071b2a;
-}
-    
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .notice {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      header {
+        padding: 16px;
+      }
+
+      nav a {
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+
+      .hero-main {
+        padding: 26px;
+      }
+
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo">K-Volley Lab</div>
-<nav class="site-nav">
-  <a href="index.html" class="active">Home</a>
-  <a href="vnl.html">VNL</a>
-  <a href="players.html">Players</a>
-  <a href="schedules.html">Schedules</a>
-</nav>
+    <nav>
+      <a class="active" href="index.html">Home</a>
+      <a href="domestic-db.html">국내 선수 DB</a>
+      <a href="vnl.html">VNL</a>
+      <a href="players.html">Players</a>
+      <a href="schedules.html">Schedules</a>
+      <a href="simulator.html">Simulator</a>
+      <a href="pamphlet-archive.html">Pamphlets</a>
+      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">Request</a>
+    </nav>
   </header>
 
   <section class="hero">
-    <h1>K-Volley Lab</h1>
-    <p>Korean Volleyball Data & Analytics</p>
-    <p>한국 배구 데이터 플랫폼 구축 프로젝트</p>
+    <div class="hero-main">
+      <p class="eyebrow">Korean Volleyball Data & Analytics</p>
+      <h1>K-Volley Lab</h1>
+      <p>
+        흩어진 배구 자료를 한곳에 모아 선수 성장 이력, 대회 일정, 대표팀 DB,
+        팜플렛 아카이브, 본선 진출 계산기를 연결하는 한국 배구 데이터 플랫폼입니다.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="domestic-db.html">국내 선수 DB 보기</a>
+        <a class="btn" href="player-search.html">선수 검색</a>
+        <a class="btn" href="schedules.html">일정 보기</a>
+      </div>
+    </div>
+
+    <div class="hero-side">
+      <div class="stat">
+        <strong>12,458</strong>
+        <span>샘플 등록 선수</span>
+      </div>
+      <div class="stat">
+        <strong>1,382</strong>
+        <span>샘플 등록 대회</span>
+      </div>
+      <div class="stat">
+        <strong>4,891</strong>
+        <span>샘플 팜플렛</span>
+      </div>
+      <div class="stat">
+        <strong>2,145</strong>
+        <span>샘플 추적 선수</span>
+      </div>
+    </div>
   </section>
 
-  <section class="cards">
-    <div class="card">
-      <h3>VNL 국가대표 DB</h3>
-      <p>국가별 대표팀 선수 정보, 포지션, 신장, 생년월일, 엔트리 변화를 정리합니다.</p>
+  <main>
+    <div class="section-title">
+      <h2>주요 기능</h2>
+      <p>현재는 화면 구조를 먼저 만드는 단계입니다. 실제 데이터는 이후 Excel 또는 JSON 기반으로 연결할 예정입니다.</p>
     </div>
 
-    <div class="card">
-      <h3>대회 시뮬레이터</h3>
-      <p>조별리그 순위, 본선 진출 가능성, 세트 득실과 경우의 수를 계산합니다.</p>
-    </div>
+    <section class="cards">
+      <div class="card featured">
+        <div>
+          <h3>국내 선수 성장 DB</h3>
+          <p>초·중·고·대학·실업·프로까지 국내 엘리트 선수의 성장 이력, 키 변화, 포지션 변화, 진학 경로를 추적합니다.</p>
+        </div>
+        <a href="domestic-db.html">바로가기 →</a>
+      </div>
 
-    <div class="card">
-      <h3>해외 이적 정보</h3>
-      <p>한국 배구와 연결될 수 있는 해외 선수, 이적, 계약 정보를 추적합니다.</p>
-    </div>
+      <div class="card">
+        <div>
+          <h3>선수 검색</h3>
+          <p>선수명, 학교, 포지션, 연도, 성장 단계 기준으로 선수를 찾아보고 프로필과 타임라인으로 연결합니다.</p>
+        </div>
+        <a href="player-search.html">검색하기 →</a>
+      </div>
 
-    <div class="card">
-      <h3>대학배구 DB</h3>
-      <p>대학 선수 정보와 경기 자료를 데이터베이스 형태로 축적합니다.</p>
-    </div>
-  </section>
+      <div class="card">
+        <div>
+          <h3>대회 팜플렛 아카이브</h3>
+          <p>공개 팜플렛과 대회자료를 출처 단위로 보관하고 선수 정보의 근거 자료로 연결합니다.</p>
+        </div>
+        <a href="pamphlet-archive.html">아카이브 보기 →</a>
+      </div>
 
-  <section class="request">
-    <h2>정보 수정 및 등록 요청</h2>
-    <p>잘못된 정보, 선수 등록, 대회 등록, U대표팀 정보 요청을 보내주세요.</p>
-    <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">
-      정보 수정 및 등록 요청하기
-    </a>
-  </section>
+      <div class="card">
+        <div>
+          <h3>VNL 국가대표 DB</h3>
+          <p>국가별 대표팀 선수 정보, 포지션, 신장, 생년월일, 엔트리 변화를 정리합니다.</p>
+        </div>
+        <a href="vnl.html">VNL 보기 →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>대회 일정</h3>
+          <p>VNL, AVC, 국내대회 일정을 한국시간 기준으로 확인하고 대회별로 비교할 수 있게 정리합니다.</p>
+        </div>
+        <a href="schedules.html">일정 보기 →</a>
+      </div>
+
+      <div class="card">
+        <div>
+          <h3>대회 시뮬레이터</h3>
+          <p>조별리그 순위, 본선 진출 가능성, 세트 득실과 경우의 수를 계산하는 분석 도구입니다.</p>
+        </div>
+        <a href="simulator.html">준비 중 →</a>
+      </div>
+    </section>
+
+    <section class="notice">
+      <div>
+        <h2>국내 선수 DB 운영 원칙</h2>
+        <p>
+          공개 팜플렛, 대회자료, 기사, 협회·연맹 자료 기반으로 데이터를 쌓고,
+          주민등록번호·연락처·주소 등 민감 개인정보는 수집하거나 공개하지 않습니다.
+          모든 주요 데이터는 출처를 함께 저장합니다.
+        </p>
+      </div>
+      <a class="btn primary" href="domestic-db.html">성장 DB 보기</a>
+    </section>
+
+    <section class="request">
+      <h2>정보 수정 및 등록 요청</h2>
+      <p>잘못된 정보, 선수 등록, 대회 등록, U대표팀 정보 요청을 보내주세요.</p>
+      <a class="btn primary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">
+        정보 수정 및 등록 요청하기
+      </a>
+    </section>
+  </main>
 
   <footer>
     © 2026 K-Volley Lab. Korean Volleyball Data & Analytics.
