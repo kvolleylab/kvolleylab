@@ -12,7 +12,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Japan | K-Volley Lab</title>
+  <title>Poland | K-Volley Lab</title>
 
   <style>
     body {
@@ -247,9 +247,9 @@
   <main class="container">
 
     <section class="team-header">
-      <img src="https://flagcdn.com/w160/jp.png" alt="Japan flag">
+      <img src="https://flagcdn.com/w160/pl.png" alt="Poland flag">
       <div>
-        <h1>Japan Men’s National Team</h1>
+        <h1>Poland Men’s National Team</h1>
         <p class="subtitle">
           2026 VNL 남자부 일본 대표팀 선수 데이터베이스입니다.
           선수 정보는 검증 후 순차적으로 업데이트됩니다.
@@ -260,15 +260,15 @@
     <section class="summary-grid">
       <div class="summary-card">
         <div class="label">Country</div>
-        <div class="value">Japan 🇯🇵</div>
+        <div class="value">Poland 🇵🇱</div>
       </div>
       <div class="summary-card">
         <div class="label">Competition</div>
         <div class="value">VNL 2026 Men</div>
       </div>
       <div class="summary-card">
-<div class="label">Roster Size</div>
-<div class="value" id="rosterSize">Loading...</div>
+        <div class="label">Roster Size</div>
+        <div class="value" id="rosterSize">Loading...</div>
       </div>
       <div class="summary-card">
         <div class="label">Data Status</div>
@@ -300,13 +300,13 @@
 <th>Volleybox</th>
 </tr>
 </thead>
-        <tbody id="playerTableBody">
+<tbody id="playerTableBody">
 </tbody>
       </table>
     </div>
 
     <section class="request-box">
-      <h2>Japan 선수 정보 제보</h2>
+      <h2>Poland 선수 정보 제보</h2>
       <p>명단, 신장, 생년월일, 소속팀, Volleybox 링크 오류를 제보해 주세요.</p>
       <a class="button" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">
         정보 수정 및 등록 요청하기
@@ -318,23 +318,22 @@
   <footer>
     © 2026 K-Volley Lab. Korean Volleyball Data & Analytics.
   </footer>
+
 <script>
 let players = [];
 
 fetch("players.json")
   .then(response => response.json())
   .then(data => {
+    players = data.filter(player => player.country === "Poland");
 
-    players = data.filter(player => player.country === "Japan");
-
-    renderJapanPlayers(players);
+    renderPolandPlayers(players);
 
     document.getElementById("rosterSize").innerText =
       players.length + " Players";
-
   });
 
-function renderJapanPlayers(list){
+function renderPolandPlayers(list){
   const tbody = document.getElementById("playerTableBody");
 
   tbody.innerHTML = list.map(player => `
@@ -354,5 +353,6 @@ function renderJapanPlayers(list){
   `).join("");
 }
 </script>
+
 </body>
 </html>

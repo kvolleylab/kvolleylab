@@ -110,19 +110,48 @@
       font-size: 13px;
       border-top: 1px solid rgba(255,255,255,0.12);
     }
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: #d7e4ef;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.18s ease;
+}
+
+.site-nav a:hover {
+  background: rgba(225, 184, 79, 0.14);
+  color: #e1b84f;
+}
+
+.site-nav a.active {
+  background: #e1b84f;
+  color: #071b2a;
+}
+    
   </style>
 </head>
 <body>
 
   <header>
     <div class="logo">K-Volley Lab</div>
-    <nav>
-      <a href="vnl.html">VNL</a>
-      <a href="simulator.html">Simulator</a>
-      <a href="transfers.html">Transfers</a>
-      <a href="college.html">College</a>
-      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">Request</a>
-    </nav>
+<nav class="site-nav">
+  <a href="index.html" class="active">Home</a>
+  <a href="vnl.html">VNL</a>
+  <a href="players.html">Players</a>
+  <a href="schedules.html">Schedules</a>
+</nav>
   </header>
 
   <section class="hero">

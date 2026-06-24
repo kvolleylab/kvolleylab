@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Search | K-Volley Lab</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+}
+
+header{
+    background:#111827;
+    padding:20px;
+    text-align:center;
+}
+
+h1{
+    margin:0;
+    color:#fbbf24;
+}
+
+.search-box{
+    max-width:700px;
+    margin:30px auto;
+    text-align:center;
+}
+
+input{
+    width:80%;
+    padding:14px;
+    border-radius:10px;
+    border:none;
+    font-size:16px;
+}
+
+.player-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:15px;
+    padding:20px;
+}
+
+.card{
+    .card:hover{
+    transform:translateY(-4px);
+    transition:0.2s;
+    box-shadow:0 8px 24px rgba(0,0,0,0.3);
+}
+    background:#1e293b;
+    border-radius:12px;
+    padding:15px;
+}
+
+.card h3{
+    margin-top:0;
+    color:#fbbf24;
+}
+
+.country{
+    color:#93c5fd;
+}
+
+a{
+    color:#fbbf24;
+    text-decoration:none;
+}
+
+.top-menu{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:#111827;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#fbbf24;
+}
+
+.top-menu nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.top-menu nav a:hover{
+    color:#fbbf24;
+}
+
+.filters{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.filters button{
+    margin:5px;
+    padding:10px 18px;
+    border:none;
+    border-radius:8px;
+    background:#1e293b;
+    color:white;
+    cursor:pointer;
+}
+
+.filters button:hover{
+    background:#fbbf24;
+    color:black;
+}
+
+.filter-btn.active{
+  background:#d6b25e;
+  color:#071827;
+  font-weight:bold;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: #d7e4ef;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.18s ease;
+}
+
+.site-nav a:hover {
+  background: rgba(225, 184, 79, 0.14);
+  color: #e1b84f;
+}
+
+.site-nav a.active {
+  background: #e1b84f;
+  color: #071b2a;
+}
+    
+</style>
+</head>
+
+<body>
+
+<header class="top-menu">
+    <div class="logo">K-Volley Lab</div>
+
+<nav class="site-nav">
+  <a href="index.html">Home</a>
+  <a href="vnl.html">VNL</a>
+  <a href="players.html" class="active">Players</a>
+  <a href="schedules.html">Schedules</a>
+</nav>
+</header>
+
+<header>
+<h1>K-Volley Lab Player Search</h1>
+
+<div id="stats" style="margin-top:15px;color:#94a3b8;">
+Loading...
+</div>
+
+</header>
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="선수 이름 검색...">
+</div>
+
+<div class="filters">
+<button class="country-btn active" onclick="filterCountry('All', this)">All</button>
+<button class="country-btn" onclick="filterCountry('Japan', this)">Japan</button>
+<button class="country-btn" onclick="filterCountry('Brazil', this)">Brazil</button>
+<button class="country-btn" onclick="filterCountry('Poland', this)">Poland</button>
+</div>
+
+<div class="filters">
+<button class="position-btn active" onclick="filterPosition('All', this)">ALL</button>
+<button class="position-btn" onclick="filterPosition('OH', this)">OH</button>
+<button class="position-btn" onclick="filterPosition('MB', this)">MB</button>
+<button class="position-btn" onclick="filterPosition('S', this)">S</button>
+<button class="position-btn" onclick="filterPosition('O', this)">OP</button>
+<button class="position-btn" onclick="filterPosition('L', this)">L</button>
+</div>
+
+<div class="player-grid" id="playerGrid"></div>
+
+<script>
+
+let players = [];
+let selectedCountry = "All";
+let selectedPosition = "All";
+
+fetch("players.json")
+  .then(response => response.json())
+  .then(data => {
+
+      players = data;
+
+      renderPlayers(players);
+
+      const countries =
+          [...new Set(players.map(p => p.country))];
+
+      document.getElementById("stats").innerHTML =
+          `Total Players : ${players.length} | Countries : ${countries.length}`;
+
+  });
+
+function getFlag(flag){
+    const flagMap = {
+        "BR":"🇧🇷",
+        "JP":"🇯🇵",
+        "PL":"🇵🇱",
+        "IR":"🇮🇷",
+        "US":"🇺🇸",
+        "FR":"🇫🇷",
+        "IT":"🇮🇹",
+        "AR":"🇦🇷",
+        "DE":"🇩🇪",
+        "CU":"🇨🇺",
+        "CA":"🇨🇦",
+        "RS":"🇷🇸",
+        "SI":"🇸🇮"
+    };
+
+    return flagMap[flag] || flag || "";
+}
+
+function renderPlayers(list){
+
+    const grid=document.getElementById("playerGrid");
+
+    grid.innerHTML=list.map(player=>`
+
+<div class="card"
+onclick="window.location.href='player.html?name=${encodeURIComponent(player.name)}'"
+style="cursor:pointer;">
+<h3>#${player.number} ${player.name}</h3>
+
+<div>${player.korean}</div>
+
+<div class="country">${getFlag(player.flag)} ${player.country}</div>
+
+<div>Position : ${player.position}</div>
+
+<div>Height : ${player.height}cm</div>
+
+<div>DOB : ${player.dob || "-"}</div>
+
+<div style="margin-top:10px;">
+<a href="${player.volleybox}" target="_blank">
+Volleybox →
+</a>
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+function applyFilters(){
+
+    let filtered = players;
+
+    if(selectedCountry !== "All"){
+        filtered = filtered.filter(player => player.country === selectedCountry);
+    }
+
+    if(selectedPosition !== "All"){
+        filtered = filtered.filter(player => player.position === selectedPosition);
+    }
+
+    renderPlayers(filtered);
+}
+
+function setActiveButton(buttonClass, clickedButton){
+
+    document.querySelectorAll(buttonClass).forEach(button => {
+        button.classList.remove("active");
+    });
+
+    clickedButton.classList.add("active");
+}
+
+function filterCountry(country, clickedButton){
+
+    selectedCountry = country;
+
+    setActiveButton(".country-btn", clickedButton);
+
+    applyFilters();
+}
+
+function filterPosition(position, clickedButton){
+
+    selectedPosition = position;
+
+    setActiveButton(".position-btn", clickedButton);
+
+    applyFilters();
+}
+
+document.getElementById("searchInput").addEventListener("keyup",function(){
+
+    const value=this.value.toLowerCase();
+
+    const filtered=players.filter(player=>
+
+        player.name.toLowerCase().includes(value) ||
+        player.korean.includes(value) ||
+        player.country.toLowerCase().includes(value) ||
+        player.position.toLowerCase().includes(value)
+
+    );
+
+    renderPlayers(filtered);
+
+});
+
+</script>
+</body>
+</html>

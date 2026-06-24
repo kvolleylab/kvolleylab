@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Detail | K-Volley Lab</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#071827;
+    color:white;
+}
+
+header{
+    padding:24px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+    color:#d6b25e;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+.container{
+    max-width:1000px;
+    margin:0 auto;
+    padding:70px 20px;
+}
+
+.back{
+    color:#d6b25e;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.player-card{
+    margin-top:30px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:20px;
+    padding:34px;
+}
+
+h1{
+    color:#d6b25e;
+    font-size:42px;
+    margin:0 0 10px;
+}
+
+.korean{
+    font-size:20px;
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+}
+
+.info-box{
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:14px;
+    padding:18px;
+}
+
+.label{
+    color:#94a3b8;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.value{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.links{
+    margin-top:30px;
+}
+
+.links a{
+    display:inline-block;
+    margin-right:12px;
+    margin-top:10px;
+    background:#d6b25e;
+    color:#071827;
+    padding:12px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.empty{
+    color:#94a3b8;
+    margin-top:30px;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: #d7e4ef;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.18s ease;
+}
+
+.site-nav a:hover {
+  background: rgba(225, 184, 79, 0.14);
+  color: #e1b84f;
+}
+
+.site-nav a.active {
+  background: #e1b84f;
+  color: #071b2a;
+}
+    
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">K-Volley Lab</div>
+<nav class="site-nav">
+  <a href="index.html">Home</a>
+  <a href="vnl.html">VNL</a>
+  <a href="players.html" class="active">Players</a>
+  <a href="schedules.html">Schedules</a>
+</nav>
+</header>
+
+<main class="container">
+
+<a class="back" href="players.html">← Back to Player Search</a>
+
+<div id="playerArea"></div>
+
+</main>
+
+<script>
+let players = [];
+
+fetch("players.json")
+  .then(response => response.json())
+  .then(data => {
+      players = data;
+
+      const params = new URLSearchParams(window.location.search);
+      const playerName = params.get("name");
+
+      const player = players.find(p =>
+          p.name.toLowerCase() === decodeURIComponent(playerName || "").toLowerCase()
+      );
+
+      renderPlayer(player);
+  });
+
+function renderPlayer(player){
+
+    const area = document.getElementById("playerArea");
+
+    if(!player){
+        area.innerHTML = `
+            <div class="empty">
+                선수를 찾을 수 없습니다.
+            </div>
+        `;
+        return;
+    }
+
+    area.innerHTML = `
+        <section class="player-card">
+            <h1>#${player.number} ${player.name}</h1>
+            <div class="korean">${player.korean || ""}</div>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <div class="label">Country</div>
+                    <div class="value">${player.country}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="label">Position</div>
+                    <div class="value">${player.position}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="label">Height</div>
+                    <div class="value">${player.height}cm</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="label">Date of Birth</div>
+                    <div class="value">${player.dob || "-"}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="label">Current Club</div>
+                    <div class="value">${player.club || "TBD"}</div>
+                </div>
+
+                <div class="info-box">
+                    <div class="label">Status</div>
+                    <div class="value">${player.status || "-"}</div>
+                </div>
+            </div>
+
+            <div class="links">
+                <a href="${player.volleybox}" target="_blank">Volleybox</a>
+                ${player.vnlProfile ? `<a href="${player.vnlProfile}" target="_blank">VNL Profile</a>` : ""}
+            </div>
+        </section>
+    `;
+}
+</script>
+
+</body>
+</html>
