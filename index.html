@@ -12,357 +12,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>K-Volley Lab</title>
-  <style>
-    :root {
-      --bg: #071827;
-      --bg2: #04111d;
-      --panel: rgba(255,255,255,0.08);
-      --line: rgba(255,255,255,0.14);
-      --gold: #d6b25e;
-      --mint: #22d4bf;
-      --text: #ffffff;
-      --muted: #cbd5e1;
-      --soft: #94a3b8;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, #102a43 0%, var(--bg) 45%, var(--bg2) 100%);
-      color: var(--text);
-    }
-
-    header {
-      padding: 18px 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      position: sticky;
-      top: 0;
-      background: rgba(7,24,39,0.94);
-      backdrop-filter: blur(12px);
-      z-index: 10;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: var(--gold);
-      white-space: nowrap;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      padding: 9px 14px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      opacity: 0.94;
-    }
-
-    nav a:hover,
-    nav a.active {
-      background: var(--gold);
-      color: var(--bg);
-    }
-
-    .hero {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 90px 22px 44px;
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .hero-main,
-    .hero-side,
-    .card,
-    .request,
-    .notice {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-    }
-
-    .hero-main {
-      padding: 38px;
-    }
-
-    .eyebrow {
-      color: var(--mint);
-      font-size: 14px;
-      font-weight: 800;
-      margin: 0 0 14px;
-    }
-
-    h1 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.04;
-      margin: 0 0 18px;
-      color: var(--gold);
-      letter-spacing: -2px;
-    }
-
-    .hero-main p {
-      font-size: 18px;
-      color: #d9e2ec;
-      line-height: 1.75;
-      margin: 0 0 26px;
-      max-width: 760px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 13px 20px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 800;
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .btn.primary {
-      background: var(--gold);
-      color: var(--bg);
-      border-color: var(--gold);
-    }
-
-    .hero-side {
-      padding: 26px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      align-content: center;
-    }
-
-    .stat {
-      padding: 20px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid var(--line);
-      min-height: 110px;
-    }
-
-    .stat strong {
-      display: block;
-      color: var(--gold);
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .stat span {
-      color: #d9e2ec;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    main {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 22px 70px;
-    }
-
-    .section-title {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-end;
-      margin: 34px 0 16px;
-    }
-
-    .section-title h2 {
-      font-size: 30px;
-      margin: 0;
-    }
-
-    .section-title p {
-      margin: 0;
-      color: var(--soft);
-      line-height: 1.6;
-      max-width: 620px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      padding: 24px;
-      min-height: 190px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.18s ease, border-color 0.18s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(214,178,94,0.55);
-    }
-
-    .card h3 {
-      margin: 0 0 12px;
-      color: var(--gold);
-      font-size: 21px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
-      margin: 0 0 20px;
-    }
-
-    .card a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    .card.featured {
-      border-color: rgba(214,178,94,0.65);
-      background: linear-gradient(145deg, rgba(214,178,94,0.16), rgba(255,255,255,0.07));
-    }
-
-    .notice {
-      margin-top: 28px;
-      padding: 24px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .notice h2 {
-      margin: 0 0 10px;
-      color: var(--gold);
-    }
-
-    .notice p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .request {
-      margin-top: 28px;
-      padding: 32px;
-      text-align: center;
-    }
-
-    .request h2 {
-      margin: 0 0 12px;
-      font-size: 28px;
-    }
-
-    .request p {
-      color: var(--muted);
-      margin: 0 0 22px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: var(--soft);
-      font-size: 13px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-    }
-
-    @media (max-width: 900px) {
-      header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        justify-content: flex-start;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 52px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .notice {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 620px) {
-      header {
-        padding: 16px;
-      }
-
-      nav a {
-        padding: 8px 10px;
-        font-size: 13px;
-      }
-
-      .hero-main {
-        padding: 26px;
-      }
-
-      .hero-side {
-        grid-template-columns: 1fr;
-      }
-
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .section-title {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-
-  <header>
-    <div class="logo">K-Volley Lab</div>
-    <nav>
+  <header class="site-header">
+    <a class="site-logo" href="index.html">K-Volley Lab</a>
+    <nav class="site-nav">
       <a class="active" href="index.html">Home</a>
       <a href="domestic-db.html">국내 선수 DB</a>
       <a href="vnl.html">VNL</a>
-      <a href="players.html">Players</a>
-      <a href="schedules.html">Schedules</a>
+      <a href="player-search.html">선수 검색</a>
+      <a href="schedules.html">일정</a>
+      <a href="pamphlet-archive.html">팜플렛</a>
       <a href="simulator.html">Simulator</a>
-      <a href="pamphlet-archive.html">Pamphlets</a>
-      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">Request</a>
+      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a>
     </nav>
   </header>
 
@@ -401,7 +64,7 @@
     </div>
   </section>
 
-  <main>
+  <main class="site-main">
     <div class="section-title">
       <h2>주요 기능</h2>
       <p>현재는 화면 구조를 먼저 만드는 단계입니다. 실제 데이터는 이후 Excel 또는 JSON 기반으로 연결할 예정입니다.</p>
@@ -472,15 +135,14 @@
     <section class="request">
       <h2>정보 수정 및 등록 요청</h2>
       <p>잘못된 정보, 선수 등록, 대회 등록, U대표팀 정보 요청을 보내주세요.</p>
-      <a class="btn primary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">
+      <a class="btn primary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">
         정보 수정 및 등록 요청하기
       </a>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     © 2026 K-Volley Lab. Korean Volleyball Data & Analytics.
   </footer>
-
 </body>
 </html>
