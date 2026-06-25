@@ -1,0 +1,93 @@
+{
+  "schema_name": "K-Volley Lab School Master Schema",
+  "schema_version": "v1",
+  "description": "K-Volley Lab에서 학교 기관을 하나의 고유 school_id로 관리하기 위한 표준 스키마.",
+  "principles": [
+    "school_id는 절대 변경하지 않는다.",
+    "학교명 변경, 통폐합, 영문명 수정이 있어도 school_id는 유지한다.",
+    "선수와 팀은 학교명을 직접 저장하지 않고 school_id를 참조한다.",
+    "학교와 배구팀은 분리해서 관리한다. 학교는 School Master, 배구부는 Team Master에서 관리한다.",
+    "모든 핵심 데이터는 source_id와 연결한다."
+  ],
+  "id_policy": {
+    "school_id": {
+      "format": "KVL-S-000001",
+      "meaning": "K-Volley Lab School unique ID",
+      "rule": "순번 기반 내부 고유 ID. 학교 이름, 지역, 영문명이 바뀌어도 변경하지 않는다."
+    },
+    "short_code": {
+      "format": "KOR-UNIV-INHA",
+      "meaning": "사람이 보기 쉬운 보조 코드",
+      "rule": "국가 + 학교 단계 + 약칭 기반. 기본키로 사용하지 않는다."
+    }
+  },
+  "fields": {
+    "system": {
+      "school_id": "string, required",
+      "short_code": "string, optional",
+      "created_at": "YYYY-MM-DD",
+      "updated_at": "YYYY-MM-DD",
+      "status": "active | closed | merged | unknown | duplicate_review",
+      "data_confidence": "confirmed | partial | sample | needs_review"
+    },
+    "identity": {
+      "name_ko": "string, required",
+      "name_en": "string",
+      "short_name": "string",
+      "former_names": "array"
+    },
+    "classification": {
+      "country": "ISO-3 or country code",
+      "school_type": "Elementary | Middle | High | University | Academy | Other",
+      "gender_scope": "Male | Female | Coed | Unknown"
+    },
+    "location": {
+      "province": "string",
+      "city": "string",
+      "district": "string",
+      "address_public": "string, public-only",
+      "latitude": "number or empty",
+      "longitude": "number or empty"
+    },
+    "links": {
+      "website": "url",
+      "logo": "path or url",
+      "official_page": "url"
+    },
+    "source_ids": [
+      "source_id list"
+    ]
+  },
+  "school_type_standard": [
+    {
+      "value": "Elementary",
+      "ko": "초등학교"
+    },
+    {
+      "value": "Middle",
+      "ko": "중학교"
+    },
+    {
+      "value": "High",
+      "ko": "고등학교"
+    },
+    {
+      "value": "University",
+      "ko": "대학교"
+    },
+    {
+      "value": "Academy",
+      "ko": "스포츠 아카데미"
+    },
+    {
+      "value": "Other",
+      "ko": "기타"
+    }
+  ],
+  "related_files": [
+    "player_master.json",
+    "team_master.json",
+    "competition_master.json",
+    "source_master.json"
+  ]
+}

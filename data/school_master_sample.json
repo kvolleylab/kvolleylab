@@ -1,0 +1,150 @@
+[
+  {
+    "system": {
+      "school_id": "KVL-S-000001",
+      "short_code": "KOR-ELEM-CBSE",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "sample"
+    },
+    "identity": {
+      "name_ko": "천안봉서초등학교",
+      "name_en": "Cheonan Bongseo Elementary School",
+      "short_name": "천안봉서초",
+      "former_names": []
+    },
+    "classification": {
+      "country": "KOR",
+      "school_type": "Elementary",
+      "gender_scope": "Coed"
+    },
+    "location": {
+      "province": "충청남도",
+      "city": "천안시",
+      "district": "",
+      "address_public": "",
+      "latitude": "",
+      "longitude": ""
+    },
+    "links": {
+      "website": "",
+      "logo": "",
+      "official_page": ""
+    },
+    "source_ids": [
+      "SRC-SCH-2026-0001"
+    ]
+  },
+  {
+    "system": {
+      "school_id": "KVL-S-000002",
+      "short_code": "KOR-MID-CSSM",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "sample"
+    },
+    "identity": {
+      "name_ko": "천안쌍용중학교",
+      "name_en": "Cheonan Ssangyong Middle School",
+      "short_name": "천안쌍용중",
+      "former_names": []
+    },
+    "classification": {
+      "country": "KOR",
+      "school_type": "Middle",
+      "gender_scope": "Coed"
+    },
+    "location": {
+      "province": "충청남도",
+      "city": "천안시",
+      "district": "",
+      "address_public": "",
+      "latitude": "",
+      "longitude": ""
+    },
+    "links": {
+      "website": "",
+      "logo": "",
+      "official_page": ""
+    },
+    "source_ids": [
+      "SRC-SCH-2026-0002"
+    ]
+  },
+  {
+    "system": {
+      "school_id": "KVL-S-000003",
+      "short_code": "KOR-HIGH-CAHS",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "sample"
+    },
+    "identity": {
+      "name_ko": "천안고등학교",
+      "name_en": "Cheonan High School",
+      "short_name": "천안고",
+      "former_names": []
+    },
+    "classification": {
+      "country": "KOR",
+      "school_type": "High",
+      "gender_scope": "Male"
+    },
+    "location": {
+      "province": "충청남도",
+      "city": "천안시",
+      "district": "",
+      "address_public": "",
+      "latitude": "",
+      "longitude": ""
+    },
+    "links": {
+      "website": "",
+      "logo": "",
+      "official_page": ""
+    },
+    "source_ids": [
+      "SRC-SCH-2026-0003"
+    ]
+  },
+  {
+    "system": {
+      "school_id": "KVL-S-000004",
+      "short_code": "KOR-UNIV-INHA",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "sample"
+    },
+    "identity": {
+      "name_ko": "인하대학교",
+      "name_en": "Inha University",
+      "short_name": "인하대",
+      "former_names": []
+    },
+    "classification": {
+      "country": "KOR",
+      "school_type": "University",
+      "gender_scope": "Coed"
+    },
+    "location": {
+      "province": "인천광역시",
+      "city": "인천광역시",
+      "district": "",
+      "address_public": "",
+      "latitude": "",
+      "longitude": ""
+    },
+    "links": {
+      "website": "",
+      "logo": "",
+      "official_page": ""
+    },
+    "source_ids": [
+      "SRC-SCH-2026-0004"
+    ]
+  }
+]
