@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국내 선수 프로필 | K-Volley Lab</title>
+  <link rel="stylesheet" href="../assets/css/domestic.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">K-Volley Lab</div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../vnl.html">VNL</a>
+    <a href="../players.html">Players</a>
+    <a href="../schedules.html">Schedules</a>
+    <a class="active" href="index.html">국내 선수 DB</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 id="name">선수 프로필</h1>
+  <p id="summary">선수 데이터를 불러오는 중입니다.</p>
+</section>
+<main class="container">
+  <section class="grid">
+    <article class="card"><h3>마스터 정보</h3><table class="table"><tbody id="masterTable"></tbody></table></article>
+    <article class="card"><h3>현재 국내 정보</h3><table class="table"><tbody id="domesticTable"></tbody></table></article>
+  </section>
+  <section style="margin-top:26px" class="card">
+    <h3>코드 설명</h3>
+    <p id="codeNote"></p>
+    <a id="timelineLink" class="btn" href="#">성장 타임라인 보기</a>
+  </section>
+</main>
+<footer>© 2026 K-Volley Lab.</footer>
+<script>
+const id=new URLSearchParams(location.search).get("id")||"KVL-P-000001";
+const safe=v=>(v===undefined||v===null||v==="")?"-":v;
+async function load(){
+  const [master,domestic]=await Promise.all([
+    fetch("../data/player_master.json?v=1").then(r=>r.json()),
+    fetch("../data/domestic_players.json?v=1").then(r=>r.json())
+  ]);
+  const p=master.find(x=>x.player_id===id)||master[0];
+  const d=domestic.find(x=>x.player_id===p.player_id)||{};
+  document.getElementById("name").textContent=p.name_ko;
+  document.getElementById("summary").textContent=`${p.name_en} · ${p.player_id} · ${p.display_code}`;
+  document.getElementById("masterTable").innerHTML=[
+    ["player_id",p.player_id],["display_code",p.display_code],["이름",p.name_ko],["영문명",p.name_en],["생년월일",p.birth_date],
+    ["국적",p.nationality],["주 포지션",p.primary_position],["키",`${p.height_cm}cm`]
+  ].map(([k,v])=>`<tr><th>${k}</th><td>${safe(v)}</td></tr>`).join("");
+  document.getElementById("domesticTable").innerHTML=[
+    ["현재 단계",d.current_level],["현재 소속",d.current_team],["현재 학교",d.current_school],["현재 포지션",d.current_position],["출처", (d.source_ids||[]).join(", ")]
+  ].map(([k,v])=>`<tr><th>${k}</th><td>${safe(v)}</td></tr>`).join("");
+  document.getElementById("codeNote").innerHTML=`<b>${p.player_id}</b>는 내부 고유 ID입니다. <b>${p.display_code}</b>는 사람이 보기 쉽게 만든 표시 코드 후보입니다. 최종 기준은 아직 검토 중입니다.`;
+  document.getElementById("timelineLink").href=`timeline.html?id=${p.player_id}`;
+}
+load();
+</script>
+</body>
+</html>

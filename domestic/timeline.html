@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국내 선수 성장 타임라인 | K-Volley Lab</title>
+  <link rel="stylesheet" href="../assets/css/domestic.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">K-Volley Lab</div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../vnl.html">VNL</a>
+    <a href="../players.html">Players</a>
+    <a href="../schedules.html">Schedules</a>
+    <a class="active" href="index.html">국내 선수 DB</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 id="title">성장 타임라인</h1>
+  <p id="subtitle">선수 데이터를 불러오는 중입니다.</p>
+</section>
+<main class="container">
+  <section class="card">
+    <div id="timeline" class="timeline"></div>
+  </section>
+</main>
+<footer>© 2026 K-Volley Lab.</footer>
+<script>
+const id=new URLSearchParams(location.search).get("id")||"KVL-P-000001";
+async function load(){
+  const [master,growth]=await Promise.all([
+    fetch("../data/player_master.json?v=1").then(r=>r.json()),
+    fetch("../data/domestic_growth_history.json?v=1").then(r=>r.json())
+  ]);
+  const p=master.find(x=>x.player_id===id)||master[0];
+  const rec=growth.find(x=>x.player_id===p.player_id);
+  document.getElementById("title").textContent=`${p.name_ko} 성장 타임라인`;
+  document.getElementById("subtitle").textContent=`${p.player_id} · ${p.display_code}`;
+  if(!rec){
+    document.getElementById("timeline").innerHTML="<p>등록된 성장 이력이 없습니다.</p>";
+    return;
+  }
+  document.getElementById("timeline").innerHTML=rec.history.map(h=>`
+    <div class="timeline-item">
+      <h3>${h.year} · ${h.level}</h3>
+      <p>소속: ${h.team}<br>학년: ${h.grade||"-"}<br>포지션: ${h.position||"-"}<br>키: ${h.height_cm||"-"}cm<br>출처: ${(h.source_ids||[]).join(", ")}</p>
+    </div>
+  `).join("");
+}
+load();
+</script>
+</body>
+</html>

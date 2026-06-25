@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>국내 선수 DB | K-Volley Lab</title>
+  <link rel="stylesheet" href="../assets/css/domestic.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">K-Volley Lab</div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../vnl.html">VNL</a>
+    <a href="../players.html">Players</a>
+    <a href="../schedules.html">Schedules</a>
+    <a class="active" href="index.html">국내 선수 DB</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>국내 선수 성장 추적 DB</h1>
+  <p>초·중·고·대학·실업·프로까지 이어지는 국내 선수 성장 이력을 선수 고유 코드와 출처 기반으로 관리합니다.</p>
+</section>
+<main class="container">
+  <section class="grid">
+    <article class="card">
+      <h3>선수 마스터 코드</h3>
+      <p>국내 DB와 국제대회 로스터에 같은 선수가 등장해도 하나의 <b>player_id</b>로 연결합니다.</p>
+      <a class="btn" href="search.html">선수 검색</a>
+    </article>
+    <article class="card">
+      <h3>코드 설계 후보</h3>
+      <p><span class="badge">KVL-P-000001</span> 내부 고유 ID<br><span class="badge">KMJ-051029</span> 사람이 보기 쉬운 표시 코드</p>
+      <a class="btn ghost" href="profile.html?id=KVL-P-000001">예시 프로필</a>
+    </article>
+    <article class="card">
+      <h3>성장 타임라인</h3>
+      <p>연도별 소속, 키, 포지션, 단계 변화를 기록합니다.</p>
+      <a class="btn ghost" href="timeline.html?id=KVL-P-000001">예시 타임라인</a>
+    </article>
+    <article class="card">
+      <h3>출처 기반</h3>
+      <p>공개 팜플렛, 대회자료, 기사, 협회/연맹 자료만 사용하고 모든 주요 데이터에 source_id를 연결합니다.</p>
+    </article>
+  </section>
+
+  <section style="margin-top:32px" class="card">
+    <h3>선수 코드 운영 원칙</h3>
+    <p class="warning">
+      최종 DB에서는 <b>KVL-P-000001</b> 같은 내부 고유 ID를 기본키로 사용하고,
+      <b>KMJ-051029</b> 같은 이름 기반 코드는 display_code로 보조 사용합니다.
+      이름 기반 코드는 동명이인, 개명, 생년월일 비공개, 오입력 수정에 취약할 수 있습니다.
+    </p>
+  </section>
+</main>
+<footer>© 2026 K-Volley Lab. Domestic Player Database.</footer>
+</body>
+</html>

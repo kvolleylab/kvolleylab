@@ -1,0 +1,44 @@
+
+:root{
+  --bg:#071827;
+  --panel:#10263a;
+  --panel2:#0d2233;
+  --gold:#d6b25e;
+  --text:#ffffff;
+  --muted:#cbd5e1;
+  --line:rgba(255,255,255,.14);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text)}
+header{padding:22px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.12)}
+.logo{font-size:24px;font-weight:800;color:var(--gold)}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-size:14px}
+nav a.active{color:var(--gold);font-weight:700}
+.hero{max-width:1120px;margin:0 auto;padding:70px 20px 35px}
+.hero h1{margin:0 0 14px;color:var(--gold);font-size:42px}
+.hero p{font-size:18px;color:var(--muted);line-height:1.7}
+.container{max-width:1120px;margin:0 auto;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h3{color:var(--gold);margin-top:0}
+.card p,.muted{color:var(--muted);line-height:1.65}
+.btn{display:inline-block;background:var(--gold);color:#071827;text-decoration:none;font-weight:800;border-radius:999px;padding:12px 18px;margin-top:10px}
+.btn.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:5px 10px;font-size:12px;color:var(--gold);margin:3px 4px 3px 0}
+.searchbar{display:grid;grid-template-columns:1fr 150px 150px;gap:12px;margin-bottom:22px}
+input,select{padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:#fff}
+option{color:#111}
+.table{width:100%;border-collapse:collapse;background:rgba(255,255,255,.05);border-radius:14px;overflow:hidden}
+.table th,.table td{padding:13px;border-bottom:1px solid rgba(255,255,255,.12);text-align:left;vertical-align:top}
+.table th{color:var(--gold);width:34%}
+.timeline{border-left:3px solid var(--gold);padding-left:18px;margin-left:10px}
+.timeline-item{padding:0 0 24px 0}
+.warning{border-left:4px solid var(--gold);padding:14px 18px;background:rgba(214,178,94,.12);border-radius:12px}
+footer{text-align:center;color:#94a3b8;padding:34px;border-top:1px solid rgba(255,255,255,.12);margin-top:60px}
+@media(max-width:760px){
+  header{padding:18px 20px;display:block}
+  nav{margin-top:12px}
+  nav a{display:inline-block;margin:0 12px 8px 0}
+  .hero h1{font-size:32px}
+  .searchbar{grid-template-columns:1fr}
+}
