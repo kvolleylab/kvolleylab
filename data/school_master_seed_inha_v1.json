@@ -1,0 +1,35 @@
+[
+  {
+    "system": {
+      "school_id": "KVL-S-DRAFT-INHA",
+      "short_code": "KOR-UNIV-INHA",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "needs_review",
+      "id_status": "draft"
+    },
+    "identity": {
+      "name_ko": "인하대학교",
+      "name_en": "Inha University",
+      "short_name": "인하대",
+      "former_names": []
+    },
+    "classification": {
+      "country_id": "KVL-CTY-000001",
+      "school_type": "University",
+      "gender_scope": "Coed"
+    },
+    "location": {
+      "province": "인천광역시",
+      "city": "인천광역시",
+      "district": "",
+      "address_public": "",
+      "latitude": "",
+      "longitude": ""
+    },
+    "source_ids": [
+      "SRC-DOM-UNIV-2026-INHA-001"
+    ]
+  }
+]
