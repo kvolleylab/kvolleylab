@@ -1,0 +1,122 @@
+[
+  {
+    "system": {
+      "country_id": "KVL-CTY-000001",
+      "short_code": "KOR",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "sample"
+    },
+    "identity": {
+      "name_ko": "대한민국",
+      "name_en": "South Korea",
+      "official_name": "Republic of Korea",
+      "continent": "Asia"
+    },
+    "codes": {
+      "iso2": "KR",
+      "iso3": "KOR",
+      "ioc_code": "KOR",
+      "fivb_code": "KOR",
+      "flag_code": "KR"
+    },
+    "volleyball": {
+      "confederation": "AVC",
+      "fivb_member": "true"
+    },
+    "meta": {
+      "timezone": "Asia/Seoul",
+      "language": "Korean",
+      "currency": "KRW"
+    },
+    "links": {
+      "fivb_page": "",
+      "volleyball_world_page": "",
+      "federation_website": ""
+    },
+    "source_ids": [
+      "SRC-CTY-2026-0001"
+    ]
+  },
+  {
+    "system": {
+      "country_id": "KVL-CTY-000002",
+      "short_code": "JPN",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "sample"
+    },
+    "identity": {
+      "name_ko": "일본",
+      "name_en": "Japan",
+      "official_name": "Japan",
+      "continent": "Asia"
+    },
+    "codes": {
+      "iso2": "JP",
+      "iso3": "JPN",
+      "ioc_code": "JPN",
+      "fivb_code": "JPN",
+      "flag_code": "JP"
+    },
+    "volleyball": {
+      "confederation": "AVC",
+      "fivb_member": "true"
+    },
+    "meta": {
+      "timezone": "Asia/Tokyo",
+      "language": "Japanese",
+      "currency": "JPY"
+    },
+    "links": {
+      "fivb_page": "",
+      "volleyball_world_page": "",
+      "federation_website": ""
+    },
+    "source_ids": [
+      "SRC-CTY-2026-0002"
+    ]
+  },
+  {
+    "system": {
+      "country_id": "KVL-CTY-000003",
+      "short_code": "BRA",
+      "created_at": "2026-06-25",
+      "updated_at": "2026-06-25",
+      "status": "active",
+      "data_confidence": "sample"
+    },
+    "identity": {
+      "name_ko": "브라질",
+      "name_en": "Brazil",
+      "official_name": "Federative Republic of Brazil",
+      "continent": "South America"
+    },
+    "codes": {
+      "iso2": "BR",
+      "iso3": "BRA",
+      "ioc_code": "BRA",
+      "fivb_code": "BRA",
+      "flag_code": "BR"
+    },
+    "volleyball": {
+      "confederation": "CSV",
+      "fivb_member": "true"
+    },
+    "meta": {
+      "timezone": "America/Sao_Paulo",
+      "language": "Portuguese",
+      "currency": "BRL"
+    },
+    "links": {
+      "fivb_page": "",
+      "volleyball_world_page": "",
+      "federation_website": ""
+    },
+    "source_ids": [
+      "SRC-CTY-2026-0003"
+    ]
+  }
+]
