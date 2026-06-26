@@ -1,0 +1,73 @@
+{
+  "schema_id": "KVL-SCHEMA-TEAM-MASTER-v1",
+  "schema_name": "K-Volley Lab Team Master Schema",
+  "version": "1.0.0",
+  "status": "draft",
+  "description": "K-Volley Lab에서 학교팀, 실업팀, 프로팀, 국가대표팀을 하나의 팀 마스터 체계로 관리하기 위한 v1 초안 스키마입니다.",
+  "id_policy": {
+    "primary_id_format": "KVL-T-00001",
+    "prefix": "KVL-T",
+    "rule": "한 팀은 하나의 team_id를 가진다. 팀명이 바뀌거나 리그가 바뀌어도 동일 팀으로 확인되면 같은 ID를 유지한다."
+  },
+  "required_fields": [
+    "team_id",
+    "team_name_ko",
+    "team_type",
+    "created_at",
+    "updated_at"
+  ],
+  "fields": {
+    "team_id": {
+      "type": "string",
+      "example": "KVL-T-00001"
+    },
+    "team_name_ko": {
+      "type": "string",
+      "example": "인하대학교"
+    },
+    "team_name_en": {
+      "type": "string|null",
+      "example": "Inha University"
+    },
+    "team_type": {
+      "type": "string",
+      "allowed_values": ["school", "university", "club", "pro", "national_team", "other"],
+      "example": "university"
+    },
+    "country_id": {
+      "type": "string|null",
+      "example": "KVL-CTY-KOR"
+    },
+    "level": {
+      "type": "string|null",
+      "allowed_values": ["초등", "중등", "고등", "대학", "실업", "프로", "국가대표", "해외", "unknown", null],
+      "example": "대학"
+    },
+    "league": {
+      "type": "string|null",
+      "example": "대학리그"
+    },
+    "city": {
+      "type": "string|null",
+      "example": "인천"
+    },
+    "founded_year": {
+      "type": "number|null",
+      "example": null
+    },
+    "source_ids": {
+      "type": "array<string>",
+      "example": ["KVL-SRC-00001"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "YYYY-MM-DD",
+      "example": "2026-06-26"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "YYYY-MM-DD",
+      "example": "2026-06-26"
+    }
+  }
+}
