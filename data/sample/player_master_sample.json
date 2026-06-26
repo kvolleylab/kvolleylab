@@ -1,0 +1,176 @@
+[
+  {
+    "basic_info": {
+      "player_id": "KVL-P-00001",
+      "name_ko": "김민준",
+      "name_en": "Kim Minjun",
+      "name_native": null,
+      "aliases": [],
+      "gender": "M",
+      "nationality": "KOR",
+      "country_name_ko": "대한민국"
+    },
+    "physical_info": {
+      "birth_date": null,
+      "birth_year": 2006,
+      "height_cm": 190,
+      "weight_kg": null,
+      "dominant_hand": "unknown"
+    },
+    "volleyball_info": {
+      "position": "OH",
+      "sub_position": "OP",
+      "current_team_id": "KVL-T-00001",
+      "current_team_name": "인하대학교",
+      "current_level": "대학",
+      "jersey_number": 12
+    },
+    "history": {
+      "school_history": [
+        {
+          "school_id": "KVL-SCH-00001",
+          "school_name": "인하대학교",
+          "level": "대학",
+          "start_year": 2026,
+          "end_year": null,
+          "source_ids": ["KVL-SRC-00001"]
+        }
+      ],
+      "team_history": [],
+      "position_history": [
+        {
+          "year": 2026,
+          "position": "OH",
+          "note": "샘플 데이터",
+          "source_ids": ["KVL-SRC-00001"]
+        }
+      ],
+      "height_history": [
+        {
+          "year": 2026,
+          "height_cm": 190,
+          "source_ids": ["KVL-SRC-00001"]
+        }
+      ],
+      "competition_history": [
+        {
+          "competition_id": "KVL-COMP-00001",
+          "competition_name": "2026 대학리그 샘플",
+          "year": 2026,
+          "team_name": "인하대학교",
+          "jersey_number": 12,
+          "position": "OH",
+          "source_ids": ["KVL-SRC-00001"]
+        }
+      ],
+      "national_team_history": [],
+      "award_history": [],
+      "injury_history": []
+    },
+    "media_and_links": {
+      "profile_image_url": null,
+      "volleybox_url": null,
+      "vnl_profile_url": null,
+      "official_profile_urls": [],
+      "video_urls": []
+    },
+    "source_info": {
+      "source_ids": ["KVL-SRC-00001"],
+      "verification_status": "partial",
+      "notes": "샘플 데이터입니다. 실제 선수 정보가 아닐 수 있습니다."
+    },
+    "system_info": {
+      "created_at": "2026-06-26",
+      "updated_at": "2026-06-26",
+      "created_by": "K-Volley Lab",
+      "data_version": "v1",
+      "is_active": true
+    }
+  },
+  {
+    "basic_info": {
+      "player_id": "KVL-P-00002",
+      "name_ko": "다를란 페헤이라 소우자",
+      "name_en": "Darlan Ferreira Souza",
+      "name_native": null,
+      "aliases": ["Darlan Souza"],
+      "gender": "M",
+      "nationality": "BRA",
+      "country_name_ko": "브라질"
+    },
+    "physical_info": {
+      "birth_date": "2002-06-24",
+      "birth_year": 2002,
+      "height_cm": 192,
+      "weight_kg": null,
+      "dominant_hand": "unknown"
+    },
+    "volleyball_info": {
+      "position": "OP",
+      "sub_position": null,
+      "current_team_id": null,
+      "current_team_name": "TBD",
+      "current_level": "국가대표",
+      "jersey_number": 1
+    },
+    "history": {
+      "school_history": [],
+      "team_history": [],
+      "position_history": [
+        {
+          "year": 2026,
+          "position": "OP",
+          "note": "VNL 선수 데이터 샘플",
+          "source_ids": ["KVL-SRC-00002", "KVL-SRC-00003"]
+        }
+      ],
+      "height_history": [
+        {
+          "year": 2026,
+          "height_cm": 192,
+          "source_ids": ["KVL-SRC-00002"]
+        }
+      ],
+      "competition_history": [
+        {
+          "competition_id": "KVL-COMP-00002",
+          "competition_name": "2026 VNL Men",
+          "year": 2026,
+          "team_name": "Brazil",
+          "jersey_number": 1,
+          "position": "OP",
+          "source_ids": ["KVL-SRC-00002"]
+        }
+      ],
+      "national_team_history": [
+        {
+          "country": "BRA",
+          "competition_name": "2026 VNL Men",
+          "year": 2026,
+          "source_ids": ["KVL-SRC-00002"]
+        }
+      ],
+      "award_history": [],
+      "injury_history": []
+    },
+    "media_and_links": {
+      "profile_image_url": null,
+      "volleybox_url": "https://volleybox.net/darlan-souza-p29039",
+      "vnl_profile_url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/174902",
+      "official_profile_urls": [],
+      "video_urls": []
+    },
+    "source_info": {
+      "source_ids": ["KVL-SRC-00002", "KVL-SRC-00003"],
+      "verification_status": "partial",
+      "notes": "기존 VNL players.json 구조를 player master로 확장한 예시입니다."
+    },
+    "system_info": {
+      "created_at": "2026-06-26",
+      "updated_at": "2026-06-26",
+      "created_by": "K-Volley Lab",
+      "data_version": "v1",
+      "is_active": true
+    }
+  }
+]
