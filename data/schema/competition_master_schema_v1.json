@@ -1,0 +1,93 @@
+{
+  "schema_id": "KVL-SCHEMA-COMPETITION-MASTER-v1",
+  "schema_name": "K-Volley Lab Competition Master Schema",
+  "version": "1.0.0",
+  "status": "draft",
+  "description": "K-Volley Lab에서 국내대회, 국제대회, 리그, 컵대회를 하나의 대회 마스터 체계로 관리하기 위한 v1 초안 스키마입니다.",
+  "id_policy": {
+    "primary_id_format": "KVL-COMP-00001",
+    "prefix": "KVL-COMP",
+    "rule": "한 대회 또는 시즌 단위 대회는 하나의 competition_id를 가진다. 연도별 대회는 별도 ID로 관리한다."
+  },
+  "required_fields": [
+    "competition_id",
+    "competition_name_ko",
+    "year",
+    "competition_type",
+    "created_at",
+    "updated_at"
+  ],
+  "fields": {
+    "competition_id": {
+      "type": "string",
+      "example": "KVL-COMP-00001"
+    },
+    "competition_name_ko": {
+      "type": "string",
+      "example": "2026 대학리그"
+    },
+    "competition_name_en": {
+      "type": "string|null",
+      "example": "2026 University League"
+    },
+    "year": {
+      "type": "number",
+      "example": 2026
+    },
+    "season": {
+      "type": "string|null",
+      "example": "2026"
+    },
+    "competition_type": {
+      "type": "string",
+      "allowed_values": ["league", "cup", "tournament", "international", "domestic", "friendly", "other"],
+      "example": "league"
+    },
+    "category": {
+      "type": "string|null",
+      "allowed_values": ["초등", "중등", "고등", "대학", "실업", "프로", "국가대표", "국제", "unknown", null],
+      "example": "대학"
+    },
+    "gender": {
+      "type": "string|null",
+      "allowed_values": ["M", "F", "mixed", "unknown", null],
+      "example": "M"
+    },
+    "host_country_id": {
+      "type": "string|null",
+      "example": "KVL-CTY-KOR"
+    },
+    "host_city": {
+      "type": "string|null",
+      "example": null
+    },
+    "start_date": {
+      "type": "string|null",
+      "format": "YYYY-MM-DD",
+      "example": "2026-03-13"
+    },
+    "end_date": {
+      "type": "string|null",
+      "format": "YYYY-MM-DD",
+      "example": "2026-03-19"
+    },
+    "organizer": {
+      "type": "string|null",
+      "example": "대한배구협회"
+    },
+    "source_ids": {
+      "type": "array<string>",
+      "example": ["KVL-SRC-00001"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "YYYY-MM-DD",
+      "example": "2026-06-26"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "YYYY-MM-DD",
+      "example": "2026-06-26"
+    }
+  }
+}
