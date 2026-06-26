@@ -1,0 +1,38 @@
+[
+  {
+    "source_id": "KVL-SRC-00001",
+    "source_type": "pamphlet",
+    "title": "2026 대학리그 샘플 팜플렛",
+    "publisher": "sample",
+    "year": 2026,
+    "url": null,
+    "file_path": null,
+    "note": "샘플 출처입니다. 실제 데이터 입력 시 공식 팜플렛 또는 공개 자료 출처를 연결합니다.",
+    "created_at": "2026-06-26",
+    "updated_at": "2026-06-26"
+  },
+  {
+    "source_id": "KVL-SRC-00002",
+    "source_type": "official_profile",
+    "title": "Volleyball World VNL Player Profile Sample",
+    "publisher": "Volleyball World",
+    "year": 2026,
+    "url": "https://en.volleyballworld.com/",
+    "file_path": null,
+    "note": "기존 VNL 선수 데이터 구조를 player master에 연결하기 위한 샘플 출처입니다.",
+    "created_at": "2026-06-26",
+    "updated_at": "2026-06-26"
+  },
+  {
+    "source_id": "KVL-SRC-00003",
+    "source_type": "external_database",
+    "title": "Volleybox Player Profile Sample",
+    "publisher": "Volleybox",
+    "year": 2026,
+    "url": "https://volleybox.net/",
+    "file_path": null,
+    "note": "Volleybox 프로필 링크 연결용 샘플 출처입니다.",
+    "created_at": "2026-06-26",
+    "updated_at": "2026-06-26"
+  }
+]
