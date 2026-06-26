@@ -1,0 +1,276 @@
+{
+  "schema_id": "KVL-SCHEMA-PLAYER-MASTER-v1",
+  "schema_name": "K-Volley Lab Player Master Schema",
+  "version": "1.0.0",
+  "status": "draft",
+  "description": "K-Volley Lab에서 국내 선수와 국제 선수를 하나의 선수 마스터 체계로 관리하기 위한 v1 초안 스키마입니다.",
+  "id_policy": {
+    "primary_id_format": "KVL-P-00001",
+    "prefix": "KVL-P",
+    "rule": "한 선수는 하나의 KVL player_id를 가진다. 팀, 학교, 대회, 국가대표 이력이 바뀌어도 같은 ID를 유지한다.",
+    "examples": [
+      "KVL-P-00001",
+      "KVL-P-00002"
+    ]
+  },
+  "privacy_policy": {
+    "allowed": [
+      "public_name",
+      "public_team",
+      "public_school",
+      "public_position",
+      "public_height",
+      "public_birth_year_or_date",
+      "public_competition_history",
+      "public_awards",
+      "public_media_links"
+    ],
+    "not_allowed": [
+      "resident_registration_number",
+      "private_phone_number",
+      "private_address",
+      "private_family_information",
+      "unverified_medical_detail",
+      "private_personal_information"
+    ]
+  },
+  "required_fields": [
+    "player_id",
+    "name_ko",
+    "position",
+    "source_ids",
+    "created_at",
+    "updated_at"
+  ],
+  "fields": {
+    "basic_info": {
+      "player_id": {
+        "type": "string",
+        "required": true,
+        "example": "KVL-P-00001",
+        "description": "K-Volley Lab 선수 공용 ID"
+      },
+      "name_ko": {
+        "type": "string",
+        "required": true,
+        "example": "김민준",
+        "description": "선수 한글명"
+      },
+      "name_en": {
+        "type": "string|null",
+        "required": false,
+        "example": "Kim Minjun",
+        "description": "선수 영문명"
+      },
+      "name_native": {
+        "type": "string|null",
+        "required": false,
+        "example": null,
+        "description": "현지어 이름 또는 원어명"
+      },
+      "aliases": {
+        "type": "array<string>",
+        "required": false,
+        "example": ["K. Minjun", "Kim M.J."],
+        "description": "이름 표기 변형"
+      },
+      "gender": {
+        "type": "string",
+        "required": false,
+        "allowed_values": ["M", "F", "unknown"],
+        "example": "M"
+      },
+      "nationality": {
+        "type": "string|null",
+        "required": false,
+        "example": "KOR"
+      },
+      "country_name_ko": {
+        "type": "string|null",
+        "required": false,
+        "example": "대한민국"
+      }
+    },
+    "physical_info": {
+      "birth_date": {
+        "type": "string|null",
+        "format": "YYYY-MM-DD",
+        "required": false,
+        "example": "2006-01-15"
+      },
+      "birth_year": {
+        "type": "number|null",
+        "required": false,
+        "example": 2006
+      },
+      "height_cm": {
+        "type": "number|null",
+        "required": false,
+        "example": 190
+      },
+      "weight_kg": {
+        "type": "number|null",
+        "required": false,
+        "example": null
+      },
+      "dominant_hand": {
+        "type": "string|null",
+        "required": false,
+        "allowed_values": ["right", "left", "both", "unknown", null],
+        "example": "right"
+      }
+    },
+    "volleyball_info": {
+      "position": {
+        "type": "string",
+        "required": true,
+        "allowed_values": ["S", "OH", "OP", "MB", "L", "O", "U", "unknown"],
+        "example": "OH"
+      },
+      "sub_position": {
+        "type": "string|null",
+        "required": false,
+        "allowed_values": ["S", "OH", "OP", "MB", "L", "O", "U", "unknown", null],
+        "example": "OP"
+      },
+      "current_team_id": {
+        "type": "string|null",
+        "required": false,
+        "example": "KVL-T-00001"
+      },
+      "current_team_name": {
+        "type": "string|null",
+        "required": false,
+        "example": "인하대학교"
+      },
+      "current_level": {
+        "type": "string|null",
+        "required": false,
+        "allowed_values": ["초등", "중등", "고등", "대학", "실업", "프로", "국가대표", "해외", "unknown", null],
+        "example": "대학"
+      },
+      "jersey_number": {
+        "type": "number|string|null",
+        "required": false,
+        "example": 12
+      }
+    },
+    "history": {
+      "school_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "학교 이력"
+      },
+      "team_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "팀 소속 이력"
+      },
+      "position_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "포지션 변경 이력"
+      },
+      "height_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "공개 자료 기반 키 변화 이력"
+      },
+      "competition_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "대회 출전 이력"
+      },
+      "national_team_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "국가대표 또는 연령별 대표 이력"
+      },
+      "award_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "수상 이력"
+      },
+      "injury_history": {
+        "type": "array<object>",
+        "required": false,
+        "description": "공식 공개된 부상 이력만 기록"
+      }
+    },
+    "media_and_links": {
+      "profile_image_url": {
+        "type": "string|null",
+        "required": false,
+        "example": null
+      },
+      "volleybox_url": {
+        "type": "string|null",
+        "required": false,
+        "example": "https://volleybox.net/example-player-p00000"
+      },
+      "vnl_profile_url": {
+        "type": "string|null",
+        "required": false,
+        "example": null
+      },
+      "official_profile_urls": {
+        "type": "array<string>",
+        "required": false,
+        "example": []
+      },
+      "video_urls": {
+        "type": "array<string>",
+        "required": false,
+        "example": []
+      }
+    },
+    "source_info": {
+      "source_ids": {
+        "type": "array<string>",
+        "required": true,
+        "example": ["KVL-SRC-00001"],
+        "description": "source_master.json과 연결되는 출처 ID"
+      },
+      "verification_status": {
+        "type": "string",
+        "required": false,
+        "allowed_values": ["confirmed", "partial", "unverified", "needs_review"],
+        "example": "partial"
+      },
+      "notes": {
+        "type": "string|null",
+        "required": false,
+        "example": "공개 팜플렛 기준 입력"
+      }
+    },
+    "system_info": {
+      "created_at": {
+        "type": "string",
+        "format": "YYYY-MM-DD",
+        "required": true,
+        "example": "2026-06-26"
+      },
+      "updated_at": {
+        "type": "string",
+        "format": "YYYY-MM-DD",
+        "required": true,
+        "example": "2026-06-26"
+      },
+      "created_by": {
+        "type": "string|null",
+        "required": false,
+        "example": "K-Volley Lab"
+      },
+      "data_version": {
+        "type": "string",
+        "required": false,
+        "example": "v1"
+      },
+      "is_active": {
+        "type": "boolean",
+        "required": false,
+        "example": true
+      }
+    }
+  }
+}
