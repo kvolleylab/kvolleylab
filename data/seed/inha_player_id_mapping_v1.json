@@ -1,0 +1,25 @@
+{
+  "mapping_version": "v1",
+  "status": "review",
+  "source_seed": "data/player_master_seed_domestic_univ_inha_2026_v1.json",
+  "master_target": "data/master/player_master.json",
+  "rule": "Permanent IDs become official only after this mapping is reviewed and merged.",
+  "players": [
+    {"draft_player_id":"KVL-P-DRAFT-INHA-001","proposed_player_id":"KVL-P-000001","display_code":"SJS-040624","name_ko":"선주성","birth_date":"2004-06-24","position":"L","height_cm":177,"weight_kg":72},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-002","proposed_player_id":"KVL-P-000002","display_code":"NYY-030521","name_ko":"남윤우","birth_date":"2003-05-21","position":"MB","height_cm":192,"weight_kg":87},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-003","proposed_player_id":"KVL-P-000003","display_code":"KDH-040401","name_ko":"김도현","birth_date":"2004-04-01","position":"MB","height_cm":192,"weight_kg":84},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-004","proposed_player_id":"KVL-P-000004","display_code":"LDY-040304","name_ko":"이동윤","birth_date":"2004-03-04","position":"MB","height_cm":195,"weight_kg":83},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-005","proposed_player_id":"KVL-P-000005","display_code":"LHS-050202","name_ko":"이한샘","birth_date":"2005-02-02","position":"S","height_cm":183,"weight_kg":78},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-006","proposed_player_id":"KVL-P-000006","display_code":"LJJ-050608","name_ko":"이종재","birth_date":"2005-06-08","position":"OP","sub_position":"OH","height_cm":187,"weight_kg":83},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-007","proposed_player_id":"KVL-P-000007","display_code":"KBY-040302","name_ko":"강범윤","birth_date":"2004-03-02","position":"OH","height_cm":192,"weight_kg":87},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-008","proposed_player_id":"KVL-P-000008","display_code":"YG-060830","name_ko":"윤겸","birth_date":"2006-08-30","position":"OH","height_cm":195,"weight_kg":86},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-009","proposed_player_id":"KVL-P-000009","display_code":"LGY-060311","name_ko":"이관우","birth_date":"2006-03-11","position":"L","height_cm":178,"weight_kg":74},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-010","proposed_player_id":"KVL-P-000010","display_code":"PGB-050105","name_ko":"박건빈","birth_date":"2005-01-05","position":"S","height_cm":183,"weight_kg":74},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-011","proposed_player_id":"KVL-P-000011","display_code":"LYG-060517","name_ko":"임인규","birth_date":"2006-05-17","position":"MB","height_cm":193,"weight_kg":82},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-012","proposed_player_id":"KVL-P-000012","display_code":"KJH-060124","name_ko":"김정환","birth_date":"2006-01-24","position":"OH","height_cm":181,"weight_kg":71},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-013","proposed_player_id":"KVL-P-000013","display_code":"CYH-070211","name_ko":"최유현","birth_date":"2007-02-11","position":"S","height_cm":192,"weight_kg":81},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-014","proposed_player_id":"KVL-P-000014","display_code":"CYY-070107","name_ko":"조영운","birth_date":"2007-01-07","position":"MB","height_cm":199,"weight_kg":90},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-015","proposed_player_id":"KVL-P-000015","display_code":"PSY-070606","name_ko":"박신우","birth_date":"2007-06-06","position":"OP","sub_position":"OH","height_cm":189,"weight_kg":80},
+    {"draft_player_id":"KVL-P-DRAFT-INHA-016","proposed_player_id":"KVL-P-000016","display_code":"PGY-070213-01","name_ko":"박건우","birth_date":"2007-02-13","position":"OH","height_cm":183,"weight_kg":73}
+  ]
+}
