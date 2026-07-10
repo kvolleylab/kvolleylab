@@ -10,68 +10,47 @@
 <header>
   <div class="logo">K-Volley Lab</div>
   <nav>
-    <a href="../index.html">Home</a>
-    <a href="../vnl.html">VNL</a>
-    <a href="../players.html">Players</a>
-    <a href="../schedules.html">Schedules</a>
-    <a class="active" href="index.html">국내 선수 DB</a>
+    <a href="../index.html">Home</a><a href="../vnl.html">VNL</a><a href="../players.html">Players</a><a href="../schedules.html">Schedules</a><a class="active" href="index.html">국내 선수 DB</a>
   </nav>
 </header>
-<section class="hero">
-  <h1 id="name">선수 프로필</h1>
-  <p id="summary">선수 데이터를 불러오는 중입니다.</p>
-</section>
+<section class="hero"><h1 id="name">선수 프로필</h1><p id="summary">선수 데이터를 불러오는 중입니다.</p></section>
 <main class="container">
   <p><a class="btn ghost" href="search.html">← 국내 선수 검색으로</a></p>
   <section class="grid">
     <article class="card"><h3>기본 정보</h3><table class="table"><tbody id="identityTable"></tbody></table></article>
-    <article class="card"><h3>소속 및 포지션</h3><table class="table"><tbody id="classificationTable"></tbody></table></article>
+    <article class="card"><h3>현재 소속</h3><table class="table"><tbody id="rosterTable"></tbody></table></article>
     <article class="card"><h3>신체 정보</h3><table class="table"><tbody id="physicalTable"></tbody></table></article>
-    <article class="card"><h3>데이터 관리</h3><table class="table"><tbody id="systemTable"></tbody></table></article>
+    <article class="card"><h3>데이터 정보</h3><table class="table"><tbody id="systemTable"></tbody></table></article>
   </section>
-  <section style="margin-top:26px" class="card">
-    <h3>출처 및 상태</h3>
-    <p id="sourceNote"></p>
-    <p class="muted">현재 인하대학교 seed 데이터는 실제 명단 기반 검토용입니다. 정식 player_id 확정 전까지 DRAFT ID를 유지합니다.</p>
+  <section style="margin-top:26px" class="card"><h3>출처</h3><p id="sourceNote"></p></section>
+  <section style="margin-top:26px" class="grid">
+    <article class="card"><h3>선수 타임라인</h3><p class="muted">데이터가 등록되면 자동으로 표시됩니다.</p></article>
+    <article class="card"><h3>대표팀 경력</h3><p class="muted">데이터가 등록되면 자동으로 표시됩니다.</p></article>
+    <article class="card"><h3>대회 참가 이력</h3><p class="muted">데이터가 등록되면 자동으로 표시됩니다.</p></article>
   </section>
 </main>
 <footer>© 2026 K-Volley Lab.</footer>
 <script>
-const requestedId=new URLSearchParams(location.search).get("id")||"KVL-P-DRAFT-INHA-001";
+const requestedId=new URLSearchParams(location.search).get("id")||"KVL-P-000001";
 const safe=v=>(v===undefined||v===null||v==="")?"-":v;
 const rows=data=>data.map(([k,v])=>`<tr><th>${k}</th><td>${safe(v)}</td></tr>`).join("");
 async function load(){
   try{
-    const players=await fetch("../data/player_master_seed_domestic_univ_inha_2026_v1.json?v=1").then(r=>{
-      if(!r.ok) throw new Error(`HTTP ${r.status}`);
-      return r.json();
-    });
-    const p=players.find(x=>x.system?.player_id===requestedId);
-    if(!p) throw new Error("선수 정보를 찾을 수 없습니다.");
-    const s=p.system||{}, i=p.identity||{}, c=p.classification||{}, ph=p.physical||{};
-    document.title=`${i.name_ko||"선수"} | K-Volley Lab`;
-    document.getElementById("name").textContent=i.name_ko||"선수 프로필";
-    document.getElementById("summary").textContent=[i.name_en,s.player_id,s.display_code].filter(Boolean).join(" · ");
-    document.getElementById("identityTable").innerHTML=rows([
-      ["선수명",i.name_ko],["영문명",i.name_en],["생년월일",i.birth_date],["국적",i.nationality],["성별",i.gender],["주사용 손",i.hand]
+    const [master,roster]=await Promise.all([
+      fetch("../data/master/player_master.json?v=2").then(r=>{if(!r.ok)throw new Error(`Master HTTP ${r.status}`);return r.json()}),
+      fetch("../data/domestic/inha_roster_2026.json?v=1").then(r=>{if(!r.ok)throw new Error(`Roster HTTP ${r.status}`);return r.json()})
     ]);
-    document.getElementById("classificationTable").innerHTML=rows([
-      ["구분",c.category],["현재 단계",c.current_level],["현재 소속",c.current_team_name],["팀 ID",c.current_team_id],["주 포지션",c.primary_position],["부 포지션",c.sub_position]
-    ]);
-    document.getElementById("physicalTable").innerHTML=rows([
-      ["키",ph.height_cm?`${ph.height_cm}cm`:""],["체중",ph.weight_kg?`${ph.weight_kg}kg`:""],["스파이크 높이",ph.spike_cm?`${ph.spike_cm}cm`:""],["블록 높이",ph.block_cm?`${ph.block_cm}cm`:""]
-    ]);
-    document.getElementById("systemTable").innerHTML=rows([
-      ["player_id",s.player_id],["display_code",s.display_code],["ID 상태",s.id_status],["검수 상태",s.data_confidence],["상태",s.status],["업데이트",s.updated_at]
-    ]);
-    document.getElementById("sourceNote").innerHTML=`Source ID: <b>${safe((p.source_ids||[]).join(", "))}</b>`;
-  }catch(error){
-    document.getElementById("name").textContent="선수 정보 오류";
-    document.getElementById("summary").textContent=error.message;
-    document.querySelector("main").innerHTML=`<article class="card"><h3>데이터를 불러오지 못했습니다.</h3><p>${error.message}</p><a class="btn" href="search.html">검색으로 돌아가기</a></article>`;
-  }
+    const p=master.find(x=>x.system?.player_id===requestedId),r=roster.find(x=>x.player_id===requestedId);
+    if(!p||!r)throw new Error("선수 정보를 찾을 수 없습니다.");
+    const s=p.system||{},i=p.identity||{},ph=p.physical||{};
+    document.title=`${i.name_ko||"선수"} | K-Volley Lab`;document.getElementById("name").textContent=i.name_ko||"선수 프로필";document.getElementById("summary").textContent=[s.player_id,s.display_code,r.team_name].filter(Boolean).join(" · ");
+    document.getElementById("identityTable").innerHTML=rows([["선수명",i.name_ko],["영문명",i.name_en],["생년월일",i.birth_date],["국적",i.nationality],["성별",i.gender],["주사용 손",i.hand]]);
+    document.getElementById("rosterTable").innerHTML=rows([["시즌",r.season],["단계",r.level],["학교",r.school_name],["현재 소속",r.team_name],["주 포지션",r.primary_position],["부 포지션",r.sub_position]]);
+    document.getElementById("physicalTable").innerHTML=rows([["키",ph.height_cm?`${ph.height_cm}cm`:""],["체중",ph.weight_kg?`${ph.weight_kg}kg`:""],["스파이크 높이",ph.spike_cm?`${ph.spike_cm}cm`:""],["블록 높이",ph.block_cm?`${ph.block_cm}cm`:""]]);
+    document.getElementById("systemTable").innerHTML=rows([["player_id",s.player_id],["display_code",s.display_code],["ID 상태",s.id_status],["검수 상태",s.data_confidence],["상태",s.status],["업데이트",s.updated_at]]);
+    document.getElementById("sourceNote").innerHTML=`Source ID: <b>${safe([...(p.source_ids||[]),...(r.source_ids||[])].filter((v,i,a)=>a.indexOf(v)===i).join(", "))}</b>`;
+  }catch(error){document.getElementById("name").textContent="선수 정보 오류";document.getElementById("summary").textContent=error.message;document.querySelector("main").innerHTML=`<article class="card"><h3>데이터를 불러오지 못했습니다.</h3><p>${error.message}</p><a class="btn" href="search.html">검색으로 돌아가기</a></article>`;}
 }
 load();
 </script>
-</body>
-</html>
+</body></html>
