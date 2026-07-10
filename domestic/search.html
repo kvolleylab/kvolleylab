@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../assets/css/domestic.css">
 </head>
 <body>
-
 <header>
   <div class="logo">K-Volley Lab</div>
   <nav>
@@ -18,52 +17,74 @@
     <a class="active" href="index.html">국내 선수 DB</a>
   </nav>
 </header>
-
 <section class="hero">
   <h1>국내 선수 검색</h1>
-  <p>player_master.json과 domestic_players.json을 연결해 국내 선수의 현재 정보와 고유 코드를 검색합니다.</p>
+  <p>2026 대학배구 인하대학교 선수 16명을 실제 seed 데이터로 연결한 국내 선수 DB v1입니다.</p>
 </section>
 <main class="container">
   <div class="searchbar">
     <input id="q" placeholder="선수명, 코드, 학교, 포지션 검색">
-    <select id="level"><option value="">전체 단계</option><option>초등</option><option>중등</option><option>고등</option><option>대학</option><option>실업</option><option>프로</option></select>
+    <select id="level"><option value="">전체 단계</option><option>대학</option></select>
     <select id="pos"><option value="">전체 포지션</option><option>OH</option><option>OP</option><option>MB</option><option>S</option><option>L</option></select>
   </div>
+  <p class="muted">현재 데이터 상태: 검토용 seed · 정식 player_id 부여 전</p>
   <p id="count" class="muted"></p>
   <section id="list" class="grid"></section>
 </main>
 <footer>© 2026 K-Volley Lab.</footer>
 <script>
-let master=[], domestic=[];
-async function load(){
-  [master, domestic] = await Promise.all([
-    fetch("../data/player_master.json?v=1").then(r=>r.json()),
-    fetch("../data/domestic_players.json?v=1").then(r=>r.json())
-  ]);
-  render();
+let players=[];
+const safe=v=>(v===undefined||v===null||v==="")?"-":v;
+function normalize(p){
+  return {
+    player_id:p.system?.player_id||"",
+    display_code:p.system?.display_code||"",
+    id_status:p.system?.id_status||"",
+    data_confidence:p.system?.data_confidence||"",
+    name_ko:p.identity?.name_ko||"",
+    name_en:p.identity?.name_en||"",
+    birth_date:p.identity?.birth_date||"",
+    nationality:p.identity?.nationality||"",
+    current_level:p.classification?.current_level||"",
+    current_team:p.classification?.current_team_name||"",
+    primary_position:p.classification?.primary_position||"",
+    sub_position:p.classification?.sub_position||"",
+    height_cm:p.physical?.height_cm||"",
+    weight_kg:p.physical?.weight_kg||""
+  };
 }
-function merged(){
-  const dmap = new Map(domestic.map(d=>[d.player_id,d]));
-  return master.map(p=>({...p,...(dmap.get(p.player_id)||{})}));
+async function load(){
+  try{
+    const raw=await fetch("../data/player_master_seed_domestic_univ_inha_2026_v1.json?v=1").then(r=>{
+      if(!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    });
+    players=raw.map(normalize);
+    render();
+  }catch(error){
+    document.getElementById("count").textContent="데이터를 불러오지 못했습니다.";
+    document.getElementById("list").innerHTML=`<article class="card"><h3>불러오기 오류</h3><p>${error.message}</p></article>`;
+  }
 }
 function render(){
   const q=document.getElementById("q").value.trim().toLowerCase();
   const level=document.getElementById("level").value;
   const pos=document.getElementById("pos").value;
-  const arr=merged().filter(p=>{
-    const text=[p.player_id,p.display_code,p.name_ko,p.name_en,p.current_team,p.current_school,p.primary_position,p.current_position].join(" ").toLowerCase();
-    return (!q||text.includes(q)) && (!level||p.current_level===level) && (!pos||p.primary_position===pos||p.current_position===pos);
+  const arr=players.filter(p=>{
+    const text=[p.player_id,p.display_code,p.name_ko,p.name_en,p.current_team,p.primary_position,p.sub_position].join(" ").toLowerCase();
+    const positionMatch=!pos||p.primary_position===pos||p.sub_position===pos;
+    return (!q||text.includes(q))&&(!level||p.current_level===level)&&positionMatch;
   });
-  document.getElementById("count").textContent=`검색 결과 ${arr.length}명 / 전체 ${master.length}명`;
+  document.getElementById("count").textContent=`검색 결과 ${arr.length}명 / 전체 ${players.length}명`;
   document.getElementById("list").innerHTML=arr.map(p=>`
     <article class="card">
-      <h3>${p.name_ko} <span class="muted">${p.name_en||""}</span></h3>
-      <p><span class="badge">${p.player_id}</span><span class="badge">${p.display_code||"display_code 검토중"}</span></p>
-      <p>현재: ${p.current_team||"-"}<br>단계: ${p.current_level||"-"}<br>포지션: ${p.current_position||p.primary_position||"-"} · 키: ${p.height_cm||"-"}cm</p>
-      <a class="btn" href="profile.html?id=${p.player_id}">프로필 보기</a>
-      <a class="btn ghost" href="timeline.html?id=${p.player_id}">타임라인</a>
+      <h3>${safe(p.name_ko)} <span class="muted">${p.name_en||""}</span></h3>
+      <p><span class="badge">${safe(p.player_id)}</span><span class="badge">${safe(p.display_code)}</span></p>
+      <p>소속: ${safe(p.current_team)}<br>단계: ${safe(p.current_level)}<br>포지션: ${safe(p.primary_position)}${p.sub_position?` / ${p.sub_position}`:""} · 키: ${safe(p.height_cm)}cm</p>
+      <p class="muted">ID 상태: ${safe(p.id_status)} · 검수 상태: ${safe(p.data_confidence)}</p>
+      <a class="btn" href="profile.html?id=${encodeURIComponent(p.player_id)}">프로필 보기</a>
     </article>
-  `).join("") || "<p>검색 결과가 없습니다.</p>";
+  `).join("")||"<p>검색 결과가 없습니다.</p>";
 }
 ["q","level","pos"].forEach(id=>document.getElementById(id).addEventListener("input",render));
 ["level","pos"].forEach(id=>document.getElementById(id).addEventListener("change",render));
