@@ -1,126 +1,99 @@
 # K-Volley Lab Roadmap
 
-이 문서는 K-Volley Lab의 단계별 개발 로드맵을 정리한다.
+문서 상태: Active  
+최종 갱신: 2026-07-10
 
-## Phase 1. 구조 안정화
+## Phase 1. Website & VNL Foundation
 
-목표:
+상태: 운영 중
 
-- 저장소 구조 정리
-- 공통 디자인 기준 생성
-- 데이터 표준 문서 작성
-- 기존 페이지 메뉴 통일
+- 메인 홈페이지
+- VNL 국가별 진입 페이지
+- VNL 선수 검색
+- 선수 상세 페이지
+- VNL/AVC 일정 달력
+- GitHub Pages 배포
 
-작업:
+## Phase 2. Domestic Player Database
 
-```text
-공통 CSS 생성
-상단 메뉴 통일
-README 수정
-docs 기준 문서 생성
-data 폴더 구조 설계
-```
+상태: 진행 중
 
-## Phase 2. 데이터 구조 시작
+- 국내 선수 DB 폴더 분리
+- 국내 선수 검색/프로필/타임라인
+- 대학·중·고 선수 명단 Seed 검증
+- 팜플렛 기반 출처 연결
+- 동명이인 및 선수 코드 검수
 
-목표:
+## Phase 3. Master Data & ID System
 
-- 선수 마스터 구조 생성
-- 국내 선수 샘플 데이터 생성
-- 출처 마스터 생성
-- VNL 선수 데이터 분리
+상태: 진행 중
 
-작업:
+- Player Master
+- Country Master
+- School Master
+- Team Master
+- Competition Master
+- Match Master
+- Source Master
 
-```text
-data/master/player_master.json
-data/master/source_master.json
-data/schema/player_master_schema_v1.json
-data/sample/player_master_sample.json
-data/domestic/domestic_players.json
-```
-
-## Phase 3. Players 기능 정리
-
-목표:
-
-- Players 메뉴를 선수 검색 허브로 정리
-- 국내 선수 검색과 국제 선수 검색을 구분
-- 선수 상세 페이지 구조 확장
-
-권장 구조:
+ID는 변경하지 않는 내부 고유번호를 사용합니다.
 
 ```text
-Players
-├─ 국내 선수 검색
-├─ 국제 선수 검색
-├─ 선수 상세
-└─ 성장 타임라인
+KVL-P-000001
+KVL-S-000001
+KVL-T-000001
+KVL-CTY-000001
+KVL-COMP-000001
+KVL-M-000001
+KVL-SRC-000001
 ```
 
-## Phase 4. Competition 기능 정리
+## Phase 4. Archive & Tournament Data
 
-목표:
+상태: 예정
 
-- VNL, AVC, KOVO, 대학대회 등 대회별 데이터 구조 정리
-- 대회별 선수 명단과 일정 연결
+- 팜플렛 아카이브
+- 대회별 로스터
+- 대회 참가 이력
+- 수상 이력
+- 국가대표 이력
+- 학교/팀별 페이지
 
-권장 구조:
+## Phase 5. Excel → JSON Automation
 
-```text
-Competition
-├─ VNL
-├─ AVC
-├─ KOVO
-├─ 대학리그
-└─ 국내대회
-```
+상태: 예정
 
-## Phase 5. Schedules 기능 확장
+- Excel을 원본 데이터로 사용
+- 스키마 검수 자동화
+- 중복 선수 후보 탐지
+- JSON 자동 생성
+- GitHub 반영 전 검증 보고서
 
-목표:
+## Phase 6. Statistics & Scouting Tools
 
-- 대회 일정 JSON 분리
-- 경기 결과 업데이트 구조 추가
-- 한국시간 기준 고정
-- 대회별 비교 기능 강화
+상태: 예정
 
-## Phase 6. Pamphlets Archive
+- 경기 기록 DB
+- 선수/팀 기록 비교
+- 로테이션 및 매치업 도구
+- 본선 진출 경우의 수 계산기
+- 스카우팅 리포트
 
-목표:
+## Phase 7. Platform Expansion
 
-- 공개 팜플렛 아카이브 구축
-- 대회별, 연도별, 부문별 검색
-- 선수 데이터의 출처로 연결
+상태: 장기
 
-## Phase 7. Simulator
+- Supabase/PostgreSQL 전환
+- API 제공
+- 영상/기사 연결
+- AI 검색 및 요약
+- OCR 기반 팜플렛 입력 보조
+- 모바일 환경 고도화
 
-목표:
+## 운영 원칙
 
-- 조별리그 본선 진출 계산기
-- 세트득실, 점수득실, 승패 조건 계산
-- 대회별 시뮬레이터 확장
-
-## Phase 8. Records / Media / News
-
-목표:
-
-- 선수 기록과 영상, 뉴스 데이터 연결
-- 전력분석관 관점의 데이터 활용 가능 구조 구축
-
-## 장기 목표
-
-K-Volley Lab은 단순 정보 페이지가 아니라, 한국 배구 데이터 인프라를 목표로 한다.
-
-최종 방향:
-
-```text
-선수 DB
-팀 DB
-학교 DB
-대회 DB
-경기 DB
-팜플렛 아카이브
-뉴스/영상 연결
-전력분석 도구
-```
+- 기존 운영 기능을 먼저 보호합니다.
+- 신규 기능은 작은 Seed 범위에서 검증합니다.
+- 데이터는 출처와 함께 저장합니다.
+- 큰 변경은 feature 브랜치와 Pull Request를 사용합니다.
+- Stable Release를 복구 기준으로 유지합니다.
