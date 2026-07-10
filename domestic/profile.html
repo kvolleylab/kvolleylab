@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../assets/css/domestic.css">
 </head>
 <body>
-
 <header>
   <div class="logo">K-Volley Lab</div>
   <nav>
@@ -18,44 +17,59 @@
     <a class="active" href="index.html">국내 선수 DB</a>
   </nav>
 </header>
-
 <section class="hero">
   <h1 id="name">선수 프로필</h1>
   <p id="summary">선수 데이터를 불러오는 중입니다.</p>
 </section>
 <main class="container">
+  <p><a class="btn ghost" href="search.html">← 국내 선수 검색으로</a></p>
   <section class="grid">
-    <article class="card"><h3>마스터 정보</h3><table class="table"><tbody id="masterTable"></tbody></table></article>
-    <article class="card"><h3>현재 국내 정보</h3><table class="table"><tbody id="domesticTable"></tbody></table></article>
+    <article class="card"><h3>기본 정보</h3><table class="table"><tbody id="identityTable"></tbody></table></article>
+    <article class="card"><h3>소속 및 포지션</h3><table class="table"><tbody id="classificationTable"></tbody></table></article>
+    <article class="card"><h3>신체 정보</h3><table class="table"><tbody id="physicalTable"></tbody></table></article>
+    <article class="card"><h3>데이터 관리</h3><table class="table"><tbody id="systemTable"></tbody></table></article>
   </section>
   <section style="margin-top:26px" class="card">
-    <h3>코드 설명</h3>
-    <p id="codeNote"></p>
-    <a id="timelineLink" class="btn" href="#">성장 타임라인 보기</a>
+    <h3>출처 및 상태</h3>
+    <p id="sourceNote"></p>
+    <p class="muted">현재 인하대학교 seed 데이터는 실제 명단 기반 검토용입니다. 정식 player_id 확정 전까지 DRAFT ID를 유지합니다.</p>
   </section>
 </main>
 <footer>© 2026 K-Volley Lab.</footer>
 <script>
-const id=new URLSearchParams(location.search).get("id")||"KVL-P-000001";
+const requestedId=new URLSearchParams(location.search).get("id")||"KVL-P-DRAFT-INHA-001";
 const safe=v=>(v===undefined||v===null||v==="")?"-":v;
+const rows=data=>data.map(([k,v])=>`<tr><th>${k}</th><td>${safe(v)}</td></tr>`).join("");
 async function load(){
-  const [master,domestic]=await Promise.all([
-    fetch("../data/player_master.json?v=1").then(r=>r.json()),
-    fetch("../data/domestic_players.json?v=1").then(r=>r.json())
-  ]);
-  const p=master.find(x=>x.player_id===id)||master[0];
-  const d=domestic.find(x=>x.player_id===p.player_id)||{};
-  document.getElementById("name").textContent=p.name_ko;
-  document.getElementById("summary").textContent=`${p.name_en} · ${p.player_id} · ${p.display_code}`;
-  document.getElementById("masterTable").innerHTML=[
-    ["player_id",p.player_id],["display_code",p.display_code],["이름",p.name_ko],["영문명",p.name_en],["생년월일",p.birth_date],
-    ["국적",p.nationality],["주 포지션",p.primary_position],["키",`${p.height_cm}cm`]
-  ].map(([k,v])=>`<tr><th>${k}</th><td>${safe(v)}</td></tr>`).join("");
-  document.getElementById("domesticTable").innerHTML=[
-    ["현재 단계",d.current_level],["현재 소속",d.current_team],["현재 학교",d.current_school],["현재 포지션",d.current_position],["출처", (d.source_ids||[]).join(", ")]
-  ].map(([k,v])=>`<tr><th>${k}</th><td>${safe(v)}</td></tr>`).join("");
-  document.getElementById("codeNote").innerHTML=`<b>${p.player_id}</b>는 내부 고유 ID입니다. <b>${p.display_code}</b>는 사람이 보기 쉽게 만든 표시 코드 후보입니다. 최종 기준은 아직 검토 중입니다.`;
-  document.getElementById("timelineLink").href=`timeline.html?id=${p.player_id}`;
+  try{
+    const players=await fetch("../data/player_master_seed_domestic_univ_inha_2026_v1.json?v=1").then(r=>{
+      if(!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    });
+    const p=players.find(x=>x.system?.player_id===requestedId);
+    if(!p) throw new Error("선수 정보를 찾을 수 없습니다.");
+    const s=p.system||{}, i=p.identity||{}, c=p.classification||{}, ph=p.physical||{};
+    document.title=`${i.name_ko||"선수"} | K-Volley Lab`;
+    document.getElementById("name").textContent=i.name_ko||"선수 프로필";
+    document.getElementById("summary").textContent=[i.name_en,s.player_id,s.display_code].filter(Boolean).join(" · ");
+    document.getElementById("identityTable").innerHTML=rows([
+      ["선수명",i.name_ko],["영문명",i.name_en],["생년월일",i.birth_date],["국적",i.nationality],["성별",i.gender],["주사용 손",i.hand]
+    ]);
+    document.getElementById("classificationTable").innerHTML=rows([
+      ["구분",c.category],["현재 단계",c.current_level],["현재 소속",c.current_team_name],["팀 ID",c.current_team_id],["주 포지션",c.primary_position],["부 포지션",c.sub_position]
+    ]);
+    document.getElementById("physicalTable").innerHTML=rows([
+      ["키",ph.height_cm?`${ph.height_cm}cm`:""],["체중",ph.weight_kg?`${ph.weight_kg}kg`:""],["스파이크 높이",ph.spike_cm?`${ph.spike_cm}cm`:""],["블록 높이",ph.block_cm?`${ph.block_cm}cm`:""]
+    ]);
+    document.getElementById("systemTable").innerHTML=rows([
+      ["player_id",s.player_id],["display_code",s.display_code],["ID 상태",s.id_status],["검수 상태",s.data_confidence],["상태",s.status],["업데이트",s.updated_at]
+    ]);
+    document.getElementById("sourceNote").innerHTML=`Source ID: <b>${safe((p.source_ids||[]).join(", "))}</b>`;
+  }catch(error){
+    document.getElementById("name").textContent="선수 정보 오류";
+    document.getElementById("summary").textContent=error.message;
+    document.querySelector("main").innerHTML=`<article class="card"><h3>데이터를 불러오지 못했습니다.</h3><p>${error.message}</p><a class="btn" href="search.html">검색으로 돌아가기</a></article>`;
+  }
 }
 load();
 </script>
