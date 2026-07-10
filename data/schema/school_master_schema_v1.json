@@ -59,12 +59,30 @@
     ]
   },
   "school_type_standard": [
-    {"value": "Elementary", "ko": "초등학교"},
-    {"value": "Middle", "ko": "중학교"},
-    {"value": "High", "ko": "고등학교"},
-    {"value": "University", "ko": "대학교"},
-    {"value": "Academy", "ko": "스포츠 아카데미"},
-    {"value": "Other", "ko": "기타"}
+    {
+      "value": "Elementary",
+      "ko": "초등학교"
+    },
+    {
+      "value": "Middle",
+      "ko": "중학교"
+    },
+    {
+      "value": "High",
+      "ko": "고등학교"
+    },
+    {
+      "value": "University",
+      "ko": "대학교"
+    },
+    {
+      "value": "Academy",
+      "ko": "스포츠 아카데미"
+    },
+    {
+      "value": "Other",
+      "ko": "기타"
+    }
   ],
   "related_files": [
     "player_master.json",
