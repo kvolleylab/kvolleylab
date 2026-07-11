@@ -24,12 +24,32 @@ jobs:
           python-version: '3.12'
 
       - name: Build registration batch
-        run: python scripts/build_university_player_master_batch.py
+        id: build
+        continue-on-error: true
+        run: |
+          python scripts/build_university_player_master_batch.py > university_batch_build.log 2>&1
+          code=$?
+          cat university_batch_build.log
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+
+      - name: Upload build diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: university-player-master-batch-diagnostic
+          path: university_batch_build.log
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Upload generated batch
+        if: steps.build.outputs.exit_code == '0'
         uses: actions/upload-artifact@v4
         with:
           name: university-player-master-batch-v1
           path: data/seed/player_master_registration_batch_univ_2026_v1.json
           if-no-files-found: error
           retention-days: 7
+
+      - name: Fail when build failed
+        if: steps.build.outputs.exit_code != '0'
+        run: exit 1
