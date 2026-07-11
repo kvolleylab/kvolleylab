@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Build and validate registration batch
+      - name: Build registration batch
         id: build
         continue-on-error: true
         run: |
@@ -44,30 +44,12 @@ jobs:
           git push origin HEAD:${{ github.head_ref }}
           exit 1
 
-      - name: Inspect generated file
-        if: steps.build.outputs.exit_code == '0'
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          path = Path('data/seed/player_master_registration_batch_univ_2026_v1.json')
-          rows = json.loads(path.read_text(encoding='utf-8'))
-          ids = [row['system']['player_id'] for row in rows]
-          print(f'Generated records: {len(rows)}')
-          print(f'ID range: {ids[0]} through {ids[-1]}')
-          print(f'Unique IDs: {len(set(ids))}')
-          PY
-
       - name: Commit generated batch
         if: steps.build.outputs.exit_code == '0'
         run: |
-          if git diff --quiet -- data/seed/player_master_registration_batch_univ_2026_v1.json; then
-            echo 'Generated batch is already up to date.'
-            exit 0
-          fi
+          test -f data/seed/player_master_registration_batch_univ_2026_v1.json
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/seed/player_master_registration_batch_univ_2026_v1.json
-          git commit -m 'Generate 207-player university Player Master batch v1'
+          git add -f data/seed/player_master_registration_batch_univ_2026_v1.json
+          git commit -m 'Generate 207-player university Player Master batch v1' || true
           git push origin HEAD:${{ github.head_ref }}
