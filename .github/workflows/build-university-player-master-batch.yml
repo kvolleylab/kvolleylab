@@ -24,9 +24,28 @@ jobs:
           python-version: '3.12'
 
       - name: Build registration batch
-        run: python scripts/build_university_player_master_batch.py
+        id: build
+        continue-on-error: true
+        run: |
+          python scripts/build_university_player_master_batch.py > university_batch_build.log 2>&1
+          code=$?
+          cat university_batch_build.log
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+
+      - name: Commit failure diagnostic
+        if: steps.build.outputs.exit_code != '0'
+        run: |
+          mkdir -p docs/validation
+          cp university_batch_build.log docs/validation/2026_university_player_master_batch_failure.log
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/validation/2026_university_player_master_batch_failure.log
+          git commit -m 'Record university Player Master batch failure diagnostic' || true
+          git push origin HEAD:${{ github.head_ref }}
+          exit 1
 
       - name: Validate generated file
+        if: steps.build.outputs.exit_code == '0'
         run: |
           python - <<'PY'
           import json
@@ -46,6 +65,7 @@ jobs:
           PY
 
       - name: Commit generated batch
+        if: steps.build.outputs.exit_code == '0'
         run: |
           if git diff --quiet -- data/seed/player_master_registration_batch_univ_2026_v1.json; then
             echo 'Generated batch is already up to date.'
