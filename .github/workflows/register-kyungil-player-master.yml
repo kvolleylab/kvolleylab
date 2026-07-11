@@ -1,0 +1,52 @@
+name: Register Kyungil players in Player Master
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Append reviewed batch
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          master_path = Path('data/master/player_master.json')
+          batch_path = Path('data/seed/player_master_registration_batch_kyungil_2026_v1.json')
+          master = json.loads(master_path.read_text(encoding='utf-8'))
+          batch = json.loads(batch_path.read_text(encoding='utf-8'))
+          assert len(master) == 78
+          assert len(batch) == 17
+          assert [r['system']['player_id'] for r in master] == [f'KVL-P-{n:06d}' for n in range(1, 79)]
+          assert [r['system']['player_id'] for r in batch] == [f'KVL-P-{n:06d}' for n in range(79, 96)]
+          formal = [{k:r[k] for k in ('system','identity','physical','links','source_ids')} for r in batch]
+          merged = master + formal
+          ids = [r['system']['player_id'] for r in merged]
+          assert len(ids) == len(set(ids)) == 95
+          assert ids == [f'KVL-P-{n:06d}' for n in range(1, 96)]
+          assert all(r['system']['status'] == 'active' for r in merged)
+          assert all(r['system']['data_confidence'] == 'reviewed' for r in merged)
+          assert all(r['system']['id_status'] == 'permanent' for r in merged)
+          master_path.write_text(json.dumps(merged, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+          print('Validated 95 Player Master records through KVL-P-000095')
+          PY
+      - name: Commit updated Player Master
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/master/player_master.json
+          git commit -m 'Register 17 Kyungil players in Player Master v1' || exit 0
+          git push origin HEAD:${{ github.head_ref }}
