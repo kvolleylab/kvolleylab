@@ -1,9 +1,9 @@
 name: Build university Player Master batch
 
 on:
-  push:
+  pull_request:
     branches:
-      - feature/univ-player-master-batch-run-v1
+      - main
   workflow_dispatch:
 
 permissions:
@@ -13,8 +13,10 @@ jobs:
   build-batch:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out pull request branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -53,4 +55,4 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/seed/player_master_registration_batch_univ_2026_v1.json
           git commit -m 'Generate 207-player university Player Master batch v1'
-          git push
+          git push origin HEAD:${{ github.head_ref }}
