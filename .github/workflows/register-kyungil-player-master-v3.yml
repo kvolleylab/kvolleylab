@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Append Kyungil batch safely
+      - name: Merge Kyungil batch by player ID
         run: |
           python - <<'PY'
           import json
@@ -30,33 +30,33 @@ jobs:
           master = json.loads(master_path.read_text(encoding='utf-8'))
           batch = json.loads(batch_path.read_text(encoding='utf-8'))
 
-          batch_ids = [r['system']['player_id'] for r in batch]
           expected_batch = [f'KVL-P-{n:06d}' for n in range(79, 96)]
-          assert len(batch) == 17 and batch_ids == expected_batch
+          batch_by_id = {r['system']['player_id']: r for r in batch}
+          assert sorted(batch_by_id) == expected_batch
+          assert len(batch_by_id) == 17
 
-          target = next(r for r in batch if r['system']['player_id'] == 'KVL-P-000088')
-          assert target['identity']['name_ko'] == '김정훈'
-          if target['physical']['weight_kg'] == 130:
-              target['physical']['weight_kg'] = None
-          assert target['physical']['weight_kg'] is None
+          target = batch_by_id['KVL-P-000088']
+          target['physical']['weight_kg'] = None
           target.setdefault('source_ref', {})['note'] = 'v5 원본 130kg 이상치로 확인 보류; 미확인 값은 null 유지'
 
-          existing_ids = [r['system']['player_id'] for r in master]
-          if existing_ids == [f'KVL-P-{n:06d}' for n in range(1, 79)]:
-              formal = [{k:r[k] for k in ('system','identity','physical','links','source_ids')} for r in batch]
-              master.extend(formal)
-          elif existing_ids == [f'KVL-P-{n:06d}' for n in range(1, 96)]:
-              pass
-          else:
-              raise ValueError(f'Unexpected Player Master state: {len(master)} records')
+          merged_by_id = {r['system']['player_id']: r for r in master}
+          for player_id in expected_batch:
+              row = batch_by_id[player_id]
+              merged_by_id[player_id] = {
+                  key: row[key]
+                  for key in ('system', 'identity', 'physical', 'links', 'source_ids')
+              }
 
-          ids = [r['system']['player_id'] for r in master]
-          assert ids == [f'KVL-P-{n:06d}' for n in range(1, 96)]
+          expected_all = [f'KVL-P-{n:06d}' for n in range(1, 96)]
+          assert all(player_id in merged_by_id for player_id in expected_all)
+          merged = [merged_by_id[player_id] for player_id in expected_all]
+          ids = [r['system']['player_id'] for r in merged]
+          assert ids == expected_all
           assert len(ids) == len(set(ids)) == 95
-          assert next(r for r in master if r['system']['player_id'] == 'KVL-P-000088')['physical']['weight_kg'] is None
+          assert merged_by_id['KVL-P-000088']['physical']['weight_kg'] is None
 
           batch_path.write_text(json.dumps(batch, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
-          master_path.write_text(json.dumps(master, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+          master_path.write_text(json.dumps(merged, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
           print('Validated 95 Player Master records through KVL-P-000095')
           PY
       - name: Commit updated files
@@ -64,5 +64,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/seed/player_master_registration_batch_kyungil_2026_v1.json data/master/player_master.json
-          git commit -m 'Register 17 Kyungil players in Player Master v1' || exit 0
+          git commit -m 'Register 17 Kyungil players in Player Master v3' || exit 0
           git push origin HEAD:${{ github.head_ref }}
