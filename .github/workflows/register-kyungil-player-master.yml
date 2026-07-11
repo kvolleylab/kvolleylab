@@ -32,11 +32,21 @@ jobs:
           assert len(batch) == 17
           assert [r['system']['player_id'] for r in master] == [f'KVL-P-{n:06d}' for n in range(1, 79)]
           assert [r['system']['player_id'] for r in batch] == [f'KVL-P-{n:06d}' for n in range(79, 96)]
+
+          # The v5 workbook contains 130kg for 김정훈 (KVL-P-000088),
+          # but no independent source currently confirms it. Preserve the raw
+          # value in the source batch and omit it from the core master until verified.
+          for row in batch:
+              if row['system']['player_id'] == 'KVL-P-000088':
+                  assert row['physical']['weight_kg'] == 130
+                  row['physical']['weight_kg'] = None
+
           formal = [{k:r[k] for k in ('system','identity','physical','links','source_ids')} for r in batch]
           merged = master + formal
           ids = [r['system']['player_id'] for r in merged]
           assert len(ids) == len(set(ids)) == 95
           assert ids == [f'KVL-P-{n:06d}' for n in range(1, 96)]
+          assert next(r for r in merged if r['system']['player_id'] == 'KVL-P-000088')['physical']['weight_kg'] is None
           assert all(r['system']['status'] == 'active' for r in merged)
           assert all(r['system']['data_confidence'] == 'reviewed' for r in merged)
           assert all(r['system']['id_status'] == 'permanent' for r in merged)
