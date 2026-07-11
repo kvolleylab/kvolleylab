@@ -1,0 +1,42 @@
+name: Fix Kyungil unverified weight
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Remove unverified weight from Player Master
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('data/master/player_master.json')
+          rows = json.loads(path.read_text(encoding='utf-8'))
+          assert len(rows) == 95
+          target = next(r for r in rows if r['system']['player_id'] == 'KVL-P-000088')
+          assert target['identity']['name_ko'] == '김정훈'
+          target['physical']['weight_kg'] = None
+          path.write_text(json.dumps(rows, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+          print('Set KVL-P-000088 weight_kg to null pending verification')
+          PY
+      - name: Commit correction
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/master/player_master.json
+          git commit -m 'Set unverified Kyungil player weight to null' || exit 0
+          git push origin HEAD:${{ github.head_ref }}
