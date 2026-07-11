@@ -3,7 +3,7 @@ name: Build university Player Master batch
 on:
   push:
     branches:
-      - feature/univ-player-master-batch-run-v1
+      - feature/univ-player-master-batch-output-v1
   workflow_dispatch:
 
 permissions:
