@@ -45,6 +45,35 @@ def load_json(path: Path) -> list[dict[str, Any]]:
     return data
 
 
+def normalize_seed(row: dict[str, Any]) -> dict[str, Any]:
+    """Normalize both legacy nested Seed rows and newer flat Seed rows."""
+    if "draft_id" in row:
+        return {
+            "draft_id": row["draft_id"],
+            "name_ko": row["name_ko"],
+            "jersey_no": row.get("jersey_no"),
+            "position": row.get("position"),
+            "height_cm": row.get("height_cm"),
+            "weight_kg": row.get("weight_kg"),
+            "previous_school": row.get("previous_school"),
+        }
+
+    system = row.get("system", {})
+    identity = row.get("identity", {})
+    classification = row.get("classification", {})
+    physical = row.get("physical", {})
+    roster = row.get("roster", {})
+    return {
+        "draft_id": system.get("player_id"),
+        "name_ko": identity.get("name_ko"),
+        "jersey_no": roster.get("jersey_number"),
+        "position": classification.get("primary_position"),
+        "height_cm": physical.get("height_cm"),
+        "weight_kg": physical.get("weight_kg"),
+        "previous_school": roster.get("previous_school"),
+    }
+
+
 def build_record(seed: dict[str, Any], mapping: dict[str, Any], source_code: str) -> dict[str, Any]:
     return {
         "system": {
@@ -97,7 +126,7 @@ def main() -> None:
     seen_ids: set[str] = set()
 
     for slug, seed_filename, source_code in SCHOOLS:
-        seeds = load_json(SEED_DIR / seed_filename)
+        seeds = [normalize_seed(row) for row in load_json(SEED_DIR / seed_filename)]
         mappings = load_json(SEED_DIR / f"{slug}_player_id_mapping_v1.json")
         seed_by_draft = {row["draft_id"]: row for row in seeds}
 
