@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-batch:
@@ -24,32 +24,12 @@ jobs:
           python-version: '3.12'
 
       - name: Build registration batch
-        id: build
-        continue-on-error: true
-        run: |
-          python scripts/build_university_player_master_batch.py > university_batch_build.log 2>&1
-          code=$?
-          cat university_batch_build.log
-          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+        run: python scripts/build_university_player_master_batch.py
 
-      - name: Commit failure diagnostic
-        if: steps.build.outputs.exit_code != '0'
-        run: |
-          mkdir -p docs/validation
-          cp university_batch_build.log docs/validation/2026_university_player_master_batch_failure.log
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add docs/validation/2026_university_player_master_batch_failure.log
-          git commit -m 'Record university Player Master batch failure diagnostic' || true
-          git push origin HEAD:${{ github.head_ref }}
-          exit 1
-
-      - name: Commit generated batch
-        if: steps.build.outputs.exit_code == '0'
-        run: |
-          test -f data/seed/player_master_registration_batch_univ_2026_v1.json
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f data/seed/player_master_registration_batch_univ_2026_v1.json
-          git commit -m 'Generate 207-player university Player Master batch v1' || true
-          git push origin HEAD:${{ github.head_ref }}
+      - name: Upload generated batch
+        uses: actions/upload-artifact@v4
+        with:
+          name: university-player-master-batch-v1
+          path: data/seed/player_master_registration_batch_univ_2026_v1.json
+          if-no-files-found: error
+          retention-days: 7
