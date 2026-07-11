@@ -45,7 +45,38 @@ def load_json(path: Path) -> list[dict[str, Any]]:
     return data
 
 
+def normalize_seed(row: dict[str, Any]) -> dict[str, Any]:
+    """Normalize both legacy nested Seed rows and newer flat Seed rows."""
+    if "draft_id" in row:
+        return {
+            "draft_id": row["draft_id"],
+            "name_ko": row["name_ko"],
+            "jersey_no": row.get("jersey_no"),
+            "position": row.get("position"),
+            "height_cm": row.get("height_cm"),
+            "weight_kg": row.get("weight_kg"),
+            "previous_school": row.get("previous_school"),
+        }
+
+    system = row.get("system", {})
+    identity = row.get("identity", {})
+    classification = row.get("classification", {})
+    physical = row.get("physical", {})
+    roster = row.get("roster", {})
+    return {
+        "draft_id": system.get("player_id"),
+        "name_ko": identity.get("name_ko"),
+        "jersey_no": roster.get("jersey_number"),
+        "position": classification.get("primary_position"),
+        "height_cm": physical.get("height_cm"),
+        "weight_kg": physical.get("weight_kg"),
+        "previous_school": roster.get("previous_school"),
+    }
+
+
 def build_record(seed: dict[str, Any], mapping: dict[str, Any], source_code: str) -> dict[str, Any]:
+    mapping_name = mapping.get("name_ko")
+    seed_name = seed["name_ko"]
     return {
         "system": {
             "player_id": mapping["proposed_player_id"],
@@ -57,9 +88,9 @@ def build_record(seed: dict[str, Any], mapping: dict[str, Any], source_code: str
             "id_status": "proposed",
         },
         "identity": {
-            "name_ko": seed["name_ko"],
+            "name_ko": seed_name,
             "name_en": "",
-            "name_native": seed["name_ko"],
+            "name_native": seed_name,
             "gender": "M",
             "nationality": "KOR",
             "birth_date": mapping.get("birth_date"),
@@ -87,6 +118,8 @@ def build_record(seed: dict[str, Any], mapping: dict[str, Any], source_code: str
             "jersey_no": seed.get("jersey_no"),
             "position": seed.get("position"),
             "previous_school": seed.get("previous_school"),
+            "mapping_name_ko": mapping_name,
+            "name_match": mapping_name == seed_name,
             "review_status": mapping.get("review_status", "needs_review"),
         },
     }
@@ -95,9 +128,10 @@ def build_record(seed: dict[str, Any], mapping: dict[str, Any], source_code: str
 def main() -> None:
     batch: list[dict[str, Any]] = []
     seen_ids: set[str] = set()
+    name_mismatches: list[str] = []
 
     for slug, seed_filename, source_code in SCHOOLS:
-        seeds = load_json(SEED_DIR / seed_filename)
+        seeds = [normalize_seed(row) for row in load_json(SEED_DIR / seed_filename)]
         mappings = load_json(SEED_DIR / f"{slug}_player_id_mapping_v1.json")
         seed_by_draft = {row["draft_id"]: row for row in seeds}
 
@@ -107,8 +141,8 @@ def main() -> None:
                 raise ValueError(f"Mapping draft ID missing from Seed: {draft_id}")
 
             seed = seed_by_draft[draft_id]
-            if seed["name_ko"] != mapping["name_ko"]:
-                raise ValueError(f"Name mismatch for {draft_id}")
+            if seed["name_ko"] != mapping.get("name_ko"):
+                name_mismatches.append(draft_id)
 
             player_id = mapping["proposed_player_id"]
             if player_id in seen_ids:
@@ -129,6 +163,9 @@ def main() -> None:
         handle.write("\n")
 
     print(f"Created {OUTPUT.relative_to(ROOT)} with {len(batch)} records")
+    print(f"Name mismatches retained for review: {len(name_mismatches)}")
+    if name_mismatches:
+        print("Mismatch draft IDs: " + ", ".join(name_mismatches))
 
 
 if __name__ == "__main__":
