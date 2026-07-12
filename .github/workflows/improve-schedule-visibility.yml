@@ -39,3 +39,4 @@ jobs:
           git add schedules.html
           git commit -m 'Improve month and date visibility in schedules' || exit 0
           git push origin HEAD:main
+# trigger: v2
