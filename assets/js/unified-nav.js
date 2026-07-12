@@ -20,13 +20,13 @@
   else if (path === 'pamphlet-archive.html') active = 'pamphlets';
 
   const items = [
-    ['home','index.html','Home'],
-    ['players','players.html','Players'],
-    ['competition','vnl.html','Competition'],
-    ['schedules','schedules.html','Schedules'],
-    ['simulator','simulator.html','Simulator'],
-    ['pamphlets','pamphlet-archive.html','Pamphlets'],
-    ['request','https://forms.gle/MFNYhJX6Bq5zeNmp8','Request']
+    ['home','index.html','Home','홈'],
+    ['players','players.html','Players','선수'],
+    ['competition','vnl.html','Competition','대회'],
+    ['schedules','schedules.html','Schedules','일정'],
+    ['simulator','simulator.html','Simulator','진출계산기'],
+    ['pamphlets','pamphlet-archive.html','Pamphlets','팜플렛'],
+    ['request','https://forms.gle/MFNYhJX6Bq5zeNmp8','Request','요청']
   ];
 
   const style = document.createElement('style');
@@ -79,11 +79,13 @@
     }
     .kvl-unified-nav a {
       box-sizing: border-box !important;
+      position: relative !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
       height: 38px !important;
       min-height: 38px !important;
+      min-width: 92px !important;
       margin: 0 !important;
       padding: 0 13px !important;
       border: 0 !important;
@@ -99,12 +101,27 @@
       white-space: nowrap !important;
       transform: none !important;
       box-shadow: none !important;
+      overflow: hidden !important;
     }
+    .kvl-nav-label-en,
+    .kvl-nav-label-ko {
+      position: absolute !important;
+      inset: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: opacity .16s ease !important;
+      pointer-events: none !important;
+    }
+    .kvl-nav-label-en { opacity: 1 !important; }
+    .kvl-nav-label-ko { opacity: 0 !important; }
     .kvl-unified-nav a:hover {
       background: rgba(225,184,79,.14) !important;
       color: #e1b84f !important;
       transform: none !important;
     }
+    .kvl-unified-nav a:hover .kvl-nav-label-en { opacity: 0 !important; }
+    .kvl-unified-nav a:hover .kvl-nav-label-ko { opacity: 1 !important; }
     .kvl-unified-nav a.active {
       background: #e1b84f !important;
       color: #071b2a !important;
@@ -130,6 +147,7 @@
         flex: 0 0 auto !important;
         height: 34px !important;
         min-height: 34px !important;
+        min-width: 78px !important;
         padding: 0 11px !important;
         font-size: 13px !important;
       }
@@ -138,10 +156,10 @@
   document.getElementById(style.id)?.remove();
   document.head.appendChild(style);
 
-  const navHtml = items.map(([key, href, label]) => {
+  const navHtml = items.map(([key, href, labelEn, labelKo]) => {
     const attrs = key === 'request' ? ' target="_blank" rel="noopener"' : '';
     const cls = active === key ? ' class="active"' : '';
-    return `<a${cls} href="${href}"${attrs}>${label}</a>`;
+    return `<a${cls} href="${href}" aria-label="${labelKo}" title="${labelKo}"${attrs}><span class="kvl-nav-label-en">${labelEn}</span><span class="kvl-nav-label-ko">${labelKo}</span></a>`;
   }).join('');
 
   header.className = 'kvl-unified-header';
