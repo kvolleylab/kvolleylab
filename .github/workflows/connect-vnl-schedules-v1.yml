@@ -28,7 +28,6 @@ jobs:
           vnl = vnl_path.read_text(encoding='utf-8')
           schedules = schedules_path.read_text(encoding='utf-8')
 
-          # Navigation consistency.
           vnl = vnl.replace('href="player-search.html">Players</a>', 'href="players.html">Players</a>')
           schedules = schedules.replace('href="player-search.html">Players</a>', 'href="players.html">Players</a>')
 
@@ -192,7 +191,6 @@ const selectedTeam = scheduleParams.get("team") || "";'''
               assert params_anchor in schedules
               schedules = schedules.replace(params_anchor, params_insert, 1)
 
-          # Basic validation.
           assert 'schedules.html?tournament=vnl&team=일본' in vnl
           assert 'const selectedTeam = scheduleParams.get("team") || "";' in schedules
           assert 'allDayGames.filter(game => game.match.includes(teamFilter))' in schedules
@@ -210,3 +208,5 @@ const selectedTeam = scheduleParams.get("team") || "";'''
           git add vnl.html schedules.html
           git commit -m 'Connect VNL nation shortcuts to filtered schedules v1' || exit 0
           git push origin HEAD:main
+
+# trigger: 2026-07-13
