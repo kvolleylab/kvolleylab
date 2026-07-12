@@ -35,3 +35,4 @@ jobs:
           git add schedules.html
           git commit -m 'Apply bright schedule calendar theme' || exit 0
           git push origin HEAD:main
+# trigger-v2
