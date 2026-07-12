@@ -1,0 +1,41 @@
+name: Improve schedule visibility
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/improve-schedule-visibility.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Improve month and date visibility
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('schedules.html')
+          s=p.read_text(encoding='utf-8')
+          old='.calendar-header{padding:16px 18px;background:rgba(214,178,94,.14);color:var(--gold);font-weight:800;font-size:18px}'
+          new='''.calendar-header{display:flex;align-items:center;gap:18px;padding:16px 18px;background:linear-gradient(90deg,#d6b25e 0 118px,rgba(214,178,94,.16) 118px);color:#fff;font-weight:800}.month-label{flex:0 0 86px;color:#071827;font-size:34px;font-weight:900;line-height:1}.month-title{font-size:18px;letter-spacing:.2px}.date{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 8px;border-radius:10px;background:#f8fafc;color:#071827!important;font-size:18px;font-weight:900;box-shadow:0 1px 0 rgba(255,255,255,.35)}.day.sunday .date{background:#fee2e2;color:#b91c1c!important}.day{background:#142238!important}.day.empty{background:#0f1b2c!important}.weekdays>div{background:#0b1524;color:#f8fafc!important}.calendar{box-shadow:0 12px 30px rgba(0,0,0,.22)}'''
+          if old in s:
+              s=s.replace(old,new,1)
+          old_header='<div class="calendar-header">${title} — ${month.title} (한국시간 기준)</div>'
+          new_header='<div class="calendar-header"><div class="month-label">${month.title}</div><div class="month-title">${title}_${month.title} (한국시간 기준)</div></div>'
+          if old_header in s:
+              s=s.replace(old_header,new_header,1)
+          p.write_text(s,encoding='utf-8')
+          assert 'class="month-label"' in s
+          assert 'background:#f8fafc' in s
+          PY
+      - name: Commit schedule visibility update
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add schedules.html
+          git commit -m 'Improve month and date visibility in schedules' || exit 0
+          git push origin HEAD:main
