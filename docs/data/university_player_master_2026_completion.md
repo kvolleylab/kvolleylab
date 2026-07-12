@@ -4,3 +4,4 @@
 - Expected Player Master count: 229
 - Expected ID range: KVL-P-000001 through KVL-P-000229
 - Validation: continuous IDs, no duplicates, active/reviewed/permanent
+- Final validation retriggered after remaining-batch workflow fix.
