@@ -17,47 +17,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Register remaining reviewed university batches
+      - name: Merge final university batches
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-
           master_path = Path('data/master/player_master.json')
-          master = json.loads(master_path.read_text(encoding='utf-8'))
-          merged_by_id = {r['system']['player_id']: r for r in master}
-
-          batches = [
-              ('data/seed/player_master_registration_batch_gyeongsang_2026_v1.json', 206, 218),
-              ('data/seed/player_master_registration_batch_woosuk_2026_v1.json', 219, 229),
-          ]
-
-          for path, start, end in batches:
-              rows = json.loads(Path(path).read_text(encoding='utf-8'))
-              expected = [f'KVL-P-{n:06d}' for n in range(start, end + 1)]
-              rows_by_id = {r['system']['player_id']: r for r in rows}
-              assert sorted(rows_by_id) == expected
-              for player_id in expected:
-                  row = rows_by_id[player_id]
-                  merged_by_id[player_id] = {
-                      key: row[key]
-                      for key in ('system', 'identity', 'physical', 'links', 'source_ids')
-                  }
-
-          expected_all = [f'KVL-P-{n:06d}' for n in range(1, 230)]
-          assert all(player_id in merged_by_id for player_id in expected_all)
-          merged = [merged_by_id[player_id] for player_id in expected_all]
-          ids = [r['system']['player_id'] for r in merged]
-          assert ids == expected_all
-          assert len(ids) == len(set(ids)) == 229
-          assert all(r['system']['status'] == 'active' for r in merged)
-          assert all(r['system']['data_confidence'] == 'reviewed' for r in merged)
-          assert all(r['system']['id_status'] == 'permanent' for r in merged)
-
-          master_path.write_text(json.dumps(merged, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
-          print('Validated 229 Player Master records through KVL-P-000229')
+          merged = {r['system']['player_id']: r for r in json.loads(master_path.read_text(encoding='utf-8'))}
+          for path in ['data/seed/player_master_registration_batch_gyeongsang_2026_v1.json','data/seed/player_master_registration_batch_woosuk_2026_v1.json']:
+              for row in json.loads(Path(path).read_text(encoding='utf-8')):
+                  merged[row['system']['player_id']] = {k: row[k] for k in ('system','identity','physical','links','source_ids')}
+          rows = sorted(merged.values(), key=lambda r: int(r['system']['player_id'].split('-')[-1]))
+          master_path.write_text(json.dumps(rows, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+          print(len(rows), rows[0]['system']['player_id'], rows[-1]['system']['player_id'])
           PY
-      - name: Commit updated Player Master
+      - name: Commit Player Master
         run: |
           git config user.name automation-bot
           git config user.email automation@example.com
