@@ -48,3 +48,5 @@ jobs:
           git add -- '*.html'
           git commit -m 'Install unified navigation across site pages' || exit 0
           git push origin HEAD:main
+
+# trigger: v2
