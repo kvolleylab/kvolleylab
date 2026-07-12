@@ -16,7 +16,6 @@
   else if (playerPages.has(path)) active = 'players';
   else if (competitionPages.has(path)) active = 'competition';
   else if (path === 'schedules.html') active = 'schedules';
-  else if (path === 'simulator.html') active = 'simulator';
   else if (path === 'pamphlet-archive.html') active = 'pamphlets';
 
   const items = [
@@ -24,7 +23,6 @@
     ['players','players.html','Players','선수'],
     ['competition','competition.html','Competition','대회'],
     ['schedules','schedules.html','Schedules','일정'],
-    ['simulator','simulator.html','Simulator','진출계산기'],
     ['pamphlets','pamphlet-archive.html','Pamphlets','팜플렛'],
     ['request','https://forms.gle/MFNYhJX6Bq5zeNmp8','Request','요청']
   ];
