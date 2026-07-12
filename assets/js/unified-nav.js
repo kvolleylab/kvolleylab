@@ -5,7 +5,7 @@
 
   const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
   const competitionPages = new Set([
-    'vnl.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html',
+    'competition.html','vnl.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html',
     'argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html',
     'bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html'
   ]);
@@ -22,7 +22,7 @@
   const items = [
     ['home','index.html','Home','홈'],
     ['players','players.html','Players','선수'],
-    ['competition','vnl.html','Competition','대회'],
+    ['competition','competition.html','Competition','대회'],
     ['schedules','schedules.html','Schedules','일정'],
     ['simulator','simulator.html','Simulator','진출계산기'],
     ['pamphlets','pamphlet-archive.html','Pamphlets','팜플렛'],
