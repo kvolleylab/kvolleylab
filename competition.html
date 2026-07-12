@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Competition | K-Volley Lab</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/unified-nav.js" defer></script>
+  <style>
+    .competition-hero{padding:68px 20px 28px;text-align:center}
+    .competition-hero h1{margin:8px 0 14px;color:var(--gold);font-size:clamp(34px,5vw,58px)}
+    .competition-hero p{max-width:760px;margin:0 auto;color:var(--muted);line-height:1.75}
+    .competition-grid{max-width:1180px;margin:20px auto 70px;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+    .competition-card{display:flex;flex-direction:column;min-height:310px;padding:26px;border:1px solid var(--line);border-radius:20px;background:var(--panel);color:var(--text);text-decoration:none;transition:.18s ease}
+    .competition-card:hover{transform:translateY(-5px);border-color:var(--gold);background:rgba(214,178,94,.1)}
+    .competition-card .tag{align-self:flex-start;padding:6px 11px;border-radius:999px;background:rgba(214,178,94,.16);color:var(--gold);font-size:12px;font-weight:800}
+    .competition-card h2{margin:22px 0 8px;color:var(--gold);font-size:26px}
+    .competition-card p{margin:0 0 22px;color:var(--muted);line-height:1.65}
+    .competition-links{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px}
+    .competition-links span{padding:8px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:700}
+    .coming{opacity:.72}
+    @media(max-width:700px){.competition-hero{padding-top:44px}.competition-grid{padding:0 14px}.competition-card{min-height:0}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="site-logo" href="index.html">K-Volley Lab</a>
+  <nav class="site-nav"></nav>
+</header>
+
+<main>
+  <section class="competition-hero">
+    <p class="eyebrow">Competition Hub</p>
+    <h1>대회별 배구 정보 허브</h1>
+    <p>대회 일정, 엔트리, 결과, 참가팀, 선수 데이터와 팜플렛을 하나의 흐름으로 연결합니다.</p>
+  </section>
+
+  <section class="competition-grid" aria-label="대회 목록">
+    <a class="competition-card" href="vnl.html">
+      <span class="tag">INTERNATIONAL · 2026</span>
+      <h2>VNL Men</h2>
+      <p>2026 VNL 남자부 참가국 DB, 국가별 Active 엔트리, 한국시간 일정과 선수 정보를 확인합니다.</p>
+      <div class="competition-links"><span>참가국</span><span>엔트리</span><span>일정</span><span>선수</span></div>
+    </a>
+
+    <a class="competition-card" href="schedules.html?tournament=avc">
+      <span class="tag">ASIA · 2026</span>
+      <h2>AVC Men’s Cup</h2>
+      <p>AVC 남자컵 일정과 한국 대표팀 경기, 조별 진행 상황을 한국시간 기준으로 확인합니다.</p>
+      <div class="competition-links"><span>일정</span><span>한국 경기</span><span>진출계산</span></div>
+    </a>
+
+    <a class="competition-card" href="pamphlet-archive.html">
+      <span class="tag">KOREA · ARCHIVE</span>
+      <h2>Domestic Competitions</h2>
+      <p>대학리그, 춘계, 보석배 등 국내 대회 페이지를 팜플렛과 선수 DB에 연결해 확장합니다.</p>
+      <div class="competition-links"><span>대학리그</span><span>국내대회</span><span>팜플렛</span></div>
+    </a>
+
+    <article class="competition-card coming">
+      <span class="tag">COMING NEXT</span>
+      <h2>KOVO & V-League</h2>
+      <p>프로팀, 선수, 일정, 결과, 제도와 기록을 통합하는 국내 프로배구 허브로 확장할 예정입니다.</p>
+      <div class="competition-links"><span>팀</span><span>일정</span><span>기록</span><span>뉴스</span></div>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+</body>
+</html>
