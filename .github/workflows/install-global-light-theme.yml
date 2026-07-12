@@ -1,0 +1,50 @@
+name: Install global light theme
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/install-global-light-theme.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Link global theme across root pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          tag = '  <link rel="stylesheet" href="assets/css/site-theme-light.css" />\n'
+          changed = []
+
+          for path in sorted(Path('.').glob('*.html')):
+              text = path.read_text(encoding='utf-8')
+              if 'assets/css/site-theme-light.css' in text:
+                  continue
+              if '</head>' not in text:
+                  continue
+              text = text.replace('</head>', tag + '</head>', 1)
+              path.write_text(text, encoding='utf-8')
+              changed.append(path.name)
+
+          print(f'updated {len(changed)} pages')
+          for name in changed:
+              print(name)
+          PY
+
+      - name: Commit global theme installation
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*.html'
+          git commit -m 'Install unified light theme across site pages' || exit 0
+          git push origin HEAD:main
