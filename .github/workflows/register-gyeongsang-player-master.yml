@@ -1,0 +1,51 @@
+name: Register Gyeongsang players in Player Master
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Register reviewed Gyeongsang batch
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          master_path = Path('data/master/player_master.json')
+          batch_path = Path('data/seed/player_master_registration_batch_gyeongsang_2026_v1.json')
+          master = json.loads(master_path.read_text(encoding='utf-8'))
+          batch = json.loads(batch_path.read_text(encoding='utf-8'))
+          expected_batch = [f'KVL-P-{n:06d}' for n in range(206, 219)]
+          batch_by_id = {r['system']['player_id']: r for r in batch}
+          assert sorted(batch_by_id) == expected_batch and len(batch_by_id) == 13
+          merged_by_id = {r['system']['player_id']: r for r in master}
+          for player_id in expected_batch:
+              row = batch_by_id[player_id]
+              merged_by_id[player_id] = {k: row[k] for k in ('system','identity','physical','links','source_ids')}
+          expected_all = [f'KVL-P-{n:06d}' for n in range(1, 219)]
+          merged = [merged_by_id[player_id] for player_id in expected_all]
+          ids = [r['system']['player_id'] for r in merged]
+          assert ids == expected_all and len(set(ids)) == 218
+          assert all(r['system']['status'] == 'active' for r in merged)
+          assert all(r['system']['data_confidence'] == 'reviewed' for r in merged)
+          assert all(r['system']['id_status'] == 'permanent' for r in merged)
+          master_path.write_text(json.dumps(merged, ensure_ascii=False, separators=(',', ':')) + '\n', encoding='utf-8')
+          PY
+      - name: Commit updated Player Master
+        run: |
+          git config user.name automation-bot
+          git config user.email automation@example.com
+          git add data/master/player_master.json
+          git commit -m 'Register 13 Gyeongsang players in Player Master v1' || exit 0
+          git push origin HEAD:${{ github.head_ref }}
