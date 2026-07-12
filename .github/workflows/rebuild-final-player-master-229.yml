@@ -85,3 +85,5 @@ jobs:
           git add data/master/player_master_229_v2.json players.html player.html
           git commit -m 'Rebuild verified 229-player Player Master v2' || exit 0
           git push origin HEAD:main
+
+# Trigger revision: 2
