@@ -1,0 +1,81 @@
+/* K-Volley Lab bright schedule calendar theme */
+body.schedule-light-page { background:#f3f5f8 !important; color:#172033 !important; }
+body.schedule-light-page .container-wide { max-width:1440px; }
+body.schedule-light-page h1,
+body.schedule-light-page .schedule-title { color:#17324d !important; }
+body.schedule-light-page .subtitle { color:#667085 !important; }
+body.schedule-light-page .tabs button {
+  background:#ffffff !important;
+  color:#344054 !important;
+  border:1px solid #d0d5dd !important;
+  box-shadow:0 1px 2px rgba(16,24,40,.04) !important;
+}
+body.schedule-light-page .tabs button.active {
+  background:#17324d !important;
+  color:#ffffff !important;
+  border-color:#17324d !important;
+}
+body.schedule-light-page .schedule-filter-info {
+  background:#ffffff !important;
+  border-color:#e4e7ec !important;
+  color:#344054 !important;
+  box-shadow:0 4px 14px rgba(16,24,40,.06) !important;
+}
+body.schedule-light-page .schedule-filter-info strong { color:#17324d !important; }
+body.schedule-light-page .schedule-filter-actions a {
+  color:#344054 !important;
+  border-color:#d0d5dd !important;
+  background:#f9fafb !important;
+}
+body.schedule-light-page .calendar {
+  background:#ffffff !important;
+  border-color:#dfe3e8 !important;
+  box-shadow:0 12px 30px rgba(16,24,40,.10) !important;
+}
+body.schedule-light-page .calendar-header {
+  background:linear-gradient(90deg,#e1b84f 0 128px,#ffffff 128px) !important;
+  color:#17324d !important;
+  border-bottom:1px solid #e4e7ec !important;
+}
+body.schedule-light-page .month-label {
+  color:#17324d !important;
+  font-size:38px !important;
+  font-weight:900 !important;
+}
+body.schedule-light-page .month-title {
+  color:#344054 !important;
+  font-size:19px !important;
+}
+body.schedule-light-page .weekdays>div {
+  background:#eef2f6 !important;
+  color:#475467 !important;
+  border-color:#dfe3e8 !important;
+}
+body.schedule-light-page .day {
+  background:#ffffff !important;
+  border-color:#e4e7ec !important;
+}
+body.schedule-light-page .day.empty { background:#f8fafc !important; }
+body.schedule-light-page .date {
+  background:#eef2f6 !important;
+  color:#17324d !important;
+  box-shadow:none !important;
+}
+body.schedule-light-page .day.sunday .date {
+  background:#fff1f2 !important;
+  color:#c2414b !important;
+}
+body.schedule-light-page .day.no-team-game { opacity:.42 !important; }
+body.schedule-light-page .game {
+  border:1px solid rgba(16,24,40,.08) !important;
+  box-shadow:0 2px 7px rgba(16,24,40,.07) !important;
+}
+body.schedule-light-page .vnl1 { background:#eaf4ff !important; }
+body.schedule-light-page .vnl2 { background:#ecf8ef !important; }
+body.schedule-light-page .vnl3 { background:#f3edff !important; }
+body.schedule-light-page .korea { background:#fff0a8 !important; }
+@media(max-width:700px){
+  body.schedule-light-page .month-label{font-size:32px !important}
+  body.schedule-light-page .month-title{font-size:16px !important}
+  body.schedule-light-page .calendar-header{background:linear-gradient(90deg,#e1b84f 0 112px,#ffffff 112px) !important}
+}
