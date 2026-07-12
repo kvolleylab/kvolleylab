@@ -1,0 +1,87 @@
+name: Rebuild final 229-player Player Master
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/rebuild-final-player-master-229.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Merge and validate 229 players
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          seed_dir = Path('data/seed')
+          base_path = seed_dir / 'player_master_registration_batch_univ_2026_v1.json'
+          joongbu_path = seed_dir / 'player_master_registration_batch_joongbu_2026_v1.json'
+          output_path = Path('data/master/player_master_229_v2.json')
+
+          base = json.loads(base_path.read_text(encoding='utf-8'))
+          joongbu = json.loads(joongbu_path.read_text(encoding='utf-8'))
+
+          assert len(base) == 207, f'base count={len(base)} expected=207'
+          assert len(joongbu) == 22, f'joongbu count={len(joongbu)} expected=22'
+
+          merged_by_id = {}
+          for row in [*base, *joongbu]:
+              pid = row['system']['player_id']
+              if pid in merged_by_id:
+                  raise AssertionError(f'duplicate player_id: {pid}')
+              merged_by_id[pid] = row
+
+          expected_ids = [f'KVL-P-{n:06d}' for n in range(1, 230)]
+          actual_ids = sorted(merged_by_id)
+          assert actual_ids == expected_ids, (
+              f'ID sequence mismatch: count={len(actual_ids)}, '
+              f'first={actual_ids[:3]}, last={actual_ids[-3:]}'
+          )
+
+          merged = [merged_by_id[pid] for pid in expected_ids]
+          assert len(merged) == 229
+          assert all(p['system'].get('status') == 'active' for p in merged)
+          assert all(p['system'].get('data_confidence') == 'reviewed' for p in merged)
+          assert all(p['system'].get('id_status') == 'permanent' for p in merged)
+          assert all(p.get('identity', {}).get('name_ko') for p in merged)
+
+          output_path.write_text(
+              json.dumps(merged, ensure_ascii=False, separators=(',', ':')) + '\n',
+              encoding='utf-8'
+          )
+
+          for html_path in (Path('players.html'), Path('player.html')):
+              text = html_path.read_text(encoding='utf-8')
+              text = text.replace('data/master/player_master_229_v1.json', 'data/master/player_master_229_v2.json')
+              html_path.write_text(text, encoding='utf-8')
+
+          print(json.dumps({
+              'player_count': len(merged),
+              'first_id': merged[0]['system']['player_id'],
+              'last_id': merged[-1]['system']['player_id'],
+              'output': str(output_path),
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Commit rebuilt Player Master
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/master/player_master_229_v2.json players.html player.html
+          git commit -m 'Rebuild verified 229-player Player Master v2' || exit 0
+          git push origin HEAD:main
