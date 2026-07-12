@@ -22,39 +22,49 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Merge and validate 229 players
+      - name: Merge all reviewed university batches and validate 229 players
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
 
+          master_path = Path('data/master/player_master.json')
           seed_dir = Path('data/seed')
-          base_path = seed_dir / 'player_master_registration_batch_univ_2026_v1.json'
-          joongbu_path = seed_dir / 'player_master_registration_batch_joongbu_2026_v1.json'
           output_path = Path('data/master/player_master_229_v2.json')
 
-          base = json.loads(base_path.read_text(encoding='utf-8'))
-          joongbu = json.loads(joongbu_path.read_text(encoding='utf-8'))
-
-          assert len(base) == 207, f'base count={len(base)} expected=207'
-          assert len(joongbu) == 22, f'joongbu count={len(joongbu)} expected=22'
-
           merged_by_id = {}
-          for row in [*base, *joongbu]:
-              pid = row['system']['player_id']
-              if pid in merged_by_id:
-                  raise AssertionError(f'duplicate player_id: {pid}')
-              merged_by_id[pid] = row
+
+          # Preserve the original Inha records and any already-correct reviewed rows.
+          current = json.loads(master_path.read_text(encoding='utf-8'))
+          for row in current:
+              pid = row.get('system', {}).get('player_id')
+              if pid:
+                  merged_by_id[pid] = row
+
+          batch_paths = sorted(seed_dir.glob('player_master_registration_batch_*_2026_v1.json'))
+          batch_paths = [p for p in batch_paths if p.name != 'player_master_registration_batch_univ_2026_v1.json']
+          assert len(batch_paths) >= 14, f'found only {len(batch_paths)} individual batch files'
+
+          loaded = {}
+          for path in batch_paths:
+              rows = json.loads(path.read_text(encoding='utf-8'))
+              loaded[path.name] = len(rows)
+              for row in rows:
+                  pid = row['system']['player_id']
+                  merged_by_id[pid] = row
 
           expected_ids = [f'KVL-P-{n:06d}' for n in range(1, 230)]
           actual_ids = sorted(merged_by_id)
-          assert actual_ids == expected_ids, (
-              f'ID sequence mismatch: count={len(actual_ids)}, '
-              f'first={actual_ids[:3]}, last={actual_ids[-3:]}'
-          )
+          missing = [pid for pid in expected_ids if pid not in merged_by_id]
+          extra = [pid for pid in actual_ids if pid not in set(expected_ids)]
+
+          assert not missing, f'missing IDs: {missing}'
+          assert not extra, f'extra IDs: {extra}'
+          assert actual_ids == expected_ids, f'ID sequence mismatch: count={len(actual_ids)}'
 
           merged = [merged_by_id[pid] for pid in expected_ids]
           assert len(merged) == 229
+          assert len({p['system']['player_id'] for p in merged}) == 229
           assert all(p['system'].get('status') == 'active' for p in merged)
           assert all(p['system'].get('data_confidence') == 'reviewed' for p in merged)
           assert all(p['system'].get('id_status') == 'permanent' for p in merged)
@@ -71,6 +81,8 @@ jobs:
               html_path.write_text(text, encoding='utf-8')
 
           print(json.dumps({
+              'starting_master_count': len(current),
+              'batch_counts': loaded,
               'player_count': len(merged),
               'first_id': merged[0]['system']['player_id'],
               'last_id': merged[-1]['system']['player_id'],
@@ -86,4 +98,4 @@ jobs:
           git commit -m 'Rebuild verified 229-player Player Master v2' || exit 0
           git push origin HEAD:main
 
-# Trigger revision: 2
+# Trigger revision: 3
