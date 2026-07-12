@@ -1,0 +1,212 @@
+name: Connect VNL and Schedules v1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/connect-vnl-schedules-v1.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  connect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Connect VNL nation links to filtered schedules
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          vnl_path = Path('vnl.html')
+          schedules_path = Path('schedules.html')
+          vnl = vnl_path.read_text(encoding='utf-8')
+          schedules = schedules_path.read_text(encoding='utf-8')
+
+          # Navigation consistency.
+          vnl = vnl.replace('href="player-search.html">Players</a>', 'href="players.html">Players</a>')
+          schedules = schedules.replace('href="player-search.html">Players</a>', 'href="players.html">Players</a>')
+
+          css_anchor = '''    .schedule-badge {
+      display: inline-flex;'''
+          css_insert = '''    .nation-schedule-panel {
+      margin: 28px 0 10px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--panel);
+    }
+
+    .nation-schedule-panel h2 {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 22px;
+    }
+
+    .nation-schedule-panel p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .nation-schedule-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nation-schedule-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.18s ease;
+    }
+
+    .nation-schedule-links a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .schedule-badge {
+      display: inline-flex;'''
+          if '.nation-schedule-panel {' not in vnl:
+              assert css_anchor in vnl
+              vnl = vnl.replace(css_anchor, css_insert, 1)
+
+          intro_anchor = '''    </p>
+
+    <section class="team-grid" aria-label="VNL national team database list">'''
+          nation_panel = '''    </p>
+
+    <section class="nation-schedule-panel" aria-label="VNL nation schedule shortcuts">
+      <h2>국가별 VNL 일정 바로가기</h2>
+      <p>국가를 선택하면 해당 팀의 경기만 한국시간 기준 달력에서 확인할 수 있습니다.</p>
+      <div class="nation-schedule-links">
+        <a href="schedules.html?tournament=vnl&team=일본">일본</a>
+        <a href="schedules.html?tournament=vnl&team=브라질">브라질</a>
+        <a href="schedules.html?tournament=vnl&team=폴란드">폴란드</a>
+        <a href="schedules.html?tournament=vnl&team=이란">이란</a>
+        <a href="schedules.html?tournament=vnl&team=미국">미국</a>
+        <a href="schedules.html?tournament=vnl&team=프랑스">프랑스</a>
+        <a href="schedules.html?tournament=vnl&team=아르헨티나">아르헨티나</a>
+        <a href="schedules.html?tournament=vnl&team=이탈리아">이탈리아</a>
+        <a href="schedules.html?tournament=vnl">전체 일정</a>
+      </div>
+    </section>
+
+    <section class="team-grid" aria-label="VNL national team database list">'''
+          if '국가별 VNL 일정 바로가기' not in vnl:
+              assert intro_anchor in vnl
+              vnl = vnl.replace(intro_anchor, nation_panel, 1)
+
+          style_anchor = '''    .schedule-title { color: var(--gold); font-size: 28px; margin: 28px 0 14px; }
+  </style>'''
+          style_insert = '''    .schedule-title { color: var(--gold); font-size: 28px; margin: 28px 0 14px; }
+    .schedule-filter-info { display:none; align-items:center; justify-content:space-between; gap:14px; margin:18px 0 8px; padding:14px 16px; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+    .schedule-filter-info.active { display:flex; }
+    .schedule-filter-info strong { color:var(--gold); }
+    .schedule-filter-actions { display:flex; flex-wrap:wrap; gap:8px; }
+    .schedule-filter-actions a { padding:8px 12px; border:1px solid var(--line); border-radius:999px; color:var(--text); text-decoration:none; font-weight:800; }
+    .schedule-filter-actions a:hover { border-color:var(--gold); color:var(--gold); }
+    .day.no-team-game { opacity:.38; }
+    @media(max-width:700px){ .schedule-filter-info.active { align-items:flex-start; flex-direction:column; } }
+  </style>'''
+          if '.schedule-filter-info {' not in schedules:
+              assert style_anchor in schedules
+              schedules = schedules.replace(style_anchor, style_insert, 1)
+
+          tabs_anchor = '''    </div>
+
+    <div id="calendarArea"></div>'''
+          tabs_insert = '''    </div>
+
+    <div id="scheduleFilterInfo" class="schedule-filter-info"></div>
+    <div id="calendarArea"></div>'''
+          if 'id="scheduleFilterInfo"' not in schedules:
+              assert tabs_anchor in schedules
+              schedules = schedules.replace(tabs_anchor, tabs_insert, 1)
+
+          old_show = '''function showTournament(key, btn){
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+
+  const tournament = tournaments[key];
+
+  document.getElementById("calendarArea").innerHTML =
+    `<h2 class="schedule-title">${tournament.title}</h2>` +
+    tournament.months.map(month => renderCalendar(month, tournament.title)).join("");
+}'''
+          new_show = '''function showTournament(key, btn){
+  document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+
+  const tournament = tournaments[key];
+  const filterInfo = document.getElementById("scheduleFilterInfo");
+  const activeTeam = key === "vnl" ? selectedTeam : "";
+
+  if(activeTeam){
+    filterInfo.className = "schedule-filter-info active";
+    filterInfo.innerHTML = `
+      <div><strong>${activeTeam}</strong> 경기만 표시하고 있습니다.</div>
+      <div class="schedule-filter-actions">
+        <a href="schedules.html?tournament=vnl">전체 일정 보기</a>
+        <a href="vnl.html">VNL DB로 돌아가기</a>
+      </div>`;
+  } else {
+    filterInfo.className = "schedule-filter-info";
+    filterInfo.innerHTML = "";
+  }
+
+  document.getElementById("calendarArea").innerHTML =
+    `<h2 class="schedule-title">${tournament.title}${activeTeam ? ` — ${activeTeam}` : ""}</h2>` +
+    tournament.months.map(month => renderCalendar(month, tournament.title, activeTeam)).join("");
+}'''
+          if 'const activeTeam = key === "vnl" ? selectedTeam : "";' not in schedules:
+              assert old_show in schedules
+              schedules = schedules.replace(old_show, new_show, 1)
+
+          schedules = schedules.replace('function renderCalendar(month, title){', 'function renderCalendar(month, title, teamFilter=""){', 1)
+          schedules = schedules.replace('''    const dayGames = month.games[d] || [];
+    const isSunday''', '''    const allDayGames = month.games[d] || [];
+    const dayGames = teamFilter ? allDayGames.filter(game => game.match.includes(teamFilter)) : allDayGames;
+    const isSunday''', 1)
+          schedules = schedules.replace('''      <div class="day ${isSunday ? "sunday" : ""}">''', '''      <div class="day ${isSunday ? "sunday" : ""} ${teamFilter && !dayGames.length ? "no-team-game" : ""}">''', 1)
+
+          params_anchor = '''const scheduleParams = new URLSearchParams(window.location.search);
+const selectedTournament = scheduleParams.get("tournament") || "vnl";'''
+          params_insert = '''const scheduleParams = new URLSearchParams(window.location.search);
+const selectedTournament = scheduleParams.get("tournament") || "vnl";
+const selectedTeam = scheduleParams.get("team") || "";'''
+          if 'const selectedTeam = scheduleParams.get("team") || "";' not in schedules:
+              assert params_anchor in schedules
+              schedules = schedules.replace(params_anchor, params_insert, 1)
+
+          # Basic validation.
+          assert 'schedules.html?tournament=vnl&team=일본' in vnl
+          assert 'const selectedTeam = scheduleParams.get("team") || "";' in schedules
+          assert 'allDayGames.filter(game => game.match.includes(teamFilter))' in schedules
+          assert 'href="players.html">Players</a>' in vnl
+          assert 'href="players.html">Players</a>' in schedules
+
+          vnl_path.write_text(vnl, encoding='utf-8')
+          schedules_path.write_text(schedules, encoding='utf-8')
+          PY
+
+      - name: Commit VNL schedule connection
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html schedules.html
+          git commit -m 'Connect VNL nation shortcuts to filtered schedules v1' || exit 0
+          git push origin HEAD:main
