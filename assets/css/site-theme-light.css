@@ -1,0 +1,67 @@
+:root{
+  --bg:#f4f7fb;
+  --bg-deep:#eef2f7;
+  --bg-soft:#ffffff;
+  --panel:#ffffff;
+  --panel-strong:#f8fafc;
+  --line:#d9e1ea;
+  --line-strong:#d6b25e;
+  --gold:#b88922;
+  --gold-bright:#d6b25e;
+  --mint:#147d73;
+  --text:#172033;
+  --muted:#536273;
+  --soft:#748194;
+  --shadow:0 12px 32px rgba(15,35,55,.09);
+}
+html,body{font-family:Arial,"Noto Sans KR",sans-serif!important}
+body{background:#f4f7fb!important;color:#172033!important}
+main{color:#172033}
+h1,.page-title{color:#102a43!important;letter-spacing:-1px!important}
+h2,h3,h4{color:#17324d}
+.eyebrow{color:#9a6d12!important}
+.lead,.desc,.intro,.subtitle,.muted,.soft,.meta,.small{color:#59697a!important}
+.site-main,.container,.container-wide{background:transparent}
+.card,.panel,.notice,.request,.stat,.summary-card,.competition-card,.hub-card,.team-card,.entry-card,.resource-card,.nation-schedule-panel,.request-box,.hero-main,.hero-side{
+  background:#fff!important;
+  color:#172033!important;
+  border-color:#d9e1ea!important;
+  box-shadow:0 10px 26px rgba(15,35,55,.07)!important;
+}
+.card:hover,.panel:hover,.competition-card:hover,.hub-card:hover,.team-card:hover,.entry-card:hover,.resource-card:hover{
+  border-color:#c59a3d!important;
+  background:#fffdf7!important;
+}
+.card h3,.panel h3,.competition-card h2,.team-name,.section-title,.vnl-section-head h2,.resource-card strong,.entry-card strong,.hub-card strong{
+  color:#9a6d12!important;
+}
+.card p,.panel p,.competition-card p,.status,.note,.section-title p,.vnl-section-head p,.resource-card p,.entry-card p,.hub-card p{
+  color:#59697a!important;
+}
+.btn,.button,.primary-link,.chip,.filter,.filters button,.tabs button,.schedule-links a,.nation-schedule-links a,.card-actions a,.card-actions span{
+  background:#fff!important;
+  color:#203247!important;
+  border-color:#cfd8e3!important;
+}
+.btn.primary,.button.primary,.primary-link,.tabs button.active,.chip.active,.filter.active,.filters button.active{
+  background:#d6b25e!important;
+  color:#102033!important;
+  border-color:#d6b25e!important;
+}
+input,select,textarea{
+  background:#fff!important;
+  color:#172033!important;
+  border-color:#cfd8e3!important;
+}
+input::placeholder,textarea::placeholder{color:#8793a3!important}
+table{background:#fff!important;color:#172033!important}
+th{background:#eef3f8!important;color:#17324d!important;border-color:#d9e1ea!important}
+td{color:#25364a!important;border-color:#e1e7ee!important}
+tr:hover td{background:#fffaf0!important}
+.site-footer,footer{color:#748194!important;border-color:#d9e1ea!important;background:#eef2f7!important}
+.tag,.badge,.schedule-badge{background:#f6ecd2!important;color:#8a6110!important}
+.note,.notice{background:#fffaf0!important}
+@media(max-width:820px){
+  h1,.page-title{font-size:clamp(32px,10vw,48px)!important}
+  .container,.site-main,.container-wide{padding-left:14px!important;padding-right:14px!important}
+}
