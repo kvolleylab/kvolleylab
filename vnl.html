@@ -1,203 +1,57 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W1HCP269F"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9W1HCP269F');
-  </script>
-
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-9W1HCP269F');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Competition | K-Volley Lab</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 16px;
-      margin-top: 30px;
-    }
-
-    .team-card {
-      display: block;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 22px;
-      text-decoration: none;
-      color: var(--text);
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-    }
-
-    .team-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-      background: rgba(214, 178, 94, 0.12);
-    }
-
-    .flag-img {
-      width: 72px;
-      height: 48px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      margin-bottom: 14px;
-      background: #ffffff;
-    }
-
-    .team-name {
-      color: var(--gold);
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .status {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    .schedule-card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-
-    .schedule-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 11px;
-      border-radius: 999px;
-      background: rgba(214, 178, 94, 0.16);
-      color: var(--gold);
-      font-size: 13px;
-      font-weight: 800;
-    }
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:30px}
+    .team-card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none;color:var(--text);transition:.18s ease}
+    .team-card:hover{transform:translateY(-4px);border-color:var(--gold);background:rgba(214,178,94,.12)}
+    .flag-img{width:72px;height:48px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,.25);margin-bottom:14px;background:#fff}
+    .team-name{color:var(--gold);font-size:20px;font-weight:800;margin-bottom:6px}.status{color:var(--muted);font-size:14px;line-height:1.55}
+    .nation-schedule-panel{margin:28px 0 10px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+    .nation-schedule-panel h2{margin:0 0 8px;color:var(--gold);font-size:22px}.nation-schedule-panel p{margin:0 0 16px;color:var(--muted)}
+    .nation-schedule-links{display:flex;flex-wrap:wrap;gap:10px}.nation-schedule-links a{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--text);text-decoration:none;font-weight:800;transition:.18s ease}.nation-schedule-links a:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+    .schedule-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}.schedule-badge{display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;background:rgba(214,178,94,.16);color:var(--gold);font-size:13px;font-weight:800}
   </style>
 </head>
-
 <body>
-  <header class="site-header">
-    <a class="site-logo" href="index.html">K-Volley Lab</a>
-    <nav class="site-nav">
-      <a href="index.html">Home</a>
-      <a href="player-search.html">Players</a>
-      <a class="active" href="vnl.html">Competition</a>
-      <a href="schedules.html">Schedules</a>
-      <a href="simulator.html">Simulator</a>
-      <a href="pamphlet-archive.html">Pamphlets</a>
-      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a>
-    </nav>
-  </header>
+<header class="site-header">
+  <a class="site-logo" href="index.html">K-Volley Lab</a>
+  <nav class="site-nav"><a href="index.html">Home</a><a href="players.html">Players</a><a class="active" href="vnl.html">Competition</a><a href="schedules.html">Schedules</a><a href="simulator.html">Simulator</a><a href="pamphlet-archive.html">Pamphlets</a><a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a></nav>
+</header>
+<main class="site-main">
+  <p class="eyebrow">Competition Database</p>
+  <h1>2026 VNL Men National Team Database</h1>
+  <p class="intro">2026 VNL 남자부 참가국의 대표팀 선수 정보, 포지션, 신장, 생년월일, 엔트리 변화, Volleybox 프로필 링크를 국가별로 정리하는 페이지입니다.</p>
 
-  <main class="site-main">
-    <p class="eyebrow">Competition Database</p>
-    <h1>2026 VNL Men National Team Database</h1>
-    <p class="intro">
-      2026 VNL 남자부 참가국의 대표팀 선수 정보, 포지션, 신장, 생년월일,
-      엔트리 변화, Volleybox 프로필 링크를 국가별로 정리하는 페이지입니다.
-    </p>
+  <section class="nation-schedule-panel" aria-label="VNL nation schedule shortcuts">
+    <h2>국가별 VNL 일정 바로가기</h2>
+    <p>국가를 선택하면 해당 팀의 경기만 한국시간 기준 달력에서 확인할 수 있습니다.</p>
+    <div class="nation-schedule-links">
+      <a href="schedules.html?tournament=vnl&team=일본">일본</a><a href="schedules.html?tournament=vnl&team=브라질">브라질</a><a href="schedules.html?tournament=vnl&team=폴란드">폴란드</a><a href="schedules.html?tournament=vnl&team=이란">이란</a><a href="schedules.html?tournament=vnl&team=미국">미국</a><a href="schedules.html?tournament=vnl&team=프랑스">프랑스</a><a href="schedules.html?tournament=vnl&team=아르헨티나">아르헨티나</a><a href="schedules.html?tournament=vnl&team=이탈리아">이탈리아</a><a href="schedules.html?tournament=vnl">전체 일정</a>
+    </div>
+  </section>
 
-    <section class="team-grid" aria-label="VNL national team database list">
-      <a class="team-card" href="japan.html">
-        <img class="flag-img" src="https://flagcdn.com/w160/jp.png" alt="Japan flag">
-        <div class="team-name">Japan</div>
-        <div class="status">Players: 29</div>
-        <div class="status">Head Coach: Laurent Tillie</div>
-        <div class="status">DB Status: Complete</div>
-      </a>
+  <section class="team-grid" aria-label="VNL national team database list">
+    <a class="team-card" href="japan.html"><img class="flag-img" src="https://flagcdn.com/w160/jp.png" alt="Japan flag"><div class="team-name">Japan</div><div class="status">Players: 29</div><div class="status">Head Coach: Laurent Tillie</div><div class="status">DB Status: Complete</div></a>
+    <a class="team-card" href="brazil.html"><img class="flag-img" src="https://flagcdn.com/w160/br.png" alt="Brazil flag"><div class="team-name">Brazil</div><div class="status">Players: 30</div><div class="status">Head Coach: Bernardinho</div><div class="status">DB Status: Complete</div></a>
+    <a class="team-card" href="poland.html"><img class="flag-img" src="https://flagcdn.com/w160/pl.png" alt="Poland flag"><div class="team-name">Poland</div><div class="status">Players: 30</div><div class="status">Head Coach: Nikola Grbić</div><div class="status">DB Status: Complete</div></a>
+    <a class="team-card" href="schedules.html?tournament=vnl&team=이란"><img class="flag-img" src="https://flagcdn.com/w160/ir.png" alt="Iran flag"><div class="team-name">Iran</div><div class="status">Players: Preparing</div><div class="status">DB Status: Building</div></a>
+    <a class="team-card" href="schedules.html?tournament=vnl&team=미국"><img class="flag-img" src="https://flagcdn.com/w160/us.png" alt="USA flag"><div class="team-name">USA</div><div class="status">Players: Preparing</div><div class="status">DB Status: Building</div></a>
+    <a class="team-card" href="schedules.html?tournament=vnl&team=프랑스"><img class="flag-img" src="https://flagcdn.com/w160/fr.png" alt="France flag"><div class="team-name">France</div><div class="status">Players: Preparing</div><div class="status">DB Status: Building</div></a>
+    <a class="team-card" href="schedules.html?tournament=vnl&team=아르헨티나"><img class="flag-img" src="https://flagcdn.com/w160/ar.png" alt="Argentina flag"><div class="team-name">Argentina</div><div class="status">Players: Preparing</div><div class="status">DB Status: Building</div></a>
+    <a class="team-card" href="schedules.html?tournament=vnl&team=이탈리아"><img class="flag-img" src="https://flagcdn.com/w160/it.png" alt="Italy flag"><div class="team-name">Italy</div><div class="status">Players: Preparing</div><div class="status">DB Status: Building</div></a>
+  </section>
 
-      <a class="team-card" href="brazil.html">
-        <img class="flag-img" src="https://flagcdn.com/w160/br.png" alt="Brazil flag">
-        <div class="team-name">Brazil</div>
-        <div class="status">Players: 30</div>
-        <div class="status">Head Coach: Bernardinho</div>
-        <div class="status">DB Status: Complete</div>
-      </a>
+  <section class="section"><div class="section-title"><div><p class="eyebrow">Schedule</p><h2>VNL 경기 일정</h2></div><p>2026 VNL 남자부 예선전 일정을 한국시간 기준 월별 달력으로 확인할 수 있습니다.</p></div><div class="schedule-card-grid"><article class="card featured"><div><span class="schedule-badge">2026</span><h3>VNL 남자부 예선전</h3><p>경기 일정, 개최지, 한국시간 기준 경기 시간을 한눈에 확인합니다.</p></div><a class="btn primary" href="schedules.html?tournament=vnl">일정 보기</a></article></div></section>
 
-      <a class="team-card" href="poland.html">
-        <img class="flag-img" src="https://flagcdn.com/w160/pl.png" alt="Poland flag">
-        <div class="team-name">Poland</div>
-        <div class="status">Players: 30</div>
-        <div class="status">Head Coach: Nikola Grbić</div>
-        <div class="status">DB Status: Complete</div>
-      </a>
-
-      <a class="team-card" href="#">
-        <img class="flag-img" src="https://flagcdn.com/w160/ir.png" alt="Iran flag">
-        <div class="team-name">Iran</div>
-        <div class="status">Players: Preparing</div>
-        <div class="status">DB Status: Building</div>
-      </a>
-
-      <a class="team-card" href="#">
-        <img class="flag-img" src="https://flagcdn.com/w160/us.png" alt="USA flag">
-        <div class="team-name">USA</div>
-        <div class="status">Players: Preparing</div>
-        <div class="status">DB Status: Building</div>
-      </a>
-
-      <a class="team-card" href="#">
-        <img class="flag-img" src="https://flagcdn.com/w160/fr.png" alt="France flag">
-        <div class="team-name">France</div>
-        <div class="status">Players: Preparing</div>
-        <div class="status">DB Status: Building</div>
-      </a>
-
-      <a class="team-card" href="#">
-        <img class="flag-img" src="https://flagcdn.com/w160/ar.png" alt="Argentina flag">
-        <div class="team-name">Argentina</div>
-        <div class="status">Players: Preparing</div>
-        <div class="status">DB Status: Building</div>
-      </a>
-
-      <a class="team-card" href="#">
-        <img class="flag-img" src="https://flagcdn.com/w160/it.png" alt="Italy flag">
-        <div class="team-name">Italy</div>
-        <div class="status">Players: Preparing</div>
-        <div class="status">DB Status: Building</div>
-      </a>
-    </section>
-
-    <section class="request">
-      <h2>정보 수정 및 등록 요청</h2>
-      <p>대표팀 명단, 선수 정보, 엔트리 변동사항을 제보해 주세요.</p>
-      <a class="btn primary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">
-        정보 수정 및 등록 요청하기
-      </a>
-    </section>
-
-    <section class="section">
-      <div class="section-title">
-        <div>
-          <p class="eyebrow">Schedule</p>
-          <h2>VNL 경기 일정</h2>
-        </div>
-        <p>
-          2026 VNL 남자부 예선전 일정을 한국시간 기준 월별 달력으로 확인할 수 있습니다.
-        </p>
-      </div>
-
-      <div class="schedule-card-grid">
-        <article class="card featured">
-          <div>
-            <span class="schedule-badge">2026</span>
-            <h3>VNL 남자부 예선전</h3>
-            <p>경기 일정, 개최지, 한국시간 기준 경기 시간을 한눈에 확인합니다.</p>
-          </div>
-          <a class="btn primary" href="schedules.html?tournament=vnl">일정 보기</a>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    © 2026 K-Volley Lab. Korean Volleyball Data & Analytics.
-  </footer>
+  <section class="request"><h2>정보 수정 및 등록 요청</h2><p>대표팀 명단, 선수 정보, 엔트리 변동사항을 제보해 주세요.</p><a class="btn primary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">정보 수정 및 등록 요청하기</a></section>
+</main>
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 </body>
 </html>
