@@ -50,7 +50,7 @@ input,select{width:100%;box-sizing:border-box;padding:14px;border-radius:10px;bo
 </div>
 <div class="player-grid" id="playerGrid"></div>
 <script>
-const MASTER_URL = "data/master/player_master.json";
+const MASTER_URL = `data/master/player_master.json?v=229-${Date.now()}`;
 let players = [];
 
 const schoolNames = {
@@ -95,7 +95,7 @@ function normalize(player){
   };
 }
 
-fetch(MASTER_URL)
+fetch(MASTER_URL,{cache:"no-store"})
   .then(response => {
     if(!response.ok) throw new Error(`Player Master load failed: ${response.status}`);
     return response.json();
