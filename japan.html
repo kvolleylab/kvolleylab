@@ -1,359 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W1HCP269F"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9W1HCP269F');
-  </script>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Japan | K-Volley Lab</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #071827;
-      color: #ffffff;
-    }
-
-    header {
-      padding: 24px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #d6b25e;
-    }
-
-    nav a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px;
-    }
-
-    .team-header {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-      margin-bottom: 30px;
-    }
-
-    .team-header img {
-      width: 96px;
-      height: 64px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: #fff;
-    }
-
-    h1 {
-      color: #d6b25e;
-      font-size: 44px;
-      margin: 0 0 8px;
-    }
-
-    .subtitle {
-      color: #d9e2ec;
-      font-size: 17px;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin: 34px 0;
-    }
-
-    .summary-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 20px;
-    }
-
-    .summary-card .label {
-      color: #94a3b8;
-      font-size: 13px;
-      margin-bottom: 8px;
-    }
-
-    .summary-card .value {
-      color: #ffffff;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .section-title {
-      color: #d6b25e;
-      font-size: 26px;
-      margin: 42px 0 18px;
-    }
-
-    .note {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 22px;
-      color: #cbd5e1;
-      line-height: 1.7;
-      margin-bottom: 26px;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.14);
-    }
-
-    table {
-      width: 100%;
-      min-width: 980px;
-      border-collapse: collapse;
-      background: rgba(255,255,255,0.06);
-    }
-
-    th, td {
-      padding: 13px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      text-align: left;
-      font-size: 14px;
-    }
-
-    th {
-      color: #d6b25e;
-      background: rgba(255,255,255,0.08);
-      font-weight: bold;
-    }
-
-    td {
-      color: #e5edf5;
-    }
-
-    tr:hover td {
-      background: rgba(214,178,94,0.08);
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(214,178,94,0.16);
-      color: #d6b25e;
-      font-weight: bold;
-      font-size: 12px;
-    }
-
-    .roster-o {
-      color: #22c55e;
-      font-weight: bold;
-    }
-
-    .roster-wait {
-      color: #facc15;
-      font-weight: bold;
-    }
-
-    .link {
-      color: #d6b25e;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .request-box {
-      margin-top: 42px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 28px;
-      text-align: center;
-    }
-
-    .button {
-      display: inline-block;
-      margin-top: 18px;
-      background: #d6b25e;
-      color: #071827;
-      padding: 14px 24px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #94a3b8;
-      font-size: 13px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-    }
-
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      nav a {
-        margin: 0 8px;
-      }
-
-      .team-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      h1 {
-        font-size: 34px;
-      }
-    }
-  </style>
-  <script src="assets/js/unified-nav.js" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Japan Active Entry | K-Volley Lab</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/unified-nav.js" defer></script>
+<style>
+body{margin:0;background:#071827;color:#fff;font-family:Arial,sans-serif}
+main{max-width:1200px;margin:auto;padding:56px 20px 80px}
+.hero{display:flex;gap:22px;align-items:center;margin-bottom:28px} .hero img{width:96px;height:64px;object-fit:cover;border-radius:10px;background:#fff}
+h1{margin:0;color:#d6b25e;font-size:clamp(34px,5vw,52px)} .lead{color:#cbd5e1;line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:26px 0}
+.stat{padding:18px;border:1px solid rgba(255,255,255,.14);border-radius:16px;background:rgba(255,255,255,.06)} .stat b{display:block;font-size:24px;color:#d6b25e;margin-top:5px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 34px} .actions a{padding:10px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;color:#fff;text-decoration:none;font-weight:800} .actions a:hover{border-color:#d6b25e;color:#d6b25e}
+h2{margin:38px 0 14px;color:#d6b25e} .table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.14);border-radius:16px}
+table{width:100%;min-width:900px;border-collapse:collapse;background:rgba(255,255,255,.05)} th,td{padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.1);text-align:left} th{color:#d6b25e;background:rgba(255,255,255,.07)} .sub{font-size:12px;color:#94a3b8;margin-top:4px} .pos{display:inline-block;padding:4px 9px;border-radius:999px;background:rgba(214,178,94,.16);color:#d6b25e;font-weight:800} td a{color:#d6b25e;font-weight:800;text-decoration:none} .note{padding:16px;border-radius:14px;background:rgba(214,178,94,.08);border:1px solid rgba(214,178,94,.3);color:#cbd5e1;line-height:1.65}
+@media(max-width:700px){main{padding:36px 14px 60px}.hero{align-items:flex-start;flex-direction:column}}
+</style>
 </head>
-
 <body>
-
-  <header>
-    <div class="logo">K-Volley Lab</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="vnl.html">VNL</a>
-      <a href="simulator.html">Simulator</a>
-      <a href="transfers.html">Transfers</a>
-      <a href="college.html">College</a>
-      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">Request</a>
-    </nav>
-  </header>
-
-  <main class="container">
-
-    <section class="team-header">
-      <img src="https://flagcdn.com/w160/jp.png" alt="Japan flag">
-      <div>
-        <h1>Japan Men’s National Team</h1>
-        <p class="subtitle">
-          2026 VNL 남자부 일본 대표팀 선수 데이터베이스입니다.
-          선수 정보는 검증 후 순차적으로 업데이트됩니다.
-        </p>
-      </div>
-    </section>
-
-    <section class="summary-grid">
-      <div class="summary-card">
-        <div class="label">Country</div>
-        <div class="value">Japan 🇯🇵</div>
-      </div>
-      <div class="summary-card">
-        <div class="label">Competition</div>
-        <div class="value">VNL 2026 Men</div>
-      </div>
-      <div class="summary-card">
-<div class="label">Roster Size</div>
-<div class="value" id="rosterSize">Loading...</div>
-      </div>
-      <div class="summary-card">
-        <div class="label">Data Status</div>
-        <div class="value">Building</div>
-      </div>
-    </section>
-
-    <div class="note">
-      이 페이지는 국가별 대표팀 DB의 표준 템플릿입니다.
-      향후 Brazil, Poland, Iran 등 다른 국가 페이지도 같은 구조로 확장할 예정입니다.
-    </div>
-
-    <h2 class="section-title">Player Database</h2>
-
-    <div class="table-wrap">
-      <table>
-<thead>
-<tr>
-<th>#</th>
-<th>Player</th>
-<th>한글명</th>
-<th>Pos</th>
-<th>Height</th>
-<th>DOB</th>
-<th>Current Club</th>
-<th>Week1</th>
-<th>Week2</th>
-<th>Week3</th>
-<th>Volleybox</th>
-</tr>
-</thead>
-        <tbody id="playerTableBody">
-</tbody>
-      </table>
-    </div>
-
-    <section class="request-box">
-      <h2>Japan 선수 정보 제보</h2>
-      <p>명단, 신장, 생년월일, 소속팀, Volleybox 링크 오류를 제보해 주세요.</p>
-      <a class="button" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">
-        정보 수정 및 등록 요청하기
-      </a>
-    </section>
-
-  </main>
-
-  <footer>
-    © 2026 K-Volley Lab. Korean Volleyball Data & Analytics.
-  </footer>
-<script>
-let players = [];
-
-fetch("players.json")
-  .then(response => response.json())
-  .then(data => {
-
-    players = data.filter(player => player.country === "Japan");
-
-    renderJapanPlayers(players);
-
-    document.getElementById("rosterSize").innerText =
-      players.length + " Players";
-
-  });
-
-function renderJapanPlayers(list){
-  const tbody = document.getElementById("playerTableBody");
-
-  tbody.innerHTML = list.map(player => `
-    <tr>
-      <td>${player.number}</td>
-      <td>${player.name}</td>
-      <td>${player.korean}</td>
-      <td><span class="tag">${player.position}</span></td>
-      <td>${player.height}</td>
-      <td>${player.dob}</td>
-      <td>${player.club || "TBD"}</td>
-      <td><span class="roster-wait">${player.week1 || "△"}</span></td>
-      <td><span class="roster-wait">${player.week2 || "△"}</span></td>
-      <td><span class="roster-wait">${player.week3 || "△"}</span></td>
-      <td><a class="link" href="${player.volleybox}" target="_blank">Volleybox</a></td>
-    </tr>
-  `).join("");
-}
-</script>
-</body>
-</html>
+<header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+<main>
+<section class="hero"><img src="https://flagcdn.com/w160/jp.png" alt="일본 국기"><div><p class="eyebrow">VNL 2026 · Osaka Entry</p><h1>Japan Active Entry</h1><p class="lead">2026 VNL 오사카 기준 일본 대표팀 Active 엔트리와 Reserve 명단입니다.</p></div></section>
+<div class="stats"><div class="stat">감독<b>Laurent Tillie</b></div><div class="stat">Active<b>14명</b></div><div class="stat">Reserve<b>2명</b></div><div class="stat">자료 기준<b>v25</b></div></div>
+<div class="actions"><a href="vnl.html#entries">VNL 엔트리 허브</a><a href="schedules.html?tournament=vnl&team=일본">일본 일정</a><a href="players.html">선수 검색</a></div>
+<div class="note"><strong>표기 원칙:</strong> 국가별 엔트리 인원은 대회·주차에 따라 달라질 수 있으므로 14인으로 고정하지 않고 Active / Reserve로 구분합니다.</div>
+<h2>Active 엔트리</h2><div class="table-wrap"><table><thead><tr><th>#</th><th>선수</th><th>포지션</th><th>키</th><th>생년월일</th><th>예상 연봉</th><th>출처</th></tr></thead><tbody><tr><td>2</td><td><strong>Taishi Onodera</strong><div class="sub">오노데라 타이시</div></td><td><span class="pos">MB</span></td><td>202cm</td><td>1996-02-27</td><td>US$200,000~350,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/142565" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>3</td><td><strong>Akihiro Fukatsu</strong><div class="sub">후카츠 아키히로</div></td><td><span class="pos">S</span></td><td>183cm</td><td>1987-07-23</td><td>US$100,000~220,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/118822" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>4</td><td><strong>Kento Miyaura</strong><div class="sub">미야우라 켄토</div></td><td><span class="pos">O</span></td><td>190cm</td><td>1999-02-22</td><td>US$300,000~500,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/163038" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>5</td><td><strong>Tatsunori Otsuka</strong><div class="sub">오츠카 타츠노리</div></td><td><span class="pos">OH</span></td><td>195cm</td><td>2000-11-05</td><td>US$180,000~300,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/163516" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>6</td><td><strong>Akihiro Yamauchi</strong><div class="sub">야마우치 아키히로</div></td><td><span class="pos">MB</span></td><td>204cm</td><td>1993-11-30</td><td>US$180,000~320,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/146409" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>11</td><td><strong>Shoma Tomita</strong><div class="sub">토미타 쇼마</div></td><td><span class="pos">OH</span></td><td>190cm</td><td>1997-06-20</td><td>US$120,000~240,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/178761" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>12</td><td><strong>Ran Takahashi</strong><div class="sub">다카하시 란</div></td><td><span class="pos">OH</span></td><td>188cm</td><td>2001-09-02</td><td>US$500,000~800,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/178762" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>13</td><td><strong>Tomohiro Ogawa</strong><div class="sub">오가와 토모히로</div></td><td><span class="pos">L</span></td><td>176cm</td><td>1996-07-04</td><td>US$80,000~160,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/180990" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>14</td><td><strong>Yuki Ishikawa</strong><div class="sub">이시카와 유키</div></td><td><span class="pos">OH</span></td><td>191cm</td><td>1995-12-11</td><td>US$750,000~1,100,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/142568" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>15</td><td><strong>Masato Kai</strong><div class="sub">카이 마사토</div></td><td><span class="pos">OH</span></td><td>200cm</td><td>2003-09-25</td><td>US$120,000~240,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/189064" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>17</td><td><strong>Keigo Nishimoto</strong><div class="sub">니시모토 케이고</div></td><td><span class="pos">MB</span></td><td>188cm</td><td>1998-10-27</td><td>US$100,000~220,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/209863" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>20</td><td><strong>Tomohiro Yamamoto</strong><div class="sub">야마모토 토모히로</div></td><td><span class="pos">L</span></td><td>171cm</td><td>1994-11-05</td><td>US$150,000~260,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/172893" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>21</td><td><strong>Motoki Eiro</strong><div class="sub">에이로 모토키</div></td><td><span class="pos">S</span></td><td>192cm</td><td>1996-06-08</td><td>US$100,000~220,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/142562" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>23</td><td><strong>Larry Ik Evbade-Dan</strong><div class="sub">래리 이크 에브바데-단</div></td><td><span class="pos">MB</span></td><td>195cm</td><td>2000-08-18</td><td>US$100,000~220,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/189039" target="_blank" rel="noopener">공식 프로필</a></td></tr></tbody></table></div>
+<h2>Reserve</h2><div class="table-wrap"><table><thead><tr><th>#</th><th>선수</th><th>포지션</th><th>키</th><th>생년월일</th><th>예상 연봉</th><th>출처</th></tr></thead><tbody><tr><td>10</td><td><strong>Kentaro Takahashi</strong><div class="sub">다카하시 켄타로</div></td><td><span class="pos">MB</span></td><td>201cm</td><td>1995-02-08</td><td>US$180,000~320,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/142561" target="_blank" rel="noopener">공식 프로필</a></td></tr>
+<tr><td>1</td><td><strong>Yuji Nishida</strong><div class="sub">니시다 유지</div></td><td><span class="pos">O</span></td><td>187cm</td><td>2000-01-30</td><td>US$600,000~900,000</td><td><a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/163519" target="_blank" rel="noopener">공식 프로필</a></td></tr></tbody></table></div>
+</main>
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+</body></html>
