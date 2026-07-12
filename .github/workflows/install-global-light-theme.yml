@@ -48,3 +48,5 @@ jobs:
           git add -- '*.html'
           git commit -m 'Install unified light theme across site pages' || exit 0
           git push origin HEAD:main
+
+# Triggered after theme stylesheet creation.
