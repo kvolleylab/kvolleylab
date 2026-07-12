@@ -4,335 +4,153 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Player Search | K-Volley Lab</title>
-
 <style>
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#0f172a;
-    color:white;
-}
-
-header{
-    background:#111827;
-    padding:20px;
-    text-align:center;
-}
-
-h1{
-    margin:0;
-    color:#fbbf24;
-}
-
-.search-box{
-    max-width:700px;
-    margin:30px auto;
-    text-align:center;
-}
-
-input{
-    width:80%;
-    padding:14px;
-    border-radius:10px;
-    border:none;
-    font-size:16px;
-}
-
-.player-grid{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-    gap:15px;
-    padding:20px;
-}
-
-.card{
-    .card:hover{
-    transform:translateY(-4px);
-    transition:0.2s;
-    box-shadow:0 8px 24px rgba(0,0,0,0.3);
-}
-    background:#1e293b;
-    border-radius:12px;
-    padding:15px;
-}
-
-.card h3{
-    margin-top:0;
-    color:#fbbf24;
-}
-
-.country{
-    color:#93c5fd;
-}
-
-a{
-    color:#fbbf24;
-    text-decoration:none;
-}
-
-.top-menu{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 40px;
-    background:#111827;
-    border-bottom:1px solid rgba(255,255,255,0.1);
-}
-
-.logo{
-    font-size:28px;
-    font-weight:bold;
-    color:#fbbf24;
-}
-
-.top-menu nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:20px;
-}
-
-.top-menu nav a:hover{
-    color:#fbbf24;
-}
-
-.filters{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.filters button{
-    margin:5px;
-    padding:10px 18px;
-    border:none;
-    border-radius:8px;
-    background:#1e293b;
-    color:white;
-    cursor:pointer;
-}
-
-.filters button:hover{
-    background:#fbbf24;
-    color:black;
-}
-
-.filter-btn.active{
-  background:#d6b25e;
-  color:#071827;
-  font-weight:bold;
-}
-
-.site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-.site-nav a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 13px;
-  border-radius: 999px;
-  color: #d7e4ef;
-  font-weight: 700;
-  text-decoration: none;
-  transition: 0.18s ease;
-}
-
-.site-nav a:hover {
-  background: rgba(225, 184, 79, 0.14);
-  color: #e1b84f;
-}
-
-.site-nav a.active {
-  background: #e1b84f;
-  color: #071b2a;
-}
-    
+body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:white}
+.top-menu{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:#111827;border-bottom:1px solid rgba(255,255,255,.1)}
+.logo{font-size:28px;font-weight:bold;color:#fbbf24}
+.site-nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border-radius:999px;color:#d7e4ef;font-weight:700;text-decoration:none;transition:.18s ease}
+.site-nav a:hover{background:rgba(225,184,79,.14);color:#e1b84f}
+.site-nav a.active{background:#e1b84f;color:#071b2a}
+.hero{background:#111827;padding:28px 20px;text-align:center}
+h1{margin:0;color:#fbbf24}
+#stats{margin-top:15px;color:#94a3b8}
+.search-box{max-width:900px;margin:30px auto 10px;padding:0 20px;display:grid;grid-template-columns:1fr 220px;gap:12px}
+input,select{width:100%;box-sizing:border-box;padding:14px;border-radius:10px;border:none;font-size:16px}
+.player-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;padding:20px}
+.card{background:#1e293b;border-radius:12px;padding:18px;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.card h3{margin:0 0 8px;color:#fbbf24}
+.meta{color:#cbd5e1;margin-top:7px}
+.muted{color:#94a3b8}
+.code{font-size:13px;color:#93c5fd;margin-bottom:12px}
+.empty{grid-column:1/-1;text-align:center;color:#94a3b8;padding:50px 20px}
+@media(max-width:700px){.top-menu{padding:18px 20px;align-items:flex-start;gap:14px;flex-direction:column}.search-box{grid-template-columns:1fr}.logo{font-size:24px}}
 </style>
 </head>
-
 <body>
-
 <header class="top-menu">
-    <div class="logo">K-Volley Lab</div>
-
-<nav class="site-nav">
-  <a href="index.html">Home</a>
-  <a href="vnl.html">VNL</a>
-  <a href="players.html" class="active">Players</a>
-  <a href="schedules.html">Schedules</a>
-</nav>
+  <div class="logo">K-Volley Lab</div>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="vnl.html">VNL</a>
+    <a href="players.html" class="active">Players</a>
+    <a href="schedules.html">Schedules</a>
+  </nav>
 </header>
-
-<header>
-<h1>K-Volley Lab Player Search</h1>
-
-<div id="stats" style="margin-top:15px;color:#94a3b8;">
-Loading...
-</div>
-
-</header>
-
+<section class="hero">
+  <h1>K-Volley Lab Player Search</h1>
+  <div id="stats">Loading...</div>
+</section>
 <div class="search-box">
-<input type="text" id="searchInput" placeholder="선수 이름 검색...">
+  <input type="text" id="searchInput" placeholder="선수 이름, ID, 생년월일 검색...">
+  <select id="schoolFilter" aria-label="학교 필터">
+    <option value="All">전체 대학</option>
+  </select>
 </div>
-
-<div class="filters">
-<button class="country-btn active" onclick="filterCountry('All', this)">All</button>
-<button class="country-btn" onclick="filterCountry('Japan', this)">Japan</button>
-<button class="country-btn" onclick="filterCountry('Brazil', this)">Brazil</button>
-<button class="country-btn" onclick="filterCountry('Poland', this)">Poland</button>
-</div>
-
-<div class="filters">
-<button class="position-btn active" onclick="filterPosition('All', this)">ALL</button>
-<button class="position-btn" onclick="filterPosition('OH', this)">OH</button>
-<button class="position-btn" onclick="filterPosition('MB', this)">MB</button>
-<button class="position-btn" onclick="filterPosition('S', this)">S</button>
-<button class="position-btn" onclick="filterPosition('O', this)">OP</button>
-<button class="position-btn" onclick="filterPosition('L', this)">L</button>
-</div>
-
 <div class="player-grid" id="playerGrid"></div>
-
 <script>
-
+const MASTER_URL = "data/master/player_master.json";
 let players = [];
-let selectedCountry = "All";
-let selectedPosition = "All";
 
-fetch("players.json")
-  .then(response => response.json())
-  .then(data => {
+const schoolNames = {
+  INHA:"인하대학교", SKKU:"성균관대학교", HONGIK:"홍익대학교", KYUNGHEE:"경희대학교",
+  MYONGJI:"명지대학교", KYUNGIL:"경일대학교", HONAM:"호남대학교", JOONGBU:"중부대학교",
+  HANYANG:"한양대학교", KYONGGI:"경기대학교", CHOSUN:"조선대학교", MOKPO:"목포대학교",
+  CHUNGNAM:"충남대학교", GYEONGSANG:"경상국립대학교", WOOSUK:"우석대학교"
+};
 
-      players = data;
-
-      renderPlayers(players);
-
-      const countries =
-          [...new Set(players.map(p => p.country))];
-
-      document.getElementById("stats").innerHTML =
-          `Total Players : ${players.length} | Countries : ${countries.length}`;
-
-  });
-
-function getFlag(flag){
-    const flagMap = {
-        "BR":"🇧🇷",
-        "JP":"🇯🇵",
-        "PL":"🇵🇱",
-        "IR":"🇮🇷",
-        "US":"🇺🇸",
-        "FR":"🇫🇷",
-        "IT":"🇮🇹",
-        "AR":"🇦🇷",
-        "DE":"🇩🇪",
-        "CU":"🇨🇺",
-        "CA":"🇨🇦",
-        "RS":"🇷🇸",
-        "SI":"🇸🇮"
-    };
-
-    return flagMap[flag] || flag || "";
+function schoolCode(player){
+  const source = (player.source_ids || []).find(id => id.includes("UNIV-2026-")) || "";
+  const match = source.match(/UNIV-2026-([A-Z]+)-/);
+  return match ? match[1] : "UNKNOWN";
 }
 
+function schoolLabel(player){
+  const code = schoolCode(player);
+  return schoolNames[code] || code;
+}
+
+function text(value, fallback="-"){
+  return value === null || value === undefined || value === "" ? fallback : String(value);
+}
+
+function escapeHtml(value){
+  return String(value).replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
+}
+
+function normalize(player){
+  return {
+    id: player.system?.player_id || "",
+    displayCode: player.system?.display_code || "",
+    status: player.system?.status || "",
+    nameKo: player.identity?.name_ko || "",
+    nameEn: player.identity?.name_en || "",
+    nationality: player.identity?.nationality || "",
+    birthDate: player.identity?.birth_date || "",
+    height: player.physical?.height_cm,
+    volleybox: player.links?.volleybox || "",
+    schoolCode: schoolCode(player),
+    school: schoolLabel(player)
+  };
+}
+
+fetch(MASTER_URL)
+  .then(response => {
+    if(!response.ok) throw new Error(`Player Master load failed: ${response.status}`);
+    return response.json();
+  })
+  .then(data => {
+    players = data.map(normalize);
+    const schools = [...new Set(players.map(p => p.schoolCode).filter(code => code !== "UNKNOWN"))].sort();
+    const filter = document.getElementById("schoolFilter");
+    schools.forEach(code => {
+      const option = document.createElement("option");
+      option.value = code;
+      option.textContent = schoolNames[code] || code;
+      filter.appendChild(option);
+    });
+    document.getElementById("stats").textContent = `등록 선수 ${players.length}명 | 대학 ${schools.length}개 | Player Master 기준`;
+    applyFilters();
+  })
+  .catch(error => {
+    console.error(error);
+    document.getElementById("stats").textContent = "선수 데이터를 불러오지 못했습니다.";
+    document.getElementById("playerGrid").innerHTML = '<div class="empty">Player Master 로딩 오류</div>';
+  });
+
 function renderPlayers(list){
-
-    const grid=document.getElementById("playerGrid");
-
-    grid.innerHTML=list.map(player=>`
-
-<div class="card"
-onclick="window.location.href='player.html?name=${encodeURIComponent(player.name)}'"
-style="cursor:pointer;">
-<h3>#${player.number} ${player.name}</h3>
-
-<div>${player.korean}</div>
-
-<div class="country">${getFlag(player.flag)} ${player.country}</div>
-
-<div>Position : ${player.position}</div>
-
-<div>Height : ${player.height}cm</div>
-
-<div>DOB : ${player.dob || "-"}</div>
-
-<div style="margin-top:10px;">
-<a href="${player.volleybox}" target="_blank">
-Volleybox →
-</a>
-</div>
-
-</div>
-
-`).join("");
-
+  const grid = document.getElementById("playerGrid");
+  if(!list.length){
+    grid.innerHTML = '<div class="empty">검색 결과가 없습니다.</div>';
+    return;
+  }
+  grid.innerHTML = list.map(player => `
+    <article class="card" onclick="location.href='player.html?id=${encodeURIComponent(player.id)}'">
+      <h3>${escapeHtml(player.nameKo || player.nameEn || player.id)}</h3>
+      <div class="code">${escapeHtml(text(player.displayCode, player.id))}</div>
+      <div class="meta">소속: ${escapeHtml(text(player.school))}</div>
+      <div class="meta">키: ${escapeHtml(text(player.height))}${player.height ? "cm" : ""}</div>
+      <div class="meta">생년월일: ${escapeHtml(text(player.birthDate))}</div>
+      <div class="meta muted">${escapeHtml(player.id)}</div>
+    </article>
+  `).join("");
 }
 
 function applyFilters(){
-
-    let filtered = players;
-
-    if(selectedCountry !== "All"){
-        filtered = filtered.filter(player => player.country === selectedCountry);
-    }
-
-    if(selectedPosition !== "All"){
-        filtered = filtered.filter(player => player.position === selectedPosition);
-    }
-
-    renderPlayers(filtered);
+  const keyword = document.getElementById("searchInput").value.trim().toLowerCase();
+  const selectedSchool = document.getElementById("schoolFilter").value;
+  const filtered = players.filter(player => {
+    const matchesSchool = selectedSchool === "All" || player.schoolCode === selectedSchool;
+    const haystack = [player.nameKo, player.nameEn, player.id, player.displayCode, player.birthDate, player.school, player.schoolCode]
+      .join(" ").toLowerCase();
+    return matchesSchool && haystack.includes(keyword);
+  });
+  renderPlayers(filtered);
 }
 
-function setActiveButton(buttonClass, clickedButton){
-
-    document.querySelectorAll(buttonClass).forEach(button => {
-        button.classList.remove("active");
-    });
-
-    clickedButton.classList.add("active");
-}
-
-function filterCountry(country, clickedButton){
-
-    selectedCountry = country;
-
-    setActiveButton(".country-btn", clickedButton);
-
-    applyFilters();
-}
-
-function filterPosition(position, clickedButton){
-
-    selectedPosition = position;
-
-    setActiveButton(".position-btn", clickedButton);
-
-    applyFilters();
-}
-
-document.getElementById("searchInput").addEventListener("keyup",function(){
-
-    const value=this.value.toLowerCase();
-
-    const filtered=players.filter(player=>
-
-        player.name.toLowerCase().includes(value) ||
-        player.korean.includes(value) ||
-        player.country.toLowerCase().includes(value) ||
-        player.position.toLowerCase().includes(value)
-
-    );
-
-    renderPlayers(filtered);
-
-});
-
+document.getElementById("searchInput").addEventListener("input", applyFilters);
+document.getElementById("schoolFilter").addEventListener("change", applyFilters);
 </script>
 </body>
 </html>
