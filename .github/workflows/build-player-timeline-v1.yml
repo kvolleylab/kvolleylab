@@ -1,0 +1,105 @@
+name: Build Player Timeline v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-player-timeline-v1.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Build timeline data from verified Player Master fields
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re
+
+          master_paths=[Path('data/master/player_master_229_v2.json'),Path('data/master/player_master_international_v1.json')]
+          players=[]
+          for path in master_paths:
+            if path.exists(): players.extend(json.loads(path.read_text(encoding='utf-8')))
+
+          school_names={
+            'INHA':'인하대학교','SKKU':'성균관대학교','HONGIK':'홍익대학교','KYUNGHEE':'경희대학교',
+            'MYONGJI':'명지대학교','KYUNGIL':'경일대학교','HONAM':'호남대학교','JOONGBU':'중부대학교',
+            'HANYANG':'한양대학교','KYONGGI':'경기대학교','CHOSUN':'조선대학교','MOKPO':'목포대학교',
+            'CHUNGNAM':'충남대학교','GYEONGSANG':'경상국립대학교','WOOSUK':'우석대학교'
+          }
+          timelines=[]
+          for p in players:
+            pid=p.get('system',{}).get('player_id')
+            if not pid: continue
+            volleyball=p.get('volleyball',{}) or {}
+            sources=p.get('source_ids',[]) or []
+            events=[]
+            school=''
+            for src in sources:
+              m=re.search(r'UNIV-2026-([A-Z]+)-',src)
+              if m:
+                school=school_names.get(m.group(1),m.group(1)); break
+            if school:
+              events.append({'event_id':f'{pid}-TL-001','start_date':'2026-01-01','end_date':'','year':2026,'event_type':'education_team','organization':school,'team':school,'position':volleyball.get('position',''),'status':'current','note':'2026 대학부 공개 명단 기준','source_ids':sources})
+            national=volleyball.get('national_team','')
+            if national:
+              events.append({'event_id':f'{pid}-TL-{len(events)+1:03d}','start_date':'2026-01-01','end_date':'','year':2026,'event_type':'national_team','organization':national,'team':f'{national} 남자대표팀','position':volleyball.get('position',''),'status':'current','note':f"2026 VNL {volleyball.get('entry_status','')} 엔트리 기준".strip(),'source_ids':sources})
+            timelines.append({'player_id':pid,'events':events,'updated_at':'2026-07-13','data_policy':'verified-current-records-only'})
+
+          out=Path('data/timeline/player_timeline_v1.json')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(timelines,ensure_ascii=False,indent=2),encoding='utf-8')
+          nonempty=sum(bool(x['events']) for x in timelines)
+          audit={'players_total':len(timelines),'players_with_timeline':nonempty,'events_total':sum(len(x['events']) for x in timelines),'duplicate_player_ids':len(timelines)-len({x['player_id'] for x in timelines})}
+          Path('data/audit').mkdir(parents=True,exist_ok=True)
+          Path('data/audit/player_timeline_v1_audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf-8')
+          Path('docs/PLAYER_TIMELINE_SCHEMA_v1.md').write_text('''# Player Timeline Schema v1
+
+## 목적
+
+선수의 학교·소속팀·국가대표·포지션 변화 이력을 `player_id` 기준으로 연결한다.
+
+## 구조
+
+```json
+{
+  "player_id": "KVL-P-000001",
+  "events": [
+    {
+      "event_id": "KVL-P-000001-TL-001",
+      "start_date": "2026-01-01",
+      "end_date": "",
+      "year": 2026,
+      "event_type": "education_team | club_team | national_team | position_change | award",
+      "organization": "인하대학교",
+      "team": "인하대학교",
+      "position": "OH",
+      "status": "current | completed",
+      "note": "공개 명단 기준",
+      "source_ids": ["SRC-..."]
+    }
+  ]
+}
+```
+
+## 운영 원칙
+
+- 확인된 공개 출처만 기록한다.
+- 현재 명단만으로 과거 소속 기간을 추정하지 않는다.
+- 시작일을 정확히 모르면 연도 첫날을 임시 기준일로 쓰되 메모에 근거를 표시한다.
+- 포지션 변화는 별도 이벤트로 저장한다.
+- 수정·삭제 요청에 대응할 수 있도록 출처 ID를 유지한다.
+''',encoding='utf-8')
+          assert audit['duplicate_player_ids']==0
+          PY
+      - name: Commit timeline data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/timeline/player_timeline_v1.json data/audit/player_timeline_v1_audit.json docs/PLAYER_TIMELINE_SCHEMA_v1.md
+          git commit -m 'Build Player Timeline v1 data and schema' || exit 0
+          git push origin HEAD:main
