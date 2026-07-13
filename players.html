@@ -20,11 +20,13 @@
 <div id="stats" class="ps-stats">선수 데이터를 불러오는 중입니다.</div>
 </section>
 <section class="ps-controls" aria-label="선수 검색 필터">
-<input type="search" id="searchInput" placeholder="선수명, KVL ID, 국가, 학교, 생년월일 검색..." autocomplete="off">
+<input type="search" id="searchInput" placeholder="선수명, 국가, 학교, 생년월일 검색..." autocomplete="off">
 <select id="typeFilter" aria-label="선수 구분"><option value="All">국내·국제 전체</option><option value="domestic">국내 선수</option><option value="international">국제 선수</option></select>
 <select id="countryFilter" aria-label="국가 필터"><option value="All">전체 국가</option></select>
 <select id="schoolFilter" aria-label="학교 필터"><option value="All">전체 학교</option></select>
+<select id="gradeFilter" aria-label="학년 필터"><option value="All">전체 학년</option><option value="1">1학년</option><option value="2">2학년</option><option value="3">3학년</option><option value="4">4학년</option></select>
 <select id="positionFilter" aria-label="포지션 필터"><option value="All">전체 포지션</option></select>
+<select id="draftFilter" aria-label="드래프트 대상 필터"><option value="All">드래프트 전체</option><option value="eligible">대학 4학년</option></select>
 </section>
 <div class="ps-result-head"><strong id="resultCount">검색 결과 0명</strong><button type="button" id="clearFilters" class="ps-clear">필터 초기화</button></div>
 <section id="playerGrid" class="ps-grid" aria-live="polite"><div class="ps-empty">Player Master를 불러오는 중입니다.</div></section>
