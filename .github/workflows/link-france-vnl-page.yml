@@ -39,3 +39,4 @@ jobs:
           git add vnl.html
           git commit -m 'Connect France Active entry to VNL hub' || exit 0
           git push origin HEAD:main
+# trigger
