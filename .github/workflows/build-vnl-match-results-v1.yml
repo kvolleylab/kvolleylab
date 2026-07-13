@@ -84,3 +84,4 @@ jobs:
           git add data/results/vnl-2026-men-results.json data/audit/vnl_match_results_v1.json docs/VNL_MATCH_RESULTS_AUDIT_v1.md
           git commit -m 'Build VNL completed match result records' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
