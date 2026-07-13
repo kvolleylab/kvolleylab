@@ -1,0 +1,58 @@
+name: Run six VNL v25 roster population
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/run-populate-six-v25-rosters.yml'
+permissions:
+  contents: write
+jobs:
+  populate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Decode embedded v25 data and update pages
+        run: |
+          python - <<'PY'
+          import re,base64,gzip,json
+          from pathlib import Path
+          source=Path('.github/workflows/populate-six-v25-rosters.yml').read_text(encoding='utf-8')
+          b64=re.search(r'ROSTER_GZ_B64:\s*(\S+)',source).group(1)
+          data=json.loads(gzip.decompress(base64.b64decode(b64)).decode('utf-8'))
+          out=Path('data/vnl/v25_usa_iran_slovenia_germany_serbia_turkiye.json')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+          cfg={
+            'usa.html':('Karch Kiraly',14,4),
+            'iran.html':('Roberto Piazza',14,1),
+            'slovenia.html':('Fabio Soli',14,4),
+            'germany.html':('Massimo Botti',14,0),
+            'serbia.html':('Gheorghe Cretu',14,4),
+            'turkiye.html':('Slobodan Kovac',14,2)}
+          for fn,(coach,active,reserve) in cfg.items():
+            p=Path(fn); s=p.read_text(encoding='utf-8')
+            s=re.sub(r'"coach":"[^"]*"',f'"coach":"{coach}"',s)
+            s=re.sub(r'"active":(?:null|\d+)',f'"active":{active}',s)
+            s=re.sub(r'"reserve":(?:null|\d+)',f'"reserve":{reserve}',s)
+            s=re.sub(r'"dataSource":"[^"]*"',f'"dataSource":"{out.as_posix()}"',s)
+            p.write_text(s,encoding='utf-8')
+          v=Path('vnl.html'); s=v.read_text(encoding='utf-8')
+          counts={'USA':(14,4),'Iran':(14,1),'Slovenia':(14,4),'Germany':(14,0),'Serbia':(14,4),'Türkiye':(14,2)}
+          for name,(a,r) in counts.items():
+            s=s.replace(f'<strong>{name}</strong><p>v25 엔트리 데이터를 공통 시스템에 연결합니다.</p><div class="card-actions"><span>자동 계산</span><span>Active / Reserve</span>',f'<strong>{name}</strong><p>v25 검증 엔트리를 연결했습니다.</p><div class="card-actions"><span>Active {a}</span><span>Reserve {r}</span>')
+          s=s.replace('DB Status: Connected','DB Status: Complete')
+          v.write_text(s,encoding='utf-8')
+          assert len(data)==99
+          assert sum(x['entryStatus']=='Active' for x in data)==84
+          assert sum(x['entryStatus']=='Reserve' for x in data)==15
+          PY
+      - name: Commit populated rosters
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/vnl/v25_usa_iran_slovenia_germany_serbia_turkiye.json usa.html iran.html slovenia.html germany.html serbia.html turkiye.html vnl.html
+          git commit -m 'Populate six VNL national team rosters from v25' || exit 0
+          git push origin HEAD:main
