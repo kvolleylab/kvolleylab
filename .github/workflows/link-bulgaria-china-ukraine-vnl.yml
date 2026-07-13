@@ -1,0 +1,68 @@
+name: Link Bulgaria China Ukraine VNL pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-bulgaria-china-ukraine-vnl.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Link final country pages from VNL hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('vnl.html')
+          s=p.read_text(encoding='utf-8')
+          team_anchor='<a class="team-card" href="turkiye.html"><img class="flag-img" src="https://flagcdn.com/w160/tr.png" alt="Türkiye flag"><div class="team-name">Türkiye</div><div class="status">DB Status: Connected</div><div class="status">국가 선수 페이지 연결</div></a>'
+          teams=[
+          '<a class="team-card" href="bulgaria.html"><img class="flag-img" src="https://flagcdn.com/w160/bg.png" alt="Bulgaria flag"><div class="team-name">Bulgaria</div><div class="status">DB Status: Connected</div><div class="status">국가 선수 페이지 연결</div></a>',
+          '<a class="team-card" href="china.html"><img class="flag-img" src="https://flagcdn.com/w160/cn.png" alt="China flag"><div class="team-name">China</div><div class="status">DB Status: Connected</div><div class="status">국가 선수 페이지 연결</div></a>',
+          '<a class="team-card" href="ukraine.html"><img class="flag-img" src="https://flagcdn.com/w160/ua.png" alt="Ukraine flag"><div class="team-name">Ukraine</div><div class="status">DB Status: Connected</div><div class="status">국가 선수 페이지 연결</div></a>']
+          for card in teams:
+              if card not in s:
+                  s=s.replace(team_anchor,team_anchor+'\n      '+card)
+                  team_anchor=card
+          entry_anchor='<a class="entry-card" href="turkiye.html"><span class="badge">ACTIVE ENTRY</span><strong>Türkiye</strong><p>v25 엔트리 데이터를 공통 시스템에 연결합니다.</p><div class="card-actions"><span>자동 계산</span><span>Active / Reserve</span><span>선수 상세</span></div></a>'
+          cards=[
+          '<a class="entry-card" href="bulgaria.html"><span class="badge">ACTIVE ENTRY</span><strong>Bulgaria</strong><p>Active 14명과 Reserve 2명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 2</span><span>선수 상세</span></div></a>',
+          '<a class="entry-card" href="china.html"><span class="badge">ACTIVE ENTRY</span><strong>China</strong><p>Active 14명과 Reserve 1명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 1</span><span>선수 상세</span></div></a>',
+          '<a class="entry-card" href="ukraine.html"><span class="badge">ACTIVE ENTRY</span><strong>Ukraine</strong><p>Active 14명과 Reserve 1명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 1</span><span>선수 상세</span></div></a>']
+          for card in cards:
+              if card not in s:
+                  s=s.replace(entry_anchor,entry_anchor+'\n      '+card)
+                  entry_anchor=card
+          player_anchor='<a class="hub-card" href="turkiye.html"><span class="badge">NATIONAL TEAM</span><strong>Türkiye Players</strong><p>튀르키예 대표팀 엔트리를 확인합니다.</p></a>'
+          pcards=[
+          '<a class="hub-card" href="bulgaria.html"><span class="badge">NATIONAL TEAM</span><strong>Bulgaria Players</strong><p>불가리아 대표팀 엔트리를 확인합니다.</p></a>',
+          '<a class="hub-card" href="china.html"><span class="badge">NATIONAL TEAM</span><strong>China Players</strong><p>중국 대표팀 엔트리를 확인합니다.</p></a>',
+          '<a class="hub-card" href="ukraine.html"><span class="badge">NATIONAL TEAM</span><strong>Ukraine Players</strong><p>우크라이나 대표팀 엔트리를 확인합니다.</p></a>']
+          for card in pcards:
+              if card not in s:
+                  s=s.replace(player_anchor,player_anchor+'\n       '+card)
+                  player_anchor=card
+          sched_anchor='<a href="schedules.html?tournament=vnl&team=튀르키예">튀르키예</a>'
+          scheds=[
+          '<a href="schedules.html?tournament=vnl&team=불가리아">불가리아</a>',
+          '<a href="schedules.html?tournament=vnl&team=중국">중국</a>',
+          '<a href="schedules.html?tournament=vnl&team=우크라이나">우크라이나</a>']
+          for link in scheds:
+              if link not in s:
+                  s=s.replace(sched_anchor,sched_anchor+link)
+                  sched_anchor=link
+          p.write_text(s,encoding='utf-8')
+          assert all(x in s for x in ['href="bulgaria.html"','href="china.html"','href="ukraine.html"'])
+          PY
+      - name: Commit final country hub links
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html
+          git commit -m 'Connect Bulgaria China Ukraine pages to VNL hub' || exit 0
+          git push origin HEAD:main
