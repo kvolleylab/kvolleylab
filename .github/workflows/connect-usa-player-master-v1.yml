@@ -87,3 +87,4 @@ jobs:
           git add data/vnl/v25_usa_iran_slovenia_germany_serbia_turkiye.json data/master/player_master_international_v1.json assets/js/national-team.js assets/css/national-team.css player.html
           git commit -m 'Connect USA roster to Player Master and detail pages' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
