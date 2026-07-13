@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 대학배구 남자부 | K-Volley Lab</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/site-theme-light.css">
+<link rel="stylesheet" href="assets/css/university-league-v1.css">
+<script src="assets/js/unified-nav.js" defer></script>
+<script src="assets/js/university-league-v1.js" defer></script>
+</head>
+<body class="university-league-page">
+<header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+<main class="ul-main">
+<section class="ul-hero">
+<p class="eyebrow">COMPETITION MASTER · KVL-COMP-000002</p>
+<h1>2026 대학배구 남자부</h1>
+<p>15개 대학과 등록선수 229명을 대회 기준으로 한눈에 확인합니다.</p>
+<div id="ulSummary" class="ul-summary">대회 데이터를 불러오는 중입니다.</div>
+<div class="ul-actions"><a href="university-teams.html">대학 팀 분석</a><a href="players.html?type=domestic">대학 선수 검색</a><a href="draft-hub.html">Draft Hub</a><a href="pamphlet-archive.html">팜플렛</a></div>
+</section>
+<section id="ulOverview" class="ul-overview"></section>
+<section class="ul-section"><div class="ul-section-head"><div><p class="eyebrow">TEAM ANALYTICS</p><h2>참가 대학</h2></div><select id="ulSort"><option value="name">대학명 순</option><option value="height">평균신장 높은 순</option><option value="players">선수 수 많은 순</option><option value="draft">드래프트 대상 많은 순</option></select></div><div id="ulTeams" class="ul-teams"><div class="ul-empty">참가 대학을 불러오는 중입니다.</div></div></section>
+<section class="ul-section"><div class="ul-section-head"><div><p class="eyebrow">ROSTER</p><h2>전체 선수</h2></div><div class="ul-player-controls"><input id="ulSearch" type="search" placeholder="선수명 또는 대학 검색..."><select id="ulPosition"><option value="All">전체 포지션</option><option>S</option><option>OH</option><option>OP</option><option>MB</option><option>L</option></select><select id="ulGrade"><option value="All">전체 학년</option><option value="4">4학년</option><option value="3">3학년</option><option value="2">2학년</option><option value="1">1학년</option></select></div></div><div id="ulPlayerCount" class="ul-count"></div><div id="ulPlayers" class="ul-players"></div></section>
+</main>
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+</body>
+</html>
