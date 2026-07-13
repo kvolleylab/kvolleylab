@@ -1,0 +1,60 @@
+name: Populate six VNL v25 rosters
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/populate-six-v25-rosters.yml'
+permissions:
+  contents: write
+jobs:
+  populate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Write verified roster data and update pages
+        env:
+          ROSTER_GZ_B64: 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
+        run: |
+          python - <<'PY'
+          import os,base64,gzip,json
+          from pathlib import Path
+          data=json.loads(gzip.decompress(base64.b64decode(os.environ['ROSTER_GZ_B64'])).decode('utf-8'))
+          out=Path('data/vnl/v25_usa_iran_slovenia_germany_serbia_turkiye.json')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+          cfg={
+            'usa.html':('Karch Kiraly',14,4,'USA'),
+            'iran.html':('Roberto Piazza',14,1,'Iran'),
+            'slovenia.html':('Fabio Soli',14,4,'Slovenia'),
+            'germany.html':('Massimo Botti',14,0,'Germany'),
+            'serbia.html':('Gheorghe Cretu',14,4,'Serbia'),
+            'turkiye.html':('Slobodan Kovac',14,2,'Türkiye')}
+          for fn,(coach,active,reserve,country) in cfg.items():
+            p=Path(fn); s=p.read_text(encoding='utf-8')
+            import re
+            s=re.sub(r'"coach":"[^"]*"',f'"coach":"{coach}"',s)
+            s=re.sub(r'"active":(?:null|\d+)',f'"active":{active}',s)
+            s=re.sub(r'"reserve":(?:null|\d+)',f'"reserve":{reserve}',s)
+            s=re.sub(r'"dataSource":"[^"]*"',f'"dataSource":"{out.as_posix()}"',s)
+            p.write_text(s,encoding='utf-8')
+          v=Path('vnl.html'); s=v.read_text(encoding='utf-8')
+          counts={'USA':(14,4),'Iran':(14,1),'Slovenia':(14,4),'Germany':(14,0),'Serbia':(14,4),'Türkiye':(14,2)}
+          for name,(a,r) in counts.items():
+            s=s.replace(f'<strong>{name}</strong><p>v25 엔트리 데이터를 공통 시스템에 연결합니다.</p><div class="card-actions"><span>자동 계산</span><span>Active / Reserve</span>',f'<strong>{name}</strong><p>v25 검증 엔트리를 연결했습니다.</p><div class="card-actions"><span>Active {a}</span><span>Reserve {r}</span>')
+          s=s.replace('DB Status: Connected','DB Status: Complete')
+          v.write_text(s,encoding='utf-8')
+          assert len(data)==99
+          for fn in cfg:
+            t=Path(fn).read_text(encoding='utf-8')
+            assert out.as_posix() in t and '확인 중' not in t
+          PY
+      - name: Commit populated rosters
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/vnl/v25_usa_iran_slovenia_germany_serbia_turkiye.json usa.html iran.html slovenia.html germany.html serbia.html turkiye.html vnl.html
+          git commit -m 'Populate six VNL national team rosters from v25' || exit 0
+          git push origin HEAD:main
