@@ -4,126 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Player Detail | K-Volley Lab</title>
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#071827;color:white}
-header{padding:24px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.12)}
-.logo{font-size:24px;font-weight:bold;color:#d6b25e}
-.site-nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border-radius:999px;color:#d7e4ef;font-weight:700;text-decoration:none;transition:.18s ease}
-.site-nav a:hover{background:rgba(225,184,79,.14);color:#e1b84f}
-.site-nav a.active{background:#e1b84f;color:#071b2a}
-.container{max-width:1000px;margin:0 auto;padding:70px 20px}
-.back{color:#d6b25e;text-decoration:none;font-weight:bold}
-.player-card{margin-top:30px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:34px}
-h1{color:#d6b25e;font-size:42px;margin:0 0 8px}
-.sub{font-size:18px;color:#cbd5e1;margin-bottom:30px}
-.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.info-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px}
-.label{color:#94a3b8;font-size:13px;margin-bottom:8px}.value{font-size:20px;font-weight:bold;word-break:break-word}
-.links{margin-top:30px}.links a{display:inline-block;margin-right:12px;margin-top:10px;background:#d6b25e;color:#071827;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:bold}
-.empty{color:#94a3b8;margin-top:30px;padding:30px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.05)}
-@media(max-width:700px){header{padding:18px 20px;align-items:flex-start;gap:14px;flex-direction:column}.container{padding-top:40px}.player-card{padding:24px}h1{font-size:34px}}
-</style>
-  <script src="assets/js/unified-nav.js" defer></script>
-  <link rel="stylesheet" href="assets/css/site-theme-light.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/site-theme-light.css">
+<link rel="stylesheet" href="assets/css/player-detail-v2.css">
+<script src="assets/js/unified-nav.js" defer></script>
+<script src="assets/js/player-detail-v2.js" defer></script>
 </head>
-<body>
-<header>
-  <div class="logo">K-Volley Lab</div>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="vnl.html">VNL</a>
-    <a href="players.html" class="active">Players</a>
-    <a href="schedules.html">Schedules</a>
-  </nav>
-</header>
-<main class="container">
-  <a class="back" href="players.html">← Back to Player Search</a>
-  <div id="playerArea"></div>
+<body class="player-detail-page">
+<header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+<main class="pd-main">
+<a class="pd-back" href="players.html">← 선수 검색으로 돌아가기</a>
+<div id="playerArea"><div class="pd-empty">선수 정보를 불러오는 중입니다.</div></div>
 </main>
-<script>
-const MASTER_URLS = ["data/master/player_master_229_v2.json","data/master/player_master_international_v1.json"];
-const schoolNames = {
-  INHA:"인하대학교", SKKU:"성균관대학교", HONGIK:"홍익대학교", KYUNGHEE:"경희대학교",
-  MYONGJI:"명지대학교", KYUNGIL:"경일대학교", HONAM:"호남대학교", JOONGBU:"중부대학교",
-  HANYANG:"한양대학교", KYONGGI:"경기대학교", CHOSUN:"조선대학교", MOKPO:"목포대학교",
-  CHUNGNAM:"충남대학교", GYEONGSANG:"경상국립대학교", WOOSUK:"우석대학교"
-};
-
-function schoolCode(player){
-  const source = (player.source_ids || []).find(id => id.includes("UNIV-2026-")) || "";
-  const match = source.match(/UNIV-2026-([A-Z]+)-/);
-  return match ? match[1] : "UNKNOWN";
-}
-
-function schoolLabel(player){
-  const code = schoolCode(player);
-  return schoolNames[code] || code || "-";
-}
-
-function text(value, fallback="-"){
-  return value === null || value === undefined || value === "" ? fallback : String(value);
-}
-
-function escapeHtml(value){
-  return String(value).replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
-}
-
-Promise.all(MASTER_URLS.map(url=>fetch(url,{cache:"no-store"}).then(response=>{if(!response.ok)throw new Error(`Player Master load failed: ${response.status}`);return response.json()})))
-  .then(groups => groups.flat())
-  .then(players => {
-    const params = new URLSearchParams(window.location.search);
-    const playerId = params.get("id");
-    const legacyName = params.get("name");
-    const player = players.find(item => item.system?.player_id === playerId) ||
-      players.find(item => legacyName && (item.identity?.name_ko || "").toLowerCase() === legacyName.toLowerCase());
-    renderPlayer(player);
-  })
-  .catch(error => {
-    console.error(error);
-    document.getElementById("playerArea").innerHTML = '<div class="empty">선수 데이터를 불러오지 못했습니다.</div>';
-  });
-
-function renderPlayer(player){
-  const area = document.getElementById("playerArea");
-  if(!player){
-    area.innerHTML = '<div class="empty">선수를 찾을 수 없습니다.</div>';
-    return;
-  }
-
-  const system = player.system || {};
-  const identity = player.identity || {};
-  const physical = player.physical || {};
-  const links = player.links || {};
-  const displayName = identity.name_ko || identity.name_en || system.player_id;
-  document.title = `${displayName} | K-Volley Lab`;
-
-  const externalLinks = [
-    links.volleybox ? `<a href="${escapeHtml(links.volleybox)}" target="_blank" rel="noopener noreferrer">Volleybox</a>` : "",
-    links.fivb_profile ? `<a href="${escapeHtml(links.fivb_profile)}" target="_blank" rel="noopener noreferrer">FIVB Profile</a>` : "",
-    links.kovo_profile ? `<a href="${escapeHtml(links.kovo_profile)}" target="_blank" rel="noopener noreferrer">KOVO Profile</a>` : ""
-  ].filter(Boolean).join("");
-
-  area.innerHTML = `
-    <section class="player-card">
-      <h1>${escapeHtml(displayName)}</h1>
-      <div class="sub">${escapeHtml(text(identity.name_en, system.display_code || system.player_id))}</div>
-      <div class="info-grid">
-        <div class="info-box"><div class="label">Player ID</div><div class="value">${escapeHtml(text(system.player_id))}</div></div>
-        <div class="info-box"><div class="label">Display Code</div><div class="value">${escapeHtml(text(system.display_code))}</div></div>
-        <div class="info-box"><div class="label">Team / University</div><div class="value">${escapeHtml(player.volleyball?.national_team || schoolLabel(player))}</div></div>
-        <div class="info-box"><div class="label">Nationality</div><div class="value">${escapeHtml(text(identity.nationality))}</div></div>
-        <div class="info-box"><div class="label">Position</div><div class="value">${escapeHtml(text(player.volleyball?.position))}</div></div>
-        <div class="info-box"><div class="label">Height</div><div class="value">${physical.height_cm ? `${escapeHtml(physical.height_cm)}cm` : "-"}</div></div>
-        <div class="info-box"><div class="label">Weight</div><div class="value">${physical.weight_kg ? `${escapeHtml(physical.weight_kg)}kg` : "-"}</div></div>
-        <div class="info-box"><div class="label">Date of Birth</div><div class="value">${escapeHtml(text(identity.birth_date))}</div></div>
-        <div class="info-box"><div class="label">Status</div><div class="value">${escapeHtml(text(system.status))}</div></div>
-        <div class="info-box"><div class="label">Data Confidence</div><div class="value">${escapeHtml(text(system.data_confidence))}</div></div>
-      </div>
-      ${externalLinks ? `<div class="links">${externalLinks}</div>` : ""}
-    </section>
-  `;
-}
-</script>
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 </body>
 </html>
