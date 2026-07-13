@@ -1,0 +1,80 @@
+name: Complete final four VNL rosters
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/complete-final-four-vnl-rosters.yml'
+permissions:
+  contents: write
+jobs:
+  complete:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Build roster JSON and standardize pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re,ast
+
+          players=json.loads(Path('players.json').read_text(encoding='utf-8'))
+          out=[]
+          for country in ('Brazil','Poland'):
+            for p in players:
+              if p.get('country')==country:
+                q=dict(p)
+                q['entryStatus']=q.get('entryStatus') or ('Reserve' if str(q.get('status','')).lower()=='reserve' else 'Active')
+                out.append(q)
+
+          def extract_array(path,name):
+            s=Path(path).read_text(encoding='utf-8')
+            m=re.search(rf'const\s+{name}\s*=\s*(\[.*?\]);',s,re.S)
+            if not m: raise RuntimeError(f'{name} not found in {path}')
+            return ast.literal_eval(m.group(1))
+
+          arg=extract_array('argentina.html','players')
+          for x in arg:
+            out.append({'country':'Argentina','number':x[0],'name':x[1],'korean':x[2],'position':x[3],'height':x[4],'dob':x[5],'salary':x[6],'entryStatus':x[7],'vnlProfile':f'https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/{x[8]}'})
+
+          for status,key in [('Active','A'),('Reserve','R')]:
+            for x in extract_array('belgium.html',key):
+              out.append({'country':'Belgium','number':x[0],'name':x[1],'korean':x[2],'position':x[3],'height':x[4],'dob':x[5],'salary':x[6],'entryStatus':status,'vnlProfile':f'https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/players/{x[7]}'})
+
+          target=Path('data/vnl/v25_brazil_poland_argentina_belgium.json')
+          target.parent.mkdir(parents=True,exist_ok=True)
+          target.write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          expected={'Brazil':(14,0),'Poland':(14,2),'Argentina':(14,2),'Belgium':(14,4)}
+          for c,(a,r) in expected.items():
+            items=[x for x in out if x.get('country')==c]
+            ac=sum(x.get('entryStatus')=='Active' for x in items)
+            rc=sum(x.get('entryStatus')=='Reserve' for x in items)
+            assert (ac,rc)==(a,r),f'{c}: {(ac,rc)} expected {(a,r)}'
+
+          template='''<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{name} Active Entry | K-Volley Lab</title><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/national-team.css"><link rel="stylesheet" href="assets/css/site-theme-light.css"><script src="assets/js/unified-nav.js" defer></script><script src="assets/js/national-team.js" defer></script></head><body><header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header><main class="nt-page" data-national-team='{cfg}'><section class="nt-hero"><img id="ntFlag" alt=""><div><p class="eyebrow">2026 VNL Men</p><h1 id="ntTitle"></h1><p id="ntLead"></p></div></section><section class="nt-stats"><div class="nt-stat">Head Coach<b id="ntCoach"></b></div><div class="nt-stat">Active<b id="ntActive"></b></div><div class="nt-stat">Reserve<b id="ntReserve"></b></div><div class="nt-stat">Total listed<b id="ntTotal"></b></div></section><div class="nt-actions"><a href="vnl.html#entries">VNL 엔트리 허브</a><a id="ntSchedule" href="#">{ko} 일정</a><a href="players.html">전체 선수 검색</a></div><section><div class="nt-section-head"><h2>Active 엔트리</h2><span id="ntActiveCount"></span></div><div class="nt-table-wrap"><table><thead><tr><th>#</th><th>Player</th><th>한글명</th><th>Pos</th><th>Height</th><th>DOB</th><th>Status</th><th>Source</th></tr></thead><tbody id="ntActiveBody"></tbody></table></div></section><section id="ntReserveSection"><div class="nt-section-head"><h2>Reserve</h2><span id="ntReserveCount"></span></div><div class="nt-table-wrap"><table><thead><tr><th>#</th><th>Player</th><th>한글명</th><th>Pos</th><th>Height</th><th>DOB</th><th>Status</th><th>Source</th></tr></thead><tbody id="ntReserveBody"></tbody></table></div></section></main><footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer></body></html>'''
+          cfgs={
+            'brazil.html':('Brazil','브라질','https://flagcdn.com/w160/br.png','Bernardo Rocha de Rezende',14,0),
+            'poland.html':('Poland','폴란드','https://flagcdn.com/w160/pl.png','Nikola Grbić',14,2),
+            'argentina.html':('Argentina','아르헨티나','https://flagcdn.com/w160/ar.png','Eduardo Horacio Dileo',14,2),
+            'belgium.html':('Belgium','벨기에','https://flagcdn.com/w160/be.png','Emanuele Zanini',14,4),
+          }
+          for fn,(name,ko,flag,coach,a,r) in cfgs.items():
+            cfg={'name':name,'nameKo':ko,'flag':flag,'coach':coach,'active':a,'reserve':r,'countryKeys':[name],'dataSource':target.as_posix(),'lead':f'2026 VNL {ko} 남자대표팀 Active·Reserve 엔트리입니다. v25 기준 데이터를 공통 국가 페이지 시스템에 연결합니다.'}
+            html=template.format(name=name,ko=ko,cfg=json.dumps(cfg,ensure_ascii=False,separators=(',',':')))
+            Path(fn).write_text(html,encoding='utf-8')
+
+          v=Path('vnl.html'); s=v.read_text(encoding='utf-8')
+          for name,(a,r) in expected.items():
+            s=re.sub(rf'(<strong>{re.escape(name)}</strong><p>).*?(</p><div class="card-actions">)<span>.*?</span><span>.*?</span>',rf'\1v25 검증 엔트리를 연결했습니다.\2<span>Active {a}</span><span>Reserve {r}</span>',s)
+          v.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit final four rosters
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/vnl/v25_brazil_poland_argentina_belgium.json brazil.html poland.html argentina.html belgium.html vnl.html
+          git commit -m 'Complete Brazil Poland Argentina Belgium VNL rosters' || exit 0
+          git push origin HEAD:main
