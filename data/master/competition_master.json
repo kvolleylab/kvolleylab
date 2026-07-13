@@ -51,15 +51,17 @@
       "scope": "domestic",
       "season": 2026
     },
-    "organization": {"organizer": "대학배구 대회 운영기관", "country": "Korea"},
-    "format": {"participant_count": 15, "stage_structure": ["league_and_tournaments"], "timezone_display": "Asia/Seoul"},
+    "organization": {"organizer": "한국대학스포츠협의회 / 한국대학배구연맹", "country": "Korea"},
+    "format": {"participant_count": 15, "stage_structure": ["preliminary", "six_team_league", "semifinals", "final"], "timezone_display": "Asia/Seoul"},
     "routes": {"hub_page": "university-league.html", "schedule_page": "university-league.html#schedule", "team_analysis_page": "university-teams.html", "players_page": "players.html?type=domestic", "pamphlet_page": "pamphlet-archive.html"},
     "data_links": {
       "participants": "data/competition/university-league-2026-men-participants.json",
       "rosters": "data/competition/university-league-2026-men-roster-index.json",
       "player_master": "data/master/player_master_229_v2.json",
       "matches": "data/matches/university-league-2026-men.json",
-      "sources": ["SRC-KOR-UNIV-2026-PAMPHLET-V7", "SRC-KOR-UNIV-2026-SCHEDULE-PENDING"]
+      "results": "data/results/university-league-2026-men-results.json",
+      "ranking_rules": "data/rules/university-league-2026-men-ranking-rules-v1.json",
+      "sources": ["SRC-KOR-UNIV-2026-PAMPHLET-V7", "SRC-KOR-UNIV-2026-SCHEDULE-20260305", "SRC-KOR-UNIV-2026-RULEBOOK"]
     }
   }
 ]
