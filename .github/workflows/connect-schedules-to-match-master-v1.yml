@@ -1,0 +1,33 @@
+name: Connect schedules to Match Master v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/connect-schedules-to-match-master-v1.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Add Match Master renderer
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('schedules.html');s=p.read_text(encoding='utf-8')
+          tag='<script src="assets/js/schedule-match-master-v1.js" defer></script>'
+          if tag not in s:s=s.replace('</head>',f'  {tag}\n</head>')
+          p.write_text(s,encoding='utf-8')
+          assert tag in s
+          PY
+      - name: Commit schedule connection
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add schedules.html
+          git commit -m 'Connect schedules page to VNL Match Master JSON' || exit 0
+          git push origin HEAD:main
