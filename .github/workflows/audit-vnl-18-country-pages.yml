@@ -55,7 +55,6 @@ jobs:
             data_path=data_match.group(1) if data_match else ''
             data_exists=bool(data_path and Path(data_path).exists())
             if not data_exists and exists:
-              # legacy pages can contain static rows rather than JSON
               data_exists=('<tbody>' in text and '<tr>' in text) or ('playerTableBody' in text and 'players.json' in text and Path('players.json').exists())
             hub=(f'href="{fn}"' in vnl)
             schedule=(f'team={ko}' in vnl) or (f'team={ko}' in text)
@@ -122,3 +121,4 @@ jobs:
           git add docs/VNL_18_COUNTRY_AUDIT_v1.md data/audit/vnl_18_country_audit_v1.json
           git commit -m 'Generate VNL 18-country completeness audit' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
