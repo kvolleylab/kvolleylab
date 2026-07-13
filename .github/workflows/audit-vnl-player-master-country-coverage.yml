@@ -1,0 +1,38 @@
+name: Audit VNL Player Master country coverage
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-vnl-player-master-country-coverage.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Build country coverage report
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,collections
+          expected=['Japan','Brazil','Poland','Iran','USA','France','Argentina','Italy','Canada','Belgium','Cuba','Slovenia','Germany','Serbia','Türkiye','Bulgaria','China','Ukraine']
+          data=json.loads(Path('data/master/player_master_international_v1.json').read_text(encoding='utf-8'))
+          counts=collections.Counter(x.get('identity',{}).get('nationality','') for x in data)
+          missing=[c for c in expected if counts.get(c,0)==0]
+          lines=['# VNL Player Master 국가 커버리지 감사 v1','',f'- 등록 국가: **{len([c for c in expected if counts.get(c,0)>0])}/18**',f'- 등록 선수: **{len(data)}명**',f'- 누락 국가: **{len(missing)}개**','', '## 국가별 등록 수','', '| Country | Players | Status |','|---|---:|---|']
+          for c in expected: lines.append(f'| {c} | {counts.get(c,0)} | {"완료" if counts.get(c,0)>0 else "보강 필요"} |')
+          lines+=['','## 누락 국가','']+[f'- {c}' for c in missing]
+          Path('docs/VNL_PLAYER_MASTER_COUNTRY_COVERAGE_v1.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          Path('data/audit/vnl_player_master_country_coverage_v1.json').write_text(json.dumps({'counts':counts,'missing':missing},ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Commit coverage report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/VNL_PLAYER_MASTER_COUNTRY_COVERAGE_v1.md data/audit/vnl_player_master_country_coverage_v1.json
+          git commit -m 'Audit VNL Player Master country coverage' || exit 0
+          git push origin HEAD:main
