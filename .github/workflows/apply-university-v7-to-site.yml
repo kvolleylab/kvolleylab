@@ -24,49 +24,27 @@ jobs:
           data=json.loads(path.read_text(encoding='utf-8'))
           assert len(data)==229, len(data)
 
-          # Corrected against 2026 KUSF university guidebook.
-          corrections={
-            'KVL-P-000008':'윤경',
-          }
-          old_name_corrections={
-            '정승훈':'정승윤',
-            '점성원':'정성원',
-          }
-
-          # First Inha records were created before current_roster became mandatory.
+          corrections={'KVL-P-000008':'윤경'}
+          old_name_corrections={'정승훈':'정승윤','점성원':'정성원'}
           inha=[
             (8,4,'L','송산고'),(9,4,'MB','남성고'),(10,4,'MB','송림고'),(21,4,'MB','수성고'),
             (2,3,'S','송산고'),(4,3,'OP/OH','수성고'),(15,3,'OH','인하사대부고'),(1,2,'OH','남성고'),
             (5,2,'L','송산고'),(6,2,'S','인하사대부고'),(11,2,'MB','수성고'),(12,2,'OH','인하사대부고'),
-            (3,1,'S','남성고'),(7,1,'MB','남성고'),(14,1,'OP/OH','속초고'),(17,1,'OH','남성고')
-          ]
+            (3,1,'S','남성고'),(7,1,'MB','남성고'),(14,1,'OP/OH','속초고'),(17,1,'OH','남성고')]
           for n,(jersey,grade,pos,prev) in enumerate(inha):
-            p=data[n]
-            p['current_roster']={'team_name':'인하대학교 남자배구부','school_name':'인하대학교','school_code':'INHA','season':2026,'jersey_number':jersey,'grade':grade,'position':pos,'previous_school':prev,'draft_eligible':grade==4}
+            data[n]['current_roster']={'team_name':'인하대학교 남자배구부','school_name':'인하대학교','school_code':'INHA','season':2026,'jersey_number':jersey,'grade':grade,'position':pos,'previous_school':prev,'draft_eligible':grade==4}
 
           changed=[]
           for p in data:
-            sys=p.setdefault('system',{})
-            ident=p.setdefault('identity',{})
-            vol=p.setdefault('volleyball',{})
-            roster=p.get('current_roster') or {}
-            pid=sys.get('player_id')
-            old=ident.get('name_ko','')
-            new=corrections.get(pid,old_name_corrections.get(old,old))
+            sys=p.setdefault('system',{}); ident=p.setdefault('identity',{}); vol=p.setdefault('volleyball',{}); roster=p.get('current_roster') or {}
+            pid=sys.get('player_id'); old=ident.get('name_ko',''); new=corrections.get(pid,old_name_corrections.get(old,old))
             if new!=old:
-              ident['name_ko']=new; ident['name_native']=new
-              changed.append({'player_id':pid,'before':old,'after':new,'source':'2026 KUSF 대학배구 GUIDE BOOK'})
+              ident['name_ko']=new; ident['name_native']=new; changed.append({'player_id':pid,'before':old,'after':new,'source':'2026 KUSF 대학배구 GUIDE BOOK'})
             grade=roster.get('grade')
-            vol['position']=vol.get('position') or roster.get('position','')
-            vol['level']='university'
-            vol['grade']=grade
-            vol['draft_eligible']=bool(grade==4)
-            sys['data_scope']='domestic'
-            sys['competition_level']='university'
-            sys['updated_at']='2026-07-13'
+            vol['position']=vol.get('position') or roster.get('position',''); vol['level']='university'; vol['grade']=grade; vol['draft_eligible']=bool(grade==4)
+            sys['data_scope']='domestic'; sys['competition_level']='university'; sys['updated_at']='2026-07-13'
             if roster:
-              roster['school_name']=roster.get('school_name') or roster.get('team_name','').replace(' 남자배구부','')
-              roster['draft_eligible']=bool(grade==4)
+              roster['school_name']=roster.get('school_name') or roster.get('team_name','').replace(' 남자배구부',''); roster['draft_eligible']=bool(grade==4)
             p['source_ref']={'file':'대학배구_선수명단_v7.xlsx','sheet':'전체_통합DB','page':(p.get('source_ref') or {}).get('page',''),'verification':'팜플렛 전수검수'}
 
           missing=[p['system']['player_id'] for p in data if not p.get('current_roster',{}).get('grade')]
@@ -74,22 +52,12 @@ jobs:
           assert len({p['system']['player_id'] for p in data})==229
           path.write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 
-          log_path=Path('data/changelog/player_corrections_v1.json')
-          log_path.parent.mkdir(parents=True,exist_ok=True)
-          prior=json.loads(log_path.read_text(encoding='utf-8')) if log_path.exists() else []
-          known={(x.get('player_id'),x.get('after')) for x in prior}
+          log_path=Path('data/changelog/player_corrections_v1.json'); log_path.parent.mkdir(parents=True,exist_ok=True)
+          prior=json.loads(log_path.read_text(encoding='utf-8')) if log_path.exists() else []; known={(x.get('player_id'),x.get('after')) for x in prior}
           for x in changed:
-            if (x['player_id'],x['after']) not in known:
-              x['changed_at']='2026-07-13'; prior.append(x)
+            if (x['player_id'],x['after']) not in known: x['changed_at']='2026-07-13'; prior.append(x)
           log_path.write_text(json.dumps(prior,ensure_ascii=False,indent=2),encoding='utf-8')
-
-          audit={
-            'domestic_players':len(data),
-            'grade_present':sum(bool(p.get('current_roster',{}).get('grade')) for p in data),
-            'draft_eligible_grade4':sum(p.get('current_roster',{}).get('grade')==4 for p in data),
-            'name_corrections_applied':changed,
-            'visible_id_policy':'hidden_on_cards_searchable_internally'
-          }
+          audit={'domestic_players':len(data),'grade_present':sum(bool(p.get('current_roster',{}).get('grade')) for p in data),'draft_eligible_grade4':sum(p.get('current_roster',{}).get('grade')==4 for p in data),'name_corrections_applied':changed,'visible_id_policy':'hidden_on_cards_searchable_internally'}
           Path('data/audit/university_v7_site_sync.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf-8')
           Path('docs/UNIVERSITY_V7_SITE_SYNC.md').write_text(f'''# 대학 선수명단 v7 홈페이지 반영\n\n- 국내 대학선수: **{len(data)}명**\n- 학년 정보 보유: **{audit['grade_present']}명**\n- 4학년 드래프트 기본 대상: **{audit['draft_eligible_grade4']}명**\n- 선수 카드의 KVL ID·표시 코드는 숨기고 내부 검색·연결에만 사용\n- 근거: 2026 KUSF 대학배구 GUIDE BOOK / 대학배구_선수명단_v7.xlsx\n''',encoding='utf-8')
           PY
@@ -100,3 +68,4 @@ jobs:
           git add data/master/player_master_229_v2.json data/changelog/player_corrections_v1.json data/audit/university_v7_site_sync.json docs/UNIVERSITY_V7_SITE_SYNC.md
           git commit -m 'Sync verified university v7 roster data to website' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13T12:31
