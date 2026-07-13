@@ -1,0 +1,40 @@
+[
+  {
+    "player_id": "KVL-P-000001",
+    "events": [
+      {
+        "event_id": "KVL-P-000001-TL-001",
+        "start_date": "2026-01-01",
+        "end_date": "",
+        "year": 2026,
+        "event_type": "education_team",
+        "organization": "인하대학교",
+        "team": "인하대학교",
+        "position": "",
+        "status": "current",
+        "note": "2026 대학부 공개 명단 기준",
+        "source_ids": ["SRC-DOM-UNIV-2026-INHA-001"]
+      }
+    ],
+    "updated_at": "2026-07-13"
+  },
+  {
+    "player_id": "KVL-P-000230",
+    "events": [
+      {
+        "event_id": "KVL-P-000230-TL-001",
+        "start_date": "2026-01-01",
+        "end_date": "",
+        "year": 2026,
+        "event_type": "national_team",
+        "organization": "USA",
+        "team": "USA 남자대표팀",
+        "position": "OH",
+        "status": "current",
+        "note": "2026 VNL Active 엔트리 기준",
+        "source_ids": ["SRC-INT-VNL-2026-USA-V25"]
+      }
+    ],
+    "updated_at": "2026-07-13"
+  }
+]
