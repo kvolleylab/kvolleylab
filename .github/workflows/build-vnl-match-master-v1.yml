@@ -1,0 +1,78 @@
+name: Build VNL Match Master v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-vnl-match-master-v1.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Extract VNL schedule into Match Master
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re,json,datetime
+          text=Path('schedules.html').read_text(encoding='utf-8')
+          vnl=text.split('vnl:{title:',1)[1].split('avc:{title:',1)[0]
+          month_marks=list(re.finditer(r'\{title:"(\d+)월",year:(\d+),month:(\d+),firstDay:(\d+),days:(\d+),games:\{',vnl))
+          matches=[]
+          seq=1
+          team_map={'일본':'Japan','브라질':'Brazil','폴란드':'Poland','이란':'Iran','미국':'USA','프랑스':'France','아르헨티나':'Argentina','이탈리아':'Italy','캐나다':'Canada','벨기에':'Belgium','쿠바':'Cuba','슬로베니아':'Slovenia','독일':'Germany','세르비아':'Serbia','튀르키예':'Türkiye','불가리아':'Bulgaria','중국':'China','우크라이나':'Ukraine'}
+          for i,mm in enumerate(month_marks):
+            year=int(mm.group(2)); month=int(mm.group(3)); start=mm.end(); end=month_marks[i+1].start() if i+1<len(month_marks) else len(vnl)
+            block=vnl[start:end]
+            for daym in re.finditer(r'(\d+):\[(.*?)\](?:,|\s*\})',block,re.S):
+              day=int(daym.group(1)); arr=daym.group(2)
+              for gm in re.finditer(r'\{time:"([^"]+)",match:"([^"]+)",place:"([^"]+)",cls:"([^"]*)"\}',arr):
+                time,match_text,place,cls=gm.groups()
+                score_m=re.match(r'(.+?)\s+(\d)-(\d)\s+(.+)',match_text)
+                vs_m=re.match(r'(.+?)\s+vs\s+(.+)',match_text)
+                if score_m:
+                  home_ko,hs,as_,away_ko=score_m.groups(); status='completed'; score={'home_sets':int(hs),'away_sets':int(as_)}
+                elif vs_m:
+                  home_ko,away_ko=vs_m.groups(); status='scheduled'; score=None
+                else:
+                  continue
+                date=f'{year:04d}-{month:02d}-{day:02d}'
+                dt=f'{date}T{time}:00+09:00' if time!='TBD' else None
+                matches.append({
+                  'match_id':f'KVL-M-{seq:06d}',
+                  'competition_id':'KVL-COMP-000001',
+                  'season':2026,'stage':'preliminary',
+                  'week':1 if cls=='vnl1' else 2 if cls=='vnl2' else 3 if cls=='vnl3' else None,
+                  'date_kst':date,'time_kst':time,'datetime_kst':dt,'timezone':'Asia/Seoul',
+                  'home':{'name_ko':home_ko,'name_en':team_map.get(home_ko,''),'participant_id':None},
+                  'away':{'name_ko':away_ko,'name_en':team_map.get(away_ko,''),'participant_id':None},
+                  'venue':{'country_ko':place,'country_en':team_map.get(place,place)},
+                  'status':status,'score':score,'source_text':match_text,'display_class':cls,
+                  'source_ids':['SRC-INT-VNL-2026-SCHEDULE-KST']
+                });seq+=1
+          participants=json.loads(Path('data/competition/vnl-2026-men-participants.json').read_text(encoding='utf-8'))['participants']
+          pmap={p['country']:p['participant_id'] for p in participants}
+          for m in matches:
+            m['home']['participant_id']=pmap.get(m['home']['name_en'])
+            m['away']['participant_id']=pmap.get(m['away']['name_en'])
+          ids=[m['match_id'] for m in matches]
+          assert len(ids)==len(set(ids))
+          assert matches and all(m['competition_id']=='KVL-COMP-000001' for m in matches)
+          out={'competition_id':'KVL-COMP-000001','timezone':'Asia/Seoul','generated_at':'2026-07-13','matches':matches}
+          Path('data/matches').mkdir(parents=True,exist_ok=True)
+          Path('data/matches/vnl-2026-men.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          audit={'match_count':len(matches),'completed':sum(m['status']=='completed' for m in matches),'scheduled':sum(m['status']=='scheduled' for m in matches),'duplicate_match_ids':0,'missing_participant_links':sum(not m['home']['participant_id'] or not m['away']['participant_id'] for m in matches),'months':sorted(set(m['date_kst'][:7] for m in matches))}
+          Path('data/audit/vnl_match_master_v1.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf-8')
+          Path('docs/VNL_MATCH_MASTER_AUDIT_v1.md').write_text(f"# VNL Match Master Audit v1\n\n- 대회 ID: **KVL-COMP-000001**\n- 경기 수: **{audit['match_count']}경기**\n- 완료 경기: **{audit['completed']}경기**\n- 예정 경기: **{audit['scheduled']}경기**\n- 중복 Match ID: **0건**\n- 참가국 연결 누락: **{audit['missing_participant_links']}건**\n- 표시 시간대: **Asia/Seoul**\n",encoding='utf-8')
+          PY
+      - name: Commit Match Master
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/matches/vnl-2026-men.json data/audit/vnl_match_master_v1.json docs/VNL_MATCH_MASTER_AUDIT_v1.md
+          git commit -m 'Build VNL 2026 Match Master with KVL match IDs' || exit 0
+          git push origin HEAD:main
