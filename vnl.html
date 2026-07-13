@@ -51,9 +51,18 @@
     .notice{padding:18px;border:1px solid rgba(214,178,94,.35);border-radius:16px;background:rgba(214,178,94,.08);color:var(--muted);line-height:1.65}
     .notice strong{color:var(--gold)}
 
+
+    .vnl-standings-note{margin-bottom:14px;padding:14px 16px;border:1px solid rgba(214,178,94,.35);border-radius:14px;background:rgba(214,178,94,.08);color:var(--muted);line-height:1.6}
+    .vnl-standings-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+    .vnl-standings-table{width:100%;min-width:760px;border-collapse:collapse;background:var(--panel)}
+    .vnl-standings-table th,.vnl-standings-table td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:center}
+    .vnl-standings-table th{background:var(--panel-strong);color:var(--gold);font-size:13px}
+    .vnl-standings-table td:nth-child(2){text-align:left}.vnl-standings-table td:nth-child(2) a{color:var(--text);font-weight:800;text-decoration:none}.vnl-standings-table td:nth-child(2) a:hover{color:var(--gold)}.vnl-standings-table td:nth-child(2) span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+
     @media(max-width:820px){.vnl-tabs-wrap{top:68px}.vnl-section{scroll-margin-top:138px}.vnl-section-head{align-items:flex-start;flex-direction:column}.vnl-hero{padding-top:38px}}
   </style>
   <link rel="stylesheet" href="assets/css/site-theme-light.css" />
+  <script src="assets/js/vnl-standings-v1.js" defer></script>
 </head>
 <body>
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -72,6 +81,7 @@
       <a href="#teams">참가국</a>
       <a href="#entries">Active 엔트리</a>
       <a href="#schedule">일정</a>
+      <a href="#standings">순위</a>
       <a href="#players">선수</a>
       <a href="#resources">자료·출처</a>
     </nav>
@@ -142,6 +152,12 @@
     <div class="schedule-links">
       <a href="schedules.html?tournament=vnl">전체 일정</a><a href="schedules.html?tournament=vnl&team=일본">일본</a><a href="schedules.html?tournament=vnl&team=브라질">브라질</a><a href="schedules.html?tournament=vnl&team=폴란드">폴란드</a><a href="schedules.html?tournament=vnl&team=이란">이란</a><a href="schedules.html?tournament=vnl&team=미국">미국</a><a href="schedules.html?tournament=vnl&team=프랑스">프랑스</a><a href="schedules.html?tournament=vnl&team=아르헨티나">아르헨티나</a><a href="schedules.html?tournament=vnl&team=이탈리아">이탈리아</a><a href="schedules.html?tournament=vnl&team=캐나다">캐나다</a><a href="schedules.html?tournament=vnl&team=벨기에">벨기에</a><a href="schedules.html?tournament=vnl&team=쿠바">쿠바</a><a href="schedules.html?tournament=vnl&team=슬로베니아">슬로베니아</a><a href="schedules.html?tournament=vnl&team=독일">독일</a><a href="schedules.html?tournament=vnl&team=세르비아">세르비아</a><a href="schedules.html?tournament=vnl&team=튀르키예">튀르키예</a><a href="schedules.html?tournament=vnl&team=불가리아">불가리아</a><a href="schedules.html?tournament=vnl&team=중국">중국</a><a href="schedules.html?tournament=vnl&team=우크라이나">우크라이나</a>
     </div>
+  </section>
+
+  
+  <section class="vnl-section" id="standings">
+    <div class="vnl-section-head"><div><p class="eyebrow">Standings Master</p><h2>현재 순위</h2></div><p>저장된 완료 경기 결과를 기준으로 승·패·승점·세트득실을 자동 집계합니다.</p></div>
+    <div id="vnlStandingsArea"><div class="notice">순위 데이터를 불러오는 중입니다.</div></div>
   </section>
 
   <section class="vnl-section" id="players">
