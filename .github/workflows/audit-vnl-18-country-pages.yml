@@ -1,0 +1,124 @@
+name: Audit VNL 18 country pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-vnl-18-country-pages.yml'
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Audit country pages and data links
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re,datetime
+
+          teams = [
+            ('Japan','일본','japan.html'),
+            ('Brazil','브라질','brazil.html'),
+            ('Poland','폴란드','poland.html'),
+            ('Iran','이란','iran.html'),
+            ('USA','미국','usa.html'),
+            ('France','프랑스','france.html'),
+            ('Argentina','아르헨티나','argentina.html'),
+            ('Italy','이탈리아','italy.html'),
+            ('Canada','캐나다','canada.html'),
+            ('Belgium','벨기에','belgium.html'),
+            ('Cuba','쿠바','cuba.html'),
+            ('Slovenia','슬로베니아','slovenia.html'),
+            ('Germany','독일','germany.html'),
+            ('Serbia','세르비아','serbia.html'),
+            ('Türkiye','튀르키예','turkiye.html'),
+            ('Bulgaria','불가리아','bulgaria.html'),
+            ('China','중국','china.html'),
+            ('Ukraine','우크라이나','ukraine.html'),
+          ]
+
+          vnl = Path('vnl.html').read_text(encoding='utf-8') if Path('vnl.html').exists() else ''
+          rows=[]
+          issues=[]
+          totals={'pages':0,'common':0,'data':0,'hub':0,'schedule':0,'complete':0}
+
+          for en,ko,fn in teams:
+            p=Path(fn)
+            exists=p.exists()
+            text=p.read_text(encoding='utf-8') if exists else ''
+            common=exists and 'assets/js/unified-nav.js' in text and ('national-team.js' in text or 'site-theme-light.css' in text)
+            data_match=re.search(r'"dataSource":"([^"]+)"',text)
+            data_path=data_match.group(1) if data_match else ''
+            data_exists=bool(data_path and Path(data_path).exists())
+            if not data_exists and exists:
+              # legacy pages can contain static rows rather than JSON
+              data_exists=('<tbody>' in text and '<tr>' in text) or ('playerTableBody' in text and 'players.json' in text and Path('players.json').exists())
+            hub=(f'href="{fn}"' in vnl)
+            schedule=(f'team={ko}' in vnl) or (f'team={ko}' in text)
+            coach_ok=exists and not re.search(r'"coach":"(?:확인 중|TBD|)"',text)
+            unresolved=bool(re.search(r'확인 중|데이터 연결 준비 중|Building',text))
+            complete=all([exists,common,data_exists,hub,schedule,coach_ok]) and not unresolved
+
+            totals['pages']+=int(exists); totals['common']+=int(common); totals['data']+=int(data_exists)
+            totals['hub']+=int(hub); totals['schedule']+=int(schedule); totals['complete']+=int(complete)
+
+            def mark(v): return '✅' if v else '❌'
+            rows.append([en,fn,mark(exists),mark(common),mark(data_exists),mark(coach_ok),mark(hub),mark(schedule),'완료' if complete else '보완 필요'])
+            country_issues=[]
+            if not exists: country_issues.append('페이지 없음')
+            if exists and not common: country_issues.append('공통 메뉴/템플릿 미적용')
+            if exists and not data_exists: country_issues.append('실제 선수 데이터 미연결')
+            if exists and not coach_ok: country_issues.append('감독 정보 확인 필요')
+            if not hub: country_issues.append('VNL 허브 링크 누락')
+            if not schedule: country_issues.append('국가 일정 링크 누락')
+            if unresolved: country_issues.append('확인 중/Building 문구 잔존')
+            if country_issues: issues.append((en,country_issues))
+
+          lines=[
+            '# VNL 18개국 국가 페이지 감사 v1','',
+            '문서 상태: Active  ',
+            f'자동 점검일: {datetime.date.today().isoformat()}  ',
+            '기준: main 브랜치 파일·데이터·VNL 허브 연결 상태','',
+            '## 요약','',
+            f'- 국가 페이지 존재: **{totals["pages"]}/18**',
+            f'- 공통 메뉴·템플릿 적용: **{totals["common"]}/18**',
+            f'- 실제 선수 데이터 연결: **{totals["data"]}/18**',
+            f'- VNL 허브 연결: **{totals["hub"]}/18**',
+            f'- 국가 일정 연결: **{totals["schedule"]}/18**',
+            f'- 모든 기준 통과: **{totals["complete"]}/18**','',
+            '## 국가별 결과','',
+            '| Country | Page | 존재 | 공통구조 | 선수 데이터 | 감독 | 허브 | 일정 | 상태 |',
+            '|---|---|---:|---:|---:|---:|---:|---:|---|'
+          ]
+          lines += ['| ' + ' | '.join(r) + ' |' for r in rows]
+          lines += ['', '## 보완 항목','']
+          if issues:
+            for en,items in issues:
+              lines.append(f'- **{en}**: ' + ', '.join(items))
+          else:
+            lines.append('- 없음')
+          lines += ['', '## 다음 작업 우선순위','',
+            '1. 실제 선수 데이터가 없는 국가부터 v25 JSON 연결',
+            '2. 기존 정적 국가 페이지를 공통 `national-team` 템플릿으로 이전',
+            '3. 감독·Active·Reserve 수와 데이터 실제 건수 교차 검증',
+            '4. 국가 페이지 선수명을 Player Master의 `player_id`와 연결',
+            '5. 배포 후 실제 사이트에서 모바일·PC 링크 검증','',
+            '이 문서는 저장소 상태를 자동 점검해 생성되며, 대규모 국가 페이지 수정 후 다시 실행한다.'
+          ]
+          out=Path('docs/VNL_18_COUNTRY_AUDIT_v1.md')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          Path('data/audit').mkdir(parents=True,exist_ok=True)
+          Path('data/audit/vnl_18_country_audit_v1.json').write_text(json.dumps({'summary':totals,'rows':rows,'issues':issues},ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Commit audit report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/VNL_18_COUNTRY_AUDIT_v1.md data/audit/vnl_18_country_audit_v1.json
+          git commit -m 'Generate VNL 18-country completeness audit' || exit 0
+          git push origin HEAD:main
