@@ -1,0 +1,42 @@
+name: Link Italy VNL page
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-italy-vnl-page.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Link Italy page from VNL hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('vnl.html')
+          s=p.read_text(encoding='utf-8')
+          s=s.replace('href="schedules.html?tournament=vnl&team=이탈리아"><img class="flag-img" src="https://flagcdn.com/w160/it.png" alt="Italy flag"><div class="team-name">Italy</div><div class="status">DB Status: Building</div><div class="status">국가 일정 바로가기</div>', 'href="italy.html"><img class="flag-img" src="https://flagcdn.com/w160/it.png" alt="Italy flag"><div class="team-name">Italy</div><div class="status">DB Status: Complete</div><div class="status">국가 선수 페이지 연결</div>')
+          marker='<a class="entry-card" href="poland.html"><span class="badge">ACTIVE ENTRY</span><strong>Poland</strong><p>대표팀 선수 DB와 엔트리 상태를 연결합니다.</p><div class="card-actions"><span>Active</span><span>Reserve</span><span>선수 상세</span></div></a>'
+          italy='<a class="entry-card" href="italy.html"><span class="badge">ACTIVE ENTRY</span><strong>Italy</strong><p>Active 14명 엔트리와 공식 선수 프로필을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 0</span><span>선수 상세</span></div></a>'
+          if italy not in s:
+              s=s.replace(marker, marker+'\n      '+italy)
+          player_marker='<a class="hub-card" href="poland.html"><span class="badge">NATIONAL TEAM</span><strong>Poland Players</strong><p>폴란드 대표팀 선수 페이지를 확인합니다.</p></a>'
+          italy_player='<a class="hub-card" href="italy.html"><span class="badge">NATIONAL TEAM</span><strong>Italy Players</strong><p>이탈리아 대표팀 Active 엔트리를 확인합니다.</p></a>'
+          if italy_player not in s:
+              s=s.replace(player_marker, player_marker+'\n       '+italy_player)
+          p.write_text(s,encoding='utf-8')
+          assert 'href="italy.html"' in s
+          assert 'Italy Players' in s
+          PY
+      - name: Commit Italy hub links
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html
+          git commit -m 'Connect Italy Active entry to VNL hub' || exit 0
+          git push origin HEAD:main
