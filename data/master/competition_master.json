@@ -53,12 +53,13 @@
     },
     "organization": {"organizer": "대학배구 대회 운영기관", "country": "Korea"},
     "format": {"participant_count": 15, "stage_structure": ["league_and_tournaments"], "timezone_display": "Asia/Seoul"},
-    "routes": {"hub_page": "university-league.html", "team_analysis_page": "university-teams.html", "players_page": "players.html?type=domestic", "pamphlet_page": "pamphlet-archive.html"},
+    "routes": {"hub_page": "university-league.html", "schedule_page": "university-league.html#schedule", "team_analysis_page": "university-teams.html", "players_page": "players.html?type=domestic", "pamphlet_page": "pamphlet-archive.html"},
     "data_links": {
       "participants": "data/competition/university-league-2026-men-participants.json",
       "rosters": "data/competition/university-league-2026-men-roster-index.json",
       "player_master": "data/master/player_master_229_v2.json",
-      "sources": ["SRC-KOR-UNIV-2026-PAMPHLET-V7"]
+      "matches": "data/matches/university-league-2026-men.json",
+      "sources": ["SRC-KOR-UNIV-2026-PAMPHLET-V7", "SRC-KOR-UNIV-2026-SCHEDULE-PENDING"]
     }
   }
 ]
