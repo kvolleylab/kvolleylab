@@ -105,3 +105,4 @@ jobs:
           git add data/standings/vnl-2026-men.json data/audit/vnl_standings_master_v1.json docs/VNL_STANDINGS_MASTER_AUDIT_v1.md
           git commit -m 'Build VNL Standings Master from completed results' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
