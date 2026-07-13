@@ -37,8 +37,10 @@
       "rosters": "data/competition/vnl-2026-men-roster-index.json",
       "schedule": "schedules.html?tournament=vnl",
       "matches": "data/matches/vnl-2026-men.json",
+      "results": "data/results/vnl-2026-men-results.json",
       "standings": "data/standings/vnl-2026-men.json",
-      "sources": ["SRC-INT-VNL-2026-ENTRY-V25"]
+      "ranking_rules": "data/rules/vnl-2026-men-ranking-rules-v1.json",
+      "sources": ["SRC-INT-VNL-2026-ENTRY-V25", "SRC-INT-VNL-2026-RULEBOOK-PENDING"]
     }
   }
 ]
