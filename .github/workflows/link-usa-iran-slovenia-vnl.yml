@@ -58,3 +58,4 @@ jobs:
           git add vnl.html
           git commit -m 'Connect USA Iran Slovenia pages to VNL hub' || exit 0
           git push origin HEAD:main
+# trigger
