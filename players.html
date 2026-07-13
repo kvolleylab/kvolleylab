@@ -4,155 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Player Search | K-Volley Lab</title>
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#0f172a;color:white}
-.top-menu{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:#111827;border-bottom:1px solid rgba(255,255,255,.1)}
-.logo{font-size:28px;font-weight:bold;color:#fbbf24}
-.site-nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.site-nav a{display:inline-flex;align-items:center;justify-content:center;padding:9px 13px;border-radius:999px;color:#d7e4ef;font-weight:700;text-decoration:none;transition:.18s ease}
-.site-nav a:hover{background:rgba(225,184,79,.14);color:#e1b84f}
-.site-nav a.active{background:#e1b84f;color:#071b2a}
-.hero{background:#111827;padding:28px 20px;text-align:center}
-h1{margin:0;color:#fbbf24}
-#stats{margin-top:15px;color:#94a3b8}
-.search-box{max-width:900px;margin:30px auto 10px;padding:0 20px;display:grid;grid-template-columns:1fr 220px;gap:12px}
-input,select{width:100%;box-sizing:border-box;padding:14px;border-radius:10px;border:none;font-size:16px}
-.player-grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;padding:20px}
-.card{background:#1e293b;border-radius:12px;padding:18px;cursor:pointer;transition:.2s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.card h3{margin:0 0 8px;color:#fbbf24}
-.meta{color:#cbd5e1;margin-top:7px}
-.muted{color:#94a3b8}
-.code{font-size:13px;color:#93c5fd;margin-bottom:12px}
-.empty{grid-column:1/-1;text-align:center;color:#94a3b8;padding:50px 20px}
-@media(max-width:700px){.top-menu{padding:18px 20px;align-items:flex-start;gap:14px;flex-direction:column}.search-box{grid-template-columns:1fr}.logo{font-size:24px}}
-</style>
-  <script src="assets/js/unified-nav.js" defer></script>
-  <link rel="stylesheet" href="assets/css/site-theme-light.css" />
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/site-theme-light.css">
+<link rel="stylesheet" href="assets/css/player-search-v2.css">
+<script src="assets/js/unified-nav.js" defer></script>
+<script src="assets/js/player-search-v2.js" defer></script>
 </head>
-<body>
-<header class="top-menu">
-  <div class="logo">K-Volley Lab</div>
-  <nav class="site-nav">
-    <a href="index.html">Home</a>
-    <a href="vnl.html">VNL</a>
-    <a href="players.html" class="active">Players</a>
-    <a href="schedules.html">Schedules</a>
-  </nav>
-</header>
-<section class="hero">
-  <h1>K-Volley Lab Player Search</h1>
-  <div id="stats">Loading...</div>
+<body class="player-search-page">
+<header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+<main class="ps-main">
+<section class="ps-hero">
+<p class="eyebrow">PLAYER MASTER</p>
+<h1>Player Search</h1>
+<p>국내 대학선수와 VNL 국제선수를 하나의 Player Master에서 검색합니다.</p>
+<div id="stats" class="ps-stats">선수 데이터를 불러오는 중입니다.</div>
 </section>
-<div class="search-box">
-  <input type="text" id="searchInput" placeholder="선수 이름, ID, 생년월일 검색...">
-  <select id="schoolFilter" aria-label="학교 필터">
-    <option value="All">전체 대학</option>
-  </select>
-</div>
-<div class="player-grid" id="playerGrid"></div>
-<script>
-const MASTER_URL = "data/master/player_master_229_v2.json";
-let players = [];
-
-const schoolNames = {
-  INHA:"인하대학교", SKKU:"성균관대학교", HONGIK:"홍익대학교", KYUNGHEE:"경희대학교",
-  MYONGJI:"명지대학교", KYUNGIL:"경일대학교", HONAM:"호남대학교", JOONGBU:"중부대학교",
-  HANYANG:"한양대학교", KYONGGI:"경기대학교", CHOSUN:"조선대학교", MOKPO:"목포대학교",
-  CHUNGNAM:"충남대학교", GYEONGSANG:"경상국립대학교", WOOSUK:"우석대학교"
-};
-
-function schoolCode(player){
-  const source = (player.source_ids || []).find(id => id.includes("UNIV-2026-")) || "";
-  const match = source.match(/UNIV-2026-([A-Z]+)-/);
-  return match ? match[1] : "UNKNOWN";
-}
-
-function schoolLabel(player){
-  const code = schoolCode(player);
-  return schoolNames[code] || code;
-}
-
-function text(value, fallback="-"){
-  return value === null || value === undefined || value === "" ? fallback : String(value);
-}
-
-function escapeHtml(value){
-  return String(value).replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
-}
-
-function normalize(player){
-  return {
-    id: player.system?.player_id || "",
-    displayCode: player.system?.display_code || "",
-    status: player.system?.status || "",
-    nameKo: player.identity?.name_ko || "",
-    nameEn: player.identity?.name_en || "",
-    nationality: player.identity?.nationality || "",
-    birthDate: player.identity?.birth_date || "",
-    height: player.physical?.height_cm,
-    volleybox: player.links?.volleybox || "",
-    schoolCode: schoolCode(player),
-    school: schoolLabel(player)
-  };
-}
-
-fetch(MASTER_URL,{cache:"no-store"})
-  .then(response => {
-    if(!response.ok) throw new Error(`Player Master load failed: ${response.status}`);
-    return response.json();
-  })
-  .then(data => {
-    players = data.map(normalize);
-    const schools = [...new Set(players.map(p => p.schoolCode).filter(code => code !== "UNKNOWN"))].sort();
-    const filter = document.getElementById("schoolFilter");
-    schools.forEach(code => {
-      const option = document.createElement("option");
-      option.value = code;
-      option.textContent = schoolNames[code] || code;
-      filter.appendChild(option);
-    });
-    document.getElementById("stats").textContent = `등록 선수 ${players.length}명 | 대학 ${schools.length}개 | Player Master 기준`;
-    applyFilters();
-  })
-  .catch(error => {
-    console.error(error);
-    document.getElementById("stats").textContent = "선수 데이터를 불러오지 못했습니다.";
-    document.getElementById("playerGrid").innerHTML = '<div class="empty">Player Master 로딩 오류</div>';
-  });
-
-function renderPlayers(list){
-  const grid = document.getElementById("playerGrid");
-  if(!list.length){
-    grid.innerHTML = '<div class="empty">검색 결과가 없습니다.</div>';
-    return;
-  }
-  grid.innerHTML = list.map(player => `
-    <article class="card" onclick="location.href='player.html?id=${encodeURIComponent(player.id)}'">
-      <h3>${escapeHtml(player.nameKo || player.nameEn || player.id)}</h3>
-      <div class="code">${escapeHtml(text(player.displayCode, player.id))}</div>
-      <div class="meta">소속: ${escapeHtml(text(player.school))}</div>
-      <div class="meta">키: ${escapeHtml(text(player.height))}${player.height ? "cm" : ""}</div>
-      <div class="meta">생년월일: ${escapeHtml(text(player.birthDate))}</div>
-      <div class="meta muted">${escapeHtml(player.id)}</div>
-    </article>
-  `).join("");
-}
-
-function applyFilters(){
-  const keyword = document.getElementById("searchInput").value.trim().toLowerCase();
-  const selectedSchool = document.getElementById("schoolFilter").value;
-  const filtered = players.filter(player => {
-    const matchesSchool = selectedSchool === "All" || player.schoolCode === selectedSchool;
-    const haystack = [player.nameKo, player.nameEn, player.id, player.displayCode, player.birthDate, player.school, player.schoolCode]
-      .join(" ").toLowerCase();
-    return matchesSchool && haystack.includes(keyword);
-  });
-  renderPlayers(filtered);
-}
-
-document.getElementById("searchInput").addEventListener("input", applyFilters);
-document.getElementById("schoolFilter").addEventListener("change", applyFilters);
-</script>
+<section class="ps-controls" aria-label="선수 검색 필터">
+<input type="search" id="searchInput" placeholder="선수명, KVL ID, 국가, 학교, 생년월일 검색..." autocomplete="off">
+<select id="typeFilter" aria-label="선수 구분"><option value="All">국내·국제 전체</option><option value="domestic">국내 선수</option><option value="international">국제 선수</option></select>
+<select id="countryFilter" aria-label="국가 필터"><option value="All">전체 국가</option></select>
+<select id="schoolFilter" aria-label="학교 필터"><option value="All">전체 학교</option></select>
+<select id="positionFilter" aria-label="포지션 필터"><option value="All">전체 포지션</option></select>
+</section>
+<div class="ps-result-head"><strong id="resultCount">검색 결과 0명</strong><button type="button" id="clearFilters" class="ps-clear">필터 초기화</button></div>
+<section id="playerGrid" class="ps-grid" aria-live="polite"><div class="ps-empty">Player Master를 불러오는 중입니다.</div></section>
+</main>
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 </body>
 </html>
