@@ -1,0 +1,107 @@
+name: Build VNL Standings Master v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-vnl-standings-master-v1.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Calculate standings from completed results
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          participants=json.loads(Path('data/competition/vnl-2026-men-participants.json').read_text(encoding='utf-8'))['participants']
+          results=json.loads(Path('data/results/vnl-2026-men-results.json').read_text(encoding='utf-8'))['results']
+
+          rows={p['participant_id']:{
+            'participant_id':p['participant_id'],
+            'country':p['country'],
+            'country_ko':p['country_ko'],
+            'country_page':p['country_page'],
+            'played':0,'wins':0,'losses':0,'points':0,
+            'sets_won':0,'sets_lost':0,
+            'set_ratio':None,'points_won':None,'points_lost':None,'point_ratio':None
+          } for p in participants}
+
+          for r in results:
+            hs=r['final_score']['home_sets']; aws=r['final_score']['away_sets']
+            winner=r['winner']['participant_id']; loser=r['loser']['participant_id']
+            winner_side=r['winner']['side']
+            home_pid = winner if winner_side=='home' else loser
+            away_pid = winner if winner_side=='away' else loser
+            home=rows[home_pid]; away=rows[away_pid]
+            home['played']+=1; away['played']+=1
+            home['sets_won']+=hs; home['sets_lost']+=aws
+            away['sets_won']+=aws; away['sets_lost']+=hs
+            if hs>aws:
+              home['wins']+=1; away['losses']+=1
+            else:
+              away['wins']+=1; home['losses']+=1
+            if (hs,aws) in [(3,0),(3,1)]: home['points']+=3
+            elif (hs,aws)==(3,2): home['points']+=2; away['points']+=1
+            elif (hs,aws)==(2,3): away['points']+=2; home['points']+=1
+            elif (hs,aws) in [(0,3),(1,3)]: away['points']+=3
+
+          for row in rows.values():
+            if row['sets_lost']==0:
+              row['set_ratio']=None if row['sets_won']==0 else 'MAX'
+            else:
+              row['set_ratio']=round(row['sets_won']/row['sets_lost'],3)
+
+          def ratio_value(r):
+            return 999 if r['set_ratio']=='MAX' else (r['set_ratio'] or 0)
+          ordered=sorted(rows.values(),key=lambda r:(-r['wins'],-r['points'],-ratio_value(r),-r['sets_won'],r['country']))
+          for i,row in enumerate(ordered,1): row['rank']=i
+
+          out={
+            'competition_id':'KVL-COMP-000001',
+            'standings_version':'v1',
+            'status':'partial',
+            'basis':'25 completed preliminary matches currently stored in Match Result v1',
+            'ranking_rules':['wins','match_points','set_ratio','sets_won','country_name_fallback'],
+            'point_ratio_status':'pending_set_point_data',
+            'rows':ordered
+          }
+          Path('data/standings').mkdir(parents=True,exist_ok=True)
+          Path('data/standings/vnl-2026-men.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          audit={
+            'teams':len(ordered),
+            'matches_reflected':sum(r['played'] for r in ordered)//2,
+            'total_wins':sum(r['wins'] for r in ordered),
+            'total_losses':sum(r['losses'] for r in ordered),
+            'duplicate_ranks':len(ordered)-len({r['rank'] for r in ordered}),
+            'missing_participants':sum(1 for r in ordered if not r['participant_id']),
+            'point_ratio_pending':True
+          }
+          assert audit['teams']==18,audit
+          assert audit['matches_reflected']==25,audit
+          assert audit['total_wins']==25 and audit['total_losses']==25,audit
+          Path('data/audit/vnl_standings_master_v1.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf-8')
+          Path('docs/VNL_STANDINGS_MASTER_AUDIT_v1.md').write_text(
+            '# VNL Standings Master Audit v1\n\n'
+            f'- 참가국: **{audit["teams"]}개**\n'
+            f'- 반영 경기: **{audit["matches_reflected"]}경기**\n'
+            f'- 승/패 합계: **{audit["total_wins"]}/{audit["total_losses"]}**\n'
+            f'- 중복 순위: **{audit["duplicate_ranks"]}건**\n'
+            f'- Participant 연결 누락: **{audit["missing_participants"]}건**\n'
+            '- 득점득실률: **세트별 득점 데이터 확보 후 계산**\n\n'
+            '현재 순위는 저장된 25경기만 반영한 진행 중 순위표다.\n',encoding='utf-8')
+          PY
+      - name: Commit standings data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/standings/vnl-2026-men.json data/audit/vnl_standings_master_v1.json docs/VNL_STANDINGS_MASTER_AUDIT_v1.md
+          git commit -m 'Build VNL Standings Master from completed results' || exit 0
+          git push origin HEAD:main
