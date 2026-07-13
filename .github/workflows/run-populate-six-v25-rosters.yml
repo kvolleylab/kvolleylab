@@ -56,3 +56,4 @@ jobs:
           git add data/vnl/v25_usa_iran_slovenia_germany_serbia_turkiye.json usa.html iran.html slovenia.html germany.html serbia.html turkiye.html vnl.html
           git commit -m 'Populate six VNL national team rosters from v25' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
