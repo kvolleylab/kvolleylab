@@ -1,0 +1,46 @@
+name: Link Belgium VNL page
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-belgium-vnl-page.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Link Belgium page from VNL hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('vnl.html')
+          s=p.read_text(encoding='utf-8')
+          old='<a class="team-card" href="schedules.html?tournament=vnl&team=벨기에"><img class="flag-img" src="https://flagcdn.com/w160/be.png" alt="Belgium flag"><div class="team-name">Belgium</div><div class="status">DB Status: Building</div><div class="status">국가 일정 바로가기</div></a>'
+          new='<a class="team-card" href="belgium.html"><img class="flag-img" src="https://flagcdn.com/w160/be.png" alt="Belgium flag"><div class="team-name">Belgium</div><div class="status">DB Status: Complete</div><div class="status">국가 선수 페이지 연결</div></a>'
+          s=s.replace(old,new)
+          if 'href="belgium.html"' not in s:
+              anchor='<a class="team-card" href="canada.html"><img class="flag-img" src="https://flagcdn.com/w160/ca.png" alt="Canada flag"><div class="team-name">Canada</div><div class="status">DB Status: Complete</div><div class="status">국가 선수 페이지 연결</div></a>'
+              s=s.replace(anchor,anchor+'\n      '+new)
+          entry='<a class="entry-card" href="belgium.html"><span class="badge">ACTIVE ENTRY</span><strong>Belgium</strong><p>Active 14명과 Reserve 4명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 4</span><span>선수 상세</span></div></a>'
+          anchor='<a class="entry-card" href="argentina.html"><span class="badge">ACTIVE ENTRY</span><strong>Argentina</strong><p>Active 14명과 Reserve 2명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 2</span><span>선수 상세</span></div></a>'
+          if entry not in s:s=s.replace(anchor,anchor+'\n      '+entry)
+          player='<a class="hub-card" href="belgium.html"><span class="badge">NATIONAL TEAM</span><strong>Belgium Players</strong><p>벨기에 대표팀 Active·Reserve 엔트리를 확인합니다.</p></a>'
+          anchor='<a class="hub-card" href="argentina.html"><span class="badge">NATIONAL TEAM</span><strong>Argentina Players</strong><p>아르헨티나 대표팀 Active·Reserve 엔트리를 확인합니다.</p></a>'
+          if player not in s:s=s.replace(anchor,anchor+'\n       '+player)
+          sched='<a href="schedules.html?tournament=vnl&team=벨기에">벨기에</a>'
+          if sched not in s:s=s.replace('<a href="schedules.html?tournament=vnl&team=캐나다">캐나다</a>','<a href="schedules.html?tournament=vnl&team=캐나다">캐나다</a>'+sched)
+          p.write_text(s,encoding='utf-8')
+          assert 'href="belgium.html"' in s and 'Belgium Players' in s
+          PY
+      - name: Commit Belgium hub links
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html
+          git commit -m 'Connect Belgium Active entry to VNL hub' || exit 0
+          git push origin HEAD:main
