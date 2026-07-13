@@ -1,0 +1,71 @@
+{
+  "rule_id": "KVL-RULE-000001",
+  "competition_id": "KVL-COMP-000001",
+  "name": "2026 VNL Men ranking rules",
+  "rule_version": "v1",
+  "rule_status": "pending_verification",
+  "calculation_mode": "provisional",
+  "effective_stage": "preliminary",
+  "format": "round_robin_plus_finals",
+  "stages": [
+    {
+      "stage_id": "preliminary",
+      "ranking_enabled": true,
+      "advancement_enabled": true
+    },
+    {
+      "stage_id": "finals",
+      "ranking_enabled": false,
+      "advancement_enabled": false,
+      "bracket_mode": "knockout"
+    }
+  ],
+  "match_points": {
+    "3-0": {"winner": 3, "loser": 0},
+    "3-1": {"winner": 3, "loser": 0},
+    "3-2": {"winner": 2, "loser": 1},
+    "2-3": {"winner": 2, "loser": 1},
+    "1-3": {"winner": 3, "loser": 0},
+    "0-3": {"winner": 3, "loser": 0}
+  },
+  "ranking_order": [
+    {"priority": 1, "criterion": "wins", "direction": "desc", "status": "provisional"},
+    {"priority": 2, "criterion": "match_points", "direction": "desc", "status": "provisional"},
+    {"priority": 3, "criterion": "set_ratio", "direction": "desc", "status": "provisional"},
+    {"priority": 4, "criterion": "point_ratio", "direction": "desc", "status": "pending_set_point_data"},
+    {"priority": 5, "criterion": "head_to_head", "direction": "desc", "status": "pending_verification"}
+  ],
+  "ratio_rules": {
+    "set_ratio": "sets_won / sets_lost",
+    "set_ratio_zero_denominator": "MAX",
+    "point_ratio": "points_won / points_lost",
+    "point_ratio_zero_denominator": "MAX"
+  },
+  "forfeit": {
+    "status": "pending_verification",
+    "score_rule": null,
+    "match_points_rule": null,
+    "note": "공식 운영요강 확인 전 자동 처리하지 않음"
+  },
+  "advancement": {
+    "status": "pending_verification",
+    "qualified_team_count": null,
+    "host_qualification_rule": null,
+    "bracket_seeding": null,
+    "note": "2026 공식 운영요강 확인 후 입력"
+  },
+  "manual_override": {
+    "allowed": true,
+    "requires_reason": true,
+    "requires_source_id": true
+  },
+  "sources": [
+    {
+      "source_id": "SRC-INT-VNL-2026-RULEBOOK-PENDING",
+      "type": "official_rulebook",
+      "status": "pending_verification",
+      "url": ""
+    }
+  ],
+  "updated_at": "2026-07-13"
+}
