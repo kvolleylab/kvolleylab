@@ -42,26 +42,13 @@ jobs:
                   continue
                 date=f'{year:04d}-{month:02d}-{day:02d}'
                 dt=f'{date}T{time}:00+09:00' if time!='TBD' else None
-                matches.append({
-                  'match_id':f'KVL-M-{seq:06d}',
-                  'competition_id':'KVL-COMP-000001',
-                  'season':2026,'stage':'preliminary',
-                  'week':1 if cls=='vnl1' else 2 if cls=='vnl2' else 3 if cls=='vnl3' else None,
-                  'date_kst':date,'time_kst':time,'datetime_kst':dt,'timezone':'Asia/Seoul',
-                  'home':{'name_ko':home_ko,'name_en':team_map.get(home_ko,''),'participant_id':None},
-                  'away':{'name_ko':away_ko,'name_en':team_map.get(away_ko,''),'participant_id':None},
-                  'venue':{'country_ko':place,'country_en':team_map.get(place,place)},
-                  'status':status,'score':score,'source_text':match_text,'display_class':cls,
-                  'source_ids':['SRC-INT-VNL-2026-SCHEDULE-KST']
-                });seq+=1
+                matches.append({'match_id':f'KVL-M-{seq:06d}','competition_id':'KVL-COMP-000001','season':2026,'stage':'preliminary','week':1 if cls=='vnl1' else 2 if cls=='vnl2' else 3 if cls=='vnl3' else None,'date_kst':date,'time_kst':time,'datetime_kst':dt,'timezone':'Asia/Seoul','home':{'name_ko':home_ko,'name_en':team_map.get(home_ko,''),'participant_id':None},'away':{'name_ko':away_ko,'name_en':team_map.get(away_ko,''),'participant_id':None},'venue':{'country_ko':place,'country_en':team_map.get(place,place)},'status':status,'score':score,'source_text':match_text,'display_class':cls,'source_ids':['SRC-INT-VNL-2026-SCHEDULE-KST']});seq+=1
           participants=json.loads(Path('data/competition/vnl-2026-men-participants.json').read_text(encoding='utf-8'))['participants']
           pmap={p['country']:p['participant_id'] for p in participants}
           for m in matches:
-            m['home']['participant_id']=pmap.get(m['home']['name_en'])
-            m['away']['participant_id']=pmap.get(m['away']['name_en'])
+            m['home']['participant_id']=pmap.get(m['home']['name_en']);m['away']['participant_id']=pmap.get(m['away']['name_en'])
           ids=[m['match_id'] for m in matches]
-          assert len(ids)==len(set(ids))
-          assert matches and all(m['competition_id']=='KVL-COMP-000001' for m in matches)
+          assert len(ids)==len(set(ids));assert matches and all(m['competition_id']=='KVL-COMP-000001' for m in matches)
           out={'competition_id':'KVL-COMP-000001','timezone':'Asia/Seoul','generated_at':'2026-07-13','matches':matches}
           Path('data/matches').mkdir(parents=True,exist_ok=True)
           Path('data/matches/vnl-2026-men.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
@@ -76,3 +63,4 @@ jobs:
           git add data/matches/vnl-2026-men.json data/audit/vnl_match_master_v1.json docs/VNL_MATCH_MASTER_AUDIT_v1.md
           git commit -m 'Build VNL 2026 Match Master with KVL match IDs' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
