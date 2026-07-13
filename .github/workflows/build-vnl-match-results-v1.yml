@@ -1,0 +1,86 @@
+name: Build VNL Match Results v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-vnl-match-results-v1.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Build completed match result records
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          match_path=Path('data/matches/vnl-2026-men.json')
+          data=json.loads(match_path.read_text(encoding='utf-8'))
+          results=[]
+          for m in data.get('matches',[]):
+            if m.get('status')!='completed' or not m.get('score'):
+              continue
+            hs=m['score']['home_sets']; aws=m['score']['away_sets']
+            winner='home' if hs>aws else 'away'
+            loser='away' if winner=='home' else 'home'
+            results.append({
+              'result_id':f"{m['match_id']}-R1",
+              'match_id':m['match_id'],
+              'competition_id':m['competition_id'],
+              'status':'final',
+              'winner':{
+                'side':winner,
+                'participant_id':m[winner]['participant_id'],
+                'name_ko':m[winner]['name_ko'],
+                'name_en':m[winner]['name_en']
+              },
+              'loser':{
+                'side':loser,
+                'participant_id':m[loser]['participant_id'],
+                'name_ko':m[loser]['name_ko'],
+                'name_en':m[loser]['name_en']
+              },
+              'final_score':{'home_sets':hs,'away_sets':aws,'display':f'{hs}-{aws}'},
+              'sets':[],
+              'set_scores_status':'not_available_in_source',
+              'source_ids':['SRC-INT-VNL-2026-SCHEDULE-KST'],
+              'updated_at':'2026-07-13'
+            })
+          out={'competition_id':'KVL-COMP-000001','result_version':'v1','results':results}
+          Path('data/results').mkdir(parents=True,exist_ok=True)
+          Path('data/results/vnl-2026-men-results.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
+          audit={
+            'completed_match_results':len(results),
+            'unique_match_ids':len({r['match_id'] for r in results}),
+            'duplicate_result_ids':len(results)-len({r['result_id'] for r in results}),
+            'winner_links_missing':sum(not r['winner']['participant_id'] for r in results),
+            'loser_links_missing':sum(not r['loser']['participant_id'] for r in results),
+            'set_scores_available':sum(bool(r['sets']) for r in results),
+            'set_scores_pending':sum(not r['sets'] for r in results)
+          }
+          assert audit['completed_match_results']==25,audit
+          assert audit['duplicate_result_ids']==0,audit
+          assert audit['winner_links_missing']==0 and audit['loser_links_missing']==0,audit
+          Path('data/audit/vnl_match_results_v1.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding='utf-8')
+          Path('docs/VNL_MATCH_RESULTS_AUDIT_v1.md').write_text(
+            '# VNL Match Results Audit v1\n\n'
+            f'- 완료 경기 결과: **{audit["completed_match_results"]}건**\n'
+            f'- 고유 Match ID: **{audit["unique_match_ids"]}건**\n'
+            f'- 중복 Result ID: **{audit["duplicate_result_ids"]}건**\n'
+            f'- 승자·패자 Participant 연결 누락: **{audit["winner_links_missing"]+audit["loser_links_missing"]}건**\n'
+            f'- 세트별 득점 입력 완료: **{audit["set_scores_available"]}건**\n'
+            f'- 세트별 득점 입력 대기: **{audit["set_scores_pending"]}건**\n\n'
+            '현재 원본에는 최종 세트스코어만 있어 세트별 득점은 추정하지 않고 빈 배열로 유지한다.\n',encoding='utf-8')
+          PY
+      - name: Commit result data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/results/vnl-2026-men-results.json data/audit/vnl_match_results_v1.json docs/VNL_MATCH_RESULTS_AUDIT_v1.md
+          git commit -m 'Build VNL completed match result records' || exit 0
+          git push origin HEAD:main
