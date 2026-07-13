@@ -1,0 +1,123 @@
+name: Connect all VNL players to Player Master v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/connect-all-vnl-player-master-v1.yml'
+permissions:
+  contents: write
+jobs:
+  connect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Build international master and link all country tables
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re,unicodedata
+
+          countries=['Japan','Brazil','Poland','Iran','USA','France','Argentina','Italy','Canada','Belgium','Cuba','Slovenia','Germany','Serbia','Türkiye','Bulgaria','China','Ukraine']
+          pages=['japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','germany.html','serbia.html','turkiye.html','bulgaria.html','china.html','ukraine.html']
+          def norm(s):
+            s=unicodedata.normalize('NFKD',str(s or '')).encode('ascii','ignore').decode().lower()
+            return re.sub(r'[^a-z0-9]','',s)
+          def key(p): return (norm(p.get('name') or p.get('fullName') or p.get('name_en')),str(p.get('dob') or p.get('birth_date') or ''))
+
+          existing_path=Path('data/master/player_master_international_v1.json')
+          existing=json.loads(existing_path.read_text(encoding='utf-8')) if existing_path.exists() else []
+          id_by_key={
+            (norm(x.get('identity',{}).get('name_en')),str(x.get('identity',{}).get('birth_date') or '')):x.get('system',{}).get('player_id')
+            for x in existing if x.get('system',{}).get('player_id')
+          }
+          used_ids={x.get('system',{}).get('player_id') for x in existing}
+          max_id=max([int(x.split('-')[-1]) for x in used_ids if x and x.startswith('KVL-P-')] or [229])
+
+          sources=[Path('players.json')]+sorted(Path('data/vnl').glob('*.json'))
+          records=[]; file_data={}
+          for path in sources:
+            try: data=json.loads(path.read_text(encoding='utf-8'))
+            except Exception: continue
+            arr=data if isinstance(data,list) else data.get('players',[])
+            changed=False
+            for p in arr:
+              if not isinstance(p,dict) or p.get('country') not in countries or not (p.get('name') or p.get('fullName')): continue
+              records.append(p)
+            file_data[path]=(data,arr)
+
+          # Extract legacy inline roster tuples from country pages.
+          tuple_re=re.compile(r"\[(\d+),\s*(['\"])(.*?)\2,\s*(['\"])(.*?)\4,\s*(['\"])(.*?)\6,\s*(\d+),\s*(['\"])(\d{4}-\d{2}-\d{2})\9",re.S)
+          country_by_page=dict(zip(pages,countries))
+          for fn,country in country_by_page.items():
+            text=Path(fn).read_text(encoding='utf-8') if Path(fn).exists() else ''
+            for m in tuple_re.finditer(text):
+              records.append({'country':country,'number':int(m.group(1)),'name':m.group(3),'korean':m.group(5),'position':m.group(7),'height':int(m.group(8)),'dob':m.group(10),'entryStatus':'Active'})
+
+          unique={}
+          for p in records:
+            k=key(p)
+            if not k[0]: continue
+            if k not in unique: unique[k]=dict(p)
+            else:
+              for field,val in p.items():
+                if val not in (None,'',[]): unique[k].setdefault(field,val)
+
+          masters=[]; index={}; assigned={}
+          for k,p in sorted(unique.items(),key=lambda kv:(kv[1].get('country',''),kv[1].get('name',''))):
+            pid=id_by_key.get(k)
+            if not pid:
+              max_id+=1; pid=f'KVL-P-{max_id:06d}'
+            assigned[k]=pid
+            name=p.get('name') or p.get('fullName') or ''
+            korean=p.get('korean') or p.get('nameKo') or ''
+            dob=p.get('dob') or ''
+            master={
+              'system':{'player_id':pid,'display_code':f"{p.get('country','INT')}-{dob.replace('-','')}",'created_at':'2026-07-13','updated_at':'2026-07-13','status':'active','data_confidence':'reviewed','id_status':'permanent'},
+              'identity':{'name_ko':korean,'name_en':name,'name_native':name,'gender':'M','nationality':p.get('country',''),'birth_date':dob,'birth_year':int(dob[:4]) if dob else None,'birth_place':'','hand':'Unknown'},
+              'physical':{'height_cm':p.get('height'),'weight_kg':None,'spike_cm':None,'block_cm':None},
+              'volleyball':{'position':p.get('position',''),'national_team':p.get('country',''),'entry_status':p.get('entryStatus') or p.get('rosterStatus') or 'Active'},
+              'links':{'volleybox':p.get('volleybox',''),'fivb_profile':p.get('vnlProfile') or p.get('officialSource',''),'kovo_profile':'','instagram':'','youtube':'','photo':''},
+              'source_ids':[f"SRC-INT-VNL-2026-{str(p.get('country','')).upper()}-V25"]
+            }
+            masters.append(master)
+            index[norm(name)]={'player_id':pid,'name':name,'dob':dob}
+            if korean: index[korean.replace(' ','')]={'player_id':pid,'name':name,'dob':dob}
+
+          # Write player_id back to JSON source records.
+          for path,(data,arr) in file_data.items():
+            changed=False
+            for p in arr:
+              if not isinstance(p,dict): continue
+              pid=assigned.get(key(p))
+              if pid and p.get('player_id')!=pid: p['player_id']=pid; changed=True
+            if changed: path.write_text(json.dumps(data,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          existing_path.write_text(json.dumps(masters,ensure_ascii=False,indent=2),encoding='utf-8')
+          Path('data/master/player_link_index_v1.json').write_text(json.dumps(index,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          linker=Path('assets/js/player-linker.js')
+          linker.write_text("""(()=>{const n=s=>String(s||'').normalize('NFKD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().replace(/[^a-z0-9가-힣]/g,'');fetch('data/master/player_link_index_v1.json',{cache:'no-store'}).then(r=>r.json()).then(idx=>{const run=()=>document.querySelectorAll('table tbody tr').forEach(tr=>{const cells=tr.querySelectorAll('td');if(cells.length<2)return;const cell=cells[1];if(cell.querySelector('a'))return;const hit=idx[n(cell.textContent)];if(!hit)return;const a=document.createElement('a');a.className='nt-player-link';a.href=`player.html?id=${encodeURIComponent(hit.player_id)}`;a.textContent=cell.textContent.trim();cell.textContent='';cell.appendChild(a)});run();setTimeout(run,400);setTimeout(run,1200)}).catch(()=>{})})();""",encoding='utf-8')
+
+          for fn in pages:
+            p=Path(fn); s=p.read_text(encoding='utf-8')
+            tag='<script src="assets/js/player-linker.js" defer></script>'
+            if tag not in s: s=s.replace('</head>',tag+'</head>')
+            p.write_text(s,encoding='utf-8')
+
+          ids=[x['system']['player_id'] for x in masters]
+          assert len(ids)==len(set(ids))
+          assert len(unique)==len(masters)
+          summary={'countries':len(set(x['identity']['nationality'] for x in masters)),'international_players':len(masters),'first_new_id':'KVL-P-000230','last_id':max(ids,key=lambda x:int(x.split('-')[-1])),'duplicate_ids':0}
+          Path('data/audit/vnl_player_master_link_audit_v1.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          Path('docs/VNL_PLAYER_MASTER_LINK_AUDIT_v1.md').write_text(f"# VNL Player Master Link Audit v1\n\n- 국가 수: **{summary['countries']}**\n- 국제선수 고유 ID: **{summary['international_players']}명**\n- ID 범위: **{summary['first_new_id']} ~ {summary['last_id']}**\n- 중복 ID: **0건**\n- 국가 페이지: **18개 모두 공통 선수 링크 스크립트 연결**\n\n매칭 기준은 영문명 정규화 + 생년월일이며, 기존 USA ID는 유지했다.\n",encoding='utf-8')
+          PY
+      - name: Commit all-country player links
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add players.json data/vnl data/master/player_master_international_v1.json data/master/player_link_index_v1.json assets/js/player-linker.js assets/js/national-team.js assets/css/national-team.css player.html *.html docs/VNL_PLAYER_MASTER_LINK_AUDIT_v1.md data/audit/vnl_player_master_link_audit_v1.json
+          git commit -m 'Connect all VNL players to Player Master detail pages' || exit 0
+          git push origin HEAD:main
