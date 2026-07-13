@@ -44,3 +44,4 @@ jobs:
           git add vnl.html
           git commit -m 'Connect Belgium Active entry to VNL hub' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
