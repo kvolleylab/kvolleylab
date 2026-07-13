@@ -1,0 +1,68 @@
+name: Register four static VNL teams
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/register-four-static-vnl-teams.yml'
+permissions:
+  contents: write
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Extract static tables and append Player Master
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re,unicodedata,html
+          pages={'japan.html':'Japan','italy.html':'Italy','canada.html':'Canada','cuba.html':'Cuba'}
+          master_path=Path('data/master/player_master_international_v1.json')
+          master=json.loads(master_path.read_text(encoding='utf-8'))
+          def norm(s):
+            s=unicodedata.normalize('NFKD',str(s or '')).encode('ascii','ignore').decode().lower()
+            return re.sub(r'[^a-z0-9]','',s)
+          existing={(norm(x['identity'].get('name_en')),x['identity'].get('birth_date','')):x for x in master}
+          max_id=max(int(x['system']['player_id'].split('-')[-1]) for x in master)
+          row_re=re.compile(r'<tr><td>(\d+)</td><td>(.*?)</td><td>.*?([A-Z]{1,2}).*?</td><td>(\d+)cm</td><td>(\d{4}-\d{2}-\d{2})</td>.*?</tr>',re.S)
+          name_re=re.compile(r'<strong>(.*?)</strong>')
+          ko_re=re.compile(r'<div class="sub">(.*?)</div>')
+          href_re=re.compile(r'href="([^"]+)"')
+          added=[]
+          for fn,country in pages.items():
+            text=Path(fn).read_text(encoding='utf-8')
+            reserve_at=text.find('<h2>Reserve</h2>')
+            for m in row_re.finditer(text):
+              cell=m.group(2)
+              nm=name_re.search(cell)
+              if not nm: continue
+              name=html.unescape(re.sub('<.*?>','',nm.group(1))).strip()
+              km=ko_re.search(cell); korean=html.unescape(re.sub('<.*?>','',km.group(1))).strip() if km else ''
+              dob=m.group(5); k=(norm(name),dob)
+              if k in existing: continue
+              max_id+=1; pid=f'KVL-P-{max_id:06d}'
+              row=m.group(0); hm=href_re.search(row)
+              status='Reserve' if reserve_at>=0 and m.start()>reserve_at else 'Active'
+              rec={'system':{'player_id':pid,'display_code':f'{country.upper()}-{dob.replace("-","")}','created_at':'2026-07-13','updated_at':'2026-07-13','status':'active','data_confidence':'reviewed','id_status':'permanent'},'identity':{'name_ko':korean,'name_en':name,'name_native':name,'gender':'M','nationality':country,'birth_date':dob,'birth_year':int(dob[:4]),'birth_place':'','hand':'Unknown'},'physical':{'height_cm':int(m.group(4)),'weight_kg':None,'spike_cm':None,'block_cm':None},'volleyball':{'position':m.group(3),'national_team':country,'entry_status':status},'links':{'volleybox':'','fivb_profile':hm.group(1) if hm else '','kovo_profile':'','instagram':'','youtube':'','photo':''},'source_ids':[f'SRC-INT-VNL-2026-{country.upper()}-V25']}
+              master.append(rec); existing[k]=rec; added.append(rec)
+          master_path.write_text(json.dumps(master,ensure_ascii=False,indent=2),encoding='utf-8')
+          index={}
+          for x in master:
+            pid=x['system']['player_id']; en=x['identity'].get('name_en',''); ko=x['identity'].get('name_ko',''); dob=x['identity'].get('birth_date','')
+            if en:index[norm(en)]={'player_id':pid,'name':en,'dob':dob}
+            if ko:index[ko.replace(' ','')]={'player_id':pid,'name':en,'dob':dob}
+          Path('data/master/player_link_index_v1.json').write_text(json.dumps(index,ensure_ascii=False,indent=2),encoding='utf-8')
+          counts={c:sum(1 for x in master if x['identity'].get('nationality')==c) for c in pages.values()}
+          assert all(counts[c]>0 for c in pages.values()),counts
+          Path('data/audit/four_static_vnl_registration_v1.json').write_text(json.dumps({'added':len(added),'counts':counts,'last_id':f'KVL-P-{max_id:06d}'},ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Commit static team registrations
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/master/player_master_international_v1.json data/master/player_link_index_v1.json data/audit/four_static_vnl_registration_v1.json
+          git commit -m 'Register Japan Italy Canada Cuba Player Master records' || exit 0
+          git push origin HEAD:main
