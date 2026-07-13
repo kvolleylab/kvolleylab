@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "system": {
+      "competition_id": "KVL-COMP-000001",
+      "slug": "vnl-2026-men",
+      "status": "active",
+      "data_confidence": "reviewed",
+      "created_at": "2026-07-13",
+      "updated_at": "2026-07-13"
+    },
+    "identity": {
+      "name_ko": "2026 VNL 남자부",
+      "name_en": "2026 Volleyball Nations League Men",
+      "short_name": "2026 VNL Men",
+      "sport": "volleyball",
+      "gender": "M",
+      "level": "senior_national_team",
+      "scope": "international",
+      "season": 2026
+    },
+    "organization": {
+      "organizer": "Volleyball World / FIVB",
+      "country": "International"
+    },
+    "format": {
+      "participant_count": 18,
+      "stage_structure": ["preliminary", "finals"],
+      "timezone_display": "Asia/Seoul"
+    },
+    "routes": {
+      "hub_page": "vnl.html",
+      "schedule_page": "schedules.html?tournament=vnl",
+      "players_page": "players.html"
+    },
+    "data_links": {
+      "participants": "data/competition/vnl-2026-men-participants.json",
+      "rosters": "data/competition/vnl-2026-men-roster-index.json",
+      "schedule": "schedules.html?tournament=vnl",
+      "matches": "data/matches/vnl-2026-men.json",
+      "standings": "data/standings/vnl-2026-men.json",
+      "sources": ["SRC-INT-VNL-2026-ENTRY-V25"]
+    }
+  }
+]
