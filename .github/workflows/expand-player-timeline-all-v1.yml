@@ -1,0 +1,119 @@
+name: Expand Player Timeline all v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/expand-player-timeline-all-v1.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Generate verified current timeline events
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,re,collections
+
+          domestic_path=Path('data/master/player_master_229_v2.json')
+          international_path=Path('data/master/player_master_international_v1.json')
+          domestic=json.loads(domestic_path.read_text(encoding='utf-8'))
+          international=json.loads(international_path.read_text(encoding='utf-8'))
+
+          school_names={
+            'INHA':'인하대학교','SKKU':'성균관대학교','HONGIK':'홍익대학교','KYUNGHEE':'경희대학교',
+            'MYONGJI':'명지대학교','KYUNGIL':'경일대학교','HONAM':'호남대학교','JOONGBU':'중부대학교',
+            'HANYANG':'한양대학교','KYONGGI':'경기대학교','CHOSUN':'조선대학교','MOKPO':'목포대학교',
+            'CHUNGNAM':'충남대학교','GYEONGSANG':'경상국립대학교','WOOSUK':'우석대학교'
+          }
+
+          timelines=[]
+          seen=set()
+          domestic_count=0
+          international_count=0
+
+          for p in domestic:
+            pid=p.get('system',{}).get('player_id')
+            if not pid: continue
+            srcs=p.get('source_ids') or []
+            school_code=''
+            source_id=''
+            for src in srcs:
+              m=re.search(r'UNIV-2026-([A-Z]+)-',src)
+              if m:
+                school_code=m.group(1); source_id=src; break
+            school=school_names.get(school_code)
+            if not school: continue
+            event_key=(pid,'2026',school,'education_team')
+            if event_key in seen: continue
+            seen.add(event_key)
+            timelines.append({'player_id':pid,'events':[{
+              'event_id':f'{pid}-TL-001','start_date':'2026-01-01','end_date':'','year':2026,
+              'event_type':'education_team','organization':school,'team':school,
+              'position':'','status':'current','note':'2026 대학부 공개 명단 기준','source_ids':[source_id] if source_id else []
+            }],'updated_at':'2026-07-13'})
+            domestic_count+=1
+
+          for p in international:
+            pid=p.get('system',{}).get('player_id')
+            team=p.get('volleyball',{}).get('national_team')
+            if not pid or not team: continue
+            pos=p.get('volleyball',{}).get('position') or ''
+            entry=p.get('volleyball',{}).get('entry_status') or ''
+            srcs=p.get('source_ids') or []
+            event_key=(pid,'2026',team,'national_team')
+            if event_key in seen: continue
+            seen.add(event_key)
+            note='2026 VNL 대표팀 엔트리 기준'
+            if entry: note+=f' · {entry}'
+            timelines.append({'player_id':pid,'events':[{
+              'event_id':f'{pid}-TL-001','start_date':'2026-01-01','end_date':'','year':2026,
+              'event_type':'national_team','organization':team,'team':f'{team} 남자대표팀',
+              'position':pos,'status':'current','note':note,'source_ids':srcs
+            }],'updated_at':'2026-07-13'})
+            international_count+=1
+
+          timelines.sort(key=lambda x:int(x['player_id'].split('-')[-1]))
+          out=Path('data/timeline/player_timeline_v1.json')
+          out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(timelines,ensure_ascii=False,indent=2),encoding='utf-8')
+
+          player_ids=[x['player_id'] for x in timelines]
+          duplicate_ids=[pid for pid,c in collections.Counter(player_ids).items() if c>1]
+          summary={
+            'domestic_players':domestic_count,
+            'international_players':international_count,
+            'timeline_players':len(timelines),
+            'timeline_events':sum(len(x['events']) for x in timelines),
+            'duplicate_player_ids':duplicate_ids,
+            'missing_domestic':len(domestic)-domestic_count,
+            'missing_international':len(international)-international_count
+          }
+          Path('data/audit/player_timeline_expansion_v1.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          Path('docs/PLAYER_TIMELINE_AUDIT_v1.md').write_text(
+            '# Player Timeline 감사 v1\n\n'
+            f'- 국내선수 Timeline: **{domestic_count}명**\n'
+            f'- 국제선수 Timeline: **{international_count}명**\n'
+            f'- 전체 Timeline 선수: **{len(timelines)}명**\n'
+            f'- 전체 이벤트: **{summary["timeline_events"]}건**\n'
+            f'- 중복 player_id: **{len(duplicate_ids)}건**\n'
+            f'- 소속 근거 부족 국내선수: **{summary["missing_domestic"]}명**\n'
+            f'- 대표팀 근거 부족 국제선수: **{summary["missing_international"]}명**\n\n'
+            '현재 단계에서는 2026년 공개 명단과 Player Master에 이미 검증된 현재 소속만 반영한다. 과거 이력은 별도 출처 확인 후 추가한다.\n',encoding='utf-8')
+
+          assert len(duplicate_ids)==0
+          assert domestic_count>200
+          assert international_count>0
+          PY
+      - name: Commit expanded timelines
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/timeline/player_timeline_v1.json data/audit/player_timeline_expansion_v1.json docs/PLAYER_TIMELINE_AUDIT_v1.md
+          git commit -m 'Expand Player Timeline to domestic and international masters' || exit 0
+          git push origin HEAD:main
