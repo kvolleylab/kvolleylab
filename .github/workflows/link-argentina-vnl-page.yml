@@ -1,0 +1,42 @@
+name: Link Argentina VNL page
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-argentina-vnl-page.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Link Argentina page from VNL hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('vnl.html')
+          s=p.read_text(encoding='utf-8')
+          old='<a class="team-card" href="schedules.html?tournament=vnl&team=아르헨티나"><img class="flag-img" src="https://flagcdn.com/w160/ar.png" alt="Argentina flag"><div class="team-name">Argentina</div><div class="status">DB Status: Building</div><div class="status">국가 일정 바로가기</div></a>'
+          new='<a class="team-card" href="argentina.html"><img class="flag-img" src="https://flagcdn.com/w160/ar.png" alt="Argentina flag"><div class="team-name">Argentina</div><div class="status">DB Status: Complete</div><div class="status">국가 선수 페이지 연결</div></a>'
+          s=s.replace(old,new)
+          anchor='<a class="entry-card" href="canada.html"><span class="badge">ACTIVE ENTRY</span><strong>Canada</strong><p>Active 14명과 Reserve 1명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 1</span><span>선수 상세</span></div></a>'
+          card='<a class="entry-card" href="argentina.html"><span class="badge">ACTIVE ENTRY</span><strong>Argentina</strong><p>Active 14명과 Reserve 2명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 2</span><span>선수 상세</span></div></a>'
+          if card not in s:s=s.replace(anchor,anchor+'\n      '+card)
+          panchor='<a class="hub-card" href="canada.html"><span class="badge">NATIONAL TEAM</span><strong>Canada Players</strong><p>캐나다 대표팀 Active·Reserve 엔트리를 확인합니다.</p></a>'
+          pcard='<a class="hub-card" href="argentina.html"><span class="badge">NATIONAL TEAM</span><strong>Argentina Players</strong><p>아르헨티나 대표팀 Active·Reserve 엔트리를 확인합니다.</p></a>'
+          if pcard not in s:s=s.replace(panchor,panchor+'\n       '+pcard)
+          p.write_text(s,encoding='utf-8')
+          assert 'href="argentina.html"' in s
+          assert 'Argentina Players' in s
+          PY
+      - name: Commit Argentina hub links
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html
+          git commit -m 'Connect Argentina Active entry to VNL hub' || exit 0
+          git push origin HEAD:main
