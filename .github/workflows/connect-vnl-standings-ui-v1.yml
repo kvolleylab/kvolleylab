@@ -1,0 +1,43 @@
+name: Connect VNL Standings UI v1
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/connect-vnl-standings-ui-v1.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Add standings tab and section
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('vnl.html');s=p.read_text(encoding='utf-8')
+          css='''\n    .vnl-standings-note{margin-bottom:14px;padding:14px 16px;border:1px solid rgba(214,178,94,.35);border-radius:14px;background:rgba(214,178,94,.08);color:var(--muted);line-height:1.6}\n    .vnl-standings-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}\n    .vnl-standings-table{width:100%;min-width:760px;border-collapse:collapse;background:var(--panel)}\n    .vnl-standings-table th,.vnl-standings-table td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:center}\n    .vnl-standings-table th{background:var(--panel-strong);color:var(--gold);font-size:13px}\n    .vnl-standings-table td:nth-child(2){text-align:left}.vnl-standings-table td:nth-child(2) a{color:var(--text);font-weight:800;text-decoration:none}.vnl-standings-table td:nth-child(2) a:hover{color:var(--gold)}.vnl-standings-table td:nth-child(2) span{display:block;color:var(--muted);font-size:12px;margin-top:3px}\n'''
+          if '.vnl-standings-table' not in s:
+            s=s.replace('    @media(max-width:820px)',css+'\n    @media(max-width:820px)')
+          if '<a href="#standings">순위</a>' not in s:
+            s=s.replace('<a href="#schedule">일정</a>','<a href="#schedule">일정</a>\n      <a href="#standings">순위</a>')
+          section='''\n  <section class="vnl-section" id="standings">\n    <div class="vnl-section-head"><div><p class="eyebrow">Standings Master</p><h2>현재 순위</h2></div><p>저장된 완료 경기 결과를 기준으로 승·패·승점·세트득실을 자동 집계합니다.</p></div>\n    <div id="vnlStandingsArea"><div class="notice">순위 데이터를 불러오는 중입니다.</div></div>\n  </section>\n'''
+          if 'id="standings"' not in s:
+            marker='<section class="vnl-section" id="players">'
+            if marker in s:s=s.replace(marker,section+'\n  '+marker)
+            else:s=s.replace('<section class="vnl-section" id="resources">',section+'\n  <section class="vnl-section" id="resources">')
+          tag='<script src="assets/js/vnl-standings-v1.js" defer></script>'
+          if tag not in s:s=s.replace('</head>','  '+tag+'\n</head>')
+          p.write_text(s,encoding='utf-8')
+          assert 'id="standings"' in s and tag in s and '<a href="#standings">순위</a>' in s
+          PY
+      - name: Commit standings UI
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html
+          git commit -m 'Display Standings Master on VNL hub' || exit 0
+          git push origin HEAD:main
