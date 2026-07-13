@@ -1,0 +1,60 @@
+name: Link USA Iran Slovenia VNL pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-usa-iran-slovenia-vnl.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Link pages from VNL hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('vnl.html')
+          s=p.read_text(encoding='utf-8')
+          replacements={
+          '<a class="team-card" href="schedules.html?tournament=vnl&team=이란"><img class="flag-img" src="https://flagcdn.com/w160/ir.png" alt="Iran flag"><div class="team-name">Iran</div><div class="status">DB Status: Building</div><div class="status">국가 일정 바로가기</div></a>':'<a class="team-card" href="iran.html"><img class="flag-img" src="https://flagcdn.com/w160/ir.png" alt="Iran flag"><div class="team-name">Iran</div><div class="status">DB Status: Connected</div><div class="status">국가 선수 페이지 연결</div></a>',
+          '<a class="team-card" href="schedules.html?tournament=vnl&team=미국"><img class="flag-img" src="https://flagcdn.com/w160/us.png" alt="USA flag"><div class="team-name">USA</div><div class="status">DB Status: Building</div><div class="status">국가 일정 바로가기</div></a>':'<a class="team-card" href="usa.html"><img class="flag-img" src="https://flagcdn.com/w160/us.png" alt="USA flag"><div class="team-name">USA</div><div class="status">DB Status: Connected</div><div class="status">국가 선수 페이지 연결</div></a>'}
+          for old,new in replacements.items(): s=s.replace(old,new)
+          team='<a class="team-card" href="slovenia.html"><img class="flag-img" src="https://flagcdn.com/w160/si.png" alt="Slovenia flag"><div class="team-name">Slovenia</div><div class="status">DB Status: Connected</div><div class="status">국가 선수 페이지 연결</div></a>'
+          if 'href="slovenia.html"' not in s:
+              anchor='<a class="team-card" href="cuba.html"><img class="flag-img" src="https://flagcdn.com/w160/cu.png" alt="Cuba flag"><div class="team-name">Cuba</div><div class="status">DB Status: Complete</div><div class="status">국가 선수 페이지 연결</div></a>'
+              s=s.replace(anchor,anchor+'\n      '+team)
+          entry_anchor='<a class="entry-card" href="france.html"><span class="badge">ACTIVE ENTRY</span><strong>France</strong><p>Active 14명과 Reserve 1명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 1</span><span>선수 상세</span></div></a>'
+          cards=[
+          '<a class="entry-card" href="usa.html"><span class="badge">ACTIVE ENTRY</span><strong>USA</strong><p>v25 엔트리 데이터를 공통 시스템에 연결합니다.</p><div class="card-actions"><span>자동 계산</span><span>Active / Reserve</span><span>선수 상세</span></div></a>',
+          '<a class="entry-card" href="iran.html"><span class="badge">ACTIVE ENTRY</span><strong>Iran</strong><p>v25 엔트리 데이터를 공통 시스템에 연결합니다.</p><div class="card-actions"><span>자동 계산</span><span>Active / Reserve</span><span>선수 상세</span></div></a>',
+          '<a class="entry-card" href="slovenia.html"><span class="badge">ACTIVE ENTRY</span><strong>Slovenia</strong><p>v25 엔트리 데이터를 공통 시스템에 연결합니다.</p><div class="card-actions"><span>자동 계산</span><span>Active / Reserve</span><span>선수 상세</span></div></a>']
+          for card in cards:
+              if card not in s:
+                  s=s.replace(entry_anchor,entry_anchor+'\n      '+card)
+                  entry_anchor=card
+          player_anchor='<a class="hub-card" href="france.html"><span class="badge">NATIONAL TEAM</span><strong>France Players</strong><p>프랑스 대표팀 Active·Reserve 엔트리를 확인합니다.</p></a>'
+          pcards=[
+          '<a class="hub-card" href="usa.html"><span class="badge">NATIONAL TEAM</span><strong>USA Players</strong><p>미국 대표팀 엔트리를 확인합니다.</p></a>',
+          '<a class="hub-card" href="iran.html"><span class="badge">NATIONAL TEAM</span><strong>Iran Players</strong><p>이란 대표팀 엔트리를 확인합니다.</p></a>',
+          '<a class="hub-card" href="slovenia.html"><span class="badge">NATIONAL TEAM</span><strong>Slovenia Players</strong><p>슬로베니아 대표팀 엔트리를 확인합니다.</p></a>']
+          for card in pcards:
+              if card not in s:
+                  s=s.replace(player_anchor,player_anchor+'\n       '+card)
+                  player_anchor=card
+          sched='<a href="schedules.html?tournament=vnl&team=슬로베니아">슬로베니아</a>'
+          if sched not in s:s=s.replace('<a href="schedules.html?tournament=vnl&team=쿠바">쿠바</a>','<a href="schedules.html?tournament=vnl&team=쿠바">쿠바</a>'+sched)
+          p.write_text(s,encoding='utf-8')
+          assert all(x in s for x in ['href="usa.html"','href="iran.html"','href="slovenia.html"'])
+          PY
+      - name: Commit hub links
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html
+          git commit -m 'Connect USA Iran Slovenia pages to VNL hub' || exit 0
+          git push origin HEAD:main
