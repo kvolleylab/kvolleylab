@@ -78,3 +78,4 @@ jobs:
           git add data/vnl/v25_brazil_poland_argentina_belgium.json brazil.html poland.html argentina.html belgium.html vnl.html
           git commit -m 'Complete Brazil Poland Argentina Belgium VNL rosters' || exit 0
           git push origin HEAD:main
+# trigger 2026-07-13
