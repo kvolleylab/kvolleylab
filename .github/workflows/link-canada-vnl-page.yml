@@ -1,0 +1,48 @@
+name: Link Canada VNL page
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/link-canada-vnl-page.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Link Canada page from VNL hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('vnl.html')
+          s=p.read_text(encoding='utf-8')
+          team_anchor='<a class="team-card" href="italy.html"><img class="flag-img" src="https://flagcdn.com/w160/it.png" alt="Italy flag"><div class="team-name">Italy</div><div class="status">DB Status: Complete</div><div class="status">국가 선수 페이지 연결</div></a>'
+          canada_team='<a class="team-card" href="canada.html"><img class="flag-img" src="https://flagcdn.com/w160/ca.png" alt="Canada flag"><div class="team-name">Canada</div><div class="status">DB Status: Complete</div><div class="status">국가 선수 페이지 연결</div></a>'
+          if canada_team not in s:
+              s=s.replace(team_anchor, team_anchor+'\n      '+canada_team)
+          entry_anchor='<a class="entry-card" href="italy.html"><span class="badge">ACTIVE ENTRY</span><strong>Italy</strong><p>Active 14명 엔트리와 공식 선수 프로필을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 0</span><span>선수 상세</span></div></a>'
+          canada_entry='<a class="entry-card" href="canada.html"><span class="badge">ACTIVE ENTRY</span><strong>Canada</strong><p>Active 14명과 Reserve 1명을 연결합니다.</p><div class="card-actions"><span>Active 14</span><span>Reserve 1</span><span>선수 상세</span></div></a>'
+          if canada_entry not in s:
+              s=s.replace(entry_anchor, entry_anchor+'\n      '+canada_entry)
+          player_anchor='<a class="hub-card" href="italy.html"><span class="badge">NATIONAL TEAM</span><strong>Italy Players</strong><p>이탈리아 대표팀 Active 엔트리를 확인합니다.</p></a>'
+          canada_player='<a class="hub-card" href="canada.html"><span class="badge">NATIONAL TEAM</span><strong>Canada Players</strong><p>캐나다 대표팀 Active·Reserve 엔트리를 확인합니다.</p></a>'
+          if canada_player not in s:
+              s=s.replace(player_anchor, player_anchor+'\n       '+canada_player)
+          sched='<a href="schedules.html?tournament=vnl&team=캐나다">캐나다</a>'
+          if sched not in s:
+              s=s.replace('<a href="schedules.html?tournament=vnl&team=이탈리아">이탈리아</a>', '<a href="schedules.html?tournament=vnl&team=이탈리아">이탈리아</a>'+sched)
+          p.write_text(s,encoding='utf-8')
+          assert 'href="canada.html"' in s
+          assert 'Canada Players' in s
+          PY
+      - name: Commit Canada hub links
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add vnl.html
+          git commit -m 'Connect Canada Active entry to VNL hub' || exit 0
+          git push origin HEAD:main
