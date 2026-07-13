@@ -39,7 +39,7 @@
       "status": "active",
       "data_confidence": "reviewed",
       "created_at": "2026-07-13",
-      "updated_at": "2026-07-13"
+      "updated_at": "2026-07-14"
     },
     "identity": {
       "name_ko": "2026 대학배구 남자부",
@@ -53,7 +53,7 @@
     },
     "organization": {"organizer": "대학배구 대회 운영기관", "country": "Korea"},
     "format": {"participant_count": 15, "stage_structure": ["league_and_tournaments"], "timezone_display": "Asia/Seoul"},
-    "routes": {"hub_page": "university-teams.html", "players_page": "players.html?type=domestic", "pamphlet_page": "pamphlet-archive.html"},
+    "routes": {"hub_page": "university-league.html", "team_analysis_page": "university-teams.html", "players_page": "players.html?type=domestic", "pamphlet_page": "pamphlet-archive.html"},
     "data_links": {
       "participants": "data/competition/university-league-2026-men-participants.json",
       "rosters": "data/competition/university-league-2026-men-roster-index.json",
