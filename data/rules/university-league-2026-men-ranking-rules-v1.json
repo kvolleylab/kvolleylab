@@ -1,0 +1,28 @@
+{
+  "rule_id": "KVL-RULE-000002",
+  "competition_id": "KVL-COMP-000002",
+  "status": "verified",
+  "source": "2026 KUSF 대학배구 U-리그 요강",
+  "points": {
+    "win_3_0": 3,
+    "win_3_1": 3,
+    "win_3_2": 2,
+    "loss_2_3": 1,
+    "loss_1_3": 0,
+    "loss_0_3": 0
+  },
+  "ranking_order": [
+    "league_points",
+    "wins",
+    "point_ratio",
+    "set_ratio",
+    "head_to_head"
+  ],
+  "point_ratio": "total_points_for / total_points_against",
+  "set_ratio": "sets_won / sets_lost",
+  "multi_team_tie": "recalculate wins, point ratio and set ratio using only matches among tied teams",
+  "qualification": {
+    "preliminary": "top_3_each_pool",
+    "next_stage": "six_team_league"
+  }
+}
