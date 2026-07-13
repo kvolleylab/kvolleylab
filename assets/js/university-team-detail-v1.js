@@ -5,12 +5,13 @@ const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const avg=arr=>arr.length?arr.reduce((a,b)=>a+b,0)/arr.length:0;
 const STAFF={};
 const GRADE_KEYS=[1,2,3,4];
-const POSITION_KEYS=['S','OH','OP/OH','OP','MB','L'];
+const POSITION_KEYS=['S','OH','OP','MB','L'];
+const normalizePosition=value=>{const p=String(value||'').toUpperCase().replace(/\s/g,'');if(p==='OP/OH'||p==='OH/OP'||p==='OPP')return'OP';return p};
 const bars=(obj,total,keys)=>keys.map(k=>{const v=obj[k]||0;return`<div class="utd-bar"><span>${esc(k)}${/^\d+$/.test(String(k))?'학년':''}</span><div class="utd-track"><div class="utd-fill" style="width:${v?Math.max(5,v/total*100):0}%"></div></div><strong>${v}</strong></div>`}).join('');
 const rosterSort=(a,b)=>(b.grade-a.grade)||(Number(a.jersey)-Number(b.jersey))||a.name.localeCompare(b.name);
 const params=new URLSearchParams(location.search);const school=params.get('school');
 fetch(DATA,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(players=>{
- const mapped=players.map(p=>{const r=p.current_roster||{};return{raw:p,code:r.school_code||'',school:r.school_name||String(r.team_name||'').replace(' 남자배구부',''),id:p.system?.player_id||'',name:p.identity?.name_ko||'',grade:Number(r.grade||p.volleyball?.grade||0),position:r.position||p.volleyball?.position||'',height:Number(p.physical?.height_cm)||0,jersey:r.jersey_number??'',draft:Boolean(r.draft_eligible||p.volleyball?.draft_eligible),previous:r.previous_school||''}});
+ const mapped=players.map(p=>{const r=p.current_roster||{};return{raw:p,code:r.school_code||'',school:r.school_name||String(r.team_name||'').replace(' 남자배구부',''),id:p.system?.player_id||'',name:p.identity?.name_ko||'',grade:Number(r.grade||p.volleyball?.grade||0),position:normalizePosition(r.position||p.volleyball?.position||''),height:Number(p.physical?.height_cm)||0,jersey:r.jersey_number??'',draft:Boolean(r.draft_eligible||p.volleyball?.draft_eligible),previous:r.previous_school||''}});
  const normalized=String(school||'').trim().toLowerCase();
  const teamPlayers=mapped.filter(p=>String(p.code).trim().toLowerCase()===normalized||String(p.school).trim().toLowerCase()===normalized);
  if(!teamPlayers.length){main.innerHTML='<div class="utd-empty">해당 대학 팀을 찾을 수 없습니다.</div>';return}
