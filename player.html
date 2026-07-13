@@ -42,7 +42,7 @@ h1{color:#d6b25e;font-size:42px;margin:0 0 8px}
   <div id="playerArea"></div>
 </main>
 <script>
-const MASTER_URL = "data/master/player_master_229_v2.json";
+const MASTER_URLS = ["data/master/player_master_229_v2.json","data/master/player_master_international_v1.json"];
 const schoolNames = {
   INHA:"인하대학교", SKKU:"성균관대학교", HONGIK:"홍익대학교", KYUNGHEE:"경희대학교",
   MYONGJI:"명지대학교", KYUNGIL:"경일대학교", HONAM:"호남대학교", JOONGBU:"중부대학교",
@@ -69,11 +69,8 @@ function escapeHtml(value){
   return String(value).replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
 }
 
-fetch(MASTER_URL,{cache:"no-store"})
-  .then(response => {
-    if(!response.ok) throw new Error(`Player Master load failed: ${response.status}`);
-    return response.json();
-  })
+Promise.all(MASTER_URLS.map(url=>fetch(url,{cache:"no-store"}).then(response=>{if(!response.ok)throw new Error(`Player Master load failed: ${response.status}`);return response.json()})))
+  .then(groups => groups.flat())
   .then(players => {
     const params = new URLSearchParams(window.location.search);
     const playerId = params.get("id");
@@ -114,8 +111,9 @@ function renderPlayer(player){
       <div class="info-grid">
         <div class="info-box"><div class="label">Player ID</div><div class="value">${escapeHtml(text(system.player_id))}</div></div>
         <div class="info-box"><div class="label">Display Code</div><div class="value">${escapeHtml(text(system.display_code))}</div></div>
-        <div class="info-box"><div class="label">University</div><div class="value">${escapeHtml(schoolLabel(player))}</div></div>
+        <div class="info-box"><div class="label">Team / University</div><div class="value">${escapeHtml(player.volleyball?.national_team || schoolLabel(player))}</div></div>
         <div class="info-box"><div class="label">Nationality</div><div class="value">${escapeHtml(text(identity.nationality))}</div></div>
+        <div class="info-box"><div class="label">Position</div><div class="value">${escapeHtml(text(player.volleyball?.position))}</div></div>
         <div class="info-box"><div class="label">Height</div><div class="value">${physical.height_cm ? `${escapeHtml(physical.height_cm)}cm` : "-"}</div></div>
         <div class="info-box"><div class="label">Weight</div><div class="value">${physical.weight_kg ? `${escapeHtml(physical.weight_kg)}kg` : "-"}</div></div>
         <div class="info-box"><div class="label">Date of Birth</div><div class="value">${escapeHtml(text(identity.birth_date))}</div></div>
