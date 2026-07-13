@@ -18,20 +18,9 @@
       "scope": "international",
       "season": 2026
     },
-    "organization": {
-      "organizer": "Volleyball World / FIVB",
-      "country": "International"
-    },
-    "format": {
-      "participant_count": 18,
-      "stage_structure": ["preliminary", "finals"],
-      "timezone_display": "Asia/Seoul"
-    },
-    "routes": {
-      "hub_page": "vnl.html",
-      "schedule_page": "schedules.html?tournament=vnl",
-      "players_page": "players.html"
-    },
+    "organization": {"organizer": "Volleyball World / FIVB", "country": "International"},
+    "format": {"participant_count": 18, "stage_structure": ["preliminary", "finals"], "timezone_display": "Asia/Seoul"},
+    "routes": {"hub_page": "vnl.html", "schedule_page": "schedules.html?tournament=vnl", "players_page": "players.html"},
     "data_links": {
       "participants": "data/competition/vnl-2026-men-participants.json",
       "rosters": "data/competition/vnl-2026-men-roster-index.json",
@@ -41,6 +30,35 @@
       "standings": "data/standings/vnl-2026-men.json",
       "ranking_rules": "data/rules/vnl-2026-men-ranking-rules-v1.json",
       "sources": ["SRC-INT-VNL-2026-ENTRY-V25", "SRC-INT-VNL-2026-RULEBOOK-PENDING"]
+    }
+  },
+  {
+    "system": {
+      "competition_id": "KVL-COMP-000002",
+      "slug": "university-league-2026-men",
+      "status": "active",
+      "data_confidence": "reviewed",
+      "created_at": "2026-07-13",
+      "updated_at": "2026-07-13"
+    },
+    "identity": {
+      "name_ko": "2026 대학배구 남자부",
+      "name_en": "2026 Korean University Volleyball Men",
+      "short_name": "2026 대학배구",
+      "sport": "volleyball",
+      "gender": "M",
+      "level": "university",
+      "scope": "domestic",
+      "season": 2026
+    },
+    "organization": {"organizer": "대학배구 대회 운영기관", "country": "Korea"},
+    "format": {"participant_count": 15, "stage_structure": ["league_and_tournaments"], "timezone_display": "Asia/Seoul"},
+    "routes": {"hub_page": "university-teams.html", "players_page": "players.html?type=domestic", "pamphlet_page": "pamphlet-archive.html"},
+    "data_links": {
+      "participants": "data/competition/university-league-2026-men-participants.json",
+      "rosters": "data/competition/university-league-2026-men-roster-index.json",
+      "player_master": "data/master/player_master_229_v2.json",
+      "sources": ["SRC-KOR-UNIV-2026-PAMPHLET-V7"]
     }
   }
 ]
