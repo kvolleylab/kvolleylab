@@ -1,0 +1,45 @@
+{
+  "schema_version": "v1",
+  "required": [
+    "rule_id",
+    "competition_id",
+    "rule_status",
+    "stages",
+    "match_points",
+    "ranking_order",
+    "forfeit",
+    "advancement",
+    "sources"
+  ],
+  "field_definitions": {
+    "rule_id": "KVL-RULE-* 고유 규칙 ID",
+    "competition_id": "규칙이 적용되는 KVL Competition ID",
+    "rule_status": "verified | provisional | pending_verification",
+    "stages": "대회 단계별 규칙 적용 범위",
+    "match_points": "세트스코어별 승점 부여 방식",
+    "ranking_order": "동률 포함 순위 판정 우선순위",
+    "forfeit": "몰수·기권·실격 처리 방식",
+    "advancement": "본선·결선 진출 조건",
+    "sources": "공식 운영요강 및 검증 출처",
+    "manual_override": "운영위원회 결정 등 자동 계산 예외"
+  },
+  "supported_ranking_criteria": [
+    "wins",
+    "match_points",
+    "set_ratio",
+    "point_ratio",
+    "head_to_head",
+    "sets_won",
+    "points_won",
+    "playoff",
+    "draw",
+    "manual_decision"
+  ],
+  "supported_formats": [
+    "round_robin",
+    "pool_round_robin",
+    "knockout",
+    "round_robin_plus_finals",
+    "custom"
+  ]
+}
