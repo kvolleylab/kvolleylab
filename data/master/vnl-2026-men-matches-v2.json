@@ -1,0 +1,26 @@
+{
+  "competition_id": "KVL-COMP-000001",
+  "timezone": "Asia/Seoul",
+  "generated_at": "2026-07-14",
+  "matches": [
+    {
+      "match_id": "KVL-M-000001",
+      "competition_id": "KVL-COMP-000001",
+      "season": 2026,
+      "stage": "preliminary",
+      "week": 1,
+      "date_kst": "2026-06-10",
+      "time_kst": "14:00",
+      "datetime_kst": "2026-06-10T14:00:00+09:00",
+      "timezone": "Asia/Seoul",
+      "home": {"name_ko":"쿠바","name_en":"Cuba","participant_id":"KVL-COMP-000001-P11"},
+      "away": {"name_ko":"폴란드","name_en":"Poland","participant_id":"KVL-COMP-000001-P03"},
+      "venue": {"country_ko":"중국","country_en":"China"},
+      "status": "completed",
+      "score": {"home_sets":0,"away_sets":3},
+      "source_text": "쿠바 0-3 폴란드",
+      "display_class": "vnl1",
+      "source_ids": ["SRC-INT-VNL-2026-SCHEDULE-KST"]
+    }
+  ]
+}
