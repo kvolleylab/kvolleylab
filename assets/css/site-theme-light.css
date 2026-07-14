@@ -61,6 +61,32 @@ tr:hover td{background:#fffaf0!important}
 .site-footer,footer{color:#748194!important;border-color:#d9e1ea!important;background:#eef2f7!important}
 .tag,.badge,.schedule-badge{background:#f6ecd2!important;color:#8a6110!important}
 .note,.notice{background:#fffaf0!important}
+
+/* VNL navigation: same visual language as the main top navigation */
+.vnl-tabs-wrap{background:#0b1b2f!important;border-bottom-color:rgba(255,255,255,.12)!important}
+.vnl-tabs a{background:transparent!important;color:#fff!important;border-color:rgba(255,255,255,.45)!important}
+.vnl-tabs a:hover,.vnl-tabs a.active{background:#d6b25e!important;color:#102033!important;border-color:#d6b25e!important}
+
+/* Country page quick actions */
+.actions a{background:#0b1b2f!important;color:#fff!important;border-color:rgba(255,255,255,.22)!important}
+.actions a:hover{background:#d6b25e!important;color:#102033!important;border-color:#d6b25e!important}
+
+/* VNL team record widget */
+.vnl-team-record{margin:8px 0 28px;padding:18px;border:1px solid #d9e1ea;border-radius:16px;background:#fff;box-shadow:0 10px 26px rgba(15,35,55,.07)}
+.vnl-team-record-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.vnl-team-record-head h2{margin:0!important;color:#17324d!important;font-size:22px}
+.vnl-team-record-summary{font-weight:900;color:#9a6d12}
+.vnl-team-record-list{display:grid;gap:8px}
+.vnl-team-record-row{display:grid;grid-template-columns:110px 1fr auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid #e1e7ee;border-radius:12px;background:#f8fafc}
+.vnl-team-record-row time{color:#748194;font-size:13px}
+.vnl-team-record-row strong{color:#172033}
+.vnl-team-record-score{font-weight:900;color:#9a6d12;white-space:nowrap}
+@media(max-width:700px){
+  .vnl-team-record-head{align-items:flex-start;flex-direction:column}
+  .vnl-team-record-row{grid-template-columns:1fr auto}
+  .vnl-team-record-row time{grid-column:1/-1}
+}
+
 @media(max-width:820px){
   h1,.page-title{font-size:clamp(32px,10vw,48px)!important}
   .container,.site-main,.container-wide{padding-left:14px!important;padding-right:14px!important}
