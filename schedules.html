@@ -19,29 +19,18 @@
     .day{min-height:150px;height:auto;padding:10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02);overflow:visible}
     .day.empty{background:rgba(255,255,255,.015)}.day.sunday .date{color:#f87171}.day.no-team-game{opacity:.28}
     .date{font-weight:800;margin-bottom:8px}.game{display:block;margin:7px 0;padding:8px;border-radius:9px;color:#111827;font-size:12px;line-height:1.45;white-space:normal;overflow:visible}.game span{opacity:.72}.game strong{font-size:13px}
-    @media(max-width:700px){
-      .container-wide{padding-left:14px;padding-right:14px}.schedule-filter-info.active{align-items:flex-start;flex-direction:column}.schedule-title{font-size:23px}
-      .calendar{min-width:910px}.weekdays,.days{grid-template-columns:repeat(7,minmax(130px,1fr))}.day{min-height:135px;padding:8px}.game{font-size:11px;padding:7px;margin:6px 0}
-      .tabs{overflow-x:auto;white-space:nowrap;padding-bottom:6px}.tabs button{flex:0 0 auto}
-    }
+    @media(max-width:700px){.container-wide{padding-left:14px;padding-right:14px}.schedule-filter-info.active{align-items:flex-start;flex-direction:column}.schedule-title{font-size:23px}.calendar{min-width:910px}.weekdays,.days{grid-template-columns:repeat(7,minmax(130px,1fr))}.day{min-height:135px;padding:8px}.game{font-size:11px;padding:7px;margin:6px 0}.tabs{overflow-x:auto;white-space:nowrap;padding-bottom:6px}.tabs button{flex:0 0 auto}}
   </style>
   <script src="assets/js/unified-nav.js" defer></script>
   <link rel="stylesheet" href="assets/css/schedules-light.css" />
   <link rel="stylesheet" href="assets/css/site-theme-light.css" />
+  <link rel="stylesheet" href="assets/css/schedules-v3.css?v=20260714-1" />
   <script src="assets/js/schedule-match-master-v1.js" defer></script>
+  <script src="assets/js/schedules-v3.js?v=20260714-1" defer></script>
 </head>
 <body class="schedule-light-page">
-  <header class="site-header">
-    <a class="site-logo" href="index.html">K-Volley Lab</a>
-    <nav class="site-nav">
-      <a href="index.html">Home</a><a href="players.html">Players</a><a href="vnl.html">Competition</a><a class="active" href="schedules.html">Schedules</a><a href="simulator.html">Simulator</a><a href="pamphlet-archive.html">Pamphlets</a><a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a>
-    </nav>
-  </header>
-  <main class="container-wide">
-    <p class="eyebrow">Tournament Calendar</p><h1>Schedules</h1><p class="subtitle">대회별 남자배구 일정을 한국시간 기준으로 빠르게 비교합니다. 모바일에서는 달력을 좌우로 밀어 확인할 수 있습니다.</p>
-    <div class="tabs"><button class="active" onclick="showTournament('vnl',this)">VNL 2026 Men</button><button onclick="showTournament('avc',this)">AVC Men’s Cup 2026</button></div>
-    <div id="scheduleFilterInfo" class="schedule-filter-info"></div><div id="calendarArea"></div>
-  </main>
+  <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"><a href="index.html">Home</a><a href="players.html">Players</a><a href="vnl.html">Competition</a><a class="active" href="schedules.html">Schedules</a><a href="simulator.html">Simulator</a><a href="pamphlet-archive.html">Pamphlets</a><a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a></nav></header>
+  <main class="container-wide"><p class="eyebrow">Tournament Calendar</p><h1>Schedules</h1><p class="subtitle">대회별 남자배구 일정을 한국시간과 개최지 현지시간으로 비교합니다. 여러 개최지를 선택하면 한국시간으로 자동 고정됩니다.</p><div class="tabs"><button class="active" onclick="showTournament('vnl',this)">VNL 2026 Men</button><button onclick="showTournament('avc',this)">AVC Men’s Cup 2026</button></div><div id="scheduleFilterInfo" class="schedule-filter-info"></div><div id="calendarArea"></div></main>
 <script>
 const tournaments={
  vnl:{title:"2026 VNL 남자부 예선전 일정",months:[
@@ -67,19 +56,11 @@ const tournaments={
    19:[{time:"03:00",match:"세르비아 vs 독일",place:"세르비아",cls:"vnl3"},{time:"06:00",match:"프랑스 vs 폴란드",place:"미국",cls:"vnl3"},{time:"10:00",match:"미국 vs 불가리아",place:"미국",cls:"vnl3"},{time:"12:00",match:"벨기에 vs 캐나다",place:"일본",cls:"vnl3"},{time:"19:20",match:"일본 vs 아르헨티나",place:"일본",cls:"vnl3"}],
    20:[{time:"02:00",match:"중국 vs 브라질",place:"미국",cls:"vnl3"},{time:"03:00",match:"세르비아 vs 슬로베니아",place:"세르비아",cls:"vnl3"},{time:"06:00",match:"불가리아 vs 프랑스",place:"미국",cls:"vnl3"},{time:"10:00",match:"미국 vs 폴란드",place:"미국",cls:"vnl3"}]
   }}]},
- avc:{title:"2026 AVC 남자컵 일정",months:[{title:"6월",year:2026,month:6,firstDay:1,days:30,games:{
-  20:[{time:"15:30",match:"카타르 vs 오만",place:"인도",cls:""},{time:"18:30",match:"바레인 vs 대만",place:"인도",cls:""},{time:"21:30",match:"한국 vs 태국",place:"인도",cls:"korea"}],
-  21:[{time:"00:30",match:"인도 vs 뉴질랜드",place:"인도",cls:""},{time:"12:30",match:"호주 vs 대만",place:"인도",cls:""},{time:"15:30",match:"뉴질랜드 vs 바레인",place:"인도",cls:""},{time:"18:30",match:"카타르 vs 태국",place:"인도",cls:""},{time:"21:30",match:"한국 vs 인도네시아",place:"인도",cls:"korea"}],
-  22:[{time:"00:30",match:"인도 vs 카자흐스탄",place:"인도",cls:""},{time:"15:30",match:"호주 vs 카자흐스탄",place:"인도",cls:""},{time:"18:30",match:"오만 vs 태국",place:"인도",cls:""},{time:"21:30",match:"카타르 vs 인도네시아",place:"인도",cls:""}],
-  23:[{time:"00:30",match:"인도 vs 바레인",place:"인도",cls:""},{time:"15:30",match:"뉴질랜드 vs 호주",place:"인도",cls:""},{time:"18:30",match:"대만 vs 카자흐스탄",place:"인도",cls:""},{time:"21:30",match:"태국 vs 인도네시아",place:"인도",cls:""}],
-  24:[{time:"00:30",match:"인도 vs 바레인",place:"인도",cls:""}],25:[{time:"15:30",match:"오만 vs 한국",place:"인도",cls:"korea"},{time:"18:30",match:"대만 vs 뉴질랜드",place:"인도",cls:""},{time:"21:30",match:"바레인 vs 카자흐스탄",place:"인도",cls:""}],
-  26:[{time:"00:30",match:"인도 vs 호주",place:"인도",cls:""},{time:"15:30",match:"뉴질랜드 vs 카자흐스탄",place:"인도",cls:""},{time:"18:30",match:"카타르 vs 한국",place:"인도",cls:"korea"},{time:"21:30",match:"인도네시아 vs 오만",place:"인도",cls:""}],27:[{time:"TBD",match:"준준결승 A1 vs B2",place:"준결승",cls:""},{time:"TBD",match:"준준결승 B1 vs A2",place:"준결승",cls:""}],28:[{time:"TBD",match:"순위결정전 / 결승전",place:"인도",cls:""}]
- }}]}
+ avc:{title:"2026 AVC 남자컵 일정",months:[{title:"6월",year:2026,month:6,firstDay:1,days:30,games:{20:[{time:"15:30",match:"카타르 vs 오만",place:"인도",cls:""},{time:"18:30",match:"바레인 vs 대만",place:"인도",cls:""},{time:"21:30",match:"한국 vs 태국",place:"인도",cls:"korea"}],21:[{time:"00:30",match:"인도 vs 뉴질랜드",place:"인도",cls:""},{time:"12:30",match:"호주 vs 대만",place:"인도",cls:""},{time:"15:30",match:"뉴질랜드 vs 바레인",place:"인도",cls:""},{time:"18:30",match:"카타르 vs 태국",place:"인도",cls:""},{time:"21:30",match:"한국 vs 인도네시아",place:"인도",cls:"korea"}]}}]}
 };
 const params=new URLSearchParams(location.search),selectedTournament=params.get("tournament")||"vnl",selectedTeam=params.get("team")||"";
 function showTournament(key,btn){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const t=tournaments[key],team=key==='vnl'?selectedTeam:'';const info=document.getElementById('scheduleFilterInfo');if(team){info.className='schedule-filter-info active';info.innerHTML=`<div><strong>${team}</strong> 경기만 표시하고 있습니다.</div><div class="schedule-filter-actions"><a href="schedules.html?tournament=vnl">전체 일정 보기</a><a href="vnl.html">VNL DB로 돌아가기</a></div>`}else{info.className='schedule-filter-info';info.innerHTML=''}document.getElementById('calendarArea').innerHTML=`<h2 class="schedule-title">${t.title}${team?` — ${team}`:''}</h2>`+t.months.map(m=>renderCalendar(m,t.title,team)).join('')}
 function renderCalendar(month,title,team=''){const weekdays=['월','화','수','목','금','토','일'];let html=`<div class="calendar-scroll"><section class="calendar"><div class="calendar-header"><div class="month-label">${month.title}</div><div class="month-title">${title}_${month.title} (한국시간 기준)</div></div><div class="weekdays">${weekdays.map(d=>`<div>${d}</div>`).join('')}</div><div class="days">`;for(let i=1;i<month.firstDay;i++)html+='<div class="day empty"></div>';for(let d=1;d<=month.days;d++){const all=month.games[d]||[],games=team?all.filter(g=>g.match.includes(team)):all,sun=((month.firstDay+d-2)%7)===6;html+=`<div class="day ${sun?'sunday':''} ${team&&!games.length?'no-team-game':''}"><div class="date">${d}</div>${games.map(g=>`<div class="game ${g.cls}"><strong>${g.time}</strong> ${g.match}<br><span>${g.place}</span></div>`).join('')}</div>`}return html+'</div></section></div>'}
 const selectedButton=selectedTournament==='avc'?document.querySelector('.tabs button:nth-child(2)'):document.querySelector('.tabs button:nth-child(1)');showTournament(selectedTournament,selectedButton);
 </script>
-</body>
-</html>
+</body></html>
