@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assets/css/schedules-v3-fit.css?v=20260715-15" />
   <link rel="stylesheet" href="assets/css/schedules-v3-selectall.css?v=20260715-15" />
   <link rel="stylesheet" href="assets/css/schedules-v3-linkfix.css?v=20260715-15" />
+  <link rel="stylesheet" href="assets/css/schedules-favorites.css?v=20260715-22" />
   <style>
     .sv3-place-row .sv3-place-label,
     .sv3-game-time,
@@ -22,9 +23,10 @@
     a.sv3-match-row:hover { background: #f8fafc; }
   </style>
   <script src="assets/js/schedules-v3.js?v=20260715-15" defer></script>
+  <script src="assets/js/schedules-favorites.js?v=20260715-22" defer></script>
 </head>
 <body class="schedule-light-page">
   <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"><a href="index.html">Home</a><a href="players.html">Players</a><a href="vnl.html">Competition</a><a class="active" href="schedules.html">Schedules</a><a href="simulator.html">Simulator</a><a href="pamphlet-archive.html">Pamphlets</a><a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a></nav></header>
-  <main class="container-wide"><p class="eyebrow">Tournament Calendar</p><h1>Schedules</h1><p class="subtitle">대회별 남자배구 일정을 한국시간과 개최지 현지시간으로 비교합니다. 여러 개최지를 선택하면 한국시간으로 자동 고정됩니다.</p><div class="tabs"><button class="active">VNL 2026 Men</button><button onclick="location.href='schedules.html?tournament=avc'">AVC Men’s Cup 2026</button></div><div id="scheduleFilterInfo" class="schedule-filter-info"></div><div id="calendarArea"></div></main>
+  <main class="container-wide"><p class="eyebrow">Tournament Calendar</p><div class="schedule-title-row"><h1>Schedules</h1><a class="schedule-favorites-link" href="favorites.html">★ 관심 경기 <span id="scheduleFavoritesCount" class="schedule-favorites-count">0</span></a></div><p class="subtitle">대회별 남자배구 일정을 한국시간과 개최지 현지시간으로 비교합니다. 여러 개최지를 선택하면 한국시간으로 자동 고정됩니다.</p><div class="tabs"><button class="active">VNL 2026 Men</button><button onclick="location.href='schedules.html?tournament=avc'">AVC Men’s Cup 2026</button></div><div id="scheduleFilterInfo" class="schedule-filter-info"></div><div id="calendarArea"></div></main>
 </body>
 </html>
