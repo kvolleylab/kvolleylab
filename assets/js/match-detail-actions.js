@@ -6,7 +6,7 @@ function addActions(){
   if(!hero||hero.querySelector('.md-page-actions'))return false;
   const actions=document.createElement('div');
   actions.className='md-page-actions';
-  actions.innerHTML=`<button type="button" id="mdShareBtn">경기 공유</button><button type="button" id="mdCopyBtn">링크 복사</button>`;
+  actions.innerHTML=`<button type="button" id="mdShareBtn">경기 공유</button><button type="button" id="mdCopyBtn">링크 복사</button><button type="button" id="mdPrintBtn">인쇄·PDF</button>`;
   hero.prepend(actions);
   const source=document.createElement('section');
   source.id='sources';
@@ -17,11 +17,12 @@ function addActions(){
   document.getElementById('mdCopyBtn')?.addEventListener('click',async e=>{
     try{await navigator.clipboard.writeText(location.href);e.currentTarget.textContent='복사 완료';setTimeout(()=>e.currentTarget.textContent='링크 복사',1400)}catch{prompt('아래 주소를 복사하세요.',location.href)}
   });
-  document.getElementById('mdShareBtn')?.addEventListener('click',async e=>{
+  document.getElementById('mdShareBtn')?.addEventListener('click',async()=>{
     const title=document.title;
     if(navigator.share){try{await navigator.share({title,text:title,url:location.href})}catch{}}
     else{document.getElementById('mdCopyBtn')?.click()}
   });
+  document.getElementById('mdPrintBtn')?.addEventListener('click',()=>window.print());
   return true;
 }
 if(!addActions()){
