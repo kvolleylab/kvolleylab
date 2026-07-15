@@ -7,8 +7,8 @@ const venues={China:{cityKo:'린이',tz:'Asia/Shanghai'},Brazil:{cityKo:'브라�
 const id=new URLSearchParams(location.search).get('id');
 if(!id){area.innerHTML='<div class="md-empty">Match ID가 없습니다.</div>';return}
 Promise.all([
- fetch('data/matches/vnl-2026-men.json?v=20260715-3',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('match');return r.json()}),
- fetch('data/results/vnl-2026-men-results.json?v=20260715-3',{cache:'no-store'}).then(r=>r.ok?r.json():({results:[]})).catch(()=>({results:[]}))
+ fetch('data/matches/vnl-2026-men.json?v=20260715-4',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('match');return r.json()}),
+ fetch('data/results/vnl-2026-men-results.json?v=20260715-4',{cache:'no-store'}).then(r=>r.ok?r.json():({results:[]})).catch(()=>({results:[]}))
 ]).then(([matchData,resultData])=>{
  const list=matchData.matches||[],results=resultData.results||[];
  const index=list.findIndex(x=>x.match_id===id),m=list[index];
@@ -18,7 +18,7 @@ Promise.all([
 }).catch(()=>{area.innerHTML='<div class="md-empty">경기 데이터를 불러오지 못했습니다.</div>'});
 function flag(team){const code=flags[team.name_en];return code?`<img class="md-flag" src="https://flagcdn.com/w160/${code}.png" alt="${esc(team.name_ko)} 국기">`:''}
 function miniFlag(team){const code=flags[team.name_en];return code?`<img class="md-mini-flag" src="https://flagcdn.com/w40/${code}.png" alt="">`:''}
-function teamBlock(team,label,winnerSide,side){const page=pages[team.name_en],name=esc(team.name_ko||team.name_en||'-'),win=winnerSide===side?'<span class="md-winner">WIN</span>':'';return `<div class="md-team">${flag(team)}<div class="md-team-label">${label} ${win}</div><h2>${page?`<a href="${page}">${name}</a>`:name}</h2><div class="md-team-en">${esc(team.name_en||'')}</div></div>`}
+function teamBlock(team,label,winnerSide,side){const page=pages[team.name_en],name=esc(team.name_ko||team.name_en||'-'),win=winnerSide===side?'<span class="md-winner">WIN</span>':'';const copy=`<div class="md-team-copy"><div class="md-team-label">${label} ${win}</div><h2>${page?`<a href="${page}">${name}</a>`:name}</h2><div class="md-team-en">${esc(team.name_en||'')}</div></div>`;return `<div class="md-team md-team-${side}"><div class="md-team-inline">${side==='home'?`${copy}${flag(team)}`:`${flag(team)}${copy}`}</div></div>`}
 function localDateTime(m){const venue=venues[m.venue?.country_en];if(!venue)return'-';const dt=new Date(m.datetime_kst);return new Intl.DateTimeFormat('ko-KR',{timeZone:venue.tz,year:'numeric',month:'2-digit',day:'2-digit',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).format(dt)}
 function navButton(m,dir){if(!m)return`<span class="md-nav-disabled"></span>`;return `<a class="md-nav-btn" href="match.html?id=${m.match_id}"><small>${dir==='prev'?'이전 경기':'다음 경기'}</small><strong>${esc(m.home.name_ko)} ${m.score?`${m.score.home_sets}-${m.score.away_sets}`:'vs'} ${esc(m.away.name_ko)}</strong></a>`}
 function teamRecord(team,matches,current){const cutoff=new Date(current.datetime_kst).getTime();const completed=matches.filter(x=>x.status==='completed'&&x.score&&new Date(x.datetime_kst).getTime()<=cutoff&&(x.home.name_en===team.name_en||x.away.name_en===team.name_en));let wins=0,losses=0,points=0,setFor=0,setAgainst=0;completed.forEach(x=>{const home=x.home.name_en===team.name_en,h=Number(x.score.home_sets),a=Number(x.score.away_sets),sf=home?h:a,sa=home?a:h,won=sf>sa;setFor+=sf;setAgainst+=sa;if(won){wins++;points+=sa===2?2:3}else{losses++;points+=sf===2?1:0}});return{wins,losses,points,setFor,setAgainst,recent:completed.slice(-5).reverse()}}
