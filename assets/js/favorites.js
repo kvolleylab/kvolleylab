@@ -1,0 +1,13 @@
+(()=>{
+const KEY='kvl.favoriteMatches.v1',listEl=document.getElementById('favoriteList'),countEl=document.getElementById('favoriteCount'),clearBtn=document.getElementById('clearFavorites');
+if(!listEl)return;
+const flags={Japan:'jp',Brazil:'br',Poland:'pl',Iran:'ir',USA:'us',France:'fr',Argentina:'ar',Italy:'it',Canada:'ca',Belgium:'be',Cuba:'cu',Slovenia:'si',Germany:'de',Serbia:'rs','Türkiye':'tr',Bulgaria:'bg',China:'cn',Ukraine:'ua'};
+const getFav=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]}};
+const setFav=v=>localStorage.setItem(KEY,JSON.stringify(v));
+const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+const flag=t=>flags[t.name_en]?`<img src="https://flagcdn.com/w40/${flags[t.name_en]}.png" alt="">`:'';
+const fmt=d=>{const x=new Date(`${d}T00:00:00+09:00`),days=['일','월','화','수','목','금','토'];return `${d.replaceAll('-','.')}(${days[x.getDay()]})`};
+function render(matches){const ids=getFav(),saved=ids.map(id=>matches.find(m=>m.match_id===id)).filter(Boolean).sort((a,b)=>new Date(a.datetime_kst)-new Date(b.datetime_kst));countEl.textContent=`${saved.length}경기`;clearBtn.disabled=!saved.length;if(!saved.length){listEl.innerHTML='<div class="fav-empty">저장한 관심 경기가 없습니다.<br>경기 상세페이지에서 ☆ 관심 경기를 눌러 저장할 수 있습니다.</div>';return}listEl.innerHTML=saved.map(m=>{const score=m.status==='completed'&&m.score?`${m.score.home_sets} - ${m.score.away_sets}`:'VS';return `<article class="fav-card" data-id="${m.match_id}"><div class="fav-date"><strong>${fmt(m.date_kst)}</strong><span>${esc(m.time_kst)} · Week ${esc(m.week)}</span></div><div class="fav-match"><div class="fav-team">${flag(m.home)}<span>${esc(m.home.name_ko)}</span></div><div class="fav-score">${score}</div><div class="fav-team"><span>${esc(m.away.name_ko)}</span>${flag(m.away)}</div></div><div class="fav-actions"><a href="match.html?id=${m.match_id}">상세 보기</a><button type="button" data-remove="${m.match_id}">삭제</button></div></article>`}).join('');listEl.querySelectorAll('[data-remove]').forEach(btn=>btn.addEventListener('click',()=>{setFav(getFav().filter(id=>id!==btn.dataset.remove));render(matches)}))}
+fetch('data/matches/vnl-2026-men.json?v=20260715-21',{cache:'no-store'}).then(r=>r.json()).then(d=>render(d.matches||[])).catch(()=>listEl.innerHTML='<div class="fav-empty">경기 데이터를 불러오지 못했습니다.</div>');
+clearBtn?.addEventListener('click',()=>{if(confirm('저장한 관심 경기를 모두 삭제할까요?')){setFav([]);location.reload()}});
+})();
