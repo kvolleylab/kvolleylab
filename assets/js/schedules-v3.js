@@ -16,19 +16,11 @@ const WEEK_PLACES={1:['중국','브라질','캐나다'],2:['프랑스','폴란�
 const WEEK_MONTH={1:0,2:0,3:1};
 let matches=[];
 let allTeams=[];
-let state={week:0,places:new Set(Object.keys(META)),teams:new Set(),month:0,selectedDay:null,timeMode:'kst',mobilePanelOpen:false};
+let state={week:0,places:new Set(Object.keys(META)),teams:new Set(),month:0,selectedDay:null,timeMode:'kst',mobilePanelOpen:false,placesOpen:true,teamsOpen:false};
 const months=[{year:2026,month:6,days:30},{year:2026,month:7,days:31}];
 const venueLabel=p=>META[p]?`${META[p].country} (${META[p].city})`:p;
 const flagImg=team=>{const code=FLAGS[team];return code?`<img class="sv3-flag-img" src="https://flagcdn.com/w40/${code}.png" alt="${team} 국기">`:'<span class="sv3-flag-img"></span>'};
-function localParts(g){
- const m=META[g.place];
- if(state.timeMode!=='local'||!m)return{date:g.date,time:g.time};
- const [y,mo,d]=g.date.split('-').map(Number),[h,min]=g.time.split(':').map(Number);
- const utc=new Date(Date.UTC(y,mo-1,d,h-9,min));
- const parts=new Intl.DateTimeFormat('en-CA',{timeZone:m.tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(utc);
- const get=t=>parts.find(p=>p.type===t)?.value||'';
- return{date:`${get('year')}-${get('month')}-${get('day')}`,time:`${get('hour')}:${get('minute')}`};
-}
+function localParts(g){const m=META[g.place];if(state.timeMode!=='local'||!m)return{date:g.date,time:g.time};const [y,mo,d]=g.date.split('-').map(Number),[h,min]=g.time.split(':').map(Number);const utc=new Date(Date.UTC(y,mo-1,d,h-9,min));const parts=new Intl.DateTimeFormat('en-CA',{timeZone:m.tz,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(utc);const get=t=>parts.find(p=>p.type===t)?.value||'';return{date:`${get('year')}-${get('month')}-${get('day')}`,time:`${get('hour')}:${get('minute')}`}}
 function displayDate(g){return localParts(g).date}
 function displayTime(g){return localParts(g).time}
 function teamAllowed(g){return !state.teams.size||state.teams.has(g.home)||state.teams.has(g.away)}
@@ -36,6 +28,7 @@ function filteredGames(month,day){const date=`${month.year}-${String(month.month
 function visiblePlaces(){return state.week?WEEK_PLACES[state.week]:Object.keys(META)}
 function venueMonth(place){const hit=matches.find(g=>g.place===place);if(!hit)return 0;const shown=state.timeMode==='local'?localParts(hit).date:hit.date;return shown.startsWith('2026-07')?1:0}
 function teamMonth(team){const teamGames=matches.filter(g=>g.home===team||g.away===team);if(!teamGames.length)return state.month;const hasCurrent=teamGames.some(g=>Number(displayDate(g).slice(5,7))===months[state.month].month);if(hasCurrent)return state.month;return teamGames.some(g=>displayDate(g).startsWith('2026-07'))?1:0}
+function sectionTitle(label,key,isOpen){return `<button class="sv3-section-toggle" data-section="${key}" aria-expanded="${isOpen}"><span>${label}</span><span>${isOpen?'숨김 ▲':'보기 ▼'}</span></button>`}
 function render(){area.innerHTML=`<button class="sv3-mobile-filter" id="sv3FilterToggle">☰ 필터 열기</button><div class="schedule-v3"><aside class="sv3-panel ${state.mobilePanelOpen?'open':''}" id="sv3Panel">${filtersHtml()}</aside><section><div class="sv3-main">${calendarHtml(months[state.month])}</div><div class="sv3-detail" id="sv3Detail">${detailHtml(months[state.month])}</div></section></div>`;bind()}
 function filtersHtml(){
  const weekBtns=[0,1,2,3].map(w=>`<button class="sv3-btn ${state.week===w?'active':''}" data-week="${w}">${w===0?'전체':`${w}주차`}</button>`).join('');
@@ -46,7 +39,7 @@ function filtersHtml(){
  const teamAllRow=`<label class="sv3-place-row sv3-all-row"><input class="sv3-check" type="checkbox" data-all-teams ${allTeamsChecked?'checked':''}><span class="sv3-dot" style="background:#64748b"></span><span class="sv3-place-label">전체 선택 / 전체 해제</span></label>`;
  const teamRows=allTeams.map(t=>`<label class="sv3-place-row sv3-team-row"><input class="sv3-check" type="checkbox" data-team="${t}" ${state.teams.has(t)?'checked':''}>${flagImg(t)}<span class="sv3-place-label">${t}</span></label>`).join('');
  const single=state.places.size===1;
- return `<div class="sv3-filter-title">주차 선택</div><div class="sv3-week-buttons">${weekBtns}</div><div class="sv3-filter-title">개최 지역</div><div class="sv3-places">${allRow}${placeRows}</div><div class="sv3-filter-title">출전 국가</div><div class="sv3-places sv3-team-list">${teamAllRow}${teamRows}</div><div class="sv3-filter-title">시간 기준</div><div class="sv3-time-row"><button class="sv3-btn ${state.timeMode==='kst'?'active':''}" data-time="kst">한국시간</button><button class="sv3-btn ${state.timeMode==='local'?'active':''}" data-time="local" ${single?'':'disabled'}>현지시간</button></div><div class="sv3-time-note">${single?'현지시간 선택 시 경기 날짜와 시간 모두 개최지 기준으로 변경됩니다.':'여러 개최지가 선택되어 한국시간으로 고정됩니다.'}</div><div class="sv3-filter-actions"><button class="sv3-done" id="sv3Done">완료</button><button class="sv3-reset" id="sv3Reset">필터 초기화</button></div>`
+ return `<div class="sv3-filter-title">주차 선택</div><div class="sv3-week-buttons">${weekBtns}</div>${sectionTitle('개최 지역','places',state.placesOpen)}<div class="sv3-collapsible ${state.placesOpen?'open':''}"><div class="sv3-places">${allRow}${placeRows}</div></div>${sectionTitle('출전 국가','teams',state.teamsOpen)}<div class="sv3-collapsible ${state.teamsOpen?'open':''}"><div class="sv3-places sv3-team-list">${teamAllRow}${teamRows}</div></div><div class="sv3-filter-title">시간 기준</div><div class="sv3-time-row"><button class="sv3-btn ${state.timeMode==='kst'?'active':''}" data-time="kst">한국시간</button><button class="sv3-btn ${state.timeMode==='local'?'active':''}" data-time="local" ${single?'':'disabled'}>현지시간</button></div><div class="sv3-time-note">${single?'현지시간 선택 시 경기 날짜와 시간 모두 개최지 기준으로 변경됩니다.':'여러 개최지가 선택되어 한국시간으로 고정됩니다.'}</div><div class="sv3-filter-actions"><button class="sv3-done" id="sv3Done">완료</button><button class="sv3-reset" id="sv3Reset">필터 초기화</button></div>`
 }
 function calendarHtml(month){const first=new Date(month.year,month.month-1,1).getDay(),offset=first===0?6:first-1;let cells='';for(let i=0;i<offset;i++)cells+='<div class="sv3-day empty"></div>';for(let d=1;d<=month.days;d++){const games=filteredGames(month,d),sun=(offset+d-1)%7===6,selected=state.selectedDay===d;cells+=`<div class="sv3-day ${sun?'sun':''} ${selected?'selected':''}" data-day="${d}"><div class="sv3-daynum">${d}</div><div class="sv3-games">${games.map(g=>gameMini(g)).join('')}</div>${games.length?`<div class="sv3-count">총 ${games.length}경기</div>`:''}</div>`}return `<div class="sv3-head"><div class="sv3-month-nav"><button id="sv3Prev">‹</button><div class="sv3-month-title">${month.year}년 ${month.month}월</div><button id="sv3Next">›</button></div><div class="sv3-mode">${state.timeMode==='local'?'선택 개최지 현지 날짜·시간':'한국시간(KST) 기준'}</div></div><div class="sv3-calendar">${['월','화','수','목','금','토','일'].map(x=>`<div class="sv3-weekday">${x}</div>`).join('')}${cells}</div><div class="sv3-scroll-hint">날짜를 누르면 아래에서 전체 경기 일정을 확인할 수 있습니다.</div>`}
 function gameMini(g){const m=META[g.place]||{},t=displayTime(g),middle=g.score||'vs';return `<div class="sv3-game ${m.cls||''}"><div class="sv3-game-line"><span class="sv3-game-time">${t}</span><span class="sv3-game-match">${g.home} ${middle} ${g.away}</span></div><span class="sv3-game-place">${venueLabel(g.place)}</span></div>`}
@@ -55,6 +48,7 @@ function venueCard(p,gs){const m=META[p]||{};return `<section class="sv3-venue-c
 function bind(){
  document.getElementById('sv3FilterToggle')?.addEventListener('click',()=>{state.mobilePanelOpen=true;render()});
  document.getElementById('sv3Done')?.addEventListener('click',()=>{state.mobilePanelOpen=false;render()});
+ document.querySelectorAll('[data-section]').forEach(b=>b.onclick=()=>{const key=b.dataset.section;if(key==='places')state.placesOpen=!state.placesOpen;if(key==='teams')state.teamsOpen=!state.teamsOpen;render()});
  document.querySelectorAll('[data-week]').forEach(b=>b.onclick=()=>{const w=Number(b.dataset.week);state.week=w;state.places=new Set(w?WEEK_PLACES[w]:Object.keys(META));state.timeMode='kst';state.selectedDay=null;if(w&&Number.isInteger(WEEK_MONTH[w]))state.month=WEEK_MONTH[w];render()});
  document.querySelector('[data-all-places]')?.addEventListener('change',e=>{const visible=visiblePlaces();if(e.target.checked)visible.forEach(p=>state.places.add(p));else visible.forEach(p=>state.places.delete(p));if(state.places.size!==1)state.timeMode='kst';state.selectedDay=null;render()});
  document.querySelectorAll('[data-place]').forEach(i=>i.addEventListener('change',()=>{const p=i.dataset.place;if(i.checked){state.places.add(p);state.month=venueMonth(p)}else state.places.delete(p);if(state.places.size!==1)state.timeMode='kst';state.selectedDay=null;render()}));
@@ -63,7 +57,7 @@ function bind(){
  document.querySelectorAll('[data-time]').forEach(b=>b.onclick=()=>{if(!b.disabled){state.timeMode=b.dataset.time;if(state.timeMode==='local'&&state.places.size===1)state.month=venueMonth([...state.places][0]);state.selectedDay=null;render()}});
  document.querySelectorAll('.sv3-day[data-day]').forEach(d=>d.onclick=()=>{state.selectedDay=Number(d.dataset.day);render()});
  document.getElementById('sv3Prev').onclick=()=>{state.month=(state.month-1+months.length)%months.length;state.selectedDay=null;render()};document.getElementById('sv3Next').onclick=()=>{state.month=(state.month+1)%months.length;state.selectedDay=null;render()};
- document.getElementById('sv3Reset').onclick=()=>{state={week:0,places:new Set(Object.keys(META)),teams:new Set(allTeams),month:0,selectedDay:null,timeMode:'kst',mobilePanelOpen:true};render()}
+ document.getElementById('sv3Reset').onclick=()=>{state={week:0,places:new Set(Object.keys(META)),teams:new Set(allTeams),month:0,selectedDay:null,timeMode:'kst',mobilePanelOpen:true,placesOpen:true,teamsOpen:false};render()}
 }
 fetch('data/matches/vnl-2026-calendar.json?v=20260715-1',{cache:'no-store'}).then(r=>r.json()).then(data=>{matches=(data.matches||[]).map(x=>({date:x[0],time:x[1],week:x[2],home:x[3],away:x[4],score:x[5],place:x[6]}));allTeams=[...new Set(matches.flatMap(g=>[g.home,g.away]))].sort((a,b)=>a.localeCompare(b,'ko'));state.teams=new Set(allTeams);render()}).catch(()=>{area.innerHTML='<div class="sv3-detail">일정 데이터를 불러오지 못했습니다.</div>'});
 })();
