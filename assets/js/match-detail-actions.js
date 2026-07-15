@@ -12,7 +12,7 @@ function addActions(){
   if(!hero||hero.querySelector('.md-page-actions'))return false;
   const actions=document.createElement('div');
   actions.className='md-page-actions';
-  actions.innerHTML=`<button type="button" id="mdFavoriteBtn" aria-pressed="false">☆ 관심 경기</button><button type="button" id="mdShareBtn">경기 공유</button><button type="button" id="mdCopyBtn">링크 복사</button><button type="button" id="mdPrintBtn">인쇄·PDF</button>`;
+  actions.innerHTML=`<button type="button" id="mdFavoriteBtn" aria-pressed="false">☆ 관심 경기</button><a class="md-favorites-link" href="favorites.html">관심 경기 목록</a><button type="button" id="mdShareBtn">경기 공유</button><button type="button" id="mdCopyBtn">링크 복사</button><button type="button" id="mdPrintBtn">인쇄·PDF</button>`;
   hero.prepend(actions);
   const source=document.createElement('section');
   source.id='sources';
