@@ -6,25 +6,16 @@
 <title>Match Detail | K-Volley Lab</title>
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/site-theme-light.css">
-<link rel="stylesheet" href="assets/css/match-detail-v1.css?v=20260715-15">
-<link rel="stylesheet" href="assets/css/match-detail-nav.css?v=20260715-15">
-<link rel="stylesheet" href="assets/css/match-detail-media.css?v=20260715-15">
-<link rel="stylesheet" href="assets/css/match-detail-actions.css?v=20260715-15">
-<link rel="stylesheet" href="assets/css/match-detail-print.css?v=20260715-15">
+<link rel="stylesheet" href="assets/css/match-detail-v1.css?v=20260715-16">
+<link rel="stylesheet" href="assets/css/match-detail-nav.css?v=20260715-16">
+<link rel="stylesheet" href="assets/css/match-detail-media.css?v=20260715-16">
+<link rel="stylesheet" href="assets/css/match-detail-actions.css?v=20260715-16">
+<link rel="stylesheet" href="assets/css/match-detail-print.css?v=20260715-16">
 <script src="assets/js/unified-nav.js" defer></script>
-<script src="assets/js/match-detail-v1.js?v=20260715-15" defer></script>
-<script src="assets/js/match-detail-media.js?v=20260715-15" defer></script>
-<script src="assets/js/match-detail-actions.js?v=20260715-15" defer></script>
-<script defer>
-(()=>{
-const area=document.getElementById('matchArea');if(!area)return;
-const days=['일','월','화','수','목','금','토'];
-function formatKst(value){const m=String(value||'').match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}:\d{2})$/);if(!m)return value;const d=new Date(`${m[1]}-${m[2]}-${m[3]}T00:00:00+09:00`);return `${m[1]}.${m[2]}.${m[3]}(${days[d.getDay()]}) ${m[4]}`}
-function formatLocal(value){const m=String(value||'').match(/^(\d{4})\.\s*(\d{2})\.\s*(\d{2})\.\s*\(([일월화수목금토])\)\s*(\d{2}:\d{2})$/);if(!m)return value;return `${m[1]}.${m[2]}.${m[3]}(${m[4]}) ${m[5]}`}
-function apply(){const status=area.querySelector('.md-status-line');if(status&&status.children[1])status.children[1].style.display='none';[...area.querySelectorAll('.md-meta>div')].forEach(box=>{const label=box.querySelector('span')?.textContent.trim(),strong=box.querySelector('strong');if(!strong)return;if(label==='한국시간')strong.textContent=formatKst(strong.textContent.trim());if(label==='현지시간')strong.textContent=formatLocal(strong.textContent.trim())})}
-if(!area.querySelector('.md-hero-card')){const observer=new MutationObserver(()=>{if(area.querySelector('.md-hero-card')){apply();observer.disconnect()}});observer.observe(area,{childList:true,subtree:true})}else apply();
-})();
-</script>
+<script src="assets/js/match-detail-v1.js?v=20260715-16" defer></script>
+<script src="assets/js/match-detail-media.js?v=20260715-16" defer></script>
+<script src="assets/js/match-detail-actions.js?v=20260715-16" defer></script>
+<script src="assets/js/match-detail-format-v2.js?v=20260715-16" defer></script>
 </head>
 <body class="match-detail-page">
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
