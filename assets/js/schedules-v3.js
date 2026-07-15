@@ -28,7 +28,7 @@ function filteredGames(month,day){const date=`${month.year}-${String(month.month
 function visiblePlaces(){return state.week?WEEK_PLACES[state.week]:Object.keys(META)}
 function venueMonth(place){const hit=matches.find(g=>g.place===place);if(!hit)return 0;const shown=state.timeMode==='local'?localParts(hit).date:hit.date;return shown.startsWith('2026-07')?1:0}
 function teamMonth(team){const teamGames=matches.filter(g=>g.home===team||g.away===team);if(!teamGames.length)return state.month;const hasCurrent=teamGames.some(g=>Number(displayDate(g).slice(5,7))===months[state.month].month);if(hasCurrent)return state.month;return teamGames.some(g=>displayDate(g).startsWith('2026-07'))?1:0}
-function sectionTitle(label,key,isOpen){return `<button class="sv3-section-toggle" data-section="${key}" aria-expanded="${isOpen}"><span>${label}</span><span>${isOpen?'숨김 ▲':'보기 ▼'}</span></button>`}
+function sectionTitle(label,key,isOpen){return `<button class="sv3-section-toggle" data-section="${key}" aria-expanded="${isOpen}"><span>${label}</span><span aria-hidden="true">${isOpen?'▲':'▼'}</span></button>`}
 function render(){area.innerHTML=`<button class="sv3-mobile-filter" id="sv3FilterToggle">☰ 필터 열기</button><div class="schedule-v3"><aside class="sv3-panel ${state.mobilePanelOpen?'open':''}" id="sv3Panel">${filtersHtml()}</aside><section><div class="sv3-main">${calendarHtml(months[state.month])}</div><div class="sv3-detail" id="sv3Detail">${detailHtml(months[state.month])}</div></section></div>`;bind()}
 function filtersHtml(){
  const weekBtns=[0,1,2,3].map(w=>`<button class="sv3-btn ${state.week===w?'active':''}" data-week="${w}">${w===0?'전체':`${w}주차`}</button>`).join('');
