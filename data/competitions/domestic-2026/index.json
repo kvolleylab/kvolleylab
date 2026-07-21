@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "season": 2026,
+  "updated_at": "2026-07-21",
+  "competitions": [
+    {
+      "competition_id": "KVL-COMP-KOR-DANYANG-2026-M",
+      "slug": "danyang-2026-men",
+      "name_ko": "2026 단양대회 남자부",
+      "category": "domestic",
+      "level": "senior_mixed",
+      "status": "calculator_prototype",
+      "rule_id": "KVL-RULE-POOL-WINS-RATIO-TOP2-v1",
+      "routes": {
+        "calculator": "danyang-qualification-calculator.html",
+        "schedule": null,
+        "hub": null
+      },
+      "data_status": {
+        "schedule": "partial",
+        "results": "partial",
+        "rules": "needs_official_document_verification",
+        "calculator": "prototype"
+      }
+    },
+    {
+      "competition_id": "KVL-COMP-KUSF-UNIV-2026-M",
+      "slug": "university-league-2026-men",
+      "name_ko": "2026 남자 대학배구 리그",
+      "category": "domestic",
+      "level": "university",
+      "status": "data_preparation",
+      "rule_id": null,
+      "routes": {
+        "calculator": null,
+        "schedule": null,
+        "hub": "university-teams.html"
+      },
+      "data_status": {
+        "schedule": "needs_master",
+        "results": "needs_master",
+        "rules": "needs_official_document",
+        "calculator": "not_started"
+      }
+    }
+  ]
+}
