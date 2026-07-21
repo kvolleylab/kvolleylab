@@ -2,9 +2,11 @@
 const area=document.getElementById('matchArea');
 if(!area)return;
 const FAVORITES_KEY='kvl.favoriteMatches.v1';
-const matchId=new URLSearchParams(location.search).get('id')||'';
-function getFavorites(){try{return JSON.parse(localStorage.getItem(FAVORITES_KEY)||'[]')}catch{return[]}}
-function setFavorites(items){localStorage.setItem(FAVORITES_KEY,JSON.stringify(items))}
+const rawMatchId=new URLSearchParams(location.search).get('id')||'';
+const matchId=window.KVL_CANONICAL_MATCH_ID||window.KVLMatchIds?.toCanonical(rawMatchId)||rawMatchId;
+function canonicalize(id){return window.KVLMatchIds?.toCanonical(id)||id}
+function getFavorites(){try{return [...new Set(JSON.parse(localStorage.getItem(FAVORITES_KEY)||'[]').map(canonicalize))]}catch{return[]}}
+function setFavorites(items){localStorage.setItem(FAVORITES_KEY,JSON.stringify([...new Set(items.map(canonicalize))]))}
 function updateFavoriteButton(btn){const saved=getFavorites().includes(matchId);btn.classList.toggle('active',saved);btn.setAttribute('aria-pressed',String(saved));btn.textContent=saved?'★ 관심 경기':'☆ 관심 경기'}
 function flash(btn,text){const original=btn.textContent;btn.textContent=text;setTimeout(()=>btn.textContent=original,1400)}
 function addActions(){
@@ -30,11 +32,12 @@ function addActions(){
     });
   }
   document.getElementById('mdCopyBtn')?.addEventListener('click',async e=>{
-    try{await navigator.clipboard.writeText(location.href);flash(e.currentTarget,'복사 완료')}catch{prompt('아래 주소를 복사하세요.',location.href)}
+    const shareUrl=new URL(location.href);shareUrl.searchParams.set('id',matchId);
+    try{await navigator.clipboard.writeText(shareUrl.href);flash(e.currentTarget,'복사 완료')}catch{prompt('아래 주소를 복사하세요.',shareUrl.href)}
   });
   document.getElementById('mdShareBtn')?.addEventListener('click',async()=>{
-    const title=document.title;
-    if(navigator.share){try{await navigator.share({title,text:title,url:location.href})}catch{}}
+    const title=document.title,shareUrl=new URL(location.href);shareUrl.searchParams.set('id',matchId);
+    if(navigator.share){try{await navigator.share({title,text:title,url:shareUrl.href})}catch{}}
     else{document.getElementById('mdCopyBtn')?.click()}
   });
   document.getElementById('mdPrintBtn')?.addEventListener('click',()=>window.print());
