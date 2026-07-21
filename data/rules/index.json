@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "updated_at": "2026-07-21",
+  "rules": [
+    {
+      "rule_id": "KVL-RULE-POOL-WINS-RATIO-TOP2-v1",
+      "name_ko": "조별리그 다승·득실점비율·세트득실률 상위 2팀",
+      "status": "active",
+      "format": "pool_round_robin",
+      "ranking": ["wins", "point_ratio", "set_ratio"],
+      "qualification": {"type": "top_n_per_pool", "count": 2},
+      "score_model": "set_result_estimated_points",
+      "notes": "실제 대회 규정과 공식 경기별 득실점 원자료를 확인한 뒤 대회별 rule 파일에서 재정의합니다."
+    },
+    {
+      "rule_id": "KVL-RULE-FIVB-POINTS-v1",
+      "name_ko": "FIVB 승점·승수·세트비율·득점비율",
+      "status": "planned",
+      "format": "league_or_pool",
+      "ranking": ["ranking_points", "wins", "set_ratio", "point_ratio"],
+      "qualification": {"type": "competition_specific"}
+    }
+  ]
+}
