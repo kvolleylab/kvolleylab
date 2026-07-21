@@ -1,0 +1,58 @@
+{
+  "competition_id": "KUSF-U-LEAGUE-2026",
+  "competition_name": "2026 KUSF 대학배구 U-리그",
+  "division": "남대부",
+  "season": 2026,
+  "status": "rules_verified",
+  "source": {
+    "title": "2026 KUSF 대학배구 U-리그 요강",
+    "checked_at": "2026-07-21",
+    "public_file": false,
+    "note": "공식 요강을 바탕으로 구조화한 참고 규정입니다. 주최기관의 최신 공지가 우선합니다."
+  },
+  "competition_period": {
+    "start": "2026-03-25",
+    "end": "2026-10-06",
+    "venue": "참가 대학교 체육관",
+    "format_note": "홈&어웨이"
+  },
+  "format": {
+    "preliminary": "조별 예선리그",
+    "advance": {
+      "per_group": 3,
+      "total": 6,
+      "next_stage": "6강 리그"
+    },
+    "postseason": ["6강 리그", "준결승전", "챔피언결정전"]
+  },
+  "points_system": {
+    "3-0": {"winner": 3, "loser": 0},
+    "3-1": {"winner": 3, "loser": 0},
+    "3-2": {"winner": 2, "loser": 1}
+  },
+  "ranking_order": [
+    "league_points",
+    "match_wins",
+    "point_ratio",
+    "set_ratio",
+    "head_to_head"
+  ],
+  "multi_team_tie": {
+    "enabled": true,
+    "condition": "3개 이상 팀의 승점·승리경기 수·득실점수비율·세트비율이 모두 동일",
+    "recalculate_with_tied_teams_only": ["match_wins", "point_ratio", "set_ratio"]
+  },
+  "ratio_formulas": {
+    "point_ratio": "total_points_for / total_points_against",
+    "set_ratio": "sets_won / sets_lost"
+  },
+  "awards": {
+    "team": ["우승", "준우승", "3위"],
+    "individual": ["최우수지도자상", "우수지도자상", "최우수선수상", "리베로상", "세터상", "블로킹상", "공격상", "서브상", "수비상", "신인상", "심판상"]
+  },
+  "calculator": {
+    "status": "pending_schedule_results",
+    "rule_ready": true,
+    "requires": ["group_assignment", "match_schedule", "completed_results", "remaining_matches"]
+  }
+}
