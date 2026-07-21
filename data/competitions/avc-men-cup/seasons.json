@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "competition_id": "avc-men-cup",
+  "default_season": "2026",
+  "seasons": [
+    {
+      "season": "2026",
+      "label": "2026",
+      "status": "active",
+      "schedule_page": "schedules.html?competition=avc-men-cup&season=2026",
+      "calendar_data": "data/matches/avc-2026-calendar.json",
+      "match_id_prefix": "KVL-M-2026-AVC-"
+    }
+  ]
+}
