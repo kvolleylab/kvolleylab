@@ -95,7 +95,11 @@
     .kvl-nav-link:hover{background:rgba(225,184,79,.14)!important;color:#e1b84f!important}
     .kvl-nav-link:hover .kvl-nav-label-en{opacity:0!important}.kvl-nav-link:hover .kvl-nav-label-ko{opacity:1!important}
     .kvl-nav-link.active{background:#e1b84f!important;color:#071b2a!important}
-    @media(max-width:820px){.kvl-unified-header{height:68px!important;min-height:68px!important;padding:0 14px!important;gap:14px!important}.kvl-unified-logo{font-size:20px!important}.kvl-unified-nav{flex:1 1 auto!important;justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}.kvl-unified-nav::-webkit-scrollbar{display:none!important}.kvl-nav-link{flex:0 0 auto!important;height:34px!important;min-height:34px!important;min-width:78px!important;padding:0 11px!important;font-size:13px!important}}
+    .kvl-season-context{max-width:1180px;margin:18px auto 0;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-family:Arial,sans-serif}
+    .kvl-season-breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;color:#73849a;font-size:13px;font-weight:700}
+    .kvl-season-breadcrumb a{color:#17365d;text-decoration:none}.kvl-season-breadcrumb a:hover{color:#b27a00}
+    .kvl-season-switcher{display:flex;align-items:center;gap:8px}.kvl-season-switcher span{color:#73849a;font-size:12px;font-weight:800;letter-spacing:.06em}.kvl-season-switcher a{display:inline-flex;align-items:center;justify-content:center;min-width:58px;padding:8px 12px;border:1px solid #d7e0ea;border-radius:999px;background:#fff;color:#17365d;text-decoration:none;font-size:13px;font-weight:800}.kvl-season-switcher a.active{border-color:#d5a322;background:#d5a322;color:#071b2a}
+    @media(max-width:820px){.kvl-unified-header{height:68px!important;min-height:68px!important;padding:0 14px!important;gap:14px!important}.kvl-unified-logo{font-size:20px!important}.kvl-unified-nav{flex:1 1 auto!important;justify-content:flex-start!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none!important}.kvl-unified-nav::-webkit-scrollbar{display:none!important}.kvl-nav-link{flex:0 0 auto!important;height:34px!important;min-height:34px!important;min-width:78px!important;padding:0 11px!important;font-size:13px!important}.kvl-season-context{align-items:flex-start;flex-direction:column;margin-top:14px;padding:0 14px}}
   `;
   document.getElementById(style.id)?.remove();
   document.head.appendChild(style);
@@ -108,4 +112,24 @@
 
   header.className = 'kvl-unified-header';
   header.innerHTML = `<a class="kvl-unified-logo" href="index.html">K-Volley Lab</a><nav class="kvl-unified-nav" aria-label="Main navigation">${navHtml}</nav>`;
+
+  if (path === 'vnl.html') {
+    const params = new URLSearchParams(location.search);
+    const season = params.get('season') || '2026';
+    if (!params.get('season')) {
+      const normalized = new URL(location.href);
+      normalized.searchParams.set('season', season);
+      history.replaceState(history.state, '', normalized);
+    }
+    const context = document.createElement('div');
+    context.className = 'kvl-season-context';
+    context.innerHTML = `<div class="kvl-season-breadcrumb"><a href="competition.html">Competition</a><span>›</span><span>VNL Men</span><span>›</span><strong>${season}</strong></div><div class="kvl-season-switcher"><span>SEASON</span><a class="active" href="vnl.html?season=2026">2026</a></div>`;
+    header.insertAdjacentElement('afterend', context);
+    document.querySelectorAll('a[href="schedules.html?tournament=vnl"]').forEach(a => a.href = `schedules.html?competition=vnl&season=${season}`);
+    document.querySelectorAll('a[href*="schedules.html?tournament=vnl&team="]').forEach(a => {
+      const url = new URL(a.getAttribute('href'), location.href);
+      const team = url.searchParams.get('team');
+      a.href = `schedules.html?competition=vnl&season=${season}&team=${encodeURIComponent(team || '')}`;
+    });
+  }
 })();
