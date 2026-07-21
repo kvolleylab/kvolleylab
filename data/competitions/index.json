@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "competitions": [
+    {
+      "id": "vnl",
+      "name_ko": "VNL 남자부",
+      "name_en": "Volleyball Nations League Men",
+      "type": "international",
+      "seasons_file": "data/competitions/vnl/seasons.json"
+    },
+    {
+      "id": "avc-men-cup",
+      "name_ko": "AVC 남자컵",
+      "name_en": "AVC Men's Cup",
+      "type": "international",
+      "seasons_file": "data/competitions/avc-men-cup/seasons.json"
+    }
+  ]
+}
