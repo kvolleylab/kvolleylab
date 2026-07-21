@@ -1,0 +1,39 @@
+{
+  "competition": "VNL Men",
+  "season": 2026,
+  "checked_at": "2026-07-21",
+  "status": "passed",
+  "source_master": "2026_VNL_남자부_일정결과_MASTER.xlsx",
+  "official_source": "https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/standings/men/",
+  "checks": {
+    "preliminary_matches": 108,
+    "teams": 18,
+    "matches_per_team": 12,
+    "total_wins": 108,
+    "total_losses": 108,
+    "score_text_mismatches": 0,
+    "winner_mismatches": 0,
+    "set_count_mismatches": 0,
+    "standings_mismatches": 0
+  },
+  "teams": [
+    {"team":"Japan","played":12,"wins":12,"losses":0,"points":30,"sets_won":36,"sets_lost":15},
+    {"team":"Poland","played":12,"wins":10,"losses":2,"points":29,"sets_won":34,"sets_lost":15},
+    {"team":"Slovenia","played":12,"wins":10,"losses":2,"points":26,"sets_won":32,"sets_lost":17},
+    {"team":"Italy","played":12,"wins":8,"losses":4,"points":26,"sets_won":30,"sets_lost":18},
+    {"team":"USA","played":12,"wins":8,"losses":4,"points":25,"sets_won":29,"sets_lost":16},
+    {"team":"Türkiye","played":12,"wins":8,"losses":4,"points":22,"sets_won":28,"sets_lost":19},
+    {"team":"Ukraine","played":12,"wins":7,"losses":5,"points":23,"sets_won":27,"sets_lost":20},
+    {"team":"Bulgaria","played":12,"wins":7,"losses":5,"points":20,"sets_won":24,"sets_lost":23},
+    {"team":"Brazil","played":12,"wins":7,"losses":5,"points":19,"sets_won":23,"sets_lost":21},
+    {"team":"France","played":12,"wins":6,"losses":6,"points":16,"sets_won":23,"sets_lost":24},
+    {"team":"Serbia","played":12,"wins":5,"losses":7,"points":16,"sets_won":19,"sets_lost":25},
+    {"team":"Germany","played":12,"wins":5,"losses":7,"points":15,"sets_won":23,"sets_lost":28},
+    {"team":"Belgium","played":12,"wins":4,"losses":8,"points":12,"sets_won":17,"sets_lost":28},
+    {"team":"Iran","played":12,"wins":3,"losses":9,"points":11,"sets_won":18,"sets_lost":30},
+    {"team":"Argentina","played":12,"wins":3,"losses":9,"points":10,"sets_won":18,"sets_lost":31},
+    {"team":"Cuba","played":12,"wins":3,"losses":9,"points":10,"sets_won":16,"sets_lost":29},
+    {"team":"Canada","played":12,"wins":1,"losses":11,"points":10,"sets_won":19,"sets_lost":34},
+    {"team":"China","played":12,"wins":1,"losses":11,"points":4,"sets_won":10,"sets_lost":33}
+  ]
+}
