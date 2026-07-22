@@ -66,19 +66,20 @@
     'bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html'
   ]);
   const playerPages = new Set(['players.html','player.html','player-search.html']);
+  const schedulePages = new Set(['schedules.html','competition-calendar.html']);
 
   let active = '';
   if (path === 'index.html' || path === '') active = 'home';
   else if (playerPages.has(path)) active = 'players';
   else if (competitionPages.has(path)) active = 'competition';
-  else if (path === 'schedules.html') active = 'schedules';
+  else if (schedulePages.has(path)) active = 'schedules';
   else if (path === 'pamphlet-archive.html') active = 'pamphlets';
 
   const items = [
     ['home','index.html','Home','홈'],
     ['players','players.html','Players','선수'],
     ['competition','competition.html','Competition','대회'],
-    ['schedules','schedules.html?competition=vnl&season=2026','Schedules','일정'],
+    ['schedules','competition-calendar.html?year=2026','Schedules','일정'],
     ['pamphlets','pamphlet-archive.html','Pamphlets','팜플렛'],
     ['request','https://forms.gle/MFNYhJX6Bq5zeNmp8','Request','요청']
   ];
