@@ -1,0 +1,21 @@
+{
+  "competition_id": "KVL-COMP-000002",
+  "season": 2026,
+  "updated_at": null,
+  "verification_status": "collecting",
+  "matches": [],
+  "schema": {
+    "match_id": "KVL-M-2026-KUSF-000001",
+    "group_id": "A",
+    "home_team_id": "SKKU",
+    "away_team_id": "HONAM",
+    "date": "2026-03-25",
+    "status": "finished",
+    "home_sets": 3,
+    "away_sets": 1,
+    "set_scores": [[25,20],[23,25],[25,19],[25,21]],
+    "verified": true,
+    "source_url": "official source URL"
+  },
+  "notice": "공식 원자료와 대조 완료된 경기만 matches 배열에 등록합니다. finished 및 verified=true인 경기는 계산기에서 자동 잠금됩니다."
+}
