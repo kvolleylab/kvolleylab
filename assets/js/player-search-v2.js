@@ -5,6 +5,8 @@ let players=[];
 const el=id=>document.getElementById(id);
 const text=(v,f='-')=>v===null||v===undefined||v===''?f:String(v);
 const esc=v=>String(v).replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':'&quot;'}[c]));
+const initialQuery=new URLSearchParams(location.search).get('q')||'';
+if(initialQuery)el('searchInput').value=initialQuery;
 function schoolCode(p){return p.current_roster?.school_code||(()=>{const src=(p.source_ids||[]).find(id=>id.includes('UNIV-2026-'))||'';const m=src.match(/UNIV-2026-([A-Z]+)-/);return m?m[1]:'UNKNOWN'})()}
 function normalize(p){const sys=p.system||{},id=p.identity||{},phy=p.physical||{},vol=p.volleyball||{},roster=p.current_roster||{};const sc=schoolCode(p);const intl=id.nationality&&id.nationality!=='KOR';const grade=roster.grade??vol.grade??'';const draft=Boolean(roster.draft_eligible??vol.draft_eligible??false);return{playerId:sys.player_id||'',displayCode:sys.display_code||'',nameKo:id.name_ko||'',nameEn:id.name_en||'',birthDate:id.birth_date||'',nationality:id.nationality||'',height:phy.height_cm||'',position:vol.position||roster.position||'',team:vol.national_team||'',schoolCode:sc,school:roster.school_name||schoolNames[sc]||'',grade,gradeLabel:grade?`${grade}학년`:'',draftEligible:draft,type:intl?'international':'domestic',label:intl?'국제':'국내'}}
 function uniqueById(list){const map=new Map();list.forEach(p=>{if(p.playerId&&!map.has(p.playerId))map.set(p.playerId,p)});return[...map.values()]}
