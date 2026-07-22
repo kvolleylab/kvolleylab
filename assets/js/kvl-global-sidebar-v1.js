@@ -4,7 +4,7 @@
 
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
   const playerPages=new Set(['players.html','player.html','player-search.html','player-compare.html','draft-hub.html']);
-  const schedulePages=new Set(['schedules.html','competition-calendar.html']);
+  const schedulePages=new Set(['schedules.html','competition-calendar.html','danyang-university-2026.html']);
   const teamPages=new Set(['university-teams.html']);
   const simulatorPages=new Set(['simulator.html','danyang-qualification-calculator.html']);
   let active='';
