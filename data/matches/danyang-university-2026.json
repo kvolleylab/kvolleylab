@@ -1,0 +1,73 @@
+{
+  "competition": {
+    "id": "danyang-university-2026",
+    "name": "2026 대한항공배 전국대학배구 단양대회",
+    "start": "2026-08-12",
+    "end": "2026-08-20",
+    "timezone": "Asia/Seoul",
+    "status": "official_schedule",
+    "updated_at": "2026-07-22",
+    "notice": "중계 일정은 방송사의 사정에 따라 경기 순서와 시간이 변경될 수 있습니다."
+  },
+  "venues": {
+    "national": "단양국민체육센터",
+    "culture": "문화체육센터"
+  },
+  "matches": [
+    {"no":1,"date":"2026-08-12","time":"10:00","division":"남대부","stage":"예선","group":"A","home":"경상국립대","away":"중부대","venue":"national"},
+    {"no":2,"date":"2026-08-12","time":"11:30","division":"남대부","stage":"예선","group":"B","home":"인하대","away":"경일대","venue":"national"},
+    {"no":3,"date":"2026-08-12","time":"13:00","division":"남대부","stage":"예선","group":"B","home":"호남대","away":"경희대","venue":"national"},
+    {"no":4,"date":"2026-08-12","time":"14:30","division":"남대부","stage":"예선","group":"A","home":"충남대","away":"홍익대","venue":"national"},
+    {"no":1,"date":"2026-08-12","time":"10:00","division":"남대부","stage":"예선","group":"C","home":"명지대","away":"우석대","venue":"culture"},
+    {"no":2,"date":"2026-08-12","time":"11:30","division":"남대부","stage":"예선","group":"C","home":"성균관대","away":"경기대","venue":"culture"},
+
+    {"no":5,"date":"2026-08-13","time":"10:00","division":"남대부","stage":"예선","group":"B","home":"조선대","away":"경희대","venue":"national"},
+    {"no":6,"date":"2026-08-13","time":"11:30","division":"남대부","stage":"예선","group":"A","home":"경상국립대","away":"충남대","venue":"national"},
+    {"no":7,"date":"2026-08-13","time":"13:00","division":"남대부","stage":"예선","group":"A","home":"한양대","away":"중부대","venue":"national"},
+    {"no":8,"date":"2026-08-13","time":"14:30","division":"남대부","stage":"예선","group":"B","home":"호남대","away":"인하대","venue":"national"},
+    {"no":3,"date":"2026-08-13","time":"10:00","division":"남대부","stage":"예선","group":"C","home":"국립목포대","away":"경기대","venue":"culture"},
+    {"no":4,"date":"2026-08-13","time":"11:30","division":"남대부","stage":"예선","group":"C","home":"성균관대","away":"명지대","venue":"culture"},
+
+    {"no":9,"date":"2026-08-14","time":"10:00","division":"남대부","stage":"예선","group":"A","home":"한양대","away":"홍익대","venue":"national"},
+    {"no":10,"date":"2026-08-14","time":"11:30","division":"남대부","stage":"예선","group":"B","home":"경희대","away":"인하대","venue":"national"},
+    {"no":11,"date":"2026-08-14","time":"13:00","division":"남대부","stage":"예선","group":"B","home":"조선대","away":"경일대","venue":"national"},
+    {"no":12,"date":"2026-08-14","time":"14:30","division":"남대부","stage":"예선","group":"A","home":"중부대","away":"충남대","venue":"national"},
+    {"no":5,"date":"2026-08-14","time":"10:00","division":"남대부","stage":"예선","group":"C","home":"경기대","away":"명지대","venue":"culture"},
+    {"no":6,"date":"2026-08-14","time":"11:30","division":"남대부","stage":"예선","group":"C","home":"국립목포대","away":"우석대","venue":"culture"},
+
+    {"no":13,"date":"2026-08-15","time":"10:00","division":"남대부","stage":"예선","group":"B","home":"호남대","away":"경일대","venue":"national"},
+    {"no":14,"date":"2026-08-15","time":"11:30","division":"남대부","stage":"예선","group":"A","home":"홍익대","away":"경상국립대","venue":"national"},
+    {"no":15,"date":"2026-08-15","time":"13:00","division":"남대부","stage":"예선","group":"A","home":"한양대","away":"충남대","venue":"national"},
+    {"no":16,"date":"2026-08-15","time":"14:30","division":"남대부","stage":"예선","group":"B","home":"조선대","away":"인하대","venue":"national"},
+    {"no":7,"date":"2026-08-15","time":"10:00","division":"남대부","stage":"예선","group":"C","home":"우석대","away":"성균관대","venue":"culture"},
+    {"no":8,"date":"2026-08-15","time":"11:30","division":"남대부","stage":"예선","group":"C","home":"국립목포대","away":"명지대","venue":"culture"},
+
+    {"no":17,"date":"2026-08-16","time":"10:00","division":"남대부","stage":"예선","group":"B","home":"경일대","away":"경희대","venue":"national"},
+    {"no":18,"date":"2026-08-16","time":"11:30","division":"남대부","stage":"예선","group":"B","home":"조선대","away":"호남대","venue":"national"},
+    {"no":19,"date":"2026-08-16","time":"13:00","division":"남대부","stage":"예선","group":"A","home":"홍익대","away":"중부대","venue":"national"},
+    {"no":20,"date":"2026-08-16","time":"14:30","division":"남대부","stage":"예선","group":"A","home":"한양대","away":"경상국립대","venue":"national"},
+    {"no":9,"date":"2026-08-16","time":"10:00","division":"남대부","stage":"예선","group":"C","home":"국립목포대","away":"성균관대","venue":"culture"},
+    {"no":10,"date":"2026-08-16","time":"11:30","division":"남대부","stage":"예선","group":"C","home":"우석대","away":"경기대","venue":"culture"},
+    {"no":11,"date":"2026-08-16","time":"14:00","division":"여대부","stage":"예선","group":"B","home":"목포과학대","away":"광주여대","venue":"culture"},
+    {"no":12,"date":"2026-08-16","time":"15:30","division":"여대부","stage":"예선","group":"A","home":"호남대","away":"동의대","venue":"culture"},
+    {"no":13,"date":"2026-08-16","time":"17:00","division":"여대부","stage":"예선","group":"B","home":"단국대","away":"우석대","venue":"culture"},
+
+    {"no":21,"date":"2026-08-17","time":"10:00","division":"남대부","stage":"6강전","group":"","home":"(나)조 2위팀","away":"(다)조 1위팀","venue":"national"},
+    {"no":22,"date":"2026-08-17","time":"11:30","division":"남대부","stage":"6강전","group":"","home":"(다)조 2위팀","away":"(가)조 2위팀","venue":"national"},
+    {"no":14,"date":"2026-08-17","time":"10:00","division":"여대부","stage":"예선","group":"B","home":"목포과학대","away":"우석대","venue":"culture"},
+    {"no":15,"date":"2026-08-17","time":"11:30","division":"여대부","stage":"예선","group":"B","home":"단국대","away":"광주여대","venue":"culture"},
+    {"no":16,"date":"2026-08-17","time":"13:00","division":"여대부","stage":"예선","group":"A","home":"경일대","away":"동의대","venue":"culture"},
+
+    {"no":17,"date":"2026-08-18","time":"10:00","division":"여대부","stage":"예선","group":"B","home":"목포과학대","away":"단국대","venue":"culture"},
+    {"no":18,"date":"2026-08-18","time":"11:30","division":"여대부","stage":"예선","group":"A","home":"경일대","away":"호남대","venue":"culture"},
+    {"no":19,"date":"2026-08-18","time":"13:00","division":"여대부","stage":"예선","group":"B","home":"우석대","away":"광주여대","venue":"culture"},
+
+    {"no":23,"date":"2026-08-19","time":"11:00","division":"남대부","stage":"준결승","group":"","home":"(가)조 1위팀","away":"21번 경기 승리팀","venue":"national","broadcast":"TV"},
+    {"no":24,"date":"2026-08-19","time":"13:00","division":"남대부","stage":"준결승","group":"","home":"(나)조 1위팀","away":"22번 경기 승리팀","venue":"national","broadcast":"TV"},
+    {"no":20,"date":"2026-08-19","time":"10:00","division":"여대부","stage":"준결승","group":"","home":"A조 1위팀","away":"B조 2위팀","venue":"culture"},
+    {"no":21,"date":"2026-08-19","time":"11:30","division":"여대부","stage":"준결승","group":"","home":"B조 1위팀","away":"A조 2위팀","venue":"culture"},
+
+    {"no":null,"date":"2026-08-20","time":"11:00","division":"여대부","stage":"결승","group":"","home":"준결승 승리팀","away":"준결승 승리팀","venue":"national","broadcast":"TV"},
+    {"no":null,"date":"2026-08-20","time":null,"division":"남대부","stage":"결승","group":"","home":"준결승 승리팀","away":"준결승 승리팀","venue":"national","broadcast":"TV","note":"공식 일정표에서 경기 시간 재확인 필요"}
+  ]
+}
