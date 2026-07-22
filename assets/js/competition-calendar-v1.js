@@ -58,12 +58,12 @@
   }
 
   function searchBox(){
-    return `<div class="cc-search"><span aria-hidden="true">⌕</span><input type="search" value="${esc(searchTerm)}" placeholder="대회명 검색" aria-label="대회명 검색" data-search><button type="button" data-search-clear ${searchTerm?'':'hidden'}>지우기</button></div>`;
+    return `<div class="cc-search-row"><label class="cc-search-label" for="competitionSearch">대회 검색</label><div class="cc-search-field"><input id="competitionSearch" type="search" value="${esc(searchTerm)}" placeholder="예: VNL, AVC, 대학리그" autocomplete="off" data-search><button type="button" data-search-clear ${searchTerm?'':'hidden'}>지우기</button></div><span class="cc-search-help">대회명을 입력하면 달력과 오른쪽 목록이 함께 검색됩니다.</span></div>`;
   }
 
   function toolbar(){
     const todayHref=calendarHref('month',todayYear,todayMonth);
-    return `<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="${calendarHref(view,year-1,month)}">‹</a><strong>${year}년</strong><a href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a><button class="cc-share-btn" type="button" data-share>링크 복사</button></div><div class="cc-toolbar-right">${searchBox()}${filters()}</div></div>`;
+    return `<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="${calendarHref(view,year-1,month)}">‹</a><strong>${year}년</strong><a href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a><button class="cc-share-btn" type="button" data-share>링크 복사</button></div>${filters()}</div>${searchBox()}`;
   }
 
   function monthShortcuts(m){
@@ -167,14 +167,20 @@
     root.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{active=b.dataset.filter;rerender()});
     const search=root.querySelector('[data-search]');
     if(search){
-      search.oninput=()=>{searchTerm=search.value.trim();rerender();const next=root.querySelector('[data-search]');if(next){next.focus();next.setSelectionRange(next.value.length,next.value.length)}};
+      search.oninput=()=>{
+        searchTerm=search.value;
+        const position=search.selectionStart||searchTerm.length;
+        rerender();
+        const next=root.querySelector('[data-search]');
+        if(next){next.focus();next.setSelectionRange(position,position)}
+      };
     }
     root.querySelectorAll('[data-search-clear],[data-reset-search]').forEach(b=>b.onclick=()=>{searchTerm='';rerender()});
     const share=root.querySelector('[data-share]');
     if(share)share.onclick=async()=>{syncUrl();try{await navigator.clipboard.writeText(location.href);share.textContent='복사 완료';setTimeout(()=>share.textContent='링크 복사',1400)}catch{prompt('아래 주소를 복사하세요.',location.href)}};
   }
 
-  fetch(`data/calendar/${year}-competition-periods.json?v=20260722-12`,{cache:'no-store'})
+  fetch(`data/calendar/${year}-competition-periods.json?v=20260722-13`,{cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('calendar');return r.json()})
     .then(data=>{payload=data;if(active!=='all'&&!payload.categories.some(c=>c.id===active))active='all';rerender()})
     .catch(()=>{root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="${calendarHref('month',todayYear,todayMonth)}">오늘 달력 보기</a></div>`;syncViewSwitch()});
