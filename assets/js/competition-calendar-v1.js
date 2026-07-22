@@ -50,7 +50,7 @@
   function eventLink(event,compact,startCol,endCol,lane){
     const cls=compact?'cc-period-bar':'cc-big-period';
     const title=esc(event.short_title||event.title);
-    const tooltip=`<span class="cc-event-tooltip"><strong>${esc(event.title)}</strong><span>${fmt(event.start)} ~ ${fmt(event.end)}</span><em>${esc(labelOf(event.category))} · 클릭하여 대회 일정 보기</em></span>`;
+    const tooltip=`<span class="cc-event-tooltip"><span class="cc-tooltip-head"><strong>${esc(event.title)}</strong><span class="cc-tooltip-date">${fmt(event.start)} ~ ${fmt(event.end)}</span></span><em>${esc(labelOf(event.category))} · 클릭하여 대회 일정 보기</em></span>`;
     return `<a class="${cls}" href="${event.href}" aria-label="${esc(event.title)} ${fmt(event.start)}부터 ${fmt(event.end)}까지" style="--event-color:${colorOf(event.category)};--start:${startCol};--span:${endCol-startCol+1};--lane:${lane}"><span class="cc-period-title">${title}</span>${tooltip}</a>`;
   }
 
@@ -87,5 +87,5 @@
   }
   function bind(){root.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{active=b.dataset.filter;view==='year'?renderYear():renderMonth()})}
 
-  fetch(`data/calendar/${year}-competition-periods.json?v=20260722-4`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('calendar');return r.json()}).then(data=>{payload=data;view==='year'?renderYear():renderMonth()}).catch(()=>{root.innerHTML='<div class="cc-empty">대회 달력 데이터를 불러오지 못했습니다.</div>'});
+  fetch(`data/calendar/${year}-competition-periods.json?v=20260722-5`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('calendar');return r.json()}).then(data=>{payload=data;view==='year'?renderYear():renderMonth()}).catch(()=>{root.innerHTML='<div class="cc-empty">대회 달력 데이터를 불러오지 못했습니다.</div>'});
 })();
