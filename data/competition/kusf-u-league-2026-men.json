@@ -1,0 +1,50 @@
+{
+  "competition_id": "KVL-COMP-000002",
+  "season": 2026,
+  "name_ko": "2026 KUSF 대학배구 U-리그 남대부",
+  "status": "in_progress",
+  "period": {"start":"2026-03-25","end":"2026-10-06"},
+  "format": {"preliminary":"two_pools_single_round_robin","advance_per_pool":3,"next_stage":"six_team_league"},
+  "rules_url": "data/rules/kusf-u-league-2026.json",
+  "rules_page": "kusf-u-league-2026-rules.html",
+  "calculator_page": "kusf-u-league-2026-calculator.html",
+  "official_schedule_source": "https://www.kusf.or.kr/league/league_schedule.html?e_code=18&l_code=259&l_year=2026",
+  "data_status": {
+    "groups":"verified",
+    "match_pairings":"generated",
+    "dates":"collecting",
+    "set_scores":"collecting",
+    "point_totals":"collecting",
+    "standings":"not_published_by_kvl"
+  },
+  "groups": [
+    {
+      "group_id":"A",
+      "name":"A조",
+      "teams":[
+        {"team_id":"SKKU","name":"성균관대학교"},
+        {"team_id":"HONAM","name":"호남대학교"},
+        {"team_id":"MYONGJI","name":"명지대학교"},
+        {"team_id":"KYUNGHEE","name":"경희대학교"},
+        {"team_id":"HONGIK","name":"홍익대학교"},
+        {"team_id":"KYUNGIL","name":"경일대학교"},
+        {"team_id":"INHA","name":"인하대학교"}
+      ]
+    },
+    {
+      "group_id":"B",
+      "name":"B조",
+      "teams":[
+        {"team_id":"JOONGBU","name":"중부대학교"},
+        {"team_id":"HANYANG","name":"한양대학교"},
+        {"team_id":"MOKPO","name":"국립목포대학교"},
+        {"team_id":"CHUNGNAM","name":"충남대학교"},
+        {"team_id":"CHOSUN","name":"조선대학교"},
+        {"team_id":"GYEONGSANG","name":"경상국립대학교"},
+        {"team_id":"KYONGGI","name":"경기대학교"},
+        {"team_id":"WOOSUK","name":"우석대학교"}
+      ]
+    }
+  ],
+  "notice": "조 편성은 공식 KUSF 2026 일정 페이지에서 확인했습니다. 경기 날짜, 세트별 득실점과 공식 순위는 전수 검증 완료 후 공개합니다."
+}
