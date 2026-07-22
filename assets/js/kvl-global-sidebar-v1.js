@@ -44,23 +44,23 @@
   const nav=items.map(item=>{
     if(item[0]==='section')return `<p class="kvl-global-section">${item[1]}</p>`;
     const current=active===item[0];
-    const external=item[4]==='external'?' target="_blank" rel="noopener"':'';
-    return `<a class="${current?'active':''}" href="${item[1]}"${current?' aria-current="page"':''}${external}><span class="kvl-global-icon">${item[2]}</span>${item[3]}</a>`;
+    const external=item[4]==='external';
+    return `<a class="${current?'active':''}" href="${item[1]}"${current?' aria-current="page"':''}${external?' target="_blank" rel="noopener" aria-label="요청하기, 새 창 열림"':''}><span class="kvl-global-icon">${item[2]}</span><span class="kvl-global-label">${item[3]}</span>${external?'<span class="kvl-global-external" aria-hidden="true">↗</span>':''}</a>`;
   }).join('');
 
   document.body.classList.add('kvl-sidebar-enabled');
-  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">☰ 메뉴</button>`);
-
+  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html" aria-label="K-Volley Lab 홈"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-controls="kvlGlobalSidebar" aria-label="메뉴 열기">☰ <span>메뉴</span></button>`);
   const sidebar=document.querySelector('.kvl-global-sidebar');
+  sidebar.id='kvlGlobalSidebar';
   const toggle=document.querySelector('.kvl-global-toggle');
   const close=document.querySelector('.kvl-global-close');
   const backdrop=document.querySelector('.kvl-global-backdrop');
-  const open=()=>{sidebar.classList.add('open');backdrop.classList.add('show');document.body.classList.add('kvl-sidebar-open');toggle.setAttribute('aria-expanded','true')};
+  const open=()=>{sidebar.classList.add('open');backdrop.classList.add('show');document.body.classList.add('kvl-sidebar-open');toggle.setAttribute('aria-expanded','true');close.focus()};
   const shut=()=>{sidebar.classList.remove('open');backdrop.classList.remove('show');document.body.classList.remove('kvl-sidebar-open');toggle.setAttribute('aria-expanded','false')};
   toggle.addEventListener('click',()=>sidebar.classList.contains('open')?shut():open());
-  close.addEventListener('click',shut);
+  close.addEventListener('click',()=>{shut();toggle.focus()});
   backdrop.addEventListener('click',shut);
   sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{if(matchMedia('(max-width:900px)').matches)shut()}));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open')){shut();toggle.focus()}});
   addEventListener('resize',()=>{if(innerWidth>900)shut()});
 })();
