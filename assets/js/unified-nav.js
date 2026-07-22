@@ -137,15 +137,16 @@
 
 (()=>{
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
-  if(path==='competition-calendar.html')return;
+  if(path==='competition-calendar.html'||document.querySelector('.kvl-global-sidebar'))return;
   if(!document.querySelector('link[href*="kvl-global-sidebar-v1.css"]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='assets/css/kvl-global-sidebar-v1.css?v=20260722-1';
+    link.href='assets/css/kvl-global-sidebar-v1.css?v=20260722-2';
     document.head.appendChild(link);
   }
+  if(document.querySelector('script[src*="kvl-global-sidebar-v1.js"]'))return;
   const script=document.createElement('script');
-  script.src='assets/js/kvl-global-sidebar-v1.js?v=20260722-1';
+  script.src='assets/js/kvl-global-sidebar-v1.js?v=20260722-2';
   script.defer=true;
   document.head.appendChild(script);
 })();
