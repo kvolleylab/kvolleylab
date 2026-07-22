@@ -14,115 +14,60 @@
   <meta name="description" content="K-Volley Lab은 배구 선수 정보, 국제대회 일정과 결과, 대회 자료 및 분석 도구를 제공하는 한국 배구 데이터 플랫폼입니다." />
   <title>K-Volley Lab | 한국 배구 데이터 플랫폼</title>
   <link rel="stylesheet" href="assets/css/style.css" />
-  <script src="assets/js/unified-nav.js" defer></script>
   <link rel="stylesheet" href="assets/css/site-theme-light.css" />
+  <link rel="stylesheet" href="assets/css/home-focus-v1.css?v=20260722-1" />
+  <script src="assets/js/unified-nav.js?v=20260722-9" defer></script>
 </head>
-<body>
+<body class="home-focus-page">
   <header class="site-header">
     <a class="site-logo" href="index.html">K-Volley Lab</a>
-    <nav class="site-nav">
-      <a class="active" href="index.html">Home</a>
-      <a href="player-search.html">Players</a>
-      <a href="vnl.html">Competition</a>
-      <a href="schedules.html">Schedules</a>
-      <a href="simulator.html">Simulator</a>
-      <a href="pamphlet-archive.html">Pamphlets</a>
-      <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a>
-    </nav>
+    <nav class="site-nav"></nav>
   </header>
 
   <section class="hero">
     <div class="hero-main">
       <p class="eyebrow">Korean Volleyball Data & Analytics</p>
-      <h1>K-Volley Lab</h1>
+      <h1>배구 일정과 선수 정보를 더 빠르게</h1>
       <p>
-        흩어진 배구 자료를 한곳에 모아 선수 정보, 국제대회 일정과 결과,
-        대표팀 엔트리, 대회 자료와 분석 도구를 연결합니다.
+        흩어진 배구 자료를 한곳에 모아 경기 일정, 선수 정보, 국제대회 자료와
+        본선 진출 계산 도구를 연결합니다.
       </p>
-      <div class="actions">
-        <a class="btn primary" href="player-search.html">선수 검색</a>
-        <a class="btn" href="vnl.html">VNL 허브</a>
-        <a class="btn" href="schedules.html">경기 일정</a>
-      </div>
-    </div>
 
-    <div class="hero-side">
-      <div class="stat">
-        <strong>Players</strong>
-        <span>선수 검색·상세 정보</span>
-      </div>
-      <div class="stat">
-        <strong>VNL 2026</strong>
-        <span>일정·결과·국가별 정보</span>
-      </div>
-      <div class="stat">
-        <strong>Schedules</strong>
-        <span>한국시간 기준 경기 달력</span>
-      </div>
-      <div class="stat">
-        <strong>Tools</strong>
-        <span>순위·진출 분석 기능</span>
+      <div class="home-primary-actions" aria-label="핵심 기능">
+        <a class="home-primary-action" href="competition-calendar.html?year=2026">
+          <strong>경기 일정</strong>
+          <span>주요 대회 일정을 한국시간 기준 달력으로 확인합니다.</span>
+          <b>통합 달력 열기 →</b>
+        </a>
+        <a class="home-primary-action" href="players.html">
+          <strong>선수 검색</strong>
+          <span>국내 대학선수와 국제선수의 프로필을 한곳에서 검색합니다.</span>
+          <b>선수 찾기 →</b>
+        </a>
+        <a class="home-primary-action" href="simulator.html">
+          <strong>진출 계산기</strong>
+          <span>경기 결과에 따른 순위와 본선 진출 가능성을 계산합니다.</span>
+          <b>계산기 사용 →</b>
+        </a>
       </div>
     </div>
   </section>
 
   <main class="site-main">
-    <div class="section-title">
-      <h2>주요 기능</h2>
-      <p>선수와 대회 정보를 더 빠르게 찾고, 일정과 결과를 한눈에 확인할 수 있습니다.</p>
-    </div>
-
-    <section class="cards">
-      <div class="card featured">
-        <div>
-          <h3>Players</h3>
-          <p>국내외 선수 정보를 검색하고, 프로필과 선수 타임라인을 확인합니다.</p>
-        </div>
-        <a href="player-search.html">선수 검색 →</a>
+    <section class="home-secondary">
+      <div class="section-title">
+        <h2>더 살펴보기</h2>
+        <p>대회·팀·자료 페이지로 바로 이동합니다.</p>
       </div>
-
-      <div class="card">
-        <div>
-          <h3>Competition</h3>
-          <p>VNL을 시작으로 주요 국제대회의 참가국, 엔트리, 순위와 경기 정보를 정리합니다.</p>
-        </div>
-        <a href="vnl.html">VNL 허브 보기 →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>Schedules</h3>
-          <p>경기 일정과 결과를 한국시간 기준 달력으로 확인하고 개최지·출전국별로 비교합니다.</p>
-        </div>
-        <a href="schedules.html">일정 보기 →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>Simulator</h3>
-          <p>조별리그 순위, 본선 진출 가능성, 세트 득실과 경우의 수를 계산합니다.</p>
-        </div>
-        <a href="simulator.html">계산기 보기 →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>Pamphlets</h3>
-          <p>공개 팜플렛과 대회 자료를 출처별로 보관하고 선수 정보의 근거 자료로 연결합니다.</p>
-        </div>
-        <a href="pamphlet-archive.html">아카이브 보기 →</a>
-      </div>
-
-      <div class="card">
-        <div>
-          <h3>Request</h3>
-          <p>잘못된 정보, 선수·대회 등록과 자료 추가 요청을 제보할 수 있습니다.</p>
-        </div>
-        <a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">정보 제보 →</a>
+      <div class="home-secondary-links">
+        <a href="competition.html">국제 대회 <span>→</span></a>
+        <a href="university-teams.html">대학 팀 <span>→</span></a>
+        <a href="pamphlet-archive.html">기록실 <span>→</span></a>
+        <a href="draft-hub.html">Draft Hub <span>→</span></a>
       </div>
     </section>
 
-    <section class="notice">
+    <section class="notice home-data-note">
       <div>
         <h2>데이터 운영 원칙</h2>
         <p>
@@ -131,14 +76,15 @@
           주요 정보에는 확인 가능한 출처를 함께 제공합니다.
         </p>
       </div>
-      <a class="btn primary" href="player-search.html">Players 보기</a>
     </section>
 
-    <section class="request">
-      <h2>정보 수정 및 등록 요청</h2>
-      <p>잘못된 정보나 누락된 선수·대회 자료를 알려주세요.</p>
+    <section class="home-request-strip">
+      <div>
+        <h2>정보 수정 및 등록 요청</h2>
+        <p>잘못된 정보나 누락된 선수·대회 자료를 알려주세요.</p>
+      </div>
       <a class="btn primary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">
-        정보 수정 및 등록 요청하기
+        요청하기
       </a>
     </section>
   </main>
