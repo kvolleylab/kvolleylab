@@ -11,7 +11,9 @@
   const pad=n=>String(n).padStart(2,'0');
   const iso=(y,m,d)=>`${y}-${pad(m)}-${pad(d)}`;
   const now=new Date();
-  const todayIso=iso(now.getFullYear(),now.getMonth()+1,now.getDate());
+  const todayYear=now.getFullYear();
+  const todayMonth=now.getMonth()+1;
+  const todayIso=iso(todayYear,todayMonth,now.getDate());
   const fmt=d=>{const x=new Date(`${d}T00:00:00`);return `${x.getMonth()+1}.${x.getDate()}`};
   const colorOf=category=>payload?.categories.find(x=>x.id===category)?.color||'#64748b';
   const labelOf=category=>payload?.categories.find(x=>x.id===category)?.label||'대회';
@@ -25,7 +27,12 @@
   }
 
   function toolbar(){
-    return `<div class="cc-toolbar"><div class="cc-year-nav"><a href="competition-calendar.html?view=${view}&year=${year-1}&month=${month}">‹</a><strong>${year}년</strong><a href="competition-calendar.html?view=${view}&year=${year+1}&month=${month}">›</a></div>${filters()}</div>`;
+    const todayHref=`competition-calendar.html?view=month&year=${todayYear}&month=${todayMonth}`;
+    return `<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="competition-calendar.html?view=${view}&year=${year-1}&month=${month}">‹</a><strong>${year}년</strong><a href="competition-calendar.html?view=${view}&year=${year+1}&month=${month}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a></div>${filters()}</div>`;
+  }
+
+  function monthShortcuts(m){
+    return `<nav class="cc-month-shortcuts" aria-label="월 바로가기">${Array.from({length:12},(_,i)=>{const n=i+1;return `<a class="${n===m?'active':''}" href="competition-calendar.html?view=month&year=${year}&month=${n}">${n}월</a>`}).join('')}</nav>`;
   }
 
   function monthSummary(m){
@@ -41,7 +48,7 @@
   function focusEvent(m){
     const events=visibleEvents().filter(e=>overlaps(e,year,m)).sort((a,b)=>a.start.localeCompare(b.start));
     if(!events.length)return '';
-    const isCurrentMonth=year===now.getFullYear()&&m===now.getMonth()+1;
+    const isCurrentMonth=year===todayYear&&m===todayMonth;
     let event,label;
     if(isCurrentMonth){
       event=events.find(e=>e.start<=todayIso&&e.end>=todayIso);
@@ -115,7 +122,7 @@
   }
 
   function renderYear(){
-    root.innerHTML=`${toolbar()}<div class="cc-year-grid">${Array.from({length:12},(_,i)=>miniCalendar(i+1)).join('')}</div>`;
+    root.innerHTML=`${toolbar()}${monthShortcuts(0)}<div class="cc-year-grid">${Array.from({length:12},(_,i)=>miniCalendar(i+1)).join('')}</div>`;
     bind();
   }
 
@@ -125,7 +132,7 @@
     const prev=m===1?{y:year-1,m:12}:{y:year,m:m-1};
     const next=m===12?{y:year+1,m:1}:{y:year,m:m+1};
     const agenda=events.map(e=>`<a class="cc-agenda-item" style="--event-color:${colorOf(e.category)}" href="${e.href}"><span class="cc-agenda-category">${esc(labelOf(e.category))}</span><strong>${esc(e.title)}</strong><span>${fmt(e.start)} ~ ${fmt(e.end)}</span><em>대회 일정 보기 →</em></a>`).join('');
-    root.innerHTML=`${toolbar()}<div class="cc-month-navigation"><a href="competition-calendar.html?view=month&year=${prev.y}&month=${prev.m}">‹</a><div><strong>${year}년 ${m}월</strong><span>날짜 아래의 대회 기간을 선택하면 해당 대회 일정으로 이동합니다.</span></div><a href="competition-calendar.html?view=month&year=${next.y}&month=${next.m}">›</a></div>${focusEvent(m)}${monthSummary(m)}<div class="cc-month-layout"><section class="cc-big-calendar"><div class="cc-big-weekdays">${['월','화','수','목','금','토','일'].map((x,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${x}</div>`).join('')}</div>${calendarGrid(m,false)}</section><aside class="cc-agenda"><h2>${m}월 대회 일정 <span>${events.length}</span></h2><div class="cc-agenda-list">${agenda||'<div class="cc-empty">등록된 대회 일정이 없습니다.</div>'}</div></aside></div>`;
+    root.innerHTML=`${toolbar()}${monthShortcuts(m)}<div class="cc-month-navigation"><a href="competition-calendar.html?view=month&year=${prev.y}&month=${prev.m}">‹</a><div><strong>${year}년 ${m}월</strong><span>날짜 아래의 대회 기간을 선택하면 해당 대회 일정으로 이동합니다.</span></div><a href="competition-calendar.html?view=month&year=${next.y}&month=${next.m}">›</a></div>${focusEvent(m)}${monthSummary(m)}<div class="cc-month-layout"><section class="cc-big-calendar"><div class="cc-big-weekdays">${['월','화','수','목','금','토','일'].map((x,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${x}</div>`).join('')}</div>${calendarGrid(m,false)}</section><aside class="cc-agenda"><h2>${m}월 대회 일정 <span>${events.length}</span></h2><div class="cc-agenda-list">${agenda||'<div class="cc-empty">등록된 대회 일정이 없습니다.</div>'}</div></aside></div>`;
     bind();
   }
 
@@ -136,8 +143,8 @@
     });
   }
 
-  fetch(`data/calendar/${year}-competition-periods.json?v=20260722-7`,{cache:'no-store'})
+  fetch(`data/calendar/${year}-competition-periods.json?v=20260722-8`,{cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('calendar');return r.json()})
     .then(data=>{payload=data;view==='year'?renderYear():renderMonth()})
-    .catch(()=>{root.innerHTML='<div class="cc-empty">대회 달력 데이터를 불러오지 못했습니다.</div>'});
+    .catch(()=>{root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="competition-calendar.html?view=month&year=${todayYear}&month=${todayMonth}">오늘 달력 보기</a></div>`});
 })();
