@@ -59,27 +59,31 @@
   const collapse=document.querySelector('.kvl-global-collapse');
   const backdrop=document.querySelector('.kvl-global-backdrop');
   const collapseKey='kvl.sidebarCollapsed.v1';
+  let preferredCollapsed=document.documentElement.classList.contains('kvl-sidebar-pref-collapsed');
+  try{preferredCollapsed=localStorage.getItem(collapseKey)==='1'}catch{}
 
-  const setCollapsed=value=>{
-    const collapsed=Boolean(value)&&innerWidth>900;
+  const setCollapsed=(value,persist=true)=>{
+    preferredCollapsed=Boolean(value);
+    const collapsed=preferredCollapsed&&innerWidth>900;
+    document.documentElement.classList.toggle('kvl-sidebar-pref-collapsed',preferredCollapsed);
     document.body.classList.toggle('kvl-sidebar-collapsed',collapsed);
     collapse.setAttribute('aria-expanded',String(!collapsed));
     collapse.setAttribute('title',collapsed?'사이드바 펼치기':'사이드바 접기');
     collapse.querySelector('.kvl-global-collapse-label').textContent=collapsed?'펼치기':'접기';
-    try{localStorage.setItem(collapseKey,collapsed?'1':'0')}catch{}
+    if(persist){try{localStorage.setItem(collapseKey,preferredCollapsed?'1':'0')}catch{}}
   };
-  try{setCollapsed(localStorage.getItem(collapseKey)==='1')}catch{}
+  setCollapsed(preferredCollapsed,false);
 
   const open=()=>{sidebar.classList.add('open');backdrop.classList.add('show');document.body.classList.add('kvl-sidebar-open');toggle.setAttribute('aria-expanded','true');close.focus()};
   const shut=()=>{sidebar.classList.remove('open');backdrop.classList.remove('show');document.body.classList.remove('kvl-sidebar-open');toggle.setAttribute('aria-expanded','false')};
   toggle.addEventListener('click',()=>sidebar.classList.contains('open')?shut():open());
   close.addEventListener('click',()=>{shut();toggle.focus()});
-  collapse.addEventListener('click',()=>setCollapsed(!document.body.classList.contains('kvl-sidebar-collapsed')));
+  collapse.addEventListener('click',()=>setCollapsed(!preferredCollapsed));
   backdrop.addEventListener('click',shut);
   sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{if(matchMedia('(max-width:900px)').matches)shut()}));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open')){shut();toggle.focus()}});
   addEventListener('resize',()=>{
     if(innerWidth>900)shut();
-    else document.body.classList.remove('kvl-sidebar-collapsed');
+    setCollapsed(preferredCollapsed,false);
   });
 })();
