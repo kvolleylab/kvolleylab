@@ -12,14 +12,18 @@
   }
   function matchRow(m){
     const meta=[m.division,m.group?`${m.group}조`:'',m.stage,m.broadcast?'TV 중계':''].filter(Boolean).join(' · ');
-    return `<article class="du-match"><time>${esc(m.time||'시간 확인 중')}</time><div class="du-match-main"><span class="du-meta">${esc(meta)}</span><strong>${esc(m.home)} <em>vs</em> ${esc(m.away)}</strong>${m.note?`<small>${esc(m.note)}</small>`:''}</div><span class="du-venue">${esc(data.venues[m.venue])}</span></article>`;
+    const state=m.confirmed===false?'<span class="du-pending">대진 미확정</span>':'<span class="du-confirmed">공식 일정</span>';
+    return `<article class="du-match ${m.confirmed===false?'is-pending':''}"><time>${esc(m.time||'시간 확인 중')}</time><div class="du-match-main"><span class="du-meta">${esc(meta)} · ${state}</span><strong>${esc(m.home)} <em>vs</em> ${esc(m.away)}</strong>${m.note?`<small>${esc(m.note)}</small>`:''}</div><span class="du-venue">${esc(data.venues[m.venue])}</span></article>`;
   }
   function render(){
+    const list=filtered();
+    const confirmed=list.filter(m=>m.confirmed!==false).length;
+    const conditional=list.length-confirmed;
     const groups={};
-    filtered().forEach(m=>(groups[m.date]||(groups[m.date]=[])).push(m));
-    root.innerHTML=`${controls()}<div class="du-summary">공식 일정 ${filtered().length}경기 · 한국시간 기준</div><div class="du-days">${Object.entries(groups).map(([date,matches])=>`<section class="du-day"><header><h2>${fmtDate(date)}</h2><span>${matches.length}경기</span></header><div class="du-list">${matches.sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99')||a.venue.localeCompare(b.venue)).map(matchRow).join('')}</div></section>`).join('')}</div>`;
+    list.forEach(m=>(groups[m.date]||(groups[m.date]=[])).push(m));
+    root.innerHTML=`${controls()}<div class="du-summary"><strong>공식 일정표 등록 ${list.length}경기</strong><span>대진 확정 ${confirmed}경기 · 조건부 대진 ${conditional}경기 · 한국시간 기준</span></div><div class="du-days">${Object.entries(groups).map(([date,matches])=>`<section class="du-day"><header><h2>${fmtDate(date)}</h2><span>${matches.length}경기</span></header><div class="du-list">${matches.sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99')||a.venue.localeCompare(b.venue)).map(matchRow).join('')}</div></section>`).join('')}</div>`;
     root.querySelectorAll('[data-division]').forEach(b=>b.onclick=()=>{division=b.dataset.division;render()});
     root.querySelectorAll('[data-venue]').forEach(b=>b.onclick=()=>{venue=b.dataset.venue;render()});
   }
-  fetch('data/matches/danyang-university-2026.json?v=20260722-1',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('schedule');return r.json()}).then(json=>{data=json;document.getElementById('danyangNotice').textContent=json.competition.notice;render()}).catch(()=>{root.innerHTML='<div class="du-error">경기 일정을 불러오지 못했습니다.</div>'});
+  fetch('data/matches/danyang-university-2026.json?v=20260722-2',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('schedule');return r.json()}).then(json=>{data=json;document.getElementById('danyangNotice').textContent=json.competition.notice;render()}).catch(()=>{root.innerHTML='<div class="du-error">경기 일정을 불러오지 못했습니다.</div>'});
 })();
