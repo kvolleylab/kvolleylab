@@ -6,10 +6,12 @@
   const playerPages=new Set(['players.html','player.html','player-search.html','player-compare.html','draft-hub.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
   const teamPages=new Set(['university-teams.html']);
+  const simulatorPages=new Set(['simulator.html','danyang-qualification-calculator.html']);
   let active='';
   if(path==='index.html'||path==='')active='home';
   else if(schedulePages.has(path))active='schedules';
   else if(competitionPages.has(path))active='competition';
+  else if(simulatorPages.has(path))active='simulator';
   else if(teamPages.has(path))active='teams';
   else if(playerPages.has(path))active='players';
   else if(path==='pamphlet-archive.html')active='records';
@@ -18,6 +20,7 @@
     home:'<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10.5V20h13v-9.5"></path><path d="M9.5 20v-6h5v6"></path></svg>',
     calendar:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18"></path><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"></path></svg>',
     globe:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3.5 9h17M3.5 15h17M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>',
+    calculator:'<svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"></path></svg>',
     teams:'<svg viewBox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M2.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6M10.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6"></path></svg>',
     player:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"></circle><path d="M5 21c.5-5.1 2.8-7.6 7-7.6S18.5 15.9 19 21"></path></svg>',
     file:'<svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"></path><path d="M16 3v4h4M8 11h8M8 15h8M8 19h5"></path></svg>',
@@ -28,6 +31,7 @@
     ['home','index.html',icon.home,'홈'],
     ['schedules','competition-calendar.html?year=2026',icon.calendar,'경기 일정'],
     ['competition','competition.html',icon.globe,'국제 대회'],
+    ['simulator','simulator.html',icon.calculator,'진출 계산기'],
     ['teams','university-teams.html',icon.teams,'대학 팀'],
     ['players','players.html',icon.player,'선수'],
     ['records','pamphlet-archive.html',icon.file,'기록실'],
