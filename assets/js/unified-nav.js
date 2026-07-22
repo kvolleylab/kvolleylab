@@ -1,4 +1,24 @@
 (()=>{
+  const PRIVATE_REVIEW_MODE=true;
+  if(PRIVATE_REVIEW_MODE){
+    const robotsContent='noindex,nofollow,noarchive,nosnippet,noimageindex';
+    const ensureMeta=(name,content)=>{
+      let meta=document.head.querySelector(`meta[name="${name}"]`);
+      if(!meta){meta=document.createElement('meta');meta.name=name;document.head.appendChild(meta)}
+      meta.content=content;
+    };
+    ensureMeta('robots',robotsContent);
+    ensureMeta('googlebot',robotsContent);
+    ensureMeta('bingbot',robotsContent);
+    document.head.querySelectorAll('script[type="application/ld+json"]').forEach(script=>script.remove());
+    document.documentElement.dataset.siteMode='private-review';
+    addEventListener('DOMContentLoaded',()=>{
+      if(!document.querySelector('.kvl-review-mode-badge')){
+        document.body.insertAdjacentHTML('beforeend','<div class="kvl-review-mode-badge" role="status" style="position:fixed;right:14px;bottom:14px;z-index:1900;padding:7px 10px;border:1px solid #e4c76d;border-radius:999px;background:#fff8df;color:#72520a;font:800 11px Arial,sans-serif;box-shadow:0 5px 16px rgba(15,35,63,.12)">비공개 · 데이터 검수 중</div>');
+      }
+    },{once:true});
+  }
+
   const MATCH_PREFIX='KVL-M-2026-VNL-';
   const toCanonical=id=>{const v=String(id||'');const m=v.match(/^KVL-M-(\d{6})$/);return m?`${MATCH_PREFIX}${m[1]}`:v};
   const toLegacy=id=>{const v=String(id||'');const m=v.match(/^KVL-M-2026-VNL-(\d{6})$/);return m?`KVL-M-${m[1]}`:v};
