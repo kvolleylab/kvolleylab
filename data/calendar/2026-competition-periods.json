@@ -1,7 +1,7 @@
 {
   "year": 2026,
   "updated_at": "2026-07-22",
-  "source_note": "국내대회는 2026 대한배구협회 국내·국제대회 사업계획안 기준이며, 생활체육·9인제·비치발리볼·유소년·초등 단독대회는 제외했습니다. 단양 대학대회는 별도 공식 요강 일정을 우선 적용했습니다.",
+  "source_note": "국내대회는 2026 대한배구협회 국내·국제대회 사업계획안 기준이며, 생활체육·9인제·비치발리볼·유소년·초등 단독대회·KVA V3 디비전리그·전국교육대학교배구대회는 제외했습니다. 단양 대학대회는 별도 공식 요강 일정을 우선 적용했습니다.",
   "categories": [
     {"id":"international","label":"국제대회","color":"#2563eb"},
     {"id":"domestic","label":"국내대회","color":"#16a34a"},
@@ -13,7 +13,6 @@
     {"id":"vnl-men-2026-week3","competition_id":"vnl-men-2026","title":"2026 VNL 남자부 3주차","short_title":"VNL 남자 3주차","category":"international","start":"2026-07-15","end":"2026-07-20","href":"schedules.html?competition=vnl&season=2026&week=3"},
     {"id":"vnl-men-2026-finals","competition_id":"vnl-men-2026","title":"2026 VNL 남자부 파이널","short_title":"VNL 남자 파이널","category":"international","start":"2026-07-29","end":"2026-08-02","href":"schedules.html?competition=vnl&season=2026&week=4"},
 
-    {"id":"kva-v3-division-2026","competition_id":"kva-v3-division-2026","title":"2026 KVA V3 디비전리그 (3월~12월 예정)","short_title":"KVA V3 리그 (예정)","category":"league","start":"2026-03-01","end":"2026-12-31","href":"domestic-competitions.html","date_status":"approximate"},
     {"id":"spring-middle-high-2026","competition_id":"spring-middle-high-2026","title":"2026 춘계전국중고배구연맹전","short_title":"춘계 중고연맹전","category":"domestic","start":"2026-03-13","end":"2026-03-19","href":"domestic-competitions.html"},
     {"id":"kusf-u-league-first-2026","competition_id":"kusf-u-league-2026","title":"2026 KUSF 대학배구 U-리그 전반기 (3월~6월 예정)","short_title":"대학 U-리그 전반기","category":"league","start":"2026-03-01","end":"2026-06-30","href":"domestic-competitions.html","date_status":"approximate"},
     {"id":"middle-high-first-2026","competition_id":"middle-high-first-2026","title":"2026 한국중고배구 1차 연맹전 삼척대회","short_title":"중고 1차 연맹전","category":"domestic","start":"2026-04-07","end":"2026-04-13","href":"domestic-competitions.html"},
@@ -26,7 +25,6 @@
     {"id":"goseong-university-2026","competition_id":"goseong-university-2026","title":"2026 대한항공배 전국대학배구 고성대회","short_title":"대학배구 고성대회","category":"domestic","start":"2026-06-25","end":"2026-07-03","href":"domestic-competitions.html"},
     {"id":"presidents-cup-middle-high-2026","competition_id":"presidents-cup-middle-high-2026","title":"제59회 대통령배 전국중고배구대회","short_title":"대통령배 중고","category":"domestic","start":"2026-07-06","end":"2026-07-12","href":"domestic-competitions.html"},
     {"id":"ibk-middle-high-2026","competition_id":"ibk-middle-high-2026","title":"2026 IBK기업은행배 전국중고배구대회","short_title":"IBK배 중고","category":"domestic","start":"2026-07-31","end":"2026-08-06","href":"domestic-competitions.html"},
-    {"id":"education-university-2026","competition_id":"education-university-2026","title":"2026 대한배구협회장기 전국교육대학교배구대회","short_title":"교육대학교 배구대회","category":"domestic","start":"2026-08-06","end":"2026-08-07","href":"domestic-competitions.html"},
     {"id":"danyang-university-2026","competition_id":"danyang-university-2026","title":"2026 대한항공배 전국대학배구 단양대회","short_title":"대학배구 단양대회","category":"domestic","start":"2026-08-12","end":"2026-08-20","href":"danyang-university-2026.html","date_status":"official"},
     {"id":"cbs-middle-high-2026","competition_id":"cbs-middle-high-2026","title":"제37회 CBS배 전국중고배구대회","short_title":"CBS배 중고","category":"domestic","start":"2026-08-28","end":"2026-09-03","href":"domestic-competitions.html"},
     {"id":"industrial-championship-danyang-2026","competition_id":"industrial-championship-danyang-2026","title":"2026 한국실업배구연맹회장배 종합선수권 단양대회","short_title":"실업 종합선수권","category":"domestic","start":"2026-09-04","end":"2026-09-09","href":"domestic-competitions.html"},
