@@ -1,10 +1,10 @@
 (()=>{
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
-  if(path==='competition-calendar.html'||document.querySelector('.cc-sidebar')||document.querySelector('.kvl-global-sidebar'))return;
+  if(document.querySelector('.kvl-global-sidebar'))return;
 
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
   const playerPages=new Set(['players.html','player.html','player-search.html']);
-  const schedulePages=new Set(['schedules.html']);
+  const schedulePages=new Set(['schedules.html','competition-calendar.html']);
   let active='more';
   if((path==='index.html'||path==='')&&location.hash==='#news')active='news';
   else if(path==='index.html'||path==='')active='home';
