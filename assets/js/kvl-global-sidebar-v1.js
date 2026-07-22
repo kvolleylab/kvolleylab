@@ -29,18 +29,20 @@
 
   const items=[
     ['home','index.html',icon.home,'홈'],
+    ['section','정보'],
     ['schedules','competition-calendar.html?year=2026',icon.calendar,'경기 일정'],
     ['competition','competition.html',icon.globe,'국제 대회'],
-    ['simulator','simulator.html',icon.calculator,'진출 계산기'],
     ['teams','university-teams.html',icon.teams,'대학 팀'],
     ['players','players.html',icon.player,'선수'],
+    ['section','도구'],
+    ['simulator','simulator.html',icon.calculator,'진출 계산기'],
     ['records','pamphlet-archive.html',icon.file,'기록실'],
-    ['spacer'],
+    ['section','지원'],
     ['request','https://forms.gle/MFNYhJX6Bq5zeNmp8',icon.request,'요청하기','external']
   ];
 
   const nav=items.map(item=>{
-    if(item[0]==='spacer')return '<div class="kvl-global-spacer"></div>';
+    if(item[0]==='section')return `<p class="kvl-global-section">${item[1]}</p>`;
     const current=active===item[0];
     const external=item[4]==='external'?' target="_blank" rel="noopener"':'';
     return `<a class="${current?'active':''}" href="${item[1]}"${current?' aria-current="page"':''}${external}><span class="kvl-global-icon">${item[2]}</span>${item[3]}</a>`;
