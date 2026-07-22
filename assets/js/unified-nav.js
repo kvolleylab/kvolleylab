@@ -11,6 +11,9 @@
     if(JSON.stringify(saved)!==JSON.stringify(migrated))localStorage.setItem(favoritesKey,JSON.stringify(migrated));
   }catch{}
 
+  document.documentElement.classList.add('kvl-sidebar-shell-ready');
+  try{document.documentElement.classList.toggle('kvl-sidebar-pref-collapsed',localStorage.getItem('kvl.sidebarCollapsed.v1')==='1')}catch{}
+
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
   const params=new URLSearchParams(location.search);
   const matchId=params.get('id');
@@ -43,12 +46,12 @@
   if(!document.querySelector('link[href*="kvl-global-sidebar-v1.css"]')){
     const link=document.createElement('link');
     link.rel='stylesheet';
-    link.href='assets/css/kvl-global-sidebar-v1.css?v=20260722-8';
+    link.href='assets/css/kvl-global-sidebar-v1.css?v=20260722-9';
     document.head.appendChild(link);
   }
   if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){
     const script=document.createElement('script');
-    script.src='assets/js/kvl-global-sidebar-v1.js?v=20260722-8';
+    script.src='assets/js/kvl-global-sidebar-v1.js?v=20260722-9';
     script.defer=true;
     document.head.appendChild(script);
   }
