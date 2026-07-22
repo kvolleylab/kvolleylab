@@ -1,0 +1,21 @@
+(()=>{
+const dataUrl='data/competition/kusf-u-league-2026-men.json';
+const groupSelect=document.getElementById('groupSelect'),matchList=document.getElementById('matchList'),body=document.getElementById('standingsBody'),statusBox=document.getElementById('calcStatus'),resetBtn=document.getElementById('resetBtn');
+if(!groupSelect||!matchList||!body)return;
+let master=null,state={};
+const key=(g,a,b)=>`${g}:${[a,b].sort().join(':')}`;
+const points=(a,b)=>a===3?(b===2?2:3):(b===3&&a===2?1:0);
+function pairings(teams){const out=[];for(let i=0;i<teams.length;i++)for(let j=i+1;j<teams.length;j++)out.push([teams[i],teams[j]]);return out}
+function renderGroups(){groupSelect.innerHTML=master.groups.map(g=>`<option value="${g.group_id}">${g.name} · ${g.teams.length}팀</option>`).join('')}
+function currentGroup(){return master.groups.find(g=>g.group_id===groupSelect.value)||master.groups[0]}
+function setResult(g,a,b,sa,sb){const k=key(g,a,b);if(state[k]?.[0]===sa&&state[k]?.[1]===sb)delete state[k];else state[k]=[sa,sb];render()}
+function renderMatches(){const g=currentGroup();matchList.innerHTML=pairings(g.teams).map(([a,b])=>{const k=key(g.group_id,a.team_id,b.team_id),r=state[k];const options=[[3,0],[3,1],[3,2],[2,3],[1,3],[0,3]];return `<div class="match-row"><div class="match-title"><span>${a.name}</span><span>${r?`${r[0]}-${r[1]}`:'미입력'}</span><span>${b.name}</span></div><div class="score-buttons">${options.map(([x,y])=>`<button type="button" class="${r&&r[0]===x&&r[1]===y?'active':''}" data-g="${g.group_id}" data-a="${a.team_id}" data-b="${b.team_id}" data-x="${x}" data-y="${y}">${x}-${y}</button>`).join('')}</div></div>`}).join('');
+matchList.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>setResult(btn.dataset.g,btn.dataset.a,btn.dataset.b,Number(btn.dataset.x),Number(btn.dataset.y))))}
+function calc(){const g=currentGroup(),stats={};g.teams.forEach(t=>stats[t.team_id]={team:t,played:0,w:0,l:0,pts:0,sf:0,sa:0});pairings(g.teams).forEach(([a,b])=>{const r=state[key(g.group_id,a.team_id,b.team_id)];if(!r)return;const [sa,sb]=r,A=stats[a.team_id],B=stats[b.team_id];A.played++;B.played++;A.sf+=sa;A.sa+=sb;B.sf+=sb;B.sa+=sa;A.pts+=points(sa,sb);B.pts+=points(sb,sa);if(sa>sb){A.w++;B.l++}else{B.w++;A.l++}});
+const rows=Object.values(stats).map(x=>({...x,setRatio:x.sa?x.sf/x.sa:(x.sf?999:0)})).sort((a,b)=>b.pts-a.pts||b.w-a.w||b.setRatio-a.setRatio||a.team.name.localeCompare(b.team.name,'ko'));
+body.innerHTML=rows.map((r,i)=>`<tr class="${i<3?'advance':''}"><td>${i+1}</td><td>${r.team.name}</td><td>${r.played}</td><td>${r.w}</td><td>${r.l}</td><td><strong>${r.pts}</strong></td><td>${r.sf}-${r.sa}</td></tr>`).join('');
+const entered=Object.keys(state).filter(k=>k.startsWith(`${g.group_id}:`)).length,total=pairings(g.teams).length;statusBox.innerHTML=`${g.name} 가상 결과 <strong>${entered}/${total}경기</strong> 입력<br>현재 상위 3개 행은 진출권으로 표시됩니다. 득실점수비율이 없어 동률 최종 확정은 할 수 없습니다.`}
+function render(){renderMatches();calc()}
+fetch(dataUrl,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(d=>{master=d;renderGroups();render()}).catch(()=>{matchList.innerHTML='<div class="calc-note">대회 MASTER를 불러오지 못했습니다.</div>'});
+groupSelect.addEventListener('change',render);resetBtn.addEventListener('click',()=>{state={};render()});
+})();
