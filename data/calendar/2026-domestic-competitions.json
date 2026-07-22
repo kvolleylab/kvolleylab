@@ -2,9 +2,8 @@
   "year": 2026,
   "source": "2026년도 대한배구협회 국내/국제대회 사업계획(안) 2026-01-14",
   "updated_at": "2026-07-22",
-  "exclusion_rule": "생활체육, 9인제, 비치발리볼, 유소년, 초등학교 단독 대회 제외",
+  "exclusion_rule": "생활체육, 9인제, 비치발리볼, 유소년, 초등학교 단독 대회, KVA V3 디비전리그, 전국교육대학교배구대회 제외",
   "competitions": [
-    {"id":"kva-v3-division-2026","title":"2026 KVA V3 디비전리그","short_title":"KVA V3 리그 (예정)","start":"2026-03-01","end":"2026-12-31","location":"전국 일원","level":"디비전리그","date_status":"approximate","date_note":"3월~12월 예정"},
     {"id":"spring-middle-high-2026","title":"2026 춘계전국중고배구연맹전","short_title":"춘계 중고연맹전","start":"2026-03-13","end":"2026-03-19","location":"충북 단양","level":"중·고등","date_status":"plan"},
     {"id":"kusf-u-league-first-2026","title":"2026 KUSF 대학배구 U-리그 전반기","short_title":"대학 U-리그 전반기 (예정)","start":"2026-03-01","end":"2026-06-30","location":"홈&어웨이","level":"대학","date_status":"approximate","date_note":"3월~6월 예정"},
     {"id":"middle-high-first-2026","title":"2026 한국중고배구 1차 연맹전 삼척대회","short_title":"중고 1차 연맹전","start":"2026-04-07","end":"2026-04-13","location":"강원 삼척","level":"중·고등","date_status":"plan"},
@@ -17,12 +16,11 @@
     {"id":"goseong-university-2026","title":"2026 대한항공배 전국대학배구 고성대회","short_title":"대학배구 고성대회","start":"2026-06-25","end":"2026-07-03","location":"경남 고성","level":"대학","date_status":"plan"},
     {"id":"presidents-cup-middle-high-2026","title":"제59회 대통령배 전국중고배구대회","short_title":"대통령배 중고","start":"2026-07-06","end":"2026-07-12","location":"충북 옥천","level":"중·고등","date_status":"plan"},
     {"id":"ibk-middle-high-2026","title":"2026 IBK기업은행배 전국중고배구대회","short_title":"IBK배 중고","start":"2026-07-31","end":"2026-08-06","location":"충북 제천","level":"중·고등","date_status":"plan"},
-    {"id":"education-university-2026","title":"2026 대한배구협회장기 전국교육대학교배구대회","short_title":"교육대학교 배구대회","start":"2026-08-06","end":"2026-08-07","location":"충북 단양","level":"대학","date_status":"plan"},
     {"id":"danyang-university-2026","title":"2026 대한항공배 전국대학배구 단양대회","short_title":"대학배구 단양대회","start":"2026-08-12","end":"2026-08-20","location":"충북 단양","level":"대학","date_status":"official","date_note":"별도 공식 요강 및 경기일정표 반영","href":"danyang-university-2026.html"},
     {"id":"cbs-middle-high-2026","title":"제37회 CBS배 전국중고배구대회","short_title":"CBS배 중고","start":"2026-08-28","end":"2026-09-03","location":"경북 영천","level":"중·고등","date_status":"plan"},
     {"id":"industrial-championship-danyang-2026","title":"2026 한국실업배구연맹회장배 종합선수권 단양대회","short_title":"실업 종합선수권 단양","start":"2026-09-04","end":"2026-09-09","location":"충북 단양","level":"실업","date_status":"plan"},
     {"id":"kusf-u-league-second-2026","title":"2026 KUSF 대학배구 U-리그 후반기","short_title":"대학 U-리그 후반기 (예정)","start":"2026-09-01","end":"2026-10-31","location":"홈&어웨이","level":"대학","date_status":"approximate","date_note":"9월~10월 예정"},
     {"id":"national-sports-festival-2026","title":"제107회 전국체육대회","short_title":"전국체육대회","start":"2026-10-16","end":"2026-10-22","location":"제주 일원","level":"종합대회","date_status":"plan"}
   ],
-  "excluded_categories": ["생활체육","9인제","비치발리볼","유소년","초등학교 단독 대회"]
+  "excluded_categories": ["생활체육","9인제","비치발리볼","유소년","초등학교 단독 대회","KVA V3 디비전리그","전국교육대학교배구대회"]
 }
