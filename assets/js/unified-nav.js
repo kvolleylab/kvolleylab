@@ -71,7 +71,7 @@
   }
   if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){
     const script=document.createElement('script');
-    script.src='assets/js/kvl-global-sidebar-v1.js?v=20260722-10';
+    script.src='assets/js/kvl-global-sidebar-v1.js?v=20260722-11';
     script.defer=true;
     document.head.appendChild(script);
   }
