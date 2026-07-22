@@ -1,0 +1,51 @@
+{
+  "year": 2026,
+  "updated_at": "2026-07-22",
+  "categories": [
+    {"id":"international","label":"국제대회","color":"#2563eb"},
+    {"id":"domestic","label":"국내대회","color":"#16a34a"},
+    {"id":"league","label":"리그","color":"#f59e0b"}
+  ],
+  "events": [
+    {
+      "id":"vnl-men-2026-week1",
+      "competition_id":"vnl-men-2026",
+      "title":"2026 VNL 남자부 1주차",
+      "short_title":"VNL 남자 1주차",
+      "category":"international",
+      "start":"2026-06-10",
+      "end":"2026-06-15",
+      "href":"schedules.html?competition=vnl&season=2026&week=1"
+    },
+    {
+      "id":"vnl-men-2026-week2",
+      "competition_id":"vnl-men-2026",
+      "title":"2026 VNL 남자부 2주차",
+      "short_title":"VNL 남자 2주차",
+      "category":"international",
+      "start":"2026-06-24",
+      "end":"2026-06-29",
+      "href":"schedules.html?competition=vnl&season=2026&week=2"
+    },
+    {
+      "id":"vnl-men-2026-week3",
+      "competition_id":"vnl-men-2026",
+      "title":"2026 VNL 남자부 3주차",
+      "short_title":"VNL 남자 3주차",
+      "category":"international",
+      "start":"2026-07-15",
+      "end":"2026-07-20",
+      "href":"schedules.html?competition=vnl&season=2026&week=3"
+    },
+    {
+      "id":"vnl-men-2026-finals",
+      "competition_id":"vnl-men-2026",
+      "title":"2026 VNL 남자부 파이널",
+      "short_title":"VNL 남자 파이널",
+      "category":"international",
+      "start":"2026-07-29",
+      "end":"2026-08-02",
+      "href":"schedules.html?competition=vnl&season=2026&week=4"
+    }
+  ]
+}
