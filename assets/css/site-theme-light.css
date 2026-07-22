@@ -16,6 +16,7 @@
 }
 html,body{font-family:Arial,"Noto Sans KR",sans-serif!important}
 body{background:#f4f7fb!important;color:#172033!important}
+body>.site-header{display:none!important}
 main{color:#172033}
 h1,.page-title{color:#102a43!important;letter-spacing:-1px!important}
 h2,h3,h4{color:#17324d}
