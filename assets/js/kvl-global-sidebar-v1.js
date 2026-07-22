@@ -24,7 +24,8 @@
     teams:'<svg viewBox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M2.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6M10.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6"></path></svg>',
     player:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"></circle><path d="M5 21c.5-5.1 2.8-7.6 7-7.6S18.5 15.9 19 21"></path></svg>',
     file:'<svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"></path><path d="M16 3v4h4M8 11h8M8 15h8M8 19h5"></path></svg>',
-    request:'<svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m8 10 4 3 4-3"></path></svg>'
+    request:'<svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m8 10 4 3 4-3"></path></svg>',
+    collapse:'<svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"></path><path d="M20 4v16"></path></svg>'
   };
 
   const items=[
@@ -45,22 +46,40 @@
     if(item[0]==='section')return `<p class="kvl-global-section">${item[1]}</p>`;
     const current=active===item[0];
     const external=item[4]==='external';
-    return `<a class="${current?'active':''}" href="${item[1]}"${current?' aria-current="page"':''}${external?' target="_blank" rel="noopener" aria-label="요청하기, 새 창 열림"':''}><span class="kvl-global-icon">${item[2]}</span><span class="kvl-global-label">${item[3]}</span>${external?'<span class="kvl-global-external" aria-hidden="true">↗</span>':''}</a>`;
+    const aria=external?`${item[3]}, 새 창 열림`:item[3];
+    return `<a class="${current?'active':''}" href="${item[1]}" aria-label="${aria}" title="${item[3]}"${current?' aria-current="page"':''}${external?' target="_blank" rel="noopener"':''}><span class="kvl-global-icon">${item[2]}</span><span class="kvl-global-label">${item[3]}</span>${external?'<span class="kvl-global-external" aria-hidden="true">↗</span>':''}</a>`;
   }).join('');
 
   document.body.classList.add('kvl-sidebar-enabled');
-  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html" aria-label="K-Volley Lab 홈"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-controls="kvlGlobalSidebar" aria-label="메뉴 열기">☰ <span>메뉴</span></button>`);
+  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html" aria-label="K-Volley Lab 홈"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav><button class="kvl-global-collapse" type="button" aria-expanded="true" title="사이드바 접기"><span class="kvl-global-icon">${icon.collapse}</span><span class="kvl-global-collapse-label">접기</span></button></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-controls="kvlGlobalSidebar" aria-label="메뉴 열기">☰ <span>메뉴</span></button>`);
   const sidebar=document.querySelector('.kvl-global-sidebar');
   sidebar.id='kvlGlobalSidebar';
   const toggle=document.querySelector('.kvl-global-toggle');
   const close=document.querySelector('.kvl-global-close');
+  const collapse=document.querySelector('.kvl-global-collapse');
   const backdrop=document.querySelector('.kvl-global-backdrop');
+  const collapseKey='kvl.sidebarCollapsed.v1';
+
+  const setCollapsed=value=>{
+    const collapsed=Boolean(value)&&innerWidth>900;
+    document.body.classList.toggle('kvl-sidebar-collapsed',collapsed);
+    collapse.setAttribute('aria-expanded',String(!collapsed));
+    collapse.setAttribute('title',collapsed?'사이드바 펼치기':'사이드바 접기');
+    collapse.querySelector('.kvl-global-collapse-label').textContent=collapsed?'펼치기':'접기';
+    try{localStorage.setItem(collapseKey,collapsed?'1':'0')}catch{}
+  };
+  try{setCollapsed(localStorage.getItem(collapseKey)==='1')}catch{}
+
   const open=()=>{sidebar.classList.add('open');backdrop.classList.add('show');document.body.classList.add('kvl-sidebar-open');toggle.setAttribute('aria-expanded','true');close.focus()};
   const shut=()=>{sidebar.classList.remove('open');backdrop.classList.remove('show');document.body.classList.remove('kvl-sidebar-open');toggle.setAttribute('aria-expanded','false')};
   toggle.addEventListener('click',()=>sidebar.classList.contains('open')?shut():open());
   close.addEventListener('click',()=>{shut();toggle.focus()});
+  collapse.addEventListener('click',()=>setCollapsed(!document.body.classList.contains('kvl-sidebar-collapsed')));
   backdrop.addEventListener('click',shut);
   sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{if(matchMedia('(max-width:900px)').matches)shut()}));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open')){shut();toggle.focus()}});
-  addEventListener('resize',()=>{if(innerWidth>900)shut()});
+  addEventListener('resize',()=>{
+    if(innerWidth>900)shut();
+    else document.body.classList.remove('kvl-sidebar-collapsed');
+  });
 })();
