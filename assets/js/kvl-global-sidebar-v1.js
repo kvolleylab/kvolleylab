@@ -1,12 +1,13 @@
 (()=>{
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
-  if(path==='competition-calendar.html'||document.querySelector('.cc-sidebar'))return;
+  if(path==='competition-calendar.html'||document.querySelector('.cc-sidebar')||document.querySelector('.kvl-global-sidebar'))return;
 
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
   const playerPages=new Set(['players.html','player.html','player-search.html']);
   const schedulePages=new Set(['schedules.html']);
   let active='more';
-  if(path==='index.html'||path==='')active='home';
+  if((path==='index.html'||path==='')&&location.hash==='#news')active='news';
+  else if(path==='index.html'||path==='')active='home';
   else if(schedulePages.has(path))active='schedules';
   else if(competitionPages.has(path))active='competition';
   else if(playerPages.has(path))active='players';
@@ -30,21 +31,35 @@
     ['home','index.html',icon.home,'홈'],
     ['schedules','competition-calendar.html?year=2026',icon.calendar,'경기 일정'],
     ['competition','competition.html',icon.globe,'국제 대회'],
-    ['records','pamphlet-archive.html',icon.book,'국내 자료'],
-    ['competition','competition.html',icon.league,'리그'],
+    ['domestic','pamphlet-archive.html',icon.book,'국내 자료'],
+    ['league','competition.html',icon.league,'리그'],
     ['spacer'],
     ['teams','teams.html',icon.teams,'팀'],
     ['players','players.html',icon.player,'선수'],
     ['records','pamphlet-archive.html',icon.file,'기록실'],
-    ['players','players.html',icon.chart,'랭킹'],
-    ['home','index.html#news',icon.news,'뉴스'],
+    ['ranking','players.html',icon.chart,'랭킹'],
+    ['news','index.html#news',icon.news,'뉴스'],
     ['more','index.html',icon.more,'더보기']
   ];
-  const nav=items.map(item=>item[0]==='spacer'?'<div class="kvl-global-spacer"></div>':`<a class="${active===item[0]?'active':''}" href="${item[1]}"><span class="kvl-global-icon">${item[2]}</span>${item[3]}</a>`).join('');
+  const nav=items.map(item=>{
+    if(item[0]==='spacer')return '<div class="kvl-global-spacer"></div>';
+    const current=active===item[0];
+    return `<a class="${current?'active':''}" href="${item[1]}"${current?' aria-current="page"':''}><span class="kvl-global-icon">${item[2]}</span>${item[3]}</a>`;
+  }).join('');
+
   document.body.classList.add('kvl-sidebar-enabled');
-  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false">☰ 메뉴</button>`);
-  const sidebar=document.querySelector('.kvl-global-sidebar'),toggle=document.querySelector('.kvl-global-toggle'),close=document.querySelector('.kvl-global-close'),backdrop=document.querySelector('.kvl-global-backdrop');
-  const open=()=>{sidebar.classList.add('open');backdrop.classList.add('show');toggle.setAttribute('aria-expanded','true')};
-  const shut=()=>{sidebar.classList.remove('open');backdrop.classList.remove('show');toggle.setAttribute('aria-expanded','false')};
-  toggle.addEventListener('click',open);close.addEventListener('click',shut);backdrop.addEventListener('click',shut);document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-label="메뉴 열기">☰ 메뉴</button>`);
+
+  const sidebar=document.querySelector('.kvl-global-sidebar');
+  const toggle=document.querySelector('.kvl-global-toggle');
+  const close=document.querySelector('.kvl-global-close');
+  const backdrop=document.querySelector('.kvl-global-backdrop');
+  const open=()=>{sidebar.classList.add('open');backdrop.classList.add('show');document.body.classList.add('kvl-sidebar-open');toggle.setAttribute('aria-expanded','true')};
+  const shut=()=>{sidebar.classList.remove('open');backdrop.classList.remove('show');document.body.classList.remove('kvl-sidebar-open');toggle.setAttribute('aria-expanded','false')};
+  toggle.addEventListener('click',()=>sidebar.classList.contains('open')?shut():open());
+  close.addEventListener('click',shut);
+  backdrop.addEventListener('click',shut);
+  sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{if(matchMedia('(max-width:900px)').matches)shut()}));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')shut()});
+  addEventListener('resize',()=>{if(innerWidth>900)shut()});
 })();
