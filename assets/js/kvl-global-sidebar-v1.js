@@ -4,6 +4,7 @@
 
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html']);
+  const vleaguePages=new Set(['v-league.html']);
   const playerPages=new Set(['players.html','player.html','player-search.html','player-compare.html','draft-hub.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
   const teamPages=new Set(['university-teams.html']);
@@ -13,6 +14,7 @@
   else if(schedulePages.has(path))active='schedules';
   else if(competitionPages.has(path))active='competition';
   else if(domesticPages.has(path))active='domestic';
+  else if(vleaguePages.has(path))active='vleague';
   else if(simulatorPages.has(path))active='simulator';
   else if(teamPages.has(path))active='teams';
   else if(playerPages.has(path))active='players';
@@ -23,6 +25,7 @@
     calendar:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18"></path><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"></path></svg>',
     globe:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3.5 9h17M3.5 15h17M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>',
     domestic:'<svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9h12v11M9 20v-5h6v5M5 9l7-5 7 5"></path></svg>',
+    league:'<svg viewBox="0 0 24 24"><path d="M5 4h14v5c0 4-3 7-7 7s-7-3-7-7V4Z"></path><path d="M8 20h8M12 16v4M5 7H2c0 4 2 6 5 6M19 7h3c0 4-2 6-5 6"></path></svg>',
     calculator:'<svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"></path></svg>',
     teams:'<svg viewBox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M2.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6M10.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6"></path></svg>',
     player:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"></circle><path d="M5 21c.5-5.1 2.8-7.6 7-7.6S18.5 15.9 19 21"></path></svg>',
@@ -37,6 +40,7 @@
     ['schedules','competition-calendar.html?year=2026',icon.calendar,'경기 일정'],
     ['competition','competition.html',icon.globe,'국제 대회'],
     ['domestic','domestic-competitions.html',icon.domestic,'국내 대회'],
+    ['vleague','v-league.html',icon.league,'V-리그'],
     ['teams','university-teams.html',icon.teams,'대학 팀'],
     ['players','players.html',icon.player,'선수'],
     ['section','도구'],
@@ -65,19 +69,8 @@
   const collapseKey='kvl.sidebarCollapsed.v1';
   let preferredCollapsed=document.documentElement.classList.contains('kvl-sidebar-pref-collapsed');
   try{preferredCollapsed=localStorage.getItem(collapseKey)==='1'}catch{}
-
-  const setCollapsed=(value,persist=true)=>{
-    preferredCollapsed=Boolean(value);
-    const collapsed=preferredCollapsed&&innerWidth>900;
-    document.documentElement.classList.toggle('kvl-sidebar-pref-collapsed',preferredCollapsed);
-    document.body.classList.toggle('kvl-sidebar-collapsed',collapsed);
-    collapse.setAttribute('aria-expanded',String(!collapsed));
-    collapse.setAttribute('title',collapsed?'사이드바 펼치기':'사이드바 접기');
-    collapse.querySelector('.kvl-global-collapse-label').textContent=collapsed?'펼치기':'접기';
-    if(persist){try{localStorage.setItem(collapseKey,preferredCollapsed?'1':'0')}catch{}}
-  };
+  const setCollapsed=(value,persist=true)=>{preferredCollapsed=Boolean(value);const collapsed=preferredCollapsed&&innerWidth>900;document.documentElement.classList.toggle('kvl-sidebar-pref-collapsed',preferredCollapsed);document.body.classList.toggle('kvl-sidebar-collapsed',collapsed);collapse.setAttribute('aria-expanded',String(!collapsed));collapse.setAttribute('title',collapsed?'사이드바 펼치기':'사이드바 접기');collapse.querySelector('.kvl-global-collapse-label').textContent=collapsed?'펼치기':'접기';if(persist){try{localStorage.setItem(collapseKey,preferredCollapsed?'1':'0')}catch{}}};
   setCollapsed(preferredCollapsed,false);
-
   const open=()=>{sidebar.classList.add('open');backdrop.classList.add('show');document.body.classList.add('kvl-sidebar-open');toggle.setAttribute('aria-expanded','true');close.focus()};
   const shut=()=>{sidebar.classList.remove('open');backdrop.classList.remove('show');document.body.classList.remove('kvl-sidebar-open');toggle.setAttribute('aria-expanded','false')};
   toggle.addEventListener('click',()=>sidebar.classList.contains('open')?shut():open());
@@ -86,8 +79,5 @@
   backdrop.addEventListener('click',shut);
   sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{if(matchMedia('(max-width:900px)').matches)shut()}));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open')){shut();toggle.focus()}});
-  addEventListener('resize',()=>{
-    if(innerWidth>900)shut();
-    setCollapsed(preferredCollapsed,false);
-  });
+  addEventListener('resize',()=>{if(innerWidth>900)shut();setCollapsed(preferredCollapsed,false)});
 })();
