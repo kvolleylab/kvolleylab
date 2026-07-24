@@ -5,6 +5,22 @@
   const id=params.get('competition')||'spring-middle-high-2026';
   const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
   const fmtDate=s=>{const d=new Date(`${s}T00:00:00`);return `${d.getMonth()+1}월 ${d.getDate()}일`};
+  const teamAliases={
+    '울산스포츠과하고':'울산스포츠과학고',
+    '순천팦마중':'순천팔마중',
+    '인하부고':'인하사대부고',
+    '인하부중':'인하사대부중',
+    '찬안고':'천안고'
+  };
+  const normalizeTeam=name=>teamAliases[name]||name;
+  const normalizeMatch=m=>{
+    m.team_a=normalizeTeam(m.team_a);
+    m.team_b=normalizeTeam(m.team_b);
+    if(id==='middle-high-second-2026'&&m.team_a==='현일중'&&m.team_b==='인창중'){
+      m.sets=m.sets.map(s=>s==='29-32'?'29-31':s);
+    }
+    return m;
+  };
   let data=null,activeDate='all',activeDivision='all',activeStage='all';
   const uniq=arr=>[...new Set(arr.filter(Boolean))];
   const filtered=()=>data.matches.filter(m=>(activeDate==='all'||m.date===activeDate)&&(activeDivision==='all'||m.division===activeDivision)&&(activeStage==='all'||m.stage===activeStage));
@@ -26,8 +42,10 @@
     app.querySelectorAll('[data-division]').forEach(b=>b.onclick=()=>{activeDivision=b.dataset.division;render()});
     app.querySelectorAll('[data-stage]').forEach(b=>b.onclick=()=>{activeStage=b.dataset.stage;render()});
   }
-  fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260724-2`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('data');return r.json()}).then(d=>{
+  fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260724-3`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('data');return r.json()}).then(d=>{
     if(Array.isArray(d.matches?.[0]))d.matches=d.matches.map(m=>{const [date,venueIndex,court_order,divisionIndex,stageIndex,team_a,team_b,set_score,sets]=m;const [a,b]=set_score.split('-').map(Number);return{date,venue:d.venues[venueIndex],court_order,division:d.divisions[divisionIndex],stage:d.stages[stageIndex],team_a,team_b,set_score,sets,winner:a>b?team_a:team_b}});
+    d.matches=d.matches.map(normalizeMatch);
+    d.matches.forEach(m=>{const [a,b]=m.set_score.split('-').map(Number);m.winner=a>b?m.team_a:m.team_b});
     data=d;
     document.title=`${d.competition} 경기 결과 | K-Volley Lab`;
     document.getElementById('scrTitle').textContent=d.competition;
