@@ -2,6 +2,13 @@
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
   if(document.querySelector('.kvl-global-sidebar'))return;
 
+  const now=new Date();
+  const calendarYear=now.getFullYear();
+  const calendarMonth=now.getMonth()+1;
+  const scheduleHref=matchMedia('(max-width:767px)').matches
+    ?`competition-calendar.html?view=month&year=${calendarYear}&month=${calendarMonth}`
+    :`competition-calendar.html?view=year&year=${calendarYear}`;
+
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html']);
   const vleaguePages=new Set(['v-league.html']);
@@ -37,7 +44,7 @@
   const items=[
     ['home','index.html',icon.home,'홈'],
     ['section','정보'],
-    ['schedules','competition-calendar.html?year=2026',icon.calendar,'경기 일정'],
+    ['schedules',scheduleHref,icon.calendar,'경기 일정'],
     ['competition','competition.html',icon.globe,'국제 대회'],
     ['domestic','domestic-competitions.html',icon.domestic,'국내 대회'],
     ['vleague','v-league.html',icon.league,'V-리그'],
