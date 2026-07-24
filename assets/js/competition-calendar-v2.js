@@ -127,12 +127,23 @@
 
   function miniCalendar(m){
     const events=visibleEvents().filter(e=>overlaps(e,year,m));
-    return `<section class="cc-month-card"><div class="cc-month-head"><a href="${calendarHref('month',year,m)}">${m}월</a><span>${events.length}개 대회</span></div><div class="cc-weekdays">${['월','화','수','목','금','토','일'].map(x=>`<span>${x}</span>`).join('')}</div>${calendarGrid(m,true)}</section>`;
+    const current=year===todayYear&&m===todayMonth;
+    return `<section class="cc-month-card${current?' cc-current-month':''}" id="cc-month-${m}" data-month="${m}"><div class="cc-month-head"><a href="${calendarHref('month',year,m)}">${m}월</a><span>${events.length}개 대회</span></div><div class="cc-weekdays">${['월','화','수','목','금','토','일'].map(x=>`<span>${x}</span>`).join('')}</div>${calendarGrid(m,true)}</section>`;
+  }
+
+  function scrollYearToCurrentMonth(){
+    if(view!=='year'||year!==todayYear)return;
+    const target=document.getElementById(`cc-month-${todayMonth}`);
+    if(!target)return;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      const top=target.getBoundingClientRect().top+window.scrollY-96;
+      window.scrollTo({top:Math.max(0,top),behavior:'auto'});
+    }));
   }
 
   function renderYear(){
     root.innerHTML=`${toolbar()}${monthShortcuts(0)}<div class="cc-year-grid">${Array.from({length:12},(_,i)=>miniCalendar(i+1)).join('')}</div>`;
-    bind();syncUrl();syncViewSwitch();
+    bind();syncUrl();syncViewSwitch();scrollYearToCurrentMonth();
   }
 
   function renderMonth(){
