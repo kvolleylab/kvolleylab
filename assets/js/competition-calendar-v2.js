@@ -5,9 +5,12 @@
   const params=new URLSearchParams(location.search);
   const year=Number(params.get('year')||2026);
   const month=Number(params.get('month')||new Date().getMonth()+1);
-  const view=params.get('view')||'month';
+  const explicitView=params.has('view');
+  const responsiveView=()=>window.matchMedia('(max-width: 767px)').matches?'month':'year';
+  let view=params.get('view')||responsiveView();
   let active=params.get('category')||'all';
   let payload=null;
+  let resizeTimer=null;
 
   const pad=n=>String(n).padStart(2,'0');
   const iso=(y,m,d)=>`${y}-${pad(m)}-${pad(d)}`;
@@ -18,6 +21,7 @@
   const fmt=d=>{const x=new Date(`${d}T00:00:00`);return `${x.getMonth()+1}.${x.getDate()}`};
   const colorOf=c=>payload?.categories.find(x=>x.id===c)?.color||'#64748b';
   const labelOf=c=>payload?.categories.find(x=>x.id===c)?.label||'대회';
+  const displayTitle=e=>e.short_title||e.title;
   const overlaps=(e,y,m)=>e.start<=iso(y,m,new Date(y,m,0).getDate())&&e.end>=iso(y,m,1);
   const visibleEvents=()=>payload.events.filter(e=>active==='all'||e.category===active);
   const mondayOffset=(y,m)=>{const day=new Date(y,m-1,1).getDay();return day===0?6:day-1};
@@ -29,7 +33,7 @@
 
   function syncUrl(){
     const url=new URL(location.href);
-    url.searchParams.set('view',view);
+    if(explicitView)url.searchParams.set('view',view);else url.searchParams.delete('view');
     url.searchParams.set('year',year);
     if(view==='month')url.searchParams.set('month',month);else url.searchParams.delete('month');
     active==='all'?url.searchParams.delete('category'):url.searchParams.set('category',active);
@@ -75,7 +79,7 @@
       event=events.slice().sort((a,b)=>a.start.localeCompare(b.start))[0];
       label='이달 첫 대회';
     }
-    return `<a class="cc-focus-event" href="${event.href}" style="--focus-color:${colorOf(event.category)}"><span class="cc-focus-label">${label}</span><span class="cc-focus-main"><strong>${esc(event.title)}</strong><em>${fmt(event.start)} ~ ${fmt(event.end)}</em></span><span class="cc-focus-action">일정 보기 →</span></a>`;
+    return `<a class="cc-focus-event" href="${event.href}" style="--focus-color:${colorOf(event.category)}"><span class="cc-focus-label">${label}</span><span class="cc-focus-main"><strong>${esc(displayTitle(event))}</strong><em>${fmt(event.start)} ~ ${fmt(event.end)}</em></span><span class="cc-focus-action">일정 보기 →</span></a>`;
   }
 
   function segmentsForMonth(events,m){
@@ -100,7 +104,7 @@
   }
 
   function eventLink(event,compact,startCol,endCol,lane){
-    const cls=compact?'cc-period-bar':'cc-big-period',title=esc(event.short_title||event.title),status=statusOf(event);
+    const cls=compact?'cc-period-bar':'cc-big-period',title=esc(displayTitle(event)),status=statusOf(event);
     const tooltip=`<span class="cc-event-tooltip"><span class="cc-tooltip-head"><strong>${esc(event.title)}</strong><span class="cc-tooltip-date">${fmt(event.start)} ~ ${fmt(event.end)}</span></span><em>${status.label} · ${esc(labelOf(event.category))} · 클릭하여 대회 일정 보기</em></span>`;
     return `<a class="${cls} status-${status.id}" href="${event.href}" aria-label="${esc(event.title)} ${fmt(event.start)}부터 ${fmt(event.end)}까지" style="--event-color:${colorOf(event.category)};--start:${startCol};--span:${endCol-startCol+1};--lane:${lane}"><span class="cc-period-title">${title}</span>${tooltip}</a>`;
   }
@@ -133,7 +137,6 @@
 
   function renderMonth(){
     const m=Math.min(12,Math.max(1,month));
-    const events=visibleEvents().filter(e=>overlaps(e,year,m));
     const prev=m===1?{y:year-1,m:12}:{y:year,m:m-1};
     const next=m===12?{y:year+1,m:1}:{y:year,m:m+1};
     root.innerHTML=`${toolbar()}${monthShortcuts(m)}<div class="cc-month-navigation"><a href="${calendarHref('month',prev.y,prev.m)}">‹</a><div><strong>${year}년 ${m}월</strong><span>날짜 아래의 대회 기간을 선택하면 해당 대회 일정으로 이동합니다.</span></div><a href="${calendarHref('month',next.y,next.m)}">›</a></div>${focusEvent(m)}<div class="cc-month-layout"><section class="cc-big-calendar"><div class="cc-big-weekdays">${['월','화','수','목','금','토','일'].map((x,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${x}</div>`).join('')}</div>${calendarGrid(m,false)}</section></div>`;
@@ -148,7 +151,17 @@
     if(share)share.onclick=async()=>{syncUrl();try{await navigator.clipboard.writeText(location.href);share.textContent='복사 완료';setTimeout(()=>share.textContent='링크 복사',1400)}catch{prompt('아래 주소를 복사하세요.',location.href)}};
   }
 
-  fetch(`data/calendar/${year}-competition-periods.json?v=20260722-14`,{cache:'no-store'})
+  if(!explicitView){
+    window.addEventListener('resize',()=>{
+      clearTimeout(resizeTimer);
+      resizeTimer=setTimeout(()=>{
+        const nextView=responsiveView();
+        if(nextView!==view){view=nextView;rerender()}
+      },160);
+    });
+  }
+
+  fetch(`data/calendar/${year}-competition-periods.json?v=20260724-1`,{cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('calendar');return r.json()})
     .then(data=>{payload=data;if(active!=='all'&&!payload.categories.some(c=>c.id===active))active='all';rerender()})
     .catch(()=>{root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="${calendarHref('month',todayYear,todayMonth)}">오늘 달력 보기</a></div>`;syncViewSwitch()});
