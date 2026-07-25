@@ -1,6 +1,7 @@
 (()=>{
   const root=document.getElementById('competitionCalendar');
-  if(!root)return;
+  const controls=document.getElementById('competitionCalendarControls');
+  if(!root||!controls)return;
 
   const params=new URLSearchParams(location.search);
   const year=Number(params.get('year')||2026);
@@ -53,7 +54,7 @@
 
   function toolbar(){
     const todayHref=calendarHref('month',todayYear,todayMonth);
-    return `<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="${calendarHref(view,year-1,month)}">‹</a><strong>${year}년</strong><a href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a><button class="cc-share-btn" type="button" data-share>링크 복사</button></div><div class="cc-toolbar-view cc-view-switch"><a data-view="year" href="${calendarHref('year',year,month)}">연간 보기</a><a data-view="month" href="${calendarHref('month',year,month)}">월간 보기</a></div>${filters()}</div>`;
+    return `<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="${calendarHref(view,year-1,month)}">‹</a><strong>${year}년</strong><a href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a><button class="cc-share-btn" type="button" data-share>링크 복사</button></div>${filters()}</div>`;
   }
 
   function monthShortcuts(m){
@@ -132,15 +133,22 @@
   function scrollYearToCurrentMonth(){
     if(view!=='year'||year!==todayYear)return;
     const target=document.getElementById(`cc-month-${todayMonth}`);
+    const sticky=document.querySelector('.cc-sticky-header');
     if(!target)return;
     requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      const top=target.getBoundingClientRect().top+window.scrollY-112;
+      const offset=(sticky?.offsetHeight||0)+22;
+      const top=target.getBoundingClientRect().top+window.scrollY-offset;
       window.scrollTo({top:Math.max(0,top),behavior:'auto'});
     }));
   }
 
+  function renderControls(){
+    controls.innerHTML=toolbar();
+  }
+
   function renderYear(){
-    root.innerHTML=`${toolbar()}${monthShortcuts(0)}<div class="cc-year-grid">${Array.from({length:12},(_,i)=>miniCalendar(i+1)).join('')}</div>`;
+    renderControls();
+    root.innerHTML=`${monthShortcuts(0)}<div class="cc-year-grid">${Array.from({length:12},(_,i)=>miniCalendar(i+1)).join('')}</div>`;
     bind();syncUrl();syncViewSwitch();scrollYearToCurrentMonth();
   }
 
@@ -148,15 +156,16 @@
     const m=Math.min(12,Math.max(1,month));
     const prev=m===1?{y:year-1,m:12}:{y:year,m:m-1};
     const next=m===12?{y:year+1,m:1}:{y:year,m:m+1};
-    root.innerHTML=`${toolbar()}${monthShortcuts(m)}<div class="cc-month-navigation"><a href="${calendarHref('month',prev.y,prev.m)}">‹</a><div><strong>${year}년 ${m}월</strong><span>날짜 아래의 대회 기간을 선택하면 해당 대회 일정으로 이동합니다.</span></div><a href="${calendarHref('month',next.y,next.m)}">›</a></div>${focusEvent(m)}<div class="cc-month-layout"><section class="cc-big-calendar"><div class="cc-big-weekdays">${['월','화','수','목','금','토','일'].map((x,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${x}</div>`).join('')}</div>${calendarGrid(m,false)}</section></div>`;
+    renderControls();
+    root.innerHTML=`${monthShortcuts(m)}<div class="cc-month-navigation"><a href="${calendarHref('month',prev.y,prev.m)}">‹</a><div><strong>${year}년 ${m}월</strong><span>날짜 아래의 대회 기간을 선택하면 해당 대회 일정으로 이동합니다.</span></div><a href="${calendarHref('month',next.y,next.m)}">›</a></div>${focusEvent(m)}<div class="cc-month-layout"><section class="cc-big-calendar"><div class="cc-big-weekdays">${['월','화','수','목','금','토','일'].map((x,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${x}</div>`).join('')}</div>${calendarGrid(m,false)}</section></div>`;
     bind();syncUrl();syncViewSwitch();
   }
 
   function rerender(){view==='year'?renderYear():renderMonth()}
 
   function bind(){
-    root.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{active=b.dataset.filter;rerender()});
-    const share=root.querySelector('[data-share]');
+    controls.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{active=b.dataset.filter;rerender()});
+    const share=controls.querySelector('[data-share]');
     if(share)share.onclick=async()=>{syncUrl();try{await navigator.clipboard.writeText(location.href);share.textContent='복사 완료';setTimeout(()=>share.textContent='링크 복사',1400)}catch{prompt('아래 주소를 복사하세요.',location.href)}};
   }
 
@@ -173,5 +182,5 @@
   fetch(`data/calendar/${year}-competition-periods.json?v=20260724-1`,{cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('calendar');return r.json()})
     .then(data=>{payload=data;if(active!=='all'&&!payload.categories.some(c=>c.id===active))active='all';rerender()})
-    .catch(()=>{root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="${calendarHref('month',todayYear,todayMonth)}">오늘 달력 보기</a></div>`;syncViewSwitch()});
+    .catch(()=>{controls.innerHTML='';root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="${calendarHref('month',todayYear,todayMonth)}">오늘 달력 보기</a></div>`;syncViewSwitch()});
 })();
