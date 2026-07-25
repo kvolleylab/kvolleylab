@@ -9,7 +9,8 @@
   const explicitView=params.has('view');
   const responsiveView=()=>window.matchMedia('(max-width: 767px)').matches?'month':'year';
   let view=params.get('view')||responsiveView();
-  let active=params.get('category')||'all';
+  const requestedCategory=params.get('category')||'all';
+  let active=['domestic-university','domestic-school','domestic-pro','domestic-multi'].includes(requestedCategory)?'domestic':requestedCategory;
   let payload=null;
   let resizeTimer=null;
 
@@ -24,7 +25,8 @@
   const labelOf=c=>payload?.categories.find(x=>x.id===c)?.label||'대회';
   const displayTitle=e=>e.short_title||e.title;
   const overlaps=(e,y,m)=>e.start<=iso(y,m,new Date(y,m,0).getDate())&&e.end>=iso(y,m,1);
-  const visibleEvents=()=>payload.events.filter(e=>active==='all'||e.category===active);
+  const isDomesticCategory=c=>String(c||'').startsWith('domestic-');
+  const visibleEvents=()=>payload.events.filter(e=>active==='all'||(active==='domestic'?isDomesticCategory(e.category):e.category===active));
   const mondayOffset=(y,m)=>{const day=new Date(y,m-1,1).getDay();return day===0?6:day-1};
   const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
   const categoryQuery=()=>active==='all'?'':`&category=${encodeURIComponent(active)}`;
@@ -49,7 +51,13 @@
   }
 
   function filters(){
-    return `<div class="cc-filters"><button class="cc-filter ${active==='all'?'active':''}" data-filter="all">전체</button>${payload.categories.map(c=>`<button class="cc-filter ${active===c.id?'active':''}" data-filter="${c.id}"><span class="cc-filter-dot" style="background:${c.color}"></span>${c.label}</button>`).join('')}</div>`;
+    const items=[
+      {id:'all',label:'전체',color:null},
+      {id:'international',label:'국제대회',color:'#2563eb'},
+      {id:'domestic',label:'국내대회',color:'#16a34a'},
+      {id:'vleague',label:'V-리그',color:'#7c3aed'}
+    ];
+    return `<div class="cc-filters">${items.map(item=>`<button class="cc-filter ${active===item.id?'active':''}" data-filter="${item.id}">${item.color?`<span class="cc-filter-dot" style="background:${item.color}"></span>`:''}${item.label}</button>`).join('')}</div>`;
   }
 
   function toolbar(){
@@ -181,6 +189,6 @@
 
   fetch(`data/calendar/${year}-competition-periods.json?v=20260724-1`,{cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('calendar');return r.json()})
-    .then(data=>{payload=data;if(active!=='all'&&!payload.categories.some(c=>c.id===active))active='all';rerender()})
+    .then(data=>{payload=data;const valid=['all','international','domestic','vleague'];if(!valid.includes(active))active='all';rerender()})
     .catch(()=>{controls.innerHTML='';root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="${calendarHref('month',todayYear,todayMonth)}">오늘 달력 보기</a></div>`;syncViewSwitch()});
 })();
