@@ -16,6 +16,8 @@
   const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
   const teamAliases={'울산스포츠과하고':'울산스포츠과학고','순천팦마중':'순천팔마중','인하부고':'인하사대부고','인하부중':'인하사대부중','찬안고':'천안고'};
   const team=n=>teamAliases[n]||n;
+  const divisionOrder=['18세이하 남자부','18세이하 여자부','15세이하 남자부','15세이하 여자부'];
+  const divisionRank=name=>{const normalized=String(name||'').replace(/\s+/g,'');const index=divisionOrder.findIndex(item=>item.replace(/\s+/g,'')===normalized);return index<0?99:index};
   const unpack=(data,row)=>{
     if(!Array.isArray(row))return {...row,team_a:team(row.team_a),team_b:team(row.team_b)};
     const [date,venueIndex,court_order,divisionIndex,stageIndex,team_a,team_b,set_score,sets]=row;
@@ -35,7 +37,7 @@
       const thirdPlace=rows.filter(m=>/3.?4위|3위/.test(m.stage||'')).sort((a,b)=>String(a.date).localeCompare(String(b.date))).at(-1);
       const thirds=thirdPlace?[winner(thirdPlace)]:[...new Set(semis.map(loser).filter(Boolean))];
       return{division,champion:winner(final),runnerUp:loser(final),thirds};
-    });
+    }).sort((a,b)=>divisionRank(a.division)-divisionRank(b.division)||String(a.division).localeCompare(String(b.division),'ko'));
   }
 
   function renderRanking(box,data){
@@ -51,7 +53,7 @@
   document.querySelectorAll('[data-ranking-source]').forEach(card=>{
     const id=card.dataset.rankingSource;
     const box=card.querySelector('.dc-ranking');
-    fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260725-1`,{cache:'no-store'})
+    fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260725-2`,{cache:'no-store'})
       .then(r=>{if(!r.ok)throw new Error('ranking');return r.json()})
       .then(data=>renderRanking(box,data))
       .catch(()=>{box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>순위 데이터를 불러오지 못했습니다.</p>'});
