@@ -10,7 +10,8 @@
     :`competition-calendar.html?view=year&year=${calendarYear}`;
 
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
-  const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html']);
+  const nationalPages=new Set(['la28-volleyball-qualification.html']);
+  const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html']);
   const vleaguePages=new Set(['v-league.html']);
   const playerPages=new Set(['players.html','player.html','player-search.html','player-compare.html','draft-hub.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
@@ -19,6 +20,7 @@
   let active='';
   if(path==='index.html'||path==='')active='home';
   else if(schedulePages.has(path))active='schedules';
+  else if(nationalPages.has(path))active='national';
   else if(competitionPages.has(path))active='competition';
   else if(domesticPages.has(path))active='domestic';
   else if(vleaguePages.has(path))active='vleague';
@@ -31,6 +33,7 @@
     home:'<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10.5V20h13v-9.5"></path><path d="M9.5 20v-6h5v6"></path></svg>',
     calendar:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M7 3v4M17 3v4M3 10h18"></path><path d="M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"></path></svg>',
     globe:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3.5 9h17M3.5 15h17M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"></path></svg>',
+    flag:'<svg viewBox="0 0 24 24"><path d="M5 21V4"></path><path d="M5 5h11l-2 4 2 4H5"></path></svg>',
     domestic:'<svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9h12v11M9 20v-5h6v5M5 9l7-5 7 5"></path></svg>',
     league:'<svg viewBox="0 0 24 24"><path d="M5 4h14v5c0 4-3 7-7 7s-7-3-7-7V4Z"></path><path d="M8 20h8M12 16v4M5 7H2c0 4 2 6 5 6M19 7h3c0 4-2 6-5 6"></path></svg>',
     calculator:'<svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"></path></svg>',
@@ -45,6 +48,7 @@
     ['home','index.html',icon.home,'홈'],
     ['section','정보'],
     ['schedules',scheduleHref,icon.calendar,'경기 일정'],
+    ['national','la28-volleyball-qualification.html',icon.flag,'국가대표팀'],
     ['competition','competition.html',icon.globe,'국제 대회'],
     ['domestic','domestic-competitions.html',icon.domestic,'국내 대회'],
     ['vleague','v-league.html',icon.league,'V-리그'],
