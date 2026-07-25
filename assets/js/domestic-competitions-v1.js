@@ -16,6 +16,8 @@
   const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
   const teamAliases={'울산스포츠과하고':'울산스포츠과학고','순천팦마중':'순천팔마중','인하부고':'인하사대부고','인하부중':'인하사대부중','찬안고':'천안고'};
   const team=n=>teamAliases[n]||n;
+  const teamId=name=>{let hash=2166136261;for(const ch of String(name||'')){hash^=ch.codePointAt(0);hash=Math.imul(hash,16777619)}return`school-${(hash>>>0).toString(36)}`};
+  const teamLink=name=>{const clean=team(name);return`<a class="dc-team-link" href="team-detail.html?id=${encodeURIComponent(teamId(clean))}&name=${encodeURIComponent(clean)}&level=school">${esc(clean)}</a>`};
   const divisionOrder=['18세이하 남자부','18세이하 여자부','15세이하 남자부','15세이하 여자부'];
   const divisionRank=name=>{const normalized=String(name||'').replace(/\s+/g,'');const index=divisionOrder.findIndex(item=>item.replace(/\s+/g,'')===normalized);return index<0?99:index};
   const unpack=(data,row)=>{
@@ -44,7 +46,7 @@
     const items=podiums(data);
     const complete=items.filter(x=>!x.pending);
     if(!complete.length){box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>결승 결과 확인 중</p>';return}
-    box.innerHTML=`<strong>대회 입상팀</strong><div class="dc-ranking-list">${complete.map(item=>`<section><h4>${esc(item.division)}</h4><p><span>🥇</span><b>${esc(item.champion)}</b></p><p><span>🥈</span><b>${esc(item.runnerUp)}</b></p><p><span>🥉</span><b>${esc(item.thirds.join(' · ')||'확인 중')}</b></p></section>`).join('')}</div><button class="dc-ranking-toggle" type="button" aria-expanded="false">전체 입상팀 펼치기</button>`;
+    box.innerHTML=`<strong>대회 입상팀</strong><div class="dc-ranking-list">${complete.map(item=>`<section><h4>${esc(item.division)}</h4><p><span>🥇</span>${teamLink(item.champion)}</p><p><span>🥈</span>${teamLink(item.runnerUp)}</p><p><span>🥉</span><span class="dc-third-links">${item.thirds.length?item.thirds.map(teamLink).join('<i>·</i>'):'확인 중'}</span></p></section>`).join('')}</div><button class="dc-ranking-toggle" type="button" aria-expanded="false">전체 입상팀 펼치기</button>`;
     const list=box.querySelector('.dc-ranking-list');
     const button=box.querySelector('.dc-ranking-toggle');
     button.onclick=()=>{const open=box.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'입상팀 접기':'전체 입상팀 펼치기';list.scrollTop=0};
@@ -53,7 +55,7 @@
   document.querySelectorAll('[data-ranking-source]').forEach(card=>{
     const id=card.dataset.rankingSource;
     const box=card.querySelector('.dc-ranking');
-    fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260725-2`,{cache:'no-store'})
+    fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260725-3`,{cache:'no-store'})
       .then(r=>{if(!r.ok)throw new Error('ranking');return r.json()})
       .then(data=>renderRanking(box,data))
       .catch(()=>{box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>순위 데이터를 불러오지 못했습니다.</p>'});
