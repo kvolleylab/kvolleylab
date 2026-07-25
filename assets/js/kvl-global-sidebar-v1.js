@@ -1,5 +1,6 @@
 (()=>{
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  const params=new URLSearchParams(location.search);
   if(document.querySelector('.kvl-global-sidebar'))return;
 
   const now=new Date();
@@ -13,9 +14,10 @@
   const nationalPages=new Set(['la28-volleyball-qualification.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html']);
   const vleaguePages=new Set(['v-league.html']);
+  const universityLeaguePages=new Set(['university-league.html']);
   const playerPages=new Set(['players.html','player.html','player-search.html','player-compare.html','draft-hub.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
-  const teamPages=new Set(['university-teams.html']);
+  const teamPages=new Set(['university-teams.html','teams.html']);
   const simulatorPages=new Set(['simulator.html','danyang-qualification-calculator.html']);
   let active='';
   if(path==='index.html'||path==='')active='home';
@@ -24,10 +26,12 @@
   else if(competitionPages.has(path))active='competition';
   else if(domesticPages.has(path))active='domestic';
   else if(vleaguePages.has(path))active='vleague';
+  else if(universityLeaguePages.has(path))active='uleague';
   else if(simulatorPages.has(path))active='simulator';
   else if(teamPages.has(path))active='teams';
   else if(playerPages.has(path))active='players';
-  else if(path==='pamphlet-archive.html')active='records';
+  else if(path==='pamphlet-archive.html')active='pamphlet';
+  else if(path==='records.html')active='records';
 
   const icon={
     home:'<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10.5V20h13v-9.5"></path><path d="M9.5 20v-6h5v6"></path></svg>',
@@ -41,32 +45,61 @@
     player:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"></circle><path d="M5 21c.5-5.1 2.8-7.6 7-7.6S18.5 15.9 19 21"></path></svg>',
     file:'<svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"></path><path d="M16 3v4h4M8 11h8M8 15h8M8 19h5"></path></svg>',
     request:'<svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m8 10 4 3 4-3"></path></svg>',
+    chevron:'<svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>',
     collapse:'<svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"></path><path d="M20 4v16"></path></svg>'
   };
 
+  const link=(key,href,svg,label,extra='')=>({type:'link',key,href,svg,label,extra});
+  const group=(key,svg,label,children)=>({type:'group',key,svg,label,children});
   const items=[
-    ['home','index.html',icon.home,'홈'],
-    ['section','정보'],
-    ['schedules',scheduleHref,icon.calendar,'경기 일정'],
-    ['national','la28-volleyball-qualification.html',icon.flag,'국가대표팀'],
-    ['competition','competition.html',icon.globe,'국제 대회'],
-    ['domestic','domestic-competitions.html',icon.domestic,'국내 대회'],
-    ['vleague','v-league.html',icon.league,'V-리그'],
-    ['teams','university-teams.html',icon.teams,'대학 팀'],
-    ['players','players.html',icon.player,'선수'],
-    ['section','도구'],
-    ['simulator','simulator.html',icon.calculator,'진출 계산기'],
-    ['records','pamphlet-archive.html',icon.file,'기록실'],
-    ['section','지원'],
-    ['request','https://forms.gle/MFNYhJX6Bq5zeNmp8',icon.request,'요청하기','external']
+    link('home','index.html',icon.home,'홈'),
+    {type:'section',label:'정보'},
+    link('schedules',scheduleHref,icon.calendar,'경기일정'),
+    link('national','la28-volleyball-qualification.html',icon.flag,'국가대표팀'),
+    link('competition','competition.html',icon.globe,'국제대회'),
+    group('domestic',icon.domestic,'국내대회',[
+      link('domestic-pro','domestic-competitions.html?division=pro',null,'프로'),
+      link('domestic-university','domestic-competitions.html?division=university',null,'대학'),
+      link('domestic-school','domestic-competitions.html?division=school',null,'중·고')
+    ]),
+    link('vleague','v-league.html',icon.league,'프로 V-리그'),
+    link('uleague','university-league.html',icon.league,'대학 U-리그'),
+    group('teams',icon.teams,'TEAM',[
+      link('teams-pro','teams.html?level=pro',null,'프로'),
+      link('teams-university','university-teams.html',null,'대학'),
+      link('teams-school','teams.html?level=school',null,'중·고')
+    ]),
+    link('players','players.html',icon.player,'선수'),
+    {type:'section',label:'도구'},
+    link('simulator','simulator.html',icon.calculator,'진출 계산기'),
+    link('pamphlet','pamphlet-archive.html',icon.file,'팜플렛'),
+    link('records','records.html',icon.file,'기록실'),
+    {type:'section',label:'지원'},
+    link('request','https://forms.gle/MFNYhJX6Bq5zeNmp8',icon.request,'요청하기','external')
   ];
 
+  const isChildActive=(item)=>{
+    if(item.key==='domestic-pro')return active==='domestic'&&params.get('division')==='pro';
+    if(item.key==='domestic-university')return active==='domestic'&&params.get('division')==='university';
+    if(item.key==='domestic-school')return active==='domestic'&&params.get('division')==='school';
+    if(item.key==='teams-pro')return active==='teams'&&params.get('level')==='pro';
+    if(item.key==='teams-university')return path==='university-teams.html';
+    if(item.key==='teams-school')return active==='teams'&&params.get('level')==='school';
+    return active===item.key;
+  };
+
+  const renderLink=(item,child=false)=>{
+    const current=isChildActive(item)||(!child&&active===item.key);
+    const external=item.extra==='external';
+    const aria=external?`${item.label}, 새 창 열림`:item.label;
+    return `<a class="${child?'kvl-global-sub-link ':''}${current?'active':''}" href="${item.href}" aria-label="${aria}" title="${item.label}"${current?' aria-current="page"':''}${external?' target="_blank" rel="noopener"':''}>${item.svg?`<span class="kvl-global-icon">${item.svg}</span>`:''}<span class="kvl-global-label">${item.label}</span>${external?'<span class="kvl-global-external" aria-hidden="true">↗</span>':''}</a>`;
+  };
+
   const nav=items.map(item=>{
-    if(item[0]==='section')return `<p class="kvl-global-section">${item[1]}</p>`;
-    const current=active===item[0];
-    const external=item[4]==='external';
-    const aria=external?`${item[3]}, 새 창 열림`:item[3];
-    return `<a class="${current?'active':''}" href="${item[1]}" aria-label="${aria}" title="${item[3]}"${current?' aria-current="page"':''}${external?' target="_blank" rel="noopener"':''}><span class="kvl-global-icon">${item[2]}</span><span class="kvl-global-label">${item[3]}</span>${external?'<span class="kvl-global-external" aria-hidden="true">↗</span>':''}</a>`;
+    if(item.type==='section')return `<p class="kvl-global-section">${item.label}</p>`;
+    if(item.type==='link')return renderLink(item);
+    const open=active===item.key||item.children.some(isChildActive);
+    return `<div class="kvl-global-group ${open?'open':''}" data-group="${item.key}"><button class="kvl-global-group-toggle ${active===item.key?'active':''}" type="button" aria-expanded="${open}"><span class="kvl-global-icon">${item.svg}</span><span class="kvl-global-label">${item.label}</span><span class="kvl-global-chevron">${icon.chevron}</span></button><div class="kvl-global-submenu">${item.children.map(child=>renderLink(child,true)).join('')}</div></div>`;
   }).join('');
 
   document.body.classList.add('kvl-sidebar-enabled');
@@ -88,6 +121,7 @@
   close.addEventListener('click',()=>{shut();toggle.focus()});
   collapse.addEventListener('click',()=>setCollapsed(!preferredCollapsed));
   backdrop.addEventListener('click',shut);
+  sidebar.querySelectorAll('.kvl-global-group-toggle').forEach(button=>button.addEventListener('click',()=>{const group=button.closest('.kvl-global-group');const next=!group.classList.contains('open');group.classList.toggle('open',next);button.setAttribute('aria-expanded',String(next))}));
   sidebar.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{if(matchMedia('(max-width:900px)').matches)shut()}));
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open')){shut();toggle.focus()}});
   addEventListener('resize',()=>{if(innerWidth>900)shut();setCollapsed(preferredCollapsed,false)});
