@@ -1,5 +1,6 @@
 (()=>{
   const PRIVATE_REVIEW_MODE=true;
+  if(!document.querySelector('link[href*="pretendard-global.css"]')){const fontLink=document.createElement('link');fontLink.rel='stylesheet';fontLink.href='assets/css/pretendard-global.css?v=20260725-1';document.head.appendChild(fontLink)}
   if(PRIVATE_REVIEW_MODE){
     const robotsContent='noindex,nofollow,noarchive,nosnippet,noimageindex';
     const ensureMeta=(name,content)=>{
@@ -14,7 +15,7 @@
     document.documentElement.dataset.siteMode='private-review';
     addEventListener('DOMContentLoaded',()=>{
       if(!document.querySelector('.kvl-review-mode-badge')){
-        document.body.insertAdjacentHTML('beforeend','<div class="kvl-review-mode-badge" role="status" style="position:fixed;right:14px;bottom:14px;z-index:1900;padding:7px 10px;border:1px solid #e4c76d;border-radius:999px;background:#fff8df;color:#72520a;font:800 11px Arial,sans-serif;box-shadow:0 5px 16px rgba(15,35,63,.12)">비공개 · 데이터 검수 중</div>');
+        document.body.insertAdjacentHTML('beforeend','<div class="kvl-review-mode-badge" role="status" style="position:fixed;right:14px;bottom:14px;z-index:1900;padding:7px 10px;border:1px solid #e4c76d;border-radius:999px;background:#fff8df;color:#72520a;font:800 11px Pretendard,Arial,sans-serif;box-shadow:0 5px 16px rgba(15,35,63,.12)">비공개 · 데이터 검수 중</div>');
       }
     },{once:true});
   }
