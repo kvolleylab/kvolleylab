@@ -43,10 +43,8 @@
 
   function syncViewSwitch(){
     document.querySelectorAll('.cc-view-switch a').forEach(a=>a.classList.toggle('active',a.dataset.view===view));
-    const yearLink=document.querySelector('.cc-view-switch [data-view="year"]');
-    const monthLink=document.querySelector('.cc-view-switch [data-view="month"]');
-    if(yearLink)yearLink.href=calendarHref('year',year,month);
-    if(monthLink)monthLink.href=calendarHref('month',year,month);
+    document.querySelectorAll('.cc-view-switch [data-view="year"]').forEach(a=>a.href=calendarHref('year',year,month));
+    document.querySelectorAll('.cc-view-switch [data-view="month"]').forEach(a=>a.href=calendarHref('month',year,month));
   }
 
   function filters(){
@@ -55,7 +53,7 @@
 
   function toolbar(){
     const todayHref=calendarHref('month',todayYear,todayMonth);
-    return `<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="${calendarHref(view,year-1,month)}">‹</a><strong>${year}년</strong><a href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a><button class="cc-share-btn" type="button" data-share>링크 복사</button></div>${filters()}</div>`;
+    return `<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="${calendarHref(view,year-1,month)}">‹</a><strong>${year}년</strong><a href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a><button class="cc-share-btn" type="button" data-share>링크 복사</button></div><div class="cc-toolbar-view cc-view-switch"><a data-view="year" href="${calendarHref('year',year,month)}">연간 보기</a><a data-view="month" href="${calendarHref('month',year,month)}">월간 보기</a></div>${filters()}</div>`;
   }
 
   function monthShortcuts(m){
@@ -136,7 +134,7 @@
     const target=document.getElementById(`cc-month-${todayMonth}`);
     if(!target)return;
     requestAnimationFrame(()=>requestAnimationFrame(()=>{
-      const top=target.getBoundingClientRect().top+window.scrollY-96;
+      const top=target.getBoundingClientRect().top+window.scrollY-112;
       window.scrollTo({top:Math.max(0,top),behavior:'auto'});
     }));
   }
