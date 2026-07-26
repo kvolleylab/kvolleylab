@@ -1,0 +1,16 @@
+@media (min-width:1051px){
+  .scr-master-row{
+    grid-template-columns:minmax(240px,.42fr) minmax(0,1.58fr);
+    column-gap:44px;
+  }
+  .scr-inline-filter{
+    justify-content:flex-end;
+    width:100%;
+  }
+  .scr-inline-filter .scr-filter-row{
+    justify-content:flex-end;
+  }
+  .scr-master-row-bottom>strong{
+    justify-self:start;
+  }
+}
