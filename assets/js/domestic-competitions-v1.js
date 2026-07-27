@@ -27,6 +27,7 @@
   };
   const winner=m=>{const [a,b]=String(m.set_score||'0-0').split('-').map(Number);return a>b?m.team_a:m.team_b};
   const loser=m=>winner(m)===m.team_a?m.team_b:m.team_a;
+  const isSemifinal=stage=>/^(준결승|4강(?:전)?)$/.test(String(stage||'').trim());
 
   function podiums(data){
     const matches=data.matches.map(row=>unpack(data,row));
@@ -35,10 +36,11 @@
       const finals=rows.filter(m=>m.stage==='결승').sort((a,b)=>String(a.date).localeCompare(String(b.date)));
       const final=finals.at(-1);
       if(!final)return{division,pending:true};
-      const semis=rows.filter(m=>m.stage==='준결승'&&String(m.date)<=String(final.date));
       const thirdPlace=rows.filter(m=>/3.?4위|3위/.test(m.stage||'')).sort((a,b)=>String(a.date).localeCompare(String(b.date))).at(-1);
-      const thirds=thirdPlace?[winner(thirdPlace)]:[...new Set(semis.map(loser).filter(Boolean))];
-      return{division,champion:winner(final),runnerUp:loser(final),thirds};
+      const semis=rows.filter(m=>isSemifinal(m.stage)&&String(m.date)<=String(final.date));
+      const semifinalLosers=[...new Set(semis.map(loser).filter(Boolean))];
+      const thirds=thirdPlace?[winner(thirdPlace)]:semifinalLosers;
+      return{division,champion:winner(final),runnerUp:loser(final),thirds,thirdsPending:!thirdPlace&&thirds.length<2};
     }).sort((a,b)=>divisionRank(a.division)-divisionRank(b.division)||String(a.division).localeCompare(String(b.division),'ko'));
   }
 
@@ -46,7 +48,7 @@
     const items=podiums(data);
     const complete=items.filter(x=>!x.pending);
     if(!complete.length){box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>결승 결과 확인 중</p>';return}
-    box.innerHTML=`<strong>대회 입상팀</strong><div class="dc-ranking-list">${complete.map(item=>`<section><h4>${esc(item.division)}</h4><p><span>🥇</span>${teamLink(item.champion)}</p><p><span>🥈</span>${teamLink(item.runnerUp)}</p><p><span>🥉</span><span class="dc-third-links">${item.thirds.length?item.thirds.map(teamLink).join('<i>·</i>'):'확인 중'}</span></p></section>`).join('')}</div><button class="dc-ranking-toggle" type="button" aria-expanded="false">전체 입상팀 펼치기</button>`;
+    box.innerHTML=`<strong>대회 입상팀</strong><div class="dc-ranking-list">${complete.map(item=>`<section><h4>${esc(item.division)}</h4><p><span>🥇</span>${teamLink(item.champion)}</p><p><span>🥈</span>${teamLink(item.runnerUp)}</p><p><span>🥉</span><span class="dc-third-links">${item.thirds.length?item.thirds.map(teamLink).join('<i>·</i>'):'확인 중'}${item.thirdsPending?'<em> · 확인 중</em>':''}</span></p></section>`).join('')}</div><button class="dc-ranking-toggle" type="button" aria-expanded="false">전체 입상팀 펼치기</button>`;
     const list=box.querySelector('.dc-ranking-list');
     const button=box.querySelector('.dc-ranking-toggle');
     button.onclick=()=>{const open=box.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'입상팀 접기':'전체 입상팀 펼치기';list.scrollTop=0};
@@ -55,7 +57,7 @@
   document.querySelectorAll('[data-ranking-source]').forEach(card=>{
     const id=card.dataset.rankingSource;
     const box=card.querySelector('.dc-ranking');
-    fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260725-3`,{cache:'no-store'})
+    fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260727-1`,{cache:'no-store'})
       .then(r=>{if(!r.ok)throw new Error('ranking');return r.json()})
       .then(data=>renderRanking(box,data))
       .catch(()=>{box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>순위 데이터를 불러오지 못했습니다.</p>'});
