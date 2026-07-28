@@ -56,7 +56,7 @@
   if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20260725-1';script.defer=true;document.head.appendChild(script)}
 
   if(path==='vnl.html'){
-    if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-1';document.head.appendChild(link)}
+    if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-2';document.head.appendChild(link)}
 
     const applyVnlCompetitionDesign=()=>{
       const main=document.querySelector('main');
@@ -86,21 +86,6 @@
         const links=new Map([...tabs.querySelectorAll('a[href^="#"]')].map(a=>[a.getAttribute('href').slice(1),a]));
         order.forEach(id=>{const link=links.get(id);if(link){link.textContent=labels[id];tabs.appendChild(link)}});
       }
-
-      document.querySelectorAll('.vnl-section').forEach(section=>section.classList.add('competition-section'));
-      document.querySelectorAll('.vnl-section-head').forEach(head=>head.classList.add('competition-section-head'));
-      document.querySelectorAll('.quick-grid').forEach(grid=>grid.classList.add('competition-summary-grid'));
-      document.querySelectorAll('.hub-card').forEach(card=>card.classList.add('competition-summary-card'));
-      document.querySelectorAll('.team-grid').forEach(grid=>grid.classList.add('competition-team-grid'));
-      document.querySelectorAll('.team-card').forEach(card=>card.classList.add('competition-team-card'));
-
-      const styleStandings=()=>{
-        document.querySelectorAll('.vnl-standings-wrap').forEach(wrap=>wrap.classList.add('competition-table-wrap'));
-        document.querySelectorAll('.vnl-standings-table').forEach(table=>table.classList.add('competition-table'));
-      };
-      styleStandings();
-      const standingsArea=document.querySelector('#vnlStandingsArea');
-      if(standingsArea)new MutationObserver(styleStandings).observe(standingsArea,{childList:true,subtree:true});
     };
 
     if(document.readyState==='loading')addEventListener('DOMContentLoaded',applyVnlCompetitionDesign,{once:true});
