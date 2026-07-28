@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Schedules | K-Volley Lab</title>
+  <title>경기 일정 · 월별 달력 | K-Volley Lab</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="assets/js/unified-nav.js" defer></script>
   <link rel="stylesheet" href="assets/css/schedules-light.css" />
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="assets/css/schedules-v3-selectall.css?v=20260715-15" />
   <link rel="stylesheet" href="assets/css/schedules-v3-linkfix.css?v=20260715-15" />
   <link rel="stylesheet" href="assets/css/schedules-favorites.css?v=20260715-22" />
+  <link rel="stylesheet" href="assets/css/schedules-hub-controls.css?v=20260728-1" />
   <style>
     .sv3-place-row .sv3-place-label,
     .sv3-game-time,
@@ -29,6 +30,7 @@
     @media (max-width:640px){ .schedule-season-control{display:grid;grid-template-columns:1fr 1fr}.schedule-season-control select{min-width:0;width:100%} }
   </style>
   <script src="assets/js/schedules-season-selector.js?v=20260721-1" defer></script>
+  <script src="assets/js/schedules-hub-controls.js?v=20260728-1" defer></script>
   <script src="assets/js/data-verification-banner.js?v=20260721-1" defer></script>
   <script src="assets/js/schedules-v3.js?v=20260715-15" defer></script>
   <script src="assets/js/schedule-match-context-v1.js?v=20260722-1" defer></script>
@@ -37,9 +39,14 @@
 <body class="schedule-light-page">
   <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"><a href="index.html">Home</a><a href="players.html">Players</a><a href="vnl.html">Competition</a><a class="active" href="schedules.html">Schedules</a><a href="simulator.html">Simulator</a><a href="pamphlet-archive.html">Pamphlets</a><a href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank" rel="noopener">Request</a></nav></header>
   <main class="container-wide">
-    <p class="eyebrow">Tournament Calendar</p>
-    <div class="schedule-title-row"><h1>Schedules</h1><a class="schedule-favorites-link" href="favorites.html">★ 관심 경기 <span id="scheduleFavoritesCount" class="schedule-favorites-count">0</span></a></div>
-    <p class="subtitle">대회와 연도를 선택해 남자배구 일정을 한국시간과 개최지 현지시간으로 확인합니다.</p>
+    <div class="schedule-hub-head">
+      <div class="schedule-hub-copy">
+        <p class="eyebrow">Matches · Calendar</p>
+        <div class="schedule-title-row"><h1>경기 일정</h1><a class="schedule-favorites-link" href="favorites.html">★ 관심 경기 <span id="scheduleFavoritesCount" class="schedule-favorites-count">0</span></a></div>
+        <p class="subtitle">대회, 시즌과 팀을 선택해 남자배구 일정을 한국시간 기준 월별 달력으로 확인합니다.</p>
+      </div>
+      <div class="schedule-view-switch" aria-label="일정 보기 방식"><span class="active" aria-current="page">월별 달력</span></div>
+    </div>
     <div id="scheduleSeasonSelector" class="schedule-season-selector" aria-label="대회 및 연도 선택"></div>
     <div id="scheduleFilterInfo" class="schedule-filter-info"></div>
     <div id="calendarArea"></div>
