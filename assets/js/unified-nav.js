@@ -55,14 +55,66 @@
   if(!document.querySelector('link[href*="kvl-global-sidebar-submenus.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-submenus.css?v=20260725-1';document.head.appendChild(link)}
   if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20260725-1';script.defer=true;document.head.appendChild(script)}
 
-  if(path==='vnl.html'&&!document.querySelector('.kvl-season-context')){
-    const season=params.get('season')||'2026';
-    if(!params.get('season')){const normalized=new URL(location.href);normalized.searchParams.set('season',season);history.replaceState(history.state,'',normalized)}
-    const context=document.createElement('div');
-    context.className='kvl-season-context';
-    context.innerHTML=`<div class="kvl-season-breadcrumb"><a href="competition.html">Competition</a><span>›</span><span>VNL Men</span><span>›</span><strong>${season}</strong></div><div class="kvl-season-switcher"><span>SEASON</span><a class="active" href="vnl.html?season=2026">2026</a></div>`;
-    const main=document.querySelector('main');if(main)main.insertAdjacentElement('beforebegin',context);
-    document.querySelectorAll('a[href="schedules.html?tournament=vnl"]').forEach(a=>a.href=`schedules.html?competition=vnl&season=${season}`);
-    document.querySelectorAll('a[href*="schedules.html?tournament=vnl&team="]').forEach(a=>{const url=new URL(a.getAttribute('href'),location.href);a.href=`schedules.html?competition=vnl&season=${season}&team=${encodeURIComponent(url.searchParams.get('team')||'')}`});
+  if(path==='vnl.html'){
+    if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-1';document.head.appendChild(link)}
+
+    const applyVnlCompetitionDesign=()=>{
+      const main=document.querySelector('main');
+      if(!main||main.dataset.competitionDesign==='1')return;
+      main.dataset.competitionDesign='1';
+      main.classList.add('competition-hub');
+
+      const hero=document.querySelector('.vnl-hero');
+      if(hero){
+        hero.classList.add('competition-hero');
+        if(!hero.querySelector(':scope > .competition-hero-content')){
+          const content=document.createElement('div');
+          content.className='competition-hero-content';
+          [...hero.children].forEach(child=>content.appendChild(child));
+          hero.appendChild(content);
+        }
+        hero.querySelector('.vnl-meta')?.classList.add('competition-meta');
+      }
+
+      const tabsWrap=document.querySelector('.vnl-tabs-wrap');
+      const tabs=document.querySelector('.vnl-tabs');
+      tabsWrap?.classList.add('competition-tabs-wrap');
+      tabs?.classList.add('competition-tabs');
+      if(tabs){
+        const order=['overview','schedule','standings','teams','entries','players','resources'];
+        const labels={overview:'개요',schedule:'일정·결과',standings:'순위',teams:'참가팀',entries:'엔트리',players:'선수',resources:'자료'};
+        const links=new Map([...tabs.querySelectorAll('a[href^="#"]')].map(a=>[a.getAttribute('href').slice(1),a]));
+        order.forEach(id=>{const link=links.get(id);if(link){link.textContent=labels[id];tabs.appendChild(link)}});
+      }
+
+      document.querySelectorAll('.vnl-section').forEach(section=>section.classList.add('competition-section'));
+      document.querySelectorAll('.vnl-section-head').forEach(head=>head.classList.add('competition-section-head'));
+      document.querySelectorAll('.quick-grid').forEach(grid=>grid.classList.add('competition-summary-grid'));
+      document.querySelectorAll('.hub-card').forEach(card=>card.classList.add('competition-summary-card'));
+      document.querySelectorAll('.team-grid').forEach(grid=>grid.classList.add('competition-team-grid'));
+      document.querySelectorAll('.team-card').forEach(card=>card.classList.add('competition-team-card'));
+
+      const styleStandings=()=>{
+        document.querySelectorAll('.vnl-standings-wrap').forEach(wrap=>wrap.classList.add('competition-table-wrap'));
+        document.querySelectorAll('.vnl-standings-table').forEach(table=>table.classList.add('competition-table'));
+      };
+      styleStandings();
+      const standingsArea=document.querySelector('#vnlStandingsArea');
+      if(standingsArea)new MutationObserver(styleStandings).observe(standingsArea,{childList:true,subtree:true});
+    };
+
+    if(document.readyState==='loading')addEventListener('DOMContentLoaded',applyVnlCompetitionDesign,{once:true});
+    else applyVnlCompetitionDesign();
+
+    if(!document.querySelector('.kvl-season-context')){
+      const season=params.get('season')||'2026';
+      if(!params.get('season')){const normalized=new URL(location.href);normalized.searchParams.set('season',season);history.replaceState(history.state,'',normalized)}
+      const context=document.createElement('div');
+      context.className='kvl-season-context';
+      context.innerHTML=`<div class="kvl-season-breadcrumb"><a href="competition.html">Competition</a><span>›</span><span>VNL Men</span><span>›</span><strong>${season}</strong></div><div class="kvl-season-switcher"><span>SEASON</span><a class="active" href="vnl.html?season=2026">2026</a></div>`;
+      const main=document.querySelector('main');if(main)main.insertAdjacentElement('beforebegin',context);
+      document.querySelectorAll('a[href="schedules.html?tournament=vnl"]').forEach(a=>a.href=`schedules.html?competition=vnl&season=${season}`);
+      document.querySelectorAll('a[href*="schedules.html?tournament=vnl&team="]').forEach(a=>{const url=new URL(a.getAttribute('href'),location.href);a.href=`schedules.html?competition=vnl&season=${season}&team=${encodeURIComponent(url.searchParams.get('team')||'')}`});
+    }
   }
 })();
