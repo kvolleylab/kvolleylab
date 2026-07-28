@@ -57,6 +57,7 @@
 
   if(path==='vnl.html'){
     if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-2';document.head.appendChild(link)}
+    if(!document.querySelector('link[href*="vnl-schedule-stage.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/vnl-schedule-stage.css?v=20260728-1';document.head.appendChild(link)}
 
     const applyVnlCompetitionDesign=()=>{
       const main=document.querySelector('main');
@@ -85,6 +86,30 @@
         const labels={overview:'개요',schedule:'일정·결과',standings:'순위',teams:'참가팀',entries:'엔트리',players:'선수',resources:'자료'};
         const links=new Map([...tabs.querySelectorAll('a[href^="#"]')].map(a=>[a.getAttribute('href').slice(1),a]));
         order.forEach(id=>{const link=links.get(id);if(link){link.textContent=labels[id];tabs.appendChild(link)}});
+      }
+
+      const schedule=document.querySelector('#schedule');
+      if(schedule&&!schedule.dataset.scheduleRefined){
+        schedule.dataset.scheduleRefined='1';
+        schedule.classList.add('vnl-schedule-stage');
+        const links=schedule.querySelector('.schedule-links');
+        const calendarLink=links?.querySelector('a');
+        const head=schedule.querySelector('.vnl-section-head');
+        if(calendarLink&&head){
+          const entry=document.createElement('div');
+          entry.className='vnl-calendar-entry';
+          entry.innerHTML='<div><strong>2026 VNL 남자부 월별 달력</strong><p>전체 경기 일정을 한국시간 기준 달력에서 확인하고, 경기 결과가 등록되면 같은 화면에서 확인합니다.</p></div>';
+          const button=calendarLink.cloneNode(true);
+          button.textContent='월별 달력 열기';
+          entry.appendChild(button);
+          head.insertAdjacentElement('afterend',entry);
+        }
+        if(links&&!schedule.querySelector('.vnl-team-filter-label')){
+          const label=document.createElement('p');
+          label.className='vnl-team-filter-label';
+          label.textContent='국가별 일정 바로가기';
+          links.insertAdjacentElement('beforebegin',label);
+        }
       }
     };
 
