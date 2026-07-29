@@ -59,8 +59,7 @@
     link('competition','competition.html',icon.globe,'국제대회'),
     group('domestic',icon.domestic,'국내대회',[
       link('domestic-pro','domestic-competitions.html?division=pro',null,'프로'),
-      link('domestic-gosung','university-competition.html',null,'2026 고성대회'),
-      link('domestic-university','domestic-competitions.html?division=university',null,'대학대회'),
+      link('domestic-university','domestic-competitions.html?division=university',null,'대학'),
       link('domestic-school','domestic-competitions.html?division=school',null,'중·고')
     ]),
     link('vleague','v-league.html',icon.league,'프로 V-리그'),
@@ -81,8 +80,7 @@
 
   const isChildActive=(item)=>{
     if(item.key==='domestic-pro')return active==='domestic'&&params.get('division')==='pro';
-    if(item.key==='domestic-gosung')return path==='university-competition.html'||path==='university-team.html';
-    if(item.key==='domestic-university')return active==='domestic'&&params.get('division')==='university';
+    if(item.key==='domestic-university')return active==='domestic'&&(params.get('division')==='university'||path==='university-competition.html'||path==='university-team.html');
     if(item.key==='domestic-school')return active==='domestic'&&params.get('division')==='school';
     if(item.key==='teams-pro')return active==='teams'&&params.get('level')==='pro';
     if(item.key==='teams-university')return path==='university-teams.html';
