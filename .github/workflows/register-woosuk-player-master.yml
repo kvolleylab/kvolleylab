@@ -1,8 +1,7 @@
 name: Finalize university Player Master
 
 on:
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: main
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -37,4 +37,4 @@ jobs:
           git config user.email automation@example.com
           git add data/master/player_master.json
           git commit -m 'Finalize university Player Master at 229 players' || exit 0
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin HEAD:main
