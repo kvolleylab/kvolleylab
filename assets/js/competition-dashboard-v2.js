@@ -31,28 +31,37 @@ function renderKpis(){
 }
 function score(g){return String(g.score||'0-0').split('-').map(Number)}
 function winner(g){const[a,b]=score(g);return a>b?g.teamA:g.teamB}
-function ratio(won,lost){return lost===0?(won>0?999:0):won/lost}
+function ratio(won,lost){return lost===0?(won>0?Infinity:0):won/lost}
 function brandFor(code,name){return brands.teams?.[code]||Object.values(brands.teams||{}).find(x=>x.school_name===name)||null}
 function teamInfo(label){
  const p=players.find(x=>shortName(schoolName(x))===label||schoolName(x)===label);
  return p?{code:schoolCode(p),name:schoolName(p),label}:{code:'',name:label,label};
 }
+function teamUrl(label){const t=teamInfo(label);return `university-team.html?school=${encodeURIComponent(t.code||t.name)}`}
 function logoHtml(label,cls='cd-inline-logo'){
  const t=teamInfo(label),brand=brandFor(t.code,t.name);
  if(brand?.status==='asset_ready'&&brand.asset_path)return `<span class="${cls}"><img src="${esc(brand.asset_path)}" alt="${esc(label)} 로고" loading="lazy" onerror="this.parentElement.textContent='${esc(initials(label))}'"></span>`;
  return `<span class="${cls}"><b>${esc(initials(label))}</b></span>`;
 }
+function monthKey(date){return date.slice(0,7)}
+function calendarGame(g){return `<a class="cd-cal-game" href="university-competition.html?view=results"><time>${esc(g.time)}</time><span>${esc(g.teamA)}</span><b>${esc(g.score)}</b><span>${esc(g.teamB)}</span></a>`}
+function renderMonth(year,month,byDate){
+ const first=new Date(year,month-1,1),last=new Date(year,month,0),cells=[];
+ for(let i=0;i<first.getDay();i++)cells.push('<div class="cd-cal-cell is-empty"></div>');
+ for(let d=1;d<=last.getDate();d++){
+  const date=`${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  const games=byDate[date]||[];
+  cells.push(`<div class="cd-cal-cell ${games.length?'has-games':''}"><span class="cd-cal-day">${d}</span>${games.length?`<div class="cd-cal-games">${games.map(calendarGame).join('')}</div>`:''}</div>`);
+ }
+ while(cells.length%7)cells.push('<div class="cd-cal-cell is-empty"></div>');
+ return `<section class="cd-cal-month"><div class="cd-cal-title">${year}년 ${month}월</div><div class="cd-cal-week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div class="cd-cal-grid">${cells.join('')}</div></section>`;
+}
 function renderCalendar(){
  const all=competition.games||[],byDate=all.reduce((m,g)=>{(m[g.date]??=[]).push(g);return m},{});
- const start=new Date(`${competition.dates.start}T00:00:00`),end=new Date(`${competition.dates.end}T00:00:00`);
- const month=new Date(start.getFullYear(),start.getMonth(),1),last=new Date(end.getFullYear(),end.getMonth()+1,0);
- const cells=[];for(let i=0;i<month.getDay();i++)cells.push('<div class="cd-cal-cell is-empty"></div>');
- for(let d=1;d<=last.getDate();d++){
-  const date=`${last.getFullYear()}-${String(last.getMonth()+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-  const games=byDate[date]||[],active=date>=competition.dates.start&&date<=competition.dates.end;
-  cells.push(`<a class="cd-cal-cell ${active?'is-tournament':''} ${games.length?'has-games':''}" href="university-competition.html?view=results" title="${esc(date)} ${games.length}경기"><span>${d}</span>${games.length?`<strong>${games.length}경기</strong><small>${[...new Set(games.map(g=>g.stage))].join(' · ')}</small>`:''}</a>`);
- }
- $('cdCalendar').innerHTML=`<div class="cd-cal-title">${last.getFullYear()}년 ${last.getMonth()+1}월</div><div class="cd-cal-week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div class="cd-cal-grid">${cells.join('')}</div>`;
+ const start=new Date(`${competition.dates.start}T00:00:00`),end=new Date(`${competition.dates.end}T00:00:00`),months=[];
+ let cursor=new Date(start.getFullYear(),start.getMonth(),1);
+ while(cursor<=end){months.push([cursor.getFullYear(),cursor.getMonth()+1]);cursor=new Date(cursor.getFullYear(),cursor.getMonth()+1,1)}
+ $('cdCalendar').innerHTML=months.map(([y,m])=>renderMonth(y,m,byDate)).join('');
 }
 function renderStageFilters(list){
  const stages=['전체',...new Set(list.map(g=>g.stage).filter(Boolean))];
@@ -65,7 +74,7 @@ function renderResults(){
  const list=stageFilter==='전체'?all:all.filter(g=>g.stage===stageFilter);
  $('cdResultSummary').textContent=`${division} ${list.length}경기 · ${stageFilter==='전체'?'전체 단계':stageFilter}`;
  const groups=list.reduce((m,g)=>{(m[g.date]??=[]).push(g);return m},{});
- $('cdResults').innerHTML=Object.entries(groups).map(([date,games])=>`<section class="cd-date-group"><div class="cd-date-head"><span>${esc(date)}</span><span>${games.length}경기</span></div>${games.map(g=>{const w=winner(g);return `<article class="cd-match"><div class="cd-match-meta"><time>${esc(g.time)}</time><span>${esc(g.stage)}${g.pool?` · ${esc(g.pool)}조`:''}</span></div><div class="cd-match-board"><div class="cd-side is-left"><strong class="${w===g.teamA?'cd-winner':''}">${esc(g.teamA)}</strong>${logoHtml(g.teamA)}</div><b class="cd-score">${esc(g.score)}</b><div class="cd-side is-right">${logoHtml(g.teamB)}<strong class="${w===g.teamB?'cd-winner':''}">${esc(g.teamB)}</strong></div></div><div class="cd-set-scores">${(g.sets||[]).map(s=>`<span>${esc(s)}</span>`).join('')}</div></article>`}).join('')}</section>`).join('')||'<div class="cd-empty">선택한 단계의 경기결과가 없습니다.</div>';
+ $('cdResults').innerHTML=Object.entries(groups).map(([date,games])=>`<section class="cd-date-group"><div class="cd-date-head"><span>${esc(date)}</span><span>${games.length}경기</span></div>${games.map(g=>{const w=winner(g);return `<article class="cd-match"><div class="cd-match-meta"><time>${esc(g.time)}</time><span>${esc(g.stage)}${g.pool?` · ${esc(g.pool)}조`:''}</span></div><div class="cd-match-board"><a class="cd-side is-left" href="${teamUrl(g.teamA)}"><strong class="${w===g.teamA?'cd-winner':''}">${esc(g.teamA)}</strong>${logoHtml(g.teamA)}</a><b class="cd-score">${esc(g.score)}</b><a class="cd-side is-right" href="${teamUrl(g.teamB)}">${logoHtml(g.teamB)}<strong class="${w===g.teamB?'cd-winner':''}">${esc(g.teamB)}</strong></a></div><div class="cd-set-scores">${(g.sets||[]).map(s=>`<span>${esc(s)}</span>`).join('')}</div></article>`}).join('')}</section>`).join('')||'<div class="cd-empty">선택한 단계의 경기결과가 없습니다.</div>';
 }
 function renderStandings(){
  const prelim=competition.games.filter(g=>g.division===division&&g.pool),pools=[...new Set(prelim.map(g=>g.pool))].sort();
@@ -75,11 +84,14 @@ function renderStandings(){
 }
 function renderPodium(){
  const medal={1:'🥇',2:'🥈',3:'🥉'};
- $('cdPodium').innerHTML=(competition.podium[division]||[]).map(x=>`<article class="cd-rank rank-${x.rank}"><span class="cd-medal" aria-hidden="true">${medal[x.rank]||'🏅'}</span><strong>${x.rank}위</strong>${logoHtml(x.team,'cd-podium-logo')}<h3>${esc(x.team)}</h3></article>`).join('');
+ $('cdPodium').innerHTML=(competition.podium[division]||[]).map(x=>`<a class="cd-rank rank-${x.rank}" href="${teamUrl(x.team)}"><span class="cd-medal" aria-hidden="true">${medal[x.rank]||'🏅'}</span><strong>${x.rank}위</strong>${logoHtml(x.team,'cd-podium-logo')}<h3>${esc(x.team)}</h3></a>`).join('');
 }
 function markHtml(team){const brand=brandFor(team.code,team.name);if(brand?.status==='asset_ready'&&brand.asset_path)return `<span class="cd-team-mark cd-team-logo"><img src="${esc(brand.asset_path)}" alt="${esc(team.name)} 로고" loading="lazy" onerror="this.parentElement.textContent='${esc(initials(team.name))}'"></span>`;return `<span class="cd-team-mark">${esc(initials(team.name))}</span>`}
-function renderTeams(){const map=new Map();players.forEach(p=>{const code=schoolCode(p),name=schoolName(p);if(!code||!name)return;if(!map.has(code))map.set(code,{code,name,count:0});map.get(code).count++});$('cdTeams').innerHTML=[...map.values()].sort((a,b)=>a.name.localeCompare(b.name)).map(t=>`<a class="cd-team-card" href="university-team.html?school=${encodeURIComponent(t.code)}">${markHtml(t)}<span><strong>${esc(shortName(t.name))}</strong><small>${t.count}명 등록</small></span></a>`).join('')}
-function renderSources(){$('cdSources').innerHTML=competition.sources.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)} →</a>`).join('')}
+function renderTeams(){const map=new Map();players.forEach(p=>{const code=schoolCode(p),name=schoolName(p);if(!code||!name)return;if(!map.has(code))map.set(code,{code,name,count:0});map.get(code).count++});$('cdTeams').innerHTML=[...map.values()].sort((a,b)=>a.name.localeCompare(b.name)).map(t=>`<a class="cd-team-card" href="university-team.html?school=${encodeURIComponent(t.code)}">${markHtml(t)}<span><strong>${esc(t.name)}</strong><small>${t.count}명 등록</small></span></a>`).join('')}
+function renderSources(){
+ const sources=[...(competition.sources||[]),{label:'2026 고성대회 팜플렛(PDF)',url:'pamphlet-archive.html'}];
+ $('cdSources').innerHTML=sources.map(s=>`<a href="${esc(s.url)}" ${/^https?:/.test(s.url)?'target="_blank" rel="noopener"':''}>${esc(s.label)} →</a>`).join('');
+}
 document.querySelectorAll('.cd-tabs button').forEach(btn=>btn.addEventListener('click',()=>{division=btn.dataset.division;stageFilter='전체';document.querySelectorAll('.cd-tabs button').forEach(x=>x.classList.toggle('is-active',x===btn));renderResults();renderStandings();renderPodium()}));
 Promise.all([fetch(COMPETITION_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}),fetch(PLAYER_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}),fetch(BRAND_URL,{cache:'no-store'}).then(r=>r.ok?r.json():{teams:{}}).catch(()=>({teams:{}}))]).then(([c,p,b])=>{competition=c;players=p;brands=b;activateView();renderMeta();renderKpis();renderCalendar();renderResults();renderStandings();renderPodium();renderTeams();renderSources()}).catch(err=>{console.error(err);$('cdResults').innerHTML='<div class="cd-empty">대회 데이터를 불러오지 못했습니다.</div>'});
 })();
