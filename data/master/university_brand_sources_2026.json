@@ -12,19 +12,37 @@
       "school_name": "한양대학교",
       "status": "source_verified",
       "source_url": "https://www.hanyang.ac.kr/web/www/symbol-logo",
+      "download_url": "https://www.hanyang.ac.kr/documents/20122/350734610/HYU_symbol_basic.svg/dc0c57f3-2f6a-5d89-81f6-60007d84f00c?download=true&t=1774836908854",
       "asset_path": "assets/images/universities/hanyang.svg",
-      "note": "공식 UI에서 심볼마크 PNG·SVG·AI 다운로드 제공 확인. 로컬 원본 반영 전까지 이니셜 폴백 사용"
+      "preferred_format": "svg",
+      "note": "공식 UI에서 심볼마크 PNG·SVG·AI 다운로드 제공 확인. 자동 다운로드는 학교 서버에서 차단되어 원본 파일 수동 확보 필요"
     },
     "HONGIK": {
       "school_name": "홍익대학교",
       "status": "source_verified",
       "source_url": "https://www.hongik.ac.kr/kr/introduction/emblem.do",
       "asset_path": "assets/images/universities/hongik.png",
+      "preferred_format": "png",
       "note": "공식 UI에서 문장 PNG·AI 다운로드 제공 확인. 로컬 원본 반영 전까지 이니셜 폴백 사용"
     },
     "INHA": {"school_name": "인하대학교", "status": "pending"},
-    "SKKU": {"school_name": "성균관대학교", "status": "pending"},
-    "KYUNGHEE": {"school_name": "경희대학교", "status": "pending"},
+    "SKKU": {
+      "school_name": "성균관대학교",
+      "status": "source_verified",
+      "source_url": "https://www.skku.edu/skku/about/symbol/symbol_01.do",
+      "asset_path": "assets/images/universities/skku.jpg",
+      "preferred_format": "jpg",
+      "usage_review": "required",
+      "note": "공식 성대 UI 심볼마크 페이지에서 EPS·JPG 다운로드 제공 확인. 공식 페이지의 상업적 이용 제한 문구 검토 후 적용"
+    },
+    "KYUNGHEE": {
+      "school_name": "경희대학교",
+      "status": "source_verified",
+      "source_url": "https://khu.ac.kr/kor/user/contents/view.do?menuNo=200028",
+      "asset_path": "assets/images/universities/kyunghee.png",
+      "preferred_format": "png",
+      "note": "공식 UI 페이지에서 대학휘장·교표·워드마크 체계 확인. 다운로드 가능한 교표 원본 경로 추가 확인 필요"
+    },
     "MYONGJI": {"school_name": "명지대학교", "status": "pending"},
     "KYUNGIL": {"school_name": "경일대학교", "status": "pending"},
     "HONAM": {"school_name": "호남대학교", "status": "pending"},
