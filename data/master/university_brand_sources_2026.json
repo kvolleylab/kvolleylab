@@ -8,61 +8,20 @@
     "asset_ready": "홈페이지 표시용 로고 자산 반영 완료"
   },
   "teams": {
-    "HANYANG": {
-      "school_name": "한양대학교",
-      "status": "asset_ready",
-      "source_url": "https://www.hanyang.ac.kr/web/www/symbol-logo",
-      "download_url": "https://www.hanyang.ac.kr/documents/20122/350734610/HYU_symbol_basic.svg/dc0c57f3-2f6a-5d89-81f6-60007d84f00c?download=true&t=1774836908854",
-      "asset_path": "assets/images/universities/hanyang.svg",
-      "preferred_format": "svg",
-      "asset_source": "2026 KUSF 대학배구 U-리그 가이드북 4페이지",
-      "note": "팸플릿 기준 표시용 자산 우선 반영. 학교 공식 원본 확보 시 동일 경로에 교체"
-    },
-    "HONGIK": {
-      "school_name": "홍익대학교",
-      "status": "asset_ready",
-      "source_url": "https://www.hongik.ac.kr/kr/introduction/emblem.do",
-      "asset_path": "assets/images/universities/hongik.svg",
-      "preferred_format": "svg",
-      "asset_source": "2026 KUSF 대학배구 U-리그 가이드북 4페이지",
-      "note": "팸플릿 기준 표시용 자산 우선 반영. 학교 공식 원본 확보 시 동일 경로에 교체"
-    },
-    "INHA": {
-      "school_name": "인하대학교",
-      "status": "asset_ready",
-      "asset_path": "assets/images/universities/inha.svg",
-      "preferred_format": "svg",
-      "asset_source": "2026 KUSF 대학배구 U-리그 가이드북 4페이지",
-      "note": "대학연맹 팸플릿 기준 대표 로고 적용"
-    },
-    "SKKU": {
-      "school_name": "성균관대학교",
-      "status": "asset_ready",
-      "source_url": "https://www.skku.edu/skku/about/symbol/symbol_01.do",
-      "asset_path": "assets/images/universities/skku.svg",
-      "preferred_format": "svg",
-      "usage_review": "required",
-      "asset_source": "2026 KUSF 대학배구 U-리그 가이드북 4페이지",
-      "note": "팸플릿 기준 표시용 자산 우선 반영. 공식 UI 사용조건은 계속 검토"
-    },
-    "KYUNGHEE": {
-      "school_name": "경희대학교",
-      "status": "asset_ready",
-      "source_url": "https://khu.ac.kr/kor/user/contents/view.do?menuNo=200028",
-      "asset_path": "assets/images/universities/kyunghee.svg",
-      "preferred_format": "svg",
-      "asset_source": "2026 KUSF 대학배구 U-리그 가이드북 4·11·12페이지",
-      "note": "대학연맹 팸플릿에서 반복 사용된 적색·금색 문장형 로고 적용"
-    },
-    "MYONGJI": {"school_name": "명지대학교", "status": "pending"},
-    "KYUNGIL": {"school_name": "경일대학교", "status": "pending"},
-    "HONAM": {"school_name": "호남대학교", "status": "pending"},
-    "JOONGBU": {"school_name": "중부대학교", "status": "pending"},
-    "KYONGGI": {"school_name": "경기대학교", "status": "pending"},
-    "CHOSUN": {"school_name": "조선대학교", "status": "pending"},
-    "MOKPO": {"school_name": "국립목포대학교", "status": "pending"},
-    "CHUNGNAM": {"school_name": "충남대학교", "status": "pending"},
-    "GYEONGSANG": {"school_name": "경상국립대학교", "status": "pending"},
-    "WOOSUK": {"school_name": "우석대학교", "status": "pending"}
+    "HANYANG": {"school_name":"한양대학교","status":"asset_ready","source_url":"https://www.hanyang.ac.kr/web/www/symbol-logo","asset_path":"assets/images/universities/hanyang.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산 우선 반영. 학교 공식 원본 확보 시 동일 경로에 교체"},
+    "HONGIK": {"school_name":"홍익대학교","status":"asset_ready","source_url":"https://www.hongik.ac.kr/kr/introduction/emblem.do","asset_path":"assets/images/universities/hongik.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산 우선 반영. 학교 공식 원본 확보 시 동일 경로에 교체"},
+    "INHA": {"school_name":"인하대학교","status":"asset_ready","asset_path":"assets/images/universities/inha.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"대학연맹 팸플릿 기준 대표 로고 적용"},
+    "SKKU": {"school_name":"성균관대학교","status":"asset_ready","source_url":"https://www.skku.edu/skku/about/symbol/symbol_01.do","asset_path":"assets/images/universities/skku.svg","preferred_format":"svg","usage_review":"required","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산 우선 반영. 공식 UI 사용조건은 계속 검토"},
+    "KYUNGHEE": {"school_name":"경희대학교","status":"asset_ready","source_url":"https://khu.ac.kr/kor/user/contents/view.do?menuNo=200028","asset_path":"assets/images/universities/kyunghee.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4·11·12페이지","note":"대학연맹 팸플릿에서 반복 사용된 적색·금색 문장형 로고 적용"},
+    "MYONGJI": {"school_name":"명지대학교","status":"asset_ready","asset_path":"assets/images/universities/myongji.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "KYUNGIL": {"school_name":"경일대학교","status":"asset_ready","asset_path":"assets/images/universities/kyungil.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "HONAM": {"school_name":"호남대학교","status":"asset_ready","asset_path":"assets/images/universities/honam.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "JOONGBU": {"school_name":"중부대학교","status":"asset_ready","asset_path":"assets/images/universities/joongbu.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "KYONGGI": {"school_name":"경기대학교","status":"asset_ready","asset_path":"assets/images/universities/kyonggi.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "CHOSUN": {"school_name":"조선대학교","status":"asset_ready","asset_path":"assets/images/universities/chosun.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "MOKPO": {"school_name":"국립목포대학교","status":"asset_ready","asset_path":"assets/images/universities/mokpo.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "CHUNGNAM": {"school_name":"충남대학교","status":"asset_ready","asset_path":"assets/images/universities/chungnam.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "GYEONGSANG": {"school_name":"경상국립대학교","status":"asset_ready","asset_path":"assets/images/universities/gyeongsang.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"},
+    "WOOSUK": {"school_name":"우석대학교","status":"asset_ready","asset_path":"assets/images/universities/woosuk.svg","preferred_format":"svg","asset_source":"2026 KUSF 대학배구 U-리그 가이드북 4페이지","note":"팸플릿 기준 표시용 자산"}
   }
 }
