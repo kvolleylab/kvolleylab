@@ -1,9 +1,6 @@
 name: Register Joongbu players in Player Master
 
 on:
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -15,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          ref: main
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -62,4 +60,4 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/master/player_master.json
           git commit -m 'Register 22 Joongbu players in Player Master v1' || exit 0
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin HEAD:main
