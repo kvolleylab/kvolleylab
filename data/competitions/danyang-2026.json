@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0",
+  "competitionId": "danyang-2026",
+  "name": "2026 대학배구 단양대회",
+  "shortName": "2026 단양대회",
+  "titleLines": ["2026 대학배구", "단양대회"],
+  "status": "preparing",
+  "statusLabel": "대회 준비 중",
+  "dates": {"start": null, "end": null},
+  "location": "충청북도 단양군",
+  "organizer": "한국대학배구연맹",
+  "venues": [],
+  "updatedAt": "2026-07-30",
+  "summary": {"totalMatches": 0, "menMatches": 0, "womenMatches": 0},
+  "divisions": ["남대부", "여대부"],
+  "participants": {"남대부": [], "여대부": []},
+  "pools": {"남대부": [], "여대부": []},
+  "podium": {"남대부": [], "여대부": []},
+  "games": [],
+  "features": {
+    "calendar": true,
+    "results": true,
+    "groupStandings": true,
+    "qualificationCalculator": true,
+    "finalStandings": true,
+    "knockoutBracket": true,
+    "teams": true,
+    "playerDatabase": {"남대부": true, "여대부": false}
+  },
+  "sources": [],
+  "notice": "대회 일정, 참가대학 및 대진표가 발표되는 대로 업데이트합니다."
+}
