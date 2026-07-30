@@ -1,0 +1,11 @@
+.utd-roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.utd-player{display:grid;grid-template-columns:minmax(72px,1.05fr) 42px 66px 58px 54px minmax(110px,1.5fr) 44px;gap:8px;align-items:center;min-width:0;padding:14px;border:1px solid var(--line);border-radius:13px;color:var(--text);text-decoration:none;overflow:hidden;white-space:nowrap}
+.utd-player:hover{border-color:var(--gold);transform:translateY(-1px)}
+.utd-player>span{display:block;min-width:0;font-size:15px;line-height:1.4}
+.utd-player-name{font-weight:900;color:var(--text);overflow:hidden;text-overflow:ellipsis}
+.utd-player-position,.utd-player-height,.utd-player-grade,.utd-player-jersey{color:var(--soft);text-align:center}
+.utd-player-previous{color:var(--soft);overflow:hidden;text-overflow:ellipsis}
+.utd-draft,.utd-draft-slot{justify-self:end;width:44px;box-sizing:border-box;text-align:center}
+.utd-draft{padding:3px 5px;border-radius:999px;background:#fff3cd;color:#7a5600!important;font-size:10px!important}
+@media(max-width:980px){.utd-roster{grid-template-columns:1fr}.utd-player{grid-template-columns:minmax(90px,1.05fr) 50px 72px 62px 58px minmax(130px,1.5fr) 46px}}
+@media(max-width:620px){.utd-player{grid-template-columns:78px 42px 64px 56px 52px minmax(110px,1fr) 44px;gap:7px;overflow-x:auto}.utd-player>span{font-size:14px}.utd-player-previous{overflow:visible;text-overflow:clip}.utd-roster-section{overflow:hidden}}
