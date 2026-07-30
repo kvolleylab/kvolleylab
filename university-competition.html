@@ -12,6 +12,12 @@
   <style>
     .competition-dashboard-page .cd-hero h1{color:#c9a24a!important}
     .competition-dashboard-page .cd-hero-title-line{display:block}
+    .competition-dashboard-page .cd-hero-brand{display:flex;align-items:center;gap:24px;min-width:0}
+    .competition-dashboard-page .cd-competition-logo{display:grid;place-items:center;flex:0 0 110px;width:110px;height:110px;padding:10px;border:1px solid rgba(201,162,74,.38);border-radius:24px;background:#fff;box-shadow:0 10px 28px rgba(15,23,42,.08);overflow:hidden}
+    .competition-dashboard-page .cd-competition-logo img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+    .competition-dashboard-page .cd-competition-logo-fallback{display:grid;place-items:center;width:100%;height:100%;border-radius:18px;background:linear-gradient(145deg,#17365d,#0f2745);color:#c9a24a;text-align:center}
+    .competition-dashboard-page .cd-competition-logo-fallback b{display:block;font-size:38px;line-height:1}
+    .competition-dashboard-page .cd-competition-logo-fallback small{display:block;margin-top:6px;color:#fff;font-size:10px;font-weight:900;letter-spacing:.08em}
     .competition-dashboard-page .cd-stage-filters{align-items:center}
     .competition-dashboard-page .cd-pool-filter{display:flex;flex:0 0 auto;align-items:center;gap:8px;margin-left:auto;color:#536477;font-size:12px;font-weight:900;white-space:nowrap}
     .competition-dashboard-page .cd-pool-filter span{white-space:nowrap}
@@ -33,6 +39,11 @@
     .competition-dashboard-page .cd-standing-head span,.competition-dashboard-page .cd-standing-row span,.competition-dashboard-page .cd-standing-row strong{display:block;text-align:center;white-space:nowrap}
     .competition-dashboard-page .cd-standing-head span:nth-child(2),.competition-dashboard-page .cd-standing-row span:nth-child(2){text-align:left;padding-left:6px}
     @media(max-width:620px){
+      .competition-dashboard-page .cd-hero-brand{align-items:flex-start;gap:14px}
+      .competition-dashboard-page .cd-competition-logo{flex-basis:72px;width:72px;height:72px;padding:7px;border-radius:18px}
+      .competition-dashboard-page .cd-competition-logo-fallback{border-radius:13px}
+      .competition-dashboard-page .cd-competition-logo-fallback b{font-size:25px}
+      .competition-dashboard-page .cd-competition-logo-fallback small{display:none}
       .competition-dashboard-page .cd-pool-filter{width:auto;margin-left:auto;justify-content:flex-end}
       .competition-dashboard-page .cd-calendar-head{align-items:flex-start;flex-direction:column}
       .competition-dashboard-page .cd-calendar-head-right{width:100%;align-items:flex-start;justify-content:space-between}
@@ -41,13 +52,13 @@
     }
   </style>
   <script src="assets/js/unified-nav.js?v=20260729-2" defer></script>
-  <script src="assets/js/competition-dashboard-v2.js?v=20260730-3" defer></script>
+  <script src="assets/js/competition-dashboard-v2.js?v=20260730-4" defer></script>
 </head>
 <body class="competition-dashboard-page" data-competition="gosung-2026">
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
 <main class="cd-main">
   <section class="cd-hero">
-    <div class="cd-hero-copy"><p class="eyebrow">UNIVERSITY COMPETITION</p><h1 id="cdTitle"><span class="cd-hero-title-line">2026 대한항공배 전국대학배구</span><span class="cd-hero-title-line">고성대회</span></h1><p id="cdMeta">대회 정보를 불러오는 중입니다.</p></div>
+    <div class="cd-hero-brand"><div id="cdCompetitionLogo" class="cd-competition-logo" aria-label="대회 로고"><span class="cd-competition-logo-fallback"><span><b>🏐</b><small>COMPETITION</small></span></span></div><div class="cd-hero-copy"><p class="eyebrow">UNIVERSITY COMPETITION</p><h1 id="cdTitle"><span class="cd-hero-title-line">2026 대한항공배 전국대학배구</span><span class="cd-hero-title-line">고성대회</span></h1><p id="cdMeta">대회 정보를 불러오는 중입니다.</p></div></div>
     <div class="cd-status"><span>대회 종료</span><strong>공식 결과 반영</strong></div>
   </section>
   <nav class="cd-jump" aria-label="대회 메뉴">
