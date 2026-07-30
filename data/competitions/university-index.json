@@ -20,10 +20,28 @@
         "finalStandings": true,
         "knockoutBracket": true,
         "teams": true,
-        "playerDatabase": {
-          "남대부": true,
-          "여대부": false
-        }
+        "playerDatabase": {"남대부": true, "여대부": false}
+      }
+    },
+    {
+      "competitionId": "danyang-2026",
+      "name": "2026 대학배구 단양대회",
+      "shortName": "2026 단양대회",
+      "dataPath": "data/competitions/danyang-2026.json",
+      "pagePath": "university-competition-danyang.html",
+      "status": "preparing",
+      "startDate": null,
+      "endDate": null,
+      "divisions": ["남대부", "여대부"],
+      "features": {
+        "calendar": true,
+        "results": true,
+        "groupStandings": true,
+        "qualificationCalculator": true,
+        "finalStandings": true,
+        "knockoutBracket": true,
+        "teams": true,
+        "playerDatabase": {"남대부": true, "여대부": false}
       }
     }
   ]
