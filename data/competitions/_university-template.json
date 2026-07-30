@@ -1,0 +1,63 @@
+{
+  "competitionId": "replace-with-competition-id",
+  "name": "대회 전체 명칭",
+  "shortName": "대회 짧은 명칭",
+  "titleLines": [
+    "첫 번째 제목 줄",
+    "두 번째 제목 줄"
+  ],
+  "logo_path": "assets/images/competitions/replace-logo.png",
+  "dates": {
+    "start": "YYYY-MM-DD",
+    "end": "YYYY-MM-DD"
+  },
+  "location": "개최 지역",
+  "organizer": "주최·주관 기관",
+  "venues": [
+    "경기장 1"
+  ],
+  "updatedAt": "YYYY-MM-DD",
+  "summary": {
+    "totalMatches": 0,
+    "menMatches": 0,
+    "womenMatches": 0
+  },
+  "podium": {
+    "남대부": [],
+    "여대부": []
+  },
+  "knockout": {
+    "남대부": {
+      "type": "six-team",
+      "ruleTitle": "6강 토너먼트 대진 추첨 방식",
+      "ruleText": "대회요강에 따른 결선 진출 방식을 입력합니다."
+    },
+    "여대부": {
+      "type": "semifinal",
+      "ruleTitle": "",
+      "ruleText": ""
+    }
+  },
+  "games": [
+    {
+      "id": "M-A-01",
+      "date": "YYYY-MM-DD",
+      "time": "10:00",
+      "division": "남대부",
+      "pool": "A",
+      "stage": "예선",
+      "teamA": "팀A",
+      "teamB": "팀B",
+      "score": "3-0",
+      "sets": ["25-20", "25-21", "25-19"],
+      "venue": "경기장 1",
+      "status": "공식 결과"
+    }
+  ],
+  "sources": [
+    {
+      "label": "대회 공식자료",
+      "url": "https://example.com"
+    }
+  ]
+}
