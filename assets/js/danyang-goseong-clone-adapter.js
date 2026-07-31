@@ -7,7 +7,7 @@ let danyangData=null;
 window.fetch=async(input,init)=>{
   const url=typeof input==='string'?input:input?.url||'';
   if(url.includes('data/competitions/gosung-2026.json')){
-    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-2`,init);
+    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-3`,init);
     if(!response.ok)return response;
     const data=await response.json();
     data.podium=data.podium||{'남대부':[],'여대부':[]};
@@ -25,24 +25,6 @@ window.fetch=async(input,init)=>{
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ratio=(won,lost)=>lost===0?(won>0?Infinity:0):won/lost;
 const initials=name=>String(name||'').replace('대학교','').replace('대','').slice(0,2);
-
-function ensureListStyle(){
-  if(document.getElementById('cdListLinkStyle'))return;
-  const style=document.createElement('style');
-  style.id='cdListLinkStyle';
-  style.textContent='.competition-dashboard-page .cd-jump a.is-list{padding:10px 14px!important;border:1px solid #d6b25e!important;border-radius:999px!important;background:#fffaf0!important;color:#17365d!important;font-weight:900!important}.competition-dashboard-page .cd-jump a.is-list:hover{border-color:#c9a24a!important;background:#fff3cc!important;color:#17365d!important}';
-  document.head.appendChild(style);
-}
-
-function ensureCompetitionListLink(){
-  const nav=document.querySelector('.cd-jump');
-  if(!nav||nav.querySelector('.is-list'))return;
-  const link=document.createElement('a');
-  link.className='is-list';
-  link.href='university-competitions.html';
-  link.textContent='← 대회 목록';
-  nav.prepend(link);
-}
 
 function rowsFor(data,division,poolName,teams){
   const table=new Map(teams.map(team=>[team,{team,played:0,wins:0,losses:0,setsWon:0,setsLost:0}]));
@@ -87,8 +69,6 @@ function renderSources(data){
 
 function applyDanyangOnce(data){
   document.title='2026 단양대회 | K-Volley Lab';
-  ensureListStyle();
-  ensureCompetitionListLink();
 
   const title=document.getElementById('cdTitle');
   if(title)title.innerHTML=(data.titleLines||['2026 대한항공배','전국대학배구 단양대회']).map(x=>`<span class="cd-hero-title-line">${esc(x)}</span>`).join('');
@@ -145,7 +125,7 @@ function waitForMainRender(data){
 
 async function start(){
   try{
-    const data=danyangData||await nativeFetch(`${DANYANG_URL}?v=20260801-2`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
+    const data=danyangData||await nativeFetch(`${DANYANG_URL}?v=20260801-3`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
     waitForMainRender(data);
   }catch(error){console.error('Danyang clone adapter failed',error);}
 }
