@@ -55,6 +55,20 @@
   if(!document.querySelector('link[href*="kvl-global-sidebar-submenus.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-submenus.css?v=20260725-1';document.head.appendChild(link)}
   if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20260725-1';script.defer=true;document.head.appendChild(script)}
 
+  if(path==='university-competition.html'){
+    const addCompetitionListLink=()=>{
+      const main=document.querySelector('.cd-main');
+      const hero=main?.querySelector('.cd-hero');
+      if(!main||!hero||main.querySelector('.kvl-competition-list-link'))return;
+      const style=document.createElement('style');
+      style.textContent='.kvl-competition-list-link{display:inline-flex;align-items:center;gap:7px;margin:0 0 14px;padding:9px 14px;border:1px solid #dbe2ea;border-radius:999px;background:#fff;color:#17365d;font-size:13px;font-weight:900;text-decoration:none;box-shadow:0 5px 14px rgba(15,23,42,.05)}.kvl-competition-list-link:hover{border-color:#c9a24a;background:#fffaf0}.kvl-competition-list-link:focus-visible{outline:3px solid rgba(201,162,74,.35);outline-offset:2px}';
+      document.head.appendChild(style);
+      hero.insertAdjacentHTML('beforebegin','<a class="kvl-competition-list-link" href="university-competitions.html" aria-label="대학배구 대회 목록으로 이동">← 대회 목록</a>');
+    };
+    if(document.readyState==='loading')addEventListener('DOMContentLoaded',addCompetitionListLink,{once:true});
+    else addCompetitionListLink();
+  }
+
   if(path==='vnl.html'){
     if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-2';document.head.appendChild(link)}
     if(!document.querySelector('link[href*="vnl-schedule-stage.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/vnl-schedule-stage.css?v=20260728-1';document.head.appendChild(link)}
