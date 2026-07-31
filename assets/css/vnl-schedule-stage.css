@@ -1,4 +1,131 @@
-/* VNL schedule section refinement: preserves existing calendar and team links. */
+/* VNL competition hub first-pass refinement.
+   Preserves the existing calendar, standings script and player/team links. */
+
+/* Make the legacy VNL sections follow the shared competition-hub rhythm. */
+.competition-hub .vnl-hero {
+  padding: 42px 0 28px;
+}
+
+.competition-hub .vnl-hero .competition-hero-content {
+  max-width: 900px;
+}
+
+.competition-hub .vnl-hero h1 {
+  color: var(--text);
+  letter-spacing: -1.2px;
+}
+
+.competition-hub .vnl-meta span {
+  background: rgba(255, 255, 255, .035);
+}
+
+.competition-hub .vnl-tabs-wrap {
+  margin-top: 0;
+}
+
+.competition-hub .vnl-tabs a {
+  border-color: transparent;
+  color: var(--muted);
+}
+
+.competition-hub .vnl-tabs a:hover,
+.competition-hub .vnl-tabs a.active {
+  border-color: transparent;
+  background: var(--competition-accent-soft);
+  color: var(--competition-accent);
+}
+
+.competition-hub .vnl-section {
+  scroll-margin-top: 148px;
+  margin-bottom: 64px;
+}
+
+.competition-hub .vnl-section-head {
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.competition-hub .vnl-section-head h2 {
+  color: var(--text);
+  font-size: clamp(24px, 3vw, 30px);
+}
+
+.competition-hub .vnl-section-head > p {
+  color: var(--soft);
+}
+
+/* Use cards for navigation, teams and resources without changing the HTML. */
+.competition-hub .quick-grid,
+.competition-hub .team-grid,
+.competition-hub .entry-grid,
+.competition-hub .resource-grid {
+  gap: 14px;
+}
+
+.competition-hub .hub-card,
+.competition-hub .team-card,
+.competition-hub .entry-card,
+.competition-hub .resource-card {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, .055);
+  box-shadow: none;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+
+.competition-hub .hub-card:hover,
+.competition-hub .team-card:hover,
+.competition-hub .entry-card:hover,
+.competition-hub .resource-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--competition-accent);
+  background: var(--competition-accent-soft);
+}
+
+.competition-hub .hub-card strong,
+.competition-hub .entry-card strong,
+.competition-hub .resource-card strong,
+.competition-hub .team-name {
+  color: var(--text);
+}
+
+.competition-hub .badge {
+  margin-bottom: 12px;
+  background: var(--competition-accent-soft);
+  color: var(--competition-accent);
+  letter-spacing: .03em;
+}
+
+.competition-hub .team-card {
+  min-height: 138px;
+}
+
+.competition-hub .flag-img {
+  width: 56px;
+  height: 36px;
+}
+
+.competition-hub .status {
+  color: var(--soft);
+}
+
+.competition-hub .notice {
+  border-color: rgba(214, 178, 94, .28);
+  background: rgba(214, 178, 94, .065);
+}
+
+.competition-hub .schedule-links a {
+  background: rgba(255, 255, 255, .035);
+}
+
+.competition-hub .vnl-standings-wrap {
+  border-radius: var(--radius-md);
+}
+
+.competition-hub .vnl-standings-table th {
+  color: var(--competition-accent);
+}
+
+/* Schedule section refinement: preserves existing calendar and team links. */
 #schedule.vnl-schedule-stage {
   padding: 22px;
   border: 1px solid var(--line);
@@ -68,9 +195,51 @@
   display: none;
 }
 
+@media (max-width: 820px) {
+  .competition-hub .vnl-section-head {
+    align-items: flex-start;
+  }
+
+  .competition-hub .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
-  #schedule.vnl-schedule-stage { padding: 16px; }
-  .vnl-calendar-entry { grid-template-columns: 1fr; padding: 16px; }
-  .vnl-calendar-entry a { width: 100%; }
-  #schedule.vnl-schedule-stage .schedule-links a { flex: 1 1 calc(33.333% - 8px); }
+  .competition-hub .vnl-hero {
+    padding-top: 30px;
+  }
+
+  .competition-hub .vnl-section {
+    margin-bottom: 48px;
+  }
+
+  .competition-hub .quick-grid,
+  .competition-hub .entry-grid,
+  .competition-hub .resource-grid,
+  .competition-hub .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .competition-hub .team-card {
+    min-height: 0;
+  }
+
+  #schedule.vnl-schedule-stage {
+    padding: 16px;
+  }
+
+  .vnl-calendar-entry {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .vnl-calendar-entry a {
+    width: 100%;
+  }
+
+  #schedule.vnl-schedule-stage .schedule-links a {
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+  }
 }
