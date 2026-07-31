@@ -7,7 +7,7 @@ let danyangData=null;
 window.fetch=async(input,init)=>{
   const url=typeof input==='string'?input:input?.url||'';
   if(url.includes('data/competitions/gosung-2026.json')){
-    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-3`,init);
+    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-4`,init);
     if(!response.ok)return response;
     const data=await response.json();
     data.podium=data.podium||{'남대부':[],'여대부':[]};
@@ -24,7 +24,6 @@ window.fetch=async(input,init)=>{
 
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ratio=(won,lost)=>lost===0?(won>0?Infinity:0):won/lost;
-const initials=name=>String(name||'').replace('대학교','').replace('대','').slice(0,2);
 
 function rowsFor(data,division,poolName,teams){
   const table=new Map(teams.map(team=>[team,{team,played:0,wins:0,losses:0,setsWon:0,setsLost:0}]));
@@ -51,13 +50,6 @@ function renderStandings(data,division='남대부'){
   }).join('');
   const note=document.getElementById('cdStandingNote');
   if(note)note.textContent=`${division} 조별리그 완료 경기 기준 순위입니다.`;
-}
-
-function renderParticipants(data){
-  const root=document.getElementById('cdTeams');
-  if(!root)return;
-  const divisions=data.participants||{};
-  root.innerHTML=Object.entries(divisions).map(([division,teams])=>`<section class="cd-team-section"><div class="cd-team-section-head"><h3>${esc(division)}</h3><span>${teams.length}개 대학</span></div><div class="cd-team-grid">${teams.map(team=>`<a class="cd-team-card" href="university-team.html?school=${encodeURIComponent(team)}"><span class="cd-team-mark">${esc(initials(team))}</span><span><strong>${esc(team)}</strong><small>${esc(division)} 참가</small></span></a>`).join('')}</div></section>`).join('');
 }
 
 function renderSources(data){
@@ -101,7 +93,6 @@ function applyDanyangOnce(data){
   if(note)note.textContent='단양대회 공식 일정 기준';
 
   renderStandings(data,'남대부');
-  renderParticipants(data);
   renderSources(data);
 
   document.querySelectorAll('[data-standing-division]').forEach(button=>{
@@ -125,7 +116,7 @@ function waitForMainRender(data){
 
 async function start(){
   try{
-    const data=danyangData||await nativeFetch(`${DANYANG_URL}?v=20260801-3`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
+    const data=danyangData||await nativeFetch(`${DANYANG_URL}?v=20260801-4`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
     waitForMainRender(data);
   }catch(error){console.error('Danyang clone adapter failed',error);}
 }
