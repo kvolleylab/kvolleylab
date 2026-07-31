@@ -9,7 +9,7 @@ let danyangData=null;
 window.fetch=async(input,init)=>{
   const url=typeof input==='string'?input:input?.url||'';
   if(url.includes('data/competitions/gosung-2026.json')){
-    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-6`,init);
+    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-7`,init);
     if(!response.ok)return response;
     const data=await response.json();
     data.podium=data.podium||{'남대부':[],'여대부':[]};
@@ -65,9 +65,7 @@ function renderQualificationState(data,division='남대부'){
   const prelim=(data.games||[]).filter(g=>g.division===division&&g.stage==='예선');
   const completed=prelim.filter(g=>g.completed&&g.score).length;
   poolBox.innerHTML='';
-  calcBox.innerHTML=completed===prelim.length&&prelim.length
-    ?'<div class="cd-empty">공식 경기결과 반영 후 진출 계산기를 제공합니다.</div>'
-    :`<div class="cd-empty">대회 시작 전입니다. 조별리그 ${prelim.length}경기 중 ${completed}경기가 완료되었습니다.</div>`;
+  calcBox.innerHTML=`<div class="cd-empty">${completed===prelim.length&&prelim.length?'조별리그 공식 결과가 모두 반영되었습니다.':'대회 시작 전입니다.'} 조별리그 ${prelim.length}경기 중 ${completed}경기가 완료되었습니다.</div>`;
 }
 
 function renderParticipants(data,players,brands){
@@ -115,13 +113,35 @@ function resetSnapshot(division){
   if(note)note.textContent=division==='남대부'?'단양대회 공식 일정 기준':'여대부 공식 일정 기준 · 선수명단 자료 미연결';
 }
 
+function normalizeScheduledGames(){
+  document.querySelectorAll('.cd-cal-game').forEach(card=>{
+    card.href='university-competition-danyang.html?view=results';
+    const score=card.querySelector('b');
+    if(score&&!score.textContent.trim())score.textContent='vs';
+  });
+  document.querySelectorAll('.cd-match').forEach(card=>{
+    const score=card.querySelector('.cd-score');
+    if(!score||score.textContent.trim())return;
+    score.textContent='vs';
+    card.querySelectorAll('.cd-winner').forEach(team=>team.classList.remove('cd-winner'));
+  });
+}
+
+function observeRerenders(){
+  if(window.__danyangRenderObserver)return;
+  const roots=[document.getElementById('cdCalendar'),document.getElementById('cdResults')].filter(Boolean);
+  if(!roots.length)return;
+  const observer=new MutationObserver(()=>queueMicrotask(normalizeScheduledGames));
+  roots.forEach(root=>observer.observe(root,{childList:true,subtree:true}));
+  window.__danyangRenderObserver=observer;
+}
+
 function bindDanyangState(data){
   document.querySelectorAll('[data-calendar-division]').forEach(button=>{
     if(button.dataset.danyangBound)return;
     button.dataset.danyangBound='1';
-    button.addEventListener('click',()=>queueMicrotask(()=>resetSnapshot(button.dataset.calendarDivision)));
+    button.addEventListener('click',()=>queueMicrotask(()=>{resetSnapshot(button.dataset.calendarDivision);normalizeScheduledGames();}));
   });
-
   document.querySelectorAll('[data-standing-division]').forEach(button=>{
     if(button.dataset.danyangBound)return;
     button.dataset.danyangBound='1';
@@ -141,16 +161,16 @@ function applyDanyangOnce(data,players,brands){
   const status=document.querySelector('.cd-status');
   if(status)status.innerHTML=`<span>대회 상태</span><strong>${esc(data.statusLabel||'대회 준비 중')}</strong>`;
   document.querySelectorAll('.cd-jump a[data-view]').forEach(a=>{a.href=`university-competition-danyang.html?view=${a.dataset.view}`;a.hidden=false;});
-  document.querySelectorAll('.cd-cal-game').forEach(a=>{a.href='university-competition-danyang.html?view=results';const b=a.querySelector('b');if(b&&!b.textContent.trim())b.textContent='vs';});
-  document.querySelectorAll('.cd-score').forEach(b=>{if(!b.textContent.trim())b.textContent='vs';});
   const finalSection=document.getElementById('standings');if(finalSection)finalSection.hidden=false;
   const qualifier=document.querySelector('.cd-qualifier');if(qualifier)qualifier.hidden=false;
   resetSnapshot('남대부');
+  normalizeScheduledGames();
   renderStandings(data,'남대부');
   renderQualificationState(data,'남대부');
   renderParticipants(data,players,brands);
   renderSources(data);
   bindDanyangState(data);
+  observeRerenders();
 }
 
 function waitForMainRender(data,players,brands){
@@ -163,7 +183,7 @@ function waitForMainRender(data,players,brands){
 async function start(){
   try{
     const [data,players,brands]=await Promise.all([
-      danyangData||nativeFetch(`${DANYANG_URL}?v=20260801-6`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}),
+      danyangData||nativeFetch(`${DANYANG_URL}?v=20260801-7`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}),
       nativeFetch(PLAYER_URL,{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[]),
       nativeFetch(BRAND_URL,{cache:'no-store'}).then(r=>r.ok?r.json():{teams:{}}).catch(()=>({teams:{}}))
     ]);
