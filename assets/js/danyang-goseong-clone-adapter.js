@@ -2,12 +2,14 @@
 'use strict';
 const nativeFetch=window.fetch.bind(window);
 const DANYANG_URL='data/competitions/danyang-2026.json';
+const PLAYER_URL='data/master/player_master_229_v2.json';
+const BRAND_URL='data/master/university_brand_sources_2026.json';
 let danyangData=null;
 
 window.fetch=async(input,init)=>{
   const url=typeof input==='string'?input:input?.url||'';
   if(url.includes('data/competitions/gosung-2026.json')){
-    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-4`,init);
+    const response=await nativeFetch(`${DANYANG_URL}?v=20260801-5`,init);
     if(!response.ok)return response;
     const data=await response.json();
     data.podium=data.podium||{'남대부':[],'여대부':[]};
@@ -24,6 +26,10 @@ window.fetch=async(input,init)=>{
 
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ratio=(won,lost)=>lost===0?(won>0?Infinity:0):won/lost;
+const schoolName=p=>p.current_roster?.school_name||String(p.current_roster?.team_name||'').replace(' 남자배구부','');
+const schoolCode=p=>p.current_roster?.school_code||schoolName(p);
+const shortName=n=>String(n||'').replace('국립목포대학교','목포대').replace('경상국립대학교','경상국립대').replace('국립','').replace('대학교','대');
+const initials=n=>shortName(n).replace('대','').slice(0,2);
 
 function rowsFor(data,division,poolName,teams){
   const table=new Map(teams.map(team=>[team,{team,played:0,wins:0,losses:0,setsWon:0,setsLost:0}]));
@@ -52,6 +58,31 @@ function renderStandings(data,division='남대부'){
   if(note)note.textContent=`${division} 조별리그 완료 경기 기준 순위입니다.`;
 }
 
+function renderParticipants(data,players,brands){
+  const root=document.getElementById('cdTeams');
+  if(!root)return;
+  const participants=[...(data.participants?.남대부||[])];
+  const playerTeams=new Map();
+  players.forEach(player=>{
+    const code=schoolCode(player),name=schoolName(player),label=shortName(name);
+    if(!code||!name)return;
+    if(!playerTeams.has(label))playerTeams.set(label,{code,name,count:0});
+    playerTeams.get(label).count++;
+  });
+  const brandList=Object.values(brands.teams||{});
+  const cards=participants.map(label=>{
+    const info=playerTeams.get(shortName(label))||{code:label,name:label,count:0};
+    const brand=brands.teams?.[info.code]||brandList.find(item=>shortName(item.school_name)===shortName(label));
+    const mark=brand?.status==='asset_ready'&&brand.asset_path
+      ?`<span class="cd-team-mark cd-team-logo"><img src="${esc(brand.asset_path)}" alt="${esc(info.name)} 로고" loading="lazy" onerror="this.parentElement.textContent='${esc(initials(label))}'"></span>`
+      :`<span class="cd-team-mark">${esc(initials(label))}</span>`;
+    return {...info,label,mark};
+  }).sort((a,b)=>a.label.localeCompare(b.label,'ko'));
+  root.innerHTML=cards.map(team=>`<a class="cd-team-card" href="university-team.html?school=${encodeURIComponent(team.code||team.name)}">${team.mark}<span><strong>${esc(team.label)}</strong><small>${team.count?`${team.count}명 등록`:'선수명단 확인 중'}</small></span></a>`).join('');
+  const heading=document.querySelector('#teams .cd-section-title h2');
+  if(heading)heading.textContent='남대부 참가대학';
+}
+
 function renderSources(data){
   const root=document.getElementById('cdSources');
   if(!root)return;
@@ -59,7 +90,7 @@ function renderSources(data){
   root.innerHTML=sources.length?sources.map(s=>`<a href="${esc(s.url||'#')}" ${/^https?:/.test(s.url||'')?'target="_blank" rel="noopener"':''}>${esc(s.label||'공식자료')} →</a>`).join(''):'<div class="cd-empty">공식자료가 등록되면 이곳에 표시됩니다.</div>';
 }
 
-function applyDanyangOnce(data){
+function applyDanyangOnce(data,players,brands){
   document.title='2026 단양대회 | K-Volley Lab';
 
   const title=document.getElementById('cdTitle');
@@ -93,6 +124,7 @@ function applyDanyangOnce(data){
   if(note)note.textContent='단양대회 공식 일정 기준';
 
   renderStandings(data,'남대부');
+  renderParticipants(data,players,brands);
   renderSources(data);
 
   document.querySelectorAll('[data-standing-division]').forEach(button=>{
@@ -103,21 +135,25 @@ function applyDanyangOnce(data){
   });
 }
 
-function waitForMainRender(data){
+function waitForMainRender(data,players,brands){
   const ready=()=>document.getElementById('cdCalendar')?.children.length||document.querySelector('.cd-empty')||document.querySelector('.cd-match');
-  if(ready())return applyDanyangOnce(data);
+  if(ready())return applyDanyangOnce(data,players,brands);
   const observer=new MutationObserver(()=>{
     if(!ready())return;
     observer.disconnect();
-    applyDanyangOnce(data);
+    applyDanyangOnce(data,players,brands);
   });
   observer.observe(document.querySelector('main')||document.body,{childList:true,subtree:true});
 }
 
 async function start(){
   try{
-    const data=danyangData||await nativeFetch(`${DANYANG_URL}?v=20260801-4`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();});
-    waitForMainRender(data);
+    const [data,players,brands]=await Promise.all([
+      danyangData||nativeFetch(`${DANYANG_URL}?v=20260801-5`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json();}),
+      nativeFetch(PLAYER_URL,{cache:'no-store'}).then(r=>r.ok?r.json():[]).catch(()=>[]),
+      nativeFetch(BRAND_URL,{cache:'no-store'}).then(r=>r.ok?r.json():{teams:{}}).catch(()=>({teams:{}}))
+    ]);
+    waitForMainRender(data,players,brands);
   }catch(error){console.error('Danyang clone adapter failed',error);}
 }
 
