@@ -1,129 +1,59 @@
 (()=>{
+  'use strict';
   const DATA_URL='data/competitions/gosung-2026.json';
+  const COMPETITION_ID='gosung-2026';
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const ratio=(a,b)=>b? a/b : (a?999:0);
+  const fmt=v=>Number.isFinite(v)?v.toFixed(3):'∞';
 
-  function installStyles(){
-    if(document.getElementById('kvlSignatureQualificationStyle')) return;
-    const style=document.createElement('style');
-    style.id='kvlSignatureQualificationStyle';
-    style.textContent=`
-      .kvl-ranking-rule-card{margin:28px 0 0!important;max-width:none!important}
-      .kvl-ranking-rule-card .kvl-rule-summary{display:block;margin:12px 0 2px;color:#17365d;font-weight:900}
-      .kvl-signature-calc{margin-top:26px;border:1px solid #dbe2ea;border-radius:24px;background:#fff;overflow:hidden}
-      .kvl-signature-calc summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;cursor:pointer;list-style:none;background:linear-gradient(135deg,#f8fafc,#fff)}
-      .kvl-signature-calc summary::-webkit-details-marker{display:none}
-      .kvl-signature-calc summary strong{display:block;color:#17365d;font-size:20px}
-      .kvl-signature-calc summary span{display:block;margin-top:5px;color:#64748b;font-size:13px;line-height:1.55}
-      .kvl-signature-calc summary:after{content:'계산기 열기';flex:0 0 auto;padding:9px 14px;border-radius:999px;background:#17365d;color:#fff;font-size:12px;font-weight:900}
-      .kvl-signature-calc[open] summary:after{content:'계산기 닫기'}
-      .kvl-signature-body{padding:0 24px 24px}
-      .kvl-signature-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:18px 0}
-      .kvl-signature-controls label{display:flex;align-items:center;gap:8px;color:#536477;font-size:13px;font-weight:900}
-      .kvl-signature-controls select{padding:9px 34px 9px 12px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;color:#17365d;font:inherit;font-weight:900}
-      .kvl-signature-status{padding:18px;border-radius:18px;background:#eef6ff;color:#17365d;font-weight:900;line-height:1.65}
-      .kvl-signature-status.is-qualified{background:#eaf8ef;color:#166534}
-      .kvl-signature-status.is-out{background:#fff1f1;color:#991b1b}
-      .kvl-signature-table-wrap{margin-top:16px;overflow:auto;border:1px solid #e2e8f0;border-radius:16px}
-      .kvl-signature-table{width:100%;min-width:690px;border-collapse:collapse;background:#fff}
-      .kvl-signature-table th,.kvl-signature-table td{padding:11px 10px;border-bottom:1px solid #eef2f7;text-align:center;font-size:13px}
-      .kvl-signature-table th{background:#f8fafc;color:#536477;font-weight:900}
-      .kvl-signature-table td:nth-child(2),.kvl-signature-table th:nth-child(2){text-align:left}
-      .kvl-signature-table tr.is-qualified{background:#f0fdf4}
-      .kvl-signature-table tr.is-selected{outline:2px solid #c9a24a;outline-offset:-2px}
-      .kvl-qual-badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#166534;color:#fff;font-size:11px;font-weight:900}
-      .kvl-signature-note{margin:14px 0 0;color:#64748b;font-size:12px;line-height:1.7}
-      #group-standings>.cd-qualifier{display:none!important}
-      @media(max-width:620px){.kvl-signature-calc summary{align-items:flex-start;padding:18px}.kvl-signature-calc summary strong{font-size:18px}.kvl-signature-body{padding:0 16px 18px}.kvl-signature-controls{align-items:flex-start;flex-direction:column}.kvl-signature-controls label{width:100%;justify-content:space-between}.kvl-signature-controls select{min-width:150px}}
-    `;
-    document.head.appendChild(style);
+  function styles(){
+    if(document.getElementById('kvlSignatureQualificationStyle'))return;
+    const s=document.createElement('style');s.id='kvlSignatureQualificationStyle';s.textContent=`
+    .kvl-ranking-rule-card{margin:28px 0 0!important;max-width:none!important}.kvl-rule-summary{display:block;margin:12px 0 3px;color:#17365d;font-weight:900}.kvl-rule-checked{display:block;margin-top:5px;color:#64748b;font-size:12px}
+    .kvl-signature-calc{margin-top:26px;border:1px solid #dbe2ea;border-radius:24px;background:#fff;overflow:hidden}.kvl-signature-calc summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;cursor:pointer;list-style:none;background:linear-gradient(135deg,#f8fafc,#fff)}.kvl-signature-calc summary::-webkit-details-marker{display:none}.kvl-signature-calc summary strong{display:block;color:#17365d;font-size:20px}.kvl-signature-calc summary span{display:block;margin-top:5px;color:#64748b;font-size:13px;line-height:1.55}.kvl-signature-calc summary:after{content:'계산기 열기';flex:0 0 auto;padding:9px 14px;border-radius:999px;background:#17365d;color:#fff;font-size:12px;font-weight:900}.kvl-signature-calc[open] summary:after{content:'계산기 닫기'}
+    .kvl-signature-body{padding:0 24px 24px}.kvl-signature-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:18px 0}.kvl-signature-controls label{display:flex;align-items:center;gap:8px;color:#536477;font-size:13px;font-weight:900}.kvl-signature-controls select{padding:9px 34px 9px 12px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;color:#17365d;font:inherit;font-weight:900}.kvl-signature-status{padding:18px;border-radius:18px;background:#eef6ff;color:#17365d;font-weight:900;line-height:1.65}.kvl-signature-status.is-qualified{background:#eaf8ef;color:#166534}.kvl-signature-status.is-out{background:#fff1f1;color:#991b1b}
+    .kvl-pending{margin-top:18px;padding:16px;border:1px solid #e2e8f0;border-radius:18px;background:#f8fafc}.kvl-pending h3{margin:0 0 6px;color:#17365d}.kvl-pending-intro{margin:0 0 12px;color:#64748b;font-size:12px}.kvl-game-input{display:grid;grid-template-columns:minmax(90px,1fr) 100px minmax(90px,1fr);gap:10px;align-items:center;padding:11px 0;border-top:1px solid #e2e8f0}.kvl-game-input:first-of-type{border-top:0}.kvl-game-input span:first-child{text-align:right}.kvl-game-input select{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#17365d;font-weight:900}.kvl-official-note{margin-top:16px;padding:12px 14px;border-radius:14px;background:#f8fafc;color:#64748b;font-size:12px}
+    .kvl-probability{margin-top:16px;padding:16px;border:1px solid #e2e8f0;border-radius:16px}.kvl-probability strong{color:#17365d}.kvl-probability-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:10px}.kvl-probability-grid div{padding:10px;border-radius:12px;background:#f8fafc;text-align:center}.kvl-probability-grid b{display:block;color:#17365d;font-size:18px}.kvl-probability small{display:block;margin-top:10px;color:#64748b;line-height:1.6}
+    .kvl-table-wrap{margin-top:16px;overflow:auto;border:1px solid #e2e8f0;border-radius:16px}.kvl-table{width:100%;min-width:760px;border-collapse:collapse;background:#fff}.kvl-table th,.kvl-table td{padding:11px 9px;border-bottom:1px solid #eef2f7;text-align:center;font-size:13px}.kvl-table th{background:#f8fafc;color:#536477}.kvl-table td:nth-child(2),.kvl-table th:nth-child(2){text-align:left}.kvl-table tr.is-qualified{background:#f0fdf4}.kvl-table tr.is-selected{outline:2px solid #c9a24a;outline-offset:-2px}.kvl-badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#166534;color:#fff;font-size:11px;font-weight:900}.kvl-signature-note{margin:14px 0 0;color:#64748b;font-size:12px;line-height:1.7}#group-standings>.cd-qualifier{display:none!important}
+    @media(max-width:620px){.kvl-signature-calc summary{align-items:flex-start;padding:18px}.kvl-signature-body{padding:0 16px 18px}.kvl-signature-controls{align-items:flex-start;flex-direction:column}.kvl-signature-controls label{width:100%;justify-content:space-between}.kvl-game-input{grid-template-columns:minmax(70px,1fr) 82px minmax(70px,1fr);font-size:12px}}
+    `;document.head.appendChild(s);
   }
 
-  function buildStats(games,pool){
-    const poolGames=games.filter(g=>g.division==='남대부'&&g.stage==='예선'&&g.pool===pool);
-    const teams=[...new Set(poolGames.flatMap(g=>[g.teamA,g.teamB]))];
-    const stats=Object.fromEntries(teams.map(t=>[t,{team:t,w:0,l:0,pf:0,pa:0,sf:0,sa:0}]));
-    for(const g of poolGames){
-      const sets=(g.sets||[]).map(s=>String(s).split('-').map(Number)).filter(x=>x.length===2&&x.every(Number.isFinite));
-      let aw=0,bw=0;
-      for(const [a,b] of sets){
-        stats[g.teamA].pf+=a; stats[g.teamA].pa+=b;
-        stats[g.teamB].pf+=b; stats[g.teamB].pa+=a;
-        if(a>b) aw++; else if(b>a) bw++;
-      }
-      stats[g.teamA].sf+=aw; stats[g.teamA].sa+=bw;
-      stats[g.teamB].sf+=bw; stats[g.teamB].sa+=aw;
-      if(aw>bw){stats[g.teamA].w++;stats[g.teamB].l++;}
-      else if(bw>aw){stats[g.teamB].w++;stats[g.teamA].l++;}
-    }
-    return Object.values(stats).map(x=>({...x,pr:ratio(x.pf,x.pa),sr:ratio(x.sf,x.sa)})).sort((a,b)=>b.w-a.w||b.pr-a.pr||b.sr-a.sr||a.team.localeCompare(b.team));
-  }
-
-  function interpretation(rows,team){
-    const idx=rows.findIndex(r=>r.team===team);
-    if(idx<0) return '팀 정보를 확인할 수 없습니다.';
-    const rank=idx+1;
-    const r=rows[idx];
-    if(rank<=2) return `${team}은 공식 결과 기준 ${rank}위로 본선 진출이 확정되었습니다. ${r.w}승 ${r.l}패, 득실점수비율 ${r.pr.toFixed(3)}, 세트비율 ${r.sr===999?'∞':r.sr.toFixed(3)}입니다.`;
-    const second=rows[1];
-    if(r.w<second.w) return `${team}은 공식 결과 기준 ${rank}위로 예선 탈락했습니다. 2위 팀보다 승리 경기 수가 ${second.w-r.w}경기 적습니다.`;
-    if(r.pr<second.pr) return `${team}은 승리 경기 수는 2위 팀과 같았지만 득실점수비율에서 밀려 ${rank}위로 예선 탈락했습니다.`;
-    return `${team}은 공식 결과 기준 ${rank}위입니다. 세트비율 또는 승자승 기준까지 적용해 최종 순위가 결정되었습니다.`;
-  }
-
-  function renderTable(rows,selected){
-    return `<div class="kvl-signature-table-wrap"><table class="kvl-signature-table"><thead><tr><th>순위</th><th>팀</th><th>승</th><th>패</th><th>득실점수비율</th><th>세트비율</th><th>상태</th></tr></thead><tbody>${rows.map((r,i)=>`<tr class="${i<2?'is-qualified ':''}${r.team===selected?'is-selected':''}"><td>${i+1}</td><td><strong>${esc(r.team)}</strong></td><td>${r.w}</td><td>${r.l}</td><td>${r.pr.toFixed(3)}</td><td>${r.sr===999?'∞':r.sr.toFixed(3)}</td><td>${i<2?'<span class="kvl-qual-badge">본선 진출</span>':'예선 탈락'}</td></tr>`).join('')}</tbody></table></div>`;
+  function table(rows,selected,rules){
+    const first=rules.rankingRules[0]==='matchPoints'?'승점':'승';
+    return `<div class="kvl-table-wrap"><table class="kvl-table"><thead><tr><th>순위</th><th>팀</th><th>${first}</th><th>승-패</th><th>점수득실률</th><th>세트득실률</th><th>상태</th></tr></thead><tbody>${rows.map(r=>`<tr class="${r.qualified?'is-qualified ':''}${r.team===selected?'is-selected':''}"><td>${r.rank}</td><td><strong>${esc(r.team)}</strong></td><td>${first==='승점'?r.matchPoints:r.wins}</td><td>${r.wins}-${r.losses}</td><td>${fmt(r.pointRatio)}</td><td>${fmt(r.setRatio)}</td><td>${r.qualified?'<span class="kvl-badge">본선 진출권</span>':'진출권 밖'}</td></tr>`).join('')}</tbody></table></div>`;
   }
 
   async function install(){
-    if(document.body?.dataset.competition!=='gosung-2026') return;
-    installStyles();
-    const section=document.getElementById('group-standings');
-    if(!section) return;
-
-    let rule=section.querySelector('.kvl-ranking-rule-card');
-    if(!rule){
-      rule=document.createElement('div');
-      rule.className='cd-rule-card kvl-ranking-rule-card';
-      section.appendChild(rule);
+    if(document.body?.dataset.competition!==COMPETITION_ID)return;
+    const engine=window.KVLTournamentEngine,rules=window.KVLTournamentRules?.[COMPETITION_ID];
+    if(!engine||!rules){console.error('KVL Tournament Engine 또는 대회 규칙을 불러오지 못했습니다.');return;}
+    styles();
+    const section=document.getElementById('group-standings');if(!section)return;
+    let data;try{data=await fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();});}catch{return;}
+    let working=JSON.parse(JSON.stringify(data.games||[]));
+    let rule=section.querySelector('.kvl-ranking-rule-card');if(!rule){rule=document.createElement('div');rule.className='cd-rule-card kvl-ranking-rule-card';section.appendChild(rule);}
+    rule.innerHTML=`<strong>순위 결정 방법</strong>${rules.rankingRules.map(x=>rules.labels?.[x]||x).join(' → ')} 순으로 순위를 결정합니다.<span class="kvl-rule-summary">${esc(rules.summary)}</span><span class="kvl-rule-checked">운영요강 적용 확인일: ${esc(rules.sourceCheckedAt||'-')}</span><a href="${esc(rules.sourceView)}">대회요강 원문 확인 →</a>`;
+    if(section.querySelector('.kvl-signature-calc'))return;
+    const details=document.createElement('details');details.className='kvl-signature-calc';details.innerHTML=`<summary><div><strong>KVL 대회 시뮬레이터</strong><span>종료된 공식 경기는 잠그고, 미종료 경기의 예상 결과를 입력해 순위와 진출 가능성을 확인합니다.</span></div></summary><div class="kvl-signature-body"><div class="kvl-signature-controls"><label>조 선택 <select id="kvlPool"><option value="A">A조</option><option value="B">B조</option><option value="C">C조</option></select></label><label>확인 팀 <select id="kvlTeam"></select></label></div><div id="kvlPending"></div><div id="kvlStatus" class="kvl-signature-status"></div><div id="kvlProbability"></div><div id="kvlTable"></div><p class="kvl-signature-note">※ 진출 확률은 남은 세트 스코어 경우를 동일한 가능성으로 계산한 비율이며 실제 팀 전력을 반영한 예측 확률이 아닙니다.</p></div>`;rule.before(details);
+    const pool=details.querySelector('#kvlPool'),team=details.querySelector('#kvlTeam'),pendingBox=details.querySelector('#kvlPending'),status=details.querySelector('#kvlStatus'),prob=details.querySelector('#kvlProbability'),tableBox=details.querySelector('#kvlTable');
+    const filter=()=>({division:rules.division,pool:pool.value,stage:rules.stage});
+    function renderPending(){
+      const pending=engine.pendingGames(working,filter());
+      if(!pending.length){pendingBox.innerHTML='<div class="kvl-official-note">이 대회는 모든 조별리그 경기가 종료되어 공식 결과가 잠겨 있습니다. 진행 중인 대회에서는 이 영역에 미종료 경기 입력칸이 표시됩니다.</div>';return;}
+      pendingBox.innerHTML=`<section class="kvl-pending"><h3>남은 경기 예상 입력</h3><p class="kvl-pending-intro">세트 스코어를 선택하면 기본 세트 점수가 입력되고 즉시 순위가 다시 계산됩니다.</p>${pending.map(g=>`<label class="kvl-game-input"><span>${esc(g.teamA)}</span><select data-game="${esc(g.id)}"><option value="">예상 선택</option>${['3-0','3-1','3-2','2-3','1-3','0-3'].map(x=>`<option>${x}</option>`).join('')}</select><span>${esc(g.teamB)}</span></label>`).join('')}</section>`;
+      pendingBox.querySelectorAll('select[data-game]').forEach(sel=>sel.addEventListener('change',()=>{if(!sel.value)return;working=engine.replaceGame(working,sel.dataset.game,{score:sel.value,sets:engine.defaultOutcomeSets(sel.value),completed:true,status:'예상 결과'});renderAll(false);}));
     }
-    rule.innerHTML='<strong>순위 결정 방법</strong>승리 경기 수로 순위를 결정한다. 승리 경기 수가 같으면 득실점수비율(예선 총 득점 ÷ 총 실점)을 기준으로 하며, 득실점수비율이 같으면 세트비율(예선 총 승리세트 ÷ 총 패배세트) 순으로 정한다. 세트비율까지 같으면 동률인 팀 간의 승자승으로 순위를 정한다.<span class="kvl-rule-summary">승리 경기 수 → 득실점수비율 → 세트비율 → 승자승. 각 조 상위 2팀 본선 진출.</span><a href="university-competition.html?view=sources">대회요강 원문 확인 →</a>';
-
-    if(section.querySelector('.kvl-signature-calc')) return;
-    const details=document.createElement('details');
-    details.className='kvl-signature-calc';
-    details.innerHTML='<summary><div><strong>본선 진출 계산기</strong><span>공식 결과를 기준으로 조별 순위와 팀별 진출 상태를 자동 해석합니다.</span></div></summary><div class="kvl-signature-body"><div class="kvl-signature-controls"><label>조 선택 <select id="kvlPoolSelect"><option value="A">A조</option><option value="B">B조</option><option value="C">C조</option></select></label><label>확인 팀 <select id="kvlTeamSelect"></select></label></div><div id="kvlSignatureStatus" class="kvl-signature-status"></div><div id="kvlSignatureTable"></div><p class="kvl-signature-note">※ 공식 경기 결과는 수정할 수 없습니다. 진행 중인 다른 대회에 적용할 때는 미확정 경기만 입력하도록 확장됩니다.</p></div>';
-    rule.insertAdjacentElement('beforebegin',details);
-
-    let data;
-    try{data=await fetch(DATA_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json();});}
-    catch{details.querySelector('#kvlSignatureStatus').textContent='대회 데이터를 불러오지 못했습니다.';return;}
-
-    const poolSelect=details.querySelector('#kvlPoolSelect');
-    const teamSelect=details.querySelector('#kvlTeamSelect');
-    const status=details.querySelector('#kvlSignatureStatus');
-    const table=details.querySelector('#kvlSignatureTable');
-
-    const refreshTeams=()=>{
-      const rows=buildStats(data.games||[],poolSelect.value);
-      const old=teamSelect.value;
-      teamSelect.innerHTML=rows.map(r=>`<option value="${esc(r.team)}">${esc(r.team)}</option>`).join('');
-      if(rows.some(r=>r.team===old)) teamSelect.value=old;
-      render();
-    };
-    const render=()=>{
-      const rows=buildStats(data.games||[],poolSelect.value);
-      const team=teamSelect.value||rows[0]?.team||'';
-      const rank=rows.findIndex(r=>r.team===team)+1;
-      status.className=`kvl-signature-status ${rank>0&&rank<=2?'is-qualified':'is-out'}`;
-      status.textContent=interpretation(rows,team);
-      table.innerHTML=renderTable(rows,team);
-    };
-    poolSelect.addEventListener('change',refreshTeams);
-    teamSelect.addEventListener('change',render);
-    refreshTeams();
+    function renderTeams(rows){const old=team.value;team.innerHTML=rows.map(r=>`<option value="${esc(r.team)}">${esc(r.team)}</option>`).join('');if(rows.some(r=>r.team===old))team.value=old;}
+    function renderProbability(){
+      const pending=engine.pendingGames(working,filter());if(!pending.length){prob.innerHTML='';return;}
+      const result=engine.enumerate(working,rules,filter(),{maxScenarios:46656});
+      if(result.truncated){prob.innerHTML=`<div class="kvl-probability"><strong>진출 가능성 계산</strong><small>${esc(result.message)}</small></div>`;return;}
+      prob.innerHTML=`<div class="kvl-probability"><strong>경우의 수 기준 진출 비율</strong><div class="kvl-probability-grid">${Object.entries(result.probabilities).map(([name,p])=>`<div><span>${esc(name)}</span><b>${p.percent.toFixed(1)}%</b></div>`).join('')}</div><small>${esc(result.assumption)}</small></div>`;
+    }
+    function renderAll(resetTeams=true){
+      const rows=engine.calculate(working,rules,filter());if(resetTeams)renderTeams(rows);const selected=team.value||rows[0]?.team||'';const row=rows.find(r=>r.team===selected);status.className=`kvl-signature-status ${row?.qualified?'is-qualified':'is-out'}`;status.textContent=engine.explain(row,rows,rules);tableBox.innerHTML=table(rows,selected,rules);renderPending();renderProbability();
+    }
+    pool.addEventListener('change',()=>{working=JSON.parse(JSON.stringify(data.games||[]));renderAll(true);});team.addEventListener('change',()=>renderAll(false));renderAll(true);
   }
-
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',install,{once:true});
-  else install();
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
