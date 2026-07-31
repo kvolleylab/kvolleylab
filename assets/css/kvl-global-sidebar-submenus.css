@@ -11,3 +11,14 @@
 .competition-dashboard-page[data-competition="gosung-2026"] .cd-view{order:4}
 .competition-dashboard-page[data-competition="danyang-2026"] .kvl-competition-nav{display:none!important}
 @media(max-width:620px){.competition-dashboard-page[data-competition="gosung-2026"] .kvl-competition-nav{width:auto;height:56px;margin:14px 0 -70px;padding:8px 0 8px 10px;overflow:hidden}.competition-dashboard-page[data-competition="gosung-2026"] .kvl-competition-list-link{height:40px;font-size:12px;padding:0 11px}.competition-dashboard-page[data-competition="gosung-2026"] .cd-jump{min-height:56px;padding-left:118px}}
+
+/* Goseong competition ranking regulations and official-result locking. */
+.competition-dashboard-page[data-competition="gosung-2026"] #group-standings::after{display:block;margin-top:28px;padding:22px 24px;border:1px solid #e0c36f;border-left:5px solid #c9a24a;border-radius:18px;background:#fffaf0;color:#435268;font-size:14px;line-height:1.9;white-space:pre-line;content:"※ 순위 결정 방법\A 승리 경기 수로 순위를 결정한다. 승리 경기 수가 같으면 득실점수비율(예선 총 득점 ÷ 총 실점)을 기준으로 하며, 득실점수비율이 같으면 세트비율(예선 총 승리세트 ÷ 총 패배세트) 순으로 정한다. 세트비율까지 같으면 동률인 팀 간의 승자승으로 순위를 정한다."}
+.competition-dashboard-page[data-competition="gosung-2026"] #cdQualificationCalculator .cd-calc-card:first-child h3{font-size:0}
+.competition-dashboard-page[data-competition="gosung-2026"] #cdQualificationCalculator .cd-calc-card:first-child h3::after{content:"공식 경기 결과";font-size:18px}
+.competition-dashboard-page[data-competition="gosung-2026"] #cdQualificationCalculator .cd-calc-game{grid-template-columns:minmax(76px,1fr) 92px minmax(76px,1fr) auto}
+.competition-dashboard-page[data-competition="gosung-2026"] #cdQualificationCalculator .cd-calc-game::after{content:"공식 결과";display:inline-flex;align-items:center;justify-content:center;padding:5px 8px;border-radius:999px;background:#e8f3ec;color:#166534;font-size:11px;font-weight:900;white-space:nowrap}
+.competition-dashboard-page[data-competition="gosung-2026"] #cdQualificationCalculator select{pointer-events:none;cursor:not-allowed;opacity:1;appearance:none;-webkit-appearance:none;background:#f1f5f9;color:#17365d;border-color:#cbd5e1}
+.competition-dashboard-page[data-competition="gosung-2026"] #cdCalcReset{display:none!important}
+.competition-dashboard-page[data-competition="gosung-2026"] .cd-calc-note::before{content:"공식 경기 결과가 반영된 경기는 수정할 수 없습니다. ";color:#17365d;font-weight:900}
+@media(max-width:620px){.competition-dashboard-page[data-competition="gosung-2026"] #group-standings::after{padding:18px 16px;font-size:13px}.competition-dashboard-page[data-competition="gosung-2026"] #cdQualificationCalculator .cd-calc-game{grid-template-columns:minmax(62px,1fr) 82px minmax(62px,1fr)}.competition-dashboard-page[data-competition="gosung-2026"] #cdQualificationCalculator .cd-calc-game::after{grid-column:1/-1;justify-self:center}}
