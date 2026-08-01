@@ -13,7 +13,10 @@
     document.title=`2026 국내 ${names[division]} 배구대회 | K-Volley Lab`;
   }
 
-  const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+  const samcheokLink=document.querySelector('[data-ranking-source="middle-high-first-2026"] .dc-card-info');
+  if(samcheokLink){samcheokLink.href='school-competition-samcheok-2026.html?view=overview&layout=20260802-1';samcheokLink.setAttribute('aria-label','한국중고배구 1차 연맹전 삼척대회 대회 대시보드 보기');const label=samcheokLink.querySelector('.dc-card-link');if(label)label.textContent='대회 대시보드 보기 →'}
+
+  const esc=s=>String(s??'').replace(/[&<>']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;'}[ch]));
   const teamAliases={'울산스포츠과하고':'울산스포츠과학고','순천팦마중':'순천팔마중','인하부고':'인하사대부고','인하부중':'인하사대부중','찬안고':'천안고'};
   const team=n=>teamAliases[n]||n;
   const teamId=name=>{let hash=2166136261;for(const ch of String(name||'')){hash^=ch.codePointAt(0);hash=Math.imul(hash,16777619)}return`school-${(hash>>>0).toString(36)}`};
