@@ -55,22 +55,6 @@
   if(!document.querySelector('link[href*="kvl-global-sidebar-submenus.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-submenus.css?v=20260725-1';document.head.appendChild(link)}
   if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20260725-1';script.defer=true;document.head.appendChild(script)}
 
-  if(path==='university-competition.html'||path==='university-competition-danyang.html'){
-    const addCompetitionNavigation=()=>{
-      const main=document.querySelector('.cd-main,.dy-main');
-      const hero=main?.querySelector('.cd-hero,.dy-hero');
-      if(!main||!hero||main.querySelector('.kvl-competition-nav'))return;
-      const isGosung=path==='university-competition.html';
-      const style=document.createElement('style');
-      style.textContent='.kvl-competition-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;flex-wrap:wrap}.kvl-competition-list-link,.kvl-competition-switch a{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border:1px solid #dbe2ea;border-radius:999px;background:#fff;color:#17365d;font-size:13px;font-weight:900;text-decoration:none;box-shadow:0 5px 14px rgba(15,23,42,.05)}.kvl-competition-list-link:hover,.kvl-competition-switch a:hover{border-color:#c9a24a;background:#fffaf0}.kvl-competition-switch{display:flex;gap:8px;flex-wrap:wrap}.kvl-competition-switch a.is-active{border-color:#17365d;background:#17365d;color:#fff;pointer-events:none}.kvl-competition-list-link:focus-visible,.kvl-competition-switch a:focus-visible{outline:3px solid rgba(201,162,74,.35);outline-offset:2px}@media(max-width:620px){.kvl-competition-nav{align-items:flex-start;flex-direction:column}.kvl-competition-switch{width:100%}.kvl-competition-switch a{flex:1;justify-content:center}}';
-      document.head.appendChild(style);
-      hero.insertAdjacentHTML('beforebegin',`<div class="kvl-competition-nav"><a class="kvl-competition-list-link" href="university-competitions.html" aria-label="대학배구 대회 목록으로 이동">← 대회 목록</a><div class="kvl-competition-switch" aria-label="대회 바로가기"><a class="${isGosung?'is-active':''}" href="university-competition.html">고성대회</a><a class="${isGosung?'':'is-active'}" href="university-competition-danyang.html">단양대회</a></div></div>`);
-      main.querySelectorAll(':scope > .kvl-competition-list-link').forEach(link=>link.remove());
-    };
-    if(document.readyState==='loading')addEventListener('DOMContentLoaded',addCompetitionNavigation,{once:true});
-    else addCompetitionNavigation();
-  }
-
   if(path==='vnl.html'){
     if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-2';document.head.appendChild(link)}
     if(!document.querySelector('link[href*="vnl-schedule-stage.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/vnl-schedule-stage.css?v=20260728-1';document.head.appendChild(link)}
