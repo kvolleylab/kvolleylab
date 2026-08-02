@@ -16,7 +16,7 @@ const config={
 };
 const item=config[document.body?.dataset.competition];
 if(!item)return;
-const markup=`<span class="sc-hero-meta-primary">${item.primary}</span><span class="sc-hero-meta-venues">경기장 · ${item.venues}</span>`;
+const markup=`<span class="sc-hero-meta-primary">${item.primary}</span><span class="sc-hero-meta-venues">경기장 : ${item.venues}</span>`;
 const apply=()=>{
   const title=document.querySelector('.sc-hero h1');
   const meta=title?.nextElementSibling;
