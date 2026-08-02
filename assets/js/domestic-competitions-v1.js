@@ -13,58 +13,24 @@
     document.title=`2026 국내 ${names[division]} 배구대회 | K-Volley Lab`;
   }
 
-  const samcheokLink=document.querySelector('[data-ranking-source="middle-high-first-2026"] .dc-card-info');
-  if(samcheokLink){samcheokLink.href='school-competition-samcheok-2026.html?view=overview&layout=20260802-1';samcheokLink.setAttribute('aria-label','한국중고배구 1차 연맹전 삼척대회 대회 대시보드 보기');const label=samcheokLink.querySelector('.dc-card-link');if(label)label.textContent='대회 대시보드 보기 →'}
-  const iksanLink=document.querySelector('[data-ranking-source="middle-high-second-2026"] .dc-card-info');
-  if(iksanLink){iksanLink.href='school-competition-iksan-2026.html?view=overview&layout=20260802-1';iksanLink.setAttribute('aria-label','한국중고배구 2차 연맹전 익산보석배대회 대회 대시보드 보기');const label=iksanLink.querySelector('.dc-card-link');if(label)label.textContent='대회 대시보드 보기 →'}
+  const connectDashboard=(source,href,label)=>{const link=document.querySelector(`[data-ranking-source="${source}"] .dc-card-info`);if(!link)return;link.href=href;link.setAttribute('aria-label',`${label} 대회 대시보드 보기`);const text=link.querySelector('.dc-card-link');if(text)text.textContent='대회 대시보드 보기 →'};
+  connectDashboard('middle-high-first-2026','school-competition-samcheok-2026.html?view=overview&layout=20260802-1','한국중고배구 1차 연맹전 삼척대회');
+  connectDashboard('middle-high-second-2026','school-competition-iksan-2026.html?view=overview&layout=20260802-1','한국중고배구 2차 연맹전 익산보석배대회');
+  connectDashboard('presidents-cup-middle-high-2026','school-competition-presidents-2026.html?view=overview&layout=20260802-1','제59회 대통령배 전국중고배구대회');
 
-  const esc=s=>String(s??'').replace(/[&<>']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;'}[ch]));
+  const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
   const teamAliases={'울산스포츠과하고':'울산스포츠과학고','순천팦마중':'순천팔마중','인하부고':'인하사대부고','인하부중':'인하사대부중','찬안고':'천안고'};
   const team=n=>teamAliases[n]||n;
   const teamId=name=>{let hash=2166136261;for(const ch of String(name||'')){hash^=ch.codePointAt(0);hash=Math.imul(hash,16777619)}return`school-${(hash>>>0).toString(36)}`};
   const teamLink=name=>{const clean=team(name);return`<a class="dc-team-link" href="team-detail.html?id=${encodeURIComponent(teamId(clean))}&name=${encodeURIComponent(clean)}&level=school">${esc(clean)}</a>`};
   const divisionOrder=['18세이하 남자부','18세이하 여자부','15세이하 남자부','15세이하 여자부'];
   const divisionRank=name=>{const normalized=String(name||'').replace(/\s+/g,'');const index=divisionOrder.findIndex(item=>item.replace(/\s+/g,'')===normalized);return index<0?99:index};
-  const unpack=(data,row)=>{
-    if(!Array.isArray(row))return {...row,team_a:team(row.team_a),team_b:team(row.team_b)};
-    const [date,venueIndex,court_order,divisionIndex,stageIndex,team_a,team_b,set_score,sets]=row;
-    return{date,venue:data.venues[venueIndex],court_order,division:data.divisions[divisionIndex],stage:data.stages[stageIndex],team_a:team(team_a),team_b:team(team_b),set_score,sets};
-  };
-  const winner=m=>{const [a,b]=String(m.set_score||'0-0').split('-').map(Number);return a>b?m.team_a:m.team_b};
+  const unpack=(data,row)=>{if(!Array.isArray(row))return {...row,team_a:team(row.team_a),team_b:team(row.team_b)};const[date,venueIndex,court_order,divisionIndex,stageIndex,team_a,team_b,set_score,sets]=row;return{date,venue:data.venues[venueIndex],court_order,division:data.divisions[divisionIndex],stage:data.stages[stageIndex],team_a:team(team_a),team_b:team(team_b),set_score,sets}};
+  const winner=m=>{const[a,b]=String(m.set_score||'0-0').split('-').map(Number);return a>b?m.team_a:m.team_b};
   const loser=m=>winner(m)===m.team_a?m.team_b:m.team_a;
   const isSemifinal=stage=>/^(준결승|4강(?:전)?)$/.test(String(stage||'').trim());
 
-  function podiums(data){
-    const matches=data.matches.map(row=>unpack(data,row));
-    return data.divisions.map(division=>{
-      const rows=matches.filter(m=>m.division===division);
-      const finals=rows.filter(m=>m.stage==='결승').sort((a,b)=>String(a.date).localeCompare(String(b.date)));
-      const final=finals.at(-1);
-      if(!final)return{division,pending:true};
-      const thirdPlace=rows.filter(m=>/3.?4위|3위/.test(m.stage||'')).sort((a,b)=>String(a.date).localeCompare(String(b.date))).at(-1);
-      const semis=rows.filter(m=>isSemifinal(m.stage)&&String(m.date)<=String(final.date));
-      const semifinalLosers=[...new Set(semis.map(loser).filter(Boolean))];
-      const thirds=thirdPlace?[winner(thirdPlace)]:semifinalLosers;
-      return{division,champion:winner(final),runnerUp:loser(final),thirds,thirdsPending:!thirdPlace&&thirds.length<2};
-    }).sort((a,b)=>divisionRank(a.division)-divisionRank(b.division)||String(a.division).localeCompare(String(b.division),'ko'));
-  }
-
-  function renderRanking(box,data){
-    const items=podiums(data);
-    const complete=items.filter(x=>!x.pending);
-    if(!complete.length){box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>결승 결과 확인 중</p>';return}
-    box.innerHTML=`<strong>대회 입상팀</strong><div class="dc-ranking-list">${complete.map(item=>`<section><h4>${esc(item.division)}</h4><p><span>🥇</span>${teamLink(item.champion)}</p><p><span>🥈</span>${teamLink(item.runnerUp)}</p><p><span>🥉</span><span class="dc-third-links">${item.thirds.length?item.thirds.map(teamLink).join('<i>·</i>'):'확인 중'}${item.thirdsPending?'<em> · 확인 중</em>':''}</span></p></section>`).join('')}</div><button class="dc-ranking-toggle" type="button" aria-expanded="false">전체 입상팀 펼치기</button>`;
-    const list=box.querySelector('.dc-ranking-list');
-    const button=box.querySelector('.dc-ranking-toggle');
-    button.onclick=()=>{const open=box.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'입상팀 접기':'전체 입상팀 펼치기';list.scrollTop=0};
-  }
-
-  document.querySelectorAll('[data-ranking-source]').forEach(card=>{
-    const id=card.dataset.rankingSource;
-    const box=card.querySelector('.dc-ranking');
-    fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260727-1`,{cache:'no-store'})
-      .then(r=>{if(!r.ok)throw new Error('ranking');return r.json()})
-      .then(data=>renderRanking(box,data))
-      .catch(()=>{box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>순위 데이터를 불러오지 못했습니다.</p>'});
-  });
+  function podiums(data){const matches=data.matches.map(row=>unpack(data,row));return data.divisions.map(division=>{const rows=matches.filter(m=>m.division===division),final=rows.filter(m=>m.stage==='결승').sort((a,b)=>String(a.date).localeCompare(String(b.date))).at(-1);if(!final)return{division,pending:true};const thirdPlace=rows.filter(m=>/3.?4위|3위/.test(m.stage||'')).sort((a,b)=>String(a.date).localeCompare(String(b.date))).at(-1),semis=rows.filter(m=>isSemifinal(m.stage)&&String(m.date)<=String(final.date)),semifinalLosers=[...new Set(semis.map(loser).filter(Boolean))],thirds=thirdPlace?[winner(thirdPlace)]:semifinalLosers;return{division,champion:winner(final),runnerUp:loser(final),thirds,thirdsPending:!thirdPlace&&thirds.length<2}}).sort((a,b)=>divisionRank(a.division)-divisionRank(b.division)||String(a.division).localeCompare(String(b.division),'ko'))}
+  function renderRanking(box,data){const complete=podiums(data).filter(x=>!x.pending);if(!complete.length){box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>결승 결과 확인 중</p>';return}box.innerHTML=`<strong>대회 입상팀</strong><div class="dc-ranking-list">${complete.map(item=>`<section><h4>${esc(item.division)}</h4><p><span>🥇</span>${teamLink(item.champion)}</p><p><span>🥈</span>${teamLink(item.runnerUp)}</p><p><span>🥉</span><span class="dc-third-links">${item.thirds.length?item.thirds.map(teamLink).join('<i>·</i>'):'확인 중'}${item.thirdsPending?'<em> · 확인 중</em>':''}</span></p></section>`).join('')}</div><button class="dc-ranking-toggle" type="button" aria-expanded="false">전체 입상팀 펼치기</button>`;const list=box.querySelector('.dc-ranking-list'),button=box.querySelector('.dc-ranking-toggle');button.onclick=()=>{const open=box.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));button.textContent=open?'입상팀 접기':'전체 입상팀 펼치기';list.scrollTop=0}}
+  document.querySelectorAll('[data-ranking-source]').forEach(card=>{const id=card.dataset.rankingSource,box=card.querySelector('.dc-ranking');fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260727-1`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('ranking');return r.json()}).then(data=>renderRanking(box,data)).catch(()=>{box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>순위 데이터를 불러오지 못했습니다.</p>'})});
 })();
