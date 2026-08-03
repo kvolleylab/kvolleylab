@@ -8,9 +8,19 @@
 
   if(names[division]){
     sections.forEach(section=>section.hidden=section.dataset.divisionSection!==division);
-    title.textContent=`2026 국내 ${names[division]} 배구대회`;
-    desc.textContent=division==='school'?'2026년 국내 중·고 배구대회의 진행 상태, 일정, 경기결과와 입상팀을 한눈에 확인합니다.':division==='university'?'2026년 국내 대학배구 대회 일정과 결과를 관리합니다.':'2026년 국내 프로 컵대회와 별도 프로대회를 관리합니다.';
-    document.title=`2026 국내 ${names[division]} 배구대회 | K-Volley Lab`;
+    if(division==='school'){
+      title.textContent='중·고 배구대회';
+      desc.textContent='대회별 일정, 경기결과, 최종 순위, 결선 토너먼트와 참가학교를 확인하세요.';
+      document.title='중·고 배구대회 | K-Volley Lab';
+      const heading=document.querySelector('#school .dc-section-head h2');
+      const headingDesc=document.querySelector('#school .dc-section-head p');
+      if(heading)heading.textContent='2026 중·고 대회';
+      if(headingDesc)headingDesc.textContent='중고배구연맹전, 대통령배, IBK배와 CBS배를 대회별로 정리합니다.';
+    }else{
+      title.textContent=`2026 국내 ${names[division]} 배구대회`;
+      desc.textContent=division==='university'?'2026년 국내 대학배구 대회 일정과 결과를 관리합니다.':'2026년 국내 프로 컵대회와 별도 프로대회를 관리합니다.';
+      document.title=`2026 국내 ${names[division]} 배구대회 | K-Volley Lab`;
+    }
   }
 
   const connectDashboard=(source,href,label)=>{const link=document.querySelector(`[data-ranking-source="${source}"] .dc-card-info`);if(!link)return;link.href=href;link.setAttribute('aria-label',`${label} 대회 대시보드 보기`);const text=link.querySelector('.dc-card-link');if(text)text.textContent='대회 대시보드 보기 →'};
