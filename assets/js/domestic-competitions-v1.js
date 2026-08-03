@@ -9,6 +9,7 @@
   if(names[division]){
     sections.forEach(section=>section.hidden=section.dataset.divisionSection!==division);
     if(division==='school'){
+      document.body.classList.add('dc-school-page');
       title.textContent='중·고 배구대회';
       desc.textContent='대회별 일정, 경기결과, 최종 순위, 결선 토너먼트와 참가학교를 확인하세요.';
       document.title='중·고 배구대회 | K-Volley Lab';
