@@ -1,14 +1,14 @@
-/* 중·고 대회 메인 헤더를 대학대회 메인과 동일한 시각 체계로 맞춤 */
+/* 중·고 대회 메인 헤더를 대학대회 메인과 동일한 위치 체계로 맞춤 */
 .dc-school-page .dc-main{max-width:1180px;padding:34px 20px 80px}
-.dc-school-page .dc-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:38px;border:1px solid #dbe2ea;border-radius:30px;background:linear-gradient(135deg,#17365d,#0f2745);color:#fff;box-shadow:none}
-.dc-school-page .dc-hero .eyebrow{margin:0 0 8px;color:#c9a24a;font-size:12px;font-weight:900;letter-spacing:.12em}
-.dc-school-page .dc-hero h1{margin:0 0 12px;color:#fff!important;font-size:38px;line-height:1.2}
-.dc-school-page .dc-hero>p:not(.eyebrow){max-width:none;margin:0;color:#dbe7f5;line-height:1.65}
-.dc-school-page .dc-status{display:flex;gap:10px;flex-wrap:wrap;margin-top:0;justify-content:flex-end;max-width:430px}
+.dc-school-page .dc-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"eyebrow summary" "title summary" "description summary";column-gap:24px;row-gap:0;align-items:end;padding:38px;border:1px solid #dbe2ea;border-radius:30px;background:linear-gradient(135deg,#17365d,#0f2745);color:#fff;box-shadow:none}
+.dc-school-page .dc-hero>.eyebrow{grid-area:eyebrow;margin:0 0 8px;color:#c9a24a;font-size:12px;font-weight:900;letter-spacing:.12em}
+.dc-school-page .dc-hero>h1{grid-area:title;margin:0 0 12px;color:#fff!important;font-size:38px;line-height:1.2}
+.dc-school-page .dc-hero>#dcPageDescription{grid-area:description;max-width:none;margin:0;color:#dbe7f5;line-height:1.65}
+.dc-school-page .dc-status{grid-area:summary;display:flex;gap:10px;flex-wrap:wrap;align-self:end;justify-content:flex-end;max-width:430px;margin:0}
 .dc-school-page .dc-status span{padding:9px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:900}
 @media(max-width:760px){
   .dc-school-page .dc-main{padding:18px 12px 60px}
-  .dc-school-page .dc-hero{align-items:flex-start;flex-direction:column;padding:26px}
-  .dc-school-page .dc-hero h1{font-size:30px}
-  .dc-school-page .dc-status{justify-content:flex-start;max-width:none}
+  .dc-school-page .dc-hero{grid-template-columns:1fr;grid-template-areas:"eyebrow" "title" "description" "summary";padding:26px}
+  .dc-school-page .dc-hero>h1{font-size:30px}
+  .dc-school-page .dc-status{justify-content:flex-start;max-width:none;margin-top:12px}
 }
