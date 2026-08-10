@@ -33,7 +33,12 @@
     if(Array.isArray(item.participants)&&item.participants.length){
       participantsSection.hidden=false;
       participantStatus.textContent=item.participant_status||`${item.participants.length}개국`;
-      participants.innerHTML=item.participants.map((name,i)=>`<article class="cc26-team-card"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(name)}</strong></article>`).join('');
+      participants.innerHTML=item.participants.map((entry,i)=>{
+        const name=typeof entry==='string'?entry:entry.name_ko;
+        const rosterStatus=typeof entry==='object'&&entry.roster_status?entry.roster_status:'공식 엔트리 대기';
+        const href=`national-team-tournament-roster.html?competition=${encodeURIComponent(item.id)}&country=${encodeURIComponent(name)}`;
+        return `<a class="cc26-team-card cc26-team-link" href="${href}"><span>${String(i+1).padStart(2,'0')}</span><div><strong>${esc(name)}</strong><small>${esc(rosterStatus)}</small></div><b>→</b></a>`;
+      }).join('');
     }
     if(item.draw_status||item.schedule_status){
       structureSection.hidden=false;
