@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
   <link rel="stylesheet" href="assets/css/la28-volleyball-qualification.css?v=20260725-2">
   <link rel="stylesheet" href="assets/css/la28-continental-links.css?v=20260810-2">
+  <link rel="stylesheet" href="assets/css/national-team-gender-theme.css?v=20260810-1">
   <script src="assets/js/unified-nav.js?v=20260810-1" defer></script>
 </head>
 <body class="la28-page">
@@ -19,25 +20,40 @@
     <section class="lq-hero">
       <p class="eyebrow">NATIONAL TEAM · 2027 WORLD CUP</p>
       <h1>2027 FIVB Volleyball World Cup</h1>
-      <p>2027년 대회부터 기존 FIVB Volleyball World Championship 명칭이 FIVB Volleyball World Cup으로 변경됩니다. LA28 올림픽 출전권 3장이 걸린 두 번째 핵심 경로입니다.</p>
-      <div class="lq-chips"><span>남자 · 폴란드</span><span>여자 · 미국·캐나다</span><span>32개국</span><span>LA28 출전권 3장</span></div>
+      <p>2027년 대회부터 기존 FIVB Volleyball World Championship 명칭이 FIVB Volleyball World Cup으로 변경됩니다. 남자부와 여자부를 분리해 개최 정보와 LA28 출전 경로를 확인합니다.</p>
+      <div class="lq-chips"><span>남녀 각 32개국</span><span>LA28 출전권 3장</span><span>공식 발표 기준</span></div>
     </section>
 
     <section class="lq-section">
-      <div class="lq-section-head"><div><p class="eyebrow">LA28 QUALIFICATION</p><h2>올림픽 출전권</h2></div><span>남녀 동일</span></div>
+      <div class="nt-gender-tabs" role="tablist" aria-label="성별 선택">
+        <button class="nt-gender-tab men active" type="button" data-target="men" role="tab" aria-selected="true">남자부 <small>Men · Navy</small></button>
+        <button class="nt-gender-tab women" type="button" data-target="women" role="tab" aria-selected="false">여자부 <small>Women · Soft Rose</small></button>
+      </div>
+    </section>
+
+    <section class="lq-section nt-gender-panel" data-gender="men" id="menPanel">
+      <div class="lq-section-head"><div><p class="eyebrow">MEN · 2027 WORLD CUP</p><h2 class="nt-section-title">남자부 대회 개요</h2></div><span class="nt-accent-chip">Navy</span></div>
       <div class="lq-quota-grid">
-        <article><strong>3</strong><h3>LA28 출전권</h3><p>이미 올림픽 출전권을 확보한 국가를 제외하고 최종 순위 상위 3개국이 출전권을 획득합니다.</p></article>
-        <article><strong>32</strong><h3>참가국</h3><p>남녀 각각 32개 국가대표팀이 참가하는 세계대회입니다.</p></article>
-        <article><strong>2027</strong><h3>개최연도</h3><p>남자대회는 폴란드, 여자대회는 미국과 캐나다에서 개최됩니다.</p></article>
-        <article><strong>02</strong><h3>LA28 경로 순서</h3><p>2026 대륙선수권 다음으로 올림픽 출전권을 직접 획득할 수 있는 경로입니다.</p></article>
+        <article class="nt-accent-card"><strong>POL</strong><h3>개최국</h3><p>남자대회는 폴란드에서 개최됩니다.</p></article>
+        <article class="nt-accent-card"><strong>32</strong><h3>참가국</h3><p>32개 국가대표팀이 참가합니다.</p></article>
+        <article class="nt-accent-card"><strong>3</strong><h3>LA28 출전권</h3><p>이미 출전권을 확보한 국가를 제외한 최종 순위 상위 3개국이 LA28 출전권을 획득합니다.</p></article>
+        <article class="nt-accent-card"><strong>2027</strong><h3>상세 일정</h3><p>조 편성·경기 일정·공식 엔트리는 발표 후 연결합니다.</p></article>
+      </div>
+    </section>
+
+    <section class="lq-section nt-gender-panel nt-hidden" data-gender="women" id="womenPanel">
+      <div class="lq-section-head"><div><p class="eyebrow">WOMEN · 2027 WORLD CUP</p><h2 class="nt-section-title">여자부 대회 개요</h2></div><span class="nt-accent-chip">Soft Rose</span></div>
+      <div class="lq-quota-grid">
+        <article class="nt-accent-card"><strong>USA/CAN</strong><h3>개최국</h3><p>여자대회는 미국과 캐나다가 공동 개최합니다.</p></article>
+        <article class="nt-accent-card"><strong>32</strong><h3>참가국</h3><p>32개 국가대표팀이 참가합니다.</p></article>
+        <article class="nt-accent-card"><strong>3</strong><h3>LA28 출전권</h3><p>이미 출전권을 확보한 국가를 제외한 최종 순위 상위 3개국이 LA28 출전권을 획득합니다.</p></article>
+        <article class="nt-accent-card"><strong>2027</strong><h3>상세 일정</h3><p>조 편성·경기 일정·공식 엔트리는 발표 후 연결합니다.</p></article>
       </div>
     </section>
 
     <section class="lq-section">
       <div class="lq-section-head"><div><p class="eyebrow">TOURNAMENT STRUCTURE</p><h2>대회 구조</h2></div><span class="status pending">세부 일정 대기</span></div>
       <div class="lq-table-wrap"><table><thead><tr><th>항목</th><th>현재 확인 내용</th><th>상태</th></tr></thead><tbody>
-        <tr><td>남자 개최국</td><td>폴란드</td><td><span class="status active">확정</span></td></tr>
-        <tr><td>여자 개최국</td><td>미국 · 캐나다 공동 개최</td><td><span class="status active">확정</span></td></tr>
         <tr><td>참가 규모</td><td>남녀 각 32개국</td><td><span class="status active">확정</span></td></tr>
         <tr><td>조 편성</td><td>공식 발표 후 반영</td><td><span class="status pending">대기</span></td></tr>
         <tr><td>세부 경기일정</td><td>공식 발표 후 한국시간으로 반영</td><td><span class="status pending">대기</span></td></tr>
@@ -61,5 +77,10 @@
     </section>
   </main>
   <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+  <script>
+    const tabs=[...document.querySelectorAll('.nt-gender-tab')];
+    const panels={men:document.getElementById('menPanel'),women:document.getElementById('womenPanel')};
+    tabs.forEach(btn=>btn.addEventListener('click',()=>{const target=btn.dataset.target;tabs.forEach(t=>{const on=t===btn;t.classList.toggle('active',on);t.setAttribute('aria-selected',on?'true':'false')});Object.entries(panels).forEach(([key,p])=>p.classList.toggle('nt-hidden',key!==target));}));
+  </script>
 </body>
 </html>
