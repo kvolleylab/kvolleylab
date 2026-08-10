@@ -1,7 +1,7 @@
 {
-  "version": 1,
+  "version": 3,
   "updated": "2026-08-10",
-  "qualification_note": "2026년 5개 대륙선수권에서 대륙별 최고 순위팀 1개국씩 LA28 올림픽 출전권을 획득합니다.",
+  "qualification_note": "2026년 5개 대륙선수권에서 대륙별 우승팀 1개국씩 LA28 올림픽 출전권을 획득합니다.",
   "official_qualification": "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
   "fivb_overview": "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/",
   "fivb_continental_news": "https://www.fivb.com/continental-championships-set-the-course-for-la28-and-world-cup-qualification/",
@@ -14,10 +14,18 @@
       "name_en": "AVC Volleyball Men's Continental Championship 2026",
       "dates": "2026-09-04 ~ 2026-09-13",
       "host": "일본 후쿠오카",
-      "status": "일정 확인",
-      "quota": "대륙 최고 순위팀 1개국 → LA28 직행",
-      "official_url": "https://asianvolleyball.net/new/avc-unveils-2026-international-volleyball-calendar-and-host-cities/",
-      "source_label": "AVC 2026 공식 캘린더"
+      "status": "참가국 확정 · 조편성/세부일정 발표 대기",
+      "quota": "우승팀 → LA28 올림픽 직행",
+      "world_cup_quota": "최종 1~3위 → 2027 FIVB Volleyball World Cup 출전권",
+      "ranking_note": "AVC 공식 발표에서 FIVB 세계랭킹 포인트가 걸린 대회로 명시",
+      "participants": ["일본", "호주", "바레인", "중국", "인도", "이란", "대한민국", "뉴질랜드", "오만", "카타르", "대만", "태국"],
+      "participant_status": "12개국 공식 확정",
+      "draw_status": "AVC가 조 편성 및 경기 일정은 추후 공식 발표한다고 안내",
+      "schedule_status": "세부 경기시간 미발표 · 발표 후 한국시간(KST)으로 표시 예정",
+      "official_url": "https://asianvolleyball.net/new/avc-confirms-qualified-teams-for-2026-avc-volleyball-continental-championships/",
+      "calendar_url": "https://asianvolleyball.net/new/avc-unveils-2026-international-volleyball-calendar-and-host-cities/",
+      "source_label": "AVC 참가국 공식 발표",
+      "calendar_label": "AVC 2026 공식 캘린더"
     },
     {
       "id": "cev-eurovolley-men-2026",
@@ -41,7 +49,7 @@
       "dates": "2026-09-07 ~ 2026-09-21",
       "host": "콩고민주공화국 킨샤사",
       "status": "일정 확인",
-      "quota": "대륙 최고 순위팀 1개국 → LA28 직행",
+      "quota": "우승팀 → LA28 직행",
       "official_url": "https://cavb.africa/agenda-officiel-des-competitions-cavb-2026/",
       "source_label": "CAVB 2026 공식 일정"
     },
@@ -54,7 +62,7 @@
       "dates": "공식 세부 일정 확인중",
       "host": "공식 발표 확인중",
       "status": "확인중",
-      "quota": "대륙 최고 순위팀 1개국 → LA28 직행",
+      "quota": "우승팀 → LA28 직행",
       "official_url": "https://norceca.net/",
       "source_label": "NORCECA 공식 사이트"
     },
@@ -67,7 +75,7 @@
       "dates": "공식 세부 일정 확인중",
       "host": "공식 발표 확인중",
       "status": "확인중",
-      "quota": "대륙 최고 순위팀 1개국 → LA28 직행",
+      "quota": "우승팀 → LA28 직행",
       "official_url": "https://www.voleysur.org/",
       "source_label": "CSV 공식 사이트"
     }
