@@ -6,6 +6,15 @@
   const quota=document.getElementById('cc26Quota');
   const sources=document.getElementById('cc26Sources');
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const markNationalActive=()=>{
+    const link=document.querySelector('.kvl-global-nav a[href="la28-volleyball-qualification.html"]');
+    if(link){link.classList.add('active');link.setAttribute('aria-current','page');return true}
+    return false;
+  };
+  if(!markNationalActive()){
+    const observer=new MutationObserver(()=>{if(markNationalActive())observer.disconnect()});
+    observer.observe(document.documentElement,{childList:true,subtree:true});
+  }
   fetch('data/national/continental-championships-2026.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
     const item=(data.competitions||[]).find(x=>x.id===id)||(data.competitions||[])[0];
     if(!item)throw new Error('competition not found');
