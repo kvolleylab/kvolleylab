@@ -22,7 +22,7 @@
     hero.innerHTML=`<p class="eyebrow">${esc(item.confederation)} · ${esc(item.region_ko)} · LA28 QUALIFIER</p><h1>${esc(item.name_ko)}</h1><p>${esc(item.name_en)}</p><div class="cc26-chips"><span>${esc(item.dates)}</span><span>${esc(item.host)}</span><span>${esc(item.status)}</span></div>`;
     overview.innerHTML=`<article><span>대륙</span><strong>${esc(item.region_ko)}</strong></article><article><span>대회 기간</span><strong>${esc(item.dates)}</strong></article><article><span>개최지</span><strong>${esc(item.host)}</strong></article><article><span>현재 상태</span><strong>${esc(item.status)}</strong></article>`;
     quota.innerHTML=`<strong>${esc(item.quota)}</strong><p>FIVB의 LA28 배구 출전자격 체계에 따라 2026년 5개 대륙선수권에서 각 대륙의 최고 순위팀이 올림픽 출전권을 획득합니다.</p>`;
-    sources.innerHTML=`<a href="${esc(item.official_url)}" target="_blank" rel="noopener">${esc(item.source_label)} ↗</a><a href="${esc(data.fivb_overview)}" target="_blank" rel="noopener">FIVB LA28 출전자격 개요 ↗</a><a href="${esc(data.official_qualification)}" target="_blank" rel="noopener">LA28 공식 출전자격 문서 ↗</a>`;
+    sources.innerHTML=`<a href="${esc(item.official_url)}" target="_blank" rel="noopener">${esc(item.source_label)} ↗</a><a href="${esc(data.fivb_continental_news)}" target="_blank" rel="noopener">FIVB · 대륙선수권과 LA28 공식 뉴스 ↗</a><a href="${esc(data.fivb_overview)}" target="_blank" rel="noopener">FIVB · LA28 출전자격 체계 ↗</a><a href="${esc(data.official_qualification)}" target="_blank" rel="noopener">LA28 공식 출전자격 문서 ↗</a>`;
   }).catch(()=>{
     hero.innerHTML='<p class="eyebrow">NATIONAL TEAM</p><h1>대회 정보를 불러오지 못했습니다.</h1><p>잠시 후 다시 확인해주세요.</p>';
   });
