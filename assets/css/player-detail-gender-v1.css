@@ -1,0 +1,5 @@
+#playerArea.pd-player-men .pd-card{border-left:5px solid #17324d}
+#playerArea.pd-player-women .pd-card{border-left:5px solid #c98598}
+#playerArea.pd-player-men .pd-badges .pd-badge:first-child{background:#eef3f8;color:#17324d}
+#playerArea.pd-player-women .pd-badges .pd-badge:first-child{background:#f8ecef;color:#985268}
+#playerArea .pd-hero .pd-badge-secondary{display:none}
