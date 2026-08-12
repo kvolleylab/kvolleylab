@@ -30,24 +30,33 @@
     players.innerHTML=`<div class="ntroster-table-scroll"><table class="ntroster-table"><thead><tr><th>No.</th><th>선수명</th><th>포지션</th><th>생년월일</th><th>키</th><th>프로필</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   }
 
+  async function fetchOptionalJson(url){
+    try{
+      const r=await fetch(url,{cache:'no-store'});
+      return r.ok?await r.json():null;
+    }catch(_){return null;}
+  }
+
   async function loadAvcMenCup(){
-    const [master,indexData,rosterData]=await Promise.all([
+    const [master,indexData,rosterData,extendedData]=await Promise.all([
       fetch('data/master/competition_master.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('master');return r.json();}),
       fetch('data/competition/avc-men-cup-2026-men-roster-index.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('index');return r.json();}),
-      fetch('data/competition/avc-men-cup-2026-men-rosters.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('rosters');return r.json();})
+      fetch('data/competition/avc-men-cup-2026-men-rosters.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('rosters');return r.json();}),
+      fetchOptionalJson('data/competition/avc-men-cup-2026-men-rosters-verified-2.json')
     ]);
     const item=(master||[]).find(x=>x?.system?.competition_id==='KVL-COMP-000003'||x?.system?.slug==='avc-men-cup-2026');
     if(!item)throw new Error('competition not found');
     const requested=norm(countryParam);
-    const roster=(rosterData.teams||[]).find(t=>[t.country,t.country_ko,t.participant_id,String(t.official_team_id)].some(v=>norm(v)===requested));
+    const teams=[...(rosterData.teams||[]),...((extendedData&&extendedData.teams)||[])];
+    const roster=teams.find(t=>[t.country,t.country_ko,t.participant_id,String(t.official_team_id)].some(v=>norm(v)===requested));
     const indexEntry=(indexData.rosters||[]).find(r=>roster?r.participant_id===roster.participant_id:[r.country,r.country_ko,r.participant_id].some(v=>norm(v)===requested));
     const countryName=roster?.country_ko||indexEntry?.country_ko||countryParam;
     const imported=Boolean(roster);
     const id=item.identity||{};
     const fmt=item.format||{};
     document.title=`${countryName} · ${id.name_ko} 로스터 | K-Volley Lab`;
-    back.href='competition.html';
-    back.textContent='← 대회 허브';
+    back.href='avc-men-cup.html';
+    back.textContent='← AVC Men’s Cup';
     hero.dataset.gender='men';
     hero.innerHTML=`<p class="eyebrow">MEN · TOURNAMENT ROSTER</p><h1>${esc(countryName)}</h1><p>${esc(id.name_ko)} 대회 전용 공식 로스터</p><div class="ntroster-chips"><span>AVC · 아시아</span><span>${esc(fmt.dates||'2026')}</span><span>${esc(fmt.host||'Ahmedabad, India')}</span></div>`;
     status.textContent=imported?'검수 완료':'검수 완료 · 반영 대기';
