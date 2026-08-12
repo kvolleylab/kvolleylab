@@ -38,16 +38,17 @@
   }
 
   async function loadAvcMenCup(){
-    const [master,indexData,rosterData,extendedData]=await Promise.all([
+    const [master,indexData,rosterData,extendedData,extendedData2]=await Promise.all([
       fetch('data/master/competition_master.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('master');return r.json();}),
       fetch('data/competition/avc-men-cup-2026-men-roster-index.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('index');return r.json();}),
       fetch('data/competition/avc-men-cup-2026-men-rosters.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('rosters');return r.json();}),
-      fetchOptionalJson('data/competition/avc-men-cup-2026-men-rosters-verified-2.json')
+      fetchOptionalJson('data/competition/avc-men-cup-2026-men-rosters-verified-2.json'),
+      fetchOptionalJson('data/competition/avc-men-cup-2026-men-rosters-verified-3.json')
     ]);
     const item=(master||[]).find(x=>x?.system?.competition_id==='KVL-COMP-000003'||x?.system?.slug==='avc-men-cup-2026');
     if(!item)throw new Error('competition not found');
     const requested=norm(countryParam);
-    const teams=[...(rosterData.teams||[]),...((extendedData&&extendedData.teams)||[])];
+    const teams=[...(rosterData.teams||[]),...((extendedData&&extendedData.teams)||[]),...((extendedData2&&extendedData2.teams)||[])];
     const roster=teams.find(t=>[t.country,t.country_ko,t.participant_id,String(t.official_team_id)].some(v=>norm(v)===requested));
     const indexEntry=(indexData.rosters||[]).find(r=>roster?r.participant_id===roster.participant_id:[r.country,r.country_ko,r.participant_id].some(v=>norm(v)===requested));
     const countryName=roster?.country_ko||indexEntry?.country_ko||countryParam;
