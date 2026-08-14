@@ -54,20 +54,20 @@
       "official_team_id": 8845,
       "coach": "Ivan Joksimovic",
       "players": [
-        {"number":1,"name":"Ali Ebrahim","name_ko":"알리 에브라힘","positions":["S"],"height_cm":178,"dob":"1988-03-21","volleybox_url":null},
-        {"number":4,"name":"Warqaa Hasan","name_ko":"와르카 하산","positions":["MB"],"height_cm":199,"dob":"2005-04-24","volleybox_url":null},
-        {"number":6,"name":"Ali Sayed Hashem","name_ko":"알리 사예드 하셈","positions":["OH"],"height_cm":190,"dob":"2003-07-30","volleybox_url":null},
-        {"number":7,"name":"Alafyah Mahmood","name_ko":"알라피야 마흐무드","positions":["S"],"height_cm":187,"dob":"1993-12-19","volleybox_url":null},
-        {"number":8,"name":"Ahmed Mahmood","name_ko":"아흐메드 마흐무드","positions":["OH"],"height_cm":185,"dob":"1996-02-19","volleybox_url":null},
-        {"number":9,"name":"Abdulla Mohamed","name_ko":"압둘라 모하메드","positions":["MB"],"height_cm":199,"dob":"1999-11-30","volleybox_url":null},
-        {"number":13,"name":"Khamis Ali","name_ko":"카미스 알리","positions":["OP"],"height_cm":193,"dob":"1991-10-04","volleybox_url":null},
-        {"number":16,"name":"Salman Mahmood","name_ko":"살만 마흐무드","positions":["OH"],"height_cm":180,"dob":"1999-01-20","volleybox_url":null},
-        {"number":18,"name":"Haroon Ayman","name_ko":"하룬 아이만","positions":["L"],"height_cm":179,"dob":"1986-09-06","volleybox_url":null},
-        {"number":20,"name":"Sultan Abbas","name_ko":"술탄 압바스","positions":["L"],"height_cm":null,"dob":"1998-06-25","volleybox_url":null,"notes":"Official Volleyball World profile lists 62 cm; height withheld as an obvious source-data error."},
-        {"number":28,"name":"Mohamed Saleh Ahmed","name_ko":"모하메드 살레 아흐메드","positions":["OH"],"height_cm":189,"dob":"2001-07-15","volleybox_url":null},
-        {"number":77,"name":"Yusuf Ali","name_ko":"유수프 알리","positions":["MB"],"height_cm":190,"dob":"2002-02-19","volleybox_url":null},
-        {"number":88,"name":"Haider Hasan","name_ko":"하이데르 하산","positions":["MB"],"height_cm":197,"dob":"2000-10-23","volleybox_url":null},
-        {"number":99,"name":"Ebrahim Abdulla","name_ko":"에브라힘 압둘라","positions":["OP"],"height_cm":195,"dob":"2001-12-04","volleybox_url":null}
+        {"number":1,"name":"Ali Ebrahim","name_ko":"알리 에브라힘","positions":["S"],"height_cm":178,"dob":"1988-03-21","volleybox_url":null,"notes":"Volleybox 2026 match roster lists #1 Ali Habib; possible same player, but name identity is not locked yet."},
+        {"number":4,"name":"Warqaa Hasan","name_ko":"와르카 하산","positions":["MB"],"height_cm":199,"dob":"2005-04-24","volleybox_url":"https://volleybox.net/hasan-warqaa-p130926","notes":"Official tournament height 199 cm retained; Volleybox lists 193 cm."},
+        {"number":6,"name":"Ali Sayed Hashem","name_ko":"알리 사예드 하셈","positions":["OH"],"height_cm":190,"dob":"2003-07-30","volleybox_url":"https://volleybox.net/sayed-hashem-ali-p74753","notes":"Name order differs on Volleybox; DOB and 2026 Bahrain roster number match. Official height 190 cm retained over Volleybox 185 cm."},
+        {"number":7,"name":"Alafyah Mahmood","name_ko":"알라피야 마흐무드","positions":["S"],"height_cm":187,"dob":"1993-12-19","volleybox_url":"https://volleybox.net/mahmood-alafyah-p73528","notes":"Name order differs on Volleybox. Official height 187 cm retained over Volleybox 185 cm."},
+        {"number":8,"name":"Ahmed Mahmood","name_ko":"아흐메드 마흐무드","positions":["OH"],"height_cm":185,"dob":"1996-02-19","volleybox_url":"https://volleybox.net/mahmood-ahmed-abdulwahed-p73524","notes":"Volleyball World uses shortened/reordered name; 2026 Bahrain roster number, DOB, position and height identify the same player."},
+        {"number":9,"name":"Abdulla Mohamed","name_ko":"압둘라 모하메드","positions":["MB"],"height_cm":199,"dob":"1999-11-30","volleybox_url":"https://volleybox.net/mohamed-abdulla-p27652","notes":"Name order differs on Volleybox. Official height 199 cm retained over Volleybox 193 cm."},
+        {"number":13,"name":"Khamis Ali","name_ko":"카미스 알리","positions":["OP"],"height_cm":193,"dob":"1991-10-04","volleybox_url":"https://volleybox.net/ali-khamis-p73414","notes":"Name order differs on Volleybox. Official height 193 cm retained over Volleybox 185 cm."},
+        {"number":16,"name":"Salman Mahmood","name_ko":"살만 마흐무드","positions":["OH"],"height_cm":180,"dob":"1999-01-20","volleybox_url":null,"notes":"Volleybox 2026 match roster lists Mahmood Abdulhusain Salman; profile URL still needs direct confirmation."},
+        {"number":18,"name":"Haroon Ayman","name_ko":"하룬 아이만","positions":["L"],"height_cm":179,"dob":"1986-09-06","volleybox_url":"https://volleybox.net/ayman-haroon-p104014","notes":"Name order differs on Volleybox; DOB/height/position and 2026 roster number match."},
+        {"number":20,"name":"Sultan Abbas","name_ko":"술탄 압바스","positions":["L"],"height_cm":null,"dob":"1998-06-25","volleybox_url":null,"notes":"Official Volleyball World profile lists 62 cm. Volleybox 2026 roster shows #20 Abbas Abdulla Sultan, but its profile lists OH, 178 cm and DOB 1998-05-25; identity/value conflict remains unresolved."},
+        {"number":28,"name":"Mohamed Saleh Ahmed","name_ko":"모하메드 살레 아흐메드","positions":["OH"],"height_cm":189,"dob":"2001-07-15","volleybox_url":null,"notes":"Volleybox 2026 roster lists Ahmed Mohamed Saleh; direct player profile URL still needs confirmation."},
+        {"number":77,"name":"Yusuf Ali","name_ko":"유수프 알리","positions":["MB"],"height_cm":190,"dob":"2002-02-19","volleybox_url":null,"notes":"Volleybox 2026 roster lists Ali Yusef; direct player profile URL still needs confirmation."},
+        {"number":88,"name":"Haider Hasan","name_ko":"하이데르 하산","positions":["MB"],"height_cm":197,"dob":"2000-10-23","volleybox_url":null,"notes":"Volleybox 2026 roster lists Hasan Haider; direct player profile URL still needs confirmation."},
+        {"number":99,"name":"Ebrahim Abdulla","name_ko":"에브라힘 압둘라","positions":["OP"],"height_cm":195,"dob":"2001-12-04","volleybox_url":null,"notes":"Volleybox 2026 roster lists Abdulla Ebrahim; direct player profile URL still needs confirmation."}
       ]
     }
   ]
