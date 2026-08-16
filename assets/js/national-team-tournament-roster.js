@@ -8,7 +8,7 @@
   const players=document.getElementById('ntRosterPlayers');
   const sources=document.getElementById('ntRosterSources');
   const back=document.getElementById('ntRosterBack');
-  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const norm=s=>String(s??'').trim().toLowerCase().replace(/\s+/g,' ');
   const display=s=>s===null||s===undefined||s===''?'—':esc(s);
   const positionText=p=>Array.isArray(p)?p.filter(Boolean).join(' / '):(p||'—');
