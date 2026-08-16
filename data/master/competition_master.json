@@ -70,9 +70,9 @@
       "competition_id": "KVL-COMP-000003",
       "slug": "avc-men-cup-2026",
       "status": "active",
-      "data_confidence": "reviewed_roster_sources",
+      "data_confidence": "reviewed",
       "created_at": "2026-08-12",
-      "updated_at": "2026-08-12"
+      "updated_at": "2026-08-16"
     },
     "identity": {
       "name_ko": "2026 AVC Men's Cup",
@@ -85,11 +85,13 @@
       "season": 2026
     },
     "organization": {"organizer": "AVC / Volleyball World", "country": "India"},
-    "format": {"participant_count": 11, "stage_structure": ["preliminary", "finals"], "timezone_display": "Asia/Seoul", "dates": "2026-06-20 ~ 2026-06-28", "host": "Ahmedabad, India"},
-    "routes": {"schedule_page": "schedules.html?competition=avc-men-cup&season=2026", "players_page": "players.html?type=international"},
+    "format": {"participant_count": 11, "stage_structure": ["preliminary", "ranking", "finals"], "timezone_display": "Asia/Seoul", "dates": "2026-06-20 ~ 2026-06-28", "host": "Ahmedabad, India"},
+    "routes": {"hub_page":"avc-men-cup.html", "schedule_page": "schedules.html?competition=avc-men-cup&season=2026", "players_page": "players.html?type=international"},
     "data_links": {
       "participants": "data/competition/avc-men-cup-2026-men-participants.json",
-      "rosters": "data/competition/avc-men-cup-2026-men-roster-index.json",
+      "rosters": "data/competition/avc-men-cup-2026-men-rosters.json",
+      "roster_index": "data/competition/avc-men-cup-2026-men-roster-index.json",
+      "matches": "data/matches/avc-2026-calendar.json",
       "seasons": "data/competitions/avc-men-cup/seasons.json",
       "official": "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/"
     }
