@@ -1,0 +1,118 @@
+/* AVC competition fixes: keep Gosung match-result UI as the visual standard. */
+
+/* Match results: reuse the exact Gosung five-column rhythm, adding only flags and a compact set-detail row. */
+.avc-competition-page .cd-match{
+  grid-template-columns:74px 90px 1fr 56px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:14px 16px;
+}
+.avc-competition-page .cd-match time{font-size:14px;color:#34485f}
+.avc-competition-page .cd-team{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+}
+.avc-competition-page .cd-team.is-left{justify-content:flex-end;text-align:right}
+.avc-competition-page .cd-team.is-right{justify-content:flex-start;text-align:left}
+.avc-competition-page .cd-team a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  color:inherit;
+  text-decoration:none;
+}
+.avc-competition-page .cd-team.is-left a{justify-content:flex-end;margin-left:auto}
+.avc-competition-page .cd-team.is-right a{justify-content:flex-start;margin-right:auto}
+.avc-match-flag{
+  width:28px;
+  height:19px;
+  flex:0 0 28px;
+  border:1px solid #e0e5ea;
+  border-radius:3px;
+  object-fit:cover;
+  background:#fff;
+}
+.avc-match-team-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.avc-match-sets{
+  grid-column:1/-1;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:-2px 0 0;
+  padding:9px 0 0;
+  border-top:1px solid #f0f2f5;
+}
+.avc-match-sets span{
+  color:#748397;
+  font-size:11px;
+  font-weight:700;
+}
+
+/* Final bracket: 3rd-place card is outside the main ladder, so it cannot shift the final centerline. */
+.avc-competition-page .avc-bracket{
+  display:grid;
+  grid-template-columns:minmax(0,3fr) minmax(240px,1fr);
+  gap:34px;
+  min-height:520px;
+  margin-top:12px;
+  padding:4px 0 0;
+}
+.avc-bracket-main{
+  position:relative;
+  min-height:500px;
+}
+.avc-bracket-main .avc-ladder-final{
+  position:absolute;
+  top:0;
+  left:50%;
+  width:44%;
+  transform:translateX(-50%);
+}
+.avc-bracket-main .avc-ladder-semi-1,
+.avc-bracket-main .avc-ladder-semi-2{
+  position:absolute;
+  top:285px;
+  width:44%;
+}
+.avc-bracket-main .avc-ladder-semi-1{left:0}
+.avc-bracket-main .avc-ladder-semi-2{right:0}
+.avc-bracket-main .avc-ladder-line{position:absolute;background:#9ba8b5}
+.avc-bracket-main .avc-ladder-line.v-final{top:169px;left:50%;width:2px;height:72px;transform:translateX(-50%)}
+.avc-bracket-main .avc-ladder-line.h-merge{top:240px;left:22%;width:56%;height:2px}
+.avc-bracket-main .avc-ladder-line.v-left{top:240px;left:22%;width:2px;height:45px}
+.avc-bracket-main .avc-ladder-line.v-right{top:240px;right:22%;width:2px;height:45px}
+.avc-bracket-side{padding-top:0}
+.avc-bracket-side .avc-ladder-third{position:static;width:auto}
+
+@media(max-width:900px){
+  .avc-competition-page .avc-bracket{grid-template-columns:minmax(0,2.4fr) minmax(210px,1fr);gap:22px}
+  .avc-bracket-main .avc-ladder-final{width:48%}
+  .avc-bracket-main .avc-ladder-semi-1,.avc-bracket-main .avc-ladder-semi-2{width:46%}
+  .avc-bracket-main .avc-ladder-line.h-merge{left:23%;width:54%}
+  .avc-bracket-main .avc-ladder-line.v-left{left:23%}
+  .avc-bracket-main .avc-ladder-line.v-right{right:23%}
+}
+
+@media(max-width:700px){
+  .avc-competition-page .cd-match{
+    grid-template-columns:54px 1fr 44px 1fr;
+    gap:7px;
+  }
+  .avc-competition-page .cd-stage{display:none}
+  .avc-competition-page .cd-team{font-size:13px}
+  .avc-match-flag{width:24px;height:16px;flex-basis:24px}
+  .avc-competition-page .avc-bracket{display:grid;grid-template-columns:1fr;gap:14px;min-height:0}
+  .avc-bracket-main{display:grid;gap:12px;min-height:0}
+  .avc-bracket-main .avc-ladder-final,
+  .avc-bracket-main .avc-ladder-semi-1,
+  .avc-bracket-main .avc-ladder-semi-2{position:static;width:auto;transform:none}
+  .avc-bracket-main .avc-ladder-final{order:1}
+  .avc-bracket-main .avc-ladder-semi-1{order:2}
+  .avc-bracket-main .avc-ladder-semi-2{order:3}
+  .avc-bracket-main .avc-ladder-line{display:none}
+  .avc-bracket-side{order:2}
+}
