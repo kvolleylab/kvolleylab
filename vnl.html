@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="assets/css/competition-dashboard-v1.css?v=20260730-1">
   <link rel="stylesheet" href="assets/css/university-competition-navigation.css?v=20260801-3">
   <link rel="stylesheet" href="assets/css/vnl-competition-dashboard.css?v=20260819-2">
+  <link rel="stylesheet" href="assets/css/vnl-competition-enhancements.css?v=20260819-1">
   <script src="assets/js/unified-nav.js?v=20260810-1" defer></script>
   <script src="assets/js/competition-results-standard.js?v=20260818-1" defer></script>
   <script src="assets/js/vnl-competition-dashboard.js?v=20260819-2" defer></script>
+  <script src="assets/js/vnl-competition-enhancements.js?v=20260819-1" defer></script>
 </head>
 <body class="competition-dashboard-page vnl-competition-page" data-competition="vnl-2026-men">
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -23,7 +25,7 @@
 
   <section class="cd-hero cd-hero--international">
     <div class="vnl-hero-brand">
-      <div class="vnl-competition-logo" aria-label="VNL"><span>VNL</span></div>
+      <div class="vnl-competition-logo" aria-label="Volleyball Nations League"><img src="assets/images/competitions/vnl-2026-logo.jpg" alt="VNL Volleyball Nations League FIVB 로고"></div>
       <div class="vnl-hero-copy">
         <p class="eyebrow">INTERNATIONAL · VNL · MEN</p>
         <h1>2026 VNL Men</h1>
@@ -55,6 +57,10 @@
       <article><span>전체 완료</span><strong id="vnlCompletedCount">-</strong><small>경기</small></article>
     </div>
     <div class="vnl-overview-note"><strong>대회 방식</strong> · 18개국이 예선에서 각 12경기를 치른 뒤 상위 7개국과 결선 개최국 중국이 8강 토너먼트에 진출합니다.</div>
+    <div class="cd-calendar-wrap vnl-overview-calendar-wrap">
+      <div class="cd-calendar-head"><div><p class="eyebrow">KST CALENDAR</p><h2>대회 일정 달력</h2></div><a href="schedules.html?tournament=vnl">전체 일정 크게 보기 →</a></div>
+      <div id="vnlOverviewCalendar" class="cd-calendar"><div class="cd-empty">대회 일정을 불러오는 중입니다.</div></div>
+    </div>
   </section>
 
   <section id="results" class="cd-section cd-view">
