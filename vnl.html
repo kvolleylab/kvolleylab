@@ -6,15 +6,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2026 VNL Men | K-Volley Lab</title>
-  <meta name="description" content="2026 VNL 남자부 경기결과, 예선 순위, 참가국과 대회 자료를 확인하세요.">
+  <meta name="description" content="2026 VNL 남자부 경기결과, 예선 순위, 최종 순위, 참가국과 대회 자료를 확인하세요.">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
   <link rel="stylesheet" href="assets/css/competition-dashboard-v1.css?v=20260730-1">
   <link rel="stylesheet" href="assets/css/university-competition-navigation.css?v=20260801-3">
-  <link rel="stylesheet" href="assets/css/vnl-competition-dashboard.css?v=20260819-1">
+  <link rel="stylesheet" href="assets/css/vnl-competition-dashboard.css?v=20260819-2">
   <script src="assets/js/unified-nav.js?v=20260810-1" defer></script>
   <script src="assets/js/competition-results-standard.js?v=20260818-1" defer></script>
-  <script src="assets/js/vnl-competition-dashboard.js?v=20260819-1" defer></script>
+  <script src="assets/js/vnl-competition-dashboard.js?v=20260819-2" defer></script>
 </head>
 <body class="competition-dashboard-page vnl-competition-page" data-competition="vnl-2026-men">
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="cd-status"><span>국제대회</span><strong>2026 VNL 남자부</strong></div>
+    <div class="cd-status"><span>국제대회</span><strong>공식 결과 반영</strong></div>
   </section>
 
   <nav class="cd-jump" aria-label="대회 메뉴">
@@ -52,7 +52,7 @@
       <article><span>참가국</span><strong id="vnlCountryCount">-</strong><small>개국</small></article>
       <article><span>예선 경기</span><strong id="vnlPrelimMatchCount">-</strong><small>경기</small></article>
       <article><span>결선 경기</span><strong id="vnlFinalMatchCount">-</strong><small>경기</small></article>
-      <article><span>예선 완료</span><strong id="vnlCompletedCount">-</strong><small>경기</small></article>
+      <article><span>전체 완료</span><strong id="vnlCompletedCount">-</strong><small>경기</small></article>
     </div>
     <div class="vnl-overview-note"><strong>대회 방식</strong> · 18개국이 예선에서 각 12경기를 치른 뒤 상위 7개국과 결선 개최국 중국이 8강 토너먼트에 진출합니다.</div>
   </section>
@@ -69,11 +69,11 @@
   </section>
 
   <section id="standings" class="cd-section cd-view">
-    <div class="cd-section-title"><div><p class="eyebrow">FINAL ROUND</p><h2>최종 순위</h2></div><p>결선 토너먼트 결과 데이터 연결 영역</p></div>
-    <div id="vnlFinalStandings" class="vnl-final-placeholder">
-      <strong>결선 토너먼트 구조는 공통 대회 폼에 연결했습니다.</strong>
-      <p>8강 · 준결승 · 3위 결정전 · 결승 결과를 검수한 뒤 최종 순위를 이 영역에 확정 반영합니다.</p>
-      <a href="schedules.html?tournament=vnl">결선 일정 확인 →</a>
+    <div class="cd-section-title"><div><p class="eyebrow">FINAL STANDINGS</p><h2>최종 순위</h2></div><p>Volleyball World 2026 VNL 남자부 최종 결과</p></div>
+    <div id="vnlFinalStandings"><div class="cd-empty">최종 순위를 불러오는 중입니다.</div></div>
+    <div class="vnl-final-bracket-wrap">
+      <div class="cd-section-title"><div><p class="eyebrow">FINAL ROUND</p><h2>결선 토너먼트 결과</h2></div><p>8강 → 준결승 → 3·4위 → 결승</p></div>
+      <div id="vnlFinalBracket"><div class="cd-empty">결선 결과를 불러오는 중입니다.</div></div>
     </div>
   </section>
 
@@ -88,7 +88,7 @@
       <a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/" target="_blank" rel="noopener noreferrer">Volleyball World · VNL 공식 페이지 ↗</a>
       <a href="https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/standings/men/" target="_blank" rel="noopener noreferrer">Volleyball World · 남자부 공식 순위 ↗</a>
     </div>
-    <div class="vnl-source-note"><strong>K-Volley Lab 기준</strong><span>경기시간은 Asia/Seoul(KST), 참가국·경기·예선 순위는 Competition Master 연결 데이터를 사용합니다.</span></div>
+    <div class="vnl-source-note"><strong>K-Volley Lab 기준</strong><span>경기시간은 Asia/Seoul(KST), 참가국·경기·예선 및 최종 순위는 Competition Master 연결 데이터를 사용합니다.</span></div>
   </section>
 </main>
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
