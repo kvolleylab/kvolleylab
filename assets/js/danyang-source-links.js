@@ -18,4 +18,5 @@ const improve=()=>{
   return true;
 };
 if(!improve()){const o=new MutationObserver(()=>{if(improve())o.disconnect()});o.observe(document.body,{childList:true,subtree:true});}
+if(!window.__danyangRosterEnhancementLoaded){window.__danyangRosterEnhancementLoaded=true;const s=document.createElement('script');s.src='assets/js/danyang-roster-enhancements.js?v=20260819-1';s.defer=true;document.head.appendChild(s);}
 })();
