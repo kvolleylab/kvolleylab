@@ -1,13 +1,30 @@
 (()=>{
 'use strict';
 const nativeFetch=window.fetch.bind(window);
-const DANYANG_URL='data/competitions/danyang-2026.json?v=20260820-1';
+const DANYANG_URL='data/competitions/danyang-2026.json?v=20260820-2';
+let danyangData=null;
 
-window.fetch=(input,init)=>{
+window.fetch=async(input,init)=>{
   const url=typeof input==='string'?input:input?.url||'';
-  if(url.includes('data/competitions/gosung-2026.json')) return nativeFetch(DANYANG_URL,init);
+  if(url.includes('data/competitions/gosung-2026.json')){
+    const response=await nativeFetch(DANYANG_URL,init);
+    try{danyangData=await response.clone().json();}catch(_){danyangData=null;}
+    return response;
+  }
   return nativeFetch(input,init);
 };
+
+function syncDanyangKpis(){
+  if(!danyangData)return;
+  const active=document.querySelector('[data-calendar-division].is-active')?.dataset.calendarDivision||'남대부';
+  const participants=danyangData.participants?.[active]||[];
+  const teamLabel=document.getElementById('cdTeamLabel');
+  const teamCount=document.getElementById('cdTeamCount');
+  const matchCount=document.getElementById('cdMatchCount');
+  if(teamLabel)teamLabel.textContent=active==='남대부'?'남대부 참가대학':'여대부 참가대학';
+  if(teamCount)teamCount.textContent=String(participants.length);
+  if(matchCount)matchCount.textContent=String((danyangData.games||[]).filter(g=>g.division===active).length);
+}
 
 function applyDanyangUi(){
   document.title='2026 단양대회 | K-Volley Lab';
@@ -35,6 +52,7 @@ function applyDanyangUi(){
       card.querySelectorAll('.cd-winner').forEach(x=>x.classList.remove('cd-winner'));
     }
   });
+  syncDanyangKpis();
 }
 
 function scheduleUiSync(){
