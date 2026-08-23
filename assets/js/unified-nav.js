@@ -35,6 +35,27 @@
 
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
   const params=new URLSearchParams(location.search);
+
+  const UNIVERSITY_COMPETITION_PATHS=new Set(['university-competition.html','university-competition-danyang.html']);
+  if(UNIVERSITY_COMPETITION_PATHS.has(path)){
+    const kuvlLogoPath='assets/images/universities/kuvf-logo.png';
+    const applyKuvfLogo=()=>{
+      const el=document.getElementById('cdCompetitionLogo');
+      if(!el)return;
+      const current=el.querySelector('img');
+      if(current&&current.getAttribute('src')===kuvlLogoPath)return;
+      el.innerHTML=`<img src="${kuvlLogoPath}" alt="한국대학배구연맹 로고" loading="eager">`;
+    };
+    const watchKuvfLogo=()=>{
+      const el=document.getElementById('cdCompetitionLogo');
+      if(!el)return;
+      applyKuvfLogo();
+      new MutationObserver(applyKuvfLogo).observe(el,{childList:true,subtree:true});
+    };
+    if(document.readyState==='loading')addEventListener('DOMContentLoaded',watchKuvfLogo,{once:true});
+    else watchKuvfLogo();
+  }
+
   const matchId=params.get('id');
   if(path==='match.html'&&matchId){
     const canonical=toCanonical(matchId);
