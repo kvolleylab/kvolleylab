@@ -1,7 +1,7 @@
 (()=>{
 'use strict';
 const nativeFetch=window.fetch.bind(window);
-const DANYANG_URL='data/competitions/danyang-2026.json?v=20260820-2';
+const DANYANG_URL='data/competitions/danyang-2026.json?v=20260823-1';
 let danyangData=null;
 
 window.fetch=async(input,init)=>{
@@ -32,8 +32,13 @@ function applyDanyangUi(){
   if(title) title.innerHTML='<span class="cd-hero-title-line">2026 대한항공배</span><span class="cd-hero-title-line">전국대학배구 단양대회</span>';
   const meta=document.getElementById('cdMeta');
   if(meta) meta.textContent='2026-08-12(수) ~ 2026-08-20(목) · 충청북도 단양군 · 단양국민체육센터 / 단양문화체육센터';
-  const status=document.querySelector('.cd-status strong');
-  if(status) status.textContent='대회 종료';
+  const statusBox=document.querySelector('.cd-status');
+  if(statusBox){
+    const label=statusBox.querySelector('span');
+    const value=statusBox.querySelector('strong');
+    if(label)label.textContent='대회 종료';
+    if(value)value.textContent='공식 결과 반영';
+  }
 
   document.querySelectorAll('.cd-jump a[data-view]').forEach(a=>{
     a.href=`university-competition-danyang.html?view=${a.dataset.view}`;
