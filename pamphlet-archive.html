@@ -1,5 +1,93 @@
-<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>팜플렛 아카이브 | K-Volley Lab</title><style>
-:root{--bg:#071827;--panel:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--gold:#d6b25e;--text:#fff;--muted:#cbd5e1;--soft:#94a3b8;--green:#2dd4bf;--deep:#04111d}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top,#102a43 0,var(--bg) 48%,var(--deep) 100%);color:var(--text)}header{padding:18px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.12);position:sticky;top:0;background:rgba(7,24,39,.94);backdrop-filter:blur(10px);z-index:5}.logo{font-size:24px;font-weight:bold;color:var(--gold);text-decoration:none}nav{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end}nav a{color:#fff;text-decoration:none;font-size:14px;opacity:.92}nav a:hover,nav a.active{color:var(--gold);font-weight:bold}main{max-width:1120px;margin:0 auto;padding:56px 20px 80px}.eyebrow{color:var(--green);font-weight:bold;font-size:14px}.title{font-size:clamp(36px,5vw,56px);color:var(--gold);margin:12px 0 14px;line-height:1.1}.desc{color:#d9e2ec;font-size:17px;line-height:1.7;max-width:820px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.panel,.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px}.card h3,.panel h3{margin:0 0 10px;color:var(--gold)}.muted{color:var(--muted);line-height:1.65}.soft{color:var(--soft)}.btn{border:0;background:var(--gold);color:#071827;padding:13px 18px;border-radius:999px;font-weight:bold;text-decoration:none;display:inline-block;cursor:pointer}.btn.secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--line)}.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.section{margin-top:34px}.section h2{font-size:26px;margin:0 0 12px}.tag{font-size:12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 9px;color:#d9e2ec;display:inline-block;margin:3px}.gold{color:var(--gold)}.source{color:#94a3b8;font-size:12px;margin-top:10px}.searchbox{margin:28px 0 18px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;grid-template-columns:1fr auto;gap:12px}input,select{width:100%;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;color:#fff;padding:14px;font-size:15px}input::placeholder{color:#94a3b8}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 30px}.filter{background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:999px;padding:10px 13px;text-align:center;color:var(--muted);font-size:14px}.filter.active{background:rgba(214,178,94,.18);color:var(--gold);border-color:rgba(214,178,94,.45)}table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:16px;background:var(--panel);border:1px solid var(--line)}th,td{padding:14px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}th{color:var(--gold);background:rgba(255,255,255,.06)}td{color:var(--muted)}tr:last-child td{border-bottom:0}.timeline{position:relative;margin-top:22px;padding-left:28px}.timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:rgba(214,178,94,.45)}.event{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px}.event:before{content:"";position:absolute;left:-26px;top:22px;width:12px;height:12px;background:var(--gold);border-radius:50%;box-shadow:0 0 0 5px rgba(214,178,94,.14)}.profile{display:grid;grid-template-columns:1fr .75fr;gap:20px}.statgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px}.stat strong{display:block;color:var(--gold);font-size:24px;margin-bottom:4px}.archive-year{margin-top:26px}.archive-item{display:grid;grid-template-columns:110px 1fr auto;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:10px}@media(max-width:760px){header{align-items:flex-start;gap:14px;flex-direction:column;padding:18px}nav{justify-content:flex-start}.searchbox{grid-template-columns:1fr}.profile{grid-template-columns:1fr}.statgrid{grid-template-columns:1fr 1fr}.archive-item{grid-template-columns:1fr}table{display:block;overflow-x:auto;white-space:nowrap}}
-</style>  <script src="assets/js/unified-nav.js" defer></script>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>공식자료 아카이브 | K-Volley Lab</title>
+  <meta name="description" content="K-Volley Lab 공식 대회자료 아카이브. 대회요강, 공식 선수명단, 일정, 대진표, 경기결과 등 원본 근거자료를 Source ID와 함께 관리합니다." />
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex" />
+  <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/site-theme-light.css" />
-</head><body><header><a class="logo" href="index.html">K-Volley Lab</a><nav><a  href="index.html" >홈</a><a  href="domestic-db.html" >국내 선수 DB</a><a  href="vnl.html" >VNL</a><a  href="player-search.html" >선수 검색</a><a class="active" href="pamphlet-archive.html" >팜플렛</a><a  href="schedules.html" >일정</a><a  href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">제보</a></nav></header><main><div class="eyebrow">Pamphlet Archive</div><h1 class="title">대회 팜플렛 아카이브</h1><p class="desc">국내 선수 성장 DB의 핵심 근거 자료를 보관하는 화면입니다. 나중에 PDF, 이미지, 엑셀 원본, 출처 링크를 대회 단위로 연결합니다.</p><section class="searchbox"><input placeholder="대회명, 연도, 학교명 검색 예: 2026 태백산배"/><button>검색</button></section><section class="section"><h2>아카이브 예시</h2><div class="archive-item"><strong class="gold">2026</strong><div><h3>춘계중고배구연맹전</h3><p class="muted">중·고등부 선수 명단, 신장, 포지션, 학교 정보</p></div><a class="btn secondary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">준비중</a></div><div class="archive-item"><strong class="gold">2026</strong><div><h3>태백산배 전국남녀중고배구대회</h3><p class="muted">대회별 엔트리와 수상 이력 확인용</p></div><a class="btn secondary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">준비중</a></div><div class="archive-item"><strong class="gold">2026</strong><div><h3>CBS배 전국남녀중고배구대회</h3><p class="muted">선수 성장 DB 출처 연결용</p></div><a class="btn secondary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">준비중</a></div><div class="archive-item"><strong class="gold">2026</strong><div><h3>대학배구리그</h3><p class="muted">대학 선수 소속, 포지션, 경기 기록 연결용</p></div><a class="btn secondary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">준비중</a></div><div class="archive-item"><strong class="gold">2025</strong><div><h3>전국소년체육대회</h3><p class="muted">초·중등 단계 최초 기록 확인용</p></div><a class="btn secondary" href="https://forms.gle/MFNYhJX6Bq5zeNmp8" target="_blank">준비중</a></div></section><section class="section"><div class="panel"><h3>출처 관리 원칙</h3><p class="muted">각 선수 정보는 가능한 한 대회명, 연도, 자료명, 공개 URL 또는 파일명, 입력일을 함께 저장합니다. 민감 개인정보는 제외합니다.</p></div></section></main></body></html>
+  <script src="assets/js/unified-nav.js" defer></script>
+  <style>
+    :root{--bg:#071827;--deep:#04111d;--panel:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);--gold:#d6b25e;--mint:#22d4bf;--text:#fff;--muted:#cbd5e1;--soft:#94a3b8;--ok:#65d6ad;--warn:#f5c66d}
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:radial-gradient(circle at top,#102a43 0,var(--bg) 48%,var(--deep) 100%);color:var(--text)}
+    main{max-width:1180px;margin:0 auto;padding:52px 20px 80px}.eyebrow{color:var(--mint);font-size:14px;font-weight:800;letter-spacing:.04em}.title{font-size:clamp(34px,5vw,54px);color:var(--gold);margin:10px 0 14px;line-height:1.08}.desc{color:var(--muted);font-size:17px;line-height:1.7;max-width:900px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}.stat strong{display:block;color:var(--gold);font-size:28px}.stat span{color:var(--soft);font-size:13px}.filters{display:grid;grid-template-columns:2fr repeat(4,1fr);gap:10px;margin:20px 0}.filters input,.filters select{width:100%;min-height:46px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:rgba(255,255,255,.08);color:var(--text);font:inherit}.filters option{color:#111827}.archive-list{display:grid;gap:14px}.source-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px}.source-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.source-id{font-size:12px;color:var(--soft);word-break:break-all}.source-card h2{margin:8px 0 8px;color:var(--gold);font-size:21px}.source-card p{margin:5px 0;color:var(--muted);line-height:1.55}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:#dbe7f0}.chip.ok{color:var(--ok);border-color:rgba(101,214,173,.45)}.chip.warn{color:var(--warn);border-color:rgba(245,198,109,.45)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border-radius:999px;text-decoration:none;font-weight:800;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--text)}.btn.primary{background:var(--gold);color:var(--bg);border-color:var(--gold)}.btn.disabled{opacity:.45;pointer-events:none}.empty{padding:34px;text-align:center;color:var(--soft)}.policy{margin-top:28px}.policy h2{color:var(--gold);margin-top:0}.policy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.policy-item{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.04)}.policy-item strong{display:block;margin-bottom:6px}.policy-item span{color:var(--muted);font-size:14px;line-height:1.5}
+    @media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.filters{grid-template-columns:1fr 1fr}.filters input{grid-column:1/-1}.policy-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){main{padding:34px 16px 70px}.filters{grid-template-columns:1fr}.filters input{grid-column:auto}.stats{grid-template-columns:1fr 1fr}.source-top{display:block}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Official Source Archive</div>
+    <h1 class="title">공식자료 아카이브</h1>
+    <p class="desc">대회요강, 공식 선수명단, 일정·대진표·경기결과 등 K-Volley Lab 데이터의 근거자료를 장기 보관하고 Source ID로 선수·대회 데이터와 연결합니다. 원본 사이트가 사라져도 데이터의 출처 이력을 남기는 것이 목적입니다.</p>
+
+    <section class="stats" aria-label="아카이브 현황">
+      <div class="panel stat"><strong id="statTotal">0</strong><span>등록 자료</span></div>
+      <div class="panel stat"><strong id="statArchived">0</strong><span>PDF 보관 완료</span></div>
+      <div class="panel stat"><strong id="statPublic">0</strong><span>홈페이지 공개 가능</span></div>
+      <div class="panel stat"><strong id="statCompetitions">0</strong><span>연결 대회</span></div>
+    </section>
+
+    <section class="panel" aria-label="자료 검색 필터">
+      <div class="filters">
+        <input id="q" type="search" placeholder="대회명, 자료명, Source ID, 발행기관 검색" />
+        <select id="year"><option value="">전체 연도</option></select>
+        <select id="competition"><option value="">전체 대회</option></select>
+        <select id="category"><option value="">전체 자료종류</option></select>
+        <select id="access"><option value="">전체 공개상태</option></select>
+      </div>
+    </section>
+
+    <section id="list" class="archive-list" style="margin-top:18px"></section>
+
+    <section class="panel policy">
+      <h2>운영 원칙</h2>
+      <div class="policy-grid">
+        <div class="policy-item"><strong>① 원본 보관</strong><span>공식 페이지 URL과 확보한 원본 파일을 함께 기록합니다. PDF는 공개 가능 여부와 무관하게 아카이브 상태를 따로 관리합니다.</span></div>
+        <div class="policy-item"><strong>② 공개 여부 분리</strong><span>보관 완료와 홈페이지 공개 가능은 같은 뜻이 아닙니다. 라이선스·저작권을 확인한 자료만 자체 PDF로 공개합니다.</span></div>
+        <div class="policy-item"><strong>③ Source ID 연결</strong><span>Player Master, Tournament Snapshot, 경기 DB에서 동일 Source ID를 참조해 어떤 공식자료를 근거로 입력했는지 추적합니다.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const esc=v=>String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const els={q:document.getElementById('q'),year:document.getElementById('year'),competition:document.getElementById('competition'),category:document.getElementById('category'),access:document.getElementById('access'),list:document.getElementById('list')};
+    let sources=[];
+    const addOptions=(el,values)=>[...new Set(values.filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'ko',{numeric:true})).forEach(v=>el.insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`));
+    const render=()=>{
+      const query=els.q.value.trim().toLowerCase();
+      const filtered=sources.filter(s=>{
+        const hay=[s.source_id,s.competition_name,s.title,s.publisher,s.category].join(' ').toLowerCase();
+        return (!query||hay.includes(query))&&(!els.year.value||String(s.year)===els.year.value)&&(!els.competition.value||s.competition_name===els.competition.value)&&(!els.category.value||s.category===els.category.value)&&(!els.access.value||s.public_access===els.access.value);
+      });
+      els.list.innerHTML=filtered.length?filtered.map(s=>{
+        const archived=Boolean(s.archive_file);
+        const publicPdf=archived&&s.public_access==='공개가능';
+        const accessClass=s.public_access==='공개가능'?'ok':'warn';
+        return `<article class="source-card">
+          <div class="source-top"><div><div class="source-id">${esc(s.source_id)}</div><h2>${esc(s.title)}</h2><p><strong>${esc(s.competition_name)}</strong></p><p>${esc(s.publisher||'발행기관 확인중')} · ${esc(s.year)} · ${esc(s.category)} · ${esc(s.version||'-')}</p></div></div>
+          <div class="chips"><span class="chip">Archive ${esc(s.archive_status)}</span><span class="chip ${accessClass}">${esc(s.public_access)}</span><span class="chip">License ${esc(s.license)}</span>${s.related_snapshot_ids?.length?`<span class="chip">Snapshot ${esc(s.related_snapshot_ids.join(', '))}</span>`:''}</div>
+          ${s.notes?`<p>${esc(s.notes)}</p>`:''}
+          <div class="actions"><a class="btn primary" href="official-source.html?id=${encodeURIComponent(s.source_id)}">자료 상세</a>${s.original_url?`<a class="btn" href="${esc(s.original_url)}" target="_blank" rel="noopener">원문 페이지</a>`:'<span class="btn disabled">원문 URL 미등록</span>'}${publicPdf?`<a class="btn" href="${esc(s.archive_file)}" target="_blank" rel="noopener">보관 PDF</a>`:'<span class="btn disabled">PDF 비공개/미등록</span>'}</div>
+        </article>`;
+      }).join(''):'<div class="panel empty">조건에 맞는 공식자료가 없습니다.</div>';
+    };
+    fetch('assets/data/official-source-archive.json',{cache:'no-store'}).then(r=>r.json()).then(data=>{
+      sources=data.sources||[];
+      addOptions(els.year,sources.map(s=>s.year));
+      addOptions(els.competition,sources.map(s=>s.competition_name));
+      addOptions(els.category,sources.map(s=>s.category));
+      addOptions(els.access,sources.map(s=>s.public_access));
+      document.getElementById('statTotal').textContent=sources.length;
+      document.getElementById('statArchived').textContent=sources.filter(s=>s.archive_file).length;
+      document.getElementById('statPublic').textContent=sources.filter(s=>s.archive_file&&s.public_access==='공개가능').length;
+      document.getElementById('statCompetitions').textContent=new Set(sources.map(s=>s.competition_id).filter(Boolean)).size;
+      render();
+    }).catch(()=>{els.list.innerHTML='<div class="panel empty">아카이브 데이터를 불러오지 못했습니다.</div>'});
+    Object.values(els).filter(el=>el&&el!==els.list).forEach(el=>el.addEventListener(el===els.q?'input':'change',render));
+  </script>
+</body>
+</html>
