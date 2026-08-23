@@ -36,6 +36,27 @@ K-Volley Lab의 데이터는 공개적으로 확인 가능한 자료를 기반�
 
 중요한 데이터는 가능한 한 출처를 함께 저장한다.
 
+### 2-1. Official Source Archive 저장 원칙
+
+Official Source Archive의 원본 저장소(Single Source of Truth)는 **Google Drive의 기존 대회별 폴더 구조**로 한다.
+
+- PDF, HWP, XLSX, 이미지 등 원본 파일은 Google Drive에 보관한다.
+- GitHub/K-Volley Lab에는 원본 파일을 대량 누적하지 않는다.
+- GitHub에는 Source ID, 대회 ID, 자료종류, 발행기관, Drive File ID, Drive 폴더 정보, 원본 URL, 버전, 공개여부, 라이선스, Player/Snapshot 연결정보 같은 메타데이터만 저장한다.
+- `archive/official-sources/`는 대용량 PDF 저장소로 사용하지 않는다.
+- Drive 보관 완료와 홈페이지 공개 가능은 별개의 상태로 관리한다.
+- 라이선스/재배포 허용이 확인된 자료만 K-Volley Lab PDF Viewer에서 공개한다.
+- 공개 불가 또는 미확인 자료는 Drive에 보관하되 홈페이지에서 원본 파일을 노출하지 않는다.
+- 공식자료가 선수·대회 데이터의 근거일 경우 동일 Source ID를 Player Master, Tournament Snapshot, 경기 DB에서 참조한다.
+
+**작업 전 필수 확인 순서**
+
+1. 현재 GitHub/K-Volley Lab 구조 확인
+2. 현재 Google Drive 대상 대회 폴더와 하위 구조 확인
+3. 기존 파일/폴더를 재사용할 수 있는지 확인
+4. 중복 폴더·중복 원본을 만들지 않고 기존 구조 안에서 저장/이동
+5. Drive File ID를 유지한 채 Source ID 메타데이터 연결
+
 ## 3. 개인정보 보호 원칙
 
 아래 정보는 수집하거나 공개하지 않는다.
