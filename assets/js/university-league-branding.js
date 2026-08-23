@@ -3,6 +3,8 @@ const BRAND_URL='data/master/university_brand_sources_2026.json';
 const PARTICIPANT_URL='data/competition/university-league-2026-men-participants.json';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const initials=name=>String(name||'').replace('국립','').replace('대학교','').slice(0,2);
+const actions=document.querySelector('.ul-actions');
+if(actions&&!actions.querySelector('[data-women-roster-link]'))actions.insertAdjacentHTML('beforeend','<a data-women-roster-link href="university-women-rosters.html?competition=u-league">여자부 선수명단</a>');
 Promise.all([
  fetch(BRAND_URL,{cache:'no-store'}).then(r=>r.ok?r.json():{teams:{}}),
  fetch(PARTICIPANT_URL,{cache:'no-store'}).then(r=>r.ok?r.json():{participants:[]})
