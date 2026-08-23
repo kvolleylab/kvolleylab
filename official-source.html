@@ -28,15 +28,18 @@
         const s=(data.sources||[]).find(x=>x.source_id===id);
         if(!s) throw new Error('해당 Source ID를 찾을 수 없습니다.');
         document.title=`${s.title} | K-Volley Lab`;
-        const canView=Boolean(s.archive_file)&&s.public_access==='공개가능';
-        const original=s.original_url?`<a class="btn" href="${esc(s.original_url)}" target="_blank" rel="noopener">원문 페이지</a>`:'';
-        const fileButton=canView?`<a class="btn primary" href="${esc(s.archive_file)}" target="_blank" rel="noopener">PDF 새 창에서 보기</a>`:'';
-        const viewer=canView?`<div class="viewer"><iframe src="${esc(s.archive_file)}#view=FitH" title="${esc(s.title)} PDF"></iframe></div>`:`<div class="viewer"><div class="empty"><strong>보관 PDF는 현재 공개하지 않습니다.</strong><br><br>자료가 미등록 상태이거나 공개 가능 여부를 검토 중입니다.</div></div>`;
+        const driveReady=Boolean(s.drive_file_id);
+        const canView=driveReady&&s.public_access==='공개가능';
+        const previewUrl=canView?`https://drive.google.com/file/d/${encodeURIComponent(s.drive_file_id)}/preview`:'';
+        const directUrl=canView?(s.drive_url||`https://drive.google.com/file/d/${encodeURIComponent(s.drive_file_id)}/view`):'';
+        const original=s.original_url?`<a class="btn" href="${esc(s.original_url)}" target="_blank" rel="noopener">공식 원문 페이지</a>`:'';
+        const fileButton=canView?`<a class="btn primary" href="${esc(directUrl)}" target="_blank" rel="noopener">PDF 새 창에서 보기</a>`:'';
+        const viewer=canView?`<div class="viewer"><iframe src="${esc(previewUrl)}" title="${esc(s.title)} PDF"></iframe></div>`:`<div class="viewer"><div class="empty"><strong>원본은 Google Drive에 보관되어 있습니다.</strong><br><br>${driveReady?'현재 공개 허용 상태가 아니므로 홈페이지에는 PDF를 표시하지 않습니다.':'Drive 원본이 아직 등록되지 않았습니다.'}</div></div>`;
         document.getElementById('app').innerHTML=`
           <div class="eyebrow">Official Source · ${esc(s.source_id)}</div>
           <h1 class="title">${esc(s.title)}</h1>
-          <div class="meta"><span class="chip">${esc(s.year)}</span><span class="chip">${esc(s.category)}</span><span class="chip">발행: ${esc(s.publisher||'확인중')}</span><span class="chip">버전: ${esc(s.version||'-')}</span><span class="chip">Archive: ${esc(s.archive_status)}</span></div>
-          <section class="panel"><strong>대회</strong><p>${esc(s.competition_name)}</p><strong>공개 상태</strong><p>${esc(s.public_access)} · 라이선스 ${esc(s.license)}</p>${s.notes?`<strong>메모</strong><p>${esc(s.notes)}</p>`:''}<div class="actions">${fileButton}${original}</div></section>
+          <div class="meta"><span class="chip">${esc(s.year)}</span><span class="chip">${esc(s.category)}</span><span class="chip">발행: ${esc(s.publisher||'확인중')}</span><span class="chip">저장: ${esc(s.storage_provider||'-')}</span><span class="chip">Archive: ${esc(s.archive_status)}</span></div>
+          <section class="panel"><strong>대회</strong><p>${esc(s.competition_name)}</p><strong>저장 위치</strong><p>${esc(s.drive_folder_path_label||'Google Drive')}</p><strong>공개 상태</strong><p>${esc(s.public_access)} · 라이선스 ${esc(s.license)}</p>${s.notes?`<strong>메모</strong><p>${esc(s.notes)}</p>`:''}<div class="actions">${fileButton}${original}</div></section>
           ${viewer}`;
       })
       .catch(err=>{document.getElementById('app').innerHTML=`<section class="panel"><h1>자료를 열 수 없습니다.</h1><p>${esc(err.message)}</p></section>`});
