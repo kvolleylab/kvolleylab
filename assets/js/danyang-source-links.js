@@ -3,8 +3,6 @@ const downloads={
   '국민체육센터 경기일정표':'https://drive.google.com/uc?export=download&id=15WvR6qtYw492c-I15ZchNoSuE2mOcSYx',
   '문화체육센터 경기일정표':'https://drive.google.com/uc?export=download&id=1ku1_D8VjiaisIV--VqekWp5hATZAGnJS'
 };
-const jump=document.querySelector('.cd-jump');
-if(jump&&!jump.querySelector('[data-women-roster-link]'))jump.insertAdjacentHTML('beforeend','<a data-women-roster-link href="university-women-rosters.html?competition=danyang">여자부 선수명단</a>');
 const improve=()=>{
   const root=document.getElementById('cdSources');
   if(!root)return false;
