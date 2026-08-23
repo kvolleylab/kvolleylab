@@ -56,7 +56,11 @@
     {type:'section',label:'정보'},
     link('schedules',scheduleHref,icon.calendar,'경기일정'),
     link('national','la28-volleyball-qualification.html',icon.flag,'국가대표팀'),
-    link('competition','competition.html',icon.globe,'국제대회'),
+    group('competition',icon.globe,'국제대회',[
+      link('competition-national','competition.html?division=national',null,'국가대표'),
+      link('competition-university','competition.html?division=university',null,'대학'),
+      link('competition-club','competition.html?division=club',null,'클럽')
+    ]),
     group('domestic',icon.domestic,'국내대회',[
       link('domestic-pro','domestic-competitions.html?division=pro',null,'프로'),
       link('domestic-university','university-competitions.html',null,'대학'),
@@ -79,6 +83,9 @@
   ];
 
   const isChildActive=(item)=>{
+    if(item.key==='competition-national')return active==='competition'&&((path==='competition.html'&&(params.get('division')||'national')==='national')||path==='vnl.html'||path==='match.html'||['japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html'].includes(path));
+    if(item.key==='competition-university')return active==='competition'&&path==='competition.html'&&params.get('division')==='university';
+    if(item.key==='competition-club')return active==='competition'&&path==='competition.html'&&params.get('division')==='club';
     if(item.key==='domestic-pro')return active==='domestic'&&params.get('division')==='pro';
     if(item.key==='domestic-university')return active==='domestic'&&(path==='university-competitions.html'||path==='university-competition.html'||path==='university-competition-danyang.html'||path==='university-team.html'||params.get('division')==='university');
     if(item.key==='domestic-school')return active==='domestic'&&params.get('division')==='school';
