@@ -1,0 +1,45 @@
+{
+  "audit_id": "KVL-AUDIT-2026-GOSEONG-ROSTER-001",
+  "updated_at": "2026-08-23",
+  "competition_id": "UNIV-2026-GOSEONG",
+  "source_id": "KVL-SRC-2026-GOSEONG-ROSTER-001",
+  "source_drive_file_id": "1gUDbVut67UhEPlQlYhucRsu1mGVCaxsrko2p4kAz02E",
+  "source_sheet": "선수명단_MASTER",
+  "collection_status_sheet": "참가팀_수집현황",
+  "status": "IN_PROGRESS_NOT_PUBLICATION_READY",
+  "coverage": {
+    "men": {
+      "teams_total": 15,
+      "teams_complete": 10,
+      "teams_partial": 1,
+      "teams_pending": 4,
+      "complete_teams": ["국립목포대학교","경일대학교","경기대학교","명지대학교","홍익대학교","호남대학교","한양대학교","경상국립대학교","우석대학교","충남대학교"],
+      "partial_teams": ["인하대학교"],
+      "pending_teams": ["성균관대학교","조선대학교","중부대학교","경희대학교"]
+    },
+    "women": {
+      "teams_total": 7,
+      "teams_complete": 0,
+      "teams_pending": 7,
+      "pending_teams": ["동의대학교","호남대학교","광주여자대학교","목포과학대학교","우석대학교","경일대학교","단국대학교"]
+    }
+  },
+  "known_identity_discrepancies": [
+    {
+      "school": "인하대학교",
+      "dob": "2004-03-02",
+      "source_master_value": "강병윤",
+      "current_player_master_value": "강범윤",
+      "action": "source master correction required before publication linkage"
+    },
+    {
+      "school": "홍익대학교",
+      "dob": "2004-01-29",
+      "source_master_value": "송기화",
+      "current_player_master_value": "송건환",
+      "action": "source master correction required before publication linkage"
+    }
+  ],
+  "publication_rule": "Do not label the roster Source ID as fully verified on the public competition page until all 15 men's teams and 7 women's teams are completed and identity discrepancies are resolved.",
+  "notes": "경기결과 Source와 달리 선수명단 MASTER는 현재 수집 진행중이다. 기존 홈페이지 Player Master의 확정 신원을 우선 유지하고, 이 Source는 보강 완료 전까지 내부 근거자료로만 사용한다."
+}
