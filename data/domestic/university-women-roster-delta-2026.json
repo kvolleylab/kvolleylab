@@ -1,0 +1,46 @@
+{
+  "updated_at": "2026-08-23",
+  "from": {
+    "competition_id": "KUSF-2026-UL-W",
+    "competition_name": "2026 KUSF U-리그 여자부",
+    "count": 75,
+    "source_id": "KVL-SRC-2026-KUSF-UL-ROSTER-001"
+  },
+  "to": {
+    "competition_id": "UNIV-2026-DANYANG-W",
+    "competition_name": "2026 대한항공배 전국대학배구 단양대회 여자부",
+    "count": 79,
+    "source_id": "KVL-SRC-2026-DANYANG-ROSTER-001"
+  },
+  "summary": {
+    "common": 67,
+    "added_in_danyang": 12,
+    "not_registered_in_danyang": 8,
+    "net_change": 4
+  },
+  "added_in_danyang": [
+    {"school":"호남대학교","no":12,"player_id":"KVL-P-001493","name":"홍수지","grade":3,"position":"OH"},
+    {"school":"호남대학교","no":19,"player_id":"KVL-P-001494","name":"정렌진","grade":2,"position":"MB"},
+    {"school":"동의대학교","no":5,"player_id":"KVL-P-001495","name":"배지혜","grade":4,"position":"OH"},
+    {"school":"동의대학교","no":7,"player_id":"KVL-P-001496","name":"박수연","grade":3,"position":"MB"},
+    {"school":"동의대학교","no":11,"player_id":"KVL-P-001497","name":"유다정","grade":2,"position":"OH"},
+    {"school":"동의대학교","no":9,"player_id":"KVL-P-001498","name":"신서영","grade":2,"position":"MB"},
+    {"school":"동의대학교","no":2,"player_id":"KVL-P-001499","name":"김지수","grade":2,"position":"S/L"},
+    {"school":"동의대학교","no":4,"player_id":"KVL-P-001500","name":"이현정","grade":2,"position":"MB"},
+    {"school":"동의대학교","no":14,"player_id":"KVL-P-001501","name":"오연주","grade":2,"position":"OP"},
+    {"school":"동의대학교","no":6,"player_id":"KVL-P-001502","name":"김아혜","grade":1,"position":"S"},
+    {"school":"동의대학교","no":8,"player_id":"KVL-P-001503","name":"탁혜정","grade":1,"position":"L/OH"},
+    {"school":"동의대학교","no":3,"player_id":"KVL-P-001504","name":"손은경","grade":1,"position":"OP"}
+  ],
+  "not_registered_in_danyang": [
+    {"school":"경일대학교","no":22,"player_id":"KVL-P-001432","name":"김시원","grade":1,"position":"L"},
+    {"school":"단국대학교","no":6,"player_id":"KVL-P-001439","name":"정서은","grade":3,"position":"OH"},
+    {"school":"광주여자대학교","no":17,"player_id":"KVL-P-001461","name":"김연희","grade":3,"position":"MB/OH"},
+    {"school":"광주여자대학교","no":19,"player_id":"KVL-P-001468","name":"김민채","grade":1,"position":"OH"},
+    {"school":"광주여자대학교","no":3,"player_id":"KVL-P-001470","name":"신누리","grade":1,"position":"S"},
+    {"school":"광주여자대학교","no":18,"player_id":"KVL-P-001472","name":"김현주","grade":1,"position":"OP"},
+    {"school":"우석대학교","no":1,"player_id":"KVL-P-001473","name":"송예랑","grade":4,"position":"MB"},
+    {"school":"호남대학교","no":11,"player_id":"KVL-P-001490","name":"박주하","grade":1,"position":"MB"}
+  ],
+  "interpretation_note": "'단양 미등록'은 U-리그 공식 등록명단에는 있으나 단양대회 공식 명단에는 없는 것을 뜻하며, 소속 이탈이나 결장 사유를 의미하지 않는다."
+}
