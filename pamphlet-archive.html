@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>공식자료 아카이브 | K-Volley Lab</title>
-  <meta name="description" content="K-Volley Lab 공식 대회자료 아카이브. 대회요강, 공식 선수명단, 일정, 대진표, 경기결과 등 원본 근거자료를 Source ID와 함께 관리합니다." />
+  <meta name="description" content="K-Volley Lab 공식 대회자료 아카이브. 원본은 Google Drive에 보관하고 K-Volley Lab은 Source ID와 메타데이터를 관리합니다." />
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/site-theme-light.css" />
@@ -21,11 +21,11 @@
   <main>
     <div class="eyebrow">Official Source Archive</div>
     <h1 class="title">공식자료 아카이브</h1>
-    <p class="desc">대회요강, 공식 선수명단, 일정·대진표·경기결과 등 K-Volley Lab 데이터의 근거자료를 장기 보관하고 Source ID로 선수·대회 데이터와 연결합니다. 원본 사이트가 사라져도 데이터의 출처 이력을 남기는 것이 목적입니다.</p>
+    <p class="desc">대회요강, 공식 선수명단, 일정·대진표·경기결과 등 K-Volley Lab 데이터의 근거자료를 Source ID로 관리합니다. 원본 파일은 기존 Google Drive 대회 폴더에 보관하고, K-Volley Lab은 검색·연결·출처 추적을 담당합니다.</p>
 
     <section class="stats" aria-label="아카이브 현황">
       <div class="panel stat"><strong id="statTotal">0</strong><span>등록 자료</span></div>
-      <div class="panel stat"><strong id="statArchived">0</strong><span>PDF 보관 완료</span></div>
+      <div class="panel stat"><strong id="statArchived">0</strong><span>Drive 원본 보관</span></div>
       <div class="panel stat"><strong id="statPublic">0</strong><span>홈페이지 공개 가능</span></div>
       <div class="panel stat"><strong id="statCompetitions">0</strong><span>연결 대회</span></div>
     </section>
@@ -45,9 +45,9 @@
     <section class="panel policy">
       <h2>운영 원칙</h2>
       <div class="policy-grid">
-        <div class="policy-item"><strong>① 원본 보관</strong><span>공식 페이지 URL과 확보한 원본 파일을 함께 기록합니다. PDF는 공개 가능 여부와 무관하게 아카이브 상태를 따로 관리합니다.</span></div>
-        <div class="policy-item"><strong>② 공개 여부 분리</strong><span>보관 완료와 홈페이지 공개 가능은 같은 뜻이 아닙니다. 라이선스·저작권을 확인한 자료만 자체 PDF로 공개합니다.</span></div>
-        <div class="policy-item"><strong>③ Source ID 연결</strong><span>Player Master, Tournament Snapshot, 경기 DB에서 동일 Source ID를 참조해 어떤 공식자료를 근거로 입력했는지 추적합니다.</span></div>
+        <div class="policy-item"><strong>① Drive가 원본 저장소</strong><span>PDF·HWP·엑셀 등 원본 파일은 기존 Google Drive 대회 폴더 구조를 그대로 사용합니다. GitHub에는 대용량 원본을 중복 저장하지 않습니다.</span></div>
+        <div class="policy-item"><strong>② 공개 여부는 별도</strong><span>Drive 보관 완료와 홈페이지 공개 가능은 같은 뜻이 아닙니다. 공개 허용이 확인된 자료만 PDF Viewer로 표시합니다.</span></div>
+        <div class="policy-item"><strong>③ Source ID 연결</strong><span>Player Master, Tournament Snapshot, 경기 DB가 동일 Source ID를 참조해 어떤 공식자료를 근거로 입력했는지 추적합니다.</span></div>
       </div>
     </section>
   </main>
@@ -60,18 +60,18 @@
     const render=()=>{
       const query=els.q.value.trim().toLowerCase();
       const filtered=sources.filter(s=>{
-        const hay=[s.source_id,s.competition_name,s.title,s.publisher,s.category].join(' ').toLowerCase();
+        const hay=[s.source_id,s.competition_name,s.title,s.publisher,s.category,s.drive_folder_path_label].join(' ').toLowerCase();
         return (!query||hay.includes(query))&&(!els.year.value||String(s.year)===els.year.value)&&(!els.competition.value||s.competition_name===els.competition.value)&&(!els.category.value||s.category===els.category.value)&&(!els.access.value||s.public_access===els.access.value);
       });
       els.list.innerHTML=filtered.length?filtered.map(s=>{
-        const archived=Boolean(s.archive_file);
+        const archived=Boolean(s.drive_file_id);
         const publicPdf=archived&&s.public_access==='공개가능';
         const accessClass=s.public_access==='공개가능'?'ok':'warn';
         return `<article class="source-card">
           <div class="source-top"><div><div class="source-id">${esc(s.source_id)}</div><h2>${esc(s.title)}</h2><p><strong>${esc(s.competition_name)}</strong></p><p>${esc(s.publisher||'발행기관 확인중')} · ${esc(s.year)} · ${esc(s.category)} · ${esc(s.version||'-')}</p></div></div>
-          <div class="chips"><span class="chip">Archive ${esc(s.archive_status)}</span><span class="chip ${accessClass}">${esc(s.public_access)}</span><span class="chip">License ${esc(s.license)}</span>${s.related_snapshot_ids?.length?`<span class="chip">Snapshot ${esc(s.related_snapshot_ids.join(', '))}</span>`:''}</div>
-          ${s.notes?`<p>${esc(s.notes)}</p>`:''}
-          <div class="actions"><a class="btn primary" href="official-source.html?id=${encodeURIComponent(s.source_id)}">자료 상세</a>${s.original_url?`<a class="btn" href="${esc(s.original_url)}" target="_blank" rel="noopener">원문 페이지</a>`:'<span class="btn disabled">원문 URL 미등록</span>'}${publicPdf?`<a class="btn" href="${esc(s.archive_file)}" target="_blank" rel="noopener">보관 PDF</a>`:'<span class="btn disabled">PDF 비공개/미등록</span>'}</div>
+          <div class="chips"><span class="chip">${esc(s.storage_provider||'Google Drive')}</span><span class="chip">Archive ${esc(s.archive_status)}</span><span class="chip ${accessClass}">${esc(s.public_access)}</span><span class="chip">License ${esc(s.license)}</span>${s.related_snapshot_ids?.length?`<span class="chip">Snapshot ${esc(s.related_snapshot_ids.join(', '))}</span>`:''}</div>
+          ${s.drive_folder_path_label?`<p>저장 위치: ${esc(s.drive_folder_path_label)}</p>`:''}${s.notes?`<p>${esc(s.notes)}</p>`:''}
+          <div class="actions"><a class="btn primary" href="official-source.html?id=${encodeURIComponent(s.source_id)}">자료 상세</a>${s.original_url?`<a class="btn" href="${esc(s.original_url)}" target="_blank" rel="noopener">공식 원문</a>`:'<span class="btn disabled">원문 URL 미등록</span>'}${publicPdf?`<a class="btn" href="${esc(s.drive_url)}" target="_blank" rel="noopener">보관 PDF</a>`:'<span class="btn disabled">Drive 보관 / 비공개</span>'}</div>
         </article>`;
       }).join(''):'<div class="panel empty">조건에 맞는 공식자료가 없습니다.</div>';
     };
@@ -82,8 +82,8 @@
       addOptions(els.category,sources.map(s=>s.category));
       addOptions(els.access,sources.map(s=>s.public_access));
       document.getElementById('statTotal').textContent=sources.length;
-      document.getElementById('statArchived').textContent=sources.filter(s=>s.archive_file).length;
-      document.getElementById('statPublic').textContent=sources.filter(s=>s.archive_file&&s.public_access==='공개가능').length;
+      document.getElementById('statArchived').textContent=sources.filter(s=>s.drive_file_id).length;
+      document.getElementById('statPublic').textContent=sources.filter(s=>s.drive_file_id&&s.public_access==='공개가능').length;
       document.getElementById('statCompetitions').textContent=new Set(sources.map(s=>s.competition_id).filter(Boolean)).size;
       render();
     }).catch(()=>{els.list.innerHTML='<div class="panel empty">아카이브 데이터를 불러오지 못했습니다.</div>'});
