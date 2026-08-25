@@ -1,48 +1,28 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "defaultCompetitionId": "gosung-2026",
   "competitions": [
     {
       "competitionId": "gosung-2026",
+      "series": "연맹 1차전",
       "name": "2026 대한항공배 전국대학배구 고성대회",
-      "shortName": "2026 고성대회",
+      "shortName": "2026 연맹 1차전 고성대회",
       "dataPath": "data/competitions/gosung-2026.json",
       "pagePath": "university-competition.html",
       "status": "completed",
       "startDate": "2026-06-25",
-      "endDate": "2026-07-03",
-      "divisions": ["남대부", "여대부"],
-      "features": {
-        "calendar": true,
-        "results": true,
-        "groupStandings": true,
-        "qualificationCalculator": true,
-        "finalStandings": true,
-        "knockoutBracket": true,
-        "teams": true,
-        "playerDatabase": {"남대부": true, "여대부": false}
-      }
+      "endDate": "2026-07-03"
     },
     {
       "competitionId": "danyang-2026",
-      "name": "2026 대학배구 단양대회",
-      "shortName": "2026 단양대회",
+      "series": "연맹 2차전",
+      "name": "2026 대한항공배 전국대학배구 단양대회",
+      "shortName": "2026 연맹 2차전 단양대회",
       "dataPath": "data/competitions/danyang-2026.json",
       "pagePath": "university-competition-danyang.html",
-      "status": "preparing",
-      "startDate": null,
-      "endDate": null,
-      "divisions": ["남대부", "여대부"],
-      "features": {
-        "calendar": true,
-        "results": true,
-        "groupStandings": true,
-        "qualificationCalculator": true,
-        "finalStandings": true,
-        "knockoutBracket": true,
-        "teams": true,
-        "playerDatabase": {"남대부": true, "여대부": false}
-      }
+      "status": "completed",
+      "startDate": "2026-08-12",
+      "endDate": "2026-08-20"
     }
   ]
 }
