@@ -36,4 +36,94 @@ const applyGosungSources=()=>{
   </div>`;
 };
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyGosungSources,{once:true});else applyGosungSources();
+
+const applyGosungResultsPolish=()=>{
+  if(document.body?.dataset.competition!=='gosung-2026')return;
+  const root=document.getElementById('cdResults');
+  if(!root)return;
+
+  if(!document.getElementById('kvl-gosung-results-polish-style')){
+    const style=document.createElement('style');
+    style.id='kvl-gosung-results-polish-style';
+    style.textContent=`
+      #results .cd-match-meta{gap:4px}
+      #results .cd-match-meta-top{display:flex;align-items:center;gap:9px;min-width:0}
+      #results .cd-match-meta-top time{color:#34485f;font-size:13px;font-weight:900;white-space:nowrap}
+      #results .cd-match-meta-top .cd-match-venue{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#7d8998;font-size:12px;font-weight:800}
+      #results .cd-match-board .cd-side{display:grid!important;align-items:center!important;width:100%;gap:10px!important;justify-content:stretch!important}
+      #results .cd-match-board .cd-side.is-left{grid-template-columns:46px minmax(0,1fr)!important;text-align:right!important}
+      #results .cd-match-board .cd-side.is-right{grid-template-columns:minmax(0,1fr) 46px!important;text-align:left!important}
+      #results .cd-match-board .cd-side strong{display:block;min-width:0;white-space:nowrap}
+      #results .cd-match-board .cd-side.is-left .cd-inline-logo{grid-column:1}
+      #results .cd-match-board .cd-side.is-left strong{grid-column:2}
+      #results .cd-match-board .cd-side.is-right strong{grid-column:1}
+      #results .cd-match-board .cd-side.is-right .cd-inline-logo{grid-column:2}
+      @media(min-width:1101px){#results .cd-match{grid-template-columns:210px 500px minmax(0,1fr)!important}}
+      @media(min-width:621px) and (max-width:1100px){#results .cd-match{grid-template-columns:190px minmax(420px,1fr)!important}#results .cd-set-scores{grid-column:1/-1!important}}
+      @media(max-width:620px){
+        #results .cd-match-meta-top{justify-content:center;flex-wrap:wrap}
+        #results .cd-match-board .cd-side.is-left{grid-template-columns:42px minmax(0,1fr)!important}
+        #results .cd-match-board .cd-side.is-right{grid-template-columns:minmax(0,1fr) 42px!important}
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  const venueMap=new Map();
+  const key=(date,time,a,b)=>[date,time,a,b].map(v=>String(v||'').trim()).join('|');
+
+  const polish=()=>{
+    root.querySelectorAll('.cd-match').forEach(match=>{
+      if(match.dataset.kvlResultsPolished==='1')return;
+      match.dataset.kvlResultsPolished='1';
+
+      const group=match.closest('.cd-date-group');
+      const date=group?.querySelector('.cd-date-head span')?.textContent?.trim()||'';
+      const metaBox=match.querySelector('.cd-match-meta');
+      const time=metaBox?.querySelector('time');
+      const left=match.querySelector('.cd-side.is-left');
+      const right=match.querySelector('.cd-side.is-right');
+      const teamA=left?.querySelector('strong')?.textContent?.trim()||'';
+      const teamB=right?.querySelector('strong')?.textContent?.trim()||'';
+
+      if(metaBox&&time&&!metaBox.querySelector('.cd-match-meta-top')){
+        const top=document.createElement('div');
+        top.className='cd-match-meta-top';
+        metaBox.insertBefore(top,time);
+        top.appendChild(time);
+        const venue=venueMap.get(key(date,time.textContent,teamA,teamB));
+        if(venue){
+          const place=document.createElement('span');
+          place.className='cd-match-venue';
+          place.textContent=venue;
+          top.appendChild(place);
+        }
+      }
+
+      if(left){
+        const logo=left.querySelector('.cd-inline-logo');
+        const name=left.querySelector('strong');
+        if(logo&&name)left.insertBefore(logo,name);
+      }
+      if(right){
+        const logo=right.querySelector('.cd-inline-logo');
+        const name=right.querySelector('strong');
+        if(logo&&name)right.insertBefore(name,logo);
+      }
+    });
+  };
+
+  fetch('data/competitions/gosung-2026.json',{cache:'no-store'})
+    .then(r=>r.ok?r.json():Promise.reject(new Error('gosung data')))
+    .then(data=>{
+      (data.games||[]).forEach(g=>venueMap.set(key(g.date,g.time,g.teamA,g.teamB),g.venue||''));
+      polish();
+      new MutationObserver(polish).observe(root,{childList:true,subtree:true});
+    })
+    .catch(()=>{
+      polish();
+      new MutationObserver(polish).observe(root,{childList:true,subtree:true});
+    });
+};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyGosungResultsPolish,{once:true});else applyGosungResultsPolish();
 })();
