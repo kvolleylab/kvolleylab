@@ -1,6 +1,6 @@
 {
   "year": 2026,
-  "updated_at": "2026-08-25",
+  "updated_at": "2026-08-26",
   "source_note": "국내대회는 프로, 대학, 중·고 가운데 시작일과 종료일이 구체적으로 확인된 대회만 등록합니다. 중·고 종료 대회는 경기스코어 원본의 사전경기와 결승일까지 반영했습니다. 단양 대학대회와 IBK기업은행배 중고대회는 별도 공식 요강 및 최종 대진표 일정을 적용했습니다. 국제대회는 대회 주최·공식 사이트 또는 복수의 신뢰 가능한 공개 출처로 기간과 개최지를 확인한 뒤 등록합니다.",
   "categories": [
     {"id":"international","label":"국제대회","color":"#2563eb"},
@@ -25,6 +25,7 @@
     {"id":"danyang-university-2026","competition_id":"danyang-university-2026","title":"2026 대한항공배 전국대학배구 단양대회","short_title":"대학배구 단양대회","category":"domestic-university","start":"2026-08-12","end":"2026-08-20","href":"danyang-university-2026.html","date_status":"official"},
     {"id":"west-japan-university-men-selection-2026","competition_id":"west-japan-university-men-selection-2026","title":"제25회 서일본 대학 남자배구 학련선발대항전","short_title":"서일본 대학 남자 선발대회","category":"international","start":"2026-08-25","end":"2026-08-27","href":"https://www.kyushugakuren.jp/game2026/index.html","location":"일본 아이치현 닛신시","venues":["아이치가쿠인대 AGU 스포츠센터"],"date_status":"verified","source_url":"https://www.kyushugakuren.jp/game2026/index.html"},
     {"id":"cbs-middle-high-2026","competition_id":"cbs-middle-high-2026","title":"제37회 CBS배 전국중고배구대회","short_title":"CBS배 중고배구대회(경북 영천)","category":"domestic-school","start":"2026-08-28","end":"2026-09-03","href":"domestic-competitions.html#school"},
-    {"id":"korea-bahrain-men-friendlies-2026","competition_id":"korea-bahrain-men-friendlies-2026","title":"한-바레인 수교 50주년 기념 대한민국 남자배구대표팀 평가전 2026","short_title":"한국-바레인 남자대표 평가전","category":"international","start":"2026-08-29","end":"2026-08-30","href":"https://www.kbsn.co.kr/nsports/sports_schedule.html","location":"충남 천안","venues":["유관순체육관"],"date_status":"verified","source_url":"https://www.kbsn.co.kr/nsports/sports_schedule.html","matches":[{"date":"2026-08-29","time":"14:00","teamA":"대한민국","teamB":"바레인","broadcast":"KBS N SPORTS"},{"date":"2026-08-30","time":"14:00","teamA":"대한민국","teamB":"바레인","broadcast":"KBS N SPORTS"}]}
+    {"id":"korea-bahrain-men-friendlies-2026","competition_id":"korea-bahrain-men-friendlies-2026","title":"한-바레인 수교 50주년 기념 대한민국 남자배구대표팀 평가전 2026","short_title":"한국-바레인 남자대표 평가전","category":"international","start":"2026-08-29","end":"2026-08-30","href":"https://www.kbsn.co.kr/nsports/sports_schedule.html","location":"충남 천안","venues":["유관순체육관"],"date_status":"verified","source_url":"https://www.kbsn.co.kr/nsports/sports_schedule.html","matches":[{"date":"2026-08-29","time":"14:00","teamA":"대한민국","teamB":"바레인","broadcast":"KBS N SPORTS"},{"date":"2026-08-30","time":"14:00","teamA":"대한민국","teamB":"바레인","broadcast":"KBS N SPORTS"}]},
+    {"id":"avc-men-continental-2026","competition_id":"KVL-INT-2026-003","title":"AVC Volleyball Men's Continental Championship 2026","short_title":"AVC 남자 대륙선수권","category":"international","start":"2026-09-04","end":"2026-09-13","href":"international-competition-avc-men-continental-2026.html","location":"일본 후쿠오카현 / 기타큐슈","venues":["Kitakyushu City General Gymnasium"],"date_status":"official-period","source_url":"https://asianvolleyball.net/new/avc-unveils-2026-international-volleyball-calendar-and-host-cities/"}
   ]
 }
