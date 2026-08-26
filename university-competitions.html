@@ -20,7 +20,7 @@
       --uc-rank-size: 16px;
       --uc-card-padding: 24px;
     }
-    .uc-main{max-width:1280px;margin:0 auto;padding:42px 28px 72px}
+    .uc-main{max-width:1200px;margin:0 auto;padding:42px 28px 72px}
     .uc-hero{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:34px 38px;border:1px solid #dbe2ea;border-radius:30px;background:linear-gradient(135deg,#17365d,#0f2745);color:#fff}
     .uc-hero-copy{display:flex;align-items:center;gap:18px}
     .uc-hero-logo{width:82px;height:82px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:7px;border-radius:20px;background:rgba(255,255,255,.96);overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.12)}
@@ -106,7 +106,7 @@
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 <script>
 (()=>{
-  const esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>\"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot',"'":'&#39;'}[c]));
   const days=['일','월','화','수','목','금','토'];
   const dateWithWeekday=value=>{if(!value)return '일정 미정';const [y,m,d]=value.split('-').map(Number);return `${value}(${days[new Date(y,m-1,d).getDay()]})`};
   const medal=rank=>rank===1?'🏆':rank===2?'🥈':'🥉';
