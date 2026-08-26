@@ -46,24 +46,28 @@ const applyGosungResultsPolish=()=>{
     const style=document.createElement('style');
     style.id='kvl-gosung-results-polish-style';
     style.textContent=`
-      #results .cd-match-meta{gap:4px}
-      #results .cd-match-meta-top{display:flex;align-items:center;gap:9px;min-width:0}
+      #results .cd-match-meta{gap:3px}
+      #results .cd-match-meta-top{display:block;min-width:0}
       #results .cd-match-meta-top time{color:#34485f;font-size:13px;font-weight:900;white-space:nowrap}
-      #results .cd-match-meta-top .cd-match-venue{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#7d8998;font-size:12px;font-weight:800}
-      #results .cd-match-board .cd-side{display:grid!important;align-items:center!important;width:100%;gap:10px!important;justify-content:stretch!important}
-      #results .cd-match-board .cd-side.is-left{grid-template-columns:46px minmax(0,1fr)!important;text-align:right!important}
-      #results .cd-match-board .cd-side.is-right{grid-template-columns:minmax(0,1fr) 46px!important;text-align:left!important}
+      #results .cd-match-meta-detail{display:flex;align-items:center;gap:5px;min-width:0;color:#7d8998;font-size:12px;font-weight:800;line-height:1.35;white-space:nowrap}
+      #results .cd-match-meta-detail .cd-match-stage{color:#7d8998;font-size:12px;font-weight:800}
+      #results .cd-match-meta-detail .cd-match-venue{min-width:0;overflow:hidden;text-overflow:ellipsis;color:#7d8998;font-size:12px;font-weight:800}
+      #results .cd-match-meta-detail .cd-match-venue::before{content:'·';margin-right:5px;color:#a0a9b5}
+      #results .cd-match-board .cd-side{display:grid!important;align-items:center!important;width:auto!important;gap:6px!important}
+      #results .cd-match-board .cd-side.is-left{grid-template-columns:46px 104px!important;justify-content:end!important;text-align:left!important}
+      #results .cd-match-board .cd-side.is-right{grid-template-columns:104px 46px!important;justify-content:start!important;text-align:right!important}
       #results .cd-match-board .cd-side strong{display:block;min-width:0;white-space:nowrap}
       #results .cd-match-board .cd-side.is-left .cd-inline-logo{grid-column:1}
-      #results .cd-match-board .cd-side.is-left strong{grid-column:2}
-      #results .cd-match-board .cd-side.is-right strong{grid-column:1}
+      #results .cd-match-board .cd-side.is-left strong{grid-column:2;text-align:left!important}
+      #results .cd-match-board .cd-side.is-right strong{grid-column:1;text-align:right!important}
       #results .cd-match-board .cd-side.is-right .cd-inline-logo{grid-column:2}
       @media(min-width:1101px){#results .cd-match{grid-template-columns:210px 500px minmax(0,1fr)!important}}
-      @media(min-width:621px) and (max-width:1100px){#results .cd-match{grid-template-columns:190px minmax(420px,1fr)!important}#results .cd-set-scores{grid-column:1/-1!important}}
+      @media(min-width:621px) and (max-width:1100px){#results .cd-match{grid-template-columns:200px minmax(420px,1fr)!important}#results .cd-set-scores{grid-column:1/-1!important}}
       @media(max-width:620px){
-        #results .cd-match-meta-top{justify-content:center;flex-wrap:wrap}
-        #results .cd-match-board .cd-side.is-left{grid-template-columns:42px minmax(0,1fr)!important}
-        #results .cd-match-board .cd-side.is-right{grid-template-columns:minmax(0,1fr) 42px!important}
+        #results .cd-match-meta{align-items:center;text-align:center}
+        #results .cd-match-meta-detail{justify-content:center;flex-wrap:wrap;white-space:normal}
+        #results .cd-match-board .cd-side.is-left{grid-template-columns:42px 82px!important}
+        #results .cd-match-board .cd-side.is-right{grid-template-columns:82px 42px!important}
       }
     `;
     document.head.appendChild(style);
@@ -71,6 +75,7 @@ const applyGosungResultsPolish=()=>{
 
   const venueMap=new Map();
   const key=(date,time,a,b)=>[date,time,a,b].map(v=>String(v||'').trim()).join('|');
+  const shortVenue=value=>String(value||'').replace(/^고성군\s+/,'').trim();
 
   const polish=()=>{
     root.querySelectorAll('.cd-match').forEach(match=>{
@@ -81,22 +86,33 @@ const applyGosungResultsPolish=()=>{
       const date=group?.querySelector('.cd-date-head span')?.textContent?.trim()||'';
       const metaBox=match.querySelector('.cd-match-meta');
       const time=metaBox?.querySelector('time');
+      const stage=metaBox?.querySelector(':scope > span');
       const left=match.querySelector('.cd-side.is-left');
       const right=match.querySelector('.cd-side.is-right');
       const teamA=left?.querySelector('strong')?.textContent?.trim()||'';
       const teamB=right?.querySelector('strong')?.textContent?.trim()||'';
 
       if(metaBox&&time&&!metaBox.querySelector('.cd-match-meta-top')){
+        const originalTime=time.textContent?.trim()||'';
         const top=document.createElement('div');
         top.className='cd-match-meta-top';
         metaBox.insertBefore(top,time);
         top.appendChild(time);
-        const venue=venueMap.get(key(date,time.textContent,teamA,teamB));
-        if(venue){
+
+        const detail=document.createElement('div');
+        detail.className='cd-match-meta-detail';
+        metaBox.appendChild(detail);
+        if(stage){
+          stage.classList.add('cd-match-stage');
+          detail.appendChild(stage);
+        }
+        const fullVenue=venueMap.get(key(date,originalTime,teamA,teamB));
+        if(fullVenue){
           const place=document.createElement('span');
           place.className='cd-match-venue';
-          place.textContent=venue;
-          top.appendChild(place);
+          place.textContent=shortVenue(fullVenue);
+          place.title=fullVenue;
+          detail.appendChild(place);
         }
       }
 
