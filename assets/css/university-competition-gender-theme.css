@@ -7,6 +7,19 @@
   --kvl-women-gold:#FFE4A3;
   --kvl-women-gold-strong:#C9972E;
   --kvl-women-name:#17365D;
+  --kvl-men-hover:#E8EEF6;
+  --kvl-women-hover:#FCE8F0;
+}
+.competition-dashboard-page .cd-jump a{
+  transition:background-color .16s ease,color .16s ease,border-color .16s ease!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="men"] .cd-jump a:not(.is-active):hover{
+  background:var(--kvl-men-hover)!important;
+  color:#17365D!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-jump a:not(.is-active):hover{
+  background:var(--kvl-women-hover)!important;
+  color:var(--kvl-women-dark)!important;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-hero{
   background:linear-gradient(135deg,var(--kvl-women-dark),var(--kvl-women-primary))!important;
