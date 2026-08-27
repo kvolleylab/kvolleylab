@@ -10,6 +10,8 @@ const ensureStyle=()=>{
   const style=document.createElement('style');
   style.id='kvl-gosung-source-links-style';
   style.textContent=`
+    #overview .cd-kpis article>strong,#overview .cd-kpis article>small{display:inline-block!important}
+    #overview .cd-cal-title{font-size:28px!important;line-height:1.2}
     #sources .cd-sources{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
     #sources .cd-sources>a,#sources .cd-source-pending{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:58px;padding:14px 16px;border:1px solid #e3e8ee;border-radius:13px;background:#fff;color:#334a64;font-weight:800;text-decoration:none}
     #sources .cd-sources>a:hover{border-color:#d6b25e;background:#fffaf0;color:#17365d}
@@ -39,6 +41,7 @@ const apply=()=>{
 };
 
 const start=()=>{
+  ensureStyle();
   apply();
   const section=document.getElementById('sources');
   if(!section)return;
