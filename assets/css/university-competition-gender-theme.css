@@ -128,3 +128,17 @@
 .competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-rule-summary{
   color:var(--kvl-women-dark)!important;
 }
+
+/* Pre-paint gender state: prevent male active button from flashing before JS sync. */
+html[data-kvl-initial-gender="women"] .competition-dashboard-page .cd-division-switch button[data-final-division="남대부"],
+html[data-kvl-initial-gender="women"] .competition-dashboard-page .cd-division-switch button[data-team-division="남대부"]{
+  border-color:#dbe2ea!important;
+  background:#fff!important;
+  color:#536477!important;
+}
+html[data-kvl-initial-gender="women"] .competition-dashboard-page .cd-division-switch button[data-final-division="여대부"],
+html[data-kvl-initial-gender="women"] .competition-dashboard-page .cd-division-switch button[data-team-division="여대부"]{
+  border-color:var(--kvl-women-primary)!important;
+  background:var(--kvl-women-primary)!important;
+  color:#fff!important;
+}
