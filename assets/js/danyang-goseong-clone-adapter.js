@@ -3,6 +3,8 @@
 const nativeFetch=window.fetch.bind(window);
 const DANYANG_URL='data/competitions/danyang-2026.json?v=20260823-1';
 const GENDER_KEY='kvl:danyang-2026:gender';
+const TITLE_HTML='<span class="cd-hero-title-line">2026 대한항공배</span><span class="cd-hero-title-line">전국대학배구 단양대회</span>';
+const META_TEXT='2026-08-12(수) ~ 2026-08-20(목) · 충청북도 단양군 · 단양국민체육센터 / 단양문화체육센터';
 let danyangData=null;
 
 window.fetch=async(input,init)=>{
@@ -14,6 +16,38 @@ window.fetch=async(input,init)=>{
   }
   return nativeFetch(input,init);
 };
+
+function forceDanyangIdentity(){
+  document.title='2026 단양대회 | K-Volley Lab';
+  const title=document.getElementById('cdTitle');
+  if(title&&title.innerHTML!==TITLE_HTML)title.innerHTML=TITLE_HTML;
+  const meta=document.getElementById('cdMeta');
+  if(meta&&meta.textContent!==META_TEXT)meta.textContent=META_TEXT;
+}
+
+function installIdentityGuard(){
+  const root=document.documentElement;
+  if(!root)return;
+  let correcting=false;
+  const check=()=>{
+    if(correcting)return;
+    const title=document.getElementById('cdTitle');
+    const meta=document.getElementById('cdMeta');
+    const wrongTitle=Boolean(title&&!title.textContent.includes('단양대회'));
+    const wrongMeta=Boolean(meta&&meta.textContent!==META_TEXT);
+    const wrongDocumentTitle=document.title!=='2026 단양대회 | K-Volley Lab';
+    if(!wrongTitle&&!wrongMeta&&!wrongDocumentTitle)return;
+    correcting=true;
+    forceDanyangIdentity();
+    correcting=false;
+  };
+  const observer=new MutationObserver(check);
+  observer.observe(root,{childList:true,subtree:true,characterData:true});
+  check();
+  window.setTimeout(()=>observer.disconnect(),4000);
+}
+
+installIdentityGuard();
 
 function currentGender(){
   const raw=new URLSearchParams(location.search).get('gender');
@@ -39,11 +73,7 @@ function syncDanyangKpis(){
 }
 
 function applyDanyangUi(){
-  document.title='2026 단양대회 | K-Volley Lab';
-  const title=document.getElementById('cdTitle');
-  if(title) title.innerHTML='<span class="cd-hero-title-line">2026 대한항공배</span><span class="cd-hero-title-line">전국대학배구 단양대회</span>';
-  const meta=document.getElementById('cdMeta');
-  if(meta) meta.textContent='2026-08-12(수) ~ 2026-08-20(목) · 충청북도 단양군 · 단양국민체육센터 / 단양문화체육센터';
+  forceDanyangIdentity();
   const statusBox=document.querySelector('.cd-status');
   if(statusBox){
     const label=statusBox.querySelector('span');
@@ -73,11 +103,12 @@ function applyDanyangUi(){
 }
 
 function scheduleUiSync(){
-  [0,120,400,900].forEach(ms=>setTimeout(applyDanyangUi,ms));
+  applyDanyangUi();
+  [80,240,600].forEach(ms=>setTimeout(applyDanyangUi,ms));
   document.addEventListener('click',e=>{
     if(e.target.closest('[data-calendar-division],[data-division],[data-stage],[data-standing-division],[data-final-division],[data-team-division]')){
-      setTimeout(applyDanyangUi,0);
-      setTimeout(applyDanyangUi,120);
+      applyDanyangUi();
+      setTimeout(applyDanyangUi,80);
     }
   });
 }
