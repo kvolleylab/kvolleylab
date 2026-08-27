@@ -2,7 +2,9 @@
 'use strict';
 const WOMEN='여대부';
 const MEN='남대부';
-const STORAGE_KEY='kvl:gosung-2026:gender';
+const COMPETITION_ID=document.body?.dataset.competition||'university-competition';
+const PAGE_NAME=location.pathname.split('/').pop()||'university-competition.html';
+const STORAGE_KEY=`kvl:${COMPETITION_ID}:gender`;
 let mode=MEN;
 let syncing=false;
 let refreshQueued=false;
@@ -31,14 +33,23 @@ function applyTheme(value){
 }
 function rewriteInternalLinks(){
   const gender=mode===WOMEN?'women':'men';
-  document.querySelectorAll('a[href*="university-competition.html"]').forEach(a=>{
+  const selectors=[
+    '.cd-jump a[href]',
+    '#overview a[href*="university-competition"]',
+    '#standings a[href*="university-competition"]',
+    '#group-standings a[href*="university-competition"]'
+  ];
+  document.querySelectorAll(selectors.join(',')).forEach(a=>{
     const raw=a.getAttribute('href');
     if(!raw)return;
     try{
       const url=new URL(raw,location.href);
-      if(!url.pathname.endsWith('/university-competition.html'))return;
+      const base=url.pathname.split('/').pop();
+      if(!base||!base.startsWith('university-competition'))return;
+      if(a.closest('.kvl-competition-nav'))return;
+      url.pathname=url.pathname.replace(/[^/]+$/,PAGE_NAME);
       url.searchParams.set('gender',gender);
-      const next=`${url.pathname.split('/').pop()}${url.search}${url.hash}`;
+      const next=`${PAGE_NAME}${url.search}${url.hash}`;
       if(a.getAttribute('href')!==next)a.setAttribute('href',next);
     }catch(_){ }
   });
