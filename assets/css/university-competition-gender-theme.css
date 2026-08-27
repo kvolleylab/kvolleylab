@@ -1,0 +1,42 @@
+:root{
+  --kvl-women-primary:#B54A73;
+  --kvl-women-dark:#7E294D;
+  --kvl-women-soft:#FFF4F8;
+  --kvl-women-soft-2:#FFF8FB;
+  --kvl-women-line:#E8C2D0;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-hero{
+  background:linear-gradient(135deg,var(--kvl-women-dark),var(--kvl-women-primary))!important;
+  box-shadow:0 22px 50px rgba(126,41,77,.18)!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-jump a.is-active,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-calendar-tabs button.is-active,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-tabs button.is-active,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-standing-tabs button.is-active{
+  border-color:var(--kvl-women-primary)!important;
+  background:var(--kvl-women-primary)!important;
+  color:#fff!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-cal-title,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-standing-card h3{
+  background:var(--kvl-women-primary)!important;
+  color:#fff!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-cal-cell.has-games{
+  background:var(--kvl-women-soft-2)!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-cal-game{
+  border-color:var(--kvl-women-line)!important;
+  color:var(--kvl-women-dark)!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-sim summary:after,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-quick button.is-active,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-quick button:hover{
+  border-color:var(--kvl-women-primary)!important;
+  background:var(--kvl-women-primary)!important;
+  color:#fff!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-sim summary strong,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-rule-summary{
+  color:var(--kvl-women-dark)!important;
+}
