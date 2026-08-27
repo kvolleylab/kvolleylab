@@ -1,0 +1,43 @@
+.school-comp-page[data-competition="presidents-2026"] .sc-competition-logo{display:none!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-hero-brand{gap:0!important;min-width:0}
+.school-comp-page[data-competition="presidents-2026"] .sc-hero-copy{min-width:0}
+@media(min-width:621px){
+  .school-comp-page[data-competition="presidents-2026"] .sc-hero{box-sizing:border-box;min-height:206px;padding:34px 38px;align-items:center}
+  .school-comp-page[data-competition="presidents-2026"] .sc-hero h1{margin:8px 0 12px!important;font-size:38px!important;line-height:1.2!important}
+}
+.school-comp-page[data-competition="presidents-2026"] .sc-kpis strong,
+.school-comp-page[data-competition="presidents-2026"] .sc-kpis small{display:inline-block!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-kpis strong{margin:10px 5px 0 0}
+.school-comp-page[data-competition="presidents-2026"] .sc-calendar-title{font-size:28px!important;line-height:1.2}
+.school-comp-page[data-competition="presidents-2026"] .sc-match{grid-template-columns:210px 500px minmax(0,1fr)!important;gap:18px!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-meta{display:flex;flex-direction:column;gap:3px;min-width:0}
+.school-comp-page[data-competition="presidents-2026"] .sc-meta-top{color:#34485f;font-size:13px;font-weight:900;white-space:nowrap}
+.school-comp-page[data-competition="presidents-2026"] .sc-meta-detail{display:flex;align-items:center;gap:5px;min-width:0;color:#7d8998;font-size:12px;font-weight:800;line-height:1.35;white-space:nowrap}
+.school-comp-page[data-competition="presidents-2026"] .sc-meta-detail .sc-venue{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.school-comp-page[data-competition="presidents-2026"] .sc-meta-detail .sc-venue::before{content:'·';margin-right:5px;color:#a0a9b5}
+.school-comp-page[data-competition="presidents-2026"] .sc-board{grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr)!important;gap:10px!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-team{display:grid!important;align-items:center!important;width:auto!important;gap:6px!important;min-width:0}
+.school-comp-page[data-competition="presidents-2026"] .sc-team.is-left{grid-template-columns:46px 114px!important;justify-content:end!important;text-align:left!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-team.is-right{grid-template-columns:114px 46px!important;justify-content:start!important;text-align:right!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-team strong{display:block;min-width:0;white-space:nowrap;font-size:15px}
+.school-comp-page[data-competition="presidents-2026"] .sc-team.is-left .sc-team-logo{grid-column:1}
+.school-comp-page[data-competition="presidents-2026"] .sc-team.is-left strong{grid-column:2;text-align:left!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-team.is-right strong{grid-column:1;text-align:right!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-team.is-right .sc-team-logo{grid-column:2}
+.school-comp-page[data-competition="presidents-2026"] .sc-team-logo{width:46px;height:46px;flex:0 0 46px;padding:2px;background:#fff}
+.school-comp-page[data-competition="presidents-2026"] .sc-sources{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.school-comp-page[data-competition="presidents-2026"] .sc-sources a{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:58px;padding:14px 16px;border:1px solid #e3e8ee;border-radius:13px;background:#fff;color:#334a64;font-weight:800;text-decoration:none}
+.school-comp-page[data-competition="presidents-2026"] .sc-sources a:hover{border-color:#d6b25e;background:#fffaf0;color:#17365d}
+@media(min-width:621px) and (max-width:1100px){
+  .school-comp-page[data-competition="presidents-2026"] .sc-match{grid-template-columns:200px minmax(420px,1fr)!important}
+  .school-comp-page[data-competition="presidents-2026"] .sc-sets{grid-column:1/-1!important;justify-content:center}
+}
+@media(max-width:620px){
+  .school-comp-page[data-competition="presidents-2026"] .sc-hero{min-height:0;height:auto}
+  .school-comp-page[data-competition="presidents-2026"] .sc-match{grid-template-columns:1fr!important;gap:10px!important}
+  .school-comp-page[data-competition="presidents-2026"] .sc-meta{align-items:center;text-align:center}
+  .school-comp-page[data-competition="presidents-2026"] .sc-meta-detail{justify-content:center;flex-wrap:wrap;white-space:normal}
+  .school-comp-page[data-competition="presidents-2026"] .sc-team.is-left{grid-template-columns:42px 92px!important}
+  .school-comp-page[data-competition="presidents-2026"] .sc-team.is-right{grid-template-columns:92px 42px!important}
+  .school-comp-page[data-competition="presidents-2026"] .sc-sources{grid-template-columns:1fr}
+}
