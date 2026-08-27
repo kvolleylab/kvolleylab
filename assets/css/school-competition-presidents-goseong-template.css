@@ -40,6 +40,8 @@
 .school-comp-page[data-competition="presidents-2026"] .sc-group-row strong{text-align:left;color:#273a51;font-size:13px;white-space:nowrap}
 .school-comp-page[data-competition="presidents-2026"] .sc-group-row.is-qualified{background:#fffdf7}
 .school-comp-page[data-competition="presidents-2026"] .sc-group-row.is-qualified .sc-group-rank{color:#9a6d12;font-weight:900}
+.school-comp-page[data-competition="presidents-2026"] .sc-rank{grid-template-columns:92px minmax(0,1fr)!important}
+.school-comp-page[data-competition="presidents-2026"] .sc-rank b{display:flex;align-items:center;white-space:nowrap}
 .school-comp-page[data-competition="presidents-2026"] .sc-rank-trophy{display:inline-block;margin-right:6px;font-size:15px;line-height:1;vertical-align:-1px}
 .school-comp-page[data-competition="presidents-2026"] .sc-podiums{grid-template-columns:minmax(0,1fr)!important}
 @media(min-width:621px) and (max-width:1100px){
