@@ -5,7 +5,13 @@ const MEN='남대부';
 const COMPETITION_ID=document.body?.dataset.competition||'university-competition';
 const PAGE_NAME=location.pathname.split('/').pop()||'university-competition.html';
 const STORAGE_KEY=`kvl:${COMPETITION_ID}:gender`;
-let mode=MEN;
+const PRE_RAW=new URLSearchParams(location.search).get('gender');
+let PRE_MODE=MEN;
+if(PRE_RAW==='women'||PRE_RAW===WOMEN)PRE_MODE=WOMEN;
+else if(PRE_RAW==='men'||PRE_RAW===MEN)PRE_MODE=MEN;
+else{try{PRE_MODE=sessionStorage.getItem(STORAGE_KEY)===WOMEN?WOMEN:MEN}catch(_){PRE_MODE=MEN}}
+document.documentElement.dataset.kvlInitialGender=PRE_MODE===WOMEN?'women':'men';
+let mode=PRE_MODE;
 let syncing=false;
 let refreshQueued=false;
 
