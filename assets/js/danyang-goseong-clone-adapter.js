@@ -6,7 +6,6 @@ const GENDER_KEY='kvl:danyang-2026:gender';
 const TITLE_HTML='<span class="cd-hero-title-line">2026 대한항공배</span><span class="cd-hero-title-line">전국대학배구 단양대회</span>';
 const META_TEXT='2026-08-12(수) ~ 2026-08-20(목) · 충청북도 단양군 · 단양국민체육센터 / 단양문화체육센터';
 let danyangData=null;
-let identityObserver=null;
 
 window.fetch=async(input,init)=>{
   const url=typeof input==='string'?input:input?.url||'';
@@ -21,33 +20,10 @@ window.fetch=async(input,init)=>{
 function forceDanyangIdentity(){
   document.title='2026 단양대회 | K-Volley Lab';
   const title=document.getElementById('cdTitle');
-  if(title&&title.textContent.replace(/\s+/g,' ').trim()!=='2026 대한항공배 전국대학배구 단양대회')title.innerHTML=TITLE_HTML;
+  if(title&&!title.textContent.includes('단양대회'))title.innerHTML=TITLE_HTML;
   const meta=document.getElementById('cdMeta');
   if(meta&&meta.textContent!==META_TEXT)meta.textContent=META_TEXT;
 }
-
-function watchIdentityNodes(){
-  const title=document.getElementById('cdTitle');
-  const meta=document.getElementById('cdMeta');
-  if(!title||!meta)return false;
-  if(identityObserver)identityObserver.disconnect();
-  identityObserver=new MutationObserver(forceDanyangIdentity);
-  identityObserver.observe(title,{childList:true,subtree:true,characterData:true});
-  identityObserver.observe(meta,{childList:true,subtree:true,characterData:true});
-  forceDanyangIdentity();
-  return true;
-}
-
-function installIdentityGuard(){
-  if(watchIdentityNodes())return;
-  const bootstrapObserver=new MutationObserver(()=>{
-    if(watchIdentityNodes())bootstrapObserver.disconnect();
-  });
-  bootstrapObserver.observe(document.documentElement,{childList:true,subtree:true});
-  forceDanyangIdentity();
-}
-
-installIdentityGuard();
 
 function currentGender(){
   const raw=new URLSearchParams(location.search).get('gender');
