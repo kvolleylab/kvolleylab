@@ -8,40 +8,22 @@
 .school-comp-page[data-competition="ibk-2026"] .sc-kpis strong,
 .school-comp-page[data-competition="ibk-2026"] .sc-kpis small{display:inline-block!important}
 .school-comp-page[data-competition="ibk-2026"] .sc-kpis strong{margin:10px 5px 0 0}
+.school-comp-page[data-competition="ibk-2026"] .sc-calendar-title{font-size:28px!important;line-height:1.2}
 .school-comp-page[data-competition="ibk-2026"] #scStandingTabs{margin-bottom:18px}
 .school-comp-page[data-competition="ibk-2026"] #scPodiums{grid-template-columns:minmax(0,1fr)!important}
+.school-comp-page[data-competition="ibk-2026"] .sc-rank{grid-template-columns:92px minmax(0,1fr)!important}
+.school-comp-page[data-competition="ibk-2026"] .sc-rank b{display:flex;align-items:center;white-space:nowrap}
+.school-comp-page[data-competition="ibk-2026"] .sc-rank-trophy{display:inline-block;margin-right:6px;font-size:15px;line-height:1;vertical-align:-1px}
 .school-comp-page[data-competition="ibk-2026"] #scBrackets .sc-bracket[hidden]{display:none!important}
+.school-comp-page[data-competition="ibk-2026"] .sc-sources{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.school-comp-page[data-competition="ibk-2026"] .sc-sources a{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:58px;padding:14px 16px;border:1px solid #e3e8ee;border-radius:13px;background:#fff;color:#334a64;font-weight:800;text-decoration:none}
+.school-comp-page[data-competition="ibk-2026"] .sc-sources a:hover{border-color:#d6b25e;background:#fffaf0;color:#17365d}
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scCalendar,
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scResults,
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scTeams,
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scPodiums,
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scBrackets{visibility:hidden}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary{margin:0 0 22px;padding:24px;border:1px solid #e1e7ef;border-radius:20px;background:#f8fafc}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:16px}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary-head h3{margin:4px 0 0;color:#17365d;font-size:22px}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary-head p{margin:0;color:#64748b;font-size:13px}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulation-item{padding:16px;border:1px solid #e1e7ef;border-radius:15px;background:#fff}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulation-item span{display:block;margin-bottom:6px;color:#8a6a16;font-size:11px;font-weight:900}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulation-item strong{display:block;color:#17365d;font-size:15px;line-height:1.45}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulation-item p{margin:5px 0 0;color:#64748b;font-size:12px;line-height:1.6}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-actions{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:16px;padding-top:15px;border-top:1px solid #e1e7ef}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-actions small{color:#64748b;line-height:1.5}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-actions a{flex:0 0 auto;padding:10px 14px;border-radius:10px;background:#17365d;color:#fff;font-size:13px;font-weight:900;text-decoration:none}
-.school-comp-page[data-competition="ibk-2026"] .sc-regulations-actions a:hover{background:#0d2748}
-.school-comp-page[data-competition="ibk-2026"] .sc-source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
-.school-comp-page[data-competition="ibk-2026"] .sc-source-grid a{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:58px;padding:14px 16px;border:1px solid #e3e8ee;border-radius:13px;background:#fff;color:#334a64;font-weight:800;text-decoration:none}
-.school-comp-page[data-competition="ibk-2026"] .sc-source-grid a:hover{border-color:#d6b25e;background:#fffaf0;color:#17365d}
-.school-comp-page[data-competition="ibk-2026"] .sc-source-grid b{font-size:16px;color:#8a6a16}
-@media(max-width:900px){
-  .school-comp-page[data-competition="ibk-2026"] .sc-regulations-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
 @media(max-width:620px){
   .school-comp-page[data-competition="ibk-2026"] .sc-hero{min-height:0;height:auto}
-  .school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary{padding:18px 14px}
-  .school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary-head,
-  .school-comp-page[data-competition="ibk-2026"] .sc-regulations-actions{align-items:flex-start;flex-direction:column}
-  .school-comp-page[data-competition="ibk-2026"] .sc-regulations-grid,
-  .school-comp-page[data-competition="ibk-2026"] .sc-source-grid{grid-template-columns:1fr}
-  .school-comp-page[data-competition="ibk-2026"] .sc-regulations-actions a{width:100%;box-sizing:border-box;text-align:center}
+  .school-comp-page[data-competition="ibk-2026"] .sc-sources{grid-template-columns:1fr}
 }
