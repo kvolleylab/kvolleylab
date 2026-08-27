@@ -1,0 +1,30 @@
+(()=>{
+  window.KVLTournamentRules=window.KVLTournamentRules||{};
+  window.KVLTournamentRules['danyang-2026']={
+    competitionId:'danyang-2026',
+    division:'남대부',
+    stage:'예선',
+    qualifiersPerPool:2,
+    rankingRules:['wins','pointRatio','setRatio','headToHead'],
+    headToHeadRules:['wins','pointRatio','setRatio'],
+    matchPointsScheme:{
+      '3-0':[3,0],
+      '3-1':[3,0],
+      '3-2':[2,1],
+      '2-3':[1,2],
+      '1-3':[0,3],
+      '0-3':[0,3]
+    },
+    labels:{
+      wins:'승리 경기 수',
+      matchPoints:'승점',
+      pointRatio:'득실점수비율',
+      setRatio:'세트비율',
+      headToHead:'승자승'
+    },
+    summary:'승리 경기 수 → 득실점수비율 → 세트비율 → 승자승. 각 조 상위 2팀 본선 진출.',
+    sourceView:'university-competition-danyang.html?view=sources',
+    sourceCheckedAt:'2026-08-27',
+    probabilityMode:'equal-scoreline-scenarios'
+  };
+})();
