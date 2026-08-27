@@ -32,8 +32,28 @@ const set=value=>{
   try{sessionStorage.setItem(key,value);}catch(_){ }
   apply(value);
 };
+const normalizePodiumIcons=()=>{
+  document.querySelectorAll('.sc-rank').forEach(row=>{
+    const label=row.querySelector('b');
+    if(!label)return;
+    const text=label.textContent.replace(/[🏆🥈]/gu,'').trim();
+    const icon=text==='우승'?'🏆':text==='준우승'?'🥈':'';
+    if(!icon)return;
+    let trophy=label.querySelector('.sc-rank-trophy');
+    if(!trophy){
+      trophy=document.createElement('span');
+      trophy.className='sc-rank-trophy';
+      trophy.setAttribute('aria-hidden','true');
+      label.insertBefore(trophy,label.firstChild);
+    }
+    if(trophy.textContent!==icon)trophy.textContent=icon;
+  });
+};
 window.KVL_SCHOOL_DIVISION_STATE={get:()=>division,set,gender:()=>genderOf(division)};
 apply(division);
+normalizePodiumIcons();
+const podiumRoot=document.querySelector('.sc-main');
+if(podiumRoot)new MutationObserver(normalizePodiumIcons).observe(podiumRoot,{childList:true,subtree:true});
 document.addEventListener('click',event=>{
   const btn=event.target.closest('[data-kvl-division]');
   if(!btn)return;
