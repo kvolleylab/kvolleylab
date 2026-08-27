@@ -4,10 +4,17 @@
   --kvl-women-soft:#FFF2F7;
   --kvl-women-soft-2:#FFF8FB;
   --kvl-women-line:#EDBED0;
+  --kvl-women-gold:#FFE4A3;
+  --kvl-women-gold-strong:#C9972E;
+  --kvl-women-name:#17365D;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-hero{
   background:linear-gradient(135deg,var(--kvl-women-dark),var(--kvl-women-primary))!important;
   box-shadow:0 22px 50px rgba(164,63,104,.18)!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-hero h1,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-status span{
+  color:var(--kvl-women-gold)!important;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-jump a.is-active,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-calendar-tabs button.is-active,
@@ -26,13 +33,23 @@
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-section-title h2,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-calendar-head h2,
-.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-kpis strong,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-kpis strong{
+  color:var(--kvl-women-dark)!important;
+}
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-rank h3,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-card,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-card strong,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-mark,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-standing-row span:nth-child(2),
-.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-winner{
-  color:var(--kvl-women-dark)!important;
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-winner,
+.competition-dashboard-page[data-kvl-gender-theme="women"] #cdKnockoutBracket .cd-horizontal-side strong,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-women-bracket-team span{
+  color:var(--kvl-women-name)!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-score,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-rank>strong,
+.competition-dashboard-page[data-kvl-gender-theme="women"] #cdKnockoutBracket .cd-champion-trophy{
+  color:var(--kvl-women-gold-strong)!important;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-kpis article{
   border-color:var(--kvl-women-line)!important;
@@ -43,7 +60,7 @@
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-cal-game{
   border-color:var(--kvl-women-line)!important;
-  color:var(--kvl-women-dark)!important;
+  color:var(--kvl-women-name)!important;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-rank{
   border-color:var(--kvl-women-line)!important;
@@ -74,7 +91,7 @@
   border-top-color:var(--kvl-women-primary)!important;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] #cdKnockoutBracket .cd-champion{
-  border-color:var(--kvl-women-primary)!important;
+  border-color:var(--kvl-women-gold)!important;
   background:linear-gradient(135deg,var(--kvl-women-dark),var(--kvl-women-primary))!important;
   color:#fff!important;
   box-shadow:0 12px 28px rgba(164,63,104,.16)!important;
