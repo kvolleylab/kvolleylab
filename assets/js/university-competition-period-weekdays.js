@@ -142,4 +142,14 @@ const applyGosungResultsPolish=()=>{
     });
 };
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyGosungResultsPolish,{once:true});else applyGosungResultsPolish();
+
+const loadGosungSourceLinks=()=>{
+  if(document.body?.dataset.competition!=='gosung-2026')return;
+  if(document.querySelector('script[src*="gosung-source-links.js"]'))return;
+  const script=document.createElement('script');
+  script.src='assets/js/gosung-source-links.js?v=20260827-1';
+  script.defer=true;
+  document.head.appendChild(script);
+};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',loadGosungSourceLinks,{once:true});else loadGosungSourceLinks();
 })();
