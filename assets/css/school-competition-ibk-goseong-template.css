@@ -14,6 +14,7 @@
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scCalendar,
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scResults,
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scTeams,
+.school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scPodiums,
 .school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scBrackets{visibility:hidden}
 .school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary{margin:0 0 22px;padding:24px;border:1px solid #e1e7ef;border-radius:20px;background:#f8fafc}
 .school-comp-page[data-competition="ibk-2026"] .sc-regulations-summary-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:16px}
