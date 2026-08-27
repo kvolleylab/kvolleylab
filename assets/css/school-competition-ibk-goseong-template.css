@@ -1,0 +1,20 @@
+.school-comp-page[data-competition="ibk-2026"] .sc-competition-logo{display:none!important}
+.school-comp-page[data-competition="ibk-2026"] .sc-hero-brand{gap:0!important;min-width:0}
+.school-comp-page[data-competition="ibk-2026"] .sc-hero-copy{min-width:0}
+@media(min-width:621px){
+  .school-comp-page[data-competition="ibk-2026"] .sc-hero{box-sizing:border-box;min-height:206px;padding:34px 38px;align-items:center}
+  .school-comp-page[data-competition="ibk-2026"] .sc-hero h1{margin:8px 0 12px!important;font-size:38px!important;line-height:1.2!important}
+}
+.school-comp-page[data-competition="ibk-2026"] .sc-kpis strong,
+.school-comp-page[data-competition="ibk-2026"] .sc-kpis small{display:inline-block!important}
+.school-comp-page[data-competition="ibk-2026"] .sc-kpis strong{margin:10px 5px 0 0}
+.school-comp-page[data-competition="ibk-2026"] #scStandingTabs{margin-bottom:18px}
+.school-comp-page[data-competition="ibk-2026"] #scPodiums{grid-template-columns:minmax(0,1fr)!important}
+.school-comp-page[data-competition="ibk-2026"] #scBrackets .sc-bracket[hidden]{display:none!important}
+.school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scCalendar,
+.school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scResults,
+.school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scTeams,
+.school-comp-page[data-competition="ibk-2026"]:not([data-kvl-division-ready="1"]) #scBrackets{visibility:hidden}
+@media(max-width:620px){
+  .school-comp-page[data-competition="ibk-2026"] .sc-hero{min-height:0;height:auto}
+}
