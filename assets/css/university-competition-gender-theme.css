@@ -24,10 +24,17 @@
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-section-title h2,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-calendar-head h2,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-kpis strong,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-rank h3,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-card,
-.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-mark{
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-mark,
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-standing-row span:nth-child(2),
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-winner{
   color:var(--kvl-women-dark)!important;
+}
+.competition-dashboard-page[data-kvl-gender-theme="women"] .cd-kpis article{
+  border-color:var(--kvl-women-line)!important;
+  background:var(--kvl-women-soft-2)!important;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-cal-cell.has-games{
   background:var(--kvl-women-soft-2)!important;
@@ -51,7 +58,8 @@
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-card{
   border-color:var(--kvl-women-line)!important;
-  background:var(--kvl-women-soft-2)!important;
+  background:linear-gradient(180deg,#fff,var(--kvl-women-soft-2))!important;
+  box-shadow:inset 0 3px 0 rgba(210,100,143,.16)!important;
 }
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-team-mark,
 .competition-dashboard-page[data-kvl-gender-theme="women"] .cd-podium-logo{
@@ -81,3 +89,15 @@
 .competition-dashboard-page[data-kvl-gender-theme="women"] .kvl-rule-summary{
   color:var(--kvl-women-dark)!important;
 }
+.kvl-women-bracket{display:grid;gap:22px;max-width:960px;margin:0 auto;padding:6px 0 12px}
+.kvl-women-champion{display:flex;align-items:center;justify-content:center;gap:12px;width:max-content;min-width:220px;margin:0 auto;padding:12px 18px;border:1px solid var(--kvl-women-line);border-radius:16px;background:var(--kvl-women-soft);color:var(--kvl-women-dark);box-shadow:0 7px 18px rgba(164,63,104,.09)}
+.kvl-women-champion small,.kvl-women-champion strong{display:block}.kvl-women-champion small{font-size:10px;font-weight:900;letter-spacing:.12em;opacity:.72}.kvl-women-champion strong{margin-top:2px;font-size:19px}
+.kvl-women-final{display:grid;grid-template-columns:minmax(320px,520px);justify-content:center}
+.kvl-women-semis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.kvl-women-bracket-game{overflow:hidden;border:1px solid var(--kvl-women-line);border-radius:14px;background:#fff;box-shadow:0 6px 16px rgba(164,63,104,.07)}
+.kvl-women-bracket-label{padding:8px 12px;background:var(--kvl-women-primary);color:#fff;text-align:center;font-size:13px;font-weight:900}
+.kvl-women-bracket-meta{padding:7px 10px;border-bottom:1px solid #f2d8e2;background:var(--kvl-women-soft-2);color:#8d6877;text-align:center;font-size:10px;font-weight:800}
+.kvl-women-bracket-team{display:grid;grid-template-columns:36px minmax(0,1fr) 28px;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid #f6e6ec;color:#7a6570}
+.kvl-women-bracket-team:first-of-type{border-top:0}.kvl-women-bracket-team.is-winner{background:#fff7fa;color:var(--kvl-women-dark);font-weight:900}.kvl-women-bracket-team b{text-align:right;font-size:18px}.kvl-women-bracket-logo{display:grid;place-items:center;width:34px;height:34px;padding:3px;border:1px solid var(--kvl-women-line);border-radius:9px;background:#fff;overflow:hidden;color:var(--kvl-women-dark);font-size:11px;font-weight:900}.kvl-women-bracket-logo img{display:block;width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.kvl-women-bracket-sets{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;padding:8px 10px;border-top:1px solid #f6e6ec;background:#fff}.kvl-women-bracket-sets span{padding:3px 7px;border:1px solid var(--kvl-women-line);border-radius:999px;color:#7a6570;font-size:10px;font-weight:800}
+@media(max-width:720px){.kvl-women-semis{grid-template-columns:1fr}.kvl-women-final{grid-template-columns:1fr}.kvl-women-bracket{gap:16px}.kvl-women-champion{min-width:0;width:auto}}
