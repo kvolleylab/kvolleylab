@@ -29,7 +29,9 @@ const ready=()=>Boolean(
 
 function applyTheme(value){
   mode=value===WOMEN?WOMEN:MEN;
-  if(document.body?.classList.contains('competition-dashboard-page'))document.body.dataset.kvlGenderTheme=mode===WOMEN?'women':'men';
+  const gender=mode===WOMEN?'women':'men';
+  document.documentElement.dataset.kvlInitialGender=gender;
+  if(document.body?.classList.contains('competition-dashboard-page'))document.body.dataset.kvlGenderTheme=gender;
 }
 function rewriteInternalLinks(){
   const gender=mode===WOMEN?'women':'men';
