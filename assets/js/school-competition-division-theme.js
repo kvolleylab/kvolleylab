@@ -55,7 +55,7 @@ normalizePodiumIcons();
 const podiumRoot=document.querySelector('.sc-main');
 if(podiumRoot)new MutationObserver(normalizePodiumIcons).observe(podiumRoot,{childList:true,subtree:true});
 document.addEventListener('click',event=>{
-  const btn=event.target.closest('[data-kvl-division]');
+  const btn=event.target.closest('[data-kvl-division],[data-calendar-division]');
   if(!btn)return;
   set(btn.dataset.kvlDivision||btn.dataset.calendarDivision||btn.textContent.trim());
 },true);
