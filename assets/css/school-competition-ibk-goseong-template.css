@@ -25,7 +25,20 @@
 .school-comp-page[data-competition="ibk-2026"] .sc-team.is-right strong{grid-column:1;text-align:right!important}
 .school-comp-page[data-competition="ibk-2026"] .sc-team.is-right .sc-team-logo{grid-column:2}
 .school-comp-page[data-competition="ibk-2026"] .sc-team-logo{width:46px;height:46px;flex:0 0 46px;padding:2px;background:#fff}
+.school-comp-page[data-competition="ibk-2026"] #scGroupDivisionTabs,
 .school-comp-page[data-competition="ibk-2026"] #scStandingTabs{margin-bottom:18px}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-rule{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px;padding:14px 16px;border:1px solid #e3e8ee;border-radius:14px;background:#f8fafc;color:#64748b;font-size:12px;line-height:1.55}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-rule strong{color:#17365d}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-rule span+span::before{content:'·';margin-right:8px;color:#b0bac6}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-standings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-card{overflow:hidden;border:1px solid #e1e7ef;border-radius:18px;background:#fff}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-card h3{margin:0;padding:14px 18px;background:#17365d;color:#fff;font-size:17px}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-table{overflow-x:auto}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-row{display:grid;grid-template-columns:38px minmax(105px,1fr) 42px 34px 34px 64px 64px;gap:5px;align-items:center;min-width:420px;padding:10px 12px;border-top:1px solid #edf0f4;color:#536477;font-size:12px;text-align:center}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-head{border-top:0;background:#f6f8fb;color:#6d7d90;font-size:11px;font-weight:900}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-row strong{text-align:left;color:#273a51;font-size:13px;white-space:nowrap}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-row.is-qualified{background:#fffdf7}
+.school-comp-page[data-competition="ibk-2026"] .sc-group-row.is-qualified .sc-group-rank{color:#9a6d12;font-weight:900}
 .school-comp-page[data-competition="ibk-2026"] #scPodiums{grid-template-columns:minmax(0,1fr)!important}
 .school-comp-page[data-competition="ibk-2026"] .sc-rank{grid-template-columns:92px minmax(0,1fr)!important}
 .school-comp-page[data-competition="ibk-2026"] .sc-rank b{display:flex;align-items:center;white-space:nowrap}
@@ -43,6 +56,9 @@
   .school-comp-page[data-competition="ibk-2026"] .sc-match{grid-template-columns:200px minmax(420px,1fr)!important}
   .school-comp-page[data-competition="ibk-2026"] .sc-sets{grid-column:1/-1!important;justify-content:center}
 }
+@media(max-width:760px){
+  .school-comp-page[data-competition="ibk-2026"] .sc-group-standings{grid-template-columns:1fr}
+}
 @media(max-width:620px){
   .school-comp-page[data-competition="ibk-2026"] .sc-hero{min-height:0;height:auto}
   .school-comp-page[data-competition="ibk-2026"] .sc-match{grid-template-columns:1fr!important;gap:10px!important}
@@ -51,4 +67,7 @@
   .school-comp-page[data-competition="ibk-2026"] .sc-team.is-left{grid-template-columns:42px 92px!important}
   .school-comp-page[data-competition="ibk-2026"] .sc-team.is-right{grid-template-columns:92px 42px!important}
   .school-comp-page[data-competition="ibk-2026"] .sc-sources{grid-template-columns:1fr}
+  .school-comp-page[data-competition="ibk-2026"] .sc-group-rule{display:block}
+  .school-comp-page[data-competition="ibk-2026"] .sc-group-rule span{display:block;margin-top:6px}
+  .school-comp-page[data-competition="ibk-2026"] .sc-group-rule span+span::before{display:none}
 }
