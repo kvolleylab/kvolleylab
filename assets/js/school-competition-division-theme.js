@@ -106,8 +106,10 @@ setupOverviewCalendarTabs();
 const podiumRoot=document.querySelector('.sc-main');
 if(podiumRoot)new MutationObserver(normalizePodiumIcons).observe(podiumRoot,{childList:true,subtree:true});
 document.addEventListener('click',event=>{
-  const btn=event.target.closest('[data-kvl-division],[data-calendar-division]');
+  const btn=event.target.closest('[data-kvl-division],[data-calendar-division],.sc-tabs button');
   if(!btn)return;
-  set(btn.dataset.kvlDivision||btn.dataset.calendarDivision||btn.textContent.trim());
+  const value=btn.dataset.kvlDivision||btn.dataset.calendarDivision||btn.textContent.trim();
+  if(!/^(?:18|15)세이하 (?:남자|여자)부$/.test(value))return;
+  set(value);
 },true);
 })();
