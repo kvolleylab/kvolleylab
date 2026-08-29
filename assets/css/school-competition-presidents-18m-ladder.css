@@ -1,0 +1,18 @@
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-grid{align-items:stretch!important;gap:44px!important}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-quarter,
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-semi,
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-final{display:grid!important;grid-template-rows:auto minmax(0,1fr) minmax(0,1fr)!important;gap:16px!important;align-items:stretch!important}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-pair{position:relative;display:grid;grid-template-rows:1fr 1fr;gap:16px;align-items:center;min-width:0}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-pair:nth-of-type(1){grid-row:2}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-pair:nth-of-type(2){grid-row:3}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-semi-pair{position:relative;display:grid;grid-template-rows:1fr 1fr;gap:16px;grid-row:2/4;align-items:center;min-width:0}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-final-slot{display:flex;grid-row:2/4;align-items:center;min-width:0}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-final-slot>.sc-bracket-game{width:100%}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-bracket-round:not(:last-child) .sc-bracket-game:after{display:none!important}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-pair>.sc-bracket-game:after,
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-semi-pair>.sc-bracket-game:after{content:""!important;display:block!important;position:absolute;z-index:4;top:50%;right:-22px;width:22px;border-top:2px solid #17365d;pointer-events:none}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-pair:after,
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-semi-pair:after{content:"";position:absolute;z-index:3;top:25%;bottom:25%;right:-22px;border-right:2px solid #17365d;pointer-events:none}
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-pair:before,
+.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-semi-pair:before{content:"";position:absolute;z-index:3;top:50%;right:-44px;width:22px;border-top:2px solid #17365d;pointer-events:none}
+@media(max-width:760px){.school-comp-page[data-competition="presidents-2026"] #scBrackets .sc-bracket[data-kvl-presidents-18m-ladder="1"] .sc-true-ladder-grid{min-width:860px}}
