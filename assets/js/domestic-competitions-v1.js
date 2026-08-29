@@ -28,6 +28,7 @@
   connectDashboard('middle-high-first-2026','school-competition-samcheok-2026.html?view=overview&layout=20260802-4','한국중고배구 1차 연맹전 삼척대회');
   connectDashboard('middle-high-second-2026','school-competition-iksan-2026.html?view=overview&layout=20260802-4','한국중고배구 2차 연맹전 익산보석배대회');
   connectDashboard('presidents-cup-middle-high-2026','school-competition-presidents-2026.html?view=overview&layout=20260802-4','제59회 대통령배 전국중고배구대회');
+  connectDashboard('ibk-middle-high-2026','ibk-middle-high-2026.html?view=overview&layout=20260827-1','IBK기업은행배 전국중고배구대회');
 
   const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
   const teamAliases={'울산스포츠과하고':'울산스포츠과학고','순천팦마중':'순천팔마중','인하부고':'인하사대부고','인하부중':'인하사대부중','찬안고':'천안고','경북사대부설고':'경북사대부고','인하사대부속중':'인하사대부중'};
@@ -87,10 +88,15 @@
     ['spring-middle-high-2026','2026-03-12','2026-03-19'],
     ['middle-high-first-2026','2026-04-06','2026-04-13'],
     ['middle-high-second-2026','2026-06-07','2026-06-14'],
-    ['presidents-cup-middle-high-2026','2026-07-06','2026-07-13']
+    ['presidents-cup-middle-high-2026','2026-07-06','2026-07-13'],
+    ['ibk-middle-high-2026','2026-07-31','2026-08-06']
   ];
+  if(schoolCards[4]){
+    schoolCards[4].dataset.rankingSource='ibk-middle-high-2026';
+    const badge=schoolCards[4].querySelector('.dc-badge');if(badge)badge.textContent='96경기 공식 결과 반영';
+    const ranking=schoolCards[4].querySelector('.dc-ranking');if(ranking){ranking.classList.remove('is-pending');ranking.innerHTML='<strong>대회 입상팀</strong><p>순위 계산 중...</p>';}
+  }
   dateInfo.forEach(([source,start,end])=>{const card=schoolGrid?.querySelector(`[data-ranking-source="${source}"]`);if(card){card.dataset.start=start;card.dataset.end=end}});
-  if(schoolCards[4]){schoolCards[4].dataset.start='2026-07-31';schoolCards[4].dataset.end='2026-08-06'}
   if(schoolCards[5]){schoolCards[5].dataset.start='2026-08-28';schoolCards[5].dataset.end='2026-09-03'}
 
   const today=new Date();today.setHours(0,0,0,0);
@@ -101,12 +107,12 @@
 
   if(schoolSection&&schoolGrid){
     const counts={all:schoolCards.length,live:0,upcoming:0,ended:0};schoolCards.forEach(card=>counts[stateOf(card)]++);
-    const totalGames=114+85+102+89;
+    const totalGames=114+85+102+89+96;
     const tools=document.createElement('div');tools.className='dc-overview-tools';
     tools.innerHTML=`<div class="dc-summary-cards"><article><span>등록 대회</span><strong>${counts.all}</strong><small>개</small></article><article><span>진행 중</span><strong>${counts.live}</strong><small>개</small></article><article><span>예정</span><strong>${counts.upcoming}</strong><small>개</small></article><article><span>결과 반영</span><strong>${totalGames}</strong><small>경기</small></article></div><div class="dc-filter-row" role="group" aria-label="대회 상태 필터">${Object.entries(stateLabel).map(([key,label])=>`<button type="button" data-filter="${key}" class="${key==='all'?'active':''}">${label}<span>${counts[key]}</span></button>`).join('')}</div>`;
     schoolGrid.before(tools);
     tools.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{const filter=button.dataset.filter;tools.querySelectorAll('button').forEach(item=>item.classList.toggle('active',item===button));schoolCards.forEach(card=>card.hidden=filter!=='all'&&card.dataset.state!==filter)}));
   }
 
-  document.querySelectorAll('[data-ranking-source]').forEach(card=>{const id=card.dataset.rankingSource,box=card.querySelector('.dc-ranking');fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260802-4`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('ranking');return r.json()}).then(data=>renderRanking(box,data)).catch(()=>{box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>순위 데이터를 불러오지 못했습니다.</p>'})});
+  document.querySelectorAll('[data-ranking-source]').forEach(card=>{const id=card.dataset.rankingSource,box=card.querySelector('.dc-ranking');fetch(`data/domestic/${encodeURIComponent(id)}.json?v=20260829-1`,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('ranking');return r.json()}).then(data=>renderRanking(box,data)).catch(()=>{box.classList.add('is-pending');box.innerHTML='<strong>대회 입상팀</strong><p>순위 데이터를 불러오지 못했습니다.</p>'})});
 })();
