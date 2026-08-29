@@ -49,9 +49,60 @@ const normalizePodiumIcons=()=>{
     if(trophy.textContent!==icon)trophy.textContent=icon;
   });
 };
+const setupOverviewCalendarTabs=()=>{
+  if(!['presidents-2026','ibk-2026'].includes(id))return;
+  const head=document.querySelector('.sc-calendar-head');
+  const root=document.getElementById('scCalendar');
+  if(!head||!root)return;
+  let right=head.querySelector('.sc-calendar-head-right');
+  if(!right){
+    right=document.createElement('div');
+    right.className='sc-calendar-head-right';
+    const note=[...head.children].find(el=>el.tagName==='P');
+    if(note)right.appendChild(note);
+    head.appendChild(right);
+  }
+  let host=right.querySelector('.sc-calendar-external-tabs');
+  if(!host){
+    host=document.createElement('div');
+    host.className='sc-calendar-division-tabs sc-calendar-external-tabs';
+    host.setAttribute('role','tablist');
+    right.appendChild(host);
+  }
+  if(!document.getElementById('kvlSchoolCalendarTabsOutsideStyle')){
+    const style=document.createElement('style');
+    style.id='kvlSchoolCalendarTabsOutsideStyle';
+    style.textContent=`
+      .school-comp-page[data-competition="presidents-2026"] #scCalendar>.sc-calendar-division-tabs,
+      .school-comp-page[data-competition="ibk-2026"] #scCalendar>.sc-calendar-division-tabs{display:none!important}
+      .school-comp-page .sc-calendar-head-right{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}
+      .school-comp-page .sc-calendar-head-right>p{margin:0;color:#64748b}
+      .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0!important}
+      .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs button{padding:9px 15px!important;border:1px solid #dbe2ea;border-radius:999px;background:#fff;color:#536477;font:inherit;font-size:13px!important;font-weight:900;cursor:pointer}
+      .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs button.is-active{border-color:#17365d;background:#17365d;color:#fff}
+      @media(max-width:620px){.school-comp-page .sc-calendar-head-right{align-items:flex-start;justify-content:flex-start}}
+    `;
+    document.head.appendChild(style);
+  }
+  const sync=()=>{
+    const internal=[...root.querySelectorAll(':scope>.sc-calendar-division-tabs [data-calendar-division]')];
+    if(!internal.length)return;
+    host.innerHTML=internal.map(btn=>`<button type="button" class="${btn.classList.contains('is-active')?'is-active':''}" data-external-calendar-division="${btn.dataset.calendarDivision}">${btn.textContent.trim()}</button>`).join('');
+    host.querySelectorAll('[data-external-calendar-division]').forEach(btn=>{
+      btn.onclick=()=>{
+        const value=btn.dataset.externalCalendarDivision;
+        const target=[...root.querySelectorAll(':scope>.sc-calendar-division-tabs [data-calendar-division]')].find(item=>item.dataset.calendarDivision===value);
+        if(target)target.click();
+      };
+    });
+  };
+  sync();
+  new MutationObserver(sync).observe(root,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+};
 window.KVL_SCHOOL_DIVISION_STATE={get:()=>division,set,gender:()=>genderOf(division)};
 apply(division);
 normalizePodiumIcons();
+setupOverviewCalendarTabs();
 const podiumRoot=document.querySelector('.sc-main');
 if(podiumRoot)new MutationObserver(normalizePodiumIcons).observe(podiumRoot,{childList:true,subtree:true});
 document.addEventListener('click',event=>{
