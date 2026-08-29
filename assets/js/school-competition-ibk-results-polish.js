@@ -2,6 +2,20 @@
 'use strict';
 if(document.body?.dataset.competition!=='ibk-2026')return;
 
+const DIVISIONS=['18세이하 남자부','18세이하 여자부','15세이하 남자부','15세이하 여자부'];
+const divisionState=window.KVL_SCHOOL_DIVISION_STATE;
+
+const syncResultDivisionTheme=event=>{
+  const btn=event.target.closest('#scDivisionTabs button');
+  if(!btn)return;
+  const value=btn.dataset.kvlDivision||btn.textContent.trim();
+  if(!DIVISIONS.includes(value))return;
+  btn.dataset.kvlDivision=value;
+  divisionState?.set?.(value);
+};
+
+document.addEventListener('click',syncResultDivisionTheme,true);
+
 const polishResults=()=>{
   const root=document.getElementById('scResults');
   if(!root)return;
