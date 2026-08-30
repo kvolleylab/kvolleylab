@@ -53,7 +53,7 @@ function patchArticle(article){
   const firstCards=[...firstRound.querySelectorAll(':scope>.sc-bracket-game')];
   const semis=[...semiRound.querySelectorAll(':scope>.sc-bracket-game')];
   const finals=[...finalRound.querySelectorAll(':scope>.sc-bracket-game')];
-  if(![2,4].includes(firstCards.length)||semis.length!==2||finals.length!==1)return;
+  if(firstCards.length<1||firstCards.length>4||semis.length!==2||finals.length!==1)return;
 
   const used=new Set(),pairs=[];
   for(const semi of semis){
