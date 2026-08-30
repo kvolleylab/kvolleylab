@@ -1,0 +1,34 @@
+.school-comp-page[data-competition="cbs-2026"] .sc-competition-logo{display:none!important}
+.school-comp-page[data-competition="cbs-2026"] .sc-hero-brand{gap:0!important;min-width:0}
+.school-comp-page[data-competition="cbs-2026"] .sc-hero-copy{min-width:0}
+@media(min-width:621px){
+  .school-comp-page[data-competition="cbs-2026"] .sc-hero{box-sizing:border-box;min-height:206px;padding:34px 38px;align-items:center}
+  .school-comp-page[data-competition="cbs-2026"] .sc-hero h1{margin:8px 0 12px!important;font-size:38px!important;line-height:1.2!important}
+}
+.school-comp-page[data-competition="cbs-2026"] .sc-kpis strong,
+.school-comp-page[data-competition="cbs-2026"] .sc-kpis small{display:inline-block!important}
+.school-comp-page[data-competition="cbs-2026"] .sc-kpis strong{margin:10px 5px 0 0}
+.school-comp-page[data-competition="cbs-2026"] .sc-calendar-head-right{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}
+.school-comp-page[data-competition="cbs-2026"] .sc-calendar-head-right>p{margin:0;color:#64748b}
+.school-comp-page[data-competition="cbs-2026"] .sc-calendar-head-right .sc-tabs{margin:0}
+.school-comp-page[data-competition="cbs-2026"] .sc-placeholder{padding:30px;border:1px solid #e1e7ef;border-radius:18px;background:#f8fafc;color:#667789;text-align:center}
+.school-comp-page[data-competition="cbs-2026"] .sc-placeholder strong{display:block;margin-bottom:8px;color:#17365d;font-size:20px}
+.school-comp-page[data-competition="cbs-2026"] .sc-placeholder small{display:block;margin-top:8px;color:#8794a3}
+.school-comp-page[data-competition="cbs-2026"] .sc-month-shell{margin-top:16px;overflow:hidden;border:1px solid #dfe5ec;border-radius:18px;background:#fff}
+.school-comp-page[data-competition="cbs-2026"] .sc-month-shell h3{margin:0;padding:17px 20px;background:#17365d;color:#fff;text-align:center;font-size:20px}
+.school-comp-page[data-competition="cbs-2026"] .sc-month-shell p{margin:0;padding:22px;text-align:center;color:#667789}
+.school-comp-page[data-competition="cbs-2026"] .sc-group-rule{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px;padding:14px 16px;border:1px solid #e3e8ee;border-radius:14px;background:#f8fafc;color:#64748b;font-size:12px;line-height:1.55}
+.school-comp-page[data-competition="cbs-2026"] .sc-group-rule strong{color:#17365d}
+.school-comp-page[data-competition="cbs-2026"] .sc-group-rule span+span::before{content:'·';margin-right:8px;color:#b0bac6}
+.school-comp-page[data-competition="cbs-2026"] .sc-sources{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.school-comp-page[data-competition="cbs-2026"] .sc-sources a{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:58px;padding:14px 16px;border:1px solid #e3e8ee;border-radius:13px;background:#fff;color:#334a64;font-weight:800;text-decoration:none}
+.school-comp-page[data-competition="cbs-2026"] .sc-sources a:hover{border-color:#d6b25e;background:#fffaf0;color:#17365d}
+.school-comp-page[data-competition="cbs-2026"][data-kvl-gender-theme="women"] .sc-month-shell h3{background:#D2648F}
+@media(max-width:620px){
+  .school-comp-page[data-competition="cbs-2026"] .sc-hero{min-height:0;height:auto}
+  .school-comp-page[data-competition="cbs-2026"] .sc-calendar-head-right{align-items:flex-start;justify-content:flex-start}
+  .school-comp-page[data-competition="cbs-2026"] .sc-sources{grid-template-columns:1fr}
+  .school-comp-page[data-competition="cbs-2026"] .sc-group-rule{display:block}
+  .school-comp-page[data-competition="cbs-2026"] .sc-group-rule span{display:block;margin-top:6px}
+  .school-comp-page[data-competition="cbs-2026"] .sc-group-rule span+span::before{display:none}
+}
