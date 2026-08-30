@@ -44,7 +44,7 @@ function buildFeederPair(semi,firstCards,used){
 }
 
 function patchArticle(article){
-  if(!article||article.dataset.kvlSchoolLadder==='1')return;
+  if(!article||article.dataset.kvlSchoolLadder)return;
   const grid=article.querySelector(':scope>.sc-bracket-grid');
   if(!grid)return;
   const rounds=[...grid.querySelectorAll(':scope>.sc-bracket-round')];
@@ -53,6 +53,15 @@ function patchArticle(article){
   const firstCards=[...firstRound.querySelectorAll(':scope>.sc-bracket-game')];
   const semis=[...semiRound.querySelectorAll(':scope>.sc-bracket-game')];
   const finals=[...finalRound.querySelectorAll(':scope>.sc-bracket-game')];
+
+  const firstLabel=firstRound.querySelector(':scope>strong')?.textContent.trim()||'';
+  if(firstCards.length===0&&firstLabel==='본선'&&semis.length&&finals.length){
+    firstRound.remove();
+    grid.style.gridTemplateColumns='repeat(2,minmax(0,1fr))';
+    article.dataset.kvlSchoolLadder='2';
+    return;
+  }
+
   if(firstCards.length<1||firstCards.length>4||semis.length!==2||finals.length!==1)return;
 
   const used=new Set(),pairs=[];
