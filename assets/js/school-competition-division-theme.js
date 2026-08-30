@@ -49,11 +49,29 @@ const normalizePodiumIcons=()=>{
     if(trophy.textContent!==icon)trophy.textContent=icon;
   });
 };
+const ensureCalendarTabsStyle=()=>{
+  if(document.getElementById('kvlSchoolCalendarTabsOutsideStyle'))return;
+  const style=document.createElement('style');
+  style.id='kvlSchoolCalendarTabsOutsideStyle';
+  style.textContent=`
+    .school-comp-page #scCalendar>.sc-calendar-division-tabs{display:none!important}
+    .school-comp-page .sc-calendar-head-right{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}
+    .school-comp-page .sc-calendar-head-right>p{margin:0;color:#64748b}
+    .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0!important}
+    .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs button{padding:9px 15px!important;border:1px solid #dbe2ea;border-radius:999px;background:#fff;color:#536477;font:inherit;font-size:13px!important;font-weight:900;cursor:pointer}
+    .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs button.is-active{border-color:#17365d;background:#17365d;color:#fff}
+    @media(max-width:620px){
+      .school-comp-page .sc-calendar-head{gap:12px}
+      .school-comp-page .sc-calendar-head-right{align-items:flex-start;justify-content:flex-start;width:100%}
+    }
+  `;
+  document.head.appendChild(style);
+};
 const setupOverviewCalendarTabs=()=>{
-  if(!['presidents-2026','ibk-2026'].includes(id))return;
+  if(!document.body?.classList.contains('school-comp-page'))return;
   const head=document.querySelector('.sc-calendar-head');
-  const root=document.getElementById('scCalendar');
-  if(!head||!root)return;
+  if(!head)return;
+  ensureCalendarTabsStyle();
   let right=head.querySelector('.sc-calendar-head-right');
   if(!right){
     right=document.createElement('div');
@@ -62,27 +80,22 @@ const setupOverviewCalendarTabs=()=>{
     if(note)right.appendChild(note);
     head.appendChild(right);
   }
+  const root=document.getElementById('scCalendar');
+  if(!root){
+    const staticTabs=right.querySelector('.sc-tabs,.sc-calendar-division-tabs');
+    if(staticTabs){
+      staticTabs.classList.remove('sc-tabs');
+      staticTabs.classList.add('sc-calendar-division-tabs','sc-calendar-external-tabs');
+      staticTabs.setAttribute('role','tablist');
+    }
+    return;
+  }
   let host=right.querySelector('.sc-calendar-external-tabs');
   if(!host){
     host=document.createElement('div');
     host.className='sc-calendar-division-tabs sc-calendar-external-tabs';
     host.setAttribute('role','tablist');
     right.appendChild(host);
-  }
-  if(!document.getElementById('kvlSchoolCalendarTabsOutsideStyle')){
-    const style=document.createElement('style');
-    style.id='kvlSchoolCalendarTabsOutsideStyle';
-    style.textContent=`
-      .school-comp-page[data-competition="presidents-2026"] #scCalendar>.sc-calendar-division-tabs,
-      .school-comp-page[data-competition="ibk-2026"] #scCalendar>.sc-calendar-division-tabs{display:none!important}
-      .school-comp-page .sc-calendar-head-right{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}
-      .school-comp-page .sc-calendar-head-right>p{margin:0;color:#64748b}
-      .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0!important}
-      .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs button{padding:9px 15px!important;border:1px solid #dbe2ea;border-radius:999px;background:#fff;color:#536477;font:inherit;font-size:13px!important;font-weight:900;cursor:pointer}
-      .school-comp-page .sc-calendar-head-right .sc-calendar-division-tabs button.is-active{border-color:#17365d;background:#17365d;color:#fff}
-      @media(max-width:620px){.school-comp-page .sc-calendar-head-right{align-items:flex-start;justify-content:flex-start}}
-    `;
-    document.head.appendChild(style);
   }
   const sync=()=>{
     const internal=[...root.querySelectorAll(':scope>.sc-calendar-division-tabs [data-calendar-division]')];
