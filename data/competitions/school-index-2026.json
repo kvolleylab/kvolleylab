@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "1.0",
+  "year": 2026,
+  "competitions": [
+    {
+      "competitionId": "cbs-middle-high-2026",
+      "series": "CBS배",
+      "name": "CBS배 전국중고배구대회",
+      "shortName": "CBS배 전국중고배구대회",
+      "pagePath": "school-competition-cbs-2026.html",
+      "rankingSource": null,
+      "startDate": "2026-08-28",
+      "endDate": "2026-09-03",
+      "location": "경북 영천",
+      "gameCount": null,
+      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+    },
+    {
+      "competitionId": "ibk-middle-high-2026",
+      "series": "IBK기업은행배",
+      "name": "IBK기업은행배 전국중고배구대회",
+      "shortName": "IBK기업은행배 전국중고배구대회",
+      "pagePath": "ibk-middle-high-2026.html",
+      "rankingSource": "ibk-middle-high-2026",
+      "startDate": "2026-07-31",
+      "endDate": "2026-08-06",
+      "location": "충북 제천",
+      "gameCount": 96,
+      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+    },
+    {
+      "competitionId": "presidents-cup-middle-high-2026",
+      "series": "대통령배",
+      "name": "제59회 대통령배 전국중고배구대회",
+      "shortName": "제59회 대통령배 전국중고배구대회",
+      "pagePath": "school-competition-presidents-2026.html",
+      "rankingSource": "presidents-cup-middle-high-2026",
+      "startDate": "2026-07-06",
+      "endDate": "2026-07-13",
+      "location": "충북 옥천",
+      "gameCount": 89,
+      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+    },
+    {
+      "competitionId": "middle-high-second-2026",
+      "series": "연맹 2차전",
+      "name": "한국중고배구 2차 연맹전 익산보석배대회",
+      "shortName": "2차 연맹전 익산보석배대회",
+      "pagePath": "school-competition-iksan-2026.html",
+      "rankingSource": "middle-high-second-2026",
+      "startDate": "2026-06-07",
+      "endDate": "2026-06-14",
+      "location": "전북 익산",
+      "gameCount": 102,
+      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+    },
+    {
+      "competitionId": "middle-high-first-2026",
+      "series": "연맹 1차전",
+      "name": "한국중고배구 1차 연맹전 삼척대회",
+      "shortName": "1차 연맹전 삼척대회",
+      "pagePath": "school-competition-samcheok-2026.html",
+      "rankingSource": "middle-high-first-2026",
+      "startDate": "2026-04-06",
+      "endDate": "2026-04-13",
+      "location": "강원 삼척",
+      "gameCount": 85,
+      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+    },
+    {
+      "competitionId": "spring-middle-high-2026",
+      "series": "춘계연맹전",
+      "name": "춘계전국중고배구연맹전",
+      "shortName": "춘계전국중고배구연맹전",
+      "pagePath": "school-competition-spring-2026.html",
+      "rankingSource": "spring-middle-high-2026",
+      "startDate": "2026-03-12",
+      "endDate": "2026-03-19",
+      "location": "충북 단양",
+      "gameCount": 114,
+      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+    }
+  ]
+}
