@@ -2,64 +2,13 @@
 'use strict';
 if(document.body?.dataset.competition!=='presidents-2026')return;
 let scheduled=false;
-const teamNames=card=>[...card.querySelectorAll('.sc-horizontal-side strong')].map(el=>el.textContent.trim()).filter(Boolean);
-const winnerName=card=>card.querySelector('.sc-horizontal-side.is-winner strong')?.textContent.trim()||'';
-const titleOf=card=>card.querySelector('.sc-bracket-title')?.textContent.trim()||'';
-
-function patch(){
-  const article=[...document.querySelectorAll('#scBrackets .sc-bracket')].find(el=>el.querySelector(':scope>h3')?.textContent.trim()==='18세이하 남자부');
-  if(!article||article.dataset.kvlPresidents18mLadder==='1')return;
-  const rounds=[...article.querySelectorAll(':scope>.sc-bracket-grid>.sc-bracket-round')];
-  if(rounds.length!==3)return;
-  const [quarterRound,semiRound,finalRound]=rounds;
-  if(quarterRound.querySelector(':scope>strong')?.textContent.trim()!=='8강')return;
-  const quarters=[...quarterRound.querySelectorAll(':scope>.sc-bracket-game')];
-  const semis=[...semiRound.querySelectorAll(':scope>.sc-bracket-game')];
-  const finals=[...finalRound.querySelectorAll(':scope>.sc-bracket-game')];
-  if(quarters.length!==4||semis.length!==2||finals.length!==1)return;
-
-  const used=new Set();
-  const pairs=[];
-  for(const semi of semis){
-    const semiTeams=new Set(teamNames(semi));
-    const feeders=quarters.filter(q=>!used.has(q)&&semiTeams.has(winnerName(q)));
-    if(feeders.length!==2)return;
-    feeders.sort((a,b)=>{
-      const na=Number((titleOf(a).match(/(\d+)경기/)||[])[1]||0);
-      const nb=Number((titleOf(b).match(/(\d+)경기/)||[])[1]||0);
-      return na-nb;
-    });
-    feeders.forEach(q=>used.add(q));
-    pairs.push(feeders);
-  }
-  if(used.size!==4)return;
-
-  quarterRound.classList.add('sc-true-ladder-quarter');
-  semiRound.classList.add('sc-true-ladder-semi');
-  finalRound.classList.add('sc-true-ladder-final');
-  article.querySelector(':scope>.sc-bracket-grid')?.classList.add('sc-true-ladder-grid');
-
-  pairs.forEach((feeders,index)=>{
-    const group=document.createElement('div');
-    group.className='sc-true-ladder-pair';
-    group.dataset.ladderPair=String(index+1);
-    feeders.forEach(card=>group.appendChild(card));
-    quarterRound.appendChild(group);
-  });
-
-  const semiPair=document.createElement('div');
-  semiPair.className='sc-true-ladder-semi-pair';
-  semis.forEach(card=>semiPair.appendChild(card));
-  semiRound.appendChild(semiPair);
-
-  const finalSlot=document.createElement('div');
-  finalSlot.className='sc-true-ladder-final-slot';
-  finalSlot.appendChild(finals[0]);
-  finalRound.appendChild(finalSlot);
-
-  article.dataset.kvlPresidents18mLadder='1';
-}
-function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;patch()})}
-const start=()=>{patch();const root=document.getElementById('scBrackets');if(root)new MutationObserver(schedule).observe(root,{childList:true,subtree:true})};
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+const root=()=>document.getElementById('scBrackets');
+const teamName=side=>side?.querySelector('strong')?.textContent.trim()||'';
+const teamSides=card=>[...card.querySelectorAll('.sc-horizontal-side')];
+const winnerName=card=>teamName(card?.querySelector('.sc-horizontal-side.is-winner'));
+const logoHtml=side=>side?.querySelector('.sc-team-logo')?.outerHTML||'';
+function makeByeCard(side){const team=teamName(side);if(!team)return null;const card=document.createElement('div');card.className='sc-ladder-bye';card.dataset.kvlByeTeam=team;card.innerHTML=`<div class="sc-ladder-bye-title">준결승 직행</div><div class="sc-ladder-bye-team">${logoHtml(side)}<strong>${team}</strong></div>`;return card;}
+function buildFeederPair(semi,firstCards,used){const sides=teamSides(semi);if(sides.length!==2)return null;const firstByWinner=new Map();firstCards.forEach(card=>{const winner=winnerName(card);if(winner&&!used.has(card))firstByWinner.set(winner,card)});const group=document.createElement('div');group.className='sc-ladder-feeder-pair';for(const side of sides){const name=teamName(side),feeder=firstByWinner.get(name);if(feeder){used.add(feeder);group.appendChild(feeder)}else{const bye=makeByeCard(side);if(!bye)return null;group.appendChild(bye)}}return group;}
+function patchArticle(article){if(!article||article.dataset.kvlPresidentsLadder==='1')return;const grid=article.querySelector(':scope>.sc-bracket-grid');if(!grid)return;const rounds=[...grid.querySelectorAll(':scope>.sc-bracket-round')];if(rounds.length!==3)return;const[firstRound,semiRound,finalRound]=rounds,firstCards=[...firstRound.querySelectorAll(':scope>.sc-bracket-game')],semis=[...semiRound.querySelectorAll(':scope>.sc-bracket-game')],finals=[...finalRound.querySelectorAll(':scope>.sc-bracket-game')];if(![2,4].includes(firstCards.length)||semis.length!==2||finals.length!==1)return;const used=new Set(),pairs=[];for(const semi of semis){const pair=buildFeederPair(semi,firstCards,used);if(!pair)return;pairs.push(pair)}if(used.size!==firstCards.length)return;grid.classList.add('sc-presidents-ladder-grid');firstRound.classList.add('sc-presidents-ladder-first');semiRound.classList.add('sc-presidents-ladder-semis');finalRound.classList.add('sc-presidents-ladder-final');pairs.forEach((pair,index)=>{pair.dataset.ladderPair=String(index+1);firstRound.appendChild(pair)});const semiStack=document.createElement('div');semiStack.className='sc-ladder-semi-stack';semis.forEach(semi=>semiStack.appendChild(semi));semiRound.appendChild(semiStack);const finalSlot=document.createElement('div');finalSlot.className='sc-ladder-final-slot';finalSlot.appendChild(finals[0]);finalRound.appendChild(finalSlot);article.dataset.kvlPresidentsLadder='1';}
+function patch(){root()?.querySelectorAll('.sc-bracket').forEach(patchArticle)}function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;patch()})}function start(){patch();const el=root();if(el)new MutationObserver(schedule).observe(el,{childList:true,subtree:true})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
