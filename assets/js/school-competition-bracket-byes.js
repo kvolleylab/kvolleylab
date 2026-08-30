@@ -1,7 +1,7 @@
 (()=>{
 'use strict';
 const competition=document.body?.dataset.competition||'';
-if(!['presidents-2026','ibk-2026'].includes(competition))return;
+if(competition!=='ibk-2026')return;
 let scheduled=false;
 
 const teamName=side=>side?.querySelector('strong')?.textContent.trim()||'';
@@ -25,14 +25,11 @@ function patchArticle(article){
   const first=rounds[0],semi=rounds[1];
   const label=first.querySelector(':scope > strong')?.textContent.trim()||'';
   if(label!=='6강')return;
-
   const qCards=[...first.querySelectorAll(':scope > .sc-bracket-game')];
   const semiCards=[...semi.querySelectorAll(':scope > .sc-bracket-game')];
   if(qCards.length!==2||semiCards.length!==2)return;
-
   const qByWinner=new Map(qCards.map(card=>[winnerName(card),card]).filter(([winner])=>winner));
   if(qByWinner.size!==2)return;
-
   const groups=[];
   for(const semiCard of semiCards){
     const sides=[...semiCard.querySelectorAll('.sc-horizontal-side')];
@@ -44,14 +41,12 @@ function patchArticle(article){
     const qCard=qByWinner.get(names[feederIndex]);
     const byeCard=makeByeCard(sides[directIndex]);
     if(!qCard||!byeCard)return;
-
     const group=document.createElement('div');
     group.className='sc-bracket-feeder';
     group.dataset.kvlFeeds=String(groups.length+1);
     if(feederIndex===0){group.append(qCard,byeCard)}else{group.append(byeCard,qCard)}
     groups.push(group);
   }
-
   if(groups.length!==2)return;
   first.classList.add('sc-bracket-round-with-byes');
   semi.classList.add('sc-bracket-round-semifinal');
@@ -59,19 +54,8 @@ function patchArticle(article){
   article.dataset.kvlByePatched='1';
 }
 
-function patch(){
-  document.querySelectorAll('#scBrackets .sc-bracket').forEach(patchArticle);
-}
-function schedule(){
-  if(scheduled)return;
-  scheduled=true;
-  requestAnimationFrame(()=>{scheduled=false;patch()});
-}
-
-const start=()=>{
-  patch();
-  const root=document.getElementById('scBrackets');
-  if(root)new MutationObserver(schedule).observe(root,{childList:true,subtree:true});
-};
+function patch(){document.querySelectorAll('#scBrackets .sc-bracket').forEach(patchArticle)}
+function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;patch()})}
+const start=()=>{patch();const root=document.getElementById('scBrackets');if(root)new MutationObserver(schedule).observe(root,{childList:true,subtree:true})};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
