@@ -12,26 +12,28 @@
   <style>
     :root{--avc-navy:#17365d;--avc-gold:#c9a24a;--avc-line:#dbe2ea;--avc-muted:#64748b;--avc-soft:#f6f8fb}
     body{background:#f6f8fb}
-    .avc-main{max-width:1200px;margin:0 auto;padding:42px 28px 72px}
-    .avc-hero{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:26px;min-height:206px;padding:34px 38px;border:1px solid var(--avc-line);border-radius:30px;background:linear-gradient(135deg,#17365d,#0f2745);color:#fff;box-shadow:0 12px 30px rgba(15,23,42,.08)}
+    .avc-main{max-width:1180px;margin:0 auto;padding:42px 20px 80px}
+    .avc-hero{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:26px;min-height:206px;padding:34px 38px;border:1px solid var(--avc-line);border-radius:28px;background:linear-gradient(135deg,#17365d,#0f2745);color:#fff;box-shadow:0 12px 30px rgba(15,23,42,.08)}
     .avc-hero .eyebrow,.avc-section .eyebrow{margin:0 0 8px;color:var(--avc-gold);font-size:12px;font-weight:900;letter-spacing:.12em}
     .avc-hero h1{margin:0;color:#fff!important;font-size:38px;line-height:1.2}.avc-hero h1 small{display:block;margin-top:7px;color:#dbe7f5;font-size:16px;font-weight:700}.avc-meta{margin:16px 0 0;color:#dbe7f5;font-size:15px;line-height:1.75}
     .avc-status{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.avc-status span{padding:9px 12px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);font-size:12px;font-weight:900;white-space:nowrap}.avc-status .review{border-color:rgba(241,196,15,.45);background:rgba(201,162,74,.16);color:#ffe6a1}
     .avc-jump{display:flex;gap:8px;margin:18px 0 36px;padding:10px;border:1px solid #e1e7ef;border-radius:16px;background:#fff;overflow:auto}.avc-jump a{white-space:nowrap;padding:10px 14px;border-radius:10px;color:#26384f;font-weight:800;text-decoration:none}.avc-jump a:hover,.avc-jump a.is-active{background:var(--avc-navy);color:#fff}
     .avc-view{display:none}.avc-view.is-active{display:block}.avc-section{margin-top:0;padding:30px;border:1px solid var(--avc-line);border-radius:24px;background:#fff;box-shadow:0 8px 24px rgba(15,23,42,.05)}
-    .avc-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px}.avc-section h2{margin:0;color:var(--avc-navy);font-size:28px}.avc-section-head>p{margin:0;color:var(--avc-muted);font-size:14px;text-align:right}
+    .avc-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:22px}.avc-section h2{margin:4px 0 0;color:var(--avc-navy);font-size:28px}.avc-section-head>p{margin:0;color:var(--avc-muted);font-size:14px;text-align:right}
     .avc-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.avc-kpis article{padding:22px;border:1px solid #e1e7ee;border-radius:18px;background:var(--avc-soft)}.avc-kpis span,.avc-kpis small{display:block;color:#748397}.avc-kpis strong{display:inline-block;margin:10px 5px 0 0;color:#0d2748;font-size:36px}
     .avc-note{margin-top:18px;padding:18px 20px;border-left:4px solid var(--avc-gold);border-radius:14px;background:#fff8e6;color:#536477;line-height:1.7}
-    .avc-group.cd-standing-card h3{display:flex;align-items:center;justify-content:space-between;gap:12px}.avc-group.cd-standing-card h3 span{color:#dbe7f5;font-size:12px;font-weight:800}.avc-group-team-list{display:grid}.avc-group-team{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:68px;padding:12px 14px;border-top:1px solid #edf0f4;background:#fff}.avc-group-team:first-child{border-top:0}.avc-group-team.is-korea{background:#fffaf0;box-shadow:inset 3px 0 0 var(--avc-gold)}.avc-group-team .cd-inline-logo{width:42px;height:42px}.avc-group-team-copy{min-width:0}.avc-group-team-copy strong{display:block;overflow:hidden;color:#17365d;font-size:15px;text-overflow:ellipsis;white-space:nowrap}.avc-group-team-copy small{display:block;overflow:hidden;margin-top:3px;color:#7d8998;font-size:11px;font-weight:800;text-overflow:ellipsis;white-space:nowrap}.avc-group-team-code{color:#8a6a16;font-size:12px;font-weight:900;letter-spacing:.05em}
+    .avc-group.cd-standing-card h3{display:flex;align-items:center;justify-content:space-between;gap:12px}.avc-group.cd-standing-card h3 span{color:#dbe7f5;font-size:12px;font-weight:800}.avc-group-team-list{display:grid}.avc-group-team{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:68px;padding:12px 14px;border-top:1px solid #edf0f4;background:#fff}.avc-group-team:first-child{border-top:0}.avc-group-team.is-korea{background:#fffaf0;box-shadow:inset 3px 0 0 var(--avc-gold)}.avc-group-team-copy{min-width:0}.avc-group-team-copy strong{display:block;overflow:hidden;color:#17365d;font-size:15px;text-overflow:ellipsis;white-space:nowrap}.avc-group-team-copy small{display:block;overflow:hidden;margin-top:3px;color:#7d8998;font-size:11px;font-weight:800;text-overflow:ellipsis;white-space:nowrap}.avc-group-team-code{color:#8a6a16;font-size:12px;font-weight:900;letter-spacing:.05em}
     .avc-bracket{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.avc-bracket article{padding:18px;border:1px solid #e1e7ee;border-radius:16px;background:#fbfcfe}.avc-bracket h3{margin:0 0 10px;color:#17365d;font-size:17px}.avc-bracket p{margin:6px 0;color:#536477;font-size:13px;line-height:1.55}
     .avc-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.avc-source{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:1px solid #e1e7ee;border-radius:14px;background:#fbfcfe}.avc-source strong{color:#17365d;font-size:14px}.avc-source a{color:#9a6d12;text-decoration:none;font-weight:900;font-size:13px}.avc-source a:hover{text-decoration:underline}.avc-pending{padding:28px;text-align:center;color:#7b8998}
-    /* 경기일정은 고성대회 경기결과 공통 cd-* 구조를 그대로 사용한다. */
-    #schedule .cd-stage-filters{margin-top:2px}.cd-pool-filter{display:flex;align-items:center;gap:8px;margin-left:auto;color:#536477;font-size:12px;font-weight:800}.cd-pool-filter select{padding:7px 28px 7px 10px;border:1px solid #dbe2ea;border-radius:999px;background:#fff;color:#334155;font:inherit}.avc-schedule-flag img{width:100%;height:100%;object-fit:contain}.avc-flag-tbd{color:#8a97a7;font-size:15px;font-weight:900}.avc-schedule-status span{background:#f8fafc;color:#65758a}.avc-date-head-stage{color:#6f7f90;font-size:12px;font-weight:800}
+    /* 고성대회 실제 경기결과 화면의 PC 팀/로고 치수를 그대로 적용 */
+    #schedule .cd-stage-filters{margin-top:2px}.cd-pool-filter{display:flex;align-items:center;gap:8px;margin-left:auto;color:#536477;font-size:12px;font-weight:900;white-space:nowrap}.cd-pool-filter select{min-width:108px;padding:8px 30px 8px 12px;border:1px solid #dbe2ea;border-radius:999px;background:#fff;color:#26384f;font:inherit;font-weight:900;cursor:pointer}
+    #schedule .cd-match-board{grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr)}
+    #schedule .cd-inline-logo{width:46px;height:46px;padding:2px;background:#fff}
+    .avc-schedule-flag img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff}.avc-flag-tbd{color:#8a97a7;font-size:15px;font-weight:900}
     @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-bracket{grid-template-columns:repeat(2,1fr)}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-sources{grid-template-columns:1fr}}
-    @media(max-width:680px){.avc-main{padding:24px 14px 50px}.avc-hero{min-height:0;height:auto;padding:24px 20px;border-radius:22px}.avc-hero h1{font-size:30px}.avc-section{padding:22px 16px}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-kpis strong{font-size:29px}.avc-bracket{grid-template-columns:1fr}.avc-source{align-items:flex-start;flex-direction:column}.cd-pool-filter{width:100%;margin-left:0;justify-content:flex-start}.avc-group-team{grid-template-columns:38px minmax(0,1fr) auto;padding:11px 12px}.avc-group-team .cd-inline-logo{width:38px;height:38px}.avc-group-team-copy strong{font-size:14px}}
+    @media(max-width:680px){.avc-main{padding:20px 12px 60px}.avc-hero{min-height:0;height:auto;padding:28px 22px;border-radius:22px}.avc-hero h1{font-size:30px}.avc-section{padding:22px 16px}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-kpis strong{font-size:29px}.avc-bracket{grid-template-columns:1fr}.avc-source{align-items:flex-start;flex-direction:column}.cd-pool-filter{width:100%;margin-left:0;justify-content:flex-start}.avc-group-team{grid-template-columns:38px minmax(0,1fr) auto;padding:11px 12px}.avc-group-team-copy strong{font-size:14px}#schedule .cd-match-board{grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr)}#schedule .cd-inline-logo{width:38px;height:38px;padding:4px}}
   </style>
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
-  <script src="assets/js/competition-results-standard.js?v=20260831-2" defer></script>
 </head>
 <body>
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -42,11 +44,11 @@
   </section>
 
   <nav class="avc-jump" aria-label="대회 메뉴">
-    <a data-view="overview" href="international-competition-avc-men-continental-2026.html?view=overview">한눈에 보기</a>
-    <a data-view="schedule" href="international-competition-avc-men-continental-2026.html?view=schedule">경기일정</a>
-    <a data-view="groups" href="international-competition-avc-men-continental-2026.html?view=groups">조편성</a>
-    <a data-view="knockout" href="international-competition-avc-men-continental-2026.html?view=knockout">토너먼트</a>
-    <a data-view="sources" href="international-competition-avc-men-continental-2026.html?view=sources">공식자료</a>
+    <a data-view="overview" href="?view=overview">한눈에 보기</a>
+    <a data-view="schedule" href="?view=schedule">경기일정</a>
+    <a data-view="groups" href="?view=groups">조편성</a>
+    <a data-view="knockout" href="?view=knockout">토너먼트</a>
+    <a data-view="sources" href="?view=sources">공식자료</a>
   </nav>
 
   <section id="overview" class="avc-section avc-view">
@@ -104,38 +106,27 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(!meta)return '<span class="cd-inline-logo avc-flag-tbd" aria-hidden="true">?</span>';
     return `<span class="cd-inline-logo avc-schedule-flag"><img src="${flagUrl(name)}" alt="${esc(name)} 국기" loading="lazy"></span>`;
   };
-  const side=(name,position)=>{
-    const label=name==='TBD'?'TBD':name;
-    return position==='left'
-      ?`<div class="cd-side is-left"><strong>${esc(label)}</strong>${flagMark(name)}</div>`
-      :`<div class="cd-side is-right">${flagMark(name)}<strong>${esc(label)}</strong></div>`;
-  };
+  const side=(name,position)=>position==='left'
+    ?`<span class="cd-side is-left"><strong>${esc(name==='TBD'?'TBD':name)}</strong>${flagMark(name)}</span>`
+    :`<span class="cd-side is-right">${flagMark(name)}<strong>${esc(name==='TBD'?'TBD':name)}</strong></span>`;
   const matchRow=m=>{
-    const stageMeta=m.stage==='조별리그'&&m.group?`${m.group}조 · ${m.stage}`:m.stage;
-    return `<div class="cd-match"><div class="cd-match-meta"><strong>${esc(m.time)}</strong><span>${esc(stageMeta)}</span><span>기타큐슈</span></div><div class="cd-match-board">${side(m.teamA,'left')}<div class="cd-score">VS</div>${side(m.teamB,'right')}</div><div class="cd-set-scores avc-schedule-status"><span>예정 · ${esc(m.id)}</span></div></div>`;
+    const stageMeta=`${m.stage}${m.stage==='조별리그'&&m.group?` · ${m.group}조`:''}`;
+    return `<article class="cd-match"><div class="cd-match-meta"><time>${esc(m.time)}</time><span>${esc(stageMeta)}</span></div><div class="cd-match-board">${side(m.teamA,'left')}<b class="cd-score">VS</b>${side(m.teamB,'right')}</div><div class="cd-set-scores"></div></article>`;
   };
-  function scheduleFiltered(){
-    const standard=window.KVLCompetitionResultsStandard;
-    if(standard)return standard.filterMatches(allMatches,{stage:scheduleStage,pool:schedulePool,getStage:m=>m.stage,getPool:m=>m.group||''});
-    return allMatches.filter(m=>(scheduleStage==='전체'||m.stage===scheduleStage)&&(scheduleStage!=='조별리그'||schedulePool==='전체'||m.group===schedulePool));
-  }
+  function scheduleFiltered(){return allMatches.filter(m=>(scheduleStage==='전체'||m.stage===scheduleStage)&&(scheduleStage!=='조별리그'||schedulePool==='전체'||m.group===schedulePool))}
   function renderSchedule(){
     const root=document.getElementById('scheduleRoot');if(!root)return;
     const list=scheduleFiltered();
     document.getElementById('scheduleSummary').textContent=`${list.length}경기 · ${scheduleStage==='전체'?'전체 단계':scheduleStage}${scheduleStage==='조별리그'&&schedulePool!=='전체'?` · ${schedulePool}조`:''} · 일본 현지시간 = 한국시간`;
     const grouped=new Map();list.forEach(m=>{if(!grouped.has(m.date))grouped.set(m.date,[]);grouped.get(m.date).push(m)});
-    root.innerHTML=[...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([date,matches])=>`<section class="cd-date-group"><header class="cd-date-head"><span>${esc(date)}(${weekday(date)})</span><span>${matches.length}경기</span></header>${matches.sort((a,b)=>a.time.localeCompare(b.time)).map(matchRow).join('')}</section>`).join('')||'<div class="cd-empty">표시할 경기가 없습니다.</div>';
+    root.innerHTML=[...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([date,matches])=>`<section class="cd-date-group"><div class="cd-date-head"><span>${esc(date)}(${weekday(date)})</span><span>${matches.length}경기</span></div>${matches.sort((a,b)=>a.time.localeCompare(b.time)).map(matchRow).join('')}</section>`).join('')||'<div class="cd-empty">표시할 경기가 없습니다.</div>';
   }
   function renderScheduleFilters(){
     const container=document.getElementById('scheduleStageFilters');if(!container)return;
     const stages=['전체','조별리그','8강','준결승','3위결정전','결승'];
-    const standard=window.KVLCompetitionResultsStandard;
-    if(standard){
-      standard.renderStageFilters({container,stages,stage:scheduleStage,pools:['A','B','C'],pool:schedulePool,showPoolWhen:'조별리그',onChange:next=>{scheduleStage=next.stage;schedulePool=next.pool;renderScheduleFilters();renderSchedule()}});
-    }else{
-      container.innerHTML=stages.map(s=>`<button type="button" class="${s===scheduleStage?'is-active':''}" data-stage="${s}">${s}</button>`).join('');
-      container.querySelectorAll('[data-stage]').forEach(btn=>btn.addEventListener('click',()=>{scheduleStage=btn.dataset.stage;schedulePool='전체';renderScheduleFilters();renderSchedule()}));
-    }
+    container.innerHTML=stages.map(s=>`<button type="button" class="${s===scheduleStage?'is-active':''}" data-stage="${s}">${s}</button>`).join('')+(scheduleStage==='조별리그'?`<label class="cd-pool-filter"><span>조 선택</span><select><option value="전체">전체</option>${['A','B','C'].map(p=>`<option value="${p}" ${p===schedulePool?'selected':''}>${p}조</option>`).join('')}</select></label>`:'');
+    container.querySelectorAll('[data-stage]').forEach(btn=>btn.addEventListener('click',()=>{scheduleStage=btn.dataset.stage;schedulePool='전체';renderScheduleFilters();renderSchedule()}));
+    const select=container.querySelector('select');if(select)select.addEventListener('change',()=>{schedulePool=select.value;renderSchedule()});
   }
   const renderGroups=groups=>{
     const root=document.getElementById('groupRoot');if(!root)return;
