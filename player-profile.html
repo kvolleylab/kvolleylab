@@ -26,6 +26,7 @@
   <div class="actions">
     <a class="btn ghost" href="player-search.html">검색으로 돌아가기</a>
     <a id="timelineLink" class="btn" href="growth-timeline.html">성장 타임라인 보기</a>
+    <a id="cohortLink" class="btn ghost" href="player-cohort.html">출생연도 세대 보기</a>
   </div>
 
   <section class="profile-layout">
@@ -73,6 +74,9 @@ async function loadProfile(){
   document.getElementById("playerName").innerHTML = `${player.name_ko} <span class="meta">${player.position}</span>`;
   document.getElementById("summary").textContent = `${player.name_en} · ${player.current_team} · ${player.height_cm}cm · ${player.birth_year}년생`;
   document.getElementById("timelineLink").href = `growth-timeline.html?id=${player.player_id}`;
+  const cohortLink = document.getElementById("cohortLink");
+  if (player.birth_year) cohortLink.href = `player-cohort.html?country=KOR&gender=M&birth_year=${player.birth_year}`;
+  else cohortLink.hidden = true;
 
   document.getElementById("profileTable").innerHTML = [
     ["선수 ID", player.player_id], ["이름", player.name_ko], ["영문명", player.name_en], ["출생 연도", player.birth_year],
