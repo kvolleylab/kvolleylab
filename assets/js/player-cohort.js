@@ -15,7 +15,10 @@
     return [...new Set(db.rosters.map(birthYear).filter(Boolean))].sort((a,b)=>b-a);
   }
 
-  function playerKey(r){ return r.player_id || `${r.name_en}|${r.birth_date}`; }
+  // 대회마다 영문명 표기 순서와 Player ID 연결 상태가 달라질 수 있다.
+  // 세대 화면의 임시 동일인 그룹은 한글명 + 생년월일로 고정하고,
+  // 그룹 안에서 확인된 Player ID가 하나라도 있으면 프로필 링크에 사용한다.
+  function playerKey(r){ return `${r.name_ko}|${r.birth_date}`; }
 
   function render(year){
     title.textContent = `${year}년생 세대 보기`;
@@ -24,15 +27,17 @@
     const players = new Map();
     rows.forEach(r => {
       const key = playerKey(r);
-      if (!players.has(key)) players.set(key, {base:r, levels:new Map()});
+      if (!players.has(key)) players.set(key, {base:r, player_id:r.player_id || null, levels:new Map()});
+      const item = players.get(key);
+      if (r.player_id && !item.player_id) item.player_id = r.player_id;
       const event = db.events.find(e => e.event_id === r.event_id);
-      if (event) players.get(key).levels.set(event.level, event);
+      if (event) item.levels.set(event.level, event);
     });
     summary.textContent = `대한민국 남자 ${year}년생 · 현재 확인된 대표선수 ${players.size}명 · 공식 명단 기반`;
     const head = `<div class="cohort-card header"><div>선수</div>${levels.map(l=>`<div class="stage-cell">${l}</div>`).join('')}</div>`;
     const body = [...players.values()].sort((a,b)=>a.base.name_ko.localeCompare(b.base.name_ko,'ko')).map(item => {
       const r = item.base;
-      const name = r.player_id ? `<a class="cohort-link" href="player-profile.html?id=${encodeURIComponent(r.player_id)}">${esc(r.name_ko)}</a>` : esc(r.name_ko);
+      const name = item.player_id ? `<a class="cohort-link" href="player-profile.html?id=${encodeURIComponent(item.player_id)}">${esc(r.name_ko)}</a>` : esc(r.name_ko);
       return `<div class="cohort-card"><div><div class="player-name">${name}</div><div class="player-meta">${esc(r.position)} · ${esc(r.height_cm)}cm · ${esc(r.birth_date)}</div></div>${levels.map(level => {
         const event = item.levels.get(level);
         return event ? `<div class="stage-cell" title="${esc(event.competition_name_ko)}"><span class="stage-dot">● ${event.year}</span></div>` : '<div class="stage-cell stage-empty">—</div>';

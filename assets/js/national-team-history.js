@@ -35,6 +35,15 @@
     return `<span>${esc(r.name_ko)}</span>`;
   }
 
+  function rosterBlock(event, roster) {
+    if (!roster.length) {
+      return `<div class="empty">공식 대회 기록은 확인됐지만 선수 명단은 아직 구축 중입니다. 빈 명단을 '미선발'로 해석하지 않습니다.</div>`;
+    }
+    return `<div class="table-scroll"><table><thead><tr><th>#</th><th>선수</th><th>출생</th><th>포지션</th><th>키</th><th>세대</th></tr></thead><tbody>
+      ${roster.map(r => `<tr><td>${esc(r.shirt_no)}</td><td>${playerLink(r)}${r.captain ? ' <span class="captain">C</span>' : ''}</td><td>${esc(r.birth_date || '-')}</td><td>${esc(r.position || '-')}</td><td>${r.height_cm ? `${esc(r.height_cm)}cm` : '-'}</td><td>${yearOf(r.birth_date) ? `<a class="cohort-link" href="player-cohort.html?country=KOR&gender=M&birth_year=${yearOf(r.birth_date)}">${yearOf(r.birth_date)}년생</a>` : '-'}</td></tr>`).join('')}
+    </tbody></table></div>`;
+  }
+
   function renderEvents() {
     const year = yearFilter.value;
     const level = levelFilter.value;
@@ -45,18 +54,16 @@
       return;
     }
     eventList.innerHTML = events.map(event => {
-      const roster = db.rosters.filter(r => r.event_id === event.event_id).sort((a,b)=>a.shirt_no-b.shirt_no);
-      const source = db.sources.find(s => (event.source_ids || []).includes(s.source_id));
+      const roster = db.rosters.filter(r => r.event_id === event.event_id).sort((a,b)=>(a.shirt_no ?? 999)-(b.shirt_no ?? 999));
+      const sources = (event.source_ids || []).map(id => db.sources.find(s => s.source_id === id)).filter(Boolean);
       return `<article class="event-card">
         <div class="event-head">
           <div><div class="eyebrow">${event.year} · ${esc(event.level)} · ${esc(event.organization)}</div><h2>${esc(event.competition_name_ko)}</h2></div>
           <div class="result-badge">${esc(event.result || '결과 확인 중')}</div>
         </div>
-        <div class="event-meta"><span>감독 ${esc(event.head_coach || '-')}</span><span>${esc(event.start_date)} ~ ${esc(event.end_date)}</span><span>명단 ${roster.length}명</span></div>
-        <div class="table-scroll"><table><thead><tr><th>#</th><th>선수</th><th>출생</th><th>포지션</th><th>키</th><th>세대</th></tr></thead><tbody>
-          ${roster.map(r => `<tr><td>${r.shirt_no}</td><td>${playerLink(r)}${r.captain ? ' <span class="captain">C</span>' : ''}</td><td>${esc(r.birth_date)}</td><td>${esc(r.position)}</td><td>${esc(r.height_cm)}cm</td><td><a class="cohort-link" href="player-cohort.html?country=KOR&gender=M&birth_year=${yearOf(r.birth_date)}">${yearOf(r.birth_date)}년생</a></td></tr>`).join('')}
-        </tbody></table></div>
-        <div class="source-row">상태: <b>${esc(event.roster_status)}</b>${source ? ` · <a href="${esc(source.url)}" target="_blank" rel="noopener">공식 출처</a>` : ''}</div>
+        <div class="event-meta"><span>감독 ${esc(event.head_coach || '-')}</span><span>${esc(event.start_date)} ~ ${esc(event.end_date)}</span><span>${roster.length ? `명단 ${roster.length}명` : '명단 구축 중'}</span></div>
+        ${rosterBlock(event, roster)}
+        <div class="source-row">상태: <b>${esc(event.roster_status)}</b>${sources.map(s => ` · <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.publisher)} 출처</a>`).join('')}</div>
       </article>`;
     }).join('');
   }
