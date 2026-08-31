@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-08-31",
+  "scope": {
+    "country": "KOR",
+    "gender": "M",
+    "target_period": "2010-2026",
+    "status": "building"
+  },
+  "sources": [
+    {
+      "source_id": "KVL-SRC-AVC-2022-MU18-B01",
+      "title": "14th Asian Men's U18 Volleyball Championship - Daily Bulletin #1",
+      "publisher": "Asian Volleyball Confederation",
+      "source_type": "official_bulletin",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2022/08/A-22MU18-DB-01.pdf",
+      "drive_file_id": null,
+      "drive_archive_status": "pending",
+      "public_source": true
+    }
+  ],
+  "events": [
+    {
+      "event_id": "KVL-NT-KOR-M-U18-2022-AVC",
+      "year": 2022,
+      "country": "KOR",
+      "gender": "M",
+      "level": "U18",
+      "competition_name_ko": "2022 아시아 남자 U18 배구선수권대회",
+      "competition_name_en": "14th Asian Men's U18 Volleyball Championship",
+      "organization": "AVC",
+      "start_date": "2022-08-15",
+      "end_date": "2022-08-22",
+      "head_coach": "김장빈",
+      "result": "4위",
+      "source_ids": ["KVL-SRC-AVC-2022-MU18-B01"],
+      "roster_status": "verified_official",
+      "player_id_link_status": "pending"
+    }
+  ],
+  "rosters": [
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":1,"player_id":null,"name_ko":"이우진","name_en":"Lee Woojin","position":"OH","birth_date":"2005-05-16","height_cm":196,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":2,"player_id":null,"name_ko":"김대환","name_en":"Kim Daehwan","position":"S","birth_date":"2005-05-20","height_cm":191,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":3,"player_id":null,"name_ko":"윤서진","name_en":"Yun Seojin","position":"OH","birth_date":"2005-04-24","height_cm":194,"captain":true,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":5,"player_id":null,"name_ko":"양승민","name_en":"Yang Seungmin","position":"L","birth_date":"2005-12-08","height_cm":188,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":7,"player_id":null,"name_ko":"김관우","name_en":"Kim Gwanwoo","position":"S","birth_date":"2006-08-20","height_cm":194,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":9,"player_id":null,"name_ko":"최현민","name_en":"Choi Hyounmin","position":"OP","birth_date":"2006-01-02","height_cm":191,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":10,"player_id":null,"name_ko":"이수현","name_en":"Lee Suhyeon","position":"OH","birth_date":"2005-01-06","height_cm":188,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":11,"player_id":null,"name_ko":"이수민","name_en":"Lee Sumin","position":"MB","birth_date":"2005-04-26","height_cm":193,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":14,"player_id":null,"name_ko":"송원준","name_en":"Song Wonjun","position":"OP","birth_date":"2005-06-16","height_cm":195,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":15,"player_id":null,"name_ko":"정송윤","name_en":"Jeong Songyun","position":"MB","birth_date":"2005-06-16","height_cm":194,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":18,"player_id":null,"name_ko":"이성진","name_en":"Lee Seongjin","position":"MB","birth_date":"2005-02-24","height_cm":196,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":19,"player_id":null,"name_ko":"강승일","name_en":"Kang Seungil","position":"L","birth_date":"2005-03-31","height_cm":176,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"}
+  ],
+  "coverage": [
+    {"from":2010,"to":2021,"status":"research_queue"},
+    {"from":2022,"to":2022,"status":"seed_started"},
+    {"from":2023,"to":2026,"status":"research_queue"}
+  ]
+}
