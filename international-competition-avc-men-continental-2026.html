@@ -34,8 +34,13 @@
     #schedule .cd-side.is-right{justify-content:flex-end;padding-right:100px;text-align:right}
     #schedule .cd-inline-logo{width:46px;height:46px;padding:2px;background:#fff}
     .avc-schedule-flag img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff}.avc-flag-tbd{color:#8a97a7;font-size:15px;font-weight:900}
+    #overview .cd-calendar-wrap{margin-top:28px;padding-top:28px;border-top:1px solid #e8edf2}
+    #overview .cd-calendar-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}
+    #overview .cd-calendar-head h2{margin:4px 0 0;color:#17365d;font-size:28px}
+    #overview .cd-calendar-head>p{margin:0;color:#68788b;font-size:14px;text-align:right}
+    #overview .cd-cal-game{grid-template-columns:34px minmax(0,1fr) 30px minmax(0,1fr)}
     @media(max-width:1100px){#schedule .cd-match{grid-template-columns:100px minmax(500px,1fr)}#schedule .cd-match-board{width:100%;max-width:600px}#schedule .cd-side.is-left{padding-left:56px}#schedule .cd-side.is-right{padding-right:56px}#schedule .cd-set-scores{grid-column:1/-1;justify-content:center}}
-    @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-bracket{grid-template-columns:repeat(2,1fr)}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-sources{grid-template-columns:1fr}}
+    @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-bracket{grid-template-columns:repeat(2,1fr)}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-sources{grid-template-columns:1fr}#overview .cd-calendar-head{align-items:flex-start;flex-direction:column}#overview .cd-calendar-head>p{text-align:left}}
     @media(max-width:680px){.avc-main{padding:20px 12px 60px}.avc-hero{min-height:0;height:auto;padding:28px 22px;border-radius:22px}.avc-hero h1{font-size:30px}.avc-section{padding:22px 16px}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-kpis strong{font-size:29px}.avc-bracket{grid-template-columns:1fr}.avc-source{align-items:flex-start;flex-direction:column}.cd-pool-filter{width:100%;margin-left:0;justify-content:flex-start}.avc-group-team{grid-template-columns:38px minmax(0,1fr) auto;padding:11px 12px}.avc-group-team-copy strong{font-size:14px}#schedule .cd-match{grid-template-columns:1fr;gap:10px}#schedule .cd-match-board{width:100%;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr)}#schedule .cd-side.is-left{justify-content:flex-end;padding-left:0;text-align:right}#schedule .cd-side.is-right{justify-content:flex-start;padding-right:0;text-align:left}#schedule .cd-inline-logo{width:38px;height:38px;padding:4px}}
   </style>
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
@@ -59,6 +64,10 @@
   <section id="overview" class="avc-section avc-view">
     <div class="avc-section-head"><div><p class="eyebrow">TOURNAMENT SNAPSHOT</p><h2>대회 한눈에 보기</h2></div><p>선수명단은 최종 명단 검수 완료 후 별도 업데이트합니다.</p></div>
     <div class="avc-kpis"><article><span>참가국</span><strong id="teamCount">12</strong><small>개국</small></article><article><span>조별리그</span><strong id="groupCount">3</strong><small>개 조</small></article><article><span>등록 일정</span><strong id="matchCount">26</strong><small>경기 슬롯</small></article><article><span>대회 기간</span><strong>10</strong><small>일</small></article></div>
+    <div class="cd-calendar-wrap">
+      <div class="cd-calendar-head"><div><p class="eyebrow">COMPETITION CALENDAR</p><h2>대회 월간 달력</h2></div><p>날짜별 대진을 표시합니다. 일본 현지시간 = 한국시간</p></div>
+      <div id="calendarRoot" class="cd-calendar"><div class="cd-empty">대회 달력을 불러오는 중입니다.</div></div>
+    </div>
     <div class="avc-note">일본 현지시간과 한국시간은 모두 UTC+9이므로 홈페이지 표시시간은 한국시간과 동일합니다. 세부 경기시간과 토너먼트 슬롯은 K-Volley Lab 경기일정 MASTER 1차 입력본 기준이며 AVC/JVA 공식 원본 최종 대조 전입니다.</div>
   </section>
 
@@ -89,7 +98,7 @@
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const allowed=new Set(['overview','schedule','groups','knockout','sources']);
   const params=new URLSearchParams(location.search);
   const view=allowed.has(params.get('view'))?params.get('view'):'overview';
@@ -102,6 +111,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     '이란':{en:'Iran',code:'IRI',flag:'ir'},'중국':{en:'China',code:'CHN',flag:'cn'},'인도':{en:'India',code:'IND',flag:'in'},'뉴질랜드':{en:'New Zealand',code:'NZL',flag:'nz'},
     '카타르':{en:'Qatar',code:'QAT',flag:'qa'},'대한민국':{en:'South Korea',code:'KOR',flag:'kr'},'대만':{en:'Chinese Taipei',code:'TPE',flag:'tw'},'태국':{en:'Thailand',code:'THA',flag:'th'}
   };
+  const venueShort='기타큐슈시 종합체육관';
   const flagUrl=name=>teamInfo[name]?`https://flagcdn.com/w80/${teamInfo[name].flag}.png`:'';
   const weekday=date=>['일','월','화','수','목','금','토'][new Date(`${date}T00:00:00+09:00`).getDay()];
   let scheduleStage='전체',schedulePool='전체',allMatches=[];
@@ -114,8 +124,27 @@ document.addEventListener('DOMContentLoaded',()=>{
   const side=(name,position)=>position==='left'
     ?`<span class="cd-side is-left">${flagMark(name)}<strong>${esc(name==='TBD'?'TBD':name)}</strong></span>`
     :`<span class="cd-side is-right"><strong>${esc(name==='TBD'?'TBD':name)}</strong>${flagMark(name)}</span>`;
+
+  const calendarGame=m=>`<a class="cd-cal-game" href="?view=schedule"><time>${esc(m.time)}</time><span>${esc(m.teamA)}</span><b>VS</b><span>${esc(m.teamB)}</span></a>`;
+  const renderMonth=(year,month,byDate)=>{
+    const first=new Date(year,month-1,1),last=new Date(year,month,0),cells=[];
+    for(let i=0;i<first.getDay();i++)cells.push('<div class="cd-cal-cell is-empty"></div>');
+    for(let d=1;d<=last.getDate();d++){
+      const date=`${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+      const games=(byDate[date]||[]).slice().sort((a,b)=>a.time.localeCompare(b.time));
+      cells.push(`<div class="cd-cal-cell ${games.length?'has-games':''}"><span class="cd-cal-day">${d}</span>${games.length?`<div class="cd-cal-games">${games.map(calendarGame).join('')}</div>`:''}</div>`);
+    }
+    while(cells.length%7)cells.push('<div class="cd-cal-cell is-empty"></div>');
+    return `<section class="cd-cal-month"><div class="cd-cal-title">${year}년 ${month}월</div><div class="cd-cal-week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div class="cd-cal-grid">${cells.join('')}</div></section>`;
+  };
+  const renderCalendar=matches=>{
+    const root=document.getElementById('calendarRoot');if(!root)return;
+    const byDate=matches.reduce((m,g)=>{(m[g.date]??=[]).push(g);return m},{});
+    root.innerHTML=renderMonth(2026,9,byDate);
+  };
+
   const matchRow=m=>{
-    const stageMeta=`${m.stage}${m.stage==='조별리그'&&m.group?` · ${m.group}조`:''}`;
+    const stageMeta=`${m.stage}${m.stage==='조별리그'&&m.group?` · ${m.group}조`:''} · ${venueShort}`;
     return `<article class="cd-match"><div class="cd-match-meta"><time>${esc(m.time)}</time><span>${esc(stageMeta)}</span></div><div class="cd-match-board">${side(m.teamA,'left')}<b class="cd-score">VS</b>${side(m.teamB,'right')}</div><div class="cd-set-scores"></div></article>`;
   };
   function scheduleFiltered(){return allMatches.filter(m=>(scheduleStage==='전체'||m.stage===scheduleStage)&&(scheduleStage!=='조별리그'||schedulePool==='전체'||m.group===schedulePool))}
@@ -140,10 +169,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   const renderKnockout=matches=>{const root=document.getElementById('knockoutRoot');if(!root)return;const stages=['8강','준결승','3위결정전','결승'];root.innerHTML=stages.map(stage=>{const list=matches.filter(m=>m.stage===stage);return `<article><h3>${stage}</h3>${list.map(m=>`<p>${esc(m.date.slice(5))} ${esc(m.time)} · ${esc(m.id)}</p>`).join('')||'<p>일정 미정</p>'}</article>`}).join('')};
   const renderSources=sources=>{const root=document.getElementById('sourceRoot');if(!root)return;root.innerHTML=sources.map(s=>`<div class="avc-source"><strong>${esc(s.label)}</strong>${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">공식 페이지 ↗</a>`:'<span>Drive MASTER</span>'}</div>`).join('')};
 
-  fetch('data/competitions/avc-men-continental-2026.json?v=20260831-2',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
-    document.getElementById('teamCount').textContent=data.teamCount;document.getElementById('groupCount').textContent=data.groupCount;document.getElementById('matchCount').textContent=data.matchCount;
-    allMatches=data.matches||[];renderScheduleFilters();renderSchedule();renderGroups(data.groups||[]);renderKnockout(allMatches);renderSources(data.sources||[]);
-  }).catch(()=>{['scheduleRoot','groupRoot','knockoutRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
+  fetch('data/competitions/avc-men-continental-2026.json?v=20260901-1',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
+    document.getElementById('teamCount').textContent=data.teamCount;
+    document.getElementById('groupCount').textContent=data.groupCount;
+    document.getElementById('matchCount').textContent=data.matchCount;
+    allMatches=data.matches||[];
+    renderCalendar(allMatches);
+    renderScheduleFilters();
+    renderSchedule();
+    renderGroups(data.groups||[]);
+    renderKnockout(allMatches);
+    renderSources(data.sources||[]);
+  }).catch(()=>{['calendarRoot','scheduleRoot','groupRoot','knockoutRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
 });
 </script>
 </body>
