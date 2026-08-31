@@ -15,7 +15,9 @@
     return [...new Set(db.rosters.map(birthYear).filter(Boolean))].sort((a,b)=>b-a);
   }
 
-  function playerKey(r){ return r.player_id || `${r.name_en}|${r.birth_date}`; }
+  // 영문명은 대회별로 Given/Family name 순서가 달라질 수 있으므로
+  // Player ID 연결 전 임시 동일인 판정은 한글명 + 생년월일을 사용한다.
+  function playerKey(r){ return r.player_id || `${r.name_ko}|${r.birth_date}`; }
 
   function render(year){
     title.textContent = `${year}년생 세대 보기`;
@@ -27,6 +29,7 @@
       if (!players.has(key)) players.set(key, {base:r, levels:new Map()});
       const event = db.events.find(e => e.event_id === r.event_id);
       if (event) players.get(key).levels.set(event.level, event);
+      if (r.player_id && !players.get(key).base.player_id) players.get(key).base = r;
     });
     summary.textContent = `대한민국 남자 ${year}년생 · 현재 확인된 대표선수 ${players.size}명 · 공식 명단 기반`;
     const head = `<div class="cohort-card header"><div>선수</div>${levels.map(l=>`<div class="stage-cell">${l}</div>`).join('')}</div>`;
