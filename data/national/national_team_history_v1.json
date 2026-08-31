@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "updated_at": "2026-08-31",
   "scope": {
     "country": "KOR",
@@ -16,6 +16,46 @@
       "url": "https://asianvolleyball.net/new/wp-content/uploads/2022/08/A-22MU18-DB-01.pdf",
       "drive_file_id": null,
       "drive_archive_status": "pending",
+      "public_source": true
+    },
+    {
+      "source_id": "KVL-SRC-FIVB-2023-BU19-RESULT",
+      "title": "France celebrate first-ever world title in volleyball",
+      "publisher": "FIVB",
+      "source_type": "official_result_article",
+      "url": "https://www.fivb.com/france-celebrate-first-ever-world-title-in-volleyball/",
+      "drive_file_id": null,
+      "drive_archive_status": "link_only",
+      "public_source": true
+    },
+    {
+      "source_id": "KVL-SRC-AVC-2024-MU20-B01",
+      "title": "22nd Asian Men's U20 Volleyball Championship - Daily Bulletin No.1",
+      "publisher": "Asian Volleyball Confederation",
+      "source_type": "official_bulletin",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2024/07/AMU20-BULLETIN-NO.1.pdf",
+      "drive_file_id": null,
+      "drive_archive_status": "pending",
+      "public_source": true
+    },
+    {
+      "source_id": "KVL-SRC-FIVB-2024-MU20-RESULT",
+      "title": "Age-group men's volleyball continental championships held in Asia and South America",
+      "publisher": "FIVB",
+      "source_type": "official_result_article",
+      "url": "https://www.fivb.com/age-group-mens-volleyball-continental-championships-held-in-asia-and-south-america/",
+      "drive_file_id": null,
+      "drive_archive_status": "link_only",
+      "public_source": true
+    },
+    {
+      "source_id": "KVL-SRC-VBW-2025-MU21-STANDINGS",
+      "title": "FIVB Men's U21 World Championship 2025 - Final Standings",
+      "publisher": "Volleyball World",
+      "source_type": "official_standings",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-u21-world-championship/standings/",
+      "drive_file_id": null,
+      "drive_archive_status": "link_only",
       "public_source": true
     }
   ],
@@ -35,14 +75,65 @@
       "result": "4위",
       "source_ids": ["KVL-SRC-AVC-2022-MU18-B01"],
       "roster_status": "verified_official",
+      "player_id_link_status": "partial"
+    },
+    {
+      "event_id": "KVL-NT-KOR-M-U19-2023-FIVB",
+      "year": 2023,
+      "country": "KOR",
+      "gender": "M",
+      "level": "U19",
+      "competition_name_ko": "2023 FIVB 남자 U19 세계선수권대회",
+      "competition_name_en": "2023 FIVB Volleyball Boys' U19 World Championship",
+      "organization": "FIVB",
+      "start_date": "2023-08-02",
+      "end_date": "2023-08-12",
+      "head_coach": "김장빈",
+      "result": "3위",
+      "source_ids": ["KVL-SRC-FIVB-2023-BU19-RESULT"],
+      "roster_status": "research_pending",
+      "player_id_link_status": "pending"
+    },
+    {
+      "event_id": "KVL-NT-KOR-M-U20-2024-AVC",
+      "year": 2024,
+      "country": "KOR",
+      "gender": "M",
+      "level": "U20",
+      "competition_name_ko": "2024 아시아 남자 U20 배구선수권대회",
+      "competition_name_en": "22nd Asian Men's U20 Volleyball Championship",
+      "organization": "AVC",
+      "start_date": "2024-07-23",
+      "end_date": "2024-07-30",
+      "head_coach": "김장빈",
+      "result": "2위",
+      "source_ids": ["KVL-SRC-AVC-2024-MU20-B01", "KVL-SRC-FIVB-2024-MU20-RESULT"],
+      "roster_status": "verified_official",
+      "player_id_link_status": "partial"
+    },
+    {
+      "event_id": "KVL-NT-KOR-M-U21-2025-FIVB",
+      "year": 2025,
+      "country": "KOR",
+      "gender": "M",
+      "level": "U21",
+      "competition_name_ko": "2025 FIVB 남자 U21 세계선수권대회",
+      "competition_name_en": "2025 FIVB Volleyball Men's U21 World Championship",
+      "organization": "FIVB",
+      "start_date": "2025-08-21",
+      "end_date": "2025-08-31",
+      "head_coach": "석진욱",
+      "result": "12위",
+      "source_ids": ["KVL-SRC-VBW-2025-MU21-STANDINGS"],
+      "roster_status": "research_pending",
       "player_id_link_status": "pending"
     }
   ],
   "rosters": [
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":1,"player_id":null,"name_ko":"이우진","name_en":"Lee Woojin","position":"OH","birth_date":"2005-05-16","height_cm":196,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
-    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":2,"player_id":null,"name_ko":"김대환","name_en":"Kim Daehwan","position":"S","birth_date":"2005-05-20","height_cm":191,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":2,"player_id":"KVL-P-000025","name_ko":"김대환","name_en":"Kim Daehwan","position":"S","birth_date":"2005-05-20","height_cm":191,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":3,"player_id":null,"name_ko":"윤서진","name_en":"Yun Seojin","position":"OH","birth_date":"2005-04-24","height_cm":194,"captain":true,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
-    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":5,"player_id":null,"name_ko":"양승민","name_en":"Yang Seungmin","position":"L","birth_date":"2005-12-08","height_cm":188,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":5,"player_id":"KVL-P-000053","name_ko":"양승민","name_en":"Yang Seungmin","position":"L","birth_date":"2005-12-08","height_cm":188,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":7,"player_id":null,"name_ko":"김관우","name_en":"Kim Gwanwoo","position":"S","birth_date":"2006-08-20","height_cm":194,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":9,"player_id":null,"name_ko":"최현민","name_en":"Choi Hyounmin","position":"OP","birth_date":"2006-01-02","height_cm":191,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":10,"player_id":null,"name_ko":"이수현","name_en":"Lee Suhyeon","position":"OH","birth_date":"2005-01-06","height_cm":188,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
@@ -50,11 +141,27 @@
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":14,"player_id":null,"name_ko":"송원준","name_en":"Song Wonjun","position":"OP","birth_date":"2005-06-16","height_cm":195,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":15,"player_id":null,"name_ko":"정송윤","name_en":"Jeong Songyun","position":"MB","birth_date":"2005-06-16","height_cm":194,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
     {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":18,"player_id":null,"name_ko":"이성진","name_en":"Lee Seongjin","position":"MB","birth_date":"2005-02-24","height_cm":196,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
-    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":19,"player_id":null,"name_ko":"강승일","name_en":"Kang Seungil","position":"L","birth_date":"2005-03-31","height_cm":176,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"}
+    {"event_id":"KVL-NT-KOR-M-U18-2022-AVC","shirt_no":19,"player_id":null,"name_ko":"강승일","name_en":"Kang Seungil","position":"L","birth_date":"2005-03-31","height_cm":176,"captain":false,"source_id":"KVL-SRC-AVC-2022-MU18-B01"},
+
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":1,"player_id":null,"name_ko":"이우진","name_en":"Woojin Lee","position":"OH","birth_date":"2005-05-16","height_cm":195,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":3,"player_id":null,"name_ko":"윤서진","name_en":"Seojin Yun","position":"OH","birth_date":"2005-04-24","height_cm":195,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":5,"player_id":null,"name_ko":"강승일","name_en":"Seungil Kang","position":"L","birth_date":"2005-03-31","height_cm":173,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":7,"player_id":null,"name_ko":"윤하준","name_en":"Hajun Yoon","position":"OH","birth_date":"2006-03-25","height_cm":195,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":9,"player_id":null,"name_ko":"김지수","name_en":"Jisu Kim","position":"S","birth_date":"2006-04-14","height_cm":186,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":10,"player_id":"KVL-P-000008","name_ko":"윤겸","name_en":"Gyeong Yun","position":"OP","birth_date":"2006-08-30","height_cm":193,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":11,"player_id":"KVL-P-000011","name_ko":"임인규","name_en":"Ingyu Lim","position":"MB","birth_date":"2006-05-17","height_cm":194,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":13,"player_id":null,"name_ko":"김관우","name_en":"Gwanwoo Kim","position":"S","birth_date":"2006-08-20","height_cm":195,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":15,"player_id":"KVL-P-000012","name_ko":"김정환","name_en":"Jeonghwan Kim","position":"OH","birth_date":"2006-01-24","height_cm":183,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":16,"player_id":null,"name_ko":"장은석","name_en":"Eunseok Jang","position":"MB","birth_date":"2006-07-12","height_cm":202,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":17,"player_id":null,"name_ko":"박우영","name_en":"Wooyoung Park","position":"OP","birth_date":"2005-06-23","height_cm":188,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"},
+    {"event_id":"KVL-NT-KOR-M-U20-2024-AVC","shirt_no":23,"player_id":null,"name_ko":"심준호","name_en":"Junho Sim","position":"MB","birth_date":"2005-01-29","height_cm":197,"captain":null,"source_id":"KVL-SRC-AVC-2024-MU20-B01"}
   ],
   "coverage": [
     {"from":2010,"to":2021,"status":"research_queue"},
-    {"from":2022,"to":2022,"status":"seed_started"},
-    {"from":2023,"to":2026,"status":"research_queue"}
+    {"from":2022,"to":2022,"status":"roster_verified_partial_id_link"},
+    {"from":2023,"to":2023,"status":"event_verified_roster_pending"},
+    {"from":2024,"to":2024,"status":"roster_verified_partial_id_link"},
+    {"from":2025,"to":2025,"status":"event_verified_roster_pending"},
+    {"from":2026,"to":2026,"status":"research_queue"}
   ]
 }
