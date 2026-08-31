@@ -29,12 +29,43 @@
     .avc-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.avc-kpis article{padding:22px;border:1px solid #e1e7ee;border-radius:18px;background:var(--avc-soft)}.avc-kpis span,.avc-kpis small{display:block;color:#748397}.avc-kpis strong{display:inline-block;margin:10px 5px 0 0;color:#0d2748;font-size:36px}
     .avc-note{margin-top:18px;padding:18px 20px;border-left:4px solid var(--avc-gold);border-radius:14px;background:#fff8e6;color:#536477;line-height:1.7}
     .avc-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.avc-group{overflow:hidden;border:1px solid #e1e7ee;border-radius:18px;background:#fff}.avc-group h3{margin:0;padding:16px;background:var(--avc-navy);color:#fff;font-size:18px}.avc-group ul{list-style:none;margin:0;padding:12px;display:grid;gap:8px}.avc-group li{padding:10px 12px;border-radius:10px;background:#f8fafc;color:#334155;font-weight:800}.avc-group li.korea{border:1px solid #c9a44c;background:#fffaf0;color:#17365d}
-    .avc-stage-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.avc-stage-tabs button{padding:8px 13px;border:1px solid #d7e0ea;border-radius:999px;background:#fff;color:#40536a;font:800 12px Pretendard,Arial,sans-serif;cursor:pointer}.avc-stage-tabs button.active{border-color:#b78a2a;background:#fff8e8;color:#7c5709}
-    .avc-schedule{display:grid;gap:12px}.avc-day{overflow:hidden;border:1px solid #e1e7ee;border-radius:17px;background:#fff}.avc-day-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;background:#f3f6f9;border-bottom:1px solid #e6ebf1}.avc-day-head strong{color:var(--avc-navy);font-size:15px}.avc-day-head span{color:#7b8798;font-size:12px;font-weight:800}.avc-match{display:grid;grid-template-columns:90px 84px minmax(0,1fr) 70px;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid #edf1f5}.avc-match:last-child{border-bottom:0}.avc-time{font-weight:900;color:#17365d}.avc-stage{font-size:12px;font-weight:900;color:#8a6514}.avc-teams{display:flex;align-items:center;justify-content:center;gap:12px;font-weight:900;color:#334155}.avc-teams .vs{color:#9aa4b2;font-size:11px}.avc-id{color:#94a3b8;font-size:11px;text-align:right}
+
+    /* 고성대회 경기일정과 동일한 정보 계층: 날짜 탭 → 날짜별 헤더 → 경기 카드 */
+    .avc-date-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding-bottom:2px}
+    .avc-date-tabs button{appearance:none;border:1px solid #d9e0e8;border-radius:999px;background:#fff;color:#526173;padding:9px 14px;font:800 13px Pretendard,Arial,sans-serif;cursor:pointer;transition:.18s ease}
+    .avc-date-tabs button:hover{border-color:#b8c2cf;background:#f8fafc;color:#17365d}
+    .avc-date-tabs button.active{border-color:#c9a24a;background:#17365d;color:#fff;box-shadow:0 5px 14px rgba(23,54,93,.12)}
+    .avc-schedule{display:block}
+    .avc-day-schedule{margin-bottom:32px}
+    .avc-day-schedule:last-child{margin-bottom:0}
+    .avc-day-header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 12px;padding:0 2px}
+    .avc-day-header h3{margin:0;color:#17365d;font-size:20px;line-height:1.2}
+    .avc-day-header span{display:inline-flex;align-items:center;min-height:28px;padding:5px 10px;border-radius:999px;background:#f3f6f9;color:#68778a;font-size:12px;font-weight:900;white-space:nowrap}
+    .avc-match-card{overflow:hidden;margin:0 0 12px;border:1px solid #e0e6ed;border-radius:12px;background:#fff;box-shadow:0 4px 14px rgba(15,23,42,.045);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+    .avc-match-card:last-child{margin-bottom:0}
+    .avc-match-card:hover{transform:translateY(-1px);border-color:#cad3de;box-shadow:0 8px 20px rgba(15,23,42,.07)}
+    .avc-match-meta{display:flex;align-items:center;gap:12px;min-height:42px;padding:9px 16px;border-bottom:1px solid #edf1f5;background:#fbfcfd;color:#7a8797;font-size:12px;font-weight:800}
+    .avc-match-court{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .avc-match-time{margin-left:auto;color:#17365d;font-size:14px;font-weight:950;white-space:nowrap}
+    .avc-match-group{padding-left:12px;border-left:1px solid #dfe5ec;color:#8a6514;white-space:nowrap}
+    .avc-match-teams{display:grid;grid-template-columns:minmax(0,1fr) 112px minmax(0,1fr);align-items:center;padding:20px 22px}
+    .avc-team{display:flex;align-items:center;gap:12px;min-width:0}
+    .avc-team.away{flex-direction:row-reverse;text-align:right}
+    .avc-country-logo{display:flex;flex:0 0 42px;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;border:1px solid #e0e5eb;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(15,23,42,.05)}
+    .avc-country-logo img{display:block;width:34px;height:34px;object-fit:contain}
+    .avc-country-logo.is-tbd{background:#f2f5f8;color:#8b97a6;font-size:15px;font-weight:950}
+    .avc-team-copy{min-width:0;line-height:1.25}
+    .avc-team-name{display:block;overflow:hidden;color:#26384f;font-size:16px;font-weight:950;text-overflow:ellipsis;white-space:nowrap}
+    .avc-team-code{display:block;margin-top:4px;color:#8b97a6;font-size:11px;font-weight:800;letter-spacing:.04em}
+    .avc-match-status{text-align:center;color:#9aa4b2;font-size:11px;font-weight:950;letter-spacing:.06em}
+    .avc-match-status strong{display:block;margin-bottom:3px;color:#17365d;font-size:15px;letter-spacing:0}
+    .avc-match-id{display:block;margin-top:3px;color:#a3acb8;font-size:10px;font-weight:800;letter-spacing:.02em}
+
     .avc-bracket{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.avc-bracket article{padding:18px;border:1px solid #e1e7ee;border-radius:16px;background:#fbfcfe}.avc-bracket h3{margin:0 0 10px;color:#17365d;font-size:17px}.avc-bracket p{margin:6px 0;color:#536477;font-size:13px;line-height:1.55}
     .avc-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.avc-source{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:1px solid #e1e7ee;border-radius:14px;background:#fbfcfe}.avc-source strong{color:#17365d;font-size:14px}.avc-source a{color:#9a6d12;text-decoration:none;font-weight:900;font-size:13px}.avc-source a:hover{text-decoration:underline}.avc-pending{padding:28px;text-align:center;color:#7b8998}
-    @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-groups{grid-template-columns:1fr}.avc-bracket{grid-template-columns:repeat(2,1fr)}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-match{grid-template-columns:70px 68px minmax(0,1fr) 48px}.avc-sources{grid-template-columns:1fr}}
-    @media(max-width:600px){.avc-main{padding:24px 14px 50px}.avc-hero{min-height:0;height:auto;padding:24px 20px;border-radius:22px}.avc-hero h1{font-size:30px}.avc-section{padding:22px 16px}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-kpis strong{font-size:29px}.avc-bracket{grid-template-columns:1fr}.avc-match{grid-template-columns:58px minmax(0,1fr) 42px;gap:8px}.avc-stage{display:none}.avc-teams{justify-content:flex-start;gap:7px;font-size:13px}.avc-source{align-items:flex-start;flex-direction:column}}
+    @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-groups{grid-template-columns:1fr}.avc-bracket{grid-template-columns:repeat(2,1fr)}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-sources{grid-template-columns:1fr}}
+    @media(max-width:680px){.avc-main{padding:24px 14px 50px}.avc-hero{min-height:0;height:auto;padding:24px 20px;border-radius:22px}.avc-hero h1{font-size:30px}.avc-section{padding:22px 16px}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-kpis strong{font-size:29px}.avc-bracket{grid-template-columns:1fr}.avc-match-meta{gap:8px;padding:9px 12px}.avc-match-court{max-width:45%}.avc-match-group{padding-left:8px}.avc-match-teams{grid-template-columns:minmax(0,1fr) 68px minmax(0,1fr);padding:16px 12px}.avc-team{gap:8px}.avc-country-logo{flex-basis:36px;width:36px;height:36px}.avc-country-logo img{width:29px;height:29px}.avc-team-name{font-size:13px}.avc-team-code{font-size:10px}.avc-match-status strong{font-size:12px}.avc-source{align-items:flex-start;flex-direction:column}}
+    @media(max-width:440px){.avc-date-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}.avc-date-tabs button{flex:0 0 auto}.avc-day-header{align-items:flex-start}.avc-match-court{display:none}.avc-match-time{margin-left:0}.avc-match-group{margin-left:auto}.avc-match-teams{grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);padding:15px 9px}.avc-country-logo{display:none}.avc-team{gap:0}.avc-team-name{white-space:normal}.avc-team-code{margin-top:3px}}
   </style>
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
 </head>
@@ -61,8 +92,8 @@
   </section>
 
   <section id="schedule" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">MATCH SCHEDULE</p><h2>경기일정</h2></div><p>조별리그 18경기 + 8강 이후 8경기 슬롯</p></div>
-    <div class="avc-stage-tabs" id="stageTabs"><button class="active" type="button" data-stage="all">전체</button><button type="button" data-stage="조별리그">조별리그</button><button type="button" data-stage="토너먼트">토너먼트</button></div>
+    <div class="avc-section-head"><div><p class="eyebrow">MATCH SCHEDULE</p><h2>경기일정</h2></div><p>날짜별 대진과 경기장 확인 · 일본 현지시간 = 한국시간</p></div>
+    <div id="scheduleDateTabs" class="avc-date-tabs" role="tablist" aria-label="경기일정 날짜 선택"></div>
     <div id="scheduleRoot" class="avc-schedule"><div class="avc-pending">경기일정을 불러오는 중입니다.</div></div>
   </section>
 
@@ -81,14 +112,13 @@
   <section id="sources" class="avc-section avc-view">
     <div class="avc-section-head"><div><p class="eyebrow">OFFICIAL SOURCES</p><h2>공식자료 · 검수상태</h2></div><p>공식 원본과 K-Volley Lab MASTER를 분리해 관리합니다.</p></div>
     <div id="sourceRoot" class="avc-sources"></div>
-    <div class="avc-note">경기일정은 아직 검수대기 상태입니다. 선수명단은 최종 명단 검수 완료 전까지 홈페이지에 공개하지 않습니다.</div>
+    <div class="avc-note">경기일정은 K-Volley Lab Google Drive MASTER를 기준으로 구성했고 Volleyball World 공개 일정과 교차 확인 중입니다. 선수명단은 최종 명단 검수 완료 전까지 홈페이지에 공개하지 않습니다.</div>
   </section>
 </main>
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 <script>
 (()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const page='international-competition-avc-men-continental-2026.html';
   const allowed=new Set(['overview','schedule','groups','knockout','sources']);
   const params=new URLSearchParams(location.search);
   const view=allowed.has(params.get('view'))?params.get('view'):'overview';
@@ -96,24 +126,51 @@
   document.querySelectorAll('.avc-view').forEach(section=>section.classList.toggle('is-active',section.id===view));
   document.querySelectorAll('.avc-jump a[data-view]').forEach(a=>{const active=a.dataset.view===view;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','page')});
 
-  const isTournament=m=>m.stage!=='조별리그';
-  const renderSchedule=(matches,filter='all')=>{
-    const selected=matches.filter(m=>filter==='all'||(filter==='토너먼트'?isTournament(m):m.stage===filter));
-    const byDate=new Map();selected.forEach(m=>{if(!byDate.has(m.date))byDate.set(m.date,[]);byDate.get(m.date).push(m)});
-    const root=document.getElementById('scheduleRoot');
-    if(!root)return;
-    root.innerHTML=[...byDate.entries()].map(([date,list])=>`<div class="avc-day"><div class="avc-day-head"><strong>${esc(date)}</strong><span>${list.length}경기</span></div>${list.map(m=>`<div class="avc-match"><span class="avc-time">${esc(m.time)}</span><span class="avc-stage">${esc(m.stage)}${m.group?` · ${esc(m.group)}조`:''}</span><div class="avc-teams"><span>${esc(m.teamA)}</span><span class="vs">VS</span><span>${esc(m.teamB)}</span></div><span class="avc-id">${esc(m.id)}</span></div>`).join('')}</div>`).join('')||'<div class="avc-pending">표시할 일정이 없습니다.</div>';
+  const teamInfo={
+    '일본':{en:'Japan',code:'JPN',iso2:'JP'},
+    '호주':{en:'Australia',code:'AUS',iso2:'AU'},
+    '바레인':{en:'Bahrain',code:'BRN',iso2:'BH'},
+    '오만':{en:'Oman',code:'OMA',iso2:'OM'},
+    '이란':{en:'Iran',code:'IRI',iso2:'IR'},
+    '중국':{en:'China',code:'CHN',iso2:'CN'},
+    '인도':{en:'India',code:'IND',iso2:'IN'},
+    '뉴질랜드':{en:'New Zealand',code:'NZL',iso2:'NZ'},
+    '카타르':{en:'Qatar',code:'QAT',iso2:'QA'},
+    '대한민국':{en:'Korea',code:'KOR',iso2:'KR'},
+    '대만':{en:'Chinese Taipei',code:'TPE',iso2:'TW'},
+    '태국':{en:'Thailand',code:'THA',iso2:'TH'}
+  };
+  const flagUrl=name=>teamInfo[name]?`https://flagsapi.com/${teamInfo[name].iso2}/flat/64.png`:'';
+  const weekday=date=>['일','월','화','수','목','금','토'][new Date(`${date}T00:00:00+09:00`).getDay()];
+  const dateLabel=date=>{const [,m,d]=date.split('-');return `${Number(m)}월 ${Number(d)}일(${weekday(date)})`};
+  const dateTabLabel=date=>{const [,m,d]=date.split('-');return `${Number(m)}/${Number(d)}`};
+  const stageGroup=m=>m.stage==='조별리그'?`${m.group}조 · 조별리그`:m.stage;
+  const dayStageLabel=list=>[...new Set(list.map(m=>m.stage==='조별리그'?'조별리그':m.stage))].join(' · ');
+  const teamSide=(name,side)=>{
+    const meta=teamInfo[name];
+    if(!meta)return `<div class="avc-team ${side}"><span class="avc-country-logo is-tbd">?</span><span class="avc-team-copy"><strong class="avc-team-name">TBD</strong><small class="avc-team-code">대진 확정 전</small></span></div>`;
+    return `<div class="avc-team ${side}"><span class="avc-country-logo"><img src="${flagUrl(name)}" alt="${esc(name)} 국기" loading="lazy"></span><span class="avc-team-copy"><strong class="avc-team-name">${esc(name)}</strong><small class="avc-team-code">${esc(meta.en)} · ${esc(meta.code)}</small></span></div>`;
+  };
+  const matchCard=m=>`<article class="avc-match-card" data-date="${esc(m.date)}"><div class="avc-match-meta"><span class="avc-match-court">Kitakyushu City General Gymnasium</span><time class="avc-match-time" datetime="${esc(m.date)}T${esc(m.time)}:00+09:00">${esc(m.time)}</time><span class="avc-match-group">${esc(stageGroup(m))}</span></div><div class="avc-match-teams">${teamSide(m.teamA,'home')}<div class="avc-match-status"><strong>SCHEDULED</strong><span>${esc(m.stage)}</span><small class="avc-match-id">${esc(m.id)}</small></div>${teamSide(m.teamB,'away')}</div></article>`;
+
+  const renderSchedule=matches=>{
+    const root=document.getElementById('scheduleRoot'),tabs=document.getElementById('scheduleDateTabs');
+    if(!root||!tabs)return;
+    const byDate=new Map();matches.forEach(m=>{if(!byDate.has(m.date))byDate.set(m.date,[]);byDate.get(m.date).push(m)});
+    const dates=[...byDate.keys()].sort();
+    tabs.innerHTML=`<button type="button" class="active" data-date="all" role="tab" aria-selected="true">전체 일정</button>${dates.map(date=>`<button type="button" data-date="${esc(date)}" role="tab" aria-selected="false">${dateTabLabel(date)}</button>`).join('')}`;
+    root.innerHTML=dates.map(date=>{const list=byDate.get(date);return `<section class="avc-day-schedule" data-date="${esc(date)}"><div class="avc-day-header"><h3>${dateLabel(date)}</h3><span>${esc(dayStageLabel(list))} · ${list.length}경기</span></div>${list.map(matchCard).join('')}</section>`}).join('')||'<div class="avc-pending">표시할 일정이 없습니다.</div>';
+    tabs.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const selected=btn.dataset.date;tabs.querySelectorAll('button').forEach(x=>{const active=x===btn;x.classList.toggle('active',active);x.setAttribute('aria-selected',active?'true':'false')});root.querySelectorAll('.avc-day-schedule').forEach(day=>day.hidden=selected!=='all'&&day.dataset.date!==selected)}));
   };
   const renderGroups=groups=>{const root=document.getElementById('groupRoot');if(!root)return;root.innerHTML=groups.map(g=>`<article class="avc-group"><h3>${esc(g.id)}조</h3><ul>${g.teams.map(t=>`<li class="${t==='대한민국'?'korea':''}">${esc(t)}</li>`).join('')}</ul></article>`).join('')};
   const renderKnockout=matches=>{const root=document.getElementById('knockoutRoot');if(!root)return;const stages=['8강','준결승','3위결정전','결승'];root.innerHTML=stages.map(stage=>{const list=matches.filter(m=>m.stage===stage);return `<article><h3>${stage}</h3>${list.map(m=>`<p>${esc(m.date.slice(5))} ${esc(m.time)} · ${esc(m.id)}</p>`).join('')||'<p>일정 미정</p>'}</article>`}).join('')};
   const renderSources=sources=>{const root=document.getElementById('sourceRoot');if(!root)return;root.innerHTML=sources.map(s=>`<div class="avc-source"><strong>${esc(s.label)}</strong>${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">공식 페이지 ↗</a>`:'<span>Drive MASTER</span>'}</div>`).join('')};
 
-  fetch('data/competitions/avc-men-continental-2026.json?v=20260826-2',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
+  fetch('data/competitions/avc-men-continental-2026.json?v=20260831-1',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
     document.getElementById('teamCount').textContent=data.teamCount;
     document.getElementById('groupCount').textContent=data.groupCount;
     document.getElementById('matchCount').textContent=data.matchCount;
     renderGroups(data.groups||[]);renderSchedule(data.matches||[]);renderKnockout(data.matches||[]);renderSources(data.sources||[]);
-    document.querySelectorAll('#stageTabs button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('#stageTabs button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');renderSchedule(data.matches||[],btn.dataset.stage)}));
   }).catch(()=>{['scheduleRoot','groupRoot','knockoutRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
 })();
 </script>
