@@ -1,0 +1,16 @@
+{
+  "schema_version":"1.0",
+  "updated_at":"2026-09-01",
+  "events":[
+    {"event_id":"KVL-NT-KOR-M-U18-2020-AVC","year":2020,"country":"KOR","gender":"M","level":"U18","competition_name_ko":"2020 아시아 남자 U18 배구선수권대회","competition_name_en":"2020 Asian Men's U18 Volleyball Championship","organization":"AVC","start_date":null,"end_date":null,"head_coach":null,"result":"대회 취소","roster_status":"cancelled_covid19","player_id_link_status":"not_applicable","participation_status":"competition_cancelled","source_ids":["CTX-AVC-U18-HISTORY"]},
+    {"event_id":"KVL-NT-KOR-M-U20-2020-AVC","year":2020,"country":"KOR","gender":"M","level":"U20","competition_name_ko":"2020 아시아 남자 U20 배구선수권대회","competition_name_en":"2020 Asian Men's U20 Volleyball Championship","organization":"AVC","start_date":null,"end_date":null,"head_coach":null,"result":"대회 취소","roster_status":"cancelled_covid19","player_id_link_status":"not_applicable","participation_status":"competition_cancelled","source_ids":["CTX-AVC-U20-HISTORY"]},
+    {"event_id":"KVL-NT-KOR-M-U19-2021-FIVB","year":2021,"country":"KOR","gender":"M","level":"U19","competition_name_ko":"2021 FIVB 남자 U19 세계선수권대회","competition_name_en":"2021 FIVB Volleyball Boys' U19 World Championship","organization":"FIVB","start_date":"2021-08-24","end_date":"2021-09-02","head_coach":null,"result":"한국 미참가","roster_status":"not_participated","player_id_link_status":"not_applicable","participation_status":"not_participated","source_ids":["CTX-VBW-U19-2021-TEAMS"]},
+    {"event_id":"KVL-NT-KOR-M-U21-2021-FIVB","year":2021,"country":"KOR","gender":"M","level":"U21","competition_name_ko":"2021 FIVB 남자 U21 세계선수권대회","competition_name_en":"2021 FIVB Volleyball Men's U21 World Championship","organization":"FIVB","start_date":"2021-09-23","end_date":"2021-10-03","head_coach":null,"result":"출전권 확보 후 철회","roster_status":"withdrew_before_tournament","player_id_link_status":"not_applicable","participation_status":"qualified_then_withdrew","note":"2018 아시아 U20 준우승으로 출전 자격을 얻었으나 한국이 철회해 태국이 대체 출전.","source_ids":["CTX-AVC-U21-2021-WITHDRAWAL"]}
+  ],
+  "sources":[
+    {"source_id":"CTX-AVC-U18-HISTORY","publisher":"AVC","title":"Asian Men's U18 Volleyball Championship history","url":"https://asianvolleyball.net/new/asian-mens-u18-volleyball-championship-2/"},
+    {"source_id":"CTX-AVC-U20-HISTORY","publisher":"AVC","title":"Asian Men's U20 Volleyball Championship history","url":"https://asianvolleyball.net/new/asian-mens-u20-volleyball-championship-3/"},
+    {"source_id":"CTX-VBW-U19-2021-TEAMS","publisher":"Volleyball World","title":"Men's U19 World Championship 2021 - Teams","url":"https://en.volleyballworld.com/volleyball/competitions/men-u19-world-championship/2021/teams/"},
+    {"source_id":"CTX-AVC-U21-2021-WITHDRAWAL","publisher":"AVC","title":"21st Asian Men's U20 Championship preview - 2021 U21 qualification note","url":"https://asianvolleyball.net/new/control-local-organisers-gearing-up-for-21st-asian-mens-u20-championship-from-aug-22-29-in-bahrain/"}
+  ]
+}
