@@ -1,0 +1,114 @@
+/* 2026 AVC Men's Cup — align the full page with the AVC continental green system. */
+.avc-competition-page{
+  --avc-primary:#166534;
+  --avc-dark:#0f3d2e;
+  --avc-light:#23834c;
+  --avc-accent:#3f8f5c;
+  --avc-gold:#e6c46c;
+  --avc-gold-soft:#f2e8cf;
+  --avc-line:#d8e8df;
+  --avc-soft:#f3faf5;
+  background:#f6f8fb;
+}
+.avc-competition-page .cd-hero.cd-hero--international{
+  border-color:var(--avc-line)!important;
+  background:linear-gradient(110deg,var(--avc-dark) 0%,var(--avc-primary) 58%,var(--avc-light) 100%)!important;
+  box-shadow:0 12px 30px rgba(15,61,46,.14)!important;
+}
+.avc-competition-page .cd-hero.cd-hero--international .eyebrow{color:var(--avc-gold)!important}
+.avc-competition-page .cd-hero.cd-hero--international h1{color:var(--avc-gold-soft)!important}
+.avc-competition-page .cd-hero.cd-hero--international .cd-hero-copy>p:not(.eyebrow){color:#e2f1e7!important}
+.avc-competition-page .avc-official-logo-wrap{background:var(--avc-dark)!important;border-color:rgba(255,255,255,.2)!important}
+.avc-competition-page .avc-official-logo{background:var(--avc-dark)!important}
+.avc-competition-page .cd-status span{color:#dcefe3!important}
+.avc-competition-page .cd-status strong{color:#fff!important}
+.avc-competition-page .avc-hero-actions a{border-color:rgba(255,255,255,.2)!important;background:rgba(255,255,255,.08)!important;color:#fff!important}
+
+.avc-competition-page .cd-jump{border-color:var(--avc-line)!important}
+.avc-competition-page .cd-jump a{color:#31453a!important}
+.avc-competition-page .cd-jump a:hover,.avc-competition-page .cd-jump a.is-active{background:var(--avc-primary)!important;color:#fff!important}
+.avc-competition-page .cd-section{border-color:var(--avc-line)!important}
+.avc-competition-page .cd-section-title .eyebrow{color:var(--avc-accent)!important}
+.avc-competition-page .cd-section-title h2{color:var(--avc-primary)!important}
+.avc-competition-page .cd-kpis article{border-color:#dfe9e3!important;background:var(--avc-soft)!important}
+.avc-competition-page .cd-kpis strong{color:#14532d!important}
+.avc-competition-page .avc-overview-note{border-color:var(--avc-line)!important;background:#f0fdf4!important;color:#536477!important}
+.avc-competition-page .avc-overview-note strong{color:var(--avc-primary)!important}
+
+.avc-competition-page .cd-cal-month{border-color:var(--avc-line)!important}
+.avc-competition-page .cd-cal-title{background:var(--avc-primary)!important;color:#fff!important}
+.avc-competition-page .cd-cal-week span{background:#edf8f0!important;color:#526b5b!important}
+.avc-competition-page .cd-cal-cell{border-color:#e3ece6!important}
+.avc-competition-page .cd-cal-cell.has-games{background:#f3faf5!important}
+.avc-competition-page .cd-cal-game{border-color:#dce9e1!important;color:var(--avc-primary)!important}
+.avc-competition-page .cd-cal-game b{color:#2f8a52!important}
+
+.avc-competition-page #results .cd-stage-filters button{border-color:#d7e6dd!important;color:#536b5d!important}
+.avc-competition-page #results .cd-stage-filters button:hover{border-color:#86b997!important;background:#f3faf5!important;color:var(--avc-primary)!important}
+.avc-competition-page #results .cd-stage-filters button.is-active{border-color:#86b997!important;background:#edf8f0!important;color:var(--avc-primary)!important}
+.avc-competition-page #results .cd-pool-filter select{border-color:var(--avc-line)!important;color:#31453a!important}
+.avc-competition-page #results .cd-date-group{border-color:var(--avc-line)!important}
+.avc-competition-page #results .cd-date-head{background:#edf8f0!important;color:#245b38!important}
+.avc-competition-page #results .cd-score{color:#2f8a52!important}
+
+.avc-competition-page .avc-standing-card,.avc-competition-page .avc-pool-card{border-color:var(--avc-line)!important;background:#fbfdfb!important}
+.avc-competition-page .avc-standing-card h3,.avc-competition-page .avc-pool-card h3{color:var(--avc-primary)!important}
+.avc-competition-page .avc-standing-head{background:#edf8f0!important;color:#526b5b!important}
+.avc-competition-page .avc-standing-row{border-color:#e7f0eb!important}
+.avc-competition-page .avc-standing-row.is-qualified{background:#f0fdf4!important}
+.avc-competition-page .avc-standing-team{color:var(--avc-primary)!important}
+
+.avc-competition-page .avc-final-table{border-color:var(--avc-line)!important}
+.avc-competition-page .avc-final-row{border-color:#e7f0eb!important}
+.avc-competition-page .avc-final-row strong{color:var(--avc-primary)!important}
+.avc-competition-page .avc-country-card{border-color:var(--avc-line)!important;color:var(--avc-primary)!important}
+.avc-competition-page .avc-country-card em{background:#edf8f0!important;color:var(--avc-primary)!important}
+.avc-competition-page .cd-sources a{border-color:var(--avc-line)!important;color:var(--avc-primary)!important}
+
+/* Placement matches keep their own stable card layout instead of inheriting the ladder renderer. */
+.avc-competition-page .avc-placement-matches{border-top-color:#d7e6dd!important}
+.avc-competition-page .avc-placement-matches h3{color:var(--avc-primary)!important}
+.avc-competition-page .avc-placement-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;margin-top:12px!important}
+.avc-competition-page .avc-placement-grid .avc-bracket-match{
+  box-sizing:border-box!important;
+  display:block!important;
+  width:100%!important;
+  overflow:hidden!important;
+  padding:0!important;
+  border:1px solid var(--avc-line)!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  color:#34485f!important;
+  text-decoration:none!important;
+  box-shadow:0 6px 16px rgba(15,61,46,.04)!important;
+}
+.avc-competition-page .avc-placement-grid .avc-bracket-match-head{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:10px!important;
+  padding:9px 11px!important;
+  border-bottom:1px solid #e4eee7!important;
+  background:#f4faf6!important;
+  color:#5b6f62!important;
+  font-size:11px!important;
+  font-weight:900!important;
+}
+.avc-competition-page .avc-placement-grid .avc-bracket-match-head strong{color:var(--avc-primary)!important;font-size:12px!important}
+.avc-competition-page .avc-placement-grid .avc-bracket-team{
+  display:grid!important;
+  grid-template-columns:30px minmax(0,1fr) 28px!important;
+  align-items:center!important;
+  gap:8px!important;
+  min-height:45px!important;
+  padding:7px 11px!important;
+  border-top:1px solid #edf3ef!important;
+}
+.avc-competition-page .avc-placement-grid .avc-bracket-team:first-of-type{border-top:0!important}
+.avc-competition-page .avc-placement-grid .avc-bracket-team img{display:block!important;width:28px!important;height:20px!important;object-fit:contain!important;background:#fff!important}
+.avc-competition-page .avc-placement-grid .avc-bracket-team strong{min-width:0!important;overflow:hidden!important;color:#263b2e!important;font-size:13px!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.avc-competition-page .avc-placement-grid .avc-bracket-team b{color:#9a6d12!important;font-size:15px!important;font-weight:900!important;text-align:right!important}
+.avc-competition-page .avc-placement-grid .avc-bracket-team.is-winner{background:#f3faf5!important}
+.avc-competition-page .avc-placement-grid .avc-bracket-team.is-winner strong{color:var(--avc-primary)!important}
+
+@media(max-width:820px){.avc-competition-page .avc-placement-grid{grid-template-columns:1fr!important}}
