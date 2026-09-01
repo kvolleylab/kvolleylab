@@ -39,6 +39,7 @@
     @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-sources{grid-template-columns:1fr}#overview .cd-calendar-head{align-items:flex-start;flex-direction:column}#overview .cd-calendar-head>p{text-align:left}}
     @media(max-width:680px){.avc-main{padding:20px 12px 60px}.avc-hero{min-height:0;height:auto;padding:28px 22px;border-radius:22px}.avc-hero h1{font-size:30px}.avc-section{padding:22px 16px}.avc-kpis{grid-template-columns:repeat(2,1fr)}.avc-kpis strong{font-size:29px}.avc-source{align-items:flex-start;flex-direction:column}.cd-pool-filter{width:100%;margin-left:0;justify-content:flex-start}.avc-group-team{grid-template-columns:38px minmax(0,1fr) auto;padding:11px 12px}.avc-group-team-copy strong{font-size:14px}#schedule .cd-match{grid-template-columns:1fr;gap:10px}#schedule .cd-match-board{width:100%;grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr)}#schedule .cd-side.is-left{justify-content:flex-end;padding-left:0;text-align:right}#schedule .cd-side.is-right{justify-content:flex-start;padding-right:0;text-align:left}#schedule .cd-inline-logo{width:38px;height:38px;padding:4px}.avc-bracket-ladder{min-width:820px;grid-template-columns:220px 40px 220px 40px 220px}.avc-round-body{min-height:480px}}
   </style>
+  <link rel="stylesheet" href="assets/css/avc-bracket-standard.css?v=20260901-1">
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
 </head>
 <body>
@@ -65,7 +66,7 @@
     <div class="avc-section-head"><div><p class="eyebrow">POOL DRAW</p><h2>조편성</h2></div><p>3개 조 · 각 4개국</p></div><div id="groupRoot" class="cd-group-standings"></div><div class="avc-note">조별리그 이후 8강 일정 슬롯은 MASTER에 등록되어 있습니다. 세부 본선 진출·대진 결정 규정은 공식 대회요강 확인 전이므로 임의로 확정하지 않습니다.</div>
   </section>
   <section id="knockout" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">KNOCKOUT BRACKET</p><h2>토너먼트 대진표</h2></div><p>8강 → 준결승 → 결승 · 진출팀 확정 시 자동 반영</p></div><div id="knockoutRoot" class="avc-bracket"></div><div class="avc-note">현재 팀 칸은 TBD로 미리 구성했습니다. 사다리의 QF1·QF2→SF1, QF3·QF4→SF2 연결은 표시용 기본 틀이며 실제 대진 연결은 AVC 공식 확정 후 최종 반영합니다.</div>
+    <div class="avc-section-head"><div><p class="eyebrow">KNOCKOUT BRACKET</p><h2>토너먼트 대진표</h2></div><p>8강 → 준결승 → 결승 · 진출팀 확정 시 자동 반영</p></div><div id="knockoutRoot" class="avc-bracket avc-bracket-standard"></div><div class="avc-note">현재 팀 칸은 TBD로 미리 구성했습니다. 사다리의 QF1·QF2→SF1, QF3·QF4→SF2 연결은 표시용 기본 틀이며 실제 대진 연결은 AVC 공식 확정 후 최종 반영합니다.</div>
   </section>
   <section id="sources" class="avc-section avc-view">
     <div class="avc-section-head"><div><p class="eyebrow">OFFICIAL SOURCES</p><h2>공식자료 · 검수상태</h2></div><p>공식 원본과 K-Volley Lab MASTER를 분리해 관리합니다.</p></div><div id="sourceRoot" class="avc-sources"></div><div class="avc-note">경기일정은 K-Volley Lab Google Drive MASTER를 기준으로 구성했고 Volleyball World 공개 일정과 교차 확인 중입니다. 선수명단은 최종 명단 검수 완료 전까지 홈페이지에 공개하지 않습니다.</div>
