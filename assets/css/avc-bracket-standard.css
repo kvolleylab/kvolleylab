@@ -22,6 +22,7 @@
 .avc-bracket-standard .avc-bracket-match-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin:0!important;padding:10px 12px!important;border-bottom:1px solid #e4eee7!important;border-radius:16px 16px 0 0!important;background:#f4faf6!important;color:#5b6f62!important;font-size:11px!important;font-weight:900!important}
 .avc-bracket-standard .avc-bracket-match-head strong{color:var(--avc-primary,#166534)!important;font-size:12px!important}
 .avc-bracket-standard .avc-bracket-team{display:grid!important;grid-template-columns:30px minmax(0,1fr) 30px!important;align-items:center!important;gap:9px!important;min-height:47px!important;margin:0!important;padding:8px 12px!important;border-top:1px solid #edf3ef!important}
+.avc-bracket-standard .avc-bracket-team:not(:has(b)){grid-template-columns:30px minmax(0,1fr)!important}
 .avc-bracket-standard .avc-bracket-team:first-of-type{border-top:0!important}
 .avc-bracket-standard .avc-bracket-team img{display:block!important;width:28px!important;height:20px!important;border:0!important;border-radius:3px!important;object-fit:contain!important;background:#fff!important}
 .avc-bracket-standard .avc-bracket-team strong{overflow:hidden!important;color:#263b2e!important;font-size:13px!important;text-overflow:ellipsis!important;white-space:nowrap!important}
@@ -38,7 +39,10 @@
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-sf .avc-round-body::after{right:-28px}
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-sf .avc-round-body::before{right:-56px;width:28px}
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-sf .avc-bracket-match::after{right:-28px;width:28px}
+.avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-sf .avc-bracket-match::before{display:none!important}
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-final .avc-bracket-match::before{left:-28px;width:28px}
+.avc-competition-page .avc-bracket-wrap .cd-section-title h2{color:#166534!important}
+.avc-competition-page .avc-bracket-wrap .cd-section-title .eyebrow{color:#3f8f5c!important}
 .avc-placement-matches{margin-top:26px!important;padding-top:22px!important;border-top:1px dashed #d7e6dd!important}
 .avc-placement-matches h3{margin:0!important;color:var(--avc-primary,#166534)!important;font-size:17px!important}
 .avc-placement-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;margin-top:12px!important}
