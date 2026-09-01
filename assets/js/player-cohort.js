@@ -2,7 +2,7 @@
   const DATA_URL='data/national/national_team_history_v1.json';
   const LEGACY_URLS=['data/national/national_team_history_2018_2019.json','data/national/national_team_history_2016_2017.json','data/national/national_team_history_2014_2015.json','data/national/national_team_history_2012_2013.json','data/national/national_team_history_2010_2011.json'];
   const LINK_URL='data/national/player_id_links_v1.json';
-  const params=new URLSearchParams(location.search),initialYear=Number(params.get('birth_year'))||2005,levels=['U16','U17','U18','U19','U20','U21'];
+  const params=new URLSearchParams(location.search),initialYear=Number(params.get('birth_year'))||2005,levels=['U16','U17','U18','U19','U20','U21','U23'];
   const grid=document.getElementById('cohortGrid'),title=document.getElementById('cohortTitle'),summary=document.getElementById('cohortSummary'),filter=document.getElementById('birthYearFilter');
   let db; const esc=v=>String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); const by=r=>Number(String(r.birth_date||'').slice(0,4)); const key=r=>`${r.name_ko}|${r.birth_date}`;
   function merge(x){if(!x)return;db.events=[...(x.events||[]),...db.events];db.rosters=[...(x.rosters||[]),...db.rosters];}
