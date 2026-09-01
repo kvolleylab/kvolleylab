@@ -16,7 +16,13 @@
   <link rel="stylesheet" href="assets/css/avc-layout-fix-v2.css?v=20260818-4">
   <link rel="stylesheet" href="assets/css/avc-bracket-standard.css?v=20260901-3">
   <link rel="stylesheet" href="assets/css/avc-men-cup-green-theme.css?v=20260901-1">
-  <style>.avc-competition-page #results .cd-match-meta span::after{content:" · Veer Savarkar Sports Complex"}</style>
+  <style>
+    .avc-competition-page #results .cd-match-meta span::after{content:" · Veer Savarkar Sports Complex"}
+    .avc-competition-page #teams .avc-country-card small,
+    .avc-competition-page #teams .avc-country-card em{display:none!important}
+    .avc-competition-page #teams .avc-country-card strong{transition:opacity .16s ease,transform .16s ease}
+    .avc-competition-page #teams .avc-country-card:hover strong{transform:translateY(-1px)}
+  </style>
   <script src="assets/js/unified-nav.js?v=20260810-1" defer></script>
   <script src="assets/js/competition-results-standard.js?v=20260818-1" defer></script>
   <script src="assets/js/avc-competition-dashboard.js?v=20260901-2" defer></script>
@@ -41,5 +47,30 @@
   <section id="sources" class="cd-section cd-view"><div class="cd-section-title"><div><p class="eyebrow">OFFICIAL SOURCES</p><h2>공식자료</h2></div><p>대회 원문과 공식 엔트리를 우선합니다.</p></div><div class="cd-sources"><a href="https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/" target="_blank" rel="noopener noreferrer">Volleyball World · AVC Men's Cup 공식 페이지 ↗</a><a href="https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/standings/" target="_blank" rel="noopener noreferrer">Volleyball World · 공식 순위 ↗</a></div></section>
 </main>
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+<script>
+(()=>{
+  const root=document.getElementById('avcCountries');
+  if(!root)return;
+  const enhance=()=>{
+    root.querySelectorAll('.avc-country-card:not([data-hover-name-ready])').forEach(card=>{
+      const name=card.querySelector('strong');
+      const meta=card.querySelector('small');
+      if(!name||!meta)return;
+      const ko=name.textContent.trim();
+      const en=meta.textContent.split(' · Team ')[0].trim();
+      if(!en)return;
+      card.dataset.hoverNameReady='1';
+      const showEn=()=>{name.textContent=en};
+      const showKo=()=>{name.textContent=ko};
+      card.addEventListener('mouseenter',showEn);
+      card.addEventListener('mouseleave',showKo);
+      card.addEventListener('focus',showEn);
+      card.addEventListener('blur',showKo);
+    });
+  };
+  enhance();
+  new MutationObserver(enhance).observe(root,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
