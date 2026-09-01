@@ -11,11 +11,12 @@
     :`competition-calendar.html?view=year&year=${calendarYear}`;
 
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
-  const nationalPages=new Set(['national-team-history.html','player-cohort.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
+  const nationalPages=new Set(['national-team.html','national-team-history.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
+  const analysisPages=new Set(['player-compare.html','player-cohort.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html']);
   const vleaguePages=new Set(['v-league.html']);
   const universityLeaguePages=new Set(['university-league.html']);
-  const playerPages=new Set(['players.html','player.html','player-search.html','player-compare.html','draft-hub.html']);
+  const playerPages=new Set(['players.html','player.html','player-search.html','draft-hub.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
   const teamPages=new Set(['university-teams.html','teams.html']);
   const simulatorPages=new Set(['simulator.html','danyang-qualification-calculator.html']);
@@ -23,15 +24,13 @@
   if(path==='index.html'||path==='')active='home';
   else if(schedulePages.has(path))active='schedules';
   else if(nationalPages.has(path))active='national';
+  else if(analysisPages.has(path))active='analysis';
   else if(competitionPages.has(path))active='competition';
   else if(domesticPages.has(path))active='domestic';
   else if(vleaguePages.has(path))active='vleague';
   else if(universityLeaguePages.has(path))active='uleague';
-  else if(simulatorPages.has(path))active='simulator';
-  else if(teamPages.has(path))active='teams';
-  else if(playerPages.has(path))active='players';
-  else if(path==='pamphlet-archive.html')active='pamphlet';
-  else if(path==='records.html')active='records';
+  else if(teamPages.has(path)||playerPages.has(path)||path==='records.html')active='data';
+  else if(simulatorPages.has(path)||path==='pamphlet-archive.html')active='tools';
 
   const icon={
     home:'<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10.5V20h13v-9.5"></path><path d="M9.5 20v-6h5v6"></path></svg>',
@@ -42,7 +41,7 @@
     league:'<svg viewBox="0 0 24 24"><path d="M5 4h14v5c0 4-3 7-7 7s-7-3-7-7V4Z"></path><path d="M8 20h8M12 16v4M5 7H2c0 4 2 6 5 6M19 7h3c0 4-2 6-5 6"></path></svg>',
     calculator:'<svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"></rect><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"></path></svg>',
     teams:'<svg viewBox="0 0 24 24"><path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM16 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M2.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6M10.5 20c.4-4 2.3-6 5.5-6s5.1 2 5.5 6"></path></svg>',
-    player:'<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"></circle><path d="M5 21c.5-5.1 2.8-7.6 7-7.6S18.5 15.9 19 21"></path></svg>',
+    analysis:'<svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path><path d="m4 7 6-4 6 7 5-5"></path></svg>',
     file:'<svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"></path><path d="M16 3v4h4M8 11h8M8 15h8M8 19h5"></path></svg>',
     request:'<svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m8 10 4 3 4-3"></path></svg>',
     chevron:'<svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>',
@@ -56,13 +55,13 @@
     {type:'section',label:'정보'},
     link('schedules',scheduleHref,icon.calendar,'경기일정'),
     group('national',icon.flag,'국가대표팀',[
+      link('national-home','national-team.html',null,'대표팀 홈'),
       link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀'),
       link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀'),
-      link('national-cohort','player-cohort.html',null,'대표팀 세대추적'),
       link('national-olympic','la28-volleyball-qualification.html',null,'올림픽·랭킹')
     ]),
     group('competition',icon.globe,'국제대회',[
-      link('competition-national','competition.html?division=national',null,'국가대표'),
+      link('competition-national','competition.html?division=national',null,'대표팀 대회'),
       link('competition-university','competition.html?division=university',null,'대학'),
       link('competition-club','competition.html?division=club',null,'클럽')
     ]),
@@ -74,24 +73,27 @@
     ]),
     link('vleague','v-league.html',icon.league,'프로 V-리그'),
     link('uleague','university-league.html',icon.league,'대학 U-리그'),
-    group('teams',icon.teams,'TEAM',[
-      link('teams-pro','teams.html?level=pro',null,'프로'),
-      link('teams-university','university-teams.html',null,'대학'),
-      link('teams-school','teams.html?level=school',null,'중·고')
+    group('data',icon.teams,'데이터',[
+      link('data-teams','teams.html',null,'팀'),
+      link('data-players','players.html',null,'선수'),
+      link('data-records','records.html',null,'기록')
     ]),
-    link('players','players.html',icon.player,'선수'),
-    {type:'section',label:'도구'},
-    link('simulator','simulator.html',icon.calculator,'진출 계산기'),
-    link('pamphlet','pamphlet-archive.html',icon.file,'팜플렛'),
-    link('records','records.html',icon.file,'기록실'),
+    group('analysis',icon.analysis,'분석',[
+      link('analysis-compare','player-compare.html',null,'선수 비교'),
+      link('analysis-cohort','player-cohort.html',null,'대표팀 세대추적')
+    ]),
+    group('tools',icon.calculator,'도구',[
+      link('tools-simulator','simulator.html',null,'진출 계산기'),
+      link('tools-pamphlet','pamphlet-archive.html',null,'팜플렛')
+    ]),
     {type:'section',label:'지원'},
     link('request','https://forms.gle/MFNYhJX6Bq5zeNmp8',icon.request,'요청하기','external')
   ];
 
   const isChildActive=(item)=>{
+    if(item.key==='national-home')return active==='national'&&path==='national-team.html';
     if(item.key==='national-senior')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='senior';
-    if(item.key==='national-age')return active==='national'&&path==='national-team-history.html'&&params.get('scope')!=='senior';
-    if(item.key==='national-cohort')return active==='national'&&path==='player-cohort.html';
+    if(item.key==='national-age')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='age';
     if(item.key==='national-olympic')return active==='national'&&['la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html'].includes(path);
     if(item.key==='competition-national')return active==='competition'&&((path==='competition.html'&&(params.get('division')||'national')==='national')||path==='vnl.html'||path==='match.html'||['japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html'].includes(path));
     if(item.key==='competition-university')return active==='competition'&&path==='competition.html'&&params.get('division')==='university';
@@ -100,9 +102,13 @@
     if(item.key==='domestic-university')return active==='domestic'&&(path==='university-competitions.html'||path==='university-competition.html'||path==='university-competition-danyang.html'||path==='university-team.html'||params.get('division')==='university');
     if(item.key==='domestic-school')return active==='domestic'&&params.get('division')==='school';
     if(item.key==='domestic-comprehensive')return path==='national-sports-festival-2026.html';
-    if(item.key==='teams-pro')return active==='teams'&&params.get('level')==='pro';
-    if(item.key==='teams-university')return path==='university-teams.html';
-    if(item.key==='teams-school')return active==='teams'&&params.get('level')==='school';
+    if(item.key==='data-teams')return active==='data'&&teamPages.has(path);
+    if(item.key==='data-players')return active==='data'&&playerPages.has(path);
+    if(item.key==='data-records')return active==='data'&&path==='records.html';
+    if(item.key==='analysis-compare')return active==='analysis'&&path==='player-compare.html';
+    if(item.key==='analysis-cohort')return active==='analysis'&&path==='player-cohort.html';
+    if(item.key==='tools-simulator')return active==='tools'&&simulatorPages.has(path);
+    if(item.key==='tools-pamphlet')return active==='tools'&&path==='pamphlet-archive.html';
     return active===item.key;
   };
 
