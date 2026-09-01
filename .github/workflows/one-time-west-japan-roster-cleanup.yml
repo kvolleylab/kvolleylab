@@ -1,0 +1,41 @@
+name: One-time West Japan roster cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/one-time-west-japan-roster-cleanup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Keep only acquired rosters and de-emphasize roster section
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data_path = Path('data/competitions/west-japan-university-select-2026.json')
+          data = json.loads(data_path.read_text(encoding='utf-8'))
+          data['rosterStatus'] = [r for r in data.get('rosterStatus', []) if r.get('count', 0) > 0]
+          data_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          html_path = Path('international-university-west-japan-select-2026.html')
+          html = html_path.read_text(encoding='utf-8')
+          html = html.replace('공식 확인된 선수만 공개 · 추정 명단 미사용', '확보된 팀만 표시 · 일정·경기결과 중심')
+          html_path.write_text(html, encoding='utf-8')
+
+          Path('.github/workflows/one-time-west-japan-roster-cleanup.yml').unlink()
+          PY
+      - name: Commit cleanup
+        run: |
+          git config user.name 'kvolleylab-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'Refine West Japan page around schedules and results'
+          git push
