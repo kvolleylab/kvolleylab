@@ -1,7 +1,7 @@
 (() => {
   const DATA_URL='data/national/national_team_history_v1.json';
   const CONTEXT_URL='data/national/national_team_context_v1.json';
-  const LEGACY_URLS=['data/national/national_team_history_2018_2019.json','data/national/national_team_history_2016_2017.json','data/national/national_team_history_2014_2015.json','data/national/national_team_roster_2014_u18.json','data/national/national_team_history_2012_2013.json','data/national/national_team_history_2010_2011.json','data/national/national_team_status_2015_corrections.json','data/national/national_team_world_u23_2015.json','data/national/national_team_roster_2010_u18.json'];
+  const LEGACY_URLS=['data/national/national_team_history_2018_2019.json','data/national/national_team_history_2016_2017.json','data/national/national_team_history_2014_2015.json','data/national/national_team_roster_2014_u18.json','data/national/national_team_history_2012_2013.json','data/national/national_team_history_2010_2011.json','data/national/national_team_status_2015_corrections.json','data/national/national_team_world_u23_2015.json','data/national/national_team_roster_2010_u18.json','data/national/national_team_research_2010_u20.json'];
   const LINK_URL='data/national/player_id_links_v1.json';
   const yearFilter=document.getElementById('yearFilter'),levelFilter=document.getElementById('levelFilter'),eventList=document.getElementById('eventList'),summaryGrid=document.getElementById('summaryGrid'),coverageList=document.getElementById('coverageList');
   let db; const esc=v=>String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); const yearOf=d=>String(d||'').slice(0,4); const key=r=>`${r.name_ko}|${r.birth_date}`;
