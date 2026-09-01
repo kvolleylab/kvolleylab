@@ -11,7 +11,7 @@
     :`competition-calendar.html?view=year&year=${calendarYear}`;
 
   const competitionPages=new Set(['competition.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html']);
-  const nationalPages=new Set(['la28-volleyball-qualification.html']);
+  const nationalPages=new Set(['national-team-history.html','player-cohort.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html']);
   const vleaguePages=new Set(['v-league.html']);
   const universityLeaguePages=new Set(['university-league.html']);
@@ -55,7 +55,12 @@
     link('home','index.html',icon.home,'홈'),
     {type:'section',label:'정보'},
     link('schedules',scheduleHref,icon.calendar,'경기일정'),
-    link('national','la28-volleyball-qualification.html',icon.flag,'국가대표팀'),
+    group('national',icon.flag,'국가대표팀',[
+      link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀'),
+      link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀'),
+      link('national-cohort','player-cohort.html',null,'대표팀 세대추적'),
+      link('national-olympic','la28-volleyball-qualification.html',null,'올림픽·랭킹')
+    ]),
     group('competition',icon.globe,'국제대회',[
       link('competition-national','competition.html?division=national',null,'국가대표'),
       link('competition-university','competition.html?division=university',null,'대학'),
@@ -84,6 +89,10 @@
   ];
 
   const isChildActive=(item)=>{
+    if(item.key==='national-senior')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='senior';
+    if(item.key==='national-age')return active==='national'&&path==='national-team-history.html'&&params.get('scope')!=='senior';
+    if(item.key==='national-cohort')return active==='national'&&path==='player-cohort.html';
+    if(item.key==='national-olympic')return active==='national'&&['la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html'].includes(path);
     if(item.key==='competition-national')return active==='competition'&&((path==='competition.html'&&(params.get('division')||'national')==='national')||path==='vnl.html'||path==='match.html'||['japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html'].includes(path));
     if(item.key==='competition-university')return active==='competition'&&path==='competition.html'&&params.get('division')==='university';
     if(item.key==='competition-club')return active==='competition'&&path==='competition.html'&&params.get('division')==='club';
