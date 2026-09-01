@@ -1,7 +1,7 @@
 (() => {
   const DATA_URL='data/national/national_team_history_v1.json';
   const CONTEXT_URL='data/national/national_team_context_v1.json';
-  const LEGACY_URLS=['data/national/national_team_history_2018_2019.json','data/national/national_team_history_2016_2017.json','data/national/national_team_history_2014_2015.json','data/national/national_team_roster_2014_u18.json','data/national/national_team_history_2012_2013.json','data/national/national_team_history_2010_2011.json','data/national/national_team_status_2015_corrections.json','data/national/national_team_world_u23_2015.json','data/national/national_team_roster_2010_u18.json','data/national/national_team_research_2010_u20.json'];
+  const LEGACY_URLS=['data/national/national_team_history_2018_2019.json','data/national/national_team_history_2016_2017.json','data/national/national_team_history_2014_2015.json','data/national/national_team_roster_2014_u18.json','data/national/national_team_history_2012_2013.json','data/national/national_team_history_2010_2011.json','data/national/national_team_status_2015_corrections.json','data/national/national_team_world_u23_2015.json','data/national/national_team_roster_2010_u18.json','data/national/national_team_research_2010_u20.json','data/national/national_team_roster_2019_u19.json'];
   const LINK_URL='data/national/player_id_links_v1.json';
   const params=new URLSearchParams(location.search),scope=['senior','age'].includes(params.get('scope'))?params.get('scope'):'all';
   const yearFilter=document.getElementById('yearFilter'),levelFilter=document.getElementById('levelFilter'),eventList=document.getElementById('eventList'),summaryGrid=document.getElementById('summaryGrid'),coverageList=document.getElementById('coverageList');
