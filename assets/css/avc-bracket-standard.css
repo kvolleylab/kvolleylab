@@ -1,10 +1,10 @@
 /* K-Volley Lab AVC tournament bracket standard
    Shared by AVC continental championship and AVC Men's Cup. */
 .avc-bracket-standard{display:block!important;position:relative!important;min-height:0!important;margin-top:12px!important;padding:4px 2px 18px!important;overflow-x:auto!important}
-.avc-bracket-standard .avc-bracket-ladder{display:grid!important;grid-template-columns:minmax(240px,1fr) 40px minmax(240px,1fr) 40px minmax(240px,1fr)!important;min-width:900px!important;align-items:stretch!important}
-.avc-bracket-standard .avc-bracket-ladder.is-two-round{grid-template-columns:minmax(300px,1fr) 56px minmax(300px,1fr)!important;min-width:720px!important;max-width:860px!important;margin:0 auto!important}
+.avc-bracket-standard .avc-bracket-ladder{display:grid!important;grid-template-columns:300px 40px 300px 40px 300px!important;min-width:980px!important;justify-content:center!important;align-items:stretch!important}
+.avc-bracket-standard .avc-bracket-ladder.is-two-round{grid-template-columns:300px 56px 300px!important;min-width:656px!important;max-width:656px!important;margin:0 auto!important}
 .avc-bracket-standard .avc-round{display:flex!important;min-width:0!important;flex-direction:column!important}
-.avc-bracket-standard .avc-round-title{margin:0 0 12px!important;padding:10px 12px!important;border-radius:12px!important;background:var(--avc-primary,#166534)!important;color:#fff!important;font-size:14px!important;font-weight:900!important;line-height:1.2!important;text-align:center!important}
+.avc-bracket-standard .avc-round-title{box-sizing:border-box!important;width:100%!important;margin:0 0 12px!important;padding:10px 12px!important;border-radius:12px!important;background:var(--avc-primary,#166534)!important;color:#fff!important;font-size:14px!important;font-weight:900!important;line-height:1.2!important;text-align:center!important}
 .avc-bracket-standard .avc-round-body{display:grid!important;position:relative!important;flex:1!important;min-height:520px!important}
 .avc-bracket-standard .avc-round-qf .avc-round-body{grid-template-rows:1fr 1fr!important;gap:18px!important}
 .avc-bracket-standard .avc-qf-pair{position:relative!important;display:grid!important;align-content:center!important;gap:18px!important}
@@ -16,23 +16,23 @@
 .avc-bracket-standard .avc-round-sf .avc-bracket-match{align-self:center!important}
 .avc-bracket-standard .avc-round-final .avc-round-body{display:flex!important;align-items:center!important}
 .avc-bracket-standard .avc-bracket-gap{display:block!important}
-.avc-bracket-standard .avc-bracket-match{position:relative!important;display:block!important;overflow:visible!important;padding:0!important;border:1px solid var(--avc-line,#d8e8df)!important;border-radius:16px!important;background:#fff!important;color:#34485f!important;text-decoration:none!important;box-shadow:0 6px 18px rgba(15,61,46,.05)!important}
+.avc-bracket-standard .avc-bracket-match{box-sizing:border-box!important;position:relative!important;display:block!important;width:100%!important;overflow:visible!important;padding:0!important;border:1px solid var(--avc-line,#d8e8df)!important;border-radius:16px!important;background:#fff!important;color:#34485f!important;text-decoration:none!important;box-shadow:0 6px 18px rgba(15,61,46,.05)!important}
 .avc-bracket-standard .avc-qf-pair .avc-bracket-match::after,.avc-bracket-standard .avc-round-sf .avc-bracket-match::after{content:"";position:absolute;right:-20px;top:50%;width:20px;border-top:2px solid #8fbea0}
 .avc-bracket-standard .avc-round-sf .avc-bracket-match::before,.avc-bracket-standard .avc-round-final .avc-bracket-match::before{content:"";position:absolute;left:-20px;top:50%;width:20px;border-top:2px solid #8fbea0}
-.avc-bracket-standard .avc-bracket-match-head{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin:0!important;padding:10px 12px!important;border-bottom:1px solid #e4eee7!important;border-radius:16px 16px 0 0!important;background:#f4faf6!important;color:#5b6f62!important;font-size:11px!important;font-weight:900!important}
+.avc-bracket-standard .avc-bracket-match-head{box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;width:100%!important;margin:0!important;padding:10px 12px!important;border-bottom:1px solid #e4eee7!important;border-radius:16px 16px 0 0!important;background:#f4faf6!important;color:#5b6f62!important;font-size:11px!important;font-weight:900!important}
 .avc-bracket-standard .avc-bracket-match-head strong{color:var(--avc-primary,#166534)!important;font-size:12px!important}
-.avc-bracket-standard .avc-bracket-team{display:grid!important;grid-template-columns:30px minmax(0,1fr) 30px!important;align-items:center!important;gap:9px!important;min-height:47px!important;margin:0!important;padding:8px 12px!important;border-top:1px solid #edf3ef!important}
+.avc-bracket-standard .avc-bracket-team{box-sizing:border-box!important;display:grid!important;grid-template-columns:30px minmax(0,1fr) 30px!important;align-items:center!important;gap:9px!important;width:100%!important;min-height:47px!important;margin:0!important;padding:8px 12px!important;border-top:1px solid #edf3ef!important}
 .avc-bracket-standard .avc-bracket-team:not(:has(b)){grid-template-columns:30px minmax(0,1fr)!important}
 .avc-bracket-standard .avc-bracket-team:first-of-type{border-top:0!important}
 .avc-bracket-standard .avc-bracket-team img{display:block!important;width:28px!important;height:20px!important;border:0!important;border-radius:3px!important;object-fit:contain!important;background:#fff!important}
-.avc-bracket-standard .avc-bracket-team strong{overflow:hidden!important;color:#263b2e!important;font-size:13px!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.avc-bracket-standard .avc-bracket-team strong{min-width:0!important;overflow:hidden!important;color:#263b2e!important;font-size:13px!important;text-overflow:ellipsis!important;white-space:nowrap!important}
 .avc-bracket-standard .avc-bracket-team b{color:#9a6d12!important;font-size:15px!important;font-weight:900!important;text-align:right!important}
 .avc-bracket-standard .avc-bracket-team.is-winner{background:#f3faf5!important}
 .avc-bracket-standard .avc-bracket-team.is-winner strong{color:var(--avc-primary,#166534)!important}
 .avc-bracket-standard .avc-bracket-team.is-tbd{grid-template-columns:30px minmax(0,1fr)!important}
 .avc-bracket-standard .avc-bracket-team.is-tbd strong{color:#8a97a0!important}
 .avc-bracket-standard .avc-bracket-team.is-tbd span{display:grid!important;place-items:center!important;width:28px!important;height:28px!important;border:1px dashed #b8cdc0!important;border-radius:50%!important;color:#86a190!important;font-size:11px!important;font-weight:900!important}
-.avc-bracket-standard .avc-bronze-wrap{max-width:420px!important;margin:22px auto 0!important}
+.avc-bracket-standard .avc-bronze-wrap{max-width:300px!important;margin:22px auto 0!important}
 .avc-bracket-standard .avc-bronze-title{margin:0 0 10px!important;color:var(--avc-primary,#166534)!important;font-size:14px!important;font-weight:900!important;text-align:center!important}
 .avc-bracket-standard .avc-bronze-wrap .avc-bracket-match{background:#fbfdfb!important}
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-body{min-height:360px!important}
