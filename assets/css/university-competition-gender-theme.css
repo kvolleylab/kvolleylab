@@ -129,6 +129,59 @@
   color:var(--kvl-women-dark)!important;
 }
 
+/* Goseong women: keep the university navy identity and use pink only as a supporting accent. */
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-hero{
+  background:linear-gradient(135deg,#07182D,#17365D)!important;
+  box-shadow:0 22px 50px rgba(7,24,45,.18)!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-hero h1{
+  color:#F2E8CF!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-status span{
+  color:#E6C46C!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-section-title h2,
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-calendar-head h2{
+  color:#17365D!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-kpis strong{
+  color:#0D2748!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-cal-title{
+  background:#17365D!important;
+  color:#fff!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-section .eyebrow,
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-calendar-head .eyebrow,
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-qualifier .eyebrow,
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-knockout-title .eyebrow{
+  color:var(--kvl-women-primary)!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-stage-filters button.is-active{
+  border-color:var(--kvl-women-line)!important;
+  background:var(--kvl-women-soft)!important;
+  color:var(--kvl-women-dark)!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] #results .cd-date-head{
+  background:var(--kvl-women-soft)!important;
+  color:#744158!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-kpis article{
+  border-color:var(--kvl-women-line)!important;
+  background:#fff!important;
+  box-shadow:inset 0 3px 0 rgba(210,100,143,.13)!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-rank{
+  background:#fff!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-rank.rank-1{
+  background:var(--kvl-women-soft)!important;
+}
+.competition-dashboard-page[data-competition="gosung-2026"][data-kvl-gender-theme="women"] .cd-team-card{
+  background:#fff!important;
+  box-shadow:inset 0 3px 0 rgba(210,100,143,.16)!important;
+}
+
 /* Pre-paint gender state: prevent male active button from flashing before JS sync. */
 html[data-kvl-initial-gender="women"] .competition-dashboard-page .cd-division-switch button[data-final-division="남대부"],
 html[data-kvl-initial-gender="women"] .competition-dashboard-page .cd-division-switch button[data-team-division="남대부"]{
