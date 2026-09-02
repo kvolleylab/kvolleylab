@@ -56,8 +56,8 @@
     link('schedules',scheduleHref,icon.calendar,'경기일정'),
     group('national',icon.flag,'국가대표팀',[
       link('national-home','national-team.html',null,'대표팀 홈'),
-      link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀'),
-      link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀'),
+      link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀 히스토리'),
+      link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀 히스토리'),
       link('national-olympic','la28-volleyball-qualification.html',null,'올림픽·랭킹')
     ]),
     group('competition',icon.globe,'국제대회',[
