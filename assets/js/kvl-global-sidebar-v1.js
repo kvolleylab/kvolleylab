@@ -16,7 +16,7 @@
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html']);
   const vleaguePages=new Set(['v-league.html']);
   const universityLeaguePages=new Set(['university-league.html']);
-  const playerPages=new Set(['players.html','player.html','player-search.html','draft-hub.html']);
+  const playerPages=new Set(['players.html','player.html','player-search.html','player-profile.html','growth-timeline.html','draft-hub.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
   const teamPages=new Set(['university-teams.html','teams.html']);
   const simulatorPages=new Set(['simulator.html','danyang-qualification-calculator.html']);
