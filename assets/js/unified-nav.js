@@ -76,7 +76,7 @@
   document.querySelectorAll('body>.site-header,body>.kvl-unified-header').forEach(header=>header.style.display='none');
   if(!document.querySelector('link[href*="kvl-global-sidebar-v1.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-v1.css?v=20260722-10';document.head.appendChild(link)}
   if(!document.querySelector('link[href*="kvl-global-sidebar-submenus.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-submenus.css?v=20260725-1';document.head.appendChild(link)}
-  if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20260902-2';script.defer=true;document.head.appendChild(script)}
+  if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20260902-3';script.defer=true;document.head.appendChild(script)}
 
   if(path==='vnl.html'){
     if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-2';document.head.appendChild(link)}
