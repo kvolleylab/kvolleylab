@@ -10,6 +10,7 @@
   const key=r=>`${r.name_ko}|${r.birth_date}`;
   const isAgeLevel=level=>/^U\d+$/i.test(String(level||'').trim());
   const eventOrder=e=>`${String(e?.year||'9999').padStart(4,'0')}-${e?.start_date||'99-99'}`;
+  const historyHref=(e,senior=false)=>`national-team-history.html?scope=${senior?'senior':'age'}&event=${encodeURIComponent(e.event_id)}`;
   function merge(x){if(!x)return;db.events=[...(x.events||[]),...db.events];db.rosters=[...(x.rosters||[]),...db.rosters];}
   function years(){return [...new Set(db.rosters.map(by).filter(Boolean))].sort((a,b)=>b-a);}
   function render(year){
@@ -33,9 +34,9 @@
     const body=[...players.values()].sort((a,b)=>a.base.name_ko.localeCompare(b.base.name_ko,'ko')).map(p=>{
       const r=p.base;
       const n=p.player_id?`<a class="cohort-link" href="player-profile.html?id=${encodeURIComponent(p.player_id)}">${esc(r.name_ko)}</a>`:esc(r.name_ko);
-      const ageCells=levels.map(l=>{const e=p.levels.get(l);return e?`<div class="stage-cell" title="${esc(e.competition_name_ko)}"><span class="stage-dot">● ${e.year}</span></div>`:'<div class="stage-cell stage-empty">—</div>';}).join('');
+      const ageCells=levels.map(l=>{const e=p.levels.get(l);return e?`<div class="stage-cell" title="${esc(e.competition_name_ko)}"><a class="stage-dot" href="${historyHref(e)}" aria-label="${esc(e.competition_name_ko)} 히스토리에서 보기">● ${esc(e.year)}</a></div>`:'<div class="stage-cell stage-empty">—</div>';}).join('');
       const firstSenior=p.senior[0];
-      const seniorCell=firstSenior?`<div class="stage-cell" title="성인 첫 선발 · ${esc(firstSenior.competition_name_ko)}"><span class="stage-dot is-senior">● ${esc(firstSenior.year)}</span></div>`:'<div class="stage-cell stage-empty">—</div>';
+      const seniorCell=firstSenior?`<div class="stage-cell" title="성인 첫 선발 · ${esc(firstSenior.competition_name_ko)}"><a class="stage-dot is-senior" href="${historyHref(firstSenior,true)}" aria-label="${esc(firstSenior.competition_name_ko)} 히스토리에서 보기">● ${esc(firstSenior.year)}</a></div>`:'<div class="stage-cell stage-empty">—</div>';
       return `<div class="cohort-card"><div><div class="player-name">${n}</div><div class="player-meta">${esc(r.position||'-')} · ${r.height_cm?`${esc(r.height_cm)}cm`:'키 확인 중'} · ${esc(r.birth_date||'생년월일 확인 중')}</div></div>${ageCells}${seniorCell}</div>`;
     }).join('');
     grid.innerHTML=players.size?head+body:'<div class="empty">이 출생연도의 대표팀 기록이 아직 없습니다.</div>';
