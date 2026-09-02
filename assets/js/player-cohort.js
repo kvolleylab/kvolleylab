@@ -33,7 +33,7 @@
     const head=`<div class="cohort-card header"><div>선수</div>${levels.map(l=>`<div class="stage-cell">${l}</div>`).join('')}<div class="stage-cell senior-stage-head">성인</div></div>`;
     const body=[...players.values()].sort((a,b)=>a.base.name_ko.localeCompare(b.base.name_ko,'ko')).map(p=>{
       const r=p.base;
-      const n=p.player_id?`<a class="cohort-link" href="player-profile.html?id=${encodeURIComponent(p.player_id)}">${esc(r.name_ko)}</a>`:esc(r.name_ko);
+      const n=p.player_id?`<a class="cohort-link" href="player.html?id=${encodeURIComponent(p.player_id)}">${esc(r.name_ko)}</a>`:esc(r.name_ko);
       const ageCells=levels.map(l=>{const e=p.levels.get(l);return e?`<div class="stage-cell" title="${esc(e.competition_name_ko)}"><a class="stage-dot" href="${historyHref(e)}" aria-label="${esc(e.competition_name_ko)} 히스토리에서 보기">● ${esc(e.year)}</a></div>`:'<div class="stage-cell stage-empty">—</div>';}).join('');
       const firstSenior=p.senior[0];
       const seniorCell=firstSenior?`<div class="stage-cell" title="성인 첫 선발 · ${esc(firstSenior.competition_name_ko)}"><a class="stage-dot is-senior" href="${historyHref(firstSenior,true)}" aria-label="${esc(firstSenior.competition_name_ko)} 히스토리에서 보기">● ${esc(firstSenior.year)}</a></div>`:'<div class="stage-cell stage-empty">—</div>';
