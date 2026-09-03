@@ -18,7 +18,8 @@
 .avc-bracket-standard .avc-bracket-gap{display:block!important}
 .avc-bracket-standard .avc-bracket-match{box-sizing:border-box!important;position:relative!important;display:block!important;width:100%!important;overflow:visible!important;padding:0!important;border:1px solid var(--avc-line,#d8e8df)!important;border-radius:16px!important;background:#fff!important;color:#34485f!important;text-decoration:none!important;box-shadow:0 6px 18px rgba(15,61,46,.05)!important}
 .avc-bracket-standard .avc-qf-pair .avc-bracket-match::after,.avc-bracket-standard .avc-round-sf .avc-bracket-match::after{content:"";position:absolute;right:-20px;top:50%;width:20px;border-top:2px solid #8fbea0}
-.avc-bracket-standard .avc-round-sf .avc-bracket-match::before,.avc-bracket-standard .avc-round-final .avc-bracket-match::before{content:"";position:absolute;left:-20px;top:50%;width:20px;border-top:2px solid #8fbea0}
+/* The source-side bridge already reaches the next round edge. Do not draw the same bridge again from the destination card. */
+.avc-bracket-standard .avc-round-sf .avc-bracket-match::before,.avc-bracket-standard .avc-round-final .avc-bracket-match::before{display:none!important;content:none!important}
 .avc-bracket-standard .avc-bracket-match-head{box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;width:100%!important;margin:0!important;padding:10px 12px!important;border-bottom:1px solid #e4eee7!important;border-radius:16px 16px 0 0!important;background:#f4faf6!important;color:#5b6f62!important;font-size:11px!important;font-weight:900!important}
 .avc-bracket-standard .avc-bracket-match-head strong{color:var(--avc-primary,#166534)!important;font-size:12px!important}
 .avc-bracket-standard .avc-bracket-team{box-sizing:border-box!important;display:grid!important;grid-template-columns:30px minmax(0,1fr) 30px!important;align-items:center!important;gap:9px!important;width:100%!important;min-height:47px!important;margin:0!important;padding:8px 12px!important;border-top:1px solid #edf3ef!important}
@@ -40,7 +41,7 @@
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-sf .avc-round-body::before{right:-56px;width:28px}
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-sf .avc-bracket-match::after{right:-28px;width:28px}
 .avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-sf .avc-bracket-match::before{display:none!important}
-.avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-final .avc-bracket-match::before{left:-28px;width:28px}
+.avc-bracket-standard .avc-bracket-ladder.is-two-round .avc-round-final .avc-bracket-match::before{display:none!important}
 .avc-competition-page .avc-bracket-wrap .cd-section-title h2{color:#166534!important}
 .avc-competition-page .avc-bracket-wrap .cd-section-title .eyebrow{color:#3f8f5c!important}
 .avc-placement-matches{margin-top:26px!important;padding-top:22px!important;border-top:1px dashed #d7e6dd!important}
