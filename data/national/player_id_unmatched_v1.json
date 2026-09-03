@@ -1,76 +1,36 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "updated_at": "2026-09-03",
-  "match_rule": "Do not assign an existing Player ID unless name_ko + birth_date both match a verified Player Master row.",
+  "match_rule": "Do not assign or create a Player ID when verified official sources conflict on birth date or when current identity continuity is not yet verified.",
   "checked_sources": [
     "Drive KVL_선수마스터.xlsx",
     "Drive 2026_KUSF_U리그_대학배구_선수명단_v2_검수.xlsx",
     "Drive 2026_대한항공배_전국대학배구_고성대회_선수명단_MASTER",
     "Drive KVL_2026_AVC_Mens_Cup_대한민국_MASTER.xlsx",
+    "Drive V리그_남자부_선수명단_MASTER",
     "Drive KVL_국가대표_Player_ID_매칭_v1",
+    "대한배구협회 국가대표팀명단",
+    "Volleyball World player profiles",
     "GitHub data/master/player_master_229_v2.json",
     "GitHub data/master/player_master_international_v1.json"
   ],
   "queue": [
     {
-      "name_ko": "이우진",
-      "birth_date": "2005-05-16",
-      "status": "no_exact_master_match",
-      "national_events": ["KVL-NT-KOR-M-U18-2022-AVC", "KVL-NT-KOR-M-U19-2023-FIVB", "KVL-NT-KOR-M-U20-2024-AVC", "KVL-NT-KOR-M-U21-2025-FIVB"],
-      "same_name_conflict": {"player_id": "KVL-P-001038", "birth_date": "2008-03-11", "note": "영생고 동명이인. 연결 금지."},
-      "next_action": "Create or locate a verified Player Master row for 2005-05-16 before linking."
-    },
-    {
-      "name_ko": "윤서진",
-      "birth_date": "2005-04-24",
-      "status": "no_exact_master_match",
-      "national_events": ["KVL-NT-KOR-M-U18-2022-AVC", "KVL-NT-KOR-M-U19-2023-FIVB", "KVL-NT-KOR-M-U20-2024-AVC", "KVL-NT-KOR-M-U21-2025-FIVB"],
-      "same_name_conflict": {"player_id": "KVL-P-001010", "birth_date": "2009-04-16", "note": "인창고 동명이인. 연결 금지."},
-      "evidence": "2026 AVC Men's Cup 대한민국 명단에서 2005-04-24 재확인.",
-      "next_action": "Create or locate a verified Player Master row for 2005-04-24 before linking."
-    },
-    {
-      "name_ko": "김관우",
-      "birth_date": "2006-08-20",
-      "status": "no_exact_master_match",
-      "national_events": ["KVL-NT-KOR-M-U18-2022-AVC", "KVL-NT-KOR-M-U19-2023-FIVB", "KVL-NT-KOR-M-U20-2024-AVC", "KVL-NT-KOR-M-U21-2025-FIVB"],
-      "evidence": "2026 AVC Men's Cup 대한민국 명단에서 2006-08-20 재확인.",
-      "next_action": "Create or locate a verified Player Master row before linking."
-    },
-    {
-      "name_ko": "최현민",
-      "birth_date": "2006-01-02",
-      "status": "no_exact_master_match",
-      "national_events": ["KVL-NT-KOR-M-U18-2022-AVC"],
-      "next_action": "Research current team and create or locate a verified Player Master row."
-    },
-    {
-      "name_ko": "강승일",
-      "birth_date": "2005-03-31",
-      "status": "no_exact_master_match",
-      "national_events": ["KVL-NT-KOR-M-U18-2022-AVC", "KVL-NT-KOR-M-U19-2023-FIVB", "KVL-NT-KOR-M-U20-2024-AVC"],
-      "next_action": "Research current team and create or locate a verified Player Master row."
-    },
-    {
       "name_ko": "이용재",
       "birth_date": "2005-06-08",
-      "status": "no_exact_master_match",
+      "status": "current_status_unverified",
       "national_events": ["KVL-NT-KOR-M-U19-2023-FIVB"],
-      "next_action": "Research current team and create or locate a verified Player Master row."
+      "evidence": "대한배구협회 2023 U19 명단과 Volleyball World U19 프로필에서 이름·생년월일 일치. 2026 KUSF U-리그 공식 명단에서는 현재 등록을 확인하지 못함.",
+      "next_action": "Locate a later official club/university roster or registration source before issuing a permanent Player ID."
     },
     {
       "name_ko": "배준솔",
       "birth_date": "2006-04-25",
-      "status": "no_exact_master_match",
+      "status": "birth_date_conflict_official_sources",
       "national_events": ["KVL-NT-KOR-M-U19-2023-FIVB"],
-      "next_action": "Research current team and create or locate a verified Player Master row."
-    },
-    {
-      "name_ko": "윤하준",
-      "birth_date": "2006-03-25",
-      "status": "no_exact_master_match",
-      "national_events": ["KVL-NT-KOR-M-U19-2023-FIVB", "KVL-NT-KOR-M-U20-2024-AVC", "KVL-NT-KOR-M-U21-2025-FIVB"],
-      "next_action": "Research current team and create or locate a verified Player Master row."
+      "evidence": "대한배구협회 2023 U19 공식 명단은 2006-04-25, Drive 2025-2026 V-리그 공식 미디어가이드는 현대캐피탈 배준솔을 2006-04-24로 표기.",
+      "same_name_candidate": {"team":"현대캐피탈","position":"S","school":"순천제일고등학교","vleague_birth_date":"2006-04-24"},
+      "next_action": "Recheck KOVO original player profile/media guide and another official source. Do not issue or link a Player ID until the one-day DOB discrepancy is resolved."
     }
   ]
 }
