@@ -82,8 +82,9 @@
   const cardHtml=(item,podiums)=>{
     const state=statusOf(item);
     const short=item.shortName||item.name;
-    const subtitle=item.name&&item.name!==short?item.name:(item.location||'');
-    return `<article class="sh-card"><div class="sh-card-main"><a class="sh-card-info" href="${esc(item.pagePath)}"><div class="sh-card-top"><span class="sh-card-series">${esc(item.series||'중·고 대회')}</span><span class="sh-status ${state}">${statusLabel[state]}</span></div><div class="sh-card-body"><h3>${esc(short)}</h3><p>${esc(subtitle)}</p><div class="sh-date">${esc(dateWithWeekday(item.startDate))} ~ ${esc(dateWithWeekday(item.endDate))}${item.location&&subtitle!==item.location?` · ${esc(item.location)}`:''}</div></div><span class="sh-card-link">대회 보기 →</span></a><div class="sh-podiums" aria-label="최종 순위">${divisionKeys.map(([division,label])=>podiumHtml(division,label,podiums?.[division],state)).join('')}</div></div></article>`;
+    const subtitle=item.name&&item.name!==short?item.name:'';
+    const dateLocation=`${dateWithWeekday(item.startDate)} ~ ${dateWithWeekday(item.endDate)}${item.location?` · ${item.location}`:''}`;
+    return `<article class="sh-card"><div class="sh-card-main"><a class="sh-card-info" href="${esc(item.pagePath)}"><div class="sh-card-top"><span class="sh-card-series">${esc(item.series||'중·고 대회')}</span><span class="sh-status ${state}">${statusLabel[state]}</span></div><div class="sh-card-body"><h3>${esc(short)}</h3>${subtitle?`<p>${esc(subtitle)}</p>`:''}<div class="sh-date">${esc(dateLocation)}</div></div><span class="sh-card-link">대회 보기 →</span></a><div class="sh-podiums" aria-label="최종 순위">${divisionKeys.map(([division,label])=>podiumHtml(division,label,podiums?.[division],state)).join('')}</div></div></article>`;
   };
 
   const championSummaryHtml=(items,podiumList)=>{
