@@ -1,0 +1,97 @@
+{
+  "schemaVersion": "1.0",
+  "competitionId": "KVL-INT-2026-008",
+  "slug": "avc-women-continental-2026",
+  "officialName": "AVC Volleyball Women's Continental Championship 2026",
+  "displayName": "AVC 여자 대륙선수권 2026",
+  "startDate": "2026-08-21",
+  "endDate": "2026-08-30",
+  "hostCountry": "중국",
+  "hostRegion": "톈진",
+  "city": "Tianjin",
+  "organizer": "Asian Volleyball Confederation (AVC)",
+  "teamCount": 12,
+  "groupCount": 3,
+  "matchCount": 26,
+  "status": "completed",
+  "timezone": "Asia/Shanghai",
+  "timezoneNote": "중국 현지시간은 한국시간보다 1시간 느립니다. 홈페이지 경기시간은 한국시간(KST)으로 표시합니다.",
+  "champion": "태국",
+  "runnerUp": "중국",
+  "thirdPlace": "일본",
+  "la28Qualifier": "태국",
+  "groups": [
+    {"id":"A","teams":["중국","이란","대만","이라크"]},
+    {"id":"B","teams":["태국","인도네시아","카자흐스탄","호주"]},
+    {"id":"C","teams":["일본","대한민국","베트남","홍콩"]}
+  ],
+  "poolStandings": {
+    "A":[
+      {"rank":1,"team":"중국","record":"3승 0패","seed":1},
+      {"rank":2,"team":"이란","record":"2승 1패","seed":5},
+      {"rank":3,"team":"대만","record":"1승 2패","seed":7},
+      {"rank":4,"team":"이라크","record":"0승 3패","seed":null}
+    ],
+    "B":[
+      {"rank":1,"team":"태국","record":"3승 0패","seed":3},
+      {"rank":2,"team":"인도네시아","record":"2승 1패","seed":4},
+      {"rank":3,"team":"카자흐스탄","record":"1승 2패","seed":null},
+      {"rank":4,"team":"호주","record":"0승 3패","seed":null}
+    ],
+    "C":[
+      {"rank":1,"team":"일본","record":"3승 0패","seed":2},
+      {"rank":2,"team":"대한민국","record":"2승 1패","seed":6},
+      {"rank":3,"team":"베트남","record":"1승 2패","seed":8},
+      {"rank":4,"team":"홍콩","record":"0승 3패","seed":null}
+    ]
+  },
+  "combinedSeeds": [
+    {"seed":1,"team":"중국","pool":"A","poolRank":1},
+    {"seed":2,"team":"일본","pool":"C","poolRank":1},
+    {"seed":3,"team":"태국","pool":"B","poolRank":1},
+    {"seed":4,"team":"인도네시아","pool":"B","poolRank":2},
+    {"seed":5,"team":"이란","pool":"A","poolRank":2},
+    {"seed":6,"team":"대한민국","pool":"C","poolRank":2},
+    {"seed":7,"team":"대만","pool":"A","poolRank":3},
+    {"seed":8,"team":"베트남","pool":"C","poolRank":3}
+  ],
+  "podium": [
+    {"rank":1,"team":"태국","label":"우승 · LA28 직행"},
+    {"rank":2,"team":"중국","label":"준우승"},
+    {"rank":3,"team":"일본","label":"3위"},
+    {"rank":4,"team":"이란","label":"4위"}
+  ],
+  "matches": [
+    {"id":"M01","officialNo":1,"date":"2026-08-21","localTime":"10:00","time":"11:00","teamA":"대만","teamB":"이란","stage":"조별리그","group":"A","setsA":1,"setsB":3,"sets":[[25,16],[25,27],[19,25],[14,25]]},
+    {"id":"M02","officialNo":2,"date":"2026-08-21","localTime":"14:00","time":"15:00","teamA":"태국","teamB":"호주","stage":"조별리그","group":"B","setsA":3,"setsB":0,"sets":[[25,15],[25,15],[25,18]]},
+    {"id":"M03","officialNo":3,"date":"2026-08-21","localTime":"18:30","time":"19:30","teamA":"일본","teamB":"홍콩","stage":"조별리그","group":"C","setsA":3,"setsB":0,"sets":[[25,9],[25,15],[25,12]]},
+    {"id":"M04","officialNo":4,"date":"2026-08-22","localTime":"10:00","time":"11:00","teamA":"베트남","teamB":"대한민국","stage":"조별리그","group":"C","setsA":1,"setsB":3,"sets":[[20,25],[25,22],[21,25],[17,25]]},
+    {"id":"M05","officialNo":5,"date":"2026-08-22","localTime":"15:00","time":"16:00","teamA":"카자흐스탄","teamB":"인도네시아","stage":"조별리그","group":"B","setsA":0,"setsB":3,"sets":[[22,25],[22,25],[23,25]]},
+    {"id":"M06","officialNo":6,"date":"2026-08-22","localTime":"19:30","time":"20:30","teamA":"중국","teamB":"이라크","stage":"조별리그","group":"A","setsA":3,"setsB":0,"sets":[[25,4],[25,6],[25,6]]},
+    {"id":"M07","officialNo":7,"date":"2026-08-23","localTime":"10:00","time":"11:00","teamA":"카자흐스탄","teamB":"호주","stage":"조별리그","group":"B","setsA":3,"setsB":0,"sets":[[25,21],[25,18],[25,21]]},
+    {"id":"M08","officialNo":8,"date":"2026-08-23","localTime":"14:00","time":"15:00","teamA":"대만","teamB":"이라크","stage":"조별리그","group":"A","setsA":3,"setsB":0,"sets":[[25,5],[25,8],[25,11]]},
+    {"id":"M09","officialNo":9,"date":"2026-08-23","localTime":"18:30","time":"19:30","teamA":"일본","teamB":"대한민국","stage":"조별리그","group":"C","setsA":3,"setsB":0,"sets":[[33,31],[25,19],[25,20]]},
+    {"id":"M10","officialNo":10,"date":"2026-08-24","localTime":"10:00","time":"11:00","teamA":"베트남","teamB":"홍콩","stage":"조별리그","group":"C","setsA":3,"setsB":0,"sets":[[25,19],[25,12],[25,11]]},
+    {"id":"M11","officialNo":11,"date":"2026-08-24","localTime":"15:00","time":"16:00","teamA":"태국","teamB":"인도네시아","stage":"조별리그","group":"B","setsA":3,"setsB":0,"sets":[[25,16],[25,18],[25,15]]},
+    {"id":"M12","officialNo":12,"date":"2026-08-24","localTime":"19:30","time":"20:30","teamA":"중국","teamB":"이란","stage":"조별리그","group":"A","setsA":3,"setsB":0,"sets":[[25,14],[25,23],[25,14]]},
+    {"id":"M13","officialNo":13,"date":"2026-08-25","localTime":"10:00","time":"11:00","teamA":"태국","teamB":"카자흐스탄","stage":"조별리그","group":"B","setsA":3,"setsB":1,"sets":[[25,22],[25,16],[23,25],[25,11]]},
+    {"id":"M14","officialNo":14,"date":"2026-08-25","localTime":"14:00","time":"15:00","teamA":"이란","teamB":"이라크","stage":"조별리그","group":"A","setsA":3,"setsB":0,"sets":[[25,4],[25,7],[25,5]]},
+    {"id":"M15","officialNo":15,"date":"2026-08-25","localTime":"18:30","time":"19:30","teamA":"일본","teamB":"베트남","stage":"조별리그","group":"C","setsA":3,"setsB":0,"sets":[[25,23],[25,17],[25,21]]},
+    {"id":"M16","officialNo":16,"date":"2026-08-26","localTime":"10:00","time":"11:00","teamA":"대한민국","teamB":"홍콩","stage":"조별리그","group":"C","setsA":3,"setsB":1,"sets":[[20,25],[25,15],[25,11],[25,18]]},
+    {"id":"M17","officialNo":17,"date":"2026-08-26","localTime":"15:00","time":"16:00","teamA":"인도네시아","teamB":"호주","stage":"조별리그","group":"B","setsA":3,"setsB":0,"sets":[[25,18],[25,17],[25,21]]},
+    {"id":"M18","officialNo":18,"date":"2026-08-26","localTime":"19:30","time":"20:30","teamA":"중국","teamB":"대만","stage":"조별리그","group":"A","setsA":3,"setsB":0,"sets":[[25,17],[25,16],[25,7]]},
+    {"id":"QF4","officialNo":22,"date":"2026-08-27","localTime":"14:00","time":"15:00","teamA":"태국","teamB":"대한민국","stage":"8강","group":"","seedA":3,"seedB":6,"setsA":3,"setsB":0,"sets":[[25,20],[25,18],[25,21]]},
+    {"id":"QF3","officialNo":21,"date":"2026-08-27","localTime":"18:30","time":"19:30","teamA":"일본","teamB":"대만","stage":"8강","group":"","seedA":2,"seedB":7,"setsA":3,"setsB":0,"sets":[[25,14],[25,21],[25,13]]},
+    {"id":"QF2","officialNo":20,"date":"2026-08-28","localTime":"15:00","time":"16:00","teamA":"인도네시아","teamB":"이란","stage":"8강","group":"","seedA":4,"seedB":5,"setsA":1,"setsB":3,"sets":[[25,19],[16,25],[12,25],[17,25]]},
+    {"id":"QF1","officialNo":19,"date":"2026-08-28","localTime":"19:30","time":"20:30","teamA":"중국","teamB":"베트남","stage":"8강","group":"","seedA":1,"seedB":8,"setsA":3,"setsB":0,"sets":[[25,15],[25,22],[25,13]]},
+    {"id":"SF2","officialNo":24,"date":"2026-08-29","localTime":"17:15","time":"18:15","teamA":"일본","teamB":"태국","stage":"준결승","group":"","setsA":1,"setsB":3,"sets":[[21,25],[20,25],[25,20],[20,25]]},
+    {"id":"SF1","officialNo":23,"date":"2026-08-29","localTime":"20:00","time":"21:00","teamA":"중국","teamB":"이란","stage":"준결승","group":"","setsA":3,"setsB":0,"sets":[[25,22],[25,12],[25,19]]},
+    {"id":"3RD","officialNo":25,"date":"2026-08-30","localTime":"15:15","time":"16:15","teamA":"이란","teamB":"일본","stage":"3위결정전","group":"","setsA":0,"setsB":3,"sets":[[21,25],[16,25],[24,26]]},
+    {"id":"FINAL","officialNo":26,"date":"2026-08-30","localTime":"18:45","time":"19:45","teamA":"중국","teamB":"태국","stage":"결승","group":"","setsA":2,"setsB":3,"sets":[[20,25],[25,11],[25,23],[18,25],[10,15]]}
+  ],
+  "sources": [
+    {"type":"official","label":"Volleyball World · AVC Women's Continental 2026","url":"https://en.volleyballworld.com/volleyball/competitions/avc-women-continental/"},
+    {"type":"official","label":"Volleyball World · 경기일정/결과","url":"https://en.volleyballworld.com/volleyball/competitions/avc-women-continental/schedule/"},
+    {"type":"official","label":"AVC 2026 개최 일정","url":"https://asianvolleyball.net/new/avc-unveils-2026-international-volleyball-calendar-and-host-cities/"}
+  ]
+}
