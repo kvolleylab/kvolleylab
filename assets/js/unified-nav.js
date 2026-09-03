@@ -3,6 +3,7 @@
   if(!document.querySelector('link[href*="pretendard-global.css"]')){const fontLink=document.createElement('link');fontLink.rel='stylesheet';fontLink.href='assets/css/pretendard-global.css?v=20260725-1';document.head.appendChild(fontLink)}
   if(!document.querySelector('link[href*="school-logo-runtime.css"]')){const logoStyle=document.createElement('link');logoStyle.rel='stylesheet';logoStyle.href='assets/css/school-logo-runtime.css?v=20260903-3';document.head.appendChild(logoStyle)}
   if(!document.querySelector('script[src*="school-logo-runtime.js"]')){const logoScript=document.createElement('script');logoScript.src='assets/js/school-logo-runtime.js?v=20260802-1';logoScript.defer=true;document.head.appendChild(logoScript)}
+  if(!document.querySelector('script[src*="avc-continental-gender-runtime.js"]')){const genderScript=document.createElement('script');genderScript.src='assets/js/avc-continental-gender-runtime.js?v=20260903-1';genderScript.defer=true;document.head.appendChild(genderScript)}
   if(PRIVATE_REVIEW_MODE){
     const robotsContent='noindex,nofollow,noarchive,nosnippet,noimageindex';
     const ensureMeta=(name,content)=>{
