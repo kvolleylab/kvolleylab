@@ -1,49 +1,15 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "updated_at": "2026-09-03",
-  "scope": {
-    "country": "KOR",
-    "gender": "M",
-    "period": "2015"
-  },
+  "scope": {"country": "KOR", "gender": "M", "period": "2015"},
   "sources": [
-    {
-      "source_id": "KVL-SRC-2015-U23-WORLD-SQUADS",
-      "publisher": "2015 FIVB U23 World Championship squads archive",
-      "source_type": "secondary_roster_archive",
-      "url": "https://kiwi.itspektar.net/content/wikipedia_en_all_maxi/A/2015_FIVB_Volleyball_Men%27s_U23_World_Championship_squads"
-    },
-    {
-      "source_id": "KVL-SRC-2015-U23-KOR-RESULTS",
-      "publisher": "TheSports.org",
-      "source_type": "results_archive",
-      "url": "https://www.the-sports.org/volleyball-republic-of-korea-u-23-results-identity-equ55871.html"
-    },
-    {
-      "source_id": "KVL-SRC-KOVO-2019-2020-LEE-JIHOON",
-      "publisher": "한국배구연맹",
-      "source_type": "official_media_guide",
-      "url": "https://drive.google.com/file/d/1wpy-9vzYrA2I6LwMJ5GEwYYTp61VschC/view"
-    }
+    {"source_id":"KVL-SRC-2015-U23-WORLD-SQUADS","publisher":"2015 FIVB U23 World Championship squads archive","source_type":"secondary_roster_archive","url":"https://kiwi.itspektar.net/content/wikipedia_en_all_maxi/A/2015_FIVB_Volleyball_Men%27s_U23_World_Championship_squads"},
+    {"source_id":"KVL-SRC-2015-U23-KOR-RESULTS","publisher":"TheSports.org","source_type":"results_archive","url":"https://www.the-sports.org/volleyball-republic-of-korea-u-23-results-identity-equ55871.html"},
+    {"source_id":"KVL-SRC-KOVO-2019-2020-LEE-JIHOON","publisher":"한국배구연맹","source_type":"official_media_guide","url":"https://drive.google.com/file/d/1wpy-9vzYrA2I6LwMJ5GEwYYTp61VschC/view"},
+    {"source_id":"KVL-SRC-KOVO-2018-2019-PARK-SANGJUN","publisher":"한국배구연맹","source_type":"official_media_guide","url":"https://drive.google.com/file/d/1O0FETTr_CAZBlO1cpLDZ7HYEyZEqZAeO/view"}
   ],
   "events": [
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "year": 2015,
-      "level": "U23",
-      "competition_name_ko": "2015 FIVB 남자 U23 세계선수권대회",
-      "organization": "FIVB",
-      "head_coach": "홍해천",
-      "result": "8위",
-      "participation_status": "participated",
-      "roster_status": "roster_reconstructed_secondary_archive_needs_primary_crosscheck",
-      "player_id_link_status": "partial",
-      "source_ids": [
-        "KVL-SRC-2015-U23-WORLD-SQUADS",
-        "KVL-SRC-2015-U23-KOR-RESULTS"
-      ],
-      "note": "한국은 5~8위 결정전에서 브라질에 패한 뒤 7위 결정전에서 이란에 1-3으로 패해 최종 8위. 로스터는 FIVB-era squad archive 기반으로 복원했으며 FIVB 원본 Team Roster 직접 대조가 남아 있다. Player ID는 KVL 원장에서 공식 이름+생년월일 exact match가 확인된 선수만 연결했다."
-    }
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","year":2015,"level":"U23","competition_name_ko":"2015 FIVB 남자 U23 세계선수권대회","organization":"FIVB","head_coach":"홍해천","result":"8위","participation_status":"participated","roster_status":"roster_reconstructed_secondary_archive_needs_primary_crosscheck","player_id_link_status":"partial","source_ids":["KVL-SRC-2015-U23-WORLD-SQUADS","KVL-SRC-2015-U23-KOR-RESULTS"],"note":"한국은 5~8위 결정전에서 브라질에 패한 뒤 7위 결정전에서 이란에 1-3으로 패해 최종 8위. 로스터는 FIVB-era squad archive 기반으로 복원했으며 FIVB 원본 Team Roster 직접 대조가 남아 있다. Player ID는 KVL 원장에서 공식 이름+생년월일 exact match가 확인된 선수만 연결했다."}
   ],
   "rosters": [
     {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":2,"name_ko":"박지윤","birth_date":"1996-03-04","height_cm":196,"club_snapshot":"남성고","player_id":"KVL-P-001558"},
@@ -56,12 +22,13 @@
     {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":12,"name_ko":"황경민","birth_date":"1996-04-10","height_cm":194,"club_snapshot":"경기대","player_id":"KVL-P-001550"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":13,"name_ko":"이지훈","birth_date":"1995-12-08","height_cm":182,"club_snapshot":"중부대","player_id":"KVL-P-001560"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":14,"name_ko":"정지석","birth_date":"1995-03-10","height_cm":194,"club_snapshot":"대한항공","player_id":"KVL-P-001547"},
-    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":17,"name_ko":"박상준","birth_date":"1995-02-19","height_cm":198,"club_snapshot":"중부대","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":17,"name_ko":"박상준","birth_date":"1995-02-19","height_cm":198,"club_snapshot":"중부대","player_id":"KVL-P-001561"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":19,"name_ko":"황택의","birth_date":"1996-11-12","height_cm":190,"club_snapshot":"성균관대","player_id":"KVL-P-001545"}
   ],
   "notes": [
     "Player IDs were synchronized from data/national/player_id_links_v1.json only for players whose exact Korean name + birth date had already been verified against official KVL sources. Unresolved players remain null.",
     "이지훈 KVL-P-001560은 KOVO 2019-2020 공식 미디어가이드의 이름·생년월일·중부대·대한항공 프로필로 exact match 확인 후 연결했다.",
+    "박상준 KVL-P-001561은 KOVO 2018-2019 공식 미디어가이드의 이름·생년월일·삼성화재 신인 프로필로 exact match 확인 후 연결했다.",
     "The reconstructed 2015 FIVB U23 roster still requires a primary FIVB Team Roster/Bulletin cross-check before roster_status can be promoted."
   ]
 }
