@@ -1,10 +1,11 @@
 (()=>{
-  const PAGE='international-competition-avc-men-continental-2026.html';
+  const PAGES=new Set(['international-competition-avc-men-continental-2026.html','international-competition-avc-men-rosters-2026.html']);
   const path=(location.pathname.split('/').pop()||'').toLowerCase();
-  if(path!==PAGE)return;
+  if(!PAGES.has(path))return;
+  const standalone=path==='international-competition-avc-men-rosters-2026.html';
 
   const DATA='data/competitions/avc-men-continental-2026-rosters.json?v=20260904-1';
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const posOrder={S:1,OP:2,OH:3,MB:4,L:5,U:6,'':9};
   const fmtDob=v=>{if(!v)return '생년월일 미확인';const [y,m,d]=String(v).split('-');return y&&m&&d?`${y}.${m}.${d}`:v};
   const flag=t=>`https://flagcdn.com/w80/${t.flag}.png`;
@@ -59,7 +60,7 @@
   };
 
   const activate=()=>{
-    if(new URLSearchParams(location.search).get('view')!=='players')return;
+    if(!standalone&&new URLSearchParams(location.search).get('view')!=='players')return;
     document.querySelectorAll('.avc-view').forEach(s=>s.classList.toggle('is-active',s.id==='players'));
     document.querySelectorAll('.avc-jump a[data-view]').forEach(a=>{const on=a.dataset.view==='players';a.classList.toggle('is-active',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   };
