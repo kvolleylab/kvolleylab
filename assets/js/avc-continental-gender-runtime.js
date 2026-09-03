@@ -8,112 +8,106 @@
   const current=pages[path];
   if(!current)return;
 
+  const WOMEN={primary:'#D2648F',dark:'#A43F68',soft:'#FFF2F7',soft2:'#FFF8FB',line:'#EDBED0',gold:'#FFE4A3',name:'#17365D'};
+  const countries={
+    men:[['A','일본','Japan','jp'],['A','호주','Australia','au'],['A','바레인','Bahrain','bh'],['A','오만','Oman','om'],['B','이란','Iran','ir'],['B','중국','China','cn'],['B','인도','India','in'],['B','뉴질랜드','New Zealand','nz'],['C','카타르','Qatar','qa'],['C','대한민국','South Korea','kr'],['C','대만','Chinese Taipei','tw'],['C','태국','Thailand','th']],
+    women:[['A','중국','China','cn'],['A','이란','Iran','ir'],['A','대만','Chinese Taipei','tw'],['A','이라크','Iraq','iq'],['B','태국','Thailand','th'],['B','인도네시아','Indonesia','id'],['B','카자흐스탄','Kazakhstan','kz'],['B','호주','Australia','au'],['C','일본','Japan','jp'],['C','대한민국','Korea','kr'],['C','베트남','Vietnam','vn'],['C','홍콩','Hong Kong, China','hk']]
+  };
+
   const ensureStyle=()=>{
     if(document.getElementById('avcGenderSwitchStyle'))return;
     const style=document.createElement('style');
     style.id='avcGenderSwitchStyle';
     style.textContent=`
-      :root{
-        --kvl-women-primary:#D2648F;
-        --kvl-women-dark:#A43F68;
-        --kvl-women-soft:#FFF2F7;
-        --kvl-women-soft-2:#FFF8FB;
-        --kvl-women-line:#EDBED0;
-        --kvl-women-gold:#FFE4A3;
-        --kvl-women-name:#17365D;
-      }
+      :root{--kvl-women-primary:${WOMEN.primary};--kvl-women-dark:${WOMEN.dark};--kvl-women-soft:${WOMEN.soft};--kvl-women-soft-2:${WOMEN.soft2};--kvl-women-line:${WOMEN.line};--kvl-women-gold:${WOMEN.gold};--kvl-women-name:${WOMEN.name}}
       .avc-gender-switch-runtime{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:16px 0 0;padding:11px 13px;border:1px solid #dfe8e3;border-radius:16px;background:#fff;box-shadow:0 5px 16px rgba(15,61,46,.04)}
-      .avc-gender-switch-runtime .label{color:#708078;font-size:11px;font-weight:900;letter-spacing:.08em}
-      .avc-gender-switch-runtime .tabs{display:flex;gap:7px}
-      .avc-gender-switch-runtime a{min-width:92px;padding:9px 16px;border:1px solid #d8e5dd;border-radius:11px;background:#f8fbf9;color:#536477;font-size:13px;font-weight:900;text-align:center;text-decoration:none}
-      .avc-gender-switch-runtime a:hover{border-color:#88b99a;color:#155c34}
-      .avc-gender-switch-runtime a.is-active{border-color:#166534;background:#166534;color:#fff}
-      .avc-gender-switch-runtime a[data-gender="women"]:hover{border-color:var(--kvl-women-primary);background:var(--kvl-women-soft);color:var(--kvl-women-dark)}
-      .avc-gender-switch-runtime a[data-gender="women"].is-active{border-color:var(--kvl-women-primary);background:var(--kvl-women-primary);color:#fff}
+      .avc-gender-switch-runtime .label{color:#708078;font-size:11px;font-weight:900;letter-spacing:.08em}.avc-gender-switch-runtime .tabs{display:flex;gap:7px}.avc-gender-switch-runtime a{min-width:92px;padding:9px 16px;border:1px solid #d8e5dd;border-radius:11px;background:#f8fbf9;color:#536477;font-size:13px;font-weight:900;text-align:center;text-decoration:none}.avc-gender-switch-runtime a:hover{border-color:#88b99a;color:#155c34}.avc-gender-switch-runtime a.is-active{border-color:#166534;background:#166534;color:#fff}.avc-gender-switch-runtime a[data-gender="women"]:hover{border-color:var(--kvl-women-primary);background:var(--kvl-women-soft);color:var(--kvl-women-dark)}.avc-gender-switch-runtime a[data-gender="women"].is-active{border-color:var(--kvl-women-primary);background:var(--kvl-women-primary);color:#fff}
+      body[data-avc-gender="men"] .avc-kpis strong{display:inline-block!important;margin:10px 0 0!important}body[data-avc-gender="men"] .avc-kpis small{display:inline-block!important;margin-left:3px!important;vertical-align:baseline!important}
 
-      /* Tournament snapshot: keep numeric unit directly beside the number, matching the compact competition KPI style. */
-      body[data-avc-gender="men"] .avc-kpis strong{display:inline-block!important;margin:10px 0 0!important}
-      body[data-avc-gender="men"] .avc-kpis small{display:inline-block!important;margin-left:3px!important;vertical-align:baseline!important}
+      body[data-avc-gender="women"]{--avc-primary:var(--kvl-women-primary);--avc-dark:var(--kvl-women-dark);--avc-light:#DB749B;--avc-accent:var(--kvl-women-primary);--avc-gold:var(--kvl-women-gold);--avc-gold-soft:var(--kvl-women-gold);--avc-line:var(--kvl-women-line);--avc-soft:var(--kvl-women-soft-2)}
+      body[data-avc-gender="women"] .avc-hero{border-color:var(--kvl-women-line)!important;background:linear-gradient(135deg,var(--kvl-women-dark),var(--kvl-women-primary))!important;box-shadow:0 18px 42px rgba(164,63,104,.18)!important}body[data-avc-gender="women"] .avc-hero .eyebrow,body[data-avc-gender="women"] .avc-hero h1,body[data-avc-gender="women"] .avc-status .champion{color:var(--kvl-women-gold)!important}body[data-avc-gender="women"] .avc-hero h1 small{color:#FFF1F6!important}body[data-avc-gender="women"] .avc-meta{color:#FFF2F7!important}
+      body[data-avc-gender="women"] .avc-section{border-color:var(--kvl-women-line)!important;box-shadow:0 8px 24px rgba(164,63,104,.05)!important}body[data-avc-gender="women"] .avc-section .eyebrow,body[data-avc-gender="women"] .avc-section h2,body[data-avc-gender="women"] .avc-combined-head h3,body[data-avc-gender="women"] .avc-bronze-title{color:var(--kvl-women-dark)!important}body[data-avc-gender="women"] .avc-kpis article{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important}body[data-avc-gender="women"] .avc-kpis strong{color:var(--kvl-women-dark)!important}
+      body[data-avc-gender="women"] .avc-note{border-left-color:var(--kvl-women-primary)!important;background:var(--kvl-women-soft)!important;color:#5F4650!important}body[data-avc-gender="women"] .avc-rule-card{border-color:var(--kvl-women-line)!important;background:linear-gradient(180deg,#fff,var(--kvl-women-soft-2))!important}body[data-avc-gender="women"] .avc-podium-card{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important}body[data-avc-gender="women"] .avc-podium-rank{background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}body[data-avc-gender="women"] .avc-podium-copy strong,body[data-avc-gender="women"] .avc-standing-copy strong,body[data-avc-gender="women"] .avc-combined-row strong{color:var(--kvl-women-name)!important}
+      body[data-avc-gender="women"] #schedule .cd-stage-filters button:hover,body[data-avc-gender="women"] #schedule .cd-stage-filters button.is-active{border-color:var(--kvl-women-primary)!important;background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}body[data-avc-gender="women"] #schedule .cd-date-group{border-color:var(--kvl-women-line)!important}body[data-avc-gender="women"] #schedule .cd-date-head{background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}body[data-avc-gender="women"] #schedule .cd-score{color:var(--kvl-women-primary)!important}body[data-avc-gender="women"] .avc-set-scores span{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important;color:#6F5661!important}body[data-avc-gender="women"] .avc-winner{color:var(--kvl-women-dark)!important}
+      body[data-avc-gender="women"] .avc-group-card{border-color:var(--kvl-women-line)!important}body[data-avc-gender="women"] .avc-group-card h3{background:var(--kvl-women-primary)!important}body[data-avc-gender="women"] .avc-group-card h3 span{color:#FFF2F7!important}body[data-avc-gender="women"] .avc-standing-row.is-korea,body[data-avc-gender="women"] .avc-combined-row.is-korea{background:var(--kvl-women-soft)!important}body[data-avc-gender="women"] .avc-standing-row.is-qualified{box-shadow:inset 3px 0 0 var(--kvl-women-primary)!important}body[data-avc-gender="women"] .avc-combined{border-color:var(--kvl-women-line)!important}body[data-avc-gender="women"] .avc-combined-seed{color:var(--kvl-women-dark)!important}
+      body[data-avc-gender="women"] #overview .cd-cal-title,body[data-avc-gender="women"] .avc-round-title{background:var(--kvl-women-primary)!important}body[data-avc-gender="women"] #overview .cd-cal-week span{background:var(--kvl-women-soft)!important;color:#75505F!important}body[data-avc-gender="women"] #overview .cd-cal-cell.has-games{background:var(--kvl-women-soft-2)!important}body[data-avc-gender="women"] #overview .cd-cal-game{border-color:var(--kvl-women-line)!important;color:var(--kvl-women-name)!important}body[data-avc-gender="women"] #overview .cd-cal-game b{color:var(--kvl-women-primary)!important}
+      body[data-avc-gender="women"] .avc-bracket-match{border-color:var(--kvl-women-line)!important;box-shadow:0 6px 18px rgba(164,63,104,.06)!important}body[data-avc-gender="women"] .avc-bracket-match-head{border-bottom-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft)!important;color:#765563!important}body[data-avc-gender="women"] .avc-bracket-match-head strong{color:var(--kvl-women-dark)!important}body[data-avc-gender="women"] .avc-bracket-team.is-winner{background:var(--kvl-women-soft-2)!important}body[data-avc-gender="women"] .avc-bracket-team.is-winner strong,body[data-avc-gender="women"] .avc-bracket-team.is-winner b{color:var(--kvl-women-dark)!important}body[data-avc-gender="women"] .avc-source{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important}body[data-avc-gender="women"] .avc-source strong,body[data-avc-gender="women"] .avc-source a{color:var(--kvl-women-dark)!important}body[data-avc-gender="women"] .avc-gender-switch-runtime{border-color:var(--kvl-women-line)!important;box-shadow:0 5px 16px rgba(164,63,104,.04)!important}
 
-      /* AVC WOMEN uses the same Soft Rose palette as domestic/university women's competition views. */
-      body[data-avc-gender="women"]{
-        --avc-primary:var(--kvl-women-primary);
-        --avc-dark:var(--kvl-women-dark);
-        --avc-light:#DB749B;
-        --avc-accent:var(--kvl-women-primary);
-        --avc-gold:var(--kvl-women-gold);
-        --avc-gold-soft:var(--kvl-women-gold);
-        --avc-line:var(--kvl-women-line);
-        --avc-soft:var(--kvl-women-soft-2);
-      }
-      body[data-avc-gender="women"] .avc-hero{border-color:var(--kvl-women-line)!important;background:linear-gradient(135deg,var(--kvl-women-dark),var(--kvl-women-primary))!important;box-shadow:0 18px 42px rgba(164,63,104,.18)!important}
-      body[data-avc-gender="women"] .avc-hero .eyebrow,body[data-avc-gender="women"] .avc-hero h1,body[data-avc-gender="women"] .avc-status .champion{color:var(--kvl-women-gold)!important}
-      body[data-avc-gender="women"] .avc-hero h1 small{color:#FFF1F6!important}
-      body[data-avc-gender="women"] .avc-meta{color:#FFF2F7!important}
-      body[data-avc-gender="women"] .avc-section{border-color:var(--kvl-women-line)!important;box-shadow:0 8px 24px rgba(164,63,104,.05)!important}
-      body[data-avc-gender="women"] .avc-section .eyebrow,body[data-avc-gender="women"] .avc-section h2,body[data-avc-gender="women"] .avc-combined-head h3,body[data-avc-gender="women"] .avc-bronze-title{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] .avc-kpis article{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important}
-      body[data-avc-gender="women"] .avc-kpis strong{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] .avc-note{border-left-color:var(--kvl-women-primary)!important;background:var(--kvl-women-soft)!important;color:#5F4650!important}
-      body[data-avc-gender="women"] .avc-rule-card{border-color:var(--kvl-women-line)!important;background:linear-gradient(180deg,#fff,var(--kvl-women-soft-2))!important}
-      body[data-avc-gender="women"] .avc-podium-card{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important}
-      body[data-avc-gender="women"] .avc-podium-rank{background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] .avc-podium-copy strong,body[data-avc-gender="women"] .avc-standing-copy strong,body[data-avc-gender="women"] .avc-combined-row strong{color:var(--kvl-women-name)!important}
-      body[data-avc-gender="women"] #schedule .cd-stage-filters button:hover,body[data-avc-gender="women"] #schedule .cd-stage-filters button.is-active{border-color:var(--kvl-women-primary)!important;background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] #schedule .cd-date-group{border-color:var(--kvl-women-line)!important}
-      body[data-avc-gender="women"] #schedule .cd-date-head{background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] #schedule .cd-score{color:var(--kvl-women-primary)!important}
-      body[data-avc-gender="women"] .avc-set-scores span{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important;color:#6F5661!important}
-      body[data-avc-gender="women"] .avc-winner{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] .avc-group-card{border-color:var(--kvl-women-line)!important}
-      body[data-avc-gender="women"] .avc-group-card h3{background:var(--kvl-women-primary)!important}
-      body[data-avc-gender="women"] .avc-group-card h3 span{color:#FFF2F7!important}
-      body[data-avc-gender="women"] .avc-standing-row.is-korea,body[data-avc-gender="women"] .avc-combined-row.is-korea{background:var(--kvl-women-soft)!important}
-      body[data-avc-gender="women"] .avc-standing-row.is-qualified{box-shadow:inset 3px 0 0 var(--kvl-women-primary)!important}
-      body[data-avc-gender="women"] .avc-combined{border-color:var(--kvl-women-line)!important}
-      body[data-avc-gender="women"] .avc-combined-seed{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] #overview .cd-cal-title,body[data-avc-gender="women"] .avc-round-title{background:var(--kvl-women-primary)!important}
-      body[data-avc-gender="women"] #overview .cd-cal-week span{background:var(--kvl-women-soft)!important;color:#75505F!important}
-      body[data-avc-gender="women"] #overview .cd-cal-cell.has-games{background:var(--kvl-women-soft-2)!important}
-      body[data-avc-gender="women"] #overview .cd-cal-game{border-color:var(--kvl-women-line)!important;color:var(--kvl-women-name)!important}
-      body[data-avc-gender="women"] #overview .cd-cal-game b{color:var(--kvl-women-primary)!important}
-      body[data-avc-gender="women"] .avc-qf-pair::after,body[data-avc-gender="women"] .avc-round-sf .avc-round-body::after{border-right-color:#D99AB3!important}
-      body[data-avc-gender="women"] .avc-qf-pair::before,body[data-avc-gender="women"] .avc-round-sf .avc-round-body::before,body[data-avc-gender="women"] .avc-qf-pair .avc-bracket-match::after,body[data-avc-gender="women"] .avc-round-sf .avc-bracket-match::after,body[data-avc-gender="women"] .avc-round-sf .avc-bracket-match::before,body[data-avc-gender="women"] .avc-round-final .avc-bracket-match::before{border-top-color:#D99AB3!important}
-      body[data-avc-gender="women"] .avc-bracket-match{border-color:var(--kvl-women-line)!important;box-shadow:0 6px 18px rgba(164,63,104,.06)!important}
-      body[data-avc-gender="women"] .avc-bracket-match-head{border-bottom-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft)!important;color:#765563!important}
-      body[data-avc-gender="women"] .avc-bracket-match-head strong{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] .avc-bracket-team.is-winner{background:var(--kvl-women-soft-2)!important}
-      body[data-avc-gender="women"] .avc-bracket-team.is-winner strong,body[data-avc-gender="women"] .avc-bracket-team.is-winner b{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] .avc-source{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important}
-      body[data-avc-gender="women"] .avc-source strong,body[data-avc-gender="women"] .avc-source a{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="women"] .avc-gender-switch-runtime{border-color:var(--kvl-women-line)!important;box-shadow:0 5px 16px rgba(164,63,104,.04)!important}
+      /* University competition-style AVC season cards. */
+      body[data-avc-gender="hub"] .gender-tabs{display:none!important}body[data-avc-gender="hub"] .hub-grid{grid-template-columns:1fr!important;gap:18px!important;margin-top:24px!important}body[data-avc-gender="hub"] .division-card{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(320px,.85fr)!important;min-height:270px!important;padding:0!important;overflow:hidden!important}body[data-avc-gender="hub"] .kvl-avc-card-main{display:flex;min-width:0;flex-direction:column;padding:28px 30px}body[data-avc-gender="hub"] .kvl-avc-card-main h2{margin:16px 0 8px!important;font-size:28px!important}body[data-avc-gender="hub"] .kvl-avc-card-main .meta{margin:18px 0 0!important}body[data-avc-gender="hub"] .kvl-avc-card-main .enter{align-self:flex-start;margin-top:auto!important;padding:11px 17px!important}body[data-avc-gender="hub"] .kvl-avc-ranking{display:flex;flex-direction:column;justify-content:center;padding:24px;border-left:1px solid #e4ebe7;background:#f8fafc}body[data-avc-gender="hub"] .kvl-avc-ranking-panel{padding:18px 20px;border:1px solid #e0e6ec;border-radius:14px;background:#fff}body[data-avc-gender="hub"] .kvl-avc-ranking-panel h3{margin:0 0 11px;color:#17365d;font-size:17px;text-align:center}body[data-avc-gender="hub"] .kvl-rank-line{display:flex;align-items:center;gap:7px;padding:4px 0;color:#59687a;font-size:14px}body[data-avc-gender="hub"] .kvl-rank-line b{min-width:30px;color:#17365d}body[data-avc-gender="hub"] .kvl-rank-line.is-first{font-weight:900;color:#17365d}body[data-avc-gender="hub"] .kvl-rank-note{margin:10px 0 0;color:#7a8796;font-size:11px;text-align:center}body[data-avc-gender="hub"] .division-card.women{border-color:var(--kvl-women-line)!important;background:linear-gradient(180deg,#fff,var(--kvl-women-soft-2))!important;box-shadow:inset 0 3px 0 rgba(210,100,143,.16),0 8px 24px rgba(164,63,104,.06)!important}body[data-avc-gender="hub"] .division-card.women .tag{background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}body[data-avc-gender="hub"] .division-card.women h2{color:var(--kvl-women-dark)!important}body[data-avc-gender="hub"] .division-card.women .meta span{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important;color:#75505F!important}body[data-avc-gender="hub"] .division-card.women .enter{background:var(--kvl-women-primary)!important}body[data-avc-gender="hub"] .division-card.women .kvl-avc-ranking{border-left-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important}body[data-avc-gender="hub"] .division-card.women .kvl-avc-ranking-panel{border-color:var(--kvl-women-line)!important}body[data-avc-gender="hub"] .division-card.women .kvl-avc-ranking-panel h3,body[data-avc-gender="hub"] .division-card.women .kvl-rank-line b{color:var(--kvl-women-dark)!important}
 
-      /* Parent hub: WOMEN card follows the same domestic Soft Rose card system. */
-      body[data-avc-gender="hub"] .division-card.women{border-color:var(--kvl-women-line)!important;background:linear-gradient(180deg,#fff,var(--kvl-women-soft-2))!important;box-shadow:inset 0 3px 0 rgba(210,100,143,.16),0 8px 24px rgba(164,63,104,.06)!important}
-      body[data-avc-gender="hub"] .division-card.women .tag{background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="hub"] .division-card.women h2{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="hub"] .division-card.women .meta span{border-color:var(--kvl-women-line)!important;background:var(--kvl-women-soft-2)!important;color:#75505F!important}
-      body[data-avc-gender="hub"] .division-card.women .enter{background:var(--kvl-women-primary)!important}
-      body[data-avc-gender="hub"] .division-card.women .status strong{color:var(--kvl-women-dark)!important}
-      body[data-avc-gender="hub"] .gender-tabs .women:hover{border-color:var(--kvl-women-primary)!important;background:var(--kvl-women-soft)!important;color:var(--kvl-women-dark)!important}
+      /* Detail page structure: overview / schedule / pool standings / final standings / participants / sources. */
+      .avc-final-block{margin:0 0 26px}.avc-final-block-title{margin:0 0 14px}.avc-final-block-title h3{margin:4px 0 0;color:var(--avc-primary);font-size:21px}.avc-final-pending{padding:24px;border:1px dashed var(--avc-line);border-radius:16px;background:#f8fafc;color:#708078;text-align:center;font-size:14px;font-weight:800}.avc-knockout-subhead{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:28px 0 14px;padding-top:24px;border-top:1px solid var(--avc-line)}.avc-knockout-subhead h3{margin:4px 0 0;color:var(--avc-primary);font-size:21px}.avc-knockout-subhead p{margin:0;color:#748397;font-size:13px;text-align:right}
+      .avc-participant-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.avc-country-card{display:flex;align-items:center;gap:12px;min-height:82px;padding:14px 16px;border:1px solid var(--avc-line);border-radius:15px;background:#fff}.avc-country-card img{width:42px;height:29px;object-fit:contain;border-radius:3px}.avc-country-copy{min-width:0}.avc-country-copy strong{display:block;color:#17365d;font-size:14px}.avc-country-copy small{display:block;margin-top:3px;color:#7a8796;font-size:10px;font-weight:800}.avc-country-pool{margin-left:auto;padding:5px 8px;border-radius:999px;background:var(--avc-soft);color:var(--avc-primary);font-size:10px;font-weight:900}body[data-avc-gender="women"] .avc-country-card{border-color:var(--kvl-women-line);background:var(--kvl-women-soft-2)}body[data-avc-gender="women"] .avc-country-pool{background:var(--kvl-women-soft);color:var(--kvl-women-dark)}
 
-      @media(max-width:680px){.avc-gender-switch-runtime{align-items:flex-start;flex-direction:column}.avc-gender-switch-runtime .tabs{width:100%}.avc-gender-switch-runtime a{flex:1;min-width:0}}
+      /* Make every bracket connector meet the next segment exactly. */
+      .avc-bracket-standard .avc-qf-pair{grid-template-rows:1fr 1fr!important;align-content:stretch!important;gap:0!important}.avc-bracket-standard .avc-qf-pair .avc-bracket-match{align-self:center!important}.avc-bracket-standard .avc-round-sf .avc-round-body{gap:0!important}.avc-bracket-standard .avc-qf-pair .avc-bracket-match::after,.avc-bracket-standard .avc-round-sf .avc-bracket-match::after{right:-21px!important;width:22px!important}.avc-bracket-standard .avc-qf-pair::after,.avc-bracket-standard .avc-round-sf .avc-round-body::after{right:-21px!important}.avc-bracket-standard .avc-qf-pair::before,.avc-bracket-standard .avc-round-sf .avc-round-body::before{right:-41px!important;width:21px!important}.avc-bracket-standard .avc-round-sf .avc-bracket-match::before,.avc-bracket-standard .avc-round-final .avc-bracket-match::before{left:-21px!important;width:22px!important}body[data-avc-gender="women"] .avc-qf-pair::after,body[data-avc-gender="women"] .avc-round-sf .avc-round-body::after{border-right-color:#D99AB3!important}body[data-avc-gender="women"] .avc-qf-pair::before,body[data-avc-gender="women"] .avc-round-sf .avc-round-body::before,body[data-avc-gender="women"] .avc-qf-pair .avc-bracket-match::after,body[data-avc-gender="women"] .avc-round-sf .avc-bracket-match::after,body[data-avc-gender="women"] .avc-round-sf .avc-bracket-match::before,body[data-avc-gender="women"] .avc-round-final .avc-bracket-match::before{border-top-color:#D99AB3!important}
+
+      @media(max-width:900px){body[data-avc-gender="hub"] .division-card{grid-template-columns:1fr!important}body[data-avc-gender="hub"] .kvl-avc-ranking{border-left:0!important;border-top:1px solid #e4ebe7}.avc-participant-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+      @media(max-width:680px){.avc-gender-switch-runtime{align-items:flex-start;flex-direction:column}.avc-gender-switch-runtime .tabs{width:100%}.avc-gender-switch-runtime a{flex:1;min-width:0}.avc-participant-grid{grid-template-columns:1fr}.avc-knockout-subhead{align-items:flex-start;flex-direction:column}.avc-knockout-subhead p{text-align:left}}
     `;
     document.head.appendChild(style);
   };
 
-  const apply=()=>{
-    ensureStyle();
-    document.body.dataset.avcGender=current;
-    if(current==='hub')return;
-    const hero=document.querySelector('.avc-hero');
-    if(!hero||document.querySelector('.avc-gender-switch-runtime'))return;
-    const nav=document.createElement('nav');
-    nav.className='avc-gender-switch-runtime';
-    nav.setAttribute('aria-label','AVC 대륙선수권 성별 전환');
-    nav.innerHTML=`<span class="label">AVC CONTINENTAL 2026</span><span class="tabs"><a data-gender="men" class="${current==='men'?'is-active':''}" href="international-competition-avc-men-continental-2026.html">MEN · 남자부</a><a data-gender="women" class="${current==='women'?'is-active':''}" href="international-competition-avc-women-continental-2026.html">WOMEN · 여자부</a></span>`;
-    hero.insertAdjacentElement('afterend',nav);
+  const rankLines=(rows,pending=false)=>rows.map((name,i)=>`<div class="kvl-rank-line ${i===0&&!pending?'is-first':''}"><span>${['🏆','🥈','🥉','4'][i]||i+1}</span><b>${i+1}위</b><span>${name||'—'}</span></div>`).join('');
+  const scorePair=m=>{if(!m)return null;let a=Number(m.setsA),b=Number(m.setsB);if(Number.isFinite(a)&&Number.isFinite(b)&&(a===3||b===3))return[a,b];const p=String(m.setScore||m.score||'').match(/(\d+)\s*[-:]\s*(\d+)/);return p?[Number(p[1]),Number(p[2])]:null};
+  const finishFromMatches=matches=>{const final=(matches||[]).find(m=>m.stage==='결승'),bronze=(matches||[]).find(m=>m.stage==='3위결정전'),fs=scorePair(final),bs=scorePair(bronze);if(!final||!bronze||!fs||!bs||!final.teamA||!final.teamB||!bronze.teamA||!bronze.teamB||[final.teamA,final.teamB,bronze.teamA,bronze.teamB].includes('TBD'))return null;return[fs[0]>fs[1]?final.teamA:final.teamB,fs[0]>fs[1]?final.teamB:final.teamA,bs[0]>bs[1]?bronze.teamA:bronze.teamB,bs[0]>bs[1]?bronze.teamB:bronze.teamA]};
+
+  const decorateHub=()=>{
+    document.body.dataset.avcGender='hub';
+    document.querySelector('.hub-hero p:last-child')?.replaceChildren(document.createTextNode('2026 AVC 대륙선수권 남자부와 여자부의 일정, 경기결과, 순위와 참가국을 한 곳에서 확인하세요.'));
+    const cards=[...document.querySelectorAll('.hub-grid .division-card')];
+    if(cards.length<2)return;
+    const builds=[
+      {gender:'men',card:cards[0],tag:'MEN · JAPAN',title:'2026 AVC 남자 대륙선수권',desc:'일본 기타큐슈에서 열리는 남자 대륙선수권. 경기일정, 조별순위와 결선 대진을 확인합니다.',meta:['9/4 ~ 9/13','일본 기타큐슈','12개국','대회 예정'],href:'international-competition-avc-men-continental-2026.html',button:'남자부 보기 →',ranks:['','','',''],note:'대회 종료 후 최종순위 반영'},
+      {gender:'women',card:cards[1],tag:'WOMEN · CHINA',title:'2026 AVC 여자 대륙선수권',desc:'중국 톈진에서 열린 여자 대륙선수권. 26경기 전체 결과와 최종순위, 토너먼트를 확인합니다.',meta:['8/21 ~ 8/30','중국 톈진','12개국','대회 종료'],href:'international-competition-avc-women-continental-2026.html',button:'여자부 결과 보기 →',ranks:['태국','중국','일본','이란'],note:'태국 우승 · LA28 직행'}
+    ];
+    builds.forEach(x=>{x.card.classList.toggle('women',x.gender==='women');x.card.innerHTML=`<div class="kvl-avc-card-main"><span class="tag">${x.tag}</span><h2>${x.title}</h2><p>${x.desc}</p><div class="meta">${x.meta.map(v=>`<span>${v}</span>`).join('')}</div><a class="enter" href="${x.href}">${x.button}</a></div><aside class="kvl-avc-ranking"><div class="kvl-avc-ranking-panel"><h3>${x.gender==='men'?'남자부':'여자부'} 최종순위</h3><div class="kvl-rank-list" data-hub-rank="${x.gender}">${rankLines(x.ranks,x.gender==='men')}</div><p class="kvl-rank-note">${x.note}</p></div></aside>`});
+    fetch('data/competitions/avc-men-continental-2026.json?v=20260903-4',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(data=>{const ranks=finishFromMatches(data.matches);if(!ranks)return;const root=document.querySelector('[data-hub-rank="men"]');if(root)root.innerHTML=rankLines(ranks,false);const note=root?.parentElement?.querySelector('.kvl-rank-note');if(note)note.textContent='최종 결과 반영'}).catch(()=>{});
   };
 
+  const addGenderSwitch=()=>{
+    const hero=document.querySelector('.avc-hero');if(!hero||document.querySelector('.avc-gender-switch-runtime'))return;
+    const nav=document.createElement('nav');nav.className='avc-gender-switch-runtime';nav.setAttribute('aria-label','AVC 대륙선수권 성별 전환');nav.innerHTML=`<span class="label">AVC CONTINENTAL 2026</span><span class="tabs"><a data-gender="men" class="${current==='men'?'is-active':''}" href="international-competition-avc-men-continental-2026.html">MEN · 남자부</a><a data-gender="women" class="${current==='women'?'is-active':''}" href="international-competition-avc-women-continental-2026.html">WOMEN · 여자부</a></span>`;hero.insertAdjacentElement('afterend',nav);
+  };
+
+  const buildParticipants=()=>{
+    if(document.getElementById('teams'))return;
+    const sources=document.getElementById('sources');if(!sources)return;
+    const section=document.createElement('section');section.id='teams';section.className='avc-section avc-view';section.innerHTML=`<div class="avc-section-head"><div><p class="eyebrow">PARTICIPATING NATIONS</p><h2>참가국</h2></div><p>3개 조 · 12개국</p></div><div class="avc-participant-grid">${countries[current].map(([pool,ko,en,flag])=>`<article class="avc-country-card"><img src="https://flagcdn.com/w80/${flag}.png" alt="${ko} 국기" loading="lazy"><div class="avc-country-copy"><strong>${ko}</strong><small>${en}</small></div><span class="avc-country-pool">${pool}조</span></article>`).join('')}</div>`;sources.insertAdjacentElement('beforebegin',section);
+  };
+
+  const rebuildOverview=()=>{
+    if(current!=='women')return;
+    const kpis=document.querySelector('#overview .avc-kpis');if(kpis)kpis.innerHTML='<article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article>';
+  };
+
+  const rebuildNavigation=()=>{
+    const nav=document.querySelector('.avc-jump');if(!nav)return;
+    const groups=nav.querySelector('[data-view="groups"]'),knockout=nav.querySelector('[data-view="knockout"]'),sources=nav.querySelector('[data-view="sources"]');if(groups)groups.textContent='조별순위';if(knockout)knockout.textContent='최종순위';
+    if(!nav.querySelector('[data-view="teams"]')){const a=document.createElement('a');a.dataset.view='teams';a.href='?view=teams';a.textContent='참가국';sources?nav.insertBefore(a,sources):nav.appendChild(a)}
+  };
+
+  const rebuildStandings=()=>{
+    const groups=document.getElementById('groups');if(groups){const h2=groups.querySelector('.avc-section-head h2');if(h2)h2.textContent='조별 순위';const p=groups.querySelector('.avc-section-head>p');if(p)p.textContent=current==='men'?'3개 조 · 각 4개국 · 경기결과 기준':'조별리그 최종 결과 · 8강 진출 시드'}
+    const final=document.getElementById('knockout');if(!final)return;
+    const h2=final.querySelector('.avc-section-head h2');if(h2)h2.textContent='최종 순위';const eye=final.querySelector('.avc-section-head .eyebrow');if(eye)eye.textContent='FINAL STANDINGS';const p=final.querySelector('.avc-section-head>p');if(p)p.textContent=current==='men'?'최종 순위와 결선 토너먼트를 함께 확인합니다.':'최종 순위 · 8강부터 결승까지 실제 결과';
+    const bracket=document.getElementById('knockoutRoot');if(!bracket)return;
+    let block=final.querySelector('.avc-final-block');if(!block){block=document.createElement('div');block.className='avc-final-block';block.innerHTML='<div class="avc-final-block-title"><p class="eyebrow">FINAL RANKING</p><h3>최종 순위</h3></div>';bracket.insertAdjacentElement('beforebegin',block)}
+    if(current==='women'){
+      const podium=document.getElementById('podiumRoot');if(podium)block.appendChild(podium);
+    }else if(!block.querySelector('.avc-final-pending')){
+      const pending=document.createElement('div');pending.className='avc-final-pending';pending.textContent='대회 종료 후 최종 순위가 반영됩니다.';block.appendChild(pending);
+      fetch('data/competitions/avc-men-continental-2026.json?v=20260903-4',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(data=>{const ranks=finishFromMatches(data.matches);if(!ranks)return;pending.outerHTML=`<div class="avc-podium">${ranks.map((team,i)=>`<article class="avc-podium-card"><span class="avc-podium-rank">${i+1}</span><div class="avc-podium-copy"><strong>${team}</strong><small>${['우승','준우승','3위','4위'][i]}</small></div></article>`).join('')}</div>`}).catch(()=>{});
+    }
+    if(!final.querySelector('.avc-knockout-subhead')){const sub=document.createElement('div');sub.className='avc-knockout-subhead';sub.innerHTML='<div><p class="eyebrow">KNOCKOUT BRACKET</p><h3>결선 토너먼트</h3></div><p>8강 → 준결승 → 결승</p>';bracket.insertAdjacentElement('beforebegin',sub)}
+  };
+
+  const syncView=()=>{
+    const requested=new URLSearchParams(location.search).get('view')||'overview';const valid=new Set(['overview','schedule','groups','knockout','teams','sources']);const view=valid.has(requested)?requested:'overview';document.querySelectorAll('.avc-view').forEach(s=>s.classList.toggle('is-active',s.id===view));document.querySelectorAll('.avc-jump a[data-view]').forEach(a=>{const active=a.dataset.view===view;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')})
+  };
+
+  const decorateDetail=()=>{document.body.dataset.avcGender=current;addGenderSwitch();buildParticipants();rebuildOverview();rebuildNavigation();rebuildStandings();syncView()};
+  const apply=()=>{ensureStyle();current==='hub'?decorateHub():decorateDetail()};
   if(document.readyState==='loading')addEventListener('DOMContentLoaded',apply,{once:true});else apply();
 })();
