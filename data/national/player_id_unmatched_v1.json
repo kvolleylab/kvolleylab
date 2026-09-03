@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "updated_at": "2026-09-03",
   "match_rule": "Do not assign or create a Player ID when verified official sources conflict on birth date or when current identity continuity is not yet verified.",
   "checked_sources": [
@@ -15,15 +15,6 @@
     "GitHub data/master/player_master_229_v2.json",
     "GitHub data/master/player_master_international_v1.json"
   ],
-  "queue": [
-    {
-      "name_ko": "배준솔",
-      "birth_date": "2006-04-25",
-      "status": "birth_date_conflict_official_sources",
-      "national_events": ["KVL-NT-KOR-M-U19-2023-FIVB"],
-      "evidence": "대한배구협회 2023 U19 공식 명단은 2006-04-25, Drive 2025-2026 V-리그 공식 미디어가이드는 현대캐피탈 배준솔을 2006-04-24로 표기. Volleybox 프로필은 2006-04-25로 표기하지만 비공식 DB이므로 공식자료 충돌 해소 근거로 단독 사용하지 않음.",
-      "same_name_candidate": {"team":"현대캐피탈","position":"S","school":"순천제일고등학교","vleague_birth_date":"2006-04-24"},
-      "next_action": "Recheck KOVO original player registration/profile or a Hyundai Capital official player profile with full birth date. Do not issue or link a Player ID until the one-day DOB discrepancy is resolved."
-    }
-  ]
+  "resolved_summary": "All currently reviewed national-team Player ID candidates are resolved. Bae Junsol canonical birth date is 2006-04-25 based on matching KVA and Volleyball World official U19 records; the KOVO media-guide 2006-04-24 value remains preserved as a source-level discrepancy.",
+  "queue": []
 }
