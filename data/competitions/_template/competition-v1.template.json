@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "kvl-competition-v1",
+  "competitionId": "KVL-INT-YYYY-000",
+  "slug": "example-competition-yyyy",
+  "competitionType": "international",
+  "category": "international",
+  "gender": "men",
+  "titleKo": "대회명 YYYY",
+  "titleEn": "Competition Name YYYY",
+  "eyebrow": "INTERNATIONAL COMPETITION",
+  "status": "upcoming",
+  "statusLabel": "대회 예정",
+  "startDate": "YYYY-MM-DD",
+  "endDate": "YYYY-MM-DD",
+  "location": {
+    "country": "개최국",
+    "city": "개최도시",
+    "venue": "경기장명"
+  },
+  "theme": {
+    "primary": "#17365D",
+    "primaryDark": "#0F2745",
+    "accent": "#C9A24A",
+    "accentDark": "#9A6D12",
+    "line": "#DBE2EA",
+    "soft": "#FFFDF7"
+  },
+  "labels": {
+    "overview": "한눈에 보기",
+    "schedule": "경기일정",
+    "groups": "조별순위",
+    "finalRanking": "최종순위",
+    "participants": "참가국",
+    "rosters": "선수명단",
+    "resources": "공식자료"
+  },
+  "features": {
+    "overview": true,
+    "schedule": true,
+    "groups": true,
+    "finalRanking": true,
+    "participants": true,
+    "rosters": true,
+    "resources": true,
+    "knockoutInsideFinalRanking": true
+  },
+  "overviewStats": [
+    {"label": "참가국", "value": "12", "unit": "개국"},
+    {"label": "조별리그", "value": "3", "unit": "개 조"},
+    {"label": "전체 경기", "value": "26", "unit": "경기"},
+    {"label": "8강 진출", "value": "8", "unit": "개국"}
+  ],
+  "sectionDescriptions": {
+    "overview": "대회 규모와 핵심 정보를 확인합니다.",
+    "schedule": "모든 시간은 K-Volley Lab 표시 기준으로 제공합니다.",
+    "groups": "공식 대회 규정에 따라 순위를 표시합니다.",
+    "finalRanking": "최종순위와 결선 토너먼트를 함께 확인합니다.",
+    "participants": "참가팀 정보를 확인합니다.",
+    "rosters": "공식 엔트리와 선수 프로필을 확인합니다.",
+    "resources": "공식 자료와 원문 출처를 확인합니다."
+  },
+  "data": {
+    "schedule": "data/competitions/example-schedule.json",
+    "groups": "data/competitions/example-groups.json",
+    "finalRanking": "data/competitions/example-final-ranking.json",
+    "participants": "data/competitions/example-participants.json",
+    "rosters": "data/competitions/example-rosters.json",
+    "resources": "data/competitions/example-resources.json"
+  },
+  "specialFeatures": []
+}
