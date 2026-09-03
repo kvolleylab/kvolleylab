@@ -1,4 +1,10 @@
 (()=>{
+  if(!document.querySelector('link[href*="kvl-competition-standard.css"]')){
+    const competitionStyle=document.createElement('link');
+    competitionStyle.rel='stylesheet';
+    competitionStyle.href='assets/css/kvl-competition-standard.css?v=20260904-1';
+    document.head.appendChild(competitionStyle);
+  }
   const MANIFEST='data/master/school_logo_manifest_2026.json?v=20260802-1';
   const normalize=value=>String(value||'').trim().replace(/\s+/g,'');
   const teamFromLogo=el=>{
