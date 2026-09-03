@@ -1,1 +1,78 @@
 .sc-team-logo.has-school-logo{display:inline-grid;place-items:center;overflow:hidden;background:#fff;border-color:#dbe3ec;color:transparent}.sc-team-logo.has-school-logo img{display:block;width:100%;height:100%;object-fit:contain;padding:2px;box-sizing:border-box}.sc-team-logo.has-school-logo:has(img){font-size:0}.sc-team-card .sc-team-logo.has-school-logo{background:#fff}.sc-champion .sc-team-logo.has-school-logo{box-shadow:0 4px 12px rgba(15,35,55,.10)}
+
+/* K-Volley Lab proprietary competition branding · 2026-09-03
+   Phase 1: all tournament categories use the INTERNATIONAL gold/navy mark.
+   Category-specific assets can be swapped later without changing card markup. */
+:root{
+  --kvl-logo-international:url("../images/brand/kvl-ball-international-gold.webp");
+  --kvl-logo-world:var(--kvl-logo-international);
+  --kvl-logo-avc:var(--kvl-logo-international);
+  --kvl-logo-domestic:var(--kvl-logo-international);
+  --kvl-logo-university:var(--kvl-logo-international);
+  --kvl-logo-youth:var(--kvl-logo-international);
+}
+
+/* Legacy/header fallback. The current desktop shell is the global sidebar. */
+.site-logo::before{
+  content:"";
+  display:inline-block;
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+  background:var(--kvl-logo-international) center/contain no-repeat;
+  vertical-align:middle;
+}
+
+/* Current global sidebar brand mark, directly before K-VOLLEY LAB. */
+.kvl-global-mark{
+  width:34px!important;
+  height:34px!important;
+  flex:0 0 34px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:var(--kvl-logo-international) center/contain no-repeat!important;
+  color:transparent!important;
+  font-size:0!important;
+  box-shadow:none!important;
+}
+
+/* Tournament list/card titles. Phase 1 deliberately uses one gold mark everywhere. */
+.competition-card h2::before,
+.dc-card h3::before,
+.uc-card-body h3::before{
+  content:"";
+  display:inline-block;
+  width:24px;
+  height:24px;
+  margin-right:9px;
+  background:var(--kvl-logo-international) center/contain no-repeat;
+  vertical-align:-5px;
+}
+.uc-card-body h3::before{width:26px;height:26px}
+
+/* Tournament dashboard/hero mark: visually retire event/federation artwork in favor of KVL. */
+.cd-competition-logo,
+.sc-competition-logo,
+.vnl-competition-logo,
+.uc-hero-logo{
+  background-color:transparent!important;
+  background-image:var(--kvl-logo-international)!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-size:contain!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+.cd-competition-logo > *,
+.sc-competition-logo > *,
+.vnl-competition-logo > *,
+.uc-hero-logo > *{
+  display:none!important;
+}
+
+@media(max-width:760px){
+  .site-logo::before{width:25px;height:25px;flex-basis:25px}
+  .competition-card h2::before,
+  .dc-card h3::before,
+  .uc-card-body h3::before{width:22px;height:22px;margin-right:7px;vertical-align:-4px}
+}
