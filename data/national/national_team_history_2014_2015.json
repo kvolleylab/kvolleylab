@@ -1,5 +1,5 @@
 {
-  "schema_version":"1.3",
+  "schema_version":"1.4",
   "updated_at":"2026-09-03",
   "scope":{"country":"KOR","gender":"M","period":"2014-2015"},
   "sources":[
@@ -8,7 +8,8 @@
     {"source_id":"KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014","publisher":"Asian Volleyball Confederation","source_type":"official_archive_index","url":"https://asianvolleyball.net/new/asian-under-ages-volleyball-championships/"},
     {"source_id":"KVL-SRC-KOR-U20-2014-ROSTER-ARCHIVE","publisher":"DajungDasom historical volleyball roster archive","source_type":"historical_federation_roster_copy","url":"https://dajungdasom.tistory.com/1727"},
     {"source_id":"KVL-SRC-AVC-U23-HISTORY-2015","publisher":"Asian Volleyball Confederation","source_type":"official_history","url":"https://asianvolleyball.net/new/asian-mens-u23-volleyball-championship/"},
-    {"source_id":"KVL-SRC-KOR-U23-2015-ROSTER-ARCHIVE","publisher":"DajungDasom historical volleyball roster archive","source_type":"historical_federation_roster_copy","url":"https://dajungdasom.tistory.com/1752"}
+    {"source_id":"KVL-SRC-KOR-U23-2015-ROSTER-ARCHIVE","publisher":"DajungDasom historical volleyball roster archive","source_type":"historical_federation_roster_copy","url":"https://dajungdasom.tistory.com/1752"},
+    {"source_id":"KVL-SRC-KB-STARS-JEONG-DONGGEUN","publisher":"KB손해보험 스타즈 배구단","source_type":"official_player_profile","url":"https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=104"}
   ],
   "events":[
     {"event_id":"KVL-NT-KOR-M-U18-2014-AVC","year":2014,"level":"U18","competition_name_ko":"2014 아시아 남자 U18 배구선수권대회","organization":"AVC","result":"6위","roster_status":"official_bulletin_archive_identified_roster_research_pending","source_ids":["KVL-SRC-AVC-U18-HISTORY","KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014"]},
@@ -18,7 +19,7 @@
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","year":2015,"level":"U23","competition_name_ko":"2015 아시아 남자 U23 배구선수권대회","organization":"AVC","head_coach":"홍해천","result":"2위","roster_status":"roster_reconstructed_historical_federation_copy_needs_bulletin_crosscheck","player_id_link_status":"partial","source_ids":["KVL-SRC-AVC-U23-HISTORY-2015","KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014","KVL-SRC-KOR-U23-2015-ROSTER-ARCHIVE"],"note":"2015-04-08 기준 12명 엔트리를 국내 역사 대표명단 아카이브에서 복원. AVC Bulletin No.1 원문 대조 후 verified_official 승격 예정."}
   ],
   "rosters":[
-    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":1,"name_ko":"정동근","birth_date":"1995-01-24","height_cm":192,"position":"OP","club_snapshot":"경기대","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":1,"name_ko":"정동근","birth_date":"1995-01-24","height_cm":192,"position":"OP","club_snapshot":"경기대","player_id":"KVL-P-001557"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":3,"name_ko":"차지환","birth_date":"1996-05-09","height_cm":200,"position":"OH","club_snapshot":"인하사대부고","player_id":"KVL-P-001543"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":4,"name_ko":"김형진","birth_date":"1995-03-10","height_cm":186,"position":"S","club_snapshot":"홍익대","player_id":"KVL-P-001553"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":5,"name_ko":"이상욱","birth_date":"1995-07-08","height_cm":185,"position":"L","club_snapshot":"성균관대","player_id":"KVL-P-001551"},
@@ -30,7 +31,7 @@
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":14,"name_ko":"황택의","birth_date":"1996-11-12","height_cm":190,"position":"S","club_snapshot":"송산고","player_id":"KVL-P-001545"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":16,"name_ko":"성영창","birth_date":"1996-06-11","height_cm":189,"position":"OH","club_snapshot":"남성고","player_id":null},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":18,"name_ko":"전진선","birth_date":"1996-09-11","height_cm":196,"position":"MB","club_snapshot":"진주동명고","player_id":"KVL-P-001546"},
-    {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":1,"name_ko":"정동근","birth_date":"1995-01-24","height_cm":192,"position":"OP","club_snapshot":"경기대","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":1,"name_ko":"정동근","birth_date":"1995-01-24","height_cm":192,"position":"OP","club_snapshot":"경기대","player_id":"KVL-P-001557"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":2,"name_ko":"박지윤","birth_date":"1996-03-04","height_cm":198,"position":"MB","club_snapshot":"남성고","player_id":null},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":3,"name_ko":"하승우","birth_date":"1995-06-02","height_cm":185,"position":"S","club_snapshot":"중부대","player_id":"KVL-P-001554"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":4,"name_ko":"이승원","birth_date":"1993-04-11","height_cm":188,"position":"S","club_snapshot":"현대캐피탈","player_id":"KVL-P-001548"},
@@ -48,6 +49,7 @@
     "2014 U18 결과는 AVC 공식 기록으로 확정됐으나 선수 로스터는 원문 확보 전까지 비워둔다.",
     "2015 U23 12명 엔트리는 역사 대표명단 아카이브 복원 상태이며 AVC Bulletin 직접 대조가 남아 있다.",
     "2015 U19/U21 세계선수권 한국 참가/출전권 여부는 1차 FIVB 또는 협회 자료 확보 전까지 research_pending으로 유지한다.",
-    "Player IDs KVL-P-001543 through KVL-P-001556 were synchronized only after separate official-source name + birth-date checks in the KVL Player ID ledger; unresolved names remain null rather than being inferred."
+    "Player IDs KVL-P-001543 through KVL-P-001557 were synchronized only after separate official-source name + birth-date checks in the KVL Player ID ledger; unresolved names remain null rather than being inferred.",
+    "정동근 KVL-P-001557은 KB손해보험 스타즈 공식 선수 프로필의 이름·생년월일·경기대 이력으로 exact match 확인 후 연결했다."
   ]
 }
