@@ -7,13 +7,15 @@
   --sh-podium-title-size:17px;
   --sh-rank-size:15px;
   --sh-card-padding:24px;
+  --sh-logo-international:url("../images/brand/kvl-ball-international-gold.webp");
+  --sh-logo-domestic:url("../images/brand/kvl-ball-domestic-navywhite.webp?v=20260903-2");
 }
 .school-competitions-hub-page .dc-main{display:none}
 .sh-main{max-width:1200px;margin:0 auto;padding:42px 28px 72px}
 .sh-hero{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:34px 38px;border:1px solid #dbe2ea;border-radius:30px;background:linear-gradient(135deg,#17365d,#0f2745);color:#fff}
 .sh-hero-copy{display:flex;align-items:center;gap:18px}
-.sh-hero-logo{width:82px;height:82px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:7px;border-radius:20px;background:rgba(255,255,255,.96);overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.12)}
-.sh-hero-logo span{display:grid;place-items:center;width:68px;height:68px;border-radius:12px;background:#f7f9fc;font-size:38px}
+.sh-hero-logo{width:82px;height:82px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;padding:0;border:0;border-radius:20px;background:var(--sh-logo-international) center/contain no-repeat;overflow:hidden;box-shadow:none}
+.sh-hero-logo span{display:none!important}
 .sh-hero p{margin:0;color:#dbe7f5}
 .sh-hero .eyebrow{margin-bottom:8px;color:#c9a24a;font-size:12px;font-weight:900;letter-spacing:.12em}
 .sh-hero h1{margin:0 0 10px;color:#fff!important;font-size:38px}
@@ -44,6 +46,7 @@
 .sh-status.live{background:#fee2e2;color:#b91c1c}
 .sh-status.upcoming{background:#eef4fb;color:#17365d}
 .sh-card-body h3{margin:0 0 10px;color:#17365d;font-size:var(--sh-title-size);line-height:1.35;transition:color .16s ease}
+.sh-card-body h3::before{content:"";display:inline-block;width:24px;height:24px;margin-right:9px;background:var(--sh-logo-domestic) center/contain no-repeat;vertical-align:-5px}
 .sh-card-body p{margin:0;color:#64748b;line-height:1.65;font-size:var(--sh-official-name-size);white-space:nowrap}
 .sh-date{margin-top:15px;font-size:var(--sh-date-size);font-weight:800;color:#334155;white-space:nowrap}
 .sh-card-link{display:inline-flex;margin-top:auto;padding-top:20px;color:#9a6d12;font-size:16px;font-weight:900}
@@ -70,14 +73,14 @@
   .sh-main{padding:24px 14px 50px}
   .sh-hero{align-items:flex-start;flex-direction:column;padding:24px}
   .sh-hero-copy{align-items:center}
-  .sh-hero-logo{width:68px;height:68px;padding:6px;border-radius:17px}
-  .sh-hero-logo span{width:56px;height:56px;border-radius:10px;font-size:32px}
+  .sh-hero-logo{width:68px;height:68px;padding:0;border-radius:17px}
   .sh-hero h1{font-size:30px}
   .sh-year-title-row{align-items:flex-start;flex-direction:column;gap:9px}
   .sh-champion-summary{gap:6px}
   .sh-champion-summary span{font-size:10px;padding:5px 8px;white-space:normal}
   .sh-card-main{display:flex;flex-direction:column}
   .sh-podiums{grid-template-columns:1fr 1fr;border-left:0;border-top:1px solid #e2e8f0;padding:18px}
+  .sh-card-body h3::before{width:22px;height:22px;margin-right:7px;vertical-align:-4px}
   .sh-card-body p,.sh-date{white-space:normal}
   .sh-card-link{padding-top:16px}
 }
