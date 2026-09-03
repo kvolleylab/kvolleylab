@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "updated_at": "2026-09-03",
-  "match_rule": "name_ko + birth_date exact match against latest Drive KVL Player Master",
+  "match_rule": "name_ko + birth_date exact match against verified KVL sources; existing Player Master first, new permanent Player ID only after official-source identity cross-check",
   "links": [
     {"name_ko":"김대환","birth_date":"2005-05-20","player_id":"KVL-P-000025"},
     {"name_ko":"양승민","birth_date":"2005-12-08","player_id":"KVL-P-000053"},
@@ -28,6 +28,17 @@
     {"name_ko":"윤하준","birth_date":"2006-03-25","player_id":"KVL-P-001510"},
     {"name_ko":"이우진","birth_date":"2005-05-16","player_id":"KVL-P-001511"},
     {"name_ko":"이용재","birth_date":"2005-06-08","player_id":"KVL-P-001512"},
-    {"name_ko":"배준솔","birth_date":"2006-04-25","player_id":"KVL-P-001513"}
+    {"name_ko":"배준솔","birth_date":"2006-04-25","player_id":"KVL-P-001513"},
+    {"name_ko":"정한용","birth_date":"2001-07-31","player_id":"KVL-P-001514"},
+    {"name_ko":"신호진","birth_date":"2001-02-26","player_id":"KVL-P-001515"},
+    {"name_ko":"박승수","birth_date":"2002-01-30","player_id":"KVL-P-001516"},
+    {"name_ko":"박경민","birth_date":"1999-06-05","player_id":"KVL-P-001517"},
+    {"name_ko":"임성진","birth_date":"1999-01-11","player_id":"KVL-P-001518"},
+    {"name_ko":"김선호","birth_date":"1999-01-18","player_id":"KVL-P-001519"},
+    {"name_ko":"임동혁","birth_date":"1999-03-09","player_id":"KVL-P-001520"},
+    {"name_ko":"김지한","birth_date":"1999-09-16","player_id":"KVL-P-001521"},
+    {"name_ko":"정태준","birth_date":"2000-03-14","player_id":"KVL-P-001522"},
+    {"name_ko":"김우진","birth_date":"2000-08-13","player_id":"KVL-P-001523"},
+    {"name_ko":"박태성","birth_date":"2001-04-09","player_id":"KVL-P-001524"}
   ]
 }
