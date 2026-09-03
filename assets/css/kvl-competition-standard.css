@@ -1,0 +1,34 @@
+/* K-Volley Lab shared competition UI standards.
+   Common rules belong here so competition pages do not need the same patch repeatedly. */
+
+/* Competition hub: category title uses the KVL international ball mark. */
+body[data-avc-gender="hub"] .hub-hero h1{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+body[data-avc-gender="hub"] .hub-hero h1::before{
+  content:"";
+  display:block;
+  flex:0 0 auto;
+  width:46px;
+  height:46px;
+  background:url("../images/brand/kvl-ball-international-gold.webp") center/contain no-repeat;
+}
+
+/* Snapshot/KPI cards: number and unit always stay on the same baseline. */
+.avc-kpis strong{
+  display:inline-block!important;
+  margin-top:10px!important;
+  vertical-align:baseline!important;
+}
+.avc-kpis small{
+  display:inline-block!important;
+  margin:0!important;
+  vertical-align:baseline!important;
+}
+
+@media(max-width:680px){
+  body[data-avc-gender="hub"] .hub-hero h1{gap:10px}
+  body[data-avc-gender="hub"] .hub-hero h1::before{width:36px;height:36px}
+}
