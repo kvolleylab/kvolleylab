@@ -1,5 +1,5 @@
 {
-  "schema_version":"1.7",
+  "schema_version":"1.8",
   "updated_at":"2026-09-03",
   "scope":{"country":"KOR","gender":"M","period":"2014-2015"},
   "sources":[
@@ -12,11 +12,12 @@
     {"source_id":"KVL-SRC-KB-STARS-JEONG-DONGGEUN","publisher":"KB손해보험 스타즈 배구단","source_type":"official_player_profile","url":"https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=104"},
     {"source_id":"KVL-SRC-KOVO-2024-2025-KIM-JEONGYUN","publisher":"한국배구연맹","source_type":"official_media_guide","url":"https://drive.google.com/file/d/1zsdNAL-4i1KZNcCkDsbyoeK6vQmON2Tx/view"},
     {"source_id":"KVL-SRC-KOVO-2019-2020-LEE-JIHOON","publisher":"한국배구연맹","source_type":"official_media_guide","url":"https://drive.google.com/file/d/1wpy-9vzYrA2I6LwMJ5GEwYYTp61VschC/view"},
-    {"source_id":"KVL-SRC-KOVO-2018-2019-PARK-SANGJUN","publisher":"한국배구연맹","source_type":"official_media_guide","url":"https://drive.google.com/file/d/1O0FETTr_CAZBlO1cpLDZ7HYEyZEqZAeO/view"}
+    {"source_id":"KVL-SRC-KOVO-2018-2019-PARK-SANGJUN","publisher":"한국배구연맹","source_type":"official_media_guide","url":"https://drive.google.com/file/d/1O0FETTr_CAZBlO1cpLDZ7HYEyZEqZAeO/view"},
+    {"source_id":"KVL-SRC-AVC-U20-2014-VIS-TEAM-COMPOSITION","publisher":"FIVB VIS / Asian Volleyball Championship document mirror at Volleyball Federation of India","source_type":"official_vis_team_composition_mirror","url":"https://www.volleyballindia.com/INT%20NL%20EVENTS/ajm/1.pdf"}
   ],
   "events":[
     {"event_id":"KVL-NT-KOR-M-U18-2014-AVC","year":2014,"level":"U18","competition_name_ko":"2014 아시아 남자 U18 배구선수권대회","organization":"AVC","result":"6위","roster_status":"official_bulletin_archive_identified_roster_research_pending","source_ids":["KVL-SRC-AVC-U18-HISTORY","KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014"]},
-    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","year":2014,"level":"U20","competition_name_ko":"2014 아시아 남자 U20 배구선수권대회","organization":"AVC","head_coach":"노진수","result":"3위","roster_status":"roster_reconstructed_historical_federation_copy_needs_bulletin_crosscheck","player_id_link_status":"partial","source_ids":["KVL-SRC-AVC-U20-HISTORY-2014","KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014","KVL-SRC-KOR-U20-2014-ROSTER-ARCHIVE"],"note":"2014-09-01 기준 최종 12명 엔트리를 국내 역사 대표명단 아카이브에서 복원. AVC Squads/Team Registration 원문 대조 후 verified_official 승격 예정."},
+    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","year":2014,"level":"U20","competition_name_ko":"2014 아시아 남자 U20 배구선수권대회","organization":"AVC","head_coach":"노진수","result":"3위","roster_status":"roster_reconstructed_historical_federation_copy_needs_bulletin_crosscheck","player_id_link_status":"partial","source_ids":["KVL-SRC-AVC-U20-HISTORY-2014","KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014","KVL-SRC-KOR-U20-2014-ROSTER-ARCHIVE","KVL-SRC-AVC-U20-2014-VIS-TEAM-COMPOSITION"],"note":"2014-09-01 기준 최종 12명 엔트리를 국내 역사 대표명단 아카이브에서 복원. 공식 FIVB VIS Team Composition 미러로 선수 identity 필드를 재대조했으며 AVC 원본 Squads/Team Registration 직접 URL 대조 후 verified_official 승격 예정."},
     {"event_id":"KVL-NT-KOR-M-U19-2015-FIVB","year":2015,"level":"U19","competition_name_ko":"2015 FIVB 남자 U19 세계선수권대회","organization":"FIVB","result":null,"participation_status":"research_pending","roster_status":"qualification_and_participation_research_pending","source_ids":[]},
     {"event_id":"KVL-NT-KOR-M-U21-2015-FIVB","year":2015,"level":"U21","competition_name_ko":"2015 FIVB 남자 U21 세계선수권대회","organization":"FIVB","result":null,"participation_status":"research_pending","roster_status":"qualification_and_participation_research_pending","source_ids":[]},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","year":2015,"level":"U23","competition_name_ko":"2015 아시아 남자 U23 배구선수권대회","organization":"AVC","head_coach":"홍해천","result":"2위","roster_status":"roster_reconstructed_historical_federation_copy_needs_bulletin_crosscheck","player_id_link_status":"partial","source_ids":["KVL-SRC-AVC-U23-HISTORY-2015","KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014","KVL-SRC-KOR-U23-2015-ROSTER-ARCHIVE"],"note":"2015-04-08 기준 12명 엔트리를 국내 역사 대표명단 아카이브에서 복원. AVC Bulletin No.1 원문 대조 후 verified_official 승격 예정."}
@@ -32,7 +33,7 @@
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":12,"name_ko":"황경민","birth_date":"1996-04-10","height_cm":194,"position":"OP","club_snapshot":"송림고","player_id":"KVL-P-001550"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":13,"name_ko":"한성정","birth_date":"1996-07-25","height_cm":195,"position":"OH","club_snapshot":"옥천고","player_id":"KVL-P-001544"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":14,"name_ko":"황택의","birth_date":"1996-11-12","height_cm":190,"position":"S","club_snapshot":"송산고","player_id":"KVL-P-001545"},
-    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":16,"name_ko":"성영창","birth_date":"1996-06-11","height_cm":189,"position":"OH","club_snapshot":"남성고","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":16,"name_ko":"성영창","birth_date":"1996-06-11","height_cm":189,"position":"OH","club_snapshot":"남성고","player_id":"KVL-P-001562"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":18,"name_ko":"전진선","birth_date":"1996-09-11","height_cm":196,"position":"MB","club_snapshot":"진주동명고","player_id":"KVL-P-001546"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":1,"name_ko":"정동근","birth_date":"1995-01-24","height_cm":192,"position":"OP","club_snapshot":"경기대","player_id":"KVL-P-001557"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":2,"name_ko":"박지윤","birth_date":"1996-03-04","height_cm":198,"position":"MB","club_snapshot":"남성고","player_id":"KVL-P-001558"},
@@ -40,7 +41,7 @@
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":4,"name_ko":"이승원","birth_date":"1993-04-11","height_cm":188,"position":"S","club_snapshot":"현대캐피탈","player_id":"KVL-P-001548"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":6,"name_ko":"김성민","birth_date":"1994-08-12","height_cm":191,"position":"OP","club_snapshot":"인하대","player_id":"KVL-P-001555"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":7,"name_ko":"손태훈","birth_date":"1993-09-15","height_cm":195,"position":"MB","club_snapshot":"조선대","player_id":"KVL-P-001556"},
-    {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":8,"name_ko":"성영창","birth_date":"1996-06-11","height_cm":189,"position":"OH","club_snapshot":"성균관대","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":8,"name_ko":"성영창","birth_date":"1996-06-11","height_cm":189,"position":"OH","club_snapshot":"성균관대","player_id":"KVL-P-001562"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":9,"name_ko":"함형진","birth_date":"1995-06-25","height_cm":187,"position":"OH","club_snapshot":"중부대","player_id":"KVL-P-001549"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":11,"name_ko":"김인혁","birth_date":"1995-07-14","height_cm":192,"position":"OP","club_snapshot":"경남과학기술대","player_id":"KVL-P-001552"},
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":13,"name_ko":"이지훈","birth_date":"1995-12-08","height_cm":182,"position":"L","club_snapshot":"중부대","player_id":"KVL-P-001560"},
@@ -48,15 +49,16 @@
     {"event_id":"KVL-NT-KOR-M-U23-2015-AVC","shirt_no":17,"name_ko":"박상준","birth_date":"1995-02-19","height_cm":198,"position":"MB","club_snapshot":"중부대","player_id":"KVL-P-001561"}
   ],
   "notes":[
-    "2014 U20 최종 12명 로스터를 2014-09-01 기준 역사 대표명단 아카이브에서 복원했다. 공식 AVC Squads/Team Registration 원문 교차검증은 남아 있다.",
+    "2014 U20 최종 12명 로스터를 2014-09-01 기준 역사 대표명단 아카이브에서 복원했다. 공식 FIVB VIS Team Composition 미러로 선수 identity 필드를 재대조했다.",
     "2014 U18 결과는 AVC 공식 기록으로 확정됐으나 선수 로스터는 원문 확보 전까지 비워둔다.",
     "2015 U23 12명 엔트리는 역사 대표명단 아카이브 복원 상태이며 AVC Bulletin 직접 대조가 남아 있다.",
     "2015 U19/U21 세계선수권 한국 참가/출전권 여부는 1차 FIVB 또는 협회 자료 확보 전까지 research_pending으로 유지한다.",
-    "Player IDs KVL-P-001543 through KVL-P-001561 were synchronized only after separate official-source name + birth-date checks in the KVL Player ID ledger; unresolved names remain null rather than being inferred.",
+    "Player IDs KVL-P-001543 through KVL-P-001562 were synchronized only after separate official-source name + birth-date checks in the KVL Player ID ledger; no 2014-2015 Player ID candidate remains unresolved.",
     "정동근 KVL-P-001557은 KB손해보험 스타즈 공식 선수 프로필의 이름·생년월일·경기대 이력으로 exact match 확인 후 연결했다.",
     "박지윤 KVL-P-001558은 KOVO 2025-2026 공식 미디어가이드의 이름·생년월일·성균관대 및 프로 드래프트 이력으로 exact match 확인 후 연결했다.",
     "김정윤 KVL-P-001559는 KOVO 2024-2025 공식 미디어가이드의 이름·생년월일·경북사대부고-성균관대 이력으로 exact match 확인 후 연결했다.",
     "이지훈 KVL-P-001560은 KOVO 2019-2020 공식 미디어가이드의 이름·생년월일·중부대·대한항공 프로필로 exact match 확인 후 연결했다.",
-    "박상준 KVL-P-001561은 KOVO 2018-2019 공식 미디어가이드의 이름·생년월일·삼성화재 신인 프로필로 exact match 확인 후 연결했다."
+    "박상준 KVL-P-001561은 KOVO 2018-2019 공식 미디어가이드의 이름·생년월일·삼성화재 신인 프로필로 exact match 확인 후 연결했다.",
+    "성영창 KVL-P-001562는 2014 아시아 U20 FIVB VIS Team Composition의 SUNG Youngchang, DOB 11/6/1996, No.16 및 공식 VIS 경기기록을 교차확인 후 연결했다. 2015 FIVB U23의 황동선은 동일 DOB의 별도 선수로 유지한다."
   ]
 }
