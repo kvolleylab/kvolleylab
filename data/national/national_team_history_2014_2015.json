@@ -1,5 +1,5 @@
 {
-  "schema_version":"1.4",
+  "schema_version":"1.5",
   "updated_at":"2026-09-03",
   "scope":{"country":"KOR","gender":"M","period":"2014-2015"},
   "sources":[
@@ -9,7 +9,8 @@
     {"source_id":"KVL-SRC-KOR-U20-2014-ROSTER-ARCHIVE","publisher":"DajungDasom historical volleyball roster archive","source_type":"historical_federation_roster_copy","url":"https://dajungdasom.tistory.com/1727"},
     {"source_id":"KVL-SRC-AVC-U23-HISTORY-2015","publisher":"Asian Volleyball Confederation","source_type":"official_history","url":"https://asianvolleyball.net/new/asian-mens-u23-volleyball-championship/"},
     {"source_id":"KVL-SRC-KOR-U23-2015-ROSTER-ARCHIVE","publisher":"DajungDasom historical volleyball roster archive","source_type":"historical_federation_roster_copy","url":"https://dajungdasom.tistory.com/1752"},
-    {"source_id":"KVL-SRC-KB-STARS-JEONG-DONGGEUN","publisher":"KB손해보험 스타즈 배구단","source_type":"official_player_profile","url":"https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=104"}
+    {"source_id":"KVL-SRC-KB-STARS-JEONG-DONGGEUN","publisher":"KB손해보험 스타즈 배구단","source_type":"official_player_profile","url":"https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=104"},
+    {"source_id":"KVL-SRC-KOVO-2024-2025-KIM-JEONGYUN","publisher":"한국배구연맹","source_type":"official_media_guide","url":"https://drive.google.com/file/d/1zsdNAL-4i1KZNcCkDsbyoeK6vQmON2Tx/view"}
   ],
   "events":[
     {"event_id":"KVL-NT-KOR-M-U18-2014-AVC","year":2014,"level":"U18","competition_name_ko":"2014 아시아 남자 U18 배구선수권대회","organization":"AVC","result":"6위","roster_status":"official_bulletin_archive_identified_roster_research_pending","source_ids":["KVL-SRC-AVC-U18-HISTORY","KVL-SRC-AVC-UNDERAGE-BULLETIN-INDEX-2014"]},
@@ -25,7 +26,7 @@
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":5,"name_ko":"이상욱","birth_date":"1995-07-08","height_cm":185,"position":"L","club_snapshot":"성균관대","player_id":"KVL-P-001551"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":7,"name_ko":"박지윤","birth_date":"1996-03-04","height_cm":198,"position":"MB","club_snapshot":"남성고","player_id":"KVL-P-001558"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":9,"name_ko":"함형진","birth_date":"1995-06-25","height_cm":187,"position":"OH","club_snapshot":"중부대","player_id":"KVL-P-001549"},
-    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":10,"name_ko":"김정윤","birth_date":"1995-10-14","height_cm":198,"position":"MB","club_snapshot":"경북사대부고","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":10,"name_ko":"김정윤","birth_date":"1995-10-14","height_cm":198,"position":"MB","club_snapshot":"경북사대부고","player_id":"KVL-P-001559"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":12,"name_ko":"황경민","birth_date":"1996-04-10","height_cm":194,"position":"OP","club_snapshot":"송림고","player_id":"KVL-P-001550"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":13,"name_ko":"한성정","birth_date":"1996-07-25","height_cm":195,"position":"OH","club_snapshot":"옥천고","player_id":"KVL-P-001544"},
     {"event_id":"KVL-NT-KOR-M-U20-2014-AVC","shirt_no":14,"name_ko":"황택의","birth_date":"1996-11-12","height_cm":190,"position":"S","club_snapshot":"송산고","player_id":"KVL-P-001545"},
@@ -49,8 +50,9 @@
     "2014 U18 결과는 AVC 공식 기록으로 확정됐으나 선수 로스터는 원문 확보 전까지 비워둔다.",
     "2015 U23 12명 엔트리는 역사 대표명단 아카이브 복원 상태이며 AVC Bulletin 직접 대조가 남아 있다.",
     "2015 U19/U21 세계선수권 한국 참가/출전권 여부는 1차 FIVB 또는 협회 자료 확보 전까지 research_pending으로 유지한다.",
-    "Player IDs KVL-P-001543 through KVL-P-001558 were synchronized only after separate official-source name + birth-date checks in the KVL Player ID ledger; unresolved names remain null rather than being inferred.",
+    "Player IDs KVL-P-001543 through KVL-P-001559 were synchronized only after separate official-source name + birth-date checks in the KVL Player ID ledger; unresolved names remain null rather than being inferred.",
     "정동근 KVL-P-001557은 KB손해보험 스타즈 공식 선수 프로필의 이름·생년월일·경기대 이력으로 exact match 확인 후 연결했다.",
-    "박지윤 KVL-P-001558은 KOVO 2025-2026 공식 미디어가이드의 이름·생년월일·성균관대 및 프로 드래프트 이력으로 exact match 확인 후 연결했다."
+    "박지윤 KVL-P-001558은 KOVO 2025-2026 공식 미디어가이드의 이름·생년월일·성균관대 및 프로 드래프트 이력으로 exact match 확인 후 연결했다.",
+    "김정윤 KVL-P-001559는 KOVO 2024-2025 공식 미디어가이드의 이름·생년월일·경북사대부고-성균관대 이력으로 exact match 확인 후 연결했다."
   ]
 }
