@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "updated_at": "2026-09-03",
   "scope": {
     "country": "KOR",
@@ -18,6 +18,12 @@
       "publisher": "TheSports.org",
       "source_type": "results_archive",
       "url": "https://www.the-sports.org/volleyball-republic-of-korea-u-23-results-identity-equ55871.html"
+    },
+    {
+      "source_id": "KVL-SRC-KOVO-2019-2020-LEE-JIHOON",
+      "publisher": "한국배구연맹",
+      "source_type": "official_media_guide",
+      "url": "https://drive.google.com/file/d/1wpy-9vzYrA2I6LwMJ5GEwYYTp61VschC/view"
     }
   ],
   "events": [
@@ -40,118 +46,22 @@
     }
   ],
   "rosters": [
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 2,
-      "name_ko": "박지윤",
-      "birth_date": "1996-03-04",
-      "height_cm": 196,
-      "club_snapshot": "남성고",
-      "player_id": "KVL-P-001558"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 3,
-      "name_ko": "하승우",
-      "birth_date": "1995-06-02",
-      "height_cm": 183,
-      "club_snapshot": "중부대",
-      "player_id": "KVL-P-001554"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 6,
-      "name_ko": "김성민",
-      "birth_date": "1994-08-12",
-      "height_cm": 191,
-      "club_snapshot": "인하대",
-      "player_id": "KVL-P-001555"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 7,
-      "name_ko": "손태훈",
-      "birth_date": "1993-09-15",
-      "height_cm": 196,
-      "club_snapshot": "조선대",
-      "captain": true,
-      "player_id": "KVL-P-001556"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 9,
-      "name_ko": "함형진",
-      "birth_date": "1995-06-25",
-      "height_cm": 187,
-      "club_snapshot": "중부대",
-      "player_id": "KVL-P-001549"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 10,
-      "name_ko": "황동선",
-      "birth_date": "1996-06-11",
-      "height_cm": 173,
-      "club_snapshot": "경남과학기술대",
-      "player_id": null
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 11,
-      "name_ko": "김인혁",
-      "birth_date": "1995-07-14",
-      "height_cm": 192,
-      "club_snapshot": "경남과학기술대",
-      "player_id": "KVL-P-001552"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 12,
-      "name_ko": "황경민",
-      "birth_date": "1996-04-10",
-      "height_cm": 194,
-      "club_snapshot": "경기대",
-      "player_id": "KVL-P-001550"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 13,
-      "name_ko": "이지훈",
-      "birth_date": "1995-12-08",
-      "height_cm": 182,
-      "club_snapshot": "중부대",
-      "player_id": null
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 14,
-      "name_ko": "정지석",
-      "birth_date": "1995-03-10",
-      "height_cm": 194,
-      "club_snapshot": "대한항공",
-      "player_id": "KVL-P-001547"
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 17,
-      "name_ko": "박상준",
-      "birth_date": "1995-02-19",
-      "height_cm": 198,
-      "club_snapshot": "중부대",
-      "player_id": null
-    },
-    {
-      "event_id": "KVL-NT-KOR-M-U23-2015-FIVB",
-      "shirt_no": 19,
-      "name_ko": "황택의",
-      "birth_date": "1996-11-12",
-      "height_cm": 190,
-      "club_snapshot": "성균관대",
-      "player_id": "KVL-P-001545"
-    }
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":2,"name_ko":"박지윤","birth_date":"1996-03-04","height_cm":196,"club_snapshot":"남성고","player_id":"KVL-P-001558"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":3,"name_ko":"하승우","birth_date":"1995-06-02","height_cm":183,"club_snapshot":"중부대","player_id":"KVL-P-001554"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":6,"name_ko":"김성민","birth_date":"1994-08-12","height_cm":191,"club_snapshot":"인하대","player_id":"KVL-P-001555"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":7,"name_ko":"손태훈","birth_date":"1993-09-15","height_cm":196,"club_snapshot":"조선대","captain":true,"player_id":"KVL-P-001556"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":9,"name_ko":"함형진","birth_date":"1995-06-25","height_cm":187,"club_snapshot":"중부대","player_id":"KVL-P-001549"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":10,"name_ko":"황동선","birth_date":"1996-06-11","height_cm":173,"club_snapshot":"경남과학기술대","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":11,"name_ko":"김인혁","birth_date":"1995-07-14","height_cm":192,"club_snapshot":"경남과학기술대","player_id":"KVL-P-001552"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":12,"name_ko":"황경민","birth_date":"1996-04-10","height_cm":194,"club_snapshot":"경기대","player_id":"KVL-P-001550"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":13,"name_ko":"이지훈","birth_date":"1995-12-08","height_cm":182,"club_snapshot":"중부대","player_id":"KVL-P-001560"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":14,"name_ko":"정지석","birth_date":"1995-03-10","height_cm":194,"club_snapshot":"대한항공","player_id":"KVL-P-001547"},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":17,"name_ko":"박상준","birth_date":"1995-02-19","height_cm":198,"club_snapshot":"중부대","player_id":null},
+    {"event_id":"KVL-NT-KOR-M-U23-2015-FIVB","shirt_no":19,"name_ko":"황택의","birth_date":"1996-11-12","height_cm":190,"club_snapshot":"성균관대","player_id":"KVL-P-001545"}
   ],
   "notes": [
     "Player IDs were synchronized from data/national/player_id_links_v1.json only for players whose exact Korean name + birth date had already been verified against official KVL sources. Unresolved players remain null.",
+    "이지훈 KVL-P-001560은 KOVO 2019-2020 공식 미디어가이드의 이름·생년월일·중부대·대한항공 프로필로 exact match 확인 후 연결했다.",
     "The reconstructed 2015 FIVB U23 roster still requires a primary FIVB Team Roster/Bulletin cross-check before roster_status can be promoted."
   ]
 }
