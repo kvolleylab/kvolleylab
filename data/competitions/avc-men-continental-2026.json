@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "competitionId": "KVL-INT-2026-003",
   "slug": "avc-men-continental-2026",
   "officialName": "AVC Volleyball Men's Continental Championship 2026",
@@ -16,8 +16,42 @@
   "matchCount": 26,
   "status": "upcoming",
   "scheduleStatus": "review",
-  "scheduleStatusLabel": "1차 정리 · 공식 원본 최종 대조 전",
+  "scheduleStatusLabel": "대회 방식·8강 배치 규정 반영",
   "timezoneNote": "일본 현지시간과 한국시간은 동일합니다 (UTC+9).",
+  "competitionSystem": {
+    "poolFormat": "3개 조 각 4팀 단일 라운드로빈",
+    "qualifiers": {
+      "topPerPool": 2,
+      "bestThird": 2,
+      "total": 8
+    },
+    "poolRankingCriteria": [
+      "승리 경기 수",
+      "승점",
+      "세트 득실률",
+      "득점 득실률",
+      "동률팀 간 최근 맞대결",
+      "필요 시 FIVB 세계랭킹"
+    ],
+    "combinedRankingCriteria": [
+      "조 순위",
+      "승리 경기 수",
+      "승점",
+      "세트 득실률",
+      "득점 득실률",
+      "필요 시 공식 추가 타이브레이크"
+    ],
+    "quarterfinalPairs": [
+      {"matchId":"QF1","seedA":1,"seedB":8},
+      {"matchId":"QF2","seedA":4,"seedB":5},
+      {"matchId":"QF3","seedA":2,"seedB":7},
+      {"matchId":"QF4","seedA":3,"seedB":6}
+    ],
+    "semifinalPaths": [
+      {"matchId":"SF1","from":["QF1","QF2"]},
+      {"matchId":"SF2","from":["QF3","QF4"]}
+    ]
+  },
   "groups": [
     {"id":"A","teams":["일본","호주","바레인","오만"]},
     {"id":"B","teams":["이란","중국","인도","뉴질랜드"]},
@@ -42,23 +76,25 @@
     {"id":"M16","date":"2026-09-09","time":"10:00","teamA":"바레인","teamB":"오만","stage":"조별리그","group":"A"},
     {"id":"M17","date":"2026-09-09","time":"13:30","teamA":"대만","teamB":"태국","stage":"조별리그","group":"C"},
     {"id":"M18","date":"2026-09-09","time":"17:00","teamA":"이란","teamB":"중국","stage":"조별리그","group":"B"},
-    {"id":"QF1","date":"2026-09-10","time":"15:30","teamA":"TBD","teamB":"TBD","stage":"8강","group":""},
-    {"id":"QF2","date":"2026-09-10","time":"19:30","teamA":"TBD","teamB":"TBD","stage":"8강","group":""},
-    {"id":"QF3","date":"2026-09-11","time":"15:30","teamA":"TBD","teamB":"TBD","stage":"8강","group":""},
-    {"id":"QF4","date":"2026-09-11","time":"19:30","teamA":"TBD","teamB":"TBD","stage":"8강","group":""},
+    {"id":"QF1","date":"2026-09-10","time":"15:30","teamA":"TBD","teamB":"TBD","seedA":1,"seedB":8,"stage":"8강","group":""},
+    {"id":"QF2","date":"2026-09-10","time":"19:30","teamA":"TBD","teamB":"TBD","seedA":4,"seedB":5,"stage":"8강","group":""},
+    {"id":"QF3","date":"2026-09-11","time":"15:30","teamA":"TBD","teamB":"TBD","seedA":2,"seedB":7,"stage":"8강","group":""},
+    {"id":"QF4","date":"2026-09-11","time":"19:30","teamA":"TBD","teamB":"TBD","seedA":3,"seedB":6,"stage":"8강","group":""},
     {"id":"SF1","date":"2026-09-12","time":"15:30","teamA":"TBD","teamB":"TBD","stage":"준결승","group":""},
     {"id":"SF2","date":"2026-09-12","time":"19:30","teamA":"TBD","teamB":"TBD","stage":"준결승","group":""},
     {"id":"3RD","date":"2026-09-13","time":"15:30","teamA":"TBD","teamB":"TBD","stage":"3위결정전","group":""},
     {"id":"FINAL","date":"2026-09-13","time":"19:30","teamA":"TBD","teamB":"TBD","stage":"결승","group":""}
   ],
   "sources": [
+    {"type":"official","label":"AVC 2026 Competition Regulations","url":"https://asianvolleyball.net/new/2026-competition-regulations/"},
     {"type":"official","label":"AVC 2026 국제대회 일정·개최지","url":"https://asianvolleyball.net/new/avc-unveils-2026-international-volleyball-calendar-and-host-cities/"},
     {"type":"official","label":"AVC 2026 대륙선수권 참가팀 확정","url":"https://asianvolleyball.net/new/avc-confirms-qualified-teams-for-2026-avc-volleyball-continental-championships/"},
-    {"type":"kvl-master","label":"K-Volley Lab 경기일정 MASTER · 2026-08-25 1차 입력","url":""}
+    {"type":"kvl-master","label":"K-Volley Lab 경기일정 MASTER","url":""}
   ],
   "notes": [
-    "경기일정은 K-Volley Lab Google Drive MASTER 1차 입력본을 기준으로 정리했습니다.",
-    "세부 경기시간과 토너먼트 슬롯은 AVC/JVA 공식 원본 최종 대조 전이며 변경될 수 있습니다.",
+    "각 조 상위 2팀과 성적이 좋은 조 3위 2팀이 8강에 진출합니다.",
+    "8강은 예선 종합순위 기준 1-8, 4-5, 2-7, 3-6의 실제 경기시간 순서로 배치됩니다.",
+    "조별리그 결과가 입력되면 K-Volley Lab 화면에서 현재 예상 8강 대진을 자동 계산합니다.",
     "선수명단은 최종 명단 검수가 완료된 뒤 별도로 공개합니다."
   ]
 }
