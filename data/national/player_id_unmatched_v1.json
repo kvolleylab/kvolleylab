@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.8",
+  "schema_version": "1.9",
   "updated_at": "2026-09-03",
   "match_rule": "Do not assign or create a Player ID when verified official sources conflict on birth date or when current identity continuity is not yet verified. Archive-only birth dates are candidates, not canonical identity fields.",
   "checked_sources": [
@@ -7,8 +7,10 @@
     "Drive V리그_남자부_선수명단_MASTER",
     "Drive KVL_국가대표_Player_ID_매칭_v1",
     "Drive KOVO 2017-2018 Media Guide",
+    "Drive KOVO 2019-2020 Media Guide",
     "Drive KOVO 2024-2025 Media Guide",
     "Drive KOVO 2025-2026 Media Guide based V-League MASTER",
+    "KOVO 2019-2020 공식 미디어가이드 원문 PDF",
     "KOVO 2024-2025 공식 미디어가이드 원문 PDF",
     "KOVO 2025-2026 공식 미디어가이드 원문 PDF",
     "한국대학배구연맹(KUVF) 공식 선수 소개",
@@ -20,7 +22,7 @@
     "GitHub data/master/player_master_229_v2.json",
     "GitHub data/master/player_master_international_v1.json"
   ],
-  "resolved_summary": "2016-2017 audit added verified links through KVL-P-001542 and preserves five unresolved candidates. 2014-2015 audit added seventeen verified links KVL-P-001543 through KVL-P-001559; three unique 2014-2015 candidates remain unresolved because an official exact name + birth-date identity source has not yet been captured. No speculative IDs were assigned.",
+  "resolved_summary": "2016-2017 audit added verified links through KVL-P-001542 and preserves five unresolved candidates. 2014-2015 audit added eighteen verified links KVL-P-001543 through KVL-P-001560; two unique 2014-2015 candidates remain unresolved because an official exact name + birth-date identity source has not yet been captured. No speculative IDs were assigned.",
   "queue": [
     {"period":"2016-2017","name_ko":"이지석","candidate_birth_date":"1998-02-05","candidate_birth_date_status":"historical_roster_only","events":["KVL-NT-KOR-M-U20-2016-AVC"],"reason":"Historical representative roster contains the date, but no captured official KOVO/KVA/KUSF/FIVB identity source currently verifies the exact name + birth date pair."},
     {"period":"2016-2017","name_ko":"함형진","candidate_birth_date":"1999-04-09","candidate_birth_date_status":"historical_roster_only","events":["KVL-NT-KOR-M-U20-2016-AVC","KVL-NT-KOR-M-U19-2017-AVC","KVL-NT-KOR-M-U19-2017-FIVB"],"reason":"The official JVA/FIVB document verifies Ham Hyeongjin as a 2017 U19 roster member but does not provide DOB. KOVO/V-League sources contain a different same-name player born 1995-06-25, so name-only linkage is prohibited."},
@@ -28,7 +30,6 @@
     {"period":"2016-2017","name_ko":"오흥대","candidate_birth_date":"1999-09-04","candidate_birth_date_status":"historical_roster_only","events":["KVL-NT-KOR-M-U19-2017-AVC"],"reason":"Historical roster and official university-volleyball continuity material identify the player, but an official exact DOB source has not yet been captured."},
     {"period":"2016-2017","name_ko":"국모세","candidate_birth_date":"1999-04-09","candidate_birth_date_status":"historical_roster_only","events":["KVL-NT-KOR-M-U19-2017-FIVB"],"reason":"The official JVA/FIVB roster verifies Kook Moses but does not provide DOB; an official exact name + DOB identity source has not yet been captured."},
     {"period":"2014-2015","name_ko":"성영창","candidate_birth_date":"1996-06-11","candidate_birth_date_status":"historical_roster_only","events":["KVL-NT-KOR-M-U20-2014-AVC","KVL-NT-KOR-M-U23-2015-AVC"],"reason":"Historical representative rosters contain the DOB candidate, but an official exact name + DOB identity source has not yet been captured. Do not conflate with the separate 2015 FIVB U23 roster entry Hwang Dongseon sharing the candidate DOB."},
-    {"period":"2014-2015","name_ko":"이지훈","candidate_birth_date":"1995-12-08","candidate_birth_date_status":"historical_roster_only","events":["KVL-NT-KOR-M-U23-2015-AVC","KVL-NT-KOR-M-U23-2015-FIVB"],"reason":"Historical representative roster contains the DOB candidate and secondary sources match the former Korean Air libero, but an official exact name + DOB identity source has not yet been captured."},
     {"period":"2014-2015","name_ko":"박상준","candidate_birth_date":"1995-02-19","candidate_birth_date_status":"historical_roster_only","events":["KVL-NT-KOR-M-U23-2015-AVC","KVL-NT-KOR-M-U23-2015-FIVB"],"reason":"KOVO official media guide verifies a Jungbu University Park Sangjun in the 2018-2019 draft, but the captured official material still does not expose the exact DOB; no ID assigned from the historical DOB alone."}
   ]
 }
