@@ -1,0 +1,47 @@
+/* K-Volley Lab Competition Template v1
+   Future competition pages only. Existing competition pages are not retrofitted automatically.
+   Scope everything under .kvl-competition-v1 to avoid page-specific regressions. */
+
+.kvl-competition-v1{
+  --kvl-comp-bg:#f6f8fb;
+  --kvl-comp-surface:#ffffff;
+  --kvl-comp-text:#17365d;
+  --kvl-comp-muted:#64748b;
+  --kvl-comp-line:#dbe2ea;
+  --kvl-comp-primary:#17365d;
+  --kvl-comp-primary-2:#0f2745;
+  --kvl-comp-accent:#c9a24a;
+  --kvl-comp-accent-dark:#9a6d12;
+  --kvl-comp-soft:#fffdf7;
+  --kvl-comp-logo:url("../images/brand/kvl-ball-international-gold.webp");
+  max-width:1180px;
+  margin:0 auto;
+  padding:42px 20px 80px;
+  color:var(--kvl-comp-text);
+}
+.kvl-competition-v1[data-gender="women"]{
+  --kvl-comp-primary:#d2648f;
+  --kvl-comp-primary-2:#a43f68;
+  --kvl-comp-accent:#c9a24a;
+  --kvl-comp-accent-dark:#9a6d12;
+  --kvl-comp-line:#edbed0;
+  --kvl-comp-soft:#fff8fb;
+}
+.kvl-competition-v1[data-category="domestic"]{--kvl-comp-logo:url("../images/brand/kvl-ball-domestic-navywhite.webp?v=20260903-2")}
+.kvl-competition-v1[data-category="international"]{--kvl-comp-logo:url("../images/brand/kvl-ball-international-gold.webp")}
+
+.kvl-comp-hero{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:34px 38px;border:1px solid var(--kvl-comp-line);border-radius:28px;background:linear-gradient(135deg,var(--kvl-comp-primary-2),var(--kvl-comp-primary));color:#fff;box-shadow:0 12px 30px rgba(15,35,63,.10)}
+.kvl-comp-hero-copy{min-width:0}.kvl-comp-eyebrow{margin:0 0 8px;color:#e6c46c;font-size:12px;font-weight:900;letter-spacing:.12em}.kvl-comp-title{display:flex;align-items:center;gap:12px;margin:0;color:#fff;font-size:38px;line-height:1.2}.kvl-comp-title::before{content:"";display:block;flex:0 0 auto;width:44px;height:44px;background:var(--kvl-comp-logo) center/contain no-repeat}.kvl-comp-meta{margin:14px 0 0;color:rgba(255,255,255,.88);font-size:15px;line-height:1.7}.kvl-comp-status{flex:0 0 auto;padding:9px 12px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.09);font-size:12px;font-weight:900;white-space:nowrap}
+
+.kvl-comp-nav{display:flex;gap:8px;margin:18px 0 34px;padding:10px;border:1px solid var(--kvl-comp-line);border-radius:16px;background:#fff;overflow-x:auto}.kvl-comp-nav a{white-space:nowrap;padding:10px 14px;border-radius:10px;color:#31445d;font-size:14px;font-weight:850;text-decoration:none}.kvl-comp-nav a:hover,.kvl-comp-nav a.is-active{background:var(--kvl-comp-primary);color:#fff}
+
+.kvl-comp-section{display:none;padding:30px;border:1px solid var(--kvl-comp-line);border-radius:24px;background:#fff;box-shadow:0 8px 24px rgba(15,35,63,.05)}.kvl-comp-section.is-active{display:block}.kvl-comp-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:22px}.kvl-comp-section-head h2{margin:4px 0 0;color:var(--kvl-comp-primary);font-size:28px}.kvl-comp-section-head p{margin:0;color:var(--kvl-comp-muted);font-size:14px;text-align:right}
+
+.kvl-comp-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.kvl-comp-kpi{padding:20px 22px;border:1px solid var(--kvl-comp-line);border-radius:18px;background:var(--kvl-comp-soft)}.kvl-comp-kpi-label{display:block;color:#748397;font-size:14px}.kvl-comp-kpi-value{display:flex;align-items:baseline;gap:3px;margin-top:10px}.kvl-comp-kpi-value strong{color:var(--kvl-comp-primary);font-size:30px;line-height:1}.kvl-comp-kpi-value small{color:#748397;font-size:13px;font-weight:800}
+
+.kvl-comp-slot{min-height:120px}.kvl-comp-empty{padding:34px;border:1px dashed #cbd5e1;border-radius:18px;background:#f8fafc;color:#64748b;text-align:center}.kvl-comp-note{margin-top:18px;padding:17px 19px;border-left:4px solid var(--kvl-comp-accent);border-radius:14px;background:#fffaf0;color:#536477;line-height:1.7}
+
+.kvl-comp-card{border:1px solid var(--kvl-comp-line);border-radius:20px;background:#fff;box-shadow:0 8px 24px rgba(15,35,63,.05);transition:transform .16s ease,border-color .16s ease,background .16s ease,box-shadow .16s ease}.kvl-comp-card:hover,.kvl-comp-card:focus-within{transform:translateY(-1px);border-color:#c9a44c;background:#fffdf7;box-shadow:0 14px 30px rgba(154,109,18,.08)}
+
+@media(max-width:900px){.kvl-comp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.kvl-competition-v1{padding:22px 12px 56px}.kvl-comp-hero{align-items:flex-start;flex-direction:column;padding:24px}.kvl-comp-title{font-size:29px}.kvl-comp-title::before{width:34px;height:34px}.kvl-comp-section{padding:22px 16px}.kvl-comp-section-head{align-items:flex-start;flex-direction:column}.kvl-comp-section-head p{text-align:left}.kvl-comp-kpis{grid-template-columns:1fr 1fr;gap:10px}.kvl-comp-kpi{padding:16px}.kvl-comp-kpi-value strong{font-size:26px}}
