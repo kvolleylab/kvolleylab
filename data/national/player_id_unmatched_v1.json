@@ -7,6 +7,7 @@
     "Drive 2026_KUSF_U리그_대학배구_선수명단_v2_검수.xlsx",
     "Drive 2026_대한항공배_전국대학배구_고성대회_선수명단_MASTER",
     "Drive KVL_2026_AVC_Mens_Cup_대한민국_MASTER.xlsx",
+    "Drive KVL_국가대표_Player_ID_매칭_v1",
     "GitHub data/master/player_master_229_v2.json",
     "GitHub data/master/player_master_international_v1.json"
   ],
@@ -42,14 +43,6 @@
       "status": "no_exact_master_match",
       "national_events": ["KVL-NT-KOR-M-U18-2022-AVC"],
       "next_action": "Research current team and create or locate a verified Player Master row."
-    },
-    {
-      "name_ko": "정송윤",
-      "birth_date": "2005-06-16",
-      "status": "verified_roster_no_player_id",
-      "national_events": ["KVL-NT-KOR-M-U18-2022-AVC", "KVL-NT-KOR-M-U19-2023-FIVB"],
-      "evidence": "2026 고성대회 경희대학교 명단에서 2005-06-16 동일 선수 재확인. 해당 대회 MASTER에는 Player ID 열이 없음.",
-      "next_action": "Register in Player Master and issue/recover a permanent Player ID, then link."
     },
     {
       "name_ko": "강승일",
