@@ -18,6 +18,12 @@
     rankingRuntime.defer=true;
     document.head.appendChild(rankingRuntime);
   }
+  if(currentPath==='international-competition-avc-men-continental-2026.html'&&!document.querySelector('script[src*="avc-men-live-status-runtime.js"]')){
+    const liveStatusRuntime=document.createElement('script');
+    liveStatusRuntime.src='assets/js/avc-men-live-status-runtime.js?v=20260904-1';
+    liveStatusRuntime.defer=true;
+    document.head.appendChild(liveStatusRuntime);
+  }
   const MANIFEST='data/master/school_logo_manifest_2026.json?v=20260802-1';
   const normalize=value=>String(value||'').trim().replace(/\s+/g,'');
   const teamFromLogo=el=>{
