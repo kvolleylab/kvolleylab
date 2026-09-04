@@ -14,9 +14,9 @@
   "teamCount": 12,
   "groupCount": 3,
   "matchCount": 26,
-  "status": "upcoming",
-  "scheduleStatus": "review",
-  "scheduleStatusLabel": "대회 방식·8강 배치 규정 반영",
+  "status": "ongoing",
+  "scheduleStatus": "live",
+  "scheduleStatusLabel": "조별리그 진행 중 · 2/18경기 완료",
   "timezoneNote": "일본 현지시간과 한국시간은 동일합니다 (UTC+9).",
   "competitionSystem": {
     "poolFormat": "3개 조 각 4팀 단일 라운드로빈",
@@ -58,8 +58,8 @@
     {"id":"C","teams":["카타르","대한민국","대만","태국"]}
   ],
   "matches": [
-    {"id":"M01","date":"2026-09-04","time":"12:30","teamA":"이란","teamB":"뉴질랜드","stage":"조별리그","group":"B"},
-    {"id":"M02","date":"2026-09-04","time":"16:00","teamA":"대한민국","teamB":"대만","stage":"조별리그","group":"C"},
+    {"id":"M01","officialNo":1,"date":"2026-09-04","time":"12:30","teamA":"이란","teamB":"뉴질랜드","stage":"조별리그","group":"B","setsA":3,"setsB":0,"sets":[[25,15],[25,12],[25,22]]},
+    {"id":"M02","officialNo":2,"date":"2026-09-04","time":"16:00","teamA":"대한민국","teamB":"대만","stage":"조별리그","group":"C","setsA":3,"setsB":1,"sets":[[29,27],[19,25],[25,15],[25,15]]},
     {"id":"M03","date":"2026-09-04","time":"19:30","teamA":"일본","teamB":"오만","stage":"조별리그","group":"A"},
     {"id":"M04","date":"2026-09-05","time":"10:00","teamA":"호주","teamB":"바레인","stage":"조별리그","group":"A"},
     {"id":"M05","date":"2026-09-05","time":"13:30","teamA":"중국","teamB":"인도","stage":"조별리그","group":"B"},
@@ -86,6 +86,8 @@
     {"id":"FINAL","date":"2026-09-13","time":"19:30","teamA":"TBD","teamB":"TBD","stage":"결승","group":""}
   ],
   "sources": [
+    {"type":"official","label":"Volleyball World · AVC Men's Continental 2026","url":"https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/"},
+    {"type":"official","label":"Volleyball World · 경기일정/결과","url":"https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/schedule/"},
     {"type":"official","label":"AVC 2026 Competition Regulations","url":"https://asianvolleyball.net/new/2026-competition-regulations/"},
     {"type":"official","label":"AVC 2026 국제대회 일정·개최지","url":"https://asianvolleyball.net/new/avc-unveils-2026-international-volleyball-calendar-and-host-cities/"},
     {"type":"official","label":"AVC 2026 대륙선수권 참가팀 확정","url":"https://asianvolleyball.net/new/avc-confirms-qualified-teams-for-2026-avc-volleyball-continental-championships/"},
