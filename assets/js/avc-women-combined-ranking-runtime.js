@@ -122,6 +122,15 @@
     document.head.appendChild(style);
   }
 
+  function syncCopy(){
+    const title=document.querySelector('.avc-combined-head h3');
+    if(title)title.textContent='예선 종합순위 · 전체 12개국';
+    const scheduleRule=document.querySelector('#schedule .avc-rule-card small');
+    if(scheduleRule)scheduleRule.innerHTML='<b>예선 종합순위:</b> 승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률 → 동률 시 맞대결 순으로 비교합니다.';
+    const groupRule=document.querySelector('#groups .avc-rule-card p');
+    if(groupRule)groupRule.textContent='각 팀의 예선 성적은 승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률 → 동률 시 맞대결 순으로 계산합니다. 각 조 1·2위와 조 3위 중 성적 상위 2팀이 8강에 진출하며, 진출 8팀은 같은 성적 기준으로 종합 1~8번 시드를 정합니다. 탈락 4팀도 같은 기준으로 이어서 9~12위에 표시합니다.';
+  }
+
   function statusHtml(r){
     if(r.qualified){
       return `<span class="kvl-avc-status-badge is-qualified">8강 진출</span><small class="kvl-avc-qf-seed">${qfForSeed(r.combinedRank)}</small>`;
@@ -138,8 +147,9 @@
 
   function boot(){
     ensureStyle();
+    syncCopy();
     fetch(DATA,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(data=>{
-      const calc=calculate(data);render(calc);
+      const calc=calculate(data);render(calc);syncCopy();
       const root=document.getElementById('combinedRankingRoot');
       if(root)new MutationObserver(()=>{if(!root.querySelector('.kvl-avc-combined-header'))render(calc)}).observe(root,{childList:true,subtree:true});
     }).catch(()=>{});
