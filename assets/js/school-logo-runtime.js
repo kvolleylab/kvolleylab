@@ -8,7 +8,7 @@
   const currentPath=(location.pathname.split('/').pop()||'').toLowerCase();
   if(currentPath==='international-competition-avc-women-continental-2026.html'&&!document.querySelector('script[src*="avc-women-combined-ranking-runtime.js"]')){
     const rankingRuntime=document.createElement('script');
-    rankingRuntime.src='assets/js/avc-women-combined-ranking-runtime.js?v=20260904-2';
+    rankingRuntime.src='assets/js/avc-women-combined-ranking-runtime.js?v=20260904-3';
     rankingRuntime.defer=true;
     document.head.appendChild(rankingRuntime);
   }
