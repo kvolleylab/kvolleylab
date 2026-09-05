@@ -84,7 +84,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const teamInfo={'중국':{en:'China',flag:'cn'},'이란':{en:'Iran',flag:'ir'},'대만':{en:'Chinese Taipei',flag:'tw'},'이라크':{en:'Iraq',flag:'iq'},'태국':{en:'Thailand',flag:'th'},'인도네시아':{en:'Indonesia',flag:'id'},'카자흐스탄':{en:'Kazakhstan',flag:'kz'},'호주':{en:'Australia',flag:'au'},'일본':{en:'Japan',flag:'jp'},'대한민국':{en:'Korea',flag:'kr'},'베트남':{en:'Vietnam',flag:'vn'},'홍콩':{en:'Hong Kong, China',flag:'hk'}};
   const flagUrl=name=>teamInfo[name]?`https://flagcdn.com/w80/${teamInfo[name].flag}.png`:'';
   const weekday=date=>['일','월','화','수','목','금','토'][new Date(`${date}T00:00:00+09:00`).getDay()];
