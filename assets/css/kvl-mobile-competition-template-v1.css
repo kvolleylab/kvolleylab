@@ -1,6 +1,6 @@
 /* K-Volley Lab mobile competition page template v1
    Baseline: 390px mobile tournament detail pages.
-   Navigation: 4 items on row 1 + 2 items on row 2.
+   Navigation: 3 items on row 1 + 3 items on row 2.
    Reuse this file for future KVL competition mobile pages. */
 
 @media (max-width:680px){
@@ -9,10 +9,9 @@
   body[data-avc-gender] .avc-hero h1{font-size:24px!important;line-height:1.25!important;letter-spacing:-.045em!important;white-space:nowrap!important}
   body[data-avc-gender] .avc-hero h1 small{font-size:12px!important;white-space:normal!important}
 
-  /* 6-item tournament navigation: 4 + 2 */
-  body[data-avc-gender] .avc-jump{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important;margin:14px 0 22px!important;padding:6px!important;overflow:visible!important;border-radius:14px!important}
-  body[data-avc-gender] .avc-jump a{display:flex!important;min-width:0!important;min-height:40px!important;align-items:center!important;justify-content:center!important;padding:8px 3px!important;border-radius:9px!important;font-size:12px!important;font-weight:900!important;line-height:1.15!important;text-align:center!important;white-space:nowrap!important}
-  body[data-avc-gender] .avc-jump a:nth-child(5),body[data-avc-gender] .avc-jump a:nth-child(6){grid-column:span 2!important;font-size:13px!important}
+  /* 6-item tournament navigation: equal 3 + 3 */
+  body[data-avc-gender] .avc-jump{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;margin:14px 0 22px!important;padding:6px!important;overflow:visible!important;border-radius:14px!important}
+  body[data-avc-gender] .avc-jump a{display:flex!important;min-width:0!important;min-height:42px!important;align-items:center!important;justify-content:center!important;padding:8px 3px!important;border-radius:9px!important;font-size:13px!important;font-weight:900!important;line-height:1.15!important;text-align:center!important;white-space:nowrap!important}
 
   body[data-avc-gender] .avc-section{padding:18px 12px!important;border-radius:18px!important}
   body[data-avc-gender] .avc-section-head{gap:7px!important;margin-bottom:14px!important}
@@ -37,13 +36,19 @@
   body[data-avc-gender] #overview .kvl-calendar-day-link .kvl-calendar-count{margin-top:6px;padding:3px 4px;border-radius:6px;background:var(--avc-soft);color:var(--avc-primary);font-size:8px;font-weight:900;white-space:nowrap}
   body[data-avc-gender] #overview .cd-cal-games{display:none!important}
 
-  /* Match cards: time -> teams/score -> set scores -> stage/pool/venue */
+  /* Schedule stage filters: all six buttons on one row */
+  body[data-avc-gender] #schedule .cd-stage-filters{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:3px!important;padding-top:8px!important;overflow:visible!important}
+  body[data-avc-gender] #schedule .cd-stage-filters button{box-sizing:border-box!important;min-width:0!important;width:100%!important;padding:7px 1px!important;font-size:9px!important;line-height:1.1!important;white-space:nowrap!important}
+  body[data-avc-gender] #schedule .cd-pool-filter{grid-column:1/-1!important;width:100%!important;margin:5px 0 0!important;justify-content:flex-start!important}
+
+  /* Match cards: time -> teams/score -> compact set scores -> stage/pool/venue */
   body[data-avc-gender] #schedule .cd-match{display:grid!important;grid-template-columns:1fr!important;gap:7px!important;padding:12px 10px!important}
   body[data-avc-gender] #schedule .cd-match-meta{display:contents!important}
   body[data-avc-gender] #schedule .cd-match-meta time{order:1!important;text-align:center!important;font-size:13px!important;font-weight:900!important}
   body[data-avc-gender] #schedule .cd-match-meta span{order:4!important;color:#7d8998!important;font-size:10px!important;font-weight:800!important;line-height:1.4!important;text-align:center!important}
   body[data-avc-gender] #schedule .cd-match-board{order:2!important;width:100%!important;grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr)!important;gap:4px!important}
-  body[data-avc-gender] #schedule .cd-set-scores,body[data-avc-gender] #schedule .avc-set-scores{order:3!important;justify-content:center!important;margin:0!important}
+  body[data-avc-gender] #schedule .cd-set-scores{order:3!important;display:flex!important;justify-content:center!important;margin:0!important;overflow:visible!important;white-space:nowrap!important}
+  body[data-avc-gender] #schedule .avc-set-scores{display:block!important;color:#657487!important;font-size:10px!important;font-weight:850!important;line-height:1.3!important;text-align:center!important;white-space:nowrap!important}
   body[data-avc-gender] #schedule .cd-side{display:grid!important;align-items:center!important;gap:5px!important;min-width:0!important}
   body[data-avc-gender] #schedule .cd-side.is-left{grid-template-columns:minmax(0,1fr) 34px!important;padding:0!important;text-align:right!important}
   body[data-avc-gender] #schedule .cd-side.is-left strong,body[data-avc-gender] #schedule .cd-side.is-left .avc-slot-copy{grid-column:1!important;grid-row:1!important}
@@ -55,7 +60,6 @@
   body[data-avc-gender] #schedule .cd-inline-logo img{width:100%!important;height:100%!important;object-fit:contain!important}
   body[data-avc-gender] #schedule .cd-side strong{overflow:hidden!important;font-size:12px!important;text-overflow:ellipsis!important;white-space:nowrap!important}
   body[data-avc-gender] #schedule .cd-score{font-size:18px!important}
-  body[data-avc-gender] #schedule .avc-set-scores span,body[data-avc-gender] #schedule .cd-set-scores span{min-width:0!important;padding:4px 5px!important;font-size:9px!important}
   body[data-avc-gender] #schedule .cd-date-group{scroll-margin-top:16px!important}
 
   /* Participants */
@@ -78,11 +82,28 @@
   html body[data-avc-gender="women"] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-card:first-child .avc-podium-copy small{font-size:0!important}
   html body[data-avc-gender="women"] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-card:first-child .avc-podium-copy small::after{content:'우승 · LA올림픽 직행'!important;color:#9a6d12!important;font-size:8px!important;font-weight:1000!important;line-height:1.25!important}
   body[data-avc-gender="women"] #finalQuarterfinals{scroll-margin-top:16px!important}
+
+  /* Quarterfinal cards: one-line result, e.g. flag China 3-1 Vietnam flag */
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;column-gap:0!important;overflow:hidden!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head{grid-column:1/-1!important;padding:7px 9px!important;border-radius:11px 11px 0 0!important;font-size:9px!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head strong{font-size:10px!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team{grid-column:1!important;display:grid!important;grid-template-columns:25px minmax(0,1fr) 16px!important;gap:4px!important;min-height:42px!important;padding:7px 0 7px 7px!important;border-top:0!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team{grid-column:2!important;display:grid!important;grid-template-columns:18px minmax(0,1fr) 25px!important;gap:4px!important;min-height:42px!important;padding:7px 7px 7px 0!important;border-top:0!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-team img{width:25px!important;height:18px!important;margin:0!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team strong{grid-column:2!important;text-align:right!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team b{grid-column:3!important;text-align:right!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b{grid-column:1!important;grid-row:1!important;text-align:left!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b::before{content:'-';margin-right:1px}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team strong{grid-column:2!important;grid-row:1!important;text-align:left!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team img{grid-column:3!important;grid-row:1!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-team strong{font-size:11px!important;white-space:nowrap!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-team b{font-size:13px!important;line-height:1!important}
 }
 
 @media (max-width:360px){
-  body[data-avc-gender] .avc-jump a{font-size:11px!important}
-  body[data-avc-gender] .avc-jump a:nth-child(5),body[data-avc-gender] .avc-jump a:nth-child(6){font-size:12px!important}
+  body[data-avc-gender] .avc-jump a{font-size:12px!important}
+  body[data-avc-gender] #schedule .cd-stage-filters button{font-size:8px!important}
   html body[data-avc-gender="women"] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-card img{width:52px!important;height:36px!important}
   html body[data-avc-gender="women"] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-copy strong{font-size:10px!important}
+  html body[data-avc-gender] #knockout .avc-round-qf .avc-bracket-team strong{font-size:10px!important}
 }
