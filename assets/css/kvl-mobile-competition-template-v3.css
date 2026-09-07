@@ -145,11 +145,12 @@
   html body[data-avc-gender] #groups .kvl-women-combined-v3-line,
   html body[data-avc-gender] #groups .kvl-men-combined-table.is-complete .kvl-men-combined-line{grid-template-columns:44px 28px 110px 130px 76px 54px 96px 96px 76px!important;gap:6px!important;min-height:54px!important;padding:8px 6px!important}
   html body[data-avc-gender] #groups .kvl-men-combined-table.is-live{min-width:692px!important}
-  html body[data-avc-gender] #groups .kvl-men-combined-table.is-live .kvl-men-combined-line{grid-template-columns:44px 32px 110px 110px 76px 54px 96px 96px!important;gap:6px!important;min-height:54px!important;padding:8px 6px!important}
+  html body[data-avc-gender] #groups .kvl-men-combined-table.is-live .kvl-men-combined-line{grid-template-columns:44px 28px 110px 110px 76px 54px 96px 96px!important;gap:6px!important;min-height:54px!important;padding:8px 6px!important}
   html body[data-avc-gender] #groups .kvl-women-combined-v3-line.is-head,
   html body[data-avc-gender] #groups .kvl-men-combined-line.is-head{min-height:42px!important;font-size:10px!important;font-weight:1000!important}
   html body[data-avc-gender] #groups .kvl-men-combined-line.is-head>span{display:flex!important;visibility:visible!important;opacity:1!important;align-items:center!important;justify-content:center!important;color:var(--avc-dark)!important;font-size:10px!important;text-align:center!important;white-space:nowrap!important}
   html body[data-avc-gender] #groups .kvl-comp-flag-cell{display:flex!important;width:28px!important;height:19px!important;align-items:center!important;justify-content:center!important;justify-self:center!important}
+  html body[data-avc-gender] #groups .kvl-comp-flag-head{display:flex!important;visibility:visible!important;opacity:1!important;width:28px!important;align-items:center!important;justify-content:center!important;justify-self:center!important;color:var(--avc-dark)!important;font-size:10px!important;font-weight:1000!important;text-align:center!important;white-space:nowrap!important}
   html body[data-avc-gender] #groups .kvl-women-combined-v3-line img,
   html body[data-avc-gender] #groups .kvl-men-combined-line img,
   html body[data-avc-gender] #groups .kvl-comp-flag-cell img{display:block!important;width:28px!important;height:19px!important;object-fit:contain!important;justify-self:center!important}
