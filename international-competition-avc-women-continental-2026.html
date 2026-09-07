@@ -23,6 +23,8 @@
     .avc-participant-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.avc-country-card{display:flex;align-items:center;gap:12px;min-height:82px;padding:14px 16px;border:1px solid var(--avc-line);border-radius:15px;background:var(--avc-soft)}.avc-country-card img{width:42px;height:29px;object-fit:contain}.avc-country-copy{min-width:0}.avc-country-copy strong{display:block;color:#17365D;font-size:14px}.avc-country-copy small{display:block;margin-top:3px;color:#7a8796;font-size:10px;font-weight:800}.avc-country-pool{margin-left:auto;padding:5px 8px;border-radius:999px;background:#FFF2F7;color:var(--avc-dark);font-size:10px;font-weight:900}.avc-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.avc-source{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:1px solid var(--avc-line);border-radius:14px;background:var(--avc-soft)}.avc-source strong,.avc-source a{color:var(--avc-dark)}.avc-source a{font-weight:900;text-decoration:none}.avc-pending{padding:28px;text-align:center;color:#7b8998}
     @media(max-width:1100px){#schedule .cd-match{grid-template-columns:90px minmax(420px,1fr)}#schedule .cd-match-board{width:100%;max-width:600px}.avc-podium{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-group-grid{grid-template-columns:1fr}.avc-participant-grid{grid-template-columns:repeat(2,1fr)}.avc-combined-row{grid-template-columns:52px 30px minmax(0,1fr) 70px}.avc-combined-row span:last-child{display:none}}
+    .kvl-mobile-meta-break{display:none}.avc-overview-result{margin:0!important;text-align:right!important}.avc-overview-result strong,.avc-overview-result span{display:block}.avc-overview-result strong{color:var(--avc-dark);font-size:14px;font-weight:1000}.avc-overview-result span{margin-top:3px;color:#9a6d12;font-size:12px;font-weight:1000}
+    @media(max-width:680px){body[data-avc-gender="women"] .avc-status{display:none!important}body[data-avc-gender="women"] .kvl-hero-meta-sep{display:none!important}body[data-avc-gender="women"] .kvl-mobile-meta-break{display:block!important}body[data-avc-gender="women"] .avc-meta{line-height:1.65!important}body[data-avc-gender="women"] #overview .avc-section-head{align-items:flex-end!important;flex-direction:row!important;justify-content:space-between!important;gap:12px!important}body[data-avc-gender="women"] #overview .avc-section-head>div{min-width:0}body[data-avc-gender="women"] #overview .avc-section-head h2{font-size:22px!important;white-space:nowrap}body[data-avc-gender="women"] #overview .avc-overview-result{flex:0 0 auto!important;line-height:1.25!important}body[data-avc-gender="women"] #overview .avc-overview-result strong{font-size:13px!important}body[data-avc-gender="women"] #overview .avc-overview-result span{font-size:11px!important}}
   </style>
   <script src="assets/js/unified-nav.js?v=20260903-6" defer></script>
 </head>
@@ -30,7 +32,7 @@
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
 <main class="avc-main">
   <section class="avc-hero">
-    <div><p class="eyebrow">INTERNATIONAL COMPETITION · WOMEN</p><h1>AVC 여자 대륙선수권 2026<small>AVC Volleyball Women's Continental Championship 2026</small></h1><p class="avc-meta">2026-08-21(금) ~ 2026-08-30(일) · 중국 톈진 · 경기시간은 한국시간(KST) 기준</p></div>
+    <div><p class="eyebrow">INTERNATIONAL COMPETITION · WOMEN</p><h1>AVC 여자 대륙선수권 2026<small>AVC Volleyball Women's Continental Championship 2026</small></h1><p class="avc-meta"><span>2026-08-21(금) ~ 2026-08-30(일)</span><span class="kvl-hero-meta-sep"> · </span><br class="kvl-mobile-meta-break">중국 톈진 · 경기시간은 한국시간(KST) 기준</p></div>
     <div class="avc-status"><span>대회 종료</span><span>12개국</span><span class="champion">우승 태국 · LA28 직행</span></div>
   </section>
 
@@ -44,7 +46,7 @@
   </nav>
 
   <section id="overview" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">TOURNAMENT SNAPSHOT</p><h2>대회 한눈에 보기</h2></div><p>카드를 누르면 해당 페이지로 바로 이동합니다.</p></div>
+    <div class="avc-section-head"><div><p class="eyebrow">TOURNAMENT SNAPSHOT</p><h2>대회 한눈에 보기</h2></div><p class="avc-overview-result"><strong>우승 태국</strong><span>LA올림픽 직행</span></p></div>
     <div class="avc-kpis"><article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article></div>
     <div class="cd-calendar-wrap"><div class="cd-calendar-head"><div><p class="eyebrow">COMPETITION CALENDAR</p><h2>대회 월간 달력</h2></div><p>날짜를 누르면 경기일정의 해당 날짜로 이동합니다.</p></div><div id="calendarRoot" class="cd-calendar"><div class="cd-empty">대회 달력을 불러오는 중입니다.</div></div></div>
     <div class="avc-note"><strong>2026 여자부 대회는 종료되었습니다.</strong><br>태국이 중국을 결승에서 3-2로 꺾고 우승했으며 2028 LA 올림픽 아시아 직행 출전권을 획득했습니다.</div>
