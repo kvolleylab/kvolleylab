@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   patch:
-    if: github.event.head_commit.message == 'chore: fix temporary AVC men setscore patch workflow'
+    if: "${{ github.event.head_commit.message == 'chore: run temporary AVC men setscore patch workflow' }}"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
