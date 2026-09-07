@@ -45,10 +45,10 @@
 
   function overview(cfg){
     const stats=Array.isArray(cfg.overviewStats)?cfg.overviewStats:[];
-    const kpis=stats.length?`<div class="kvl-comp-kpis">${stats.map(s=>`<article class="kvl-comp-kpi"><span class="kvl-comp-kpi-label">${esc(s.label)}</span><div class="kvl-comp-kpi-value"><strong>${esc(s.value)}</strong><small>${esc(s.unit||'')}</small></div></article>`).join('')}</div>`:'';
-    const venue=cfg.location?.venue||'';
-    const venueBadge=venue?`<div class="kvl-comp-overview-badges"><span class="kvl-comp-venue-badge"><b>경기장</b><span>${esc(venue)}</span></span></div>`:'';
-    return `${sectionHead(cfg,'overview')}${kpis}${venueBadge}<div class="kvl-comp-slot" data-kvl-slot="overview-extra"></div>`;
+    const place=[cfg.location?.country,cfg.location?.city,cfg.location?.venue].filter(Boolean).join(' ');
+    const venueKpi=place?`<div class="kvl-comp-venue-kpi" aria-label="대회 장소: ${esc(place)}"><span class="kvl-comp-kpi-label">장소</span><strong>${esc(place)}</strong></div>`:'';
+    const kpis=(stats.length||venueKpi)?`<div class="kvl-comp-kpis ${venueKpi?'has-venue':''}">${stats.map(s=>`<article class="kvl-comp-kpi"><span class="kvl-comp-kpi-label">${esc(s.label)}</span><div class="kvl-comp-kpi-value"><strong>${esc(s.value)}</strong><small>${esc(s.unit||'')}</small></div></article>`).join('')}${venueKpi}</div>`:'';
+    return `${sectionHead(cfg,'overview')}${kpis}<div class="kvl-comp-slot" data-kvl-slot="overview-extra"></div>`;
   }
 
   function genericSection(cfg,key){
