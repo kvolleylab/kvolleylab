@@ -1,0 +1,180 @@
+name: Temporary AVC Men Mobile Refinement
+
+on:
+  push:
+    paths:
+      - '.github/workflows/tmp-avc-men-mobile-refine-20260907.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Apply mobile refinement
+        env:
+          PATCH_SCRIPT_B64: "ZnJvbSBwYXRobGliIGltcG9ydCBQYXRoCmltcG9ydCByZQoKZGVmIHJlcGxhY2Vfb25jZSh0ZXh0LCBvbGQsIG5ldywgbGFiZWwpOgogICAgaWYgb2xkIG5vdCBpbiB0ZXh0OgogICAgICAgIHJhaXNlIFN5c3RlbUV4aXQoZiJtaXNzaW5nIG1hcmtlcjoge2xhYmVsfSIpCiAgICByZXR1cm4gdGV4dC5yZXBsYWNlKG9sZCwgbmV3LCAxKQoKIyAxKSBBVkMgbWVuIG1vYmlsZSBwYWdlCm1lbl9wYXRoID0gUGF0aCgiaW50ZXJuYXRpb25hbC1jb21wZXRpdGlvbi1hdmMtbWVuLWNvbnRpbmVudGFsLTIwMjYuaHRtbCIpCm1lbiA9IG1lbl9wYXRoLnJlYWRfdGV4dChlbmNvZGluZz0idXRmLTgiKQoKbWVuID0gcmVwbGFjZV9vbmNlKAogICAgbWVuLAogICAgJ2Fzc2V0cy9jc3Mva3ZsLW1vYmlsZS1jb21wZXRpdGlvbi10ZW1wbGF0ZS12MS5jc3M/dj0yMDI2MDkwNy0zJywKICAgICdhc3NldHMvY3NzL2t2bC1tb2JpbGUtY29tcGV0aXRpb24tdGVtcGxhdGUtdjEuY3NzP3Y9MjAyNjA5MDctNCcsCiAgICAnbWVuIHNoYXJlZCBtb2JpbGUgY3NzIHZlcnNpb24nCikKCm9sZF9oZXJvID0gJzxkaXY+PHAgY2xhc3M9ImV5ZWJyb3ciPklOVEVSTkFUSU9OQUwgQ09NUEVUSVRJT04gwrcgTUVOPC9wPjxoMT5BVkMg64Ko7J6QIOuMgOulmeyEoOyImOq2jCAyMDI2PHNtYWxsPkFWQyBWb2xsZXliYWxsIE1lblxcJ3MgQ29udGluZW50YWwgQ2hhbXBpb25zaGlwIDIwMjY8L3NtYWxsPjwvaDE+PHAgY2xhc3M9ImF2Yy1tZXRhIj48c3Bhbj4yMDI2LTA5LTA0KOq4iCkgfiAyMDI2LTA5LTEzKOydvCk8L3NwYW4+PHNwYW4gY2xhc3M9Imt2bC1oZXJvLW1ldGEtc2VwIj4gwrcgPC9zcGFuPjxicj4ga2xhcz0ia3ZsLW1vYmlsZS1tZXRhLWJyZWFrIj7snbzrs7gg7ZuE7L2U7Jik7Lm07ZiEIC8g6riw7YOA7YGQ7IqIIMK3IEtpdGFreXVzaHUgQ2l0eSBHZW5lcmFsIEd5bW5hc2l1bTwvcD48L2Rpdj4nCm5ld19oZXJvID0gJzxkaXY+PHAgY2xhc3M9ImV5ZWJyb3ciPklOVEVSTkFUSU9OQUwgQ09NUEVUSVRJT04gwrcgTUVOPC9wPjxoMT5BVkMg64Ko7J6QIOuMgOulmeyEoOyImOq2jCAyMDI2PHNtYWxsPkFWQyBWb2xsZXliYWxsIE1lblxcJ3MgQ29udGluZW50YWwgQ2hhbXBpb25zaGlwIDIwMjY8L3NtYWxsPjwvaDE+PHAgY2xhc3M9ImF2Yy1tZXRhIj48c3BhbiBjbGFzcz0ia3ZsLWhlcm8tbWV0YS1saW5lIj4yMDI2LTA5LTA0KOq4iCkgfiAyMDI2LTA5LTEzKOydvCk8L3NwYW4+PHNwYW4gY2xhc3M9Imt2bC1oZXJvLW1ldGEtc2VwIj4gwrcgPC9zcGFuPjxzcGFuIGNsYXNzPSJrdmwtaGVyby1tZXRhLWxpbmUiPuydvOuzuCDtm4TsvZTsmKTsnbTshIQgLyDquLDtg4DtgazsiqQ8L3NwYW4+PHNwYW4gY2xhc3M9Imt2bC1oZXJvLW1ldGEtc2VwIj4gwrcgPC9zcGFuPjxzcGFuIGNsYXNzPSJrdmwtaGVyby1tZXRhLWxpbmUiPuq4sO2DgO2BnOyKpOyLnCDsooXtlYTssoTsnKHsnKDsnqU8L3NwYW4+PC9wPjwvZGl2PicKbWVuID0gcmVwbGFjZV9vbmNlKG1lbiwgb2xkX2hlcm8sIG5ld19oZXJvLCAnbWVuIGhlcm8gbWV0YScpCgptb2xkX2twaXMgPSAnPGRpdiBjbGFzcz0iYXZjLWtwaXMiPjxhcnRpY2xlPjxzcGFuPuywuOqwgOq1rDwvc3Bhbj48c3Ryb25nIGlkPSJ0ZWFtQ291bnQiPjEyPC9zdHJvbmc+PHNtYWxsPuqwnOq1rDwvc21hbGw+PC9hcnRpY2xlPjxhcnRpY2xlPjxzcGFuPuuzzoTspJHrnqzqtazsnKDsiJg8L3NwYW4+PHN0cm9uZyBpZD0iZ3JvdXBDb3VudCI+Mzwvc3Ryb25nPjxzbWFsbD7qsJwg7KGwPC9zbWFsbD48L2FydGljbGU+PGFydGljbGU+PHNwYW4+7KCE7LK0IOydvOygleuPqzwvc3Bhbj48c3Ryb25nIGlkPSJtYXRjaENvdW50Ij4yNjwvc3Ryb25nPjxzbWFsbD7qsr3quLA8L3NtYWxsPjwvYXJ0aWNsZT48YXJ0aWNsZT48c3Bhbj44qsJXsnYQg7KeE7LacPC9zcGFuPjxzdHJvbmc+ODwvc3Ryb25nPjxzbWFsbD7qsJzqta08L3NtYWxsPjwvYXJ0aWNsZT48L2Rpdj4nCm5ld19rcGlzID0gb2xkX2twaXMgKyAnXG4gICAgPGRpdiBjbGFzcz0ia3ZsLW92ZXJ2aWV3LWJhZGdlcyBrdmwtbW9iaWxlLW9ubHkiPjxzcGFuIGNsYXNzPSJrdmwtb3ZlcnZpZXctdmVudWUiPjxiPuqyvOq4sOyepTwvYj48c3Bhbj7quLDtg4DtgazsiqTsi5wg7KKF7ZWp7LK07Jyk6rSA8L3NwYW4+PC9zcGFuPjwvZGl2PicKbWVuID0gcmVwbGFjZV9vbmNlKG1lbiwgb2xkX2twaXMsIG5ld19rcGlzLCAnbWVuIHZlbnVlIGJhZGdlJykKCm1lbiA9IHJlcGxhY2Vfb25jZSgKICAgIG1lbiwKICAgICcgICAuS3ZsLW1vYmlsZS1vbmx5e2Rpc3BsYXk6bm9uZSFpbXBvcnRhbnR9Lmt2bC1tb2JpbGUtbWV0YS1icmVha3tkaXNwbGF5Om5vbmV9Lmt2bC1uYXYtbW9iaWxle2Rpc3BsYXk6bm9uZX1cbicsCiAgICAnICAgIC5rdmwtdW1vYmlsZS1vbmx5e2Rpc3BsYXk6bm9uZSFpbXBvcnRhbnR9Lmt2bC1tb2JpbGUtbWV0YS1icmVha3tkaXNwbGF5Om5vbmV9Lmt2bC1uYXYtbW9iaWxle2Rpc3BsYXk6bm9uZX0ua3ZsLW1lbi1jb21iaW5lZC1tb2JpbGV7ZGlzcGxheTpub25lIWltcG9ydGFudH1cbicsCiAgICAnbWVuIG1vYmlsZSBoZWxwZXIgZ2xvYmFscycKKQoKbmVlZGxlID0gJyAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAuYXZjLW1ldGF7bGluZS1oZWlnaHQ6MS42NSFpbXBvcnRhbnR9XG4nCmluc2VydCA9ICcnJyAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAuYXZjLW1ldGF7bGluZS1oZWlnaHQ6MS42NSFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAuYXZjLW1ldGEgLmt2bC1oZXJvLW1ldGEtbGluZXtkaXNwbGF5OmJsb2NrIWltcG9ydGFudDt3aGl0ZS1zcGFjZTpub3dyYXAhaW1wb3J0YW50fQogICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gLmF2Yy1tZXRhIC5rdmwtaGVyby1tZXRhLXNlcHtkaXNwbGF5Om5vbmUhaW1wb3J0YW50fQonJycKbWVuID0gcmVwbGFjZV9vbmNlKG1lbiwgbmVlZGxlLCBpbnNlcnQsICdtZW4gaGVybyBtb2JpbGUgbGluZXMnKQoKbmVlZGxlID0gJyAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjdGVhbXMua3ZsLW1vYmlsZS1vbmx5LmF2Yy12aWV3LmlzLWFjdGl2ZXtkaXNwbGF5OmJsb2NrIWltcG9ydGFudH1cbicKaW5zZXJ0ID0gJycnICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICN0ZWFtcy5rdmwtdW1vYmlsZS1vbmx5LmF2Yy12aWV3LmlzLWFjdGl2ZXtkaXNwbGF5OmJsb2NrIWltcG9ydGFudH0KICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNvdmVydmlldyAua3ZsLW92ZXJ2aWV3LWJhZGdlcy5rdmwtdW1vYmlsZS1vbmx5e2Rpc3BsYXk6ZmxleCFpbXBvcnRhbnQ7bWFyZ2luLXRvcDoxMHB4IWltcG9ydGFudH0KJycnCm1lbiA9IHJlcGxhY2Vfb25jZShtZW4sIG5lZWRsZSwgaW5zZXJ0LCAnbWVuIHZlbnVlIGJhZGdlIG1vYmlsZSBkaXNwbGF5JykKCm5lZWRsZSA9ICcgICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2tub2Nrb3V0IC5hdmMtYnJvbnplLXdyYXB7bWF4LXdpZHRoOm5vbmUhaW1wb3J0YW50O21hcmdpbi10b3A6MTRweCFpbXBvcnRhbnR9XG4nCmluc2VydCA9ICcnJyAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAja25vY2tvdXQgLmF2Yy1icm9uemUtd3JhcHttYXgtd2lkdGg6bm9uZSFpbXBvcnRhbnQ7bWFyZ2luLXRvcDoxNHB4IWltcG9ydGFudH0KICAgICAgaHRtbCBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2tub2Nrb3V0IC5hdmMtcm91bmQtdGl0bGV7cGFkZGluZzo5cHggMTBweCFpbXBvcnRhbnQ7Zm9udC1zaXplOjEzcHghaW1wb3J0YW50O2xpbmUtaGVpZ2h0OjEuMiFpbXBvcnRhbnR9CiAgICAgIGh0bWwgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNrbm9ja291dCAuYXZjLXJvdW5kLXFmIC5hdmMtYnJhY2tldC1tYXRjaHtkaXNwbGF5OmJsb2NrIWltcG9ydGFudDtvdmVyZmxvdzpoaWRkZW4haW1wb3J0YW50fQogICAgICBodG1sIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAja25vY2tvdXQgLmF2Yy1icmFja2V0LW1hdGNoLWhlYWR7ZGlzcGxheTpmbGV4IWltcG9ydGFudDtncmlkLWNvbHVtbjphdXRvIWltcG9ydGFudDthbGlnbi1pdGVtczpjZW50ZXIhaW1wb3J0YW50O2p1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuIWltcG9ydGFudDtwYWRkaW5nOjhweCAxMHB4IWltcG9ydGFudDtmb250LXNpemU6MTBweCFpbXBvcnRhbnQ7bGluZS1oZWlnaHQ6MS4yIWltcG9ydGFudH0KICAgICAgaHRtbCBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2tub2Nrb3V0IC5hdmMtYnJhY2tldC1tYXRjaC1oZWFkIHN0cm9uZ3tmb250LXNpemU6MTFweCFpbXBvcnRhbnR9CiAgICAgIGh0bWwgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNrbm9ja291dCAuYXZjLXJvdW5kLXFmIC5hdmMtYnJhY2tldC10ZWFtLAogICAgICBodG1sIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAja25vY2tvdXQgLmF2Yy1yb3VuZC1xZiAuYXZjLWJyYWNrZXQtbWF0Y2gtaGVhZCArIC5hdmMtYnJhY2tldC10ZWFtLAogICAgICBodG1sIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAja25vY2tvdXQgLmF2Yy1yb3VuZC1xZiAuYXZjLWJyYWNrZXQtbWF0Y2gtaGVhZCArIC5hdmMtYnJhY2tldC10ZWFtICsgLmF2Yy1icmFja2V0LXRlYW17ZGlzcGxheTpncmlkIWltcG9ydGFudDtncmlkLWNvbHVtbjphdXRvIWltcG9ydGFudDtncmlkLXRlbXBsYXRlLWNvbHVtbnM6MzJweCBtaW5tYXgoMCwxZnIpIWltcG9ydGFudDthbGlnbi1pdGVtczpjZW50ZXIhaW1wb3J0YW50O2dhcDo4cHghaW1wb3J0YW50O21pbi1oZWlnaHQ6NDhweCFpbXBvcnRhbnQ7cGFkZGluZzo4cHggMTBweCFpbXBvcnRhbnQ7Ym9yZGVyLXRvcDoxcHggc29saWQgI2VkZjNlZiFpbXBvcnRhbnR9CiAgICAgIGh0bWwgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNrbm9ja291dCAuYXZjLXJvdW5kLXFmIC5hdmMtYnJhY2tldC10ZWFtIGltZ3tncmlkLWNvbHVtbjoxIWltcG9ydGFudDtncmlkLXJvdzoxIWltcG9ydGFudDt3aWR0aDozMHB4IWltcG9ydGFudDtoZWlnaHQ6MjFweCFpbXBvcnRhbnQ7anVzdGlmeS1zZWxmOnN0YXJ0IWltcG9ydGFudH0KICAgICAgaHRtbCBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2tub2Nrb3V0IC5hdmMtcm91bmQtcWYgLmF2Yy1icmFja2V0LXRlYW0uaXMtdGJkPnNwYW57Z3JpZC1jb2x1bW46MSFpbXBvcnRhbnQ7Z3JpZC1yb3c6MSFpbXBvcnRhbnQ7d2lkdGg6MjhweCFpbXBvcnRhbnQ7aGVpZ2h0OjI4cHghaW1wb3J0YW50O2ZvbnQtc2l6ZToxMHB4IWltcG9ydGFudH0KICAgICAgaHRtbCBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2tub2Nrb3V0IC5hdmMtcm91bmQtcWYgLmF2Yy1icmFja2V0LXRlYW0tY29weXt ncmlkLWNvbHVtbjoyIWltcG9ydGFudDtncmlkLXJvdzoxIWltcG9ydGFudDttaW4td2lkdGg6MCFpbXBvcnRhbnR9CiAgICAgIGh0bWwgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNrbm9ja291dCAuYXZjLWJyYWNrZXQtdGVhbS1jb3B5IHN0cm9uZ3tkaXNwbGF5OmJsb2NrIWltcG9ydGFudDtvdmVyZmxvdzp2aXNpYmxlIWltcG9ydGFudDtjb2xvcjojMjYzYjJlIWltcG9ydGFudDtmb250LXNpemU6MTNweCFpbXBvcnRhbnQ7Zm9udC13ZWlnaHQ6OTAwIWltcG9ydGFudDtMaW5lLWhlaWdodDoxLjI1IWltcG9ydGFudDt0ZXh0LW92ZXJmbG93OmNsaXAhaW1wb3J0YW50O3doaXRlLXNwYWNlOm5vcm1hbCFpbXBvcnRhbnR9CiAgICAgIGh0bWwgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNrbm9ja291dCAuYXZjLWJyYWNrZXQtdGVhbS1jb3B5IHNtYWxse2Rpc3BsYXk6YmxvY2shaW1wb3J0YW50O21hcmdpbi10b3A6M3B4IWltcG9ydGFudDtjb2xvcjojNmY3Zjc2IWltcG9ydGFudDtmb250LXNpemU6MTBweCFpbXBvcnRhbnQ7Zm9udC13ZWlnaHQ6ODUwIWltcG9ydGFudDtMaW5lLWhlaWdodDoxLjI1IWltcG9ydGFudDt3aGl0ZS1zcGFjZTpub3JtYWwhaW1wb3J0YW50fQogICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2dyb3VwcyAuYXZjLWNvbWJpbmVke292ZXJmbG93LXg6YXV0byFpbXBvcnRhbnQ7b3ZlcmZsb3cteTpoaWRkZW4haW1wb3J0YW50Oy13ZWJraXQtb3ZlcmZsb3ctc2Nyb2xsaW5nOnRvdWNoIWltcG9ydGFudDtvdmVyc2Nyb2xsLWJlaGF2aW9yLXg6Y29udGFpbiFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC1kZXNrdG9we2Rpc3BsYXk6bm9uZSFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC1tb2JpbGV7ZGlzcGxheTpibG9jayFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC10YWJsZXtiYWNrZ3JvdW5kOiNmZmYhaW1wb3J0YW50fQogICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2dyb3VwcyAua3ZsLW1lbi1jb21iaW5lZC1saW5le2Rpc3BsYXk6Z3JpZCFpbXBvcnRhbnQ7YWxpZ24taXRlbXM6Y2VudGVyIWltcG9ydGFudDtnYXA6NnB4IWltcG9ydGFudDttaW4taGVpZ2h0OjUycHghaW1wb3J0YW50O3BhZGRpbmc6OHB4IDZweCFpbXBvcnRhbnQ7Ym9yZGVyLXRvcDoxcHggc29saWQgI2VkZjNlZiFpbXBvcnRhbnQ7Ym94LXNpemluZzpib3JkZXItYm94IWltcG9ydGFudH0KICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNncm91cHMgLmt2bC1tZW4tY29tYmluZWQtbGluZTpmaXJzdC1jaGlsZHtib3JkZXItdG9wOjAhaW1wb3J0YW50fQogICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2dyb3VwcyAua3ZsLW1lbi1jb21iaW5lZC10YWJsZS5pcy1saXZle21pbi13aWR0aDo2OTBweCFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC10YWJsZS5pcy1saXZlIC5rdmwtdW1lbi1jb21iaW5lZC1saW5le2dyaWQtdGVtcGxhdGUtY29sdW1uczo0NHB4IDI4cHggMTEycHggMTEycHggNzZweCA1NHB4IDk2cHggOTZweCFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC10YWJsZS5pcy1jb21wbGV0ZXttaW4td2lkdGg6NzcwcHghaW1wb3J0YW50fQogICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2dyb3VwcyAua3ZsLW1lbi1jb21iaW5lZC10YWJsZS5pcy1jb21wbGV0ZSAua3ZsLW1lbi1jb21iaW5lZC1saW5le2dyaWQtdGVtcGxhdGUtY29sdW1uczo0NHB4IDI4cHggMTEwcHggMTMwcHggNzZweCA1NHB4IDk2cHggOTZweCA4NnB4IWltcG9ydGFudH0KICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNncm91cHMgLmt2bC1tZW4tY29tYmluZWQtbGluZS5pcy1oZWFke21pbi1oZWlnaHQ6NDJweCFpbXBvcnRhbnQ7YmFja2dyb3VuZDojZWRmOGYwIWltcG9ydGFudDtjb2xvcjojNTM2YjVkIWltcG9ydGFudDtmb250LXNpemU6MTBweCFpbXBvcnRhbnQ7Zm9udC13ZWlnaHQ6MTAwMCFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC1saW5lPnNwYW4sCiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC1saW5lPnN0cm9uZ3tkaXNwbGF5OmZsZXghaW1wb3J0YW50O2FsaWduLWl0ZW1zOmNlbnRlciFpbXBvcnRhbnQ7anVzdGlmeS1jb250ZW50OmNlbnRlciFpbXBvcnRhbnQ7anVzdGlmeS1zZWxmOnN0cmV0Y2ghaW1wb3J0YW50O3RleHQtYWxpZ246Y2VudGVyIWltcG9ydGFudDt3aGl0ZS1zcGFjZTpub3dyYXAhaW1wb3J0YW50fQogICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2dyb3VwcyAua3ZsLW1lbi1jb21iaW5lZC1saW5lIGltZ3tkaXNwbGF5OmJsb2NrIWltcG9ydGFudDt3aWR0aDoyOHB4IWltcG9ydGFudDtoZWlnaHQ6MTlweCFpbXBvcnRhbnQ7b2JqZWN0LWZpdDpjb250YWluIWltcG9ydGFudDtqdXN0aWZ5LXNlbGY6Y2VudGVyIWltcG9ydGFudH0KICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNncm91cHMgLmt2bC1tZW4tY29tYmluZWQtcmFua3tjb2xvcjp2YXIoLS1hdmMtcHJpbWFyeSkhaW1wb3J0YW50O2ZvbnQtc2l6ZToxM3B4IWltcG9ydGFudDtmb250LXdlaWdodDoxMDAwIWltcG9ydGFudH0KICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNncm91cHMgLmt2bC1tZW4tY29tYmluZWQtdGVhbXtjb2xvcjojMjk0OTM2IWltcG9ydGFudDtmb250LXNpemU6MTNweCFpbXBvcnRhbnQ7Zm9udC13ZWlnaHQ6OTAwIWltcG9ydGFudH0KICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNncm91cHMgLmt2bC1tZW4tY29tYmluZWQtc3RhdHtjb2xvcjojNzA4MDc4IWltcG9ydGFudDtmb250LXNpemU6MTFweCFpbXBvcnRhbnQ7Zm9udC13ZWlnaHQ6ODAwIWltcG9ydGFudH0KICAgICAgYm9keVtkYXRhLWF2Yy1nZW5kZXI9Im1lbiJdICNncm91cHMgLmt2bC1tZW4tY29tYmluZWQtcmVzdWx0e2Rpc3BsYXk6ZmxleCFpbXBvcnRhbnQ7YWxpZ24taXRlbXM6Y2VudGVyIWltcG9ydGFudDtqdXN0aWZ5LWNvbnRlbnQ6Y2VudGVyIWltcG9ydGFudDtnYXA6NnB4IWltcG9ydGFudDttaW4taGVpZ2h0OjM2cHghaW1wb3J0YW50O2NvbG9yOnZhcigtLWF2Yy1wcmltYXJ5KSFpbXBvcnRhbnQ7Zm9udC1zaXplOjEwcHghaW1wb3J0YW50O2ZvbnQtd2VpZ2h0OjEwMDAhaW1wb3J0YW50fQogICAgICBib2R5W2RhdGEtYXZjLWdlbmRlcj0ibWVuIl0gI2dyb3VwcyAua3ZsLW1lbi1jb21iaW5lZC1yZXN1bHQgYntkaXNwbGF5OmlubGluZS1mbGV4IWltcG9ydGFudDthbGlnbi1pdGVtczpjZW50ZXIhaW1wb3J0YW50O2p1c3RpZnktY29udGVudDpjZW50ZXIhaW1wb3J0YW50O21pbi13aWR0aDo2MnB4IWltcG9ydGFudDttaW4taGVpZ2h0OjI2cHghaW1wb3J0YW50O3BhZGRpbmc6NHB4IDVweCFpbXBvcnRhbnQ7Ym9yZGVyOjFweCBzb2xpZCAjYjlkYmM0IWltcG9ydGFudDtib3JkZXItcmFkaXVzOjk5OXB4IWltcG9ydGFudDtiYWNrZ3JvdW5kOiNlZGY4ZjAhaW1wb3J0YW50O2NvbG9yOnZhcigtLWF2Yy1wcmltYXJ5KSFpbXBvcnRhbnQ7Zm9udC1zaXplOjEwcHghaW1wb3J0YW50O2JveC1zaXppbmc6Ym9yZGVyLWJveCFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC1yZXN1bHQgc21hbGx7Y29sb3I6dmFyKC0tYXZjLXByaW1hcnkpIWltcG9ydGFudDtmb250LXNpemU6MTFweCFpbXBvcnRhbnQ7Zm9udC13ZWlnaHQ6MTAwMCFpbXBvcnRhbnR9CiAgICAgIGJvZHlbZGF0YS1hdmMtZ2VuZGVyPSJtZW4iXSAjZ3JvdXBzIC5rdmwtdW1lbi1jb21iaW5lZC1yZXN1bHQuaXMtb3V0IGJ7Ym9yZGVyLWNvbG9yOiNlNWU3ZWIhaW1wb3J0YW50O2JhY2tncm91bmQ6I2YzZjRmNiFpbXBvcnRhbnQ7Y29sb3I6IzZiNzI4MCFpbXBvcnRhbnQ7Zm9udC1zaXplOjhweCFpbXBvcnRhbnR9CicnJwptZW4gPSByZXBsYWNlX29uY2UobWVuLCBuZWVkbGUsIGluc2VydCwgJ21lbiBtb2JpbGUga25vY2tvdXQgKyBjb21iaW5lZCBjc3MnKQoKb2xkX2NhbGMgPSAnJycgICAgY29uc3QgcXVhbGlmaWVycz1bLi4uZmlyc3RTZWNvbmRzLC4uLnRoaXJkcy5zbGljZSgwLDIpXS5zb3J0KChhLGIpPT5jbXBNZXRyaWNzKGEsYix0cnVlKXx8YS5nbG9iYWxPcmRlci1iLmdsb2JhbE9yZGVyKTsKICAgIHF1YWxpZmllcnMuZm9yRWFjaCgocixpKT0+ci5zZWVkPWkrMSk7CiAgICByZXR1cm4ge2NvbXBsZXRlZENvdW50OmNvbXBsZXRlZC5sZW5ndGgsdG90YWxQb29sTWF0Y2hlczpwb29sTWF0Y2hlcy5sZW5ndGgscG9vbENvbXBsZXRlOmNvbXBsZXRlZC5sZW5ndGg9PT1wb29sTWF0Y2hlcy5sZW5ndGgmJnBvb2xNYXRjaGVzLmxlbmd0aD4wLGhhc0FueTpjb21wbGV0ZWQubGVuZ3RoPjAscG9vbFRhYmxlcyxxdWFsaWZpZXJzLGJ5U2VlZDpuZXcgTWFwKHF1YWxpZmllcnMubWFwKHI9PltyLnNlZWQsciddKSl9OwoncwpuZXdfY2FsYyA9ICcnJyAgICBjb25zdCBjb21iaW5lZEFsbD1PYmplY3QudmFsdWVzKHBvb2xUYWJsZXMpLmZsYXQoKS5zb3J0KChhLGIpPT5jbXBNZXRyaWNzKGEsYix0cnVlKXx8YS5nbG9iYWxPcmRlci1iLmdsb2JhbE9yZGVyKTsKICAgIGNvbWJpbmVkQWxsLmZvckVhY2goKHIsaSk9PnIuY29tYmluZWRSYW5rPWkrMSk7CiAgICBjb25zdCBxdWFsaWZpZXJzPVsuLi5maXJzdFNlY29uZHMsLi4udGhpcmRzLnNsaWNlKDAsMildLnNvcnQoKGEsYik9PmNtcE1ldHJpY3MoYSxiLHRydWUpfHxhLmdsb2JhbE9yZGVyLWIuZ2xvYmFsT3JkZXIpOwogICAgcXVhbGlmaWVycy5mb3JFYWNoKChyLGkpPT5yLnNlZWQ9aSsxKTsKICAgIHJldHVybiB7Y29tcGxldGVkQ291bnQ6Y29tcGxldGVkLmxlbmd0aCx0b3RhbFBvb2xNYXRjaGVzOnBvb2xNYXRjaGVzLmxlbmd0aCxwb29sQ29tcGxldGU6Y29tcGxldGVkLmxlbmd0aD09PXBvb2xNYXRjaGVzLmxlbmd0aCYmcG9vbE1hdGNoZXMubGVuZ3RoPjAsaGFzQW55OmNvbXBsZXRlZC5sZW5ndGg+MCxwb29sVGFibGVzLGNvbWJpbmVkQWxsLHF1YWxpZmllcnMsYnlTZWVkOm5ldyBNYXAocXVhbGlmaWVycy5tYXAocj0+W3Iuc2VlZCxyXSkpfTsKJycnbWV uID0gcmVwbGFjZV9vbmNlKG1lbiwgb2xkX2NhbGMsIG5ld19jYWxjLCAnbWVuIGNhbGN1bGF0ZSBjb21iaW5lZCBhbGwnKQoKcGF0dGVybiA9IHJlLmNvbXBpbGUocicnJyAgZnVuY3Rpb24gcmVuZGVyQ29tYmluZWRcKFwpXHsuKj9cbiAgXH1cblxuICBjb25zdCBicmFja2V0VGVhbT0nJycsIHJlLlMpCm0gPSBwYXR0ZXJuLnNlYXJjaChtZW4pCmlmIG5vdCBtOgogICAgcmFpc2UgU3lzdGVtRXhpdCgnbWlzc2luZyBtYXJrZXI6IG1lbiByZW5kZXJDb21iaW5lZCBibG9jaycpCgpuZXdfcmVuZGVyX2NvbWJpbmVkID0gcicnJyAgZnVuY3Rpb24gcmVuZGVyQ29tYmluZWQoKXsKICAgIGNvbnN0IHJvb3Q9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NvbWJpbmVkUmFua2luZ1Jvb3QnKSxzdGF0dXM9ZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NvbWJpbmVkU3RhdHVzJyk7aWYoIXJvb3R8fCFzdGF0dXN8fCFwcm9qZWN0aW9uKXJldHVybjsKICAgIGlmKCFwcm9qZWN0aW9uLmhhc0FueSl7c3RhdHVzLnRleHRDb250ZW50PScnO3Jvb3QuaW5uZXJIVE1MPS c8ZGl2IGNsYXNzPSJhdmMtY29tYmluZWQtZW1wdHkiPu 조별리그 첫 경기 결과가 등록되면 현재 예선 종합순위를 표시합니다.</div>';return}
+    status.textContent=projection.poolComplete?'조별리그 종료 · 예선 종합순위 확정':`${projection.completedCount}/18경기 완료 기준 · 현재 예상`;
+    const desktop=projection.qualifiers.map(r=>`<div class="avc-combined-row ${r.team==='대한민국'?'is-korea':''}"><span class="avc-combined-seed">${r.seed}번 시드</span>${standingFlag(r.team)}<strong>${esc(r.team)}</strong><span>${esc(r.pool)}조 ${r.poolPosition}위</span><span>${r.wins}승 · ${r.matchPoints}점</span><span>세트율 ${fmtRatio(r.setsFor,r.setsAgainst)}</span></div>`).join('');
+    const rows=projection.combinedAll||[];
+    const complete=projection.poolComplete;
+    const opponentSeed=seed=>({1:8,8:1,4:5,5:4,2:7,7:2,3:6,6:3})[seed]||'';
+    const resultCell=r=>r.seed?`<span class="kvl-men-combined-result"><b>8강 진출</b><small>${r.seed}-${opponentSeed(r.seed)}</small></span>`:`<span class="kvl-men-combined-result is-out"><b>조별리그 탈락</b></span>`;
+    const head=complete
+      ? '<span>종합순위</span><span>국기</span><span>국가</span><span>결과</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span><span>조순위</span>'
+      : '<span>종합순위</span><span>국기</span><span>국가</span><span>조순위</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span>';
+    const body=rows.map(r=>{
+      const common=`<span class="kvl-men-combined-rank">${r.combinedRank}위</span>${standingFlag(r.team)}<strong class="kvl-men-combined-team">${esc(r.team)}</strong>`;
+      const stats=`<span class="kvl-men-combined-stat">${r.wins}승</span><span class="kvl-men-combined-stat">${r.matchPoints}</span><span class="kvl-men-combined-stat">${fmtRatio(r.setsFor,r.setsAgainst)}</span><span class="kvl-men-combined-stat">${r.pointMatches?fmtRatio(r.pointsFor,r.pointsAgainst):'-'}</span>`;
+      return complete
+        ? `<div class="kvl-men-combined-line ${r.team==='대한민국'?'is-korea':''}">${common}${resultCell(r)}${stats}<span class="kvl-men-combined-stat">${esc(r.pool)}조 ${r.poolPosition}위</span></div>`
+        : `<div class="kvl-men-combined-line ${r.team==='대한민국'?'is-korea':''}">${common}<span class="kvl-men-combined-stat">${esc(r.pool)}조 ${r.poolPosition}위</span>${stats}</div>`;
+    }).join('');
+    root.innerHTML=`<div class="kvl-men-combined-desktop">${desktop}</div><div class="kvl-men-combined-mobile"><div class="kvl-men-combined-table ${complete?'is-complete':'is-live'}"><div class="kvl-men-combined-line is-head">${head}</div>${body}</div></div>`;
+  }
+
+  const bracketTeam='''
+men = men[:m.start()] + new_render_combined + men[m.end():]
+
+men_path.write_text(men, encoding="utf-8")
+
+# 2) Shared mobile helper: venue badge + smaller calendar time.
+mobile_path = Path("assets/css/kvl-mobile-competition-template-v1.css")
+mobile = mobile_path.read_text(encoding="utf-8")
+count_rule = "  body[data-avc-gender] #overview .kvl-calendar-day-link .kvl-calendar-count{margin-top:6px;padding:3px 4px;border-radius:6px;background:var(--avc-soft);color:var(--avc-primary);font-size:8px;font-weight:900;white-space:nowrap}\n"
+replacement = count_rule + "  body[data-avc-gender] #overview .kvl-calendar-time{display:block!important;margin-top:2px!important;color:#7c8795!important;font-size:8px!important;font-weight:800!important;line-height:1.1!important;white-space:nowrap!important}\n  body[data-avc-gender] #overview .kvl-overview-badges{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin-top:10px!important}\n  body[data-avc-gender] #overview .kvl-overview-venue{display:inline-flex!important;max-width:100%!important;align-items:center!important;gap:7px!important;padding:7px 10px!important;border:1px solid var(--avc-line)!important;border-radius:999px!important;background:var(--avc-soft)!important;box-sizing:border-box!important}\n  body[data-avc-gender] #overview .kvl-overview-venue b{color:var(--avc-primary)!important;font-size:10px!important;font-weight:1000!important;white-space:nowrap!important}\n  body[data-avc-gender] #overview .kvl-overview-venue span{overflow:hidden!important;color:#5f6f80!important;font-size:10px!important;font-weight:850!important;text-overflow:ellipsis!important;white-space:nowrap!important}\n"
+mobile = replace_once(mobile, count_rule, replacement, 'shared mobile calendar + venue badge')
+mobile_path.write_text(mobile, encoding="utf-8")
+
+# 3) Women: bump shared mobile CSS version so calendar correction loads.
+women_path = Path("international-competition-avc-women-continental-2026.html")
+women = women_path.read_text(encoding="utf-8")
+women = replace_once(
+    women,
+    'assets/css/kvl-mobile-competition-template-v1.css?v=20260907-2',
+    'assets/css/kvl-mobile-competition-template-v1.css?v=20260907-4',
+    'women shared mobile css version'
+)
+women_path.write_text(women, encoding="utf-8")
+
+# 4) Independent competition template renderer: 3-line mobile hero + venue badge.
+renderer_path = Path("assets/js/kvl-competition-template-v1.js")
+renderer = renderer_path.read_text(encoding="utf-8")
+old_hero_fn = '''  function hero(cfg){
+    const dates=[cfg.startDate,cfg.endDate].filter(Boolean).join(' ~ ');
+    const place=[cfg.location?.country,cfg.location?.city].filter(Boolean).join(' · ');
+    const venue=cfg.location?.venue||'';
+    const meta=[dates,place,venue].filter(Boolean).join(' · ');
+    return `<section class="kvl-comp-hero"><div class="kvl-comp-hero-copy"><p class="kvl-comp-eyebrow">${esc(cfg.eyebrow||cfg.titleEn||'K-VOLLEY LAB COMPETITION')}</p><h1 class="kvl-comp-title">${esc(cfg.titleKo||'대회명')}</h1>${meta?`<p class="kvl-comp-meta">${esc(meta)}</p>`:''}</div>${cfg.statusLabel?`<span class="kvl-comp-status">${esc(cfg.statusLabel)}</span>`:''}</section>`;
+  }
+'''
+new_hero_fn = '''  function hero(cfg){
+    const dates=[cfg.startDate,cfg.endDate].filter(Boolean).join(' ~ ');
+    const place=[cfg.location?.country,cfg.location?.city].filter(Boolean).join(' · ');
+    const venue=cfg.location?.venue||'';
+    const parts=[dates,place,venue].filter(Boolean);
+    const meta=parts.map((part,index)=>`<span class="kvl-comp-meta-line">${esc(part)}</span>${index<parts.length-1?'<span class="kvl-comp-meta-sep"> · </span>':''}`).join('');
+    return `<section class="kvl-comp-hero"><div class="kvl-comp-hero-copy"><p class="kvl-comp-eyebrow">${esc(cfg.eyebrow||cfg.titleEn||'K-VOLLEY LAB COMPETITION')}</p><h1 class="kvl-comp-title">${esc(cfg.titleKo||'대회명')}</h1>${meta?`<p class="kvl-comp-meta">${meta}</p>`:''}</div>${cfg.statusLabel?`<span class="kvl-comp-status">${esc(cfg.statusLabel)}</span>`:''}</section>`;
+  }
+'''
+renderer = replace_once(renderer, old_hero_fn, new_hero_fn, 'base renderer hero')
+
+old_overview = '''  function overview(cfg){
+    const stats=Array.isArray(cfg.overviewStats)?cfg.overviewStats:[];
+    const kpis=stats.length?`<div class="kvl-comp-kpis">${stats.map(s=>`<article class="kvl-comp-kpi"><span class="kvl-comp-kpi-label">${esc(s.label)}</span><div class="kvl-comp-kpi-value"><strong>${esc(s.value)}</strong><small>${esc(s.unit||'')}</small></div></article>`).join('')}</div>`:'';
+    return `${sectionHead(cfg,'overview')}${kpis}<div class="kvl-comp-slot" data-kvl-slot="overview-extra"></div>`;
+  }
+'''
+new_overview = '''  function overview(cfg){
+    const stats=Array.isArray(cfg.overviewStats)?cfg.overviewStats:[];
+    const kpis=stats.length?`<div class="kvl-comp-kpis">${stats.map(s=>`<article class="kvl-comp-kpi"><span class="kvl-comp-kpi-label">${esc(s.label)}</span><div class="kvl-comp-kpi-value"><strong>${esc(s.value)}</strong><small>${esc(s.unit||'')}</small></div></article>`).join('')}</div>`:'';
+    const venue=cfg.location?.venue||'';
+    const venueBadge=venue?`<div class="kvl-comp-overview-badges"><span class="kvl-comp-venue-badge"><b>경기장</b><span>${esc(venue)}</span></span></div>`:'';
+    return `${sectionHead(cfg,'overview')}${kpis}${venueBadge}<div class="kvl-comp-slot" data-kvl-slot="overview-extra"></div>`;
+  }
+'''
+renderer = replace_once(renderer, old_overview, new_overview, 'base renderer venue badge')
+renderer_path.write_text(renderer, encoding="utf-8")
+
+# 5) Independent template CSS.
+base_css_path = Path("assets/css/kvl-competition-template-v1.css")
+base_css = base_css_path.read_text(encoding="utf-8")
+base_css = replace_once(
+    base_css,
+    '.kvl-comp-hero-copy{min-width:0}.kvl-comp-eyebrow',
+    '.kvl-comp-hero-copy{min-width:0}.kvl-comp-meta-line{display:inline}.kvl-comp-meta-sep{display:inline}.kvl-comp-eyebrow',
+    'base hero meta classes'
+)
+base_css = replace_once(
+    base_css,
+    '.kvl-comp-kpi-value strong{color:var(--kvl-comp-primary);font-size:30px;line-height:1}.kvl-comp-kpi-value small{color:#748397;font-size:13px;font-weight:800}\n',
+    '.kvl-comp-kpi-value strong{color:var(--kvl-comp-primary);font-size:30px;line-height:1}.kvl-comp-kpi-value small{color:#748397;font-size:13px;font-weight:800}\n.kvl-comp-overview-badges{display:none}.kvl-comp-venue-badge{display:inline-flex;max-width:100%;align-items:center;gap:7px;padding:7px 10px;border:1px solid var(--kvl-comp-line);border-radius:999px;background:var(--kvl-comp-soft);box-sizing:border-box}.kvl-comp-venue-badge b{color:var(--kvl-comp-primary);font-size:10px;font-weight:1000;white-space:nowrap}.kvl-comp-venue-badge span{overflow:hidden;color:var(--kvl-comp-muted);font-size:10px;font-weight:850;text-overflow:ellipsis;white-space:nowrap}.kvl-comp-calendar-time{font-size:8px;line-height:1.1}\n',
+    'base venue badge css'
+)
+old_media = '@media(max-width:680px){.kvl-competition-v1{padding:22px 12px 56px}.kvl-comp-hero{align-items:flex-start;flex-direction:column;padding:24px}.kvl-comp-title{font-size:29px}.kvl-comp-title::before{width:34px;height:34px}.kvl-comp-section{padding:22px 16px}.kvl-comp-section-head{align-items:flex-start;flex-direction:column}.kvl-comp-section-head p{text-align:left}.kvl-comp-kpis{grid-template-columns:1fr 1fr;gap:10px}.kvl-comp-kpi{padding:16px}.kvl-comp-kpi-value strong{font-size:26px}}\n'
+new_media = '@media(max-width:680px){.kvl-competition-v1{padding:22px 12px 56px}.kvl-comp-hero{align-items:flex-start;flex-direction:column;padding:24px}.kvl-comp-title{font-size:29px}.kvl-comp-title::before{width:34px;height:34px}.kvl-comp-meta-line{display:block;white-space:nowrap}.kvl-comp-meta-sep{display:none}.kvl-comp-section{padding:22px 16px}.kvl-comp-section-head{align-items:flex-start;flex-direction:column}.kvl-comp-section-head p{text-align:left}.kvl-comp-kpis{grid-template-columns:1fr 1fr;gap:10px}.kvl-comp-kpi{padding:16px}.kvl-comp-kpi-value strong{font-size:26px}.kvl-comp-overview-badges{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}}\n'
+base_css = replace_once(base_css, old_media, new_media, 'base mobile media')
+base_css_path.write_text(base_css, encoding="utf-8")
+
+# 6) Starter template cache versions.
+starter_path = Path("templates/competition-page-v1.html")
+starter = starter_path.read_text(encoding="utf-8")
+starter = replace_once(starter, 'assets/css/kvl-competition-template-v1.css?v=20260904-1', 'assets/css/kvl-competition-template-v1.css?v=20260907-2', 'starter css version')
+starter = replace_once(starter, 'assets/js/kvl-competition-template-v1.js?v=20260904-1', 'assets/js/kvl-competition-template-v1.js?v=20260907-2', 'starter js version')
+starter_path.write_text(starter, encoding="utf-8")
+
+# 7) Template documentation.
+docs_path = Path("docs/KVL_MOBILE_COMPETITION_TEMPLATE_V2.md")
+docs = docs_path.read_text(encoding="utf-8")
+docs = replace_once(
+    docs,
+    '- 대회 기간, 개최지, 경기장, 참가 규모, 현재 상태를 첫 화면에서 빠르게 확인할 수 있어야 한다.\n',
+    '- 대회 기간, 개최지, 경기장, 참가 규모, 현재 상태를 첫 화면에서 빠르게 확인할 수 있어야 한다.\n- 모바일 메인 카드에서 `날짜 / 장소 / 경기장`이 자연스럽게 한 줄에 담기지 않으면 억지로 줄바꿈하지 않고 각각 1줄씩 총 3줄로 분리한다.\n- 한눈에 보기에는 `경기장` 정보를 작은 공통 뱃지로 기본 제공한다.\n',
+    'docs overview rules'
+)
+docs = replace_once(
+    docs,
+    '- 경기 있는 날짜는 경기 수 또는 간단한 경기 존재 표시를 제공한다.\n',
+    '- 경기 있는 날짜는 경기 수 또는 간단한 경기 존재 표시를 제공한다.\n- 390px 기준 달력 안의 경기시간은 보조정보로 취급하며 기본 `8px` 수준으로 유지해 날짜·경기수보다 시각적 우선순위가 높아지지 않게 한다.\n',
+    'docs calendar time'
+)
+docs = replace_once(
+    docs,
+    '- 헤더와 본문 값은 같은 열 중심선에 맞춰 정렬한다.\n',
+    '- 헤더와 본문 값은 같은 열 중심선에 맞춰 정렬한다.\n- 조별리그 진행 중인 예선 종합순위는 `종합순위 / 국기·로고 / 국가·팀 / 조순위 / 세부통계...` 순서를 기본으로 한다.\n- 조별리그가 모두 끝나면 같은 표가 자동으로 `종합순위 / 국기·로고 / 국가·팀 / 결과 / 세부통계... / 조순위` 순서로 전환되도록 할 수 있다. 완료 여부는 데이터의 조별리그 전체 경기 완료 상태로 판단한다.\n',
+    'docs dynamic combined order'
+)
+docs = replace_once(
+    docs,
+    '- 대회 구조상 정보 손실이 생기면 세로형 카드 사용을 허용한다.\n',
+    '- 대회 구조상 정보 손실이 생기면 세로형 카드 사용을 허용한다.\n- 아직 대진이 확정되지 않은 결선 카드에서 `예선 종합 n위`, `현재 예상` 같은 보조문구는 축소를 우선하지 말고 팀/시드 본문 약 12~13px, 보조문구 약 9~10px 수준의 가독성을 우선한다.\n',
+    'docs knockout readability'
+)
+docs_path.write_text(docs, encoding="utf-8")
+
+print("patched files:")
+for p in [men_path, mobile_path, women_path, renderer_path, base_css_path, starter_path, docs_path]:
+    print(p)
+"
+      - name: Decode and run patch
+        shell: bash
+        run: |
+          printf '%s' "$PATCH_SCRIPT_B64" | base64 -d > /tmp/patch.py
+          python /tmp/patch.py
+      - name: Commit patch
+        shell: bash
+        run: |
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add international-competition-avc-men-continental-2026.html international-competition-avc-women-continental-2026.html assets/css/kvl-mobile-competition-template-v1.css assets/css/kvl-competition-template-v1.css assets/js/kvl-competition-template-v1.js templates/competition-page-v1.html docs/KVL_MOBILE_COMPETITION_TEMPLATE_V2.md
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "fix: refine AVC men mobile template behavior"
+          git push origin HEAD:main
