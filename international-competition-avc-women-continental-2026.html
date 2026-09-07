@@ -30,13 +30,14 @@
       body[data-avc-gender="women"] #groups .avc-combined-head{gap:3px!important}
       body[data-avc-gender="women"] #groups .avc-combined-head h3{font-size:16px!important;line-height:1.25!important;letter-spacing:-.03em!important}
       body[data-avc-gender="women"] #groups .avc-combined-head>p{font-size:9px!important;line-height:1.35!important;letter-spacing:-.035em!important}
-      body[data-avc-gender="women"] #groups .kvl-combined-table{min-width:760px}
-      body[data-avc-gender="women"] #groups .kvl-combined-line{grid-template-columns:48px 28px 86px 88px 72px 48px 82px 82px 62px;gap:6px;min-height:44px;padding:7px 9px}
+      body[data-avc-gender="women"] #groups .avc-combined{overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important}
+      body[data-avc-gender="women"] #groups .kvl-combined-table{min-width:720px!important}
+      body[data-avc-gender="women"] #groups .kvl-combined-line{grid-template-columns:42px 24px 72px 82px 66px 44px 76px 76px 60px!important;gap:4px!important;min-height:44px;padding:7px 6px!important}
       body[data-avc-gender="women"] #groups .kvl-combined-line.is-head{font-size:9px}
       body[data-avc-gender="women"] #groups .kvl-combined-rank{font-size:11px}
       body[data-avc-gender="women"] #groups .kvl-combined-team{font-size:11px}
       body[data-avc-gender="women"] #groups .kvl-combined-stat{font-size:10px}
-      body[data-avc-gender="women"] #groups .kvl-combined-result{padding:4px 5px;font-size:9px}
+      body[data-avc-gender="women"] #groups .kvl-combined-result{width:100%;padding:4px 4px;font-size:9px}
       body[data-avc-gender="women"] #sources .avc-sources{grid-template-columns:1fr!important;gap:7px!important}
       html body[data-avc-gender="women"] #sources .avc-source{grid-template-columns:minmax(0,1fr) auto!important;min-height:48px!important;padding:10px 10px!important;gap:6px!important}
       html body[data-avc-gender="women"] #sources .avc-source strong{font-size:11px!important;line-height:1.2!important;white-space:nowrap!important}
@@ -69,7 +70,7 @@
       html body[data-avc-gender="women"] #knockout .avc-bracket-team strong{overflow:visible!important;letter-spacing:-.045em!important;text-overflow:clip!important}
     }
   </style>
-  <script src="assets/js/unified-nav.js?v=20260907-3" defer></script>
+  <script src="assets/js/unified-nav.js?v=20260907-4" defer></script>
 </head>
 <body>
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -129,7 +130,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const teamInfo={'중국':{en:'China',flag:'cn'},'이란':{en:'Iran',flag:'ir'},'대만':{en:'Chinese Taipei',flag:'tw'},'이라크':{en:'Iraq',flag:'iq'},'태국':{en:'Thailand',flag:'th'},'인도네시아':{en:'Indonesia',flag:'id'},'카자흐스탄':{en:'Kazakhstan',flag:'kz'},'호주':{en:'Australia',flag:'au'},'일본':{en:'Japan',flag:'jp'},'대한민국':{en:'Korea',flag:'kr'},'베트남':{en:'Vietnam',flag:'vn'},'홍콩':{en:'Hong Kong, China',flag:'hk'}};
   const flagUrl=name=>teamInfo[name]?`https://flagcdn.com/w80/${teamInfo[name].flag}.png`:'';
   const weekday=date=>['일','월','화','수','목','금','토'][new Date(`${date}T00:00:00+09:00`).getDay()];
@@ -191,7 +192,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   function renderTeams(data){document.getElementById('teamRoot').innerHTML=data.groups.flatMap(g=>g.teams.map(team=>`<article class="avc-country-card">${standingFlag(team)}<div class="avc-country-copy"><strong>${esc(team)}</strong><small>${esc(teamInfo[team]?.en||'')}</small></div><span class="avc-country-pool">${g.id}조</span></article>`)).join('')}
   function renderSources(data){document.getElementById('sourceRoot').innerHTML=data.sources.map(s=>`<div class="avc-source"><strong>${esc(s.label)}</strong><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">공식페이지 →</a></div>`).join('')}
 
-  fetch('data/competitions/avc-women-continental-2026.json?v=20260907-1',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(data=>{competitionVenue=data.venueKo||data.venue||'';allMatches=data.matches||[];renderCalendar(allMatches);renderFilters();renderSchedule();renderGroups(data);renderPodium(data);renderKnockout(allMatches);renderTeams(data);renderSources(data);enhanceKpis();syncView()}).catch(()=>{['calendarRoot','scheduleRoot','groupRoot','combinedRankingRoot','podiumRoot','knockoutRoot','teamRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
+  fetch('data/competitions/avc-women-continental-2026.json?v=20260907-2',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(data=>{competitionVenue=data.venueKo||data.venue||'';allMatches=data.matches||[];renderCalendar(allMatches);renderFilters();renderSchedule();renderGroups(data);renderPodium(data);renderKnockout(allMatches);renderTeams(data);renderSources(data);enhanceKpis();syncView()}).catch(()=>{['calendarRoot','scheduleRoot','groupRoot','combinedRankingRoot','podiumRoot','knockoutRoot','teamRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
 });
 </script>
 </body>
