@@ -122,7 +122,7 @@
 
     const setupAvcWomenSources=()=>{
       const root=document.getElementById('sourceRoot');if(!root)return;
-      const apply=()=>root.querySelectorAll('.avc-source a').forEach(a=>{a.textContent='공식페이지 →'});
+      const apply=()=>root.querySelectorAll('.avc-source a').forEach(a=>{if(a.textContent.trim()!=='공식페이지 →')a.textContent='공식페이지 →'});
       apply();
       new MutationObserver(apply).observe(root,{childList:true,subtree:true});
     };
