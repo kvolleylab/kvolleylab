@@ -1,0 +1,134 @@
+/* K-Volley Lab Mobile Competition Template v2
+   Source of truth for 390px competition-page detail sizing.
+   This file is intentionally loaded AFTER page-specific inline styles on retrofitted AVC pages.
+   Theme colors remain page variables; layout/typography/spacing are shared. */
+
+@media (max-width:680px){
+  /* Shared mobile tokens */
+  body[data-avc-gender],
+  .kvl-competition-v1{
+    --kvl-m-nav-font:13px;
+    --kvl-m-section-title:22px;
+    --kvl-m-kpi-value:29px;
+    --kvl-m-calendar-time:8px;
+    --kvl-m-rank-head:10px;
+    --kvl-m-rank-row:54px;
+    --kvl-m-rank-rank:13px;
+    --kvl-m-rank-team:13px;
+    --kvl-m-rank-stat:11px;
+    --kvl-m-rank-flag-w:28px;
+    --kvl-m-rank-flag-h:19px;
+    --kvl-m-qf-team:13px;
+    --kvl-m-qf-meta:9.5px;
+    --kvl-m-qf-status:9px;
+    --kvl-m-qf-flag-w:30px;
+    --kvl-m-qf-flag-h:21px;
+  }
+
+  /* Core shell */
+  html body[data-avc-gender] .avc-main{padding:18px 10px 56px!important}
+  html body[data-avc-gender] .avc-hero{padding:24px 18px!important;border-radius:20px!important}
+  html body[data-avc-gender] .avc-hero h1{font-size:24px!important;line-height:1.25!important;letter-spacing:-.045em!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-hero h1 small{font-size:12px!important;white-space:normal!important}
+  html body[data-avc-gender] .avc-meta .kvl-hero-meta-line{display:block!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-meta .kvl-hero-meta-sep{display:none!important}
+
+  /* 6 tabs = 3 + 3 */
+  html body[data-avc-gender] .avc-jump{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;margin:14px 0 22px!important;padding:6px!important;overflow:visible!important;border-radius:14px!important}
+  html body[data-avc-gender] .avc-jump a{display:flex!important;min-height:42px!important;align-items:center!important;justify-content:center!important;padding:8px 3px!important;font-size:var(--kvl-m-nav-font)!important;font-weight:900!important;line-height:1.15!important;text-align:center!important;white-space:nowrap!important}
+
+  /* Sections */
+  html body[data-avc-gender] .avc-section{padding:18px 12px!important;border-radius:18px!important}
+  html body[data-avc-gender] .avc-section h2{font-size:var(--kvl-m-section-title)!important}
+  html body[data-avc-gender] .avc-section-head{gap:7px!important;margin-bottom:14px!important}
+  html body[data-avc-gender] .avc-section-head>p{font-size:11px!important;line-height:1.45!important}
+
+  /* Overview KPI + full-width venue card */
+  html body[data-avc-gender] #overview .avc-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  html body[data-avc-gender] #overview .avc-kpis article{min-height:92px!important;padding:13px 12px!important;border-radius:14px!important}
+  html body[data-avc-gender] #overview .avc-kpis article strong{font-size:var(--kvl-m-kpi-value)!important;line-height:1.1!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi{grid-column:1/-1!important;box-sizing:border-box!important;min-height:92px!important;padding:13px 12px!important;border:1px solid var(--avc-line)!important;border-radius:14px!important;background:var(--avc-soft)!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi span,
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi small{display:block!important;color:#748397!important;font-size:11px!important;font-weight:700!important;line-height:1.3!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi strong{display:block!important;margin-top:7px!important;color:var(--avc-dark)!important;font-size:20px!important;font-weight:900!important;line-height:1.2!important;letter-spacing:-.035em!important;white-space:nowrap!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi small{margin-top:3px!important;white-space:nowrap!important}
+
+  /* Calendar */
+  html body[data-avc-gender] #overview .kvl-calendar-time{font-size:var(--kvl-m-calendar-time)!important;line-height:1.1!important}
+
+  /* Schedule cards */
+  html body[data-avc-gender] #schedule .cd-match-meta time{font-size:13px!important;font-weight:900!important}
+  html body[data-avc-gender] #schedule .cd-side strong{font-size:12px!important}
+  html body[data-avc-gender] #schedule .cd-score{font-size:18px!important}
+  html body[data-avc-gender] #schedule .avc-set-scores{font-size:10px!important;line-height:1.3!important}
+
+  /* Participants */
+  html body[data-avc-gender] .avc-participant-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  html body[data-avc-gender] .avc-country-card{min-height:64px!important;padding:9px 8px!important;gap:7px!important}
+  html body[data-avc-gender] .avc-country-card img{width:35px!important;height:24px!important}
+  html body[data-avc-gender] .avc-country-copy strong{font-size:12px!important}
+  html body[data-avc-gender] .avc-country-copy small{font-size:9px!important}
+  html body[data-avc-gender] .avc-country-pool{font-size:9px!important}
+
+  /* Combined ranking: ONE typography spec for men + women. */
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-line,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-line{gap:6px!important;min-height:var(--kvl-m-rank-row)!important;padding:8px 6px!important;box-sizing:border-box!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-line.is-head,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-line.is-head{min-height:42px!important;font-size:var(--kvl-m-rank-head)!important;font-weight:1000!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-line.is-head>span,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-line.is-head>span{display:flex!important;align-items:center!important;justify-content:center!important;justify-self:stretch!important;text-align:center!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-line img,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-line img{display:block!important;width:var(--kvl-m-rank-flag-w)!important;height:var(--kvl-m-rank-flag-h)!important;object-fit:contain!important;justify-self:center!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-rank,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-rank{font-size:var(--kvl-m-rank-rank)!important;justify-self:center!important;text-align:center!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-team,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-team{font-size:var(--kvl-m-rank-team)!important;justify-self:center!important;text-align:center!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-stat,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-stat{font-size:var(--kvl-m-rank-stat)!important;text-align:center!important;white-space:nowrap!important}
+
+  /* Result badges in completed combined ranking */
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-result,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-result{display:flex!important;width:100%!important;min-height:38px!important;align-items:center!important;justify-content:center!important;gap:6px!important;padding:0!important;color:var(--avc-dark)!important;font-size:11px!important;font-weight:1000!important;line-height:1.1!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-result b,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-result b{display:inline-flex!important;width:62px!important;min-width:62px!important;min-height:26px!important;align-items:center!important;justify-content:center!important;padding:4px 5px!important;border:1px solid var(--avc-line)!important;border-radius:999px!important;background:var(--avc-soft)!important;color:var(--avc-dark)!important;font-size:10px!important;box-sizing:border-box!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-result small,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-result small{margin:0!important;color:var(--avc-dark)!important;font-size:11px!important;font-weight:1000!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-result.is-out,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-result.is-out{justify-content:center!important;background:transparent!important;color:#6b7280!important}
+  html body[data-avc-gender] .avc-main #groups .kvl-women-combined-v3-result.is-out b,
+  html body[data-avc-gender] .avc-main #groups .kvl-men-combined-result.is-out b{border-color:#e5e7eb!important;background:#f3f4f6!important;color:#6b7280!important;font-size:8px!important}
+
+  /* Standard projected QF matchup.
+     identity sits vertically centered between status(top) and seed(bottom). */
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-projection{display:grid!important;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr)!important;align-items:center!important;gap:5px!important;padding:10px 8px!important;border-top:1px solid #edf3ef!important;background:#fff!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side{display:grid!important;min-width:0!important;align-items:center!important;column-gap:5px!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-left{grid-template-columns:minmax(0,1fr) auto!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-right{grid-template-columns:auto minmax(0,1fr)!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-identity{display:flex!important;min-width:0!important;align-items:center!important;gap:5px!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-left .kvl-comp-qf-identity{grid-column:1!important;justify-content:flex-start!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-right .kvl-comp-qf-identity{grid-column:2!important;justify-content:flex-end!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-identity img{display:block!important;flex:0 0 auto!important;width:var(--kvl-m-qf-flag-w)!important;height:var(--kvl-m-qf-flag-h)!important;object-fit:contain!important;background:#fff!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-identity strong{overflow:visible!important;color:#263b2e!important;font-size:var(--kvl-m-qf-team)!important;font-weight:950!important;line-height:1.2!important;text-overflow:clip!important;white-space:nowrap!important}
+  html body[data-avc-gender="women"] .avc-main #knockout .kvl-comp-qf-identity strong{color:#5f4650!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-meta{display:flex!important;min-width:0!important;flex-direction:column!important;justify-content:center!important;line-height:1.15!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-left .kvl-comp-qf-meta{grid-column:2!important;text-align:right!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-right .kvl-comp-qf-meta{grid-column:1!important;text-align:left!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-status{display:block!important;color:#7a897f!important;font-size:var(--kvl-m-qf-status)!important;font-weight:850!important;line-height:1.15!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-seedline{display:block!important;margin-top:3px!important;color:#51675a!important;font-size:var(--kvl-m-qf-meta)!important;font-weight:900!important;line-height:1.15!important}
+  html body[data-avc-gender="women"] .avc-main #knockout .kvl-comp-qf-status{color:#8a6b78!important}
+  html body[data-avc-gender="women"] .avc-main #knockout .kvl-comp-qf-seedline{color:#765563!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-vs{color:#4b5563!important;font-size:10px!important;font-weight:1000!important;text-align:center!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-seed-icon{display:grid!important;flex:0 0 auto!important;place-items:center!important;width:30px!important;height:30px!important;border:1px dashed var(--avc-line)!important;border-radius:50%!important;color:var(--avc-primary)!important;font-size:10px!important;font-weight:1000!important}
+
+  /* New template shell uses the same numeric spec. */
+  .kvl-competition-v1{padding:18px 10px 56px!important}
+  .kvl-competition-v1 .kvl-comp-title{font-size:24px!important;line-height:1.25!important}
+  .kvl-competition-v1 .kvl-comp-nav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;padding:6px!important;overflow:visible!important}
+  .kvl-competition-v1 .kvl-comp-nav a{display:flex!important;min-height:42px!important;align-items:center!important;justify-content:center!important;padding:8px 3px!important;font-size:var(--kvl-m-nav-font)!important;text-align:center!important}
+  .kvl-competition-v1 .kvl-comp-section{padding:18px 12px!important;border-radius:18px!important}
+  .kvl-competition-v1 .kvl-comp-section-head h2{font-size:var(--kvl-m-section-title)!important}
+  .kvl-competition-v1 .kvl-comp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  .kvl-competition-v1 .kvl-comp-kpi,.kvl-competition-v1 .kvl-comp-venue-kpi{min-height:92px!important;padding:13px 12px!important;border-radius:14px!important}
+  .kvl-competition-v1 .kvl-comp-venue-kpi{grid-column:1/-1!important}
+  .kvl-competition-v1 .kvl-comp-calendar-time{font-size:var(--kvl-m-calendar-time)!important}
+}
