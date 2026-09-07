@@ -122,7 +122,7 @@
     }
     @media(max-width:360px){.avc-hero h1{font-size:22px!important}}
   </style>
-  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-1">
+  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-2">
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
 </head>
 <body data-avc-gender="men">
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       ? '<span>종합순위</span><span>국기</span><span>국가</span><span>결과</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span><span>조순위</span>'
       : '<span>종합순위</span><span>국기</span><span>국가</span><span>조순위</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span>';
     const body=rows.map(r=>{
-      const common=`<span class="kvl-men-combined-rank">${r.combinedRank}위</span>${standingFlag(r.team)}<strong class="kvl-men-combined-team">${esc(r.team)}</strong>`;
+      const common=`<span class="kvl-men-combined-rank">${r.combinedRank}위</span><span class="kvl-comp-flag-cell">${standingFlag(r.team)}</span><strong class="kvl-men-combined-team">${esc(r.team)}</strong>`;
       const stats=`<span class="kvl-men-combined-stat">${r.wins}승</span><span class="kvl-men-combined-stat">${r.matchPoints}</span><span class="kvl-men-combined-stat">${fmtRatio(r.setsFor,r.setsAgainst)}</span><span class="kvl-men-combined-stat">${r.pointMatches?fmtRatio(r.pointsFor,r.pointsAgainst):'-'}</span>`;
       return complete
         ? `<div class="kvl-men-combined-line ${r.team==='대한민국'?'is-korea':''}">${common}${resultCell(r)}${stats}<span class="kvl-men-combined-stat">${esc(r.pool)}조 ${r.poolPosition}위</span></div>`

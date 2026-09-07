@@ -80,7 +80,7 @@
 
   const rebuildOverview=()=>{
     if(current!=='women')return;
-    const kpis=document.querySelector('#overview .avc-kpis');if(kpis)kpis.innerHTML='<article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article>';
+    const kpis=document.querySelector('#overview .avc-kpis');if(kpis)kpis.innerHTML='<article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article><div class="kvl-avc-venue-kpi kvl-mobile-venue-only" aria-label="대회 장소: 중국 톈진 올림픽 센터 체육관"><span>장소</span><strong>중국 톈진</strong><small>올림픽 센터 체육관</small></div>';
   };
 
   const rebuildNavigation=()=>{
