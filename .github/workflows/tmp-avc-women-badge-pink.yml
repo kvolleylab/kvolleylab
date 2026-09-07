@@ -1,0 +1,35 @@
+name: Temporary AVC Women Badge Pink
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tmp-avc-women-badge-pink.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Update AVC women badge color
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('international-competition-avc-women-continental-2026.html')
+          s = p.read_text(encoding='utf-8')
+          needle = '      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out),body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) b,body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) small{color:var(--avc-dark)!important}\n'
+          add = '      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) b{border-color:var(--avc-line)!important;background:#FFF2F7!important;color:var(--avc-dark)!important}\n'
+          if needle not in s:
+              raise SystemExit('target rule not found')
+          if add not in s:
+              s = s.replace(needle, needle + add, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add international-competition-avc-women-continental-2026.html
+          git commit -m 'fix: match AVC women quarterfinal badge theme'
+          git push origin main
