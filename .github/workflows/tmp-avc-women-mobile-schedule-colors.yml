@@ -1,0 +1,42 @@
+name: Temporary AVC Women Mobile Schedule Colors
+
+on:
+  push:
+    branches: [tmp-avc-women-mobile-schedule-colors]
+    paths:
+      - '.github/workflows/tmp-avc-women-mobile-schedule-colors.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp-avc-women-mobile-schedule-colors
+          fetch-depth: 0
+      - name: Apply mobile schedule color standard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('international-competition-avc-women-continental-2026.html')
+          s = p.read_text(encoding='utf-8')
+          old_team = 'body[data-avc-gender="women"] #schedule .cd-side strong{overflow:visible!important;font-size:18px!important;line-height:1!important;letter-spacing:-.045em!important;text-overflow:clip!important;white-space:nowrap!important}'
+          new_team = 'body[data-avc-gender="women"] #schedule .cd-side strong{overflow:visible!important;color:#4B5563!important;font-size:18px!important;line-height:1!important;letter-spacing:-.045em!important;text-overflow:clip!important;white-space:nowrap!important}body[data-avc-gender="women"] #schedule .cd-side strong.avc-winner{color:var(--avc-dark)!important}'
+          old_score = 'body[data-avc-gender="women"] #schedule .cd-score{width:46px!important;font-size:18px!important;line-height:1!important;justify-self:center!important;text-align:center!important;font-variant-numeric:tabular-nums!important}'
+          new_score = 'body[data-avc-gender="women"] #schedule .cd-score{width:46px!important;color:#4B5563!important;font-size:18px!important;line-height:1!important;justify-self:center!important;text-align:center!important;font-variant-numeric:tabular-nums!important}'
+          if old_team not in s or old_score not in s:
+              raise SystemExit('mobile schedule color target not found')
+          s = s.replace(old_team, new_team, 1).replace(old_score, new_score, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add international-competition-avc-women-continental-2026.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'style: align AVC women mobile schedule colors'
+          git push origin HEAD:tmp-avc-women-mobile-schedule-colors
