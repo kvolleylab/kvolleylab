@@ -1,0 +1,48 @@
+name: Align combined ranking mobile columns
+on:
+  push:
+    branches: [tmp-combined-flag-v6]
+    paths:
+      - '.github/workflows/tmp-align-combined-ranking.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp-combined-flag-v6
+          fetch-depth: 0
+      - name: Patch men combined ranking to shared mobile geometry
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          html_path=Path('international-competition-avc-men-continental-2026.html')
+          s=html_path.read_text(encoding='utf-8')
+          old=s
+          s=s.replace('assets/css/kvl-mobile-competition-template-v3.css?v=20260908-2','assets/css/kvl-mobile-competition-template-v3.css?v=20260908-3')
+          s=s.replace("'<span>종합순위</span><span>국기</span><span>국가</span><span>결과</span>","'<span>종합순위</span><span class=\"kvl-comp-flag-head\">국기</span><span>국가</span><span>결과</span>")
+          s=s.replace("'<span>종합순위</span><span>국기</span><span>국가</span><span>조순위</span>","'<span>종합순위</span><span class=\"kvl-comp-flag-head\">국기</span><span>국가</span><span>조순위</span>")
+          if s==old:
+              raise SystemExit('men html: no changes')
+          html_path.write_text(s,encoding='utf-8')
+
+          css_path=Path('assets/css/kvl-mobile-competition-template-v3.css')
+          c=css_path.read_text(encoding='utf-8')
+          cold=c
+          c=c.replace('grid-template-columns:44px 32px 110px 110px 76px 54px 96px 96px!important;','grid-template-columns:44px 28px 110px 110px 76px 54px 96px 96px!important;')
+          marker='html body[data-avc-gender] #groups .kvl-comp-flag-cell{display:flex!important;width:28px!important;height:19px!important;align-items:center!important;justify-content:center!important;justify-self:center!important}'
+          insert=marker+'\n  html body[data-avc-gender] #groups .kvl-comp-flag-head{display:flex!important;visibility:visible!important;opacity:1!important;width:28px!important;align-items:center!important;justify-content:center!important;justify-self:center!important;color:var(--avc-dark)!important;font-size:10px!important;font-weight:1000!important;text-align:center!important;white-space:nowrap!important}'
+          if 'kvl-comp-flag-head' not in c:
+              c=c.replace(marker,insert)
+          if c==cold:
+              raise SystemExit('shared css: no changes')
+          css_path.write_text(c,encoding='utf-8')
+          PY
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add international-competition-avc-men-continental-2026.html assets/css/kvl-mobile-competition-template-v3.css
+          git commit -m "fix: align men combined ranking with shared flag column"
+          git push origin HEAD:tmp-combined-flag-v6
