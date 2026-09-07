@@ -1,0 +1,55 @@
+name: Temporary KVL Mobile Template V3 Apply
+
+on:
+  push:
+    paths:
+      - '.github/workflows/tmp-kvl-mobile-template-v3-apply-20260907.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply shared mobile template v3 to AVC pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          shared_link = '  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v2.css?v=20260907-1">'
+          pages = [
+              Path('international-competition-avc-men-continental-2026.html'),
+              Path('international-competition-avc-women-continental-2026.html'),
+          ]
+          for p in pages:
+              text = p.read_text(encoding='utf-8')
+              if 'kvl-mobile-competition-template-v2.css' not in text:
+                  if '</style>' not in text:
+                      raise SystemExit(f'closing style not found: {p}')
+                  text = text.replace('</style>', '</style>\n' + shared_link, 1)
+              p.write_text(text, encoding='utf-8')
+
+          men = pages[0]
+          text = men.read_text(encoding='utf-8')
+          lines = text.splitlines()
+          side_i = next((i for i,l in enumerate(lines) if l.startswith('  const qfMobileSide=')), None)
+          match_i = next((i for i,l in enumerate(lines) if l.startswith('  const qfMobileMatchup=')), None)
+          if side_i is None or match_i is None:
+              raise SystemExit('QF mobile renderer markers not found')
+          lines[side_i] = "  const qfMobileSide=(m,key,position)=>{const p=qfParticipant(m,key),seedText=`예선 종합 ${p.seed}위`,teamText=p.team||'',status=p.confirmed?'확정':teamText?'현재 예상':'대진 대기',identity=teamText?`${position==='left'?`<img src=\"${flagUrl(teamText)}\" alt=\"${esc(teamText)} 국기\" loading=\"lazy\"><strong>${esc(teamText)}</strong>`:`<strong>${esc(teamText)}</strong><img src=\"${flagUrl(teamText)}\" alt=\"${esc(teamText)} 국기\" loading=\"lazy\">`}`:`<span class=\"kvl-comp-qf-seed-icon\">${p.seed||'?'}</span><strong>${esc(seedText)}</strong>`;return `<div class=\"kvl-comp-qf-side is-${position}\"><div class=\"kvl-comp-qf-identity\">${identity}</div><div class=\"kvl-comp-qf-meta\"><small class=\"kvl-comp-qf-status\">${esc(status)}</small><span class=\"kvl-comp-qf-seedline\">${esc(seedText)}</span></div></div>`};"
+          lines[match_i] = "  const qfMobileMatchup=m=>m?.stage==='8강'?`<div class=\"kvl-comp-qf-projection\">${qfMobileSide(m,'A','left')}<b class=\"kvl-comp-qf-vs\">VS</b>${qfMobileSide(m,'B','right')}</div>`:'';"
+          men.write_text('\n'.join(lines) + ('\n' if text.endswith('\n') else ''), encoding='utf-8')
+          PY
+
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add international-competition-avc-men-continental-2026.html international-competition-avc-women-continental-2026.html
+          git commit -m 'fix: unify AVC mobile template sizing and QF projection'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
