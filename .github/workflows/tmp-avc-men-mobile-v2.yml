@@ -1,0 +1,164 @@
+name: Temporary AVC Men Mobile V2 Patch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/tmp-avc-men-mobile-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Patch AVC men mobile page
+        shell: bash
+        run: |
+          git pull --ff-only origin main
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('international-competition-avc-men-continental-2026.html')
+          text = path.read_text(encoding='utf-8')
+
+          def replace_once(old, new, label):
+              global text
+              if old not in text:
+                  raise SystemExit(f'missing exact marker: {label}')
+              text = text.replace(old, new, 1)
+
+          def sub_once(pattern, repl, label):
+              global text
+              text2, n = re.subn(pattern, repl, text, count=1, flags=re.S)
+              if n != 1:
+                  raise SystemExit(f'expected one regex match for {label}, got {n}')
+              text = text2
+
+          replace_once(
+              '  <link rel="stylesheet" href="assets/css/avc-bracket-standard.css?v=20260901-1">\n',
+              '  <link rel="stylesheet" href="assets/css/avc-bracket-standard.css?v=20260901-1">\n  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v1.css?v=20260907-3">\n',
+              'mobile template css link'
+          )
+
+          mobile_css = r'''    /* KVL mobile competition template v2 adapter: AVC men only. */
+    .kvl-mobile-only{display:none!important}.kvl-mobile-meta-break{display:none}.kvl-nav-mobile{display:none}
+    @media(max-width:680px){
+      body[data-avc-gender="men"] .avc-status span:first-child{display:inline-flex!important}
+      body[data-avc-gender="men"] .avc-status span:not(:first-child){display:none!important}
+      body[data-avc-gender="men"] .kvl-hero-meta-sep{display:none!important}
+      body[data-avc-gender="men"] .kvl-mobile-meta-break{display:block!important}
+      body[data-avc-gender="men"] .avc-meta{line-height:1.65!important}
+      body[data-avc-gender="men"] .kvl-nav-desktop{display:none!important}
+      body[data-avc-gender="men"] .kvl-nav-mobile{display:inline!important}
+      body[data-avc-gender="men"] .avc-jump .kvl-mobile-only{display:flex!important}
+      body[data-avc-gender="men"] #teams.kvl-mobile-only.avc-view.is-active{display:block!important}
+      body[data-avc-gender="men"] .avc-participant-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+      body[data-avc-gender="men"] .avc-country-card{display:flex!important;align-items:center!important;gap:7px!important;min-width:0!important;min-height:64px!important;padding:9px 8px!important;border:1px solid var(--avc-line)!important;border-radius:14px!important;background:var(--avc-soft)!important}
+      body[data-avc-gender="men"] .avc-country-card img{flex:0 0 auto!important;width:35px!important;height:24px!important;object-fit:contain!important;background:#fff!important}
+      body[data-avc-gender="men"] .avc-country-copy{min-width:0!important}
+      body[data-avc-gender="men"] .avc-country-copy strong{display:block!important;overflow:hidden!important;color:#264534!important;font-size:12px!important;font-weight:900!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+      body[data-avc-gender="men"] .avc-country-copy small{display:block!important;margin-top:2px!important;overflow:hidden!important;color:#7a8796!important;font-size:9px!important;font-weight:800!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+      body[data-avc-gender="men"] .avc-country-pool{flex:0 0 auto!important;margin-left:auto!important;padding:4px 5px!important;border-radius:999px!important;background:#edf8f0!important;color:var(--avc-primary)!important;font-size:9px!important;font-weight:900!important}
+      body[data-avc-gender="men"] #sources .avc-sources{grid-template-columns:1fr!important;gap:7px!important}
+      body[data-avc-gender="men"] #sources .avc-source{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;min-height:48px!important;padding:10px!important;gap:6px!important}
+      body[data-avc-gender="men"] #sources .avc-source strong{min-width:0!important;overflow:hidden!important;font-size:11px!important;line-height:1.2!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+      body[data-avc-gender="men"] #sources .avc-source a{font-size:10px!important;white-space:nowrap!important}
+      body[data-avc-gender="men"] #knockout .avc-bracket{overflow:visible!important;padding-bottom:0!important}
+      body[data-avc-gender="men"] #knockout .avc-bracket-ladder{display:block!important;min-width:0!important}
+      body[data-avc-gender="men"] #knockout .avc-bracket-gap{display:none!important}
+      body[data-avc-gender="men"] #knockout .avc-round{margin-bottom:14px!important}
+      body[data-avc-gender="men"] #knockout .avc-round-body{display:grid!important;min-height:0!important;gap:8px!important}
+      body[data-avc-gender="men"] #knockout .avc-qf-pair{display:contents!important}
+      body[data-avc-gender="men"] #knockout .avc-qf-pair::before,body[data-avc-gender="men"] #knockout .avc-qf-pair::after,body[data-avc-gender="men"] #knockout .avc-round-sf .avc-round-body::before,body[data-avc-gender="men"] #knockout .avc-round-sf .avc-round-body::after,body[data-avc-gender="men"] #knockout .avc-bracket-match::before,body[data-avc-gender="men"] #knockout .avc-bracket-match::after{display:none!important}
+      body[data-avc-gender="men"] #knockout .avc-round-final .avc-round-body{display:grid!important}
+      body[data-avc-gender="men"] #knockout .avc-bronze-wrap{max-width:none!important;margin-top:14px!important}
+    }
+'''
+          replace_once(
+              '    @media(max-width:360px){.avc-hero h1{font-size:22px!important}}\n',
+              mobile_css + '    @media(max-width:360px){.avc-hero h1{font-size:22px!important}}\n',
+              'mobile adapter insertion'
+          )
+
+          replace_once('<body>\n', '<body data-avc-gender="men">\n', 'body gender scope')
+
+          old_hero = '''    <div><p class="eyebrow">INTERNATIONAL COMPETITION</p><h1>AVC 남자 대륙선수권 2026<small>AVC Volleyball Men's Continental Championship 2026</small></h1><p class="avc-meta">2026-09-04(금) ~ 2026-09-13(일) · 일본 후쿠오카현 / 기타큐슈 · Kitakyushu City General Gymnasium</p></div>\n    <div class="avc-status"><span>대회 예정</span><span>12개국</span><span class="review">8강 배치 규정 반영</span></div>'''
+          new_hero = '''    <div><p class="eyebrow">INTERNATIONAL COMPETITION · MEN</p><h1>AVC 남자 대륙선수권 2026<small>AVC Volleyball Men's Continental Championship 2026</small></h1><p class="avc-meta"><span>2026-09-04(금) ~ 2026-09-13(일)</span><span class="kvl-hero-meta-sep"> · </span><br class="kvl-mobile-meta-break">일본 후쿠오카현 / 기타큐슈 · Kitakyushu City General Gymnasium</p></div>\n    <div class="avc-status"><span>대회 진행 중</span><span>12개국</span><span class="review">8강 배치 규정 반영</span></div>'''
+          replace_once(old_hero, new_hero, 'hero')
+
+          sub_once(
+              r'  <nav class="avc-jump" aria-label="대회 메뉴">.*?  </nav>',
+              '''  <nav class="avc-jump" aria-label="대회 메뉴">\n    <a data-view="overview" href="?view=overview&theme=green-20260903-5"><span class="kvl-nav-desktop">한눈에 보기</span><span class="kvl-nav-mobile">한눈에보기</span></a>\n    <a data-view="schedule" href="?view=schedule&theme=green-20260903-5">경기일정</a>\n    <a data-view="groups" href="?view=groups&theme=green-20260903-5"><span class="kvl-nav-desktop">조편성·순위</span><span class="kvl-nav-mobile">조별순위</span></a>\n    <a data-view="knockout" href="?view=knockout&theme=green-20260903-5"><span class="kvl-nav-desktop">토너먼트</span><span class="kvl-nav-mobile">최종순위</span></a>\n    <a class="kvl-mobile-only" data-view="teams" href="?view=teams&theme=green-20260903-5">참가국</a>\n    <a data-view="sources" href="?view=sources&theme=green-20260903-5">공식자료</a>\n  </nav>''',
+              'six menu nav'
+          )
+
+          replace_once(
+              '<div class="cd-calendar-wrap"><div class="cd-calendar-head"><div><p class="eyebrow">COMPETITION CALENDAR</p><h2>대회 월간 달력</h2></div><p>여자부 8/21~8/30 · 남자부 9/4~9/13</p></div><div id="calendarRoot" class="cd-calendar"><div class="cd-empty">대회 달력을 불러오는 중입니다.</div></div></div>',
+              '<div class="cd-calendar-wrap"><div class="cd-calendar-head"><div><p class="eyebrow">COMPETITION CALENDAR</p><h2>대회 월간 달력</h2></div><p>날짜를 누르면 경기일정의 해당 날짜로 이동합니다.</p></div><div id="calendarRoot" class="cd-calendar"><div class="cd-empty">대회 달력을 불러오는 중입니다.</div></div></div>',
+              'calendar helper copy'
+          )
+
+          teams_section = '''  <section id="teams" class="avc-section avc-view kvl-mobile-only">\n    <div class="avc-section-head"><div><p class="eyebrow">PARTICIPATING NATIONS</p><h2>참가국</h2></div><p>3개 조 · 12개국</p></div>\n    <div id="teamRoot" class="avc-participant-grid"></div>\n  </section>\n'''
+          replace_once('  <section id="sources" class="avc-section avc-view">\n', teams_section + '  <section id="sources" class="avc-section avc-view">\n', 'teams section')
+
+          replace_once(
+              "  const allowed=new Set(['overview','schedule','groups','knockout','sources']);",
+              "  const allowed=new Set(['overview','schedule','groups','knockout','teams','sources']);",
+              'allowed views'
+          )
+
+          view_marker = "  document.querySelectorAll('.avc-jump a[data-view]').forEach(a=>{const active=a.dataset.view===view;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','page')});\n"
+          kpi_code = view_marker + '''  const mobileKpiTargets=['?view=teams','?view=groups','?view=schedule','?view=knockout'];\n  document.querySelectorAll('#overview .avc-kpis article').forEach((card,i)=>{card.dataset.kvlTarget=mobileKpiTargets[i]||'?view=overview'});\n  document.querySelector('#overview .avc-kpis')?.addEventListener('click',e=>{if(!matchMedia('(max-width:680px)').matches)return;const card=e.target.closest('article[data-kvl-target]');if(card)location.href=card.dataset.kvlTarget});\n'''
+          replace_once(view_marker, kpi_code, 'mobile KPI navigation')
+
+          calendar_and_sets = r'''  function renderCalendar(matches){
+    const root=document.getElementById('calendarRoot');if(!root)return;
+    const byDate=(matches||[]).reduce((map,m)=>{(map[m.date]??=[]).push(m);return map},{}),year=2026,month=9,first=new Date(year,month-1,1),last=new Date(year,month,0),cells=[];
+    for(let i=0;i<first.getDay();i++)cells.push('<div class="cd-cal-cell is-empty"></div>');
+    for(let d=1;d<=last.getDate();d++){
+      const date=`${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`,games=(byDate[date]||[]).slice().sort((a,b)=>a.time.localeCompare(b.time));
+      if(games.length){const times=games.map(g=>g.time).filter(Boolean);cells.push(`<div class="cd-cal-cell has-games"><a class="kvl-calendar-day-link" href="?view=schedule&date=${date}#date-${date}"><span class="cd-cal-day">${d}</span><span class="kvl-calendar-count">${games.length}경기</span><span class="kvl-calendar-time">${esc(times[0]||'')}</span></a></div>`)}else cells.push(`<div class="cd-cal-cell"><span class="cd-cal-day">${d}</span></div>`);
+    }
+    while(cells.length%7)cells.push('<div class="cd-cal-cell is-empty"></div>');
+    root.innerHTML=`<section class="cd-cal-month"><div class="cd-cal-title">2026년 9월</div><div class="cd-cal-week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div class="cd-cal-grid">${cells.join('')}</div></section>`;
+  }
+
+  const setScoreChips=m=>Array.isArray(m.sets)&&m.sets.length?`<div class="avc-set-scores">${m.sets.map(s=>{const a=Number(Array.isArray(s)?s[0]:(s.a??s.teamA??s.scoreA)),b=Number(Array.isArray(s)?s[1]:(s.b??s.teamB??s.scoreB));return Number.isFinite(a)&&Number.isFinite(b)?`${a}-${b}`:''}).filter(Boolean).join(', ')}</div>`:'';
+'''
+          sub_once(
+              r'  const countByDate=.*?\n\n  const setScoreChips=.*?;\n',
+              calendar_and_sets,
+              'full September calendar and compact set scores'
+          )
+
+          old_render_schedule = '''  function renderSchedule(){const root=document.getElementById('scheduleRoot');if(!root)return;const list=scheduleFiltered();document.getElementById('scheduleSummary').textContent=`${list.length}경기 · ${scheduleStage==='전체'?'전체 단계':scheduleStage}${scheduleStage==='조별리그'&&schedulePool!=='전체'?` · ${schedulePool}조`:''} · 일본 현지시간 = 한국시간`;const grouped=new Map();list.forEach(m=>{if(!grouped.has(m.date))grouped.set(m.date,[]);grouped.get(m.date).push(m)});root.innerHTML=[...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([date,matches])=>`<section class="cd-date-group"><div class="cd-date-head"><span>${esc(date)}(${weekday(date)})</span><span>${matches.length}경기</span></div>${matches.sort((a,b)=>a.time.localeCompare(b.time)).map(matchRow).join('')}</section>`).join('')||'<div class="cd-empty">표시할 경기가 없습니다.</div>';renderProjectionStatus()}'''
+          new_render_schedule = '''  function renderSchedule(){const root=document.getElementById('scheduleRoot');if(!root)return;const list=scheduleFiltered();document.getElementById('scheduleSummary').textContent=`${list.length}경기 · ${scheduleStage==='전체'?'전체 단계':scheduleStage}${scheduleStage==='조별리그'&&schedulePool!=='전체'?` · ${schedulePool}조`:''} · 일본 현지시간 = 한국시간`;const grouped=new Map();list.forEach(m=>{if(!grouped.has(m.date))grouped.set(m.date,[]);grouped.get(m.date).push(m)});root.innerHTML=[...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([date,matches])=>`<section id="date-${date}" class="cd-date-group"><div class="cd-date-head"><span>${esc(date)}(${weekday(date)})</span><span>${matches.length}경기</span></div>${matches.sort((a,b)=>a.time.localeCompare(b.time)).map(matchRow).join('')}</section>`).join('')||'<div class="cd-empty">표시할 경기가 없습니다.</div>';renderProjectionStatus();const target=new URLSearchParams(location.search).get('date');if(target&&document.getElementById(`date-${target}`))requestAnimationFrame(()=>document.getElementById(`date-${target}`).scrollIntoView({block:'start'}))}'''
+          replace_once(old_render_schedule, new_render_schedule, 'schedule date anchors')
+
+          teams_renderer = '''  function renderTeams(data){const root=document.getElementById('teamRoot');if(!root)return;root.innerHTML=(data.groups||[]).flatMap(g=>(g.teams||[]).map(team=>`<article class="avc-country-card">${standingFlag(team)}<div class="avc-country-copy"><strong>${esc(team)}</strong><small>${esc(teamInfo[team]?.en||'')}</small></div><span class="avc-country-pool">${esc(g.id)}조</span></article>`)).join('')}\n'''
+          replace_once('  function renderCombined(){', teams_renderer + '  function renderCombined(){', 'teams renderer')
+
+          new_tail = r'''  const menData=fetch('data/competitions/avc-men-continental-2026.json?v=20260907-1',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
+  menData.then(data=>{competitionData=data;document.getElementById('teamCount').textContent=data.teamCount;document.getElementById('groupCount').textContent=data.groupCount;document.getElementById('matchCount').textContent=data.matchCount;allMatches=data.matches||[];projection=calculateProjection(data);renderCalendar(allMatches);renderScheduleFilters();renderSchedule();renderGroups(data);renderTeams(data);renderCombined();renderKnockout(allMatches);renderSources(data.sources||[])}).catch(()=>{['calendarRoot','scheduleRoot','groupRoot','teamRoot','combinedRankingRoot','knockoutRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
+'''
+          sub_once(
+              r"  const menData=fetch\(.*?(?=\n\}\);\n</script>)",
+              new_tail.rstrip('\n'),
+              'single men data load and render pipeline'
+          )
+
+          path.write_text(text, encoding='utf-8')
+          PY
+          git diff --check
+          git diff -- international-competition-avc-men-continental-2026.html
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add international-competition-avc-men-continental-2026.html
+          git commit -m "feat: apply mobile template v2 to AVC men"
+          git push origin HEAD:main
