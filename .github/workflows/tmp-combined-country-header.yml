@@ -6,7 +6,7 @@ permissions:
   contents: write
 jobs:
   patch:
-    if: github.event.head_commit.message != 'fix: unify combined ranking country header'
+    if: "${{ github.event.head_commit.message != 'fix: unify combined ranking country header' }}"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
