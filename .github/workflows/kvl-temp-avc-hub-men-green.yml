@@ -1,0 +1,43 @@
+name: KVL temp AVC hub men green
+
+on:
+  push:
+    branches:
+      - temp-avc-hub-men-green
+    paths:
+      - '.github/workflows/kvl-temp-avc-hub-men-green.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: temp-avc-hub-men-green
+      - name: Patch AVC hub men card theme
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('assets/js/avc-continental-gender-runtime.js')
+          text = path.read_text(encoding='utf-8')
+          marker = 'body[data-avc-gender="hub"] .division-card.women{'
+          if marker not in text:
+              raise SystemExit('women card marker not found')
+          rules = '''body[data-avc-gender="hub"] .division-card:not(.women){border-color:#d9e9dc!important;background:linear-gradient(180deg,#fff,#f3faf4)!important;box-shadow:inset 0 3px 0 rgba(22,101,52,.14),0 8px 24px rgba(22,101,52,.06)!important}body[data-avc-gender="hub"] .division-card:not(.women) .tag{background:#edf7ef!important;color:#166534!important}body[data-avc-gender="hub"] .division-card:not(.women) .kvl-avc-card-status,body[data-avc-gender="hub"] .division-card:not(.women) .kvl-avc-card-status.is-upcoming{background:#edf7ef!important;color:#166534!important}body[data-avc-gender="hub"] .division-card:not(.women) .kvl-avc-ranking{border-left-color:#dce8df!important;background:linear-gradient(180deg,#fbfdfb,#f3faf4)!important}body[data-avc-gender="hub"] .division-card:not(.women) .kvl-avc-ranking-panel{border-color:#dfe9e2!important;background:#fff!important}body[data-avc-gender="hub"] .division-card:not(.women) .kvl-avc-ranking-panel h3,body[data-avc-gender="hub"] .division-card:not(.women) .kvl-rank-line b{color:#17365d!important}'''
+          text = text.replace(marker, rules + marker, 1)
+          mobile = '@media(max-width:900px){body[data-avc-gender="hub"] .division-card{grid-template-columns:1fr!important}body[data-avc-gender="hub"] .kvl-avc-ranking{border-left:0!important;border-top:1px solid #e4ebe7}'
+          replacement = '@media(max-width:900px){body[data-avc-gender="hub"] .division-card{grid-template-columns:1fr!important}body[data-avc-gender="hub"] .kvl-avc-ranking{border-left:0!important;border-top:1px solid #e4ebe7}body[data-avc-gender="hub"] .division-card:not(.women) .kvl-avc-ranking{border-top-color:#dce8df!important}'
+          if mobile not in text:
+              raise SystemExit('mobile card marker not found')
+          text = text.replace(mobile, replacement, 1)
+          path.write_text(text, encoding='utf-8')
+      - name: Commit patch
+        run: |
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add assets/js/avc-continental-gender-runtime.js
+          git commit -m 'ui: theme AVC men hub card green'
+          git push origin HEAD:temp-avc-hub-men-green
