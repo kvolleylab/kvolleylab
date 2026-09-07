@@ -10,13 +10,13 @@ permissions:
 
 jobs:
   patch:
-    if: github.event.head_commit.message == 'chore: add temporary AVC men setscore patch workflow'
+    if: github.event.head_commit.message == 'chore: fix temporary AVC men setscore patch workflow'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Patch set score labels
-        shell: python
         run: |
+          python - <<'PY'
           from pathlib import Path
           path = Path('international-competition-avc-men-continental-2026.html')
           text = path.read_text(encoding='utf-8')
@@ -25,6 +25,7 @@ jobs:
           if old not in text:
               raise SystemExit('target setScoreChips pattern not found')
           path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
       - name: Commit patch
         run: |
           git config user.name 'kvolleylab'
