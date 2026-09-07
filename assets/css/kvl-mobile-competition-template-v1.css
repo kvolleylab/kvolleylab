@@ -34,6 +34,11 @@
   body[data-avc-gender] #overview .cd-cal-day{font-size:10px!important;text-align:center!important}
   body[data-avc-gender] #overview .kvl-calendar-day-link{display:flex!important;position:absolute!important;inset:0!important;z-index:1!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;padding:4px 2px!important;color:inherit!important;text-decoration:none!important}
   body[data-avc-gender] #overview .kvl-calendar-day-link .kvl-calendar-count{margin-top:6px;padding:3px 4px;border-radius:6px;background:var(--avc-soft);color:var(--avc-primary);font-size:8px;font-weight:900;white-space:nowrap}
+  body[data-avc-gender] #overview .kvl-calendar-time{display:block!important;margin-top:2px!important;color:#7c8795!important;font-size:8px!important;font-weight:800!important;line-height:1.1!important;white-space:nowrap!important}
+  body[data-avc-gender] #overview .kvl-overview-badges{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin-top:10px!important}
+  body[data-avc-gender] #overview .kvl-overview-venue{display:inline-flex!important;max-width:100%!important;align-items:center!important;gap:7px!important;padding:7px 10px!important;border:1px solid var(--avc-line)!important;border-radius:999px!important;background:var(--avc-soft)!important;box-sizing:border-box!important}
+  body[data-avc-gender] #overview .kvl-overview-venue b{color:var(--avc-primary)!important;font-size:10px!important;font-weight:1000!important;white-space:nowrap!important}
+  body[data-avc-gender] #overview .kvl-overview-venue span{overflow:hidden!important;color:#5f6f80!important;font-size:10px!important;font-weight:850!important;text-overflow:ellipsis!important;white-space:nowrap!important}
   body[data-avc-gender] #overview .cd-cal-games{display:none!important}
 
   /* Schedule stage filters: all six buttons on one row */

@@ -28,8 +28,9 @@
     const dates=[cfg.startDate,cfg.endDate].filter(Boolean).join(' ~ ');
     const place=[cfg.location?.country,cfg.location?.city].filter(Boolean).join(' · ');
     const venue=cfg.location?.venue||'';
-    const meta=[dates,place,venue].filter(Boolean).join(' · ');
-    return `<section class="kvl-comp-hero"><div class="kvl-comp-hero-copy"><p class="kvl-comp-eyebrow">${esc(cfg.eyebrow||cfg.titleEn||'K-VOLLEY LAB COMPETITION')}</p><h1 class="kvl-comp-title">${esc(cfg.titleKo||'대회명')}</h1>${meta?`<p class="kvl-comp-meta">${esc(meta)}</p>`:''}</div>${cfg.statusLabel?`<span class="kvl-comp-status">${esc(cfg.statusLabel)}</span>`:''}</section>`;
+    const parts=[dates,place,venue].filter(Boolean);
+    const meta=parts.map((part,index)=>`<span class="kvl-comp-meta-line">${esc(part)}</span>${index<parts.length-1?'<span class="kvl-comp-meta-sep"> · </span>':''}`).join('');
+    return `<section class="kvl-comp-hero"><div class="kvl-comp-hero-copy"><p class="kvl-comp-eyebrow">${esc(cfg.eyebrow||cfg.titleEn||'K-VOLLEY LAB COMPETITION')}</p><h1 class="kvl-comp-title">${esc(cfg.titleKo||'대회명')}</h1>${meta?`<p class="kvl-comp-meta">${meta}</p>`:''}</div>${cfg.statusLabel?`<span class="kvl-comp-status">${esc(cfg.statusLabel)}</span>`:''}</section>`;
   }
 
   function nav(cfg,active){
@@ -45,7 +46,9 @@
   function overview(cfg){
     const stats=Array.isArray(cfg.overviewStats)?cfg.overviewStats:[];
     const kpis=stats.length?`<div class="kvl-comp-kpis">${stats.map(s=>`<article class="kvl-comp-kpi"><span class="kvl-comp-kpi-label">${esc(s.label)}</span><div class="kvl-comp-kpi-value"><strong>${esc(s.value)}</strong><small>${esc(s.unit||'')}</small></div></article>`).join('')}</div>`:'';
-    return `${sectionHead(cfg,'overview')}${kpis}<div class="kvl-comp-slot" data-kvl-slot="overview-extra"></div>`;
+    const venue=cfg.location?.venue||'';
+    const venueBadge=venue?`<div class="kvl-comp-overview-badges"><span class="kvl-comp-venue-badge"><b>경기장</b><span>${esc(venue)}</span></span></div>`:'';
+    return `${sectionHead(cfg,'overview')}${kpis}${venueBadge}<div class="kvl-comp-slot" data-kvl-slot="overview-extra"></div>`;
   }
 
   function genericSection(cfg,key){
