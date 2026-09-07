@@ -1,0 +1,37 @@
+name: KVL temp AVC women result emphasis
+
+on:
+  push:
+    branches:
+      - temp-avc-women-result-emphasis-20260907
+    paths:
+      - '.github/workflows/kvl-temp-avc-women-result-emphasis.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: temp-avc-women-result-emphasis-20260907
+      - name: Emphasize AVC women overview result
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('international-competition-avc-women-continental-2026.html')
+          text = path.read_text(encoding='utf-8')
+          old = 'body[data-avc-gender="women"] #overview .avc-overview-result{flex:0 0 auto!important;line-height:1.25!important}body[data-avc-gender="women"] #overview .avc-overview-result strong{font-size:13px!important}body[data-avc-gender="women"] #overview .avc-overview-result span{font-size:11px!important}'
+          new = 'body[data-avc-gender="women"] #overview .avc-overview-result{flex:0 0 auto!important;padding-left:10px!important;border-left:3px solid var(--kvl-women-primary)!important;line-height:1.22!important}body[data-avc-gender="women"] #overview .avc-overview-result strong{color:var(--kvl-women-dark)!important;font-size:15px!important;font-weight:1000!important;letter-spacing:-.03em!important}body[data-avc-gender="women"] #overview .avc-overview-result span{margin-top:4px!important;color:#b4871f!important;font-size:13px!important;font-weight:1000!important;letter-spacing:-.03em!important}'
+          if old not in text:
+              raise SystemExit('result emphasis target not found')
+          path.write_text(text.replace(old,new,1), encoding='utf-8')
+      - name: Commit patch
+        run: |
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add international-competition-avc-women-continental-2026.html
+          git commit -m 'ui: emphasize AVC women champion summary'
+          git push origin HEAD:temp-avc-women-result-emphasis-20260907
