@@ -1,0 +1,226 @@
+/* K-Volley Lab Mobile Competition Template v3
+   Women-calibrated 390px visual standard.
+   Source of truth for shared mobile sizing/placement across competition pages.
+   Competition theme colors remain variables; component geometry does not vary by gender. */
+
+@import url("./kvl-mobile-competition-template-v1.css?v=20260907-4");
+@import url("./kvl-mobile-competition-template-v2.css?v=20260907-1");
+
+@media (max-width:680px){
+  body[data-avc-gender],
+  .kvl-competition-v1{
+    --kvl-m-nav-font:13px;
+    --kvl-m-section-title:22px;
+    --kvl-m-kpi-value:29px;
+    --kvl-m-calendar-time:8px;
+    --kvl-m-rank-head:10px;
+    --kvl-m-rank-row:54px;
+    --kvl-m-rank-rank:13px;
+    --kvl-m-rank-team:13px;
+    --kvl-m-rank-stat:11px;
+    --kvl-m-rank-flag-w:28px;
+    --kvl-m-rank-flag-h:19px;
+    --kvl-m-qf-team:13px;
+    --kvl-m-qf-meta:9.5px;
+    --kvl-m-qf-status:9px;
+    --kvl-m-qf-flag-w:30px;
+    --kvl-m-qf-flag-h:21px;
+  }
+
+  /* Shell: calibrated to the AVC women mobile page. */
+  html body[data-avc-gender] .avc-main,
+  .kvl-competition-v1{padding:18px 10px 56px!important}
+  html body[data-avc-gender] .avc-hero,
+  .kvl-competition-v1 .kvl-comp-hero{padding:24px 18px!important;border-radius:20px!important}
+  html body[data-avc-gender] .avc-hero h1,
+  .kvl-competition-v1 .kvl-comp-title{font-size:24px!important;line-height:1.25!important;letter-spacing:-.045em!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-hero h1 small{font-size:12px!important;white-space:normal!important}
+  .kvl-competition-v1 .kvl-comp-title::before{display:none!important}
+  html body[data-avc-gender] .avc-meta .kvl-hero-meta-line,
+  .kvl-competition-v1 .kvl-comp-meta-line{display:block!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-meta .kvl-hero-meta-sep,
+  .kvl-competition-v1 .kvl-comp-meta-sep{display:none!important}
+
+  /* Navigation: 3 + 3. */
+  html body[data-avc-gender] .avc-jump,
+  .kvl-competition-v1 .kvl-comp-nav{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;margin:14px 0 22px!important;padding:6px!important;overflow:visible!important;border-radius:14px!important}
+  html body[data-avc-gender] .avc-jump a,
+  .kvl-competition-v1 .kvl-comp-nav a{display:flex!important;min-width:0!important;min-height:42px!important;align-items:center!important;justify-content:center!important;padding:8px 3px!important;border-radius:9px!important;font-size:13px!important;font-weight:900!important;line-height:1.15!important;text-align:center!important;white-space:nowrap!important}
+
+  /* Sections. */
+  html body[data-avc-gender] .avc-section,
+  .kvl-competition-v1 .kvl-comp-section{padding:18px 12px!important;border-radius:18px!important}
+  html body[data-avc-gender] .avc-section-head,
+  .kvl-competition-v1 .kvl-comp-section-head{gap:7px!important;margin-bottom:14px!important}
+  html body[data-avc-gender] .avc-section h2,
+  .kvl-competition-v1 .kvl-comp-section-head h2{font-size:22px!important}
+  html body[data-avc-gender] .avc-section-head>p,
+  .kvl-competition-v1 .kvl-comp-section-head>p{font-size:11px!important;line-height:1.45!important}
+
+  /* Overview KPI + venue. */
+  html body[data-avc-gender] #overview .avc-kpis,
+  .kvl-competition-v1 .kvl-comp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+  html body[data-avc-gender] #overview .avc-kpis article,
+  .kvl-competition-v1 .kvl-comp-kpi{min-height:92px!important;padding:13px 12px!important;border-radius:14px!important}
+  html body[data-avc-gender] #overview .avc-kpis article strong,
+  .kvl-competition-v1 .kvl-comp-kpi-value strong{font-size:29px!important;line-height:1.1!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi,
+  .kvl-competition-v1 .kvl-comp-venue-kpi{grid-column:1/-1!important;box-sizing:border-box!important;min-height:92px!important;padding:13px 12px!important;border-radius:14px!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi span,
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi small,
+  .kvl-competition-v1 .kvl-comp-venue-kpi span,
+  .kvl-competition-v1 .kvl-comp-venue-kpi small{display:block!important;color:#748397!important;font-size:11px!important;font-weight:700!important;line-height:1.3!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi strong,
+  .kvl-competition-v1 .kvl-comp-venue-kpi strong{display:block!important;margin-top:7px!important;font-size:20px!important;font-weight:900!important;line-height:1.2!important;letter-spacing:-.035em!important;white-space:nowrap!important}
+  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi small,
+  .kvl-competition-v1 .kvl-comp-venue-kpi small{margin-top:3px!important;white-space:nowrap!important}
+
+  /* Full-month calendar: women baseline. */
+  html body[data-avc-gender] #overview .cd-calendar-wrap{margin-top:28px!important;padding-top:28px!important}
+  html body[data-avc-gender] #overview .cd-calendar-head{display:flex!important;align-items:flex-start!important;justify-content:flex-start!important;flex-direction:column!important;gap:4px!important;margin-bottom:16px!important}
+  html body[data-avc-gender] #overview .cd-calendar-head h2{margin:4px 0 0!important;font-size:28px!important}
+  html body[data-avc-gender] #overview .cd-calendar-head>p{margin:0!important;font-size:14px!important;text-align:left!important}
+  html body[data-avc-gender] #overview .cd-calendar{overflow:visible!important}
+  html body[data-avc-gender] #overview .cd-cal-month{min-width:0!important;width:100%!important;border-radius:14px!important}
+  html body[data-avc-gender] #overview .cd-cal-title{padding:10px!important;font-size:15px!important}
+  html body[data-avc-gender] #overview .cd-cal-week span{padding:7px 1px!important;font-size:10px!important}
+  html body[data-avc-gender] #overview .cd-cal-cell{position:relative!important;min-height:58px!important;padding:4px 2px!important}
+  html body[data-avc-gender] #overview .cd-cal-day{font-size:10px!important;text-align:center!important}
+  html body[data-avc-gender] #overview .kvl-calendar-day-link{display:flex!important;position:absolute!important;inset:0!important;z-index:1!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;padding:4px 2px!important;color:inherit!important;text-decoration:none!important}
+  html body[data-avc-gender] #overview .kvl-calendar-count{margin-top:6px!important;padding:3px 4px!important;border-radius:6px!important;background:var(--avc-soft)!important;color:var(--avc-primary)!important;font-size:8px!important;font-weight:900!important;white-space:nowrap!important}
+  html body[data-avc-gender] #overview .kvl-calendar-time{display:block!important;margin-top:2px!important;color:#7c8795!important;font-size:8px!important;font-weight:800!important;line-height:1.1!important;white-space:nowrap!important}
+  html body[data-avc-gender] #overview .cd-cal-games{display:none!important}
+
+  /* Schedule: use the women page geometry for both genders. */
+  html body[data-avc-gender] #schedule .cd-stage-filters{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:3px!important;padding-top:8px!important;overflow:visible!important}
+  html body[data-avc-gender] #schedule .cd-stage-filters button{box-sizing:border-box!important;min-width:0!important;width:100%!important;padding:7px 1px!important;font-size:9px!important;line-height:1.1!important;white-space:nowrap!important}
+  html body[data-avc-gender] #schedule .cd-match{display:grid!important;grid-template-columns:1fr!important;gap:7px!important;padding:12px 10px!important}
+  html body[data-avc-gender] #schedule .cd-match-meta{display:contents!important}
+  html body[data-avc-gender] #schedule .cd-match-meta time{order:1!important;text-align:center!important;font-size:13px!important;font-weight:900!important}
+  html body[data-avc-gender] #schedule .cd-match-meta span{order:4!important;color:#7d8998!important;font-size:10px!important;font-weight:800!important;line-height:1.4!important;text-align:center!important}
+  html body[data-avc-gender] #schedule .cd-match-board{order:2!important;width:100%!important;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr)!important;gap:8px!important;align-items:center!important}
+  html body[data-avc-gender] #schedule .cd-set-scores{order:3!important;display:flex!important;justify-content:center!important;margin:0!important;overflow:visible!important;white-space:nowrap!important}
+  html body[data-avc-gender] #schedule .avc-set-scores{display:block!important;color:#657487!important;font-size:10px!important;font-weight:850!important;line-height:1.3!important;text-align:center!important;white-space:nowrap!important}
+  html body[data-avc-gender] #schedule .cd-side{display:grid!important;align-items:center!important;min-width:0!important;gap:2px!important}
+  html body[data-avc-gender] #schedule .cd-side.is-left{grid-template-columns:34px minmax(0,1fr)!important;padding:0!important;text-align:left!important}
+  html body[data-avc-gender] #schedule .cd-side.is-left .cd-inline-logo{grid-column:1!important;grid-row:1!important;justify-self:start!important}
+  html body[data-avc-gender] #schedule .cd-side.is-left strong,
+  html body[data-avc-gender] #schedule .cd-side.is-left .avc-slot-copy{grid-column:2!important;grid-row:1!important;justify-self:start!important;text-align:left!important}
+  html body[data-avc-gender] #schedule .cd-side.is-right{grid-template-columns:minmax(0,1fr) 34px!important;padding:0!important;text-align:right!important}
+  html body[data-avc-gender] #schedule .cd-side.is-right strong,
+  html body[data-avc-gender] #schedule .cd-side.is-right .avc-slot-copy{grid-column:1!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
+  html body[data-avc-gender] #schedule .cd-side.is-right .cd-inline-logo{grid-column:2!important;grid-row:1!important;justify-self:end!important}
+  html body[data-avc-gender] #schedule .cd-inline-logo{box-sizing:border-box!important;width:34px!important;height:24px!important;padding:0!important;border-radius:3px!important}
+  html body[data-avc-gender] #schedule .cd-inline-logo img{width:100%!important;height:100%!important;object-fit:contain!important}
+  html body[data-avc-gender] #schedule .cd-side strong{overflow:visible!important;font-size:18px!important;line-height:1!important;letter-spacing:-.045em!important;text-overflow:clip!important;white-space:nowrap!important}
+  html body[data-avc-gender] #schedule .cd-score{width:46px!important;color:#4B5563!important;font-size:18px!important;line-height:1!important;justify-self:center!important;text-align:center!important;font-variant-numeric:tabular-nums!important}
+
+  /* Group standings: women card dimensions. */
+  html body[data-avc-gender] #groups .avc-group-card{border-radius:17px!important}
+  html body[data-avc-gender] #groups .avc-group-card h3{padding:13px 15px!important;font-size:15px!important}
+  html body[data-avc-gender] #groups .avc-group-card h3 span{font-size:11px!important}
+  html body[data-avc-gender] #groups .avc-standing-row{grid-template-columns:24px 28px minmax(0,1fr) auto!important;gap:8px!important;min-height:54px!important;padding:8px 11px!important}
+  html body[data-avc-gender] #groups .avc-standing-rank{font-size:12px!important}
+  html body[data-avc-gender] #groups .avc-standing-row img{width:27px!important;height:19px!important}
+  html body[data-avc-gender] #groups .avc-standing-copy strong{font-size:13px!important}
+  html body[data-avc-gender] #groups .avc-standing-copy small{font-size:10px!important}
+  html body[data-avc-gender] #groups .avc-standing-stat{font-size:10px!important}
+
+  /* Combined ranking heading + exact women column geometry. */
+  html body[data-avc-gender] #groups .avc-combined-head{align-items:flex-start!important;justify-content:flex-start!important;flex-direction:column!important;gap:3px!important;margin-bottom:11px!important}
+  html body[data-avc-gender] #groups .avc-combined-head h3{font-size:16px!important;line-height:1.25!important;letter-spacing:-.03em!important}
+  html body[data-avc-gender] #groups .avc-combined-head>p{font-size:9px!important;line-height:1.35!important;letter-spacing:-.035em!important;text-align:left!important}
+  html body[data-avc-gender] #groups .avc-combined{overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-table,
+  html body[data-avc-gender] #groups .kvl-men-combined-table.is-complete{min-width:770px!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-line,
+  html body[data-avc-gender] #groups .kvl-men-combined-table.is-complete .kvl-men-combined-line{grid-template-columns:44px 28px 110px 130px 76px 54px 96px 96px 76px!important;gap:6px!important;min-height:54px!important;padding:8px 6px!important}
+  html body[data-avc-gender] #groups .kvl-men-combined-table.is-live{min-width:688px!important}
+  html body[data-avc-gender] #groups .kvl-men-combined-table.is-live .kvl-men-combined-line{grid-template-columns:44px 28px 110px 110px 76px 54px 96px 96px!important;gap:6px!important;min-height:54px!important;padding:8px 6px!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-line.is-head,
+  html body[data-avc-gender] #groups .kvl-men-combined-line.is-head{min-height:42px!important;font-size:10px!important;font-weight:1000!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-line img,
+  html body[data-avc-gender] #groups .kvl-men-combined-line img{width:28px!important;height:19px!important;justify-self:center!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-rank,
+  html body[data-avc-gender] #groups .kvl-men-combined-rank{font-size:13px!important;justify-self:center!important;text-align:center!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-team,
+  html body[data-avc-gender] #groups .kvl-men-combined-team{font-size:13px!important;justify-self:center!important;text-align:center!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-stat,
+  html body[data-avc-gender] #groups .kvl-men-combined-stat{font-size:11px!important;text-align:center!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-result,
+  html body[data-avc-gender] #groups .kvl-men-combined-result{width:100%!important;min-height:38px!important;gap:6px!important;padding:0!important;font-size:11px!important;line-height:1.1!important;justify-content:center!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-result b,
+  html body[data-avc-gender] #groups .kvl-men-combined-result b{width:62px!important;min-width:62px!important;min-height:26px!important;padding:4px 5px!important;font-size:10px!important}
+  html body[data-avc-gender] #groups .kvl-women-combined-v3-result small,
+  html body[data-avc-gender] #groups .kvl-men-combined-result small{margin:0!important;font-size:11px!important}
+
+  /* Podium 1-4: women layout, shared. */
+  html body[data-avc-gender] .avc-main #knockout .avc-final-block #podiumRoot.avc-podium{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;margin:0!important}
+  html body[data-avc-gender] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-card{display:flex!important;min-width:0!important;min-height:126px!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:0!important;padding:5px 2px!important;border-radius:11px!important;text-align:center!important}
+  html body[data-avc-gender] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-rank{display:block!important;width:auto!important;height:auto!important;margin:0 0 2px!important;color:var(--avc-primary)!important;font-size:11px!important;font-weight:1000!important;line-height:1.2!important;background:transparent!important}
+  html body[data-avc-gender] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-card img{display:block!important;box-sizing:border-box!important;width:58px!important;height:40px!important;margin:3px 0 2px!important;padding:0!important;border:0!important;border-radius:3px!important;background:#fff!important;object-fit:contain!important}
+  html body[data-avc-gender] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-copy strong{max-width:100%!important;margin-top:4px!important;overflow:hidden!important;font-size:11px!important;font-weight:900!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-main #knockout .avc-final-block #podiumRoot .avc-podium-copy small{display:block!important;margin-top:3px!important;font-size:8px!important;font-weight:800!important;line-height:1.25!important}
+
+  /* Bracket: vertical rounds and women result-card proportions. */
+  html body[data-avc-gender] #knockout .avc-bracket{overflow:visible!important;padding-bottom:0!important}
+  html body[data-avc-gender] #knockout .avc-bracket-ladder{display:block!important;min-width:0!important;max-width:none!important}
+  html body[data-avc-gender] #knockout .avc-bracket-gap{display:none!important}
+  html body[data-avc-gender] #knockout .avc-round{margin-bottom:14px!important}
+  html body[data-avc-gender] #knockout .avc-round-body{display:grid!important;min-height:0!important;gap:8px!important}
+  html body[data-avc-gender] #knockout .avc-qf-pair{display:contents!important}
+  html body[data-avc-gender] #knockout .avc-round-title{padding:9px 10px!important;font-size:13px!important;line-height:1.2!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;column-gap:0!important;overflow:hidden!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head{grid-column:1/-1!important;padding:7px 9px!important;border-radius:11px 11px 0 0!important;font-size:9px!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head strong{font-size:10px!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team{grid-column:1!important;display:grid!important;grid-template-columns:32px minmax(0,1fr) 22px!important;gap:2px!important;min-height:44px!important;padding:7px 0 7px 7px!important;border-top:0!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team{grid-column:2!important;display:grid!important;grid-template-columns:22px minmax(0,1fr) 32px!important;gap:2px!important;min-height:44px!important;padding:7px 7px 7px 0!important;border-top:0!important}
+  html body[data-avc-gender] #knockout .avc-bracket-team img{width:32px!important;height:23px!important;margin:0!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team img{grid-column:1!important;grid-row:1!important;justify-self:start!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team strong{grid-column:2!important;grid-row:1!important;justify-self:start!important;text-align:left!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team b{grid-column:3!important;grid-row:1!important;text-align:right!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b{grid-column:1!important;grid-row:1!important;text-align:left!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b::before{content:'-';margin-right:1px}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team strong{grid-column:2!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
+  html body[data-avc-gender] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team img{grid-column:3!important;grid-row:1!important;justify-self:end!important}
+  html body[data-avc-gender] #knockout .avc-bracket-team strong,
+  html body[data-avc-gender] #knockout .avc-bracket-team b{font-size:18px!important;line-height:1!important;white-space:nowrap!important}
+  html body[data-avc-gender] #knockout .avc-bracket-team strong{overflow:visible!important;letter-spacing:-.045em!important;text-overflow:clip!important}
+
+  /* Projected QF remains state-specific, but uses the same shared geometry. */
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-projection{display:grid!important;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr)!important;align-items:center!important;gap:5px!important;padding:10px 8px!important;border-top:1px solid #edf3ef!important;background:#fff!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side{display:grid!important;min-width:0!important;align-items:center!important;column-gap:5px!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-left{grid-template-columns:minmax(0,1fr) auto!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-right{grid-template-columns:auto minmax(0,1fr)!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-identity{display:flex!important;min-width:0!important;align-items:center!important;gap:5px!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-left .kvl-comp-qf-identity{grid-column:1!important;justify-content:flex-start!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-right .kvl-comp-qf-identity{grid-column:2!important;justify-content:flex-end!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-identity img{display:block!important;width:30px!important;height:21px!important;object-fit:contain!important;background:#fff!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-identity strong{font-size:13px!important;font-weight:950!important;line-height:1.2!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-meta{display:flex!important;min-width:0!important;flex-direction:column!important;justify-content:center!important;line-height:1.15!important;white-space:nowrap!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-left .kvl-comp-qf-meta{grid-column:2!important;text-align:right!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-side.is-right .kvl-comp-qf-meta{grid-column:1!important;text-align:left!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-status{display:block!important;font-size:9px!important;font-weight:850!important;line-height:1.15!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-seedline{display:block!important;margin-top:3px!important;font-size:9.5px!important;font-weight:900!important;line-height:1.15!important}
+  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-vs{font-size:10px!important;font-weight:1000!important;text-align:center!important}
+
+  /* Participants: women dimensions. */
+  html body[data-avc-gender] .avc-participant-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}
+  html body[data-avc-gender] .avc-country-card{min-height:64px!important;padding:9px 8px!important;gap:7px!important;border-radius:15px!important}
+  html body[data-avc-gender] .avc-country-card img{width:35px!important;height:24px!important}
+  html body[data-avc-gender] .avc-country-copy strong{font-size:12px!important}
+  html body[data-avc-gender] .avc-country-copy small{font-size:9px!important}
+  html body[data-avc-gender] .avc-country-pool{padding:5px 8px!important;font-size:9px!important}
+
+  /* Official resources: women pill-link card. */
+  html body[data-avc-gender] #sources .avc-sources{grid-template-columns:1fr!important;gap:7px!important}
+  html body[data-avc-gender] #sources .avc-source{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;min-height:48px!important;padding:10px!important;gap:6px!important;border-radius:14px!important}
+  html body[data-avc-gender] #sources .avc-source strong{min-width:0!important;overflow:hidden!important;font-size:11px!important;line-height:1.2!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  html body[data-avc-gender] #sources .avc-source a{display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:5px 7px!important;border-radius:999px!important;background:var(--avc-soft)!important;color:var(--avc-dark)!important;font-size:10px!important;font-weight:900!important;line-height:1!important;white-space:nowrap!important;text-decoration:none!important}
+
+  /* Rule/note cards: women spacing. */
+  html body[data-avc-gender] .avc-rule-card{margin-top:20px!important;padding:22px 24px!important;border-radius:18px!important}
+  html body[data-avc-gender] .avc-rule-card>strong{font-size:19px!important}
+  html body[data-avc-gender] .avc-rule-card p{margin:10px 0 0!important;font-size:15px!important;line-height:1.75!important}
+  html body[data-avc-gender] .avc-rule-card small{margin-top:12px!important;font-size:14px!important;line-height:1.7!important}
+}
