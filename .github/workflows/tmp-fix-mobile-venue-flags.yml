@@ -1,0 +1,87 @@
+name: Fix mobile venue and flag columns
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tmp-fix-mobile-venue-flags.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Patch shared mobile template and AVC pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace(path, old, new, label):
+              p=Path(path)
+              s=p.read_text(encoding='utf-8')
+              if old not in s:
+                  raise SystemExit(f'pattern not found: {label} in {path}')
+              s=s.replace(old,new,1)
+              p.write_text(s,encoding='utf-8')
+
+          css='assets/css/kvl-mobile-competition-template-v3.css'
+          p=Path(css); s=p.read_text(encoding='utf-8')
+          if '.kvl-mobile-venue-only{display:none}' not in s:
+              s=s.replace('@import url("./kvl-mobile-competition-template-v2.css?v=20260907-1");\n', '@import url("./kvl-mobile-competition-template-v2.css?v=20260907-1");\n\n.kvl-mobile-venue-only{display:none}\n',1)
+          old='''  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi strong,\n  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi small,\n  .kvl-competition-v1 .kvl-comp-venue-kpi strong,\n  .kvl-competition-v1 .kvl-comp-venue-kpi small{display:inline!important;margin:7px 0 0!important;font-size:16px!important;font-weight:900!important;line-height:1.2!important;letter-spacing:-.04em!important;white-space:nowrap!important}\n  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi strong::after,\n  .kvl-competition-v1 .kvl-comp-venue-kpi strong::after{content:' '!important}\n  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi small,\n  .kvl-competition-v1 .kvl-comp-venue-kpi small{color:inherit!important}\n'''
+          new='''  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi strong,\n  .kvl-competition-v1 .kvl-comp-venue-kpi strong{display:inline!important;margin:7px 0 0!important;color:var(--avc-dark)!important;font-size:16px!important;font-weight:900!important;line-height:1.2!important;letter-spacing:-.04em!important;white-space:nowrap!important}\n  html body[data-avc-gender] #overview .avc-kpis .kvl-avc-venue-kpi small,\n  .kvl-competition-v1 .kvl-comp-venue-kpi small{display:inline!important;margin:0 0 0 6px!important;color:#7a8796!important;font-size:12px!important;font-weight:800!important;line-height:1.2!important;letter-spacing:-.025em!important;white-space:nowrap!important}\n  html body[data-avc-gender] #overview .avc-kpis .kvl-mobile-venue-only{display:block!important}\n'''
+          if old not in s: raise SystemExit('venue style pattern not found')
+          s=s.replace(old,new,1)
+          old2='''  html body[data-avc-gender] #groups .kvl-women-combined-v3-line img,\n  html body[data-avc-gender] #groups .kvl-men-combined-line img{width:28px!important;height:19px!important;justify-self:center!important}\n'''
+          new2='''  html body[data-avc-gender] #groups .kvl-comp-flag-cell{display:flex!important;width:28px!important;height:19px!important;align-items:center!important;justify-content:center!important;justify-self:center!important}\n  html body[data-avc-gender] #groups .kvl-women-combined-v3-line img,\n  html body[data-avc-gender] #groups .kvl-men-combined-line img,\n  html body[data-avc-gender] #groups .kvl-comp-flag-cell img{display:block!important;width:28px!important;height:19px!important;object-fit:contain!important;justify-self:center!important}\n'''
+          if old2 not in s: raise SystemExit('flag style pattern not found')
+          s=s.replace(old2,new2,1)
+          old3='''  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-projection{display:grid!important;grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr)!important;align-items:center!important;gap:4px!important;padding:11px 8px!important;border-top:1px solid #edf3ef!important;background:#fff!important;min-height:62px!important}\n'''
+          new3='''  html body[data-avc-gender] .avc-main #knockout .kvl-comp-qf-projection{display:grid!important;grid-column:1/-1!important;grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr)!important;align-items:center!important;gap:4px!important;padding:11px 8px!important;border-top:1px solid #edf3ef!important;background:#fff!important;min-height:62px!important}\n'''
+          if old3 not in s: raise SystemExit('qf projection pattern not found')
+          s=s.replace(old3,new3,1)
+          p.write_text(s,encoding='utf-8')
+
+          men='international-competition-avc-men-continental-2026.html'
+          replace(men,'assets/css/kvl-mobile-competition-template-v3.css?v=20260908-1','assets/css/kvl-mobile-competition-template-v3.css?v=20260908-2','men css cache')
+          replace(men,
+              'const common=`<span class="kvl-men-combined-rank">${r.combinedRank}위</span>${standingFlag(r.team)}<strong class="kvl-men-combined-team">${esc(r.team)}</strong>`;',
+              'const common=`<span class="kvl-men-combined-rank">${r.combinedRank}위</span><span class="kvl-comp-flag-cell">${standingFlag(r.team)}</span><strong class="kvl-men-combined-team">${esc(r.team)}</strong>`;',
+              'men combined flag cell')
+
+          women='international-competition-avc-women-continental-2026.html'
+          replace(women,'assets/css/kvl-mobile-competition-template-v3.css?v=20260908-1','assets/css/kvl-mobile-competition-template-v3.css?v=20260908-2','women css cache')
+          replace(women,'<body>','<body data-avc-gender="women">','women body gender')
+          replace(women,
+              '<div class="avc-kpis"><article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article></div>',
+              '<div class="avc-kpis"><article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article><div class="kvl-avc-venue-kpi kvl-mobile-venue-only" aria-label="대회 장소: 중국 톈진 올림픽 센터 체육관"><span>장소</span><strong>중국 톈진</strong><small>올림픽 센터 체육관</small></div></div>',
+              'women static venue')
+          replace(women,
+              '<span class="kvl-women-combined-v3-rank">${i+1}위</span>${standingFlag(r.team)}<strong class="kvl-women-combined-v3-team">${esc(r.team)}</strong>',
+              '<span class="kvl-women-combined-v3-rank">${i+1}위</span><span class="kvl-comp-flag-cell">${standingFlag(r.team)}</span><strong class="kvl-women-combined-v3-team">${esc(r.team)}</strong>',
+              'women combined flag cell')
+
+          runtime='assets/js/avc-continental-gender-runtime.js'
+          replace(runtime,
+              "if(kpis)kpis.innerHTML='<article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article>';",
+              "if(kpis)kpis.innerHTML='<article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article><div class=\"kvl-avc-venue-kpi kvl-mobile-venue-only\" aria-label=\"대회 장소: 중국 톈진 올림픽 센터 체육관\"><span>장소</span><strong>중국 톈진</strong><small>올림픽 센터 체육관</small></div>';",
+              'women runtime venue')
+
+          doc='docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md'
+          p=Path(doc); s=p.read_text(encoding='utf-8')
+          old='''- 장소카드는 `장소` 라벨 아래 **국가 + 도시 + 경기장 전체명을 한 줄**로 표시한다.\n  - 예: `일본 후쿠오카 기타큐슈시 종합체육관`\n  - 예: `중국 톈진 올림픽 센터 체육관`\n- 장소값은 390px에서 한 줄을 우선하며, 글씨는 공통 템플릿이 자동으로 맞춘다.\n'''
+          new='''- 장소카드는 `장소` 라벨 아래 **국가 + 도시 + 경기장 전체명을 한 줄**로 표시한다.\n  - 예: **일본 후쿠오카** `기타큐슈시 종합체육관`\n  - 예: **중국 톈진** `올림픽 센터 체육관`\n- 국가+도시는 진한 글씨 `16px / 900`, 경기장명은 회색 `12px / 800`로 구분한다.\n- 두 값은 390px에서 같은 줄에 유지한다.\n'''
+          if old not in s: raise SystemExit('doc venue pattern not found')
+          p.write_text(s.replace(old,new,1),encoding='utf-8')
+          PY
+      - name: Commit repair
+        run: |
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add assets/css/kvl-mobile-competition-template-v3.css assets/js/avc-continental-gender-runtime.js international-competition-avc-men-continental-2026.html international-competition-avc-women-continental-2026.html docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md
+          git diff --cached --quiet && exit 0
+          git commit -m 'fix: align venue card and combined ranking flags'
+          git push origin main
