@@ -1,0 +1,61 @@
+name: Apply mobile template v5 cache patch
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.event.head_commit.message == 'chore: apply mobile template v5 cache patch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply mobile template v5 to live AVC pages
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          men = Path('international-competition-avc-men-continental-2026.html')
+          women = Path('international-competition-avc-women-continental-2026.html')
+          css = Path('assets/css/kvl-mobile-competition-template-v3.css')
+
+          for path in (men, women):
+              text = path.read_text(encoding='utf-8')
+              text = text.replace('assets/css/kvl-mobile-competition-template-v3.css?v=20260907-1',
+                                  'assets/css/kvl-mobile-competition-template-v3.css?v=20260908-1')
+              path.write_text(text, encoding='utf-8')
+
+          m = men.read_text(encoding='utf-8')
+          m = m.replace('<time>${esc(m.time)}</time>', '<time>${esc(m.time)} KST</time>')
+          m = m.replace('<div class="avc-match-detail">${esc(stageMeta)}</div>',
+                        '<div class="avc-match-detail">${esc(stageMeta)} · 일본 현지 ${esc(m.time)} JST</div>')
+          m = m.replace('일본 현지시간 = 한국시간', '한국시간(KST) · 일본 현지시간(JST, 동일 시각)')
+          men.write_text(m, encoding='utf-8')
+
+          w = women.read_text(encoding='utf-8')
+          old_meta = '<p class="avc-meta"><span>2026-08-21(금) ~ 2026-08-30(일)</span><span class="kvl-hero-meta-sep"> · </span><br class="kvl-mobile-meta-break">중국 톈진 · 경기시간은 한국시간(KST) 기준</p>'
+          new_meta = '<p class="avc-meta"><span class="kvl-hero-meta-line">2026-08-21(금) ~ 2026-08-30(일)</span><span class="kvl-hero-meta-line">중국 톈진</span><span class="kvl-hero-meta-line">올림픽 센터 체육관</span></p>'
+          if old_meta in w:
+              w = w.replace(old_meta, new_meta)
+          women.write_text(w, encoding='utf-8')
+
+          c = css.read_text(encoding='utf-8')
+          c = c.replace('  html body[data-avc-gender="women"] .avc-meta{padding-right:86px!important;box-sizing:border-box!important}\n',
+                        '  html body[data-avc-gender="women"] .avc-meta .kvl-hero-meta-line:last-child{padding-right:86px!important;box-sizing:border-box!important}\n')
+          c = c.replace("  html body[data-avc-gender=\"men\"] #schedule .cd-match-meta time::after{content:' KST · 일본 현지 동일(JST)'!important;color:#7d8998!important;font-size:10px!important;font-weight:800!important}\n", '')
+          css.write_text(c, encoding='utf-8')
+          PY
+
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add international-competition-avc-men-continental-2026.html \
+                  international-competition-avc-women-continental-2026.html \
+                  assets/css/kvl-mobile-competition-template-v3.css
+          git diff --cached --quiet && exit 0
+          git commit -m "fix: apply mobile template v5 to AVC pages"
+          git push origin main
