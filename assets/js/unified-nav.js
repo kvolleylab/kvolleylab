@@ -64,106 +64,14 @@
         document.head.appendChild(style);
       }
     };
-
-    const ensureAvcWomenUiStyle=()=>{
-      if(document.getElementById('kvlAvcWomenUiPolishStyle'))return;
-      const style=document.createElement('style');
-      style.id='kvlAvcWomenUiPolishStyle';
-      style.textContent=`
-        body[data-avc-gender="women"] #overview .cd-calendar-head{align-items:flex-start!important;justify-content:flex-start!important;flex-direction:column!important;gap:4px!important}
-        body[data-avc-gender="women"] #overview .cd-calendar-head>p{margin:0!important;text-align:left!important}
-        body[data-avc-gender="women"] #groups .avc-combined-head{align-items:flex-start!important;justify-content:flex-start!important;flex-direction:column!important;gap:4px!important}
-        body[data-avc-gender="women"] #groups .avc-combined-head>div{width:100%!important}
-        body[data-avc-gender="women"] #groups .avc-combined-head .eyebrow,body[data-avc-gender="women"] #groups .avc-combined-head h3,body[data-avc-gender="women"] #groups .avc-combined-head>p{margin-left:0!important;margin-right:0!important;text-align:left!important;white-space:nowrap!important}
-        body[data-avc-gender="women"] #groups .avc-combined{overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
-        body[data-avc-gender="women"] #groups .kvl-combined-table{min-width:870px;background:#fff}
-        body[data-avc-gender="women"] #groups .kvl-combined-line{display:grid;grid-template-columns:64px 30px 118px 96px 90px 60px 104px 104px 78px;gap:8px;align-items:center;min-height:46px;padding:7px 13px;border-top:1px solid #f4e3ea;box-sizing:border-box}
-        body[data-avc-gender="women"] #groups .kvl-combined-line:first-child{border-top:0}
-        body[data-avc-gender="women"] #groups .kvl-combined-line.is-head{min-height:38px;background:var(--kvl-women-soft,#FFF2F7);color:#765563;font-size:10px;font-weight:1000}
-        body[data-avc-gender="women"] #groups .kvl-combined-line.is-korea{background:var(--kvl-women-soft,#FFF2F7)}
-        body[data-avc-gender="women"] #groups .kvl-combined-line img{display:block;width:28px;height:19px;object-fit:contain}
-        body[data-avc-gender="women"] #groups .kvl-combined-rank{color:var(--kvl-women-dark,#A43F68);font-size:12px;font-weight:1000;white-space:nowrap}
-        body[data-avc-gender="women"] #groups .kvl-combined-team{color:#17365d;font-size:13px;font-weight:900;white-space:nowrap}
-        body[data-avc-gender="women"] #groups .kvl-combined-stat{color:#708078;font-size:11px;font-weight:800;text-align:center;white-space:nowrap}
-        body[data-avc-gender="women"] #groups .kvl-combined-result{display:inline-flex;align-items:center;justify-content:center;min-height:26px;padding:4px 7px;border-radius:999px;background:#eef8f1;color:#166534;font-size:10px;font-weight:1000;white-space:nowrap;box-sizing:border-box}
-        body[data-avc-gender="women"] #groups .kvl-combined-result.is-out{background:#f3f4f6;color:#6b7280}
-        body[data-avc-gender="women"] #sources .avc-source{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:8px!important;overflow:hidden!important}
-        body[data-avc-gender="women"] #sources .avc-source strong{min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
-        body[data-avc-gender="women"] #sources .avc-source a{display:inline-flex!important;box-sizing:border-box!important;align-items:center!important;justify-content:center!important;max-width:100%!important;padding:6px 8px!important;border-radius:999px!important;background:var(--kvl-women-soft,#FFF2F7)!important;font-size:11px!important;line-height:1!important;white-space:nowrap!important}
-        @media(max-width:680px){
-          body[data-avc-gender="women"] #overview .cd-calendar-head{gap:3px!important}
-          body[data-avc-gender="women"] #overview .cd-calendar-head>p{font-size:11px!important;line-height:1.4!important}
-          body[data-avc-gender="women"] #groups .avc-combined-head{gap:3px!important}
-          body[data-avc-gender="women"] #groups .avc-combined-head h3{font-size:16px!important;line-height:1.25!important;letter-spacing:-.03em!important}
-          body[data-avc-gender="women"] #groups .avc-combined-head>p{font-size:9px!important;line-height:1.35!important;letter-spacing:-.035em!important}
-          body[data-avc-gender="women"] #groups .kvl-combined-table{min-width:760px}
-          body[data-avc-gender="women"] #groups .kvl-combined-line{grid-template-columns:48px 28px 86px 88px 72px 48px 82px 82px 62px;gap:6px;min-height:44px;padding:7px 9px}
-          body[data-avc-gender="women"] #groups .kvl-combined-line.is-head{font-size:9px}
-          body[data-avc-gender="women"] #groups .kvl-combined-rank{font-size:11px}
-          body[data-avc-gender="women"] #groups .kvl-combined-team{font-size:11px}
-          body[data-avc-gender="women"] #groups .kvl-combined-stat{font-size:10px}
-          body[data-avc-gender="women"] #groups .kvl-combined-result{padding:4px 5px;font-size:9px}
-          html body[data-avc-gender="women"] #sources .avc-source{grid-template-columns:minmax(0,1fr) auto!important;gap:6px!important;padding:10px 10px!important}
-          html body[data-avc-gender="women"] #sources .avc-source strong{font-size:11px!important}
-          html body[data-avc-gender="women"] #sources .avc-source a{padding:5px 7px!important;font-size:10px!important}
-        }
-      `;
-      document.head.appendChild(style);
-    };
-
-    const polishAvcWomenHeaders=()=>{
-      const combined=document.querySelector('#groups .avc-combined-head');
-      if(combined){
-        const eye=combined.querySelector('.eyebrow');if(eye)eye.textContent='TEAMS COMBINED RANKING';
-        const h3=combined.querySelector('h3');if(h3)h3.textContent='예선 종합순위 · 전체 12개국';
-        const p=combined.querySelector(':scope > p');if(p)p.textContent='조별리그 18/18경기 기준 · 대회 규정 자동계산 · 최종확정';
-      }
-    };
-
-    const setupAvcWomenSources=()=>{
-      const root=document.getElementById('sourceRoot');if(!root)return;
-      const apply=()=>root.querySelectorAll('.avc-source a').forEach(a=>{if(a.textContent.trim()!=='공식페이지 →')a.textContent='공식페이지 →'});
-      apply();
-      new MutationObserver(apply).observe(root,{childList:true,subtree:true});
-    };
-
-    const setupAvcWomenCombinedRanking=()=>{
-      const root=document.getElementById('combinedRankingRoot');if(!root)return;
-      let markup='';
-      const apply=()=>{if(markup&&!root.querySelector('.kvl-combined-table'))root.innerHTML=markup};
-      new MutationObserver(apply).observe(root,{childList:true});
-      const ratio=(a,b)=>b===0?Number.POSITIVE_INFINITY:a/b;
-      const compareStats=(a,b)=>(b.wins-a.wins)||(b.leaguePoints-a.leaguePoints)||(ratio(b.setsFor,b.setsAgainst)-ratio(a.setsFor,a.setsAgainst))||(ratio(b.pointsFor,b.pointsAgainst)-ratio(a.pointsFor,a.pointsAgainst))||a.team.localeCompare(b.team,'ko');
-      const ratioText=v=>Number.isFinite(v)?v.toFixed(3):'MAX';
-      fetch('data/competitions/avc-women-continental-2026.json?v=20260907-2',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(data=>{
-        const stats=new Map();
-        (data.groups||[]).forEach(g=>(g.teams||[]).forEach(team=>stats.set(team,{team,pool:g.id,played:0,wins:0,leaguePoints:0,setsFor:0,setsAgainst:0,pointsFor:0,pointsAgainst:0,poolRank:0})));
-        (data.matches||[]).filter(m=>m.stage==='조별리그').forEach(m=>{
-          const a=stats.get(m.teamA),b=stats.get(m.teamB);if(!a||!b)return;
-          const setsA=Number(m.setsA)||0,setsB=Number(m.setsB)||0;
-          a.played++;b.played++;a.setsFor+=setsA;a.setsAgainst+=setsB;b.setsFor+=setsB;b.setsAgainst+=setsA;
-          (m.sets||[]).forEach(s=>{const pa=Number(s[0])||0,pb=Number(s[1])||0;a.pointsFor+=pa;a.pointsAgainst+=pb;b.pointsFor+=pb;b.pointsAgainst+=pa});
-          if(setsA>setsB){a.wins++;if(setsB===2){a.leaguePoints+=2;b.leaguePoints+=1}else a.leaguePoints+=3}else{b.wins++;if(setsA===2){b.leaguePoints+=2;a.leaguePoints+=1}else b.leaguePoints+=3}
-        });
-        [...new Set([...stats.values()].map(s=>s.pool))].forEach(pool=>{[...stats.values()].filter(s=>s.pool===pool).sort(compareStats).forEach((s,i)=>{s.poolRank=i+1})});
-        const rows=[...stats.values()].sort((a,b)=>(a.poolRank-b.poolRank)||compareStats(a,b)).map((s,i)=>({...s,combinedRank:i+1}));
-        const flagMap={중국:'cn',이란:'ir',대만:'tw',이라크:'iq',태국:'th',인도네시아:'id',카자흐스탄:'kz',호주:'au',일본:'jp',대한민국:'kr',베트남:'vn',홍콩:'hk'};
-        const head='<div class="kvl-combined-line is-head"><span>종합순위</span><span>국기</span><span>국가</span><span>결과</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span><span>조순위</span></div>';
-        const body=rows.map(s=>{const qualified=s.combinedRank<=8;return `<div class="kvl-combined-line ${s.team==='대한민국'?'is-korea':''}"><span class="kvl-combined-rank">${s.combinedRank}위</span><img src="https://flagcdn.com/w80/${flagMap[s.team]||''}.png" alt="${s.team} 국기" loading="lazy"><strong class="kvl-combined-team">${s.team}</strong><span class="kvl-combined-result ${qualified?'':'is-out'}">${qualified?'8강 진출':'조별리그 탈락'}</span><span class="kvl-combined-stat">${s.wins}</span><span class="kvl-combined-stat">${s.leaguePoints}</span><span class="kvl-combined-stat">${ratioText(ratio(s.setsFor,s.setsAgainst))}</span><span class="kvl-combined-stat">${ratioText(ratio(s.pointsFor,s.pointsAgainst))}</span><span class="kvl-combined-stat">${s.pool}조 ${s.poolRank}위</span></div>`}).join('');
-        markup=`<div class="kvl-combined-table">${head}${body}</div>`;
-        apply();
-      }).catch(()=>{});
-    };
-
     const watchAvcWomenVenueKpi=()=>{
       const kpis=document.querySelector('#overview .avc-kpis');
       if(!kpis)return;
       ensureAvcWomenVenueKpi();
       new MutationObserver(()=>ensureAvcWomenVenueKpi()).observe(kpis,{childList:true});
     };
-    const setupAvcWomenUi=()=>{ensureAvcWomenUiStyle();polishAvcWomenHeaders();watchAvcWomenVenueKpi();setupAvcWomenCombinedRanking();setupAvcWomenSources()};
-    if(document.readyState==='loading')addEventListener('DOMContentLoaded',setupAvcWomenUi,{once:true});
-    else setupAvcWomenUi();
+    if(document.readyState==='loading')addEventListener('DOMContentLoaded',watchAvcWomenVenueKpi,{once:true});
+    else watchAvcWomenVenueKpi();
   }
 
   const UNIVERSITY_COMPETITION_PATHS=new Set(['university-competition.html','university-competition-danyang.html']);
