@@ -1,0 +1,48 @@
+name: Temporary AVC Women Front Column Align
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/tmp-avc-women-front-align.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Patch AVC women mobile combined ranking front columns
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('international-competition-avc-women-continental-2026.html')
+          s=p.read_text(encoding='utf-8')
+          reps=[
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-table{min-width:762px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-table{min-width:770px!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line{grid-template-columns:44px 28px 102px 130px 76px 54px 96px 96px 76px!important;gap:6px!important;min-height:54px;padding:8px 6px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line{grid-template-columns:44px 28px 110px 130px 76px 54px 96px 96px 76px!important;gap:6px!important;min-height:54px;padding:8px 6px!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line.is-head{min-height:42px!important;font-size:10px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line.is-head{min-height:42px!important;font-size:10px!important}\n      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line.is-head>span{display:flex!important;align-items:center!important;justify-content:center!important;justify-self:stretch!important;text-align:center!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line img{width:28px!important;height:19px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line img{width:28px!important;height:19px!important;justify-self:center!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-rank{font-size:13px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-rank{font-size:13px!important;justify-self:center!important;text-align:center!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-team{font-size:13px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-team{font-size:13px!important;justify-self:center!important;text-align:center!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result{width:100%!important;min-height:38px!important;gap:6px!important;padding:0!important;font-size:11px!important;line-height:1.1!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result{width:100%!important;min-height:38px!important;gap:6px!important;padding:0!important;font-size:11px!important;line-height:1.1!important;justify-content:center!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result b{width:62px!important;min-width:62px!important;min-height:26px!important;padding:4px 5px!important;font-size:10px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result b{width:62px!important;min-width:62px!important;min-height:26px!important;padding:4px 5px!important;font-size:10px!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result small{margin:0!important;font-size:11px!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result small{margin:0!important;font-size:11px!important}\n      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out),body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) b,body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) small{color:var(--avc-dark)!important}'),
+          ('body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result.is-out{justify-content:flex-start!important;padding:0!important;background:transparent!important;border-radius:0!important}', 'body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result.is-out{justify-content:center!important;padding:0!important;background:transparent!important;border-radius:0!important}')
+          ]
+          for old,new in reps:
+              if old not in s:
+                  raise SystemExit(f'missing expected pattern: {old[:120]}')
+              s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add international-competition-avc-women-continental-2026.html
+          git commit -m "fix: align AVC women combined ranking front columns"
+          git pull --rebase origin main
+          git push origin main
