@@ -9,15 +9,18 @@
     if (!result.label) return '<span class="kvl-shared-combined-result"></span>';
     return `<span class="kvl-shared-combined-result${result.out ? ' is-out' : ''}"><b>${esc(result.label)}</b>${result.detail ? `<small>${esc(result.detail)}</small>` : ''}</span>`;
   };
+  const headerCell = label => `<span role="columnheader">${label}</span>`;
   function render(root, options){
     if (!root) return;
     const opts = options || {};
     const complete = opts.state === 'complete';
     const rows = Array.isArray(opts.rows) ? opts.rows : [];
-    const head = complete
-      ? ['종합순위','국기','국가','결과','승리 경기수','승점','세트 득실률','득점 득실률','조순위']
-      : ['종합순위','국기','국가','조순위','승리 경기수','승점','세트 득실률','득점 득실률'];
-    const header = `<div class="kvl-shared-combined-line is-head" role="row">${head.map(label => `<span role="columnheader"${label === '국기' ? ' class="kvl-shared-combined-flag-head"' : ''}>${label}</span>`).join('')}</div>`;
+    const rankHead = headerCell('종합순위');
+    const countryHead = '<span role="columnheader" class="kvl-shared-combined-country-head" style="grid-column:2 / span 2" aria-label="국기 및 국가">국가</span>';
+    const trailingHead = complete
+      ? [headerCell('결과'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률'),headerCell('조순위')].join('')
+      : [headerCell('조순위'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률')].join('');
+    const header = `<div class="kvl-shared-combined-line is-head" role="row">${rankHead}${countryHead}${trailingHead}</div>`;
     const body = rows.map(row => {
       const common = `<span class="kvl-shared-combined-rank">${esc(row.rank)}위</span>${flagCell(row)}<strong class="kvl-shared-combined-team">${esc(row.team)}</strong>`;
       const stats = `<span class="kvl-shared-combined-stat">${esc(row.wins)}승</span><span class="kvl-shared-combined-stat">${esc(row.points)}</span><span class="kvl-shared-combined-stat">${esc(row.setRatio)}</span><span class="kvl-shared-combined-stat">${esc(row.pointRatio)}</span>`;
@@ -28,5 +31,5 @@
     }).join('');
     root.innerHTML = `<div class="kvl-shared-combined-table ${complete ? 'is-complete' : 'is-live'}" role="table" aria-label="예선 종합순위" data-kvl-common-component="combined-ranking-v1" data-state="${complete ? 'complete' : 'live'}">${header}${body}</div>`;
   }
-  window.KVLMobileCombinedRanking = Object.freeze({version:'1.0.0', render});
+  window.KVLMobileCombinedRanking = Object.freeze({version:'1.0.1', render});
 })();
