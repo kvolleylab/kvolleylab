@@ -2,7 +2,7 @@
   const root=document.querySelector('[data-kvl-competition-v1]');
   if(!root)return;
 
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const src=root.dataset.competitionSrc||document.body.dataset.competitionSrc||'';
   const renderers=new Map();
   let config=null;
@@ -45,8 +45,10 @@
 
   function overview(cfg){
     const stats=Array.isArray(cfg.overviewStats)?cfg.overviewStats:[];
-    const place=[cfg.location?.country,cfg.location?.city,cfg.location?.venue].filter(Boolean).join(' ');
-    const venueKpi=place?`<div class="kvl-comp-venue-kpi" aria-label="대회 장소: ${esc(place)}"><span class="kvl-comp-kpi-label">장소</span><strong>${esc(place)}</strong></div>`:'';
+    const place=[cfg.location?.country,cfg.location?.city].filter(Boolean).join(' ');
+    const venue=cfg.location?.venue||'';
+    const aria=[place,venue].filter(Boolean).join(' ');
+    const venueKpi=(place||venue)?`<div class="kvl-comp-venue-kpi" aria-label="대회 장소: ${esc(aria)}"><span class="kvl-comp-kpi-label">장소</span>${place?`<strong>${esc(place)}</strong>`:''}${venue?`<small>${esc(venue)}</small>`:''}</div>`:'';
     const kpis=(stats.length||venueKpi)?`<div class="kvl-comp-kpis ${venueKpi?'has-venue':''}">${stats.map(s=>`<article class="kvl-comp-kpi"><span class="kvl-comp-kpi-label">${esc(s.label)}</span><div class="kvl-comp-kpi-value"><strong>${esc(s.value)}</strong><small>${esc(s.unit||'')}</small></div></article>`).join('')}${venueKpi}</div>`:'';
     return `${sectionHead(cfg,'overview')}${kpis}<div class="kvl-comp-slot" data-kvl-slot="overview-extra"></div>`;
   }
