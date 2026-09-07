@@ -47,7 +47,7 @@
   html body[data-avc-gender] .avc-status span{display:none!important}
   html body[data-avc-gender] .avc-status span:first-child{display:inline-flex!important;align-items:center!important;justify-content:center!important;padding:5px 8px!important;border-radius:999px!important;font-size:9px!important;font-weight:1000!important;line-height:1!important;white-space:nowrap!important}
   html body[data-avc-gender="men"] .avc-meta .kvl-hero-meta-line:last-child{padding-right:86px!important;box-sizing:border-box!important}
-  html body[data-avc-gender="women"] .avc-meta{padding-right:86px!important;box-sizing:border-box!important}
+  html body[data-avc-gender="women"] .avc-meta .kvl-hero-meta-line:last-child{padding-right:86px!important;box-sizing:border-box!important}
 
   /* Navigation: 3 + 3. */
   html body[data-avc-gender] .avc-jump,
@@ -107,7 +107,6 @@
   html body[data-avc-gender] #schedule .cd-match{display:grid!important;grid-template-columns:1fr!important;gap:7px!important;padding:12px 10px!important}
   html body[data-avc-gender] #schedule .cd-match-meta{display:contents!important}
   html body[data-avc-gender] #schedule .cd-match-meta time{order:1!important;text-align:center!important;font-size:13px!important;font-weight:900!important}
-  html body[data-avc-gender="men"] #schedule .cd-match-meta time::after{content:' KST · 일본 현지 동일(JST)'!important;color:#7d8998!important;font-size:10px!important;font-weight:800!important}
   html body[data-avc-gender] #schedule .cd-match-meta span{order:4!important;color:#7d8998!important;font-size:10px!important;font-weight:800!important;line-height:1.4!important;text-align:center!important}
   html body[data-avc-gender] #schedule .cd-match-board{order:2!important;width:100%!important;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr)!important;gap:8px!important;align-items:center!important}
   html body[data-avc-gender] #schedule .cd-set-scores{order:3!important;display:flex!important;justify-content:center!important;margin:0!important;overflow:visible!important;white-space:nowrap!important}
