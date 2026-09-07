@@ -2,7 +2,7 @@
   const root=document.querySelector('[data-kvl-competition-v1]');
   if(!root)return;
 
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const src=root.dataset.competitionSrc||document.body.dataset.competitionSrc||'';
   const renderers=new Map();
   let config=null;
