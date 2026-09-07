@@ -20,6 +20,6 @@ jobs:
           git rm .github/workflows/tmp-common-combined-ranking-v1.yml scripts/tmp-common-combined-ranking-v1.py
           git config user.name "kvolleylab"
           git config user.email "kvolleylab.team@gmail.com"
-          git add assets/js/kvl-mobile-combined-ranking-v1.js assets/css/kvl-mobile-competition-template-v3.css international-competition-avc-men-continental-2026.html international-competition-avc-women-continental-2026.html templates/competition-page-v1.html docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md .github/workflows/tmp-common-combined-ranking-v1.yml scripts/tmp-common-combined-ranking-v1.py
+          git add -A
           git commit -m "refactor: use one shared mobile combined ranking component"
           git push origin HEAD:tmp-common-combined-ranking-v1
