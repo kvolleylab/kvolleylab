@@ -122,7 +122,8 @@
     }
     @media(max-width:360px){.avc-hero h1{font-size:22px!important}}
   </style>
-  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-3">
+  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-4">
+  <script src="assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-1" defer></script>
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
 </head>
 <body data-avc-gender="men">
@@ -261,18 +262,21 @@ document.addEventListener('DOMContentLoaded',()=>{
     const rows=projection.combinedAll||[];
     const complete=projection.poolComplete;
     const opponentSeed=seed=>({1:8,8:1,4:5,5:4,2:7,7:2,3:6,6:3})[seed]||'';
-    const resultCell=r=>r.seed?`<span class="kvl-men-combined-result"><b>8강 진출</b><small>${r.seed}-${opponentSeed(r.seed)}</small></span>`:`<span class="kvl-men-combined-result is-out"><b>조별리그 탈락</b></span>`;
-    const head=complete
-      ? '<span>종합순위</span><span class="kvl-comp-flag-head">국기</span><span>국가</span><span>결과</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span><span>조순위</span>'
-      : '<span>종합순위</span><span class="kvl-comp-flag-head">국기</span><span>국가</span><span>조순위</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span>';
-    const body=rows.map(r=>{
-      const common=`<span class="kvl-men-combined-rank">${r.combinedRank}위</span><span class="kvl-comp-flag-cell">${standingFlag(r.team)}</span><strong class="kvl-men-combined-team">${esc(r.team)}</strong>`;
-      const stats=`<span class="kvl-men-combined-stat">${r.wins}승</span><span class="kvl-men-combined-stat">${r.matchPoints}</span><span class="kvl-men-combined-stat">${fmtRatio(r.setsFor,r.setsAgainst)}</span><span class="kvl-men-combined-stat">${r.pointMatches?fmtRatio(r.pointsFor,r.pointsAgainst):'-'}</span>`;
-      return complete
-        ? `<div class="kvl-men-combined-line ${r.team==='대한민국'?'is-korea':''}">${common}${resultCell(r)}${stats}<span class="kvl-men-combined-stat">${esc(r.pool)}조 ${r.poolPosition}위</span></div>`
-        : `<div class="kvl-men-combined-line ${r.team==='대한민국'?'is-korea':''}">${common}<span class="kvl-men-combined-stat">${esc(r.pool)}조 ${r.poolPosition}위</span>${stats}</div>`;
-    }).join('');
-    root.innerHTML=`<div class="kvl-men-combined-desktop">${desktop}</div><div class="kvl-men-combined-mobile"><div class="kvl-men-combined-table ${complete?'is-complete':'is-live'}"><div class="kvl-men-combined-line is-head">${head}</div>${body}</div></div>`;
+    const sharedRows=rows.map(r=>({
+      rank:r.combinedRank,
+      team:r.team,
+      flag:flagUrl(r.team),
+      poolRank:`${r.pool}조 ${r.poolPosition}위`,
+      wins:r.wins,
+      points:r.matchPoints,
+      setRatio:fmtRatio(r.setsFor,r.setsAgainst),
+      pointRatio:r.pointMatches?fmtRatio(r.pointsFor,r.pointsAgainst):'-',
+      isKorea:r.team==='대한민국',
+      result:complete?(r.seed?{label:'8강 진출',detail:`${r.seed}-${opponentSeed(r.seed)}`,out:false}:{label:'조별리그 탈락',detail:'',out:true}):null
+    }));
+    root.innerHTML=`<div class="kvl-men-combined-desktop">${desktop}</div><div class="kvl-shared-combined-mobile"></div>`;
+    const sharedRoot=root.querySelector('.kvl-shared-combined-mobile');
+    if(window.KVLMobileCombinedRanking)window.KVLMobileCombinedRanking.render(sharedRoot,{state:complete?'complete':'live',rows:sharedRows});
   }
 
   const bracketTeam=(m,key)=>{const p=participant(m,key);const icon=p.team?`<img src="${flagUrl(p.team)}" alt="${esc(p.team)} 국기" loading="lazy">`:`<span>${p.seed||'?'}</span>`;return `<div class="avc-bracket-team ${p.team?'':'is-tbd'}">${icon}<div class="avc-bracket-team-copy"><strong>${esc(p.main)}</strong>${p.sub?`<small>${esc(p.sub)}</small>`:''}</div></div>`};

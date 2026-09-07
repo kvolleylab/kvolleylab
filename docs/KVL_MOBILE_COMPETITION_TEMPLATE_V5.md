@@ -122,3 +122,12 @@ v5는 v4까지의 여자부 기준 공통 규격에 2026-09-08 모바일 검수 
 ## 버전 이력
 - v4 / 2026-09-07: 여자부 완성형 수치를 공통 컴포넌트 기준으로 승격.
 - **v5 / 2026-09-08:** Hero 상태뱃지 위치, 장소 한 줄 표기, 경기별 시간대 표기, 예선종합순위 국기/폰트 동일화, QF 예상대진 국기·국가·상태·시드 정렬 규칙을 추가.
+
+## Shared combined ranking component v1
+- Source: `assets/js/kvl-mobile-combined-ranking-v1.js`
+- Geometry: `assets/css/kvl-mobile-competition-template-v3.css` under `KVL SHARED COMBINED RANKING V1`.
+- AVC men/women must use this renderer for the mobile `예선 종합순위`; page-specific mobile renderers are not the source of truth.
+- Live state columns: `종합순위 | 국기 | 국가 | 조순위 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률`.
+- Complete state columns: `종합순위 | 국기 | 국가 | 결과 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률 | 조순위`.
+- The state changes the column set only. Font size, flag size, row height, widths, spacing, and alignment are shared and cannot vary by competition or gender.
+- 390px is the primary mobile verification width. A page is not complete until the rendered DOM contains `data-kvl-common-component="combined-ranking-v1"` and the `국기` header is visible as its own column.
