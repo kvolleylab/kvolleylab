@@ -37,6 +37,43 @@
   const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
   const params=new URLSearchParams(location.search);
 
+  if(path==='international-competition-avc-women-continental-2026.html'){
+    const ensureAvcWomenVenueKpi=()=>{
+      const kpis=document.querySelector('#overview .avc-kpis');
+      if(!kpis)return;
+      if(!document.getElementById('kvlAvcWomenVenueKpi')){
+        const card=document.createElement('div');
+        card.id='kvlAvcWomenVenueKpi';
+        card.className='kvl-avc-venue-kpi';
+        card.setAttribute('aria-label','대회 장소: 중국 톈진, 톈진 올림픽 센터 체육관');
+        card.innerHTML='<span>장소</span><strong>톈진</strong><small>올림픽 센터 체육관</small>';
+        kpis.appendChild(card);
+      }
+      if(!document.getElementById('kvlAvcWomenVenueKpiStyle')){
+        const style=document.createElement('style');
+        style.id='kvlAvcWomenVenueKpiStyle';
+        style.textContent=`
+          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi{box-sizing:border-box;padding:22px;border:1px solid var(--kvl-women-line,#EDBED0);border-radius:18px;background:var(--kvl-women-soft-2,#FFF8FB)}
+          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi span,body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{display:block;color:#748397}
+          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi strong{display:block;margin-top:10px;color:var(--kvl-women-dark,#A43F68);font-size:29px;line-height:1.2}
+          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{margin-top:3px;font-size:11px;font-weight:800;line-height:1.35;white-space:nowrap}
+          @media (min-width:901px){body[data-avc-gender="women"] #overview .avc-kpis{grid-template-columns:repeat(5,minmax(0,1fr))!important}}
+          @media (min-width:681px) and (max-width:900px){body[data-avc-gender="women"] #overview .avc-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi{grid-column:span 2}}
+          @media (max-width:680px){body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi{grid-column:1/-1;min-height:92px;padding:13px 12px;border-radius:14px}body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi strong{font-size:29px;line-height:1.1}body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{font-size:11px}}
+        `;
+        document.head.appendChild(style);
+      }
+    };
+    const watchAvcWomenVenueKpi=()=>{
+      const kpis=document.querySelector('#overview .avc-kpis');
+      if(!kpis)return;
+      ensureAvcWomenVenueKpi();
+      new MutationObserver(()=>ensureAvcWomenVenueKpi()).observe(kpis,{childList:true});
+    };
+    if(document.readyState==='loading')addEventListener('DOMContentLoaded',watchAvcWomenVenueKpi,{once:true});
+    else watchAvcWomenVenueKpi();
+  }
+
   const UNIVERSITY_COMPETITION_PATHS=new Set(['university-competition.html','university-competition-danyang.html']);
   if(UNIVERSITY_COMPETITION_PATHS.has(path)){
     const kuvlLogoPath='assets/images/universities/kuvf-logo.png';
