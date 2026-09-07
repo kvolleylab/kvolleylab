@@ -1,0 +1,38 @@
+name: tmp mobile template v4 apply
+on:
+  push:
+    paths:
+      - '.github/workflows/tmp-mobile-template-v4-apply.yml'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Point AVC pages to mobile template v3 CSS
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          paths = [
+              Path('international-competition-avc-women-continental-2026.html'),
+              Path('international-competition-avc-men-continental-2026.html'),
+          ]
+          old = 'assets/css/kvl-mobile-competition-template-v2.css?v=20260907-1'
+          new = 'assets/css/kvl-mobile-competition-template-v3.css?v=20260907-1'
+          for path in paths:
+              text = path.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'missing expected template link in {path}')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add international-competition-avc-women-continental-2026.html international-competition-avc-men-continental-2026.html
+          git diff --cached --quiet && exit 0
+          git commit -m 'style: apply women-calibrated mobile template to AVC pages'
+          git push origin HEAD:main
