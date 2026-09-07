@@ -27,7 +27,7 @@
 .avc-bracket-standard .avc-bracket-team:first-of-type{border-top:0!important}
 .avc-bracket-standard .avc-bracket-team img{display:block!important;width:28px!important;height:20px!important;border:0!important;border-radius:3px!important;object-fit:contain!important;background:#fff!important}
 .avc-bracket-standard .avc-bracket-team strong{min-width:0!important;overflow:hidden!important;color:#263b2e!important;font-size:13px!important;text-overflow:ellipsis!important;white-space:nowrap!important}
-.avc-bracket-standard .avc-bracket-team b{color:#9a6d12!important;font-size:15px!important;font-weight:900!important;text-align:right!important}
+.avc-bracket-standard .avc-bracket-team b{color:#4B5563!important;font-size:15px!important;font-weight:900!important;text-align:right!important}
 .avc-bracket-standard .avc-bracket-team.is-winner{background:#f3faf5!important}
 .avc-bracket-standard .avc-bracket-team.is-winner strong{color:var(--avc-primary,#166534)!important}
 .avc-bracket-standard .avc-bracket-team.is-tbd{grid-template-columns:30px minmax(0,1fr)!important}
