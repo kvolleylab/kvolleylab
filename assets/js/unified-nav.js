@@ -46,7 +46,7 @@
         card.id='kvlAvcWomenVenueKpi';
         card.className='kvl-avc-venue-kpi';
         card.setAttribute('aria-label','대회 장소: 중국 톈진 올림픽 센터 체육관');
-        card.innerHTML='<span>장소</span><strong>중국 톈진 올림픽 센터 체육관</strong>';
+        card.innerHTML='<span>장소</span><strong>중국 톈진</strong><small>올림픽 센터 체육관</small>';
         kpis.appendChild(card);
       }
       if(!document.getElementById('kvlAvcWomenVenueKpiStyle')){
@@ -54,12 +54,12 @@
         style.id='kvlAvcWomenVenueKpiStyle';
         style.textContent=`
           body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi{box-sizing:border-box;padding:22px;border:1px solid var(--kvl-women-line,#EDBED0);border-radius:18px;background:var(--kvl-women-soft-2,#FFF8FB)}
-          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi span,body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{display:block;color:#748397}
+          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi span,body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{display:block;color:#748397;font-size:inherit;font-weight:400;line-height:1.35}
           body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi strong{display:block;margin-top:10px;color:var(--kvl-women-dark,#A43F68);font-size:20px;line-height:1.35;word-break:keep-all}
-          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{margin-top:3px;font-size:11px;font-weight:800;line-height:1.35;white-space:nowrap}
+          body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{margin-top:3px;white-space:nowrap}
           @media (min-width:901px){body[data-avc-gender="women"] #overview .avc-kpis{grid-template-columns:repeat(5,minmax(0,1fr))!important}}
           @media (min-width:681px) and (max-width:900px){body[data-avc-gender="women"] #overview .avc-kpis{grid-template-columns:repeat(3,minmax(0,1fr))!important}body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi{grid-column:span 2}}
-          @media (max-width:680px){body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi{grid-column:1/-1;min-height:92px;padding:13px 12px;border-radius:14px}body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi strong{font-size:20px;line-height:1.2;letter-spacing:-.035em;white-space:nowrap}body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi small{font-size:11px}}
+          @media (max-width:680px){body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi{grid-column:1/-1;min-height:92px;padding:13px 12px;border-radius:14px}body[data-avc-gender="women"] #overview .avc-kpis .kvl-avc-venue-kpi strong{font-size:20px;line-height:1.2;letter-spacing:-.035em;white-space:nowrap}}
         `;
         document.head.appendChild(style);
       }
