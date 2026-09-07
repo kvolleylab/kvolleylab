@@ -1,0 +1,34 @@
+name: KVL temp AVC men setscore patch
+
+on:
+  push:
+    paths:
+      - '.github/workflows/kvl-temp-avc-men-setscore-patch.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.event.head_commit.message == 'chore: add temporary AVC men setscore patch workflow'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch set score labels
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('international-competition-avc-men-continental-2026.html')
+          text = path.read_text(encoding='utf-8')
+          old = "return Number.isFinite(a)&&Number.isFinite(b)?`<span>${i+1}세트 ${a}-${b}</span>`:''"
+          new = "return Number.isFinite(a)&&Number.isFinite(b)?`<span>${a}-${b}</span>`:''"
+          if old not in text:
+              raise SystemExit('target setScoreChips pattern not found')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+      - name: Commit patch
+        run: |
+          git config user.name 'kvolleylab'
+          git config user.email 'kvolleylab.team@gmail.com'
+          git add international-competition-avc-men-continental-2026.html
+          git commit -m 'ui: simplify AVC men set scores'
+          git push
