@@ -31,13 +31,31 @@
       body[data-avc-gender="women"] #sources .avc-source strong,body[data-avc-gender="women"] #sources .avc-source a{font-size:12px!important;line-height:1.2!important;white-space:nowrap!important}
       body[data-avc-gender="women"] #sources .avc-source a{flex:0 0 auto!important}
       body[data-avc-gender="women"] #schedule .cd-match-board{grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr)!important;gap:8px!important;align-items:center!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-left{grid-template-columns:32px minmax(0,1fr)!important;gap:4px!important;text-align:left!important}
+      body[data-avc-gender="women"] #schedule .cd-side.is-left{grid-template-columns:34px minmax(0,1fr)!important;gap:2px!important;text-align:left!important}
       body[data-avc-gender="women"] #schedule .cd-side.is-left .cd-inline-logo{grid-column:1!important;grid-row:1!important;justify-self:start!important}
       body[data-avc-gender="women"] #schedule .cd-side.is-left strong{grid-column:2!important;grid-row:1!important;justify-self:start!important;text-align:left!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-right{grid-template-columns:minmax(0,1fr) 32px!important;gap:4px!important;text-align:right!important}
+      body[data-avc-gender="women"] #schedule .cd-side.is-right{grid-template-columns:minmax(0,1fr) 34px!important;gap:2px!important;text-align:right!important}
       body[data-avc-gender="women"] #schedule .cd-side.is-right strong{grid-column:1!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
       body[data-avc-gender="women"] #schedule .cd-side.is-right .cd-inline-logo{grid-column:2!important;grid-row:1!important;justify-self:end!important}
-      body[data-avc-gender="women"] #schedule .cd-score{width:46px!important;justify-self:center!important;text-align:center!important;font-variant-numeric:tabular-nums!important}
+      body[data-avc-gender="women"] #schedule .cd-inline-logo{box-sizing:border-box!important;width:34px!important;height:24px!important;padding:0!important}
+      body[data-avc-gender="women"] #schedule .cd-side strong{overflow:visible!important;font-size:18px!important;line-height:1!important;letter-spacing:-.045em!important;text-overflow:clip!important;white-space:nowrap!important}
+      body[data-avc-gender="women"] #schedule .cd-score{width:46px!important;font-size:18px!important;line-height:1!important;justify-self:center!important;text-align:center!important;font-variant-numeric:tabular-nums!important}
+
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;column-gap:0!important;overflow:hidden!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head{grid-column:1/-1!important;padding:7px 9px!important;border-radius:11px 11px 0 0!important;font-size:9px!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head strong{font-size:10px!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team{grid-column:1!important;display:grid!important;grid-template-columns:32px minmax(0,1fr) 22px!important;gap:2px!important;min-height:44px!important;padding:7px 0 7px 7px!important;border-top:0!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team{grid-column:2!important;display:grid!important;grid-template-columns:22px minmax(0,1fr) 32px!important;gap:2px!important;min-height:44px!important;padding:7px 7px 7px 0!important;border-top:0!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-team img{width:32px!important;height:23px!important;margin:0!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team img{grid-column:1!important;grid-row:1!important;justify-self:start!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team strong{grid-column:2!important;grid-row:1!important;justify-self:start!important;text-align:left!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team b{grid-column:3!important;grid-row:1!important;text-align:right!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b{grid-column:1!important;grid-row:1!important;text-align:left!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b::before{content:'-';margin-right:1px}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team strong{grid-column:2!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team img{grid-column:3!important;grid-row:1!important;justify-self:end!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-team strong,html body[data-avc-gender="women"] #knockout .avc-bracket-team b{font-size:18px!important;line-height:1!important;white-space:nowrap!important}
+      html body[data-avc-gender="women"] #knockout .avc-bracket-team strong{overflow:visible!important;letter-spacing:-.045em!important;text-overflow:clip!important}
     }
   </style>
   <script src="assets/js/unified-nav.js?v=20260903-6" defer></script>
@@ -109,7 +127,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.avc-view').forEach(s=>s.classList.toggle('is-active',s.id===requested));
   document.querySelectorAll('.avc-jump a[data-view]').forEach(a=>a.classList.toggle('is-active',a.dataset.view===requested));
 
-  let scheduleStage='전체',schedulePool='전체',allMatches=[];
+  let scheduleStage='전체',schedulePool='전체',allMatches=[],competitionVenue='';
   const winner=m=>Number(m.setsA)>Number(m.setsB)?'A':'B';
   const resultLabel=m=>`${m.setsA}-${m.setsB}`;
   const flagMark=name=>`<span class="cd-inline-logo avc-schedule-flag"><img src="${flagUrl(name)}" alt="${esc(name)} 국기" loading="lazy"></span>`;
@@ -136,7 +154,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   const setChips=m=>`<div class="avc-set-scores">${(m.sets||[]).map(s=>`${s[0]}-${s[1]}`).join(', ')}</div>`;
-  const matchRow=m=>{const detail=`${m.stage}${m.stage==='조별리그'&&m.group?` · ${m.group}조`:''} · 중국 현지 ${m.localTime||''}`;return `<article class="cd-match"><div class="cd-match-meta"><time>${esc(m.time)} KST</time><span>${esc(detail)}</span></div><div class="cd-match-board">${side(m,'A','left')}<b class="cd-score">${esc(resultLabel(m))}</b>${side(m,'B','right')}</div><div class="cd-set-scores">${setChips(m)}</div></article>`};
+  const matchRow=m=>{const venue=competitionVenue?` · ${competitionVenue}`:'';const detail=`${m.stage}${m.stage==='조별리그'&&m.group?` · ${m.group}조`:''}${venue} · 중국 현지 ${m.localTime||''}`;return `<article class="cd-match"><div class="cd-match-meta"><time>${esc(m.time)} KST</time><span>${esc(detail)}</span></div><div class="cd-match-board">${side(m,'A','left')}<b class="cd-score">${esc(resultLabel(m))}</b>${side(m,'B','right')}</div><div class="cd-set-scores">${setChips(m)}</div></article>`};
   const filtered=()=>allMatches.filter(m=>(scheduleStage==='전체'||m.stage===scheduleStage)&&(scheduleStage!=='조별리그'||schedulePool==='전체'||m.group===schedulePool));
   function renderSchedule(){
     const list=filtered(),root=document.getElementById('scheduleRoot');document.getElementById('scheduleSummary').textContent=`${list.length}경기 · ${scheduleStage==='전체'?'전체 단계':scheduleStage}${scheduleStage==='조별리그'&&schedulePool!=='전체'?` · ${schedulePool}조`:''} · 한국시간(KST)`;
@@ -154,7 +172,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   function renderTeams(data){document.getElementById('teamRoot').innerHTML=data.groups.flatMap(g=>g.teams.map(team=>`<article class="avc-country-card">${standingFlag(team)}<div class="avc-country-copy"><strong>${esc(team)}</strong><small>${esc(teamInfo[team]?.en||'')}</small></div><span class="avc-country-pool">${g.id}조</span></article>`)).join('')}
   function renderSources(data){document.getElementById('sourceRoot').innerHTML=data.sources.map(s=>`<div class="avc-source"><strong>${esc(s.label)}</strong><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">공식 페이지 ↗</a></div>`).join('')}
 
-  fetch('data/competitions/avc-women-continental-2026.json?v=20260905-2',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(data=>{allMatches=data.matches||[];renderCalendar(allMatches);renderFilters();renderSchedule();renderGroups(data);renderPodium(data);renderKnockout(allMatches);renderTeams(data);renderSources(data);enhanceKpis();syncView()}).catch(()=>{['calendarRoot','scheduleRoot','groupRoot','combinedRankingRoot','podiumRoot','knockoutRoot','teamRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
+  fetch('data/competitions/avc-women-continental-2026.json?v=20260907-1',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(data=>{competitionVenue=data.venueKo||data.venue||'';allMatches=data.matches||[];renderCalendar(allMatches);renderFilters();renderSchedule();renderGroups(data);renderPodium(data);renderKnockout(allMatches);renderTeams(data);renderSources(data);enhanceKpis();syncView()}).catch(()=>{['calendarRoot','scheduleRoot','groupRoot','combinedRankingRoot','podiumRoot','knockoutRoot','teamRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
 });
 </script>
 </body>
