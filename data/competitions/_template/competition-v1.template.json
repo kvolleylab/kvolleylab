@@ -31,7 +31,6 @@
     "groups": "조별순위",
     "finalRanking": "최종순위",
     "participants": "참가국",
-    "rosters": "선수명단",
     "resources": "공식자료"
   },
   "features": {
@@ -40,7 +39,7 @@
     "groups": true,
     "finalRanking": true,
     "participants": true,
-    "rosters": true,
+    "participantRosters": true,
     "resources": true,
     "knockoutInsideFinalRanking": true
   },
@@ -55,8 +54,7 @@
     "schedule": "모든 시간은 K-Volley Lab 표시 기준으로 제공합니다.",
     "groups": "공식 대회 규정에 따라 순위를 표시합니다.",
     "finalRanking": "최종순위와 결선 토너먼트를 함께 확인합니다.",
-    "participants": "참가팀 정보를 확인합니다.",
-    "rosters": "공식 엔트리와 선수 프로필을 확인합니다.",
+    "participants": "참가국을 누르면 국가별 등록 선수명단을 확인합니다.",
     "resources": "공식 자료와 원문 출처를 확인합니다."
   },
   "data": {
@@ -64,7 +62,11 @@
     "groups": "data/competitions/example-groups.json",
     "finalRanking": "data/competitions/example-final-ranking.json",
     "participants": "data/competitions/example-participants.json",
-    "rosters": "data/competitions/example-rosters.json",
+    "rosters": [
+      "data/competitions/example-rosters-a.json",
+      "data/competitions/example-rosters-b.json",
+      "data/competitions/example-rosters-c.json"
+    ],
     "resources": "data/competitions/example-resources.json"
   },
   "specialFeatures": []
