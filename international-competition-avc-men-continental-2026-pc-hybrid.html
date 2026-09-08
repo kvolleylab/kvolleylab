@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>AVC 남자 대륙선수권 2026 · PC Hybrid Prototype | K-Volley Lab</title>
-  <meta name="description" content="K-Volley Lab AVC 남자 대륙선수권 2026 PC 와이드 하이브리드 기준본">
+  <meta name="description" content="K-Volley Lab AVC 남자 대륙선수권 2026 PC 1180px 연결형 하이브리드 기준본">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
   <link rel="stylesheet" href="assets/css/competition-dashboard-v1.css?v=20260901-3">
-  <link rel="stylesheet" href="assets/css/kvl-pc-overview-hybrid-prototype-v1.css?v=20260908-1">
+  <link rel="stylesheet" href="assets/css/kvl-pc-overview-hybrid-prototype-v1.css?v=20260908-2">
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
 </head>
 <body class="kvl-pc-hybrid-prototype" data-avc-gender="men">
@@ -40,7 +40,7 @@
   <section class="kvl-hybrid-section" aria-labelledby="hybridOverviewTitle">
     <div class="kvl-hybrid-section-head">
       <div><p class="eyebrow">TOURNAMENT SNAPSHOT</p><h2 id="hybridOverviewTitle">대회 한눈에 보기</h2></div>
-      <p>기존 KVL 정보 구조는 유지하고, PC에서는 콘텐츠 폭을 넓게 사용하는 기준본입니다.</p>
+      <p>기존 KVL 1180px 정보 폭은 유지하고, PC 상단만 연결형 대회 헤더로 사용하는 기준본입니다.</p>
     </div>
 
     <div class="kvl-hybrid-kpis">
@@ -101,7 +101,6 @@
 (function(){
   'use strict';
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const weekday=date=>['일','월','화','수','목','금','토'][new Date(`${date}T00:00:00+09:00`).getDay()];
   function renderCalendar(matches){
     const root=document.getElementById('calendarRoot');if(!root)return;
     const byDate=(matches||[]).reduce((map,m)=>{(map[m.date]??=[]).push(m);return map},{}),year=2026,month=9,first=new Date(year,month-1,1),last=new Date(year,month,0),cells=[];
@@ -113,7 +112,7 @@
     while(cells.length%7)cells.push('<div class="cd-cal-cell is-empty"></div>');
     root.innerHTML=`<section class="cd-cal-month"><div class="cd-cal-title">2026년 9월</div><div class="cd-cal-week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div class="cd-cal-grid">${cells.join('')}</div></section>`;
   }
-  fetch('data/competitions/avc-men-continental-2026.json?v=20260908-pc1',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
+  fetch('data/competitions/avc-men-continental-2026.json?v=20260908-pc2',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
     document.getElementById('teamCount').textContent=data.teamCount||12;
     document.getElementById('groupCount').textContent=data.groupCount||3;
     document.getElementById('matchCount').textContent=data.matchCount||26;
