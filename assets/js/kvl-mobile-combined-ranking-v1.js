@@ -41,5 +41,15 @@
     }).join('');
     root.innerHTML = `<div class="kvl-shared-combined-table ${complete ? 'is-complete' : 'is-live'}" role="table" aria-label="예선 종합순위" data-kvl-common-component="combined-ranking-v1" data-state="${complete ? 'complete' : 'live'}">${header}${body}</div>`;
   }
-  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.1', render});
+  const loadRosterComponent = () => {
+    if (!document.getElementById('teamRoot') || document.getElementById('kvl-competition-roster-v1-js')) return;
+    const script = document.createElement('script');
+    script.id = 'kvl-competition-roster-v1-js';
+    script.src = 'assets/js/kvl-competition-roster-v1.js?v=20260908-1';
+    script.defer = true;
+    document.head.appendChild(script);
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadRosterComponent, {once:true});
+  else loadRosterComponent();
+  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.2', render});
 })();
