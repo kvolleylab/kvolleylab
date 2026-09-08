@@ -1,4 +1,26 @@
 /* K-Volley Lab mobile competition roster v1 */
+.kvl-roster-vb{
+  box-sizing:border-box;
+  display:inline-flex;
+  min-height:30px;
+  align-items:center;
+  justify-content:center;
+  padding:5px 8px;
+  border:1px solid var(--avc-line,var(--kvl-comp-line,#d7e4dc));
+  border-radius:8px;
+  background:#fff;
+  color:var(--avc-primary,var(--kvl-comp-primary,#245b38));
+  font-size:10px;
+  font-weight:950;
+  line-height:1;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.kvl-roster-vb:hover{background:var(--avc-soft,var(--kvl-comp-soft,#f3faf5))}
+.kvl-roster-vb:focus-visible{outline:2px solid var(--avc-primary,var(--kvl-comp-primary,#245b38));outline-offset:2px}
+.kvl-roster-vb.is-empty{border:0;background:transparent;pointer-events:none}
+.kvl-roster-vb-short,.kvl-roster-vb-head-short{display:none}
+
 @media(max-width:680px){
   #teams .avc-section-head{margin-bottom:14px!important}
   #teams .avc-participant-grid,
@@ -9,8 +31,16 @@
   .kvl-roster-team-copy{min-width:0}.kvl-roster-team-copy strong{display:block;overflow:hidden;color:#263b2e;font-size:14px;font-weight:950;text-overflow:ellipsis;white-space:nowrap}.kvl-roster-team-copy small{display:block;margin-top:2px;color:#7b8b80;font-size:10px;font-weight:800;white-space:nowrap}
   .kvl-roster-team-meta{color:#55705f;font-size:10px;font-weight:900;text-align:right;white-space:nowrap}.kvl-roster-chevron{color:#6b7f72;font-size:16px;font-weight:900;transition:transform .18s ease}.kvl-roster-team-card.is-open .kvl-roster-chevron{transform:rotate(180deg)}
   .kvl-roster-panel{display:none;border-top:1px solid #e8efea;background:#fbfdfb}.kvl-roster-team-card.is-open .kvl-roster-panel{display:block}
-  .kvl-roster-head,.kvl-roster-row{display:grid;grid-template-columns:30px minmax(0,1fr) 34px 44px;align-items:center;gap:7px;padding:8px 10px;box-sizing:border-box}.kvl-roster-head{min-height:34px;background:var(--avc-soft,var(--kvl-comp-soft,#edf8f0));color:#536b5d;font-size:9px;font-weight:1000;text-align:center}.kvl-roster-row{min-height:52px;border-top:1px solid #edf2ee;background:#fff}
+  .kvl-roster-head,.kvl-roster-row{display:grid;grid-template-columns:30px minmax(0,1fr) 34px 44px 40px;align-items:center;gap:6px;padding:8px 9px;box-sizing:border-box}.kvl-roster-head{min-height:34px;background:var(--avc-soft,var(--kvl-comp-soft,#edf8f0));color:#536b5d;font-size:9px;font-weight:1000;text-align:center}.kvl-roster-row{min-height:52px;border-top:1px solid #edf2ee;background:#fff}
   .kvl-roster-no{color:var(--avc-primary,var(--kvl-comp-primary,#2d6d43));font-size:11px;font-weight:1000;text-align:center}.kvl-roster-player{min-width:0}.kvl-roster-player strong{display:block;overflow:hidden;color:#263b2e;font-size:11px;font-weight:950;line-height:1.25;text-overflow:ellipsis;white-space:nowrap}.kvl-roster-player small{display:block;overflow:hidden;margin-top:3px;color:#78877d;font-size:9px;font-weight:800;line-height:1.25;text-overflow:ellipsis;white-space:nowrap}.kvl-roster-pos,.kvl-roster-height{color:#51675a;font-size:10px;font-weight:900;text-align:center;white-space:nowrap}
+  .kvl-roster-vb{width:40px;min-height:34px;padding:0 3px;border-radius:8px;font-size:9px;letter-spacing:-.02em}
+  .kvl-roster-vb-full,.kvl-roster-vb-head-full{display:none}
+  .kvl-roster-vb-short,.kvl-roster-vb-head-short{display:inline}
+  .kvl-roster-vb-head{min-width:0;text-align:center;white-space:nowrap}
   .kvl-roster-source-note{padding:10px 11px;border-top:1px solid #e8efea;background:#f7faf8;color:#718077;font-size:9px;font-weight:800;line-height:1.5}
   .kvl-roster-shortcut{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin-top:14px;padding:13px 14px;border:1px solid var(--avc-line,var(--kvl-comp-line,#d5e7dc));border-radius:14px;background:var(--avc-soft,var(--kvl-comp-soft,#f3faf5));color:var(--avc-primary,var(--kvl-comp-primary,#245b38));text-decoration:none}.kvl-roster-shortcut-copy{display:block;min-width:0}.kvl-roster-shortcut strong{display:block;color:var(--avc-primary,var(--kvl-comp-primary,#245b38));font-size:12px;font-weight:950}.kvl-roster-shortcut span span{display:block;margin-top:2px;color:#647b6a;font-size:10px;font-weight:850}.kvl-roster-shortcut b{font-size:14px}
+}
+@media(max-width:360px){
+  .kvl-roster-head,.kvl-roster-row{grid-template-columns:28px minmax(0,1fr) 32px 42px 38px;gap:5px;padding-left:8px;padding-right:8px}
+  .kvl-roster-vb{width:38px}
 }
