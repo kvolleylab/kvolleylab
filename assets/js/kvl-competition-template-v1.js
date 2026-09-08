@@ -8,9 +8,9 @@
   let config=null;
 
   const defaultLabels={
-    overview:'한눈에 보기',schedule:'경기일정',groups:'조별순위',finalRanking:'최종순위',participants:'참가팀',rosters:'선수명단',resources:'공식자료'
+    overview:'한눈에 보기',schedule:'경기일정',groups:'조별순위',finalRanking:'최종순위',participants:'참가팀',resources:'공식자료'
   };
-  const sectionOrder=['overview','schedule','groups','finalRanking','participants','rosters','resources'];
+  const sectionOrder=['overview','schedule','groups','finalRanking','participants','resources'];
 
   const enabledSections=cfg=>sectionOrder.filter(key=>cfg.features?.[key]!==false);
   const participantLabel=cfg=>cfg.labels?.participants||({international:'참가국',university:'참가대학',school:'참가학교'}[cfg.competitionType]||'참가팀');
