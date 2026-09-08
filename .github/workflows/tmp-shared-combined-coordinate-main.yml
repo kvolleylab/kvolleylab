@@ -1,0 +1,142 @@
+name: Patch shared combined ranking coordinate identity main
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  patch:
+    if: startsWith(github.event.head_commit.message, 'chore: prepare shared combined coordinate fix')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Patch shared identity block and cache refs
+        run: |
+          git pull --ff-only origin main
+          python - <<'PY'
+          from pathlib import Path
+
+          js = Path('assets/js/kvl-mobile-combined-ranking-v1.js')
+          s = js.read_text(encoding='utf-8')
+          old = """    const rankHead = headerCell('종합순위');\n    const countryHead = '<span role=\"columnheader\" class=\"kvl-shared-combined-country-head\" style=\"grid-column:2 / span 2\" aria-label=\"국기 및 국가\">국가</span>';\n    const trailingHead = complete\n      ? [headerCell('결과'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률'),headerCell('조순위')].join('')\n      : [headerCell('조순위'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률')].join('');\n    const header = `<div class=\"kvl-shared-combined-line is-head\" role=\"row\">${rankHead}${countryHead}${trailingHead}</div>`;\n"""
+          new = """    const identityHead = '<span class=\"kvl-shared-combined-identity is-head-identity\" role=\"presentation\"><span role=\"columnheader\" class=\"kvl-shared-combined-rank-head\">종합순위</span><span role=\"columnheader\" class=\"kvl-shared-combined-country-head\" aria-label=\"국기 및 국가\">국가</span></span>';\n    const trailingHead = complete\n      ? [headerCell('결과'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률'),headerCell('조순위')].join('')\n      : [headerCell('조순위'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률')].join('');\n    const header = `<div class=\"kvl-shared-combined-line is-head\" role=\"row\">${identityHead}${trailingHead}</div>`;\n"""
+          if old not in s:
+              raise SystemExit('shared renderer header anchor missing')
+          s = s.replace(old, new)
+          old2 = """      const common = `<span class=\"kvl-shared-combined-rank\">${esc(row.rank)}위</span>${flagCell(row)}<strong class=\"kvl-shared-combined-team\">${esc(row.team)}</strong>`;\n"""
+          new2 = """      const common = `<span class=\"kvl-shared-combined-identity\"><span class=\"kvl-shared-combined-rank\">${esc(row.rank)}위</span>${flagCell(row)}<strong class=\"kvl-shared-combined-team\">${esc(row.team)}</strong></span>`;\n"""
+          if old2 not in s:
+              raise SystemExit('shared renderer body anchor missing')
+          s = s.replace(old2, new2)
+          s = s.replace("version:'1.0.1'", "version:'1.1.0'")
+          js.write_text(s, encoding='utf-8')
+
+          css = Path('assets/css/kvl-mobile-competition-template-v3.css')
+          c = css.read_text(encoding='utf-8')
+          marker = '/* KVL SHARED COMBINED RANKING V1.2 FIXED IDENTITY BLOCK */'
+          block = r'''
+
+/* KVL SHARED COMBINED RANKING V1.2 FIXED IDENTITY BLOCK */
+@media (max-width:680px){
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-live .kvl-shared-combined-line{
+    grid-template-columns:194px 110px 76px 54px 96px 96px!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-complete .kvl-shared-combined-line{
+    grid-template-columns:194px 130px 76px 54px 96px 96px 76px!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity{
+    display:grid!important;
+    grid-template-columns:44px 28px 110px!important;
+    gap:6px!important;
+    width:194px!important;
+    min-width:194px!important;
+    align-items:center!important;
+    justify-content:start!important;
+    justify-self:start!important;
+    box-sizing:border-box!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-line.is-head>.kvl-shared-combined-identity{
+    display:grid!important;
+    grid-template-columns:44px 28px 110px!important;
+    gap:6px!important;
+    width:194px!important;
+    min-width:194px!important;
+    align-items:center!important;
+    justify-content:start!important;
+    justify-self:start!important;
+    text-align:initial!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-rank-head{
+    grid-column:1!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:44px!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-country-head{
+    grid-column:2 / span 2!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    justify-self:stretch!important;
+    width:auto!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-rank{
+    grid-column:1!important;
+    width:44px!important;
+    justify-self:center!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-flag{
+    grid-column:2!important;
+    width:28px!important;
+    justify-self:center!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-team{
+    grid-column:3!important;
+    width:110px!important;
+    justify-self:start!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+  }
+}
+'''
+          if marker not in c:
+              css.write_text(c.rstrip() + block + '\n', encoding='utf-8')
+
+          docs = Path('docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md')
+          d = docs.read_text(encoding='utf-8')
+          anchor = '- 헤더의 `국가`는 국기+국가명 두 열 전체 중앙에 배치하며 `국기`라는 별도 헤더 문구는 표시하지 않는다.'
+          extra = anchor + '''\n- `종합순위 + 국기 + 국가명`은 외부 상태별 grid에 따로 흩어놓지 않고 **고정 194px identity block**으로 렌더링한다. 내부 규격은 `44px / 28px / 110px`, gap `6px`이다.\n- 진행 중/종료 상태는 identity block **뒤쪽 열만 변경**하며, identity block 자체의 x좌표·폭·정렬은 절대 변경하지 않는다.'''
+          if '고정 194px identity block' not in d:
+              if anchor not in d:
+                  raise SystemExit('docs identity anchor missing')
+              d = d.replace(anchor, extra)
+          if 'v5 보완2 / 2026-09-08' not in d:
+              d = d.replace('- v5 보완 / 2026-09-08: 예선 종합순위 헤더에서 `국기` 라벨을 제거하고 `국가` 헤더를 국기+국가명 두 열의 중앙에 배치하도록 공통 규칙 확정.', '- v5 보완 / 2026-09-08: 예선 종합순위 헤더에서 `국기` 라벨을 제거하고 `국가` 헤더를 국기+국가명 두 열의 중앙에 배치하도록 공통 규칙 확정.\n- v5 보완2 / 2026-09-08: `종합순위+국기+국가명`을 194px 고정 identity block으로 묶어 진행 상태와 무관하게 실제 좌표까지 동일하도록 강화.')
+          docs.write_text(d, encoding='utf-8')
+
+          files = [
+              Path('international-competition-avc-men-continental-2026.html'),
+              Path('international-competition-avc-women-continental-2026.html'),
+              Path('templates/competition-page-v1.html'),
+          ]
+          for p in files:
+              t = p.read_text(encoding='utf-8')
+              t2 = t.replace('assets/css/kvl-mobile-competition-template-v3.css?v=20260908-6','assets/css/kvl-mobile-competition-template-v3.css?v=20260908-7')
+              t2 = t2.replace('assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-2','assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-3')
+              if t2 == t:
+                  raise SystemExit(f'cache refs not changed in {p}')
+              p.write_text(t2, encoding='utf-8')
+          PY
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add assets/js/kvl-mobile-combined-ranking-v1.js assets/css/kvl-mobile-competition-template-v3.css docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md international-competition-avc-men-continental-2026.html international-competition-avc-women-continental-2026.html templates/competition-page-v1.html
+          git commit -m "fix: lock combined ranking identity coordinates"
+          git push origin HEAD:main
