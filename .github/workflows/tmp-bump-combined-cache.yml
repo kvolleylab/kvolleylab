@@ -1,0 +1,40 @@
+name: Bump combined ranking cache
+on:
+  push:
+    branches: [fix-combined-cache-20260908]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix-combined-cache-20260908
+      - name: Bump shared renderer cache key
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files = [
+              Path('international-competition-avc-men-continental-2026.html'),
+              Path('international-competition-avc-women-continental-2026.html'),
+              Path('templates/competition-page-v1.html'),
+          ]
+          old = 'assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-2'
+          new = 'assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-3'
+          changed = False
+          for p in files:
+              s = p.read_text(encoding='utf-8')
+              if old in s:
+                  p.write_text(s.replace(old, new), encoding='utf-8')
+                  changed = True
+              elif new not in s:
+                  raise SystemExit(f'missing renderer ref: {p}')
+          print('changed=', changed)
+          PY
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add international-competition-avc-men-continental-2026.html international-competition-avc-women-continental-2026.html templates/competition-page-v1.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "fix: refresh shared combined ranking renderer"
+          git push origin HEAD:fix-combined-cache-20260908
