@@ -25,12 +25,23 @@
 - 생년월일
 - 포지션
 - 키
+- 외부 선수 프로필 액션(연결된 경우)
+
+외부 프로필 액션은 다음 규칙을 사용한다.
+- PC: `Volleybox ↗`
+- 모바일 390px 기준: `VB↗`
+- 모바일은 키 오른쪽 마지막 고정 폭 액션 칸에 표시한다.
+- 새 탭으로 열고 `rel="noopener noreferrer"`를 사용한다.
+- 실제 Volleybox 프로필 URL이 확인된 선수만 활성화한다.
+- 링크가 미확인인 선수는 검색 URL이나 추정 URL을 만들지 않는다.
+- 외부 링크는 Volleybox 도메인만 허용하도록 런타임에서 검증한다.
 
 연봉, 연봉 신뢰도, 내부 관찰메모, 스카우팅 코멘트, 검수 메모 등 비공개 운영정보는 노출하지 않는다.
 
 ## Source of Truth
 - 원장 데이터는 대회별 Google Drive 선수명단 MASTER를 우선한다.
 - 홈페이지용 roster JSON에는 공개에 필요한 기본 필드만 복제한다.
+- Volleybox 연결도 MASTER에 저장된 실제 프로필 URL을 우선한다.
 - 공통 UI: `assets/js/kvl-competition-roster-v1.js`
 - 공통 CSS: `assets/css/kvl-competition-roster-v1.css`
 - 대회별 데이터는 `data/competitions/` 아래에 둔다.
@@ -42,6 +53,7 @@
 - `features.participants=true`
 - `features.participantRosters=true`
 - `data.rosters`에 roster JSON 경로를 문자열 1개 또는 배열로 지정한다.
+- 외부 프로필 링크를 roster 본문과 분리해 관리할 때는 `data.rosterLinks`에 링크 맵 JSON을 지정할 수 있다.
 
 예시:
 ```json
@@ -54,7 +66,8 @@
     "data/competitions/example-rosters-a.json",
     "data/competitions/example-rosters-b.json",
     "data/competitions/example-rosters-c.json"
-  ]
+  ],
+  "rosterLinks": "data/competitions/example-roster-links.json"
 }
 ```
 
@@ -65,6 +78,9 @@
 - `name`, `en`, `code`, `group`, `status`, `count`
 - `players[]`
 - 선수 기본 필드: `number`, `officialName`, `fullName`, `koreanName`, `position`, `birthDate`, `heightCm`
+- 필요하면 선수 객체에 `volleyboxUrl`을 직접 둘 수도 있다.
+
+별도 `rosterLinks` 파일을 사용할 때는 국가/팀 `code`와 등번호를 키로 실제 프로필 URL을 연결한다. 선수 객체의 `volleyboxUrl`이 있으면 그 값을 우선한다.
 
 선수는 화면에서 등번호 오름차순으로 자동 정렬한다.
 
