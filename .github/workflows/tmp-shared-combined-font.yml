@@ -1,0 +1,119 @@
+name: Sync shared combined ranking fonts
+on:
+  push:
+    branches: [fix-shared-combined-font-20260908]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix-shared-combined-font-20260908
+      - name: Promote women font sizing to shared component
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_required(text, old, new, label):
+              if old not in text:
+                  if new in text:
+                      return text
+                  raise SystemExit(f'missing expected text for {label}')
+              return text.replace(old, new, 1)
+
+          css_path = Path('assets/css/kvl-mobile-competition-template-v3.css')
+          css = css_path.read_text(encoding='utf-8')
+          replacements = [
+              (
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-line.is-head{min-height:42px!important;background:var(--avc-soft)!important;color:var(--avc-dark)!important;font-size:10px!important;font-weight:1000!important}',
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-line.is-head{min-height:42px!important;background:var(--avc-soft)!important;color:var(--avc-dark)!important;font-size:11px!important;font-weight:1000!important}',
+                  'shared header font'
+              ),
+              (
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-rank{display:flex!important;align-items:center!important;justify-content:center!important;color:var(--avc-primary)!important;font-size:13px!important;',
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-rank{display:flex!important;align-items:center!important;justify-content:center!important;color:var(--avc-primary)!important;font-size:14px!important;',
+                  'shared rank font'
+              ),
+              (
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-team{display:flex!important;align-items:center!important;justify-content:center!important;color:var(--avc-dark)!important;font-size:13px!important;',
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-team{display:flex!important;align-items:center!important;justify-content:center!important;color:var(--avc-dark)!important;font-size:14px!important;',
+                  'shared team font'
+              ),
+              (
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-stat{display:flex!important;align-items:center!important;justify-content:center!important;color:#708078!important;font-size:11px!important;',
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-stat{display:flex!important;align-items:center!important;justify-content:center!important;color:#708078!important;font-size:12px!important;',
+                  'shared stat font'
+              ),
+              (
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-result b{display:inline-flex!important;width:62px!important;min-width:62px!important;min-height:26px!important;align-items:center!important;justify-content:center!important;padding:4px 5px!important;border:1px solid var(--avc-line)!important;border-radius:999px!important;background:var(--avc-soft)!important;color:var(--avc-dark)!important;font-size:10px!important;',
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-result b{display:inline-flex!important;width:62px!important;min-width:62px!important;min-height:26px!important;align-items:center!important;justify-content:center!important;padding:4px 5px!important;border:1px solid var(--avc-line)!important;border-radius:999px!important;background:var(--avc-soft)!important;color:var(--avc-dark)!important;font-size:11px!important;',
+                  'shared result badge font'
+              ),
+              (
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-result.is-out b{border-color:#e5e7eb!important;background:#f3f4f6!important;color:#6b7280!important;font-size:8px!important}',
+                  'html body[data-avc-gender] #groups .kvl-shared-combined-result.is-out b{border-color:#e5e7eb!important;background:#f3f4f6!important;color:#6b7280!important;font-size:11px!important}',
+                  'shared elimination badge font'
+              ),
+          ]
+          for old, new, label in replacements:
+              css = replace_required(css, old, new, label)
+          css_path.write_text(css, encoding='utf-8')
+
+          women_path = Path('international-competition-avc-women-continental-2026.html')
+          women = women_path.read_text(encoding='utf-8')
+          women_override = '''  <style>\n    @media (max-width:680px){\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-line.is-head{font-size:11px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-rank{font-size:14px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-team{font-size:14px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-stat{font-size:12px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-result,\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-result b,\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-result small{font-size:11px!important}\n    }\n  </style>\n'''
+          if women_override in women:
+              women = women.replace(women_override, '', 1)
+          elif 'data-avc-gender="women"] #groups .kvl-shared-combined-rank{font-size:14px!important}' in women:
+              raise SystemExit('women font override exists but exact block changed')
+          women_path.write_text(women, encoding='utf-8')
+
+          html_files = [
+              Path('international-competition-avc-men-continental-2026.html'),
+              Path('international-competition-avc-women-continental-2026.html'),
+              Path('templates/competition-page-v1.html'),
+          ]
+          old_css_ref = 'assets/css/kvl-mobile-competition-template-v3.css?v=20260908-6'
+          new_css_ref = 'assets/css/kvl-mobile-competition-template-v3.css?v=20260908-7'
+          for p in html_files:
+              s = p.read_text(encoding='utf-8')
+              if old_css_ref in s:
+                  s = s.replace(old_css_ref, new_css_ref, 1)
+              elif new_css_ref not in s:
+                  raise SystemExit(f'missing mobile v3 stylesheet ref: {p}')
+              p.write_text(s, encoding='utf-8')
+
+          doc_path = Path('docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md')
+          doc = doc_path.read_text(encoding='utf-8')
+          doc = replace_required(
+              doc,
+              '- 제목 `16px`, 상태설명 `9px`, 헤더 `10px`.',
+              '- 제목 `16px`, 상태설명 `9px`, 헤더 `11px`.',
+              'template combined header spec'
+          )
+          doc = replace_required(
+              doc,
+              '- 종합순위 `13px`, 국가명 `13px`, 세부통계 `11px`, 국기 `28×19px`.',
+              '- 종합순위 `14px`, 국가명 `14px`, 세부통계 `12px`, 결과표시 `11px`, 국기 `28×19px`.',
+              'template combined body font spec'
+          )
+          history_line = '- v5 보완3 / 2026-09-08: 여자부에서 확정한 예선 종합순위 가독성 보정값을 공통 컴포넌트로 승격하여 남녀 모두 헤더 11px, 순위·국가명 14px, 세부통계 12px, 결과표시 11px을 사용.\n'
+          marker = '## Shared combined ranking component v1\n'
+          if history_line not in doc:
+              if marker not in doc:
+                  raise SystemExit('version history insertion marker missing')
+              doc = doc.replace(marker, history_line + '\n' + marker, 1)
+          doc_path.write_text(doc, encoding='utf-8')
+          PY
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add assets/css/kvl-mobile-competition-template-v3.css \
+                  international-competition-avc-men-continental-2026.html \
+                  international-competition-avc-women-continental-2026.html \
+                  templates/competition-page-v1.html \
+                  docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "fix: unify combined ranking font sizing"
+          git push origin HEAD:fix-shared-combined-font-20260908
