@@ -8,11 +8,22 @@
   <meta name="description" content="K-Volley Lab AVC 남자 대륙선수권 2026 PC 1180px 하이브리드 브라우저 프로토타입">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
-  <link rel="stylesheet" href="assets/css/kvl-pc-avc-hybrid-1180-prototype-v1.css?v=20260908-1">
+  <link rel="stylesheet" href="assets/css/kvl-pc-avc-hybrid-1180-prototype-v1.css?v=20260908-2">
   <script src="assets/js/unified-nav.js?v=20260802-3" defer></script>
 </head>
 <body class="kvl1180-prototype" data-avc-gender="men">
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+
+<svg class="kvl1180-sprite" aria-hidden="true" focusable="false">
+  <symbol id="kvl-icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+  <symbol id="kvl-icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="kvl-icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3.5 19c.6-4 2.7-6 5.5-6s5 2 5.5 6M14 14c3.5-.2 5.5 1.5 6.2 4.5"/></symbol>
+  <symbol id="kvl-icon-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></symbol>
+  <symbol id="kvl-icon-trophy" viewBox="0 0 24 24"><path d="M8 4h8v4c0 4-1.8 7-4 7s-4-3-4-7V4Z"/><path d="M8 6H4v2c0 2.5 1.5 4 4.5 4M16 6h4v2c0 2.5-1.5 4-4.5 4M12 15v4M8 21h8M9 19h6"/></symbol>
+  <symbol id="kvl-icon-bars" viewBox="0 0 24 24"><path d="M5 20V12M10 20V7M15 20V10M20 20V4"/></symbol>
+  <symbol id="kvl-icon-medal" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="m9 14-2 7 5-3 5 3-2-7"/></symbol>
+  <symbol id="kvl-icon-world" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.5 5.5 3.5 9S14.4 18.5 12 21M12 3c-2.4 2.5-3.5 5.5-3.5 9S9.6 18.5 12 21"/></symbol>
+</svg>
 
 <main class="kvl1180-main">
   <section class="kvl1180-hero" aria-labelledby="pageTitle">
@@ -20,7 +31,10 @@
       <p class="kvl1180-eyebrow">INTERNATIONAL COMPETITION · MEN</p>
       <h1 id="pageTitle">AVC 남자 대륙선수권 2026</h1>
       <p class="kvl1180-hero-sub">AVC Volleyball Men's Continental Championship 2026</p>
-      <p class="kvl1180-hero-meta">2026-09-04(금) ~ 2026-09-13(일)<br>일본 후쿠오카현 / 기타큐슈 · 기타큐슈시 종합체육관</p>
+      <div class="kvl1180-hero-meta">
+        <div class="kvl1180-meta-row"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-calendar"/></svg><span>2026-09-04(금) ~ 2026-09-13(일)</span></div>
+        <div class="kvl1180-meta-row"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-pin"/></svg><span>일본 후쿠오카현 / 기타큐슈 · 기타큐슈시 종합체육관</span></div>
+      </div>
     </div>
     <div class="kvl1180-hero-status" aria-label="대회 상태">
       <span>대회 진행 중</span>
@@ -31,12 +45,12 @@
 
   <div class="kvl1180-controlbar">
     <nav class="kvl1180-tabs" aria-label="대회 메뉴">
-      <a class="is-active" aria-current="page" href="international-competition-avc-men-continental-2026-pc-hybrid-1180.html">한눈에 보기</a>
-      <a href="international-competition-avc-men-continental-2026.html?view=schedule">경기일정</a>
-      <a href="international-competition-avc-men-continental-2026.html?view=groups">조별순위</a>
-      <a href="international-competition-avc-men-continental-2026.html?view=knockout">최종순위</a>
-      <a href="international-competition-avc-men-continental-2026.html?view=teams">참가국</a>
-      <a href="international-competition-avc-men-continental-2026.html?view=sources">공식자료</a>
+      <a class="is-active" aria-current="page" href="#overview" data-proto-tab>한눈에 보기</a>
+      <a href="#schedule" data-proto-tab>경기일정</a>
+      <a href="#groups" data-proto-tab>조별순위</a>
+      <a href="#knockout" data-proto-tab>최종순위</a>
+      <a href="#rosters" data-proto-tab>선수명단</a>
+      <a href="#resources" data-proto-tab>공식자료</a>
     </nav>
     <nav class="kvl1180-gender" aria-label="성별 전환">
       <a class="is-active" href="international-competition-avc-men-continental-2026.html?view=overview">MEN · 남자부</a>
@@ -44,46 +58,46 @@
     </nav>
   </div>
 
-  <section class="kvl1180-card" aria-labelledby="snapshotTitle">
+  <section class="kvl1180-card" id="overview" aria-labelledby="snapshotTitle">
     <div class="kvl1180-section-head">
       <div><p class="label">TOURNAMENT SNAPSHOT</p><h2 id="snapshotTitle">대회 한눈에 보기</h2></div>
-      <p>기존 1180px 카드 구조를 유지하면서 상단 제어부만 하나로 합친 비교용입니다.</p>
+      <p>조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.</p>
     </div>
 
     <div class="kvl1180-kpis">
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon">●</div><div class="kvl1180-kpi-copy"><span>참가국</span><strong id="teamCount">12</strong><small>개국</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon">◆</div><div class="kvl1180-kpi-copy"><span>조별리그</span><strong id="groupCount">3</strong><small>개 조</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon">▣</div><div class="kvl1180-kpi-copy"><span>전체 일정</span><strong id="matchCount">26</strong><small>경기</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon">▲</div><div class="kvl1180-kpi-copy"><span>8강 진출</span><strong>8</strong><small>개국</small></div></article>
-      <article class="kvl1180-kpi is-venue"><div class="kvl1180-kpi-icon">◎</div><div class="kvl1180-kpi-copy"><span>대회 장소</span><strong>일본 후쿠오카</strong><small>기타큐슈시 종합체육관</small></div></article>
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-users"/></svg></div><div class="kvl1180-kpi-copy"><span>참가국</span><strong id="teamCount">12</strong><small>개국</small></div></article>
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-layers"/></svg></div><div class="kvl1180-kpi-copy"><span>조 편성</span><strong id="groupCount">3</strong><small>개 조</small></div></article>
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-calendar"/></svg></div><div class="kvl1180-kpi-copy"><span>전체 일정</span><strong id="matchCount">26</strong><small>경기</small></div></article>
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-trophy"/></svg></div><div class="kvl1180-kpi-copy"><span>8강 진출</span><strong>8</strong><small>개국</small></div></article>
+      <article class="kvl1180-kpi is-venue"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-pin"/></svg></div><div class="kvl1180-kpi-copy"><span>대회 장소</span><strong>일본 후쿠오카</strong><small>기타큐슈시 종합체육관</small></div></article>
     </div>
 
     <div class="kvl1180-roster"><a href="international-competition-avc-men-continental-2026.html?view=teams&team=대한민국"><span>선수명단 보기</span><span aria-hidden="true">→</span></a><span>참가국을 선택하면 등록 로스터를 확인할 수 있습니다.</span></div>
   </section>
 
-  <section class="kvl1180-card" aria-labelledby="stakesTitle">
+  <section class="kvl1180-card kvl1180-stakes-card" id="stakes" aria-labelledby="stakesTitle">
     <div class="kvl1180-section-head">
       <div><p class="label">ROAD TO THE WORLD</p><h2 id="stakesTitle">대회 의미 · 국제 진출권</h2></div>
-      <p>대륙 타이틀뿐 아니라 LA28 · 2027 World Cup · FIVB 세계랭킹에 연결됩니다.</p>
+      <p>대륙 타이틀뿐 아니라 LA28 · 2027 World Cup · FIVB 세계랭킹에 직접 연결됩니다.</p>
     </div>
 
     <div class="kvl1180-stakes-grid">
-      <article class="kvl1180-stake is-la"><div class="kvl1180-stake-top"><span class="kvl1180-stake-code">LA28</span><span class="kvl1180-pill">아시아 1장</span></div><h3>우승팀 직행</h3><p>2026 AVC 남자 대륙선수권 우승팀이 LA28 올림픽 남자배구 출전 쿼터를 확보합니다.</p><div class="kvl1180-stake-foot">우승 → LA28 올림픽 진출</div></article>
-      <article class="kvl1180-stake is-wc"><div class="kvl1180-stake-top"><span class="kvl1180-stake-code">WC27</span><span class="kvl1180-pill">상위 3 eligible teams</span></div><h3>2027 World Cup 진출</h3><p>최종 순위에서 가장 높은 3개 eligible teams가 2027 FIVB Volleyball World Cup 출전권을 얻습니다.</p><div class="kvl1180-stake-foot">상위 3 eligible teams → World Cup</div></article>
-      <article class="kvl1180-stake is-wr"><div class="kvl1180-stake-top"><span class="kvl1180-stake-code">WR</span><span class="kvl1180-pill">MWF 40</span></div><h3>모든 경기 랭킹 반영</h3><p>Continental Championship의 모든 경기가 FIVB World Ranking에 반영되며 상대와 세트스코어에 따라 포인트가 변동합니다.</p><div class="kvl1180-stake-foot">경기별 ± World Ranking 포인트</div></article>
+      <article class="kvl1180-stake is-la"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-medal"/></svg>LA 2028 올림픽</span><span class="kvl1180-pill">아시아 1장</span></div><h3>우승팀 직행</h3><p>2026 AVC 남자 대륙선수권 우승팀이 LA28 올림픽 남자배구 출전 쿼터를 확보합니다.</p><div class="kvl1180-stake-foot">우승 → LA28 올림픽 진출</div></article>
+      <article class="kvl1180-stake is-wc"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-world"/></svg>2027 FIVB World Cup</span><span class="kvl1180-pill">아시아 최대 3장</span></div><h3>최종 상위 3개 팀 진출</h3><p>최종 순위에서 가장 높은 3개 eligible teams가 2027 FIVB Volleyball World Cup 출전권을 얻습니다.</p><div class="kvl1180-stake-foot">상위 3 eligible teams → World Cup</div></article>
+      <article class="kvl1180-stake is-wr"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-bars"/></svg>FIVB 세계랭킹</span><span class="kvl1180-pill">MWF 40</span></div><h3>모든 경기 랭킹 포인트 반영</h3><p>Continental Championship의 모든 경기가 FIVB World Ranking에 반영되며 상대와 세트스코어에 따라 포인트가 변동합니다.</p><div class="kvl1180-stake-foot">경기별 ± World Ranking 포인트</div></article>
     </div>
 
     <div class="kvl1180-lower">
       <section class="kvl1180-ranking" aria-label="대한민국 FIVB 세계랭킹 UI">
-        <div class="kvl1180-ranking-head"><strong>🇰🇷 대한민국 · FIVB World Ranking</strong><span>실제 랭킹 값 연결 전 UI 자리</span></div>
-        <div class="kvl1180-ranking-grid"><div class="lead"><strong>대한민국 랭킹 추적</strong><small>대회 시작점수와 경기별 변동값을 공식 데이터 검수 후 연결합니다.</small></div><div><span>대회 시작</span><strong>—</strong></div><div><span>현재</span><strong>—</strong></div><div><span>이번 대회 누적</span><strong>—</strong></div></div>
+        <div class="kvl1180-ranking-head"><div class="kvl1180-ranking-title"><span class="kvl1180-ranking-flag" aria-hidden="true">🇰🇷</span><strong>대한민국 · FIVB World Ranking</strong></div><a href="https://en.volleyballworld.com/volleyball/world-ranking/men" target="_blank" rel="noopener noreferrer">랭킹 변동 상세보기 →</a></div>
+        <div class="kvl1180-ranking-grid"><div><span>대회 시작 전</span><strong class="is-empty">—</strong></div><div><span>현재</span><strong class="is-empty">—</strong></div><div><span>이번 대회 누적</span><strong class="is-empty">—</strong></div></div>
       </section>
       <section class="kvl1180-results" aria-label="대한민국 최근 경기 결과">
-        <div class="kvl1180-results-head"><strong>대한민국 최근 경기 결과</strong><strong id="koreaRecord">—</strong></div>
+        <div class="kvl1180-results-head"><strong>최근 경기 결과</strong><a href="international-competition-avc-men-continental-2026.html?view=schedule">전체 결과 보기 →</a></div>
         <div id="koreaResults" class="kvl1180-results-list"><div class="kvl1180-result-row"><strong>대회 데이터를 불러오는 중</strong><span>—</span><em>—</em></div></div>
       </section>
     </div>
-    <p class="kvl1180-footnote">공식 근거: <a href="https://www.fivb.com/continental-championships-set-the-course-for-la28-and-world-cup-qualification/" target="_blank" rel="noopener noreferrer">FIVB 대륙선수권 진출 경로</a> · <a href="https://en.volleyballworld.com/volleyball/world-ranking/ranking-explained" target="_blank" rel="noopener noreferrer">FIVB World Ranking 설명</a>. 랭킹 숫자는 별도 검수 후 연결합니다.</p>
+    <p class="kvl1180-footnote">공식 근거: <a href="https://www.fivb.com/continental-championships-set-the-course-for-la28-and-world-cup-qualification/" target="_blank" rel="noopener noreferrer">FIVB 대륙선수권 진출 경로</a> · <a href="https://en.volleyballworld.com/volleyball/world-ranking/ranking-explained" target="_blank" rel="noopener noreferrer">FIVB World Ranking 설명</a>. 대한민국 랭킹 숫자는 공식 데이터 검수 후 연결합니다.</p>
   </section>
 
   <section class="kvl1180-card" aria-labelledby="calendarTitle">
@@ -91,19 +105,22 @@
     <div id="calendarRoot" class="kvl1180-calendar"><div class="kvl1180-calendar-title">2026년 9월</div><div style="padding:28px;text-align:center;color:#7c8994;font-size:12px">대회 달력을 불러오는 중입니다.</div></div>
   </section>
 
-  <p class="kvl1180-proto-note"><strong>PC 1180px 브라우저 프로토타입.</strong> 실제 AVC 남자부 서비스 페이지와 모바일 기본 템플릿은 변경하지 않았습니다. 최종 디자인 확정 후 실제 페이지에 이식하고 이 프로토타입 파일은 삭제할 수 있습니다.</p>
+  <p class="kvl1180-proto-note"><strong>PC 1180px 브라우저 프로토타입.</strong> 실제 AVC 남자부 서비스 페이지와 모바일 기본 템플릿은 변경하지 않았습니다. 최종 디자인 확정 후 실제 페이지에 이식하고 프로토타입 파일은 정리합니다.</p>
 </main>
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 
 <script>
 (function(){
   'use strict';
-  const DATA='data/competitions/avc-men-continental-2026.json?v=20260908-h1180-1';
+  const DATA='data/competitions/avc-men-continental-2026.json?v=20260908-h1180-2';
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  document.querySelectorAll('[data-proto-tab]').forEach(tab=>tab.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelectorAll('[data-proto-tab]').forEach(x=>{x.classList.remove('is-active');x.removeAttribute('aria-current');});
+    tab.classList.add('is-active');tab.setAttribute('aria-current','page');
+  }));
   function renderKorea(matches){
     const rows=(matches||[]).filter(m=>(m.teamA==='대한민국'||m.teamB==='대한민국')&&Number.isFinite(m.setsA)&&Number.isFinite(m.setsB));
-    let w=0,l=0;rows.forEach(m=>{const koreaA=m.teamA==='대한민국';const ks=koreaA?m.setsA:m.setsB,os=koreaA?m.setsB:m.setsA;if(ks>os)w++;else l++;});
-    const record=document.getElementById('koreaRecord');if(record)record.textContent=`${w}승 ${l}패`;
     const root=document.getElementById('koreaResults');if(!root)return;
     if(!rows.length){root.innerHTML='<div class="kvl1180-result-row"><strong>완료 경기 없음</strong><span>—</span><em>—</em></div>';return;}
     root.innerHTML=rows.slice(-3).reverse().map(m=>{const koreaA=m.teamA==='대한민국',opp=koreaA?m.teamB:m.teamA,ks=koreaA?m.setsA:m.setsB,os=koreaA?m.setsB:m.setsA,win=ks>os;return `<div class="kvl1180-result-row"><strong>vs ${esc(opp)}</strong><span>${ks} - ${os}</span><em class="${win?'win':'loss'}">${win?'승':'패'}</em></div>`}).join('');
