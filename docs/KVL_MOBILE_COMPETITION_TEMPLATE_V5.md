@@ -10,6 +10,7 @@ v5는 v4까지의 여자부 기준 공통 규격에 2026-09-08 모바일 검수 
 - 신규 HTML 시작점: `templates/competition-page-v1.html`
 - 공통 대회 UI: `assets/css/kvl-competition-template-v1.css`
 - 모바일 세부 UI: `assets/css/kvl-mobile-competition-template-v3.css`
+- 예선 종합순위 고정 좌표 UI: `assets/css/kvl-mobile-combined-ranking-v1.css`
 - 공통 렌더러: `assets/js/kvl-competition-template-v1.js`
 - 데이터 예시: `data/competitions/_template/competition-v1.template.json`
 
@@ -89,6 +90,8 @@ v5는 v4까지의 여자부 기준 공통 규격에 2026-09-08 모바일 검수 
 - 종합순위 값은 `44px` 열 중앙, 국기는 `28px` 열 중앙에 고정한다.
 - 국가명은 `110px` 열에서 **왼쪽 정렬**한다. 남녀 또는 대회 상태에 따라 가운데 정렬로 바꾸지 않는다.
 - 헤더의 `국가`는 국기+국가명 두 열 전체 중앙에 배치하며 `국기`라는 별도 헤더 문구는 표시하지 않는다.
+- `종합순위 + 국기 + 국가명`은 외부 상태별 grid에 따로 흩어놓지 않고 **고정 194px identity block**으로 렌더링한다. 내부 규격은 `44px / 28px / 110px`, gap `6px`이다.
+- 진행 중/종료 상태는 identity block **뒤쪽 열만 변경**하며, identity block 자체의 x좌표·폭·정렬은 절대 변경하지 않는다.
 
 ## 9. 최종순위 / 결선 토너먼트
 ### 확정 경기
@@ -130,10 +133,11 @@ v5는 v4까지의 여자부 기준 공통 규격에 2026-09-08 모바일 검수 
 - v4 / 2026-09-07: 여자부 완성형 수치를 공통 컴포넌트 기준으로 승격.
 - **v5 / 2026-09-08:** Hero 상태뱃지 위치, 장소 한 줄 표기, 경기별 시간대 표기, 예선종합순위 국기/폰트 동일화, QF 예상대진 국기·국가·상태·시드 정렬 규칙을 추가.
 - v5 보완 / 2026-09-08: 예선 종합순위 헤더에서 `국기` 라벨을 제거하고 `국가` 헤더를 국기+국가명 두 열의 중앙에 배치하도록 공통 규칙 확정.
+- v5 보완2 / 2026-09-08: `종합순위+국기+국가명`을 194px 고정 identity block으로 묶어 진행 상태와 무관하게 실제 좌표까지 동일하도록 강화.
 
 ## Shared combined ranking component v1
 - Source: `assets/js/kvl-mobile-combined-ranking-v1.js`
-- Geometry: `assets/css/kvl-mobile-competition-template-v3.css` under `KVL SHARED COMBINED RANKING V1`.
+- Geometry: `assets/css/kvl-mobile-combined-ranking-v1.css` (fixed identity coordinates) + `assets/css/kvl-mobile-competition-template-v3.css` (base table styling).
 - AVC men/women must use this renderer for the mobile `예선 종합순위`; page-specific mobile renderers are not the source of truth.
 - Live state display columns: `종합순위 | 국가(국기+국가명) | 조순위 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률`.
 - Complete state display columns: `종합순위 | 국가(국기+국가명) | 결과 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률 | 조순위`.
