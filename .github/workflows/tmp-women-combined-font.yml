@@ -1,0 +1,33 @@
+name: Women combined ranking font tweak
+on:
+  push:
+    branches: [fix-women-combined-font-20260908]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix-women-combined-font-20260908
+      - name: Increase women combined ranking font slightly
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('international-competition-avc-women-continental-2026.html')
+          s = p.read_text(encoding='utf-8')
+          anchor = '  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-6">\n'
+          block = '''  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-6">\n  <style>\n    @media (max-width:680px){\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-line.is-head{font-size:11px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-rank{font-size:14px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-team{font-size:14px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-stat{font-size:12px!important}\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-result,\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-result b,\n      html body[data-avc-gender="women"] #groups .kvl-shared-combined-result small{font-size:11px!important}\n    }\n  </style>\n'''
+          if 'html body[data-avc-gender="women"] #groups .kvl-shared-combined-rank{font-size:14px!important}' not in s:
+              if anchor not in s:
+                  raise SystemExit('anchor missing')
+              s = s.replace(anchor, block, 1)
+              p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name "kvolleylab"
+          git config user.email "kvolleylab.team@gmail.com"
+          git add international-competition-avc-women-continental-2026.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "fix: slightly enlarge women combined ranking text"
+          git push origin HEAD:fix-women-combined-font-20260908
