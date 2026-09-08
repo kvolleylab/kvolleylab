@@ -1,0 +1,74 @@
+/* K-Volley Lab shared mobile combined ranking v1.2
+   Fixed identity geometry for every competition state.
+   Rank + flag + country-name positions must never vary by tournament or state. */
+@media (max-width:680px){
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-live .kvl-shared-combined-line{
+    grid-template-columns:194px 110px 76px 54px 96px 96px!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-complete .kvl-shared-combined-line{
+    grid-template-columns:194px 130px 76px 54px 96px 96px 76px!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity{
+    display:grid!important;
+    grid-template-columns:44px 28px 110px!important;
+    gap:6px!important;
+    width:194px!important;
+    min-width:194px!important;
+    align-items:center!important;
+    justify-content:start!important;
+    justify-self:start!important;
+    box-sizing:border-box!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-line.is-head>.kvl-shared-combined-identity{
+    display:grid!important;
+    grid-template-columns:44px 28px 110px!important;
+    gap:6px!important;
+    width:194px!important;
+    min-width:194px!important;
+    align-items:center!important;
+    justify-content:start!important;
+    justify-self:start!important;
+    text-align:initial!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-rank-head{
+    grid-column:1!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:44px!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-country-head{
+    grid-column:2 / span 2!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    justify-self:stretch!important;
+    width:auto!important;
+    text-align:center!important;
+    white-space:nowrap!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-rank{
+    grid-column:1!important;
+    width:44px!important;
+    justify-self:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-flag{
+    grid-column:2!important;
+    width:28px!important;
+    height:19px!important;
+    justify-self:center!important;
+    justify-content:center!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-team{
+    grid-column:3!important;
+    width:110px!important;
+    min-width:0!important;
+    justify-self:start!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+  }
+}
