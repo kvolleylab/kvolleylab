@@ -11,8 +11,8 @@
     const link=document.createElement('link');link.id=STYLE_ID;link.rel='stylesheet';link.href=STYLE_HREF;document.head.appendChild(link);
   };
   const shortStatus=value=>String(value||'').split('·')[0].trim();
-  const flagUrl=(team,flags)=>flags?.[team.nameKo]||team.flagUrl||(team.flagCode?`https://flagcdn.com/w80/${esc(team.flagCode)}.png`:'');
-  const playerName=p=>p.fullName||p.name||p.nameKo||'';
+  const flagUrl=(team,flags)=>flags?.[team.nameKo]||team.flagUrl||(team.flagCode?`https://flagcdn.com/w80/${team.flagCode}.png`:'');
+  const playerName=p=>p.name||p.fullName||p.nameKo||'';
   const playerSub=p=>{
     const parts=[];
     if(p.nameKo&&p.nameKo!==playerName(p))parts.push(p.nameKo);
@@ -28,13 +28,24 @@
     dialog.addEventListener('click',event=>{if(event.target===dialog&&typeof dialog.close==='function')dialog.close()});
     document.body.appendChild(dialog);return dialog;
   }
+  function showLoading(team,flags){
+    const dialog=ensureDialog();const flag=flagUrl(team,flags);
+    dialog.innerHTML=`<div class="kvl-roster-dialog-head">${flag?`<img src="${esc(flag)}" alt="${esc(team.nameKo||team.nameEn)} 국기" loading="lazy">`:'<span></span>'}<div class="kvl-roster-dialog-title"><strong>${esc(team.nameKo||team.nameEn)}</strong><small>${esc(team.nameEn||'')} · ${esc(team.pool||'')}조</small></div><button type="button" class="kvl-roster-dialog-close" aria-label="선수명단 닫기">×</button></div><div class="kvl-roster-dialog-body"><div class="kvl-roster-dialog-note">선수명단을 불러오는 중입니다.</div></div>`;
+    dialog.querySelector('.kvl-roster-dialog-close')?.addEventListener('click',()=>dialog.close?.());
+    document.body.classList.add('kvl-roster-dialog-open');if(typeof dialog.showModal==='function'){if(!dialog.open)dialog.showModal()}else dialog.setAttribute('open','');
+  }
+  function showError(team,flags){
+    const dialog=ensureDialog();const flag=flagUrl(team,flags);
+    dialog.innerHTML=`<div class="kvl-roster-dialog-head">${flag?`<img src="${esc(flag)}" alt="${esc(team.nameKo||team.nameEn)} 국기">`:'<span></span>'}<div class="kvl-roster-dialog-title"><strong>${esc(team.nameKo||team.nameEn)}</strong><small>${esc(team.nameEn||'')} · ${esc(team.pool||'')}조</small></div><button type="button" class="kvl-roster-dialog-close" aria-label="선수명단 닫기">×</button></div><div class="kvl-roster-dialog-note">선수명단을 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.</div>`;
+    dialog.querySelector('.kvl-roster-dialog-close')?.addEventListener('click',()=>dialog.close?.());
+  }
   function openTeam(team,flags){
     const dialog=ensureDialog();
     const flag=flagUrl(team,flags);
-    const players=Array.isArray(team.players)?team.players:[];
+    const players=(Array.isArray(team.players)?team.players:[]).slice().sort((a,b)=>Number(a.number)-Number(b.number));
     dialog.innerHTML=`
       <div class="kvl-roster-dialog-head">
-        ${flag?`<img src="${flag}" alt="${esc(team.nameKo||team.nameEn)} 국기" loading="lazy">`:'<span></span>'}
+        ${flag?`<img src="${esc(flag)}" alt="${esc(team.nameKo||team.nameEn)} 국기" loading="lazy">`:'<span></span>'}
         <div class="kvl-roster-dialog-title"><strong>${esc(team.nameKo||team.nameEn)}</strong><small>${esc(team.nameEn||'')} · ${esc(team.pool||'')}조</small></div>
         <button type="button" class="kvl-roster-dialog-close" aria-label="선수명단 닫기">×</button>
       </div>
@@ -51,6 +62,15 @@
     document.body.classList.add('kvl-roster-dialog-open');
     if(typeof dialog.showModal==='function'){if(!dialog.open)dialog.showModal()}else dialog.setAttribute('open','');
   }
+  async function loadAndOpenTeam(team,flags){
+    if(Array.isArray(team.players)&&team.players.length){openTeam(team,flags);return}
+    if(!team.rosterSrc){openTeam(team,flags);return}
+    showLoading(team,flags);
+    try{
+      const response=await fetch(team.rosterSrc,{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);
+      const detail=await response.json();Object.assign(team,detail);openTeam(team,flags);
+    }catch(error){console.error('[KVLParticipantRoster] team roster load failed',team.nameKo,error);showError(team,flags)}
+  }
   function render(root,data,options){
     if(!root||!data)return;
     ensureStyles();
@@ -61,12 +81,12 @@
     root.innerHTML=`<div class="kvl-roster-country-grid">${teams.map((team,index)=>{
       const flag=flagUrl(team,flags);const count=Number(team.rosterCount||team.players?.length||0);
       return `<button type="button" class="kvl-roster-country-card" data-kvl-roster-index="${index}" aria-label="${esc(team.nameKo||team.nameEn)} 선수명단 보기">
-        ${flag?`<img class="kvl-roster-country-flag" src="${flag}" alt="${esc(team.nameKo||team.nameEn)} 국기" loading="lazy">`:'<span class="kvl-roster-country-flag"></span>'}
+        ${flag?`<img class="kvl-roster-country-flag" src="${esc(flag)}" alt="${esc(team.nameKo||team.nameEn)} 국기" loading="lazy">`:'<span class="kvl-roster-country-flag"></span>'}
         <span class="kvl-roster-country-copy"><strong>${esc(team.nameKo||team.nameEn)}</strong><small>${esc(team.nameEn||'')}</small></span>
         <span class="kvl-roster-country-meta"><b>${esc(team.pool||'')}조 · ${count}명</b><em>선수명단 보기</em></span>
       </button>`}).join('')}</div><p class="kvl-roster-footnote">국가를 누르면 해당 팀의 대회 등록 선수명단을 확인할 수 있습니다.</p>`;
     root.querySelectorAll('[data-kvl-roster-index]').forEach(button=>button.addEventListener('click',()=>{
-      const team=teams[Number(button.dataset.kvlRosterIndex)];if(team)openTeam(team,flags);
+      const team=teams[Number(button.dataset.kvlRosterIndex)];if(team)loadAndOpenTeam(team,flags);
     }));
   }
   function addAvcQuickLink(){
@@ -79,7 +99,7 @@
   function enhanceAvcMen(){
     if(!document.body.matches('[data-avc-gender="men"]'))return;
     const root=document.getElementById('teamRoot');if(!root)return;
-    const dataSrc='data/competitions/avc-men-continental-2026-rosters.json?v=20260908-1';
+    const dataSrc='data/competitions/rosters/avc-men-continental-2026/index.json?v=20260908-1';
     let rosterData=null,done=false;
     const tryRender=()=>{
       if(done||!rosterData)return;
@@ -88,7 +108,7 @@
       done=true;observer.disconnect();render(root,rosterData,{flags});addAvcQuickLink();
     };
     const observer=new MutationObserver(tryRender);observer.observe(root,{childList:true,subtree:true});
-    fetch(dataSrc,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error(`HTTP ${r.status}`))).then(data=>{rosterData=data;tryRender()}).catch(error=>console.error('[KVLParticipantRoster] AVC men roster load failed',error));
+    fetch(dataSrc,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error(`HTTP ${r.status}`))).then(data=>{rosterData=data;tryRender()}).catch(error=>console.error('[KVLParticipantRoster] AVC men roster index load failed',error));
     tryRender();
   }
   function addGenericQuickLink(root){
@@ -104,11 +124,11 @@
       fetch(src,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error(`HTTP ${r.status}`))).then(data=>{
         window.KVLCompetitionTemplateV1?.register('participants',({slot})=>{render(slot,data,{});return undefined});
         addGenericQuickLink(root);
-      }).catch(error=>console.error('[KVLParticipantRoster] generic roster load failed',error));
+      }).catch(error=>console.error('[KVLParticipantRoster] generic roster index load failed',error));
     },{once:true});
   }
   ensureStyles();
-  window.KVLParticipantRoster=Object.freeze({version:'1.0.0',render,openTeam});
+  window.KVLParticipantRoster=Object.freeze({version:'1.1.0',render,openTeam,loadAndOpenTeam});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{enhanceAvcMen();prepareGeneric()},{once:true});
   else{enhanceAvcMen();prepareGeneric()}
 })();
