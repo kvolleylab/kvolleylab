@@ -1,14 +1,44 @@
-/* K-Volley Lab shared mobile combined ranking v1.2
-   Fixed identity geometry for every competition state.
-   Rank + flag + country-name positions must never vary by tournament or state. */
+/* K-Volley Lab shared mobile combined ranking v1.3
+   Women-calibrated mobile baseline for every competition state.
+   Card footprint, typography, flag size and identity coordinates must not vary by tournament, gender or state. */
 @media (max-width:680px){
-  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-live .kvl-shared-combined-line{
-    grid-template-columns:194px 110px 76px 54px 96px 96px!important;
+  /* Keep the full combined-ranking card at the women baseline width in both live and complete states. */
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-live,
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-complete,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-table.is-live,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-table.is-complete{
+    width:770px!important;
+    min-width:770px!important;
+    max-width:none!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-complete .kvl-shared-combined-line{
+
+  /* State changes columns only; the outer card remains 770px. */
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-live .kvl-shared-combined-line,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-table.is-live .kvl-shared-combined-line{
+    grid-template-columns:194px 130px 76px 54px 1fr 1fr!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-table.is-complete .kvl-shared-combined-line,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-table.is-complete .kvl-shared-combined-line{
     grid-template-columns:194px 130px 76px 54px 96px 96px 76px!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-identity{
+
+  /* Women-calibrated row/card geometry shared by AVC men/women and future templates. */
+  html body[data-avc-gender] #groups .kvl-shared-combined-line,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-line{
+    gap:6px!important;
+    min-height:54px!important;
+    padding:8px 6px!important;
+    box-sizing:border-box!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-line.is-head,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-line.is-head{
+    min-height:42px!important;
+    font-size:11px!important;
+  }
+
+  /* Fixed identity block: rank + flag + country name. */
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-identity{
     display:grid!important;
     grid-template-columns:44px 28px 110px!important;
     gap:6px!important;
@@ -19,7 +49,8 @@
     justify-self:start!important;
     box-sizing:border-box!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-line.is-head>.kvl-shared-combined-identity{
+  html body[data-avc-gender] #groups .kvl-shared-combined-line.is-head>.kvl-shared-combined-identity,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-line.is-head>.kvl-shared-combined-identity{
     display:grid!important;
     grid-template-columns:44px 28px 110px!important;
     gap:6px!important;
@@ -30,7 +61,8 @@
     justify-self:start!important;
     text-align:initial!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-rank-head{
+  html body[data-avc-gender] #groups .kvl-shared-combined-rank-head,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-rank-head{
     grid-column:1!important;
     display:flex!important;
     align-items:center!important;
@@ -39,7 +71,8 @@
     text-align:center!important;
     white-space:nowrap!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-country-head{
+  html body[data-avc-gender] #groups .kvl-shared-combined-country-head,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-country-head{
     grid-column:2 / span 2!important;
     display:flex!important;
     align-items:center!important;
@@ -49,26 +82,58 @@
     text-align:center!important;
     white-space:nowrap!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-rank{
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-rank,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-identity .kvl-shared-combined-rank{
     grid-column:1!important;
     width:44px!important;
     justify-self:center!important;
     justify-content:center!important;
+    color:var(--avc-primary,var(--kvl-comp-primary))!important;
+    font-size:14px!important;
+    font-weight:1000!important;
     text-align:center!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-flag{
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-flag,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-identity .kvl-shared-combined-flag{
     grid-column:2!important;
     width:28px!important;
     height:19px!important;
     justify-self:center!important;
     justify-content:center!important;
   }
-  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-team{
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-flag img,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-identity .kvl-shared-combined-flag img{
+    width:28px!important;
+    height:19px!important;
+    object-fit:contain!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-identity .kvl-shared-combined-team,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-identity .kvl-shared-combined-team{
     grid-column:3!important;
     width:110px!important;
     min-width:0!important;
     justify-self:start!important;
     justify-content:flex-start!important;
+    font-size:14px!important;
+    font-weight:900!important;
     text-align:left!important;
+  }
+
+  /* Fixed women-baseline typography for all remaining cells. */
+  html body[data-avc-gender] #groups .kvl-shared-combined-stat,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-stat{
+    font-size:12px!important;
+    font-weight:800!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-result,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-result{
+    min-height:37px!important;
+    font-size:11px!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-result b,
+  html body[data-avc-gender] #groups .kvl-shared-combined-result small,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-result b,
+  html body .kvl-competition-v1 [data-kvl-section="groups"] .kvl-shared-combined-result small{
+    font-size:11px!important;
   }
 }
