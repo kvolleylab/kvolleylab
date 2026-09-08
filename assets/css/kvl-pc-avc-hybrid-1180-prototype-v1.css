@@ -84,11 +84,11 @@ body.kvl1180-prototype{margin:0;background:var(--kvl1180-bg);color:var(--kvl1180
 .kvl1180-ranking,.kvl1180-results{border:1px solid #d9e3e8;border-radius:10px;background:#fbfcfe;overflow:hidden}
 .kvl1180-ranking-head,.kvl1180-results-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px;border-bottom:1px solid #e5ebef;background:#fff}
 .kvl1180-ranking-title{display:flex;align-items:center;gap:8px;min-width:0}.kvl1180-ranking-flag{font-size:19px;line-height:1}.kvl1180-ranking-title strong,.kvl1180-results-head strong{font-size:12px;color:#102a49}.kvl1180-ranking-head>a,.kvl1180-results-head>a{color:#1769d1;font-size:9px;font-weight:900;text-decoration:none;white-space:nowrap}
-.kvl1180-ranking-grid{display:grid;grid-template-columns:1.2fr repeat(3,.8fr)}
+.kvl1180-ranking-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
 .kvl1180-ranking-grid>div{min-height:76px;padding:11px 14px;border-right:1px solid #e6ecef}.kvl1180-ranking-grid>div:last-child{border-right:0}
 .kvl1180-ranking-grid span{display:block;color:#7c8997;font-size:9px;font-weight:850}
 .kvl1180-ranking-grid strong{display:block;margin-top:7px;color:#142d4f;font-size:21px;line-height:1;font-weight:950}
-.kvl1180-ranking-grid strong.is-empty{color:#9aa6ae}.kvl1180-ranking-grid .lead strong{margin-top:0;color:#102a49;font-size:13px}.kvl1180-ranking-grid .lead small{display:block;margin-top:5px;color:#85919a;font-size:9px;line-height:1.45}
+.kvl1180-ranking-grid strong.is-empty{color:#9aa6ae}
 .kvl1180-results-list{padding:3px 13px 7px}.kvl1180-result-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center;min-height:33px;border-top:1px solid #e9eef1;font-size:10px}.kvl1180-result-row:first-child{border-top:0}.kvl1180-result-row strong{color:#20344d}.kvl1180-result-row span{color:#526277;font-weight:900}.kvl1180-result-row em{font-style:normal;font-weight:950}.kvl1180-result-row em.win{color:#12964f}.kvl1180-result-row em.loss{color:var(--kvl1180-red)}
 
 /* Calendar */
