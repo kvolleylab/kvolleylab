@@ -12,7 +12,7 @@
     link.href = STYLE_HREF;
     document.head.appendChild(link);
   };
-  const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));
   const flagCell = row => `<span class="kvl-shared-combined-flag kvl-comp-flag-cell">${row.flag ? `<img src="${esc(row.flag)}" alt="${esc(row.team)} 국기" loading="lazy">` : ''}</span>`;
   const resultCell = row => {
     const result = row.result || {};
@@ -45,11 +45,11 @@
     if (!document.getElementById('teamRoot') || document.getElementById('kvl-competition-roster-v1-js')) return;
     const script = document.createElement('script');
     script.id = 'kvl-competition-roster-v1-js';
-    script.src = 'assets/js/kvl-competition-roster-v1.js?v=20260908-1';
+    script.src = 'assets/js/kvl-competition-roster-v1.js?v=20260908-3';
     script.defer = true;
     document.head.appendChild(script);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadRosterComponent, {once:true});
   else loadRosterComponent();
-  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.2', render});
+  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.3', render});
 })();
