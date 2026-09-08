@@ -77,9 +77,12 @@ v5는 v4까지의 여자부 기준 공통 규격에 2026-09-08 모바일 검수 
 - 제목 `16px`, 상태설명 `9px`, 헤더 `10px`.
 - 행 `54px`.
 - 종합순위 `13px`, 국가명 `13px`, 세부통계 `11px`, 국기 `28×19px`.
-- `국기` 열은 진행 중/완료 여부와 관계없이 항상 표시한다.
-- 진행 중 열 순서: `종합순위 / 국기 / 국가 / 조순위 / 승리 경기수 / 승점 / 세트 득실률 / 득점 득실률`.
-- 조별리그 종료 후: `종합순위 / 국기 / 국가 / 결과 / 승리 경기수 / 승점 / 세트 득실률 / 득점 득실률 / 조순위`.
+- 데이터 행의 `국기` 열은 진행 중/완료 여부와 관계없이 항상 표시한다.
+- 헤더에서는 `국기`라는 별도 글자를 표시하지 않는다.
+- `국가` 헤더는 **국기 열 + 국가명 열 두 칸 전체에 걸쳐 가운데 정렬**한다.
+- 진행 중 표시 순서: `종합순위 / 국가(국기+국가명) / 조순위 / 승리 경기수 / 승점 / 세트 득실률 / 득점 득실률`.
+- 조별리그 종료 후 표시 순서: `종합순위 / 국가(국기+국가명) / 결과 / 승리 경기수 / 승점 / 세트 득실률 / 득점 득실률 / 조순위`.
+- 내부 grid는 국기와 국가명을 각각 독립 열로 유지하되, 헤더의 `국가`만 두 열을 span한다.
 - 조별리그 완료 여부로 자동 전환.
 - 남자부/여자부의 헤더·행·국기·국가명·통계 글씨크기는 동일해야 한다.
 
@@ -122,12 +125,14 @@ v5는 v4까지의 여자부 기준 공통 규격에 2026-09-08 모바일 검수 
 ## 버전 이력
 - v4 / 2026-09-07: 여자부 완성형 수치를 공통 컴포넌트 기준으로 승격.
 - **v5 / 2026-09-08:** Hero 상태뱃지 위치, 장소 한 줄 표기, 경기별 시간대 표기, 예선종합순위 국기/폰트 동일화, QF 예상대진 국기·국가·상태·시드 정렬 규칙을 추가.
+- v5 보완 / 2026-09-08: 예선 종합순위 헤더에서 `국기` 라벨을 제거하고 `국가` 헤더를 국기+국가명 두 열의 중앙에 배치하도록 공통 규칙 확정.
 
 ## Shared combined ranking component v1
 - Source: `assets/js/kvl-mobile-combined-ranking-v1.js`
 - Geometry: `assets/css/kvl-mobile-competition-template-v3.css` under `KVL SHARED COMBINED RANKING V1`.
 - AVC men/women must use this renderer for the mobile `예선 종합순위`; page-specific mobile renderers are not the source of truth.
-- Live state columns: `종합순위 | 국기 | 국가 | 조순위 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률`.
-- Complete state columns: `종합순위 | 국기 | 국가 | 결과 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률 | 조순위`.
+- Live state display columns: `종합순위 | 국가(국기+국가명) | 조순위 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률`.
+- Complete state display columns: `종합순위 | 국가(국기+국가명) | 결과 | 승리 경기수 | 승점 | 세트 득실률 | 득점 득실률 | 조순위`.
+- Data rows keep separate flag and team-name grid columns. The `국가` header spans those two columns and is centered across their combined width.
 - The state changes the column set only. Font size, flag size, row height, widths, spacing, and alignment are shared and cannot vary by competition or gender.
-- 390px is the primary mobile verification width. A page is not complete until the rendered DOM contains `data-kvl-common-component="combined-ranking-v1"` and the `국기` header is visible as its own column.
+- 390px is the primary mobile verification width. A page is not complete until the rendered DOM contains `data-kvl-common-component="combined-ranking-v1"`, has no standalone `국기` header label, and the `국가` header spans the flag and team-name columns.
