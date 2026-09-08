@@ -266,3 +266,34 @@
   html body[data-avc-gender] #groups .kvl-shared-combined-result.is-out b{border-color:#e5e7eb!important;background:#f3f4f6!important;color:#6b7280!important;font-size:8px!important}
   html body[data-avc-gender] #groups .kvl-shared-combined-line.is-korea{background:var(--avc-soft)!important}
 }
+
+/* KVL SHARED COMBINED RANKING V1.1 BODY IDENTITY ALIGNMENT */
+@media (max-width:680px){
+  /* The first three body tracks are invariant in live/complete states. */
+  html body[data-avc-gender] #groups .kvl-shared-combined-line:not(.is-head) .kvl-shared-combined-rank{
+    width:44px!important;
+    justify-self:center!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-line:not(.is-head) .kvl-shared-combined-flag{
+    width:28px!important;
+    height:19px!important;
+    justify-self:center!important;
+    justify-content:center!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-line:not(.is-head) .kvl-shared-combined-team{
+    width:110px!important;
+    min-width:0!important;
+    justify-self:start!important;
+    justify-content:flex-start!important;
+    text-align:left!important;
+  }
+  html body[data-avc-gender] #groups .kvl-shared-combined-country-head{
+    grid-column:2 / span 2!important;
+    justify-self:stretch!important;
+    justify-content:center!important;
+    text-align:center!important;
+  }
+}
+
