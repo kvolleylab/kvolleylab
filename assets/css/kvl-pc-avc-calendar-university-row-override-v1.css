@@ -1,1 +1,119 @@
-/* placeholder */
+/* K-Volley Lab · AVC desktop prototype calendar row override v1
+   University-competition calendar geometry:
+   time | team A | score/vs | team B. No stage-colour card treatment. */
+
+.kvl1180-calendar .kvl1180-day{
+  container-type:inline-size;
+  min-height:clamp(124px,10.3vw,146px);
+  padding:clamp(6px,.58vw,8px);
+  background:#fff;
+  overflow:hidden;
+}
+.kvl1180-calendar .kvl1180-day.has-match{background:#f7fbff}
+.kvl1180-calendar .kvl1180-day>a{
+  display:flex;
+  min-height:clamp(110px,9.1vw,130px);
+  flex-direction:column;
+  color:inherit;
+  text-decoration:none;
+}
+.kvl1180-calendar .kvl1180-date{
+  font-size:clamp(11px,.82vw,13px);
+  font-weight:950;
+  color:#60768a;
+  line-height:1;
+}
+.kvl1180-calendar .kvl1180-games{
+  display:grid;
+  gap:clamp(3px,.3vw,4px);
+  margin-top:clamp(6px,.5vw,7px);
+}
+
+/* One compact university-style match row. */
+.kvl1180-calendar .kvl1180-cal-game{
+  display:grid;
+  grid-template-columns:clamp(29px,2.4vw,34px) minmax(0,1fr) clamp(24px,2.05vw,30px) minmax(0,1fr);
+  gap:clamp(2px,.2vw,3px);
+  align-items:center;
+  min-width:0;
+  padding:clamp(3px,.3vw,4px) clamp(3px,.38vw,5px);
+  border:1px solid #e2e8ef;
+  border-radius:6px;
+  background:#fff;
+  box-shadow:none;
+  color:#17365d;
+  font-size:clamp(9px,.74vw,11px);
+  line-height:1.2;
+  letter-spacing:-.025em;
+}
+
+/* Remove the previous stage-card treatment. */
+.kvl1180-calendar .kvl1180-cal-game.is-pool,
+.kvl1180-calendar .kvl1180-cal-game.is-qf,
+.kvl1180-calendar .kvl1180-cal-game.is-sf,
+.kvl1180-calendar .kvl1180-cal-game.is-bronze,
+.kvl1180-calendar .kvl1180-cal-game.is-final{
+  border-left:1px solid #e2e8ef;
+  background:#fff;
+}
+
+.kvl1180-calendar .kvl1180-cal-time{
+  grid-column:1;
+  display:block;
+  margin:0;
+  color:#748397;
+  font-size:inherit;
+  font-weight:850;
+  line-height:1.2;
+  white-space:nowrap;
+}
+
+/* Flatten the existing wrapper so its children join the four-column row. */
+.kvl1180-calendar .kvl1180-cal-match{display:contents}
+.kvl1180-calendar .kvl1180-cal-team{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  color:#17365d;
+  font-size:inherit;
+  font-weight:800;
+}
+.kvl1180-calendar .kvl1180-cal-team:first-of-type{grid-column:2;grid-row:1}
+.kvl1180-calendar .kvl1180-cal-team:nth-of-type(2){grid-column:4;grid-row:1}
+.kvl1180-calendar .kvl1180-cal-match>b{
+  grid-column:3;
+  grid-row:1;
+  color:#8a96a3;
+  font-size:.86em;
+  font-weight:900;
+  text-align:center;
+  text-transform:lowercase;
+  white-space:nowrap;
+}
+.kvl1180-calendar .kvl1180-cal-score{
+  grid-column:3;
+  grid-row:1;
+  padding:0;
+  color:#a66f00;
+  font-size:1.04em;
+  font-weight:950;
+  text-align:center;
+  white-space:nowrap;
+}
+.kvl1180-calendar .kvl1180-cal-match:has(.kvl1180-cal-score)>b{display:none}
+
+/* Scale from the real date-cell width. */
+@supports (font-size:1cqw){
+  .kvl1180-calendar .kvl1180-cal-game{font-size:clamp(8.5px,6.35cqw,11px)}
+}
+
+@media(max-width:1180px) and (min-width:901px){
+  .kvl1180-calendar .kvl1180-day{min-height:118px;padding:5px}
+  .kvl1180-calendar .kvl1180-day>a{min-height:106px}
+  .kvl1180-calendar .kvl1180-cal-game{
+    grid-template-columns:28px minmax(0,1fr) 24px minmax(0,1fr);
+    gap:2px;
+    padding:3px 3px;
+  }
+}
