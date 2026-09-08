@@ -10,9 +10,11 @@
   <link rel="stylesheet" href="assets/css/kvl-competition-template-v1.css?v=20260907-3">
   <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-7">
   <link id="kvl-mobile-combined-ranking-v1-css" rel="stylesheet" href="assets/css/kvl-mobile-combined-ranking-v1.css?v=20260908-2">
+  <link id="kvl-participant-roster-v1-css" rel="stylesheet" href="assets/css/kvl-participant-roster-v1.css?v=20260908-1">
   <script src="assets/js/unified-nav.js" defer></script>
-  <script src="assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-3" defer></script>
-  <script src="assets/js/kvl-competition-template-v1.js?v=20260907-4" defer></script>
+  <script src="assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-4" defer></script>
+  <script id="kvl-participant-roster-v1-js" src="assets/js/kvl-participant-roster-v1.js?v=20260908-1" defer></script>
+  <script src="assets/js/kvl-competition-template-v1.js?v=20260908-1" defer></script>
 </head>
 <body>
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a></header>
@@ -21,9 +23,11 @@
   FUTURE COMPETITION PAGE STARTER · KVL MOBILE TEMPLATE V5
   1) Copy this file to the new competition page path.
   2) Change data-competition-src only.
-  3) Keep shared layout/styles in kvl-competition-template-v1.*, kvl-mobile-competition-template-v3.css and kvl-mobile-combined-ranking-v1.css.
-  4) Follow docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md for mobile component geometry and behavior.
-  5) Add competition-specific behavior in a separate runtime file; do not duplicate shared mobile sizing in this HTML.
+  3) Keep shared layout/styles in kvl-competition-template-v1.*, kvl-mobile-competition-template-v3.css, kvl-mobile-combined-ranking-v1.css and kvl-participant-roster-v1.*.
+  4) Mobile top navigation stays six sections: overview / schedule / groups / final ranking / participants / resources.
+  5) Player rosters are nested under participants: tap a country/team card to open its roster. Do not add a seventh roster tab.
+  6) Follow docs/KVL_MOBILE_COMPETITION_TEMPLATE_V5.md for mobile component geometry and behavior.
+  7) Add competition-specific behavior in a separate runtime file; do not duplicate shared mobile sizing in this HTML.
 -->
 <main
   id="kvlCompetitionRoot"
