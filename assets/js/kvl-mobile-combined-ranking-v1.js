@@ -15,14 +15,13 @@
     const opts = options || {};
     const complete = opts.state === 'complete';
     const rows = Array.isArray(opts.rows) ? opts.rows : [];
-    const rankHead = headerCell('종합순위');
-    const countryHead = '<span role="columnheader" class="kvl-shared-combined-country-head" style="grid-column:2 / span 2" aria-label="국기 및 국가">국가</span>';
+    const identityHead = '<span class="kvl-shared-combined-identity is-head-identity" role="presentation"><span role="columnheader" class="kvl-shared-combined-rank-head">종합순위</span><span role="columnheader" class="kvl-shared-combined-country-head" aria-label="국기 및 국가">국가</span></span>';
     const trailingHead = complete
       ? [headerCell('결과'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률'),headerCell('조순위')].join('')
       : [headerCell('조순위'),headerCell('승리 경기수'),headerCell('승점'),headerCell('세트 득실률'),headerCell('득점 득실률')].join('');
-    const header = `<div class="kvl-shared-combined-line is-head" role="row">${rankHead}${countryHead}${trailingHead}</div>`;
+    const header = `<div class="kvl-shared-combined-line is-head" role="row">${identityHead}${trailingHead}</div>`;
     const body = rows.map(row => {
-      const common = `<span class="kvl-shared-combined-rank">${esc(row.rank)}위</span>${flagCell(row)}<strong class="kvl-shared-combined-team">${esc(row.team)}</strong>`;
+      const common = `<span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank">${esc(row.rank)}위</span>${flagCell(row)}<strong class="kvl-shared-combined-team">${esc(row.team)}</strong></span>`;
       const stats = `<span class="kvl-shared-combined-stat">${esc(row.wins)}승</span><span class="kvl-shared-combined-stat">${esc(row.points)}</span><span class="kvl-shared-combined-stat">${esc(row.setRatio)}</span><span class="kvl-shared-combined-stat">${esc(row.pointRatio)}</span>`;
       const cells = complete
         ? `${common}${resultCell(row)}${stats}<span class="kvl-shared-combined-stat">${esc(row.poolRank)}</span>`
@@ -31,5 +30,5 @@
     }).join('');
     root.innerHTML = `<div class="kvl-shared-combined-table ${complete ? 'is-complete' : 'is-live'}" role="table" aria-label="예선 종합순위" data-kvl-common-component="combined-ranking-v1" data-state="${complete ? 'complete' : 'live'}">${header}${body}</div>`;
   }
-  window.KVLMobileCombinedRanking = Object.freeze({version:'1.0.1', render});
+  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.0', render});
 })();
