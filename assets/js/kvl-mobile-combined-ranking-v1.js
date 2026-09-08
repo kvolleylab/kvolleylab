@@ -4,13 +4,23 @@
   'use strict';
   const STYLE_ID = 'kvl-mobile-combined-ranking-v1-css';
   const STYLE_HREF = 'assets/css/kvl-mobile-combined-ranking-v1.css?v=20260908-1';
+  const QF_STYLE_ID = 'kvl-mobile-qf-alignment-v1-css';
+  const QF_STYLE_HREF = 'assets/css/kvl-mobile-qf-alignment-v1.css?v=20260908-1';
   const ensureStyles = () => {
-    if (document.getElementById(STYLE_ID)) return;
-    const link = document.createElement('link');
-    link.id = STYLE_ID;
-    link.rel = 'stylesheet';
-    link.href = STYLE_HREF;
-    document.head.appendChild(link);
+    if (!document.getElementById(STYLE_ID)) {
+      const link = document.createElement('link');
+      link.id = STYLE_ID;
+      link.rel = 'stylesheet';
+      link.href = STYLE_HREF;
+      document.head.appendChild(link);
+    }
+    if (!document.getElementById(QF_STYLE_ID)) {
+      const qf = document.createElement('link');
+      qf.id = QF_STYLE_ID;
+      qf.rel = 'stylesheet';
+      qf.href = QF_STYLE_HREF;
+      document.head.appendChild(qf);
+    }
   };
   const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const flagCell = row => `<span class="kvl-shared-combined-flag kvl-comp-flag-cell">${row.flag ? `<img src="${esc(row.flag)}" alt="${esc(row.team)} 국기" loading="lazy">` : ''}</span>`;
@@ -49,7 +59,8 @@
     script.defer = true;
     document.head.appendChild(script);
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loadRosterComponent, {once:true});
-  else loadRosterComponent();
-  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.3', render});
+  const initShared = () => { ensureStyles(); loadRosterComponent(); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initShared, {once:true});
+  else initShared();
+  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.4', render});
 })();
