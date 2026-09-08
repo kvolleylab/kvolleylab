@@ -1,9 +1,12 @@
 /* K-Volley Lab shared mobile combined ranking v1
-   One renderer for every competition page. Only state/data vary by tournament. */
+   One renderer for every competition page. Only state/data vary by tournament.
+   This shared mobile entry also loads the participant -> roster hub used by competition pages. */
 (function(){
   'use strict';
   const STYLE_ID = 'kvl-mobile-combined-ranking-v1-css';
-  const STYLE_HREF = 'assets/css/kvl-mobile-combined-ranking-v1.css?v=20260908-1';
+  const STYLE_HREF = 'assets/css/kvl-mobile-combined-ranking-v1.css?v=20260908-2';
+  const ROSTER_STYLE_ID = 'kvl-participant-roster-v1-css';
+  const ROSTER_SCRIPT_ID = 'kvl-participant-roster-v1-js';
   const ensureStyles = () => {
     if (document.getElementById(STYLE_ID)) return;
     const link = document.createElement('link');
@@ -11,6 +14,22 @@
     link.rel = 'stylesheet';
     link.href = STYLE_HREF;
     document.head.appendChild(link);
+  };
+  const ensureRosterHub = () => {
+    if (!document.getElementById(ROSTER_STYLE_ID)) {
+      const link = document.createElement('link');
+      link.id = ROSTER_STYLE_ID;
+      link.rel = 'stylesheet';
+      link.href = 'assets/css/kvl-participant-roster-v1.css?v=20260908-1';
+      document.head.appendChild(link);
+    }
+    if (!document.getElementById(ROSTER_SCRIPT_ID)) {
+      const script = document.createElement('script');
+      script.id = ROSTER_SCRIPT_ID;
+      script.src = 'assets/js/kvl-participant-roster-v1.js?v=20260908-1';
+      script.defer = true;
+      document.head.appendChild(script);
+    }
   };
   const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const flagCell = row => `<span class="kvl-shared-combined-flag kvl-comp-flag-cell">${row.flag ? `<img src="${esc(row.flag)}" alt="${esc(row.team)} 국기" loading="lazy">` : ''}</span>`;
@@ -41,5 +60,6 @@
     }).join('');
     root.innerHTML = `<div class="kvl-shared-combined-table ${complete ? 'is-complete' : 'is-live'}" role="table" aria-label="예선 종합순위" data-kvl-common-component="combined-ranking-v1" data-state="${complete ? 'complete' : 'live'}">${header}${body}</div>`;
   }
-  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.1', render});
+  ensureRosterHub();
+  window.KVLMobileCombinedRanking = Object.freeze({version:'1.1.2', render});
 })();
