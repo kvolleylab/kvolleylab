@@ -1,0 +1,42 @@
+/* K-Volley Lab · PC competition schedule prototype v1
+   1180px-first, fluid desktop schedule/result list. */
+.kvl1180-view[hidden]{display:none!important}
+.kvl1180-schedule-card{padding-bottom:clamp(18px,1.8vw,26px)}
+.kvl1180-schedule-toolbar{display:flex;align-items:center;justify-content:space-between;gap:clamp(10px,1vw,14px);margin:0 0 clamp(12px,1.1vw,16px);padding:clamp(9px,.85vw,12px);border:1px solid #dde7e2;border-radius:10px;background:#f8fbf9}
+.kvl1180-stage-filters{display:flex;flex-wrap:wrap;gap:clamp(5px,.5vw,7px);min-width:0}
+.kvl1180-stage-filters button{min-height:clamp(32px,2.7vw,38px);padding:0 clamp(10px,.9vw,14px);border:1px solid #d6e2dc;border-radius:8px;background:#fff;color:#4f6258;font:inherit;font-size:clamp(10px,.78vw,12px);font-weight:900;cursor:pointer;white-space:nowrap;transition:.15s ease}
+.kvl1180-stage-filters button:hover{border-color:#8fbea0;background:#f0f8f3;color:var(--kvl1180-green)}
+.kvl1180-stage-filters button.is-active{border-color:var(--kvl1180-green);background:var(--kvl1180-green);color:#fff}
+.kvl1180-pool-filter{display:flex;align-items:center;gap:7px;flex:0 0 auto;color:#68796f;font-size:clamp(9px,.7vw,11px);font-weight:900;white-space:nowrap}
+.kvl1180-pool-filter select{height:clamp(32px,2.7vw,38px);min-width:86px;padding:0 28px 0 11px;border:1px solid #d6e2dc;border-radius:8px;background:#fff;color:#31483a;font:inherit;font-size:clamp(10px,.75vw,11px);font-weight:900;cursor:pointer}
+.kvl1180-schedule-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:clamp(10px,.9vw,13px);color:#748278;font-size:clamp(9px,.72vw,11px)}
+.kvl1180-schedule-summary strong{color:#365446;font-size:inherit}
+.kvl1180-schedule-list{display:grid;gap:clamp(10px,.95vw,14px)}
+.kvl1180-date-group{overflow:hidden;border:1px solid #dce6e1;border-radius:11px;background:#fff}
+.kvl1180-date-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:clamp(10px,.85vw,12px) clamp(12px,1.05vw,15px);background:linear-gradient(90deg,#edf8f1,#f7fbf8);border-bottom:1px solid #deebe3}
+.kvl1180-date-title{display:flex;align-items:baseline;gap:8px;min-width:0}.kvl1180-date-title strong{color:#174d31;font-size:clamp(13px,1vw,15px);font-weight:950}.kvl1180-date-title span{color:#6f8176;font-size:clamp(9px,.68vw,10px);font-weight:850}
+.kvl1180-date-head>span{color:#5f7568;font-size:clamp(9px,.68vw,10px);font-weight:900;white-space:nowrap}
+.kvl1180-match-row{display:grid;grid-template-columns:clamp(116px,10.8vw,150px) minmax(0,1fr) clamp(74px,6.4vw,92px) minmax(0,1fr) minmax(clamp(205px,18vw,250px),auto);align-items:center;gap:clamp(8px,.9vw,13px);min-height:clamp(68px,5.9vw,82px);padding:clamp(9px,.8vw,12px) clamp(11px,1vw,15px);border-top:1px solid #edf1ef;background:#fff}
+.kvl1180-match-row:first-child{border-top:0}
+.kvl1180-match-row.is-korea{background:linear-gradient(90deg,#fbfffc,#f2fbf5)}
+.kvl1180-match-meta{display:flex;min-width:0;flex-direction:column;gap:4px}.kvl1180-match-meta time{color:#17365d;font-size:clamp(13px,1.05vw,16px);font-weight:950;line-height:1}.kvl1180-match-meta span{overflow:hidden;color:#7a887f;font-size:clamp(8px,.64vw,10px);font-weight:850;text-overflow:ellipsis;white-space:nowrap}.kvl1180-match-meta small{color:#96a09a;font-size:clamp(7px,.58vw,9px);font-weight:800}
+.kvl1180-match-team{display:flex;align-items:center;gap:clamp(7px,.7vw,10px);min-width:0;color:#152c49}.kvl1180-match-team.is-left{justify-content:flex-end;text-align:right}.kvl1180-match-team.is-right{justify-content:flex-start;text-align:left}.kvl1180-match-team strong{overflow:hidden;font-size:clamp(13px,1.02vw,16px);font-weight:950;letter-spacing:-.025em;text-overflow:ellipsis;white-space:nowrap}.kvl1180-match-team small{display:block;margin-top:2px;color:#819086;font-size:clamp(8px,.58vw,9px);font-weight:800}
+.kvl1180-flag{display:grid;place-items:center;flex:0 0 auto;width:clamp(30px,2.55vw,38px);height:clamp(22px,1.85vw,27px);border:1px solid #e0e6e3;border-radius:4px;background:#fff;font-size:clamp(18px,1.55vw,23px);line-height:1;box-shadow:0 1px 2px rgba(20,40,30,.04)}
+.kvl1180-scorebox{text-align:center}.kvl1180-scorebox strong{display:block;color:#1c6f40;font-size:clamp(18px,1.45vw,22px);font-weight:1000;line-height:1}.kvl1180-scorebox span{display:block;margin-top:5px;color:#7f8b84;font-size:clamp(8px,.58vw,9px);font-weight:900;white-space:nowrap}.kvl1180-scorebox.is-upcoming strong{color:#809088;font-size:clamp(12px,.88vw,14px)}
+.kvl1180-set-scores{display:flex;align-items:center;justify-content:flex-end;gap:clamp(3px,.34vw,5px);min-width:0;white-space:nowrap}.kvl1180-set-scores span{display:inline-flex;align-items:center;justify-content:center;min-width:clamp(35px,3vw,43px);height:clamp(26px,2.15vw,31px);padding:0 clamp(4px,.4vw,6px);border:1px solid #dfe6e2;border-radius:7px;background:#f9fbfa;color:#42574c;font-size:clamp(9px,.68vw,10px);font-weight:900}.kvl1180-set-scores .is-empty{color:#a2aaa5;background:#fbfcfc}
+.kvl1180-schedule-empty{padding:36px 18px;color:#7a887f;text-align:center;font-size:12px}
+.kvl1180-prototype-placeholder{text-align:center}.kvl1180-prototype-placeholder p{margin:6px 0 0;color:#76857b;font-size:12px}
+
+@media(max-width:1180px) and (min-width:901px){
+  .kvl1180-match-row{grid-template-columns:108px minmax(0,1fr) 70px minmax(0,1fr) minmax(190px,215px);gap:7px;padding-left:9px;padding-right:9px}
+  .kvl1180-match-team strong{font-size:clamp(12px,1.05vw,14px)}
+  .kvl1180-set-scores{gap:3px}.kvl1180-set-scores span{min-width:34px;padding:0 3px}
+}
+@media(max-width:1000px) and (min-width:901px){
+  .kvl1180-match-row{grid-template-columns:98px minmax(0,1fr) 64px minmax(0,1fr) 185px}
+  .kvl1180-match-meta small{display:none}.kvl1180-stage-filters button{padding-left:8px;padding-right:8px}
+}
+@media(max-width:900px){
+  .kvl1180-schedule-toolbar{align-items:flex-start;flex-direction:column}.kvl1180-pool-filter{align-self:flex-end}
+  .kvl1180-match-row{grid-template-columns:86px minmax(0,1fr) 58px minmax(0,1fr);gap:6px}.kvl1180-set-scores{grid-column:1/-1;justify-content:center;padding-top:4px;border-top:1px dashed #edf0ee}.kvl1180-match-team strong{font-size:12px}.kvl1180-flag{width:30px;height:22px;font-size:18px}
+}
