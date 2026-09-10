@@ -1,6 +1,6 @@
 (()=>{
 'use strict';
-const DATA='data/competitions/avc-men-continental-2026.json?v=20260910-pc-groups-1';
+const DATA='data/competitions/avc-men-continental-2026.json?v=20260910-pc-groups-2';
 const SELF='international-competition-avc-men-continental-2026-pc-hybrid-1180.html';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const TEAM_INFO={
@@ -133,7 +133,7 @@ function poolCard(pool,rows,qualifierSet){
 }
 function combinedRow(r,index,qualifierSet){
   const rank=index+1,qualified=qualifierSet.has(r.team),korea=r.team==='대한민국';
-  return `<div class="kvl1180-combined-row ${qualified?'is-qualified':'is-out'} ${korea?'is-korea':''} ${rank===8?'is-cutline':''}"><span class="kvl1180-combined-rank">${rank}위</span>${teamIdentity(r.team,'kvl1180-combined')}<span class="kvl1180-combined-pool">${r.pool}조 ${r.poolPosition}위</span><span class="kvl1180-combined-stat">${r.wins}승</span><span class="kvl1180-combined-stat">${r.matchPoints}</span><span class="kvl1180-combined-stat">${fmtRatio(r.setsFor,r.setsAgainst)}</span><span class="kvl1180-combined-stat">${fmtRatio(r.pointsFor,r.pointsAgainst)}</span><span><b class="kvl1180-combined-result ${qualified?'is-qualified':'is-out'}">${qualified?'8강 진출':'조별리그 탈락'}</b></span></div>`;
+  return `<div class="kvl1180-combined-row ${qualified?'is-qualified':'is-out'} ${korea?'is-korea':''} ${rank===8?'is-cutline':''}"><span class="kvl1180-combined-rank">${rank}위</span>${teamIdentity(r.team,'kvl1180-combined')}<span class="kvl1180-combined-pool">${r.pool}조 ${r.poolPosition}위</span><span class="kvl1180-combined-stat">${r.wins}</span><span class="kvl1180-combined-stat">${r.losses}</span><span class="kvl1180-combined-stat">${r.matchPoints}</span><span class="kvl1180-combined-stat">${fmtRatio(r.setsFor,r.setsAgainst)}</span><span class="kvl1180-combined-stat">${fmtRatio(r.pointsFor,r.pointsAgainst)}</span><span><b class="kvl1180-combined-result ${qualified?'is-qualified':'is-out'}">${qualified?'8강 진출':'조별리그 탈락'}</b></span></div>`;
 }
 function renderGroups(){
   if(!data)return;const section=document.querySelector('.kvl1180-view[data-view="groups"]');if(!section)return;
@@ -143,9 +143,10 @@ function renderGroups(){
     <div class="kvl1180-groups-rule"><span><strong>8강 진출 기준</strong> · 각 조 상위 2팀 + 조 3위 중 성적 상위 2팀</span><div class="kvl1180-groups-legend"><span class="q"><i></i>8강 진출</span><span class="o"><i></i>조별리그 탈락</span></div></div>
     <div class="kvl1180-pool-grid">${['A','B','C'].map(p=>poolCard(p,poolTables[p]||[],qualifierSet)).join('')}</div>
     <div class="kvl1180-combined-block"><div class="kvl1180-combined-head"><div><p class="label">PRELIMINARY OVERALL RANKING</p><h3>예선 종합순위</h3></div><p>조 순위 → 승리 경기수 → 승점 → 세트 득실률 → 득점 득실률 순으로 자동 계산</p></div>
-      <div class="kvl1180-combined-table" role="table" aria-label="예선 종합순위"><div class="kvl1180-combined-table-head" role="row"><span>종합순위</span><span>국가</span><span>조순위</span><span>승리</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span><span>결과</span></div>${combined.map((r,i)=>combinedRow(r,i,qualifierSet)).join('')}</div>
+      <div class="kvl1180-combined-table" role="table" aria-label="예선 종합순위"><div class="kvl1180-combined-table-head" role="row"><span>종합순위</span><span>국가</span><span>조순위</span><span>승</span><span>패</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span><span>결과</span></div>${combined.map((r,i)=>combinedRow(r,i,qualifierSet)).join('')}</div>
       <p class="kvl1180-groups-footnote">※ 세트 득실률과 득점 득실률은 입력된 공식 경기결과를 기준으로 자동 계산합니다. 8강 진출 표시는 현재 확정 대진과 연동됩니다.</p>
-    </div>`;
+    </div>
+    <div class="kvl1180-ranking-rule-card"><strong>순위 계산 기준</strong><p>조별 순위는 승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률 순으로 계산합니다. 예선 종합순위는 먼저 각 팀의 <b>조 순위</b>를 비교한 뒤 같은 조 순위끼리 승리 수와 세부 지표를 비교합니다.</p><small>3-0·3-1 승리 3점 / 3-2 승리 2점 / 2-3 패배 1점 / 0-3·1-3 패배 0점. 완전 동률의 최종 처리는 AVC/FIVB 공식 타이브레이크를 우선합니다.</small></div>`;
 }
 function renderBase(){
   $('teamCount')&&($('teamCount').textContent=data.teamCount||12);$('groupCount')&&($('groupCount').textContent=data.groupCount||3);$('matchCount')&&($('matchCount').textContent=data.matchCount||26);$('heroTeamCount')&&($('heroTeamCount').textContent=`${data.teamCount||12}개국`);$('heroScheduleStatus')&&($('heroScheduleStatus').textContent=data.scheduleStatusLabel||'대회 진행 중');
