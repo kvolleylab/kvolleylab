@@ -37,7 +37,7 @@
 .kvl1180-combined-head h3{margin:0;color:#176638;font-size:clamp(20px,1.75vw,27px);font-weight:950;letter-spacing:-.035em}
 .kvl1180-combined-head p{margin:0;color:#708078;font-size:clamp(9px,.72vw,11px);text-align:right}
 .kvl1180-combined-table{overflow:hidden;border:1px solid #dce6e1;border-radius:12px;background:#fff}
-.kvl1180-combined-table-head,.kvl1180-combined-row{display:grid;grid-template-columns:72px minmax(190px,1.6fr) 72px 72px 72px 104px 104px 94px;align-items:center;column-gap:7px}
+.kvl1180-combined-table-head,.kvl1180-combined-row{display:grid;grid-template-columns:68px minmax(176px,1.6fr) 68px 48px 48px 60px 96px 96px 90px;align-items:center;column-gap:6px}
 .kvl1180-combined-table-head{min-height:36px;padding:0 12px;border-bottom:1px solid #dfe7e3;background:#f3f7f5;color:#66786d;font-size:clamp(8px,.64vw,10px);font-weight:950;text-align:center}
 .kvl1180-combined-table-head span:nth-child(2){text-align:left}
 .kvl1180-combined-row{position:relative;min-height:clamp(44px,3.8vw,52px);padding:5px 12px;border-top:1px solid #edf1ef;color:#405348;font-size:clamp(10px,.75vw,12px);font-weight:850;text-align:center}
@@ -54,16 +54,20 @@
 .kvl1180-combined-result{display:inline-flex;align-items:center;justify-content:center;min-width:58px;min-height:25px;padding:0 8px;border-radius:999px;font-size:clamp(9px,.66vw,10px);font-weight:950;white-space:nowrap}
 .kvl1180-combined-result.is-qualified{background:#e3f5e9;color:#17703d}.kvl1180-combined-result.is-out{background:#eef1ef;color:#758078}
 .kvl1180-groups-footnote{margin:10px 2px 0;color:#7a8780;font-size:clamp(9px,.68vw,10px);line-height:1.55}
+.kvl1180-ranking-rule-card{margin-top:clamp(18px,1.8vw,24px);padding:clamp(20px,1.8vw,24px) clamp(22px,2vw,26px);border:1px solid #d5e7dc;border-radius:16px;background:linear-gradient(180deg,#f8fcf9,#f0f9f3);color:#111827}
+.kvl1180-ranking-rule-card>strong{display:block;color:#111827;font-size:clamp(17px,1.35vw,19px);font-weight:950;line-height:1.4}
+.kvl1180-ranking-rule-card p{margin:10px 0 0;color:#111827;font-size:clamp(13px,1vw,15px);font-weight:650;line-height:1.75}
+.kvl1180-ranking-rule-card small{display:block;margin-top:12px;color:#1f2937;font-size:clamp(12px,.9vw,14px);font-weight:650;line-height:1.7}.kvl1180-ranking-rule-card b{color:#111827;font-weight:950}
 
 @media(max-width:1080px) and (min-width:901px){
   .kvl1180-pool-grid{gap:8px}.kvl1180-pool-table-head,.kvl1180-pool-row{grid-template-columns:26px minmax(82px,1fr) 40px 34px 44px 44px;padding-left:6px;padding-right:6px;column-gap:3px}
-  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:58px minmax(160px,1.5fr) 62px 62px 62px 88px 88px 80px;column-gap:5px;padding-left:9px;padding-right:9px}
+  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:56px minmax(150px,1.5fr) 58px 42px 42px 54px 82px 82px 78px;column-gap:5px;padding-left:9px;padding-right:9px}
 }
 @media(max-width:960px) and (min-width:901px){
   .kvl1180-pool-table-head,.kvl1180-pool-row{grid-template-columns:24px minmax(76px,1fr) 36px 31px 40px 40px}.kvl1180-pool-team{gap:4px}.kvl1180-pool-team img{width:23px;height:16px}
-  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:52px minmax(145px,1.4fr) 56px 56px 56px 78px 78px 72px;font-size:9px}
+  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:48px minmax(132px,1.4fr) 52px 38px 38px 48px 72px 72px 68px;column-gap:4px;font-size:9px}
 }
 @media(max-width:900px){
   .kvl1180-groups-status{justify-content:flex-start}.kvl1180-groups-rule{align-items:flex-start;flex-direction:column}.kvl1180-pool-grid{grid-template-columns:1fr}.kvl1180-pool-table-head,.kvl1180-pool-row{grid-template-columns:34px minmax(120px,1fr) 52px 46px 58px 58px}
-  .kvl1180-combined-table{overflow-x:auto}.kvl1180-combined-table-head,.kvl1180-combined-row{min-width:760px}.kvl1180-combined-head{align-items:flex-start;flex-direction:column}.kvl1180-combined-head p{text-align:left}
+  .kvl1180-combined-table{overflow-x:auto}.kvl1180-combined-table-head,.kvl1180-combined-row{min-width:820px}.kvl1180-combined-head{align-items:flex-start;flex-direction:column}.kvl1180-combined-head p{text-align:left}
 }
