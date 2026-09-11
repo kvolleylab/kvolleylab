@@ -1,0 +1,95 @@
+/* K-Volley Lab · PC knockout connector fit v4
+   Exact card-edge geometry for the 4 → 2 → 1 tournament ladder.
+   All horizontal connectors start/end on the card border: no overlap and no protrusion. */
+@media(min-width:901px){
+  .kvl1180-bracket-ladder{
+    --kvl-link-half:clamp(15px,1.5vw,21px);
+    --kvl-link-gap:clamp(30px,3vw,42px);
+    grid-template-columns:minmax(0,1fr) var(--kvl-link-gap) minmax(0,1fr) var(--kvl-link-gap) minmax(0,1fr)!important;
+  }
+
+  /* Keep 4 / 2 / 1 match centres on the same quarter-point geometry. */
+  .kvl1180-round-body{min-height:clamp(680px,63cqw,720px)!important}
+  .kvl1180-round-qf .kvl1180-round-body{grid-template-rows:1fr 1fr!important;gap:0!important}
+  .kvl1180-qf-pair{position:relative!important;display:grid!important;grid-template-rows:1fr 1fr!important;align-items:center!important;align-content:stretch!important;gap:0!important}
+  .kvl1180-qf-pair .kvl1180-match,.kvl1180-round-sf .kvl1180-match{align-self:center!important}
+  .kvl1180-round-sf .kvl1180-round-body{position:relative!important;grid-template-rows:1fr 1fr!important;gap:0!important}
+
+  /* QF cards → first vertical trunk. */
+  .kvl1180-qf-pair .kvl1180-match::after{
+    content:""!important;
+    position:absolute!important;
+    right:calc(0px - var(--kvl-link-half))!important;
+    top:50%!important;
+    width:var(--kvl-link-half)!important;
+    border-top:2px solid #8fbea0!important;
+  }
+  .kvl1180-qf-pair::after{
+    content:""!important;
+    position:absolute!important;
+    right:calc(0px - var(--kvl-link-half))!important;
+    top:25%!important;
+    bottom:25%!important;
+    border-right:2px solid #8fbea0!important;
+  }
+
+  /* First vertical trunk → SF card border. */
+  .kvl1180-qf-pair::before{
+    content:""!important;
+    position:absolute!important;
+    right:calc(0px - var(--kvl-link-gap))!important;
+    top:50%!important;
+    width:var(--kvl-link-half)!important;
+    border-top:2px solid #8fbea0!important;
+  }
+  .kvl1180-round-sf .kvl1180-match::before{
+    content:""!important;
+    position:absolute!important;
+    left:calc(0px - var(--kvl-link-half))!important;
+    top:50%!important;
+    width:var(--kvl-link-half)!important;
+    border-top:2px solid #8fbea0!important;
+  }
+
+  /* SF cards → second vertical trunk. */
+  .kvl1180-round-sf .kvl1180-match::after{
+    content:""!important;
+    position:absolute!important;
+    right:calc(0px - var(--kvl-link-half))!important;
+    top:50%!important;
+    width:var(--kvl-link-half)!important;
+    border-top:2px solid #8fbea0!important;
+  }
+  .kvl1180-round-sf .kvl1180-round-body::after{
+    content:""!important;
+    position:absolute!important;
+    right:calc(0px - var(--kvl-link-half))!important;
+    top:25%!important;
+    bottom:25%!important;
+    border-right:2px solid #8fbea0!important;
+  }
+
+  /* Second vertical trunk → FINAL card border. */
+  .kvl1180-round-sf .kvl1180-round-body::before{
+    content:""!important;
+    position:absolute!important;
+    right:calc(0px - var(--kvl-link-gap))!important;
+    top:50%!important;
+    width:var(--kvl-link-half)!important;
+    border-top:2px solid #8fbea0!important;
+  }
+  .kvl1180-round-final .kvl1180-match::before{
+    content:""!important;
+    position:absolute!important;
+    left:calc(0px - var(--kvl-link-half))!important;
+    top:50%!important;
+    width:var(--kvl-link-half)!important;
+    border-top:2px solid #8fbea0!important;
+  }
+
+  /* Old gap-line fallback must never render over the exact geometry. */
+  .kvl1180-bracket-gap::before{display:none!important}
+
+  /* Keep lines outside the cards while card content remains clipped by its own layout. */
+  .kvl1180-match{overflow:visible!important}
+}
