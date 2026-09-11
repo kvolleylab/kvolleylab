@@ -1,0 +1,60 @@
+/* K-Volley Lab · PC competition participants prototype v2 */
+.kvl1180-participant-order-note{display:flex;align-items:center;gap:10px;margin:-6px 0 14px;padding:10px 13px;border:1px solid #d9e6df;border-radius:10px;background:#f8fbf9;color:#5d7065;font-size:clamp(11.5px,1.02cqw,13px);font-weight:780;line-height:1.45}
+.kvl1180-participant-order-note strong{color:#176638;font-weight:1000;white-space:nowrap}
+
+.kvl1180-roster-headline{align-items:center}
+.kvl1180-roster-headline>div:first-child{min-width:0}
+.kvl1180-roster-headline>div:first-child p{margin-top:4px}
+.kvl1180-print-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.kvl1180-print-actions button{min-height:36px;padding:0 13px;border:1px solid #bcd3c4;border-radius:9px;background:#fff;color:#176638;font-size:clamp(11.5px,1.02cqw,13px);font-weight:950;cursor:pointer}
+.kvl1180-print-actions button:hover{border-color:#2f8a52;background:#eff8f2}
+.kvl1180-print-actions button:last-child{background:#176638;border-color:#176638;color:#fff}
+.kvl1180-print-actions button:last-child:hover{background:#12562f}
+
+.kvl1180-roster-table-head,.kvl1180-roster-row{grid-template-columns:58px minmax(155px,1.45fr) minmax(110px,1fr) 62px 112px 70px minmax(150px,1.3fr) 58px!important;column-gap:7px!important}
+.kvl1180-roster-table-head{padding-left:12px!important;padding-right:12px!important;font-size:clamp(10.5px,.94cqw,12px)!important}
+.kvl1180-roster-table-head span:nth-child(7){text-align:left}
+.kvl1180-roster-row{padding-left:12px!important;padding-right:12px!important;font-size:clamp(11.5px,1.03cqw,13px)!important}
+.kvl1180-roster-club{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;font-size:clamp(11.5px,1.03cqw,13.5px);font-weight:900}
+.kvl1180-roster-club.is-confirmed{color:#17365d}
+.kvl1180-roster-club.is-free-agent{color:#8a5d00}
+.kvl1180-roster-club.is-unknown{color:#8a9890;font-weight:800}
+.kvl1180-roster-vb{display:flex;align-items:center;justify-content:center}
+.kvl1180-vb-link{display:inline-flex;align-items:center;justify-content:center;gap:1px;min-width:42px;height:28px;padding:0 6px;border:1px solid #9fc5ad;border-radius:7px;background:#f6fbf8;color:#176638;text-decoration:none;font-size:11px;font-weight:1000;line-height:1}
+.kvl1180-vb-link:hover{border-color:#2f8a52;background:#eaf7ef}
+.kvl1180-vb-link b{font-size:10px}.kvl1180-vb-empty{color:#a4afa9;font-weight:800}
+.kvl1180-roster-source b{color:#405b4a;font-weight:950}
+
+#kvl1180PrintRoot{display:none}
+@media(max-width:1080px) and (min-width:901px){
+  .kvl1180-roster-table-head,.kvl1180-roster-row{grid-template-columns:50px minmax(128px,1.35fr) minmax(92px,.95fr) 56px 102px 62px minmax(118px,1.12fr) 50px!important;column-gap:5px!important;padding-left:8px!important;padding-right:8px!important}
+  .kvl1180-roster-name strong{font-size:12.5px!important}.kvl1180-roster-korean{font-size:12px!important}.kvl1180-roster-club{font-size:11.5px}
+  .kvl1180-vb-link{min-width:38px;padding:0 4px}
+}
+@media(max-width:900px){
+  .kvl1180-participant-order-note{align-items:flex-start;flex-direction:column;gap:3px}
+  .kvl1180-roster-headline{align-items:flex-start!important}.kvl1180-print-actions{justify-content:flex-start}
+  .kvl1180-roster-table-head,.kvl1180-roster-row{min-width:980px!important}
+}
+
+@page{size:A4 landscape;margin:9mm}
+@media print{
+  html,body{background:#fff!important}
+  body.kvl-print-participants-active>*:not(#kvl1180PrintRoot){display:none!important}
+  body.kvl-print-participants-active #kvl1180PrintRoot{display:block!important}
+  #kvl1180PrintRoot{font-family:Arial,"Noto Sans KR",sans-serif;color:#182f24}
+  .kvl-print-sheet{box-sizing:border-box;display:flex;flex-direction:column;width:100%;height:188mm;page-break-after:always;break-after:page;overflow:hidden;background:#fff}
+  .kvl-print-sheet:last-child{page-break-after:auto;break-after:auto}
+  .kvl-print-head{display:flex;align-items:center;justify-content:space-between;gap:12mm;min-height:24mm;padding:0 1mm 4mm;border-bottom:1.2pt solid #176638}
+  .kvl-print-identity{display:flex;align-items:center;gap:5mm;min-width:0}.kvl-print-identity img{width:19mm;height:13mm;object-fit:contain;border:0.6pt solid #d4ddd8;border-radius:2mm;background:#fff}
+  .kvl-print-identity p{margin:0 0 1.5mm;color:#6f7d75;font-size:7.6pt;font-weight:700;letter-spacing:.02em}.kvl-print-identity h1{margin:0;color:#17365d;font-size:17pt;line-height:1.05}.kvl-print-identity h1 small{font-size:9pt;color:#64736a;font-weight:700}
+  .kvl-print-meta{text-align:right;white-space:nowrap}.kvl-print-meta strong{display:block;color:#176638;font-size:10pt}.kvl-print-meta span{display:block;margin-top:1.5mm;color:#6c7a72;font-size:8pt;font-weight:700}
+  .kvl-print-table{margin-top:4mm;border:0.7pt solid #cfdad4;border-radius:2mm;overflow:hidden}
+  .kvl-print-table-head,.kvl-print-row{display:grid;grid-template-columns:13mm 51mm 35mm 17mm 29mm 18mm minmax(54mm,1fr);align-items:center;column-gap:1.6mm;padding:0 2.4mm}
+  .kvl-print-table-head{min-height:9mm;background:#edf5f0;border-bottom:0.7pt solid #cfdad4;color:#42574b;font-size:8.2pt;font-weight:900;text-align:center}
+  .kvl-print-table-head span:nth-child(2),.kvl-print-table-head span:nth-child(3),.kvl-print-table-head span:nth-child(7){text-align:left}
+  .kvl-print-row{min-height:9.25mm;border-top:0.45pt solid #e5ece8;font-size:8.7pt;font-weight:700;text-align:center}
+  .kvl-print-row:first-of-type{border-top:0}.kvl-print-row span:nth-child(1){color:#176638;font-weight:900}.kvl-print-row span:nth-child(2){color:#17365d;font-weight:900}.kvl-print-row span:nth-child(2),.kvl-print-row span:nth-child(3),.kvl-print-row span:nth-child(7){overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+  .kvl-print-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:10mm;margin-top:auto;padding-top:3mm;color:#6f7d75;font-size:7.4pt;font-weight:700}
+  .kvl-print-foot span:last-child{color:#17365d;font-weight:900}
+}
