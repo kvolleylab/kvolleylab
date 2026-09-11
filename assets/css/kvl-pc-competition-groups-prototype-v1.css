@@ -1,4 +1,4 @@
-/* K-Volley Lab · PC competition groups standings prototype v1.1 · readability scale */
+/* K-Volley Lab · PC competition groups standings prototype v1.2 · readability + QF seed pair */
 .kvl1180-groups-view{container-type:inline-size;padding-bottom:clamp(22px,2vw,32px)}
 .kvl1180-groups-view .kvl1180-section-head{margin-bottom:clamp(14px,1.3vw,19px)}
 .kvl1180-groups-status{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
@@ -37,7 +37,7 @@
 .kvl1180-combined-head h3{margin:0;color:#176638;font-size:clamp(25px,2.2cqw,30px);font-weight:950;letter-spacing:-.035em}
 .kvl1180-combined-head p{margin:0;color:#5f7167;font-size:clamp(11.5px,1.03cqw,13.5px);font-weight:700;text-align:right}
 .kvl1180-combined-table{overflow:hidden;border:1px solid #dce6e1;border-radius:12px;background:#fff}
-.kvl1180-combined-table-head,.kvl1180-combined-row{display:grid;grid-template-columns:68px minmax(176px,1.6fr) 68px 48px 48px 60px 96px 96px 90px;align-items:center;column-gap:6px}
+.kvl1180-combined-table-head,.kvl1180-combined-row{display:grid;grid-template-columns:68px minmax(168px,1.6fr) 68px 48px 48px 60px 94px 94px 126px;align-items:center;column-gap:6px}
 .kvl1180-combined-table-head{min-height:42px;padding:0 12px;border-bottom:1px solid #dfe7e3;background:#f3f7f5;color:#586b60;font-size:clamp(10.5px,.98cqw,12px);font-weight:950;text-align:center}
 .kvl1180-combined-table-head span:nth-child(2){text-align:left}
 .kvl1180-combined-row{position:relative;min-height:clamp(52px,4.55cqw,58px);padding:7px 12px;border-top:1px solid #edf1ef;color:#354b3f;font-size:clamp(11.5px,1.06cqw,13.5px);font-weight:900;text-align:center}
@@ -51,8 +51,18 @@
 .kvl1180-combined-team-copy{min-width:0}.kvl1180-combined-team-copy strong{display:block;overflow:hidden;color:#17365d;font-size:clamp(13px,1.18cqw,15px);font-weight:950;text-overflow:ellipsis;white-space:nowrap}
 .kvl1180-combined-team-copy small{display:block;margin-top:2px;color:#7d8b83;font-size:clamp(9px,.84cqw,10.5px);font-weight:900}
 .kvl1180-combined-pool{font-size:clamp(11.5px,1.02cqw,13px);font-weight:950;color:#4d685b}.kvl1180-combined-stat{font-size:clamp(11.5px,1.04cqw,13px);font-variant-numeric:tabular-nums}
+.kvl1180-combined-row>span:last-child{display:flex;align-items:center;justify-content:center;gap:clamp(5px,.55cqw,8px);min-width:0;white-space:nowrap}
 .kvl1180-combined-result{display:inline-flex;align-items:center;justify-content:center;min-width:62px;min-height:28px;padding:0 9px;border-radius:999px;font-size:clamp(10.5px,.96cqw,12px);font-weight:950;white-space:nowrap}
 .kvl1180-combined-result.is-qualified{background:#e3f5e9;color:#17703d}.kvl1180-combined-result.is-out{background:#eef1ef;color:#66736c}
+.kvl1180-combined-row.is-qualified>span:last-child::after{color:#355f46;font-size:clamp(11.5px,1.02cqw,13.5px);font-weight:1000;font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(2)>span:last-child::after{content:"1-8"}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(3)>span:last-child::after{content:"2-7"}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(4)>span:last-child::after{content:"3-6"}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(5)>span:last-child::after{content:"4-5"}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(6)>span:last-child::after{content:"5-4"}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(7)>span:last-child::after{content:"6-3"}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(8)>span:last-child::after{content:"7-2"}
+.kvl1180-combined-table .kvl1180-combined-row:nth-child(9)>span:last-child::after{content:"8-1"}
 .kvl1180-groups-footnote{margin:13px 2px 0;color:#596a61;font-size:clamp(12.5px,1.08cqw,13.5px);font-weight:700;line-height:1.7}
 .kvl1180-ranking-rule-card{margin-top:clamp(20px,1.9vw,26px);padding:clamp(21px,1.9vw,26px) clamp(23px,2vw,28px);border:1px solid #d5e7dc;border-radius:16px;background:linear-gradient(180deg,#f8fcf9,#f0f9f3);color:#111827}
 .kvl1180-ranking-rule-card>strong{display:block;color:#111827;font-size:clamp(19px,1.55cqw,21px);font-weight:950;line-height:1.4}
@@ -61,13 +71,14 @@
 
 @media(max-width:1080px) and (min-width:901px){
   .kvl1180-pool-grid{gap:7px}.kvl1180-pool-table-head,.kvl1180-pool-row{grid-template-columns:26px minmax(82px,1fr) 40px 34px 44px 44px;padding-left:6px;padding-right:6px;column-gap:3px}
-  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:56px minmax(150px,1.5fr) 58px 42px 42px 54px 82px 82px 78px;column-gap:5px;padding-left:9px;padding-right:9px}
+  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:56px minmax(142px,1.5fr) 58px 42px 42px 54px 80px 80px 112px;column-gap:5px;padding-left:9px;padding-right:9px}
 }
 @media(max-width:960px) and (min-width:901px){
   .kvl1180-pool-table-head,.kvl1180-pool-row{grid-template-columns:24px minmax(76px,1fr) 36px 31px 40px 40px}.kvl1180-pool-team{gap:4px}.kvl1180-pool-team img{width:24px;height:17px}
-  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:48px minmax(132px,1.4fr) 52px 38px 38px 48px 72px 72px 68px;column-gap:4px}
+  .kvl1180-combined-table-head,.kvl1180-combined-row{grid-template-columns:48px minmax(124px,1.4fr) 52px 38px 38px 48px 70px 70px 104px;column-gap:4px}
+  .kvl1180-combined-result{min-width:58px;padding:0 7px}
 }
 @media(max-width:900px){
   .kvl1180-groups-status{justify-content:flex-start}.kvl1180-groups-rule{align-items:flex-start;flex-direction:column}.kvl1180-pool-grid{grid-template-columns:1fr}.kvl1180-pool-table-head,.kvl1180-pool-row{grid-template-columns:34px minmax(120px,1fr) 52px 46px 58px 58px}
-  .kvl1180-combined-table{overflow-x:auto}.kvl1180-combined-table-head,.kvl1180-combined-row{min-width:820px}.kvl1180-combined-head{align-items:flex-start;flex-direction:column}.kvl1180-combined-head p{text-align:left}
+  .kvl1180-combined-table{overflow-x:auto}.kvl1180-combined-table-head,.kvl1180-combined-row{min-width:860px}.kvl1180-combined-head{align-items:flex-start;flex-direction:column}.kvl1180-combined-head p{text-align:left}
 }
