@@ -6,7 +6,7 @@
 
 /* Medal → flag → country → result, matching the women final-ranking hierarchy. */
 .kvl1180-final-rank{position:relative;display:grid!important;place-items:center!important;flex:0 0 auto;width:clamp(45px,4.15cqw,52px)!important;height:clamp(45px,4.15cqw,52px)!important;margin:0 0 clamp(12px,1.05vw,15px);border:3px solid rgba(112,77,5,.16)!important;border-radius:50%!important;background:#f6b443!important;color:transparent!important;font-size:0!important;overflow:visible}
-.kvl1180-final-rank::before{content:"";position:absolute;z-index:-1;top:calc(clamp(45px,4.15cqw,52px) * -.28);left:50%;width:clamp(38px,3.5cqw,44px);height:clamp(22px,2cqw,26px);transform:translateX(-50%);clip-path:polygon(0 0,42% 0,50% 38%,58% 0,100% 0,70% 100%,30% 100%);background:#3e86de}
+.kvl1180-final-rank::before{content:"";position:absolute;z-index:-1;top:-13px;left:50%;width:clamp(38px,3.5cqw,44px);height:clamp(22px,2cqw,26px);transform:translateX(-50%);clip-path:polygon(0 0,42% 0,50% 38%,58% 0,100% 0,70% 100%,30% 100%);background:#3e86de}
 .kvl1180-final-rank::after{content:"1";color:#8b5a00;font-size:clamp(18px,1.65cqw,21px);font-weight:1000;line-height:1}
 .kvl1180-final-card:nth-child(2) .kvl1180-final-rank{border-color:#c9c2d2!important;background:#ddd7e7!important}.kvl1180-final-card:nth-child(2) .kvl1180-final-rank::after{content:"2";color:#6b607a}
 .kvl1180-final-card:nth-child(3) .kvl1180-final-rank{border-color:#c98659!important;background:#c98b63!important}.kvl1180-final-card:nth-child(3) .kvl1180-final-rank::after{content:"3";color:#6f3f22}
@@ -36,20 +36,20 @@
 
 /* 4 → 2 → 1 ladder: force match centres onto exact quarter points and overlap every joint. */
 @media(min-width:901px){
-  .kvl1180-bracket-ladder{--kvl-link-gap:clamp(30px,3vw,42px);grid-template-columns:minmax(0,1fr) var(--kvl-link-gap) minmax(0,1fr) var(--kvl-link-gap) minmax(0,1fr)}
+  .kvl1180-bracket-ladder{grid-template-columns:minmax(0,1fr) clamp(30px,3vw,42px) minmax(0,1fr) clamp(30px,3vw,42px) minmax(0,1fr)}
   .kvl1180-round-body{min-height:clamp(680px,63cqw,720px)!important}
   .kvl1180-round-qf .kvl1180-round-body{grid-template-rows:1fr 1fr!important;gap:0!important}
   .kvl1180-qf-pair{display:grid!important;grid-template-rows:1fr 1fr!important;align-items:center!important;align-content:stretch!important;gap:0!important}
   .kvl1180-qf-pair .kvl1180-match,.kvl1180-round-sf .kvl1180-match{align-self:center!important}
   .kvl1180-round-sf .kvl1180-round-body{grid-template-rows:1fr 1fr!important;gap:0!important}
 
-  .kvl1180-qf-pair::after{right:calc(var(--kvl-link-gap) * -.5)!important;top:25%!important;bottom:25%!important;border-right:2px solid #8fbea0!important}
-  .kvl1180-qf-pair::before{right:calc(var(--kvl-link-gap) * -1 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
-  .kvl1180-qf-pair .kvl1180-match::after{right:calc(var(--kvl-link-gap) * -.5 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
-  .kvl1180-round-sf .kvl1180-round-body::after{right:calc(var(--kvl-link-gap) * -.5)!important;top:25%!important;bottom:25%!important;border-right:2px solid #8fbea0!important}
-  .kvl1180-round-sf .kvl1180-round-body::before{right:calc(var(--kvl-link-gap) * -1 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
-  .kvl1180-round-sf .kvl1180-match::before,.kvl1180-round-final .kvl1180-match::before{left:calc(var(--kvl-link-gap) * -.5 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
-  .kvl1180-round-sf .kvl1180-match::after{right:calc(var(--kvl-link-gap) * -.5 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-qf-pair::after{right:calc(0px - clamp(15px,1.5vw,21px))!important;top:25%!important;bottom:25%!important;border-right:2px solid #8fbea0!important}
+  .kvl1180-qf-pair::before{right:calc(-3px - clamp(30px,3vw,42px))!important;top:50%!important;width:calc(clamp(15px,1.5vw,21px) + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-qf-pair .kvl1180-match::after{right:calc(-3px - clamp(15px,1.5vw,21px))!important;top:50%!important;width:calc(clamp(15px,1.5vw,21px) + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-round-body::after{right:calc(0px - clamp(15px,1.5vw,21px))!important;top:25%!important;bottom:25%!important;border-right:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-round-body::before{right:calc(-3px - clamp(30px,3vw,42px))!important;top:50%!important;width:calc(clamp(15px,1.5vw,21px) + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-match::before,.kvl1180-round-final .kvl1180-match::before{left:calc(-3px - clamp(15px,1.5vw,21px))!important;top:50%!important;width:calc(clamp(15px,1.5vw,21px) + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-match::after{right:calc(-3px - clamp(15px,1.5vw,21px))!important;top:50%!important;width:calc(clamp(15px,1.5vw,21px) + 6px)!important;border-top:2px solid #8fbea0!important}
 }
 
 @media(max-width:1080px) and (min-width:901px){
