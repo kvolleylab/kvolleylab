@@ -1,0 +1,60 @@
+/* K-Volley Lab · AVC men PC final ranking v3 · women final-ranking visual standard */
+.kvl1180-final-block{padding:clamp(20px,1.8vw,26px);background:#fff}
+.kvl1180-final-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.15vw,16px)}
+.kvl1180-final-card{display:flex!important;flex-direction:column;align-items:center;justify-content:center;box-sizing:border-box;min-height:clamp(228px,21cqw,260px);padding:clamp(20px,1.8vw,26px) clamp(12px,1.05vw,16px);border:1px solid #d8e6de;border-radius:18px;background:#f8fbf9;box-shadow:none;text-align:center}
+.kvl1180-final-card.is-champion{border-color:#d8ad49;background:#fffaf0;box-shadow:0 8px 22px rgba(177,128,20,.08)}
+
+/* Medal → flag → country → result, matching the women final-ranking hierarchy. */
+.kvl1180-final-rank{position:relative;display:grid!important;place-items:center!important;flex:0 0 auto;width:clamp(45px,4.15cqw,52px)!important;height:clamp(45px,4.15cqw,52px)!important;margin:0 0 clamp(12px,1.05vw,15px);border:3px solid rgba(112,77,5,.16)!important;border-radius:50%!important;background:#f6b443!important;color:transparent!important;font-size:0!important;overflow:visible}
+.kvl1180-final-rank::before{content:"";position:absolute;z-index:-1;top:calc(clamp(45px,4.15cqw,52px) * -.28);left:50%;width:clamp(38px,3.5cqw,44px);height:clamp(22px,2cqw,26px);transform:translateX(-50%);clip-path:polygon(0 0,42% 0,50% 38%,58% 0,100% 0,70% 100%,30% 100%);background:#3e86de}
+.kvl1180-final-rank::after{content:"1";color:#8b5a00;font-size:clamp(18px,1.65cqw,21px);font-weight:1000;line-height:1}
+.kvl1180-final-card:nth-child(2) .kvl1180-final-rank{border-color:#c9c2d2!important;background:#ddd7e7!important}.kvl1180-final-card:nth-child(2) .kvl1180-final-rank::after{content:"2";color:#6b607a}
+.kvl1180-final-card:nth-child(3) .kvl1180-final-rank{border-color:#c98659!important;background:#c98b63!important}.kvl1180-final-card:nth-child(3) .kvl1180-final-rank::after{content:"3";color:#6f3f22}
+.kvl1180-final-card:nth-child(4) .kvl1180-final-rank{visibility:hidden}
+
+.kvl1180-final-flag{display:grid!important;place-items:center!important;flex:0 0 auto;width:clamp(66px,6.2cqw,78px)!important;height:clamp(46px,4.4cqw,55px)!important;margin:0 0 clamp(11px,1vw,14px)}
+.kvl1180-final-flag img{display:block;width:100%;height:100%;object-fit:contain;border:1px solid #dbe5df;border-radius:7px;background:#fff}
+.kvl1180-final-flag.is-pending{width:clamp(58px,5.4cqw,68px)!important;height:clamp(46px,4.4cqw,55px)!important;border:1px dashed #bfd0c5!important;border-radius:8px!important;background:#fbfdfc!important;color:#82938a!important;font-size:clamp(14px,1.25cqw,16px)!important}
+.kvl1180-final-copy{display:flex!important;min-width:0;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.kvl1180-final-copy strong{max-width:100%;overflow:hidden;color:#17365d;font-size:clamp(18px,1.65cqw,21px)!important;font-weight:1000!important;line-height:1.2!important;text-overflow:ellipsis;white-space:nowrap}
+.kvl1180-final-copy::after{content:none!important;display:none!important}
+.kvl1180-final-copy small{display:block!important;margin:clamp(7px,.65vw,9px) 0 0!important;color:#55685d;font-size:0!important;font-weight:950!important;line-height:1.4!important;white-space:normal!important;word-break:keep-all}
+.kvl1180-final-copy small::before,.kvl1180-final-copy small::after{display:block;font-size:clamp(13.5px,1.22cqw,15.5px);font-weight:950;line-height:1.42}
+.kvl1180-final-card:nth-child(1) .kvl1180-final-copy small::before{content:"우승 · LA28 올림픽 직행";color:#9b6a00}
+.kvl1180-final-card:nth-child(1) .kvl1180-final-copy small::after{content:"2027 FIVB 월드컵 진출";margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
+.kvl1180-final-card:nth-child(2) .kvl1180-final-copy small::before{content:"준우승"}
+.kvl1180-final-card:nth-child(2) .kvl1180-final-copy small::after{content:"2027 FIVB 월드컵 진출";margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
+.kvl1180-final-card:nth-child(3) .kvl1180-final-copy small::before{content:"3위"}
+.kvl1180-final-card:nth-child(3) .kvl1180-final-copy small::after{content:"2027 FIVB 월드컵 진출";margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
+.kvl1180-final-card:nth-child(4) .kvl1180-final-copy small::before{content:"4위"}
+.kvl1180-final-card:nth-child(4) .kvl1180-final-copy small::after{content:none}
+
+/* Use the full card footprint for readable bracket typography. */
+.kvl1180-round-title{min-height:44px;display:flex;align-items:center;justify-content:center;font-size:clamp(15px,1.35cqw,17px)!important}
+.kvl1180-match-head{min-height:42px!important;font-size:clamp(12px,1.08cqw,13.5px)!important}.kvl1180-match-head strong{font-size:clamp(13px,1.16cqw,14.5px)!important}
+.kvl1180-bracket-team{min-height:clamp(58px,5.1cqw,66px)!important}.kvl1180-bracket-copy strong{font-size:clamp(15px,1.35cqw,17px)!important}.kvl1180-bracket-copy small{font-size:clamp(11px,1cqw,12.5px)!important}.kvl1180-team-score{font-size:clamp(19px,1.7cqw,22px)!important}.kvl1180-match-sets{font-size:clamp(11.5px,1.03cqw,13px)!important}
+
+/* 4 → 2 → 1 ladder: force match centres onto exact quarter points and overlap every joint. */
+@media(min-width:901px){
+  .kvl1180-bracket-ladder{--kvl-link-gap:clamp(30px,3vw,42px);grid-template-columns:minmax(0,1fr) var(--kvl-link-gap) minmax(0,1fr) var(--kvl-link-gap) minmax(0,1fr)}
+  .kvl1180-round-body{min-height:clamp(680px,63cqw,720px)!important}
+  .kvl1180-round-qf .kvl1180-round-body{grid-template-rows:1fr 1fr!important;gap:0!important}
+  .kvl1180-qf-pair{display:grid!important;grid-template-rows:1fr 1fr!important;align-items:center!important;align-content:stretch!important;gap:0!important}
+  .kvl1180-qf-pair .kvl1180-match,.kvl1180-round-sf .kvl1180-match{align-self:center!important}
+  .kvl1180-round-sf .kvl1180-round-body{grid-template-rows:1fr 1fr!important;gap:0!important}
+
+  .kvl1180-qf-pair::after{right:calc(var(--kvl-link-gap) * -.5)!important;top:25%!important;bottom:25%!important;border-right:2px solid #8fbea0!important}
+  .kvl1180-qf-pair::before{right:calc(var(--kvl-link-gap) * -1 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-qf-pair .kvl1180-match::after{right:calc(var(--kvl-link-gap) * -.5 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-round-body::after{right:calc(var(--kvl-link-gap) * -.5)!important;top:25%!important;bottom:25%!important;border-right:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-round-body::before{right:calc(var(--kvl-link-gap) * -1 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-match::before,.kvl1180-round-final .kvl1180-match::before{left:calc(var(--kvl-link-gap) * -.5 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
+  .kvl1180-round-sf .kvl1180-match::after{right:calc(var(--kvl-link-gap) * -.5 - 3px)!important;top:50%!important;width:calc(var(--kvl-link-gap) * .5 + 6px)!important;border-top:2px solid #8fbea0!important}
+}
+
+@media(max-width:1080px) and (min-width:901px){
+  .kvl1180-final-card{min-height:220px;padding-left:9px;padding-right:9px}.kvl1180-final-copy strong{font-size:17px!important}.kvl1180-final-copy small::before{font-size:13px}.kvl1180-final-copy small::after{font-size:12px!important}
+}
+@media(max-width:900px){
+  .kvl1180-final-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.kvl1180-final-card{min-height:210px}.kvl1180-final-copy strong{font-size:18px!important}
+}
