@@ -14,9 +14,9 @@
   "teamCount": 12,
   "groupCount": 3,
   "matchCount": 26,
-  "status": "ongoing",
-  "scheduleStatus": "live",
-  "scheduleStatusLabel": "8강 진행 · 일정 변경 반영",
+  "status": "completed",
+  "scheduleStatus": "completed",
+  "scheduleStatusLabel": "대회 종료 · 최종 결과 반영",
   "timezoneNote": "일본 현지시간과 한국시간은 동일합니다 (UTC+9).",
   "competitionSystem": {
     "poolFormat": "3개 조 각 4팀 단일 라운드로빈",
@@ -58,14 +58,14 @@
     {"id":"M16","officialNo":16,"date":"2026-09-09","time":"10:00","teamA":"바레인","teamB":"오만","stage":"조별리그","group":"A","setsA":3,"setsB":0,"sets":[[25,16],[25,19],[25,23]]},
     {"id":"M17","officialNo":17,"date":"2026-09-09","time":"13:30","teamA":"대만","teamB":"태국","stage":"조별리그","group":"C","setsA":2,"setsB":3,"sets":[[23,25],[25,22],[25,23],[22,25],[10,15]]},
     {"id":"M18","officialNo":18,"date":"2026-09-09","time":"17:00","teamA":"이란","teamB":"중국","stage":"조별리그","group":"B","setsA":3,"setsB":1,"sets":[[25,23],[23,25],[25,22],[25,23]]},
-    {"id":"QF1","date":"2026-09-10","time":"15:30","teamA":"태국","teamB":"호주","stage":"8강","group":"","scheduleChanged":true},
-    {"id":"QF2","date":"2026-09-10","time":"19:30","teamA":"이란","teamB":"대만","stage":"8강","group":"","scheduleChanged":true},
-    {"id":"QF3","date":"2026-09-11","time":"15:30","teamA":"대한민국","teamB":"중국","stage":"8강","group":"","scheduleChanged":true},
-    {"id":"QF4","date":"2026-09-11","time":"19:30","teamA":"인도","teamB":"일본","stage":"8강","group":"","scheduleChanged":true},
-    {"id":"SF1","date":"2026-09-12","time":"15:30","teamA":"TBD","teamB":"TBD","stage":"준결승","group":""},
-    {"id":"SF2","date":"2026-09-12","time":"19:30","teamA":"TBD","teamB":"TBD","stage":"준결승","group":""},
-    {"id":"3RD","date":"2026-09-13","time":"15:30","teamA":"TBD","teamB":"TBD","stage":"3위결정전","group":""},
-    {"id":"FINAL","date":"2026-09-13","time":"19:30","teamA":"TBD","teamB":"TBD","stage":"결승","group":""}
+    {"id":"QF1","officialNo":19,"date":"2026-09-11","time":"19:30","teamA":"일본","teamB":"인도","stage":"8강","group":"","scheduleChanged":true,"setsA":3,"setsB":0,"sets":[[25,17],[25,15],[25,19]]},
+    {"id":"QF2","officialNo":20,"date":"2026-09-10","time":"19:30","teamA":"대한민국","teamB":"중국","stage":"8강","group":"","scheduleChanged":true,"setsA":3,"setsB":1,"sets":[[17,25],[25,21],[25,22],[29,27]]},
+    {"id":"QF3","officialNo":21,"date":"2026-09-11","time":"15:30","teamA":"이란","teamB":"대만","stage":"8강","group":"","scheduleChanged":true,"setsA":3,"setsB":1,"sets":[[25,19],[25,19],[21,25],[25,18]]},
+    {"id":"QF4","officialNo":22,"date":"2026-09-10","time":"15:30","teamA":"태국","teamB":"호주","stage":"8강","group":"","scheduleChanged":true,"setsA":0,"setsB":3,"sets":[[22,25],[24,26],[19,25]]},
+    {"id":"SF1","officialNo":23,"date":"2026-09-12","time":"19:30","teamA":"일본","teamB":"대한민국","stage":"준결승","group":"","setsA":3,"setsB":0,"sets":[[25,13],[25,11],[25,14]]},
+    {"id":"SF2","officialNo":24,"date":"2026-09-12","time":"15:30","teamA":"이란","teamB":"호주","stage":"준결승","group":"","setsA":3,"setsB":1,"sets":[[25,21],[17,25],[25,17],[25,22]]},
+    {"id":"3RD","officialNo":25,"date":"2026-09-13","time":"15:30","teamA":"대한민국","teamB":"호주","stage":"3위결정전","group":"","setsA":3,"setsB":2,"sets":[[25,22],[25,21],[15,25],[21,25],[15,10]]},
+    {"id":"FINAL","officialNo":26,"date":"2026-09-13","time":"19:30","teamA":"일본","teamB":"이란","stage":"결승","group":"","setsA":3,"setsB":0,"sets":[[25,21],[25,19],[25,22]]}
   ],
   "sources": [
     {"type":"official","label":"Volleyball World · AVC Men's Continental 2026","url":"https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/"},
@@ -78,9 +78,10 @@
   "notes": [
     "각 조 상위 2팀과 성적이 좋은 조 3위 2팀이 8강에 진출합니다.",
     "8강 대진 및 경기 배치는 조별리그 종료 후 공식 발표에 따라 확정되었습니다.",
-    "[일정 변경 · 2026-09-10 반영] 8강 일정이 대진 확정 과정에서 조정되었습니다. 현재 공식 발표 기준: 9/10 15:30 태국-호주, 19:30 이란-대만 / 9/11 15:30 대한민국-중국, 19:30 인도-일본. 구체적인 변경 사유는 공식적으로 별도 발표되지 않았습니다.",
+    "[일정 변경 · 최종 반영] 8강 실제 경기 일정: 9/10 15:30 태국-호주, 19:30 대한민국-중국 / 9/11 15:30 이란-대만, 19:30 일본-인도.",
     "K-Volley Lab은 일정 변경 이력을 보존하기 위해 해당 8강 경기에 scheduleChanged 표시를 적용합니다.",
-    "조별리그 18경기 결과와 세트별 점수 반영 완료.",
+    "조별리그 18경기와 결선 8경기, 총 26경기 결과 및 세트별 점수 반영 완료.",
+    "최종 순위: 1위 일본, 2위 이란, 3위 대한민국, 4위 호주.",
     "선수명단은 최종 명단 검수가 완료된 뒤 별도로 공개합니다."
   ]
 }
