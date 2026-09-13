@@ -129,7 +129,7 @@ body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"
 }
 body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"]:not(.kvl1180-stakes-card) .kvl1180-section-head>p::after{
   content:"LA28 올림픽 직행";
-  color:#65766c;
+  color:#B8860B;
   font-size:clamp(11px,.98vw,13px);
-  font-weight:850;
+  font-weight:900;
 }
