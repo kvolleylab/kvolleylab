@@ -108,3 +108,28 @@ body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-pool-l{color:#6f7f76}
     grid-template-columns:34px minmax(120px,1fr) 42px 42px 46px 58px 58px;
   }
 }
+
+/* 2026-09-14 · Tournament completed: mirror the women's overview champion summary. */
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"]:not(.kvl1180-stakes-card) .kvl1180-section-head>p{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:3px;
+  margin:0;
+  font-size:0;
+  line-height:1.2;
+  text-align:right;
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"]:not(.kvl1180-stakes-card) .kvl1180-section-head>p::before{
+  content:"우승 일본";
+  color:#176638;
+  font-size:clamp(15px,1.25vw,18px);
+  font-weight:1000;
+  letter-spacing:-.025em;
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"]:not(.kvl1180-stakes-card) .kvl1180-section-head>p::after{
+  content:"LA28 올림픽 직행";
+  color:#65766c;
+  font-size:clamp(11px,.98vw,13px);
+  font-weight:850;
+}
