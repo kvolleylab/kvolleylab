@@ -19,8 +19,21 @@ body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-sect
   line-height:1.45;
 }
 body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-stake-brand{
-  font-size:clamp(14px,1.3vw,17px);
+  font-size:clamp(15px,1.42vw,19px);
+  font-weight:1000;
+  line-height:1.05;
+  letter-spacing:-.035em;
+  padding:4px 0 5px;
+  border-bottom:3px solid currentColor;
+  text-shadow:0 1px 0 rgba(255,255,255,.75);
 }
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-stake-brand .kvl1180-icon{
+  width:clamp(25px,2.15vw,30px);
+  height:clamp(25px,2.15vw,30px);
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-stake.is-la .kvl1180-stake-brand{color:#8b5400}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-stake.is-wc .kvl1180-stake-brand{color:#0455ad}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-stake.is-wr .kvl1180-stake-brand{color:#08783e}
 body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-pill{
   font-size:clamp(11px,.95vw,13px);
   padding:5px clamp(7px,.72vw,10px);
