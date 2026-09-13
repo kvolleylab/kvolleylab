@@ -24,7 +24,11 @@ body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-stak
   line-height:1.05;
   letter-spacing:-.035em;
   padding:4px 0 5px;
-  border-bottom:3px solid currentColor;
+  text-decoration-line:underline;
+  text-decoration-thickness:3px;
+  text-underline-offset:5px;
+  text-decoration-color:currentColor;
+  text-decoration-skip-ink:auto;
   text-shadow:0 1px 0 rgba(255,255,255,.75);
 }
 body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-stakes-card .kvl1180-stake-brand .kvl1180-icon{
