@@ -2,7 +2,7 @@
    Source: Drive tournament MASTER + avc-women-continental-2026.json. */
 (()=>{
 'use strict';
-const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-1';
+const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-2';
 const TEAM_CODE={중국:'CHN',이란:'IRI',대만:'TPE',이라크:'IRQ',태국:'THA',인도네시아:'INA',카자흐스탄:'KAZ',호주:'AUS',일본:'JPN',대한민국:'KOR',베트남:'VIE',홍콩:'HKG'};
 const FINAL_NOTE={
   1:'우승 · LA28 올림픽 직행 · 결승 중국에 3-2',
@@ -22,6 +22,34 @@ function qfMap(){
     out.set(m.teamB,{seed:b,opponentSeed:a,id:m.id});
   });
   return out;
+}
+function enrichTournamentMeta(){
+  const title=document.getElementById('pageTitle');
+  const sub=document.querySelector('.kvl1180-hero-sub');
+  if(title&&data.displayName)title.textContent=data.displayName;
+  if(sub&&data.officialName)sub.textContent=data.officialName;
+
+  const status=document.querySelector('.kvl1180-hero-status');
+  if(status){
+    const badges=status.querySelectorAll('span');
+    if(badges[0])badges[0].textContent=data.status==='completed'?'대회 종료':data.status==='active'?'대회 진행 중':'대회 예정';
+    if(badges[1])badges[1].textContent=`${data.teamCount||12}개국`;
+    const accent=status.querySelector('.is-accent');
+    if(accent&&data.champion)accent.textContent=`우승 ${data.champion}${data.la28Qualifier===data.champion?' · LA28 직행':''}`;
+  }
+
+  const teamCount=document.getElementById('teamCount'),groupCount=document.getElementById('groupCount'),matchCount=document.getElementById('matchCount');
+  if(teamCount)teamCount.textContent=String(data.teamCount??12);
+  if(groupCount)groupCount.textContent=String(data.groupCount??3);
+  if(matchCount)matchCount.textContent=String(data.matchCount??26);
+
+  const venue=document.querySelector('.kvl1180-kpi.is-venue .kvl1180-kpi-copy');
+  if(venue){
+    const strong=venue.querySelector('strong'),small=venue.querySelector('small');
+    const region=[data.hostCountry,data.hostRegion].filter(Boolean).join(' ');
+    if(strong&&region)strong.textContent=region;
+    if(small&&(data.venueKo||data.venue))small.textContent=data.venueKo||data.venue;
+  }
 }
 function enrichOverview(){
   const result=document.querySelector('.kvl1180-view[data-view="overview"] .kvl1180-overview-result');
@@ -89,11 +117,11 @@ function enrichParticipants(){
 function enrichSources(){
   const section=document.querySelector('#resources');
   const count=section?.querySelectorAll('.kvl1180-source').length||0;
-  if(section&&count) section.dataset.sourceCount=String(count);
+  if(section&&count)section.dataset.sourceCount=String(count);
 }
 function apply(){
   if(!data)return;
-  enrichOverview();enrichSchedule();enrichGroups();enrichFinal();enrichParticipants();enrichSources();
+  enrichTournamentMeta();enrichOverview();enrichSchedule();enrichGroups();enrichFinal();enrichParticipants();enrichSources();
 }
 function queue(){clearTimeout(applyTimer);applyTimer=setTimeout(apply,30)}
 fetch(DATA,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(json=>{
