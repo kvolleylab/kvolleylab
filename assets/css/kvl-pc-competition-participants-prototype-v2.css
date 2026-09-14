@@ -15,26 +15,61 @@
 .kvl1180-roster-table-head{padding-left:12px!important;padding-right:12px!important;font-size:clamp(10.5px,.94cqw,12px)!important}
 .kvl1180-roster-table-head span:nth-child(7){text-align:left}
 .kvl1180-roster-row{padding-left:12px!important;padding-right:12px!important;font-size:clamp(11.5px,1.03cqw,13px)!important}
-.kvl1180-roster-club{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;font-size:clamp(11.5px,1.03cqw,13.5px);font-weight:900}
+.kvl1180-roster-club{display:flex;min-width:0;align-items:center;gap:6px;overflow:hidden;text-align:left;font-size:clamp(11.5px,1.03cqw,13.5px);font-weight:900}
 .kvl1180-roster-club.is-confirmed{color:#17365d}
 .kvl1180-roster-club.is-free-agent{color:#8a5d00}
 .kvl1180-roster-club.is-unknown{color:#8a9890;font-weight:800}
+.kvl1180-club-main{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kvl1180-club-country{display:inline-flex;flex:0 0 auto;align-items:center;gap:4px;min-height:22px;padding:2px 6px;border:1px solid #d9e6df;border-radius:999px;background:#f8fbf9;color:#5d7065;font-size:10px;font-weight:900;line-height:1;white-space:nowrap}
+.kvl1180-club-country img{display:block;width:18px;height:12px;object-fit:cover;border:1px solid #e2e8e4;border-radius:2px;background:#fff}
 .kvl1180-roster-vb{display:flex;align-items:center;justify-content:center}
 .kvl1180-vb-link{display:inline-flex;align-items:center;justify-content:center;gap:1px;min-width:42px;height:28px;padding:0 6px;border:1px solid #9fc5ad;border-radius:7px;background:#f6fbf8;color:#176638;text-decoration:none;font-size:11px;font-weight:1000;line-height:1}
 .kvl1180-vb-link:hover{border-color:#2f8a52;background:#eaf7ef}
 .kvl1180-vb-link b{font-size:10px}.kvl1180-vb-empty{color:#a4afa9;font-weight:800}
 .kvl1180-roster-source b{color:#405b4a;font-weight:950}
 
+/* Official sources: same information pattern as AVC women, green theme. */
+.kvl1180-resources-view .kvl1180-section-head{margin-bottom:16px}
+.kvl1180-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kvl1180-source{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;min-height:58px;padding:14px 16px;border:1px solid #d9e6df;border-radius:14px;background:#f8fbf9;overflow:hidden}
+.kvl1180-source strong{min-width:0;overflow:hidden;color:#17365d;font-size:13px;font-weight:950;text-overflow:ellipsis;white-space:nowrap}
+.kvl1180-source a{display:inline-flex;box-sizing:border-box;align-items:center;justify-content:center;max-width:100%;padding:7px 9px;border:1px solid #cfe2d6;border-radius:999px;background:#eef8f1;color:#176638;font-size:11px;font-weight:950;line-height:1;white-space:nowrap;text-decoration:none}
+.kvl1180-source a:hover{border-color:#2f8a52;background:#e5f5ea}
+
 #kvl1180PrintRoot{display:none}
 @media(max-width:1080px) and (min-width:901px){
   .kvl1180-roster-table-head,.kvl1180-roster-row{grid-template-columns:50px minmax(128px,1.35fr) minmax(92px,.95fr) 56px 102px 62px minmax(118px,1.12fr) 50px!important;column-gap:5px!important;padding-left:8px!important;padding-right:8px!important}
   .kvl1180-roster-name strong{font-size:12.5px!important}.kvl1180-roster-korean{font-size:12px!important}.kvl1180-roster-club{font-size:11.5px}
+  .kvl1180-club-country{padding-left:4px;padding-right:4px;font-size:9px}
   .kvl1180-vb-link{min-width:38px;padding:0 4px}
 }
 @media(max-width:900px){
   .kvl1180-participant-order-note{align-items:flex-start;flex-direction:column;gap:3px}
   .kvl1180-roster-headline{align-items:flex-start!important}.kvl1180-print-actions{justify-content:flex-start}
   .kvl1180-roster-table-head,.kvl1180-roster-row{min-width:980px!important}
+}
+@media(max-width:680px){
+  /* Korean-first player identity for Korean readers. */
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-korean{grid-column:2 / 6!important;grid-row:1!important;align-self:center!important;min-width:0!important;overflow:hidden!important;color:#17365d!important;font-size:15px!important;font-weight:1000!important;line-height:1.22!important;text-align:left!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-name{grid-column:2 / 6!important;grid-row:2!important;min-width:0!important;align-self:center!important;text-align:left!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-name strong{display:block!important;overflow:hidden!important;color:#6c7b73!important;font-size:11px!important;font-weight:850!important;line-height:1.2!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-club{display:flex!important;grid-column:2 / 7!important;grid-row:4!important;align-items:center!important;gap:6px!important;flex-wrap:wrap!important;min-width:0!important;margin-top:3px!important;padding-top:6px!important;border-top:1px solid #edf2ef!important;overflow:visible!important;font-size:11px!important;line-height:1.35!important;text-align:left!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-club::before{content:'26-27 소속팀'!important;display:block!important;flex:0 0 100%!important;width:100%!important;margin:0 0 1px!important;color:#7a887f!important;font-size:9px!important;font-weight:850!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-club-main{flex:0 1 auto!important;max-width:100%!important;color:inherit!important;font-size:12px!important;font-weight:950!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-club-country{min-height:21px!important;padding:2px 6px!important;font-size:10px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-club-country img{width:19px!important;height:13px!important}
+
+  /* Official sources: one readable row per source, matching women mobile. */
+  body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-sources{grid-template-columns:1fr!important;gap:7px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-source{grid-template-columns:minmax(0,1fr) auto!important;min-height:48px!important;padding:10px!important;gap:6px!important;border-radius:12px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-source strong{font-size:11px!important;line-height:1.2!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-source a{padding:5px 7px!important;font-size:10px!important;line-height:1!important;white-space:nowrap!important}
+}
+@media(max-width:360px){
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-korean{font-size:14px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-name strong{font-size:10.5px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-club-main{font-size:11px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-club-country{font-size:9px!important}
 }
 
 @page{size:A4 landscape;margin:9mm}
