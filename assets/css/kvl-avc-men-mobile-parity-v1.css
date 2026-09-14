@@ -1,12 +1,14 @@
 /* K-Volley Lab · AVC men mobile parity v1
    2026-09-14 · 390px baseline
    Scope: overview KPI navigation affordance, preliminary combined ranking,
-   final 1-4 cards and knockout cards. Desktop remains untouched. */
+   final 1-4 cards, knockout cards and mobile roster cards. Desktop remains untouched. */
 .kvl-shared-combined-mobile{display:none}
 .kvl1180-overview-result{margin:0!important;text-align:right!important}
 .kvl1180-overview-result strong,.kvl1180-overview-result span{display:block}
 .kvl1180-overview-result strong{color:#176638;font-size:14px;font-weight:1000}
 .kvl1180-overview-result span{margin-top:3px;color:#b8860b;font-size:12px;font-weight:1000}
+/* The semantic result now lives in HTML; suppress the older CSS-generated champion copy. */
+.kvl1180-overview-result::before,.kvl1180-overview-result::after{content:none!important;display:none!important}
 .kvl1180-overview-note{margin-top:18px;padding:18px 20px;border-left:4px solid #2f8a52;border-radius:14px;background:#eff8f2;color:#465e50;font-size:14px;font-weight:700;line-height:1.7}
 .kvl1180-overview-note strong{color:#17365d;font-weight:1000}
 
@@ -99,6 +101,29 @@
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-sets{display:none!important}
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bronze{max-width:none!important;margin-top:14px!important}
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bronze-title{font-size:13px!important}
+
+  /* Participants: convert the PC table into readable player cards on mobile. */
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-print-actions{display:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-block{padding:14px 10px 16px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-headline{display:block!important;margin-bottom:10px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-headline h4{font-size:20px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-headline p{margin-top:4px!important;font-size:10px!important;line-height:1.4!important;text-align:left!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-table{display:grid!important;gap:8px!important;overflow:visible!important;border:0!important;border-radius:0!important;background:transparent!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-table-head{display:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-row{display:grid!important;grid-template-columns:38px auto auto auto minmax(0,1fr) auto!important;grid-template-rows:auto auto auto auto!important;column-gap:7px!important;row-gap:3px!important;box-sizing:border-box!important;width:100%!important;min-width:0!important;min-height:0!important;padding:10px!important;border:1px solid #dce7e1!important;border-radius:12px!important;background:#fff!important;box-shadow:0 3px 10px rgba(23,54,93,.035)!important;text-align:left!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-no{grid-column:1!important;grid-row:1 / span 4!important;display:grid!important;place-items:center!important;align-self:start!important;width:32px!important;height:32px!important;border-radius:50%!important;background:#eaf6ee!important;color:#176638!important;font-size:13px!important;font-weight:1000!important;text-align:center!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-name{grid-column:2 / 6!important;grid-row:1!important;min-width:0!important;align-self:center!important;text-align:left!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-name strong{display:block!important;overflow:hidden!important;color:#17365d!important;font-size:14px!important;font-weight:1000!important;line-height:1.22!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-vb{grid-column:6!important;grid-row:1 / span 2!important;align-self:center!important;justify-self:end!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-vb-link{min-width:40px!important;height:27px!important;padding:0 6px!important;font-size:10px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-korean{grid-column:2 / 6!important;grid-row:2!important;min-width:0!important;overflow:hidden!important;color:#42594c!important;font-size:12px!important;font-weight:900!important;line-height:1.25!important;text-align:left!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-pos{grid-column:2!important;grid-row:3!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;justify-self:start!important;min-width:34px!important;min-height:22px!important;padding:0 6px!important;border-radius:999px!important;background:#eaf6ee!important;color:#176638!important;font-size:10px!important;font-weight:1000!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-dob{grid-column:3!important;grid-row:3!important;align-self:center!important;color:#6a7a71!important;font-size:10.5px!important;font-weight:850!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-height{grid-column:4!important;grid-row:3!important;align-self:center!important;color:#17365d!important;font-size:10.5px!important;font-weight:1000!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-club{grid-column:2 / 7!important;grid-row:4!important;min-width:0!important;margin-top:3px!important;padding-top:6px!important;border-top:1px solid #edf2ef!important;overflow:visible!important;color:#17365d!important;font-size:11px!important;font-weight:900!important;line-height:1.35!important;text-align:left!important;text-overflow:clip!important;white-space:normal!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-club::before{content:'26-27 소속팀 · ';color:#7a887f;font-size:9px;font-weight:850}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-club.is-unknown{color:#89968f!important;font-weight:800!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-source{margin:12px 1px 0!important;font-size:10px!important;line-height:1.55!important}
 }
 
 @media(max-width:360px){
@@ -107,6 +132,10 @@
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-copy strong{font-size:10px!important}
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-copy strong,
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-team-score{font-size:16px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-row{grid-template-columns:36px auto auto auto minmax(0,1fr) auto!important;padding:9px!important;column-gap:5px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-name strong{font-size:13px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-dob,
+  body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-height{font-size:9.5px!important}
 }
 
 /* Mobile bracket cards place both teams side-by-side. The desktop Korea marker becomes a false center divider when Korea is on the right side, so suppress it only in this mobile layout. */
