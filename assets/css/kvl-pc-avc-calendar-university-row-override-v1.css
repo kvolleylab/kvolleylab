@@ -117,3 +117,24 @@
     padding:3px 3px;
   }
 }
+
+/* 2026-09-14 · AVC men hero image trial.
+   Use the first visual mockup as the actual hero background; suppress the earlier CSS-drawn ball/net. */
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
+  background-color:#075b35!important;
+  background-image:linear-gradient(90deg,rgba(2,52,29,.18) 0%,rgba(2,52,29,.10) 48%,rgba(2,52,29,0) 72%),url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-pc-v01.webp")!important;
+  background-size:cover!important;
+  background-position:center right!important;
+  background-repeat:no-repeat!important;
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::before,
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::after{
+  content:none!important;
+  display:none!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
+    background-image:linear-gradient(90deg,rgba(3,61,34,.16) 0%,rgba(3,61,34,.08) 56%,rgba(3,61,34,0) 78%),url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-mobile-v01.webp")!important;
+    background-position:center right!important;
+  }
+}
