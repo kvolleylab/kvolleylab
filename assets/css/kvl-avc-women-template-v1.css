@@ -22,8 +22,18 @@ html body.kvl1180-prototype.kvl1180-women-template[data-avc-gender="men"] .kvl11
 body.kvl1180-women-template .kvl1180-tabs a:hover{background:#fff1f6;color:var(--kvl1180-green)}
 body.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:hover{border-color:#dbaabd;box-shadow:0 9px 20px rgba(132,55,88,.12);transform:translateY(-2px)}
 body.kvl1180-women-template .kvl1180-kpi[data-kvl-target]{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+body.kvl1180-women-template .kvl1180-overview-result{
+  flex:0 0 auto;
+  margin:0!important;
+  padding-left:12px!important;
+  border-left:3px solid #c65382!important;
+  line-height:1.22!important;
+  text-align:right!important;
+}
+body.kvl1180-women-template .kvl1180-overview-result strong,
+body.kvl1180-women-template .kvl1180-overview-result span{display:block}
 body.kvl1180-women-template .kvl1180-overview-result strong{color:#a53d68!important}
-body.kvl1180-women-template .kvl1180-overview-result{border-color:#c65382!important}
+body.kvl1180-women-template .kvl1180-overview-result span{margin-top:3px!important}
 body.kvl1180-women-template .kvl1180-overview-note{border-left-color:#c65382!important;background:#fff3f7!important;color:#684a58!important}
 body.kvl1180-women-template .kvl1180-overview-note strong{color:#17365d!important}
 body.kvl1180-women-template .kvl1180-stake.is-la .kvl1180-stake-brand{color:#c99517!important}
@@ -47,6 +57,8 @@ body.kvl1180-women-template .kvl1180-source a{flex:0 0 auto;padding:6px 9px;bord
   body.kvl1180-women-template .kvl1180-hero-location>span{display:block!important;white-space:nowrap!important}
   body.kvl1180-women-template .kvl1180-hero-location>span+span::before{content:none!important}
   body.kvl1180-women-template .kvl1180-hero-location>span:last-child{padding-right:96px;box-sizing:border-box}
+  body.kvl1180-women-template .kvl1180-overview-result{padding-left:10px!important}
+  body.kvl1180-women-template .kvl1180-overview-result span{margin-top:4px!important}
   body.kvl1180-women-template .kvl1180-kpi.is-venue{min-height:72px!important;padding:12px!important}
   body.kvl1180-women-template .kvl1180-kpi.is-venue .kvl1180-kpi-copy>span{display:block!important;color:#748397!important;font-size:11px!important;font-weight:700!important;line-height:1.3!important}
   body.kvl1180-women-template .kvl1180-kpi.is-venue .kvl1180-kpi-copy strong{display:inline!important;margin:7px 0 0!important;color:#17365d!important;font-size:16px!important;font-weight:900!important;line-height:1.2!important;letter-spacing:-.04em!important;white-space:nowrap!important}
