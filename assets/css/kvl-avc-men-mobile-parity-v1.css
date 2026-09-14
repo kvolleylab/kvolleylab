@@ -93,3 +93,8 @@
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-copy strong,
   body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-team-score{font-size:16px!important}
 }
+
+/* Mobile bracket cards place both teams side-by-side. The desktop Korea marker becomes a false center divider when Korea is on the right side, so suppress it only in this mobile layout. */
+@media(max-width:680px){
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-team.is-korea{box-shadow:none!important}
+}
