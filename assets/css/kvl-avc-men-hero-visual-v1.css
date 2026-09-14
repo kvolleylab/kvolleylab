@@ -1,0 +1,36 @@
+/* K-Volley Lab · AVC men hero visual v1
+   Reference composition: left text-safe zone, large volleyball/hand scene across center-right. */
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
+  background-color:#075b35!important;
+  background-image:
+    linear-gradient(90deg,rgba(2,52,29,.12) 0%,rgba(2,52,29,.07) 40%,rgba(2,52,29,.015) 62%,rgba(2,52,29,0) 78%),
+    url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-pc-v01.webp")!important;
+  background-size:auto,145% auto!important;
+  background-position:center center,135% 50%!important;
+  background-repeat:no-repeat!important;
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::before,
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::after{
+  content:none!important;
+  display:none!important;
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero-copy,
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero-status{
+  position:relative;
+  z-index:2;
+}
+@media(max-width:900px) and (min-width:681px){
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
+    background-size:auto,150% auto!important;
+    background-position:center center,140% 50%!important;
+  }
+}
+@media(max-width:680px){
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
+    background-image:
+      linear-gradient(90deg,rgba(3,61,34,.15) 0%,rgba(3,61,34,.08) 44%,rgba(3,61,34,.015) 68%,rgba(3,61,34,0) 84%),
+      url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-mobile-v01.webp")!important;
+    background-size:auto,130% auto!important;
+    background-position:center center,115% 38%!important;
+  }
+}
