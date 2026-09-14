@@ -5,7 +5,7 @@
   const standalone=path==='international-competition-avc-men-rosters-2026.html';
 
   const DATA='data/competitions/avc-men-continental-2026-rosters.json?v=20260904-1';
-  const CLUBS='data/competitions/avc-men-continental-2026-clubs-2026-27.json?v=20260914-1';
+  const CLUBS='data/competitions/avc-men-continental-2026-clubs-2026-27.json?v=20260914-3';
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const posOrder={S:1,OP:2,OH:3,MB:4,L:5,U:6,'':9};
   const fmtDob=v=>{if(!v)return '생년월일 미확인';const [y,m,d]=String(v).split('-');return y&&m&&d?`${y}.${m}.${d}`:v};
@@ -13,6 +13,9 @@
   const params=()=>new URLSearchParams(location.search);
   const isPrintAll=()=>params().get('print')==='all';
 
+  const COUNTRY_FLAGS={
+    Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱','Türkiye':'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷'
+  };
   const LEAGUE_META={
     'Osaka Bluteon':['🇯🇵','Japan','SV.League Men'],
     'Suntory Sunbirds Osaka':['🇯🇵','Japan','SV.League Men'],
@@ -34,9 +37,6 @@
     'Bengaluru Torpedoes':['🇮🇳','India','Prime Volleyball League'],
     'Kochi Blue Spikers':['🇮🇳','India','Prime Volleyball League'],
     'Chennai Blitz':['🇮🇳','India','Prime Volleyball League'],
-    'Canterbury':['🇳🇿','New Zealand','VNZ Region'],
-    'Bay of Plenty':['🇳🇿','New Zealand','VNZ Region'],
-    'North Harbour':['🇳🇿','New Zealand','VNZ Region'],
     'KB손해보험':['🇰🇷','South Korea','V-League'],
     '현대캐피탈':['🇰🇷','South Korea','V-League'],
     '우리카드':['🇰🇷','South Korea','V-League'],
@@ -74,7 +74,10 @@
     if(number===null||number===undefined||number==='')return {club:fallback,league:null};
     const rec=clubs?.teams?.[teamCode]?.[String(number)];
     if(!rec)return {club:fallback,league:null};
-    if(rec.status==='CONFIRMED')return {club:rec.club||fallback,league:LEAGUE_META[rec.club]||null};
+    if(rec.status==='CONFIRMED'){
+      const fromJson=rec.leagueCountry&&rec.leagueName?[COUNTRY_FLAGS[rec.leagueCountry]||'🌐',rec.leagueCountry,rec.leagueName]:null;
+      return {club:rec.club||fallback,league:fromJson||LEAGUE_META[rec.club]||null};
+    }
     if(rec.status==='FREE_AGENT')return {club:'FA / 무소속',league:null};
     return {club:fallback,league:null};
   };
