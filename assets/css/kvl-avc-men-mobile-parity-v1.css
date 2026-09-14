@@ -49,6 +49,7 @@
   body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-team{grid-column:3;width:110px;min-width:0;justify-self:start;color:#17365d;font-size:14px;font-weight:900;text-align:left;white-space:nowrap}
   body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-stat{font-size:12px;font-weight:800;text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}
   body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result{display:flex;width:100%;min-height:37px;align-items:center;justify-content:center;gap:6px;padding:0;color:#176638;font-size:11px;font-weight:1000;line-height:1.1;white-space:nowrap}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result b{display:inline-flex;min-width:62px;min-height:26px;align-items:center;justify-content:center;gap:6px;padding:0;color:#176638;font-size:11px;font-weight:1000;line-height:1.1;white-space:nowrap}
   body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result b{display:inline-flex;min-width:62px;min-height:26px;align-items:center;justify-content:center;padding:4px 5px;border:1px solid #bfe3c9;border-radius:999px;background:#eef8f1;color:#176638;font-size:11px;box-sizing:border-box}
   body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result small{margin:0;color:#176638;font-size:11px;font-weight:1000}
   body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result.is-out{color:#6b7280}
@@ -197,4 +198,26 @@
 /* Overview KPI hierarchy: all five primary values use the same dark navy. */
 @media(max-width:680px){
   body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-kpi-copy strong{color:#17365d!important}
+}
+
+/* PC overview KPI affordance: make the four linked cards visibly interactive on hover/focus. */
+@media(min-width:681px){
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-kpi[data-kvl-target]{
+    cursor:pointer;
+    transform:translateY(0);
+    transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease;
+  }
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-kpi[data-kvl-target]:hover,
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-kpi[data-kvl-target]:focus-visible{
+    transform:translateY(-4px);
+    border-color:#b8d7c5;
+    background:linear-gradient(180deg,#ffffff,#f3faf6);
+    box-shadow:0 12px 26px rgba(23,54,93,.14),0 3px 8px rgba(13,111,60,.08);
+    outline:none;
+  }
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-kpi[data-kvl-target]:active{
+    transform:translateY(-1px);
+    box-shadow:0 6px 14px rgba(23,54,93,.11);
+    transition-duration:.08s;
+  }
 }
