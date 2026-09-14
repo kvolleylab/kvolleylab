@@ -193,3 +193,8 @@
   body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-source strong{font-size:11px!important;line-height:1.2!important}
   body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-source a{font-size:10px!important;line-height:1!important}
 }
+
+/* Overview KPI hierarchy: all five primary values use the same dark navy. */
+@media(max-width:680px){
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-kpi-copy strong{color:#17365d!important}
+}
