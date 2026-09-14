@@ -70,6 +70,30 @@ body.kvl1180-women-template .kvl1180-ranking-rule-card strong{display:block;marg
 body.kvl1180-women-template .kvl1180-ranking-rule-card p{margin:0}
 body.kvl1180-women-template #knockout .kvl1180-final-copy small{line-height:1.35}
 
+/* Women schedule: preserve common geometry, use the rose theme and surface completed-tournament context. */
+body.kvl1180-women-template #schedule .kvl1180-schedule-statusline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-2px 0 12px;padding:10px 12px;border:1px solid #ead4de;border-radius:10px;background:linear-gradient(90deg,#fff7fa,#fff);color:#75606a;font-size:10.5px;line-height:1.4}
+body.kvl1180-women-template #schedule .kvl1180-schedule-statusline strong{color:#8f2f59;font-size:11.5px;font-weight:950}
+body.kvl1180-women-template #schedule .kvl1180-schedule-statusline span{font-weight:800;text-align:right}
+body.kvl1180-women-template #schedule .kvl1180-schedule-toolbar{border-color:#ead4de;background:#fff8fb}
+body.kvl1180-women-template #schedule .kvl1180-stage-filters button{border-color:#e5cbd6;color:#68545e}
+body.kvl1180-women-template #schedule .kvl1180-stage-filters button:hover{border-color:#d59ab1;background:#fff1f6;color:#9a3561}
+body.kvl1180-women-template #schedule .kvl1180-stage-filters button.is-active{border-color:#a53d68;background:#a53d68;color:#fff}
+body.kvl1180-women-template #schedule .kvl1180-pool-filter{color:#765f69}
+body.kvl1180-women-template #schedule .kvl1180-pool-filter select{border-color:#e5cbd6;color:#674d59;background:#fff}
+body.kvl1180-women-template #schedule .kvl1180-schedule-summary{color:#84727a}
+body.kvl1180-women-template #schedule .kvl1180-schedule-summary strong{color:#8f2f59}
+body.kvl1180-women-template #schedule .kvl1180-date-group{scroll-margin-top:18px;border-color:#ead4de}
+body.kvl1180-women-template #schedule .kvl1180-date-group.is-target-date{border-color:#c65382;box-shadow:0 0 0 2px rgba(198,83,130,.10),0 8px 20px rgba(126,49,82,.08)}
+body.kvl1180-women-template #schedule .kvl1180-date-head{border-bottom-color:#ead9e0;background:linear-gradient(90deg,#fff0f6,#fff9fb)}
+body.kvl1180-women-template #schedule .kvl1180-date-title strong{color:#8f2f59}
+body.kvl1180-women-template #schedule .kvl1180-date-title span,
+body.kvl1180-women-template #schedule .kvl1180-date-head>span{color:#806c75}
+body.kvl1180-women-template #schedule .kvl1180-match-row.is-korea{background:linear-gradient(90deg,#fff,#fff5f9)}
+body.kvl1180-women-template #schedule .kvl1180-inline-logo{border-color:#eadfe4}
+body.kvl1180-women-template #schedule .kvl1180-match-meta time{color:#17365d}
+body.kvl1180-women-template #schedule .kvl1180-match-official-no{color:#a15a78}
+body.kvl1180-women-template #schedule .kvl1180-match-detail{color:#7b6a72}
+
 /* Competition Template V1: match and bracket scores are neutral; gold is reserved for special achievements. */
 body.kvl1180-women-template .kvl1180-score,
 body.kvl1180-women-template .kvl1180-team-score,
@@ -99,4 +123,18 @@ body.kvl1180-women-template .kvl1180-match-sets{color:#4B5563!important}
   body.kvl1180-women-template .kvl1180-ranking-rule-card{padding:12px 13px;font-size:10.5px}
   body.kvl1180-women-template .kvl1180-pool-seed{font-size:7.5px;padding:2px 4px}
   body.kvl1180-women-template .kvl1180-qf-pairing{font-size:8.5px}
+  body.kvl1180-women-template #schedule .kvl1180-schedule-statusline{align-items:flex-start;flex-direction:column;gap:3px;margin-bottom:9px;padding:9px 10px;font-size:9.5px}
+  body.kvl1180-women-template #schedule .kvl1180-schedule-statusline strong{font-size:10.5px}
+  body.kvl1180-women-template #schedule .kvl1180-schedule-statusline span{text-align:left}
+  body.kvl1180-women-template #schedule .kvl1180-schedule-toolbar{gap:8px;padding:9px}
+  body.kvl1180-women-template #schedule .kvl1180-stage-filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;width:100%}
+  body.kvl1180-women-template #schedule .kvl1180-stage-filters button{width:100%;min-height:35px;padding:0 4px;font-size:9.5px}
+  body.kvl1180-women-template #schedule .kvl1180-pool-filter{align-self:stretch;justify-content:flex-end;width:100%}
+  body.kvl1180-women-template #schedule .kvl1180-pool-filter select{min-width:92px}
+  body.kvl1180-women-template #schedule .kvl1180-schedule-summary{align-items:flex-start;gap:6px;flex-direction:column;margin-bottom:9px;font-size:9.5px}
+  body.kvl1180-women-template #schedule .kvl1180-date-group{scroll-margin-top:10px}
+  body.kvl1180-women-template #schedule .kvl1180-match-row{padding-left:9px;padding-right:9px}
+  body.kvl1180-women-template #schedule .kvl1180-match-meta{align-items:center}
+  body.kvl1180-women-template #schedule .kvl1180-match-official-no{margin-top:1px;font-size:8.5px}
+  body.kvl1180-women-template #schedule .kvl1180-match-detail{font-size:9.5px;line-height:1.45}
 }
