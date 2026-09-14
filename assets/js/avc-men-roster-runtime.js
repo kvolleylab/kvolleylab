@@ -6,7 +6,7 @@
 
   const DATA='data/competitions/avc-men-continental-2026-rosters.json?v=20260904-1';
   const CLUBS='data/competitions/avc-men-continental-2026-clubs-2026-27.json?v=20260914-3';
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const posOrder={S:1,OP:2,OH:3,MB:4,L:5,U:6,'':9};
   const fmtDob=v=>{if(!v)return '생년월일 미확인';const [y,m,d]=String(v).split('-');return y&&m&&d?`${y}.${m}.${d}`:v};
   const flag=t=>`https://flagcdn.com/w80/${t.flag}.png`;
@@ -14,7 +14,7 @@
   const isPrintAll=()=>params().get('print')==='all';
 
   const COUNTRY_FLAGS={
-    Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱','Türkiye':'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷',Oman:'🇴🇲'
+    Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱','Türkiye':'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷',Oman:'🇴🇲',Greece:'🇬🇷'
   };
   const LEAGUE_META={
     'Osaka Bluteon':['🇯🇵','Japan','SV.League Men'],
