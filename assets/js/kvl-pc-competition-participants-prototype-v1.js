@@ -15,7 +15,7 @@ const ROSTER_SOURCES=[
 ];
 const COMPETITION_SOURCE='data/competitions/avc-men-continental-2026.json?v=20260914-pc-participants-3';
 const VOLLEYBOX_SOURCE='data/competitions/avc-men-continental-2026-volleybox-links.json?v=20260911-pc-participants-2';
-const CLUB_SOURCE='data/competitions/avc-men-continental-2026-clubs-2026-27.json?v=20260914-pc-participants-3';
+const CLUB_SOURCE='data/competitions/avc-men-continental-2026-clubs-2026-27.json?v=20260914-pc-participants-4';
 const STYLE_HREF='assets/css/kvl-pc-competition-participants-prototype-v2.css?v=20260914-3';
 const FLAG_MAP={JPN:'jp',AUS:'au',BRN:'bh',OMA:'om',IRI:'ir',CHN:'cn',IND:'in',NZL:'nz',QAT:'qa',KOR:'kr',TPE:'tw',THA:'th'};
 const COUNTRY_INFO={
@@ -76,13 +76,13 @@ function countryMeta(value){
 }
 function playerClub(team,p){
   const rec=clubMap?.[team.code]?.[String(p.number)]||null;
-  if(rec?.status==='CONFIRMED'&&rec.club)return {text:rec.club,className:'is-confirmed',title:'26-27 공식 확인',country:countryMeta(rec.leagueCountry)};
+  if(rec?.status==='CONFIRMED'&&rec.club)return {text:rec.club,className:'is-confirmed',title:'26-27 공식 확인',country:countryMeta(rec.leagueCountry),leagueName:String(rec.leagueName||'')};
   if(rec?.status==='FREE_AGENT')return {text:'FA / 무소속',className:'is-free-agent',title:'26-27 공식 확인',country:null};
   return {text:'미확인',className:'is-unknown',title:'26-27 소속팀 미확인',country:null};
 }
 function clubHtml(club){
   const country=club.country;
-  const countryHtml=country?`<span class="kvl1180-club-country">${country.flag?`<img src="https://flagcdn.com/w40/${esc(country.flag)}.png" alt="${esc(country.ko)} 국기" loading="lazy">`:''}<span>${esc(country.ko)}</span></span>`:'';
+  const countryHtml=country?`<span class="kvl1180-club-country">${country.flag?`<img src="https://flagcdn.com/w40/${esc(country.flag)}.png" alt="${esc(country.ko)} 국기" loading="lazy">`:''}<span>${esc(country.ko)}${club.leagueName?` · ${esc(club.leagueName)}`:''}</span></span>`:'';
   return `<span class="kvl1180-club-main">${esc(club.text)}</span>${countryHtml}`;
 }
 function volleyboxLink(team,p,compact=false){
@@ -130,7 +130,7 @@ function confirmedClubCount(team){return (team.players||[]).filter(p=>['CONFIRME
 function teamPanel(team){
   const players=(team.players||[]).slice().sort((a,b)=>Number(a.number)-Number(b.number));
   const clubCount=confirmedClubCount(team);
-  return `<article class="kvl1180-team-profile"><header class="kvl1180-team-profile-head"><span class="kvl1180-team-profile-flag"><img src="${flagUrl(team)}" alt="${esc(team.name)} 국기"></span><div class="kvl1180-team-profile-copy"><p class="label">SELECTED TEAM · ${esc(team.code)}</p><h3>${esc(team.name)}</h3><p>${esc(team.en)}</p></div><div class="kvl1180-team-profile-meta"><span>${esc(team.group)}조</span><span>${esc(statusKo(team))}</span><span>26-27 소속팀 ${clubCount}/${players.length} 공식확인</span></div></header><div class="kvl1180-roster-block"><div class="kvl1180-roster-headline"><div><h4>등록 선수명단</h4><p>등번호 오름차순 · 공식 확정된 26-27 소속팀만 공개</p></div><div class="kvl1180-print-actions"><button type="button" data-print="selected">선택 국가 인쇄</button><button type="button" data-print="all">전체 12개국 인쇄</button></div></div><div class="kvl1180-roster-table" role="table" aria-label="${esc(team.name)} 등록 선수명단"><div class="kvl1180-roster-table-head" role="row"><span>등번호</span><span>영문명</span><span>한글명</span><span>POS</span><span>생년월일</span><span>키</span><span>26-27 소속팀 · 국가</span><span>VB</span></div>${players.map(p=>playerRow(team,p)).join('')}</div><p class="kvl1180-roster-source"><strong>자료 기준</strong> · K-Volley Lab 선수명단 MASTER 공개 필드 + 검증된 Volleybox 프로필. 26-27 소속팀은 <b>CONFIRMED/FA만 팀명 공개</b>하며, 공식확인된 소속팀은 리그 국가를 국기와 함께 표시합니다. 보도 단계(REPORTED)와 미확인(UNKNOWN)은 ‘미확인’으로 표시합니다. 내부 관찰·연봉 정보는 노출하지 않습니다.</p></div></article>`;
+  return `<article class="kvl1180-team-profile"><header class="kvl1180-team-profile-head"><span class="kvl1180-team-profile-flag"><img src="${flagUrl(team)}" alt="${esc(team.name)} 국기"></span><div class="kvl1180-team-profile-copy"><p class="label">SELECTED TEAM · ${esc(team.code)}</p><h3>${esc(team.name)}</h3><p>${esc(team.en)}</p></div><div class="kvl1180-team-profile-meta"><span>${esc(team.group)}조</span><span>${esc(statusKo(team))}</span><span>26-27 소속팀 ${clubCount}/${players.length} 공식확인</span></div></header><div class="kvl1180-roster-block"><div class="kvl1180-roster-headline"><div><h4>등록 선수명단</h4><p>등번호 오름차순 · 공식 확정된 26-27 소속팀만 공개</p></div><div class="kvl1180-print-actions"><button type="button" data-print="selected">선택 국가 인쇄</button><button type="button" data-print="all">전체 12개국 인쇄</button></div></div><div class="kvl1180-roster-table" role="table" aria-label="${esc(team.name)} 등록 선수명단"><div class="kvl1180-roster-table-head" role="row"><span>등번호</span><span>영문명</span><span>한글명</span><span>POS</span><span>생년월일</span><span>키</span><span>26-27 소속팀 · 리그</span><span>VB</span></div>${players.map(p=>playerRow(team,p)).join('')}</div><p class="kvl1180-roster-source"><strong>자료 기준</strong> · K-Volley Lab 선수명단 MASTER 공개 필드 + 검증된 Volleybox 프로필. 26-27 소속팀은 <b>CONFIRMED/FA만 팀명 공개</b>하며, 공식확인된 소속팀은 리그 국가와 리그명을 국기와 함께 표시합니다. 보도 단계(REPORTED)와 미확인(UNKNOWN)은 ‘미확인’으로 표시합니다. 내부 관찰·연봉 정보는 노출하지 않습니다.</p></div></article>`;
 }
 function draw(){
   const root=section();if(!root||!teams.length)return;
@@ -160,12 +160,12 @@ function selectTeam(name,push=true){
 function printRow(team,p){
   const club=playerClub(team,p);
   const height=Number.isFinite(Number(p.heightCm))&&Number(p.heightCm)>0?`${Number(p.heightCm)}cm`:'-';
-  const country=club.country?.ko?` · ${club.country.ko}`:'';
+  const country=club.country?.ko?` · ${club.country.ko}${club.leagueName?` · ${club.leagueName}`:''}`:'';
   return `<div class="kvl-print-row"><span>${esc(p.number??'-')}</span><span>${esc(p.officialName||p.fullName||'-')}</span><span>${esc(p.koreanName||'-')}</span><span>${esc(p.position||'-')}</span><span>${esc(p.birthDate||'-')}</span><span>${esc(height)}</span><span>${esc(club.text+country)}</span></div>`;
 }
 function printPage(team,index,total){
   const players=(team.players||[]).slice().sort((a,b)=>Number(a.number)-Number(b.number));
-  return `<section class="kvl-print-sheet"><header class="kvl-print-head"><div class="kvl-print-identity"><img src="${flagUrl(team)}" alt=""><div><p>K-Volley Lab · AVC MEN'S CONTINENTAL CHAMPIONSHIP 2026</p><h1>${esc(team.name)} <small>${esc(team.en)} · ${esc(team.code)}</small></h1></div></div><div class="kvl-print-meta"><strong>${esc(team.group)}조 · ${players.length}명</strong><span>2026-27 소속팀 포함</span></div></header><div class="kvl-print-table"><div class="kvl-print-table-head"><span>#</span><span>영문명</span><span>한글명</span><span>POS</span><span>생년월일</span><span>키</span><span>26-27 소속팀 · 국가</span></div>${players.map(p=>printRow(team,p)).join('')}</div><footer class="kvl-print-foot"><span>※ 소속팀은 공식확정/FA만 공개하며 미확인·보도 단계는 ‘미확인’으로 표기</span><span>${index}/${total}</span></footer></section>`;
+  return `<section class="kvl-print-sheet"><header class="kvl-print-head"><div class="kvl-print-identity"><img src="${flagUrl(team)}" alt=""><div><p>K-Volley Lab · AVC MEN'S CONTINENTAL CHAMPIONSHIP 2026</p><h1>${esc(team.name)} <small>${esc(team.en)} · ${esc(team.code)}</small></h1></div></div><div class="kvl-print-meta"><strong>${esc(team.group)}조 · ${players.length}명</strong><span>2026-27 소속팀 포함</span></div></header><div class="kvl-print-table"><div class="kvl-print-table-head"><span>#</span><span>영문명</span><span>한글명</span><span>POS</span><span>생년월일</span><span>키</span><span>26-27 소속팀 · 리그</span></div>${players.map(p=>printRow(team,p)).join('')}</div><footer class="kvl-print-foot"><span>※ 소속팀은 공식확정/FA만 공개하며 미확인·보도 단계는 ‘미확인’으로 표기</span><span>${index}/${total}</span></footer></section>`;
 }
 function ensurePrintRoot(){
   let root=document.getElementById('kvl1180PrintRoot');
