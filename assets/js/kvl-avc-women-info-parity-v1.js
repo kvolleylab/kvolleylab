@@ -2,7 +2,7 @@
    Source: Drive tournament MASTER + avc-women-continental-2026.json. */
 (()=>{
 'use strict';
-const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-2';
+const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-3';
 const TEAM_CODE={중국:'CHN',이란:'IRI',대만:'TPE',이라크:'IRQ',태국:'THA',인도네시아:'INA',카자흐스탄:'KAZ',호주:'AUS',일본:'JPN',대한민국:'KOR',베트남:'VIE',홍콩:'HKG'};
 const FINAL_NOTE={
   1:'우승 · LA28 올림픽 직행 · 결승 중국에 3-2',
@@ -13,6 +13,7 @@ const FINAL_NOTE={
 let data=null,applyTimer=0;
 const text=el=>el?.textContent?.trim()||'';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const completed=m=>Boolean(m)&&Number.isFinite(m.setsA)&&Number.isFinite(m.setsB);
 function qfMap(){
   const seedByTeam=new Map((data?.combinedSeeds||[]).map(x=>[x.team,Number(x.seed)||null]));
   const out=new Map();
@@ -68,15 +69,35 @@ function enrichOverview(){
 }
 function enrichSchedule(){
   const matches=data?.matches||[];
+  const section=document.querySelector('#schedule');
+  if(!section)return;
+
+  const headNote=section.querySelector('.kvl1180-section-head>p');
+  if(headNote&&data.timezoneNote)headNote.textContent='한국시간(KST)을 기준으로 중국 현지시간(UTC+8)을 함께 표시합니다.';
+
+  const done=matches.filter(completed).length;
+  const stageOrder=['조별리그','8강','준결승','3위결정전','결승'];
+  const stageCounts=stageOrder.map(stage=>[stage,matches.filter(m=>m.stage===stage).length]).filter(([,count])=>count>0);
+  let statusLine=section.querySelector('.kvl1180-schedule-statusline');
+  if(!statusLine){statusLine=document.createElement('div');statusLine.className='kvl1180-schedule-statusline';section.querySelector('.kvl1180-section-head')?.after(statusLine)}
+  if(statusLine)statusLine.innerHTML=`<strong>${done===matches.length?'전체 일정 종료':'일정 진행 중'} · ${done}/${matches.length} 경기 결과 반영</strong><span>${stageCounts.map(([stage,count])=>`${esc(stage)} ${count}`).join(' · ')}</span>`;
+
   document.querySelectorAll('#schedule .kvl1180-match-row').forEach(row=>{
     const timeEl=row.querySelector('.kvl1180-match-meta time');
-    if(!timeEl||row.querySelector('.kvl1180-match-official-no'))return;
+    if(!timeEl)return;
     const t=text(timeEl).replace(/\s*KST\s*$/,'');
     const rowText=text(row);
     const m=matches.find(x=>String(x.time)===t&&rowText.includes(x.teamA)&&rowText.includes(x.teamB));
     if(!m)return;
-    const no=document.createElement('span');no.className='kvl1180-match-official-no';no.textContent=`Match #${m.officialNo}`;timeEl.after(no);
+    row.dataset.matchId=m.id||'';
+    row.setAttribute('aria-label',`${m.date} ${m.time} KST ${m.teamA} ${m.setsA}-${m.setsB} ${m.teamB}`);
+    if(!row.querySelector('.kvl1180-match-official-no')){const no=document.createElement('span');no.className='kvl1180-match-official-no';no.textContent=`Match #${m.officialNo}`;timeEl.after(no)}
+    const detail=row.querySelector('.kvl1180-match-detail');
+    if(detail){const venue=data.venueKo||data.venue||'';detail.textContent=`${m.stage}${m.group?` · ${m.group}조`:''} · ${venue} · 중국 현지 ${m.localTime||'—'} (UTC+8)`}
   });
+
+  const target=new URLSearchParams(location.search).get('date');
+  section.querySelectorAll('.kvl1180-date-group').forEach(group=>group.classList.toggle('is-target-date',Boolean(target)&&group.id===`date-${target}`));
 }
 function enrichGroups(){
   const seedByTeam=new Map((data?.combinedSeeds||[]).map(x=>[x.team,Number(x.seed)||null]));
