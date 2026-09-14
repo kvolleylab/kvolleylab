@@ -52,6 +52,21 @@ body.kvl1180-women-template .kvl1180-sources{display:grid;grid-template-columns:
 body.kvl1180-women-template .kvl1180-source{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:12px 14px;border:1px solid var(--kvl1180-line);border-radius:10px;background:#fff}
 body.kvl1180-women-template .kvl1180-source strong{color:#17365d;font-size:12px}
 body.kvl1180-women-template .kvl1180-source a{flex:0 0 auto;padding:6px 9px;border-radius:999px;background:#fff1f6;color:#a13c67;font-size:10px;font-weight:900;text-decoration:none}
+
+/* Confirmed information parity from the Drive tournament MASTER. */
+body.kvl1180-women-template .kvl1180-stake-confirmed{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:11px;padding-top:10px;border-top:1px solid #e8d9e0;color:#6e5b64;font-size:11px;line-height:1.35}
+body.kvl1180-women-template .kvl1180-stake-confirmed strong{color:#17365d;font-size:10px;font-weight:900}
+body.kvl1180-women-template .kvl1180-stake-confirmed span{font-weight:900;color:#8f2f59;text-align:right}
+body.kvl1180-women-template .kvl1180-match-official-no{display:inline-flex;align-items:center;margin-top:3px;color:#8c7881;font-size:9px;font-weight:850;white-space:nowrap}
+body.kvl1180-women-template .kvl1180-pool-seed{display:inline-flex;margin-left:4px;padding:2px 5px;border-radius:999px;background:#fff1f6;color:#a43f68;font-size:8px;font-weight:950;vertical-align:1px;white-space:nowrap}
+body.kvl1180-women-template .kvl1180-pool-seed.is-out{background:#f3f4f6;color:#7b8490}
+body.kvl1180-women-template .kvl1180-combined-row>span:last-child{display:flex;align-items:center;justify-content:center;gap:5px;flex-wrap:wrap}
+body.kvl1180-women-template .kvl1180-qf-pairing{display:inline-flex;align-items:center;justify-content:center;min-width:28px;color:#a43f68;font-size:9px;font-weight:950;white-space:nowrap}
+body.kvl1180-women-template .kvl1180-ranking-rule-card{margin-top:14px;padding:15px 17px;border:1px solid #ead4de;border-radius:12px;background:linear-gradient(180deg,#fff,#fff8fb);color:#65525b;font-size:12px;line-height:1.6}
+body.kvl1180-women-template .kvl1180-ranking-rule-card strong{display:block;margin-bottom:4px;color:#17365d;font-size:13px;font-weight:950}
+body.kvl1180-women-template .kvl1180-ranking-rule-card p{margin:0}
+body.kvl1180-women-template #knockout .kvl1180-final-copy small{line-height:1.35}
+
 @media(max-width:680px){
   html body.kvl1180-prototype.kvl1180-women-template[data-avc-gender="men"] .kvl1180-hero{background-image:linear-gradient(145deg,#7f2f54 0%,#a9416e 58%,#c95683 100%)!important}
   body.kvl1180-women-template .kvl1180-hero-location>span{display:block!important;white-space:nowrap!important}
@@ -69,4 +84,8 @@ body.kvl1180-women-template .kvl1180-source a{flex:0 0 auto;padding:6px 9px;bord
   body.kvl1180-women-template .kvl1180-source{min-height:48px!important;padding:10px!important}
   body.kvl1180-women-template .kvl1180-source strong{font-size:11px!important;line-height:1.2!important}
   body.kvl1180-women-template .kvl1180-source a{font-size:10px!important}
+  body.kvl1180-women-template .kvl1180-stake-confirmed{font-size:10px}
+  body.kvl1180-women-template .kvl1180-ranking-rule-card{padding:12px 13px;font-size:10.5px}
+  body.kvl1180-women-template .kvl1180-pool-seed{font-size:7.5px;padding:2px 4px}
+  body.kvl1180-women-template .kvl1180-qf-pairing{font-size:8.5px}
 }
