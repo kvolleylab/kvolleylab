@@ -3,6 +3,7 @@
  * - overview KPI cards navigate to their related views
  * - mobile preliminary combined ranking mirrors the AVC women mobile ordering/geometry
  * - dynamic sections receive stable ids for mobile styling
+ * - hero card receives a lightweight CSS-drawn volleyball/net visual (no image asset)
  */
 (()=>{
 'use strict';
@@ -10,6 +11,90 @@ const body=document.body;
 if(!body||!body.matches('.kvl1180-prototype[data-avc-gender="men"]'))return;
 const view=name=>document.querySelector(`.kvl1180-view[data-view="${name}"]`);
 const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+
+function injectHeroArt(){
+  if(document.getElementById('kvl-avc-men-hero-art-v1'))return;
+  const style=document.createElement('style');
+  style.id='kvl-avc-men-hero-art-v1';
+  style.textContent=`
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 82% 22%,rgba(83,211,139,.22) 0 10%,rgba(83,211,139,0) 32%),
+    linear-gradient(112deg,#07512f 0%,#0b7442 55%,#13945a 100%);
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:auto;
+  right:-3%;
+  top:auto;
+  bottom:-44px;
+  width:48%;
+  height:145px;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 19px,rgba(255,255,255,.10) 20px 21px),
+    repeating-linear-gradient(90deg,transparent 0 29px,rgba(255,255,255,.075) 30px 31px);
+  border-top:2px solid rgba(255,255,255,.16);
+  transform:rotate(-7deg) skewX(-7deg);
+  transform-origin:right bottom;
+  opacity:.78;
+  pointer-events:none;
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  top:22px;
+  right:13%;
+  width:126px;
+  height:126px;
+  border:2px solid rgba(255,244,191,.44);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% -8%,transparent 0 42%,rgba(4,74,44,.78) 43% 47%,transparent 48%),
+    radial-gradient(circle at -8% 52%,transparent 0 43%,rgba(4,74,44,.75) 44% 48%,transparent 49%),
+    radial-gradient(circle at 108% 58%,transparent 0 43%,rgba(4,74,44,.72) 44% 48%,transparent 49%),
+    radial-gradient(circle at 31% 24%,rgba(255,255,255,.34),transparent 19%),
+    linear-gradient(145deg,#f5d66c 0%,#dfb73c 52%,#c08b1d 100%);
+  box-shadow:0 12px 26px rgba(0,45,28,.26),0 0 0 12px rgba(255,255,255,.018);
+  transform:rotate(14deg);
+  opacity:.88;
+  pointer-events:none;
+}
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero-copy,
+body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero-status{z-index:2}
+@media(max-width:900px) and (min-width:681px){
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::after{right:10%;width:108px;height:108px;opacity:.72}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::before{width:44%;opacity:.58}
+}
+@media(max-width:680px){
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
+    background:
+      radial-gradient(circle at 92% 24%,rgba(90,220,145,.18) 0 11%,rgba(90,220,145,0) 30%),
+      linear-gradient(145deg,#075a34 0%,#0b7544 58%,#128a52 100%);
+  }
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::after{
+    top:66px;
+    right:-18px;
+    width:86px;
+    height:86px;
+    border-width:1px;
+    opacity:.30;
+    box-shadow:none;
+  }
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::before{
+    right:-11%;
+    bottom:-35px;
+    width:50%;
+    height:104px;
+    opacity:.35;
+  }
+}
+`;
+  document.head.appendChild(style);
+}
 
 function ensureViewIds(){
   const ids={overview:'overview',schedule:'schedule',groups:'groups',knockout:'knockout',rosters:'rosters',resources:'resources'};
@@ -95,6 +180,7 @@ function syncCombinedRanking(){
 }
 
 function init(){
+  injectHeroArt();
   ensureViewIds();
   syncOverviewResultSpacing();
   enhanceOverviewKpis();
