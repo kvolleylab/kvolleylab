@@ -14,7 +14,7 @@
   const isPrintAll=()=>params().get('print')==='all';
 
   const COUNTRY_FLAGS={
-    Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱','Türkiye':'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷'
+    Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱','Türkiye':'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷',Oman:'🇴🇲'
   };
   const LEAGUE_META={
     'Osaka Bluteon':['🇯🇵','Japan','SV.League Men'],
