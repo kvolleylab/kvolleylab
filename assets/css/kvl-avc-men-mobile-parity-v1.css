@@ -167,3 +167,29 @@
   body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-korean{font-size:13px!important}
   body.kvl1180-prototype[data-avc-gender="men"] #rosters .kvl1180-roster-name strong{font-size:10.5px!important}
 }
+
+/* Typography parity with the current AVC women mobile template.
+   Player-card weights remain intentionally lighter for Korean-first readability. */
+@media(max-width:680px){
+  body.kvl1180-prototype[data-avc-gender="men"]{font-family:Arial,sans-serif!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero h1{font-size:24px!important;line-height:1.25!important;letter-spacing:-.045em!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero-sub{font-size:12px!important;font-weight:700!important;line-height:1.35!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-tabs a{font-size:13px!important;font-weight:900!important;line-height:1.15!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-section-head h2,
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-calendar-head h2{font-size:22px!important;line-height:1.2!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-section-head>p,
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-calendar-head>p{font-size:11px!important;line-height:1.45!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-kpi-copy strong{font-size:29px!important;line-height:1.1!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-calendar-title{font-size:15px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-calendar-week span{font-size:10px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-date{font-size:10px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-cal-time{font-size:8px!important;font-weight:800!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #schedule .kvl1180-stage-filters button{font-size:9px!important;line-height:1.1!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #schedule .kvl1180-match-meta time{font-size:13px!important;font-weight:900!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #schedule .kvl1180-side strong{font-size:12px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #schedule .kvl1180-score{font-size:18px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #schedule .kvl1180-set-scores{font-size:10px!important;font-weight:850!important;line-height:1.3!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #schedule .kvl1180-match-detail{font-size:10px!important;font-weight:800!important;line-height:1.4!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-source strong{font-size:11px!important;line-height:1.2!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #resources .kvl1180-source a{font-size:10px!important;line-height:1!important}
+}
