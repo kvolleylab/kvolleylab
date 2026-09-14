@@ -29,6 +29,11 @@
 .kvl1180-final-card:nth-child(4) .kvl1180-final-copy small::before{content:"4위"}
 .kvl1180-final-card:nth-child(4) .kvl1180-final-copy small::after{content:none}
 
+/* Keep every PC final-ranking card on the same vertical rhythm even when the result copy has fewer lines. */
+@media(min-width:681px){
+  .kvl1180-final-copy small{min-height:clamp(39px,3.55cqw,44px)}
+}
+
 /* Use the full card footprint for readable bracket typography. */
 .kvl1180-round-title{min-height:44px;display:flex;align-items:center;justify-content:center;font-size:clamp(15px,1.35cqw,17px)!important}
 .kvl1180-match-head{min-height:42px!important;font-size:clamp(12px,1.08cqw,13.5px)!important}.kvl1180-match-head strong{font-size:clamp(13px,1.16cqw,14.5px)!important}
