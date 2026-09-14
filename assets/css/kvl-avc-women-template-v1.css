@@ -1,0 +1,60 @@
+/* K-Volley Lab · AVC women template validation v1
+   Uses the frozen PC+mobile competition template geometry with a women rose theme. */
+body.kvl1180-prototype.kvl1180-women-template{
+  --kvl1180-green:#b74676;
+  --kvl1180-green-dark:#8f2f59;
+  --kvl1180-green-mid:#c65382;
+  --kvl1180-green-soft:#fff1f6;
+  --kvl1180-line:#ead4de;
+  --kvl1180-bg:#f7f5f7;
+}
+html body.kvl1180-prototype.kvl1180-women-template[data-avc-gender="men"] .kvl1180-hero{
+  background-color:#7f2f54!important;
+  background-image:linear-gradient(112deg,#7f2f54 0%,#a63d6a 54%,#c95683 100%)!important;
+  background-size:auto!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  border-color:rgba(111,36,72,.34)!important;
+  box-shadow:0 9px 24px rgba(105,42,71,.10)!important;
+}
+html body.kvl1180-prototype.kvl1180-women-template[data-avc-gender="men"] .kvl1180-hero::before,
+html body.kvl1180-prototype.kvl1180-women-template[data-avc-gender="men"] .kvl1180-hero::after{content:none!important;display:none!important}
+body.kvl1180-women-template .kvl1180-tabs a:hover{background:#fff1f6;color:var(--kvl1180-green)}
+body.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:hover{border-color:#dbaabd;box-shadow:0 9px 20px rgba(132,55,88,.12);transform:translateY(-2px)}
+body.kvl1180-women-template .kvl1180-kpi[data-kvl-target]{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+body.kvl1180-women-template .kvl1180-overview-result strong{color:#a53d68!important}
+body.kvl1180-women-template .kvl1180-overview-result{border-color:#c65382!important}
+body.kvl1180-women-template .kvl1180-overview-note{border-left-color:#c65382!important;background:#fff3f7!important;color:#684a58!important}
+body.kvl1180-women-template .kvl1180-overview-note strong{color:#17365d!important}
+body.kvl1180-women-template .kvl1180-stake.is-la .kvl1180-stake-brand{color:#c99517!important}
+body.kvl1180-women-template .kvl1180-kpi-copy strong{color:#17365d!important}
+body.kvl1180-women-template .kvl1180-kpi.is-venue .kvl1180-kpi-copy strong{color:#17365d!important}
+body.kvl1180-women-template .kvl1180-participant-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body.kvl1180-women-template .kvl1180-participant-group{overflow:hidden;border:1px solid var(--kvl1180-line);border-radius:12px;background:#fff}
+body.kvl1180-women-template .kvl1180-participant-group-head{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;background:#fff1f6;color:#8f2f59;font-size:12px}
+body.kvl1180-women-template .kvl1180-participant-buttons{display:grid;gap:0}
+body.kvl1180-women-template .kvl1180-participant-button{display:grid;grid-template-columns:38px minmax(0,1fr);gap:10px;align-items:center;width:100%;min-height:58px;padding:9px 12px;border:0;border-top:1px solid #f0e1e7;background:#fff;text-align:left}
+body.kvl1180-women-template .kvl1180-participant-button img{width:36px;height:25px;object-fit:contain}
+body.kvl1180-women-template .kvl1180-participant-button strong{display:block;color:#17365d;font-size:13px}
+body.kvl1180-women-template .kvl1180-participant-button small{display:block;margin-top:2px;color:#7a8796;font-size:10px;font-weight:700}
+body.kvl1180-women-template .kvl1180-roster-pending{margin-top:12px;padding:14px 16px;border:1px solid #ead4de;border-radius:10px;background:#fff7fa;color:#6e5b64;font-size:12px;line-height:1.6}
+body.kvl1180-women-template .kvl1180-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+body.kvl1180-women-template .kvl1180-source{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:58px;padding:12px 14px;border:1px solid var(--kvl1180-line);border-radius:10px;background:#fff}
+body.kvl1180-women-template .kvl1180-source strong{color:#17365d;font-size:12px}
+body.kvl1180-women-template .kvl1180-source a{flex:0 0 auto;padding:6px 9px;border-radius:999px;background:#fff1f6;color:#a13c67;font-size:10px;font-weight:900;text-decoration:none}
+@media(max-width:680px){
+  html body.kvl1180-prototype.kvl1180-women-template[data-avc-gender="men"] .kvl1180-hero{background-image:linear-gradient(145deg,#7f2f54 0%,#a9416e 58%,#c95683 100%)!important}
+  body.kvl1180-women-template .kvl1180-hero-location>span{display:block!important;white-space:nowrap!important}
+  body.kvl1180-women-template .kvl1180-hero-location>span+span::before{content:none!important}
+  body.kvl1180-women-template .kvl1180-hero-location>span:last-child{padding-right:96px;box-sizing:border-box}
+  body.kvl1180-women-template .kvl1180-kpi.is-venue{min-height:72px!important;padding:12px!important}
+  body.kvl1180-women-template .kvl1180-kpi.is-venue .kvl1180-kpi-copy>span{display:block!important;color:#748397!important;font-size:11px!important;font-weight:700!important;line-height:1.3!important}
+  body.kvl1180-women-template .kvl1180-kpi.is-venue .kvl1180-kpi-copy strong{display:inline!important;margin:7px 0 0!important;color:#17365d!important;font-size:16px!important;font-weight:900!important;line-height:1.2!important;letter-spacing:-.04em!important;white-space:nowrap!important}
+  body.kvl1180-women-template .kvl1180-kpi.is-venue .kvl1180-kpi-copy small{display:inline!important;margin:0 0 0 6px!important;color:#7a8796!important;font-size:12px!important;font-weight:800!important;line-height:1.2!important;letter-spacing:-.025em!important;white-space:nowrap!important}
+  body.kvl1180-women-template .kvl1180-participant-groups{grid-template-columns:1fr!important;gap:7px!important}
+  body.kvl1180-women-template .kvl1180-participant-button{min-height:54px!important;padding:8px 10px!important}
+  body.kvl1180-women-template .kvl1180-sources{grid-template-columns:1fr!important;gap:7px!important}
+  body.kvl1180-women-template .kvl1180-source{min-height:48px!important;padding:10px!important}
+  body.kvl1180-women-template .kvl1180-source strong{font-size:11px!important;line-height:1.2!important}
+  body.kvl1180-women-template .kvl1180-source a{font-size:10px!important}
+}
