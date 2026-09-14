@@ -1,0 +1,37 @@
+{
+  "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V1",
+  "status": "FROZEN_BASELINE",
+  "createdAtKst": "2026-09-15",
+  "referenceCompetition": "2026 AVC Men's Continental Championship",
+  "referenceCommit": "73f9203eba16256bc4bbddc38a650f8e27e8b6f4",
+  "referencePage": "international-competition-avc-men-continental-2026-pc-hybrid-1180.html",
+  "snapshotPage": "templates/competition-page-pc-mobile-v1.html",
+  "guide": "docs/KVL_COMPETITION_PAGE_TEMPLATE_V1.md",
+  "breakpoints": {
+    "desktopMaxContent": 1180,
+    "mobilePrimary": 390,
+    "mobileSecondary": 360,
+    "mobileCssMax": 680
+  },
+  "topLevelViews": [
+    "overview",
+    "schedule",
+    "groups",
+    "knockout",
+    "rosters",
+    "resources"
+  ],
+  "hero": {
+    "replacePerCompetition": true,
+    "currentReferenceAsset": "assets/img/competition-hero/kvl-hero-avc-men-user-photo-v1.webp",
+    "desktopFit": "cover",
+    "mobileRequiresIndependentPositioning": true
+  },
+  "futureRequirements": {
+    "preservePlayerId": true,
+    "reserveMemberPlayerCheckSlot": true,
+    "qualificationDataDriven": true,
+    "competitionStatusDataDriven": true
+  },
+  "note": "The snapshot preserves the approved AVC men prototype appearance. Before deploying a new competition, replace all competition-specific data, links, hero asset, theme and qualification rules."
+}
