@@ -1,0 +1,95 @@
+/* K-Volley Lab · AVC men mobile parity v1
+   2026-09-14 · 390px baseline
+   Scope: overview KPI navigation affordance, preliminary combined ranking,
+   final 1-4 cards and knockout cards. Desktop remains untouched. */
+.kvl-shared-combined-mobile{display:none}
+
+@media(max-width:680px){
+  /* Overview KPI cards behave like the AVC women mobile navigation cards. */
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-kpi[data-kvl-target]{position:relative;cursor:pointer}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-kpi[data-kvl-target]::after{content:'›';position:absolute;right:10px;bottom:8px;color:var(--kvl1180-green);font-size:18px;font-weight:900;opacity:.7}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-kpi[data-kvl-target]:focus-visible{outline:2px solid var(--kvl1180-green);outline-offset:2px}
+
+  /* Combined ranking: same order and 390px numeric spec as AVC women mobile.
+     identity | result | wins | points | set ratio | point ratio | pool rank */
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl1180-combined-head{align-items:flex-start;justify-content:flex-start;flex-direction:column;gap:3px;margin-bottom:11px}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl1180-combined-head h3{font-size:16px;line-height:1.25;letter-spacing:-.03em}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl1180-combined-head p{font-size:9px;line-height:1.35;letter-spacing:-.035em;text-align:left}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl1180-combined-table{display:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-mobile{display:block!important;max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;border:1px solid #dce6e1;border-radius:12px;background:#fff}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-table{width:770px;min-width:770px;max-width:none;background:#fff}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-line{display:grid;grid-template-columns:194px 130px 76px 54px 96px 96px 76px;align-items:center;gap:6px;min-height:54px;padding:8px 6px;border-top:1px solid #edf1ef;box-sizing:border-box;color:#354b3f}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-line:first-child{border-top:0}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-line.is-head{min-height:42px;background:#f3f7f5;color:#586b60;font-size:11px;font-weight:1000;text-align:center}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-line.is-head>span:not(.kvl-shared-combined-identity){display:flex;align-items:center;justify-content:center;justify-self:stretch;text-align:center;white-space:nowrap}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-line.is-korea{background:#eaf8ef;box-shadow:inset 0 0 0 1px #c7e4d1}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-identity{display:grid;grid-template-columns:44px 28px 110px;gap:6px;width:194px;min-width:194px;align-items:center;justify-content:start;justify-self:start;box-sizing:border-box}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-rank-head{grid-column:1;display:flex;width:44px;align-items:center;justify-content:center;text-align:center;white-space:nowrap}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-country-head{grid-column:2 / span 2;display:flex;align-items:center;justify-content:center;justify-self:stretch;text-align:center;white-space:nowrap}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-rank{grid-column:1;width:44px;justify-self:center;color:var(--kvl1180-green);font-size:14px;font-weight:1000;text-align:center}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-flag{grid-column:2;display:flex;width:28px;height:19px;align-items:center;justify-content:center;justify-self:center}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-flag img{display:block;width:28px;height:19px;object-fit:contain}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-team{grid-column:3;width:110px;min-width:0;justify-self:start;color:#17365d;font-size:14px;font-weight:900;text-align:left;white-space:nowrap}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-stat{font-size:12px;font-weight:800;text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result{display:flex;width:100%;min-height:37px;align-items:center;justify-content:center;gap:6px;padding:0;color:#176638;font-size:11px;font-weight:1000;line-height:1.1;white-space:nowrap}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result b{display:inline-flex;min-width:62px;min-height:26px;align-items:center;justify-content:center;padding:4px 5px;border:1px solid #bfe3c9;border-radius:999px;background:#eef8f1;color:#176638;font-size:11px;box-sizing:border-box}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result small{margin:0;color:#176638;font-size:11px;font-weight:1000}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result.is-out{color:#6b7280}
+  body.kvl1180-prototype[data-avc-gender="men"] #groups .kvl-shared-combined-result.is-out b{border-color:#e5e7eb;background:#f3f4f6;color:#6b7280;font-size:8px}
+
+  /* Final 1-4: exact women mobile footprint - four equal cards on one row. */
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-block{padding:12px!important;border-radius:12px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-grid{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;margin:0!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-card{display:flex!important;min-width:0!important;min-height:126px!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:0!important;padding:5px 2px!important;border-radius:11px!important;text-align:center!important;box-shadow:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-rank{position:static!important;display:block!important;width:auto!important;height:auto!important;margin:0 0 2px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--kvl1180-green)!important;font-size:11px!important;font-weight:1000!important;line-height:1.2!important;visibility:visible!important;overflow:visible!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-rank::before,
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-rank::after{display:none!important;content:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-flag{display:grid!important;place-items:center!important;width:58px!important;height:40px!important;margin:3px 0 2px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-flag img{display:block!important;box-sizing:border-box!important;width:58px!important;height:40px!important;padding:0!important;border:0!important;border-radius:3px!important;background:#fff!important;object-fit:contain!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-copy{display:flex!important;min-width:0!important;align-items:center!important;justify-content:flex-start!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-copy strong{max-width:100%!important;margin-top:4px!important;overflow:hidden!important;color:#17365d!important;font-size:11px!important;font-weight:900!important;line-height:1.2!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-copy small{display:block!important;margin-top:3px!important;color:#75837b!important;font-size:8px!important;font-weight:800!important;line-height:1.25!important;white-space:normal!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-copy small::before,
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-copy small::after{display:none!important;content:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-card:first-child .kvl1180-final-copy small{font-size:0!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-card:first-child .kvl1180-final-copy small::after{content:'우승 · LA28 올림픽 직행'!important;display:block!important;color:#9a6d12!important;font-size:8px!important;font-weight:1000!important;line-height:1.25!important}
+
+  /* Knockout: same mobile result-card proportions as AVC women. */
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket{overflow:visible!important;padding-bottom:0!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-ladder{display:block!important;min-width:0!important;max-width:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-gap{display:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-round{margin-bottom:14px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-round-body{display:grid!important;min-height:0!important;gap:8px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-qf-pair{display:contents!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-round-title{min-height:0!important;margin-bottom:8px!important;padding:9px 10px!important;font-size:13px!important;line-height:1.2!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;column-gap:0!important;overflow:hidden!important;border-radius:11px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head{grid-column:1/-1!important;min-height:0!important;padding:7px 9px!important;border-radius:11px 11px 0 0!important;font-size:9px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head strong{font-size:10px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team{grid-column:1!important;display:grid!important;grid-template-columns:32px minmax(0,1fr) 22px!important;gap:2px!important;min-height:44px!important;padding:7px 0 7px 7px!important;border-top:0!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team + .kvl1180-bracket-team{grid-column:2!important;display:grid!important;grid-template-columns:22px minmax(0,1fr) 32px!important;gap:2px!important;min-height:44px!important;padding:7px 7px 7px 0!important;border-top:0!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-mark{display:grid!important;width:32px!important;height:23px!important;place-items:center!important;margin:0!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-mark img{display:block!important;width:32px!important;height:23px!important;margin:0!important;object-fit:contain!important;background:#fff!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team .kvl1180-bracket-mark{grid-column:1!important;grid-row:1!important;justify-self:start!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team .kvl1180-bracket-copy{grid-column:2!important;grid-row:1!important;justify-self:start!important;text-align:left!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team .kvl1180-team-score{grid-column:3!important;grid-row:1!important;text-align:right!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team + .kvl1180-bracket-team .kvl1180-team-score{grid-column:1!important;grid-row:1!important;text-align:left!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team + .kvl1180-bracket-team .kvl1180-team-score::before{content:'-';margin-right:1px}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team + .kvl1180-bracket-team .kvl1180-bracket-copy{grid-column:2!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-head + .kvl1180-bracket-team + .kvl1180-bracket-team .kvl1180-bracket-mark{grid-column:3!important;grid-row:1!important;justify-self:end!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-copy strong,
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-team-score{font-size:18px!important;line-height:1!important;white-space:nowrap!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-copy strong{overflow:visible!important;letter-spacing:-.045em!important;text-overflow:clip!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-copy small{display:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-team-score{min-width:0!important;color:#4B5563!important;font-weight:1000!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-match-sets{display:none!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bronze{max-width:none!important;margin-top:14px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bronze-title{font-size:13px!important}
+}
+
+@media(max-width:360px){
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-flag,
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-flag img{width:52px!important;height:36px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-final-copy strong{font-size:10px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-bracket-copy strong,
+  body.kvl1180-prototype[data-avc-gender="men"] #knockout .kvl1180-team-score{font-size:16px!important}
+}
