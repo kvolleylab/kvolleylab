@@ -16,6 +16,19 @@ function ensureViewIds(){
   Object.entries(ids).forEach(([name,id])=>{const el=view(name);if(el&&!el.id)el.id=id});
 }
 
+function syncOverviewResultSpacing(){
+  const result=document.querySelector('.kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-overview-result');
+  if(!result)return;
+  const champion=result.querySelector('strong');
+  const qualification=result.querySelector('span');
+  result.style.setProperty('line-height','1.22','important');
+  if(champion)champion.style.setProperty('line-height','18px','important');
+  if(qualification){
+    qualification.style.setProperty('margin-top','3px','important');
+    qualification.style.setProperty('line-height','16px','important');
+  }
+}
+
 function enhanceOverviewKpis(){
   const root=document.querySelector('.kvl1180-view[data-view="overview"] .kvl1180-kpis');
   if(!root)return;
@@ -83,6 +96,7 @@ function syncCombinedRanking(){
 
 function init(){
   ensureViewIds();
+  syncOverviewResultSpacing();
   enhanceOverviewKpis();
   syncCombinedRanking();
   const groups=view('groups');
