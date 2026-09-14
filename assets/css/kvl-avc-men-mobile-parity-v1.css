@@ -3,8 +3,23 @@
    Scope: overview KPI navigation affordance, preliminary combined ranking,
    final 1-4 cards and knockout cards. Desktop remains untouched. */
 .kvl-shared-combined-mobile{display:none}
+.kvl1180-overview-result{margin:0!important;text-align:right!important}
+.kvl1180-overview-result strong,.kvl1180-overview-result span{display:block}
+.kvl1180-overview-result strong{color:#176638;font-size:14px;font-weight:1000}
+.kvl1180-overview-result span{margin-top:3px;color:#b8860b;font-size:12px;font-weight:1000}
+.kvl1180-overview-note{margin-top:18px;padding:18px 20px;border-left:4px solid #2f8a52;border-radius:14px;background:#eff8f2;color:#465e50;font-size:14px;font-weight:700;line-height:1.7}
+.kvl1180-overview-note strong{color:#17365d;font-weight:1000}
 
 @media(max-width:680px){
+  /* Overview title/result: match the AVC women mobile completion treatment. */
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-section-head{align-items:flex-end!important;flex-direction:row!important;justify-content:space-between!important;gap:12px!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-section-head>div{min-width:0}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-view[data-view="overview"][aria-labelledby="snapshotTitle"] .kvl1180-section-head h2{white-space:nowrap}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-overview-result{flex:0 0 auto!important;padding-left:10px!important;border-left:3px solid #2f8a52!important;line-height:1.22!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-overview-result strong{color:#176638!important;font-size:15px!important;font-weight:1000!important;letter-spacing:-.03em!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-overview-result span{margin-top:4px!important;color:#b8860b!important;font-size:13px!important;font-weight:1000!important;letter-spacing:-.03em!important}
+  body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-overview-note{margin-top:14px!important;padding:14px 15px!important;border-left-width:4px!important;border-radius:12px!important;font-size:12px!important;line-height:1.65!important}
+
   /* Overview KPI cards behave like the AVC women mobile navigation cards. */
   body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-kpi[data-kvl-target]{position:relative;cursor:pointer}
   body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-kpi[data-kvl-target]::after{content:'›';position:absolute;right:10px;bottom:8px;color:var(--kvl1180-green);font-size:18px;font-weight:900;opacity:.7}
