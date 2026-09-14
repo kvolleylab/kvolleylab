@@ -119,12 +119,12 @@
 }
 
 /* 2026-09-14 · AVC men hero image trial.
-   Use the first visual mockup as the actual hero background; suppress the earlier CSS-drawn ball/net. */
+   Use the first visual mockup artwork broadly across the real hero card; suppress the earlier CSS-drawn ball/net. */
 body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
   background-color:#075b35!important;
-  background-image:linear-gradient(90deg,rgba(2,52,29,.18) 0%,rgba(2,52,29,.10) 48%,rgba(2,52,29,0) 72%),url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-pc-v01.webp")!important;
-  background-size:cover!important;
-  background-position:center right!important;
+  background-image:linear-gradient(90deg,rgba(2,52,29,.26) 0%,rgba(2,52,29,.18) 43%,rgba(2,52,29,.03) 68%,rgba(2,52,29,0) 82%),url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-pc-v01.webp")!important;
+  background-size:auto,210% auto!important;
+  background-position:center,right 48%!important;
   background-repeat:no-repeat!important;
 }
 body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::before,
@@ -134,7 +134,8 @@ body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero::after{
 }
 @media(max-width:680px){
   body.kvl1180-prototype[data-avc-gender="men"] .kvl1180-hero{
-    background-image:linear-gradient(90deg,rgba(3,61,34,.16) 0%,rgba(3,61,34,.08) 56%,rgba(3,61,34,0) 78%),url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-mobile-v01.webp")!important;
-    background-position:center right!important;
+    background-image:linear-gradient(90deg,rgba(3,61,34,.24) 0%,rgba(3,61,34,.14) 46%,rgba(3,61,34,0) 80%),url("../img/competition-hero/kvl-hero-avc-men-continental-2026-men-mobile-v01.webp")!important;
+    background-size:auto,170% auto!important;
+    background-position:center,right 48%!important;
   }
 }
