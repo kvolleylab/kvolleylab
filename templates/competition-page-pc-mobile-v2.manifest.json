@@ -1,18 +1,27 @@
 {
   "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V2",
-  "status": "CROSS_GENDER_VALIDATED_BASELINE",
+  "status": "CROSS_GENDER_VISUALLY_VALIDATED_FROZEN_BASELINE",
   "createdAtKst": "2026-09-15",
   "validatedBy": [
     "2026 AVC Men's Continental Championship prototype",
     "2026 AVC Women's Continental Championship prototype"
   ],
+  "visualValidation": {
+    "confirmedAtKst": "2026-09-15",
+    "desktop": 1180,
+    "mobilePrimary": 390,
+    "mobileSecondary": 360,
+    "result": "user-confirmed-no-visible-issues"
+  },
   "sourceOfTruth": {
     "html": "templates/competition-page-pc-mobile-v2.html",
     "css": "assets/css/kvl-competition-template-v2.css",
     "js": "assets/js/kvl-competition-template-v2.js",
     "dataExample": "templates/competition-page-v2.example.json",
     "guide": "docs/KVL_COMPETITION_PAGE_TEMPLATE_V2.md",
-    "smokeTest": "tests/competition-page-v2-reuse-smoke.html"
+    "themePolicy": "docs/KVL_COMPETITION_THEME_POLICY_V1.md",
+    "smokeTest": "tests/competition-page-v2-reuse-smoke.html",
+    "themeSmokeTest": "tests/competition-page-v2-theme-smoke.html"
   },
   "breakpoints": {
     "desktopMaxContent": 1180,
@@ -56,8 +65,22 @@
     "eliminatedCombinedRankingCellBackground": "transparent"
   },
   "theme": {
-    "men": {"primary":"#176638","strong":"#0D6F3C","soft":"#EEF8F1"},
-    "women": {"primary":"#8E315E","strong":"#A53D68","accent":"#E7A8C2","soft":"#FFF1F6"},
+    "priority": "women-first-then-men-competition-family",
+    "competitionFamilyField": "competitionFamily",
+    "women": {
+      "policy": "always-rose-regardless-of-competition-family",
+      "primary": "#8E315E",
+      "strong": "#A53D68",
+      "dark": "#6F234A",
+      "accent": "#E7A8C2",
+      "soft": "#FFF1F6"
+    },
+    "men": {
+      "avc": {"primary":"#176638","strong":"#0D6F3C","soft":"#EEF8F1"},
+      "fivb": {"primary":"#5B3A8E","strong":"#442A70","soft":"#F3EFFA"},
+      "domestic": {"primary":"#163A5F","strong":"#102C49","soft":"#EEF4F8"}
+    },
+    "fallback": "unclassified-men-use-avc-green-until-family-is-explicitly-defined",
     "score": "#4B5563",
     "goldUsage": "champion-medal-direct-qualification-special-achievement-only"
   },
