@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>KVL Competition Template V2 · Theme Smoke Test</title>
+  <link rel="stylesheet" href="/assets/css/kvl-competition-template-v2.css?v=20260915-theme-1">
+  <style>
+    .kvl-theme-smoke{width:min(100%,1180px);margin:12px auto;padding:0 20px;box-sizing:border-box}
+    .kvl-theme-smoke nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+    .kvl-theme-smoke nav a{padding:7px 10px;border:1px solid #d8e1e8;border-radius:8px;background:#fff;color:#17365d;font:800 12px Arial;text-decoration:none}
+    .kvl-theme-smoke .note{margin:0 0 10px;color:#64748b;font:700 12px/1.5 Arial}
+  </style>
+  <script>
+    const p=new URLSearchParams(location.search);
+    const gender=p.get('gender')==='women'?'women':'men';
+    const family=['avc','fivb','domestic'].includes(p.get('family'))?p.get('family'):'avc';
+    window.KVL_COMPETITION_V2_DATA={
+      competitionId:'KVL-V2-THEME-SMOKE',gender,competitionFamily:family,status:'completed',stageLabel:'테마 검수',
+      displayName:`KVL THEME TEST · ${gender.toUpperCase()} · ${family.toUpperCase()}`,
+      officialName:'KVL Competition Theme Priority Smoke Test',dateLabel:'2026-09-15',locationLabel:'KVL',venueLabel:'Theme Lab',
+      teamCount:12,groupCount:3,matchCount:26,knockoutTeamCount:8,
+      champion:'테스트 우승팀',championAchievement:'특수 성취 Gold',
+      qualifications:[],resources:[]
+    };
+  </script>
+  <script src="/assets/js/kvl-competition-template-v2.js?v=20260915-theme-1" defer></script>
+</head>
+<body class="kvl1180-prototype kvl-competition-template-v2">
+  <div class="kvl-theme-smoke">
+    <nav aria-label="theme combinations">
+      <a href="?gender=men&family=avc">MEN · AVC Green</a>
+      <a href="?gender=men&family=fivb">MEN · FIVB Purple</a>
+      <a href="?gender=men&family=domestic">MEN · Domestic Navy</a>
+      <a href="?gender=women&family=avc">WOMEN · AVC Rose</a>
+      <a href="?gender=women&family=fivb">WOMEN · FIVB Rose</a>
+      <a href="?gender=women&family=domestic">WOMEN · Domestic Rose</a>
+    </nav>
+    <p class="note">여자부 3개 조합은 모두 Rose여야 하며, 남자부만 AVC Green / FIVB Purple / Domestic Navy로 달라져야 합니다.</p>
+  </div>
+  <main class="kvl1180-main">
+    <section class="kvl1180-hero">
+      <div class="kvl1180-hero-copy"><p class="kvl1180-eyebrow" data-kvl="eyebrow"></p><h1 data-kvl="title"></h1><p class="kvl1180-hero-sub" data-kvl="official-name"></p></div>
+      <div class="kvl1180-hero-status"><span data-kvl="hero-status"></span><span data-kvl="hero-team-count"></span><span class="is-accent" data-kvl="hero-stage"></span></div>
+    </section>
+    <section class="kvl1180-card kvl1180-view" data-view="overview">
+      <div class="kvl1180-section-head"><div><p class="label">THEME PRIORITY</p><h2>색상 우선순위 검수</h2></div><p class="kvl1180-overview-result"></p></div>
+      <div class="kvl1180-kpis">
+        <article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>참가국</span><strong data-kvl="team-count"></strong><small>개국</small></div></article>
+        <article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>조 편성</span><strong data-kvl="group-count"></strong><small>개 조</small></div></article>
+        <article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>전체 일정</span><strong data-kvl="match-count"></strong><small>경기</small></div></article>
+        <article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>결선 진출</span><strong data-kvl="qualifier-count"></strong><small>개국</small></div></article>
+        <article class="kvl1180-kpi is-venue"><div class="kvl1180-kpi-copy"><span>대회 장소</span><strong data-kvl="venue-primary"></strong><small data-kvl="venue-secondary"></small></div></article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
