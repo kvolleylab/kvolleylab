@@ -1,4 +1,4 @@
-/* K-Volley Lab · AVC Women 2026 participants Rose theme v1 */
+/* K-Volley Lab · AVC Women 2026 participants Rose theme v2 */
 body.kvl1180-women-template #rosters.kvl1180-participants-view .kvl1180-section-head h2{color:#8f2f59!important}
 body.kvl1180-women-template #rosters .kvl1180-participant-status span{border-color:#ead4de!important;background:#fff7fa!important;color:#765f69!important}
 body.kvl1180-women-template #rosters .kvl1180-participant-status strong{color:#a53d68!important}
@@ -8,7 +8,8 @@ body.kvl1180-women-template #rosters .kvl1180-participant-group-head span{color:
 body.kvl1180-women-template #rosters .kvl1180-participant-buttons{background:#f1e4e9!important}
 body.kvl1180-women-template #rosters .kvl1180-participant-button{cursor:default!important;background:#fffafd!important;color:#17365d!important}
 body.kvl1180-women-template #rosters .kvl1180-participant-button:hover{background:#fffafd!important}
-body.kvl1180-women-template #rosters .kvl1180-participant-button.is-korea{background:#fff0f6!important;box-shadow:inset 3px 0 0 #c65382!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-button.is-korea,
+body.kvl1180-women-template #rosters .kvl1180-participant-button.is-active{position:relative;z-index:1;background:#fff0f6!important;box-shadow:inset 0 0 0 2px #c65382!important}
 body.kvl1180-women-template #rosters .kvl1180-participant-button img{border-color:#eadfe4!important}
 body.kvl1180-women-template #rosters .kvl1180-participant-button-copy strong{color:#17365d!important}
 body.kvl1180-women-template #rosters .kvl1180-participant-button-copy small{color:#7b6770!important}
