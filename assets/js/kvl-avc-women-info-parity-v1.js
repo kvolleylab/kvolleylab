@@ -5,10 +5,10 @@
 const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-4';
 const TEAM_CODE={중국:'CHN',이란:'IRI',대만:'TPE',이라크:'IRQ',태국:'THA',인도네시아:'INA',카자흐스탄:'KAZ',호주:'AUS',일본:'JPN',대한민국:'KOR',베트남:'VIE',홍콩:'HKG'};
 const FINAL_NOTE={
-  1:'우승 · LA28 올림픽 직행 · 결승 중국에 3-2',
-  2:'준우승 · 결승 2-3',
-  3:'3위 · 이란에 3-0',
-  4:'4위 · 중국에 준결승 0-3'
+  1:'우승 · LA28 올림픽 직행',
+  2:'준우승',
+  3:'3위',
+  4:'4위'
 };
 let data=null,applyTimer=0;
 const text=el=>el?.textContent?.trim()||'';
