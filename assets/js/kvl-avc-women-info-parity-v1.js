@@ -2,8 +2,9 @@
    Source: Drive tournament MASTER + avc-women-continental-2026.json. */
 (()=>{
 'use strict';
-const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-4';
-const PARTICIPANTS_STYLE='assets/css/kvl-avc-women-participants-v1.css?v=20260915-1';
+const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-5';
+const PARTICIPANTS_STYLE='assets/css/kvl-avc-women-participants-v1.css?v=20260915-2';
+const RESOURCES_STYLE='assets/css/kvl-avc-women-resources-v1.css?v=20260915-1';
 const TEAM_CODE={중국:'CHN',이란:'IRI',대만:'TPE',이라크:'IRQ',태국:'THA',인도네시아:'INA',카자흐스탄:'KAZ',호주:'AUS',일본:'JPN',대한민국:'KOR',베트남:'VIE',홍콩:'HKG'};
 const TEAM_EN={중국:'China',이란:'Iran',대만:'Chinese Taipei',이라크:'Iraq',태국:'Thailand',인도네시아:'Indonesia',카자흐스탄:'Kazakhstan',호주:'Australia',일본:'Japan',대한민국:'Korea',베트남:'Vietnam',홍콩:'Hong Kong, China'};
 const TEAM_FLAG={중국:'cn',이란:'ir',대만:'tw',이라크:'iq',태국:'th',인도네시아:'id',카자흐스탄:'kz',호주:'au',일본:'jp',대한민국:'kr',베트남:'vn',홍콩:'hk'};
@@ -161,10 +162,43 @@ function enrichParticipants(){
     section.innerHTML=`<div class="kvl1180-section-head"><div><p class="label">PARTICIPATING TEAMS</p><h2>참가국</h2></div><div class="kvl1180-participant-status"><span><strong>${actualCount||12}개국 확정</strong></span><span>${groups.length||3}개 조</span><span>선수명단 별도 구축</span></div></div><div class="kvl1180-participant-groups">${groups.map(participantGroup).join('')}</div><div class="kvl1180-roster-pending" data-kvl-verified="1"><strong>참가국 정보 반영 완료 · 선수명단은 별도 구축</strong>2026 여자부 실제 참가 <b>${actualCount||12}개국</b>과 A·B·C조 편성은 대회 MASTER 기준으로 반영했습니다. 현재 국가별 등록 선수명단 MASTER는 미구축 상태이므로 선수 정보는 추정해서 넣지 않습니다. 선수명단이 확정되면 Player ID 기준으로 같은 참가국 화면에 연결합니다.</div>`;
   }
 }
+function ensureResourcesStyle(){
+  if(document.getElementById('kvl-avc-women-resources-v1'))return;
+  const link=document.createElement('link');link.id='kvl-avc-women-resources-v1';link.rel='stylesheet';link.href=RESOURCES_STYLE;document.head.appendChild(link);
+}
+function safeOfficialUrl(value){
+  try{
+    const u=new URL(String(value||''),location.href);
+    if(u.protocol!=='https:')return '';
+    if(!/(^|\.)(volleyballworld\.com|asianvolleyball\.net)$/i.test(u.hostname))return '';
+    return u.href;
+  }catch{return ''}
+}
+function sourceMeta(source){
+  const label=String(source?.label||'');
+  if(label.includes('경기일정')||label.includes('결과'))return{tag:'SCHEDULE & RESULTS',domain:'Volleyball World',desc:'공식 경기일정과 경기별 결과를 확인합니다.'};
+  if(label.includes('프리뷰')||label.includes('경기장'))return{tag:'PREVIEW & VENUE',domain:'Volleyball World',desc:'대회 프리뷰와 개최지·경기장 정보를 확인합니다.'};
+  if(label.startsWith('AVC'))return{tag:'AVC',domain:'Asian Volleyball Confederation',desc:'AVC의 2026 대회 개최 일정과 공식 발표를 확인합니다.'};
+  return{tag:'TOURNAMENT HUB',domain:'Volleyball World',desc:'대회 메인 허브에서 전체 공식 정보를 확인합니다.'};
+}
+function sourceCard(source){
+  const meta=sourceMeta(source),url=safeOfficialUrl(source?.url);
+  if(!url)return '';
+  return `<article class="kvl1180-source"><div><div class="kvl1180-source-top"><span class="kvl1180-source-tag">${esc(meta.tag)}</span><span class="kvl1180-source-domain">${esc(meta.domain)}</span></div><div class="kvl1180-source-copy"><strong>${esc(source.label)}</strong><p>${esc(meta.desc)}</p></div></div><a href="${esc(url)}" target="_blank" rel="noopener noreferrer"><span>공식페이지 열기</span><b aria-hidden="true">↗</b></a></article>`;
+}
 function enrichSources(){
-  const section=document.querySelector('#resources');
-  const count=section?.querySelectorAll('.kvl1180-source').length||0;
-  if(section&&count)section.dataset.sourceCount=String(count);
+  const section=document.querySelector('#resources')||document.querySelector('.kvl1180-view[data-view="resources"]');
+  if(!section)return;
+  ensureResourcesStyle();
+  if(!section.id)section.id='resources';
+  const sources=(Array.isArray(data?.sources)?data.sources:[]).filter(s=>s?.type==='official'&&safeOfficialUrl(s.url));
+  const ready=section.classList.contains('kvl1180-resources-view')&&section.querySelector('.kvl1180-resource-status')&&section.querySelectorAll('.kvl1180-source').length===sources.length&&section.querySelector('.kvl1180-resource-archive');
+  if(!ready){
+    section.classList.remove('kvl1180-prototype-placeholder');
+    section.classList.add('kvl1180-resources-view');
+    section.innerHTML=`<div class="kvl1180-section-head"><div><p class="label">OFFICIAL SOURCES</p><h2>공식자료</h2></div><div class="kvl1180-resource-status"><span><strong>${sources.length}개 공식 링크</strong></span><span>Volleyball World</span><span>AVC</span></div></div><div class="kvl1180-sources">${sources.map(sourceCard).join('')}</div><div class="kvl1180-resource-archive"><div><strong>K-Volley Lab 문서 아카이브 연결 준비</strong><p>여자부 공식 팸플릿·대회 문서 원문이 Drive에 확보되면 이 위치에서 공식문서로 바로 연결합니다. 현재 확인되지 않은 문서 링크는 임의로 만들지 않습니다.</p></div><span>원문 확보 후 연결</span></div><p class="kvl1180-resource-note"><b>자료 기준</b> · 공식자료 카드는 대회 MASTER와 competition JSON에 기록된 Volleyball World / AVC 공식 URL만 노출합니다.</p>`;
+  }
+  section.dataset.sourceCount=String(sources.length);
 }
 function apply(){
   if(!data)return;
