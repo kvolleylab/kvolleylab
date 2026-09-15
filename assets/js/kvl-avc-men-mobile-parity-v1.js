@@ -4,6 +4,7 @@
  * - mobile preliminary combined ranking mirrors the AVC women mobile ordering/geometry
  * - dynamic sections receive stable ids for mobile styling
  * - hero card receives a lightweight CSS-drawn volleyball/net visual (no image asset)
+ * - production URL reuses the validated prototype surface without leaking prototype links
  */
 (()=>{
 'use strict';
@@ -11,6 +12,41 @@ const body=document.body;
 if(!body||!body.matches('.kvl1180-prototype[data-avc-gender="men"]'))return;
 const view=name=>document.querySelector(`.kvl1180-view[data-view="${name}"]`);
 const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const PROD_MEN='international-competition-avc-men-continental-2026.html';
+const PROD_WOMEN='international-competition-avc-women-continental-2026.html';
+const PROTO_MEN='international-competition-avc-men-continental-2026-pc-hybrid-1180.html';
+const PROTO_WOMEN='international-competition-avc-women-continental-2026-pc-hybrid-1180.html';
+const isProductionMen=location.pathname.endsWith(`/${PROD_MEN}`)||location.pathname.endsWith(PROD_MEN);
+
+function normalizeProductionShell(){
+  if(!isProductionMen)return;
+  body.dataset.kvlGender='men';
+  body.dataset.kvlFamily='avc';
+  document.title='AVC 남자 대륙선수권 2026 | K-Volley Lab';
+  const description=document.querySelector('meta[name="description"]');
+  if(description)description.setAttribute('content','AVC Volleyball Men\'s Continental Championship 2026의 대회정보, 경기일정, 조별순위, 최종순위, 참가국과 공식자료를 확인하세요.');
+  const status=document.querySelector('.kvl1180-hero-status span:first-child');
+  if(status)status.textContent='대회 종료';
+  const rewriteAnchor=anchor=>{
+    if(!anchor||!anchor.getAttribute)return;
+    const raw=anchor.getAttribute('href')||'';
+    let next=raw;
+    if(raw.includes(PROTO_MEN))next=raw.replace(PROTO_MEN,PROD_MEN);
+    if(raw.includes(PROTO_WOMEN))next=raw.replace(PROTO_WOMEN,PROD_WOMEN);
+    if(next!==raw)anchor.setAttribute('href',next);
+  };
+  document.querySelectorAll('a[href]').forEach(rewriteAnchor);
+  if(body.dataset.kvlProductionLinksBound)return;
+  body.dataset.kvlProductionLinksBound='1';
+  const observer=new MutationObserver(mutations=>{
+    mutations.forEach(mutation=>mutation.addedNodes.forEach(node=>{
+      if(node.nodeType!==1)return;
+      if(node.matches?.('a[href]'))rewriteAnchor(node);
+      node.querySelectorAll?.('a[href]').forEach(rewriteAnchor);
+    }));
+  });
+  observer.observe(body,{childList:true,subtree:true});
+}
 
 function injectHeroArt(){
   if(document.getElementById('kvl-avc-men-hero-art-v1'))return;
@@ -180,6 +216,7 @@ function syncCombinedRanking(){
 }
 
 function init(){
+  normalizeProductionShell();
   injectHeroArt();
   ensureViewIds();
   syncOverviewResultSpacing();
