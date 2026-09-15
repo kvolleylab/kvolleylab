@@ -6,12 +6,23 @@
 'use strict';
 const ALLOWED=new Set(['overview','schedule','groups','knockout','rosters','resources']);
 const WOMEN_KPI_TARGETS=['?view=rosters&team=KOR','?view=groups','?view=schedule','?view=knockout'];
+const WOMEN_KPI_STYLE='assets/css/kvl-avc-women-kpi-interaction-v1.css?v=20260915-1';
 function currentView(){
   const requested=new URLSearchParams(location.search).get('view')||'overview';
   return ALLOWED.has(requested)?requested:'overview';
 }
+function ensureWomenKpiStyle(){
+  if(!document.body.classList.contains('kvl1180-women-template'))return;
+  if(document.getElementById('kvl-avc-women-kpi-interaction-v1'))return;
+  const link=document.createElement('link');
+  link.id='kvl-avc-women-kpi-interaction-v1';
+  link.rel='stylesheet';
+  link.href=WOMEN_KPI_STYLE;
+  document.head.appendChild(link);
+}
 function enhanceWomenOverviewKpis(){
   if(!document.body.classList.contains('kvl1180-women-template'))return;
+  ensureWomenKpiStyle();
   const cards=document.querySelectorAll('.kvl1180-view[data-view="overview"] .kvl1180-kpis .kvl1180-kpi:not(.is-venue)');
   cards.forEach((card,index)=>{
     const target=WOMEN_KPI_TARGETS[index];
