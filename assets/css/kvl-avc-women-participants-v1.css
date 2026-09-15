@@ -1,0 +1,32 @@
+/* K-Volley Lab · AVC Women 2026 participants Rose theme v1 */
+body.kvl1180-women-template #rosters.kvl1180-participants-view .kvl1180-section-head h2{color:#8f2f59!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-status span{border-color:#ead4de!important;background:#fff7fa!important;color:#765f69!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-status strong{color:#a53d68!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-group{border-color:#ead4de!important;background:#fff}
+body.kvl1180-women-template #rosters .kvl1180-participant-group-head{background:linear-gradient(90deg,#8f2f59,#c65382)!important;color:#fff!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-group-head span{color:#ffe9f1!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-buttons{background:#f1e4e9!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-button{cursor:default!important;background:#fffafd!important;color:#17365d!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-button:hover{background:#fffafd!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-button.is-korea{background:#fff0f6!important;box-shadow:inset 3px 0 0 #c65382!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-button img{border-color:#eadfe4!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-button-copy strong{color:#17365d!important}
+body.kvl1180-women-template #rosters .kvl1180-participant-button-copy small{color:#7b6770!important}
+body.kvl1180-women-template #rosters .kvl1180-roster-pending{margin-top:clamp(18px,1.6vw,24px);padding:clamp(15px,1.35vw,19px) clamp(17px,1.55vw,22px);border:1px solid #ead4de;border-left:4px solid #c65382;border-radius:12px;background:#fff5f9;color:#684f5a;font-size:clamp(12px,1.05cqw,13.5px);font-weight:750;line-height:1.65}
+body.kvl1180-women-template #rosters .kvl1180-roster-pending strong{display:block;margin-bottom:4px;color:#8f2f59;font-size:clamp(13px,1.13cqw,15px);font-weight:1000}
+body.kvl1180-women-template #rosters .kvl1180-roster-pending b{color:#a43f68;font-weight:950}
+@media(max-width:680px){
+  body.kvl1180-women-template #rosters.kvl1180-participants-view{padding-bottom:18px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-status{gap:5px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-status span{min-height:29px;padding:0 9px;font-size:9.5px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-groups{gap:9px;margin-bottom:14px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-group-head{min-height:40px;padding:0 11px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-group-head strong{font-size:13px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-group-head span{font-size:9.5px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-button{grid-template-columns:31px minmax(0,1fr);min-height:61px;gap:7px;padding:8px 9px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-button img{width:31px;height:22px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-button-copy strong{font-size:12px}
+  body.kvl1180-women-template #rosters .kvl1180-participant-button-copy small{font-size:8.5px}
+  body.kvl1180-women-template #rosters .kvl1180-roster-pending{margin-top:12px;padding:12px 13px;font-size:10.5px;line-height:1.55}
+  body.kvl1180-women-template #rosters .kvl1180-roster-pending strong{font-size:12px}
+}
