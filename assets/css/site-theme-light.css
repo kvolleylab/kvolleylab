@@ -98,19 +98,19 @@ body.kvl1180-prototype .kvl1180-view[data-view="overview"] .kvl1180-roster{
   display:none!important;
 }
 
-/* Competition prototype qualification parity: LA28 cards show the confirmed champion just like World Cup cards show confirmed qualifiers. */
+/* Competition prototype qualification parity: LA28 cards show the confirmed champion above the qualification footer, matching the World Cup card hierarchy. */
 body.kvl1180-prototype .kvl1180-stake.is-la{
   padding-bottom:74px!important;
 }
 body.kvl1180-prototype .kvl1180-stake.is-la .kvl1180-stake-foot{
-  bottom:42px!important;
+  bottom:11px!important;
 }
 body.kvl1180-prototype .kvl1180-stake.is-la::before{
   content:"대회 결과";
   position:absolute;
   left:clamp(13px,1.3vw,18px);
   right:clamp(13px,1.3vw,18px);
-  bottom:11px;
+  bottom:42px;
   padding-top:8px;
   border-top:1px solid rgba(80,100,90,.12);
   color:#17365d;
@@ -122,7 +122,7 @@ body.kvl1180-prototype .kvl1180-stake.is-la::after{
   content:"일본";
   position:absolute;
   right:clamp(13px,1.3vw,18px);
-  bottom:11px;
+  bottom:42px;
   color:#176638;
   font-size:clamp(8px,.68vw,10px);
   font-weight:950;
