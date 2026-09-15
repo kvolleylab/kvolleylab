@@ -4,232 +4,157 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>AVC 여자 대륙선수권 2026 | K-Volley Lab</title>
-  <meta name="description" content="AVC Volleyball Women's Continental Championship 2026의 경기결과, 조별순위, 최종순위와 참가국을 확인하세요.">
+  <title>AVC 여자 대륙선수권 2026 · Template V1 Prototype | K-Volley Lab</title>
+  <meta name="description" content="K-Volley Lab 대회 기본 템플릿 v1을 적용한 AVC 여자 대륙선수권 2026 PC+모바일 검증 페이지">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
-  <link rel="stylesheet" href="assets/css/competition-dashboard-v1.css?v=20260907-1">
-  <link rel="stylesheet" href="assets/css/avc-bracket-standard.css?v=20260901-1">
-  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v1.css?v=20260907-4">
-  <style>
-    :root{--avc-primary:#D2648F;--avc-dark:#A43F68;--avc-light:#DB749B;--avc-accent:#D2648F;--avc-gold:#FFE4A3;--avc-gold-soft:#FFE4A3;--avc-line:#EDBED0;--avc-muted:#64748b;--avc-soft:#FFF8FB}
-    body{background:#f6f8fb}.avc-main{max-width:1180px;margin:0 auto;padding:42px 20px 80px}.avc-hero{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:26px;min-height:206px;padding:34px 38px;border:1px solid var(--avc-line);border-radius:28px;background:linear-gradient(135deg,var(--avc-dark),var(--avc-primary));color:#fff;box-shadow:0 18px 42px rgba(164,63,104,.18)}.avc-hero .eyebrow{margin:0 0 8px;color:var(--avc-gold);font-size:12px;font-weight:900;letter-spacing:.12em}.avc-hero h1{margin:0;color:var(--avc-gold-soft)!important;font-size:38px;line-height:1.2;text-shadow:0 2px 14px rgba(0,0,0,.18)}.avc-hero h1 small{display:block;margin-top:7px;color:#FFF1F6;font-size:16px;font-weight:700}.avc-meta{margin:16px 0 0;color:#FFF2F7;font-size:15px;line-height:1.75}.avc-status{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.avc-status span{padding:9px 12px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.08);font-size:12px;font-weight:900;white-space:nowrap}.avc-status .champion{border-color:rgba(255,228,163,.6);color:#FFE4A3}
-    .avc-jump{display:flex;gap:8px;margin:18px 0 36px;padding:10px;border:1px solid var(--avc-line);border-radius:16px;background:#fff;overflow:auto}.avc-jump a{white-space:nowrap;padding:10px 14px;border-radius:10px;color:#5f4650;font-weight:800;text-decoration:none}.avc-jump a:hover,.avc-jump a.is-active{background:var(--avc-primary);color:#fff}.avc-view{display:none}.avc-view.is-active{display:block}.avc-section{margin-top:0;padding:30px;border:1px solid var(--avc-line);border-radius:24px;background:#fff;box-shadow:0 8px 24px rgba(164,63,104,.05)}.avc-section .eyebrow{margin:0 0 8px;color:var(--avc-primary);font-size:12px;font-weight:900;letter-spacing:.12em}.avc-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:22px}.avc-section h2{margin:4px 0 0;color:var(--avc-dark);font-size:28px}.avc-section-head>p{margin:0;color:var(--avc-muted);font-size:14px;text-align:right}
-    .avc-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.avc-kpis article{padding:22px;border:1px solid var(--avc-line);border-radius:18px;background:var(--avc-soft)}.avc-kpis span,.avc-kpis small{display:block;color:#748397}.avc-kpis strong{display:block;margin-top:10px;color:var(--avc-dark);font-size:29px;line-height:1.2}.avc-note{margin-top:18px;padding:18px 20px;border-left:4px solid var(--avc-primary);border-radius:14px;background:#FFF2F7;color:#5F4650;line-height:1.7}.avc-note strong{color:#172033}.avc-rule-card{margin-top:20px;padding:22px 24px;border:1px solid var(--avc-line);border-radius:18px;background:linear-gradient(180deg,#fff,var(--avc-soft));color:#111827}.avc-rule-card>strong{display:block;font-size:19px}.avc-rule-card p{margin:10px 0 0;font-size:15px;line-height:1.75}.avc-rule-card small{display:block;margin-top:12px;font-size:14px;line-height:1.7}
-    #overview .cd-calendar-wrap{margin-top:28px;padding-top:28px;border-top:1px solid #f0d7e1}#overview .cd-calendar-head{display:flex;justify-content:flex-start;gap:4px;align-items:flex-start;flex-direction:column;margin-bottom:16px}#overview .cd-calendar-head h2{margin:4px 0 0;color:var(--avc-dark);font-size:28px}#overview .cd-calendar-head>p{margin:0;color:#68788b;font-size:14px;text-align:left}#overview .cd-cal-month{border-color:var(--avc-line)}#overview .cd-cal-title{background:var(--avc-primary)}#overview .cd-cal-week span{background:#FFF2F7;color:#75505F}#overview .cd-cal-cell{border-color:#f1dbe4}#overview .cd-cal-cell.has-games{background:#FFF8FB}.kvl-calendar-day-link{display:block;height:100%;color:inherit;text-decoration:none}.kvl-calendar-count{display:block;margin-top:7px;color:var(--avc-dark);font-size:10px;font-weight:900}.kvl-calendar-time{display:block;margin-top:3px;color:#8a6b78;font-size:9px;font-weight:800}
-    #schedule .cd-stage-filters{margin-top:2px}#schedule .cd-stage-filters button{border-color:var(--avc-line);color:#765563}#schedule .cd-stage-filters button:hover,#schedule .cd-stage-filters button.is-active{border-color:var(--avc-primary);background:#FFF2F7;color:var(--avc-dark)}#schedule .cd-date-group{border-color:var(--avc-line)}#schedule .cd-date-head{background:#FFF2F7;color:var(--avc-dark)}#schedule .cd-match{grid-template-columns:130px 600px minmax(0,1fr)}#schedule .cd-match-board{width:600px;grid-template-columns:minmax(0,1fr) 64px minmax(0,1fr)}#schedule .cd-side{box-sizing:border-box;white-space:normal}#schedule .cd-side.is-left{justify-content:flex-start;padding-left:48px;text-align:left}#schedule .cd-side.is-right{justify-content:flex-end;padding-right:48px;text-align:right}#schedule .cd-inline-logo{width:42px;height:42px;padding:2px;background:#fff}#schedule .cd-score{color:var(--avc-primary);font-size:20px}.avc-schedule-flag img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff}.avc-set-scores{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.avc-set-scores span{min-width:48px;padding:5px 7px;border:1px solid var(--avc-line);border-radius:8px;background:var(--avc-soft);color:#6F5661;font-size:11px;font-weight:850;text-align:center}.avc-winner{color:var(--avc-dark)!important;font-weight:1000!important}
-    .avc-group-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.avc-group-card{overflow:hidden;border:1px solid var(--avc-line);border-radius:17px;background:#fff}.avc-group-card h3{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding:13px 15px;background:var(--avc-primary);color:#fff;font-size:15px}.avc-group-card h3 span{color:#FFF2F7;font-size:11px}.avc-standing-row{display:grid;grid-template-columns:24px 28px minmax(0,1fr) auto;align-items:center;gap:8px;min-height:54px;padding:8px 11px;border-top:1px solid #f4e3ea}.avc-standing-row.is-korea{background:#FFF2F7}.avc-standing-row.is-qualified{box-shadow:inset 3px 0 0 var(--avc-primary)}.avc-standing-rank{color:#75505F;font-size:12px;font-weight:1000;text-align:center}.avc-standing-row img{width:27px;height:19px;object-fit:contain}.avc-standing-copy strong{display:block;color:#17365D;font-size:13px}.avc-standing-copy small{display:block;margin-top:2px;color:#839087;font-size:10px;font-weight:800}.avc-standing-stat{color:#6F5661;font-size:10px;font-weight:900;text-align:right;white-space:nowrap}.avc-combined-wrap{margin-top:22px;padding-top:20px;border-top:1px solid #f0d7e1}.avc-combined-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:11px}.avc-combined-head h3{margin:0;color:var(--avc-dark);font-size:19px}.avc-combined-head p{margin:0;color:#728276;font-size:11px}.avc-combined{overflow:hidden;border:1px solid var(--avc-line);border-radius:15px}.avc-combined-row{display:grid;grid-template-columns:60px 32px minmax(0,1fr) 80px 90px;gap:8px;align-items:center;min-height:46px;padding:7px 13px;border-top:1px solid #f4e3ea}.avc-combined-row.is-korea{background:#FFF2F7}.avc-combined-seed{color:var(--avc-dark);font-size:12px;font-weight:1000}.avc-combined-row img{width:28px;height:19px;object-fit:contain}.avc-combined-row strong{color:#17365D;font-size:13px}.avc-combined-row span:not(.avc-combined-seed){color:#708078;font-size:11px;font-weight:800}
-    #groups .avc-combined-head{align-items:flex-start;justify-content:flex-start;flex-direction:column;gap:4px}#groups .avc-combined-head>div{width:100%}#groups .avc-combined-head .eyebrow,#groups .avc-combined-head h3,#groups .avc-combined-head>p{margin-left:0;margin-right:0;text-align:left;white-space:nowrap}#groups .avc-combined{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin}.kvl-women-combined-v3-table{min-width:900px;background:#fff}.kvl-women-combined-v3-line{display:grid;grid-template-columns:64px 30px 118px 150px 90px 60px 104px 104px 78px;gap:8px;align-items:center;min-height:48px;padding:7px 13px;border-top:1px solid #f4e3ea;box-sizing:border-box}.kvl-women-combined-v3-line:first-child{border-top:0}.kvl-women-combined-v3-line.is-head{min-height:38px;background:#FFF2F7;color:#765563;font-size:10px;font-weight:1000}.kvl-women-combined-v3-line.is-korea{background:#FFF2F7}.kvl-women-combined-v3-line img{display:block;width:28px;height:19px;object-fit:contain}.kvl-women-combined-v3-rank{color:var(--avc-dark);font-size:12px;font-weight:1000;white-space:nowrap}.kvl-women-combined-v3-team{color:#17365D;font-size:13px;font-weight:900;white-space:nowrap}.kvl-women-combined-v3-stat{color:#708078;font-size:11px;font-weight:800;text-align:center;white-space:nowrap}.kvl-women-combined-v3-result{display:flex;align-items:center;justify-content:flex-start;min-height:30px;gap:7px;padding:0;background:transparent;color:#166534;font-size:10px;font-weight:1000;line-height:1.15;white-space:nowrap;box-sizing:border-box}.kvl-women-combined-v3-result b{display:inline-flex;align-items:center;justify-content:center;min-height:24px;padding:4px 7px;border:1px solid #bfe3c9;border-radius:999px;background:#eef8f1;font-size:10px;box-sizing:border-box}.kvl-women-combined-v3-result small{display:block;margin:0;color:#166534;font-size:10px;font-weight:1000}.kvl-women-combined-v3-result.is-out{justify-content:center;padding:4px 7px;border-radius:999px;background:#f3f4f6;color:#6b7280}.kvl-women-combined-v3-result.is-out b{min-height:0;padding:0;border:0;background:transparent;color:inherit}
-    .avc-final-block{margin-bottom:26px}.avc-final-block-title{margin-bottom:14px}.avc-final-block-title h3{margin:4px 0 0;color:var(--avc-dark);font-size:21px}.avc-podium{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.avc-podium-card{display:grid;grid-template-columns:42px 42px minmax(0,1fr);align-items:center;gap:10px;padding:14px;border:1px solid var(--avc-line);border-radius:16px;background:var(--avc-soft)}.avc-podium-rank{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#FFF2F7;color:var(--avc-dark);font-size:13px;font-weight:1000}.avc-podium-card img{width:38px;height:27px;object-fit:contain}.avc-podium-copy strong{display:block;color:#17365D;font-size:14px}.avc-podium-copy small{display:block;margin-top:3px;color:#75837b;font-size:10px;font-weight:800}.avc-knockout-subhead{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:28px 0 14px;padding-top:24px;border-top:1px solid var(--avc-line)}.avc-knockout-subhead h3{margin:4px 0 0;color:var(--avc-dark);font-size:21px}.avc-knockout-subhead p{margin:0;color:#748397;font-size:13px}.avc-bronze-wrap{max-width:420px;margin:22px auto 0}.avc-bronze-title{color:var(--avc-dark);font-size:14px;text-align:center}
-    .avc-participant-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.avc-country-card{display:flex;align-items:center;gap:12px;min-height:82px;padding:14px 16px;border:1px solid var(--avc-line);border-radius:15px;background:var(--avc-soft)}.avc-country-card img{width:42px;height:29px;object-fit:contain}.avc-country-copy{min-width:0}.avc-country-copy strong{display:block;color:#17365D;font-size:14px}.avc-country-copy small{display:block;margin-top:3px;color:#7a8796;font-size:10px;font-weight:800}.avc-country-pool{margin-left:auto;padding:5px 8px;border-radius:999px;background:#FFF2F7;color:var(--avc-dark);font-size:10px;font-weight:900}.avc-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.avc-source{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px;padding:14px 16px;border:1px solid var(--avc-line);border-radius:14px;background:var(--avc-soft);overflow:hidden}.avc-source strong{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--avc-dark)}.avc-source a{display:inline-flex;box-sizing:border-box;align-items:center;justify-content:center;max-width:100%;padding:6px 8px;border-radius:999px;background:#FFF2F7;color:var(--avc-dark);font-size:11px;font-weight:900;line-height:1;white-space:nowrap;text-decoration:none}.avc-pending{padding:28px;text-align:center;color:#7b8998}
-    @media(min-width:681px){
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line{grid-template-columns:64px 30px 118px 90px 60px 104px 104px 78px 150px!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(1){grid-column:1!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(2){grid-column:2!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(3){grid-column:3!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(4){grid-column:9!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(5){grid-column:4!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(6){grid-column:5!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(7){grid-column:6!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(8){grid-column:7!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(9){grid-column:8!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out){justify-content:center!important;color:var(--avc-dark)!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) b{border-color:var(--avc-line)!important;background:#FFF2F7!important;color:var(--avc-dark)!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) small{color:var(--avc-dark)!important}
-    }
-    @media(max-width:1100px){#schedule .cd-match{grid-template-columns:90px minmax(420px,1fr)}#schedule .cd-match-board{width:100%;max-width:600px}.avc-podium{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:900px){.avc-hero{align-items:flex-start;flex-direction:column}.avc-status{justify-content:flex-start}.avc-section-head{align-items:flex-start;flex-direction:column}.avc-section-head>p{text-align:left}.avc-group-grid{grid-template-columns:1fr}.avc-participant-grid{grid-template-columns:repeat(2,1fr)}.avc-combined-row{grid-template-columns:52px 30px minmax(0,1fr) 70px}.avc-combined-row span:last-child{display:none}}
-    .kvl-mobile-meta-break{display:none}.avc-overview-result{margin:0!important;text-align:right!important}.avc-overview-result strong,.avc-overview-result span{display:block}.avc-overview-result strong{color:var(--avc-dark);font-size:14px;font-weight:1000}.avc-overview-result span{margin-top:3px;color:#9a6d12;font-size:12px;font-weight:1000}
-    @media(max-width:680px){body[data-avc-gender="women"] .avc-status{display:none!important}body[data-avc-gender="women"] .kvl-hero-meta-sep{display:none!important}body[data-avc-gender="women"] .kvl-mobile-meta-break{display:block!important}body[data-avc-gender="women"] .avc-meta{line-height:1.65!important}body[data-avc-gender="women"] #overview .avc-section-head{align-items:flex-end!important;flex-direction:row!important;justify-content:space-between!important;gap:12px!important}body[data-avc-gender="women"] #overview .avc-section-head>div{min-width:0}body[data-avc-gender="women"] #overview .avc-section-head h2{font-size:22px!important;white-space:nowrap}body[data-avc-gender="women"] #overview .avc-overview-result{flex:0 0 auto!important;padding-left:10px!important;border-left:3px solid var(--kvl-women-primary)!important;line-height:1.22!important}body[data-avc-gender="women"] #overview .avc-overview-result strong{color:var(--kvl-women-dark)!important;font-size:15px!important;font-weight:1000!important;letter-spacing:-.03em!important}body[data-avc-gender="women"] #overview .avc-overview-result span{margin-top:4px!important;color:#b4871f!important;font-size:13px!important;font-weight:1000!important;letter-spacing:-.03em!important}}
-    @media(max-width:680px){
-      body[data-avc-gender="women"] #groups .avc-combined-head{gap:3px!important}
-      body[data-avc-gender="women"] #groups .avc-combined-head h3{font-size:16px!important;line-height:1.25!important;letter-spacing:-.03em!important}
-      body[data-avc-gender="women"] #groups .avc-combined-head>p{font-size:9px!important;line-height:1.35!important;letter-spacing:-.035em!important}
-      body[data-avc-gender="women"] #groups .avc-combined{overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-table{min-width:770px!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line{grid-template-columns:44px 28px 110px 130px 76px 54px 96px 96px 76px!important;gap:6px!important;min-height:54px;padding:8px 6px!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line.is-head{min-height:42px!important;font-size:10px!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line.is-head>span{display:flex!important;align-items:center!important;justify-content:center!important;justify-self:stretch!important;text-align:center!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line img{width:28px!important;height:19px!important;justify-self:center!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-rank{font-size:13px!important;justify-self:center!important;text-align:center!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-team{font-size:13px!important;justify-self:center!important;text-align:center!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-stat{font-size:11px!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-line>:nth-child(n+5){display:flex!important;align-items:center!important;justify-content:center!important;justify-self:stretch!important;text-align:center!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result{width:100%!important;min-height:38px!important;gap:6px!important;padding:0!important;font-size:11px!important;line-height:1.1!important;justify-content:center!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result b{width:62px!important;min-width:62px!important;min-height:26px!important;padding:4px 5px!important;font-size:10px!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result small{margin:0!important;font-size:11px!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out),body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) b,body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) small{color:var(--avc-dark)!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result:not(.is-out) b{border-color:var(--avc-line)!important;background:#FFF2F7!important;color:var(--avc-dark)!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result.is-out{justify-content:center!important;padding:0!important;background:transparent!important;border-radius:0!important}
-      body[data-avc-gender="women"] #groups .kvl-women-combined-v3-result.is-out b{width:62px!important;min-width:62px!important;min-height:26px!important;padding:0!important;border:1px solid #e5e7eb!important;border-radius:999px!important;background:#f3f4f6!important;color:#6b7280!important;font-size:8px!important}
-      body[data-avc-gender="women"] #sources .avc-sources{grid-template-columns:1fr!important;gap:7px!important}
-      html body[data-avc-gender="women"] #sources .avc-source{grid-template-columns:minmax(0,1fr) auto!important;min-height:48px!important;padding:10px 10px!important;gap:6px!important}
-      html body[data-avc-gender="women"] #sources .avc-source strong{font-size:11px!important;line-height:1.2!important;white-space:nowrap!important}
-      html body[data-avc-gender="women"] #sources .avc-source a{padding:5px 7px!important;font-size:10px!important;line-height:1!important;white-space:nowrap!important}
-      body[data-avc-gender="women"] #schedule .cd-match-board{grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr)!important;gap:8px!important;align-items:center!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-left{grid-template-columns:34px minmax(0,1fr)!important;gap:2px!important;text-align:left!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-left .cd-inline-logo{grid-column:1!important;grid-row:1!important;justify-self:start!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-left strong{grid-column:2!important;grid-row:1!important;justify-self:start!important;text-align:left!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-right{grid-template-columns:minmax(0,1fr) 34px!important;gap:2px!important;text-align:right!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-right strong{grid-column:1!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
-      body[data-avc-gender="women"] #schedule .cd-side.is-right .cd-inline-logo{grid-column:2!important;grid-row:1!important;justify-self:end!important}
-      body[data-avc-gender="women"] #schedule .cd-inline-logo{box-sizing:border-box!important;width:34px!important;height:24px!important;padding:0!important}
-      body[data-avc-gender="women"] #schedule .cd-side strong{overflow:visible!important;color:#4B5563!important;font-size:18px!important;line-height:1!important;letter-spacing:-.045em!important;text-overflow:clip!important;white-space:nowrap!important}body[data-avc-gender="women"] #schedule .cd-side strong.avc-winner{color:var(--avc-dark)!important}
-      body[data-avc-gender="women"] #schedule .cd-score{width:46px!important;color:#4B5563!important;font-size:18px!important;line-height:1!important;justify-self:center!important;text-align:center!important;font-variant-numeric:tabular-nums!important}
-
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;column-gap:0!important;overflow:hidden!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head{grid-column:1/-1!important;padding:7px 9px!important;border-radius:11px 11px 0 0!important;font-size:9px!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head strong{font-size:10px!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team{grid-column:1!important;display:grid!important;grid-template-columns:32px minmax(0,1fr) 22px!important;gap:2px!important;min-height:44px!important;padding:7px 0 7px 7px!important;border-top:0!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team{grid-column:2!important;display:grid!important;grid-template-columns:22px minmax(0,1fr) 32px!important;gap:2px!important;min-height:44px!important;padding:7px 7px 7px 0!important;border-top:0!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-team img{width:32px!important;height:23px!important;margin:0!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team img{grid-column:1!important;grid-row:1!important;justify-self:start!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team strong{grid-column:2!important;grid-row:1!important;justify-self:start!important;text-align:left!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team b{grid-column:3!important;grid-row:1!important;text-align:right!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b{grid-column:1!important;grid-row:1!important;text-align:left!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team b::before{content:'-';margin-right:1px}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team strong{grid-column:2!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-match-head + .avc-bracket-team + .avc-bracket-team img{grid-column:3!important;grid-row:1!important;justify-self:end!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-team strong,html body[data-avc-gender="women"] #knockout .avc-bracket-team b{font-size:18px!important;line-height:1!important;white-space:nowrap!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-team strong{overflow:visible!important;letter-spacing:-.045em!important;text-overflow:clip!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-team b{color:var(--avc-primary)!important}
-      html body[data-avc-gender="women"] #knockout .avc-bracket-team.is-winner b{color:var(--avc-primary)!important}
-    }
-  </style>
-  <link rel="stylesheet" href="assets/css/kvl-mobile-competition-template-v3.css?v=20260908-7">
-  <script src="assets/js/kvl-mobile-combined-ranking-v1.js?v=20260908-3" defer></script>
-  <script src="assets/js/avc-continental-gender-runtime.js?v=20260907-1" defer></script>
+  <link rel="stylesheet" href="assets/css/kvl-pc-avc-hybrid-1180-prototype-v1.css?v=20260915-1">
+  <link rel="stylesheet" href="assets/css/kvl-avc-men-mobile-parity-v1.css?v=20260914-5">
+  <link rel="stylesheet" href="assets/css/kvl-avc-women-template-v1.css?v=20260915-8">
+  <link rel="stylesheet" href="assets/css/kvl-avc-women-knockout-v1.css?v=20260915-1">
   <script src="assets/js/unified-nav.js?v=20260907-5" defer></script>
+  <script src="assets/js/kvl-competition-view-bootstrap-v1.js?v=20260915-1" defer></script>
+  <script src="assets/js/kvl-avc-women-calendar-guard-v1.js?v=20260915-3" defer></script>
+  <script src="assets/js/kvl-avc-women-template-v1.js?v=20260915-3" defer></script>
+  <script src="assets/js/kvl-avc-women-info-parity-v1.js?v=20260915-5" defer></script>
 </head>
-<body data-avc-gender="women">
+<body class="kvl1180-prototype kvl1180-women-template" data-avc-gender="men" data-kvl-gender="women">
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
-<main class="avc-main">
-  <section class="avc-hero">
-    <div><p class="eyebrow">INTERNATIONAL COMPETITION · WOMEN</p><h1>AVC 여자 대륙선수권 2026<small>AVC Volleyball Women's Continental Championship 2026</small></h1><p class="avc-meta"><span class="kvl-hero-meta-line">2026-08-21(금) ~ 2026-08-30(일)</span><span class="kvl-hero-meta-line">중국 톈진</span><span class="kvl-hero-meta-line">올림픽 센터 체육관</span></p></div>
-    <div class="avc-status"><span>대회 종료</span><span>12개국</span><span class="champion">우승 태국 · LA28 직행</span></div>
+
+<svg class="kvl1180-sprite" aria-hidden="true" focusable="false">
+  <symbol id="kvl-icon-calendar-line" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+  <symbol id="kvl-icon-pin-line" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="kvl-icon-users-solid" viewBox="0 0 24 24"><circle cx="8" cy="7" r="3.3"/><circle cx="16.5" cy="8.2" r="2.7"/><path d="M1.7 20c.25-4.6 2.6-7.2 6.3-7.2s6.05 2.6 6.3 7.2H1.7Z"/><path d="M13.1 20c.2-3.55 1.9-5.6 4.65-5.6 2.55 0 4.2 1.95 4.55 5.6h-9.2Z"/></symbol>
+  <symbol id="kvl-icon-layers-solid" viewBox="0 0 24 24"><path d="m12 2.4 10 5.2-10 5.2L2 7.6 12 2.4Z"/><path d="m2.9 11.5 9.1 4.7 9.1-4.7.9 2-10 5.2-10-5.2.9-2Z"/><path d="m2.9 16.2 9.1 4.7 9.1-4.7.9 2-10 5.2-10-5.2.9-2Z"/></symbol>
+  <symbol id="kvl-icon-calendar-solid" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><rect x="6" y="2" width="2.5" height="6" rx="1.2"/><rect x="15.5" y="2" width="2.5" height="6" rx="1.2"/><rect x="6" y="11" width="3" height="3" rx=".5" fill="#fff"/><rect x="10.5" y="11" width="3" height="3" rx=".5" fill="#fff"/><rect x="15" y="11" width="3" height="3" rx=".5" fill="#fff"/><rect x="6" y="15.5" width="3" height="3" rx=".5" fill="#fff"/><rect x="10.5" y="15.5" width="3" height="3" rx=".5" fill="#fff"/></symbol>
+  <symbol id="kvl-icon-trophy-solid" viewBox="0 0 24 24"><path d="M7 3h10v5.2c0 4.4-2 7.3-5 7.3s-5-2.9-5-7.3V3Z"/><path d="M7 5H2.7v2.6c0 3.4 2 5.4 5.5 5.7V10c-1.8-.2-2.7-1.1-2.7-2.5V7H7V5Zm10 0h4.3v2.6c0 3.4-2 5.4-5.5 5.7V10c1.8-.2 2.7-1.1 2.7-2.5V7H17V5Z"/><rect x="10.5" y="15" width="3" height="4"/><rect x="7.5" y="19" width="9" height="2.5" rx="1.2"/></symbol>
+  <symbol id="kvl-icon-pin-solid" viewBox="0 0 24 24"><path d="M12 2.2a7.8 7.8 0 0 0-7.8 7.8c0 5.5 7.8 12 7.8 12s7.8-6.5 7.8-12A7.8 7.8 0 0 0 12 2.2Z"/><circle cx="12" cy="10" r="2.7" fill="#fff"/></symbol>
+  <symbol id="kvl-icon-bars-solid" viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="9" rx="1"/><rect x="9" y="8" width="4" height="13" rx="1"/><rect x="15" y="4" width="4" height="17" rx="1"/><rect x="21" y="10" width="2" height="11" rx="1"/></symbol>
+  <symbol id="kvl-icon-medal-solid" viewBox="0 0 24 24"><path d="m6 2 4.3 6.2h3.4L18 2h-4l-2 3-2-3H6Z"/><circle cx="12" cy="14.5" r="6.5"/><circle cx="12" cy="14.5" r="2.6" fill="#fff"/></symbol>
+  <symbol id="kvl-icon-world-solid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2.8 12h18.4M12 2.7c2.5 2.7 3.8 5.8 3.8 9.3S14.5 18.6 12 21.3M12 2.7C9.5 5.4 8.2 8.5 8.2 12s1.3 6.6 3.8 9.3" fill="none" stroke="#fff" stroke-width="1.5"/></symbol>
+</svg>
+
+<main class="kvl1180-main">
+  <section class="kvl1180-hero" aria-labelledby="pageTitle">
+    <div class="kvl1180-hero-copy">
+      <p class="kvl1180-eyebrow">INTERNATIONAL COMPETITION · WOMEN</p>
+      <h1 id="pageTitle">AVC 여자 대륙선수권 2026</h1>
+      <p class="kvl1180-hero-sub">AVC Volleyball Women's Continental Championship 2026</p>
+      <div class="kvl1180-hero-meta">
+        <div class="kvl1180-meta-row"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-calendar-line"/></svg><span>2026-08-21(금) ~ 2026-08-30(일)</span></div>
+        <div class="kvl1180-meta-row"><svg class="kvl1180-icon" aria-hidden="true"><use href="#kvl-icon-pin-line"/></svg><span class="kvl1180-hero-location"><span>중국 톈진</span><span>톈진 올림픽 센터 체육관</span></span></div>
+      </div>
+    </div>
+    <div class="kvl1180-hero-status" aria-label="대회 상태"><span>대회 종료</span><span id="heroTeamCount">12개국</span><span class="is-accent">우승 태국 · LA28 직행</span></div>
   </section>
 
-  <nav class="avc-jump" aria-label="대회 메뉴">
-    <a data-view="overview" href="?view=overview">한눈에보기</a>
-    <a data-view="schedule" href="?view=schedule">경기일정</a>
-    <a data-view="groups" href="?view=groups">조별순위</a>
-    <a data-view="knockout" href="?view=knockout">최종순위</a>
-    <a data-view="teams" href="?view=teams">참가국</a>
-    <a data-view="sources" href="?view=sources">공식자료</a>
-  </nav>
+  <div class="kvl1180-controlbar">
+    <nav class="kvl1180-tabs" aria-label="대회 메뉴">
+      <a class="is-active" data-view="overview" href="?view=overview" aria-current="page">한눈에 보기</a><a data-view="schedule" href="?view=schedule">경기일정</a><a data-view="groups" href="?view=groups">조별순위</a><a data-view="knockout" href="?view=knockout">최종순위</a><a data-view="rosters" href="?view=rosters">참가국</a><a data-view="resources" href="?view=resources">공식자료</a>
+    </nav>
+    <nav class="kvl1180-gender" aria-label="성별 전환"><a href="international-competition-avc-men-continental-2026-pc-hybrid-1180.html?view=overview">MEN · 남자부</a><a class="is-active" href="international-competition-avc-women-continental-2026-pc-hybrid-1180.html?view=overview">WOMEN · 여자부</a></nav>
+  </div>
 
-  <section id="overview" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">TOURNAMENT SNAPSHOT</p><h2>대회 한눈에 보기</h2></div><p class="avc-overview-result"><strong>우승 태국</strong><span>LA올림픽 직행</span></p></div>
-    <div class="avc-kpis"><article><span>참가국</span><strong>12</strong><small>개국</small></article><article><span>조별리그</span><strong>3</strong><small>개 조</small></article><article><span>전체 경기</span><strong>26</strong><small>경기</small></article><article><span>8강 진출</span><strong>8</strong><small>개국</small></article><div class="kvl-avc-venue-kpi kvl-mobile-venue-only" aria-label="대회 장소: 중국 톈진 올림픽 센터 체육관"><span>장소</span><strong>중국 톈진</strong><small>올림픽 센터 체육관</small></div></div>
-    <div class="cd-calendar-wrap"><div class="cd-calendar-head"><div><p class="eyebrow">COMPETITION CALENDAR</p><h2>대회 월간 달력</h2></div><p>날짜를 누르면 경기일정의 해당 날짜로 이동합니다.</p></div><div id="calendarRoot" class="cd-calendar"><div class="cd-empty">대회 달력을 불러오는 중입니다.</div></div></div>
-    <div class="avc-note"><strong>2026 여자부 대회는 종료되었습니다.</strong><br>태국이 중국을 결승에서 3-2로 꺾고 우승했으며 2028 LA 올림픽 아시아 직행 출전권을 획득했습니다.</div>
+  <section class="kvl1180-card kvl1180-view" data-view="overview" aria-labelledby="snapshotTitle">
+    <div class="kvl1180-section-head"><div><p class="label">TOURNAMENT SNAPSHOT</p><h2 id="snapshotTitle">대회 한눈에 보기</h2></div><p class="kvl1180-overview-result"><strong>우승 태국</strong><span>LA28 올림픽 직행</span></p></div>
+    <div class="kvl1180-kpis">
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-users-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>참가국</span><strong id="teamCount">12</strong><small>개국</small></div></article>
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-layers-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>조 편성</span><strong id="groupCount">3</strong><small>개 조</small></div></article>
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-calendar-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>전체 일정</span><strong id="matchCount">26</strong><small>경기</small></div></article>
+      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-trophy-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>8강 진출</span><strong>8</strong><small>개국</small></div></article>
+      <article class="kvl1180-kpi is-venue"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-pin-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>대회 장소</span><strong>중국 톈진</strong><small>톈진 올림픽 센터 체육관</small></div></article>
+    </div>
+    <div class="kvl1180-roster"><a href="?view=rosters"><span>참가국 보기</span><span aria-hidden="true">→</span></a><span>참가국을 선택하면 등록 선수명단 연결 상태를 확인할 수 있습니다.</span></div>
   </section>
 
-  <section id="schedule" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">MATCH SCHEDULE · RESULTS</p><h2>경기일정 · 결과</h2></div><p id="scheduleSummary">전체 26경기 · 한국시간(KST)</p></div>
-    <div id="scheduleStageFilters" class="cd-stage-filters" aria-label="경기 단계 필터"></div>
-    <div id="scheduleRoot" class="cd-results"><div class="cd-empty">경기결과를 불러오는 중입니다.</div></div>
+  <section class="kvl1180-card kvl1180-stakes-card kvl1180-view" data-view="overview" aria-labelledby="stakesTitle">
+    <div class="kvl1180-section-head"><div><p class="label">ROAD TO THE WORLD</p><h2 id="stakesTitle">대회 의미 · 국제 진출권</h2></div><p>LA28 · 2027 World Cup · FIVB 세계랭킹에 직접 연결됩니다.</p></div>
+    <div class="kvl1180-stakes-grid">
+      <article class="kvl1180-stake is-la"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-medal-solid"/></svg>LA 2028 올림픽</span><span class="kvl1180-pill">아시아 1장</span></div><h3>우승팀 직행</h3><p>2026 AVC 여자 대륙선수권 우승팀이 LA28 올림픽 여자배구 출전 쿼터를 확보합니다.</p><div class="kvl1180-stake-foot">우승 → LA28 올림픽 진출</div></article>
+      <article class="kvl1180-stake is-wc"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-world-solid"/></svg>2027 FIVB World Cup</span><span class="kvl1180-pill">아시아 최대 3장</span></div><h3>최종 상위 3개 팀 진출</h3><p>최종 순위에서 가장 높은 3개 eligible teams가 2027 FIVB Volleyball World Cup 출전권을 얻습니다.</p><div class="kvl1180-stake-foot">상위 3 eligible teams → World Cup</div></article>
+      <article class="kvl1180-stake is-wr"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-bars-solid"/></svg>FIVB 세계랭킹</span><span class="kvl1180-pill">MWF 40</span></div><h3>모든 경기 랭킹 포인트 반영</h3><p>Continental Championship의 모든 경기가 FIVB World Ranking에 반영되며 상대와 세트스코어에 따라 포인트가 변동합니다.</p><div class="kvl1180-stake-foot">경기별 ± World Ranking 포인트</div></article>
+    </div>
+    <div class="kvl1180-lower">
+      <section class="kvl1180-ranking"><div class="kvl1180-ranking-head"><div class="kvl1180-ranking-title"><span class="kvl1180-ranking-flag">🇰🇷</span><strong>대한민국 · FIVB World Ranking</strong></div><a href="https://en.volleyballworld.com/volleyball/world-ranking/women" target="_blank" rel="noopener noreferrer">랭킹 변동 상세보기 →</a></div><div class="kvl1180-ranking-grid"><div><span>대회 시작 전</span><strong class="is-empty">—</strong></div><div><span>현재</span><strong class="is-empty">—</strong></div><div><span>이번 대회 누적</span><strong class="is-empty">—</strong></div></div></section>
+      <section class="kvl1180-results"><div class="kvl1180-results-head"><strong>대한민국 최근 경기 결과</strong><a href="?view=schedule">전체 결과 보기 →</a></div><div id="koreaResults" class="kvl1180-results-list"><div class="kvl1180-result-row"><strong>대회 데이터를 불러오는 중</strong><span>—</span><em>—</em></div></div></section>
+    </div>
+    <p class="kvl1180-footnote">대한민국 랭킹 숫자는 공식 데이터 검수 후 연결합니다.</p>
   </section>
 
-  <section id="groups" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">POOL STANDINGS</p><h2>조별 순위</h2></div><p>조별리그 최종 결과 · 8강 진출 시드</p></div>
-    <div id="groupRoot" class="avc-group-grid"></div>
-    <div class="avc-combined-wrap"><div class="avc-combined-head"><div><p class="eyebrow">TEAMS COMBINED RANKING</p><h3>예선 종합순위 · 전체 12개국</h3></div><p>조별리그 18/18경기 기준 · 대회 규정 자동계산 · 최종확정</p></div><div id="combinedRankingRootV3" class="avc-combined"></div></div>
-    <div class="avc-rule-card"><strong>순위 계산 기준</strong><p>조별 순위는 승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률 순으로 계산하며, 예선 종합순위는 조 순위를 우선한 뒤 같은 조 순위끼리 세부 성적을 비교합니다.</p></div>
+  <section class="kvl1180-card kvl1180-view" data-view="overview" aria-labelledby="calendarTitle">
+    <div class="kvl1180-calendar-head"><div><p class="kvl1180-eyebrow">COMPETITION CALENDAR</p><h2 id="calendarTitle">대회 월간 달력</h2></div><p>각 날짜 안에서 경기 시간과 대진을 바로 확인할 수 있습니다.</p></div>
+    <div id="calendarRoot" class="kvl1180-calendar"><div class="kvl1180-calendar-title">2026년 8월</div><div class="kvl1180-schedule-empty">대회 달력을 불러오는 중입니다.</div></div>
+    <div class="kvl1180-overview-note"><strong>2026 여자부 대회는 종료되었습니다.</strong><br>태국이 중국을 결승에서 3-2로 꺾고 우승했으며 2028 LA 올림픽 아시아 직행 출전권을 획득했습니다.</div>
   </section>
 
-  <section id="knockout" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">FINAL STANDINGS</p><h2>최종 순위</h2></div><p>최종 1~4위 · 8강부터 결승까지 실제 결과</p></div>
-    <div class="avc-final-block"><div class="avc-final-block-title"><p class="eyebrow">FINAL RANKING</p><h3>최종 1~4위</h3></div><div id="podiumRoot" class="avc-podium"></div></div>
-    <div id="finalQuarterfinals" class="avc-knockout-subhead"><div><p class="eyebrow">KNOCKOUT BRACKET</p><h3>8강 토너먼트</h3></div><p>8강 → 준결승 → 결승</p></div>
-    <div id="knockoutRoot" class="avc-bracket avc-bracket-standard"></div>
+  <section id="schedule" class="kvl1180-card kvl1180-schedule-card kvl1180-view" data-view="schedule" hidden aria-labelledby="scheduleTitle">
+    <div class="kvl1180-section-head"><div><p class="label">MATCH SCHEDULE &amp; RESULTS</p><h2 id="scheduleTitle">경기일정</h2></div><p>한국시간(KST)을 기준으로 중국 현지시간(UTC+8)을 함께 표시합니다.</p></div>
+    <div class="kvl1180-schedule-statusline"><strong>전체 일정 종료 · 26/26 경기 결과 반영</strong><span>조별리그 18 · 8강 4 · 준결승 2 · 3위결정전 1 · 결승 1</span></div>
+    <div class="kvl1180-schedule-toolbar"><div id="scheduleStageFilters" class="kvl1180-stage-filters" aria-label="경기 단계 필터"></div><label id="schedulePoolFilter" class="kvl1180-pool-filter" hidden><span>조</span><select id="schedulePoolSelect"><option value="전체">전체</option><option value="A">A조</option><option value="B">B조</option><option value="C">C조</option></select></label></div>
+    <div id="scheduleSummary" class="kvl1180-schedule-summary"><strong>전체</strong><span>26경기 · 한국시간(KST) / 중국 현지시간 병기</span></div>
+    <div id="scheduleRoot" class="kvl1180-schedule-list"><div class="kvl1180-schedule-empty">26경기 상세 결과를 불러오는 중입니다.</div></div>
   </section>
 
-  <section id="teams" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">PARTICIPATING NATIONS</p><h2>참가국</h2></div><p>3개 조 · 12개국</p></div>
-    <div id="teamRoot" class="avc-participant-grid"></div>
+  <section class="kvl1180-card kvl1180-view kvl1180-prototype-placeholder" data-view="groups" hidden><div class="kvl1180-section-head"><div><p class="label">POOL STANDINGS</p><h2>조별순위</h2></div></div><p>대회 데이터를 불러오는 중입니다.</p></section>
+
+  <section id="knockout" class="kvl1180-card kvl1180-view kvl1180-knockout-view" data-view="knockout" hidden aria-labelledby="knockoutTitle">
+    <div class="kvl1180-section-head"><div><p class="label">FINAL STANDINGS</p><h2 id="knockoutTitle">최종순위</h2></div><div class="kvl1180-knockout-status"><span><strong>대회 종료</strong></span><span>최종 1~4위 확정</span></div></div>
+    <div class="kvl1180-final-block">
+      <div class="kvl1180-final-block-head"><div><p class="label">FINAL RANKING</p><h3>최종 1~4위</h3></div><p>결승과 3위 결정전 실제 결과</p></div>
+      <div class="kvl1180-final-grid">
+        <article class="kvl1180-final-card is-champion"><span class="kvl1180-final-rank">1위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-final-copy"><strong>태국</strong><small>우승 · LA28 올림픽 직행 · 결승 중국에 3-2</small></span></article>
+        <article class="kvl1180-final-card"><span class="kvl1180-final-rank">2위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-final-copy"><strong>중국</strong><small>준우승 · 결승 태국에 2-3</small></span></article>
+        <article class="kvl1180-final-card"><span class="kvl1180-final-rank">3위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-final-copy"><strong>일본</strong><small>3위 · 이란에 3-0</small></span></article>
+        <article class="kvl1180-final-card"><span class="kvl1180-final-rank">4위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-final-copy"><strong>이란</strong><small>4위 · 중국에 준결승 0-3</small></span></article>
+      </div>
+      <div class="kvl1180-final-qualification"><strong>2027 FIVB World Cup 진출</strong><span>태국 · 중국 · 일본</span></div>
+    </div>
+
+    <div class="kvl1180-knockout-block">
+      <div class="kvl1180-knockout-subhead"><div><p class="label">KNOCKOUT BRACKET</p><h3>8강 토너먼트</h3></div><p>8강 → 준결승 → 결승</p></div>
+      <div class="kvl1180-bracket">
+        <div class="kvl1180-bracket-ladder">
+          <section class="kvl1180-round kvl1180-round-qf">
+            <h4 class="kvl1180-round-title">8강 · Quarterfinals</h4>
+            <div class="kvl1180-round-body">
+              <div class="kvl1180-qf-pair">
+                <article class="kvl1180-match" data-match-id="QF1"><div class="kvl1180-match-head"><strong>QF1</strong><span>08.28 · 20:30 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-bracket-copy"><strong>중국</strong><small>예선 1번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/vn.png" alt="베트남 국기"></span><span class="kvl1180-bracket-copy"><strong>베트남</strong><small>예선 8번 시드</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-15 · 25-22 · 25-13</div></article>
+                <article class="kvl1180-match" data-match-id="QF2"><div class="kvl1180-match-head"><strong>QF2</strong><span>08.28 · 16:00 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/id.png" alt="인도네시아 국기"></span><span class="kvl1180-bracket-copy"><strong>인도네시아</strong><small>예선 4번 시드</small></span><b class="kvl1180-team-score">1</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-bracket-copy"><strong>이란</strong><small>예선 5번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">25-19 · 16-25 · 12-25 · 17-25</div></article>
+              </div>
+              <div class="kvl1180-qf-pair">
+                <article class="kvl1180-match" data-match-id="QF3"><div class="kvl1180-match-head"><strong>QF3</strong><span>08.27 · 19:30 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-bracket-copy"><strong>일본</strong><small>예선 2번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/tw.png" alt="대만 국기"></span><span class="kvl1180-bracket-copy"><strong>대만</strong><small>예선 7번 시드</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-14 · 25-21 · 25-13</div></article>
+                <article class="kvl1180-match" data-match-id="QF4"><div class="kvl1180-match-head"><strong>QF4</strong><span>08.27 · 15:00 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-bracket-copy"><strong>태국</strong><small>예선 3번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team is-korea"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/kr.png" alt="대한민국 국기"></span><span class="kvl1180-bracket-copy"><strong>대한민국</strong><small>예선 6번 시드</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-20 · 25-18 · 25-21</div></article>
+              </div>
+            </div>
+          </section>
+          <span class="kvl1180-bracket-gap"></span>
+          <section class="kvl1180-round kvl1180-round-sf">
+            <h4 class="kvl1180-round-title">준결승 · Semifinals</h4>
+            <div class="kvl1180-round-body">
+              <article class="kvl1180-match" data-match-id="SF1"><div class="kvl1180-match-head"><strong>SF1</strong><span>08.29 · 21:00 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-bracket-copy"><strong>중국</strong><small>CHN</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-bracket-copy"><strong>이란</strong><small>IRI</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-22 · 25-12 · 25-19</div></article>
+              <article class="kvl1180-match" data-match-id="SF2"><div class="kvl1180-match-head"><strong>SF2</strong><span>08.29 · 18:15 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-bracket-copy"><strong>일본</strong><small>JPN</small></span><b class="kvl1180-team-score">1</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-bracket-copy"><strong>태국</strong><small>THA</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">21-25 · 20-25 · 25-20 · 20-25</div></article>
+            </div>
+          </section>
+          <span class="kvl1180-bracket-gap"></span>
+          <section class="kvl1180-round kvl1180-round-final">
+            <h4 class="kvl1180-round-title">결승 · Final</h4>
+            <div class="kvl1180-round-body"><article class="kvl1180-match" data-match-id="FINAL"><div class="kvl1180-match-head"><strong>FINAL</strong><span>08.30 · 19:45 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-bracket-copy"><strong>중국</strong><small>CHN</small></span><b class="kvl1180-team-score">2</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-bracket-copy"><strong>태국</strong><small>THA</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">20-25 · 25-11 · 25-23 · 18-25 · 10-15</div></article></div>
+          </section>
+        </div>
+        <div class="kvl1180-bronze">
+          <h4 class="kvl1180-bronze-title">3위 결정전 · Bronze Medal Match</h4>
+          <article class="kvl1180-match" data-match-id="3RD"><div class="kvl1180-match-head"><strong>3RD</strong><span>08.30 · 16:15 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-bracket-copy"><strong>이란</strong><small>IRI</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-bracket-copy"><strong>일본</strong><small>JPN</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">21-25 · 16-25 · 24-26</div></article>
+        </div>
+      </div>
+      <div class="kvl1180-knockout-note"><b>공식 결과 기준</b> · 8강 1-8 / 4-5 / 2-7 / 3-6 시드 대진부터 준결승·결승·3위 결정전까지 실제 경기 결과를 반영했습니다.</div>
+    </div>
   </section>
 
-  <section id="sources" class="avc-section avc-view">
-    <div class="avc-section-head"><div><p class="eyebrow">OFFICIAL SOURCES</p><h2>공식자료</h2></div><p>Volleyball World · AVC 공식자료 기준</p></div>
-    <div id="sourceRoot" class="avc-sources"></div>
-  </section>
+  <section class="kvl1180-card kvl1180-view kvl1180-prototype-placeholder" data-view="rosters" hidden><div class="kvl1180-section-head"><div><p class="label">PARTICIPATING TEAMS</p><h2>참가국</h2></div></div><p>참가국 데이터를 불러오는 중입니다.</p></section>
+  <section class="kvl1180-card kvl1180-view kvl1180-prototype-placeholder" data-view="resources" hidden><div class="kvl1180-section-head"><div><p class="label">OFFICIAL SOURCES</p><h2>공식자료</h2></div></div><p>공식자료를 불러오는 중입니다.</p></section>
+
+  <p class="kvl1180-proto-note"><strong>KVL Competition Template V1 · AVC Women validation.</strong> 기존 여자부 서비스 페이지는 유지하고 별도 프로토타입에서 공통 템플릿 호환성을 검증합니다.</p>
 </main>
-<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const teamInfo={'중국':{en:'China',flag:'cn'},'이란':{en:'Iran',flag:'ir'},'대만':{en:'Chinese Taipei',flag:'tw'},'이라크':{en:'Iraq',flag:'iq'},'태국':{en:'Thailand',flag:'th'},'인도네시아':{en:'Indonesia',flag:'id'},'카자흐스탄':{en:'Kazakhstan',flag:'kz'},'호주':{en:'Australia',flag:'au'},'일본':{en:'Japan',flag:'jp'},'대한민국':{en:'Korea',flag:'kr'},'베트남':{en:'Vietnam',flag:'vn'},'홍콩':{en:'Hong Kong, China',flag:'hk'}};
-  const flagUrl=name=>teamInfo[name]?`https://flagcdn.com/w80/${teamInfo[name].flag}.png`:'';
-  const weekday=date=>['일','월','화','수','목','금','토'][new Date(`${date}T00:00:00+09:00`).getDay()];
-  const allowed=new Set(['overview','schedule','groups','knockout','teams','sources']);
-  const params=new URLSearchParams(location.search);const requested=allowed.has(params.get('view'))?params.get('view'):'overview';
-  document.querySelectorAll('.avc-view').forEach(s=>s.classList.toggle('is-active',s.id===requested));
-  document.querySelectorAll('.avc-jump a[data-view]').forEach(a=>a.classList.toggle('is-active',a.dataset.view===requested));
-
-  let scheduleStage='전체',schedulePool='전체',allMatches=[],competitionVenue='';
-  const winner=m=>Number(m.setsA)>Number(m.setsB)?'A':'B';
-  const resultLabel=m=>`${m.setsA}-${m.setsB}`;
-  const flagMark=name=>`<span class="cd-inline-logo avc-schedule-flag"><img src="${flagUrl(name)}" alt="${esc(name)} 국기" loading="lazy"></span>`;
-  const side=(m,key,position)=>{const name=m[key==='A'?'teamA':'teamB'],won=winner(m)===key,copy=`<strong class="${won?'avc-winner':''}">${esc(name)}</strong>`,flag=flagMark(name);return position==='left'?`<span class="cd-side is-left">${flag}${copy}</span>`:`<span class="cd-side is-right">${copy}${flag}</span>`};
-  const standingFlag=team=>`<img src="${flagUrl(team)}" alt="${esc(team)} 국기" loading="lazy">`;
-
-  const syncView=()=>{const p=new URLSearchParams(location.search),view=allowed.has(p.get('view'))?p.get('view'):'overview';document.querySelectorAll('.avc-view').forEach(s=>s.classList.toggle('is-active',s.id===view));document.querySelectorAll('.avc-jump a[data-view]').forEach(a=>{const active=a.dataset.view===view;a.classList.toggle('is-active',active);active?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current')})};
-
-  const kpiTargets=['?view=teams','?view=groups','?view=schedule','?view=knockout#finalQuarterfinals'];
-  const enhanceKpis=()=>document.querySelectorAll('#overview .avc-kpis article').forEach((card,i)=>{card.tabIndex=0;card.setAttribute('role','link');card.setAttribute('aria-label',`${card.textContent.trim()} 페이지로 이동`);card.dataset.kvlTarget=kpiTargets[i]||'?view=overview'});
-  document.querySelector('#overview .avc-kpis')?.addEventListener('click',e=>{const card=e.target.closest('article[data-kvl-target]');if(card)location.href=card.dataset.kvlTarget});
-  document.querySelector('#overview .avc-kpis')?.addEventListener('keydown',e=>{const card=e.target.closest('article[data-kvl-target]');if(!card||(e.key!=='Enter'&&e.key!==' '))return;e.preventDefault();location.href=card.dataset.kvlTarget});
-  const kpis=document.querySelector('#overview .avc-kpis');if(kpis){new MutationObserver(enhanceKpis).observe(kpis,{childList:true});enhanceKpis()}
-
-  function renderCalendar(matches){
-    const byDate=matches.reduce((map,m)=>{(map[m.date]??=[]).push(m);return map},{}),year=2026,month=8,first=new Date(year,month-1,1),last=new Date(year,month,0),cells=[];
-    for(let i=0;i<first.getDay();i++)cells.push('<div class="cd-cal-cell is-empty"></div>');
-    for(let d=1;d<=last.getDate();d++){
-      const date=`${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`,games=(byDate[date]||[]).slice().sort((a,b)=>a.time.localeCompare(b.time));
-      if(games.length){const times=games.map(g=>g.time).filter(Boolean);cells.push(`<div class="cd-cal-cell has-games"><a class="kvl-calendar-day-link" href="?view=schedule&date=${date}#date-${date}"><span class="cd-cal-day">${d}</span><span class="kvl-calendar-count">${games.length}경기</span><span class="kvl-calendar-time">${esc(times[0]||'')}</span></a></div>`)}else cells.push(`<div class="cd-cal-cell"><span class="cd-cal-day">${d}</span></div>`);
-    }
-    while(cells.length%7)cells.push('<div class="cd-cal-cell is-empty"></div>');
-    document.getElementById('calendarRoot').innerHTML=`<section class="cd-cal-month"><div class="cd-cal-title">2026년 8월</div><div class="cd-cal-week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div class="cd-cal-grid">${cells.join('')}</div></section>`;
-  }
-
-  const setChips=m=>`<div class="avc-set-scores">${(m.sets||[]).map(s=>`${s[0]}-${s[1]}`).join(', ')}</div>`;
-  const matchRow=m=>{const venue=competitionVenue?` · ${competitionVenue}`:'';const detail=`${m.stage}${m.stage==='조별리그'&&m.group?` · ${m.group}조`:''}${venue} · 중국 현지 ${m.localTime||''}`;return `<article class="cd-match"><div class="cd-match-meta"><time>${esc(m.time)} KST</time><span>${esc(detail)}</span></div><div class="cd-match-board">${side(m,'A','left')}<b class="cd-score">${esc(resultLabel(m))}</b>${side(m,'B','right')}</div><div class="cd-set-scores">${setChips(m)}</div></article>`};
-  const filtered=()=>allMatches.filter(m=>(scheduleStage==='전체'||m.stage===scheduleStage)&&(scheduleStage!=='조별리그'||schedulePool==='전체'||m.group===schedulePool));
-  function renderSchedule(){
-    const list=filtered(),root=document.getElementById('scheduleRoot');document.getElementById('scheduleSummary').textContent=`${list.length}경기 · ${scheduleStage==='전체'?'전체 단계':scheduleStage}${scheduleStage==='조별리그'&&schedulePool!=='전체'?` · ${schedulePool}조`:''} · 한국시간(KST)`;
-    const grouped=new Map();list.forEach(m=>{if(!grouped.has(m.date))grouped.set(m.date,[]);grouped.get(m.date).push(m)});
-    root.innerHTML=[...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([date,matches])=>`<section id="date-${date}" class="cd-date-group"><div class="cd-date-head"><span>${esc(date)}(${weekday(date)})</span><span>${matches.length}경기</span></div>${matches.sort((a,b)=>a.time.localeCompare(b.time)).map(matchRow).join('')}</section>`).join('')||'<div class="cd-empty">표시할 경기가 없습니다.</div>';
-    const target=new URLSearchParams(location.search).get('date');if(target&&document.getElementById(`date-${target}`))requestAnimationFrame(()=>document.getElementById(`date-${target}`).scrollIntoView({block:'start'}));
-  }
-  function renderFilters(){const c=document.getElementById('scheduleStageFilters'),stages=['전체','조별리그','8강','준결승','3위결정전','결승'];c.innerHTML=stages.map(s=>`<button type="button" class="${s===scheduleStage?'is-active':''}" data-stage="${s}">${s}</button>`).join('')+(scheduleStage==='조별리그'?`<label class="cd-pool-filter"><span>조 선택</span><select><option value="전체">전체</option>${['A','B','C'].map(p=>`<option value="${p}" ${p===schedulePool?'selected':''}>${p}조</option>`).join('')}</select></label>`:'');c.querySelectorAll('[data-stage]').forEach(btn=>btn.addEventListener('click',()=>{scheduleStage=btn.dataset.stage;schedulePool='전체';renderFilters();renderSchedule()}));c.querySelector('select')?.addEventListener('change',e=>{schedulePool=e.target.value;renderSchedule()})}
-
-  function renderGroups(data){
-    document.getElementById('groupRoot').innerHTML=['A','B','C'].map(pool=>`<article class="avc-group-card"><h3>${pool}조 <span>최종 순위</span></h3>${data.poolStandings[pool].map(r=>`<div class="avc-standing-row ${r.team==='대한민국'?'is-korea':''} ${r.seed?'is-qualified':''}"><span class="avc-standing-rank">${r.rank}</span>${standingFlag(r.team)}<div class="avc-standing-copy"><strong>${esc(r.team)}</strong><small>${esc(teamInfo[r.team]?.en||'')}</small></div><span class="avc-standing-stat">${esc(r.record)}${r.seed?` · ${r.seed}번 시드`:''}</span></div>`).join('')}</article>`).join('');
-    const poolRanks=new Map();Object.entries(data.poolStandings||{}).forEach(([pool,rows])=>rows.forEach(r=>poolRanks.set(r.team,{pool,rank:Number(r.rank)||99})));
-    const stats=new Map();(data.groups||[]).forEach(g=>(g.teams||[]).forEach(team=>stats.set(team,{team,pool:g.id,poolRank:poolRanks.get(team)?.rank||99,played:0,wins:0,leaguePoints:0,setsFor:0,setsAgainst:0,pointsFor:0,pointsAgainst:0})));
-    (data.matches||[]).filter(m=>m.stage==='조별리그').forEach(m=>{const a=stats.get(m.teamA),b=stats.get(m.teamB);if(!a||!b)return;const sa=Number(m.setsA)||0,sb=Number(m.setsB)||0;a.played++;b.played++;a.setsFor+=sa;a.setsAgainst+=sb;b.setsFor+=sb;b.setsAgainst+=sa;(m.sets||[]).forEach(s=>{const pa=Number(s[0])||0,pb=Number(s[1])||0;a.pointsFor+=pa;a.pointsAgainst+=pb;b.pointsFor+=pb;b.pointsAgainst+=pa});if(sa>sb){a.wins++;if(sb===2){a.leaguePoints+=2;b.leaguePoints+=1}else a.leaguePoints+=3}else if(sb>sa){b.wins++;if(sa===2){b.leaguePoints+=2;a.leaguePoints+=1}else b.leaguePoints+=3}});
-    const quotient=(f,a)=>a===0?Number.POSITIVE_INFINITY:f/a;const ratioText=(f,a)=>a===0?'∞':quotient(f,a).toFixed(3);
-    const rows=[...stats.values()].sort((a,b)=>(a.poolRank-b.poolRank)||(b.wins-a.wins)||(b.leaguePoints-a.leaguePoints)||(quotient(b.setsFor,b.setsAgainst)-quotient(a.setsFor,a.setsAgainst))||(quotient(b.pointsFor,b.pointsAgainst)-quotient(a.pointsFor,a.pointsAgainst))||a.team.localeCompare(b.team,'ko'));
-    const seedByTeam=new Map((data.combinedSeeds||[]).map(s=>[s.team,Number(s.seed)||null]));
-    const qfByTeam=new Map();(data.matches||[]).filter(m=>m.stage==='8강').forEach(m=>{const aSeed=Number(m.seedA)||seedByTeam.get(m.teamA)||null,bSeed=Number(m.seedB)||seedByTeam.get(m.teamB)||null;qfByTeam.set(m.teamA,{id:m.id,seed:aSeed,opponent:m.teamB,opponentSeed:bSeed});qfByTeam.set(m.teamB,{id:m.id,seed:bSeed,opponent:m.teamA,opponentSeed:aSeed})});
-    const resultCell=r=>{const q=qfByTeam.get(r.team);return q?`<span class="kvl-women-combined-v3-result"><b>8강 진출</b><small>${q.seed}-${q.opponentSeed}</small></span>`:`<span class="kvl-women-combined-v3-result is-out"><b>조별리그 탈락</b></span>`};
-    const legacyCombined=`<div class="kvl-women-combined-desktop"><div class="kvl-women-combined-v3-table"><div class="kvl-women-combined-v3-line is-head"><span>종합순위</span><span>국기</span><span>국가</span><span>결과</span><span>승리 경기수</span><span>승점</span><span>세트 득실률</span><span>득점 득실률</span><span>조순위</span></div>${rows.map((r,i)=>`<div class="kvl-women-combined-v3-line ${r.team==='대한민국'?'is-korea':''}"><span class="kvl-women-combined-v3-rank">${i+1}위</span><span class="kvl-comp-flag-cell">${standingFlag(r.team)}</span><strong class="kvl-women-combined-v3-team">${esc(r.team)}</strong>${resultCell(r)}<span class="kvl-women-combined-v3-stat">${r.wins}승</span><span class="kvl-women-combined-v3-stat">${r.leaguePoints}</span><span class="kvl-women-combined-v3-stat">${ratioText(r.setsFor,r.setsAgainst)}</span><span class="kvl-women-combined-v3-stat">${ratioText(r.pointsFor,r.pointsAgainst)}</span><span class="kvl-women-combined-v3-stat">${r.pool}조 ${r.poolRank}위</span></div>`).join('')}</div></div><div class="kvl-shared-combined-mobile"></div>`;
-    const combinedRoot=document.getElementById('combinedRankingRootV3');
-    combinedRoot.innerHTML=legacyCombined;
-    const sharedRows=rows.map((r,i)=>{const q=qfByTeam.get(r.team);return{rank:i+1,team:r.team,flag:flagUrl(r.team),poolRank:`${r.pool}조 ${r.poolRank}위`,wins:r.wins,points:r.leaguePoints,setRatio:ratioText(r.setsFor,r.setsAgainst),pointRatio:ratioText(r.pointsFor,r.pointsAgainst),isKorea:r.team==='대한민국',result:q?{label:'8강 진출',detail:`${q.seed}-${q.opponentSeed}`,out:false}:{label:'조별리그 탈락',detail:'',out:true}}});
-    if(window.KVLMobileCombinedRanking)window.KVLMobileCombinedRanking.render(combinedRoot.querySelector('.kvl-shared-combined-mobile'),{state:'complete',rows:sharedRows});
-  }
-  function renderPodium(data){document.getElementById('podiumRoot').innerHTML=data.podium.slice(0,4).map(r=>`<article class="avc-podium-card"><span class="avc-podium-rank">${r.rank}위</span>${standingFlag(r.team)}<div class="avc-podium-copy"><strong>${esc(r.team)}</strong><small>${esc(r.label)}</small></div></article>`).join('')}
-  const bracketTeam=(m,key)=>{const team=m[key==='A'?'teamA':'teamB'],score=m[key==='A'?'setsA':'setsB'],won=winner(m)===key;return `<div class="avc-bracket-team ${won?'is-winner':''}">${standingFlag(team)}<strong>${esc(team)}</strong><b>${score}</b></div>`};
-  const bracketMatch=m=>`<article class="avc-bracket-match"><div class="avc-bracket-match-head"><strong>${esc(m.id)}</strong><span>${esc(m.date.slice(5))} · ${esc(m.time)} KST</span></div>${bracketTeam(m,'A')}${bracketTeam(m,'B')}</article>`;
-  function renderKnockout(matches){const root=document.getElementById('knockoutRoot'),qf=matches.filter(m=>m.stage==='8강').sort((a,b)=>a.id.localeCompare(b.id)),sf=matches.filter(m=>m.stage==='준결승').sort((a,b)=>a.id.localeCompare(b.id)),final=matches.find(m=>m.stage==='결승'),bronze=matches.find(m=>m.stage==='3위결정전');root.innerHTML=`<div class="avc-bracket-ladder"><section class="avc-round avc-round-qf"><h3 class="avc-round-title">8강 · Quarterfinals</h3><div class="avc-round-body"><div class="avc-qf-pair">${bracketMatch(qf[0])}${bracketMatch(qf[1])}</div><div class="avc-qf-pair">${bracketMatch(qf[2])}${bracketMatch(qf[3])}</div></div></section><span class="avc-bracket-gap"></span><section class="avc-round avc-round-sf"><h3 class="avc-round-title">준결승 · Semifinals</h3><div class="avc-round-body">${bracketMatch(sf[0])}${bracketMatch(sf[1])}</div></section><span class="avc-bracket-gap"></span><section class="avc-round avc-round-final"><h3 class="avc-round-title">결승 · Final</h3><div class="avc-round-body">${bracketMatch(final)}</div></section></div><div class="avc-bronze-wrap"><h3 class="avc-bronze-title">3위 결정전 · Bronze Medal Match</h3>${bracketMatch(bronze)}</div>`}
-  function renderTeams(data){document.getElementById('teamRoot').innerHTML=data.groups.flatMap(g=>g.teams.map(team=>`<article class="avc-country-card">${standingFlag(team)}<div class="avc-country-copy"><strong>${esc(team)}</strong><small>${esc(teamInfo[team]?.en||'')}</small></div><span class="avc-country-pool">${g.id}조</span></article>`)).join('')}
-  function renderSources(data){document.getElementById('sourceRoot').innerHTML=data.sources.map(s=>`<div class="avc-source"><strong>${esc(s.label)}</strong><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">공식페이지 →</a></div>`).join('')}
-
-  fetch('data/competitions/avc-women-continental-2026.json?v=20260907-3',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(data=>{competitionVenue=data.venueKo||data.venue||'';allMatches=data.matches||[];renderCalendar(allMatches);renderFilters();renderSchedule();renderGroups(data);renderPodium(data);renderKnockout(allMatches);renderTeams(data);renderSources(data);enhanceKpis();syncView()}).catch(()=>{['calendarRoot','scheduleRoot','groupRoot','combinedRankingRootV3','podiumRoot','knockoutRoot','teamRoot','sourceRoot'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="avc-pending">대회 데이터를 불러오지 못했습니다.</div>'})});
-});
-</script>
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
 </body>
 </html>

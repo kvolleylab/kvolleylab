@@ -1,15 +1,48 @@
 /* K-Volley Lab · common competition view bootstrap v1
  * Keeps tab/view activation independent from competition data loading.
  * Women prototype overview KPI cards mirror the men prototype navigation behavior.
+ * Production AVC women URL reuses the validated prototype surface without prototype-link leakage.
  */
 (()=>{
 'use strict';
 const ALLOWED=new Set(['overview','schedule','groups','knockout','rosters','resources']);
 const WOMEN_KPI_TARGETS=['?view=rosters&team=KOR','?view=groups','?view=schedule','?view=knockout'];
 const WOMEN_KPI_STYLE='assets/css/kvl-avc-women-kpi-interaction-v1.css?v=20260915-1';
+const PROD_MEN='international-competition-avc-men-continental-2026.html';
+const PROD_WOMEN='international-competition-avc-women-continental-2026.html';
+const PROTO_MEN='international-competition-avc-men-continental-2026-pc-hybrid-1180.html';
+const PROTO_WOMEN='international-competition-avc-women-continental-2026-pc-hybrid-1180.html';
+const isProductionWomen=location.pathname.endsWith(`/${PROD_WOMEN}`)||location.pathname.endsWith(PROD_WOMEN);
 function currentView(){
   const requested=new URLSearchParams(location.search).get('view')||'overview';
   return ALLOWED.has(requested)?requested:'overview';
+}
+function normalizeProductionWomen(){
+  if(!isProductionWomen||!document.body.classList.contains('kvl1180-women-template'))return;
+  document.body.dataset.kvlGender='women';
+  document.body.dataset.kvlFamily='avc';
+  document.title='AVC 여자 대륙선수권 2026 | K-Volley Lab';
+  const description=document.querySelector('meta[name="description"]');
+  if(description)description.setAttribute('content','AVC Volleyball Women\'s Continental Championship 2026의 경기결과, 조별순위, 최종순위, 참가국과 공식자료를 확인하세요.');
+  const rewriteAnchor=anchor=>{
+    if(!anchor||!anchor.getAttribute)return;
+    const raw=anchor.getAttribute('href')||'';
+    let next=raw;
+    if(raw.includes(PROTO_MEN))next=raw.replace(PROTO_MEN,PROD_MEN);
+    if(raw.includes(PROTO_WOMEN))next=raw.replace(PROTO_WOMEN,PROD_WOMEN);
+    if(next!==raw)anchor.setAttribute('href',next);
+  };
+  document.querySelectorAll('a[href]').forEach(rewriteAnchor);
+  if(document.body.dataset.kvlProductionLinksBound)return;
+  document.body.dataset.kvlProductionLinksBound='1';
+  const observer=new MutationObserver(mutations=>{
+    mutations.forEach(mutation=>mutation.addedNodes.forEach(node=>{
+      if(node.nodeType!==1)return;
+      if(node.matches?.('a[href]'))rewriteAnchor(node);
+      node.querySelectorAll?.('a[href]').forEach(rewriteAnchor);
+    }));
+  });
+  observer.observe(document.body,{childList:true,subtree:true});
 }
 function ensureWomenKpiStyle(){
   if(!document.body.classList.contains('kvl1180-women-template'))return;
@@ -43,6 +76,7 @@ function enhanceWomenOverviewKpis(){
   });
 }
 function apply(){
+  normalizeProductionWomen();
   const view=currentView();
   document.querySelectorAll('.kvl1180-view[data-view]').forEach(el=>{
     el.hidden=el.dataset.view!==view;
