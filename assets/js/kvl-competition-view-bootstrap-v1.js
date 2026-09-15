@@ -8,6 +8,7 @@
 const ALLOWED=new Set(['overview','schedule','groups','knockout','rosters','resources']);
 const WOMEN_KPI_TARGETS=['?view=rosters&team=KOR','?view=groups','?view=schedule','?view=knockout'];
 const WOMEN_KPI_STYLE='assets/css/kvl-avc-women-kpi-interaction-v1.css?v=20260915-1';
+const WOMEN_PRODUCTION_HERO_STYLE='assets/css/kvl-avc-women-production-hero-v1.css?v=20260915-1';
 const PROD_MEN='international-competition-avc-men-continental-2026.html';
 const PROD_WOMEN='international-competition-avc-women-continental-2026.html';
 const PROTO_MEN='international-competition-avc-men-continental-2026-pc-hybrid-1180.html';
@@ -17,10 +18,20 @@ function currentView(){
   const requested=new URLSearchParams(location.search).get('view')||'overview';
   return ALLOWED.has(requested)?requested:'overview';
 }
+function ensureProductionWomenHeroStyle(){
+  if(!isProductionWomen)return;
+  if(document.getElementById('kvl-avc-women-production-hero-v1'))return;
+  const link=document.createElement('link');
+  link.id='kvl-avc-women-production-hero-v1';
+  link.rel='stylesheet';
+  link.href=WOMEN_PRODUCTION_HERO_STYLE;
+  document.head.appendChild(link);
+}
 function normalizeProductionWomen(){
   if(!isProductionWomen||!document.body.classList.contains('kvl1180-women-template'))return;
   document.body.dataset.kvlGender='women';
   document.body.dataset.kvlFamily='avc';
+  ensureProductionWomenHeroStyle();
   document.title='AVC 여자 대륙선수권 2026 | K-Volley Lab';
   const description=document.querySelector('meta[name="description"]');
   if(description)description.setAttribute('content','AVC Volleyball Women\'s Continental Championship 2026의 경기결과, 조별순위, 최종순위, 참가국과 공식자료를 확인하세요.');
