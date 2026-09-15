@@ -1,0 +1,86 @@
+{
+  "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V2",
+  "status": "CROSS_GENDER_VALIDATED_BASELINE",
+  "createdAtKst": "2026-09-15",
+  "validatedBy": [
+    "2026 AVC Men's Continental Championship prototype",
+    "2026 AVC Women's Continental Championship prototype"
+  ],
+  "sourceOfTruth": {
+    "html": "templates/competition-page-pc-mobile-v2.html",
+    "css": "assets/css/kvl-competition-template-v2.css",
+    "js": "assets/js/kvl-competition-template-v2.js",
+    "dataExample": "templates/competition-page-v2.example.json",
+    "guide": "docs/KVL_COMPETITION_PAGE_TEMPLATE_V2.md",
+    "smokeTest": "tests/competition-page-v2-reuse-smoke.html"
+  },
+  "breakpoints": {
+    "desktopMaxContent": 1180,
+    "mobilePrimary": 390,
+    "mobileSecondary": 360,
+    "mobileCssMax": 680
+  },
+  "views": ["overview","schedule","groups","knockout","rosters","resources"],
+  "stateModel": {
+    "allowed": ["upcoming","active","completed"],
+    "stageLabelIsSeparate": true,
+    "upcoming": {
+      "winnerResult": "hidden",
+      "qualificationResults": "officially-confirmed-only; normally none",
+      "standings": "do-not-invent-order-before-play"
+    },
+    "active": {
+      "winnerResult": "hidden-until-official",
+      "qualificationResults": "confirmed-only",
+      "knockout": "predicted-and-confirmed-must-be-distinguished"
+    },
+    "completed": {
+      "winnerResult": "show-official",
+      "qualificationResults": "show-all-official",
+      "predictionLanguage": "remove"
+    }
+  },
+  "commonInteraction": {
+    "viewActivationIndependentFromDataFetch": true,
+    "overviewKpiNavigation": true,
+    "redundantRosterCta": false,
+    "keyboardKpiNavigation": true,
+    "genderSwitchSameStageOnly": true
+  },
+  "responsiveRules": {
+    "sixTabsMobile": "3+3",
+    "horizontalScroll": "forbidden-except-special-data-tables",
+    "resourcesMobileColumns": 1,
+    "resourcesMobileTitleLines": 2,
+    "finalTop4MobileSingleRow": true,
+    "eliminatedCombinedRankingCellBackground": "transparent"
+  },
+  "theme": {
+    "men": {"primary":"#176638","strong":"#0D6F3C","soft":"#EEF8F1"},
+    "women": {"primary":"#8E315E","strong":"#A53D68","accent":"#E7A8C2","soft":"#FFF1F6"},
+    "score": "#4B5563",
+    "goldUsage": "champion-medal-direct-qualification-special-achievement-only"
+  },
+  "qualification": {
+    "dataDriven": true,
+    "resultRowPosition": "below-description-above-footer",
+    "la28UsesSameResultPositionAsWorldCup": true,
+    "neverGuessUnconfirmedTeams": true
+  },
+  "roster": {
+    "preservePlayerId": true,
+    "reserveMemberPlayerCheckSlot": true,
+    "eventSnapshotAfterCompletion": true,
+    "neverInventMissingRoster": true
+  },
+  "excludedFromCommonTemplate": [
+    "competition-specific winner/team names",
+    "competition-specific URLs",
+    "AVC-specific fallback guards",
+    "pseudo-element hardcoded results"
+  ],
+  "legacy": {
+    "v1": "templates/competition-page-pc-mobile-v1.html",
+    "policy": "retain as historical frozen snapshot; do not use as first choice for new international competitions"
+  }
+}

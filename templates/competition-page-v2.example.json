@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "KVL_COMPETITION_PAGE_V2_DATA_1",
+  "competitionId": "KVL-INT-DEMO-2027-001",
+  "gender": "women",
+  "status": "upcoming",
+  "stageLabel": "일정 발표",
+  "displayName": "KVL 국제대회 데모 2027",
+  "officialName": "K-Volley Lab International Demo 2027",
+  "dateLabel": "2027-06-01 ~ 2027-06-10",
+  "locationLabel": "대한민국 · 테스트시",
+  "venueLabel": "KVL 테스트 아레나",
+  "teamCount": 12,
+  "groupCount": 3,
+  "matchCount": 26,
+  "knockoutTeamCount": 8,
+  "hero": {
+    "pcImage": "assets/img/competition-hero/REPLACE-PC.webp",
+    "mobileImage": "assets/img/competition-hero/REPLACE-MOBILE.webp",
+    "position": "center center",
+    "mobilePosition": "62% center"
+  },
+  "genderLinks": {
+    "men": "international-competition-demo-2027-men.html?view=overview",
+    "women": "international-competition-demo-2027-women.html?view=overview"
+  },
+  "upcomingOverviewNote": "대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.",
+  "activeOverviewNote": "조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.",
+  "champion": null,
+  "championAchievement": null,
+  "qualifications": [
+    {
+      "id": "la28",
+      "brand": "LA 2028 올림픽",
+      "pill": "아시아 1장",
+      "title": "우승팀 직행",
+      "description": "공식 대회 규정에 따라 우승팀이 올림픽 출전권을 획득합니다.",
+      "foot": "우승 → LA28 올림픽 진출",
+      "resultLabel": "대회 결과",
+      "resultTeams": []
+    },
+    {
+      "id": "world-cup",
+      "brand": "2027 FIVB World Cup",
+      "pill": "최대 3장",
+      "title": "최종 상위 팀 진출",
+      "description": "공식 대회 규정에 따른 eligible teams만 적용합니다.",
+      "foot": "최종순위 공식 기준",
+      "resultLabel": "대회 결과",
+      "resultTeams": []
+    },
+    {
+      "id": "ranking",
+      "brand": "FIVB 세계랭킹",
+      "pill": "랭킹포인트",
+      "title": "모든 경기 랭킹 반영",
+      "description": "공식 FIVB 랭킹포인트 규정에 따라 반영합니다.",
+      "foot": "모든 경기 공식 기준",
+      "resultLabel": "대회 결과",
+      "resultTeams": []
+    }
+  ],
+  "finalRanking": [
+    {"rank": 1, "team": "미정", "result": "", "qualification": ""},
+    {"rank": 2, "team": "미정", "result": "", "qualification": ""},
+    {"rank": 3, "team": "미정", "result": "", "qualification": ""},
+    {"rank": 4, "team": "미정", "result": "", "qualification": ""}
+  ],
+  "resources": [
+    {"title": "공식 대회 페이지", "url": "https://example.com/official"},
+    {"title": "공식 경기일정·결과", "url": "https://example.com/schedule"}
+  ],
+  "stateExamples": {
+    "upcoming": {
+      "status": "upcoming",
+      "stageLabel": "조편성 확정",
+      "champion": null,
+      "championAchievement": null,
+      "qualificationResultPolicy": "hide-until-officially-confirmed"
+    },
+    "active": {
+      "status": "active",
+      "stageLabel": "조별리그 진행 중",
+      "champion": null,
+      "championAchievement": null,
+      "qualificationResultPolicy": "show-confirmed-only"
+    },
+    "completed": {
+      "status": "completed",
+      "stageLabel": "대회 종료",
+      "champion": "공식 우승팀",
+      "championAchievement": "확정된 특수 성취",
+      "qualificationResultPolicy": "show-all-officially-confirmed"
+    }
+  }
+}

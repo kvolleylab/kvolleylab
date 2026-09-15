@@ -1,0 +1,128 @@
+/* K-Volley Lab · international competition template v2
+ * Common layer distilled from 2026 AVC men/women PC 1180 + mobile 390/360 review.
+ * Competition-specific data, winner names, qualification teams and URLs MUST NOT be hardcoded here.
+ */
+@import url("./kvl-pc-avc-hybrid-1180-prototype-v1.css?v=20260915-v2-base");
+
+body.kvl1180-prototype.kvl-competition-template-v2{
+  --kvl-theme-primary:#176638;
+  --kvl-theme-strong:#0d6f3c;
+  --kvl-theme-soft:#eef8f1;
+  --kvl-theme-border:#bfe3c9;
+  --kvl-theme-shadow:rgba(13,111,60,.10);
+  --kvl-theme-hero-a:#074827;
+  --kvl-theme-hero-b:#0e7b43;
+  --kvl-special-gold:#b8860b;
+  --kvl-score:#4b5563;
+  overflow-x:hidden;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]{
+  --kvl-theme-primary:#8e315e;
+  --kvl-theme-strong:#a53d68;
+  --kvl-theme-soft:#fff1f6;
+  --kvl-theme-border:#e7a8c2;
+  --kvl-theme-shadow:rgba(142,49,94,.13);
+  --kvl-theme-hero-a:#6f234a;
+  --kvl-theme-hero-b:#8e315e;
+  --kvl1180-green:#8e315e;
+  --kvl1180-green-dark:#6f234a;
+  --kvl1180-green-mid:#a53d68;
+  --kvl1180-green-soft:#fff1f6;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]{
+  --kvl1180-green:#0d6f3c;
+  --kvl1180-green-dark:#07512f;
+  --kvl1180-green-mid:#11884a;
+  --kvl1180-green-soft:#edf8f1;
+}
+
+/* Hero: same geometry, theme/data-driven artwork. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{
+  background-image:linear-gradient(90deg,rgba(7,25,20,.82) 0%,rgba(7,25,20,.55) 43%,rgba(7,25,20,.14) 72%),var(--kvl-hero-image,linear-gradient(112deg,var(--kvl-theme-hero-a),var(--kvl-theme-hero-b)));
+  background-size:cover;
+  background-position:var(--kvl-hero-position,center center);
+  border-color:color-mix(in srgb,var(--kvl-theme-strong) 45%,transparent);
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-tabs a:hover{background:var(--kvl-theme-soft);color:var(--kvl-theme-primary)}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-tabs a.is-active,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-gender a.is-active{background:var(--kvl-theme-strong);border-color:var(--kvl-theme-strong);color:#fff}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-section-head h2{color:var(--kvl-theme-primary)}
+
+/* Snapshot: KPI cards are the navigation; redundant participant CTA is removed. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-roster{display:none!important}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]{
+  position:relative;cursor:pointer;transform:translateY(0);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease,color .18s ease;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]:hover,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]:focus-visible{
+  transform:translateY(-4px);border-color:var(--kvl-theme-border);background:linear-gradient(180deg,#fff,var(--kvl-theme-soft));
+  box-shadow:0 12px 26px rgba(23,54,93,.12),0 3px 10px var(--kvl-theme-shadow);outline:none;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-icon,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-icon,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-copy strong,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-copy strong{color:var(--kvl-theme-primary)!important}
+
+/* Overview state/result block. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result{margin:0!important;text-align:right!important}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="completed"]{
+  padding-left:12px!important;border-left:3px solid var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result strong,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result span{display:block}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result strong{color:var(--kvl-theme-primary);font-size:clamp(15px,1.25vw,18px);font-weight:1000}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result span{margin-top:3px;color:var(--kvl-special-gold);font-size:clamp(11px,.98vw,13px);font-weight:950}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="active"],
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="upcoming"]{max-width:420px;color:#718096;font-size:clamp(9px,.75vw,11px);font-weight:800;line-height:1.45}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="active"] strong,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="upcoming"] strong{font:inherit;color:inherit}
+
+/* Qualification cards: result row always sits above the footer, same place for LA28 and World Cup. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake.has-confirmed-result{padding-bottom:74px!important}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake.has-confirmed-result .kvl1180-stake-foot{bottom:11px!important}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake-confirmed{
+  position:absolute;left:clamp(13px,1.3vw,18px);right:clamp(13px,1.3vw,18px);bottom:39px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:8px;border-top:1px solid rgba(80,100,90,.12);
+  color:#64748b;font-size:clamp(8px,.68vw,10px);font-weight:850;line-height:1.35;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake-confirmed strong{color:#17365d;font-size:inherit;font-weight:950}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake-confirmed span{color:var(--kvl-theme-primary);font-weight:1000;text-align:right}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake-confirmed[hidden]{display:none!important}
+
+/* Final 1-4 qualification note is data-driven, never hardcoded by rank. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl-final-qualification{display:block;margin-top:4px;color:var(--kvl-theme-primary);font-size:10px;font-weight:950;line-height:1.25;text-align:center}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-score,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-match-score{color:var(--kvl-score)!important}
+
+/* Combined ranking eliminated state: only the pill is grey; never tint the full result cell. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl-shared-combined-result.is-out{background:transparent!important;color:#6b7280!important}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl-shared-combined-result.is-out b{border-color:#e5e7eb!important;background:#f3f4f6!important;color:#6b7280!important}
+
+/* Participants: selected card uses full outline. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-country-card.is-active,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-country-card[aria-current="true"]{outline:2px solid var(--kvl-theme-primary);outline-offset:-2px}
+
+/* Official resources: actual source count, PC 2 columns / mobile 1 column. */
+body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;min-width:0;gap:10px}
+body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source-copy{min-width:0}
+body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source-copy strong{display:block;min-width:0;color:#17365d;font-weight:1000;line-height:1.25}
+body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source a{white-space:nowrap}
+
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2{--kvl-hero-position:var(--kvl-hero-position-mobile,center center)}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="completed"]{padding-left:10px!important}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result strong{font-size:15px}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result span{font-size:10.5px}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]::after{content:'›';position:absolute;right:10px;bottom:8px;color:var(--kvl-theme-primary);font-size:18px;font-weight:1000;opacity:.72}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake-confirmed{font-size:9px}
+  body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-sources{grid-template-columns:minmax(0,1fr);gap:8px}
+  body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source{min-height:54px;padding:9px 10px;border-radius:10px}
+  body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source-copy strong{
+    display:-webkit-box;overflow:hidden;font-size:11px;line-height:1.25;white-space:normal;overflow-wrap:anywhere;
+    -webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source a{min-height:28px;padding:0 8px;font-size:9px}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl-final-qualification{font-size:7.2px;line-height:1.18;white-space:normal}
+}

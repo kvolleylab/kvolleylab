@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>KVL Competition Template V2 · Reuse Smoke Test</title>
+  <link rel="stylesheet" href="/assets/css/kvl-competition-template-v2.css?v=20260915-1">
+  <style>.kvl-v2-smoke-controls{width:min(100%,1180px);margin:10px auto;padding:0 20px;display:flex;flex-wrap:wrap;gap:6px}.kvl-v2-smoke-controls a{padding:7px 10px;border:1px solid #d8e1e8;border-radius:8px;background:#fff;color:#17365d;font:800 12px Arial;text-decoration:none}</style>
+  <script>
+    const p=new URLSearchParams(location.search),state=p.get('state')||'upcoming',gender=p.get('gender')||'men';
+    const completed=state==='completed',active=state==='active';
+    const base=`tests/competition-page-v2-reuse-smoke.html?state=${state}`;
+    window.KVL_COMPETITION_V2_DATA={
+      competitionId:'KVL-V2-SMOKE-2027',gender,status:state,
+      stageLabel:completed?'대회 종료':active?'조별리그 진행 중':'조편성 확정',
+      displayName:'KVL 국제대회 재사용 테스트 2027',officialName:'KVL International Competition Reuse Smoke Test 2027',
+      dateLabel:'2027-06-01 ~ 2027-06-10',locationLabel:'테스트시',venueLabel:'KVL 테스트 아레나',
+      teamCount:12,groupCount:3,matchCount:26,knockoutTeamCount:8,
+      genderLinks:{men:`${base}&gender=men&view=overview`,women:`${base}&gender=women&view=overview`},
+      champion:completed?'테스트 A':null,championAchievement:completed?'LA28 올림픽 직행':null,
+      activeOverviewNote:'조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.',
+      qualifications:[
+        {id:'la28',brand:'LA 2028 올림픽',pill:'1장',title:'우승팀 직행',description:'공식 규정 예시. 확정 전 팀을 추정하지 않습니다.',foot:'우승 → LA28 올림픽 진출',resultTeams:completed?['테스트 A']:[]},
+        {id:'world-cup',brand:'2027 FIVB World Cup',pill:'3장',title:'최종 상위 3팀 진출',description:'공식 규정 예시. 진행 중에는 확정팀만 표시합니다.',foot:'최종순위 공식 기준',resultTeams:completed?['테스트 A','테스트 B','테스트 C']:(active?['테스트 A']:[])},
+        {id:'ranking',brand:'FIVB 세계랭킹',pill:'랭킹포인트',title:'모든 경기 랭킹 반영',description:'랭킹포인트 규정 예시.',foot:'모든 경기 공식 기준',resultTeams:[]}
+      ],
+      finalRanking:completed?[
+        {rank:1,team:'테스트 A',result:'우승',qualification:'2027 FIVB World Cup 진출'},
+        {rank:2,team:'테스트 B',result:'준우승',qualification:'2027 FIVB World Cup 진출'},
+        {rank:3,team:'테스트 C',result:'3위',qualification:'2027 FIVB World Cup 진출'},
+        {rank:4,team:'테스트 D',result:'4위',qualification:''}
+      ]:[{rank:1,team:'미정'},{rank:2,team:'미정'},{rank:3,team:'미정'},{rank:4,team:'미정'}],
+      resources:[
+        {title:'공식 대회 페이지 · 긴 제목 모바일 2줄 표시 검수용',url:'https://example.com/official'},
+        {title:'공식 경기일정·결과',url:'https://example.com/schedule'},
+        {title:'공식 대회 규정',url:'https://example.com/rules'}
+      ]
+    };
+  </script>
+  <script src="/assets/js/kvl-competition-template-v2.js?v=20260915-1" defer></script>
+</head>
+<body class="kvl1180-prototype kvl-competition-template-v2" data-kvl-gender="men">
+<div class="kvl-v2-smoke-controls" aria-label="smoke test state"><a href="?state=upcoming&gender=men&view=overview">UPCOMING MEN</a><a href="?state=active&gender=men&view=overview">ACTIVE MEN</a><a href="?state=completed&gender=men&view=overview">COMPLETED MEN</a><a href="?state=upcoming&gender=women&view=overview">UPCOMING WOMEN</a><a href="?state=active&gender=women&view=overview">ACTIVE WOMEN</a><a href="?state=completed&gender=women&view=overview">COMPLETED WOMEN</a></div>
+<main class="kvl1180-main">
+  <section class="kvl1180-hero"><div class="kvl1180-hero-copy"><p class="kvl1180-eyebrow" data-kvl="eyebrow"></p><h1 data-kvl="title"></h1><p class="kvl1180-hero-sub" data-kvl="official-name"></p><div class="kvl1180-hero-meta"><div class="kvl1180-meta-row"><span data-kvl="dates"></span></div><div class="kvl1180-meta-row"><span class="kvl1180-hero-location"><span data-kvl="location"></span> · <span data-kvl="venue"></span></span></div></div></div><div class="kvl1180-hero-status"><span data-kvl="hero-status"></span><span data-kvl="hero-team-count"></span><span class="is-accent" data-kvl="hero-stage"></span></div></section>
+  <div class="kvl1180-controlbar"><nav class="kvl1180-tabs"><a data-view="overview" href="?view=overview">한눈에 보기</a><a data-view="schedule" href="?view=schedule">경기일정</a><a data-view="groups" href="?view=groups">조별순위</a><a data-view="knockout" href="?view=knockout">최종순위</a><a data-view="rosters" href="?view=rosters">참가국</a><a data-view="resources" href="?view=resources">공식자료</a></nav><nav class="kvl1180-gender"><a data-gender-link="men">MEN · 남자부</a><a data-gender-link="women">WOMEN · 여자부</a></nav></div>
+  <section class="kvl1180-card kvl1180-view" data-view="overview"><div class="kvl1180-section-head"><div><p class="label">TOURNAMENT SNAPSHOT</p><h2>대회 한눈에 보기</h2></div><p class="kvl1180-overview-result"></p></div><div class="kvl1180-kpis"><article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>참가국</span><strong data-kvl="team-count"></strong><small>개국</small></div></article><article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>조 편성</span><strong data-kvl="group-count"></strong><small>개 조</small></div></article><article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>전체 일정</span><strong data-kvl="match-count"></strong><small>경기</small></div></article><article class="kvl1180-kpi"><div class="kvl1180-kpi-copy"><span>8강 진출</span><strong data-kvl="qualifier-count"></strong><small>개국</small></div></article><article class="kvl1180-kpi is-venue"><div class="kvl1180-kpi-copy"><span>대회 장소</span><strong data-kvl="venue-primary"></strong><small data-kvl="venue-secondary"></small></div></article></div></section>
+  <section class="kvl1180-card kvl1180-stakes-card kvl1180-view" data-view="overview"><div class="kvl1180-section-head"><div><p class="label">ROAD TO THE WORLD</p><h2>대회 의미 · 국제 진출권</h2></div></div><div class="kvl1180-stakes-grid"><article class="kvl1180-stake is-la" data-qualification-id="la28"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand"></span><span class="kvl1180-pill" data-role="qualification-pill"></span></div><h3></h3><p data-role="qualification-desc"></p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot"></div></article><article class="kvl1180-stake is-wc" data-qualification-id="world-cup"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand"></span><span class="kvl1180-pill" data-role="qualification-pill"></span></div><h3></h3><p data-role="qualification-desc"></p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot"></div></article><article class="kvl1180-stake is-wr" data-qualification-id="ranking"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand"></span><span class="kvl1180-pill" data-role="qualification-pill"></span></div><h3></h3><p data-role="qualification-desc"></p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot"></div></article></div></section>
+  <section class="kvl1180-card kvl1180-view" data-view="schedule" hidden><div class="kvl1180-section-head"><div><p class="label">SCHEDULE</p><h2>경기일정</h2></div></div><p>새 대회 schedule renderer 연결 slot 검수.</p></section>
+  <section class="kvl1180-card kvl1180-view" data-view="groups" hidden><div class="kvl1180-section-head"><div><p class="label">STANDINGS</p><h2>조별순위</h2></div></div><p>새 대회 standings renderer 연결 slot 검수.</p></section>
+  <section class="kvl1180-card kvl1180-view" data-view="knockout" hidden><div class="kvl1180-section-head"><div><p class="label">FINAL RANKING</p><h2>최종순위</h2></div></div><div class="kvl1180-final-grid"><article class="kvl1180-final-card" data-final-rank="1"><span class="kvl1180-final-rank">1위</span><div class="kvl1180-final-copy"><strong data-role="final-team"></strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article><article class="kvl1180-final-card" data-final-rank="2"><span class="kvl1180-final-rank">2위</span><div class="kvl1180-final-copy"><strong data-role="final-team"></strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article><article class="kvl1180-final-card" data-final-rank="3"><span class="kvl1180-final-rank">3위</span><div class="kvl1180-final-copy"><strong data-role="final-team"></strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article><article class="kvl1180-final-card" data-final-rank="4"><span class="kvl1180-final-rank">4위</span><div class="kvl1180-final-copy"><strong data-role="final-team"></strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article></div></section>
+  <section class="kvl1180-card kvl1180-view" data-view="rosters" hidden><div class="kvl1180-section-head"><div><p class="label">PARTICIPANTS</p><h2>참가국</h2></div></div><p>roster/Player ID 연결 slot 검수.</p></section>
+  <section class="kvl1180-card kvl1180-view" id="resources" data-view="resources" hidden><div class="kvl1180-section-head"><div><p class="label">OFFICIAL RESOURCES</p><h2>공식자료</h2></div></div><div class="kvl1180-sources" id="resourceList"></div></section>
+</main>
+</body>
+</html>
