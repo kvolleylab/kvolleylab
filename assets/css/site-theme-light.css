@@ -92,3 +92,8 @@ tr:hover td{background:#fffaf0!important}
   h1,.page-title{font-size:clamp(32px,10vw,48px)!important}
   .container,.site-main,.container-wide{padding-left:14px!important;padding-right:14px!important}
 }
+
+/* Competition prototype overview: KPI cards already provide participant navigation. */
+body.kvl1180-prototype .kvl1180-view[data-view="overview"] .kvl1180-roster{
+  display:none!important;
+}
