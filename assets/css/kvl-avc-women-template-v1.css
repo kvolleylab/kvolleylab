@@ -70,6 +70,54 @@ body.kvl1180-women-template .kvl1180-ranking-rule-card strong{display:block;marg
 body.kvl1180-women-template .kvl1180-ranking-rule-card p{margin:0}
 body.kvl1180-women-template #knockout .kvl1180-final-copy small{line-height:1.35}
 
+/* Women groups: replace inherited men's green with the women Rose palette. */
+body.kvl1180-women-template #groups .kvl1180-section-head h2,
+body.kvl1180-women-template #groups .kvl1180-combined-head h3{color:#8f2f59!important}
+body.kvl1180-women-template #groups .kvl1180-groups-status span{border-color:#ead4de!important;background:#fff7fa!important;color:#765f69!important}
+body.kvl1180-women-template #groups .kvl1180-groups-status strong{color:#a53d68!important}
+body.kvl1180-women-template #groups .kvl1180-groups-rule{border-color:#ead4de!important;background:linear-gradient(90deg,#fff1f6,#fff9fb)!important;color:#674f5a!important}
+body.kvl1180-women-template #groups .kvl1180-groups-rule strong{color:#a53d68!important}
+body.kvl1180-women-template #groups .kvl1180-pool-card{border-color:#ead4de!important;box-shadow:0 4px 14px rgba(126,49,82,.045)!important}
+body.kvl1180-women-template #groups .kvl1180-pool-card-head{background:linear-gradient(90deg,#8f2f59,#c65382)!important;color:#fff!important}
+body.kvl1180-women-template #groups .kvl1180-pool-card-head span{color:#ffeaf3!important}
+body.kvl1180-women-template #groups .kvl1180-pool-table-head{border-bottom-color:#eadfe4!important;background:#fff6f9!important;color:#745e68!important}
+body.kvl1180-women-template #groups .kvl1180-pool-row{border-top-color:#f1e4e9!important;color:#4f4148!important}
+body.kvl1180-women-template #groups .kvl1180-pool-row.is-qualified{background:#fffafd!important}
+body.kvl1180-women-template #groups .kvl1180-pool-row.is-qualified::before{background:#c65382!important}
+body.kvl1180-women-template #groups .kvl1180-pool-row.is-out{background:#fcfbfc!important;color:#7b7176!important}
+body.kvl1180-women-template #groups .kvl1180-pool-row.is-korea{background:#fff0f6!important;box-shadow:inset 0 0 0 1px #e4b8ca!important}
+body.kvl1180-women-template #groups .kvl1180-pool-rank{color:#8f2f59!important}
+body.kvl1180-women-template #groups .kvl1180-pool-row.is-out .kvl1180-pool-rank{color:#81767b!important}
+body.kvl1180-women-template #groups .kvl1180-pool-pts{color:#a53d68!important}
+body.kvl1180-women-template #groups .kvl1180-pool-ratio{color:#685860!important}
+body.kvl1180-women-template #groups .kvl1180-combined-block{border-top-color:#eadfe4!important}
+body.kvl1180-women-template #groups .kvl1180-combined-head .label{color:#a85a78!important}
+body.kvl1180-women-template #groups .kvl1180-combined-head p{color:#6f5d65!important}
+body.kvl1180-women-template #groups .kvl1180-combined-table{border-color:#ead4de!important}
+body.kvl1180-women-template #groups .kvl1180-combined-table-head{border-bottom-color:#eadfe4!important;background:#fff4f8!important;color:#6f5964!important}
+body.kvl1180-women-template #groups .kvl1180-combined-row{border-top-color:#f1e4e9!important;color:#4f4148!important}
+body.kvl1180-women-template #groups .kvl1180-combined-row.is-qualified{background:#fffafd!important}
+body.kvl1180-women-template #groups .kvl1180-combined-row.is-qualified::before{background:#c65382!important}
+body.kvl1180-women-template #groups .kvl1180-combined-row.is-out{background:#fcfbfc!important;color:#7b7176!important}
+body.kvl1180-women-template #groups .kvl1180-combined-row.is-korea{background:#fff0f6!important;box-shadow:inset 0 0 0 1px #e4b8ca!important}
+body.kvl1180-women-template #groups .kvl1180-combined-rank{color:#8f2f59!important}
+body.kvl1180-women-template #groups .kvl1180-combined-pool{color:#705662!important}
+body.kvl1180-women-template #groups .kvl1180-combined-result.is-qualified{background:#fde8f1!important;color:#9a3561!important}
+body.kvl1180-women-template #groups .kvl1180-combined-result.is-out{background:#f1f2f3!important;color:#6f7379!important}
+body.kvl1180-women-template #groups .kvl1180-combined-row.is-qualified>span:last-child::after{color:#9a3561!important}
+body.kvl1180-women-template #groups .kvl1180-qf-pairing{color:#a43f68!important}
+body.kvl1180-women-template #groups .kvl1180-ranking-rule-card{border-color:#ead4de!important;background:linear-gradient(180deg,#fff,#fff5f9)!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-mobile{border-color:#ead4de!important;background:#fff!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-line{border-top-color:#f1e4e9!important;color:#4f4148!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-line.is-head{background:#fff4f8!important;color:#6f5964!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-line.is-korea{background:#fff0f6!important;box-shadow:inset 0 0 0 1px #e4b8ca!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-rank{color:#8f2f59!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-result{color:#9a3561!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-result b{border-color:#e6b6c9!important;background:#fde8f1!important;color:#9a3561!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-result small{color:#9a3561!important}
+body.kvl1180-women-template #groups .kvl-shared-combined-result.is-out,
+body.kvl1180-women-template #groups .kvl-shared-combined-result.is-out b{border-color:#e5e7eb!important;background:#f3f4f6!important;color:#6b7280!important}
+
 /* Women schedule: preserve common geometry, use the rose theme and surface completed-tournament context. */
 body.kvl1180-women-template #schedule .kvl1180-schedule-statusline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-2px 0 12px;padding:10px 12px;border:1px solid #ead4de;border-radius:10px;background:linear-gradient(90deg,#fff7fa,#fff);color:#75606a;font-size:10.5px;line-height:1.4}
 body.kvl1180-women-template #schedule .kvl1180-schedule-statusline strong{color:#8f2f59;font-size:11.5px;font-weight:950}
