@@ -1,6 +1,7 @@
 /* K-Volley Lab · international competition template v2
  * Common layer distilled from 2026 AVC men/women PC 1180 + mobile 390/360 review.
  * Competition-specific data, winner names, qualification teams and URLs MUST NOT be hardcoded here.
+ * Theme priority: WOMEN always Rose. MEN uses competition family: AVC Green / FIVB Purple / Domestic Navy.
  */
 @import url("./kvl-pc-avc-hybrid-1180-prototype-v1.css?v=20260915-v2-base");
 
@@ -12,10 +13,61 @@ body.kvl1180-prototype.kvl-competition-template-v2{
   --kvl-theme-shadow:rgba(13,111,60,.10);
   --kvl-theme-hero-a:#074827;
   --kvl-theme-hero-b:#0e7b43;
+  --kvl-theme-overlay-rgb:7,25,20;
   --kvl-special-gold:#b8860b;
   --kvl-score:#4b5563;
   overflow-x:hidden;
 }
+
+/* MEN · AVC / default international fallback = Green. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]{
+  --kvl-theme-primary:#176638;
+  --kvl-theme-strong:#0d6f3c;
+  --kvl-theme-soft:#eef8f1;
+  --kvl-theme-border:#bfe3c9;
+  --kvl-theme-shadow:rgba(13,111,60,.10);
+  --kvl-theme-hero-a:#074827;
+  --kvl-theme-hero-b:#0e7b43;
+  --kvl-theme-overlay-rgb:7,25,20;
+  --kvl1180-green:#0d6f3c;
+  --kvl1180-green-dark:#07512f;
+  --kvl1180-green-mid:#11884a;
+  --kvl1180-green-soft:#edf8f1;
+}
+
+/* MEN · FIVB = Purple. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="fivb"]{
+  --kvl-theme-primary:#5b3a8e;
+  --kvl-theme-strong:#442a70;
+  --kvl-theme-soft:#f3effa;
+  --kvl-theme-border:#cdbce7;
+  --kvl-theme-shadow:rgba(91,58,142,.13);
+  --kvl-theme-hero-a:#35205a;
+  --kvl-theme-hero-b:#6748a0;
+  --kvl-theme-overlay-rgb:37,24,58;
+  --kvl1180-green:#5b3a8e;
+  --kvl1180-green-dark:#442a70;
+  --kvl1180-green-mid:#7658aa;
+  --kvl1180-green-soft:#f3effa;
+}
+
+/* MEN · Domestic = Navy. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="domestic"]{
+  --kvl-theme-primary:#163a5f;
+  --kvl-theme-strong:#102c49;
+  --kvl-theme-soft:#eef4f8;
+  --kvl-theme-border:#a9c0d4;
+  --kvl-theme-shadow:rgba(22,58,95,.13);
+  --kvl-theme-hero-a:#0f2943;
+  --kvl-theme-hero-b:#23577f;
+  --kvl-theme-overlay-rgb:15,31,49;
+  --kvl1180-green:#163a5f;
+  --kvl1180-green-dark:#102c49;
+  --kvl1180-green-mid:#2f6f9a;
+  --kvl1180-green-soft:#eef4f8;
+}
+
+/* WOMEN always wins over competition-family color and stays Rose. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]{
   --kvl-theme-primary:#8e315e;
   --kvl-theme-strong:#a53d68;
@@ -24,21 +76,16 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]{
   --kvl-theme-shadow:rgba(142,49,94,.13);
   --kvl-theme-hero-a:#6f234a;
   --kvl-theme-hero-b:#8e315e;
+  --kvl-theme-overlay-rgb:52,24,42;
   --kvl1180-green:#8e315e;
   --kvl1180-green-dark:#6f234a;
   --kvl1180-green-mid:#a53d68;
   --kvl1180-green-soft:#fff1f6;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]{
-  --kvl1180-green:#0d6f3c;
-  --kvl1180-green-dark:#07512f;
-  --kvl1180-green-mid:#11884a;
-  --kvl1180-green-soft:#edf8f1;
-}
 
 /* Hero: same geometry, theme/data-driven artwork. */
 body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{
-  background-image:linear-gradient(90deg,rgba(7,25,20,.82) 0%,rgba(7,25,20,.55) 43%,rgba(7,25,20,.14) 72%),var(--kvl-hero-image,linear-gradient(112deg,var(--kvl-theme-hero-a),var(--kvl-theme-hero-b)));
+  background-image:linear-gradient(90deg,rgba(var(--kvl-theme-overlay-rgb),.82) 0%,rgba(var(--kvl-theme-overlay-rgb),.55) 43%,rgba(var(--kvl-theme-overlay-rgb),.14) 72%),var(--kvl-hero-image,linear-gradient(112deg,var(--kvl-theme-hero-a),var(--kvl-theme-hero-b)));
   background-size:cover;
   background-position:var(--kvl-hero-position,center center);
   border-color:color-mix(in srgb,var(--kvl-theme-strong) 45%,transparent);
