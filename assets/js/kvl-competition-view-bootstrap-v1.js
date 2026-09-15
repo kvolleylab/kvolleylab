@@ -5,7 +5,7 @@
 (()=>{
 'use strict';
 const ALLOWED=new Set(['overview','schedule','groups','knockout','rosters','resources']);
-const WOMEN_KPI_TARGETS=['?view=rosters','?view=groups','?view=schedule','?view=knockout'];
+const WOMEN_KPI_TARGETS=['?view=rosters&team=KOR','?view=groups','?view=schedule','?view=knockout'];
 function currentView(){
   const requested=new URLSearchParams(location.search).get('view')||'overview';
   return ALLOWED.has(requested)?requested:'overview';
