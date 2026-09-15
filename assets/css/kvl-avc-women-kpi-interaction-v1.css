@@ -1,0 +1,43 @@
+/* K-Volley Lab · AVC Women 2026 overview KPI interaction
+   Prototype only. Mirrors men KPI lift/click behavior with a women Rose visual state. */
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]{
+  cursor:pointer;
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease,background .16s ease;
+}
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target] .kvl1180-kpi-icon,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target] .kvl1180-kpi-copy>span,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target] .kvl1180-kpi-copy strong,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target] .kvl1180-kpi-copy small{
+  transition:color .16s ease;
+}
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:hover,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:focus-visible{
+  border-color:#c65382!important;
+  background:linear-gradient(180deg,#fff8fb 0%,#fff0f6 100%)!important;
+  box-shadow:0 10px 24px rgba(143,47,89,.16)!important;
+  transform:translateY(-2px);
+  outline:none;
+}
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-icon,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-icon{
+  color:#b74676!important;
+}
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-copy>span,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-copy>span{
+  color:#8f2f59!important;
+}
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-copy strong,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-copy strong{
+  color:#8f2f59!important;
+}
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-copy small,
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-copy small{
+  color:#a85a78!important;
+}
+@media (hover:none){
+  body.kvl1180-prototype.kvl1180-women-template .kvl1180-kpi[data-kvl-target]:active{
+    border-color:#c65382!important;
+    background:#fff0f6!important;
+    transform:translateY(-1px);
+  }
+}
