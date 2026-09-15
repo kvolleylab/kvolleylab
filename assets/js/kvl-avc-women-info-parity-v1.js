@@ -3,7 +3,10 @@
 (()=>{
 'use strict';
 const DATA='data/competitions/avc-women-continental-2026.json?v=20260915-info-4';
+const PARTICIPANTS_STYLE='assets/css/kvl-avc-women-participants-v1.css?v=20260915-1';
 const TEAM_CODE={중국:'CHN',이란:'IRI',대만:'TPE',이라크:'IRQ',태국:'THA',인도네시아:'INA',카자흐스탄:'KAZ',호주:'AUS',일본:'JPN',대한민국:'KOR',베트남:'VIE',홍콩:'HKG'};
+const TEAM_EN={중국:'China',이란:'Iran',대만:'Chinese Taipei',이라크:'Iraq',태국:'Thailand',인도네시아:'Indonesia',카자흐스탄:'Kazakhstan',호주:'Australia',일본:'Japan',대한민국:'Korea',베트남:'Vietnam',홍콩:'Hong Kong, China'};
+const TEAM_FLAG={중국:'cn',이란:'ir',대만:'tw',이라크:'iq',태국:'th',인도네시아:'id',카자흐스탄:'kz',호주:'au',일본:'jp',대한민국:'kr',베트남:'vn',홍콩:'hk'};
 const FINAL_NOTE={
   1:'우승 · LA28 올림픽 직행',
   2:'준우승',
@@ -14,6 +17,7 @@ let data=null,applyTimer=0;
 const text=el=>el?.textContent?.trim()||'';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const completed=m=>Boolean(m)&&Number.isFinite(m.setsA)&&Number.isFinite(m.setsB);
+const flagUrl=team=>TEAM_FLAG[team]?`https://flagcdn.com/w80/${TEAM_FLAG[team]}.png`:'';
 function qfMap(){
   const seedByTeam=new Map((data?.combinedSeeds||[]).map(x=>[x.team,Number(x.seed)||null]));
   const out=new Map();
@@ -132,9 +136,30 @@ function enrichFinal(){
     if(rank&&small&&FINAL_NOTE[rank])small.textContent=FINAL_NOTE[rank];
   });
 }
+function ensureParticipantsStyle(){
+  if(document.getElementById('kvl-avc-women-participants-v1'))return;
+  const link=document.createElement('link');link.id='kvl-avc-women-participants-v1';link.rel='stylesheet';link.href=PARTICIPANTS_STYLE;document.head.appendChild(link);
+}
+function participantCard(team){
+  return `<div class="kvl1180-participant-button ${team==='대한민국'?'is-korea':''}" aria-label="${esc(team)} 참가국"><img src="${flagUrl(team)}" alt="${esc(team)} 국기" loading="lazy"><span class="kvl1180-participant-button-copy"><strong>${esc(team)}</strong><small>${esc(TEAM_EN[team]||'')} · ${esc(TEAM_CODE[team]||'')}</small></span></div>`;
+}
+function participantGroup(group){
+  const teams=Array.isArray(group?.teams)?group.teams:[];
+  return `<article class="kvl1180-participant-group"><header class="kvl1180-participant-group-head"><strong>${esc(group?.id||'')}조</strong><span>${teams.length}개국</span></header><div class="kvl1180-participant-buttons">${teams.map(participantCard).join('')}</div></article>`;
+}
 function enrichParticipants(){
-  const pending=document.querySelector('#rosters .kvl1180-roster-pending');
-  if(pending)pending.innerHTML='<strong>참가국 정보 반영 완료 · 선수명단은 별도 구축</strong><br>2026 여자부 실제 참가 12개국과 조 편성은 대회 MASTER 기준으로 반영했습니다. 국가별 등록 선수명단 MASTER가 확정되면 Player ID 기준으로 이 화면에 추가 연결합니다.';
+  const section=document.querySelector('#rosters')||document.querySelector('.kvl1180-view[data-view="rosters"]');
+  if(!section)return;
+  ensureParticipantsStyle();
+  if(!section.id)section.id='rosters';
+  const groups=Array.isArray(data?.groups)?data.groups:[];
+  const actualCount=groups.reduce((sum,g)=>sum+(Array.isArray(g.teams)?g.teams.length:0),0);
+  const ready=section.classList.contains('kvl1180-participants-view')&&section.querySelector('.kvl1180-participant-status')&&section.querySelectorAll('.kvl1180-participant-button').length===actualCount;
+  if(!ready){
+    section.classList.remove('kvl1180-prototype-placeholder');
+    section.classList.add('kvl1180-participants-view');
+    section.innerHTML=`<div class="kvl1180-section-head"><div><p class="label">PARTICIPATING TEAMS</p><h2>참가국</h2></div><div class="kvl1180-participant-status"><span><strong>${actualCount||12}개국 확정</strong></span><span>${groups.length||3}개 조</span><span>선수명단 별도 구축</span></div></div><div class="kvl1180-participant-groups">${groups.map(participantGroup).join('')}</div><div class="kvl1180-roster-pending" data-kvl-verified="1"><strong>참가국 정보 반영 완료 · 선수명단은 별도 구축</strong>2026 여자부 실제 참가 <b>${actualCount||12}개국</b>과 A·B·C조 편성은 대회 MASTER 기준으로 반영했습니다. 현재 국가별 등록 선수명단 MASTER는 미구축 상태이므로 선수 정보는 추정해서 넣지 않습니다. 선수명단이 확정되면 Player ID 기준으로 같은 참가국 화면에 연결합니다.</div>`;
+  }
 }
 function enrichSources(){
   const section=document.querySelector('#resources');
