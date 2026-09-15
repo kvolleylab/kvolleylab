@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
   <link rel="stylesheet" href="assets/css/kvl-pc-avc-hybrid-1180-prototype-v1.css?v=20260915-1">
   <link rel="stylesheet" href="assets/css/kvl-avc-men-mobile-parity-v1.css?v=20260914-5">
-  <link rel="stylesheet" href="assets/css/kvl-avc-women-template-v1.css?v=20260915-7">
+  <link rel="stylesheet" href="assets/css/kvl-avc-women-template-v1.css?v=20260915-8">
+  <link rel="stylesheet" href="assets/css/kvl-avc-women-knockout-v1.css?v=20260915-1">
   <script src="assets/js/unified-nav.js?v=20260907-5" defer></script>
   <script src="assets/js/kvl-competition-view-bootstrap-v1.js?v=20260915-1" defer></script>
-  <script src="assets/js/kvl-avc-women-calendar-guard-v1.js?v=20260915-2" defer></script>
+  <script src="assets/js/kvl-avc-women-calendar-guard-v1.js?v=20260915-3" defer></script>
   <script src="assets/js/kvl-avc-women-template-v1.js?v=20260915-3" defer></script>
   <script src="assets/js/kvl-avc-women-info-parity-v1.js?v=20260915-5" defer></script>
 </head>
@@ -95,7 +96,60 @@
   </section>
 
   <section class="kvl1180-card kvl1180-view kvl1180-prototype-placeholder" data-view="groups" hidden><div class="kvl1180-section-head"><div><p class="label">POOL STANDINGS</p><h2>조별순위</h2></div></div><p>대회 데이터를 불러오는 중입니다.</p></section>
-  <section class="kvl1180-card kvl1180-view kvl1180-prototype-placeholder" data-view="knockout" hidden><div class="kvl1180-section-head"><div><p class="label">FINAL RANKING</p><h2>최종순위</h2></div></div><p>대회 데이터를 불러오는 중입니다.</p></section>
+
+  <section id="knockout" class="kvl1180-card kvl1180-view kvl1180-knockout-view" data-view="knockout" hidden aria-labelledby="knockoutTitle">
+    <div class="kvl1180-section-head"><div><p class="label">FINAL STANDINGS</p><h2 id="knockoutTitle">최종순위</h2></div><div class="kvl1180-knockout-status"><span><strong>대회 종료</strong></span><span>최종 1~4위 확정</span></div></div>
+    <div class="kvl1180-final-block">
+      <div class="kvl1180-final-block-head"><div><p class="label">FINAL RANKING</p><h3>최종 1~4위</h3></div><p>결승과 3위 결정전 실제 결과</p></div>
+      <div class="kvl1180-final-grid">
+        <article class="kvl1180-final-card is-champion"><span class="kvl1180-final-rank">1위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-final-copy"><strong>태국</strong><small>우승 · LA28 올림픽 직행 · 결승 중국에 3-2</small></span></article>
+        <article class="kvl1180-final-card"><span class="kvl1180-final-rank">2위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-final-copy"><strong>중국</strong><small>준우승 · 결승 태국에 2-3</small></span></article>
+        <article class="kvl1180-final-card"><span class="kvl1180-final-rank">3위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-final-copy"><strong>일본</strong><small>3위 · 이란에 3-0</small></span></article>
+        <article class="kvl1180-final-card"><span class="kvl1180-final-rank">4위</span><span class="kvl1180-final-flag"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-final-copy"><strong>이란</strong><small>4위 · 중국에 준결승 0-3</small></span></article>
+      </div>
+      <div class="kvl1180-final-qualification"><strong>2027 FIVB World Cup 진출</strong><span>태국 · 중국 · 일본</span></div>
+    </div>
+
+    <div class="kvl1180-knockout-block">
+      <div class="kvl1180-knockout-subhead"><div><p class="label">KNOCKOUT BRACKET</p><h3>8강 토너먼트</h3></div><p>8강 → 준결승 → 결승</p></div>
+      <div class="kvl1180-bracket">
+        <div class="kvl1180-bracket-ladder">
+          <section class="kvl1180-round kvl1180-round-qf">
+            <h4 class="kvl1180-round-title">8강 · Quarterfinals</h4>
+            <div class="kvl1180-round-body">
+              <div class="kvl1180-qf-pair">
+                <article class="kvl1180-match" data-match-id="QF1"><div class="kvl1180-match-head"><strong>QF1</strong><span>08.28 · 20:30 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-bracket-copy"><strong>중국</strong><small>예선 1번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/vn.png" alt="베트남 국기"></span><span class="kvl1180-bracket-copy"><strong>베트남</strong><small>예선 8번 시드</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-15 · 25-22 · 25-13</div></article>
+                <article class="kvl1180-match" data-match-id="QF2"><div class="kvl1180-match-head"><strong>QF2</strong><span>08.28 · 16:00 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/id.png" alt="인도네시아 국기"></span><span class="kvl1180-bracket-copy"><strong>인도네시아</strong><small>예선 4번 시드</small></span><b class="kvl1180-team-score">1</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-bracket-copy"><strong>이란</strong><small>예선 5번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">25-19 · 16-25 · 12-25 · 17-25</div></article>
+              </div>
+              <div class="kvl1180-qf-pair">
+                <article class="kvl1180-match" data-match-id="QF3"><div class="kvl1180-match-head"><strong>QF3</strong><span>08.27 · 19:30 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-bracket-copy"><strong>일본</strong><small>예선 2번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/tw.png" alt="대만 국기"></span><span class="kvl1180-bracket-copy"><strong>대만</strong><small>예선 7번 시드</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-14 · 25-21 · 25-13</div></article>
+                <article class="kvl1180-match" data-match-id="QF4"><div class="kvl1180-match-head"><strong>QF4</strong><span>08.27 · 15:00 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-bracket-copy"><strong>태국</strong><small>예선 3번 시드</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team is-korea"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/kr.png" alt="대한민국 국기"></span><span class="kvl1180-bracket-copy"><strong>대한민국</strong><small>예선 6번 시드</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-20 · 25-18 · 25-21</div></article>
+              </div>
+            </div>
+          </section>
+          <span class="kvl1180-bracket-gap"></span>
+          <section class="kvl1180-round kvl1180-round-sf">
+            <h4 class="kvl1180-round-title">준결승 · Semifinals</h4>
+            <div class="kvl1180-round-body">
+              <article class="kvl1180-match" data-match-id="SF1"><div class="kvl1180-match-head"><strong>SF1</strong><span>08.29 · 21:00 KST</span></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-bracket-copy"><strong>중국</strong><small>CHN</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-bracket-copy"><strong>이란</strong><small>IRI</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-match-sets">25-22 · 25-12 · 25-19</div></article>
+              <article class="kvl1180-match" data-match-id="SF2"><div class="kvl1180-match-head"><strong>SF2</strong><span>08.29 · 18:15 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-bracket-copy"><strong>일본</strong><small>JPN</small></span><b class="kvl1180-team-score">1</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-bracket-copy"><strong>태국</strong><small>THA</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">21-25 · 20-25 · 25-20 · 20-25</div></article>
+            </div>
+          </section>
+          <span class="kvl1180-bracket-gap"></span>
+          <section class="kvl1180-round kvl1180-round-final">
+            <h4 class="kvl1180-round-title">결승 · Final</h4>
+            <div class="kvl1180-round-body"><article class="kvl1180-match" data-match-id="FINAL"><div class="kvl1180-match-head"><strong>FINAL</strong><span>08.30 · 19:45 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/cn.png" alt="중국 국기"></span><span class="kvl1180-bracket-copy"><strong>중국</strong><small>CHN</small></span><b class="kvl1180-team-score">2</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/th.png" alt="태국 국기"></span><span class="kvl1180-bracket-copy"><strong>태국</strong><small>THA</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">20-25 · 25-11 · 25-23 · 18-25 · 10-15</div></article></div>
+          </section>
+        </div>
+        <div class="kvl1180-bronze">
+          <h4 class="kvl1180-bronze-title">3위 결정전 · Bronze Medal Match</h4>
+          <article class="kvl1180-match" data-match-id="3RD"><div class="kvl1180-match-head"><strong>3RD</strong><span>08.30 · 16:15 KST</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/ir.png" alt="이란 국기"></span><span class="kvl1180-bracket-copy"><strong>이란</strong><small>IRI</small></span><b class="kvl1180-team-score">0</b></div><div class="kvl1180-bracket-team is-winner"><span class="kvl1180-bracket-mark"><img src="https://flagcdn.com/w80/jp.png" alt="일본 국기"></span><span class="kvl1180-bracket-copy"><strong>일본</strong><small>JPN</small></span><b class="kvl1180-team-score">3</b></div><div class="kvl1180-match-sets">21-25 · 16-25 · 24-26</div></article>
+        </div>
+      </div>
+      <div class="kvl1180-knockout-note"><b>공식 결과 기준</b> · 8강 1-8 / 4-5 / 2-7 / 3-6 시드 대진부터 준결승·결승·3위 결정전까지 실제 경기 결과를 반영했습니다.</div>
+    </div>
+  </section>
+
   <section class="kvl1180-card kvl1180-view kvl1180-prototype-placeholder" data-view="rosters" hidden><div class="kvl1180-section-head"><div><p class="label">PARTICIPATING TEAMS</p><h2>참가국</h2></div></div><p>참가국 데이터를 불러오는 중입니다.</p></section>
   <section class="kvl1180-card kvl1180-view kvl1180-prototype-placeholder" data-view="resources" hidden><div class="kvl1180-section-head"><div><p class="label">OFFICIAL SOURCES</p><h2>공식자료</h2></div></div><p>공식자료를 불러오는 중입니다.</p></section>
 
