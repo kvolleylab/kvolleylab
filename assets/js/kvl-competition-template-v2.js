@@ -4,6 +4,7 @@
 const VIEWS=new Set(['overview','schedule','groups','knockout','rosters','resources']);
 const KPI_TARGETS=['?view=rosters&team=KOR','?view=groups','?view=schedule','?view=knockout'];
 const STATUS_LABEL={upcoming:'대회 시작 전',active:'대회 진행 중',completed:'대회 종료'};
+const THEME_FAMILIES=new Set(['avc','fivb','domestic']);
 
 function data(){return window.KVL_COMPETITION_V2_DATA||{};}
 function txt(el,value){if(el&&value!==undefined&&value!==null)el.textContent=String(value);}
@@ -36,7 +37,11 @@ function bindKpis(){
 
 function applyTheme(d){
   const body=document.body;
-  body.dataset.kvlGender=d.gender==='women'?'women':'men';
+  const gender=d.gender==='women'?'women':'men';
+  const requestedFamily=String(d.competitionFamily||d.family||'avc').toLowerCase();
+  const family=THEME_FAMILIES.has(requestedFamily)?requestedFamily:'avc';
+  body.dataset.kvlGender=gender;
+  body.dataset.kvlFamily=family;
   const pc=d.hero?.pcImage; const mobile=d.hero?.mobileImage;
   if(pc)body.style.setProperty('--kvl-hero-image',`url("${pc}")`);
   if(d.hero?.position)body.style.setProperty('--kvl-hero-position',d.hero.position);
