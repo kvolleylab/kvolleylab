@@ -1,38 +1,87 @@
-/* K-Volley Lab · AVC Women 2026 official resources Rose theme v1 */
+/* K-Volley Lab · AVC Women 2026 official resources · men-baseline parity */
 body.kvl1180-women-template #resources.kvl1180-resources-view{container-type:inline-size}
 body.kvl1180-women-template #resources.kvl1180-resources-view .kvl1180-section-head h2{color:#8f2f59!important}
-body.kvl1180-women-template #resources .kvl1180-resource-status{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}
-body.kvl1180-women-template #resources .kvl1180-resource-status span{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border:1px solid #ead4de;border-radius:999px;background:#fff7fa;color:#765f69;font-size:clamp(10.5px,.94cqw,12px);font-weight:900;white-space:nowrap}
-body.kvl1180-women-template #resources .kvl1180-resource-status strong{color:#a53d68;font:inherit}
-body.kvl1180-women-template #resources .kvl1180-sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1vw,14px)}
-body.kvl1180-women-template #resources .kvl1180-source{position:relative;display:flex;min-height:clamp(128px,11vw,154px);flex-direction:column;justify-content:space-between;gap:18px;padding:clamp(16px,1.45vw,20px);border:1px solid #ead4de;border-radius:14px;background:linear-gradient(145deg,#fffafd,#fff5f9);box-shadow:0 5px 16px rgba(126,49,82,.04)}
-body.kvl1180-women-template #resources .kvl1180-source-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-body.kvl1180-women-template #resources .kvl1180-source-tag{display:inline-flex;align-items:center;min-height:25px;padding:0 8px;border:1px solid #ead4de;border-radius:999px;background:#fff;color:#9a3c63;font-size:9px;font-weight:1000;letter-spacing:.05em;white-space:nowrap}
-body.kvl1180-women-template #resources .kvl1180-source-domain{color:#8b7b82;font-size:10px;font-weight:850;text-align:right;white-space:nowrap}
-body.kvl1180-women-template #resources .kvl1180-source-copy{min-width:0}
-body.kvl1180-women-template #resources .kvl1180-source-copy strong{display:block;color:#17365d;font-size:clamp(14px,1.25cqw,17px);font-weight:1000;line-height:1.4;letter-spacing:-.025em}
-body.kvl1180-women-template #resources .kvl1180-source-copy p{margin:7px 0 0;color:#765f69;font-size:clamp(11px,.97cqw,12.5px);font-weight:750;line-height:1.55}
-body.kvl1180-women-template #resources .kvl1180-source a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:38px;padding:0 12px;border:1px solid #dba8bd;border-radius:9px;background:#fff;color:#8f2f59;font-size:11px;font-weight:1000;text-decoration:none;transition:background .15s ease,border-color .15s ease}
-body.kvl1180-women-template #resources .kvl1180-source a:hover{border-color:#c65382;background:#fff0f6}
-body.kvl1180-women-template #resources .kvl1180-resource-archive{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;margin-top:clamp(16px,1.5vw,22px);padding:clamp(15px,1.35vw,19px) clamp(17px,1.55vw,22px);border:1px dashed #dfb8c8;border-radius:12px;background:#fff9fb}
-body.kvl1180-women-template #resources .kvl1180-resource-archive strong{display:block;color:#8f2f59;font-size:clamp(13px,1.12cqw,15px);font-weight:1000}
-body.kvl1180-women-template #resources .kvl1180-resource-archive p{margin:4px 0 0;color:#765f69;font-size:clamp(10.5px,.94cqw,12px);font-weight:750;line-height:1.55}
-body.kvl1180-women-template #resources .kvl1180-resource-archive span{display:inline-flex;align-items:center;min-height:32px;padding:0 11px;border-radius:999px;background:#f3e7ec;color:#866b76;font-size:10px;font-weight:950;white-space:nowrap}
-body.kvl1180-women-template #resources .kvl1180-resource-note{margin:12px 2px 0;color:#806f77;font-size:10.5px;font-weight:700;line-height:1.55}
-body.kvl1180-women-template #resources .kvl1180-resource-note b{color:#8f2f59;font-weight:950}
+
+/* Keep the same header hierarchy as the men's common template. */
+body.kvl1180-women-template #resources .kvl1180-resource-status{display:none!important}
+body.kvl1180-women-template #resources .kvl1180-section-head::after{
+  content:"Volleyball World · AVC 공식자료 기준";
+  margin-left:auto;
+  color:#8b7890;
+  font-size:clamp(9px,.75vw,11px);
+  font-weight:500;
+  line-height:1.35;
+  text-align:right;
+  white-space:nowrap;
+}
+
+/* Men's resource geometry: two-column compact list cards. */
+body.kvl1180-women-template #resources .kvl1180-sources{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(9px,.8vw,12px);
+}
+body.kvl1180-women-template #resources .kvl1180-source{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  min-height:clamp(58px,5.1vw,66px);
+  padding:clamp(10px,.9vw,13px) clamp(13px,1.15vw,17px);
+  border:1px solid #ead4de;
+  border-radius:12px;
+  background:#fffafd;
+  box-shadow:none;
+}
+body.kvl1180-women-template #resources .kvl1180-source>div{min-width:0;flex:1 1 auto}
+body.kvl1180-women-template #resources .kvl1180-source-top,
+body.kvl1180-women-template #resources .kvl1180-source-copy p{display:none!important}
+body.kvl1180-women-template #resources .kvl1180-source-copy strong{
+  display:block;
+  overflow:hidden;
+  color:#17365d;
+  font-size:clamp(11px,.96cqw,13.5px);
+  font-weight:1000;
+  line-height:1.35;
+  letter-spacing:-.025em;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+body.kvl1180-women-template #resources .kvl1180-source a{
+  display:inline-flex;
+  flex:0 0 auto;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  min-height:30px;
+  padding:0 11px;
+  border:1px solid #e4bfd0;
+  border-radius:999px;
+  background:#fff3f8;
+  color:#9a3d65;
+  font-size:10px;
+  font-weight:1000;
+  line-height:1;
+  text-decoration:none;
+  white-space:nowrap;
+}
+body.kvl1180-women-template #resources .kvl1180-source a:hover{border-color:#c65382;background:#ffeaf2;color:#8f2f59}
+body.kvl1180-women-template #resources .kvl1180-source a span{font-size:0}
+body.kvl1180-women-template #resources .kvl1180-source a span::before{content:"공식페이지";font-size:10px}
+body.kvl1180-women-template #resources .kvl1180-source a b{font-size:0;font-weight:1000}
+body.kvl1180-women-template #resources .kvl1180-source a b::before{content:"→";font-size:11px}
+
+/* Extra women-only blocks are intentionally hidden to preserve common-template parity. */
+body.kvl1180-women-template #resources .kvl1180-resource-archive,
+body.kvl1180-women-template #resources .kvl1180-resource-note{display:none!important}
+
 @media(max-width:680px){
-  body.kvl1180-women-template #resources .kvl1180-section-head{align-items:flex-start!important;flex-direction:column!important}
-  body.kvl1180-women-template #resources .kvl1180-resource-status{justify-content:flex-start;gap:5px}
-  body.kvl1180-women-template #resources .kvl1180-resource-status span{min-height:29px;padding:0 9px;font-size:9px}
+  body.kvl1180-women-template #resources .kvl1180-section-head{align-items:flex-end!important;flex-direction:row!important}
+  body.kvl1180-women-template #resources .kvl1180-section-head::after{max-width:48%;font-size:8.5px;white-space:normal}
   body.kvl1180-women-template #resources .kvl1180-sources{grid-template-columns:1fr;gap:8px}
-  body.kvl1180-women-template #resources .kvl1180-source{min-height:0;gap:13px;padding:13px 12px;border-radius:11px}
-  body.kvl1180-women-template #resources .kvl1180-source-tag{min-height:22px;font-size:8px}
-  body.kvl1180-women-template #resources .kvl1180-source-domain{font-size:8.5px}
-  body.kvl1180-women-template #resources .kvl1180-source-copy strong{font-size:13px}
-  body.kvl1180-women-template #resources .kvl1180-source-copy p{margin-top:5px;font-size:10px}
-  body.kvl1180-women-template #resources .kvl1180-source a{min-height:35px;font-size:10px}
-  body.kvl1180-women-template #resources .kvl1180-resource-archive{grid-template-columns:1fr;gap:9px;margin-top:12px;padding:12px 13px}
-  body.kvl1180-women-template #resources .kvl1180-resource-archive strong{font-size:12px}
-  body.kvl1180-women-template #resources .kvl1180-resource-archive p{font-size:9.5px}
-  body.kvl1180-women-template #resources .kvl1180-resource-archive span{justify-self:start;min-height:28px;font-size:9px}
+  body.kvl1180-women-template #resources .kvl1180-source{min-height:56px;padding:10px 11px;border-radius:10px}
+  body.kvl1180-women-template #resources .kvl1180-source-copy strong{font-size:11.5px}
+  body.kvl1180-women-template #resources .kvl1180-source a{min-height:29px;padding:0 9px}
+  body.kvl1180-women-template #resources .kvl1180-source a span::before{font-size:9px}
+  body.kvl1180-women-template #resources .kvl1180-source a b::before{font-size:10px}
 }
