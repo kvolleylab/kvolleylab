@@ -55,4 +55,10 @@ body.kvl1180-women-template #knockout .kvl1180-knockout-note b{color:#8f2f59!imp
 
 @media(max-width:680px){
   body.kvl1180-women-template #knockout .kvl1180-round-title{background:linear-gradient(90deg,#8f2f59,#c65382)!important}
+
+  /* Groups mobile parity: keep the small gray elimination pill, but remove the full result-cell fill to match men. */
+  body.kvl1180-prototype.kvl1180-women-template #groups .kvl-shared-combined-result.is-out{
+    background:transparent!important;
+    box-shadow:none!important;
+  }
 }
