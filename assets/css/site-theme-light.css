@@ -97,3 +97,38 @@ tr:hover td{background:#fffaf0!important}
 body.kvl1180-prototype .kvl1180-view[data-view="overview"] .kvl1180-roster{
   display:none!important;
 }
+
+/* Competition prototype qualification parity: LA28 cards show the confirmed champion just like World Cup cards show confirmed qualifiers. */
+body.kvl1180-prototype .kvl1180-stake.is-la{
+  padding-bottom:74px!important;
+}
+body.kvl1180-prototype .kvl1180-stake.is-la .kvl1180-stake-foot{
+  bottom:42px!important;
+}
+body.kvl1180-prototype .kvl1180-stake.is-la::before{
+  content:"대회 결과";
+  position:absolute;
+  left:clamp(13px,1.3vw,18px);
+  right:clamp(13px,1.3vw,18px);
+  bottom:11px;
+  padding-top:8px;
+  border-top:1px solid rgba(80,100,90,.12);
+  color:#17365d;
+  font-size:clamp(8px,.68vw,10px);
+  font-weight:900;
+  line-height:1.35;
+}
+body.kvl1180-prototype .kvl1180-stake.is-la::after{
+  content:"일본";
+  position:absolute;
+  right:clamp(13px,1.3vw,18px);
+  bottom:11px;
+  color:#176638;
+  font-size:clamp(8px,.68vw,10px);
+  font-weight:950;
+  line-height:1.35;
+}
+body.kvl1180-prototype.kvl1180-women-template .kvl1180-stake.is-la::after{
+  content:"태국";
+  color:#8f2f59;
+}
