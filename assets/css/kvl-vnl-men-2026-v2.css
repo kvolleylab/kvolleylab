@@ -1,0 +1,187 @@
+/* K-Volley Lab · 2026 VNL Men · V2 Purple prototype adapter */
+body.kvl-vnl-men-v2{
+  --vnl-purple:#5b3a8e;
+  --vnl-purple-dark:#442a70;
+  --vnl-purple-mid:#7658aa;
+  --vnl-purple-soft:#f3effa;
+  --vnl-line:#ded2ef;
+}
+body.kvl-vnl-men-v2 .kvl1180-hero{
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 84% 21%,rgba(197,172,236,.24) 0 10%,rgba(197,172,236,0) 32%),
+    linear-gradient(112deg,#35205a 0%,#51337f 54%,#7658aa 100%)!important;
+}
+body.kvl-vnl-men-v2 .kvl1180-hero::before{
+  content:"";position:absolute;z-index:0;right:-4%;bottom:-38px;width:47%;height:142px;
+  background:repeating-linear-gradient(0deg,transparent 0 19px,rgba(255,255,255,.09) 20px 21px),repeating-linear-gradient(90deg,transparent 0 29px,rgba(255,255,255,.07) 30px 31px);
+  border-top:2px solid rgba(255,255,255,.15);transform:rotate(-7deg) skewX(-7deg);opacity:.72;pointer-events:none;
+}
+body.kvl-vnl-men-v2 .kvl1180-hero::after{
+  content:"";position:absolute;z-index:0;top:24px;right:13%;width:122px;height:122px;border:2px solid rgba(255,255,255,.36);border-radius:50%;
+  background:radial-gradient(circle at 30% 24%,rgba(255,255,255,.43),transparent 20%),linear-gradient(145deg,#e9dcff,#9f83cc 55%,#60428e);
+  box-shadow:0 12px 28px rgba(32,18,56,.28);transform:rotate(16deg);opacity:.72;pointer-events:none;
+}
+body.kvl-vnl-men-v2 .kvl1180-hero-copy,body.kvl-vnl-men-v2 .kvl1180-hero-status{position:relative;z-index:2}
+body.kvl-vnl-men-v2 .kvl1180-gender .is-disabled{opacity:.48;cursor:not-allowed;pointer-events:none}
+
+body.kvl-vnl-men-v2 .vnlv2-overview-note{display:flex;gap:10px;align-items:flex-start;margin-top:16px;padding:14px 16px;border-left:4px solid var(--vnl-purple);border-radius:12px;background:var(--vnl-purple-soft);color:#5f536f;font-size:13px;line-height:1.55}
+body.kvl-vnl-men-v2 .vnlv2-overview-note strong{flex:0 0 auto;color:var(--vnl-purple-dark)}
+body.kvl-vnl-men-v2 .kvl1180-stake.is-la .kvl1180-stake-brand{color:#b8860b!important}
+body.kvl-vnl-men-v2 .kvl1180-stake.is-wc .kvl1180-stake-brand,
+body.kvl-vnl-men-v2 .kvl1180-stake.is-wr .kvl1180-stake-brand{color:var(--vnl-purple)!important}
+body.kvl-vnl-men-v2 .vnlv2-loading{padding:28px 14px;border:1px dashed var(--vnl-line);border-radius:12px;background:#faf8fd;color:#85779a;text-align:center;font-size:12px;font-weight:800}
+
+/* Calendar */
+body.kvl-vnl-men-v2 .vnlv2-calendar-wrap{display:grid;gap:16px;margin-top:4px}
+body.kvl-vnl-men-v2 .vnlv2-calendar-month{overflow:hidden;border:1px solid var(--vnl-line);border-radius:16px;background:#fff}
+body.kvl-vnl-men-v2 .vnlv2-calendar-title{padding:12px 16px;background:linear-gradient(90deg,var(--vnl-purple-dark),var(--vnl-purple));color:#fff;font-weight:950}
+body.kvl-vnl-men-v2 .vnlv2-calendar-week,body.kvl-vnl-men-v2 .vnlv2-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+body.kvl-vnl-men-v2 .vnlv2-calendar-week span{padding:8px 4px;border-bottom:1px solid var(--vnl-line);background:#f8f5fc;color:#69597d;text-align:center;font-size:10px;font-weight:900}
+body.kvl-vnl-men-v2 .vnlv2-day{min-width:0;min-height:108px;padding:7px;border-right:1px solid #eee8f6;border-bottom:1px solid #eee8f6;background:#fff}
+body.kvl-vnl-men-v2 .vnlv2-day:nth-child(7n){border-right:0}
+body.kvl-vnl-men-v2 .vnlv2-day.is-empty{background:#fbfafc}
+body.kvl-vnl-men-v2 .vnlv2-day.has-games{background:#fbf9fe}
+body.kvl-vnl-men-v2 .vnlv2-day-num{display:flex;align-items:center;justify-content:space-between;color:#655874;font-size:10px;font-weight:900}
+body.kvl-vnl-men-v2 .vnlv2-day-count{padding:2px 5px;border-radius:999px;background:#e9e0f5;color:var(--vnl-purple-dark);font-size:8px}
+body.kvl-vnl-men-v2 .vnlv2-cal-games{display:grid;gap:3px;margin-top:5px}
+body.kvl-vnl-men-v2 .vnlv2-cal-game{display:grid;grid-template-columns:35px minmax(0,1fr) auto;gap:4px;align-items:center;min-width:0;padding:3px 4px;border-radius:5px;background:#fff;color:#655874;font-size:8px;text-decoration:none}
+body.kvl-vnl-men-v2 .vnlv2-cal-game time{font-weight:900;color:var(--vnl-purple)}
+body.kvl-vnl-men-v2 .vnlv2-cal-game span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.kvl-vnl-men-v2 .vnlv2-cal-game b{color:#4b5563;font-size:8px}
+
+/* Schedule */
+body.kvl-vnl-men-v2 .vnlv2-schedule-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:20px 0 12px}
+body.kvl-vnl-men-v2 .vnlv2-stage-filters{display:flex;flex-wrap:wrap;gap:6px}
+body.kvl-vnl-men-v2 .vnlv2-stage-filters button{min-height:34px;padding:0 12px;border:1px solid var(--vnl-line);border-radius:999px;background:#fff;color:#6b5e79;font-size:11px;font-weight:900;cursor:pointer}
+body.kvl-vnl-men-v2 .vnlv2-stage-filters button.is-active,body.kvl-vnl-men-v2 .vnlv2-stage-filters button:hover{border-color:var(--vnl-purple);background:var(--vnl-purple-soft);color:var(--vnl-purple-dark)}
+body.kvl-vnl-men-v2 .vnlv2-schedule-summary{color:#7b6d8d;font-size:11px;font-weight:900;white-space:nowrap}
+body.kvl-vnl-men-v2 .vnlv2-date-group{margin-top:12px;border:1px solid var(--vnl-line);border-radius:14px;overflow:hidden;background:#fff}
+body.kvl-vnl-men-v2 .vnlv2-date-head{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;background:#f5f1fa;color:#5c4a72;font-size:11px;font-weight:900}
+body.kvl-vnl-men-v2 .vnlv2-match{display:grid;grid-template-columns:86px minmax(0,1fr) 165px;align-items:center;gap:10px;padding:10px 12px;border-top:1px solid #eee8f6}
+body.kvl-vnl-men-v2 .vnlv2-match:first-child{border-top:0}
+body.kvl-vnl-men-v2 .vnlv2-match-meta{display:grid;gap:3px;color:#7b6d8d;font-size:9px}
+body.kvl-vnl-men-v2 .vnlv2-match-meta strong{color:var(--vnl-purple-dark);font-size:11px}
+body.kvl-vnl-men-v2 .vnlv2-match-board{display:grid;grid-template-columns:minmax(0,1fr) 54px minmax(0,1fr);align-items:center;gap:8px}
+body.kvl-vnl-men-v2 .vnlv2-team{display:flex;align-items:center;gap:7px;min-width:0;color:#26354b;font-size:12px;font-weight:900}
+body.kvl-vnl-men-v2 .vnlv2-team.is-away{justify-content:flex-end;text-align:right}
+body.kvl-vnl-men-v2 .vnlv2-team.is-winner{color:var(--vnl-purple-dark)}
+body.kvl-vnl-men-v2 .vnlv2-flag{display:block;width:28px;height:20px;object-fit:cover;border:1px solid #e2dcea;border-radius:4px;background:#fff}
+body.kvl-vnl-men-v2 .vnlv2-score{text-align:center;color:#4b5563;font-size:17px;font-weight:1000}
+body.kvl-vnl-men-v2 .vnlv2-setline{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:4px;color:#7b6d8d;font-size:8px}
+body.kvl-vnl-men-v2 .vnlv2-setline span{padding:3px 5px;border:1px solid #e8e1f2;border-radius:5px;background:#faf8fd}
+
+/* Preliminary standings */
+body.kvl-vnl-men-v2 .vnlv2-rule{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;padding:12px 14px;border:1px solid var(--vnl-line);border-radius:12px;background:#f8f5fc;color:#675a76;font-size:11px}
+body.kvl-vnl-men-v2 .vnlv2-rule strong{color:var(--vnl-purple-dark)}
+body.kvl-vnl-men-v2 .vnlv2-standing-head,body.kvl-vnl-men-v2 .vnlv2-standing-row{display:grid;grid-template-columns:54px minmax(170px,1.2fr) minmax(360px,2.2fr) 105px;align-items:center;gap:8px}
+body.kvl-vnl-men-v2 .vnlv2-standing-head{padding:8px 10px;border-radius:9px;background:#4a2f75;color:#fff;font-size:9px;font-weight:900}
+body.kvl-vnl-men-v2 .vnlv2-standing-row{margin-top:5px;padding:9px 10px;border:1px solid #ece6f3;border-radius:10px;background:#fff}
+body.kvl-vnl-men-v2 .vnlv2-standing-row.is-qualified{border-color:#d6c8e9;background:#fbf9fe}
+body.kvl-vnl-men-v2 .vnlv2-standing-row.is-host{border-color:#c59d51;background:#fffaf0}
+body.kvl-vnl-men-v2 .vnlv2-standing-rank{text-align:center;color:#4f4160;font-size:13px;font-weight:1000}
+body.kvl-vnl-men-v2 .vnlv2-standing-team{display:flex;align-items:center;gap:8px;min-width:0}
+body.kvl-vnl-men-v2 .vnlv2-standing-team strong{color:#26354b;font-size:12px}
+body.kvl-vnl-men-v2 .vnlv2-standing-team small{display:block;margin-top:2px;color:#8a7d98;font-size:8px}
+body.kvl-vnl-men-v2 .vnlv2-standing-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+body.kvl-vnl-men-v2 .vnlv2-stat{text-align:center}
+body.kvl-vnl-men-v2 .vnlv2-stat b{display:block;color:#39465a;font-size:10px}
+body.kvl-vnl-men-v2 .vnlv2-stat small{display:block;margin-top:2px;color:#978ba3;font-size:7px}
+body.kvl-vnl-men-v2 .vnlv2-standing-result{text-align:right}
+body.kvl-vnl-men-v2 .vnlv2-badge{display:inline-flex;align-items:center;justify-content:center;min-height:25px;padding:0 8px;border-radius:999px;background:#ece5f5;color:var(--vnl-purple-dark);font-size:8px;font-weight:950;white-space:nowrap}
+body.kvl-vnl-men-v2 .vnlv2-badge.is-host{background:#fff0cc;color:#8a6200}
+body.kvl-vnl-men-v2 .vnlv2-badge.is-out{background:#f3f4f6;color:#6b7280}
+
+/* Final ranking + bracket */
+body.kvl-vnl-men-v2 .kvl1180-final-card{position:relative;padding-top:42px!important}
+body.kvl-vnl-men-v2 .kvl1180-final-card .vnlv2-final-flag{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:34px;height:24px;object-fit:cover;border:1px solid #e5deed;border-radius:4px;background:#fff}
+body.kvl-vnl-men-v2 .vnlv2-final-list-wrap{margin-top:18px;padding-top:16px;border-top:1px solid var(--vnl-line)}
+body.kvl-vnl-men-v2 .vnlv2-final-list-wrap h3{margin:0 0 10px;color:var(--vnl-purple-dark);font-size:15px}
+body.kvl-vnl-men-v2 #vnlV2FinalList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px}
+body.kvl-vnl-men-v2 .vnlv2-final-row{display:grid;grid-template-columns:28px 24px minmax(0,1fr);align-items:center;gap:7px;padding:7px 9px;border:1px solid #eee8f6;border-radius:8px;color:#4c4358;text-decoration:none;font-size:10px}
+body.kvl-vnl-men-v2 .vnlv2-final-row b{color:var(--vnl-purple-dark);text-align:center}
+body.kvl-vnl-men-v2 .vnlv2-final-row img{width:24px;height:17px;object-fit:cover;border-radius:3px}
+body.kvl-vnl-men-v2 .vnlv2-bracket{margin-top:22px;padding-top:18px;border-top:1px solid var(--vnl-line)}
+body.kvl-vnl-men-v2 .vnlv2-bracket-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-bottom:12px}
+body.kvl-vnl-men-v2 .vnlv2-bracket-head h3{margin:0;color:var(--vnl-purple-dark);font-size:17px}
+body.kvl-vnl-men-v2 .vnlv2-bracket-head p{margin:0;color:#8a7d98;font-size:10px}
+body.kvl-vnl-men-v2 .vnlv2-bracket-grid{display:grid;grid-template-columns:1.25fr 1fr .9fr;gap:18px;align-items:center}
+body.kvl-vnl-men-v2 .vnlv2-round{display:grid;gap:10px}
+body.kvl-vnl-men-v2 .vnlv2-round-title{padding:7px 9px;border-radius:7px;background:linear-gradient(90deg,var(--vnl-purple-dark),var(--vnl-purple));color:#fff;font-size:9px;font-weight:950;text-align:center}
+body.kvl-vnl-men-v2 .vnlv2-final-match{overflow:hidden;border:1px solid #e7e0f0;border-radius:10px;background:#fff;box-shadow:0 4px 12px rgba(65,42,101,.05)}
+body.kvl-vnl-men-v2 .vnlv2-final-match small{display:block;padding:5px 8px;background:#f8f5fc;color:#877998;font-size:8px;text-align:center}
+body.kvl-vnl-men-v2 .vnlv2-final-side{display:grid;grid-template-columns:25px minmax(0,1fr) 22px;align-items:center;gap:6px;padding:7px 8px;border-top:1px solid #f0ebf5;color:#4b4158;font-size:10px}
+body.kvl-vnl-men-v2 .vnlv2-final-side.is-winner{background:#f3effa;color:var(--vnl-purple-dark);font-weight:950}
+body.kvl-vnl-men-v2 .vnlv2-final-side img{width:25px;height:17px;object-fit:cover;border-radius:3px}
+body.kvl-vnl-men-v2 .vnlv2-final-side b{text-align:right;color:#4b5563;font-size:12px}
+body.kvl-vnl-men-v2 .vnlv2-bronze-block{margin-top:14px;max-width:420px}
+
+/* Participants */
+body.kvl-vnl-men-v2 #vnlV2Countries{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+body.kvl-vnl-men-v2 .vnlv2-country{display:flex;align-items:center;gap:10px;min-width:0;padding:13px;border:1px solid #e9e3f0;border-radius:12px;background:#fff;color:#314159;text-decoration:none;transition:.16s ease}
+body.kvl-vnl-men-v2 .vnlv2-country:hover,body.kvl-vnl-men-v2 .vnlv2-country:focus-visible{border-color:var(--vnl-purple);background:#f8f5fc;transform:translateY(-2px);outline:none}
+body.kvl-vnl-men-v2 .vnlv2-country img{width:36px;height:25px;object-fit:cover;border:1px solid #e6dfec;border-radius:4px}
+body.kvl-vnl-men-v2 .vnlv2-country strong{display:block;font-size:11px}
+body.kvl-vnl-men-v2 .vnlv2-country small{display:block;margin-top:2px;color:#91849d;font-size:8px}
+body.kvl-vnl-men-v2 .vnlv2-roster-note{margin-top:12px;padding:11px 13px;border-radius:10px;background:#f7f5fa;color:#7c7089;font-size:10px;line-height:1.5}
+body.kvl-vnl-men-v2 .vnlv2-proto-note{margin:20px 0 0;color:#8c8296;font-size:10px;text-align:center}
+
+@media(max-width:680px){
+  body.kvl-vnl-men-v2 .kvl1180-hero::after{top:64px;right:-18px;width:84px;height:84px;opacity:.28;box-shadow:none}
+  body.kvl-vnl-men-v2 .kvl1180-hero::before{right:-12%;bottom:-34px;width:52%;height:102px;opacity:.32}
+  body.kvl-vnl-men-v2 .vnlv2-overview-note{display:block;padding:11px 12px;font-size:10px}
+  body.kvl-vnl-men-v2 .vnlv2-overview-note strong{display:block;margin-bottom:4px}
+  body.kvl-vnl-men-v2 .vnlv2-calendar-wrap{gap:10px}
+  body.kvl-vnl-men-v2 .vnlv2-calendar-title{padding:9px 11px;font-size:11px}
+  body.kvl-vnl-men-v2 .vnlv2-calendar-week span{padding:6px 2px;font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-day{min-height:58px;padding:4px 3px}
+  body.kvl-vnl-men-v2 .vnlv2-day-num{font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-day-count{padding:1px 3px;font-size:6px}
+  body.kvl-vnl-men-v2 .vnlv2-cal-games{display:none}
+  body.kvl-vnl-men-v2 .vnlv2-schedule-toolbar{display:block;margin:14px 0 9px}
+  body.kvl-vnl-men-v2 .vnlv2-stage-filters{gap:4px}
+  body.kvl-vnl-men-v2 .vnlv2-stage-filters button{min-height:29px;padding:0 8px;font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-schedule-summary{margin-top:8px;font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-date-group{border-radius:10px}
+  body.kvl-vnl-men-v2 .vnlv2-date-head{padding:7px 9px;font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-match{grid-template-columns:52px minmax(0,1fr);gap:7px;padding:8px}
+  body.kvl-vnl-men-v2 .vnlv2-match-meta{font-size:7px}
+  body.kvl-vnl-men-v2 .vnlv2-match-meta strong{font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-match-board{grid-template-columns:minmax(0,1fr) 35px minmax(0,1fr);gap:4px}
+  body.kvl-vnl-men-v2 .vnlv2-team{gap:4px;font-size:8px;line-height:1.2}
+  body.kvl-vnl-men-v2 .vnlv2-flag{width:21px;height:14px;border-radius:2px}
+  body.kvl-vnl-men-v2 .vnlv2-score{font-size:11px}
+  body.kvl-vnl-men-v2 .vnlv2-setline{grid-column:1/-1;justify-content:flex-start;padding-left:59px;font-size:6px}
+  body.kvl-vnl-men-v2 .vnlv2-setline span{padding:2px 3px}
+  body.kvl-vnl-men-v2 .vnlv2-rule{display:block;padding:9px 10px;font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-rule strong{display:block;margin-bottom:3px}
+  body.kvl-vnl-men-v2 .vnlv2-standing-head{display:none}
+  body.kvl-vnl-men-v2 .vnlv2-standing-row{grid-template-columns:34px minmax(0,1fr) auto;gap:5px;padding:8px}
+  body.kvl-vnl-men-v2 .vnlv2-standing-rank{font-size:10px}
+  body.kvl-vnl-men-v2 .vnlv2-standing-team{gap:6px}
+  body.kvl-vnl-men-v2 .vnlv2-standing-team .vnlv2-flag{width:24px;height:16px}
+  body.kvl-vnl-men-v2 .vnlv2-standing-team strong{font-size:9px}
+  body.kvl-vnl-men-v2 .vnlv2-standing-team small{font-size:6px}
+  body.kvl-vnl-men-v2 .vnlv2-standing-stats{grid-column:1/-1;grid-template-columns:repeat(6,1fr);padding-top:5px;border-top:1px solid #f0ebf5}
+  body.kvl-vnl-men-v2 .vnlv2-stat b{font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-stat small{font-size:5.5px}
+  body.kvl-vnl-men-v2 .vnlv2-badge{min-height:20px;padding:0 6px;font-size:6.5px}
+  body.kvl-vnl-men-v2 .kvl1180-final-card{padding-top:34px!important}
+  body.kvl-vnl-men-v2 .kvl1180-final-card .vnlv2-final-flag{top:7px;width:27px;height:18px}
+  body.kvl-vnl-men-v2 #vnlV2FinalList{grid-template-columns:1fr;gap:4px}
+  body.kvl-vnl-men-v2 .vnlv2-final-row{padding:6px 7px;font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-bracket-head{display:block}
+  body.kvl-vnl-men-v2 .vnlv2-bracket-head h3{font-size:13px}
+  body.kvl-vnl-men-v2 .vnlv2-bracket-head p{margin-top:3px;font-size:7px}
+  body.kvl-vnl-men-v2 .vnlv2-bracket-grid{grid-template-columns:1fr;gap:12px;align-items:stretch}
+  body.kvl-vnl-men-v2 .vnlv2-round{gap:7px}
+  body.kvl-vnl-men-v2 .vnlv2-final-side{grid-template-columns:21px minmax(0,1fr) 18px;padding:6px 7px;font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-final-side img{width:21px;height:14px}
+  body.kvl-vnl-men-v2 .vnlv2-bronze-block{max-width:none}
+  body.kvl-vnl-men-v2 #vnlV2Countries{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  body.kvl-vnl-men-v2 .vnlv2-country{gap:6px;padding:8px;border-radius:9px}
+  body.kvl-vnl-men-v2 .vnlv2-country img{width:27px;height:18px}
+  body.kvl-vnl-men-v2 .vnlv2-country strong{font-size:8px}
+  body.kvl-vnl-men-v2 .vnlv2-country small{font-size:6px}
+  body.kvl-vnl-men-v2 .vnlv2-roster-note{font-size:8px}
+}
