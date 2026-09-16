@@ -262,6 +262,8 @@ async function init(){
     normalized.rosters={};
     normalized.clubSeasonLabel='26-27 소속팀';
     normalized.rosterNote='등번호 오름차순 · 공식 확정된 26-27 소속팀만 공개';
+    normalized.rosterSourceNote='K-Volley Lab 선수명단 MASTER 공개 필드 + 검증된 Volleybox 프로필. 26-27 소속팀은 CONFIRMED/FA만 팀명 공개하며, 공식확인된 소속팀은 리그 국가와 리그명을 국기와 함께 표시합니다. 보도 단계(REPORTED)와 미확인(UNKNOWN)은 ‘미확인’으로 표시합니다. 내부 관찰·연봉 정보는 노출하지 않습니다.';
+    normalized.rosterPrintNote='※ 소속팀은 공식확정/FA만 공개하며 미확인·보도 단계는 ‘미확인’으로 표기';
     normalized.rosterPendingLabel='등록 선수명단은 공식 자료 검수 후 연결합니다.';
     if(gender==='men'){
       const urls=['a','b','c'].map(g=>`data/competitions/avc-men-continental-2026-rosters-${g}.json`);
@@ -273,7 +275,7 @@ async function init(){
           const c=clubs[r.code]?.[String(p.number)],allowed=c?.status==='CONFIRMED';
           const country=COUNTRY_INFO[c?.leagueCountry];
           const vbUrl=vb[r.code]?.[String(p.number)]||'';
-          return {number:p.number,name:p.koreanName,en:p.officialName||p.fullName,position:p.position,dob:p.birthDate,heightCm:p.heightCm,playerId:p.playerId||p.player_id||'',volleybox:/^https:\/\/(?:[a-z]+\.)?volleybox\.net\//i.test(vbUrl)?vbUrl:'',club:{name:allowed?c.club:c?.status==='FREE_AGENT'?'FA / 무소속':'미확인',country:allowed?(country?.ko||c.leagueCountry||''):'',flag:allowed&&country?.flag?`https://flagcdn.com/w40/${country.flag}.png`:'',league:allowed?c.leagueName||'':''}};
+          return {number:p.number,name:p.koreanName,en:p.officialName||p.fullName,position:p.position,dob:p.birthDate,heightCm:p.heightCm,playerId:p.playerId||p.player_id||'',volleybox:/^https:\/\/(?:[a-z]+\.)?volleybox\.net\//i.test(vbUrl)?vbUrl:'',club:{confirmed:allowed,name:allowed?c.club:c?.status==='FREE_AGENT'?'FA / 무소속':'미확인',country:allowed?(country?.ko||c.leagueCountry||''):'',flag:allowed&&country?.flag?`https://flagcdn.com/w40/${country.flag}.png`:'',league:allowed?c.leagueName||'':''}};
         })};
       }
     }

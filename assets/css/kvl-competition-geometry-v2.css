@@ -543,9 +543,9 @@ html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero::after{
 .kvl1180-final-copy small{display:none}
 .kvl1180-final-copy::after{display:block;margin-top:5px;color:#4f6257;font-size:clamp(11.5px,1.03cqw,13.5px);font-weight:900;line-height:1.42;white-space:pre-line;word-break:keep-all}
 .kvl1180-final-card:nth-child(1) .kvl1180-final-copy::after{content:none;color:#7a5d16}
-.kvl1180-final-card:nth-child(2) .kvl1180-final-copy::after{content:"준우승\A2027 FIVB 세계선수권 진출"}
-.kvl1180-final-card:nth-child(3) .kvl1180-final-copy::after{content:"3위\A2027 FIVB 세계선수권 진출"}
-.kvl1180-final-card:nth-child(4) .kvl1180-final-copy::after{content:"4위"}
+.kvl1180-final-card:nth-child(2) .kvl1180-final-copy::after{content:none}
+.kvl1180-final-card:nth-child(3) .kvl1180-final-copy::after{content:none}
+.kvl1180-final-card:nth-child(4) .kvl1180-final-copy::after{content:none}
 
 .kvl1180-round-title{font-size:clamp(14.5px,1.25cqw,16px)}
 .kvl1180-match-head{min-height:40px;font-size:clamp(11.5px,1.02cqw,13px)}
@@ -613,12 +613,12 @@ html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero::after{
 .kvl1180-final-copy small{display:block!important;margin:clamp(7px,.65vw,9px) 0 0!important;color:#55685d;font-size:0!important;font-weight:950!important;line-height:1.4!important;white-space:normal!important;word-break:keep-all}
 .kvl1180-final-copy small::before,.kvl1180-final-copy small::after{display:block;font-size:clamp(13.5px,1.22cqw,15.5px);font-weight:950;line-height:1.42}
 .kvl1180-final-card:nth-child(1) .kvl1180-final-copy small::before{content:none;color:#9b6a00}
-.kvl1180-final-card:nth-child(1) .kvl1180-final-copy small::after{content:"2027 FIVB 월드컵 진출";margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
-.kvl1180-final-card:nth-child(2) .kvl1180-final-copy small::before{content:"준우승"}
-.kvl1180-final-card:nth-child(2) .kvl1180-final-copy small::after{content:"2027 FIVB 월드컵 진출";margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
-.kvl1180-final-card:nth-child(3) .kvl1180-final-copy small::before{content:"3위"}
-.kvl1180-final-card:nth-child(3) .kvl1180-final-copy small::after{content:"2027 FIVB 월드컵 진출";margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
-.kvl1180-final-card:nth-child(4) .kvl1180-final-copy small::before{content:"4위"}
+.kvl1180-final-card:nth-child(1) .kvl1180-final-copy small::after{content:none;margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
+.kvl1180-final-card:nth-child(2) .kvl1180-final-copy small::before{content:none}
+.kvl1180-final-card:nth-child(2) .kvl1180-final-copy small::after{content:none;margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
+.kvl1180-final-card:nth-child(3) .kvl1180-final-copy small::before{content:none}
+.kvl1180-final-card:nth-child(3) .kvl1180-final-copy small::after{content:none;margin-top:2px;color:#247244;font-size:clamp(12.5px,1.12cqw,14px)}
+.kvl1180-final-card:nth-child(4) .kvl1180-final-copy small::before{content:none}
 .kvl1180-final-card:nth-child(4) .kvl1180-final-copy small::after{content:none}
 
 /* Keep every PC final-ranking card on the same vertical rhythm even when the result copy has fewer lines. */
