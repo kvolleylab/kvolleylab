@@ -17,7 +17,9 @@ function side(raw,participantMap){
 }
 function resultFrom(raw,scoreMap){
   const detail=scoreMap.get(raw.match_id);
-  const h=Number(detail?.home_sets??raw.score?.home_sets),a=Number(detail?.away_sets??raw.score?.away_sets);
+  const hv=detail?.home_sets??raw.score?.home_sets,av=detail?.away_sets??raw.score?.away_sets;
+  if(hv==null||av==null||hv===''||av==='')return null;
+  const h=Number(hv),a=Number(av);
   if(!Number.isFinite(h)||!Number.isFinite(a))return null;
   return {home:h,away:a,sets:(detail?.sets||[]).map(s=>({home:Number(s.home??s[0]),away:Number(s.away??s[1])}))};
 }
@@ -25,6 +27,7 @@ function normalizeMatch(raw,participantMap,scoreMap){
   const rr=raw.stage==='finals'?(ROUND[raw.round]||{stage:'파이널',round:''}):{stage:'예선',round:''};
   return {
     id:raw.match_id,
+    localTimeLabel:raw.time_local?`${raw.date_local||''} 현지 ${raw.time_local}`:'',
     date:raw.date_kst,
     time:raw.time_kst,
     stage:rr.stage,
@@ -60,7 +63,7 @@ async function init(){
   try{
     const [participantsRaw,prelimRaw,standingsRaw,finalsRaw,scoresRaw,finalRaw]=await Promise.all([
       fetch('data/competition/vnl-2026-men-participants.json',{cache:'no-store'}).then(r=>r.json()),
-      fetch('data/matches/vnl-2026-men.json',{cache:'no-store'}).then(r=>r.json()),
+      fetch('data/validation/vnl-2026-men-preliminary-master-v2.json',{cache:'no-store'}).then(r=>r.json()),
       fetch('data/standings/vnl-2026-men.json',{cache:'no-store'}).then(r=>r.json()),
       fetch('data/matches/vnl-2026-finals.json',{cache:'no-store'}).then(r=>r.json()),
       fetch('data/results/vnl-2026-men-set-scores.json',{cache:'no-store'}).then(r=>r.json()),
@@ -98,11 +101,11 @@ async function init(){
       groupCount:108,
       matchCount:116,
       knockoutTeamCount:8,
-      champion:'폴란드',
+      champion:champ?.name||'',
       championAchievement:'VNL 2026 챔피언',
       scheduleNote:'MASTER 기준 한국시간(KST) · 예선 108경기 + 파이널 8경기',
       standingsNote:'108경기 종료 · 상위 7개국 + 개최국 중국 파이널 진출',
-      genderLinks:{men:'international-competition-vnl-men-2026-v2-prototype.html?view=overview'},
+      genderLinks:{men:location.pathname+'?view=overview'},
       structure:{
         labels:{groupsTab:'예선순위',groupsKpi:'예선 경기',groupsKpiUnit:'경기',knockoutKpi:'파이널 진출',standingsTitle:'예선순위',standingsEyebrow:'PRELIMINARY STANDINGS'},
         calendar:true,
@@ -129,6 +132,8 @@ async function init(){
         {title:'Volleyball World · FIVB 남자 세계랭킹',url:'https://en.volleyballworld.com/volleyball/world-ranking/men'}
       ]
     };
+    normalized.standingsRule='상위 7개국 + 개최국 중국 파이널 진출 · 승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률';
+    normalized.hero=base.hero||{};
     window.KVL_COMPETITION_V2_DATA=normalized;
     if(window.KVLCompetitionTemplateV2)window.KVLCompetitionTemplateV2.apply();
     if(window.KVLCompetitionComponentsV2)window.KVLCompetitionComponentsV2.render(normalized);

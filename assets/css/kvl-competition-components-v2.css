@@ -2,9 +2,6 @@
  * Visual source of truth: the user-validated AVC men/women production pages.
  * Geometry is inherited from those frozen files. This layer only adapts theme for non-AVC competitions.
  */
-@import url("./kvl-avc-men-mobile-parity-v1.css?v=20260916-v2-baseline");
-@import url("./kvl-avc-women-template-v1.css?v=20260916-v2-baseline");
-@import url("./kvl-avc-women-knockout-v1.css?v=20260916-v2-baseline");
 
 /* Common non-layout behavior. */
 body.kvl-competition-template-v2 .kvl1180-gender .is-disabled{opacity:.46;pointer-events:none}
@@ -85,9 +82,27 @@ body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="av
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #rosters .kvl1180-participant-status strong{color:var(--kvl-theme-primary)!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #resources .kvl1180-source a{background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important}
 
-/* Remove AVC-only generated text when another competition family reuses the geometry. */
-body.kvl-competition-template-v2:not([data-kvl-family="avc"]) #knockout .kvl1180-final-card:first-child .kvl1180-final-copy small::after{content:none!important;display:none!important}
-body.kvl-competition-template-v2:not([data-kvl-family="avc"]) #knockout .kvl1180-final-card:first-child .kvl1180-final-copy small{font-size:8px!important}
-body.kvl-competition-template-v2:not([data-kvl-family="avc"]) #groups .kvl1180-combined-row.is-qualified>span:last-child::after{content:none!important;display:none!important}
-body.kvl-competition-template-v2 [data-kvl-component="calendar"]{display:grid;gap:clamp(14px,1.25vw,18px)}
-@media(max-width:680px){body.kvl-competition-template-v2 [data-kvl-component="calendar"]{gap:10px}}
+
+/* Data-driven hero; palette only. Desktop/mobile assets are independent variables. */
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{
+ background-image:linear-gradient(90deg,rgba(var(--kvl-theme-overlay-rgb),.82),rgba(var(--kvl-theme-overlay-rgb),.55) 43%,rgba(var(--kvl-theme-overlay-rgb),.14) 72%),var(--kvl-hero-image-desktop,none)!important;
+ background-position:var(--kvl-hero-position,center center)!important;background-size:cover!important;
+}
+html body.kvl-competition-template-v2 .kvl1180-hero::before,html body.kvl-competition-template-v2 .kvl1180-hero::after{content:none!important}
+html body.kvl-competition-template-v2 .kvl1180-team-score{color:#4b5563!important}
+body.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]{text-decoration:none;color:inherit}
+body.kvl-competition-template-v2 .kvl1180-overview-result{line-height:1.22!important}
+body.kvl-competition-template-v2 .kvl1180-overview-result strong{line-height:18px!important}
+body.kvl-competition-template-v2 .kvl1180-overview-result span{line-height:16px!important}
+body.kvl-competition-template-v2 .kvl1180-participant-button[aria-current="true"]{box-shadow:inset 0 0 0 2px var(--kvl-theme-primary)!important}
+body.kvl-competition-template-v2 [data-kvl-component="calendar"]{display:grid;gap:18px}
+body.kvl-competition-template-v2 .kvl1180-final-card:first-child .kvl1180-final-copy small::after{content:none!important}
+body.kvl-competition-template-v2 .kvl1180-roster-club::before{content:attr(data-season-label)!important}
+@media(max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{background-image:linear-gradient(105deg,rgba(var(--kvl-theme-overlay-rgb),.9),rgba(var(--kvl-theme-overlay-rgb),.6) 68%,rgba(var(--kvl-theme-overlay-rgb),.3)),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important}
+ body.kvl-competition-template-v2 [data-kvl-component="calendar"]{gap:10px}
+ body.kvl-competition-template-v2 #knockout .kvl1180-final-card:first-child .kvl1180-final-copy small{font-size:8px!important}
+ body.kvl-competition-template-v2 .kvl1180-hero h1{white-space:normal!important;overflow-wrap:anywhere}
+ body.kvl-competition-template-v2 .kvl1180-hero-location>span{white-space:normal!important;overflow-wrap:anywhere}
+ body.kvl-competition-template-v2 .kvl1180-kpi.is-venue .kvl1180-kpi-copy strong,body.kvl-competition-template-v2 .kvl1180-kpi.is-venue .kvl1180-kpi-copy small{white-space:normal!important;overflow-wrap:anywhere}
+}

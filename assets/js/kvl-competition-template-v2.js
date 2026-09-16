@@ -22,18 +22,6 @@ function applyView(){
   });
 }
 
-function bindKpis(){
-  qa('.kvl1180-view[data-view="overview"] .kvl1180-kpis .kvl1180-kpi:not(.is-venue)').forEach((card,i)=>{
-    const target=KPI_TARGETS[i]; if(!target)return;
-    card.dataset.kvlTarget=target; card.tabIndex=0; card.setAttribute('role','link');
-    const label=q('.kvl1180-kpi-copy>span',card)?.textContent?.trim()||'대회 정보';
-    card.setAttribute('aria-label',`${label} 페이지로 이동`);
-    if(card.dataset.kvlBound==='1')return; card.dataset.kvlBound='1';
-    const go=()=>{location.href=target;};
-    card.addEventListener('click',go);
-    card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
-  });
-}
 
 function applyTheme(d){
   const body=document.body;
@@ -42,19 +30,17 @@ function applyTheme(d){
   const family=THEME_FAMILIES.has(requestedFamily)?requestedFamily:'avc';
   body.dataset.kvlGender=gender;
   body.dataset.kvlFamily=family;
-  const pc=d.hero?.pcImage; const mobile=d.hero?.mobileImage;
-  if(pc)body.style.setProperty('--kvl-hero-image',`url("${pc}")`);
-  if(d.hero?.position)body.style.setProperty('--kvl-hero-position',d.hero.position);
-  if(d.hero?.mobilePosition)body.style.setProperty('--kvl-hero-position-mobile',d.hero.mobilePosition);
-  if(mobile){
-    let style=q('#kvl-v2-mobile-hero');
-    if(!style){style=document.createElement('style');style.id='kvl-v2-mobile-hero';document.head.appendChild(style);}
-    style.textContent=`@media(max-width:680px){body.kvl-competition-template-v2{--kvl-hero-image:url("${mobile}")}}`;
+  const asset=v=>{try{const u=new URL(v,location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}};
+  for(const [key,value] of [['--kvl-hero-image-desktop',d.hero?.pcImage],['--kvl-hero-image-mobile',d.hero?.mobileImage]]){
+    const url=value&&asset(value);if(url)body.style.setProperty(key,`url(${JSON.stringify(url)})`);else body.style.removeProperty(key);
+  }
+  for(const [key,value] of [['--kvl-hero-position',d.hero?.position],['--kvl-hero-position-mobile',d.hero?.mobilePosition]]){
+    if(value)body.style.setProperty(key,value);else body.style.removeProperty(key);
   }
 }
 
 function applyMeta(d){
-  txt(q('[data-kvl="eyebrow"]'),`INTERNATIONAL COMPETITION · ${(d.gender||'men').toUpperCase()}`);
+  txt(q('[data-kvl="eyebrow"]'),`${d.competitionFamily==='domestic'?'DOMESTIC':'INTERNATIONAL'} COMPETITION · ${(d.gender||'men').toUpperCase()}`);
   txt(q('[data-kvl="title"]'),d.displayName);
   txt(q('[data-kvl="official-name"]'),d.officialName);
   txt(q('[data-kvl="dates"]'),d.dateLabel);
@@ -64,13 +50,16 @@ function applyMeta(d){
   txt(q('[data-kvl="group-count"]'),d.groupCount ?? '미정');
   txt(q('[data-kvl="match-count"]'),d.matchCount ?? '미정');
   txt(q('[data-kvl="qualifier-count"]'),d.knockoutTeamCount ?? '미정');
-  txt(q('[data-kvl="venue-primary"]'),d.locationLabel||'미정');
-  txt(q('[data-kvl="venue-secondary"]'),d.venueLabel||'확정 전');
+  txt(q('[data-kvl="venue-primary"]'),d.venuePrimary||d.locationLabel||'미정');
+  txt(q('[data-kvl="venue-secondary"]'),d.venueSecondary||d.venueLabel||'확정 전');
   const teamBadge=q('[data-kvl="hero-team-count"]'); if(teamBadge)txt(teamBadge,d.teamCount?`${d.teamCount}개국`:'참가국 확정 전');
   const links=d.genderLinks||{};
   const men=q('[data-gender-link="men"]'), women=q('[data-gender-link="women"]');
-  if(men&&links.men)men.href=links.men;
-  if(women&&links.women)women.href=links.women;
+  for(const [a,target] of [[men,links.men],[women,links.women]]){
+    if(!a)continue;
+    if(target){const u=new URL(target,location.href);u.searchParams.set('view',currentView());a.href=u.href;a.removeAttribute('aria-disabled');a.classList.remove('is-disabled');}
+    else{a.removeAttribute('href');a.setAttribute('aria-disabled','true');a.classList.add('is-disabled');}
+  }
   if(men)men.classList.toggle('is-active',d.gender!=='women');
   if(women)women.classList.toggle('is-active',d.gender==='women');
 }
@@ -88,7 +77,7 @@ function applyStatus(d){
     if(d.championAchievement){const span=document.createElement('span');span.textContent=d.championAchievement;result.appendChild(span);}
   }else{
     const strong=document.createElement('strong');
-    strong.textContent=status==='active'?(d.activeOverviewNote||'조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.'):(d.upcomingOverviewNote||'대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.');
+    strong.textContent=status==='completed'?'대회 종료 · 최종 결과 확인 중':status==='active'?(d.activeOverviewNote||'조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.'):(d.upcomingOverviewNote||'대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.');
     result.appendChild(strong);
   }
 }
@@ -126,16 +115,17 @@ function applyResources(d){
   const root=q('#resourceList'); if(!root)return;
   root.innerHTML='';
   (d.resources||[]).forEach(item=>{
+    let url;try{url=new URL(item.url,location.href);if(!['http:','https:'].includes(url.protocol))return;}catch{return;}
     const article=document.createElement('article'); article.className='kvl1180-source';
     const copy=document.createElement('div'); copy.className='kvl1180-source-copy';
     const strong=document.createElement('strong'); strong.textContent=item.title||'공식자료'; copy.appendChild(strong);
-    const a=document.createElement('a'); a.href=item.url||'#'; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent='공식페이지 →';
+    const a=document.createElement('a'); a.href=url.href; a.target='_blank'; a.rel='noopener noreferrer'; a.textContent='공식페이지 →';
     article.append(copy,a); root.appendChild(article);
   });
 }
 
-function apply(){const d=data();applyView();bindKpis();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
+function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
 window.addEventListener('popstate',apply);
-window.KVLCompetitionTemplateV2={apply};
+window.KVLCompetitionTemplateV2={apply,applyView};
 })();

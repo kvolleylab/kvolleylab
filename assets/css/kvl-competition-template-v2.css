@@ -3,7 +3,7 @@
  * Competition-specific data, winner names, qualification teams and URLs MUST NOT be hardcoded here.
  * Theme priority: WOMEN always Rose. MEN uses competition family: AVC Green / FIVB Purple / Domestic Navy.
  */
-@import url("./kvl-pc-avc-hybrid-1180-prototype-v1.css?v=20260915-v2-base");
+@import url("./kvl-competition-geometry-v2.css?v=rebuild-1");
 
 body.kvl1180-prototype.kvl-competition-template-v2{
   --kvl-theme-primary:#176638;
@@ -16,7 +16,8 @@ body.kvl1180-prototype.kvl-competition-template-v2{
   --kvl-theme-overlay-rgb:7,25,20;
   --kvl-special-gold:#b8860b;
   --kvl-score:#4b5563;
-  overflow-x:hidden;
+  --kvl-theme-dark:#07512f;
+  --kvl-theme-accent:#11884a;
 }
 
 /* MEN · AVC / default international fallback = Green. */
@@ -37,7 +38,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]{
 
 /* MEN · FIVB = Purple. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="fivb"]{
-  --kvl-theme-primary:#5b3a8e;
+  --kvl-theme-dark:#442a70;--kvl-theme-accent:#7658aa;--kvl-theme-primary:#5b3a8e;
   --kvl-theme-strong:#442a70;
   --kvl-theme-soft:#f3effa;
   --kvl-theme-border:#cdbce7;
@@ -53,7 +54,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-k
 
 /* MEN · Domestic = Navy. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="domestic"]{
-  --kvl-theme-primary:#163a5f;
+  --kvl-theme-dark:#102c49;--kvl-theme-accent:#2f7d9e;--kvl-theme-primary:#163a5f;
   --kvl-theme-strong:#102c49;
   --kvl-theme-soft:#eef4f8;
   --kvl-theme-border:#a9c0d4;
@@ -69,7 +70,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-k
 
 /* WOMEN always wins over competition-family color and stays Rose. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]{
-  --kvl-theme-primary:#8e315e;
+  --kvl-theme-dark:#6f234a;--kvl-theme-accent:#a53d68;--kvl-theme-primary:#8e315e;
   --kvl-theme-strong:#a53d68;
   --kvl-theme-soft:#fff1f6;
   --kvl-theme-border:#e7a8c2;

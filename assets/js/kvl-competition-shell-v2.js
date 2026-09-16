@@ -56,7 +56,7 @@ function ensureShell(){
 
   <section class="kvl1180-card kvl1180-stakes-card kvl1180-view" data-view="overview" data-kvl-section="qualifications">
     <div class="kvl1180-section-head"><div><p class="label" data-kvl="meaning-eyebrow">ROAD TO THE WORLD</p><h2 data-kvl="meaning-title">대회 의미 · 국제 진출권</h2></div><p data-kvl="meaning-note">대회별 공식 규정과 확정 결과만 표시합니다.</p></div>
-    <div class="kvl1180-stakes-grid" data-kvl-component="qualifications"></div>
+    <div class="kvl1180-stakes-grid" data-kvl-component="qualifications"></div><div data-kvl-component="focus"></div>
   </section>
 
   <section class="kvl1180-card kvl1180-view" data-view="overview" data-kvl-section="calendar">
@@ -66,7 +66,7 @@ function ensureShell(){
 
   <section class="kvl1180-card kvl1180-schedule-card kvl1180-view" id="schedule" data-view="schedule" hidden>
     <div class="kvl1180-section-head"><div><p class="label">MATCH SCHEDULE &amp; RESULTS</p><h2>경기일정</h2></div><p data-kvl="schedule-note">한국시간(KST)</p></div>
-    <div class="kvl1180-schedule-toolbar"><div class="kvl1180-stage-filters" data-kvl-component="schedule-filters"></div></div>
+    <div class="kvl1180-schedule-toolbar"><div class="kvl1180-stage-filters" data-kvl-component="schedule-filters"></div><div class="kvl1180-pool-filter" data-kvl-component="pool-filter" hidden></div></div>
     <div class="kvl1180-schedule-summary" data-kvl-component="schedule-summary"><strong>전체</strong><span>경기 데이터를 불러오는 중입니다.</span></div>
     <div class="kvl1180-schedule-list" data-kvl-component="schedule-list"><div class="kvl1180-schedule-empty">경기일정을 불러오는 중입니다.</div></div>
   </section>

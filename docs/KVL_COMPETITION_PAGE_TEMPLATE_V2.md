@@ -217,3 +217,8 @@ V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공�
 - 2026-09-15 사용자 육안검수: PC 1180 + 모바일 390/360 기준 문제 없음 확인.
 - 테마 우선순위: 여자부 전체 Rose, 남자부 AVC Green / FIVB Purple / 국내 Navy로 확정.
 - V2는 남녀부에서 공통 검증된 요소만 승격하며 특정 대회 임시 복구코드는 제외한다.
+
+
+## 2026-09-16 rebuild validation notice
+
+Current status: **REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN**. See `docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md`. Production men and women have measured geometry differences. The extracted common geometry is provisionally the male production baseline, with palette-only themes; this is not a claim of exact reproduction of both source pages. The shared engine adds the missing roster and focus sections, corrects VNL validation to 108+8 matches using the canonical MASTER IDs, and provides `validation-competition-v2-rebuild.html` for 1180/390/360 comparisons. Production promotion remains prohibited until explicitly requested.

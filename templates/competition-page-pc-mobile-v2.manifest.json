@@ -1,6 +1,6 @@
 {
   "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V2",
-  "status": "AVC_PRODUCTION_VISUAL_BASELINE_PORTED_PENDING_CROSS_VALIDATION",
+  "status": "REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN",
   "createdAtKst": "2026-09-15",
   "engineRefactorAtKst": "2026-09-16",
   "visualBaselinePortAtKst": "2026-09-16",
@@ -31,38 +31,129 @@
     "themePolicy": "docs/KVL_COMPETITION_THEME_POLICY_V1.md",
     "stateSmokeTest": "tests/competition-page-v2-reuse-smoke.html",
     "themeSmokeTest": "tests/competition-page-v2-theme-smoke.html",
-    "structureEngineSmokeTest": "tests/competition-page-v2-structure-engine-smoke.html"
+    "structureEngineSmokeTest": "tests/competition-page-v2-structure-engine-smoke.html",
+    "geometryCss": "assets/css/kvl-competition-geometry-v2.css",
+    "rebuildAudit": "docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md",
+    "visualComparison": "validation-competition-v2-rebuild.html"
   },
   "architecture": {
     "competitionSpecificUiMarkupAllowed": false,
     "competitionSpecificGeometryCssAllowed": false,
     "competitionAdapterRole": "normalize-data-only",
     "visualGeometryPolicy": "validated-avc-production-first",
-    "commonEngineOwns": ["shell","hero","navigation","kpi","qualification-cards","monthly-calendar","schedule","standings","final-ranking","knockout-bracket","participants","optional-roster","official-resources"],
-    "adapterRefreshSequence": ["KVLCompetitionTemplateV2.apply","KVLCompetitionComponentsV2.render"]
+    "commonEngineOwns": [
+      "shell",
+      "hero",
+      "navigation",
+      "kpi",
+      "qualification-cards",
+      "monthly-calendar",
+      "schedule",
+      "standings",
+      "final-ranking",
+      "knockout-bracket",
+      "participants",
+      "optional-roster",
+      "official-resources"
+    ],
+    "adapterRefreshSequence": [
+      "KVLCompetitionTemplateV2.apply",
+      "KVLCompetitionComponentsV2.render"
+    ]
   },
   "structureModes": {
-    "standings": ["single-league","pools-combined","none"],
-    "knockout": ["bracket-8","none"],
-    "participants": ["flat","groups"],
-    "roster": ["full","link-only","none"]
+    "standings": [
+      "single-league",
+      "pools-combined",
+      "none"
+    ],
+    "knockout": [
+      "bracket-8",
+      "none"
+    ],
+    "participants": [
+      "flat",
+      "groups"
+    ],
+    "roster": [
+      "full",
+      "link-only",
+      "none"
+    ]
   },
-  "normalizedMatchRoundValues": ["QF","SF","BRONZE","FINAL"],
-  "breakpoints": {"desktopMaxContent":1180,"mobilePrimary":390,"mobileSecondary":360,"mobileCssMax":680},
-  "views": ["overview","schedule","groups","knockout","rosters","resources"],
-  "stateModel": {"allowed":["upcoming","active","completed"],"stageLabelIsSeparate":true},
+  "normalizedMatchRoundValues": [
+    "QF",
+    "SF",
+    "BRONZE",
+    "FINAL"
+  ],
+  "breakpoints": {
+    "desktopMaxContent": 1180,
+    "mobilePrimary": 390,
+    "mobileSecondary": 360,
+    "mobileCssMax": 680
+  },
+  "views": [
+    "overview",
+    "schedule",
+    "groups",
+    "knockout",
+    "rosters",
+    "resources"
+  ],
+  "stateModel": {
+    "allowed": [
+      "upcoming",
+      "active",
+      "completed"
+    ],
+    "stageLabelIsSeparate": true
+  },
   "theme": {
     "priority": "women-first-then-men-competition-family",
     "competitionFamilyField": "competitionFamily",
-    "women": {"policy":"always-rose-regardless-of-competition-family","primary":"#8E315E","strong":"#A53D68","dark":"#6F234A","accent":"#E7A8C2","soft":"#FFF1F6"},
+    "women": {
+      "policy": "always-rose-regardless-of-competition-family",
+      "primary": "#8E315E",
+      "strong": "#A53D68",
+      "dark": "#6F234A",
+      "accent": "#E7A8C2",
+      "soft": "#FFF1F6"
+    },
     "men": {
-      "avc": {"primary":"#176638","strong":"#0D6F3C","soft":"#EEF8F1"},
-      "fivb": {"primary":"#5B3A8E","strong":"#442A70","soft":"#F3EFFA"},
-      "domestic": {"primary":"#163A5F","strong":"#102C49","soft":"#EEF4F8"}
+      "avc": {
+        "primary": "#176638",
+        "strong": "#0D6F3C",
+        "soft": "#EEF8F1"
+      },
+      "fivb": {
+        "primary": "#5B3A8E",
+        "strong": "#442A70",
+        "soft": "#F3EFFA"
+      },
+      "domestic": {
+        "primary": "#163A5F",
+        "strong": "#102C49",
+        "soft": "#EEF4F8"
+      }
     },
     "score": "#4B5563",
     "goldUsage": "champion-medal-direct-qualification-special-achievement-only"
   },
-  "productionBoundary": {"avcProductionChangedByEngineRefactor":false,"vnlProductionChangedByEngineRefactor":false,"prototypeFirst":true},
-  "legacy": {"v1":"templates/competition-page-pc-mobile-v1.html","vnlCompetitionSpecificCss":"removed from active V2 architecture","policy":"retain V1 as historical snapshot; V2 competition pages use shared shell/controller/components"}
+  "productionBoundary": {
+    "avcProductionChangedByEngineRefactor": false,
+    "vnlProductionChangedByEngineRefactor": false,
+    "prototypeFirst": true
+  },
+  "legacy": {
+    "v1": "templates/competition-page-pc-mobile-v1.html",
+    "vnlCompetitionSpecificCss": "removed from active V2 architecture",
+    "policy": "retain V1 as historical snapshot; V2 competition pages use shared shell/controller/components"
+  },
+  "rebuild": {
+    "baselineCommit": "91dad4c956d6ce6ff137e581f5fd9ef011746c05",
+    "commonGeometry": "men-production-provisional",
+    "womenExactParity": false,
+    "productionPromotion": false
+  }
 }
