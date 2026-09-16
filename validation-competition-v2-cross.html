@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Competition V2 Shared Engine · 교차검증 | K-Volley Lab</title>
+  <style>
+    body{margin:0;background:#f4f6f8;color:#172033;font-family:Arial,"Noto Sans KR",sans-serif}
+    main{width:min(1100px,calc(100% - 32px));margin:48px auto}
+    h1{margin:0 0 8px;font-size:30px}.sub{margin:0 0 28px;color:#667085}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{display:block;padding:22px;border:1px solid #dfe4ea;border-radius:14px;background:#fff;color:inherit;text-decoration:none}
+    .card:hover{transform:translateY(-2px)}.card b{display:block;font-size:19px}.card span{display:block;margin-top:7px;color:#667085;font-size:13px}
+    .check{margin-top:26px;padding:20px;border-radius:14px;background:#fff;border:1px solid #dfe4ea;line-height:1.75}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}main{margin:24px auto}}
+  </style>
+</head>
+<body><main>
+<h1>Competition V2 · Shared Engine 교차검증</h1>
+<p class="sub">세 페이지는 동일한 Shell / Component CSS / Component Renderer를 사용합니다. 데이터와 테마만 다릅니다.</p>
+<div class="grid">
+<a class="card" href="validation-competition-v2-cross-avc-men.html?view=overview"><b>AVC MEN · Green</b><span>12개국 · 3개 조 · 26경기</span></a>
+<a class="card" href="validation-competition-v2-cross-avc-women.html?view=overview"><b>AVC WOMEN · Rose</b><span>12개국 · 3개 조 · 26경기</span></a>
+<a class="card" href="validation-competition-v2-cross-vnl-men.html?view=overview"><b>VNL MEN · Purple</b><span>18개국 · 단일 예선 · 116경기</span></a>
+</div>
+<div class="check"><b>검증 순서</b><br>
+① PC 1180px에서 한눈에 보기 → 경기일정 → 순위 → 최종순위 → 참가국 → 공식자료 순서로 3개 페이지 비교<br>
+② 모바일 390px에서 동일 순서 비교<br>
+③ 360px에서 가로 overflow·겹침·잘림 확인<br>
+④ 색상과 데이터 차이를 제외하고 같은 종류의 카드 크기·간격·radius·정보계층이 같은지 확인<br>
+⑤ 문제가 보이면 어느 대회/어느 메뉴/PC 또는 모바일인지 알려주세요. 대회별 파일이 아니라 공통 컴포넌트를 수정합니다.</div>
+</main></body></html>
