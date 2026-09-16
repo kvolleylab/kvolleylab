@@ -5,23 +5,36 @@
 @import url("./kvl-avc-men-mobile-parity-v1.css?v=20260916-v2-baseline");
 @import url("./kvl-avc-women-template-v1.css?v=20260916-v2-baseline");
 @import url("./kvl-avc-women-knockout-v1.css?v=20260916-v2-baseline");
-@import url("./kvl-avc-women-production-hero-v1.css?v=20260916-v2-baseline");
 
 /* Common non-layout behavior. */
 body.kvl-competition-template-v2 .kvl1180-gender .is-disabled{opacity:.46;pointer-events:none}
 body.kvl-competition-template-v2 .kvl-v2-prototype-note{width:min(100%,1180px);margin:0 auto;padding:0 20px 24px;color:#7b8492;font-size:10px;text-align:center}
 body.kvl-competition-template-v2 .kvl1180-score{color:#4b5563!important}
 body.kvl-competition-template-v2 #groups .kvl1180-combined-row.is-out>span:last-child{background:transparent!important}
-
-/* V2 data-driven result must always win over the older generated AVC copy. */
 body.kvl-competition-template-v2 .kvl1180-overview-result::before,
 body.kvl-competition-template-v2 .kvl1180-overview-result::after{content:none!important;display:none!important}
+
+/* WOMEN keeps the validated Rose hero treatment but the artwork remains competition-data driven. */
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl1180-women-template[data-kvl-gender="women"] .kvl1180-hero{
+  background-color:#6f234a!important;
+  background-image:linear-gradient(90deg,rgba(55,12,38,.96) 0%,rgba(76,20,50,.90) 34%,rgba(101,31,65,.70) 52%,rgba(111,35,74,.36) 70%,rgba(52,17,36,.14) 100%),var(--kvl-hero-image,linear-gradient(112deg,#6f234a,#8e315e))!important;
+  background-size:cover!important;background-position:var(--kvl-hero-position,center center)!important;background-repeat:no-repeat!important;
+  border-color:rgba(111,36,72,.38)!important;box-shadow:0 9px 24px rgba(105,42,71,.14)!important;
+}
+@media(max-width:680px){
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl1180-women-template[data-kvl-gender="women"] .kvl1180-hero{
+    background-image:linear-gradient(105deg,rgba(55,12,38,.96) 0%,rgba(76,20,50,.90) 42%,rgba(101,31,65,.66) 68%,rgba(70,18,46,.30) 100%),var(--kvl-hero-image,linear-gradient(112deg,#6f234a,#8e315e))!important;
+    background-position:var(--kvl-hero-position-mobile,var(--kvl-hero-position,center center))!important;
+  }
+}
 
 /* FIVB / Domestic men reuse exactly the AVC geometry; only the palette changes. */
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-tabs a:hover{background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-tabs a.is-active,
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-gender a.is-active{background:var(--kvl-theme-strong)!important;border-color:var(--kvl-theme-strong)!important;color:#fff!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-section-head h2{color:var(--kvl-theme-primary)!important}
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-calendar-title{background:var(--kvl-theme-strong)!important}
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-day.has-match{background:color-mix(in srgb,var(--kvl-theme-soft) 68%,#fff)!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-stage-filters button:hover{border-color:var(--kvl-theme-border)!important;background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-stage-filters button.is-active{border-color:var(--kvl-theme-strong)!important;background:var(--kvl-theme-strong)!important;color:#fff!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) .kvl1180-date-head{background:linear-gradient(90deg,var(--kvl-theme-soft),#fff)!important;border-bottom-color:var(--kvl-theme-border)!important}
@@ -56,6 +69,14 @@ body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="av
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-match-head strong{color:var(--kvl-theme-primary)!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-bracket-team.is-winner{background:var(--kvl-theme-soft)!important}
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-bracket-team.is-winner .kvl1180-team-score{color:var(--kvl-theme-primary)!important}
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-qf-pair::after,
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-qf-pair::before,
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-qf-pair .kvl1180-match::after,
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-round-sf .kvl1180-round-body::after,
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-round-sf .kvl1180-round-body::before,
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-round-sf .kvl1180-match::before,
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-round-sf .kvl1180-match::after,
+body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #knockout .kvl1180-round-final .kvl1180-match::before{border-color:color-mix(in srgb,var(--kvl-theme-primary) 45%,#d0d5dd)!important}
 
 /* Participant/resource palette remap only. */
 body.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="avc"]) #rosters .kvl1180-participant-group-head{background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-primary))!important;color:#fff!important}
