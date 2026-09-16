@@ -1,0 +1,121 @@
+/* K-Volley Lab · Competition Template V2 shared components
+ * This file contains geometry for reusable calendar/schedule/standings/bracket/participants.
+ * Competition-specific files must not redefine these component sizes.
+ */
+
+/* Shared component shell */
+body.kvl-competition-template-v2 .kvl-v2-calendar-stack{display:grid;gap:clamp(14px,1.25vw,18px)}
+body.kvl-competition-template-v2 .kvl1180-calendar-title{background:var(--kvl-theme-strong)!important}
+body.kvl-competition-template-v2 .kvl1180-day.has-match{background:color-mix(in srgb,var(--kvl-theme-soft) 68%,#fff)!important}
+
+/* Schedule theme normalization: geometry comes from the base schedule component. */
+body.kvl-competition-template-v2 .kvl1180-schedule-toolbar{border-color:var(--kvl-theme-border);background:color-mix(in srgb,var(--kvl-theme-soft) 55%,#fff)}
+body.kvl-competition-template-v2 .kvl1180-stage-filters button:hover{border-color:var(--kvl-theme-border);background:var(--kvl-theme-soft);color:var(--kvl-theme-primary)}
+body.kvl-competition-template-v2 .kvl1180-stage-filters button.is-active{border-color:var(--kvl-theme-strong);background:var(--kvl-theme-strong);color:#fff}
+body.kvl-competition-template-v2 .kvl1180-date-head{background:linear-gradient(90deg,var(--kvl-theme-soft),#fff);border-bottom-color:var(--kvl-theme-border)}
+body.kvl-competition-template-v2 .kvl1180-date-title strong{color:var(--kvl-theme-strong)}
+body.kvl-competition-template-v2 .kvl1180-inline-logo.kvl1180-seed-icon{background:var(--kvl-theme-soft);color:var(--kvl-theme-primary)}
+body.kvl-competition-template-v2 .kvl1180-score{color:#4b5563!important}
+
+/* Shared standings. Both pool-combined and single-league use the same row system. */
+body.kvl-competition-template-v2 .kvl-v2-pool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+body.kvl-competition-template-v2 .kvl-v2-standing-block{overflow:hidden;margin-top:12px;border:1px solid #e3e8ee;border-radius:12px;background:#fff}
+body.kvl-competition-template-v2 .kvl-v2-standing-block:first-child{margin-top:0}
+body.kvl-competition-template-v2 .kvl-v2-pool-grid .kvl-v2-standing-block{margin-top:0}
+body.kvl-competition-template-v2 .kvl-v2-standing-block-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:42px;padding:0 12px;background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-primary));color:#fff}
+body.kvl-competition-template-v2 .kvl-v2-standing-block-head strong{font-size:13px;font-weight:1000}
+body.kvl-competition-template-v2 .kvl-v2-standing-block-head span{font-size:9px;font-weight:850;opacity:.88}
+body.kvl-competition-template-v2 .kvl-v2-standing-head,
+body.kvl-competition-template-v2 .kvl-v2-standing-row{display:grid;grid-template-columns:52px minmax(170px,1.2fr) minmax(360px,2.2fr) 110px;align-items:center;gap:8px}
+body.kvl-competition-template-v2 .kvl-v2-standing-head{min-height:35px;padding:0 10px;background:#f5f7fa;color:#667085;font-size:9px;font-weight:950}
+body.kvl-competition-template-v2 .kvl-v2-standing-row{min-height:58px;padding:8px 10px;border-top:1px solid #edf0f3}
+body.kvl-competition-template-v2 .kvl-v2-standing-row.is-qualified{background:color-mix(in srgb,var(--kvl-theme-soft) 58%,#fff)}
+body.kvl-competition-template-v2 .kvl-v2-standing-row.is-host{background:#fffaf0}
+body.kvl-competition-template-v2 .kvl-v2-standing-rank{text-align:center;color:#344054;font-size:13px;font-weight:1000}
+body.kvl-competition-template-v2 .kvl-v2-standing-team{display:flex;align-items:center;gap:8px;min-width:0}
+body.kvl-competition-template-v2 .kvl-v2-standing-team img{width:34px;height:23px;object-fit:contain;border:1px solid #e5e7eb;border-radius:3px;background:#fff}
+body.kvl-competition-template-v2 .kvl-v2-standing-team strong{display:block;color:#17365d;font-size:12px;font-weight:1000}
+body.kvl-competition-template-v2 .kvl-v2-standing-team small{display:block;margin-top:2px;color:#8a94a3;font-size:8px;font-weight:800}
+body.kvl-competition-template-v2 .kvl-v2-standing-stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+body.kvl-competition-template-v2 .kvl-v2-stat{text-align:center}
+body.kvl-competition-template-v2 .kvl-v2-stat b{display:block;color:#344054;font-size:10px;font-weight:950}
+body.kvl-competition-template-v2 .kvl-v2-stat small{display:block;margin-top:2px;color:#98a2b3;font-size:7px;font-weight:800}
+body.kvl-competition-template-v2 .kvl-v2-standing-result{text-align:right}
+body.kvl-competition-template-v2 .kvl-v2-badge{display:inline-flex;align-items:center;justify-content:center;min-height:25px;padding:0 8px;border:1px solid var(--kvl-theme-border);border-radius:999px;background:var(--kvl-theme-soft);color:var(--kvl-theme-strong);font-size:8px;font-weight:1000;white-space:nowrap}
+body.kvl-competition-template-v2 .kvl-v2-badge.is-host{border-color:#eed49a;background:#fff3d6;color:#8a6200}
+body.kvl-competition-template-v2 .kvl-v2-badge.is-out{border-color:#e5e7eb;background:#f3f4f6;color:#6b7280}
+
+/* Final cards/bracket: same geometry, theme-only changes. */
+body.kvl-competition-template-v2 .kvl1180-knockout-status strong,
+body.kvl-competition-template-v2 .kvl1180-final-block-head h3,
+body.kvl-competition-template-v2 .kvl1180-knockout-subhead h3,
+body.kvl-competition-template-v2 .kvl1180-bronze-title,
+body.kvl-competition-template-v2 .kvl1180-knockout-note b{color:var(--kvl-theme-primary)!important}
+body.kvl-competition-template-v2 .kvl1180-final-rank{background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important}
+body.kvl-competition-template-v2 .kvl1180-final-card.is-champion .kvl1180-final-rank{background:#f3e8bd!important;color:#8a6514!important}
+body.kvl-competition-template-v2 .kvl1180-round-title{background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-primary))!important}
+body.kvl-competition-template-v2 .kvl1180-match-head strong{color:var(--kvl-theme-primary)!important}
+body.kvl-competition-template-v2 .kvl1180-bracket-team.is-winner{background:var(--kvl-theme-soft)!important}
+body.kvl-competition-template-v2 .kvl1180-bracket-team.is-winner .kvl1180-team-score{color:var(--kvl-theme-primary)!important}
+body.kvl-competition-template-v2 .kvl1180-qf-pair::after,
+body.kvl-competition-template-v2 .kvl1180-qf-pair::before,
+body.kvl-competition-template-v2 .kvl1180-qf-pair .kvl1180-match::after,
+body.kvl-competition-template-v2 .kvl1180-round-sf .kvl1180-round-body::after,
+body.kvl-competition-template-v2 .kvl1180-round-sf .kvl1180-round-body::before,
+body.kvl-competition-template-v2 .kvl1180-round-sf .kvl1180-match::before,
+body.kvl-competition-template-v2 .kvl1180-round-sf .kvl1180-match::after,
+body.kvl-competition-template-v2 .kvl1180-round-final .kvl1180-match::before{border-color:color-mix(in srgb,var(--kvl-theme-primary) 45%,#d0d5dd)!important}
+
+/* Full final ranking list is shared too. */
+body.kvl-competition-template-v2 [data-kvl-component="final-ranking-list"]{margin-top:18px;padding-top:16px;border-top:1px solid #e6e9ee}
+body.kvl-competition-template-v2 [data-kvl-component="final-ranking-list"]>h3{margin:0 0 10px;color:var(--kvl-theme-primary);font-size:15px}
+body.kvl-competition-template-v2 .kvl-v2-final-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px}
+body.kvl-competition-template-v2 .kvl-v2-final-row{display:grid;grid-template-columns:30px 28px minmax(0,1fr);align-items:center;gap:7px;min-height:40px;padding:7px 9px;border:1px solid #e7eaf0;border-radius:8px;background:#fff;color:#344054;text-decoration:none;font-size:10px}
+body.kvl-competition-template-v2 .kvl-v2-final-row b{color:var(--kvl-theme-primary);text-align:center}
+body.kvl-competition-template-v2 .kvl-v2-final-row img{width:26px;height:18px;object-fit:contain;border-radius:2px;background:#fff}
+body.kvl-competition-template-v2 .kvl-v2-final-row small{color:#98a2b3}
+
+/* Participants: the same buttons regardless of AVC/FIVB/domestic. */
+body.kvl-competition-template-v2 .kvl-v2-participant-groups{grid-template-columns:repeat(3,minmax(0,1fr))}
+body.kvl-competition-template-v2 .kvl-v2-participant-groups.is-flat{grid-template-columns:1fr}
+body.kvl-competition-template-v2 .kvl-v2-participant-groups.is-flat .kvl1180-participant-buttons{grid-template-columns:repeat(6,minmax(0,1fr))}
+body.kvl-competition-template-v2 [data-kvl-component="participants"] .kvl1180-participant-group-head{background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-primary))!important}
+body.kvl-competition-template-v2 [data-kvl-component="participants"] .kvl1180-participant-button{color:#17365d;text-decoration:none}
+body.kvl-competition-template-v2 [data-kvl-component="participants"] .kvl1180-participant-button:hover{background:var(--kvl-theme-soft)}
+body.kvl-competition-template-v2 [data-kvl-component="participants"] .kvl1180-participant-button.is-active{background:var(--kvl-theme-soft);box-shadow:inset 0 0 0 2px var(--kvl-theme-primary)}
+body.kvl-competition-template-v2 .kvl-v2-roster-list{overflow:hidden;border:1px solid #dce7e1;border-radius:12px}
+body.kvl-competition-template-v2 .kvl-v2-roster-row{display:grid;grid-template-columns:60px minmax(0,1fr) 70px 90px;align-items:center;gap:8px;min-height:52px;padding:7px 12px;border-top:1px solid #edf2ef}
+body.kvl-competition-template-v2 .kvl-v2-roster-row:first-child{border-top:0}
+body.kvl-competition-template-v2 .kvl-v2-roster-row>b{color:var(--kvl-theme-primary);text-align:center}
+body.kvl-competition-template-v2 .kvl-v2-roster-row strong{display:block;color:#17365d}
+body.kvl-competition-template-v2 .kvl-v2-roster-row small{display:block;margin-top:2px;color:#8a94a3}
+body.kvl-competition-template-v2 .kvl-v2-roster-row em{font-style:normal;font-weight:950;text-align:center}
+
+/* Disabled gender link is visual only; adapters may enable it by supplying a URL. */
+body.kvl-competition-template-v2 .kvl1180-gender .is-disabled{opacity:.46;pointer-events:none}
+
+/* Mobile */
+@media(max-width:900px){
+  body.kvl-competition-template-v2 .kvl-v2-pool-grid{grid-template-columns:1fr}
+  body.kvl-competition-template-v2 .kvl-v2-participant-groups.is-flat .kvl1180-participant-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  body.kvl-competition-template-v2 .kvl-v2-calendar-stack{gap:10px}
+  body.kvl-competition-template-v2 .kvl-v2-standing-head{display:none}
+  body.kvl-competition-template-v2 .kvl-v2-standing-row{grid-template-columns:34px minmax(0,1fr) auto;gap:5px;min-height:0;padding:8px}
+  body.kvl-competition-template-v2 .kvl-v2-standing-rank{font-size:10px}
+  body.kvl-competition-template-v2 .kvl-v2-standing-team img{width:24px;height:16px}
+  body.kvl-competition-template-v2 .kvl-v2-standing-team strong{font-size:9px}
+  body.kvl-competition-template-v2 .kvl-v2-standing-team small{font-size:6px}
+  body.kvl-competition-template-v2 .kvl-v2-standing-stats{grid-column:1/-1;grid-template-columns:repeat(6,1fr);padding-top:5px;border-top:1px solid #edf0f3}
+  body.kvl-competition-template-v2 .kvl-v2-stat b{font-size:8px}
+  body.kvl-competition-template-v2 .kvl-v2-stat small{font-size:5.5px}
+  body.kvl-competition-template-v2 .kvl-v2-badge{min-height:20px;padding:0 6px;font-size:6.5px}
+  body.kvl-competition-template-v2 .kvl-v2-final-list{grid-template-columns:1fr}
+  body.kvl-competition-template-v2 .kvl-v2-final-row{min-height:36px;padding:6px 7px;font-size:8px}
+  body.kvl-competition-template-v2 .kvl-v2-participant-groups{grid-template-columns:1fr}
+  body.kvl-competition-template-v2 .kvl-v2-participant-groups.is-flat .kvl1180-participant-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  body.kvl-competition-template-v2 .kvl-v2-roster-row{grid-template-columns:42px minmax(0,1fr) 50px 74px;font-size:10px}
+}
+
+body.kvl-competition-template-v2 .kvl-v2-prototype-note{width:min(100%,1180px);margin:0 auto;padding:0 20px 24px;color:#7b8492;font-size:10px;text-align:center}

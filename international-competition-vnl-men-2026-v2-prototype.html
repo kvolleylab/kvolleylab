@@ -4,150 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>2026 VNL 남자부 · V2 Purple Prototype | K-Volley Lab</title>
-  <meta name="description" content="K-Volley Lab 국제대회 기본 템플릿 V2를 적용한 2026 VNL 남자부 Purple 프로토타입">
-  <link rel="stylesheet" href="assets/css/kvl-competition-template-v2.css?v=20260915-1">
-  <link rel="stylesheet" href="assets/css/kvl-vnl-men-2026-v2.css?v=20260916-1">
+  <title>2026 VNL 남자부 · V2 Shared Engine Prototype | K-Volley Lab</title>
+  <meta name="description" content="K-Volley Lab 국제대회 공통 렌더링 엔진 V2로 구성한 2026 VNL 남자부 프로토타입">
+  <link rel="stylesheet" href="assets/css/kvl-competition-template-v2.css?v=20260916-engine-1">
+  <link rel="stylesheet" href="assets/css/kvl-competition-components-v2.css?v=20260916-engine-1">
   <script>
     window.KVL_COMPETITION_V2_DATA={
-      competitionId:'KVL-COMP-000001',gender:'men',competitionFamily:'fivb',status:'completed',
-      stageLabel:'폴란드 우승 · 파이널 종료',displayName:'2026 VNL 남자부',officialName:'Volleyball Nations League 2026 · Men',
-      dateLabel:'2026-06-10 ~ 2026-08-02',locationLabel:'예선 9개 개최지',venueLabel:'파이널 · 중국 닝보',
-      teamCount:18,groupCount:108,matchCount:116,knockoutTeamCount:8,champion:'폴란드',championAchievement:'VNL 2026 챔피언',
-      genderLinks:{men:'international-competition-vnl-men-2026-v2-prototype.html?view=overview'},
-      qualifications:[
-        {id:'finals',brand:'VNL 파이널',pill:'8개국',title:'상위 7개국 + 개최국',description:'18개국 예선 종료 후 상위 7개국과 파이널 개최국 중국이 8강 토너먼트에 진출합니다.',foot:'예선 → 8강 파이널',resultTeams:['일본','폴란드','슬로베니아','이탈리아','미국','튀르키예','우크라이나','중국']},
-        {id:'champion',brand:'시즌 최종 성적',pill:'2026',title:'폴란드 우승',description:'폴란드가 결승에서 미국을 3-2로 꺾고 2026 VNL 남자부 우승을 차지했습니다.',foot:'VNL 2026 챔피언',resultTeams:['폴란드']},
-        {id:'ranking',brand:'FIVB 세계랭킹',pill:'공식 랭킹',title:'VNL 경기 랭킹 반영',description:'VNL 경기 결과는 FIVB World Ranking 계산에 반영됩니다.',foot:'경기별 World Ranking 포인트',resultTeams:[]}
-      ],
-      finalRanking:[
-        {rank:1,team:'폴란드',result:'우승 · 결승 미국에 3-2'},{rank:2,team:'미국',result:'준우승 · 결승 폴란드에 2-3'},
-        {rank:3,team:'슬로베니아',result:'3위 · 일본에 3-1'},{rank:4,team:'일본',result:'4위 · 슬로베니아에 1-3'}
-      ],
-      resources:[
-        {title:'Volleyball World · VNL 공식 페이지',url:'https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/'},
-        {title:'Volleyball World · VNL 남자부 공식 순위',url:'https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/standings/men/'},
-        {title:'Volleyball World · FIVB 남자 세계랭킹',url:'https://en.volleyballworld.com/volleyball/world-ranking/men'}
-      ]
+      competitionId:'KVL-COMP-000001',
+      gender:'men',competitionFamily:'fivb',status:'completed',
+      stageLabel:'VNL 데이터 불러오는 중',
+      displayName:'2026 VNL 남자부',
+      officialName:'Volleyball Nations League 2026 · Men',
+      dateLabel:'2026-06-10 ~ 2026-08-02',
+      locationLabel:'예선 9개 개최지',venueLabel:'파이널 · 중국 닝보',
+      teamCount:18,groupCount:108,matchCount:116,knockoutTeamCount:8,
+      structure:{
+        labels:{groupsTab:'예선순위',groupsKpi:'예선 경기',groupsKpiUnit:'경기',knockoutKpi:'파이널 진출',standingsTitle:'예선순위',standingsEyebrow:'PRELIMINARY STANDINGS'},
+        calendar:true,
+        schedule:{stages:['전체','예선','8강','준결승','3위결정전','결승']},
+        standings:{mode:'single-league',title:'예선 종합순위'},
+        knockout:{mode:'bracket-8',title:'파이널 토너먼트'},
+        participants:{mode:'flat',groupLabel:'VNL 2026 참가국'},
+        roster:{mode:'link-only'}
+      },
+      qualifications:[],matches:[],standings:{rows:[]},participants:[],finalRanking:[],finalRankingFull:[],resources:[]
     };
   </script>
+  <script src="assets/js/kvl-competition-shell-v2.js?v=20260916-engine-1" defer></script>
   <script src="assets/js/kvl-competition-template-v2.js?v=20260915-1" defer></script>
-  <script src="assets/js/kvl-vnl-men-2026-v2.js?v=20260916-1" defer></script>
+  <script src="assets/js/kvl-competition-components-v2.js?v=20260916-engine-1" defer></script>
+  <script src="assets/js/kvl-vnl-men-2026-v2.js?v=20260916-data-1" defer></script>
 </head>
-<body class="kvl1180-prototype kvl-competition-template-v2 kvl-vnl-men-v2" data-kvl-gender="men" data-kvl-family="fivb" data-kvl-status="completed">
-<svg class="kvl1180-sprite" aria-hidden="true" focusable="false">
-  <symbol id="kvl-icon-calendar-line" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
-  <symbol id="kvl-icon-pin-line" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-  <symbol id="kvl-icon-users-solid" viewBox="0 0 24 24"><circle cx="8" cy="7" r="3.3"/><circle cx="16.5" cy="8.2" r="2.7"/><path d="M1.7 20c.25-4.6 2.6-7.2 6.3-7.2s6.05 2.6 6.3 7.2H1.7Z"/></symbol>
-  <symbol id="kvl-icon-layers-solid" viewBox="0 0 24 24"><path d="m12 2.4 10 5.2-10 5.2L2 7.6 12 2.4Z"/><path d="m2.9 11.5 9.1 4.7 9.1-4.7.9 2-10 5.2-10-5.2.9-2Z"/></symbol>
-  <symbol id="kvl-icon-calendar-solid" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><rect x="6" y="2" width="2.5" height="6" rx="1.2"/><rect x="15.5" y="2" width="2.5" height="6" rx="1.2"/></symbol>
-  <symbol id="kvl-icon-trophy-solid" viewBox="0 0 24 24"><path d="M7 3h10v5.2c0 4.4-2 7.3-5 7.3s-5-2.9-5-7.3V3Z"/><rect x="7.5" y="19" width="9" height="2.5" rx="1.2"/></symbol>
-  <symbol id="kvl-icon-pin-solid" viewBox="0 0 24 24"><path d="M12 2.2a7.8 7.8 0 0 0-7.8 7.8c0 5.5 7.8 12 7.8 12s7.8-6.5 7.8-12A7.8 7.8 0 0 0 12 2.2Z"/></symbol>
-</svg>
-
-<main class="kvl1180-main">
-  <section class="kvl1180-hero" aria-labelledby="pageTitle">
-    <div class="kvl1180-hero-copy">
-      <p class="kvl1180-eyebrow" data-kvl="eyebrow">INTERNATIONAL COMPETITION · MEN</p>
-      <h1 id="pageTitle" data-kvl="title">2026 VNL 남자부</h1>
-      <p class="kvl1180-hero-sub" data-kvl="official-name">Volleyball Nations League 2026 · Men</p>
-      <div class="kvl1180-hero-meta">
-        <div class="kvl1180-meta-row"><svg class="kvl1180-icon"><use href="#kvl-icon-calendar-line"/></svg><span data-kvl="dates">2026-06-10 ~ 2026-08-02</span></div>
-        <div class="kvl1180-meta-row"><svg class="kvl1180-icon"><use href="#kvl-icon-pin-line"/></svg><span class="kvl1180-hero-location"><span data-kvl="location">예선 9개 개최지</span><span data-kvl="venue">파이널 · 중국 닝보</span></span></div>
-      </div>
-    </div>
-    <div class="kvl1180-hero-status" aria-label="대회 상태"><span data-kvl="hero-status">대회 종료</span><span data-kvl="hero-team-count">18개국</span><span class="is-accent" data-kvl="hero-stage">폴란드 우승 · 파이널 종료</span></div>
-  </section>
-
-  <div class="kvl1180-controlbar">
-    <nav class="kvl1180-tabs" aria-label="대회 메뉴">
-      <a data-view="overview" href="?view=overview">한눈에 보기</a>
-      <a data-view="schedule" href="?view=schedule">경기일정</a>
-      <a data-view="groups" href="?view=groups">예선순위</a>
-      <a data-view="knockout" href="?view=knockout">최종순위</a>
-      <a data-view="rosters" href="?view=rosters">참가국</a>
-      <a data-view="resources" href="?view=resources">공식자료</a>
-    </nav>
-    <nav class="kvl1180-gender" aria-label="성별 전환">
-      <a class="is-active" data-gender-link="men" href="international-competition-vnl-men-2026-v2-prototype.html?view=overview">MEN · 남자부</a>
-      <a class="is-disabled" data-gender-link="women" href="?view=overview" aria-disabled="true">WOMEN · 여자부 준비중</a>
-    </nav>
-  </div>
-
-  <section class="kvl1180-card kvl1180-view" data-view="overview" aria-labelledby="snapshotTitle">
-    <div class="kvl1180-section-head">
-      <div><p class="label">TOURNAMENT SNAPSHOT</p><h2 id="snapshotTitle">대회 한눈에 보기</h2></div>
-      <p class="kvl1180-overview-result" data-result-mode="completed"><strong>우승 폴란드</strong><span>VNL 2026 챔피언</span></p>
-    </div>
-    <div class="kvl1180-kpis">
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-users-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>참가국</span><strong data-kvl="team-count">18</strong><small>개국</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-layers-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>예선 경기</span><strong data-kvl="group-count">108</strong><small>경기</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-calendar-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>전체 일정</span><strong data-kvl="match-count">116</strong><small>경기</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-trophy-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>파이널 진출</span><strong data-kvl="qualifier-count">8</strong><small>개국</small></div></article>
-      <article class="kvl1180-kpi is-venue"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-pin-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>대회 장소</span><strong data-kvl="venue-primary">예선 9개 개최지</strong><small data-kvl="venue-secondary">파이널 · 중국 닝보</small></div></article>
-    </div>
-    <div class="vnlv2-overview-note"><strong>대회 방식</strong><span>18개국이 예선에서 각 12경기를 치르고, 예선 상위 7개국과 파이널 개최국 중국이 8강 토너먼트에 진출합니다.</span></div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-stakes-card kvl1180-view" data-view="overview" aria-labelledby="stakesTitle">
-    <div class="kvl1180-section-head"><div><p class="label">SEASON STRUCTURE</p><h2 id="stakesTitle">대회 의미 · 시즌 구조</h2></div><p>VNL은 예선 리그와 8강 파이널로 구성됩니다.</p></div>
-    <div class="kvl1180-stakes-grid">
-      <article class="kvl1180-stake is-wc" data-qualification-id="finals"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand">VNL 파이널</span><span class="kvl1180-pill" data-role="qualification-pill">8개국</span></div><h3>상위 7개국 + 개최국</h3><p data-role="qualification-desc"></p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot"></div></article>
-      <article class="kvl1180-stake is-champion" data-qualification-id="champion"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand">시즌 최종 성적</span><span class="kvl1180-pill" data-role="qualification-pill">2026</span></div><h3>폴란드 우승</h3><p data-role="qualification-desc"></p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot"></div></article>
-      <article class="kvl1180-stake is-wr" data-qualification-id="ranking"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand">FIVB 세계랭킹</span><span class="kvl1180-pill" data-role="qualification-pill">공식 랭킹</span></div><h3>VNL 경기 랭킹 반영</h3><p data-role="qualification-desc"></p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot"></div></article>
-    </div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-view" data-view="overview" aria-labelledby="calendarTitle">
-    <div class="kvl1180-calendar-head"><div><p class="kvl1180-eyebrow">COMPETITION CALENDAR</p><h2 id="calendarTitle">대회 월간 달력</h2></div><p>6월 · 7월 · 8월 경기 시간과 결과를 한국시간(KST)으로 확인할 수 있습니다.</p></div>
-    <div id="vnlV2OverviewCalendar" class="vnlv2-calendar-stack"><div class="kvl1180-schedule-empty">대회 달력을 불러오는 중입니다.</div></div>
-    <div class="kvl1180-overview-note"><strong>2026 VNL 남자부는 종료되었습니다.</strong><br>폴란드가 결승에서 미국을 3-2로 꺾고 우승했습니다.</div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-schedule-card kvl1180-view" data-view="schedule" hidden aria-labelledby="scheduleTitle">
-    <div class="kvl1180-section-head"><div><p class="label">MATCH SCHEDULE &amp; RESULTS</p><h2 id="scheduleTitle">경기일정</h2></div><p>MASTER 기준 한국시간(KST) · 예선 108경기 + 파이널 8경기</p></div>
-    <div class="kvl1180-schedule-toolbar"><div id="vnlV2StageFilters" class="kvl1180-stage-filters" aria-label="경기 단계 필터"></div></div>
-    <div id="vnlV2ScheduleSummary" class="kvl1180-schedule-summary"><strong>전체</strong><span>116경기 · 한국시간(KST)</span></div>
-    <div data-slot="schedule-list" id="vnlV2ScheduleList" class="kvl1180-schedule-list"><div class="kvl1180-schedule-empty">경기결과를 불러오는 중입니다.</div></div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-view" data-view="groups" hidden>
-    <div class="kvl1180-section-head"><div><p class="label">PRELIMINARY STANDINGS</p><h2>예선순위</h2></div><p>108경기 종료 · 상위 7개국 + 개최국 중국 파이널 진출</p></div>
-    <div class="vnlv2-rule"><strong>파이널 진출 기준</strong><span>18개국 예선 순위 상위 7개국 + 개최국 중국 = 8개국</span></div>
-    <div data-slot="combined-ranking" id="vnlV2Standings"><div class="vnlv2-loading">예선 순위를 불러오는 중입니다.</div></div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-view kvl1180-knockout-view" data-view="knockout" hidden>
-    <div class="kvl1180-section-head"><div><p class="label">FINAL STANDINGS</p><h2>최종순위</h2></div><div class="kvl1180-knockout-status"><span><strong>대회 종료</strong></span><span>최종 순위 확정</span></div></div>
-    <div class="kvl1180-final-block">
-      <div class="kvl1180-final-block-head"><div><p class="label">FINAL RANKING</p><h3>최종 1~4위</h3></div><p>Volleyball World 공식 최종 결과</p></div>
-      <div class="kvl1180-final-grid">
-        <article class="kvl1180-final-card is-champion" data-final-rank="1"><span class="kvl1180-final-rank">1위</span><div class="kvl1180-final-copy"><strong data-role="final-team">폴란드</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article>
-        <article class="kvl1180-final-card" data-final-rank="2"><span class="kvl1180-final-rank">2위</span><div class="kvl1180-final-copy"><strong data-role="final-team">미국</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article>
-        <article class="kvl1180-final-card" data-final-rank="3"><span class="kvl1180-final-rank">3위</span><div class="kvl1180-final-copy"><strong data-role="final-team">슬로베니아</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article>
-        <article class="kvl1180-final-card" data-final-rank="4"><span class="kvl1180-final-rank">4위</span><div class="kvl1180-final-copy"><strong data-role="final-team">일본</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article>
-      </div>
-      <div class="vnlv2-final-list-wrap"><h3>최종 1~18위</h3><div id="vnlV2FinalList"></div></div>
-    </div>
-    <div class="kvl1180-knockout-block">
-      <div class="kvl1180-knockout-subhead"><div><p class="label">KNOCKOUT BRACKET</p><h3>파이널 토너먼트</h3></div><p>8강 → 준결승 → 결승 · 경기결과 자동 연동</p></div>
-      <div data-slot="knockout-bracket" id="vnlV2Bracket"><div class="kvl1180-schedule-empty">결선 토너먼트를 불러오는 중입니다.</div></div>
-    </div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-view kvl1180-participants-view" data-view="rosters" hidden>
-    <div class="kvl1180-section-head"><div><p class="label">PARTICIPATING TEAMS</p><h2>참가국</h2></div><div class="kvl1180-participant-status"><span><strong>18개국</strong></span><span>VNL 2026</span></div></div>
-    <div data-slot="country-cards" id="vnlV2Countries" class="vnlv2-participant-grid"><div class="vnlv2-loading">참가국을 불러오는 중입니다.</div></div>
-    <div class="vnlv2-roster-note">이 V2 재사용 테스트에서는 기존 국가별 VNL 페이지를 연결하며, 별도 선수명단을 새로 생성하지 않습니다.</div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-view kvl1180-resources-view" id="resources" data-view="resources" hidden>
-    <div class="kvl1180-section-head"><div><p class="label">OFFICIAL RESOURCES</p><h2>공식자료</h2></div><p>Volleyball World 공식 출처</p></div>
-    <div class="kvl1180-sources" id="resourceList"></div>
-  </section>
-
-  <p class="vnlv2-proto-note"><strong>V2 실전 재사용 검증용 프로토타입.</strong> 기존 실제 VNL 페이지(vnl.html)는 변경하지 않았습니다.</p>
-</main>
-<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
+<body class="kvl1180-prototype kvl-competition-template-v2" data-kvl-gender="men" data-kvl-family="fivb" data-kvl-status="completed">
+  <main data-kvl-shell></main>
+  <p class="kvl-v2-prototype-note"><strong>V2 공통 렌더링 엔진 검증용 프로토타입.</strong> 실제 VNL production(vnl.html)은 변경하지 않았습니다.</p>
+  <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
 </body>
 </html>

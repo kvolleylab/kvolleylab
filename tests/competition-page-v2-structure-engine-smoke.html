@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>KVL V2 Structure Engine Smoke</title>
+  <link rel="stylesheet" href="../assets/css/kvl-competition-template-v2.css?v=20260916-engine-1">
+  <link rel="stylesheet" href="../assets/css/kvl-competition-components-v2.css?v=20260916-engine-1">
+  <style>
+    .smoke-switch{width:min(100%,1180px);margin:0 auto;padding:12px 20px;background:#fff;font:700 12px Arial,sans-serif}
+    .smoke-switch a{display:inline-block;margin-right:8px;padding:7px 10px;border:1px solid #d0d5dd;border-radius:7px;color:#344054;text-decoration:none}
+  </style>
+  <script>
+    (()=>{
+      const qs=new URLSearchParams(location.search),mode=qs.get('case')==='league'?'league':'pools';
+      const defs=[
+        ['테스트 A','Test A','TAA','kr'],['테스트 B','Test B','TBB','jp'],['테스트 C','Test C','TCC','cn'],['테스트 D','Test D','TDD','au'],
+        ['테스트 E','Test E','TEE','br'],['테스트 F','Test F','TFF','us'],['테스트 G','Test G','TGG','it'],['테스트 H','Test H','THH','pl']
+      ];
+      const teams=defs.map((x,i)=>({name:x[0],en:x[1],code:x[2],flag:`https://flagcdn.com/w80/${x[3]}.png`,group:i<4?'A':'B'}));
+      const t=i=>teams[i];
+      const match=(id,date,time,stage,round,a,b,hs,as,next='')=>({id,date,time,stage,round,nextMatchId:next,home:t(a),away:t(b),venueLabel:'테스트 체육관',score:hs==null?null:{home:hs,away:as,sets:[]}});
+      const matches=[
+        match('P1','2027-06-01','14:00',mode==='league'?'예선':'조별리그','',0,1,3,0),
+        match('P2','2027-06-01','17:00',mode==='league'?'예선':'조별리그','',2,3,3,1),
+        match('QF1','2027-06-07','14:00','8강','QF',0,7,3,0,'SF1'),
+        match('QF2','2027-06-07','17:00','8강','QF',3,4,1,3,'SF1'),
+        match('QF3','2027-06-08','14:00','8강','QF',1,6,3,2,'SF2'),
+        match('QF4','2027-06-08','17:00','8강','QF',2,5,0,3,'SF2'),
+        match('SF1','2027-06-09','14:00','준결승','SF',0,4,3,1),
+        match('SF2','2027-06-09','17:00','준결승','SF',1,5,2,3),
+        match('BRONZE','2027-06-10','14:00','3위결정전','BRONZE',4,1,3,2),
+        match('FINAL','2027-06-10','18:00','결승','FINAL',0,5,3,1)
+      ];
+      const statRows=teams.map((team,i)=>({rank:i+1,team,played:3,wins:Math.max(0,3-Math.floor(i/3)),losses:Math.floor(i/3),points:9-i,setRatio:(2.4-i*.15).toFixed(3),pointRatio:(1.10-i*.02).toFixed(3),status:i<4?'qualified':'out',statusLabel:i<4?'8강 진출':mode==='league'?'예선 종료':'조별리그 탈락'}));
+      const standings=mode==='league'
+        ?{rows:statRows}
+        :{pools:[{id:'A',title:'A조',rows:statRows.slice(0,4)},{id:'B',title:'B조',rows:statRows.slice(4).map((r,i)=>({...r,rank:i+1}))}],combinedRows:statRows};
+      window.KVL_COMPETITION_V2_DATA={
+        competitionId:`SMOKE-${mode}`,gender:'men',competitionFamily:mode==='league'?'fivb':'avc',status:'completed',stageLabel:'공통 엔진 smoke',
+        displayName:mode==='league'?'단일리그 구조 Smoke':'조별리그 구조 Smoke',officialName:'KVL Shared Render Engine Smoke',dateLabel:'2027-06-01 ~ 2027-06-10',
+        locationLabel:'테스트 개최지',venueLabel:'테스트 체육관',teamCount:8,groupCount:mode==='league'?8:2,matchCount:10,knockoutTeamCount:8,
+        champion:'테스트 A',championAchievement:'공통 엔진 테스트',
+        structure:{
+          labels:{groupsTab:mode==='league'?'예선순위':'조별순위',groupsKpi:mode==='league'?'예선 경기':'조 편성',groupsKpiUnit:mode==='league'?'경기':'개 조',knockoutKpi:'8강 진출',standingsTitle:mode==='league'?'예선순위':'조별순위'},
+          calendar:true,schedule:{stages:['전체',mode==='league'?'예선':'조별리그','8강','준결승','3위결정전','결승']},
+          standings:{mode:mode==='league'?'single-league':'pools-combined',combinedTitle:'예선 종합순위'},
+          knockout:{mode:'bracket-8'},participants:{mode:mode==='league'?'flat':'groups'},roster:{mode:'none'}
+        },
+        meaning:{title:'공통 엔진 검증',note:'대회별 UI 파일 없이 structure mode와 데이터만 변경합니다.'},
+        qualifications:[{id:'test',className:'is-wr',brand:'COMMON ENGINE',pill:'V2',title:'공통 컴포넌트',description:'달력·일정·순위·토너먼트·참가국·공식자료가 동일 엔진에서 생성됩니다.',foot:'competition-specific UI 금지',resultTeams:['검증 데이터']}],
+        matches,standings,participants:teams,finalRanking:[
+          {rank:1,team:'테스트 A',flag:t(0).flag,result:'우승'},{rank:2,team:'테스트 F',flag:t(5).flag,result:'준우승'},
+          {rank:3,team:'테스트 E',flag:t(4).flag,result:'3위'},{rank:4,team:'테스트 B',flag:t(1).flag,result:'4위'}
+        ],
+        finalRankingFull:teams.map((x,i)=>({rank:i+1,team:x.name,en:x.en,flag:x.flag,url:'#'})),
+        resources:[{title:'공통 공식자료 카드 테스트',url:'https://example.com/'}]
+      };
+    })();
+  </script>
+  <script src="../assets/js/kvl-competition-shell-v2.js?v=20260916-engine-1" defer></script>
+  <script src="../assets/js/kvl-competition-template-v2.js?v=20260915-1" defer></script>
+  <script src="../assets/js/kvl-competition-components-v2.js?v=20260916-engine-1" defer></script>
+</head>
+<body class="kvl1180-prototype kvl-competition-template-v2">
+  <div class="smoke-switch"><a href="?case=pools&view=overview">Pools + Combined</a><a href="?case=league&view=overview">Single League</a></div>
+  <main data-kvl-shell></main>
+</body>
+</html>

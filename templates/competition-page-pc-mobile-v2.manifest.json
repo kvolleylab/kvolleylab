@@ -1,12 +1,10 @@
 {
   "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V2",
-  "status": "CROSS_GENDER_VISUALLY_VALIDATED_FROZEN_BASELINE",
+  "status": "SHARED_RENDER_ENGINE_IMPLEMENTED_PENDING_VISUAL_REVALIDATION",
   "createdAtKst": "2026-09-15",
-  "validatedBy": [
-    "2026 AVC Men's Continental Championship prototype",
-    "2026 AVC Women's Continental Championship prototype"
-  ],
-  "visualValidation": {
+  "engineRefactorAtKst": "2026-09-16",
+  "previousVisualBaseline": {
+    "status": "CROSS_GENDER_VISUALLY_VALIDATED_FROZEN_BASELINE",
     "confirmedAtKst": "2026-09-15",
     "desktop": 1180,
     "mobilePrimary": 390,
@@ -15,54 +13,90 @@
   },
   "sourceOfTruth": {
     "html": "templates/competition-page-pc-mobile-v2.html",
+    "shellJs": "assets/js/kvl-competition-shell-v2.js",
+    "controllerJs": "assets/js/kvl-competition-template-v2.js",
+    "componentJs": "assets/js/kvl-competition-components-v2.js",
     "css": "assets/css/kvl-competition-template-v2.css",
-    "js": "assets/js/kvl-competition-template-v2.js",
+    "componentCss": "assets/css/kvl-competition-components-v2.css",
     "dataExample": "templates/competition-page-v2.example.json",
     "guide": "docs/KVL_COMPETITION_PAGE_TEMPLATE_V2.md",
+    "renderEngineGuide": "docs/KVL_COMPETITION_RENDER_ENGINE_V2.md",
     "themePolicy": "docs/KVL_COMPETITION_THEME_POLICY_V1.md",
-    "smokeTest": "tests/competition-page-v2-reuse-smoke.html",
-    "themeSmokeTest": "tests/competition-page-v2-theme-smoke.html"
+    "stateSmokeTest": "tests/competition-page-v2-reuse-smoke.html",
+    "themeSmokeTest": "tests/competition-page-v2-theme-smoke.html",
+    "structureEngineSmokeTest": "tests/competition-page-v2-structure-engine-smoke.html"
   },
+  "architecture": {
+    "competitionSpecificUiMarkupAllowed": false,
+    "competitionSpecificGeometryCssAllowed": false,
+    "competitionAdapterRole": "normalize-data-only",
+    "commonEngineOwns": [
+      "shell",
+      "hero",
+      "navigation",
+      "kpi",
+      "qualification-cards",
+      "monthly-calendar",
+      "schedule",
+      "standings",
+      "final-ranking",
+      "knockout-bracket",
+      "participants",
+      "optional-roster",
+      "official-resources"
+    ],
+    "adapterRefreshSequence": [
+      "KVLCompetitionTemplateV2.apply",
+      "KVLCompetitionComponentsV2.render"
+    ]
+  },
+  "structureModes": {
+    "standings": [
+      "single-league",
+      "pools-combined",
+      "none"
+    ],
+    "knockout": [
+      "bracket-8",
+      "none"
+    ],
+    "participants": [
+      "flat",
+      "groups"
+    ],
+    "roster": [
+      "full",
+      "link-only",
+      "none"
+    ]
+  },
+  "normalizedMatchRoundValues": [
+    "QF",
+    "SF",
+    "BRONZE",
+    "FINAL"
+  ],
   "breakpoints": {
     "desktopMaxContent": 1180,
     "mobilePrimary": 390,
     "mobileSecondary": 360,
     "mobileCssMax": 680
   },
-  "views": ["overview","schedule","groups","knockout","rosters","resources"],
+  "views": [
+    "overview",
+    "schedule",
+    "groups",
+    "knockout",
+    "rosters",
+    "resources"
+  ],
   "stateModel": {
-    "allowed": ["upcoming","active","completed"],
-    "stageLabelIsSeparate": true,
-    "upcoming": {
-      "winnerResult": "hidden",
-      "qualificationResults": "officially-confirmed-only; normally none",
-      "standings": "do-not-invent-order-before-play"
-    },
-    "active": {
-      "winnerResult": "hidden-until-official",
-      "qualificationResults": "confirmed-only",
-      "knockout": "predicted-and-confirmed-must-be-distinguished"
-    },
-    "completed": {
-      "winnerResult": "show-official",
-      "qualificationResults": "show-all-official",
-      "predictionLanguage": "remove"
-    }
-  },
-  "commonInteraction": {
-    "viewActivationIndependentFromDataFetch": true,
-    "overviewKpiNavigation": true,
-    "redundantRosterCta": false,
-    "keyboardKpiNavigation": true,
-    "genderSwitchSameStageOnly": true
-  },
-  "responsiveRules": {
-    "sixTabsMobile": "3+3",
-    "horizontalScroll": "forbidden-except-special-data-tables",
-    "resourcesMobileColumns": 1,
-    "resourcesMobileTitleLines": 2,
-    "finalTop4MobileSingleRow": true,
-    "eliminatedCombinedRankingCellBackground": "transparent"
+    "allowed": [
+      "upcoming",
+      "active",
+      "completed"
+    ],
+    "stageLabelIsSeparate": true
   },
   "theme": {
     "priority": "women-first-then-men-competition-family",
@@ -76,34 +110,33 @@
       "soft": "#FFF1F6"
     },
     "men": {
-      "avc": {"primary":"#176638","strong":"#0D6F3C","soft":"#EEF8F1"},
-      "fivb": {"primary":"#5B3A8E","strong":"#442A70","soft":"#F3EFFA"},
-      "domestic": {"primary":"#163A5F","strong":"#102C49","soft":"#EEF4F8"}
+      "avc": {
+        "primary": "#176638",
+        "strong": "#0D6F3C",
+        "soft": "#EEF8F1"
+      },
+      "fivb": {
+        "primary": "#5B3A8E",
+        "strong": "#442A70",
+        "soft": "#F3EFFA"
+      },
+      "domestic": {
+        "primary": "#163A5F",
+        "strong": "#102C49",
+        "soft": "#EEF4F8"
+      }
     },
-    "fallback": "unclassified-men-use-avc-green-until-family-is-explicitly-defined",
     "score": "#4B5563",
     "goldUsage": "champion-medal-direct-qualification-special-achievement-only"
   },
-  "qualification": {
-    "dataDriven": true,
-    "resultRowPosition": "below-description-above-footer",
-    "la28UsesSameResultPositionAsWorldCup": true,
-    "neverGuessUnconfirmedTeams": true
+  "productionBoundary": {
+    "avcProductionChangedByEngineRefactor": false,
+    "vnlProductionChangedByEngineRefactor": false,
+    "prototypeFirst": true
   },
-  "roster": {
-    "preservePlayerId": true,
-    "reserveMemberPlayerCheckSlot": true,
-    "eventSnapshotAfterCompletion": true,
-    "neverInventMissingRoster": true
-  },
-  "excludedFromCommonTemplate": [
-    "competition-specific winner/team names",
-    "competition-specific URLs",
-    "AVC-specific fallback guards",
-    "pseudo-element hardcoded results"
-  ],
   "legacy": {
     "v1": "templates/competition-page-pc-mobile-v1.html",
-    "policy": "retain as historical frozen snapshot; do not use as first choice for new international competitions"
+    "vnlCompetitionSpecificCss": "removed from active V2 architecture",
+    "policy": "retain V1 as historical snapshot; V2 competition pages use shared shell/controller/components"
   }
 }

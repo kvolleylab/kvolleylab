@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>KVL 국제대회 기본 템플릿 V2</title>
-  <meta name="description" content="K-Volley Lab 국제대회 PC 1180 + 모바일 390/360 공통 템플릿 V2">
-  <link rel="stylesheet" href="/assets/css/kvl-competition-template-v2.css?v=20260915-1">
+  <meta name="description" content="K-Volley Lab 국제대회 공통 렌더링 엔진 V2">
+  <link rel="stylesheet" href="/assets/css/kvl-competition-template-v2.css?v=20260916-engine-1">
+  <link rel="stylesheet" href="/assets/css/kvl-competition-components-v2.css?v=20260916-engine-1">
   <script>
-    /* Replace this object with the competition data adapter. Never hardcode real results in common CSS. */
     window.KVL_COMPETITION_V2_DATA={
       competitionId:'KVL-TEMPLATE-V2',
       gender:'men',
+      competitionFamily:'avc',
       status:'upcoming',
       stageLabel:'공식 일정 확인 중',
       displayName:'KVL 국제대회 TEMPLATE V2',
@@ -20,81 +21,31 @@
       locationLabel:'개최지 확정 전',
       venueLabel:'경기장 확정 전',
       teamCount:null,groupCount:null,matchCount:null,knockoutTeamCount:null,
-      upcomingOverviewNote:'대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.',
-      qualifications:[
-        {id:'la28',brand:'LA 2028 올림픽',pill:'대회 규정 기준',title:'올림픽 진출 규정',description:'대회별 공식 진출 규정을 입력합니다.',foot:'공식 규정 확인',resultTeams:[]},
-        {id:'world-cup',brand:'FIVB World Cup',pill:'대회 규정 기준',title:'World Cup 진출 규정',description:'대회별 공식 진출 규정을 입력합니다.',foot:'공식 규정 확인',resultTeams:[]},
-        {id:'ranking',brand:'FIVB 세계랭킹',pill:'랭킹포인트',title:'세계랭킹 반영',description:'공식 랭킹포인트 적용 여부를 입력합니다.',foot:'모든 경기 공식 기준',resultTeams:[]}
-      ],
+      structure:{
+        labels:{groupsTab:'조별순위',groupsKpi:'조 편성',groupsKpiUnit:'개 조',knockoutKpi:'결선 진출',standingsTitle:'조별순위'},
+        calendar:true,
+        schedule:{stages:['전체','조별리그','8강','준결승','3위결정전','결승']},
+        standings:{mode:'pools-combined',combinedTitle:'예선 종합순위'},
+        knockout:{mode:'bracket-8',title:'결선 토너먼트'},
+        participants:{mode:'groups'},
+        roster:{mode:'full'}
+      },
+      meaning:{eyebrow:'ROAD TO THE WORLD',title:'대회 의미 · 국제 진출권',note:'대회별 공식 규정과 확정 결과만 표시합니다.'},
+      qualifications:[],
+      matches:[],
+      standings:{pools:[],combinedRows:[]},
+      participants:[],
+      finalRanking:[],
+      finalRankingFull:[],
       resources:[]
     };
   </script>
+  <script src="/assets/js/kvl-competition-shell-v2.js?v=20260916-engine-1" defer></script>
   <script src="/assets/js/kvl-competition-template-v2.js?v=20260915-1" defer></script>
+  <script src="/assets/js/kvl-competition-components-v2.js?v=20260916-engine-1" defer></script>
 </head>
-<body class="kvl1180-prototype kvl-competition-template-v2" data-kvl-gender="men" data-kvl-status="upcoming">
-
-<svg class="kvl1180-sprite" aria-hidden="true" focusable="false">
-  <symbol id="kvl-icon-calendar-line" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
-  <symbol id="kvl-icon-pin-line" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
-  <symbol id="kvl-icon-users-solid" viewBox="0 0 24 24"><circle cx="8" cy="7" r="3.3"/><circle cx="16.5" cy="8.2" r="2.7"/><path d="M1.7 20c.25-4.6 2.6-7.2 6.3-7.2s6.05 2.6 6.3 7.2H1.7Z"/></symbol>
-  <symbol id="kvl-icon-layers-solid" viewBox="0 0 24 24"><path d="m12 2.4 10 5.2-10 5.2L2 7.6 12 2.4Z"/><path d="m2.9 11.5 9.1 4.7 9.1-4.7.9 2-10 5.2-10-5.2.9-2Z"/></symbol>
-  <symbol id="kvl-icon-calendar-solid" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><rect x="6" y="2" width="2.5" height="6" rx="1.2"/><rect x="15.5" y="2" width="2.5" height="6" rx="1.2"/></symbol>
-  <symbol id="kvl-icon-trophy-solid" viewBox="0 0 24 24"><path d="M7 3h10v5.2c0 4.4-2 7.3-5 7.3s-5-2.9-5-7.3V3Z"/><rect x="7.5" y="19" width="9" height="2.5" rx="1.2"/></symbol>
-  <symbol id="kvl-icon-pin-solid" viewBox="0 0 24 24"><path d="M12 2.2a7.8 7.8 0 0 0-7.8 7.8c0 5.5 7.8 12 7.8 12s7.8-6.5 7.8-12A7.8 7.8 0 0 0 12 2.2Z"/></symbol>
-  <symbol id="kvl-icon-medal-solid" viewBox="0 0 24 24"><circle cx="12" cy="14.5" r="6.5"/></symbol>
-  <symbol id="kvl-icon-world-solid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></symbol>
-</svg>
-
-<main class="kvl1180-main">
-  <section class="kvl1180-hero" aria-labelledby="pageTitle">
-    <div class="kvl1180-hero-copy">
-      <p class="kvl1180-eyebrow" data-kvl="eyebrow">INTERNATIONAL COMPETITION</p>
-      <h1 id="pageTitle" data-kvl="title">KVL 국제대회 TEMPLATE V2</h1>
-      <p class="kvl1180-hero-sub" data-kvl="official-name">K-Volley Lab International Competition Template V2</p>
-      <div class="kvl1180-hero-meta">
-        <div class="kvl1180-meta-row"><svg class="kvl1180-icon"><use href="#kvl-icon-calendar-line"/></svg><span data-kvl="dates">일정 확정 전</span></div>
-        <div class="kvl1180-meta-row"><svg class="kvl1180-icon"><use href="#kvl-icon-pin-line"/></svg><span class="kvl1180-hero-location"><span data-kvl="location">개최지 확정 전</span><span data-kvl="venue">경기장 확정 전</span></span></div>
-      </div>
-    </div>
-    <div class="kvl1180-hero-status" aria-label="대회 상태"><span data-kvl="hero-status">대회 시작 전</span><span data-kvl="hero-team-count">참가국 확정 전</span><span class="is-accent" data-kvl="hero-stage">공식 일정 확인 중</span></div>
-  </section>
-
-  <div class="kvl1180-controlbar">
-    <nav class="kvl1180-tabs" aria-label="대회 메뉴">
-      <a data-view="overview" href="?view=overview">한눈에 보기</a><a data-view="schedule" href="?view=schedule">경기일정</a><a data-view="groups" href="?view=groups">조별순위</a><a data-view="knockout" href="?view=knockout">최종순위</a><a data-view="rosters" href="?view=rosters&team=KOR">참가국</a><a data-view="resources" href="?view=resources">공식자료</a>
-    </nav>
-    <nav class="kvl1180-gender" aria-label="성별 전환"><a data-gender-link="men" href="#">MEN · 남자부</a><a data-gender-link="women" href="#">WOMEN · 여자부</a></nav>
-  </div>
-
-  <section class="kvl1180-card kvl1180-view" data-view="overview" aria-labelledby="snapshotTitle">
-    <div class="kvl1180-section-head"><div><p class="label">TOURNAMENT SNAPSHOT</p><h2 id="snapshotTitle">대회 한눈에 보기</h2></div><p class="kvl1180-overview-result" data-result-mode="upcoming"><strong>대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.</strong></p></div>
-    <div class="kvl1180-kpis">
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-users-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>참가국</span><strong data-kvl="team-count">미정</strong><small>개국</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-layers-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>조 편성</span><strong data-kvl="group-count">미정</strong><small>개 조</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-calendar-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>전체 일정</span><strong data-kvl="match-count">미정</strong><small>경기</small></div></article>
-      <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-trophy-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>결선 진출</span><strong data-kvl="qualifier-count">미정</strong><small>개국</small></div></article>
-      <article class="kvl1180-kpi is-venue"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-pin-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>대회 장소</span><strong data-kvl="venue-primary">미정</strong><small data-kvl="venue-secondary">확정 전</small></div></article>
-    </div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-stakes-card kvl1180-view" data-view="overview" aria-labelledby="stakesTitle">
-    <div class="kvl1180-section-head"><div><p class="label">ROAD TO THE WORLD</p><h2 id="stakesTitle">대회 의미 · 국제 진출권</h2></div><p>대회별 공식 규정과 확정 결과만 표시합니다.</p></div>
-    <div class="kvl1180-stakes-grid">
-      <article class="kvl1180-stake is-la" data-qualification-id="la28"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand">LA 2028 올림픽</span><span class="kvl1180-pill" data-role="qualification-pill">대회 규정 기준</span></div><h3>올림픽 진출 규정</h3><p data-role="qualification-desc">공식 규정을 입력합니다.</p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot">공식 규정 확인</div></article>
-      <article class="kvl1180-stake is-wc" data-qualification-id="world-cup"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand">FIVB World Cup</span><span class="kvl1180-pill" data-role="qualification-pill">대회 규정 기준</span></div><h3>World Cup 진출 규정</h3><p data-role="qualification-desc">공식 규정을 입력합니다.</p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot">공식 규정 확인</div></article>
-      <article class="kvl1180-stake is-wr" data-qualification-id="ranking"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand" data-role="qualification-brand">FIVB 세계랭킹</span><span class="kvl1180-pill" data-role="qualification-pill">랭킹포인트</span></div><h3>세계랭킹 반영</h3><p data-role="qualification-desc">공식 랭킹포인트 적용 여부를 입력합니다.</p><div class="kvl1180-stake-confirmed" hidden><strong>대회 결과</strong><span></span></div><div class="kvl1180-stake-foot">모든 경기 공식 기준</div></article>
-    </div>
-  </section>
-
-  <section class="kvl1180-card kvl1180-view" data-view="schedule" hidden><div class="kvl1180-section-head"><div><p class="label">SCHEDULE</p><h2>경기일정</h2></div><p>KST + 개최지 현지시간</p></div><div data-slot="monthly-calendar">월간 달력 renderer slot</div><div data-slot="schedule-list">경기일정 renderer slot</div></section>
-
-  <section class="kvl1180-card kvl1180-view" data-view="groups" hidden><div class="kvl1180-section-head"><div><p class="label">STANDINGS</p><h2>조별순위</h2></div><p>승리 · 승점 · 세트득실률 · 득점득실률</p></div><div data-slot="pool-standings">조별순위 renderer slot</div><div data-slot="combined-ranking">예선 종합순위 renderer slot</div></section>
-
-  <section class="kvl1180-card kvl1180-view" data-view="knockout" hidden><div class="kvl1180-section-head"><div><p class="label">FINAL RANKING</p><h2>최종순위</h2></div><p>확정 결과만 표시</p></div><div class="kvl1180-final-grid"><article class="kvl1180-final-card" data-final-rank="1"><span class="kvl1180-final-rank">1위</span><div class="kvl1180-final-copy"><strong data-role="final-team">미정</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article><article class="kvl1180-final-card" data-final-rank="2"><span class="kvl1180-final-rank">2위</span><div class="kvl1180-final-copy"><strong data-role="final-team">미정</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article><article class="kvl1180-final-card" data-final-rank="3"><span class="kvl1180-final-rank">3위</span><div class="kvl1180-final-copy"><strong data-role="final-team">미정</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article><article class="kvl1180-final-card" data-final-rank="4"><span class="kvl1180-final-rank">4위</span><div class="kvl1180-final-copy"><strong data-role="final-team">미정</strong><small data-role="final-result"></small><span class="kvl-final-qualification" hidden></span></div></article></div><div data-slot="knockout-bracket">결선 토너먼트 renderer slot</div></section>
-
-  <section class="kvl1180-card kvl1180-view" data-view="rosters" hidden><div class="kvl1180-section-head"><div><p class="label">PARTICIPANTS</p><h2>참가국</h2></div><p>Player ID 기반 등록명단</p></div><div data-slot="country-cards">참가국 카드 renderer slot</div><div data-slot="roster">등록 선수명단 renderer slot</div></section>
-
-  <section class="kvl1180-card kvl1180-view" id="resources" data-view="resources" hidden><div class="kvl1180-section-head"><div><p class="label">OFFICIAL RESOURCES</p><h2>공식자료</h2></div><p>실제 공식 출처만 연결</p></div><div class="kvl1180-sources" id="resourceList"></div></section>
-</main>
+<body class="kvl1180-prototype kvl-competition-template-v2" data-kvl-gender="men" data-kvl-family="avc" data-kvl-status="upcoming">
+  <main data-kvl-shell></main>
+  <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
 </body>
 </html>

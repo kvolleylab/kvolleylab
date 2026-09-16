@@ -1,96 +1,300 @@
 {
-  "schemaVersion": "KVL_COMPETITION_PAGE_V2_DATA_1",
-  "competitionId": "KVL-INT-DEMO-2027-001",
-  "gender": "women",
-  "competitionFamily": "fivb",
-  "status": "upcoming",
-  "stageLabel": "일정 발표",
-  "displayName": "KVL 국제대회 데모 2027",
-  "officialName": "K-Volley Lab International Demo 2027",
+  "competitionId": "KVL-TEMPLATE-V2-EXAMPLE",
+  "gender": "men",
+  "competitionFamily": "avc",
+  "status": "active",
+  "stageLabel": "조별리그 진행 중",
+  "displayName": "KVL 국제대회 예시",
+  "officialName": "KVL International Competition Example",
   "dateLabel": "2027-06-01 ~ 2027-06-10",
-  "locationLabel": "대한민국 · 테스트시",
-  "venueLabel": "KVL 테스트 아레나",
-  "teamCount": 12,
-  "groupCount": 3,
-  "matchCount": 26,
-  "knockoutTeamCount": 8,
-  "hero": {
-    "pcImage": "assets/img/competition-hero/REPLACE-PC.webp",
-    "mobileImage": "assets/img/competition-hero/REPLACE-MOBILE.webp",
-    "position": "center center",
-    "mobilePosition": "62% center"
+  "locationLabel": "예시 개최지",
+  "venueLabel": "예시 체육관",
+  "teamCount": 4,
+  "groupCount": 1,
+  "matchCount": 4,
+  "knockoutTeamCount": 4,
+  "structure": {
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "조 편성",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "결선 진출",
+      "standingsTitle": "조별순위"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "조별리그",
+        "준결승",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "pools-combined",
+      "combinedTitle": "예선 종합순위"
+    },
+    "knockout": {
+      "mode": "bracket-8",
+      "title": "결선 토너먼트"
+    },
+    "participants": {
+      "mode": "groups"
+    },
+    "roster": {
+      "mode": "full"
+    }
   },
-  "genderLinks": {
-    "men": "international-competition-demo-2027-men.html?view=overview",
-    "women": "international-competition-demo-2027-women.html?view=overview"
+  "meaning": {
+    "eyebrow": "ROAD TO THE WORLD",
+    "title": "대회 의미 · 국제 진출권",
+    "note": "공식 규정과 확정 결과만 표시합니다."
   },
-  "upcomingOverviewNote": "대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.",
-  "activeOverviewNote": "조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.",
-  "champion": null,
-  "championAchievement": null,
   "qualifications": [
     {
-      "id": "la28",
-      "brand": "LA 2028 올림픽",
-      "pill": "아시아 1장",
-      "title": "우승팀 직행",
-      "description": "공식 대회 규정에 따라 우승팀이 올림픽 출전권을 획득합니다.",
-      "foot": "우승 → LA28 올림픽 진출",
-      "resultLabel": "대회 결과",
-      "resultTeams": []
-    },
-    {
-      "id": "world-cup",
-      "brand": "2027 FIVB World Cup",
-      "pill": "최대 3장",
-      "title": "최종 상위 팀 진출",
-      "description": "공식 대회 규정에 따른 eligible teams만 적용합니다.",
-      "foot": "최종순위 공식 기준",
-      "resultLabel": "대회 결과",
-      "resultTeams": []
-    },
-    {
       "id": "ranking",
+      "className": "is-wr",
       "brand": "FIVB 세계랭킹",
       "pill": "랭킹포인트",
-      "title": "모든 경기 랭킹 반영",
-      "description": "공식 FIVB 랭킹포인트 규정에 따라 반영합니다.",
-      "foot": "모든 경기 공식 기준",
-      "resultLabel": "대회 결과",
+      "title": "세계랭킹 반영",
+      "description": "공식 랭킹포인트 적용 여부를 입력합니다.",
+      "foot": "공식 규정 확인",
       "resultTeams": []
     }
   ],
-  "finalRanking": [
-    {"rank": 1, "team": "미정", "result": "", "qualification": ""},
-    {"rank": 2, "team": "미정", "result": "", "qualification": ""},
-    {"rank": 3, "team": "미정", "result": "", "qualification": ""},
-    {"rank": 4, "team": "미정", "result": "", "qualification": ""}
-  ],
-  "resources": [
-    {"title": "공식 대회 페이지", "url": "https://example.com/official"},
-    {"title": "공식 경기일정·결과", "url": "https://example.com/schedule"}
-  ],
-  "stateExamples": {
-    "upcoming": {
-      "status": "upcoming",
-      "stageLabel": "조편성 확정",
-      "champion": null,
-      "championAchievement": null,
-      "qualificationResultPolicy": "hide-until-officially-confirmed"
+  "participants": [
+    {
+      "name": "테스트 A",
+      "en": "Test A",
+      "code": "TAA",
+      "flag": "https://flagcdn.com/w80/kr.png",
+      "group": "A",
+      "count": 14
     },
-    "active": {
-      "status": "active",
-      "stageLabel": "조별리그 진행 중",
-      "champion": null,
-      "championAchievement": null,
-      "qualificationResultPolicy": "show-confirmed-only"
+    {
+      "name": "테스트 B",
+      "en": "Test B",
+      "code": "TBB",
+      "flag": "https://flagcdn.com/w80/jp.png",
+      "group": "A",
+      "count": 14
     },
-    "completed": {
-      "status": "completed",
-      "stageLabel": "대회 종료",
-      "champion": "공식 우승팀",
-      "championAchievement": "확정된 특수 성취",
-      "qualificationResultPolicy": "show-all-officially-confirmed"
+    {
+      "name": "테스트 C",
+      "en": "Test C",
+      "code": "TCC",
+      "flag": "https://flagcdn.com/w80/cn.png",
+      "group": "A",
+      "count": 14
+    },
+    {
+      "name": "테스트 D",
+      "en": "Test D",
+      "code": "TDD",
+      "flag": "https://flagcdn.com/w80/au.png",
+      "group": "A",
+      "count": 14
     }
-  }
+  ],
+  "matches": [
+    {
+      "id": "M1",
+      "date": "2027-06-01",
+      "time": "19:00",
+      "stage": "조별리그",
+      "group": "A",
+      "home": {
+        "name": "테스트 A",
+        "en": "Test A",
+        "code": "TAA",
+        "flag": "https://flagcdn.com/w80/kr.png"
+      },
+      "away": {
+        "name": "테스트 B",
+        "en": "Test B",
+        "code": "TBB",
+        "flag": "https://flagcdn.com/w80/jp.png"
+      },
+      "venueLabel": "예시 체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "M2",
+      "date": "2027-06-02",
+      "time": "19:00",
+      "stage": "조별리그",
+      "group": "A",
+      "home": {
+        "name": "테스트 C",
+        "en": "Test C",
+        "code": "TCC",
+        "flag": "https://flagcdn.com/w80/cn.png"
+      },
+      "away": {
+        "name": "테스트 D",
+        "en": "Test D",
+        "code": "TDD",
+        "flag": "https://flagcdn.com/w80/au.png"
+      },
+      "venueLabel": "예시 체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": []
+      }
+    },
+    {
+      "id": "SF1",
+      "date": "2027-06-08",
+      "time": "16:00",
+      "stage": "준결승",
+      "round": "SF",
+      "home": {
+        "name": "테스트 A",
+        "code": "TAA",
+        "flag": "https://flagcdn.com/w80/kr.png"
+      },
+      "away": {
+        "name": "테스트 D",
+        "code": "TDD",
+        "flag": "https://flagcdn.com/w80/au.png"
+      },
+      "venueLabel": "예시 체육관"
+    },
+    {
+      "id": "FINAL",
+      "date": "2027-06-10",
+      "time": "19:00",
+      "stage": "결승",
+      "round": "FINAL",
+      "home": {
+        "name": "미정"
+      },
+      "away": {
+        "name": "미정"
+      },
+      "venueLabel": "예시 체육관"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "name": "테스트 A",
+              "en": "Test A",
+              "code": "TAA",
+              "flag": "https://flagcdn.com/w80/kr.png"
+            },
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "points": 3,
+            "setRatio": "3.000",
+            "pointRatio": "1.100",
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "name": "테스트 C",
+              "en": "Test C",
+              "code": "TCC",
+              "flag": "https://flagcdn.com/w80/cn.png"
+            },
+            "played": 1,
+            "wins": 1,
+            "losses": 0,
+            "points": 2,
+            "setRatio": "1.500",
+            "pointRatio": "1.050",
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "name": "테스트 D",
+              "en": "Test D",
+              "code": "TDD",
+              "flag": "https://flagcdn.com/w80/au.png"
+            },
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "points": 1,
+            "setRatio": "0.667",
+            "pointRatio": "0.950",
+            "status": "out",
+            "statusLabel": "조별리그 탈락"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "name": "테스트 B",
+              "en": "Test B",
+              "code": "TBB",
+              "flag": "https://flagcdn.com/w80/jp.png"
+            },
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "points": 0,
+            "setRatio": "0.333",
+            "pointRatio": "0.900",
+            "status": "out",
+            "statusLabel": "조별리그 탈락"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "finalRanking": [],
+  "finalRankingFull": [],
+  "rosters": {
+    "TAA": {
+      "players": [
+        {
+          "number": 1,
+          "name": "테스트 선수",
+          "en": "Test Player",
+          "position": "OH",
+          "heightCm": 190
+        }
+      ]
+    }
+  },
+  "resources": [
+    {
+      "title": "KVL 테스트 공식자료",
+      "url": "https://example.com/"
+    }
+  ]
 }
