@@ -1,6 +1,7 @@
 /* K-Volley Lab · Competition V2 shared component renderer
- * Calendar / schedule / standings / knockout / participants are rendered here for every competition.
- * Competition adapters may normalize data, but must not create component HTML.
+ * Visual source of truth: validated AVC men/women production.
+ * Calendar / schedule / standings / knockout / participants all emit the frozen AVC class structure.
+ * Competition adapters normalize data only and MUST NOT create component HTML.
  */
 (()=>{
 'use strict';
@@ -32,7 +33,7 @@ function cfg(d){
       groupsKpiUnit:d.structure?.labels?.groupsKpiUnit||'개 조',
       knockoutKpi:d.structure?.labels?.knockoutKpi||'결선 진출',
       standingsTitle:d.structure?.labels?.standingsTitle||'조별순위',
-      standingsEyebrow:d.structure?.labels?.standingsEyebrow||'STANDINGS',
+      standingsEyebrow:d.structure?.labels?.standingsEyebrow||'POOL & COMBINED STANDINGS',
       knockoutTitle:d.structure?.labels?.knockoutTitle||'최종순위',
       participantsTitle:d.structure?.labels?.participantsTitle||'참가국'
     },
@@ -43,6 +44,13 @@ function cfg(d){
     participants:d.structure?.participants||{mode:'groups'},
     roster:d.structure?.roster||{mode:'full'}
   };
+}
+
+function applyVisualBaseline(d){
+  const body=document.body;
+  body.setAttribute('data-avc-gender','men');
+  body.classList.toggle('kvl1180-women-template',d.gender==='women');
+  body.dataset.kvlVisualBaseline='avc-validated';
 }
 
 function applyStructureLabels(d){
@@ -57,13 +65,15 @@ function applyStructureLabels(d){
   txt(q('[data-kvl-label="participants-title"]'),c.labels.participantsTitle);
   txt(q('[data-kvl="schedule-note"]'),d.scheduleNote||'한국시간(KST)');
   txt(q('[data-kvl="standings-note"]'),d.standingsNote||'공식 결과 기준');
+  txt(q('[data-kvl="groups-status"]'),d.standingsStatus||d.standingsNote||'공식 결과 기준');
+  txt(q('[data-kvl="standings-rule"]'),d.standingsRule||'승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률 순으로 적용합니다.');
   txt(q('[data-kvl="participants-status"]'),d.teamCount?`${d.teamCount}개국`:'참가국');
   txt(q('[data-kvl="bracket-title"]'),c.knockout.title||'결선 토너먼트');
   txt(q('[data-kvl="meaning-eyebrow"]'),d.meaning?.eyebrow||'ROAD TO THE WORLD');
   txt(q('[data-kvl="meaning-title"]'),d.meaning?.title||'대회 의미 · 국제 진출권');
   txt(q('[data-kvl="meaning-note"]'),d.meaning?.note||'대회별 공식 규정과 확정 결과만 표시합니다.');
   const women=q('[data-gender-link="women"]');
-  if(women&&!d.genderLinks?.women){women.classList.add('is-disabled');women.setAttribute('aria-disabled','true');}
+  if(women){const disabled=!d.genderLinks?.women;women.classList.toggle('is-disabled',disabled);if(disabled)women.setAttribute('aria-disabled','true');else women.removeAttribute('aria-disabled');}
 }
 
 function bindKpis(d){
@@ -76,12 +86,13 @@ function bindKpis(d){
   });
 }
 
+function qualificationIcon(cls){return cls==='is-la'?'medal':cls==='is-wc'?'world':'bars';}
 function renderQualifications(d){
   const root=q('[data-kvl-component="qualifications"]'),section=q('[data-kvl-section="qualifications"]');if(!root)return;
   const items=d.qualifications||[];if(section)section.hidden=!items.length;
   root.innerHTML=items.map((x,i)=>{
-    const cls=x.className||(['is-la','is-wc','is-wr'][i]||'is-wr'),teams=(x.resultTeams||[]).filter(Boolean),has=teams.length>0;
-    return `<article class="kvl1180-stake ${esc(cls)} ${has?'has-confirmed-result':''}"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand">${esc(x.brand||'대회 규정')}</span><span class="kvl1180-pill">${esc(x.pill||'공식 기준')}</span></div><h3>${esc(x.title||'공식 규정')}</h3><p>${esc(x.description||'')}</p>${has?`<div class="kvl1180-stake-confirmed"><strong>${esc(x.resultLabel||'대회 결과')}</strong><span>${esc(teams.join(' · '))}</span></div>`:''}<div class="kvl1180-stake-foot">${esc(x.foot||'')}</div></article>`;
+    const cls=x.className||(['is-la','is-wc','is-wr'][i]||'is-wr'),teams=(x.resultTeams||[]).filter(Boolean),has=teams.length>0,icon=qualificationIcon(cls);
+    return `<article class="kvl1180-stake ${esc(cls)} ${has?'has-confirmed-result':''}"><div class="kvl1180-stake-top"><span class="kvl1180-stake-brand"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-${icon}-solid"/></svg>${esc(x.brand||'대회 규정')}</span><span class="kvl1180-pill">${esc(x.pill||'공식 기준')}</span></div><h3>${esc(x.title||'공식 규정')}</h3><p>${esc(x.description||'')}</p>${has?`<div class="kvl1180-stake-confirmed"><strong>${esc(x.resultLabel||'대회 결과')}</strong><span>${esc(teams.join(' · '))}</span></div>`:''}<div class="kvl1180-stake-foot">${esc(x.foot||'')}</div></article>`;
   }).join('');
 }
 
@@ -109,7 +120,7 @@ function renderCalendar(d){
 function stages(d){const x=d.structure?.schedule?.stages;if(Array.isArray(x)&&x.length)return x;return ['전체',...[...new Set((d.matches||[]).map(stage).filter(Boolean))]];}
 function setLine(m){const s=score(m);if(!s?.sets?.length)return '';return s.sets.map(x=>{const h=Number(x?.home??x?.[0]),a=Number(x?.away??x?.[1]);return Number.isFinite(h)&&Number.isFinite(a)?`<span>${h}-${a}</span>`:'';}).filter(Boolean).join('');}
 function side(t,pos){const mark=flag(t)?`<span class="kvl1180-inline-logo"><img src="${esc(flag(t))}" alt="${esc(name(t))} 국기" loading="lazy"></span>`:`<span class="kvl1180-inline-logo kvl1180-seed-icon">${esc(code(t)||'?')}</span>`,copy=`<span class="kvl1180-slot-copy"><strong>${esc(name(t))}</strong>${code(t)?`<small>${esc(code(t))}</small>`:''}</span>`;return pos==='left'?`<span class="kvl1180-side is-left">${mark}${copy}</span>`:`<span class="kvl1180-side is-right">${copy}${mark}</span>`;}
-function matchRow(m){const s=score(m),detail=[stage(m),m.group?`${m.group}조`:'',venue(m),'한국시간(KST)'].filter(Boolean).join(' · ');return `<article class="kvl1180-match-row"><div class="kvl1180-match-meta"><time>${esc(time(m)||'시간 미정')} KST</time></div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s?'':'is-upcoming'}">${s?`${s.home}-${s.away}`:'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${setLine(m)}</div><div class="kvl1180-match-detail">${esc(detail)}</div></article>`;}
+function matchRow(m){const s=score(m),detail=[stage(m),m.group?`${m.group}조`:'',venue(m),'한국시간(KST)'].filter(Boolean).join(' · ');return `<article class="kvl1180-match-row"><div class="kvl1180-match-meta"><time>${esc(time(m)||'시간 미정')} KST</time>${m.officialNo?`<span class="kvl1180-match-official-no">MATCH ${esc(m.officialNo)}</span>`:''}</div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s?'':'is-upcoming'}">${s?`${s.home}-${s.away}`:'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${setLine(m)}</div><div class="kvl1180-match-detail">${esc(detail)}</div></article>`;}
 function renderSchedule(d){
   const filters=q('[data-kvl-component="schedule-filters"]'),summary=q('[data-kvl-component="schedule-summary"]'),root=q('[data-kvl-component="schedule-list"]');if(!root)return;
   const ss=stages(d);if(!ss.includes(runtime.stage))runtime.stage='전체';
@@ -121,17 +132,26 @@ function renderSchedule(d){
   const wanted=new URLSearchParams(location.search).get('date'),el=wanted?document.getElementById(`date-${wanted}`):null;if(el)requestAnimationFrame(()=>el.scrollIntoView({block:'start'}));
 }
 
-function statusOf(r){if(r.status==='host-qualified')return {label:r.statusLabel||'개최국 진출',cls:'is-host'};if(r.status==='qualified')return {label:r.statusLabel||'결선 진출',cls:'is-qualified'};if(r.status==='out')return {label:r.statusLabel||'예선 종료',cls:'is-out'};return {label:r.statusLabel||'',cls:''};}
-const stat=(v,l)=>`<span class="kvl-v2-stat"><b>${esc(v??'-')}</b><small>${l}</small></span>`;
-function standingRows(rows){return (rows||[]).map(r=>{const t=r.team||{},st=statusOf(r);return `<div class="kvl-v2-standing-row ${st.cls}"><span class="kvl-v2-standing-rank">${esc(r.rank??'-')}</span><span class="kvl-v2-standing-team">${flag(t)?`<img src="${esc(flag(t))}" alt="${esc(name(t))} 국기" loading="lazy">`:''}<span><strong>${esc(name(t))}</strong><small>${esc(en(t)||code(t))}</small></span></span><span class="kvl-v2-standing-stats">${stat(r.played,'경기')}${stat(r.wins,'승')}${stat(r.losses,'패')}${stat(r.points,'승점')}${stat(r.setRatio,'세트율')}${stat(r.pointRatio,'득점율')}</span><span class="kvl-v2-standing-result">${st.label?`<b class="kvl-v2-badge ${st.cls}">${esc(st.label)}</b>`:''}</span></div>`;}).join('');}
-function standingBlock(title,rows){return `<section class="kvl-v2-standing-block"><header class="kvl-v2-standing-block-head"><strong>${esc(title)}</strong><span>${rows?.length||0}개국</span></header><div class="kvl-v2-standing-head"><span>순위</span><span>국가</span><span>경기 · 승 · 패 · 승점 · 세트율 · 득점율</span><span>결과</span></div>${standingRows(rows)}</section>`;}
-function renderStandings(d){const root=q('[data-kvl-component="standings"]');if(!root)return;const c=cfg(d).standings,s=d.standings||{};if(c.mode==='none'){root.innerHTML='<div class="kvl1180-schedule-empty">이 대회는 별도 예선 순위를 사용하지 않습니다.</div>';return;}if(c.mode==='single-league'){root.innerHTML=standingBlock(c.title||'예선 종합순위',s.rows||[]);return;}root.innerHTML=`<div class="kvl-v2-pool-grid">${(s.pools||[]).map(p=>standingBlock(p.title||`${p.id||''}조`,p.rows||[])).join('')}</div>${s.combinedRows?.length?standingBlock(c.combinedTitle||'예선 종합순위',s.combinedRows):''}`;}
+function statusOf(r){if(r.status==='host-qualified')return {label:r.statusLabel||'개최국 진출',cls:'is-qualified'};if(r.status==='qualified')return {label:r.statusLabel||'결선 진출',cls:'is-qualified'};if(r.status==='out')return {label:r.statusLabel||'예선 종료',cls:'is-out'};return {label:r.statusLabel||'',cls:''};}
+function teamCell(t,cls){return `<span class="${cls}">${flag(t)?`<img src="${esc(flag(t))}" alt="${esc(name(t))} 국기" loading="lazy">`:''}<span class="${cls}-copy"><strong>${esc(name(t))}</strong><small>${esc(en(t)||code(t))}</small></span></span>`;}
+function poolRow(r){const st=statusOf(r),t=r.team||{};return `<div class="kvl1180-pool-row ${st.cls}"><span class="kvl1180-pool-rank">${esc(r.rank??'-')}</span>${teamCell(t,'kvl1180-pool-team')}<span class="kvl1180-pool-w">${esc(r.wins??'-')}</span><span class="kvl1180-pool-l">${esc(r.losses??'-')}</span><span class="kvl1180-pool-pts">${esc(r.points??'-')}</span><span class="kvl1180-pool-ratio">${esc(r.setRatio??'-')}</span><span class="kvl1180-pool-ratio">${esc(r.pointRatio??'-')}</span></div>`;}
+function poolCard(p){const rows=p.rows||[];return `<article class="kvl1180-pool-card"><header class="kvl1180-pool-card-head"><strong>${esc(p.title||`${p.id||''}조`)}</strong><span>${rows.length}개국</span></header><div class="kvl1180-pool-table-head"><span>순위</span><span>국가</span><span>승</span><span>패</span><span>승점</span><span>세트율</span><span>득점율</span></div>${rows.map(poolRow).join('')}</article>`;}
+function poolRankLabel(d,r){const pools=d.standings?.pools||[];for(const p of pools){const found=(p.rows||[]).find(x=>name(x.team)===name(r.team));if(found)return `${p.id||String(p.title||'').replace('조','')}조 ${found.rank}위`;}return `예선 ${r.rank??'-'}위`;}
+function qfPair(r,c){if(c.mode==='single-league'||r.status!=='qualified')return '';const n=Number(r.rank);return Number.isFinite(n)&&n>=1&&n<=8?`${n}-${9-n}`:'';}
+function combinedRow(d,r,c){const st=statusOf(r),t=r.team||{},pool=poolRankLabel(d,r).split(' ')[0],pair=qfPair(r,c);return `<div class="kvl1180-combined-row ${st.cls}"><span class="kvl1180-combined-rank">${esc(r.rank??'-')}</span>${teamCell(t,'kvl1180-combined-team')}<span class="kvl1180-combined-pool">${esc(pool)}</span><span class="kvl1180-combined-stat">${esc(r.wins??'-')}</span><span class="kvl1180-combined-stat">${esc(r.losses??'-')}</span><span class="kvl1180-combined-stat">${esc(r.points??'-')}</span><span class="kvl1180-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl1180-combined-stat">${esc(r.pointRatio??'-')}</span><span><b class="kvl1180-combined-result ${st.cls}">${esc(st.label||'')}</b>${pair?`<small class="kvl1180-qf-pairing">${esc(pair)}</small>`:''}</span></div>`;}
+function mobileCombinedLine(d,r,c){const st=statusOf(r),t=r.team||{},pair=qfPair(r,c);return `<div class="kvl-shared-combined-line ${name(t)==='대한민국'?'is-korea':''}"><span class="kvl-shared-combined-identity"><b class="kvl-shared-combined-rank">${esc(r.rank??'-')}</b>${flag(t)?`<span class="kvl-shared-combined-flag"><img src="${esc(flag(t))}" alt="${esc(name(t))} 국기"></span>`:''}<strong class="kvl-shared-combined-team">${esc(name(t))}</strong></span><span class="kvl-shared-combined-result ${st.cls}"><b>${esc(st.label||'')}</b>${pair?`<small>${esc(pair)}</small>`:''}</span><span class="kvl-shared-combined-stat">${esc(r.wins??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.points??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.pointRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(poolRankLabel(d,r))}</span></div>`;}
+function combinedBlock(d,rows,c){const title=c.title||c.combinedTitle||'예선 종합순위',single=c.mode==='single-league';return `<section class="kvl1180-combined-block ${single?'is-single-league':''}"><div class="kvl1180-combined-head"><div><p class="label">PRELIMINARY OVERALL</p><h3>${esc(title)}</h3></div><p>${esc(single?'예선 전체 순위 · 공식 결과 기준':'각 조 성적을 대회 규정에 따라 통합한 순위')}</p></div><div class="kvl1180-combined-table"><div class="kvl1180-combined-table-head"><span>순위</span><span>국가</span><span>${single?'구분':'조'}</span><span>승</span><span>패</span><span>승점</span><span>세트율</span><span>득점율</span><span>결과</span></div>${rows.map(r=>combinedRow(d,r,c)).join('')}</div><div class="kvl-shared-combined-mobile"><div class="kvl-shared-combined-table"><div class="kvl-shared-combined-line is-head"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank-head">순위</span><span class="kvl-shared-combined-country-head">국가</span></span><span>결과</span><span>승</span><span>승점</span><span>세트율</span><span>득점율</span><span>${single?'예선순위':'조순위'}</span></div>${rows.map(r=>mobileCombinedLine(d,r,c)).join('')}</div></div></section>`;}
+function renderStandings(d){
+  const root=q('[data-kvl-component="standings"]');if(!root)return;const c=cfg(d).standings,s=d.standings||{};
+  if(c.mode==='none'){root.innerHTML='<div class="kvl1180-schedule-empty">이 대회는 별도 예선 순위를 사용하지 않습니다.</div>';return;}
+  if(c.mode==='single-league'){root.innerHTML=combinedBlock(d,s.rows||[],c);return;}
+  root.innerHTML=`<div class="kvl1180-pool-grid">${(s.pools||[]).map(poolCard).join('')}</div>${s.combinedRows?.length?combinedBlock(d,s.combinedRows,c):''}`;
+}
 
 function renderFinal(d){
-  const top=q('[data-kvl-component="final-top4"]'),full=q('[data-kvl-component="final-ranking-list"]');
-  if(top){const rows=(d.finalRanking||[]).slice().sort((a,b)=>Number(a.rank)-Number(b.rank)).slice(0,4);top.innerHTML=rows.map(x=>`<article class="kvl1180-final-card ${Number(x.rank)===1?'is-champion':''}"><span class="kvl1180-final-rank">${esc(x.rank)}위</span>${x.flag?`<span class="kvl1180-final-flag"><img src="${esc(x.flag)}" alt="${esc(x.team||'')} 국기"></span>`:''}<div class="kvl1180-final-copy"><strong>${esc(x.team||'미정')}</strong><small>${esc(x.result||'')}</small>${x.qualification?`<span class="kvl-final-qualification">${esc(x.qualification)}</span>`:''}</div></article>`).join('');}
-  if(full){const rows=d.finalRankingFull||[];full.innerHTML=rows.length?`<h3>최종 1~${rows.length}위</h3><div class="kvl-v2-final-list">${rows.map(x=>`<a class="kvl-v2-final-row" href="${esc(x.url||'#')}"><b>${esc(x.rank)}</b>${x.flag?`<img src="${esc(x.flag)}" alt="${esc(x.team||'')} 국기">`:''}<span>${esc(x.team||'미정')} ${x.en?`<small>${esc(x.en)}</small>`:''}</span></a>`).join('')}</div>`:'';}
-  txt(q('[data-kvl="knockout-status"]'),d.status==='completed'?'최종 순위 확정':'공식 결과 기준');
+  const top=q('[data-kvl-component="final-top4"]');if(!top)return;
+  const rows=(d.finalRanking||[]).slice().sort((a,b)=>Number(a.rank)-Number(b.rank)).slice(0,4);
+  top.innerHTML=rows.map(x=>`<article class="kvl1180-final-card ${Number(x.rank)===1?'is-champion':''}"><span class="kvl1180-final-rank">${esc(x.rank)}위</span>${x.flag?`<span class="kvl1180-final-flag"><img src="${esc(x.flag)}" alt="${esc(x.team||'')} 국기"></span>`:'<span class="kvl1180-final-flag is-pending">?</span>'}<div class="kvl1180-final-copy"><strong>${esc(x.team||'미정')}</strong><small>${esc(x.result||'')}</small>${x.qualification?`<span class="kvl-final-qualification">${esc(x.qualification)}</span>`:''}</div></article>`).join('');
 }
 
 function seedMap(d){const map=new Map(),s=d.standings||{},rows=s.rows||s.combinedRows||[];rows.forEach(r=>{const t=r.team||{};[code(t),en(t),name(t)].filter(Boolean).forEach(k=>map.set(k,r.rank));});return map;}
@@ -148,10 +168,16 @@ function renderKnockout(d){
 }
 
 function pcard(p){const tag=p.url?'a':'button',attrs=p.url?` href="${esc(p.url)}"`:` type="button"`,count=p.count??p.rosterCount;return `<${tag} class="kvl1180-participant-button" data-team-code="${esc(p.code||'')}"${attrs}>${p.flag?`<img src="${esc(p.flag)}" alt="${esc(p.name||'')} 국기" loading="lazy">`:''}<span class="kvl1180-participant-button-copy"><strong>${esc(p.name||'미정')}</strong><small>${esc(p.en||p.code||'')}${count!==undefined?` · ${esc(count)}명`:''}</small></span></${tag}>`;}
-function renderParticipants(d){const root=q('[data-kvl-component="participants"]');if(!root)return;const c=cfg(d).participants,list=d.participants||[];if(!list.length){root.innerHTML='<div class="kvl1180-schedule-empty">참가국 정보 확인 중입니다.</div>';return;}let groups=[];if(c.mode==='groups'){const map=new Map();list.forEach(p=>{const g=p.group||'참가국';if(!map.has(g))map.set(g,[]);map.get(g).push(p);});groups=[...map.entries()];}else groups=[[c.groupLabel||'참가국',list]];root.innerHTML=`<div class="kvl1180-participant-groups kvl-v2-participant-groups ${c.mode==='groups'?'':'is-flat'}">${groups.map(([g,rows])=>`<article class="kvl1180-participant-group"><header class="kvl1180-participant-group-head"><strong>${esc(g)}</strong><span>${rows.length}개국</span></header><div class="kvl1180-participant-buttons">${rows.map(pcard).join('')}</div></article>`).join('')}</div>`;qa('button.kvl1180-participant-button',root).forEach(b=>b.onclick=()=>renderRoster(d,b.dataset.teamCode));const wanted=new URLSearchParams(location.search).get('team'),first=list.find(p=>String(p.code)===wanted)||list[0];if(first&&!first.url)renderRoster(d,first.code);}
-function renderRoster(d,teamCode){const root=q('[data-kvl-component="roster"]');if(!root)return;const c=cfg(d).roster;if(c.mode==='none'||c.mode==='link-only'){root.innerHTML='';return;}const r=(d.rosters||{})[teamCode],t=(d.participants||[]).find(x=>x.code===teamCode);if(!r?.players?.length){root.innerHTML='<div class="kvl1180-schedule-empty">등록 선수명단은 확인되는 대로 연결합니다.</div>';return;}root.innerHTML=`<article class="kvl1180-team-profile"><header class="kvl1180-team-profile-head">${t?.flag?`<span class="kvl1180-team-profile-flag"><img src="${esc(t.flag)}" alt="${esc(t.name)} 국기"></span>`:''}<div class="kvl1180-team-profile-copy"><p class="label">SELECTED TEAM · ${esc(t?.code||'')}</p><h3>${esc(t?.name||teamCode)}</h3><p>${esc(t?.en||'')}</p></div></header><div class="kvl1180-roster-block"><div class="kvl1180-roster-headline"><div><h4>등록 선수명단</h4><p>대회 당시 등록 로스터 Snapshot</p></div></div><div class="kvl-v2-roster-list">${r.players.map(p=>`<div class="kvl-v2-roster-row"><b>${esc(p.number??'-')}</b><span><strong>${esc(p.name||p.koreanName||p.officialName||'-')}</strong><small>${esc(p.en||p.officialName||'')}</small></span><em>${esc(p.position||'-')}</em><span>${esc(p.heightCm?`${p.heightCm}cm`:'키 확인 불가')}</span></div>`).join('')}</div></div></article>`;}
+function displayGroups(list,c){
+  if(c.mode==='groups'){const map=new Map();list.forEach(p=>{const g=p.group||'참가국';if(!map.has(g))map.set(g,[]);map.get(g).push(p);});return [...map.entries()];}
+  const columns=Math.min(3,Math.max(1,Number(c.displayColumns)||3)),size=Math.ceil(list.length/columns),out=[];
+  for(let i=0;i<columns;i++){const rows=list.slice(i*size,(i+1)*size);if(!rows.length)continue;out.push([`${c.groupLabel||'참가국'} · ${i*size+1}-${i*size+rows.length}`,rows]);}
+  return out;
+}
+function renderParticipants(d){const root=q('[data-kvl-component="participants"]');if(!root)return;const c=cfg(d).participants,list=d.participants||[];if(!list.length){root.innerHTML='<div class="kvl1180-participants-empty">참가국 정보 확인 중입니다.</div>';return;}const groups=displayGroups(list,c);root.innerHTML=`<div class="kvl1180-participant-groups">${groups.map(([g,rows])=>`<article class="kvl1180-participant-group"><header class="kvl1180-participant-group-head"><strong>${esc(g)}</strong><span>${rows.length}개국</span></header><div class="kvl1180-participant-buttons">${rows.map(pcard).join('')}</div></article>`).join('')}</div>`;qa('button.kvl1180-participant-button',root).forEach(b=>b.onclick=()=>{qa('.kvl1180-participant-button',root).forEach(x=>x.classList.remove('is-active'));b.classList.add('is-active');renderRoster(d,b.dataset.teamCode);});const wanted=new URLSearchParams(location.search).get('team'),first=list.find(p=>String(p.code)===wanted)||list[0];if(first&&!first.url){const btn=q(`button[data-team-code="${CSS.escape(String(first.code||''))}"]`,root);if(btn)btn.classList.add('is-active');renderRoster(d,first.code);}}
+function renderRoster(d,teamCode){const root=q('[data-kvl-component="roster"]');if(!root)return;const c=cfg(d).roster,t=(d.participants||[]).find(x=>x.code===teamCode);if(c.mode==='none'){root.innerHTML='';return;}if(c.mode==='link-only'){root.innerHTML='<div class="kvl1180-participants-empty">선수명단은 연결된 국가 페이지에서 확인할 수 있습니다.</div>';return;}const r=(d.rosters||{})[teamCode];if(!r?.players?.length){root.innerHTML='<div class="kvl1180-participants-empty">등록 선수명단은 확인되는 대로 연결합니다.</div>';return;}root.innerHTML=`<article class="kvl1180-team-profile"><header class="kvl1180-team-profile-head">${t?.flag?`<span class="kvl1180-team-profile-flag"><img src="${esc(t.flag)}" alt="${esc(t.name)} 국기"></span>`:''}<div class="kvl1180-team-profile-copy"><p class="label">SELECTED TEAM · ${esc(t?.code||'')}</p><h3>${esc(t?.name||teamCode)}</h3><p>${esc(t?.en||'')}</p></div></header><div class="kvl1180-roster-block"><div class="kvl1180-roster-headline"><div><h4>등록 선수명단</h4><p>대회 당시 등록 로스터 Snapshot</p></div></div><div class="kvl1180-roster-table"><div class="kvl1180-roster-table-head"><span>번호</span><span>선수명</span><span>영문명</span><span>포지션</span><span>생년월일</span><span>키</span></div>${r.players.map(p=>`<div class="kvl1180-roster-row"><span class="kvl1180-roster-no">${esc(p.number??'-')}</span><span class="kvl1180-roster-korean">${esc(p.name||p.koreanName||'-')}</span><span class="kvl1180-roster-name"><strong>${esc(p.en||p.officialName||'-')}</strong></span><span class="kvl1180-roster-pos">${esc(p.position||'-')}</span><span class="kvl1180-roster-dob">${esc(p.dob||'-')}</span><span class="kvl1180-roster-height">${esc(p.heightCm?`${p.heightCm}cm`:'키 확인 불가')}</span></div>`).join('')}</div></div></article>`;}
 
-function render(d=data()){applyStructureLabels(d);bindKpis(d);renderQualifications(d);renderCalendar(d);renderSchedule(d);renderStandings(d);renderFinal(d);renderKnockout(d);renderParticipants(d);}
+function render(d=data()){applyVisualBaseline(d);applyStructureLabels(d);bindKpis(d);renderQualifications(d);renderCalendar(d);renderSchedule(d);renderStandings(d);renderFinal(d);renderKnockout(d);renderParticipants(d);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>render(),{once:true});else render();
 window.KVLCompetitionComponentsV2={render};
 })();
