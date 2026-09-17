@@ -1,5 +1,6 @@
 /* Independent, wholly fictional competition. DATA ONLY; no UI/DOM generation. */
-(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory;else root.KVLCompetitionDummyV2=factory;})(typeof window==='object'?window:globalThis,function(options={}){
+(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory;else root.KVLCompetitionDummyV2=factory;})(typeof window==='object'?window:globalThis,function createDummy(options={}){
+if(options.phase==='final-pending'){const d=createDummy({...options,phase:null,status:'completed'});d.status='active';d.stageLabel='결승 예정 · 3·4위 확정';d.matches.find(m=>m.round==='FINAL').score=null;d.finalRanking=d.finalRanking.filter(r=>r.rank>=3);d.champion=null;return d;}
 const status=options.status||'completed',gender=options.gender||'men',league=options.standings==='single-league',noStandings=options.standings==='none',roster=options.roster||'full';
 const names=[['NEP','네팔','Nepal','np'],['BIH','보스니아 헤르체고비나','Bosnia and Herzegovina','ba'],['VIN','세인트빈센트 그레나딘','Saint Vincent and the Grenadines','vc'],['CZE','체코','Czechia','cz'],['EST','에스토니아','Estonia','ee'],['TUN','튀니지','Tunisia','tn'],['CAN','캐나다','Canada','ca'],['NED','네덜란드','Netherlands','nl']];
 const participants=names.map(([code,name,en,iso],i)=>({code,name,en,flag:`https://flagcdn.com/w160/${iso}.png`,group:league?'리그':i<4?'A':'B',...(roster==='full'?{count:i===0?18:14}:{})}));

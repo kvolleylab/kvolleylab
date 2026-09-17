@@ -134,3 +134,18 @@ html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-set-scores{flex
 html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-set-scores>span{white-space:nowrap}
 html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero h1{white-space:normal;overflow-wrap:anywhere}
 @media(max-width:680px){html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-participant-flag{height:42px}}
+
+/* Long data values must wrap inside the existing geometry, including legacy !important rules. */
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero h1{white-space:normal!important;overflow-wrap:anywhere;max-width:100%!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero-copy{min-width:0;max-width:100%}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero-sub{overflow-wrap:anywhere}
+/* Pairing labels belong to match data, never to the ordinal position of a table row. */
+html body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl1180-combined-row>span:last-child::after{content:none!important;display:none!important}
+@media(min-width:681px){
+ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl1180-final-rank::after{content:attr(data-rank)}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout [data-final-rank="2"] .kvl1180-final-rank{border-color:#c9c2d2!important;background:#ddd7e7!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout [data-final-rank="2"] .kvl1180-final-rank::after{color:#6b607a}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout [data-final-rank="3"] .kvl1180-final-rank{border-color:#c98659!important;background:#c98b63!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout [data-final-rank="3"] .kvl1180-final-rank::after{color:#6f3f22}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout [data-final-rank="4"] .kvl1180-final-rank{visibility:hidden}
+}
