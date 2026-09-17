@@ -149,3 +149,6 @@ html body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl1180-combine
  html body.kvl1180-prototype.kvl-competition-template-v2 #knockout [data-final-rank="3"] .kvl1180-final-rank::after{color:#6f3f22}
  html body.kvl1180-prototype.kvl-competition-template-v2 #knockout [data-final-rank="4"] .kvl1180-final-rank{visibility:hidden}
 }
+/* Results come from qualifications[].resultTeams, never legacy CSS text. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake::before,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake::after{content:none!important;display:none!important}

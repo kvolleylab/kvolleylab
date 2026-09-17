@@ -11,7 +11,8 @@ function create(slug,{root=path.join(repo,'data/competitions')}={}){
  fs.copyFileSync(path.join(repo,'templates/competition-content-v2.starter.json'),path.join(directory,'data.json'),fs.constants.COPYFILE_EXCL);
  return directory;
 }
-function check(directory,{validation=false}={}){
+function check(directory,{validation=false,moduleFiles=[]}={}){
+ for(const file of moduleFiles)require(path.resolve(file))(modules);
  const slug=path.basename(path.resolve(directory)),c=read(path.join(directory,'config.json'));
  const errors=configAPI.validate(c,{slug});if(errors.length)throw Error(errors.join('\n'));
  const canonical='https://kvolleylab.com/competition.html?competition='+slug;
@@ -22,7 +23,7 @@ function check(directory,{validation=false}={}){
 if(require.main===module){
  const args=process.argv.slice(2),get=key=>args[args.indexOf(key)+1];
  try{
-  if(args.includes('--check')){check(get('--check'),{validation:args.includes('--validation')});console.log('PASS config/data/modules');}
+  if(args.includes('--check')){check(get('--check'),{validation:args.includes('--validation'),moduleFiles:args.flatMap((arg,index)=>arg==='--module'?[args[index+1]]:[])});console.log('PASS config/data/modules');}
   else if(args.includes('--slug')){const slug=get('--slug');console.log('Created '+create(slug));console.log('Fill config.json and data.json, then run --check. URL: /competition.html?competition='+slug);}
   else throw Error('Usage: node scripts/scaffold-competition-v2.cjs --slug event-2032-men | --check data/competitions/event-2032-men [--validation]');
  }catch(error){console.error(error.message);process.exitCode=1;}
