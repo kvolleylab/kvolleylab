@@ -130,7 +130,7 @@ function applyResources(d){
 }
 
 function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
+if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();}
 window.addEventListener('popstate',apply);
 window.KVLCompetitionTemplateV2={apply,applyView,viewUrl};
 })();

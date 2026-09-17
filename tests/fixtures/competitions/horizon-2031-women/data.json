@@ -1,0 +1,1479 @@
+{
+  "isTest": true,
+  "status": "completed",
+  "dateLabel": "2031.07.01 ~ 07.12 · 가상 일정",
+  "locationLabel": "가상도시",
+  "venueLabel": "호라이즌 체육관",
+  "venuePrimary": "가상도시",
+  "venueSecondary": "호라이즌 체육관",
+  "teamCount": 8,
+  "groupCount": 2,
+  "matchCount": 20,
+  "knockoutTeamCount": 8,
+  "focusTeamCode": "NEP",
+  "stageLabel": "가상 결과 검증",
+  "activeOverviewNote": "확인된 가상 경기만 반영 · 결선 대진 미확정",
+  "upcomingOverviewNote": "가상대회 시작 전 · 경기 결과 없음",
+  "scheduleNote": "한국시간(KST) · 모든 대회·경기·선수 데이터는 검증용 가상 정보입니다.",
+  "standingsNote": "가상 결과 · 실제 대회와 무관",
+  "standingsRule": "가상 규정: 승리 수 → 승점 → 세트율 → 득점율. 동률은 검증용 코드 순.",
+  "meaning": {
+    "eyebrow": "FICTIONAL COMPETITION",
+    "title": "대회 의미 · 가상 규정",
+    "note": "실제 국제 진출권 또는 랭킹 포인트를 부여하지 않습니다."
+  },
+  "participants": [
+    {
+      "code": "NEP",
+      "name": "네팔",
+      "en": "Nepal",
+      "flag": "https://flagcdn.com/w160/np.png",
+      "group": "A",
+      "count": 18
+    },
+    {
+      "code": "BIH",
+      "name": "보스니아 헤르체고비나",
+      "en": "Bosnia and Herzegovina",
+      "flag": "https://flagcdn.com/w160/ba.png",
+      "group": "A",
+      "count": 14
+    },
+    {
+      "code": "VIN",
+      "name": "세인트빈센트 그레나딘",
+      "en": "Saint Vincent and the Grenadines",
+      "flag": "https://flagcdn.com/w160/vc.png",
+      "group": "A",
+      "count": 14
+    },
+    {
+      "code": "CZE",
+      "name": "체코",
+      "en": "Czechia",
+      "flag": "https://flagcdn.com/w160/cz.png",
+      "group": "A",
+      "count": 14
+    },
+    {
+      "code": "EST",
+      "name": "에스토니아",
+      "en": "Estonia",
+      "flag": "https://flagcdn.com/w160/ee.png",
+      "group": "B",
+      "count": 14
+    },
+    {
+      "code": "TUN",
+      "name": "튀니지",
+      "en": "Tunisia",
+      "flag": "https://flagcdn.com/w160/tn.png",
+      "group": "B",
+      "count": 14
+    },
+    {
+      "code": "CAN",
+      "name": "캐나다",
+      "en": "Canada",
+      "flag": "https://flagcdn.com/w160/ca.png",
+      "group": "B",
+      "count": 14
+    },
+    {
+      "code": "NED",
+      "name": "네덜란드",
+      "en": "Netherlands",
+      "flag": "https://flagcdn.com/w160/nl.png",
+      "group": "B",
+      "count": 14
+    }
+  ],
+  "matches": [
+    {
+      "id": "HZN-01",
+      "date": "2031-07-01",
+      "time": "16:00",
+      "home": {
+        "code": "NEP",
+        "name": "네팔",
+        "en": "Nepal",
+        "flag": "https://flagcdn.com/w160/np.png",
+        "group": "A",
+        "count": 18
+      },
+      "away": {
+        "code": "BIH",
+        "name": "보스니아 헤르체고비나",
+        "en": "Bosnia and Herzegovina",
+        "flag": "https://flagcdn.com/w160/ba.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "A",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-02",
+      "date": "2031-07-01",
+      "time": "19:30",
+      "home": {
+        "code": "NEP",
+        "name": "네팔",
+        "en": "Nepal",
+        "flag": "https://flagcdn.com/w160/np.png",
+        "group": "A",
+        "count": 18
+      },
+      "away": {
+        "code": "VIN",
+        "name": "세인트빈센트 그레나딘",
+        "en": "Saint Vincent and the Grenadines",
+        "flag": "https://flagcdn.com/w160/vc.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "A",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-03",
+      "date": "2031-07-01",
+      "time": "16:00",
+      "home": {
+        "code": "NEP",
+        "name": "네팔",
+        "en": "Nepal",
+        "flag": "https://flagcdn.com/w160/np.png",
+        "group": "A",
+        "count": 18
+      },
+      "away": {
+        "code": "CZE",
+        "name": "체코",
+        "en": "Czechia",
+        "flag": "https://flagcdn.com/w160/cz.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "A",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-04",
+      "date": "2031-07-01",
+      "time": "19:30",
+      "home": {
+        "code": "BIH",
+        "name": "보스니아 헤르체고비나",
+        "en": "Bosnia and Herzegovina",
+        "flag": "https://flagcdn.com/w160/ba.png",
+        "group": "A",
+        "count": 14
+      },
+      "away": {
+        "code": "VIN",
+        "name": "세인트빈센트 그레나딘",
+        "en": "Saint Vincent and the Grenadines",
+        "flag": "https://flagcdn.com/w160/vc.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "A",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-05",
+      "date": "2031-07-02",
+      "time": "16:00",
+      "home": {
+        "code": "BIH",
+        "name": "보스니아 헤르체고비나",
+        "en": "Bosnia and Herzegovina",
+        "flag": "https://flagcdn.com/w160/ba.png",
+        "group": "A",
+        "count": 14
+      },
+      "away": {
+        "code": "CZE",
+        "name": "체코",
+        "en": "Czechia",
+        "flag": "https://flagcdn.com/w160/cz.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "A",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-06",
+      "date": "2031-07-02",
+      "time": "19:30",
+      "home": {
+        "code": "VIN",
+        "name": "세인트빈센트 그레나딘",
+        "en": "Saint Vincent and the Grenadines",
+        "flag": "https://flagcdn.com/w160/vc.png",
+        "group": "A",
+        "count": 14
+      },
+      "away": {
+        "code": "CZE",
+        "name": "체코",
+        "en": "Czechia",
+        "flag": "https://flagcdn.com/w160/cz.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "A",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-07",
+      "date": "2031-07-02",
+      "time": "16:00",
+      "home": {
+        "code": "EST",
+        "name": "에스토니아",
+        "en": "Estonia",
+        "flag": "https://flagcdn.com/w160/ee.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "TUN",
+        "name": "튀니지",
+        "en": "Tunisia",
+        "flag": "https://flagcdn.com/w160/tn.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "B",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-08",
+      "date": "2031-07-02",
+      "time": "19:30",
+      "home": {
+        "code": "EST",
+        "name": "에스토니아",
+        "en": "Estonia",
+        "flag": "https://flagcdn.com/w160/ee.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "CAN",
+        "name": "캐나다",
+        "en": "Canada",
+        "flag": "https://flagcdn.com/w160/ca.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "B",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-09",
+      "date": "2031-07-03",
+      "time": "16:00",
+      "home": {
+        "code": "EST",
+        "name": "에스토니아",
+        "en": "Estonia",
+        "flag": "https://flagcdn.com/w160/ee.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "NED",
+        "name": "네덜란드",
+        "en": "Netherlands",
+        "flag": "https://flagcdn.com/w160/nl.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "B",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-10",
+      "date": "2031-07-03",
+      "time": "19:30",
+      "home": {
+        "code": "TUN",
+        "name": "튀니지",
+        "en": "Tunisia",
+        "flag": "https://flagcdn.com/w160/tn.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "CAN",
+        "name": "캐나다",
+        "en": "Canada",
+        "flag": "https://flagcdn.com/w160/ca.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "B",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-11",
+      "date": "2031-07-03",
+      "time": "16:00",
+      "home": {
+        "code": "TUN",
+        "name": "튀니지",
+        "en": "Tunisia",
+        "flag": "https://flagcdn.com/w160/tn.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "NED",
+        "name": "네덜란드",
+        "en": "Netherlands",
+        "flag": "https://flagcdn.com/w160/nl.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "B",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-12",
+      "date": "2031-07-03",
+      "time": "19:30",
+      "home": {
+        "code": "CAN",
+        "name": "캐나다",
+        "en": "Canada",
+        "flag": "https://flagcdn.com/w160/ca.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "NED",
+        "name": "네덜란드",
+        "en": "Netherlands",
+        "flag": "https://flagcdn.com/w160/nl.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "POOL",
+      "stage": "조별리그",
+      "group": "B",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "HZN-13",
+      "date": "2031-07-10",
+      "time": "16:00",
+      "home": {
+        "code": "CAN",
+        "name": "캐나다",
+        "en": "Canada",
+        "flag": "https://flagcdn.com/w160/ca.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "TUN",
+        "name": "튀니지",
+        "en": "Tunisia",
+        "flag": "https://flagcdn.com/w160/tn.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "QF",
+      "stage": "8강",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "bracketLabel": "QF1",
+      "nextMatchId": "HZN-17"
+    },
+    {
+      "id": "HZN-14",
+      "date": "2031-07-10",
+      "time": "19:30",
+      "home": {
+        "code": "VIN",
+        "name": "세인트빈센트 그레나딘",
+        "en": "Saint Vincent and the Grenadines",
+        "flag": "https://flagcdn.com/w160/vc.png",
+        "group": "A",
+        "count": 14
+      },
+      "away": {
+        "code": "BIH",
+        "name": "보스니아 헤르체고비나",
+        "en": "Bosnia and Herzegovina",
+        "flag": "https://flagcdn.com/w160/ba.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "QF",
+      "stage": "8강",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "QF2",
+      "nextMatchId": "HZN-17"
+    },
+    {
+      "id": "HZN-15",
+      "date": "2031-07-10",
+      "time": "16:00",
+      "home": {
+        "code": "EST",
+        "name": "에스토니아",
+        "en": "Estonia",
+        "flag": "https://flagcdn.com/w160/ee.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "NED",
+        "name": "네덜란드",
+        "en": "Netherlands",
+        "flag": "https://flagcdn.com/w160/nl.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "QF",
+      "stage": "8강",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      },
+      "bracketLabel": "QF3",
+      "nextMatchId": "HZN-18"
+    },
+    {
+      "id": "HZN-16",
+      "date": "2031-07-10",
+      "time": "19:30",
+      "home": {
+        "code": "NEP",
+        "name": "네팔",
+        "en": "Nepal",
+        "flag": "https://flagcdn.com/w160/np.png",
+        "group": "A",
+        "count": 18
+      },
+      "away": {
+        "code": "CZE",
+        "name": "체코",
+        "en": "Czechia",
+        "flag": "https://flagcdn.com/w160/cz.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "QF",
+      "stage": "8강",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "QF4",
+      "nextMatchId": "HZN-18"
+    },
+    {
+      "id": "HZN-17",
+      "date": "2031-07-11",
+      "time": "16:00",
+      "home": {
+        "code": "CAN",
+        "name": "캐나다",
+        "en": "Canada",
+        "flag": "https://flagcdn.com/w160/ca.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "BIH",
+        "name": "보스니아 헤르체고비나",
+        "en": "Bosnia and Herzegovina",
+        "flag": "https://flagcdn.com/w160/ba.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "SF",
+      "stage": "준결승",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "bracketLabel": "SF1",
+      "nextMatchId": "HZN-20"
+    },
+    {
+      "id": "HZN-18",
+      "date": "2031-07-11",
+      "time": "19:30",
+      "home": {
+        "code": "EST",
+        "name": "에스토니아",
+        "en": "Estonia",
+        "flag": "https://flagcdn.com/w160/ee.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "CZE",
+        "name": "체코",
+        "en": "Czechia",
+        "flag": "https://flagcdn.com/w160/cz.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "SF",
+      "stage": "준결승",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      },
+      "bracketLabel": "SF2",
+      "nextMatchId": "HZN-20"
+    },
+    {
+      "id": "HZN-19",
+      "date": "2031-07-12",
+      "time": "16:00",
+      "home": {
+        "code": "BIH",
+        "name": "보스니아 헤르체고비나",
+        "en": "Bosnia and Herzegovina",
+        "flag": "https://flagcdn.com/w160/ba.png",
+        "group": "A",
+        "count": 14
+      },
+      "away": {
+        "code": "EST",
+        "name": "에스토니아",
+        "en": "Estonia",
+        "flag": "https://flagcdn.com/w160/ee.png",
+        "group": "B",
+        "count": 14
+      },
+      "round": "BRONZE",
+      "stage": "3위 결정전",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "bracketLabel": "3RD"
+    },
+    {
+      "id": "HZN-20",
+      "date": "2031-07-12",
+      "time": "19:30",
+      "home": {
+        "code": "CAN",
+        "name": "캐나다",
+        "en": "Canada",
+        "flag": "https://flagcdn.com/w160/ca.png",
+        "group": "B",
+        "count": 14
+      },
+      "away": {
+        "code": "CZE",
+        "name": "체코",
+        "en": "Czechia",
+        "flag": "https://flagcdn.com/w160/cz.png",
+        "group": "A",
+        "count": 14
+      },
+      "round": "FINAL",
+      "stage": "결승",
+      "group": "",
+      "venueLabel": "가상도시 호라이즌 체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "FINAL"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "rows": [
+          {
+            "team": {
+              "code": "VIN",
+              "name": "세인트빈센트 그레나딘",
+              "en": "Saint Vincent and the Grenadines",
+              "flag": "https://flagcdn.com/w160/vc.png",
+              "group": "A",
+              "count": 14
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 7,
+            "sw": 8,
+            "sl": 4,
+            "pw": 279,
+            "pl": 255,
+            "setRatio": "2.000",
+            "pointRatio": "1.094",
+            "rank": 1,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "team": {
+              "code": "NEP",
+              "name": "네팔",
+              "en": "Nepal",
+              "flag": "https://flagcdn.com/w160/np.png",
+              "group": "A",
+              "count": 18
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 5,
+            "sw": 7,
+            "sl": 5,
+            "pw": 269,
+            "pl": 265,
+            "setRatio": "1.400",
+            "pointRatio": "1.015",
+            "rank": 2,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "team": {
+              "code": "CZE",
+              "name": "체코",
+              "en": "Czechia",
+              "flag": "https://flagcdn.com/w160/cz.png",
+              "group": "A",
+              "count": 14
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "sw": 6,
+            "sl": 8,
+            "pw": 301,
+            "pl": 313,
+            "setRatio": "0.750",
+            "pointRatio": "0.962",
+            "rank": 3,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "team": {
+              "code": "BIH",
+              "name": "보스니아 헤르체고비나",
+              "en": "Bosnia and Herzegovina",
+              "flag": "https://flagcdn.com/w160/ba.png",
+              "group": "A",
+              "count": 14
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "sw": 3,
+            "sl": 7,
+            "pw": 219,
+            "pl": 235,
+            "setRatio": "0.429",
+            "pointRatio": "0.932",
+            "rank": 4,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "rows": [
+          {
+            "team": {
+              "code": "CAN",
+              "name": "캐나다",
+              "en": "Canada",
+              "flag": "https://flagcdn.com/w160/ca.png",
+              "group": "B",
+              "count": 14
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 7,
+            "sw": 8,
+            "sl": 4,
+            "pw": 279,
+            "pl": 255,
+            "setRatio": "2.000",
+            "pointRatio": "1.094",
+            "rank": 1,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "team": {
+              "code": "EST",
+              "name": "에스토니아",
+              "en": "Estonia",
+              "flag": "https://flagcdn.com/w160/ee.png",
+              "group": "B",
+              "count": 14
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 5,
+            "sw": 7,
+            "sl": 5,
+            "pw": 269,
+            "pl": 265,
+            "setRatio": "1.400",
+            "pointRatio": "1.015",
+            "rank": 2,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "team": {
+              "code": "NED",
+              "name": "네덜란드",
+              "en": "Netherlands",
+              "flag": "https://flagcdn.com/w160/nl.png",
+              "group": "B",
+              "count": 14
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "sw": 6,
+            "sl": 8,
+            "pw": 301,
+            "pl": 313,
+            "setRatio": "0.750",
+            "pointRatio": "0.962",
+            "rank": 3,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          },
+          {
+            "team": {
+              "code": "TUN",
+              "name": "튀니지",
+              "en": "Tunisia",
+              "flag": "https://flagcdn.com/w160/tn.png",
+              "group": "B",
+              "count": 14
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "sw": 3,
+            "sl": 7,
+            "pw": 219,
+            "pl": 235,
+            "setRatio": "0.429",
+            "pointRatio": "0.932",
+            "rank": 4,
+            "status": "qualified",
+            "statusLabel": "결선 진출"
+          }
+        ]
+      }
+    ],
+    "combinedRows": [
+      {
+        "team": {
+          "code": "CAN",
+          "name": "캐나다",
+          "en": "Canada",
+          "flag": "https://flagcdn.com/w160/ca.png",
+          "group": "B",
+          "count": 14
+        },
+        "played": 3,
+        "wins": 2,
+        "losses": 1,
+        "points": 7,
+        "sw": 8,
+        "sl": 4,
+        "pw": 279,
+        "pl": 255,
+        "setRatio": "2.000",
+        "pointRatio": "1.094",
+        "rank": 1,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      },
+      {
+        "team": {
+          "code": "VIN",
+          "name": "세인트빈센트 그레나딘",
+          "en": "Saint Vincent and the Grenadines",
+          "flag": "https://flagcdn.com/w160/vc.png",
+          "group": "A",
+          "count": 14
+        },
+        "played": 3,
+        "wins": 2,
+        "losses": 1,
+        "points": 7,
+        "sw": 8,
+        "sl": 4,
+        "pw": 279,
+        "pl": 255,
+        "setRatio": "2.000",
+        "pointRatio": "1.094",
+        "rank": 2,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      },
+      {
+        "team": {
+          "code": "EST",
+          "name": "에스토니아",
+          "en": "Estonia",
+          "flag": "https://flagcdn.com/w160/ee.png",
+          "group": "B",
+          "count": 14
+        },
+        "played": 3,
+        "wins": 2,
+        "losses": 1,
+        "points": 5,
+        "sw": 7,
+        "sl": 5,
+        "pw": 269,
+        "pl": 265,
+        "setRatio": "1.400",
+        "pointRatio": "1.015",
+        "rank": 3,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      },
+      {
+        "team": {
+          "code": "NEP",
+          "name": "네팔",
+          "en": "Nepal",
+          "flag": "https://flagcdn.com/w160/np.png",
+          "group": "A",
+          "count": 18
+        },
+        "played": 3,
+        "wins": 2,
+        "losses": 1,
+        "points": 5,
+        "sw": 7,
+        "sl": 5,
+        "pw": 269,
+        "pl": 265,
+        "setRatio": "1.400",
+        "pointRatio": "1.015",
+        "rank": 4,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      },
+      {
+        "team": {
+          "code": "CZE",
+          "name": "체코",
+          "en": "Czechia",
+          "flag": "https://flagcdn.com/w160/cz.png",
+          "group": "A",
+          "count": 14
+        },
+        "played": 3,
+        "wins": 1,
+        "losses": 2,
+        "points": 3,
+        "sw": 6,
+        "sl": 8,
+        "pw": 301,
+        "pl": 313,
+        "setRatio": "0.750",
+        "pointRatio": "0.962",
+        "rank": 5,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      },
+      {
+        "team": {
+          "code": "NED",
+          "name": "네덜란드",
+          "en": "Netherlands",
+          "flag": "https://flagcdn.com/w160/nl.png",
+          "group": "B",
+          "count": 14
+        },
+        "played": 3,
+        "wins": 1,
+        "losses": 2,
+        "points": 3,
+        "sw": 6,
+        "sl": 8,
+        "pw": 301,
+        "pl": 313,
+        "setRatio": "0.750",
+        "pointRatio": "0.962",
+        "rank": 6,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      },
+      {
+        "team": {
+          "code": "BIH",
+          "name": "보스니아 헤르체고비나",
+          "en": "Bosnia and Herzegovina",
+          "flag": "https://flagcdn.com/w160/ba.png",
+          "group": "A",
+          "count": 14
+        },
+        "played": 3,
+        "wins": 1,
+        "losses": 2,
+        "points": 3,
+        "sw": 3,
+        "sl": 7,
+        "pw": 219,
+        "pl": 235,
+        "setRatio": "0.429",
+        "pointRatio": "0.932",
+        "rank": 7,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      },
+      {
+        "team": {
+          "code": "TUN",
+          "name": "튀니지",
+          "en": "Tunisia",
+          "flag": "https://flagcdn.com/w160/tn.png",
+          "group": "B",
+          "count": 14
+        },
+        "played": 3,
+        "wins": 1,
+        "losses": 2,
+        "points": 3,
+        "sw": 3,
+        "sl": 7,
+        "pw": 219,
+        "pl": 235,
+        "setRatio": "0.429",
+        "pointRatio": "0.932",
+        "rank": 8,
+        "status": "qualified",
+        "statusLabel": "결선 진출"
+      }
+    ]
+  },
+  "finalRanking": [
+    {
+      "rank": 1,
+      "team": "체코",
+      "flag": "https://flagcdn.com/w160/cz.png",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "team": "캐나다",
+      "flag": "https://flagcdn.com/w160/ca.png",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "team": "보스니아 헤르체고비나",
+      "flag": "https://flagcdn.com/w160/ba.png",
+      "result": "3위",
+      "confirmed": true
+    },
+    {
+      "rank": 4,
+      "team": "에스토니아",
+      "flag": "https://flagcdn.com/w160/ee.png",
+      "result": "4위",
+      "confirmed": true
+    }
+  ],
+  "champion": "체코",
+  "rosterNote": "전원 가상 선수 · 14명/18명 인쇄 검증",
+  "rosterPrintNote": "가상대회 검증용 · 실제 선수명단 아님",
+  "rosterSourceNote": "독립 생성된 가상 데이터",
+  "rosterPendingLabel": "가상대회 선수명단 미등록",
+  "resourcesNote": "검증용 자료 링크 · 실제 대회 공식자료 아님",
+  "resources": [
+    {
+      "title": "가상대회 규정 설명",
+      "url": "https://example.org/#fixture-0"
+    },
+    {
+      "title": "가상대회 일정 설명",
+      "url": "https://example.org/#fixture-1"
+    },
+    {
+      "title": "가상대회 선수명단 설명",
+      "url": "https://example.org/#fixture-2"
+    }
+  ]
+}

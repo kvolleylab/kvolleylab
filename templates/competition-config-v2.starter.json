@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 2,
+  "slug": "",
+  "competition": {
+    "competitionId": "", "displayName": "", "officialName": "", "season": "",
+    "gender": "men", "competitionFamily": "avc"
+  },
+  "hero": {"pcImage": "", "mobileImage": ""},
+  "seo": {"title": "", "description": ""},
+  "structure": {
+    "calendar": true,
+    "standings": {"mode": "none"}, "participants": {"mode": "flat"},
+    "roster": {"mode": "none"}, "knockout": {"mode": "none"}
+  },
+  "data": "data.json",
+  "modules": []
+}

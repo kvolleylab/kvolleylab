@@ -101,6 +101,6 @@ function ensureShell(){
     <div class="kvl1180-sources" id="resourceList"></div>
   </section>`;
 }
-ensureShell();
+if(!window.KVL_COMPETITION_PAGE_V2?.deferRender)ensureShell();
 window.KVLCompetitionShellV2={ensureShell};
 })();

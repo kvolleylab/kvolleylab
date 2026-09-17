@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "slug": "horizon-2031-women",
+  "competition": {
+    "competitionId": "DUMMY-HORIZON-2031-women",
+    "displayName": "2031 호라이즌 국제 친선 초청 배구 챌린지 여자부 · 가상대회",
+    "officialName": "Horizon International Invitational Volleyball Challenge 2031 — Fictional Validation",
+    "gender": "women",
+    "competitionFamily": "avc",
+    "season": "2031"
+  },
+  "structure": {
+    "calendar": true,
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "조 편성",
+      "groupsKpiUnit": "개 조",
+      "standingsTitle": "조별순위"
+    },
+    "standings": {
+      "mode": "pools-combined"
+    },
+    "participants": {
+      "mode": "groups"
+    },
+    "roster": {
+      "mode": "full"
+    },
+    "knockout": {
+      "mode": "bracket-8"
+    }
+  },
+  "hero": {
+    "pcImage": "/assets/img/competition-hero/kvl-hero-avc-men-continental-2026-men-pc-v01.webp",
+    "mobileImage": "/assets/img/competition-hero/kvl-hero-avc-men-continental-2026-men-mobile-v01.webp",
+    "assetNote": "Existing approved artwork reused only to test asset loading."
+  },
+  "seo": {
+    "description": "2031 호라이즌 국제 친선 초청 배구 챌린지 여자부 · 가상대회 공통 엔진 검증"
+  },
+  "data": "data.json",
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    },
+    {
+      "id": "qualifications",
+      "source": "qualifications.json"
+    }
+  ]
+}

@@ -208,6 +208,6 @@ function renderFocus(d){
 }
 
 function render(d=data()){applyVisualBaseline(d);applyStructureLabels(d);bindKpis(d);renderQualifications(d);renderCalendar(d);renderSchedule(d);renderStandings(d);renderFinal(d);renderKnockout(d);renderParticipants(d);renderFocus(d);window.KVLCompetitionTemplateV2?.applyView();document.body.dataset.kvlRenderState='ready';}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>render(),{once:true});else render();
+if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>render(),{once:true});else render();}
 window.KVLCompetitionComponentsV2={render,printRoster};
 })();
