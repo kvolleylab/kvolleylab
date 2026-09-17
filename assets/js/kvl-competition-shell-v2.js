@@ -97,7 +97,7 @@ function ensureShell(){
   </section>
 
   <section class="kvl1180-card kvl1180-view kvl1180-resources-view" id="resources" data-view="resources" hidden>
-    <div class="kvl1180-section-head"><div><p class="label">OFFICIAL RESOURCES</p><h2>공식자료</h2></div><p>공식 출처만 연결합니다.</p></div>
+    <div class="kvl1180-section-head"><div><p class="label">OFFICIAL SOURCES</p><h2>공식자료</h2></div><p data-kvl="resources-note">공식 출처만 연결합니다.</p></div>
     <div class="kvl1180-sources" id="resourceList"></div>
   </section>`;
 }

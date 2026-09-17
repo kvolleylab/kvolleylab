@@ -257,6 +257,7 @@ async function init(){
       participants,
       finalRanking,
       finalRankingFull:finalFull(raw,finalRanking),
+      resourcesNote:'Volleyball World · AVC 공식자료 기준',
       resources:(raw.sources||[]).filter(x=>x.url&&x.type==='official').map(x=>({title:x.label||'공식자료',url:x.url}))
     };
     normalized.rosters={};

@@ -112,6 +112,7 @@ function applyFinalRanking(d){
 }
 
 function applyResources(d){
+  txt(q('[data-kvl="resources-note"]'),d.resourcesNote||'공식 출처만 연결합니다.');
   const root=q('#resourceList'); if(!root)return;
   root.innerHTML='';
   (d.resources||[]).forEach(item=>{
