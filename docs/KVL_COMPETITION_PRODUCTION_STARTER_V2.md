@@ -1,68 +1,104 @@
-# Competition Page V2 신규 대회 시작점
+# Competition Engine V2 — 신규 대회 추가
 
-공통 Shell / Controller / Components / geometry는 그대로 사용한다. 대회별 작업은 데이터 입력과 필요한 normalizer뿐이다. 현재 구현은 데이터 연결로 페이지 생성 가능하나, 기존 여자 production 재현 및 실제 브라우저 인쇄 PDF Gate가 완료되지 않아 최종 `PRODUCTION_READY` 승격은 보류한다.
+기본 경로는 **한 개의 `competition-engine.html` + 대회별 `config.json` + `data.json` + 선택 모듈**이다. 기존 AVC 남녀 HTML을 복사하거나 대회별 HTML/CSS/JS를 만들지 않는다. 모든 대회는 같은 Shell/Controller/Components와 기존 V2 geometry를 사용한다.
 
-## 생성
+현재 상태: `VALIDATED_PENDING_PRINT_PDF`. 데이터만으로 신규 대회 생성·검증은 가능하다. 실제 브라우저 인쇄 PDF 검수가 끝나기 전에는 `PRODUCTION_READY`로 선언하지 않는다. 기존 AVC/VNL production 교체와 신규 공통 엔진 승인은 별개다.
 
-1. `templates/competition-data-v2.starter.json`을 새 대회 데이터 경로로 복사한다.
-2. ID·대회명·성별·상태·확인된 일정/참가국/규정·SEO·PC/MOBILE Hero를 채운다. 미확정 수치는 null, 예정 경기는 `score: null`, 미확정 순위는 null로 둔다.
-3. 원본 필드가 다를 때만 `templates/competition-data-adapter-v2.cjs`를 복사해 JSON → 공통 데이터 변환 함수를 작성한다.
-4. 생성기를 실행한다. 기존 출력 파일은 덮어쓰지 않는다.
+## 필요한 파일과 폴더
+
+| 위치 | 역할 | 필수 여부 |
+| --- | --- | --- |
+| `data/competitions/<slug>/config.json` | 식별·대회명·시즌·성별·계열·Hero·SEO·구조 모드·모듈 선언 | 필수 |
+| `data/competitions/<slug>/data.json` | 상태·기간·장소·참가국·일정·결과·순위·자료 | 필수 |
+| 같은 폴더의 `rosters.json`, `qualifications.json` 등 | 선택 모듈에서 읽는 별도 JSON | 분리할 경우만 |
+| 승인된 PC/mobile Hero 자산 | config.hero에서 참조 | production 필수 |
+
+slug는 소문자 영문·숫자·하이픈으로 만든다. 권장 규칙은 `<family>-<event>-<season>-<gender>`이다. 이미 존재하는 기존 대회의 파일/폴더 이름은 바꾸지 않는다. 대회별 상태가 바뀌어도 slug와 competitionId는 유지한다.
+
+표준 빈 양식은 `templates/competition-config-v2.starter.json`과 `templates/competition-content-v2.starter.json`이다. 빈 식별자나 필수 데이터는 생성기에서 임의로 채우지 않으며 검사를 통과하지 못한다.
+
+## 생성 절차와 URL
 
 ```sh
-node scripts/create-competition-v2.cjs \
-  --data data/competitions/new-competition.json \
-  --out international-competition-new.html
+# 새 폴더와 두 JSON만 생성한다. 기존 폴더가 있으면 실패한다.
+node scripts/scaffold-competition-v2.cjs --slug example-open-2032-men
 
-# 원본 데이터 정규화가 필요한 경우에만 추가
-# --adapter adapters/new-competition.cjs
-
-# 별도 검증 HTML 생성 시에만 추가
-# --validation
+# 두 JSON을 확인된 대회 정보로 채운 다음 검사한다.
+node scripts/scaffold-competition-v2.cjs \
+  --check data/competitions/example-open-2032-men
 ```
 
-`--validation` 없는 생성물은 noindex/nofollow/noarchive를 포함하지 않는다. title, description, canonical, Open Graph 메타데이터는 빌드 시 데이터로 생성하므로 검색엔진이 JavaScript 실행 없이 읽을 수 있다. 공유 엔진의 런타임 title도 같은 데이터를 따른다. `isTest`, DUMMY/SMOKE/KVL-TEMPLATE ID, 필수 SEO/Hero 누락은 production 빌드 오류다. 파일이름만 바꿔 validation HTML을 production으로 사용하는 방식은 금지한다.
+1. config에 대회 식별·시즌·성별·competitionFamily·승인된 Hero·SEO description·구조 모드를 입력한다.
+2. data에 확인된 상태·개최 정보·참가국·일정·결과 등을 입력한다. 미확정 수치는 null, 예정 경기는 `score:null`, 미확정 순위는 null로 둔다.
+3. 필요할 때만 모듈 JSON을 분리하거나 원본 데이터를 공통 schema로 정규화한다. UI 코드는 작성하지 않는다.
+4. 계약 검사를 통과한 새 폴더와 필요한 이미지 자산만 저장소에 추가한다. 공통 HTML 수정·새 HTML 생성·대회 registry 수정이 필요 없다.
+5. `/competition-engine.html?competition=example-open-2032-men`으로 연다. 메뉴는 `&view=overview|schedule|groups|knockout|rosters|resources`, 선수 선택은 `&team=TEAMCODE`를 붙인다. 메뉴·KPI·달력 이동은 competition 값을 유지한다.
+6. 다른 페이지나 메뉴에서 연결할 때 위 URL을 사용한다. 메뉴에 노출하는 작업은 별도 운영 선택이며, URL 작동을 위한 조건이 아니다. 기존 AVC 남녀/VNL URL은 유지한다.
 
-`templates/competition-page-pc-mobile-v2.html`과 기존 예시 JSON은 validation/reference용이다. 신규 production 시작점은 `templates/competition-page-production-v2.html`과 위 생성기다. 두 경로의 UI 엔진은 같다.
+위 example 이름은 문서 설명용이며 실제 대회로 게시되어 있지 않다. 테스트 자료는 production 검사를 통과시키기 위해 isTest를 제거하지 않는다. 검증 자료는 `/tests/` 아래 별도 collection과 noindex 진입점에서만 읽는다.
 
-## 정규화된 데이터
+## 필수/선택 데이터
 
-| 영역 | 주요 필드 |
+| 영역 | 필드와 조건 |
 | --- | --- |
-| 식별·메타 | competitionId, displayName, officialName, gender, competitionFamily, status, stageLabel, seo |
-| Hero/KPI | hero.pcImage/mobileImage, dateLabel, locationLabel, venueLabel, teamCount, groupCount, matchCount, knockoutTeamCount |
-| 참가국 | participants[]: code, name, en, flag, group, count/rosterCount, optional url |
-| 경기 | matches[]: id, date (YYYY-MM-DD), time (KST), home/away 팀 객체, stage, round, group, venueLabel, localTimeLabel, nextMatchId |
-| 점수 | score: null 또는 {home, away, sets:[{home,away}]} |
-| 순위 | standings.pools[].rows / combinedRows 또는 single-league의 rows; team, rank, wins, losses, points, setRatio, pointRatio, status, statusLabel |
-| 최종 결과 | finalRanking[]: rank, team, flag, result, qualification; active에서 확정 결과만 confirmed:true |
-| 진출권 | qualifications[]: brand, title, description, foot, resultTeams; 미확정 팀 없음 |
-| 선수 | rosters[teamCode].players[]: playerId, number, name, en, position, dob, heightCm, club, volleybox |
-| 공식자료 | resources[]: title, url (HTTP/HTTPS); 실제 확인된 자료 수만 입력 |
+| config 필수 | schemaVersion=2, slug, competition.{competitionId,displayName,officialName,season,gender,competitionFamily}, structure, data |
+| 성별·계열 | gender=men/women; competitionFamily=avc/fivb/domestic. 여자는 Rose, 남자는 계열별 기존 팔레트. 별도 geometry 없음 |
+| production 필수 | hero.pcImage/mobileImage, seo.description. title은 생략하면 대회명 + K-Volley Lab. canonical은 공통 URL에서 생성 |
+| data 필수 | status=upcoming/active/completed. participants/matches 등 없거나 비어 있는 항목은 사실상 미확정 상태를 뜻함 |
+| 개최 정보 | dateLabel, locationLabel, venueLabel, 선택 venuePrimary/venueSecondary. 미정이면 해당 안내 문구를 입력 |
+| KPI | teamCount, groupCount, matchCount, knockoutTeamCount. 확인되지 않은 숫자는 null |
+| 참가국·조 | participants[]: code,name,en,flag,group,count/rosterCount. 조별 구조는 group으로 묶음 |
+| 경기 | matches[]: id,date(YYYY-MM-DD),time(KST),home/away 팀 객체,stage,round,group,venueLabel,localTimeLabel,nextMatchId |
+| 점수 | score:null 또는 {home,away,sets:[{home,away}]}. 실제 sets만 기본 표시. 3/4/5세트 지원, 예정 경기의 가짜 점수 금지 |
+| 순위 | standings.pools[].rows/combinedRows 또는 single-league의 rows. rank,team,wins,losses,points,setRatio,pointRatio,status/statusLabel |
+| 최종 결과 | finalRanking[]: rank,team,flag,result,qualification. active에서는 공식 확정 항목만 confirmed:true |
+| 선수명단 | rosters[teamCode].players[]: playerId,number,name,en,position,dob,heightCm,club,volleybox. 없는 데이터는 생성하지 않음 |
+| 선택 설명 | stageLabel, meaning, scheduleNote, standingsNote, standingsRule, qualifications[], focus, rosterNote 등 공통 schema 필드 |
+| 공식자료 | resources[]: title,url. 실제 확인된 HTTP/HTTPS 링크만 입력 |
 
-세트별 점수는 `score.sets[]`가 있으면 공통 renderer가 기본 출력한다. 각 세트 승수와 경기 세트스코어의 불일치, null/빈 set 점수는 계약 검사에서 거부한다. 세트별 자료가 없는 결과 경기에는 세트스코어만 표시하고, 예정 경기는 VS만 표시한다. 순위 계산·타이브레이크·공식 진출 판정은 대회 데이터/normalizer의 책임이며 UI에서 결과를 추정하지 않는다.
+upcoming에는 경기 결과·우승팀·최종순위·확정 진출팀을 넣지 않는다. 순위 계산/타이브레이크/규정 판정은 원본 데이터 또는 DATA ONLY normalizer의 책임이다. 엔진은 예상 결과를 공식 결과처럼 계산하지 않는다.
 
-## 현재 지원 범위와 확장 경계
+## Optional modules
 
-| 컴포넌트 | 현재 지원 | 범위 |
-| --- | --- | --- |
-| standings | pools-combined / single-league / none | 동일 행·정보계층 재사용 |
-| participants | groups / flat | 동일 카드와 확대 국기, contain |
-| roster | full / link-only / none | 동일 선수명단, 선택/전체 인쇄, 14명 단위 분할 |
-| knockout | bracket-8 / none | QF 4경기 → SF 2경기 → FINAL, optional BRONZE |
-| 상태 | upcoming / active / completed | 미확정 결과는 표시하지 않음 |
+모듈을 쓰지 않으면 rosters/qualifications/resources/focus를 data.json 안에 그대로 둔다. 분리하려면 해당 필드를 data.json에서 제거하고 config에 선언한다.
 
-4강부터 시작, 16강, 5~8위 결정전, 기타 순위결정전 및 AVC/FIVB 연령별 다단계 포맷은 **현재 검증된 지원으로 선언하지 않는다**. bracket-8에 SF만 넣어 빈 8강 열을 만드는 방식은 지원이 아니다.
+```json
+"modules": [
+  {"id": "rosters", "source": "rosters.json"},
+  {"id": "qualifications", "source": "qualifications.json"}
+]
+```
 
-확장은 공통 knockout component에 라운드 목록과 연결 관계를 받는 graph 모드를 추가한다. 각 노드는 match ID, round ID, 다음 경기, winner/loser 진출 경로, 순위 범위를 제공한다. 기존 `bmatch/bteam/setLine`과 같은 경기 카드 구조를 재사용하고, classification 경로도 같은 공통 라운드 renderer가 배치한다. 조별 다단계 방식도 standings 데이터 단계 목록으로 확장한다. 새 모드를 추가할 때 공통 계약·renderer·검증 fixture를 함께 확장하며, 대회별 HTML/CSS 템플릿은 만들지 않는다.
+기본 등록 모듈은 rosters, qualifications, resources, focus다. 경로는 해당 대회 폴더 안의 상대 JSON 파일만 허용한다. 중복 필드·미등록 모듈·잘못된 경로는 명시적으로 실패한다. modules는 공통 renderer에 전달할 데이터만 반환한다.
 
-## 검증/승격
+새 특수 규정의 normalizer가 필요하면 `templates/competition-module-v2.starter.js`의 register(id,{fields,normalize}) 계약을 사용한다. 재사용 모듈 파일을 한 번 공통 진입점에 연결한 뒤 대회별 config에서는 등록 ID/source/options만 선택한다. 모듈은 선언한 공통 schema 필드만 반환하며 Hero/카드/토너먼트 HTML이나 CSS를 만들지 않는다. 기존 engine renderer를 수정하지 않고 원본 필드·규정 계산을 확장하는 경계다. 별도 모듈을 계약 검사에도 연결할 때는 `--module assets/js/modules/my-module.js`를 추가한다(여러 번 지정 가능). 같은 모듈 파일은 브라우저 등록과 Node 검사 양쪽에서 사용한다. 새 UI 구조 자체가 필요하면 아래 공통 구조 확장 절차를 따른다.
 
-- DATA ONLY / 빌드 검사: `node tests/competition-v2-production-starter.test.cjs`
-- 독립 가상대회: `tests/competition-page-v2-structure-engine-smoke.html?view=rosters`
-- 전체 검증: `tests/competition-page-v2-production-gate.html`
-- 상태/테마: `?status=upcoming|active|completed&gender=men|women`
-- 변형: `standings=single-league|none`, `participants=flat`, `roster=none|link-only`, `resources=one`, `phase=final-pending`
-- 가상대회는 자체 일정·경기·선수 데이터를 생성한다. 기존 AVC 이미지 자산은 로딩 검증에만 사용하며, 실제 대회 결과나 승인된 신규 Hero로 주장하지 않는다.
+## 지원 범위
 
-모든 Gate 통과 전 manifest는 PRODUCTION_READY가 아니다. Gate 통과와 기존 production 교체 승인은 별개다. 사용자의 명시적인 production 반영 요청이 있어야 기존 AVC/VNL 페이지를 교체한다.
+| 컴포넌트 | 현재 검증된 지원 |
+| --- | --- |
+| standings | pools-combined / single-league / none |
+| participants | groups / flat |
+| roster | full / link-only / none |
+| knockout | bracket-8 / none: QF 4경기 → SF 2경기 → FINAL, 선택 BRONZE |
+| 상태 | upcoming / active / completed |
+
+4강 시작·16강·5~8위·다른 순위결정전·연령별 특수 형식은 아직 검증된 지원이 아니다. 현재 지원하지 않는 구조를 optional module 이름만으로 지원한다고 표시하지 않는다. 향후 공통 bracket renderer에 라운드 목록과 winner/loser 연결 graph를 추가하고 같은 경기 카드와 geometry를 재사용한다. 대회별 템플릿은 만들지 않는다.
+
+## SEO와 기존 시작점
+
+공통 URL은 config를 읽은 후 title/description/canonical/Open Graph를 갱신한다. 새 대회마다 HTML을 만들지 않는 정적 사이트 방식이므로 JavaScript를 실행하지 않는 공유/검색 클라이언트에는 공통 기본 메타만 보일 수 있다. 개별 대회의 서버 렌더링 메타가 구현된 것으로 주장하지 않는다.
+
+공통 production HTML에는 validation용 noindex나 예시 대회 데이터를 넣지 않았다. 다만 현재 사이트 전체의 `unified-nav.js`에 PRIVATE_REVIEW_MODE가 켜져 있어 런타임 검색 차단은 유지된다. 이번 작업은 사이트 전체 공개 상태를 바꾸지 않는다.
+
+이전 `scripts/create-competition-v2.cjs`, `templates/competition-page-production-v2.html`, 단일 통합 data starter는 기존 생성물의 호환성과 정적 SEO가 필요한 명시적 별도 작업을 위해 보존한다. 신규 대회 추가의 기본 경로로 사용하지 않는다.
+
+## 검증과 남은 Gate
+
+- 신규 config/data/modules 계약: `node tests/competition-v2-config.test.cjs`
+- 기존 가상대회 JSON 경로: `/tests/competition-page-v2-config-smoke.html?competition=horizon-2031-women&view=rosters`
+- 경로별 화면 검사: `/tests/competition-page-v2-production-gate.html`의 `config/data 경로 검증`
+- 기존 144개 + 42개 UI 검사 결과는 재사용하며 이번 작업에서 처음부터 반복하지 않았다.
+- 여자 production SyntaxError는 이전 수정 상태를 확인했다. 기존 남녀 production은 보존하고 신규 남녀는 V2 한 벌을 사용한다.
+- 남은 승인 조건은 실제 브라우저 PDF의 한글·국기·누락·페이지 분할·잘림 검사다. 현재 연결 브라우저는 PDF export 미지원이다.
+- 외부 브라우저에서 검토 링크의 선택 국가/전체 인쇄 → PDF 저장으로 2장(18명)과 9장(116명)을 출력해 전달하면 파일을 검수할 수 있다. 출력 전 인쇄 설정은 A4 가로, 배율 100%, CSS 여백을 따른다. 결과 PDF를 확인한 후에만 인쇄 Gate를 완료한다.

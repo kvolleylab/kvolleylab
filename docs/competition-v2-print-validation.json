@@ -1,11 +1,44 @@
 {
   "engineCommit": "2d6a86a282a5b4f6e08c433129969ecf4418fdfd",
   "source": "tests/competition-page-v2-structure-engine-smoke.html?view=rosters",
-  "selectedCountry": {"players": 18, "sheets": 2, "rowsPerSheet": [14,4], "domGeneration": "PASS"},
-  "allCountries": {"countries": 8, "players": 116, "sheets": 9, "rowsPerSheet": [14,4,14,14,14,14,14,14,14], "domGeneration": "PASS"},
+  "selectedCountry": {
+    "players": 18,
+    "sheets": 2,
+    "rowsPerSheet": [
+      14,
+      4
+    ],
+    "domGeneration": "PASS"
+  },
+  "allCountries": {
+    "countries": 8,
+    "players": 116,
+    "sheets": 9,
+    "rowsPerSheet": [
+      14,
+      4,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14,
+      14
+    ],
+    "domGeneration": "PASS"
+  },
   "browserPrintButton": "invoked; print root and active class generated",
   "nativePrintPreview": "NOT_VERIFIED: no visible print dialog in connected browser",
   "pdfExport": "NOT_VERIFIED: supported content.export API returned CDP does not support command tab_content_export",
   "rosterPrintGate": "FAIL_UNVERIFIED_OUTPUT",
-  "remaining": "Save actual browser print output to PDF, inspect every page, confirm all players, flags, Korean glyphs and page breaks without clipping. No synthetic replacement PDF was used to claim this gate."
+  "remaining": "Save actual browser print output to PDF, inspect every page, confirm all players, flags, Korean glyphs and page breaks without clipping. No synthetic replacement PDF was used to claim this gate.",
+  "currentVerification": {
+    "engineCodeCommit": "86791297e9ac8da754ba6f18ce3ce41b1fbf0369",
+    "printImplementationChanged": false,
+    "nativeBrowserAttempt": "All-country print button invoked in connected Chrome; 9 sheets, 116 rows prepared",
+    "pdfExportError": "CDP does not support command \"tab_content_export\".",
+    "pdfArtifactCreated": false,
+    "gate": "FAIL_UNVERIFIED_OUTPUT",
+    "nextStep": "Inspect actual selected-country (2-page) and all-country (9-page) PDFs saved from browser print. No approval until real output is available."
+  }
 }

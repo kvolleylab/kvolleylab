@@ -5,12 +5,14 @@
 
 V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공통 구조 + 성별/대회계열 테마 + 대회 데이터 + 대회 상태(upcoming/active/completed)** 를 분리한 재사용 기준이다. V1은 역사적 동결 스냅샷으로 보존하고 신규 대회는 V2를 우선한다.
 
-현재 상태는 **VALIDATED_PENDING_WOMEN_PARITY_AND_PRINT_PDF**다. 신규 대회는 데이터와 normalizer만으로 생성 가능하며, 독립 가상대회 144개 화면 검사와 42개 보완 검사를 통과했다. 남녀 공통 geometry 18쌍은 동일했다. 기존 여자 production 완전 재현 조건과 실제 브라우저 인쇄 PDF 검증이 남아 있어 PRODUCTION_READY로 승격하지 않는다. 상세 결과는 `docs/KVL_COMPETITION_PRODUCTION_GATE_V2.md`를 따른다.
+현재 상태는 **VALIDATED_PENDING_PRINT_PDF**다. 최신 사용자 지시에 따라 기존 AVC 남녀 production을 보존하고 신규 남녀는 V2 geometry 한 벌을 사용한다. 새 대회는 공통 URL + config/data 두 JSON + 선택 모듈로 생성한다. 기존 144개·42개 검사 결과를 재사용했고 신규 경로 18개 화면 검사를 추가했다. 실제 브라우저 인쇄 PDF 검수만 남아 PRODUCTION_READY 승격은 보류한다. 상세 결과는 `docs/KVL_COMPETITION_PRODUCTION_GATE_V2.md`를 따른다.
 
 공통 기준은 기존 AVC에서 추출한 V2 geometry다. 남녀·대회계열별 geometry 분기를 만들지 않는다. 기존 여자 production의 별도 규격은 보존하며, 동일 픽셀 재현으로 주장하지 않는다. 여자 production SyntaxError만 최소 수정했다. 신규 대회와 기존 production 마이그레이션은 별개다.
 
 ## Source of Truth
-- Production starter: `templates/competition-page-production-v2.html`
+- 공통 진입점: `competition-engine.html?competition=<slug>`
+- Config/data starter: `templates/competition-config-v2.starter.json`, `templates/competition-content-v2.starter.json`
+- 생성/검사: `scripts/scaffold-competition-v2.cjs`
 - 생성/데이터 연결 가이드: `docs/KVL_COMPETITION_PRODUCTION_STARTER_V2.md`
 - Validation/reference HTML: `templates/competition-page-pc-mobile-v2.html`
 - 공통 CSS: `assets/css/kvl-competition-template-v2.css`

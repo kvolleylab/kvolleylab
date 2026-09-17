@@ -1,0 +1,36 @@
+{
+  "baselineCommit": "12b0403788c7143c85aa5fd761b321a1191717e3",
+  "engineCommit": "bf41268a35f86ce7044a077cd087b4a572c922d1",
+  "state": "VALIDATED_PENDING_PRINT_PDF",
+  "configContractChecks": {
+    "passed": 9,
+    "failed": 0
+  },
+  "optionalModuleStarter": "PASS",
+  "missingCompetitionURL": {
+    "renderState": "error",
+    "message": "대회 정보를 불러오지 못했습니다. 주소를 확인해 주세요.",
+    "url": "/competition-engine.html"
+  },
+  "womenSyntax": "PASS_PREVIOUS_FIX_RETAINED",
+  "geometryDecision": "existing V2 shared geometry for new competitions; completed AVC production remains unchanged",
+  "legacyWomenExactParity": false,
+  "cssInventedQualificationResult": "removed from common V2 scope only",
+  "priorBrowserCasesReused": 186,
+  "newConfigRouteCases": 18,
+  "actualPDFVerified": false,
+  "productionReady": false,
+  "productionPromoted": false,
+  "newConfigRoutePassed": 18,
+  "upcomingQualificationRecheck": {
+    "cssPseudoResults": 0,
+    "setPointCells": 0,
+    "finalRankingCards": 0,
+    "state": "upcoming"
+  },
+  "competitionDirectoryRestoration": {
+    "path": "competition.html",
+    "originalAndFinalBlob": "a2ee052bdec470a6cdf67667a2cd81ae8d59f648",
+    "netChange": false
+  }
+}

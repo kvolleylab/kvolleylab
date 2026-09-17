@@ -1,13 +1,13 @@
 {
   "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V2",
-  "status": "VALIDATED_PENDING_WOMEN_PARITY_AND_PRINT_PDF",
+  "status": "VALIDATED_PENDING_PRINT_PDF",
   "createdAtKst": "2026-09-15",
   "engineRefactorAtKst": "2026-09-16",
   "visualBaselinePortAtKst": "2026-09-16",
   "visualSourceOfTruth": {
     "men": "international-competition-avc-men-continental-2026.html",
     "women": "international-competition-avc-women-continental-2026.html",
-    "policy": "shared engine must emit the user-validated AVC production DOM/class geometry; competition adapters change data only, themes change palette only"
+    "policy": "Preserve the completed AVC men/women production pages. Future competitions use one existing V2 geometry; gender/family alter palette and data, not layout. Exact reproduction of both different legacy geometries is not claimed."
   },
   "previousVisualBaseline": {
     "status": "CROSS_GENDER_VISUALLY_VALIDATED_FROZEN_BASELINE",
@@ -18,7 +18,7 @@
     "result": "user-confirmed-no-visible-issues"
   },
   "sourceOfTruth": {
-    "html": "templates/competition-page-pc-mobile-v2.html",
+    "html": "competition-engine.html",
     "shellJs": "assets/js/kvl-competition-shell-v2.js",
     "controllerJs": "assets/js/kvl-competition-template-v2.js",
     "componentJs": "assets/js/kvl-competition-components-v2.js",
@@ -35,14 +35,21 @@
     "geometryCss": "assets/css/kvl-competition-geometry-v2.css",
     "rebuildAudit": "docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md",
     "visualComparison": "validation-competition-v2-rebuild.html",
-    "productionStarter": "templates/competition-page-production-v2.html",
-    "dataStarter": "templates/competition-data-v2.starter.json",
+    "productionStarter": "templates/competition-config-v2.starter.json",
+    "dataStarter": "templates/competition-content-v2.starter.json",
     "adapterStarter": "templates/competition-data-adapter-v2.cjs",
-    "builder": "scripts/create-competition-v2.cjs",
+    "builder": "scripts/scaffold-competition-v2.cjs",
     "dataContract": "assets/js/kvl-competition-data-v2.js",
     "productionGate": "docs/KVL_COMPETITION_PRODUCTION_GATE_V2.md",
     "productionStarterGuide": "docs/KVL_COMPETITION_PRODUCTION_STARTER_V2.md",
-    "htmlRole": "validation-reference-only"
+    "htmlRole": "shared-config-data-route",
+    "configStarter": "templates/competition-config-v2.starter.json",
+    "moduleStarter": "templates/competition-module-v2.starter.js",
+    "routeLoader": "assets/js/kvl-competition-loader-v2.js",
+    "configContract": "assets/js/kvl-competition-config-v2.js",
+    "moduleRegistry": "assets/js/kvl-competition-modules-v2.js",
+    "configSmokeTest": "tests/competition-page-v2-config-smoke.html?competition=horizon-2031-women",
+    "legacyStaticBuilder": "scripts/create-competition-v2.cjs"
   },
   "architecture": {
     "competitionSpecificUiMarkupAllowed": false,
@@ -67,7 +74,14 @@
     "adapterRefreshSequence": [
       "KVLCompetitionTemplateV2.apply",
       "KVLCompetitionComponentsV2.render"
-    ]
+    ],
+    "entryUrl": "/competition-engine.html?competition=<slug>",
+    "competitionFiles": [
+      "data/competitions/<slug>/config.json",
+      "data/competitions/<slug>/data.json"
+    ],
+    "optionalModules": "registered DATA ONLY schema transformations; no per-competition DOM/CSS",
+    "newCompetitionHtmlRequired": false
   },
   "structureModes": {
     "standings": [
@@ -159,12 +173,15 @@
         "international-competition-avc-women-continental-2026.html"
       ],
       "designChanged": false
-    }
+    },
+    "changesAfter12b0403": [],
+    "competitionDirectoryRestoredBlob": "a2ee052bdec470a6cdf67667a2cd81ae8d59f648"
   },
   "legacy": {
     "v1": "templates/competition-page-pc-mobile-v1.html",
     "vnlCompetitionSpecificCss": "removed from active V2 architecture",
-    "policy": "retain V1 as historical snapshot; V2 competition pages use shared shell/controller/components"
+    "policy": "retain V1 as historical snapshot; V2 competition pages use shared shell/controller/components",
+    "staticPageStarterPolicy": "Retained for compatibility; not the default new competition workflow"
   },
   "rebuild": {
     "baselineCommit": "91dad4c956d6ce6ff137e581f5fd9ef011746c05",
@@ -172,7 +189,7 @@
     "womenExactParity": false,
     "productionPromotion": false,
     "resumedFromCommit": "27c3addb1914611f0078ddbf27af2d8746c65ed3",
-    "testedEngineCommit": "2d6a86a282a5b4f6e08c433129969ecf4418fdfd",
+    "testedEngineCommit": "bf41268a35f86ce7044a077cd087b4a572c922d1",
     "menRepresentativeMetricChecks": "18/18 after focused rechecks",
     "womenRepresentativeMetricChecks": "2/18 after SyntaxError fix; source geometry conflict remains",
     "vnlReuse": "116 matches / 18 teams; shared components; approved hero asset pending",
@@ -184,7 +201,7 @@
     "productionReady": false,
     "newCompetitionDataOnlyGeneration": "PASS",
     "men": "PASS",
-    "women": "FAIL_LEGACY_PRODUCTION_PARITY",
+    "women": "PASS_COMMON_ENGINE_EXISTING_PRODUCTION_PRESERVED",
     "newWomenSharedEngine": "PASS",
     "flags": "PASS",
     "setPoints": "PASS",
@@ -199,16 +216,22 @@
     "nodeContractChecks": "10/10",
     "vnlFocusedCases": "6/6",
     "blocking": [
-      "Existing women production differs in 16/18 representative comparisons; no false parity claim",
-      "Actual browser print/PDF output not verified"
+      "Actual browser print/PDF output could not be exported by the connected browser; inspect a real saved PDF before PRODUCTION_READY."
     ],
     "reports": [
       "docs/competition-v2-production-gate-results.json",
       "docs/competition-v2-production-focused-results.json",
       "docs/competition-v2-women-baseline-results.json",
       "docs/competition-v2-vnl-focused-results.json",
-      "docs/competition-v2-print-validation.json"
-    ]
+      "docs/competition-v2-print-validation.json",
+      "docs/competition-v2-config-route-results.json",
+      "docs/competition-v2-config-final-gates.json"
+    ],
+    "geometryDecision": "PASS",
+    "newCompetitionConfigDataRouting": "PASS",
+    "optionalDataModules": "PASS",
+    "configRouteBrowserCases": "18/18",
+    "configContractChecks": "9/9 plus optional module starter registration"
   },
   "unsupportedKnockoutFormats": [
     "bracket-4",
@@ -220,5 +243,18 @@
     "templateDocumentId": "1MYtXRpCOlbZ-dvzYiTo9FTpH5mDak93-W4DqKHi5AEU",
     "operatingMasterDocumentId": "1iu1aWoTdSf2L7VCco5X7pCPxs9qVlM9rskZ8_hI76FY",
     "operatingMasterVersion": "v14"
+  },
+  "geometryDecision": {
+    "status": "RESOLVED_FOR_NEW_COMPETITIONS",
+    "authority": "Latest user instruction: preserve completed AVC production; finalize one engine for future competitions; do not rebuild or transplant AVC pages.",
+    "basis": "existing-v2-avc-extracted-single-geometry",
+    "legacyWomenDifferences": "retained and documented; 16/18 historical comparisons differ",
+    "legacyExactParityClaimed": false,
+    "genderSpecificTemporaryCss": false
+  },
+  "seo": {
+    "metadata": "config-driven runtime title, description, canonical and Open Graph",
+    "sharedRouteLimitation": "Clients without JavaScript receive generic metadata",
+    "sitePolicy": "Existing PRIVATE_REVIEW_MODE remains enabled; global indexing policy unchanged"
   }
 }

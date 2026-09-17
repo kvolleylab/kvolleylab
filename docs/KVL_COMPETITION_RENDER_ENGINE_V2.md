@@ -10,7 +10,9 @@ V2의 구현 원칙은 단순하다.
 Hero, KPI, 월간 달력, 경기일정, 순위, 토너먼트, 참가국, 선수명단, 공식자료의 DOM과 크기·간격·반응형은 공통 shell/controller/component renderer가 만든다.
 
 ## Source of Truth
-- Production 시작점: `templates/competition-page-production-v2.html`
+- 공통 진입점: `competition-engine.html?competition=<slug>`
+- Config/data 경계: `assets/js/kvl-competition-config-v2.js`
+- DATA ONLY 선택 모듈: `assets/js/kvl-competition-modules-v2.js`
 - DATA ONLY starter/생성기: `docs/KVL_COMPETITION_PRODUCTION_STARTER_V2.md`
 - Validation/reference 시작점: `templates/competition-page-pc-mobile-v2.html`
 - 공통 DOM shell: `assets/js/kvl-competition-shell-v2.js`
