@@ -1,6 +1,6 @@
 # Competition shared engine rebuild audit
 
-K-Volley Lab · 2026-09-16 · validation only
+K-Volley Lab · resumed validation review · production unchanged
 
 ## Baseline and boundaries
 
@@ -46,6 +46,40 @@ Adapters may normalize data and call the engine. They must not generate card/lay
 ## Validation gates
 
 Automated data contract: men 26 games/12 teams/165 players, women 26 games/12 teams, VNL 116 games/18 teams; null score rejection passed.
-Visual cross-validation: pending browser matrix; no parity pass is asserted.
+Browser matrix completed: 54 cases, 3 competitions × 3 widths × 6 views. After two focused rechecks, AVC men representative component metrics match in 18/18 cases. Women matches 2/18 (desktop schedule and final ranking); the remaining 16 retain source discrepancies. No full visual parity pass is asserted.
 VNL hero artwork: no dedicated approved hero asset exists in the inspected repository; purple background remains pending an asset, without changing geometry.
-Known remaining scope: preserve production roster printing and exact section copy/auxiliary status elements; inspect all visual diffs before promotion.
+Roster print rendering and controls have been restored in the shared renderer. Browser print-to-paper/PDF layout has not been validated. Remaining scope: women source resolution, approved VNL hero, auxiliary copy and full visual review before any promotion.
+
+
+## Resumed work and verification
+
+- Resumed from `27c3addb1914611f0078ddbf27af2d8746c65ed3`; tested rendering through `9c0e0c52d446e3cb47bad7f6a9a855944ab715e9`.
+- Removed the extra match-number line that increased mobile AVC schedule cards by 22px; normalized official IDs remain in data.
+- Restored roster club labels at mobile widths only, official club count, source note and shared print actions. Source row metrics now match the selected KOR production roster.
+- Final result and qualification labels now render from data within the existing card hierarchy. Removed hardcoded AVC advancement text from frozen CSS. VNL does not display AVC Olympic/World Cup claims.
+- Restored the final-card mobile 146px minimum and official-resource button/card dimensions from the production cascade, including site-wide overrides missed by the earlier extraction.
+- Kept medal colors independent of competition theme, as in the original medal design.
+- Constrained mobile Hero metadata to its container; zero candidate overflow cases across the matrix.
+- Comparison waits for the shared navigation and fonts, versions candidate URLs, and never labels errors or candidate overflow as a match. `METRICS_MATCH` explicitly means representative geometry only, not complete text/pixel equivalence.
+- Removed validation-only footer notes that added an artificial scrollbar. Validation identity remains in page titles and the comparison harness.
+- Data contract rerun after roster normalization change: AVC men 26/12/165, AVC women 26/12/0 connected players, VNL 116/18. Missing scores remain missing.
+
+### Evidence and limits
+
+The first matrix at `26dea2b2` returned men 16/18 and women 2/18 representative metric matches, VNL 18 reuse-review cases, and zero candidate overflow cases. Men's 1180 overview was a navigation initialization race; a focused reread matched. Men's 390 resources was 15px narrower because the validation note caused a vertical scrollbar; after removing the note the card measured 344×54px and its link 70.67×22px, equal to production. The full matrix was not repeated after these targeted changes.
+
+Reference men final ranking and candidate VNL final ranking were inspected as rendered screenshots. The VNL score/result copy is data-derived and its dedicated Hero image remains absent. Metric sampling checks the first visible component per selector, not every card, image crop or auxiliary label. Detailed visual approval remains open.
+
+### Women's production blocker
+
+`assets/js/kvl-avc-women-template-v1.js` contains unescaped backticks around `01_선수명단` inside the line-45 template literal. The browser reports `SyntaxError: Invalid or unexpected token`, and `node --check` independently reproduces it. The entire script fails to parse. This is an existing production error, not a change introduced by this validation work.
+
+At 390px the current female reference uses two final-ranking columns while the shared engine uses the male reference's four columns; bracket match heights and standings structures also differ. Reproducing both current sources exactly while allowing only palette changes is therefore not a satisfiable gate. Do not introduce female-only or competition-only layout overrides to hide this conflict. Resolve the reference/common-baseline decision with the owner; production repair or promotion still requires explicit authorization.
+
+### Protected files and remaining work
+
+No original AVC men/women HTML, production CSS/JS/JSON, or `vnl.html` has been changed. All code changes are in V2 shared/adapter/validation/template files. Existing source-freshness discrepancies above remain untouched.
+
+Before final acceptance: resolve women's reference error and common geometry; complete the detailed auxiliary-content/visual review; connect an approved VNL Hero asset; verify print layout. Metrics alone must not promote the engine to production.
+
+VNL 360px resources retain a 15px width difference caused by different total content height/vertical scrollbar presence in the 900px-tall desktop iframe; card height, padding, gap, radius and link geometry match. This is recorded as a difference, not silently counted as full parity.

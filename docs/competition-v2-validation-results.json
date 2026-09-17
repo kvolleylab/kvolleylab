@@ -1,0 +1,68 @@
+{
+  "engineCommit": "26dea2b2f1b291cda1ae340e24a376f6991950b2",
+  "checks": 54,
+  "widths": [
+    1180,
+    390,
+    360
+  ],
+  "views": [
+    "overview",
+    "schedule",
+    "groups",
+    "knockout",
+    "rosters",
+    "resources"
+  ],
+  "men": {
+    "metricMatches": 16,
+    "metricDifferences": 2,
+    "exceptions": [
+      {
+        "width": 1180,
+        "view": "overview",
+        "reason": "navigation initialized after measurement; subsequent focused check matched"
+      },
+      {
+        "width": 390,
+        "view": "resources",
+        "reason": "candidate page creates vertical scrollbar, 15px content width difference"
+      }
+    ],
+    "focusedRechecks": {
+      "overview1180": "METRICS_MATCH after navigation settled",
+      "resources390": "METRICS_MATCH at 344px card width after removing validation-only footer note"
+    },
+    "currentRepresentativeMetricMatches": 18,
+    "currentRepresentativeMetricDifferences": 0
+  },
+  "women": {
+    "metricMatches": 2,
+    "metricDifferences": 16,
+    "matched": [
+      {
+        "width": 1180,
+        "view": "schedule"
+      },
+      {
+        "width": 1180,
+        "view": "knockout"
+      }
+    ],
+    "productionScriptError": "assets/js/kvl-avc-women-template-v1.js line 45: unescaped backticks in a template literal",
+    "visualParityApproved": false
+  },
+  "vnl": {
+    "checks": 18,
+    "status": "REUSE_REVIEW",
+    "scheduleFinalResourceMetricsMatchAt1180And390": true,
+    "scheduleFinalMetricsMatchAt360": true,
+    "hero": "approved asset not connected",
+    "resource360FocusedRecheck": "15px width delta from vertical-scrollbar presence (different total content height); matching height/padding/gap/radius; no horizontal overflow"
+  },
+  "candidateOverflowCases": 0,
+  "limitations": "Samples representative component dimensions; not a full pixel or content equivalence test. Women production script error recorded independently.",
+  "testedEngineCommit": "9c0e0c52d446e3cb47bad7f6a9a855944ab715e9",
+  "visualParityApproved": false,
+  "productionPromotion": false
+}

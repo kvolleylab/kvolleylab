@@ -1,6 +1,6 @@
 {
   "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V2",
-  "status": "REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN",
+  "status": "VALIDATION_METRICS_REVIEWED_WOMEN_BASELINE_CONFLICT_OPEN",
   "createdAtKst": "2026-09-15",
   "engineRefactorAtKst": "2026-09-16",
   "visualBaselinePortAtKst": "2026-09-16",
@@ -154,6 +154,14 @@
     "baselineCommit": "91dad4c956d6ce6ff137e581f5fd9ef011746c05",
     "commonGeometry": "men-production-provisional",
     "womenExactParity": false,
-    "productionPromotion": false
+    "productionPromotion": false,
+    "resumedFromCommit": "27c3addb1914611f0078ddbf27af2d8746c65ed3",
+    "testedEngineCommit": "9c0e0c52d446e3cb47bad7f6a9a855944ab715e9",
+    "menRepresentativeMetricChecks": "18/18 after focused rechecks",
+    "womenRepresentativeMetricChecks": "2/18; production parse error and source geometry conflict",
+    "vnlReuse": "116 matches / 18 teams; shared components; approved hero asset pending",
+    "overflowCandidateCases": 0,
+    "report": "docs/competition-v2-validation-results.json",
+    "fullVisualParityApproved": false
   }
 }

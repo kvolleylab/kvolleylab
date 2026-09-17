@@ -1,0 +1,138 @@
+{
+  "menResources390": {
+    "candidate": {
+      "error": "",
+      "metrics": [
+        {
+          "font": "16px",
+          "gap": "6px",
+          "height": 54,
+          "lineHeight": "normal",
+          "padding": "10px",
+          "radius": "12px",
+          "selector": ".kvl1180-source",
+          "width": 344
+        },
+        {
+          "font": "10px",
+          "gap": "normal",
+          "height": 22,
+          "lineHeight": "10px",
+          "padding": "5px 7px",
+          "radius": "999px",
+          "selector": ".kvl1180-source a",
+          "width": 70.67
+        }
+      ],
+      "overflow": [],
+      "scrollWidth": 390,
+      "viewport": 390
+    },
+    "competition": "men",
+    "differences": [],
+    "parity": "METRICS_MATCH",
+    "reference": {
+      "error": "",
+      "metrics": [
+        {
+          "font": "16px",
+          "gap": "6px",
+          "height": 54,
+          "lineHeight": "normal",
+          "padding": "10px",
+          "radius": "12px",
+          "selector": ".kvl1180-source",
+          "width": 344
+        },
+        {
+          "font": "10px",
+          "gap": "normal",
+          "height": 22,
+          "lineHeight": "10px",
+          "padding": "5px 7px",
+          "radius": "999px",
+          "selector": ".kvl1180-source a",
+          "width": 70.67
+        }
+      ],
+      "overflow": [],
+      "scrollWidth": 390,
+      "viewport": 390
+    },
+    "view": "resources",
+    "width": 390
+  },
+  "vnlResources360": {
+    "candidate": {
+      "error": "",
+      "metrics": [
+        {
+          "font": "16px",
+          "gap": "6px",
+          "height": 54,
+          "lineHeight": "normal",
+          "padding": "10px",
+          "radius": "12px",
+          "selector": ".kvl1180-source",
+          "width": 314
+        },
+        {
+          "font": "10px",
+          "gap": "normal",
+          "height": 22,
+          "lineHeight": "10px",
+          "padding": "5px 7px",
+          "radius": "999px",
+          "selector": ".kvl1180-source a",
+          "width": 70.67
+        }
+      ],
+      "overflow": [],
+      "scrollWidth": 360,
+      "viewport": 360
+    },
+    "competition": "vnl",
+    "differences": [
+      {
+        "candidate": 314,
+        "property": "width",
+        "reference": 299,
+        "selector": ".kvl1180-source"
+      }
+    ],
+    "parity": "REUSE_REVIEW",
+    "reference": {
+      "error": "",
+      "metrics": [
+        {
+          "font": "16px",
+          "gap": "6px",
+          "height": 54,
+          "lineHeight": "normal",
+          "padding": "10px",
+          "radius": "12px",
+          "selector": ".kvl1180-source",
+          "width": 299
+        },
+        {
+          "font": "10px",
+          "gap": "normal",
+          "height": 22,
+          "lineHeight": "10px",
+          "padding": "5px 7px",
+          "radius": "999px",
+          "selector": ".kvl1180-source a",
+          "width": 70.67
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ],
+      "scrollWidth": 345,
+      "viewport": 360
+    },
+    "view": "resources",
+    "width": 360
+  }
+}

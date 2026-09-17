@@ -5,7 +5,7 @@
 
 V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공통 구조 + 성별/대회계열 테마 + 대회 데이터 + 대회 상태(upcoming/active/completed)** 를 분리한 재사용 기준이다. V1은 역사적 동결 스냅샷으로 보존하고 신규 대회는 V2를 우선한다.
 
-2026-09-15 사용자 육안검수로 PC 1180px, 모바일 390px/360px 기준에서 문제가 없음을 확인했으며 V2를 기본 동결 기준본으로 사용한다.
+기존 프로토타입의 사용자 검수 기록과 현재 Shared Engine의 검증 상태는 구분한다. 현재 엔진은 **validation 전용이며 남녀 동시 재현 완료·production 동결 기준본이 아니다**. 남자부 공통 규격을 잠정 적용하고 여자부 원본과의 차이는 열린 검증 항목으로 유지한다. 최신 결과는 `docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md`와 `docs/competition-v2-validation-results.json`을 따른다.
 
 ## Source of Truth
 - HTML: `templates/competition-page-pc-mobile-v2.html`
@@ -208,7 +208,7 @@ V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공�
 11. 모바일 390/360 검수
 12. upcoming/active/completed 각각 smoke test
 13. theme smoke test로 성별/대회계열 색상 확인
-14. production 배포
+14. 남녀 재현 검증 및 사용자 명시적 production 반영 요청 후 배포
 
 ## 승격·동결 근거
 - 남자부 프로토타입: PC + 모바일 검수 완료.
