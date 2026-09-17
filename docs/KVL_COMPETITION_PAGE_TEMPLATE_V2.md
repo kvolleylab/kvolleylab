@@ -5,10 +5,14 @@
 
 V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공통 구조 + 성별/대회계열 테마 + 대회 데이터 + 대회 상태(upcoming/active/completed)** 를 분리한 재사용 기준이다. V1은 역사적 동결 스냅샷으로 보존하고 신규 대회는 V2를 우선한다.
 
-기존 프로토타입의 사용자 검수 기록과 현재 Shared Engine의 검증 상태는 구분한다. 현재 엔진은 **validation 전용이며 남녀 동시 재현 완료·production 동결 기준본이 아니다**. 남자부 공통 규격을 잠정 적용하고 여자부 원본과의 차이는 열린 검증 항목으로 유지한다. 최신 결과는 `docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md`와 `docs/competition-v2-validation-results.json`을 따른다.
+현재 상태는 **VALIDATED_PENDING_WOMEN_PARITY_AND_PRINT_PDF**다. 신규 대회는 데이터와 normalizer만으로 생성 가능하며, 독립 가상대회 144개 화면 검사와 42개 보완 검사를 통과했다. 남녀 공통 geometry 18쌍은 동일했다. 기존 여자 production 완전 재현 조건과 실제 브라우저 인쇄 PDF 검증이 남아 있어 PRODUCTION_READY로 승격하지 않는다. 상세 결과는 `docs/KVL_COMPETITION_PRODUCTION_GATE_V2.md`를 따른다.
+
+공통 기준은 기존 AVC에서 추출한 V2 geometry다. 남녀·대회계열별 geometry 분기를 만들지 않는다. 기존 여자 production의 별도 규격은 보존하며, 동일 픽셀 재현으로 주장하지 않는다. 여자 production SyntaxError만 최소 수정했다. 신규 대회와 기존 production 마이그레이션은 별개다.
 
 ## Source of Truth
-- HTML: `templates/competition-page-pc-mobile-v2.html`
+- Production starter: `templates/competition-page-production-v2.html`
+- 생성/데이터 연결 가이드: `docs/KVL_COMPETITION_PRODUCTION_STARTER_V2.md`
+- Validation/reference HTML: `templates/competition-page-pc-mobile-v2.html`
 - 공통 CSS: `assets/css/kvl-competition-template-v2.css`
 - 공통 JS: `assets/js/kvl-competition-template-v2.js`
 - 데이터 예시: `templates/competition-page-v2.example.json`
@@ -34,7 +38,7 @@ V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공�
 ## 공통 상호작용
 - 메뉴 활성화는 대회 데이터 fetch와 분리하고 `?view=`만으로 먼저 동작한다.
 - 한눈에 보기 KPI 4개는 마우스·키보드 이동을 지원한다.
-  - 참가국 → `?view=rosters&team=KOR`
+  - 참가국 → `?view=rosters` + 데이터의 focusTeamCode
   - 조 편성 → `?view=groups`
   - 전체 일정 → `?view=schedule`
   - 결선 진출 → `?view=knockout`
@@ -109,7 +113,7 @@ V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공�
 - Hero 상태 `대회 진행 중`; `stageLabel`로 현재 단계 표시.
 - 일정은 종료/예정 상태를 함께 보여준다.
 - 조별순위와 예선 종합순위는 현재 공식 결과 기준으로 자동계산/반영한다.
-- 우승 확정 전 한눈에 보기 우측 안내 기본값은 `조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.`이다. 조별리그 이후에는 단계별 안내로 교체할 수 있다.
+- 우승 확정 전 한눈에 보기 우측 안내 기본값은 `확인된 경기 결과와 공식 대진을 표시합니다.`이다. 조별리그 이후에는 단계별 안내로 교체할 수 있다.
 - 결선 대진은 `예상`과 `확정`을 구분한다.
 - 최종 1~4위는 확정된 자리만 표시하고 나머지를 추정하지 않는다.
 - 국제 진출권 `대회 결과`는 이미 공식 확정된 팀만 표시한다.

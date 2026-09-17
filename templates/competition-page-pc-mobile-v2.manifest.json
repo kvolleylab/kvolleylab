@@ -1,6 +1,6 @@
 {
   "templateId": "KVL_COMPETITION_PAGE_PC_MOBILE_V2",
-  "status": "VALIDATION_METRICS_REVIEWED_WOMEN_BASELINE_CONFLICT_OPEN",
+  "status": "VALIDATED_PENDING_WOMEN_PARITY_AND_PRINT_PDF",
   "createdAtKst": "2026-09-15",
   "engineRefactorAtKst": "2026-09-16",
   "visualBaselinePortAtKst": "2026-09-16",
@@ -34,7 +34,15 @@
     "structureEngineSmokeTest": "tests/competition-page-v2-structure-engine-smoke.html",
     "geometryCss": "assets/css/kvl-competition-geometry-v2.css",
     "rebuildAudit": "docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md",
-    "visualComparison": "validation-competition-v2-rebuild.html"
+    "visualComparison": "validation-competition-v2-rebuild.html",
+    "productionStarter": "templates/competition-page-production-v2.html",
+    "dataStarter": "templates/competition-data-v2.starter.json",
+    "adapterStarter": "templates/competition-data-adapter-v2.cjs",
+    "builder": "scripts/create-competition-v2.cjs",
+    "dataContract": "assets/js/kvl-competition-data-v2.js",
+    "productionGate": "docs/KVL_COMPETITION_PRODUCTION_GATE_V2.md",
+    "productionStarterGuide": "docs/KVL_COMPETITION_PRODUCTION_STARTER_V2.md",
+    "htmlRole": "validation-reference-only"
   },
   "architecture": {
     "competitionSpecificUiMarkupAllowed": false,
@@ -143,7 +151,15 @@
   "productionBoundary": {
     "avcProductionChangedByEngineRefactor": false,
     "vnlProductionChangedByEngineRefactor": false,
-    "prototypeFirst": true
+    "prototypeFirst": true,
+    "womenSyntaxRepair": {
+      "commit": "beb07e851968f99ec6562bcf562fa1225de26179",
+      "files": [
+        "assets/js/kvl-avc-women-template-v1.js",
+        "international-competition-avc-women-continental-2026.html"
+      ],
+      "designChanged": false
+    }
   },
   "legacy": {
     "v1": "templates/competition-page-pc-mobile-v1.html",
@@ -152,16 +168,57 @@
   },
   "rebuild": {
     "baselineCommit": "91dad4c956d6ce6ff137e581f5fd9ef011746c05",
-    "commonGeometry": "men-production-provisional",
+    "commonGeometry": "existing-v2-avc-extracted-single-geometry",
     "womenExactParity": false,
     "productionPromotion": false,
     "resumedFromCommit": "27c3addb1914611f0078ddbf27af2d8746c65ed3",
-    "testedEngineCommit": "9c0e0c52d446e3cb47bad7f6a9a855944ab715e9",
+    "testedEngineCommit": "2d6a86a282a5b4f6e08c433129969ecf4418fdfd",
     "menRepresentativeMetricChecks": "18/18 after focused rechecks",
-    "womenRepresentativeMetricChecks": "2/18; production parse error and source geometry conflict",
+    "womenRepresentativeMetricChecks": "2/18 after SyntaxError fix; source geometry conflict remains",
     "vnlReuse": "116 matches / 18 teams; shared components; approved hero asset pending",
     "overflowCandidateCases": 0,
     "report": "docs/competition-v2-validation-results.json",
     "fullVisualParityApproved": false
+  },
+  "readiness": {
+    "productionReady": false,
+    "newCompetitionDataOnlyGeneration": "PASS",
+    "men": "PASS",
+    "women": "FAIL_LEGACY_PRODUCTION_PARITY",
+    "newWomenSharedEngine": "PASS",
+    "flags": "PASS",
+    "setPoints": "PASS",
+    "desktop1180": "PASS",
+    "mobile390": "PASS",
+    "mobile360": "PASS",
+    "states": "PASS",
+    "rosterPrint": "FAIL_UNVERIFIED_OUTPUT",
+    "dummyBrowserCases": "144/144",
+    "focusedBrowserCases": "42/42",
+    "sameDataGenderGeometryPairs": "18/18",
+    "nodeContractChecks": "10/10",
+    "vnlFocusedCases": "6/6",
+    "blocking": [
+      "Existing women production differs in 16/18 representative comparisons; no false parity claim",
+      "Actual browser print/PDF output not verified"
+    ],
+    "reports": [
+      "docs/competition-v2-production-gate-results.json",
+      "docs/competition-v2-production-focused-results.json",
+      "docs/competition-v2-women-baseline-results.json",
+      "docs/competition-v2-vnl-focused-results.json",
+      "docs/competition-v2-print-validation.json"
+    ]
+  },
+  "unsupportedKnockoutFormats": [
+    "bracket-4",
+    "bracket-16",
+    "classification-5-8",
+    "other-classification"
+  ],
+  "drive": {
+    "templateDocumentId": "1MYtXRpCOlbZ-dvzYiTo9FTpH5mDak93-W4DqKHi5AEU",
+    "operatingMasterDocumentId": "1iu1aWoTdSf2L7VCco5X7pCPxs9qVlM9rskZ8_hI76FY",
+    "operatingMasterVersion": "v14"
   }
 }

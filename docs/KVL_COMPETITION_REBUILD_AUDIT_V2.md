@@ -1,5 +1,7 @@
 # Competition shared engine rebuild audit
 
+> 현재 마감 결과: `docs/KVL_COMPETITION_PRODUCTION_GATE_V2.md`. 이 문서의 이전 SHA·검증 기록은 당시 조사 결과이며, 현재 Gate 상태는 manifest를 따른다.
+
 K-Volley Lab · resumed validation review · production unchanged
 
 ## Baseline and boundaries

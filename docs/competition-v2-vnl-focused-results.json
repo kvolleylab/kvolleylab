@@ -1,0 +1,870 @@
+[
+  {
+    "competition": "vnl",
+    "width": 1180,
+    "view": "schedule",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 40.52,
+          "height": 32,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "0px 10.62px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 1102.06,
+          "height": 36.03,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10.03px 12.39px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 1102.06,
+          "height": 88.22,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "11.21px 12.39px",
+          "gap": "12.39px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 600,
+          "height": 41.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "8.85px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 60.17,
+          "height": 21,
+          "font": "18.29px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 40.52,
+          "height": 32,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "0px 10.62px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 892.06,
+          "height": 36.03,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10.03px 12.39px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 892.06,
+          "height": 88.22,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "11.21px 12.39px",
+          "gap": "12.39px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 600,
+          "height": 41.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "8.85px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 60.17,
+          "height": 21,
+          "font": "18.29px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-date-head",
+        "property": "width",
+        "reference": 1102.06,
+        "candidate": 892.06
+      },
+      {
+        "selector": ".kvl1180-match-row",
+        "property": "width",
+        "reference": 1102.06,
+        "candidate": 892.06
+      }
+    ],
+    "parity": "REUSE_REVIEW"
+  },
+  {
+    "competition": "vnl",
+    "width": 1180,
+    "view": "rosters",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 177.98,
+          "height": 70,
+          "font": "13.3333px",
+          "lineHeight": "normal",
+          "padding": "10px 12px",
+          "gap": "9px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "width": 1104.06,
+          "height": 1063.31,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "16px"
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "width": 1057.59,
+          "height": 54,
+          "font": "11.5px",
+          "lineHeight": "normal",
+          "padding": "7px 12px",
+          "gap": "normal 7px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1180,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 145.48,
+          "height": 70,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px 12px",
+          "gap": "9px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "width",
+        "reference": 177.98,
+        "candidate": 145.48
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "font",
+        "reference": "13.3333px",
+        "candidate": "16px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "width",
+        "reference": 1104.06
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "height",
+        "reference": 1063.31
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "font",
+        "reference": "16px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "padding",
+        "reference": "0px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "gap",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "radius",
+        "reference": "16px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "width",
+        "reference": 1057.59
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "height",
+        "reference": 54
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "font",
+        "reference": "11.5px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "padding",
+        "reference": "7px 12px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "gap",
+        "reference": "normal 7px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "radius",
+        "reference": "0px"
+      }
+    ],
+    "parity": "REUSE_REVIEW"
+  },
+  {
+    "competition": "vnl",
+    "width": 390,
+    "view": "schedule",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 100.33,
+          "height": 36,
+          "font": "9px",
+          "lineHeight": "9.9px",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 327,
+          "height": 40,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 327,
+          "height": 112.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 10px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 307,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 100.33,
+          "height": 36,
+          "font": "9px",
+          "lineHeight": "9.9px",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 327,
+          "height": 40,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 327,
+          "height": 112.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 10px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 307,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [],
+    "parity": "REUSE_REVIEW"
+  },
+  {
+    "competition": "vnl",
+    "width": 390,
+    "view": "rosters",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 163,
+          "height": 64,
+          "font": "13.3333px",
+          "lineHeight": "normal",
+          "padding": "9px 8px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "width": 329,
+          "height": 2428.63,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "13px"
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "width": 307,
+          "height": 134.63,
+          "font": "11.5px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "3px 7px",
+          "radius": "12px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 163,
+          "height": 64,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px 8px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "font",
+        "reference": "13.3333px",
+        "candidate": "16px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "width",
+        "reference": 329
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "height",
+        "reference": 2428.63
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "font",
+        "reference": "16px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "padding",
+        "reference": "0px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "gap",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "radius",
+        "reference": "13px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "width",
+        "reference": 307
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "height",
+        "reference": 134.63
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "font",
+        "reference": "11.5px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "padding",
+        "reference": "10px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "gap",
+        "reference": "3px 7px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "radius",
+        "reference": "12px"
+      }
+    ],
+    "parity": "REUSE_REVIEW"
+  },
+  {
+    "competition": "vnl",
+    "width": 360,
+    "view": "schedule",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 90.33,
+          "height": 36,
+          "font": "9px",
+          "lineHeight": "9.9px",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 297,
+          "height": 40,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 297,
+          "height": 112.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 10px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 277,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 90.33,
+          "height": 36,
+          "font": "9px",
+          "lineHeight": "9.9px",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 297,
+          "height": 40,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 297,
+          "height": 112.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 10px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 277,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [],
+    "parity": "REUSE_REVIEW"
+  },
+  {
+    "competition": "vnl",
+    "width": 360,
+    "view": "rosters",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 148,
+          "height": 64,
+          "font": "13.3333px",
+          "lineHeight": "normal",
+          "padding": "9px 8px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "width": 299,
+          "height": 2372.56,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "13px"
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "width": 277,
+          "height": 130.81,
+          "font": "11.5px",
+          "lineHeight": "normal",
+          "padding": "9px",
+          "gap": "3px 5px",
+          "radius": "12px"
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 148,
+          "height": 64,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px 8px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "font",
+        "reference": "13.3333px",
+        "candidate": "16px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "width",
+        "reference": 299
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "height",
+        "reference": 2372.56
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "font",
+        "reference": "16px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "padding",
+        "reference": "0px"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "gap",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-team-profile",
+        "property": "radius",
+        "reference": "13px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "width",
+        "reference": 277
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "height",
+        "reference": 130.81
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "font",
+        "reference": "11.5px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "padding",
+        "reference": "9px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "gap",
+        "reference": "3px 5px"
+      },
+      {
+        "selector": ".kvl1180-roster-row",
+        "property": "radius",
+        "reference": "12px"
+      }
+    ],
+    "parity": "REUSE_REVIEW"
+  }
+]

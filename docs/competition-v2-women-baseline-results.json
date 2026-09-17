@@ -1,0 +1,2743 @@
+[
+  {
+    "competition": "women",
+    "width": 1180,
+    "view": "overview",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-hero",
+          "width": 935,
+          "height": 200.59,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "28.32px",
+          "gap": "23.6px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-tabs",
+          "width": 751.11,
+          "height": 47.19,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-kpi",
+          "width": 174,
+          "height": 82,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px",
+          "gap": "normal",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-stake",
+          "width": 294.02,
+          "height": 171.55,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "11px 11px 74px",
+          "gap": "normal",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-stake-brand",
+          "width": 95.23,
+          "height": 19,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "6.49px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-stake p",
+          "width": 270.02,
+          "height": 29.69,
+          "font": "9px",
+          "lineHeight": "14.85px",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-calendar",
+          "width": 894.06,
+          "height": 776,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "11px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-hero",
+          "width": 935,
+          "height": 200.59,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "28.32px",
+          "gap": "23.6px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-tabs",
+          "width": 751.11,
+          "height": 47.19,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-kpi",
+          "width": 174,
+          "height": 82,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px",
+          "gap": "normal",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-stake",
+          "width": 294.02,
+          "height": 196.66,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "11px 11px 74px",
+          "gap": "normal",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-stake-brand",
+          "width": 142.22,
+          "height": 34.36,
+          "font": "16.756px",
+          "lineHeight": "17.5938px",
+          "padding": "4px 0px 5px",
+          "gap": "6.49px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-stake p",
+          "width": 270.02,
+          "height": 40.28,
+          "font": "12.744px",
+          "lineHeight": "20.1355px",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-calendar",
+          "width": 894.06,
+          "height": 776,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "11px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-stake",
+        "property": "height",
+        "reference": 171.55,
+        "candidate": 196.66
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "width",
+        "reference": 95.23,
+        "candidate": 142.22
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "height",
+        "reference": 19,
+        "candidate": 34.36
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "font",
+        "reference": "10px",
+        "candidate": "16.756px"
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "lineHeight",
+        "reference": "normal",
+        "candidate": "17.5938px"
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "padding",
+        "reference": "0px",
+        "candidate": "4px 0px 5px"
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "height",
+        "reference": 29.69,
+        "candidate": 40.28
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "font",
+        "reference": "9px",
+        "candidate": "12.744px"
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "lineHeight",
+        "reference": "14.85px",
+        "candidate": "20.1355px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 1180,
+    "view": "schedule",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 40.52,
+          "height": 32,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "0px 10.62px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 892.06,
+          "height": 36.03,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10.03px 12.39px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 892.06,
+          "height": 88.22,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "11.21px 12.39px",
+          "gap": "12.39px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 600,
+          "height": 41.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "8.85px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 60.17,
+          "height": 21,
+          "font": "18.29px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 40.52,
+          "height": 32,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "0px 10.62px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 892.06,
+          "height": 36.03,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10.03px 12.39px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 892.06,
+          "height": 88.22,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "11.21px 12.39px",
+          "gap": "12.39px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 600,
+          "height": 41.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "8.85px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 60.17,
+          "height": 21,
+          "font": "18.29px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [],
+    "parity": "METRICS_MATCH"
+  },
+  {
+    "competition": "women",
+    "width": 1180,
+    "view": "groups",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-pool-card",
+          "width": 290.16,
+          "height": 360.81,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-pool-row",
+          "width": 288.16,
+          "height": 71,
+          "font": "11.5px",
+          "lineHeight": "normal",
+          "padding": "7px 8px",
+          "gap": "normal 4px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-combined-row",
+          "width": 892.06,
+          "height": 52,
+          "font": "11.5px",
+          "lineHeight": "normal",
+          "padding": "7px 12px",
+          "gap": "normal 6px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl-shared-combined-line:not(.is-head)",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-pool-card",
+          "width": 290.16,
+          "height": 319.81,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-pool-row",
+          "width": 288.16,
+          "height": 58,
+          "font": "11.5px",
+          "lineHeight": "normal",
+          "padding": "7px 8px",
+          "gap": "normal 3px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-combined-row",
+          "width": 892.06,
+          "height": 52,
+          "font": "11.5px",
+          "lineHeight": "normal",
+          "padding": "7px 12px",
+          "gap": "normal 6px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl-shared-combined-line:not(.is-head)",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-pool-card",
+        "property": "height",
+        "reference": 360.81,
+        "candidate": 319.81
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "height",
+        "reference": 71,
+        "candidate": 58
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "gap",
+        "reference": "normal 4px",
+        "candidate": "normal 3px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 1180,
+    "view": "knockout",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-final-card",
+          "width": 202.22,
+          "height": 246.77,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "21.24px 12.39px",
+          "gap": "9.44px",
+          "radius": "18px"
+        },
+        {
+          "selector": ".kvl1180-bracket",
+          "width": 894.06,
+          "height": 1086.23,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "2px 0px 6px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match",
+          "width": 274.42,
+          "height": 195,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-bracket-team",
+          "width": 272.42,
+          "height": 58,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "7px 11.21px",
+          "gap": "8.26px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1165,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-final-card",
+          "width": 202.22,
+          "height": 246.77,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "21.24px 12.39px",
+          "gap": "9.44px",
+          "radius": "18px"
+        },
+        {
+          "selector": ".kvl1180-bracket",
+          "width": 894.06,
+          "height": 1086.23,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "2px 0px 6px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match",
+          "width": 274.42,
+          "height": 195,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-bracket-team",
+          "width": 272.42,
+          "height": 58,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "7px 11.21px",
+          "gap": "8.26px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [],
+    "parity": "METRICS_MATCH"
+  },
+  {
+    "competition": "women",
+    "width": 1180,
+    "view": "rosters",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1180,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 147.17,
+          "height": 58,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px 12px",
+          "gap": "10px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1180,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 145.48,
+          "height": 70,
+          "font": "13.3333px",
+          "lineHeight": "normal",
+          "padding": "10px 12px",
+          "gap": "9px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "width",
+        "reference": 147.17,
+        "candidate": 145.48
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "height",
+        "reference": 58,
+        "candidate": 70
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "font",
+        "reference": "16px",
+        "candidate": "13.3333px"
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "padding",
+        "reference": "9px 12px",
+        "candidate": "10px 12px"
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "gap",
+        "reference": "10px",
+        "candidate": "9px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 1180,
+    "view": "resources",
+    "reference": {
+      "viewport": 1180,
+      "scrollWidth": 1180,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-source",
+          "width": 449.81,
+          "height": 60.17,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10.62px 13.57px",
+          "gap": "12px",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-source a",
+          "width": 81.44,
+          "height": 30,
+          "font": "10px",
+          "lineHeight": "10px",
+          "padding": "0px 11px",
+          "gap": "4px",
+          "radius": "999px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 1180,
+      "scrollWidth": 1180,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-source",
+          "width": 449.53,
+          "height": 58,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "14px 16px",
+          "gap": "8px",
+          "radius": "14px"
+        },
+        {
+          "selector": ".kvl1180-source a",
+          "width": 80.14,
+          "height": 27,
+          "font": "11px",
+          "lineHeight": "11px",
+          "padding": "7px 9px",
+          "gap": "normal",
+          "radius": "999px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-source",
+        "property": "height",
+        "reference": 60.17,
+        "candidate": 58
+      },
+      {
+        "selector": ".kvl1180-source",
+        "property": "padding",
+        "reference": "10.62px 13.57px",
+        "candidate": "14px 16px"
+      },
+      {
+        "selector": ".kvl1180-source",
+        "property": "gap",
+        "reference": "12px",
+        "candidate": "8px"
+      },
+      {
+        "selector": ".kvl1180-source",
+        "property": "radius",
+        "reference": "12px",
+        "candidate": "14px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "width",
+        "reference": 81.44,
+        "candidate": 80.14
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "height",
+        "reference": 30,
+        "candidate": 27
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "font",
+        "reference": "10px",
+        "candidate": "11px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "lineHeight",
+        "reference": "10px",
+        "candidate": "11px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "padding",
+        "reference": "0px 11px",
+        "candidate": "7px 9px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "gap",
+        "reference": "4px",
+        "candidate": "normal"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 390,
+    "view": "overview",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-hero",
+          "width": 355,
+          "height": 258.13,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "24px 18px 20px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-tabs",
+          "width": 353,
+          "height": 84,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-kpi",
+          "width": 160.5,
+          "height": 92,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "13px 12px",
+          "gap": "normal",
+          "radius": "14px"
+        },
+        {
+          "selector": ".kvl1180-stake",
+          "width": 329,
+          "height": 178.48,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "14px 14px 74px",
+          "gap": "normal",
+          "radius": "13px"
+        },
+        {
+          "selector": ".kvl1180-stake-brand",
+          "width": 94.75,
+          "height": 20,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-stake p",
+          "width": 299,
+          "height": 29.69,
+          "font": "9px",
+          "lineHeight": "14.85px",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-calendar",
+          "width": 329,
+          "height": 434.78,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-hero",
+          "width": 355,
+          "height": 196.66,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "24px 18px 20px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-tabs",
+          "width": 353,
+          "height": 84,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-kpi",
+          "width": 160.5,
+          "height": 92,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "13px 12px",
+          "gap": "normal",
+          "radius": "14px"
+        },
+        {
+          "selector": ".kvl1180-stake",
+          "width": 329,
+          "height": 203.55,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "14px 14px 74px",
+          "gap": "normal",
+          "radius": "13px"
+        },
+        {
+          "selector": ".kvl1180-stake-brand",
+          "width": 141.67,
+          "height": 36,
+          "font": "17px",
+          "lineHeight": "17.85px",
+          "padding": "4px 0px 5px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-stake p",
+          "width": 299,
+          "height": 38.75,
+          "font": "12.5px",
+          "lineHeight": "19.375px",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-calendar",
+          "width": 329,
+          "height": 440.78,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-hero",
+        "property": "height",
+        "reference": 258.13,
+        "candidate": 196.66
+      },
+      {
+        "selector": ".kvl1180-stake",
+        "property": "height",
+        "reference": 178.48,
+        "candidate": 203.55
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "width",
+        "reference": 94.75,
+        "candidate": 141.67
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "height",
+        "reference": 20,
+        "candidate": 36
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "font",
+        "reference": "10px",
+        "candidate": "17px"
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "lineHeight",
+        "reference": "normal",
+        "candidate": "17.85px"
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "padding",
+        "reference": "0px",
+        "candidate": "4px 0px 5px"
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "height",
+        "reference": 29.69,
+        "candidate": 38.75
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "font",
+        "reference": "9px",
+        "candidate": "12.5px"
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "lineHeight",
+        "reference": "14.85px",
+        "candidate": "19.375px"
+      },
+      {
+        "selector": ".kvl1180-calendar",
+        "property": "height",
+        "reference": 434.78,
+        "candidate": 440.78
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 390,
+    "view": "schedule",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 99.66,
+          "height": 35,
+          "font": "9.5px",
+          "lineHeight": "normal",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 327,
+          "height": 36,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 327,
+          "height": 127.06,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 9px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 309,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 100.33,
+          "height": 36,
+          "font": "9px",
+          "lineHeight": "9.9px",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 327,
+          "height": 40,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 327,
+          "height": 112.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 10px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 307,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-stage-filters button",
+        "property": "font",
+        "reference": "9.5px",
+        "candidate": "9px"
+      },
+      {
+        "selector": ".kvl1180-stage-filters button",
+        "property": "lineHeight",
+        "reference": "normal",
+        "candidate": "9.9px"
+      },
+      {
+        "selector": ".kvl1180-date-head",
+        "property": "height",
+        "reference": 36,
+        "candidate": 40
+      },
+      {
+        "selector": ".kvl1180-match-row",
+        "property": "height",
+        "reference": 127.06,
+        "candidate": 112.3
+      },
+      {
+        "selector": ".kvl1180-match-row",
+        "property": "padding",
+        "reference": "12px 9px",
+        "candidate": "12px 10px"
+      },
+      {
+        "selector": ".kvl1180-match-board",
+        "property": "width",
+        "reference": 309,
+        "candidate": 307
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 390,
+    "view": "groups",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-pool-card",
+          "width": 329,
+          "height": 300.39,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-pool-row",
+          "width": 327,
+          "height": 56,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "7px 8px",
+          "gap": "normal 4px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-combined-row",
+          "width": 327,
+          "height": 91,
+          "font": "9.5px",
+          "lineHeight": "normal",
+          "padding": "7px 4px",
+          "gap": "normal 2px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl-shared-combined-line:not(.is-head)",
+          "missing": true
+        }
+      ],
+      "overflow": [
+        "",
+        "kvl1180-pool-ratio",
+        "kvl1180-pool-ratio",
+        "kvl1180-pool-ratio",
+        "kvl1180-pool-ratio",
+        "",
+        "kvl1180-pool-ratio",
+        "kvl1180-pool-ratio"
+      ]
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-pool-card",
+          "width": 329,
+          "height": 292.39,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-pool-row",
+          "width": 327,
+          "height": 54,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "7px 5px",
+          "gap": "normal 2px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-combined-row",
+          "missing": true
+        },
+        {
+          "selector": ".kvl-shared-combined-line:not(.is-head)",
+          "width": 770,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "8px 6px",
+          "gap": "6px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-pool-card",
+        "property": "height",
+        "reference": 300.39,
+        "candidate": 292.39
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "height",
+        "reference": 56,
+        "candidate": 54
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "padding",
+        "reference": "7px 8px",
+        "candidate": "7px 5px"
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "gap",
+        "reference": "normal 4px",
+        "candidate": "normal 2px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "width",
+        "reference": 327
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "height",
+        "reference": 91
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "font",
+        "reference": "9.5px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "padding",
+        "reference": "7px 4px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "gap",
+        "reference": "normal 2px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "radius",
+        "reference": "0px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "missing",
+        "reference": true
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "width",
+        "candidate": 770
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "height",
+        "candidate": 54
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "font",
+        "candidate": "16px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "lineHeight",
+        "candidate": "normal"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "padding",
+        "candidate": "8px 6px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "gap",
+        "candidate": "6px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "radius",
+        "candidate": "0px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 390,
+    "view": "knockout",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-final-card",
+          "width": 148,
+          "height": 232.66,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px",
+          "gap": "6px",
+          "radius": "18px"
+        },
+        {
+          "selector": ".kvl1180-bracket",
+          "width": 329,
+          "height": 1803,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "2px 0px 6px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match",
+          "width": 329,
+          "height": 195,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "10px"
+        },
+        {
+          "selector": ".kvl1180-bracket-team",
+          "width": 327,
+          "height": 58,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "6px 9px",
+          "gap": "8px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-final-card",
+          "width": 72,
+          "height": 146,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "5px 2px 6px",
+          "gap": "0px",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-bracket",
+          "width": 329,
+          "height": 805.78,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "2px 0px 0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match",
+          "width": 329,
+          "height": 72,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal 0px",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-bracket-team",
+          "width": 163.5,
+          "height": 44,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "7px 0px 7px 7px",
+          "gap": "2px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "width",
+        "reference": 148,
+        "candidate": 72
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "height",
+        "reference": 232.66,
+        "candidate": 146
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "padding",
+        "reference": "9px",
+        "candidate": "5px 2px 6px"
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "gap",
+        "reference": "6px",
+        "candidate": "0px"
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "radius",
+        "reference": "18px",
+        "candidate": "11px"
+      },
+      {
+        "selector": ".kvl1180-bracket",
+        "property": "height",
+        "reference": 1803,
+        "candidate": 805.78
+      },
+      {
+        "selector": ".kvl1180-bracket",
+        "property": "padding",
+        "reference": "2px 0px 6px",
+        "candidate": "2px 0px 0px"
+      },
+      {
+        "selector": ".kvl1180-match",
+        "property": "height",
+        "reference": 195,
+        "candidate": 72
+      },
+      {
+        "selector": ".kvl1180-match",
+        "property": "gap",
+        "reference": "normal",
+        "candidate": "normal 0px"
+      },
+      {
+        "selector": ".kvl1180-match",
+        "property": "radius",
+        "reference": "10px",
+        "candidate": "11px"
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "width",
+        "reference": 327,
+        "candidate": 163.5
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "height",
+        "reference": 58,
+        "candidate": 44
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "padding",
+        "reference": "6px 9px",
+        "candidate": "7px 0px 7px 7px"
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "gap",
+        "reference": "8px",
+        "candidate": "2px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 390,
+    "view": "rosters",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 163.5,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "8px 10px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 163,
+          "height": 64,
+          "font": "13.3333px",
+          "lineHeight": "normal",
+          "padding": "9px 8px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "height",
+        "reference": 54,
+        "candidate": 64
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "font",
+        "reference": "16px",
+        "candidate": "13.3333px"
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "padding",
+        "reference": "8px 10px",
+        "candidate": "9px 8px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 390,
+    "view": "resources",
+    "reference": {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-source",
+          "width": 344,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px 10px",
+          "gap": "8px",
+          "radius": "10px"
+        },
+        {
+          "selector": ".kvl1180-source a",
+          "width": 70.19,
+          "height": 28,
+          "font": "9px",
+          "lineHeight": "9px",
+          "padding": "0px 8px",
+          "gap": "4px",
+          "radius": "999px"
+        }
+      ],
+      "overflow": []
+    },
+    "candidate": {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-source",
+          "width": 344,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "6px",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-source a",
+          "width": 70.67,
+          "height": 22,
+          "font": "10px",
+          "lineHeight": "10px",
+          "padding": "5px 7px",
+          "gap": "normal",
+          "radius": "999px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-source",
+        "property": "padding",
+        "reference": "9px 10px",
+        "candidate": "10px"
+      },
+      {
+        "selector": ".kvl1180-source",
+        "property": "gap",
+        "reference": "8px",
+        "candidate": "6px"
+      },
+      {
+        "selector": ".kvl1180-source",
+        "property": "radius",
+        "reference": "10px",
+        "candidate": "12px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "height",
+        "reference": 28,
+        "candidate": 22
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "font",
+        "reference": "9px",
+        "candidate": "10px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "lineHeight",
+        "reference": "9px",
+        "candidate": "10px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "padding",
+        "reference": "0px 8px",
+        "candidate": "5px 7px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "gap",
+        "reference": "4px",
+        "candidate": "normal"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 360,
+    "view": "overview",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-hero",
+          "width": 325,
+          "height": 251.16,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "24px 18px 20px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-tabs",
+          "width": 323,
+          "height": 84,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-kpi",
+          "width": 145.5,
+          "height": 92,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "13px 12px",
+          "gap": "normal",
+          "radius": "14px"
+        },
+        {
+          "selector": ".kvl1180-stake",
+          "width": 299,
+          "height": 178.48,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "14px 14px 74px",
+          "gap": "normal",
+          "radius": "13px"
+        },
+        {
+          "selector": ".kvl1180-stake-brand",
+          "width": 94.75,
+          "height": 20,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-stake p",
+          "width": 269,
+          "height": 29.69,
+          "font": "9px",
+          "lineHeight": "14.85px",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-calendar",
+          "width": 299,
+          "height": 434.78,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-hero",
+          "width": 325,
+          "height": 196.66,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "24px 18px 20px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-tabs",
+          "width": 323,
+          "height": 84,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-kpi",
+          "width": 145.5,
+          "height": 92,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "13px 12px",
+          "gap": "normal",
+          "radius": "14px"
+        },
+        {
+          "selector": ".kvl1180-stake",
+          "width": 313.95,
+          "height": 203.55,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "14px 14px 74px",
+          "gap": "normal",
+          "radius": "13px"
+        },
+        {
+          "selector": ".kvl1180-stake-brand",
+          "width": 141.67,
+          "height": 36,
+          "font": "17px",
+          "lineHeight": "17.85px",
+          "padding": "4px 0px 5px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-stake p",
+          "width": 283.95,
+          "height": 38.75,
+          "font": "12.5px",
+          "lineHeight": "19.375px",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-calendar",
+          "width": 299,
+          "height": 440.78,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-hero",
+        "property": "height",
+        "reference": 251.16,
+        "candidate": 196.66
+      },
+      {
+        "selector": ".kvl1180-stake",
+        "property": "width",
+        "reference": 299,
+        "candidate": 313.95
+      },
+      {
+        "selector": ".kvl1180-stake",
+        "property": "height",
+        "reference": 178.48,
+        "candidate": 203.55
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "width",
+        "reference": 94.75,
+        "candidate": 141.67
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "height",
+        "reference": 20,
+        "candidate": 36
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "font",
+        "reference": "10px",
+        "candidate": "17px"
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "lineHeight",
+        "reference": "normal",
+        "candidate": "17.85px"
+      },
+      {
+        "selector": ".kvl1180-stake-brand",
+        "property": "padding",
+        "reference": "0px",
+        "candidate": "4px 0px 5px"
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "width",
+        "reference": 269,
+        "candidate": 283.95
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "height",
+        "reference": 29.69,
+        "candidate": 38.75
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "font",
+        "reference": "9px",
+        "candidate": "12.5px"
+      },
+      {
+        "selector": ".kvl1180-stake p",
+        "property": "lineHeight",
+        "reference": "14.85px",
+        "candidate": "19.375px"
+      },
+      {
+        "selector": ".kvl1180-calendar",
+        "property": "height",
+        "reference": 434.78,
+        "candidate": 440.78
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 360,
+    "view": "schedule",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 89.66,
+          "height": 35,
+          "font": "9.5px",
+          "lineHeight": "normal",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 297,
+          "height": 36,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 297,
+          "height": 127.06,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 9px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 279,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-stage-filters button",
+          "width": 90.33,
+          "height": 36,
+          "font": "9px",
+          "lineHeight": "9.9px",
+          "padding": "0px 4px",
+          "gap": "normal",
+          "radius": "8px"
+        },
+        {
+          "selector": ".kvl1180-date-head",
+          "width": 297,
+          "height": 40,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "12px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-row",
+          "width": 297,
+          "height": 112.3,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "12px 10px",
+          "gap": "8px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match-board",
+          "width": 277,
+          "height": 24,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "5px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-score",
+          "width": 46,
+          "height": 21,
+          "font": "18px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-stage-filters button",
+        "property": "font",
+        "reference": "9.5px",
+        "candidate": "9px"
+      },
+      {
+        "selector": ".kvl1180-stage-filters button",
+        "property": "lineHeight",
+        "reference": "normal",
+        "candidate": "9.9px"
+      },
+      {
+        "selector": ".kvl1180-date-head",
+        "property": "height",
+        "reference": 36,
+        "candidate": 40
+      },
+      {
+        "selector": ".kvl1180-match-row",
+        "property": "height",
+        "reference": 127.06,
+        "candidate": 112.3
+      },
+      {
+        "selector": ".kvl1180-match-row",
+        "property": "padding",
+        "reference": "12px 9px",
+        "candidate": "12px 10px"
+      },
+      {
+        "selector": ".kvl1180-match-board",
+        "property": "width",
+        "reference": 279,
+        "candidate": 277
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 360,
+    "view": "groups",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-pool-card",
+          "width": 299,
+          "height": 300.39,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-pool-row",
+          "width": 297,
+          "height": 56,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "7px 8px",
+          "gap": "normal 4px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-combined-row",
+          "width": 297,
+          "height": 91,
+          "font": "9.5px",
+          "lineHeight": "normal",
+          "padding": "7px 4px",
+          "gap": "normal 2px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl-shared-combined-line:not(.is-head)",
+          "missing": true
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row",
+        "",
+        "kvl1180-pool-ratio",
+        "kvl1180-pool-ratio",
+        "kvl1180-pool-ratio",
+        "kvl1180-pool-ratio",
+        ""
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-pool-card",
+          "width": 299,
+          "height": 292.39,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-pool-row",
+          "width": 297,
+          "height": 54,
+          "font": "10px",
+          "lineHeight": "normal",
+          "padding": "7px 5px",
+          "gap": "normal 2px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-combined-row",
+          "missing": true
+        },
+        {
+          "selector": ".kvl-shared-combined-line:not(.is-head)",
+          "width": 770,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "8px 6px",
+          "gap": "6px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-pool-card",
+        "property": "height",
+        "reference": 300.39,
+        "candidate": 292.39
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "height",
+        "reference": 56,
+        "candidate": 54
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "padding",
+        "reference": "7px 8px",
+        "candidate": "7px 5px"
+      },
+      {
+        "selector": ".kvl1180-pool-row",
+        "property": "gap",
+        "reference": "normal 4px",
+        "candidate": "normal 2px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "missing",
+        "candidate": true
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "width",
+        "reference": 297
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "height",
+        "reference": 91
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "font",
+        "reference": "9.5px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "lineHeight",
+        "reference": "normal"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "padding",
+        "reference": "7px 4px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "gap",
+        "reference": "normal 2px"
+      },
+      {
+        "selector": ".kvl1180-combined-row",
+        "property": "radius",
+        "reference": "0px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "missing",
+        "reference": true
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "width",
+        "candidate": 770
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "height",
+        "candidate": 54
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "font",
+        "candidate": "16px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "lineHeight",
+        "candidate": "normal"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "padding",
+        "candidate": "8px 6px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "gap",
+        "candidate": "6px"
+      },
+      {
+        "selector": ".kvl-shared-combined-line:not(.is-head)",
+        "property": "radius",
+        "candidate": "0px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 360,
+    "view": "knockout",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-final-card",
+          "width": 133,
+          "height": 250.41,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px",
+          "gap": "6px",
+          "radius": "18px"
+        },
+        {
+          "selector": ".kvl1180-bracket",
+          "width": 299,
+          "height": 1803,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "2px 0px 6px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match",
+          "width": 299,
+          "height": 195,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal",
+          "radius": "10px"
+        },
+        {
+          "selector": ".kvl1180-bracket-team",
+          "width": 297,
+          "height": 58,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "6px 9px",
+          "gap": "8px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-final-card",
+          "width": 64.5,
+          "height": 146,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "5px 2px 6px",
+          "gap": "0px",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-bracket",
+          "width": 299,
+          "height": 805.78,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "2px 0px 0px",
+          "gap": "normal",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-match",
+          "width": 299,
+          "height": 72,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "0px",
+          "gap": "normal 0px",
+          "radius": "11px"
+        },
+        {
+          "selector": ".kvl1180-bracket-team",
+          "width": 148.5,
+          "height": 44,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "7px 0px 7px 7px",
+          "gap": "2px",
+          "radius": "0px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "width",
+        "reference": 133,
+        "candidate": 64.5
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "height",
+        "reference": 250.41,
+        "candidate": 146
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "padding",
+        "reference": "9px",
+        "candidate": "5px 2px 6px"
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "gap",
+        "reference": "6px",
+        "candidate": "0px"
+      },
+      {
+        "selector": ".kvl1180-final-card",
+        "property": "radius",
+        "reference": "18px",
+        "candidate": "11px"
+      },
+      {
+        "selector": ".kvl1180-bracket",
+        "property": "height",
+        "reference": 1803,
+        "candidate": 805.78
+      },
+      {
+        "selector": ".kvl1180-bracket",
+        "property": "padding",
+        "reference": "2px 0px 6px",
+        "candidate": "2px 0px 0px"
+      },
+      {
+        "selector": ".kvl1180-match",
+        "property": "height",
+        "reference": 195,
+        "candidate": 72
+      },
+      {
+        "selector": ".kvl1180-match",
+        "property": "gap",
+        "reference": "normal",
+        "candidate": "normal 0px"
+      },
+      {
+        "selector": ".kvl1180-match",
+        "property": "radius",
+        "reference": "10px",
+        "candidate": "11px"
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "width",
+        "reference": 297,
+        "candidate": 148.5
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "height",
+        "reference": 58,
+        "candidate": 44
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "padding",
+        "reference": "6px 9px",
+        "candidate": "7px 0px 7px 7px"
+      },
+      {
+        "selector": ".kvl1180-bracket-team",
+        "property": "gap",
+        "reference": "8px",
+        "candidate": "2px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 360,
+    "view": "rosters",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 148.5,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "8px 10px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 345,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-participant-button",
+          "width": 148,
+          "height": 64,
+          "font": "13.3333px",
+          "lineHeight": "normal",
+          "padding": "9px 8px",
+          "gap": "7px",
+          "radius": "0px"
+        },
+        {
+          "selector": ".kvl1180-team-profile",
+          "missing": true
+        },
+        {
+          "selector": ".kvl1180-roster-row",
+          "missing": true
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "height",
+        "reference": 54,
+        "candidate": 64
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "font",
+        "reference": "16px",
+        "candidate": "13.3333px"
+      },
+      {
+        "selector": ".kvl1180-participant-button",
+        "property": "padding",
+        "reference": "8px 10px",
+        "candidate": "9px 8px"
+      }
+    ],
+    "parity": "DIFFERENT"
+  },
+  {
+    "competition": "women",
+    "width": 360,
+    "view": "resources",
+    "reference": {
+      "viewport": 360,
+      "scrollWidth": 360,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-source",
+          "width": 314,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "9px 10px",
+          "gap": "8px",
+          "radius": "10px"
+        },
+        {
+          "selector": ".kvl1180-source a",
+          "width": 70.19,
+          "height": 28,
+          "font": "9px",
+          "lineHeight": "9px",
+          "padding": "0px 8px",
+          "gap": "4px",
+          "radius": "999px"
+        }
+      ],
+      "overflow": [
+        "kvl1180-meta-row",
+        "kvl1180-meta-row"
+      ]
+    },
+    "candidate": {
+      "viewport": 360,
+      "scrollWidth": 360,
+      "error": "",
+      "metrics": [
+        {
+          "selector": ".kvl1180-source",
+          "width": 314,
+          "height": 54,
+          "font": "16px",
+          "lineHeight": "normal",
+          "padding": "10px",
+          "gap": "6px",
+          "radius": "12px"
+        },
+        {
+          "selector": ".kvl1180-source a",
+          "width": 70.67,
+          "height": 22,
+          "font": "10px",
+          "lineHeight": "10px",
+          "padding": "5px 7px",
+          "gap": "normal",
+          "radius": "999px"
+        }
+      ],
+      "overflow": []
+    },
+    "differences": [
+      {
+        "selector": ".kvl1180-source",
+        "property": "padding",
+        "reference": "9px 10px",
+        "candidate": "10px"
+      },
+      {
+        "selector": ".kvl1180-source",
+        "property": "gap",
+        "reference": "8px",
+        "candidate": "6px"
+      },
+      {
+        "selector": ".kvl1180-source",
+        "property": "radius",
+        "reference": "10px",
+        "candidate": "12px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "height",
+        "reference": 28,
+        "candidate": 22
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "font",
+        "reference": "9px",
+        "candidate": "10px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "lineHeight",
+        "reference": "9px",
+        "candidate": "10px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "padding",
+        "reference": "0px 8px",
+        "candidate": "5px 7px"
+      },
+      {
+        "selector": ".kvl1180-source a",
+        "property": "gap",
+        "reference": "4px",
+        "candidate": "normal"
+      }
+    ],
+    "parity": "DIFFERENT"
+  }
+]
