@@ -11,12 +11,14 @@ function txt(el,value){if(el&&value!==undefined&&value!==null)el.textContent=Str
 function q(sel,root=document){return root.querySelector(sel);}
 function qa(sel,root=document){return [...root.querySelectorAll(sel)];}
 function currentView(){const v=new URLSearchParams(location.search).get('view')||'overview';return VIEWS.has(v)?v:'overview';}
+function viewUrl(view,params={}){const u=new URL(location.href);u.searchParams.set('view',view);u.searchParams.delete('date');for(const [key,value] of Object.entries(params))if(value!==undefined&&value!==null)u.searchParams.set(key,value);return u.pathname+u.search+u.hash;}
 
 function applyView(){
   const view=currentView();
-  qa('.kvl1180-view[data-view]').forEach(el=>{el.hidden=el.dataset.view!==view;});
+  qa('.kvl1180-view[data-view]').forEach(el=>{el.hidden=el.dataset.view!==view||el.dataset.kvlEmpty==='true';});
   qa('.kvl1180-tabs a[data-view]').forEach(a=>{
     const active=a.dataset.view===view;
+    a.href=viewUrl(a.dataset.view);
     a.classList.toggle('is-active',active);
     if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
   });
@@ -40,6 +42,8 @@ function applyTheme(d){
 }
 
 function applyMeta(d){
+  if(d.displayName)document.title=d.seo?.title||`${d.displayName} | K-Volley Lab`;
+  if(d.seo?.description){let meta=q('meta[name="description"]');if(!meta){meta=document.createElement('meta');meta.name='description';document.head.appendChild(meta);}meta.content=d.seo.description;}
   txt(q('[data-kvl="eyebrow"]'),`${d.competitionFamily==='domestic'?'DOMESTIC':'INTERNATIONAL'} COMPETITION · ${(d.gender||'men').toUpperCase()}`);
   txt(q('[data-kvl="title"]'),d.displayName);
   txt(q('[data-kvl="official-name"]'),d.officialName);
@@ -77,7 +81,7 @@ function applyStatus(d){
     if(d.championAchievement){const span=document.createElement('span');span.textContent=d.championAchievement;result.appendChild(span);}
   }else{
     const strong=document.createElement('strong');
-    strong.textContent=status==='completed'?'대회 종료 · 최종 결과 확인 중':status==='active'?(d.activeOverviewNote||'조별리그 결과에 따라 예상 8강 대진이 자동 반영됩니다.'):(d.upcomingOverviewNote||'대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.');
+    strong.textContent=status==='completed'?'대회 종료 · 최종 결과 확인 중':status==='active'?(d.activeOverviewNote||'확인된 경기 결과와 공식 대진을 표시합니다.'):(d.upcomingOverviewNote||'대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.');
     result.appendChild(strong);
   }
 }
@@ -128,5 +132,5 @@ function applyResources(d){
 function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
 window.addEventListener('popstate',apply);
-window.KVLCompetitionTemplateV2={apply,applyView};
+window.KVLCompetitionTemplateV2={apply,applyView,viewUrl};
 })();

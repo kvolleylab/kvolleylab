@@ -123,3 +123,14 @@ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-final-qua
  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-meta-row{min-width:0;max-width:100%;box-sizing:border-box}
  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-meta-row>span{min-width:0}
 }
+
+/* Participant flags use the maximum dedicated area; natural proportions are preserved. */
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-participant-button{grid-template-columns:min(40%,64px) minmax(0,1fr)}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-participant-flag{display:flex;width:100%;height:44px;align-items:center;justify-content:center;min-width:0}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-participant-flag img{display:block;width:100%;height:100%;max-width:100%;object-fit:contain;border:0;border-radius:0;background:transparent;padding:0}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-participant-button-copy strong,
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-participant-button-copy small{white-space:normal;overflow:visible;overflow-wrap:anywhere;text-overflow:clip}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-set-scores{flex-wrap:wrap;row-gap:4px}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-set-scores>span{white-space:nowrap}
+html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero h1{white-space:normal;overflow-wrap:anywhere}
+@media(max-width:680px){html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-participant-flag{height:42px}}
