@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 2,
+  "slug": "vnl-men-2026",
+  "competition": {
+    "competitionId": "KVL-COMP-000001",
+    "displayName": "2026 VNL 남자부",
+    "officialName": "Volleyball Nations League 2026 · Men",
+    "season": "2026",
+    "gender": "men",
+    "competitionFamily": "fivb"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "예선순위",
+      "groupsKpi": "예선 경기",
+      "groupsKpiUnit": "경기",
+      "knockoutKpi": "파이널 진출",
+      "standingsTitle": "예선순위",
+      "standingsEyebrow": "PRELIMINARY STANDINGS"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "예선",
+        "8강",
+        "준결승",
+        "3위결정전",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "single-league",
+      "title": "예선 종합순위"
+    },
+    "knockout": {
+      "mode": "bracket-8",
+      "title": "파이널 토너먼트"
+    },
+    "participants": {
+      "mode": "flat",
+      "groupLabel": "VNL 2026 참가국"
+    },
+    "roster": {
+      "mode": "link-only"
+    }
+  },
+  "hero": {
+    "pcImage": "/assets/images/competitions/vnl-2026-logo.jpg",
+    "mobileImage": "/assets/images/competitions/vnl-2026-logo.jpg",
+    "alt": "2026 Volleyball Nations League"
+  },
+  "seo": {
+    "title": "2026 VNL 남자부 | K-Volley Lab",
+    "description": "2026 VNL 남자부 경기 결과, 예선 순위, 파이널 토너먼트, 최종 순위와 참가국을 확인합니다."
+  },
+  "data": "data.json"
+}
