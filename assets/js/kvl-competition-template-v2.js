@@ -33,8 +33,9 @@ function applyTheme(d){
   body.dataset.kvlGender=gender;
   body.dataset.kvlFamily=family;
   const asset=v=>{try{const u=new URL(v,location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}};
+  const showHeroImage=d.hero?.mode!=='color-only'&&d.hero?.showImage!==false;
   for(const [key,value] of [['--kvl-hero-image-desktop',d.hero?.pcImage],['--kvl-hero-image-mobile',d.hero?.mobileImage]]){
-    const url=value&&asset(value);if(url)body.style.setProperty(key,`url(${JSON.stringify(url)})`);else body.style.removeProperty(key);
+    const url=showHeroImage&&value&&asset(value);if(url)body.style.setProperty(key,`url(${JSON.stringify(url)})`);else body.style.removeProperty(key);
   }
   for(const [key,value] of [['--kvl-hero-position',d.hero?.position],['--kvl-hero-position-mobile',d.hero?.mobilePosition]]){
     if(value)body.style.setProperty(key,value);else body.style.removeProperty(key);
