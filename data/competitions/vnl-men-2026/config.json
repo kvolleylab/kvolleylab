@@ -46,10 +46,13 @@
     }
   },
   "hero": {
-    "pcImage": "/assets/images/competitions/vnl-men-2026-hero.jpg?v=20260918-4",
-    "mobileImage": "/assets/images/competitions/vnl-men-2026-hero.jpg?v=20260918-4",
+    "pcImage": "/assets/images/competitions/vnl-men-2026-hero.webp?v=20260918-1",
+    "mobileImage": "/assets/images/competitions/vnl-men-2026-hero.webp?v=20260918-1",
     "alt": "2026 Volleyball Nations League",
-    "showImage": true
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "right center"
   },
   "seo": {
     "title": "2026 VNL 남자부 | K-Volley Lab",
