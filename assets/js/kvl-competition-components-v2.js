@@ -29,6 +29,22 @@ function teamLink(t,content=esc(name(t)),extraClass=''){const p=participant(t),c
 function rosterAction(d,t){const target=window.KVLCompetitionDataV2.rosterTarget(d,t);return {...target,href:target.available?(target.mode==='full'?viewUrl('rosters',{team:target.code})+'#team-roster':target.url):null};}
 function rosterButton(d,t){const a=rosterAction(d,t);return a.href?`<a class="kvl-team-roster-link" data-team-roster="${esc(code(t))}" href="${esc(a.href)}">등록 선수명단 보기</a>`:'<button class="kvl-team-roster-link" type="button" disabled>등록 선수명단 미제공</button>';}
 function rosterIdentity(d,t,content){const a=rosterAction(d,t);return a.href?`<a class="kvl-team-results-identity is-link" data-team-roster="${esc(code(t))}" href="${esc(a.href)}" aria-label="${esc(name(t))} 등록 선수명단">${content}</a>`:`<div class="kvl-team-results-identity">${content}</div>`;}
+function rosterRoute(teamCode,{push=false,scroll=false}={}){
+ const u=new URL(location.href);u.searchParams.set('view','rosters');u.searchParams.set('team',teamCode);u.searchParams.delete('date');if(scroll)u.hash='team-roster';
+ history[push?'pushState':'replaceState'](null,'',u.pathname+u.search+u.hash);
+}
+function markRosterSelection(root,teamCode){
+ qa('[data-team-code]',root).forEach(btn=>{const active=btn.dataset.teamCode===teamCode;btn.classList.toggle('is-active',active);if(active){btn.setAttribute('aria-current','true');btn.setAttribute('aria-pressed','true');}else{btn.removeAttribute('aria-current');btn.setAttribute('aria-pressed','false');}});
+}
+function selectRosterTeam(d,teamCode,{push=false,scroll=false}={}){
+ const t=window.KVLCompetitionDataV2.participant(d,teamCode),action=rosterAction(d,t);if(!t||!action.available)return false;
+ if(action.mode!=='full'){location.href=action.href;return true;}
+ rosterRoute(teamCode,{push,scroll});const root=q('[data-kvl-component="participants"]');if(root)markRosterSelection(root,teamCode);renderRoster(d,teamCode);window.KVLCompetitionTemplateV2?.applyView();
+ if(scroll)requestAnimationFrame(()=>q('#team-roster')?.scrollIntoView({block:'start'}));return true;
+}
+function bindInternalRosterLinks(d,root){
+ qa('[data-team-roster]',root).forEach(a=>{const t=window.KVLCompetitionDataV2.participant(d,a.dataset.teamRoster),action=rosterAction(d,t);if(action.available&&action.mode==='full')a.onclick=e=>{e.preventDefault();selectRosterTeam(d,t.code,{push:true,scroll:true});};});
+}
 const groupLabel=g=>String(g||'').endsWith('조')?String(g):String(g)+'조';
 const shortDate=v=>String(v||'').slice(5).replace('-','.');
 
@@ -152,6 +168,7 @@ function renderTeamResults(d){
  const list=(d.matches||[]).filter(m=>[m.home,m.away].some(side=>window.KVLCompetitionDataV2.participant(d,side)?.code===t.code)).sort((a,b)=>(date(a)+time(a)).localeCompare(date(b)+time(b))),done=list.filter(m=>score(m)),wins=done.filter(m=>{const s=score(m);return window.KVLCompetitionDataV2.participant(d,m.home)?.code===t.code?s.home>s.away:s.away>s.home;}).length;
  const identity=`${flag(t)?`<img src="${esc(flag(t))}" alt="${esc(name(t))} 국기">`:''}<div><p class="label">TEAM RESULTS · ${esc(t.code)}</p><h2>${esc(name(t))} 경기결과</h2>${en(t)?`<p class="kvl-team-results-en">${esc(en(t))}</p>`:''}<p class="kvl-team-competition">${esc(d.displayName)}</p></div>`;
  root.innerHTML=`<div class="kvl1180-section-head kvl-team-results-head">${rosterIdentity(d,t,identity)}<div class="kvl-team-actions">${rosterButton(d,t)}<a href="${esc(viewUrl('schedule'))}">전체 경기일정 보기</a></div></div><div class="kvl1180-schedule-summary"><strong>${esc(name(t))} · 전체 ${list.length}경기</strong><span>완료 ${done.length} · ${wins}승 ${done.length-wins}패 · 예정 ${list.length-done.length} · 한국시간(KST)</span></div><div class="kvl1180-schedule-list">${matchGroups(list,'team')}</div>`;
+ bindInternalRosterLinks(d,root);
 }
 
 function statusOf(r){if(r.status==='host-qualified')return {label:r.statusLabel||'개최국 진출',cls:'is-qualified'};if(r.status==='qualified')return {label:r.statusLabel||'결선 진출',cls:'is-qualified'};if(r.status==='out')return {label:r.statusLabel||'예선 종료',cls:'is-out'};return {label:r.statusLabel||'',cls:''};}
@@ -189,7 +206,11 @@ function renderKnockout(d){
   root.innerHTML=`<div class="kvl1180-bracket"><div class="kvl1180-bracket-ladder"><section class="kvl1180-round kvl1180-round-qf"><h4 class="kvl1180-round-title">${esc(c.qfLabel||'8강 · Quarterfinals')}</h4><div class="kvl1180-round-body">${pairs.map(p=>`<div class="kvl1180-qf-pair">${p.map(x=>bmatch(x.m,x.label,seeds)).join('')}</div>`).join('')}</div></section><span class="kvl1180-bracket-gap"></span><section class="kvl1180-round kvl1180-round-sf"><h4 class="kvl1180-round-title">${esc(c.sfLabel||'준결승 · Semifinals')}</h4><div class="kvl1180-round-body">${sf.map((m,i)=>bmatch(m,m.bracketLabel||`SF${i+1}`,seeds)).join('')}</div></section><span class="kvl1180-bracket-gap"></span><section class="kvl1180-round kvl1180-round-final"><h4 class="kvl1180-round-title">${esc(c.finalLabel||'결승 · Final')}</h4><div class="kvl1180-round-body">${bmatch(final,final?.bracketLabel||'FINAL',seeds)}</div></section></div>${bronze?`<div class="kvl1180-bronze"><h4 class="kvl1180-bronze-title">${esc(c.bronzeLabel||'3위 결정전 · Bronze Medal Match')}</h4>${bmatch(bronze,bronze.bracketLabel||'3RD',seeds)}</div>`:''}</div>`;
 }
 
-function pcard(p){const action=rosterAction(data(),p),tag=action.href?'a':'button',attrs=action.href?` href="${esc(action.href)}"`:' type="button" disabled aria-disabled="true"',count=p.count??p.rosterCount;return `<${tag} class="kvl1180-participant-button" data-team-code="${esc(p.code||'')}"${attrs}${action.href?'':' title="등록 선수명단 미제공"'}>${p.flag?`<span class="kvl-participant-flag"><img src="${esc(p.flag)}" alt="${esc(p.name||'')} 국기" loading="lazy"></span>`:'<span class="kvl-participant-flag" aria-hidden="true"></span>'}<span class="kvl1180-participant-button-copy"><strong>${esc(p.name||'미정')}</strong><small>${esc(p.en||p.code||'')}${count!==undefined?` · ${esc(count)}명`:''}${action.href?'':' · 명단 미제공'}</small></span></${tag}>`;}
+function pcard(p){const action=rosterAction(data(),p),count=p.count??p.rosterCount,available=action.available;
+ if(available&&action.mode==='full')return `<button type="button" class="kvl1180-participant-button" data-team-code="${esc(p.code||'')}" data-roster-internal="true" aria-pressed="false">${p.flag?`<span class="kvl-participant-flag"><img src="${esc(p.flag)}" alt="${esc(p.name||'')} 국기" loading="lazy"></span>`:'<span class="kvl-participant-flag" aria-hidden="true"></span>'}<span class="kvl1180-participant-button-copy"><strong>${esc(p.name||'미정')}</strong><small>${esc(p.en||p.code||'')}${count!==undefined?` · ${esc(count)}명`:''}</small></span></button>`;
+ if(action.href)return `<a class="kvl1180-participant-button" data-team-code="${esc(p.code||'')}" href="${esc(action.href)}">${p.flag?`<span class="kvl-participant-flag"><img src="${esc(p.flag)}" alt="${esc(p.name||'')} 국기" loading="lazy"></span>`:'<span class="kvl-participant-flag" aria-hidden="true"></span>'}<span class="kvl1180-participant-button-copy"><strong>${esc(p.name||'미정')}</strong><small>${esc(p.en||p.code||'')}${count!==undefined?` · ${esc(count)}명`:''}</small></span></a>`;
+ return `<button type="button" class="kvl1180-participant-button" data-team-code="${esc(p.code||'')}" disabled aria-disabled="true" title="등록 선수명단 미제공">${p.flag?`<span class="kvl-participant-flag"><img src="${esc(p.flag)}" alt="${esc(p.name||'')} 국기" loading="lazy"></span>`:'<span class="kvl-participant-flag" aria-hidden="true"></span>'}<span class="kvl1180-participant-button-copy"><strong>${esc(p.name||'미정')}</strong><small>${esc(p.en||p.code||'')}${count!==undefined?` · ${esc(count)}명`:''} · 명단 미제공</small></span></button>`;
+}
 
 function displayGroups(list,c){
   if(c.mode==='groups'){const map=new Map();list.forEach(p=>{const g=p.group||'참가국';if(!map.has(g))map.set(g,[]);map.get(g).push(p);});return [...map.entries()];}
@@ -197,7 +218,9 @@ function displayGroups(list,c){
   for(let i=0;i<columns;i++){const rows=list.slice(i*size,(i+1)*size);if(!rows.length)continue;out.push([`${c.groupLabel||'참가국'} · ${i*size+1}-${i*size+rows.length}`,rows]);}
   return out;
 }
-function renderParticipants(d){const root=q('[data-kvl-component="participants"]');if(!root)return;const c=cfg(d).participants,list=d.participants||[];if(!list.length){root.innerHTML='<div class="kvl1180-participants-empty">참가국 정보 확인 중입니다.</div>';return;}const groups=displayGroups(list,c);root.innerHTML=`<div class="kvl1180-participant-groups">${groups.map(([g,rows])=>`<article class="kvl1180-participant-group"><header class="kvl1180-participant-group-head"><strong>${esc(g)}</strong><span>${rows.length}개국</span></header><div class="kvl1180-participant-buttons">${rows.map(pcard).join('')}</div></article>`).join('')}</div>`;const wanted=new URLSearchParams(location.search).get('team')||d.focusTeamCode,first=list.find(p=>String(p.code)===wanted)||(!new URLSearchParams(location.search).has('team')?list[0]:null);if(first){const btn=q(`[data-team-code="${CSS.escape(String(first.code||''))}"]`,root);if(btn){btn.classList.add('is-active');btn.setAttribute('aria-current','true');}renderRoster(d,first.code);}else{q('[data-kvl-component="roster"]').innerHTML='<p class="kvl1180-roster-pending">이 대회의 참가국을 선택해 주세요.</p>';}}
+function renderParticipants(d){const root=q('[data-kvl-component="participants"]');if(!root)return;const c=cfg(d).participants,list=d.participants||[];if(!list.length){root.innerHTML='<div class="kvl1180-participants-empty">참가국 정보 확인 중입니다.</div>';return;}const groups=displayGroups(list,c);root.innerHTML=`<div class="kvl1180-participant-groups">${groups.map(([g,rows])=>`<article class="kvl1180-participant-group"><header class="kvl1180-participant-group-head"><strong>${esc(g)}</strong><span>${rows.length}개국</span></header><div class="kvl1180-participant-buttons">${rows.map(pcard).join('')}</div></article>`).join('')}</div>`;
+ root.onclick=e=>{const btn=e.target.closest('[data-team-code]');if(!btn||!root.contains(btn)||btn.disabled)return;const teamCode=btn.dataset.teamCode,t=window.KVLCompetitionDataV2.participant(d,teamCode),action=rosterAction(d,t);if(action.mode==='full'&&action.available){e.preventDefault();selectRosterTeam(d,teamCode,{push:false,scroll:false});}};
+ const params=new URLSearchParams(location.search),wanted=params.get('team')||d.focusTeamCode,first=list.find(p=>String(p.code)===wanted)||(!params.has('team')?list[0]:null);if(first){markRosterSelection(root,first.code);renderRoster(d,first.code);}else{q('[data-kvl-component="roster"]').innerHTML='<p class="kvl1180-roster-pending">이 대회의 참가국을 선택해 주세요.</p>';}}
 
 function renderRoster(d,teamCode){
  const root=q('[data-kvl-component="roster"]');if(!root)return;
