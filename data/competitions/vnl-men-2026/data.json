@@ -12,7 +12,7 @@
   "championAchievement": "VNL 2026 챔피언",
   "scheduleNote": "MASTER 기준 한국시간(KST) · 예선 108경기 + 파이널 8경기",
   "standingsNote": "108경기 종료 · 상위 7개국 + 개최국 중국 파이널 진출",
-  "standingsRule": "상위 7개국 + 개최국 중국 파이널 진출 · 승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률",
+  "standingsRule": "상위 7개국 + 개최국 중국 파이널 진출 · 승리 경기 수 → 승점 → 세트 득실비 → 점수 득실비",
   "meaning": {
     "eyebrow": "SEASON STRUCTURE",
     "title": "대회 의미 · 시즌 구조",
@@ -64,7 +64,7 @@
   "matches": [
     {
       "id": "KVL-M-000001",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 13:00",
       "date": "2026-06-10",
       "time": "14:00",
       "stage": "예선",
@@ -107,7 +107,7 @@
     },
     {
       "id": "KVL-M-000002",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 16:30",
       "date": "2026-06-10",
       "time": "17:30",
       "stage": "예선",
@@ -158,7 +158,7 @@
     },
     {
       "id": "KVL-M-000003",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 20:00",
       "date": "2026-06-10",
       "time": "21:00",
       "stage": "예선",
@@ -201,7 +201,7 @@
     },
     {
       "id": "KVL-M-000004",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 11:00",
       "date": "2026-06-11",
       "time": "00:00",
       "stage": "예선",
@@ -248,7 +248,7 @@
     },
     {
       "id": "KVL-M-000005",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 13:00",
       "date": "2026-06-11",
       "time": "01:00",
       "stage": "예선",
@@ -295,7 +295,7 @@
     },
     {
       "id": "KVL-M-000006",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 16:30",
       "date": "2026-06-11",
       "time": "04:30",
       "stage": "예선",
@@ -342,7 +342,7 @@
     },
     {
       "id": "KVL-M-000007",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 16:00",
       "date": "2026-06-11",
       "time": "05:00",
       "stage": "예선",
@@ -393,7 +393,7 @@
     },
     {
       "id": "KVL-M-000008",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 20:00",
       "date": "2026-06-11",
       "time": "08:00",
       "stage": "예선",
@@ -440,7 +440,7 @@
     },
     {
       "id": "KVL-M-000009",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-10 현지 19:30",
       "date": "2026-06-11",
       "time": "08:30",
       "stage": "예선",
@@ -491,7 +491,7 @@
     },
     {
       "id": "KVL-M-000010",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-11 현지 16:30",
       "date": "2026-06-11",
       "time": "17:30",
       "stage": "예선",
@@ -538,7 +538,7 @@
     },
     {
       "id": "KVL-M-000011",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-11 현지 20:00",
       "date": "2026-06-11",
       "time": "21:00",
       "stage": "예선",
@@ -589,7 +589,7 @@
     },
     {
       "id": "KVL-M-000012",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-11 현지 16:30",
       "date": "2026-06-12",
       "time": "04:30",
       "stage": "예선",
@@ -632,7 +632,7 @@
     },
     {
       "id": "KVL-M-000013",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-11 현지 16:00",
       "date": "2026-06-12",
       "time": "05:00",
       "stage": "예선",
@@ -679,7 +679,7 @@
     },
     {
       "id": "KVL-M-000014",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-11 현지 20:00",
       "date": "2026-06-12",
       "time": "08:00",
       "stage": "예선",
@@ -726,7 +726,7 @@
     },
     {
       "id": "KVL-M-000015",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-11 현지 19:30",
       "date": "2026-06-12",
       "time": "08:30",
       "stage": "예선",
@@ -773,7 +773,7 @@
     },
     {
       "id": "KVL-M-000016",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-12 현지 16:30",
       "date": "2026-06-12",
       "time": "17:30",
       "stage": "예선",
@@ -816,7 +816,7 @@
     },
     {
       "id": "KVL-M-000017",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-12 현지 20:00",
       "date": "2026-06-12",
       "time": "21:00",
       "stage": "예선",
@@ -867,7 +867,7 @@
     },
     {
       "id": "KVL-M-000018",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-12 현지 16:30",
       "date": "2026-06-13",
       "time": "04:30",
       "stage": "예선",
@@ -914,7 +914,7 @@
     },
     {
       "id": "KVL-M-000019",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-12 현지 16:00",
       "date": "2026-06-13",
       "time": "05:00",
       "stage": "예선",
@@ -957,7 +957,7 @@
     },
     {
       "id": "KVL-M-000020",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-12 현지 20:00",
       "date": "2026-06-13",
       "time": "08:00",
       "stage": "예선",
@@ -1000,7 +1000,7 @@
     },
     {
       "id": "KVL-M-000021",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-12 현지 19:30",
       "date": "2026-06-13",
       "time": "08:30",
       "stage": "예선",
@@ -1043,7 +1043,7 @@
     },
     {
       "id": "KVL-M-000022",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-13 현지 16:30",
       "date": "2026-06-13",
       "time": "17:30",
       "stage": "예선",
@@ -1090,7 +1090,7 @@
     },
     {
       "id": "KVL-M-000023",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-13 현지 20:00",
       "date": "2026-06-13",
       "time": "21:00",
       "stage": "예선",
@@ -1141,7 +1141,7 @@
     },
     {
       "id": "KVL-M-000024",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-13 현지 11:00",
       "date": "2026-06-13",
       "time": "23:00",
       "stage": "예선",
@@ -1184,7 +1184,7 @@
     },
     {
       "id": "KVL-M-000025",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-13 현지 15:30",
       "date": "2026-06-14",
       "time": "03:30",
       "stage": "예선",
@@ -1231,7 +1231,7 @@
     },
     {
       "id": "KVL-M-000026",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-13 현지 16:00",
       "date": "2026-06-14",
       "time": "05:00",
       "stage": "예선",
@@ -1282,7 +1282,7 @@
     },
     {
       "id": "KVL-M-000027",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-13 현지 19:30",
       "date": "2026-06-14",
       "time": "08:30",
       "stage": "예선",
@@ -1325,7 +1325,7 @@
     },
     {
       "id": "KVL-M-000028",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 13:00",
       "date": "2026-06-14",
       "time": "14:00",
       "stage": "예선",
@@ -1376,7 +1376,7 @@
     },
     {
       "id": "KVL-M-000029",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 16:30",
       "date": "2026-06-14",
       "time": "17:30",
       "stage": "예선",
@@ -1419,7 +1419,7 @@
     },
     {
       "id": "KVL-M-000030",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 20:00",
       "date": "2026-06-14",
       "time": "21:00",
       "stage": "예선",
@@ -1466,7 +1466,7 @@
     },
     {
       "id": "KVL-M-000031",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 11:00",
       "date": "2026-06-14",
       "time": "23:00",
       "stage": "예선",
@@ -1517,7 +1517,7 @@
     },
     {
       "id": "KVL-M-000032",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 11:00",
       "date": "2026-06-15",
       "time": "00:00",
       "stage": "예선",
@@ -1564,7 +1564,7 @@
     },
     {
       "id": "KVL-M-000033",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 14:30",
       "date": "2026-06-15",
       "time": "02:30",
       "stage": "예선",
@@ -1607,7 +1607,7 @@
     },
     {
       "id": "KVL-M-000034",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 14:30",
       "date": "2026-06-15",
       "time": "03:30",
       "stage": "예선",
@@ -1658,7 +1658,7 @@
     },
     {
       "id": "KVL-M-000035",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 18:00",
       "date": "2026-06-15",
       "time": "06:00",
       "stage": "예선",
@@ -1709,7 +1709,7 @@
     },
     {
       "id": "KVL-M-000036",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-06-14 현지 18:00",
       "date": "2026-06-15",
       "time": "07:00",
       "stage": "예선",
@@ -5116,7 +5116,7 @@
     },
     {
       "id": "KVL-M-000109",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-07-29 현지 15:00",
       "date": "2026-07-29",
       "time": "16:00",
       "stage": "8강",
@@ -5159,7 +5159,7 @@
     },
     {
       "id": "KVL-M-000110",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-07-29 현지 19:30",
       "date": "2026-07-29",
       "time": "20:30",
       "stage": "8강",
@@ -5206,7 +5206,7 @@
     },
     {
       "id": "KVL-M-000111",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-07-30 현지 15:00",
       "date": "2026-07-30",
       "time": "16:00",
       "stage": "8강",
@@ -5249,7 +5249,7 @@
     },
     {
       "id": "KVL-M-000112",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-07-30 현지 19:30",
       "date": "2026-07-30",
       "time": "20:30",
       "stage": "8강",
@@ -5296,7 +5296,7 @@
     },
     {
       "id": "KVL-M-000113",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-08-01 현지 19:30",
       "date": "2026-08-01",
       "time": "20:30",
       "stage": "준결승",
@@ -5347,7 +5347,7 @@
     },
     {
       "id": "KVL-M-000114",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-08-01 현지 15:00",
       "date": "2026-08-01",
       "time": "16:00",
       "stage": "준결승",
@@ -5390,7 +5390,7 @@
     },
     {
       "id": "KVL-M-000115",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-08-02 현지 15:40",
       "date": "2026-08-02",
       "time": "16:40",
       "stage": "3위결정전",
@@ -5437,7 +5437,7 @@
     },
     {
       "id": "KVL-M-000116",
-      "localTimeLabel": "",
+      "localTimeLabel": "2026-08-02 현지 19:30",
       "date": "2026-08-02",
       "time": "20:30",
       "stage": "결승",
