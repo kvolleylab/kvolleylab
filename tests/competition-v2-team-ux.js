@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id),views=['overview','schedule','groups','k
 async function inspect(o){
  const f=$('candidate');f.width=o.width;const u=new URL(o.fixture?'/tests/competition-page-v2-structure-engine-smoke.html':'/competition-engine.html',location.href);
  for(const [k,v] of Object.entries(o))if(!['width','fixture'].includes(k))u.searchParams.set(k,v);
- if(!o.fixture)u.searchParams.set('competition','vnl-men-2026');u.searchParams.set('ux','20260918-3');
+ if(!o.fixture)u.searchParams.set('competition','vnl-men-2026');u.searchParams.set('ux','20260918-4');
  await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('load timeout')),20000);f.onload=()=>{clearTimeout(timer);resolve();};f.src=u.href;});
  const doc=f.contentDocument,win=doc.defaultView;
  for(let n=0;n<100;n++){if(doc.body.dataset.kvlRenderState==='ready'&&doc.querySelector('.kvl-global-sidebar'))break;await pause(100);}await doc.fonts.ready;await pause(100);
@@ -20,7 +20,7 @@ async function inspect(o){
   if(label&&!detail.includes(label)||!label&&detail.includes('현지'))localErrors.push(m.id);
   if(!m.score&&card.querySelector('.kvl1180-score').textContent!=='VS')errors.push('invented result');
  }
- if(setErrors.length)errors.push('set line');if(localErrors.length)errors.push('local time');
+ if(setErrors.length)errors.push('set line');if(localErrors.length)errors.push('local time');if(!o.fixture&&cards.length&&cards.some(card=>!card.querySelector('.kvl1180-match-detail').textContent.match(/(중국|캐나다|브라질|폴란드|슬로베니아|프랑스|일본|세르비아|미국) 현지 \d{2}:\d{2} (CST|EDT|BRT|CEST|JST|CDT)/)))errors.push('local country/timezone');
  if(!o.fixture&&o.view==='schedule'&&cards.length&&cards.some(card=>!card.querySelector('.kvl1180-side .kvl-team-flag-link')||!card.querySelector('.kvl1180-side .kvl-team-en-link')))errors.push('schedule country click area');
  const linkErrors=[];
  for(const a of [...doc.querySelectorAll('[data-team-results]')].filter(visible)){const url=new URL(a.href);if(url.searchParams.get('view')!=='team'||url.searchParams.get('team')!==a.dataset.teamResults||(!o.fixture&&url.searchParams.get('competition')!=='vnl-men-2026'))linkErrors.push(a.textContent);}
