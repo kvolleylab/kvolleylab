@@ -1,0 +1,6136 @@
+{
+  "status": "completed",
+  "stageLabel": "폴란드 우승 · 파이널 종료",
+  "dateLabel": "2026-06-10 ~ 2026-08-02",
+  "locationLabel": "예선 9개 개최지",
+  "venueLabel": "파이널 · 중국 닝보",
+  "teamCount": 18,
+  "groupCount": 108,
+  "matchCount": 116,
+  "knockoutTeamCount": 8,
+  "champion": "폴란드",
+  "championAchievement": "VNL 2026 챔피언",
+  "scheduleNote": "MASTER 기준 한국시간(KST) · 예선 108경기 + 파이널 8경기",
+  "standingsNote": "108경기 종료 · 상위 7개국 + 개최국 중국 파이널 진출",
+  "standingsRule": "상위 7개국 + 개최국 중국 파이널 진출 · 승리 경기 수 → 승점 → 세트 득실률 → 득점 득실률",
+  "meaning": {
+    "eyebrow": "SEASON STRUCTURE",
+    "title": "대회 의미 · 시즌 구조",
+    "note": "VNL은 예선 리그와 8강 파이널로 구성됩니다."
+  },
+  "qualifications": [
+    {
+      "id": "finals",
+      "className": "is-wc",
+      "brand": "VNL 파이널",
+      "pill": "8개국",
+      "title": "상위 7개국 + 개최국",
+      "description": "18개국 예선 종료 후 상위 7개국과 파이널 개최국 중국이 8강 토너먼트에 진출합니다.",
+      "foot": "예선 → 8강 파이널",
+      "resultTeams": [
+        "일본",
+        "폴란드",
+        "슬로베니아",
+        "이탈리아",
+        "미국",
+        "튀르키예",
+        "우크라이나",
+        "중국"
+      ]
+    },
+    {
+      "id": "champion",
+      "className": "is-la",
+      "brand": "시즌 최종 성적",
+      "pill": "2026",
+      "title": "폴란드 우승",
+      "description": "폴란드가 결승에서 미국을 3-2로 꺾고 2026 VNL 남자부 우승을 차지했습니다.",
+      "foot": "VNL 2026 챔피언",
+      "resultTeams": [
+        "폴란드"
+      ]
+    },
+    {
+      "id": "ranking",
+      "className": "is-wr",
+      "brand": "FIVB 세계랭킹",
+      "pill": "공식 랭킹",
+      "title": "VNL 경기 랭킹 반영",
+      "description": "VNL 경기 결과는 FIVB World Ranking 계산에 반영됩니다.",
+      "foot": "경기별 World Ranking 포인트",
+      "resultTeams": []
+    }
+  ],
+  "matches": [
+    {
+      "id": "KVL-M-000001",
+      "localTimeLabel": "",
+      "date": "2026-06-10",
+      "time": "14:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000002",
+      "localTimeLabel": "",
+      "date": "2026-06-10",
+      "time": "17:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 10,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000003",
+      "localTimeLabel": "",
+      "date": "2026-06-10",
+      "time": "21:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000004",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000005",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "01:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000006",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "04:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000007",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "05:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 16,
+            "away": 14
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000008",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "08:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "away": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000009",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "08:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000010",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "17:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000011",
+      "localTimeLabel": "",
+      "date": "2026-06-11",
+      "time": "21:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000012",
+      "localTimeLabel": "",
+      "date": "2026-06-12",
+      "time": "04:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000013",
+      "localTimeLabel": "",
+      "date": "2026-06-12",
+      "time": "05:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 31,
+            "away": 33
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000014",
+      "localTimeLabel": "",
+      "date": "2026-06-12",
+      "time": "08:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "away": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000015",
+      "localTimeLabel": "",
+      "date": "2026-06-12",
+      "time": "08:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "away": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 27,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000016",
+      "localTimeLabel": "",
+      "date": "2026-06-12",
+      "time": "17:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000017",
+      "localTimeLabel": "",
+      "date": "2026-06-12",
+      "time": "21:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000018",
+      "localTimeLabel": "",
+      "date": "2026-06-13",
+      "time": "04:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000019",
+      "localTimeLabel": "",
+      "date": "2026-06-13",
+      "time": "05:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000020",
+      "localTimeLabel": "",
+      "date": "2026-06-13",
+      "time": "08:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000021",
+      "localTimeLabel": "",
+      "date": "2026-06-13",
+      "time": "08:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "away": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000022",
+      "localTimeLabel": "",
+      "date": "2026-06-13",
+      "time": "17:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000023",
+      "localTimeLabel": "",
+      "date": "2026-06-13",
+      "time": "21:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "away": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000024",
+      "localTimeLabel": "",
+      "date": "2026-06-13",
+      "time": "23:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "away": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000025",
+      "localTimeLabel": "",
+      "date": "2026-06-14",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000026",
+      "localTimeLabel": "",
+      "date": "2026-06-14",
+      "time": "05:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 35,
+            "away": 33
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000027",
+      "localTimeLabel": "",
+      "date": "2026-06-14",
+      "time": "08:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 27,
+            "away": 29
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000028",
+      "localTimeLabel": "",
+      "date": "2026-06-14",
+      "time": "14:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000029",
+      "localTimeLabel": "",
+      "date": "2026-06-14",
+      "time": "17:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000030",
+      "localTimeLabel": "",
+      "date": "2026-06-14",
+      "time": "21:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "venueLabel": "Linyi Olympic Sports Park Gymnasium",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000031",
+      "localTimeLabel": "",
+      "date": "2026-06-14",
+      "time": "23:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000032",
+      "localTimeLabel": "",
+      "date": "2026-06-15",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "away": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 40,
+            "away": 38
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000033",
+      "localTimeLabel": "",
+      "date": "2026-06-15",
+      "time": "02:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 28,
+            "away": 30
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000034",
+      "localTimeLabel": "",
+      "date": "2026-06-15",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "away": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 8,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000035",
+      "localTimeLabel": "",
+      "date": "2026-06-15",
+      "time": "06:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "Arena Nilson Nelson",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 15,
+            "away": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000036",
+      "localTimeLabel": "",
+      "date": "2026-06-15",
+      "time": "07:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "TD Place Arena",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 10,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000037",
+      "localTimeLabel": "2026-06-24 현지 13:00",
+      "date": "2026-06-24",
+      "time": "20:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000038",
+      "localTimeLabel": "2026-06-24 현지 13:00",
+      "date": "2026-06-24",
+      "time": "20:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000039",
+      "localTimeLabel": "2026-06-24 현지 13:30",
+      "date": "2026-06-24",
+      "time": "20:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000040",
+      "localTimeLabel": "2026-06-24 현지 16:30",
+      "date": "2026-06-24",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000041",
+      "localTimeLabel": "2026-06-24 현지 16:30",
+      "date": "2026-06-24",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000042",
+      "localTimeLabel": "2026-06-24 현지 17:00",
+      "date": "2026-06-25",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000043",
+      "localTimeLabel": "2026-06-24 현지 20:00",
+      "date": "2026-06-25",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "away": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000044",
+      "localTimeLabel": "2026-06-24 현지 20:30",
+      "date": "2026-06-25",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000045",
+      "localTimeLabel": "2026-06-24 현지 20:30",
+      "date": "2026-06-25",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "away": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 17,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000046",
+      "localTimeLabel": "2026-06-25 현지 16:30",
+      "date": "2026-06-25",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000047",
+      "localTimeLabel": "2026-06-25 현지 16:30",
+      "date": "2026-06-25",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000048",
+      "localTimeLabel": "2026-06-25 현지 17:00",
+      "date": "2026-06-26",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 29,
+            "away": 31
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000049",
+      "localTimeLabel": "2026-06-25 현지 20:00",
+      "date": "2026-06-26",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "away": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000050",
+      "localTimeLabel": "2026-06-25 현지 20:30",
+      "date": "2026-06-26",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 15,
+            "away": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000051",
+      "localTimeLabel": "2026-06-25 현지 20:30",
+      "date": "2026-06-26",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "away": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000052",
+      "localTimeLabel": "2026-06-26 현지 16:30",
+      "date": "2026-06-26",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000053",
+      "localTimeLabel": "2026-06-26 현지 16:30",
+      "date": "2026-06-26",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000054",
+      "localTimeLabel": "2026-06-26 현지 17:00",
+      "date": "2026-06-27",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "away": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000055",
+      "localTimeLabel": "2026-06-26 현지 20:00",
+      "date": "2026-06-27",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000056",
+      "localTimeLabel": "2026-06-26 현지 20:00",
+      "date": "2026-06-27",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000057",
+      "localTimeLabel": "2026-06-26 현지 20:30",
+      "date": "2026-06-27",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000058",
+      "localTimeLabel": "2026-06-27 현지 16:30",
+      "date": "2026-06-27",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000059",
+      "localTimeLabel": "2026-06-27 현지 17:00",
+      "date": "2026-06-28",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000060",
+      "localTimeLabel": "2026-06-27 현지 17:00",
+      "date": "2026-06-28",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "away": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000061",
+      "localTimeLabel": "2026-06-27 현지 20:30",
+      "date": "2026-06-28",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 18,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000062",
+      "localTimeLabel": "2026-06-27 현지 20:30",
+      "date": "2026-06-28",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000063",
+      "localTimeLabel": "2026-06-27 현지 20:30",
+      "date": "2026-06-28",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "away": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000064",
+      "localTimeLabel": "2026-06-28 현지 13:00",
+      "date": "2026-06-28",
+      "time": "20:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000065",
+      "localTimeLabel": "2026-06-28 현지 13:00",
+      "date": "2026-06-28",
+      "time": "20:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000066",
+      "localTimeLabel": "2026-06-28 현지 13:30",
+      "date": "2026-06-28",
+      "time": "20:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "away": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 30,
+            "away": 28
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000067",
+      "localTimeLabel": "2026-06-28 현지 16:30",
+      "date": "2026-06-28",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000068",
+      "localTimeLabel": "2026-06-28 현지 16:30",
+      "date": "2026-06-28",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "away": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 15,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000069",
+      "localTimeLabel": "2026-06-28 현지 17:00",
+      "date": "2026-06-29",
+      "time": "00:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "away": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 30,
+            "away": 28
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 33,
+            "away": 35
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000070",
+      "localTimeLabel": "2026-06-28 현지 20:00",
+      "date": "2026-06-29",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "PreZero Arena Gliwice",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 48,
+            "away": 50
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000071",
+      "localTimeLabel": "2026-06-28 현지 20:30",
+      "date": "2026-06-29",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Arena Stožice",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000072",
+      "localTimeLabel": "2026-06-28 현지 20:30",
+      "date": "2026-06-29",
+      "time": "03:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "Arena d’Orléans CO’Met",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 12,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000073",
+      "localTimeLabel": "2026-07-15 현지 12:00",
+      "date": "2026-07-15",
+      "time": "12:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000074",
+      "localTimeLabel": "2026-07-15 현지 15:30",
+      "date": "2026-07-15",
+      "time": "15:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000075",
+      "localTimeLabel": "2026-07-15 현지 19:20",
+      "date": "2026-07-15",
+      "time": "19:20",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000076",
+      "localTimeLabel": "2026-07-15 현지 13:00",
+      "date": "2026-07-15",
+      "time": "20:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "away": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 26,
+            "away": 28
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000077",
+      "localTimeLabel": "2026-07-15 현지 16:30",
+      "date": "2026-07-15",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 29,
+            "away": 31
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000078",
+      "localTimeLabel": "2026-07-15 현지 12:00",
+      "date": "2026-07-16",
+      "time": "02:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000079",
+      "localTimeLabel": "2026-07-15 현지 20:00",
+      "date": "2026-07-16",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000080",
+      "localTimeLabel": "2026-07-15 현지 16:00",
+      "date": "2026-07-16",
+      "time": "06:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "away": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000081",
+      "localTimeLabel": "2026-07-15 현지 20:00",
+      "date": "2026-07-16",
+      "time": "10:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "away": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000082",
+      "localTimeLabel": "2026-07-16 현지 15:30",
+      "date": "2026-07-16",
+      "time": "15:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000083",
+      "localTimeLabel": "2026-07-16 현지 19:20",
+      "date": "2026-07-16",
+      "time": "19:20",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000084",
+      "localTimeLabel": "2026-07-16 현지 16:30",
+      "date": "2026-07-16",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000085",
+      "localTimeLabel": "2026-07-16 현지 20:00",
+      "date": "2026-07-17",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000086",
+      "localTimeLabel": "2026-07-16 현지 16:00",
+      "date": "2026-07-17",
+      "time": "06:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000087",
+      "localTimeLabel": "2026-07-16 현지 20:00",
+      "date": "2026-07-17",
+      "time": "10:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "away": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000088",
+      "localTimeLabel": "2026-07-17 현지 13:00",
+      "date": "2026-07-17",
+      "time": "13:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000089",
+      "localTimeLabel": "2026-07-17 현지 19:20",
+      "date": "2026-07-17",
+      "time": "19:20",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000090",
+      "localTimeLabel": "2026-07-17 현지 16:30",
+      "date": "2026-07-17",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "away": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000091",
+      "localTimeLabel": "2026-07-17 현지 20:00",
+      "date": "2026-07-18",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "away": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000092",
+      "localTimeLabel": "2026-07-17 현지 16:00",
+      "date": "2026-07-18",
+      "time": "06:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000093",
+      "localTimeLabel": "2026-07-17 현지 20:00",
+      "date": "2026-07-18",
+      "time": "10:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000094",
+      "localTimeLabel": "2026-07-18 현지 13:00",
+      "date": "2026-07-18",
+      "time": "13:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "away": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 27,
+            "away": 29
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000095",
+      "localTimeLabel": "2026-07-18 현지 19:20",
+      "date": "2026-07-18",
+      "time": "19:20",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000096",
+      "localTimeLabel": "2026-07-18 현지 16:30",
+      "date": "2026-07-18",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "away": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000097",
+      "localTimeLabel": "2026-07-18 현지 20:00",
+      "date": "2026-07-19",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000098",
+      "localTimeLabel": "2026-07-18 현지 16:00",
+      "date": "2026-07-19",
+      "time": "06:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000099",
+      "localTimeLabel": "2026-07-18 현지 20:00",
+      "date": "2026-07-19",
+      "time": "10:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "away": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000100",
+      "localTimeLabel": "2026-07-19 현지 12:00",
+      "date": "2026-07-19",
+      "time": "12:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "벨기에",
+        "en": "Belgium",
+        "code": "BEL",
+        "flag": "https://flagcdn.com/w80/be.png",
+        "url": "belgium.html"
+      },
+      "away": {
+        "name": "캐나다",
+        "en": "Canada",
+        "code": "CAN",
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "url": "canada.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000101",
+      "localTimeLabel": "2026-07-19 현지 15:30",
+      "date": "2026-07-19",
+      "time": "15:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "쿠바",
+        "en": "Cuba",
+        "code": "CUB",
+        "flag": "https://flagcdn.com/w80/cu.png",
+        "url": "cuba.html"
+      },
+      "away": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000102",
+      "localTimeLabel": "2026-07-19 현지 19:20",
+      "date": "2026-07-19",
+      "time": "19:20",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "아르헨티나",
+        "en": "Argentina",
+        "code": "ARG",
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "url": "argentina.html"
+      },
+      "venueLabel": "Asue Arena Osaka",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000103",
+      "localTimeLabel": "2026-07-19 현지 13:00",
+      "date": "2026-07-19",
+      "time": "20:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "away": {
+        "name": "이란",
+        "en": "Iran",
+        "code": "IRI",
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "url": "iran.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000104",
+      "localTimeLabel": "2026-07-19 현지 16:30",
+      "date": "2026-07-19",
+      "time": "23:30",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "away": {
+        "name": "독일",
+        "en": "Germany",
+        "code": "GER",
+        "flag": "https://flagcdn.com/w80/de.png",
+        "url": "germany.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000105",
+      "localTimeLabel": "2026-07-19 현지 12:00",
+      "date": "2026-07-20",
+      "time": "02:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "away": {
+        "name": "브라질",
+        "en": "Brazil",
+        "code": "BRA",
+        "flag": "https://flagcdn.com/w80/br.png",
+        "url": "brazil.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000106",
+      "localTimeLabel": "2026-07-19 현지 20:00",
+      "date": "2026-07-20",
+      "time": "03:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "세르비아",
+        "en": "Serbia",
+        "code": "SRB",
+        "flag": "https://flagcdn.com/w80/rs.png",
+        "url": "serbia.html"
+      },
+      "away": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "venueLabel": "Belgrade Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000107",
+      "localTimeLabel": "2026-07-19 현지 16:00",
+      "date": "2026-07-20",
+      "time": "06:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "불가리아",
+        "en": "Bulgaria",
+        "code": "BUL",
+        "flag": "https://flagcdn.com/w80/bg.png",
+        "url": "bulgaria.html"
+      },
+      "away": {
+        "name": "프랑스",
+        "en": "France",
+        "code": "FRA",
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "url": "france.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000108",
+      "localTimeLabel": "2026-07-19 현지 20:00",
+      "date": "2026-07-20",
+      "time": "10:00",
+      "stage": "예선",
+      "round": "",
+      "bracketLabel": "",
+      "nextMatchId": "",
+      "home": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "NOW Arena",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000109",
+      "localTimeLabel": "",
+      "date": "2026-07-29",
+      "time": "16:00",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "QF1",
+      "nextMatchId": "KVL-M-000114",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "튀르키예",
+        "en": "Türkiye",
+        "code": "TUR",
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "url": "turkiye.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 35,
+            "away": 33
+          },
+          {
+            "home": 39,
+            "away": 37
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000110",
+      "localTimeLabel": "",
+      "date": "2026-07-29",
+      "time": "20:30",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "QF2",
+      "nextMatchId": "KVL-M-000113",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "중국",
+        "en": "China",
+        "code": "CHN",
+        "flag": "https://flagcdn.com/w80/cn.png",
+        "url": "china.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000111",
+      "localTimeLabel": "",
+      "date": "2026-07-30",
+      "time": "16:00",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "QF3",
+      "nextMatchId": "KVL-M-000113",
+      "home": {
+        "name": "이탈리아",
+        "en": "Italy",
+        "code": "ITA",
+        "flag": "https://flagcdn.com/w80/it.png",
+        "url": "italy.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000112",
+      "localTimeLabel": "",
+      "date": "2026-07-30",
+      "time": "20:30",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "QF4",
+      "nextMatchId": "KVL-M-000114",
+      "home": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "away": {
+        "name": "우크라이나",
+        "en": "Ukraine",
+        "code": "UKR",
+        "flag": "https://flagcdn.com/w80/ua.png",
+        "url": "ukraine.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000113",
+      "localTimeLabel": "",
+      "date": "2026-08-01",
+      "time": "20:30",
+      "stage": "준결승",
+      "round": "SF",
+      "bracketLabel": "SF1",
+      "nextMatchId": "",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000114",
+      "localTimeLabel": "",
+      "date": "2026-08-01",
+      "time": "16:00",
+      "stage": "준결승",
+      "round": "SF",
+      "bracketLabel": "SF2",
+      "nextMatchId": "",
+      "home": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000115",
+      "localTimeLabel": "",
+      "date": "2026-08-02",
+      "time": "16:40",
+      "stage": "3위결정전",
+      "round": "BRONZE",
+      "bracketLabel": "BRONZE",
+      "nextMatchId": "",
+      "home": {
+        "name": "일본",
+        "en": "Japan",
+        "code": "JPN",
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "url": "japan.html"
+      },
+      "away": {
+        "name": "슬로베니아",
+        "en": "Slovenia",
+        "code": "SLO",
+        "flag": "https://flagcdn.com/w80/si.png",
+        "url": "slovenia.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "KVL-M-000116",
+      "localTimeLabel": "",
+      "date": "2026-08-02",
+      "time": "20:30",
+      "stage": "결승",
+      "round": "FINAL",
+      "bracketLabel": "FINAL",
+      "nextMatchId": "",
+      "home": {
+        "name": "미국",
+        "en": "USA",
+        "code": "USA",
+        "flag": "https://flagcdn.com/w80/us.png",
+        "url": "usa.html"
+      },
+      "away": {
+        "name": "폴란드",
+        "en": "Poland",
+        "code": "POL",
+        "flag": "https://flagcdn.com/w80/pl.png",
+        "url": "poland.html"
+      },
+      "venueLabel": "Ningbo Beilun Gymnasium",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 10,
+            "away": 15
+          }
+        ]
+      }
+    }
+  ],
+  "standings": {
+    "rows": [
+      {
+        "rank": 1,
+        "team": {
+          "name": "일본",
+          "en": "Japan",
+          "code": "JPN",
+          "flag": "https://flagcdn.com/w80/jp.png",
+          "url": "japan.html"
+        },
+        "played": 12,
+        "wins": 12,
+        "losses": 0,
+        "points": 30,
+        "setRatio": "2.400",
+        "pointRatio": "1.101",
+        "status": "qualified",
+        "statusLabel": "파이널 진출"
+      },
+      {
+        "rank": 2,
+        "team": {
+          "name": "폴란드",
+          "en": "Poland",
+          "code": "POL",
+          "flag": "https://flagcdn.com/w80/pl.png",
+          "url": "poland.html"
+        },
+        "played": 12,
+        "wins": 10,
+        "losses": 2,
+        "points": 29,
+        "setRatio": "2.267",
+        "pointRatio": "1.108",
+        "status": "qualified",
+        "statusLabel": "파이널 진출"
+      },
+      {
+        "rank": 3,
+        "team": {
+          "name": "슬로베니아",
+          "en": "Slovenia",
+          "code": "SLO",
+          "flag": "https://flagcdn.com/w80/si.png",
+          "url": "slovenia.html"
+        },
+        "played": 12,
+        "wins": 10,
+        "losses": 2,
+        "points": 26,
+        "setRatio": "1.882",
+        "pointRatio": "1.055",
+        "status": "qualified",
+        "statusLabel": "파이널 진출"
+      },
+      {
+        "rank": 4,
+        "team": {
+          "name": "이탈리아",
+          "en": "Italy",
+          "code": "ITA",
+          "flag": "https://flagcdn.com/w80/it.png",
+          "url": "italy.html"
+        },
+        "played": 12,
+        "wins": 8,
+        "losses": 4,
+        "points": 26,
+        "setRatio": "1.667",
+        "pointRatio": "1.051",
+        "status": "qualified",
+        "statusLabel": "파이널 진출"
+      },
+      {
+        "rank": 5,
+        "team": {
+          "name": "미국",
+          "en": "USA",
+          "code": "USA",
+          "flag": "https://flagcdn.com/w80/us.png",
+          "url": "usa.html"
+        },
+        "played": 12,
+        "wins": 8,
+        "losses": 4,
+        "points": 25,
+        "setRatio": "1.812",
+        "pointRatio": "1.093",
+        "status": "qualified",
+        "statusLabel": "파이널 진출"
+      },
+      {
+        "rank": 6,
+        "team": {
+          "name": "튀르키예",
+          "en": "Türkiye",
+          "code": "TUR",
+          "flag": "https://flagcdn.com/w80/tr.png",
+          "url": "turkiye.html"
+        },
+        "played": 12,
+        "wins": 8,
+        "losses": 4,
+        "points": 22,
+        "setRatio": "1.474",
+        "pointRatio": "1.033",
+        "status": "qualified",
+        "statusLabel": "파이널 진출"
+      },
+      {
+        "rank": 7,
+        "team": {
+          "name": "우크라이나",
+          "en": "Ukraine",
+          "code": "UKR",
+          "flag": "https://flagcdn.com/w80/ua.png",
+          "url": "ukraine.html"
+        },
+        "played": 12,
+        "wins": 7,
+        "losses": 5,
+        "points": 23,
+        "setRatio": "1.350",
+        "pointRatio": "1.032",
+        "status": "qualified",
+        "statusLabel": "파이널 진출"
+      },
+      {
+        "rank": 8,
+        "team": {
+          "name": "불가리아",
+          "en": "Bulgaria",
+          "code": "BUL",
+          "flag": "https://flagcdn.com/w80/bg.png",
+          "url": "bulgaria.html"
+        },
+        "played": 12,
+        "wins": 7,
+        "losses": 5,
+        "points": 20,
+        "setRatio": "1.043",
+        "pointRatio": "1.023",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 9,
+        "team": {
+          "name": "브라질",
+          "en": "Brazil",
+          "code": "BRA",
+          "flag": "https://flagcdn.com/w80/br.png",
+          "url": "brazil.html"
+        },
+        "played": 12,
+        "wins": 7,
+        "losses": 5,
+        "points": 19,
+        "setRatio": "1.095",
+        "pointRatio": "1.032",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 10,
+        "team": {
+          "name": "프랑스",
+          "en": "France",
+          "code": "FRA",
+          "flag": "https://flagcdn.com/w80/fr.png",
+          "url": "france.html"
+        },
+        "played": 12,
+        "wins": 6,
+        "losses": 6,
+        "points": 16,
+        "setRatio": "0.958",
+        "pointRatio": "1.005",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 11,
+        "team": {
+          "name": "세르비아",
+          "en": "Serbia",
+          "code": "SRB",
+          "flag": "https://flagcdn.com/w80/rs.png",
+          "url": "serbia.html"
+        },
+        "played": 12,
+        "wins": 5,
+        "losses": 7,
+        "points": 16,
+        "setRatio": "0.760",
+        "pointRatio": "0.927",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 12,
+        "team": {
+          "name": "독일",
+          "en": "Germany",
+          "code": "GER",
+          "flag": "https://flagcdn.com/w80/de.png",
+          "url": "germany.html"
+        },
+        "played": 12,
+        "wins": 5,
+        "losses": 7,
+        "points": 15,
+        "setRatio": "0.821",
+        "pointRatio": "0.980",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 13,
+        "team": {
+          "name": "벨기에",
+          "en": "Belgium",
+          "code": "BEL",
+          "flag": "https://flagcdn.com/w80/be.png",
+          "url": "belgium.html"
+        },
+        "played": 12,
+        "wins": 4,
+        "losses": 8,
+        "points": 12,
+        "setRatio": "0.607",
+        "pointRatio": "0.933",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 14,
+        "team": {
+          "name": "이란",
+          "en": "Iran",
+          "code": "IRI",
+          "flag": "https://flagcdn.com/w80/ir.png",
+          "url": "iran.html"
+        },
+        "played": 12,
+        "wins": 3,
+        "losses": 9,
+        "points": 11,
+        "setRatio": "0.600",
+        "pointRatio": "0.945",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 15,
+        "team": {
+          "name": "아르헨티나",
+          "en": "Argentina",
+          "code": "ARG",
+          "flag": "https://flagcdn.com/w80/ar.png",
+          "url": "argentina.html"
+        },
+        "played": 12,
+        "wins": 3,
+        "losses": 9,
+        "points": 10,
+        "setRatio": "0.581",
+        "pointRatio": "0.949",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 16,
+        "team": {
+          "name": "쿠바",
+          "en": "Cuba",
+          "code": "CUB",
+          "flag": "https://flagcdn.com/w80/cu.png",
+          "url": "cuba.html"
+        },
+        "played": 12,
+        "wins": 3,
+        "losses": 9,
+        "points": 10,
+        "setRatio": "0.552",
+        "pointRatio": "0.930",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 17,
+        "team": {
+          "name": "캐나다",
+          "en": "Canada",
+          "code": "CAN",
+          "flag": "https://flagcdn.com/w80/ca.png",
+          "url": "canada.html"
+        },
+        "played": 12,
+        "wins": 1,
+        "losses": 11,
+        "points": 10,
+        "setRatio": "0.559",
+        "pointRatio": "0.957",
+        "status": "out",
+        "statusLabel": "예선 종료"
+      },
+      {
+        "rank": 18,
+        "team": {
+          "name": "중국",
+          "en": "China",
+          "code": "CHN",
+          "flag": "https://flagcdn.com/w80/cn.png",
+          "url": "china.html"
+        },
+        "played": 12,
+        "wins": 1,
+        "losses": 11,
+        "points": 4,
+        "setRatio": "0.303",
+        "pointRatio": "0.866",
+        "status": "host-qualified",
+        "statusLabel": "개최국 · 파이널 진출"
+      }
+    ]
+  },
+  "participants": [
+    {
+      "name": "일본",
+      "en": "Japan",
+      "code": "JPN",
+      "flag": "https://flagcdn.com/w80/jp.png",
+      "url": "japan.html"
+    },
+    {
+      "name": "브라질",
+      "en": "Brazil",
+      "code": "BRA",
+      "flag": "https://flagcdn.com/w80/br.png",
+      "url": "brazil.html"
+    },
+    {
+      "name": "폴란드",
+      "en": "Poland",
+      "code": "POL",
+      "flag": "https://flagcdn.com/w80/pl.png",
+      "url": "poland.html"
+    },
+    {
+      "name": "이란",
+      "en": "Iran",
+      "code": "IRI",
+      "flag": "https://flagcdn.com/w80/ir.png",
+      "url": "iran.html"
+    },
+    {
+      "name": "미국",
+      "en": "USA",
+      "code": "USA",
+      "flag": "https://flagcdn.com/w80/us.png",
+      "url": "usa.html"
+    },
+    {
+      "name": "프랑스",
+      "en": "France",
+      "code": "FRA",
+      "flag": "https://flagcdn.com/w80/fr.png",
+      "url": "france.html"
+    },
+    {
+      "name": "아르헨티나",
+      "en": "Argentina",
+      "code": "ARG",
+      "flag": "https://flagcdn.com/w80/ar.png",
+      "url": "argentina.html"
+    },
+    {
+      "name": "이탈리아",
+      "en": "Italy",
+      "code": "ITA",
+      "flag": "https://flagcdn.com/w80/it.png",
+      "url": "italy.html"
+    },
+    {
+      "name": "캐나다",
+      "en": "Canada",
+      "code": "CAN",
+      "flag": "https://flagcdn.com/w80/ca.png",
+      "url": "canada.html"
+    },
+    {
+      "name": "벨기에",
+      "en": "Belgium",
+      "code": "BEL",
+      "flag": "https://flagcdn.com/w80/be.png",
+      "url": "belgium.html"
+    },
+    {
+      "name": "쿠바",
+      "en": "Cuba",
+      "code": "CUB",
+      "flag": "https://flagcdn.com/w80/cu.png",
+      "url": "cuba.html"
+    },
+    {
+      "name": "슬로베니아",
+      "en": "Slovenia",
+      "code": "SLO",
+      "flag": "https://flagcdn.com/w80/si.png",
+      "url": "slovenia.html"
+    },
+    {
+      "name": "독일",
+      "en": "Germany",
+      "code": "GER",
+      "flag": "https://flagcdn.com/w80/de.png",
+      "url": "germany.html"
+    },
+    {
+      "name": "세르비아",
+      "en": "Serbia",
+      "code": "SRB",
+      "flag": "https://flagcdn.com/w80/rs.png",
+      "url": "serbia.html"
+    },
+    {
+      "name": "튀르키예",
+      "en": "Türkiye",
+      "code": "TUR",
+      "flag": "https://flagcdn.com/w80/tr.png",
+      "url": "turkiye.html"
+    },
+    {
+      "name": "불가리아",
+      "en": "Bulgaria",
+      "code": "BUL",
+      "flag": "https://flagcdn.com/w80/bg.png",
+      "url": "bulgaria.html"
+    },
+    {
+      "name": "중국",
+      "en": "China",
+      "code": "CHN",
+      "flag": "https://flagcdn.com/w80/cn.png",
+      "url": "china.html"
+    },
+    {
+      "name": "우크라이나",
+      "en": "Ukraine",
+      "code": "UKR",
+      "flag": "https://flagcdn.com/w80/ua.png",
+      "url": "ukraine.html"
+    }
+  ],
+  "finalRanking": [
+    {
+      "rank": 1,
+      "team": "폴란드",
+      "en": "Poland",
+      "flag": "https://flagcdn.com/w80/pl.png",
+      "result": "우승 · 결승 미국에 3-2"
+    },
+    {
+      "rank": 2,
+      "team": "미국",
+      "en": "USA",
+      "flag": "https://flagcdn.com/w80/us.png",
+      "result": "준우승 · 결승 폴란드에 2-3"
+    },
+    {
+      "rank": 3,
+      "team": "슬로베니아",
+      "en": "Slovenia",
+      "flag": "https://flagcdn.com/w80/si.png",
+      "result": "3위 · 일본에 3-1"
+    },
+    {
+      "rank": 4,
+      "team": "일본",
+      "en": "Japan",
+      "flag": "https://flagcdn.com/w80/jp.png",
+      "result": "4위 · 슬로베니아에 1-3"
+    }
+  ],
+  "finalRankingFull": [
+    {
+      "rank": 1,
+      "team": "폴란드",
+      "en": "Poland",
+      "code": "POL",
+      "flag": "https://flagcdn.com/w80/pl.png",
+      "url": "poland.html"
+    },
+    {
+      "rank": 2,
+      "team": "미국",
+      "en": "USA",
+      "code": "USA",
+      "flag": "https://flagcdn.com/w80/us.png",
+      "url": "usa.html"
+    },
+    {
+      "rank": 3,
+      "team": "슬로베니아",
+      "en": "Slovenia",
+      "code": "SLO",
+      "flag": "https://flagcdn.com/w80/si.png",
+      "url": "slovenia.html"
+    },
+    {
+      "rank": 4,
+      "team": "일본",
+      "en": "Japan",
+      "code": "JPN",
+      "flag": "https://flagcdn.com/w80/jp.png",
+      "url": "japan.html"
+    },
+    {
+      "rank": 5,
+      "team": "이탈리아",
+      "en": "Italy",
+      "code": "ITA",
+      "flag": "https://flagcdn.com/w80/it.png",
+      "url": "italy.html"
+    },
+    {
+      "rank": 6,
+      "team": "튀르키예",
+      "en": "Türkiye",
+      "code": "TUR",
+      "flag": "https://flagcdn.com/w80/tr.png",
+      "url": "turkiye.html"
+    },
+    {
+      "rank": 7,
+      "team": "우크라이나",
+      "en": "Ukraine",
+      "code": "UKR",
+      "flag": "https://flagcdn.com/w80/ua.png",
+      "url": "ukraine.html"
+    },
+    {
+      "rank": 8,
+      "team": "중국",
+      "en": "China",
+      "code": "CHN",
+      "flag": "https://flagcdn.com/w80/cn.png",
+      "url": "china.html"
+    },
+    {
+      "rank": 9,
+      "team": "불가리아",
+      "en": "Bulgaria",
+      "code": "BUL",
+      "flag": "https://flagcdn.com/w80/bg.png",
+      "url": "bulgaria.html"
+    },
+    {
+      "rank": 10,
+      "team": "브라질",
+      "en": "Brazil",
+      "code": "BRA",
+      "flag": "https://flagcdn.com/w80/br.png",
+      "url": "brazil.html"
+    },
+    {
+      "rank": 11,
+      "team": "프랑스",
+      "en": "France",
+      "code": "FRA",
+      "flag": "https://flagcdn.com/w80/fr.png",
+      "url": "france.html"
+    },
+    {
+      "rank": 12,
+      "team": "세르비아",
+      "en": "Serbia",
+      "code": "SRB",
+      "flag": "https://flagcdn.com/w80/rs.png",
+      "url": "serbia.html"
+    },
+    {
+      "rank": 13,
+      "team": "독일",
+      "en": "Germany",
+      "code": "GER",
+      "flag": "https://flagcdn.com/w80/de.png",
+      "url": "germany.html"
+    },
+    {
+      "rank": 14,
+      "team": "벨기에",
+      "en": "Belgium",
+      "code": "BEL",
+      "flag": "https://flagcdn.com/w80/be.png",
+      "url": "belgium.html"
+    },
+    {
+      "rank": 15,
+      "team": "이란",
+      "en": "Iran",
+      "code": "IRI",
+      "flag": "https://flagcdn.com/w80/ir.png",
+      "url": "iran.html"
+    },
+    {
+      "rank": 16,
+      "team": "아르헨티나",
+      "en": "Argentina",
+      "code": "ARG",
+      "flag": "https://flagcdn.com/w80/ar.png",
+      "url": "argentina.html"
+    },
+    {
+      "rank": 17,
+      "team": "쿠바",
+      "en": "Cuba",
+      "code": "CUB",
+      "flag": "https://flagcdn.com/w80/cu.png",
+      "url": "cuba.html"
+    },
+    {
+      "rank": 18,
+      "team": "캐나다",
+      "en": "Canada",
+      "code": "CAN",
+      "flag": "https://flagcdn.com/w80/ca.png",
+      "url": "canada.html"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Volleyball World · VNL 공식 페이지",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/"
+    },
+    {
+      "title": "Volleyball World · VNL 남자부 공식 순위",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/standings/men/"
+    },
+    {
+      "title": "Volleyball World · FIVB 남자 세계랭킹",
+      "url": "https://en.volleyballworld.com/volleyball/world-ranking/men"
+    }
+  ]
+}
