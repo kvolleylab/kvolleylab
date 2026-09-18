@@ -24,6 +24,10 @@ async function inspect(o){
  const linkErrors=[];
  for(const a of [...doc.querySelectorAll('[data-team-results]')].filter(visible)){const url=new URL(a.href);if(url.searchParams.get('view')!=='team'||url.searchParams.get('team')!==a.dataset.teamResults||(!o.fixture&&url.searchParams.get('competition')!=='vnl-men-2026'))linkErrors.push(a.textContent);}
  if(['schedule','groups','knockout'].includes(o.view)&&d.status==='completed'&&!doc.querySelector(`[data-view="${o.view}"] [data-team-results]`))linkErrors.push('missing team links');
+ if(o.view==='knockout'&&d.status==='completed'){
+  const expectedCodes=[...new Set((d.matches||[]).filter(m=>['QF','SF','FINAL','BRONZE'].includes(String(m.round||'').toUpperCase())).flatMap(m=>[m.home,m.away]).map(t=>win.KVLCompetitionDataV2.participant(d,t)?.code).filter(Boolean))],linkedCodes=new Set([...doc.querySelectorAll('#knockout [data-team-results]')].map(a=>a.dataset.teamResults));
+  for(const teamCode of expectedCodes)if(!linkedCodes.has(teamCode))linkErrors.push('knockout '+teamCode);
+ }
  if(linkErrors.length)errors.push('team links');
  if(o.view==='groups'&&(!doc.querySelector('[data-kvl-component="standings"]').textContent.includes('세트 득실비')||!doc.querySelector('[data-kvl-component="standings"]').textContent.includes('점수 득실비')))errors.push('ratio labels');
  const expectedTeam=d.participants.find(t=>t.code===o.team);
