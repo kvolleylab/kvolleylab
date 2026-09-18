@@ -73,6 +73,11 @@ html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{
  background-position:var(--kvl-hero-position,center center)!important;background-size:cover!important;
 }
 html body.kvl-competition-template-v2 .kvl1180-hero::before,html body.kvl-competition-template-v2 .kvl1180-hero::after{content:none!important}
+html body.kvl-competition-template-v2[data-kvl-hero-mode="photo"] .kvl1180-hero{
+ background-image:linear-gradient(90deg,rgba(var(--kvl-theme-overlay-rgb),.20) 0%,rgba(var(--kvl-theme-overlay-rgb),.10) 42%,rgba(var(--kvl-theme-overlay-rgb),.02) 68%,rgba(var(--kvl-theme-overlay-rgb),0) 82%),var(--kvl-hero-image-desktop,none)!important;
+ background-size:cover!important;
+ background-position:var(--kvl-hero-position,center center)!important;
+}
 html body.kvl-competition-template-v2 .kvl1180-team-score{color:#4b5563!important}
 body.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]{text-decoration:none;color:inherit}
 body.kvl-competition-template-v2 .kvl1180-overview-result{line-height:1.22!important}
@@ -84,6 +89,11 @@ body.kvl-competition-template-v2 .kvl1180-final-card:first-child .kvl1180-final-
 body.kvl-competition-template-v2 .kvl1180-roster-club::before{content:none!important}
 @media(max-width:680px){
  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{background-image:linear-gradient(105deg,color-mix(in srgb,var(--kvl-theme-hero-a) 96%,transparent),color-mix(in srgb,var(--kvl-theme-hero-b) 88%,transparent) 68%,color-mix(in srgb,var(--kvl-theme-hero-a) 65%,transparent)),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-hero-mode="photo"] .kvl1180-hero{
+  background-image:linear-gradient(105deg,rgba(var(--kvl-theme-overlay-rgb),.42) 0%,rgba(var(--kvl-theme-overlay-rgb),.22) 48%,rgba(var(--kvl-theme-overlay-rgb),.04) 76%),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
+  background-size:auto 100%!important;
+  background-position:var(--kvl-hero-position-mobile,right center)!important;
+ }
  body.kvl-competition-template-v2 [data-kvl-component="calendar"]{gap:10px}
  body.kvl-competition-template-v2 #knockout .kvl1180-final-card:first-child .kvl1180-final-copy small{font-size:8px!important}
  body.kvl-competition-template-v2 .kvl1180-hero h1{white-space:normal!important;overflow-wrap:anywhere}
