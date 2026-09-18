@@ -3,7 +3,7 @@
  const body=document.body,config=window.KVL_COMPETITION_PAGE_V2||{};
  try{
   let data=window.KVL_COMPETITION_V2_DATA;
-  const readJSON=async url=>{const response=await fetch(url);if(!response.ok)throw Error('Competition JSON: '+response.status);return response.json();};
+  const readJSON=async url=>{const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw Error('Competition JSON: '+response.status);return response.json();};
   if(config.collectionRoot){
    const contract=window.KVLCompetitionConfigV2,modules=window.KVLCompetitionModulesV2;
    const route=contract.locationFor(location.href,config.collectionRoot);
