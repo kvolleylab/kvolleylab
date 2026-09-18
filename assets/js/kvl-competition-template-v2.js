@@ -32,6 +32,7 @@ function applyTheme(d){
   const family=THEME_FAMILIES.has(requestedFamily)?requestedFamily:'avc';
   body.dataset.kvlGender=gender;
   body.dataset.kvlFamily=family;
+  body.dataset.kvlHeroMode=d.hero?.mode==='photo'?'photo':'palette';
   const asset=v=>{try{const u=new URL(v,location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}};
   const showHeroImage=d.hero?.mode!=='color-only'&&d.hero?.showImage!==false;
   for(const [key,value] of [['--kvl-hero-image-desktop',d.hero?.pcImage],['--kvl-hero-image-mobile',d.hero?.mobileImage]]){
