@@ -71,6 +71,10 @@ function ensureShell(){
     <div class="kvl1180-schedule-list" data-kvl-component="schedule-list"><div class="kvl1180-schedule-empty">경기일정을 불러오는 중입니다.</div></div>
   </section>
 
+  <section class="kvl1180-card kvl1180-schedule-card kvl1180-view" id="team-results" data-view="team" hidden>
+    <div data-kvl-component="team-results"></div>
+  </section>
+
   <section class="kvl1180-card kvl1180-view kvl1180-groups-view" id="groups" data-view="groups" hidden>
     <div class="kvl1180-section-head"><div><p class="label" data-kvl-label="standings-eyebrow">POOL &amp; COMBINED STANDINGS</p><h2 data-kvl-label="standings-title">조별순위</h2></div><div class="kvl1180-groups-status"><span><strong data-kvl="groups-status">공식 결과 기준</strong></span></div></div>
     <div class="kvl1180-groups-rule" data-kvl-component="standings-rule"><span data-kvl="standings-rule">대회 규정에 따라 순위를 계산합니다.</span><div class="kvl1180-groups-legend"><span class="q"><i></i>진출</span><span class="o"><i></i>탈락</span></div></div>
@@ -93,7 +97,7 @@ function ensureShell(){
   <section class="kvl1180-card kvl1180-view kvl1180-participants-view" id="rosters" data-view="rosters" hidden>
     <div class="kvl1180-section-head"><div><p class="label">PARTICIPATING TEAMS</p><h2 data-kvl-label="participants-title">참가국</h2></div><div class="kvl1180-participant-status"><span><strong data-kvl="participants-status">참가국</strong></span></div></div>
     <div data-kvl-component="participants"><div class="kvl1180-schedule-empty">참가국을 불러오는 중입니다.</div></div>
-    <div data-kvl-component="roster"></div>
+    <div data-kvl-component="roster" id="team-roster"></div>
   </section>
 
   <section class="kvl1180-card kvl1180-view kvl1180-resources-view" id="resources" data-view="resources" hidden>

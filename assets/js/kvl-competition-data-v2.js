@@ -3,6 +3,29 @@
 'use strict';
 const MODES={standings:['pools-combined','single-league','none'],participants:['groups','flat'],roster:['full','link-only','none'],knockout:['bracket-8','none']};
 const list=x=>Array.isArray(x)?x:[];
+// Codes/participant IDs are the only routing identities. Display names never resolve a team.
+function participant(d,ref){
+ const code=typeof ref==='string'?ref:ref?.code||ref?.teamCode;
+ const id=typeof ref==='object'&&(ref?.participantId||ref?.participant_id);
+ return list(d.participants).find(t=>code?t.code===code:id&&(t.participantId||t.participant_id)===id)||null;
+}
+function localTimeLabel(m){
+ const label=typeof m.localTimeLabel==='string'?m.localTimeLabel.trim():'';
+ if(label)return label.includes('현지')?label:'현지 '+label;
+ const value=m.time_local||m.localTime||m.timeLocal;
+ if(typeof value!=='string'||!/^\d{1,2}:\d{2}(?::\d{2})?$/.test(value.trim()))return '';
+ const date=m.date_local||m.dateLocal,zone=m.timezone_local||m.localTimezone||m.timezoneLocal;
+ return [date&&date!==m.date?date:'','현지 '+value.trim(),zone||''].filter(Boolean).join(' ');
+}
+function rosterTarget(d,ref){
+ const t=participant(d,ref),mode=d.structure?.roster?.mode||'full';
+ if(!t||mode==='none')return {available:false,mode};
+ if(mode==='full')return {available:!!d.rosters?.[t.code]?.players?.length,mode,code:t.code};
+ // Only explicitly designated roster links, never a generic team URL.
+ const url=t.rosterUrl;
+ let safe=false;try{safe=typeof url==='string'&&!!url.trim()&&['https:','http:'].includes(new URL(url,'https://kvl.invalid/').protocol);}catch{}
+ return {available:!!safe,mode,code:t.code,url:safe?url:null};
+}
 function pair(set){const h=set?.home??set?.[0],a=set?.away??set?.[1];return h!==null&&h!==undefined&&h!==''&&a!==null&&a!==undefined&&a!==''&&Number.isFinite(Number(h))&&Number.isFinite(Number(a))?{home:Number(h),away:Number(a)}:null;}
 function validate(d,{production=false}={}){
  const errors=[];
@@ -33,9 +56,10 @@ function validate(d,{production=false}={}){
 }
 function normalize(source){
  const d=JSON.parse(JSON.stringify(source));
- d.matches=list(d.matches).map(m=>({...m,score:m.score?{...m.score,sets:list(m.score.sets).map(pair).filter(Boolean)}:null}));
+ const side=t=>{const p=participant(d,t);return p?{...p,...t,code:p.code}:t;};
+ d.matches=list(d.matches).map(m=>({...m,home:side(m.home),away:side(m.away),localTimeLabel:localTimeLabel(m),score:m.score?{...m.score,sets:list(m.score.sets).map(pair).filter(Boolean)}:null}));
  d.participants=list(d.participants);d.resources=list(d.resources);d.finalRanking=list(d.finalRanking);d.qualifications=list(d.qualifications);d.rosters=d.rosters||{};
  return d;
 }
-return {validate,normalize,pair,supportedModes:MODES};
+return {validate,normalize,pair,participant,localTimeLabel,rosterTarget,supportedModes:MODES};
 });

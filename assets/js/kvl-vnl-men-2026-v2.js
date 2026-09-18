@@ -72,16 +72,16 @@ async function init(){
     const participantMap=new Map((participantsRaw.participants||[]).map(p=>[p.country,p]));
     const scoreMap=new Map((scoresRaw.matches||[]).map(r=>[r.match_id,r]));
     const matches=[...(prelimRaw.matches||[]),...(finalsRaw.matches||[])].map(m=>normalizeMatch(m,participantMap,scoreMap));
-    const participants=(participantsRaw.participants||[]).map(p=>({name:p.country_ko,en:p.country,code:CODES[p.country]||'',flag:FLAG(p.country),url:p.country_page||''}));
+    const participants=(participantsRaw.participants||[]).map(p=>({name:p.country_ko,en:p.country,code:CODES[p.country]||'',flag:FLAG(p.country),url:p.country_page||'',rosterUrl:p.country_page?'/'+p.country_page:''}));
     const standingsRows=(standingsRaw.rows||[]).map(r=>normalizeStanding(r,participantMap));
     const finalRows=(finalRaw.rows||[]).map(r=>({rank:r.rank,team:r.country_ko,en:r.country,code:CODES[r.country]||'',flag:FLAG(r.country),url:participantMap.get(r.country)?.country_page||''}));
     const finalMatch=matches.find(m=>m.round==='FINAL'),bronze=matches.find(m=>m.round==='BRONZE');
     const champ=winner(finalMatch),runner=loser(finalMatch),third=winner(bronze),fourth=loser(bronze);
     const top=[
-      champ&&{rank:1,team:champ.name,en:champ.en,flag:champ.flag,result:`우승 · 결승 ${runner?.name||''}에 ${scoreText(finalMatch,champ)}`},
-      runner&&{rank:2,team:runner.name,en:runner.en,flag:runner.flag,result:`준우승 · 결승 ${champ?.name||''}에 ${scoreText(finalMatch,runner)}`},
-      third&&{rank:3,team:third.name,en:third.en,flag:third.flag,result:`3위 · ${fourth?.name||''}에 ${scoreText(bronze,third)}`},
-      fourth&&{rank:4,team:fourth.name,en:fourth.en,flag:fourth.flag,result:`4위 · ${third?.name||''}에 ${scoreText(bronze,fourth)}`}
+      champ&&{rank:1,team:champ.name,code:champ.code,en:champ.en,flag:champ.flag,result:`우승 · 결승 ${runner?.name||''}에 ${scoreText(finalMatch,champ)}`},
+      runner&&{rank:2,team:runner.name,code:runner.code,en:runner.en,flag:runner.flag,result:`준우승 · 결승 ${champ?.name||''}에 ${scoreText(finalMatch,runner)}`},
+      third&&{rank:3,team:third.name,code:third.code,en:third.en,flag:third.flag,result:`3위 · ${fourth?.name||''}에 ${scoreText(bronze,third)}`},
+      fourth&&{rank:4,team:fourth.name,code:fourth.code,en:fourth.en,flag:fourth.flag,result:`4위 · ${third?.name||''}에 ${scoreText(bronze,fourth)}`}
     ].filter(Boolean);
 
     const base=window.KVL_COMPETITION_V2_DATA||{};

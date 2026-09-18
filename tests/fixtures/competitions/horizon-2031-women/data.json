@@ -16,7 +16,7 @@
   "upcomingOverviewNote": "가상대회 시작 전 · 경기 결과 없음",
   "scheduleNote": "한국시간(KST) · 모든 대회·경기·선수 데이터는 검증용 가상 정보입니다.",
   "standingsNote": "가상 결과 · 실제 대회와 무관",
-  "standingsRule": "가상 규정: 승리 수 → 승점 → 세트율 → 득점율. 동률은 검증용 코드 순.",
+  "standingsRule": "가상 규정: 승리 수 → 승점 → 세트 득실비 → 점수 득실비. 동률은 검증용 코드 순.",
   "meaning": {
     "eyebrow": "FICTIONAL COMPETITION",
     "title": "대회 의미 · 가상 규정",
@@ -1430,6 +1430,7 @@
     {
       "rank": 1,
       "team": "체코",
+      "code": "CZE",
       "flag": "https://flagcdn.com/w160/cz.png",
       "result": "우승",
       "confirmed": true
@@ -1437,6 +1438,7 @@
     {
       "rank": 2,
       "team": "캐나다",
+      "code": "CAN",
       "flag": "https://flagcdn.com/w160/ca.png",
       "result": "준우승",
       "confirmed": true
@@ -1444,6 +1446,7 @@
     {
       "rank": 3,
       "team": "보스니아 헤르체고비나",
+      "code": "BIH",
       "flag": "https://flagcdn.com/w160/ba.png",
       "result": "3위",
       "confirmed": true
@@ -1451,6 +1454,7 @@
     {
       "rank": 4,
       "team": "에스토니아",
+      "code": "EST",
       "flag": "https://flagcdn.com/w160/ee.png",
       "result": "4위",
       "confirmed": true

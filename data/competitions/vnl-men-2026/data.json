@@ -5821,126 +5821,144 @@
       "en": "Japan",
       "code": "JPN",
       "flag": "https://flagcdn.com/w80/jp.png",
-      "url": "japan.html"
+      "url": "japan.html",
+      "rosterUrl": "/japan.html"
     },
     {
       "name": "브라질",
       "en": "Brazil",
       "code": "BRA",
       "flag": "https://flagcdn.com/w80/br.png",
-      "url": "brazil.html"
+      "url": "brazil.html",
+      "rosterUrl": "/brazil.html"
     },
     {
       "name": "폴란드",
       "en": "Poland",
       "code": "POL",
       "flag": "https://flagcdn.com/w80/pl.png",
-      "url": "poland.html"
+      "url": "poland.html",
+      "rosterUrl": "/poland.html"
     },
     {
       "name": "이란",
       "en": "Iran",
       "code": "IRI",
       "flag": "https://flagcdn.com/w80/ir.png",
-      "url": "iran.html"
+      "url": "iran.html",
+      "rosterUrl": "/iran.html"
     },
     {
       "name": "미국",
       "en": "USA",
       "code": "USA",
       "flag": "https://flagcdn.com/w80/us.png",
-      "url": "usa.html"
+      "url": "usa.html",
+      "rosterUrl": "/usa.html"
     },
     {
       "name": "프랑스",
       "en": "France",
       "code": "FRA",
       "flag": "https://flagcdn.com/w80/fr.png",
-      "url": "france.html"
+      "url": "france.html",
+      "rosterUrl": "/france.html"
     },
     {
       "name": "아르헨티나",
       "en": "Argentina",
       "code": "ARG",
       "flag": "https://flagcdn.com/w80/ar.png",
-      "url": "argentina.html"
+      "url": "argentina.html",
+      "rosterUrl": "/argentina.html"
     },
     {
       "name": "이탈리아",
       "en": "Italy",
       "code": "ITA",
       "flag": "https://flagcdn.com/w80/it.png",
-      "url": "italy.html"
+      "url": "italy.html",
+      "rosterUrl": "/italy.html"
     },
     {
       "name": "캐나다",
       "en": "Canada",
       "code": "CAN",
       "flag": "https://flagcdn.com/w80/ca.png",
-      "url": "canada.html"
+      "url": "canada.html",
+      "rosterUrl": "/canada.html"
     },
     {
       "name": "벨기에",
       "en": "Belgium",
       "code": "BEL",
       "flag": "https://flagcdn.com/w80/be.png",
-      "url": "belgium.html"
+      "url": "belgium.html",
+      "rosterUrl": "/belgium.html"
     },
     {
       "name": "쿠바",
       "en": "Cuba",
       "code": "CUB",
       "flag": "https://flagcdn.com/w80/cu.png",
-      "url": "cuba.html"
+      "url": "cuba.html",
+      "rosterUrl": "/cuba.html"
     },
     {
       "name": "슬로베니아",
       "en": "Slovenia",
       "code": "SLO",
       "flag": "https://flagcdn.com/w80/si.png",
-      "url": "slovenia.html"
+      "url": "slovenia.html",
+      "rosterUrl": "/slovenia.html"
     },
     {
       "name": "독일",
       "en": "Germany",
       "code": "GER",
       "flag": "https://flagcdn.com/w80/de.png",
-      "url": "germany.html"
+      "url": "germany.html",
+      "rosterUrl": "/germany.html"
     },
     {
       "name": "세르비아",
       "en": "Serbia",
       "code": "SRB",
       "flag": "https://flagcdn.com/w80/rs.png",
-      "url": "serbia.html"
+      "url": "serbia.html",
+      "rosterUrl": "/serbia.html"
     },
     {
       "name": "튀르키예",
       "en": "Türkiye",
       "code": "TUR",
       "flag": "https://flagcdn.com/w80/tr.png",
-      "url": "turkiye.html"
+      "url": "turkiye.html",
+      "rosterUrl": "/turkiye.html"
     },
     {
       "name": "불가리아",
       "en": "Bulgaria",
       "code": "BUL",
       "flag": "https://flagcdn.com/w80/bg.png",
-      "url": "bulgaria.html"
+      "url": "bulgaria.html",
+      "rosterUrl": "/bulgaria.html"
     },
     {
       "name": "중국",
       "en": "China",
       "code": "CHN",
       "flag": "https://flagcdn.com/w80/cn.png",
-      "url": "china.html"
+      "url": "china.html",
+      "rosterUrl": "/china.html"
     },
     {
       "name": "우크라이나",
       "en": "Ukraine",
       "code": "UKR",
       "flag": "https://flagcdn.com/w80/ua.png",
-      "url": "ukraine.html"
+      "url": "ukraine.html",
+      "rosterUrl": "/ukraine.html"
     }
   ],
   "finalRanking": [
@@ -5949,28 +5967,32 @@
       "team": "폴란드",
       "en": "Poland",
       "flag": "https://flagcdn.com/w80/pl.png",
-      "result": "우승 · 결승 미국에 3-2"
+      "result": "우승 · 결승 미국에 3-2",
+      "code": "POL"
     },
     {
       "rank": 2,
       "team": "미국",
       "en": "USA",
       "flag": "https://flagcdn.com/w80/us.png",
-      "result": "준우승 · 결승 폴란드에 2-3"
+      "result": "준우승 · 결승 폴란드에 2-3",
+      "code": "USA"
     },
     {
       "rank": 3,
       "team": "슬로베니아",
       "en": "Slovenia",
       "flag": "https://flagcdn.com/w80/si.png",
-      "result": "3위 · 일본에 3-1"
+      "result": "3위 · 일본에 3-1",
+      "code": "SLO"
     },
     {
       "rank": 4,
       "team": "일본",
       "en": "Japan",
       "flag": "https://flagcdn.com/w80/jp.png",
-      "result": "4위 · 슬로베니아에 1-3"
+      "result": "4위 · 슬로베니아에 1-3",
+      "code": "JPN"
     }
   ],
   "finalRankingFull": [
