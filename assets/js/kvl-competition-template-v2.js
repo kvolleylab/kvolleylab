@@ -38,6 +38,19 @@ function applyTheme(d){
   for(const [key,value] of [['--kvl-hero-image-desktop',d.hero?.pcImage],['--kvl-hero-image-mobile',d.hero?.mobileImage]]){
     const url=showHeroImage&&value&&asset(value);if(url)body.style.setProperty(key,`url(${JSON.stringify(url)})`);else body.style.removeProperty(key);
   }
+  const chunks=showHeroImage&&Array.isArray(d.hero?.b64Chunks)?d.hero.b64Chunks.map(asset).filter(Boolean):[];
+  if(chunks.length){
+    Promise.all(chunks.map(async url=>{
+      const res=await fetch(url,{cache:'force-cache'});
+      if(!res.ok)throw new Error(`hero asset ${res.status}`);
+      return (await res.text()).replace(/\\s+/g,'');
+    })).then(parts=>{
+      const dataUrl=`data:${d.hero?.mimeType||'image/webp'};base64,${parts.join('')}`;
+      body.style.setProperty('--kvl-hero-image-desktop',`url(${JSON.stringify(dataUrl)})`);
+      body.style.setProperty('--kvl-hero-image-mobile',`url(${JSON.stringify(dataUrl)})`);
+      body.dataset.kvlHeroReady='true';
+    }).catch(()=>{body.dataset.kvlHeroReady='fallback';});
+  }else body.removeAttribute('data-kvl-hero-ready');
   for(const [key,value] of [['--kvl-hero-position',d.hero?.position],['--kvl-hero-position-mobile',d.hero?.mobilePosition]]){
     if(value)body.style.setProperty(key,value);else body.style.removeProperty(key);
   }
