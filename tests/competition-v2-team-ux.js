@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id),views=['overview','schedule','groups','k
 async function inspect(o){
  const f=$('candidate');f.width=o.width;const u=new URL(o.fixture?'/tests/competition-page-v2-structure-engine-smoke.html':'/competition-engine.html',location.href);
  for(const [k,v] of Object.entries(o))if(!['width','fixture'].includes(k))u.searchParams.set(k,v);
- if(!o.fixture)u.searchParams.set('competition','vnl-men-2026');u.searchParams.set('ux','20260918-5');
+ if(!o.fixture)u.searchParams.set('competition','vnl-men-2026');u.searchParams.set('ux','20260918-6');
  await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('load timeout')),20000);f.onload=()=>{clearTimeout(timer);resolve();};f.src=u.href;});
  const doc=f.contentDocument,win=doc.defaultView;
  for(let n=0;n<100;n++){if(doc.body.dataset.kvlRenderState==='ready'&&doc.querySelector('.kvl-global-sidebar'))break;await pause(100);}await doc.fonts.ready;await pause(100);
@@ -33,6 +33,7 @@ async function inspect(o){
  if(o.view==='groups'&&(!doc.querySelector('[data-kvl-component="standings"]').textContent.includes('세트 득실비')||!doc.querySelector('[data-kvl-component="standings"]').textContent.includes('점수 득실비')))errors.push('ratio labels');
  if(!o.fixture&&o.view==='groups'&&(!doc.querySelector('#groups .kvl-team-flag-link')||!doc.querySelector('#groups .kvl-team-en-link')))errors.push('standings country click area');
  if(!o.fixture&&o.view==='knockout'&&(!doc.querySelector('#knockout .kvl-team-flag-link')||!doc.querySelector('#knockout .kvl-team-en-link')))errors.push('knockout country click area');
+ if(!o.fixture&&o.view==='knockout'&&d.finalRanking?.length&&![...doc.querySelectorAll('[data-kvl-component="final-top4"] .kvl1180-final-flag .kvl-team-flag-link')].length)errors.push('final top4 flag click area');
  const expectedTeam=d.participants.find(t=>t.code===o.team);
  if(o.view==='team'){
   const expected=d.matches.filter(m=>[m.home.code,m.away.code].includes(o.team));if(cards.length!==expected.length)errors.push('team match selection');
