@@ -14,8 +14,9 @@ function localTimeLabel(m){
  if(label)return label.includes('현지')?label:'현지 '+label;
  const value=m.time_local||m.localTime||m.timeLocal;
  if(typeof value!=='string'||!/^\d{1,2}:\d{2}(?::\d{2})?$/.test(value.trim()))return '';
- const date=m.date_local||m.dateLocal,zone=m.timezone_local||m.localTimezone||m.timezoneLocal;
- return [date&&date!==m.date?date:'','현지 '+value.trim(),zone||''].filter(Boolean).join(' ');
+ const date=m.date_local||m.dateLocal,zone=m.timezoneAbbr||m.timezone_abbr||m.timezone_local||m.localTimezone||m.timezoneLocal;
+ const country=m.venueCountryKo||m.localCountryKo||m.countryKo||m.country_ko||'';
+ return [date&&date!==m.date?date:'',country?country+' 현지':'현지',value.trim(),zone||''].filter(Boolean).join(' ');
 }
 function rosterTarget(d,ref){
  const t=participant(d,ref),mode=d.structure?.roster?.mode||'full';
