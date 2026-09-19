@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 5,
+  "schemaVersion": 6,
   "recentPolicy": {
     "limit": 3,
     "excludeFuture": true,
@@ -39,7 +39,11 @@
         "themeA": "#074827",
         "themeB": "#0e7b43",
         "accent": "#f2e8cf",
-        "eyebrowColor": "#e6c46c"
+        "eyebrowColor": "#e6c46c",
+        "image": "/assets/images/competitions/avc-continental-2026-hero-photo.webp?v=20260919-1",
+        "imagePositionPc": "72% center",
+        "imagePositionMobile": "center center",
+        "overlay": "linear-gradient(105deg,rgba(3,55,32,.76) 0%,rgba(5,91,50,.48) 48%,rgba(4,52,31,.10) 78%)"
       }
     },
     {
@@ -75,7 +79,11 @@
         "themeA": "#7f2f54",
         "themeB": "#c95683",
         "accent": "#f5dce6",
-        "eyebrowColor": "#f0c9da"
+        "eyebrowColor": "#f0c9da",
+        "image": "/assets/images/competitions/avc-continental-2026-hero-photo.webp?v=20260919-1",
+        "imagePositionPc": "72% center",
+        "imagePositionMobile": "center center",
+        "overlay": "linear-gradient(105deg,rgba(91,22,52,.78) 0%,rgba(166,61,106,.48) 48%,rgba(92,27,56,.10) 78%)"
       }
     },
     {
@@ -114,7 +122,8 @@
         "eyebrowColor": "#b9dcf7",
         "image": "/assets/images/competitions/vnl-men-2026-hero.webp?v=20260918-1",
         "imagePositionPc": "right center",
-        "imagePositionMobile": "center center"
+        "imagePositionMobile": "center center",
+        "overlay": "linear-gradient(105deg,rgba(3,27,51,.44) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%)"
       }
     }
   ]

@@ -25,6 +25,7 @@
     card.style.setProperty('--recent-b',c.themeB||'#0e7b43');
     card.style.setProperty('--recent-accent',c.accent||'#f2e8cf');
     card.style.setProperty('--recent-eyebrow',c.eyebrowColor||'#e6c46c');
+    card.style.setProperty('--recent-overlay',c.overlay||'linear-gradient(105deg,rgba(3,27,51,.44) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%)');
 
     if(c.image){
       card.classList.add('has-photo');
