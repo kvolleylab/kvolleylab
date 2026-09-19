@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" role="img" aria-label="Senior national team international volleyball hero">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#031a35"/>
+    <stop offset=".52" stop-color="#0a3768"/>
+    <stop offset="1" stop-color="#12588e"/>
+  </linearGradient>
+  <radialGradient id="glow" cx=".79" cy=".22" r=".62">
+    <stop offset="0" stop-color="#90cff7" stop-opacity=".48"/>
+    <stop offset=".5" stop-color="#4b9dd5" stop-opacity=".10"/>
+    <stop offset="1" stop-color="#061a31" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f9dc78"/>
+    <stop offset=".48" stop-color="#d8a928"/>
+    <stop offset="1" stop-color="#f8e8a9"/>
+  </linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="16"/></filter>
+</defs>
+<rect width="1600" height="520" fill="url(#bg)"/>
+<rect width="1600" height="520" fill="url(#glow)"/>
+<g opacity=".10" stroke="#d6ebfa" fill="none">
+  <ellipse cx="1190" cy="225" rx="300" ry="155" stroke-width="2"/>
+  <ellipse cx="1190" cy="225" rx="242" ry="155" stroke-width="1.5"/>
+  <ellipse cx="1190" cy="225" rx="165" ry="155" stroke-width="1.3"/>
+  <path d="M890 225h600M930 150h520M930 300h520" stroke-width="1.2"/>
+  <path d="M1190 70v310" stroke-width="1.4"/>
+</g>
+<g opacity=".12" fill="#d8edfb">
+  <path d="M1040 139l38-23 46 7 24 28 52 2 25 20 43 11 17 30-17 25-43 7-27 26-33 3-21 29-34-8-8-37-39-13-23-33 11-33 29-16z"/>
+  <path d="M1217 298l31 8 21 19-4 29-27 17-22-14-9-25z"/>
+  <path d="M970 260l27-12 20 17-5 25-28 8-20-15z"/>
+</g>
+<g opacity=".25" stroke="#d7ecfb" stroke-width="2">
+  <path d="M855 408h745"/>
+  <path d="M980 335h520"/>
+  <path d="M1045 270h410"/>
+  <path d="M855 408l190-138M1040 408l85-138M1230 408V270M1420 408l-82-138M1600 408l-145-138"/>
+</g>
+<g transform="translate(1395 125)">
+  <circle r="112" fill="url(#gold)"/>
+  <path d="M-96-56c50 2 91 19 124 55M-43-103c6 54 26 96 61 127M59-91c-42 29-70 69-83 116M104-24c-47 12-87 36-117 72M82 68C36 49 0 18-27-26M18 108c-8-48-28-88-61-123" fill="none" stroke="#0d4b83" stroke-width="19" stroke-linecap="round"/>
+  <circle r="112" fill="none" stroke="#fff3bd" stroke-width="3" opacity=".75"/>
+</g>
+<g opacity=".30" fill="#dff2ff" filter="url(#blur)">
+  <circle cx="980" cy="70" r="24"/><circle cx="1110" cy="58" r="20"/><circle cx="1240" cy="72" r="18"/><circle cx="1510" cy="66" r="27"/>
+</g>
+<rect width="850" height="520" fill="#011328" opacity=".37"/>
+</svg>
