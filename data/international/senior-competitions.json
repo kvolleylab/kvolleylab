@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "recentPolicy": {
     "limit": 3,
     "excludeFuture": true,
@@ -18,8 +18,19 @@
       "href": "international-competition-avc-men-continental-2026.html",
       "showInRecent": true,
       "hero": {
-        "mode": "gradient",
-        "gradient": "linear-gradient(112deg,#074827 0%,#086333 54%,#0e7b43 100%)",
+        "mode": "shared-b64",
+        "b64Chunks": [
+          "assets/images/competitions/avc-continental-2026-hero-photo-01.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-02.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-03.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-04.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-05.b64"
+        ],
+        "mimeType": "image/webp",
+        "desktopCardPosition": "72% center",
+        "mobileCardPosition": "center center",
+        "overlay": "linear-gradient(90deg,rgba(3,62,36,.90) 0%,rgba(6,100,55,.52) 55%,rgba(4,52,31,.16) 100%)",
+        "fallbackGradient": "linear-gradient(112deg,#074827 0%,#086333 54%,#0e7b43 100%)",
         "accent": "#f2e8cf",
         "eyebrow": "#e6c46c"
       }
@@ -36,8 +47,19 @@
       "href": "international-competition-avc-women-continental-2026.html",
       "showInRecent": true,
       "hero": {
-        "mode": "gradient",
-        "gradient": "linear-gradient(112deg,#7f2f54 0%,#a63d6a 54%,#c95683 100%)",
+        "mode": "shared-b64",
+        "b64Chunks": [
+          "assets/images/competitions/avc-continental-2026-hero-photo-01.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-02.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-03.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-04.b64",
+          "assets/images/competitions/avc-continental-2026-hero-photo-05.b64"
+        ],
+        "mimeType": "image/webp",
+        "desktopCardPosition": "72% center",
+        "mobileCardPosition": "center center",
+        "overlay": "linear-gradient(90deg,rgba(91,22,52,.91) 0%,rgba(166,61,106,.54) 55%,rgba(92,27,56,.16) 100%)",
+        "fallbackGradient": "linear-gradient(112deg,#7f2f54 0%,#a63d6a 54%,#c95683 100%)",
         "accent": "#f2e8cf",
         "eyebrow": "#f0c9da"
       }
@@ -58,8 +80,7 @@
         "config": "data/competitions/vnl-men-2026/config.json",
         "fallbackGradient": "linear-gradient(112deg,#061d3a 0%,#0b477b 54%,#1477b7 100%)",
         "accent": "#ffffff",
-        "eyebrow": "#b9dcf7",
-        "position": "center center"
+        "eyebrow": "#b9dcf7"
       }
     }
   ]

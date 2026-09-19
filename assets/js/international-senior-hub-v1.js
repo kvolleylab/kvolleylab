@@ -2,7 +2,7 @@
   const grid=document.getElementById('seniorRecentGrid');
   if(!grid)return;
 
-  const DATA_URL='data/international/senior-competitions.json?v=20260919-1';
+  const DATA_URL='data/international/senior-competitions.json?v=20260919-2';
   const pad=n=>String(n).padStart(2,'0');
   const now=new Date();
   const today=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
@@ -34,6 +34,7 @@
     card.style.setProperty('--recent-gradient',heroGradient(item));
     card.style.setProperty('--recent-accent',(item.hero&&item.hero.accent)||'#fff');
     card.style.setProperty('--recent-eyebrow',(item.hero&&item.hero.eyebrow)||'#d9e9f7');
+    card.style.setProperty('--recent-overlay',(item.hero&&item.hero.overlay)||'linear-gradient(90deg,rgba(2,19,39,.82) 0%,rgba(3,35,67,.48) 57%,rgba(3,28,53,.10) 100%)');
 
     const brand=document.createElement('span');
     brand.className='senior-featured-brand';
@@ -58,29 +59,75 @@
     return card;
   };
 
+  const setImages=(card,{desktopImage,mobileImage,desktopPosition,mobilePosition})=>{
+    if(!desktopImage&&!mobileImage)return;
+    const d=desktopImage||mobileImage;
+    const m=mobileImage||desktopImage;
+    card.style.setProperty('--recent-desktop-image','url("'+d+'")');
+    card.style.setProperty('--recent-mobile-image','url("'+m+'")');
+    card.style.setProperty('--recent-desktop-position',desktopPosition||'center center');
+    card.style.setProperty('--recent-mobile-position',mobilePosition||'center center');
+    card.classList.add('has-photo');
+  };
+
+  const loadSharedB64=async hero=>{
+    const parts=await Promise.all((hero.b64Chunks||[]).map(async path=>{
+      const res=await fetch(path,{cache:'force-cache'});
+      if(!res.ok)throw new Error('chunk');
+      return (await res.text()).replace(/\s+/g,'');
+    }));
+    return 'data:'+(hero.mimeType||'image/webp')+';base64,'+parts.join('');
+  };
+
   const setPhoto=async(card,hero)=>{
-    if(!hero||hero.mode!=='competition-config'||!hero.config)return;
+    if(!hero)return;
     try{
-      const configRes=await fetch(hero.config,{cache:'force-cache'});
-      if(!configRes.ok)throw new Error('config');
-      const config=await configRes.json();
-      const source=config.hero||{};
-      if(Array.isArray(source.b64Chunks)&&source.b64Chunks.length){
-        const parts=await Promise.all(source.b64Chunks.map(async path=>{
-          const res=await fetch(path,{cache:'force-cache'});
-          if(!res.ok)throw new Error('chunk');
-          return (await res.text()).replace(/\s+/g,'');
-        }));
-        const dataUrl='data:'+(source.mimeType||'image/webp')+';base64,'+parts.join('');
-        card.style.setProperty('--recent-image','url("'+dataUrl+'")');
-        card.style.setProperty('--recent-position',hero.position||source.position||'center center');
-        card.classList.add('has-photo');
+      if(hero.mode==='competition-config'&&hero.config){
+        const configRes=await fetch(hero.config,{cache:'force-cache'});
+        if(!configRes.ok)throw new Error('config');
+        const config=await configRes.json();
+        const source=config.hero||{};
+
+        // Recent cards intentionally invert the competition's responsive HERO sources:
+        // PC recent grid -> mobile HERO source, mobile recent list -> PC HERO source.
+        const desktopImage=source.mobileImage||source.pcImage;
+        const mobileImage=source.pcImage||source.mobileImage;
+
+        if(desktopImage||mobileImage){
+          setImages(card,{
+            desktopImage,
+            mobileImage,
+            desktopPosition:source.mobilePosition||source.position||'right center',
+            mobilePosition:source.position||source.mobilePosition||'center center'
+          });
+          return;
+        }
+
+        if(Array.isArray(source.b64Chunks)&&source.b64Chunks.length){
+          const parts=await Promise.all(source.b64Chunks.map(async path=>{
+            const res=await fetch(path,{cache:'force-cache'});
+            if(!res.ok)throw new Error('chunk');
+            return (await res.text()).replace(/\s+/g,'');
+          }));
+          const dataUrl='data:'+(source.mimeType||'image/webp')+';base64,'+parts.join('');
+          setImages(card,{
+            desktopImage:dataUrl,
+            mobileImage:dataUrl,
+            desktopPosition:source.mobilePosition||source.position||'right center',
+            mobilePosition:source.position||source.mobilePosition||'center center'
+          });
+        }
         return;
       }
-      if(source.pcImage){
-        card.style.setProperty('--recent-image','url("'+source.pcImage+'")');
-        card.style.setProperty('--recent-position',hero.position||source.position||'center center');
-        card.classList.add('has-photo');
+
+      if(hero.mode==='shared-b64'&&Array.isArray(hero.b64Chunks)&&hero.b64Chunks.length){
+        const dataUrl=await loadSharedB64(hero);
+        setImages(card,{
+          desktopImage:dataUrl,
+          mobileImage:dataUrl,
+          desktopPosition:hero.desktopCardPosition||'72% center',
+          mobilePosition:hero.mobileCardPosition||'center center'
+        });
       }
     }catch{}
   };
