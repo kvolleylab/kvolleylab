@@ -9,8 +9,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
   <link rel="stylesheet" href="assets/css/kvl-common-hero-v1.css?v=20260919-1">
-  <link rel="stylesheet" href="assets/css/international-senior-hub-v1.css?v=20260919-1">
+  <link rel="stylesheet" href="assets/css/international-senior-hub-v1.css?v=20260919-2">
   <script src="assets/js/unified-nav.js?v=20260919-menu-3" defer></script>
+  <script src="assets/js/international-senior-hub-v1.js?v=20260919-2" defer></script>
 </head>
 <body>
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -26,33 +27,11 @@
 
   <section class="senior-section" aria-labelledby="featuredTitle">
     <div class="senior-section-head">
-      <h2 id="featuredTitle">지금 볼 수 있는 대회</h2>
-      <p>현재 K-Volley Lab에서 바로 확인할 수 있는 대회입니다.</p>
+      <h2 id="featuredTitle">최근 대회</h2>
+      <p>진행 중·최근 종료 대회 중 최신 3개를 보여줍니다.</p>
     </div>
-    <div class="senior-featured-grid">
-      <a class="senior-featured-card is-vnl" href="competition-engine.html?competition=vnl-men-2026">
-        <span class="senior-featured-brand">VNL · MEN</span>
-        <h3>2026 VNL 남자부</h3>
-        <p class="date">2026.06.10 – 08.02</p>
-        <p class="place">예선 9개 개최지 · 파이널 중국 닝보</p>
-        <span class="senior-featured-action">대회 보기 <span aria-hidden="true">→</span></span>
-      </a>
-
-      <a class="senior-featured-card is-avc-men" href="international-competition-avc-men-continental-2026.html">
-        <span class="senior-featured-brand">AVC · MEN</span>
-        <h3>2026 AVC 남자 대륙선수권</h3>
-        <p class="date">2026.09.04 – 09.13</p>
-        <p class="place">일본 기타큐슈</p>
-        <span class="senior-featured-action">대회 보기 <span aria-hidden="true">→</span></span>
-      </a>
-
-      <a class="senior-featured-card is-avc-women" href="international-competition-avc-women-continental-2026.html">
-        <span class="senior-featured-brand">AVC · WOMEN</span>
-        <h3>2026 AVC 여자 대륙선수권</h3>
-        <p class="date">2026.08.21 – 08.30</p>
-        <p class="place">중국 톈진</p>
-        <span class="senior-featured-action">대회 보기 <span aria-hidden="true">→</span></span>
-      </a>
+    <div id="seniorRecentGrid" class="senior-featured-grid" aria-live="polite">
+      <div class="senior-recent-loading">최근 대회를 불러오는 중입니다.</div>
     </div>
   </section>
 
@@ -110,7 +89,7 @@
     </div>
 
     <div class="senior-hub-note">
-      현재 구축된 대회부터 연결했습니다. 올림픽·세계선수권·종합경기대회는 데이터와 시즌 페이지가 준비되는 순서대로 같은 구조 안에 추가합니다.
+      최근 대회 영역은 등록된 대회 날짜를 기준으로 자동 갱신됩니다. 미래 대회는 최근 대회에서 제외하고, 대회별 보기에서 시즌별로 확장합니다.
     </div>
   </section>
 </main>

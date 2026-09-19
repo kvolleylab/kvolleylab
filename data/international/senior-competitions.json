@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "recentPolicy": {
+    "limit": 3,
+    "excludeFuture": true,
+    "note": "진행 중 대회를 우선하고, 종료 대회는 종료일 최신순으로 표시합니다."
+  },
+  "competitions": [
+    {
+      "id": "avc-men-continental-2026",
+      "title": "2026 AVC 남자 대륙선수권",
+      "brand": "AVC · MEN",
+      "family": "continental",
+      "gender": "men",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-13",
+      "location": "일본 기타큐슈",
+      "href": "international-competition-avc-men-continental-2026.html",
+      "showInRecent": true,
+      "hero": {
+        "mode": "gradient",
+        "gradient": "linear-gradient(112deg,#074827 0%,#086333 54%,#0e7b43 100%)",
+        "accent": "#f2e8cf",
+        "eyebrow": "#e6c46c"
+      }
+    },
+    {
+      "id": "avc-women-continental-2026",
+      "title": "2026 AVC 여자 대륙선수권",
+      "brand": "AVC · WOMEN",
+      "family": "continental",
+      "gender": "women",
+      "startDate": "2026-08-21",
+      "endDate": "2026-08-30",
+      "location": "중국 톈진",
+      "href": "international-competition-avc-women-continental-2026.html",
+      "showInRecent": true,
+      "hero": {
+        "mode": "gradient",
+        "gradient": "linear-gradient(112deg,#7f2f54 0%,#a63d6a 54%,#c95683 100%)",
+        "accent": "#f2e8cf",
+        "eyebrow": "#f0c9da"
+      }
+    },
+    {
+      "id": "vnl-men-2026",
+      "title": "2026 VNL 남자부",
+      "brand": "VNL · MEN",
+      "family": "vnl",
+      "gender": "men",
+      "startDate": "2026-06-10",
+      "endDate": "2026-08-02",
+      "location": "예선 9개 개최지 · 파이널 중국 닝보",
+      "href": "competition-engine.html?competition=vnl-men-2026",
+      "showInRecent": true,
+      "hero": {
+        "mode": "competition-config",
+        "config": "data/competitions/vnl-men-2026/config.json",
+        "fallbackGradient": "linear-gradient(112deg,#061d3a 0%,#0b477b 54%,#1477b7 100%)",
+        "accent": "#ffffff",
+        "eyebrow": "#b9dcf7",
+        "position": "center center"
+      }
+    }
+  ]
+}
