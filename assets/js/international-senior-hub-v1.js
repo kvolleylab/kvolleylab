@@ -43,10 +43,13 @@
     try{
       const doc=frame.contentDocument;
       if(!doc)return;
-      const hero=doc.querySelector(item.preview?.heroSelector||'.kvl1180-hero');
-      if(!hero)throw new Error('hero not found');
 
-      const style=doc.createElement('style');
+      const selector=item.preview?.heroSelector||'.kvl1180-hero';
+      const attach=hero=>{
+        if(!hero||frame.dataset.previewAttached==='true')return;
+        frame.dataset.previewAttached='true';
+
+        const style=doc.createElement('style');
       style.setAttribute('data-kvl-recent-preview','true');
       style.textContent=[
         'html,body{margin:0!important;padding:0!important;background:transparent!important;overflow:hidden!important}',
@@ -72,8 +75,30 @@
 
       frame.contentWindow?.scrollTo(0,0);
       requestAnimationFrame(()=>requestAnimationFrame(apply));
-      setTimeout(apply,250);
-      setTimeout(apply,900);
+        setTimeout(apply,250);
+        setTimeout(apply,900);
+      };
+
+      const existing=doc.querySelector(selector);
+      if(existing){
+        attach(existing);
+        return;
+      }
+
+      const observer=new MutationObserver(()=>{
+        const hero=doc.querySelector(selector);
+        if(!hero)return;
+        observer.disconnect();
+        attach(hero);
+      });
+      observer.observe(doc.documentElement,{childList:true,subtree:true});
+
+      setTimeout(()=>{
+        observer.disconnect();
+        if(frame.dataset.previewAttached!=='true'){
+          frame.closest('.senior-recent-card')?.classList.add('is-preview-fallback');
+        }
+      },5000);
     }catch{
       frame.closest('.senior-recent-card')?.classList.add('is-preview-fallback');
     }
