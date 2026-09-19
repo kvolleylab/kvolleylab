@@ -54,13 +54,12 @@
     link('home','index.html',icon.home,'홈'),
     link('schedules',scheduleHref,icon.calendar,'경기일정'),
 
-    {type:'section',label:'한국 배구'},
+    {type:'divider'},
     link('vleague','v-league.html',icon.league,'프로 V-리그'),
     group('national',icon.flag,'국가대표팀',[
       link('national-home','national-team.html',null,'대표팀 홈'),
       link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀'),
-      link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀'),
-      link('national-olympic','la28-volleyball-qualification.html',null,'올림픽·세계랭킹')
+      link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀')
     ]),
     group('domestic',icon.domestic,'국내대회',[
       link('domestic-university','university-competitions.html',null,'대학대회'),
@@ -69,33 +68,29 @@
       link('domestic-pro','domestic-competitions.html?division=pro',null,'프로·실업'),
       link('domestic-comprehensive','national-sports-festival-2026.html',null,'종합대회')
     ]),
-
-    {type:'section',label:'세계 배구'},
     group('competition',icon.globe,'국제대회',[
       link('competition-senior','competition.html?division=national',null,'시니어 국가대표'),
       link('competition-university','competition.html?division=university',null,'국제 대학대회'),
       link('competition-club','competition.html?division=club',null,'국제 클럽대회')
     ]),
 
-    {type:'section',label:'데이터'},
+    {type:'divider'},
     group('players',icon.teams,'선수·팀',[
       link('players-list','players.html',null,'선수'),
       link('players-teams','teams.html',null,'팀'),
-      link('players-draft','draft-hub.html',null,'Draft Hub')
-    ]),
-    group('analysis',icon.analysis,'데이터·분석',[
+      link('players-draft','draft-hub.html',null,'Draft Hub'),
       link('analysis-compare','player-compare.html',null,'선수 비교'),
       link('analysis-cohort','player-cohort.html',null,'대표팀 세대추적'),
       link('analysis-records','records.html',null,'기록')
     ]),
 
-    {type:'section',label:'TOOLS'},
-    group('tools',icon.calculator,'도구·자료',[
+    {type:'divider'},
+    group('tools',icon.calculator,'TOOLS',[
       link('tools-simulator','simulator.html',null,'진출 계산기'),
       link('tools-pamphlet','pamphlet-archive.html',null,'팜플렛')
     ]),
 
-    {type:'section',label:'지원'},
+    {type:'divider'},
     link('request','https://forms.gle/MFNYhJX6Bq5zeNmp8',icon.request,'요청하기','external')
   ];
 
@@ -103,7 +98,6 @@
     if(item.key==='national-home')return active==='national'&&path==='national-team.html';
     if(item.key==='national-senior')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='senior';
     if(item.key==='national-age')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='age';
-    if(item.key==='national-olympic')return active==='national'&&['la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html'].includes(path);
 
     if(item.key==='domestic-university')return active==='domestic'&&(path==='university-competitions.html'||path==='university-competition.html'||path==='university-competition-danyang.html'||path==='university-team.html'||params.get('division')==='university');
     if(item.key==='domestic-uleague')return active==='domestic'&&universityLeaguePages.has(path);
@@ -136,10 +130,10 @@
   };
 
   const nav=items.map(item=>{
-    if(item.type==='section')return `<p class="kvl-global-section">${item.label}</p>`;
+    if(item.type==='divider')return '<div class="kvl-global-divider" aria-hidden="true"></div>';
     if(item.type==='link')return renderLink(item);
-    const open=active===item.key||item.children.some(isChildActive);
-    return `<div class="kvl-global-group ${open?'open':''}" data-group="${item.key}"><button class="kvl-global-group-toggle ${active===item.key?'active':''}" type="button" aria-expanded="${open}"><span class="kvl-global-icon">${item.svg}</span><span class="kvl-global-label">${item.label}</span><span class="kvl-global-chevron">${icon.chevron}</span></button><div class="kvl-global-submenu">${item.children.map(child=>renderLink(child,true)).join('')}</div></div>`;
+    const current=active===item.key||item.children.some(isChildActive);
+    return `<div class="kvl-global-group ${current?'open':''}" data-group="${item.key}"><button class="kvl-global-group-toggle ${current?'active':''}" type="button" aria-expanded="${current}"><span class="kvl-global-icon">${item.svg}</span><span class="kvl-global-label">${item.label}</span><span class="kvl-global-chevron">${icon.chevron}</span></button><div class="kvl-global-submenu">${item.children.map(child=>renderLink(child,true)).join('')}</div></div>`;
   }).join('');
 
   document.body.classList.add('kvl-sidebar-enabled');
