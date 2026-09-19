@@ -69,7 +69,7 @@
       link('domestic-comprehensive','national-sports-festival-2026.html',null,'종합대회')
     ]),
     group('competition',icon.globe,'국제대회',[
-      link('competition-senior','competition.html?division=national',null,'시니어 국가대표'),
+      link('competition-senior','international-competition-senior-national-team.html',null,'시니어 국가대표'),
       link('competition-university','competition.html?division=university',null,'국제 대학대회'),
       link('competition-club','competition.html?division=club',null,'국제 클럽대회')
     ]),
