@@ -1,0 +1,75 @@
+/* K-Volley Lab · Senior national team international hub v1 */
+.senior-hub-main{width:min(100%,1180px);margin:0 auto;padding:0 20px 72px}
+.senior-hub-main .kvl-common-hero{--kvl-common-hero-a:#031a35;--kvl-common-hero-b:#12588e;--kvl-common-hero-accent:#fff;--kvl-common-hero-image:url('/assets/images/competitions/senior-national-team-hub-hero.svg?v=20260919-1');--kvl-common-hero-image-mobile:url('/assets/images/competitions/senior-national-team-hub-hero.svg?v=20260919-1');--kvl-common-hero-position:center center;--kvl-common-hero-position-mobile:72% center}
+.senior-hub-main .kvl-common-hero-copy{max-width:680px}
+.senior-hub-main .kvl-common-hero-eyebrow{color:#9bc8ea}
+.senior-hub-main .kvl-common-hero-sub{color:#d9e9f7;font-weight:750}
+.senior-section{margin-top:24px}
+.senior-section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:12px}
+.senior-section-head h2{margin:0;color:#17365d;font-size:23px;letter-spacing:-.035em}
+.senior-section-head p{margin:0;color:#7a8796;font-size:12px;text-align:right}
+.senior-featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.senior-featured-card{position:relative;overflow:hidden;display:flex;min-height:230px;flex-direction:column;padding:22px;border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;text-decoration:none;box-shadow:0 7px 20px rgba(13,36,64,.08);isolation:isolate}
+.senior-featured-card::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(130deg,#09264f,#0f5b96)}
+.senior-featured-card::after{content:"";position:absolute;right:-42px;bottom:-64px;z-index:-1;width:210px;height:210px;border:1px solid rgba(255,255,255,.15);border-radius:50%;box-shadow:0 0 0 32px rgba(255,255,255,.035),0 0 0 67px rgba(255,255,255,.018)}
+.senior-featured-card.is-avc-men::before{background:linear-gradient(130deg,#073466,#0f6fae)}
+.senior-featured-card.is-avc-women::before{background:linear-gradient(130deg,#5a1730,#a52f54)}
+.senior-featured-card:hover{transform:translateY(-2px);box-shadow:0 13px 26px rgba(13,36,64,.14)}
+.senior-featured-brand{display:inline-flex;align-items:center;align-self:flex-start;min-height:30px;padding:0 10px;border:1px solid rgba(255,255,255,.22);border-radius:7px;background:rgba(255,255,255,.08);font-size:11px;font-weight:950;letter-spacing:.08em}
+.senior-featured-card h3{margin:23px 0 7px;font-size:23px;line-height:1.18;letter-spacing:-.035em}
+.senior-featured-card .date{margin:0;color:#e3edf6;font-size:13px;font-weight:800}
+.senior-featured-card .place{margin:7px 0 0;color:#c9ddeb;font-size:12px;font-weight:700}
+.senior-featured-action{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:auto;padding:9px 12px;border:1px solid rgba(255,255,255,.58);border-radius:8px;background:rgba(3,24,47,.18);font-size:12px;font-weight:900}
+.senior-category-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.senior-category-card{position:relative;display:flex;min-height:188px;flex-direction:column;padding:20px;border:1px solid #dfe6ed;border-radius:12px;background:#fff;color:#17365d;text-decoration:none;box-shadow:0 5px 16px rgba(30,61,90,.035)}
+.senior-category-card:nth-child(-n+3){grid-column:span 2}
+.senior-category-card:nth-child(n+4){grid-column:span 3}
+.senior-category-card.is-link:hover{border-color:#9abbd5;box-shadow:0 10px 24px rgba(23,54,93,.08);transform:translateY(-1px)}
+.senior-category-kicker{color:#6d7f91;font-size:10px;font-weight:900;letter-spacing:.09em}
+.senior-category-card h3{margin:9px 0 4px;font-size:20px;letter-spacing:-.035em}
+.senior-category-card .en{margin:0;color:#748397;font-size:11px;font-weight:800;line-height:1.35}
+.senior-category-card .detail{margin:13px 0 0;color:#586b7f;font-size:12px;line-height:1.55}
+.senior-category-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:16px;color:#1769d1;font-size:12px;font-weight:900}
+.senior-category-card.is-pending{background:#fafbfc}
+.senior-category-card.is-pending .senior-category-foot{color:#9aa6b2}
+.senior-category-card.is-pending{cursor:default}
+.senior-category-symbol{display:grid;place-items:center;width:42px;height:42px;border:1px solid #e2e8ef;border-radius:10px;background:#f7f9fc;color:#174f82;font-size:12px;font-weight:1000;letter-spacing:.04em}
+.senior-category-card.is-continental .senior-category-symbol{color:#0c7d74}
+.senior-category-card.is-multisport .senior-category-symbol{color:#7b55c7}
+.senior-hub-note{margin-top:18px;padding:12px 14px;border:1px solid #dfe7ee;border-radius:10px;background:#f8fbfd;color:#6f7f8f;font-size:11px;line-height:1.55}
+@media(max-width:900px){
+  .senior-featured-grid{grid-template-columns:1fr}
+  .senior-featured-card{min-height:178px}
+  .senior-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .senior-category-card,.senior-category-card:nth-child(-n+3),.senior-category-card:nth-child(n+4){grid-column:span 1}
+  .senior-category-card:last-child{grid-column:1/-1}
+}
+@media(max-width:680px){
+  .senior-hub-main{padding:0 12px 54px}
+  .senior-hub-main .kvl-common-hero{min-height:220px}
+  .senior-hub-main .kvl-common-hero h1{max-width:260px;font-size:26px!important;line-height:1.12!important}
+  .senior-hub-main .kvl-common-hero-sub{max-width:250px;font-size:11px}
+  .senior-section{margin-top:20px}
+  .senior-section-head{align-items:center;margin-bottom:10px}
+  .senior-section-head h2{font-size:20px}
+  .senior-section-head p{font-size:10px}
+  .senior-featured-grid{gap:9px}
+  .senior-featured-card{min-height:154px;padding:17px}
+  .senior-featured-card h3{margin:15px 0 5px;font-size:19px}
+  .senior-featured-card .date{font-size:11px}
+  .senior-featured-card .place{font-size:10px}
+  .senior-featured-action{padding:7px 10px;font-size:10px}
+  .senior-featured-brand{min-height:25px;font-size:9px}
+  .senior-category-grid{gap:8px}
+  .senior-category-card{min-height:154px;padding:15px}
+  .senior-category-card h3{font-size:16px}
+  .senior-category-card .en{font-size:9px}
+  .senior-category-card .detail{margin-top:9px;font-size:10px}
+  .senior-category-foot{padding-top:12px;font-size:10px}
+  .senior-category-symbol{width:36px;height:36px;border-radius:8px;font-size:10px}
+}
+@media(max-width:390px){
+  .senior-category-grid{grid-template-columns:1fr}
+  .senior-category-card,.senior-category-card:last-child{grid-column:1}
+  .senior-category-card{min-height:138px}
+}
