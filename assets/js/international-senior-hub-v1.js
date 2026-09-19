@@ -2,11 +2,10 @@
   const grid=document.getElementById('seniorRecentGrid');
   if(!grid)return;
 
-  const DATA_URL='data/international/senior-competitions.json?v=20260919-4';
+  const DATA_URL='data/international/senior-competitions.json?v=20260919-5';
   const pad=n=>String(n).padStart(2,'0');
   const now=new Date();
   const today=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
-  const DESKTOP_SOURCE_WIDTH=1180;
 
   const recentSort=(a,b)=>{
     const aActive=a.startDate<=today&&today<=a.endDate;
@@ -16,115 +15,73 @@
     return b.endDate.localeCompare(a.endDate);
   };
 
-  const resizePreview=frame=>{
-    const shell=frame.parentElement;
-    if(!shell)return;
-    const heroHeight=Number(frame.dataset.heroHeight)||218;
-    const mobileHub=window.matchMedia('(max-width:900px)').matches;
-
-    if(mobileHub){
-      const available=shell.clientWidth||1;
-      const scale=Math.min(1,available/DESKTOP_SOURCE_WIDTH);
-      frame.style.width=DESKTOP_SOURCE_WIDTH+'px';
-      frame.style.height=heroHeight+'px';
-      frame.style.transform='scale('+scale+')';
-      shell.style.height=Math.ceil(heroHeight*scale)+'px';
-      shell.dataset.previewMode='desktop-source';
-    }else{
-      frame.style.width='100%';
-      frame.style.height=heroHeight+'px';
-      frame.style.transform='none';
-      shell.style.height=heroHeight+'px';
-      shell.dataset.previewMode='mobile-source';
-    }
-  };
-
-  const injectPreviewMode=(frame,item)=>{
-    try{
-      const doc=frame.contentDocument;
-      if(!doc)return;
-
-      const selector=item.preview?.heroSelector||'.kvl1180-hero';
-      const attach=hero=>{
-        if(!hero||frame.dataset.previewAttached==='true')return;
-        frame.dataset.previewAttached='true';
-
-        const style=doc.createElement('style');
-      style.setAttribute('data-kvl-recent-preview','true');
-      style.textContent=[
-        'html,body{margin:0!important;padding:0!important;background:transparent!important;overflow:hidden!important}',
-        'body::before,.site-header,.site-footer,.kvl1180-controlbar{display:none!important}',
-        '.kvl1180-main{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}',
-        '.kvl1180-hero{margin:0!important;border-radius:0!important;box-shadow:none!important}'
-      ].join('');
-      doc.head.appendChild(style);
-
-      const main=hero.closest('.kvl1180-main')||hero.parentElement;
-      if(main){
-        [...main.children].forEach(el=>{
-          if(el!==hero)el.style.display='none';
-        });
-      }
-
-      const apply=()=>{
-        const rect=hero.getBoundingClientRect();
-        const h=Math.max(1,Math.ceil(rect.height));
-        frame.dataset.heroHeight=String(h);
-        resizePreview(frame);
-      };
-
-      frame.contentWindow?.scrollTo(0,0);
-      requestAnimationFrame(()=>requestAnimationFrame(apply));
-        setTimeout(apply,250);
-        setTimeout(apply,900);
-      };
-
-      const existing=doc.querySelector(selector);
-      if(existing){
-        attach(existing);
-        return;
-      }
-
-      const observer=new MutationObserver(()=>{
-        const hero=doc.querySelector(selector);
-        if(!hero)return;
-        observer.disconnect();
-        attach(hero);
-      });
-      observer.observe(doc.documentElement,{childList:true,subtree:true});
-
-      setTimeout(()=>{
-        observer.disconnect();
-        if(frame.dataset.previewAttached!=='true'){
-          frame.closest('.senior-recent-card')?.classList.add('is-preview-fallback');
-        }
-      },5000);
-    }catch{
-      frame.closest('.senior-recent-card')?.classList.add('is-preview-fallback');
-    }
-  };
-
-  const renderPreview=item=>{
+  const renderCard=item=>{
+    const c=item.card||{};
     const card=document.createElement('a');
     card.className='senior-recent-card';
     card.href=item.href;
     card.dataset.competition=item.id;
-    card.setAttribute('aria-label',(item.title||'국제대회')+' 페이지 열기');
+    card.style.setProperty('--recent-a',c.themeA||'#074827');
+    card.style.setProperty('--recent-b',c.themeB||'#0e7b43');
+    card.style.setProperty('--recent-accent',c.accent||'#f2e8cf');
+    card.style.setProperty('--recent-eyebrow',c.eyebrowColor||'#e6c46c');
 
-    const shell=document.createElement('div');
-    shell.className='senior-recent-preview-shell';
+    if(c.image){
+      card.classList.add('has-photo');
+      card.style.setProperty('--recent-image','url("'+c.image+'")');
+      card.style.setProperty('--recent-image-pc-pos',c.imagePositionPc||'right center');
+      card.style.setProperty('--recent-image-mobile-pos',c.imagePositionMobile||'center center');
+    }
 
-    const frame=document.createElement('iframe');
-    frame.className='senior-recent-preview-frame';
-    frame.src=item.preview?.url||item.href;
-    frame.title=(item.title||'국제대회')+' 메인카드 미리보기';
-    frame.loading='eager';
-    frame.tabIndex=-1;
-    frame.setAttribute('aria-hidden','true');
+    const hero=document.createElement('div');
+    hero.className='senior-recent-hero';
 
-    frame.addEventListener('load',()=>injectPreviewMode(frame,item));
-    shell.appendChild(frame);
-    card.appendChild(shell);
+    const copy=document.createElement('div');
+    copy.className='senior-recent-copy';
+
+    const eyebrow=document.createElement('p');
+    eyebrow.className='senior-recent-eyebrow';
+    eyebrow.textContent=c.eyebrow||item.brand||'INTERNATIONAL COMPETITION';
+
+    const title=document.createElement('h3');
+    title.textContent=c.title||item.title||'국제대회';
+
+    const sub=document.createElement('p');
+    sub.className='senior-recent-sub';
+    sub.textContent=c.subtitle||'';
+
+    const meta=document.createElement('div');
+    meta.className='senior-recent-meta';
+
+    const date=document.createElement('div');
+    date.className='senior-recent-meta-row';
+    date.innerHTML='<span class="senior-recent-icon" aria-hidden="true">▣</span><span></span>';
+    date.lastElementChild.textContent=c.dateLabel||'';
+
+    const place=document.createElement('div');
+    place.className='senior-recent-meta-row';
+    place.innerHTML='<span class="senior-recent-icon" aria-hidden="true">●</span><span></span>';
+    place.lastElementChild.textContent=c.locationLabel||item.location||'';
+
+    meta.append(date,place);
+    copy.append(eyebrow,title,sub,meta);
+
+    const status=document.createElement('div');
+    status.className='senior-recent-status';
+
+    [c.status,c.teamCount].filter(Boolean).forEach(value=>{
+      const pill=document.createElement('span');
+      pill.textContent=value;
+      status.appendChild(pill);
+    });
+
+    const accent=document.createElement('span');
+    accent.className='is-accent';
+    accent.textContent=c.accentStatus||'대회 보기';
+    status.appendChild(accent);
+
+    hero.append(copy,status);
+    card.appendChild(hero);
     return card;
   };
 
@@ -145,15 +102,7 @@
 
       if(!items.length){showError();return}
       grid.innerHTML='';
-      items.forEach(item=>grid.appendChild(renderPreview(item)));
+      items.forEach(item=>grid.appendChild(renderCard(item)));
     })
     .catch(showError);
-
-  let resizeTimer=0;
-  window.addEventListener('resize',()=>{
-    clearTimeout(resizeTimer);
-    resizeTimer=setTimeout(()=>{
-      grid.querySelectorAll('.senior-recent-preview-frame').forEach(resizePreview);
-    },80);
-  },{passive:true});
 })();

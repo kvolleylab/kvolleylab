@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "recentPolicy": {
     "limit": 3,
     "excludeFuture": true,
@@ -27,9 +27,19 @@
         "eyebrow": "#e6c46c",
         "border": "rgba(9,67,39,.35)"
       },
-      "preview": {
-        "url": "international-competition-avc-men-continental-2026.html",
-        "heroSelector": ".kvl1180-hero"
+      "card": {
+        "eyebrow": "INTERNATIONAL COMPETITION · MEN",
+        "title": "AVC 남자 대륙선수권 2026",
+        "subtitle": "AVC Volleyball Men's Continental Championship 2026",
+        "dateLabel": "2026-09-04(금) ~ 2026-09-13(일)",
+        "locationLabel": "일본 후쿠오카현 / 기타큐슈 · 기타큐슈시 종합체육관",
+        "status": "대회 종료",
+        "teamCount": "12개국",
+        "accentStatus": "우승 일본 · LA28 직행",
+        "themeA": "#074827",
+        "themeB": "#0e7b43",
+        "accent": "#f2e8cf",
+        "eyebrowColor": "#e6c46c"
       }
     },
     {
@@ -53,9 +63,19 @@
         "eyebrow": "#f0c9da",
         "border": "rgba(111,36,72,.34)"
       },
-      "preview": {
-        "url": "international-competition-avc-women-continental-2026.html",
-        "heroSelector": ".kvl1180-hero"
+      "card": {
+        "eyebrow": "INTERNATIONAL COMPETITION · WOMEN",
+        "title": "AVC 여자 대륙선수권 2026",
+        "subtitle": "AVC Volleyball Women's Continental Championship 2026",
+        "dateLabel": "2026-08-21(금) ~ 2026-08-30(일)",
+        "locationLabel": "중국 톈진 · 톈진 올림픽 센터 체육관",
+        "status": "대회 종료",
+        "teamCount": "12개국",
+        "accentStatus": "우승 태국 · LA28 직행",
+        "themeA": "#7f2f54",
+        "themeB": "#c95683",
+        "accent": "#f5dce6",
+        "eyebrowColor": "#f0c9da"
       }
     },
     {
@@ -79,9 +99,22 @@
         "eyebrow": "#b9dcf7",
         "border": "rgba(4,46,83,.34)"
       },
-      "preview": {
-        "url": "competition-engine.html?competition=vnl-men-2026",
-        "heroSelector": ".kvl1180-hero"
+      "card": {
+        "eyebrow": "INTERNATIONAL COMPETITION · MEN",
+        "title": "2026 VNL 남자부",
+        "subtitle": "Volleyball Nations League 2026 · Men",
+        "dateLabel": "2026-06-10 ~ 2026-08-02",
+        "locationLabel": "예선 9개 개최지 · 파이널 중국 닝보",
+        "status": "대회 종료",
+        "teamCount": "18개국",
+        "accentStatus": "폴란드 우승 · 파이널 종료",
+        "themeA": "#041d3a",
+        "themeB": "#176baa",
+        "accent": "#ffffff",
+        "eyebrowColor": "#b9dcf7",
+        "image": "/assets/images/competitions/vnl-men-2026-hero.webp?v=20260918-1",
+        "imagePositionPc": "right center",
+        "imagePositionMobile": "center center"
       }
     }
   ]

@@ -9,13 +9,22 @@
 .senior-section-head h2{margin:0;color:#17365d;font-size:23px;letter-spacing:-.035em}
 .senior-section-head p{margin:0;color:#7a8796;font-size:12px;text-align:right}
 
-/* Recent competitions: the actual live competition HERO, cropped from the source page. */
-.senior-featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
-.senior-recent-card{display:block;min-width:0;overflow:hidden;border-radius:12px;background:#eef3f7;color:inherit;text-decoration:none;box-shadow:0 7px 20px rgba(13,36,64,.08);transition:transform .16s ease,box-shadow .16s ease}
-.senior-recent-card:hover{transform:translateY(-2px);box-shadow:0 13px 28px rgba(13,36,64,.14)}
-.senior-recent-preview-shell{position:relative;width:100%;height:272px;overflow:hidden;border-radius:12px;background:linear-gradient(135deg,#0b3158,#0f6b8f)}
-.senior-recent-preview-frame{display:block;width:100%;height:272px;border:0;pointer-events:none;transform-origin:top left;background:transparent}
-.senior-recent-card.is-preview-fallback .senior-recent-preview-shell::after{content:"대회 메인카드 불러오는 중";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:900}
+/* Recent competitions: HERO cards only. No tabs, menus or embedded pages. */
+.senior-featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.senior-recent-card{--recent-a:#074827;--recent-b:#0e7b43;--recent-accent:#f2e8cf;--recent-eyebrow:#e6c46c;display:block;min-width:0;color:#fff;text-decoration:none}
+.senior-recent-hero{position:relative;overflow:hidden;display:flex;height:260px;flex-direction:column;align-items:flex-start;gap:12px;padding:24px 18px 20px;border:1px solid rgba(9,67,39,.35);border-radius:12px;background:linear-gradient(112deg,var(--recent-a) 0%,var(--recent-b) 100%);box-shadow:0 9px 24px rgba(15,61,46,.08);transition:transform .16s ease,box-shadow .16s ease}
+.senior-recent-card.has-photo .senior-recent-hero{background-image:linear-gradient(105deg,rgba(3,27,51,.44) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%),var(--recent-image),linear-gradient(112deg,var(--recent-a),var(--recent-b));background-size:cover;background-position:center,var(--recent-image-pc-pos,right center),center}
+.senior-recent-card:hover .senior-recent-hero{transform:translateY(-2px);box-shadow:0 13px 28px rgba(13,36,64,.14)}
+.senior-recent-copy{position:relative;z-index:1;width:100%;min-width:0}
+.senior-recent-eyebrow{margin:0 0 8px;color:var(--recent-eyebrow);font-size:9px;font-weight:950;letter-spacing:.11em}
+.senior-recent-hero h3{margin:0;color:var(--recent-accent);font-size:21px;font-weight:950;line-height:1.14;letter-spacing:-.045em;word-break:keep-all}
+.senior-recent-sub{margin:6px 0 0;color:var(--recent-accent);font-size:10px;font-weight:800;line-height:1.35}
+.senior-recent-meta{display:grid;gap:5px;margin-top:13px}
+.senior-recent-meta-row{display:grid;grid-template-columns:14px minmax(0,1fr);gap:7px;align-items:start;color:#fff;font-size:10px;font-weight:760;line-height:1.45}
+.senior-recent-icon{display:block;color:rgba(255,255,255,.74);font-size:8px;line-height:1.75;text-align:center}
+.senior-recent-status{position:absolute;right:18px;bottom:19px;z-index:2;display:flex;justify-content:flex-end;gap:5px}
+.senior-recent-status span{display:none;padding:6px 9px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);font-size:9px;font-weight:900;white-space:nowrap}
+.senior-recent-status .is-accent{display:inline-flex;min-height:28px;align-items:center;border-color:rgba(230,196,108,.58);background:rgba(230,196,108,.13);color:#f6e7b5}
 .senior-recent-loading{grid-column:1/-1;display:grid;place-items:center;min-height:150px;border:1px dashed #d9e3eb;border-radius:12px;background:#fbfcfd;color:#8492a1;font-size:12px;font-weight:800}
 
 /* Categories */
@@ -36,11 +45,18 @@
 .senior-category-card.is-multisport .senior-category-symbol{color:#7b55c7}
 .senior-hub-note{margin-top:18px;padding:12px 14px;border:1px solid #dfe7ee;border-radius:10px;background:#f8fbfd;color:#6f7f8f;font-size:11px;line-height:1.55}
 
-/* Mobile hub: source page is rendered at PC width and scaled down, so the original desktop HERO is used. */
+/* Mobile: same card only, desktop-style horizontal HERO composition. */
 @media(max-width:900px){
   .senior-featured-grid{grid-template-columns:1fr;gap:10px}
-  .senior-recent-preview-shell{height:218px}
-  .senior-recent-preview-frame{width:1180px;height:218px}
+  .senior-recent-hero{height:184px;flex-direction:row;align-items:center;justify-content:space-between;gap:14px;padding:24px 22px}
+  .senior-recent-card.has-photo .senior-recent-hero{background-image:linear-gradient(90deg,rgba(3,27,51,.22) 0%,rgba(3,27,51,.10) 42%,rgba(3,27,51,.02) 68%,rgba(3,27,51,0) 82%),var(--recent-image),linear-gradient(112deg,var(--recent-a),var(--recent-b));background-position:center,var(--recent-image-mobile-pos,center center),center;background-size:cover}
+  .senior-recent-copy{width:min(72%,650px)}
+  .senior-recent-hero h3{font-size:clamp(19px,4.7vw,28px)}
+  .senior-recent-sub{font-size:10px}
+  .senior-recent-meta-row{font-size:9.5px}
+  .senior-recent-status{position:relative;right:auto;bottom:auto;max-width:30%;align-self:flex-end;flex-wrap:wrap}
+  .senior-recent-status span{display:inline-flex;font-size:8px;padding:5px 7px}
+  .senior-recent-status .is-accent{min-height:0}
   .senior-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .senior-category-card,.senior-category-card:nth-child(-n+3),.senior-category-card:nth-child(n+4){grid-column:span 1}
   .senior-category-card:last-child{grid-column:1/-1}
@@ -54,6 +70,13 @@
   .senior-section-head{align-items:center;margin-bottom:10px}
   .senior-section-head h2{font-size:20px}
   .senior-section-head p{font-size:10px}
+  .senior-recent-hero{height:170px;padding:19px 16px;gap:10px}
+  .senior-recent-copy{width:72%}
+  .senior-recent-hero h3{font-size:18px}
+  .senior-recent-sub{font-size:8.5px}
+  .senior-recent-meta-row{grid-template-columns:11px minmax(0,1fr);gap:5px;font-size:8.5px}
+  .senior-recent-status{max-width:28%;gap:4px}
+  .senior-recent-status span{font-size:7px;padding:4px 5px}
   .senior-category-grid{gap:8px}
   .senior-category-card{min-height:154px;padding:15px}
   .senior-category-card h3{font-size:16px}
@@ -63,6 +86,12 @@
   .senior-category-symbol{width:36px;height:36px;border-radius:8px;font-size:10px}
 }
 @media(max-width:390px){
+  .senior-recent-hero{height:164px;padding:16px 13px}
+  .senior-recent-copy{width:74%}
+  .senior-recent-hero h3{font-size:16px}
+  .senior-recent-sub{display:none}
+  .senior-recent-status{max-width:25%}
+  .senior-recent-status span:not(.is-accent){display:none}
   .senior-category-grid{grid-template-columns:1fr}
   .senior-category-card,.senior-category-card:last-child{grid-column:1}
   .senior-category-card{min-height:138px}
