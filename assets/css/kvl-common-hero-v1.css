@@ -1,0 +1,70 @@
+/* K-Volley Lab · Common top hero v1
+ * Shared top-card geometry for hub and competition landing pages.
+ * Change only content/theme variables per page; keep structure common.
+ */
+.kvl-common-hero{
+  --kvl-common-hero-a:#074827;
+  --kvl-common-hero-b:#0e7b43;
+  --kvl-common-hero-accent:#f6e7b5;
+  --kvl-common-hero-meta:#edf7f0;
+  --kvl-common-hero-image:none;
+  --kvl-common-hero-image-mobile:var(--kvl-common-hero-image);
+  --kvl-common-hero-position:center center;
+  --kvl-common-hero-position-mobile:right center;
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:clamp(16px,2vw,28px);
+  min-height:clamp(184px,17vw,218px);
+  padding:clamp(25px,2.4vw,34px) clamp(20px,2.4vw,32px);
+  border:1px solid color-mix(in srgb,var(--kvl-common-hero-a) 40%,transparent);
+  border-top:0;
+  border-radius:0;
+  background:
+    linear-gradient(112deg,var(--kvl-common-hero-a) 0%,color-mix(in srgb,var(--kvl-common-hero-a) 52%,var(--kvl-common-hero-b)) 54%,var(--kvl-common-hero-b) 100%);
+  color:#fff;
+  box-shadow:0 9px 24px rgba(15,61,46,.08);
+}
+.kvl-common-hero[data-hero-mode="photo"]{
+  background-image:
+    linear-gradient(90deg,color-mix(in srgb,var(--kvl-common-hero-a) 62%,transparent) 0%,color-mix(in srgb,var(--kvl-common-hero-a) 30%,transparent) 48%,transparent 82%),
+    var(--kvl-common-hero-image);
+  background-size:cover;
+  background-position:var(--kvl-common-hero-position);
+}
+.kvl-common-hero-copy,.kvl-common-hero-status{position:relative;z-index:1}
+.kvl-common-hero-copy{min-width:0;max-width:min(760px,72%)}
+.kvl-common-hero-eyebrow{margin:0 0 8px;color:#e6c46c;font-size:clamp(9px,.78vw,11px);font-weight:950;letter-spacing:.12em}
+.kvl-common-hero h1{margin:0;color:var(--kvl-common-hero-accent)!important;font-size:clamp(30px,2.45vw,38px)!important;line-height:1.14!important;letter-spacing:-.035em;overflow-wrap:anywhere}
+.kvl-common-hero-sub{margin:8px 0 0;color:var(--kvl-common-hero-accent);font-size:clamp(12px,1vw,15px);font-weight:800;line-height:1.45;overflow-wrap:anywhere}
+.kvl-common-hero-meta{display:grid;gap:clamp(5px,.55vw,7px);margin-top:clamp(13px,1.3vw,18px)}
+.kvl-common-hero-meta-row{display:flex;align-items:center;gap:clamp(7px,.7vw,9px);min-width:0;color:var(--kvl-common-hero-meta);font-size:clamp(11px,.95vw,14px);font-weight:650;line-height:1.45}
+.kvl-common-hero-icon{display:block;flex:0 0 auto;width:clamp(15px,1.25vw,18px);height:clamp(15px,1.25vw,18px);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.kvl-common-hero-status{display:flex;max-width:420px;flex-wrap:wrap;justify-content:flex-end;gap:clamp(5px,.55vw,8px);align-self:flex-end;margin-bottom:2px}
+.kvl-common-hero-status span{padding:clamp(6px,.55vw,8px) clamp(8px,.8vw,11px);border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(255,255,255,.08);font-size:clamp(9px,.72vw,11px);font-weight:900;white-space:nowrap}
+.kvl-common-hero-status .is-accent{border-color:rgba(230,196,108,.58);background:rgba(230,196,108,.13);color:#f6e7b5}
+
+@media(max-width:900px){
+  .kvl-common-hero{align-items:flex-start;flex-direction:column;padding:25px 18px}
+  .kvl-common-hero-copy{max-width:100%}
+  .kvl-common-hero h1{font-size:27px!important}
+  .kvl-common-hero-status{justify-content:flex-start;align-self:flex-start}
+}
+@media(max-width:680px){
+  .kvl-common-hero{min-height:0;padding:24px 18px}
+  .kvl-common-hero[data-hero-mode="photo"]{
+    background-image:
+      linear-gradient(105deg,color-mix(in srgb,var(--kvl-common-hero-a) 72%,transparent) 0%,color-mix(in srgb,var(--kvl-common-hero-a) 40%,transparent) 52%,transparent 82%),
+      var(--kvl-common-hero-image-mobile);
+    background-size:auto 100%;
+    background-position:var(--kvl-common-hero-position-mobile);
+  }
+  .kvl-common-hero h1{font-size:27px!important;line-height:1.2!important}
+  .kvl-common-hero-sub{font-size:12px;line-height:1.4}
+  .kvl-common-hero-meta{margin-top:14px}
+  .kvl-common-hero-meta-row{align-items:flex-start;font-size:12px}
+  .kvl-common-hero-status{gap:6px;margin-top:2px}
+  .kvl-common-hero-status span{padding:6px 8px;font-size:9px}
+}
