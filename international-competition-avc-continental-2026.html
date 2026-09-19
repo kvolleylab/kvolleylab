@@ -29,7 +29,7 @@
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
 <main class="hub-main">
   <section class="kvl-common-hero" data-hero-mode="photo" aria-labelledby="pageTitle"
-    style="--kvl-common-hero-a:#041d3a;--kvl-common-hero-b:#176baa;--kvl-common-hero-accent:#f6e7b5;--kvl-common-hero-image:url('/assets/images/competitions/avc-continental-2026-hero.svg?v=20260919-1');--kvl-common-hero-image-mobile:url('/assets/images/competitions/avc-continental-2026-hero.svg?v=20260919-1');--kvl-common-hero-position:center center;--kvl-common-hero-position-mobile:72% center">
+    style="--kvl-common-hero-a:#041d3a;--kvl-common-hero-b:#176baa;--kvl-common-hero-accent:#f6e7b5;--kvl-common-hero-image:none;--kvl-common-hero-image-mobile:none;--kvl-common-hero-position:center center;--kvl-common-hero-position-mobile:72% center">
     <div class="kvl-common-hero-copy">
       <p class="kvl-common-hero-eyebrow">INTERNATIONAL COMPETITION · AVC</p>
       <h1 id="pageTitle">AVC 대륙선수권 2026</h1>
@@ -45,6 +45,21 @@
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 <script>
 (()=>{
+  const hero=document.querySelector('.kvl-common-hero');
+  const heroChunks=[1,2,3,4,5].map(i=>`assets/images/competitions/avc-continental-2026-hero-photo-0${i}.b64?v=20260919-photo-1`);
+  if(hero){
+    Promise.all(heroChunks.map(async url=>{
+      const res=await fetch(url,{cache:'force-cache'});
+      if(!res.ok)throw new Error(`hero asset ${res.status}`);
+      return (await res.text()).replace(/\\s+/g,'');
+    })).then(parts=>{
+      const dataUrl=`data:image/webp;base64,${parts.join('')}`;
+      hero.style.setProperty('--kvl-common-hero-image',`url("${dataUrl}")`);
+      hero.style.setProperty('--kvl-common-hero-image-mobile',`url("${dataUrl}")`);
+      hero.dataset.heroReady='true';
+    }).catch(()=>{hero.dataset.heroReady='fallback';});
+  }
+
   const go=card=>{const href=card?.dataset?.href;if(href)location.href=href};
   document.addEventListener('click',event=>{const card=event.target.closest('.division-card[data-href]');if(!card||event.target.closest('a'))return;go(card)});
   document.addEventListener('keydown',event=>{const card=event.target.closest('.division-card[data-href]');if(!card||event.target.closest('a')||(event.key!=='Enter'&&event.key!==' '))return;event.preventDefault();go(card)});
