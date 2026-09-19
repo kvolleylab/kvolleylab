@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" role="img" aria-label="AVC continental volleyball hero background">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#031c38"/>
+      <stop offset=".48" stop-color="#0b3d70"/>
+      <stop offset="1" stop-color="#2c78b7"/>
+    </linearGradient>
+    <radialGradient id="light" cx=".78" cy=".25" r=".65">
+      <stop offset="0" stop-color="#cce8ff" stop-opacity=".45"/>
+      <stop offset=".45" stop-color="#76b8ed" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#0a2b51" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="court" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7fb9e6" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#061b35" stop-opacity=".02"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+  </defs>
+  <rect width="1600" height="520" fill="url(#bg)"/>
+  <rect width="1600" height="520" fill="url(#light)"/>
+  <ellipse cx="1220" cy="430" rx="520" ry="150" fill="#04172d" opacity=".28"/>
+  <g opacity=".14" stroke="#d7eeff" fill="none">
+    <path d="M885 104c115-74 245-82 365-33 88 36 150 103 210 196" stroke-width="2"/>
+    <path d="M830 150c137-92 306-101 457-42 93 36 166 100 237 187" stroke-width="1.5"/>
+    <path d="M798 206c163-88 349-85 514-15 82 35 154 86 219 154" stroke-width="1"/>
+    <path d="M1040 52c-35 69-52 151-46 242 4 73 23 140 57 200" stroke-width="1.2"/>
+    <path d="M1190 34c-49 77-76 164-78 260-1 69 11 134 38 195" stroke-width="1.2"/>
+    <path d="M1345 55c-55 73-87 156-96 249-6 61 0 117 18 171" stroke-width="1"/>
+  </g>
+  <g opacity=".10" fill="#dceeff">
+    <path d="M1180 112l38-22 44 8 24 26 52 2 24 22 41 10 18 28-14 26-45 7-27 27-33 4-19 27-31-7-9-37-40-12-20-34 8-31 29-19z"/>
+    <path d="M1350 270l31 7 20 19-2 28-28 18-22-13-11-27z"/>
+    <path d="M1112 233l24-10 19 16-4 22-26 9-19-14z"/>
+  </g>
+  <g opacity=".18" stroke="#e8f5ff" fill="none" stroke-width="2">
+    <path d="M930 380L1510 380"/>
+    <path d="M990 320L1455 320"/>
+    <path d="M1040 260L1405 260"/>
+    <path d="M1110 205L1335 205"/>
+    <path d="M930 380L1110 205"/>
+    <path d="M1100 380L1190 205"/>
+    <path d="M1270 380L1270 205"/>
+    <path d="M1440 380L1350 205"/>
+    <path d="M1510 380L1335 205"/>
+  </g>
+  <g transform="translate(1370 95)" opacity=".92">
+    <circle cx="0" cy="0" r="105" fill="#f4c94e"/>
+    <path d="M-87 -58c42 0 77 14 107 43M-42 -96c4 48 22 85 54 113M55 -85c-36 26-60 61-71 105M96 -28c-42 10-77 31-105 63M80 58C41 42 9 16-15-20M23 101c-7-43-25-80-55-111" stroke="#164b82" stroke-width="18" stroke-linecap="round" fill="none"/>
+    <circle cx="0" cy="0" r="105" fill="none" stroke="#f7db7f" stroke-width="3"/>
+  </g>
+  <g opacity=".26" fill="#e8f6ff" filter="url(#blur)">
+    <circle cx="1060" cy="72" r="25"/><circle cx="1175" cy="56" r="22"/><circle cx="1280" cy="70" r="18"/><circle cx="1480" cy="72" r="26"/>
+  </g>
+  <g opacity=".23" stroke="#ffffff" stroke-width="2">
+    <path d="M890 402L1600 402"/>
+    <path d="M1000 455L1520 455"/>
+    <path d="M1000 455L890 402"/>
+    <path d="M1520 455L1600 402"/>
+  </g>
+  <rect x="0" y="0" width="900" height="520" fill="#011427" opacity=".36"/>
+</svg>
