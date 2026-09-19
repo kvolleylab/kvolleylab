@@ -96,7 +96,7 @@
     ]),
 
     {type:'section',label:'지원'},
-    link('request','https://forms.gle/MFNYhX6Bq5zeNmp8',icon.request,'요청하기','external')
+    link('request','https://forms.gle/MFNYhJX6Bq5zeNmp8',icon.request,'요청하기','external')
   ];
 
   const isChildActive=(item)=>{
