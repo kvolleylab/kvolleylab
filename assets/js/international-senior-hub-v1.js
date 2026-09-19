@@ -2,7 +2,7 @@
   const grid=document.getElementById('seniorRecentGrid');
   if(!grid)return;
 
-  const DATA_URL='data/international/senior-competitions.json?v=20260919-5';
+  const DATA_URL='data/international/senior-competitions.json?v=20260919-6';
   const pad=n=>String(n).padStart(2,'0');
   const now=new Date();
   const today=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
@@ -13,6 +13,39 @@
     if(aActive!==bActive)return bActive-aActive;
     if(aActive)return b.startDate.localeCompare(a.startDate);
     return b.endDate.localeCompare(a.endDate);
+  };
+
+  const applyActualHeroImage=async(item,card)=>{
+    const source=item.card&&item.card.imageSource;
+    if(!source||source.mode!=='competition-config'||!source.config)return;
+    try{
+      const res=await fetch(source.config,{cache:'force-cache'});
+      if(!res.ok)throw new Error('hero config');
+      const config=await res.json();
+      const hero=config.hero||{};
+      let image='';
+
+      if(Array.isArray(hero.b64Chunks)&&hero.b64Chunks.length){
+        const parts=await Promise.all(hero.b64Chunks.map(async path=>{
+          const chunkRes=await fetch(path,{cache:'force-cache'});
+          if(!chunkRes.ok)throw new Error('hero chunk');
+          return (await chunkRes.text()).replace(/\s+/g,'');
+        }));
+        image='data:'+(hero.mimeType||'image/webp')+';base64,'+parts.join('');
+      }else{
+        image=hero.pcImage||hero.mobileImage||'';
+      }
+
+      if(!image)return;
+      card.classList.add('has-photo');
+      card.style.setProperty('--recent-image','url("'+image+'")');
+
+      // Hub PC uses the competition mobile composition; hub mobile uses the PC composition.
+      card.style.setProperty('--recent-image-pc-pos',hero.mobilePosition||hero.position||'right center');
+      card.style.setProperty('--recent-image-mobile-pos',hero.position||hero.mobilePosition||'center center');
+    }catch{
+      card.classList.add('hero-image-fallback');
+    }
   };
 
   const renderCard=item=>{
@@ -83,6 +116,7 @@
 
     hero.append(copy,status);
     card.appendChild(hero);
+    applyActualHeroImage(item,card);
     return card;
   };
 
