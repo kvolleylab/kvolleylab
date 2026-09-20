@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 7,
+  "schemaVersion": 8,
   "recentPolicy": {
     "limit": 3,
     "excludeFuture": true,
@@ -36,10 +36,15 @@
         "status": "대회 종료",
         "teamCount": "12개국",
         "accentStatus": "우승 일본 · LA28 직행",
-        "themeA": "#074827",
-        "themeB": "#0e7b43",
-        "accent": "#f2e8cf",
-        "eyebrowColor": "#e6c46c"
+        "themeA": "#041d3a",
+        "themeB": "#176baa",
+        "accent": "#f6e7b5",
+        "eyebrowColor": "#e6c46c",
+        "image": "/assets/images/competitions/avc-continental-2026-hero-photo.webp?v=20260920-source-1",
+        "imagePositionPc": "72% center",
+        "imagePositionMobile": "center center",
+        "overlayPc": "linear-gradient(105deg,rgba(4,29,58,.72) 0%,rgba(4,29,58,.40) 52%,rgba(4,29,58,0) 82%)",
+        "overlayMobile": "linear-gradient(90deg,rgba(4,29,58,.62) 0%,rgba(4,29,58,.30) 48%,rgba(4,29,58,0) 82%)"
       }
     },
     {
@@ -72,10 +77,15 @@
         "status": "대회 종료",
         "teamCount": "12개국",
         "accentStatus": "우승 태국 · LA28 직행",
-        "themeA": "#7f2f54",
-        "themeB": "#c95683",
-        "accent": "#f5dce6",
-        "eyebrowColor": "#f0c9da"
+        "themeA": "#041d3a",
+        "themeB": "#176baa",
+        "accent": "#f6e7b5",
+        "eyebrowColor": "#e6c46c",
+        "image": "/assets/images/competitions/avc-continental-2026-hero-photo.webp?v=20260920-source-1",
+        "imagePositionPc": "72% center",
+        "imagePositionMobile": "center center",
+        "overlayPc": "linear-gradient(105deg,rgba(4,29,58,.72) 0%,rgba(4,29,58,.40) 52%,rgba(4,29,58,0) 82%)",
+        "overlayMobile": "linear-gradient(90deg,rgba(4,29,58,.62) 0%,rgba(4,29,58,.30) 48%,rgba(4,29,58,0) 82%)"
       }
     },
     {
@@ -112,10 +122,11 @@
         "themeB": "#176baa",
         "accent": "#ffffff",
         "eyebrowColor": "#b9dcf7",
-        "imageSource": {
-          "mode": "competition-config",
-          "config": "data/competitions/vnl-men-2026/config.json"
-        }
+        "image": "/assets/images/competitions/vnl-men-2026-hero-hq.webp?v=20260920-source-1",
+        "imagePositionPc": "right center",
+        "imagePositionMobile": "center center",
+        "overlayPc": "linear-gradient(105deg,rgba(3,27,51,.42) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%)",
+        "overlayMobile": "linear-gradient(90deg,rgba(3,27,51,.20) 0%,rgba(3,27,51,.10) 42%,rgba(3,27,51,.02) 68%,rgba(3,27,51,0) 82%)"
       }
     }
   ]
