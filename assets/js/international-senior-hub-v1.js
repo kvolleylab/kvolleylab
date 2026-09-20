@@ -34,6 +34,17 @@
       if(!res.ok)throw new Error('hero config');
       const config=await res.json();
       const h=config.hero||{};
+      if(Array.isArray(h.b64Chunks)&&h.b64Chunks.length){
+        const parts=await Promise.all(h.b64Chunks.map(async path=>{
+          const chunkRes=await fetch(path,{cache:'no-cache'});
+          if(!chunkRes.ok)throw new Error('hero chunk');
+          return (await chunkRes.text()).trim();
+        }));
+        return {
+          imageCss:'url("data:'+(h.mimeType||'image/webp')+';base64,'+parts.join('')+'")',
+          sourcePosition:h.mobilePosition||h.position||'center center'
+        };
+      }
       const image=h.mobileImage||h.pcImage;
       if(image)return {image:image,sourcePosition:h.mobilePosition||h.position||'center center'};
     }
