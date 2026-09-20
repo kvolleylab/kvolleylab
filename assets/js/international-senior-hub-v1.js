@@ -2,7 +2,7 @@
   const grid=document.getElementById('seniorRecentGrid');
   if(!grid)return;
 
-  const DATA_URL='data/international/senior-competitions.json?v=20260920-source-1';
+  const DATA_URL='data/international/senior-competitions.json?v=20260921-source-2';
   const pad=n=>String(n).padStart(2,'0');
   const now=new Date();
   const today=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
