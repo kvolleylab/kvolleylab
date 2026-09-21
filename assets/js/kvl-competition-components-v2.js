@@ -100,9 +100,9 @@ function applyStructureLabels(d){
 }
 
 function bindKpis(d){
-  const targets=[d.structure?.kpiTargets?.participants||viewUrl('rosters',{team:d.focusTeamCode}),viewUrl('groups'),viewUrl('schedule'),viewUrl('knockout')];
-  qa('.kvl1180-view[data-view="overview"] .kvl1180-kpis .kvl1180-kpi:not(.is-venue)').forEach((card,i)=>{
-    const target=targets[i];if(!target)return;
+  const defaults=[d.structure?.kpiTargets?.participants||viewUrl('rosters',{team:d.focusTeamCode}),viewUrl('groups'),viewUrl('schedule'),viewUrl('knockout')];
+  qa('.kvl1180-view[data-view="overview"] .kvl1180-kpis .kvl1180-kpi').forEach((card,i)=>{
+    const target=card.dataset.kvlTarget||(!card.classList.contains('is-venue')?defaults[i]:'');if(!target)return;
     card.dataset.kvlTarget=target;card.tabIndex=0;card.setAttribute('role','link');
     card.onclick=()=>{location.href=target;};
     card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();location.href=target;}};
