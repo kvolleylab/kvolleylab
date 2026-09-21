@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" role="img" aria-label="University volleyball hero">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#071b35"/><stop offset=".58" stop-color="#0e3155"/><stop offset="1" stop-color="#245f8b"/></linearGradient>
+  <radialGradient id="glow" cx=".78" cy=".18" r=".55"><stop offset="0" stop-color="#7ec4ee" stop-opacity=".45"/><stop offset="1" stop-color="#7ec4ee" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1600" height="520" fill="url(#bg)"/>
+<rect width="1600" height="520" fill="url(#glow)"/>
+<g opacity=".18" stroke="#d5ebf9" fill="none" stroke-width="2">
+  <path d="M880 420h720M965 325h565M1050 230h410"/>
+  <path d="M880 420l170-190M1060 420l90-190M1245 420V230M1430 420l-86-190M1600 420l-140-190"/>
+</g>
+<g opacity=".28" fill="#d9ecf8">
+  <circle cx="1130" cy="98" r="8"/><circle cx="1210" cy="84" r="6"/><circle cx="1300" cy="94" r="7"/><circle cx="1470" cy="88" r="8"/>
+</g>
+<g transform="translate(1320 168)">
+  <circle cx="0" cy="0" r="56" fill="#f2cf69"/>
+  <path d="M-46-28c29 4 54 17 72 38M-19-51c2 29 12 53 31 72M31-45c-24 17-40 39-47 66M50-12c-26 5-49 17-66 36M38 34C13 24-7 7-21-17M8 52c-4-24-14-45-31-63" fill="none" stroke="#17365d" stroke-width="10" stroke-linecap="round"/>
+</g>
+<g fill="#dfeef7" opacity=".22">
+  <path d="M1180 455c-25-54-26-112 2-167 18-35 47-61 70-90 13-17 13-44 34-53 30-13 56 20 50 49-6 32-38 49-52 77-14 27-14 59-9 88 6 36 16 67 4 96z"/>
+  <path d="M1388 455c-7-62 11-117 46-168 19-28 39-55 49-87 8-25 11-56 33-70 27-16 60 5 61 36 1 26-19 47-37 66-29 30-57 62-72 102-15 39-17 81-10 121z"/>
+</g>
+<rect x="0" y="0" width="900" height="520" fill="#04152a" opacity=".34"/>
+</svg>
