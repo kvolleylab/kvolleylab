@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0",
+  "schemaVersion": "2.1",
   "year": 2026,
   "competitions": [
     {
@@ -15,7 +15,8 @@
       "featuredOrder": 1,
       "featuredLabel": "주요 대회",
       "category": "uleague",
-      "podiums": []
+      "podiums": [],
+      "cardImage": "/assets/images/competitions/university-kusf-2026-card.svg?v=20260921-2"
     },
     {
       "competitionId": "danyang-2026",
@@ -72,7 +73,8 @@
       ],
       "location": "충청북도 단양군",
       "featuredOrder": 3,
-      "category": "federation"
+      "category": "federation",
+      "cardImage": "/assets/images/competitions/university-danyang-2026-card.svg?v=20260921-2"
     },
     {
       "competitionId": "gosung-2026",
@@ -129,7 +131,8 @@
       ],
       "location": "경상남도 고성군",
       "featuredOrder": 2,
-      "category": "federation"
+      "category": "federation",
+      "cardImage": "/assets/images/competitions/university-gosung-2026-card.svg?v=20260921-2"
     }
   ]
 }
