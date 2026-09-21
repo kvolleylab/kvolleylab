@@ -49,9 +49,9 @@
       '<div class="univ-year-details">'+
       '<table class="univ-record-table"><colgroup><col style="width:28%"><col style="width:22%"><col style="width:14%"><col style="width:13%"><col style="width:13%"><col style="width:10%"></colgroup><thead><tr><th>대회명</th><th>기간</th><th>개최지</th><th>남자부 우승</th><th>여자부 우승</th><th>상세보기</th></tr></thead><tbody>'+recordRows(list)+'</tbody></table>'+
       '<div class="univ-record-mobile">'+recordMobile(list)+'</div></div>'+
-      '<div class="univ-year-collapsed"><strong>2025 <span>SEASON</span></strong><span>⌄</span></div>'+
-      '<div class="univ-year-collapsed"><strong>2024 <span>SEASON</span></strong><span>⌄</span></div>'+
-      '<div class="univ-year-collapsed"><strong>2023 <span>SEASON</span></strong><span>⌄</span></div>';
+      '<button class="univ-year-collapsed" type="button" aria-expanded="false" data-year="2025"><strong>2025 <span>SEASON</span></strong><span>⌄</span></button>'+
+      '<button class="univ-year-collapsed" type="button" aria-expanded="false" data-year="2024"><strong>2024 <span>SEASON</span></strong><span>⌄</span></button>'+
+      '<button class="univ-year-collapsed" type="button" aria-expanded="false" data-year="2023"><strong>2023 <span>SEASON</span></strong><span>⌄</span></button>';
 
     const yearHead=recordsRoot.querySelector('.univ-year-head');
     const yearDetails=recordsRoot.querySelector('.univ-year-details');
@@ -73,7 +73,6 @@
     };
     syncYearState();
     yearHead&&yearHead.addEventListener('click',()=>{
-      if(!mobileMq.matches)return;
       const next=yearHead.getAttribute('aria-expanded')!=='true';
       yearHead.setAttribute('aria-expanded',String(next));
       yearHead.classList.toggle('is-collapsed',!next);
