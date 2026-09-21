@@ -187,7 +187,7 @@
     });
   }
 
-  fetch(`data/calendar/${year}-competition-periods.json?v=20260724-1`,{cache:'no-store'})
+  fetch(`data/calendar/${year}-competition-periods.json?v=20260921-world-events-1`,{cache:'no-store'})
     .then(r=>{if(!r.ok)throw new Error('calendar');return r.json()})
     .then(data=>{payload=data;const valid=['all','international','domestic','vleague'];if(!valid.includes(active))active='all';rerender()})
     .catch(()=>{controls.innerHTML='';root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="${calendarHref('month',todayYear,todayMonth)}">오늘 달력 보기</a></div>`;syncViewSwitch()});
