@@ -53,7 +53,7 @@
 
 .univ-records{border:1px solid #dfe6ed;border-radius:12px;background:#fff;overflow:hidden}
 .univ-year-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 16px;border:0;border-bottom:1px solid #e4eaf0;background:#fbfcfd;text-align:left;cursor:default}
-.univ-year-head strong{color:#17365d;font-size:26px;font-weight:950}.univ-year-details{display:block}
+.univ-year-head strong{color:#17365d;font-size:26px;font-weight:950}.univ-year-chevron{display:none}.univ-year-details{display:none}
 .univ-year-head span{margin-left:7px;color:#6d7f91;font-size:11px;font-weight:900;letter-spacing:.08em}
 .univ-record-table{width:100%;border-collapse:collapse;table-layout:fixed}
 .univ-record-table th{padding:8px 10px;background:#eef4f9;color:#617488;font-size:11px;font-weight:900;text-align:left}
@@ -97,7 +97,9 @@
   .univ-record-table{display:none}
   .univ-records{overflow:hidden}
   .univ-year-head{cursor:pointer;border-bottom:0}
+  .univ-year-chevron{display:inline}
   .univ-year-head[aria-expanded="true"]{border-bottom:1px solid #e4eaf0}
+  .univ-year-details{display:block}
   .univ-year-details.is-collapsed{display:none}
   .univ-record-mobile{display:grid;gap:8px;padding:10px}
   .univ-record-mobile-card{display:grid;grid-template-columns:66px minmax(0,1fr);gap:10px;padding:10px;border:1px solid #e4eaf0;border-radius:9px;background:#fff}
