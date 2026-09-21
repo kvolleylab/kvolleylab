@@ -1,7 +1,22 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "2.0",
   "year": 2026,
   "competitions": [
+    {
+      "competitionId": "kusf-u-league-2026",
+      "series": "대학 U-리그",
+      "name": "2026 KUSF 대학배구 U-리그",
+      "shortName": "2026 KUSF 대학배구 U-리그",
+      "pagePath": "",
+      "status": "active",
+      "startDate": "2026-03-25",
+      "endDate": "2026-10-06",
+      "location": "전국 각지",
+      "featuredOrder": 1,
+      "featuredLabel": "주요 대회",
+      "category": "uleague",
+      "podiums": []
+    },
     {
       "competitionId": "danyang-2026",
       "series": "연맹 2차전",
@@ -12,9 +27,52 @@
       "startDate": "2026-08-12",
       "endDate": "2026-08-20",
       "podiums": [
-        {"division":"남대부","rankings":[{"rank":1,"team":"인하대"},{"rank":2,"team":"성균관대"},{"rank":3,"team":"한양대"},{"rank":3,"team":"중부대"}]},
-        {"division":"여대부","rankings":[{"rank":1,"team":"우석대"},{"rank":2,"team":"광주여대"},{"rank":3,"team":"경일대"},{"rank":3,"team":"호남대"}]}
-      ]
+        {
+          "division": "남대부",
+          "rankings": [
+            {
+              "rank": 1,
+              "team": "인하대"
+            },
+            {
+              "rank": 2,
+              "team": "성균관대"
+            },
+            {
+              "rank": 3,
+              "team": "한양대"
+            },
+            {
+              "rank": 3,
+              "team": "중부대"
+            }
+          ]
+        },
+        {
+          "division": "여대부",
+          "rankings": [
+            {
+              "rank": 1,
+              "team": "우석대"
+            },
+            {
+              "rank": 2,
+              "team": "광주여대"
+            },
+            {
+              "rank": 3,
+              "team": "경일대"
+            },
+            {
+              "rank": 3,
+              "team": "호남대"
+            }
+          ]
+        }
+      ],
+      "location": "충청북도 단양군",
+      "featuredOrder": 3,
+      "category": "federation"
     },
     {
       "competitionId": "gosung-2026",
@@ -26,9 +84,52 @@
       "startDate": "2026-06-25",
       "endDate": "2026-07-03",
       "podiums": [
-        {"division":"남대부","rankings":[{"rank":1,"team":"인하대"},{"rank":2,"team":"한양대"},{"rank":3,"team":"조선대"},{"rank":3,"team":"중부대"}]},
-        {"division":"여대부","rankings":[{"rank":1,"team":"광주여대"},{"rank":2,"team":"우석대"},{"rank":3,"team":"단국대"},{"rank":3,"team":"호남대"}]}
-      ]
+        {
+          "division": "남대부",
+          "rankings": [
+            {
+              "rank": 1,
+              "team": "인하대"
+            },
+            {
+              "rank": 2,
+              "team": "한양대"
+            },
+            {
+              "rank": 3,
+              "team": "조선대"
+            },
+            {
+              "rank": 3,
+              "team": "중부대"
+            }
+          ]
+        },
+        {
+          "division": "여대부",
+          "rankings": [
+            {
+              "rank": 1,
+              "team": "광주여대"
+            },
+            {
+              "rank": 2,
+              "team": "우석대"
+            },
+            {
+              "rank": 3,
+              "team": "단국대"
+            },
+            {
+              "rank": 3,
+              "team": "호남대"
+            }
+          ]
+        }
+      ],
+      "location": "경상남도 고성군",
+      "featuredOrder": 2,
+      "category": "federation"
     }
   ]
 }
