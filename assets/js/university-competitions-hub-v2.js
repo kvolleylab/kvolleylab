@@ -59,10 +59,17 @@
     const mobileMq=window.matchMedia('(max-width:680px)');
     const syncYearState=()=>{
       if(!yearHead||!yearDetails||!chevron)return;
-      yearHead.setAttribute('aria-expanded','false');
-      yearHead.classList.add('is-collapsed');
-      yearDetails.classList.add('is-collapsed');
-      chevron.textContent='⌄';
+      if(mobileMq.matches){
+        yearHead.setAttribute('aria-expanded','false');
+        yearHead.classList.add('is-collapsed');
+        yearDetails.classList.add('is-collapsed');
+        chevron.textContent='⌄';
+      }else{
+        yearHead.setAttribute('aria-expanded','true');
+        yearHead.classList.remove('is-collapsed');
+        yearDetails.classList.remove('is-collapsed');
+        chevron.textContent='⌃';
+      }
     };
     syncYearState();
     yearHead&&yearHead.addEventListener('click',()=>{
