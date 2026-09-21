@@ -1,0 +1,1689 @@
+{
+  "status": "completed",
+  "stageLabel": "인하대학교 우승 · 대회 종료",
+  "dateLabel": "2026-06-25 ~ 2026-07-03",
+  "locationLabel": "경상남도 고성군",
+  "venueLabel": "고성군 국민체육센터 · 고성군 실내체육관",
+  "teamCount": 15,
+  "groupCount": 3,
+  "matchCount": 35,
+  "knockoutTeamCount": 6,
+  "champion": "인하대학교",
+  "championAchievement": "2026 고성대회 남대부 우승",
+  "scheduleNote": "한국시간(KST) · 남대부 예선 30경기 + 결선 5경기",
+  "standingsNote": "남대부 예선 30경기 종료 · A/B/C조",
+  "standingsRule": "승리 경기 수 → 승점 → 세트 득실비 → 점수 득실비 순으로 적용",
+  "meaning": {
+    "eyebrow": "UNIVERSITY COMPETITION",
+    "title": "2026 대한항공배 전국대학배구 고성대회",
+    "note": "한국대학배구연맹 주최 · 경상남도 고성군 개최"
+  },
+  "genderLinks": {
+    "women": "/competition-engine.html?competition=university-goseong-women-2026"
+  },
+  "participants": [
+    {
+      "code": "MOK",
+      "name": "국립목포대학교",
+      "en": "Mokpo National University",
+      "group": "A"
+    },
+    {
+      "code": "KIU",
+      "name": "경일대학교",
+      "en": "Kyungil University",
+      "group": "A"
+    },
+    {
+      "code": "SKKU",
+      "name": "성균관대학교",
+      "en": "Sungkyunkwan University",
+      "group": "A"
+    },
+    {
+      "code": "KGU",
+      "name": "경기대학교",
+      "en": "Kyonggi University",
+      "group": "A"
+    },
+    {
+      "code": "CSU",
+      "name": "조선대학교",
+      "en": "Chosun University",
+      "group": "A"
+    },
+    {
+      "code": "JBU",
+      "name": "중부대학교",
+      "en": "Joongbu University",
+      "group": "B"
+    },
+    {
+      "code": "MJU",
+      "name": "명지대학교",
+      "en": "Myongji University",
+      "group": "B"
+    },
+    {
+      "code": "HIU",
+      "name": "홍익대학교",
+      "en": "Hongik University",
+      "group": "B"
+    },
+    {
+      "code": "KHU",
+      "name": "경희대학교",
+      "en": "Kyung Hee University",
+      "group": "B"
+    },
+    {
+      "code": "INU",
+      "name": "인하대학교",
+      "en": "Inha University",
+      "group": "B"
+    },
+    {
+      "code": "HNU",
+      "name": "호남대학교",
+      "en": "Honam University",
+      "group": "C"
+    },
+    {
+      "code": "HYU",
+      "name": "한양대학교",
+      "en": "Hanyang University",
+      "group": "C"
+    },
+    {
+      "code": "GNU",
+      "name": "경상국립대학교",
+      "en": "Gyeongsang National University",
+      "group": "C"
+    },
+    {
+      "code": "WKU",
+      "name": "우석대학교",
+      "en": "Woosuk University",
+      "group": "C"
+    },
+    {
+      "code": "CNU",
+      "name": "충남대학교",
+      "en": "Chungnam National University",
+      "group": "C"
+    }
+  ],
+  "matches": [
+    {
+      "id": "M-A-01",
+      "date": "2026-06-25",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "MOK"
+      },
+      "away": {
+        "code": "KIU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-02",
+      "date": "2026-06-25",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "KGU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-01",
+      "date": "2026-06-25",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "JBU"
+      },
+      "away": {
+        "code": "MJU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-02",
+      "date": "2026-06-25",
+      "time": "14:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HIU"
+      },
+      "away": {
+        "code": "KHU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 14:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-01",
+      "date": "2026-06-25",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "HNU"
+      },
+      "away": {
+        "code": "HYU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-02",
+      "date": "2026-06-25",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "GNU"
+      },
+      "away": {
+        "code": "WKU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-03",
+      "date": "2026-06-26",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "KGU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 15,
+            "away": 10
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-04",
+      "date": "2026-06-26",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "MOK"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-03",
+      "date": "2026-06-26",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "JBU"
+      },
+      "away": {
+        "code": "HIU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 20,
+            "away": 18
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-04",
+      "date": "2026-06-26",
+      "time": "14:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "INU"
+      },
+      "away": {
+        "code": "MJU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 14:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-03",
+      "date": "2026-06-26",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "CNU"
+      },
+      "away": {
+        "code": "HYU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-04",
+      "date": "2026-06-26",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "HNU"
+      },
+      "away": {
+        "code": "GNU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 29,
+            "away": 31
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-05",
+      "date": "2026-06-27",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KGU"
+      },
+      "away": {
+        "code": "MOK"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-06",
+      "date": "2026-06-27",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "KIU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-05",
+      "date": "2026-06-27",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "INU"
+      },
+      "away": {
+        "code": "KHU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-06",
+      "date": "2026-06-27",
+      "time": "14:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "MJU"
+      },
+      "away": {
+        "code": "HIU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 14:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-05",
+      "date": "2026-06-27",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "CNU"
+      },
+      "away": {
+        "code": "WKU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-06",
+      "date": "2026-06-27",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "GNU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-07",
+      "date": "2026-06-28",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "MOK"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-08",
+      "date": "2026-06-28",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KIU"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 9,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-07",
+      "date": "2026-06-28",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "INU"
+      },
+      "away": {
+        "code": "HIU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-08",
+      "date": "2026-06-28",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KHU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-07",
+      "date": "2026-06-28",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "CNU"
+      },
+      "away": {
+        "code": "GNU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-08",
+      "date": "2026-06-28",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "WKU"
+      },
+      "away": {
+        "code": "HNU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-09",
+      "date": "2026-06-29",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KHU"
+      },
+      "away": {
+        "code": "MJU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 9,
+            "away": 15
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-09",
+      "date": "2026-06-29",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-B-10",
+      "date": "2026-06-29",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "INU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-A-10",
+      "date": "2026-06-29",
+      "time": "14:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KIU"
+      },
+      "away": {
+        "code": "KGU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 14:30 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-09",
+      "date": "2026-06-29",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "WKU"
+      },
+      "away": {
+        "code": "HYU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 12,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-C-10",
+      "date": "2026-06-29",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "CNU"
+      },
+      "away": {
+        "code": "HNU"
+      },
+      "venueLabel": "고성군 실내체육관",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "",
+      "nextMatchId": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "M-KO-01",
+      "date": "2026-06-30",
+      "time": "10:00",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      },
+      "round": "QF",
+      "nextMatchId": "SF1",
+      "bracketLabel": "6강"
+    },
+    {
+      "id": "M-KO-02",
+      "date": "2026-06-30",
+      "time": "11:30",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "INU"
+      },
+      "away": {
+        "code": "GNU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "QF",
+      "nextMatchId": "SF2",
+      "bracketLabel": "6강"
+    },
+    {
+      "id": "M-KO-03",
+      "date": "2026-07-02",
+      "time": "11:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 11:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "SF",
+      "nextMatchId": "FINAL",
+      "bracketLabel": "준결승"
+    },
+    {
+      "id": "M-KO-04",
+      "date": "2026-07-02",
+      "time": "13:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "INU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      },
+      "round": "SF",
+      "nextMatchId": "FINAL",
+      "bracketLabel": "준결승"
+    },
+    {
+      "id": "M-KO-05",
+      "date": "2026-07-03",
+      "time": "13:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "INU"
+      },
+      "venueLabel": "고성군 국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 33,
+            "away": 31
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      },
+      "round": "FINAL",
+      "nextMatchId": "",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "CSU"
+            },
+            "wins": 4,
+            "losses": 0,
+            "points": 11,
+            "setRatio": "6.000",
+            "pointRatio": "-",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SKKU"
+            },
+            "wins": 3,
+            "losses": 1,
+            "points": 9,
+            "setRatio": "3.000",
+            "pointRatio": "-",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "KGU"
+            },
+            "wins": 2,
+            "losses": 2,
+            "points": 7,
+            "setRatio": "1.143",
+            "pointRatio": "-",
+            "status": "eliminated"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "KIU"
+            },
+            "wins": 1,
+            "losses": 3,
+            "points": 3,
+            "setRatio": "0.400",
+            "pointRatio": "-",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "MOK"
+            },
+            "wins": 0,
+            "losses": 4,
+            "points": 0,
+            "setRatio": "0.083",
+            "pointRatio": "-",
+            "status": "eliminated"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "INU"
+            },
+            "wins": 4,
+            "losses": 0,
+            "points": 12,
+            "setRatio": "12.000",
+            "pointRatio": "-",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "JBU"
+            },
+            "wins": 3,
+            "losses": 1,
+            "points": 8,
+            "setRatio": "1.667",
+            "pointRatio": "-",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "MJU"
+            },
+            "wins": 2,
+            "losses": 2,
+            "points": 5,
+            "setRatio": "0.875",
+            "pointRatio": "-",
+            "status": "eliminated"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "HIU"
+            },
+            "wins": 1,
+            "losses": 3,
+            "points": 4,
+            "setRatio": "0.556",
+            "pointRatio": "-",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "KHU"
+            },
+            "wins": 0,
+            "losses": 4,
+            "points": 1,
+            "setRatio": "0.167",
+            "pointRatio": "-",
+            "status": "eliminated"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "HYU"
+            },
+            "wins": 4,
+            "losses": 0,
+            "points": 12,
+            "setRatio": "12.000",
+            "pointRatio": "-",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "GNU"
+            },
+            "wins": 3,
+            "losses": 1,
+            "points": 9,
+            "setRatio": "2.000",
+            "pointRatio": "-",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "CNU"
+            },
+            "wins": 2,
+            "losses": 2,
+            "points": 6,
+            "setRatio": "1.167",
+            "pointRatio": "-",
+            "status": "eliminated"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "HNU"
+            },
+            "wins": 1,
+            "losses": 3,
+            "points": 3,
+            "setRatio": "0.400",
+            "pointRatio": "-",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "WKU"
+            },
+            "wins": 0,
+            "losses": 4,
+            "points": 0,
+            "setRatio": "0.083",
+            "pointRatio": "-",
+            "status": "eliminated"
+          }
+        ]
+      }
+    ]
+  },
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "INU",
+      "team": "인하대학교",
+      "result": "우승"
+    },
+    {
+      "rank": 2,
+      "code": "HYU",
+      "team": "한양대학교",
+      "result": "준우승"
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "한국대학배구연맹 대회 개최 공지",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=171500480"
+    },
+    {
+      "title": "남대부 A조 공식 결과",
+      "url": "https://kuvf.co.kr/639"
+    },
+    {
+      "title": "남대부 B조 공식 결과",
+      "url": "https://kuvf.co.kr/642"
+    },
+    {
+      "title": "남대부 C조 공식 결과",
+      "url": "https://kuvf.co.kr/643"
+    },
+    {
+      "title": "남대부 결선 공식 결과",
+      "url": "https://kuvf.co.kr/644"
+    }
+  ],
+  "rosterPendingLabel": "고성대회 선수명단 MASTER 최종 검수 후 연결합니다."
+}
