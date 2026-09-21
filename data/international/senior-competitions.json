@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 9,
+  "schemaVersion": 10,
   "recentPolicy": {
     "limit": 3,
     "excludeFuture": true,
@@ -99,8 +99,8 @@
         "data": "data/competitions/vnl-men-2026/data.json",
         "themeA": "#041d3a",
         "themeB": "#176baa",
-        "accent": "#ffffff",
-        "eyebrow": "#b9dcf7",
+        "accent": "#f6e7b5",
+        "eyebrow": "#e6c46c",
         "border": "rgba(4,46,83,.34)"
       },
       "card": {
@@ -114,8 +114,8 @@
         "accentStatus": "폴란드 우승 · 파이널 종료",
         "themeA": "#041d3a",
         "themeB": "#176baa",
-        "accent": "#ffffff",
-        "eyebrowColor": "#b9dcf7",
+        "accent": "#f6e7b5",
+        "eyebrowColor": "#e6c46c",
         "overlayPc": "linear-gradient(105deg,rgba(3,27,51,.42) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%)",
         "overlayMobile": "linear-gradient(90deg,rgba(3,27,51,.20) 0%,rgba(3,27,51,.10) 42%,rgba(3,27,51,.02) 68%,rgba(3,27,51,0) 82%)"
       }
