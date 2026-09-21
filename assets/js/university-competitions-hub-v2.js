@@ -59,11 +59,10 @@
     const mobileMq=window.matchMedia('(max-width:680px)');
     const syncYearState=()=>{
       if(!yearHead||!yearDetails||!chevron)return;
-      const collapsed=mobileMq.matches;
-      yearHead.setAttribute('aria-expanded',collapsed?'false':'true');
-      yearHead.classList.toggle('is-collapsed',collapsed);
-      yearDetails.classList.toggle('is-collapsed',collapsed);
-      chevron.textContent=collapsed?'⌄':'⌃';
+      yearHead.setAttribute('aria-expanded','false');
+      yearHead.classList.add('is-collapsed');
+      yearDetails.classList.add('is-collapsed');
+      chevron.textContent='⌄';
     };
     syncYearState();
     yearHead&&yearHead.addEventListener('click',()=>{
