@@ -34,5 +34,5 @@
   },true);
 
   const year=new URLSearchParams(location.search).get('year')||2026;
-  fetch(`data/calendar/${year}-competition-periods.json?v=20260725-3`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(data=>{events=data.events||[]}).catch(()=>{});
+  fetch(`data/calendar/${year}-competition-periods.json?v=20260921-world-events-1`,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(data=>{events=data.events||[]}).catch(()=>{});
 })();
