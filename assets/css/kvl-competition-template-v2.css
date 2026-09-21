@@ -174,3 +174,47 @@ body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source a{
   body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source a{min-height:28px;padding:0 8px;font-size:9px}
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl-final-qualification{font-size:7.2px;line-height:1.18;white-space:normal}
 }
+
+
+/* Domestic competition template: overview snapshot is a six-button dashboard.
+ * International competition geometry remains unchanged.
+ */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-view[data-view="overview"]:not(.kvl1180-stakes-card) .kvl1180-kpis{
+  grid-template-columns:repeat(6,minmax(0,1fr));
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-view[data-view="overview"] .kvl1180-kpi{
+  min-width:0;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-view[data-view="overview"] .kvl1180-kpi-copy>span{
+  white-space:normal;
+  line-height:1.25;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi.is-domestic-venue .kvl1180-kpi-copy strong{
+  display:block;
+  margin-top:clamp(5px,.5vw,7px);
+  font-size:clamp(12px,1vw,15px);
+  line-height:1.22;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi.is-domestic-venue .kvl1180-kpi-copy small{
+  display:block;
+  margin-top:3px;
+  font-size:clamp(8px,.66vw,10px);
+  line-height:1.25;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+@media(max-width:1180px) and (min-width:901px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-view[data-view="overview"]:not(.kvl1180-stakes-card) .kvl1180-kpis{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-view[data-view="overview"]:not(.kvl1180-stakes-card) .kvl1180-kpis{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi.is-domestic-venue{
+    grid-column:auto;
+  }
+}
