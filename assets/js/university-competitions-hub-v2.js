@@ -1,5 +1,5 @@
 (()=> {
-  const FEATURE_URL='data/competitions/university-index-2026.json?v=20260921-hub-2';
+  const FEATURE_URL='data/competitions/university-index-2026.json?v=20260921-ui-match-1';
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const days=['일','월','화','수','목','금','토'];
   const fmt=value=>{if(!value)return '일정 미정';const [y,m,d]=value.split('-').map(Number);return value.replaceAll('-','.')+'('+days[new Date(y,m-1,d).getDay()]+')'};
@@ -23,21 +23,34 @@
       '<div class="univ-featured-foot"><span>'+esc(note)+'</span>'+(ready?'<span class="univ-featured-arrow">→</span>':'<span>페이지 준비 중</span>')+'</div></div></'+tag+'>';
   };
 
-  const recordCards=list=>list.map(item=>{
+  const recordRows=list=>list.map(item=>{
     const men=winner(item,'남대부'),women=winner(item,'여대부'),ready=Boolean(item.pagePath);
-    return '<article class="univ-record-card"><span class="univ-record-series">'+esc(item.series||'대학대회')+'</span><h3>'+esc(item.shortName)+'</h3>'+
-      '<div class="univ-record-meta"><span>▣ '+esc(fmt(item.startDate))+' ~ '+esc(fmt(item.endDate))+'</span><span>● '+esc(item.location||'—')+'</span></div>'+
-      '<div class="univ-record-winners">'+
-      (men?'<span>🏆 남자부 우승 <b>'+esc(men)+'</b></span>':'<span class="univ-record-status is-active">남자부 진행 중</span>')+
-      (women?'<span>🏆 여자부 우승 <b>'+esc(women)+'</b></span>':(item.status==='active'?'<span class="univ-record-status is-active">여자부 진행 중</span>':''))+
-      '</div>'+(ready?'<a class="univ-record-link" href="'+esc(item.pagePath)+'">대회 보기 →</a>':'<span class="univ-record-link is-disabled">페이지 준비 중</span>')+'</article>';
+    const thumb=item.cardImage?'background-image:url(&quot;'+esc(item.cardImage)+'&quot;)':'';
+    return '<tr>'+
+      '<td><div class="univ-record-name"><span class="univ-record-thumb" style="'+thumb+'"></span><span>'+esc(item.shortName)+'</span></div></td>'+
+      '<td>'+esc(fmt(item.startDate))+' ~ '+esc(fmt(item.endDate))+'</td>'+
+      '<td>'+esc(item.location||'—')+'</td>'+
+      '<td>'+(men?esc(men):'<span class="univ-record-status is-active">진행 중</span>')+'</td>'+
+      '<td>'+(women?esc(women):(item.status==='active'?'<span class="univ-record-status is-active">진행 중</span>':'—'))+'</td>'+
+      '<td>'+(ready?'<a class="univ-record-link" href="'+esc(item.pagePath)+'">대회 보기 →</a>':'<span class="univ-record-link is-disabled">준비 중</span>')+'</td>'+
+      '</tr>';
+  }).join('');
+
+  const recordMobile=list=>list.map(item=>{
+    const men=winner(item,'남대부'),women=winner(item,'여대부'),ready=Boolean(item.pagePath);
+    const thumb=item.cardImage?'background-image:url(&quot;'+esc(item.cardImage)+'&quot;)':'';
+    return '<article class="univ-record-mobile-card"><span class="univ-record-mobile-thumb" style="'+thumb+'"></span><div><h3>'+esc(item.shortName)+'</h3><p>'+esc(fmt(item.startDate))+' ~ '+esc(fmt(item.endDate))+'<br>'+esc(item.location||'—')+'</p><p>'+(men?'남 '+esc(men):'남 진행 중')+(women?' · 여 '+esc(women):'')+'</p>'+(ready?'<a class="univ-record-link" href="'+esc(item.pagePath)+'">대회 보기 →</a>':'<span class="univ-record-link is-disabled">준비 중</span>')+'</div></article>';
   }).join('');
 
   fetch(FEATURE_URL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()}).then(data=>{
     const list=(data.competitions||[]).slice().sort((a,b)=>(a.featuredOrder||99)-(b.featuredOrder||99));
     featuredRoot.innerHTML=list.slice(0,3).map(featuredCard).join('');
     recordsRoot.innerHTML='<div class="univ-year-head"><strong>2026 <span>SEASON</span></strong><span>⌃</span></div>'+
-      '<div class="univ-record-grid">'+recordCards(list)+'</div>';
+      '<table class="univ-record-table"><colgroup><col style="width:28%"><col style="width:22%"><col style="width:14%"><col style="width:13%"><col style="width:13%"><col style="width:10%"></colgroup><thead><tr><th>대회명</th><th>기간</th><th>개최지</th><th>남자부 우승</th><th>여자부 우승</th><th>상세보기</th></tr></thead><tbody>'+recordRows(list)+'</tbody></table>'+
+      '<div class="univ-record-mobile">'+recordMobile(list)+'</div>'+
+      '<div class="univ-year-collapsed"><strong>2025 <span>SEASON</span></strong><span>⌄</span></div>'+
+      '<div class="univ-year-collapsed"><strong>2024 <span>SEASON</span></strong><span>⌄</span></div>'+
+      '<div class="univ-year-collapsed"><strong>2023 <span>SEASON</span></strong><span>⌄</span></div>';
   }).catch(()=>{
     featuredRoot.innerHTML='<div class="univ-hub-note">2026 대회 정보를 불러오지 못했습니다.</div>';
     recordsRoot.innerHTML='<div class="univ-hub-note">연도별 기록을 불러오지 못했습니다.</div>';
