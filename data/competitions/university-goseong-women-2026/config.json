@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "slug": "university-goseong-women-2026",
+  "competition": {
+    "competitionId": "KVL-COMP-UNIV-GOSEONG-W-2026",
+    "displayName": "2026 전국대학배구 고성대회 여대부",
+    "officialName": "2026 대한항공배 전국대학배구 고성대회 · 여대부",
+    "season": "2026",
+    "gender": "women",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "예선 조",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "결선 진출",
+      "standingsTitle": "조별순위",
+      "standingsEyebrow": "POOL STANDINGS",
+      "knockoutTitle": "결선 토너먼트",
+      "participantsTitle": "참가대학"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "예선",
+        "준결승",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "pools-combined",
+      "title": "여대부 조별순위"
+    },
+    "knockout": {
+      "mode": "bracket-8",
+      "title": "여대부 결선 토너먼트",
+      "sfLabel": "준결승 · Semifinals",
+      "finalLabel": "결승 · Final"
+    },
+    "participants": {
+      "mode": "groups"
+    },
+    "roster": {
+      "mode": "none"
+    }
+  },
+  "hero": {
+    "pcImage": "/assets/images/competitions/vnl-men-2026-hero.webp",
+    "mobileImage": "/assets/images/competitions/vnl-men-2026-hero.webp",
+    "alt": "2026 대한항공배 전국대학배구 고성대회",
+    "showImage": false,
+    "mode": "photo"
+  },
+  "seo": {
+    "title": "2026 전국대학배구 고성대회 여대부 | K-Volley Lab",
+    "description": "2026 대한항공배 전국대학배구 고성대회 여대부 경기 결과, 조별 순위, 결선 토너먼트와 참가대학을 확인합니다."
+  },
+  "data": "data.json"
+}
