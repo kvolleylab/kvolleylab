@@ -347,3 +347,24 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
     border-color:#cf87a7!important;
   }
 }
+
+
+/* WOMEN · remove remaining green stage/qualification accents. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-cal-game,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-cal-game.is-qf,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-cal-game.is-sf,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-cal-game.is-bronze,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-cal-game.is-final{
+  border-left-color:#a53d68!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-groups-legend .q i{
+  background:#a53d68!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-knockout-note{
+  border-left-color:#a53d68!important;
+  background:#fff1f6!important;
+  color:#6f4458!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-knockout-note b{
+  color:#8e315e!important;
+}
