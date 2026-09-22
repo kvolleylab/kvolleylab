@@ -19,6 +19,7 @@
   const api=window.KVLCompetitionDataV2,errors=api.validate(data||{},{production:config.production===true});if(errors.length)throw Error(errors.join('; '));
   window.KVL_COMPETITION_V2_DATA=api.normalize(data);body.dataset.kvlRenderState='loading';
   window.KVLCompetitionShellV2.ensureShell();window.KVLCompetitionTemplateV2.apply();window.KVLCompetitionComponentsV2.render();
+  body.dataset.kvlRenderState='loading';
   if(config.collectionRoot){
    const d=window.KVL_COMPETITION_V2_DATA,title=d.seo.title||`${d.displayName} | K-Volley Lab`;
    for(const [property,value] of Object.entries({'og:type':'website','og:title':title,'og:description':d.seo.description||d.officialName,'og:url':d.seo.canonical,'og:image':d.hero.pcImage?new URL(d.hero.pcImage,location.href).href:''})){
@@ -26,7 +27,15 @@
    }
    let canonical=document.querySelector('link[rel="canonical"]');if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical);}canonical.href=d.seo.canonical;
   }
-  document.querySelector('[data-kvl-shell]').hidden=false;body.dataset.kvlRenderState='ready';
+  const shell=document.querySelector('[data-kvl-shell]');
+  shell.hidden=false;
+  body.dataset.kvlRenderState='loading';
+  const frame=()=>new Promise(resolve=>requestAnimationFrame(resolve));
+  if(document.fonts?.ready){
+    try{await Promise.race([document.fonts.ready,new Promise(resolve=>setTimeout(resolve,120))]);}catch{}
+  }
+  await frame();await frame();
+  body.dataset.kvlRenderState='ready';
  }catch(error){console.error(error);body.dataset.kvlRenderState='error';const target=document.querySelector('[data-kvl-shell]');target.hidden=false;target.textContent='대회 정보를 불러오지 못했습니다. 주소를 확인해 주세요.';target.setAttribute('role','alert');
   let robots=document.querySelector('meta[name="robots"]');if(!robots){robots=document.createElement('meta');robots.name='robots';document.head.appendChild(robots);}robots.content='noindex,nofollow,noarchive';
  }finally{document.getElementById('kvlCompetitionLoading')?.remove();}
