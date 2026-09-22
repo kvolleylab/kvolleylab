@@ -427,3 +427,295 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
     border-color:#D797B4!important;
   }
 }
+
+
+/* =====================================================================
+   DOMESTIC TEMPLATE V1 · Goseong baseline · 2026-09-22
+   Scope is deliberately domestic-only. International production geometry
+   and palettes are not modified by this block.
+   ===================================================================== */
+
+/* 1. Hero image must belong to the card, not look like a separate rectangle. */
+html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-hero-mode="photo"] .kvl1180-hero{
+  background-image:
+    linear-gradient(90deg,
+      rgba(var(--kvl-theme-overlay-rgb),.92) 0%,
+      rgba(var(--kvl-theme-overlay-rgb),.76) 35%,
+      rgba(var(--kvl-theme-overlay-rgb),.42) 61%,
+      rgba(var(--kvl-theme-overlay-rgb),.16) 100%),
+    var(--kvl-hero-image-desktop,none)!important;
+  background-size:100% 100%,100% 100%!important;
+  background-position:center center!important;
+  background-repeat:no-repeat!important;
+  background-clip:padding-box!important;
+}
+@media(max-width:680px){
+  html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-hero-mode="photo"] .kvl1180-hero{
+    background-image:
+      linear-gradient(105deg,
+        rgba(var(--kvl-theme-overlay-rgb),.92) 0%,
+        rgba(var(--kvl-theme-overlay-rgb),.72) 48%,
+        rgba(var(--kvl-theme-overlay-rgb),.28) 78%,
+        rgba(var(--kvl-theme-overlay-rgb),.10) 100%),
+      var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
+    background-size:100% 100%,100% 100%!important;
+    background-position:center center!important;
+  }
+}
+
+/* 2. Gender switch uses each division's actual identity color. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-gender a{
+  opacity:1!important;
+  font-weight:700!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-gender a[data-gender-link="men"]{
+  border-color:#163A5F!important;background:#F7FAFC!important;color:#163A5F!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-gender a[data-gender-link="women"]{
+  border-color:#D2648F!important;background:#FFF8FB!important;color:#A43F68!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] .kvl1180-gender a[data-gender-link="men"],
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-gender a[data-gender-link="women"]{
+  color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] .kvl1180-gender a[data-gender-link="men"]{
+  border-color:#163A5F!important;background:#163A5F!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-gender a[data-gender-link="women"]{
+  border-color:#D2648F!important;background:#D2648F!important;
+}
+
+/* 3. Snapshot KPI hover follows the current division instead of legacy green. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi[data-kvl-target]:hover,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi[data-kvl-target]:focus-visible{
+  border-color:var(--kvl-theme-border)!important;
+  background:linear-gradient(180deg,#fff,var(--kvl-theme-soft))!important;
+  box-shadow:0 10px 22px var(--kvl-theme-shadow)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-icon,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-copy strong,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-icon,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-copy strong{
+  color:var(--kvl-theme-primary)!important;
+}
+
+/* 4. Calendar month title matches the connected Goseong page scale. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-calendar-title{
+  font-size:20px!important;
+  font-weight:800!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-calendar-title{font-size:18px!important}
+}
+
+/* 5. Women hero gold needs stronger contrast on the pink background. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-eyebrow,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-hero h1,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-hero-sub,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-hero-status .is-accent{
+  color:#F2C14E!important;
+}
+
+/* 7. Schedule filter and pool dropdown always stay inside the toolbar card. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-schedule-toolbar{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) max-content!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-stage-filters{
+  min-width:0!important;
+  max-width:100%!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-pool-filter{
+  min-width:0!important;
+  max-width:180px!important;
+  justify-self:end!important;
+  margin:0!important;
+  padding:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-pool-filter label{
+  display:flex!important;align-items:center!important;gap:7px!important;max-width:100%!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-pool-filter select{
+  box-sizing:border-box!important;min-width:82px!important;max-width:100px!important;
+}
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-schedule-toolbar{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-pool-filter{
+    justify-self:end!important;align-self:auto!important;max-width:180px!important;
+  }
+}
+
+/* 8. Set-by-set score line +2px from the previous domestic scale. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-set-scores,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-set-scores span{
+  font-size:clamp(12px,.9vw,15px)!important;
+}
+
+/* 9. Domestic pool standings: text-first university table, no logos, one-line ratio headers. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-table-head,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-row{
+  grid-template-columns:28px minmax(82px,1fr) 30px 30px 38px 62px 62px!important;
+  column-gap:3px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-table-head{
+  min-height:42px!important;
+  padding:0 7px!important;
+  font-size:10px!important;
+  font-weight:600!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-table-head>span{
+  white-space:nowrap!important;
+  line-height:1!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-row{
+  min-height:62px!important;
+  padding:8px 7px!important;
+  font-size:14px!important;
+  font-weight:500!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-team-text{
+  display:block!important;
+  min-width:0!important;
+  text-align:left!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-team-text .kvl1180-pool-team-copy strong{
+  font-size:15px!important;
+  font-weight:700!important;
+  color:#17365D!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-rank{
+  font-size:15px!important;font-weight:700!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-ratio{
+  font-size:12px!important;white-space:nowrap!important;
+}
+@media(max-width:1080px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-grid{
+    grid-template-columns:1fr!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-table-head,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-row{
+    grid-template-columns:42px minmax(150px,1fr) 52px 52px 60px 96px 96px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-table-head{
+    font-size:12px!important;
+  }
+}
+
+/* 10. Joint third place: the fourth card is also rank 3 and must show the same medal. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout [data-final-rank="3"] .kvl1180-final-rank{
+  visibility:visible!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout [data-final-rank="3"] .kvl-final-medal{
+  display:inline-block!important;visibility:visible!important;opacity:1!important;
+}
+
+/* 11. Domestic bracket cards need explicit corners and unified gold scores. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-match{
+  overflow:hidden!important;
+  border:1.5px solid #B9C7D4!important;
+  border-radius:12px!important;
+  background:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-match.is-bye{
+  border:1.5px dashed #C9A24A!important;
+  border-radius:12px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-team-score,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-match-sets{
+  color:#C9972E!important;
+  font-weight:700!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-bracket-team.is-winner .kvl1180-team-score{
+  color:#C9972E!important;
+}
+
+/* 12/14. Participants are outbound team links: hover stays, selected outline is removed.
+   Group cards mirror the standings headers and use division colors. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-button.is-active,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-button[aria-current="true"]{
+  box-shadow:none!important;
+  outline:0!important;
+  background:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-button:hover{
+  background:var(--kvl-theme-soft)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-group{
+  border-radius:12px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-group-head{
+  min-height:0!important;
+  padding:16px!important;
+  border:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-group-head strong{
+  font-size:clamp(18px,1.65cqw,21px)!important;
+  font-weight:700!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-group-head span{
+  font-size:clamp(11.5px,1.02cqw,13px)!important;
+  font-weight:500!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #rosters .kvl1180-participant-group-head{
+  background:linear-gradient(90deg,#102C49,#163A5F)!important;color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #rosters .kvl1180-participant-group-head{
+  background:linear-gradient(90deg,#A43F68,#D2648F)!important;color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #rosters .kvl1180-participant-group-head span{
+  color:#FFF2F7!important;
+}
+
+/* 13. Regulation cards copied from the visual language of the connected Goseong page. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-domestic-rule-card{
+  margin:22px 0 0!important;
+  padding:18px 22px!important;
+  border-left:5px solid #C9A24A!important;
+  border-radius:16px!important;
+  background:#FFF8E6!important;
+  color:#334155!important;
+  font-size:14px!important;
+  line-height:1.55!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-domestic-rule-card p{
+  margin:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-domestic-rule-card p>strong{
+  margin-right:4px!important;
+  color:#17365D!important;
+  font-weight:700!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-domestic-rule-card>b{
+  display:block!important;
+  margin-top:4px!important;
+  color:#17365D!important;
+  font-weight:800!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-domestic-rule-card>small{
+  display:block!important;
+  margin-top:4px!important;
+  color:#64748B!important;
+  font-size:12px!important;
+  font-weight:400!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-domestic-rule-card>a{
+  display:inline-block!important;
+  margin-top:2px!important;
+  color:#17365D!important;
+  font-weight:700!important;
+  text-decoration:underline!important;
+  text-underline-offset:2px!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-domestic-rule-card{
+    padding:15px 16px!important;font-size:13px!important;
+  }
+}
