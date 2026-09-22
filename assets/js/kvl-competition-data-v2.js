@@ -1,7 +1,7 @@
 /* KVL V2 DATA ONLY contract. Shared by the browser loader and production builder. */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.KVLCompetitionDataV2=api;})(typeof window==='object'?window:globalThis,function(){
 'use strict';
-const MODES={standings:['pools-combined','single-league','none'],participants:['groups','flat'],roster:['full','link-only','none'],knockout:['bracket-8','none']};
+const MODES={standings:['pools-combined','single-league','none'],participants:['groups','flat'],roster:['full','link-only','none'],knockout:['bracket-8','bracket-4','none']};
 const list=x=>Array.isArray(x)?x:[];
 // Codes/participant IDs are the only routing identities. Display names never resolve a team.
 function participant(d,ref){
