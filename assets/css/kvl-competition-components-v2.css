@@ -1071,3 +1071,145 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="loadin
   transition:none!important;
   animation:none!important;
 }
+
+
+/* DOMESTIC TEMPLATE V1.4 · alignment + soft division cards · 2026-09-22 */
+
+/* 1. Exact schedule axis:
+   [logo][team]  <gap>  [score]  <gap>  [team][logo]
+   Logos, result scores and team blocks keep identical vertical axes. */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-match-board{
+    box-sizing:border-box!important;
+    width:500px!important;
+    grid-template-columns:211px 58px 211px!important;
+    column-gap:10px!important;
+    justify-self:center!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side{
+    box-sizing:border-box!important;
+    width:211px!important;
+    min-width:211px!important;
+    gap:6px!important;
+    padding:0!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left{
+    grid-template-columns:42px 163px!important;
+    justify-content:start!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right{
+    grid-template-columns:163px 42px!important;
+    justify-content:start!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-inline-logo{
+    box-sizing:border-box!important;
+    width:42px!important;
+    min-width:42px!important;
+    max-width:42px!important;
+    height:42px!important;
+    margin:0!important;
+    justify-self:stretch!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-inline-logo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-slot-copy{
+    box-sizing:border-box!important;
+    width:163px!important;
+    min-width:0!important;
+    max-width:163px!important;
+    margin:0!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left .kvl1180-slot-copy{
+    text-align:right!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right .kvl1180-slot-copy{
+    text-align:left!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-score{
+    box-sizing:border-box!important;
+    width:58px!important;
+    min-width:58px!important;
+    max-width:58px!important;
+    margin:0!important;
+    text-align:center!important;
+    justify-self:center!important;
+    font-variant-numeric:tabular-nums!important;
+  }
+}
+
+/* 2. Final ranking non-champion cards: division-colored soft backgrounds. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-final-card[data-final-rank="2"],
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-final-card[data-final-rank="3"]{
+  background:#EEF4F8!important;
+  border-color:#C8D7E4!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-final-card[data-final-rank="2"],
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-final-card[data-final-rank="3"]{
+  background:#FFF2F7!important;
+  border-color:#EDBED0!important;
+}
+
+/* 3. Groups status and ranking-rule cards: remove remaining legacy green. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #groups .kvl1180-groups-status span,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #groups .kvl1180-groups-rule{
+  background:#EEF4F8!important;
+  border-color:#C8D7E4!important;
+  color:#17365D!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #groups .kvl1180-groups-status span,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #groups .kvl1180-groups-rule{
+  background:#FFF2F7!important;
+  border-color:#EDBED0!important;
+  color:#7D3655!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #groups .kvl1180-groups-status strong,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #groups .kvl1180-groups-rule strong{
+  color:#17365D!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #groups .kvl1180-groups-status strong,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #groups .kvl1180-groups-rule strong{
+  color:#A43F68!important;
+}
+
+/* 4. Schedule stage-filter card: light navy for men, light pink for women. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #schedule .kvl1180-schedule-toolbar{
+  background:#EEF4F8!important;
+  border-color:#C8D7E4!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #schedule .kvl1180-schedule-toolbar{
+  background:#FFF2F7!important;
+  border-color:#EDBED0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #schedule .kvl1180-stage-filters button:not(.is-active){
+  background:#F8FBFD!important;
+  border-color:#C8D7E4!important;
+  color:#17365D!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #schedule .kvl1180-stage-filters button:not(.is-active){
+  background:#FFF8FB!important;
+  border-color:#EDBED0!important;
+  color:#A43F68!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #schedule .kvl1180-stage-filters button:not(.is-active):hover{
+  background:#E4EDF4!important;
+  border-color:#9DB4C8!important;
+  color:#17365D!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #schedule .kvl1180-stage-filters button:not(.is-active):hover{
+  background:#FCE4EE!important;
+  border-color:#D99AB3!important;
+  color:#A43F68!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #schedule .kvl1180-stage-filters button.is-active{
+  background:#163A5F!important;
+  border-color:#163A5F!important;
+  color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #schedule .kvl1180-stage-filters button.is-active{
+  background:#D2648F!important;
+  border-color:#D2648F!important;
+  color:#fff!important;
+}
