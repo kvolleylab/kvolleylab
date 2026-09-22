@@ -1,0 +1,673 @@
+{
+  "status": "completed",
+  "stageLabel": "우석대학교 우승 · 대회 종료",
+  "dateLabel": "2026-08-16 ~ 2026-08-20",
+  "locationLabel": "충청북도 단양군",
+  "venueLabel": "단양문화체육센터 · 단양국민체육센터",
+  "teamCount": 7,
+  "groupCount": 2,
+  "matchCount": 12,
+  "knockoutTeamCount": 4,
+  "champion": "우석대",
+  "championAchievement": "2026 단양대회 여대부 우승",
+  "scheduleNote": "한국시간(KST) · 여대부 예선 9경기 + 결선 3경기",
+  "standingsNote": "여대부 예선 9경기 종료 · A/B조",
+  "standingsRule": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승 순으로 적용",
+  "meaning": {
+    "eyebrow": "UNIVERSITY COMPETITION",
+    "title": "2026 대한항공배 전국대학배구 단양대회",
+    "note": "한국대학배구연맹 주최 · 충청북도 단양군 개최"
+  },
+  "genderLinks": {
+    "men": "/competition-engine.html?competition=university-danyang-men-2026"
+  },
+  "participants": [
+    {
+      "code": "KIU",
+      "name": "경일대",
+      "en": "Kyungil University",
+      "group": "A",
+      "fullName": "경일대학교"
+    },
+    {
+      "code": "HNU",
+      "name": "호남대",
+      "en": "Honam University",
+      "group": "A",
+      "fullName": "호남대학교"
+    },
+    {
+      "code": "DEU",
+      "name": "동의대",
+      "en": "Dong-Eui University",
+      "group": "A",
+      "fullName": "동의대학교"
+    },
+    {
+      "code": "MCS",
+      "name": "목포과학대",
+      "en": "Mokpo Science University",
+      "group": "B",
+      "fullName": "목포과학대학교"
+    },
+    {
+      "code": "DKU",
+      "name": "단국대",
+      "en": "Dankook University",
+      "group": "B",
+      "fullName": "단국대학교"
+    },
+    {
+      "code": "WKU",
+      "name": "우석대",
+      "en": "Woosuk University",
+      "group": "B",
+      "fullName": "우석대학교"
+    },
+    {
+      "code": "KWU",
+      "name": "광주여대",
+      "en": "Kwangju Women's University",
+      "group": "B",
+      "fullName": "광주여자대학교"
+    }
+  ],
+  "matches": [
+    {
+      "id": "W01",
+      "date": "2026-08-16",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "MCS"
+      },
+      "away": {
+        "code": "KWU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "W02",
+      "date": "2026-08-16",
+      "time": "15:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HNU"
+      },
+      "away": {
+        "code": "DEU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 15:30 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "W03",
+      "date": "2026-08-16",
+      "time": "18:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "DKU"
+      },
+      "away": {
+        "code": "WKU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 18:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "W04",
+      "date": "2026-08-17",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "MCS"
+      },
+      "away": {
+        "code": "WKU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 11,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "W05",
+      "date": "2026-08-17",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "DKU"
+      },
+      "away": {
+        "code": "KWU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "W06",
+      "date": "2026-08-17",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KIU"
+      },
+      "away": {
+        "code": "DEU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 9
+          },
+          {
+            "home": 25,
+            "away": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "W07",
+      "date": "2026-08-18",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "MCS"
+      },
+      "away": {
+        "code": "DKU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "W08",
+      "date": "2026-08-18",
+      "time": "11:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KIU"
+      },
+      "away": {
+        "code": "HNU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "W09",
+      "date": "2026-08-18",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "WKU"
+      },
+      "away": {
+        "code": "KWU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "W10",
+      "date": "2026-08-19",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "KWU"
+      },
+      "away": {
+        "code": "KIU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 10
+          },
+          {
+            "home": 15,
+            "away": 9
+          }
+        ]
+      },
+      "round": "SF",
+      "nextMatchId": "W12",
+      "bracketLabel": "준결승"
+    },
+    {
+      "id": "W11",
+      "date": "2026-08-19",
+      "time": "11:30",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "WKU"
+      },
+      "away": {
+        "code": "HNU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 13
+          }
+        ]
+      },
+      "round": "SF",
+      "nextMatchId": "W12",
+      "bracketLabel": "준결승"
+    },
+    {
+      "id": "W12",
+      "date": "2026-08-20",
+      "time": "11:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "WKU"
+      },
+      "away": {
+        "code": "KWU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 11:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 18,
+            "away": 16
+          }
+        ]
+      },
+      "round": "FINAL",
+      "nextMatchId": "",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "KIU"
+            },
+            "wins": 2,
+            "losses": 0,
+            "points": 6,
+            "setRatio": "MAX",
+            "pointRatio": "1.829",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "HNU"
+            },
+            "wins": 1,
+            "losses": 1,
+            "points": 3,
+            "setRatio": "0.750",
+            "pointRatio": "0.947",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "DEU"
+            },
+            "wins": 0,
+            "losses": 2,
+            "points": 0,
+            "setRatio": "0.167",
+            "pointRatio": "0.647",
+            "status": "eliminated"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "WKU"
+            },
+            "wins": 3,
+            "losses": 0,
+            "points": 8,
+            "setRatio": "4.500",
+            "pointRatio": "1.242",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "KWU"
+            },
+            "wins": 2,
+            "losses": 1,
+            "points": 7,
+            "setRatio": "1.600",
+            "pointRatio": "1.112",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "MCS"
+            },
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "setRatio": "0.667",
+            "pointRatio": "0.880",
+            "status": "eliminated"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "DKU"
+            },
+            "wins": 0,
+            "losses": 3,
+            "points": 0,
+            "setRatio": "0.111",
+            "pointRatio": "0.790",
+            "status": "eliminated"
+          }
+        ]
+      }
+    ]
+  },
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "WKU",
+      "team": "우석대",
+      "result": "우승"
+    },
+    {
+      "rank": 2,
+      "code": "KWU",
+      "team": "광주여대",
+      "result": "준우승"
+    },
+    {
+      "rank": 3,
+      "code": "KIU",
+      "team": "경일대",
+      "result": "공동 3위"
+    },
+    {
+      "rank": 3,
+      "code": "HNU",
+      "team": "호남대",
+      "result": "공동 3위"
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "2026 단양대회 대회요강",
+      "url": "https://drive.google.com/file/d/1qkV-B6YAJsG4Rn8GOEmODF3Ro2XlIhDj/view?usp=drivesdk"
+    },
+    {
+      "title": "여대부 공식 결과",
+      "url": "https://www.kuvf.co.kr/669"
+    }
+  ],
+  "rosterPendingLabel": "단양대회 선수명단 MASTER 연동 검수 후 연결합니다.",
+  "domesticRules": {
+    "standings": {
+      "title": "순위 결정 방법",
+      "body": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승 순으로 순위를 결정합니다.",
+      "emphasis": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승. 각 조 상위 2팀 준결승 진출.",
+      "note": "2026 단양대회 공식 대회요강 기준",
+      "sourceUrl": "https://drive.google.com/file/d/1qkV-B6YAJsG4Rn8GOEmODF3Ro2XlIhDj/view?usp=drivesdk"
+    },
+    "knockout": {
+      "title": "여대부 결선 진행 방식",
+      "body": "A조와 B조 각 조 상위 2팀이 준결승에 진출합니다. 준결승 승리팀은 결승에 진출하며, 준결승 패배팀은 공동 3위가 됩니다.",
+      "note": "공식 조편성·결선 결과 기준",
+      "sourceUrl": "https://drive.google.com/file/d/1qkV-B6YAJsG4Rn8GOEmODF3Ro2XlIhDj/view?usp=drivesdk"
+    }
+  }
+}
