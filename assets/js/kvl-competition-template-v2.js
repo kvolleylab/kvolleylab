@@ -157,7 +157,22 @@ function applyResources(d){
 }
 
 function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
+
+document.addEventListener('click',event=>{
+  if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  const link=event.target.closest('.kvl1180-tabs a[data-view]');
+  if(!link||link.getAttribute('aria-disabled')==='true')return;
+  const next=new URL(link.href,location.href),current=new URL(location.href);
+  if(next.origin!==current.origin||next.pathname!==current.pathname)return;
+  if(next.searchParams.get('competition')!==current.searchParams.get('competition'))return;
+  event.preventDefault();
+  history.pushState(null,'',next.pathname+next.search);
+  applyView();
+  const view=currentView(),target=document.querySelector(`.kvl1180-view[data-view="${CSS.escape(view)}"]:not([hidden])`);
+  if(target&&matchMedia('(max-width:680px)').matches)target.scrollIntoView({block:'start'});
+},{capture:true});
+
 if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();}
-window.addEventListener('popstate',apply);
+window.addEventListener('popstate',applyView);
 window.KVLCompetitionTemplateV2={apply,applyView,viewUrl,currentView};
 })();
