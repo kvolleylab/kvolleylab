@@ -205,3 +205,27 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .
     margin-top:10px;
   }
 }
+
+
+/* Domestic match metadata: date/time with stage · pool · short venue directly below. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-match-meta{
+  align-self:center;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-match-meta-detail{
+  display:block;
+  margin-top:5px;
+  color:#6b7a8b;
+  font-size:clamp(9px,.72vw,11px);
+  font-weight:850;
+  line-height:1.3;
+  white-space:normal;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-match-meta time{
+    white-space:normal;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-match-meta-detail{
+    margin-top:3px;
+    font-size:9px;
+  }
+}
