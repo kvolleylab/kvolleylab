@@ -1213,3 +1213,69 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
   border-color:#D2648F!important;
   color:#fff!important;
 }
+
+
+/* DOMESTIC TEMPLATE V1.5 · resource palette + team/logo adjacency + boot paint guard */
+
+/* 1. Official resources: division palette, no heavy card-title weight. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #resources .kvl1180-source{
+  background:#EEF4F8!important;
+  border-color:#C8D7E4!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #resources .kvl1180-source{
+  background:#FFF2F7!important;
+  border-color:#EDBED0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #resources .kvl1180-source a{
+  background:#F8FBFD!important;
+  border-color:#C8D7E4!important;
+  color:#17365D!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #resources .kvl1180-source a{
+  background:#FFF8FB!important;
+  border-color:#EDBED0!important;
+  color:#A43F68!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #resources .kvl1180-source-copy strong{
+  font-weight:400!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #resources .kvl1180-source-copy,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #resources .kvl1180-source-copy span{
+  font-weight:400!important;
+}
+
+/* 2. Logo and team name must touch as one visual unit.
+   Keep logo axes fixed; move text to the logo-facing edge. */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left .kvl1180-slot-copy{
+    text-align:left!important;
+    justify-self:start!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right .kvl1180-slot-copy{
+    text-align:right!important;
+    justify-self:end!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-slot-copy strong{
+    display:block!important;
+    width:max-content!important;
+    max-width:100%!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left .kvl1180-slot-copy strong{
+    margin-right:auto!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right .kvl1180-slot-copy strong{
+    margin-left:auto!important;
+  }
+}
+
+/* 3. Hide the competition shell from the very first boot frame. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="boot"] [data-kvl-shell],
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="loading"] [data-kvl-shell]{
+  visibility:hidden!important;
+  opacity:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="boot"] [data-kvl-shell] *,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="loading"] [data-kvl-shell] *{
+  transition:none!important;
+  animation:none!important;
+}
