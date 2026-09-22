@@ -1,0 +1,1640 @@
+{
+  "status": "completed",
+  "stageLabel": "인하대학교 우승 · 대회 종료",
+  "dateLabel": "2026-08-12 ~ 2026-08-20",
+  "locationLabel": "충청북도 단양군",
+  "venueLabel": "단양국민체육센터 · 단양문화체육센터",
+  "teamCount": 15,
+  "groupCount": 3,
+  "matchCount": 35,
+  "knockoutTeamCount": 6,
+  "champion": "인하대",
+  "championAchievement": "2026 단양대회 남대부 우승",
+  "scheduleNote": "한국시간(KST) · 남대부 예선 30경기 + 결선 5경기",
+  "standingsNote": "남대부 예선 30경기 종료 · A/B/C조",
+  "standingsRule": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승 순으로 적용",
+  "meaning": {
+    "eyebrow": "UNIVERSITY COMPETITION",
+    "title": "2026 대한항공배 전국대학배구 단양대회",
+    "note": "한국대학배구연맹 주최 · 충청북도 단양군 개최"
+  },
+  "genderLinks": {
+    "women": "/competition-engine.html?competition=university-danyang-women-2026"
+  },
+  "participants": [
+    {
+      "code": "HYU",
+      "name": "한양대",
+      "en": "Hanyang University",
+      "group": "A",
+      "logo": "/assets/images/universities/hanyang-standardized.jpg?v=20260730-2",
+      "fullName": "한양대학교"
+    },
+    {
+      "code": "GNU",
+      "name": "경상국립대",
+      "en": "Gyeongsang National University",
+      "group": "A",
+      "logo": "/assets/images/universities/gyeongsang.svg",
+      "fullName": "경상국립대학교"
+    },
+    {
+      "code": "CNU",
+      "name": "충남대",
+      "en": "Chungnam National University",
+      "group": "A",
+      "logo": "/assets/images/universities/chungnam.svg",
+      "fullName": "충남대학교"
+    },
+    {
+      "code": "HIU",
+      "name": "홍익대",
+      "en": "Hongik University",
+      "group": "A",
+      "logo": "/assets/images/universities/hongik-standardized.jpg?v=20260730-2",
+      "fullName": "홍익대학교"
+    },
+    {
+      "code": "JBU",
+      "name": "중부대",
+      "en": "Joongbu University",
+      "group": "A",
+      "logo": "/assets/images/universities/joongbu.svg",
+      "fullName": "중부대학교"
+    },
+    {
+      "code": "CSU",
+      "name": "조선대",
+      "en": "Chosun University",
+      "group": "B",
+      "logo": "/assets/images/universities/chosun.svg",
+      "fullName": "조선대학교"
+    },
+    {
+      "code": "HNU",
+      "name": "호남대",
+      "en": "Honam University",
+      "group": "B",
+      "fullName": "호남대학교"
+    },
+    {
+      "code": "INU",
+      "name": "인하대",
+      "en": "Inha University",
+      "group": "B",
+      "logo": "/assets/images/universities/inha-standardized.jpg?v=20260730-2",
+      "fullName": "인하대학교"
+    },
+    {
+      "code": "KIU",
+      "name": "경일대",
+      "en": "Kyungil University",
+      "group": "B",
+      "fullName": "경일대학교"
+    },
+    {
+      "code": "KHU",
+      "name": "경희대",
+      "en": "Kyung Hee University",
+      "group": "B",
+      "logo": "/assets/images/universities/kyunghee-standardized.jpg?v=20260730-2",
+      "fullName": "경희대학교"
+    },
+    {
+      "code": "MOK",
+      "name": "목포대",
+      "en": "Mokpo National University",
+      "group": "C",
+      "logo": "/assets/images/universities/mokpo.svg",
+      "fullName": "국립목포대학교"
+    },
+    {
+      "code": "SKKU",
+      "name": "성균관대",
+      "en": "Sungkyunkwan University",
+      "group": "C",
+      "logo": "/assets/images/universities/skku-standardized.jpg?v=20260730-2",
+      "fullName": "성균관대학교"
+    },
+    {
+      "code": "MJU",
+      "name": "명지대",
+      "en": "Myongji University",
+      "group": "C",
+      "logo": "/assets/images/universities/myongji.svg",
+      "fullName": "명지대학교"
+    },
+    {
+      "code": "WKU",
+      "name": "우석대",
+      "en": "Woosuk University",
+      "group": "C",
+      "fullName": "우석대학교"
+    },
+    {
+      "code": "KGU",
+      "name": "경기대",
+      "en": "Kyonggi University",
+      "group": "C",
+      "logo": "/assets/images/universities/kyonggi.svg",
+      "fullName": "경기대학교"
+    }
+  ],
+  "matches": [
+    {
+      "id": "M01",
+      "date": "2026-08-12",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "GNU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M02",
+      "date": "2026-08-12",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "INU"
+      },
+      "away": {
+        "code": "KIU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "M03",
+      "date": "2026-08-12",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HNU"
+      },
+      "away": {
+        "code": "KHU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M04",
+      "date": "2026-08-12",
+      "time": "16:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "CNU"
+      },
+      "away": {
+        "code": "HIU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M05",
+      "date": "2026-08-13",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "KHU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 27,
+            "away": 29
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M06",
+      "date": "2026-08-13",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "GNU"
+      },
+      "away": {
+        "code": "CNU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M07",
+      "date": "2026-08-13",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 28,
+            "away": 26
+          }
+        ]
+      }
+    },
+    {
+      "id": "M08",
+      "date": "2026-08-13",
+      "time": "16:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HNU"
+      },
+      "away": {
+        "code": "INU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M09",
+      "date": "2026-08-14",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "HIU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "M10",
+      "date": "2026-08-14",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KHU"
+      },
+      "away": {
+        "code": "INU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M11",
+      "date": "2026-08-14",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "KIU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "M12",
+      "date": "2026-08-14",
+      "time": "16:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "JBU"
+      },
+      "away": {
+        "code": "CNU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "M13",
+      "date": "2026-08-15",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HNU"
+      },
+      "away": {
+        "code": "KIU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M14",
+      "date": "2026-08-15",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HIU"
+      },
+      "away": {
+        "code": "GNU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "M15",
+      "date": "2026-08-15",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "CNU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "M16",
+      "date": "2026-08-15",
+      "time": "16:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "INU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M17",
+      "date": "2026-08-16",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KIU"
+      },
+      "away": {
+        "code": "KHU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M18",
+      "date": "2026-08-16",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CSU"
+      },
+      "away": {
+        "code": "HNU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "M19",
+      "date": "2026-08-16",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HIU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M20",
+      "date": "2026-08-16",
+      "time": "16:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "GNU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "M21",
+      "date": "2026-08-12",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "MJU"
+      },
+      "away": {
+        "code": "WKU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      }
+    },
+    {
+      "id": "M22",
+      "date": "2026-08-12",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "KGU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "M23",
+      "date": "2026-08-13",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "MOK"
+      },
+      "away": {
+        "code": "KGU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M24",
+      "date": "2026-08-13",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "MJU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "M25",
+      "date": "2026-08-14",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "KGU"
+      },
+      "away": {
+        "code": "MJU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "M26",
+      "date": "2026-08-14",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "MOK"
+      },
+      "away": {
+        "code": "WKU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 11
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "M27",
+      "date": "2026-08-15",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "WKU"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 12,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M28",
+      "date": "2026-08-15",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "MOK"
+      },
+      "away": {
+        "code": "MJU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 27
+          }
+        ]
+      }
+    },
+    {
+      "id": "M29",
+      "date": "2026-08-16",
+      "time": "10:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "MOK"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 27
+          }
+        ]
+      }
+    },
+    {
+      "id": "M30",
+      "date": "2026-08-16",
+      "time": "12:00",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "WKU"
+      },
+      "away": {
+        "code": "KGU"
+      },
+      "venueLabel": "단양문화체육센터",
+      "localTimeLabel": "한국 현지 12:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "M31",
+      "date": "2026-08-17",
+      "time": "10:00",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "MJU"
+      },
+      "away": {
+        "code": "INU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 10:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 6,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "round": "QF",
+      "nextMatchId": "M33",
+      "bracketLabel": "6강"
+    },
+    {
+      "id": "M32",
+      "date": "2026-08-17",
+      "time": "11:30",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "KHU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 30,
+            "away": 28
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      },
+      "round": "QF",
+      "nextMatchId": "M34",
+      "bracketLabel": "6강"
+    },
+    {
+      "id": "M33",
+      "date": "2026-08-19",
+      "time": "11:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "HYU"
+      },
+      "away": {
+        "code": "INU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 11:00 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 14,
+            "away": 16
+          }
+        ]
+      },
+      "round": "SF",
+      "nextMatchId": "M35",
+      "bracketLabel": "준결승"
+    },
+    {
+      "id": "M34",
+      "date": "2026-08-19",
+      "time": "13:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "JBU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "SF",
+      "nextMatchId": "M35",
+      "bracketLabel": "준결승"
+    },
+    {
+      "id": "M35",
+      "date": "2026-08-20",
+      "time": "13:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "INU"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "단양국민체육센터",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "round": "FINAL",
+      "nextMatchId": "",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "HYU"
+            },
+            "wins": 4,
+            "losses": 0,
+            "points": 12,
+            "setRatio": "6.000",
+            "pointRatio": "1.168",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "JBU"
+            },
+            "wins": 3,
+            "losses": 1,
+            "points": 9,
+            "setRatio": "3.333",
+            "pointRatio": "1.142",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "HIU"
+            },
+            "wins": 2,
+            "losses": 2,
+            "points": 6,
+            "setRatio": "1.000",
+            "pointRatio": "1.051",
+            "status": "eliminated"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "CNU"
+            },
+            "wins": 1,
+            "losses": 3,
+            "points": 3,
+            "setRatio": "0.444",
+            "pointRatio": "0.876",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "GNU"
+            },
+            "wins": 0,
+            "losses": 4,
+            "points": 0,
+            "setRatio": "0.000",
+            "pointRatio": "0.777",
+            "status": "eliminated"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "INU"
+            },
+            "wins": 4,
+            "losses": 0,
+            "points": 12,
+            "setRatio": "MAX",
+            "pointRatio": "1.395",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "KHU"
+            },
+            "wins": 3,
+            "losses": 1,
+            "points": 9,
+            "setRatio": "3.000",
+            "pointRatio": "1.086",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "KIU"
+            },
+            "wins": 2,
+            "losses": 2,
+            "points": 5,
+            "setRatio": "0.750",
+            "pointRatio": "0.961",
+            "status": "eliminated"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "CSU"
+            },
+            "wins": 1,
+            "losses": 3,
+            "points": 4,
+            "setRatio": "0.556",
+            "pointRatio": "0.962",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "HNU"
+            },
+            "wins": 0,
+            "losses": 4,
+            "points": 0,
+            "setRatio": "0.000",
+            "pointRatio": "0.723",
+            "status": "eliminated"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SKKU"
+            },
+            "wins": 4,
+            "losses": 0,
+            "points": 12,
+            "setRatio": "12.000",
+            "pointRatio": "1.346",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "MJU"
+            },
+            "wins": 3,
+            "losses": 1,
+            "points": 8,
+            "setRatio": "1.800",
+            "pointRatio": "1.013",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "KGU"
+            },
+            "wins": 2,
+            "losses": 2,
+            "points": 7,
+            "setRatio": "1.286",
+            "pointRatio": "1.011",
+            "status": "eliminated"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "MOK"
+            },
+            "wins": 1,
+            "losses": 3,
+            "points": 3,
+            "setRatio": "0.300",
+            "pointRatio": "0.960",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "WKU"
+            },
+            "wins": 0,
+            "losses": 4,
+            "points": 0,
+            "setRatio": "0.167",
+            "pointRatio": "0.771",
+            "status": "eliminated"
+          }
+        ]
+      }
+    ]
+  },
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "INU",
+      "team": "인하대",
+      "result": "우승"
+    },
+    {
+      "rank": 2,
+      "code": "SKKU",
+      "team": "성균관대",
+      "result": "준우승"
+    },
+    {
+      "rank": 3,
+      "code": "HYU",
+      "team": "한양대",
+      "result": "공동 3위"
+    },
+    {
+      "rank": 3,
+      "code": "JBU",
+      "team": "중부대",
+      "result": "공동 3위"
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "2026 단양대회 대회요강",
+      "url": "https://drive.google.com/file/d/1qkV-B6YAJsG4Rn8GOEmODF3Ro2XlIhDj/view?usp=drivesdk"
+    },
+    {
+      "title": "남대부 A조 공식 결과",
+      "url": "https://www.kuvf.co.kr/651"
+    },
+    {
+      "title": "남대부 B조 공식 결과",
+      "url": "https://www.kuvf.co.kr/652"
+    },
+    {
+      "title": "남대부 C조 공식 결과",
+      "url": "https://www.kuvf.co.kr/653"
+    }
+  ],
+  "rosterPendingLabel": "단양대회 선수명단 MASTER 연동 검수 후 연결합니다.",
+  "domesticRules": {
+    "standings": {
+      "title": "순위 결정 방법",
+      "body": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승 순으로 순위를 결정합니다.",
+      "emphasis": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승. 각 조 상위 2팀 6강 진출.",
+      "note": "2026 단양대회 공식 대회요강 기준",
+      "sourceUrl": "https://drive.google.com/file/d/1qkV-B6YAJsG4Rn8GOEmODF3Ro2XlIhDj/view?usp=drivesdk"
+    },
+    "knockout": {
+      "title": "6강 토너먼트 대진 추첨 방식",
+      "body": "각 조 예선 1위 3개 팀을 추첨해 (가)·(나)·(다)로 배정합니다. (가)와 (나)는 준결승에 자동 진출하고, (다)는 6강 진출팀 중 한 팀을 선택합니다. 선택되지 않은 나머지 두 팀은 잔여 6강전에 자동 편성됩니다.",
+      "sourceUrl": "https://drive.google.com/file/d/1qkV-B6YAJsG4Rn8GOEmODF3Ro2XlIhDj/view?usp=drivesdk"
+    }
+  }
+}
