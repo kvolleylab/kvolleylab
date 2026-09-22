@@ -876,3 +876,92 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
   background:#FFF8FB!important;
   color:#17365D!important;
 }
+
+
+/* DOMESTIC TEMPLATE V1.2 · schedule spacing + legacy text-logo parity · 2026-09-22 */
+
+/* 1. Restore the original time-to-match spacing.
+   Only tighten team ↔ score ↔ team inside the 500px match board. */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-match-row{
+    grid-template-columns:clamp(120px,12.7vw,162px) 500px minmax(285px,1fr)!important;
+    gap:clamp(10px,1.05vw,18px)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-match-board{
+    width:500px!important;
+    grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr)!important;
+    gap:2px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-side.is-left{
+    justify-content:flex-end!important;
+    padding-left:0!important;
+    text-align:right!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-side.is-right{
+    justify-content:flex-start!important;
+    padding-right:0!important;
+    text-align:left!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-side{
+    gap:7px!important;
+  }
+}
+
+/* 2. Text-logo boxes follow the connected Goseong page dimensions. */
+@media(min-width:681px){
+  /* schedule result row: old .cd-inline-logo = 42 × 42 */
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-inline-logo.is-school-mark{
+    width:42px!important;
+    height:42px!important;
+    padding:4px!important;
+    border-radius:11px!important;
+    font-size:12px!important;
+  }
+
+  /* participating university card: old .cd-team-mark = 68 × 68 */
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl-participant-flag.is-text-mark{
+    width:68px!important;
+    height:68px!important;
+    padding:8px!important;
+    border-radius:16px!important;
+    font-size:15px!important;
+    flex:0 0 68px!important;
+  }
+
+  /* final standings: old .cd-podium-logo = 68 × 68 */
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-final-flag.is-text-mark{
+    width:68px!important;
+    height:68px!important;
+    margin-top:14px!important;
+    padding:7px!important;
+    border-radius:16px!important;
+    font-size:15px!important;
+  }
+}
+@media(max-width:680px){
+  /* old connected page mobile inline logo = 38 × 38 */
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-inline-logo.is-school-mark{
+    width:38px!important;
+    height:38px!important;
+    padding:4px!important;
+    border-radius:10px!important;
+    font-size:11px!important;
+  }
+
+  /* old connected page mobile team mark = 60 × 60 */
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl-participant-flag.is-text-mark{
+    width:60px!important;
+    height:60px!important;
+    padding:7px!important;
+    border-radius:15px!important;
+    font-size:14px!important;
+    flex:0 0 60px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-final-flag.is-text-mark{
+    width:60px!important;
+    height:60px!important;
+    padding:7px!important;
+    border-radius:15px!important;
+    font-size:14px!important;
+  }
+}
