@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 360" role="img" aria-label="단양 남대부 배구대회 배경">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#041c35"/><stop offset=".42" stop-color="#0d416d"/><stop offset="1" stop-color="#5fa4d1"/></linearGradient>
+  <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b94bb"/><stop offset="1" stop-color="#123f63"/></linearGradient>
+  <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#03172c" stop-opacity=".96"/><stop offset=".48" stop-color="#03172c" stop-opacity=".68"/><stop offset=".72" stop-color="#03172c" stop-opacity=".18"/><stop offset="1" stop-color="#03172c" stop-opacity="0"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<rect width="1800" height="360" fill="url(#sky)"/>
+<circle cx="1420" cy="58" r="120" fill="#b9def0" opacity=".16" filter="url(#blur)"/>
+<path d="M0 175L110 115l105 44 120-76 130 78 120-49 110 61 120-91 155 104 120-61 140 68 135-85 155 66 120-38 80 40v174H0Z" fill="#173d56" opacity=".92"/>
+<path d="M0 210l135-52 105 43 124-50 133 54 123-37 112 48 125-58 138 57 120-31 124 45 127-38 104 38 150-35v166H0Z" fill="#245f79" opacity=".86"/>
+<path d="M0 245c250-24 430-20 690-6 270 16 565 7 1110-22v143H0Z" fill="url(#water)"/>
+<path d="M0 270c300-13 490-8 716 4 346 18 658 2 1084-30" fill="none" stroke="#b9e8f5" stroke-opacity=".28" stroke-width="4"/>
+<g opacity=".82" fill="none" stroke="#d8eef7" stroke-width="7">
+  <path d="M760 244 C900 160 1100 162 1240 244"/>
+  <path d="M740 244 H1295"/>
+  <path d="M830 244 L830 214 M920 244 L920 190 M1010 244 L1010 174 M1100 244 L1100 184 M1190 244 L1190 211"/>
+</g>
+<g transform="translate(1395 45)" fill="#062b52" opacity=".88">
+  <circle cx="125" cy="45" r="25"/>
+  <path d="M112 72c-18 20-37 55-42 93-4 31 13 65 40 74 27 8 47-10 50-37 4-36-10-69-13-96 20 11 38 30 54 52l18-14c-18-33-44-63-75-78-12-6-22-4-32 6Z"/>
+  <path d="M154 92l64-54 18 20-65 67Z"/>
+  <path d="M104 112L48 72 34 92l55 52Z"/>
+  <path d="M116 228l-39 73 27 12 42-72Z"/>
+  <path d="M144 224l61 60 22-19-59-66Z"/>
+  <circle cx="233" cy="31" r="20" fill="#d5ecf7" opacity=".78"/>
+</g>
+<rect width="1800" height="360" fill="url(#fade)"/>
+</svg>
