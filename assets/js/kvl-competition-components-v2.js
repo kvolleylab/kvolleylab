@@ -15,6 +15,7 @@ const name=t=>t?.name||t?.nameKo||t?.countryKo||t?.country_ko||t?.name_ko||t?.en
 const en=t=>t?.en||t?.nameEn||t?.country||t?.name_en||'';
 const code=t=>t?.code||t?.teamCode||'';
 const flag=t=>t?.flag||t?.flagUrl||'';
+const logo=t=>t?.logo||t?.logoUrl||t?.emblem||flag(t);
 const mid=m=>m?.id||m?.matchId||m?.match_id||'';
 const date=m=>m?.date||m?.dateKst||m?.date_kst||'';
 const time=m=>m?.time||m?.timeKst||m?.time_kst||'';
@@ -142,8 +143,15 @@ function renderCalendar(d){
 
 function stages(d){const x=d.structure?.schedule?.stages;if(Array.isArray(x)&&x.length)return x;return ['전체',...[...new Set((d.matches||[]).map(stage).filter(Boolean))]];}
 function setLine(m){const s=score(m);if(!s?.sets?.length)return '';return s.sets.map(x=>{const hv=x?.home??x?.[0],av=x?.away??x?.[1];if(hv===null||hv===undefined||hv===''||av===null||av===undefined||av==='')return '';const h=Number(hv),a=Number(av);return Number.isFinite(h)&&Number.isFinite(a)?`<span>${h}-${a}</span>`:'';}).filter(Boolean).join('');}
-function side(t,pos){const mark=flag(t)?`<span class="kvl1180-inline-logo">${teamLink(t,`<img src="${esc(flag(t))}" alt="${esc(name(t))} 국기" loading="lazy">`,'kvl-team-flag-link')}</span>`:`<span class="kvl1180-inline-logo kvl1180-seed-icon">${esc(code(t)||'?')}</span>`,english=en(t)||code(t),copy=`<span class="kvl1180-slot-copy"><strong>${teamLink(t)}</strong>${english?`<small>${teamLink(t,esc(english),'kvl-team-en-link')}</small>`:''}</span>`;return pos==='left'?`<span class="kvl1180-side is-left">${mark}${copy}</span>`:`<span class="kvl1180-side is-right">${copy}${mark}</span>`;}
-function matchRow(m){const s=score(m),detail=[stage(m),m.group?groupLabel(m.group):'',venue(m),window.KVLCompetitionDataV2.localTimeLabel(m)].filter(Boolean).join(' · ');return `<article data-match-id="${esc(mid(m))}" class="kvl1180-match-row ${[code(m.home),code(m.away)].includes(data().focusTeamCode)?'is-korea':''}"><div class="kvl1180-match-meta"><time>${esc(time(m)||'시간 미정')} KST</time></div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s?'':'is-upcoming'}">${s?`${s.home}-${s.away}`:'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${setLine(m)}</div><div class="kvl1180-match-detail">${esc(detail)}</div></article>`;}
+function side(t,pos){const asset=logo(t),mark=asset?`<span class="kvl1180-inline-logo">${teamLink(t,`<img src="${esc(asset)}" alt="${esc(name(t))} 엠블럼" loading="lazy">`,'kvl-team-flag-link')}</span>`:`<span class="kvl1180-inline-logo kvl1180-seed-icon">${esc(code(t)||'?')}</span>`,english=en(t)||code(t),copy=`<span class="kvl1180-slot-copy"><strong>${teamLink(t)}</strong>${english?`<small>${teamLink(t,esc(english),'kvl-team-en-link')}</small>`:''}</span>`;return pos==='left'?`<span class="kvl1180-side is-left">${mark}${copy}</span>`:`<span class="kvl1180-side is-right">${copy}${mark}</span>`;}
+function matchRow(m){
+ const s=score(m),d=data(),domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';
+ const shortVenue=domestic?venue(m).replace(/^고성군\s*/,''):venue(m);
+ const metaDetail=domestic?[stage(m),m.group?groupLabel(m.group):'',shortVenue].filter(Boolean).join(' · '):'';
+ const detail=domestic?'':[stage(m),m.group?groupLabel(m.group):'',venue(m),window.KVLCompetitionDataV2.localTimeLabel(m)].filter(Boolean).join(' · ');
+ const timeText=domestic?`${date(m)} ${time(m)||'시간 미정'}`:`${time(m)||'시간 미정'} KST`;
+ return `<article data-match-id="${esc(mid(m))}" class="kvl1180-match-row ${[code(m.home),code(m.away)].includes(d.focusTeamCode)?'is-korea':''}"><div class="kvl1180-match-meta"><time>${esc(timeText)}</time>${metaDetail?`<span class="kvl1180-match-meta-detail">${esc(metaDetail)}</span>`:''}</div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s?'':'is-upcoming'}">${s?`${s.home}-${s.away}`:'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${setLine(m)}</div>${detail?`<div class="kvl1180-match-detail">${esc(detail)}</div>`:''}</article>`;
+}
 function renderSchedule(d){
   const filters=q('[data-kvl-component="schedule-filters"]'),summary=q('[data-kvl-component="schedule-summary"]'),root=q('[data-kvl-component="schedule-list"]');if(!root)return;
   const ss=stages(d);if(!ss.includes(runtime.stage))runtime.stage='전체';
