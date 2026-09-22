@@ -433,3 +433,18 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-print-actions button:last-child:hover{
   background:#6f234a!important;
 }
+
+
+/* Domestic prototype typography test · 2026-09-22
+   User review only: remove heavy/bold typography from domestic competition pages.
+   International competition themes are intentionally untouched. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"],
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] *{
+  font-weight:400!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"]::before,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"]::after,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] *::before,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] *::after{
+  font-weight:400!important;
+}
