@@ -20,7 +20,13 @@
   if(/^university-/.test(slug)){body.dataset.kvlFamily='domestic';}
   if(/-women-/.test(slug)){body.dataset.kvlGender='women';}
   else if(/-men-/.test(slug)){body.dataset.kvlGender='men';}
-  const hide=()=>{body.dataset.kvlRenderState='loading';const shell=document.querySelector('[data-kvl-shell]');if(shell)shell.style.visibility='hidden';};
+  const hide=()=>{body.dataset.kvlRenderState='leaving';};
+  addEventListener('pageshow',event=>{
+    if(!event.persisted)return;
+    const shell=document.querySelector('[data-kvl-shell]');
+    if(shell)shell.style.removeProperty('visibility');
+    requestAnimationFrame(()=>{body.dataset.kvlRenderState='ready';});
+  });
   document.addEventListener('click',event=>{
     if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
     const link=event.target.closest('.kvl1180-tabs a[data-view], .kvl1180-gender a[data-gender-link]');
