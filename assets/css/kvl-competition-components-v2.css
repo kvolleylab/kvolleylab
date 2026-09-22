@@ -965,3 +965,109 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
     font-size:14px!important;
   }
 }
+
+
+/* DOMESTIC TEMPLATE V1.3 · stable match axis + participant logo parity + paint guard */
+
+/* 1. PC schedule alignment:
+   [logo][team] <> [score] <> [team][logo]
+   All logos and result scores share fixed vertical axes across every match. */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-match-row{
+    grid-template-columns:clamp(120px,12.7vw,162px) 500px minmax(285px,1fr)!important;
+    gap:clamp(10px,1.05vw,18px)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-match-board{
+    width:500px!important;
+    grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr)!important;
+    gap:10px!important;
+    justify-self:center!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side{
+    display:grid!important;
+    align-items:center!important;
+    min-width:0!important;
+    gap:8px!important;
+    padding:0!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left{
+    grid-template-columns:42px minmax(0,1fr)!important;
+    justify-content:stretch!important;
+    text-align:right!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left .kvl1180-inline-logo{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left .kvl1180-slot-copy{
+    grid-column:2!important;
+    grid-row:1!important;
+    min-width:0!important;
+    justify-self:stretch!important;
+    text-align:right!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right{
+    grid-template-columns:minmax(0,1fr) 42px!important;
+    justify-content:stretch!important;
+    text-align:left!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right .kvl1180-slot-copy{
+    grid-column:1!important;
+    grid-row:1!important;
+    min-width:0!important;
+    justify-self:stretch!important;
+    text-align:left!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right .kvl1180-inline-logo{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:end!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-score{
+    width:58px!important;
+    min-width:58px!important;
+    justify-self:center!important;
+    text-align:center!important;
+    font-variant-numeric:tabular-nums!important;
+  }
+}
+
+/* 2. Women's text emblems occupy the exact same participant-logo slot as men's image emblems. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl-participant-flag.is-text-mark{
+  box-sizing:border-box!important;
+  width:100%!important;
+  max-width:64px!important;
+  height:44px!important;
+  min-width:0!important;
+  padding:0!important;
+  margin:0!important;
+  flex:0 0 auto!important;
+  border-radius:10px!important;
+  font-size:13px!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl-participant-flag.is-text-mark{
+    width:100%!important;
+    max-width:64px!important;
+    height:42px!important;
+    padding:0!important;
+    border-radius:9px!important;
+    font-size:12px!important;
+  }
+}
+
+/* 3. Never paint the shell while data/theme attributes are still being assembled.
+   This blocks any transient base/international typography from becoming visible. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="loading"] [data-kvl-shell]{
+  visibility:hidden!important;
+  opacity:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="ready"] [data-kvl-shell]{
+  visibility:visible!important;
+  opacity:1!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="loading"] [data-kvl-shell] *{
+  transition:none!important;
+  animation:none!important;
+}
