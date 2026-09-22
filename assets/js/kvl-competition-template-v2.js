@@ -71,7 +71,19 @@ function applyMeta(d){
   txt(q('[data-kvl="qualifier-count"]'),d.knockoutTeamCount ?? '미정');
   txt(q('[data-kvl="venue-primary"]'),d.venuePrimary||d.locationLabel||'미정');
   txt(q('[data-kvl="venue-secondary"]'),d.venueSecondary||d.venueLabel||'확정 전');
-  const teamBadge=q('[data-kvl="hero-team-count"]'); if(teamBadge)txt(teamBadge,d.teamCount?`${d.teamCount}개국`:'참가국 확정 전');
+  const domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';
+  if(domestic){
+    const kpis=q('.kvl1180-view[data-view="overview"] .kvl1180-kpis');
+    const cards=kpis?qa('.kvl1180-kpi',kpis):[];
+    if(cards[0]){
+      txt(q('.kvl1180-kpi-copy>span',cards[0]),d.structure?.labels?.participantsKpi||'참가팀');
+      txt(q('.kvl1180-kpi-copy small',cards[0]),d.structure?.labels?.participantsKpiUnit||'팀');
+    }
+    if(cards[3]){
+      txt(q('.kvl1180-kpi-copy small',cards[3]),d.structure?.labels?.knockoutKpiUnit||'팀');
+    }
+  }
+  const teamBadge=q('[data-kvl="hero-team-count"]'); if(teamBadge)txt(teamBadge,d.teamCount?`${d.teamCount}${domestic?'팀':'개국'}`:(domestic?'참가팀 확정 전':'참가국 확정 전'));
   const links=d.genderLinks||{};
   const men=q('[data-gender-link="men"]'), women=q('[data-gender-link="women"]');
   for(const [a,target] of [[men,links.men],[women,links.women]]){
