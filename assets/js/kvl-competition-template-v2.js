@@ -88,8 +88,12 @@ function applyMeta(d){
   const men=q('[data-gender-link="men"]'), women=q('[data-gender-link="women"]');
   for(const [a,target] of [[men,links.men],[women,links.women]]){
     if(!a)continue;
-    if(target){const u=new URL(target,location.href);u.searchParams.set('view',currentView());a.href=u.href;a.removeAttribute('aria-disabled');a.classList.remove('is-disabled');}
-    else{a.removeAttribute('href');a.setAttribute('aria-disabled','true');a.classList.add('is-disabled');}
+    if(target){
+      const u=new URL(target,location.href),switchView=currentView()==='team'?'schedule':currentView();
+      u.searchParams.set('view',switchView);
+      u.searchParams.delete('team');
+      a.href=u.href;a.removeAttribute('aria-disabled');a.classList.remove('is-disabled');
+    }else{a.removeAttribute('href');a.setAttribute('aria-disabled','true');a.classList.add('is-disabled');}
   }
   if(men)men.classList.toggle('is-active',d.gender!=='women');
   if(women)women.classList.toggle('is-active',d.gender==='women');
