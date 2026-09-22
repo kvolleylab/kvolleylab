@@ -50,11 +50,13 @@
     }
   },
   "hero": {
-    "pcImage": "/assets/images/competitions/vnl-men-2026-hero.webp",
-    "mobileImage": "/assets/images/competitions/vnl-men-2026-hero.webp",
+    "pcImage": "/assets/images/competitions/university-goseong-women-2026-hero.svg",
+    "mobileImage": "/assets/images/competitions/university-goseong-women-2026-hero.svg",
     "alt": "2026 대한항공배 전국대학배구 고성대회",
-    "showImage": false,
-    "mode": "color-only"
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "72% center"
   },
   "seo": {
     "title": "2026 전국대학배구 고성대회 여대부 | K-Volley Lab",
