@@ -1449,3 +1449,18 @@ body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl1180-bracket-la
     display:none!important;
   }
 }
+
+
+/* DOMESTIC TEMPLATE V1.10 · restore approved schedule position for team-result parity */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-row{
+    grid-template-columns:clamp(120px,12.7vw,162px) minmax(0,600px) minmax(max-content,1fr)!important;
+    gap:clamp(10px,1.05vw,18px)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board{
+    width:334px!important;
+    grid-template-columns:132px 58px 132px!important;
+    column-gap:6px!important;
+    justify-self:start!important;
+  }
+}
