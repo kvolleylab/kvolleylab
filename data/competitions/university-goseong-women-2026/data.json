@@ -12,7 +12,7 @@
   "championAchievement": "2026 고성대회 여대부 우승",
   "scheduleNote": "한국시간(KST) · 여대부 예선 9경기 + 결선 3경기",
   "standingsNote": "여대부 예선 9경기 종료 · A/B조",
-  "standingsRule": "승리 경기 수 → 승점 → 세트 득실비 → 점수 득실비 순으로 적용",
+  "standingsRule": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승 순으로 적용",
   "meaning": {
     "eyebrow": "UNIVERSITY COMPETITION",
     "title": "2026 대한항공배 전국대학배구 고성대회",
@@ -661,5 +661,20 @@
       "url": "https://kuvf.co.kr/665"
     }
   ],
-  "rosterPendingLabel": "고성대회 선수명단 MASTER 최종 검수 후 연결합니다."
+  "rosterPendingLabel": "고성대회 선수명단 MASTER 최종 검수 후 연결합니다.",
+  "domesticRules": {
+    "standings": {
+      "title": "순위 결정 방법",
+      "body": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승 순으로 순위를 결정합니다.",
+      "emphasis": "승리 경기 수 → 득실점수비율 → 세트비율 → 승자승. 각 조 상위 2팀 준결승 진출.",
+      "note": "대회요강 및 공식 결선 결과 기준",
+      "sourceUrl": "https://drive.google.com/file/d/1OhVVPCwMJzwTRklLPbdkWE6TYylYB4nk/view?usp=drivesdk"
+    },
+    "knockout": {
+      "title": "여대부 결선 진행 방식",
+      "body": "A조와 B조 각 조 상위 2팀이 준결승에 진출합니다. 준결승 승리팀은 결승에 진출하며, 준결승 패배팀은 공동 3위가 됩니다.",
+      "note": "공식 조편성·결선 결과 기준",
+      "sourceUrl": "https://drive.google.com/file/d/1OhVVPCwMJzwTRklLPbdkWE6TYylYB4nk/view?usp=drivesdk"
+    }
+  }
 }
