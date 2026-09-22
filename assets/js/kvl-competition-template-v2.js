@@ -71,7 +71,7 @@ function applyMeta(d){
   txt(q('[data-kvl="qualifier-count"]'),d.knockoutTeamCount ?? '미정');
   txt(q('[data-kvl="venue-primary"]'),d.venuePrimary||d.locationLabel||'미정');
   txt(q('[data-kvl="venue-secondary"]'),d.venueSecondary||d.venueLabel||'확정 전');
-  const teamBadge=q('[data-kvl="hero-team-count"]'); if(teamBadge){const domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';txt(teamBadge,d.teamCount?`${d.teamCount}${domestic?'개 대학':'개국'}`:(domestic?'참가대학 확정 전':'참가국 확정 전'));}
+  const teamBadge=q('[data-kvl="hero-team-count"]'); if(teamBadge)txt(teamBadge,d.teamCount?`${d.teamCount}개국`:'참가국 확정 전');
   const links=d.genderLinks||{};
   const men=q('[data-gender-link="men"]'), women=q('[data-gender-link="women"]');
   for(const [a,target] of [[men,links.men],[women,links.women]]){
@@ -81,48 +81,6 @@ function applyMeta(d){
   }
   if(men)men.classList.toggle('is-active',d.gender!=='women');
   if(women)women.classList.toggle('is-active',d.gender==='women');
-}
-
-function applyFamilyLayout(d){
-  const domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';
-  document.body.classList.toggle('kvl-domestic-template',domestic);
-  if(!domestic)return;
-
-  const rosterTab=q('.kvl1180-tabs [data-view="rosters"]');
-  if(rosterTab)rosterTab.textContent=d.structure?.labels?.participantsTitle||'참가대학';
-
-  const root=q('.kvl1180-view[data-view="overview"] .kvl1180-kpis');
-  if(!root)return;
-  root.innerHTML=`
-    <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-users-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>참가대학</span><strong data-kvl-domestic="team-count">미정</strong><small data-kvl-domestic-unit="team-count">개 대학</small></div></article>
-    <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-users-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>등록선수</span><strong data-kvl-domestic="player-count">수집 중</strong><small data-kvl-domestic-unit="player-count"></small></div></article>
-    <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-layers-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>전체 평균신장</span><strong data-kvl-domestic="avg-height-1">수집 중</strong><small data-kvl-domestic-unit="avg-height-1"></small></div></article>
-    <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-calendar-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>전체일정</span><strong data-kvl-domestic="match-count">미정</strong><small data-kvl-domestic-unit="match-count">경기</small></div></article>
-    <article class="kvl1180-kpi"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-layers-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>전체 평균신장</span><strong data-kvl-domestic="avg-height-2">수집 중</strong><small data-kvl-domestic-unit="avg-height-2"></small></div></article>
-    <article class="kvl1180-kpi is-domestic-venue"><div class="kvl1180-kpi-icon"><svg class="kvl1180-icon is-solid"><use href="#kvl-icon-pin-solid"/></svg></div><div class="kvl1180-kpi-copy"><span>대회장소</span><strong data-kvl-domestic="venue">미정</strong><small data-kvl-domestic="venue-detail"></small></div></article>`;
-
-  const playerCount=d.registeredPlayerCount;
-  const avgHeight=d.averageHeightCm;
-  txt(q('[data-kvl-domestic="team-count"]',root),d.teamCount??'미정');
-  txt(q('[data-kvl-domestic="player-count"]',root),playerCount??'수집 중');
-  txt(q('[data-kvl-domestic-unit="player-count"]',root),playerCount!==undefined&&playerCount!==null?'명':'');
-  for(const key of ['avg-height-1','avg-height-2']){
-    txt(q(`[data-kvl-domestic="${key}"]`,root),avgHeight??'수집 중');
-    txt(q(`[data-kvl-domestic-unit="${key}"]`,root),avgHeight!==undefined&&avgHeight!==null?'cm':'');
-  }
-  txt(q('[data-kvl-domestic="match-count"]',root),d.matchCount??'미정');
-  txt(q('[data-kvl-domestic="venue"]',root),d.venuePrimary||d.locationLabel||'미정');
-  txt(q('[data-kvl-domestic="venue-detail"]',root),d.venueSecondary||d.venueLabel||'');
-
-  const targets=[
-    viewUrl('rosters'),
-    viewUrl('rosters'),
-    viewUrl('rosters'),
-    viewUrl('schedule'),
-    viewUrl('rosters'),
-    viewUrl('schedule')
-  ];
-  qa('.kvl1180-kpi',root).forEach((card,i)=>{card.dataset.kvlTarget=targets[i];});
 }
 
 function applyStatus(d){
@@ -186,7 +144,7 @@ function applyResources(d){
   });
 }
 
-function apply(){const d=data();applyView();applyTheme(d);applyFamilyLayout(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
+function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
 if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();}
 window.addEventListener('popstate',apply);
 window.KVLCompetitionTemplateV2={apply,applyView,viewUrl,currentView};
