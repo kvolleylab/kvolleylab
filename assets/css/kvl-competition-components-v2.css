@@ -1464,3 +1464,15 @@ body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl1180-bracket-la
     justify-self:start!important;
   }
 }
+
+
+/* DOMESTIC TEMPLATE V1.11 · gender switch follow-up visual corrections */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board{
+    justify-self:center!important;
+  }
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-match-sets{
+  color:#17365D!important;
+  font-weight:700!important;
+}
