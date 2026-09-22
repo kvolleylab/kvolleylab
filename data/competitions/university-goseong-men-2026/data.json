@@ -8,7 +8,7 @@
   "groupCount": 3,
   "matchCount": 35,
   "knockoutTeamCount": 6,
-  "champion": "인하대학교",
+  "champion": "인하대",
   "championAchievement": "2026 고성대회 남대부 우승",
   "scheduleNote": "한국시간(KST) · 남대부 예선 30경기 + 결선 5경기",
   "standingsNote": "남대부 예선 30경기 종료 · A/B/C조",
@@ -24,108 +24,123 @@
   "participants": [
     {
       "code": "MOK",
-      "name": "국립목포대학교",
+      "name": "목포대",
       "en": "Mokpo National University",
       "group": "A",
-      "logo": "/assets/images/universities/mokpo.svg"
+      "logo": "/assets/images/universities/mokpo.svg",
+      "fullName": "국립목포대학교"
     },
     {
       "code": "KIU",
-      "name": "경일대학교",
+      "name": "경일대",
       "en": "Kyungil University",
       "group": "A",
-      "logo": "/assets/images/universities/kyungil.svg"
+      "logo": "/assets/images/universities/kyungil.svg",
+      "fullName": "경일대학교"
     },
     {
       "code": "SKKU",
-      "name": "성균관대학교",
+      "name": "성균관대",
       "en": "Sungkyunkwan University",
       "group": "A",
-      "logo": "/assets/images/universities/skku-standardized.jpg?v=20260730-2"
+      "logo": "/assets/images/universities/skku-standardized.jpg?v=20260730-2",
+      "fullName": "성균관대학교"
     },
     {
       "code": "KGU",
-      "name": "경기대학교",
+      "name": "경기대",
       "en": "Kyonggi University",
       "group": "A",
-      "logo": "/assets/images/universities/kyonggi.svg"
+      "logo": "/assets/images/universities/kyonggi.svg",
+      "fullName": "경기대학교"
     },
     {
       "code": "CSU",
-      "name": "조선대학교",
+      "name": "조선대",
       "en": "Chosun University",
       "group": "A",
-      "logo": "/assets/images/universities/chosun.svg"
+      "logo": "/assets/images/universities/chosun.svg",
+      "fullName": "조선대학교"
     },
     {
       "code": "JBU",
-      "name": "중부대학교",
+      "name": "중부대",
       "en": "Joongbu University",
       "group": "B",
-      "logo": "/assets/images/universities/joongbu.svg"
+      "logo": "/assets/images/universities/joongbu.svg",
+      "fullName": "중부대학교"
     },
     {
       "code": "MJU",
-      "name": "명지대학교",
+      "name": "명지대",
       "en": "Myongji University",
       "group": "B",
-      "logo": "/assets/images/universities/myongji.svg"
+      "logo": "/assets/images/universities/myongji.svg",
+      "fullName": "명지대학교"
     },
     {
       "code": "HIU",
-      "name": "홍익대학교",
+      "name": "홍익대",
       "en": "Hongik University",
       "group": "B",
-      "logo": "/assets/images/universities/hongik-standardized.jpg?v=20260730-2"
+      "logo": "/assets/images/universities/hongik-standardized.jpg?v=20260730-2",
+      "fullName": "홍익대학교"
     },
     {
       "code": "KHU",
-      "name": "경희대학교",
+      "name": "경희대",
       "en": "Kyung Hee University",
       "group": "B",
-      "logo": "/assets/images/universities/kyunghee-standardized.jpg?v=20260730-2"
+      "logo": "/assets/images/universities/kyunghee-standardized.jpg?v=20260730-2",
+      "fullName": "경희대학교"
     },
     {
       "code": "INU",
-      "name": "인하대학교",
+      "name": "인하대",
       "en": "Inha University",
       "group": "B",
-      "logo": "/assets/images/universities/inha-standardized.jpg?v=20260730-2"
+      "logo": "/assets/images/universities/inha-standardized.jpg?v=20260730-2",
+      "fullName": "인하대학교"
     },
     {
       "code": "HNU",
-      "name": "호남대학교",
+      "name": "호남대",
       "en": "Honam University",
       "group": "C",
-      "logo": "/assets/images/universities/honam.svg"
+      "logo": "/assets/images/universities/honam.svg",
+      "fullName": "호남대학교"
     },
     {
       "code": "HYU",
-      "name": "한양대학교",
+      "name": "한양대",
       "en": "Hanyang University",
       "group": "C",
-      "logo": "/assets/images/universities/hanyang-standardized.jpg?v=20260730-2"
+      "logo": "/assets/images/universities/hanyang-standardized.jpg?v=20260730-2",
+      "fullName": "한양대학교"
     },
     {
       "code": "GNU",
-      "name": "경상국립대학교",
+      "name": "경상국립대",
       "en": "Gyeongsang National University",
       "group": "C",
-      "logo": "/assets/images/universities/gyeongsang.svg"
+      "logo": "/assets/images/universities/gyeongsang.svg",
+      "fullName": "경상국립대학교"
     },
     {
       "code": "WKU",
-      "name": "우석대학교",
+      "name": "우석대",
       "en": "Woosuk University",
       "group": "C",
-      "logo": "/assets/images/universities/woosuk.svg"
+      "logo": "/assets/images/universities/woosuk.svg",
+      "fullName": "우석대학교"
     },
     {
       "code": "CNU",
-      "name": "충남대학교",
+      "name": "충남대",
       "en": "Chungnam National University",
       "group": "C",
-      "logo": "/assets/images/universities/chungnam.svg"
+      "logo": "/assets/images/universities/chungnam.svg",
+      "fullName": "충남대학교"
     }
   ],
   "matches": [
@@ -1667,14 +1682,26 @@
     {
       "rank": 1,
       "code": "INU",
-      "team": "인하대학교",
+      "team": "인하대",
       "result": "우승"
     },
     {
       "rank": 2,
       "code": "HYU",
-      "team": "한양대학교",
+      "team": "한양대",
       "result": "준우승"
+    },
+    {
+      "rank": 3,
+      "code": "JBU",
+      "team": "중부대",
+      "result": "공동 3위"
+    },
+    {
+      "rank": 3,
+      "code": "CSU",
+      "team": "조선대",
+      "result": "공동 3위"
     }
   ],
   "qualifications": [],
