@@ -18,7 +18,10 @@
       "standingsTitle": "조별순위",
       "standingsEyebrow": "POOL STANDINGS",
       "knockoutTitle": "결선 토너먼트",
-      "participantsTitle": "참가대학"
+      "participantsTitle": "참가대학",
+      "participantsKpi": "참가팀",
+      "participantsKpiUnit": "팀",
+      "knockoutKpiUnit": "팀"
     },
     "calendar": true,
     "schedule": {
@@ -51,7 +54,7 @@
     "mobileImage": "/assets/images/competitions/vnl-men-2026-hero.webp",
     "alt": "2026 대한항공배 전국대학배구 고성대회",
     "showImage": false,
-    "mode": "photo"
+    "mode": "color-only"
   },
   "seo": {
     "title": "2026 전국대학배구 고성대회 여대부 | K-Volley Lab",
