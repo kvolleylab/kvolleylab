@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 600" role="img" aria-label="고성대회 남대부 메인카드 배경">
+<defs>
+  <linearGradient id="bg" x1="0" x2="1"><stop offset="0" stop-color="#0f2f4b"/><stop offset=".62" stop-color="#184b73"/><stop offset="1" stop-color="#276c98"/></linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#1a5277"/><stop offset="1" stop-color="#0b2940"/></linearGradient>
+  <radialGradient id="sun"><stop stop-color="#fff2c9"/><stop offset="1" stop-color="#f0b46c" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1800" height="600" fill="url(#bg)"/>
+<circle cx="1535" cy="365" r="150" fill="url(#sun)" opacity=".9"/>
+<path d="M0 420 C230 380 410 402 590 365 C760 330 900 385 1080 345 C1250 308 1430 338 1800 285 L1800 600 L0 600Z" fill="#123a56" opacity=".95"/>
+<path d="M0 455 C270 430 520 445 750 410 C960 380 1150 402 1370 374 C1530 355 1660 365 1800 348 L1800 600 L0 600Z" fill="url(#sea)"/>
+<path d="M0 520 H1800" stroke="#6aa2c8" stroke-opacity=".35"/>
+<path d="M90 560 H1130" stroke="#6e9cbd" stroke-width="3" stroke-opacity=".22"/>
+<path d="M1310 600 V260" stroke="#081b2b" stroke-width="15"/>
+<path d="M1310 280 L1800 235 M1310 305 L1800 260 M1310 330 L1800 285 M1310 355 L1800 310 M1310 380 L1800 335" stroke="#0a2133" stroke-width="4" opacity=".95"/>
+<path d="M1380 245 V410 M1450 240 V405 M1520 235 V400 M1590 230 V395 M1660 225 V390 M1730 220 V385" stroke="#0a2133" stroke-width="3" opacity=".9"/>
+<g fill="#071a2a">
+  <circle cx="1450" cy="215" r="26"/>
+  <path d="M1428 242 C1410 278 1416 333 1442 366 L1480 356 C1480 310 1470 270 1455 240Z"/>
+  <path d="M1435 260 L1385 323 L1402 337 L1450 300Z"/>
+  <path d="M1465 255 L1518 175 L1532 184 L1490 288Z"/>
+  <path d="M1448 360 L1400 472 L1420 484 L1472 380Z"/>
+  <path d="M1470 360 L1505 480 L1528 475 L1494 352Z"/>
+  <circle cx="1660" cy="278" r="24"/>
+  <path d="M1638 300 C1628 332 1635 390 1660 420 L1694 410 C1695 365 1685 327 1670 300Z"/>
+  <path d="M1645 310 L1610 235 L1625 226 L1660 300Z"/>
+  <path d="M1676 306 L1708 225 L1722 232 L1690 324Z"/>
+</g>
+<circle cx="1555" cy="125" r="28" fill="#0a2133"/>
+<path d="M1540 115 Q1555 95 1570 115 Q1555 145 1540 115Z" fill="#3d79a3" opacity=".65"/>
+<path d="M1470 448 C1500 435 1535 437 1565 445" stroke="#b6d0e4" stroke-width="3" stroke-opacity=".3"/>
+<path d="M1160 462 C1220 453 1280 455 1330 460" stroke="#b6d0e4" stroke-width="2" stroke-opacity=".2"/>
+<rect x="0" y="0" width="900" height="600" fill="url(#bg)" opacity=".22"/>
+</svg>
