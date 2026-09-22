@@ -1354,3 +1354,98 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="leavin
   opacity:1!important;
   transform:none!important;
 }
+
+
+/* DOMESTIC TEMPLATE V1.9 · shared schedule/team-result rows + 4-team bracket */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-row{
+    grid-template-columns:clamp(120px,12.7vw,162px) 334px minmax(285px,1fr)!important;
+    gap:clamp(10px,1.05vw,18px)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board{
+    width:334px!important;
+    grid-template-columns:132px 58px 132px!important;
+    column-gap:6px!important;
+    justify-self:center!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-side{
+    box-sizing:border-box!important;
+    width:132px!important;
+    min-width:132px!important;
+    display:grid!important;
+    align-items:center!important;
+    gap:6px!important;
+    padding:0!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-side.is-left{
+    grid-template-columns:42px 84px!important;
+    text-align:left!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-side.is-right{
+    grid-template-columns:84px 42px!important;
+    text-align:right!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-inline-logo{
+    box-sizing:border-box!important;
+    width:42px!important;
+    min-width:42px!important;
+    max-width:42px!important;
+    height:42px!important;
+    margin:0!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-inline-logo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-slot-copy{
+    box-sizing:border-box!important;
+    width:84px!important;
+    max-width:84px!important;
+    min-width:0!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-slot-copy strong{
+    display:block!important;
+    width:max-content!important;
+    max-width:84px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-side.is-left .kvl1180-slot-copy strong{
+    margin-right:auto!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-side.is-right .kvl1180-slot-copy strong{
+    margin-left:auto!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-score{
+    box-sizing:border-box!important;
+    width:58px!important;
+    min-width:58px!important;
+    max-width:58px!important;
+    margin:0!important;
+    text-align:center!important;
+    justify-self:center!important;
+    font-variant-numeric:tabular-nums!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-set-scores{
+    min-width:285px!important;
+    justify-content:flex-end!important;
+  }
+}
+
+/* A true 4-team knockout starts at semifinals, never with an empty QF column. */
+body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl1180-bracket-ladder.is-bracket-4{
+  grid-template-columns:minmax(0,1fr) clamp(30px,3vw,42px) minmax(0,1fr)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl1180-bracket-ladder.is-bracket-4 .kvl1180-round-sf .kvl1180-match::before{
+  display:none!important;
+}
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl1180-bracket-ladder.is-bracket-4{
+    display:block!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl1180-bracket-ladder.is-bracket-4 .kvl1180-bracket-gap{
+    display:none!important;
+  }
+}
