@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 600" role="img" aria-label="고성대회 여대부 메인카드 배경">
+<defs>
+  <linearGradient id="bg" x1="0" x2="1"><stop offset="0" stop-color="#7d294f"/><stop offset=".58" stop-color="#b94c78"/><stop offset="1" stop-color="#e08aa8"/></linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d66e91"/><stop offset="1" stop-color="#7f2d50"/></linearGradient>
+  <radialGradient id="sun"><stop stop-color="#fff1dd"/><stop offset="1" stop-color="#ffd0bf" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1800" height="600" fill="url(#bg)"/>
+<circle cx="1515" cy="355" r="170" fill="url(#sun)" opacity=".8"/>
+<path d="M0 420 C240 385 420 405 600 372 C770 338 930 382 1095 350 C1270 315 1450 340 1800 300 L1800 600 L0 600Z" fill="#9a3f63" opacity=".8"/>
+<path d="M0 458 C300 438 520 446 755 415 C970 388 1180 404 1390 382 C1540 365 1680 367 1800 355 L1800 600 L0 600Z" fill="url(#sea)"/>
+<path d="M0 518 H1800" stroke="#f6c3d5" stroke-opacity=".38"/>
+<path d="M80 560 H1160" stroke="#f4d2dd" stroke-width="3" stroke-opacity=".24"/>
+<path d="M1320 600 V260" stroke="#6f2144" stroke-width="15"/>
+<path d="M1320 280 L1800 235 M1320 305 L1800 260 M1320 330 L1800 285 M1320 355 L1800 310 M1320 380 L1800 335" stroke="#77294a" stroke-width="4" opacity=".9"/>
+<path d="M1390 245 V410 M1460 240 V405 M1530 235 V400 M1600 230 V395 M1670 225 V390 M1740 220 V385" stroke="#77294a" stroke-width="3" opacity=".85"/>
+<g fill="#7a2a4a">
+  <circle cx="1450" cy="215" r="25"/>
+  <path d="M1442 193 Q1468 172 1482 198 Q1470 203 1458 200Z"/>
+  <path d="M1428 240 C1408 280 1417 336 1444 366 L1480 356 C1483 310 1471 270 1456 240Z"/>
+  <path d="M1436 260 L1388 322 L1404 337 L1450 302Z"/>
+  <path d="M1467 255 L1516 176 L1530 186 L1490 288Z"/>
+  <path d="M1448 360 L1400 472 L1420 484 L1472 380Z"/>
+  <path d="M1470 360 L1503 480 L1526 475 L1494 352Z"/>
+  <circle cx="1655" cy="350" r="23"/>
+  <path d="M1634 370 C1620 398 1625 448 1650 475 L1687 468 C1688 430 1680 394 1666 370Z"/>
+  <path d="M1640 380 L1604 438 L1620 449 L1652 408Z"/>
+  <path d="M1670 382 L1715 428 L1728 415 L1688 370Z"/>
+  <path d="M1650 472 L1607 545 L1625 555 L1665 490Z"/>
+  <path d="M1677 468 L1727 536 L1744 523 L1692 452Z"/>
+</g>
+<circle cx="1550" cy="125" r="28" fill="#8e315e"/>
+<path d="M1537 115 Q1552 95 1567 115 Q1552 145 1537 115Z" fill="#d57698" opacity=".7"/>
+<path d="M1470 448 C1500 435 1535 437 1565 445" stroke="#ffe5ef" stroke-width="3" stroke-opacity=".32"/>
+<path d="M1160 462 C1220 453 1280 455 1330 460" stroke="#ffe5ef" stroke-width="2" stroke-opacity=".22"/>
+<rect x="0" y="0" width="920" height="600" fill="#6f2144" opacity=".18"/>
+</svg>
