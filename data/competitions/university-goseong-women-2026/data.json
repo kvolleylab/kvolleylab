@@ -8,7 +8,7 @@
   "groupCount": 2,
   "matchCount": 12,
   "knockoutTeamCount": 4,
-  "champion": "광주여자대학교",
+  "champion": "광주여대",
   "championAchievement": "2026 고성대회 여대부 우승",
   "scheduleNote": "한국시간(KST) · 여대부 예선 9경기 + 결선 3경기",
   "standingsNote": "여대부 예선 9경기 종료 · A/B조",
@@ -24,45 +24,52 @@
   "participants": [
     {
       "code": "DEU",
-      "name": "동의대학교",
+      "name": "동의대",
       "en": "Dong-Eui University",
-      "group": "A"
+      "group": "A",
+      "fullName": "동의대학교"
     },
     {
       "code": "HNU",
-      "name": "호남대학교",
+      "name": "호남대",
       "en": "Honam University",
-      "group": "A"
+      "group": "A",
+      "fullName": "호남대학교"
     },
     {
       "code": "KWU",
-      "name": "광주여자대학교",
+      "name": "광주여대",
       "en": "Kwangju Women's University",
-      "group": "A"
+      "group": "A",
+      "fullName": "광주여자대학교"
     },
     {
       "code": "MCS",
-      "name": "목포과학대학교",
+      "name": "목포과학대",
       "en": "Mokpo Science University",
-      "group": "B"
+      "group": "B",
+      "fullName": "목포과학대학교"
     },
     {
       "code": "WKU",
-      "name": "우석대학교",
+      "name": "우석대",
       "en": "Woosuk University",
-      "group": "B"
+      "group": "B",
+      "fullName": "우석대학교"
     },
     {
       "code": "KIU",
-      "name": "경일대학교",
+      "name": "경일대",
       "en": "Kyungil University",
-      "group": "B"
+      "group": "B",
+      "fullName": "경일대학교"
     },
     {
       "code": "DKU",
-      "name": "단국대학교",
+      "name": "단국대",
       "en": "Dankook University",
-      "group": "B"
+      "group": "B",
+      "fullName": "단국대학교"
     }
   ],
   "matches": [
@@ -613,14 +620,26 @@
     {
       "rank": 1,
       "code": "KWU",
-      "team": "광주여자대학교",
+      "team": "광주여대",
       "result": "우승"
     },
     {
       "rank": 2,
       "code": "WKU",
-      "team": "우석대학교",
+      "team": "우석대",
       "result": "준우승"
+    },
+    {
+      "rank": 3,
+      "code": "DKU",
+      "team": "단국대",
+      "result": "공동 3위"
+    },
+    {
+      "rank": 3,
+      "code": "HNU",
+      "team": "호남대",
+      "result": "공동 3위"
     }
   ],
   "qualifications": [],
