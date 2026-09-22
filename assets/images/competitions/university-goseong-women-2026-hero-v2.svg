@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 600" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#8f315e"/>
+    <stop offset=".48" stop-color="#c65d84"/>
+    <stop offset="1" stop-color="#ef9fba"/>
+  </linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#d77697"/>
+    <stop offset="1" stop-color="#8b3358"/>
+  </linearGradient>
+  <radialGradient id="sun" cx=".82" cy=".58" r=".24">
+    <stop offset="0" stop-color="#fff7eb" stop-opacity=".95"/>
+    <stop offset=".28" stop-color="#ffd6c9" stop-opacity=".55"/>
+    <stop offset="1" stop-color="#ffd6c9" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="fade" x1="0" x2="1">
+    <stop offset="0" stop-color="#6f2144" stop-opacity=".72"/>
+    <stop offset=".55" stop-color="#6f2144" stop-opacity=".12"/>
+    <stop offset="1" stop-color="#6f2144" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+
+<rect width="1800" height="600" fill="url(#sky)"/>
+<rect width="1800" height="600" fill="url(#sun)"/>
+
+<path d="M0 385 C230 360 430 372 620 350 C820 326 990 357 1180 330 C1370 302 1535 318 1800 287 L1800 600 L0 600Z" fill="#a94d70" opacity=".55"/>
+<path d="M0 432 C290 412 540 420 770 395 C1010 370 1195 390 1390 368 C1565 350 1680 350 1800 344 L1800 600 L0 600Z" fill="url(#sea)"/>
+
+<ellipse cx="1495" cy="342" rx="155" ry="70" fill="#ffd6c9" opacity=".15"/>
+<circle cx="1510" cy="342" r="44" fill="#fff1e7" opacity=".72"/>
+
+<path d="M0 500 H1800" stroke="#ffd6e2" stroke-opacity=".35" stroke-width="2"/>
+<path d="M0 530 H1800" stroke="#ffd6e2" stroke-opacity=".18" stroke-width="2"/>
+<path d="M70 557 H1120" stroke="#ffe8ef" stroke-opacity=".25" stroke-width="3"/>
+
+<!-- net -->
+<g stroke="#7c274a" opacity=".9">
+  <path d="M1375 600 V250" stroke-width="14"/>
+  <path d="M1375 285 L1800 230" stroke-width="6"/>
+  <path d="M1375 312 L1800 257 M1375 339 L1800 284 M1375 366 L1800 311 M1375 393 L1800 338" stroke-width="3"/>
+  <path d="M1440 276 V397 M1505 268 V389 M1570 260 V381 M1635 252 V373 M1700 244 V365 M1765 236 V357" stroke-width="2.5"/>
+</g>
+
+<!-- attacking player -->
+<g fill="#7a2749">
+  <circle cx="1465" cy="205" r="25"/>
+  <path d="M1452 184 C1476 170 1493 188 1497 205 C1484 202 1475 199 1460 197Z"/>
+  <path d="M1444 230 C1423 267 1425 324 1454 360 L1490 350 C1494 307 1480 264 1464 232Z"/>
+  <path d="M1450 250 L1399 309 L1414 325 L1462 286Z"/>
+  <path d="M1477 247 L1525 164 L1540 174 L1498 283Z"/>
+  <path d="M1458 356 L1410 470 L1430 483 L1480 378Z"/>
+  <path d="M1481 355 L1514 479 L1538 474 L1507 347Z"/>
+</g>
+
+<!-- defensive player -->
+<g fill="#7d2c4c">
+  <circle cx="1650" cy="355" r="22"/>
+  <path d="M1642 336 C1662 327 1679 340 1682 354 C1672 352 1662 348 1653 348Z"/>
+  <path d="M1630 376 C1616 405 1622 449 1648 473 L1682 465 C1684 430 1675 399 1662 376Z"/>
+  <path d="M1638 386 L1605 434 L1620 447 L1651 412Z"/>
+  <path d="M1672 388 L1716 428 L1729 415 L1689 376Z"/>
+  <path d="M1649 468 L1607 540 L1625 552 L1665 488Z"/>
+  <path d="M1678 466 L1725 533 L1743 520 L1693 451Z"/>
+</g>
+
+<!-- ball -->
+<circle cx="1556" cy="124" r="29" fill="#8b3156"/>
+<path d="M1536 112 Q1555 91 1575 112 Q1556 143 1536 112Z" fill="#d77f9e" opacity=".75"/>
+<path d="M1542 139 Q1557 125 1570 140" fill="none" stroke="#eaa0b8" stroke-width="3" opacity=".75"/>
+
+<!-- distant lighthouse island -->
+<path d="M1240 397 C1280 368 1325 370 1364 395 L1380 407 L1225 407Z" fill="#8a3153" opacity=".85"/>
+<rect x="1306" y="353" width="10" height="34" fill="#7a2749"/>
+<rect x="1301" y="350" width="20" height="5" fill="#7a2749"/>
+
+<rect width="980" height="600" fill="url(#fade)"/>
+</svg>
