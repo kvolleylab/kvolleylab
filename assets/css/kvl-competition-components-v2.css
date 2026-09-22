@@ -1279,3 +1279,65 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="loadin
   transition:none!important;
   animation:none!important;
 }
+
+
+/* DOMESTIC TEMPLATE V1.6 · compact match spacing + smooth route reveal · 2026-09-23 */
+
+/* 1. Keep logo/name paired while moving both team groups modestly closer to the score. */
+@media(min-width:1101px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-match-board{
+    width:334px!important;
+    grid-template-columns:132px 58px 132px!important;
+    column-gap:6px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side{
+    width:132px!important;
+    min-width:132px!important;
+    gap:6px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-left{
+    grid-template-columns:42px 84px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-side.is-right{
+    grid-template-columns:84px 42px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-slot-copy{
+    width:84px!important;
+    max-width:84px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #schedule .kvl1180-slot-copy strong{
+    display:block!important;
+    max-width:84px!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+    white-space:nowrap!important;
+  }
+}
+
+/* 2. Reveal only after the domestic theme and final typography are settled. */
+body.kvl1180-prototype.kvl-competition-template-v2 [data-kvl-shell]{
+  transition:opacity .16s ease,transform .16s ease!important;
+  will-change:opacity,transform;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="loading"] [data-kvl-shell]{
+  visibility:hidden!important;
+  opacity:0!important;
+  transform:translateY(2px)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="ready"] [data-kvl-shell]{
+  visibility:visible!important;
+  opacity:1!important;
+  transform:none!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-render-state="leaving"] [data-kvl-shell]{
+  visibility:visible!important;
+  opacity:0!important;
+  transform:translateY(2px)!important;
+  pointer-events:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  body.kvl1180-prototype.kvl-competition-template-v2 [data-kvl-shell]{
+    transition:none!important;
+    transform:none!important;
+  }
+}
