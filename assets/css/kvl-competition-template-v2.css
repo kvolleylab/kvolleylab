@@ -229,3 +229,121 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .
     font-size:9px;
   }
 }
+
+
+/* Domestic competition visual parity refinements · Goseong reference */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-final-rank{
+  display:flex;align-items:center;justify-content:center;gap:3px;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-final-rank b{
+  font:inherit;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl-final-medal{
+  display:inline-block;
+  font-size:clamp(16px,1.45cqw,20px);
+  line-height:1;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-final-card.rank-3 .kvl1180-final-rank{
+  background:#f4ead9;
+  color:#8a5a24;
+}
+
+/* Direct semifinal bye path: dotted connector like the legacy Goseong bracket. */
+@media(min-width:901px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-qf-pair .kvl1180-match.is-bye::after{
+    border-top-style:dashed!important;
+    border-top-width:2px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-match.is-bye{
+    border-style:dashed;
+  }
+}
+
+/* MEN · domestic knockout = navy across 6강 / bye / semifinal / final. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-round-title,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-knockout-subhead h3{
+  color:#163a5f!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-match{
+  border-color:#a9c0d4!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-match-head{
+  background:#163a5f!important;
+  border-bottom-color:#163a5f!important;
+  color:#dce8f1!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-match-head strong{
+  color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-bracket-team.is-winner{
+  background:#eef4f8!important;
+}
+@media(min-width:901px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-qf-pair::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-qf-pair::before,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-qf-pair .kvl1180-match::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-round-sf .kvl1180-round-body::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-round-sf .kvl1180-round-body::before,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-round-sf .kvl1180-match::before,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-round-sf .kvl1180-match::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="men"] #knockout .kvl1180-round-final .kvl1180-match::before{
+    border-color:#6f8ba6!important;
+  }
+}
+
+/* WOMEN · all domestic competition accents = rose, including calendar and standings. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-calendar-title{
+  background:#8e315e!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-calendar-head h2,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-date-title strong,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-pool-rank,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-round-title,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-knockout-subhead h3{
+  color:#8e315e!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-pool-card-head{
+  background:linear-gradient(90deg,#8e315e,#a53d68)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-pool-card-head span{
+  color:#ffe6f0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-pool-row.is-qualified{
+  background:#fff7fa!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-pool-row.is-qualified::before{
+  background:#a53d68!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-date-head{
+  background:linear-gradient(90deg,#fff1f6,#fff8fb)!important;
+  border-bottom-color:#efd0de!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] .kvl1180-day.has-match{
+  background:#fffafd!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-match{
+  border-color:#e7a8c2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-match-head{
+  background:#8e315e!important;
+  border-bottom-color:#8e315e!important;
+  color:#ffe7f0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-match-head strong{
+  color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-bracket-team.is-winner{
+  background:#fff1f6!important;
+}
+@media(min-width:901px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-qf-pair::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-qf-pair::before,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-qf-pair .kvl1180-match::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-round-sf .kvl1180-round-body::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-round-sf .kvl1180-round-body::before,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-round-sf .kvl1180-match::before,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-round-sf .kvl1180-match::after,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][data-kvl-gender="women"] #knockout .kvl1180-round-final .kvl1180-match::before{
+    border-color:#cf87a7!important;
+  }
+}
