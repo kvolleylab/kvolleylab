@@ -13,6 +13,29 @@ function qa(sel,root=document){return [...root.querySelectorAll(sel)];}
 function currentView(){const p=new URLSearchParams(location.search),v=p.get('view')||(p.has('team')?'team':'overview');return VIEWS.has(v)?v:'overview';}
 function viewUrl(view,params={}){const u=new URL(location.href);u.hash='';u.searchParams.set('view',view);u.searchParams.delete('date');u.searchParams.delete('team');for(const [key,value] of Object.entries(params)){if(value!==undefined&&value!==null)u.searchParams.set(key,value);else u.searchParams.delete(key);}return u.pathname+u.search;}
 
+function syncGenderLinks(d=data()){
+  const links=d.genderLinks||{},view=currentView(),switchView=view==='team'?'schedule':view;
+  const men=q('[data-gender-link="men"]'),women=q('[data-gender-link="women"]');
+  for(const [a,target] of [[men,links.men],[women,links.women]]){
+    if(!a)continue;
+    if(target){
+      const u=new URL(target,location.href);
+      u.searchParams.set('view',switchView);
+      u.searchParams.delete('team');
+      u.searchParams.delete('date');
+      a.href=u.href;
+      a.removeAttribute('aria-disabled');
+      a.classList.remove('is-disabled');
+    }else{
+      a.removeAttribute('href');
+      a.setAttribute('aria-disabled','true');
+      a.classList.add('is-disabled');
+    }
+  }
+  if(men)men.classList.toggle('is-active',d.gender!=='women');
+  if(women)women.classList.toggle('is-active',d.gender==='women');
+}
+
 function applyView(){
   const view=currentView();
   qa('.kvl1180-view[data-view]').forEach(el=>{el.hidden=el.dataset.view!==view||el.dataset.kvlEmpty==='true';});
@@ -22,6 +45,7 @@ function applyView(){
     a.classList.toggle('is-active',active);
     if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
   });
+  syncGenderLinks();
 }
 
 
@@ -84,15 +108,7 @@ function applyMeta(d){
     }
   }
   const teamBadge=q('[data-kvl="hero-team-count"]'); if(teamBadge)txt(teamBadge,d.teamCount?`${d.teamCount}${domestic?'팀':'개국'}`:(domestic?'참가팀 확정 전':'참가국 확정 전'));
-  const links=d.genderLinks||{};
-  const men=q('[data-gender-link="men"]'), women=q('[data-gender-link="women"]');
-  for(const [a,target] of [[men,links.men],[women,links.women]]){
-    if(!a)continue;
-    if(target){const u=new URL(target,location.href);u.searchParams.set('view',currentView());a.href=u.href;a.removeAttribute('aria-disabled');a.classList.remove('is-disabled');}
-    else{a.removeAttribute('href');a.setAttribute('aria-disabled','true');a.classList.add('is-disabled');}
-  }
-  if(men)men.classList.toggle('is-active',d.gender!=='women');
-  if(women)women.classList.toggle('is-active',d.gender==='women');
+  syncGenderLinks(d);
 }
 
 function applyStatus(d){
@@ -157,7 +173,22 @@ function applyResources(d){
 }
 
 function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
+
+document.addEventListener('click',event=>{
+  if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  const link=event.target.closest('.kvl1180-tabs a[data-view]');
+  if(!link||link.getAttribute('aria-disabled')==='true')return;
+  const next=new URL(link.href,location.href),current=new URL(location.href);
+  if(next.origin!==current.origin||next.pathname!==current.pathname)return;
+  if(next.searchParams.get('competition')!==current.searchParams.get('competition'))return;
+  event.preventDefault();
+  history.pushState(null,'',next.pathname+next.search);
+  applyView();
+  const view=currentView(),target=document.querySelector(`.kvl1180-view[data-view="${CSS.escape(view)}"]:not([hidden])`);
+  if(target&&matchMedia('(max-width:680px)').matches)target.scrollIntoView({block:'start'});
+},{capture:true});
+
 if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();}
-window.addEventListener('popstate',apply);
-window.KVLCompetitionTemplateV2={apply,applyView,viewUrl,currentView};
+window.addEventListener('popstate',applyView);
+window.KVLCompetitionTemplateV2={apply,applyView,viewUrl,currentView,syncGenderLinks};
 })();
