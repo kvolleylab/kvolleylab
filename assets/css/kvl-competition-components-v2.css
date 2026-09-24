@@ -633,8 +633,9 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   color:#C9972E!important;
   font-weight:700!important;
 }
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-bracket-team.is-winner .kvl1180-bracket-copy strong,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-bracket-team.is-winner .kvl1180-team-score{
-  color:#C9972E!important;
+  color:#C62828!important;
 }
 
 /* 12/14. Participants are outbound team links: hover stays, selected outline is removed.
