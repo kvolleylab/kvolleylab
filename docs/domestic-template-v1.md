@@ -1,7 +1,7 @@
 # K-Volley Lab Domestic Template v1
 
 Status: FROZEN / APPROVED · UPDATED 2026-09-25  
-Approved common state: `04efec9ef5c831381bb8a99fef2163710286af61`  
+Approved common state: `ad0ff5c50521061682990c89e40f06e89ede2035`  
 Snapshot branch: `domestic-template-v1`
 
 ## Visual Source of Truth
@@ -55,8 +55,10 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 2. 국내대회 PC 경기행의 로고축·중앙 결과스코어축·세트스코어 영역은 공통으로 유지합니다.
 3. 실제 4팀 결선은 `bracket-4`를 사용하며, 존재하지 않는 8강 칼럼을 만들지 않습니다.
 4. 6강/8강이 필요한 대회는 기존 `bracket-8` 계열을 사용합니다.
-5. 국내대회 토너먼트 세트별 점수는 `#17365D` 기준으로 표시합니다.
-6. 대회 내부 탭 이동은 같은 대회 안에서 페이지 전체 재로드 없이 전환합니다.
+5. 국내대회 최종순위의 사다리형 토너먼트에서 승자 팀명과 승자 팀의 획득 세트 수는 빨강 `#C62828`로 표시합니다.
+6. 같은 토너먼트에서 패자 팀명은 기존 남색 계열을 유지하고, 패자 팀의 획득 세트 수는 Text navy `#17365D`로 표시합니다.
+17. 토너먼트 카드 하단의 세트별 상세 스코어 라인은 기존 gold `#C9972E` 표현을 유지합니다.
+18. 대회 내부 탭 이동은 같은 대회 안에서 페이지 전체 재로드 없이 전환합니다.
 7. 남자부 ↔ 여자부 전환 시 현재 보고 있는 view를 유지합니다.
    - 경기일정 → 경기일정
    - 조별순위 → 조별순위
@@ -111,3 +113,4 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - Production-approved Goseong state: `624a543bdd0df9b18cb38c801dcf17d0472f701c`
 - 2026-09-23: 고성 production 승격 이후 공통 동작을 비교 검수하여 v1 기준 갱신
 - 2026-09-25: 고성·단양 재사용 검증을 통해 예선 종합순위, 진출 표시, 조별순위/종합순위 가독성 기준을 v1 공통 규칙으로 승격
+- 2026-09-25: 최종순위 사다리형 토너먼트의 승자 팀명·승자 세트 수 빨강, 패자 세트 수 남색 규칙을 v1 공통 규칙으로 승격
