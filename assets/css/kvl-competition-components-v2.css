@@ -628,7 +628,10 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   border:1.5px dashed #C9A24A!important;
   border-radius:12px!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-team-score,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-team-score{
+  color:#17365D!important;
+  font-weight:700!important;
+}
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-match-sets{
   color:#C9972E!important;
   font-weight:700!important;
