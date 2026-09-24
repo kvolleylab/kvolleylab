@@ -1819,32 +1819,14 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][da
   }
 }
 
-
-/* PROTOTYPE ONLY · direct-entry path = gold dashed feeder, normal winner path = navy solid */
+/* PROTOTYPE ONLY · direct-entry branch only; preserve every other bracket connector */
 @media(min-width:901px){
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-qf-pair .kvl1180-match.is-direct-entry{
     overflow:visible!important;
   }
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-qf-pair .kvl1180-match.is-direct-entry::after{
-    border-top:2px dashed #C9972E!important;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-qf-pair .kvl1180-match:not(.is-direct-entry)::after{
-    border-top:2px solid #6F8BA6!important;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-qf-pair::after{
-    width:2px!important;
-    border-right:0!important;
-    background:
-      linear-gradient(#6F8BA6,#6F8BA6) top/2px 50% no-repeat,
-      repeating-linear-gradient(to bottom,#C9972E 0 6px,transparent 6px 11px) bottom/2px 50% no-repeat!important;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-qf-pair::before,
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-round-sf .kvl1180-match::before,
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-round-sf .kvl1180-match::after,
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-round-sf .kvl1180-round-body::before,
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-round-sf .kvl1180-round-body::after,
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-round-final .kvl1180-match::before{
-    border-color:#6F8BA6!important;
-    border-style:solid!important;
+    border-top-width:2px!important;
+    border-top-style:dashed!important;
+    border-top-color:#C9A24A!important;
   }
 }
