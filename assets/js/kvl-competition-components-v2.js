@@ -193,13 +193,28 @@ function combinedRow(d,r,c){const st=statusOf(r),t=r.team||{},pool=poolRankLabel
 function mobileCombinedLine(d,r,c){const st=statusOf(r),raw=r.team||{},t=participant(raw)||raw,pair=qfPair(d,r,c);return `<div class="kvl-shared-combined-line ${code(t)===d.focusTeamCode?'is-korea':''}"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank">${esc(r.rank??'-')}위</span>${logo(t)?`<span class="kvl-shared-combined-flag"><img src="${esc(logo(t))}" alt="${esc(name(t))} 엠블럼"></span>`:''}<strong class="kvl-shared-combined-team">${teamLink(t)}</strong></span><span class="kvl-shared-combined-result ${st.cls}"><b>${esc(st.label||'')}</b>${pair?`<small>${esc(pair)}</small>`:''}</span><span class="kvl-shared-combined-stat">${esc(r.wins??'-')}승</span><span class="kvl-shared-combined-stat">${esc(r.points??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.pointRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(poolRankLabel(d,r))}</span></div>`;}
 function overallRatioValue(v){const s=String(v??'').trim().toUpperCase();if(s==='MAX')return Number.POSITIVE_INFINITY;const n=Number(v);return Number.isFinite(n)?n:Number.NEGATIVE_INFINITY;}
 function domesticOverallRows(d){
-  const rows=[];
-  (d.standings?.pools||[]).forEach(p=>{
-    const poolId=p.id||String(p.title||'').replace(/조$/,'');
-    (p.rows||[]).forEach(r=>{
-      const wins=Number(r.wins)||0,losses=Number(r.losses)||0,games=wins+losses,winRate=games?wins/games:0;
-      rows.push({...r,poolId,poolRank:r.rank,games,winRate,winRateLabel:games?`${(winRate*100).toFixed(1)}%`:'-'});
+  const pools=d.standings?.pools||[],stats=new Map();
+  const ensure=(team,poolId,fallback={})=>{
+    const key=code(team);if(!key)return null;
+    if(!stats.has(key))stats.set(key,{team,poolId,wins:0,losses:0,games:0,setWins:0,setLosses:0,pointsFor:0,pointsAgainst:0,hasPointData:false,fallback});
+    return stats.get(key);
+  };
+  pools.forEach(p=>(p.rows||[]).forEach(r=>ensure(r.team,p.id||String(p.title||'').replace(/조$/,''),r)));
+  (d.matches||[]).filter(m=>pool(m)&&score(m)).forEach(m=>{
+    const s=score(m),poolId=pool(m),home=ensure(m.home,poolId),away=ensure(m.away,poolId);if(!home||!away)return;
+    home.games++;away.games++;
+    if(s.home>s.away){home.wins++;away.losses++;}else if(s.away>s.home){away.wins++;home.losses++;}
+    home.setWins+=s.home;home.setLosses+=s.away;away.setWins+=s.away;away.setLosses+=s.home;
+    (s.sets||[]).forEach(set=>{
+      const hp=Number(set?.home??set?.[0]),ap=Number(set?.away??set?.[1]);if(!Number.isFinite(hp)||!Number.isFinite(ap))return;
+      home.pointsFor+=hp;home.pointsAgainst+=ap;away.pointsFor+=ap;away.pointsAgainst+=hp;home.hasPointData=true;away.hasPointData=true;
     });
+  });
+  const rows=[...stats.values()].map(x=>{
+    const fb=x.fallback||{},wins=x.games?x.wins:(Number(fb.wins)||0),losses=x.games?x.losses:(Number(fb.losses)||0),games=x.games||(wins+losses),winRate=games?wins/games:0;
+    const setRatio=x.games?(x.setLosses===0?(x.setWins>0?'MAX':'-'):(x.setWins/x.setLosses).toFixed(3)):(fb.setRatio??'-');
+    const pointRatio=x.hasPointData?(x.pointsAgainst===0?(x.pointsFor>0?'MAX':'-'):(x.pointsFor/x.pointsAgainst).toFixed(3)):(fb.pointRatio??'-');
+    return {...fb,team:x.team,poolId:x.poolId,games,wins,losses,winRate,winRateLabel:games?`${(winRate*100).toFixed(1)}%`:'-',setRatio,pointRatio};
   });
   rows.sort((a,b)=>b.winRate-a.winRate||overallRatioValue(b.setRatio)-overallRatioValue(a.setRatio)||overallRatioValue(b.pointRatio)-overallRatioValue(a.pointRatio));
   let previousKey=null,rank=0;
