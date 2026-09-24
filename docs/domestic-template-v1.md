@@ -1,7 +1,7 @@
 # K-Volley Lab Domestic Template v1
 
 Status: FROZEN / APPROVED · UPDATED 2026-09-25  
-Approved common state: `ad0ff5c50521061682990c89e40f06e89ede2035`  
+Approved common state: `eaf5a048fc375dc1de752b6b04c67b3dff324a87`  
 Snapshot branch: `domestic-template-v1`
 
 ## Visual Source of Truth
@@ -78,6 +78,12 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 18. 예선 종합순위는 현재 확정된 확대 크기를 유지합니다.
     - PC: 헤더 13px / 팀명 17px / 순위 16px / 일반 수치 15px
     - Mobile: 본문 14px / 팀명 15px / 순위·수치 13px
+19. 경기일정에서 팀명/팀로고를 클릭해 들어가는 팀별 경기결과 화면은 상단에 `전체 경기 / 승 / 패 / 승률` 4개 성적 요약을 크게 표시합니다.
+    - PC: 4칸 가로 배열
+    - Mobile: 2×2 배열
+    - 진행 중인 대회는 완료 경기와 예정 경기 수를 보조 문구로 표시합니다.
+20. 국내대회 팀별 경기결과 화면의 `등록 선수명단 보기`는 기존 대학 팀 상세의 선수명단 화면(`university-team.html?school=...&view=roster`)으로 연결합니다.
+21. `참가대학` 페이지는 별도의 `등록선수명단 보기` CTA를 추가하지 않고, 기존 대학 카드 전체 클릭 방식과 기존 카드 디자인을 유지합니다.
 
 ## Production compatibility
 
@@ -114,3 +120,4 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - 2026-09-23: 고성 production 승격 이후 공통 동작을 비교 검수하여 v1 기준 갱신
 - 2026-09-25: 고성·단양 재사용 검증을 통해 예선 종합순위, 진출 표시, 조별순위/종합순위 가독성 기준을 v1 공통 규칙으로 승격
 - 2026-09-25: 최종순위 사다리형 토너먼트의 승자 팀명·승자 세트 수 빨강, 패자 세트 수 남색 규칙을 v1 공통 규칙으로 승격
+- 2026-09-25: 팀별 경기결과의 4칸 성적 요약과 선수명단 링크 동작을 v1 공통 규칙으로 승격. 참가대학 카드 디자인은 기존 상태 유지
