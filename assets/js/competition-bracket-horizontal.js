@@ -9,76 +9,7 @@ function installStyles(){if(document.getElementById('cdBracketHorizontalStyle'))
 #cdKnockoutBracket .cd-pyramid-row.is-final{grid-template-columns:minmax(360px,480px)!important;margin-top:56px!important}
 #cdKnockoutBracket .cd-pyramid-row.is-semis{grid-template-columns:repeat(2,minmax(320px,1fr))!important;gap:110px!important;margin-top:86px!important;padding:0 18px!important}
 #cdKnockoutBracket .cd-pyramid-row.is-entries{grid-template-columns:140px 285px 140px 285px!important;justify-content:center!important;column-gap:22px!important;margin-top:98px!important}
-#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-card{
-  box-sizing:border-box!important;
-  display:grid!important;
-  grid-template-rows:auto minmax(66px,1fr) auto!important;
-  width:140px!important;
-  min-height:154px!important;
-  overflow:hidden!important;
-  border:1.5px solid #D5A11E!important;
-  border-radius:16px!important;
-  background:#fff!important;
-  color:#17365d!important;
-  text-decoration:none!important;
-  box-shadow:0 7px 18px rgba(23,54,93,.08)!important;
-}
-#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-card:hover{
-  transform:translateY(-1px);
-  box-shadow:0 10px 22px rgba(23,54,93,.12)!important;
-}
-#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-head{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  min-height:38px!important;
-  padding:7px 8px!important;
-  border-bottom:1px solid #F0DDAA!important;
-  background:#FFF9EA!important;
-  color:#946807!important;
-  font-size:11px!important;
-  font-weight:900!important;
-  line-height:1.25!important;
-  text-align:center!important;
-}
-#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-body{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:8px!important;
-  min-height:66px!important;
-  padding:10px 8px!important;
-  background:#fff!important;
-}
-#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-body .cd-inline-logo{
-  flex:0 0 38px!important;
-  width:38px!important;
-  height:38px!important;
-  border:1px solid #E0E6ED!important;
-  border-radius:10px!important;
-  background:#fff!important;
-}
-#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-body strong{
-  color:#17365d!important;
-  font-size:16px!important;
-  font-weight:900!important;
-  line-height:1.2!important;
-  white-space:nowrap!important;
-}
-#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-foot{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  min-height:32px!important;
-  padding:7px 6px!important;
-  border-top:1px solid #F0DDAA!important;
-  background:#FFFBF2!important;
-  color:#946807!important;
-  font-size:10px!important;
-  font-weight:900!important;
-  line-height:1.2!important;
-  text-align:center!important;
-}
+#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-card{width:140px!important}
 #cdKnockoutBracket .cd-pyramid-row.is-entries .cd-bracket-game{width:285px!important}
 #cdKnockoutBracket .cd-bracket-game{border-radius:16px!important}
 #cdKnockoutBracket .cd-bracket-title{padding:8px 12px!important;background:#17365d!important;font-size:13px!important}
@@ -114,7 +45,7 @@ function installStyles(){if(document.getElementById('cdBracketHorizontalStyle'))
 .cd-women-semis .cd-bracket-game:before{content:'';position:absolute;left:50%;top:-38px;width:2px;height:38px;background:#17365d}
 .cd-women-semis .cd-bracket-game{position:relative}
 .cd-women-rule{display:none!important}
-@media(max-width:760px){#cdKnockoutBracket .cd-pyramid{min-width:920px!important}#cdKnockoutBracket .cd-pyramid-row.is-semis{gap:64px!important;padding:0!important}#cdKnockoutBracket .cd-pyramid-row.is-entries{grid-template-columns:135px 275px 135px 275px!important;column-gap:14px!important}#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-card{width:135px!important;min-height:150px!important}#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-body strong{font-size:15px!important}#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-bracket-game{width:275px!important}.cd-women-bracket{min-width:850px}.cd-women-semis{gap:80px}}
+@media(max-width:760px){#cdKnockoutBracket .cd-pyramid{min-width:920px!important}#cdKnockoutBracket .cd-pyramid-row.is-semis{gap:64px!important;padding:0!important}#cdKnockoutBracket .cd-pyramid-row.is-entries{grid-template-columns:135px 275px 135px 275px!important;column-gap:14px!important}#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-direct-card{width:135px!important}#cdKnockoutBracket .cd-pyramid-row.is-entries .cd-bracket-game{width:275px!important}.cd-women-bracket{min-width:850px}.cd-women-semis{gap:80px}}
 `;document.head.appendChild(style)}
 function horizontalize(card){if(card.dataset.horizontalReady==='1')return;const meta=card.querySelector('.cd-bracket-meta'),teams=[...card.querySelectorAll('.cd-bracket-team')];if(!meta||teams.length!==2)return;const parts=[...meta.querySelectorAll('span')],dt=(parts[0]?.textContent||'').split('·').map(v=>v.trim()),venue=parts[1]?.textContent.trim()||'';meta.innerHTML=`<span>${formatDate(dt[0])}${dt[1]?` ${dt[1]}`:''}</span><span>${venue}</span>`;const info=teams.map(team=>({href:team.getAttribute('href')||'#',logo:team.querySelector(':scope > .cd-inline-logo')?.outerHTML||'',name:team.querySelector(':scope > span:not(.cd-inline-logo)')?.textContent.trim()||'',score:team.querySelector(':scope > b')?.textContent.trim()||'',winner:team.classList.contains('is-winner')}));teams.forEach(team=>team.remove());const row=document.createElement('div');row.className='cd-horizontal-match';row.innerHTML=`<a href="${info[0].href}" class="cd-horizontal-side ${info[0].winner?'is-winner':''}">${info[0].logo}<strong>${info[0].name}</strong></a><b class="cd-horizontal-score"><span class="${info[0].winner?'is-winner':''}">${info[0].score}</span><i>-</i><span class="${info[1].winner?'is-winner':''}">${info[1].score}</span></b><a href="${info[1].href}" class="cd-horizontal-side is-right ${info[1].winner?'is-winner':''}"><strong>${info[1].name}</strong>${info[1].logo}</a>`;meta.insertAdjacentElement('afterend',row);card.dataset.horizontalReady='1'}
 function styleChampion(root){const champion=root.querySelector('.cd-champion');if(!champion||champion.dataset.capsuleReady==='1')return;const logo=champion.querySelector('.cd-inline-logo')?.outerHTML||'',rawName=champion.querySelector('strong')?.textContent.trim().replace(/^우승\s*/,'')||'인하대';champion.innerHTML=`<span class="cd-champion-trophy">🏆</span>${logo}<strong>우승 ${rawName}</strong>`;champion.dataset.capsuleReady='1'}
