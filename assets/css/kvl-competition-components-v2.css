@@ -1476,3 +1476,19 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   color:#17365D!important;
   font-weight:700!important;
 }
+
+
+/* Domestic preliminary overall ranking · shared Domestic Template v1 */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-team.is-domestic-text{grid-template-columns:minmax(0,1fr)!important;gap:0!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-team.is-domestic-text .kvl1180-combined-team-copy strong{font-weight:700!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-row{font-variant-numeric:tabular-nums}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-groups-footnote{margin-top:12px;color:#6b7280;font-weight:500!important}
+@media(max-width:680px){
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-table{width:790px!important;min-width:790px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-line{grid-template-columns:190px 54px 54px 48px 48px 70px 96px 96px!important;gap:5px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-identity{grid-template-columns:46px minmax(0,1fr)!important;width:190px!important;min-width:190px!important;gap:8px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-rank-head{grid-column:1!important;width:46px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-country-head{grid-column:2!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-rank{grid-column:1!important;width:46px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-team{grid-column:2!important;width:auto!important;min-width:0!important;font-weight:700!important}
+}
