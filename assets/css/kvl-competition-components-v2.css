@@ -1595,3 +1595,41 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
     font-size:13px!important;
   }
 }
+
+
+/* International preliminary overall ranking readability · Domestic overall parity · 2026-09-25 */
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-table-head{
+  font-size:13px!important;
+  line-height:1.2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-row{
+  min-height:60px!important;
+  font-size:15px!important;
+  line-height:1.35!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-team-copy strong{
+  font-size:17px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-rank{
+  font-size:16px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-stat,
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-pool{
+  font-size:15px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-result{
+  font-size:12px!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-line{
+    min-height:50px!important;
+    font-size:14px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-team{
+    font-size:15px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-rank,
+  body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-stat{
+    font-size:13px!important;
+  }
+}
