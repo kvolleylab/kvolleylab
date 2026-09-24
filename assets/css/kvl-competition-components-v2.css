@@ -1639,7 +1639,7 @@ body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domesti
 }
 
 
-/* DOMESTIC TEMPLATE · team record spotlight + participant roster CTA · 2026-09-25 */
+/* DOMESTIC TEMPLATE · team record spotlight · 2026-09-25 */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #team-results .kvl-team-record-wrap{
   margin:4px 0 18px;
 }
@@ -1702,39 +1702,6 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   font-weight:550;
   text-align:right;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-button{
-  text-decoration:none;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-button-copy{
-  display:flex;
-  min-width:0;
-  flex-direction:column;
-  align-items:flex-start;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl-domestic-roster-cta{
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  max-width:100%;
-  margin-top:7px;
-  padding:5px 8px;
-  border-radius:999px;
-  background:var(--kvl-theme-soft);
-  color:var(--kvl-theme-primary);
-  font-size:11px;
-  font-weight:750;
-  line-height:1.2;
-  white-space:nowrap;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl-domestic-roster-cta b{
-  font-size:12px;
-  font-weight:800;
-  line-height:1;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl1180-participant-button:hover .kvl-domestic-roster-cta{
-  text-decoration:underline;
-  text-underline-offset:2px;
-}
 @media(max-width:680px){
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #team-results .kvl-team-record-summary{
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1761,10 +1728,5 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   }
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #team-results .kvl-team-record-note{
     font-size:10px;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #rosters .kvl-domestic-roster-cta{
-    margin-top:5px;
-    padding:4px 7px;
-    font-size:9.5px;
   }
 }
