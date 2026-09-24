@@ -191,6 +191,48 @@ function poolRankLabel(d,r){const pools=d.standings?.pools||[];for(const p of po
 function qfPair(d,r,c){if(c.mode==='single-league'||r.status!=='qualified')return '';if(r.pairingLabel)return String(r.pairingLabel);const m=(d.matches||[]).find(m=>round(m)==='QF'&&[code(m.home),code(m.away)].includes(code(r.team)));if(!m)return '';const other=code(m.home)===code(r.team)?m.away:m.home,rows=d.standings?.combinedRows||[],opponent=rows.find(x=>code(x.team)===code(other));return r.rank!=null&&opponent?.rank!=null?`${r.rank}-${opponent.rank}`:'';}
 function combinedRow(d,r,c){const st=statusOf(r),t=r.team||{},pool=poolRankLabel(d,r),pair=qfPair(d,r,c);return `<div class="kvl1180-combined-row ${st.cls}"><span class="kvl1180-combined-rank">${esc(r.rank??'-')}위</span>${teamCell(t,'kvl1180-combined-team')}<span class="kvl1180-combined-pool">${esc(pool)}</span><span class="kvl1180-combined-stat">${esc(r.wins??'-')}</span><span class="kvl1180-combined-stat">${esc(r.losses??'-')}</span><span class="kvl1180-combined-stat">${esc(r.points??'-')}</span><span class="kvl1180-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl1180-combined-stat">${esc(r.pointRatio??'-')}</span><span><b class="kvl1180-combined-result ${st.cls}">${esc(st.label||'')}</b>${pair?`<small class="kvl1180-qf-pairing">${esc(pair)}</small>`:''}</span></div>`;}
 function mobileCombinedLine(d,r,c){const st=statusOf(r),raw=r.team||{},t=participant(raw)||raw,pair=qfPair(d,r,c);return `<div class="kvl-shared-combined-line ${code(t)===d.focusTeamCode?'is-korea':''}"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank">${esc(r.rank??'-')}위</span>${logo(t)?`<span class="kvl-shared-combined-flag"><img src="${esc(logo(t))}" alt="${esc(name(t))} 엠블럼"></span>`:''}<strong class="kvl-shared-combined-team">${teamLink(t)}</strong></span><span class="kvl-shared-combined-result ${st.cls}"><b>${esc(st.label||'')}</b>${pair?`<small>${esc(pair)}</small>`:''}</span><span class="kvl-shared-combined-stat">${esc(r.wins??'-')}승</span><span class="kvl-shared-combined-stat">${esc(r.points??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.pointRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(poolRankLabel(d,r))}</span></div>`;}
+function overallRatioValue(v){const s=String(v??'').trim().toUpperCase();if(s==='MAX')return Number.POSITIVE_INFINITY;const n=Number(v);return Number.isFinite(n)?n:Number.NEGATIVE_INFINITY;}
+function domesticOverallRows(d){
+  const pools=d.standings?.pools||[],stats=new Map();
+  const ensure=(team,poolId,fallback={})=>{
+    const key=code(team);if(!key)return null;
+    if(!stats.has(key))stats.set(key,{team,poolId,wins:0,losses:0,games:0,setWins:0,setLosses:0,pointsFor:0,pointsAgainst:0,hasPointData:false,fallback});
+    return stats.get(key);
+  };
+  pools.forEach(p=>(p.rows||[]).forEach(r=>ensure(r.team,p.id||String(p.title||'').replace(/조$/,''),r)));
+  (d.matches||[]).filter(m=>pool(m)&&score(m)).forEach(m=>{
+    const s=score(m),poolId=pool(m),home=ensure(m.home,poolId),away=ensure(m.away,poolId);if(!home||!away)return;
+    home.games++;away.games++;
+    if(s.home>s.away){home.wins++;away.losses++;}else if(s.away>s.home){away.wins++;home.losses++;}
+    home.setWins+=s.home;home.setLosses+=s.away;away.setWins+=s.away;away.setLosses+=s.home;
+    (s.sets||[]).forEach(set=>{
+      const hp=Number(set?.home??set?.[0]),ap=Number(set?.away??set?.[1]);if(!Number.isFinite(hp)||!Number.isFinite(ap))return;
+      home.pointsFor+=hp;home.pointsAgainst+=ap;away.pointsFor+=ap;away.pointsAgainst+=hp;home.hasPointData=true;away.hasPointData=true;
+    });
+  });
+  const rows=[...stats.values()].map(x=>{
+    const fb=x.fallback||{},wins=x.games?x.wins:(Number(fb.wins)||0),losses=x.games?x.losses:(Number(fb.losses)||0),games=x.games||(wins+losses),winRate=games?wins/games:0;
+    const setRatio=x.games?(x.setLosses===0?(x.setWins>0?'MAX':'-'):(x.setWins/x.setLosses).toFixed(3)):(fb.setRatio??'-');
+    const pointRatio=x.hasPointData?(x.pointsAgainst===0?(x.pointsFor>0?'MAX':'-'):(x.pointsFor/x.pointsAgainst).toFixed(3)):(fb.pointRatio??'-');
+    return {...fb,team:x.team,poolId:x.poolId,games,wins,losses,winRate,winRateLabel:games?`${(winRate*100).toFixed(1)}%`:'-',setRatio,pointRatio};
+  });
+  rows.sort((a,b)=>b.winRate-a.winRate||overallRatioValue(b.setRatio)-overallRatioValue(a.setRatio)||overallRatioValue(b.pointRatio)-overallRatioValue(a.pointRatio));
+  let previousKey=null,rank=0;
+  rows.forEach((r,i)=>{
+    const key=[r.winRate,overallRatioValue(r.setRatio),overallRatioValue(r.pointRatio)].join('|');
+    if(key!==previousKey){rank=i+1;previousKey=key;}
+    r.overallRank=rank;
+  });
+  return rows;
+}
+function domesticOverallTeam(t){const p=participant(t)||t;return `<span class="kvl1180-combined-team is-domestic-text"><span class="kvl1180-combined-team-copy"><strong>${teamLink(p)}</strong></span></span>`;}
+function domesticOverallQualified(r){return r?.status==='qualified'||r?.status==='host-qualified';}
+function domesticOverallMobileLine(r){const raw=r.team||{},t=participant(raw)||raw,qualified=domesticOverallQualified(r);return `<div class="kvl-shared-combined-line ${qualified?'is-qualified':''}"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank">${esc(r.overallRank??'-')}위</span><strong class="kvl-shared-combined-team">${teamLink(t)}</strong></span><span class="kvl-shared-combined-stat">${esc(groupLabel(r.poolId))}</span><span class="kvl-shared-combined-stat">${esc(r.games)}</span><span class="kvl-shared-combined-stat">${esc(r.wins??0)}</span><span class="kvl-shared-combined-stat">${esc(r.losses??0)}</span><span class="kvl-shared-combined-stat">${esc(r.winRateLabel)}</span><span class="kvl-shared-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.pointRatio??'-')}</span><span class="kvl-domestic-overall-result">${qualified?'<b class="kvl1180-combined-result is-qualified">진출</b>':''}</span></div>`;}
+function domesticOverallBlock(d,rows,c){
+  const title=c.overallTitle||'예선 종합순위';
+  return `<section class="kvl1180-combined-block is-domestic-overall"><div class="kvl1180-combined-head"><div><p class="label">PRELIMINARY OVERALL</p><h3>${esc(title)}</h3></div><p>승률 → 세트 득실비 → 점수 득실비</p></div><div class="kvl1180-combined-table"><div class="kvl1180-combined-table-head"><span>순위</span><span>팀</span><span>조</span><span>경기</span><span>승</span><span>패</span><span>승률</span><span>세트 득실비</span><span>점수 득실비</span><span>결과</span></div>${rows.map(r=>{const qualified=domesticOverallQualified(r);return `<div class="kvl1180-combined-row is-domestic-overall-row ${qualified?'is-qualified':''}"><span class="kvl1180-combined-rank">${esc(r.overallRank??'-')}위</span>${domesticOverallTeam(r.team||{})}<span class="kvl1180-combined-pool">${esc(groupLabel(r.poolId))}</span><span class="kvl1180-combined-stat">${esc(r.games)}</span><span class="kvl1180-combined-stat">${esc(r.wins??0)}</span><span class="kvl1180-combined-stat">${esc(r.losses??0)}</span><span class="kvl1180-combined-stat">${esc(r.winRateLabel)}</span><span class="kvl1180-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl1180-combined-stat">${esc(r.pointRatio??'-')}</span><span class="kvl-domestic-overall-result">${qualified?'<b class="kvl1180-combined-result is-qualified">진출</b>':''}</span></div>`;}).join('')}</div><div class="kvl-shared-combined-mobile is-domestic-overall-mobile"><div class="kvl-shared-combined-table"><div class="kvl-shared-combined-line is-head"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank-head">순위</span><span class="kvl-shared-combined-country-head">팀</span></span><span>조</span><span>경기</span><span>승</span><span>패</span><span>승률</span><span>세트 득실비</span><span>점수 득실비</span><span>결과</span></div>${rows.map(domesticOverallMobileLine).join('')}</div></div><p class="kvl1180-groups-footnote">예선 종합순위는 조별 진출 순위와 별개인 K-Volley Lab 산출 순위입니다. 조별 경기 수가 다른 경우 승률을 우선 적용합니다.</p></section>`;
+}
+
 function combinedBlock(d,rows,c){const title=c.title||c.combinedTitle||'예선 종합순위',single=c.mode==='single-league',domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';return `<section class="kvl1180-combined-block ${single?'is-single-league':''}"><div class="kvl1180-combined-head"><div><p class="label">PRELIMINARY OVERALL</p><h3>${esc(title)}</h3></div><p>${esc(single?'예선 전체 순위 · 공식 결과 기준':'각 조 성적을 대회 규정에 따라 통합한 순위')}</p></div><div class="kvl1180-combined-table"><div class="kvl1180-combined-table-head"><span>순위</span><span>${domestic?'팀':'국가'}</span><span>${single?'구분':'조'}</span><span>승</span><span>패</span><span>승점</span><span>세트 득실비</span><span>점수 득실비</span><span>결과</span></div>${rows.map(r=>combinedRow(d,r,c)).join('')}</div><div class="kvl-shared-combined-mobile"><div class="kvl-shared-combined-table"><div class="kvl-shared-combined-line is-head"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank-head">순위</span><span class="kvl-shared-combined-country-head">${domestic?'팀':'국가'}</span></span><span>결과</span><span>승</span><span>승점</span><span>세트 득실비</span><span>점수 득실비</span><span>${single?'예선순위':'조순위'}</span></div>${rows.map(r=>mobileCombinedLine(d,r,c)).join('')}</div></div></section>`;}
 function renderDomesticRuleCard(d,key,anchor){
   if(!anchor)return;
@@ -203,10 +245,11 @@ function renderDomesticRuleCard(d,key,anchor){
 }
 
 function renderStandings(d){
-  const root=q('[data-kvl-component="standings"]');if(!root)return;const c=cfg(d).standings,s=d.standings||{};
+  const root=q('[data-kvl-component="standings"]');if(!root)return;const c=cfg(d).standings,s=d.standings||{},domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';
   if(c.mode==='none'){root.innerHTML='<div class="kvl1180-schedule-empty">이 대회는 별도 예선 순위를 사용하지 않습니다.</div>';return;}
   if(c.mode==='single-league'){root.innerHTML=combinedBlock(d,s.rows||[],c);return;}
-  root.innerHTML=`<div class="kvl1180-pool-grid">${(s.pools||[]).map(poolCard).join('')}</div>${s.combinedRows?.length?combinedBlock(d,s.combinedRows,c):''}`;
+  const pools=s.pools||[],domesticOverall=domestic&&c.overall!==false&&pools.length>1?domesticOverallBlock(d,domesticOverallRows(d),c):'';
+  root.innerHTML=`<div class="kvl1180-pool-grid">${pools.map(poolCard).join('')}</div>${domesticOverall||(s.combinedRows?.length?combinedBlock(d,s.combinedRows,c):'')}`;
   renderDomesticRuleCard(d,'standings',root);
 }
 

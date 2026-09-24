@@ -1,7 +1,7 @@
 # K-Volley Lab Domestic Template v1
 
-Status: FROZEN / APPROVED · UPDATED 2026-09-23  
-Approved production state: `624a543bdd0df9b18cb38c801dcf17d0472f701c`  
+Status: FROZEN / APPROVED · UPDATED 2026-09-25  
+Approved common state: `04efec9ef5c831381bb8a99fef2163710286af61`  
 Snapshot branch: `domestic-template-v1`
 
 ## Visual Source of Truth
@@ -27,6 +27,7 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - Match schedule / results layout
 - Team-specific match-results layout
 - Pool standings layout
+- Preliminary overall ranking (`예선 종합순위`)
 - Final standings / knockout bracket
 - Participating university/team cards
 - Official resources
@@ -65,6 +66,16 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 8. 팀별 경기결과(`view=team`)에서 성별을 바꾸면 상대 성별의 경기일정으로 이동합니다.
 9. 인위적인 page fade 전환은 사용하지 않습니다.
 10. 고성 여대부처럼 준결승부터 시작하는 구조는 `bracket-4`로 표현합니다.
+11. 국내대회 조별순위 페이지에는 조별순위 아래 `예선 종합순위`를 공통으로 표시합니다.
+12. 예선 종합순위는 예선 경기의 실제 세트별 점수에서 자동 계산하며, 기준은 `승률 → 세트 득실비 → 점수 득실비`입니다.
+13. 예선 종합순위는 공식 조별 진출 순위와 별개의 K-Volley Lab 산출 순위입니다.
+14. 진출팀은 AVC 종합순위와 같은 의미 체계로 왼쪽 강조선과 맨 오른쪽 `진출` 배지를 표시합니다.
+15. 조별순위 가독성 기준은 다음 값을 유지합니다.
+    - PC: 헤더 12px / 팀명 17px / 순위 16px / 일반 수치 15px / 득실비 14px
+    - Mobile: 헤더 13px / 팀명 17px / 순위 16px / 본문 16px / 득실비 14px
+16. 예선 종합순위는 현재 확정된 확대 크기를 유지합니다.
+    - PC: 헤더 13px / 팀명 17px / 순위 16px / 일반 수치 15px
+    - Mobile: 본문 14px / 팀명 15px / 순위·수치 13px
 
 ## Production compatibility
 
@@ -99,3 +110,4 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - Initial v1 baseline: `1d9e8dcdc9bc782c0b637a0ef5db9d6011db74aa`
 - Production-approved Goseong state: `624a543bdd0df9b18cb38c801dcf17d0472f701c`
 - 2026-09-23: 고성 production 승격 이후 공통 동작을 비교 검수하여 v1 기준 갱신
+- 2026-09-25: 고성·단양 재사용 검증을 통해 예선 종합순위, 진출 표시, 조별순위/종합순위 가독성 기준을 v1 공통 규칙으로 승격

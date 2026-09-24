@@ -1476,3 +1476,122 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   color:#17365D!important;
   font-weight:700!important;
 }
+
+
+/* Domestic preliminary overall ranking · shared Domestic Template v1 */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-team.is-domestic-text{grid-template-columns:minmax(0,1fr)!important;gap:0!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-team.is-domestic-text .kvl1180-combined-team-copy strong{font-weight:700!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-row{font-variant-numeric:tabular-nums}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-groups-footnote{margin-top:12px;color:#6b7280;font-weight:500!important}
+@media(max-width:680px){
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-table{width:790px!important;min-width:790px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-line{grid-template-columns:190px 54px 54px 48px 48px 70px 96px 96px!important;gap:5px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-identity{grid-template-columns:46px minmax(0,1fr)!important;width:190px!important;min-width:190px!important;gap:8px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-rank-head{grid-column:1!important;width:46px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-country-head{grid-column:2!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-rank{grid-column:1!important;width:46px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-team{grid-column:2!important;width:auto!important;min-width:0!important;font-weight:700!important}
+}
+
+/* Domestic overall qualification markers · AVC parity */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-table-head,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-row{
+  grid-template-columns:58px minmax(150px,1.55fr) 54px 52px 44px 44px 68px 92px 92px 72px!important;
+  column-gap:5px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl-domestic-overall-result{
+  display:flex;align-items:center;justify-content:center;min-width:0;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-row.is-qualified::before{
+  background:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-result.is-qualified{
+  min-width:52px;background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important;
+}
+@media(max-width:900px) and (min-width:681px){
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-table-head,
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-row{min-width:930px!important}
+}
+@media(max-width:680px){
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-table{width:870px!important;min-width:870px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-line{grid-template-columns:190px 54px 54px 48px 48px 70px 96px 96px 70px!important;gap:5px!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-line.is-qualified{position:relative;background:color-mix(in srgb,var(--kvl-theme-soft) 55%,#fff)!important}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-line.is-qualified::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--kvl-theme-primary)}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-domestic-overall-result{display:flex;align-items:center;justify-content:center}
+ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl1180-combined-result.is-qualified{min-width:50px;min-height:24px;padding:3px 6px;font-size:9px;background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important}
+}
+
+
+/* Domestic groups readability scale · 2026-09-25 */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-card-head strong{
+  font-size:18px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-table-head{
+  font-size:12px!important;
+  line-height:1.2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-row{
+  min-height:66px!important;
+  font-size:15px!important;
+  line-height:1.35!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-team-text .kvl1180-pool-team-copy strong{
+  font-size:17px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-rank{
+  font-size:16px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-ratio{
+  font-size:14px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-table-head{
+  font-size:13px!important;
+  line-height:1.2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-row{
+  min-height:60px!important;
+  font-size:15px!important;
+  line-height:1.35!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-team-copy strong{
+  font-size:17px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-rank{
+  font-size:16px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-stat,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-pool{
+  font-size:15px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall .kvl1180-combined-result{
+  font-size:12px!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-table-head{
+    font-size:13px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-row{
+    min-height:68px!important;
+    font-size:16px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-team-text .kvl1180-pool-team-copy strong{
+    font-size:17px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-rank{
+    font-size:16px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-ratio{
+    font-size:14px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-line{
+    min-height:50px!important;
+    font-size:14px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-team{
+    font-size:15px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-rank,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-overall-mobile .kvl-shared-combined-stat{
+    font-size:13px!important;
+  }
+}
