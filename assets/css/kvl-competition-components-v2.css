@@ -1730,3 +1730,91 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
     font-size:10px;
   }
 }
+
+
+/* PROTOTYPE ONLY · domestic bracket direct-entry card · 2026-09-25 */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry{
+  overflow:hidden!important;
+  border:1.5px solid #D5A11E!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  box-shadow:0 6px 16px rgba(23,54,93,.07)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-match-head{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:40px!important;
+  padding:8px 10px!important;
+  border-bottom:1px solid #F0DDAA!important;
+  border-radius:10px 10px 0 0!important;
+  background:#FFF9EA!important;
+  color:#946807!important;
+  text-align:center!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-match-head strong{
+  color:#946807!important;
+  font-size:12px!important;
+  font-weight:800!important;
+  line-height:1.25!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-team{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:10px!important;
+  min-height:72px!important;
+  padding:12px 10px!important;
+  border:0!important;
+  background:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-mark{
+  flex:0 0 42px!important;
+  width:42px!important;
+  height:42px!important;
+  border:1px solid #E0E6ED!important;
+  border-radius:10px!important;
+  background:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-mark img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-copy{
+  min-width:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-copy strong,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-copy strong a{
+  color:#17365D!important;
+  font-size:17px!important;
+  font-weight:800!important;
+  line-height:1.2!important;
+  white-space:nowrap!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-direct-entry-foot{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:34px!important;
+  padding:7px 8px!important;
+  border-top:1px solid #F0DDAA!important;
+  background:#FFFBF2!important;
+  color:#946807!important;
+  font-size:11px!important;
+  font-weight:800!important;
+  line-height:1.2!important;
+  text-align:center!important;
+}
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-match-head strong{
+    font-size:11px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-copy strong,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-match.is-direct-entry .kvl1180-bracket-copy strong a{
+    font-size:15px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-prototype="true"][data-kvl-family="domestic"] #knockout .kvl1180-direct-entry-foot{
+    font-size:10px!important;
+  }
+}
