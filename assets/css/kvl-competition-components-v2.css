@@ -617,7 +617,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   display:inline-block!important;visibility:visible!important;opacity:1!important;
 }
 
-/* 11. Domestic bracket cards need explicit corners and unified gold scores. */
+/* 11. Domestic bracket cards: winner name/set count red, loser set count navy, set-by-set detail gold. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-match{
   overflow:hidden!important;
   border:1.5px solid #B9C7D4!important;
