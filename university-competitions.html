@@ -4,26 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>대학대회 | K-Volley Lab</title>
-  <meta name="description" content="K-Volley Lab 대학대회 허브. 연도별 대학배구 대회의 기간, 개최지, 남대부·여대부 순위를 한눈에 확인합니다.">
+  <title>대학배구 대회 | K-Volley Lab</title>
+  <meta name="description" content="K-Volley Lab 대학배구 대회 허브. 주요 2026 대회와 연도별 기간·개최지·남대부·여대부 순위를 확인합니다.">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
-  <link rel="stylesheet" href="assets/css/university-competitions-hub-v2.css?v=20260926-record-hub-1">
+  <link rel="stylesheet" href="assets/css/kvl-common-hero-v1.css?v=20260919-1">
+  <link rel="stylesheet" href="assets/css/university-competitions-hub-v2.css?v=20260926-record-hub-top-restore-1">
   <script src="assets/js/unified-nav.js?v=20260919-menu-3" defer></script>
-  <script src="assets/js/university-competitions-hub-v2.js?v=20260926-record-hub-1" defer></script>
+  <script src="assets/js/university-competitions-hub-v2.js?v=20260926-record-hub-top-restore-1" defer></script>
 </head>
 <body>
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
 
 <main class="univ-hub-main">
-  <header class="univ-page-head">
-    <nav class="univ-breadcrumb" aria-label="현재 위치">
-      <a href="index.html">홈</a><span>›</span><a href="domestic-competitions.html">국내대회</a><span>›</span><strong>대학대회</strong>
-    </nav>
-    <div class="univ-title-row">
+  <section class="kvl-common-hero" data-hero-mode="photo" aria-labelledby="pageTitle">
+    <div class="kvl-common-hero-copy">
+      <p class="kvl-common-hero-eyebrow">UNIVERSITY COMPETITION</p>
+      <h1 id="pageTitle">대학배구 대회</h1>
+      <p class="kvl-common-hero-sub">University Volleyball Competitions</p>
+      <p class="univ-hero-desc">대학배구의 일정과 기록을 한 곳에서 확인합니다.</p>
+    </div>
+  </section>
+
+  <section class="univ-section" aria-labelledby="featuredTitle">
+    <div class="univ-section-head">
+      <h2 id="featuredTitle">2026 대회</h2>
+      <a class="univ-more-link" href="#recordsTitle">더 많은 대회 보기 →</a>
+    </div>
+    <div id="univFeaturedGrid" class="univ-featured-grid" aria-live="polite">
+      <div class="univ-hub-note">2026 대회를 불러오는 중입니다.</div>
+    </div>
+  </section>
+
+  <section class="univ-section" aria-labelledby="categoryTitle">
+    <div class="univ-section-head is-stackable">
       <div>
-        <h1>대학대회</h1>
-        <p>연도별 대학배구 대회의 기간·개최지와 남대부·여대부 주요 순위를 한눈에 확인합니다.</p>
+        <h2 id="categoryTitle">대회별 보기</h2>
+        <p>대회 유형별로 빠르게 이동하고, 아래 연도별 기록에서 최종순위를 비교할 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="univ-category-grid">
+      <a class="univ-category-card" href="#featured-kusf-u-league-2026">
+        <div class="univ-category-symbol">U</div>
+        <div class="univ-category-copy"><h3>대학 U-리그</h3><p>KUSF 대학배구 U-리그</p></div>
+        <span class="univ-category-arrow">→</span>
+      </a>
+      <a class="univ-category-card" href="#featured-gosung-2026">
+        <div class="univ-category-symbol">연</div>
+        <div class="univ-category-copy"><h3>연맹 대회</h3><p>고성·단양 등 연맹 단기대회</p></div>
+        <span class="univ-category-arrow">→</span>
+      </a>
+      <div id="otherUniversityCompetitions" class="univ-category-card" aria-label="기타 참가대회">
+        <div class="univ-category-symbol">🏆</div>
+        <div class="univ-category-copy"><h3>기타 참가대회</h3><p>초청대회 · 국제대회 · 종합대회 등</p></div>
+        <span class="univ-category-arrow">→</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="univ-section" aria-labelledby="recordsTitle">
+    <div class="univ-section-head">
+      <div>
+        <h2 id="recordsTitle">연도별 기록</h2>
+        <p>대회별 일정과 장소, 각 부문의 1~4위 기록을 빠르게 비교할 수 있습니다.</p>
       </div>
       <label class="univ-year-control">
         <span class="sr-only">연도 선택</span>
@@ -34,15 +77,6 @@
           <option value="2023">2023년</option>
         </select>
       </label>
-    </div>
-  </header>
-
-  <section class="univ-section" aria-labelledby="recordsTitle">
-    <div class="univ-section-head">
-      <div>
-        <h2 id="recordsTitle">연도별 기록</h2>
-        <p>대회별 일정과 장소, 각 부문의 1~4위 기록을 빠르게 비교할 수 있습니다.</p>
-      </div>
     </div>
     <div id="univRecords" class="univ-records" aria-live="polite">
       <div class="univ-hub-note">연도별 기록을 불러오는 중입니다.</div>
