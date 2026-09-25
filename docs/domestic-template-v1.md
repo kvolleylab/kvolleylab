@@ -1,7 +1,7 @@
 # K-Volley Lab Domestic Template v1
 
 Status: FROZEN / APPROVED · UPDATED 2026-09-25  
-Approved common state: `eaf5a048fc375dc1de752b6b04c67b3dff324a87`  
+Approved common state: `4c713eb83480a8526eb7922ca52171e93ec44d3d`  
 Snapshot branch: `domestic-template-v1`
 
 ## Visual Source of Truth
@@ -84,6 +84,16 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
     - 진행 중인 대회는 완료 경기와 예정 경기 수를 보조 문구로 표시합니다.
 20. 국내대회 팀별 경기결과 화면의 `등록 선수명단 보기`는 기존 대학 팀 상세의 선수명단 화면(`university-team.html?school=...&view=roster`)으로 연결합니다.
 21. `참가대학` 페이지는 별도의 `등록선수명단 보기` CTA를 추가하지 않고, 기존 대학 카드 전체 클릭 방식과 기존 카드 디자인을 유지합니다.
+22. 남대부 결선이 `6강 승자 + 준결승 직행팀` 구조인 경우, 준결승 직행팀은 일반 경기카드와 구분되는 공통 직행 카드로 표시합니다.
+    - 상단: `조 1위 추첨 배정 (가)/(나)`
+    - 중앙: 팀 로고 + 팀명
+    - 하단: `★ 준결승 자동 진출`
+    - 카드 외곽은 Gold `#C9A24A` 점선, 기본 경기카드와 동일한 12px 라운드를 사용합니다.
+23. 같은 구조의 토너먼트 연결선 의미는 다음과 같이 고정합니다.
+    - 6강 승리팀 → 합류점: 기존 navy 계열 실선
+    - 준결승 직행팀 → 합류점: Gold `#C9A24A` 점선
+    - 합류점 → 준결승, 준결승 → 결승: 기존 navy 계열 실선
+    - 직행 표현을 위해 다른 공용 사다리선의 굵기·색상을 변경하지 않습니다.
 
 ## Production compatibility
 
@@ -121,3 +131,4 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - 2026-09-25: 고성·단양 재사용 검증을 통해 예선 종합순위, 진출 표시, 조별순위/종합순위 가독성 기준을 v1 공통 규칙으로 승격
 - 2026-09-25: 최종순위 사다리형 토너먼트의 승자 팀명·승자 세트 수 빨강, 패자 세트 수 남색 규칙을 v1 공통 규칙으로 승격
 - 2026-09-25: 팀별 경기결과의 4칸 성적 요약과 선수명단 링크 동작을 v1 공통 규칙으로 승격. 참가대학 카드 디자인은 기존 상태 유지
+- 2026-09-25: 고성·단양 공통 6강 구조의 준결승 직행 카드·금색 점선 진출 경로를 Domestic Template v1 공통 규칙으로 승격
