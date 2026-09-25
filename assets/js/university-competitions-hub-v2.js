@@ -8,9 +8,24 @@
     const dt=new Date(y,m-1,d);
     return String(value).replaceAll('-','.')+'('+days[dt.getDay()]+')';
   };
+  const featuredRoot=document.getElementById('univFeaturedGrid');
   const root=document.getElementById('univRecords');
   const yearSelect=document.getElementById('univYearSelect');
   if(!root)return;
+
+  function featuredCard(item){
+    const ready=Boolean(item.pagePath);
+    const tag=ready?'a':'article';
+    const href=ready?' href="'+esc(item.pagePath)+'"':'';
+    const cls='univ-featured-card '+(item.category==='uleague'?'is-uleague ':'')+(ready?'':'is-disabled');
+    const style=item.cardImage?' style="--featured-image:url(&quot;'+esc(item.cardImage)+'&quot;)"':'';
+    const note=item.category==='uleague'?'KUSF 대학배구 정규 시즌 리그':(item.series||'연맹 대회');
+    return '<'+tag+href+' id="featured-'+esc(item.competitionId)+'" class="'+cls+'"'+style+'>'+
+      (item.featuredLabel?'<span class="univ-featured-badge">'+esc(item.featuredLabel)+'</span>':'')+
+      '<div class="univ-featured-content"><p class="univ-featured-year">2026</p><h3>'+esc(item.shortName)+'</h3>'+
+      '<div class="univ-featured-meta"><span>▣ '+esc(fmt(item.startDate))+' ~ '+esc(fmt(item.endDate))+'</span><span>● '+esc(item.location||'개최지 확인 중')+'</span></div>'+
+      '<div class="univ-featured-foot"><span>'+esc(note)+'</span>'+(ready?'<span class="univ-featured-arrow">→</span>':'<span>페이지 준비 중</span>')+'</div></div></'+tag+'>';
+  }
 
   function statusLabel(item){
     if(item.status==='active')return '<span class="univ-status is-active">진행 중</span>';
@@ -116,6 +131,7 @@
     return r.json();
   }).then(data=>{
     const list=(data.competitions||[]).slice().sort((a,b)=>(a.featuredOrder||99)-(b.featuredOrder||99));
+    if(featuredRoot)featuredRoot.innerHTML=list.slice(0,3).map(featuredCard).join('');
     const current=list.map(recordCard).join('');
     const pending='<div class="univ-year-placeholder">검수 완료된 기록부터 순차적으로 추가합니다.</div>';
     root.innerHTML=
@@ -127,6 +143,7 @@
     yearSelect&&yearSelect.addEventListener('change',()=>selectYear(yearSelect.value));
   }).catch(err=>{
     console.error(err);
+    if(featuredRoot)featuredRoot.innerHTML='<div class="univ-hub-note">2026 대회 정보를 불러오지 못했습니다.</div>';
     root.innerHTML='<div class="univ-hub-note">대학대회 기록을 불러오지 못했습니다.</div>';
   });
 })();
