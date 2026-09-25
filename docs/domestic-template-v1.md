@@ -119,9 +119,12 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 
 ## Reuse validation
 
-다음 재사용 검증 대상은 **2026 단양대회**입니다.
+**2026 단양대회 재사용 검증을 완료했고 production으로 승격했습니다.**
 
-단양에서 문제가 발견되면 먼저 대회별 data/config 문제인지 확인하고, 여러 국내대회에 공통되는 결함일 때만 Domestic Template v1 공통 엔진을 수정합니다.
+- Production route: `/university-competition-danyang.html`
+- 기존 단양 legacy 전용 dashboard/bracket JS는 production route에서 제거하고 Domestic Template v1 공통 엔진을 사용합니다.
+- 기존 legacy 페이지는 rollback/reference 용도로 `archive/university-competition-danyang-legacy-20260925.html`에 보관합니다.
+- 이후 국내대회에서도 먼저 data/config 차이를 확인하고, 여러 대회에 공통되는 결함일 때만 Domestic Template v1 공통 엔진을 수정합니다.
 
 ## History
 
@@ -132,3 +135,4 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - 2026-09-25: 최종순위 사다리형 토너먼트의 승자 팀명·승자 세트 수 빨강, 패자 세트 수 남색 규칙을 v1 공통 규칙으로 승격
 - 2026-09-25: 팀별 경기결과의 4칸 성적 요약과 선수명단 링크 동작을 v1 공통 규칙으로 승격. 참가대학 카드 디자인은 기존 상태 유지
 - 2026-09-25: 고성·단양 공통 6강 구조의 준결승 직행 카드·금색 점선 진출 경로를 Domestic Template v1 공통 규칙으로 승격
+- 2026-09-25: 단양대회 prototype 검증 완료 후 실제 production route를 Domestic Template v1 공통 엔진으로 승격
