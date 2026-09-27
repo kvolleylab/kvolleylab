@@ -245,12 +245,14 @@ function renderDomesticRuleCard(d,key,anchor){
   if(!existing)anchor.insertAdjacentElement('afterend',el);
 }
 
+function combinedPendingBlock(c){const title=c.title||c.combinedTitle||'예선 종합순위';return `<section class="kvl1180-combined-block is-pending"><div class="kvl1180-combined-head"><div><p class="label">PRELIMINARY OVERALL</p><h3>${esc(title)}</h3></div><p>공식 결과 연결 상태</p></div><div class="kvl1180-schedule-empty">예선 종합순위는 공식 결과가 연결되는 즉시 이 위치에 표시됩니다.</div></section>`;}
 function renderStandings(d){
   const root=q('[data-kvl-component="standings"]');if(!root)return;const c=cfg(d).standings,s=d.standings||{},domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';
   if(c.mode==='none'){root.innerHTML='<div class="kvl1180-schedule-empty">이 대회는 별도 예선 순위를 사용하지 않습니다.</div>';return;}
   if(c.mode==='single-league'){root.innerHTML=combinedBlock(d,s.rows||[],c);return;}
   const pools=s.pools||[],domesticOverall=domestic&&c.overall!==false&&pools.length>1?domesticOverallBlock(d,domesticOverallRows(d),c):'';
-  root.innerHTML=`<div class="kvl1180-pool-grid">${pools.map(poolCard).join('')}</div>${domesticOverall||(s.combinedRows?.length?combinedBlock(d,s.combinedRows,c):'')}`;
+  const sharedCombined=domesticOverall||(s.combinedRows?.length?combinedBlock(d,s.combinedRows,c):combinedPendingBlock(c));
+  root.innerHTML=`<div class="kvl1180-pool-grid">${pools.map(poolCard).join('')}</div>${sharedCombined}`;
   renderDomesticRuleCard(d,'standings',root);
 }
 
@@ -268,7 +270,15 @@ function bbye(t,seeds,slot=''){if(!t)return '';const p=participant(t)||t,domesti
 function bmatch(m,label,seeds){if(!m)return '<article class="kvl1180-match"><div class="kvl1180-match-head"><strong>TBD</strong><span>일정 미정</span></div></article>';return `<article class="kvl1180-match"><div class="kvl1180-match-head"><strong>${esc(label)}</strong><span>${esc(shortDate(date(m)))} · ${esc(time(m)||'미정')} KST</span></div>${bteam(m,'home',seeds)}${bteam(m,'away',seeds)}${bsets(m)}</article>`;}
 function renderKnockout(d){
   const root=q('[data-kvl-component="knockout"]');if(!root)return;const c=cfg(d).knockout;if(c.mode==='none'){root.innerHTML='<div class="kvl1180-schedule-empty">이 대회는 결선 토너먼트를 사용하지 않습니다.</div>';return;}
-  const all=d.matches||[],qf=all.filter(m=>round(m)==='QF'),sf=all.filter(m=>round(m)==='SF'),final=all.find(m=>round(m)==='FINAL'),bronze=all.find(m=>round(m)==='BRONZE');if(!qf.length&&!sf.length&&!final){root.innerHTML='<div class="kvl1180-schedule-empty">공식 결선 대진 발표 후 토너먼트를 표시합니다.</div>';return;}
+  const all=d.matches||[],qf=all.filter(m=>round(m)==='QF'),sf=all.filter(m=>round(m)==='SF'),final=all.find(m=>round(m)==='FINAL'),bronze=all.find(m=>round(m)==='BRONZE');if(!qf.length&&!sf.length&&!final){
+    const placeholder=(label)=>`<article class="kvl1180-match is-placeholder"><div class="kvl1180-match-head"><strong>${esc(label)}</strong><span>대진 미정</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark is-path">?</span><span class="kvl1180-bracket-copy"><strong>대진 미정</strong><small>공식 대진 발표 전</small></span><b class="kvl1180-team-score">-</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark is-path">?</span><span class="kvl1180-bracket-copy"><strong>대진 미정</strong><small>공식 대진 발표 전</small></span><b class="kvl1180-team-score">-</b></div></article>`;
+    if(c.mode==='bracket-4'){
+      root.innerHTML=`<div class="kvl1180-bracket"><div class="kvl1180-bracket-ladder is-bracket-4"><section class="kvl1180-round kvl1180-round-sf"><h4 class="kvl1180-round-title">${esc(c.sfLabel||'준결승 · Semifinals')}</h4><div class="kvl1180-round-body">${placeholder('SF1')}${placeholder('SF2')}</div></section><span class="kvl1180-bracket-gap"></span><section class="kvl1180-round kvl1180-round-final"><h4 class="kvl1180-round-title">${esc(c.finalLabel||'결승 · Final')}</h4><div class="kvl1180-round-body">${placeholder('FINAL')}</div></section></div><div class="kvl1180-bronze"><h4 class="kvl1180-bronze-title">${esc(c.bronzeLabel||'3위 결정전 · Bronze Medal Match')}</h4>${placeholder('3RD')}</div></div>`;
+    }else{
+      root.innerHTML=`<div class="kvl1180-bracket"><div class="kvl1180-bracket-ladder"><section class="kvl1180-round kvl1180-round-qf"><h4 class="kvl1180-round-title">${esc(c.qfLabel||'8강 · Quarterfinals')}</h4><div class="kvl1180-round-body"><div class="kvl1180-qf-pair">${placeholder('QF1')}${placeholder('QF2')}</div><div class="kvl1180-qf-pair">${placeholder('QF3')}${placeholder('QF4')}</div></div></section><span class="kvl1180-bracket-gap"></span><section class="kvl1180-round kvl1180-round-sf"><h4 class="kvl1180-round-title">${esc(c.sfLabel||'준결승 · Semifinals')}</h4><div class="kvl1180-round-body">${placeholder('SF1')}${placeholder('SF2')}</div></section><span class="kvl1180-bracket-gap"></span><section class="kvl1180-round kvl1180-round-final"><h4 class="kvl1180-round-title">${esc(c.finalLabel||'결승 · Final')}</h4><div class="kvl1180-round-body">${placeholder('FINAL')}</div></section></div><div class="kvl1180-bronze"><h4 class="kvl1180-bronze-title">${esc(c.bronzeLabel||'3위 결정전 · Bronze Medal Match')}</h4>${placeholder('3RD')}</div></div>`;
+    }
+    renderDomesticRuleCard(d,'knockout',root);return;
+  }
   const seeds=seedMap(d),fourTeam=c.mode==='bracket-4'||(!qf.length&&sf.length>0);
   if(fourTeam){
     root.innerHTML=`<div class="kvl1180-bracket"><div class="kvl1180-bracket-ladder is-bracket-4"><section class="kvl1180-round kvl1180-round-sf"><h4 class="kvl1180-round-title">${esc(c.sfLabel||'준결승 · Semifinals')}</h4><div class="kvl1180-round-body">${sf.map((m,i)=>bmatch(m,m.bracketLabel||`SF${i+1}`,seeds)).join('')}</div></section><span class="kvl1180-bracket-gap"></span><section class="kvl1180-round kvl1180-round-final"><h4 class="kvl1180-round-title">${esc(c.finalLabel||'결승 · Final')}</h4><div class="kvl1180-round-body">${bmatch(final,final?.bracketLabel||'FINAL',seeds)}</div></section></div>${bronze?`<div class="kvl1180-bronze"><h4 class="kvl1180-bronze-title">${esc(c.bronzeLabel||'3위 결정전 · Bronze Medal Match')}</h4>${bmatch(bronze,bronze.bracketLabel||'3RD',seeds)}</div>`:''}</div>`;
