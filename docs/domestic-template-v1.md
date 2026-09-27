@@ -1,7 +1,7 @@
 # K-Volley Lab Domestic Template v1
 
-Status: FROZEN / APPROVED · UPDATED 2026-09-25  
-Approved common state: `4c713eb83480a8526eb7922ca52171e93ec44d3d`  
+Status: FROZEN / APPROVED · UPDATED 2026-09-27  
+Approved common state: `a69a38dab1de3fd0b7543a774a21d7ba6ea81fe9`  
 Snapshot branch: `domestic-template-v1`
 
 ## Visual Source of Truth
@@ -35,6 +35,8 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - Domestic text-emblem fallback for teams without logo assets
 - Initial render behavior
 - Internal tab routing and men/women view synchronization
+- 2단계 국내대회 허브(대학대회 / 중·고 등)의 연도별 기록 카드 구조
+- 2단계 허브의 대회 정렬 / 전체 카드 클릭 / Gold hover interaction
 
 ## Theme baseline
 
@@ -95,6 +97,31 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
     - 합류점 → 준결승, 준결승 → 결승: 기존 navy 계열 실선
     - 직행 표현을 위해 다른 공용 사다리선의 굵기·색상을 변경하지 않습니다.
 
+## Level-2 domestic hub baseline
+
+`대학대회`, `중·고`처럼 여러 개별 대회를 연도별로 모아보는 2단계 국내대회 허브는 다음 기준을 공통으로 사용합니다.
+
+1. 허브의 목적은 한 해의 여러 대회를 빠르게 훑고, `기간 / 개최지 / 각 부문 1~4위 / 상세 대회`를 한눈에 비교하는 것입니다.
+2. 연도별 기록 영역에는 별도의 대회 메인카드 이미지를 넣지 않습니다.
+3. 각 대회 기록 카드의 공통 정보는 `대회명 / 기간 / 개최지 / 상태 / 상세 대회 링크`입니다.
+4. 대학대회는 같은 카드 골격에서 `남대부 / 여대부` 2개 순위 패널을 표시합니다.
+5. 중·고는 같은 카드 골격을 유지하면서 `18U 남 / 18U 여 / 15U 남 / 15U 여` 등 최대 4개 부문 순위 패널로 확장합니다.
+6. 순위는 실제 대회 규정을 따릅니다. 공동 3위인 대회는 임의로 3위·4위로 분리하지 않고 `공동 3위 / 공동 3위`로 표시합니다.
+7. U-리그처럼 장기간 진행되는 대회는 진행 중에는 `현재 순위`, 종료 후에는 `최종순위`로 표시하며 현재 순위에는 기준일을 함께 표시합니다.
+8. 같은 연도의 대회 순서는 **종료일 기준 내림차순**으로 정렬합니다.
+   - 종료일이 가장 늦은 대회가 위에 옵니다.
+   - 2026 대학대회 기준: `U-리그 → 단양대회 → 고성대회`
+   - 상단의 별도 `2026 대회` featured 카드 정렬과는 독립적이며, 이 규칙은 `연도별 기록` 영역에 적용합니다.
+9. 상세 페이지가 존재하는 연도별 기록 카드는 **카드 전체를 하나의 링크**로 사용합니다.
+   - 내부 `대회 보기 →`는 행동을 알려주는 보조 문구이며 별도 중첩 링크를 만들지 않습니다.
+10. 클릭 가능한 기록 카드 hover/focus 상태는 중·고배구 허브와 같은 Gold interaction을 공통 기준으로 사용합니다.
+    - 외곽선: Gold `#C9A44C`
+    - 배경 음영: `#FFFDF7`
+    - Gold 계열 shadow를 약하게 사용
+    - 대회명 및 `대회 보기 →`는 Gold text `#9A6D12`로 반응
+    - 남/여 또는 각 부문의 순위 패널 고유 색상은 그대로 유지합니다.
+11. PC에서는 대회정보와 순위 패널을 가로로 비교하고, Mobile에서는 `대회정보 → 부문별 순위` 순으로 세로 배치합니다.
+
 ## Production compatibility
 
 `university-competition.html`은 Domestic Template v1 production wrapper입니다.
@@ -136,3 +163,4 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - 2026-09-25: 팀별 경기결과의 4칸 성적 요약과 선수명단 링크 동작을 v1 공통 규칙으로 승격. 참가대학 카드 디자인은 기존 상태 유지
 - 2026-09-25: 고성·단양 공통 6강 구조의 준결승 직행 카드·금색 점선 진출 경로를 Domestic Template v1 공통 규칙으로 승격
 - 2026-09-25: 단양대회 prototype 검증 완료 후 실제 production route를 Domestic Template v1 공통 엔진으로 승격
+- 2026-09-27: 2단계 국내대회 허브의 연도별 기록 카드 기준을 v1에 추가. 종료일 최신순 정렬, 카드 전체 클릭, 중·고배구와 동일한 Gold hover interaction을 공통 규칙으로 승격
