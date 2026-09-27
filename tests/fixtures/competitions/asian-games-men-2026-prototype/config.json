@@ -59,5 +59,10 @@
     "description": "K-Volley Lab 국제대회 공통 Competition Engine으로 만든 2026 아이치·나고야 아시안게임 남자배구 프로토타입."
   },
   "data": "data.json",
-  "modules": []
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    }
+  ]
 }
