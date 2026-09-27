@@ -77,17 +77,20 @@
     const ready=Boolean(item.pagePath);
     const men=podiumPanel(item,'men');
     const women=podiumPanel(item,'women');
-    return '<article class="univ-record-card">'+
+    const tag=ready?'a':'article';
+    const href=ready?' href="'+esc(item.pagePath)+'"':'';
+    const cls='univ-record-card'+(ready?' is-clickable':' is-disabled');
+    return '<'+tag+href+' class="'+cls+'"'+(ready?' aria-label="'+esc((item.shortName||item.name)+' 대회 보기')+'"':'')+'>'+
       '<div class="univ-record-info">'+
         '<div class="univ-record-top">'+seriesLabel(item)+statusLabel(item)+'</div>'+
         '<h3>'+esc(item.shortName||item.name)+'</h3>'+
         '<p class="univ-record-meta"><span class="univ-meta-icon" aria-hidden="true">▣</span><span>'+esc(fmt(item.startDate))+' ~ '+esc(fmt(item.endDate))+'</span></p>'+
         '<p class="univ-record-meta"><span class="univ-meta-icon" aria-hidden="true">⌖</span><span>'+esc(item.location||'개최지 확인 중')+'</span></p>'+
-        (ready?'<a class="univ-record-link" href="'+esc(item.pagePath)+'">대회 보기 <span aria-hidden="true">→</span></a>':'<span class="univ-record-link is-disabled">대회 페이지 준비 중</span>')+
+        '<span class="univ-record-link'+(ready?'':' is-disabled')+'">'+(ready?'대회 보기 <span aria-hidden="true">→</span>':'대회 페이지 준비 중')+'</span>'+
       '</div>'+
       rankingPanel(men,'men')+
       rankingPanel(women,'women')+
-    '</article>';
+    '</'+tag+'>';
   }
   function yearBlock(year,content,count,open){
     return '<section class="univ-year-block" data-year="'+year+'">'+
@@ -132,7 +135,8 @@
   }).then(data=>{
     const list=(data.competitions||[]).slice().sort((a,b)=>(a.featuredOrder||99)-(b.featuredOrder||99));
     if(featuredRoot)featuredRoot.innerHTML=list.slice(0,3).map(featuredCard).join('');
-    const current=list.map(recordCard).join('');
+    const recordList=list.slice().sort((a,b)=>String(b.endDate||'').localeCompare(String(a.endDate||''))||String(b.startDate||'').localeCompare(String(a.startDate||'')));
+    const current=recordList.map(recordCard).join('');
     const pending='<div class="univ-year-placeholder">검수 완료된 기록부터 순차적으로 추가합니다.</div>';
     root.innerHTML=
       yearBlock(2026,'<div class="univ-record-list">'+current+'</div>',list.length,true)+
