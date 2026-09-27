@@ -516,6 +516,66 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
   color:#F2C14E!important;
 }
 
+
+/* Shared V2: venue KPI and schedule controls stay inside their cards. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi.is-venue .kvl1180-kpi-copy{
+  min-width:0!important;
+  overflow:hidden!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi.is-venue .kvl1180-kpi-copy strong,
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi.is-venue .kvl1180-kpi-copy small{
+  display:block!important;
+  max-width:100%!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  word-break:keep-all!important;
+  line-height:1.28!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi.is-venue .kvl1180-kpi-copy small{
+  margin-top:3px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-schedule-toolbar{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) max-content!important;
+  align-items:center!important;
+  width:100%!important;
+  max-width:100%!important;
+  overflow:hidden!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stage-filters{
+  min-width:0!important;
+  max-width:100%!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-pool-filter{
+  min-width:0!important;
+  max-width:180px!important;
+  justify-self:end!important;
+  margin:0!important;
+  padding:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-pool-filter label{
+  display:flex!important;
+  align-items:center!important;
+  gap:7px!important;
+  max-width:100%!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-pool-filter select{
+  box-sizing:border-box!important;
+  min-width:82px!important;
+  max-width:100px!important;
+}
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-schedule-toolbar{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-pool-filter{
+    justify-self:end!important;
+    align-self:auto!important;
+    max-width:180px!important;
+  }
+}
+
 /* 7. Schedule filter and pool dropdown always stay inside the toolbar card. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] .kvl1180-schedule-toolbar{
   box-sizing:border-box!important;
