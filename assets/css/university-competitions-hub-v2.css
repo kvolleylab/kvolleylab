@@ -76,8 +76,11 @@
 .univ-year-details.is-collapsed{display:none}
 .univ-record-list{display:grid;gap:12px}
 
-.univ-record-card{display:grid;grid-template-columns:minmax(0,1.38fr) minmax(245px,.92fr) minmax(245px,.92fr);gap:10px;padding:10px;border:1px solid #dce4eb;border-radius:13px;background:#fff;box-shadow:0 5px 14px rgba(23,54,93,.035)}
-.univ-record-info{display:flex;min-width:0;flex-direction:column;padding:8px 12px 10px}
+.univ-record-card{display:grid;grid-template-columns:minmax(0,1.38fr) minmax(245px,.92fr) minmax(245px,.92fr);gap:10px;padding:10px;border:1px solid #dce4eb;border-radius:13px;background:#fff;color:inherit;text-decoration:none;box-shadow:0 5px 14px rgba(23,54,93,.035);transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease,background .16s ease}
+.univ-record-card.is-clickable{cursor:pointer}
+.univ-record-card.is-clickable:hover{transform:translateY(-1px);border-color:#c9a44c;background:#fffdf7;box-shadow:0 12px 26px rgba(154,109,18,.10)}
+.univ-record-card.is-clickable:focus-visible{outline:3px solid rgba(201,164,76,.38);outline-offset:2px;border-color:#c9a44c;background:#fffdf7}
+.univ-record-info{display:flex;min-width:0;flex-direction:column;padding:8px 12px 10px;border-radius:9px;transition:background .16s ease}
 .univ-record-top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:27px}
 .univ-series,.univ-status{display:inline-flex;align-items:center;justify-content:center;padding:5px 9px;border-radius:999px;font-size:10.5px;font-weight:900;line-height:1}
 .univ-series.is-league{background:#eaf3ff;color:#1b5faf}
@@ -88,7 +91,9 @@
 .univ-record-meta{display:grid;grid-template-columns:20px minmax(0,1fr);align-items:start;gap:7px;margin:0 0 7px;color:#62768b;font-size:13px;font-weight:750;line-height:1.4}
 .univ-meta-icon{color:#315d8e;font-size:14px;font-weight:900;text-align:center}
 .univ-record-link{display:inline-flex;align-items:center;gap:5px;width:max-content;margin-top:auto;padding-top:13px;color:#145fb8;text-decoration:none;font-size:13px;font-weight:900}
-.univ-record-link:hover{text-decoration:underline;text-underline-offset:3px}
+.univ-record-card.is-clickable:hover .univ-record-info,.univ-record-card.is-clickable:focus-visible .univ-record-info{background:#fffdf7}
+.univ-record-card.is-clickable:hover .univ-record-info h3,.univ-record-card.is-clickable:focus-visible .univ-record-info h3{color:#9a6d12}
+.univ-record-card.is-clickable:hover .univ-record-link,.univ-record-card.is-clickable:focus-visible .univ-record-link{text-decoration:underline;text-underline-offset:3px;color:#9a6d12}
 .univ-record-link.is-disabled{color:#96a2ae;cursor:default;text-decoration:none}
 
 .univ-ranking-panel{overflow:hidden;border:1px solid #dfe6ed;border-radius:11px;background:#fff}
