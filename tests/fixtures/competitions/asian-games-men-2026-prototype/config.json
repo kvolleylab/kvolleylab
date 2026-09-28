@@ -51,8 +51,20 @@
   "hero": {
     "showImage": true,
     "mode": "photo",
-    "pcImage": "/assets/images/competition-hero/asian-games-men-2026-main-card-pc.webp?v=20260928-3",
-    "mobileImage": "/assets/images/competition-hero/asian-games-men-2026-main-card-mobile.webp?v=20260928-3",
+    "pcImage": "",
+    "mobileImage": "",
+    "pcB64Chunks": [
+      "/assets/images/competition-hero/asian-games-men-2026/pc-01.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/pc-02.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/pc-03.b64?v=20260929-1"
+    ],
+    "mobileB64Chunks": [
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-01.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-02.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-03.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-04.b64?v=20260929-1"
+    ],
+    "mimeType": "image/webp",
     "position": "center center",
     "mobilePosition": "center center",
     "alt": "2026 아이치·나고야 아시안게임 남자배구 메인카드"
