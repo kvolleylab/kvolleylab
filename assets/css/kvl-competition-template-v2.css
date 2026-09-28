@@ -52,6 +52,24 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-k
   --kvl1180-green-soft:#f3effa;
 }
 
+/* MEN · GAMES (Olympics / Asian Games) = Deep Red. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"]{
+  --kvl-theme-dark:#641B20;
+  --kvl-theme-accent:#C44A3D;
+  --kvl-theme-primary:#9E2F2F;
+  --kvl-theme-strong:#7D2026;
+  --kvl-theme-soft:#FFF2EF;
+  --kvl-theme-border:#E7B5AD;
+  --kvl-theme-shadow:rgba(158,47,47,.13);
+  --kvl-theme-hero-a:#641B20;
+  --kvl-theme-hero-b:#A83232;
+  --kvl-theme-overlay-rgb:100,27,32;
+  --kvl1180-green:#9E2F2F;
+  --kvl1180-green-dark:#641B20;
+  --kvl1180-green-mid:#C44A3D;
+  --kvl1180-green-soft:#FFF2EF;
+}
+
 /* MEN · Domestic = Navy. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="domestic"]{
   --kvl-theme-dark:#102c49;--kvl-theme-accent:#2f7d9e;--kvl-theme-primary:#163a5f;
