@@ -4,7 +4,7 @@
 const VIEWS=new Set(['overview','schedule','groups','knockout','rosters','resources','team']);
 const KPI_TARGETS=['?view=rosters&team=KOR','?view=groups','?view=schedule','?view=knockout'];
 const STATUS_LABEL={upcoming:'대회 시작 전',active:'대회 진행 중',completed:'대회 종료'};
-const THEME_FAMILIES=new Set(['avc','fivb','domestic']);
+const THEME_FAMILIES=new Set(['avc','fivb','games','domestic']);
 
 function data(){return window.KVL_COMPETITION_V2_DATA||{};}
 function txt(el,value){if(el&&value!==undefined&&value!==null)el.textContent=String(value);}
