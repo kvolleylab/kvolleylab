@@ -14,7 +14,7 @@ function validate(config,{slug}={}){
  if(!isObject(c.competition))errors.push('config.competition is required');
  if(isObject(c.competition)&&Object.keys(c.competition).some(key=>!metadata.includes(key)))errors.push('Unknown config.competition field');
  for(const key of metadata)if(c.competition?.[key]===undefined||!String(c.competition[key]).trim())errors.push('config.competition.'+key+' is required');
- if(!['avc','fivb','domestic'].includes(c.competition?.competitionFamily))errors.push('unsupported competition family');
+ if(!['avc','fivb','games','domestic'].includes(c.competition?.competitionFamily))errors.push('unsupported competition family');
  if(!isObject(c.structure))errors.push('config.structure is required');
  if(!localJSON(c.data))errors.push('config.data must be a relative JSON file');
  if(c.modules!==undefined&&!Array.isArray(c.modules))errors.push('config.modules must be an array');
