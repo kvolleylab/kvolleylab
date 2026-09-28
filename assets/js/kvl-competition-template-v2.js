@@ -62,16 +62,25 @@ function applyTheme(d){
   for(const [key,value] of [['--kvl-hero-image-desktop',d.hero?.pcImage],['--kvl-hero-image-mobile',d.hero?.mobileImage]]){
     const url=showHeroImage&&value&&asset(value);if(url)body.style.setProperty(key,`url(${JSON.stringify(url)})`);else body.style.removeProperty(key);
   }
-  const chunks=showHeroImage&&Array.isArray(d.hero?.b64Chunks)?d.hero.b64Chunks.map(asset).filter(Boolean):[];
-  if(chunks.length){
-    Promise.all(chunks.map(async url=>{
+  const legacyChunks=showHeroImage&&Array.isArray(d.hero?.b64Chunks)?d.hero.b64Chunks.map(asset).filter(Boolean):[];
+  const pcChunks=showHeroImage&&Array.isArray(d.hero?.pcB64Chunks)?d.hero.pcB64Chunks.map(asset).filter(Boolean):legacyChunks;
+  const mobileChunks=showHeroImage&&Array.isArray(d.hero?.mobileB64Chunks)?d.hero.mobileB64Chunks.map(asset).filter(Boolean):legacyChunks;
+  const loadChunks=async chunks=>{
+    const parts=await Promise.all(chunks.map(async url=>{
       const res=await fetch(url,{cache:'force-cache'});
       if(!res.ok)throw new Error(`hero asset ${res.status}`);
       return (await res.text()).replace(/\\s+/g,'');
-    })).then(parts=>{
-      const dataUrl=`data:${d.hero?.mimeType||'image/webp'};base64,${parts.join('')}`;
-      body.style.setProperty('--kvl-hero-image-desktop',`url(${JSON.stringify(dataUrl)})`);
-      body.style.setProperty('--kvl-hero-image-mobile',`url(${JSON.stringify(dataUrl)})`);
+    }));
+    return `data:${d.hero?.mimeType||'image/webp'};base64,${parts.join('')}`;
+  };
+  if(pcChunks.length||mobileChunks.length){
+    Promise.all([
+      pcChunks.length?loadChunks(pcChunks):Promise.resolve(''),
+      mobileChunks.length?loadChunks(mobileChunks):Promise.resolve('')
+    ]).then(([pcData,mobileData])=>{
+      if(pcData)body.style.setProperty('--kvl-hero-image-desktop',`url(${JSON.stringify(pcData)})`);
+      if(mobileData)body.style.setProperty('--kvl-hero-image-mobile',`url(${JSON.stringify(mobileData)})`);
+      else if(pcData)body.style.setProperty('--kvl-hero-image-mobile',`url(${JSON.stringify(pcData)})`);
       body.dataset.kvlHeroReady='true';
     }).catch(()=>{body.dataset.kvlHeroReady='fallback';});
   }else body.removeAttribute('data-kvl-hero-ready');
