@@ -12,10 +12,10 @@
   "matchCount": 48,
   "knockoutTeamCount": 8,
   "focusTeamCode": "KOR",
-  "activeOverviewNote": "9월 29일 확인 완료 경기까지 반영 · 8강 진출 확정팀 표기",
+  "activeOverviewNote": "9월 29일 확인 완료 6경기까지 반영 · 8강 진출 8개국 확정",
   "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 + 순위결정/결선 라운드",
-  "standingsNote": "확인된 경기 결과 기준 · 8강 진출 확정팀 7개국 표기",
-  "standingsRule": "각 조 상위 2개국이 8강에 진출합니다. 현재 일본·파키스탄·이란·인도·카타르·대한민국·중국의 8강 진출이 확정됐습니다.",
+  "standingsNote": "확인된 9월 29일 경기 결과 기준 · 8강 진출 8개국 확정",
+  "standingsRule": "각 조 상위 2개국이 8강에 진출합니다. 일본·파키스탄·이란·태국·인도·카타르·대한민국·중국의 8강 진출이 확정됐습니다.",
   "meaning": {
     "eyebrow": "ASIAN GAMES 2026",
     "title": "아시안게임 메달 경쟁",
@@ -756,7 +756,25 @@
       "away": {
         "code": "THA"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M18",
@@ -812,7 +830,29 @@
       "away": {
         "code": "KAZ"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M20",
@@ -829,7 +869,29 @@
       "away": {
         "code": "TPE"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 27,
+            "away": 29
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M21",
@@ -846,7 +908,33 @@
       "away": {
         "code": "INA"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 17,
+            "away": 15
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M22",
@@ -863,7 +951,11 @@
       "away": {
         "code": "IND"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 2,
+        "away": 3
+      }
     },
     {
       "id": "AG26-M23",
@@ -1409,12 +1501,12 @@
             "team": {
               "code": "KAZ"
             },
-            "played": 2,
-            "wins": 0,
+            "played": 3,
+            "wins": 1,
             "losses": 2,
-            "points": 0,
-            "setRatio": "0.167",
-            "pointRatio": "0.796",
+            "points": 3,
+            "setRatio": "0.571",
+            "pointRatio": "0.874",
             "status": "out",
             "statusLabel": "예선 탈락"
           },
@@ -1423,12 +1515,12 @@
             "team": {
               "code": "UZB"
             },
-            "played": 2,
+            "played": 3,
             "wins": 0,
-            "losses": 2,
+            "losses": 3,
             "points": 0,
-            "setRatio": "0.000",
-            "pointRatio": "0.733",
+            "setRatio": "0.111",
+            "pointRatio": "0.824",
             "status": "out",
             "statusLabel": "예선 탈락"
           }
@@ -1443,54 +1535,54 @@
             "team": {
               "code": "IRI"
             },
-            "played": 2,
-            "wins": 2,
+            "played": 3,
+            "wins": 3,
             "losses": 0,
-            "points": 6,
-            "setRatio": "MAX",
-            "pointRatio": "1.531",
+            "points": 8,
+            "setRatio": "4.500",
+            "pointRatio": "1.281",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
           {
             "rank": 2,
             "team": {
-              "code": "INA"
+              "code": "THA"
             },
-            "played": 2,
-            "wins": 1,
+            "played": 3,
+            "wins": 2,
             "losses": 1,
-            "points": 4,
-            "setRatio": "1.667",
-            "pointRatio": "1.095",
-            "status": "current",
-            "statusLabel": "진출 경쟁 중"
+            "points": 5,
+            "setRatio": "1.200",
+            "pointRatio": "0.992",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
           },
           {
             "rank": 3,
             "team": {
-              "code": "THA"
+              "code": "INA"
             },
-            "played": 2,
+            "played": 3,
             "wins": 1,
-            "losses": 1,
-            "points": 2,
-            "setRatio": "0.600",
-            "pointRatio": "0.871",
-            "status": "current",
-            "statusLabel": "진출 경쟁 중"
+            "losses": 2,
+            "points": 5,
+            "setRatio": "1.167",
+            "pointRatio": "1.042",
+            "status": "out",
+            "statusLabel": "예선 탈락"
           },
           {
             "rank": 4,
             "team": {
               "code": "KGZ"
             },
-            "played": 2,
+            "played": 3,
             "wins": 0,
-            "losses": 2,
+            "losses": 3,
             "points": 0,
             "setRatio": "0.000",
-            "pointRatio": "0.711",
+            "pointRatio": "0.705",
             "status": "out",
             "statusLabel": "예선 탈락"
           }
@@ -1505,12 +1597,12 @@
             "team": {
               "code": "IND"
             },
-            "played": 2,
-            "wins": 2,
+            "played": 3,
+            "wins": 3,
             "losses": 0,
-            "points": 6,
-            "setRatio": "MAX",
-            "pointRatio": "1.190",
+            "points": 8,
+            "setRatio": "4.500",
+            "pointRatio": "-",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
@@ -1519,12 +1611,12 @@
             "team": {
               "code": "QAT"
             },
-            "played": 2,
+            "played": 3,
             "wins": 2,
-            "losses": 0,
-            "points": 6,
-            "setRatio": "6.000",
-            "pointRatio": "1.142",
+            "losses": 1,
+            "points": 7,
+            "setRatio": "2.000",
+            "pointRatio": "-",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
@@ -1595,12 +1687,12 @@
             "team": {
               "code": "TPE"
             },
-            "played": 2,
-            "wins": 0,
+            "played": 3,
+            "wins": 1,
             "losses": 2,
-            "points": 1,
-            "setRatio": "0.500",
-            "pointRatio": "0.852",
+            "points": 4,
+            "setRatio": "0.857",
+            "pointRatio": "0.933",
             "status": "out",
             "statusLabel": "예선 탈락"
           },
@@ -1609,12 +1701,12 @@
             "team": {
               "code": "PHI"
             },
-            "played": 2,
+            "played": 3,
             "wins": 0,
-            "losses": 2,
+            "losses": 3,
             "points": 0,
-            "setRatio": "0.000",
-            "pointRatio": "0.829",
+            "setRatio": "0.111",
+            "pointRatio": "0.853",
             "status": "out",
             "statusLabel": "예선 탈락"
           }
