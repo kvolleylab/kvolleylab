@@ -12,10 +12,10 @@
   "matchCount": 48,
   "knockoutTeamCount": 8,
   "focusTeamCode": "KOR",
-  "activeOverviewNote": "조별리그 진행 중 · 확인된 공식 경기 결과를 순차 반영합니다.",
+  "activeOverviewNote": "9월 28일까지 공식 확인 경기 결과 반영 · 9월 29일 결과는 공식 확인 후 추가 반영합니다.",
   "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 + 순위결정/결선 라운드",
-  "standingsNote": "프로토타입 · Google Drive 02_대회통합 MASTER 구축 후 공식 순위 자동 연결 예정",
-  "standingsRule": "4개 조 각 상위 2개국이 8강에 진출합니다. 세부 동률 규정은 공식 대회 자료 연결 후 반영합니다.",
+  "standingsNote": "2026년 9월 28일 경기 종료 기준 · 승점/세트 득실비/점수 득실비 반영",
+  "standingsRule": "4개 조 각 상위 2개국이 8강에 진출합니다. 현재 순위는 9월 28일 경기 종료 기준입니다.",
   "meaning": {
     "eyebrow": "ASIAN GAMES 2026",
     "title": "아시안게임 메달 경쟁",
@@ -316,7 +316,33 @@
       "away": {
         "code": "THA"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M06",
@@ -368,7 +394,33 @@
       "away": {
         "code": "TPE"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M08",
@@ -420,7 +472,25 @@
       "away": {
         "code": "KGZ"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M10",
@@ -437,7 +507,25 @@
       "away": {
         "code": "HKG"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M11",
@@ -454,7 +542,25 @@
       "away": {
         "code": "UZB"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M12",
@@ -471,7 +577,25 @@
       "away": {
         "code": "PHI"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M13",
@@ -488,7 +612,25 @@
       "away": {
         "code": "IRI"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M14",
@@ -505,7 +647,25 @@
       "away": {
         "code": "QAT"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M15",
@@ -522,7 +682,29 @@
       "away": {
         "code": "KOR"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 10,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M16",
@@ -539,7 +721,25 @@
       "away": {
         "code": "JPN"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M17",
@@ -1159,56 +1359,56 @@
             "team": {
               "code": "JPN"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": 6,
+            "setRatio": "MAX",
+            "pointRatio": "1.442",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 2,
             "team": {
               "code": "PAK"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": 6,
+            "setRatio": "6.000",
+            "pointRatio": "1.201",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 3,
             "team": {
               "code": "KAZ"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": 0,
+            "setRatio": "0.167",
+            "pointRatio": "0.796",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 4,
             "team": {
               "code": "UZB"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": 0,
+            "setRatio": "0.000",
+            "pointRatio": "0.733",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           }
         ]
       },
@@ -1221,56 +1421,56 @@
             "team": {
               "code": "IRI"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": 6,
+            "setRatio": "MAX",
+            "pointRatio": "1.531",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 2,
             "team": {
               "code": "INA"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": 4,
+            "setRatio": "1.667",
+            "pointRatio": "1.095",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 3,
             "team": {
               "code": "THA"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": 2,
+            "setRatio": "0.600",
+            "pointRatio": "0.871",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 4,
             "team": {
               "code": "KGZ"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": 0,
+            "setRatio": "0.000",
+            "pointRatio": "0.711",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           }
         ]
       },
@@ -1281,58 +1481,58 @@
           {
             "rank": 1,
             "team": {
-              "code": "QAT"
+              "code": "IND"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": 6,
+            "setRatio": "MAX",
+            "pointRatio": "1.190",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 2,
             "team": {
-              "code": "IND"
+              "code": "QAT"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": 6,
+            "setRatio": "6.000",
+            "pointRatio": "1.142",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 3,
             "team": {
               "code": "VIE"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": 0,
+            "setRatio": "0.000",
+            "pointRatio": "0.863",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 4,
             "team": {
               "code": "HKG"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": 0,
+            "setRatio": "0.167",
+            "pointRatio": "0.856",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           }
         ]
       },
@@ -1345,56 +1545,56 @@
             "team": {
               "code": "KOR"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": 6,
+            "setRatio": "6.000",
+            "pointRatio": "1.285",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 2,
             "team": {
               "code": "CHN"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": 5,
+            "setRatio": "3.000",
+            "pointRatio": "1.107",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 3,
             "team": {
               "code": "TPE"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": 1,
+            "setRatio": "0.500",
+            "pointRatio": "0.852",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           },
           {
             "rank": 4,
             "team": {
               "code": "PHI"
             },
-            "played": null,
-            "wins": null,
-            "losses": null,
-            "points": null,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "status": "pending",
-            "statusLabel": "공식 순위 연결 전"
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": 0,
+            "setRatio": "0.000",
+            "pointRatio": "0.829",
+            "status": "current",
+            "statusLabel": "9/28 종료 기준"
           }
         ]
       }
