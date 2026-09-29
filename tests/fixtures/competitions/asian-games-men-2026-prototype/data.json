@@ -12,7 +12,7 @@
   "matchCount": 48,
   "knockoutTeamCount": 8,
   "focusTeamCode": "KOR",
-  "activeOverviewNote": "9월 29일 확인 완료 6경기까지 반영 · 8강 진출 8개국 확정",
+  "activeOverviewNote": "9월 29일 확인 완료 경기 반영 · 8강 진출 8개국 확정 · 토너먼트 사다리 연결",
   "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 + 순위결정/결선 라운드",
   "standingsNote": "확인된 9월 29일 경기 결과 기준 · 8강 진출 8개국 확정",
   "standingsRule": "각 조 상위 2개국이 8강에 진출합니다. 일본·파키스탄·이란·태국·인도·카타르·대한민국·중국의 8강 진출이 확정됐습니다.",
@@ -1019,15 +1019,14 @@
       "stage": "8강",
       "round": "QF",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "IND"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "name": "A조 2위",
+        "en": "A2 · 일본/파키스탄"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
-      "bracketLabel": "QF1",
+      "bracketLabel": "8강 · C1-A2",
       "nextMatchId": "AG26-M37"
     },
     {
@@ -1058,15 +1057,14 @@
       "stage": "8강",
       "round": "QF",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "name": "D조 2위",
+        "en": "D2 · 대한민국/중국"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "IRI"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
-      "bracketLabel": "QF2",
+      "bracketLabel": "8강 · D2-B1",
       "nextMatchId": "AG26-M37"
     },
     {
@@ -1097,15 +1095,14 @@
       "stage": "8강",
       "round": "QF",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "THA"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "name": "D조 1위",
+        "en": "D1 · 대한민국/중국"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
-      "bracketLabel": "QF3",
+      "bracketLabel": "8강 · B2-D1",
       "nextMatchId": "AG26-M38"
     },
     {
@@ -1136,15 +1133,14 @@
       "stage": "8강",
       "round": "QF",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "name": "A조 1위",
+        "en": "A1 · 일본/파키스탄"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "QAT"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
-      "bracketLabel": "QF4",
+      "bracketLabel": "8강 · A1-C2",
       "nextMatchId": "AG26-M38"
     },
     {
