@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 2,
+  "slug": "asian-games-women-2026-prototype",
+  "competition": {
+    "competitionId": "KVL-PROTOTYPE-ASIAN-GAMES-WOMEN-2026",
+    "displayName": "2026 아이치·나고야 아시안게임 여자배구",
+    "officialName": "The 20th Asian Games Aichi-Nagoya 2026 · Women's Volleyball",
+    "gender": "women",
+    "competitionFamily": "games",
+    "season": "2026"
+  },
+  "structure": {
+    "calendar": true,
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "조 편성",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "8강 진출",
+      "knockoutKpiUnit": "개국",
+      "standingsTitle": "조별순위",
+      "standingsEyebrow": "PRELIMINARY ROUND"
+    },
+    "schedule": {
+      "stages": [
+        "전체",
+        "조별리그",
+        "8강",
+        "준결승",
+        "순위결정전",
+        "3위결정전",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "pools-combined",
+      "combinedTitle": "예선 종합순위"
+    },
+    "participants": {
+      "mode": "groups",
+      "groupLabel": "아시안게임 2026 여자부 참가국",
+      "sort": "name-ko"
+    },
+    "roster": {
+      "mode": "none"
+    },
+    "knockout": {
+      "mode": "bracket-8",
+      "title": "메달 토너먼트"
+    }
+  },
+  "hero": {
+    "showImage": false,
+    "mode": "color-only",
+    "alt": "2026 아이치·나고야 아시안게임 여자배구 메인카드"
+  },
+  "seo": {
+    "title": "2026 아이치·나고야 아시안게임 여자배구 · 프로토타입 | K-Volley Lab",
+    "description": "K-Volley Lab 공통 Competition Engine으로 만든 2026 아이치·나고야 아시안게임 여자배구 프로토타입."
+  },
+  "data": "data.json",
+  "modules": []
+}
