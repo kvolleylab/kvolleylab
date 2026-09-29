@@ -41,7 +41,7 @@
       "sort": "name-ko"
     },
     "roster": {
-      "mode": "none"
+      "mode": "full"
     },
     "knockout": {
       "mode": "bracket-8",
@@ -58,5 +58,10 @@
     "description": "K-Volley Lab 공통 Competition Engine으로 만든 2026 아이치·나고야 아시안게임 여자배구 프로토타입."
   },
   "data": "data.json",
-  "modules": []
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    }
+  ]
 }
