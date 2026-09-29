@@ -1728,5 +1728,9 @@
     }
   ],
   "clubSeasonLabel": "26/27 소속팀",
-  "rosterPrintNote": "2026 아시안게임 남자배구 · Google Drive 최신 검수 선수명단"
+  "rosterPrintNote": "2026 아시안게임 남자배구 · Google Drive 최신 검수 선수명단",
+  "genderLinks": {
+    "men": "/tests/competition-page-v2-config-smoke.html?competition=asian-games-men-2026-prototype",
+    "women": "/tests/competition-page-v2-config-smoke.html?competition=asian-games-women-2026-prototype"
+  }
 }
