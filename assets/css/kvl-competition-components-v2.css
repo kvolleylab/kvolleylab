@@ -2095,3 +2095,50 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
       repeating-linear-gradient(to bottom,#C9A24A 0 6px,transparent 6px 11px) bottom/2px 50% no-repeat!important;
   }
 }
+
+/* International WOMEN interaction + participants + calendar parity · 2026-09-30
+   Visual sources of truth:
+   - AVC Women production for international Rose interactions/participants.
+   - Goseong Women for calendar month-title scale and title-card Rose.
+   Scope excludes domestic so the validated Goseong palette remains untouched. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-status span{border-color:#ead4de!important;background:#fff7fa!important;color:#765f69!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-status strong{color:#a53d68!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-group{border-color:#ead4de!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-group-head{background:#fff1f6!important;color:#8f2f59!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-group-head span{color:#a85a78!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-buttons{background:#f0e1e7!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-button{color:#17365d!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-button:hover{background:#fff7fa!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-button.is-active{background:#fff1f6!important;box-shadow:inset 0 0 0 2px #c65382!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-button.is-korea:not(.is-active){background:#fffafd!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-button img{border-color:#eadfe4!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-participant-button-copy small{color:#7a8796!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-team-profile{border-color:#ead4de!important;box-shadow:0 7px 22px rgba(126,49,82,.04)!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-team-profile-head{background:linear-gradient(135deg,#fff8fb,#fff1f6)!important;border-bottom-color:#ead4de!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-team-profile-flag{border-color:#eadfe4!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-team-profile-copy p{color:#6f5d65!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-team-profile-meta span{border-color:#ead4de!important;color:#6f5d65!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-team-profile-meta span:first-child{border-color:#a53d68!important;background:#a53d68!important;color:#fff!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-roster-table,body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-roster-table-head{border-color:#ead4de!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-roster-table-head{background:#fff4f8!important;color:#6f5964!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-roster-row{border-top-color:#f1e4e9!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-print-actions button,body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-vb-link{border-color:#e5cbd6!important;background:#fff8fb!important;color:#9a3561!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-print-actions button:hover,body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-vb-link:hover{border-color:#d59ab1!important;background:#fff1f6!important;color:#9a3561!important}
+
+/* AVC Women schedule filter interaction parity. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #schedule .kvl1180-schedule-toolbar{border-color:#ead4de!important;background:#fff8fb!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #schedule .kvl1180-stage-filters button{border-color:#e5cbd6!important;color:#68545e!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #schedule .kvl1180-stage-filters button:hover{border-color:#d59ab1!important;background:#fff1f6!important;color:#9a3561!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #schedule .kvl1180-stage-filters button.is-active{border-color:#a53d68!important;background:#a53d68!important;color:#fff!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #schedule .kvl1180-pool-filter{color:#765f69!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #schedule .kvl1180-pool-filter select{border-color:#e5cbd6!important;color:#674d59!important;background:#fff!important}
+
+/* AVC Women overview KPI hover parity: no inherited green surface. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:hover,body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:focus-visible{border-color:#dbaabd!important;background:linear-gradient(180deg,#fff,#fff7fa)!important;box-shadow:0 9px 20px rgba(132,55,88,.12)!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-icon,body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-icon{color:#a53d68!important}
+
+/* International monthly calendar scale matches connected Goseong.
+   Women month title uses the current Goseong Women card Rose. */
+body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) .kvl1180-calendar-title{font-size:20px!important;font-weight:800!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) .kvl1180-calendar-title{background:#D2648F!important;border-color:#D2648F!important;color:#fff!important}
+@media(max-width:680px){body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) .kvl1180-calendar-title{font-size:18px!important}}

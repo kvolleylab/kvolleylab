@@ -79,3 +79,14 @@ A main-card change is complete only when all of the following are true:
 - no text is baked into the artwork
 - image integrity is verified
 - no production page outside the requested scope was modified
+
+### International women interaction and calendar parity (2026-09-30)
+
+For shared V2 international women competitions (gender=women, non-domestic):
+
+- Participant-country cards and roster surfaces use the AVC Women Rose palette; inherited green hover/active/profile accents are not allowed.
+- Schedule stage-filter hover uses AVC Women production values: border #d59ab1, background #fff1f6, text #9a3561; active uses #a53d68.
+- Overview KPI hover uses Rose border/shadow and a Rose-white surface, never the legacy green hover.
+- Monthly calendar month-title typography is shared with Goseong: 20px desktop and 18px mobile.
+- The international women calendar month-title card uses the current Goseong Women Rose #D2648F.
+- These rules belong to the common Competition Engine/Components layer, never tournament-specific CSS.
