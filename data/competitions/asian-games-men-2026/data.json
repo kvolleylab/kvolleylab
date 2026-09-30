@@ -13,7 +13,7 @@
   "focusTeamCode": "KOR",
   "activeOverviewNote": "조별리그 24경기 결과 반영 완료 · 10월 1일 8강 및 9~16위 순위결정전 대진 확정",
   "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 결과 확정 · 10월 1일 8강/9~16위 순위결정전 예정",
-  "standingsNote": "9월 29일 조별리그 최종 결과 기준 · 각 조 1·2위 8강 진출",
+  "standingsNote": "9월 29일 조별리그 최종 결과 기준 · 예선 종합순위는 조 순위 → 승률 → 경기당 승점 → 세트·점수 득실비 순 K-Volley Lab 표시 기준",
   "standingsRule": "A조 일본·파키스탄, B조 이란·태국, C조 인도·카타르, D조 중국·대한민국이 8강에 진출했습니다.",
   "meaning": {
     "eyebrow": "ASIAN GAMES 2026",
@@ -1762,7 +1762,216 @@
         ]
       }
     ],
-    "combinedRows": []
+    "combinedRows": [
+      {
+        "rank": 1,
+        "team": {
+          "code": "JPN"
+        },
+        "wins": 3,
+        "losses": 0,
+        "points": 9,
+        "setRatio": "MAX",
+        "pointRatio": "1.324",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 2,
+        "team": {
+          "code": "IRI"
+        },
+        "wins": 3,
+        "losses": 0,
+        "points": 8,
+        "setRatio": "4.500",
+        "pointRatio": "1.281",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 3,
+        "team": {
+          "code": "IND"
+        },
+        "wins": 3,
+        "losses": 0,
+        "points": 8,
+        "setRatio": "4.500",
+        "pointRatio": "1.118",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 4,
+        "team": {
+          "code": "CHN"
+        },
+        "wins": 3,
+        "losses": 0,
+        "points": 7,
+        "setRatio": "2.250",
+        "pointRatio": "1.080",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 5,
+        "team": {
+          "code": "KOR"
+        },
+        "wins": 2,
+        "losses": 1,
+        "points": 7,
+        "setRatio": "2.000",
+        "pointRatio": "1.141",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 6,
+        "team": {
+          "code": "QAT"
+        },
+        "wins": 2,
+        "losses": 1,
+        "points": 7,
+        "setRatio": "2.000",
+        "pointRatio": "1.061",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 7,
+        "team": {
+          "code": "PAK"
+        },
+        "wins": 2,
+        "losses": 1,
+        "points": 6,
+        "setRatio": "1.500",
+        "pointRatio": "1.083",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 8,
+        "team": {
+          "code": "THA"
+        },
+        "wins": 2,
+        "losses": 1,
+        "points": 5,
+        "setRatio": "1.200",
+        "pointRatio": "0.992",
+        "status": "qualified",
+        "statusLabel": "8강 진출"
+      },
+      {
+        "rank": 9,
+        "team": {
+          "code": "INA"
+        },
+        "wins": 1,
+        "losses": 2,
+        "points": 5,
+        "setRatio": "1.167",
+        "pointRatio": "1.042",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      },
+      {
+        "rank": 10,
+        "team": {
+          "code": "TPE"
+        },
+        "wins": 1,
+        "losses": 2,
+        "points": 4,
+        "setRatio": "0.857",
+        "pointRatio": "0.933",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      },
+      {
+        "rank": 11,
+        "team": {
+          "code": "KAZ"
+        },
+        "wins": 1,
+        "losses": 2,
+        "points": 3,
+        "setRatio": "0.571",
+        "pointRatio": "0.874",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      },
+      {
+        "rank": 12,
+        "team": {
+          "code": "VIE"
+        },
+        "wins": 1,
+        "losses": 2,
+        "points": 3,
+        "setRatio": "0.429",
+        "pointRatio": "0.966",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      },
+      {
+        "rank": 13,
+        "team": {
+          "code": "HKG"
+        },
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "setRatio": "0.222",
+        "pointRatio": "0.860",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      },
+      {
+        "rank": 14,
+        "team": {
+          "code": "PHI"
+        },
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "setRatio": "0.111",
+        "pointRatio": "0.853",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      },
+      {
+        "rank": 15,
+        "team": {
+          "code": "UZB"
+        },
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "setRatio": "0.111",
+        "pointRatio": "0.824",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      },
+      {
+        "rank": 16,
+        "team": {
+          "code": "KGZ"
+        },
+        "wins": 0,
+        "losses": 3,
+        "points": 0,
+        "setRatio": "0.000",
+        "pointRatio": "0.705",
+        "status": "out",
+        "statusLabel": "예선 탈락"
+      }
+    ]
   },
   "finalRanking": [],
   "rosterPendingLabel": "Google Drive MASTER 검수본 반영",
