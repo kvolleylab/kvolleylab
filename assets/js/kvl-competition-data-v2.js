@@ -51,7 +51,10 @@ function validate(d,{production=false}={}){
  if(production){
   if(d.isTest||/^(SMOKE|DUMMY|KVL-TEMPLATE)/i.test(d.competitionId))errors.push('test data cannot be published with a production starter');
   if(!d.seo?.description||!/^https:\/\//.test(d.seo?.canonical||''))errors.push('production requires SEO description and HTTPS canonical URL');
-  if(!d.hero?.pcImage||!d.hero?.mobileImage)errors.push('production requires PC and mobile hero assets');
+  const hero=d.hero||{},legacyChunks=Array.isArray(hero.b64Chunks)&&hero.b64Chunks.length>0;
+  const hasPcHero=!!hero.pcImage||legacyChunks||(Array.isArray(hero.pcB64Chunks)&&hero.pcB64Chunks.length>0);
+  const hasMobileHero=!!hero.mobileImage||legacyChunks||(Array.isArray(hero.mobileB64Chunks)&&hero.mobileB64Chunks.length>0);
+  if(!hasPcHero||!hasMobileHero)errors.push('production requires PC and mobile hero assets');
  }
  return errors;
 }
