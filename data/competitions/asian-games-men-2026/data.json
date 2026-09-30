@@ -1,0 +1,1789 @@
+{
+  "status": "active",
+  "stageLabel": "8강 예정",
+  "dateLabel": "2026.09.27 ~ 10.03",
+  "locationLabel": "일본 · 아이치현",
+  "venueLabel": "오카자키 · 고마키",
+  "venuePrimary": "일본 아이치현",
+  "venueSecondary": "오카자키 중앙종합공원 종합체육관 · 고마키시 스포츠공원 종합체육관",
+  "teamCount": 16,
+  "groupCount": 4,
+  "matchCount": 48,
+  "knockoutTeamCount": 8,
+  "focusTeamCode": "KOR",
+  "activeOverviewNote": "조별리그 24경기 결과 반영 완료 · 10월 1일 8강 및 9~16위 순위결정전 대진 확정",
+  "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 결과 확정 · 10월 1일 8강/9~16위 순위결정전 예정",
+  "standingsNote": "9월 29일 조별리그 최종 결과 기준 · 각 조 1·2위 8강 진출",
+  "standingsRule": "A조 일본·파키스탄, B조 이란·태국, C조 인도·카타르, D조 중국·대한민국이 8강에 진출했습니다.",
+  "meaning": {
+    "eyebrow": "ASIAN GAMES 2026",
+    "title": "아시안게임 메달 경쟁",
+    "note": "16개국이 4개 조 조별리그를 거쳐 메달 토너먼트와 순위결정전을 진행합니다."
+  },
+  "qualifications": [],
+  "participants": [
+    {
+      "code": "JPN",
+      "name": "일본",
+      "en": "Japan",
+      "flag": "https://flagcdn.com/w160/jp.png",
+      "group": "A",
+      "count": 12
+    },
+    {
+      "code": "PAK",
+      "name": "파키스탄",
+      "en": "Pakistan",
+      "flag": "https://flagcdn.com/w160/pk.png",
+      "group": "A",
+      "count": 12
+    },
+    {
+      "code": "KAZ",
+      "name": "카자흐스탄",
+      "en": "Kazakhstan",
+      "flag": "https://flagcdn.com/w160/kz.png",
+      "group": "A",
+      "count": 12
+    },
+    {
+      "code": "UZB",
+      "name": "우즈베키스탄",
+      "en": "Uzbekistan",
+      "flag": "https://flagcdn.com/w160/uz.png",
+      "group": "A",
+      "count": 12
+    },
+    {
+      "code": "IRI",
+      "name": "이란",
+      "en": "Iran",
+      "flag": "https://flagcdn.com/w160/ir.png",
+      "group": "B",
+      "count": 12
+    },
+    {
+      "code": "INA",
+      "name": "인도네시아",
+      "en": "Indonesia",
+      "flag": "https://flagcdn.com/w160/id.png",
+      "group": "B",
+      "count": 12
+    },
+    {
+      "code": "THA",
+      "name": "태국",
+      "en": "Thailand",
+      "flag": "https://flagcdn.com/w160/th.png",
+      "group": "B",
+      "count": 12
+    },
+    {
+      "code": "KGZ",
+      "name": "키르기스스탄",
+      "en": "Kyrgyzstan",
+      "flag": "https://flagcdn.com/w160/kg.png",
+      "group": "B",
+      "count": 11
+    },
+    {
+      "code": "QAT",
+      "name": "카타르",
+      "en": "Qatar",
+      "flag": "https://flagcdn.com/w160/qa.png",
+      "group": "C",
+      "count": 12
+    },
+    {
+      "code": "IND",
+      "name": "인도",
+      "en": "India",
+      "flag": "https://flagcdn.com/w160/in.png",
+      "group": "C",
+      "count": 12
+    },
+    {
+      "code": "VIE",
+      "name": "베트남",
+      "en": "Vietnam",
+      "flag": "https://flagcdn.com/w160/vn.png",
+      "group": "C",
+      "count": 12
+    },
+    {
+      "code": "HKG",
+      "name": "홍콩차이나",
+      "en": "Hong Kong, China",
+      "flag": "https://flagcdn.com/w160/hk.png",
+      "group": "C",
+      "count": 12
+    },
+    {
+      "code": "KOR",
+      "name": "대한민국",
+      "en": "Korea",
+      "flag": "https://flagcdn.com/w160/kr.png",
+      "group": "D",
+      "count": 12
+    },
+    {
+      "code": "CHN",
+      "name": "중국",
+      "en": "China",
+      "flag": "https://flagcdn.com/w160/cn.png",
+      "group": "D",
+      "count": 12
+    },
+    {
+      "code": "TPE",
+      "name": "차이니스 타이베이",
+      "en": "Chinese Taipei",
+      "flag": "https://flagcdn.com/w160/tw.png",
+      "group": "D",
+      "count": 12
+    },
+    {
+      "code": "PHI",
+      "name": "필리핀",
+      "en": "Philippines",
+      "flag": "https://flagcdn.com/w160/ph.png",
+      "group": "D",
+      "count": 12
+    }
+  ],
+  "matches": [
+    {
+      "id": "AG26-M01",
+      "date": "2026-09-27",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "B",
+      "group": "B",
+      "home": {
+        "code": "IRI"
+      },
+      "away": {
+        "code": "KGZ"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 11
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M02",
+      "date": "2026-09-27",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "C",
+      "group": "C",
+      "home": {
+        "code": "QAT"
+      },
+      "away": {
+        "code": "HKG"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M03",
+      "date": "2026-09-27",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "A",
+      "group": "A",
+      "home": {
+        "code": "PAK"
+      },
+      "away": {
+        "code": "KAZ"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M04",
+      "date": "2026-09-27",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "D",
+      "group": "D",
+      "home": {
+        "code": "KOR"
+      },
+      "away": {
+        "code": "PHI"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M05",
+      "date": "2026-09-27",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "B",
+      "group": "B",
+      "home": {
+        "code": "INA"
+      },
+      "away": {
+        "code": "THA"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M06",
+      "date": "2026-09-27",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "C",
+      "group": "C",
+      "home": {
+        "code": "IND"
+      },
+      "away": {
+        "code": "VIE"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M07",
+      "date": "2026-09-27",
+      "time": "19:00",
+      "localTimeLabel": "일본 현지 19:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "D",
+      "group": "D",
+      "home": {
+        "code": "CHN"
+      },
+      "away": {
+        "code": "TPE"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M08",
+      "date": "2026-09-27",
+      "time": "19:20",
+      "localTimeLabel": "일본 현지 19:20 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "A",
+      "group": "A",
+      "home": {
+        "code": "JPN"
+      },
+      "away": {
+        "code": "UZB"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M09",
+      "date": "2026-09-28",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "B",
+      "group": "B",
+      "home": {
+        "code": "INA"
+      },
+      "away": {
+        "code": "KGZ"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M10",
+      "date": "2026-09-28",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "C",
+      "group": "C",
+      "home": {
+        "code": "IND"
+      },
+      "away": {
+        "code": "HKG"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M11",
+      "date": "2026-09-28",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "A",
+      "group": "A",
+      "home": {
+        "code": "PAK"
+      },
+      "away": {
+        "code": "UZB"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M12",
+      "date": "2026-09-28",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "D",
+      "group": "D",
+      "home": {
+        "code": "CHN"
+      },
+      "away": {
+        "code": "PHI"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M13",
+      "date": "2026-09-28",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "B",
+      "group": "B",
+      "home": {
+        "code": "THA"
+      },
+      "away": {
+        "code": "IRI"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M14",
+      "date": "2026-09-28",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "C",
+      "group": "C",
+      "home": {
+        "code": "VIE"
+      },
+      "away": {
+        "code": "QAT"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M15",
+      "date": "2026-09-28",
+      "time": "19:00",
+      "localTimeLabel": "일본 현지 19:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "D",
+      "group": "D",
+      "home": {
+        "code": "TPE"
+      },
+      "away": {
+        "code": "KOR"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 10,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M16",
+      "date": "2026-09-28",
+      "time": "19:20",
+      "localTimeLabel": "일본 현지 19:20 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "A",
+      "group": "A",
+      "home": {
+        "code": "KAZ"
+      },
+      "away": {
+        "code": "JPN"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M17",
+      "date": "2026-09-29",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "B",
+      "group": "B",
+      "home": {
+        "code": "KGZ"
+      },
+      "away": {
+        "code": "THA"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M18",
+      "date": "2026-09-29",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "C",
+      "group": "C",
+      "home": {
+        "code": "HKG"
+      },
+      "away": {
+        "code": "VIE"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M19",
+      "date": "2026-09-29",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "A",
+      "group": "A",
+      "home": {
+        "code": "UZB"
+      },
+      "away": {
+        "code": "KAZ"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M20",
+      "date": "2026-09-29",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "D",
+      "group": "D",
+      "home": {
+        "code": "PHI"
+      },
+      "away": {
+        "code": "TPE"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 27,
+            "away": 29
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M21",
+      "date": "2026-09-29",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "B",
+      "group": "B",
+      "home": {
+        "code": "IRI"
+      },
+      "away": {
+        "code": "INA"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 17,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M22",
+      "date": "2026-09-29",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "C",
+      "group": "C",
+      "home": {
+        "code": "QAT"
+      },
+      "away": {
+        "code": "IND"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 24
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M23",
+      "date": "2026-09-29",
+      "time": "19:00",
+      "localTimeLabel": "일본 현지 19:00 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "D",
+      "group": "D",
+      "home": {
+        "code": "KOR"
+      },
+      "away": {
+        "code": "CHN"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M24",
+      "date": "2026-09-29",
+      "time": "19:20",
+      "localTimeLabel": "일본 현지 19:20 JST",
+      "stage": "조별리그",
+      "round": "POOL",
+      "pool": "A",
+      "group": "A",
+      "home": {
+        "code": "JPN"
+      },
+      "away": {
+        "code": "PAK"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "AG26-M25",
+      "date": "2026-10-01",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "순위결정전",
+      "round": "P9_16",
+      "home": {
+        "code": "KAZ"
+      },
+      "away": {
+        "code": "HKG"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "9~16위 결정전",
+      "placementLabel": "9~16위 결정전 1"
+    },
+    {
+      "id": "AG26-M29",
+      "date": "2026-10-01",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "IND"
+      },
+      "away": {
+        "code": "PAK"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "8강 · C1-A2",
+      "nextMatchId": "AG26-M37"
+    },
+    {
+      "id": "AG26-M26",
+      "date": "2026-10-01",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "순위결정전",
+      "round": "P9_16",
+      "home": {
+        "code": "KGZ"
+      },
+      "away": {
+        "code": "TPE"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "9~16위 결정전",
+      "placementLabel": "9~16위 결정전 2"
+    },
+    {
+      "id": "AG26-M30",
+      "date": "2026-10-01",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "KOR"
+      },
+      "away": {
+        "code": "IRI"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "8강 · D2-B1",
+      "nextMatchId": "AG26-M37"
+    },
+    {
+      "id": "AG26-M27",
+      "date": "2026-10-01",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "순위결정전",
+      "round": "P9_16",
+      "home": {
+        "code": "VIE"
+      },
+      "away": {
+        "code": "UZB"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "9~16위 결정전",
+      "placementLabel": "9~16위 결정전 3"
+    },
+    {
+      "id": "AG26-M31",
+      "date": "2026-10-01",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "THA"
+      },
+      "away": {
+        "code": "CHN"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "8강 · B2-D1",
+      "nextMatchId": "AG26-M38"
+    },
+    {
+      "id": "AG26-M28",
+      "date": "2026-10-01",
+      "time": "19:00",
+      "localTimeLabel": "일본 현지 19:00 JST",
+      "stage": "순위결정전",
+      "round": "P9_16",
+      "home": {
+        "code": "PHI"
+      },
+      "away": {
+        "code": "INA"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "9~16위 결정전",
+      "placementLabel": "9~16위 결정전 4"
+    },
+    {
+      "id": "AG26-M32",
+      "date": "2026-10-01",
+      "time": "19:20",
+      "localTimeLabel": "일본 현지 19:20 JST",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "JPN"
+      },
+      "away": {
+        "code": "QAT"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "8강 · A1-C2",
+      "nextMatchId": "AG26-M38"
+    },
+    {
+      "id": "AG26-M33",
+      "date": "2026-10-02",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "순위결정전",
+      "round": "P13_16",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "13~16위 결정전",
+      "placementLabel": "13~16위 결정전 1"
+    },
+    {
+      "id": "AG26-M39",
+      "date": "2026-10-02",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "순위결정전",
+      "round": "P5_8",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "placement": true,
+      "placementGroup": "5~8위 결정전",
+      "placementLabel": "5~8위 결정전 1"
+    },
+    {
+      "id": "AG26-M34",
+      "date": "2026-10-02",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "순위결정전",
+      "round": "P13_16",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "13~16위 결정전",
+      "placementLabel": "13~16위 결정전 2"
+    },
+    {
+      "id": "AG26-M40",
+      "date": "2026-10-02",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "순위결정전",
+      "round": "P5_8",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "placement": true,
+      "placementGroup": "5~8위 결정전",
+      "placementLabel": "5~8위 결정전 2"
+    },
+    {
+      "id": "AG26-M35",
+      "date": "2026-10-02",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "순위결정전",
+      "round": "P9_12",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "9~12위 결정전",
+      "placementLabel": "9~12위 결정전 1"
+    },
+    {
+      "id": "AG26-M37",
+      "date": "2026-10-02",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "준결승",
+      "round": "SF",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "SF1",
+      "nextMatchId": "AG26-M48"
+    },
+    {
+      "id": "AG26-M36",
+      "date": "2026-10-02",
+      "time": "19:00",
+      "localTimeLabel": "일본 현지 19:00 JST",
+      "stage": "순위결정전",
+      "round": "P9_12",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "9~12위 결정전",
+      "placementLabel": "9~12위 결정전 2"
+    },
+    {
+      "id": "AG26-M38",
+      "date": "2026-10-02",
+      "time": "19:20",
+      "localTimeLabel": "일본 현지 19:20 JST",
+      "stage": "준결승",
+      "round": "SF",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "SF2",
+      "nextMatchId": "AG26-M48"
+    },
+    {
+      "id": "AG26-M41",
+      "date": "2026-10-03",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "순위결정전",
+      "round": "P15",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "최종 순위결정전",
+      "placementLabel": "15위 결정전"
+    },
+    {
+      "id": "AG26-M45",
+      "date": "2026-10-03",
+      "time": "10:00",
+      "localTimeLabel": "일본 현지 10:00 JST",
+      "stage": "순위결정전",
+      "round": "P7",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "placement": true,
+      "placementGroup": "최종 순위결정전",
+      "placementLabel": "7위 결정전"
+    },
+    {
+      "id": "AG26-M42",
+      "date": "2026-10-03",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "순위결정전",
+      "round": "P13",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "최종 순위결정전",
+      "placementLabel": "13위 결정전"
+    },
+    {
+      "id": "AG26-M46",
+      "date": "2026-10-03",
+      "time": "13:00",
+      "localTimeLabel": "일본 현지 13:00 JST",
+      "stage": "순위결정전",
+      "round": "P5",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "placement": true,
+      "placementGroup": "최종 순위결정전",
+      "placementLabel": "5위 결정전"
+    },
+    {
+      "id": "AG26-M43",
+      "date": "2026-10-03",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "순위결정전",
+      "round": "P11",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "최종 순위결정전",
+      "placementLabel": "11위 결정전"
+    },
+    {
+      "id": "AG26-M47",
+      "date": "2026-10-03",
+      "time": "16:00",
+      "localTimeLabel": "일본 현지 16:00 JST",
+      "stage": "3위결정전",
+      "round": "BRONZE",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "3RD"
+    },
+    {
+      "id": "AG26-M44",
+      "date": "2026-10-03",
+      "time": "19:00",
+      "localTimeLabel": "일본 현지 19:00 JST",
+      "stage": "순위결정전",
+      "round": "P9",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "placement": true,
+      "placementGroup": "최종 순위결정전",
+      "placementLabel": "9위 결정전"
+    },
+    {
+      "id": "AG26-M48",
+      "date": "2026-10-03",
+      "time": "19:20",
+      "localTimeLabel": "일본 현지 19:20 JST",
+      "stage": "결승",
+      "round": "FINAL",
+      "home": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "away": {
+        "name": "미정",
+        "en": "TBD"
+      },
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "bracketLabel": "FINAL"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "JPN"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": 9,
+            "setRatio": "MAX",
+            "pointRatio": "1.324",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "PAK"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 6,
+            "setRatio": "1.500",
+            "pointRatio": "1.083",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "KAZ"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "setRatio": "0.571",
+            "pointRatio": "0.874",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "UZB"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": 0,
+            "setRatio": "0.111",
+            "pointRatio": "0.824",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "IRI"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": 8,
+            "setRatio": "4.500",
+            "pointRatio": "1.281",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "THA"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 5,
+            "setRatio": "1.200",
+            "pointRatio": "0.992",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "INA"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 5,
+            "setRatio": "1.167",
+            "pointRatio": "1.042",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "KGZ"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": 0,
+            "setRatio": "0.000",
+            "pointRatio": "0.705",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "IND"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": 8,
+            "setRatio": "4.500",
+            "pointRatio": "1.118",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "QAT"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 7,
+            "setRatio": "2.000",
+            "pointRatio": "1.061",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "VIE"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "setRatio": "0.429",
+            "pointRatio": "0.966",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "HKG"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": 0,
+            "setRatio": "0.222",
+            "pointRatio": "0.860",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "title": "D조",
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "CHN"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": 7,
+            "setRatio": "2.250",
+            "pointRatio": "1.080",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "KOR"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": 7,
+            "setRatio": "2.000",
+            "pointRatio": "1.141",
+            "status": "qualified",
+            "statusLabel": "8강 진출"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "TPE"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": 4,
+            "setRatio": "0.857",
+            "pointRatio": "0.933",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "PHI"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": 0,
+            "setRatio": "0.111",
+            "pointRatio": "0.853",
+            "status": "out",
+            "statusLabel": "예선 탈락"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "finalRanking": [],
+  "rosterPendingLabel": "Google Drive MASTER 검수본 반영",
+  "rosterNote": "2026 아시안게임 남자배구 국가별 등록 선수명단 · Google Drive 최신 검수 Snapshot",
+  "rosterSourceNote": "K-Volley Lab · KVL_2026_Asian_Games_Mens_Volleyball_선수명단_MASTER_v1.xlsx · 2026-09-27 검수본",
+  "rosterDataNote": "등번호·DOB·키·26/27 소속팀·Volleybox는 Google Drive MASTER의 최신 검수값을 사용하며, 미확인 값은 추정하지 않습니다.",
+  "resourcesNote": "공식 대회/협회 출처만 연결합니다.",
+  "resources": [
+    {
+      "title": "Aichi-Nagoya 2026 공식 Results",
+      "url": "https://results.asiangames2026.org/"
+    },
+    {
+      "title": "일본배구협회 · 제20회 아시안게임 남자배구",
+      "url": "https://www.jva.or.jp/international/2026/asia_men/"
+    }
+  ],
+  "clubSeasonLabel": "26/27 소속팀",
+  "rosterPrintNote": "2026 아시안게임 남자배구 · Google Drive 최신 검수 선수명단",
+  "genderLinks": {
+    "men": "/competition-engine.html?competition=asian-games-men-2026",
+    "women": "/competition-engine.html?competition=asian-games-women-2026"
+  }
+}
