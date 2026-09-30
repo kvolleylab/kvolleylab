@@ -34,8 +34,11 @@
       if(!res.ok)throw new Error('hero config');
       const config=await res.json();
       const h=config.hero||{};
-      if(Array.isArray(h.b64Chunks)&&h.b64Chunks.length){
-        const parts=await Promise.all(h.b64Chunks.map(async path=>{
+      const chunks=Array.isArray(h.mobileB64Chunks)&&h.mobileB64Chunks.length?h.mobileB64Chunks:
+        (Array.isArray(h.b64Chunks)&&h.b64Chunks.length?h.b64Chunks:
+        (Array.isArray(h.pcB64Chunks)&&h.pcB64Chunks.length?h.pcB64Chunks:[]));
+      if(chunks.length){
+        const parts=await Promise.all(chunks.map(async path=>{
           const chunkRes=await fetch(path,{cache:'no-cache'});
           if(!chunkRes.ok)throw new Error('hero chunk');
           return (await chunkRes.text()).trim();
