@@ -86,19 +86,22 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-k
   --kvl1180-green-soft:#eef4f8;
 }
 
-/* WOMEN always wins over competition-family color and stays Rose. */
+/* WOMEN always wins over competition-family color and stays Rose.
+   Palette is aligned to the frozen 2026 AVC Women production visual source of truth. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]{
-  --kvl-theme-dark:#6f234a;--kvl-theme-accent:#a53d68;--kvl-theme-primary:#8e315e;
-  --kvl-theme-strong:#a53d68;
+  --kvl-theme-dark:#7f2f54;
+  --kvl-theme-accent:#c65382;
+  --kvl-theme-primary:#8f2f59;
+  --kvl-theme-strong:#8f2f59;
   --kvl-theme-soft:#fff1f6;
-  --kvl-theme-border:#e7a8c2;
-  --kvl-theme-shadow:rgba(142,49,94,.13);
-  --kvl-theme-hero-a:#6f234a;
-  --kvl-theme-hero-b:#8e315e;
-  --kvl-theme-overlay-rgb:52,24,42;
-  --kvl1180-green:#8e315e;
-  --kvl1180-green-dark:#6f234a;
-  --kvl1180-green-mid:#a53d68;
+  --kvl-theme-border:#ead4de;
+  --kvl-theme-shadow:rgba(126,49,82,.10);
+  --kvl-theme-hero-a:#7f2f54;
+  --kvl-theme-hero-b:#c95683;
+  --kvl-theme-overlay-rgb:126,49,82;
+  --kvl1180-green:#b74676;
+  --kvl1180-green-dark:#8f2f59;
+  --kvl1180-green-mid:#c65382;
   --kvl1180-green-soft:#fff1f6;
 }
 
