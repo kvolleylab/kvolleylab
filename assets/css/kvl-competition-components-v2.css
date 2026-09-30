@@ -2188,3 +2188,333 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not(
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-result.is-out small{
   color:#6b7280!important;
 }
+
+
+/* GAMES MEN · full Deep Red palette sweep · 2026-09-30
+   Shared international-template rule for Olympics / Asian Games.
+   Geometry remains AVC-derived; inherited green accents/surfaces are remapped here. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"]{
+  --kvl-games-neutral:#695856;
+  --kvl-games-muted:#7b6b68;
+  --kvl-games-soft-2:#fff8f6;
+  --kvl-games-line-2:#f0d8d2;
+}
+
+/* Overview / snapshot / calendar */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-roster{
+  border-color:var(--kvl-theme-border)!important;
+  background:linear-gradient(90deg,var(--kvl-theme-soft),#fff8f6)!important;
+  color:var(--kvl-games-neutral)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-roster a{color:var(--kvl-theme-primary)!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-stake.is-wr{
+  background:linear-gradient(145deg,#fff8f6,#fff0ed)!important;
+  border-color:var(--kvl-theme-border)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-stake.is-wr .kvl1180-stake-brand,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-stake.is-wr .kvl1180-stake-foot{
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-result-row em.win{
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-cal-game.is-qf{
+  border-left-color:var(--kvl-theme-accent)!important;
+  background:#fff8f6!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-overview-note{
+  border-left-color:var(--kvl-theme-primary)!important;
+  background:var(--kvl-theme-soft)!important;
+  color:var(--kvl-games-neutral)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-overview-result{
+  border-left-color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:hover,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:focus-visible{
+  border-color:var(--kvl-theme-border)!important;
+  background:linear-gradient(180deg,#fff,#fff5f2)!important;
+  box-shadow:0 12px 26px rgba(100,27,32,.12),0 3px 8px rgba(158,47,47,.08)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:hover .kvl1180-kpi-icon,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] .kvl1180-view[data-view="overview"] .kvl1180-kpi[data-kvl-target]:focus-visible .kvl1180-kpi-icon{
+  color:var(--kvl-theme-primary)!important;
+}
+
+/* Schedule */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-schedule-toolbar{
+  border-color:var(--kvl-theme-border)!important;
+  background:#fff8f6!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-stage-filters button{
+  border-color:#ecd2cc!important;
+  color:#695856!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-stage-filters button:hover{
+  border-color:var(--kvl-theme-border)!important;
+  background:var(--kvl-theme-soft)!important;
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-stage-filters button.is-active{
+  border-color:var(--kvl-theme-strong)!important;
+  background:var(--kvl-theme-strong)!important;
+  color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-pool-filter{
+  color:#75625f!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-pool-filter select{
+  border-color:#ecd2cc!important;
+  color:#5f4b49!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-date-group{
+  border-color:#f0ddd8!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-date-head{
+  border-bottom-color:#f0d8d2!important;
+  background:linear-gradient(90deg,var(--kvl-theme-soft),#fff)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-date-title strong{
+  color:var(--kvl-theme-strong)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #schedule .kvl1180-match-row.is-korea{
+  background:linear-gradient(90deg,#fffdfa,#fff3f0)!important;
+}
+
+/* Groups / combined standings */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-groups-status span{
+  border-color:var(--kvl-theme-border)!important;
+  background:#fff8f6!important;
+  color:#725f5c!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-groups-rule{
+  border-color:var(--kvl-theme-border)!important;
+  background:linear-gradient(90deg,var(--kvl-theme-soft),#fffaf9)!important;
+  color:#654f4c!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-groups-legend{color:#735f5c!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-groups-legend .q i{background:var(--kvl-theme-accent)!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-card{
+  border-color:#f0d8d2!important;
+  box-shadow:0 4px 14px rgba(100,27,32,.045)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-card-head{
+  background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-primary))!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-card-head span{color:#ffe7e2!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-table-head{
+  border-bottom-color:#f0ddd8!important;
+  background:#fff8f6!important;
+  color:#705e5a!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-row{
+  border-top-color:#f4e6e2!important;
+  color:#4f4140!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-row.is-qualified{background:#fffafa!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-row.is-qualified::before{background:var(--kvl-theme-accent)!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-row.is-korea{
+  background:#fff1ee!important;
+  box-shadow:inset 0 0 0 1px #efc7c0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-rank,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-w,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-pts{
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-pool-ratio{color:#695856!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-block{border-top-color:#f0ddd8!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-head p{color:#705e5a!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-table,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl-shared-combined-mobile{
+  border-color:#f0d8d2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-table-head,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl-shared-combined-line.is-head{
+  border-bottom-color:#f0ddd8!important;
+  background:#fff6f4!important;
+  color:#6e5a57!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-row,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl-shared-combined-line{
+  border-top-color:#f4e6e2!important;
+  color:#4f4140!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-row.is-qualified{background:#fffafa!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-row.is-qualified::before{background:var(--kvl-theme-accent)!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-row.is-cutline{border-bottom-color:var(--kvl-theme-border)!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-row.is-korea,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl-shared-combined-line.is-korea{
+  background:#fff1ee!important;
+  box-shadow:inset 0 0 0 1px #efc7c0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-result.is-qualified,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl-shared-combined-result b{
+  border-color:var(--kvl-theme-border)!important;
+  background:var(--kvl-theme-soft)!important;
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-combined-result.is-out{
+  background:#f1f2f3!important;
+  color:#6f7379!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl-shared-combined-result.is-out,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl-shared-combined-result.is-out b{
+  border-color:#e5e7eb!important;
+  background:#f3f4f6!important;
+  color:#6b7280!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #groups .kvl1180-ranking-rule-card{
+  border-color:var(--kvl-theme-border)!important;
+  background:linear-gradient(180deg,#fff,#fff4f1)!important;
+}
+
+/* Final standings / bracket */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-knockout-status span{
+  border-color:var(--kvl-theme-border)!important;
+  background:#fff8f6!important;
+  color:#725f5c!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-final-block{
+  border-color:var(--kvl-theme-border)!important;
+  background:linear-gradient(180deg,#fffafa,#fff3f0)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-final-card{
+  border-color:#f0d8d2!important;
+  box-shadow:0 4px 14px rgba(100,27,32,.045)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-final-rank{
+  background:var(--kvl-theme-soft)!important;
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-final-card.is-champion .kvl1180-final-rank{
+  background:#f3e8bd!important;
+  color:#8a6514!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-final-flag.is-pending{
+  border-color:#dfb6ae!important;
+  color:#896b66!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-knockout-block{border-top-color:#f0ddd8!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-round-title{
+  background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-primary))!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-match{
+  border-color:#f0d8d2!important;
+  box-shadow:0 5px 16px rgba(100,27,32,.05)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-match-head{
+  border-bottom-color:#f0ddd8!important;
+  background:#fff6f4!important;
+  color:#715e5a!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-bracket-team{
+  border-top-color:#f4e6e2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-bracket-team.is-winner{
+  background:var(--kvl-theme-soft)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-bracket-team.is-korea{
+  box-shadow:inset 3px 0 0 var(--kvl-theme-accent)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-bracket-mark.is-path{
+  border-color:#dfb6ae!important;
+  background:#fff8f6!important;
+  color:#856965!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-bracket-copy strong{color:#17365d!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-bracket-copy small{color:#7a6a67!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-match-sets{
+  border-top-color:#f4e6e2!important;
+  background:#fffafa!important;
+  color:#685957!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #knockout .kvl1180-knockout-note{
+  border-left-color:var(--kvl-theme-accent)!important;
+  background:var(--kvl-theme-soft)!important;
+  color:#654f4c!important;
+}
+
+/* Participants / roster */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-status span{
+  border-color:var(--kvl-theme-border)!important;
+  background:#fff8f6!important;
+  color:#725f5c!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-group{
+  border-color:#f0d8d2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-group-head{
+  background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-accent))!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-group-head span{color:#ffe8e3!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-buttons{background:#f1ded9!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-button:hover{background:#fff8f6!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-button.is-active{
+  background:var(--kvl-theme-soft)!important;
+  box-shadow:inset 0 0 0 2px var(--kvl-theme-accent)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-button.is-korea:not(.is-active){background:#fffafa!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-participant-button img{border-color:#eee0dc!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-team-profile{
+  border-color:#f0d8d2!important;
+  box-shadow:0 7px 22px rgba(100,27,32,.04)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-team-profile-head{
+  background:linear-gradient(135deg,#fffafa,var(--kvl-theme-soft))!important;
+  border-bottom-color:#f0d8d2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-team-profile-flag{border-color:#eee0dc!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-team-profile-copy p{color:#74635f!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-team-profile-meta span{
+  border-color:#e7c8c1!important;
+  color:#684f4c!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-roster-table{
+  border-color:#f0d8d2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-roster-table-head{
+  border-bottom-color:#f0d8d2!important;
+  background:#fff5f2!important;
+  color:#705c58!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-roster-row{
+  border-top-color:#f4e6e2!important;
+  background:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-roster-pos{
+  border:1px solid var(--kvl-theme-border)!important;
+  background:var(--kvl-theme-soft)!important;
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-print-actions button,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-vb-link{
+  border-color:#e7c8c1!important;
+  background:#fff8f6!important;
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-print-actions button:hover,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-vb-link:hover{
+  border-color:var(--kvl-theme-accent)!important;
+  background:var(--kvl-theme-soft)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #rosters .kvl1180-roster-source{
+  color:#74635f!important;
+}
+
+/* Official resources */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #resources .kvl1180-source{
+  border-color:#f0d8d2!important;
+  background:#fff8f6!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #resources .kvl1180-source a{
+  border-color:#e7c8c1!important;
+  background:var(--kvl-theme-soft)!important;
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #resources .kvl1180-source a:hover,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-kvl-family="games"] #resources .kvl1180-source a:focus-visible{
+  border-color:var(--kvl-theme-accent)!important;
+  background:#fbe1dc!important;
+  color:var(--kvl-theme-strong)!important;
+}

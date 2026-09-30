@@ -1,6 +1,6 @@
 # K-Volley Lab Competition Visual Standards
 
-Status: ACTIVE · UPDATED 2026-09-29
+Status: ACTIVE · UPDATED 2026-09-30
 
 ## Competition family colors
 
@@ -105,3 +105,26 @@ For shared V2 international women competitions, eliminated-result badges in prel
 - desktop: background #f1f2f3, text #6f7379
 - mobile: background #f3f4f6, text #6b7280, border #e5e7eb
 - green is not allowed for an eliminated status.
+
+
+### GAMES men full-page palette rule (2026-09-30)
+
+For shared V2 international men's competitions with `competitionFamily=games` (Asian Games / Olympics), the Deep Red family palette must cover every competition view, not only Hero/tabs.
+
+Canonical GAMES men palette:
+- dark: `#641B20`
+- strong: `#7D2026`
+- primary: `#9E2F2F`
+- accent: `#C44A3D`
+- soft: `#FFF2EF`
+- border: `#E7B5AD`
+
+The shared Components layer must remap inherited AVC green accents in:
+- overview KPI hover, roster shortcut, status note and calendar QF markers
+- schedule toolbar/filter hover/active and Korea-row highlight
+- pool standings, combined standings, qualified/cutline/Korea highlights and ranking-rule card
+- final standings, bracket winners, Korea path, connectors/path placeholders and knockout note
+- participants, roster POS badges, print/Volleybox controls and team-profile surfaces
+- official-resource cards and buttons
+
+Eliminated-status badges stay neutral grey, not red or green. Gold medal/champion accents stay gold. Tournament-specific CSS is not allowed for this palette sweep.
