@@ -90,3 +90,10 @@ For shared V2 international women competitions (gender=women, non-domestic):
 - Monthly calendar month-title typography is shared with Goseong: 20px desktop and 18px mobile.
 - The international women calendar month-title card uses the current Goseong Women Rose #D2648F.
 - These rules belong to the common Competition Engine/Components layer, never tournament-specific CSS.
+
+
+### International women roster and resources parity (2026-09-30)
+
+For shared V2 international women competitions:
+- roster POS badges use Rose surface `#fff1f6`, text `#a43f68`, border `#e6b6c9`; legacy green POS badges are not allowed.
+- official-resource cards use neutral white + Rose border, and action buttons use AVC Women Rose `#fff1f6 / #a13c67`; green resource buttons/hover states are not allowed.

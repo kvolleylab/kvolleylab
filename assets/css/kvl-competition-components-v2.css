@@ -2142,3 +2142,31 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not(
 body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) .kvl1180-calendar-title{font-size:20px!important;font-weight:800!important}
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) .kvl1180-calendar-title{background:#D2648F!important;border-color:#D2648F!important;color:#fff!important}
 @media(max-width:680px){body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]) .kvl1180-calendar-title{font-size:18px!important}}
+
+
+/* International WOMEN roster POS + official resources Rose parity · 2026-09-30
+   AVC Women visual source of truth. Shared non-domestic women rule. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-roster-pos{
+  background:#fff1f6!important;
+  color:#a43f68!important;
+  border:1px solid #e6b6c9!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #resources .kvl1180-source{
+  border-color:#ead4de!important;
+  background:#fff!important;
+  box-shadow:none!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #resources .kvl1180-source strong{
+  color:#17365d!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #resources .kvl1180-source a{
+  border-color:#e5cbd6!important;
+  background:#fff1f6!important;
+  color:#a13c67!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #resources .kvl1180-source a:hover,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #resources .kvl1180-source a:focus-visible{
+  border-color:#d59ab1!important;
+  background:#fde8f1!important;
+  color:#8f2f59!important;
+}
