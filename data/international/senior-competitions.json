@@ -1,11 +1,75 @@
 {
-  "schemaVersion": 10,
+  "schemaVersion": 11,
   "recentPolicy": {
     "limit": 3,
     "excludeFuture": true,
     "note": "진행 중 대회를 우선하고, 종료 대회는 종료일 최신순으로 표시합니다."
   },
   "competitions": [
+    {
+      "id": "asian-games-men-2026",
+      "title": "2026 아이치·나고야 아시안게임 남자배구",
+      "brand": "ASIAN GAMES · MEN",
+      "family": "games",
+      "gender": "men",
+      "startDate": "2026-09-27",
+      "endDate": "2026-10-03",
+      "location": "일본 아이치현 · 오카자키 / 고마키",
+      "href": "competition-engine.html?competition=asian-games-men-2026",
+      "showInRecent": true,
+      "hero": {
+        "mode": "competition-config",
+        "config": "data/competitions/asian-games-men-2026/config.json"
+      },
+      "card": {
+        "eyebrow": "ASIAN GAMES 2026 · MEN",
+        "title": "아시안게임 남자배구 2026",
+        "subtitle": "The 20th Asian Games Aichi-Nagoya 2026 · Men's Volleyball",
+        "dateLabel": "2026-09-27 ~ 2026-10-03",
+        "locationLabel": "일본 아이치현 · 오카자키 / 고마키",
+        "status": "대회 진행 중",
+        "teamCount": "16개국",
+        "accentStatus": "10월 1일 8강",
+        "themeA": "#641B20",
+        "themeB": "#9E2F2F",
+        "accent": "#C44A3D",
+        "eyebrowColor": "#F4D9D4",
+        "overlayPc": "linear-gradient(105deg,rgba(100,27,32,.66) 0%,rgba(100,27,32,.38) 50%,rgba(100,27,32,.04) 82%)",
+        "overlayMobile": "linear-gradient(90deg,rgba(100,27,32,.50) 0%,rgba(100,27,32,.24) 48%,rgba(100,27,32,0) 82%)"
+      }
+    },
+    {
+      "id": "asian-games-women-2026",
+      "title": "2026 아이치·나고야 아시안게임 여자배구",
+      "brand": "ASIAN GAMES · WOMEN",
+      "family": "games",
+      "gender": "women",
+      "startDate": "2026-09-16",
+      "endDate": "2026-09-22",
+      "location": "일본 아이치현 · 오카자키 / 고마키",
+      "href": "competition-engine.html?competition=asian-games-women-2026",
+      "showInRecent": true,
+      "hero": {
+        "mode": "competition-config",
+        "config": "data/competitions/asian-games-women-2026/config.json"
+      },
+      "card": {
+        "eyebrow": "ASIAN GAMES 2026 · WOMEN",
+        "title": "아시안게임 여자배구 2026",
+        "subtitle": "The 20th Asian Games Aichi-Nagoya 2026 · Women's Volleyball",
+        "dateLabel": "2026-09-16 ~ 2026-09-22",
+        "locationLabel": "일본 아이치현 · 오카자키 / 고마키",
+        "status": "대회 종료",
+        "teamCount": "14개국",
+        "accentStatus": "중국 금메달 · 대한민국 4위",
+        "themeA": "#7F2F54",
+        "themeB": "#C95683",
+        "accent": "#D2648F",
+        "eyebrowColor": "#F0C9DA",
+        "overlayPc": "linear-gradient(105deg,rgba(127,47,84,.64) 0%,rgba(127,47,84,.34) 50%,rgba(127,47,84,.04) 82%)",
+        "overlayMobile": "linear-gradient(90deg,rgba(127,47,84,.48) 0%,rgba(127,47,84,.22) 48%,rgba(127,47,84,0) 82%)"
+      }
+    },
     {
       "id": "avc-men-continental-2026",
       "title": "2026 AVC 남자 대륙선수권",
