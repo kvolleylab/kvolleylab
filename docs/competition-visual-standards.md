@@ -97,3 +97,11 @@ For shared V2 international women competitions (gender=women, non-domestic):
 For shared V2 international women competitions:
 - roster POS badges use Rose surface `#fff1f6`, text `#a43f68`, border `#e6b6c9`; legacy green POS badges are not allowed.
 - official-resource cards use neutral white + Rose border, and action buttons use AVC Women Rose `#fff1f6 / #a13c67`; green resource buttons/hover states are not allowed.
+
+
+### International women eliminated-result badge parity (2026-09-30)
+
+For shared V2 international women competitions, eliminated-result badges in preliminary combined standings are neutral grey, matching AVC Women production:
+- desktop: background #f1f2f3, text #6f7379
+- mobile: background #f3f4f6, text #6b7280, border #e5e7eb
+- green is not allowed for an eliminated status.

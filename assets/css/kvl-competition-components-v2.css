@@ -2170,3 +2170,21 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not(
   background:#fde8f1!important;
   color:#8f2f59!important;
 }
+
+
+/* International WOMEN eliminated-result badge parity · 2026-09-30
+   AVC Women production uses neutral grey for eliminated status, never green. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #groups .kvl1180-combined-result.is-out{
+  border-color:#e5e7eb!important;
+  background:#f1f2f3!important;
+  color:#6f7379!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-result.is-out,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-result.is-out b{
+  border-color:#e5e7eb!important;
+  background:#f3f4f6!important;
+  color:#6b7280!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) #groups .kvl-shared-combined-result.is-out small{
+  color:#6b7280!important;
+}
