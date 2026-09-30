@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 2,
+  "slug": "asian-games-men-2026",
+  "competition": {
+    "competitionId": "KVL-COMP-ASIAN-GAMES-MEN-2026",
+    "displayName": "2026 아이치·나고야 아시안게임 남자배구",
+    "officialName": "The 20th Asian Games Aichi-Nagoya 2026 · Men's Volleyball",
+    "gender": "men",
+    "competitionFamily": "games",
+    "season": "2026"
+  },
+  "structure": {
+    "calendar": true,
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "조 편성",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "8강 진출",
+      "knockoutKpiUnit": "개국",
+      "standingsTitle": "조별순위",
+      "standingsEyebrow": "PRELIMINARY ROUND"
+    },
+    "schedule": {
+      "stages": [
+        "전체",
+        "조별리그",
+        "8강",
+        "준결승",
+        "순위결정전",
+        "3위결정전",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "pools-combined",
+      "combinedTitle": "예선 종합순위"
+    },
+    "participants": {
+      "mode": "groups",
+      "groupLabel": "아시안게임 2026 참가국",
+      "sort": "name-ko"
+    },
+    "roster": {
+      "mode": "full"
+    },
+    "knockout": {
+      "mode": "bracket-8",
+      "title": "메달 토너먼트"
+    }
+  },
+  "hero": {
+    "showImage": true,
+    "mode": "photo",
+    "pcImage": "",
+    "mobileImage": "",
+    "pcB64Chunks": [
+      "/assets/images/competition-hero/asian-games-men-2026/pc-01.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/pc-02.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/pc-03.b64?v=20260929-1"
+    ],
+    "mobileB64Chunks": [
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-01.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-02.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-03.b64?v=20260929-1",
+      "/assets/images/competition-hero/asian-games-men-2026/mobile-04.b64?v=20260929-1"
+    ],
+    "mimeType": "image/webp",
+    "position": "center center",
+    "mobilePosition": "center center",
+    "alt": "2026 아이치·나고야 아시안게임 남자배구 메인카드"
+  },
+  "seo": {
+    "title": "2026 아이치·나고야 아시안게임 남자배구 | K-Volley Lab",
+    "description": "2026 아이치·나고야 아시안게임 남자배구 경기일정, 결과, 조별순위, 예선 종합순위, 토너먼트, 최종순위와 등록선수명단을 확인합니다."
+  },
+  "data": "data.json",
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    }
+  ]
+}
