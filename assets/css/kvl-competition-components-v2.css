@@ -2530,3 +2530,18 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]:not([d
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-club-country img{
   border-color:color-mix(in srgb,var(--kvl-theme-border) 70%,#e5e7eb)!important;
 }
+
+
+/* GAMES Hero no-crop rule · 2026-10-01
+   Approved PC/mobile artwork must remain fully visible. Shared family rule:
+   no tournament-specific selector and no effect on AVC/FIVB production. */
+html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="games"][data-kvl-hero-mode="photo"] .kvl1180-hero{
+  background-size:100% 100%,contain!important;
+  background-repeat:no-repeat!important;
+}
+@media(max-width:680px){
+  html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="games"][data-kvl-hero-mode="photo"] .kvl1180-hero{
+    background-size:100% 100%,contain!important;
+    background-repeat:no-repeat!important;
+  }
+}
