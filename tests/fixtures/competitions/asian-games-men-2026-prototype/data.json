@@ -1,7 +1,7 @@
 {
   "isTest": true,
   "status": "active",
-  "stageLabel": "조별리그 진행 중",
+  "stageLabel": "8강 예정",
   "dateLabel": "2026.09.27 ~ 10.03",
   "locationLabel": "일본 · 아이치현",
   "venueLabel": "오카자키 · 고마키",
@@ -12,10 +12,10 @@
   "matchCount": 48,
   "knockoutTeamCount": 8,
   "focusTeamCode": "KOR",
-  "activeOverviewNote": "9월 29일 확인 완료 경기 반영 · 8강 진출 8개국 확정 · 토너먼트 사다리 연결",
-  "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 + 순위결정/결선 라운드",
-  "standingsNote": "확인된 9월 29일 경기 결과 기준 · 8강 진출 8개국 확정",
-  "standingsRule": "각 조 상위 2개국이 8강에 진출합니다. 일본·파키스탄·이란·태국·인도·카타르·대한민국·중국의 8강 진출이 확정됐습니다.",
+  "activeOverviewNote": "조별리그 24경기 결과 반영 완료 · 10월 1일 8강 및 9~16위 순위결정전 대진 확정",
+  "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 결과 확정 · 10월 1일 8강/9~16위 순위결정전 예정",
+  "standingsNote": "9월 29일 조별리그 최종 결과 기준 · 각 조 1·2위 8강 진출",
+  "standingsRule": "A조 일본·파키스탄, B조 이란·태국, C조 인도·카타르, D조 중국·대한민국이 8강에 진출했습니다.",
   "meaning": {
     "eyebrow": "ASIAN GAMES 2026",
     "title": "아시안게임 메달 경쟁",
@@ -954,7 +954,29 @@
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "score": {
         "home": 2,
-        "away": 3
+        "away": 3,
+        "sets": [
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 24
+          }
+        ]
       }
     },
     {
@@ -972,7 +994,33 @@
       "away": {
         "code": "CHN"
       },
-      "venueLabel": "고마키시 스포츠공원 종합체육관"
+      "venueLabel": "고마키시 스포츠공원 종합체육관",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M24",
@@ -989,7 +1037,25 @@
       "away": {
         "code": "PAK"
       },
-      "venueLabel": "오카자키 중앙종합공원 종합체육관"
+      "venueLabel": "오카자키 중앙종합공원 종합체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M25",
@@ -999,12 +1065,10 @@
       "stage": "순위결정전",
       "round": "P9_16",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "KAZ"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "HKG"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1022,8 +1086,7 @@
         "code": "IND"
       },
       "away": {
-        "name": "A조 2위",
-        "en": "A2 · 일본/파키스탄"
+        "code": "PAK"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "8강 · C1-A2",
@@ -1037,12 +1100,10 @@
       "stage": "순위결정전",
       "round": "P9_16",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "KGZ"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "TPE"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1057,8 +1118,7 @@
       "stage": "8강",
       "round": "QF",
       "home": {
-        "name": "D조 2위",
-        "en": "D2 · 대한민국/중국"
+        "code": "KOR"
       },
       "away": {
         "code": "IRI"
@@ -1075,12 +1135,10 @@
       "stage": "순위결정전",
       "round": "P9_16",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "VIE"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "UZB"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1098,8 +1156,7 @@
         "code": "THA"
       },
       "away": {
-        "name": "D조 1위",
-        "en": "D1 · 대한민국/중국"
+        "code": "CHN"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "8강 · B2-D1",
@@ -1113,12 +1170,10 @@
       "stage": "순위결정전",
       "round": "P9_16",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "PHI"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "INA"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1133,8 +1188,7 @@
       "stage": "8강",
       "round": "QF",
       "home": {
-        "name": "A조 1위",
-        "en": "A1 · 일본/파키스탄"
+        "code": "JPN"
       },
       "away": {
         "code": "QAT"
@@ -1469,12 +1523,12 @@
             "team": {
               "code": "JPN"
             },
-            "played": 2,
-            "wins": 2,
+            "played": 3,
+            "wins": 3,
             "losses": 0,
-            "points": 6,
+            "points": 9,
             "setRatio": "MAX",
-            "pointRatio": "1.442",
+            "pointRatio": "1.324",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
@@ -1483,12 +1537,12 @@
             "team": {
               "code": "PAK"
             },
-            "played": 2,
+            "played": 3,
             "wins": 2,
-            "losses": 0,
+            "losses": 1,
             "points": 6,
-            "setRatio": "6.000",
-            "pointRatio": "1.201",
+            "setRatio": "1.500",
+            "pointRatio": "1.083",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
@@ -1598,7 +1652,7 @@
             "losses": 0,
             "points": 8,
             "setRatio": "4.500",
-            "pointRatio": "-",
+            "pointRatio": "1.118",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
@@ -1612,7 +1666,7 @@
             "losses": 1,
             "points": 7,
             "setRatio": "2.000",
-            "pointRatio": "-",
+            "pointRatio": "1.061",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
@@ -1653,28 +1707,28 @@
           {
             "rank": 1,
             "team": {
-              "code": "KOR"
+              "code": "CHN"
             },
-            "played": 2,
-            "wins": 2,
+            "played": 3,
+            "wins": 3,
             "losses": 0,
-            "points": 6,
-            "setRatio": "6.000",
-            "pointRatio": "1.285",
+            "points": 7,
+            "setRatio": "2.250",
+            "pointRatio": "1.080",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },
           {
             "rank": 2,
             "team": {
-              "code": "CHN"
+              "code": "KOR"
             },
-            "played": 2,
+            "played": 3,
             "wins": 2,
-            "losses": 0,
-            "points": 5,
-            "setRatio": "3.000",
-            "pointRatio": "1.107",
+            "losses": 1,
+            "points": 7,
+            "setRatio": "2.000",
+            "pointRatio": "1.141",
             "status": "qualified",
             "statusLabel": "8강 진출"
           },

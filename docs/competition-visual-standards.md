@@ -1,6 +1,6 @@
 # K-Volley Lab Competition Visual Standards
 
-Status: ACTIVE · UPDATED 2026-09-30
+Status: ACTIVE · UPDATED 2026-10-01
 
 ## Competition family colors
 
@@ -128,3 +128,15 @@ The shared Components layer must remap inherited AVC green accents in:
 - official-resource cards and buttons
 
 Eliminated-status badges stay neutral grey, not red or green. Gold medal/champion accents stay gold. Tournament-specific CSS is not allowed for this palette sweep.
+
+
+### International men roster club-country badge (2026-10-01)
+
+In shared V2 international men's competitions, the club-country badge inside the registered-player roster must follow the active competition-family palette through theme variables:
+- AVC → green family
+- FIVB → purple family
+- GAMES → Deep Red family
+- use `--kvl-theme-border`, `--kvl-theme-soft`, and `--kvl-theme-primary`
+- do not hardcode the legacy AVC green in the shared roster badge.
+
+This belongs to the common international men's Competition Engine template, not a tournament-specific stylesheet.

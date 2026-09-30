@@ -2518,3 +2518,15 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"][data-k
   background:#fbe1dc!important;
   color:var(--kvl-theme-strong)!important;
 }
+
+
+/* International MEN roster club-country badge follows competition family · 2026-10-01
+   Shared rule: AVC=green, FIVB=purple, GAMES=deep red via theme variables. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-club-country{
+  border-color:var(--kvl-theme-border)!important;
+  background:var(--kvl-theme-soft)!important;
+  color:var(--kvl-theme-primary)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]:not([data-kvl-family="domestic"]) #rosters .kvl1180-club-country img{
+  border-color:color-mix(in srgb,var(--kvl-theme-border) 70%,#e5e7eb)!important;
+}
