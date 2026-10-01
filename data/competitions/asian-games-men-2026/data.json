@@ -1,6 +1,6 @@
 {
   "status": "active",
-  "stageLabel": "8강 예정",
+  "stageLabel": "준결승 예정",
   "dateLabel": "2026.09.27 ~ 10.03",
   "locationLabel": "일본 · 아이치현",
   "venueLabel": "오카자키 · 고마키",
@@ -11,8 +11,8 @@
   "matchCount": 48,
   "knockoutTeamCount": 8,
   "focusTeamCode": "KOR",
-  "activeOverviewNote": "조별리그 24경기 결과 반영 완료 · 10월 1일 8강 및 9~16위 순위결정전 대진 확정",
-  "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 조별리그 24경기 결과 확정 · 10월 1일 8강/9~16위 순위결정전 예정",
+  "activeOverviewNote": "10월 1일 8강·9~16위 순위결정전 8경기 결과 반영 완료 · 10월 2일 준결승 및 순위결정전 대진 확정",
+  "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 10월 1일 8경기 결과 확정 · 10월 2일 준결승/5~8위/9~16위 순위결정전 예정",
   "standingsNote": "9월 29일 조별리그 최종 결과 기준 · 예선 종합순위는 조 순위 → 승률 → 경기당 승점 → 세트·점수 득실비 순 K-Volley Lab 표시 기준",
   "standingsRule": "A조 일본·파키스탄, B조 이란·태국, C조 인도·카타르, D조 중국·대한민국이 8강에 진출했습니다.",
   "meaning": {
@@ -1072,7 +1072,33 @@
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
       "placementGroup": "9~16위 결정전",
-      "placementLabel": "9~16위 결정전 1"
+      "placementLabel": "9~16위 결정전 1",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M29",
@@ -1089,7 +1115,25 @@
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "8강 · C1-A2",
-      "nextMatchId": "AG26-M37"
+      "nextMatchId": "AG26-M37",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M26",
@@ -1107,7 +1151,25 @@
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
       "placementGroup": "9~16위 결정전",
-      "placementLabel": "9~16위 결정전 2"
+      "placementLabel": "9~16위 결정전 2",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M30",
@@ -1124,7 +1186,33 @@
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "8강 · D2-B1",
-      "nextMatchId": "AG26-M37"
+      "nextMatchId": "AG26-M37",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M27",
@@ -1142,7 +1230,25 @@
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
       "placementGroup": "9~16위 결정전",
-      "placementLabel": "9~16위 결정전 3"
+      "placementLabel": "9~16위 결정전 3",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M31",
@@ -1159,7 +1265,25 @@
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "8강 · B2-D1",
-      "nextMatchId": "AG26-M38"
+      "nextMatchId": "AG26-M38",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M28",
@@ -1177,7 +1301,29 @@
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
       "placementGroup": "9~16위 결정전",
-      "placementLabel": "9~16위 결정전 4"
+      "placementLabel": "9~16위 결정전 4",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M32",
@@ -1194,7 +1340,25 @@
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "8강 · A1-C2",
-      "nextMatchId": "AG26-M38"
+      "nextMatchId": "AG26-M38",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 12
+          }
+        ]
+      }
     },
     {
       "id": "AG26-M33",
@@ -1204,12 +1368,10 @@
       "stage": "순위결정전",
       "round": "P13_16",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "HKG"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "KGZ"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1224,12 +1386,10 @@
       "stage": "순위결정전",
       "round": "P5_8",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "IND"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "KOR"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "placement": true,
@@ -1244,12 +1404,10 @@
       "stage": "순위결정전",
       "round": "P13_16",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "UZB"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "PHI"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1264,12 +1422,10 @@
       "stage": "순위결정전",
       "round": "P5_8",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "QAT"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "THA"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "placement": true,
@@ -1284,12 +1440,10 @@
       "stage": "순위결정전",
       "round": "P9_12",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "KAZ"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "TPE"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1304,12 +1458,10 @@
       "stage": "준결승",
       "round": "SF",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "PAK"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "IRI"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "SF1",
@@ -1323,12 +1475,10 @@
       "stage": "순위결정전",
       "round": "P9_12",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "VIE"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "INA"
       },
       "venueLabel": "고마키시 스포츠공원 종합체육관",
       "placement": true,
@@ -1343,12 +1493,10 @@
       "stage": "준결승",
       "round": "SF",
       "home": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "JPN"
       },
       "away": {
-        "name": "미정",
-        "en": "TBD"
+        "code": "CHN"
       },
       "venueLabel": "오카자키 중앙종합공원 종합체육관",
       "bracketLabel": "SF2",
