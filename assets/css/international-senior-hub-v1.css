@@ -9,16 +9,16 @@
 .senior-section-head h2{margin:0;color:#17365d;font-size:23px;letter-spacing:-.035em}
 .senior-section-head p{margin:0;color:#7a8796;font-size:12px;text-align:right}
 
-/* Recent competitions: HERO cards only. No tabs, menus or embedded pages. */
+/* Recent competitions: HERO cards only.\n * Match Competition Engine's --kvl1180-gold-soft (#f2e8cf) for all card titles\n * on desktop and mobile, regardless of the event's family accent color.\n * Keep the event color in backgrounds and other thematic surfaces instead.\n */
 .senior-featured-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.senior-recent-card{--recent-a:#074827;--recent-b:#0e7b43;--recent-accent:#f2e8cf;--recent-eyebrow:#e6c46c;--recent-overlay-pc:linear-gradient(105deg,rgba(3,27,51,.42) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%);--recent-overlay-mobile:linear-gradient(90deg,rgba(3,27,51,.20) 0%,rgba(3,27,51,.10) 42%,rgba(3,27,51,.02) 68%,rgba(3,27,51,0) 82%);display:block;min-width:0;color:#fff;text-decoration:none}
+.senior-recent-card{--recent-a:#074827;--recent-b:#0e7b43;--kvl-competition-title-gold:#f2e8cf;--recent-eyebrow:#e6c46c;--recent-overlay-pc:linear-gradient(105deg,rgba(3,27,51,.42) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%);--recent-overlay-mobile:linear-gradient(90deg,rgba(3,27,51,.20) 0%,rgba(3,27,51,.10) 42%,rgba(3,27,51,.02) 68%,rgba(3,27,51,0) 82%);display:block;min-width:0;color:#fff;text-decoration:none}
 .senior-recent-hero{position:relative;overflow:hidden;display:flex;height:260px;flex-direction:column;align-items:flex-start;gap:12px;padding:24px 18px 20px;border:1px solid rgba(9,67,39,.35);border-radius:12px;background:linear-gradient(112deg,var(--recent-a) 0%,var(--recent-b) 100%);box-shadow:0 9px 24px rgba(15,61,46,.08);transition:transform .16s ease,box-shadow .16s ease}
 .senior-recent-card.has-photo .senior-recent-hero{background-image:var(--recent-overlay-pc),var(--recent-image),linear-gradient(112deg,var(--recent-a),var(--recent-b));background-size:cover;background-position:center,var(--recent-image-pc-pos,right center),center}
 .senior-recent-card:hover .senior-recent-hero{transform:translateY(-2px);box-shadow:0 13px 28px rgba(13,36,64,.14)}
 .senior-recent-copy{position:relative;z-index:1;width:100%;min-width:0}
 .senior-recent-eyebrow{margin:0 0 8px;color:var(--recent-eyebrow);font-size:11px;font-weight:950;letter-spacing:.11em}
-.senior-recent-hero h3{margin:0;color:var(--recent-accent);font-size:23px;font-weight:950;line-height:1.14;letter-spacing:-.045em;word-break:keep-all}
-.senior-recent-sub{margin:6px 0 0;color:var(--recent-accent);font-size:12px;font-weight:800;line-height:1.35}
+.senior-recent-hero h3{margin:0;color:var(--kvl-competition-title-gold);font-size:23px;font-weight:950;line-height:1.14;letter-spacing:-.045em;word-break:keep-all}
+.senior-recent-sub{margin:6px 0 0;color:var(--kvl-competition-title-gold);font-size:12px;font-weight:800;line-height:1.35}
 .senior-recent-meta{display:grid;gap:5px;margin-top:13px}
 .senior-recent-meta-row{display:grid;grid-template-columns:14px minmax(0,1fr);gap:7px;align-items:start;color:#fff;font-size:12px;font-weight:760;line-height:1.45}
 .senior-recent-icon{display:block;color:rgba(255,255,255,.74);font-size:10px;line-height:1.75;text-align:center}
