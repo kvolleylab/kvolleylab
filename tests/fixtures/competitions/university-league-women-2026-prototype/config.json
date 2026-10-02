@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "slug": "university-league-women-2026-prototype",
+  "competition": {
+    "competitionId": "KVL-PROTOTYPE-UNIV-ULEAGUE-W-2026",
+    "displayName": "2026 KUSF 대학배구 U-리그 여대부",
+    "officialName": "2026 KUSF 대학배구 U-리그 · 여대부",
+    "season": "2026",
+    "gender": "women",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "리그순위",
+      "groupsKpi": "참가팀",
+      "groupsKpiUnit": "팀",
+      "knockoutKpi": "4강 진출",
+      "standingsTitle": "여대부 리그순위",
+      "standingsEyebrow": "POOL STANDINGS",
+      "knockoutTitle": "결선 토너먼트",
+      "participantsTitle": "참가대학",
+      "participantsKpi": "참가팀",
+      "participantsKpiUnit": "팀",
+      "knockoutKpiUnit": "팀"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "예선",
+        "준결승",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "single-league",
+      "title": "여대부 예선리그 순위"
+    },
+    "knockout": {
+      "mode": "bracket-4",
+      "title": "여대부 결선 토너먼트",
+      "sfLabel": "준결승 · Semifinals",
+      "finalLabel": "결승 · Final"
+    },
+    "participants": {
+      "mode": "flat",
+      "groupLabel": "여대부 참가대학",
+      "displayColumns": 3
+    },
+    "roster": {
+      "mode": "full"
+    }
+  },
+  "hero": {
+    "pcImage": "/assets/images/competitions/university-hub-approved-pc-20261002.webp",
+    "mobileImage": "/assets/images/competitions/university-hub-approved-mobile-20261002.webp",
+    "alt": "2026 KUSF 대학배구 U-리그 여대부 프로토타입 임시 히어로",
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "85% center"
+  },
+  "seo": {
+    "title": "2026 KUSF 대학배구 U-리그 여대부 프로토타입 | K-Volley Lab",
+    "description": "KUSF 대학배구 U-리그 여대부 일정·결과·순위·참가팀·선수명단을 검증하는 비공개 프로토타입."
+  },
+  "data": "data.json",
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    }
+  ]
+}
