@@ -122,6 +122,15 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
     - 남/여 또는 각 부문의 순위 패널 고유 색상은 그대로 유지합니다.
 11. PC에서는 대회정보와 순위 패널을 가로로 비교하고, Mobile에서는 `대회정보 → 부문별 순위` 순으로 세로 배치합니다.
 
+
+12. 2단계 국내대회 허브의 상단 `2026 대회` 등 **featured 소형 카드의 사진**은 해당 대회 본문 **메인카드(Hero)의 모바일 이미지 소스**를 PC와 모바일에서 똑같이 참조합니다.
+    - 정식 대회 메인카드가 Competition Engine V2 config를 사용하는 경우 `cardHero.mode=competition-config`로 각 대회 `config.json`을 참조하고, `hero.mobileImage`를 먼저 사용합니다. 모바일 이미지가 등록되지 않은 경우에만 `hero.pcImage`를 사용합니다.
+    - 이미 존재하는 메인카드 이미지를 별도 파일로 복사하거나 `cardImage`에 고정된 예전 SVG를 남겨두지 않습니다. 메인카드 이미지가 교체되면 허브 소형 카드도 변경된 설정을 다음 로드 시 가져와야 합니다.
+    - 모바일 이미지의 `hero.mobilePosition`도 함께 적용해 PC 소형 카드에서 오른쪽 주 피사체가 잘리지 않게 합니다.
+    - 별도 이미지형 Hero가 없는 U-리그는 현재 승인된 대학배구 허브의 모바일 Hero를 `cardHero.mode=hub-mobile-hero`로 참조합니다. 전용 Hero가 승인되면 참조 설정만 바꿉니다.
+    - 소형 카드 자체의 크기/테두리/텍스트/클릭 영역, featured 순서, 연도별 기록(이미지 없음)은 그대로 유지합니다. 공통 JS/CSS와 대회 목록 데이터에서만 동작을 변경합니다.
+
+
 ## Production compatibility
 
 `university-competition.html`은 Domestic Template v1 production wrapper입니다.
@@ -163,4 +172,4 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
 - 2026-09-25: 팀별 경기결과의 4칸 성적 요약과 선수명단 링크 동작을 v1 공통 규칙으로 승격. 참가대학 카드 디자인은 기존 상태 유지
 - 2026-09-25: 고성·단양 공통 6강 구조의 준결승 직행 카드·금색 점선 진출 경로를 Domestic Template v1 공통 규칙으로 승격
 - 2026-09-25: 단양대회 prototype 검증 완료 후 실제 production route를 Domestic Template v1 공통 엔진으로 승격
-- 2026-09-27: 2단계 국내대회 허브의 연도별 기록 카드 기준을 v1에 추가. 종료일 최신순 정렬, 카드 전체 클릭, 중·고배구와 동일한 Gold hover interaction을 공통 규칙으로 승격
+- 2026-10-02: 2단계 허브의 featured 소형 카드는 PC에서도 각 대회 모바일 Hero 이미지 소스를 직접 가져오도록 공통 규칙을 추가.\n- 2026-09-27: 2단계 국내대회 허브의 연도별 기록 카드 기준을 v1에 추가. 종료일 최신순 정렬, 카드 전체 클릭, 중·고배구와 동일한 Gold hover interaction을 공통 규칙으로 승격
