@@ -16,7 +16,6 @@
       "featuredLabel": "주요 대회",
       "category": "uleague",
       "podiums": [],
-      "cardImage": "/assets/images/competitions/university-kusf-2026-card.svg?v=20260921-2",
       "recordPanels": [
         {
           "division": "남자부",
@@ -66,7 +65,10 @@
           ]
         }
       ],
-      "recordSource": "한국대학배구연맹 / KUSF"
+      "recordSource": "한국대학배구연맹 / KUSF",
+      "cardHero": {
+        "mode": "hub-mobile-hero"
+      }
     },
     {
       "competitionId": "danyang-2026",
@@ -124,7 +126,10 @@
       "location": "충청북도 단양군",
       "featuredOrder": 3,
       "category": "federation",
-      "cardImage": "/assets/images/competitions/university-danyang-2026-card.svg?v=20260921-2"
+      "cardHero": {
+        "mode": "competition-config",
+        "config": "/data/competitions/university-danyang-men-2026/config.json"
+      }
     },
     {
       "competitionId": "gosung-2026",
@@ -182,7 +187,10 @@
       "location": "경상남도 고성군",
       "featuredOrder": 2,
       "category": "federation",
-      "cardImage": "/assets/images/competitions/university-gosung-2026-card.svg?v=20260921-2"
+      "cardHero": {
+        "mode": "competition-config",
+        "config": "/data/competitions/university-goseong-men-2026/config.json"
+      }
     }
   ]
 }
