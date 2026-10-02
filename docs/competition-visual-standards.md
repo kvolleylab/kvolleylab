@@ -53,6 +53,17 @@ For senior international competition landing pages and their reusable recent-com
 - Verify both desktop and mobile, all three recent cards, and the linked event Hero; changing hub components must not alter existing AVC or VNL production pages.
 
 
+### Reusing a competition mobile Hero on hub featured cards (2026-10-02)
+
+The `2026 대회`-style compact featured cards below a hub main Hero show the **approved mobile version of each target competition main card**, even on desktop. The background/graphic may use the competition's own theme but title, dates, click target, featured order and geometry remain owned by the hub component.
+
+- Link each card to the source competition's `config.json` rather than copying artwork or referencing a stale decorative small-card SVG. Read `hero.mobileImage` first; use `hero.pcImage` only if a distinct mobile source is missing. Respect `hero.mobilePosition` to preserve the subject.
+- If a source competition does not yet have an image-based Hero, reuse the approved hub mobile Hero by referencing the hub CSS source (not a second hardcoded image path). Point to a dedicated competition Hero after one is approved.
+- The same mobile-source rule applies to PC and mobile compact featured cards; full-width main Heroes continue to use their own separate PC/mobile sources.
+- Do not add images to the year-by-year record rows, which are text and ranking summaries.
+- Use the shared hub renderer and documented source-config contract for every newly added compact competition card; do not create competition-specific card HTML or hardcoded copied assets.
+- When the shared compact-card rule is changed, validate all existing featured cards at both PC and mobile widths and leave existing competition production pages untouched.
+
 ## Main-card replacement procedure
 
 Use this as the default procedure whenever the user says “메인카드 바꿔줘” or asks to replace a competition Hero image.
