@@ -1,6 +1,6 @@
 # K-Volley Lab Competition Visual Standards
 
-Status: ACTIVE · UPDATED 2026-10-01
+Status: ACTIVE · UPDATED 2026-10-02
 
 ## Competition family colors
 
@@ -38,6 +38,20 @@ The image asset is background artwork, not a poster. Event title, dates and venu
 ### Reuse rule
 
 Every new competition main card should follow this same asset contract. Only the family palette and right-side event imagery change.
+
+
+### Competition hero title ↔ hub recent-card title color parity (2026-10-02)
+
+For senior international competition landing pages and their reusable recent-competition card pattern:
+
+- All recent competition **names** (primary Korean title and secondary English title) must use the same shared gold as the V2 Competition Engine hero: `#F2E8CF`.
+- V2 engine source of truth: `--kvl1180-gold-soft: #F2E8CF` in the shared competition geometry layer. Hub recent-card token: `--kvl-competition-title-gold: #F2E8CF` in the shared senior hub CSS.
+- This is **not** a competition-family accent: GAMES Deep Red, women's Rose, AVC Green, and FIVB colors belong to each event's background/graphic/accent system, **never** to the recent card's competition name.
+- Do not set `card.accent` or inline `--recent-accent` to drive recent-card titles. The shared hub stylesheet controls title color on both PC and mobile for every existing and newly added recent competition.
+- Recent-card artwork must still be sourced from the relevant approved competition hero (mobile artwork where the current hub resolver specifies it); fixing title color must not replace, copy, crop, or regenerate images.
+- When extending this card pattern to another international landing page or shared template, preserve this gold-title contract. Where another approved competition template intentionally uses a different gold token, mirror the approved hero title token instead of deriving title color from the event family.
+- Verify both desktop and mobile, all three recent cards, and the linked event Hero; changing hub components must not alter existing AVC or VNL production pages.
+
 
 ## Main-card replacement procedure
 
