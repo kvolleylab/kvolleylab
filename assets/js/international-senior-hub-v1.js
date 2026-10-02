@@ -62,7 +62,7 @@
     card.dataset.competition=item.id;
     card.style.setProperty('--recent-a',c.themeA||'#074827');
     card.style.setProperty('--recent-b',c.themeB||'#0e7b43');
-    card.style.setProperty('--recent-accent',c.accent||'#f2e8cf');
+    // Tournament titles are always rendered in the shared hero gold via CSS.
     card.style.setProperty('--recent-eyebrow',c.eyebrowColor||'#e6c46c');
     card.style.setProperty('--recent-overlay-pc',c.overlayPc||'linear-gradient(105deg,rgba(3,27,51,.42) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%)');
     card.style.setProperty('--recent-overlay-mobile',c.overlayMobile||'linear-gradient(90deg,rgba(3,27,51,.20) 0%,rgba(3,27,51,.10) 42%,rgba(3,27,51,.02) 68%,rgba(3,27,51,0) 82%)');
