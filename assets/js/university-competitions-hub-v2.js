@@ -1,5 +1,5 @@
 (()=> {
-  const INDEX_URL='data/competitions/university-index-2026.json?v=20260926-record-hub-1';
+  const INDEX_URL='data/competitions/university-index-2026.json?v=20261002-mobile-hero-source-1';
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const days=['일','월','화','수','목','금','토'];
   const fmt=value=>{
@@ -13,12 +13,37 @@
   const yearSelect=document.getElementById('univYearSelect');
   if(!root)return;
 
-  function featuredCard(item){
+  // The small featured card on PC and mobile always reuses its approved mobile Hero.
+  // Domestic competition art comes from the live shared Competition Engine config;
+  // U-League currently uses this hub's approved mobile Hero until its own photo Hero exists.
+  const resolveFeaturedHero=async item=>{
+    const source=item.cardHero||{};
+    if(source.mode==='competition-config'&&source.config){
+      const res=await fetch(source.config,{cache:'no-cache'});
+      if(!res.ok)throw new Error('competition hero config: '+source.config);
+      const config=await res.json(),hero=config.hero||{};
+      const image=hero.mobileImage||hero.pcImage;
+      if(!image)throw new Error('competition mobile hero unavailable: '+source.config);
+      return {imageCss:'url("'+image.replace(/[\\"]/g,'')+'")',position:hero.mobilePosition||hero.position||'center center'};
+    }
+    if(source.mode==='hub-mobile-hero'){
+      const node=document.querySelector('.univ-hub-main .kvl-common-hero');
+      if(!node)throw new Error('hub hero element missing');
+      const styles=getComputedStyle(node);
+      const imageCss=styles.getPropertyValue('--kvl-common-hero-image-mobile').trim();
+      if(!imageCss||imageCss==='none')throw new Error('approved hub mobile hero unavailable');
+      return {imageCss,position:styles.getPropertyValue('--kvl-common-hero-position-mobile').trim()||'center center'};
+    }
+    // Backwards-compatible fallback for historical cards not yet migrated.
+    return item.cardImage?{imageCss:'url("'+item.cardImage.replace(/[\\"]/g,'')+'")',position:'center center'}:{};
+  };
+  function featuredCard(item,photo={}){
     const ready=Boolean(item.pagePath);
     const tag=ready?'a':'article';
     const href=ready?' href="'+esc(item.pagePath)+'"':'';
     const cls='univ-featured-card '+(item.category==='uleague'?'is-uleague ':'')+(ready?'':'is-disabled');
-    const style=item.cardImage?' style="--featured-image:url(&quot;'+esc(item.cardImage)+'&quot;)"':'';
+    const safePosition=/^(?:left|center|right|[0-9]{1,3}%)(?:\\s+(?:top|center|bottom|[0-9]{1,3}%))?$/.test(photo.position||'')?photo.position:'center center';
+    const style=photo.imageCss?' style="--featured-image:'+esc(photo.imageCss)+';--featured-position:'+esc(safePosition)+'"':'';
     const note=item.category==='uleague'?'KUSF 대학배구 정규 시즌 리그':(item.series||'연맹 대회');
     return '<'+tag+href+' id="featured-'+esc(item.competitionId)+'" class="'+cls+'"'+style+'>'+
       (item.featuredLabel?'<span class="univ-featured-badge">'+esc(item.featuredLabel)+'</span>':'')+
@@ -134,7 +159,15 @@
     return r.json();
   }).then(data=>{
     const list=(data.competitions||[]).slice().sort((a,b)=>(a.featuredOrder||99)-(b.featuredOrder||99));
-    if(featuredRoot)featuredRoot.innerHTML=list.slice(0,3).map(featuredCard).join('');
+    if(featuredRoot){
+      const featured=list.slice(0,3);
+      Promise.all(featured.map(async item=>{
+        try{return await resolveFeaturedHero(item)}
+        catch(err){console.error('Featured mobile Hero:',item.competitionId,err);return {}}
+      })).then(photos=>{
+        featuredRoot.innerHTML=featured.map((item,i)=>featuredCard(item,photos[i])).join('');
+      });
+    }
     const recordList=list.slice().sort((a,b)=>String(b.endDate||'').localeCompare(String(a.endDate||''))||String(b.startDate||'').localeCompare(String(a.startDate||'')));
     const current=recordList.map(recordCard).join('');
     const pending='<div class="univ-year-placeholder">검수 완료된 기록부터 순차적으로 추가합니다.</div>';
