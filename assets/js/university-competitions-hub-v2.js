@@ -42,7 +42,7 @@
     const tag=ready?'a':'article';
     const href=ready?' href="'+esc(item.pagePath)+'"':'';
     const cls='univ-featured-card '+(item.category==='uleague'?'is-uleague ':'')+(ready?'':'is-disabled');
-    const safePosition=/^(?:left|center|right|[0-9]{1,3}%)(?:\\s+(?:top|center|bottom|[0-9]{1,3}%))?$/.test(photo.position||'')?photo.position:'center center';
+    const safePosition=/^(?:left|center|right|[0-9]{1,3}%)(?:\s+(?:top|center|bottom|[0-9]{1,3}%))?$/.test(photo.position||'')?photo.position:'center center';
     const style=photo.imageCss?' style="--featured-image:'+esc(photo.imageCss)+';--featured-position:'+esc(safePosition)+'"':'';
     const note=item.category==='uleague'?'KUSF 대학배구 정규 시즌 리그':(item.series||'연맹 대회');
     return '<'+tag+href+' id="featured-'+esc(item.competitionId)+'" class="'+cls+'"'+style+'>'+
