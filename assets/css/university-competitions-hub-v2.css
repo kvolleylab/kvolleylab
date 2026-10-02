@@ -6,10 +6,10 @@
   --kvl-common-hero-b:#163a5f;
   --kvl-common-hero-accent:#f6d670;
   --kvl-common-hero-meta:#f3f6fa;
-  --kvl-common-hero-image:url('/assets/images/competitions/university-hub-hero.svg?v=20260921-2');
-  --kvl-common-hero-image-mobile:url('/assets/images/competitions/university-hub-hero.svg?v=20260921-2');
+  --kvl-common-hero-image:url('/assets/images/competitions/university-hub-hero-20261002.webp');
+  --kvl-common-hero-image-mobile:url('/assets/images/competitions/university-hub-hero-mobile-20261002.webp');
   --kvl-common-hero-position:center center;
-  --kvl-common-hero-position-mobile:69% center;
+  --kvl-common-hero-position-mobile:center center;
   min-height:225px;
 }
 .univ-hub-main .kvl-common-hero[data-hero-mode="photo"]{background-size:cover;background-repeat:no-repeat;background-position:var(--kvl-common-hero-position)}
