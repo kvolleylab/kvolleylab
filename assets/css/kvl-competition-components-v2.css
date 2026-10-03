@@ -2547,6 +2547,18 @@ html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="games"]
 }
 
 
+/* Domestic result scores are gold regardless of gender palette.
+ * A team-color override in the women theme must not recolor verified scores.
+ * Keep unplayed / unverified VS neutral. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-score:not(.is-upcoming),
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] [data-kvl-component="calendar"] .kvl1180-cal-score{
+  color:#C9972E!important;
+  font-weight:800!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-score.is-upcoming{
+  color:#7f8c85!important;
+}
+
 /* DOMESTIC SINGLE-LEAGUE TYPE PARITY · 2026-10-03
  * Source of truth: Asian Games preliminary overall ranking sizing.
  * Shared by U-League and future domestic single-league competitions;
