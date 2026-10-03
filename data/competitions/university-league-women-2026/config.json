@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "slug": "university-league-women-2026",
+  "competition": {
+    "competitionId": "KVL-COMP-UNIV-ULEAGUE-W-2026",
+    "displayName": "2026 KUSF 대학배구 U-리그 여대부",
+    "officialName": "2026 KUSF 대학배구 U-리그 · 여대부",
+    "season": "2026",
+    "gender": "women",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "리그순위",
+      "groupsKpi": "리그 구성",
+      "groupsKpiUnit": "개 리그",
+      "knockoutKpi": "4강 진출",
+      "standingsTitle": "여대부 리그순위",
+      "standingsEyebrow": "POOL STANDINGS",
+      "knockoutTitle": "결선 토너먼트",
+      "participantsTitle": "참가대학",
+      "participantsKpi": "참가팀",
+      "participantsKpiUnit": "팀",
+      "knockoutKpiUnit": "팀"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "예선",
+        "준결승",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "single-league",
+      "title": "여대부 예선리그 순위"
+    },
+    "knockout": {
+      "mode": "bracket-4",
+      "title": "여대부 결선 토너먼트",
+      "sfLabel": "준결승 · Semifinals",
+      "finalLabel": "결승 · Final"
+    },
+    "participants": {
+      "mode": "flat",
+      "groupLabel": "여대부 참가대학",
+      "displayColumns": 3
+    },
+    "roster": {
+      "mode": "none"
+    }
+  },
+  "hero": {
+    "pcImage": "/assets/images/competitions/university-uleague-women-dig-pc-20261002.webp",
+    "mobileImage": "/assets/images/competitions/university-uleague-women-dig-mobile-20261002.webp",
+    "alt": "2026 KUSF 대학배구 U-리그 여자부 핑크 유니폼 12번 선수의 두 팔 다이빙 디그 장면",
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "85% center"
+  },
+  "seo": {
+    "title": "2026 KUSF 대학배구 U-리그 여자부 | K-Volley Lab",
+    "description": "2026 KUSF 대학배구 U-리그 여자부 경기일정, 공식 결과, 리그 순위, 결선 대진과 최종순위."
+  },
+  "data": "data.json",
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    }
+  ]
+}

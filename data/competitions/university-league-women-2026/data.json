@@ -1,0 +1,746 @@
+{
+  "status": "completed",
+  "stageLabel": "광주여자대학교 우승 · 대회 종료",
+  "dateLabel": "2026-03-28 ~ 2026-09-17",
+  "locationLabel": "전국 참가대학 체육관",
+  "venueLabel": "홈앤어웨이 · 준결승 경일대 · 결승 인하대",
+  "teamCount": 6,
+  "groupCount": 1,
+  "matchCount": 18,
+  "knockoutTeamCount": 4,
+  "champion": "광주여대",
+  "championAchievement": "2026 KUSF 대학배구 U-리그 여대부 우승",
+  "scheduleNote": "한국시간(KST) · KUSF 공식 경기 결과 18경기 모두 확인. 경기별 최종 세트스코어(3-0 등)를 표시하며 개별 세트 득점(25-20 등)은 추가 검수 중입니다.",
+  "standingsNote": "여대부 예선 15경기 점수·승패 공식 KUSF 결과 대조 · 승점 14/10/9/6/6/0 · 득실점수비율은 개별 세트 점수 확보 후 보완.",
+  "standingsRule": "승점 → 승리 경기 수 → 득실점수비율 → 세트비율 → 승자승(2026 U-리그 공식 요강)",
+  "meaning": {
+    "eyebrow": "KUSF U-LEAGUE",
+    "title": "2026 KUSF 대학배구 U-리그",
+    "note": "한국대학스포츠협의회 주최 · 한국대학배구연맹 주관 · 여대부 공식 18경기"
+  },
+  "genderLinks": {
+    "men": "/competition-engine.html?competition=university-league-men-2026"
+  },
+  "participants": [
+    {
+      "code": "KIU",
+      "name": "경일대",
+      "en": "경일대학교",
+      "fullName": "경일대학교",
+      "group": "여대부",
+      "count": 16
+    },
+    {
+      "code": "KWU",
+      "name": "광주여대",
+      "en": "광주여자대학교",
+      "fullName": "광주여자대학교",
+      "group": "여대부",
+      "count": 18
+    },
+    {
+      "code": "DKU",
+      "name": "단국대",
+      "en": "단국대학교",
+      "fullName": "단국대학교",
+      "group": "여대부",
+      "count": 12
+    },
+    {
+      "code": "MCS",
+      "name": "목포과학대",
+      "en": "목포과학대학교",
+      "fullName": "목포과학대학교",
+      "group": "여대부",
+      "count": 9
+    },
+    {
+      "code": "WKU",
+      "name": "우석대",
+      "en": "우석대학교",
+      "fullName": "우석대학교",
+      "group": "여대부",
+      "count": 12
+    },
+    {
+      "code": "HNU",
+      "name": "호남대",
+      "en": "호남대학교",
+      "fullName": "호남대학교",
+      "group": "여대부",
+      "count": 8
+    }
+  ],
+  "matches": [
+    {
+      "id": "KVL-M-2026-U007",
+      "officialNo": 7,
+      "date": "2026-03-28",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "MCS",
+        "name": "목포과학대",
+        "fullName": "목포과학대학교"
+      },
+      "away": {
+        "code": "KWU",
+        "name": "광주여대",
+        "fullName": "광주여자대학교"
+      },
+      "venueLabel": "목포과학대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U008",
+      "officialNo": 8,
+      "date": "2026-03-28",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "KIU",
+        "name": "경일대",
+        "fullName": "경일대학교"
+      },
+      "away": {
+        "code": "WKU",
+        "name": "우석대",
+        "fullName": "우석대학교"
+      },
+      "venueLabel": "목포과학대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U015",
+      "officialNo": 15,
+      "date": "2026-04-04",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "KWU",
+        "name": "광주여대",
+        "fullName": "광주여자대학교"
+      },
+      "away": {
+        "code": "DKU",
+        "name": "단국대",
+        "fullName": "단국대학교"
+      },
+      "venueLabel": "광주여자대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U016",
+      "officialNo": 16,
+      "date": "2026-04-04",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "WKU",
+        "name": "우석대",
+        "fullName": "우석대학교"
+      },
+      "away": {
+        "code": "HNU",
+        "name": "호남대",
+        "fullName": "호남대학교"
+      },
+      "venueLabel": "목포과학대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U023",
+      "officialNo": 23,
+      "date": "2026-04-11",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "KIU",
+        "name": "경일대",
+        "fullName": "경일대학교"
+      },
+      "away": {
+        "code": "HNU",
+        "name": "호남대",
+        "fullName": "호남대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U024",
+      "officialNo": 24,
+      "date": "2026-04-11",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "DKU",
+        "name": "단국대",
+        "fullName": "단국대학교"
+      },
+      "away": {
+        "code": "WKU",
+        "name": "우석대",
+        "fullName": "우석대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U037",
+      "officialNo": 37,
+      "date": "2026-05-16",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "KIU",
+        "name": "경일대",
+        "fullName": "경일대학교"
+      },
+      "away": {
+        "code": "KWU",
+        "name": "광주여대",
+        "fullName": "광주여자대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U038",
+      "officialNo": 38,
+      "date": "2026-05-16",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "WKU",
+        "name": "우석대",
+        "fullName": "우석대학교"
+      },
+      "away": {
+        "code": "MCS",
+        "name": "목포과학대",
+        "fullName": "목포과학대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U045",
+      "officialNo": 45,
+      "date": "2026-05-30",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "MCS",
+        "name": "목포과학대",
+        "fullName": "목포과학대학교"
+      },
+      "away": {
+        "code": "HNU",
+        "name": "호남대",
+        "fullName": "호남대학교"
+      },
+      "venueLabel": "목포과학대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U046",
+      "officialNo": 46,
+      "date": "2026-05-30",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "KIU",
+        "name": "경일대",
+        "fullName": "경일대학교"
+      },
+      "away": {
+        "code": "DKU",
+        "name": "단국대",
+        "fullName": "단국대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U053",
+      "officialNo": 53,
+      "date": "2026-06-06",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "KWU",
+        "name": "광주여대",
+        "fullName": "광주여자대학교"
+      },
+      "away": {
+        "code": "WKU",
+        "name": "우석대",
+        "fullName": "우석대학교"
+      },
+      "venueLabel": "광주여자대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U054",
+      "officialNo": 54,
+      "date": "2026-06-06",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "KIU",
+        "name": "경일대",
+        "fullName": "경일대학교"
+      },
+      "away": {
+        "code": "MCS",
+        "name": "목포과학대",
+        "fullName": "목포과학대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U061",
+      "officialNo": 61,
+      "date": "2026-06-13",
+      "time": "15:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "HNU",
+        "name": "호남대",
+        "fullName": "호남대학교"
+      },
+      "away": {
+        "code": "DKU",
+        "name": "단국대",
+        "fullName": "단국대학교"
+      },
+      "venueLabel": "국립목포대학교",
+      "localTimeLabel": "한국 현지 15:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U067",
+      "officialNo": 67,
+      "date": "2026-09-05",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "HNU",
+        "name": "호남대",
+        "fullName": "호남대학교"
+      },
+      "away": {
+        "code": "KWU",
+        "name": "광주여대",
+        "fullName": "광주여자대학교"
+      },
+      "venueLabel": "호남대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U068",
+      "officialNo": 68,
+      "date": "2026-09-05",
+      "time": "15:00",
+      "stage": "예선",
+      "pool": "예선",
+      "home": {
+        "code": "DKU",
+        "name": "단국대",
+        "fullName": "단국대학교"
+      },
+      "away": {
+        "code": "MCS",
+        "name": "목포과학대",
+        "fullName": "목포과학대학교"
+      },
+      "venueLabel": "단국대학교",
+      "localTimeLabel": "한국 현지 15:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": []
+      },
+      "round": "",
+      "bracketLabel": "예선",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U075",
+      "officialNo": 75,
+      "date": "2026-09-12",
+      "time": "13:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "WKU",
+        "name": "우석대",
+        "fullName": "우석대학교"
+      },
+      "away": {
+        "code": "MCS",
+        "name": "목포과학대",
+        "fullName": "목포과학대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": []
+      },
+      "round": "SF",
+      "bracketLabel": "4강",
+      "nextMatchId": "KVL-M-2026-U082",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U076",
+      "officialNo": 76,
+      "date": "2026-09-12",
+      "time": "15:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "KWU",
+        "name": "광주여대",
+        "fullName": "광주여자대학교"
+      },
+      "away": {
+        "code": "KIU",
+        "name": "경일대",
+        "fullName": "경일대학교"
+      },
+      "venueLabel": "경일대학교",
+      "localTimeLabel": "한국 현지 15:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": []
+      },
+      "round": "SF",
+      "bracketLabel": "4강",
+      "nextMatchId": "KVL-M-2026-U082",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    },
+    {
+      "id": "KVL-M-2026-U082",
+      "officialNo": 82,
+      "date": "2026-09-17",
+      "time": "15:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "WKU",
+        "name": "우석대",
+        "fullName": "우석대학교"
+      },
+      "away": {
+        "code": "KWU",
+        "name": "광주여대",
+        "fullName": "광주여자대학교"
+      },
+      "venueLabel": "인하대학교",
+      "localTimeLabel": "한국 현지 15:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": []
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승",
+      "scoreVerification": "KUSF 경기일정·결과 공식 세트스코어 확인",
+      "setPointsStatus": "추가 검수 중"
+    }
+  ],
+  "standings": {
+    "rows": [
+      {
+        "rank": 1,
+        "team": {
+          "code": "WKU",
+          "name": "우석대",
+          "fullName": "우석대학교"
+        },
+        "poolId": "LEAGUE",
+        "wins": 5,
+        "losses": 0,
+        "points": 14,
+        "setRatio": "3.750",
+        "pointRatio": "-",
+        "status": "qualified"
+      },
+      {
+        "rank": 2,
+        "team": {
+          "code": "KWU",
+          "name": "광주여대",
+          "fullName": "광주여자대학교"
+        },
+        "poolId": "LEAGUE",
+        "wins": 3,
+        "losses": 2,
+        "points": 10,
+        "setRatio": "2.000",
+        "pointRatio": "-",
+        "status": "qualified"
+      },
+      {
+        "rank": 3,
+        "team": {
+          "code": "KIU",
+          "name": "경일대",
+          "fullName": "경일대학교"
+        },
+        "poolId": "LEAGUE",
+        "wins": 3,
+        "losses": 2,
+        "points": 9,
+        "setRatio": "1.500",
+        "pointRatio": "-",
+        "status": "qualified"
+      },
+      {
+        "rank": 4,
+        "team": {
+          "code": "DKU",
+          "name": "단국대",
+          "fullName": "단국대학교"
+        },
+        "poolId": "LEAGUE",
+        "wins": 2,
+        "losses": 3,
+        "points": 6,
+        "setRatio": "0.700",
+        "pointRatio": "-",
+        "status": "qualified"
+      },
+      {
+        "rank": 5,
+        "team": {
+          "code": "MCS",
+          "name": "목포과학대",
+          "fullName": "목포과학대학교"
+        },
+        "poolId": "LEAGUE",
+        "wins": 2,
+        "losses": 3,
+        "points": 6,
+        "setRatio": "0.667",
+        "pointRatio": "-",
+        "status": "eliminated"
+      },
+      {
+        "rank": 6,
+        "team": {
+          "code": "HNU",
+          "name": "호남대",
+          "fullName": "호남대학교"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 5,
+        "points": 0,
+        "setRatio": "0.000",
+        "pointRatio": "-",
+        "status": "eliminated"
+      }
+    ]
+  },
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "KWU",
+      "team": "광주여대",
+      "result": "우승"
+    },
+    {
+      "rank": 2,
+      "code": "WKU",
+      "team": "우석대",
+      "result": "준우승"
+    },
+    {
+      "rank": 3,
+      "code": "KIU",
+      "team": "경일대",
+      "result": "공동 3위"
+    },
+    {
+      "rank": 3,
+      "code": "MCS",
+      "team": "목포과학대",
+      "result": "공동 3위"
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "KUSF 공식 여대부 예선 경기 결과",
+      "url": "https://kusf.or.kr/league/league_schedule.html?e_code=18&l_code=261&l_year=2026"
+    },
+    {
+      "title": "KUSF 공식 여대부 플레이오프 결과",
+      "url": "https://kusf.or.kr/league/league_schedule.html?e_code=18&l_code=280&l_year=2026"
+    }
+  ],
+  "rosterNote": "공식 팸플릿 기준 등록선수 · Drive MASTER 검수 중",
+  "rosterSourceNote": "2026 U-리그 Google Drive MASTER (여대부 75명). 선수별 확인 사항 검수 중. 국내 선수 상세 정보는 별도 대학 팀·선수 관리 페이지에서 제공합니다.",
+  "domesticRules": {
+    "standings": {
+      "title": "KUSF U-리그 승점·동률 규정",
+      "body": "3:0·3:1 승리 3점, 3:2 승리 2점·패배 1점. 승점 동률 시 승리 경기 수 → 득실점수비율 → 세트비율 → 승자승.",
+      "sourceUrl": "https://drive.google.com/file/d/1hkFfG8cVt6WcZgov8GibDEJXsE0SsV-X/view",
+      "note": "2026 공식 요강 기준"
+    },
+    "knockout": {
+      "title": "여대부 결선 진출 규정",
+      "body": "6개교 단일리그 예선 후 상위 4개 팀이 준결승에 진출합니다. 준결승 패배 두 팀은 공동 3위입니다.",
+      "sourceUrl": "https://drive.google.com/file/d/1hkFfG8cVt6WcZgov8GibDEJXsE0SsV-X/view"
+    }
+  }
+}

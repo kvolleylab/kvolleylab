@@ -1,5 +1,5 @@
 (()=> {
-  const INDEX_URL='data/competitions/university-index-2026.json?v=20261002-mobile-hero-source-1';
+  const INDEX_URL='data/competitions/university-index-2026.json?v=20261003-uleague-production-1';
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const days=['일','월','화','수','목','금','토'];
   const fmt=value=>{

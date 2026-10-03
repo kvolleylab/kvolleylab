@@ -143,6 +143,19 @@ Domestic Template v1은 K-Volley Lab 국내대회의 공통 visual/rendering bas
     - 소형 카드 자체의 크기/테두리/텍스트/클릭 영역, featured 순서, 연도별 기록(이미지 없음)은 그대로 유지합니다. 공통 JS/CSS와 대회 목록 데이터에서만 동작을 변경합니다.
 
 
+## 2026 U-리그 Production routing (2026-10-03)
+
+- U-리그는 **별도 HTML/JS/CSS 템플릿 없이** 고성·단양과 공통 Competition Engine V2 및 Domestic Template v1을 재사용합니다.
+- 정식 경로: 남대부 `/competition-engine.html?competition=university-league-men-2026`, 여대부 `/competition-engine.html?competition=university-league-women-2026`.
+- `data/competitions/university-league-{men,women}-2026/{config,data,rosters}.json`을 정식 원본으로 사용합니다. 남녀 이동은 정식 `genderLinks`로 현재 선택한 탭을 유지하며 연결합니다.
+- `university-index-2026.json`의 U-리그 featured 카드와 연도별 기록은 남대부 정식 경로로 연결합니다. featured 카드 이미지는 별도 복사하지 않고 **남자부 정식 config의 모바일 Hero**를 가져옵니다. 성별별 메인카드는 남자부 리시브, 여자부 분홍색 두 팔 다이빙 디그로 각각 유지합니다.
+- 기존 `university-league.html`은 선수·대학팀 분석용 이전 화면으로 유지하면서 남녀부 정식 대회 페이지로 연결되는 진입 링크를 제공합니다.
+- 남대부 67경기 중 검증 완료된 예선 49경기의 스코어만 표시하고 나머지 18경기는 공식 결과 추가 검수 중으로 표시합니다. 여자부 18경기의 확정 세트스코어와 최종순위는 유지하되 미검수 세트별 득점은 입력하지 않습니다.
+- 여대부는 `standings.mode=single-league`, 남대부는 `pools-combined`. 순위 글씨 기준은 기존 아시안게임 종합순위와 일치합니다.
+- 국내 선수 304명의 `rosters.json` Snapshot은 추후 대조용으로 보존하지만, `structure.roster.mode=none`으로 대회 안에 별도 선수 명단을 중복 게시하지 않습니다. 기존 대학 팀/선수 관리 페이지를 우선 사용합니다.
+- 개인 Google Drive 원본/요강 링크는 공개 공식자료에 직접 노출하지 않으며, 누구나 볼 수 있는 KUVF·KUSF 경기·대회 정보만 정식 리소스로 표시합니다.
+- 두 프로토타입 및 기존 고성/단양 Production을 지우거나 재구축하지 않습니다. AVC 남녀부와 VNL Production 파일은 그대로 보호합니다.
+
 ## Production compatibility
 
 `university-competition.html`은 Domestic Template v1 production wrapper입니다.

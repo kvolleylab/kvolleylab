@@ -1,0 +1,2588 @@
+{
+  "status": "active",
+  "stageLabel": "남대부 6강 이후 결과 검수 중 · 10월 6일 결승 예정",
+  "dateLabel": "2026-03-25 ~ 2026-10-06",
+  "locationLabel": "전국 참가대학 체육관",
+  "venueLabel": "홈앤어웨이 · 참가대학 체육관",
+  "teamCount": 15,
+  "groupCount": 2,
+  "matchCount": 67,
+  "knockoutTeamCount": 4,
+  "champion": "",
+  "championAchievement": "",
+  "scheduleNote": "한국시간(KST) · 총 67경기 · 예선 49경기 결과 검수 완료. 6강리그·준결승·결승 18경기의 세트스코어는 검수 중이며 미확인 경기 결과는 표시하지 않습니다.",
+  "standingsNote": "남대부 A/B조 예선 49경기 결과 기준. 6강리그 공식 승점: 인하 15, 한양 12, 홍익 6, 성균관 6, 중부 5, 경기 1점. 조별 예선과 6강리그 순위는 별개입니다.",
+  "standingsRule": "승점 → 승리 경기 수 → 득실점수비율 → 세트비율 → 승자승(2026 U-리그 요강)",
+  "meaning": {
+    "eyebrow": "KUSF U-LEAGUE",
+    "title": "2026 KUSF 대학배구 U-리그",
+    "note": "한국대학스포츠협의회 주최 · 한국대학배구연맹 주관 · 실대회 85경기 중 남대부 67경기"
+  },
+  "genderLinks": {
+    "women": "/competition-engine.html?competition=university-league-women-2026"
+  },
+  "participants": [
+    {
+      "code": "INHA",
+      "fullName": "인하대학교",
+      "name": "인하대",
+      "en": "인하대학교",
+      "group": "A",
+      "logo": "/assets/images/universities/inha-standardized.jpg?v=20260730-2",
+      "count": 0
+    },
+    {
+      "code": "SKKU",
+      "fullName": "성균관대학교",
+      "name": "성균관대",
+      "en": "성균관대학교",
+      "group": "A",
+      "logo": "/assets/images/universities/skku-standardized.jpg?v=20260730-2",
+      "count": 0
+    },
+    {
+      "code": "HONGIK",
+      "fullName": "홍익대학교",
+      "name": "홍익대",
+      "en": "홍익대학교",
+      "group": "A",
+      "logo": "/assets/images/universities/hongik-standardized.jpg?v=20260730-2",
+      "count": 0
+    },
+    {
+      "code": "KYUNGHEE",
+      "fullName": "경희대학교",
+      "name": "경희대",
+      "en": "경희대학교",
+      "group": "A",
+      "logo": "/assets/images/universities/kyunghee-standardized.jpg?v=20260730-2",
+      "count": 0
+    },
+    {
+      "code": "MYONGJI",
+      "fullName": "명지대학교",
+      "name": "명지대",
+      "en": "명지대학교",
+      "group": "A",
+      "logo": "/assets/images/universities/myongji.svg",
+      "count": 0
+    },
+    {
+      "code": "KYUNGIL",
+      "fullName": "경일대학교",
+      "name": "경일대",
+      "en": "경일대학교",
+      "group": "A",
+      "logo": "/assets/images/universities/kyungil.svg",
+      "count": 0
+    },
+    {
+      "code": "HONAM",
+      "fullName": "호남대학교",
+      "name": "호남대",
+      "en": "호남대학교",
+      "group": "A",
+      "logo": "/assets/images/universities/honam.svg",
+      "count": 0
+    },
+    {
+      "code": "JOONGBU",
+      "fullName": "중부대학교",
+      "name": "중부대",
+      "en": "중부대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/joongbu.svg",
+      "count": 0
+    },
+    {
+      "code": "HANYANG",
+      "fullName": "한양대학교",
+      "name": "한양대",
+      "en": "한양대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/hanyang-standardized.jpg?v=20260730-2",
+      "count": 0
+    },
+    {
+      "code": "KYONGGI",
+      "fullName": "경기대학교",
+      "name": "경기대",
+      "en": "경기대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/kyonggi.svg",
+      "count": 0
+    },
+    {
+      "code": "CHOSUN",
+      "fullName": "조선대학교",
+      "name": "조선대",
+      "en": "조선대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/chosun.svg",
+      "count": 0
+    },
+    {
+      "code": "MOKPO",
+      "fullName": "국립목포대학교",
+      "name": "목포대",
+      "en": "국립목포대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/mokpo.svg",
+      "count": 0
+    },
+    {
+      "code": "CHUNGNAM",
+      "fullName": "충남대학교",
+      "name": "충남대",
+      "en": "충남대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/chungnam.svg",
+      "count": 0
+    },
+    {
+      "code": "GYEONGSANG",
+      "fullName": "경상국립대학교",
+      "name": "경상국립대",
+      "en": "경상국립대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/gyeongsang.svg",
+      "count": 0
+    },
+    {
+      "code": "WOOSUK",
+      "fullName": "우석대학교",
+      "name": "우석대",
+      "en": "우석대학교",
+      "group": "B",
+      "logo": "/assets/images/universities/woosuk.svg",
+      "count": 0
+    }
+  ],
+  "matches": [
+    {
+      "id": "KVL-M-2026-U001",
+      "officialNo": 1,
+      "date": "2026-03-25",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "HONAM"
+      },
+      "venueLabel": "수원(성균)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U002",
+      "officialNo": 2,
+      "date": "2026-03-25",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KYONGGI"
+      },
+      "away": {
+        "code": "CHUNGNAM"
+      },
+      "venueLabel": "수원(경기)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U003",
+      "officialNo": 3,
+      "date": "2026-03-26",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "MYONGJI"
+      },
+      "away": {
+        "code": "KYUNGHEE"
+      },
+      "venueLabel": "용인(명지)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 28,
+            "away": 30
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U004",
+      "officialNo": 4,
+      "date": "2026-03-26",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "GYEONGSANG"
+      },
+      "venueLabel": "진주(경상)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U005",
+      "officialNo": 5,
+      "date": "2026-03-27",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HONGIK"
+      },
+      "away": {
+        "code": "KYUNGIL"
+      },
+      "venueLabel": "서울(홍익)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U006",
+      "officialNo": 6,
+      "date": "2026-03-27",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "JOONGBU"
+      },
+      "away": {
+        "code": "WOOSUK"
+      },
+      "venueLabel": "충남(중부)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 8
+          },
+          {
+            "home": 25,
+            "away": 12
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U009",
+      "officialNo": 9,
+      "date": "2026-04-01",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "GYEONGSANG"
+      },
+      "away": {
+        "code": "JOONGBU"
+      },
+      "venueLabel": "진주(경상)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U010",
+      "officialNo": 10,
+      "date": "2026-04-01",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "MYONGJI"
+      },
+      "venueLabel": "수원(성균)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U011",
+      "officialNo": 11,
+      "date": "2026-04-02",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "HONAM"
+      },
+      "venueLabel": "인천(인하)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U012",
+      "officialNo": 12,
+      "date": "2026-04-02",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CHOSUN"
+      },
+      "away": {
+        "code": "MOKPO"
+      },
+      "venueLabel": "광주(조선)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U013",
+      "officialNo": 13,
+      "date": "2026-04-03",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HONGIK"
+      },
+      "away": {
+        "code": "KYUNGHEE"
+      },
+      "venueLabel": "서울(홍익)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 27,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U014",
+      "officialNo": 14,
+      "date": "2026-04-03",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "WOOSUK"
+      },
+      "away": {
+        "code": "CHUNGNAM"
+      },
+      "venueLabel": "대전(충남)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U017",
+      "officialNo": 17,
+      "date": "2026-04-08",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HONAM"
+      },
+      "away": {
+        "code": "MYONGJI"
+      },
+      "venueLabel": "광주(호남)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U018",
+      "officialNo": 18,
+      "date": "2026-04-08",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "MOKPO"
+      },
+      "venueLabel": "목포(목포)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U019",
+      "officialNo": 19,
+      "date": "2026-04-09",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KYONGGI"
+      },
+      "away": {
+        "code": "CHOSUN"
+      },
+      "venueLabel": "수원(경기)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U020",
+      "officialNo": 20,
+      "date": "2026-04-09",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "HONGIK"
+      },
+      "venueLabel": "수원(성균)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U021",
+      "officialNo": 21,
+      "date": "2026-04-10",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KYUNGIL"
+      },
+      "away": {
+        "code": "INHA"
+      },
+      "venueLabel": "경산(경일)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U022",
+      "officialNo": 22,
+      "date": "2026-04-10",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CHUNGNAM"
+      },
+      "away": {
+        "code": "JOONGBU"
+      },
+      "venueLabel": "대전(충남)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U025",
+      "officialNo": 25,
+      "date": "2026-04-15",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "MYONGJI"
+      },
+      "away": {
+        "code": "KYUNGIL"
+      },
+      "venueLabel": "용인(명지)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 27,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U026",
+      "officialNo": 26,
+      "date": "2026-04-15",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "JOONGBU"
+      },
+      "away": {
+        "code": "KYONGGI"
+      },
+      "venueLabel": "충남(중부)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U027",
+      "officialNo": 27,
+      "date": "2026-04-16",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KYUNGHEE"
+      },
+      "away": {
+        "code": "HONAM"
+      },
+      "venueLabel": "수원(경희)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 11
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 13
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U028",
+      "officialNo": 28,
+      "date": "2026-04-16",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "WOOSUK"
+      },
+      "away": {
+        "code": "GYEONGSANG"
+      },
+      "venueLabel": "진주(경상)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 12,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U029",
+      "officialNo": 29,
+      "date": "2026-04-17",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "인천(인하)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U030",
+      "officialNo": 30,
+      "date": "2026-04-17",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CHUNGNAM"
+      },
+      "away": {
+        "code": "HANYANG"
+      },
+      "venueLabel": "대전(충남)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U031",
+      "officialNo": 31,
+      "date": "2026-05-13",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "MOKPO"
+      },
+      "away": {
+        "code": "GYEONGSANG"
+      },
+      "venueLabel": "목포(목포)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U032",
+      "officialNo": 32,
+      "date": "2026-05-13",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "WOOSUK"
+      },
+      "away": {
+        "code": "CHOSUN"
+      },
+      "venueLabel": "광주(조선)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 9,
+            "away": 25
+          },
+          {
+            "home": 12,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U033",
+      "officialNo": 33,
+      "date": "2026-05-14",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "MYONGJI"
+      },
+      "venueLabel": "인천(인하)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U034",
+      "officialNo": 34,
+      "date": "2026-05-14",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "KYONGGI"
+      },
+      "venueLabel": "서울(한양)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U035",
+      "officialNo": 35,
+      "date": "2026-05-15",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KYUNGIL"
+      },
+      "away": {
+        "code": "KYUNGHEE"
+      },
+      "venueLabel": "경산(경일)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U036",
+      "officialNo": 36,
+      "date": "2026-05-15",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HONGIK"
+      },
+      "away": {
+        "code": "HONAM"
+      },
+      "venueLabel": "서울(홍익)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 10
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U039",
+      "officialNo": 39,
+      "date": "2026-05-27",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "MOKPO"
+      },
+      "away": {
+        "code": "CHUNGNAM"
+      },
+      "venueLabel": "목포(목포)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U040",
+      "officialNo": 40,
+      "date": "2026-05-27",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "JOONGBU"
+      },
+      "away": {
+        "code": "HANYANG"
+      },
+      "venueLabel": "충남(중부)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U041",
+      "officialNo": 41,
+      "date": "2026-05-28",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HONAM"
+      },
+      "away": {
+        "code": "KYUNGIL"
+      },
+      "venueLabel": "광주(호남)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 8,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U042",
+      "officialNo": 42,
+      "date": "2026-05-28",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KYUNGHEE"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "수원(경희)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U043",
+      "officialNo": 43,
+      "date": "2026-05-29",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "HONGIK"
+      },
+      "venueLabel": "인천(인하)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U044",
+      "officialNo": 44,
+      "date": "2026-05-29",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CHOSUN"
+      },
+      "away": {
+        "code": "GYEONGSANG"
+      },
+      "venueLabel": "광주(조선)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U047",
+      "officialNo": 47,
+      "date": "2026-06-03",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "KYUNGHEE"
+      },
+      "away": {
+        "code": "INHA"
+      },
+      "venueLabel": "수원(경희)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U048",
+      "officialNo": 48,
+      "date": "2026-06-03",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "JOONGBU"
+      },
+      "away": {
+        "code": "MOKPO"
+      },
+      "venueLabel": "충남(중부)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 11
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U049",
+      "officialNo": 49,
+      "date": "2026-06-04",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KYONGGI"
+      },
+      "away": {
+        "code": "WOOSUK"
+      },
+      "venueLabel": "수원(경기)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 7
+          },
+          {
+            "home": 25,
+            "away": 9
+          },
+          {
+            "home": 25,
+            "away": 11
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U050",
+      "officialNo": 50,
+      "date": "2026-06-04",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "KYUNGIL"
+      },
+      "venueLabel": "수원(성균)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U051",
+      "officialNo": 51,
+      "date": "2026-06-05",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CHUNGNAM"
+      },
+      "away": {
+        "code": "CHOSUN"
+      },
+      "venueLabel": "대전(충남)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U052",
+      "officialNo": 52,
+      "date": "2026-06-05",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "HONGIK"
+      },
+      "away": {
+        "code": "MYONGJI"
+      },
+      "venueLabel": "서울(홍익)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U055",
+      "officialNo": 55,
+      "date": "2026-06-08",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CHOSUN"
+      },
+      "away": {
+        "code": "HANYANG"
+      },
+      "venueLabel": "광주(조선)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U056",
+      "officialNo": 56,
+      "date": "2026-06-08",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "KYONGGI"
+      },
+      "away": {
+        "code": "MOKPO"
+      },
+      "venueLabel": "수원(경기)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U057",
+      "officialNo": 57,
+      "date": "2026-06-10",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "GYEONGSANG"
+      },
+      "away": {
+        "code": "CHUNGNAM"
+      },
+      "venueLabel": "진주(경상)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U058",
+      "officialNo": 58,
+      "date": "2026-06-10",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "WOOSUK"
+      },
+      "venueLabel": "서울(한양)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 11
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U059",
+      "officialNo": 59,
+      "date": "2026-06-12",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "GYEONGSANG"
+      },
+      "away": {
+        "code": "KYONGGI"
+      },
+      "venueLabel": "진주(경상)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U060",
+      "officialNo": 60,
+      "date": "2026-06-12",
+      "time": "14:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "CHOSUN"
+      },
+      "away": {
+        "code": "JOONGBU"
+      },
+      "venueLabel": "광주(조선)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 12,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U062",
+      "officialNo": 62,
+      "date": "2026-06-13",
+      "time": "13:00",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "MOKPO"
+      },
+      "away": {
+        "code": "WOOSUK"
+      },
+      "venueLabel": "목포(목포)",
+      "localTimeLabel": "한국 현지 13:00 KST",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 30,
+            "away": 32
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 9
+          }
+        ]
+      },
+      "round": "",
+      "bracketLabel": "예선"
+    },
+    {
+      "id": "KVL-M-2026-U063",
+      "officialNo": 63,
+      "date": "2026-09-02",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "KYONGGI"
+      },
+      "venueLabel": "인천(인하)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U064",
+      "officialNo": 64,
+      "date": "2026-09-02",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "HONGIK"
+      },
+      "venueLabel": "서울(홍익)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U065",
+      "officialNo": 65,
+      "date": "2026-09-04",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "JOONGBU"
+      },
+      "venueLabel": "수원(성균)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U066",
+      "officialNo": 66,
+      "date": "2026-09-04",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "HONGIK"
+      },
+      "away": {
+        "code": "INHA"
+      },
+      "venueLabel": "서울(홍익)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U069",
+      "officialNo": 69,
+      "date": "2026-09-07",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "JOONGBU"
+      },
+      "venueLabel": "인천(인하)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U070",
+      "officialNo": 70,
+      "date": "2026-09-07",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "HONGIK"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "서울(홍익)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U071",
+      "officialNo": 71,
+      "date": "2026-09-09",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "JOONGBU"
+      },
+      "away": {
+        "code": "KYONGGI"
+      },
+      "venueLabel": "충남(중부)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U072",
+      "officialNo": 72,
+      "date": "2026-09-09",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "HANYANG"
+      },
+      "venueLabel": "수원(성균)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U073",
+      "officialNo": 73,
+      "date": "2026-09-11",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "KYONGGI"
+      },
+      "venueLabel": "서울(한양)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U074",
+      "officialNo": 74,
+      "date": "2026-09-11",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "SKKU"
+      },
+      "away": {
+        "code": "INHA"
+      },
+      "venueLabel": "수원(성균)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U077",
+      "officialNo": 77,
+      "date": "2026-09-14",
+      "time": "11:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "JOONGBU"
+      },
+      "venueLabel": "서울(한양)",
+      "localTimeLabel": "한국 현지 11:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U078",
+      "officialNo": 78,
+      "date": "2026-09-14",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "KYONGGI"
+      },
+      "away": {
+        "code": "HONGIK"
+      },
+      "venueLabel": "수원(경기)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U079",
+      "officialNo": 79,
+      "date": "2026-09-16",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "HANYANG"
+      },
+      "venueLabel": "인천(인하)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U080",
+      "officialNo": 80,
+      "date": "2026-09-16",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "KYONGGI"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "수원(경기)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U081",
+      "officialNo": 81,
+      "date": "2026-09-18",
+      "time": "14:00",
+      "stage": "6강리그",
+      "pool": "6강",
+      "home": {
+        "code": "JOONGBU"
+      },
+      "away": {
+        "code": "HONGIK"
+      },
+      "venueLabel": "충남(중부)",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "",
+      "bracketLabel": "6강리그",
+      "verificationStatus": "경기결과 확인 중"
+    },
+    {
+      "id": "KVL-M-2026-U083",
+      "officialNo": 83,
+      "date": "2026-10-02",
+      "time": "14:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "INHA"
+      },
+      "away": {
+        "code": "SKKU"
+      },
+      "venueLabel": "인하대학교 체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "SF",
+      "bracketLabel": "4강",
+      "verificationStatus": "경기결과 확인 중",
+      "nextMatchId": "KVL-M-2026-U085"
+    },
+    {
+      "id": "KVL-M-2026-U084",
+      "officialNo": 84,
+      "date": "2026-10-02",
+      "time": "14:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "HANYANG"
+      },
+      "away": {
+        "code": "HONGIK"
+      },
+      "venueLabel": "한양대학교 체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "SF",
+      "bracketLabel": "4강",
+      "verificationStatus": "경기결과 확인 중",
+      "nextMatchId": "KVL-M-2026-U085"
+    },
+    {
+      "id": "KVL-M-2026-U085",
+      "officialNo": 85,
+      "date": "2026-10-06",
+      "time": "14:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "TBD-준결승-1-승자",
+        "name": "준결승 1 승자"
+      },
+      "away": {
+        "code": "TBD-준결승-2-승자",
+        "name": "준결승 2 승자"
+      },
+      "venueLabel": "6강리그 상위팀 체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "score": null,
+      "round": "FINAL",
+      "bracketLabel": "결승",
+      "verificationStatus": "경기결과 확인 중"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 21,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "INHA"
+            },
+            "wins": 6,
+            "losses": 0,
+            "points": 17,
+            "setRatio": "9.000",
+            "pointRatio": "1.333",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SKKU"
+            },
+            "wins": 5,
+            "losses": 1,
+            "points": 15,
+            "setRatio": "3.750",
+            "pointRatio": "1.157",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "HONGIK"
+            },
+            "wins": 4,
+            "losses": 2,
+            "points": 13,
+            "setRatio": "2.333",
+            "pointRatio": "1.160",
+            "status": "qualified"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "KYUNGHEE"
+            },
+            "wins": 3,
+            "losses": 3,
+            "points": 9,
+            "setRatio": "0.900",
+            "pointRatio": "1.019",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "MYONGJI"
+            },
+            "wins": 2,
+            "losses": 4,
+            "points": 6,
+            "setRatio": "0.615",
+            "pointRatio": "0.944",
+            "status": "eliminated"
+          },
+          {
+            "rank": 6,
+            "team": {
+              "code": "KYUNGIL"
+            },
+            "wins": 1,
+            "losses": 5,
+            "points": 2,
+            "setRatio": "0.235",
+            "pointRatio": "0.853",
+            "status": "eliminated"
+          },
+          {
+            "rank": 7,
+            "team": {
+              "code": "HONAM"
+            },
+            "wins": 0,
+            "losses": 6,
+            "points": 1,
+            "setRatio": "0.111",
+            "pointRatio": "0.682",
+            "status": "eliminated"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 28,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "HANYANG"
+            },
+            "wins": 7,
+            "losses": 0,
+            "points": 21,
+            "setRatio": "7.000",
+            "pointRatio": "1.263",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "JOONGBU"
+            },
+            "wins": 6,
+            "losses": 1,
+            "points": 18,
+            "setRatio": "4.750",
+            "pointRatio": "1.393",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "KYONGGI"
+            },
+            "wins": 5,
+            "losses": 2,
+            "points": 15,
+            "setRatio": "2.000",
+            "pointRatio": "1.098",
+            "status": "qualified"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "CHUNGNAM"
+            },
+            "wins": 4,
+            "losses": 3,
+            "points": 11,
+            "setRatio": "1.273",
+            "pointRatio": "1.037",
+            "status": "eliminated"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "CHOSUN"
+            },
+            "wins": 3,
+            "losses": 4,
+            "points": 9,
+            "setRatio": "0.750",
+            "pointRatio": "1.004",
+            "status": "eliminated"
+          },
+          {
+            "rank": 6,
+            "team": {
+              "code": "GYEONGSANG"
+            },
+            "wins": 2,
+            "losses": 5,
+            "points": 7,
+            "setRatio": "0.563",
+            "pointRatio": "0.964",
+            "status": "eliminated"
+          },
+          {
+            "rank": 7,
+            "team": {
+              "code": "MOKPO"
+            },
+            "wins": 1,
+            "losses": 6,
+            "points": 2,
+            "setRatio": "0.250",
+            "pointRatio": "0.829",
+            "status": "eliminated"
+          },
+          {
+            "rank": 8,
+            "team": {
+              "code": "WOOSUK"
+            },
+            "wins": 0,
+            "losses": 7,
+            "points": 1,
+            "setRatio": "0.095",
+            "pointRatio": "0.596",
+            "status": "eliminated"
+          }
+        ]
+      }
+    ]
+  },
+  "finalRanking": [],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "한국대학배구연맹 2026 U-리그 개최 공지",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=170268484"
+    },
+    {
+      "title": "한국대학배구연맹 남대부 6강 확정 대진",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=173194129"
+    }
+  ],
+  "rosterNote": "대회 팸플릿 기준 등록 선수명단 · Drive MASTER 검수 중",
+  "rosterSourceNote": "2026 U-리그 Google Drive MASTER (남대부 229명). 선수별 정보 충돌 사항 검수 중. 국내 선수 상세 정보는 별도 대학 팀·선수 관리 페이지에서 제공합니다.",
+  "domesticRules": {
+    "standings": {
+      "title": "KUSF U-리그 승점·동률 규정",
+      "body": "3:0·3:1 승리 3점, 3:2 승리 2점·패배 1점. 동점일 경우 승리 경기 수 → 득실점수비율 → 세트비율 → 승자승.",
+      "note": "2026 공식 U-리그 요강 기준",
+      "sourceUrl": "https://drive.google.com/file/d/1hkFfG8cVt6WcZgov8GibDEJXsE0SsV-X/view"
+    },
+    "knockout": {
+      "title": "남대부 결선 진출 규정",
+      "body": "예선 A/B조 각 상위 3팀이 6강 리그에 진출합니다. 6강 리그 종료 후 상위 4팀이 준결승에 진출하며 승리팀이 챔피언결정전을 치릅니다.",
+      "sourceUrl": "https://drive.google.com/file/d/1hkFfG8cVt6WcZgov8GibDEJXsE0SsV-X/view"
+    }
+  }
+}

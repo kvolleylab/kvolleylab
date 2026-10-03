@@ -7,7 +7,7 @@
       "series": "대학 U-리그",
       "name": "2026 KUSF 대학배구 U-리그",
       "shortName": "2026 KUSF 대학배구 U-리그",
-      "pagePath": "university-league.html",
+      "pagePath": "competition-engine.html?competition=university-league-men-2026",
       "status": "active",
       "startDate": "2026-03-25",
       "endDate": "2026-10-06",
@@ -67,7 +67,8 @@
       ],
       "recordSource": "한국대학배구연맹 / KUSF",
       "cardHero": {
-        "mode": "hub-mobile-hero"
+        "mode": "competition-config",
+        "config": "/data/competitions/university-league-men-2026/config.json"
       }
     },
     {

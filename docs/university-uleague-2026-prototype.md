@@ -1,6 +1,16 @@
 # 2026 KUSF 대학배구 U-리그 — Competition Engine V2 프로토타입
 
-작성: 2026-10-02 · **PROTOTYPE ONLY** · 홈페이지 production 자동 반영 금지
+작성: 2026-10-02 · 2026-10-03 정식 승격 · 기존 테스트 프로토타입은 회귀검증용으로 유지
+
+## 정식 승격 경로 (2026-10-03)
+
+- 남대부: `/competition-engine.html?competition=university-league-men-2026`
+- 여대부: `/competition-engine.html?competition=university-league-women-2026`
+- 두 정식 경로는 `data/competitions/`의 새 데이터로 작동합니다. 아래 테스트 프로토타입은 보존합니다.
+- 여대부 검증 완료 18경기 / 남대부 검증 완료 예선 49경기. 남대부 남은 18경기 결과와 여자부 개별 세트별 점수는 계속 검수 대상입니다.
+- 승인한 남녀부 PC/모바일 Hero를 각각 유지합니다. 대학대회 상단 U-리그 featured 소형 카드는 남자부 모바일 Hero를 정식 config에서 동적으로 가져옵니다.
+- 국내 304명 선수 Snapshot은 정식 데이터 폴더에 보존하지만 대회 페이지 자체에서 중복 게시하지 않고 국내 선수 페이지 정비 후 연결할 예정입니다.
+- 공개 공식자료에서는 개인 Drive 링크를 제거하고 KUSF·KUVF 공식 게시물/일정 링크만 사용합니다.
 
 ## 프로토타입 URL
 
@@ -42,5 +52,5 @@
 
 ## Production 보호
 
-- 이 작업 범위는 `tests/fixtures/competitions/university-league-*-2026-prototype/`에 한정한다. 이 문서 외 Production 페이지/공통 엔진/메인 허브 파일을 바꾸지 않는다.
+- 위 제한은 초기 프로토타입 제작 시점의 원칙이었습니다. 2026-10-03 사용자 승인에 따라 정식 Competition Engine 라우트와 국내대회 허브에 승격했습니다. 기존 AVC·VNL Production은 보호합니다.
 - 두 Prototype의 PC/모바일 화면, 남녀 전환, 85경기 수, 현재 순위, 그룹·달력·결선 구조, 선수명단 UX는 실제 브라우저에서 사용자가 직접 승인하기 전까지 **배포 완료로 선언하지 않는다**.
