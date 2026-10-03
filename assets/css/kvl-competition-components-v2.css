@@ -2545,3 +2545,78 @@ html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="games"]
     background-repeat:no-repeat!important;
   }
 }
+
+
+/* DOMESTIC SINGLE-LEAGUE TYPE PARITY · 2026-10-03
+ * Source of truth: Asian Games preliminary overall ranking sizing.
+ * Shared by U-League and future domestic single-league competitions;
+ * does not alter international or frozen production layout.
+ */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl1180-combined-table-head{
+  font-size:13px!important;
+  line-height:1.2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl1180-combined-row{
+  min-height:60px!important;
+  font-size:15px!important;
+  line-height:1.35!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl1180-combined-team-copy strong{
+  font-size:17px!important;
+  font-weight:700!important;
+  color:#17365D!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl1180-combined-rank{
+  font-size:16px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl1180-combined-pool,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl1180-combined-stat{
+  font-size:15px!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl1180-combined-result{
+  font-size:12px!important;
+}
+/* Teams without approved emblems use the entire team-name column, not an empty logo slot. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-combined-team.is-text-only{
+  display:block!important;
+  min-width:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl1180-combined-team.is-text-only .kvl1180-combined-team-copy strong{
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:break-word!important;
+}
+/* A verified match score remains visible even when individual set points are pending. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-set-points-pending{
+  display:inline-block;
+  color:#718096;
+  font-size:11px;
+  font-weight:600;
+  line-height:1.35;
+  white-space:nowrap;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl-shared-combined-line{
+    min-height:50px!important;
+    font-size:14px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl-shared-combined-team{
+    font-size:15px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl-shared-combined-rank,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl-shared-combined-stat{
+    font-size:13px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl-shared-combined-identity.is-text-only{
+    grid-template-columns:44px minmax(0,1fr)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .is-domestic-single-league .kvl-shared-combined-identity.is-text-only .kvl-shared-combined-team{
+    grid-column:2!important;
+    width:100%!important;
+    max-width:140px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-set-points-pending{
+    font-size:9.5px;
+  }
+}
