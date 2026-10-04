@@ -16,6 +16,7 @@
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html']);
   const vleaguePages=new Set(['v-league.html']);
   const universityLeaguePages=new Set(['university-league.html']);
+  const isUniversityLeagueCompetition=path==='competition-engine.html'&&/^university-league-(?:men|women)-2026$/.test(params.get('competition')||'');
   const playerPages=new Set(['players.html','player.html','player-search.html','player-profile.html','growth-timeline.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
   const teamPages=new Set(['university-teams.html','teams.html']);
@@ -26,7 +27,7 @@
   else if(schedulePages.has(path))active='schedules';
   else if(vleaguePages.has(path))active='vleague';
   else if(nationalPages.has(path))active='national';
-  else if(domesticPages.has(path)||universityLeaguePages.has(path))active='domestic';
+  else if(domesticPages.has(path)||universityLeaguePages.has(path)||isUniversityLeagueCompetition)active='domestic';
   else if(isInternationalPage)active='competition';
   else if(teamPages.has(path)||playerPages.has(path)||path==='draft-hub.html')active='players';
   else if(analysisPages.has(path)||path==='records.html')active='analysis';
@@ -63,7 +64,7 @@
     ]),
     group('domestic',icon.domestic,'국내대회',[
       link('domestic-university','university-competitions.html',null,'대학대회'),
-      link('domestic-uleague','university-league.html',null,'대학 U-리그'),
+      link('domestic-uleague','competition-engine.html?competition=university-league-men-2026',null,'대학 U-리그'),
       link('domestic-school','domestic-competitions.html?division=school',null,'중·고'),
       link('domestic-pro','domestic-competitions.html?division=pro',null,'프로·실업'),
       link('domestic-comprehensive','national-sports-festival-2026.html',null,'종합대회')
@@ -100,7 +101,7 @@
     if(item.key==='national-age')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='age';
 
     if(item.key==='domestic-university')return active==='domestic'&&(path==='university-competitions.html'||path==='university-competition.html'||path==='university-competition-danyang.html'||path==='university-team.html'||params.get('division')==='university');
-    if(item.key==='domestic-uleague')return active==='domestic'&&universityLeaguePages.has(path);
+    if(item.key==='domestic-uleague')return active==='domestic'&&(universityLeaguePages.has(path)||isUniversityLeagueCompetition);
     if(item.key==='domestic-school')return active==='domestic'&&params.get('division')==='school';
     if(item.key==='domestic-pro')return active==='domestic'&&params.get('division')==='pro';
     if(item.key==='domestic-comprehensive')return active==='domestic'&&path==='national-sports-festival-2026.html';
