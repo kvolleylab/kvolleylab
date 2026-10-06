@@ -124,7 +124,7 @@ function compactChampionAchievement(d){
   const explicit=String(d.championMobileAchievement||'').trim();
   if(explicit)return explicit;
   const full=String(d.championAchievement||'').trim();
-  const medal=full.match(/(?:^|[\\s·,/()])(금메달|은메달|동메달)(?=$|[\\s·,/()])/);
+  const medal=full.match(/(?:^|[\s·,/()])(금메달|은메달|동메달)(?=$|[\s·,/()])/);
   return medal?medal[1]:full;
 }
 
