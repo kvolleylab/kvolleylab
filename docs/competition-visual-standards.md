@@ -1,6 +1,6 @@
 # K-Volley Lab Competition Visual Standards
 
-Status: ACTIVE · UPDATED 2026-10-02
+Status: ACTIVE · UPDATED 2026-10-06
 
 ## Competition family colors
 
@@ -15,6 +15,14 @@ Status: ACTIVE · UPDATED 2026-10-02
   - Hero gradient: `#641B20 → #A83232`
 - Domestic men: Navy
 - Women: Rose override takes precedence over competition family.
+
+## Standings header standard (2026-10-06)
+
+- Every V2 pool standings card uses the same compact two-line headers for ratio columns:
+  - `세트` on the first line, `득실비` on the second.
+  - `점수` on the first line, `득실비` on the second.
+- This is a shared Competition Engine rule for international, GAMES, AVC, FIVB, domestic, men and women. Do not reintroduce one-line `세트 득실비` / `점수 득실비` headers in tournament-specific markup or CSS.
+- The shared class is `kvl-ratio-head`; column geometry and value rows remain unchanged.
 
 ## Main-card / hero image standard
 
