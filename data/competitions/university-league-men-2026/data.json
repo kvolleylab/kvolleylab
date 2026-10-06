@@ -1,6 +1,6 @@
 {
   "status": "active",
-  "stageLabel": "남대부 6강 이후 결과 검수 중 · 10월 6일 결승 예정",
+  "stageLabel": "결승 예정 · 10월 6일 14:00 인하대 vs 한양대",
   "dateLabel": "2026-03-25 ~ 2026-10-06",
   "locationLabel": "전국 참가대학 체육관",
   "venueLabel": "홈앤어웨이 · 참가대학 체육관",
@@ -10,8 +10,8 @@
   "knockoutTeamCount": 4,
   "champion": "",
   "championAchievement": "",
-  "scheduleNote": "한국시간(KST) · 총 67경기 · 예선 49경기 결과 검수 완료. 6강리그·준결승·결승 18경기의 세트스코어는 검수 중이며 미확인 경기 결과는 표시하지 않습니다.",
-  "standingsNote": "남대부 A/B조 예선 49경기 결과 기준. 6강리그 공식 승점: 인하 15, 한양 12, 홍익 6, 성균관 6, 중부 5, 경기 1점. 조별 예선과 6강리그 순위는 별개입니다.",
+  "scheduleNote": "한국시간(KST) · 총 67경기 · 예선 49경기 + 6강리그 15경기 + 준결승 2경기 결과 반영 완료(66경기) · 결승 인하대 vs 한양대 10월 6일 14:00 예정",
+  "standingsNote": "남대부 A/B조 예선 49경기 결과 기준. 6강리그 최종순위: 1위 인하대 15점, 2위 한양대 12점, 3위 홍익대 6점, 4위 성균관대 6점, 5위 중부대 5점, 6위 경기대 1점. 준결승: 인하대 3-0 성균관대, 한양대 3-0 홍익대.",
   "standingsRule": "승점 → 승리 경기 수 → 득실점수비율 → 세트비율 → 승자승(2026 U-리그 요강)",
   "meaning": {
     "eyebrow": "KUSF U-LEAGUE",
@@ -2008,12 +2008,28 @@
       "away": {
         "code": "KYONGGI"
       },
-      "venueLabel": "인천(인하)",
+      "venueLabel": "인하대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U064",
@@ -2028,12 +2044,32 @@
       "away": {
         "code": "HONGIK"
       },
-      "venueLabel": "서울(홍익)",
+      "venueLabel": "홍익대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 30,
+            "away": 28
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U065",
@@ -2048,12 +2084,28 @@
       "away": {
         "code": "JOONGBU"
       },
-      "venueLabel": "수원(성균)",
+      "venueLabel": "성균관대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 27,
+            "away": 25
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U066",
@@ -2068,12 +2120,32 @@
       "away": {
         "code": "INHA"
       },
-      "venueLabel": "서울(홍익)",
+      "venueLabel": "홍익대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U069",
@@ -2088,12 +2160,28 @@
       "away": {
         "code": "JOONGBU"
       },
-      "venueLabel": "인천(인하)",
+      "venueLabel": "인하대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U070",
@@ -2108,12 +2196,32 @@
       "away": {
         "code": "SKKU"
       },
-      "venueLabel": "서울(홍익)",
+      "venueLabel": "홍익대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U071",
@@ -2128,12 +2236,36 @@
       "away": {
         "code": "KYONGGI"
       },
-      "venueLabel": "충남(중부)",
+      "venueLabel": "중부대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 10
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U072",
@@ -2148,12 +2280,32 @@
       "away": {
         "code": "HANYANG"
       },
-      "venueLabel": "수원(성균)",
+      "venueLabel": "성균관대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U073",
@@ -2168,12 +2320,28 @@
       "away": {
         "code": "KYONGGI"
       },
-      "venueLabel": "서울(한양)",
+      "venueLabel": "한양대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U074",
@@ -2188,18 +2356,38 @@
       "away": {
         "code": "INHA"
       },
-      "venueLabel": "수원(성균)",
+      "venueLabel": "성균관대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U077",
       "officialNo": 77,
       "date": "2026-09-14",
-      "time": "11:00",
+      "time": "11:30",
       "stage": "6강리그",
       "pool": "6강",
       "home": {
@@ -2208,12 +2396,28 @@
       "away": {
         "code": "JOONGBU"
       },
-      "venueLabel": "서울(한양)",
-      "localTimeLabel": "한국 현지 11:00 KST",
-      "score": null,
+      "venueLabel": "한양대학교 체육관",
+      "localTimeLabel": "한국 현지 11:30 KST",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U078",
@@ -2228,12 +2432,28 @@
       "away": {
         "code": "HONGIK"
       },
-      "venueLabel": "수원(경기)",
+      "venueLabel": "경기대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U079",
@@ -2248,12 +2468,32 @@
       "away": {
         "code": "HANYANG"
       },
-      "venueLabel": "인천(인하)",
+      "venueLabel": "인하대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U080",
@@ -2268,12 +2508,28 @@
       "away": {
         "code": "SKKU"
       },
-      "venueLabel": "수원(경기)",
+      "venueLabel": "경기대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U081",
@@ -2288,12 +2544,32 @@
       "away": {
         "code": "HONGIK"
       },
-      "venueLabel": "충남(중부)",
+      "venueLabel": "중부대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
       "round": "",
-      "bracketLabel": "6강리그",
-      "verificationStatus": "경기결과 확인 중"
+      "bracketLabel": "6강리그"
     },
     {
       "id": "KVL-M-2026-U083",
@@ -2310,10 +2586,26 @@
       },
       "venueLabel": "인하대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
       "round": "SF",
       "bracketLabel": "4강",
-      "verificationStatus": "경기결과 확인 중",
       "nextMatchId": "KVL-M-2026-U085"
     },
     {
@@ -2331,10 +2623,26 @@
       },
       "venueLabel": "한양대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
       "round": "SF",
       "bracketLabel": "4강",
-      "verificationStatus": "경기결과 확인 중",
       "nextMatchId": "KVL-M-2026-U085"
     },
     {
@@ -2345,19 +2653,17 @@
       "stage": "결승",
       "pool": "",
       "home": {
-        "code": "TBD-준결승-1-승자",
-        "name": "준결승 1 승자"
+        "code": "INHA"
       },
       "away": {
-        "code": "TBD-준결승-2-승자",
-        "name": "준결승 2 승자"
+        "code": "HANYANG"
       },
-      "venueLabel": "6강리그 상위팀 체육관",
+      "venueLabel": "인하대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
       "score": null,
       "round": "FINAL",
       "bracketLabel": "결승",
-      "verificationStatus": "경기결과 확인 중"
+      "verificationStatus": "경기 예정 · 결과 확인 전"
     }
   ],
   "standings": {
@@ -2561,6 +2867,10 @@
   "finalRanking": [],
   "qualifications": [],
   "resources": [
+    {
+      "title": "한국대학배구연맹 2026 U-리그 일정 및 결과",
+      "url": "https://www.kuvf.co.kr/619"
+    },
     {
       "title": "한국대학배구연맹 2026 U-리그 개최 공지",
       "url": "https://kuvf.co.kr/31/?bmode=view&idx=170268484"
