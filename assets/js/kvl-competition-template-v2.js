@@ -129,7 +129,7 @@ function applyStatus(d){
   result.dataset.resultMode=status;
   result.innerHTML='';
   if(status==='completed'&&d.champion){
-    const strong=document.createElement('strong'); strong.textContent=`우승 ${d.champion}`; result.appendChild(strong);
+    const strong=document.createElement('strong'); strong.textContent=`${d.championLabel||'우승'} ${d.champion}`; result.appendChild(strong);
     if(d.championAchievement){const span=document.createElement('span');span.textContent=d.championAchievement;result.appendChild(span);}
   }else{
     const strong=document.createElement('strong');
