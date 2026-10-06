@@ -142,6 +142,7 @@ body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result stro
 body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result span{display:block}
 body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result strong{color:var(--kvl-theme-primary);font-size:clamp(15px,1.25vw,18px);font-weight:1000}
 body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result span{margin-top:3px;color:var(--kvl-special-gold);font-size:clamp(11px,.98vw,13px);font-weight:950}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-achievement-mobile{display:none!important}
 body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="active"],
 body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="upcoming"]{max-width:420px;color:#718096;font-size:clamp(9px,.75vw,11px);font-weight:800;line-height:1.45}
 body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="active"] strong,
@@ -184,6 +185,8 @@ body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source a{
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="completed"]{padding-left:10px!important}
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result strong{font-size:15px}
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result span{font-size:10.5px}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-achievement-full{display:none!important}
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-achievement-mobile{display:block!important}
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-kpi[data-kvl-target]::after{content:'›';position:absolute;right:10px;bottom:8px;color:var(--kvl-theme-primary);font-size:18px;font-weight:1000;opacity:.72}
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-stake-confirmed{font-size:9px}
   body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-sources{grid-template-columns:minmax(0,1fr);gap:8px}
