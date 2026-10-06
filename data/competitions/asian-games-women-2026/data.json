@@ -1,6 +1,6 @@
 {
   "status": "completed",
-  "stageLabel": "대회 종료",
+  "stageLabel": "중국 금메달 · 대회 종료",
   "dateLabel": "2026.09.16 ~ 09.22",
   "locationLabel": "일본 · 아이치현",
   "venueLabel": "오카자키 · 고마키",
@@ -15,8 +15,8 @@
     "men": "/competition-engine.html?competition=asian-games-men-2026",
     "women": "/competition-engine.html?competition=asian-games-women-2026"
   },
-  "activeOverviewNote": "대회 종료 · 조별리그부터 결승 및 5~14위 순위결정전까지 결과 반영",
-  "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 총 37경기",
+  "activeOverviewNote": "대회 종료 · 최종순위 확정",
+  "scheduleNote": "일본 현지시간(JST) = 한국시간(KST) · 37경기 전 경기 결과 반영 완료 · 최종순위 확정",
   "standingsNote": "예선 종합순위는 조 순위 → 승률 → 경기당 승점 → 세트·점수 득실비 순으로 정렬한 K-Volley Lab 표시 기준",
   "standingsRule": "4개 조 각 상위 2개국이 8강에 진출합니다.",
   "meaning": {
@@ -1994,5 +1994,8 @@
       "title": "SportsNavi · Asian Games Women",
       "url": "https://sports.yahoo.co.jp/volley/japan/competitions/5003/schedule"
     }
-  ]
+  ],
+  "champion": "중국",
+  "championLabel": "금메달",
+  "championAchievement": "일본 은메달 · 태국 동메달 · 대한민국 4위"
 }
