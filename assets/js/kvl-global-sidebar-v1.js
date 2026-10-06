@@ -14,7 +14,7 @@
   const nationalPages=new Set(['national-team.html','national-team-history.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
   const analysisPages=new Set(['player-compare.html','player-cohort.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html']);
-  const vleaguePages=new Set(['v-league.html']);
+  const vleaguePages=new Set(['v-league.html','kovo-cup.html']);
   const universityLeaguePages=new Set(['university-league.html']);
   const isUniversityLeagueCompetition=path==='competition-engine.html'&&/^university-league-(?:men|women)-2026$/.test(params.get('competition')||'');
   const playerPages=new Set(['players.html','player.html','player-search.html','player-profile.html','growth-timeline.html']);
@@ -56,7 +56,10 @@
     link('schedules',scheduleHref,icon.calendar,'경기일정'),
 
     {type:'divider'},
-    link('vleague','v-league.html',icon.league,'프로 V-리그'),
+    group('vleague',icon.league,'프로 V-리그',[
+      link('vleague-home','v-league.html',null,'V-리그 홈'),
+      link('vleague-cup','kovo-cup.html',null,'KOVO컵')
+    ]),
     group('national',icon.flag,'국가대표팀',[
       link('national-home','national-team.html',null,'대표팀 홈'),
       link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀'),
@@ -96,6 +99,9 @@
   ];
 
   const isChildActive=(item)=>{
+    if(item.key==='vleague-home')return active==='vleague'&&path==='v-league.html';
+    if(item.key==='vleague-cup')return active==='vleague'&&path==='kovo-cup.html';
+
     if(item.key==='national-home')return active==='national'&&path==='national-team.html';
     if(item.key==='national-senior')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='senior';
     if(item.key==='national-age')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='age';
