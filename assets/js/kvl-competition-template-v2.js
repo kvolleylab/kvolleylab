@@ -192,7 +192,74 @@ function applyResources(d){
   });
 }
 
-function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
+function initMobileCompetitionNav(){
+  const bar=q('.kvl1180-controlbar');
+  if(!bar||bar.dataset.kvlMobileNavReady==='1')return;
+  bar.dataset.kvlMobileNavReady='1';
+  const tabs=q('.kvl1180-tabs',bar);
+  const anchor=document.createElement('div');
+  anchor.className='kvl1180-controlbar-anchor';
+  bar.before(anchor);
+  const mobileQuery=matchMedia('(max-width:680px)');
+  let normalHeight=0,lastY=Math.max(0,scrollY),raf=0;
+
+  const centerActive=()=>{
+    if(!tabs||!bar.classList.contains('is-mobile-compact'))return;
+    const active=q('a.is-active',tabs);if(!active)return;
+    const left=active.offsetLeft-(tabs.clientWidth-active.offsetWidth)/2;
+    tabs.scrollTo({left:Math.max(0,left),behavior:'smooth'});
+  };
+  const reset=()=>{
+    bar.classList.remove('is-mobile-compact','is-mobile-nav-visible','is-mobile-nav-hidden');
+    anchor.style.height='';
+  };
+  const sync=(force=false)=>{
+    raf=0;
+    const y=Math.max(0,scrollY);
+    if(!mobileQuery.matches){reset();lastY=y;return;}
+    if(!bar.classList.contains('is-mobile-compact'))normalHeight=bar.offsetHeight||normalHeight;
+    const anchorY=anchor.getBoundingClientRect().top+y;
+    const passed=normalHeight>0&&y>anchorY+normalHeight;
+    if(!passed){reset();lastY=y;return;}
+
+    const entering=!bar.classList.contains('is-mobile-compact');
+    if(entering){
+      anchor.style.height=`${normalHeight}px`;
+      bar.classList.add('is-mobile-compact','is-mobile-nav-hidden');
+      bar.classList.remove('is-mobile-nav-visible');
+    }
+    const delta=y-lastY;
+    if(delta<-4){
+      bar.classList.add('is-mobile-nav-visible');
+      bar.classList.remove('is-mobile-nav-hidden');
+      centerActive();
+    }else if(delta>4){
+      bar.classList.add('is-mobile-nav-hidden');
+      bar.classList.remove('is-mobile-nav-visible');
+    }else if(force&&entering){
+      bar.classList.add('is-mobile-nav-hidden');
+    }
+    lastY=y;
+  };
+  const requestSync=()=>{if(!raf)raf=requestAnimationFrame(()=>sync(false));};
+  addEventListener('scroll',requestSync,{passive:true});
+  addEventListener('resize',()=>{normalHeight=0;reset();lastY=Math.max(0,scrollY);requestSync();},{passive:true});
+  bar.addEventListener('kvl:viewchange',()=>requestAnimationFrame(centerActive));
+  requestAnimationFrame(()=>sync(true));
+}
+
+function scrollCurrentViewToTop(target){
+  if(!target||!matchMedia('(max-width:680px)').matches)return;
+  requestAnimationFrame(()=>{
+    const bar=q('.kvl1180-controlbar');
+    const compact=bar?.classList.contains('is-mobile-compact');
+    const offset=compact?108:64;
+    const top=target.getBoundingClientRect().top+scrollY-offset;
+    scrollTo({top:Math.max(0,top),behavior:'auto'});
+  });
+}
+
+function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);initMobileCompetitionNav();}
 
 document.addEventListener('click',event=>{
   if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
@@ -204,11 +271,12 @@ document.addEventListener('click',event=>{
   event.preventDefault();
   history.pushState(null,'',next.pathname+next.search);
   applyView();
+  const bar=q('.kvl1180-controlbar');if(bar)bar.dispatchEvent(new CustomEvent('kvl:viewchange'));
   const view=currentView(),target=document.querySelector(`.kvl1180-view[data-view="${CSS.escape(view)}"]:not([hidden])`);
-  if(target&&matchMedia('(max-width:680px)').matches)target.scrollIntoView({block:'start'});
+  scrollCurrentViewToTop(target);
 },{capture:true});
 
 if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();}
-window.addEventListener('popstate',applyView);
+window.addEventListener('popstate',()=>{applyView();const bar=q('.kvl1180-controlbar');if(bar)bar.dispatchEvent(new CustomEvent('kvl:viewchange'));});
 window.KVLCompetitionTemplateV2={apply,applyView,viewUrl,currentView,syncGenderLinks};
 })();
