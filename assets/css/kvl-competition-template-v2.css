@@ -182,6 +182,9 @@ body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source a{
 
 @media(max-width:680px){
   body.kvl1180-prototype.kvl-competition-template-v2{--kvl-hero-position:var(--kvl-hero-position-mobile,center center)}
+  body.kvl1180-prototype.kvl-competition-template-v2{
+    overflow-x:clip!important;
+  }
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-main{
     overflow-x:clip!important;
   }
