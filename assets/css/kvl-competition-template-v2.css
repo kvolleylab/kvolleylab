@@ -228,12 +228,12 @@ body.kvl1180-prototype.kvl-competition-template-v2 #resources .kvl1180-source a{
     display:none;
   }
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-controlbar.is-mobile-compact .kvl1180-tabs a{
-    flex:0 0 auto;
-    min-width:62px;
+    flex:1 0 auto;
+    min-width:0;
     min-height:42px;
-    padding:0 10px;
+    padding:0 7px;
     border-bottom:0!important;
-    font-size:11px;
+    font-size:10.5px;
   }
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result[data-result-mode="completed"]{padding-left:10px!important}
   body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-overview-result strong{font-size:15px}
