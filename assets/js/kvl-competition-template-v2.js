@@ -192,16 +192,6 @@ function applyResources(d){
   });
 }
 
-function scrollCurrentViewToTop(target){
-  if(!target||!matchMedia('(max-width:680px)').matches)return;
-  requestAnimationFrame(()=>{
-    const bar=q('.kvl1180-controlbar');
-    const offset=(bar?.offsetHeight||0)+68;
-    const top=target.getBoundingClientRect().top+scrollY-offset;
-    scrollTo({top:Math.max(0,top),behavior:'auto'});
-  });
-}
-
 function apply(){const d=data();applyView();applyTheme(d);applyMeta(d);applyStatus(d);applyQualifications(d);applyFinalRanking(d);applyResources(d);}
 
 document.addEventListener('click',event=>{
@@ -215,7 +205,7 @@ document.addEventListener('click',event=>{
   history.pushState(null,'',next.pathname+next.search);
   applyView();
   const view=currentView(),target=document.querySelector(`.kvl1180-view[data-view="${CSS.escape(view)}"]:not([hidden])`);
-  scrollCurrentViewToTop(target);
+  if(target&&matchMedia('(max-width:680px)').matches)target.scrollIntoView({block:'start'});
 },{capture:true});
 
 if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();}
