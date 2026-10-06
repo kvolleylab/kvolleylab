@@ -1015,8 +1015,8 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"][d
   }
 }
 
-/* 3. Ratio headers intentionally use two compact lines instead of clipping. */
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl-ratio-head{
+/* 3. Shared ratio headers intentionally use two compact lines instead of clipping (all competitions). */
+body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl-ratio-head{
   display:flex!important;
   flex-direction:column!important;
   align-items:center!important;
@@ -1026,8 +1026,8 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
   white-space:normal!important;
   line-height:1.05!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl-ratio-head b,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #groups .kvl-ratio-head small{
+body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl-ratio-head b,
+body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl-ratio-head small{
   display:block!important;
   margin:0!important;
   color:inherit!important;
