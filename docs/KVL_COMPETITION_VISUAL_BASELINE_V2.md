@@ -15,6 +15,7 @@
 - 월간달력: AVC production calendar class/geometry
 - 경기일정: `kvl1180-schedule-*`, `kvl1180-date-*`, `kvl1180-match-*`
 - 순위: `kvl1180-pool-*`, `kvl1180-combined-*`, 모바일 `kvl-shared-combined-*`
+  - 조별 카드 비율 헤더는 공통 `kvl-ratio-head`를 사용해 `세트`/`득실비`, `점수`/`득실비` 두 줄로 고정한다. 국제/국내/남녀 모두 동일하며 대회별 한 줄 헤더를 만들지 않는다.
 - 최종순위: `kvl1180-final-*`
 - 토너먼트: `kvl1180-bracket-*`, `kvl1180-round-*`, `kvl1180-match`
 - 참가국: `kvl1180-participant-*`
