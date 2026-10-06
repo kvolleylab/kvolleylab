@@ -120,6 +120,14 @@ function applyMeta(d){
   syncGenderLinks(d);
 }
 
+function compactChampionAchievement(d){
+  const explicit=String(d.championMobileAchievement||'').trim();
+  if(explicit)return explicit;
+  const full=String(d.championAchievement||'').trim();
+  const medal=full.match(/(?:^|[\\s·,/()])(금메달|은메달|동메달)(?=$|[\\s·,/()])/);
+  return medal?medal[1]:full;
+}
+
 function applyStatus(d){
   const status=['upcoming','active','completed'].includes(d.status)?d.status:'upcoming';
   document.body.dataset.kvlStatus=status;
@@ -130,7 +138,10 @@ function applyStatus(d){
   result.innerHTML='';
   if(status==='completed'&&d.champion){
     const strong=document.createElement('strong'); strong.textContent=`${d.championLabel||'우승'} ${d.champion}`; result.appendChild(strong);
-    if(d.championAchievement){const span=document.createElement('span');span.textContent=d.championAchievement;result.appendChild(span);}
+    if(d.championAchievement){
+      const full=document.createElement('span');full.className='kvl1180-overview-achievement kvl1180-overview-achievement-full';full.textContent=d.championAchievement;result.appendChild(full);
+      const compact=document.createElement('span');compact.className='kvl1180-overview-achievement kvl1180-overview-achievement-mobile';compact.textContent=compactChampionAchievement(d);result.appendChild(compact);
+    }
   }else{
     const strong=document.createElement('strong');
     strong.textContent=status==='completed'?'대회 종료 · 최종 결과 확인 중':status==='active'?(d.activeOverviewNote||'확인된 경기 결과와 공식 대진을 표시합니다.'):(d.upcomingOverviewNote||'대회 시작 전 · 공식 발표 기준으로 순차 업데이트됩니다.');
