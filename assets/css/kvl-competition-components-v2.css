@@ -2632,3 +2632,42 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :
     font-size:9.5px;
   }
 }
+
+/* Shared V2 mobile standings status note · 2026-10-06 */
+@media(max-width:680px){
+  html body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl1180-section-head{
+    align-items:stretch!important;
+    flex-direction:column!important;
+    gap:12px!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl1180-section-head>div:first-child{
+    min-width:0!important;
+    width:100%!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl1180-groups-status{
+    display:block!important;
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl1180-groups-status>span{
+    display:block!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    padding:10px 12px!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-align:left!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 #groups .kvl1180-groups-status strong{
+    display:block!important;
+    max-width:100%!important;
+    min-width:0!important;
+    white-space:normal!important;
+    overflow-wrap:anywhere!important;
+    word-break:keep-all!important;
+    line-height:1.45!important;
+  }
+}
