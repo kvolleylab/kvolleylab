@@ -233,3 +233,12 @@ V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공�
 ## 2026-09-16 rebuild validation notice
 
 Current status: **REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN**. See `docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md`. Production men and women have measured geometry differences. The extracted common geometry is provisionally the male production baseline, with palette-only themes; this is not a claim of exact reproduction of both source pages. The shared engine adds the missing roster and focus sections, corrects VNL validation to 108+8 matches using the canonical MASTER IDs, and provides `validation-competition-v2-rebuild.html` for 1180/390/360 comparisons. Production promotion remains prohibited until explicitly requested.
+
+
+## 프로 국내대회 확장 규칙
+- V-리그와 KOVO컵도 별도 HTML/CSS/JS 디자인을 만들지 않고 Competition Engine V2의 `competitionFamily: "domestic"` 기본 템플릿을 사용한다.
+- 장기 리그형(V-리그)은 `standings.mode: "single-league"`, 라운드별 `schedule.stages`, `knockout.mode: "none"`을 사용한다. 포스트시즌 대진 확정 전에는 `knockout.emptyMessage`으로 안내하고 필요 시 `showFinalRanking: false`로 빈 최종순위 블록을 숨긴다.
+- 단기 컵대회(KOVO컵)는 `standings.mode: "pools-combined"`, `knockout.mode: "bracket-4"`를 사용해 조별리그 → 준결승 → 결승 구조를 표현한다.
+- 프로 참가팀 카드가 대학팀 페이지로 연결되지 않도록 `participants.linkMode: "team-results"`를 사용할 수 있다. 기존 대학대회는 옵션 미지정 시 기존 대학팀 연결 방식을 그대로 유지한다.
+- 프로대회에서 등록선수명단 연결을 아직 제공하지 않을 때는 `roster.domesticTeamRoute: "none"`을 사용한다. 기존 대학대회 기본값은 `university`로 유지한다.
+- 프로토타입은 `competition-engine-prototype.html`을 사용하며 Production 검증과 분리한다. Production 전환 시 PC/모바일 메인카드 이미지 등 Production gate를 별도로 통과해야 한다.
