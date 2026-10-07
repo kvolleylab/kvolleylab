@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "slug": "v-league-men-2026-27",
+  "competition": {
+    "competitionId": "KVL-COMP-VLEAGUE-M-2026-27",
+    "displayName": "2026-27 V-리그 남자부",
+    "officialName": "HK흥국금융 2026-2027 V-리그 · 남자부",
+    "season": "2026-27",
+    "gender": "men",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "정규리그 순위",
+      "groupsKpi": "리그 구성",
+      "groupsKpiUnit": "라운드",
+      "knockoutKpi": "포스트시즌 최대",
+      "knockoutKpiUnit": "팀",
+      "standingsTitle": "남자부 정규리그 순위",
+      "standingsEyebrow": "REGULAR SEASON STANDINGS",
+      "knockoutTitle": "포스트시즌",
+      "participantsTitle": "참가팀",
+      "participantsKpi": "참가팀",
+      "participantsKpiUnit": "팀"
+    },
+    "calendar": false,
+    "schedule": {
+      "stages": [
+        "전체",
+        "1라운드",
+        "2라운드",
+        "3라운드",
+        "4라운드",
+        "5라운드",
+        "6라운드"
+      ]
+    },
+    "standings": {
+      "mode": "single-league",
+      "title": "남자부 정규리그 순위"
+    },
+    "knockout": {
+      "mode": "none",
+      "title": "포스트시즌 대진",
+      "showFinalRanking": false,
+      "emptyMessage": "정규리그 종료 후 최종 순위에 따라 포스트시즌 대진을 이 위치에 표시합니다."
+    },
+    "participants": {
+      "mode": "flat",
+      "groupLabel": "남자부 참가팀",
+      "displayColumns": 3,
+      "linkMode": "team-results"
+    },
+    "roster": {
+      "mode": "none",
+      "domesticTeamRoute": "none"
+    }
+  },
+  "hero": {
+    "showImage": false,
+    "mode": "color-only",
+    "alt": "2026-27 V-리그 남자부 프로토타입 메인카드"
+  },
+  "seo": {
+    "title": "2026-27 V-리그 남자부 프로토타입 | K-Volley Lab",
+    "description": "2026-27 V-리그 남자부 경기일정, 정규리그 순위, 참가팀과 포스트시즌 프로토타입."
+  },
+  "data": "data.json",
+  "modules": []
+}
