@@ -2674,106 +2674,104 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :
 
 
 /* KOVO PRO visual surface sweep · prototype-first.
-   Make the Teal Green family visible through surfaces, not text color alone. */
+   V-League = Charcoal Black + White + Gold.
+   KOVO Cup = the same Black identity with stronger trophy/Gold accents. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero{
-  background-image:linear-gradient(112deg,var(--kvl-theme-dark) 0%,var(--kvl-theme-primary) 54%,var(--kvl-theme-accent) 100%)!important;
-  border-bottom:4px solid var(--kvl-theme-accent)!important;
-  box-shadow:0 12px 28px rgba(15,118,110,.16)!important;
+  background-image:linear-gradient(112deg,#0b0d10 0%,#1c1f24 54%,#343a40 100%)!important;
+  border-bottom:4px solid #343a40!important;
+  box-shadow:0 12px 28px rgba(11,13,16,.20)!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-controlbar{
-  border-color:var(--kvl-theme-border)!important;
-  box-shadow:0 7px 20px rgba(15,118,110,.07)!important;
+  border-color:#c8cdd2!important;
+  box-shadow:0 7px 20px rgba(20,23,27,.07)!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-tabs a{
-  border-right-color:#d7ece9!important;
+  border-right-color:#e1e4e7!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-tabs a:hover{
-  background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important;
+  background:#f2f3f4!important;color:#14171b!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-tabs a.is-active,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-gender a.is-active{
-  background:var(--kvl-theme-primary)!important;border-color:var(--kvl-theme-primary)!important;color:#fff!important;
+  background:#14171b!important;border-color:#14171b!important;color:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-card{
-  border-color:#d4eae6!important;
-  box-shadow:0 5px 18px rgba(15,118,110,.045)!important;
+  border-color:#dfe2e5!important;
+  background:#fff!important;
+  box-shadow:0 5px 18px rgba(20,23,27,.045)!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi{
-  border-color:#cfe6e2!important;
-  background:linear-gradient(180deg,#fff 0%,#f5fbfa 100%)!important;
+  border-color:#d7dade!important;
+  background:linear-gradient(180deg,#fff 0%,#f7f7f8 100%)!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi-icon{
-  color:var(--kvl-theme-primary)!important;
-  background:#e3f4f1!important;
-  border-color:var(--kvl-theme-border)!important;
+  color:#1c1f24!important;
+  background:#eceeef!important;
+  border-color:#c8cdd2!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi[data-kvl-target]:hover,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi[data-kvl-target]:focus-visible{
-  border-color:#79bdb5!important;
-  background:linear-gradient(180deg,#fff,#e7f6f3)!important;
-  box-shadow:0 12px 26px rgba(15,118,110,.13)!important;
+  border-color:#9ca3aa!important;
+  background:linear-gradient(180deg,#fff,#f0f1f2)!important;
+  box-shadow:0 12px 26px rgba(20,23,27,.13)!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-calendar-title{
-  background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-primary))!important;
+  background:linear-gradient(90deg,#0b0d10,#1c1f24)!important;
   color:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-stage-filters button{
-  border-color:#c9e5e1!important;
+  border-color:#d3d7db!important;
   background:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-stage-filters button:hover{
-  border-color:#79bdb5!important;background:var(--kvl-theme-soft)!important;color:var(--kvl-theme-primary)!important;
+  border-color:#9ca3aa!important;background:#f2f3f4!important;color:#14171b!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-stage-filters button.is-active{
-  border-color:var(--kvl-theme-primary)!important;background:var(--kvl-theme-primary)!important;color:#fff!important;
+  border-color:#14171b!important;background:#14171b!important;color:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-date-head{
-  background:linear-gradient(90deg,#e8f6f3,#f8fcfb)!important;
-  border-bottom-color:#cfe6e2!important;
+  background:linear-gradient(90deg,#f0f1f2,#fafafa)!important;
+  border-bottom-color:#d7dade!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-day.has-match{
-  background:#f1f9f7!important;
+  background:#f7f7f8!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-card{
-  border-color:#c9e5e1!important;
-  box-shadow:0 4px 14px rgba(15,118,110,.055)!important;
+  border-color:#d3d7db!important;
+  box-shadow:0 4px 14px rgba(20,23,27,.055)!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-card-head{
-  background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-accent))!important;color:#fff!important;
+  background:linear-gradient(90deg,#0b0d10,#343a40)!important;color:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-table-head,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-combined-table-head{
-  background:var(--kvl-theme-soft)!important;border-bottom-color:#cfe6e2!important;
+  background:#f2f3f4!important;border-bottom-color:#d7dade!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row.is-qualified,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-combined-row.is-qualified{
-  background:#f1f9f7!important;
+  background:#f8f8f9!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row.is-qualified::before,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-combined-row.is-qualified::before{
-  background:var(--kvl-theme-primary)!important;
+  background:#1c1f24!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-group-head{
-  background:linear-gradient(90deg,var(--kvl-theme-strong),var(--kvl-theme-accent))!important;color:#fff!important;
+  background:linear-gradient(90deg,#0b0d10,#343a40)!important;color:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button{
-  border-color:#d4eae6!important;
+  border-color:#dfe2e5!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button:hover{
-  background:var(--kvl-theme-soft)!important;border-color:#9bcfc9!important;
+  background:#f2f3f4!important;border-color:#adb3b9!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #resources .kvl1180-source{
-  border-color:#d4eae6!important;background:#fbfefd!important;
+  border-color:#dfe2e5!important;background:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #resources .kvl1180-source a{
-  border-color:var(--kvl-theme-border)!important;background:#e8f6f3!important;color:var(--kvl-theme-strong)!important;
+  border-color:#c8cdd2!important;background:#f2f3f4!important;color:#14171b!important;
 }
 
-/* Cup keeps the same PRO Teal Green identity, but gets a visible trophy/gold layer. */
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-hero{
-  background-image:linear-gradient(112deg,var(--kvl-theme-dark) 0%,var(--kvl-theme-primary) 58%,#138a80 100%)!important;
-  border-bottom-color:#c59a45!important;
-}
+/* Shared hero typography follows the international/domestic base-template Gold rule. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-eyebrow,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero h1,
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero-sub{
@@ -2787,16 +2785,22 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl11
   background:rgba(230,196,108,.13)!important;
   color:#f6e7b5!important;
 }
+
+/* KOVO Cup: Black base remains, Gold becomes the stronger competition accent. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-hero{
+  background-image:linear-gradient(112deg,#0b0d10 0%,#1a1d21 58%,#30343a 100%)!important;
+  border-bottom-color:#c59a45!important;
+}
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-hero-status .is-accent{
   border-color:rgba(229,187,96,.82)!important;
   background:rgba(197,154,69,.22)!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-tabs a.is-active{
-  background:var(--kvl-theme-primary)!important;
+  background:#14171b!important;
   box-shadow:inset 0 -4px 0 #c59a45!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #knockout .kvl1180-round-title{
-  background:linear-gradient(90deg,#9a7227,#c59a45)!important;color:#fff!important;
+  background:linear-gradient(90deg,#8e6921,#c59a45)!important;color:#fff!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #knockout .kvl1180-match{
   border-color:#dfc891!important;
