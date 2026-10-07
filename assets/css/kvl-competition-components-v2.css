@@ -2140,7 +2140,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not(
 /* International monthly calendar scale matches connected Goseong.
    Women month title uses the current Goseong Women card Rose. */
 body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]):not([data-kvl-family="pro"]) .kvl1180-calendar-title{font-size:20px!important;font-weight:800!important}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]) .kvl1180-calendar-title{background:#D2648F!important;border-color:#D2648F!important;color:#fff!important}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not([data-kvl-family="domestic"]):not([data-kvl-family="pro"]) .kvl1180-calendar-title{background:#D2648F!important;border-color:#D2648F!important;color:#fff!important}
 @media(max-width:680px){body.kvl1180-prototype.kvl-competition-template-v2:not([data-kvl-family="domestic"]):not([data-kvl-family="pro"]) .kvl1180-calendar-title{font-size:18px!important}}
 
 
@@ -2819,5 +2819,40 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-k
 @media(max-width:680px){
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero{
     border-bottom-width:3px!important;
+  }
+}
+
+
+/* Competition calendar typography canonical baseline · all families.
+   Source scale: connected Goseong domestic reference. Family changes may recolor only. */
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-head h2{
+  font-size:24px!important;
+  font-weight:800!important;
+  line-height:1.2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-head>p{
+  font-size:11px!important;
+  line-height:1.45!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-title{
+  font-size:20px!important;
+  font-weight:800!important;
+  line-height:1.2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-week span{
+  font-size:10px!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-head h2{
+    font-size:22px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-head>p{
+    font-size:11px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-title{
+    font-size:18px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-calendar-week span{
+    font-size:10px!important;
   }
 }
