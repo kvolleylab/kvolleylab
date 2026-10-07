@@ -245,8 +245,8 @@ Current status: **REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN**. See `docs/KV
 
 ### KOVO PRO 색상 규칙
 - 한국 프로배구(V-리그 / KOVO컵)는 `competitionFamily: "pro"`를 사용한다.
-- 남자부와 여자부를 색으로 나누지 않고 두 성별 모두 동일한 **PRO Blue** family를 사용한다.
-- 기본 PRO Blue: primary `#0868B2`, strong `#07558E`, dark `#073A67`, soft `#EDF6FC`, border `#B7D8EF`.
-- V-리그는 `hero.themeVariant: "league"`로 Blue + White 중심의 정규리그 톤을 사용한다.
-- KOVO컵은 `hero.themeVariant: "cup"`으로 동일한 Blue family를 유지하되 Gold `#C59A45` / `#B98219`를 히어로 포인트와 결선 토너먼트 강조에 더 사용한다.
+- 남자부와 여자부를 색으로 나누지 않고 두 성별 모두 동일한 **PRO Teal Green** family를 사용한다.
+- 기본 PRO Teal Green: primary `#0F766E`, strong `#0B5F59`, dark `#064E49`, accent `#2A9D8F`, soft `#ECF8F6`, border `#B8DED9`.
+- V-리그는 `hero.themeVariant: "league"`로 Teal Green + White 중심의 정규리그 톤을 사용한다.
+- KOVO컵은 `hero.themeVariant: "cup"`으로 동일한 Teal Green family를 유지하되 Gold `#C59A45` / `#B98219`를 히어로 포인트와 결선 토너먼트 강조에 더 사용한다.
 - `pro` family는 국내대회와 동일한 팀/경기 표시 구조를 사용하지만, 기존 국내 여자대회의 Rose 팔레트는 상속하지 않는다.
