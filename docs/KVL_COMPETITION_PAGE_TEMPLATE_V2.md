@@ -226,7 +226,7 @@ V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공�
 - 여자부 프로토타입: PC + 모바일 검수 완료.
 - 공통 확인: 6-view 구조, KPI 이동, Hero, 진출권 결과행, 조별/종합순위, 최종 1~4위, 참가국, 공식자료, 모바일 반응형.
 - 2026-09-15 사용자 육안검수: PC 1180 + 모바일 390/360 기준 문제 없음 확인.
-- 테마 우선순위: 여자부 전체 Rose, 남자부 AVC Green / FIVB Purple / 국내 Navy로 확정.
+- 테마 우선순위: 색상은 `competitionFamily`가 결정한다. 기존 국제/국내 여자부 Rose 규칙은 유지하되, `pro` family는 남녀 공통 Charcoal Black을 사용한다.
 - V2는 남녀부에서 공통 검증된 요소만 승격하며 특정 대회 임시 복구코드는 제외한다.
 
 
@@ -235,8 +235,35 @@ V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공�
 Current status: **REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN**. See `docs/KVL_COMPETITION_REBUILD_AUDIT_V2.md`. Production men and women have measured geometry differences. The extracted common geometry is provisionally the male production baseline, with palette-only themes; this is not a claim of exact reproduction of both source pages. The shared engine adds the missing roster and focus sections, corrects VNL validation to 108+8 matches using the canonical MASTER IDs, and provides `validation-competition-v2-rebuild.html` for 1180/390/360 comparisons. Production promotion remains prohibited until explicitly requested.
 
 
+## Competition Engine V2 Canonical Base · 2026-10-07
+
+공통 엔진의 최종 스타일 우선순위는 아래 순서로 고정한다.
+
+1. `kvl-competition-geometry-v2.css` — 기존 검증 geometry / legacy baseline
+2. `kvl-competition-template-v2.css` — competition family별 **색상·Hero theme**
+3. `kvl-competition-components-v2.css` — component behavior / mode / compatibility bridge
+4. `kvl-competition-base-v2.css` — **최종 공통 크기·간격·가독성 contract**
+
+### Base Layer 절대 원칙
+- `competitionFamily`와 `gender`는 색상, Hero 이미지, 데이터, component 표시 여부를 바꿀 수 있다.
+- `competitionFamily`와 `gender`는 공통 글씨 크기, 카드 padding/radius, section spacing, 경기일정 가독성, 순위표 가독성을 바꾸면 안 된다.
+- 신규 대회를 만들 때 family 전용 `font-size`, 공통 카드 `padding`, `calendar-title` 크기 보정을 추가하지 않는다.
+- 팀 엠블럼/국기 슬롯처럼 데이터 종류가 실제로 다른 geometry와 bracket mode처럼 구조가 다른 component만 mode-specific 규칙을 허용한다.
+- 기존 legacy override는 호환성 때문에 즉시 삭제하지 않지만, 공통 Engine에서는 마지막에 로드되는 `kvl-competition-base-v2.css`가 최종 기준이다.
+- frozen AVC production HTML은 이 정리 작업의 수정 대상이 아니다.
+
+### Canonical readability
+- 섹션 제목: PC 24px / Mobile 22px.
+- 메뉴 탭: PC 14px / Mobile 13px.
+- KPI: label 12px / primary value 29px / venue 15px / small 10px.
+- 월간달력: 월 제목 PC 20px / Mobile 18px / 요일 10px.
+- 경기일정 PC: 시간 15px / 팀명 16px / 스코어 22px / 세트점수 15px.
+- 순위표 PC: header 13px / 팀명 17px / 순위 16px / 일반값 15px / 결과 badge 12px.
+- PC 공통 카드 padding 30px, Mobile 20px 16px.
+- 경기 스코어와 세트 점수의 Gold/중립색 역할은 공통 템플릿 규칙을 따른다.
+
 ## 프로 국내대회 확장 규칙
-- V-리그와 KOVO컵도 별도 HTML/CSS/JS 디자인을 만들지 않고 Competition Engine V2의 `competitionFamily: "domestic"` 기본 템플릿을 사용한다.
+- V-리그와 KOVO컵도 별도 HTML/CSS/JS 디자인을 만들지 않고 Competition Engine V2 공통 구조를 사용한다. 구조는 국내대회와 동일한 domestic-like 규칙을 사용하되 theme family는 `competitionFamily: "pro"`로 분리한다.
 - 장기 리그형(V-리그)은 `standings.mode: "single-league"`, 라운드별 `schedule.stages`, `knockout.mode: "none"`을 사용한다. 포스트시즌 대진 확정 전에는 `knockout.emptyMessage`으로 안내하고 필요 시 `showFinalRanking: false`로 빈 최종순위 블록을 숨긴다.
 - 단기 컵대회(KOVO컵)는 `standings.mode: "pools-combined"`, `knockout.mode: "bracket-4"`를 사용해 조별리그 → 준결승 → 결승 구조를 표현한다.
 - 프로 참가팀 카드가 대학팀 페이지로 연결되지 않도록 `participants.linkMode: "team-results"`를 사용할 수 있다. 기존 대학대회는 옵션 미지정 시 기존 대학팀 연결 방식을 그대로 유지한다.
