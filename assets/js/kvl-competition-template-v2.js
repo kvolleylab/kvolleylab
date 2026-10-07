@@ -4,7 +4,7 @@
 const VIEWS=new Set(['overview','schedule','groups','knockout','rosters','resources','team']);
 const KPI_TARGETS=['?view=rosters&team=KOR','?view=groups','?view=schedule','?view=knockout'];
 const STATUS_LABEL={upcoming:'대회 시작 전',active:'대회 진행 중',completed:'대회 종료'};
-const THEME_FAMILIES=new Set(['avc','fivb','games','domestic']);
+const THEME_FAMILIES=new Set(['avc','fivb','games','domestic','pro']);
 
 function data(){return window.KVL_COMPETITION_V2_DATA||{};}
 function txt(el,value){if(el&&value!==undefined&&value!==null)el.textContent=String(value);}
@@ -56,6 +56,8 @@ function applyTheme(d){
   const family=THEME_FAMILIES.has(requestedFamily)?requestedFamily:'avc';
   body.dataset.kvlGender=gender;
   body.dataset.kvlFamily=family;
+  const variant=String(d.hero?.themeVariant||'').toLowerCase().replace(/[^a-z0-9-]/g,'');
+  if(variant)body.dataset.kvlVariant=variant;else delete body.dataset.kvlVariant;
   body.dataset.kvlHeroMode=d.hero?.mode==='photo'?'photo':'palette';
   const asset=v=>{try{const u=new URL(v,location.href);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}};
   const showHeroImage=d.hero?.mode!=='color-only'&&d.hero?.showImage!==false;
@@ -92,7 +94,8 @@ function applyTheme(d){
 function applyMeta(d){
   if(d.displayName)document.title=d.seo?.title||`${d.displayName} | K-Volley Lab`;
   if(d.seo?.description){let meta=q('meta[name="description"]');if(!meta){meta=document.createElement('meta');meta.name='description';document.head.appendChild(meta);}meta.content=d.seo.description;}
-  txt(q('[data-kvl="eyebrow"]'),`${d.competitionFamily==='domestic'?'DOMESTIC':'INTERNATIONAL'} COMPETITION · ${(d.gender||'men').toUpperCase()}`);
+  const family=String(d.competitionFamily||d.family||'').toLowerCase();
+  txt(q('[data-kvl="eyebrow"]'),`${family==='pro'?'PRO':family==='domestic'?'DOMESTIC':'INTERNATIONAL'} COMPETITION · ${(d.gender||'men').toUpperCase()}`);
   txt(q('[data-kvl="title"]'),d.displayName);
   txt(q('[data-kvl="official-name"]'),d.officialName);
   txt(q('[data-kvl="dates"]'),d.dateLabel);
@@ -104,7 +107,7 @@ function applyMeta(d){
   txt(q('[data-kvl="qualifier-count"]'),d.knockoutTeamCount ?? '미정');
   txt(q('[data-kvl="venue-primary"]'),d.venuePrimary||d.locationLabel||'미정');
   txt(q('[data-kvl="venue-secondary"]'),d.venueSecondary||d.venueLabel||'확정 전');
-  const domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';
+  const domestic=['domestic','pro'].includes(String(d.competitionFamily||d.family||'').toLowerCase());
   if(domestic){
     const kpis=q('.kvl1180-view[data-view="overview"] .kvl1180-kpis');
     const cards=kpis?qa('.kvl1180-kpi',kpis):[];
