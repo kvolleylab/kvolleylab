@@ -1,0 +1,2230 @@
+{
+  "status": "upcoming",
+  "stageLabel": "남자부 · 10월 31일 개막",
+  "dateLabel": "2026.10.31 ~ 2027.04.22",
+  "locationLabel": "대한민국 · 전국",
+  "venueLabel": "각 구단 홈경기장",
+  "venuePrimary": "대한민국 전국",
+  "venueSecondary": "7개 구단 홈경기장",
+  "teamCount": 7,
+  "groupCount": 6,
+  "matchCount": 126,
+  "knockoutTeamCount": 4,
+  "upcomingOverviewNote": "정규리그 개막 전 · 공식 일정 126경기 반영 완료",
+  "scheduleNote": "한국시간(KST) · 남자부 정규리그 126경기 · 1~6라운드",
+  "standingsNote": "시즌 개막 전 · 경기 결과 반영 후 정규리그 순위를 업데이트합니다.",
+  "standingsStatus": "시즌 시작 전",
+  "standingsRule": "정규리그 순위는 KOVO 공식 순위 산정 기준에 따라 업데이트합니다.",
+  "meaning": {
+    "eyebrow": "PRO V-LEAGUE",
+    "title": "2026-27 프로배구 시즌",
+    "note": "정규리그 6라운드 후 포스트시즌 진행"
+  },
+  "genderLinks": {
+    "men": "/competition-engine-prototype.html?competition=v-league-men-2026-27",
+    "women": "/competition-engine-prototype.html?competition=v-league-women-2026-27"
+  },
+  "participants": [
+    {
+      "code": "KAL",
+      "name": "대한항공",
+      "fullName": "대한항공",
+      "en": "KAL",
+      "group": "정규리그",
+      "city": "인천",
+      "venue": "인천 계양체육관"
+    },
+    {
+      "code": "HDC",
+      "name": "현대캐피탈",
+      "fullName": "현대캐피탈",
+      "en": "HDC",
+      "group": "정규리그",
+      "city": "천안",
+      "venue": "천안 유관순체육관"
+    },
+    {
+      "code": "WRC",
+      "name": "우리카드",
+      "fullName": "우리카드",
+      "en": "WRC",
+      "group": "정규리그",
+      "city": "서울",
+      "venue": "서울 장충체육관"
+    },
+    {
+      "code": "KBI",
+      "name": "KB손해보험",
+      "fullName": "KB손해보험",
+      "en": "KBI",
+      "group": "정규리그",
+      "city": "평택",
+      "venue": "평택 이충문화체육센터"
+    },
+    {
+      "code": "KEP",
+      "name": "한국전력",
+      "fullName": "한국전력",
+      "en": "KEP",
+      "group": "정규리그",
+      "city": "수원",
+      "venue": "수원체육관"
+    },
+    {
+      "code": "OKF",
+      "name": "OK저축은행",
+      "fullName": "OK저축은행",
+      "en": "OKF",
+      "group": "정규리그",
+      "city": "부산",
+      "venue": "부산 강서체육관"
+    },
+    {
+      "code": "SFB",
+      "name": "삼성화재",
+      "fullName": "삼성화재",
+      "en": "SFB",
+      "group": "정규리그",
+      "city": "대전",
+      "venue": "대전 충무체육관"
+    }
+  ],
+  "matches": [
+    {
+      "id": "VL2627-M-001",
+      "date": "2026-10-31",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-002",
+      "date": "2026-11-01",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-003",
+      "date": "2026-11-03",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-004",
+      "date": "2026-11-04",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-005",
+      "date": "2026-11-05",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-006",
+      "date": "2026-11-06",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-007",
+      "date": "2026-11-07",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-008",
+      "date": "2026-11-08",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-009",
+      "date": "2026-11-10",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-010",
+      "date": "2026-11-11",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-011",
+      "date": "2026-11-12",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-012",
+      "date": "2026-11-13",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-013",
+      "date": "2026-11-14",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-014",
+      "date": "2026-11-15",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-015",
+      "date": "2026-11-17",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-016",
+      "date": "2026-11-18",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-017",
+      "date": "2026-11-19",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-018",
+      "date": "2026-11-20",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-019",
+      "date": "2026-11-21",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-020",
+      "date": "2026-11-22",
+      "time": "14:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-021",
+      "date": "2026-11-24",
+      "time": "19:00",
+      "stage": "1라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-022",
+      "date": "2026-11-25",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-023",
+      "date": "2026-11-26",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-024",
+      "date": "2026-11-27",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-025",
+      "date": "2026-11-28",
+      "time": "14:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-026",
+      "date": "2026-11-29",
+      "time": "14:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-027",
+      "date": "2026-12-01",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-028",
+      "date": "2026-12-02",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-029",
+      "date": "2026-12-03",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-030",
+      "date": "2026-12-04",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-031",
+      "date": "2026-12-05",
+      "time": "14:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-032",
+      "date": "2026-12-06",
+      "time": "14:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-033",
+      "date": "2026-12-08",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-034",
+      "date": "2026-12-09",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-035",
+      "date": "2026-12-10",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-036",
+      "date": "2026-12-11",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-037",
+      "date": "2026-12-12",
+      "time": "14:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-038",
+      "date": "2026-12-13",
+      "time": "14:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-039",
+      "date": "2026-12-15",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-040",
+      "date": "2026-12-16",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-041",
+      "date": "2026-12-17",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-042",
+      "date": "2026-12-18",
+      "time": "19:00",
+      "stage": "2라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-043",
+      "date": "2026-12-19",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-044",
+      "date": "2026-12-20",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-045",
+      "date": "2026-12-22",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-046",
+      "date": "2026-12-23",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-047",
+      "date": "2026-12-24",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-048",
+      "date": "2026-12-25",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-049",
+      "date": "2026-12-26",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-050",
+      "date": "2026-12-27",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-051",
+      "date": "2026-12-29",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-052",
+      "date": "2026-12-30",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-053",
+      "date": "2026-12-31",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-054",
+      "date": "2027-01-01",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-055",
+      "date": "2027-01-02",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-056",
+      "date": "2027-01-03",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-057",
+      "date": "2027-01-05",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-058",
+      "date": "2027-01-06",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-059",
+      "date": "2027-01-07",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-060",
+      "date": "2027-01-08",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-061",
+      "date": "2027-01-09",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-062",
+      "date": "2027-01-10",
+      "time": "14:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-063",
+      "date": "2027-01-12",
+      "time": "19:00",
+      "stage": "3라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-064",
+      "date": "2027-01-20",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-065",
+      "date": "2027-01-21",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-066",
+      "date": "2027-01-22",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-067",
+      "date": "2027-01-23",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-068",
+      "date": "2027-01-24",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-069",
+      "date": "2027-01-25",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-070",
+      "date": "2027-01-26",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-071",
+      "date": "2027-01-28",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-072",
+      "date": "2027-01-29",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-073",
+      "date": "2027-01-30",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-074",
+      "date": "2027-01-31",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-075",
+      "date": "2027-02-01",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-076",
+      "date": "2027-02-02",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-077",
+      "date": "2027-02-04",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-078",
+      "date": "2027-02-05",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-079",
+      "date": "2027-02-06",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-080",
+      "date": "2027-02-07",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-081",
+      "date": "2027-02-08",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-082",
+      "date": "2027-02-09",
+      "time": "14:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-083",
+      "date": "2027-02-11",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-084",
+      "date": "2027-02-12",
+      "time": "19:00",
+      "stage": "4라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-085",
+      "date": "2027-02-13",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-086",
+      "date": "2027-02-14",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-087",
+      "date": "2027-02-16",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-088",
+      "date": "2027-02-17",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-089",
+      "date": "2027-02-18",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-090",
+      "date": "2027-02-19",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-091",
+      "date": "2027-02-20",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-092",
+      "date": "2027-02-21",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-093",
+      "date": "2027-02-23",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-094",
+      "date": "2027-02-24",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-095",
+      "date": "2027-02-25",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-096",
+      "date": "2027-02-26",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-097",
+      "date": "2027-02-27",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-098",
+      "date": "2027-02-28",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-099",
+      "date": "2027-03-01",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-100",
+      "date": "2027-03-03",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-101",
+      "date": "2027-03-04",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-102",
+      "date": "2027-03-05",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-103",
+      "date": "2027-03-06",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-104",
+      "date": "2027-03-07",
+      "time": "14:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-105",
+      "date": "2027-03-09",
+      "time": "19:00",
+      "stage": "5라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-106",
+      "date": "2027-03-10",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-107",
+      "date": "2027-03-11",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-108",
+      "date": "2027-03-12",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-109",
+      "date": "2027-03-13",
+      "time": "14:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-110",
+      "date": "2027-03-14",
+      "time": "14:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-111",
+      "date": "2027-03-16",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-112",
+      "date": "2027-03-17",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-113",
+      "date": "2027-03-18",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-114",
+      "date": "2027-03-19",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-115",
+      "date": "2027-03-20",
+      "time": "14:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-116",
+      "date": "2027-03-21",
+      "time": "14:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-117",
+      "date": "2027-03-23",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-118",
+      "date": "2027-03-24",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-119",
+      "date": "2027-03-25",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KAL"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-120",
+      "date": "2027-03-26",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KBI"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "평택 이충문화체육센터",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-121",
+      "date": "2027-03-27",
+      "time": "14:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "HDC"
+      },
+      "away": {
+        "code": "WRC"
+      },
+      "venueLabel": "천안 유관순체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-122",
+      "date": "2027-03-28",
+      "time": "14:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "OKF"
+      },
+      "away": {
+        "code": "SFB"
+      },
+      "venueLabel": "부산 강서체육관",
+      "localTimeLabel": "한국 현지 14:00 KST"
+    },
+    {
+      "id": "VL2627-M-123",
+      "date": "2027-03-30",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KEP"
+      },
+      "away": {
+        "code": "HDC"
+      },
+      "venueLabel": "수원체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-124",
+      "date": "2027-03-31",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "KAL"
+      },
+      "away": {
+        "code": "OKF"
+      },
+      "venueLabel": "인천 계양체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-125",
+      "date": "2027-04-01",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "SFB"
+      },
+      "away": {
+        "code": "KBI"
+      },
+      "venueLabel": "대전 충무체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    },
+    {
+      "id": "VL2627-M-126",
+      "date": "2027-04-02",
+      "time": "19:00",
+      "stage": "6라운드",
+      "pool": "",
+      "round": "",
+      "home": {
+        "code": "WRC"
+      },
+      "away": {
+        "code": "KEP"
+      },
+      "venueLabel": "서울 장충체육관",
+      "localTimeLabel": "한국 현지 19:00 KST"
+    }
+  ],
+  "standings": {
+    "rows": [
+      {
+        "rank": null,
+        "team": {
+          "code": "KAL"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 0,
+        "points": 0,
+        "setRatio": "-",
+        "pointRatio": "-",
+        "statusLabel": "개막 전"
+      },
+      {
+        "rank": null,
+        "team": {
+          "code": "HDC"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 0,
+        "points": 0,
+        "setRatio": "-",
+        "pointRatio": "-",
+        "statusLabel": "개막 전"
+      },
+      {
+        "rank": null,
+        "team": {
+          "code": "WRC"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 0,
+        "points": 0,
+        "setRatio": "-",
+        "pointRatio": "-",
+        "statusLabel": "개막 전"
+      },
+      {
+        "rank": null,
+        "team": {
+          "code": "KBI"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 0,
+        "points": 0,
+        "setRatio": "-",
+        "pointRatio": "-",
+        "statusLabel": "개막 전"
+      },
+      {
+        "rank": null,
+        "team": {
+          "code": "KEP"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 0,
+        "points": 0,
+        "setRatio": "-",
+        "pointRatio": "-",
+        "statusLabel": "개막 전"
+      },
+      {
+        "rank": null,
+        "team": {
+          "code": "OKF"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 0,
+        "points": 0,
+        "setRatio": "-",
+        "pointRatio": "-",
+        "statusLabel": "개막 전"
+      },
+      {
+        "rank": null,
+        "team": {
+          "code": "SFB"
+        },
+        "poolId": "LEAGUE",
+        "wins": 0,
+        "losses": 0,
+        "points": 0,
+        "setRatio": "-",
+        "pointRatio": "-",
+        "statusLabel": "개막 전"
+      }
+    ]
+  },
+  "finalRanking": [],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "KOVO 공식 홈페이지",
+      "url": "https://www.kovo.co.kr/"
+    },
+    {
+      "title": "K-Volley Lab 2026-27 V-리그 경기일정 MASTER",
+      "url": "https://docs.google.com/spreadsheets/d/180no_j27R_uw2adWH2BiWbbZ6QUWKVblqymIqNvkBU8/edit"
+    }
+  ],
+  "resourcesNote": "공식 일정 원본과 K-Volley Lab MASTER를 연결합니다.",
+  "domesticRules": {
+    "standings": {
+      "title": "정규리그 순위",
+      "body": "시즌 개막 후 KOVO 공식 순위 산정 기준과 경기 결과를 반영합니다.",
+      "note": "개막 전 프로토타입"
+    },
+    "knockout": {
+      "title": "포스트시즌",
+      "body": "정규리그 종료 후 최종 순위에 따라 준플레이오프·플레이오프·챔피언결정전 대진을 연결합니다.",
+      "note": "대진 확정 전"
+    }
+  }
+}
