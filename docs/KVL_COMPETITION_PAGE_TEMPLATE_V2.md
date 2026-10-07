@@ -242,3 +242,11 @@ Current status: **REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN**. See `docs/KV
 - 프로 참가팀 카드가 대학팀 페이지로 연결되지 않도록 `participants.linkMode: "team-results"`를 사용할 수 있다. 기존 대학대회는 옵션 미지정 시 기존 대학팀 연결 방식을 그대로 유지한다.
 - 프로대회에서 등록선수명단 연결을 아직 제공하지 않을 때는 `roster.domesticTeamRoute: "none"`을 사용한다. 기존 대학대회 기본값은 `university`로 유지한다.
 - 프로토타입은 `competition-engine-prototype.html`을 사용하며 Production 검증과 분리한다. Production 전환 시 PC/모바일 메인카드 이미지 등 Production gate를 별도로 통과해야 한다.
+
+### KOVO PRO 색상 규칙
+- 한국 프로배구(V-리그 / KOVO컵)는 `competitionFamily: "pro"`를 사용한다.
+- 남자부와 여자부를 색으로 나누지 않고 두 성별 모두 동일한 **PRO Blue** family를 사용한다.
+- 기본 PRO Blue: primary `#0868B2`, strong `#07558E`, dark `#073A67`, soft `#EDF6FC`, border `#B7D8EF`.
+- V-리그는 `hero.themeVariant: "league"`로 Blue + White 중심의 정규리그 톤을 사용한다.
+- KOVO컵은 `hero.themeVariant: "cup"`으로 동일한 Blue family를 유지하되 Gold `#C59A45` / `#B98219`를 히어로 포인트와 결선 토너먼트 강조에 더 사용한다.
+- `pro` family는 국내대회와 동일한 팀/경기 표시 구조를 사용하지만, 기존 국내 여자대회의 Rose 팔레트는 상속하지 않는다.
