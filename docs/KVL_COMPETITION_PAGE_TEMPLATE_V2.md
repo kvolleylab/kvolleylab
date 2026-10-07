@@ -250,3 +250,11 @@ Current status: **REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN**. See `docs/KV
 - V-리그는 `hero.themeVariant: "league"`로 Charcoal Black + White + 공통 Gold 타이포 중심의 정규리그 톤을 사용한다.
 - KOVO컵은 `hero.themeVariant: "cup"`으로 동일한 Charcoal Black family를 유지하되 Gold `#C59A45` / `#B98219`를 히어로 포인트와 결선 토너먼트에 더 강하게 사용한다.
 - `pro` family는 국내대회와 동일한 팀/경기 표시 구조를 사용하지만, 기존 국내 여자대회의 Rose 팔레트는 상속하지 않는다.
+
+
+### 대회 월간달력 공통 타이포 규칙
+- 월간달력 글씨 크기는 대회 family나 성별에 따라 달라지지 않는다. 색상만 theme family가 바꾼다.
+- 카드 제목 `대회 월간 달력`: PC 24px / 모바일 22px.
+- 월 제목 `YYYY년 M월`: PC 20px / 모바일 18px.
+- 요일 헤더: PC/모바일 10px.
+- 기존 국내/국제 개별 `calendar-title` 크기 보정은 최종 공통 규칙이 우선하며, 신규 family는 별도 크기 CSS를 추가하지 않는다.
