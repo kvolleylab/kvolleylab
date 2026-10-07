@@ -2671,3 +2671,140 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] :
     line-height:1.45!important;
   }
 }
+
+
+/* KOVO PRO visual surface sweep · prototype-first.
+   Make the family visible through surfaces, not text color alone. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero{
+  background-image:linear-gradient(112deg,#05365f 0%,#0868b2 54%,#1590dc 100%)!important;
+  border-bottom:4px solid #2b8fd3!important;
+  box-shadow:0 12px 28px rgba(8,104,178,.16)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-controlbar{
+  border-color:#b7d8ef!important;
+  box-shadow:0 7px 20px rgba(8,104,178,.07)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-tabs a{
+  border-right-color:#dcebf6!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-tabs a:hover{
+  background:#edf6fc!important;color:#0868b2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-tabs a.is-active,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-gender a.is-active{
+  background:#0868b2!important;border-color:#0868b2!important;color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-card{
+  border-color:#d6e8f5!important;
+  box-shadow:0 5px 18px rgba(8,104,178,.045)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi{
+  border-color:#cfe3f2!important;
+  background:linear-gradient(180deg,#fff 0%,#f5faff 100%)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi-icon{
+  color:#0868b2!important;
+  background:#e6f3fc!important;
+  border-color:#b7d8ef!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi[data-kvl-target]:hover,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-kpi[data-kvl-target]:focus-visible{
+  border-color:#7db9df!important;
+  background:linear-gradient(180deg,#fff,#eaf6fd)!important;
+  box-shadow:0 12px 26px rgba(8,104,178,.13)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-calendar-title{
+  background:linear-gradient(90deg,#07558e,#0868b2)!important;
+  color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-stage-filters button{
+  border-color:#c9e0ef!important;
+  background:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-stage-filters button:hover{
+  border-color:#7db9df!important;background:#edf6fc!important;color:#0868b2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-stage-filters button.is-active{
+  border-color:#0868b2!important;background:#0868b2!important;color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-date-head{
+  background:linear-gradient(90deg,#eaf6fd,#f8fcff)!important;
+  border-bottom-color:#cfe3f2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-day.has-match{
+  background:#f1f9fe!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-card{
+  border-color:#c9e0ef!important;
+  box-shadow:0 4px 14px rgba(8,104,178,.055)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-card-head{
+  background:linear-gradient(90deg,#07558e,#1181c8)!important;color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-table-head,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-combined-table-head{
+  background:#edf6fc!important;border-bottom-color:#cfe3f2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row.is-qualified,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-combined-row.is-qualified{
+  background:#f1f9fe!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row.is-qualified::before,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-combined-row.is-qualified::before{
+  background:#0868b2!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-group-head{
+  background:linear-gradient(90deg,#07558e,#1181c8)!important;color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button{
+  border-color:#d6e8f5!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button:hover{
+  background:#edf6fc!important;border-color:#9fc9e5!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #resources .kvl1180-source{
+  border-color:#d6e8f5!important;background:#fbfdff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #resources .kvl1180-source a{
+  border-color:#b7d8ef!important;background:#eaf6fd!important;color:#07558e!important;
+}
+
+/* Cup keeps the same PRO Blue identity, but gets a visible trophy/gold layer. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-hero{
+  background-image:linear-gradient(112deg,#05365f 0%,#0868b2 58%,#0b78bd 100%)!important;
+  border-bottom-color:#c59a45!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-eyebrow{
+  color:#ffe5a6!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-hero-status .is-accent{
+  border-color:rgba(229,187,96,.82)!important;
+  background:rgba(197,154,69,.22)!important;
+  color:#fff0c9!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-tabs a.is-active{
+  background:#0868b2!important;
+  box-shadow:inset 0 -4px 0 #c59a45!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #knockout .kvl1180-round-title{
+  background:linear-gradient(90deg,#9a7227,#c59a45)!important;color:#fff!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #knockout .kvl1180-match{
+  border-color:#dfc891!important;
+  box-shadow:0 5px 16px rgba(154,114,39,.07)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #knockout .kvl1180-match-head{
+  background:#fff8e8!important;border-bottom-color:#ead5a5!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #knockout .kvl1180-bracket-team.is-winner{
+  background:#fff8e8!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #knockout .kvl1180-knockout-note{
+  border-left-color:#c59a45!important;background:#fff9ec!important;
+}
+
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero{
+    border-bottom-width:3px!important;
+  }
+}
