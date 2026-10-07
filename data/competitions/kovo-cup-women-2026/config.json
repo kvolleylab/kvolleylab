@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "slug": "kovo-cup-women-2026",
+  "competition": {
+    "competitionId": "KVL-COMP-KOVOCUP-W-2026",
+    "displayName": "2026 KOVO컵 여자부",
+    "officialName": "2026 여수·NH농협컵 프로배구대회 · 여자부",
+    "season": "2026",
+    "gender": "women",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "조 편성",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "4강 진출",
+      "knockoutKpiUnit": "팀",
+      "standingsTitle": "여자부 조별순위",
+      "standingsEyebrow": "POOL STANDINGS",
+      "knockoutTitle": "결선 토너먼트",
+      "participantsTitle": "참가팀",
+      "participantsKpi": "참가팀",
+      "participantsKpiUnit": "팀"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "조별리그",
+        "준결승",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "pools-combined",
+      "title": "여자부 조별순위",
+      "combinedTitle": "여자부 예선 종합순위",
+      "overall": false
+    },
+    "knockout": {
+      "mode": "bracket-4",
+      "title": "여자부 결선 토너먼트",
+      "sfLabel": "준결승 · Semifinals",
+      "finalLabel": "결승 · Final",
+      "bronzeLabel": ""
+    },
+    "participants": {
+      "mode": "groups",
+      "groupLabel": "여자부 참가팀",
+      "linkMode": "team-results"
+    },
+    "roster": {
+      "mode": "none",
+      "domesticTeamRoute": "none"
+    }
+  },
+  "hero": {
+    "showImage": false,
+    "mode": "color-only",
+    "alt": "2026 KOVO컵 여자부 프로토타입 메인카드"
+  },
+  "seo": {
+    "title": "2026 KOVO컵 여자부 프로토타입 | K-Volley Lab",
+    "description": "2026 KOVO컵 여자부 경기일정, 조별순위, 결선 토너먼트와 참가팀 프로토타입."
+  },
+  "data": "data.json",
+  "modules": []
+}
