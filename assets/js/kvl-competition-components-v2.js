@@ -29,7 +29,7 @@ const viewUrl=(view,params)=>window.KVLCompetitionTemplateV2.viewUrl(view,params
 const participant=ref=>window.KVLCompetitionDataV2.participant(data(),ref);
 function teamLink(t,content=esc(name(t)),extraClass=''){const p=participant(t),cls=['kvl-team-link',extraClass].filter(Boolean).join(' ');return p?`<a class="${cls}" data-team-results="${esc(p.code)}" href="${esc(viewUrl('team',{team:p.code}))}" aria-label="${esc(name(p))} 경기결과">${content}</a>`:content;}
 function rosterAction(d,t){const target=window.KVLCompetitionDataV2.rosterTarget(d,t);return {...target,href:target.available?(target.mode==='full'?viewUrl('rosters',{team:target.code})+'#team-roster':target.url):null};}
-function rosterButton(d,t){const domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';if(domestic){const school=t?.fullName||name(t),href='university-team.html?school='+encodeURIComponent(school)+'&view=roster';return `<a class="kvl-team-roster-link" href="${esc(href)}">등록 선수명단 보기</a>`;}const a=rosterAction(d,t);return a.href?`<a class="kvl-team-roster-link" data-team-roster="${esc(code(t))}" href="${esc(a.href)}">등록 선수명단 보기</a>`:'<button class="kvl-team-roster-link" type="button" disabled>등록 선수명단 미제공</button>';}
+function rosterButton(d,t){const domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';if(domestic){const route=d.structure?.roster?.domesticTeamRoute||'university';if(route==='none')return '';const school=t?.fullName||name(t),href='university-team.html?school='+encodeURIComponent(school)+'&view=roster';return `<a class="kvl-team-roster-link" href="${esc(href)}">등록 선수명단 보기</a>`;}const a=rosterAction(d,t);return a.href?`<a class="kvl-team-roster-link" data-team-roster="${esc(code(t))}" href="${esc(a.href)}">등록 선수명단 보기</a>`:'<button class="kvl-team-roster-link" type="button" disabled>등록 선수명단 미제공</button>';}
 function rosterIdentity(d,t,content){const a=rosterAction(d,t);return a.href?`<a class="kvl-team-results-identity is-link" data-team-roster="${esc(code(t))}" href="${esc(a.href)}" aria-label="${esc(name(t))} 등록 선수명단">${content}</a>`:`<div class="kvl-team-results-identity">${content}</div>`;}
 function rosterRoute(teamCode,{push=false,scroll=false}={}){
  const u=new URL(location.href);u.searchParams.set('view','rosters');u.searchParams.set('team',teamCode);u.searchParams.delete('date');if(scroll)u.hash='team-roster';
@@ -97,6 +97,7 @@ function applyStructureLabels(d){
   txt(q('[data-kvl="standings-rule"]'),d.standingsRule||'승리 경기 수 → 승점 → 세트 득실비 → 점수 득실비 순으로 적용합니다.');
   txt(q('[data-kvl="participants-status"]'),d.teamCount?`${d.teamCount}${domestic?'팀':'개국'}`:(domestic?'참가팀':'참가국'));
   txt(q('[data-kvl="bracket-title"]'),c.knockout.title||'결선 토너먼트');
+  const finalBlock=q('.kvl1180-final-block');if(finalBlock)finalBlock.hidden=c.knockout.showFinalRanking===false;
   txt(q('[data-kvl="meaning-eyebrow"]'),d.meaning?.eyebrow||'ROAD TO THE WORLD');
   txt(q('[data-kvl="meaning-title"]'),d.meaning?.title||'대회 의미 · 국제 진출권');
   txt(q('[data-kvl="meaning-note"]'),d.meaning?.note||'대회별 공식 규정과 확정 결과만 표시합니다.');
@@ -275,7 +276,7 @@ function appendPlacementMatches(root,d,seeds){
   root.insertAdjacentHTML('beforeend',`<section class="kvl1180-placement-block"><div class="kvl1180-knockout-subhead"><div><p class="label">CLASSIFICATION MATCHES</p><h3>순위결정전</h3></div><p>공식 발표된 일정·시간·경기장을 먼저 표시합니다.</p></div><div class="kvl1180-placement-groups">${[...groups.entries()].map(([label,matches])=>`<section class="kvl1180-placement-group"><h4>${esc(label)}</h4><div class="kvl1180-placement-matches">${matches.map((m,i)=>bmatch(m,m.bracketLabel||m.placementLabel||`${label} ${i+1}`,seeds)).join('')}</div></section>`).join('')}</div></section>`);
 }
 function renderKnockout(d){
-  const root=q('[data-kvl-component="knockout"]');if(!root)return;const c=cfg(d).knockout;if(c.mode==='none'){root.innerHTML='<div class="kvl1180-schedule-empty">이 대회는 결선 토너먼트를 사용하지 않습니다.</div>';return;}
+  const root=q('[data-kvl-component="knockout"]');if(!root)return;const c=cfg(d).knockout;if(c.mode==='none'){root.innerHTML=`<div class="kvl1180-schedule-empty">${esc(c.emptyMessage||'이 대회는 결선 토너먼트를 사용하지 않습니다.')}</div>`;return;}
   const all=d.matches||[],qf=all.filter(m=>round(m)==='QF'),sf=all.filter(m=>round(m)==='SF'),final=all.find(m=>round(m)==='FINAL'),bronze=all.find(m=>round(m)==='BRONZE');if(!qf.length&&!sf.length&&!final){
     const placeholder=(label)=>`<article class="kvl1180-match is-placeholder"><div class="kvl1180-match-head"><strong>${esc(label)}</strong><span>대진 미정</span></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark is-path">?</span><span class="kvl1180-bracket-copy"><strong>대진 미정</strong><small>공식 대진 발표 전</small></span><b class="kvl1180-team-score">-</b></div><div class="kvl1180-bracket-team"><span class="kvl1180-bracket-mark is-path">?</span><span class="kvl1180-bracket-copy"><strong>대진 미정</strong><small>공식 대진 발표 전</small></span><b class="kvl1180-team-score">-</b></div></article>`;
     if(c.mode==='bracket-4'){
@@ -303,8 +304,8 @@ function pcard(p){
  const d=data(),domestic=String(d.competitionFamily||d.family||'').toLowerCase()==='domestic';
  const count=p.count??p.rosterCount,asset=p.logo||p.flag;
  if(domestic){
-   const school=p.fullName||p.name||'';
-   const href='university-team.html?school='+encodeURIComponent(school);
+   const participantCfg=cfg(d).participants,school=p.fullName||p.name||'';
+   const href=participantCfg.linkMode==='team-results'?viewUrl('team',{team:p.code}):'university-team.html?school='+encodeURIComponent(school);
    return `<a class="kvl1180-participant-button" data-team-code="${esc(p.code||'')}" href="${esc(href)}">${asset?`<span class="kvl-participant-flag"><img src="${esc(asset)}" alt="${esc(p.name||'')} 엠블럼" loading="lazy"></span>`:`<span class="kvl-participant-flag is-text-mark" aria-hidden="true"><b>${esc(schoolMark(p.name))}</b></span>`}<span class="kvl1180-participant-button-copy"><strong>${esc(p.name||'미정')}</strong>${count!==undefined?`<small>${esc(count)}명</small>`:''}</span></a>`;
  }
  const action=rosterAction(d,p),available=action.available;
