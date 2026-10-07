@@ -106,22 +106,23 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="women"]:not(
 }
 
 /* KOVO PRO family · shared by men/women.
-   V-League = Teal Green-led; KOVO Cup = same Teal Green family with stronger Gold accents. */
+   V-League = Charcoal Black + White + Gold.
+   KOVO Cup = same Charcoal Black base with a stronger Gold layer. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"]{
-  --kvl-theme-dark:#064e49;
-  --kvl-theme-accent:#2a9d8f;
-  --kvl-theme-primary:#0f766e;
-  --kvl-theme-strong:#0b5f59;
-  --kvl-theme-soft:#ecf8f6;
-  --kvl-theme-border:#b8ded9;
-  --kvl-theme-shadow:rgba(15,118,110,.13);
-  --kvl-theme-hero-a:#064e49;
-  --kvl-theme-hero-b:#0f766e;
-  --kvl-theme-overlay-rgb:6,78,73;
-  --kvl1180-green:#0f766e;
-  --kvl1180-green-dark:#064e49;
-  --kvl1180-green-mid:#2a9d8f;
-  --kvl1180-green-soft:#ecf8f6;
+  --kvl-theme-dark:#0b0d10;
+  --kvl-theme-accent:#343a40;
+  --kvl-theme-primary:#1c1f24;
+  --kvl-theme-strong:#14171b;
+  --kvl-theme-soft:#f2f3f4;
+  --kvl-theme-border:#c8cdd2;
+  --kvl-theme-shadow:rgba(20,23,27,.13);
+  --kvl-theme-hero-a:#0b0d10;
+  --kvl-theme-hero-b:#23272d;
+  --kvl-theme-overlay-rgb:11,13,16;
+  --kvl1180-green:#1c1f24;
+  --kvl1180-green-dark:#0b0d10;
+  --kvl1180-green-mid:#343a40;
+  --kvl1180-green-soft:#f2f3f4;
   --kvl1180-gold:#e6c46c;
   --kvl1180-gold-soft:#f2e8cf;
   --kvl-special-gold:#b8860b;
