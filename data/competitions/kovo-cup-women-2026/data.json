@@ -1,0 +1,409 @@
+{
+  "status": "upcoming",
+  "stageLabel": "여자부 · 10월 11일 개막",
+  "dateLabel": "2026.10.11 ~ 10.18",
+  "locationLabel": "대한민국 · 전남 여수",
+  "venueLabel": "여수 진남체육관",
+  "venuePrimary": "전남 여수",
+  "venueSecondary": "진남체육관",
+  "teamCount": 7,
+  "groupCount": 2,
+  "matchCount": 12,
+  "knockoutTeamCount": 4,
+  "upcomingOverviewNote": "대회 시작 전 · 공식 발표 일정과 조편성을 반영했습니다.",
+  "scheduleNote": "한국시간(KST) · 여자부 12경기 · 조별리그 9경기 + 준결승 2경기 + 결승 1경기",
+  "standingsNote": "대회 시작 전 · 조별리그 결과 반영 후 순위를 업데이트합니다.",
+  "standingsStatus": "조별리그 시작 전",
+  "standingsRule": "각 조 상위 2팀이 준결승에 진출합니다.",
+  "meaning": {
+    "eyebrow": "KOVO CUP",
+    "title": "2026 KOVO컵",
+    "note": "조별리그 → 교차 준결승 → 단판 결승"
+  },
+  "genderLinks": {
+    "men": "/competition-engine-prototype.html?competition=kovo-cup-men-2026",
+    "women": "/competition-engine-prototype.html?competition=kovo-cup-women-2026"
+  },
+  "participants": [
+    {
+      "code": "SOO",
+      "name": "SOOP",
+      "fullName": "SOOP",
+      "en": "SOO",
+      "group": "A"
+    },
+    {
+      "code": "IBK",
+      "name": "IBK기업은행",
+      "fullName": "IBK기업은행",
+      "en": "IBK",
+      "group": "A"
+    },
+    {
+      "code": "RSP",
+      "name": "정관장",
+      "fullName": "정관장",
+      "en": "RSP",
+      "group": "A"
+    },
+    {
+      "code": "HPS",
+      "name": "흥국생명",
+      "fullName": "흥국생명",
+      "en": "HPS",
+      "group": "A"
+    },
+    {
+      "code": "GSC",
+      "name": "GS칼텍스",
+      "fullName": "GS칼텍스",
+      "en": "GSC",
+      "group": "B"
+    },
+    {
+      "code": "KEX",
+      "name": "한국도로공사",
+      "fullName": "한국도로공사",
+      "en": "KEX",
+      "group": "B"
+    },
+    {
+      "code": "HHC",
+      "name": "현대건설",
+      "fullName": "현대건설",
+      "en": "HHC",
+      "group": "B"
+    }
+  ],
+  "matches": [
+    {
+      "id": "KOVOCUP26-01",
+      "date": "2026-10-11",
+      "time": "13:30",
+      "stage": "조별리그",
+      "pool": "A",
+      "round": "",
+      "home": {
+        "code": "SOO"
+      },
+      "away": {
+        "code": "IBK"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 13:30 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-02",
+      "date": "2026-10-11",
+      "time": "16:30",
+      "stage": "조별리그",
+      "pool": "A",
+      "round": "",
+      "home": {
+        "code": "RSP"
+      },
+      "away": {
+        "code": "HPS"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 16:30 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-03",
+      "date": "2026-10-12",
+      "time": "19:00",
+      "stage": "조별리그",
+      "pool": "B",
+      "round": "",
+      "home": {
+        "code": "GSC"
+      },
+      "away": {
+        "code": "KEX"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-04",
+      "date": "2026-10-13",
+      "time": "15:30",
+      "stage": "조별리그",
+      "pool": "A",
+      "round": "",
+      "home": {
+        "code": "RSP"
+      },
+      "away": {
+        "code": "SOO"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 15:30 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-05",
+      "date": "2026-10-13",
+      "time": "19:00",
+      "stage": "조별리그",
+      "pool": "A",
+      "round": "",
+      "home": {
+        "code": "HPS"
+      },
+      "away": {
+        "code": "IBK"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-06",
+      "date": "2026-10-14",
+      "time": "19:00",
+      "stage": "조별리그",
+      "pool": "B",
+      "round": "",
+      "home": {
+        "code": "KEX"
+      },
+      "away": {
+        "code": "HHC"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-07",
+      "date": "2026-10-15",
+      "time": "15:30",
+      "stage": "조별리그",
+      "pool": "A",
+      "round": "",
+      "home": {
+        "code": "SOO"
+      },
+      "away": {
+        "code": "HPS"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 15:30 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-08",
+      "date": "2026-10-15",
+      "time": "19:00",
+      "stage": "조별리그",
+      "pool": "A",
+      "round": "",
+      "home": {
+        "code": "IBK"
+      },
+      "away": {
+        "code": "RSP"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-09",
+      "date": "2026-10-16",
+      "time": "19:00",
+      "stage": "조별리그",
+      "pool": "B",
+      "round": "",
+      "home": {
+        "code": "HHC"
+      },
+      "away": {
+        "code": "GSC"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "bracketLabel": "조별리그"
+    },
+    {
+      "id": "KOVOCUP26-10",
+      "date": "2026-10-17",
+      "time": "13:30",
+      "stage": "준결승",
+      "pool": "",
+      "round": "SF",
+      "home": {
+        "name": "A조 1위"
+      },
+      "away": {
+        "name": "B조 2위"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 13:30 KST",
+      "bracketLabel": "SF10"
+    },
+    {
+      "id": "KOVOCUP26-11",
+      "date": "2026-10-17",
+      "time": "16:30",
+      "stage": "준결승",
+      "pool": "",
+      "round": "SF",
+      "home": {
+        "name": "B조 1위"
+      },
+      "away": {
+        "name": "A조 2위"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 16:30 KST",
+      "bracketLabel": "SF11"
+    },
+    {
+      "id": "KOVOCUP26-12",
+      "date": "2026-10-18",
+      "time": "13:30",
+      "stage": "결승",
+      "pool": "",
+      "round": "FINAL",
+      "home": {
+        "name": "준결승 1 승자"
+      },
+      "away": {
+        "name": "준결승 2 승자"
+      },
+      "venueLabel": "여수 진남체육관",
+      "localTimeLabel": "한국 현지 13:30 KST",
+      "bracketLabel": "FINAL"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "rows": [
+          {
+            "rank": null,
+            "team": {
+              "code": "SOO"
+            },
+            "wins": 0,
+            "losses": 0,
+            "points": 0,
+            "setRatio": "-",
+            "pointRatio": "-",
+            "statusLabel": "개막 전"
+          },
+          {
+            "rank": null,
+            "team": {
+              "code": "IBK"
+            },
+            "wins": 0,
+            "losses": 0,
+            "points": 0,
+            "setRatio": "-",
+            "pointRatio": "-",
+            "statusLabel": "개막 전"
+          },
+          {
+            "rank": null,
+            "team": {
+              "code": "RSP"
+            },
+            "wins": 0,
+            "losses": 0,
+            "points": 0,
+            "setRatio": "-",
+            "pointRatio": "-",
+            "statusLabel": "개막 전"
+          },
+          {
+            "rank": null,
+            "team": {
+              "code": "HPS"
+            },
+            "wins": 0,
+            "losses": 0,
+            "points": 0,
+            "setRatio": "-",
+            "pointRatio": "-",
+            "statusLabel": "개막 전"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "rows": [
+          {
+            "rank": null,
+            "team": {
+              "code": "GSC"
+            },
+            "wins": 0,
+            "losses": 0,
+            "points": 0,
+            "setRatio": "-",
+            "pointRatio": "-",
+            "statusLabel": "개막 전"
+          },
+          {
+            "rank": null,
+            "team": {
+              "code": "KEX"
+            },
+            "wins": 0,
+            "losses": 0,
+            "points": 0,
+            "setRatio": "-",
+            "pointRatio": "-",
+            "statusLabel": "개막 전"
+          },
+          {
+            "rank": null,
+            "team": {
+              "code": "HHC"
+            },
+            "wins": 0,
+            "losses": 0,
+            "points": 0,
+            "setRatio": "-",
+            "pointRatio": "-",
+            "statusLabel": "개막 전"
+          }
+        ]
+      }
+    ]
+  },
+  "finalRanking": [],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "KOVO 공식 홈페이지",
+      "url": "https://www.kovo.co.kr/"
+    },
+    {
+      "title": "여수시 2026 KOVO컵 개최 안내",
+      "url": "https://m.yeosu.go.kr/tour/information/news/tour_news?idx=15928&mode=view"
+    }
+  ],
+  "resourcesNote": "공식 일정과 개최지 자료를 연결합니다.",
+  "domesticRules": {
+    "standings": {
+      "title": "조별리그 진출 기준",
+      "body": "A·B조 조별리그 후 각 조 상위 2팀이 준결승에 진출합니다.",
+      "note": "2026 대회 프로토타입"
+    },
+    "knockout": {
+      "title": "결선 방식",
+      "body": "A조 1위-B조 2위, B조 1위-A조 2위가 준결승을 치르고 승자가 결승에 진출합니다.",
+      "note": "단판 토너먼트"
+    }
+  }
+}
