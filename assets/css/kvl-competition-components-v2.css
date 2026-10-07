@@ -2774,13 +2774,22 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-k
   background-image:linear-gradient(112deg,#05365f 0%,#0868b2 58%,#0b78bd 100%)!important;
   border-bottom-color:#c59a45!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-eyebrow{
-  color:#ffe5a6!important;
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-eyebrow,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero h1,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero-sub{
+  color:var(--kvl1180-gold-soft)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-eyebrow{
+  color:var(--kvl1180-gold)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero-status .is-accent{
+  border-color:rgba(230,196,108,.58)!important;
+  background:rgba(230,196,108,.13)!important;
+  color:#f6e7b5!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-hero-status .is-accent{
   border-color:rgba(229,187,96,.82)!important;
   background:rgba(197,154,69,.22)!important;
-  color:#fff0c9!important;
 }
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] .kvl1180-tabs a.is-active{
   background:#0868b2!important;
