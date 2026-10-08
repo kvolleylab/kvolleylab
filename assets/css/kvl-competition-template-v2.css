@@ -147,6 +147,24 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-k
   --kvl1180-gold-soft:#f2e8cf;
   --kvl-special-gold:#b8860b;
 }
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"]{
+  --kvl-theme-dark:#7f2f54;
+  --kvl-theme-accent:#c65382;
+  --kvl-theme-primary:#8f2f59;
+  --kvl-theme-strong:#8f2f59;
+  --kvl-theme-soft:#fff1f6;
+  --kvl-theme-border:#ead4de;
+  --kvl-theme-shadow:rgba(126,49,82,.10);
+  --kvl-theme-hero-a:#7f2f54;
+  --kvl-theme-hero-b:#c95683;
+  --kvl-theme-overlay-rgb:126,49,82;
+  --kvl1180-green:#b74676;
+  --kvl1180-green-dark:#8f2f59;
+  --kvl1180-green-mid:#c65382;
+  --kvl1180-green-soft:#fff1f6;
+  --kvl1180-gold:#e6c46c;
+  --kvl1180-gold-soft:#f2e8cf;
+}
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"]{
   --kvl-special-gold:#b98219;
 }
