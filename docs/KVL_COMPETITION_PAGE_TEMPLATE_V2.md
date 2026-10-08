@@ -272,11 +272,11 @@ Current status: **REBUILD_VALIDATION_ONLY_BASELINE_CONFLICT_OPEN**. See `docs/KV
 
 ### KOVO PRO 색상 규칙
 - 한국 프로배구(V-리그 / KOVO컵)는 `competitionFamily: "pro"`를 사용한다.
-- 남자부와 여자부를 색으로 나누지 않고 두 성별 모두 동일한 **PRO Charcoal Black** family를 사용한다.
+- `pro` 구조는 공통으로 쓰되 색상은 성별 기준을 따른다: **남자부 = PRO Charcoal Black**, **여자부 = shared WOMEN Rose**.
 - 기본 PRO Charcoal Black: primary `#1C1F24`, strong `#14171B`, dark `#0B0D10`, accent `#343A40`, soft `#F2F3F4`, border `#C8CDD2`.
-- V-리그는 `hero.themeVariant: "league"`로 Charcoal Black + White + 공통 Gold 타이포 중심의 정규리그 톤을 사용한다.
-- KOVO컵은 `hero.themeVariant: "cup"`으로 동일한 Charcoal Black family를 유지하되 Gold `#C59A45` / `#B98219`를 히어로 포인트와 결선 토너먼트에 더 강하게 사용한다.
-- `pro` family는 국내대회와 동일한 팀/경기 표시 구조를 사용하지만, 기존 국내 여자대회의 Rose 팔레트는 상속하지 않는다.
+- V-리그는 `hero.themeVariant: "league"`를 사용한다. 남자부는 Charcoal Black + White + Gold, 여자부는 Rose + White + Gold를 사용한다.
+- KOVO컵은 같은 성별 색상 기준을 유지하고 Gold `#C59A45` / `#B98219`를 히어로 포인트와 결선 토너먼트에 더 강하게 사용한다.
+- `pro` family는 국내대회와 동일한 팀/경기 표시 구조를 사용하며, 여자부는 공통 WOMEN 우선순위에 따라 Rose 팔레트를 상속한다.
 
 
 ### 대회 월간달력 공통 타이포 규칙
