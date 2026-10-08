@@ -86,7 +86,12 @@ function applyTheme(d){
       body.dataset.kvlHeroReady='true';
     }).catch(()=>{body.dataset.kvlHeroReady='fallback';});
   }else body.removeAttribute('data-kvl-hero-ready');
-  for(const [key,value] of [['--kvl-hero-position',d.hero?.position],['--kvl-hero-position-mobile',d.hero?.mobilePosition]]){
+  for(const [key,value] of [
+    ['--kvl-hero-position',d.hero?.position],
+    ['--kvl-hero-position-mobile',d.hero?.mobilePosition],
+    ['--kvl-hero-size',d.hero?.size],
+    ['--kvl-hero-size-mobile',d.hero?.mobileSize]
+  ]){
     if(value)body.style.setProperty(key,value);else body.style.removeProperty(key);
   }
 }
