@@ -57,10 +57,29 @@
     }
   },
   "hero": {
-    "showImage": false,
-    "mode": "color-only",
-    "alt": "2026-27 V-리그 남자부 프로토타입 메인카드",
-    "themeVariant": "league"
+    "showImage": true,
+    "mode": "photo",
+    "alt": "2026-27 V-리그 남자부 메인카드 · 공격 성공 후 포효하는 선수",
+    "themeVariant": "league",
+    "pcImage": "",
+    "mobileImage": "",
+    "pcB64Chunks": [
+      "/assets/images/competition-hero/v-league-men-2026-27/pc-01.b64?v=20261008-v01",
+      "/assets/images/competition-hero/v-league-men-2026-27/pc-02.b64?v=20261008-v01",
+      "/assets/images/competition-hero/v-league-men-2026-27/pc-03.b64?v=20261008-v01",
+      "/assets/images/competition-hero/v-league-men-2026-27/pc-04.b64?v=20261008-v01",
+      "/assets/images/competition-hero/v-league-men-2026-27/pc-05.b64?v=20261008-v01",
+      "/assets/images/competition-hero/v-league-men-2026-27/pc-06.b64?v=20261008-v01"
+    ],
+    "mobileB64Chunks": [
+      "/assets/images/competition-hero/v-league-men-2026-27/mobile-01.b64?v=20261008-v01",
+      "/assets/images/competition-hero/v-league-men-2026-27/mobile-02.b64?v=20261008-v01",
+      "/assets/images/competition-hero/v-league-men-2026-27/mobile-03.b64?v=20261008-v01"
+    ],
+    "mimeType": "image/webp",
+    "position": "center center",
+    "mobilePosition": "right center",
+    "assetNote": "Google Drive HERO_ASSETS_MASTER 기준 PC 2400×720 / Mobile 1440×900 MASTER에서 WEB 1600×480 / 960×600으로 변환"
   },
   "seo": {
     "title": "2026-27 V-리그 남자부 프로토타입 | K-Volley Lab",
