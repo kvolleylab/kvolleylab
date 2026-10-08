@@ -63,10 +63,20 @@
     "themeVariant": "league",
     "pcImage": "/assets/img/competition-hero/kvl-hero-v-league-2026-27-women-pc-v03.svg?v=20261008-3",
     "mobileImage": "/assets/img/competition-hero/kvl-hero-v-league-2026-27-women-mobile-v03.svg?v=20261008-3",
-    "mimeType": "image/svg+xml",
+    "mimeType": "image/webp",
     "position": "right center",
     "mobilePosition": "right center",
-    "assetNote": "승인된 기존 여자부 사진 유지. PC 2108×406 / Mobile 1258×406 실사용 캔버스에서 인물 비율을 보존하고, 좌측 TEXT SAFE ZONE까지 KVL Rose/마젠타 분위기를 자연스럽게 연결한 Hero."
+    "assetNote": "최종 승인 여자부 HERO: 사용자 확정 Rose/마젠타 승리 세리머니 이미지. PC 2108×406 / Mobile 1258×406 WebP, 원본 비율 유지. pcB64Chunks/mobileB64Chunks 정식 연결.",
+    "pcB64Chunks": [
+      "/assets/img/competition-hero/v04/women-pc/00.b64",
+      "/assets/img/competition-hero/v04/women-pc/01.b64",
+      "/assets/img/competition-hero/v04/women-pc/02.b64"
+    ],
+    "mobileB64Chunks": [
+      "/assets/img/competition-hero/v04/women-mobile/00.b64",
+      "/assets/img/competition-hero/v04/women-mobile/01.b64",
+      "/assets/img/competition-hero/v04/women-mobile/02.b64"
+    ]
   },
   "seo": {
     "title": "2026-27 V-리그 여자부 프로토타입 | K-Volley Lab",
