@@ -2680,8 +2680,8 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl11
   background-image:
     linear-gradient(90deg,rgba(var(--kvl-theme-overlay-rgb),.20) 0%,rgba(var(--kvl-theme-overlay-rgb),.10) 42%,rgba(var(--kvl-theme-overlay-rgb),.02) 68%,rgba(var(--kvl-theme-overlay-rgb),0) 82%),
     var(--kvl-hero-image-desktop,none)!important;
-  /* Poster-style KVL hero: keep the full designed PC composition instead of cover-zooming it. */
-  background-size:100% 100%,auto 100%!important;
+  /* Finished KVL hero artwork is a single full-canvas composition: fill the shared Hero box as one card, matching the accepted domestic Hero contract instead of rendering the artwork as a separate right-side panel. */
+  background-size:100% 100%,100% 100%!important;
   background-position:center center,var(--kvl-hero-position,right center)!important;
   background-repeat:no-repeat,no-repeat!important;
   background-color:var(--kvl-theme-dark)!important;
@@ -2824,7 +2824,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-k
     background-image:
       linear-gradient(105deg,rgba(var(--kvl-theme-overlay-rgb),.42) 0%,rgba(var(--kvl-theme-overlay-rgb),.22) 48%,rgba(var(--kvl-theme-overlay-rgb),.04) 76%),
       var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
-    background-size:100% 100%,auto 100%!important;
+    background-size:100% 100%,100% 100%!important;
     background-position:center center,var(--kvl-hero-position-mobile,right center)!important;
     background-repeat:no-repeat,no-repeat!important;
     border-bottom-width:3px!important;
