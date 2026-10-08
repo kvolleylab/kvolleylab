@@ -1,6 +1,6 @@
 {
-  "status": "active",
-  "stageLabel": "결승 예정 · 10월 6일 14:00 인하대 vs 한양대",
+  "status": "completed",
+  "stageLabel": "대회 종료 · 인하대 우승",
   "dateLabel": "2026-03-25 ~ 2026-10-06",
   "locationLabel": "전국 참가대학 체육관",
   "venueLabel": "홈앤어웨이 · 참가대학 체육관",
@@ -8,10 +8,10 @@
   "groupCount": 2,
   "matchCount": 67,
   "knockoutTeamCount": 4,
-  "champion": "",
-  "championAchievement": "",
-  "scheduleNote": "한국시간(KST) · 총 67경기 · 예선 49경기 + 6강리그 15경기 + 준결승 2경기 결과 반영 완료(66경기) · 결승 인하대 vs 한양대 10월 6일 14:00 예정",
-  "standingsNote": "남대부 A/B조 예선 49경기 결과 기준. 6강리그 최종순위: 1위 인하대 15점, 2위 한양대 12점, 3위 홍익대 6점, 4위 성균관대 6점, 5위 중부대 5점, 6위 경기대 1점. 준결승: 인하대 3-0 성균관대, 한양대 3-0 홍익대.",
+  "champion": "인하대",
+  "championAchievement": "2026 U-리그 우승 · 2연패 · 시즌 3관왕",
+  "scheduleNote": "한국시간(KST) · 남대부 전체 67경기 결과 반영 완료 · 2026년 10월 6일 결승 인하대 3-1 한양대",
+  "standingsNote": "남대부 A/B조 예선 49경기 결과 기준. 6강리그 최종순위: 1위 인하대 15점, 2위 한양대 12점, 3위 홍익대 6점, 4위 성균관대 6점, 5위 중부대 5점, 6위 경기대 1점. 준결승: 인하대 3-0 성균관대, 한양대 3-0 홍익대. 결선 최종 결과: 인하대 우승, 한양대 준우승, 홍익대·성균관대 공동 3위.",
   "standingsRule": "승점 → 승리 경기 수 → 득실점수비율 → 세트비율 → 승자승(2026 U-리그 요강)",
   "meaning": {
     "eyebrow": "KUSF U-LEAGUE",
@@ -2660,10 +2660,31 @@
       },
       "venueLabel": "인하대학교 체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "score": null,
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
       "round": "FINAL",
       "bracketLabel": "결승",
-      "verificationStatus": "경기 예정 · 결과 확인 전"
+      "scoreVerification": "KUSF 대학배구 U-리그 공식 팀기록 및 2026-10-06 경기 보도 대조"
     }
   ],
   "standings": {
@@ -2864,7 +2885,32 @@
       }
     ]
   },
-  "finalRanking": [],
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "INHA",
+      "team": "인하대",
+      "result": "우승"
+    },
+    {
+      "rank": 2,
+      "code": "HANYANG",
+      "team": "한양대",
+      "result": "준우승"
+    },
+    {
+      "rank": 3,
+      "code": "HONGIK",
+      "team": "홍익대",
+      "result": "공동 3위"
+    },
+    {
+      "rank": 3,
+      "code": "SKKU",
+      "team": "성균관대",
+      "result": "공동 3위"
+    }
+  ],
   "qualifications": [],
   "resources": [
     {
