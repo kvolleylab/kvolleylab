@@ -327,9 +327,10 @@ function displayGroups(list,c){
     const map=new Map();list.forEach(p=>{const g=p.group||'참가국';if(!map.has(g))map.set(g,[]);map.get(g).push(p);});
     return [...map.entries()].map(([g,rows])=>[domestic?groupLabel(g):g,participantDisplayRows(rows,c,domestic)]);
   }
-  const ordered=participantDisplayRows(list,c,domestic),columns=Math.min(3,Math.max(1,Number(c.displayColumns)||3)),size=Math.ceil(ordered.length/columns),out=[];
-  for(let i=0;i<columns;i++){const rows=ordered.slice(i*size,(i+1)*size);if(!rows.length)continue;out.push([`${c.groupLabel||'참가국'} · ${i*size+1}-${i*size+rows.length}`,rows]);}
-  return out;
+  // Flat participation has no official pools. Columns belong to CSS layout, not data grouping.
+  // Keep one alphabetical list and one heading; never imply artificial 1–8 / 9–16 pools.
+  const ordered=participantDisplayRows(list,c,domestic);
+  return [[c.groupLabel||(domestic?'참가팀':'참가국'),ordered]];
 }
 function renderParticipants(d){const root=q('[data-kvl-component="participants"]');if(!root)return;const c=cfg(d).participants,list=d.participants||[];if(!list.length){root.innerHTML='<div class="kvl1180-participants-empty">참가국 정보 확인 중입니다.</div>';return;}const groups=displayGroups(list,c),domestic=isDomesticLike(d);root.innerHTML=`<div class="kvl1180-participant-groups">${groups.map(([g,rows])=>`<article class="kvl1180-participant-group"><header class="kvl1180-participant-group-head"><strong>${esc(g)}</strong><span>${rows.length}${domestic?'팀':'개국'}</span></header><div class="kvl1180-participant-buttons">${rows.map(pcard).join('')}</div></article>`).join('')}</div>`;
  if(domestic){root.onclick=null;const roster=q('[data-kvl-component="roster"]');if(roster)roster.innerHTML='';return;}
