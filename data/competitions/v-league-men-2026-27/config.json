@@ -61,21 +61,12 @@
     "mode": "photo",
     "alt": "2026-27 V-리그 남자부 메인카드",
     "themeVariant": "league",
-    "pcImage": "/assets/img/competition-hero/kvl-hero-v-league-2026-27-men-pc-v01.webp?v=20261008-final-1",
-    "mobileImage": "/assets/img/competition-hero/kvl-hero-v-league-2026-27-men-mobile-v01.webp?v=20261008-final-1",
+    "pcImage": "/assets/img/competition-hero/kvl-hero-v-league-2026-27-men-pc-v05.webp?v=20261008-nozoom-1",
+    "mobileImage": "/assets/img/competition-hero/kvl-hero-v-league-2026-27-men-mobile-v05.webp?v=20261008-nozoom-1",
     "mimeType": "image/webp",
     "position": "right center",
     "mobilePosition": "right center",
-    "assetNote": "최종 승인 남자부 HERO 메인카드. 사용자 확정 Black/Gold 이미지의 PC 2108×406 / Mobile 1258×406 WebP chunk를 우선 로드하며, v01 WebP는 동일 아트디렉션 fallback. 원본 비율 유지, 좌측 TEXT SAFE ZONE 보존.",
-    "pcB64Chunks": [
-      "/assets/img/competition-hero/v04/men-pc/00.b64",
-      "/assets/img/competition-hero/v04/men-pc/01.b64",
-      "/assets/img/competition-hero/v04/men-pc/02.b64"
-    ],
-    "mobileB64Chunks": [
-      "/assets/img/competition-hero/v04/men-mobile/00.b64",
-      "/assets/img/competition-hero/v04/men-mobile/01.b64"
-    ]
+    "assetNote": "최종 승인 남자부 HERO no-zoom 버전. 원본 인물 크기/구도를 유지해 높이 기준으로 축소하고, 부족한 좌측 TEXT SAFE ZONE만 Black/Gold 배경으로 자연스럽게 확장. 인물 확대·크롭 금지."
   },
   "seo": {
     "title": "2026-27 V-리그 남자부 프로토타입 | K-Volley Lab",
