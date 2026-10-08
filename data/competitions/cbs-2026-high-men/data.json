@@ -1,0 +1,1358 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료 · 천안고 우승",
+  "dateLabel": "2026-08-27 ~ 2026-09-03",
+  "locationLabel": "경북 영천",
+  "venueLabel": "영천체육관 · 영천생활체육관 · 최무선체육관 · 금호체육관",
+  "teamCount": 23,
+  "groupCount": 0,
+  "matchCount": 31,
+  "knockoutTeamCount": 0,
+  "champion": "천안고",
+  "championAchievement": "2026 제37회 CBS배 남고부 우승",
+  "scheduleNote": "검수용 프로토타입 · Google Drive 경기스코어표에서 8월 27일~9월 1일 확인된 30경기를 세트별 점수와 함께 수록. 9월 2~3일 결과는 추가 반영 필요. 경기별 시작 시각 미확인.",
+  "standingsNote": "조별순위는 공식 조 편성 및 경기 결과 전수검수 후 제공 예정",
+  "standingsRule": "조별 순위 검수 중",
+  "meaning": {
+    "eyebrow": "CBS CUP 2026 · PROTOTYPE",
+    "title": "제37회 CBS배 전국중고배구대회",
+    "note": "기존 국내대회 Competition Engine V2 공통 템플릿을 사용하는 데이터 검수용 프로토타입"
+  },
+  "genderLinks": {},
+  "participants": [
+    {
+      "code": "S000",
+      "name": "부산동성고",
+      "fullName": "부산동성고",
+      "en": "부산동성고",
+      "group": "남고부"
+    },
+    {
+      "code": "S001",
+      "name": "경북사대부고",
+      "fullName": "경북사대부고",
+      "en": "경북사대부고",
+      "group": "남고부"
+    },
+    {
+      "code": "S002",
+      "name": "인창고",
+      "fullName": "인창고",
+      "en": "인창고",
+      "group": "남고부"
+    },
+    {
+      "code": "S003",
+      "name": "순천제일고",
+      "fullName": "순천제일고",
+      "en": "순천제일고",
+      "group": "남고부"
+    },
+    {
+      "code": "S004",
+      "name": "천안고",
+      "fullName": "천안고",
+      "en": "천안고",
+      "group": "남고부"
+    },
+    {
+      "code": "S005",
+      "name": "옥천고",
+      "fullName": "옥천고",
+      "en": "옥천고",
+      "group": "남고부"
+    },
+    {
+      "code": "S006",
+      "name": "제천산업고",
+      "fullName": "제천산업고",
+      "en": "제천산업고",
+      "group": "남고부"
+    },
+    {
+      "code": "S007",
+      "name": "경북체육고",
+      "fullName": "경북체육고",
+      "en": "경북체육고",
+      "group": "남고부"
+    },
+    {
+      "code": "S008",
+      "name": "속초고",
+      "fullName": "속초고",
+      "en": "속초고",
+      "group": "남고부"
+    },
+    {
+      "code": "S009",
+      "name": "동해광희고",
+      "fullName": "동해광희고",
+      "en": "동해광희고",
+      "group": "남고부"
+    },
+    {
+      "code": "S010",
+      "name": "울산스포츠과학고",
+      "fullName": "울산스포츠과학고",
+      "en": "울산스포츠과학고",
+      "group": "남고부"
+    },
+    {
+      "code": "S011",
+      "name": "현일고",
+      "fullName": "현일고",
+      "en": "현일고",
+      "group": "남고부"
+    },
+    {
+      "code": "S012",
+      "name": "영생고",
+      "fullName": "영생고",
+      "en": "영생고",
+      "group": "남고부"
+    },
+    {
+      "code": "S013",
+      "name": "화성시체육회",
+      "fullName": "화성시체육회",
+      "en": "화성시체육회",
+      "group": "남고부"
+    },
+    {
+      "code": "S014",
+      "name": "인하사대부고",
+      "fullName": "인하사대부고",
+      "en": "인하사대부고",
+      "group": "남고부"
+    },
+    {
+      "code": "S015",
+      "name": "광주전자고",
+      "fullName": "광주전자고",
+      "en": "광주전자고",
+      "group": "남고부"
+    },
+    {
+      "code": "S016",
+      "name": "진주동명고",
+      "fullName": "진주동명고",
+      "en": "진주동명고",
+      "group": "남고부"
+    },
+    {
+      "code": "S017",
+      "name": "경북사대부설고",
+      "fullName": "경북사대부설고",
+      "en": "경북사대부설고",
+      "group": "남고부"
+    },
+    {
+      "code": "S018",
+      "name": "성지고",
+      "fullName": "성지고",
+      "en": "성지고",
+      "group": "남고부"
+    },
+    {
+      "code": "S019",
+      "name": "남성고",
+      "fullName": "남성고",
+      "en": "남성고",
+      "group": "남고부"
+    },
+    {
+      "code": "S020",
+      "name": "대전중앙고",
+      "fullName": "대전중앙고",
+      "en": "대전중앙고",
+      "group": "남고부"
+    },
+    {
+      "code": "S021",
+      "name": "광주전자공고",
+      "fullName": "광주전자공고",
+      "en": "광주전자공고",
+      "group": "남고부"
+    },
+    {
+      "code": "S022",
+      "name": "체천산업고",
+      "fullName": "체천산업고",
+      "en": "체천산업고",
+      "group": "남고부"
+    }
+  ],
+  "matches": [
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-001",
+      "date": "2026-08-27",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S000"
+      },
+      "away": {
+        "code": "S001"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-002",
+      "date": "2026-08-27",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S002"
+      },
+      "away": {
+        "code": "S003"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-003",
+      "date": "2026-08-27",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S004"
+      },
+      "away": {
+        "code": "S005"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 11
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-004",
+      "date": "2026-08-27",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S006"
+      },
+      "away": {
+        "code": "S007"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-005",
+      "date": "2026-08-27",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S008"
+      },
+      "away": {
+        "code": "S009"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 9
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-006",
+      "date": "2026-08-27",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S010"
+      },
+      "away": {
+        "code": "S011"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-007",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S012"
+      },
+      "away": {
+        "code": "S013"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 10
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-008",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S014"
+      },
+      "away": {
+        "code": "S015"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-009",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S004"
+      },
+      "away": {
+        "code": "S007"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-010",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S006"
+      },
+      "away": {
+        "code": "S005"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-011",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S008"
+      },
+      "away": {
+        "code": "S011"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-012",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S010"
+      },
+      "away": {
+        "code": "S009"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 9
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-013",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S016"
+      },
+      "away": {
+        "code": "S017"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 28,
+            "away": 30
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-014",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S018"
+      },
+      "away": {
+        "code": "S013"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-015",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S002"
+      },
+      "away": {
+        "code": "S019"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-016",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S020"
+      },
+      "away": {
+        "code": "S021"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-017",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S007"
+      },
+      "away": {
+        "code": "S005"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-018",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S011"
+      },
+      "away": {
+        "code": "S009"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 6
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 27,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-019",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S000"
+      },
+      "away": {
+        "code": "S016"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-020",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S019"
+      },
+      "away": {
+        "code": "S003"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-021",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S020"
+      },
+      "away": {
+        "code": "S014"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-022",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S022"
+      },
+      "away": {
+        "code": "S004"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-023",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S008"
+      },
+      "away": {
+        "code": "S010"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-024",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "12강전",
+      "pool": "",
+      "home": {
+        "code": "S018"
+      },
+      "away": {
+        "code": "S016"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "12강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-025",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "12강전",
+      "pool": "",
+      "home": {
+        "code": "S008"
+      },
+      "away": {
+        "code": "S019"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "bracketLabel": "12강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-026",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "12강전",
+      "pool": "",
+      "home": {
+        "code": "S003"
+      },
+      "away": {
+        "code": "S020"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "bracketLabel": "12강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-027",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "12강전",
+      "pool": "",
+      "home": {
+        "code": "S001"
+      },
+      "away": {
+        "code": "S006"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "bracketLabel": "12강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-028",
+      "date": "2026-09-01",
+      "time": "",
+      "stage": "8강전",
+      "pool": "",
+      "home": {
+        "code": "S004"
+      },
+      "away": {
+        "code": "S016"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "bracketLabel": "8강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-029",
+      "date": "2026-09-01",
+      "time": "",
+      "stage": "8강전",
+      "pool": "",
+      "home": {
+        "code": "S014"
+      },
+      "away": {
+        "code": "S008"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
+      "bracketLabel": "8강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-030",
+      "date": "2026-09-01",
+      "time": "",
+      "stage": "8강전",
+      "pool": "",
+      "home": {
+        "code": "S012"
+      },
+      "away": {
+        "code": "S001"
+      },
+      "venueLabel": "영천체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 10
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
+      "bracketLabel": "8강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-high-men-FINAL",
+      "date": "2026-09-03",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "S004"
+      },
+      "away": {
+        "code": "S014"
+      },
+      "venueLabel": "경북 영천",
+      "localTimeLabel": "한국 현지 · 시각 확인 중",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 9
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승",
+      "scoreVerification": "2026-09-03 대회 결승 보도 및 결과표"
+    }
+  ],
+  "standings": {},
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "S004",
+      "team": "천안고",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "S014",
+      "team": "인하사대부고",
+      "result": "준우승",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "제37회 CBS배 원본 경기스코어 (KVL Google Drive)",
+      "url": "https://docs.google.com/spreadsheets/d/11KlT-eC7CWfDdkOQJXiPmT-D9e2HXP0U/edit"
+    },
+    {
+      "title": "2026 CBS배 결승 결과",
+      "url": "https://www.nocutnews.co.kr/news/6572706"
+    }
+  ],
+  "rosterNote": "선수명단은 검수 완료 Google Drive 자료와 연결 예정",
+  "domesticRules": {}
+}
