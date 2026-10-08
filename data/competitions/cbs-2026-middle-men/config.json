@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 2,
+  "slug": "cbs-2026-middle-men",
+  "competition": {
+    "competitionId": "KVL-COMP-CBS-2026-MIDDLE-MEN",
+    "displayName": "제37회 CBS배 전국중고배구대회 남중부",
+    "officialName": "2026 제37회 CBS배 전국중고배구대회 · 남중부",
+    "season": "2026",
+    "gender": "men",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "참가 조",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "결선 진출",
+      "knockoutKpiUnit": "팀",
+      "standingsTitle": "남중부 조별순위",
+      "knockoutTitle": "남중부 결선 토너먼트",
+      "participantsTitle": "참가학교",
+      "participantsKpi": "참가학교",
+      "participantsKpiUnit": "팀"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "예선",
+        "12강전",
+        "8강전",
+        "6강전",
+        "4강전",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "none",
+      "title": "남중부 조별순위"
+    },
+    "knockout": {
+      "mode": "none",
+      "title": "남중부 결선 토너먼트"
+    },
+    "participants": {
+      "mode": "flat",
+      "groupLabel": "남중부 참가학교"
+    },
+    "roster": {
+      "mode": "none"
+    }
+  },
+  "hero": {
+    "showImage": false,
+    "mode": "photo"
+  },
+  "seo": {
+    "title": "2026 CBS배 남중부 | K-Volley Lab",
+    "description": "2026 CBS배 남중부 경기 결과 및 세트별 점수 검수용 프로토타입"
+  },
+  "data": "data.json"
+}
