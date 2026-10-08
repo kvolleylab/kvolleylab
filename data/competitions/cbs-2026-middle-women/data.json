@@ -1,0 +1,893 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료 · 경해여중 우승",
+  "dateLabel": "2026-08-27 ~ 2026-09-03",
+  "locationLabel": "경북 영천",
+  "venueLabel": "영천체육관 · 영천생활체육관 · 최무선체육관 · 금호체육관",
+  "teamCount": 15,
+  "groupCount": 0,
+  "matchCount": 23,
+  "knockoutTeamCount": 0,
+  "champion": "경해여중",
+  "championAchievement": "2026 제37회 CBS배 여중부 우승",
+  "scheduleNote": "검수용 프로토타입 · Google Drive 경기스코어표에서 8월 27일~9월 1일 확인된 22경기를 세트별 점수와 함께 수록. 9월 2~3일 결과는 추가 반영 필요. 경기별 시작 시각 미확인.",
+  "standingsNote": "조별순위는 공식 조 편성 및 경기 결과 전수검수 후 제공 예정",
+  "standingsRule": "조별 순위 검수 중",
+  "meaning": {
+    "eyebrow": "CBS CUP 2026 · PROTOTYPE",
+    "title": "제37회 CBS배 전국중고배구대회",
+    "note": "기존 국내대회 Competition Engine V2 공통 템플릿을 사용하는 데이터 검수용 프로토타입"
+  },
+  "genderLinks": {},
+  "participants": [
+    {
+      "code": "S000",
+      "name": "포항여중",
+      "fullName": "포항여중",
+      "en": "포항여중",
+      "group": "여중부"
+    },
+    {
+      "code": "S001",
+      "name": "월평중",
+      "fullName": "월평중",
+      "en": "월평중",
+      "group": "여중부"
+    },
+    {
+      "code": "S002",
+      "name": "천안봉서중",
+      "fullName": "천안봉서중",
+      "en": "천안봉서중",
+      "group": "여중부"
+    },
+    {
+      "code": "S003",
+      "name": "홍천군체육회u-15",
+      "fullName": "홍천군체육회u-15",
+      "en": "홍천군체육회u-15",
+      "group": "여중부"
+    },
+    {
+      "code": "S004",
+      "name": "수일여중",
+      "fullName": "수일여중",
+      "en": "수일여중",
+      "group": "여중부"
+    },
+    {
+      "code": "S005",
+      "name": "대구일중",
+      "fullName": "대구일중",
+      "en": "대구일중",
+      "group": "여중부"
+    },
+    {
+      "code": "S006",
+      "name": "금천중",
+      "fullName": "금천중",
+      "en": "금천중",
+      "group": "여중부"
+    },
+    {
+      "code": "S007",
+      "name": "광주체육중",
+      "fullName": "광주체육중",
+      "en": "광주체육중",
+      "group": "여중부"
+    },
+    {
+      "code": "S008",
+      "name": "전주근영중",
+      "fullName": "전주근영중",
+      "en": "전주근영중",
+      "group": "여중부"
+    },
+    {
+      "code": "S009",
+      "name": "목포영화중",
+      "fullName": "목포영화중",
+      "en": "목포영화중",
+      "group": "여중부"
+    },
+    {
+      "code": "S010",
+      "name": "중앙여중",
+      "fullName": "중앙여중",
+      "en": "중앙여중",
+      "group": "여중부"
+    },
+    {
+      "code": "S011",
+      "name": "경해여중",
+      "fullName": "경해여중",
+      "en": "경해여중",
+      "group": "여중부"
+    },
+    {
+      "code": "S012",
+      "name": "부산여중",
+      "fullName": "부산여중",
+      "en": "부산여중",
+      "group": "여중부"
+    },
+    {
+      "code": "S013",
+      "name": "목퐁영화중",
+      "fullName": "목퐁영화중",
+      "en": "목퐁영화중",
+      "group": "여중부"
+    },
+    {
+      "code": "S014",
+      "name": "모종중",
+      "fullName": "모종중",
+      "en": "모종중",
+      "group": "여중부"
+    }
+  ],
+  "matches": [
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-001",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S000"
+      },
+      "away": {
+        "code": "S001"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-002",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S002"
+      },
+      "away": {
+        "code": "S003"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 10
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-003",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S004"
+      },
+      "away": {
+        "code": "S005"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-004",
+      "date": "2026-08-28",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S006"
+      },
+      "away": {
+        "code": "S007"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 5
+          },
+          {
+            "home": 25,
+            "away": 10
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-005",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S008"
+      },
+      "away": {
+        "code": "S009"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-006",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S010"
+      },
+      "away": {
+        "code": "S011"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-007",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S002"
+      },
+      "away": {
+        "code": "S001"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 7,
+            "away": 15
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-008",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S004"
+      },
+      "away": {
+        "code": "S007"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 9
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-009",
+      "date": "2026-08-29",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S005"
+      },
+      "away": {
+        "code": "S006"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-010",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S012"
+      },
+      "away": {
+        "code": "S013"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 11
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-011",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S014"
+      },
+      "away": {
+        "code": "S011"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-012",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S002"
+      },
+      "away": {
+        "code": "S000"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-013",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S001"
+      },
+      "away": {
+        "code": "S003"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-014",
+      "date": "2026-08-30",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S004"
+      },
+      "away": {
+        "code": "S006"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-015",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S012"
+      },
+      "away": {
+        "code": "S008"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-016",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S014"
+      },
+      "away": {
+        "code": "S010"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-017",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S003"
+      },
+      "away": {
+        "code": "S000"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-018",
+      "date": "2026-08-31",
+      "time": "",
+      "stage": "예선",
+      "pool": "",
+      "home": {
+        "code": "S007"
+      },
+      "away": {
+        "code": "S005"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "예선",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-019",
+      "date": "2026-09-01",
+      "time": "",
+      "stage": "8강전",
+      "pool": "",
+      "home": {
+        "code": "S010"
+      },
+      "away": {
+        "code": "S001"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "bracketLabel": "8강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-020",
+      "date": "2026-09-01",
+      "time": "",
+      "stage": "8강전",
+      "pool": "",
+      "home": {
+        "code": "S000"
+      },
+      "away": {
+        "code": "S011"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 10,
+            "away": 15
+          }
+        ]
+      },
+      "bracketLabel": "8강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-021",
+      "date": "2026-09-01",
+      "time": "",
+      "stage": "8강전",
+      "pool": "",
+      "home": {
+        "code": "S006"
+      },
+      "away": {
+        "code": "S012"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 10
+          }
+        ]
+      },
+      "bracketLabel": "8강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-022",
+      "date": "2026-09-01",
+      "time": "",
+      "stage": "8강전",
+      "pool": "",
+      "home": {
+        "code": "S008"
+      },
+      "away": {
+        "code": "S004"
+      },
+      "venueLabel": "금호체육관",
+      "localTimeLabel": "한국 현지 · 경기별 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 27,
+            "away": 25
+          }
+        ]
+      },
+      "bracketLabel": "8강전",
+      "scoreVerification": "Google Drive 한국중고배구연맹 제37회 CBS배 경기스코어 원본"
+    },
+    {
+      "id": "KVL-CBS26-cbs-2026-middle-women-FINAL",
+      "date": "2026-09-03",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "S011"
+      },
+      "away": {
+        "code": "S010"
+      },
+      "venueLabel": "경북 영천",
+      "localTimeLabel": "한국 현지 · 시각 확인 중",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": []
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승",
+      "scoreVerification": "2026-09-03 대회 결승 보도 및 결과표"
+    }
+  ],
+  "standings": {},
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "S011",
+      "team": "경해여중",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "S010",
+      "team": "중앙여중",
+      "result": "준우승",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "제37회 CBS배 원본 경기스코어 (KVL Google Drive)",
+      "url": "https://docs.google.com/spreadsheets/d/11KlT-eC7CWfDdkOQJXiPmT-D9e2HXP0U/edit"
+    },
+    {
+      "title": "2026 CBS배 결승 결과",
+      "url": "https://www.nocutnews.co.kr/news/6572706"
+    }
+  ],
+  "rosterNote": "선수명단은 검수 완료 Google Drive 자료와 연결 예정",
+  "domesticRules": {}
+}
