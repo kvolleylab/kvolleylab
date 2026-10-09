@@ -3238,3 +3238,12 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
     font-size:10px;
   }
 }
+
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game.is-unused{
+  opacity:.58;
+  border-style:dashed;
+  background:#f7f8f9;
+}
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game.is-unused strong{
+  color:#9aa3ad;
+}
