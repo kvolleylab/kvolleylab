@@ -268,7 +268,7 @@ html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{
 }
 html body.kvl-competition-template-v2 .kvl1180-hero::before,html body.kvl-competition-template-v2 .kvl1180-hero::after{content:none!important}
 html body.kvl-competition-template-v2[data-kvl-hero-mode="photo"] .kvl1180-hero{
- background-image:linear-gradient(90deg,rgba(var(--kvl-theme-overlay-rgb),.20) 0%,rgba(var(--kvl-theme-overlay-rgb),.10) 42%,rgba(var(--kvl-theme-overlay-rgb),.02) 68%,rgba(var(--kvl-theme-overlay-rgb),0) 82%),var(--kvl-hero-image-desktop,none)!important;
+ background-image:linear-gradient(90deg,rgba(var(--kvl-theme-overlay-rgb),.12) 0%,rgba(var(--kvl-theme-overlay-rgb),.06) 42%,rgba(var(--kvl-theme-overlay-rgb),.01) 68%,rgba(var(--kvl-theme-overlay-rgb),0) 82%),var(--kvl-hero-image-desktop,none)!important;
  background-size:cover!important;
  background-position:var(--kvl-hero-position,center center)!important;
 }
@@ -284,7 +284,7 @@ body.kvl-competition-template-v2 .kvl1180-roster-club::before{content:none!impor
 @media(max-width:680px){
  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{background-image:linear-gradient(105deg,color-mix(in srgb,var(--kvl-theme-hero-a) 96%,transparent),color-mix(in srgb,var(--kvl-theme-hero-b) 88%,transparent) 68%,color-mix(in srgb,var(--kvl-theme-hero-a) 65%,transparent)),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important}
  html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-hero-mode="photo"] .kvl1180-hero{
-  background-image:linear-gradient(105deg,rgba(var(--kvl-theme-overlay-rgb),.42) 0%,rgba(var(--kvl-theme-overlay-rgb),.22) 48%,rgba(var(--kvl-theme-overlay-rgb),.04) 76%),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
+  background-image:linear-gradient(105deg,rgba(var(--kvl-theme-overlay-rgb),.28) 0%,rgba(var(--kvl-theme-overlay-rgb),.14) 48%,rgba(var(--kvl-theme-overlay-rgb),.02) 76%),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
   background-size:auto 100%!important;
   background-position:var(--kvl-hero-position-mobile,right center)!important;
  }
@@ -2688,6 +2688,12 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl11
   border-bottom:4px solid var(--kvl-theme-accent)!important;
   box-shadow:0 12px 28px var(--kvl-theme-shadow)!important;
 }
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero::before,
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-hero::after{
+  content:none!important;
+  display:none!important;
+}
+
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl1180-controlbar{
   border-color:var(--kvl-theme-border)!important;
   box-shadow:0 7px 20px var(--kvl-theme-shadow)!important;
