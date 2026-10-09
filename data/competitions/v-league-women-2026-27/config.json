@@ -40,10 +40,16 @@
       "title": "여자부 정규리그 순위"
     },
     "knockout": {
-      "mode": "none",
-      "title": "포스트시즌 대진",
+      "mode": "pro-postseason",
+      "title": "포스트시즌 · 챔피언결정전",
       "showFinalRanking": false,
-      "emptyMessage": "정규리그 종료 후 최종 순위에 따라 포스트시즌 대진을 이 위치에 표시합니다."
+      "qpoLabel": "준플레이오프",
+      "qpoRule": "정규리그 3·4위 승점 차가 3점 이내일 때 3위 팀 홈에서 단판 실시",
+      "poLabel": "플레이오프",
+      "poRule": "정규리그 2위 vs 준PO 승자 · 준PO 미개최 시 정규리그 3위 진출",
+      "finalLabel": "챔피언결정전",
+      "finalRule": "정규리그 1위 vs 플레이오프 승자",
+      "note": "준플레이오프는 조건부 단판, 플레이오프는 3전 2선승제, 챔피언결정전은 5전 3선승제로 표시합니다. 실제 대진은 정규리그 순위 확정 후 자동 갱신됩니다."
     },
     "participants": {
       "mode": "flat",
