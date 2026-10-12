@@ -3307,3 +3307,129 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
     min-width:220px!important;
   }
 }
+
+
+/* PRO · large club-logo treatment · 2026-10-12
+ * V-League club marks are primary visual identity, not flag-sized metadata.
+ */
+@media(min-width:901px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] :is(#schedule,#team-results) .kvl1180-match-row{
+    min-height:108px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] :is(#schedule,#team-results) .kvl1180-inline-logo{
+    box-sizing:border-box!important;
+    width:58px!important;
+    min-width:58px!important;
+    max-width:58px!important;
+    height:58px!important;
+    padding:2px!important;
+    border-radius:10px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] :is(#schedule,#team-results) .kvl1180-inline-logo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-row{
+    min-height:76px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-team{
+    grid-template-columns:58px minmax(0,1fr)!important;
+    gap:13px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-team img{
+    width:56px!important;
+    height:56px!important;
+    object-fit:contain!important;
+    border:0!important;
+    background:transparent!important;
+  }
+
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button{
+    grid-template-columns:72px minmax(0,1fr)!important;
+    gap:14px!important;
+    min-height:100px!important;
+    padding:12px 16px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button img{
+    width:68px!important;
+    height:68px!important;
+    object-fit:contain!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-team-profile-head{
+    grid-template-columns:132px minmax(0,1fr) auto!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-team-profile-flag{
+    width:124px!important;
+    height:124px!important;
+    border:0!important;
+    background:transparent!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-team-profile-flag img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+}
+
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] :is(#schedule,#team-results) .kvl1180-side.is-left{
+    grid-template-columns:minmax(0,1fr) 50px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] :is(#schedule,#team-results) .kvl1180-side.is-right{
+    grid-template-columns:50px minmax(0,1fr)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] :is(#schedule,#team-results) .kvl1180-inline-logo{
+    width:46px!important;
+    min-width:46px!important;
+    max-width:46px!important;
+    height:46px!important;
+    padding:1px!important;
+    border-radius:8px!important;
+  }
+
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-shared-combined-identity{
+    grid-template-columns:44px 48px minmax(132px,1fr)!important;
+    min-width:236px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-shared-combined-flag{
+    width:46px!important;
+    height:46px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-shared-combined-flag img{
+    width:46px!important;
+    height:46px!important;
+    object-fit:contain!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-shared-combined-line{
+    min-height:64px!important;
+  }
+
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button{
+    grid-template-columns:62px minmax(0,1fr)!important;
+    gap:10px!important;
+    min-height:86px!important;
+    padding:10px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-participant-button img{
+    width:58px!important;
+    height:58px!important;
+    object-fit:contain!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-team-profile-head{
+    grid-template-columns:92px minmax(0,1fr)!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #rosters .kvl1180-team-profile-flag{
+    width:88px!important;
+    height:88px!important;
+    border:0!important;
+    background:transparent!important;
+  }
+}
