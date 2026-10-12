@@ -3456,3 +3456,50 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
     background:transparent!important;
   }
 }
+
+
+/* PRO · large club logos in pool standings · 2026-10-12
+ * KOVO Cup uses pool standings, so club marks follow the large PRO identity scale.
+ */
+@media(min-width:901px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-table-head,
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row{
+    grid-template-columns:30px minmax(130px,1fr) 45px 38px 48px 48px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row{
+    min-height:76px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-team{
+    grid-template-columns:54px minmax(0,1fr)!important;
+    gap:10px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-team img{
+    width:52px!important;
+    height:52px!important;
+    object-fit:contain!important;
+    border:0!important;
+    background:transparent!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-team-copy strong{
+    overflow:visible!important;
+    text-overflow:clip!important;
+    white-space:normal!important;
+    word-break:keep-all!important;
+  }
+}
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row{
+    min-height:68px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-team{
+    grid-template-columns:48px minmax(0,1fr)!important;
+    gap:8px!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-team img{
+    width:46px!important;
+    height:46px!important;
+    object-fit:contain!important;
+    border:0!important;
+    background:transparent!important;
+  }
+}
