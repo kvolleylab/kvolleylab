@@ -56,14 +56,22 @@
     }
   },
   "hero": {
-    "showImage": false,
-    "mode": "color-only",
-    "alt": "2026 KOVO컵 여자부 프로토타입 메인카드",
-    "themeVariant": "cup"
+    "showImage": true,
+    "mode": "photo",
+    "alt": "2026 KOVO컵 여자부 메인카드",
+    "themeVariant": "cup",
+    "pcImage": "/assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-pc-v01.svg?v=20261012-kovo-cup-1",
+    "mobileImage": "/assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-mobile-v01.svg?v=20261012-kovo-cup-1",
+    "mimeType": "image/svg+xml",
+    "position": "right center",
+    "mobilePosition": "right center",
+    "size": "cover",
+    "mobileSize": "cover",
+    "assetNote": "Competition Engine 실사용 Hero 비율 기준 PC 2050×406, Mobile 1258×406. KOVO컵 전용 cup/volleyball 그래픽, 좌측 TEXT SAFE 확보."
   },
   "seo": {
-    "title": "2026 KOVO컵 여자부 프로토타입 | K-Volley Lab",
-    "description": "2026 KOVO컵 여자부 경기일정, 조별순위, 결선 토너먼트와 참가팀 프로토타입."
+    "title": "2026 KOVO컵 여자부 | K-Volley Lab",
+    "description": "2026 KOVO컵 여자부 경기일정, 조별순위, 결선 토너먼트와 참가팀."
   },
   "data": "data.json",
   "modules": []
