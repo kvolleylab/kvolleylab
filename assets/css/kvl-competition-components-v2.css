@@ -3247,3 +3247,63 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game.is-unused strong{
   color:#9aa3ad;
 }
+
+
+/* DOMESTIC + PRO · shared standings rule card theme + full team names · 2026-10-12
+ * The ranking-rule guidance card follows each competition theme.
+ * Single-league team names must never be ellipsized.
+ */
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .kvl1180-groups-rule{
+  border-color:var(--kvl-theme-border)!important;
+  background:linear-gradient(90deg,var(--kvl-theme-soft),color-mix(in srgb,var(--kvl-theme-soft) 45%,#fff))!important;
+  color:color-mix(in srgb,var(--kvl-theme-primary) 78%,#334155)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .kvl1180-groups-rule [data-kvl="standings-rule"]{
+  color:inherit!important;
+  font-weight:750!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .kvl1180-groups-legend{
+  color:color-mix(in srgb,var(--kvl-theme-primary) 70%,#64748b)!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .kvl1180-groups-legend .q i{
+  background:var(--kvl-theme-accent)!important;
+}
+
+/* Give the team column enough room in shared domestic/pro single-league standings. */
+@media(min-width:901px){
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-table-head,
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-row{
+    grid-template-columns:60px minmax(240px,2.35fr) 92px 48px 48px 60px 94px 94px 82px!important;
+    column-gap:6px!important;
+  }
+}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team{
+  min-width:0!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team-copy{
+  min-width:0!important;
+  overflow:visible!important;
+}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team-copy strong,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team-copy strong .kvl-team-link{
+  display:block!important;
+  max-width:none!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  word-break:keep-all!important;
+}
+@media(max-width:680px){
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl-shared-combined-team{
+    width:auto!important;
+    max-width:none!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    white-space:normal!important;
+    word-break:keep-all!important;
+  }
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl-shared-combined-identity{
+    min-width:220px!important;
+  }
+}
