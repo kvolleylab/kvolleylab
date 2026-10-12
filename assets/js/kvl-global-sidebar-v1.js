@@ -16,6 +16,7 @@
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html']);
   const vleaguePages=new Set(['v-league.html','kovo-cup.html']);
   const isProCompetitionPrototype=path==='competition-engine-prototype.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
+  const isProCompetitionProduction=path==='competition-engine.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
   const universityLeaguePages=new Set(['university-league.html']);
   const isUniversityLeagueCompetition=path==='competition-engine.html'&&/^university-league-(?:men|women)-2026$/.test(params.get('competition')||'');
   const playerPages=new Set(['players.html','player.html','player-search.html','player-profile.html','growth-timeline.html']);
@@ -26,7 +27,7 @@
   let active='';
   if(path==='index.html'||path==='')active='home';
   else if(schedulePages.has(path))active='schedules';
-  else if(vleaguePages.has(path)||isProCompetitionPrototype)active='vleague';
+  else if(vleaguePages.has(path)||isProCompetitionPrototype||isProCompetitionProduction)active='vleague';
   else if(nationalPages.has(path))active='national';
   else if(domesticPages.has(path)||universityLeaguePages.has(path)||isUniversityLeagueCompetition)active='domestic';
   else if(isInternationalPage)active='competition';
@@ -100,8 +101,8 @@
   ];
 
   const isChildActive=(item)=>{
-    if(item.key==='vleague-home')return active==='vleague'&&(path==='v-league.html'||(isProCompetitionPrototype&&/^v-league-/.test(params.get('competition')||'')));
-    if(item.key==='vleague-cup')return active==='vleague'&&(path==='kovo-cup.html'||(isProCompetitionPrototype&&/^kovo-cup-/.test(params.get('competition')||'')));
+    if(item.key==='vleague-home')return active==='vleague'&&(path==='v-league.html'||((isProCompetitionPrototype||isProCompetitionProduction)&&/^v-league-/.test(params.get('competition')||'')));
+    if(item.key==='vleague-cup')return active==='vleague'&&(path==='kovo-cup.html'||((isProCompetitionPrototype||isProCompetitionProduction)&&/^kovo-cup-/.test(params.get('competition')||'')));
 
     if(item.key==='national-home')return active==='national'&&path==='national-team.html';
     if(item.key==='national-senior')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='senior';
