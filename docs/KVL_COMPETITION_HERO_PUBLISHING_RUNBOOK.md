@@ -28,3 +28,21 @@ If editing from a ChatGPT session, first determine whether a **real binary bridg
 ### Verification links
 - https://kvolleylab.com/competition-engine.html?competition=kovo-cup-men-2026
 - https://kvolleylab.com/competition-engine.html?competition=kovo-cup-women-2026
+
+## 2026-10-13 live failure diagnosis and verified recovery
+
+- The real four-file v02 ZIP exists in the ChatGPT container, with non-empty WebP assets (men PC 144628 bytes, men mobile 103052 bytes, women PC 114942 bytes, women mobile 85100 bytes).
+- Git connectivity from that container was tested using `git ls-remote https://github.com/kvolleylab/kvolleylab.git HEAD`, which failed with `Could not resolve host: github.com` (DNS/network egress issue, **not** a GitHub token permission problem).
+- The connected GitHub API can write UTF-8 files and supports `create_blob` base64, but its input does not accept the runtime's local file path or connector file URI. The two sandboxes cannot currently pass hundreds of kilobytes of image bytes directly. Being able to create a Git blob is not proof an image has reached GitHub.
+- Therefore never switch the image path until all four destination WebPs are visible at GitHub and downloadable. Never use placeholder SVG, reuse earlier artwork, or claim deployment to paper over the bridge problem.
+
+### Recovery path A: authorized local Git checkout (preferred)
+1. Download the full v02 ZIP from the ChatGPT conversation to the device with a working GitHub-authenticated clone.
+2. From the repository root run `python -m pip install Pillow` and `python scripts/publish-competition-hero.py /absolute/path/kovo_cup_hero_final_v02.zip --push`.
+3. Verify GitHub `main` commit, four `assets/img/competition-hero/*v02.webp` URLs (HTTP 200, correct file contents), both `data/competitions/kovo-cup-*/config.json` references, then browser desktop/mobile Hero screenshots.
+
+### Recovery path B: GitHub web UI file upload
+Upload the four extracted files to `assets/img/competition-hero/` through GitHub web UI, commit them, then update both competition config files to v02 `image/webp` URLs with a new cache query. Validate desktop/mobile. If an isolated GitHub upload is used, do not change config until all four assets exist.
+
+### Operational definition of done
+Only count COMPLETE when (1) all four v02 WebPs are on GitHub main, (2) both config files point to them, (3) actual image responses and visible PC/mobile pages are verified, and (4) no CSS adjustments or protected production dependencies were changed. Until then report ASSET READY / DEPLOY PENDING.
