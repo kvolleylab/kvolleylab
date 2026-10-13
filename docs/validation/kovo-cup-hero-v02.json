@@ -1,0 +1,388 @@
+{
+  "checkedAtUTC": "2026-10-13T23:01:47.561883+00:00",
+  "status": "LIVE_HERO_VERIFIED",
+  "sourceArchive": {
+    "name": "kovo_cup_hero_final_v02.zip",
+    "sha256": "82d6e160bf6d9ae283e934d83b61fbb356b105c27e8e4bf37fbfb6e6f33e38c7"
+  },
+  "assetCommit": "0b074df5d76940d791ef05c8e2be365a20934822",
+  "commonFitCommit": "6e04d8b1389ae26e0c2f5f1d81644425190f9a1d",
+  "verifiedDeployment": {
+    "commit": "ddceb94b310d49053f5d40980ce13e26c2cf63c1",
+    "pagesRunId": 38480720655,
+    "conclusion": "success"
+  },
+  "assets": [
+    {
+      "path": "assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-pc-v02.webp",
+      "bytes": 144628,
+      "sha256": "0de7b9ceb54d852bf60cb094236805be271dd9a8dcf30925616a6b3a556c6764",
+      "gitBlobSha": "b8b7c50af917f3c1edbe3fa831ba6b9dcf598c09"
+    },
+    {
+      "path": "assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-mobile-v02.webp",
+      "bytes": 103052,
+      "sha256": "548e95488427ae4447e4c102e776ab454a92d4b400fa7f179a6dbe755987821d",
+      "gitBlobSha": "dd67e50d6857e6f801c1b0d8a428e8cd9535e6b6"
+    },
+    {
+      "path": "assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-pc-v02.webp",
+      "bytes": 114942,
+      "sha256": "e4c68909ff66e9617c2c093e7446d7949dde91f82eded963241ee3b08684f6a6",
+      "gitBlobSha": "154553698492f7c908584ec731842a22b5325848"
+    },
+    {
+      "path": "assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-mobile-v02.webp",
+      "bytes": 85100,
+      "sha256": "bab3210722472e748010184a2168a8cd1f7ebbad113ad8f219774d486281046e",
+      "gitBlobSha": "532847a95c987c166ec7925a4c817acc62eabddf"
+    }
+  ],
+  "liveHTTP": [
+    {
+      "url": "https://kvolleylab.com/data/competitions/kovo-cup-men-2026/config.json",
+      "identical": true
+    },
+    {
+      "url": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-pc-v02.webp?v=20261013-kovo-hero-v02",
+      "status": 200,
+      "mimeType": "image/webp",
+      "size": [
+        2108,
+        406
+      ],
+      "bytes": 144628,
+      "sha256": "0de7b9ceb54d852bf60cb094236805be271dd9a8dcf30925616a6b3a556c6764",
+      "identical": true
+    },
+    {
+      "url": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-mobile-v02.webp?v=20261013-kovo-hero-v02",
+      "status": 200,
+      "mimeType": "image/webp",
+      "size": [
+        1258,
+        406
+      ],
+      "bytes": 103052,
+      "sha256": "548e95488427ae4447e4c102e776ab454a92d4b400fa7f179a6dbe755987821d",
+      "identical": true
+    },
+    {
+      "url": "https://kvolleylab.com/data/competitions/kovo-cup-women-2026/config.json",
+      "identical": true
+    },
+    {
+      "url": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-pc-v02.webp?v=20261013-kovo-hero-v02",
+      "status": 200,
+      "mimeType": "image/webp",
+      "size": [
+        2108,
+        406
+      ],
+      "bytes": 114942,
+      "sha256": "e4c68909ff66e9617c2c093e7446d7949dde91f82eded963241ee3b08684f6a6",
+      "identical": true
+    },
+    {
+      "url": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-mobile-v02.webp?v=20261013-kovo-hero-v02",
+      "status": 200,
+      "mimeType": "image/webp",
+      "size": [
+        1258,
+        406
+      ],
+      "bytes": 85100,
+      "sha256": "bab3210722472e748010184a2168a8cd1f7ebbad113ad8f219774d486281046e",
+      "identical": true
+    }
+  ],
+  "browser": {
+    "tool": "Cloud Browser cua_repl",
+    "method": "Same-origin iframe containing unmodified live competition-engine.html; rendered DOM/computed CSS and screenshots",
+    "checks": [
+      {
+        "competition": "kovo-cup-men-2026",
+        "viewport": 390,
+        "hero": {
+          "width": 355,
+          "height": 182.46875
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-mobile-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 1258,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.28060413354531,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 65.07472178060414
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(105deg, rgba(11, 13, 16, 0.28) 0%, rgba(11, 13, 16, 0.14) 48%, rgba(11, 13, 16, 0.02) 76%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "kovo-cup-men-2026",
+        "viewport": 360,
+        "hero": {
+          "width": 325,
+          "height": 182.46875
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-mobile-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 1258,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.25675675675675674,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 74.75675675675676
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(105deg, rgba(11, 13, 16, 0.28) 0%, rgba(11, 13, 16, 0.14) 48%, rgba(11, 13, 16, 0.02) 76%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "kovo-cup-men-2026",
+        "viewport": 1180,
+        "hero": {
+          "width": 935,
+          "height": 200.59375
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-pc-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 2108,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.44259962049335866,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 17.304554079696373
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(90deg, rgba(11, 13, 16, 0.12) 0%, rgba(11, 13, 16, 0.06) 42%, rgba(11, 13, 16, 0.01) 68%, rgba(11, 13, 16, 0) 82%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "kovo-cup-women-2026",
+        "viewport": 1180,
+        "hero": {
+          "width": 935,
+          "height": 200.59375
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-pc-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 2108,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.44259962049335866,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 17.304554079696373
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(90deg, rgba(126, 49, 82, 0.12) 0%, rgba(126, 49, 82, 0.06) 42%, rgba(126, 49, 82, 0.01) 68%, rgba(126, 49, 82, 0) 82%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "kovo-cup-women-2026",
+        "viewport": 390,
+        "hero": {
+          "width": 355,
+          "height": 182.46875
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-mobile-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 1258,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.28060413354531,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 65.07472178060414
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(105deg, rgba(126, 49, 82, 0.28) 0%, rgba(126, 49, 82, 0.14) 48%, rgba(126, 49, 82, 0.02) 76%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "kovo-cup-women-2026",
+        "viewport": 360,
+        "hero": {
+          "width": 325,
+          "height": 182.46875
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-mobile-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 1258,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.25675675675675674,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 74.75675675675676
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(105deg, rgba(126, 49, 82, 0.28) 0%, rgba(126, 49, 82, 0.14) 48%, rgba(126, 49, 82, 0.02) 76%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "kovo-cup-men-2026",
+        "viewport": 680,
+        "hero": {
+          "width": 645,
+          "height": 182.46875
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-mobile-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 1258,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.4408866995073892,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 88.36453201970437,
+          "y": 0
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(105deg, rgba(11, 13, 16, 0.28) 0%, rgba(11, 13, 16, 0.14) 48%, rgba(11, 13, 16, 0.02) 76%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "kovo-cup-men-2026",
+        "viewport": 681,
+        "hero": {
+          "width": 642,
+          "height": 242.59375
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-pc-v02.webp?v=20261013-kovo-hero-v02",
+        "natural": {
+          "width": 2108,
+          "height": 406
+        },
+        "fit": "contain",
+        "scale": 0.3036053130929791,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 115.73624288425049
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(90deg, rgba(11, 13, 16, 0.12) 0%, rgba(11, 13, 16, 0.06) 42%, rgba(11, 13, 16, 0.01) 68%, rgba(11, 13, 16, 0) 82%)",
+        "horizontalOverflow": false
+      },
+      {
+        "competition": "v-league-men-2026-27",
+        "viewport": 390,
+        "hero": {
+          "width": 355,
+          "height": 182.46875
+        },
+        "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-v-league-2026-27-men-mobile-v08.webp?v=20261009-ratio-v08-1",
+        "natural": {
+          "width": 1258,
+          "height": 406
+        },
+        "fit": "cover",
+        "scale": 0.4408866995073892,
+        "crop": {
+          "x": 201.63546798029563,
+          "y": 0
+        },
+        "letterbox": {
+          "x": 0,
+          "y": 0
+        },
+        "backgroundPosition": "50% 50%, 100% 50%",
+        "overlay": "linear-gradient(105deg, rgba(11, 13, 16, 0.28) 0%, rgba(11, 13, 16, 0.14) 48%, rgba(11, 13, 16, 0.02) 76%)",
+        "horizontalOverflow": false
+      }
+    ],
+    "visualReview": {
+      "men": "Black/Gold; entire artwork visible, left effects retained",
+      "women": "Rose; entire artwork visible, left effects retained",
+      "devices": "Desktop plus responsive 390px and 360px browser viewports; not physical-device certification",
+      "letterboxing": "Intentional to preserve the original aspect ratio without crop or stretch",
+      "scopeNote": "Existing mobile overview heading/description overlap is outside Hero scope and unchanged"
+    }
+  },
+  "vLeagueBefore": {
+    "competition": "v-league-men-2026-27",
+    "viewport": 390,
+    "hero": {
+      "width": 355,
+      "height": 182.46875
+    },
+    "image": "https://kvolleylab.com/assets/img/competition-hero/kvl-hero-v-league-2026-27-men-mobile-v08.webp?v=20261009-ratio-v08-1",
+    "natural": {
+      "width": 1258,
+      "height": 406
+    },
+    "fit": "auto 100%",
+    "scale": 0.4408866995073892,
+    "crop": {
+      "x": 201.63546798029563,
+      "y": 0
+    },
+    "letterbox": {
+      "x": 0,
+      "y": 0
+    },
+    "backgroundPosition": "100% 50%, 100% 50%",
+    "overlay": "linear-gradient(105deg, rgba(11, 13, 16, 0.28) 0%, rgba(11, 13, 16, 0.14) 48%, rgba(11, 13, 16, 0.02) 76%)",
+    "horizontalOverflow": false
+  },
+  "productionPathsChanged": [
+    "assets/css/kvl-competition-components-v2.css",
+    "assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-mobile-v02.webp",
+    "assets/img/competition-hero/kvl-hero-kovo-cup-2026-men-pc-v02.webp",
+    "assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-mobile-v02.webp",
+    "assets/img/competition-hero/kvl-hero-kovo-cup-2026-women-pc-v02.webp",
+    "competition-engine-prototype.html",
+    "competition-engine.html",
+    "data/competitions/kovo-cup-men-2026/config.json",
+    "data/competitions/kovo-cup-women-2026/config.json",
+    "scripts/publish-competition-hero.mcp.js",
+    "scripts/publish-competition-hero.py",
+    "tests/competition-hero-preview.html"
+  ],
+  "protectedCompetitionFilesChanged": false,
+  "historicalUploadClient": "Not identifiable from Git commits; current WORK Git Data API transport actually executed and verified"
+}
