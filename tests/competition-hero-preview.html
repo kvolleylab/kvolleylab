@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>KVL 실제 Hero 반응형 검수</title>
+<style>
+body{margin:18px;font:14px Arial,sans-serif;color:#163047;background:#edf1f5}h1{font-size:20px}form{display:flex;gap:12px;align-items:center;margin:12px 0}input,select,button{font:inherit;padding:7px}iframe{display:block;border:1px solid #aab5c1;background:white;height:720px}pre{white-space:pre-wrap;background:white;padding:12px;max-width:1156px}a{color:#164e87}
+</style>
+<h1>실제 운영 페이지 · Hero 검수</h1>
+<form id="controls">
+<label>대회 <input name="competition" value="kovo-cup-men-2026" size="28" pattern="[a-z0-9-]+" required></label>
+<label>화면 폭 <select name="width"><option>1180</option><option>390</option><option>360</option><option>680</option><option>681</option></select></label>
+<button>확인</button><a id="direct" target="_blank" rel="noopener">실제 페이지 열기</a>
+</form>
+<iframe id="preview" title="실제 대회 페이지"></iframe>
+<pre id="result" aria-live="polite">불러오는 중</pre>
+<script>
+const form=document.getElementById('controls'),frame=document.getElementById('preview'),result=document.getElementById('result');
+const params=new URLSearchParams(location.search);
+if(/^[a-z0-9-]+$/.test(params.get('competition')||''))form.elements.competition.value=params.get('competition');
+if(['1180','390','360','680','681'].includes(params.get('width')))form.elements.width.value=params.get('width');
+form.addEventListener('submit',event=>{event.preventDefault();load();});
+function load(){
+ const slug=form.elements.competition.value,width=Number(form.elements.width.value);
+ if(!/^[a-z0-9-]+$/.test(slug))return;
+ history.replaceState(null,'','?'+new URLSearchParams({competition:slug,width}));
+ const url='/competition-engine.html?'+new URLSearchParams({competition:slug});
+ frame.style.width=width+'px';frame.src=url;document.getElementById('direct').href=url;result.textContent='불러오는 중';
+}
+frame.addEventListener('load',()=>{
+ let attempts=0;
+ const timer=setInterval(()=>{
+  const doc=frame.contentDocument,win=frame.contentWindow,hero=doc?.querySelector('.kvl1180-hero');
+  if(!hero||doc.body.dataset.kvlRenderState!=='ready'){if(++attempts>100){clearInterval(timer);result.textContent='FAIL: page did not become ready';}return;}
+  clearInterval(timer);
+  const style=win.getComputedStyle(hero),rect=hero.getBoundingClientRect();
+  const url=[...style.backgroundImage.matchAll(/url\("?([^"\)]+)"?\)/g)].at(-1)?.[1];
+  const image=new Image();
+  image.onload=()=>{
+   const w=hero.clientWidth,h=hero.clientHeight,iw=image.naturalWidth,ih=image.naturalHeight;
+   const fit=style.backgroundSize.split(',').at(-1).trim();
+   const scale=fit==='contain'?Math.min(w/iw,h/ih):Math.max(w/iw,h/ih);
+   const report={competition:form.elements.competition.value,viewport:win.innerWidth,hero:{width:rect.width,height:rect.height},image:url,natural:{width:iw,height:ih},fit,scale,crop:{x:Math.max(0,iw*scale-w),y:Math.max(0,ih*scale-h)},letterbox:{x:Math.max(0,w-iw*scale),y:Math.max(0,h-ih*scale)},backgroundPosition:style.backgroundPosition,overlay:style.backgroundImage.split('), url(')[0]+')',horizontalOverflow:doc.documentElement.scrollWidth>win.innerWidth};
+   result.textContent=JSON.stringify(report,null,2);
+  };
+  image.onerror=()=>{result.textContent='FAIL: selected image did not load: '+url;};image.src=url;
+ },100);
+});
+load();
+</script>
+</html>
