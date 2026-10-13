@@ -11,6 +11,7 @@ import io
 import json
 import re
 import subprocess
+import urllib.request
 import zipfile
 from pathlib import Path
 
@@ -31,9 +32,48 @@ def describe(path):
     }
 
 
+def verify_live(manifest_path, base_url):
+    """Read live URLs and prove the bytes/configs match the prepared publication."""
+    from PIL import Image
+    from urllib.parse import urlparse
+    if urlparse(base_url).scheme != "https" or urlparse(base_url).path not in ("", "/"):
+        raise SystemExit("Use an HTTPS site origin, e.g. https://kvolleylab.com")
+    manifest = json.loads(manifest_path.read_text())
+    files = {f["path"]: f for f in manifest["files"]}
+    results = []
+    for slug in manifest["targets"].values():
+        path = f"data/competitions/{slug}/config.json"
+        url = base_url.rstrip("/") + "/" + path
+        with urllib.request.urlopen(urllib.request.Request(url, headers={"Cache-Control": "no-cache"}), timeout=30) as response:
+            raw = response.read()
+        if hashlib.sha256(raw).hexdigest() != files[path]["sha256"]:
+            raise SystemExit(f"Live config differs; deployment/cache is not ready: {url}")
+        config = json.loads(raw)
+        results.append({"url": url, "identical": True})
+        for field in ["pcImage", "mobileImage"]:
+            asset = config["hero"][field]
+            metadata = files[asset.split("?")[0].lstrip("/")]
+            url = base_url.rstrip("/") + asset
+            with urllib.request.urlopen(url, timeout=30) as response:
+                raw = response.read()
+                content_type = response.headers.get_content_type()
+                status = response.status
+            digest = hashlib.sha256(raw).hexdigest()
+            with Image.open(io.BytesIO(raw)) as im:
+                im.load()
+                size, fmt = im.size, im.format
+            if digest != metadata["sha256"] or content_type != "image/webp" or fmt != "WEBP":
+                raise SystemExit(f"Live asset verification failed: {url}")
+            results.append({"url": url, "status": status, "mimeType": content_type,
+                            "size": size, "bytes": len(raw), "sha256": digest, "identical": True})
+    output = manifest_path.with_suffix(".live.json")
+    output.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n")
+    print(json.dumps({"verified": True, "report": str(output.resolve()), "results": results}, indent=2))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("archive", type=Path)
+    parser.add_argument("archive", type=Path, nargs="?")
     parser.add_argument("--asset-key", default="kovo-cup-2026")
     parser.add_argument("--men-slug", default="kovo-cup-men-2026")
     parser.add_argument("--women-slug", default="kovo-cup-women-2026")
@@ -41,10 +81,17 @@ def main():
     parser.add_argument("--cache-version", default="20261013-kovo-hero-v02")
     parser.add_argument("--manifest", type=Path, required=True,
                         help="Scratch output consumed by the WORK publisher")
+    parser.add_argument("--verify-live", metavar="HTTPS_ORIGIN",
+                        help="Verify the prepared publication at the live site; no writes")
     parser.add_argument("--push", action="store_true",
                         help="Optional authenticated local Git commit/push")
     args = parser.parse_args()
     from PIL import Image
+    if args.verify_live:
+        verify_live(args.manifest, args.verify_live)
+        return
+    if args.archive is None:
+        parser.error("archive is required unless --verify-live is used")
 
     for value in [args.asset_key, args.men_slug, args.women_slug, args.cache_version]:
         if not re.fullmatch(r"[a-z0-9-]+", value):
