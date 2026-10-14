@@ -23,8 +23,8 @@ function load(){
  const width=form.elements.width.value;
  if(!widths.includes(width))return;
  history.replaceState(null,'','?'+new URLSearchParams({width}));
- frame.style.width=width+'px';
- frame.src='/home-prototype-v021.html?v=20261015-home-ui-refinement-1';
+ frame.style.width=width+'px';frame.style.height='800px';
+ frame.src='/home-prototype-v021.html?v=20261015-home-ui-refinement-2';
  result.textContent='불러오는 중';
 }
 frame.addEventListener('load',async()=>{
@@ -37,6 +37,7 @@ frame.addEventListener('load',async()=>{
   observer.observe(doc.querySelector('#home-matches'),{attributes:true});
   setTimeout(()=>{observer.disconnect();resolve()},10000);
  });
+ await Promise.all([...doc.images].map(img=>img.decode().catch(()=>{})));
  frame.style.height=Math.max(800,doc.documentElement.scrollHeight)+'px';
  const hero=doc.querySelector('.home-hero'),bar=doc.querySelector('.home-bar');
  if(!hero||!bar){result.textContent='FAIL: home shell missing';return;}
