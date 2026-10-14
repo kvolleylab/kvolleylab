@@ -9,14 +9,14 @@ body{margin:18px;font:14px Arial,sans-serif;color:#163047;background:#edf1f5}h1{
 </style>
 <h1>홈 v02.1 · 배포 화면 반응형 검수</h1>
 <form id="controls">
-<label>화면 폭 <select name="width"><option>1180</option><option>390</option><option>360</option><option>680</option><option>681</option></select></label>
+<label>화면 폭 <select name="width"><option>1440</option><option>1180</option><option>390</option><option>360</option><option>680</option><option>681</option></select></label>
 <button>확인</button><a id="direct" href="/home-prototype-v021.html" target="_blank" rel="noopener">실제 프로토타입 열기</a>
 </form>
 <iframe id="preview" title="실제 홈 v02.1 프로토타입"></iframe>
-<pre id="result" aria-live="polite">불러오는 중</pre>
+<details><summary>검수 측정값</summary><pre id="result" aria-live="polite">불러오는 중</pre></details>
 <script>
 const form=document.getElementById('controls'),frame=document.getElementById('preview'),result=document.getElementById('result');
-const params=new URLSearchParams(location.search),widths=['1180','390','360','680','681'];
+const params=new URLSearchParams(location.search),widths=['1440','1180','390','360','680','681'];
 if(widths.includes(params.get('width')))form.elements.width.value=params.get('width');
 form.addEventListener('submit',event=>{event.preventDefault();load();});
 function load(){
@@ -24,13 +24,20 @@ function load(){
  if(!widths.includes(width))return;
  history.replaceState(null,'','?'+new URLSearchParams({width}));
  frame.style.width=width+'px';
- frame.src='/home-prototype-v021.html?v=20261015-home-hero-v01';
+ frame.src='/home-prototype-v021.html?v=20261015-home-ui-refinement-1';
  result.textContent='불러오는 중';
 }
 frame.addEventListener('load',async()=>{
  const doc=frame.contentDocument,win=frame.contentWindow;
  if(!doc||!win){result.textContent='FAIL: frame unavailable';return;}
  await doc.fonts.ready;
+ await Promise.all([...doc.images].map(img=>img.decode().catch(()=>{})));
+ if(doc.querySelector('#home-matches')?.getAttribute('aria-busy')==='true')await new Promise(resolve=>{
+  const observer=new MutationObserver(()=>{if(doc.querySelector('#home-matches')?.getAttribute('aria-busy')!=='true'){observer.disconnect();resolve()}});
+  observer.observe(doc.querySelector('#home-matches'),{attributes:true});
+  setTimeout(()=>{observer.disconnect();resolve()},10000);
+ });
+ frame.style.height=Math.max(800,doc.documentElement.scrollHeight)+'px';
  const hero=doc.querySelector('.home-hero'),bar=doc.querySelector('.home-bar');
  if(!hero||!bar){result.textContent='FAIL: home shell missing';return;}
  const style=win.getComputedStyle(hero),rect=hero.getBoundingClientRect(),barRect=bar.getBoundingClientRect();
@@ -40,7 +47,7 @@ frame.addEventListener('load',async()=>{
  image.onload=()=>{
   const w=hero.clientWidth,h=hero.clientHeight,iw=image.naturalWidth,ih=image.naturalHeight,fit=style.backgroundSize;
   const scale=fit==='contain'?Math.min(w/iw,h/ih):Math.max(w/iw,h/ih);
-  const report={page:win.location.pathname,viewport:win.innerWidth,hero:{width:rect.width,height:rect.height},image:url,natural:{width:iw,height:ih},fit,scale,crop:{x:Math.max(0,iw*scale-w),y:Math.max(0,ih*scale-h)},letterbox:{x:Math.max(0,w-iw*scale),y:Math.max(0,h-ih*scale)},backgroundPosition:style.backgroundPosition,heroTopCorners:[style.borderTopLeftRadius,style.borderTopRightRadius],controlbar:{width:barRect.width,height:barRect.height,gap:barRect.top-rect.bottom,links:[...bar.querySelectorAll('a')].map(a=>({text:a.textContent,href:a.getAttribute('href')}))},horizontalOverflow:doc.documentElement.scrollWidth>win.innerWidth};
+  const report={page:win.location.pathname,viewport:win.innerWidth,hero:{width:rect.width,height:rect.height},image:url,natural:{width:iw,height:ih},fit,scale,crop:{x:Math.max(0,iw*scale-w),y:Math.max(0,ih*scale-h)},letterbox:{x:Math.max(0,w-iw*scale),y:Math.max(0,h-ih*scale)},backgroundPosition:style.backgroundPosition,heroTopCorners:[style.borderTopLeftRadius,style.borderTopRightRadius],controlbar:{width:barRect.width,height:barRect.height,gap:barRect.top-rect.bottom,links:[...bar.querySelectorAll('a')].map(a=>({text:a.textContent,href:a.getAttribute('href')}))},content:{width:doc.querySelector('main').getBoundingClientRect().width,maxWidth:win.getComputedStyle(doc.querySelector('main')).maxWidth},headingFont:win.getComputedStyle(doc.querySelector('h1')).fontSize,sidebarCount:doc.querySelectorAll('.kvl-global-sidebar').length,matches:[...doc.querySelectorAll('[data-match-id]')].map(n=>({id:n.dataset.matchId,source:n.dataset.source,text:n.innerText})),brokenImages:[...doc.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src),horizontalOverflow:doc.documentElement.scrollWidth>win.innerWidth};
   result.textContent=JSON.stringify(report,null,2);
  };
  image.onerror=()=>{result.textContent='FAIL: selected image did not load: '+url;};
