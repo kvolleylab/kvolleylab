@@ -4,36 +4,137 @@
 <link rel="stylesheet" href="/assets/css/pretendard-global.css">
 <script src="/assets/js/unified-nav.js?v=20261012-pro-production-open-1" defer></script>
 <style>
-:root{font-family:Pretendard,Arial,sans-serif;color:#1c324a;background:#f4f7fb}*{box-sizing:border-box}body{margin:0;background:#f4f7fb}a{color:inherit;text-decoration:none}button,input{font:inherit}
-main.homeproto{max-width:1180px;margin:0 auto;padding:0 20px 45px}
-.home-shell{overflow:hidden;border-radius:0 0 10px 10px;box-shadow:0 5px 16px #132b4014}
-.home-hero{position:relative;overflow:hidden;min-height:200px;padding:30px 32px;background:#07182d url('/assets/img/home-hero/kvl-home-hero-pc-v01.webp?v=20261015-home-hero-v01') right center/contain no-repeat;color:white;border-radius:0;border-top:0}
-.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.4px;color:#a2d7cf}.home-hero h1{margin:10px 0 7px;font-size:clamp(25px,2.5vw,36px);line-height:1.25;letter-spacing:-.04em}.home-hero p{margin:0 0 18px;color:#d2e2e9;font-size:13px}
-.finder{position:relative;z-index:1;max-width:550px;display:flex;padding:5px;background:#fff;border-radius:7px}
-.finder input{flex:1;min-width:0;border:0;outline:0;padding:10px;color:#243d54;font-size:13px}
-.finder button{background:#205d4c;border:0;border-radius:5px;color:white;font-weight:800;font-size:12px;padding:10px 17px;cursor:pointer}
-.find-results{display:none;position:relative;z-index:5;max-width:550px;background:white;border:1px solid #dce5ed;border-radius:7px;padding:5px;margin-top:5px;color:#284864}
+:root{font-family:Pretendard,Arial,sans-serif;color:#172f4b;background:#f4f7fb}*{box-sizing:border-box}body{margin:0;background:#f4f7fb}a{color:inherit;text-decoration:none}button,input{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #13bfd1;outline-offset:2px}
+main.homeproto{max-width:1180px;margin:0 auto;padding:0 20px 48px}
+.home-shell{overflow:hidden;border-radius:0 0 10px 10px;box-shadow:0 5px 22px rgba(13,44,71,.08)}
+.home-utility{height:43px;padding:0 21px;display:flex;justify-content:flex-end;align-items:center;gap:17px;background:#fff;color:#163251}
+.home-utility a{font-size:12px;font-weight:700}.home-utility a:last-child{color:#fff;padding:8px 13px;border-radius:6px;background:#008e9b}
+.home-hero{position:relative;overflow:hidden;min-height:251px;padding:22px 34px 20px;background:#07182d url('/assets/img/home-hero/kvl-home-hero-pc-v01.webp?v=20261015-home-hero-v01') right center/contain no-repeat;color:#fff;border-radius:0;border-top:0}
+.home-hero:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(3,19,38,.2),rgba(3,19,38,.03) 70%)}
+.home-hero> :not(.home-brand){position:relative;z-index:1}
+.eyebrow{font-size:10px;font-weight:750;letter-spacing:3px;color:#8bd8e7}
+.home-hero h1{margin:10px 0 7px;font-size:clamp(27px,3.1vw,37px);line-height:1.2;letter-spacing:-.045em;font-weight:900;max-width:650px;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+.home-hero h1 span{color:#5aebef}
+.home-hero p{margin:0 0 13px;color:#e0edf4;font-size:13px}
+.home-brand{position:absolute;top:37px;right:19%;z-index:1;display:flex;align-items:center;flex-direction:column;gap:4px;color:#fff;font-weight:900;font-size:12px;text-shadow:0 2px 8px #0009;pointer-events:none}
+.home-brand img{width:45px;height:45px;object-fit:contain;filter:drop-shadow(0 2px 5px #0005)}
+.finder{position:relative;z-index:2;max-width:510px;display:flex;align-items:center;padding:5px 7px 5px 16px;background:#fff;border:1px solid #c5edf2;border-radius:999px;box-shadow:0 6px 18px #061a3850}
+.finder .search-symbol{font-size:20px;color:#275376;margin-right:9px}
+.finder input{flex:1;min-width:0;border:0;outline:none;padding:8px 2px;color:#243d54;font-size:13px;background:transparent}
+.finder button{background:#0c5570;border:0;border-radius:999px;color:#fff;font-weight:800;font-size:12px;padding:9px 16px;cursor:pointer}
+.quick-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.quick-tags a{border:1px solid rgba(109,217,239,.35);border-radius:999px;padding:5px 10px;color:#bde1ed;background:rgba(5,39,71,.55);font-size:11px;font-weight:700}
+.quick-tags a:hover{color:#fff;border-color:#7be7ed}
+.find-results{display:none;position:relative;z-index:5;max-width:510px;background:#fff;border:1px solid #dce5ed;border-radius:9px;padding:5px;margin-top:5px;color:#284864;box-shadow:0 10px 24px #00152c40}
 .find-results.show{display:block}.find-results a,.find-results span{display:block;padding:9px;font-size:12px}.find-results a:hover{background:#edf4f7}
-.home-bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:white;border:1px solid #dbe4ec;border-top:0;border-radius:0 0 10px 10px}
-.home-bar a{min-height:64px;display:flex;align-items:center;justify-content:center;gap:10px;border-right:1px solid #e8edf3;padding:10px}.home-bar a:last-child{border-right:0}.home-bar a:hover{background:#f3f7fa}
-.home-bar .symbol{font-size:21px}.home-bar b{display:block;font-size:13px}.home-bar small{display:block;color:#8290a2;font-size:10px;margin-top:3px}
-.section{margin-top:25px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:8px;margin-bottom:12px}.section-head h2{margin:0;font-size:20px;letter-spacing:-.04em}.section-head p{margin:5px 0 0;font-size:12px;color:#7e8d9e}.section-head>a{font-size:12px;color:#38627e;font-weight:800;white-space:nowrap}
-.match-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.panel,.event{background:#fff;border:1px solid #dfe5ec;border-radius:9px;overflow:hidden}.panel-head{padding:13px 15px;border-bottom:1px solid #ebeff3;font-size:14px;font-weight:800}.panel-content{min-height:116px;padding:19px;display:flex;align-items:center;gap:13px}.panel-content>span{font-size:25px;padding:10px;background:#eef3f7;border-radius:8px}.panel-content b{font-size:13px}.panel-content small{display:block;font-size:11px;line-height:1.65;color:#7f8e9e;margin-top:5px}
-.filters{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:13px}.group-filter,.gender-filter{display:flex;gap:5px}.filters button{border:1px solid #dbe3ec;background:#fff;color:#677d90;font-size:12px;font-weight:700;border-radius:6px;padding:8px 14px;cursor:pointer}.filters button.active{background:#1b3c58;border-color:#1b3c58;color:white}.gender-filter{background:#e7edf3;padding:3px;border-radius:7px}.gender-filter button{border:0;background:transparent}.gender-filter button.active{background:white;color:#193b55}
-.events{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.event:hover{border-color:#9fb6c7}.event-art{height:118px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(112deg,var(--color),color-mix(in srgb,var(--color),white 18%));position:relative;overflow:hidden;color:#fff}.event-art:after{content:"";position:absolute;right:-32px;top:-27px;width:140px;height:140px;border-radius:50%;border:17px solid #ffffff19;pointer-events:none}.event-art small{font-size:10px;letter-spacing:1px;color:#ffffffcf}.event-art strong{font-size:19px;position:relative;z-index:1}.event-foot{padding:11px 14px;display:flex;justify-content:space-between;color:#6d8094;font-size:12px}.event-foot b{color:#2a5d7d}
-.bottom{display:grid;grid-template-columns:1.25fr 1fr;gap:12px}.link-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:14px}.link-grid a{background:#fbfcfe;border:1px solid #e4eaf0;border-radius:6px;padding:15px;font-size:13px;font-weight:800}.link-grid small,.tool-links small{display:block;font-size:11px;color:#8695a4;margin-top:5px;font-weight:400}.tool-links{padding:8px 15px}.tool-links a{display:block;border-bottom:1px solid #e9eef3;padding:13px 2px;font-size:13px;font-weight:800}.tool-links a:last-child{border:0}
-.data-note{font-size:11px;line-height:1.6;color:#64788c;margin-top:10px}.data-note b{color:#19654a}.proto-flag{font-size:11px;color:#66798b;text-align:right;padding:11px 3px}
-@media(max-width:900px){main.homeproto{padding:0 12px 34px}.home-hero{padding:24px 20px}.events{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:680px){.home-hero{background-image:url('/assets/img/home-hero/kvl-home-hero-mobile-v01.webp?v=20261015-home-hero-v01')}}
-@media(max-width:600px){main.homeproto{padding:0 10px 30px}.home-hero{padding:24px 15px;min-height:188px}.home-hero h1{font-size:24px}.home-hero p{font-size:12px}.home-bar{grid-template-columns:repeat(2,minmax(0,1fr))}.home-bar a{justify-content:flex-start;min-height:61px;padding:11px 13px;border-bottom:1px solid #e7edf2}.home-bar a:nth-child(2){border-right:0}.home-bar a:nth-child(n+3){border-bottom:0}.home-bar b{font-size:12px}.home-bar .symbol{font-size:19px}.match-grid,.bottom{grid-template-columns:1fr}.section-head h2{font-size:17px}.section-head p{font-size:11px}.events{gap:9px}.event-art{height:99px;padding:11px}.event-art strong{font-size:15px}.event-foot{padding:10px;font-size:11px}.filters button{font-size:11px;padding:7px 10px}.link-grid a{padding:12px}.section{margin-top:22px}}
+.home-bar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#fff;border:1px solid #dbe4ec;border-top:0;border-radius:0 0 10px 10px}
+.home-bar a{min-height:76px;display:flex;align-items:center;justify-content:center;gap:13px;padding:13px;border-right:1px solid #e8edf3}
+.home-bar a:last-child{border-right:0}.home-bar a:hover{background:#f2f9fb}
+.home-bar .symbol{display:flex;color:#0d447f;flex-shrink:0}.home-bar .symbol svg,.tool-symbol svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.home-bar b{display:block;font-size:15px;white-space:nowrap}.home-bar small{display:block;color:#8093aa;font-size:11px;margin-top:4px}
+.home-board{display:grid;grid-template-columns:minmax(0,1.23fr) minmax(0,1fr);column-gap:22px;row-gap:28px;margin-top:27px}
+.section{min-width:0}.section-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.section-head h2{margin:0;font-size:19px;letter-spacing:-.04em;color:#152942}.section-head>a{font-size:11px;color:#52799c;font-weight:750;white-space:nowrap}
+.match-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.panel,.event,.person-card,.tool-card{background:#fff;border:1px solid #e4ebf2;border-radius:10px;overflow:hidden;box-shadow:0 2px 6px rgba(29,69,99,.025)}
+.match-card{min-height:213px;padding:14px;display:flex;flex-direction:column}
+.match-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;color:#7188a2}
+.match-top strong{color:#0c5991;background:#eaf6ff;border-radius:5px;padding:3px 6px}
+.match-center{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;gap:10px;padding:13px 3px 9px}
+.match-badge{display:grid;place-items:center;flex:none;width:51px;height:51px;border-radius:50%;background:#edf5fa;color:#1b5687}
+.match-badge svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.match-center b{display:block;font-size:14px;line-height:1.45}.match-center small{display:block;color:#7890a6;font-size:11px;line-height:1.6;margin-top:5px}
+.match-cta{display:block;text-align:center;background:#e9f5fb;border-radius:5px;padding:10px 5px;color:#1d4c83;font-size:12px;font-weight:800}.match-cta:hover{background:#d9ebf6}
+.compact-filters{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.group-filter,.gender-filter{display:flex;gap:4px}.compact-filters button{border:1px solid #dbe5ee;border-radius:5px;background:#fff;color:#5b7490;font-size:10px;font-weight:750;padding:5px 8px;cursor:pointer}
+.compact-filters button.active{background:#123e67;border-color:#123e67;color:#fff}
+.gender-filter{margin-left:auto;background:#eaf0f6;padding:2px;border-radius:6px}.gender-filter button{border:0;background:transparent}.gender-filter button.active{background:#fff;color:#134b70}
+.events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.event{display:flex;flex-direction:column;justify-content:center;min-height:83px;transition:border-color .12s}
+.event:hover,.person-card:hover,.tool-card:hover{border-color:#9bc5d7}
+.event-art{display:grid;grid-template-columns:40px minmax(0,1fr);grid-template-rows:16px auto;align-items:center;column-gap:9px;padding:12px 10px 1px;color:#17354f;background:#fff}
+.event-glyph{grid-column:1;grid-row:1/span 2;display:grid;place-items:center;width:39px;height:39px;background:#edf6fc;border-radius:12px;color:#144c88;font-size:20px}
+.event-art small{grid-column:2;grid-row:1;color:#748fa8;font-size:9px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.event-art strong{grid-column:2;grid-row:2;font-size:12px;line-height:1.3;overflow-wrap:anywhere}
+.event-foot{padding:1px 10px 10px 59px;display:flex;justify-content:space-between;gap:4px;align-items:center;color:#8193a3;font-size:9px}.event-foot b{color:#38668c;font-size:9px;white-space:nowrap}
+.data-note{font-size:10px;line-height:1.5;color:#8393a2;margin-top:8px}
+.people-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.person-card{display:flex;flex-direction:column;min-width:0}
+.person-art{height:126px;overflow:hidden;background:linear-gradient(135deg,#174467,#07182d);display:grid;place-items:center}
+.person-art img{width:100%;height:100%;object-fit:cover}.person-art.team-art{display:flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#102e49,#206889)}
+.person-art.team-art img{width:43%;max-height:75px;height:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+.person-meta{padding:11px 12px 14px}.person-meta b{display:block;font-size:13px}.person-meta small{display:block;color:#8295a8;line-height:1.45;font-size:10px;margin-top:5px}
+.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.tool-card{display:flex;align-items:center;gap:11px;padding:14px 12px;min-height:90px}
+.tool-symbol{color:#174c8b;background:#ebf5fb;width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;border-radius:10px}
+.tool-symbol svg{width:25px;height:25px}
+.tool-card b{display:block;font-size:12px}.tool-card small{display:block;font-size:10px;line-height:1.5;color:#8b9dad;margin-top:5px}
+.proto-flag{font-size:10px;color:#7b8da1;text-align:right;padding:18px 2px}
+@media(max-width:1050px){.home-board{column-gap:13px}.home-bar a{gap:8px}.home-bar b{font-size:13px}.match-card{padding:10px}.person-art{height:100px}}
+@media(max-width:900px){main.homeproto{padding:0 12px 34px}.home-board{grid-template-columns:1fr 1fr;column-gap:15px}.home-hero{padding:22px 23px}}
+@media(max-width:760px){.home-board{grid-template-columns:1fr;row-gap:24px}.person-art{height:132px}}
+@media(max-width:680px){.home-hero{background-image:url('/assets/img/home-hero/kvl-home-hero-mobile-v01.webp?v=20261015-home-hero-v01')}.home-brand{display:none}}
+@media(max-width:600px){main.homeproto{padding:0 9px 26px}.home-utility{height:0;overflow:hidden;padding:0}.home-hero{padding:22px 17px 17px;min-height:275px}.eyebrow{font-size:9px;letter-spacing:1.5px}.home-hero h1{font-size:27px;margin:12px 0 8px}.home-hero p{font-size:12px;max-width:300px;line-height:1.5;margin-bottom:18px}.finder{padding:4px 5px 4px 11px}.finder input{font-size:12px;padding:9px 1px}.finder button{font-size:11px;padding:9px 11px}.quick-tags a{font-size:10px;padding:4px 8px}
+.home-bar a{flex-direction:column;justify-content:center;gap:5px;min-height:72px;padding:7px 2px;text-align:center}.home-bar b{font-size:11px}.home-bar small{display:none}.home-bar .symbol svg{width:24px;height:24px}
+.home-board{margin-top:23px;gap:24px}.section-head h2{font-size:17px}.match-grid{gap:8px}.match-card{min-height:189px}.match-center{gap:4px}.match-badge{width:39px;height:39px}.match-center b{font-size:12px}.match-center small{font-size:10px}.match-cta{font-size:11px;padding:9px 3px}
+.events{gap:7px}.event-art{grid-template-columns:34px minmax(0,1fr);padding:9px 7px 1px;column-gap:6px}.event-glyph{width:33px;height:33px;font-size:17px}.event-art strong{font-size:11px}.event-foot{padding-left:47px;padding-right:7px;font-size:8px}.event-foot b{font-size:8px}
+.people-grid{gap:8px}.person-art{height:92px}.person-meta{padding:8px}.person-meta b{font-size:11px}.person-meta small{font-size:9px}.tool-card{padding:11px 9px;min-height:87px}.tool-symbol{width:36px;height:36px}.tool-card b{font-size:11px}.tool-card small{font-size:9px}
+}
+@media(max-width:370px){.match-grid{grid-template-columns:1fr}.match-card{min-height:158px}.home-hero h1{font-size:25px}.person-art{height:82px}}
 </style></head><body>
 <main class="homeproto">
-<div class="home-shell"><header class="home-hero"><div class="eyebrow">KOREAN VOLLEYBALL DATA &amp; ANALYTICS</div><h1>모든 배구 정보, 더 쉽게 찾으세요.</h1><p>경기·대회·선수·기록을 한곳에서 확인하세요.</p><form class="finder" id="finder"><input id="q" type="search" aria-label="대회 또는 메뉴 찾기" placeholder="대회·선수·팀·기능 찾기"><button type="submit">찾기 →</button></form><div id="find-results" class="find-results" aria-live="polite"></div></header>
-<nav class="home-bar" aria-label="핵심 기능 바로가기"><a href="/competition-calendar.html"><span class="symbol">▦</span><span><b>경기일정</b><small>통합 달력</small></span></a><a href="/competition-engine.html?competition=v-league-men-2026-27"><span class="symbol">🏐</span><span><b>V-리그</b><small>일정 · 순위</small></span></a><a href="/players.html"><span class="symbol">♙</span><span><b>선수 검색</b><small>선수 · 프로필</small></span></a><a href="/simulator.html"><span class="symbol">▤</span><span><b>진출 계산기</b><small>경우의 수</small></span></a></nav></div>
-<section class="section"><div class="section-head"><div><h2>경기 일정 · 결과</h2><p>확인된 정보부터 안내합니다.</p></div><a href="/competition-calendar.html">달력 보기 ↗</a></div><div class="match-grid"><div class="panel"><div class="panel-head">오늘 · 예정 경기</div><div class="panel-content"><span>▦</span><div><b>통합 경기 일정</b><small>프로토타입: 검증된 공통 경기 데이터 연동 예정.<br>확정 전 경기 시각은 표시하지 않습니다.</small></div></div></div><div class="panel"><div class="panel-head">최근 경기 결과</div><div class="panel-content"><span>🏐</span><div><b>최근 경기 결과</b><small>프로토타입: 팀·세트스코어·출처 검증 후 표시.<br>임의 점수는 사용하지 않습니다.</small></div></div></div></div></section>
-<section class="section"><div class="section-head"><div><h2>대회 바로가기</h2><p>관심 대회를 남녀부별로 찾아보세요.</p></div><a href="/competition.html">대회별 보기 ↗</a></div><div class="filters"><div class="group-filter" id="groups"><button class="active" data-filter="all">전체</button><button data-filter="pro">프로</button><button data-filter="international">국제</button><button data-filter="domestic">국내</button></div><div class="gender-filter" id="genders"><button class="active" data-gender="men">남자부</button><button data-gender="women">여자부</button></div></div><div class="events" id="events"></div><div class="data-note">* 대회 카드는 이동 UI 검수용입니다. 실제 운영 시 확정된 대회 메인카드 이미지를 데이터 연결 방식으로 표시합니다.</div></section>
-<section class="section"><div class="bottom"><div class="panel"><div class="panel-head">선수 · 팀 · 국가대표팀</div><div class="link-grid"><a href="/national-team.html">국가대표팀<small>성인 · 연령별</small></a><a href="/players.html">선수 검색<small>선수 · 프로필</small></a><a href="/teams.html">팀 정보<small>구단 · 참가팀</small></a><a href="/player-cohort.html">세대 추적<small>대표팀 구성 변화</small></a></div></div><div class="panel"><div class="panel-head">분석 도구 · 자료</div><div class="tool-links"><a href="/player-compare.html">선수 비교<small>선수 데이터 비교</small></a><a href="/draft-hub.html">Draft Hub<small>드래프트 정보</small></a><a href="/pamphlet-archive.html">팜플렛 아카이브<small>대회 공식자료</small></a></div></div></div></section>
-<div class="proto-flag">K-Volley Lab · HOME UI v02.1 PROTOTYPE · 실제 홈 미적용</div></main>
+<div class="home-shell">
+<div class="home-utility"><a href="/competition-calendar.html">경기일정</a><a href="/national-team.html">국가대표팀</a><a href="/players.html">선수 검색 ↗</a></div>
+<header class="home-hero">
+<div class="eyebrow">KOREA VOLLEYBALL DATA PLATFORM</div>
+<h1>모든 배구 정보,<br><span>더 쉽게 찾으세요.</span></h1>
+<p>경기, 선수, 기록, 통계까지. K-Volley Lab이 한 곳에 모았습니다.</p>
+<form class="finder" id="finder"><span class="search-symbol" aria-hidden="true">⌕</span><input id="q" type="search" aria-label="대회 및 사이트 메뉴 찾기" placeholder="대회, 팀, 기능을 검색하세요"><button type="submit">검색</button></form>
+<div id="find-results" class="find-results" aria-live="polite"></div>
+<div class="quick-tags" aria-label="자주 찾는 메뉴"><a href="/competition-engine.html?competition=v-league-men-2026-27">#V-리그</a><a href="/players.html">#선수기록</a><a href="/competition-calendar.html">#경기일정</a><a href="/national-team.html">#국가대표팀</a></div>
+<div class="home-brand" aria-hidden="true"><img src="/assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><span>K-Volley Lab</span></div>
+</header>
+<nav class="home-bar" aria-label="핵심 기능 바로가기">
+<a href="/competition-calendar.html"><span class="symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 14h2M14 14h2M8 18h2"/></svg></span><span><b>경기일정</b><small>다가오는 경기 확인</small></span></a>
+<a href="/competition-engine.html?competition=v-league-men-2026-27"><span class="symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v6a5 5 0 0 1-10 0V4ZM7 6H4v3a4 4 0 0 0 4 4M17 6h3v3a4 4 0 0 1-4 4M12 15v4M8 21h8"/></svg></span><span><b>V-리그</b><small>KOVO 리그 정보</small></span></a>
+<a href="/players.html"><span class="symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="7" r="4"/><path d="M3 21v-3a7 7 0 0 1 11-5.7M20.5 20.5l-4-4M15 15a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/></svg></span><span><b>선수 검색</b><small>선수 기록 및 통계</small></span></a>
+<a href="/simulator.html"><span class="symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 10h2M14 10h2M8 14h2M14 14h2M8 18h2M14 18h2"/></svg></span><span><b>진출 계산기</b><small>포스트시즌 시나리오</small></span></a>
+</nav>
+</div>
+<div class="home-board">
+<section class="section" aria-labelledby="matches-heading">
+<div class="section-head"><h2 id="matches-heading">경기 일정 · 결과</h2><a href="/competition-calendar.html">전체보기 ›</a></div>
+<div class="match-grid">
+<article class="panel match-card"><div class="match-top"><strong>경기 일정</strong><span>대회별 통합 일정</span></div><div class="match-center"><span class="match-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 14h2M14 14h2M8 18h2"/></svg></span><div><b>다가오는 배구 경기</b><small>확인된 일정과 대회 정보를<br>통합 달력에서 확인하세요.</small></div></div><a class="match-cta" href="/competition-calendar.html">경기 일정 보기 ›</a></article>
+<article class="panel match-card"><div class="match-top"><strong>경기 결과</strong><span>검증된 결과 기준</span></div><div class="match-center"><span class="match-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v6a5 5 0 0 1-10 0V4ZM7 6H4v3a4 4 0 0 0 4 4M17 6h3v3a4 4 0 0 1-4 4M12 15v4M8 21h8"/></svg></span><div><b>최근 경기 결과</b><small>점수·세트별 결과는<br>대회 기록에서 확인하세요.</small></div></div><a class="match-cta" href="/competition-calendar.html">경기 결과 보기 ›</a></article>
+</div>
+</section>
+<section class="section" aria-labelledby="events-heading">
+<div class="section-head"><h2 id="events-heading">대회 바로가기</h2><a href="/competition.html">전체보기 ›</a></div>
+<div class="compact-filters"><div class="group-filter" id="groups"><button type="button" class="active" data-filter="all">전체</button><button type="button" data-filter="pro">프로</button><button type="button" data-filter="international">국제</button><button type="button" data-filter="domestic">국내</button></div><div class="gender-filter" id="genders"><button type="button" class="active" data-gender="men">남자부</button><button type="button" data-gender="women">여자부</button></div></div>
+<div class="events" id="events"></div>
+<div class="data-note">대회별 공식 상세 페이지로 연결됩니다. 대회 결과는 확인된 자료를 기준으로 합니다.</div>
+</section>
+<section class="section" aria-labelledby="people-heading">
+<div class="section-head"><h2 id="people-heading">선수 · 팀 · 국가대표팀</h2><a href="/players.html">전체보기 ›</a></div>
+<div class="people-grid">
+<a class="person-card" href="/players.html"><div class="person-art"><img loading="lazy" src="/assets/images/competitions/university-hub-approved-pc-20261002.webp" alt="대학 배구 경기 이미지"></div><div class="person-meta"><b>선수 검색</b><small>선수 프로필, 기록, 통계</small></div></a>
+<a class="person-card" href="/teams.html"><div class="person-art team-art"><img loading="lazy" src="/assets/img/team-logos/v-league/2026-27/men/OKF.svg" alt="OK저축은행 구단 엠블럼"><img loading="lazy" src="/assets/img/team-logos/v-league/2026-27/men/HDC.svg" alt="현대캐피탈 구단 엠블럼"></div><div class="person-meta"><b>팀 정보</b><small>소속 구단 및 전력 기록</small></div></a>
+<a class="person-card" href="/national-team.html"><div class="person-art"><img loading="lazy" src="/assets/images/competitions/senior-national-team-hub-hero.svg" alt="국가대표팀 관련 배구 이미지"></div><div class="person-meta"><b>국가대표팀</b><small>대한민국 대표팀 정보</small></div></a>
+</div>
+</section>
+<section class="section" aria-labelledby="tools-heading">
+<div class="section-head"><h2 id="tools-heading">분석 도구 · 자료</h2><a href="/simulator.html">전체보기 ›</a></div>
+<div class="tools-grid">
+<a class="tool-card" href="/player-compare.html"><span class="tool-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19V5M3 19h18M6 15l4-5 4 3 5-7"/></svg></span><span><b>선수 비교</b><small>선수·팀 기록을 비교하세요.</small></span></a>
+<a class="tool-card" href="/simulator.html"><span class="tool-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19V5M3 19h18M6 15l4-5 4 3 5-7"/></svg></span><span><b>진출 계산기</b><small>대회 진출 경우의 수를 계산하세요.</small></span></a>
+<a class="tool-card" href="/draft-hub.html"><span class="tool-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="7" r="4"/><path d="M3 21v-3a7 7 0 0 1 11-5.7M20.5 20.5l-4-4M15 15a3 3 0 1 0 6 0 3 3 0 0 0-6 0Z"/></svg></span><span><b>드래프트 정보</b><small>신인 선수와 드래프트 자료</small></span></a>
+<a class="tool-card" href="/pamphlet-archive.html"><span class="tool-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7a3 3 0 0 1 3 3v14a3 3 0 0 0-3-3H4V4ZM20 4h-7a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h7V4Z"/></svg></span><span><b>공식 자료</b><small>대회 팜플렛·자료 열람</small></span></a>
+</div>
+</section>
+</div>
+<div class="proto-flag">K-Volley Lab · HOME UI v02.1 DESIGN REVIEW · 운영 홈 미적용</div>
+</main>
 <script>
 (()=>{'use strict';
 const competitions=[
@@ -44,7 +145,7 @@ const competitions=[
 {name:'2026 대학 U-리그',label:'UNIVERSITY LEAGUE',cat:'domestic',men:'university-league-men-2026',women:'university-league-women-2026',mc:'#224b69',wc:'#9c4877'}
 ];
 const groups=document.querySelector('#groups'),genders=document.querySelector('#genders'),events=document.querySelector('#events');let category='all',gender='men';
-function render(){events.replaceChildren();competitions.filter(c=>(category==='all'||c.cat===category)&&c[gender]).forEach(c=>{const a=document.createElement('a');a.className='event';a.href='/competition-engine.html?competition='+encodeURIComponent(c[gender]);const art=document.createElement('div');art.className='event-art';art.style.setProperty('--color',gender==='men'?c.mc:c.wc);const tag=document.createElement('small');tag.textContent=c.label;const title=document.createElement('strong');title.textContent=c.name;art.append(tag,title);const foot=document.createElement('div');foot.className='event-foot';const sex=document.createElement('span');sex.textContent=gender==='men'?'남자부':'여자부';const more=document.createElement('b');more.textContent='대회 보기 ↗';foot.append(sex,more);a.append(art,foot);events.append(a)})}
+function render(){events.replaceChildren();competitions.filter(c=>(category==='all'||c.cat===category)&&c[gender]).forEach(c=>{const a=document.createElement('a');a.className='event';a.href='/competition-engine.html?competition='+encodeURIComponent(c[gender]);const art=document.createElement('div');art.className='event-art';art.style.setProperty('--color',gender==='men'?c.mc:c.wc);const glyph=document.createElement('span');glyph.className='event-glyph';glyph.textContent=c.cat==='pro'?'🏐':c.cat==='international'?'🌐':'🎓';art.append(glyph);const tag=document.createElement('small');tag.textContent=c.label;const title=document.createElement('strong');title.textContent=c.name;art.append(tag,title);const foot=document.createElement('div');foot.className='event-foot';const sex=document.createElement('span');sex.textContent=gender==='men'?'남자부':'여자부';const more=document.createElement('b');more.textContent='대회 보기 ↗';foot.append(sex,more);a.append(art,foot);events.append(a)})}
 groups.addEventListener('click',e=>{if(!e.target.matches('button'))return;category=e.target.dataset.filter;groups.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===e.target));render()});
 genders.addEventListener('click',e=>{if(!e.target.matches('button'))return;gender=e.target.dataset.gender;genders.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b===e.target));render()});render();
 const entries=competitions.flatMap(c=>[c.men,c.women].filter(Boolean).map(slug=>({text:c.name+' '+(slug.includes('-women')?'여자부':'남자부'),href:'/competition-engine.html?competition='+slug}))).concat([{text:'경기일정 통합 달력',href:'/competition-calendar.html'},{text:'선수 검색',href:'/players.html'},{text:'팀 정보',href:'/teams.html'},{text:'국가대표팀',href:'/national-team.html'},{text:'진출 계산기',href:'/simulator.html'},{text:'선수 비교',href:'/player-compare.html'},{text:'팜플렛',href:'/pamphlet-archive.html'}]);
