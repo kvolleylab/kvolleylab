@@ -10,7 +10,7 @@ body{margin:18px;font:14px Arial,sans-serif;color:#163047;background:#edf1f5}h1{
 <h1>홈 v02.1 · 배포 화면 반응형 검수</h1>
 <form id="controls">
 <label>화면 폭 <select name="width"><option>1440</option><option>1180</option><option>390</option><option>360</option><option>680</option><option>681</option></select></label>
-<button>확인</button><a id="direct" href="/home-prototype-v021.html" target="_blank" rel="noopener">실제 프로토타입 열기</a>
+<label><input type="checkbox" name="full"> 전체 높이</label><button>확인</button><a id="direct" href="/home-prototype-v021.html" target="_blank" rel="noopener">실제 프로토타입 열기</a>
 </form>
 <iframe id="preview" title="실제 홈 v02.1 프로토타입"></iframe>
 <details><summary>검수 측정값</summary><pre id="result" aria-live="polite">불러오는 중</pre></details>
@@ -18,13 +18,14 @@ body{margin:18px;font:14px Arial,sans-serif;color:#163047;background:#edf1f5}h1{
 const form=document.getElementById('controls'),frame=document.getElementById('preview'),result=document.getElementById('result');
 const params=new URLSearchParams(location.search),widths=['1440','1180','390','360','680','681'];
 if(widths.includes(params.get('width')))form.elements.width.value=params.get('width');
+form.elements.full.checked=params.get('full')==='1';
 form.addEventListener('submit',event=>{event.preventDefault();load();});
 function load(){
  const width=form.elements.width.value;
  if(!widths.includes(width))return;
- history.replaceState(null,'','?'+new URLSearchParams({width}));
+ history.replaceState(null,'','?'+new URLSearchParams({width,full:form.elements.full.checked?'1':'0'}));
  frame.style.width=width+'px';frame.style.height='800px';
- frame.src='/home-prototype-v021.html?v=20261015-home-ui-refinement-2';
+ frame.src='/home-prototype-v021.html?v=20261015-home-ui-refinement-3';
  result.textContent='불러오는 중';
 }
 frame.addEventListener('load',async()=>{
@@ -38,7 +39,7 @@ frame.addEventListener('load',async()=>{
   setTimeout(()=>{observer.disconnect();resolve()},10000);
  });
  await Promise.all([...doc.images].map(img=>img.decode().catch(()=>{})));
- frame.style.height=Math.max(800,doc.documentElement.scrollHeight)+'px';
+ if(form.elements.full.checked)frame.style.height=Math.max(800,doc.documentElement.scrollHeight)+'px';
  const hero=doc.querySelector('.home-hero'),bar=doc.querySelector('.home-bar');
  if(!hero||!bar){result.textContent='FAIL: home shell missing';return;}
  const style=win.getComputedStyle(hero),rect=hero.getBoundingClientRect(),barRect=bar.getBoundingClientRect();
