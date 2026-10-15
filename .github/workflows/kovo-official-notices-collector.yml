@@ -1,0 +1,84 @@
+name: KOVO Official Notices Collector
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: 'Recent public notice pages to check (1-200)'
+        type: string
+        required: false
+        default: '6'
+      max_details:
+        description: 'Max matching posts to fetch (1-1000)'
+        type: string
+        required: false
+        default: '90'
+      notice_id:
+        description: 'Optional single KOVO notice ID'
+        type: string
+        required: false
+        default: ''
+  schedule:
+    - cron: '13 23 * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-official-notices-collector.yml'
+      - 'scripts/kovo_official_notices.py'
+      - 'tests/test_kovo_official_notices.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kovo-official-notices-collector-main
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run collector unit tests
+        run: python -m unittest discover -s tests -p test_kovo_official_notices.py -v
+      - name: Download official public notices without credentials
+        env:
+          MAX_PAGES: ${{ inputs.max_pages || '6' }}
+          MAX_DETAILS: ${{ inputs.max_details || '90' }}
+          NOTICE_ID: ${{ inputs.notice_id || '' }}
+        shell: bash
+        run: |
+          if [ -n "$NOTICE_ID" ]; then
+            python scripts/kovo_official_notices.py --max-pages 0 --max-details 1 --notice-id "$NOTICE_ID"
+          else
+            python scripts/kovo_official_notices.py --max-pages "$MAX_PAGES" --max-details "$MAX_DETAILS"
+          fi
+      - name: Store diagnostic summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-notice-report
+          path: data/kovo/official-notices/2026-27/run_report.json
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Commit normalized facts (never update homepage or Drive MASTER)
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/kovo/official-notices/2026-27/index.json data/kovo/official-notices/2026-27/registration_rows.csv
+          if [ -f data/kovo/official-notices/2026-27/latest_changes.json ]; then
+            git add data/kovo/official-notices/2026-27/latest_changes.json
+          fi
+          if git diff --cached --quiet; then
+            echo "No source notice changes to commit"
+          else
+            git commit -m "data(kovo): update normalized official notices [skip ci]"
+            git push origin HEAD:main
+          fi
