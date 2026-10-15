@@ -1,0 +1,77 @@
+{
+  "blocked_events": [],
+  "potential_homonyms": [
+    {
+      "gender": "남",
+      "name": "이재현",
+      "rule": "not_same_player_without_dob",
+      "team_records": [
+        {
+          "number": "8",
+          "team": "삼성화재"
+        },
+        {
+          "number": "17",
+          "team": "현대캐피탈"
+        }
+      ]
+    },
+    {
+      "gender": "여",
+      "name": "이주아",
+      "rule": "not_same_player_without_dob",
+      "team_records": [
+        {
+          "number": "12",
+          "team": "GS칼텍스"
+        },
+        {
+          "number": "2",
+          "team": "IBK기업은행"
+        }
+      ]
+    },
+    {
+      "gender": "여",
+      "name": "박은서",
+      "rule": "not_same_player_without_dob",
+      "team_records": [
+        {
+          "number": "3",
+          "team": "IBK기업은행"
+        },
+        {
+          "number": "13",
+          "team": "SOOP"
+        }
+      ]
+    },
+    {
+      "gender": "여",
+      "name": "김다은",
+      "rule": "not_same_player_without_dob",
+      "team_records": [
+        {
+          "number": "3",
+          "team": "한국도로공사"
+        },
+        {
+          "number": "1",
+          "team": "흥국생명"
+        }
+      ]
+    }
+  ],
+  "rule": "Read-only candidate queue. Review official notice and KVL Player_ID before editing Drive MASTER.",
+  "salary_mismatches": [],
+  "schema_version": 1,
+  "season": "2026-27",
+  "warnings": [
+    {
+      "name": "이다현",
+      "notice_id": 155584,
+      "reason": "inactive_event_not_in_base",
+      "team": "흥국생명"
+    }
+  ]
+}
