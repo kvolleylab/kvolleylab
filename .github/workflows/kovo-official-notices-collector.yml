@@ -27,6 +27,8 @@ on:
       - 'scripts/kovo_official_notices.py'
       - 'scripts/kovo_official_change_events.py'
       - 'tests/test_kovo_official_notices.py'
+      - 'scripts/kovo_verify_roster_contracts.py'
+      - 'tests/test_kovo_verify_roster_contracts.py'
 
 permissions:
   contents: write
@@ -47,7 +49,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Run collector unit tests
-        run: python -m unittest discover -s tests -p test_kovo_official_notices.py -v
+        run: |
+          python -m unittest discover -s tests -p test_kovo_official_notices.py -v
+          python -m unittest discover -s tests -p test_kovo_verify_roster_contracts.py -v
       - name: Download official public notices without credentials
         env:
           MAX_PAGES: ${{ inputs.max_pages || '12' }}
@@ -60,6 +64,8 @@ jobs:
           else
             python scripts/kovo_official_notices.py --max-pages "$MAX_PAGES" --max-details "$MAX_DETAILS"
           fi
+      - name: Build reviewed candidate roster, salary and change queue
+        run: python scripts/kovo_verify_roster_contracts.py
       - name: Store diagnostic summary
         if: always()
         uses: actions/upload-artifact@v4
@@ -73,7 +79,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/kovo/official-notices/2026-27/index.json data/kovo/official-notices/2026-27/registration_rows.csv data/kovo/official-notices/2026-27/change_events.csv
+          git add data/kovo/official-notices/2026-27/index.json data/kovo/official-notices/2026-27/registration_rows.csv data/kovo/official-notices/2026-27/change_events.csv data/kovo/official-notices/2026-27/roster_projection.json data/kovo/official-notices/2026-27/roster_review_queue.json
           if [ -f data/kovo/official-notices/2026-27/latest_changes.json ]; then
             git add data/kovo/official-notices/2026-27/latest_changes.json
           fi
