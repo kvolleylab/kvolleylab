@@ -34,7 +34,7 @@ for ident in IDS:
     text="\n".join(" ".join(line.split()) for line in "".join(visible.parts).splitlines())
     lines=[line[:95] for line in text.splitlines() if len(line.strip())>3]
     print(f"NOTICE id={ident} title={title[:95]} len={len(html)} tables={len(parser.tables)}")
-    print("  text_peek: "+" | ".join(lines[:3])[:240])
+    print("  text_peek: "+" | ".join(lines[:12])[:900])
     for i,table in enumerate(parser.tables[:3]):
         print(f"  table[{i}] rows={len(table)} max_columns={max(map(len,table),default=0)}")
         for row in table[:6]:
