@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
-      - name: Probe public KOVO notice APIs anonymously
+      - name: Validate KOVO public JSON payload without login
         shell: bash
         run: |
           python3 - <<'PY'
@@ -30,73 +30,71 @@ jobs:
           import urllib.request
 
           HOST = "https://user-api.kovo.co.kr"
-          TESTS = [
-              (
-                  "list",
-                  "/contents/news/official-notices?" + urllib.parse.urlencode({
-                      "page": 0,
-                      "size": 10,
-                      "sort": "order,desc",
-                      "pinned": "false",
-                  }),
-              ),
+          ENDPOINTS = [
+              ("list", "/contents/news/official-notices?" + urllib.parse.urlencode({
+                  "page": 0, "size": 10, "sort": "order,desc", "pinned": "false",
+              })),
               ("detail", "/contents/news/official-notices/155583?page=3"),
           ]
+          MODES = {
+              "anonymous": {"Accept": "application/json"},
+              "site-origin-no-cookie": {
+                  "Accept": "application/json",
+                  "Accept-Language": "ko-KR,ko;q=0.9",
+                  "Origin": "https://kovo.co.kr",
+                  "Referer": "https://kovo.co.kr/news/official-notices",
+              },
+          }
+          results = {}
+          for label, endpoint in ENDPOINTS:
+              for mode, headers in MODES.items():
+                  safe_headers = {"User-Agent": "KVolleyLab-Public-Notice-Connection-Test/1.1", **headers}
+                  request = urllib.request.Request(HOST + endpoint, headers=safe_headers, method="GET")
+                  print(f"CHECK {label}/{mode}: {endpoint}", flush=True)
+                  try:
+                      with urllib.request.urlopen(request, timeout=18) as response:
+                          raw = response.read(1_000_001)
+                          status = response.status
+                          ctype = response.headers.get("Content-Type", "")
+                      print(f"  HTTP={status} content_type={ctype} bytes={len(raw)}")
+                      if status != 200 or len(raw) > 1_000_000 or "json" not in ctype.lower():
+                          raise ValueError("Unexpected status, type, or response size")
+                      data = json.loads(raw)
+                      if not isinstance(data, dict):
+                          raise ValueError("Expected JSON object")
+                      payload = data.get("payload")
+                      print(f"  envelope_result={json.dumps(data.get('result'),ensure_ascii=False)[:230]}")
+                      print(f"  payload_type={type(payload).__name__}")
+                      if isinstance(payload, dict):
+                          print(f"  payload_keys={list(payload)[:20]}")
+                      elif isinstance(payload, list):
+                          print(f"  payload_length={len(payload)}")
+                      if len(raw) < 256 and payload is None:
+                          print("  empty_payload=true")
+                      if label == "list":
+                          candidates = [payload] if isinstance(payload, list) else [
+                              payload.get(k) for k in ("content", "items", "results", "data")
+                          ] if isinstance(payload, dict) else []
+                          items = next((c for c in candidates if isinstance(c, list) and len(c) > 0), [])
+                          good = len(items) > 0 and isinstance(items[0], dict) and "id" in items[0]
+                          if good:
+                              print(f"  list_count={len(items)} first_ids={[c.get('id') for c in items[:3]]}")
+                      else:
+                          current = payload.get("current", payload) if isinstance(payload, dict) else {}
+                          good = isinstance(current, dict) and current.get("id") == 155583
+                          if good:
+                              print(f"  detail_id={current.get('id')} has_bodies={bool(current.get('bodies'))}")
+                      results[label, mode] = good
+                      print(f"  CONTENT_VALID={good}", flush=True)
+                  except Exception as error:
+                      results[label, mode] = False
+                      if isinstance(error, urllib.error.HTTPError):
+                          message = f"HTTP {error.code}"
+                      else:
+                          message = type(error).__name__ + ": " + str(error)[:160]
+                      print(f"  ERROR={message}", flush=True)
 
-          failures = []
-          for label, endpoint in TESTS:
-              url = HOST + endpoint
-              request = urllib.request.Request(
-                  url,
-                  headers={
-                      "Accept": "application/json",
-                      "User-Agent": "KVolleyLab-Public-Notice-Connectivity-Probe/1.0",
-                  },
-                  method="GET",
-              )
-              print(f"CHECK {label}: endpoint={endpoint}", flush=True)
-              try:
-                  with urllib.request.urlopen(request, timeout=18) as response:
-                      status = response.status
-                      content_type = response.headers.get("Content-Type", "")
-                      raw = response.read(1_000_001)
-                  print(f"  HTTP={status} content_type={content_type} bytes={len(raw)}")
-                  if len(raw) > 1_000_000:
-                      raise ValueError("Response exceeds 1 MB safety limit")
-                  if status != 200:
-                      raise ValueError(f"Unexpected HTTP status: {status}")
-                  if "json" not in content_type.lower():
-                      raise ValueError("Expected application/json")
-                  data = json.loads(raw)
-                  if isinstance(data, dict):
-                      print(f"  JSON=object keys={list(data)[:14]}")
-                      for key in ("content", "items", "results", "data"):
-                          group = data.get(key)
-                          if isinstance(group, list):
-                              print(f"  {key}_count={len(group)}")
-                              print(f"  sample_ids={[x.get('id') for x in group[:4] if isinstance(x, dict)]}")
-                              break
-                      if label == "detail":
-                          current = data.get("current", data)
-                          if isinstance(current, dict):
-                              print(f"  detail_id={current.get('id')}")
-                              print(f"  detail_keys={list(current)[:20]}")
-                              print(f"  has_html_bodies={bool(current.get('bodies'))}")
-                  elif isinstance(data, list):
-                      print(f"  JSON=array length={len(data)}")
-                  else:
-                      print(f"  JSON=unexpected_type {type(data).__name__}")
-                  print(f"PASS {label}", flush=True)
-              except urllib.error.HTTPError as exc:
-                  failures.append(label)
-                  print(f"FAIL {label}: HTTP={exc.code}", flush=True)
-              except (urllib.error.URLError, TimeoutError, ValueError, json.JSONDecodeError) as exc:
-                  failures.append(label)
-                  print(f"FAIL {label}: {type(exc).__name__}: {str(exc)[:220]}", flush=True)
-              except Exception as exc:
-                  failures.append(label)
-                  print(f"FAIL {label}: {type(exc).__name__}: {str(exc)[:220]}", flush=True)
-
-          print("RESULT:", "FAILED=" + ",".join(failures) if failures else "BOTH_PUBLIC_APIS_ACCESSIBLE")
-          sys.exit(1 if failures else 0)
+          success = all(any(results.get((label, mode), False) for mode in MODES) for label, _ in ENDPOINTS)
+          print("FINAL_DATA_ACCESS=" + ("SUCCESS" if success else "NOT_CONFIRMED"))
+          sys.exit(0 if success else 1)
           PY
