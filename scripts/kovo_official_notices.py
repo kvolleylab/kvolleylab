@@ -23,8 +23,10 @@ TEAMS = {
     "흥국생명": "여", "IBK기업은행": "여", "정관장": "여",
     "SOOP": "여", "페퍼저축은행": "여",
 }
-KEYWORDS = ("선수등록", "추가등록", "임의해지", "자유신분", "이적", "FA",
-            "보상선수", "외국인", "아시아쿼터", "신인선수", "계약")
+KEYWORDS = ("선수등록", "추가등록", "추가선수 등록", "추가 선수 등록",
+            "임의해지", "임의탈퇴", "자유신분", "이적", "FA", "보상선수",
+            "외국인", "아시아쿼터", "신인선수", "계약", "방출", "임대",
+            "계약해지", "계약 해지", "등록말소", "은퇴", "퇴단")
 FIELDS = ("notice_id", "notice_date", "notice_title", "notice_kind", "team", "gender",
           "number", "player_name", "position", "salary_krw", "option_krw",
           "total_krw", "remarks", "source_url")
@@ -87,18 +89,31 @@ def money_to_krw(value):
 
 
 def detect_kind(title):
-    if "선수등록" in title or "추가등록" in title:
-        return "registration"
-    if "임의해지" in title:
+    if "해외임대" in title or "임대" in title:
+        return "loan"
+    if "임의해지" in title or "임의탈퇴" in title:
         return "voluntary_termination"
+    if "계약해지" in title or "계약 해지" in title:
+        return "contract_termination"
+    if "방출" in title or "퇴단" in title:
+        return "release"
+    if "은퇴" in title:
+        return "retirement"
+    if "자유신분" in title:
+        return "free_agent"
     if "보상선수" in title or re.search(r"\bFA\b", title, re.I):
         return "fa"
     if "이적" in title:
         return "transfer"
     if "외국인" in title or "아시아쿼터" in title:
         return "foreign_or_asian_quota"
+    if "배번 변경" in title or "등번호 변경" in title:
+        return "number_change"
+    if "포지션 변경" in title:
+        return "position_change"
+    if "선수등록" in title or "추가선수 등록" in title or "추가 선수 등록" in title:
+        return "registration"
     return "other_player_notice"
-
 
 def detect_team(title):
     for name in sorted(TEAMS, key=len, reverse=True):

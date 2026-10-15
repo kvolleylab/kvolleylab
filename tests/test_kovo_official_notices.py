@@ -46,6 +46,24 @@ class KovoNoticeTests(unittest.TestCase):
         self.assertEqual(kovo.detect_team("2026-27 현대건설 선수등록"), ("현대건설", "여"))
         self.assertEqual(kovo.detect_kind("선수등록(1차) 공시"), "registration")
 
+    def test_change_types(self):
+        cases = {
+            "흥국생명 해외임대선수 공시": "loan",
+            "한국도로공사 임의해지 선수 공시": "voluntary_termination",
+            "삼성화재 자유신분선수 공시": "free_agent",
+            "선수 방출 공시": "release",
+            "선수 계약해지": "contract_termination",
+            "현대건설 이적선수 공시": "transfer",
+            "남자부 선수 은퇴": "retirement",
+            "2026-27 추가선수 등록": "registration",
+            "정관장 선수 배번 변경 등록": "number_change",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertEqual(kovo.detect_kind(title), expected)
+        self.assertTrue(kovo.relevant("해외임대선수 공시", "2026-10-10", "2026-27", "2026-04-01"))
+        self.assertTrue(kovo.relevant("선수 방출 공시", "2026-10-10", "2026-27", "2026-04-01"))
+
     def test_notice_normalization(self):
         item = kovo.normalize_detail({
             "id": 155583, "createdAt": "2026-06-30T12:00:00",

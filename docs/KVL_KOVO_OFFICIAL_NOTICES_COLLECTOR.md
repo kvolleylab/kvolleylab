@@ -39,3 +39,9 @@ Reusable, conservative public KOVO official-notice data collection for K-Volley 
 
 ## New chat handoff
 "Check kvolleylab/kvolleylab docs/KVL_KOVO_OFFICIAL_NOTICES_COLLECTOR.md and read data/kovo/official-notices/2026-27/index.json or registration_rows.csv. If stale, run KOVO Official Notices Collector via GitHub Actions (when an execution tool is available) and verify logs. Use actual notice URL, publication date and verification status. Do not treat a posted registration list as current game roster."
+
+## 공시 유형별 분류 (확장)
+- 선수등록, 추가등록, 이적, FA, 자유신분, 임의해지/임의탈퇴, 계약해지, 방출/퇴단, 해외임대/임대, 은퇴, 포지션·등번호 변경, 외국인/아시아쿼터 등 제목을 유형화한다.
+- **분류 및 링크 수집은 해당 선수의 현재 등록·이동 여부를 확인한 것과 다르다.** 표가 아닌 서술형 공시는 본문에서 해당 선수와 효력일을 개별 대조해야 한다.
+- KOVO 공시에 게시되지 않은 계약 변동은 공시 수집만으로 전수 확인할 수 없다. 해외임대와 국내 선수 임대 규정 역시 혼동하지 않는다.
+- 2026-10-15 Drive MASTER 갱신: 구단 탭에는 2026-06-30 1차 등록 확인을 표시, 공식 KRW 금액은 `KOVO_공시연봉` 시트, 추후 변동 공시는 `변동공시_검수대기` 시트로 분리해 검수 대기.
