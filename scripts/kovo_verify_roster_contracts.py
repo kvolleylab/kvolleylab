@@ -10,6 +10,8 @@ import argparse
 import json
 import re
 from collections import Counter, defaultdict
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 
 BASE = Path("data/kovo/official-notices/2026-27")
@@ -79,7 +81,8 @@ def make_entry(ev, team, existing=None):
     return entry
 
 
-def project(notices):
+def project(notices, as_of=None):
+    as_of = as_of or datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
     active, warnings = base_rosters(notices)
     blocked = []
     applied = []
@@ -124,7 +127,7 @@ def project(notices):
                 active[destkey]=make_entry(ev,dest,old)
                 applied.append(ev["event_id"])
             elif kind in INACTIVE_EVENTS or kind=="loan":
-                if kind=="loan" and ev.get("loan_end") and ev["loan_end"] < "2026-10-15":
+                if kind=="loan" and ev.get("loan_end") and ev["loan_end"] < as_of:
                     warnings.append({"notice_id":notice["id"],"reason":"loan_expired_unverified_return","name":name})
                     continue
                 if target:

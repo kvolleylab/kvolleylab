@@ -316,8 +316,7 @@ def collect(args):
         writer = csv.DictWriter(file, fieldnames=FIELDS, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
-    if changes:
-        write_json(out / "latest_changes.json", {"season": args.season, "changes": changes})
+    write_json(out / "latest_changes.json", {"season": args.season, "changes": changes})
     write_json(out / "run_report.json", {
         "run_utc": datetime.now(timezone.utc).isoformat(),
         "pages_fetched": pages, "details_fetched": len(candidates),

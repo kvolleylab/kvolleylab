@@ -56,6 +56,15 @@ class TestProjection(unittest.TestCase):
         self.assertEqual(result["audit"]["total"],1)
         self.assertEqual(result["audit"]["prior_season_events_ignored"],1)
 
+    def test_loan_expiry_based_on_current_date(self):
+        ev=event(18,"김테스트","loan",destination="대만 구단",loan_start="2026-07-01",loan_end="2026-09-30")
+        n=notice(18,"남","OK저축은행","해외임대선수",events=[ev])
+        during=module.project([self.base(),n],as_of="2026-08-01")
+        after=module.project([self.base(),n],as_of="2026-10-15")
+        self.assertEqual(during["audit"]["total"],0)
+        self.assertEqual(after["audit"]["total"],1)
+        self.assertEqual(after["audit"]["warnings"][0]["reason"],"loan_expired_unverified_return")
+
     def test_identical_names_different_clubs_not_merged(self):
         docs=[self.base(),notice(11,"남","삼성화재","2026-2027시즌 삼성화재 선수등록(1차) 공시",
              people=[{"player_name":"김테스트","number":"3","position":"OH"}])]
