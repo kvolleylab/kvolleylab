@@ -2,6 +2,8 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 
 target = Path(__file__).resolve().parents[1] / "scripts" / "kovo_official_notices.py"
 spec = importlib.util.spec_from_file_location("kovo_notices", target)
