@@ -1,0 +1,24 @@
+name: KOVO Public Notice Structure Diagnostic
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/kovo_notice_structure_diagnostic.py'
+      - '.github/workflows/kovo-notice-structure-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect notice structure read-only without credentials or copying full content
+        run: python scripts/kovo_notice_structure_diagnostic.py
