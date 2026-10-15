@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
+from kovo_official_change_events import parse_events, FIELDS as EVENT_FIELDS
 
 API = "https://user-api.kovo.co.kr"
 SITE = "https://kovo.co.kr/news/official-notices"
@@ -89,6 +90,8 @@ def money_to_krw(value):
 
 
 def detect_kind(title):
+    if "임의해지 해지" in title or "임의해지해지" in title:
+        return "reinstatement"
     if "해외임대" in title or "임대" in title:
         return "loan"
     if "임의해지" in title or "임의탈퇴" in title:
@@ -229,6 +232,7 @@ def normalize_detail(data):
         "source_url": f"{SITE}/{ident}",
         "html_sha256": hashlib.sha256(body.encode("utf-8")).hexdigest(),
         "players": extract_rows(bodies),
+        "events": parse_events(body,title,ident,(data.get("createdAt") or "")[:10],detect_kind(title),team,gender,f"{SITE}/{ident}"),
     }
 
 
@@ -298,6 +302,11 @@ def collect(args):
                 "team": n["team"], "gender": n["gender"], **p,
                 "source_url": n["source_url"],
             })
+    events = [event for notice in notices for event in notice.get("events", [])]
+    with (out / "change_events.csv").open("w", encoding="utf-8-sig", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=EVENT_FIELDS, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(sorted(events, key=lambda ev:(ev["effective_date"],ev["notice_id"],ev["event_id"])))
     write_json(archive, {
         "schema_version": 1, "season": args.season, "source": SITE,
         "scope": "Partial archive of public notices. Not a confirmed current roster.",
@@ -312,10 +321,10 @@ def collect(args):
     write_json(out / "run_report.json", {
         "run_utc": datetime.now(timezone.utc).isoformat(),
         "pages_fetched": pages, "details_fetched": len(candidates),
-        "archived_notices": len(notices), "table_rows": len(rows),
+        "archived_notices": len(notices), "table_rows": len(rows), "change_events": len(events), "high_confidence_events": sum(ev["confidence"]=="high" for ev in events),
         "new_or_updated": len(changes), "notice_id": args.notice_id,
     })
-    print(f"COLLECT_OK pages={pages} details={len(candidates)} archived={len(notices)} rows={len(rows)} changes={len(changes)}")
+    print(f"COLLECT_OK pages={pages} details={len(candidates)} archived={len(notices)} rows={len(rows)} events={len(events)} changes={len(changes)}")
 
 
 def main():

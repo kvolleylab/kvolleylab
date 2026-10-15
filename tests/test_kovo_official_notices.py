@@ -82,3 +82,41 @@ class KovoNoticeTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class EventExtractionTests(unittest.TestCase):
+    def test_loan_and_termination(self):
+        from kovo_official_change_events import parse_events
+        loan="<p>선수명 : 이다현</p><p>임대구단 : 일본 NEC Red Rockets Kawasaki</p><p>임대기간 : 2026.07.01~2027.05.31</p><p>공시일 : 2026년 6월 30일</p>"
+        e=parse_events(loan,"2026-2027시즌 흥국생명 해외임대선수 공시",155584,"2026-06-30","loan","흥국생명","여","url")
+        self.assertEqual(len(e),1)
+        self.assertEqual(e[0]["player_name"],"이다현")
+        self.assertEqual(e[0]["loan_start"],"2026-07-01")
+        self.assertEqual(e[0]["loan_end"],"2027-05-31")
+        self.assertEqual(e[0]["confidence"],"high")
+        termination="<p>선수명 : 이예은</p><p>공시일 : 2026년 07월 16일</p>"
+        e=parse_events(termination,"2026-2027 한국도로공사 임의해지",155700,"2026-07-16","voluntary_termination","한국도로공사","여","url")
+        self.assertEqual((e[0]["player_name"],e[0]["effective_date"]),("이예은","2026-07-16"))
+
+    def test_multiple_player_transfer(self):
+        from kovo_official_change_events import parse_events
+        html="<p>선수명 : 고의정</p><p>배번/포지션 : 10번 / 아웃사이드히터</p><p>연봉 / 옵션 : 75,000천원 / 10,000천원</p><p>전소속구단 : IBK기업은행</p><p>선수명 : 서지혜</p><p>배번/포지션 : 22번 / 아웃사이드히터</p><p>연봉 / 옵션 : 40,000천원 / 5,000천원</p><p>전소속구단 : 현대건설</p><p>공시일 : 2026년 8월 12일</p>"
+        e=parse_events(html,"2026-2027 SOOP 이적선수 공시",156625,"2026-08-12","transfer","SOOP","여","url")
+        self.assertEqual(len(e),2)
+        self.assertEqual([x["player_name"] for x in e],["고의정","서지혜"])
+        self.assertEqual(e[1]["from_team"],"현대건설")
+        self.assertEqual(e[0]["to_team"],"SOOP")
+        self.assertEqual(e[0]["salary_krw"],75_000_000)
+
+    def test_number_and_position_changes(self):
+        from kovo_official_change_events import parse_events
+        a=parse_events("<p>선수명 : 이신영</p><p>변경전/변경후 : 26-> 18</p>","배번 변경",157270,"2026-10-07","number_change","흥국생명","여","url")
+        self.assertEqual((a[0]["previous_number"],a[0]["new_number"]),("26","18"))
+        a=parse_events("<p>선수명 : 전하리</p><p>변경전 / 변경후 : 아웃사이드히터 → 리베로</p>","포지션 변경",156914,"2026-09-08","position_change","SOOP","여","url")
+        self.assertEqual(a[0]["new_position"],"리베로")
+
+    def test_exotic_2025_and_reinstatement(self):
+        from kovo_official_change_events import parse_events
+        a=parse_events("<p>SOOP SOOPers : 박경현</p>","2025-2026 임의해지",155569,"2026-06-30","voluntary_termination","","여","url")
+        self.assertEqual(a[0]["player_name"],"박경현")
+        self.assertEqual(a[0]["season"],"2025-26")
+        self.assertEqual(kovo.detect_kind("임의해지 해지 및 선수등록 공시"),"reinstatement")

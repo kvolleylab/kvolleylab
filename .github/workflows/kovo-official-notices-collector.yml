@@ -7,12 +7,12 @@ on:
         description: 'Recent public notice pages to check (1-200)'
         type: string
         required: false
-        default: '6'
+        default: '12'
       max_details:
         description: 'Max matching posts to fetch (1-1000)'
         type: string
         required: false
-        default: '90'
+        default: '180'
       notice_id:
         description: 'Optional single KOVO notice ID'
         type: string
@@ -25,6 +25,7 @@ on:
     paths:
       - '.github/workflows/kovo-official-notices-collector.yml'
       - 'scripts/kovo_official_notices.py'
+      - 'scripts/kovo_official_change_events.py'
       - 'tests/test_kovo_official_notices.py'
 
 permissions:
@@ -49,8 +50,8 @@ jobs:
         run: python -m unittest discover -s tests -p test_kovo_official_notices.py -v
       - name: Download official public notices without credentials
         env:
-          MAX_PAGES: ${{ inputs.max_pages || '6' }}
-          MAX_DETAILS: ${{ inputs.max_details || '90' }}
+          MAX_PAGES: ${{ inputs.max_pages || '12' }}
+          MAX_DETAILS: ${{ inputs.max_details || '180' }}
           NOTICE_ID: ${{ inputs.notice_id || '' }}
         shell: bash
         run: |
@@ -72,7 +73,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/kovo/official-notices/2026-27/index.json data/kovo/official-notices/2026-27/registration_rows.csv
+          git add data/kovo/official-notices/2026-27/index.json data/kovo/official-notices/2026-27/registration_rows.csv data/kovo/official-notices/2026-27/change_events.csv
           if [ -f data/kovo/official-notices/2026-27/latest_changes.json ]; then
             git add data/kovo/official-notices/2026-27/latest_changes.json
           fi
