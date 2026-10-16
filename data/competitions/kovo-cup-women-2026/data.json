@@ -1,6 +1,6 @@
 {
   "status": "active",
-  "stageLabel": "여자부 · 조별리그 진행 중",
+  "stageLabel": "여자부 · 조별리그 종료 · 준결승 대진 확정",
   "dateLabel": "2026.10.11 ~ 10.18",
   "locationLabel": "대한민국 · 전남 여수",
   "venueLabel": "여수 진남체육관",
@@ -10,10 +10,10 @@
   "groupCount": 2,
   "matchCount": 12,
   "knockoutTeamCount": 4,
-  "upcomingOverviewNote": "대회 시작 전 · 공식 발표 일정과 조편성을 반영했습니다.",
-  "scheduleNote": "한국시간(KST) · 여자부 12경기 · 10월 12일까지 공식 결과 반영",
-  "standingsNote": "10월 12일 경기 종료 기준 · 조별리그 공식 결과 반영",
-  "standingsStatus": "조별리그 진행 중",
+  "upcomingOverviewNote": "조별리그 종료 · 10월 17일 준결승, 10월 18일 결승 예정",
+  "scheduleNote": "한국시간(KST) · 여자부 12경기 · 10월 16일까지 조별리그 9경기 결과 반영 · 10월 17일 준결승",
+  "standingsNote": "10월 16일 조별리그 종료 기준 · 9경기 결과 반영 · A조 흥국생명·IBK기업은행, B조 한국도로공사·GS칼텍스 준결승 진출",
+  "standingsStatus": "조별리그 최종 순위",
   "standingsRule": "각 조 상위 2팀이 준결승에 진출합니다.",
   "meaning": {
     "eyebrow": "KOVO CUP",
@@ -211,7 +211,25 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 15:30 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 12
+          }
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-05",
@@ -228,7 +246,33 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-06",
@@ -245,7 +289,25 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-07",
@@ -262,7 +324,25 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 15:30 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 12,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-08",
@@ -279,7 +359,29 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-09",
@@ -296,7 +398,25 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-10",
@@ -306,10 +426,10 @@
       "pool": "",
       "round": "SF",
       "home": {
-        "name": "A조 1위"
+        "code": "HPS"
       },
       "away": {
-        "name": "B조 2위"
+        "code": "GSC"
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:30 KST",
@@ -323,10 +443,10 @@
       "pool": "",
       "round": "SF",
       "home": {
-        "name": "B조 1위"
+        "code": "KEX"
       },
       "away": {
-        "name": "A조 2위"
+        "code": "IBK"
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 16:30 KST",
@@ -359,28 +479,28 @@
           {
             "rank": 1,
             "team": {
-              "code": "IBK",
-              "name": "IBK기업은행"
+              "code": "HPS",
+              "name": "흥국생명"
             },
-            "wins": 1,
+            "wins": 3,
             "losses": 0,
-            "points": 3,
-            "setRatio": "MAX",
-            "pointRatio": "1.339",
-            "statusLabel": "진행 중"
+            "points": 8,
+            "setRatio": "3.000",
+            "pointRatio": "1.106",
+            "statusLabel": "준결승 진출"
           },
           {
             "rank": 2,
             "team": {
-              "code": "HPS",
-              "name": "흥국생명"
+              "code": "IBK",
+              "name": "IBK기업은행"
             },
-            "wins": 1,
-            "losses": 0,
-            "points": 3,
-            "setRatio": "3.000",
-            "pointRatio": "1.067",
-            "statusLabel": "진행 중"
+            "wins": 2,
+            "losses": 1,
+            "points": 7,
+            "setRatio": "2.000",
+            "pointRatio": "1.176",
+            "statusLabel": "준결승 진출"
           },
           {
             "rank": 3,
@@ -388,12 +508,12 @@
               "code": "RSP",
               "name": "정관장"
             },
-            "wins": 0,
-            "losses": 1,
-            "points": 0,
-            "setRatio": "0.333",
-            "pointRatio": "0.937",
-            "statusLabel": "진행 중"
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "setRatio": "0.833",
+            "pointRatio": "1.004",
+            "statusLabel": "조별리그 탈락"
           },
           {
             "rank": 4,
@@ -402,11 +522,11 @@
               "name": "SOOP"
             },
             "wins": 0,
-            "losses": 1,
+            "losses": 3,
             "points": 0,
             "setRatio": "0.000",
-            "pointRatio": "0.747",
-            "statusLabel": "진행 중"
+            "pointRatio": "0.695",
+            "statusLabel": "조별리그 탈락"
           }
         ]
       },
@@ -420,38 +540,38 @@
               "code": "KEX",
               "name": "한국도로공사"
             },
-            "wins": 1,
+            "wins": 2,
             "losses": 0,
-            "points": 3,
-            "setRatio": "3.000",
-            "pointRatio": "1.188",
-            "statusLabel": "진행 중"
+            "points": 6,
+            "setRatio": "6.000",
+            "pointRatio": "1.298",
+            "statusLabel": "준결승 진출"
           },
           {
             "rank": 2,
+            "team": {
+              "code": "GSC",
+              "name": "GS칼텍스"
+            },
+            "wins": 1,
+            "losses": 1,
+            "points": 3,
+            "setRatio": "1.333",
+            "pointRatio": "1.000",
+            "statusLabel": "준결승 진출"
+          },
+          {
+            "rank": 3,
             "team": {
               "code": "HHC",
               "name": "현대건설"
             },
             "wins": 0,
-            "losses": 0,
+            "losses": 2,
             "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "첫 경기 전"
-          },
-          {
-            "rank": 3,
-            "team": {
-              "code": "GSC",
-              "name": "GS칼텍스"
-            },
-            "wins": 0,
-            "losses": 1,
-            "points": 0,
-            "setRatio": "0.333",
-            "pointRatio": "0.842",
-            "statusLabel": "진행 중"
+            "setRatio": "0.000",
+            "pointRatio": "0.740",
+            "statusLabel": "조별리그 탈락"
           }
         ]
       }
@@ -482,5 +602,5 @@
       "note": "단판 토너먼트"
     }
   },
-  "activeOverviewNote": "조별리그 진행 중 · 확인된 공식 경기 결과와 순위를 반영합니다."
+  "activeOverviewNote": "조별리그 종료 · A조 흥국생명·IBK기업은행, B조 한국도로공사·GS칼텍스 준결승 진출 · 10월 17일 준결승"
 }
