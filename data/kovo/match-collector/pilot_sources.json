@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "purpose": "Public, historical DB BANK access probe only. Not 2026 KOVO Cup match IDs; do not publish.",
+  "matches": [
+    {
+      "url": "https://dbbank.kovo.co.kr/game/11110_pop_result.asp?PID=gUjNxoTMwIjOyIDM",
+      "expect": {
+        "date": "2026-01-22",
+        "home_team": "한국도로공사",
+        "away_team": "IBK기업은행",
+        "score": "3-1"
+      }
+    }
+  ]
+}
