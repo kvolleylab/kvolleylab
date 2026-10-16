@@ -78,6 +78,17 @@ class MatchTests(unittest.TestCase):
         with self.assertRaises(collector.ParseError):
             collector.parse_match(HTML.replace("<th>1SET</th>", "<th>1Q</th>"), URL)
 
+    def test_duplicate_pid_with_different_pset_is_rejected(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            manifest = Path(folder) / "sources.json"
+            manifest.write_text(json.dumps({"matches": [
+                {"url": URL}, {"url": URL + "&PSET=1"}
+            ]}), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                collector.collect_manifest(manifest, Path(folder) / "out.json")
+            self.assertFalse((Path(folder) / "out.json").exists())
+
     def test_refuse_cross_domain_redirect_and_network_not_required(self):
         # This unit suite should not send any HTTP request.
         self.assertEqual(collector.validate_url(URL), URL)
