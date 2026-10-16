@@ -263,8 +263,9 @@ def collect_manifest(manifest, output, delay=1):
     if not 1 <= len(entries) <= 20 or delay < 1:
         raise ValueError("1..20 entries and at least 1 second between requests required")
     urls = [validate_url(e["url"]) for e in entries]
-    if len(set(urls)) != len(urls):
-        raise ValueError("Duplicate match URLs")
+    match_ids = [parse_qs(urlsplit(url).query)["PID"][0] for url in urls]
+    if len(set(match_ids)) != len(match_ids):
+        raise ValueError("Duplicate match PID (PSET variants are the same match)")
     results = []
     for i, entry in enumerate(entries):
         results.append(collect_one(entry))
