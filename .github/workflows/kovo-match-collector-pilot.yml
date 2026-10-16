@@ -1,0 +1,44 @@
+name: KOVO Match Collector Pilot
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-match-collector-pilot.yml'
+      - 'scripts/kovo_match_collector.py'
+      - 'tests/test_kovo_match_collector.py'
+      - 'data/kovo/match-collector/pilot_sources.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kovo-match-collector-pilot
+  cancel-in-progress: false
+
+jobs:
+  test-and-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline contract tests (no network needed)
+        run: python -m unittest discover -s tests -p 'test_kovo_match_collector.py' -v
+      - name: Probe historical public DB BANK match page without credentials
+        run: |
+          python scripts/kovo_match_collector.py \
+            --manifest data/kovo/match-collector/pilot_sources.json \
+            --output data/kovo/match-collector/pilot_results.json \
+            --delay 1
+      - name: Upload pilot output for manual review (not published)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-match-collector-pilot
+          path: data/kovo/match-collector/pilot_results.json
+          retention-days: 14
+          if-no-files-found: ignore
