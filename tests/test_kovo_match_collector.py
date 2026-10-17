@@ -40,6 +40,32 @@ class MatchTests(unittest.TestCase):
         self.assertEqual(sample["player_stats_status"], "not_collected")
         self.assertNotIn("players", sample)
 
+    def test_player_stats_candidates_review_only(self):
+        def player_table(number, name, position, height, points, attack, block, serve):
+            cells = [number, name, position, str(height)] + ["■"] * 4 + [""]
+            cells += [str(points), str(attack), str(block), str(serve)]
+            cells += [""] * (21-len(cells))
+            return ("<table><tr><th>PLAYER</th><th>포지션</th><th>득점</th></tr>"
+                    "<tr>" + "".join("<td>" + v + "</td>" for v in cells)
+                    + "</tr></table>")
+        sample = HTML + player_table("99", "모마", "OP", 184, 31, 24, 5, 1)
+        sample += player_table("19", "빅토리아", "OP", 191, 32, 26, 5, 0)
+        parsed = collector.extract_player_candidates(sample, ["한국도로공사", "IBK기업은행"])
+        self.assertEqual(parsed["status"], "parsed_review_required")
+        self.assertEqual([t["players"][0]["points"] for t in parsed["teams"]], [31,32])
+        self.assertEqual(parsed["teams"][0]["players"][0]["position"], "OP")
+        self.assertEqual(parsed["teams"][0]["assignment"], "table_order_unverified")
+        self.assertNotIn("attack_success_rate", parsed["teams"][0]["players"][0])
+
+    def test_player_extraction_rejects_impossible_points(self):
+        def make_table(name, points, attack):
+            cells = ["5", name, "OH", "180"] + [""] * 5 + [str(points), str(attack), "0", "0"] + [""] * 8
+            return ("<table><tr><th>PLAYER</th><th>포지션</th><th>득점</th></tr>"
+                    "<tr>" + "".join("<td>" + v + "</td>" for v in cells) + "</tr></table>")
+        html = make_table("테스트A", 3, 5) + make_table("테스트B", 4, 2)
+        with self.assertRaises(collector.ParseError):
+            collector.extract_player_candidates(html, ["A", "B"])
+
     def test_access_restrictions(self):
         bad = [
             "https://dbbank.kovo.co.kr/login.asp?PID=12345678",
