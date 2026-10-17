@@ -1,0 +1,27 @@
+name: KOVO Public Schedule API Probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-public-schedule-api-probe.yml'
+      - 'scripts/kovo_public_schedule_probe.py'
+      - 'tests/test_kovo_public_schedule_probe.py'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-schedule-response:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline exact-URL and redaction tests
+        run: python -m unittest discover -s tests -p test_kovo_public_schedule_probe.py -v
+      - name: One-shot official public schedule API metadata probe
+        run: python scripts/kovo_public_schedule_probe.py
