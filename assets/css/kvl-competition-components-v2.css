@@ -3464,9 +3464,15 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
  * KOVO Cup uses pool standings, so club marks follow the large PRO identity scale.
  */
 @media(min-width:901px){
+  /* Shared PRO pool contract: seven cells use identical tracks in headers and rows. */
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-table-head,
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row{
-    grid-template-columns:30px minmax(130px,1fr) 45px 38px 48px 48px!important;
+    grid-template-columns:34px minmax(0,1fr) 36px 36px 48px 72px 72px!important;
+    column-gap:5px!important;
+  }
+  /* Two-pool PRO cup: both cards use enough width for seven columns. */
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #groups .kvl1180-pool-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
   }
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .kvl1180-pool-row{
     min-height:76px!important;
@@ -3487,6 +3493,12 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
     text-overflow:clip!important;
     white-space:normal!important;
     word-break:keep-all!important;
+  }
+}
+/* Between 901px and 1100px, keep whole seven-column cups readable in one card per row. */
+@media(min-width:901px) and (max-width:1100px){
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #groups .kvl1180-pool-grid{
+    grid-template-columns:minmax(0,1fr)!important;
   }
 }
 @media(max-width:900px){
