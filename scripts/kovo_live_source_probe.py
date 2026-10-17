@@ -118,6 +118,27 @@ def endpoint_path_hints(js):
     return result[:30]
 
 
+def route_contexts(js):
+    """Short public-code callsite hints for known schedule route literals."""
+    routes = ("/games/v-leagues/schedules", "/games/kovo-cups/schedules",
+              "/games/schedules", "/main/game/season")
+    found = []
+    for route in routes:
+        for hit in list(re.finditer(re.escape(route), js))[:2]:
+            start, end = hit.span()
+            # Avoid writing secrets or opaque IDs from arbitrary JS to job logs.
+            around = js[max(0, start-115):min(len(js), end+170)]
+            around = re.sub(r"[A-Za-z0-9_-]{25,}", "{opaque}", around)
+            around = re.sub(r"([?&](?:token|key|sid|auth|session)=[^&'\"\s]+)",
+                            "[redacted-query]", around, flags=re.I)
+            found.append({"route": route, "context": around})
+    return found
+
+
+def host_hints(js):
+    return sorted(set(re.findall(r"https://(?:[a-z0-9-]+\.)?kovo\.co\.kr", js, re.I)))[:20]
+
+
 def probe(max_assets=3):
     if not 0 <= max_assets <= MAX_ASSETS:
         raise Blocked("Max assets is 0..3")
@@ -147,6 +168,8 @@ def probe(max_assets=3):
             "pathname": urlsplit(url).path,
             **meta,
             "candidate_route_paths": endpoint_path_hints(code) if code else [],
+            "route_callsite_hints": route_contexts(code) if code else [],
+            "first_party_host_hints": host_hints(code) if code else [],
             "realtime_keywords": [word for word in ("websocket", "EventSource", "score", "match", "game")
                                   if word.lower() in code.lower()],
         })
