@@ -72,6 +72,40 @@ def safe_key_summary(value):
     return {"type":type(value).__name__}
 
 
+def match_only_sample(payload):
+    """Whitelist only game identity/time and team-score-shaped keys."""
+    if not isinstance(payload,list):
+        return []
+    safe_fields=("gameDate","number","startTime","endTime","gender","currentSet",
+                 "round","match","season","league","productId")
+    records=[]
+    for item in payload[:6]:
+        if not isinstance(item,dict):
+            continue
+        info={}
+        for field in safe_fields:
+            val=item.get(field)
+            if type(val) in (str,int,float,bool) and len(str(val))<=70:
+                info[field]=val
+            elif isinstance(val,dict):
+                info[field]={"keys":list(val)[:15]}
+        for side in ("homeTeam","awayTeam"):
+            val=item.get(side)
+            if not isinstance(val,dict):
+                info[side]={"type":type(val).__name__}
+                continue
+            info[side]={"keys":list(val)[:30]}
+            for field in ("teamName","name","shortName","score","setScore","setWins",
+                          "setsWon","setCount","teamScore","currentScore","code"):
+                v=val.get(field)
+                if type(v) in (str,int,float,bool) and len(str(v))<=65:
+                    info[side][field]=v
+                elif isinstance(v,dict):
+                    info[side][field+"_keys"]=list(v)[:15]
+        records.append(info)
+    return records
+
+
 def describe(obj):
     info={"envelope":safe_key_summary(obj)}
     if isinstance(obj,dict):
@@ -84,6 +118,8 @@ def describe(obj):
                 for nested in ("content","items","matches","schedules","games","data","list"):
                     if nested in val:
                         info[key+"."+nested]=safe_key_summary(val[nested])
+            if key=="payload" and isinstance(val,list):
+                info["match_identity_and_score_fields"]=match_only_sample(val)
             if key=="result" and isinstance(val,dict):
                 info["result_status"]=val.get("status") if type(val.get("status")) in (int,str) else None
     return info
