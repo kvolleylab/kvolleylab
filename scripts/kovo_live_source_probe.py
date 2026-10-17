@@ -121,7 +121,9 @@ def endpoint_path_hints(js):
 def route_contexts(js):
     """Short public-code callsite hints for known schedule route literals."""
     routes = ("/games/v-leagues/schedules", "/games/kovo-cups/schedules",
-              "/games/schedules", "/main/game/season")
+              "mains/games/schedules", "mains/games/schedules/ended",
+              "main/game/season", "main/game/event/list",
+              "user-api.kovo.co.kr")
     found = []
     for route in routes:
         for hit in list(re.finditer(re.escape(route), js))[:2]:
