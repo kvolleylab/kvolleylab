@@ -65,6 +65,13 @@ Valid full sets require 25 points (fifth 15), 2-point winning margin. Set winner
 - Verified live bridge: https://github.com/kvolleylab/kvolleylab/actions/runs/39039178288 — 13 observations deduplicated to 8 matches, 7 successfully matched to site Cup IDs including women #7-12 and men #13. Unknown V-League entry stayed unmapped.
 - The expected next gate is a **genuine in-progress** sample showing score changes at multiple timestamps, plus discovery of a first-party officially permitted per-set-point endpoint. Until then `LIVE` support is a tested model, not deployed live scoring.
 
+## 2026-10-17 further public-game detail investigation
+- KOVO official public JS additionally defines a match-detail GET call at `/stat/game-schedule/{gnum}` with parameters `gcode`, `seasonCode`, `leagueCode`, `gender`, `round`, `tcode`, `acode`, `gdate`. This is a discovered source-code callsite, not proof of live point scoring.
+- A single one-shot request for the previously verified official women's semifinal game #10, using official schedule-provided values, reached the API (HTTP 200), but its JSON envelope reported `result.status=404`. The detailed game API contract is **NOT VERIFIED** and no scores were collected from that endpoint.
+- This result was not worked around by trying guessed identifiers, modified dates, credentials or other undocumented routes. Source/policy review is required before a future detailed score experiment.
+- Diagnostic source: https://github.com/kvolleylab/kvolleylab/actions/runs/39039566660
+- The independently verified public schedule API and match-only Cup identity bridge remain operational; no false per-set-point or in-play score data were written.
+
 ## Current blockers
 - Genuine KOVO live per-point feed: NOT VERIFIED
 - Public source automatic match ID discovery: NOT VERIFIED
