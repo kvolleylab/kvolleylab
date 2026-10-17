@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "purpose": "Historical final-result adapter smoke only; never live KOVO Cup scores.",
+  "matches": [
+    {
+      "match_id": "KVL-PILOT-20260122-165",
+      "competition_slug": "v-league-women-2025-26",
+      "date": "2026-01-22",
+      "home": {
+        "code": "KEX",
+        "name": "한국도로공사"
+      },
+      "away": {
+        "code": "IBK",
+        "name": "IBK기업은행"
+      },
+      "source": {
+        "type": "dbbank_final",
+        "url": "https://dbbank.kovo.co.kr/game/11110_pop_result.asp?PID=gUjNxoTMwIjOyIDM"
+      }
+    }
+  ]
+}
