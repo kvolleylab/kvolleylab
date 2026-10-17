@@ -41,7 +41,9 @@
       "mode": "none",
       "title": "남자 18세 이하부 토너먼트 대진표",
       "showFinalRanking": false,
-      "emptyMessage": "전국체전은 토너먼트 대회입니다. 공식 대진표의 경기별 연결·검증이 완료되기 전까지 임의의 대진을 표시하지 않습니다. 공식자료 탭에서 원문을 확인해 주세요."
+      "emptyMessage": "전국체전은 토너먼트 대회입니다. 공식 대진표의 경기별 연결·검증이 완료되기 전까지 임의의 대진을 표시하지 않습니다. 공식자료 탭에서 원문을 확인해 주세요.",
+      "officialBracketStatus": "source-confirmed-data-pending",
+      "officialBracketUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do"
     },
     "participants": {
       "mode": "flat",
@@ -54,7 +56,8 @@
     },
     "kpiTargets": {
       "participants": "/competition-engine-prototype.html?competition=national-sports-festival-men-u18-2026&view=rosters"
-    }
+    },
+    "competitionType": "knockout"
   },
   "hero": {
     "showImage": false,
