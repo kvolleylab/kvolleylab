@@ -1,0 +1,27 @@
+name: KOVO Public Match Source Discovery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-public-match-source-discovery.yml'
+      - 'scripts/kovo_live_source_probe.py'
+      - 'tests/test_kovo_live_source_probe.py'
+
+permissions:
+  contents: read
+
+jobs:
+  public-source-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run read-only probe safety tests
+        run: python -m unittest discover -s tests -p test_kovo_live_source_probe.py -v
+      - name: Inspect publicly linked KOVO website metadata (no API calls)
+        run: python scripts/kovo_live_source_probe.py --max-assets 3
