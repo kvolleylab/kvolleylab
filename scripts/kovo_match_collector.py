@@ -341,6 +341,12 @@ def collect_one(entry, html=None):
     match = parse_match(source, url, entry.get("expect"))
     stats_structure = inspect_stats_structure(source)
     player_candidates = extract_player_candidates(source, [match["home_team"], match["away_team"]])
+    for check in entry.get("player_checks", []):
+        hits = [p for t in player_candidates["teams"]
+                if t["team"] == check["team"]
+                for p in t["players"] if p["name"] == check["name"]]
+        if len(hits) != 1 or hits[0]["points"] != check["points"]:
+            raise ParseError("Known official player score did not match source page")
     return {
         "schema_version": 1,
         "source": "KOVO DB BANK public match result",
@@ -350,6 +356,7 @@ def collect_one(entry, html=None):
         "status": "parsed_review_required",
         "player_stats_status": player_candidates["status"],
         "player_stats_candidates": player_candidates,
+        "player_spot_checks_passed": len(entry.get("player_checks", [])),
         "player_stats_structure": stats_structure,
         **match,
     }
