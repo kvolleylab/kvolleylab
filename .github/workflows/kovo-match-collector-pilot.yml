@@ -2,13 +2,8 @@ name: KOVO Match Collector Pilot
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/kovo-match-collector-pilot.yml'
-      - 'scripts/kovo_match_collector.py'
-      - 'tests/test_kovo_match_collector.py'
-      - 'data/kovo/match-collector/pilot_sources.json'
+  # Paused after match-only scope decision (2026-10-17).
+  # Manual workflow_dispatch remains for later individual-stat validation.
 
 permissions:
   contents: read
