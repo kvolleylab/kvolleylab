@@ -48,7 +48,7 @@ class MatchTests(unittest.TestCase):
             return ("<table><tr><th>PLAYER</th><th>포지션</th><th>득점</th></tr>"
                     "<tr>" + "".join("<td>" + v + "</td>" for v in cells)
                     + "</tr></table>")
-        sample = HTML + player_table("99", "모마", "OP", 184, 31, 24, 5, 1)
+        sample = HTML.split('<table><tr><th>PLAYER')[0] + player_table("99", "모마", "OP", 184, 31, 24, 5, 1)
         sample += player_table("19", "빅토리아", "OP", 191, 32, 26, 5, 0)
         parsed = collector.extract_player_candidates(sample, ["한국도로공사", "IBK기업은행"])
         self.assertEqual(parsed["status"], "parsed_review_required")
