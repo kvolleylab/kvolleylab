@@ -3460,6 +3460,13 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
 }
 
 
+/* PRO Cup · same numerical type scale for wins, losses and points.
+ * Shared base gives points 15px, while the legacy W/L geometry caps at 13.5px.
+ * Scope this to cups so other competition standings remain unchanged. */
+body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #groups :is(.kvl1180-pool-w,.kvl1180-pool-l){
+  font-size:var(--kvl-type-standings-value)!important;
+}
+
 /* PRO · large club logos in pool standings · 2026-10-12
  * KOVO Cup uses pool standings, so club marks follow the large PRO identity scale.
  */
