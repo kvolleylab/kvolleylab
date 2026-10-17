@@ -56,6 +56,17 @@ class MatchTests(unittest.TestCase):
         self.assertEqual(parsed["teams"][0]["players"][0]["position"], "OP")
         self.assertEqual(parsed["teams"][0]["assignment"], "table_order_unverified")
         self.assertNotIn("attack_success_rate", parsed["teams"][0]["players"][0])
+        verified = collector.collect_one({
+            "url": URL,
+            "player_checks": [{"team": "한국도로공사", "name": "모마", "points": 31}]
+        }, html=sample)
+        self.assertEqual(verified["player_spot_checks_passed"], 1)
+        with self.assertRaises(collector.ParseError):
+            collector.collect_one({
+                "url": URL,
+                "player_checks": [{"team": "한국도로공사", "name": "모마", "points": 30}]
+            }, html=sample)
+
 
     def test_player_extraction_rejects_impossible_points(self):
         def make_table(name, points, attack):
