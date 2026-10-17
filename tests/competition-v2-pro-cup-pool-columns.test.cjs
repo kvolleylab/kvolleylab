@@ -24,12 +24,14 @@ assert.match(pro, /max-width:1100px[\s\S]*?grid-template-columns:minmax\(0,1fr\)
 assert.match(geometry, /26px minmax\(84px,1fr\) 24px 24px 32px 42px 42px/,
   'the small-screen shared grid must retain seven columns');
 
-const winsLossesRule = [
-  'body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #groups :is(.kvl1180-pool-w,.kvl1180-pool-l){',
+const regularNumeralsRule = [
+  'body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #groups :is(.kvl1180-pool-w,.kvl1180-pool-l,.kvl1180-pool-pts){',
   '  font-size:var(--kvl-type-standings-value)!important;',
+  '  font-weight:400!important;',
   '}'
 ].join('\n');
-assert(css.includes(winsLossesRule), 'PRO Cup must use shared 15px token for wins and losses');
+assert(css.includes(regularNumeralsRule),
+  'PRO Cup wins, losses and points must use regular 400 weight at the ratios 15px size');
 const pointsRule = [
   '#groups :is(.kvl1180-pool-wl,.kvl1180-pool-pts,.kvl1180-pool-ratio){',
   '  font-size:var(--kvl-type-standings-value)!important;',
@@ -38,7 +40,7 @@ const pointsRule = [
 assert(read('assets/css/kvl-competition-base-v2.css').includes(pointsRule),
   'points must use the same shared typography token as wins and losses');
 
-const version = 'kvl-competition-components-v2.css?v=20261017-pro-cup-type-parity-1';
+const version = 'kvl-competition-components-v2.css?v=20261017-pro-cup-regular-ratio-1';
 for (const shell of ['competition-engine.html', 'competition-engine-prototype.html']) {
   assert(read(shell).includes(version), shell + ' must refresh the shared CSS asset');
 }
@@ -57,4 +59,4 @@ for (const gender of ['men', 'women']) {
     }
   }
 }
-console.log('PASS: KOVO Cup men/women seven-column standings geometry and W/L/points type parity');
+console.log('PASS: KOVO Cup men/women seven-column standings geometry and regular 15px W/L/points typography');
