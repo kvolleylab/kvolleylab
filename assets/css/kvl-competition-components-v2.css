@@ -3460,11 +3460,11 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
 }
 
 
-/* PRO Cup · match the set/point ratio numerals: 15px regular type.
- * Keep the original W/L/points colors and seven-column alignment unchanged. */
+/* PRO Cup · semibold numeric emphasis without the heavy legacy bold.
+ * Preserve 15px shared value size, original W/L/points colors and seven-column alignment. */
 body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-variant="cup"] #groups :is(.kvl1180-pool-w,.kvl1180-pool-l,.kvl1180-pool-pts){
   font-size:var(--kvl-type-standings-value)!important;
-  font-weight:400!important;
+  font-weight:600!important;
 }
 
 /* PRO · large club logos in pool standings · 2026-10-12
