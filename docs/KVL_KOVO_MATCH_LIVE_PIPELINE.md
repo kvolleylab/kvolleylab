@@ -51,6 +51,20 @@ Valid full sets require 25 points (fifth 15), 2-point winning margin. Set winner
 5. Connect a common Competition Engine adapter, not a page-specific hack. Match by canonical match_id/date/teams. Display LIVE + provisional status and last observed time; reserve FINAL official status for verified final-game data.
 6. Test production with real matches, correct status transition, stale-feed fallback, amendments and permission review, then enable unattended updates.
 
+## Official public schedule API successfully verified — 2026-10-17
+- Public KOVO Vite app: `https://kovo.co.kr/game/v-league` and `https://kovo.co.kr/game/kovo-cup` both load `/assets/index-DueEbBs9.js`. The public JS config sets Axios base to `https://user-api.kovo.co.kr` and includes the schedule request paths.
+- Official anonymous GET endpoints returned HTTP 200 / JSON envelope result.status=200 from GitHub Actions (no cookies, Authorization, or login):
+  - `/mains/games/schedules` — recent/upcoming games
+  - `/mains/games/schedules?gender=FEMALE` — recent/upcoming filtered games
+  - `/mains/games/schedules/ended?gender=FEMALE` — five recently ended games
+- Live evidence: https://github.com/kvolleylab/kvolleylab/actions/runs/39038848044 and https://github.com/kvolleylab/kvolleylab/actions/runs/39038914517
+- Official season ID for the 2026 Yeosu KOVO Cup is `824`; official `match` value `002`, gender `FEMALE` or `MALE`, game number as assigned by KOVO. CUP phase codes: `212` group, `213` semifinals, `214` final. Verified from actual public API response.
+- 2026-27 women's V-League upcoming season code observed as `023` and match value `001`; not yet assigned a publishing mapping.
+- The schedule endpoint returns `homeTeam.score`, `awayTeam.score` (sets won), `currentSet`, `startTime`, `endTime`, team IDs and official game number. It does NOT expose within-set point scores in the verified response. A completed game has `endTime` and final sets won; an upcoming game has `currentSet=0` and score 0:0. Actual in-play examples have not been captured.
+- `scripts/kovo_match_schedule_bridge.py` now reads only those verified public endpoints, normalizes a match-only source key (season:match:gender:number), matches against existing K-Volley Lab competition JSON using date, team names, round and number, and writes **review artifact only**. No site updates.
+- Verified live bridge: https://github.com/kvolleylab/kvolleylab/actions/runs/39039178288 — 13 observations deduplicated to 8 matches, 7 successfully matched to site Cup IDs including women #7-12 and men #13. Unknown V-League entry stayed unmapped.
+- The expected next gate is a **genuine in-progress** sample showing score changes at multiple timestamps, plus discovery of a first-party officially permitted per-set-point endpoint. Until then `LIVE` support is a tested model, not deployed live scoring.
+
 ## Current blockers
 - Genuine KOVO live per-point feed: NOT VERIFIED
 - Public source automatic match ID discovery: NOT VERIFIED
