@@ -1,0 +1,48 @@
+name: KOVO Match-Only Feed Pilot
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-match-feed-pilot.yml'
+      - 'scripts/kovo_match_feed.py'
+      - 'tests/test_kovo_match_feed.py'
+      - 'data/kovo/match-feed/pilot_manifest.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kovo-match-feed-pilot
+  cancel-in-progress: false
+
+jobs:
+  offline-and-final-source-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Match-state and publication-boundary tests (offline)
+        run: python -m unittest discover -s tests -p 'test_kovo_match_feed.py' -v
+      - name: Historical DB BANK final-result adapter probe (NO player stats)
+        run: |
+          python scripts/kovo_match_feed.py \
+            --manifest data/kovo/match-feed/pilot_manifest.json \
+            --output data/kovo/match-feed/staged.json
+      - name: Upload review-only match snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-match-feed-staged
+          path: data/kovo/match-feed/staged.json
+          if-no-files-found: ignore
+          retention-days: 14
+
+# IMPORTANT:
+# No schedule, publish step, commit, token, player stats or unverified live API.
+# Once KOVO's official live scoring route, permitted use and latency are verified,
+# a separate production worker and approved frontend contract are required.
