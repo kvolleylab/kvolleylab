@@ -37,7 +37,7 @@ class MatchTests(unittest.TestCase):
     def test_no_guessed_player_stats(self):
         sample = collector.collect_one({"url": URL}, html=HTML)
         self.assertEqual(sample["status"], "parsed_review_required")
-        self.assertEqual(sample["player_stats_status"], "not_collected")
+        self.assertEqual(sample["player_stats_status"], "unverified_table_structure")
         self.assertNotIn("players", sample)
 
     def test_player_stats_candidates_review_only(self):
