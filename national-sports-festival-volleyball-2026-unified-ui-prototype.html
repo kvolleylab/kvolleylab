@@ -105,6 +105,9 @@ function mount(){
  const kpis=main.querySelector('.kvl1180-kpis');
  const second=kpis?.querySelector('.kvl1180-kpi:nth-child(2) .kvl1180-kpi-copy');
  if(second){const title=second.querySelector('span'),count=second.querySelector('strong'),unit=second.querySelector('small');if(title)title.textContent='대회 종별';if(count)count.textContent='5';if(unit)unit.textContent='개 종별';}
+ /* In pure knockout competitions, the old "groups" KPI target is not meaningful. */
+ const secondCard=kpis?.querySelector('.kvl1180-kpi:nth-child(2)');
+ if(secondCard){delete secondCard.dataset.kvlTarget;secondCard.removeAttribute('role');secondCard.removeAttribute('tabindex');secondCard.onclick=null;secondCard.onkeydown=null;}
  const note=document.createElement('p');note.className='kvl-nsf-source-note';note.textContent='공식 개최정보 확인 · 참가 시·도, 실제 대진 및 세트별 경기결과는 원문 대조 후 연결합니다. 임의 경기·순위 없음.';
  bar.after(note);
  return true;
