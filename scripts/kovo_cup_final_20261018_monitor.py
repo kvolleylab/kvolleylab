@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 import sys
 import time
+from urllib.error import HTTPError, URLError
 from zoneinfo import ZoneInfo
 
 from kovo_match_schedule_bridge import (
@@ -107,6 +108,7 @@ def monitor(root,output,once=False,interval=300,now_fn=None,sleep_fn=time.sleep,
     previous=None
     final_confirmations=0
     checks=0
+    consecutive_errors=0
     # File is job-local. The workflow uploads it even when an error occurs.
     with file.open("w",encoding="utf-8") as log:
         while True:
@@ -138,11 +140,12 @@ def monitor(root,output,once=False,interval=300,now_fn=None,sleep_fn=time.sleep,
                 log.flush()
                 print("CUP_FINAL_OBSERVATION",json.dumps(item,ensure_ascii=False),flush=True)
                 previous=item
+                consecutive_errors=0
                 final_confirmations=(final_confirmations+1 if item["status"]=="final" else 0)
                 if final_confirmations>=2:
                     print("CUP_FINAL_STABLE_FINAL confirmed_twice=true",flush=True)
                     break
-            except (SourceError,ValueError,TypeError,KeyError,OSError) as ex:
+            except (SourceError,ValueError,TypeError,KeyError,OSError,HTTPError,URLError,TimeoutError) as ex:
                 # Write the error but never fabricate score or mask a discrepancy.
                 warning={"observed_at_utc":observed_at.isoformat(timespec="seconds"),
                          "status":"error","error_class":type(ex).__name__,
@@ -150,6 +153,10 @@ def monitor(root,output,once=False,interval=300,now_fn=None,sleep_fn=time.sleep,
                 log.write(json.dumps(warning,ensure_ascii=False)+"\n")
                 log.flush()
                 print("CUP_FINAL_SOURCE_WARNING",json.dumps(warning,ensure_ascii=False),flush=True)
+                consecutive_errors+=1
+                if (isinstance(ex,HTTPError) and ex.code in (401,403,429)) or consecutive_errors>=3:
+                    print("CUP_FINAL_HALT access-denied-or-repeated-source-errors",flush=True)
+                    return 2
                 if "regress" in str(ex).lower() or "disagrees" in str(ex).lower() or "conflict" in str(ex).lower():
                     return 2
             checks+=1
