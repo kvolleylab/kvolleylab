@@ -1,138 +1,119 @@
 <!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><base href="/">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>제107회 전국체육대회 배구 · 단일화 UI 시안 | K-Volley Lab</title>
-<meta name="description" content="제107회 전국체육대회 배구 5개 종별 단일화 UI 디자인 검수용 프로토타입. 공식 원문 미검증 경기 데이터는 표시하지 않습니다.">
-<link rel="stylesheet" href="/assets/css/style.css">
-<link rel="stylesheet" href="/assets/css/site-theme-light.css">
-<link rel="stylesheet" href="/assets/css/pretendard-global.css">
-<script defer src="/assets/js/unified-nav.js?v=20261012-kovo-production-1"></script>
+<title>제107회 전국체육대회 배구 · K-Volley Lab 공통 UI 프로토타입</title>
+<meta name="description" content="K-Volley Lab Competition Engine V2 공통 디자인으로 확인하는 2026 전국체전 배구 5개 종별 전환 프로토타입.">
+<link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/site-theme-light.css">
+<link rel="stylesheet" href="/assets/css/kvl-competition-template-v2.css?v=20261008-vleague-hero-1">
+<link rel="stylesheet" href="/assets/css/kvl-competition-components-v2.css?v=20261017-pro-cup-semibold-1">
+<link rel="stylesheet" href="/assets/css/kvl-competition-base-v2.css?v=20261007-base-foundation-1">
 <style>
-:root{--uf-blue:#163a5f;--uf-blue-dark:#102c49;--uf-rose:#8e315e;--uf-ink:#1c3045;--uf-muted:#6e8296;--uf-line:#e2e9f0;--uf-soft:#f4f7fa}
-*{box-sizing:border-box}
-body.uf-page{margin:0;background:#f5f7fa;color:var(--uf-ink);font-family:Pretendard,-apple-system,BlinkMacSystemFont,Arial,sans-serif;font-size:14px}
-.uf-app{--uf-accent:var(--uf-blue);--uf-accent-soft:#edf4f9;width:min(1190px,calc(100% - 32px));margin:26px auto 74px;min-width:0}
-.uf-app[data-gender="women"]{--uf-accent:var(--uf-rose);--uf-accent-soft:#fff1f6}
-.uf-crumb{font-size:12px;color:#7a8b9e;margin:0 0 13px}.uf-crumb a{color:#425e7b;text-decoration:none}
-.uf-hero{position:relative;overflow:hidden;min-height:232px;border-radius:9px;background:linear-gradient(110deg,#0b233c,#173b5e 68%,#1e5375);color:#fff;padding:30px 34px;display:flex;align-items:stretch;justify-content:space-between;gap:20px}
-.uf-hero:before{content:"";position:absolute;inset:0 0 0 57%;opacity:.18;background:linear-gradient(90deg,transparent 48%,#d6e6ef 49%,#d6e6ef 50%,transparent 51%),repeating-linear-gradient(0deg,transparent 0 37px,#acc9d9 38px 39px),repeating-linear-gradient(90deg,transparent 0 62px,#acc9d9 63px 64px);transform:skewX(-17deg) scale(1.16);pointer-events:none}
-.uf-hero-copy{position:relative;z-index:1;min-width:0}.uf-eyebrow{color:#abc9e1;font-size:10px;font-weight:800;letter-spacing:.13em;margin:0 0 17px}.uf-hero h1{color:white;font-weight:850;letter-spacing:-.05em;font-size:clamp(27px,3.5vw,43px);line-height:1.2;margin:0 0 11px}.uf-hero-summary{font-size:13px;color:#d8e6f1;margin:0 0 23px}.uf-hero-facts{display:flex;gap:17px;flex-wrap:wrap;font-size:12px;color:#d8e8f4}.uf-hero-facts span{display:flex;align-items:center;gap:6px}.uf-hero-facts b{font-weight:800;color:white}
-.uf-hero-aside{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;min-width:135px}.uf-demo-tag{display:inline-flex;align-items:center;gap:7px;border:1px solid #ffffff52;background:#ffffff19;border-radius:4px;padding:7px 11px;color:#f2f7fd;font-size:11px;font-weight:800}.uf-hero-count{text-align:right}.uf-hero-count b{display:block;color:#fff;font-size:37px;font-weight:850;line-height:1.15}.uf-hero-count small{color:#cfdfec;font-size:11px}
-.uf-panel{border:1px solid var(--uf-line);border-radius:8px;background:#fff;margin-top:14px}
-.uf-select-panel{padding:19px 22px 20px}
-.uf-panel-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 15px}.uf-panel-title h2{font-size:18px;font-weight:800;letter-spacing:-.04em;margin:0}.uf-panel-title p{color:#7b8a9a;font-size:11px;margin:0}
-.uf-select-groups{display:grid;grid-template-columns:3fr 2fr;gap:14px}
-.uf-select-group{min-width:0}.uf-group-label{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800;color:#49667f;margin:0 0 9px}.uf-group-label:before{content:"";height:7px;width:7px;border-radius:2px;background:#163a5f}.uf-select-group.is-women .uf-group-label{color:var(--uf-rose)}.uf-select-group.is-women .uf-group-label:before{background:var(--uf-rose)}
-.uf-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.uf-select-group.is-women .uf-buttons{grid-template-columns:repeat(2,minmax(0,1fr))}
-.uf-division{position:relative;appearance:none;text-align:left;background:#f8fafc;color:#35516c;border:1px solid #dce5ed;border-radius:6px;padding:11px 12px;min-width:0;min-height:69px;cursor:pointer;font-family:inherit;display:flex;flex-direction:column;justify-content:center;gap:4px}
-.uf-division small{font-size:10px;color:#8a9cb0;font-weight:750;letter-spacing:.02em}.uf-division strong{font-size:13px;font-weight:800;letter-spacing:-.03em;white-space:nowrap}
-.uf-division:hover{background:#f1f5fa;border-color:#adc1d2}.uf-division[aria-selected="true"]{border:1.5px solid var(--uf-accent);background:var(--uf-accent-soft);box-shadow:inset 0 0 0 .3px var(--uf-accent);color:var(--uf-accent)}.uf-division[aria-selected="true"]:after{content:"✓";position:absolute;right:11px;top:9px;font-size:12px;font-weight:900}
-.uf-mobile-select{display:none;width:100%;border:1px solid #b9c9d8;background:#fff;padding:12px;border-radius:5px;color:var(--uf-ink);font:700 14px Pretendard,Arial,sans-serif}
-.uf-workspace{margin-top:14px;border:1px solid var(--uf-line);border-radius:8px;background:#fff;overflow:hidden}
-.uf-work-head{padding:20px 24px 0}.uf-work-kicker{font-size:11px;font-weight:750;letter-spacing:.09em;color:var(--uf-accent);margin:0 0 7px}.uf-work-title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.uf-work-title h2{font-size:24px;font-weight:850;letter-spacing:-.045em;line-height:1.4;margin:0}.uf-state{display:inline-flex;align-items:center;background:#f0f4f7;border:1px solid #e3e9ef;color:#61768c;padding:5px 8px;border-radius:4px;font-size:11px;font-weight:800}
-.uf-work-sub{display:flex;gap:13px;flex-wrap:wrap;color:#6c8094;font-size:12px;margin:8px 0 19px}
-.uf-view-tabs{display:flex;gap:0;overflow:auto;scrollbar-width:thin;border-bottom:1px solid #dde5ec;padding:0 24px}
-.uf-view-tab{appearance:none;white-space:nowrap;flex:0 0 auto;background:transparent;color:#748498;border:none;border-bottom:3px solid transparent;margin:0 18px -1px 0;padding:13px 5px 12px;cursor:pointer;font-size:13px;font-weight:750;font-family:inherit}
-.uf-view-tab:hover{color:var(--uf-accent)}.uf-view-tab[aria-selected="true"]{color:var(--uf-accent);border-bottom-color:var(--uf-accent);font-weight:850}
-.uf-view{padding:23px 24px 27px;min-height:320px}.uf-view[hidden]{display:none}
-.uf-section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}.uf-section-heading h3{font-size:16px;letter-spacing:-.03em;margin:0;font-weight:850}.uf-overline{font-size:10px;letter-spacing:.07em;color:#8396a8;font-weight:800}.uf-main-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.uf-stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:12px}.uf-stat{background:#f7f9fb;border:1px solid #e7ecf1;padding:13px 14px;border-radius:6px}.uf-stat small{display:block;color:#7e8fa0;font-size:11px;margin-bottom:6px}.uf-stat strong{display:block;color:#1c344a;font-size:15px;font-weight:800}.uf-stat em{display:block;font-size:10px;color:#8b9bae;font-style:normal;margin-top:4px}
-.uf-card{background:#fff;border:1px solid var(--uf-line);border-radius:6px;padding:19px;min-width:0}.uf-card h4{font-size:14px;font-weight:850;margin:0 0 12px}.uf-detail-list{display:grid;gap:13px;margin:0}.uf-detail-list div{display:grid;grid-template-columns:74px 1fr;gap:10px}.uf-detail-list dt{color:#8495a5;font-size:12px}.uf-detail-list dd{color:#304559;font-size:12px;font-weight:700;margin:0;word-break:keep-all}.uf-aside-card{background:#f7f9fc}.uf-aside-card p{color:#71859a;font-size:12px;line-height:1.7;margin:0 0 14px}.uf-aside-card strong{font-weight:850;color:#30465a}.uf-button-link{display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;color:#fff!important;background:var(--uf-accent);border-radius:5px;font-size:12px;font-weight:800;padding:10px 14px}.uf-button-link:hover{filter:brightness(.91)}.uf-text-link{color:var(--uf-accent);font-size:12px;font-weight:800;text-decoration:none}
-.uf-data-note{display:flex;align-items:flex-start;gap:9px;border-top:1px solid #edf0f4;padding-top:15px;margin-top:16px;font-size:11px;color:#8292a2;line-height:1.65}.uf-data-note:before{content:"i";display:grid;place-items:center;width:16px;height:16px;border:1px solid #a7b7c7;border-radius:50%;flex:0 0 16px;font:800 10px Arial}
-.uf-empty{display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:39px 20px 43px;background:#f8fafc;border:1px dashed #d5e0e9;border-radius:6px;gap:10px;min-height:230px}
-.uf-empty-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:11px;background:#e9eff5;color:#668198;font-size:25px}
-.uf-empty b{font-size:16px;font-weight:850;color:#364f65}.uf-empty p{max-width:460px;font-size:12px;line-height:1.7;color:#7f92a5;margin:0}.uf-empty .uf-text-link{margin-top:2px}
-.uf-schedule-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 16px}.uf-schedule-chip{border:1px solid #dae3ec;border-radius:4px;background:#f6f9fb;padding:8px 11px;font-size:12px;font-weight:750;color:#4e6680}.uf-source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.uf-source{padding:16px;border:1px solid #e0e8ef;text-decoration:none;color:#2f567a;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:5px}.uf-source:hover{background:#f3f7fb}.uf-source span:last-child{color:#8ea4b7}
-.uf-foot{color:#8798a9;font-size:11px;text-align:center;margin:20px 0 0}
-@media(max-width:800px){.uf-select-groups{grid-template-columns:1fr}.uf-main-grid{grid-template-columns:1fr}.uf-hero-aside{min-width:90px}.uf-hero{padding:26px}.uf-division strong{white-space:normal}}
-@media(max-width:570px){.uf-app{width:calc(100% - 20px);margin:13px auto 45px}.uf-hero{padding:25px 19px 22px;min-height:234px;border-radius:7px}.uf-hero h1{font-size:28px}.uf-eyebrow{margin-bottom:14px}.uf-hero-summary{font-size:12px;margin-bottom:18px;max-width:245px}.uf-hero-facts{flex-direction:column;gap:5px;font-size:11px}.uf-hero-aside{min-width:0}.uf-hero-count{display:none}.uf-demo-tag{padding:5px 7px;font-size:9px}.uf-select-panel{padding:16px}.uf-panel-title{margin-bottom:11px}.uf-panel-title p{display:none}.uf-select-groups{display:none}.uf-mobile-select{display:block}.uf-work-head{padding:17px 16px 0}.uf-work-title h2{font-size:21px}.uf-work-sub{font-size:11px;gap:7px;margin-bottom:13px}.uf-view-tabs{padding:0 16px}.uf-view-tab{font-size:12px;margin-right:14px}.uf-view{padding:17px 14px 22px;min-height:300px}.uf-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.uf-stat{padding:12px}.uf-stat strong{font-size:13px}.uf-card{padding:15px}.uf-source-grid{grid-template-columns:1fr}.uf-detail-list div{grid-template-columns:62px 1fr}.uf-hero:before{inset:0 0 0 42%}}
-@media(prefers-reduced-motion:no-preference){.uf-division,.uf-view-tab,.uf-source,.uf-button-link{transition:color .16s,border-color .16s,background .16s}}
+/* Prototype-only multi-division selector; core shell, tabs, KPI, cards and geometry remain shared V2. */
+body.kvl-nsf-unified.kvl-competition-template-v2 .kvl-nsf-division-switch{display:flex;align-items:center;gap:17px;padding:12px 19px;border:1px solid var(--kvl1180-line);border-top:0;border-bottom:1px solid #e6edf3;background:#fff;min-width:0}
+body.kvl-nsf-unified .kvl-nsf-division-label{font-size:12px;font-weight:800;letter-spacing:-.02em;color:#415973;white-space:nowrap;flex:0 0 auto}
+body.kvl-nsf-unified .kvl-nsf-division-links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px;flex:1;min-width:0}
+body.kvl-nsf-unified .kvl-nsf-division-links a{display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center;white-space:nowrap;min-height:39px;padding:0 8px;border:1px solid #dbe5ec;border-radius:7px;color:#53697d;background:#f8fafc;font-size:12px;font-weight:800;letter-spacing:-.02em}
+body.kvl-nsf-unified .kvl-nsf-division-links a:hover,body.kvl-nsf-unified .kvl-nsf-division-links a:focus-visible{border-color:#95b0c6;background:#eef4f8;outline-offset:2px}
+body.kvl-nsf-unified .kvl-nsf-division-links a.is-active[data-gender="men"]{border-color:#163a5f;color:#fff;background:#163a5f}
+body.kvl-nsf-unified .kvl-nsf-division-links a.is-active[data-gender="women"]{border-color:#8e315e;color:#fff;background:#8e315e}
+body.kvl-nsf-unified .kvl-nsf-division-links a[data-gender="women"]:not(.is-active){color:#814662;background:#fff8fb;border-color:#eadbe3}
+body.kvl-nsf-unified .kvl-nsf-division-mobile{display:none;flex:1;min-width:0;padding:10px 12px;border-radius:7px;border:1px solid #bfcbd8;background:#fff;color:#203951;font:800 13px Pretendard,Arial,sans-serif}
+body.kvl-nsf-unified .kvl1180-controlbar{border-radius:0 0 10px 10px}
+body.kvl-nsf-unified .kvl1180-controlbar .kvl1180-gender{display:none!important}
+body.kvl-nsf-unified .kvl1180-controlbar .kvl1180-tabs{grid-template-columns:repeat(5,minmax(0,1fr))}
+body.kvl-nsf-unified .kvl1180-controlbar .kvl1180-tabs a[data-view="groups"]{display:none!important}
+body.kvl-nsf-unified .kvl-nsf-source-note{margin:13px 0 0;padding:0 2px;font-size:11px;color:#7f90a1;line-height:1.5}
+body.kvl-nsf-unified .kvl1180-kpis .kvl1180-kpi:nth-child(2) .kvl1180-kpi-copy strong{font-variant-numeric:tabular-nums}
+@media(max-width:900px){body.kvl-nsf-unified .kvl-nsf-division-switch{gap:11px;padding:12px}body.kvl-nsf-unified .kvl-nsf-division-links{gap:5px}body.kvl-nsf-unified .kvl-nsf-division-links a{font-size:11px;padding:0 5px}body.kvl-nsf-unified .kvl1180-controlbar .kvl1180-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:680px){body.kvl-nsf-unified .kvl-nsf-division-switch{padding:10px 13px;gap:11px}body.kvl-nsf-unified .kvl-nsf-division-links{display:none}body.kvl-nsf-unified .kvl-nsf-division-mobile{display:block}body.kvl-nsf-unified .kvl-nsf-division-label{font-size:12px}body.kvl-nsf-unified .kvl1180-controlbar .kvl1180-tabs a{min-height:45px;font-size:12px!important}body.kvl-nsf-unified .kvl-nsf-source-note{font-size:10px;margin:10px 0 0}}
 </style>
+<script src="/assets/js/unified-nav.js?v=20261012-kovo-production-1" defer></script>
+<script>
+/* Normalize the entry URL before the shared competition loader reads ?competition=. */
+(function(){
+'use strict';
+const allowed=['national-sports-festival-men-general-2026','national-sports-festival-men-university-2026','national-sports-festival-men-u18-2026','national-sports-festival-women-general-2026','national-sports-festival-women-u18-2026'];
+const url=new URL(location.href);
+if(!allowed.includes(url.searchParams.get('competition'))){
+  url.searchParams.set('competition',allowed[0]);url.searchParams.delete('team');url.searchParams.delete('date');url.searchParams.delete('view');
+  history.replaceState(null,'',url.pathname+url.search);
+}
+window.KVL_COMPETITION_PAGE_V2={production:false,deferRender:true,collectionRoot:'/data/competitions/'};
+})();
+</script>
+<script src="/assets/js/kvl-competition-config-v2.js?v=20261009-pro-hero-v08-1" defer></script>
+<script src="/assets/js/kvl-competition-modules-v2.js?v=20260917-config-1" defer></script>
+<script src="/assets/js/kvl-competition-data-v2.js?v=20261009-pro-standings-postseason-2" defer></script>
+<script src="/assets/js/kvl-competition-shell-v2.js?v=20260919-mobile-1" defer></script>
+<script src="/assets/js/kvl-competition-template-v2.js?v=20261009-pro-hero-v08-1" defer></script>
+<script src="/assets/js/kvl-competition-components-v2.js?v=20261009-pro-series-ui-final-1" defer></script>
+<script src="/assets/js/kvl-competition-loader-v2.js?v=20260923-smooth-reveal-1" defer></script>
 </head>
-<body class="domestic-competitions-page uf-page">
-<header class="site-header"><a class="site-logo" href="/index.html">K-Volley Lab</a><nav class="site-nav" aria-label="사이트 메뉴"></nav></header>
-<main class="uf-app" id="uf-app" data-gender="men">
-<p class="uf-crumb"><a href="/index.html">홈</a> / 국내대회 / 종합대회 / 제107회 전국체육대회 배구</p>
-<section class="uf-hero">
-<div class="uf-hero-copy"><p class="uf-eyebrow">K-VOLLEY LAB · DOMESTIC COMPETITION / 2026</p><h1>제107회 전국체육대회<br>배구</h1><p class="uf-hero-summary">하나의 대회, 다섯 개 종별. 경기일정과 대진·결과를 종별로 확인하세요.</p>
-<div class="uf-hero-facts"><span>◷ <b>2026.10.16–10.22</b></span><span>⌖ <b>제주특별자치도</b></span><span>◇ <b>토너먼트</b></span></div></div>
-<div class="uf-hero-aside"><span class="uf-demo-tag">● UI PROTOTYPE</span><div class="uf-hero-count"><b>05</b><small>COMPETITION DIVISIONS</small></div></div>
-</section>
-<section class="uf-panel uf-select-panel" aria-labelledby="uf-divisions-title">
-<div class="uf-panel-title"><h2 id="uf-divisions-title">종별 선택</h2><p>한 번 선택하면 모든 메뉴에 해당 종별이 적용됩니다.</p></div>
-<div class="uf-select-groups">
-<div class="uf-select-group"><p class="uf-group-label">남자부 · 3개 종별</p><div class="uf-buttons" role="tablist" aria-label="남자부 종별"><button type="button" class="uf-division" data-division="men-general" role="tab" aria-selected="false"><small>MEN · GENERAL</small><strong>일반부</strong></button><button type="button" class="uf-division" data-division="men-university" role="tab" aria-selected="false"><small>MEN · UNIVERSITY</small><strong>대학부</strong></button><button type="button" class="uf-division" data-division="men-u18" role="tab" aria-selected="false"><small>MEN · U18</small><strong>18세 이하부</strong></button></div></div>
-<div class="uf-select-group is-women"><p class="uf-group-label">여자부 · 2개 종별</p><div class="uf-buttons" role="tablist" aria-label="여자부 종별"><button type="button" class="uf-division" data-division="women-general" role="tab" aria-selected="false"><small>WOMEN · GENERAL</small><strong>일반부</strong></button><button type="button" class="uf-division" data-division="women-u18" role="tab" aria-selected="false"><small>WOMEN · U18</small><strong>18세 이하부</strong></button></div></div>
-</div>
-<label for="uf-mobile-select" class="uf-sr" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">종별 선택</label>
-<select class="uf-mobile-select" id="uf-mobile-select" aria-label="종별 선택"><optgroup label="남자부"><option value="men-general">남자 일반부</option><option value="men-university">남자 대학부</option><option value="men-u18">남자 18세 이하부</option></optgroup><optgroup label="여자부"><option value="women-general">여자 일반부</option><option value="women-u18">여자 18세 이하부</option></optgroup></select>
-</section>
-<section class="uf-workspace" aria-labelledby="uf-selected-title">
-<div class="uf-work-head"><p class="uf-work-kicker" id="uf-selected-kicker">MEN · GENERAL DIVISION</p><div class="uf-work-title"><h2 id="uf-selected-title">남자 일반부</h2><span class="uf-state">토너먼트 · 원문 연결 검수 중</span></div>
-<p class="uf-work-sub"><span id="uf-selected-date">2026.10.16–10.21</span><span id="uf-selected-venue">천지학생체육관(서귀포고)</span><span>2026 제주</span></p></div>
-<div class="uf-view-tabs" role="tablist" aria-label="대회 정보 화면">
-<button type="button" class="uf-view-tab" data-view="overview" role="tab" aria-selected="true">한눈에 보기</button>
-<button type="button" class="uf-view-tab" data-view="schedule" role="tab" aria-selected="false">경기일정·결과</button>
-<button type="button" class="uf-view-tab" data-view="bracket" role="tab" aria-selected="false">대진·최종순위</button>
-<button type="button" class="uf-view-tab" data-view="teams" role="tab" aria-selected="false">참가팀</button>
-<button type="button" class="uf-view-tab" data-view="sources" role="tab" aria-selected="false">공식자료</button>
-</div>
-<div class="uf-view" data-view-panel="overview" role="tabpanel">
-<div class="uf-section-heading"><h3>대회 한눈에 보기</h3><span class="uf-overline">DIVISION OVERVIEW</span></div>
-<div class="uf-stat-grid">
-<div class="uf-stat"><small>진행 방식</small><strong>토너먼트</strong><em>조별리그 없음</em></div>
-<div class="uf-stat"><small>종별 경기일</small><strong id="uf-card-date">10.16–10.21</strong><em>2026년</em></div>
-<div class="uf-stat"><small>참가 시·도 / 팀</small><strong>확인 중</strong><em>공식 명단 검증 전</em></div>
-</div>
-<div class="uf-main-grid">
-<article class="uf-card"><h4>종별 운영 정보</h4><dl class="uf-detail-list"><div><dt>선택 종별</dt><dd id="uf-info-division">남자 일반부</dd></div><div><dt>경기장</dt><dd id="uf-info-venue">천지학생체육관(서귀포고)</dd></div><div><dt>지역</dt><dd id="uf-info-city">서귀포시</dd></div><div><dt>주소</dt><dd id="uf-info-address">서귀포시 중앙로 140</dd></div><div><dt>방식</dt><dd>시·도 대표팀 토너먼트</dd></div></dl></article>
-<aside class="uf-card uf-aside-card"><h4>경기 데이터 연결 현황</h4><p><strong>공식 개최 정보와 경기장 확인</strong><br>실제 시·도 대표팀, 대진표, 부전승, 세트스코어는 원본과 대조한 후 표시합니다.</p><a class="uf-button-link" id="uf-detail-link" href="/competition-engine-prototype.html?competition=national-sports-festival-men-general-2026">종별 상세 엔진 보기 ↗</a></aside>
-</div><div class="uf-data-note">이 화면은 종별 선택 UI 검수를 위한 시안입니다. 확인되지 않은 경기나 우승팀은 만들지 않았습니다.</div>
-</div>
-<div class="uf-view" data-view-panel="schedule" role="tabpanel" hidden>
-<div class="uf-section-heading"><h3>경기일정·결과</h3><span class="uf-overline">MATCH SCHEDULE</span></div><div class="uf-schedule-head"><span class="uf-schedule-chip" id="uf-schedule-period">남자 일반부 · 10.16–10.21</span><span class="uf-schedule-chip">경기시각 KST</span></div>
-<div class="uf-empty"><span class="uf-empty-icon" aria-hidden="true">▦</span><b>공식 경기별 대진·결과 연결 준비 중</b><p>개별 경기 날짜·시간·상대팀·세트스코어를 검증한 뒤 이 자리에 기존 공통 경기카드가 표시됩니다.</p><a class="uf-text-link" href="https://meet.sports.or.kr/national/schedule/scheduleClass.do" target="_blank" rel="noopener noreferrer">대한체육회 공식 일정·결과 확인 ↗</a></div></div>
-<div class="uf-view" data-view-panel="bracket" role="tabpanel" hidden>
-<div class="uf-section-heading"><h3>토너먼트 대진·최종순위</h3><span class="uf-overline">KNOCKOUT & RANKING</span></div>
-<div class="uf-empty"><span class="uf-empty-icon" aria-hidden="true">⌁</span><b>종별 대진표 검증 후 표시</b><p>실제 참가팀 수와 부전승 여부에 맞춰 라운드가 유동적으로 표시됩니다. 임의의 8강·4강 대진이나 최종순위는 넣지 않았습니다.</p><a class="uf-text-link" href="https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do" target="_blank" rel="noopener noreferrer">대한체육회 공식 토너먼트 대진표 ↗</a></div></div>
-<div class="uf-view" data-view-panel="teams" role="tabpanel" hidden>
-<div class="uf-section-heading"><h3>참가 시·도 및 대표팀</h3><span class="uf-overline">PARTICIPANTS</span></div>
-<div class="uf-empty"><span class="uf-empty-icon" aria-hidden="true">♙</span><b>공식 참가팀 명단 확인 중</b><p>전국체전은 시·도 대표팀과 소속 학교·팀을 구분해 보여줍니다. 공식 등록 명단을 확보한 뒤 가나다순으로 정렬합니다.</p></div></div>
-<div class="uf-view" data-view-panel="sources" role="tabpanel" hidden>
-<div class="uf-section-heading"><h3>대한체육회 공식자료</h3><span class="uf-overline">SOURCES</span></div>
-<div class="uf-source-grid">
-<a class="uf-source" target="_blank" rel="noopener noreferrer" href="https://meet.sports.or.kr/national/event/outline.do"><span>제107회 전국체육대회 개요</span><span>↗</span></a>
-<a class="uf-source" target="_blank" rel="noopener noreferrer" href="https://meet.sports.or.kr/national/event/venue.do"><span>배구 종별 경기일·경기장</span><span>↗</span></a>
-<a class="uf-source" target="_blank" rel="noopener noreferrer" href="https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do"><span>토너먼트 대진표</span><span>↗</span></a>
-<a class="uf-source" target="_blank" rel="noopener noreferrer" href="https://meet.sports.or.kr/national/schedule/scheduleClass.do"><span>종목별 일정·결과</span><span>↗</span></a>
-</div></div>
-</section>
-<p class="uf-foot">2026.10.18 · K-Volley Lab UI PROTOTYPE · 디자인 검수용 · 운영 홈페이지 미적용</p>
-</main>
+<body class="kvl1180-prototype kvl-competition-template-v2 kvl-nsf-unified" data-kvl-render-state="loading">
+<script>
+(function(){
+const slug=new URLSearchParams(location.search).get('competition')||'';
+document.body.dataset.kvlFamily='domestic';
+document.body.dataset.kvlGender=slug.includes('-women-')?'women':'men';
+})();
+</script>
+<p id="kvlCompetitionLoading" role="status">대회 정보를 불러오는 중입니다.</p>
+<main data-kvl-shell hidden></main>
+<noscript>대회 프로토타입은 JavaScript가 필요합니다.</noscript>
 <footer class="site-footer">© K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
 <script>
-(function(){"use strict";
-const divisions={"men-general":{"k":"men-general","title":"남자 일반부","short":"일반부","tag":"GENERAL","gender":"men","start":"10.16","end":"10.21","venue":"천지학생체육관(서귀포고)","city":"서귀포시","address":"서귀포시 중앙로 140","slug":"national-sports-festival-men-general-2026"},"men-university":{"k":"men-university","title":"남자 대학부","short":"대학부","tag":"UNIVERSITY","gender":"men","start":"10.16","end":"10.20","venue":"천지학생체육관(서귀포고)","city":"서귀포시","address":"서귀포시 중앙로 140","slug":"national-sports-festival-men-university-2026"},"men-u18":{"k":"men-u18","title":"남자 18세 이하부","short":"18세 이하부","tag":"U18","gender":"men","start":"10.16","end":"10.20","venue":"신성여자중학교 체육관","city":"제주시","address":"제주시 아봉로 174-1","slug":"national-sports-festival-men-u18-2026"},"women-general":{"k":"women-general","title":"여자 일반부","short":"일반부","tag":"GENERAL","gender":"women","start":"10.16","end":"10.20","venue":"표선생활체육관","city":"서귀포시","address":"서귀포시 표선면 한마음초등로 399","slug":"national-sports-festival-women-general-2026"},"women-u18":{"k":"women-u18","title":"여자 18세 이하부","short":"18세 이하부","tag":"U18","gender":"women","start":"10.16","end":"10.21","venue":"표선생활체육관","city":"서귀포시","address":"서귀포시 표선면 한마음초등로 399","slug":"national-sports-festival-women-u18-2026"}};
-const allowedViews=new Set(["overview","schedule","bracket","teams","sources"]);const qs=s=>document.querySelector(s),qsa=s=>[...document.querySelectorAll(s)];
-const selection=qsa("[data-division]"),viewButtons=qsa("[data-view]"),panels=qsa("[data-view-panel]"),mobile=qs("#uf-mobile-select");
-const initial=new URLSearchParams(location.search);
-let active=divisions[initial.get("division")]?initial.get("division"):"men-general";
-let view=allowedViews.has(initial.get("view"))?initial.get("view"):"overview";
-function syncUrl(){const u=new URL(location.href);u.searchParams.set("division",active);if(view==="overview")u.searchParams.delete("view");else u.searchParams.set("view",view);history.replaceState(null,"",u.pathname+u.search+u.hash)}
-function render(updateUrl){const d=divisions[active];qs("#uf-app").dataset.gender=d.gender;selection.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.division===active)));mobile.value=active;
-qs("#uf-selected-kicker").textContent=d.gender.toUpperCase()+" · "+d.tag+" DIVISION";
-qs("#uf-selected-title").textContent=d.title;qs("#uf-selected-date").textContent="2026."+d.start+"–"+d.end;qs("#uf-selected-venue").textContent=d.venue;qs("#uf-card-date").textContent=d.start+"–"+d.end;
-qs("#uf-info-division").textContent=d.title;qs("#uf-info-venue").textContent=d.venue;qs("#uf-info-city").textContent=d.city;qs("#uf-info-address").textContent=d.address;
-qs("#uf-schedule-period").textContent=d.title+" · "+d.start+"–"+d.end;
-qs("#uf-detail-link").href="/competition-engine-prototype.html?competition="+encodeURIComponent(d.slug);
-viewButtons.forEach(b=>b.setAttribute("aria-selected",String(b.dataset.view===view)));panels.forEach(p=>p.hidden=p.dataset.viewPanel!==view);
-if(updateUrl)syncUrl()}
-selection.forEach(b=>b.addEventListener("click",()=>{active=b.dataset.division;render(true)}));mobile.addEventListener("change",()=>{active=mobile.value;render(true)});
-viewButtons.forEach(b=>b.addEventListener("click",()=>{view=b.dataset.view;render(true)}));
-window.addEventListener("popstate",()=>{const u=new URLSearchParams(location.search);active=divisions[u.get("division")]?u.get("division"):"men-general";view=allowedViews.has(u.get("view"))?u.get("view"):"overview";render(false)});
-render(false);
+/* Add only the five-division switch to the real V2 shell, leaving rendering with the common engine. */
+(function(){'use strict';
+const divisions=[
+ {slug:'national-sports-festival-men-general-2026',label:'남자 일반부',gender:'men'},
+ {slug:'national-sports-festival-men-university-2026',label:'남자 대학부',gender:'men'},
+ {slug:'national-sports-festival-men-u18-2026',label:'남자 18세 이하부',gender:'men'},
+ {slug:'national-sports-festival-women-general-2026',label:'여자 일반부',gender:'women'},
+ {slug:'national-sports-festival-women-u18-2026',label:'여자 18세 이하부',gender:'women'}
+];
+const slug=new URLSearchParams(location.search).get('competition')||divisions[0].slug;
+const toUrl=target=>{
+ const url=new URL(location.href);url.searchParams.set('competition',target);url.searchParams.delete('team');url.searchParams.delete('date');
+ const view=url.searchParams.get('view');
+ if(!['overview','schedule','knockout','rosters','resources'].includes(view))url.searchParams.delete('view');
+ return url.pathname+url.search;
+};
+function mount(){
+ const main=document.querySelector('[data-kvl-shell]'),bar=main?.querySelector('.kvl1180-controlbar');
+ if(!bar||main.querySelector('.kvl-nsf-division-switch'))return false;
+ const nav=document.createElement('nav');nav.className='kvl-nsf-division-switch';nav.setAttribute('aria-label','전국체육대회 배구 종별 선택');
+ const label=document.createElement('span');label.className='kvl-nsf-division-label';label.textContent='종별 선택';
+ const links=document.createElement('div');links.className='kvl-nsf-division-links';
+ const select=document.createElement('select');select.className='kvl-nsf-division-mobile';select.setAttribute('aria-label','배구 종별 선택');
+ for(const [gender,name] of [['men','남자부'],['women','여자부']]){
+  const group=document.createElement('optgroup');group.label=name;
+  for(const d of divisions.filter(item=>item.gender===gender)){
+   const a=document.createElement('a');a.href=toUrl(d.slug);a.textContent=d.label;a.dataset.gender=d.gender;
+   if(d.slug===slug){a.classList.add('is-active');a.setAttribute('aria-current','page');}
+   links.appendChild(a);
+   const option=document.createElement('option');option.value=d.slug;option.textContent=d.label;option.selected=d.slug===slug;
+   group.appendChild(option);
+  }select.appendChild(group);
+ }
+ select.addEventListener('change',()=>{location.assign(toUrl(select.value));});
+ nav.append(label,links,select);bar.before(nav);
+ const genderSwitch=bar.querySelector('.kvl1180-gender');if(genderSwitch)genderSwitch.remove();
+ const groupsTab=bar.querySelector('.kvl1180-tabs a[data-view="groups"]');if(groupsTab)groupsTab.remove();
+ const tabNames={schedule:'경기일정·결과',knockout:'대진·최종순위',rosters:'참가팀'};
+ for(const [key,title] of Object.entries(tabNames)){const a=bar.querySelector('.kvl1180-tabs a[data-view="'+key+'"]');if(a)a.textContent=title;}
+ const kpis=main.querySelector('.kvl1180-kpis');
+ const second=kpis?.querySelector('.kvl1180-kpi:nth-child(2) .kvl1180-kpi-copy');
+ if(second){const title=second.querySelector('span'),count=second.querySelector('strong'),unit=second.querySelector('small');if(title)title.textContent='대회 종별';if(count)count.textContent='5';if(unit)unit.textContent='개 종별';}
+ const note=document.createElement('p');note.className='kvl-nsf-source-note';note.textContent='공식 개최정보 확인 · 참가 시·도, 실제 대진 및 세트별 경기결과는 원문 대조 후 연결합니다. 임의 경기·순위 없음.';
+ bar.after(note);
+ return true;
+}
+const shell=document.querySelector('[data-kvl-shell]');
+if(!mount()){
+ const observer=new MutationObserver(()=>{if(mount())observer.disconnect();});
+ observer.observe(shell,{childList:true,subtree:true});
+}
 })();
 </script>
 </body></html>
