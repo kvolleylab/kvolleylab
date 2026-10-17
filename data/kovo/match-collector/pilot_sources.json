@@ -9,7 +9,19 @@
         "home_team": "한국도로공사",
         "away_team": "IBK기업은행",
         "score": "3-1"
-      }
+      },
+      "player_checks": [
+        {
+          "team": "한국도로공사",
+          "name": "모마",
+          "points": 31
+        },
+        {
+          "team": "IBK기업은행",
+          "name": "빅토리아",
+          "points": 32
+        }
+      ]
     },
     {
       "url": "https://dbbank.kovo.co.kr/game/11110_pop_result.asp?PID=gcDNxoTMwIjOyIDM",
@@ -18,7 +30,14 @@
         "home_team": "IBK기업은행",
         "away_team": "현대건설",
         "score": "3-2"
-      }
+      },
+      "player_checks": [
+        {
+          "team": "현대건설",
+          "name": "자스티스",
+          "points": 23
+        }
+      ]
     },
     {
       "url": "https://dbbank.kovo.co.kr/game/11110_pop_result.asp?PID=gUDNyoTMwIjOyIDM",
@@ -27,7 +46,14 @@
         "home_team": "IBK기업은행",
         "away_team": "GS칼텍스",
         "score": "3-0"
-      }
+      },
+      "player_checks": [
+        {
+          "team": "GS칼텍스",
+          "name": "유서연",
+          "points": 18
+        }
+      ]
     }
   ]
 }
