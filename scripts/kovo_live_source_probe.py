@@ -141,6 +141,25 @@ def host_hints(js):
     return sorted(set(re.findall(r"https://(?:[a-z0-9-]+\.)?kovo\.co\.kr", js, re.I)))[:20]
 
 
+def official_game_api_calls(js):
+    """Extract bounded game API path hints from public Axios callsites only."""
+    result=[]
+    for match in re.finditer(r"\bue\.(get|post)\(",js):
+        segment=js[match.end():match.end()+160].lstrip()
+        if not segment or segment[0] not in ('"', "'", chr(96)):
+            continue
+        value=segment[1:].split(segment[0],1)[0]
+        path=value.split(chr(36)+chr(123),1)[0].split("?",1)[0]
+        if not path or len(path)>110 or "://" in path:
+            continue
+        if not any(keyword in path.lower() for keyword in PATH_WORDS):
+            continue
+        entry={"method":match.group(1).upper(),"path":path}
+        if entry not in result:
+            result.append(entry)
+    return result[:100]
+
+
 def probe(max_assets=3):
     if not 0 <= max_assets <= MAX_ASSETS:
         raise Blocked("Max assets is 0..3")
@@ -172,6 +191,7 @@ def probe(max_assets=3):
             "candidate_route_paths": endpoint_path_hints(code) if code else [],
             "route_callsite_hints": route_contexts(code) if code else [],
             "first_party_host_hints": host_hints(code) if code else [],
+            "official_game_api_calls": official_game_api_calls(code) if code else [],
             "realtime_keywords": [word for word in ("websocket", "EventSource", "score", "match", "game")
                                   if word.lower() in code.lower()],
         })
