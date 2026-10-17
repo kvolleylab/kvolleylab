@@ -89,6 +89,10 @@ def match_only_sample(payload):
                 info[field]=val
             elif isinstance(val,dict):
                 info[field]={"keys":list(val)[:15]}
+                if field in ("season","league"):
+                    for sub in ("value","name"):
+                        if type(val.get(sub)) in (str,int) and len(str(val[sub]))<=60:
+                            info[field][sub]=val[sub]
         for side in ("homeTeam","awayTeam"):
             val=item.get(side)
             if not isinstance(val,dict):
