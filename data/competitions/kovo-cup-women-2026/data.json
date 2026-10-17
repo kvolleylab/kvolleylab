@@ -1,6 +1,6 @@
 {
   "status": "active",
-  "stageLabel": "여자부 · 조별리그 종료 · 준결승 대진 확정",
+  "stageLabel": "여자부 · 준결승 종료 · 결승 10월 18일",
   "dateLabel": "2026.10.11 ~ 10.18",
   "locationLabel": "대한민국 · 전남 여수",
   "venueLabel": "여수 진남체육관",
@@ -10,9 +10,9 @@
   "groupCount": 2,
   "matchCount": 12,
   "knockoutTeamCount": 4,
-  "upcomingOverviewNote": "조별리그 종료 · 10월 17일 준결승, 10월 18일 결승 예정",
-  "scheduleNote": "한국시간(KST) · 여자부 12경기 · 10월 16일까지 조별리그 9경기 결과 반영 · 10월 17일 준결승",
-  "standingsNote": "10월 16일 조별리그 종료 기준 · 9경기 결과 반영 · A조 흥국생명·IBK기업은행, B조 한국도로공사·GS칼텍스 준결승 진출",
+  "upcomingOverviewNote": "준결승 종료 · 결승 GS칼텍스 vs 한국도로공사 · 10월 18일 13:30 KST",
+  "scheduleNote": "한국시간(KST) · 10월 17일까지 조별리그 9경기·준결승 2경기 결과 반영 · 결승 10월 18일 13:30",
+  "standingsNote": "10월 16일 조별리그 최종 순위 · 10월 17일 준결승 결과 별도 반영 · 결승 GS칼텍스–한국도로공사",
   "standingsStatus": "조별리그 최종 순위",
   "standingsRule": "각 조 상위 2팀이 준결승에 진출합니다.",
   "meaning": {
@@ -433,7 +433,41 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:30 KST",
-      "bracketLabel": "SF10"
+      "bracketLabel": "SF10",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-17",
+        "sources": [
+          "https://www.seoul.co.kr/news/sport/volleyball/2026/10/17/20261017500061",
+          "https://sports.daum.net/schedule/wvl?teamId=358434"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-11",
@@ -450,7 +484,33 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 16:30 KST",
-      "bracketLabel": "SF11"
+      "bracketLabel": "SF11",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-17",
+        "sources": [
+          "https://www.seoul.co.kr/news/sport/volleyball/2026/10/17/20261017500061",
+          "https://sports.daum.net/schedule/wvl?teamId=358434"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-12",
@@ -460,10 +520,10 @@
       "pool": "",
       "round": "FINAL",
       "home": {
-        "name": "준결승 1 승자"
+        "code": "GSC"
       },
       "away": {
-        "name": "준결승 2 승자"
+        "code": "KEX"
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:30 KST",
@@ -602,5 +662,5 @@
       "note": "단판 토너먼트"
     }
   },
-  "activeOverviewNote": "조별리그 종료 · A조 흥국생명·IBK기업은행, B조 한국도로공사·GS칼텍스 준결승 진출 · 10월 17일 준결승"
+  "activeOverviewNote": "준결승 종료 · GS칼텍스 3–2 흥국생명, 한국도로공사 3–0 IBK기업은행 · 10월 18일 GS칼텍스–한국도로공사 결승"
 }
