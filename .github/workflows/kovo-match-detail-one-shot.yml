@@ -1,0 +1,27 @@
+name: KOVO Official Match Detail One-Shot Probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-match-detail-one-shot.yml'
+      - 'scripts/kovo_public_match_detail_probe.py'
+      - 'tests/test_kovo_public_match_detail_probe.py'
+
+permissions:
+  contents: read
+
+jobs:
+  match-detail-capability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact source-match and privacy tests
+        run: python -m unittest discover -s tests -p test_kovo_public_match_detail_probe.py -v
+      - name: Request one official publicly identified historical match detail
+        run: python scripts/kovo_public_match_detail_probe.py
