@@ -274,11 +274,73 @@ def inspect_stats_structure(html):
             "candidates": candidates[:6]}
 
 
+def extract_player_candidates(html, team_order):
+    """Provisional player scoring rows from two 21-column DB BANK tables.
+
+    Team assignment is based solely on table ordering and MUST be verified
+    before publication. Field index 9 (total points) was compared to public
+    official table output; index 10-12 remain candidate metrics only.
+    """
+    page = PageTables()
+    page.feed(html)
+    tables = []
+    for table in page.tables:
+        header = " ".join(" ".join(row) for row in table[:5]).upper()
+        if "PLAYER" in header and "포지션" in header and "득점" in header:
+            tables.append(table)
+    if len(tables) != 2 or len(team_order) != 2:
+        return {"status": "unverified_table_structure", "teams": []}
+
+    teams = []
+    valid_positions = {"S", "L", "MB", "OH", "OP", "OS", "O"}
+    for team, table in zip(team_order, tables):
+        rows = []
+        for cells in table:
+            if len(cells) != 21 or cells[2].strip().upper() not in valid_positions:
+                continue
+            number, name, position, height = map(str.strip, cells[:4])
+            if not re.fullmatch(r"\d{1,3}", number):
+                continue
+            if not 1 <= len(name) <= 60 or re.search(r"[<>]", name):
+                raise ParseError("Invalid player name in candidate row")
+            if not height.isdigit() or not 130 <= int(height) <= 230:
+                raise ParseError("Invalid player height in candidate row")
+            def integer_or_null(value):
+                value = value.strip().replace(",", "")
+                if not value:
+                    return None
+                if not re.fullmatch(r"\d{1,3}", value):
+                    raise ParseError("Unexpected player metric; stop before publishing")
+                return int(value)
+            points = integer_or_null(cells[9])
+            attack = integer_or_null(cells[10])
+            block = integer_or_null(cells[11])
+            serve = integer_or_null(cells[12])
+            if points is not None and points > 70:
+                raise ParseError("Unrealistic player points")
+            if points is not None and any(v is not None and v > points
+                                          for v in (attack, block, serve)):
+                raise ParseError("Candidate points inconsistent with total")
+            rows.append({
+                "number": number, "name": name, "position": position,
+                "height_cm": int(height), "points": points,
+                "attack_points_candidate": attack,
+                "block_points_candidate": block,
+                "serve_points_candidate": serve,
+            })
+        if not rows or len({(r["number"], r["name"]) for r in rows}) != len(rows):
+            return {"status": "unverified_player_rows", "teams": []}
+        teams.append({"team": team, "assignment": "table_order_unverified",
+                      "players": rows})
+    return {"status": "parsed_review_required", "teams": teams}
+
+
 def collect_one(entry, html=None):
     url = validate_url(entry["url"])
     source = request_public_page(url) if html is None else html
     match = parse_match(source, url, entry.get("expect"))
     stats_structure = inspect_stats_structure(source)
+    player_candidates = extract_player_candidates(source, [match["home_team"], match["away_team"]])
     return {
         "schema_version": 1,
         "source": "KOVO DB BANK public match result",
@@ -286,7 +348,8 @@ def collect_one(entry, html=None):
         "collected_utc": datetime.now(timezone.utc).isoformat(),
         "source_sha256": hashlib.sha256(source.encode("utf-8")).hexdigest(),
         "status": "parsed_review_required",
-        "player_stats_status": "not_collected",
+        "player_stats_status": player_candidates["status"],
+        "player_stats_candidates": player_candidates,
         "player_stats_structure": stats_structure,
         **match,
     }
@@ -304,6 +367,9 @@ def collect_manifest(manifest, output, delay=1):
     for i, entry in enumerate(entries):
         record = collect_one(entry)
         results.append(record)
+        totals = [len(t["players"]) for t in record["player_stats_candidates"]["teams"]]
+        print("PLAYER_ROWS", record["date"], record["player_stats_status"],
+              "counts=" + str(totals), flush=True)
         diag = record["player_stats_structure"]
         signatures = [
             {"rows": c["rows"], "detected": c["player_rows_detected"],
