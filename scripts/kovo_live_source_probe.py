@@ -53,7 +53,8 @@ def fetch_public(url):
                 raise Blocked("Redirected off-origin")
             data = resp.read(MAX_RESPONSE_BYTES + 1)
             if len(data) > MAX_RESPONSE_BYTES:
-                raise Blocked("Document size limit")
+                return "", {"status": "size_limit", "content_type": resp.headers.get("Content-Type", "").split(";")[0],
+                            "bytes_read": MAX_RESPONSE_BYTES + 1, "pathname": urlsplit(resp.geturl()).path}
             return data.decode("utf-8", "replace"), {
                 "status": resp.status,
                 "content_type": resp.headers.get("Content-Type", "").split(";")[0],
