@@ -82,8 +82,8 @@ class BridgeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp);repo_fixture(root)
             bad=b.normalize(record(number=11),"main")
-            self.assertEqual(b.join_local(bad,root)["local_status"],
-                             "UNMATCHED_OR_AMBIGUOUS")
+            with self.assertRaises(b.SourceError):
+                b.join_local(bad,root)
             data_path=root/"data"/"competitions"/"kovo-cup-women-2026"/"data.json"
             data=json.loads(data_path.read_text())
             data["matches"][0]["id"]="KOVOCUP26-11"
