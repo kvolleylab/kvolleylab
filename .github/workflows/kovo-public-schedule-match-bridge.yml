@@ -1,0 +1,38 @@
+name: KOVO Public Schedule Match Bridge
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-public-schedule-match-bridge.yml'
+      - 'scripts/kovo_match_schedule_bridge.py'
+      - 'tests/test_kovo_match_schedule_bridge.py'
+
+permissions:
+  contents: read
+
+jobs:
+  official-public-schedule-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline fixture match-identity contract
+        run: python -m unittest discover -s tests -p test_kovo_match_schedule_bridge.py -v
+      - name: Fetch current KOVO public match identities without player data
+        run: |
+          python scripts/kovo_match_schedule_bridge.py \
+            --root . \
+            --output data/kovo/match-feed/official_schedule_review.json
+      - name: Upload match-only review artifact, never update website
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-official-match-identity-review
+          path: data/kovo/match-feed/official_schedule_review.json
+          if-no-files-found: ignore
+          retention-days: 14
