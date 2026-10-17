@@ -242,10 +242,43 @@ def parse_match(html, url, expect=None):
     return {"date": match_date, **game, **extras}
 
 
+def inspect_stats_structure(html):
+    """Return non-PII player-table structural diagnostics; NEVER player values."""
+    page = PageTables()
+    page.feed(html)
+    candidates = []
+    allowed_positions = {"S", "L", "MB", "OH", "OP", "OS", "O", "SETTER", "LIBERO"}
+    for table in page.tables:
+        header = " ".join(" ".join(row) for row in table[:5]).upper()
+        if not ("PLAYER" in header and "포지션" in header and "득점" in header):
+            continue
+        shapes = []
+        for row in table:
+            positions = [i for i, cell in enumerate(row)
+                         if cell.strip().upper() in allowed_positions]
+            if not positions or len(row) < 12:
+                continue
+            shapes.append({
+                "columns": len(row),
+                "position_indices": positions[:3],
+                "numeric_cells": sum(bool(re.fullmatch(r"\d+(?:\.\d+)?", cell.strip()))
+                                     for cell in row),
+            })
+        candidates.append({
+            "rows": len(table),
+            "first_five_column_counts": [len(row) for row in table[:5]],
+            "player_row_shapes": shapes[:6],
+            "player_rows_detected": len(shapes),
+        })
+    return {"all_tables": len(page.tables), "candidate_tables": len(candidates),
+            "candidates": candidates[:6]}
+
+
 def collect_one(entry, html=None):
     url = validate_url(entry["url"])
     source = request_public_page(url) if html is None else html
     match = parse_match(source, url, entry.get("expect"))
+    stats_structure = inspect_stats_structure(source)
     return {
         "schema_version": 1,
         "source": "KOVO DB BANK public match result",
@@ -254,6 +287,7 @@ def collect_one(entry, html=None):
         "source_sha256": hashlib.sha256(source.encode("utf-8")).hexdigest(),
         "status": "parsed_review_required",
         "player_stats_status": "not_collected",
+        "player_stats_structure": stats_structure,
         **match,
     }
 
