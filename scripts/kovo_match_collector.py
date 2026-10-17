@@ -302,7 +302,17 @@ def collect_manifest(manifest, output, delay=1):
         raise ValueError("Duplicate match PID (PSET variants are the same match)")
     results = []
     for i, entry in enumerate(entries):
-        results.append(collect_one(entry))
+        record = collect_one(entry)
+        results.append(record)
+        diag = record["player_stats_structure"]
+        signatures = [
+            {"rows": c["rows"], "detected": c["player_rows_detected"],
+             "shapes": c["player_row_shapes"][:2]}
+            for c in diag["candidates"]
+        ]
+        print("STATS_SCHEMA", record["date"],
+              json.dumps({"candidate_tables": diag["candidate_tables"],
+                          "signatures": signatures}, ensure_ascii=False), flush=True)
         if i != len(entries) - 1:
             time.sleep(delay)
     path = Path(output)
