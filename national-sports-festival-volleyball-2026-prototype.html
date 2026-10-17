@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>제107회 전국체육대회 배구 · 종별 프로토타입 | K-Volley Lab</title>
+<meta name="description" content="2026 제주 제107회 전국체육대회 배구의 5개 세부종별, 공식 경기장과 토너먼트 대회 페이지 프로토타입.">
+<link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="/assets/css/site-theme-light.css">
+<link rel="stylesheet" href="/assets/css/pretendard-global.css">
+<script defer src="/assets/js/unified-nav.js?v=20261012-kovo-production-1"></script>
+<style>
+:root{--nsf-navy:#163a5f;--nsf-deep:#102c49;--nsf-rose:#8e315e;--nsf-ink:#182941;--nsf-muted:#64748b;--nsf-line:#dbe4ed;--nsf-soft:#f4f7fb}
+*{box-sizing:border-box}
+body.nsf-page{background:#f6f8fb;color:var(--nsf-ink);font-family:Pretendard,Arial,sans-serif;line-height:1.5}
+.nsf-main{width:min(1180px,calc(100% - 32px));margin:28px auto 80px;min-width:0}
+.nsf-crumb{font-size:12px;font-weight:700;color:#6b7a8d;margin:0 0 13px}
+.nsf-crumb a{color:var(--nsf-navy);text-decoration:none}
+.nsf-hero{position:relative;overflow:hidden;border-radius:10px;background:linear-gradient(112deg,#0a2139 0%,#163a5f 64%,#245477 100%);color:#fff;padding:34px 38px 30px;min-height:234px;isolation:isolate}
+.nsf-hero:before{content:'';position:absolute;width:360px;height:360px;right:-65px;top:-95px;border:1px solid #ffffff2b;border-radius:50%;box-shadow:0 0 0 33px #ffffff09,0 0 0 70px #ffffff07;z-index:-1}
+.nsf-hero:after{content:'';position:absolute;width:450px;height:230px;right:-55px;bottom:-68px;transform:rotate(-18deg);border:1px solid #ffffff24;background:repeating-linear-gradient(0deg,transparent 0 32px,#ffffff0b 32px 33px),repeating-linear-gradient(90deg,transparent 0 52px,#ffffff0a 52px 53px);z-index:-1;opacity:.75}
+.nsf-eyebrow{font-size:11px;letter-spacing:.13em;font-weight:800;color:#b8d8ed;margin:0 0 13px}
+.nsf-hero h1{font-size:clamp(26px,3.6vw,41px);line-height:1.22;letter-spacing:-.045em;font-weight:850;margin:0 0 8px;word-break:keep-all}
+.nsf-hero p.nsf-intro{font-size:14px;margin:0;color:#d9e7f3}
+.nsf-hero-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.nsf-hero-meta span{border:1px solid #ffffff40;background:#ffffff16;border-radius:6px;padding:8px 11px;font-size:12px;color:#eef6fd}
+.nsf-hero-meta strong{color:#fff}
+.nsf-proto-pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.01em;color:#42627c;background:#edf4f9;padding:6px 9px;border-radius:5px}
+.nsf-proto-pill:before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#637d91}
+.nsf-section{background:#fff;border:1px solid var(--nsf-line);border-radius:9px;margin-top:18px;padding:23px 24px}
+.nsf-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:17px}
+.nsf-kicker{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#7b91a6;font-weight:800;margin:0 0 4px}
+.nsf-section h2{font-size:20px;font-weight:800;letter-spacing:-.035em;margin:0}
+.nsf-section .nsf-desc{font-size:13px;color:#66778a;margin:5px 0 0}
+.nsf-filter{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.nsf-filter button{appearance:none;border:1px solid #ccd8e4;background:#f8fafc;border-radius:6px;padding:9px 13px;color:#41556b;font:700 12px Pretendard,Arial,sans-serif;cursor:pointer;transition:background .15s,border-color .15s}
+.nsf-filter button:hover,.nsf-filter button:focus-visible{border-color:#567b9d;background:#f0f5fa;outline:none}
+.nsf-filter button[aria-pressed="true"]{background:var(--nsf-navy);color:white;border-color:var(--nsf-navy)}
+.nsf-filter button.is-women[aria-pressed="true"]{background:var(--nsf-rose);border-color:var(--nsf-rose)}
+.nsf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.nsf-card{min-width:0;border:1px solid #dbe4ee;border-top:3px solid var(--nsf-navy);border-radius:7px;padding:19px 17px 17px;background:white;display:flex;flex-direction:column;gap:0;transition:border-color .15s,box-shadow .15s}
+.nsf-card:hover,.nsf-card:focus-within{box-shadow:0 7px 21px #1d365015;border-color:#9eb5c9}
+.nsf-card.is-women{border-top-color:var(--nsf-rose)}
+.nsf-card[hidden]{display:none}
+.nsf-card-top{display:flex;justify-content:space-between;align-items:center;gap:5px}
+.nsf-type{font-size:11px;color:#56758e;font-weight:800}
+.nsf-card.is-women .nsf-type{color:var(--nsf-rose)}
+.nsf-card h3{font-size:18px;font-weight:850;letter-spacing:-.038em;margin:12px 0}
+.nsf-card dl{margin:0;display:grid;gap:9px;flex:1}
+.nsf-card dl div{display:grid;grid-template-columns:48px minmax(0,1fr);gap:8px}
+.nsf-card dt{font-size:12px;color:#79899b}
+.nsf-card dd{font-size:12px;font-weight:600;margin:0;word-break:keep-all}
+.nsf-card .nsf-status{margin:14px 0 0;font-size:11px;color:#8190a1;padding:9px 0 0;border-top:1px solid #e9edf2}
+.nsf-card a.nsf-go{display:block;padding:10px 11px;margin-top:12px;border-radius:5px;color:var(--nsf-navy);font-size:12px;font-weight:800;text-decoration:none;background:#ecf3f8;text-align:center}
+.nsf-card a.nsf-go:hover,.nsf-card a.nsf-go:focus-visible{background:#dbeaf4;outline:2px solid #92b2cb;outline-offset:2px}
+.nsf-card.is-women a.nsf-go{background:#fcf1f6;color:var(--nsf-rose)}
+.nsf-card.is-women a.nsf-go:hover{background:#f6dfe9}
+.nsf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.nsf-step{padding:14px;background:#f7f9fc;border:1px solid #e5ecf3;border-radius:6px;min-width:0}
+.nsf-step span{display:block;color:#97a6b6;font-size:10px;letter-spacing:.06em;font-weight:800}
+.nsf-step strong{display:block;font-size:13px;margin:5px 0 3px}
+.nsf-step p{margin:0;font-size:11px;color:#718295}
+.nsf-verified{margin-top:14px;border-left:3px solid #637f99;background:#f2f6fa;padding:11px 13px;font-size:12px;color:#48627b}
+.nsf-sources{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.nsf-source{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;border-radius:6px;border:1px solid #e2e9f1;color:#284b6c;font-size:13px;font-weight:700;text-decoration:none}
+.nsf-source:hover,.nsf-source:focus-visible{background:#f3f7fb;border-color:#9eb7ca;outline:none}
+.nsf-source span:last-child{white-space:nowrap}
+.nsf-foot{color:#8794a5;text-align:center;font-size:11px;padding-top:22px}
+@media(max-width:900px){.nsf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nsf-steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.nsf-main{width:calc(100% - 22px);margin:12px auto 55px}.nsf-hero{padding:27px 19px 23px;min-height:222px;border-radius:7px}.nsf-hero:before{width:260px;height:260px;right:-170px}.nsf-hero h1{font-size:29px}.nsf-hero-meta{gap:7px;margin-top:17px}.nsf-hero-meta span{font-size:11px;padding:6px 8px}.nsf-section{padding:17px 14px;margin-top:12px}.nsf-section h2{font-size:18px}.nsf-grid{grid-template-columns:1fr}.nsf-card{padding:15px}.nsf-card h3{font-size:17px}.nsf-filter{gap:6px}.nsf-filter button{font-size:11px;padding:8px 10px}.nsf-sources{grid-template-columns:1fr}.nsf-title-row{flex-wrap:wrap}.nsf-steps{gap:7px}.nsf-step{padding:11px}.nsf-step strong{font-size:12px}}
+</style></head>
+<body class="domestic-competitions-page nsf-page">
+<header class="site-header"><a class="site-logo" href="/index.html">K-Volley Lab</a><nav class="site-nav" aria-label="사이트 메뉴"></nav></header>
+<main class="nsf-main" id="nsf">
+<p class="nsf-crumb"><a href="/index.html">홈</a> / 국내대회 / 종합대회 / 전국체육대회 배구</p>
+<section class="nsf-hero" aria-labelledby="nsf-title">
+<p class="nsf-eyebrow">K-VOLLEY LAB · DOMESTIC COMPETITION / 2026</p>
+<h1 id="nsf-title">제107회 전국체육대회<br>배구</h1>
+<p class="nsf-intro">5개 세부종별의 경기장, 대진, 결과를 한곳에서 확인하는 데이터 프로토타입</p>
+<div class="nsf-hero-meta"><span><strong>2026.10.16–10.22</strong> · 대회 전체기간</span><span><strong>제주특별자치도</strong></span><span><strong>남자 3 · 여자 2</strong> 종별</span></div>
+</section>
+<section class="nsf-section" aria-labelledby="nsf-divisions-title">
+<div class="nsf-title-row"><div><p class="nsf-kicker">FIVE DIVISIONS</p><h2 id="nsf-divisions-title">배구 종별 선택</h2><p class="nsf-desc">종별을 선택하면 해당 공식 경기장과 토너먼트 상세페이지로 이동할 수 있습니다.</p></div><span class="nsf-proto-pill">프로토타입 · 검수 중</span></div>
+<div class="nsf-filter" role="group" aria-label="세부종별 필터">
+<button type="button" data-division="all" aria-pressed="true">전체 5종별</button>
+<button type="button" data-division="men-u18" aria-pressed="false">남자 18세 이하</button>
+<button type="button" data-division="men-university" aria-pressed="false">남자 대학</button>
+<button type="button" data-division="men-general" aria-pressed="false">남자 일반</button>
+<button type="button" data-division="women-u18" class="is-women" aria-pressed="false">여자 18세 이하</button>
+<button type="button" data-division="women-general" class="is-women" aria-pressed="false">여자 일반</button>
+</div>
+<div class="nsf-grid" id="nsf-grid">
+<article class="nsf-card" data-card="men-u18"><div class="nsf-card-top"><span class="nsf-type">MEN · U18</span><span class="nsf-proto-pill">토너먼트</span></div><h3>남자 18세 이하부</h3><dl><div><dt>경기일</dt><dd>10.16–10.20</dd></div><div><dt>경기장</dt><dd>신성여자중학교 체육관</dd></div><div><dt>주소</dt><dd>제주시 아봉로 174-1</dd></div></dl><p class="nsf-status">공식 장소 확인 · 팀별 대진·결과 검증 중</p><a class="nsf-go" href="/competition-engine-prototype.html?competition=national-sports-festival-men-u18-2026">종별 대회 상세 보기 ↗</a></article>
+<article class="nsf-card" data-card="men-university"><div class="nsf-card-top"><span class="nsf-type">MEN · UNIVERSITY</span><span class="nsf-proto-pill">토너먼트</span></div><h3>남자 대학부</h3><dl><div><dt>경기일</dt><dd>10.16–10.20</dd></div><div><dt>경기장</dt><dd>천지학생체육관(서귀포고)</dd></div><div><dt>주소</dt><dd>서귀포시 중앙로 140</dd></div></dl><p class="nsf-status">공식 장소 확인 · 팀별 대진·결과 검증 중</p><a class="nsf-go" href="/competition-engine-prototype.html?competition=national-sports-festival-men-university-2026">종별 대회 상세 보기 ↗</a></article>
+<article class="nsf-card" data-card="men-general"><div class="nsf-card-top"><span class="nsf-type">MEN · GENERAL</span><span class="nsf-proto-pill">토너먼트</span></div><h3>남자 일반부</h3><dl><div><dt>경기일</dt><dd>10.16–10.21</dd></div><div><dt>경기장</dt><dd>천지학생체육관(서귀포고)</dd></div><div><dt>주소</dt><dd>서귀포시 중앙로 140</dd></div></dl><p class="nsf-status">공식 장소 확인 · 팀별 대진·결과 검증 중</p><a class="nsf-go" href="/competition-engine-prototype.html?competition=national-sports-festival-men-general-2026">종별 대회 상세 보기 ↗</a></article>
+<article class="nsf-card is-women" data-card="women-u18"><div class="nsf-card-top"><span class="nsf-type">WOMEN · U18</span><span class="nsf-proto-pill">토너먼트</span></div><h3>여자 18세 이하부</h3><dl><div><dt>경기일</dt><dd>10.16–10.21</dd></div><div><dt>경기장</dt><dd>표선생활체육관</dd></div><div><dt>주소</dt><dd>서귀포시 표선면 한마음초등로 399</dd></div></dl><p class="nsf-status">공식 장소 확인 · 팀별 대진·결과 검증 중</p><a class="nsf-go" href="/competition-engine-prototype.html?competition=national-sports-festival-women-u18-2026">종별 대회 상세 보기 ↗</a></article>
+<article class="nsf-card is-women" data-card="women-general"><div class="nsf-card-top"><span class="nsf-type">WOMEN · GENERAL</span><span class="nsf-proto-pill">토너먼트</span></div><h3>여자 일반부</h3><dl><div><dt>경기일</dt><dd>10.16–10.20</dd></div><div><dt>경기장</dt><dd>표선생활체육관</dd></div><div><dt>주소</dt><dd>서귀포시 표선면 한마음초등로 399</dd></div></dl><p class="nsf-status">공식 장소 확인 · 팀별 대진·결과 검증 중</p><a class="nsf-go" href="/competition-engine-prototype.html?competition=national-sports-festival-women-general-2026">종별 대회 상세 보기 ↗</a></article>
+</div>
+</section>
+<section class="nsf-section" aria-labelledby="nsf-work-title">
+<div class="nsf-title-row"><div><p class="nsf-kicker">DATA VALIDATION</p><h2 id="nsf-work-title">대진·경기결과 연결 상태</h2><p class="nsf-desc">대한체육회 공식 기록과 K-Volley Lab의 경기 데이터를 구분합니다.</p></div></div>
+<div class="nsf-steps">
+<div class="nsf-step"><span>01 · OFFICIAL</span><strong>대회·종별 확정</strong><p>5개 종별, 경기장, 종별 경기일 확인</p></div>
+<div class="nsf-step"><span>02 · BRACKET</span><strong>대진표 정규화</strong><p>시·도 대표팀·부전승·라운드 검수 전</p></div>
+<div class="nsf-step"><span>03 · MATCH</span><strong>경기 결과 대조</strong><p>세트 스코어·세트별 점수 검증 전</p></div>
+<div class="nsf-step"><span>04 · RELEASE</span><strong>프로토타입 검수</strong><p>PC·모바일 및 종별 전환 확인 후 운영 전환</p></div>
+</div>
+<div class="nsf-verified"><strong>자료 상태:</strong> 공식 대진표는 대한체육회에서 종목 ‘배구’와 해당 종별을 선택해 조회할 수 있습니다. 이 프로토타입에는 아직 검증되지 않은 팀명·대진·승패·점수를 생성하지 않았습니다. 대회 전체기간과 각 종별 경기일은 구분해 표기했습니다.</div>
+</section>
+<section class="nsf-section" aria-labelledby="nsf-sources-title"><div class="nsf-title-row"><div><p class="nsf-kicker">OFFICIAL SOURCES</p><h2 id="nsf-sources-title">대한체육회 공식자료</h2></div></div>
+<div class="nsf-sources">
+<a class="nsf-source" href="https://meet.sports.or.kr/national/event/outline.do" target="_blank" rel="noopener noreferrer"><span>제107회 전국체육대회 개요</span><span>↗</span></a>
+<a class="nsf-source" href="https://meet.sports.or.kr/national/event/venue.do" target="_blank" rel="noopener noreferrer"><span>배구 종별 경기장·일정</span><span>↗</span></a>
+<a class="nsf-source" href="https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do" target="_blank" rel="noopener noreferrer"><span>토너먼트 대진표 · 배구 선택</span><span>↗</span></a>
+<a class="nsf-source" href="https://meet.sports.or.kr/national/schedule/scheduleClass.do" target="_blank" rel="noopener noreferrer"><span>종목별 공식 경기일정·결과</span><span>↗</span></a>
+</div></section>
+<p class="nsf-foot">© K-Volley Lab · 2026.10.17 · 자료 검수용 · 전국체전 종별 프로토타입 / 운영 홈페이지 미반영</p>
+</main>
+<footer class="site-footer">© K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
+<script>
+(()=>{'use strict';
+ const key='division',valid=new Set(['all','men-u18','men-university','men-general','women-u18','women-general']);
+ const buttons=[...document.querySelectorAll('[data-division]')],cards=[...document.querySelectorAll('[data-card]')];
+ function activate(v,{updateUrl=false}={}){
+  const selected=valid.has(v)?v:'all';
+  buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.division===selected)));
+  cards.forEach(card=>{card.hidden=selected!=='all'&&card.dataset.card!==selected});
+  if(updateUrl){const url=new URL(location.href);if(selected==='all')url.searchParams.delete(key);else url.searchParams.set(key,selected);history.replaceState(null,'',url.pathname+url.search)}
+ }
+ buttons.forEach(b=>b.addEventListener('click',()=>activate(b.dataset.division,{updateUrl:true})));
+ window.addEventListener('popstate',()=>activate(new URLSearchParams(location.search).get(key)||'all'));
+ activate(new URLSearchParams(location.search).get(key)||'all');
+})();
+</script>
+</body></html>
