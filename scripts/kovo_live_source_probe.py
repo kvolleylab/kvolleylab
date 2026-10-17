@@ -18,6 +18,7 @@ ALLOWED_HOST = "kovo.co.kr"
 ENTRY_PATHS = ("/game/v-league", "/game/kovo-cup", "/")
 PATH_WORDS = ("schedule", "match", "game", "league", "score", "result", "cup")
 MAX_RESPONSE_BYTES = 2_000_000
+MAX_PUBLIC_STATIC_JS_BYTES = 8_000_000
 MAX_ASSETS = 3
 
 
@@ -51,10 +52,12 @@ def fetch_public(url):
         with opener.open(req, timeout=15) as resp:
             if not first_party(resp.geturl()):
                 raise Blocked("Redirected off-origin")
-            data = resp.read(MAX_RESPONSE_BYTES + 1)
-            if len(data) > MAX_RESPONSE_BYTES:
+            size_limit = (MAX_PUBLIC_STATIC_JS_BYTES if urlsplit(resp.geturl()).path.endswith(".js")
+                          else MAX_RESPONSE_BYTES)
+            data = resp.read(size_limit + 1)
+            if len(data) > size_limit:
                 return "", {"status": "size_limit", "content_type": resp.headers.get("Content-Type", "").split(";")[0],
-                            "bytes_read": MAX_RESPONSE_BYTES + 1, "pathname": urlsplit(resp.geturl()).path}
+                            "bytes_read": size_limit + 1, "pathname": urlsplit(resp.geturl()).path}
             return data.decode("utf-8", "replace"), {
                 "status": resp.status,
                 "content_type": resp.headers.get("Content-Type", "").split(";")[0],
