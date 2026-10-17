@@ -1,0 +1,76 @@
+name: KOVO Cup Final One-Day Live Observation 2026-10-18
+
+on:
+  # UTC 04:00 = Korea 13:00. Script strictly gates to 2026-10-18 KST.
+  # GitHub scheduled starts may be delayed; results are test-only.
+  schedule:
+    - cron: '0 4 18 10 *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kovo-cup-final-20261018-live-observation.yml'
+      - 'scripts/kovo_cup_final_20261018_monitor.py'
+      - 'tests/test_kovo_cup_final_20261018_monitor.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kovo-cup-final-20261018-observation
+  cancel-in-progress: false
+
+jobs:
+  monitor-one-final-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate event-only scope and clock on schedule
+        id: guard
+        shell: bash
+        run: |
+          TODAY_KST="$(TZ=Asia/Seoul date +%F)"
+          echo "Observed date in Korea: $TODAY_KST"
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" && "$TODAY_KST" == "2026-10-18" ]]; then
+            echo "real_event=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "real_event=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Run offline validation of one-day monitoring
+        run: python -m unittest discover -s tests -p test_kovo_cup_final_20261018_monitor.py -v
+      - name: One-shot preflight on push or manual dispatch
+        if: github.event_name != 'schedule'
+        run: |
+          python scripts/kovo_cup_final_20261018_monitor.py \
+            --root . \
+            --once \
+            --interval 300 \
+            --output data/kovo/match-feed/2026-10-18-final-preflight.jsonl
+      - name: Observe only the official women's final during its game window
+        if: github.event_name == 'schedule' && steps.guard.outputs.real_event == 'true'
+        run: |
+          python scripts/kovo_cup_final_20261018_monitor.py \
+            --root . \
+            --interval 300 \
+            --output data/kovo/match-feed/2026-10-18-final-observations.jsonl
+      - name: Upload read-only observation journal (no website writes)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-cup-20261018-match-only-observations
+          path: |
+            data/kovo/match-feed/2026-10-18-final-observations.jsonl
+            data/kovo/match-feed/2026-10-18-final-preflight.jsonl
+          retention-days: 30
+          if-no-files-found: ignore
+
+# This workflow NEVER writes to production competition JSON or to main.
+# No individual stats. No permission to push. Only confirmed official public
+# schedule responses. Stop after stable final or Korea-local 18:30.
+# Do not treat GitHub Actions cadence as guaranteed live-site refresh.
