@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "purpose": "Public, historical DB BANK access probe only. Not 2026 KOVO Cup match IDs; do not publish.",
+  "purpose": "Public, historical 2025-26 V-League DB BANK access probe of three distinct final set lengths (3, 4, 5); not 2026 KOVO Cup.",
   "matches": [
     {
       "url": "https://dbbank.kovo.co.kr/game/11110_pop_result.asp?PID=gUjNxoTMwIjOyIDM",
@@ -9,6 +9,24 @@
         "home_team": "한국도로공사",
         "away_team": "IBK기업은행",
         "score": "3-1"
+      }
+    },
+    {
+      "url": "https://dbbank.kovo.co.kr/game/11110_pop_result.asp?PID=gcDNxoTMwIjOyIDM",
+      "expect": {
+        "date": "2026-01-11",
+        "home_team": "IBK기업은행",
+        "away_team": "현대건설",
+        "score": "3-2"
+      }
+    },
+    {
+      "url": "https://dbbank.kovo.co.kr/game/11110_pop_result.asp?PID=gUDNyoTMwIjOyIDM",
+      "expect": {
+        "date": "2026-03-14",
+        "home_team": "IBK기업은행",
+        "away_team": "GS칼텍스",
+        "score": "3-0"
       }
     }
   ]
