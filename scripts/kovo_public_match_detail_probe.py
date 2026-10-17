@@ -120,11 +120,14 @@ def main():
         "source_path":urlsplit(url).path,
         "query_keys":sorted(["gcode","seasonCode","leagueCode","gender","round","tcode","acode","gdate"]),
         "http":detail_meta,
+        "capability":"VERIFIED" if response and response.get("result",{}).get("status")==200 else "NOT_VERIFIED",
         "payload_shape":shape(response.get("payload")) if response else None,
         "caution":"Metadata-only; no individual data, no proven live updates"
     }
     print("KOVO_PUBLIC_GAME_DETAIL",json.dumps(summary,ensure_ascii=False))
-    return 0 if response and response.get("result",{}).get("status")==200 else 2
+    # Diagnostic 404 is an observed capability limitation, not a parser failure.
+    # Still stop on explicit authentication or rate-limit denial.
+    return 2 if detail_meta.get("status") in (401,403,429) else 0
 
 if __name__=="__main__":
     try: sys.exit(main())
