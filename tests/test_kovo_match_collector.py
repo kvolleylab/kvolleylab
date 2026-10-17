@@ -54,6 +54,14 @@ class MatchTests(unittest.TestCase):
             with self.subTest(url=url), self.assertRaises(ValueError):
                 collector.validate_url(url)
 
+    def test_player_stat_schema_has_no_personal_values(self):
+        sample = collector.collect_one({"url": URL}, html=HTML)
+        structure = sample["player_stats_structure"]
+        self.assertEqual(structure["candidate_tables"], 1)
+        self.assertEqual(structure["candidates"][0]["player_rows_detected"], 0)
+        self.assertNotIn("모마", str(structure))
+        self.assertNotIn("김종민", str(structure))
+
     def test_login_page_is_not_parsed(self):
         with self.assertRaises(collector.AccessDenied):
             collector.parse_match('<form><input type="password"></form>', URL)
