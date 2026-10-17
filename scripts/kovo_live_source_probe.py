@@ -123,6 +123,8 @@ def route_contexts(js):
     routes = ("/games/v-leagues/schedules", "/games/kovo-cups/schedules",
               "mains/games/schedules", "mains/games/schedules/ended",
               "main/game/season", "main/game/event/list",
+              "/matches/", "/stats/games", "/stat/game-schedule/",
+              "/games/schedules", "/view-point/games",
               "user-api.kovo.co.kr")
     found = []
     for route in routes:
