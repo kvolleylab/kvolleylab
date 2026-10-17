@@ -72,6 +72,15 @@ Valid full sets require 25 points (fifth 15), 2-point winning margin. Set winner
 - Diagnostic source: https://github.com/kvolleylab/kvolleylab/actions/runs/39039566660
 - The independently verified public schedule API and match-only Cup identity bridge remain operational; no false per-set-point or in-play score data were written.
 
+## Scheduled one-event validation — 2026-10-18 women's Cup final
+- **GitHub Actions reservation written to main**: `.github/workflows/kovo-cup-final-20261018-live-observation.yml`. Schedule `0 4 18 10 *` UTC translates to **13:00 KST Oct 18**. The Python script checks the exact Korea-local date **2026-10-18** and skips all other years, so the recurring calendar expression does not collect other editions. GitHub Actions scheduled launch can be delayed or skipped; this is a test, not a guaranteed streaming service.
+- Target official source key `824:002:FEMALE:12` / local `KOVOCUP26-12` / GS칼텍스–한국도로공사, 13:30 KST. Official season, stage, game number, date, gender, team names and local match ID must match before accepting a snapshot.
+- First observation from 13:00 KST (subject to scheduler startup), **every 300 seconds** while the 2026-10-18 Korea-local clock is before 18:30. Actual source calls use verified public KOVO women's schedule endpoint and only consult women's ended endpoint if appropriate; no player stats or within-set points.
+- Store per-poll UTC observation time, status, sets won, current set, source, change marker, and errors in a **job-local JSONL journal**. On completion or failure, upload the journal as a GitHub Actions artifact retained for 30 days. No writes to the homepage or competitions JSON. Source changes to `final` must be seen twice to end automatically; API 401/403/429, conflicts, or 3 repeated source errors halt early.
+- **Preflight completed**: 6 offline tests + real KOVO GET identified the Oct 18 final as `scheduled` and 0–0, logged one source observation. Source log: https://github.com/kvolleylab/kvolleylab/actions/runs/39045016937
+- The separate match-state testing simulation generates example "live/final" transitions, but these are marked synthetic, not observations of the upcoming match.
+- No live website update or 30-second polling yet. This trial measures how `currentSet` and final/provisional cumulative sets change; its results inform a future server-backed service after review of API usage permissions and rate limits.
+
 ## Current blockers
 - Genuine KOVO live per-point feed: NOT VERIFIED
 - Public source automatic match ID discovery: NOT VERIFIED
