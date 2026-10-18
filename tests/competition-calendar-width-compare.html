@@ -34,7 +34,7 @@ footer b{color:#163a61}
 <body>
 <header>
  <h1>K-Volley Lab · 경기일정 너비 비교</h1>
- <p>왼쪽은 홈 기준 최대 1,180px 프로토타입, 오른쪽은 현재 운영 중인 최대 1,440px 달력입니다. 같은 날짜·데이터·화면 폭에서 비교합니다.</p>
+ <p>왼쪽은 홈 기준 최대 1,180px 적용 버전, 오른쪽은 변경 이전의 1,440px 보관본입니다. 같은 날짜·데이터·화면 폭에서 비교합니다.</p>
 </header>
 <main>
  <form class="control" id="settings">
@@ -46,12 +46,12 @@ footer b{color:#163a61}
  </form>
  <section class="comparison" aria-label="달력 비교 화면">
   <article class="panel">
-   <header><div><strong>1,180px · 홈 기준 프로토타입</strong><small>메인카드와 달력 폭 함께 축소 · 실제 데이터</small></div><a data-open="narrow" target="_blank" rel="noopener" href="/competition-calendar-1180-prototype.html?view=year&year=2026">전체 화면 열기 ↗</a></header>
+   <header><div><strong>1,180px · 현재 운영 달력</strong><small>홈과 통일된 운영 페이지 · 실제 데이터</small></div><a data-open="narrow" target="_blank" rel="noopener" href="/competition-calendar.html?view=year&year=2026">전체 화면 열기 ↗</a></header>
    <div class="stats" id="stats-narrow" aria-live="polite">측정 중…</div>
    <div class="stage" id="stage-narrow"><iframe title="1,180px 달력 프로토타입" id="frame-narrow" loading="eager"></iframe></div>
   </article>
   <article class="panel">
-   <header><div><strong>1,440px · 현재 운영 달력</strong><small>기존 운영 너비 · 실제 데이터</small></div><a data-open="wide" target="_blank" rel="noopener" href="/competition-calendar.html?view=year&year=2026">전체 화면 열기 ↗</a></header>
+   <header><div><strong>1,440px · 변경 전 보관본</strong><small>이전 화면 폭 비교용 · 동일 데이터</small></div><a data-open="wide" target="_blank" rel="noopener" href="/competition-calendar-1440-reference.html?view=year&year=2026">전체 화면 열기 ↗</a></header>
    <div class="stats" id="stats-wide" aria-live="polite">측정 중…</div>
    <div class="stage" id="stage-wide"><iframe title="1,440px 운영 달력" id="frame-wide" loading="eager"></iframe></div>
   </article>
@@ -63,7 +63,7 @@ footer b{color:#163a61}
 <script>
 (()=>{
  const form=document.getElementById('settings');
- const panels=[{key:'narrow',url:'/competition-calendar-1180-prototype.html'},{key:'wide',url:'/competition-calendar.html'}];
+ const panels=[{key:'narrow',url:'/competition-calendar.html'},{key:'wide',url:'/competition-calendar-1440-reference.html'}];
  const params=new URLSearchParams(location.search);
  for(const name of ['view','year','month','viewport'])if(params.has(name)&&[...form.elements[name].options].some(o=>o.value===params.get(name)))form.elements[name].value=params.get(name);
  function refresh(){
