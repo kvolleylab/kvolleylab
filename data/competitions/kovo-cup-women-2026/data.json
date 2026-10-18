@@ -1,6 +1,6 @@
 {
-  "status": "active",
-  "stageLabel": "여자부 · 준결승 종료 · 결승 10월 18일",
+  "status": "completed",
+  "stageLabel": "여자부 · GS칼텍스 우승 · 대회 종료",
   "dateLabel": "2026.10.11 ~ 10.18",
   "locationLabel": "대한민국 · 전남 여수",
   "venueLabel": "여수 진남체육관",
@@ -10,9 +10,9 @@
   "groupCount": 2,
   "matchCount": 12,
   "knockoutTeamCount": 4,
-  "upcomingOverviewNote": "준결승 종료 · 결승 GS칼텍스 vs 한국도로공사 · 10월 18일 13:30 KST",
-  "scheduleNote": "한국시간(KST) · 10월 17일까지 조별리그 9경기·준결승 2경기 결과 반영 · 결승 10월 18일 13:30",
-  "standingsNote": "10월 16일 조별리그 최종 순위 · 10월 17일 준결승 결과 별도 반영 · 결승 GS칼텍스–한국도로공사",
+  "upcomingOverviewNote": "대회 종료 · 우승 GS칼텍스 · 준우승 한국도로공사",
+  "scheduleNote": "한국시간(KST) · 여자부 12경기 종료 · 결승 GS칼텍스 3–2 한국도로공사",
+  "standingsNote": "10월 16일 조별리그 최종 순위 · 10월 18일 결승 GS칼텍스 3–2 한국도로공사 · 대회 종료",
   "standingsStatus": "조별리그 최종 순위",
   "standingsRule": "각 조 상위 2팀이 준결승에 진출합니다.",
   "meaning": {
@@ -527,7 +527,44 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:30 KST",
-      "bracketLabel": "FINAL"
+      "bracketLabel": "FINAL",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 15,
+            "away": 5
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-18",
+        "sourceType": "KOVO official API final sets + independent news set points",
+        "sources": [
+          "https://www.news1.kr/sports/volleyball/6323685",
+          "https://www.seoul.co.kr/news/sport/volleyball/2026/10/18/20261018500118",
+          "https://www.thesportstimes.co.kr/news/articleView.html?idxno=376661"
+        ],
+        "note": "Newsis article reports first set 25-22, conflicting with News1, Seoul Shinmun, and SportsTimes 25-23; used cross-checked 25-23."
+      }
     }
   ],
   "standings": {
@@ -637,7 +674,22 @@
       }
     ]
   },
-  "finalRanking": [],
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "GSC",
+      "team": "GS칼텍스",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "KEX",
+      "team": "한국도로공사",
+      "result": "준우승",
+      "confirmed": true
+    }
+  ],
   "qualifications": [],
   "resources": [
     {
@@ -647,6 +699,10 @@
     {
       "title": "여수시 2026 KOVO컵 개최 안내",
       "url": "https://m.yeosu.go.kr/tour/information/news/tour_news?idx=15928&mode=view"
+    },
+    {
+      "title": "2026 여자부 결승 결과 · 뉴스1",
+      "url": "https://www.news1.kr/sports/volleyball/6323685"
     }
   ],
   "resourcesNote": "공식 일정과 개최지 자료를 연결합니다.",
@@ -662,5 +718,5 @@
       "note": "단판 토너먼트"
     }
   },
-  "activeOverviewNote": "준결승 종료 · GS칼텍스 3–2 흥국생명, 한국도로공사 3–0 IBK기업은행 · 10월 18일 GS칼텍스–한국도로공사 결승"
+  "activeOverviewNote": "대회 종료 · 결승 GS칼텍스 3–2 한국도로공사 · 우승 GS칼텍스"
 }
