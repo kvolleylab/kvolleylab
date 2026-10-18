@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>배구 대회 통합 달력 · 1440px 이전 디자인 비교용 | K-Volley Lab</title>
+  <meta name="description" content="국내·국제 배구 대회 일정과 결과를 한눈에 확인하세요.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/site-theme-light.css?v=20260722-2">
+  <link rel="stylesheet" href="assets/css/competition-calendar-v2.css?v=20260722-10">
+  <link rel="stylesheet" href="assets/css/competition-calendar-wide-layout.css?v=20260722-1">
+  <link rel="stylesheet" href="assets/css/competition-calendar-share-white.css?v=20260722-1">
+  <link rel="stylesheet" href="assets/css/competition-calendar-sticky.css?v=20260725-3">
+  <link rel="stylesheet" href="assets/css/competition-calendar-details.css?v=20260725-1">
+  <script>document.documentElement.classList.add('kvl-sidebar-shell-ready');try{document.documentElement.classList.toggle('kvl-sidebar-pref-collapsed',localStorage.getItem('kvl.sidebarCollapsed.v1')==='1')}catch{}</script>
+  <link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css?v=20260722-9">
+  <script src="assets/js/unified-nav.js?v=20260724-2" defer></script>
+  <script src="assets/js/kvl-global-sidebar-v1.js?v=20260724-2" defer></script>
+  <script src="assets/js/competition-calendar-v2.js?v=20260921-world-events-1" defer></script>
+  <script src="assets/js/competition-calendar-details.js?v=20260921-world-events-1" defer></script>
+
+  <style>
+    /* Calendar Hero production · promoted from Work prototype 2026-10-18.
+       Existing calendar renderer, data, cards and shared navigation stay intact.
+       Reuses approved home PC/mobile artwork with the Hero contain contract. */
+    .cc-calendar-live .cc-main{padding-top:0}
+    .cc-calendar-hero{position:relative;min-height:226px;margin:0 0 16px;padding:38px 36px;border-radius:0 0 24px 24px;border-bottom:3px solid #327bbd;background:#07182d url('assets/img/home-hero/kvl-home-hero-pc-v01.webp?v=20261015-home-hero-v01') right center/contain no-repeat;box-shadow:0 10px 26px rgba(16,44,73,.10);color:#fff;isolation:isolate}
+    .cc-calendar-hero .cc-eyebrow{margin:0 0 16px;color:#80c8f7;font-size:11px;line-height:1.5;letter-spacing:.17em}
+    .cc-calendar-hero h1{margin:0;color:#fff!important;font-size:38px!important;font-weight:800;line-height:1.25;letter-spacing:-.04em!important;word-break:keep-all}
+    .cc-calendar-hero .cc-hero-description{max-width:510px;margin:14px 0 0;color:#d8e6f3;font-size:15px;line-height:1.65;word-break:keep-all}
+    .cc-calendar-live .cc-sticky-header{padding:14px;box-shadow:0 4px 16px rgba(15,35,63,.05)}
+    .cc-calendar-live .cc-top{align-items:center;gap:12px;margin-bottom:12px}
+    .cc-calendar-live .cc-top h2{margin:0;font-size:18px;line-height:1.4;color:#10233f}
+    .cc-calendar-live .cc-view-switch{flex-shrink:0}
+    .cc-calendar-live .cc-sticky-header .cc-toolbar{flex-wrap:wrap}
+    .cc-calendar-live .cc-toolbar-left{flex-shrink:0;max-width:100%}
+    .cc-calendar-live .cc-today-btn,.cc-calendar-live .cc-share-btn{white-space:nowrap}
+    .cc-mobile-brand{display:none}
+    @media(max-width:900px){
+      .cc-mobile-brand{position:fixed;inset:0 0 auto;z-index:130;display:flex;height:58px;align-items:center;justify-content:flex-end;padding:0 18px;background:#fff;border-bottom:1px solid #dbe3ed}
+      .cc-mobile-brand a{color:#102c49;text-decoration:none;font-size:14px;font-weight:800;letter-spacing:.04em}
+      .cc-calendar-live .cc-sticky-header{top:66px}
+    }
+    @media(max-width:680px){
+      .cc-calendar-live .cc-main{padding-top:0}
+      .cc-calendar-hero{min-height:192px;margin-bottom:12px;padding:26px 18px;border-radius:0 0 20px 20px;background-image:url('assets/img/home-hero/kvl-home-hero-mobile-v01.webp?v=20261015-home-hero-v01');background-position:right bottom}
+      .cc-calendar-hero .cc-eyebrow{max-width:100%;margin-bottom:13px;font-size:9px;letter-spacing:.1em}
+      .cc-calendar-hero h1{font-size:27px!important}
+      .cc-calendar-hero .cc-hero-description{max-width:260px;margin-top:12px;font-size:13px;line-height:1.6;text-wrap:pretty}
+      .cc-calendar-live .cc-sticky-header{padding:12px;max-height:calc(100dvh - 74px)}
+      .cc-calendar-live .cc-sticky-header .cc-top{flex-direction:row;align-items:center;flex-wrap:wrap}
+      .cc-calendar-live .cc-top h2{font-size:16px}
+      .cc-calendar-live .cc-view-switch{width:auto;gap:6px}
+      .cc-calendar-live .cc-view-switch a{padding:8px 10px;font-size:11px;white-space:nowrap}
+      .cc-calendar-live .cc-sticky-header .cc-toolbar{gap:12px;padding:10px}
+      .cc-calendar-live .cc-toolbar-left{gap:8px}
+      .cc-calendar-live .cc-year-nav{gap:6px}
+      .cc-calendar-live .cc-year-nav strong{min-width:72px;font-size:18px}
+      .cc-calendar-live .cc-year-nav a{width:30px;height:32px}
+      .cc-calendar-live .cc-today-btn,.cc-calendar-live .cc-share-btn{height:32px;padding:0 9px;font-size:11px}
+      .cc-calendar-live .cc-filters{gap:6px}
+      .cc-calendar-live .cc-filter{padding:7px 9px;font-size:11px}
+      /* Fit the existing Monday–Sunday calendar grid to mobile screens. */
+      .cc-calendar-live .cc-big-weekdays,.cc-calendar-live .cc-big-calendar-layer{min-width:0}
+      .cc-calendar-live .cc-big-date-cell span{padding-left:6px;padding-right:6px}
+      .cc-calendar-live .cc-big-period{padding-left:4px;padding-right:4px}
+    }
+    @media(max-width:374px){.cc-calendar-hero h1{font-size:25px!important}.cc-calendar-live .cc-top h2{font-size:14px}}
+  </style>
+</head>
+<body class="competition-calendar-page cc-calendar-live">
+  <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+  <div class="cc-mobile-brand"><a href="index.html" aria-label="K-Volley Lab 홈">K-VOLLEY LAB</a></div>
+  <main class="cc-main">
+    <section class="cc-calendar-hero" aria-labelledby="ccCalendarTitle">
+      <p class="cc-eyebrow">VOLLEYBALL COMPETITION CALENDAR</p>
+      <h1 id="ccCalendarTitle">배구 대회 통합 달력</h1>
+      <p class="cc-hero-description">국내·국제 배구 대회 일정과 결과를 한눈에 확인하세요.</p>
+    </section>
+    <div class="cc-sticky-header">
+      <div class="cc-top">
+        <h2 id="ccCalendarHeading">대회 일정</h2>
+        <div class="cc-view-switch">
+          <a data-view="year" href="competition-calendar-1440-reference.html?view=year&year=2026">연간 보기</a>
+          <a data-view="month" href="competition-calendar-1440-reference.html?view=month&year=2026&month=7">월간 보기</a>
+        </div>
+      </div>
+      <div id="competitionCalendarControls"></div>
+    </div>
+    <div id="competitionCalendar"><div class="cc-empty">대회 달력을 불러오는 중입니다.</div></div>
+  </main>
+  <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+  <script>
+  (()=>{
+    // Keep the live calendar renderer and enhance accessible control states.
+    const main=document.querySelector('.cc-main');
+    const root=document.getElementById('competitionCalendar');
+    const controls=document.getElementById('competitionCalendarControls');
+    const heading=document.getElementById('ccCalendarHeading');
+    let firstRender=true;
+    function connect(){
+      // Keep calendar controls on the 1440px historical reference when navigating.
+      main.querySelectorAll('a[href]').forEach(a=>{
+        const raw=a.getAttribute('href');
+        if(!raw)return;
+        let url;
+        try{url=new URL(raw,location.href)}catch{return}
+        if(url.origin===location.origin&&url.pathname==='/competition-calendar.html'){
+          url.pathname='/competition-calendar-1440-reference.html';
+          const next=url.pathname+url.search+url.hash;
+          if(raw!==next)a.setAttribute('href',next);
+        }
+      });
+      const year=controls.querySelector('.cc-year-nav strong')?.textContent;
+      const text=year?year+' 대회 일정':'대회 일정';
+      if(heading.textContent!==text)heading.textContent=text;
+      main.querySelectorAll('.cc-view-switch a').forEach(a=>{
+        if(a.classList.contains('active'))a.setAttribute('aria-current','page');
+        else a.removeAttribute('aria-current');
+      });
+      controls.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.classList.contains('active'))));
+      // Present the new Hero on first entry instead of the legacy renderer's
+      // automatic jump to the current month. Later filter behavior is retained.
+      if(firstRender&&root.querySelector('.cc-year-grid,.cc-month-layout,.cc-data-error')){
+        firstRender=false;
+        requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          if(!location.hash)window.scrollTo({top:0,behavior:'instant'});
+        })));
+      }
+    }
+    const observer=new MutationObserver(connect);
+    observer.observe(root,{childList:true,subtree:true});
+    observer.observe(controls,{childList:true,subtree:true});
+    connect();
+    addEventListener('DOMContentLoaded',()=>{
+      const schedule=document.querySelector('.kvl-global-nav a[href^="competition-calendar.html"]');
+      if(schedule){schedule.classList.add('active');schedule.setAttribute('aria-current','page')}
+    },{once:true});
+  })();
+  </script>
+</body>
+</html>
