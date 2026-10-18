@@ -68,9 +68,62 @@
       .cc-calendar-live .cc-big-period{padding-left:4px;padding-right:4px}
     }
     @media(max-width:374px){.cc-calendar-hero h1{font-size:25px!important}.cc-calendar-live .cc-top h2{font-size:14px}}
+    /* Home visual parity: same 1180px shell, Hero geometry, and connected controls.
+       Promoted to calendar production 2026-10-18; unchanged calendar renderer and real data. */
+    body.cc-calendar-homehero .cc-main{max-width:1180px;padding:0 0 64px}
+    body.cc-calendar-homehero .cc-calendar-hero{
+      min-height:318px;margin:0;padding:34px 46px 14px;
+      border:0;border-radius:0;
+      background-size:cover;box-shadow:none;
+    }
+    body.cc-calendar-homehero .cc-calendar-hero .cc-eyebrow{
+      margin:0 0 12px;color:#9ee7f1;font-size:10px;
+      font-weight:650;line-height:1.5;letter-spacing:3.4px;
+    }
+    body.cc-calendar-homehero .cc-calendar-hero h1{
+      margin:12px 0;max-width:650px;font-size:44px!important;
+      font-weight:850;line-height:1.17;text-shadow:0 2px 12px #00112640;
+    }
+    body.cc-calendar-homehero .cc-calendar-hero .cc-hero-description{
+      margin:0 0 18px;color:#e7f0f7;font-size:15px;line-height:1.5;
+    }
+    body.cc-calendar-homehero .cc-sticky-header{
+      margin:0 0 14px;padding:16px 20px;border-top:0;
+      border-radius:0 0 12px 12px;background:#fff;
+      box-shadow:0 6px 20px #193f6410;
+    }
+    body.cc-calendar-homehero .cc-sticky-header::before{display:none}
+    body.cc-calendar-homehero #competitionCalendar{padding:22px 24px 0}
+    @media(max-width:1200px){
+      body.cc-calendar-homehero .cc-main{margin:0 14px}
+      body.cc-calendar-homehero .cc-calendar-hero{padding-left:34px;padding-right:34px}
+      body.cc-calendar-homehero .cc-calendar-hero h1{font-size:40px!important}
+    }
+    @media(max-width:900px){body.cc-calendar-homehero .cc-main{margin:0 auto}}
+    @media(max-width:680px){
+      body.cc-calendar-homehero .cc-main{padding:0 0 48px}
+      body.cc-calendar-homehero .cc-calendar-hero{
+        min-height:264px;padding:27px 24px 22px;background-position:right center;
+      }
+      body.cc-calendar-homehero .cc-calendar-hero .cc-eyebrow{display:none}
+      body.cc-calendar-homehero .cc-calendar-hero h1{
+        margin:0 0 10px;font-size:30px!important;line-height:1.18;
+      }
+      body.cc-calendar-homehero .cc-calendar-hero .cc-hero-description{
+        max-width:none;font-size:12px;line-height:1.6;margin-bottom:15px;
+      }
+      body.cc-calendar-homehero .cc-sticky-header{
+        padding:12px;border-radius:0 0 12px 12px;max-height:calc(100dvh - 74px);
+      }
+      body.cc-calendar-homehero #competitionCalendar{padding:18px 10px 0}
+    }
+    @media(max-width:370px){
+      body.cc-calendar-homehero .cc-calendar-hero{padding-left:20px;padding-right:20px}
+      body.cc-calendar-homehero .cc-calendar-hero h1{font-size:28px!important}
+    }
   </style>
 </head>
-<body class="competition-calendar-page cc-calendar-live">
+<body class="competition-calendar-page cc-calendar-live cc-calendar-homehero">
   <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
   <div class="cc-mobile-brand"><a href="index.html" aria-label="K-Volley Lab 홈">K-VOLLEY LAB</a></div>
   <main class="cc-main">
