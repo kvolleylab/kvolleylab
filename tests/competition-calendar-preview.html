@@ -14,7 +14,7 @@ body{margin:0;background:#edf1f5;color:#163047;font:13px Arial,sans-serif}form{d
 <label>월 <select name="month"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option selected>10</option><option>11</option><option>12</option></select></label>
 <label><input type="checkbox" name="full">전체 높이</label><button>확인</button>
 </form>
-<iframe id="preview" title="실제 배포된 달력"></iframe>
+<div id="stage"><iframe id="preview" title="실제 배포된 달력"></iframe></div>
 <details><summary>검수 측정값</summary><pre id="result">불러오는 중</pre></details>
 <script>
 const form=document.getElementById('controls'),frame=document.getElementById('preview'),result=document.getElementById('result');
@@ -27,7 +27,7 @@ function load(){
  const width=form.elements.width.value;
  if(!widths.includes(width))return;
  frame.style.width=width+'px';frame.style.height='850px';
- const query=new URLSearchParams({view:form.elements.view.value,year:'2026',month:form.elements.month.value,v:'20261018-calendar-prototype-v01'});
+ const query=new URLSearchParams({view:form.elements.view.value,year:'2026',month:form.elements.month.value,v:'20261018-calendar-prototype-v02'});
  frame.src='/competition-calendar'+(form.elements.page.value==='prototype'?'-prototype':'')+'.html?'+query;
  result.textContent='불러오는 중';
 }
@@ -50,6 +50,14 @@ frame.onload=async()=>{
  }
  const report={url:win.location.href,width:win.innerWidth,height:win.innerHeight,main:rect('main'),hero:rect('.cc-calendar-hero'),heroCorners:style?[style.borderTopLeftRadius,style.borderTopRightRadius,style.borderBottomRightRadius,style.borderBottomLeftRadius]:null,artwork,controls:rect('.cc-sticky-header'),heroGap:hero?rect('.cc-sticky-header').y-rect('.cc-calendar-hero').y-rect('.cc-calendar-hero').height:null,titleFont:hero?win.getComputedStyle(hero.querySelector('h1')).fontSize:null,monthCards:doc.querySelectorAll('.cc-month-card').length,yearColumns:doc.querySelector('.cc-year-grid')?win.getComputedStyle(doc.querySelector('.cc-year-grid')).gridTemplateColumns:null,monthWeekdays:doc.querySelector('.cc-big-weekdays')?.innerText,monthlyCalendar:rect('.cc-big-calendar'),monthlyCanvas:rect('.cc-big-calendar-layer'),dateCells:doc.querySelectorAll('.cc-date-cell,.cc-big-date-cell').length,bars:[...doc.querySelectorAll('.cc-period-bar,.cc-big-period')].map(a=>({label:a.getAttribute('aria-label'),href:a.getAttribute('href'),style:a.getAttribute('style')})),sidebarCount:doc.querySelectorAll('.kvl-global-sidebar').length,filters:[...doc.querySelectorAll('[data-filter]')].map(b=>({id:b.dataset.filter,text:b.textContent})),horizontalOverflow:doc.documentElement.scrollWidth>win.innerWidth,calendarOverflow:doc.querySelector('.cc-big-calendar')?doc.querySelector('.cc-big-calendar').scrollWidth>doc.querySelector('.cc-big-calendar').clientWidth:false,calendarLinks:[...doc.querySelectorAll('main a[href*="competition-calendar"]')].map(a=>a.getAttribute('href')),brokenImages:[...doc.images].filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src)};
  result.textContent=JSON.stringify(report,null,2);
+ // Optional whole-page overview: scale only the outside frame, preserving the
+ // real page viewport and layout. No CSS or replacement DOM enters the page.
+ if(params.get('fit')==='1'&&form.elements.full.checked){
+  const scale=Math.min(1,innerWidth/win.innerWidth,(innerHeight-2)/frame.offsetHeight);
+  frame.style.transformOrigin='top left';frame.style.transform='scale('+scale+')';
+  const stage=document.getElementById('stage');stage.style.width=(frame.offsetWidth*scale)+'px';stage.style.height=(frame.offsetHeight*scale)+'px';stage.style.overflow='hidden';
+ }
+
 };
 load();
 </script>
