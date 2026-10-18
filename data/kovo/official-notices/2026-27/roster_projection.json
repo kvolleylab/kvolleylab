@@ -65,6 +65,22 @@
       "total_krw": 300000000
     },
     {
+      "contract_source": "",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/157694",
+      "last_status": "foreign_or_asian_quota",
+      "latest_change_date": "2026-10-17",
+      "name": "타루샤 차메스",
+      "number": "5",
+      "option_krw": null,
+      "position": "아웃사이드히터",
+      "registration_source": "https://kovo.co.kr/news/official-notices/157694",
+      "salary_date": "",
+      "salary_krw": null,
+      "team": "KB손해보험",
+      "total_krw": null
+    },
+    {
       "contract_source": "https://kovo.co.kr/news/official-notices/155580",
       "gender": "남",
       "last_change_source": "https://kovo.co.kr/news/official-notices/155580",
@@ -175,6 +191,22 @@
       "salary_krw": 40000000,
       "team": "KB손해보험",
       "total_krw": 50000000
+    },
+    {
+      "contract_source": "",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/157693",
+      "last_status": "foreign_or_asian_quota",
+      "latest_change_date": "2026-10-17",
+      "name": "리누스 베버",
+      "number": "20",
+      "option_krw": null,
+      "position": "아포짓",
+      "registration_source": "https://kovo.co.kr/news/official-notices/157693",
+      "salary_date": "",
+      "salary_krw": null,
+      "team": "KB손해보험",
+      "total_krw": null
     },
     {
       "contract_source": "https://kovo.co.kr/news/official-notices/155580",
@@ -1423,6 +1455,38 @@
       "salary_krw": 110000000,
       "team": "우리카드",
       "total_krw": 132000000
+    },
+    {
+      "contract_source": "",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/157683",
+      "last_status": "foreign_or_asian_quota",
+      "latest_change_date": "2026-10-16",
+      "name": "하파엘 아라우조",
+      "number": "20",
+      "option_krw": null,
+      "position": "아포짓",
+      "registration_source": "https://kovo.co.kr/news/official-notices/157683",
+      "salary_date": "",
+      "salary_krw": null,
+      "team": "우리카드",
+      "total_krw": null
+    },
+    {
+      "contract_source": "",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/157684",
+      "last_status": "foreign_or_asian_quota",
+      "latest_change_date": "2026-10-16",
+      "name": "마틴 아흐마디",
+      "number": "22",
+      "option_krw": null,
+      "position": "미들블로커",
+      "registration_source": "https://kovo.co.kr/news/official-notices/157684",
+      "salary_date": "",
+      "salary_krw": null,
+      "team": "우리카드",
+      "total_krw": null
     },
     {
       "contract_source": "https://kovo.co.kr/news/official-notices/155579",
@@ -4019,10 +4083,23 @@
       "157635-01",
       "157636-01",
       "157637-01",
-      "157638-01"
+      "157638-01",
+      "157683-01",
+      "157684-01",
+      "157693-01",
+      "157694-01"
     ],
-    "applied_events": 49,
-    "blocked_events": [],
+    "applied_events": 53,
+    "blocked_events": [
+      {
+        "event_id": "157686-01",
+        "kind": "position_change",
+        "name": "김영태 (수련선수)",
+        "notice_id": 157686,
+        "reason": "change_target_not_found",
+        "source_url": "https://kovo.co.kr/news/official-notices/157686"
+      }
+    ],
     "prior_season_events_ignored": 31,
     "salary_mismatches": [],
     "same_name_multi_team": [
@@ -4091,7 +4168,7 @@
       {
         "gender": "남",
         "team": "KB손해보험",
-        "total": 17
+        "total": 19
       },
       {
         "gender": "남",
@@ -4111,7 +4188,7 @@
       {
         "gender": "남",
         "team": "우리카드",
-        "total": 18
+        "total": 20
       },
       {
         "gender": "남",
@@ -4159,7 +4236,7 @@
         "total": 20
       }
     ],
-    "total": 248,
+    "total": 252,
     "warnings": [
       {
         "name": "이다현",
