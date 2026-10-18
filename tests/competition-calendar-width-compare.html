@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>통합 달력 1180px / 1440px 나란히 비교 | K-Volley Lab</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f7fb;color:#142b47;font:14px Arial,sans-serif}
+header{padding:24px max(18px,3vw) 16px;background:#fff;border-bottom:1px solid #dce6ef}
+h1{margin:0 0 8px;font-size:clamp(22px,2.4vw,30px);letter-spacing:-.04em}
+p{margin:0;line-height:1.6;color:#52677e}
+main{max-width:1700px;margin:0 auto;padding:20px clamp(12px,2vw,30px) 56px}
+.control{display:flex;align-items:center;gap:13px;flex-wrap:wrap;padding:16px 18px;background:#fff;border:1px solid #dce6ef;border-radius:12px;margin-bottom:18px}
+.control label{display:flex;align-items:center;gap:7px;color:#52677e;font-size:13px;font-weight:700}
+.control select,.control button{font:inherit;padding:9px 11px;border-radius:8px;border:1px solid #cbd9e7;background:#fff;color:#183657}
+.control button{background:#0d3d70;color:#fff;border-color:#0d3d70;cursor:pointer}
+.comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.panel{min-width:0;background:#fff;border:1px solid #dce6ef;border-radius:14px;overflow:hidden}
+.panel header{display:flex;align-items:start;justify-content:space-between;gap:10px;padding:14px 16px;background:#f9fbfd}
+.panel strong{display:block;font-size:18px;color:#102842}
+.panel small{display:block;margin-top:5px;color:#5b718a;font-size:11px}
+.panel header a{font-size:12px;color:#0063a9;font-weight:700;text-decoration:none;white-space:nowrap}
+.stats{display:flex;flex-wrap:wrap;gap:8px;padding:10px 15px 14px;border-bottom:1px solid #e8eef4;font-size:12px;color:#315476;min-height:42px}
+.stat{padding:5px 9px;background:#edf4fa;border-radius:6px}
+.stage{position:relative;margin:0;width:100%;min-height:230px;background:#f1f5f8;overflow:hidden}
+.stage iframe{position:absolute;top:0;left:0;transform-origin:top left;border:0;background:#fff}
+footer{margin-top:18px;padding:18px;background:#fff;border:1px solid #dce6ef;border-radius:12px;font-size:13px;line-height:1.7;color:#52677e}
+footer b{color:#163a61}
+@media(max-width:760px){.comparison{grid-template-columns:1fr}.panel header{flex-wrap:wrap}.control{gap:9px}}
+</style>
+</head>
+<body>
+<header>
+ <h1>K-Volley Lab · 경기일정 너비 비교</h1>
+ <p>왼쪽은 홈 기준 최대 1,180px 프로토타입, 오른쪽은 현재 운영 중인 최대 1,440px 달력입니다. 같은 날짜·데이터·화면 폭에서 비교합니다.</p>
+</header>
+<main>
+ <form class="control" id="settings">
+  <label>보기 <select name="view"><option value="year">연간</option><option value="month">월간</option></select></label>
+  <label>연도 <select name="year"><option>2026</option><option>2027</option></select></label>
+  <label>월 <select name="month"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option selected>10</option><option>11</option><option>12</option></select></label>
+  <label>브라우저 가상 폭 <select name="viewport"><option>1920</option><option>1720</option><option>1440</option><option>1180</option><option>768</option><option>390</option></select></label>
+  <button type="submit">비교 적용</button>
+ </form>
+ <section class="comparison" aria-label="달력 비교 화면">
+  <article class="panel">
+   <header><div><strong>1,180px · 홈 기준 프로토타입</strong><small>메인카드와 달력 폭 함께 축소 · 실제 데이터</small></div><a data-open="narrow" target="_blank" rel="noopener" href="/competition-calendar-1180-prototype.html?view=year&year=2026">전체 화면 열기 ↗</a></header>
+   <div class="stats" id="stats-narrow" aria-live="polite">측정 중…</div>
+   <div class="stage" id="stage-narrow"><iframe title="1,180px 달력 프로토타입" id="frame-narrow" loading="eager"></iframe></div>
+  </article>
+  <article class="panel">
+   <header><div><strong>1,440px · 현재 운영 달력</strong><small>기존 운영 너비 · 실제 데이터</small></div><a data-open="wide" target="_blank" rel="noopener" href="/competition-calendar.html?view=year&year=2026">전체 화면 열기 ↗</a></header>
+   <div class="stats" id="stats-wide" aria-live="polite">측정 중…</div>
+   <div class="stage" id="stage-wide"><iframe title="1,440px 운영 달력" id="frame-wide" loading="eager"></iframe></div>
+  </article>
+ </section>
+ <footer><b>판단 기준:</b> 가로폭이 좁아질수록 홈과의 시각적 일관성은 높아지지만, 3열 연간 미니달력과 월간 7열 일정의 표시 공간은 줄어듭니다.
+ 실제 측정된 달력 폭·그리드 열 수·가로 넘침을 확인하고 선택하세요. 모바일에서는 동일한 반응형 배치를 유지합니다.
+ 운영 페이지는 이 비교 도구에서 변경되지 않습니다.</footer>
+</main>
+<script>
+(()=>{
+ const form=document.getElementById('settings');
+ const panels=[{key:'narrow',url:'/competition-calendar-1180-prototype.html'},{key:'wide',url:'/competition-calendar.html'}];
+ const params=new URLSearchParams(location.search);
+ for(const name of ['view','year','month','viewport'])if(params.has(name)&&[...form.elements[name].options].some(o=>o.value===params.get(name)))form.elements[name].value=params.get(name);
+ function refresh(){
+  const view=form.elements.view.value,year=form.elements.year.value,month=form.elements.month.value;
+  const viewport=Number(form.elements.viewport.value);
+  const search='?'+new URLSearchParams({view,year,...(view==='month'?{month}:{}),compare:'1'});
+  history.replaceState(null,'',location.pathname+'?'+new URLSearchParams({view,year,month,viewport}));
+  for(const panel of panels){
+   const stage=document.getElementById('stage-'+panel.key);
+   const frame=document.getElementById('frame-'+panel.key);
+   const link=document.querySelector('[data-open="'+panel.key+'"]');
+   link.href=panel.url+search;
+   const scale=Math.min(1,stage.clientWidth/viewport);
+   frame.style.width=viewport+'px';
+   frame.style.height='1400px';
+   frame.style.transform='scale('+scale+')';
+   stage.style.height=Math.ceil(1400*scale)+'px';
+   const stats=document.getElementById('stats-'+panel.key);
+   stats.textContent='데이터 로딩 및 실제 CSS 측정 중…';
+   frame.onload=()=>inspect(frame,stats,panel.key,viewport);
+   frame.src=panel.url+search;
+  }
+ }
+ function inspect(frame,stats,key,viewport){
+  let doc,win;
+  try{doc=frame.contentDocument;win=frame.contentWindow;if(!doc||!win)throw Error('프레임 접근 불가')}
+  catch{stats.textContent='프레임 측정 불가 · 전체 화면에서 확인';return}
+  let tries=0;
+  const timer=setInterval(()=>{
+   if(!frame.isConnected){clearInterval(timer);return}
+   if(!doc.querySelector('.cc-year-grid,.cc-month-layout,.cc-data-error')&&tries++<35)return;
+   clearInterval(timer);
+   const rect=selector=>Math.round(doc.querySelector(selector)?.getBoundingClientRect().width||0);
+   const year=doc.querySelector('.cc-year-grid');
+   const columns=year?win.getComputedStyle(year).gridTemplateColumns.split(' ').filter(Boolean).length:null;
+   const events=doc.querySelectorAll('.cc-period-bar,.cc-big-period').length;
+   const overflow=doc.documentElement.scrollWidth>viewport;
+   const values=[
+    ['전체',rect('.cc-main')+'px'],
+    ['Hero',rect('.cc-calendar-hero')+'px'],
+    ['월별 카드',year?columns+'열': '월간 7열'],
+    ['표시 일정',events+'개'],
+    ['가로 넘침',overflow?'있음':'없음']
+   ];
+   stats.innerHTML='';
+   for(const [title,val] of values){
+    const span=document.createElement('span');span.className='stat';span.textContent=title+' '+val;stats.append(span);
+   }
+  },200);
+ }
+ form.addEventListener('submit',e=>{e.preventDefault();refresh()});
+ addEventListener('resize',()=>{for(const panel of panels){const st=document.getElementById('stage-'+panel.key),frame=document.getElementById('frame-'+panel.key);const s=Math.min(1,st.clientWidth/Number(form.elements.viewport.value));frame.style.transform='scale('+s+')';st.style.height=Math.ceil(1400*s)+'px'}})
+ refresh();
+})();
+</script>
+</body>
+</html>
