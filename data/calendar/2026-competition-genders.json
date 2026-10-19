@@ -1,0 +1,198 @@
+{
+  "year": 2026,
+  "updated_at": "2026-10-19",
+  "schema": "calendar-genders-v1",
+  "notes": "Gender of a competition's participating divisions, not individual match dates. Mixed events appear once in All and once each in Men/Women. Future data imports must update this map for new events; uncovered events remain in All only and are visibly flagged.",
+  "events": {
+    "spring-middle-high-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://mobile.maniareport.com/list.php?ct=g1602&nmd=1&pg=14",
+      "kind": "mixed-competition"
+    },
+    "middle-high-first-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://v.daum.net/v/7H91Diu5gr",
+      "kind": "mixed-competition"
+    },
+    "vnl-women-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "middle-high-second-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://v.daum.net/v/20260604140303299",
+      "kind": "mixed-competition"
+    },
+    "vnl-men-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "goseong-university-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://www.kuvf.co.kr/",
+      "kind": "mixed-competition"
+    },
+    "presidents-cup-middle-high-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://result.sports.or.kr/VB/INF101.do",
+      "kind": "mixed-competition"
+    },
+    "ibk-middle-high-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://www.hankyung.com/article/202607318089P",
+      "kind": "mixed-competition"
+    },
+    "east-asian-men-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "girls-u17-world-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "danyang-university-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://www.kuvf.co.kr/",
+      "kind": "mixed-competition"
+    },
+    "norceca-women-continental-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "avc-women-continental-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "cev-women-continental-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "cavb-women-continental-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "west-japan-university-men-selection-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "cbs-middle-high-2026": {
+      "genders": [
+        "men",
+        "women"
+      ],
+      "evidence": "https://volleyball.cbs.co.kr/",
+      "kind": "mixed-competition"
+    },
+    "korea-bahrain-men-friendlies-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "avc-men-continental-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "cavb-men-continental-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "csv-women-continental-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "cev-men-continental-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "norceca-men-continental-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "csv-men-continental-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "asian-games-women-volleyball-2026": {
+      "genders": [
+        "women"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    },
+    "asian-games-men-volleyball-2026": {
+      "genders": [
+        "men"
+      ],
+      "evidence": "calendar-title",
+      "kind": "single-gender"
+    }
+  }
+}
