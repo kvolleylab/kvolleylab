@@ -34,7 +34,9 @@ async function mount(query='',mapReady=true){
     querySelectorAll(){return[]},
     querySelector(){return null}
   };
-  let currentUrl='https://kvolleylab.com/competition-calendar-gender-prototype.html?view=year&year=2026'+query;
+  const queryParams=new URLSearchParams('view=year&year=2026');
+  for(const [key,value] of new URLSearchParams(query.replace(/^&/,'')))queryParams.set(key,value);
+  let currentUrl='https://kvolleylab.com/competition-calendar-gender-prototype.html?'+queryParams;
   const location={href:currentUrl,pathname:'/competition-calendar-gender-prototype.html',search:new URL(currentUrl).search};
   const history={replaceState(a,b,url){currentUrl=String(url);location.href=currentUrl}};
   const window={matchMedia:()=>({matches:false}),addEventListener(){},scrollTo(){}};
