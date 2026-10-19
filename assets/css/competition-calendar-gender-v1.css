@@ -1,0 +1,37 @@
+/* K-Volley Lab unified calendar · gender filter (2026-10-19)
+ * Small, scoped enhancement to existing annual/month layouts.
+ * Preserve K-Volley Lab's 1180px Home shell and established category palette. */
+.competition-calendar-page .cc-gender-toolbar{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:9px 18px;padding:0 0 12px;margin-bottom:12px;
+  border-bottom:1px solid #e2e9f2;min-width:0;
+}
+.competition-calendar-page .cc-gender-options{
+  display:inline-flex;align-items:stretch;padding:3px;
+  border:1px solid #cad7e5;background:#f2f6fb;border-radius:11px;gap:2px;
+}
+.competition-calendar-page .cc-gender-option{
+  min-height:36px;min-width:72px;border:1px solid transparent;border-radius:8px;
+  background:transparent;padding:7px 16px;color:#496078;
+  font:700 13px/1.25 Arial,sans-serif;cursor:pointer;white-space:nowrap;
+  transition:background-color .12s,border-color .12s,color .12s;
+}
+.competition-calendar-page .cc-gender-option:hover{background:#e4edf7;color:#10233f}
+.competition-calendar-page .cc-gender-option.active,
+.competition-calendar-page .cc-gender-option[aria-pressed="true"]{
+  background:#102c4e;border-color:#102c4e;color:#fff;
+  box-shadow:0 2px 5px rgba(12,39,71,.14);
+}
+.competition-calendar-page .cc-gender-option:focus-visible{outline:3px solid #57b8e8;outline-offset:2px}
+.competition-calendar-page .cc-gender-explainer{
+  flex:1 1 210px;color:#6a7d92;font-size:11px;line-height:1.55;
+}
+.competition-calendar-page .cc-gender-unavailable{
+  color:#8a5b14;font-weight:600;font-size:12px;
+}
+@media(max-width:680px){
+  .competition-calendar-page .cc-gender-toolbar{align-items:flex-start;gap:6px;margin-bottom:9px;padding-bottom:9px}
+  .competition-calendar-page .cc-gender-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+  .competition-calendar-page .cc-gender-option{min-width:0;min-height:35px;padding:7px 6px;font-size:12px}
+  .competition-calendar-page .cc-gender-explainer{font-size:10px;flex-basis:100%}
+}
