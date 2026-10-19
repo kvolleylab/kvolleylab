@@ -1,0 +1,234 @@
+(()=>{
+  const root=document.getElementById('competitionCalendar');
+  const controls=document.getElementById('competitionCalendarControls');
+  if(!root||!controls)return;
+
+  const params=new URLSearchParams(location.search);
+  const year=Number(params.get('year')||2026);
+  const month=Number(params.get('month')||new Date().getMonth()+1);
+  const explicitView=params.has('view');
+  const responsiveView=()=>window.matchMedia('(max-width: 767px)').matches?'month':'year';
+  let view=params.get('view')||responsiveView();
+  const requestedCategory=params.get('category')||'all';
+  let active=['domestic-university','domestic-school','domestic-pro','domestic-multi'].includes(requestedCategory)?'domestic':requestedCategory;
+  let payload=null;
+  let genderMap=null;
+  let gender=params.get('gender')||'all';
+  if(!['all','men','women'].includes(gender))gender='all';
+  let resizeTimer=null;
+
+  const pad=n=>String(n).padStart(2,'0');
+  const iso=(y,m,d)=>`${y}-${pad(m)}-${pad(d)}`;
+  const now=new Date();
+  const todayYear=now.getFullYear();
+  const todayMonth=now.getMonth()+1;
+  const todayIso=iso(todayYear,todayMonth,now.getDate());
+  const fmt=d=>{const x=new Date(`${d}T00:00:00`);return `${x.getMonth()+1}.${x.getDate()}`};
+  const colorOf=c=>payload?.categories.find(x=>x.id===c)?.color||'#64748b';
+  const labelOf=c=>payload?.categories.find(x=>x.id===c)?.label||'대회';
+  const displayTitle=e=>e.short_title||e.title;
+  const overlaps=(e,y,m)=>e.start<=iso(y,m,new Date(y,m,0).getDate())&&e.end>=iso(y,m,1);
+  const isDomesticCategory=c=>String(c||'').startsWith('domestic-');
+  const assignedGenders=e=>genderMap?.events?.[e.id]?.genders||[];
+  // Unclassified events remain visible in All only; never silently claim they
+  // participate in a specific gender division without explicit evidence.
+  const visibleEvents=()=>payload.events.filter(e=>
+    (active==='all'||(active==='domestic'?isDomesticCategory(e.category):e.category===active))&&
+    (gender==='all'||assignedGenders(e).includes(gender))
+  );
+  const mondayOffset=(y,m)=>{const day=new Date(y,m-1,1).getDay();return day===0?6:day-1};
+  const esc=s=>String(s??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
+  const categoryQuery=()=>active==='all'?'':`&category=${encodeURIComponent(active)}`;
+  const genderQuery=()=>gender==='all'?'':`&gender=${encodeURIComponent(gender)}`;
+  const calendarHref=(v,y,m)=>`${location.pathname.split('/').pop()||'competition-calendar.html'}?view=${v}&year=${y}${v==='month'?`&month=${m}`:''}${categoryQuery()}${genderQuery()}`;
+  const statusOf=e=>e.start<=todayIso&&e.end>=todayIso?{id:'live',label:'진행 중',rank:0}:e.start>todayIso?{id:'upcoming',label:'예정',rank:1}:{id:'ended',label:'종료',rank:2};
+  const statusSort=(a,b)=>statusOf(a).rank-statusOf(b).rank||a.start.localeCompare(b.start);
+
+  function syncUrl(){
+    const url=new URL(location.href);
+    if(explicitView)url.searchParams.set('view',view);else url.searchParams.delete('view');
+    url.searchParams.set('year',year);
+    if(view==='month')url.searchParams.set('month',month);else url.searchParams.delete('month');
+    active==='all'?url.searchParams.delete('category'):url.searchParams.set('category',active);
+    gender==='all'?url.searchParams.delete('gender'):url.searchParams.set('gender',gender);
+    url.searchParams.delete('q');
+    history.replaceState(null,'',url);
+  }
+
+  function syncViewSwitch(){
+    document.querySelectorAll('.cc-view-switch a').forEach(a=>a.classList.toggle('active',a.dataset.view===view));
+    document.querySelectorAll('.cc-view-switch [data-view="year"]').forEach(a=>a.href=calendarHref('year',year,month));
+    document.querySelectorAll('.cc-view-switch [data-view="month"]').forEach(a=>a.href=calendarHref('month',year,month));
+  }
+
+  function filters(){
+    const items=[
+      {id:'all',label:'전체',color:null},
+      {id:'international',label:'국제대회',color:'#2563eb'},
+      {id:'domestic',label:'국내대회',color:'#16a34a'},
+      {id:'vleague',label:'V-리그',color:'#7c3aed'}
+    ];
+    return `<div class="cc-filters">${items.map(item=>`<button class="cc-filter ${active===item.id?'active':''}" data-filter="${item.id}">${item.color?`<span class="cc-filter-dot" style="background:${item.color}"></span>`:''}${item.label}</button>`).join('')}</div>`;
+  }
+
+  function genderToolbar(){
+    const entries=[{id:'all',name:'전체'},{id:'men',name:'남자부'},{id:'women',name:'여자부'}];
+    if(!genderMap){
+      return '<div class="cc-gender-toolbar cc-gender-unavailable" role="status">성별 분류 자료를 불러오지 못해 전체 일정만 표시합니다.</div>';
+    }
+    const missing=payload.events.filter(e=>!assignedGenders(e).length).length;
+    const buttons=entries.map(e=>`<button type="button" class="cc-gender-option ${gender===e.id?'active':''}" data-gender="${e.id}" aria-pressed="${gender===e.id}">${e.name}</button>`).join('');
+    return `<div class="cc-gender-toolbar"><div class="cc-gender-options" role="group" aria-label="남녀부 일정 필터">${buttons}</div><span class="cc-gender-explainer">남녀 공동 개최 대회는 양쪽에서 표시 · 대회 기간 기준${missing?` · 분류 미확인 ${missing}건은 전체에서 표시`:''}</span></div>`;
+  }
+
+  function toolbar(){
+    const todayHref=calendarHref('month',todayYear,todayMonth);
+    return `${genderToolbar()}<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a href="${calendarHref(view,year-1,month)}">‹</a><strong>${year}년</strong><a href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${todayHref}">오늘</a><button class="cc-share-btn" type="button" data-share>링크 복사</button></div>${filters()}</div>`;
+  }
+
+  function monthShortcuts(m){
+    return `<nav class="cc-month-shortcuts" aria-label="월 바로가기">${Array.from({length:12},(_,i)=>{const n=i+1;return `<a href="${calendarHref('month',year,n)}" aria-current="${n===m?'page':'false'}">${n}월</a>`}).join('')}</nav>`;
+  }
+
+  function focusEvent(m){
+    const events=visibleEvents().filter(e=>overlaps(e,year,m)).sort(statusSort);
+    if(!events.length)return '';
+    const current=year===todayYear&&m===todayMonth;
+    let event,label;
+    if(current){
+      event=events.find(e=>e.start<=todayIso&&e.end>=todayIso);
+      if(event)label='진행 중인 대회';
+      else{
+        event=events.find(e=>e.start>todayIso);
+        label=event?'다음 대회':'이번 달 마지막 대회';
+        if(!event)event=events.at(-1);
+      }
+    }else{
+      event=events.slice().sort((a,b)=>a.start.localeCompare(b.start))[0];
+      label='이달 첫 대회';
+    }
+    return `<a class="cc-focus-event" href="${event.href}" style="--focus-color:${colorOf(event.category)}"><span class="cc-focus-label">${label}</span><span class="cc-focus-main"><strong>${esc(displayTitle(event))}</strong><em>${fmt(event.start)} ~ ${fmt(event.end)}</em></span><span class="cc-focus-action">일정 보기 →</span></a>`;
+  }
+
+  function segmentsForMonth(events,m){
+    const offset=mondayOffset(year,m),last=new Date(year,m,0).getDate(),monthStart=iso(year,m,1),monthEnd=iso(year,m,last),byWeek=Array.from({length:6},()=>[]);
+    events.forEach(e=>{
+      const start=e.start<monthStart?1:Number(e.start.slice(8)),end=e.end>monthEnd?last:Number(e.end.slice(8));
+      let cursor=start;
+      while(cursor<=end){
+        const cellIndex=offset+cursor-1,week=Math.floor(cellIndex/7),col=cellIndex%7,span=Math.min(7-col,end-cursor+1);
+        byWeek[week].push({event:e,startCol:col+1,endCol:col+span});
+        cursor+=span;
+      }
+    });
+    return byWeek.map(items=>{
+      const laneEnds=[];
+      return items.sort((a,b)=>a.startCol-b.startCol||(b.endCol-b.startCol)-(a.endCol-a.startCol)).map(item=>{
+        let lane=laneEnds.findIndex(end=>end<item.startCol);
+        if(lane<0){lane=laneEnds.length;laneEnds.push(item.endCol)}else laneEnds[lane]=item.endCol;
+        return {...item,lane};
+      });
+    });
+  }
+
+  function eventLink(event,compact,startCol,endCol,lane){
+    const cls=compact?'cc-period-bar':'cc-big-period',title=esc(displayTitle(event)),status=statusOf(event);
+    const tooltip=`<span class="cc-event-tooltip"><span class="cc-tooltip-head"><strong>${esc(event.title)}</strong><span class="cc-tooltip-date">${fmt(event.start)} ~ ${fmt(event.end)}</span></span><em>${status.label} · ${esc(labelOf(event.category))} · ${assignedGenders(event).length===2?'남녀부 공동 개최 · ':''}클릭하여 대회 일정 보기</em></span>`;
+    return `<a class="${cls} status-${status.id}" href="${event.href}" aria-label="${esc(event.title)} ${fmt(event.start)}부터 ${fmt(event.end)}까지" style="--event-color:${colorOf(event.category)};--start:${startCol};--span:${endCol-startCol+1};--lane:${lane}"><span class="cc-period-title">${title}</span>${tooltip}</a>`;
+  }
+
+  function calendarGrid(m,compact=true){
+    const offset=mondayOffset(year,m),last=new Date(year,m,0).getDate(),events=visibleEvents().filter(e=>overlaps(e,year,m)).sort((a,b)=>a.start.localeCompare(b.start)),weekSegments=segmentsForMonth(events,m);
+    let weeks='';
+    for(let w=0;w<6;w++){
+      const placed=weekSegments[w],lanes=Math.max(1,...placed.map(x=>x.lane+1));
+      let days='';
+      for(let c=0;c<7;c++){
+        const d=w*7+c-offset+1,valid=d>=1&&d<=last,date=valid?iso(year,m,d):'';
+        days+=`<div class="${compact?'cc-date-cell':'cc-big-date-cell'} ${valid?'':'empty'} ${date===todayIso?'today':''}"><span>${valid?d:''}</span></div>`;
+      }
+      const bars=placed.map(({event,startCol,endCol,lane})=>eventLink(event,compact,startCol,endCol,lane)).join('');
+      weeks+=`<div class="${compact?'cc-calendar-week':'cc-big-calendar-week'}" style="--lanes:${lanes}"><div class="${compact?'cc-calendar-days':'cc-big-calendar-days'}">${days}</div>${bars}</div>`;
+    }
+    return `<div class="${compact?'cc-calendar-layer':'cc-big-calendar-layer'}">${weeks}</div>`;
+  }
+
+  function miniCalendar(m){
+    const events=visibleEvents().filter(e=>overlaps(e,year,m));
+    const current=year===todayYear&&m===todayMonth;
+    return `<section class="cc-month-card${current?' cc-current-month':''}" id="cc-month-${m}" data-month="${m}"><div class="cc-month-head"><a href="${calendarHref('month',year,m)}">${m}월</a><span>${events.length}개 대회</span></div><div class="cc-weekdays">${['월','화','수','목','금','토','일'].map(x=>`<span>${x}</span>`).join('')}</div>${calendarGrid(m,true)}</section>`;
+  }
+
+  function scrollYearToCurrentMonth(){
+    if(view!=='year'||year!==todayYear)return;
+    const target=document.getElementById(`cc-month-${todayMonth}`);
+    const sticky=document.querySelector('.cc-sticky-header');
+    if(!target)return;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      const offset=(sticky?.offsetHeight||0)+22;
+      const top=target.getBoundingClientRect().top+window.scrollY-offset;
+      window.scrollTo({top:Math.max(0,top),behavior:'auto'});
+    }));
+  }
+
+  function renderControls(){
+    controls.innerHTML=toolbar();
+  }
+
+  function renderYear(){
+    renderControls();
+    root.innerHTML=`${monthShortcuts(0)}<div class="cc-year-grid">${Array.from({length:12},(_,i)=>miniCalendar(i+1)).join('')}</div>`;
+    bind();syncUrl();syncViewSwitch();scrollYearToCurrentMonth();
+  }
+
+  function renderMonth(){
+    const m=Math.min(12,Math.max(1,month));
+    const prev=m===1?{y:year-1,m:12}:{y:year,m:m-1};
+    const next=m===12?{y:year+1,m:1}:{y:year,m:m+1};
+    renderControls();
+    root.innerHTML=`${monthShortcuts(m)}<div class="cc-month-navigation"><a href="${calendarHref('month',prev.y,prev.m)}">‹</a><div><strong>${year}년 ${m}월</strong><span>날짜 아래의 대회 기간을 선택하면 해당 대회 일정으로 이동합니다.</span></div><a href="${calendarHref('month',next.y,next.m)}">›</a></div>${focusEvent(m)}<div class="cc-month-layout"><section class="cc-big-calendar"><div class="cc-big-weekdays">${['월','화','수','목','금','토','일'].map((x,i)=>`<div class="${i===5?'sat':i===6?'sun':''}">${x}</div>`).join('')}</div>${calendarGrid(m,false)}</section></div>`;
+    bind();syncUrl();syncViewSwitch();
+  }
+
+  function rerender(){view==='year'?renderYear():renderMonth()}
+
+  function bind(){
+    controls.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{active=b.dataset.filter;rerender()});
+    controls.querySelectorAll('[data-gender]').forEach(b=>b.onclick=()=>{gender=b.dataset.gender;rerender()});
+    const share=controls.querySelector('[data-share]');
+    if(share)share.onclick=async()=>{syncUrl();try{await navigator.clipboard.writeText(location.href);share.textContent='복사 완료';setTimeout(()=>share.textContent='링크 복사',1400)}catch{prompt('아래 주소를 복사하세요.',location.href)}};
+  }
+
+  if(!explicitView){
+    window.addEventListener('resize',()=>{
+      clearTimeout(resizeTimer);
+      resizeTimer=setTimeout(()=>{
+        const nextView=responsiveView();
+        if(nextView!==view){view=nextView;rerender()}
+      },160);
+    });
+  }
+
+  const readJson=async path=>{
+    const response=await fetch(path,{cache:'no-store'});
+    if(!response.ok)throw new Error('HTTP '+response.status+' '+path);
+    return response.json();
+  };
+  Promise.all([
+    readJson(`data/calendar/${year}-competition-periods.json?v=20260921-world-events-1`),
+    readJson(`data/calendar/${year}-competition-genders.json?v=20261019-genders-v1`).catch(()=>null)
+  ])
+    .then(([data,map])=>{
+      payload=data;
+      if(map?.schema==='calendar-genders-v1'&&map.year===year&&map.events&&typeof map.events==='object'){
+        genderMap=map;
+      }else{
+        genderMap=null;
+        gender='all';
+      }
+      const valid=['all','international','domestic','vleague'];
+      if(!valid.includes(active))active='all';
+      rerender();
+    })
+    .catch(()=>{controls.innerHTML='';root.innerHTML=`<div class="cc-data-error"><strong>${year}년 대회 일정 데이터가 없습니다.</strong><span>등록된 연도로 이동하거나 오늘 버튼을 눌러 현재 달력으로 돌아가세요.</span><a href="${calendarHref('month',todayYear,todayMonth)}">오늘 달력 보기</a></div>`;syncViewSwitch()});
+})();
