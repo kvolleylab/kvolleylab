@@ -1,6 +1,6 @@
 {
-  "status": "upcoming",
-  "stageLabel": "남자부 · 10월 19일 개막",
+  "status": "active",
+  "stageLabel": "남자부 · 조별리그 종료 · 10월 24일 준결승",
   "dateLabel": "2026.10.19 ~ 10.25",
   "locationLabel": "대한민국 · 전남 여수",
   "venueLabel": "여수 진남체육관",
@@ -10,10 +10,10 @@
   "groupCount": 2,
   "matchCount": 12,
   "knockoutTeamCount": 4,
-  "upcomingOverviewNote": "대회 시작 전 · 공식 발표 일정과 조편성을 반영했습니다.",
-  "scheduleNote": "한국시간(KST) · 남자부 12경기 · 조별리그 9경기 + 준결승 2경기 + 결승 1경기",
-  "standingsNote": "대회 시작 전 · 조별리그 결과 반영 후 순위를 업데이트합니다.",
-  "standingsStatus": "조별리그 시작 전",
+  "upcomingOverviewNote": "조별리그 종료 · 10월 24일 준결승 · 10월 25일 결승",
+  "scheduleNote": "한국시간(KST) · 조별리그 9경기 종료 · 10월 24일 준결승 13:30·16:30",
+  "standingsNote": "10월 22일 조별리그 최종 순위 · KOVO 공식 경기 결과 및 순위 대조 완료",
+  "standingsStatus": "조별리그 최종 순위",
   "standingsRule": "각 조 상위 2팀이 준결승에 진출합니다.",
   "meaning": {
     "eyebrow": "KOVO CUP",
@@ -98,7 +98,42 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 10,
+            "away": 15
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://mobile.newsis.com/view_amp.html?ar_id=NISX20261019_0003832422"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-14",
@@ -115,7 +150,38 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 15:30 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://mobile.newsis.com/view_amp.html?ar_id=NISX20261019_0003832422"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-15",
@@ -132,7 +198,38 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://mobile.newsis.com/view_amp.html?ar_id=NISX20261019_0003832422"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-16",
@@ -149,7 +246,38 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://www.newsis.com/view/NISX20261020_0003833886"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-17",
@@ -166,7 +294,34 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 15:30 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://www.newsis.com/view/NISX20261020_0003833886"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-18",
@@ -183,7 +338,34 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://www.newsis.com/view/NISX20261020_0003833886"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-19",
@@ -200,7 +382,42 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 15,
+            "away": 10
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://www.newsis.com/view/NISX20261022_0003837600"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-20",
@@ -217,7 +434,42 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 15:30 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://www.newsis.com/view/NISX20261022_0003837600"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-21",
@@ -234,7 +486,34 @@
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "bracketLabel": "조별리그"
+      "bracketLabel": "조별리그",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sourceType": "KOVO official match results and independent news",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=212",
+          "https://www.newsis.com/view/NISX20261022_0003837600"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-22",
@@ -244,14 +523,22 @@
       "pool": "",
       "round": "SF",
       "home": {
-        "name": "A조 1위"
+        "code": "KAL"
       },
       "away": {
-        "name": "B조 2위"
+        "code": "WRC"
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:30 KST",
-      "bracketLabel": "SF10"
+      "bracketLabel": "SF10",
+      "scheduleVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=213",
+          "https://www.newsis.com/view/NISX20261022_0003837600"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-23",
@@ -261,14 +548,22 @@
       "pool": "",
       "round": "SF",
       "home": {
-        "name": "B조 1위"
+        "code": "KEP"
       },
       "away": {
-        "name": "A조 2위"
+        "code": "HDC"
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 16:30 KST",
-      "bracketLabel": "SF11"
+      "bracketLabel": "SF11",
+      "scheduleVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-23",
+        "sources": [
+          "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=213",
+          "https://www.newsis.com/view/NISX20261022_0003837600"
+        ]
+      }
     },
     {
       "id": "KOVOCUP26-24",
@@ -295,52 +590,56 @@
         "title": "A조",
         "rows": [
           {
-            "rank": null,
+            "rank": 1,
             "team": {
-              "code": "OKF"
+              "code": "KAL",
+              "name": "대한항공"
             },
-            "wins": 0,
+            "wins": 3,
             "losses": 0,
-            "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "개막 전"
+            "points": 9,
+            "setRatio": "4.500",
+            "pointRatio": "1.097",
+            "statusLabel": "준결승 진출"
           },
           {
-            "rank": null,
+            "rank": 2,
             "team": {
-              "code": "HDC"
+              "code": "HDC",
+              "name": "현대캐피탈"
             },
-            "wins": 0,
-            "losses": 0,
-            "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "개막 전"
+            "wins": 2,
+            "losses": 1,
+            "points": 5,
+            "setRatio": "1.200",
+            "pointRatio": "0.983",
+            "statusLabel": "준결승 진출"
           },
           {
-            "rank": null,
+            "rank": 3,
             "team": {
-              "code": "KAL"
+              "code": "OKF",
+              "name": "OK저축은행"
             },
-            "wins": 0,
-            "losses": 0,
-            "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "개막 전"
+            "wins": 1,
+            "losses": 2,
+            "points": 3,
+            "setRatio": "0.750",
+            "pointRatio": "1.065",
+            "statusLabel": "조별리그 탈락"
           },
           {
-            "rank": null,
+            "rank": 4,
             "team": {
-              "code": "SFB"
+              "code": "SFB",
+              "name": "삼성화재"
             },
             "wins": 0,
-            "losses": 0,
-            "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "개막 전"
+            "losses": 3,
+            "points": 1,
+            "setRatio": "0.333",
+            "pointRatio": "0.867",
+            "statusLabel": "조별리그 탈락"
           }
         ]
       },
@@ -349,40 +648,43 @@
         "title": "B조",
         "rows": [
           {
-            "rank": null,
+            "rank": 1,
             "team": {
-              "code": "KEP"
+              "code": "KEP",
+              "name": "한국전력"
             },
-            "wins": 0,
+            "wins": 2,
             "losses": 0,
-            "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "개막 전"
+            "points": 5,
+            "setRatio": "2.000",
+            "pointRatio": "1.030",
+            "statusLabel": "준결승 진출"
           },
           {
-            "rank": null,
+            "rank": 2,
             "team": {
-              "code": "KBI"
+              "code": "WRC",
+              "name": "우리카드"
             },
-            "wins": 0,
-            "losses": 0,
-            "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "개막 전"
+            "wins": 1,
+            "losses": 1,
+            "points": 4,
+            "setRatio": "1.667",
+            "pointRatio": "1.065",
+            "statusLabel": "준결승 진출"
           },
           {
-            "rank": null,
+            "rank": 3,
             "team": {
-              "code": "WRC"
+              "code": "KBI",
+              "name": "KB손해보험"
             },
             "wins": 0,
-            "losses": 0,
+            "losses": 2,
             "points": 0,
-            "setRatio": "-",
-            "pointRatio": "-",
-            "statusLabel": "개막 전"
+            "setRatio": "0.167",
+            "pointRatio": "0.902",
+            "statusLabel": "조별리그 탈락"
           }
         ]
       }
@@ -412,5 +714,6 @@
       "body": "A조 1위-B조 2위, B조 1위-A조 2위가 준결승을 치르고 승자가 결승에 진출합니다.",
       "note": "단판 토너먼트"
     }
-  }
+  },
+  "activeOverviewNote": "조별리그 9경기 종료 · 준결승 대한항공–우리카드 / 한국전력–현대캐피탈"
 }
