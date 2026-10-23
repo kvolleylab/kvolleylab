@@ -1,0 +1,33 @@
+✔ official full counts and uniqueness (1.88311ms)
+✔ all 18 unverified identities cannot open a profile (0.396321ms)
+✔ reject poisoned link, duplicate and non-public records (4.268952ms)
+✔ combined school gender positions height with OR grades (0.521607ms)
+✔ application and result independent, no inferred undrafted (0.250637ms)
+✔ height sorting keeps unknown last (0.29662ms)
+✔ CSV minimizes personal fields and neutralizes spreadsheet formulas (0.869453ms)
+✔ all verified applicant IDs render the correct existing player profile (6015.65517ms)
+✔ production data bridge exactly preserves all 1842 legacy players and identity fields (2396.897254ms)
+(node:21) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ school and multiple grades combine; card/grid preserve filters; original compare attributes retained (492.370433ms)
+✔ draft filter is exact verified link intersection; non-applicants survive general search (320.061632ms)
+✔ URL restores school, multiple grades, gender and compact view; modal uses canonical profile URL (178.575636ms)
+✔ production denies simulated accounts and all note writes without reading or modifying demo data (481.759157ms)
+✔ unified hub has 59 men and 58 women, three modes and no links for all 18 pending records (607.167704ms)
+✔ hub filters include university underclassmen, high-school and industrial entries (373.486186ms)
+✔ profile adds independent history and safe return without deleting timeline sections (167.385029ms)
+✔ external return URLs are rejected (17.593133ms)
+✔ selection facts are separate; future result joins preserve application and affiliation (4.658521ms)
+✔ changed catalog identity fails closed without changing permanent IDs (1.525605ms)
+✔ all pre-existing data and shared menu/home/competition files are byte-identical (50.174943ms)
+✔ draft source failure preserves general search with a visible warning (238.062987ms)
+✔ the original eligibility board retains all target players and its independent filters (404.925473ms)
+✔ closing a deep-linked application removes stale applicant state before changing gender (331.448118ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6670.352117

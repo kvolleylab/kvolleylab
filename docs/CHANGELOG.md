@@ -2,6 +2,14 @@
 
 이 문서는 프로젝트의 주요 구조 변경, 기능 추가, 복구 작업을 기록합니다.
 
+## 2026-10-23 — Player/Draft integration (pre-release verification)
+
+- Reuse the approved B player UI with the original 1,842-player pipeline and canonical routes.
+- Add official KOVO 59 men/58 women applications to the existing annual Draft Hub; 99 verified links and 18 pending. Keep the former 44-player eligibility board.
+- Append independent application history to original profiles; preserve all existing data and shared navigation.
+- Disable prototype private actions until server authentication and per-user ownership exist.
+- See [evidence and recovery](PLAYER_DRAFT_INTEGRATION_v1.md); actual release result is recorded on the integration PR.
+
 ## 2026-07-10
 
 ### Project Standardization v1

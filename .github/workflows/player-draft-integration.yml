@@ -1,0 +1,48 @@
+name: Player and Draft Integration
+
+on:
+  pull_request:
+    paths:
+      - 'players.html'
+      - 'player.html'
+      - 'draft-hub.html'
+      - 'assets/js/player-*.js'
+      - 'assets/js/player-*.mjs'
+      - 'assets/js/draft-*.mjs'
+      - 'data/draft-applicants/**'
+      - 'data/master/**'
+      - 'data/national/**'
+      - 'data/domestic/**'
+      - 'assets/css/player-*.css'
+      - 'assets/css/draft-*.css'
+      - 'scripts/draft_applicants/**'
+      - 'tests/*draft*'
+      - 'tests/player-*'
+      - '.github/workflows/player-draft-integration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  identity-and-routing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated DOM test dependency
+        run: npm install --prefix "$RUNNER_TEMP/kvl-tests" --no-package-lock --no-audit --no-fund jsdom@26.1.0
+      - name: Verify matching, retained identities and all profile routes
+        env:
+          KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-tests/node_modules/jsdom
+        run: |
+          python -m unittest discover -s tests -p test_draft_applicants.py
+          node --experimental-vm-modules --test tests/player-integration.test.mjs tests/draft-applicants.test.mjs tests/draft-profile-routing.test.mjs tests/player-profile-coverage.test.mjs

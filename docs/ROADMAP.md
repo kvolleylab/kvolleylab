@@ -1,7 +1,11 @@
 # K-Volley Lab Roadmap
 
 문서 상태: Active  
-최종 갱신: 2026-07-10
+최종 갱신: 2026-10-23
+
+## 2026-10-23 scoped update
+
+Player B UI and the single annual official Draft Hub are implemented and under release verification; see [handoff](PLAYER_DRAFT_INTEGRATION_v1.md). Remaining: 18 identity reviews, official selection results, real authentication and server ownership enforcement. Existing MASTERs are unchanged. Older board items below retain their historical scope.
 
 ## Phase 1. Website & VNL Foundation
 
