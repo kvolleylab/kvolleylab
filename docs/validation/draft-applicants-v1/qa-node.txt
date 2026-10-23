@@ -1,0 +1,19 @@
+✔ draft bookmarking preserves both accounts notes, statuses and selected B layout (415.397108ms)
+✔ category clears incompatible school; multi-grade remains a combined filter (208.963756ms)
+✔ unlinked detail has no profile or bookmark and public text hides IDs (109.560082ms)
+✔ official full counts and uniqueness (0.995292ms)
+✔ all 18 unverified identities cannot open a profile (0.349836ms)
+✔ reject poisoned link, duplicate and non-public records (2.921445ms)
+✔ combined school gender positions height with OR grades (0.370734ms)
+✔ application and result independent, no inferred undrafted (0.207741ms)
+✔ height sorting keeps unknown last (0.471437ms)
+✔ CSV minimizes personal fields and neutralizes spreadsheet formulas (0.509998ms)
+✔ all verified applicant IDs render the correct existing player profile (4633.414034ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5182.856746

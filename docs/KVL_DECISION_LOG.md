@@ -89,3 +89,14 @@ QA: PC/mobile, data/logic and regression evidence
 Supersedes:
 Next action:
 ```
+
+
+## 2026-10-23 — Official draft applicants prototype
+
+- Scope/status: PROTOTYPE / READY FOR REVIEW, feature/draft-applicants-2026-27. No production authorization.
+- Separate annual KOVO applicant records from permanent KVL player identity. Preserve MASTER, profile URLs, national/roster links, existing Work B bookmarks and notes.
+- Official 2026-10-22 PDFs: men 59, women 58; 99 verified profile links, 4 identity conflicts and 14 unmatched held without links. No permanent IDs allocated.
+- Default dense table, optional B-style cards, combined school/category/multiple-grade filters, existing 1180px home shell and shared navigation.
+- Raw official attachments archived in existing Google Drive season official-sources folder; only permitted verified facts exported.
+- Handoff and limits: [docs/draft-applicants-v1/HANDOFF.md](draft-applicants-v1/HANDOFF.md). Existing HTTP preview cannot complete original note creation because crypto.randomUUID is unavailable; unchanged B tests pass. Actual authentication and server-side private-note access remain separate backend work.
+- Supersedes: no production design/data decision. Reuses approved Work B design; adds a draft-only review surface.
