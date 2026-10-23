@@ -1,0 +1,34 @@
+{
+  "base_commit": "7f5b90109c912ee1cdaa93c463a5d667a1a95bdb",
+  "backup_branch": "backup/player-integration-before-20261023",
+  "checked_existing_files": 1149,
+  "changed_existing_runtime_files": [
+    "assets/js/player-search-v2.js",
+    "draft-hub.html",
+    "player.html",
+    "players.html"
+  ],
+  "existing_data_files_checked": 283,
+  "changed_existing_data_files": [],
+  "new_or_changed_player_ids": 0,
+  "new_player_master_files": 0,
+  "official_applicants": {
+    "M": 59,
+    "W": 58
+  },
+  "matched": {
+    "M": 48,
+    "W": 51
+  },
+  "needs_review": {
+    "M": 4,
+    "W": 0
+  },
+  "unmatched": {
+    "M": 7,
+    "W": 7
+  },
+  "duplicate_review": 0,
+  "server_authentication": "NOT_IMPLEMENTED; all private reads/writes disabled",
+  "production_deployment": "PENDING_PR_AND_CI"
+}

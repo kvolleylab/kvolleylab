@@ -1,47 +1,31 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Player Search | K-Volley Lab</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/site-theme-light.css">
-<link rel="stylesheet" href="assets/css/player-search-v2.css?v=20260811-5">
-<link rel="stylesheet" href="assets/css/compare-tray-v1.css">
-<script src="assets/js/unified-nav.js" defer></script>
-<script src="assets/js/player-school-master-v2.js?v=20260811-1" defer></script>
-<script src="assets/js/player-school-master-compat-v2.js?v=20260811-1" defer></script>
-<script src="assets/js/player-search-v2.js?v=20260903-2" defer></script>
-<script src="assets/js/player-data-audit-v2.js?v=20260823-1" defer></script>
-<script src="assets/js/compare-tray-v1.js" defer></script>
-<style>
-.ps-audit{margin:18px 0 0;padding:16px 18px;border:1px solid #f1d29a;border-radius:14px;background:#fff8e8;color:#7c4a03}.ps-audit.is-error{border-color:#fecaca;background:#fff1f2;color:#991b1b}.ps-audit-head{display:flex;justify-content:space-between;gap:14px;align-items:center}.ps-audit-head strong{font-size:15px}.ps-audit-head span{font-size:12px;font-weight:700}.ps-audit-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.ps-audit-grid span{padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.75);font-size:12px}.ps-audit p{margin:10px 0 0;font-size:12px;line-height:1.55}@media(max-width:640px){.ps-audit-head{align-items:flex-start;flex-direction:column}}
-</style>
-</head>
-<body class="player-search-page">
-<header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
-<main class="ps-main">
-<section class="ps-hero">
-<p class="eyebrow">PLAYER MASTER</p>
-<h1>Player Search</h1>
-<p>국내 중·고·대학선수와 국제선수를 같은 기준으로 검색합니다.</p>
-<div id="stats" class="ps-stats">선수 데이터를 불러오는 중입니다.</div>
-<div id="playerAuditStatus" class="ps-audit">선수 DB 완성도를 점검하는 중입니다.</div>
-<div class="ps-hero-actions"><a href="university-teams.html">대학 팀 분석 · 평균신장 보기</a><a href="draft-hub.html">Draft Hub · 4학년 대상</a><a href="player-compare.html">선수 비교 · Compare</a></div>
-</section>
-<section class="ps-controls" aria-label="선수 검색 필터">
-<input type="search" id="searchInput" placeholder="선수명, 학교, 생년월일 검색..." autocomplete="off">
-<select id="typeFilter" aria-label="선수 구분"><option value="All">국내·국제 전체</option><option value="domestic">국내 선수</option><option value="international">국제 선수</option></select>
-<select id="levelFilter" aria-label="선수 단계 필터"><option value="All">전체 단계</option><option value="middle_school">중학교</option><option value="high_school">고등학교</option><option value="university">대학교</option><option value="national">대표팀 연결</option></select>
-<select id="genderFilter" aria-label="성별 필터"><option value="All">남녀 전체</option><option value="M">남자부</option><option value="W">여자부</option></select>
-<select id="schoolFilter" aria-label="학교 필터"><option value="All">전체 학교</option></select>
-<select id="gradeFilter" aria-label="학년 필터"><option value="All">전체 학년</option><option value="1">1학년</option><option value="2">2학년</option><option value="3">3학년</option><option value="4">4학년</option></select>
-<select id="positionFilter" aria-label="포지션 필터"><option value="All">전체 포지션</option></select>
-<select id="draftFilter" aria-label="드래프트 대상 필터"><option value="All">드래프트 전체</option><option value="eligible">대학 4학년</option></select>
-</section>
-<div class="ps-result-head"><strong id="resultCount">검색 결과 0명</strong><button type="button" id="clearFilters" class="ps-clear">필터 초기화</button></div>
-<section id="playerGrid" class="ps-grid" aria-live="polite"><div class="ps-empty">Player Master를 불러오는 중입니다.</div></section>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>선수 | K-Volley Lab</title><meta name="description" content="K-Volley Lab 공개 선수 검색, 프로필과 연도별 공식 드래프트 참가 신청 이력."><link rel="stylesheet" href="assets/css/pretendard-global.css"><link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css"><link rel="stylesheet" href="assets/css/player-workspace-v1.css?v=20261023-1"><script defer src="assets/js/unified-nav.js"></script><link rel="stylesheet" href="assets/css/compare-tray-v1.css"><script defer src="assets/js/player-school-master-v2.js?v=20260811-1"></script><script defer src="assets/js/player-school-master-compat-v2.js?v=20260811-1"></script><script defer src="assets/js/player-search-v2.js?v=20261023-1"></script><script defer src="assets/js/compare-tray-v1.js"></script><script type="module" src="assets/js/player-workspace-v1.mjs?v=20261023-1"></script></head><body data-player-workspace>
+<a class="skip-link" href="#playerContent">선수 검색으로 바로가기</a>
+<div class="mobile-brand"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><b>K-Volley Lab</b></div>
+<main class="players-prototype">
+ <section class="home-shell" aria-labelledby="heroTitle">
+  <div class="page-utility"><span>선수·팀 <span aria-hidden="true">/</span> <b>선수</b></span><button id="accountButton" class="utility-button" type="button"></button></div>
+  <div class="player-hero"><div class="hero-copy"><p class="eyebrow">K-VOLLEY LAB · PLAYER DATABASE</p><h1 id="heroTitle">선수를 찾고,<br><span>성장을 기록하세요.</span></h1><p class="hero-desc">공개 선수 정보와 대회 이력, 공식 드래프트 신청 명단까지.</p>
+   <form id="searchForm" role="search" class="hero-search"><label class="sr-only" for="playerSearch">선수 이름, 학교, 팀 또는 Player ID</label><span class="search-icon" data-icon="search"></span><input id="playerSearch" name="q" type="search" placeholder="이름, 학교, 팀으로 선수를 찾아보세요" autocomplete="off"><button type="submit" aria-label="선수 검색"><span data-icon="arrow"></span></button></form>
+   <div class="hero-tags"><span>빠른 탐색</span><button data-quick="university">#대학배구</button><button data-quick="high_school">#고교배구</button><button data-quick="international">#국제선수</button></div>
+  </div><div class="hero-brand" aria-hidden="true"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><strong>K-Volley Lab</strong><span>VOLLEYBALL DATA & INSIGHTS</span></div></div>
+  <nav class="player-tabs" aria-label="선수 페이지 탐색"><button data-view="search" class="active" aria-current="page"><span data-icon="search"></span><span><b>선수 검색</b><small>공개 선수 프로필</small></span></button><button data-view="tracking"><span data-icon="bookmark"></span><span><b>내 추적 선수 <em id="savedBadge"></em></b><small>관심 선수를 한곳에</small></span></button><button data-view="notes"><span data-icon="note"></span><span><b>내 메모 <em id="notesBadge"></em></b><small>관찰과 기록의 연결</small></span></button></nav>
+ </section>
+ <div class="page-content" id="playerContent" tabindex="-1">
+  <nav class="workspace-links" aria-label="선수 관련 메뉴"><a href="draft-hub.html">공식 드래프트 신청자</a><a href="university-teams.html">대학 팀 분석</a><a href="player-compare.html">선수 비교</a></nav>
+  <p id="draftFilterStatus" class="source-note" hidden role="status"></p>
+  <section id="memberSummary" class="member-summary" hidden></section>
+  <section id="searchView" aria-labelledby="searchTitle"><div class="section-heading"><div><p class="section-kicker">DISCOVER PLAYERS</p><h2 id="searchTitle">어떤 선수를 찾고 계신가요?</h2></div><span class="small muted" id="catalogCount">공개 DB 불러오는 중</span></div>
+   <form id="filters" class="filter-card"><div class="filter-main"><label>분류<select name="level"><option value="">모든 분류</option><option value="university">대학</option><option value="high_school">고교</option><option value="middle_school">중학</option><option value="international">국제</option><option value="national">대표팀 연결</option><option value="domestic">기타 국내</option></select></label><label>성별<select name="gender"><option value="">전체</option><option value="M">남자</option><option value="W">여자</option></select></label><label>포지션<select name="position" id="positionFilter"><option value="">모든 포지션</option></select></label><button type="button" id="moreFilters" class="filter-more" aria-expanded="false" aria-controls="extraFilters"><span data-icon="sliders"></span>상세 조건</button><button type="reset" class="text-button">초기화</button></div>
+   <div id="extraFilters" class="extra-filters" hidden><label>학교<select name="school" id="schoolFilter"><option value="">모든 학교</option></select></label><fieldset class="grade-filter"><legend>학년 <span>복수 선택</span></legend><div class="grade-options"><label class="grade-option"><input type="checkbox" name="grade" value="1"><span>1학년</span></label><label class="grade-option"><input type="checkbox" name="grade" value="2"><span>2학년</span></label><label class="grade-option"><input type="checkbox" name="grade" value="3"><span>3학년</span></label><label class="grade-option"><input type="checkbox" name="grade" value="4"><span>4학년</span></label></div><div class="grade-caption"><span id="gradeSelection" aria-live="polite">전체 학년</span><button type="button" data-all-grades>전체 선택 해제</button></div></fieldset><label>국내·국제<select name="type"><option value="">전체</option><option value="domestic">국내</option><option value="international">국제</option></select></label><label>드래프트 참가 신청자<select name="draftSeason" id="draftSeason"><option value="">전체 선수</option></select></label><label class="checkbox"><input type="checkbox" name="draft" value="1">기존 DB의 참가 자격 대상 (공식 신청과 별도)</label></div></form>
+   <div class="results-toolbar"><p id="resultCount" role="status" aria-live="polite">선수 정보를 불러오고 있습니다.</p><div class="results-actions"><span class="small muted">소속·학년은 수록 자료 기준</span><div class="layout-toggle" role="group" aria-label="선수 표시 방식"><button type="button" data-layout="cards" aria-pressed="true"><span data-icon="cards"></span>상세 카드</button><button type="button" data-layout="compact" aria-pressed="false"><span data-icon="grid"></span>간편 보기</button></div></div></div><div id="playerGrid" class="player-grid"></div><div class="load-more"><button id="loadMore" class="button secondary" hidden>선수 더 보기 <span data-icon="down"></span></button></div>
+   <div class="source-note"><span data-icon="info"></span><p>기존 선수 MASTER와 대회 명단을 연결한 공개 정보입니다. 소속·학년은 각 자료의 수록 시점 기준이며, 선수별 출처와 이력은 프로필에서 확인할 수 있습니다. 사진은 확인된 자산이 없어 공통 실루엣으로 표시합니다.</p></div>
+  </section>
+  <section id="trackingView" hidden aria-labelledby="trackingTitle"><div class="section-heading"><div><p class="section-kicker">MY WATCHLIST</p><h2 id="trackingTitle">내 추적 선수</h2></div><span class="private-label"><span data-icon="lock"></span>개인 기능 준비 중</span></div><div id="trackingBody"></div></section>
+  <section id="notesView" hidden aria-labelledby="notesTitle"><div class="section-heading"><div><p class="section-kicker">MY OBSERVATIONS</p><h2 id="notesTitle">내 메모</h2></div><span class="private-label"><span data-icon="lock"></span>개인 기능 준비 중</span></div><div id="notesBody"></div></section>
+  <footer class="page-footer"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><span><b>K-Volley Lab</b><br>데이터로 연결하는 배구의 오늘과 내일</span><a href="index.html" target="_blank" rel="noopener">K-Volley Lab 홈</a></footer>
+ </div>
 </main>
-<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
-</body>
-</html>
+<dialog id="profileDialog" class="profile-dialog" aria-labelledby="profileName"><div id="profileContent"></div></dialog>
+<dialog id="accountDialog" class="account-dialog" aria-labelledby="accountTitle"><button class="close-button" data-close="accountDialog" aria-label="닫기">×</button><span class="dialog-symbol" data-icon="lock"></span><h2 id="accountTitle">개인 선수 기록은 준비 중입니다</h2><p>회원 로그인과 비공개 저장 기능이 연결된 뒤 관심선수와 개인 메모를 이용할 수 있습니다. 현재는 개인 기록을 입력하거나 저장하지 않습니다.</p><button class="button secondary" data-close="accountDialog">확인</button></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>

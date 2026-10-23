@@ -1,32 +1,51 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>Draft Hub | K-Volley Lab</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/site-theme-light.css">
-<link rel="stylesheet" href="assets/css/draft-hub-v1.css">
-<link rel="stylesheet" href="assets/css/compare-tray-v1.css">
-<script src="assets/js/unified-nav.js" defer></script>
-<script src="assets/js/draft-hub-v1.js" defer></script>
-<script src="assets/js/compare-tray-v1.js" defer></script>
-</head>
-<body class="draft-hub-page">
-<header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
-<main class="dh-main">
-<section class="dh-hero"><p class="eyebrow">UNIVERSITY DRAFT BOARD</p><h1>Draft Hub</h1><p>검수된 대학 선수 DB에서 4학년 드래프트 대상자를 포지션·학교·신장 기준으로 확인합니다.</p><div id="dhSummary" class="dh-summary">드래프트 데이터를 불러오는 중입니다.</div></section>
-<section class="dh-controls">
-<input id="dhSearch" type="search" placeholder="선수명 또는 학교 검색...">
-<select id="dhPosition"><option value="All">전체 포지션</option><option>S</option><option>OH</option><option>OP</option><option>MB</option><option>L</option></select>
-<select id="dhSchool"><option value="All">전체 학교</option></select>
-<select id="dhHeight"><option value="0">전체 신장</option><option value="185">185cm 이상</option><option value="190">190cm 이상</option><option value="195">195cm 이상</option><option value="200">200cm 이상</option></select>
-<select id="dhSort"><option value="position">포지션 순</option><option value="heightDesc">신장 높은 순</option><option value="school">학교 순</option><option value="name">이름 순</option></select>
+<meta name="description" content="KOVO 공식 신인 드래프트 신청자와 기존 선수 DB의 검증된 연결을 확인하는 K-Volley Lab Draft Hub.">
+<link rel="stylesheet" href="assets/css/pretendard-global.css"><link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css"><link rel="stylesheet" href="assets/css/draft-hub-v1.css"><link rel="stylesheet" href="assets/css/draft-hub-v2.css?v=20261023-1">
+<script defer src="assets/js/draft-hub-v1.js"></script><script defer src="assets/js/unified-nav.js"></script><script type="module" src="assets/js/draft-hub-v2.mjs?v=20261023-1"></script>
+<link rel="stylesheet" href="assets/css/compare-tray-v1.css"><script defer src="assets/js/player-school-master-v2.js?v=20260811-1"></script><script defer src="assets/js/player-school-master-compat-v2.js?v=20260811-1"></script><script defer src="assets/js/player-search-v2.js?v=20261023-1"></script><script defer src="assets/js/compare-tray-v1.js"></script></head><body class="draft-applicants-page" data-player-workspace>
+<a class="da-skip" href="#applicants">신청자 명단으로 바로가기</a>
+<div class="da-mobile-brand"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><b>K-Volley Lab</b></div>
+<main class="da-main">
+<section class="da-shell" aria-labelledby="draftTitle">
+<div class="da-utility"><span>선수·팀 <span aria-hidden="true">/</span> <b>Draft Hub</b></span><button id="daAccount" type="button">개인 기능 준비 중</button></div>
+<div class="da-hero"><div><p class="da-eyebrow">K-VOLLEY LAB · DRAFT HUB</p><p class="da-season">2026–2027 신인선수 드래프트</p><h1 id="draftTitle">다음 시즌의 시작,<br><span>신청 선수 한눈에.</span></h1><p class="da-hero-desc">공식 신청 명단에서 선수 정보와 기록까지 이어집니다.</p></div><div class="da-hero-brand" aria-hidden="true"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><b>K-Volley Lab</b><small>VOLLEYBALL DATA & INSIGHTS</small></div></div>
+<div id="daMetrics" class="da-metrics" aria-label="전체 신청 및 연결 현황"><div><span>남자부 신청자</span><strong>—</strong><small>공식 명단 확인 중</small></div><div><span>여자부 신청자</span><strong>—</strong><small>공식 명단 확인 중</small></div><div><span>선수 DB 연결</span><strong>—</strong><small>신원 대조 후 집계</small></div><div><span>연결 검수 대기</span><strong>—</strong><small>미연결 포함</small></div></div>
+</section>
+<div class="da-content">
+<nav class="da-hub-nav"><label>드래프트 연도 <select id="daSeason" aria-label="드래프트 시즌"></select></label><a href="players.html">전체 선수 검색</a><a href="#eligibilityReference" id="daReferenceOpen">기존 남자 대학 4학년 참고명단</a><span>참가 자격과 공식 신청 여부는 별도입니다.</span></nav>
+<div id="daLoadError" role="alert" class="da-error" hidden></div>
+<section id="applicants" aria-labelledby="listTitle">
+<div class="da-section-head"><div><p class="da-kicker">OFFICIAL APPLICANTS</p><h2 id="listTitle">공식 참가 신청자</h2></div><div class="da-gender" role="group" aria-label="신청자 성별"><button type="button" data-gender="M" aria-pressed="true">남자부 <span id="daMenCount">—</span></button><button type="button" data-gender="W" aria-pressed="false">여자부 <span id="daWomenCount">—</span></button></div></div>
+<div class="da-source-strip"><span id="daSourceStatus" role="status">공식 명단을 불러오고 있습니다.</span><button type="button" id="daSourcesOpen">출처·검수 내역 <span aria-hidden="true">↗</span></button></div>
+<form id="daFilters" class="da-filter-card" role="search">
+<div class="da-search-row"><label class="da-search"><span class="da-icon" data-icon="search"></span><span class="da-sr-only">선수명 검색</span><input id="daQuery" type="search" name="query" placeholder="선수 이름으로 검색" autocomplete="off"></label><button class="da-button" type="button" id="daMoreFilters" aria-expanded="false" aria-controls="daAdvanced"><span data-icon="sliders"></span>상세 조건</button><button type="reset" class="da-reset">초기화</button></div>
+<div class="da-primary-filters"><label>학교·소속<select name="affiliation" id="daSchool"><option value="">전체 학교·소속</option></select></label><label>포지션<select name="position" id="daPosition"><option value="">전체 포지션</option></select></label><label>선수 DB 연결<select name="match_status"><option value="">전체 연결 상태</option><option value="matched">연결 완료</option><option value="needs_review">추가 확인 필요</option><option value="unmatched">미연결</option><option value="duplicate_review">동명이인·중복 검토</option></select></label><label>정렬<select name="sort" id="daSort"><option value="source">공식 명단 순</option><option value="name">이름 가나다순</option><option value="affiliation">학교·소속순</option><option value="height_desc">신장 높은 순</option><option value="height_asc">신장 낮은 순</option></select></label></div>
+<div class="da-advanced" id="daAdvanced" hidden><label>참가 구분<select name="category" id="daCategory"><option value="">전체 구분</option></select></label><fieldset class="da-grades"><legend>학년 <small>복수 선택</small></legend><div id="daGrades"></div></fieldset><label>최소 신장 (cm)<input type="number" name="height_min" min="100" max="250" step="0.1" placeholder="제한 없음"></label><label>최대 신장 (cm)<input type="number" name="height_max" min="100" max="250" step="0.1" placeholder="제한 없음"></label><label>신청 상태<select name="application_status"><option value="">전체 신청 상태</option><option value="confirmed">신청 확인</option><option value="withdrawn">공식 철회</option></select></label><label>지명 결과<select name="selection_status"><option value="">전체 결과</option><option value="unverified">결과 미확인</option><option value="selected">지명 확인</option><option value="undrafted">미지명 확인</option></select></label></div>
+<p id="daFilterError" class="da-filter-error" role="status" hidden></p>
+</form>
+<div class="da-results-toolbar"><p id="daResultCount" role="status" aria-live="polite">신청자 정보를 확인 중입니다.</p><div class="da-toolbar-actions"><button type="button" id="daSummaryOpen" class="da-reset">소속·학년별 현황</button><div class="da-layout" role="group" aria-label="신청자 표시 방식"><button type="button" data-layout="table" aria-pressed="true"><span data-icon="table"></span>목록</button><button type="button" data-layout="cards" aria-pressed="false"><span data-icon="grid"></span>카드</button><button type="button" data-layout="compact" aria-pressed="false"><span data-icon="grid"></span>간편 보기</button></div></div></div>
+<div id="daResultBody" aria-busy="true"><div class="da-empty">공식 신청자 명단을 불러오는 중입니다.</div></div>
+<div class="da-bottom-note"><p><b>신청 확인</b>은 공식 명단 수록을 뜻합니다. 지명 결과와 별도이며, 명단에 없는 선수를 미신청으로 단정하지 않습니다.</p><button id="daDownload" type="button" class="da-button"><span data-icon="download"></span>현재 목록 CSV</button></div>
+</section>
+<details id="eligibilityReference" class="da-reference"><summary>기존 남자 대학 4학년 참고명단 · 공식 신청 여부와 별도</summary><div class="da-reference-content"><p>기존 대학 선수 DB의 대상자 조회 기능입니다. 이곳에 표시되는 것만으로 공식 신청자로 판정하지 않습니다. 선수·학교·포지션·신장 검색, 정렬과 비교 기능을 유지합니다.</p><div id="dhSummary" class="dh-summary"></div><section class="dh-controls">
+<input id="dhSearch" aria-label="참고명단 선수명 또는 학교 검색" type="search" placeholder="선수명 또는 학교 검색...">
+<select id="dhPosition" aria-label="참고명단 포지션"><option value="All">전체 포지션</option><option>S</option><option>OH</option><option>OP</option><option>MB</option><option>L</option></select>
+<select id="dhSchool" aria-label="참고명단 학교"><option value="All">전체 학교</option></select>
+<select id="dhHeight" aria-label="참고명단 최소 신장"><option value="0">전체 신장</option><option value="185">185cm 이상</option><option value="190">190cm 이상</option><option value="195">195cm 이상</option><option value="200">200cm 이상</option></select>
+<select id="dhSort" aria-label="참고명단 정렬"><option value="position">포지션 순</option><option value="heightDesc">신장 높은 순</option><option value="school">학교 순</option><option value="name">이름 순</option></select>
 </section>
 <section id="dhStats" class="dh-stats"></section>
 <div class="dh-head"><strong id="dhCount">대상 0명</strong><span>현재 기준: 대학 4학년 · 공식 참가 여부는 추후 별도 검증</span></div>
 <section id="dhGrid" class="dh-grid"><div class="dh-empty">데이터를 불러오는 중입니다.</div></section>
-</main>
-<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
-</body>
-</html>
+</div></details>
+<footer class="da-footer"><div><b>K-Volley Lab</b><span>데이터로 연결하는 배구의 오늘과 내일</span></div><a id="daWorkspace" href="players.html">전체 선수 검색</a></footer>
+</div></main>
+<dialog id="daDetailDialog" class="da-dialog da-detail-dialog" aria-labelledby="daDetailTitle"><div id="daDetailContent"></div></dialog>
+<dialog id="daSourceDialog" class="da-dialog" aria-labelledby="daSourceTitle"><div class="da-dialog-head"><div><p class="da-kicker">SOURCE & VERIFICATION</p><h2 id="daSourceTitle">공식 출처와 검수 내역</h2></div><button class="da-close" data-close="daSourceDialog" aria-label="출처 닫기">×</button></div><div id="daSourceContent" class="da-dialog-body"></div></dialog>
+<dialog id="daSummaryDialog" class="da-dialog" aria-labelledby="daSummaryTitle"><div class="da-dialog-head"><h2 id="daSummaryTitle">소속·학년별 신청 현황</h2><button class="da-close" data-close="daSummaryDialog" aria-label="현황 닫기">×</button></div><div id="daSummaryContent" class="da-dialog-body"></div></dialog>
+<dialog id="daAccountDialog" class="da-dialog da-account-dialog" aria-labelledby="daAccountTitle"><div class="da-dialog-head"><h2 id="daAccountTitle">개인 선수 기록은 준비 중입니다</h2><button class="da-close" data-close="daAccountDialog" aria-label="회원 기능 안내 닫기">×</button></div><div class="da-dialog-body"><p>회원 로그인과 비공개 저장 기능이 연결된 뒤 관심선수와 개인 메모를 이용할 수 있습니다. 현재는 개인 기록을 입력하거나 저장하지 않습니다.</p></div></dialog>
+<div class="da-toast" id="daToast" role="status" aria-live="polite" hidden></div>
+</body></html>

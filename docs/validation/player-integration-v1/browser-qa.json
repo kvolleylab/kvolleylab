@@ -1,0 +1,87 @@
+{
+  "environment": "Actual Chromium with local static preview; responsive iframe widths, not device emulation",
+  "date": "2026-10-23",
+  "players": [
+    {
+      "viewport": 1440,
+      "document_client": 1425,
+      "scroll_width": 1425,
+      "compact_columns": 6
+    },
+    {
+      "viewport": 1180,
+      "document_client": 1165,
+      "scroll_width": 1165,
+      "compact_columns": 4
+    },
+    {
+      "viewport": 768,
+      "document_client": 753,
+      "scroll_width": 753,
+      "compact_columns": 4
+    },
+    {
+      "viewport": 390,
+      "document_client": 375,
+      "scroll_width": 375,
+      "compact_columns": 2
+    },
+    {
+      "viewport": 360,
+      "document_client": 345,
+      "scroll_width": 345,
+      "compact_columns": 2
+    }
+  ],
+  "draft_hub": [
+    {
+      "viewport": 1440,
+      "layout": "cards",
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": 1180,
+      "layout": "compact",
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": 768,
+      "layout": "cards plus original reference board",
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": 390,
+      "layout": "cards plus original reference board",
+      "horizontal_overflow": false
+    },
+    {
+      "viewport": 360,
+      "layout": "table",
+      "horizontal_overflow": false
+    }
+  ],
+  "profile": {
+    "desktop_modal": true,
+    "mobile_360": true,
+    "horizontal_overflow": false
+  },
+  "interactions_verified": [
+    "home shared sidebar -> players",
+    "name search -> 1 result",
+    "compare tray add and clear",
+    "bookmark blocked with preparation dialog",
+    "university roster -> canonical profile",
+    "profile draft history -> annual hub applicant detail",
+    "female theme and grid",
+    "legacy eligibility minimum-height filter 44 -> 9",
+    "modal X and Escape"
+  ],
+  "limited": [
+    "national-team-history manual inspection: browser frame-tree/layout-metrics timeout; source hashes unchanged and all catalog profile IDs executed in DOM tests"
+  ],
+  "screenshots": [
+    "players-desktop.jpg",
+    "players-women-mobile.jpg",
+    "draft-mobile-table.jpg"
+  ]
+}

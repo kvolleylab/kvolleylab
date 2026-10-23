@@ -19,6 +19,8 @@ K-Volley Lab의 목표는 흩어진 배구 자료를 한곳에 모아 선수, �
 - 모든 주요 데이터의 출처 저장
 - 장기적으로 Excel → JSON → Website 자동화
 
+2026-10-23 선수·드래프트 통합 검수 및 회원 기능 제한: [구현/검증 보고서](docs/PLAYER_DRAFT_INTEGRATION_v1.md).
+
 ## Current Status
 
 | 영역 | 상태 |
@@ -41,8 +43,9 @@ K-Volley Lab의 목표는 흩어진 배구 자료를 한곳에 모아 선수, �
 |---|---|
 | `index.html` | 메인 페이지 |
 | `vnl.html` | VNL 국가별 선수 DB 진입 페이지 |
-| `players.html` | VNL 선수 검색 페이지 |
-| `player.html` | VNL 선수 상세 페이지 |
+| `players.html` | 공통 선수 검색·프로필 탐색·공식 드래프트 신청 필터 |
+| `player.html` | 기존 Player ID 기반 상세·이력·공식 신청 기록 |
+| `draft-hub.html` | 연도별 공식 신청 명단과 기존 대학 대상자 참고명단 |
 | `schedules.html` | VNL/AVC 일정 달력 |
 | `domestic/` | 국내 선수 DB 영역 |
 | `international/` | 국제 선수 DB 확장 영역 |

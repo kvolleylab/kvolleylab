@@ -1,0 +1,14 @@
+/* Additive styling: preserve legacy profile content, links and history sections. */
+body.kvl-integrated-profile{background:#f4f7fb;color:#152b47}
+.kvl-integrated-profile .pd-main{max-width:1180px;margin:0 auto;padding:30px 24px 100px}
+.kvl-integrated-profile .pd-card{background:#fff;border-radius:18px;border:1px solid #e4ebf2;box-shadow:0 3px 16px #152b4705}
+.kvl-integrated-profile .pd-title{color:#153e70}
+.kvl-integrated-profile .pd-badge{background:#eff6ff;color:#1e4d85}
+.kvl-integrated-profile .pd-player-women .pd-title{color:#985268}
+.pd-member-notice{font-size:13px;color:#63758b;padding:16px 18px;background:#f1f5f9;border-radius:12px;margin-top:20px;line-height:1.65}
+.pd-draft-history{margin-top:20px}.pd-draft-history article{padding:18px 0;border-top:1px solid #e4ebf2}.pd-draft-history p{margin:8px 0;line-height:1.6}.pd-draft-title{font-size:18px;font-weight:800;color:#153e70}.pd-draft-history small{display:block;margin-top:12px;color:#63758b}.pd-history-caption,.pd-draft-result{font-size:14px;color:#63758b}
+.kvl-profile-embedded .site-header,.kvl-profile-embedded .site-footer,.kvl-profile-embedded .kvl-global-sidebar,.kvl-profile-embedded .kvl-global-mobilebar,.kvl-profile-embedded .pd-back{display:none!important}
+html.kvl-profile-embedded.kvl-sidebar-shell-ready body.kvl-integrated-profile{padding:0!important;margin:0!important}.kvl-profile-embedded .pd-main{padding:16px!important;max-width:100%}.kvl-profile-embedded .ct-tray{display:none!important}
+@media(max-width:600px){.kvl-integrated-profile .pd-main{padding:18px 14px 90px}.pd-draft-title{font-size:16px}.pd-draft-history{overflow-wrap:anywhere}}
+
+html.kvl-profile-embedded .kvl-global-toggle,html.kvl-profile-embedded .kvl-global-backdrop,html.kvl-profile-embedded .kvl-review-mode-badge{display:none!important}
