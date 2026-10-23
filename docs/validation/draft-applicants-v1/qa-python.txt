@@ -1,0 +1,15 @@
+test_different_year_separate_event_identity (test_draft_applicants.IdentitySafety.test_different_year_separate_event_identity) ... ok
+test_disappearance_not_withdrawal (test_draft_applicants.IdentitySafety.test_disappearance_not_withdrawal) ... ok
+test_dob_conflict_cannot_fall_back (test_draft_applicants.IdentitySafety.test_dob_conflict_cannot_fall_back) ... ok
+test_exact_and_homonym (test_draft_applicants.IdentitySafety.test_exact_and_homonym) ... ok
+test_master_conflict_veto (test_draft_applicants.IdentitySafety.test_master_conflict_veto) ... ok
+test_name_only_never_links (test_draft_applicants.IdentitySafety.test_name_only_never_links) ... ok
+test_other_master_id_veto (test_draft_applicants.IdentitySafety.test_other_master_id_veto) ... ok
+test_recapture_and_correction_history (test_draft_applicants.IdentitySafety.test_recapture_and_correction_history) ... ok
+test_source_renumber_keeps_applicant_id (test_draft_applicants.IdentitySafety.test_source_renumber_keeps_applicant_id) ... ok
+test_two_exact_ids_quarantined (test_draft_applicants.IdentitySafety.test_two_exact_ids_quarantined) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK

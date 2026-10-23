@@ -1,0 +1,50 @@
+KVL draft applicant prototype QA — 2026-10-23
+Official snapshot 2026-10-22. Total automated tests: 35 PASS.
+
+test_different_year_separate_event_identity (test_draft_applicants.IdentitySafety.test_different_year_separate_event_identity) ... ok
+test_disappearance_not_withdrawal (test_draft_applicants.IdentitySafety.test_disappearance_not_withdrawal) ... ok
+test_dob_conflict_cannot_fall_back (test_draft_applicants.IdentitySafety.test_dob_conflict_cannot_fall_back) ... ok
+test_exact_and_homonym (test_draft_applicants.IdentitySafety.test_exact_and_homonym) ... ok
+test_master_conflict_veto (test_draft_applicants.IdentitySafety.test_master_conflict_veto) ... ok
+test_name_only_never_links (test_draft_applicants.IdentitySafety.test_name_only_never_links) ... ok
+test_other_master_id_veto (test_draft_applicants.IdentitySafety.test_other_master_id_veto) ... ok
+test_recapture_and_correction_history (test_draft_applicants.IdentitySafety.test_recapture_and_correction_history) ... ok
+test_source_renumber_keeps_applicant_id (test_draft_applicants.IdentitySafety.test_source_renumber_keeps_applicant_id) ... ok
+test_two_exact_ids_quarantined (test_draft_applicants.IdentitySafety.test_two_exact_ids_quarantined) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
+
+✔ draft bookmarking preserves both accounts notes, statuses and selected B layout (415.397108ms)
+✔ category clears incompatible school; multi-grade remains a combined filter (208.963756ms)
+✔ unlinked detail has no profile or bookmark and public text hides IDs (109.560082ms)
+✔ official full counts and uniqueness (0.995292ms)
+✔ all 18 unverified identities cannot open a profile (0.349836ms)
+✔ reject poisoned link, duplicate and non-public records (2.921445ms)
+✔ combined school gender positions height with OR grades (0.370734ms)
+✔ application and result independent, no inferred undrafted (0.207741ms)
+✔ height sorting keeps unknown last (0.471437ms)
+✔ CSV minimizes personal fields and neutralizes spreadsheet formulas (0.509998ms)
+✔ all verified applicant IDs render the correct existing player profile (4633.414034ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5182.856746
+
+Existing Work B regression: node --test tests/core.test.mjs tests/dom.test.mjs
+14/14 PASS. Includes note creation, multiple notes, edit/delete/undo, account boundaries, search, dependent schools, multigrade, cards/compact view and navigation.
+Protected repository files: 304/304 hash identical. Existing Site files: 24/24 hash identical.
+GitHub prototype / Site output parity: 7/7 new runtime files identical.
+Official re-fetch: original PDF hashes unchanged; 59 male + 58 female; duplicate rows 0.
+Re-ingestion: applicants, links and revision history bytes unchanged on identical input.
+Browser: 1440, 1180, 768, 390, 360 iframe widths, no horizontal overflow. Actual screenshots retained.
+Browser interactions: dependent school and grades, query, gender and layout, verified bookmarks, unmatched detail without profile, source links, outside-click closing PASS.
+Verified profile renderer: 99/99 correct names using unchanged player-detail and canonical identity overlay. This is DOM/source validation, not 99 individual live URL visits.
+HTTP preview limitation: existing B note creation raises crypto.randomUUID unavailable. Existing code unchanged; note CRUD covered by the 14 regressions and new bookmark/note preservation DOM test. HTTPS manual note verification pending.
+Production approval: NOT GIVEN. No main merge/deployment.
