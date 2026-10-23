@@ -1,0 +1,43 @@
+{
+  "pr": 152,
+  "implementation_head": "6951615126c0a56dc22eb7a16182287662e581a4",
+  "integration_ci": {
+    "run_id": 39927495675,
+    "conclusion": "success",
+    "python_tests": 14,
+    "js_tests": 24,
+    "failures": 0
+  },
+  "preexisting_failures": [
+    {
+      "run_id": 39927495580,
+      "job_id": 120327380050,
+      "name": "Register SKKU players in Player Master",
+      "observed_error": "Expected 16 existing Player Master records, got 127",
+      "master_write_step": "skipped"
+    },
+    {
+      "run_id": 39927495690,
+      "job_id": 120327380073,
+      "name": "Register Kyungil players in Player Master",
+      "observed_error": "AssertionError at unchanged 78-record prerequisite; existing master has 127 records",
+      "master_write_step": "skipped"
+    },
+    {
+      "run_id": 39927495566,
+      "job_id": 120327379267,
+      "name": "Build university Player Master batch",
+      "observed_error": "HTTP 422: sha was not supplied for existing file",
+      "branch_update": "failed"
+    },
+    {
+      "name": "connect-vnl-schedules-v1.yml / build-player-timeline-v1.yml",
+      "existing_main_failure_runs": [
+        39925357563,
+        39925357781
+      ],
+      "source_files_changed": false
+    }
+  ],
+  "policy": "Do not modify or truncate existing MASTERs to make old one-shot registration jobs pass. The final integration CI and exact PR head/data hashes are checked before merging."
+}

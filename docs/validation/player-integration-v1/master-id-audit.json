@@ -1,24 +1,50 @@
 {
   "source_record_counts": {
     "school_v2": 1164,
+    "player_master": 127,
+    "player_master_229_v1": 127,
     "player_master_229_v2": 229,
-    "player_master_school_v1": 6,
-    "player_master_international_v1": 221
+    "player_master_international_v1": 221,
+    "player_master_school_v1": 6
   },
   "duplicate_ids_within_sources": {
     "school_v2": [],
+    "player_master": [],
+    "player_master_229_v1": [],
     "player_master_229_v2": [],
-    "player_master_school_v1": [],
-    "player_master_international_v1": []
+    "player_master_international_v1": [],
+    "player_master_school_v1": []
   },
   "cross_source_overlaps": [
     {
       "sources": [
-        "player_master_school_v1",
-        "school_v2"
+        "player_master",
+        "player_master_229_v1"
       ],
-      "count": 6,
+      "count": 127,
       "different_name_ids": []
+    },
+    {
+      "sources": [
+        "player_master",
+        "player_master_229_v2"
+      ],
+      "count": 127,
+      "different_name_ids": [
+        "KVL-P-000008",
+        "KVL-P-000054"
+      ]
+    },
+    {
+      "sources": [
+        "player_master_229_v1",
+        "player_master_229_v2"
+      ],
+      "count": 127,
+      "different_name_ids": [
+        "KVL-P-000008",
+        "KVL-P-000054"
+      ]
     },
     {
       "sources": [
@@ -255,7 +281,15 @@
       "different_name_ids": [
         "KVL-P-000230"
       ]
+    },
+    {
+      "sources": [
+        "player_master_school_v1",
+        "school_v2"
+      ],
+      "count": 6,
+      "different_name_ids": []
     }
   ],
-  "note": "Existing raw international IDs are remapped by the unchanged compatibility layer to KVL-I before merging. Legacy school JSON is fallback only. No source file or compatibility rule changed."
+  "note": "Existing raw international IDs are remapped by the unchanged compatibility layer to KVL-I before merging. Legacy school JSON is fallback only. Legacy player_master.json is not the current search input. No source file or compatibility rule changed."
 }

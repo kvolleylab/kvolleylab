@@ -49,7 +49,7 @@ B안의 공개 선수 snapshot `public-players.json`은 운영에 복사하지 �
 
 [검색 비교](validation/player-integration-v1/catalog-comparison.json), [전체 프로필 검사](validation/player-integration-v1/profile-coverage.json), [MASTER ID 감사](validation/player-integration-v1/master-id-audit.json).
 
-**기존 원본의 주의사항:** 국제 MASTER 원본의 KVL-P 값 217개가 학교 압축 MASTER와 겹친다. 기존 `player-school-master-compat-v2.js`가 국제 항목을 기존 KVL-I 공개 경로로 구분한다. 이 오래된 호환 규칙과 모든 ID는 이번에 변경하지 않았다. 운영 검색의 중복은 0이지만 원본 ID 구조를 정리하려면 별도 개별 검수가 필요하다. fallback 학교 파일 6건은 현재 학교 MASTER와 동일 신원의 중복 수록이며 정상 환경에서는 fallback을 병합하지 않는다.
+**기존 원본의 주의사항:** 국제 MASTER 원본의 KVL-P 값 217개가 학교 압축 MASTER와 겹친다. 기존 `player-school-master-compat-v2.js`가 국제 항목을 기존 KVL-I 공개 경로로 구분한다. 이 오래된 호환 규칙과 모든 ID는 이번에 변경하지 않았다. 운영 검색의 중복은 0이지만 원본 ID 구조를 정리하려면 별도 개별 검수가 필요하다. 구형 `player_master.json`과 `player_master_229_v1.json`은 각 127행이며 현재 229 v2와 이름 표기가 다른 ID 2건(KVL-P-000008, KVL-P-000054)이 있다. 구형 자료를 현재 검색값 위에 덮어쓰지 않았다. fallback 학교 파일 6건은 현재 학교 MASTER와 동일 신원의 중복 수록이며 정상 환경에서는 fallback을 병합하지 않는다.
 
 새 신청 기록은 MASTER의 검수값을 덮어쓰지 않는다. 이름만 같은 선수, DOB 미확인·충돌, 알려진 소속·학년 충돌, 복수 ID 후보는 자동 연결하지 않는다. 학교 약칭/정식명은 확인된 alias만 정규화한다. 신원 일치하지만 학교·학년 자체가 없는 대표팀 연결 전용 프로필 2건은 기존 이름+DOB 검증 연결을 유지한다.
 
@@ -108,3 +108,9 @@ KVL_JSDOM_PATH=/path/to/node_modules/jsdom node --experimental-vm-modules --test
 원본 수집/생성 스크립트는 `scripts/draft_applicants/`에 있다. 원본 PDF·Drive identity 입력은 저장소 밖의 검수 경로에서 읽고, 공개 출력만 review한다. 재생성 결과가 달라지면 자동 MASTER 병합이나 main 갱신 없이 검수한다.
 
 화면 증빙: [PC 선수 검색](validation/player-integration-v1/players-desktop.jpg), [모바일 여자 그리드](validation/player-integration-v1/players-women-mobile.jpg), [모바일 신청 명단](validation/player-integration-v1/draft-mobile-table.jpg).
+
+## PR 검토 및 기존 CI 구분
+
+통합 PR: [#152](https://github.com/kvolleylab/kvolleylab/pull/152). 구현 commit: `6951615126c0a56dc22eb7a16182287662e581a4`. [통합 CI](https://github.com/kvolleylab/kvolleylab/actions/runs/39927495675)에서 Python 14 + JS 24 = 38개가 통과했다. 문서 보완 후 최종 head에서도 같은 CI 결과를 확인한다.
+
+기존 등록 워크플로는 모든 PR에 실행되며 이번 코드와 별개로 실패했다. SKKU는 기존 MASTER 16행, 경일대는 78행을 전제로 하는데 현재 구형 MASTER는 127행이다. 대학 batch 생성 workflow는 이미 존재하는 파일을 SHA 없이 갱신하려다 422 오류가 발생했다. 해당 job의 원본 로그를 확인했고, append/commit이 실패하여 PR head나 MASTER에 추가 변경이 없는 것을 확인했다. VNL 연결·타임라인 workflow 실패도 원래 main에 존재한다. 이 자동 등록 작업들을 성공시키려고 MASTER를 줄이거나 덮어쓰지 않았고, 기존 workflow 파일도 변경하지 않았다. 후속 운영 자동화 정비 대상으로 남긴다.
