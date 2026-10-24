@@ -1,0 +1,246 @@
+@import url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css);
+body.school-competitions-hub-page {font-family: Pretendard,Arial,sans-serif; color: #16314b; background: #f4f7fb; --accent: #24577c; --soft: #edf5fc; --line: #e0e8f0; --muted: #778da2; --gold: #ab8138;}
+body.school-competitions-hub-page #app * {box-sizing: border-box;}
+body.school-competitions-hub-page {margin: 0; background: #f4f7fb;}
+body.school-competitions-hub-page.women {--accent: #8e315e; --soft: #fff0f6;}
+body.school-competitions-hub-page #app button,body.school-competitions-hub-page #app input,body.school-competitions-hub-page #app select {font: inherit;}
+body.school-competitions-hub-page #app button,body.school-competitions-hub-page #app a,body.school-competitions-hub-page #app select,body.school-competitions-hub-page #app input {-webkit-tap-highlight-color: transparent;}
+body.school-competitions-hub-page #app a {color: inherit; text-decoration: none;}
+body.school-competitions-hub-page #app button,body.school-competitions-hub-page #app select {cursor: pointer;}
+body.school-competitions-hub-page #app button:focus-visible,body.school-competitions-hub-page #app a:focus-visible,body.school-competitions-hub-page #app input:focus-visible,body.school-competitions-hub-page #app select:focus-visible {outline: 3px solid #1babb7; outline-offset: 3px;}
+body.school-competitions-hub-page #app button {color: inherit;}
+body.school-competitions-hub-page #app svg {width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round;}
+body.school-competitions-hub-page #app h1,body.school-competitions-hub-page #app h2,body.school-competitions-hub-page #app h3,body.school-competitions-hub-page #app p,body.school-competitions-hub-page #app dl,body.school-competitions-hub-page #app dd {margin: 0;}
+body.school-competitions-hub-page #app img {object-fit: contain;}
+body.school-competitions-hub-page #app {max-width: 1180px; margin: 0 auto; padding-bottom: 30px;}
+body.school-competitions-hub-page .skip {position: fixed; top: -70px; left: 230px; padding: 12px; background: white; z-index: 10000;}
+body.school-competitions-hub-page .skip:focus {top: 10px;}
+body.school-competitions-hub-page #app .utility {height: 46px; background: white; padding: 0 26px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #75899e;}
+body.school-competitions-hub-page #app .utility>div {display: flex; gap: 12px;}
+body.school-competitions-hub-page #app .utility b {color: #355773; font-weight: 650;}
+body.school-competitions-hub-page #app .utility>a {font-size: 10px; color: #466782;}
+body.school-competitions-hub-page #app .preview-bar {padding: 11px 26px; display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #7d91a5; border-top: 1px solid #edf2f6;}
+body.school-competitions-hub-page #app .preview-bar>span:first-child {display: flex; align-items: center; gap: 8px; color: #476480;}
+body.school-competitions-hub-page #app .preview-bar i {width: 6px; height: 6px; background: #258e99; border-radius: 50%;}
+body.school-competitions-hub-page #app .preview-bar small {font-size: 8px; letter-spacing: 1px; color: #8298aa;}
+body.school-competitions-hub-page #app .school-hero {position: relative; background: #07182d url('../img/home-hero/kvl-home-hero-pc-v01.webp') right center/auto 100% no-repeat; min-height: 250px; padding: 31px 38px; isolation: isolate; overflow: hidden;}
+body.school-competitions-hub-page #app .school-hero:after {content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,#07182d 18%,#07182de0 40%,#07182d00 70%); z-index: -1;}
+body.school-competitions-hub-page #app .hero-copy {max-width: 70%;}
+body.school-competitions-hub-page #app .eyebrow {font-size: 9px; font-weight: 650; letter-spacing: 1.7px; color: #8a9eaf; line-height: 1.6;}
+body.school-competitions-hub-page #app .school-hero .eyebrow {color: #a0d1dd;}
+body.school-competitions-hub-page #app .school-hero h1 {color: #fff; font-size: 37px; line-height: 1.24; letter-spacing: -1.7px; margin: 8px 0 13px; font-weight: 800;}
+body.school-competitions-hub-page #app .school-hero h1 em {font-style: normal; color: #8fe4e0;}
+body.school-competitions-hub-page #app .hero-note {color: #bfcedc; font-size: 12px; line-height: 1.75;}
+body.school-competitions-hub-page #app .hero-link {display: inline-flex; gap: 25px; align-items: center; color: #d7f1f4; font-size: 11px; margin-top: 18px;}
+body.school-competitions-hub-page #app .hero-link span {font-size: 17px;}
+body.school-competitions-hub-page #app .hero-stamp {position: absolute; right: 11%; top: 72px; display: flex; align-items: center; flex-direction: column; gap: 6px; color: #d8f0f7;}
+body.school-competitions-hub-page #app .hero-stamp img {width: 57px; height: 57px;}
+body.school-competitions-hub-page #app .hero-stamp b {font-size: 18px;}
+body.school-competitions-hub-page #app .hero-stamp span {font-size: 7px; letter-spacing: 1.7px; color: #a9c7d4;}
+body.school-competitions-hub-page #app .season-bar {background: white; border: 1px solid var(--line); border-radius: 0 0 12px 12px; display: flex; align-items: center; padding: 20px 26px; gap: 28px; box-shadow: 0 5px 15px #233b5408;}
+body.school-competitions-hub-page #app .season-bar>div {border-right: 1px solid var(--line); padding-right: 30px;}
+body.school-competitions-hub-page #app .season-bar>div b {display: block; font-size: 24px; letter-spacing: -.5px;}
+body.school-competitions-hub-page #app .season-bar>div>span {font-size: 7px; letter-spacing: 1.5px; color: #8a9aab;}
+body.school-competitions-hub-page #app .season-bar dl {display: flex; gap: 44px;}
+body.school-competitions-hub-page #app .season-bar dl>div {display: flex; align-items: center; gap: 12px;}
+body.school-competitions-hub-page #app .season-bar dt {font-size: 11px; color: #7b8fa2;}
+body.school-competitions-hub-page #app .season-bar dd {font-size: 23px; font-weight: 750;}
+body.school-competitions-hub-page #app .season-bar dd small {font-size: 10px; font-weight: 450; margin-left: 5px; color: #8495a7;}
+body.school-competitions-hub-page #app .season-note {font-size: 10px; color: #9a8b6c; margin-left: auto;}
+body.school-competitions-hub-page #app #content {padding: 0 26px; outline: none;}
+body.school-competitions-hub-page #app .browse-controls {display: flex; justify-content: space-between; gap: 20px; align-items: center; margin: 25px 0 30px;}
+body.school-competitions-hub-page #app .division-filter {display: flex; gap: 5px; border-radius: 8px; background: #e8eef5; padding: 4px;}
+body.school-competitions-hub-page #app .division-filter button {background: transparent; border: 0; padding: 10px 14px; font-size: 12px; color: #637a91; white-space: nowrap; border-radius: 5px; font-weight: 600;}
+body.school-competitions-hub-page #app .division-filter button small {font-size: 8px; margin-left: 3px; color: #8ca0b0;}
+body.school-competitions-hub-page #app .division-filter button[aria-pressed=true] {background: white; color: var(--accent); box-shadow: 0 1px 5px #24436115; font-weight: 750;}
+body.school-competitions-hub-page #app .division-filter button.women-choice {color: #995172;}
+body.school-competitions-hub-page #app .division-filter button:hover {background: #ffffff8c;}
+body.school-competitions-hub-page #app .search {display: flex; align-items: center; gap: 8px; background: white; border: 1px solid var(--line); border-radius: 7px; padding: 0 12px; min-width: 200px; max-width: 270px; flex: 1; color: #8da0b1;}
+body.school-competitions-hub-page #app .search input {border: 0; outline: 0; background: transparent; min-width: 0; width: 100%; height: 39px; font-size: 11px; color: #274b6d;}
+body.school-competitions-hub-page #app .search:focus-within {outline: 2px solid #5c95b4; outline-offset: 2px;}
+body.school-competitions-hub-page #app .section-heading {display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 15px;}
+body.school-competitions-hub-page #app .section-heading h2 {font-size: 21px; letter-spacing: -.7px; color: #132c43; margin-top: 3px; font-weight: 800;}
+body.school-competitions-hub-page #app .section-heading p {font-size: 11px; color: #8495a7; margin-top: 7px; line-height: 1.5;}
+body.school-competitions-hub-page #app .text-link {font-size: 11px; color: var(--accent); font-weight: 600; white-space: nowrap;}
+body.school-competitions-hub-page #app .featured-grid {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 15px;}
+body.school-competitions-hub-page #app .feature {position: relative; background: white; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; transition: transform .15s,border-color .15s;}
+body.school-competitions-hub-page #app .feature:hover {transform: translateY(-2px); border-color: #89a9bc;}
+body.school-competitions-hub-page #app .feature-top {padding: 19px 20px 16px; background: linear-gradient(120deg,#edf5fc,#f8fbfd); position: relative; min-height: 132px; overflow: hidden;}
+body.school-competitions-hub-page #app .feature:first-child .feature-top {background: linear-gradient(120deg,#16364f,#245a70); color: white;}
+body.school-competitions-hub-page #app .feature:nth-child(3) .feature-top {background: linear-gradient(120deg,#f7f0f4,#fdf9fb);}
+body.school-competitions-hub-page #app .feature-label {font-size: 9px; letter-spacing: 1px; color: #7892a6;}
+body.school-competitions-hub-page #app .feature:first-child .feature-label {color: #a9d5df;}
+body.school-competitions-hub-page #app .feature h3 {font-size: 23px; letter-spacing: -.8px; margin-top: 13px; position: relative; z-index: 1;}
+body.school-competitions-hub-page #app .feature h3 span {display: block; font-size: 12px; font-weight: 500; margin-top: 6px; letter-spacing: -.3px; opacity: .8;}
+body.school-competitions-hub-page #app .feature-monogram {position: absolute; right: 16px; top: 39px; font-size: 66px; line-height: 1; font-weight: 850; letter-spacing: -6px; opacity: .055; font-style: italic; pointer-events: none;}
+body.school-competitions-hub-page #app .feature:first-child .feature-monogram {opacity: .09;}
+body.school-competitions-hub-page #app .feature-status {position: absolute; right: 17px; top: 17px; padding: 4px 7px; border: 1px solid #cddbe6; background: #ffffff4d; color: #6b879c; font-size: 8px; border-radius: 4px;}
+body.school-competitions-hub-page #app .feature:first-child .feature-status {color: #cee7ed; border-color: #477184; background: #ffffff0a;}
+body.school-competitions-hub-page #app .feature-bottom {padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 10px; color: #8295a8;}
+body.school-competitions-hub-page #app .feature-bottom p {line-height: 1.7;}
+body.school-competitions-hub-page #app .feature-bottom span {font-size: 19px; color: var(--accent);}
+body.school-competitions-hub-page #app .feature-champ {padding: 11px 20px; border-top: 1px solid #eff3f7; font-size: 11px; display: flex; align-items: center; gap: 7px; color: var(--accent); background: #fbfcfe; min-height: 38px;}
+body.school-competitions-hub-page #app .feature-champ svg {color: #b1904f; width: 15px; height: 15px;}
+body.school-competitions-hub-page #app .feature-champ small {font-size: 9px; color: #8a9aaa;}
+body.school-competitions-hub-page #app .recent-section {margin-bottom: 31px;}
+body.school-competitions-hub-page #app .recent-section[hidden] {display: none;}
+body.school-competitions-hub-page #app #archive {scroll-margin-top: 25px;}
+body.school-competitions-hub-page #app .archive-heading {align-items: flex-end; margin-bottom: 17px;}
+body.school-competitions-hub-page #app .archive-heading h2>span {font-size: 14px; padding: 3px 7px; background: #eaf0f6; color: #698397; border-radius: 5px; vertical-align: middle; margin-left: 5px; letter-spacing: 0;}
+body.school-competitions-hub-page #app .archive-tools {display: flex; align-items: center; gap: 9px; flex: none;}
+body.school-competitions-hub-page #app .archive-tools label {display: flex; align-items: center; gap: 8px; font-size: 10px; color: #8a9caf;}
+body.school-competitions-hub-page #app .archive-tools select {padding: 8px 22px 8px 9px; min-height: 35px; border-radius: 6px; border: 1px solid #dfe8ef; background: #fff; color: #54728c; font-size: 10px;}
+body.school-competitions-hub-page #app .tournament {border: 1px solid var(--line); border-radius: 12px; background: #fff; overflow: hidden; margin-bottom: 16px; display: grid; grid-template-columns: 215px minmax(0,1fr);}
+body.school-competitions-hub-page #app .tournament-info {padding: 22px 21px; background: #fbfcfe; border-right: 1px solid #e9eef4; display: flex; flex-direction: column; align-items: flex-start; gap: 0;}
+body.school-competitions-hub-page #app .record-meta {display: flex; align-items: center; gap: 7px; margin-bottom: 13px; font-size: 8px;}
+body.school-competitions-hub-page #app .series {color: #6d879f; font-weight: 650; letter-spacing: .3px;}
+body.school-competitions-hub-page #app .status {border: 1px solid #dce6ef; color: #879bac; border-radius: 4px; padding: 3px 5px; font-size: 8px; background: white;}
+body.school-competitions-hub-page #app .tournament-info h3 {font-size: 19px; letter-spacing: -.8px; line-height: 1.35; color: #1b3c58; word-break: keep-all;}
+body.school-competitions-hub-page #app .tournament-info h3 small {font-size: 11px; font-weight: 500; display: block; margin-top: 4px; color: #688399;}
+body.school-competitions-hub-page #app .record-date {font-size: 10px; color: #7f94a7; line-height: 1.7; margin: 12px 0 8px;}
+body.school-competitions-hub-page #app .record-date p {display: flex; align-items: center; gap: 6px;}
+body.school-competitions-hub-page #app .record-date svg {width: 12px; height: 12px; flex-shrink: 0;}
+body.school-competitions-hub-page #app .game-count {font-size: 9px; color: #93a3b1;}
+body.school-competitions-hub-page #app .tournament-link {display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #e4ebf2; font-size: 10px; font-weight: 650; color: var(--accent); padding-top: 13px; margin-top: 18px; width: 100%;}
+body.school-competitions-hub-page #app .tournament-link:hover {text-decoration: underline; text-underline-offset: 3px;}
+body.school-competitions-hub-page #app .podiums {display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); padding: 20px 11px; gap: 0; align-items: start;}
+body.school-competitions-hub-page #app .podium {padding: 0 11px; min-width: 0; border-right: 1px solid #ecf1f5;}
+body.school-competitions-hub-page #app .podium:last-child {border: 0;}
+body.school-competitions-hub-page #app .podium-head {display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: #315c7a; font-weight: 750; margin-bottom: 16px; gap: 4px;}
+body.school-competitions-hub-page #app .podium-head small {font-size: 7px; color: #99aab7; font-weight: 500;}
+body.school-competitions-hub-page #app .podium.women .podium-head {color: #9d5172;}
+body.school-competitions-hub-page #app .rank {display: flex; align-items: center; gap: 7px; margin: 12px 0; font-size: 10px; color: #7c8e9f; line-height: 1.4; min-height: 17px;}
+body.school-competitions-hub-page #app .rank b {font-size: 11px; font-weight: 550; color: #3e5970; overflow-wrap: anywhere;}
+body.school-competitions-hub-page #app .rank .medal {flex: none; font-size: 9px; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #f2f5f8; color: #8fa0b0;}
+body.school-competitions-hub-page #app .rank.champion {background: #fffbf2; border: 1px solid #f0e6d1; border-radius: 6px; display: flex; padding: 9px 7px; margin: 0 0 14px; min-height: 42px;}
+body.school-competitions-hub-page #app .rank.champion b {font-size: 12px; font-weight: 750; color: #856422;}
+body.school-competitions-hub-page #app .rank.champion .medal {background: transparent; color: #b69146; width: 16px; height: 17px;}
+body.school-competitions-hub-page #app .rank.champion svg {width: 15px; height: 15px;}
+body.school-competitions-hub-page #app .empty-podium {color: #9aabba; font-size: 11px; line-height: 1.9; padding: 14px 0 9px;}
+body.school-competitions-hub-page #app .empty-podium svg {display: block; width: 24px; height: 24px; margin-bottom: 9px; color: #b5c4cf;}
+body.school-competitions-hub-page #app .podium-link {color: #8a9cad; font-size: 9px; display: inline-block; margin-top: 6px;}
+body.school-competitions-hub-page #app .podium-link:hover {color: var(--accent); text-decoration: underline;}
+body.school-competitions-hub-page #app .single-division .podiums {grid-template-columns: 1fr; padding: 22px 25px;}
+body.school-competitions-hub-page #app .single-division .podium {padding: 0; border: 0;}
+body.school-competitions-hub-page #app .single-division .podium-head {margin-bottom: 14px;}
+body.school-competitions-hub-page #app .single-division .ranks {display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 14px; align-items: center;}
+body.school-competitions-hub-page #app .single-division .rank {display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 12px 5px; margin: 0; min-height: 83px; border: 1px solid #edf1f5; border-radius: 8px; background: #fcfdfe;}
+body.school-competitions-hub-page #app .single-division .rank b {font-size: 14px;}
+body.school-competitions-hub-page #app .single-division .rank.champion {background: #fffbf2; border-color: #f0e6d1;}
+body.school-competitions-hub-page #app .single-division .rank.champion svg {width: 22px; height: 22px;}
+body.school-competitions-hub-page #app .single-division .podium-link {margin-top: 17px;}
+body.school-competitions-hub-page #app .record-note {display: flex; gap: 15px; align-items: flex-start; margin-top: 20px; padding: 15px 18px; border: 1px solid #e4ebf2; border-radius: 8px; font-size: 10px; color: #93a3b3; line-height: 1.6;}
+body.school-competitions-hub-page #app .record-note>span {color: #698599; flex: none; font-weight: 650;}
+body.school-competitions-hub-page #app .empty-results {padding: 50px 20px; text-align: center; border: 1px dashed #d6e0e9; background: #fff; border-radius: 12px; color: #7890a5;}
+body.school-competitions-hub-page #app .empty-results svg {width: 28px; height: 28px; margin-bottom: 13px;}
+body.school-competitions-hub-page #app .empty-results h3 {font-size: 16px; color: #526e85; margin-bottom: 8px;}
+body.school-competitions-hub-page #app .empty-results p {font-size: 12px; line-height: 1.7;}
+body.school-competitions-hub-page #app .reset {margin-top: 18px; padding: 10px 16px; border: 1px solid #d5e2ec; background: #f3f8fc; border-radius: 7px; color: #3b6a8c; font-size: 11px;}
+body.school-competitions-hub-page #app .page-footer {margin: 32px 26px 0; padding-top: 22px; display: flex; gap: 12px; border-top: 1px solid var(--line); align-items: center; color: #8ca0b2; font-size: 10px;}
+body.school-competitions-hub-page #app .page-footer b {color: #53718c; font-size: 11px;}
+body.school-competitions-hub-page #app .page-footer small {margin-left: auto; font-size: 9px;}
+body.school-competitions-hub-page #app .loading {padding: 30px; color: #8a9cad;}
+body.school-competitions-hub-page .unused-prototype-selector {background: #ffffff12;}
+@media (max-width:1100px) {body.school-competitions-hub-page #app .browse-controls {flex-wrap: wrap; gap: 12px;}body.school-competitions-hub-page #app .search {max-width: none;}body.school-competitions-hub-page #app .season-note {display: none;}body.school-competitions-hub-page #app .season-bar dl {gap: 24px;}body.school-competitions-hub-page #app .tournament {grid-template-columns: 180px minmax(0,1fr);}body.school-competitions-hub-page #app .tournament-info {padding: 18px 15px;}body.school-competitions-hub-page #app .podiums {padding: 18px 5px;}body.school-competitions-hub-page #app .podium {padding: 0 8px;}body.school-competitions-hub-page #app .podium-head small {display: none;}body.school-competitions-hub-page #app .rank {gap: 5px;}body.school-competitions-hub-page #app .rank b {font-size: 10px;}body.school-competitions-hub-page #app .rank.champion {padding: 8px 5px;}body.school-competitions-hub-page #app .rank.champion b {font-size: 10px;}body.school-competitions-hub-page #app .feature h3 {font-size: 21px;}body.school-competitions-hub-page #app .single-division .ranks {gap: 9px;}}
+@media (max-width:767px) {body.school-competitions-hub-page #app {padding-top: 0;}body.school-competitions-hub-page #app .utility {padding: 0 16px; height: 39px; font-size: 10px;}body.school-competitions-hub-page #app .utility>div {gap: 8px;}body.school-competitions-hub-page #app .utility>a {font-size: 9px;}body.school-competitions-hub-page #app .preview-bar {padding: 10px 16px; font-size: 10px;}body.school-competitions-hub-page #app .preview-bar>span:last-child {display: none;}body.school-competitions-hub-page #app .school-hero {padding: 28px 22px; min-height: 246px; background-position: right center; background-size: auto 100%;}body.school-competitions-hub-page #app .school-hero h1 {font-size: 32px;}body.school-competitions-hub-page #app .school-hero .eyebrow {font-size: 8px; letter-spacing: 1.3px;}body.school-competitions-hub-page #app .hero-copy {max-width: 100%;}body.school-competitions-hub-page #app .hero-note {font-size: 11px; max-width: 85%;}body.school-competitions-hub-page #app .hero-stamp {display: none;}body.school-competitions-hub-page #app .school-hero:after {background: linear-gradient(90deg,#07182df5,#07182dba 55%,#07182d22);}body.school-competitions-hub-page #app .hero-link {margin-top: 13px; font-size: 10px;}body.school-competitions-hub-page #app .season-bar {padding: 17px 16px; gap: 15px;}body.school-competitions-hub-page #app .season-bar>div {padding-right: 14px;}body.school-competitions-hub-page #app .season-bar>div b {font-size: 21px;}body.school-competitions-hub-page #app .season-bar>div>span {font-size: 6px; letter-spacing: .7px;}body.school-competitions-hub-page #app .season-bar dl {justify-content: space-around; flex: 1; gap: 8px;}body.school-competitions-hub-page #app .season-bar dl>div {display: block; text-align: center;}body.school-competitions-hub-page #app .season-bar dt {font-size: 8px; margin-bottom: 5px;}body.school-competitions-hub-page #app .season-bar dd {font-size: 20px;}body.school-competitions-hub-page #app .season-bar dd small {font-size: 8px; margin-left: 2px;}body.school-competitions-hub-page #app #content {padding: 0 16px;}body.school-competitions-hub-page #app .browse-controls {margin: 20px 0 26px; gap: 12px;}body.school-competitions-hub-page #app .division-filter {width: 100%; gap: 2px; padding: 4px; justify-content: space-around;}body.school-competitions-hub-page #app .division-filter button {padding: 10px 8px; font-size: 10px; flex: 1;}body.school-competitions-hub-page #app .division-filter button small {display: none;}body.school-competitions-hub-page #app .search {max-width: none; min-width: 100%; height: 39px;}body.school-competitions-hub-page #app .section-heading h2 {font-size: 19px;}body.school-competitions-hub-page #app .section-heading .eyebrow {font-size: 8px;}body.school-competitions-hub-page #app .featured-grid {grid-template-columns: repeat(3,240px); gap: 12px; overflow: auto; padding-bottom: 9px; scroll-snap-type: x mandatory;}body.school-competitions-hub-page #app .feature {scroll-snap-align: start;}body.school-competitions-hub-page #app .feature-top {padding: 17px 17px 15px; min-height: 126px;}body.school-competitions-hub-page #app .feature h3 {font-size: 22px;}body.school-competitions-hub-page #app .feature-bottom {padding: 12px 17px;}body.school-competitions-hub-page #app .feature-champ {padding: 10px 17px;}body.school-competitions-hub-page #app .feature-label {font-size: 8px;}body.school-competitions-hub-page #app .recent-section {margin-bottom: 25px;}body.school-competitions-hub-page #app .archive-heading {flex-wrap: wrap; gap: 13px;}body.school-competitions-hub-page #app .archive-tools {margin-left: auto;}body.school-competitions-hub-page #app .archive-tools label {font-size: 9px;}body.school-competitions-hub-page #app .archive-tools select {font-size: 10px;}body.school-competitions-hub-page #app .tournament {grid-template-columns: 1fr; margin-bottom: 17px;}body.school-competitions-hub-page #app .tournament-info {padding: 18px 17px; position: relative; border-right: 0; border-bottom: 1px solid #e9eef4;}body.school-competitions-hub-page #app .record-meta {margin-bottom: 9px;}body.school-competitions-hub-page #app .tournament-info h3 {font-size: 19px; padding-right: 70px;}body.school-competitions-hub-page #app .tournament-info h3 small {font-size: 10px;}body.school-competitions-hub-page #app .record-date {margin: 11px 0 5px; font-size: 10px; display: flex; gap: 12px; flex-wrap: wrap;}body.school-competitions-hub-page #app .tournament-link {position: absolute; right: 17px; top: 51px; width: auto; border: 0; margin: 0; padding: 0; gap: 10px; font-size: 10px;}body.school-competitions-hub-page #app .podiums {grid-template-columns: repeat(2,minmax(0,1fr)); padding: 17px 7px 5px; row-gap: 17px;}body.school-competitions-hub-page #app .podium {padding: 0 10px 12px;}body.school-competitions-hub-page #app .podium:nth-child(2) {border: 0;}body.school-competitions-hub-page #app .podium-head {margin-bottom: 12px; font-size: 11px;}body.school-competitions-hub-page #app .podium-head small {display: block; font-size: 7px;}body.school-competitions-hub-page #app .rank {margin: 9px 0; font-size: 10px;}body.school-competitions-hub-page #app .rank b {font-size: 11px;}body.school-competitions-hub-page #app .rank.champion {margin-bottom: 11px; min-height: 38px;}body.school-competitions-hub-page #app .rank.champion b {font-size: 11px;}body.school-competitions-hub-page #app .podium-link {font-size: 9px;}body.school-competitions-hub-page #app .empty-podium {padding: 7px 0; font-size: 10px;}body.school-competitions-hub-page #app .empty-podium svg {width: 19px; height: 19px;}body.school-competitions-hub-page #app .single-division .podiums {padding: 18px 17px;}body.school-competitions-hub-page #app .single-division .ranks {grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px;}body.school-competitions-hub-page #app .single-division .rank {min-height: 82px;}body.school-competitions-hub-page #app .single-division .rank b {font-size: 13px;}body.school-competitions-hub-page #app .record-note {font-size: 9px; padding: 13px; gap: 10px;}body.school-competitions-hub-page #app .page-footer {margin: 25px 16px 0; flex-wrap: wrap; font-size: 9px; gap: 8px;}body.school-competitions-hub-page #app .page-footer small {width: 100%; margin: 0;}body.school-competitions-hub-page .skip {left: 15px;}body.school-competitions-hub-page .unused-prototype-selector {top: 10px !important;}}
+@media (prefers-reduced-motion:reduce) {body.school-competitions-hub-page #app * {scroll-behavior: auto !important; transition: none !important;}}
+body.school-competitions-hub-page .unused-prototype-selector {border: 0; background: transparent;}
+body.school-competitions-hub-page .unused-prototype-selector {width: 30px; height: 30px; display: block;}
+body.school-competitions-hub-page #app .third-pending {font-size: 9px; color: #9aa9b7; margin: 15px 0 11px;}
+body.school-competitions-hub-page #app .feature {transition: transform .16s ease,border-color .16s ease,box-shadow .16s ease;}
+body.school-competitions-hub-page #app .feature:hover,body.school-competitions-hub-page #app .feature:focus-visible {border-color: #c9a44c; box-shadow: 0 10px 24px #9a6d121a;}
+body.school-competitions-hub-page #app .feature .feature-top {min-height: 184px; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; background: #102c49 !important; isolation: isolate;}
+body.school-competitions-hub-page #app .feature-hero-img {position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2;}
+body.school-competitions-hub-page #app .feature-top:after {content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,#07182d18 0%,#07182d2b 30%,#07182dd9 78%,#07182df2 100%); z-index: -1; pointer-events: none;}
+body.school-competitions-hub-page #app .feature .feature-label {position: absolute; top: 19px; left: 20px; font-size: 8px; letter-spacing: 1px; color: #f0c84e !important; font-weight: 650;}
+body.school-competitions-hub-page #app .feature .feature-status {color: #e5edf4 !important; border-color: #a9c3d34d !important; background: #07182d66 !important; font-size: 8px; backdrop-filter: blur(3px);}
+body.school-competitions-hub-page #app .feature h3 {color: #f6d670; font-size: 25px; text-shadow: 0 2px 8px #0004; margin: 0; letter-spacing: -.8px;}
+body.school-competitions-hub-page #app .feature h3 span {color: #edf4f9; opacity: 1; font-size: 12px; margin-top: 7px; text-shadow: none;}
+body.school-competitions-hub-page #app .tournament {position: relative; cursor: pointer; transition: transform .16s ease,border-color .16s ease,box-shadow .16s ease,background .16s ease;}
+body.school-competitions-hub-page #app .tournament:hover,body.school-competitions-hub-page #app .tournament:focus-within {transform: translateY(-1px); border-color: #c9a44c; background: #fffdf7; box-shadow: 0 12px 26px #9a6d121a;}
+body.school-competitions-hub-page #app .tournament:focus-within {outline: 3px solid #c9a44c38; outline-offset: 2px;}
+body.school-competitions-hub-page #app .tournament-info {position: static !important; transition: background .16s ease;}
+body.school-competitions-hub-page #app .tournament:hover .tournament-info,body.school-competitions-hub-page #app .tournament:focus-within .tournament-info {background: #fffdf7;}
+body.school-competitions-hub-page #app .tournament:hover .tournament-info h3,body.school-competitions-hub-page #app .tournament:focus-within .tournament-info h3 {color: #9a6d12;}
+body.school-competitions-hub-page #app .series {color: #a96f00; font-weight: 750; background: #fff4d9; border-radius: 20px; padding: 5px 8px; font-size: 10px; line-height: 1;}
+body.school-competitions-hub-page #app .record-meta {gap: 6px; flex-wrap: wrap;}
+body.school-competitions-hub-page #app .tournament-link {position: static !important; margin-top: auto; padding-top: 14px; width: 100%;}
+body.school-competitions-hub-page #app .tournament-link:after {content: ''; position: absolute; inset: 0; z-index: 1; border-radius: 12px;}
+body.school-competitions-hub-page #app .tournament:hover .tournament-link,body.school-competitions-hub-page #app .tournament:focus-within .tournament-link {color: #9a6d12; text-decoration: underline; text-underline-offset: 3px;}
+body.school-competitions-hub-page #app .podiums {grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; padding: 14px; align-items: stretch;}
+body.school-competitions-hub-page #app .podium,body.school-competitions-hub-page #app .podium:last-child,body.school-competitions-hub-page #app .podium:nth-child(2) {display: flex; flex-direction: column; padding: 0; border: 1px solid #d8e5f2; border-radius: 9px; background: #fff; overflow: hidden; min-width: 0;}
+body.school-competitions-hub-page #app .podium.women,body.school-competitions-hub-page #app .podium.women:last-child,body.school-competitions-hub-page #app .podium.women:nth-child(2) {border-color: #f0dce4;}
+body.school-competitions-hub-page #app .podium-head {display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; text-align: center; margin: 0; padding: 12px 7px; background: #eef5fc; border-bottom: 1px solid #e1ebf5; color: #174f8b;}
+body.school-competitions-hub-page #app .podium-head b {font-size: 17px; letter-spacing: -.4px; font-weight: 800;}
+body.school-competitions-hub-page #app .podium-head small {display: block; font-size: 9px; line-height: 1.3; color: #728da5; font-weight: 500;}
+body.school-competitions-hub-page #app .podium.women .podium-head {color: #b44068; background: #fff1f5; border-bottom-color: #f3e2e8;}
+body.school-competitions-hub-page #app .podium.women .podium-head small {color: #ad7b91;}
+body.school-competitions-hub-page #app .ranks {padding: 5px 10px 0;}
+body.school-competitions-hub-page #app .rank,body.school-competitions-hub-page #app .rank.champion {display: flex; align-items: center; gap: 8px; margin: 0; min-height: 49px; padding: 7px 0; border: 0; border-bottom: 1px solid #edf1f5; border-radius: 0; background: transparent; text-align: left;}
+body.school-competitions-hub-page #app .rank:last-child {border-bottom: 0;}
+body.school-competitions-hub-page #app .rank-copy {display: flex; min-width: 0; flex-direction: column; gap: 3px;}
+body.school-competitions-hub-page #app .rank-label {font-size: 9px; line-height: 1.2; color: #8c9aa9; font-weight: 500; white-space: nowrap;}
+body.school-competitions-hub-page #app .rank b,body.school-competitions-hub-page #app .rank.champion b {font-size: 12px; line-height: 1.35; font-weight: 650; color: #35516c; overflow-wrap: anywhere;}
+body.school-competitions-hub-page #app .rank.champion b {font-weight: 750; color: #8a6928;}
+body.school-competitions-hub-page #app .rank.champion .rank-label {color: #aa8745;}
+body.school-competitions-hub-page #app .rank .medal,body.school-competitions-hub-page #app .rank.champion .medal {display: grid; place-items: center; flex: none; width: 23px; height: 29px; border: 0; border-radius: 0; background: transparent;}
+body.school-competitions-hub-page #app .rank .medal svg,body.school-competitions-hub-page #app .rank.champion .medal svg {width: 23px; height: 29px; fill: none; stroke: none; overflow: visible;}
+body.school-competitions-hub-page #app .medal.medal-1 {color: #bd912d;}
+body.school-competitions-hub-page #app .medal.medal-2 {color: #8e9cad;}
+body.school-competitions-hub-page #app .medal.medal-3 {color: #b37b56;}
+body.school-competitions-hub-page #app .trophy-handles {stroke: currentColor; stroke-width: 2; fill: none; stroke-linejoin: round; stroke-linecap: round;}
+body.school-competitions-hub-page #app .trophy-cup,body.school-competitions-hub-page #app .trophy-stem,body.school-competitions-hub-page #app .trophy-base {fill: currentColor; stroke: none;}
+body.school-competitions-hub-page #app .trophy-cup {fill-opacity: .92;}
+body.school-competitions-hub-page #app .trophy-shine {fill: none; stroke: #fff; stroke-opacity: .48; stroke-width: 1.8; stroke-linecap: round;}
+body.school-competitions-hub-page #app .trophy-stem {fill-opacity: .8;}
+body.school-competitions-hub-page #app .podium-link {display: block; position: relative; z-index: 2; text-align: center; padding: 11px 5px; margin: 9px 0 0; font-size: 10px; font-weight: 600; background: #f5f9fd; border-top: 1px solid #e7eff6; color: #527a9f; margin-top: auto;}
+body.school-competitions-hub-page #app .podium.women .podium-link {background: #fff7fa; border-top-color: #f5e7ed; color: #b16b88;}
+body.school-competitions-hub-page #app .podium-link:hover {background: #fff3d8; color: #9a6d12; text-decoration: underline;}
+body.school-competitions-hub-page #app .empty-podium {display: block; min-height: 142px; padding: 25px 8px 23px; text-align: center; font-size: 11px; line-height: 1.8;}
+body.school-competitions-hub-page #app .empty-podium svg {margin: 0 auto 11px;}
+body.school-competitions-hub-page #app .empty-podium small {font-size: 8px; color: #99a9b7;}
+body.school-competitions-hub-page #app .third-pending {text-align: center; font-size: 9px; line-height: 1.5; padding: 0 8px; margin: 10px 0 18px;}
+body.school-competitions-hub-page #app .single-division .podiums {padding: 14px; grid-template-columns: 1fr;}
+body.school-competitions-hub-page #app .single-division .podium {padding: 0; border: 1px solid #d8e5f2;}
+body.school-competitions-hub-page #app .single-division .podium.women {border-color: #f0dce4;}
+body.school-competitions-hub-page #app .single-division .podium-head {margin: 0; flex-direction: row; gap: 9px; padding: 12px;}
+body.school-competitions-hub-page #app .single-division .ranks {grid-template-columns: repeat(4,minmax(0,1fr)); padding: 14px; gap: 12px;}
+body.school-competitions-hub-page #app .single-division .rank,body.school-competitions-hub-page #app .single-division .rank.champion {flex-direction: column; gap: 8px; padding: 12px 6px; margin: 0; min-height: 106px; border: 1px solid #e9eef4; border-radius: 8px; background: #fbfdff;}
+body.school-competitions-hub-page #app .single-division .podium.women .rank {background: #fffafd; border-color: #f3e8ee;}
+body.school-competitions-hub-page #app .single-division .rank.champion {background: #fffbf2; border-color: #f0e6d1;}
+body.school-competitions-hub-page #app .single-division .rank-copy {align-items: center; text-align: center; gap: 4px;}
+body.school-competitions-hub-page #app .single-division .rank b {font-size: 14px;}
+body.school-competitions-hub-page #app .single-division .rank-label {font-size: 10px;}
+body.school-competitions-hub-page #app .single-division .podium-link {margin-top: auto;}
+body.school-competitions-hub-page #app .single-division .third-pending {margin-top: 0;}
+body.school-competitions-hub-page #app #archive-list {border: 1px solid #dce4eb; border-radius: 12px; background: #fff; overflow: hidden;}
+body.school-competitions-hub-page #app .year-block+.year-block {border-top: 1px solid #dfe6ed;}
+body.school-competitions-hub-page #app .year-heading {display: flex; align-items: center; justify-content: space-between; gap: 12px; list-style: none; padding: 15px 18px; background: #fbfcfd; cursor: pointer; user-select: none;}
+body.school-competitions-hub-page #app .year-heading::-webkit-details-marker {display: none;}
+body.school-competitions-hub-page #app .year-heading>span {display: flex; align-items: center; gap: 11px;}
+body.school-competitions-hub-page #app .year-heading strong {font-size: 25px; color: #17365d; font-weight: 800; letter-spacing: -.8px;}
+body.school-competitions-hub-page #app .year-heading small {font-size: 9px; letter-spacing: 1px; color: #7f92a6;}
+body.school-competitions-hub-page #app .year-heading b {font-size: 10px; font-weight: 500; color: #8c9eb0;}
+body.school-competitions-hub-page #app .year-heading>svg {width: 17px; height: 17px; color: #7b90a3; transition: transform .16s ease;}
+body.school-competitions-hub-page #app .year-block[open]>.year-heading {background: #fff; border-bottom: 1px solid #dfe6ed;}
+body.school-competitions-hub-page #app .year-block[open]>.year-heading>svg {transform: rotate(180deg);}
+body.school-competitions-hub-page #app .year-heading:hover {background: #fffaf0;}
+body.school-competitions-hub-page #app .year-heading:focus-visible {outline: 3px solid #c9a44c7d; outline-offset: -3px; background: #fffaf0;}
+body.school-competitions-hub-page #app .year-content {padding: 12px; background: #f7f9fb;}
+body.school-competitions-hub-page #app .year-content .tournament:last-child {margin-bottom: 0;}
+body.school-competitions-hub-page #app .year-pending {padding: 29px 15px; border: 1px dashed #ccd6df; border-radius: 9px; background: #fff; text-align: center; color: #8a9cad; line-height: 1.7;}
+body.school-competitions-hub-page #app .year-pending>svg {display: block; width: 25px; height: 25px; margin: 0 auto 10px; color: #a9b9c7;}
+body.school-competitions-hub-page #app .year-pending strong {display: block; font-size: 12px; font-weight: 600; color: #74899e;}
+body.school-competitions-hub-page #app .year-pending p {font-size: 10px; margin-top: 5px;}
+@media (max-width:1100px) {body.school-competitions-hub-page #app .tournament {grid-template-columns: 180px minmax(0,1fr);}body.school-competitions-hub-page #app .podiums {padding: 10px; gap: 7px;}body.school-competitions-hub-page #app .podium-head b {font-size: 16px;}body.school-competitions-hub-page #app .ranks {padding: 4px 7px 0;}body.school-competitions-hub-page #app .rank,body.school-competitions-hub-page #app .rank.champion {gap: 5px;}body.school-competitions-hub-page #app .rank b,body.school-competitions-hub-page #app .rank.champion b {font-size: 11px;}body.school-competitions-hub-page #app .rank .medal,body.school-competitions-hub-page #app .rank.champion .medal {width: 21px;}body.school-competitions-hub-page #app .rank .medal svg,body.school-competitions-hub-page #app .rank.champion .medal svg {width: 21px;}}
+@media (max-width:767px) {body.school-competitions-hub-page #app .feature .feature-top {min-height: 175px; padding: 18px;}body.school-competitions-hub-page #app .feature .feature-label {left: 18px; top: 17px; font-size: 7px;}body.school-competitions-hub-page #app .feature h3 {font-size: 24px;}body.school-competitions-hub-page #app .feature h3 span {font-size: 11px;}body.school-competitions-hub-page #app .tournament {grid-template-columns: 1fr;}body.school-competitions-hub-page #app .tournament-info {padding: 17px;}body.school-competitions-hub-page #app .tournament-info h3 {padding-right: 0;}body.school-competitions-hub-page #app .tournament-link {border-top: 1px solid #e4ebf2; margin-top: 13px; padding-top: 12px; font-size: 11px;}body.school-competitions-hub-page #app .series {font-size: 10px;}body.school-competitions-hub-page #app .podiums {grid-template-columns: repeat(2,minmax(0,1fr)); padding: 10px; gap: 9px;}body.school-competitions-hub-page #app .podium-head {padding: 11px 5px; gap: 3px;}body.school-competitions-hub-page #app .podium-head b {font-size: 16px;}body.school-competitions-hub-page #app .podium-head small {font-size: 8px;}body.school-competitions-hub-page #app .ranks {padding: 4px 8px 0;}body.school-competitions-hub-page #app .rank,body.school-competitions-hub-page #app .rank.champion {gap: 7px; min-height: 47px;}body.school-competitions-hub-page #app .rank b,body.school-competitions-hub-page #app .rank.champion b {font-size: 11px;}body.school-competitions-hub-page #app .rank-label {font-size: 8px;}body.school-competitions-hub-page #app .rank .medal,body.school-competitions-hub-page #app .rank.champion .medal {width: 21px; height: 27px;}body.school-competitions-hub-page #app .rank .medal svg,body.school-competitions-hub-page #app .rank.champion .medal svg {width: 21px; height: 27px;}body.school-competitions-hub-page #app .empty-podium {padding: 22px 5px; min-height: 140px; font-size: 10px;}body.school-competitions-hub-page #app .empty-podium small {font-size: 8px;}body.school-competitions-hub-page #app .podium-link {font-size: 9px; padding: 10px 3px;}body.school-competitions-hub-page #app .third-pending {font-size: 8px;}body.school-competitions-hub-page #app .single-division .podiums {padding: 10px;}body.school-competitions-hub-page #app .single-division .ranks {grid-template-columns: repeat(2,minmax(0,1fr)); padding: 10px; gap: 8px;}body.school-competitions-hub-page #app .single-division .rank b {font-size: 13px;}body.school-competitions-hub-page #app .single-division .rank,body.school-competitions-hub-page #app .single-division .rank.champion {min-height: 103px;}body.school-competitions-hub-page #app .year-heading {padding: 13px;}body.school-competitions-hub-page #app .year-heading>span {gap: 8px;}body.school-competitions-hub-page #app .year-heading strong {font-size: 23px;}body.school-competitions-hub-page #app .year-heading small {font-size: 8px;}body.school-competitions-hub-page #app .year-heading b {font-size: 9px;}body.school-competitions-hub-page #app .year-content {padding: 8px;}body.school-competitions-hub-page #app .year-pending strong {font-size: 11px;}body.school-competitions-hub-page #app .year-pending p {font-size: 9px;}}
+body.school-competitions-hub-page #app {padding:0 0 30px;max-width:1180px;margin:0 auto;}
+body.school-competitions-hub-page .site-header {display:none;}
+/* Preserve approved content colors against the legacy light-theme !important rules. */
+body.school-competitions-hub-page #app .school-hero h1 {color:#fff!important;}
+body.school-competitions-hub-page #app .eyebrow {color:#8a9eaf!important;}
+body.school-competitions-hub-page #app .school-hero .eyebrow {color:#a0d1dd!important;}
+body.school-competitions-hub-page #app #hero-year-label {font-size:inherit;}
+body.school-competitions-hub-page #app .archive-tools label {white-space:nowrap;}
+body.school-competitions-hub-page #app .school-hero h1 {font-size:37px!important;}
+@media(max-width:767px){body.school-competitions-hub-page #app .school-hero h1 {font-size:32px!important;}}
