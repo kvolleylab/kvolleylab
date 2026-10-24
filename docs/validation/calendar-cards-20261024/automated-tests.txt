@@ -1,0 +1,27 @@
+✔ all 12 annual cards use Sunday-first dates; every 2026 date occupies the correct weekday (253.319113ms)
+✔ every monthly day and neighboring date has correct weekday and exact period membership (1058.773096ms)
+✔ cross-week/cross-month Goseong period starts June 25 and ends July 3 inclusive (136.541259ms)
+✔ all gender/category combinations preserve exact event sets and shared university/school classification (1692.852761ms)
+✔ six overlapping August 29 events are all visible; only dated match rows yield one confirmed match (54.586949ms)
+✔ year/month/previous/next navigation preserve gender, category and locale parameters (102.688662ms)
+✔ sharing retains selected date, filters and locale (21.649271ms)
+✔ today remains independent from selection and uses Korean civil date (18.02203ms)
+✔ no missing gender metadata is interpreted as a gender confirmation (40.399554ms)
+✔ absent year data presents a recovery link without inventing fixtures (12.069123ms)
+✔ default Korean and future translation hooks retain existing language identifiers (20.380726ms)
+✔ all event destinations preserve original path/query/hash; local targets exist (25.921879ms)
+✔ existing Goseong summary modal retains results and routes its local links to the operating site (28.331022ms)
+✔ production calendar, shared UI, Hero images, masters and all data remain byte-for-byte unchanged (10.327181ms)
+✔ classification covers every registered 2026 competition exactly once (1.586786ms)
+✔ all / men / women filters preserve mixed university and school events without duplicating All (24.895072ms)
+✔ yearly and monthly navigation carries gender in URL (5.380309ms)
+✔ missing metadata fails safe: full calendar and visible warning (3.801154ms)
+✔ production file remains Home-width with real data-driven renderer import (0.22453ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3880.995591

@@ -1,0 +1,88 @@
+[
+  {
+    "view": "year",
+    "viewport": 1600,
+    "height": 2598.1875,
+    "width": 1180,
+    "status": "본문 1180px · 3열 · 가로 넘침 없음",
+    "dateColumns": {
+      "january1": 4,
+      "june1": 1
+    }
+  },
+  {
+    "view": "month",
+    "viewport": 1600,
+    "status": "본문 1180px · 월간 · 가로 넘침 없음"
+  },
+  {
+    "view": "month",
+    "viewport": 390,
+    "status": "본문 375px · 월간 · 가로 넘침 없음",
+    "metrics": {
+      "allDateCellsFit": true,
+      "client": 375,
+      "scroll": 375
+    }
+  },
+  {
+    "view": "month",
+    "viewport": 360,
+    "status": "본문 345px · 월간 · 가로 넘침 없음",
+    "metrics": {
+      "allDateCellsFit": true,
+      "client": 345,
+      "events": 3,
+      "scroll": 345,
+      "selected": "6월 30일 화요일"
+    }
+  },
+  {
+    "interaction": "women + domestic",
+    "selectedEvents": [
+      "goseong-university-2026"
+    ],
+    "yearLink": "competition-calendar-cards-prototype.html?view=year&year=2026&gender=women&category=domestic"
+  },
+  {
+    "interaction": "year to June month retains women + domestic",
+    "women": "true",
+    "domestic": "true"
+  },
+  {
+    "view": "year",
+    "viewport": 1180,
+    "status": "본문 955px · 3열 · 가로 넘침 없음",
+    "metrics": {
+      "allDateCellsFit": true,
+      "cards": 12,
+      "client": 1165,
+      "scroll": 1165
+    }
+  },
+  {
+    "interaction": "desktop sidebar collapse",
+    "expanded": "false"
+  },
+  {
+    "view": "year",
+    "viewport": 360,
+    "status": "본문 345px · 1열 · 가로 넘침 없음",
+    "metrics": {
+      "allDateCellsFit": true,
+      "cards": 12,
+      "client": 345,
+      "scroll": 345
+    }
+  },
+  {
+    "interaction": "mobile sidebar open",
+    "expanded": "true"
+  },
+  {
+    "interaction": "operating event destination",
+    "url": "https://kvolleylab.com/goseong-university-2026.html",
+    "title": "2026 고성대회 대학배구 일정·결과 | K-Volley Lab",
+    "verified": true
+  }
+]
