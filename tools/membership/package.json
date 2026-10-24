@@ -1,0 +1,17 @@
+{
+  "name": "kvl-membership-tooling",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "vendor": "node vendor.mjs",
+    "test": "node --test ../../tests/member-security.test.mjs ../../tests/member-service.test.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.11",
+    "esbuild": "0.28.2",
+    "jsdom": "26.1.0"
+  }
+}

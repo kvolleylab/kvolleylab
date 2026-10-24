@@ -1,0 +1,30 @@
+▶ PostgreSQL enforces ownership, verified sessions and immutable player IDs
+  ✔ two members can bookmark the same permanent player ID and create separate notes (16.1352ms)
+  ✔ anonymous SELECT, INSERT, UPDATE and DELETE are denied (9.43425ms)
+  ✔ member B cannot read, modify or delete member A notes by guessing note ID (5.37107ms)
+  ✔ spoofed user_id, ownership transfer, player replacement and timestamp edits are denied (3.772399ms)
+  ✔ unknown player IDs and malformed notes never enter private storage (4.393682ms)
+  ✔ multiple notes are allowed; stale edits cannot overwrite a newer revision (10.058181ms)
+  ✔ a user cannot forge another member session, skip verification, or use expired JWT claims (19.464276ms)
+  ✔ logging out removes the session and immediately blocks the still-unexpired token (5.912948ms)
+  ✔ ID registry and auth session tables are not directly exposed to members (6.143376ms)
+✔ PostgreSQL enforces ownership, verified sessions and immutable player IDs (1617.868128ms)
+✔ disabled config rejects no requests and enabled config cannot accept secrets or arbitrary origins (1.423216ms)
+✔ server verification and row retrieval precede visible signed-in state (1.611891ms)
+✔ logout clears private state before network work completes and old responses are discarded (4.219565ms)
+✔ switching account clears the previous member data and disallows stale mutations (1.09355ms)
+✔ all member rows are retrieved beyond the REST default page size (4.742322ms)
+✔ writes never accept a caller user_id and note revisions prevent lost edits (1.940497ms)
+✔ a memory snapshot cannot mutate the cached private state (0.250748ms)
+(node:14) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ private note text cannot inject HTML, and account changes clear the old member view (82.134179ms)
+✔ signout clears an open note editor and anonymous bookmark clicks open login instead of writing (25.170558ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1746.867466

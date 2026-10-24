@@ -9,7 +9,7 @@ const UI_KEY='kvl-player-workspace-public-ui-v1';
 function persist(){setQueryURL()}
 function profileHref(id){const query=new URLSearchParams({id,return:location.pathname+location.search});return 'player.html?'+query}
 function compareButton(p){return p.limited?'':`<button class="compare-button" type="button" data-compare-id="${e(p.id)}" data-compare-name="${e(p.name)}">비교 추가</button>`}
-function saveButton(p,iconOnly=false){return `<button class="save-button ${iconOnly?'icon-only':''}" type="button" data-member-unavailable aria-label="${e(p.name)} 관심선수 기능 안내">${icon('bookmark')}${iconOnly?'':'관심선수'}</button>`}
+function saveButton(p,iconOnly=false){return `<button class="save-button ${iconOnly?'icon-only':''}" type="button" data-member-unavailable data-player-id="${e(p.id)}" aria-label="${e(p.name)} 관심선수 기능 안내">${icon('bookmark')}${iconOnly?'':'관심선수'}</button>`}
 function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(x=>{x.innerHTML=icon(x.dataset.icon)})}
 function getFilters(){const data=new FormData($('filters')),filters=Object.fromEntries(data);delete filters.grade;return {...filters,q:$('playerSearch').value,grades:data.getAll('grade')}}
 function updateGradeCaption(){const grades=getFilters().grades;$('gradeSelection').textContent=grades.length?grades.join('·')+'학년':'전체 학년';document.querySelector('[data-all-grades]').hidden=!grades.length}

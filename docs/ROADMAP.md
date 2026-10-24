@@ -88,6 +88,7 @@ KVL-SRC-000001
 상태: 장기
 
 - Supabase/PostgreSQL 전환
+  - 2026-10-24: 공개 선수 MASTER 이전 없이 회원 Auth·관심선수·개인 메모용 SQL/RLS와 화면 구현. 운영 연결/메일 발송/두 계정 검수 전 비활성. [회원 기능 현황](PLAYER_MEMBERSHIP_v1.md).
 - API 제공
 - 영상/기사 연결
 - AI 검색 및 요약

@@ -1,0 +1,35 @@
+name: Player Membership Security
+on:
+  pull_request:
+    paths:
+      - 'assets/js/member-*.mjs'
+      - 'assets/js/player-members-v1.mjs'
+      - 'assets/css/player-members-v1.css'
+      - 'assets/vendor/supabase-*'
+      - 'supabase/**'
+      - 'tools/membership/**'
+      - 'data/member-config.json'
+      - 'tests/member-*.test.mjs'
+      - '.github/workflows/player-membership.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  postgres-access-control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --no-audit --no-fund
+        working-directory: tools/membership
+      - name: Verify PostgreSQL policies and client session isolation
+        env:
+          KVL_JSDOM_PATH: ${{ github.workspace }}/tools/membership/node_modules/jsdom
+        run: node --experimental-vm-modules --test tests/member-security.test.mjs tests/member-service.test.mjs tests/member-ui.test.mjs
+      - name: Verify reproducible pinned browser dependency
+        run: |
+          npm run vendor --prefix tools/membership
+          git diff --exit-code -- assets/vendor

@@ -1,0 +1,257 @@
+{
+  "checked_date": "2026-10-24",
+  "base_commit": "8237ba5ae5d2f901fdb69c6ca6723d3828ec2d90",
+  "summary": {
+    "reviewed": 18,
+    "immediately_safe_additional_links_without_any_profile_correction": 0,
+    "independently_verified_identity_correction_candidates": 6,
+    "historical_pamphlet_recheck_candidates": 4,
+    "official_dob_conflicts": 1,
+    "no_supported_existing_id": 7,
+    "raw_master_edits": 0,
+    "new_player_ids": 0
+  },
+  "rows": [
+    {
+      "applicant_id": "KVL-DA-2026-27-M-7f3a94196bdf13",
+      "name": "옹민혁",
+      "school": "경일대",
+      "candidate_player_id": "KVL-P-000083",
+      "existing_name": "문민혁",
+      "judgment": "identity_correction_evidence_verified",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978",
+        "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46743"
+      ],
+      "next_action": "Review identity correction/alias display for the existing ID and verify profile/search/roster parity before enabling applicant link. No new ID and no raw MASTER overwrite in this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-32e55ce37e35a0",
+      "name": "염시원",
+      "school": "경희대",
+      "candidate_player_id": "KVL-P-000050",
+      "existing_name": "엄시원",
+      "judgment": "identity_correction_evidence_verified",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978",
+        "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46904"
+      ],
+      "next_action": "Review identity correction/alias display for the existing ID and verify profile/search/roster parity before enabling applicant link. No new ID and no raw MASTER overwrite in this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-94b1fbcae2cdc0",
+      "name": "김도현",
+      "school": "인하대",
+      "candidate_player_id": "KVL-P-000003",
+      "existing_name": "김도현",
+      "judgment": "official_dob_conflict_keep_blocked",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978",
+        "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46893"
+      ],
+      "next_action": "Request corrected/clarified official KOVO DOB; retain existing ID and MASTER."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-7772dc3024bc2f",
+      "name": "전유석",
+      "school": "중부대",
+      "candidate_player_id": "KVL-P-000107",
+      "existing_name": "전우석",
+      "judgment": "identity_correction_evidence_verified",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978",
+        "https://www.kusf.or.kr/league/league_player_detail.html?l_code=260&p_code=46885"
+      ],
+      "next_action": "Review identity correction/alias display for the existing ID and verify profile/search/roster parity before enabling applicant link. No new ID and no raw MASTER overwrite in this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-524830cf370078",
+      "name": "장승호",
+      "school": "충남대",
+      "candidate_player_id": "KVL-P-000192",
+      "existing_name": "장승훈",
+      "judgment": "identity_correction_evidence_verified",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978",
+        "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46879"
+      ],
+      "next_action": "Review identity correction/alias display for the existing ID and verify profile/search/roster parity before enabling applicant link. No new ID and no raw MASTER overwrite in this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-eaf1aa37fe9ce0",
+      "name": "송건환",
+      "school": "홍익대",
+      "candidate_player_id": "KVL-P-000034",
+      "existing_name": "송기화",
+      "judgment": "identity_correction_evidence_verified",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978",
+        "https://kusf.or.kr/league/league_player_detail.html?p_code=25051"
+      ],
+      "next_action": "Review identity correction/alias display for the existing ID and verify profile/search/roster parity before enabling applicant link. No new ID and no raw MASTER overwrite in this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-f4e3aaae61d065",
+      "name": "변혜민",
+      "school": "부산시체육회",
+      "candidate_player_id": null,
+      "existing_name": null,
+      "judgment": "no_supported_existing_id_keep_unmatched",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978"
+      ],
+      "next_action": "Keep unlinked; any future entry requires normal reviewed permanent-ID registration, outside this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-0d17cefcb15e46",
+      "name": "안창호",
+      "school": "비오신코리아",
+      "candidate_player_id": null,
+      "existing_name": null,
+      "judgment": "no_supported_existing_id_keep_unmatched",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978"
+      ],
+      "next_action": "Keep unlinked; any future entry requires normal reviewed permanent-ID registration, outside this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-3e3f381a6c05cb",
+      "name": "이율리",
+      "school": "국군체육부대",
+      "candidate_player_id": null,
+      "existing_name": null,
+      "judgment": "no_supported_existing_id_keep_unmatched",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978"
+      ],
+      "next_action": "Keep unlinked; any future entry requires normal reviewed permanent-ID registration, outside this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-dc393c707bfd8b",
+      "name": "홍지원",
+      "school": "영천시체육회",
+      "candidate_player_id": null,
+      "existing_name": null,
+      "judgment": "no_supported_existing_id_keep_unmatched",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978"
+      ],
+      "next_action": "Keep unlinked; any future entry requires normal reviewed permanent-ID registration, outside this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-M-0df35aadb35293",
+      "name": "박규환",
+      "school": "화성특례시청",
+      "candidate_player_id": null,
+      "existing_name": null,
+      "judgment": "no_supported_existing_id_keep_unmatched",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157978"
+      ],
+      "next_action": "Keep unlinked; any future entry requires normal reviewed permanent-ID registration, outside this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-W-d6946e06379f86",
+      "name": "김예서",
+      "school": "선명여고",
+      "candidate_player_id": "KVL-P-001163",
+      "existing_name": "김에서",
+      "judgment": "same_dob_school_position_name_conflict_review",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157977"
+      ],
+      "next_action": "Compare the cited historical pamphlet page with KOVO before approving name correction and linking. Preserve ID and records; no automatic match."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-W-6d00c71e57cbb6",
+      "name": "오해솔",
+      "school": "선명여고",
+      "candidate_player_id": "KVL-P-001214",
+      "existing_name": "오혜솔",
+      "judgment": "same_dob_school_position_name_conflict_review",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157977"
+      ],
+      "next_action": "Compare the cited historical pamphlet page with KOVO before approving name correction and linking. Preserve ID and records; no automatic match."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-W-aa86694f6ff581",
+      "name": "김아란",
+      "school": "제천여고",
+      "candidate_player_id": "KVL-P-001145",
+      "existing_name": "길아란",
+      "judgment": "same_dob_school_position_name_conflict_review",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157977"
+      ],
+      "next_action": "Compare the cited historical pamphlet page with KOVO before approving name correction and linking. Preserve ID and records; no automatic match."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-W-d14a553bfbd037",
+      "name": "김아중",
+      "school": "청수고",
+      "candidate_player_id": "KVL-P-001162",
+      "existing_name": "김아름",
+      "judgment": "same_dob_school_position_name_conflict_review",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157977"
+      ],
+      "next_action": "Compare the cited historical pamphlet page with KOVO before approving name correction and linking. Preserve ID and records; no automatic match."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-W-4b338d61cce497",
+      "name": "이소민",
+      "school": "광주여대",
+      "candidate_player_id": "KVL-P-001462",
+      "existing_name": "이수민",
+      "judgment": "identity_correction_evidence_verified",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157977",
+        "https://kusf.or.kr/league/league_player_detail.html?l_code=261&p_code=46698"
+      ],
+      "next_action": "Review identity correction/alias display for the existing ID and verify profile/search/roster parity before enabling applicant link. No new ID and no raw MASTER overwrite in this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-W-0cf7985a21d49d",
+      "name": "Audrey Pak",
+      "school": "외국국적동포선수",
+      "candidate_player_id": null,
+      "existing_name": null,
+      "judgment": "no_supported_existing_id_keep_unmatched",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157977"
+      ],
+      "next_action": "Keep unlinked; any future entry requires normal reviewed permanent-ID registration, outside this task."
+    },
+    {
+      "applicant_id": "KVL-DA-2026-27-W-f20a5224a33f91",
+      "name": "Ju Eun Anabel Park",
+      "school": "외국국적동포선수",
+      "candidate_player_id": null,
+      "existing_name": null,
+      "judgment": "no_supported_existing_id_keep_unmatched",
+      "linked": false,
+      "evidence_urls": [
+        "https://kovo.co.kr/news/kovo/press/157977"
+      ],
+      "next_action": "Keep unlinked; any future entry requires normal reviewed permanent-ID registration, outside this task."
+    }
+  ]
+}
