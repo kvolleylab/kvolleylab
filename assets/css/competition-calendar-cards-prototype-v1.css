@@ -1,0 +1,125 @@
+/* Calendar interior only. The production Hero, sidebar and 1180px shell are reused. */
+.cc-cards-prototype #competitionCalendar{--calendar-ink:#102c49;--calendar-muted:#718399;--calendar-line:#dce6f0;--calendar-blue:#edf5fd;--calendar-gold:#ad7c21}
+.cc-cards-prototype #competitionCalendar *{box-sizing:border-box}
+.cc-cards-prototype #competitionCalendar a{color:var(--calendar-ink)}
+.cc-cards-prototype #competitionCalendar button{font-family:inherit;cursor:pointer}
+.cc-cards-prototype #competitionCalendar a:focus-visible,.cc-cards-prototype #competitionCalendar button:focus-visible,.cc-cards-prototype #competitionCalendar summary:focus-visible{outline:3px solid #d6b25e;outline-offset:3px}
+.cc-cards-prototype .cc-month-shortcuts{border:0;box-shadow:none;padding:7px 8px;margin-bottom:18px;gap:5px;border-radius:12px}
+.cc-cards-prototype .cc-month-shortcuts a{font-size:12px;min-height:36px}
+.cc-cards-prototype .cc-month-shortcuts a[aria-current=page]{background:#102c49;color:#fff!important;box-shadow:none}
+.cc-card-guide{display:flex;justify-content:space-between;gap:12px;margin:0 0 20px;color:#526a82;font-size:12px;line-height:1.6}
+.cc-card-guide span{color:var(--calendar-muted)}
+.cc-cards-prototype .cc-year-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.cc-cards-prototype .cc-card-month{min-width:0;padding:19px 15px 0;border:1px solid var(--calendar-line);border-radius:19px;box-shadow:0 4px 16px #102c4904;overflow:hidden}
+.cc-cards-prototype .cc-card-month .cc-month-head{padding:0 3px 19px;border:0;gap:8px}
+.cc-cards-prototype .cc-card-month .cc-month-head a{font-size:21px;letter-spacing:-.045em}
+.cc-cards-prototype .cc-card-month .cc-month-head span{font-size:11px;font-weight:600;color:var(--calendar-muted)}
+.cc-card-weekdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-bottom:8px}
+.cc-card-weekdays>span{text-align:center;color:#526a82;font-size:11px;padding:8px 0;font-weight:600}
+.cc-card-weekdays .is-sunday,.cc-card-day.is-sunday .cc-card-day-number{color:#bd5a69}
+.cc-card-weekdays .is-saturday,.cc-card-day.is-saturday .cc-card-day-number{color:#3373a8}
+.cc-card-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cc-card-day{min-width:0;min-height:91px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:9px;padding:12px 3px 8px;border:1px solid transparent;border-radius:9px;background:transparent;text-decoration:none;line-height:1.2;transition:background .15s,border-color .15s;position:relative}
+.cc-card-day-number{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:50%;font-size:16px;font-weight:600;color:var(--calendar-ink);flex-shrink:0}
+.cc-card-day.has-events{background:var(--calendar-blue)}
+.cc-card-day:hover{background:#e7f0fa;border-color:#b6cde3}
+.cc-card-day.is-outside .cc-card-day-number{color:#a8b6c7}
+.cc-card-day.is-outside.has-events{background:#f6f9fd}
+.cc-card-day.is-today .cc-card-day-number{color:#fff;background:#102c49}
+.cc-card-day.is-selected{border:2px solid #c49b42;background:#fff8e9;padding:11px 2px 7px}
+.cc-card-day-count{font-size:12px;color:#466680;white-space:nowrap;font-weight:500;letter-spacing:-.02em}
+.cc-card-day-space{height:15px}
+.cc-card-dots{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:4px;flex-shrink:0}
+.cc-card-dots i{width:4px;height:4px;background:var(--dot);border-radius:50%;display:block}
+.cc-card-grid.is-compact{gap:5px 4px}
+.cc-card-day.is-compact{min-height:44px;height:44px;border-radius:6px;gap:3px;padding:3px 0}
+.cc-card-day.is-compact .cc-card-day-number{min-width:22px;height:22px;font-size:11px}
+.cc-card-day.is-compact .cc-card-day-count{display:none}
+.cc-card-day.is-compact .cc-card-day-space{display:none}
+.cc-card-month-foot{display:flex;align-items:center;gap:8px;min-height:42px;margin-top:13px;border-top:1px solid #edf2f7;text-decoration:none;color:#718399!important;font-size:10px;line-height:1.5}
+.cc-card-month-foot>span:last-child:not(:first-child){margin-left:auto}
+.cc-card-month-foot .cc-card-dots{margin-left:0!important}
+.cc-cards-prototype .cc-month-layout{display:block}
+.cc-card-monthly{padding:30px 32px 20px;background:#fff;border:1px solid var(--calendar-line);border-radius:19px;box-shadow:0 4px 20px #102c4903}
+.cc-card-monthly-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 24px;padding:0;background:transparent;border:0}
+.cc-card-monthly-head p{margin:0 0 10px;font-size:12px;color:#718399;line-height:1.4}
+.cc-card-monthly-head p span{margin-left:9px;color:#476681;font-weight:700}
+.cc-card-monthly-head h2{margin:0;font-size:30px;color:var(--calendar-ink);font-weight:800;letter-spacing:-.05em}
+.cc-card-monthly-head nav{display:flex;gap:8px}
+.cc-card-monthly-head nav a{display:grid;place-items:center;width:37px;height:37px;border:1px solid #dce6ef;border-radius:10px;text-decoration:none;font-size:25px;background:#fff}
+.cc-card-monthly-head nav a:hover{background:#edf5fd;border-color:#acc7e1}
+.cc-card-monthly .cc-card-weekdays{margin-bottom:10px}
+.cc-card-monthly .cc-card-weekdays span{font-size:12px}
+.cc-card-monthly-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;padding:0;color:#718399;font-size:11px;line-height:1.6}
+.cc-card-monthly-foot p{margin:0}
+.cc-card-key{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:10px}
+.cc-card-key i{display:block;width:10px;height:10px;border-radius:50%;margin-left:8px}
+.cc-card-key .today-key{background:#102c49}
+.cc-card-key .selected-key{background:#fff8e9;border:2px solid #c49b42;border-radius:3px}
+.cc-card-agenda{margin:24px 0 0;padding:24px 26px;background:#fff;border:1px solid var(--calendar-line);border-radius:18px;scroll-margin-top:240px}
+.cc-card-agenda-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cc-card-caption{font-size:11px;color:#8b6b28}
+.cc-card-agenda-head h2{margin:7px 0 0;font-size:21px;color:var(--calendar-ink);letter-spacing:-.04em}
+.cc-card-agenda-head>strong{font-size:12px;padding:7px 10px;border-radius:8px;color:#496781;background:#f1f6fb;white-space:nowrap}
+.cc-card-note,.cc-card-match-note{color:#718399;font-size:11px;line-height:1.65;margin:11px 0 20px}
+.cc-card-event-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cc-card-event{min-width:0;padding:17px 17px 13px;border:1px solid #e4ecf4;border-radius:12px;background:#fff}
+.cc-card-event-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px}
+.cc-card-category{display:inline-flex;align-items:center;gap:6px;color:#5e778d}
+.cc-card-category i{height:6px;width:6px;border-radius:50%;background:var(--event-color);display:inline-block}
+.cc-card-status{padding:3px 7px;border-radius:5px;background:#f2f5f8;color:#708093;font-size:10px;line-height:1.4;white-space:nowrap}
+.cc-card-status.status-live{color:#916b18;background:#fff4d8}
+.cc-card-status.status-upcoming{color:#316b9b;background:#eef5fd}
+.cc-card-event-link{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;text-decoration:none;margin:15px 0 12px}
+.cc-card-event-link h3{margin:0;color:var(--calendar-ink);font-size:15px;line-height:1.6;overflow-wrap:anywhere;word-break:keep-all}
+.cc-card-event-link>span{flex-shrink:0;color:#8095a9}
+.cc-card-event-period{font-size:11px;color:#526c85;line-height:1.7;margin:0;overflow-wrap:anywhere}
+.cc-card-event-period>span{display:block;color:#8a9bae}
+.cc-card-event-meta{font-size:10px;line-height:1.7;color:#7a8e9f;margin:8px 0 15px;word-break:keep-all;overflow-wrap:anywhere}
+.cc-card-event-action{display:flex;justify-content:space-between;align-items:center;padding-top:11px;border-top:1px solid #edf2f7;font-size:10px;text-decoration:none;color:#526c85!important}
+.cc-card-event>.cc-card-event-action.cc-focus-event{padding:11px 0 0;margin:0;border:0;border-top:1px solid #edf2f7;border-radius:0;background:transparent;box-shadow:none;transform:none}
+.cc-card-event:hover{border-color:#c6d8e9}
+.cc-card-confirmed{padding:10px;margin:12px 0;background:#f1f6fb;border-radius:7px;font-size:11px;color:#456781}
+.cc-card-confirmed p{margin:6px 0 0}
+.cc-card-empty{grid-column:1/-1;margin:0;padding:25px 10px;color:#7c8fa3;font-size:13px;text-align:center}
+.cc-card-all-events{padding:0 25px;margin-top:18px;border:1px solid var(--calendar-line);border-radius:14px;background:#fff}
+.cc-card-all-events summary{cursor:pointer;padding:19px 0;font-size:13px;color:#365671;line-height:1.4}
+.cc-card-all-events summary>span{float:right;font-size:11px;color:#7c8fa3}
+.cc-card-all-events[open] .cc-card-event-list{padding-bottom:22px}
+@media(max-width:1100px) and (min-width:901px){.cc-cards-prototype .cc-year-grid{gap:14px}.cc-cards-prototype .cc-card-month{padding:16px 10px 0}.cc-card-day.is-compact{height:38px;min-height:38px}}
+@media(max-width:900px){.cc-cards-prototype .cc-year-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cc-card-event-list{grid-template-columns:repeat(2,minmax(0,1fr))}.cc-card-guide{display:block}.cc-card-guide>span{display:block;margin-top:5px}}
+@media(max-width:680px){
+  .cc-cards-prototype .cc-year-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+  .cc-cards-prototype .cc-month-shortcuts{grid-template-columns:repeat(6,minmax(0,1fr));padding:6px;gap:3px;margin-bottom:14px}
+  .cc-cards-prototype .cc-month-shortcuts a{font-size:11px;min-height:34px}
+  .cc-card-guide{font-size:11px;margin:0 4px 14px}
+  .cc-cards-prototype .cc-card-month{padding:18px 15px 0}
+  .cc-card-monthly{padding:22px 13px 16px;border-radius:16px}
+  .cc-card-monthly-head{margin-bottom:19px;gap:10px;flex-direction:row;align-items:center}
+  .cc-card-monthly-head h2{font-size:24px}
+  .cc-card-monthly-head p{font-size:10px;margin-bottom:7px}
+  .cc-card-monthly-head p span{margin-left:5px}
+  .cc-card-monthly-head nav{gap:6px}
+  .cc-card-monthly-head nav a{width:32px;height:34px;font-size:23px;border-radius:8px}
+  .cc-card-weekdays,.cc-card-grid{gap:4px}
+  .cc-card-weekdays>span,.cc-card-monthly .cc-card-weekdays span{font-size:11px;padding:7px 0}
+  .cc-card-day{min-height:64px;padding:7px 0 6px;gap:5px;border-radius:6px}
+  .cc-card-day-number{font-size:12px;min-width:23px;height:23px}
+  .cc-card-day-count{font-size:9px;letter-spacing:-.06em}
+  .cc-card-dots{gap:3px}
+  .cc-card-dots i{width:3px;height:3px}
+  .cc-card-day.is-selected{padding:6px 0 5px}
+  .cc-card-day-space{height:11px}
+  .cc-card-monthly-foot{flex-direction:column;gap:11px;font-size:10px;text-align:center;margin-top:17px}
+  .cc-card-monthly-foot p{max-width:260px;word-break:keep-all}
+  .cc-card-agenda{padding:20px 16px;margin-top:17px;border-radius:15px}
+  .cc-card-agenda-head h2{font-size:19px}
+  .cc-card-agenda-head>strong{font-size:11px;padding:6px 8px}
+  .cc-card-note{margin-bottom:16px;font-size:10px;word-break:keep-all}
+  .cc-card-event-list{grid-template-columns:minmax(0,1fr);gap:11px}
+  .cc-card-event{padding:16px}
+  .cc-card-event-link h3{font-size:15px}
+  .cc-card-event-period>span{display:inline}
+  .cc-card-all-events{padding:0 16px}
+}
+@media(prefers-reduced-motion:reduce){.cc-card-day{transition:none}}

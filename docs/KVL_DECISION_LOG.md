@@ -119,3 +119,7 @@ Next action:
 ## 2026-10-24 — 중·고 허브 승인 시안 운영 통합
 
 Status: APPROVED / IMPLEMENTED / VERIFIED (배포와 live 확인은 해당 release PR에 기록). 사용자가 수정된 중·고 시안을 실제 홈페이지에 반영하도록 명시적으로 승인했다. 기존 `domestic-competitions.html?division=school` 주소와 공통 좌측 메뉴를 유지하며, 홈형 Hero·최근 대회·남녀 색상 패널·금색 상호작용·트로피·연도별 펼침을 적용한다. 부문 필터는 `category` 파라미터를 사용해 기존 `division=school` 라우팅을 보존한다. 기존 school-years/catalog 및 domestic 경기 JSON에서 읽고 데이터/선수 ID는 변경하지 않는다. 개별 Hero 미등록 대회는 승인된 공통 자산을 사용한다. 앞선 국내대회 v2 기록의 “중·고 허브는 운영 대상 아님” 제한을 이 허브에 한해 대체한다. 개별 중·고 대회 엔진은 이번 대상이 아니다. QA/복구: [검수 보고서](validation/school-hub-v2-20261024.md).
+
+## 2026-10-24 — 한국어 카드형 경기일정 달력 별도 시안
+
+Status: PROTOTYPE / VERIFIED / READY FOR REVIEW, 운영 미반영. 사용자 첨부 월간·연간 이미지 두 장을 기준으로 흰색 카드·기간 날짜의 옅은 배경·일요일 시작·한국어 출력·오늘/선택 구분을 구현했다. 기존 12개월/PC 3열, Home형 Hero, 1180px, 공통 메뉴, 성별/분류 필터, URL 공유, 기간 데이터와 상세/요약 연결을 유지한다. 경기 수는 날짜가 확인된 원본 경기만 집계하며 기간 데이터에서 일별 경기 수를 추정하지 않는다. 별도 브랜치 `feature/calendar-sunday-cards-prototype`와 소유자 비공개 시안을 사용한다. 운영 홈페이지 수정/PR 병합은 이번 요청에서 금지되며, 디자인 검토 후 별도 승인이 필요하다. [검증·화면·최소 적용 파일](validation/calendar-cards-prototype-20261024.md).
