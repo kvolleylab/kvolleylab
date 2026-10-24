@@ -2,6 +2,13 @@
 
 이 문서는 프로젝트의 주요 구조 변경, 기능 추가, 복구 작업을 기록합니다.
 
+## 2026-10-24 — Reviewed player names and draft links
+
+- Apply six names explicitly reviewed by the project owner, retaining permanent IDs and correction evidence.
+- Synchronize the existing Drive MASTER and active website sources; preserve other identity and history fields.
+- Link six approved applicants: 53/59 men and 52/58 women, 105 total; retain 12 unresolved records.
+- See [scope, evidence and recovery](PLAYER_NAME_REVIEW_20261024.md). Release status is recorded on the PR.
+
 ## 2026-10-23 — Player/Draft integration (pre-release verification)
 
 - Reuse the approved B player UI with the original 1,842-player pipeline and canonical routes.

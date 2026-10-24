@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "season": "2026-27",
-  "verified_at": "2026-10-22",
+  "verified_at": "2026-10-24",
   "links": [
     {
       "status": "matched",
@@ -109,20 +109,50 @@
       "applicant_id": "KVL-DA-2026-27-M-72ea2619fac140"
     },
     {
-      "status": "needs_review",
-      "player_id": null,
-      "profile_verified": false,
-      "evidence": [],
-      "public_reason": "MASTER에서 확인된 후보와 현재 공개 프로필의 신원 표기가 달라 검수가 필요합니다.",
-      "applicant_id": "KVL-DA-2026-27-M-7f3a94196bdf13"
+      "status": "matched",
+      "player_id": "KVL-P-000083",
+      "profile_verified": true,
+      "evidence": [
+        {
+          "rule": "name_birth_date",
+          "official_source": "https://kovo.co.kr/news/kovo/press/157978",
+          "profile_identity": "existing public player search + canonical identity overlay",
+          "master_checked": true
+        },
+        {
+          "rule": "reviewed_name_correction_existing_id",
+          "correction_id": "KVL-NAME-20261024-000083",
+          "official_profile": "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46743",
+          "reviewer": "project_owner",
+          "reviewed_at": "2026-10-24"
+        }
+      ],
+      "public_reason": "공식 신청자 명단·KUSF와 대조하고 이름·소속 검수를 마친 기존 선수 ID에 연결했습니다.",
+      "applicant_id": "KVL-DA-2026-27-M-7f3a94196bdf13",
+      "reviewed_at": "2026-10-24"
     },
     {
-      "status": "unmatched",
-      "player_id": null,
-      "profile_verified": false,
-      "evidence": [],
-      "public_reason": "기존 공개 DB에서 동일 신원을 확인하지 못했습니다.",
-      "applicant_id": "KVL-DA-2026-27-M-32e55ce37e35a0"
+      "status": "matched",
+      "player_id": "KVL-P-000050",
+      "profile_verified": true,
+      "evidence": [
+        {
+          "rule": "name_birth_date",
+          "official_source": "https://kovo.co.kr/news/kovo/press/157978",
+          "profile_identity": "existing public player search + canonical identity overlay",
+          "master_checked": true
+        },
+        {
+          "rule": "reviewed_name_correction_existing_id",
+          "correction_id": "KVL-NAME-20261024-000050",
+          "official_profile": "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46904",
+          "reviewer": "project_owner",
+          "reviewed_at": "2026-10-24"
+        }
+      ],
+      "public_reason": "공식 신청자 명단·KUSF와 대조하고 이름·소속 검수를 마친 기존 선수 ID에 연결했습니다.",
+      "applicant_id": "KVL-DA-2026-27-M-32e55ce37e35a0",
+      "reviewed_at": "2026-10-24"
     },
     {
       "status": "matched",
@@ -448,12 +478,27 @@
       "applicant_id": "KVL-DA-2026-27-M-09b0fb1c853248"
     },
     {
-      "status": "needs_review",
-      "player_id": null,
-      "profile_verified": false,
-      "evidence": [],
-      "public_reason": "MASTER에서 확인된 후보와 현재 공개 프로필의 신원 표기가 달라 검수가 필요합니다.",
-      "applicant_id": "KVL-DA-2026-27-M-7772dc3024bc2f"
+      "status": "matched",
+      "player_id": "KVL-P-000107",
+      "profile_verified": true,
+      "evidence": [
+        {
+          "rule": "name_birth_date",
+          "official_source": "https://kovo.co.kr/news/kovo/press/157978",
+          "profile_identity": "existing public player search + canonical identity overlay",
+          "master_checked": true
+        },
+        {
+          "rule": "reviewed_name_correction_existing_id",
+          "correction_id": "KVL-NAME-20261024-000107",
+          "official_profile": "https://www.kusf.or.kr/league/league_player_detail.html?l_code=260&p_code=46885",
+          "reviewer": "project_owner",
+          "reviewed_at": "2026-10-24"
+        }
+      ],
+      "public_reason": "공식 신청자 명단·KUSF와 대조하고 이름·소속 검수를 마친 기존 선수 ID에 연결했습니다.",
+      "applicant_id": "KVL-DA-2026-27-M-7772dc3024bc2f",
+      "reviewed_at": "2026-10-24"
     },
     {
       "status": "matched",
@@ -516,12 +561,27 @@
       "applicant_id": "KVL-DA-2026-27-M-d25a05a80dc422"
     },
     {
-      "status": "unmatched",
-      "player_id": null,
-      "profile_verified": false,
-      "evidence": [],
-      "public_reason": "기존 공개 DB에서 동일 신원을 확인하지 못했습니다.",
-      "applicant_id": "KVL-DA-2026-27-M-524830cf370078"
+      "status": "matched",
+      "player_id": "KVL-P-000192",
+      "profile_verified": true,
+      "evidence": [
+        {
+          "rule": "name_birth_date",
+          "official_source": "https://kovo.co.kr/news/kovo/press/157978",
+          "profile_identity": "existing public player search + canonical identity overlay",
+          "master_checked": true
+        },
+        {
+          "rule": "reviewed_name_correction_existing_id",
+          "correction_id": "KVL-NAME-20261024-000192",
+          "official_profile": "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46879",
+          "reviewer": "project_owner",
+          "reviewed_at": "2026-10-24"
+        }
+      ],
+      "public_reason": "공식 신청자 명단·KUSF와 대조하고 이름·소속 검수를 마친 기존 선수 ID에 연결했습니다.",
+      "applicant_id": "KVL-DA-2026-27-M-524830cf370078",
+      "reviewed_at": "2026-10-24"
     },
     {
       "status": "matched",
@@ -659,12 +719,27 @@
       "applicant_id": "KVL-DA-2026-27-M-377a4de69f4bb6"
     },
     {
-      "status": "needs_review",
-      "player_id": null,
-      "profile_verified": false,
-      "evidence": [],
-      "public_reason": "MASTER에서 확인된 후보와 현재 공개 프로필의 신원 표기가 달라 검수가 필요합니다.",
-      "applicant_id": "KVL-DA-2026-27-M-eaf1aa37fe9ce0"
+      "status": "matched",
+      "player_id": "KVL-P-000034",
+      "profile_verified": true,
+      "evidence": [
+        {
+          "rule": "name_birth_date",
+          "official_source": "https://kovo.co.kr/news/kovo/press/157978",
+          "profile_identity": "existing public player search + canonical identity overlay",
+          "master_checked": true
+        },
+        {
+          "rule": "reviewed_name_correction_existing_id",
+          "correction_id": "KVL-NAME-20261024-000034",
+          "official_profile": "https://kusf.or.kr/league/league_player_detail.html?p_code=25051",
+          "reviewer": "project_owner",
+          "reviewed_at": "2026-10-24"
+        }
+      ],
+      "public_reason": "공식 신청자 명단·KUSF와 대조하고 이름·소속 검수를 마친 기존 선수 ID에 연결했습니다.",
+      "applicant_id": "KVL-DA-2026-27-M-eaf1aa37fe9ce0",
+      "reviewed_at": "2026-10-24"
     },
     {
       "status": "matched",
@@ -1579,12 +1654,27 @@
       "applicant_id": "KVL-DA-2026-27-W-033be5ace977a8"
     },
     {
-      "status": "unmatched",
-      "player_id": null,
-      "profile_verified": false,
-      "evidence": [],
-      "public_reason": "기존 공개 DB에서 동일 신원을 확인하지 못했습니다.",
-      "applicant_id": "KVL-DA-2026-27-W-4b338d61cce497"
+      "status": "matched",
+      "player_id": "KVL-P-001462",
+      "profile_verified": true,
+      "evidence": [
+        {
+          "rule": "name_birth_date",
+          "official_source": "https://kovo.co.kr/news/kovo/press/157977",
+          "profile_identity": "existing public player search + canonical identity overlay",
+          "master_checked": true
+        },
+        {
+          "rule": "reviewed_name_correction_existing_id",
+          "correction_id": "KVL-NAME-20261024-001462",
+          "official_profile": "https://kusf.or.kr/league/league_player_detail.html?l_code=261&p_code=46698",
+          "reviewer": "project_owner",
+          "reviewed_at": "2026-10-24"
+        }
+      ],
+      "public_reason": "공식 신청자 명단·KUSF와 대조하고 이름·소속 검수를 마친 기존 선수 ID에 연결했습니다.",
+      "applicant_id": "KVL-DA-2026-27-W-4b338d61cce497",
+      "reviewed_at": "2026-10-24"
     },
     {
       "status": "matched",

@@ -1,0 +1,44 @@
+{
+  "base_commit": "8c4327c9669f2c251be16c8d0fe596168159bf6b",
+  "protected_files_checked": 1160,
+  "changed_files": [
+    "data/changelog/player_corrections_v1.json",
+    "data/competitions/university-league-men-2026/rosters.json",
+    "data/competitions/university-league-women-2026/rosters.json",
+    "data/domestic/university-danyang-women-2026.json",
+    "data/domestic/university-u-league-women-2026.json",
+    "data/draft-applicants/2026-27/player-links.json",
+    "data/master/player_master.json",
+    "data/master/player_master_229_v2.json",
+    "docs/CHANGELOG.md",
+    "docs/KVL_DECISION_LOG.md"
+  ],
+  "players_before": 1842,
+  "players_after": 1842,
+  "unique_ids": 1842,
+  "new_ids": 0,
+  "deleted_ids": 0,
+  "changed_ids": 0,
+  "reviewed_name_changes": 6,
+  "unchanged_other_catalog_fields": true,
+  "links_before": 99,
+  "links_after": 105,
+  "remaining_unlinked": 12,
+  "duplicate_links": 0,
+  "official_applicants": {
+    "M": 59,
+    "W": 58
+  },
+  "linked": {
+    "M": 53,
+    "W": 52
+  },
+  "tests": {
+    "python": 14,
+    "javascript": 30,
+    "failures": 0
+  },
+  "runtime_code_changes": 0,
+  "deployment": "See release PR for final deployment evidence",
+  "main_sync_note": "Preserves PR #156 Domestic Home v2; full scoped suite repeats in GitHub CI on final commit."
+}

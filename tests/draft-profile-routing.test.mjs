@@ -15,5 +15,5 @@ test('all verified applicant IDs render the correct existing player profile',asy
    const title=w.document.querySelector('.pd-title')?.textContent;assert.equal(title,row.name,`Profile identity mismatch: ${link.player_id}`);checked++;
   }finally{w.close()}
  }
- assert.equal(checked,99);
+ assert.equal(checked,105);
 });
