@@ -1,0 +1,26 @@
+▶ PostgreSQL enforces ownership, verified sessions and immutable player IDs
+  ✔ two members can bookmark the same permanent player ID and create separate notes (14.670671ms)
+  ✔ anonymous SELECT, INSERT, UPDATE and DELETE are denied (11.655807ms)
+  ✔ member B cannot read, modify or delete member A notes by guessing note ID (6.338277ms)
+  ✔ spoofed user_id, ownership transfer, player replacement and timestamp edits are denied (3.880692ms)
+  ✔ unknown player IDs and malformed notes never enter private storage (4.319007ms)
+  ✔ multiple notes are allowed; stale edits cannot overwrite a newer revision (9.560547ms)
+  ✔ a user cannot forge another member session, skip verification, or use expired JWT claims (18.442934ms)
+  ✔ logging out removes the session and immediately blocks the still-unexpired token (5.743495ms)
+  ✔ ID registry and auth session tables are not directly exposed to members (6.596739ms)
+✔ PostgreSQL enforces ownership, verified sessions and immutable player IDs (1795.690491ms)
+✔ disabled config rejects no requests and enabled config cannot accept secrets or arbitrary origins (1.239368ms)
+✔ server verification and row retrieval precede visible signed-in state (1.548557ms)
+✔ logout clears private state before network work completes and old responses are discarded (3.05481ms)
+✔ switching account clears the previous member data and disallows stale mutations (0.870259ms)
+✔ all member rows are retrieved beyond the REST default page size (1.884166ms)
+✔ writes never accept a caller user_id and note revisions prevent lost edits (1.323817ms)
+✔ a memory snapshot cannot mutate the cached private state (0.228877ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1937.621457

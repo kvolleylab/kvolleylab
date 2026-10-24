@@ -51,3 +51,8 @@ Backlog → Doing → Review → Done
 ```
 
 한 번에 `Doing` 항목을 지나치게 많이 늘리지 않습니다. 기존 운영 기능에 영향을 주는 작업은 반드시 `Review` 단계를 거칩니다.
+# 2026-10-24 후속 작업
+
+- IMPLEMENTED / LOCAL QA: 기존 선수 페이지용 회원 인증·관심선수·다중 개인 메모, PostgreSQL 소유권 정책과 테스트.
+- BLOCKED ACTIVATION: Supabase 설치/연결 확인, 운영 프로젝트·메일 발송 및 실제 두 계정 검증. 현재 회원 설정 비활성, 운영 배포 아님.
+- REVIEW COMPLETE / DATA NOT CHANGED: 신청자 18명 중 이름 정정 근거 6, 과거 원본 재검수 4, DOB 충돌 1, 기존 ID 없음 7. [정정안](DRAFT_18_REVIEW_20261024.md).

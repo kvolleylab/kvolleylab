@@ -29,6 +29,16 @@ Never turn `APPROVED` into `DEPLOYED` without evidence.
 
 ## Standing decisions
 
+### 2026-10-24 — KVL-MEMBER-001 / remaining draft review
+
+Status: IMPLEMENTED and LOCALLY VERIFIED; NOT DEPLOYED/ACTIVATED. User asked to complete the remaining work. Base `8237ba5ae5d2f901fdb69c6ca6723d3828ec2d90` retains the independently approved KOVO Cup update (#154).
+
+- Add Supabase Auth PKCE email login and owner-only bookmarks/multiple notes to the existing three player/draft pages. Keep GitHub Pages/public MASTER intact. Supabase was selected consistently with the existing roadmap; no external account or project has been created.
+- The SQL schema, real PostgreSQL RLS tests, session isolation and frontend are implemented. `data/member-config.json` remains disabled until a connected Supabase project, real email delivery and two-account hosted tests are verified. Local/synthetic UI tests must not be called production authentication.
+- Re-review only the 18 pending applicants: 6 official identity correction candidates, 4 historical pamphlet rechecks, 1 official DOB conflict, 7 without supported existing IDs. Current additional safe links 0; existing 99 links and all public player IDs remain unchanged.
+- The user's original no-automatic-MASTER-merge requirement remains active. The six concrete name corrections are presented for review, not silently applied.
+- Handoff: [membership implementation](PLAYER_MEMBERSHIP_v1.md), [18-person review](DRAFT_18_REVIEW_20261024.md).
+
 ### KVL-OPS-001 — Persistent developer operating rules (2026-10-21)
 
 **Status:** APPROVED. **Source:** user approval on 2026-10-21.

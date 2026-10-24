@@ -1,0 +1,10 @@
+import {build} from 'esbuild';
+import {copyFile,mkdir,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {readFile} from 'node:fs/promises';
+const dir=new URL('../../assets/vendor/',import.meta.url);
+await mkdir(dir,{recursive:true});
+await build({stdin:{contents:"export {createClient} from '@supabase/supabase-js';",resolveDir:new URL('.',import.meta.url).pathname},outfile:new URL('supabase-js-2.118.0.mjs',dir).pathname,bundle:true,minify:true,format:'esm',platform:'browser',target:'es2022',legalComments:'inline'});
+await copyFile(new URL('node_modules/@supabase/supabase-js/LICENSE',import.meta.url),new URL('supabase-js-LICENSE.txt',dir));
+const bytes=await readFile(new URL('supabase-js-2.118.0.mjs',dir));
+await writeFile(new URL('supabase-js-source.json',dir),JSON.stringify({package:'@supabase/supabase-js',version:'2.118.0',source:'https://github.com/supabase/supabase-js',license:'MIT',sha256:createHash('sha256').update(bytes).digest('hex'),build:'npm ci && npm run vendor (tools/membership)'},null,2)+'\n');
