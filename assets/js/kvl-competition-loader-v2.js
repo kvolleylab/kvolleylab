@@ -19,6 +19,7 @@
   const api=window.KVLCompetitionDataV2,errors=api.validate(data||{},{production:config.production===true});if(errors.length)throw Error(errors.join('; '));
   window.KVL_COMPETITION_V2_DATA=api.normalize(data);body.dataset.kvlRenderState='loading';
   window.KVLCompetitionShellV2.ensureShell();window.KVLCompetitionTemplateV2.apply();window.KVLCompetitionComponentsV2.render();
+  window.KVLDomesticHomeV2?.apply(window.KVL_COMPETITION_V2_DATA);
   body.dataset.kvlRenderState='loading';
   if(config.collectionRoot){
    const d=window.KVL_COMPETITION_V2_DATA,title=d.seo.title||`${d.displayName} | K-Volley Lab`;
