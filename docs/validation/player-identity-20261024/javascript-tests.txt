@@ -1,0 +1,42 @@
+✔ official full counts and uniqueness (1.074305ms)
+✔ all 12 unverified identities cannot open a profile (0.341887ms)
+✔ reject poisoned link, duplicate and non-public records (2.756749ms)
+✔ combined school gender positions height with OR grades (0.40958ms)
+✔ application and result independent, no inferred undrafted (0.27102ms)
+✔ height sorting keeps unknown last (0.402329ms)
+✔ CSV minimizes personal fields and neutralizes spreadsheet formulas (0.406725ms)
+✔ all verified applicant IDs render the correct existing player profile (3749.502157ms)
+✔ production data bridge preserves all 1842 IDs and the original renderer after reviewed name corrections (1823.696288ms)
+(node:15) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ school and multiple grades combine; card/grid preserve filters; original compare attributes retained (243.063073ms)
+✔ draft filter is exact verified link intersection; non-applicants survive general search (166.584389ms)
+✔ URL restores school, multiple grades, gender and compact view; modal uses canonical profile URL (114.186187ms)
+✔ production denies simulated accounts and all note writes without reading or modifying demo data (334.960872ms)
+✔ unified hub has 59 men and 58 women, three modes and no links for all 12 pending records (311.017109ms)
+✔ hub filters include university underclassmen, high-school and industrial entries (246.713891ms)
+✔ profile adds independent history and safe return without deleting timeline sections (84.0357ms)
+✔ external return URLs are rejected (11.845375ms)
+✔ selection facts are separate; future result joins preserve application and affiliation (2.475375ms)
+✔ changed catalog identity fails closed without changing permanent IDs (0.611367ms)
+✔ all files outside the six reviewed identities and explicit link changes are byte-identical (31.473233ms)
+✔ draft source failure preserves general search with a visible warning (165.224242ms)
+✔ the original eligibility board retains all target players and its independent filters (229.870761ms)
+✔ closing a deep-linked application removes stale applicant state before changing gender (208.145892ms)
+✔ all 1842 existing IDs resolve through the preserved profile renderer with unchanged identity (72303.676728ms)
+✔ six owner-reviewed names use the exact existing IDs and affiliations (7.166785ms)
+✔ all active source records retain every field except six names and explicit review timestamps (50.577535ms)
+✔ only six reviewed applicant links change; original 99 links and remaining 12 holds are retained (19.947167ms)
+✔ actual combined catalog changes exactly six names and preserves all 1842 IDs and other identity/history fields (440.115667ms)
+(node:27) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ approved names remain searchable by school and official-draft filter with canonical profile URLs (1742.932976ms)
+✔ unrelated namesakes, rejected candidate IDs and historical source snapshots are untouched (135.115488ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 72740.967949

@@ -1,0 +1,17 @@
+✔ all files outside the six reviewed identities and explicit link changes are byte-identical (30.458646ms)
+✔ six owner-reviewed names use the exact existing IDs and affiliations (6.24571ms)
+✔ all active source records retain every field except six names and explicit review timestamps (31.421569ms)
+✔ only six reviewed applicant links change; original 99 links and remaining 12 holds are retained (11.199293ms)
+✔ actual combined catalog changes exactly six names and preserves all 1842 IDs and other identity/history fields (360.195964ms)
+(node:31) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ approved names remain searchable by school and official-draft filter with canonical profile URLs (1647.797615ms)
+✔ unrelated namesakes, rejected candidate IDs and historical source snapshots are untouched (121.166843ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2489.632321

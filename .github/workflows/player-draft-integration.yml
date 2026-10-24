@@ -45,4 +45,4 @@ jobs:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-tests/node_modules/jsdom
         run: |
           python -m unittest discover -s tests -p test_draft_applicants.py
-          node --experimental-vm-modules --test tests/player-integration.test.mjs tests/draft-applicants.test.mjs tests/draft-profile-routing.test.mjs tests/player-profile-coverage.test.mjs
+          node --experimental-vm-modules --test tests/player-integration.test.mjs tests/draft-applicants.test.mjs tests/draft-profile-routing.test.mjs tests/player-profile-coverage.test.mjs tests/player-reviewed-identities.test.mjs

@@ -19,5 +19,281 @@
     "after": "정성원",
     "source": "2026 KUSF 대학배구 GUIDE BOOK",
     "changed_at": "2026-07-13"
+  },
+  {
+    "correction_id": "KVL-NAME-20261024-000083",
+    "player_id": "KVL-P-000083",
+    "before": "문민혁",
+    "after": "옹민혁",
+    "source": "KOVO 공식 신청자 명단 · KUSF 공식 프로필 · 사용자 이름·소속 검수 완료",
+    "source_urls": [
+      "https://kovo.co.kr/news/kovo/press/157978",
+      "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46743"
+    ],
+    "changed_at": "2026-10-24",
+    "review_status": "approved_by_project_owner",
+    "field": "name",
+    "affiliation": "경일대학교",
+    "field_changes": [
+      {
+        "file": "data/master/player_master.json",
+        "path": "/82/identity/name_ko",
+        "before": "문민혁",
+        "after": "옹민혁"
+      },
+      {
+        "file": "data/master/player_master.json",
+        "path": "/82/identity/name_native",
+        "before": "문민혁",
+        "after": "옹민혁"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/82/identity/name_ko",
+        "before": "문민혁",
+        "after": "옹민혁"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/82/identity/name_native",
+        "before": "문민혁",
+        "after": "옹민혁"
+      },
+      {
+        "file": "data/competitions/university-league-men-2026/rosters.json",
+        "path": "/KYUNGIL/players/2/en",
+        "before": "문민혁",
+        "after": "옹민혁"
+      }
+    ]
+  },
+  {
+    "correction_id": "KVL-NAME-20261024-000050",
+    "player_id": "KVL-P-000050",
+    "before": "엄시원",
+    "after": "염시원",
+    "source": "KOVO 공식 신청자 명단 · KUSF 공식 프로필 · 사용자 이름·소속 검수 완료",
+    "source_urls": [
+      "https://kovo.co.kr/news/kovo/press/157978",
+      "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46904"
+    ],
+    "changed_at": "2026-10-24",
+    "review_status": "approved_by_project_owner",
+    "field": "name",
+    "affiliation": "경희대학교",
+    "field_changes": [
+      {
+        "file": "data/master/player_master.json",
+        "path": "/49/identity/name_ko",
+        "before": "엄시원",
+        "after": "염시원"
+      },
+      {
+        "file": "data/master/player_master.json",
+        "path": "/49/identity/name_native",
+        "before": "엄시원",
+        "after": "염시원"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/49/identity/name_ko",
+        "before": "엄시원",
+        "after": "염시원"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/49/identity/name_native",
+        "before": "엄시원",
+        "after": "염시원"
+      },
+      {
+        "file": "data/competitions/university-league-men-2026/rosters.json",
+        "path": "/KYUNGHEE/players/6/name",
+        "before": "엄시원",
+        "after": "염시원"
+      },
+      {
+        "file": "data/competitions/university-league-men-2026/rosters.json",
+        "path": "/KYUNGHEE/players/6/en",
+        "before": "엄시원",
+        "after": "염시원"
+      }
+    ]
+  },
+  {
+    "correction_id": "KVL-NAME-20261024-000107",
+    "player_id": "KVL-P-000107",
+    "before": "전우석",
+    "after": "전유석",
+    "source": "KOVO 공식 신청자 명단 · KUSF 공식 프로필 · 사용자 이름·소속 검수 완료",
+    "source_urls": [
+      "https://kovo.co.kr/news/kovo/press/157978",
+      "https://www.kusf.or.kr/league/league_player_detail.html?l_code=260&p_code=46885"
+    ],
+    "changed_at": "2026-10-24",
+    "review_status": "approved_by_project_owner",
+    "field": "name",
+    "affiliation": "중부대학교",
+    "field_changes": [
+      {
+        "file": "data/master/player_master.json",
+        "path": "/106/identity/name_ko",
+        "before": "전우석",
+        "after": "전유석"
+      },
+      {
+        "file": "data/master/player_master.json",
+        "path": "/106/identity/name_native",
+        "before": "전우석",
+        "after": "전유석"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/106/identity/name_ko",
+        "before": "전우석",
+        "after": "전유석"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/106/identity/name_native",
+        "before": "전우석",
+        "after": "전유석"
+      },
+      {
+        "file": "data/competitions/university-league-men-2026/rosters.json",
+        "path": "/JOONGBU/players/10/en",
+        "before": "전우석",
+        "after": "전유석"
+      }
+    ]
+  },
+  {
+    "correction_id": "KVL-NAME-20261024-000192",
+    "player_id": "KVL-P-000192",
+    "before": "장승훈",
+    "after": "장승호",
+    "source": "KOVO 공식 신청자 명단 · KUSF 공식 프로필 · 사용자 이름·소속 검수 완료",
+    "source_urls": [
+      "https://kovo.co.kr/news/kovo/press/157978",
+      "https://kusf.or.kr/league/league_player_detail.html?l_code=M&l_year=2026&p_code=46879"
+    ],
+    "changed_at": "2026-10-24",
+    "review_status": "approved_by_project_owner",
+    "field": "name",
+    "affiliation": "충남대학교",
+    "field_changes": [
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/191/identity/name_ko",
+        "before": "장승훈",
+        "after": "장승호"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/191/identity/name_native",
+        "before": "장승훈",
+        "after": "장승호"
+      },
+      {
+        "file": "data/competitions/university-league-men-2026/rosters.json",
+        "path": "/CHUNGNAM/players/8/name",
+        "before": "장승훈",
+        "after": "장승호"
+      },
+      {
+        "file": "data/competitions/university-league-men-2026/rosters.json",
+        "path": "/CHUNGNAM/players/8/en",
+        "before": "장승훈",
+        "after": "장승호"
+      }
+    ]
+  },
+  {
+    "correction_id": "KVL-NAME-20261024-000034",
+    "player_id": "KVL-P-000034",
+    "before": "송기화",
+    "after": "송건환",
+    "source": "KOVO 공식 신청자 명단 · KUSF 공식 프로필 · 사용자 이름·소속 검수 완료",
+    "source_urls": [
+      "https://kovo.co.kr/news/kovo/press/157978",
+      "https://kusf.or.kr/league/league_player_detail.html?p_code=25051"
+    ],
+    "changed_at": "2026-10-24",
+    "review_status": "approved_by_project_owner",
+    "field": "name",
+    "affiliation": "홍익대학교",
+    "field_changes": [
+      {
+        "file": "data/master/player_master.json",
+        "path": "/33/identity/name_ko",
+        "before": "송기화",
+        "after": "송건환"
+      },
+      {
+        "file": "data/master/player_master.json",
+        "path": "/33/identity/name_native",
+        "before": "송기화",
+        "after": "송건환"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/33/identity/name_ko",
+        "before": "송기화",
+        "after": "송건환"
+      },
+      {
+        "file": "data/master/player_master_229_v2.json",
+        "path": "/33/identity/name_native",
+        "before": "송기화",
+        "after": "송건환"
+      },
+      {
+        "file": "data/competitions/university-league-men-2026/rosters.json",
+        "path": "/HONGIK/players/13/en",
+        "before": "송기화",
+        "after": "송건환"
+      }
+    ]
+  },
+  {
+    "correction_id": "KVL-NAME-20261024-001462",
+    "player_id": "KVL-P-001462",
+    "before": "이수민",
+    "after": "이소민",
+    "source": "KOVO 공식 신청자 명단 · KUSF 공식 프로필 · 사용자 이름·소속 검수 완료",
+    "source_urls": [
+      "https://kovo.co.kr/news/kovo/press/157977",
+      "https://kusf.or.kr/league/league_player_detail.html?l_code=261&p_code=46698"
+    ],
+    "changed_at": "2026-10-24",
+    "review_status": "approved_by_project_owner",
+    "field": "name",
+    "affiliation": "광주여자대학교",
+    "field_changes": [
+      {
+        "file": "data/domestic/university-u-league-women-2026.json",
+        "path": "/players/44/name",
+        "before": "이수민",
+        "after": "이소민"
+      },
+      {
+        "file": "data/domestic/university-danyang-women-2026.json",
+        "path": "/players/71/name",
+        "before": "이수민",
+        "after": "이소민"
+      },
+      {
+        "file": "data/competitions/university-league-women-2026/rosters.json",
+        "path": "/KWU/players/0/name",
+        "before": "이수민",
+        "after": "이소민"
+      },
+      {
+        "file": "data/competitions/university-league-women-2026/rosters.json",
+        "path": "/KWU/players/0/en",
+        "before": "이수민",
+        "after": "이소민"
+      }
+    ]
   }
 ]
