@@ -1,0 +1,30 @@
+✔ all 12 annual cards use Sunday-first dates; every 2026 date occupies the correct weekday (290.199219ms)
+✔ every monthly day and neighboring date has correct weekday and exact period membership (1150.130649ms)
+✔ cross-week/cross-month Goseong period starts June 25 and ends July 3 inclusive (133.729724ms)
+✔ all gender/category combinations preserve exact event sets and shared university/school classification (2156.615488ms)
+✔ six overlapping August 29 events are all visible; only dated match rows yield one confirmed match (61.203342ms)
+✔ year/month/previous/next navigation preserve gender, category and locale parameters (112.571867ms)
+✔ sharing retains selected date, filters and locale (37.026561ms)
+✔ today remains independent from selection and uses Korean civil date (17.853251ms)
+✔ no missing gender metadata is interpreted as a gender confirmation (32.963963ms)
+✔ absent year data presents a recovery link without inventing fixtures (11.461802ms)
+✔ default Korean and future translation hooks retain existing language identifiers (26.71887ms)
+✔ all event destinations preserve original path/query/hash; local targets exist (42.49946ms)
+✔ existing Goseong summary modal retains results and routes its local links to the operating site (31.014628ms)
+✔ period segments cover every included day exactly once without overlapping lanes or crossing week boundaries (373.397537ms)
+✔ range tooltip shows original full name and complete period, highlights every segment, and closes with Escape (36.536582ms)
+✔ mobile first tap opens period information, second tap retains the original destination, outside tap dismisses (22.422782ms)
+✔ production calendar, shared UI, Hero images, masters and all data remain byte-for-byte unchanged (8.620039ms)
+✔ classification covers every registered 2026 competition exactly once (1.457955ms)
+✔ all / men / women filters preserve mixed university and school events without duplicating All (25.763253ms)
+✔ yearly and monthly navigation carries gender in URL (6.828391ms)
+✔ missing metadata fails safe: full calendar and visible warning (3.250965ms)
+✔ production file remains Home-width with real data-driven renderer import (0.228424ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4904.852858

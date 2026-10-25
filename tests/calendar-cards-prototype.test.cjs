@@ -28,7 +28,7 @@ test('all 12 annual cards use Sunday-first dates; every 2026 date occupies the c
   let count=0;
   for(const grid of p.d.querySelectorAll('.cc-card-grid')){
     const month=Number(grid.dataset.calendarMonth);
-    const labels=[...grid.previousElementSibling.children].map(e=>e.textContent);
+    const labels=[...grid.parentElement.previousElementSibling.children].map(e=>e.textContent);
     assert.deepEqual(labels,['일','월','화','수','목','금','토']);
     [...grid.children].forEach((cell,index)=>{if(!cell.dataset.date)return;
       const date=new Date(cell.dataset.date+'T00:00:00Z');assert.equal(date.getUTCMonth()+1,month);
@@ -142,8 +142,54 @@ test('existing Goseong summary modal retains results and routes its local links 
   assert.equal(link.href,'https://kvolleylab.com/goseong-university-2026.html');
   modal.querySelector('.cc-detail-close').click();assert.equal(modal.hidden,true);p.close();
 });
+test('period segments cover every included day exactly once without overlapping lanes or crossing week boundaries',async()=>{
+  for(const view of ['year','month'])for(const m of view==='year'?[1]:Array.from({length:12},(_,i)=>i+1)){
+    const p=await mount(`view=${view}&year=2026&month=${m}`);
+    for(const board of p.d.querySelectorAll('.cc-card-board')){
+      const days=[...board.querySelectorAll('[data-date]')],bars=[...board.querySelectorAll('[data-range-event]')];
+      for(const date of days.map(d=>d.dataset.date)){
+        const covering=bars.filter(b=>b.dataset.rangeStart<=date&&b.dataset.rangeEnd>=date);
+        assert.deepEqual(covering.map(b=>b.dataset.rangeEvent).sort(),expected(date),date);
+        assert.equal(new Set(covering.map(b=>b.dataset.rangeLane)).size,covering.length,'no lane overlap '+date);
+      }
+      for(const bar of bars){
+        const start=new Date(bar.dataset.rangeStart+'T00:00:00Z'),end=new Date(bar.dataset.rangeEnd+'T00:00:00Z');
+        const span=Math.round((end-start)/86400000)+1;assert.ok(start.getUTCDay()+span<=7);
+        assert.equal(bar.style.gridColumn,`${start.getUTCDay()+1}/span ${span}`);
+        const event=period.events.find(e=>e.id===bar.dataset.rangeEvent);
+        assert.equal(bar.classList.contains('continues-before'),event.start<bar.dataset.rangeStart);
+        assert.equal(bar.classList.contains('continues-after'),event.end>bar.dataset.rangeEnd);
+        assert.equal(bar.href,new URL(event.href,'https://kvolleylab.com/').href);
+      }
+    }p.close();
+  }
+});
+test('range tooltip shows original full name and complete period, highlights every segment, and closes with Escape',async()=>{
+  const p=await mount('view=month&year=2026&month=6');
+  const ranges=[...p.d.querySelectorAll('[data-range-event="goseong-university-2026"]')],tip=p.d.getElementById('ccRangeTooltip');
+  assert.equal(ranges.length,2);assert.equal(tip.hidden,true);
+  ranges[0].dispatchEvent(new p.w.Event('pointerover',{bubbles:true}));
+  assert.equal(tip.hidden,false);assert.match(tip.textContent,/2026 대한항공배 전국대학배구 고성대회/);
+  assert.match(tip.textContent,/2026.06.25 – 2026.07.03/);
+  assert.equal(p.d.querySelectorAll('.is-range-active').length,2);
+  assert.equal(ranges[0].getAttribute('aria-describedby'),tip.id);
+  p.d.dispatchEvent(new p.w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));assert.equal(tip.hidden,true);
+  ranges[1].focus();assert.equal(tip.hidden,false);
+  p.w.dispatchEvent(new p.w.Event('scroll'));assert.equal(tip.hidden,false);
+  p.d.querySelector('[data-filter="international"]').click();assert.equal(tip.hidden,true);
+  assert.equal(p.d.querySelectorAll('[data-range-event="goseong-university-2026"]').length,0);p.close();
+});
+test('mobile first tap opens period information, second tap retains the original destination, outside tap dismisses',async()=>{
+  const p=await mount('view=month&year=2026&month=6',{mobile:true});
+  const a=p.d.querySelector('[data-range-event="goseong-university-2026"]'),tip=p.d.getElementById('ccRangeTooltip');
+  const first=new p.w.MouseEvent('click',{bubbles:true,cancelable:true});a.dispatchEvent(first);
+  assert.equal(first.defaultPrevented,true);assert.equal(tip.hidden,false);assert.match(tip.textContent,/한 번 더 눌러/);
+  let secondPrevented=null;p.d.addEventListener('click',e=>{secondPrevented=e.defaultPrevented;e.preventDefault()},{once:true});
+  a.click();assert.equal(secondPrevented,false);assert.equal(a.href,'https://kvolleylab.com/goseong-university-2026.html');
+  p.d.body.dispatchEvent(new p.w.Event('pointerdown',{bubbles:true}));assert.equal(tip.hidden,true);p.close();
+});
 test('production calendar, shared UI, Hero images, masters and all data remain byte-for-byte unchanged',()=>{
-  const diff=execFileSync('git',['diff','--name-only','3a187f09f0d4f8a8bf72d6abc48367208cdb03e4','--','competition-calendar.html','index.html','player.html','players.html','domestic-competitions.html','data','assets/img','assets/images','assets/js/unified-nav.js','assets/js/kvl-global-sidebar-v1.js','assets/js/competition-calendar-gender-v1.js','assets/js/school-competitions-hub.js','assets/css/competition-calendar-v2.css'],{cwd:root,encoding:'utf8'});
+  const diff=execFileSync('git',['diff','--name-only','e71cafc1dae8c99b793e35d2ce4a0d992b2bfe37','--','competition-calendar.html','index.html','player.html','players.html','domestic-competitions.html','competition-engine.html','university-competition.html','university-competition-danyang.html','data','assets/img','assets/images','assets/js/unified-nav.js','assets/js/kvl-global-sidebar-v1.js','assets/js/competition-calendar-gender-v1.js','assets/js/school-competitions-hub.js','assets/css/competition-calendar-v2.css'],{cwd:root,encoding:'utf8'});
   assert.equal(diff.trim(),'');
   const prod=read('competition-calendar.html');
   const extract=s=>s.match(/<section class="cc-calendar-hero"[\s\S]*?<\/section>/)[0];

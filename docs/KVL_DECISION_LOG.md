@@ -123,3 +123,11 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (배포와 live 확인은 해당 relea
 ## 2026-10-24 — 한국어 카드형 경기일정 달력 별도 시안
 
 Status: PROTOTYPE / VERIFIED / READY FOR REVIEW, 운영 미반영. 사용자 첨부 월간·연간 이미지 두 장을 기준으로 흰색 카드·기간 날짜의 옅은 배경·일요일 시작·한국어 출력·오늘/선택 구분을 구현했다. 기존 12개월/PC 3열, Home형 Hero, 1180px, 공통 메뉴, 성별/분류 필터, URL 공유, 기간 데이터와 상세/요약 연결을 유지한다. 경기 수는 날짜가 확인된 원본 경기만 집계하며 기간 데이터에서 일별 경기 수를 추정하지 않는다. 별도 브랜치 `feature/calendar-sunday-cards-prototype`와 소유자 비공개 시안을 사용한다. 운영 홈페이지 수정/PR 병합은 이번 요청에서 금지되며, 디자인 검토 후 별도 승인이 필요하다. [검증·화면·최소 적용 파일](validation/calendar-cards-prototype-20261024.md).
+
+## 2026-10-25 — 국내대회 기본 템플릿 가독성·달력·트로피 통일
+
+Status: APPROVED / IMPLEMENTED / VERIFIED (배포 결과는 release PR에 기록). 사용자가 기존 운영 고성·단양의 공통 템플릿 수정을 요청했다. 연도는 날짜 열에 맞추고 월은 가운데 정렬, 메뉴/남녀 전환 글씨 확대, overview 참가대학 로고·이름을 참가대학 페이지와 같은 크기로 통일, 경기일 테두리를 내부 표시로 변경한다. Overview 순위와 최종 1~4위는 기존 허브의 SVG 트로피(금/은/동)를 사용하며 PC CSS 메달 장식을 제거한다. 공동 3위/사다리/데이터/링크 의미는 유지한다. PC 및 모바일을 함께 제시한다. 상세와 복구: [검수 보고서](validation/domestic-template-readability-20261025.md).
+
+## 2026-10-25 — 카드형 달력에 대회 기간·말풍선 복원
+
+Status: PROTOTYPE / VERIFIED / READY FOR REVIEW, 운영 미반영. 사용자가 카드 디자인은 유지하고 기존처럼 대회 범위와 반투명 정보 말풍선을 함께 표시하도록 요청했다. 연간·월간에 주간 기간 막대를 추가하고 hover/키보드 초점에 전체 대회명·기간을 표시한다. 모바일은 첫 터치 정보, 두 번째 터치 기존 상세 이동이다. 22개 검사 및 PC/360px/390px 확인. 기존 PR #159와 동일 시안만 갱신하며 데이터/공통 메뉴/운영 페이지는 변경하지 않는다. [검증·화면·복구](validation/calendar-periods-20261025.md).

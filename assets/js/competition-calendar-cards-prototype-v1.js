@@ -27,12 +27,12 @@
     day:(m,d)=>`${m}월 ${d}일`,duration:n=>`${n}일간`,monthJump:'월 바로가기',genderFilter:'남녀부 일정 필터',categoryFilter:'대회 분류 필터',
     genderNote:'남녀 공동 개최 대회는 양쪽에서 표시 · 대회 기간 기준',genderMissing:'성별 분류 자료를 불러오지 못해 전체 일정만 표시합니다.',
     unclassified:n=>` · 분류 미확인 ${n}건은 전체에서 표시`,monthEvents:'이달의 대회',selectedDay:'선택한 날짜',selected:'선택',
-    periodNote:'대회 기간 기준이며, 모든 날짜에 경기가 열리는 것은 아닙니다.',dayHint:'날짜를 선택하면 그날 대회 기간에 포함되는 모든 대회를 볼 수 있습니다.',
+    periodNote:'대회 기간 기준이며, 모든 날짜에 경기가 열리는 것은 아닙니다.',dayHint:'기간 막대에 마우스를 올리거나 터치하면 대회 정보를 확인할 수 있습니다.',
     noDayEvents:'이 날짜에 등록된 대회 일정이 없습니다.',noMonthEvents:'이달에 등록된 대회 일정이 없습니다.',
     allMonth:'이달 전체 대회 보기',period:'대회 기간',details:'일정·결과 보기',summary:'대회 요약 보기',joint:'남녀부 공동 개최',
     dataMissing:y=>`${y}년 대회 일정 데이터가 없습니다.`,retry:'다시 불러오기',back2026:'2026년 달력 보기',
     matchNote:'날짜가 확인된 경기만 집계하며, 대회 전체 경기 수를 날짜별 경기 수로 사용하지 않습니다.',
-    daySchedule:'날짜별 대회',otherMonth:'다른 달',yearHint:'월 또는 날짜를 선택해 자세한 일정을 확인하세요.'
+    daySchedule:'날짜별 대회',otherMonth:'다른 달',yearHint:'기간 막대에서 대회 정보를, 날짜에서 그날의 대회를 확인하세요.',rangeHint:'선택하여 대회 일정 보기',touchHint:'한 번 더 눌러 대회 일정 보기'
   };
   // Keep locale/query state. Additional locale dictionaries can override keys;
   // absent translations fall back to Korean, the existing site default.
@@ -74,6 +74,52 @@
   // preview host they open the operating destination instead of a missing clone.
   const eventHref=e=>new URL(e.href,'https://kvolleylab.com/').href;
   const datedMatches=(events,date)=>events.flatMap(e=>(e.matches||[]).filter(m=>m.date===date).map(m=>({event:e,match:m})));
+  // One floating tooltip avoids clipping at month-card and viewport edges.
+  const rangeTip=document.createElement('div');
+  rangeTip.id='ccRangeTooltip';rangeTip.className='cc-range-tooltip';rangeTip.setAttribute('role','tooltip');rangeTip.hidden=true;document.body.append(rangeTip);
+  let activeRange=null,touchRange=null,hideRangeTimer=null,lastPointerType='mouse';
+  function hideRange(){
+    clearTimeout(hideRangeTimer);rangeTip.hidden=true;
+    activeRange?.removeAttribute('aria-describedby');activeRange=null;touchRange=null;
+    root.querySelectorAll('.is-range-active').forEach(a=>a.classList.remove('is-range-active'));
+  }
+  function showRange(anchor,touch=false){
+    const event=payload?.events.find(e=>e.id===anchor.dataset.rangeEvent);if(!event)return;
+    clearTimeout(hideRangeTimer);activeRange?.removeAttribute('aria-describedby');activeRange=anchor;
+    root.querySelectorAll('[data-range-event]').forEach(a=>a.classList.toggle('is-range-active',a.dataset.rangeEvent===event.id));
+    rangeTip.innerHTML=`<strong>${esc(event.title)}</strong><span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${esc(labelOf(event.category))}${assignedGenders(event).length===2?' · '+t.joint:''}</span><span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`;
+    rangeTip.style.maxWidth=`${Math.min(360,document.documentElement.clientWidth-24)}px`;
+    rangeTip.hidden=false;anchor.setAttribute('aria-describedby',rangeTip.id);
+    const rect=anchor.getBoundingClientRect(),box=rangeTip.getBoundingClientRect(),edge=12;
+    const left=Math.max(edge,Math.min(rect.left+rect.width/2-box.width/2,document.documentElement.clientWidth-box.width-edge));
+    const above=rect.top-box.height-10>=edge;
+    rangeTip.style.left=`${left}px`;rangeTip.style.top=`${Math.max(edge,Math.min(above?rect.top-box.height-10:rect.bottom+10,window.innerHeight-box.height-edge))}px`;
+    rangeTip.style.setProperty('--tip-arrow',`${Math.max(18,Math.min(rect.left+rect.width/2-left,box.width-18))}px`);
+    rangeTip.classList.toggle('is-below',!above);
+  }
+  const deferHideRange=()=>{clearTimeout(hideRangeTimer);hideRangeTimer=setTimeout(hideRange,160)};
+  root.addEventListener('pointerover',e=>{const a=e.target.closest('[data-range-event]');if(a&&e.pointerType!=='touch')showRange(a)});
+  root.addEventListener('pointerout',e=>{const a=e.target.closest('[data-range-event]');if(a&&!a.contains(e.relatedTarget)&&!rangeTip.contains(e.relatedTarget))deferHideRange()});
+  root.addEventListener('focusin',e=>{const a=e.target.closest('[data-range-event]');if(a)showRange(a)});
+  root.addEventListener('focusout',e=>{if(e.target.closest('[data-range-event]')&&!rangeTip.contains(e.relatedTarget))deferHideRange()});
+  root.addEventListener('click',e=>{
+    const a=e.target.closest('[data-range-event]');if(!a)return;
+    if(lastPointerType==='touch'||window.matchMedia('(hover: none), (max-width: 680px)').matches){
+      if(touchRange!==a){e.preventDefault();touchRange=a;showRange(a,true)}
+    }
+  });
+  rangeTip.addEventListener('pointerenter',()=>clearTimeout(hideRangeTimer));
+  rangeTip.addEventListener('pointerleave',deferHideRange);
+  document.addEventListener('pointerdown',e=>{lastPointerType=e.pointerType||'mouse';if(!e.target.closest('[data-range-event],#ccRangeTooltip'))hideRange()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')hideRange()});
+  window.addEventListener('scroll',()=>{
+    // Keyboard focus may scroll a range into view. Reposition its tooltip after
+    // that scroll instead of immediately dismissing the information just opened.
+    if(activeRange&&document.activeElement===activeRange&&lastPointerType!=='touch'){
+      const rect=activeRange.getBoundingClientRect();
+      if(rect.bottom>=0&&rect.top<=window.innerHeight){showRange(activeRange,touchRange===activeRange);return}
+    }hideRange();
+  },{passive:true});window.addEventListener('resize',hideRange);
   function calendarHref(v,y,m,date=null){
     const q=new URLSearchParams(location.search);
     q.set('view',v);q.set('year',y);
@@ -109,6 +155,28 @@
     const categories=[...new Set(events.map(e=>e.category))];
     return `<span class="cc-card-dots" aria-hidden="true">${categories.map(c=>`<i style="--dot:${colorOf(c)}"></i>`).join('')}</span>`;
   }
+  // Reuse the original weekly range/lane model, now with Sunday-first indices.
+  // A lane stays with an event across weeks; all intersecting periods are kept.
+  function rangeWeeks(m,compact,cells,offset){
+    const first=iso(civil(year,m,compact?1:1-offset));
+    const last=iso(civil(year,m,compact?civil(year,m+1,0).getUTCDate():cells-offset));
+    const gridStart=civil(year,m,1-offset).getTime(),dayIndex=date=>Math.round((Date.parse(date+'T00:00:00Z')-gridStart)/86400000);
+    const weeks=Array.from({length:cells/7},()=>[]),laneEnds=[];
+    visibleEvents().filter(e=>e.start<=last&&e.end>=first).sort((a,b)=>a.start.localeCompare(b.start)||b.end.localeCompare(a.end)||a.id.localeCompare(b.id)).forEach(event=>{
+      const start=event.start<first?first:event.start,end=event.end>last?last:event.end;
+      let lane=laneEnds.findIndex(previous=>previous<start);if(lane<0)lane=laneEnds.length;laneEnds[lane]=end;
+      let cursor=dayIndex(start),endIndex=dayIndex(end);
+      while(cursor<=endIndex){
+        const week=Math.floor(cursor/7),col=cursor%7,span=Math.min(7-col,endIndex-cursor+1);
+        const segmentStart=iso(civil(year,m,cursor-offset+1)),segmentEnd=iso(civil(year,m,cursor+span-offset));
+        weeks[week].push({event,lane,col,span,start:segmentStart,end:segmentEnd});cursor+=span;
+      }
+    });return weeks;
+  }
+  function rangeBar({event,lane,col,span,start,end},compact){
+    const before=event.start<start,after=event.end>end;
+    return `<a class="cc-card-period ${compact?'is-compact':''} ${before?'continues-before':''} ${after?'continues-after':''}" href="${esc(eventHref(event))}" data-range-event="${esc(event.id)}" data-range-start="${start}" data-range-end="${end}" data-range-lane="${lane}" aria-label="${esc(event.title)} · ${formatDate(event.start)} – ${formatDate(event.end)}" style="--event-color:${colorOf(event.category)};grid-column:${col+1}/span ${span};grid-row:${lane+1}"><span>${esc(displayTitle(event))}</span></a>`;
+  }
   function grid(m,compact){
     const first=civil(year,m,1),offset=first.getUTCDay(),last=civil(year,m+1,0).getUTCDate();
     const cells=compact?42:Math.ceil((offset+last)/7)*7;
@@ -124,7 +192,9 @@
       const attrs=`class="${cls}" data-date="${date}" data-event-count="${dayEvents.length}" aria-label="${esc(label)}"${today?' aria-current="date"':''}`;
       days+=compact||!inMonth?`<a ${attrs} href="${calendarHref('month',d.getUTCFullYear(),d.getUTCMonth()+1,date)}">${body}</a>`:`<button type="button" ${attrs} aria-pressed="${isSelected}" data-select-date="${date}">${body}</button>`;
     }
-    return `<div class="cc-card-weekdays">${t.weekdays.map((s,i)=>`<span class="${i===0?'is-sunday':i===6?'is-saturday':''}">${s}</span>`).join('')}</div><div class="cc-card-grid ${compact?'is-compact':''}" data-calendar-month="${m}" data-start-weekday="0">${days}</div>`;
+    const weeks=rangeWeeks(m,compact,cells,offset);
+    const rows=weeks.map(items=>`minmax(var(--range-min-week),calc(var(--range-date-height) + ${Math.max(0,...items.map(s=>s.lane+1))} * var(--range-lane-height) + 7px))`).join(' ');
+    return `<div class="cc-card-weekdays">${t.weekdays.map((s,i)=>`<span class="${i===0?'is-sunday':i===6?'is-saturday':''}">${s}</span>`).join('')}</div><div class="cc-card-board ${compact?'is-compact':''}" style="--calendar-rows:${rows}"><div class="cc-card-grid ${compact?'is-compact':''}" data-calendar-month="${m}" data-start-weekday="0">${days}</div><div class="cc-card-period-layer">${weeks.map((items,index)=>`<div class="cc-card-week-ranges" data-range-week="${index}" style="grid-row:${index+1}">${items.map(item=>rangeBar(item,compact)).join('')}</div>`).join('')}</div></div>`;
   }
   function miniCalendar(m){
     const events=monthEvents(m);
@@ -140,6 +210,7 @@
     target.innerHTML=`<div class="cc-card-agenda-head"><div><span class="cc-card-caption">${t.selectedDay}</span><h2>${fullDate(selected)}</h2></div><strong>${t.count(events.length)}</strong></div><p class="cc-card-note">${t.periodNote}</p>${matches.length?`<p class="cc-card-match-note">${t.matches(matches.length)} · ${t.matchNote}</p>`:''}<div class="cc-card-event-list">${events.length?events.map(e=>eventCard(e,selected)).join(''):`<p class="cc-card-empty">${t.noDayEvents}</p>`}</div>`;
   }
   function render(){
+    hideRange();
     controls.innerHTML=toolbar();
     if(view==='year'){
       root.innerHTML=`${monthShortcuts(0)}<p class="cc-card-guide">${t.yearHint}<span>${t.periodNote}</span></p><div class="cc-year-grid">${Array.from({length:12},(_,i)=>miniCalendar(i+1)).join('')}</div>`;
