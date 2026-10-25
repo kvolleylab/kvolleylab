@@ -117,5 +117,12 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[dat
 }
 
 @media screen and (min-width:901px){
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row){grid-template-columns:32px minmax(82px,1fr) 26px 26px 36px 54px 54px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row){grid-template-columns:32px minmax(82px,1fr) 26px 26px 36px 60px 60px!important}
+}
+
+/* Standings values match team names; pool counts match the pool title. */
+@media screen{
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups :is(.kvl1180-pool-row,.kvl1180-combined-row)>span,html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-combined-row .kvl1180-combined-result{font-size:17px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl-shared-combined-line:not(.is-head) :is(.kvl-shared-combined-rank,.kvl-shared-combined-stat,.kvl-shared-combined-result,.kvl-shared-combined-result b,.kvl1180-combined-result){font-size:15px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-card-head :is(strong,span){font-size:18px!important}
 }
