@@ -124,3 +124,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (배포와 live 확인은 해당 relea
 ## 2026-10-25 — 국내대회 기본 템플릿 가독성·달력·트로피 통일
 
 Status: APPROVED / IMPLEMENTED / VERIFIED (배포 결과는 release PR에 기록). 사용자가 기존 운영 고성·단양의 공통 템플릿 수정을 요청했다. 연도는 날짜 열에 맞추고 월은 가운데 정렬, 메뉴/남녀 전환 글씨 확대, overview 참가대학 로고·이름을 참가대학 페이지와 같은 크기로 통일, 경기일 테두리를 내부 표시로 변경한다. Overview 순위와 최종 1~4위는 기존 허브의 SVG 트로피(금/은/동)를 사용하며 PC CSS 메달 장식을 제거한다. 공동 3위/사다리/데이터/링크 의미는 유지한다. PC 및 모바일을 함께 제시한다. 상세와 복구: [검수 보고서](validation/domestic-template-readability-20261025.md).
+
+
+## 2026-10-25 — 달력 단위·조별순위 글씨 크기 추가 조정
+
+Status: APPROVED / IMPLEMENTED / VERIFIED (배포 결과는 release PR). 기존 운영 기본 템플릿의 추가 수정 요청에 따라 연도 숫자와 년, 월 숫자와 월의 크기를 각각 같게 한다. 조별순위 머리글은 해당 화면의 대학명과 같은 크기로 키우며, 긴 득실비 머리글은 두 줄을 유지한다. 검토 Site의 전체 조 선택창에도 같은 기준을 적용한다. 운영의 공통 CSS/캐시 버전과 검토 Site CSS만 수정한다. 순위 데이터·계산·팀 연결·필터 동작은 변경하지 않는다. 검수: [보고서](validation/domestic-calendar-standings-type-20261025.md).
