@@ -5,6 +5,7 @@ const q=(s,r=document)=>r.querySelector(s),qa=(s,r=document)=>[...r.querySelecto
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const icons={overview:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>',schedule:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 15h2M14 15h2"/>',groups:'<path d="M4 21V12h4v9M10 21V4h4v17M16 21v-8h4v8M2 21h20"/>',knockout:'<path d="M7 3h10v7a5 5 0 0 1-10 0V3ZM7 5H3v3a5 5 0 0 0 5 5M17 5h4v3a5 5 0 0 1-5 5M12 15v5M8 21h8"/>',rosters:'<circle cx="9" cy="7" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3M16 4a3 3 0 0 1 0 6M18 14a5 5 0 0 1 4 5v2"/>',resources:'<path d="M5 3h9l5 5v13H5V3ZM14 3v6h5M8 13h8M8 17h6"/>',venue:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>'};
 const icon=key=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[key]||icons.overview}</svg>`;
+const trophy=rank=>`<span class="dv2-trophy trophy-${Number(rank)}" aria-hidden="true"><svg viewBox="0 0 28 30" width="28" height="30"><path class="trophy-handles" d="M7 5H3v4c0 4 2 6 6 6M21 5h4v4c0 4-2 6-6 6"/><path class="trophy-cup" d="M7 3h14v8c0 5-3.1 8-7 8s-7-3-7-8V3Z"/><path class="trophy-shine" d="M10 6v5c0 2 .7 3.6 2 4.5"/><path class="trophy-stem" d="M12 18h4v6h-4z"/><path class="trophy-base" d="M9 24h10l2 3H7z"/></svg></span>`;
 const href=(view,extra)=>window.KVLCompetitionTemplateV2.viewUrl(view,extra);
 let current,month,months=[];
 const enabled=d=>d?.competitionFamily==='domestic'&&d.structure?.presentation==='domestic-home-v2';
@@ -18,7 +19,7 @@ function metric(title,value,unit,view,key){return `<a class="dv2-metric" href="$
 function ranking(d){
  const ranks=d.finalRanking||[],champ=ranks.find(r=>r.rank===1);
  if(!ranks.length)return '<div class="dv2-empty">최종순위 확정 후 표시합니다.</div>';
- return `<div class="dv2-ranking">${champ?`<a class="dv2-champion" href="${esc(href('team',{team:champ.code}))}">${teamLogo(team(champ.code))}<span><small>CHAMPION</small><strong>${esc(champ.team||team(champ.code).name)}</strong></span>${icon('knockout')}</a>`:''}<div class="dv2-ranking-list">${ranks.map(r=>`<a href="${esc(href('team',{team:r.code}))}"><span>${esc(r.rank)}</span><b>${esc(r.team||team(r.code).name)}</b><small>${esc(r.result||'')}</small></a>`).join('')}</div></div>`;
+ return `<div class="dv2-ranking">${champ?`<a class="dv2-champion" href="${esc(href('team',{team:champ.code}))}">${teamLogo(team(champ.code))}<span><small>CHAMPION</small><strong>${esc(champ.team||team(champ.code).name)}</strong></span>${trophy(1)}</a>`:''}<div class="dv2-ranking-list">${ranks.map(r=>`<a href="${esc(href('team',{team:r.code}))}"><span class="dv2-rank">${trophy(r.rank)}<span>${esc(r.rank)}위</span></span><b>${esc(r.team||team(r.code).name)}</b><small>${esc(r.result||'')}</small></a>`).join('')}</div></div>`;
 }
 function calendar(){
  const root=q('[data-dv2-calendar]');if(!root)return;
@@ -29,7 +30,7 @@ function calendar(){
   const content=`<span>${date.getUTCDate()}</span>${games.length?`<small>${final?'결승 · ':''}${games.length}<em>경기</em></small>`:''}`;
   cells.push(games.length?`<button type="button" class="dv2-day has-match${outside?' outside':''}${final?' final':''}" data-dv2-date="${key}" aria-label="${key}, ${games.length}경기${final?', 결승':''}">${content}</button>`:`<div class="dv2-day${outside?' outside':''}">${content}</div>`);
  }
- root.innerHTML=`<div class="dv2-calendar-top"><div><small>TOURNAMENT CALENDAR</small><h3>${year}<em>년</em> ${String(mo).padStart(2,'0')}<em>월</em></h3></div><div><button data-dv2-month="-1" aria-label="이전 달" ${month===months[0]?'disabled':''}>‹</button><button data-dv2-month="1" aria-label="다음 달" ${month===months.at(-1)?'disabled':''}>›</button></div></div><div class="dv2-week">${['일','월','화','수','목','금','토'].map(w=>`<span>${w}</span>`).join('')}</div><div class="dv2-calendar-grid">${cells.join('')}</div><p class="dv2-calendar-hint">경기일을 선택하면 대진과 세트별 점수를 볼 수 있습니다.</p>`;
+ root.innerHTML=`<div class="dv2-calendar-top"><small>TOURNAMENT CALENDAR</small><h3><span class="dv2-calendar-year">${year}<em>년</em></span><span class="dv2-calendar-month">${String(mo).padStart(2,'0')}<em>월</em></span></h3><div class="dv2-calendar-controls"><button data-dv2-month="-1" aria-label="이전 달" ${month===months[0]?'disabled':''}>‹</button><button data-dv2-month="1" aria-label="다음 달" ${month===months.at(-1)?'disabled':''}>›</button></div></div><div class="dv2-week">${['일','월','화','수','목','금','토'].map(w=>`<span>${w}</span>`).join('')}</div><div class="dv2-calendar-grid">${cells.join('')}</div><p class="dv2-calendar-hint">경기일을 선택하면 대진과 세트별 점수를 볼 수 있습니다.</p>`;
 }
 function openDay(date){
  const dialog=q('#dv2-day-dialog'),games=(current.matches||[]).filter(m=>m.date===date).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
@@ -55,9 +56,17 @@ function enhanceParticipants(){
   empty.hidden=found>0;
  });
 }
+function enhanceTrophies(){
+ qa('#knockout [data-final-rank]').forEach(card=>{
+  const rank=q('.kvl1180-final-rank',card);if(!rank||q('.dv2-trophy',rank))return;
+  const medal=q('.kvl-final-medal',rank);
+  if(medal)medal.innerHTML=trophy(card.dataset.finalRank);
+  else rank.insertAdjacentHTML('afterbegin',`<span class="kvl-final-medal">${trophy(card.dataset.finalRank)}</span>`);
+ });
+}
 function apply(d){
  if(!enabled(d))return false;
- current=d;document.body.classList.add('kvl-domestic-home-v2');
+ current=d;document.body.classList.add('kvl-domestic-home-v2');enhanceTrophies();
  const main=q('[data-kvl-shell]');if(main.dataset.domesticHomeReady)return true;main.dataset.domesticHomeReady='true';
  main.insertAdjacentHTML('afterbegin','<div class="dv2-utility"><span><a href="index.html">홈</a> › <a href="university-competitions.html">국내대회 · 대학배구</a></span><a href="university-competitions.html">대회 목록 ↗</a></div>');
  const title=d.displayName.replace(/\s+(남대부|여대부)$/,''),split=title.lastIndexOf(' ');
@@ -87,6 +96,6 @@ document.addEventListener('click',event=>{
  if(day)openDay(day.dataset.dv2Date);
 });
 document.addEventListener('keydown',event=>{if(enabled(current)&&event.key===' '&&event.target.matches('.dv2-metric[href]')){event.preventDefault();event.target.click();}});
-window.addEventListener('popstate',()=>{if(enabled(current)){q('.dv2-participant-search')?.remove();q('#rosters>.dv2-empty')?.remove();enhanceParticipants();}});
+window.addEventListener('popstate',()=>{if(enabled(current)){q('.dv2-participant-search')?.remove();q('#rosters>.dv2-empty')?.remove();enhanceParticipants();enhanceTrophies();}});
 window.KVLDomesticHomeV2={apply};
 })();
