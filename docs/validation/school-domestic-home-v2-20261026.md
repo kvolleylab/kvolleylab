@@ -19,7 +19,7 @@ Append `-high-men`, `-high-women`, `-middle-men`, or `-middle-women` to the pref
 
 Common engine/controller/presentation extended with four division links, school labels/hub route, optional combined-ranking suppression and accurate empty-state messages. No copied renderer. Shared existing home Hero assets are used, matching the hub; navy/rose division themes remain. School match scores use neutral gray. A missing registered school roster does not link to an unrelated university page.
 
-Mobile standings retain all seven fields: rank, school, wins, losses, points, set ratio, point ratio. The last three appear beneath each school instead of being clipped. PC shows two pools per row. Existing larger fonts, trophies, default calendar month and mobile ladder behavior are retained.
+Mobile standings retain all seven fields: rank, school, wins, losses, points, set ratio, point ratio. The last three appear beneath each school instead of being clipped. PC shows two pools per row. The mobile rank column reserves 42px so 순위 and 팀 remain separated; secondary field labels use 14px for readability. Existing larger fonts, trophies, default calendar month and mobile ladder behavior are retained.
 
 ## Data and sources
 
