@@ -219,10 +219,10 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[dat
 }
 @media screen and (max-width:680px){
  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups .kvl1180-pool-grid{grid-template-columns:1fr!important}
- html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row){grid-template-columns:30px minmax(0,1fr) 38px 38px!important;min-width:0!important;height:auto!important;row-gap:10px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row){grid-template-columns:42px minmax(0,1fr) 38px 38px!important;min-width:0!important;height:auto!important;row-gap:10px!important}
  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row)>span:nth-child(n+5){display:none!important}
  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups .kvl-school-pool-stats{display:grid!important;grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;border-top:1px solid #dfe7ee;padding-top:10px;gap:8px}
- .kvl-school-pool-stats>span{display:grid;gap:4px;text-align:center}.kvl-school-pool-stats small{font-size:11px;font-weight:500;color:#708092}.kvl-school-pool-stats b{font-size:17px;color:#30465b}
+ .kvl-school-pool-stats>span{display:grid;gap:4px;text-align:center}.kvl-school-pool-stats small{font-size:14px;font-weight:500;color:#708092}.kvl-school-pool-stats b{font-size:17px;color:#30465b}
 }
 @media screen{
  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #knockout .kvl1180-qf-pair:not(:has(.is-bye))::after{background:none!important;border-right:2px solid #b5c6d5!important}
