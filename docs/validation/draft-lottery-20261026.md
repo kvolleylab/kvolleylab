@@ -45,6 +45,12 @@ KVL_JSDOM_PATH=/workspace/scratch/8e56d2ae74d7/kvl-dom-qa/node_modules/jsdom nod
 ![PC](draft-lottery-20261026/pc.jpg)
 ![모바일 390px](draft-lottery-20261026/mobile390.jpg)
 
+## 추가 통합 검사 및 기존 CI 제한
+
+기존 `tests/player-integration.test.mjs`와 신규 추첨 검사를 함께 실행한 결과 **18 통과 / 1 실패**다. 실패는 역사적 전체 사이트 해시 동결 검사이며 첫 불일치는 이번 PR에서 변경하지 않은 `assets/js/kvl-competition-components-v2.js`다. 작업 전 main `a986092`도 같은 스냅샷과 12개 파일이 불일치함을 직접 비교했다. 선수 검색·1842개 ID·신청자 3가지 표시·기존 대학 참고명단·회원 정보 비공개·복귀 URL 검사는 모두 통과했다.
+
+GitHub의 기존 등록 자동화도 별도 실패한다: Kyungil `len(master) == 78`, SKKU `Expected 16 ... got 127`, 대학 batch 저장 `sha` 누락. 원장과 무관한 UI 요청이므로 이 자동화와 과거 스냅샷을 임의로 수정하지 않았다. 전체 GitHub CI가 통과했다고 주장하지 않는다. 구체적인 run 및 최신 결과는 PR에 기록한다.
+
 ## 운영 적용과 복구
 
 운영에 필요한 파일은 **5개**다: `draft-hub.html`, `assets/css/draft-hub-v2.css`, `assets/js/draft-hub-v2.mjs`, `assets/js/draft-lottery-v1.mjs`, `data/draft-applicants/2026-27/lottery.json`.

@@ -1,4 +1,4 @@
-import {loadDraftLottery,renderLottery} from './draft-lottery-v1.mjs?v=20261026-1';
+import {loadDraftLottery,renderLottery} from './draft-lottery-v1.mjs';
 import {escapeHTML as e} from './player-workspace-core.mjs';
 import {loadDraftIndex,loadDraftSeason,validateAgainstCatalog} from './draft-history-v1.mjs';
 import {MATCH_LABELS,CATEGORY_LABELS,APPLICATION_LABELS,SELECTION_LABELS,joinApplicants,profileURL as canonicalProfileURL,filterApplicants,sortApplicants,groupCounts,csvFor} from './draft-applicants-core.mjs';
