@@ -211,7 +211,10 @@ function domesticOverallRows(d){
   };
   pools.forEach(p=>(p.rows||[]).forEach(r=>ensure(r.team,p.id||String(p.title||'').replace(/조$/,''),r)));
   (d.matches||[]).filter(m=>pool(m)&&score(m)).forEach(m=>{
-    const s=score(m),poolId=pool(m),home=ensure(m.home,poolId),away=ensure(m.away,poolId);if(!home||!away)return;
+    const s=score(m),poolId=pool(m),home=stats.get(code(m.home)),away=stats.get(code(m.away));
+    // Count only games within the preliminary pool recorded in the standings.
+    // Later round-robin stages (e.g. U-league's six-team league) also have a pool.
+    if(!home||!away||home.poolId!==poolId||away.poolId!==poolId||['QF','SF','FINAL','BRONZE','3RD'].includes(round(m)))return;
     home.games++;away.games++;
     if(s.home>s.away){home.wins++;away.losses++;}else if(s.away>s.home){away.wins++;home.losses++;}
     home.setWins+=s.home;home.setLosses+=s.away;away.setWins+=s.away;away.setLosses+=s.home;
