@@ -1,6 +1,6 @@
 # Draft Hub 팀별 추첨 확률 카드 — 2026-10-26
 
-Status: IMPLEMENTED / VERIFIED / READY FOR REVIEW. 운영 미반영.
+Status: APPROVED / IMPLEMENTED / VERIFIED. 2026-10-26 사용자 운영 적용 승인. 배포 결과와 실제 페이지 확인은 PR #166에 기록한다.
 
 기준 main: `a986092fd8f4dd0f8ba8c36b7779785f45cd23cf`.
 브랜치: `feature/draft-lottery-team-cards`.
@@ -55,4 +55,4 @@ GitHub의 기존 등록 자동화도 별도 실패한다: Kyungil `len(master) =
 
 운영에 필요한 파일은 **5개**다: `draft-hub.html`, `assets/css/draft-hub-v2.css`, `assets/js/draft-hub-v2.mjs`, `assets/js/draft-lottery-v1.mjs`, `data/draft-applicants/2026-27/lottery.json`.
 
-현재 운영 미반영. `AGENTS.md`의 운영 배포 승인 규칙에 따라 사용자 승인 후 PR 병합·실제 페이지 확인이 필요하다. 복구는 이 변경의 PR revert이며 선수 데이터 복구는 필요 없다.
+2026-10-26 사용자가 “반영해”로 운영 적용을 승인했다. 최신 main `6fd91376ca7eb1d22e1727240e5bd31066dd7ae1`의 중고대회 변경을 보존하여 통합했다. 기존 원격 검사에서 Python 14개 통과, Node 29개 통과/1개 과거 전체 파일 동결 검사 실패를 확인했다. 선수 1842명 전체 프로필 검사는 통과했다. 기존 실패 원인을 숨기거나 검사 기준을 완화하지 않고, 승인된 추첨 카드만 배포한다. 복구는 이 변경의 PR revert이며 선수 데이터 복구는 필요 없다.

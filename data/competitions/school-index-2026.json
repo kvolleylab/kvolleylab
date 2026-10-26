@@ -12,8 +12,53 @@
       "startDate": "2026-08-28",
       "endDate": "2026-09-03",
       "location": "경북 영천",
-      "gameCount": null,
-      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+      "gameCount": 114,
+      "divisions": [
+        "18세이하 남자부",
+        "18세이하 여자부",
+        "15세이하 남자부",
+        "15세이하 여자부"
+      ],
+      "enginePrefix": "cbs-2026",
+      "divisionResults": {
+        "high-men": [
+          {
+            "rank": 1,
+            "team": "천안고"
+          },
+          {
+            "rank": 2,
+            "team": "인하사대부고"
+          }
+        ],
+        "high-women": [
+          {
+            "rank": 1,
+            "team": "중앙여고"
+          },
+          {
+            "rank": 2,
+            "team": "경남여고"
+          }
+        ],
+        "middle-men": [
+          {
+            "rank": 1,
+            "team": "송산중"
+          }
+        ],
+        "middle-women": [
+          {
+            "rank": 1,
+            "team": "경해여중"
+          },
+          {
+            "rank": 2,
+            "team": "중앙여중"
+          }
+        ]
+      },
+      "recordStatus": "partial"
     },
     {
       "competitionId": "ibk-middle-high-2026",
@@ -26,7 +71,87 @@
       "endDate": "2026-08-06",
       "location": "충북 제천",
       "gameCount": 96,
-      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+      "divisions": [
+        "18세이하 남자부",
+        "18세이하 여자부",
+        "15세이하 남자부",
+        "15세이하 여자부"
+      ],
+      "enginePrefix": "school-ibk-2026",
+      "divisionResults": {
+        "high-men": [
+          {
+            "rank": 1,
+            "team": "인하사대부고"
+          },
+          {
+            "rank": 2,
+            "team": "수성고"
+          },
+          {
+            "rank": 3,
+            "team": "남성고"
+          },
+          {
+            "rank": 3,
+            "team": "속초고"
+          }
+        ],
+        "high-women": [
+          {
+            "rank": 1,
+            "team": "중앙여고"
+          },
+          {
+            "rank": 2,
+            "team": "선명여고"
+          },
+          {
+            "rank": 3,
+            "team": "일신여상"
+          },
+          {
+            "rank": 3,
+            "team": "광주체고"
+          }
+        ],
+        "middle-men": [
+          {
+            "rank": 1,
+            "team": "제천중"
+          },
+          {
+            "rank": 2,
+            "team": "문흥중"
+          },
+          {
+            "rank": 3,
+            "team": "각리중"
+          },
+          {
+            "rank": 3,
+            "team": "연현중"
+          }
+        ],
+        "middle-women": [
+          {
+            "rank": 1,
+            "team": "경남여중"
+          },
+          {
+            "rank": 2,
+            "team": "강릉해람중"
+          },
+          {
+            "rank": 3,
+            "team": "모종중"
+          },
+          {
+            "rank": 3,
+            "team": "세화여중"
+          }
+        ]
+      }
     },
     {
       "competitionId": "presidents-cup-middle-high-2026",
@@ -39,7 +164,87 @@
       "endDate": "2026-07-13",
       "location": "충북 옥천",
       "gameCount": 89,
-      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+      "divisions": [
+        "18세이하 남자부",
+        "18세이하 여자부",
+        "15세이하 남자부",
+        "15세이하 여자부"
+      ],
+      "enginePrefix": "school-presidents-2026",
+      "divisionResults": {
+        "high-men": [
+          {
+            "rank": 1,
+            "team": "순천제일고"
+          },
+          {
+            "rank": 2,
+            "team": "수성고"
+          },
+          {
+            "rank": 3,
+            "team": "남성고"
+          },
+          {
+            "rank": 3,
+            "team": "경북사대부고"
+          }
+        ],
+        "high-women": [
+          {
+            "rank": 1,
+            "team": "광주체고"
+          },
+          {
+            "rank": 2,
+            "team": "세화여고"
+          },
+          {
+            "rank": 3,
+            "team": "경남여고"
+          },
+          {
+            "rank": 3,
+            "team": "강릉여고"
+          }
+        ],
+        "middle-men": [
+          {
+            "rank": 1,
+            "team": "송산중"
+          },
+          {
+            "rank": 2,
+            "team": "태릉중"
+          },
+          {
+            "rank": 3,
+            "team": "문흥중"
+          },
+          {
+            "rank": 3,
+            "team": "남성중"
+          }
+        ],
+        "middle-women": [
+          {
+            "rank": 1,
+            "team": "강릉해람중"
+          },
+          {
+            "rank": 2,
+            "team": "포항여중"
+          },
+          {
+            "rank": 3,
+            "team": "대구일중"
+          },
+          {
+            "rank": 3,
+            "team": "제천여중"
+          }
+        ]
+      }
     },
     {
       "competitionId": "middle-high-second-2026",
@@ -52,7 +257,87 @@
       "endDate": "2026-06-14",
       "location": "전북 익산",
       "gameCount": 102,
-      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+      "divisions": [
+        "18세이하 남자부",
+        "18세이하 여자부",
+        "15세이하 남자부",
+        "15세이하 여자부"
+      ],
+      "enginePrefix": "school-iksan-2026",
+      "divisionResults": {
+        "high-men": [
+          {
+            "rank": 1,
+            "team": "순천제일고"
+          },
+          {
+            "rank": 2,
+            "team": "수성고"
+          },
+          {
+            "rank": 3,
+            "team": "영생고"
+          },
+          {
+            "rank": 3,
+            "team": "인하사대부고"
+          }
+        ],
+        "high-women": [
+          {
+            "rank": 1,
+            "team": "광주체고"
+          },
+          {
+            "rank": 2,
+            "team": "전주근영여고"
+          },
+          {
+            "rank": 3,
+            "team": "경남여고"
+          },
+          {
+            "rank": 3,
+            "team": "대전용산고"
+          }
+        ],
+        "middle-men": [
+          {
+            "rank": 1,
+            "team": "제천중"
+          },
+          {
+            "rank": 2,
+            "team": "현일중"
+          },
+          {
+            "rank": 3,
+            "team": "순천팔마중"
+          },
+          {
+            "rank": 3,
+            "team": "금정중"
+          }
+        ],
+        "middle-women": [
+          {
+            "rank": 1,
+            "team": "전주근영중"
+          },
+          {
+            "rank": 2,
+            "team": "경남여중"
+          },
+          {
+            "rank": 3,
+            "team": "금천중"
+          },
+          {
+            "rank": 3,
+            "team": "모종중"
+          }
+        ]
+      }
     },
     {
       "competitionId": "middle-high-first-2026",
@@ -65,7 +350,87 @@
       "endDate": "2026-04-13",
       "location": "강원 삼척",
       "gameCount": 85,
-      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+      "divisions": [
+        "18세이하 남자부",
+        "18세이하 여자부",
+        "15세이하 남자부",
+        "15세이하 여자부"
+      ],
+      "enginePrefix": "school-samcheok-2026",
+      "divisionResults": {
+        "high-men": [
+          {
+            "rank": 1,
+            "team": "속초고"
+          },
+          {
+            "rank": 2,
+            "team": "수성고"
+          },
+          {
+            "rank": 3,
+            "team": "천안고"
+          },
+          {
+            "rank": 3,
+            "team": "경북체고"
+          }
+        ],
+        "high-women": [
+          {
+            "rank": 1,
+            "team": "천안청수고"
+          },
+          {
+            "rank": 2,
+            "team": "경남여고"
+          },
+          {
+            "rank": 3,
+            "team": "강릉여고"
+          },
+          {
+            "rank": 3,
+            "team": "광주체고"
+          }
+        ],
+        "middle-men": [
+          {
+            "rank": 1,
+            "team": "현일중"
+          },
+          {
+            "rank": 2,
+            "team": "연현중"
+          },
+          {
+            "rank": 3,
+            "team": "함안중"
+          },
+          {
+            "rank": 3,
+            "team": "남성중"
+          }
+        ],
+        "middle-women": [
+          {
+            "rank": 1,
+            "team": "강릉해람중"
+          },
+          {
+            "rank": 2,
+            "team": "수일여중"
+          },
+          {
+            "rank": 3,
+            "team": "근영중"
+          },
+          {
+            "rank": 3,
+            "team": "부평여중"
+          }
+        ]
+      }
     },
     {
       "competitionId": "spring-middle-high-2026",
@@ -78,7 +443,87 @@
       "endDate": "2026-03-19",
       "location": "충북 단양",
       "gameCount": 114,
-      "divisions": ["18세이하 남자부", "18세이하 여자부", "15세이하 남자부", "15세이하 여자부"]
+      "divisions": [
+        "18세이하 남자부",
+        "18세이하 여자부",
+        "15세이하 남자부",
+        "15세이하 여자부"
+      ],
+      "enginePrefix": "school-spring-2026",
+      "divisionResults": {
+        "high-men": [
+          {
+            "rank": 1,
+            "team": "인하사대부고"
+          },
+          {
+            "rank": 2,
+            "team": "수성고"
+          },
+          {
+            "rank": 3,
+            "team": "속초고"
+          },
+          {
+            "rank": 3,
+            "team": "순천제일고"
+          }
+        ],
+        "high-women": [
+          {
+            "rank": 1,
+            "team": "선명여고"
+          },
+          {
+            "rank": 2,
+            "team": "중앙여고"
+          },
+          {
+            "rank": 3,
+            "team": "천안청수고"
+          },
+          {
+            "rank": 3,
+            "team": "광주체고"
+          }
+        ],
+        "middle-men": [
+          {
+            "rank": 1,
+            "team": "태릉중"
+          },
+          {
+            "rank": 2,
+            "team": "연현중"
+          },
+          {
+            "rank": 3,
+            "team": "제천중"
+          },
+          {
+            "rank": 3,
+            "team": "송산중"
+          }
+        ],
+        "middle-women": [
+          {
+            "rank": 1,
+            "team": "금천중"
+          },
+          {
+            "rank": 2,
+            "team": "강릉해람중"
+          },
+          {
+            "rank": 3,
+            "team": "천안봉서중"
+          },
+          {
+            "rank": 3,
+            "team": "수일여중"
+          }
+        ]
+      }
     }
   ]
 }

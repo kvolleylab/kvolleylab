@@ -196,3 +196,34 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[dat
 html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-groups-status,html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-groups-status>span{min-width:0!important;max-width:100%!important;white-space:normal!important}
 html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-groups-status strong{white-space:normal!important;overflow-wrap:anywhere!important;word-break:keep-all!important;line-height:1.5!important}
 }
+
+/* School divisions reuse the domestic geometry and navy/rose themes. */
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] .kvl1180-gender.has-divisions a{padding:9px 16px!important;white-space:nowrap}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] .kvl1180-gender.has-divisions a[data-gender="women"]{color:#98466a!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] .kvl1180-gender.has-divisions a.is-active{outline:1px solid currentColor;outline-offset:-1px}
+.dv2-record-note,.kvl-score-note{font-size:13px;line-height:1.7;color:#75633b;background:#faf6e9;border:1px solid #e7dbbb;border-radius:8px;padding:12px 15px;margin:14px 0 0}
+.kvl-score-note{grid-column:1/-1;font-size:12px;margin:6px 0}
+@media(max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] .kvl1180-gender.has-divisions{flex:1;margin-right:14px!important;justify-content:space-between}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] .kvl1180-gender.has-divisions a{flex:1;padding:8px 10px!important;text-align:center;font-size:15px!important}
+ .dv2-record-note{font-size:12px}
+}
+@media screen{
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #knockout .kvl1180-team-score,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #knockout .kvl1180-match-sets{color:#4b5563!important}
+}
+/* Keep all seven standings fields readable on small screens without clipping. */
+.kvl-school-pool-stats{display:none}
+@media screen{
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups .kvl1180-pool-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media screen and (max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups .kvl1180-pool-grid{grid-template-columns:1fr!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row){grid-template-columns:42px minmax(0,1fr) 38px 38px!important;min-width:0!important;height:auto!important;row-gap:10px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row)>span:nth-child(n+5){display:none!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #groups .kvl-school-pool-stats{display:grid!important;grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;border-top:1px solid #dfe7ee;padding-top:10px;gap:8px}
+ .kvl-school-pool-stats>span{display:grid;gap:4px;text-align:center}.kvl-school-pool-stats small{font-size:14px;font-weight:500;color:#708092}.kvl-school-pool-stats b{font-size:17px;color:#30465b}
+}
+@media screen{
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-audience="school"] #knockout .kvl1180-qf-pair:not(:has(.is-bye))::after{background:none!important;border-right:2px solid #b5c6d5!important}
+}

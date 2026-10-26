@@ -1,0 +1,802 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료",
+  "dateLabel": "2026-03-12 ~ 2026-03-19",
+  "locationLabel": "충북 단양",
+  "venueLabel": "매포체육관",
+  "teamCount": 9,
+  "groupCount": 3,
+  "matchCount": 14,
+  "knockoutTeamCount": 6,
+  "champion": "선명여고",
+  "championAchievement": "우승",
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-spring-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-spring-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-spring-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-spring-2026-middle-women"
+    }
+  ],
+  "participants": [
+    {
+      "code": "SCH-CC926CFE63",
+      "name": "강릉여고",
+      "fullName": "강릉여고",
+      "group": "C"
+    },
+    {
+      "code": "SCH-9BE3EF67F7",
+      "name": "광주체고",
+      "fullName": "광주체고",
+      "group": "A"
+    },
+    {
+      "code": "SCH-CC7E7072FF",
+      "name": "선명여고",
+      "fullName": "선명여고",
+      "group": "B"
+    },
+    {
+      "code": "SCH-6D97157EDE",
+      "name": "세화여고",
+      "fullName": "세화여고",
+      "group": "C"
+    },
+    {
+      "code": "SCH-7833134433",
+      "name": "일신여상",
+      "fullName": "일신여상",
+      "group": "B"
+    },
+    {
+      "code": "SCH-15F89676AB",
+      "name": "전주근영여고",
+      "fullName": "전주근영여고",
+      "group": "B"
+    },
+    {
+      "code": "SCH-F60B6B366E",
+      "name": "제천여고",
+      "fullName": "제천여고",
+      "group": "A"
+    },
+    {
+      "code": "SCH-1840039173",
+      "name": "중앙여고",
+      "fullName": "중앙여고",
+      "group": "A"
+    },
+    {
+      "code": "SCH-4D28E8B0A3",
+      "name": "천안청수고",
+      "fullName": "천안청수고",
+      "group": "C"
+    }
+  ],
+  "matches": [
+    {
+      "id": "spring-2026-072",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-1840039173"
+      },
+      "away": {
+        "code": "SCH-F60B6B366E"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-073",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-7833134433"
+      },
+      "away": {
+        "code": "SCH-15F89676AB"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 24,
+            "away": 26
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-076",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-6D97157EDE"
+      },
+      "away": {
+        "code": "SCH-CC926CFE63"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-077",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-CC7E7072FF"
+      },
+      "away": {
+        "code": "SCH-7833134433"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 28,
+            "away": 26
+          },
+          {
+            "home": 28,
+            "away": 30
+          },
+          {
+            "home": 25,
+            "away": 27
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-080",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-4D28E8B0A3"
+      },
+      "away": {
+        "code": "SCH-CC926CFE63"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-081",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-9BE3EF67F7"
+      },
+      "away": {
+        "code": "SCH-1840039173"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-082",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-4D28E8B0A3"
+      },
+      "away": {
+        "code": "SCH-6D97157EDE"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-083",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-9BE3EF67F7"
+      },
+      "away": {
+        "code": "SCH-F60B6B366E"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-084",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-CC7E7072FF"
+      },
+      "away": {
+        "code": "SCH-15F89676AB"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-085",
+      "date": "2026-03-17",
+      "time": "10:00",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "SCH-4D28E8B0A3"
+      },
+      "away": {
+        "code": "SCH-7833134433"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "6강",
+      "nextMatchId": "spring-2026-066"
+    },
+    {
+      "id": "spring-2026-086",
+      "date": "2026-03-17",
+      "time": "10:00",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "SCH-9BE3EF67F7"
+      },
+      "away": {
+        "code": "SCH-CC926CFE63"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 9
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "6강",
+      "nextMatchId": "spring-2026-067"
+    },
+    {
+      "id": "spring-2026-066",
+      "date": "2026-03-18",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-1840039173"
+      },
+      "away": {
+        "code": "SCH-4D28E8B0A3"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "spring-2026-069"
+    },
+    {
+      "id": "spring-2026-067",
+      "date": "2026-03-18",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-CC7E7072FF"
+      },
+      "away": {
+        "code": "SCH-9BE3EF67F7"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "spring-2026-069"
+    },
+    {
+      "id": "spring-2026-069",
+      "date": "2026-03-19",
+      "time": "10:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-1840039173"
+      },
+      "away": {
+        "code": "SCH-CC7E7072FF"
+      },
+      "venueLabel": "매포체육관",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-1840039173"
+            },
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.634",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-9BE3EF67F7"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.097",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-F60B6B366E"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.000",
+            "pointRatio": "0.527",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-CC7E7072FF"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.333",
+            "pointRatio": "1.067",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-7833134433"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "0.980",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-15F89676AB"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "0.750",
+            "pointRatio": "0.956",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-4D28E8B0A3"
+            },
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": null,
+            "setRatio": "6.000",
+            "pointRatio": "1.156",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-CC926CFE63"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.017",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-6D97157EDE"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.167",
+            "pointRatio": "0.854",
+            "status": "out"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "standingsNote": "예선 대진으로 구성한 조",
+  "standingsRule": "승수 → 점수 득실비 → 세트 득실비 → 승자승 · 승점 미산정",
+  "scheduleNote": "기존 공식 경기스코어 기록 · 사전경기 포함 · 한국시간(KST)",
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "SCH-CC7E7072FF",
+      "team": "선명여고",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "SCH-1840039173",
+      "team": "중앙여고",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-4D28E8B0A3",
+      "team": "천안청수고",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-9BE3EF67F7",
+      "team": "광주체고",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "춘계전국중고배구연맹전 공식자료",
+      "url": "https://drive.google.com/file/d/1SYkStAnh8hMiUIyM_2oEWVdZHML7l5tX"
+    },
+    {
+      "title": "춘계전국중고배구연맹전 공식자료 보관함",
+      "url": "https://drive.google.com/drive/folders/17KXSC84GQtVjvtbmuDAfqh7CM5CDmt5q"
+    }
+  ],
+  "domesticRules": {
+    "standings": {
+      "title": "조별순위 기준",
+      "body": "기존 예선·사전경기 연결관계로 구성한 조입니다. 공식 조 표기와 다를 수 있습니다. · 순위: 승수 → 점수 득실비 → 세트 득실비 → 승자승. 승점은 별도 산정하지 않습니다."
+    },
+    "knockout": {
+      "title": "결선 진출 경로",
+      "body": "기존 경기 결과의 승리 팀과 다음 경기 참가 팀을 연결합니다. 준결승 직행 팀은 별도 표시합니다."
+    }
+  },
+  "sourceSnapshot": {
+    "baseCommit": "a986092fd8f4dd0f8ba8c36b7779785f45cd23cf",
+    "legacyPage": "school-competition-spring-2026.html",
+    "legacyScript": "assets/js/school-competition-spring-2026.js",
+    "generatedBy": "scripts/migrate-school-competitions-v2.cjs"
+  }
+}

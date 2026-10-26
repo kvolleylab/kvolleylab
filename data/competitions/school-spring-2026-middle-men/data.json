@@ -1,0 +1,1649 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료",
+  "dateLabel": "2026-03-12 ~ 2026-03-19",
+  "locationLabel": "충북 단양",
+  "venueLabel": "단양문화체육센터 · 국민체육센터",
+  "teamCount": 20,
+  "groupCount": 4,
+  "matchCount": 38,
+  "knockoutTeamCount": 7,
+  "champion": "태릉중",
+  "championAchievement": "우승",
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-spring-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-spring-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-spring-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-spring-2026-middle-women"
+    }
+  ],
+  "participants": [
+    {
+      "code": "SCH-8095DE7D1B",
+      "name": "각리중",
+      "fullName": "각리중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-B69C685A89",
+      "name": "경부사대부중",
+      "fullName": "경부사대부중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-FAD51D20C1",
+      "name": "경북사대부중",
+      "fullName": "경북사대부중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-2E21056173",
+      "name": "남성중",
+      "fullName": "남성중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-3A6B6704BA",
+      "name": "대전남선중",
+      "fullName": "대전남선중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-988F29A400",
+      "name": "동명중",
+      "fullName": "동명중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-160E26D315",
+      "name": "문흥중",
+      "fullName": "문흥중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-EB50B3014D",
+      "name": "설악중",
+      "fullName": "설악중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-B8DBC2FAB9",
+      "name": "송산중",
+      "fullName": "송산중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-F096A29D4F",
+      "name": "순천팔마중",
+      "fullName": "순천팔마중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-AD76159F92",
+      "name": "언양중",
+      "fullName": "언양중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-D2A7371647",
+      "name": "연현중",
+      "fullName": "연현중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-C352ACA312",
+      "name": "율곡중",
+      "fullName": "율곡중",
+      "group": "D"
+    },
+    {
+      "code": "SCH-A58F3F7837",
+      "name": "인창중",
+      "fullName": "인창중",
+      "group": "D"
+    },
+    {
+      "code": "SCH-03262D11B9",
+      "name": "제천중",
+      "fullName": "제천중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-87908275FE",
+      "name": "진주동명중",
+      "fullName": "진주동명중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-379E160767",
+      "name": "천안쌍용중",
+      "fullName": "천안쌍용중",
+      "group": "D"
+    },
+    {
+      "code": "SCH-C78A3C749B",
+      "name": "태릉중",
+      "fullName": "태릉중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-F83699AAA5",
+      "name": "하동중",
+      "fullName": "하동중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-46D1EF6415",
+      "name": "함안중",
+      "fullName": "함안중",
+      "group": "D"
+    }
+  ],
+  "matches": [
+    {
+      "id": "spring-2026-001",
+      "date": "2026-03-12",
+      "time": "09:30",
+      "stage": "사전경기",
+      "pool": "A",
+      "home": {
+        "code": "SCH-AD76159F92"
+      },
+      "away": {
+        "code": "SCH-3A6B6704BA"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-002",
+      "date": "2026-03-12",
+      "time": "09:30",
+      "stage": "사전경기",
+      "pool": "A",
+      "home": {
+        "code": "SCH-F096A29D4F"
+      },
+      "away": {
+        "code": "SCH-2E21056173"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-003",
+      "date": "2026-03-12",
+      "time": "09:30",
+      "stage": "사전경기",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B8DBC2FAB9"
+      },
+      "away": {
+        "code": "SCH-160E26D315"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 29,
+            "away": 27
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-004",
+      "date": "2026-03-12",
+      "time": "09:30",
+      "stage": "사전경기",
+      "pool": "B",
+      "home": {
+        "code": "SCH-FAD51D20C1"
+      },
+      "away": {
+        "code": "SCH-F83699AAA5"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 12,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-033",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-C78A3C749B"
+      },
+      "away": {
+        "code": "SCH-988F29A400"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-034",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-8095DE7D1B"
+      },
+      "away": {
+        "code": "SCH-03262D11B9"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-035",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-46D1EF6415"
+      },
+      "away": {
+        "code": "SCH-C352ACA312"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-036",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-3A6B6704BA"
+      },
+      "away": {
+        "code": "SCH-2E21056173"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-037",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-EB50B3014D"
+      },
+      "away": {
+        "code": "SCH-F096A29D4F"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 12,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-038",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-D2A7371647"
+      },
+      "away": {
+        "code": "SCH-FAD51D20C1"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-039",
+      "date": "2026-03-13",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-160E26D315"
+      },
+      "away": {
+        "code": "SCH-F83699AAA5"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-040",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-8095DE7D1B"
+      },
+      "away": {
+        "code": "SCH-87908275FE"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 15,
+            "away": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-041",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-46D1EF6415"
+      },
+      "away": {
+        "code": "SCH-379E160767"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-042",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-C352ACA312"
+      },
+      "away": {
+        "code": "SCH-A58F3F7837"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-043",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-AD76159F92"
+      },
+      "away": {
+        "code": "SCH-2E21056173"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-044",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-3A6B6704BA"
+      },
+      "away": {
+        "code": "SCH-EB50B3014D"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 15,
+            "away": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-045",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-D2A7371647"
+      },
+      "away": {
+        "code": "SCH-160E26D315"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-046",
+      "date": "2026-03-14",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B8DBC2FAB9"
+      },
+      "away": {
+        "code": "SCH-F83699AAA5"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-047",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-8095DE7D1B"
+      },
+      "away": {
+        "code": "SCH-C78A3C749B"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-048",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-87908275FE"
+      },
+      "away": {
+        "code": "SCH-03262D11B9"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 10,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-049",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-A58F3F7837"
+      },
+      "away": {
+        "code": "SCH-379E160767"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-050",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-AD76159F92"
+      },
+      "away": {
+        "code": "SCH-F096A29D4F"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-051",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-2E21056173"
+      },
+      "away": {
+        "code": "SCH-EB50B3014D"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-052",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B8DBC2FAB9"
+      },
+      "away": {
+        "code": "SCH-B69C685A89"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-053",
+      "date": "2026-03-15",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-D2A7371647"
+      },
+      "away": {
+        "code": "SCH-F83699AAA5"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-054",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-03262D11B9"
+      },
+      "away": {
+        "code": "SCH-C78A3C749B"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-055",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-46D1EF6415"
+      },
+      "away": {
+        "code": "SCH-A58F3F7837"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 11
+          },
+          {
+            "home": 25,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-056",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-379E160767"
+      },
+      "away": {
+        "code": "SCH-C352ACA312"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-057",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-AD76159F92"
+      },
+      "away": {
+        "code": "SCH-EB50B3014D"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-058",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-F096A29D4F"
+      },
+      "away": {
+        "code": "SCH-3A6B6704BA"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-059",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B8DBC2FAB9"
+      },
+      "away": {
+        "code": "SCH-D2A7371647"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-060",
+      "date": "2026-03-16",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B69C685A89"
+      },
+      "away": {
+        "code": "SCH-160E26D315"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "spring-2026-061",
+      "date": "2026-03-17",
+      "time": "10:00",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-03262D11B9"
+      },
+      "away": {
+        "code": "SCH-C352ACA312"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "spring-2026-027"
+    },
+    {
+      "id": "spring-2026-062",
+      "date": "2026-03-17",
+      "time": "10:00",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-B8DBC2FAB9"
+      },
+      "away": {
+        "code": "SCH-AD76159F92"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 12
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "spring-2026-028"
+    },
+    {
+      "id": "spring-2026-063",
+      "date": "2026-03-17",
+      "time": "10:00",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-F096A29D4F"
+      },
+      "away": {
+        "code": "SCH-D2A7371647"
+      },
+      "venueLabel": "단양문화체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": []
+      },
+      "reportedSets": [
+        {
+          "home": 25,
+          "away": 13
+        },
+        {
+          "home": 20,
+          "away": 25
+        },
+        {
+          "home": 6,
+          "away": 15
+        },
+        {
+          "home": 23,
+          "away": 25
+        },
+        {
+          "home": 21,
+          "away": 25
+        }
+      ],
+      "scoreNote": "원문 최종 스코어와 세트별 점수가 일치하지 않아 확인 중입니다. 기존 최종 스코어를 기준으로 표시합니다.",
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "spring-2026-027"
+    },
+    {
+      "id": "spring-2026-027",
+      "date": "2026-03-18",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-03262D11B9"
+      },
+      "away": {
+        "code": "SCH-D2A7371647"
+      },
+      "venueLabel": "국민체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "spring-2026-031"
+    },
+    {
+      "id": "spring-2026-028",
+      "date": "2026-03-18",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-B8DBC2FAB9"
+      },
+      "away": {
+        "code": "SCH-C78A3C749B"
+      },
+      "venueLabel": "국민체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": []
+      },
+      "reportedSets": [
+        {
+          "home": 15,
+          "away": 25
+        },
+        {
+          "home": 25,
+          "away": 27
+        },
+        {
+          "home": 25,
+          "away": 23
+        }
+      ],
+      "scoreNote": "원문 최종 스코어와 세트별 점수가 일치하지 않아 확인 중입니다. 기존 최종 스코어를 기준으로 표시합니다.",
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "spring-2026-031"
+    },
+    {
+      "id": "spring-2026-031",
+      "date": "2026-03-19",
+      "time": "10:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-D2A7371647"
+      },
+      "away": {
+        "code": "SCH-C78A3C749B"
+      },
+      "venueLabel": "국민체육센터",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-F096A29D4F"
+            },
+            "played": 4,
+            "wins": 4,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.493",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-AD76159F92"
+            },
+            "played": 4,
+            "wins": 3,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.500",
+            "pointRatio": "1.024",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-2E21056173"
+            },
+            "played": 4,
+            "wins": 2,
+            "losses": 2,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.081",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-3A6B6704BA"
+            },
+            "played": 4,
+            "wins": 1,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.429",
+            "pointRatio": "0.890",
+            "status": "out"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "SCH-EB50B3014D"
+            },
+            "played": 4,
+            "wins": 0,
+            "losses": 4,
+            "points": null,
+            "setRatio": "0.250",
+            "pointRatio": "0.726",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-B8DBC2FAB9"
+            },
+            "played": 4,
+            "wins": 4,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.333",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-D2A7371647"
+            },
+            "played": 4,
+            "wins": 3,
+            "losses": 1,
+            "points": null,
+            "setRatio": "3.000",
+            "pointRatio": "1.160",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-F83699AAA5"
+            },
+            "played": 4,
+            "wins": 2,
+            "losses": 2,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.047",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-160E26D315"
+            },
+            "played": 4,
+            "wins": 1,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.286",
+            "pointRatio": "0.885",
+            "status": "out"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "SCH-B69C685A89"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.250",
+            "pointRatio": "0.789",
+            "status": "out"
+          },
+          {
+            "rank": 6,
+            "team": {
+              "code": "SCH-FAD51D20C1"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.000",
+            "pointRatio": "0.620",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-03262D11B9"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "6.000",
+            "pointRatio": "1.278",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-C78A3C749B"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.667",
+            "pointRatio": "1.203",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-8095DE7D1B"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.400",
+            "pointRatio": "0.809",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-988F29A400"
+            },
+            "played": 1,
+            "wins": 0,
+            "losses": 1,
+            "points": null,
+            "setRatio": "0.500",
+            "pointRatio": "0.836",
+            "status": "out"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "SCH-87908275FE"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.250",
+            "pointRatio": "0.788",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "title": "D조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-46D1EF6415"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.705",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-C352ACA312"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.333",
+            "pointRatio": "0.993",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-A58F3F7837"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.750",
+            "pointRatio": "0.860",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-379E160767"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.000",
+            "pointRatio": "0.733",
+            "status": "out"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "standingsNote": "예선 대진으로 구성한 조 · 일부 원문 점수 확인 중",
+  "standingsRule": "승수 → 점수 득실비 → 세트 득실비 → 승자승 · 승점 미산정",
+  "scheduleNote": "기존 공식 경기스코어 기록 · 사전경기 포함 · 한국시간(KST) · 2경기의 원문 세트 점수 확인 중",
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "SCH-C78A3C749B",
+      "team": "태릉중",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "SCH-D2A7371647",
+      "team": "연현중",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-03262D11B9",
+      "team": "제천중",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-B8DBC2FAB9",
+      "team": "송산중",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "춘계전국중고배구연맹전 공식자료",
+      "url": "https://drive.google.com/file/d/1SYkStAnh8hMiUIyM_2oEWVdZHML7l5tX"
+    },
+    {
+      "title": "춘계전국중고배구연맹전 공식자료 보관함",
+      "url": "https://drive.google.com/drive/folders/17KXSC84GQtVjvtbmuDAfqh7CM5CDmt5q"
+    }
+  ],
+  "domesticRules": {
+    "standings": {
+      "title": "조별순위 기준",
+      "body": "기존 예선·사전경기 연결관계로 구성한 조입니다. 공식 조 표기와 다를 수 있습니다. · 순위: 승수 → 점수 득실비 → 세트 득실비 → 승자승. 승점은 별도 산정하지 않습니다."
+    },
+    "knockout": {
+      "title": "결선 진출 경로",
+      "body": "기존 경기 결과의 승리 팀과 다음 경기 참가 팀을 연결합니다. 준결승 직행 팀은 별도 표시합니다."
+    }
+  },
+  "sourceSnapshot": {
+    "baseCommit": "a986092fd8f4dd0f8ba8c36b7779785f45cd23cf",
+    "legacyPage": "school-competition-spring-2026.html",
+    "legacyScript": "assets/js/school-competition-spring-2026.js",
+    "generatedBy": "scripts/migrate-school-competitions-v2.cjs"
+  }
+}

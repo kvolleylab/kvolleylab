@@ -44,7 +44,7 @@ function openDay(date){
  q('#dv2-day-title',dialog).textContent=date.replaceAll('-','.')+' · '+games.length+'경기';
  q('.dv2-day-matches',dialog).innerHTML=games.map(m=>{
   const home=team(m.home.code),away=team(m.away.code),s=m.score,scored=s&&Number.isFinite(s.home)&&Number.isFinite(s.away);
-  return `<article class="dv2-day-match"><div class="dv2-match-meta"><b>${esc(m.stage||'경기')}${m.pool?' · '+esc(m.pool)+'조':''}</b><span>${esc(m.time||'시간 미정')} KST</span></div><div class="dv2-match-teams"><a href="${esc(href('team',{team:home.code}))}">${teamLogo(home)}<b>${esc(home.name)}</b></a><strong>${scored?s.home+' : '+s.away:'VS'}</strong><a href="${esc(href('team',{team:away.code}))}">${teamLogo(away)}<b>${esc(away.name)}</b></a></div><div class="dv2-setline">${(s?.sets||[]).map((set,i)=>`<span title="${i+1}세트">${esc(set.home)}-${esc(set.away)}</span>`).join('')||'세트별 득점 확인 중'}</div><small class="dv2-match-venue">${esc(m.venueLabel||current.venueLabel||'')}</small></article>`;
+  return `<article class="dv2-day-match"><div class="dv2-match-meta"><b>${esc(m.stage||'경기')}${m.pool?' · '+esc(m.pool)+'조':''}</b><span>${esc(m.time||'시간 미정')} KST</span></div><div class="dv2-match-teams"><a href="${esc(href('team',{team:home.code}))}">${teamLogo(home)}<b>${esc(home.name)}</b></a><strong>${scored?s.home+' : '+s.away:'VS'}</strong><a href="${esc(href('team',{team:away.code}))}">${teamLogo(away)}<b>${esc(away.name)}</b></a></div><div class="dv2-setline">${(m.reportedSets||s?.sets||[]).map((set,i)=>`<span title="${i+1}세트">${esc(set.home)}-${esc(set.away)}</span>`).join('')||'세트별 득점 확인 중'}</div>${m.scoreNote?`<p class="kvl-score-note">${esc(m.scoreNote)}</p>`:''}<small class="dv2-match-venue">${esc(m.venueLabel||current.venueLabel||'')}</small></article>`;
  }).join('');
  q('.dv2-day-schedule',dialog).href=href('schedule',{date});dialog.showModal();
 }
@@ -74,19 +74,22 @@ function enhanceTrophies(){
 function apply(d){
  if(!enabled(d))return false;
  current=d;document.body.classList.add('kvl-domestic-home-v2');enhanceTrophies();
+ const school=d.structure.audience==='school',division=d.structure.divisionLabel||(d.gender==='women'?'여대부':'남대부');
  const main=q('[data-kvl-shell]');if(main.dataset.domesticHomeReady)return true;main.dataset.domesticHomeReady='true';
- main.insertAdjacentHTML('afterbegin','<div class="dv2-utility"><span><a href="index.html">홈</a> › <a href="university-competitions.html">국내대회 · 대학배구</a></span><a href="university-competitions.html">대회 목록 ↗</a></div>');
- const title=d.displayName.replace(/\s+(남대부|여대부)$/,''),split=title.lastIndexOf(' ');
+ const hub=school?'domestic-competitions.html?division=school':'university-competitions.html';
+ main.insertAdjacentHTML('afterbegin',`<div class="dv2-utility"><span><a href="index.html">홈</a> › <a href="${hub}">국내대회 · ${school?'중·고 배구':'대학배구'}</a></span><a href="${hub}">대회 목록 ↗</a></div>`);
+ const title=d.displayName.replace(/\s+(남대부|여대부|남고부|여고부|남중부|여중부)$/,''),split=title.lastIndexOf(' ');
  q('[data-kvl="title"]').innerHTML=split>0?esc(title.slice(0,split))+'<br><em>'+esc(title.slice(split+1))+'</em>':esc(title);
- q('[data-kvl="eyebrow"]').textContent='KVL DOMESTIC · UNIVERSITY VOLLEYBALL';
+ q('[data-kvl="eyebrow"]').textContent=school?'KVL DOMESTIC · SCHOOL VOLLEYBALL':'KVL DOMESTIC · UNIVERSITY VOLLEYBALL';
  q('[data-kvl="official-name"]').textContent='경기부터 기록까지, 대회의 모든 순간을 한눈에.';
  q('.kvl1180-hero-meta').append(q('.kvl1180-hero-status'));
  const labels={overview:'대회 한눈에',schedule:'경기 일정·결과',groups:d.structure?.labels?.groupsTab||'조별순위',knockout:'최종순위',rosters:label(d),resources:'공식자료'};
  qa('.kvl1180-tabs a').forEach(a=>{a.innerHTML=icon(a.dataset.view)+'<span>'+esc(labels[a.dataset.view])+'</span>';});
  const gender=q('.kvl1180-gender');gender.insertAdjacentHTML('beforebegin','<span class="dv2-division-label">참가 부문</span>');
- q('[data-gender-link="men"]').textContent='남대부';q('[data-gender-link="women"]').textContent='여대부';
+ if(!school){q('[data-gender-link="men"]').textContent='남대부';q('[data-gender-link="women"]').textContent='여대부';}
  const overview=q('.kvl1180-view[data-view="overview"]'),pools=(d.standings?.pools||[]).length,singleLeague=d.structure?.standings?.mode==='single-league';
- overview.innerHTML=`${heading('대회 한눈에 보기')}<p class="dv2-subtitle">${d.gender==='women'?'여대부':'남대부'} · ${d.status==='completed'?'대회 종료':'대회 기록'}</p><div class="dv2-metrics">${metric(label(d),d.participants.length,'팀','rosters')}${metric('등록 경기',d.matches.length,'경기','schedule')}${metric(singleLeague?(d.structure.labels?.groupsTab||'리그순위'):pools?'예선 조 편성':'최종순위',singleLeague?d.participants.length:pools||d.finalRanking.length,pools?'개 조':'팀',singleLeague||pools?'groups':'knockout')}<div class="dv2-metric dv2-venue"><span class="dv2-metric-icon">${icon('venue')}</span><span><small>대회 장소</small><strong>${esc(d.locationLabel)}</strong><small>${esc(d.venuePrimary||d.venueLabel)}</small></span></div></div>`;
+ overview.innerHTML=`${heading('대회 한눈에 보기')}<p class="dv2-subtitle">${esc(division)} · ${d.status==='completed'?'대회 종료':'대회 기록'}</p><div class="dv2-metrics">${metric(label(d),d.participants.length,'팀','rosters')}${metric('등록 경기',d.matches.length,'경기','schedule')}${metric(singleLeague?(d.structure.labels?.groupsTab||'리그순위'):pools?'예선 조 편성':'최종순위',singleLeague?d.participants.length:pools||d.finalRanking.length,pools?'개 조':'팀',singleLeague||pools?'groups':'knockout')}<div class="dv2-metric dv2-venue"><span class="dv2-metric-icon">${icon('venue')}</span><span><small>대회 장소</small><strong>${esc(d.locationLabel)}</strong><small>${esc(d.venuePrimary||d.venueLabel)}</small></span></div></div>`;
+ if(d.recordNote)overview.insertAdjacentHTML('beforeend',`<p class="dv2-record-note">${esc(d.recordNote)}</p>`);
  const calendarSection=q('[data-kvl-section="calendar"]');calendarSection.classList.add('dv2-calendar-section');calendarSection.innerHTML=heading('대회 일정','schedule','전체 일정·결과')+'<div class="dv2-calendar" data-dv2-calendar></div>';
  const overviewGrid=document.createElement('div');overviewGrid.className='dv2-overview-grid kvl1180-view';overviewGrid.dataset.view='overview';overview.after(overviewGrid);overviewGrid.append(calendarSection);overviewGrid.insertAdjacentHTML('beforeend',`<section class="dv2-ranking-section">${heading('최종순위','knockout')}${ranking(d)}</section>`);
  const extra=document.createElement('section');extra.className='dv2-overview-teams kvl1180-view';extra.dataset.view='overview';extra.innerHTML=heading(label(d),'rosters',`${d.participants.length}팀 전체보기`)+`<div class="dv2-team-strip">${[...d.participants].sort((a,b)=>a.name.localeCompare(b.name,'ko')).slice(0,6).map(teamTile).join('')}</div>`;overviewGrid.after(extra);

@@ -21,7 +21,7 @@ function urlState(){const p=new URLSearchParams({division:'school'});if(state.di
 const divInfo=key=>DB.divisions.find(v=>v[0]===key);
 const date=s=>s.slice(5).replace('-','.');
 const status=c=>c.startDate>new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Seoul'})?'upcoming':c.endDate<new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Seoul'})?'completed':'live';
-function link(c,view='overview',div=state.division){const u=new URL(c.pagePath,location.href);u.searchParams.set('view',view);const info=divInfo(div);if(info)u.searchParams.set('division',info[2]);return u.pathname+u.search+u.hash;}
+function link(c,view='overview',div=state.division){const info=divInfo(div),u=new URL(c.enginePrefix?'competition-engine.html':c.pagePath,location.href);u.searchParams.set('view',c.enginePrefix?({standings:'knockout',results:'schedule',teams:'rosters',sources:'resources'}[view]||view):view);if(c.enginePrefix)u.searchParams.set('competition',c.enginePrefix+'-'+(info?.[0]||'high-men'));else if(info)u.searchParams.set('division',info[2]);return u.pathname+u.search+u.hash;}
 function short(c){if(c.series==='연맹 1차전')return['삼척 연맹 1차전','전국남녀중고배구대회'];if(c.series==='연맹 2차전')return['익산보석배','전국남녀중고배구대회'];if(c.series==='대통령배')return['대통령배','제59회 전국중고배구대회'];return[c.series,'전국중고배구대회'];}
 function badge(c){return status(c)==='completed'?'대회 종료':status(c)==='upcoming'?'개최 예정':'진행 중';}
 function trophy(rank){return `<span class="medal medal-${rank}" aria-hidden="true"><svg viewBox="0 0 28 30"><path class="trophy-handles" d="M7 5H3v4c0 4 2 6 6 6M21 5h4v4c0 4-2 6-6 6"/><path class="trophy-cup" d="M7 3h14v8c0 5-3.1 8-7 8s-7-3-7-8V3Z"/><path class="trophy-shine" d="M10 6v5c0 2 .7 3.6 2 4.5"/><path class="trophy-stem" d="M12 18h4v6h-4z"/><path class="trophy-base" d="M9 24h10l2 3H7z"/></svg></span>`;}
@@ -64,6 +64,7 @@ const stage=m=>String(m.stage||'').replace(/\s+/g,'').replace(/전$/,'');
 const json=async path=>{const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();};
 const rankingCache=new Map();
 function resultsFor(item){
+ if(item.divisionResults)return Promise.resolve(item.divisionResults);
  if(!item.rankingSource)return Promise.resolve({});
  if(!rankingCache.has(item.rankingSource))rankingCache.set(item.rankingSource,json('data/domestic/'+encodeURIComponent(item.rankingSource)+'.json').then(data=>{
   const matches=(data.matches||[]).map(row=>unpack(data,row)),out={};
@@ -90,7 +91,7 @@ async function loadArchive(){
  $('#season-year').textContent=latestYear;$('#hero-year-label').textContent=latestYear+' 대회 기록 보기';
  $('#stat-tournaments').innerHTML=competitions.length+'<small>개</small>';
  $('#stat-matches').innerHTML=competitions.reduce((n,c)=>n+(c.gameCount||0),0)+'<small>경기</small>';
- const pending=competitions.filter(c=>!c.gameCount).map(c=>c.series);$('.season-note').textContent=pending.length?pending.join(' · ')+' 경기 기록 확인 중':'';
+ const pending=competitions.filter(c=>!c.gameCount||c.recordStatus==='partial').map(c=>c.series+(c.recordStatus==='partial'?' 일부':''));$('.season-note').textContent=pending.length?pending.join(' · ')+' 경기 기록 확인 중':'';
  render();document.body.dataset.ready='true';
 }
 loadArchive().catch(()=>{$('#archive-list').innerHTML='<div class="empty-results"><h3>기록을 불러오지 못했습니다.</h3><p>페이지를 새로고침해 다시 시도해 주세요.</p></div>';});
