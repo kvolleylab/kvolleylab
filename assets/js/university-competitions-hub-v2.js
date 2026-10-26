@@ -78,11 +78,10 @@
     if(Number(r.rank)===3&&same>1)return '공동 3위';
     return Number.isFinite(Number(r.rank))?Number(r.rank)+'위':'-';
   }
+  const domesticTrophy = rank => `<span class="dv2-trophy trophy-${Number(rank)}" aria-hidden="true"><svg viewBox="0 0 28 30" width="28" height="30"><path class="trophy-handles" d="M7 5H3v4c0 4 2 6 6 6M21 5h4v4c0 4-2 6-6 6"/><path class="trophy-cup" d="M7 3h14v8c0 5-3.1 8-7 8s-7-3-7-8V3Z"/><path class="trophy-shine" d="M10 6v5c0 2 .7 3.6 2 4.5"/><path class="trophy-stem" d="M12 18h4v6h-4z"/><path class="trophy-base" d="M9 24h10l2 3H7z"/></svg></span>`;
   function medal(rank){
     const n=Number(rank);
-    if(n===1)return '<span class="univ-medal is-gold">🏆</span>';
-    if(n===2)return '<span class="univ-medal is-silver">🥈</span>';
-    if(n===3)return '<span class="univ-medal is-bronze">🥉</span>';
+    if(n>=1&&n<=3)return '<span class="univ-medal">'+domesticTrophy(n)+'</span>';
     return '<span class="univ-medal is-fourth">4</span>';
   }
   function rankingPanel(panel,gender){
