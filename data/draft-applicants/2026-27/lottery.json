@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "season": "2026-27",
+  "divisions": {
+    "M": {
+      "record_status": "VERIFIED",
+      "total_balls": 100,
+      "source_id": "KOVO-2026-27-M-157978",
+      "source_url": "https://kovo.co.kr/news/kovo/press/157978",
+      "source_api_url": "https://user-api.kovo.co.kr/contents/news/kovo/press/157978",
+      "source_published_at": "2026-10-22",
+      "verified_at": "2026-10-26",
+      "verification_note": "KOVO 보도자료 본문의 35·30·20·8·4·2·1%를 대조. 총 100개 구슬은 스포츠동아 보도의 전체 구슬 수와 대조하며, 표시는 구슬 수 ÷ 전체 구슬 수 × 100으로 계산한다. 외국인선수 드래프트 배분 및 지명권 트레이드 결과와 별개다.",
+      "ball_count_source_url": "https://m.ezday.co.kr/bbs/view_board.html?q_id_info=1351&q_sq_board=9433073&srh%5Bpage%5D=10&srh%5Bscal%5D=20&srh%5Bsort%5D=date",
+      "teams": [
+        {"team_code": "SFB", "name": "삼성화재", "balls": 35, "logo": "assets/img/team-logos/v-league/2026-27/men/SFB.svg"},
+        {"team_code": "OKF", "name": "OK저축은행", "balls": 30, "logo": "assets/img/team-logos/v-league/2026-27/men/OKF.svg"},
+        {"team_code": "KEP", "name": "한국전력", "balls": 20, "logo": "assets/img/team-logos/v-league/2026-27/men/KEP.svg"},
+        {"team_code": "KBI", "name": "KB손해보험", "balls": 8, "logo": "assets/img/team-logos/v-league/2026-27/men/KBI.svg"},
+        {"team_code": "WRC", "name": "우리카드", "balls": 4, "logo": "assets/img/team-logos/v-league/2026-27/men/WRC.svg"},
+        {"team_code": "HDC", "name": "현대캐피탈", "balls": 2, "logo": "assets/img/team-logos/v-league/2026-27/men/HDC.svg"},
+        {"team_code": "KAL", "name": "대한항공", "balls": 1, "logo": "assets/img/team-logos/v-league/2026-27/men/KAL.svg"}
+      ]
+    }
+  },
+  "change_history": [
+    {"date": "2026-10-26", "change": "공식 발표로 검증한 남자부 최초 추첨 배분 추가. 선수 MASTER·신청 명단·연결·지명 결과는 변경하지 않음."}
+  ]
+}
