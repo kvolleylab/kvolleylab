@@ -116,8 +116,17 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[dat
 html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl-shared-combined-line.is-head span{font-size:inherit!important;line-height:inherit!important;font-weight:inherit!important}
 }
 
+/* Desktop pools share equal half-width cards and one column grid for labels/values. */
 @media screen and (min-width:901px){
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row){grid-template-columns:32px minmax(82px,1fr) 26px 26px 36px 60px 60px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-card{min-width:0!important;overflow-x:auto!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-card-head{min-width:480px}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row){grid-template-columns:36px minmax(0,1fr) repeat(3,36px) repeat(2,88px)!important;column-gap:6px!important;min-width:480px!important;padding-left:12px!important;padding-right:12px!important;height:auto!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row)>span{min-width:0;text-align:center}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups :is(.kvl1180-pool-table-head,.kvl1180-pool-row)>span:nth-child(2){text-align:left;padding-right:14px}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl1180-pool-team-copy strong{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere;word-break:keep-all;line-height:1.35!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl-ratio-head{display:block!important;white-space:nowrap!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #groups .kvl-ratio-head :is(b,small){display:inline!important;margin:0!important;white-space:nowrap!important}
 }
 
 /* Standings values match team names; pool counts match the pool title. */
