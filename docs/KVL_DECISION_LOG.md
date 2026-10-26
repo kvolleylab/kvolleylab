@@ -153,3 +153,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (배포 증거는 release PR 기록). 
 ## 2026-10-26 · 국내대회 기본 템플릿을 중·고 6개 대회에 운영 적용
 
 Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 증거는 release PR 기록). 사용자가 중·고 목록의 대회들을 국내대회 기본 템플릿으로 실제 홈페이지에 반영하도록 요청했다. CBS·IBK·대통령배·익산·삼척·춘계 24개 부문을 공통 엔진에 연결한다. 네 부문 선택/남녀 색상/달력/조별 참가학교/트로피/사다리를 공유하고 기존 주소를 유지한다. 모바일 조별순위는 숨겨지던 수치를 학교 아래 나누어 표시한다. 기존 경기·학교명 alias·입상팀·실제 부전승을 유지하며, 4건 원문 세트 불일치와 CBS 미검수 영역은 명시한다. 허브 요약도 상세 기록으로 연결한다. 이전 중·고 개별 상세 및 CBS 적용 제외 결정을 이 범위에서 대체한다. [검수 보고서](validation/school-domestic-home-v2-20261026.md).
+
+
+## 2026-10-26 · 중·고 예선 종합순위 누락 복구
+
+Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 결과는 release PR 기록). 사용자가 중·고 조별순위 안의 예선 순위 누락을 지적했다. 이전 템플릿 이식에서 `overall:false`와 `combined:false`로 숨긴 예선 종합순위를 춘계·삼척·익산·대통령배·IBK의 20개 부문에 복구한다. 공통 엔진의 기존 승률 → 세트 득실비 → 점수 득실비 산식을 그대로 사용하며, 조별 진출 순위와 별개인 KVL 산출 순위임을 유지한다. 예선·사전경기만 집계하며 결선·최종순위는 섞지 않는다. CBS는 조 편성/학교명/전체 기록 미검수 상태이므로 확정 순위를 만들지 않는다. 경기 데이터·공통 렌더러·대학대회는 변경하지 않는다. [검수 보고서](validation/school-preliminary-overall-20261026.md).
