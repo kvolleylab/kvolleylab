@@ -226,7 +226,7 @@ function domesticOverallRows(d){
   const rows=[...stats.values()].map(x=>{
     const fb=x.fallback||{},wins=x.games?x.wins:(Number(fb.wins)||0),losses=x.games?x.losses:(Number(fb.losses)||0),games=x.games||(wins+losses),winRate=games?wins/games:0;
     const setRatio=x.games?(x.setLosses===0?(x.setWins>0?'MAX':'-'):(x.setWins/x.setLosses).toFixed(3)):(fb.setRatio??'-');
-    const pointRatio=x.hasPointData?(x.pointsAgainst===0?(x.pointsFor>0?'MAX':'-'):(x.pointsFor/x.pointsAgainst).toFixed(3)):(fb.pointRatio??'-');
+    const pointRatio=x.hasPointData?(x.pointsAgainst===0?(x.pointsFor>0?'MAX':'-'):(Math.round(x.pointsFor*1000/x.pointsAgainst)/1000).toFixed(3)):(fb.pointRatio??'-');
     return {...fb,team:x.team,poolId:x.poolId,games,wins,losses,winRate,winRateLabel:games?`${(winRate*100).toFixed(1)}%`:'-',setRatio,pointRatio};
   });
   rows.sort((a,b)=>b.winRate-a.winRate||overallRatioValue(b.setRatio)-overallRatioValue(a.setRatio)||overallRatioValue(b.pointRatio)-overallRatioValue(a.pointRatio));

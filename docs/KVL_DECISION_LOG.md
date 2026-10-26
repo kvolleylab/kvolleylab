@@ -163,3 +163,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 결과는 release 
 ## 2026-10-26 · PC 조별순위 카드 반폭 고정·열 간격 통일
 
 Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 증거는 release PR 기록). 사용자가 국내대회 기본 템플릿의 PC 조 카드를 한 행 두 개, 각각 동일한 반폭으로 고정하도록 요청했다. `domestic-home-v2`에 한정해 901px 이상에서 2열/16px 간격을 사용하고, 순위·팀·승·패·승점·세트득실비·점수득실비 헤더와 값에 같은 grid를 적용한다. 팀 열은 가변 폭과 추가 오른쪽 여백을 갖고 긴 이름은 말줄임 없이 줄바꿈한다. 승/패/승점은 각각 36px, 득실비 두 열은 각각 88px이며 제목은 한 줄이다. 좁은 PC 창에서도 두 칸을 유지하되 카드 내부만 가로 스크롤한다. 기존 모바일·인쇄·순위 계산·경기/선수 데이터는 유지한다. [검수 보고서](validation/domestic-pool-layout-20261026.md).
+
+
+## 2026-10-26 · 고성대회 조별순위 점수득실률 누락 복구
+
+Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 결과는 release PR 기록). 사용자가 고성대회 순위 규정에 필요한 점수득실률 누락을 지적했다. 남녀 예선 39경기의 기존 세트별 점수와 Drive MASTER/요강·KUVF 공식 결과를 대조해 22팀 pointRatio를 복구한다. 기존 공통 계산기에 승수 → 점수비율 → 세트비율 → 승자승을 명시한 재생성기를 두며 본선 8경기를 제외한다. 현재 순위·진출팀·경기 데이터·선수 ID는 변하지 않는다. 종합순위도 성균관대 291/240을 1.213으로 반올림해 조별 값과 일치시킨다. 기존 KVL 예선 종합순위의 별도 정렬 정책은 유지한다. [검수·출처·복구](validation/goseong-point-ratio-20261026.md).
