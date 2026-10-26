@@ -21,6 +21,13 @@ function ranking(d){
  if(!ranks.length)return '<div class="dv2-empty">최종순위 확정 후 표시합니다.</div>';
  return `<div class="dv2-ranking">${champ?`<a class="dv2-champion" href="${esc(href('team',{team:champ.code}))}">${teamLogo(team(champ.code))}<span><small>CHAMPION</small><strong>${esc(champ.team||team(champ.code).name)}</strong></span>${trophy(1)}</a>`:''}<div class="dv2-ranking-list">${ranks.map(r=>`<a href="${esc(href('team',{team:r.code}))}"><span class="dv2-rank">${trophy(r.rank)}<span>${esc(r.rank)}위</span></span><b>${esc(r.team||team(r.code).name)}</b><small>${esc(r.result||'')}</small></a>`).join('')}</div></div>`;
 }
+function initialCalendarMonth(d,dates){
+ const today=new Date(Date.now()+9*60*60*1000).toISOString().slice(0,10); // Korea Standard Time
+ const lastMatch=(d.matches||[]).map(m=>m.date).filter(Boolean).sort().at(-1);
+ if(!dates.length)return undefined;
+ if(d.status==='completed'||today>dates.at(-1))return (lastMatch||dates.at(-1)).slice(0,7);
+ const thisMonth=today.slice(0,7);return months.includes(thisMonth)?thisMonth:months[0];
+}
 function calendar(){
  const root=q('[data-dv2-calendar]');if(!root)return;
  if(!months.length){root.innerHTML='<div class="dv2-empty">공식 일정 발표 후 표시합니다.</div>';return;}
@@ -85,7 +92,7 @@ function apply(d){
  const extra=document.createElement('section');extra.className='dv2-overview-teams kvl1180-view';extra.dataset.view='overview';extra.innerHTML=heading(label(d),'rosters',`${d.participants.length}팀 전체보기`)+`<div class="dv2-team-strip">${[...d.participants].sort((a,b)=>a.name.localeCompare(b.name,'ko')).slice(0,6).map(teamTile).join('')}</div>`;overviewGrid.after(extra);
  const qualifications=q('[data-kvl-section="qualifications"]');if(qualifications)extra.after(qualifications);
  const dates=[...(d.dateLabel?.match(/\d{4}-\d{2}-\d{2}/g)||[]),...d.matches.map(m=>m.date).filter(Boolean)].sort();
- months=[];if(dates.length){const start=dates[0].slice(0,7),end=dates.at(-1).slice(0,7);let cursor=start;while(cursor<=end&&months.length<24){months.push(cursor);const [y,m]=cursor.split('-').map(Number);cursor=new Date(Date.UTC(y,m,1)).toISOString().slice(0,7);}}month=months[0];calendar();
+ months=[];if(dates.length){const start=dates[0].slice(0,7),end=dates.at(-1).slice(0,7);let cursor=start;while(cursor<=end&&months.length<24){months.push(cursor);const [y,m]=cursor.split('-').map(Number);cursor=new Date(Date.UTC(y,m,1)).toISOString().slice(0,7);}}month=initialCalendarMonth(d,dates);calendar();
  document.body.insertAdjacentHTML('beforeend','<dialog id="dv2-day-dialog" aria-labelledby="dv2-day-title"><div class="dv2-dialog-heading"><h2 id="dv2-day-title"></h2><button type="button" data-dv2-close aria-label="상세 창 닫기">×</button></div><div class="dv2-day-matches"></div><a class="dv2-day-schedule" href="#">이 날짜 경기 일정·결과 보기 ›</a></dialog>');
  const dialog=q('#dv2-day-dialog');dialog.addEventListener('click',event=>{if(event.target.closest('[data-dv2-close]')||event.target===dialog)dialog.close();});
  enhanceParticipants();window.KVLCompetitionTemplateV2.applyView();return true;
