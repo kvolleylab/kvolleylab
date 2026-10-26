@@ -35,3 +35,39 @@ test('later league and knockout results cannot change preliminary overall',()=>{
   w.KVLCompetitionComponentsV2.render();assert.equal(w.document.querySelector('.is-domestic-overall').innerHTML,before);
  }finally{w.close();}
 });
+
+test('six-team league displays official order, phase-only totals and the four semifinalists before the bracket',()=>{
+ const {w,d}=setup('university-league-men-2026');try{
+  const doc=w.document,section=doc.querySelector('[data-kvl-league-stage]'),rows=[...section.querySelectorAll('tbody tr')];
+  assert.equal(section.nextElementSibling.className,'kvl1180-knockout-block');
+  assert.equal(section.querySelector('h3').textContent,'6강리그 최종순위');
+  assert.deepEqual(rows.map(r=>r.dataset.stageTeam),['INHA','HANYANG','HONGIK','SKKU','JOONGBU','KYONGGI']);
+  assert.deepEqual(rows.map(r=>[...r.querySelectorAll('td[data-label]')].map(td=>td.textContent)),[
+   ['5','5','0','15','5.000','1.208'],['5','4','1','12','2.600','1.057'],
+   ['5','2','3','6','0.900','1.023'],['5','2','3','6','1.000','1.005'],
+   ['5','2','3','5','0.500','0.975'],['5','0','5','1','0.133','0.755']
+  ]);
+  assert.deepEqual(rows.filter(r=>r.classList.contains('is-qualified')).map(r=>r.dataset.stageTeam),['INHA','HANYANG','HONGIK','SKKU']);
+  assert.equal(rows.filter(r=>r.querySelector('.kvl-league-result').textContent==='리그 종료').length,2);
+  assert.match(section.querySelector('.kvl-league-advance').textContent,/1위 인하대 vs 4위 성균관대/);
+  assert.match(section.querySelector('.kvl-league-advance').textContent,/2위 한양대 vs 3위 홍익대/);
+  assert.equal(section.querySelectorAll('tbody [data-team-results]').length,6);
+  const original=JSON.stringify(d);w.KVLCompetitionComponentsV2.render();assert.equal(JSON.stringify(d),original);assert.equal(doc.querySelectorAll('[data-kvl-league-stage]').length,1);
+ }finally{w.close();}
+});
+test('six-team league totals exclude preliminary and final rounds and label unfinished results correctly',()=>{
+ const {w,d}=setup('university-league-men-2026');try{
+  const before=w.document.querySelector('.kvl-league-table tbody').innerHTML;
+  d.matches.filter(m=>m.stage!=='6강리그').forEach(m=>{m.score={home:3,away:0,sets:[{home:25,away:1},{home:25,away:2},{home:25,away:3}]};});
+  w.KVLCompetitionComponentsV2.render();assert.equal(w.document.querySelector('.kvl-league-table tbody').innerHTML,before);
+  d.matches.find(m=>m.stage==='6강리그').score=null;w.KVLCompetitionComponentsV2.render();
+  assert.equal(w.document.querySelector('#kvl-league-stage-title').textContent,'6강리그 현재 순위');
+  assert.match(w.document.querySelector('.kvl-league-head>p').textContent,/14\/15경기 완료/);
+ }finally{w.close();}
+});
+test('league-stage presentation stays opt-in and is removed when disabled',()=>{
+ for(const slug of ['university-league-women-2026','university-goseong-men-2026','university-danyang-men-2026']){
+  const {w}=setup(slug);try{assert.equal(w.document.querySelector('[data-kvl-league-stage]'),null);}finally{w.close();}
+ }
+ const {w,d}=setup('university-league-men-2026');try{delete d.structure.knockout.leagueStage;w.KVLCompetitionComponentsV2.render();assert.equal(w.document.querySelector('[data-kvl-league-stage]'),null);}finally{w.close();}
+});

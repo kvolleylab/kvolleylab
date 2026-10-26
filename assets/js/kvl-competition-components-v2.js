@@ -268,6 +268,43 @@ function renderStandings(d){
   renderDomesticRuleCard(d,'standings',root);
 }
 
+// A separate league phase must never reuse or mutate preliminary standings.
+function kusfLeagueRows(matches){
+  const stats=new Map(),ratio=(won,lost)=>lost?won/lost:won?Infinity:0;
+  const ensure=t=>{const key=code(t);if(!key)return null;if(!stats.has(key))stats.set(key,{team:t,games:0,wins:0,losses:0,points:0,setWins:0,setLosses:0,pointsFor:0,pointsAgainst:0,pointData:true});return stats.get(key);};
+  matches.forEach(m=>{
+    const h=ensure(m.home),a=ensure(m.away),s=score(m);if(!h||!a||!s||s.home===s.away)return;
+    h.games++;a.games++;h.setWins+=s.home;h.setLosses+=s.away;a.setWins+=s.away;a.setLosses+=s.home;
+    const winner=s.home>s.away?h:a,loser=winner===h?a:h,five=Math.min(s.home,s.away)===2;
+    winner.wins++;loser.losses++;winner.points+=five?2:3;loser.points+=five?1:0;
+    if(s.sets.length!==s.home+s.away){h.pointData=false;a.pointData=false;}
+    s.sets.forEach(set=>{const hp=Number(set.home??set[0]),ap=Number(set.away??set[1]);if(!Number.isFinite(hp)||!Number.isFinite(ap)){h.pointData=false;a.pointData=false;return;}h.pointsFor+=hp;h.pointsAgainst+=ap;a.pointsFor+=ap;a.pointsAgainst+=hp;});
+  });
+  const rows=[...stats.values()].map(r=>({...r,setValue:ratio(r.setWins,r.setLosses),pointValue:r.pointData?ratio(r.pointsFor,r.pointsAgainst):0}));
+  const compare=(a,b)=>b.points-a.points||b.wins-a.wins||b.pointValue-a.pointValue||b.setValue-a.setValue;
+  rows.sort(compare);
+  // KUSF: after points, wins, point ratio and set ratio, use tied teams' games.
+  for(let i=0;i<rows.length;){let end=i+1;while(end<rows.length&&!compare(rows[i],rows[end]))end++;
+    if(end-i>1){const tied=rows.slice(i,end),codes=new Set(tied.map(r=>code(r.team))),mini=new Map(tied.map(r=>[code(r.team),{wins:0,pf:0,pa:0,sf:0,sa:0}]));
+      matches.filter(m=>codes.has(code(m.home))&&codes.has(code(m.away))&&score(m)).forEach(m=>{const s=score(m),h=mini.get(code(m.home)),a=mini.get(code(m.away));h.wins+=s.home>s.away?1:0;a.wins+=s.away>s.home?1:0;h.sf+=s.home;h.sa+=s.away;a.sf+=s.away;a.sa+=s.home;s.sets.forEach(p=>{h.pf+=Number(p.home);h.pa+=Number(p.away);a.pf+=Number(p.away);a.pa+=Number(p.home);});});
+      tied.sort((a,b)=>{const x=mini.get(code(a.team)),y=mini.get(code(b.team));return y.wins-x.wins||ratio(y.pf,y.pa)-ratio(x.pf,x.pa)||ratio(y.sf,y.sa)-ratio(x.sf,x.sa);});rows.splice(i,end-i,...tied);
+    }i=end;
+  }
+  return rows.map((r,i)=>({...r,rank:i+1,setRatio:r.games?(Number.isFinite(r.setValue)?r.setValue.toFixed(3):'MAX'):'-',pointRatio:r.games&&r.pointData?(Number.isFinite(r.pointValue)?r.pointValue.toFixed(3):'MAX'):'-'}));
+}
+function renderLeagueStage(d){
+  const anchor=q('#knockout .kvl1180-knockout-block'),existing=q('[data-kvl-league-stage]'),c=cfg(d).knockout.leagueStage;
+  if(!anchor||c?.ranking!=='kusf'){existing?.remove();return;}
+  const matches=(d.matches||[]).filter(m=>m.stage===c.stage),rows=kusfLeagueRows(matches);
+  if(!rows.length){existing?.remove();return;}
+  const done=matches.filter(m=>score(m)).length,complete=done===matches.length,qualified=new Set((d.matches||[]).filter(m=>round(m)==='SF').flatMap(m=>[code(m.home),code(m.away)])),count=c.advanceCount||4;
+  const el=existing||document.createElement('section');el.className='kvl-league-stage';el.dataset.kvlLeagueStage=c.stage;el.setAttribute('aria-labelledby','kvl-league-stage-title');
+  const cells=r=>[['경기',r.games],['승',r.wins],['패',r.losses],['승점',r.points],['세트 득실비',r.setRatio],['점수 득실비',r.pointRatio]].map(([label,value])=>`<td data-label="${label}">${esc(value)}</td>`).join('');
+  const row=r=>{const advances=qualified.has(code(r.team)),result=advances?'4강 진출':complete?'리그 종료':'진행 중';return `<tr class="${advances?'is-qualified':''}" data-stage-team="${esc(code(r.team))}"><td class="kvl-league-rank">${r.rank}위</td><th scope="row" class="kvl-league-team">${teamLink(resolveTeam(r.team,d))}</th>${cells(r)}<td class="kvl-league-result"><span>${result}</span></td></tr>`;};
+  const pairs=(d.matches||[]).filter(m=>round(m)==='SF').map(m=>[m.home,m.away].map(t=>{const r=rows.find(x=>code(x.team)===code(t));return `${r?r.rank+'위 ':''}${esc(name(resolveTeam(t,d)))}`;}).join(' <span>vs</span> '));
+  el.innerHTML=`<ol class="kvl-league-flow" aria-label="결선 진출 과정"><li><span>조별 예선</span><small>각 조 상위 3팀 진출</small></li><li class="is-current"><span>${esc(c.stage)}</span><small>${rows.length}팀 · ${matches.length}경기</small></li><li><span>4강 · 결승</span><small>상위 ${count}팀 진출</small></li></ol><div class="kvl-league-head"><div><p class="label">FINAL SIX LEAGUE</p><h3 id="kvl-league-stage-title">${esc(c.stage)} ${complete?'최종순위':'현재 순위'}</h3></div><p>${rows.length}팀 · ${done}/${matches.length}경기 완료</p></div><div class="kvl-league-table-wrap"><table class="kvl-league-table" aria-labelledby="kvl-league-stage-title"><thead><tr><th scope="col">순위</th><th scope="col">팀</th><th scope="col">경기</th><th scope="col">승</th><th scope="col">패</th><th scope="col">승점</th><th scope="col">세트<br>득실비</th><th scope="col">점수<br>득실비</th><th scope="col">진출</th></tr></thead><tbody>${rows.map(row).join('')}</tbody></table></div><p class="kvl-league-note">6강리그 경기만 반영 · 승점 → 승리 경기 수 → 점수 득실비 → 세트 득실비 → 동률 팀 간 성적 순</p><div class="kvl-league-advance"><strong>상위 ${count}팀 → 준결승</strong><div>${pairs.length?pairs.map(p=>`<p>${p}</p>`).join(''):'<p>1위 vs 4위</p><p>2위 vs 3위</p>'}</div></div>`;
+  if(!existing)anchor.before(el);
+}
 function renderFinal(d){
   const top=q('[data-kvl-component="final-top4"]');if(!top)return;
   const rows=(d.status==='upcoming'?[]:(d.finalRanking||[]).filter(x=>d.status!=='active'||x.confirmed===true)).slice().sort((a,b)=>Number(a.rank)-Number(b.rank)).slice(0,4);
@@ -440,7 +477,7 @@ function renderFocus(d){
  root.innerHTML=`<div class="kvl1180-lower"><section class="kvl1180-ranking"><div class="kvl1180-ranking-head"><div class="kvl1180-ranking-title"><span class="kvl1180-ranking-flag">${esc(f.flagEmoji||'')}</span><strong>${esc(f.name)} · FIVB World Ranking</strong></div><a href="${esc(f.rankingUrl)}" target="_blank" rel="noopener noreferrer">랭킹 변동 상세보기 →</a></div><div class="kvl1180-ranking-grid">${['대회 시작 전','현재','이번 대회 누적'].map((label,i)=>`<div><span>${label}</span><strong class="is-empty">${esc(f.values?.[i]??'—')}</strong></div>`).join('')}</div></section><section class="kvl1180-results"><div class="kvl1180-results-head"><strong>${esc(f.name)} 최근 경기 결과</strong><a href="${esc(viewUrl('schedule'))}">전체 결과 보기 →</a></div><div class="kvl1180-results-list">${matches.map(m=>{const home=code(m.home)===f.code,s=score(m),a=home?s.home:s.away,b=home?s.away:s.home;return `<div class="kvl1180-result-row"><strong>vs ${esc(name(home?m.away:m.home))}</strong><span>${a} - ${b}</span><em class="${a>b?'win':'loss'}">${a>b?'승':'패'}</em></div>`}).join('')||'<div class="kvl1180-result-row"><strong>완료 경기 없음</strong><span>—</span><em>—</em></div>'}</div></section></div><p class="kvl1180-footnote">${esc(f.note||'')}</p>`;
 }
 
-function render(d=data()){applyVisualBaseline(d);applyStructureLabels(d);bindKpis(d);renderQualifications(d);renderCalendar(d);renderSchedule(d);renderStandings(d);renderFinal(d);renderKnockout(d);renderParticipants(d);renderTeamResults(d);renderFocus(d);window.KVLCompetitionTemplateV2?.applyView();document.body.dataset.kvlRenderState='ready';if(window.KVLCompetitionTemplateV2?.currentView()==='rosters'&&location.hash==='#team-roster')requestAnimationFrame(()=>q('#team-roster')?.scrollIntoView({block:'start'}));}
+function render(d=data()){applyVisualBaseline(d);applyStructureLabels(d);bindKpis(d);renderQualifications(d);renderCalendar(d);renderSchedule(d);renderStandings(d);renderFinal(d);renderKnockout(d);renderLeagueStage(d);renderParticipants(d);renderTeamResults(d);renderFocus(d);window.KVLCompetitionTemplateV2?.applyView();document.body.dataset.kvlRenderState='ready';if(window.KVLCompetitionTemplateV2?.currentView()==='rosters'&&location.hash==='#team-roster')requestAnimationFrame(()=>q('#team-roster')?.scrollIntoView({block:'start'}));}
 if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>render(),{once:true});else render();}
 window.addEventListener('popstate',()=>{renderParticipants(data());renderTeamResults(data());});
 window.KVLCompetitionComponentsV2={render,printRoster};
