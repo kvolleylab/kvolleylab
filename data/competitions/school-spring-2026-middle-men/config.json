@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 2,
+  "slug": "school-spring-2026-middle-men",
+  "competition": {
+    "competitionId": "KVL-COMP-SCHOOL-SCHOOL-SPRING-2026-MIDDLE-MEN",
+    "displayName": "2026 춘계전국중고배구연맹전 남중부",
+    "officialName": "2026 춘계전국중고배구연맹전 · 남중부",
+    "season": "2026",
+    "gender": "men",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "presentation": "domestic-home-v2",
+    "audience": "school",
+    "divisionKey": "middle-men",
+    "divisionLabel": "남중부",
+    "labels": {
+      "groupsTab": "조별순위",
+      "groupsKpi": "예선 조",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "결선 진출",
+      "knockoutKpiUnit": "팀",
+      "standingsTitle": "남중부 조별순위",
+      "knockoutTitle": "남중부 결선 토너먼트",
+      "participantsTitle": "참가학교",
+      "participantsKpi": "참가학교",
+      "participantsKpiUnit": "팀"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "사전경기",
+        "예선",
+        "8강",
+        "준결승",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "pools-combined",
+      "overall": false,
+      "combined": false,
+      "title": "남중부 조별순위"
+    },
+    "knockout": {
+      "mode": "bracket-8",
+      "qfLabel": "8강",
+      "sfLabel": "준결승",
+      "finalLabel": "결승",
+      "byeLabel": "준결승 직행"
+    },
+    "participants": {
+      "mode": "groups",
+      "linkMode": "team-results",
+      "groupLabel": "남중부 참가학교"
+    },
+    "roster": {
+      "mode": "none",
+      "domesticTeamRoute": "none"
+    }
+  },
+  "hero": {
+    "pcImage": "/assets/img/home-hero/kvl-home-hero-pc-v01.webp",
+    "mobileImage": "/assets/img/home-hero/kvl-home-hero-mobile-v01.webp",
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "72% center",
+    "alt": "K-Volley Lab 중·고 배구대회"
+  },
+  "seo": {
+    "title": "2026 춘계전국중고배구연맹전 남중부 | K-Volley Lab",
+    "description": "2026 춘계전국중고배구연맹전 남중부 경기 일정과 결과, 조별순위, 결선 대진표, 참가학교를 확인합니다."
+  },
+  "data": "data.json"
+}

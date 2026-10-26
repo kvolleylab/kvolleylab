@@ -1,0 +1,936 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료",
+  "dateLabel": "2026-04-06 ~ 2026-04-13",
+  "locationLabel": "강원 삼척",
+  "venueLabel": "삼척다목적체육관 · 삼척체육관",
+  "teamCount": 11,
+  "groupCount": 3,
+  "matchCount": 20,
+  "knockoutTeamCount": 6,
+  "champion": "현일중",
+  "championAchievement": "우승",
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-samcheok-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-samcheok-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-samcheok-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-samcheok-2026-middle-women"
+    }
+  ],
+  "participants": [
+    {
+      "code": "SCH-406749121F",
+      "name": "금정중",
+      "fullName": "금정중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-2E21056173",
+      "name": "남성중",
+      "fullName": "남성중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-EB50B3014D",
+      "name": "설악중",
+      "fullName": "설악중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-021A4ABF95",
+      "name": "소사중",
+      "fullName": "소사중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-AD76159F92",
+      "name": "언양중",
+      "fullName": "언양중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-D2A7371647",
+      "name": "연현중",
+      "fullName": "연현중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-C352ACA312",
+      "name": "율곡중",
+      "fullName": "율곡중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-7FA4C0332D",
+      "name": "인하사대부중",
+      "fullName": "인하사대부중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-379E160767",
+      "name": "천안쌍용중",
+      "fullName": "천안쌍용중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-46D1EF6415",
+      "name": "함안중",
+      "fullName": "함안중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-57CF9D049B",
+      "name": "현일중",
+      "fullName": "현일중",
+      "group": "A"
+    }
+  ],
+  "matches": [
+    {
+      "id": "samcheok-20260407-4-3",
+      "date": "2026-04-07",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-EB50B3014D"
+      },
+      "away": {
+        "code": "SCH-379E160767"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260407-4-4",
+      "date": "2026-04-07",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-C352ACA312"
+      },
+      "away": {
+        "code": "SCH-2E21056173"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260407-4-5",
+      "date": "2026-04-07",
+      "time": "5경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-021A4ABF95"
+      },
+      "away": {
+        "code": "SCH-406749121F"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260407-4-6",
+      "date": "2026-04-07",
+      "time": "6경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-AD76159F92"
+      },
+      "away": {
+        "code": "SCH-46D1EF6415"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260408-4-3",
+      "date": "2026-04-08",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-57CF9D049B"
+      },
+      "away": {
+        "code": "SCH-379E160767"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 11
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260408-4-4",
+      "date": "2026-04-08",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-C352ACA312"
+      },
+      "away": {
+        "code": "SCH-406749121F"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 9,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260408-4-5",
+      "date": "2026-04-08",
+      "time": "5경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-2E21056173"
+      },
+      "away": {
+        "code": "SCH-021A4ABF95"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260408-4-6",
+      "date": "2026-04-08",
+      "time": "6경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-7FA4C0332D"
+      },
+      "away": {
+        "code": "SCH-D2A7371647"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260409-4-3",
+      "date": "2026-04-09",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-C352ACA312"
+      },
+      "away": {
+        "code": "SCH-021A4ABF95"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260409-4-4",
+      "date": "2026-04-09",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-406749121F"
+      },
+      "away": {
+        "code": "SCH-2E21056173"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260409-4-5",
+      "date": "2026-04-09",
+      "time": "5경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-D2A7371647"
+      },
+      "away": {
+        "code": "SCH-AD76159F92"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260409-4-6",
+      "date": "2026-04-09",
+      "time": "6경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-7FA4C0332D"
+      },
+      "away": {
+        "code": "SCH-46D1EF6415"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260410-4-3",
+      "date": "2026-04-10",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-57CF9D049B"
+      },
+      "away": {
+        "code": "SCH-EB50B3014D"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260410-4-4",
+      "date": "2026-04-10",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-46D1EF6415"
+      },
+      "away": {
+        "code": "SCH-D2A7371647"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 28,
+            "away": 26
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260410-4-5",
+      "date": "2026-04-10",
+      "time": "5경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-7FA4C0332D"
+      },
+      "away": {
+        "code": "SCH-AD76159F92"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260411-4-1",
+      "date": "2026-04-11",
+      "time": "10:00",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-57CF9D049B"
+      },
+      "away": {
+        "code": "SCH-406749121F"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "samcheok-20260412-0-1"
+    },
+    {
+      "id": "samcheok-20260411-4-2",
+      "date": "2026-04-11",
+      "time": "2경기",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-D2A7371647"
+      },
+      "away": {
+        "code": "SCH-379E160767"
+      },
+      "venueLabel": "삼척다목적체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "samcheok-20260412-0-2"
+    },
+    {
+      "id": "samcheok-20260412-0-1",
+      "date": "2026-04-12",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-46D1EF6415"
+      },
+      "away": {
+        "code": "SCH-57CF9D049B"
+      },
+      "venueLabel": "삼척체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 15
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "samcheok-20260413-0-1"
+    },
+    {
+      "id": "samcheok-20260412-0-2",
+      "date": "2026-04-12",
+      "time": "2경기",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-2E21056173"
+      },
+      "away": {
+        "code": "SCH-D2A7371647"
+      },
+      "venueLabel": "삼척체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "samcheok-20260413-0-1"
+    },
+    {
+      "id": "samcheok-20260413-0-1",
+      "date": "2026-04-13",
+      "time": "10:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-D2A7371647"
+      },
+      "away": {
+        "code": "SCH-57CF9D049B"
+      },
+      "venueLabel": "삼척체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-57CF9D049B"
+            },
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.389",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-379E160767"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "0.932",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-EB50B3014D"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.000",
+            "pointRatio": "0.780",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-2E21056173"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.224",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-406749121F"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.030",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-021A4ABF95"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.600",
+            "pointRatio": "0.953",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-C352ACA312"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.333",
+            "pointRatio": "0.860",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-46D1EF6415"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.205",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-D2A7371647"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "2.000",
+            "pointRatio": "1.183",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-7FA4C0332D"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.400",
+            "pointRatio": "0.811",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-AD76159F92"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.167",
+            "pointRatio": "0.877",
+            "status": "out"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "standingsNote": "예선 대진으로 구성한 조",
+  "standingsRule": "승수 → 점수 득실비 → 세트 득실비 → 승자승 · 승점 미산정",
+  "scheduleNote": "기존 공식 경기스코어 기록 · 사전경기 포함 · 한국시간(KST)",
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "SCH-57CF9D049B",
+      "team": "현일중",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "SCH-D2A7371647",
+      "team": "연현중",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-46D1EF6415",
+      "team": "함안중",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-2E21056173",
+      "team": "남성중",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "한국중고배구 1차 연맹전 삼척대회 공식자료",
+      "url": "https://drive.google.com/file/d/1oaWVWpTtdIsxAjS-_wQTSipsQbmpnLBx"
+    },
+    {
+      "title": "한국중고배구 1차 연맹전 삼척대회 공식자료 보관함",
+      "url": "https://drive.google.com/drive/folders/1EQx_iLXJon5YoexDLc_06b2-fi2UYhn7"
+    }
+  ],
+  "domesticRules": {
+    "standings": {
+      "title": "조별순위 기준",
+      "body": "기존 예선·사전경기 연결관계로 구성한 조입니다. 공식 조 표기와 다를 수 있습니다. · 순위: 승수 → 점수 득실비 → 세트 득실비 → 승자승. 승점은 별도 산정하지 않습니다."
+    },
+    "knockout": {
+      "title": "결선 진출 경로",
+      "body": "기존 경기 결과의 승리 팀과 다음 경기 참가 팀을 연결합니다. 준결승 직행 팀은 별도 표시합니다."
+    }
+  },
+  "sourceSnapshot": {
+    "baseCommit": "a986092fd8f4dd0f8ba8c36b7779785f45cd23cf",
+    "legacyPage": "school-competition-samcheok-2026.html",
+    "legacyScript": "assets/js/school-competition-samcheok-2026.js",
+    "generatedBy": "scripts/migrate-school-competitions-v2.cjs"
+  }
+}

@@ -18,6 +18,7 @@
   const isProCompetitionPrototype=path==='competition-engine-prototype.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
   const isProCompetitionProduction=path==='competition-engine.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
   const universityLeaguePages=new Set(['university-league.html']);
+  const isSchoolCompetition=path==='competition-engine.html'&&/^(?:school-(?:spring|samcheok|iksan|presidents|ibk)-2026|cbs-2026)-(?:high|middle)-(?:men|women)$/.test(params.get('competition')||'');
   const isUniversityLeagueCompetition=path==='competition-engine.html'&&/^university-league-(?:men|women)-2026$/.test(params.get('competition')||'');
   const playerPages=new Set(['players.html','player.html','player-search.html','player-profile.html','growth-timeline.html']);
   const schedulePages=new Set(['schedules.html','competition-calendar.html']);
@@ -29,7 +30,7 @@
   else if(schedulePages.has(path))active='schedules';
   else if(vleaguePages.has(path)||isProCompetitionPrototype||isProCompetitionProduction)active='vleague';
   else if(nationalPages.has(path))active='national';
-  else if(domesticPages.has(path)||universityLeaguePages.has(path)||isUniversityLeagueCompetition)active='domestic';
+  else if(domesticPages.has(path)||universityLeaguePages.has(path)||isUniversityLeagueCompetition||isSchoolCompetition)active='domestic';
   else if(isInternationalPage)active='competition';
   else if(teamPages.has(path)||playerPages.has(path)||path==='draft-hub.html')active='players';
   else if(analysisPages.has(path)||path==='records.html')active='analysis';
@@ -110,7 +111,7 @@
 
     if(item.key==='domestic-university')return active==='domestic'&&(path==='university-competitions.html'||path==='university-competition.html'||path==='university-competition-danyang.html'||path==='university-team.html'||params.get('division')==='university');
     if(item.key==='domestic-uleague')return active==='domestic'&&(universityLeaguePages.has(path)||isUniversityLeagueCompetition);
-    if(item.key==='domestic-school')return active==='domestic'&&params.get('division')==='school';
+    if(item.key==='domestic-school')return active==='domestic'&&(params.get('division')==='school'||isSchoolCompetition);
     if(item.key==='domestic-pro')return active==='domestic'&&params.get('division')==='pro';
     if(item.key==='domestic-comprehensive')return active==='domestic'&&path==='national-sports-festival-2026.html';
 

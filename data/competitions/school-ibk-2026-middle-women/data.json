@@ -1,0 +1,1059 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료",
+  "dateLabel": "2026-07-31 ~ 2026-08-06",
+  "locationLabel": "충북 제천",
+  "venueLabel": "제천중학교 · 제천어울림체육관",
+  "teamCount": 12,
+  "groupCount": 3,
+  "matchCount": 23,
+  "knockoutTeamCount": 6,
+  "champion": "경남여중",
+  "championAchievement": "우승",
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-ibk-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-ibk-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-ibk-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-ibk-2026-middle-women"
+    }
+  ],
+  "participants": [
+    {
+      "code": "SCH-EA6767711E",
+      "name": "강릉해람중",
+      "fullName": "강릉해람중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-25EA3F92F8",
+      "name": "경남여중",
+      "fullName": "경남여중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-FB4415708A",
+      "name": "광주체중",
+      "fullName": "광주체중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-580AAF53AA",
+      "name": "대구일중",
+      "fullName": "대구일중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-E8688E41DB",
+      "name": "모종중",
+      "fullName": "모종중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-755D32E5EE",
+      "name": "부평여중",
+      "fullName": "부평여중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-ECB1A5B52F",
+      "name": "세화여중",
+      "fullName": "세화여중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-D87E0D1CE7",
+      "name": "잠실여중",
+      "fullName": "잠실여중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-F302428F5D",
+      "name": "제천여중",
+      "fullName": "제천여중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-2886EDBC28",
+      "name": "중앙여중",
+      "fullName": "중앙여중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-2C1F742B57",
+      "name": "천안봉서중",
+      "fullName": "천안봉서중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-6DBE24974A",
+      "name": "홍천군체육회U-15",
+      "fullName": "홍천군체육회U-15",
+      "group": "B"
+    }
+  ],
+  "matches": [
+    {
+      "id": "ibk-16",
+      "date": "2026-07-31",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "away": {
+        "code": "SCH-2C1F742B57"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 10,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-17",
+      "date": "2026-07-31",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-580AAF53AA"
+      },
+      "away": {
+        "code": "SCH-D87E0D1CE7"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 9,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-18",
+      "date": "2026-07-31",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-E8688E41DB"
+      },
+      "away": {
+        "code": "SCH-6DBE24974A"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-19",
+      "date": "2026-07-31",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "away": {
+        "code": "SCH-F302428F5D"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 15,
+            "away": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-20",
+      "date": "2026-07-31",
+      "time": "5경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-755D32E5EE"
+      },
+      "away": {
+        "code": "SCH-EA6767711E"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-34",
+      "date": "2026-08-01",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-D87E0D1CE7"
+      },
+      "away": {
+        "code": "SCH-2C1F742B57"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-35",
+      "date": "2026-08-01",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-FB4415708A"
+      },
+      "away": {
+        "code": "SCH-6DBE24974A"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 15,
+            "away": 13
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-36",
+      "date": "2026-08-01",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-2886EDBC28"
+      },
+      "away": {
+        "code": "SCH-E8688E41DB"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-37",
+      "date": "2026-08-01",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-F302428F5D"
+      },
+      "away": {
+        "code": "SCH-755D32E5EE"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-52",
+      "date": "2026-08-02",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-2C1F742B57"
+      },
+      "away": {
+        "code": "SCH-580AAF53AA"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 15,
+            "away": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-53",
+      "date": "2026-08-02",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-D87E0D1CE7"
+      },
+      "away": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 7,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-54",
+      "date": "2026-08-02",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-FB4415708A"
+      },
+      "away": {
+        "code": "SCH-2886EDBC28"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 14,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-55",
+      "date": "2026-08-02",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "away": {
+        "code": "SCH-755D32E5EE"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-56",
+      "date": "2026-08-02",
+      "time": "5경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-EA6767711E"
+      },
+      "away": {
+        "code": "SCH-F302428F5D"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-69",
+      "date": "2026-08-03",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "away": {
+        "code": "SCH-580AAF53AA"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-70",
+      "date": "2026-08-03",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-FB4415708A"
+      },
+      "away": {
+        "code": "SCH-E8688E41DB"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-71",
+      "date": "2026-08-03",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-6DBE24974A"
+      },
+      "away": {
+        "code": "SCH-2886EDBC28"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-72",
+      "date": "2026-08-03",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "away": {
+        "code": "SCH-EA6767711E"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "ibk-92",
+      "date": "2026-08-04",
+      "time": "10:00",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "away": {
+        "code": "SCH-2C1F742B57"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "6강",
+      "nextMatchId": "ibk-94"
+    },
+    {
+      "id": "ibk-93",
+      "date": "2026-08-04",
+      "time": "2경기",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "away": {
+        "code": "SCH-6DBE24974A"
+      },
+      "venueLabel": "제천중학교",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 15,
+            "away": 8
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "6강",
+      "nextMatchId": "ibk-95"
+    },
+    {
+      "id": "ibk-94",
+      "date": "2026-08-05",
+      "time": "3경기",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-E8688E41DB"
+      },
+      "away": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "venueLabel": "제천어울림체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "ibk-96"
+    },
+    {
+      "id": "ibk-95",
+      "date": "2026-08-05",
+      "time": "4경기",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-EA6767711E"
+      },
+      "away": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "venueLabel": "제천어울림체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 14
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "ibk-96"
+    },
+    {
+      "id": "ibk-96",
+      "date": "2026-08-06",
+      "time": "2경기",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "away": {
+        "code": "SCH-EA6767711E"
+      },
+      "venueLabel": "제천어울림체육관",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 7
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-2C1F742B57"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.098",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-ECB1A5B52F"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.250",
+            "pointRatio": "1.000",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-D87E0D1CE7"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.667",
+            "pointRatio": "1.013",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-580AAF53AA"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.500",
+            "pointRatio": "0.907",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-E8688E41DB"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "6.000",
+            "pointRatio": "1.194",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-6DBE24974A"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "0.982",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-2886EDBC28"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.500",
+            "pointRatio": "0.970",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-FB4415708A"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.400",
+            "pointRatio": "0.870",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-EA6767711E"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.442",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-25EA3F92F8"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.333",
+            "pointRatio": "1.081",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-755D32E5EE"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.500",
+            "pointRatio": "0.857",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-F302428F5D"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.167",
+            "pointRatio": "0.766",
+            "status": "out"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "standingsNote": "검수 조별순위 기준",
+  "standingsRule": "승수 → 점수 득실비 → 세트 득실비 → 승자승 · 승점 미산정",
+  "scheduleNote": "기존 공식 경기스코어 기록 · 사전경기 포함 · 한국시간(KST)",
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "SCH-25EA3F92F8",
+      "team": "경남여중",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "SCH-EA6767711E",
+      "team": "강릉해람중",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-E8688E41DB",
+      "team": "모종중",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-ECB1A5B52F",
+      "team": "세화여중",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "IBK기업은행배 전국중고배구대회 공식자료",
+      "url": "https://drive.google.com/uc?export=download&id=1NGytIv0UqbCMCAPrFWIf0ZFW3qaXTEki"
+    },
+    {
+      "title": "IBK기업은행배 전국중고배구대회 참가요강·기록 원문",
+      "url": "https://drive.google.com/file/d/1hbdact8MYEPAIZ2qHKtpEjOJIOQp3uI0/view"
+    },
+    {
+      "title": "IBK기업은행배 전국중고배구대회 참가요강·기록 원문",
+      "url": "https://drive.google.com/uc?export=download&id=16O-WpuLf9VmNfF-TStyKQEjfFi6bz8wM"
+    }
+  ],
+  "domesticRules": {
+    "standings": {
+      "title": "조별순위 기준",
+      "body": "기존 검수 조별순위 기준 · 순위: 승수 → 점수 득실비 → 세트 득실비 → 승자승. 승점은 별도 산정하지 않습니다."
+    },
+    "knockout": {
+      "title": "결선 진출 경로",
+      "body": "기존 경기 결과의 승리 팀과 다음 경기 참가 팀을 연결합니다. 준결승 직행 팀은 별도 표시합니다."
+    }
+  },
+  "sourceSnapshot": {
+    "baseCommit": "a986092fd8f4dd0f8ba8c36b7779785f45cd23cf",
+    "legacyPage": "ibk-middle-high-2026.html",
+    "legacyScript": "assets/js/school-competition-ibk-2026.js",
+    "generatedBy": "scripts/migrate-school-competitions-v2.cjs"
+  }
+}

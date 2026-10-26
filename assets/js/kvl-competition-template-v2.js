@@ -15,6 +15,17 @@ function viewUrl(view,params={}){const u=new URL(location.href);u.hash='';u.sear
 
 function syncGenderLinks(d=data()){
   const links=d.genderLinks||{},view=currentView(),switchView=view==='team'?'schedule':view;
+  if(Array.isArray(d.divisionLinks)&&d.divisionLinks.length){
+    const root=q('.kvl1180-gender');if(!root)return;
+    root.classList.add('has-divisions');root.setAttribute('aria-label','참가 부문 전환');root.replaceChildren();
+    for(const division of d.divisionLinks){
+      const a=document.createElement('a'),u=new URL(division.url,location.href);
+      u.searchParams.set('view',switchView);u.searchParams.delete('team');u.searchParams.delete('date');
+      a.href=u.href;a.textContent=division.label;a.dataset.divisionLink=division.key;a.dataset.gender=division.gender;
+      const active=division.key===d.structure?.divisionKey;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','page');root.append(a);
+    }
+    return;
+  }
   const men=q('[data-gender-link="men"]'),women=q('[data-gender-link="women"]');
   for(const [a,target] of [[men,links.men],[women,links.women]]){
     if(!a)continue;
@@ -56,6 +67,7 @@ function applyTheme(d){
   const family=THEME_FAMILIES.has(requestedFamily)?requestedFamily:'avc';
   body.dataset.kvlGender=gender;
   body.dataset.kvlFamily=family;
+  if(d.structure?.audience)body.dataset.kvlAudience=d.structure.audience;else delete body.dataset.kvlAudience;
   const variant=String(d.hero?.themeVariant||'').toLowerCase().replace(/[^a-z0-9-]/g,'');
   if(variant)body.dataset.kvlVariant=variant;else delete body.dataset.kvlVariant;
   body.dataset.kvlHeroMode=d.hero?.mode==='photo'?'photo':'palette';

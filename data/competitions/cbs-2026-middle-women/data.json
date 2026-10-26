@@ -10,7 +10,7 @@
   "knockoutTeamCount": 0,
   "champion": "경해여중",
   "championAchievement": "2026 제37회 CBS배 여중부 우승",
-  "scheduleNote": "검수용 프로토타입 · Google Drive 경기스코어표에서 8월 27일~9월 1일 확인된 22경기를 세트별 점수와 함께 수록. 9월 2~3일 결과는 추가 반영 필요. 경기별 시작 시각 미확인.",
+  "scheduleNote": "등록된 기록 기준 · Google Drive 경기스코어표에서 8월 27일~9월 1일 확인된 22경기를 세트별 점수와 함께 수록. 9월 2~3일 결과는 추가 반영 필요. 경기별 시작 시각 미확인.",
   "standingsNote": "조별순위는 공식 조 편성 및 경기 결과 전수검수 후 제공 예정",
   "standingsRule": "조별 순위 검수 중",
   "meaning": {
@@ -889,5 +889,32 @@
     }
   ],
   "rosterNote": "선수명단은 검수 완료 Google Drive 자료와 연결 예정",
-  "domesticRules": {}
+  "domesticRules": {},
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=cbs-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=cbs-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=cbs-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=cbs-2026-middle-women"
+    }
+  ],
+  "recordNote": "일부 경기·학교명·대진 연결을 검수 중입니다. 등록된 경기와 확인된 입상팀만 표시하며, 참가학교 수는 현재 기록에 있는 학교명을 기준으로 합니다."
 }
