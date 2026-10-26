@@ -141,3 +141,7 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 결과는 release 
 ## 2026-10-26 · 달력 기본 월 및 U-리그 예선 집계 범위 수정
 
 Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 완료는 release PR 기록). 기존 운영 페이지에 대한 사용자의 수정 요청. 달력은 진행 중 한국시간의 현재 월, 종료 후 마지막 경기 월, 시작 전 첫 월을 연다. 공통 템플릿 검토 Site에도 적용한다. 남대부 예선 종합순위는 pool 값이 있는 모든 경기를 합산하던 버그로 6강리그 15경기가 섞여 있었다. 예선 standings의 조 및 양 팀 소속이 일치하는 경기만 허용하고 결선 라운드는 제외하여 A/B조 49경기만 집계한다. 기존 승률·득실비 산식, 원본 경기 데이터·최종순위·경기일정 필터는 유지한다. 자동 검증 16/16, 타 대회 순위 DOM 비교 7/7, PC/모바일 검수 완료. [보고서](validation/uleague-preliminary-calendar-20261026.md).
+
+## 2026-10-26 · U-리그 6강리그 최종순위와 4강 연결
+
+Status: APPROVED / IMPLEMENTED / VERIFIED (배포 증거는 release PR 기록). 사용자가 4강 대진표 위에 6강리그 최종순위를 추가하도록 요청했다. 남자 U-리그에만 공통 엔진의 선택형 leagueStage 표시를 적용한다. 기존 15경기를 KUSF 공식 요강의 승점·승수·점수 득실비·세트 득실비·동률 팀 간 성적으로 계산한다. 예선 집계와 분리하고 실제 준결승 참가 4팀을 강조하며, 1위–4위/2위–3위 연결을 사다리 앞에서 설명한다. PC 표/모바일 학교별 카드, 기존 팀 경기기록 경로와 사다리를 유지한다. 원본 경기/선수 데이터 변경 없음. Drive 요강 대조, 자동 검증 19/19, 9개 대회 기존 5개 영역 DOM 동일 및 PC/모바일 확인 완료. [보고서](validation/uleague-six-league-20261026.md).
