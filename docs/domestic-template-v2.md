@@ -4,10 +4,10 @@
 
 ## 적용 범위
 
-- 고성·단양 2026 남대부/여대부, 총 4개 config만 `structure.presentation: domestic-home-v2`로 선택 적용한다.
+- 고성·단양·대학 U-리그 2026 남대부/여대부, 총 6개 config만 `structure.presentation: domestic-home-v2`로 선택 적용한다.
 - 기존 wrapper URL, competition ID, 원본 data.json, 경기/순위 계산, 팀 상세/선수명단 링크는 변경하지 않는다.
 - 공통 loader의 선택적 후처리 훅과 독립 CSS/JS를 사용한다. 기존 domestic v1 엔진을 복제하지 않는다.
-- 국제·프로·U리그·종합대회 및 CBS의 데이터와 표시 설정은 변경하지 않는다.
+- 국제·프로·종합대회 및 CBS의 데이터와 표시 설정은 변경하지 않는다.
 
 ## 화면 규칙
 
@@ -22,7 +22,16 @@
 
 기존 domestic-template-v1.md의 데이터/진출/색상 의미/선수명단 계약은 계속 적용한다. 여기서 명시한 홈형 화면 배치와 모바일 사다리만 v2 규칙이 우선한다.
 
-롤백은 4개 config의 presentation 속성을 제거하면 된다. 미선택 대회에는 훅이 아무 DOM 변경도 하지 않는다.
+롤백은 해당 대회 config의 presentation 속성을 제거하면 된다. 미선택 대회에는 훅이 아무 DOM 변경도 하지 않는다.
 
 원본 시안: https://kvl-domestic-home-v1.blackisle17.chatgpt.site
 검수: docs/validation/domestic-home-v2-20261024.md
+
+## 2026-10-26 · 대학 U-리그 적용
+
+- 사용자의 같은 시안 적용 요청으로 U-리그 남녀 정식 경로에도 공통 v2 presentation을 선택 적용한다. 별도 U-리그 엔진/페이지를 만들지 않는다.
+- 남자부 조별순위와 여자부 단일 리그순위의 명칭·산식·데이터를 유지한다. 단일리그 한눈에 보기 순위 카드는 리그 참가 팀 수와 `groups` 링크를 사용한다.
+- 참가대학은 남자부 A/B조 내 가나다순, 여자부 전체 가나다순. 단일리그를 가상의 조로 표시하지 않는다.
+- 긴 순위 안내문은 카드 내부에서 줄바꿈한다. 모바일 Hero는 config의 기존 모바일 이미지를 사용하며, 색상과 PC/모바일 자산은 보존한다.
+- 10/25 확정한 확대 글씨·달력·트로피·사다리 규칙을 적용한다. v1의 U-리그 글씨 크기 고정 규칙은 이 선택 적용 범위에서 최신 v2 규칙으로 대체한다.
+- 검수: [U-리그 적용 보고서](validation/uleague-home-v2-20261026.md).

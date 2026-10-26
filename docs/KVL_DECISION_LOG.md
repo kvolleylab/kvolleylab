@@ -133,3 +133,7 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (배포 결과는 release PR). 기존 
 ## 2026-10-25 · 국내대회 조별순위 본문 수치 및 조 요약 크기
 
 Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 확인은 release PR에 기록). 사용자의 후속 요청에 따라 순위표 안의 숫자와 진출 표시는 각 표의 대학명 크기를 사용하고, ‘5팀 · 10경기’는 ‘A조’ 크기를 사용한다. 고성·단양 남녀 공통 domestic-home-v2 CSS와 기존 기본 템플릿 Site에 적용한다. 운영 조별/PC 종합 수치는 17px, 모바일 종합 수치는 해당 대학명과 같은 15px, 조 요약은 18px이다. 긴 소수점 수치를 위해 PC 득실비 열을 60px로 조정했다. 데이터·순위 계산·필터·팀 링크는 변경하지 않는다. 검수: [보고서](validation/domestic-standings-values-20261025.md).
+
+## 2026-10-26 · 대학 U-리그에 승인된 국내대회 기본 템플릿 적용
+
+Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 결과는 release PR 기록). 사용자가 “이 시안으로 대학 U리그의 페이지도 변경”을 요청했다. 남녀 정식 config에 `domestic-home-v2`를 선택 적용하며 기존 Hero·85경기·순위·학교/선수 경로를 유지한다. 여자부는 단일리그의 `리그순위` 탭·카드와 전체 가나다순 참가대학을 유지한다. 남자부 A/B조 및 6강리그 경기 필터를 유지한다. 모바일에서도 기존 모바일 Hero와 4강 사다리/내부 스크롤을 사용한다. 이전 v2 문서의 U-리그 제외 및 v1의 U-리그 글씨 크기 고정 규칙을 이 범위에서 대체한다. 긴 순위 상태 문구는 줄바꿈한다. 공통 기능 회귀 8/8 및 PC/390px/360px 검수 완료. [보고서](validation/uleague-home-v2-20261026.md).
