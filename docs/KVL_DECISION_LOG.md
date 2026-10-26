@@ -1,5 +1,9 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-10-26 — Draft Hub 팀별 추첨 확률 카드
+
+Status: IMPLEMENTED / VERIFIED / READY FOR REVIEW, 운영 미반영. 사용자 요청 URL의 2026-27 남자부에 드래프트 연도와 공식 참가 신청자 사이 로고·팀명·구슬 수(확률)를 표시한다. KOVO 공식 확률 및 총 100개 구슬을 대조하고 기존 V-리그 로고를 재사용한다. 신청자·선수 ID·프로필·지명 결과는 변경하지 않는다. 여자부/미등록 시즌에는 남자부 배분을 노출하지 않으며 로딩 실패는 신청자 기능에 전파하지 않는다. PC/390px/360px, 자동 검사 12개 통과. [검수·출처·적용 파일·복구](validation/draft-lottery-20261026.md). 운영 배포는 별도 승인 후 진행한다.
+
 ## 2026-10-24 — Six reviewed player names
 
 Status: APPROVED / IMPLEMENTED; final CI and deployment evidence belong to the release PR.

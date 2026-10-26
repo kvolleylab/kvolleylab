@@ -3,9 +3,9 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
 <title>Draft Hub | K-Volley Lab</title>
 <meta name="description" content="KOVO 공식 신인 드래프트 신청자와 기존 선수 DB의 검증된 연결을 확인하는 K-Volley Lab Draft Hub.">
-<link rel="stylesheet" href="assets/css/pretendard-global.css"><link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css"><link rel="stylesheet" href="assets/css/draft-hub-v1.css"><link rel="stylesheet" href="assets/css/draft-hub-v2.css?v=20261023-1">
+<link rel="stylesheet" href="assets/css/pretendard-global.css"><link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css"><link rel="stylesheet" href="assets/css/draft-hub-v1.css"><link rel="stylesheet" href="assets/css/draft-hub-v2.css?v=20261026-1">
 <script defer src="assets/js/draft-hub-v1.js"></script><script defer src="assets/js/unified-nav.js"></script>
-<link rel="stylesheet" href="assets/css/compare-tray-v1.css"><script defer src="assets/js/player-school-master-v2.js?v=20260811-1"></script><script defer src="assets/js/player-school-master-compat-v2.js?v=20260811-1"></script><script defer src="assets/js/player-search-v2.js?v=20261023-1"></script><script defer src="assets/js/compare-tray-v1.js"></script><script type="module" src="assets/js/draft-hub-v2.mjs?v=20261023-1"></script></head><body class="draft-applicants-page" data-player-workspace>
+<link rel="stylesheet" href="assets/css/compare-tray-v1.css"><script defer src="assets/js/player-school-master-v2.js?v=20260811-1"></script><script defer src="assets/js/player-school-master-compat-v2.js?v=20260811-1"></script><script defer src="assets/js/player-search-v2.js?v=20261023-1"></script><script defer src="assets/js/compare-tray-v1.js"></script><script type="module" src="assets/js/draft-hub-v2.mjs?v=20261026-1"></script></head><body class="draft-applicants-page" data-player-workspace>
 <a class="da-skip" href="#applicants">신청자 명단으로 바로가기</a>
 <div class="da-mobile-brand"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><b>K-Volley Lab</b></div>
 <main class="da-main">
@@ -17,6 +17,7 @@
 <div class="da-content">
 <nav class="da-hub-nav"><label>드래프트 연도 <select id="daSeason" aria-label="드래프트 시즌"></select></label><a href="players.html">전체 선수 검색</a><a href="#eligibilityReference" id="daReferenceOpen">기존 남자 대학 4학년 참고명단</a><span>참가 자격과 공식 신청 여부는 별도입니다.</span></nav>
 <div id="daLoadError" role="alert" class="da-error" hidden></div>
+<section id="daLottery" class="da-lottery" aria-labelledby="daLotteryTitle" hidden></section>
 <section id="applicants" aria-labelledby="listTitle">
 <div class="da-section-head"><div><p class="da-kicker">OFFICIAL APPLICANTS</p><h2 id="listTitle">공식 참가 신청자</h2></div><div class="da-gender" role="group" aria-label="신청자 성별"><button type="button" data-gender="M" aria-pressed="true">남자부 <span id="daMenCount">—</span></button><button type="button" data-gender="W" aria-pressed="false">여자부 <span id="daWomenCount">—</span></button></div></div>
 <div class="da-source-strip"><span id="daSourceStatus" role="status">공식 명단을 불러오고 있습니다.</span><button type="button" id="daSourcesOpen">출처·검수 내역 <span aria-hidden="true">↗</span></button></div>
