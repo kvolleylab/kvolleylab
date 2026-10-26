@@ -7,6 +7,11 @@ const root = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const css = read('assets/css/kvl-competition-components-v2.css');
 const geometry = read('assets/css/kvl-competition-geometry-v2.css');
+const renderer = read('assets/js/kvl-competition-components-v2.js');
+assert.match(renderer, /team=domestic&&familyOf\(data\(\)\)!=='pro'/,
+  'pro pool standings must not use school-only text rendering');
+assert.match(renderer, /teamCell\(t,'kvl1180-pool-team'\)/,
+  'pro pool rows should render the existing club logos through shared teamCell');
 const proStart = css.lastIndexOf('/* PRO · large club logos in pool standings');
 assert(proStart >= 0, 'shared PRO pool rules must exist');
 const pro = css.slice(proStart);
@@ -52,6 +57,14 @@ for (const gender of ['men', 'women']) {
   assert.equal(config.hero.themeVariant, 'cup');
   assert.equal(config.structure.standings.mode, 'pools-combined');
   assert.equal(data.standings.pools.length, 2);
+  assert.equal(data.participants.length, 7, gender + ' Cup has seven teams');
+  for (const team of data.participants) {
+    assert(team.logo, gender + ' ' + team.code + ' logo missing');
+    assert(team.logo.startsWith('/assets/img/team-logos/v-league/2026-27/' + gender + '/'),
+      gender + ' ' + team.code + ' unexpected logo path');
+    assert(fs.existsSync(path.join(root, team.logo.replace(/^\//, ''))),
+      gender + ' ' + team.code + ' official logo file does not exist');
+  }
   for (const pool of data.standings.pools) {
     for (const row of pool.rows) {
       for (const field of ['rank', 'team', 'wins', 'losses', 'points', 'setRatio', 'pointRatio'])
