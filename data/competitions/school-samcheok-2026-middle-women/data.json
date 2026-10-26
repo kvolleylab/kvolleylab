@@ -1,0 +1,718 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료",
+  "dateLabel": "2026-04-06 ~ 2026-04-13",
+  "locationLabel": "강원 삼척",
+  "venueLabel": "진주초 체육관",
+  "teamCount": 9,
+  "groupCount": 3,
+  "matchCount": 14,
+  "knockoutTeamCount": 6,
+  "champion": "강릉해람중",
+  "championAchievement": "우승",
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-samcheok-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-samcheok-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-samcheok-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-samcheok-2026-middle-women"
+    }
+  ],
+  "participants": [
+    {
+      "code": "SCH-EA6767711E",
+      "name": "강릉해람중",
+      "fullName": "강릉해람중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-25EA3F92F8",
+      "name": "경남여중",
+      "fullName": "경남여중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-FB4415708A",
+      "name": "광주체중",
+      "fullName": "광주체중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-77CE34489C",
+      "name": "근영중",
+      "fullName": "근영중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-580AAF53AA",
+      "name": "대구일중",
+      "fullName": "대구일중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-ACA10D12F1",
+      "name": "목포영화중",
+      "fullName": "목포영화중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-755D32E5EE",
+      "name": "부평여중",
+      "fullName": "부평여중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-71D593BB85",
+      "name": "수일여중",
+      "fullName": "수일여중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-5746048EB8",
+      "name": "포항여중",
+      "fullName": "포항여중",
+      "group": "C"
+    }
+  ],
+  "matches": [
+    {
+      "id": "samcheok-20260407-8-1",
+      "date": "2026-04-07",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "away": {
+        "code": "SCH-71D593BB85"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260407-8-2",
+      "date": "2026-04-07",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-755D32E5EE"
+      },
+      "away": {
+        "code": "SCH-77CE34489C"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260407-8-3",
+      "date": "2026-04-07",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-580AAF53AA"
+      },
+      "away": {
+        "code": "SCH-5746048EB8"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260408-8-1",
+      "date": "2026-04-08",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-FB4415708A"
+      },
+      "away": {
+        "code": "SCH-77CE34489C"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260408-8-2",
+      "date": "2026-04-08",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-ACA10D12F1"
+      },
+      "away": {
+        "code": "SCH-5746048EB8"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 11,
+            "away": 25
+          },
+          {
+            "home": 10,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260409-8-1",
+      "date": "2026-04-09",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-EA6767711E"
+      },
+      "away": {
+        "code": "SCH-71D593BB85"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260409-8-2",
+      "date": "2026-04-09",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-755D32E5EE"
+      },
+      "away": {
+        "code": "SCH-FB4415708A"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260410-8-1",
+      "date": "2026-04-10",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-EA6767711E"
+      },
+      "away": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260410-8-2",
+      "date": "2026-04-10",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-ACA10D12F1"
+      },
+      "away": {
+        "code": "SCH-580AAF53AA"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "samcheok-20260411-8-1",
+      "date": "2026-04-11",
+      "time": "10:00",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-71D593BB85"
+      },
+      "away": {
+        "code": "SCH-580AAF53AA"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "samcheok-20260412-4-1"
+    },
+    {
+      "id": "samcheok-20260411-8-2",
+      "date": "2026-04-11",
+      "time": "2경기",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-5746048EB8"
+      },
+      "away": {
+        "code": "SCH-755D32E5EE"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 14,
+            "away": 16
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "samcheok-20260412-4-2"
+    },
+    {
+      "id": "samcheok-20260412-4-1",
+      "date": "2026-04-12",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-77CE34489C"
+      },
+      "away": {
+        "code": "SCH-71D593BB85"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "samcheok-20260413-4-1"
+    },
+    {
+      "id": "samcheok-20260412-4-2",
+      "date": "2026-04-12",
+      "time": "2경기",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-EA6767711E"
+      },
+      "away": {
+        "code": "SCH-755D32E5EE"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "samcheok-20260413-4-1"
+    },
+    {
+      "id": "samcheok-20260413-4-1",
+      "date": "2026-04-13",
+      "time": "10:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-71D593BB85"
+      },
+      "away": {
+        "code": "SCH-EA6767711E"
+      },
+      "venueLabel": "진주초 체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-EA6767711E"
+            },
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.266",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-71D593BB85"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "0.667",
+            "pointRatio": "0.963",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-25EA3F92F8"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.250",
+            "pointRatio": "0.847",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-77CE34489C"
+            },
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.449",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-755D32E5EE"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "0.988",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-FB4415708A"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.000",
+            "pointRatio": "0.700",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-5746048EB8"
+            },
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": null,
+            "setRatio": "4.000",
+            "pointRatio": "1.337",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-580AAF53AA"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "0.988",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-ACA10D12F1"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.250",
+            "pointRatio": "0.757",
+            "status": "out"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "standingsNote": "예선 대진으로 구성한 조",
+  "standingsRule": "승수 → 점수 득실비 → 세트 득실비 → 승자승 · 승점 미산정",
+  "scheduleNote": "기존 공식 경기스코어 기록 · 사전경기 포함 · 한국시간(KST)",
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "SCH-EA6767711E",
+      "team": "강릉해람중",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "SCH-71D593BB85",
+      "team": "수일여중",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-77CE34489C",
+      "team": "근영중",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-755D32E5EE",
+      "team": "부평여중",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "한국중고배구 1차 연맹전 삼척대회 공식자료",
+      "url": "https://drive.google.com/file/d/1oaWVWpTtdIsxAjS-_wQTSipsQbmpnLBx"
+    },
+    {
+      "title": "한국중고배구 1차 연맹전 삼척대회 공식자료 보관함",
+      "url": "https://drive.google.com/drive/folders/1EQx_iLXJon5YoexDLc_06b2-fi2UYhn7"
+    }
+  ],
+  "domesticRules": {
+    "standings": {
+      "title": "조별순위 기준",
+      "body": "기존 예선·사전경기 연결관계로 구성한 조입니다. 공식 조 표기와 다를 수 있습니다. · 순위: 승수 → 점수 득실비 → 세트 득실비 → 승자승. 승점은 별도 산정하지 않습니다."
+    },
+    "knockout": {
+      "title": "결선 진출 경로",
+      "body": "기존 경기 결과의 승리 팀과 다음 경기 참가 팀을 연결합니다. 준결승 직행 팀은 별도 표시합니다."
+    }
+  },
+  "sourceSnapshot": {
+    "baseCommit": "a986092fd8f4dd0f8ba8c36b7779785f45cd23cf",
+    "legacyPage": "school-competition-samcheok-2026.html",
+    "legacyScript": "assets/js/school-competition-samcheok-2026.js",
+    "generatedBy": "scripts/migrate-school-competitions-v2.cjs"
+  }
+}

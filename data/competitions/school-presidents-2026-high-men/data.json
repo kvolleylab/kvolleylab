@@ -1,0 +1,1681 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료",
+  "dateLabel": "2026-07-06 ~ 2026-07-13",
+  "locationLabel": "충북 옥천",
+  "venueLabel": "옥천체육센터 · 옥천다목적체육센터",
+  "teamCount": 17,
+  "groupCount": 4,
+  "matchCount": 35,
+  "knockoutTeamCount": 8,
+  "champion": "순천제일고",
+  "championAchievement": "우승",
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-presidents-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-presidents-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-presidents-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-presidents-2026-middle-women"
+    }
+  ],
+  "participants": [
+    {
+      "code": "SCH-5DABF1519A",
+      "name": "경북사대부고",
+      "fullName": "경북사대부고",
+      "group": "C"
+    },
+    {
+      "code": "SCH-D226314A13",
+      "name": "경북체고",
+      "fullName": "경북체고",
+      "group": "C"
+    },
+    {
+      "code": "SCH-01D689FBAA",
+      "name": "광주전자공고",
+      "fullName": "광주전자공고",
+      "group": "D"
+    },
+    {
+      "code": "SCH-703A3097A8",
+      "name": "남성고",
+      "fullName": "남성고",
+      "group": "A"
+    },
+    {
+      "code": "SCH-3407D7A713",
+      "name": "대전중앙고",
+      "fullName": "대전중앙고",
+      "group": "B"
+    },
+    {
+      "code": "SCH-EAA5DFB8C4",
+      "name": "동해광희고",
+      "fullName": "동해광희고",
+      "group": "C"
+    },
+    {
+      "code": "SCH-5C387749FE",
+      "name": "성지고",
+      "fullName": "성지고",
+      "group": "D"
+    },
+    {
+      "code": "SCH-8F24492602",
+      "name": "송림고",
+      "fullName": "송림고",
+      "group": "D"
+    },
+    {
+      "code": "SCH-710BE4391B",
+      "name": "수성고",
+      "fullName": "수성고",
+      "group": "B"
+    },
+    {
+      "code": "SCH-65A04CA4D2",
+      "name": "순천제일고",
+      "fullName": "순천제일고",
+      "group": "D"
+    },
+    {
+      "code": "SCH-DD9A01FDED",
+      "name": "영생고",
+      "fullName": "영생고",
+      "group": "A"
+    },
+    {
+      "code": "SCH-5025431E7A",
+      "name": "옥천고",
+      "fullName": "옥천고",
+      "group": "C"
+    },
+    {
+      "code": "SCH-2DF1583024",
+      "name": "인창고",
+      "fullName": "인창고",
+      "group": "B"
+    },
+    {
+      "code": "SCH-0C177FF08D",
+      "name": "인하사대부고",
+      "fullName": "인하사대부고",
+      "group": "D"
+    },
+    {
+      "code": "SCH-0BABFEF73B",
+      "name": "진주동명고",
+      "fullName": "진주동명고",
+      "group": "A"
+    },
+    {
+      "code": "SCH-77941D52CE",
+      "name": "천안고",
+      "fullName": "천안고",
+      "group": "A"
+    },
+    {
+      "code": "SCH-FA296A45BB",
+      "name": "현일고",
+      "fullName": "현일고",
+      "group": "B"
+    }
+  ],
+  "matches": [
+    {
+      "id": "presidents-2026-001",
+      "date": "2026-07-06",
+      "time": "09:30",
+      "stage": "사전경기",
+      "pool": "B",
+      "home": {
+        "code": "SCH-710BE4391B"
+      },
+      "away": {
+        "code": "SCH-2DF1583024"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-002",
+      "date": "2026-07-06",
+      "time": "2경기",
+      "stage": "사전경기",
+      "pool": "B",
+      "home": {
+        "code": "SCH-3407D7A713"
+      },
+      "away": {
+        "code": "SCH-FA296A45BB"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-003",
+      "date": "2026-07-06",
+      "time": "3경기",
+      "stage": "사전경기",
+      "pool": "C",
+      "home": {
+        "code": "SCH-5025431E7A"
+      },
+      "away": {
+        "code": "SCH-D226314A13"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 27,
+            "away": 29
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-004",
+      "date": "2026-07-06",
+      "time": "4경기",
+      "stage": "사전경기",
+      "pool": "D",
+      "home": {
+        "code": "SCH-65A04CA4D2"
+      },
+      "away": {
+        "code": "SCH-5C387749FE"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 12
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-005",
+      "date": "2026-07-06",
+      "time": "5경기",
+      "stage": "사전경기",
+      "pool": "D",
+      "home": {
+        "code": "SCH-0C177FF08D"
+      },
+      "away": {
+        "code": "SCH-01D689FBAA"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-011",
+      "date": "2026-07-07",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-77941D52CE"
+      },
+      "away": {
+        "code": "SCH-0BABFEF73B"
+      },
+      "venueLabel": "옥천다목적체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-012",
+      "date": "2026-07-07",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-DD9A01FDED"
+      },
+      "away": {
+        "code": "SCH-703A3097A8"
+      },
+      "venueLabel": "옥천다목적체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": []
+      },
+      "reportedSets": [
+        {
+          "home": 21,
+          "away": 25
+        },
+        {
+          "home": 26,
+          "away": 25
+        },
+        {
+          "home": 29,
+          "away": 27
+        },
+        {
+          "home": 22,
+          "away": 25
+        }
+      ],
+      "scoreNote": "원문 최종 스코어와 세트별 점수가 일치하지 않아 확인 중입니다. 기존 최종 스코어를 기준으로 표시합니다."
+    },
+    {
+      "id": "presidents-2026-006",
+      "date": "2026-07-07",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-710BE4391B"
+      },
+      "away": {
+        "code": "SCH-FA296A45BB"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-007",
+      "date": "2026-07-07",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-2DF1583024"
+      },
+      "away": {
+        "code": "SCH-3407D7A713"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 11,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-008",
+      "date": "2026-07-07",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-5DABF1519A"
+      },
+      "away": {
+        "code": "SCH-EAA5DFB8C4"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 9
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-009",
+      "date": "2026-07-07",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-65A04CA4D2"
+      },
+      "away": {
+        "code": "SCH-0C177FF08D"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-010",
+      "date": "2026-07-07",
+      "time": "5경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-8F24492602"
+      },
+      "away": {
+        "code": "SCH-01D689FBAA"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-026",
+      "date": "2026-07-08",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-77941D52CE"
+      },
+      "away": {
+        "code": "SCH-703A3097A8"
+      },
+      "venueLabel": "옥천다목적체육센터",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-022",
+      "date": "2026-07-08",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-5025431E7A"
+      },
+      "away": {
+        "code": "SCH-EAA5DFB8C4"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 10
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-023",
+      "date": "2026-07-08",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-D226314A13"
+      },
+      "away": {
+        "code": "SCH-5DABF1519A"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-024",
+      "date": "2026-07-08",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-8F24492602"
+      },
+      "away": {
+        "code": "SCH-0C177FF08D"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 9,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 8,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-025",
+      "date": "2026-07-08",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-01D689FBAA"
+      },
+      "away": {
+        "code": "SCH-5C387749FE"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-041",
+      "date": "2026-07-09",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-DD9A01FDED"
+      },
+      "away": {
+        "code": "SCH-77941D52CE"
+      },
+      "venueLabel": "옥천다목적체육센터",
+      "score": {
+        "home": 2,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 6,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-042",
+      "date": "2026-07-09",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-703A3097A8"
+      },
+      "away": {
+        "code": "SCH-0BABFEF73B"
+      },
+      "venueLabel": "옥천다목적체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-037",
+      "date": "2026-07-09",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-FA296A45BB"
+      },
+      "away": {
+        "code": "SCH-2DF1583024"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-038",
+      "date": "2026-07-09",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-EAA5DFB8C4"
+      },
+      "away": {
+        "code": "SCH-D226314A13"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-039",
+      "date": "2026-07-09",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-65A04CA4D2"
+      },
+      "away": {
+        "code": "SCH-8F24492602"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 10
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-040",
+      "date": "2026-07-09",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-0C177FF08D"
+      },
+      "away": {
+        "code": "SCH-5C387749FE"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-056",
+      "date": "2026-07-10",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-DD9A01FDED"
+      },
+      "away": {
+        "code": "SCH-0BABFEF73B"
+      },
+      "venueLabel": "옥천다목적체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-052",
+      "date": "2026-07-10",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-710BE4391B"
+      },
+      "away": {
+        "code": "SCH-3407D7A713"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-053",
+      "date": "2026-07-10",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-5025431E7A"
+      },
+      "away": {
+        "code": "SCH-5DABF1519A"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-054",
+      "date": "2026-07-10",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-5C387749FE"
+      },
+      "away": {
+        "code": "SCH-8F24492602"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-055",
+      "date": "2026-07-10",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "D",
+      "home": {
+        "code": "SCH-65A04CA4D2"
+      },
+      "away": {
+        "code": "SCH-01D689FBAA"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      }
+    },
+    {
+      "id": "presidents-2026-066",
+      "date": "2026-07-11",
+      "time": "10:00",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-703A3097A8"
+      },
+      "away": {
+        "code": "SCH-D226314A13"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "presidents-2026-080"
+    },
+    {
+      "id": "presidents-2026-067",
+      "date": "2026-07-11",
+      "time": "2경기",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-FA296A45BB"
+      },
+      "away": {
+        "code": "SCH-65A04CA4D2"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 9,
+            "away": 25
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "presidents-2026-081"
+    },
+    {
+      "id": "presidents-2026-068",
+      "date": "2026-07-11",
+      "time": "3경기",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-0C177FF08D"
+      },
+      "away": {
+        "code": "SCH-710BE4391B"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "presidents-2026-080"
+    },
+    {
+      "id": "presidents-2026-069",
+      "date": "2026-07-11",
+      "time": "4경기",
+      "stage": "8강",
+      "pool": "",
+      "home": {
+        "code": "SCH-DD9A01FDED"
+      },
+      "away": {
+        "code": "SCH-5DABF1519A"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "8강",
+      "nextMatchId": "presidents-2026-081"
+    },
+    {
+      "id": "presidents-2026-080",
+      "date": "2026-07-12",
+      "time": "3경기",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-703A3097A8"
+      },
+      "away": {
+        "code": "SCH-710BE4391B"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "presidents-2026-087"
+    },
+    {
+      "id": "presidents-2026-081",
+      "date": "2026-07-12",
+      "time": "4경기",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-65A04CA4D2"
+      },
+      "away": {
+        "code": "SCH-5DABF1519A"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 28,
+            "away": 26
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "presidents-2026-087"
+    },
+    {
+      "id": "presidents-2026-087",
+      "date": "2026-07-13",
+      "time": "2경기",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-710BE4391B"
+      },
+      "away": {
+        "code": "SCH-65A04CA4D2"
+      },
+      "venueLabel": "옥천체육센터",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-703A3097A8"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "9.000",
+            "pointRatio": "1.177",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-DD9A01FDED"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.000",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-77941D52CE"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.500",
+            "pointRatio": "0.944",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-0BABFEF73B"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.429",
+            "pointRatio": "0.902",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-710BE4391B"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "9.000",
+            "pointRatio": "1.335",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-FA296A45BB"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "2.333",
+            "pointRatio": "1.106",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-3407D7A713"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.375",
+            "pointRatio": "0.928",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-2DF1583024"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.222",
+            "pointRatio": "0.754",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-5DABF1519A"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "9.000",
+            "pointRatio": "1.312",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-D226314A13"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.500",
+            "pointRatio": "1.105",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-5025431E7A"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.833",
+            "pointRatio": "1.032",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-EAA5DFB8C4"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.000",
+            "pointRatio": "0.600",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "D",
+        "title": "D조",
+        "matchCount": 10,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-65A04CA4D2"
+            },
+            "played": 4,
+            "wins": 4,
+            "losses": 0,
+            "points": null,
+            "setRatio": "12.000",
+            "pointRatio": "1.443",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-0C177FF08D"
+            },
+            "played": 4,
+            "wins": 3,
+            "losses": 1,
+            "points": null,
+            "setRatio": "2.250",
+            "pointRatio": "1.198",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-01D689FBAA"
+            },
+            "played": 4,
+            "wins": 2,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.889",
+            "pointRatio": "0.953",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-8F24492602"
+            },
+            "played": 4,
+            "wins": 1,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.400",
+            "pointRatio": "0.763",
+            "status": "out"
+          },
+          {
+            "rank": 5,
+            "team": {
+              "code": "SCH-5C387749FE"
+            },
+            "played": 4,
+            "wins": 0,
+            "losses": 4,
+            "points": null,
+            "setRatio": "0.250",
+            "pointRatio": "0.858",
+            "status": "out"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "standingsNote": "공식 조 편성 기준 · 일부 원문 점수 확인 중",
+  "standingsRule": "승수 → 점수 득실비 → 세트 득실비 → 승자승 · 승점 미산정",
+  "scheduleNote": "기존 공식 경기스코어 기록 · 사전경기 포함 · 한국시간(KST) · 1경기의 원문 세트 점수 확인 중",
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "SCH-65A04CA4D2",
+      "team": "순천제일고",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "SCH-710BE4391B",
+      "team": "수성고",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-703A3097A8",
+      "team": "남성고",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-5DABF1519A",
+      "team": "경북사대부고",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "제59회 대통령배 전국중고배구대회 공식자료",
+      "url": "https://drive.google.com/file/d/1oMmohcnIDQf4E8fRv1APPK1nnfZq8UEr/view?usp=drivesdk"
+    },
+    {
+      "title": "제59회 대통령배 전국중고배구대회 참가요강·기록 원문",
+      "url": "https://drive.google.com/file/d/1p4pDIsHiC95oDdKY46ySG3_Q6bWh2kel/view?usp=drivesdk"
+    }
+  ],
+  "domesticRules": {
+    "standings": {
+      "title": "조별순위 기준",
+      "body": "기존 공식 조 편성 기준 · 순위: 승수 → 점수 득실비 → 세트 득실비 → 승자승. 승점은 별도 산정하지 않습니다."
+    },
+    "knockout": {
+      "title": "결선 진출 경로",
+      "body": "기존 경기 결과의 승리 팀과 다음 경기 참가 팀을 연결합니다. 준결승 직행 팀은 별도 표시합니다."
+    }
+  },
+  "sourceSnapshot": {
+    "baseCommit": "a986092fd8f4dd0f8ba8c36b7779785f45cd23cf",
+    "legacyPage": "school-competition-presidents-2026.html",
+    "legacyScript": "assets/js/school-competition-presidents-2026.js",
+    "generatedBy": "scripts/migrate-school-competitions-v2.cjs"
+  }
+}

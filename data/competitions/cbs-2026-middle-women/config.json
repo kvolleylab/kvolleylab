@@ -36,27 +36,40 @@
     },
     "standings": {
       "mode": "none",
-      "title": "여중부 조별순위"
+      "title": "여중부 조별순위",
+      "emptyMessage": "공식 조 편성과 전체 경기 기록을 확인한 뒤 조별순위를 제공합니다."
     },
     "knockout": {
       "mode": "none",
-      "title": "여중부 결선 토너먼트"
+      "title": "여중부 결선 토너먼트",
+      "emptyMessage": "결선의 일부 경기 연결을 확인 중입니다. 확인된 경기 결과는 경기 일정·결과에서 볼 수 있습니다."
     },
     "participants": {
       "mode": "flat",
-      "groupLabel": "여중부 참가학교"
+      "groupLabel": "여중부 참가학교",
+      "linkMode": "team-results"
     },
     "roster": {
-      "mode": "none"
-    }
+      "mode": "none",
+      "domesticTeamRoute": "none"
+    },
+    "presentation": "domestic-home-v2",
+    "audience": "school",
+    "divisionKey": "middle-women",
+    "divisionLabel": "여중부"
   },
   "hero": {
-    "showImage": false,
-    "mode": "photo"
+    "pcImage": "/assets/img/home-hero/kvl-home-hero-pc-v01.webp",
+    "mobileImage": "/assets/img/home-hero/kvl-home-hero-mobile-v01.webp",
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "72% center",
+    "alt": "K-Volley Lab 중·고 배구대회"
   },
   "seo": {
     "title": "2026 CBS배 여중부 | K-Volley Lab",
-    "description": "2026 CBS배 여중부 경기 결과 및 세트별 점수 검수용 프로토타입"
+    "description": "2026 제37회 CBS배 여중부의 확인된 경기 결과, 최종순위와 참가학교 기록."
   },
   "data": "data.json"
 }

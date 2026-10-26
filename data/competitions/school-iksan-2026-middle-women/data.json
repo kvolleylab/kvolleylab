@@ -1,0 +1,948 @@
+{
+  "status": "completed",
+  "stageLabel": "대회 종료",
+  "dateLabel": "2026-06-07 ~ 2026-06-14",
+  "locationLabel": "전북 익산",
+  "venueLabel": "익산학생교육문화관 · 남성고체육관",
+  "teamCount": 11,
+  "groupCount": 3,
+  "matchCount": 20,
+  "knockoutTeamCount": 6,
+  "champion": "전주근영중",
+  "championAchievement": "우승",
+  "divisionLinks": [
+    {
+      "key": "high-men",
+      "label": "남고부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-iksan-2026-high-men"
+    },
+    {
+      "key": "high-women",
+      "label": "여고부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-iksan-2026-high-women"
+    },
+    {
+      "key": "middle-men",
+      "label": "남중부",
+      "gender": "men",
+      "url": "competition-engine.html?competition=school-iksan-2026-middle-men"
+    },
+    {
+      "key": "middle-women",
+      "label": "여중부",
+      "gender": "women",
+      "url": "competition-engine.html?competition=school-iksan-2026-middle-women"
+    }
+  ],
+  "participants": [
+    {
+      "code": "SCH-25EA3F92F8",
+      "name": "경남여중",
+      "fullName": "경남여중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-D17620E710",
+      "name": "금천중",
+      "fullName": "금천중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-E8688E41DB",
+      "name": "모종중",
+      "fullName": "모종중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-ACA10D12F1",
+      "name": "목포영화중",
+      "fullName": "목포영화중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-7F88F1749C",
+      "name": "부산여중",
+      "fullName": "부산여중",
+      "group": "C"
+    },
+    {
+      "code": "SCH-ECB1A5B52F",
+      "name": "세화여중",
+      "fullName": "세화여중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-F8CA0C0DEB",
+      "name": "신탄중앙중",
+      "fullName": "신탄중앙중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-B2029ED595",
+      "name": "원곡중",
+      "fullName": "원곡중",
+      "group": "B"
+    },
+    {
+      "code": "SCH-ACA655F5E0",
+      "name": "월평중",
+      "fullName": "월평중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-D87E0D1CE7",
+      "name": "잠실여중",
+      "fullName": "잠실여중",
+      "group": "A"
+    },
+    {
+      "code": "SCH-47140635D4",
+      "name": "전주근영중",
+      "fullName": "전주근영중",
+      "group": "B"
+    }
+  ],
+  "matches": [
+    {
+      "id": "iksan-2026-015",
+      "date": "2026-06-08",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-ACA655F5E0"
+      },
+      "away": {
+        "code": "SCH-ACA10D12F1"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 13,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-016",
+      "date": "2026-06-08",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-F8CA0C0DEB"
+      },
+      "away": {
+        "code": "SCH-D87E0D1CE7"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 9,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-017",
+      "date": "2026-06-08",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B2029ED595"
+      },
+      "away": {
+        "code": "SCH-E8688E41DB"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-018",
+      "date": "2026-06-08",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-47140635D4"
+      },
+      "away": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 9
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-033",
+      "date": "2026-06-09",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-D17620E710"
+      },
+      "away": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-034",
+      "date": "2026-06-09",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-ACA655F5E0"
+      },
+      "away": {
+        "code": "SCH-D87E0D1CE7"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 16,
+            "away": 14
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-035",
+      "date": "2026-06-09",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-ACA10D12F1"
+      },
+      "away": {
+        "code": "SCH-F8CA0C0DEB"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-036",
+      "date": "2026-06-09",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B2029ED595"
+      },
+      "away": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 8,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-051",
+      "date": "2026-06-10",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-7F88F1749C"
+      },
+      "away": {
+        "code": "SCH-D17620E710"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 6,
+            "away": 25
+          },
+          {
+            "home": 10,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-052",
+      "date": "2026-06-10",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-ACA655F5E0"
+      },
+      "away": {
+        "code": "SCH-F8CA0C0DEB"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 7,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-053",
+      "date": "2026-06-10",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-B2029ED595"
+      },
+      "away": {
+        "code": "SCH-47140635D4"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-054",
+      "date": "2026-06-10",
+      "time": "4경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-ECB1A5B52F"
+      },
+      "away": {
+        "code": "SCH-E8688E41DB"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 1,
+        "away": 2,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 12,
+            "away": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-069",
+      "date": "2026-06-11",
+      "time": "09:30",
+      "stage": "예선",
+      "pool": "C",
+      "home": {
+        "code": "SCH-7F88F1749C"
+      },
+      "away": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 8,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-070",
+      "date": "2026-06-11",
+      "time": "2경기",
+      "stage": "예선",
+      "pool": "A",
+      "home": {
+        "code": "SCH-D87E0D1CE7"
+      },
+      "away": {
+        "code": "SCH-ACA10D12F1"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 26,
+            "away": 24
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-071",
+      "date": "2026-06-11",
+      "time": "3경기",
+      "stage": "예선",
+      "pool": "B",
+      "home": {
+        "code": "SCH-E8688E41DB"
+      },
+      "away": {
+        "code": "SCH-47140635D4"
+      },
+      "venueLabel": "익산학생교육문화관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          }
+        ]
+      }
+    },
+    {
+      "id": "iksan-2026-078",
+      "date": "2026-06-12",
+      "time": "10:00",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "SCH-D17620E710"
+      },
+      "away": {
+        "code": "SCH-ACA655F5E0"
+      },
+      "venueLabel": "남성고체육관",
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 10
+          },
+          {
+            "home": 25,
+            "away": 9
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "6강",
+      "nextMatchId": "iksan-2026-091"
+    },
+    {
+      "id": "iksan-2026-079",
+      "date": "2026-06-12",
+      "time": "2경기",
+      "stage": "6강",
+      "pool": "",
+      "home": {
+        "code": "SCH-D87E0D1CE7"
+      },
+      "away": {
+        "code": "SCH-E8688E41DB"
+      },
+      "venueLabel": "남성고체육관",
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "round": "QF",
+      "bracketLabel": "6강",
+      "nextMatchId": "iksan-2026-092"
+    },
+    {
+      "id": "iksan-2026-091",
+      "date": "2026-06-13",
+      "time": "10:00",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-47140635D4"
+      },
+      "away": {
+        "code": "SCH-D17620E710"
+      },
+      "venueLabel": "남성고체육관",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 15,
+            "away": 7
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "iksan-2026-099"
+    },
+    {
+      "id": "iksan-2026-092",
+      "date": "2026-06-13",
+      "time": "2경기",
+      "stage": "준결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "away": {
+        "code": "SCH-E8688E41DB"
+      },
+      "venueLabel": "남성고체육관",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 27,
+            "away": 29
+          },
+          {
+            "home": 15,
+            "away": 6
+          }
+        ]
+      },
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "nextMatchId": "iksan-2026-099"
+    },
+    {
+      "id": "iksan-2026-099",
+      "date": "2026-06-14",
+      "time": "10:00",
+      "stage": "결승",
+      "pool": "",
+      "home": {
+        "code": "SCH-47140635D4"
+      },
+      "away": {
+        "code": "SCH-25EA3F92F8"
+      },
+      "venueLabel": "남성고체육관",
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 15,
+            "away": 12
+          }
+        ]
+      },
+      "round": "FINAL",
+      "bracketLabel": "결승"
+    }
+  ],
+  "standings": {
+    "pools": [
+      {
+        "id": "A",
+        "title": "A조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-D87E0D1CE7"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.667",
+            "pointRatio": "1.083",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-ACA655F5E0"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.250",
+            "pointRatio": "0.961",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-ACA10D12F1"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.750",
+            "pointRatio": "0.993",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-F8CA0C0DEB"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.600",
+            "pointRatio": "0.970",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "B조",
+        "matchCount": 6,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-47140635D4"
+            },
+            "played": 3,
+            "wins": 3,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.667",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-E8688E41DB"
+            },
+            "played": 3,
+            "wins": 2,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.333",
+            "pointRatio": "1.000",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-ECB1A5B52F"
+            },
+            "played": 3,
+            "wins": 1,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.600",
+            "pointRatio": "0.824",
+            "status": "out"
+          },
+          {
+            "rank": 4,
+            "team": {
+              "code": "SCH-B2029ED595"
+            },
+            "played": 3,
+            "wins": 0,
+            "losses": 3,
+            "points": null,
+            "setRatio": "0.167",
+            "pointRatio": "0.811",
+            "status": "out"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "C조",
+        "matchCount": 3,
+        "rows": [
+          {
+            "rank": 1,
+            "team": {
+              "code": "SCH-25EA3F92F8"
+            },
+            "played": 2,
+            "wins": 2,
+            "losses": 0,
+            "points": null,
+            "setRatio": "MAX",
+            "pointRatio": "1.695",
+            "status": "qualified"
+          },
+          {
+            "rank": 2,
+            "team": {
+              "code": "SCH-D17620E710"
+            },
+            "played": 2,
+            "wins": 1,
+            "losses": 1,
+            "points": null,
+            "setRatio": "1.000",
+            "pointRatio": "1.318",
+            "status": "qualified"
+          },
+          {
+            "rank": 3,
+            "team": {
+              "code": "SCH-7F88F1749C"
+            },
+            "played": 2,
+            "wins": 0,
+            "losses": 2,
+            "points": null,
+            "setRatio": "0.000",
+            "pointRatio": "0.380",
+            "status": "out"
+          }
+        ]
+      }
+    ],
+    "combinedRows": []
+  },
+  "standingsNote": "예선 대진으로 구성한 조",
+  "standingsRule": "승수 → 점수 득실비 → 세트 득실비 → 승자승 · 승점 미산정",
+  "scheduleNote": "기존 공식 경기스코어 기록 · 사전경기 포함 · 한국시간(KST)",
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "SCH-47140635D4",
+      "team": "전주근영중",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "SCH-25EA3F92F8",
+      "team": "경남여중",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-D17620E710",
+      "team": "금천중",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "SCH-E8688E41DB",
+      "team": "모종중",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
+  "qualifications": [],
+  "resources": [
+    {
+      "title": "한국중고배구 2차 연맹전 익산보석배대회 공식자료",
+      "url": "https://drive.google.com/file/d/1tM5RFGQRnFrvNW92eQ85zbBGxz2KlnFK"
+    },
+    {
+      "title": "한국중고배구 2차 연맹전 익산보석배대회 공식자료 보관함",
+      "url": "https://drive.google.com/drive/folders/1UyNViuGvPKq4A5KyK4Ja6YmgnfTrv939"
+    }
+  ],
+  "domesticRules": {
+    "standings": {
+      "title": "조별순위 기준",
+      "body": "기존 예선·사전경기 연결관계로 구성한 조입니다. 공식 조 표기와 다를 수 있습니다. · 순위: 승수 → 점수 득실비 → 세트 득실비 → 승자승. 승점은 별도 산정하지 않습니다."
+    },
+    "knockout": {
+      "title": "결선 진출 경로",
+      "body": "기존 경기 결과의 승리 팀과 다음 경기 참가 팀을 연결합니다. 준결승 직행 팀은 별도 표시합니다."
+    }
+  },
+  "sourceSnapshot": {
+    "baseCommit": "a986092fd8f4dd0f8ba8c36b7779785f45cd23cf",
+    "legacyPage": "school-competition-iksan-2026.html",
+    "legacyScript": "assets/js/school-competition-iksan-2026.js",
+    "generatedBy": "scripts/migrate-school-competitions-v2.cjs"
+  }
+}
