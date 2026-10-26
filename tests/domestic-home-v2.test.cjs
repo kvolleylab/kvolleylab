@@ -19,6 +19,15 @@ for(const [label,now,status,expected,extendEnd] of [
  try{d.status=status;if(extendEnd)d.dateLabel='2026-03-25 ~ 2026-11-30';w.KVLDomesticHomeV2.apply(d);assert.equal(w.document.querySelector('.dv2-calendar-month').textContent,expected+'월');}finally{w.close();}
 });
 function overallSnapshot(doc){return [...doc.querySelectorAll('.is-domestic-overall>.kvl1180-combined-table>.kvl1180-combined-row')].map(row=>({team:row.querySelector('[data-team-results]').dataset.teamResults,rank:row.querySelector('.kvl1180-combined-rank').textContent,stats:[...row.querySelectorAll('.kvl1180-combined-stat')].map(e=>e.textContent)}));}
+for(const gender of ['men','women'])test('Goseong '+gender+' renders every pool point ratio consistently with preliminary overall',()=>{
+ const {w,d}=setup(`university-goseong-${gender}-2026`);try{
+  const expected=new Map(d.standings.pools.flatMap(p=>p.rows.map(r=>[r.team.code,r.pointRatio])));
+  const rows=[...w.document.querySelectorAll('.kvl1180-pool-row')];assert.equal(rows.length,expected.size);
+  for(const row of rows){const code=row.querySelector('[data-team-results]').dataset.teamResults;assert.match(expected.get(code),/^\d+\.\d{3}$/);assert.equal(row.querySelectorAll('.kvl1180-pool-ratio')[1].textContent,expected.get(code));}
+  for(const r of overallSnapshot(w.document))assert.equal(r.stats[5],expected.get(r.team));
+  for(const row of w.document.querySelectorAll('.is-domestic-overall-mobile .kvl-shared-combined-line:not(.is-head)'))assert.equal(row.querySelectorAll('.kvl-shared-combined-stat')[6].textContent,expected.get(row.querySelector('[data-team-results]').dataset.teamResults));
+ }finally{w.close();}
+});
 test('U-league preliminary overall counts only 49 A/B games',()=>{
  const {w}=setup('university-league-men-2026');try{
   const rows=overallSnapshot(w.document);assert.equal(rows.length,15);assert.equal(rows.reduce((n,r)=>n+Number(r.stats[0]),0),98);
