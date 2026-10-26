@@ -38,9 +38,10 @@
     },
     "standings": {
       "mode": "pools-combined",
-      "overall": false,
-      "combined": false,
-      "title": "남중부 조별순위"
+      "overall": true,
+      "combined": true,
+      "title": "남중부 조별순위",
+      "overallTitle": "남중부 예선 종합순위"
     },
     "knockout": {
       "mode": "bracket-8",

@@ -38,9 +38,10 @@
     },
     "standings": {
       "mode": "pools-combined",
-      "overall": false,
-      "combined": false,
-      "title": "여중부 조별순위"
+      "overall": true,
+      "combined": true,
+      "title": "여중부 조별순위",
+      "overallTitle": "여중부 예선 종합순위"
     },
     "knockout": {
       "mode": "bracket-8",

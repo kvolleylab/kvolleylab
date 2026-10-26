@@ -26,7 +26,11 @@ for(const c of catalog)for(const [key,label] of migration.divisions)test(c.engin
   assert.equal(doc.querySelectorAll('a[href*="university-team"]').length,0);
   doc.querySelector('[data-view=overview][href]').click();doc.querySelector('[data-dv2-date]').click();assert.equal(doc.querySelector('dialog').open,true);assert.ok(doc.querySelectorAll('.dv2-day-match').length>0);doc.querySelector('[data-dv2-close]').click();assert.equal(doc.querySelector('dialog').open,false);
   if(c.enginePrefix==='cbs-2026'){assert.match(doc.querySelector('.dv2-record-note').textContent,/검수 중/);assert.equal(doc.querySelectorAll('.kvl1180-bracket-ladder').length,0);}
-  else{assert.equal(doc.querySelectorAll('.kvl1180-bracket-ladder').length,1);assert.equal(doc.querySelectorAll('#knockout .dv2-trophy').length,4);assert.equal(doc.querySelectorAll('.kvl1180-combined-block').length,0);}
+  else{assert.equal(doc.querySelectorAll('.kvl1180-bracket-ladder').length,1);assert.equal(doc.querySelectorAll('#knockout .dv2-trophy').length,4);assert.equal(doc.querySelectorAll('.kvl1180-combined-block.is-domestic-overall').length,1);
+   const overall=doc.querySelector('.is-domestic-overall');assert.equal(overall.querySelector('h3').textContent,label+' 예선 종합순위');assert.match(overall.textContent,/조별 진출 순위와 별개인 K-Volley Lab 산출 순위/);
+   const prelim=d.matches.filter(m=>['예선','사전경기'].includes(m.stage)),rows=[...overall.querySelectorAll('.is-domestic-overall-row')];assert.equal(rows.length,d.standings.pools.flatMap(p=>p.rows).length);
+   for(const row of rows){const code=new URL(row.querySelector('a').href).searchParams.get('team'),games=prelim.filter(m=>[m.home.code,m.away.code].includes(code)),cells=[...row.children];assert.equal(Number(cells[3].textContent),games.length,slug+' '+code+' preliminary games');const wins=games.filter(m=>m.score&&(m.score.home>m.score.away?m.home.code:m.away.code)===code).length;assert.equal(Number(cells[4].textContent),wins);assert.equal(Number(cells[5].textContent),games.length-wins);}
+   const before=overall.outerHTML;d.matches=prelim;w.KVLCompetitionComponentsV2.render();assert.equal(doc.querySelector('.is-domestic-overall').outerHTML,before,'Removing knockout matches must not change preliminary standings');}
  }finally{w.close();}
 });
 for(const [name,id] of migration.definitions)test(name+' preserves all deployed match identities, scores, set points and connected knockout participants',()=>{
