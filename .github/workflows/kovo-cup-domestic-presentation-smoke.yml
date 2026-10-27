@@ -11,7 +11,7 @@ on:
       - 'tests/competition-v2-pro-cup-pool-columns.test.cjs'
       - '.github/workflows/kovo-cup-domestic-presentation-smoke.yml'
   push:
-    branches: ['feature/kovo-cup-domestic-presentation-20261027']
+    branches: ['feature/kovo-cup-domestic-preview-clean-20261027']
     paths:
       - 'kovo-cup-domestic-template-prototype.html'
       - 'assets/js/kvl-domestic-home-v2.js'
