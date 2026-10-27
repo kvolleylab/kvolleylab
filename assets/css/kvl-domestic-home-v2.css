@@ -441,3 +441,40 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl
   width:50px!important;min-width:50px!important;
  }
 }
+
+
+/* 2026-10-27 · KOVO Cup PC matchup geometry.
+ * Reserve an explicit FIVE-SET scoring lane at right even for 3-set matches.
+ * Center the crests/names/match score in the remaining time-to-sets gap.
+ * Keep the existing <=900px mobile/tablet stacked layout unchanged.
+ */
+@media screen and (min-width:901px){
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-match-row{
+    grid-template-columns:clamp(118px,11.8vw,150px) minmax(0,1fr) clamp(285px,25vw,300px)!important;
+    column-gap:clamp(8px,1vw,14px)!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-match-meta{
+    grid-column:1!important;
+    grid-row:1!important;
+    min-width:0!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-match-board{
+    grid-column:2!important;
+    grid-row:1!important;
+    width:min(100%,560px)!important;
+    min-width:0!important;
+    justify-self:center!important;
+    margin:0!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-set-scores{
+    grid-column:3!important;
+    grid-row:1!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    justify-self:end!important;
+    justify-content:flex-end!important;
+    margin:0!important;
+    white-space:nowrap!important;
+  }
+}
