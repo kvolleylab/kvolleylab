@@ -1,6 +1,6 @@
 # V-리그 대회 한눈에 — 순위표와 전 시즌 순서
 
-Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. Merge·Pages·운영 URL 확인은 release PR에 기록한다.
+Status: DEPLOYED / LIVE VERIFIED. PR #190, merge `9139634058313722efd8b7e52a138c4822b7aaee`, Pages run `40542453121` success. 운영 남녀 페이지에서 순위표 7행·참가팀 최종순위순 7팀 한 줄·가로 넘침 0·시즌 안내 제거를 확인했다. 미확정 경기 카드는 추가하지 않았다.
 
 기준 main: `d9ae7a085c30e5a90cf5d717371a9c3fcbbf7d09` (PR #189). 브랜치: `feature/vleague-overview-20261028`.
 
@@ -43,3 +43,12 @@ KOVO 공식 보도자료 [남자 157978](https://kovo.co.kr/news/kovo/press/1579
 ## 복구
 
 해당 PR만 revert한다. 전체 공통 엔진을 과거 버전으로 덮어쓰지 않는다. 현재 시즌 순위의 갱신은 기존 공식 데이터 검수/반영 과정으로 계속 수행한다.
+
+
+## 운영 확인
+
+- [남자부](https://kvolleylab.com/competition-engine.html?competition=v-league-men-2026-27&view=overview)와 [여자부](https://kvolleylab.com/competition-engine.html?competition=v-league-women-2026-27&view=overview)를 직접 확인했다.
+- PR 집중 회귀 run `40542211165` 성공. 기존 Player Master 16/78명 고정 assertion 및 batch commit SHA 누락, VNL/timeline workflow 오류는 이 변경과 무관한 기존 실패로 PR에 기록했다. 전체 CI green으로 표현하지 않는다.
+- 브라우저에 노출된 오류 로그는 확장 프로그램 metadata 전송 오류였으며 사이트 스크립트 오류는 관찰하지 않았다.
+
+![운영 여자부 한눈에](vleague-overview-20261028/desktop-women-live.jpg)
