@@ -174,3 +174,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·live 결과는 release 
 
 Status: APPROVED / IMPLEMENTED / VERIFIED (merge·Pages·운영 확인은 release PR 기록). 사용자가 “대학은 이걸로 홈페이지에 반영”을 요청했다. 기존 대학 메인의 `2026 대회 → 대회별 보기 → 연도별 기록` 구성, Hero, 글자 크기, 간격, 대회·학교·선수 링크와 순위 데이터는 유지하며 국내대회 기본 템플릿의 카드 모양과 금·은·동 SVG 트로피만 적용한다. 승인 시안과 같은 12px 모서리·얇은 테두리·그림자 없는 표면을 페이지 전용 스킨으로 연결한다. 이전 일반 디자인 문서의 카드 장식은 이 범위에서 승인 시안이 우선한다. 함께 요청한 중·고 동일 형식은 별도 PROTOTYPE으로 준비하고 이 대학 운영 PR에는 포함하지 않는다. [범위·검수·복구](validation/university-hub-cards-20261026.md).
 
+
+
+## 2026-10-27 · 종합대회 허브 및 전국체전·소년체전 운영 반영
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 결과는 release PR에 기록). 사용자가 전국체전·소년체전 중심 목록 시안을 승인하고, 목록 및 ‘대회 한눈에 보기’ 최종순위에서 지역을 강조한 뒤 실제 홈페이지에 반영하도록 명시적으로 요청했다. 대학 허브 카드 스킨, 남녀 색상, 금·은·동 트로피, 금색 hover, 연도별 펼침을 재사용한다. 전국체전 5부문 60팀·55경기·671명/154개 기존 프로필, 소년체전 4부문 59팀·55경기를 공통 국내대회 템플릿으로 연결한다. 36개 입상팀의 지역은 공식 참가팀 code로 연결하며 목록·overview·최종순위 카드에 16px 배지를 표시한다. 공동 3위, 2개 원문 점수 충돌, 기존 선수 ID와 팀 기록 경로는 유지한다. 내부 원본 보관 위치는 비공개로 유지하고 공개 배포에는 Source ID·공식 URL·무결성 해시만 포함한다. 기존 프로토타입의 운영 미반영 상태를 이 승인 범위에서 대체한다. [범위·검수·복구](validation/comprehensive-regions-release-20261027.md).

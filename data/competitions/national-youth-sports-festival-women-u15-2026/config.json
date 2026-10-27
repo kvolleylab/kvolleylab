@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 2,
+  "slug": "national-youth-sports-festival-women-u15-2026",
+  "competition": {
+    "competitionId": "KVL-COMP-NYSF55-WOMEN-U15-2026",
+    "displayName": "제55회 전국소년체육대회 배구 · 여자 15세 이하부",
+    "officialName": "제55회 전국소년체육대회 배구 여자 15세 이하부",
+    "season": "2026",
+    "gender": "women",
+    "competitionFamily": "domestic"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "대회방식",
+      "groupsKpi": "조별리그",
+      "groupsKpiUnit": "개 조",
+      "knockoutKpi": "토너먼트",
+      "knockoutKpiUnit": "상태",
+      "standingsTitle": "대회 진행 방식",
+      "standingsEyebrow": "KNOCKOUT FORMAT",
+      "knockoutTitle": "대진표 · 최종순위",
+      "participantsTitle": "참가팀",
+      "participantsKpi": "참가팀",
+      "participantsKpiUnit": "팀",
+      "knockoutTab": "대진·최종순위"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "1회전",
+        "8강",
+        "준결승",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "none"
+    },
+    "knockout": {
+      "mode": "bracket-tree",
+      "title": "여자 15세 이하부 전체 토너먼트",
+      "showFinalRanking": true,
+      "finalRankingTitle": "최종 입상팀 · 공동 3위"
+    },
+    "participants": {
+      "mode": "flat",
+      "groupLabel": "여자 15세 이하부 참가팀",
+      "linkMode": "team-results",
+      "searchLabels": {
+        "label": "참가팀 검색",
+        "placeholder": "학교명 또는 시·도 검색",
+        "sortNote": "팀명 가나다순",
+        "emptyMessage": "검색한 참가팀이 없습니다."
+      }
+    },
+    "roster": {
+      "mode": "none"
+    },
+    "competitionType": "knockout",
+    "presentation": "domestic-home-v2",
+    "audience": "comprehensive",
+    "divisionKey": "women-u15",
+    "divisionLabel": "여자 15세 이하부",
+    "heroTitle": "제55회 전국소년체육대회 배구",
+    "hubUrl": "comprehensive-competitions.html",
+    "hubLabel": "종합대회",
+    "eyebrow": "KVL DOMESTIC · NATIONAL YOUTH SPORTS FESTIVAL",
+    "hiddenViews": [
+      "groups"
+    ]
+  },
+  "hero": {
+    "pcImage": "/assets/img/home-hero/kvl-home-hero-pc-v01.webp",
+    "mobileImage": "/assets/img/home-hero/kvl-home-hero-mobile-v01.webp",
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "72% center",
+    "alt": "K-Volley Lab 배구대회 공통 브랜드 이미지"
+  },
+  "seo": {
+    "title": "제55회 전국소년체육대회 배구 여자 15세 이하부 | K-Volley Lab",
+    "description": "제55회 전국소년체육대회 배구 여자 15세 이하부 참가팀, 대진표, 경기결과와 입상팀."
+  },
+  "data": "data.json",
+  "modules": []
+}

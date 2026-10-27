@@ -19,16 +19,16 @@
       "standingsTitle": "대회 진행 방식",
       "standingsEyebrow": "KNOCKOUT FORMAT",
       "knockoutTitle": "대진표 · 최종순위",
-      "participantsTitle": "참가 시·도",
-      "participantsKpi": "참가 시·도",
-      "participantsKpiUnit": "팀"
+      "participantsTitle": "참가팀",
+      "participantsKpi": "참가팀",
+      "participantsKpiUnit": "팀",
+      "knockoutTab": "대진·최종순위"
     },
     "calendar": true,
     "schedule": {
       "stages": [
         "전체",
         "1회전",
-        "16강",
         "8강",
         "준결승",
         "결승"
@@ -38,35 +38,52 @@
       "mode": "none"
     },
     "knockout": {
-      "mode": "none",
-      "title": "여자 18세 이하부 토너먼트 대진표",
-      "showFinalRanking": false,
-      "emptyMessage": "전국체전은 토너먼트 대회입니다. 공식 대진표의 경기별 연결·검증이 완료되기 전까지 임의의 대진을 표시하지 않습니다. 공식자료 탭에서 원문을 확인해 주세요.",
-      "officialBracketStatus": "source-confirmed-data-pending",
-      "officialBracketUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do"
+      "mode": "bracket-tree",
+      "title": "여자 18세 이하부 전체 토너먼트",
+      "showFinalRanking": true,
+      "finalRankingTitle": "최종 입상팀 · 공동 3위"
     },
     "participants": {
       "mode": "flat",
-      "groupLabel": "출전 시·도",
-      "linkMode": "team-results"
+      "groupLabel": "여자 18세 이하부 참가팀",
+      "linkMode": "team-roster",
+      "searchLabels": {
+        "label": "참가팀 검색",
+        "placeholder": "팀명 또는 시·도 검색",
+        "sortNote": "팀명 가나다순",
+        "emptyMessage": "검색한 참가팀이 없습니다."
+      }
     },
     "roster": {
-      "mode": "none",
-      "domesticTeamRoute": "none"
+      "mode": "full",
+      "layout": "domestic-snapshot",
+      "domesticTeamRoute": "competition"
     },
-    "kpiTargets": {
-      "participants": "/competition-engine-prototype.html?competition=national-sports-festival-women-u18-2026&view=rosters"
-    },
-    "competitionType": "knockout"
+    "competitionType": "knockout",
+    "presentation": "domestic-home-v2",
+    "audience": "comprehensive",
+    "divisionKey": "women-u18",
+    "divisionLabel": "여자 18세 이하부",
+    "heroTitle": "제107회 전국체육대회 배구",
+    "hubUrl": "comprehensive-competitions.html",
+    "hubLabel": "종합대회",
+    "eyebrow": "KVL DOMESTIC · NATIONAL SPORTS FESTIVAL",
+    "hiddenViews": [
+      "groups"
+    ]
   },
   "hero": {
-    "showImage": false,
-    "mode": "color-only",
-    "alt": "제107회 전국체육대회 배구 여자 18세 이하부 프로토타입 — 공통 국내대회 테마"
+    "pcImage": "/assets/img/home-hero/kvl-home-hero-pc-v01.webp",
+    "mobileImage": "/assets/img/home-hero/kvl-home-hero-mobile-v01.webp",
+    "showImage": true,
+    "mode": "photo",
+    "position": "center center",
+    "mobilePosition": "72% center",
+    "alt": "K-Volley Lab 배구대회 공통 브랜드 이미지"
   },
   "seo": {
-    "title": "제107회 전국체육대회 배구 여자 18세 이하부 (프로토타입) | K-Volley Lab",
-    "description": "2026 제주 전국체전 배구 여자 18세 이하부 대회개요, 공식 경기장 및 토너먼트 대진·결과 검수 현황."
+    "title": "제107회 전국체육대회 배구 여자 18세 이하부 | K-Volley Lab",
+    "description": "제107회 전국체육대회 배구 여자 18세 이하부 참가팀, 전체 토너먼트 대진, 경기·세트별 결과와 최종 입상팀."
   },
   "data": "data.json",
   "modules": []

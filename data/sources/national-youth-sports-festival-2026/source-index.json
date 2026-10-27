@@ -1,0 +1,40 @@
+{
+  "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+  "checkedAt": "2026-10-27",
+  "publisher": "대한체육회",
+  "officialBaseUrl": "https://meet.sports.or.kr/junior/",
+  "rawArchive": {
+    "sha256": "6f079c4a127901cca5760e1e1b2940ce86cd8400591dec737c914ef923a46e4e"
+  },
+  "normalizedInput": {
+    "sha256": "b3c7cc106f7efe678155fb8fc81b5ef7ee9b18a32275ea733deff1e28730b00b"
+  },
+  "counts": {
+    "divisions": 4,
+    "teams": 59,
+    "matches": 55,
+    "medalTeams": 16
+  },
+  "sources": [
+    {
+      "division": "men-u12",
+      "url": "https://meet.sports.or.kr/junior/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=01&searchDetailClassCd=080101"
+    },
+    {
+      "division": "men-u15",
+      "url": "https://meet.sports.or.kr/junior/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=02&searchDetailClassCd=080201"
+    },
+    {
+      "division": "women-u12",
+      "url": "https://meet.sports.or.kr/junior/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=06&searchDetailClassCd=080601"
+    },
+    {
+      "division": "women-u15",
+      "url": "https://meet.sports.or.kr/junior/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=07&searchDetailClassCd=080701"
+    }
+  ],
+  "medalsUrl": "https://meet.sports.or.kr/junior/medal/medalClass.do?searchClassCd=08&searchKindCd=",
+  "publicRedistribution": "Original files are not redistributed. Verified competition records link to the official publishers.",
+  "scheduleUrl": "https://meet.sports.or.kr/junior/schedule/scheduleClass.do?searchClassCd=08",
+  "archivePolicy": "Original documents and internal storage references remain in the private source archive. Public records retain official URLs, Source IDs and integrity hashes."
+}

@@ -1,0 +1,742 @@
+{
+  "status": "completed",
+  "stageLabel": "남자 12세 이하부 · 경기 종료",
+  "dateLabel": "2026-05-23 ~ 2026-05-26",
+  "locationLabel": "부산광역시",
+  "venueLabel": "백양고등학교",
+  "venuePrimary": "백양고등학교",
+  "venueSecondary": "백양고등학교",
+  "groupCount": 0,
+  "knockoutTeamCount": 14,
+  "activeOverviewNote": "",
+  "scheduleNote": "한국시간(KST) · 공식 경기일정의 예정시각입니다.",
+  "participants": [
+    {
+      "code": "NYSF55-0208010101",
+      "name": "금명초등학교",
+      "fullName": "금명초등학교",
+      "region": "부산",
+      "officialTeamId": "0208010101",
+      "drawPosition": 1,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-0808010101",
+      "name": "남양초등학교",
+      "fullName": "남양초등학교",
+      "region": "경기",
+      "officialTeamId": "0808010101",
+      "drawPosition": 2,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-0408010101",
+      "name": "인천주안초등학교",
+      "fullName": "인천주안초등학교",
+      "region": "인천",
+      "officialTeamId": "0408010101",
+      "drawPosition": 3,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-0308010101",
+      "name": "대구수성초등학교",
+      "fullName": "대구수성초등학교",
+      "region": "대구",
+      "officialTeamId": "0308010101",
+      "drawPosition": 4,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-1508010101",
+      "name": "진주금성초등학교",
+      "fullName": "진주금성초등학교",
+      "region": "경남",
+      "officialTeamId": "1508010101",
+      "drawPosition": 5,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-0108010101",
+      "name": "서울신강초등학교",
+      "fullName": "서울신강초등학교",
+      "region": "서울",
+      "officialTeamId": "0108010101",
+      "drawPosition": 6,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-0608010101",
+      "name": "대전석교초등학교",
+      "fullName": "대전석교초등학교",
+      "region": "대전",
+      "officialTeamId": "0608010101",
+      "drawPosition": 7,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-1308010101",
+      "name": "순천대석초등학교",
+      "fullName": "순천대석초등학교",
+      "region": "전남",
+      "officialTeamId": "1308010101",
+      "drawPosition": 8,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-1108010101",
+      "name": "금오초등학교",
+      "fullName": "금오초등학교",
+      "region": "충남",
+      "officialTeamId": "1108010101",
+      "drawPosition": 9,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-1008010101",
+      "name": "의림초등학교",
+      "fullName": "의림초등학교",
+      "region": "충북",
+      "officialTeamId": "1008010101",
+      "drawPosition": 10,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-1408010101",
+      "name": "인동초등학교",
+      "fullName": "인동초등학교",
+      "region": "경북",
+      "officialTeamId": "1408010101",
+      "drawPosition": 11,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-0908010101",
+      "name": "교동초등학교",
+      "fullName": "교동초등학교",
+      "region": "강원",
+      "officialTeamId": "0908010101",
+      "drawPosition": 12,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-1208010101",
+      "name": "이리부송초등학교",
+      "fullName": "이리부송초등학교",
+      "region": "전북",
+      "officialTeamId": "1208010101",
+      "drawPosition": 13,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    },
+    {
+      "code": "NYSF55-0708010101",
+      "name": "언양초등학교",
+      "fullName": "언양초등학교",
+      "region": "울산",
+      "officialTeamId": "0708010101",
+      "drawPosition": 14,
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026"
+    }
+  ],
+  "matches": [
+    {
+      "id": "KVL-M-NYSF55-080101-081001",
+      "date": "2026-05-23",
+      "time": "10:00",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "home": {
+        "code": "NYSF55-1408010101"
+      },
+      "away": {
+        "code": "NYSF55-0908010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=081001&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-087001"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-081002",
+      "date": "2026-05-23",
+      "time": "11:00",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "home": {
+        "code": "NYSF55-1208010101"
+      },
+      "away": {
+        "code": "NYSF55-0708010101"
+      },
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 13,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=081002&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-087001"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-081003",
+      "date": "2026-05-23",
+      "time": "12:00",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "home": {
+        "code": "NYSF55-0108010101"
+      },
+      "away": {
+        "code": "NYSF55-0608010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 9
+          },
+          {
+            "home": 25,
+            "away": 12
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=081003&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-087002"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-081004",
+      "date": "2026-05-23",
+      "time": "13:00",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "home": {
+        "code": "NYSF55-0308010101"
+      },
+      "away": {
+        "code": "NYSF55-1508010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=081004&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-087002"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-081005",
+      "date": "2026-05-23",
+      "time": "14:00",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "home": {
+        "code": "NYSF55-1108010101"
+      },
+      "away": {
+        "code": "NYSF55-1008010101"
+      },
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 10,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=081005&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-087003"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-081006",
+      "date": "2026-05-23",
+      "time": "15:00",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "home": {
+        "code": "NYSF55-0808010101"
+      },
+      "away": {
+        "code": "NYSF55-0408010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 9
+          },
+          {
+            "home": 25,
+            "away": 6
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=081006&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-087004"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-087001",
+      "date": "2026-05-24",
+      "time": "10:00",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "NYSF55-1408010101"
+      },
+      "away": {
+        "code": "NYSF55-0708010101"
+      },
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 8,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=087001&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-088001"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-087002",
+      "date": "2026-05-24",
+      "time": "11:00",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "NYSF55-0308010101"
+      },
+      "away": {
+        "code": "NYSF55-0108010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=087002&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-088002"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-087003",
+      "date": "2026-05-24",
+      "time": "12:00",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "NYSF55-1308010101"
+      },
+      "away": {
+        "code": "NYSF55-1008010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 18
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=087003&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-088001"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-087004",
+      "date": "2026-05-24",
+      "time": "13:00",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "home": {
+        "code": "NYSF55-0208010101"
+      },
+      "away": {
+        "code": "NYSF55-0808010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 13
+          },
+          {
+            "home": 25,
+            "away": 11
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=087004&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-088002"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-088001",
+      "date": "2026-05-25",
+      "time": "10:00",
+      "timeStatus": "scheduled",
+      "stage": "준결승",
+      "round": "SF",
+      "home": {
+        "code": "NYSF55-1308010101"
+      },
+      "away": {
+        "code": "NYSF55-0708010101"
+      },
+      "score": {
+        "home": 0,
+        "away": 2,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=088001&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-089000"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-088002",
+      "date": "2026-05-25",
+      "time": "11:00",
+      "timeStatus": "scheduled",
+      "stage": "준결승",
+      "round": "SF",
+      "home": {
+        "code": "NYSF55-0208010101"
+      },
+      "away": {
+        "code": "NYSF55-0308010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 1,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 8
+          },
+          {
+            "home": 15,
+            "away": 11
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=088002&searchPcntGbn=T",
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NYSF55-080101-089000"
+    },
+    {
+      "id": "KVL-M-NYSF55-080101-089000",
+      "date": "2026-05-26",
+      "time": "10:00",
+      "timeStatus": "scheduled",
+      "stage": "결승",
+      "round": "FINAL",
+      "home": {
+        "code": "NYSF55-0208010101"
+      },
+      "away": {
+        "code": "NYSF55-0708010101"
+      },
+      "score": {
+        "home": 2,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 10
+          }
+        ]
+      },
+      "venueLabel": "백양고등학교",
+      "sourceId": "KVL-SRC-NYSF55-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080101&searchRhCd=089000&searchPcntGbn=T",
+      "dataStatus": "verified"
+    }
+  ],
+  "standings": {},
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "NYSF55-0208010101",
+      "team": "금명초등학교",
+      "result": "우승 · 부산",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NYSF55-MEDALS-2026"
+    },
+    {
+      "rank": 2,
+      "code": "NYSF55-0708010101",
+      "team": "언양초등학교",
+      "result": "준우승 · 울산",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NYSF55-MEDALS-2026"
+    },
+    {
+      "rank": 3,
+      "code": "NYSF55-1308010101",
+      "team": "순천대석초등학교",
+      "result": "공동 3위 · 전남",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NYSF55-MEDALS-2026"
+    },
+    {
+      "rank": 3,
+      "code": "NYSF55-0308010101",
+      "team": "대구수성초등학교",
+      "result": "공동 3위 · 대구",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NYSF55-MEDALS-2026"
+    }
+  ],
+  "champion": "금명초등학교",
+  "bracketRounds": [
+    {
+      "round": "R16",
+      "label": "1회전",
+      "slots": [
+        {
+          "byeTeam": "NYSF55-0208010101"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-081006"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-081004"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-081003"
+        },
+        {
+          "byeTeam": "NYSF55-1308010101"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-081005"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-081001"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-081002"
+        }
+      ]
+    },
+    {
+      "round": "QF",
+      "label": "8강",
+      "slots": [
+        {
+          "matchId": "KVL-M-NYSF55-080101-087004"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-087002"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-087003"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-087001"
+        }
+      ]
+    },
+    {
+      "round": "SF",
+      "label": "준결승",
+      "slots": [
+        {
+          "matchId": "KVL-M-NYSF55-080101-088002"
+        },
+        {
+          "matchId": "KVL-M-NYSF55-080101-088001"
+        }
+      ]
+    },
+    {
+      "round": "FINAL",
+      "label": "결승",
+      "slots": [
+        {
+          "matchId": "KVL-M-NYSF55-080101-089000"
+        }
+      ]
+    }
+  ],
+  "qualifications": [],
+  "divisionLinks": [
+    {
+      "key": "men-u12",
+      "label": "남자 12세 이하부",
+      "gender": "men",
+      "url": "national-youth-sports-festival-2026.html?competition=national-youth-sports-festival-men-u12-2026"
+    },
+    {
+      "key": "men-u15",
+      "label": "남자 15세 이하부",
+      "gender": "men",
+      "url": "national-youth-sports-festival-2026.html?competition=national-youth-sports-festival-men-u15-2026"
+    },
+    {
+      "key": "women-u12",
+      "label": "여자 12세 이하부",
+      "gender": "women",
+      "url": "national-youth-sports-festival-2026.html?competition=national-youth-sports-festival-women-u12-2026"
+    },
+    {
+      "key": "women-u15",
+      "label": "여자 15세 이하부",
+      "gender": "women",
+      "url": "national-youth-sports-festival-2026.html?competition=national-youth-sports-festival-women-u15-2026"
+    }
+  ],
+  "resourcesNote": "대한체육회 공식 대진표·세부전적·메달명세를 2026.10.27 대조했습니다.",
+  "resources": [
+    {
+      "title": "대한체육회 공식 대진표 · 남자 12세 이하부",
+      "url": "https://meet.sports.or.kr/junior/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=01&searchDetailClassCd=080101"
+    },
+    {
+      "title": "대한체육회 공식 배구 메달명세",
+      "url": "https://meet.sports.or.kr/junior/medal/medalClass.do?searchClassCd=08&searchKindCd="
+    },
+    {
+      "title": "대한배구협회 경기결과 및 중계 안내",
+      "url": "https://www.kva.or.kr/info/m/notice/view.do?boardSeq=2355"
+    }
+  ],
+  "domesticRules": {
+    "knockout": {
+      "title": "전국소년체전 배구 토너먼트",
+      "body": "2세트를 먼저 이기는 팀이 다음 라운드로 진출합니다. 공식 대진 결과와 메달명세에 따라 준결승 패배 두 팀은 공동 3위로 표시합니다.",
+      "sourceUrl": "https://meet.sports.or.kr/junior/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=01&searchDetailClassCd=080101"
+    }
+  },
+  "sourceVerification": {
+    "checkedAt": "2026-10-27",
+    "officialParticipants": 14,
+    "officialMatches": 13,
+    "verifiedMatches": 13,
+    "sourceConflicts": []
+  }
+}
