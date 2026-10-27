@@ -95,7 +95,7 @@ function apply(d){
  qa('.kvl1180-tabs a').forEach(a=>{a.innerHTML=icon(a.dataset.view)+'<span>'+esc(labels[a.dataset.view])+'</span>';});
  for(const view of d.structure.hiddenViews||[]){q(`.kvl1180-tabs a[data-view="${view}"]`)?.remove();const section=q(`.kvl1180-view[data-view="${view}"]`);if(section){section.hidden=true;section.dataset.kvlEmpty='true';}}
  const gender=q('.kvl1180-gender');gender.insertAdjacentHTML('beforebegin','<span class="dv2-division-label">참가 부문</span>');
- if(!school&&!d.divisionLinks?.length){q('[data-gender-link="men"]').textContent='남대부';q('[data-gender-link="women"]').textContent='여대부';}
+ if(!school&&!d.divisionLinks?.length){const proCup=d.structure?.presentationCategory==='pro-cup';q('[data-gender-link="men"]').textContent=proCup?'남자부':'남대부';q('[data-gender-link="women"]').textContent=proCup?'여자부':'여대부';}
  const overview=q('.kvl1180-view[data-view="overview"]'),pools=(d.standings?.pools||[]).length,singleLeague=d.structure?.standings?.mode==='single-league';
  const arenas=[...new Set((d.matches||[]).map(m=>String(m.venueLabel||'').trim()).filter(Boolean))];
  const singleVenue=arenas.length===1;
