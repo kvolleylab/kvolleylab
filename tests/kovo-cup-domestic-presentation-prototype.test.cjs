@@ -13,7 +13,7 @@ assert.match(proto,/window\.KVLCompetitionAdapterV2=function\(original\)/);
 assert.match(proto,/competitionFamily:'domestic'/);
 assert.match(proto,/presentation:'domestic-home-v2'/);
 assert.match(proto,/presentationCategory:'pro-cup'/);
-assert.match(shared,/const enabled=d=>d\?\.competitionFamily==='domestic'&&d\.structure\?\.presentation==='domestic-home-v2'/);
+assert.match(shared,/const enabled=d=>\['domestic','pro'\]\.includes\(d\?\.competitionFamily\)&&d\.structure\?\.presentation==='domestic-home-v2'/);
 assert.match(shared,/d\.structure\.hubCategoryLabel\|\|'국내대회'/);
 assert.match(shared,/d\.structure\.heroTagline/);
 assert.match(proto,/PRO VOLLEYBALL · KOVO CUP/);

@@ -21,7 +21,8 @@
       "knockoutTitle": "결선 토너먼트",
       "participantsTitle": "참가팀",
       "participantsKpi": "참가팀",
-      "participantsKpiUnit": "팀"
+      "participantsKpiUnit": "팀",
+      "knockoutTab": "최종순위"
     },
     "calendar": true,
     "schedule": {
@@ -48,12 +49,31 @@
     "participants": {
       "mode": "groups",
       "groupLabel": "여자부 참가팀",
-      "linkMode": "team-results"
+      "linkMode": "team-roster",
+      "searchLabels": {
+        "label": "참가팀 검색",
+        "placeholder": "팀명 검색",
+        "sortNote": "조별 구분 · 가나다순",
+        "emptyMessage": "해당 팀을 찾을 수 없습니다."
+      }
     },
     "roster": {
-      "mode": "none",
-      "domesticTeamRoute": "none"
-    }
+      "mode": "full",
+      "layout": "domestic-snapshot",
+      "domesticTeamRoute": "none",
+      "allowPendingSelect": true,
+      "selectHint": "팀을 선택하면 등록 선수명단 상태를 확인할 수 있습니다. 공식 명단 검수 전에는 선수 정보를 표시하지 않습니다."
+    },
+    "presentation": "domestic-home-v2",
+    "presentationThemeFamily": "domestic",
+    "presentationCategory": "pro-cup",
+    "divisionLabel": "여자부",
+    "hubUrl": "kovo-cup.html",
+    "hubCategoryLabel": "프로 V-리그",
+    "hubLabel": "KOVO컵",
+    "eyebrow": "PRO VOLLEYBALL · KOVO CUP",
+    "heroTagline": "2026 여수·NH농협컵 프로배구대회 · 여자부",
+    "overviewTeamCount": 7
   },
   "hero": {
     "showImage": true,

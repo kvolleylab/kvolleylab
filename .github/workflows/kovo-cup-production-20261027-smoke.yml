@@ -1,0 +1,40 @@
+name: KOVO Cup production + domestic template focused regression
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'data/competitions/kovo-cup-*/config.json'
+      - 'data/competitions/kovo-cup-*/data.json'
+      - 'data/competitions/v-league-*/config.json'
+      - 'data/competitions/v-league-*/data.json'
+      - 'assets/js/kvl-domestic-home-v2.js'
+      - 'assets/js/kvl-competition-template-v2.js'
+      - 'assets/js/kvl-competition-components-v2.js'
+      - 'assets/css/kvl-domestic-home-v2.css'
+      - 'tests/kovo-cup-production-template-20261027.test.cjs'
+      - '.github/workflows/kovo-cup-production-20261027-smoke.yml'
+  push:
+    branches:
+      - feature/kovo-cup-production-release-clean-20261027
+      - main
+    paths:
+      - 'tests/kovo-cup-production-template-20261027.test.cjs'
+      - '.github/workflows/kovo-cup-production-20261027-smoke.yml'
+permissions:
+  contents: read
+jobs:
+  focused-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: KOVO Cup data and domestic template
+        run: node tests/kovo-cup-production-template-20261027.test.cjs
+      - name: Domestic Cup prototype still works
+        run: node tests/kovo-cup-domestic-presentation-prototype.test.cjs
+      - name: Cup pool standings and logos
+        run: node tests/competition-v2-pro-cup-pool-columns.test.cjs

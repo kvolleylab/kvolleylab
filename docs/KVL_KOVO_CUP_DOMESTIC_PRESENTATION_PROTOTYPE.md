@@ -32,3 +32,20 @@ As observed from latest main at prototype start on Oct 27, women's Cup data mark
 3. Manual PC 1180 and mobile 390/360 Hero, theme, calendar modal, tabs, gender switch and score readability check.
 
 No production replacement. Only after user's visual approval should a separate production promotion be requested.
+
+## Production promotion and domestic-template improvements (2026-10-27)
+- Owner approved promoting the domestic-home-v2 visual structure into the existing KOVO Cup men/women production slugs. Do not redirect to a new event-only page. Canonical competitionId, data paths, matching IDs and existing PC/mobile v02 Hero remain unchanged.
+- Config keeps `competition.competitionFamily=pro` as source-of-truth. Opt-in `structure.presentation=domestic-home-v2`, `presentationThemeFamily=domestic`, `presentationCategory=pro-cup` selects shared visuals with original charcoal/gold Cup Hero and women rose accents.
+- Shared domestic-home-v2 standard now displays actual stadium name when all matches use one arena; earlier venue primary/secondary behavior is retained for multi-venue events.
+- Shared final ranking labels tied positions as '공동 N위' instead of presenting two plain N위 entries. The 2026 men's and women's Cup have joint third (both verified semifinal losers, no 3rd-place match).
+- Shared pro-Cup match row styling aligns crests/club names/center set scores into symmetric columns on desktop/mobile; no club-specific hacks. Numeric scores stay neutral #4B5563.
+- Participant team card can open an inline verified-roster panel using the existing international-style shared roster renderer. A generic `allowPendingSelect` opt-in allows users to see the correct 'official roster pending verification' message without inventing athletes.
+- **Important data restriction:** The official Cup media guide is available in K-Volley Lab Drive under 2026 KOVO컵/01_공식자료, but the scanned roster pages are not yet transcribed and matched to KVL Player IDs. No unverified player list is shipped with this UI change. Similarly 2026-27 V-League official roster masters remain under verification; season rosters must not be silently relabeled as Cup participation.
+- KOVO Cup men final-source synchronization: 2026-10-24 semifinals KAL 3-0 WRC and KEP 1-3 HDC, 2026-10-25 final KAL 3-1 HDC. Validated set points stored with source links in GitHub competition JSON and in Google Drive 2026_KOVO컵_경기일정_MASTER rows 23-25. No other scores changed.
+- Per-team roster publishing remains a separate identity-verification task; pending roster UI is not a claim of completed roster publishing.
+
+## Quick release gates
+- Verify 2026 men/women Cup: 12/12 scored, winner and runner-up, two co-third teams, all 7 official logos, original Hero file paths, and round pairing.
+- Verify regular domestic university and school pages remain unchanged except common generic label improvements.
+- Verify both V-League team-card roster selection gracefully displays pending state without exposing partial player data.
+- CI: `node tests/kovo-cup-production-template-20261027.test.cjs`, `node tests/kovo-cup-domestic-presentation-prototype.test.cjs`, `node tests/competition-v2-pro-cup-pool-columns.test.cjs`.
