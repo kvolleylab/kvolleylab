@@ -516,6 +516,67 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:is(
  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"] .kvl1180-hero-meta{text-shadow:0 1px 2px var(--kvl-theme-hero-a),0 0 4px var(--kvl-theme-hero-a)}
 }
 
+@media screen and (min-width:681px) and (max-width:1100px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"] .kvl1180-hero{background-size:125% auto!important;background-position:right bottom!important}
+}
+@media screen and (min-width:1101px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"] .kvl1180-hero{aspect-ratio:25 / 7}
+}
+
+/* Comprehensive competitions use representative regions in place of team crests.
+ * Keep the domestic template's time / matchup / five-set lanes, with elastic
+ * team-name columns and no ellipsis. Other competition families retain their marks.
+ */
+@media screen{
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] .kvl-region-mark,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results,#knockout,#rosters,#team-roster,#overview,#dv2-day-dialog) .kvl-region-mark{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  width:auto!important;min-width:0!important;max-width:none!important;height:auto!important;
+  padding:0!important;margin:0!important;border:0!important;border-radius:0!important;
+  background:none!important;box-shadow:none!important;color:#65788c!important;
+  font-size:15px!important;font-weight:400!important;line-height:1.5!important;white-space:nowrap!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] .kvl1180-team-profile-flag.is-region{background:none!important;border:0!important;box-shadow:none!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl1180-final-card{grid-template-columns:auto minmax(0,1fr)!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-match-board{
+  display:grid!important;width:100%!important;max-width:520px!important;min-width:0!important;
+  grid-template-columns:minmax(0,1fr) 62px minmax(0,1fr)!important;column-gap:12px!important;align-items:center!important;justify-self:center!important;margin:0!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-side{
+  display:grid!important;width:100%!important;min-width:0!important;max-width:none!important;
+  grid-template-rows:auto!important;align-items:center!important;gap:8px!important;padding:0!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-side.is-left{grid-template-columns:32px minmax(0,1fr)!important;text-align:left!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-side.is-right{grid-template-columns:minmax(0,1fr) 32px!important;text-align:right!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-slot-copy,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-slot-copy strong,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-slot-copy a{
+  width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;
+  white-space:normal!important;overflow:visible!important;text-overflow:clip!important;
+  word-break:keep-all!important;overflow-wrap:anywhere!important;line-height:1.45!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-score{width:62px!important;min-width:62px!important;max-width:62px!important;margin:0!important;justify-self:center!important;text-align:center!important}
+}
+@media screen and (min-width:901px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-match-row{grid-template-columns:clamp(118px,11.8vw,150px) minmax(0,1fr) 285px!important;column-gap:12px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-match-meta{grid-column:1!important;grid-row:1!important;min-width:0!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-match-board{grid-column:2!important;grid-row:1!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-set-scores{grid-column:3!important;grid-row:1!important;width:100%!important;min-width:0!important;max-width:100%!important;justify-self:end!important;justify-content:flex-end!important;margin:0!important}
+}
+@media screen and (max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-match-board{grid-template-columns:minmax(0,1fr) 48px minmax(0,1fr)!important;column-gap:8px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-side{display:flex!important;flex-direction:column!important;gap:4px!important;text-align:center!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-slot-copy strong{text-align:center!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl-region-mark{order:-1}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-score{width:48px!important;min-width:48px!important;max-width:48px!important}
+}
+
+@media screen and (min-width:901px) and (max-width:1100px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-match-row{grid-template-columns:118px minmax(0,1fr)!important;row-gap:8px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-match-meta{grid-row:1 / span 2!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] :is(#schedule,#team-results) .kvl1180-set-scores{grid-column:2!important;grid-row:2!important;justify-content:center!important}
+}
+
 /* 2026-10-27 · KOVO Cup PC matchup geometry.
  * Reserve an explicit FIVE-SET scoring lane at right even for 3-set matches.
  * Center the crests/names/match score in the remaining time-to-sets gap.

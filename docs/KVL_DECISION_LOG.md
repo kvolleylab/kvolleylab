@@ -218,6 +218,10 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 화면은 release PR 기록). 사용자가 “V-리그도 대회 페이지 수정하고 선수명단 반영해줘”라고 요청했다. 기존 V-리그 남녀 경로에 공통 domestic-home-v2의 pro-league 옵션을 적용하고 팀 카드 아래 시즌 명단과 국기+국적을 표시한다. 10월 27일 공시까지 대조한 14팀·252명과 기존 exact-match 프로필 55개를 연결한다. 이준 전역 등록, 송민근 자유신분, 최원빈 해외임대, 김영태 MB 변경 및 외국인/아시아쿼터 28명의 공시 국적을 대조했다. Cup 당시 명단과 시즌 명단은 별도 snapshot이다. 기존 v08 Hero, 정규리그 252경기·순위·포스트시즌·선수 ID를 유지한다. 자료 충돌/음력 DOB 6건은 확인 중이다. 앞선 V-리그 pending-only 화면과 prototype 표기를 이번 범위에서 대체한다. [검수·출처·복구](validation/vleague-rosters-20261028.md).
 
+## 2026-10-28 · 종합대회 PC Hero 확대 및 지역 중심 경기결과
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR 기록). 사용자가 PC Hero 장면이 카드의 절반 정도를 차지하도록 확대하고, 국내대회 기본 템플릿에 맞는 경기결과 정렬·팀명 전체 표시·로고 대신 지역을 요청했다. 선택된 5종의 원본 바이트와 모바일을 유지하며 PC의 빈 배경 축소 및 25:7 카드 비율을 적용한다. 이전의 PC contain·고정 높이는 이 범위에서 대체한다. 종합대회에만 지역 일반 글씨를 적용하고 기존 순위 오른쪽 지역은 중복 없이 유지한다. 경기결과는 좌우 같은 팀 영역과 가운데 점수, 긴 이름 줄바꿈을 사용하며 좁은 PC에서는 세트별 점수를 아래로 배치한다. 원본 경기·순위·명단·ID·타 대회 로고 및 동시 V-리그 변경을 보존한다. [검수·범위·복구](validation/comprehensive-layout-20261028.md).
+
 
 ## 2026-10-28 · V-리그 한눈에 순위표·참가팀 전 시즌 순서
 
