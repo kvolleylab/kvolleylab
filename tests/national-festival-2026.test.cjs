@@ -13,6 +13,14 @@ function setup(key,view='overview'){
 for(const [key,n,g,byes,champion] of cases)test(key+' includes every official team/match and correct knockout path, podium and interactive navigation',()=>{
  const {w,doc,d}=setup(key);try{
   assert.equal(d.participants.length,n);assert.equal(d.matches.length,g);assert.equal(d.champion,champion);assert.equal(d.status,'completed');assert.equal(doc.querySelectorAll('[data-division-link]').length,5);assert.equal(doc.querySelectorAll('.kvl1180-tabs a').length,5);assert.equal(doc.querySelector('.kvl1180-tabs a[data-view=groups]'),null);assert.deepEqual(d.finalRanking.map(x=>x.rank).sort(),[1,2,3,3]);assert.match(doc.querySelector('.kvl1180-final-block-head').textContent,/공동 3위/);
+  for(const m of d.matches){
+   const row=doc.querySelector(`#schedule [data-match-id="${m.id}"]`);
+   assert.equal(row.querySelectorAll('img').length,0);
+   assert.deepEqual([...row.querySelectorAll('.kvl-region-mark')].map(x=>x.textContent),[m.home,m.away].map(t=>d.participants.find(p=>p.code===t.code).region));
+   assert.deepEqual([...row.querySelectorAll('.kvl1180-slot-copy strong')].map(x=>x.textContent),[m.home,m.away].map(t=>d.participants.find(p=>p.code===t.code).name));
+  }
+  assert.equal(doc.querySelectorAll('#knockout img, .dv2-overview-teams img, .kvl1180-participant-button img').length,0);
+  assert.equal(doc.querySelectorAll('.kvl1180-participant-button .kvl-region-mark').length,n);
   assert.equal(doc.querySelectorAll('[data-tree-match]').length,g);assert.equal(doc.querySelectorAll('[data-tree-bye]').length,byes);assert.equal(doc.querySelectorAll('.kvl-tree-round').length,4);assert.equal(doc.querySelectorAll('#knockout .dv2-trophy').length,4);assert.equal(doc.querySelector('.dv2-calendar-month').textContent,'10월');
   assert.deepEqual([...doc.querySelectorAll('.dv2-ranking-list .dv2-region')].map(n=>n.textContent),d.finalRanking.map(r=>d.participants.find(t=>t.code===r.code).region));
   assert.deepEqual([...doc.querySelectorAll('#knockout .kvl-final-region')].map(n=>n.textContent),d.finalRanking.map(r=>d.participants.find(t=>t.code===r.code).region));

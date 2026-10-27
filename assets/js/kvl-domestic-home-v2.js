@@ -11,9 +11,10 @@ let current,month,months=[];
 const enabled=d=>['domestic','pro'].includes(d?.competitionFamily)&&d.structure?.presentation==='domestic-home-v2';
 const label=d=>d.structure?.labels?.participantsTitle||'참가팀';
 const team=code=>(current.participants||[]).find(t=>t.code===code)||{code,name:code||'미정'};
-const teamLogo=t=>t.logo?`<img src="${esc(t.logo)}" alt="" loading="lazy">`:`<span class="dv2-team-mark">${esc((t.name||'미정').replace(/대학교|대$/g,'').slice(0,2))}</span>`;
+const regional=()=>current?.structure?.audience==='comprehensive';
+const teamLogo=t=>regional()?`<span class="kvl-region-mark" aria-label="대표 지역 ${esc(t.region||'미확인')}">${esc(t.region||'지역 미확인')}</span>`:t.logo?`<img src="${esc(t.logo)}" alt="" loading="lazy">`:`<span class="dv2-team-mark">${esc((t.name||'미정').replace(/대학교|대$/g,'').slice(0,2))}</span>`;
 const teamHref=t=>current.structure?.participants?.linkMode==='team-roster'?href('rosters',{team:t.code})+'#team-roster':current.structure?.participants?.linkMode==='team-results'?href('team',{team:t.code}):'university-team.html?school='+encodeURIComponent(t.fullName||t.name);
-const teamTile=(t,subtitle)=>`<a class="dv2-team-tile" href="${esc(teamHref(t))}">${teamLogo(t)}<b>${esc(t.name)}</b><small>${esc(subtitle??(t.region||(current.structure?.participants?.mode==='groups'&&t.group?String(t.group).replace(/조$/,'')+'조':label(current))))}</small></a>`;
+const teamTile=(t,subtitle)=>`<a class="dv2-team-tile" href="${esc(teamHref(t))}">${teamLogo(t)}<b>${esc(t.name)}</b><small>${esc(subtitle??((regional()?'':t.region)||(current.structure?.participants?.mode==='groups'&&t.group?String(t.group).replace(/조$/,'')+'조':label(current))))}</small></a>`;
 function heading(title,view,action='전체보기'){return `<div class="dv2-heading"><h2>${esc(title)}</h2>${view?`<a href="${esc(href(view))}">${esc(action)} ›</a>`:''}</div>`;}
 function metric(title,value,unit,view,key){return `<a class="dv2-metric" href="${esc(href(view))}"><span class="dv2-metric-icon">${icon(key||view)}</span><span><small>${esc(title)}</small><strong>${esc(value)}<em>${esc(unit)}</em></strong></span><b class="dv2-arrow" aria-hidden="true">›</b></a>`;}
 function ranking(d){
@@ -25,7 +26,7 @@ function ranking(d){
  const regionText=r=>region(r)?`<span class="dv2-region" aria-label="대표 지역 ${esc(region(r))}">${esc(region(r))}</span>`:'';
  const result=r=>{const value=r.result||'',suffix=' · '+region(r);return region(r)&&value.endsWith(suffix)?value.slice(0,-suffix.length):value;};
  const rows=ranks.map(r=>`<a href="${esc(href('team',{team:r.code}))}"><span class="dv2-rank">${trophy(r.rank)}<span>${esc(rankText(r))}</span></span>${regional?`<span class="dv2-ranked-team"><span class="dv2-ranked-team-copy"><b>${esc(r.team||team(r.code).name)}</b><small>${esc(result(r))}</small></span>${regionText(r)}</span>`:`<b>${esc(r.team||team(r.code).name)}</b><small>${esc(result(r))}</small>`}</a>`).join('');
- return `<div class="dv2-ranking">${champ?`<a class="dv2-champion" href="${esc(href('team',{team:champ.code}))}">${teamLogo(team(champ.code))}<span class="dv2-champion-copy"><small>CHAMPION</small>${regional?`<span class="dv2-team-name-row"><strong>${esc(champ.team||team(champ.code).name)}</strong>${regionText(champ)}</span>`:`<strong>${esc(champ.team||team(champ.code).name)}</strong>`}</span>${trophy(1)}</a>`:''}<div class="dv2-ranking-list">${rows}</div></div>`;
+ return `<div class="dv2-ranking">${champ?`<a class="dv2-champion" href="${esc(href('team',{team:champ.code}))}">${regional?'':teamLogo(team(champ.code))}<span class="dv2-champion-copy"><small>CHAMPION</small>${regional?`<span class="dv2-team-name-row"><strong>${esc(champ.team||team(champ.code).name)}</strong>${regionText(champ)}</span>`:`<strong>${esc(champ.team||team(champ.code).name)}</strong>`}</span>${trophy(1)}</a>`:''}<div class="dv2-ranking-list">${rows}</div></div>`;
 }
 function overviewSummary(d){
  const summary=d.structure?.overviewSummary;
