@@ -24,7 +24,8 @@
     liveStatusRuntime.defer=true;
     document.head.appendChild(liveStatusRuntime);
   }
-  const MANIFEST='data/master/school_logo_manifest_2026.json?v=20260802-1';
+  if(window.KVLSchoolLogos)return;
+  const MANIFEST='data/master/school_logo_manifest_2026.json?v=20261027-1';
   const normalize=value=>String(value||'').trim().replace(/\s+/g,'');
   const teamFromLogo=el=>{
     const aria=el.getAttribute('aria-label')||'';
@@ -33,32 +34,53 @@
     return card?.textContent?.replace(/[🥇🥈🥉·]/g,' ').trim()||'';
   };
   const fallbackInitials=name=>String(name||'팀').replace(/고등학교|중학교|여자|사범대학부속|스포츠과학|체육|전자/g,'').slice(0,2)||'팀';
-  fetch(MANIFEST,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(manifest=>{
-    const aliases=manifest.aliases||{},teams=manifest.teams||{},base=manifest.basePath||'assets/images/school-logos/';
-    const canonical=name=>aliases[name]||name;
-    const entryFor=name=>{
-      const clean=canonical(String(name||'').trim());
-      return teams[clean]||teams[normalize(clean)]||null;
+  // Display assets and location labels never create or replace routing/Master IDs.
+  const api={manifest:null,canonical:name=>String(name||'').trim(),entryFor:()=>null,pathFor:()=>'',profileName:name=>name,decorate:data=>data,refresh:()=>{}};
+  window.KVLSchoolLogos=api;
+  api.ready=fetch(MANIFEST,{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(manifest=>{
+    const aliases={...manifest.aliases,...manifest.displayAliases},teams=manifest.teams||{},base=manifest.basePath||'assets/images/school-logos/';
+    const names=new Map(Object.keys(teams).map(name=>[normalize(name),name]));
+    Object.entries(teams).forEach(([name,entry])=>[entry.school_name,...(entry.aliases||[])].filter(Boolean).forEach(alias=>names.set(normalize(alias),name)));
+    Object.entries(aliases).forEach(([alias,name])=>names.set(normalize(alias),names.get(normalize(name))||name));
+    const canonical=name=>names.get(normalize(name))||String(name||'').trim();
+    const entryFor=(name,region,competitionId)=>{
+      const scoped=manifest.competitionAliases?.[competitionId]||{};
+      const alias=Object.keys(scoped).find(alias=>normalize(alias)===normalize(name));
+      const entry=teams[canonical(alias?scoped[alias]:name)]||null;
+      // A duplicate school name from a different represented province stays unassigned.
+      return entry&&region&&entry.province&&normalize(region)!==normalize(entry.province)&&!normalize(region).startsWith(normalize(entry.province))?null:entry;
     };
     const pathFor=(name,entry)=>{
       if(typeof entry==='string')return entry.includes('/')?entry:`${base}${entry}`;
       const path=entry?.asset_path||entry?.path||entry?.file||'';
       return path?(path.includes('/')?path:`${base}${path}`):'';
     };
+    const profileName=name=>entryFor(name)?.display_name||name;
+    const decorate=data=>{
+      if(String(data?.competitionFamily||data?.family||'').toLowerCase()!=='domestic')return data;
+      return {...data,participants:(data.participants||[]).map(team=>{
+        const entry=entryFor(team.fullName||team.name,team.region,data.competitionId)||entryFor(team.name,team.region,data.competitionId);
+        if(!entry)return team;
+        const src=pathFor(team.name,entry);
+        return {...team,...(src?{logo:src}:{}),schoolDisplayName:entry.display_name||entry.school_name,schoolRegion:entry.location_short||'',logoVerifiedAt:entry.verified_at};
+      })};
+    };
     const enhance=root=>{
-      root.querySelectorAll?.('.sc-team-logo').forEach(el=>{
-        if(el.dataset.logoChecked==='1')return;
-        el.dataset.logoChecked='1';
+      const elements=[...(root.matches?.('.sc-team-logo')?[root]:[]),...(root.querySelectorAll?.('.sc-team-logo')||[])];
+      elements.forEach(el=>{
         const name=teamFromLogo(el),entry=entryFor(name),src=pathFor(name,entry);
-        if(!src)return;
+        if(el.dataset.logoChecked===name)return;
+        el.dataset.logoChecked=name;
+        if(!src){if(el.classList.contains('has-school-logo')){el.classList.remove('has-school-logo');el.textContent=fallbackInitials(name);}return;}
         el.classList.add('has-school-logo');
-        el.innerHTML=`<img src="${src}" alt="${canonical(name)} 로고" loading="lazy">`;
-        const img=el.querySelector('img');
+        const img=document.createElement('img');img.src=src;img.alt=`${canonical(name)} 로고`;img.loading='lazy';el.replaceChildren(img);
         img.addEventListener('error',()=>{el.classList.remove('has-school-logo');el.textContent=fallbackInitials(name)},{once:true});
       });
     };
     enhance(document);
-    new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1)enhance(node)}))).observe(document.body,{childList:true,subtree:true});
-    window.KVLSchoolLogos={manifest,canonical,entryFor,pathFor,refresh:()=>enhance(document)};
-  }).catch(()=>{});
+    new MutationObserver(records=>records.forEach(record=>{if(record.type==='attributes')enhance(record.target);else record.addedNodes.forEach(node=>{if(node.nodeType===1)enhance(node)});})).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-label']});
+    Object.assign(api,{manifest,canonical,entryFor,pathFor,profileName,decorate,refresh:()=>enhance(document)});
+    window.dispatchEvent(new CustomEvent('kvl:school-logos-ready'));
+    return api;
+  }).catch(()=>api);
 })();

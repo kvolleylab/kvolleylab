@@ -13,6 +13,9 @@
   if(teamId)teamId.textContent=id;
   if(logo){logo.setAttribute('aria-label',`${name} 로고 자리`);logo.textContent=String(name).replace(/고등학교|중학교|여자|사범대학부속|스포츠과학|체육|전자/g,'').slice(0,2)||'팀'}
   const checkLogo=()=>{if(logoStatus)logoStatus.textContent=logo?.classList.contains('has-school-logo')?'공식 로고 등록':'기본 아이콘'};
+  const updateIdentity=()=>{const displayName=window.KVLSchoolLogos?.profileName(name)||name;if(title)title.textContent=displayName;document.title=`${displayName} | K-Volley Lab`;checkLogo();};
+  window.addEventListener('kvl:school-logos-ready',updateIdentity,{once:true});
+  updateIdentity();
   setTimeout(checkLogo,300);
   setTimeout(checkLogo,1200);
 })();

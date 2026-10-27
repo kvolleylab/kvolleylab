@@ -16,6 +16,7 @@
   }
   if(config.source){const response=await fetch(new URL(config.source,location.href));if(!response.ok)throw Error('Competition data: '+response.status);data=await response.json();}
   if(typeof window.KVLCompetitionAdapterV2==='function')data=await window.KVLCompetitionAdapterV2(data);
+  if(String(data?.competitionFamily||data?.family||'').toLowerCase()==='domestic'&&window.KVLSchoolLogos){await window.KVLSchoolLogos.ready;data=window.KVLSchoolLogos.decorate(data);}
   const api=window.KVLCompetitionDataV2,errors=api.validate(data||{},{production:config.production===true});if(errors.length)throw Error(errors.join('; '));
   window.KVL_COMPETITION_V2_DATA=api.normalize(data);body.dataset.kvlRenderState='loading';
   window.KVLCompetitionShellV2.ensureShell();window.KVLCompetitionTemplateV2.apply();window.KVLCompetitionComponentsV2.render();
