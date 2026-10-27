@@ -34,7 +34,7 @@ for(const viewport of [901,1024,1100,1180,1440]){
   assert.equal(fiveSet>=285,true,'always reserve five set scores');
 }
 // Existing family school/university geometry and mobile KOVO Cup rules must stay.
-assert(css.includes('[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board'));
+assert(read('assets/css/kvl-competition-components-v2.css').includes('[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board'), 'existing baseline stays in common competition components CSS');
 assert(css.includes('kvl-pro-cup-domestic-v2'));
 for(const html of ['competition-engine.html','kovo-cup-domestic-template-prototype.html']){
   assert.match(read(html),/kvl-domestic-home-v2\.css\?v=20261027-cup-pc-matchup-center-1/,'cache-bust '+html);
