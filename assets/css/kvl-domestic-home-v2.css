@@ -541,3 +541,58 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl
     text-align:center!important;
   }
 }
+
+
+/* KOVO Cup PC: one stable logo rail per team, for every fixture.
+ * Keep equal 12px gaps around the score: names align to score, logos remain
+ * at the fixed outer edges of mirrored team columns regardless of name length.
+ * This is a geometry refinement only; mobile and other competitions are untouched.
+ */
+@media screen and (min-width:901px){
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side{
+    display:grid!important;
+    width:100%!important;
+    min-width:0!important;
+    grid-template-rows:46px!important;
+    align-items:center!important;
+    column-gap:8px!important;
+    justify-content:stretch!important;
+    padding:0!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-left{
+    grid-template-columns:46px minmax(0,1fr)!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-right{
+    grid-template-columns:minmax(0,1fr) 46px!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-left .kvl1180-inline-logo{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:start!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-right .kvl1180-inline-logo{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:end!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-left .kvl1180-slot-copy{
+    grid-column:2!important;
+    grid-row:1!important;
+    justify-self:stretch!important;
+    text-align:right!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-right .kvl1180-slot-copy{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-self:stretch!important;
+    text-align:left!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-slot-copy{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    flex:none!important;
+    margin:0!important;
+  }
+}

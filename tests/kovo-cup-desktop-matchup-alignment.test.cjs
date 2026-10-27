@@ -54,10 +54,35 @@ for(const width of [420,460,520,560]){
   assert.equal(eachSide+gap,(width-scoreWidth)/2,'team-to-score gap stays equal on both sides');
 }
 
+// Short and long club names must never move either 46px team-logo rail.
+// Names remain flush toward the centered result, with mirrored 12px gaps.
+const rails=css.slice(css.lastIndexOf('/* KOVO Cup PC: one stable logo rail per team'));
+assert(rails.startsWith('/* KOVO Cup PC: one stable logo rail per team'), 'latest Cup PC logo column rule missing');
+assert.match(rails, /@media screen and \(min-width:901px\)/);
+assert.match(rails, /\.kvl1180-side\{[^}]+display:grid!important/s);
+assert.match(rails, /grid-template-rows:46px!important/);
+assert.match(rails, /\.kvl1180-side\.is-left\{[^}]+grid-template-columns:46px minmax\(0,1fr\)!important/s);
+assert.match(rails, /\.kvl1180-side\.is-right\{[^}]+grid-template-columns:minmax\(0,1fr\) 46px!important/s);
+assert.match(rails, /\.kvl1180-side\.is-left \.kvl1180-inline-logo\{[^}]+grid-column:1!important/s);
+assert.match(rails, /\.kvl1180-side\.is-right \.kvl1180-inline-logo\{[^}]+grid-column:2!important/s);
+assert.match(rails, /\.kvl1180-side\.is-left \.kvl1180-slot-copy\{[^}]+text-align:right!important/s);
+assert.match(rails, /\.kvl1180-side\.is-right \.kvl1180-slot-copy\{[^}]+text-align:left!important/s);
+assert.match(rails, /\.kvl1180-slot-copy\{[^}]+width:100%!important/s);
+assert.doesNotMatch(rails, /@media[^{]*max-width:/, 'no mobile changes');
+// From both outer edges, the independent name lengths do not enter the logo-X formula.
+for(const sideWidth of [164,192,230,240]){
+  const leftLogoX=0, rightLogoX=sideWidth-46;
+  for(const labelPx of [45,65,85,110]){
+    assert.equal(leftLogoX,0, 'left logo rail never follows varying name length');
+    assert.equal(rightLogoX,sideWidth-46, 'right logo rail never follows varying name length');
+    assert(sideWidth-46-8>=110, 'usable team name lane remains');
+  }
+}
+
 // Existing family school/university geometry and mobile KOVO Cup rules must stay.
 assert(read('assets/css/kvl-competition-components-v2.css').includes('[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board'), 'existing baseline stays in common competition components CSS');
 assert(css.includes('kvl-pro-cup-domestic-v2'));
 for(const html of ['competition-engine.html','kovo-cup-domestic-template-prototype.html']){
-  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=20261027-cup-pc-equal-gaps-1/,'cache-bust '+html);
+  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=20261027-cup-pc-logo-rails-1/,'cache-bust '+html);
 }
 console.log('PASS: Cup PC matchup centered with equal team-to-score gaps; five-set lane and mobile layout protected');
