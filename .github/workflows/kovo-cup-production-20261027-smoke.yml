@@ -13,6 +13,7 @@ on:
       - 'assets/js/kvl-competition-components-v2.js'
       - 'assets/css/kvl-domestic-home-v2.css'
       - 'tests/kovo-cup-production-template-20261027.test.cjs'
+      - 'tests/kovo-cup-desktop-matchup-alignment.test.cjs'
       - '.github/workflows/kovo-cup-production-20261027-smoke.yml'
   push:
     branches:
@@ -20,6 +21,7 @@ on:
       - main
     paths:
       - 'tests/kovo-cup-production-template-20261027.test.cjs'
+      - 'tests/kovo-cup-desktop-matchup-alignment.test.cjs'
       - '.github/workflows/kovo-cup-production-20261027-smoke.yml'
 permissions:
   contents: read
@@ -38,3 +40,5 @@ jobs:
         run: node tests/kovo-cup-domestic-presentation-prototype.test.cjs
       - name: Cup pool standings and logos
         run: node tests/competition-v2-pro-cup-pool-columns.test.cjs
+      - name: Cup desktop lineup midpoint and five-set lane
+        run: node tests/kovo-cup-desktop-matchup-alignment.test.cjs
