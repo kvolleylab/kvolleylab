@@ -496,6 +496,26 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl
 }
 
 
+/* Completed, text-safe artwork: preserve its approved colors and full composition.
+   Opt in through hero.themeVariant; existing photo treatments remain unchanged. */
+@media screen{
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"] .kvl1180-hero{
+  background-color:#163a5f!important;
+  background-image:var(--dv2-hero-image,var(--kvl-hero-image-desktop))!important;
+  background-size:var(--kvl-hero-size,contain)!important;
+  background-position:var(--kvl-hero-position,right center)!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"][data-kvl-gender="women"] .kvl1180-hero{background-color:#8e315e!important}
+}
+@media screen and (max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"] .kvl1180-hero{
+  background-size:var(--kvl-hero-size-mobile,contain)!important;
+  background-position:var(--kvl-hero-position-mobile,right bottom)!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"] .kvl1180-hero-sub,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-variant="finished-artwork"] .kvl1180-hero-meta{text-shadow:0 1px 2px var(--kvl-theme-hero-a),0 0 4px var(--kvl-theme-hero-a)}
+}
+
 /* 2026-10-27 · KOVO Cup PC matchup geometry.
  * Reserve an explicit FIVE-SET scoring lane at right even for 3-set matches.
  * Center the crests/names/match score in the remaining time-to-sets gap.
