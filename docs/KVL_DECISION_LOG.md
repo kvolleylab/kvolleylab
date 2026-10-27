@@ -226,3 +226,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-10-28 · V-리그 한눈에 순위표·참가팀 전 시즌 순서
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 증거는 release PR). 사용자가 시즌 안내 대신 시즌 순위표와 참가팀의 작년 순위 정렬·PC 한 줄 표시를 요청했다. 기존 정규리그 standings.rows를 재사용해 순위/팀/승점/승/패를 표시하고, overview 참가팀만 KOVO 공식 2025-26 최종순위순(포스트시즌 포함)으로 7팀 한 줄에 배치한다. SOOP의 페퍼저축은행 순위 승계를 명시한다. #189의 overview 시즌 안내를 대체하며 현재 순위·경기·명단·ID·Hero는 유지한다. 남녀 최근 결과+다음 경기 카드는 PROPOSED / NOT IMPLEMENTED: 사용자가 검토 중이므로 추가하지 않는다. [출처·검증·복구](validation/vleague-overview-20261028.md).
+
+
+## 2026-10-28 · V-리그 남녀 최근 결과·다음 경기
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 증거는 release PR). 사용자가 남녀 각각 최근 결과 1경기 + 다음 예정 1경기를 함께 보여주는 구성을 요청했다. #190의 PROPOSED / NOT IMPLEMENTED 결정을 이 범위에서 대체한다. 한눈에의 순위표 아래·참가팀 위에 남녀 카드 2개를 배치하며 PC 2열/모바일 1열, 최종·세트별 스코어와 KST/대진/경기장 및 날짜 일정 링크를 표시한다. 동일 시즌 기존 경기 데이터를 사용하고 개막 전·결과 없음·다음 일정 없음·부문 로딩 실패를 구분한다. 현재 선수 ID/명단/국기·순위·경기·Hero·타 대회는 유지한다. [검수·선택 기준·복구](validation/vleague-match-summary-20261028.md).

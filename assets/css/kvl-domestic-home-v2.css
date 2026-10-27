@@ -764,3 +764,42 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:is(
  .kvl-domestic-home-v2 .dv2-standings-table thead th:nth-child(n+3){width:32px}
  .kvl-domestic-home-v2 .dv2-standings-table tbody a{gap:5px}
 }
+
+/* Optional paired season summaries; each division retains its own theme. */
+.kvl-domestic-home-v2 .dv2-overview-matches{margin:0 24px 27px}
+.kvl-domestic-home-v2 .dv2-division-match-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.kvl-domestic-home-v2 .dv2-division-matches{--dv2-accent:#292d33;--dv2-soft:#f5f3ed;--dv2-line:#e5e1da;min-width:0;background:#fff;border:1px solid var(--dv2-line);border-radius:12px;overflow:hidden}
+.kvl-domestic-home-v2 .dv2-division-matches[data-summary-gender="women"]{--dv2-accent:#9b4c70;--dv2-soft:#fff2f6;--dv2-line:#eadfe3}
+.kvl-domestic-home-v2 .dv2-division-matches>header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;background:var(--dv2-soft);border-bottom:1px solid var(--dv2-line)}
+.kvl-domestic-home-v2 .dv2-division-matches h3{display:flex;align-items:center;gap:10px;margin:0;font-size:18px;color:var(--dv2-accent)}
+.kvl-domestic-home-v2 .dv2-division-matches h3 small{font-size:11px;color:#76818e;font-weight:400}
+.kvl-domestic-home-v2 .dv2-division-matches>header>a{font-size:11px;font-weight:600;color:var(--dv2-accent)}
+.kvl-domestic-home-v2 .dv2-summary-slot{padding:16px 18px;margin:0;min-width:0}
+.kvl-domestic-home-v2 .dv2-summary-slot+ .dv2-summary-slot{border-top:1px solid var(--dv2-line)}
+.kvl-domestic-home-v2 .dv2-summary-slot h4{display:flex;align-items:center;gap:7px;margin:0 0 10px;font-size:13px;color:var(--dv2-accent)}
+.kvl-domestic-home-v2 .dv2-summary-today{font-size:10px;font-weight:600;padding:3px 7px;border-radius:5px;color:var(--dv2-accent);background:var(--dv2-soft)}
+.kvl-domestic-home-v2 .dv2-summary-game{display:block;min-width:0;color:#294259;border-radius:8px;text-decoration:none}
+.kvl-domestic-home-v2 .dv2-summary-game:hover{background:var(--dv2-soft)}
+.kvl-domestic-home-v2 .dv2-summary-when{display:block;font-size:12px;line-height:1.5;color:#657587;overflow-wrap:anywhere}
+.kvl-domestic-home-v2 .dv2-summary-matchup{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);gap:8px;align-items:center;margin:15px 0 12px;text-align:center}
+.kvl-domestic-home-v2 .dv2-summary-side{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+.kvl-domestic-home-v2 .dv2-summary-side img,.kvl-domestic-home-v2 .dv2-summary-side .dv2-team-mark{width:38px;height:38px;object-fit:contain}
+.kvl-domestic-home-v2 .dv2-summary-side b{font-size:14px;font-weight:600;color:#294259;line-height:1.4;word-break:keep-all;overflow-wrap:anywhere}
+.kvl-domestic-home-v2 .dv2-summary-side.is-winner b{font-weight:800;color:var(--dv2-accent)}
+.kvl-domestic-home-v2 .dv2-summary-side small{font-size:10px;color:#76818e}
+.kvl-domestic-home-v2 .dv2-summary-score{font-size:25px;font-weight:700;white-space:nowrap;color:#4b5563!important;font-variant-numeric:tabular-nums}
+.kvl-domestic-home-v2 .dv2-summary-sets{display:flex;justify-content:center;align-items:center;gap:12px;min-height:28px;padding:6px;border-radius:6px;background:#f5f6f8;font-size:12px;color:#4b5563!important;font-variant-numeric:tabular-nums}
+.kvl-domestic-home-v2 .dv2-summary-sets>span{white-space:nowrap;color:#4b5563!important}
+.kvl-domestic-home-v2 .dv2-summary-venue{display:block;margin-top:8px;text-align:center;font-size:11px;color:#657587;line-height:1.5;word-break:keep-all}
+.kvl-domestic-home-v2 .dv2-summary-cta{display:block;text-align:center;margin-top:11px;font-size:11px;font-weight:600;color:var(--dv2-accent)}
+.kvl-domestic-home-v2 .dv2-summary-empty{min-height:104px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;line-height:1.6;padding:8px;color:#657587;word-break:keep-all}
+.kvl-domestic-home-v2 .dv2-summary-empty b{font-size:13px;font-weight:500}.kvl-domestic-home-v2 .dv2-summary-empty span{font-size:11px}
+.kvl-domestic-home-v2 .dv2-summary-loading,.kvl-domestic-home-v2 .dv2-summary-error{padding:30px 18px;font-size:13px;color:#657587;line-height:1.7}
+.kvl-domestic-home-v2 .dv2-summary-note{font-size:11px;color:#657587;margin:12px 0 0}
+@media screen and (max-width:900px){.kvl-domestic-home-v2 .dv2-division-match-grid{grid-template-columns:1fr;gap:14px}}
+@media screen and (max-width:680px){
+ .kvl-domestic-home-v2 .dv2-overview-matches{margin-inline:14px}
+ .kvl-domestic-home-v2 .dv2-summary-slot,.kvl-domestic-home-v2 .dv2-division-matches>header{padding:14px}
+ .kvl-domestic-home-v2 .dv2-summary-matchup{grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);gap:6px}
+ .kvl-domestic-home-v2 .dv2-summary-sets{gap:9px;font-size:11px;padding-inline:3px}
+}
