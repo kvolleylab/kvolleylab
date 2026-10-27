@@ -466,7 +466,7 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl
   html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-match-board{
     grid-column:2!important;
     grid-row:1!important;
-    width:min(100%,560px)!important;
+    width:min(100%,400px)!important;
     min-width:0!important;
     justify-self:center!important;
     margin:0!important;
@@ -543,9 +543,10 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl
 }
 
 
-/* KOVO Cup PC: one stable logo rail per team, for every fixture.
- * Keep equal 12px gaps around the score: names align to score, logos remain
- * at the fixed outer edges of mirrored team columns regardless of name length.
+/* KOVO Cup PC: fixed logo rails and attached team labels, for every fixture.
+ * Logos stay on the same axes for every fixture, names hug their neighboring
+ * crests (8px), and the central score board is compact (400px max) with
+ * matching 12px score-column gutters. Unused space is outside the board.
  * This is a geometry refinement only; mobile and other competitions are untouched.
  */
 @media screen and (min-width:901px){
@@ -579,13 +580,13 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl
     grid-column:2!important;
     grid-row:1!important;
     justify-self:stretch!important;
-    text-align:right!important;
+    text-align:left!important;
   }
   html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-right .kvl1180-slot-copy{
     grid-column:1!important;
     grid-row:1!important;
     justify-self:stretch!important;
-    text-align:left!important;
+    text-align:right!important;
   }
   html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-slot-copy{
     display:block!important;
