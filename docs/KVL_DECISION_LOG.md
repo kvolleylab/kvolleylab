@@ -217,3 +217,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-10-28 · V-리그 대회 화면과 시즌 선수명단 운영 적용
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 화면은 release PR 기록). 사용자가 “V-리그도 대회 페이지 수정하고 선수명단 반영해줘”라고 요청했다. 기존 V-리그 남녀 경로에 공통 domestic-home-v2의 pro-league 옵션을 적용하고 팀 카드 아래 시즌 명단과 국기+국적을 표시한다. 10월 27일 공시까지 대조한 14팀·252명과 기존 exact-match 프로필 55개를 연결한다. 이준 전역 등록, 송민근 자유신분, 최원빈 해외임대, 김영태 MB 변경 및 외국인/아시아쿼터 28명의 공시 국적을 대조했다. Cup 당시 명단과 시즌 명단은 별도 snapshot이다. 기존 v08 Hero, 정규리그 252경기·순위·포스트시즌·선수 ID를 유지한다. 자료 충돌/음력 DOB 6건은 확인 중이다. 앞선 V-리그 pending-only 화면과 prototype 표기를 이번 범위에서 대체한다. [검수·출처·복구](validation/vleague-rosters-20261028.md).
+
+
+## 2026-10-28 · V-리그 한눈에 순위표·참가팀 전 시즌 순서
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 증거는 release PR). 사용자가 시즌 안내 대신 시즌 순위표와 참가팀의 작년 순위 정렬·PC 한 줄 표시를 요청했다. 기존 정규리그 standings.rows를 재사용해 순위/팀/승점/승/패를 표시하고, overview 참가팀만 KOVO 공식 2025-26 최종순위순(포스트시즌 포함)으로 7팀 한 줄에 배치한다. SOOP의 페퍼저축은행 순위 승계를 명시한다. #189의 overview 시즌 안내를 대체하며 현재 순위·경기·명단·ID·Hero는 유지한다. 남녀 최근 결과+다음 경기 카드는 PROPOSED / NOT IMPLEMENTED: 사용자가 검토 중이므로 추가하지 않는다. [출처·검증·복구](validation/vleague-overview-20261028.md).
