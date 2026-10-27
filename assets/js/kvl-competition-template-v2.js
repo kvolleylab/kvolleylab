@@ -10,7 +10,7 @@ function data(){return window.KVL_COMPETITION_V2_DATA||{};}
 function txt(el,value){if(el&&value!==undefined&&value!==null)el.textContent=String(value);}
 function q(sel,root=document){return root.querySelector(sel);}
 function qa(sel,root=document){return [...root.querySelectorAll(sel)];}
-function currentView(){const p=new URLSearchParams(location.search),v=p.get('view')||(p.has('team')?'team':'overview');return VIEWS.has(v)?v:'overview';}
+function currentView(){const p=new URLSearchParams(location.search),v=p.get('view')||(p.has('team')?'team':'overview');return VIEWS.has(v)&&!data().structure?.hiddenViews?.includes(v)?v:'overview';}
 function viewUrl(view,params={}){const u=new URL(location.href);u.hash='';u.searchParams.set('view',view);u.searchParams.delete('date');u.searchParams.delete('team');for(const [key,value] of Object.entries(params)){if(value!==undefined&&value!==null)u.searchParams.set(key,value);else u.searchParams.delete(key);}return u.pathname+u.search;}
 
 function syncGenderLinks(d=data()){
@@ -24,6 +24,13 @@ function syncGenderLinks(d=data()){
       a.href=u.href;a.textContent=division.label;a.dataset.divisionLink=division.key;a.dataset.gender=division.gender;
       const active=division.key===d.structure?.divisionKey;a.classList.toggle('is-active',active);if(active)a.setAttribute('aria-current','page');root.append(a);
     }
+    if(d.structure?.audience==='comprehensive')requestAnimationFrame(()=>{
+      const active=root.querySelector('[aria-current="page"]');
+      if(active&&root.clientWidth>0&&root.scrollWidth>root.clientWidth){
+        const left=active.getBoundingClientRect().left-root.getBoundingClientRect().left+root.scrollLeft;
+        root.scrollLeft=left-(root.clientWidth-active.offsetWidth)/2;
+      }
+    });
     return;
   }
   const men=q('[data-gender-link="men"]'),women=q('[data-gender-link="women"]');

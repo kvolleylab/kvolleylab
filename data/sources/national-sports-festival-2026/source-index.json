@@ -1,0 +1,552 @@
+{
+  "competition": "제107회 전국체육대회 배구",
+  "retrievedAt": "2026-10-26",
+  "archive": {
+    "sha256": "506ad24ae3a74ec48bab6df62cf9c87dbc086da37882a0609a4474d6f0240e00"
+  },
+  "normalizedInput": {
+    "sha256": "624f6b6bc602a261a685212f866a1569df602ec58e4753685b8250f81c7f2376"
+  },
+  "counts": {
+    "divisions": 5,
+    "participants": 60,
+    "matches": 55,
+    "reportedSets": 196,
+    "medalTeams": 20,
+    "verifiedMatches": 53,
+    "sourceConflicts": 2
+  },
+  "sources": [
+    {
+      "id": "KVL-SRC-NSF107-DRAW-2026",
+      "title": "제107회 전국체육대회 사전 대진표",
+      "publisher": "대한배구협회",
+      "url": "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=2389&p_idNm=notice",
+      "sha256": "b068aa12cdcb54bb40f3c7325f91c660b39630b738db6e98c48511979c74b549"
+    },
+    {
+      "id": "KVL-SRC-NSF107-TECHNICAL-2026",
+      "title": "제107회 전국체육대회 기술총회 자료",
+      "publisher": "대한배구협회",
+      "url": "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=2404&p_idNm=notice",
+      "sha256": "a7bbf8d7f99929300fdea48cc773aa2a7460f57d5f6c437336efad497aac16e0"
+    },
+    {
+      "id": "KVL-SRC-NSF107-RESULTS-2026",
+      "title": "전국체육대회 배구 최종 대진·55경기 세부전적",
+      "publisher": "대한체육회",
+      "files": [
+        {
+          "path": "brackets/men-general.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=05&searchDetailClassCd=080501",
+          "sha256": "4050cb71ae72014335d39443f926129aefa129fde2d7d5845599f287d304a9f2",
+          "bytes": 107959
+        },
+        {
+          "path": "details/080501-081001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T",
+          "sha256": "10426dd66ef60ed65516f5dcf351d8486e9b8812a4cb7af6246b3a502e9eac3b",
+          "bytes": 49193
+        },
+        {
+          "path": "details/080501-081002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T",
+          "sha256": "c5c5301c7b17e522f7decbb895e2e251cf166928a8f8a41d643856a5219f479c",
+          "bytes": 50565
+        },
+        {
+          "path": "details/080501-081003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T",
+          "sha256": "c2bec9a0e18e472fc84a28daf9d7ec279f1cb548d753f86fae755f718d9c9148",
+          "bytes": 55058
+        },
+        {
+          "path": "details/080501-087001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T",
+          "sha256": "537d795c88f77b4015eeaa9081d58f9958c0e6ca8356f3c5ae30401bc7ae85cb",
+          "bytes": 54822
+        },
+        {
+          "path": "details/080501-087002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T",
+          "sha256": "2e81df1832061f3b9079cb771710ae1ff085c11d2633e8b06abb277d23926019",
+          "bytes": 52901
+        },
+        {
+          "path": "details/080501-087003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T",
+          "sha256": "3f53e23068e2ea880788d8e33aa1f45f94767b2f935b0f93c2cc3df7f16e87e1",
+          "bytes": 50714
+        },
+        {
+          "path": "details/080501-087004.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T",
+          "sha256": "2c3e899dd289346a7cd2b5f51d6aa7d629cb8812f6a5c97ce02d5a370d963090",
+          "bytes": 55269
+        },
+        {
+          "path": "details/080501-088001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088001&searchPcntGbn=T",
+          "sha256": "bfc08d26c853d4bd7a2e0dee70693d7690a6169e051693bf001ad66a3a673325",
+          "bytes": 54235
+        },
+        {
+          "path": "details/080501-088002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088002&searchPcntGbn=T",
+          "sha256": "fa83916250083c2c4d4b0adc0d8b68c9c42f54d278c705b989723a17e9a04eb0",
+          "bytes": 52896
+        },
+        {
+          "path": "details/080501-089000.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=089000&searchPcntGbn=T",
+          "sha256": "608a08d6905f2f428f1f4d09c14255c3ff5fedc67a0740fd25d25cfe602b66a1",
+          "bytes": 54233
+        },
+        {
+          "path": "brackets/men-university.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=04&searchDetailClassCd=080401",
+          "sha256": "2ec01a987e7670a577acf836baf7fb9dc3eacca6efaa6243cd38efbb074e82cc",
+          "bytes": 107899
+        },
+        {
+          "path": "details/080401-081001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=081001&searchPcntGbn=T",
+          "sha256": "9a9438595313595b5a178c932786ebfb28e64389030d67b0bfd0573e8548e800",
+          "bytes": 50834
+        },
+        {
+          "path": "details/080401-081002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=081002&searchPcntGbn=T",
+          "sha256": "9bc68f6ac3bec0953f1a6d8f67e09994e7850d8f4e0b086810d2d30fd4555f77",
+          "bytes": 54680
+        },
+        {
+          "path": "details/080401-081003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=081003&searchPcntGbn=T",
+          "sha256": "68e60efa91db9ce0d04d6b2eb8626a19be41430cc18d9722ae183eaea55cc182",
+          "bytes": 52485
+        },
+        {
+          "path": "details/080401-087001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=087001&searchPcntGbn=T",
+          "sha256": "2b7f892a2ade436d784a4ace5ae7dae0c9d5073b25069f368636be2bf9bb5b20",
+          "bytes": 54551
+        },
+        {
+          "path": "details/080401-087002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=087002&searchPcntGbn=T",
+          "sha256": "36af3c64ead719dab2cd99361c438aa264ba538505a95f7bead1b4fce7fab83e",
+          "bytes": 52481
+        },
+        {
+          "path": "details/080401-087003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=087003&searchPcntGbn=T",
+          "sha256": "b49c1668ef679224564b3f4193918a44a95d3dbefd6a8aeddbce514e023ac4f7",
+          "bytes": 54402
+        },
+        {
+          "path": "details/080401-087004.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=087004&searchPcntGbn=T",
+          "sha256": "42c470abbe112451d7e15586599ef366e13b0e80dbf25f5cf2e791df3e2ffb03",
+          "bytes": 54398
+        },
+        {
+          "path": "details/080401-088001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=088001&searchPcntGbn=T",
+          "sha256": "c4d7f5888b6186072594505eb016d985f79eae63ffe216ab83ca1214b1bb51eb",
+          "bytes": 54387
+        },
+        {
+          "path": "details/080401-088002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=088002&searchPcntGbn=T",
+          "sha256": "df8399371621034ad8a1dbaace43b6aa1e5f4638342379206d6aa2c16c53fcf0",
+          "bytes": 54389
+        },
+        {
+          "path": "details/080401-089000.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080401&searchRhCd=089000&searchPcntGbn=T",
+          "sha256": "1c1a2df67df23c22542eaa82f2a2548f02be1237a6a04abe442918669878e98a",
+          "bytes": 54369
+        },
+        {
+          "path": "brackets/men-u18.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=03&searchDetailClassCd=080301",
+          "sha256": "d1abbeb65ac151fa1e1aedadc01da26710b66cd330619c2c2024c633ae4cc8c0",
+          "bytes": 123196
+        },
+        {
+          "path": "details/080301-081001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=081001&searchPcntGbn=T",
+          "sha256": "30ab21134e5aec904f0b6be622e8cda96251b0b3f7f1ec1bbc7821af4a148af5",
+          "bytes": 55271
+        },
+        {
+          "path": "details/080301-081002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=081002&searchPcntGbn=T",
+          "sha256": "f8d1d42e3be5d9bc1c55ece129549a3314dd36cf4f17a5125b87ee6c0a0c8691",
+          "bytes": 55964
+        },
+        {
+          "path": "details/080301-081003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=081003&searchPcntGbn=T",
+          "sha256": "fa650981ed021b4a2dd9618e2bbf426c05d23e5914e3c220538fa912bbf75079",
+          "bytes": 54981
+        },
+        {
+          "path": "details/080301-081004.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=081004&searchPcntGbn=T",
+          "sha256": "416afe6bdc460acd43267d7a6ce7708900c38ebf11c75319957e1d2973861b64",
+          "bytes": 43524
+        },
+        {
+          "path": "details/080301-081005.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=081005&searchPcntGbn=T",
+          "sha256": "a425ae54e455e05d236ed15ad5de7840541de7cf5178fbd538aacafcd8d0aa89",
+          "bytes": 55982
+        },
+        {
+          "path": "details/080301-081006.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=081006&searchPcntGbn=T",
+          "sha256": "953197b126b8f007dd88f9a7b11f719425cc0c66ae9ea57a5f694623eb85f0f8",
+          "bytes": 54963
+        },
+        {
+          "path": "details/080301-081007.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=081007&searchPcntGbn=T",
+          "sha256": "71b4a997ac4b209a7406ced25acb4e59b3dc0875b51d0d9f4597f3b318288386",
+          "bytes": 55019
+        },
+        {
+          "path": "details/080301-087001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=087001&searchPcntGbn=T",
+          "sha256": "3152a197924e988403e281dc88012dc61b4b5b8f419529e3bbfb235cdffe4243",
+          "bytes": 56282
+        },
+        {
+          "path": "details/080301-087002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=087002&searchPcntGbn=T",
+          "sha256": "7f96c980370ef75eba3add09f00a77439f6de093bc9ad552c580b199c4984ef1",
+          "bytes": 54983
+        },
+        {
+          "path": "details/080301-087003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=087003&searchPcntGbn=T",
+          "sha256": "e1d4cd1b0981476321b920ac04d26f2abef66245dd5079c158077c77498b8ae8",
+          "bytes": 54969
+        },
+        {
+          "path": "details/080301-087004.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=087004&searchPcntGbn=T",
+          "sha256": "48c457033f7e0b2000bfa9c785720c37229378522c728f3e7deb5ece8ba1edc3",
+          "bytes": 55440
+        },
+        {
+          "path": "details/080301-088001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=088001&searchPcntGbn=T",
+          "sha256": "42e0001b8185280c8d2985243163bc4fa01516d4ba936222cb426c5e8ccd2b2b",
+          "bytes": 54990
+        },
+        {
+          "path": "details/080301-088002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=088002&searchPcntGbn=T",
+          "sha256": "a50f1b7d1d32c8f29dd71086db6bd4435b93e57947b70042f9e7de8b074b05c4",
+          "bytes": 54714
+        },
+        {
+          "path": "details/080301-089000.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=089000&searchPcntGbn=T",
+          "sha256": "45742fc2f1ad62014b9e28a7c18ce5371437e3afee3c8195829ca4dbbb060559",
+          "bytes": 54710
+        },
+        {
+          "path": "brackets/women-general.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=10&searchDetailClassCd=081001",
+          "sha256": "3bf831c2d0130b8090a73a52fd8991fb5ff959ad3e9ddf4a901184c375435dde",
+          "bytes": 101875
+        },
+        {
+          "path": "details/081001-081001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=081001&searchPcntGbn=T",
+          "sha256": "503f31037d07a1b2ea7408c3e0e7df727dbeb47e5e988788c2df8481aec241ae",
+          "bytes": 50633
+        },
+        {
+          "path": "details/081001-087001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=087001&searchPcntGbn=T",
+          "sha256": "76317081524bdde2b98ea537dcf9a2e6aa2df7c1f5a5f4bcadf40e1e7bd9a0ef",
+          "bytes": 45102
+        },
+        {
+          "path": "details/081001-087002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=087002&searchPcntGbn=T",
+          "sha256": "43feb4d9a36840aac87c79e24fdee6c78b35ed0aed0e6c923116aa7303d721f5",
+          "bytes": 53956
+        },
+        {
+          "path": "details/081001-087003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=087003&searchPcntGbn=T",
+          "sha256": "4e43913688d2388bb0d11327f60a7afb7aa5bf7d8cfe9cf940659f6a9571a498",
+          "bytes": 49637
+        },
+        {
+          "path": "details/081001-087004.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=087004&searchPcntGbn=T",
+          "sha256": "0e541c608eeed5fa9a6a3be6e042f370b86f8f3f25683d3f7c921427b3c46649",
+          "bytes": 52840
+        },
+        {
+          "path": "details/081001-088001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=088001&searchPcntGbn=T",
+          "sha256": "761f4d5874285046889d62d5004240ed4269710c8d2c84db5e50aa36319e37b1",
+          "bytes": 53517
+        },
+        {
+          "path": "details/081001-088002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=088002&searchPcntGbn=T",
+          "sha256": "c4abe6500fb9b141e70cee2525402498f2b09abaa3c63e0a48a7051e3d6c22f2",
+          "bytes": 52320
+        },
+        {
+          "path": "details/081001-089000.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=081001&searchRhCd=089000&searchPcntGbn=T",
+          "sha256": "a619b49f1fc97679ff379098d02e49e8e00e82cd1c179234e1ced582a3e74a54",
+          "bytes": 54223
+        },
+        {
+          "path": "brackets/women-u18.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=08&searchDetailClassCd=080801",
+          "sha256": "a4a7ccdec7da4c169fbd6b79df644d77b4b899e11842a3d52ae91bdd1dd54b4e",
+          "bytes": 120544
+        },
+        {
+          "path": "details/080801-081001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=081001&searchPcntGbn=T",
+          "sha256": "9604f3fa76283b83710ef019410413553f628a18b08043e7a765b6cc85a9d0aa",
+          "bytes": 41587
+        },
+        {
+          "path": "details/080801-081002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=081002&searchPcntGbn=T",
+          "sha256": "1c58cf1631be0b0654880f97350c251e308197242b392a2ea7720969b628481d",
+          "bytes": 45546
+        },
+        {
+          "path": "details/080801-081003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=081003&searchPcntGbn=T",
+          "sha256": "5c100c7ff23367fd2d317019d03e1fecbefea8664b2a11b01cd62107912d19f9",
+          "bytes": 47491
+        },
+        {
+          "path": "details/080801-081004.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=081004&searchPcntGbn=T",
+          "sha256": "fb3a3c542d761b4a0791231d6cb89015a4aaf620f28814434fd429ae961d276d",
+          "bytes": 55755
+        },
+        {
+          "path": "details/080801-081005.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=081005&searchPcntGbn=T",
+          "sha256": "857cc51210b2d807683b3b78752c767512ef2dce858f8aba8689474fb5fb4e97",
+          "bytes": 55599
+        },
+        {
+          "path": "details/080801-081006.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=081006&searchPcntGbn=T",
+          "sha256": "75c03627f33df6c9a5ceca9f56376abc9c5dbece74ecf533921763e65979c6d8",
+          "bytes": 47505
+        },
+        {
+          "path": "details/080801-087001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=087001&searchPcntGbn=T",
+          "sha256": "a765d64c16768cfbb1aa387fd93cdb1a0a5de80361842b2aee9aca5f2ec1a321",
+          "bytes": 49430
+        },
+        {
+          "path": "details/080801-087002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=087002&searchPcntGbn=T",
+          "sha256": "e9da4ec10f443730de466c48617d04a9bec686258b5c76eaee3fbb19cb5ff413",
+          "bytes": 53344
+        },
+        {
+          "path": "details/080801-087003.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=087003&searchPcntGbn=T",
+          "sha256": "548942d0347fc1bc9080f992a9190256a6ae66e136849102ba7474e67d68c1f3",
+          "bytes": 45866
+        },
+        {
+          "path": "details/080801-087004.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=087004&searchPcntGbn=T",
+          "sha256": "fbc5b3ddcf8bd94a7a1617a115c02fbdf8c07d4f7c82d2f44f037524a41c264c",
+          "bytes": 54989
+        },
+        {
+          "path": "details/080801-088001.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=088001&searchPcntGbn=T",
+          "sha256": "79aaf3abb1a52b2db70b7183a171e9f2fa12ab2830705370aaac97e7ed8dfff1",
+          "bytes": 53633
+        },
+        {
+          "path": "details/080801-088002.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=088002&searchPcntGbn=T",
+          "sha256": "832487602e289bf9a63c39e4812812937bcc232b0b5eb8fe2c4e65c6a41a20d2",
+          "bytes": 53327
+        },
+        {
+          "path": "details/080801-089000.html",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080801&searchRhCd=089000&searchPcntGbn=T",
+          "sha256": "9037e84e7f2009551092bca7879a9adea0fa2aaa916cd5db2b176fea6419441b",
+          "bytes": 51370
+        }
+      ]
+    },
+    {
+      "id": "KVL-SRC-NSF107-MEDALS-2026",
+      "title": "배구 종목별 메달명세",
+      "publisher": "대한체육회",
+      "url": "https://meet.sports.or.kr/national/medal/medalClass.do?searchClassCd=08&searchKindCd="
+    }
+  ],
+  "sourceExceptions": [
+    {
+      "checkedAt": "2026-10-26",
+      "match": "제107회 전국체육대회 남자대학부 결승 인하대학교-중부대학교",
+      "conflict": {
+        "officialSummary": [
+          3,
+          0
+        ],
+        "officialSetScores": [
+          [
+            26,
+            28
+          ],
+          [
+            26,
+            24
+          ],
+          [
+            25,
+            22
+          ],
+          [
+            25,
+            18
+          ]
+        ],
+        "derivedFromSetScores": [
+          3,
+          1
+        ]
+      },
+      "additionalPrimarySource": {
+        "url": "https://grad.joongbu.ac.kr/gallery.es?act=view&bid=0002&list_no=19240&mid=a10504020000",
+        "title": "중부대학교 배구부, 제107회 전국체육대회 대학부 은메달 쾌거",
+        "publishedAt": "2026-10-22",
+        "confirms": "인하대 상대 결승전 준우승",
+        "doesNotConfirm": "경기 및 세트별 점수 미기재"
+      },
+      "secondaryCorroboration": [
+        {
+          "url": "https://www.incheonilbo.com/news/articleView.html?idxno=1334589",
+          "publisher": "인천일보",
+          "publishedAt": "2026-10-20",
+          "score": [
+            3,
+            1
+          ],
+          "sets": [
+            [
+              26,
+              28
+            ],
+            [
+              26,
+              24
+            ],
+            [
+              25,
+              22
+            ],
+            [
+              25,
+              18
+            ]
+          ]
+        },
+        {
+          "url": "https://www.kihoilbo.co.kr/news/articleView.html?idxno=3038227",
+          "publisher": "기호일보",
+          "publishedAt": "2026-10-20",
+          "score": [
+            3,
+            1
+          ],
+          "sets": [
+            [
+              26,
+              28
+            ],
+            [
+              26,
+              24
+            ],
+            [
+              25,
+              22
+            ],
+            [
+              25,
+              18
+            ]
+          ]
+        }
+      ],
+      "status": "PRIMARY_SOURCE_INTERNAL_CONFLICT",
+      "recommendation": "원문 3:0을 지우지 말고 공식 세부전적 기준 산출 3:1과 충돌 근거를 함께 보존. 추가 공식 별도점수 확인은 미확보."
+    },
+    {
+      "checkedAt": "2026-10-26",
+      "match": "제107회 전국체육대회 남자18세이하부 2026-10-19 준결승 수성고등학교-천안고등학교",
+      "officialSourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080301&searchRhCd=088002&searchPcntGbn=T",
+      "officialMatchScore": [
+        3,
+        1
+      ],
+      "officialSetScores": [
+        [
+          24,
+          25
+        ],
+        [
+          25,
+          20
+        ],
+        [
+          25,
+          18
+        ],
+        [
+          25,
+          17
+        ]
+      ],
+      "invalidSetIndices": [
+        1
+      ],
+      "issue": "첫 세트 24-25는 2점차 세트 종료 조건을 충족하지 않음",
+      "ruleSource": "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=2404&p_idNm=notice",
+      "status": "SOURCE_VALIDATION_CONFLICT_UNRESOLVED",
+      "correctedSetScore": null,
+      "recommendation": "원문24-25와 검증오류 사실을 source conflict로 보존하고, 정정 근거 없으므로 임의수정하지 않음. 경기승패3:1과 첫세트점수 확인상태를 분리."
+    }
+  ],
+  "rosterSnapshot": {
+    "sha256": "74ab7f3e5a5555682aed07925bdffdcde3f5df95a694d49d7eb48f75d493e6be",
+    "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+    "teamCount": 60,
+    "playerCount": 671,
+    "linkedProfileCount": 154,
+    "unlinkedProfileCount": 517,
+    "checkedAt": "2026-10-26"
+  },
+  "archivePolicy": "Original documents and internal storage references remain in the private source archive. Public records retain official URLs, Source IDs and integrity hashes."
+}

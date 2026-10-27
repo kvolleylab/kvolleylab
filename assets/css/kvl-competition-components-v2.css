@@ -3524,3 +3524,27 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-k
     background:transparent!important;
   }
 }
+/* Config-driven complete elimination trees, including first-round byes. */
+.kvl-tree-help{font-size:13px;line-height:1.6;color:#63768a;margin:0 0 14px}
+.kvl-tree-scroll{overflow-x:auto;max-width:100%;padding:2px 2px 20px;overscroll-behavior-x:contain}
+.kvl-tree-bracket{display:grid;grid-template-columns:repeat(var(--tree-columns),minmax(245px,1fr));gap:28px;min-width:1064px}
+.kvl-tree-round{min-width:0}
+.kvl-tree-round>h4{font-size:16px;margin:0 0 16px;text-align:center;color:var(--kvl1180-primary,#163a5f);padding:12px;background:#edf2f7;border-radius:7px}
+.kvl-tree-round-body{display:grid;position:relative;height:calc(var(--tree-slots)*300px)}
+.kvl-tree-slot{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:10px 0}
+.kvl-tree-links{position:absolute;left:100%;top:0;width:28px;height:100%;overflow:visible;pointer-events:none;color:#aebdcc}
+.kvl-tree-links path{fill:none;stroke:currentColor;stroke-width:1.6;vector-effect:non-scaling-stroke}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-match{display:block!important;position:relative!important;transform:none!important;margin:0!important;min-width:0!important;width:100%!important;background:#fff!important;border:1px solid #d6e1eb!important;border-radius:10px!important;padding:12px!important;box-shadow:none!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-match::before,html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-match::after{display:none!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-match-head{font-size:11px!important;display:flex!important;gap:7px;justify-content:space-between!important;white-space:normal!important;line-height:1.5!important;margin:0 0 8px!important;color:#64788a!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-match-head strong{font-size:12px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-bracket-team{display:flex!important;align-items:center!important;gap:8px!important;padding:8px 0!important;min-height:48px!important;grid-template-columns:none!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-bracket-mark{width:30px!important;height:30px!important;min-width:30px!important;flex:0 0 30px!important;background:#f1f5f9!important;border-radius:6px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:12px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-bracket-mark img{width:100%!important;height:100%!important;object-fit:contain!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-bracket-copy{flex:1!important;min-width:0!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-bracket-copy strong{font-size:14px!important;line-height:1.4!important;white-space:normal!important;overflow-wrap:anywhere!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-bracket-copy small{font-size:11px!important;color:#78899a!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-team-score{font-size:19px!important;color:#4b5563!important;flex:none!important}
+html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-match-sets{font-size:11px!important;color:#4b5563!important;white-space:normal!important;line-height:1.5!important}
+.kvl-tree-bye>p{font-size:11px;color:#77899a;margin:8px 0 0}
+@media print{.kvl-tree-scroll{overflow:visible}.kvl-tree-bracket{min-width:0;grid-template-columns:repeat(var(--tree-columns),minmax(0,1fr));gap:20px}.kvl-tree-links{width:20px}.kvl-tree-round-body{height:calc(var(--tree-slots)*300px)}.kvl-tree-slot{break-inside:avoid}}

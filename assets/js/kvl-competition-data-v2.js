@@ -1,7 +1,7 @@
 /* KVL V2 DATA ONLY contract. Shared by the browser loader and production builder. */
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.KVLCompetitionDataV2=api;})(typeof window==='object'?window:globalThis,function(){
 'use strict';
-const MODES={standings:['pools-combined','single-league','none'],participants:['groups','flat'],roster:['full','link-only','none'],knockout:['bracket-8','bracket-4','pro-postseason','none']};
+const MODES={standings:['pools-combined','single-league','none'],participants:['groups','flat'],roster:['full','link-only','none'],knockout:['bracket-8','bracket-4','bracket-tree','pro-postseason','none']};
 const list=x=>Array.isArray(x)?x:[];
 // Codes/participant IDs are the only routing identities. Display names never resolve a team.
 function participant(d,ref){
@@ -46,6 +46,22 @@ function validate(d,{production=false}={}){
   if(d.status==='upcoming'&&m.score)errors.push(m.id+': upcoming cannot contain results');
  }
  for(const m of list(d.matches))if(m.nextMatchId&&!ids.has(m.nextMatchId))errors.push(m.id+': unresolved nextMatchId');
+ if(d.structure?.knockout?.mode==='bracket-tree'){
+  const rounds=list(d.bracketRounds),seen=new Set(),byId=new Map(list(d.matches).map(m=>[m.id,m]));
+  if(!rounds.length||rounds.at(-1)?.slots?.length!==1)errors.push('bracket-tree must end with one final');
+  rounds.forEach((r,i)=>{
+   const slots=list(r.slots),next=rounds[i+1];
+   if(!slots.length||(next&&slots.length!==list(next.slots).length*2))errors.push('bracket-tree rounds must halve');
+   slots.forEach((slot,j)=>{
+    const m=byId.get(slot.matchId),bye=slot.byeTeam;
+    if((!m&&!bye)||(m&&bye)||(bye&&!teams.has(bye)))errors.push('invalid bracket-tree slot');
+    if(m){if(seen.has(m.id))errors.push('duplicate bracket-tree match');seen.add(m.id);if(m.round!==r.round)errors.push(m.id+': bracket round disagrees');}
+    if(next){const n=byId.get(next.slots[Math.floor(j/2)]?.matchId),p=m?.score?(Number(m.score.home)>Number(m.score.away)?m.home?.code:m.away?.code):bye;
+     if(!n||(m&&m.nextMatchId!==n.id)||(p&&![n.home?.code,n.away?.code].includes(p)))errors.push('broken bracket-tree progression');}
+   });
+  });
+  if(seen.size!==list(d.matches).length)errors.push('bracket-tree omits matches');
+ }
  if(d.status==='upcoming'&&(d.champion||list(d.finalRanking).length||list(d.qualifications).some(q=>list(q.resultTeams).length)))errors.push('upcoming cannot contain final results');
  if(d.status==='active'&&list(d.finalRanking).some(x=>x.confirmed!==true))errors.push('active final ranking requires confirmed=true');
  if(production){

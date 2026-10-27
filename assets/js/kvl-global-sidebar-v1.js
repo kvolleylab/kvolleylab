@@ -13,7 +13,7 @@
   const competitionPages=new Set(['competition.html','competition-engine.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html','avc-men-cup.html']);
   const nationalPages=new Set(['national-team.html','national-team-history.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
   const analysisPages=new Set(['player-compare.html','player-cohort.html']);
-  const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html']);
+  const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html','national-youth-sports-festival-2026.html','comprehensive-competitions.html','national-sports-festival-volleyball-2026-unified-ui-prototype.html']);
   const vleaguePages=new Set(['v-league.html','kovo-cup.html']);
   const isProCompetitionPrototype=path==='competition-engine-prototype.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
   const isProCompetitionProduction=path==='competition-engine.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
@@ -73,7 +73,7 @@
       link('domestic-uleague','competition-engine.html?competition=university-league-men-2026',null,'대학 U-리그'),
       link('domestic-school','domestic-competitions.html?division=school',null,'중·고'),
       link('domestic-pro','domestic-competitions.html?division=pro',null,'프로·실업'),
-      link('domestic-comprehensive','national-sports-festival-2026.html',null,'종합대회')
+      link('domestic-comprehensive','comprehensive-competitions.html',null,'종합대회')
     ]),
     group('competition',icon.globe,'국제대회',[
       link('competition-senior','international-competition-senior-national-team.html',null,'시니어 국가대표'),
@@ -113,7 +113,7 @@
     if(item.key==='domestic-uleague')return active==='domestic'&&(universityLeaguePages.has(path)||isUniversityLeagueCompetition);
     if(item.key==='domestic-school')return active==='domestic'&&(params.get('division')==='school'||isSchoolCompetition);
     if(item.key==='domestic-pro')return active==='domestic'&&params.get('division')==='pro';
-    if(item.key==='domestic-comprehensive')return active==='domestic'&&path==='national-sports-festival-2026.html';
+    if(item.key==='domestic-comprehensive')return active==='domestic'&&['comprehensive-competitions.html','national-sports-festival-2026.html','national-youth-sports-festival-2026.html','national-sports-festival-volleyball-2026-unified-ui-prototype.html'].includes(path);
 
     if(item.key==='competition-senior')return active==='competition'&&!((path==='competition.html'&&['university','club'].includes(params.get('division')))||path.startsWith('international-university-'));
     if(item.key==='competition-university')return active==='competition'&&((path==='competition.html'&&params.get('division')==='university')||path.startsWith('international-university-'));

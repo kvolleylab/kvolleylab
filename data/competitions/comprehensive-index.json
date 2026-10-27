@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "archiveYears": [
+    2026,
+    2025,
+    2024,
+    2023
+  ],
+  "competitions": [
+    {
+      "id": "national-sports-festival-2026",
+      "year": 2026,
+      "shortName": "전국체육대회",
+      "edition": "제107회 전국체전",
+      "location": "제주특별자치도",
+      "startDate": "2026-10-16",
+      "endDate": "2026-10-21",
+      "pagePath": "national-sports-festival-2026.html",
+      "divisionSummary": "남자 일반부 · 남자 대학부 · 남자 18세 이하부 · 여자 일반부 · 여자 18세 이하부",
+      "divisions": [
+        "national-sports-festival-men-general-2026",
+        "national-sports-festival-men-university-2026",
+        "national-sports-festival-men-u18-2026",
+        "national-sports-festival-women-general-2026",
+        "national-sports-festival-women-u18-2026"
+      ],
+      "featuredSummary": "일반부 · 대학부 · 18세 이하부"
+    },
+    {
+      "id": "national-youth-sports-festival-2026",
+      "year": 2026,
+      "shortName": "전국소년체육대회",
+      "edition": "제55회 전국소년체전",
+      "location": "부산광역시",
+      "startDate": "2026-05-23",
+      "endDate": "2026-05-26",
+      "pagePath": "national-youth-sports-festival-2026.html",
+      "divisionSummary": "남자 12세 이하부 · 남자 15세 이하부 · 여자 12세 이하부 · 여자 15세 이하부",
+      "divisions": [
+        "national-youth-sports-festival-men-u12-2026",
+        "national-youth-sports-festival-men-u15-2026",
+        "national-youth-sports-festival-women-u12-2026",
+        "national-youth-sports-festival-women-u15-2026"
+      ],
+      "featuredSummary": "12세 이하부 · 15세 이하부"
+    }
+  ]
+}

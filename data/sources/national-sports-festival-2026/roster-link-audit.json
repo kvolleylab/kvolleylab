@@ -1,0 +1,3153 @@
+{
+  "checkedAt": "2026-10-26",
+  "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+  "identityRule": "Exact name + affiliation + gender + grade in existing 2026 roster; no fuzzy or name-only links.",
+  "masterFiles": [
+    "data/master/player_master_229_v2.json",
+    "data/master/player_master_school_v1.json",
+    "data/domestic/university-u-league-women-2026.json",
+    "data/domestic/university-danyang-women-2026.json"
+  ],
+  "divisions": [
+    {
+      "division": "men-general",
+      "teams": 11,
+      "players": 127,
+      "linkedProfiles": 0
+    },
+    {
+      "division": "men-university",
+      "teams": 11,
+      "players": 129,
+      "linkedProfiles": 122
+    },
+    {
+      "division": "men-u18",
+      "teams": 15,
+      "players": 174,
+      "linkedProfiles": 1
+    },
+    {
+      "division": "women-general",
+      "teams": 9,
+      "players": 98,
+      "linkedProfiles": 31
+    },
+    {
+      "division": "women-u18",
+      "teams": 14,
+      "players": 143,
+      "linkedProfiles": 0
+    }
+  ],
+  "unlinked": [
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "강정민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "김건우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "김완종",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "박성진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "배상진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "손찬홍",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "송민근",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "이상현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "이율리",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "이준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "이현승",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "국군체육부대",
+      "name": "임성진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "김정호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "김종덕",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "류제호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "박성찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "우병헌",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "이승용",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "이원근",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "이태희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "전우현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "정민기",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "정재훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "울산광역시체육회",
+      "name": "최형진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "김성준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "김찬유",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "변혜민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "손주상",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "이예찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "이창엽",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "이형두",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "임재민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "진욱재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "부산광역시체육회",
+      "name": "황민석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "고대영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "김민철",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "김병욱",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "라광균",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "박상원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "박지윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "이민욱",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "정성환",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "정태현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "조진구",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "최진성",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "엔오엔",
+      "name": "한종윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "김정윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "김현웅",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "신윤호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "안우재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "윤준호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "이현승",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "최여름",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "최익제",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "하덕호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "황원선",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "마유민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "화성시청",
+      "name": "김준영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "고우진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "김도현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "송대근",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "안상협",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "오서준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "오창훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "은재서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "이용덕",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "이지훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "정명도",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "하장훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "전북특별자치도배구협회",
+      "name": "한창현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "김성민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "박상훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "박종안",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "배순후",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "배인호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "백관웅",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "이광호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "이승호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "이재목",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "이지석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "조승연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "현대제철",
+      "name": "진창대",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "고현성",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "김인균",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "손태훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "엄윤식",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "여민수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "이창윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "임진석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "최은석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "최찬울",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "한정훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "홍지원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "영천시체육회",
+      "name": "황영권",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "김상윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "김승구",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "김한수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "배홍희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "정수용",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "정승현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "조찬호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "최가을",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "함형진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "충북선발",
+      "name": "현종원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "금태용",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "김보명",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "김승현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "김영대",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "김헌수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "박민엽",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "윤준혁",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "이기범",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "이태원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "전우준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "대전광역시체육회",
+      "name": "한광호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "강동완",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "기동균",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "김백",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "김상곤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "문지훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "박현수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "신우성",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "이여송",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "장수웅",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "최민국",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "최수형",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-general",
+      "team": "비오신코리아",
+      "name": "장승우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-university",
+      "team": "인하대학교",
+      "name": "여광우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-university",
+      "team": "인하대학교",
+      "name": "이용재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-university",
+      "team": "목포대학교",
+      "name": "정민교",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-university",
+      "team": "홍익대학교",
+      "name": "염우주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-university",
+      "team": "충남대학교",
+      "name": "김찬중",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-university",
+      "team": "충남대학교",
+      "name": "조훈회",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-university",
+      "team": "우석대학교",
+      "name": "장일천",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "김찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "김한솔",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "김현서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "손태유",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "윤성조",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "윤성지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "이규석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "이제형",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "이창민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "전규빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "전윤후",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "울산스포츠과학고등학교",
+      "name": "최우진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "김성훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "김승재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "김찬영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "김충현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "김태훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "서민재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "송원준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "송은우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "송정민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "백찬후",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "이권율",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "수성고등학교",
+      "name": "이준호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "김규민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "김태빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "김태연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "박재훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "방서호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "장승호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "송지훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "이기공",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "이승호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "임성수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "전영호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "제천산업고등학교",
+      "name": "홍성혁",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "권민성",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "강민석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "권**",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "김하윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "김온유",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "박민규",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "박시완",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "서동현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "신주원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "이정민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "이준민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "천안고등학교",
+      "name": "임세훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "광주전자공업고등학교",
+      "name": "김영나",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "광주전자공업고등학교",
+      "name": "김혜안",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "광주전자공업고등학교",
+      "name": "심태민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "광주전자공업고등학교",
+      "name": "이지웅",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "광주전자공업고등학교",
+      "name": "임찬유",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "광주전자공업고등학교",
+      "name": "최종현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "강승우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "강우람",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "김우찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "김지환",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "박상민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "박은수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "박은우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "서지헌",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "윤성민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "이성찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "이은석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "진주동명고등학교",
+      "name": "이진우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "김경민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "김민기",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "김민준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "김태준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "배성조",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "서지후",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "송진석",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "어주형",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "유성재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "정원준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "주승민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "성지고등학교",
+      "name": "지태민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "강태우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "박규현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "오지한",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "정성윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "정우빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "오지성",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "정호영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "조인성",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "조현민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "최시웅",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "최현준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북대학교사범대학부설고등학교",
+      "name": "한동근",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "강민준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "국하준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "김도원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "김성우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "박건호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "박승준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "신준서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "양선우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "임수민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "장민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "최경주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "남성고등학교",
+      "name": "황하람",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "구교우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "김영태",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "김지형",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "김현수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "박태준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "박지성",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "손정원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "이승주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "장지웅",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "정태혁",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "최건영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "속초고등학교",
+      "name": "함찬식",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "강민승",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "강이랑",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "김산비",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "김우빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "김준서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "도원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "박강현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "박근우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "이지헌",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "이지혁",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "이정현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "경북체육고등학교",
+      "name": "홍기환",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "강경민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "김래현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "김민제",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "김민준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "김우진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "김진욱",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "유성현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "이산",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "이승민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "이승일",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "정윤송",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "순천제일고등학교",
+      "name": "최효준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "이은규",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "윤찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "김규민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "고준서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "박현민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "유성훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "석재승",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "이정현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "최범서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "소혜찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "대전중앙고등학교",
+      "name": "김규원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "강현우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "김범",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "김예종",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "남대현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "노경훈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "박지호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "송은찬",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "엄정헌",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "여광민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "전하람",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "정준혁",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인하대학교사범대학부속고등학교",
+      "name": "한재원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "나근영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "노주영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "박연우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "박찬혁",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "박하율",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "윤서진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "이강연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "이원준",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "이종호",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "주혁",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "함승민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "men-u18",
+      "team": "인창고등학교",
+      "name": "배현우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "공은서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "김경은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "김서완",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "김아인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "김현지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "성시윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "손채원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "이송민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "이준실",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "정지은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "단국대학교",
+      "name": "조채린",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "김세연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "박경현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "박현주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "오**",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "이채민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "이현지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "이호빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "조송화",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "지민경",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "채선아",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "최영혜",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "포항시체육회",
+      "name": "한송희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "목포과학대학교",
+      "name": "노은지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "목포과학대학교",
+      "name": "박예인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "목포과학대학교",
+      "name": "이주희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "목포과학대학교",
+      "name": "정유린",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "목포과학대학교",
+      "name": "최유라",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "목포과학대학교",
+      "name": "최유림",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "목포과학대학교",
+      "name": "한효민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "김연수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "김윤하",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "류혜선",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "서유경",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "안예림",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "양유경",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "이예은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "이주현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "주연희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "최지연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "최호선",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "양산시청",
+      "name": "장영은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "강보민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "구혜인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "김나희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "김보빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "김현정",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "백채림",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "윤영인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "최윤이",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "하효림",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "한수아",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "김민채",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "수원시청",
+      "name": "조보윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "우석대학교",
+      "name": "여주희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "우석대학교",
+      "name": "임주화",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "김경아",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "김나연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "김윤우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "문명화",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "오선예",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "이연재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "이예솔",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "이진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "정시영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "김수빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-general",
+      "team": "대구광역시청",
+      "name": "우수민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "강민주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "강민지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "강혜원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "곽진서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "김수진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "나은영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "신은안",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "어민서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "이해윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "정윤지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "최혜원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "한봄고등학교",
+      "name": "피성현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "김민서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "안예서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "이은경",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "전수연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "전하진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "정세경",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "최혜은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "강릉여자고등학교",
+      "name": "홍다은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "김미주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "김수민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "김현아",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "박강빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "박서윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "오세인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "이다연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "이지안",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "이하율",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "정다운",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "조리빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "중앙여자고등학교",
+      "name": "하지은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "김미경",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "문하서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "문채인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "양다영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "이지양",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "이혜수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "이혜정",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "임소은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "정경희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "진소희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "최유민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "목포여자상업고등학교",
+      "name": "허경빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "김신비",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "문티아라",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "배서빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "손은서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "윤은별",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "윤호정",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "이미주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "장수인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "조혜진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "최소은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "최하은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "경남여자고등학교",
+      "name": "김민서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "김규연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "김아중",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "김주솔",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "김주원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "박예영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "송민지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "여원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "유채은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "이윤서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "이은재",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "천안청수고등학교",
+      "name": "이효담",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "김문정",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "김아란",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "백지민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "봉하영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "유이랑",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "윤가을",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "이가영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "이지우",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "제천여자고등학교",
+      "name": "조연주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대구여자고등학교",
+      "name": "곽세은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대구여자고등학교",
+      "name": "권서연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대구여자고등학교",
+      "name": "김수민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대구여자고등학교",
+      "name": "장하연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대구여자고등학교",
+      "name": "정다겸",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대구여자고등학교",
+      "name": "정예원",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대구여자고등학교",
+      "name": "최수예",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "곽보미",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "김민선",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "김수빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "김시연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "김은수",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "박하랑",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "서선영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "양시후",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "유가연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "이유진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "홍다연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "광주체육고등학교",
+      "name": "황유주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "강소민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "유다은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "이다온",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "이다은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "이정은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "이주희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "이지후",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "장서현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "조하진",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "진수민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "하은결",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "전주근영여자고등학교",
+      "name": "하은설",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "곽도연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "김예서",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "김예은",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "김태경",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "나민지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "박은빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "손서연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "오해솔",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "이서인",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "정세희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "선명여자고등학교",
+      "name": "최윤겸",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "삼산고등학교",
+      "name": "권나희",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "삼산고등학교",
+      "name": "김민주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "삼산고등학교",
+      "name": "김은지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "삼산고등학교",
+      "name": "박예지",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "삼산고등학교",
+      "name": "배수연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "삼산고등학교",
+      "name": "윤희영",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "권은채",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "김가현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "김보민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "김지민",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "신혜정",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "유나윤",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "유서현",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "정윤솔",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "포항여자고등학교",
+      "name": "최유빈",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "김민교",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "박**",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "배혜린",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "신주아",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "이예림",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "이채연",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "장영채",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "장예주",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "정혜린",
+      "reason": "no-exact-existing-roster-match"
+    },
+    {
+      "division": "women-u18",
+      "team": "대전용산고등학교",
+      "name": "최정현",
+      "reason": "no-exact-existing-roster-match"
+    }
+  ],
+  "totals": {
+    "teams": 60,
+    "players": 671,
+    "linkedProfiles": 154
+  },
+  "archivePolicy": "Original documents and internal storage references remain in the private source archive. Public records retain official URLs, Source IDs and integrity hashes."
+}

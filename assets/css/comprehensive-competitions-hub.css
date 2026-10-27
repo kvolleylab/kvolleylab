@@ -1,0 +1,82 @@
+/* University hub structure and domestic card/trophy skin, scoped to this hub. */
+.comprehensive-hub .kvl-common-hero{--kvl-common-hero-image:url('/assets/img/home-hero/kvl-home-hero-pc-v01.webp');--kvl-common-hero-image-mobile:url('/assets/img/home-hero/kvl-home-hero-mobile-v01.webp');--kvl-common-hero-position-mobile:72% center;min-height:250px}
+.comprehensive-hero-sub{margin:13px 0 0;color:#fff;font-size:21px;font-weight:800;line-height:1.5}
+.comprehensive-hub .univ-hero-desc{max-width:580px;line-height:1.65;font-size:15px;color:#e0e9f3}
+.comprehensive-hero-link{display:inline-flex;gap:16px;align-items:center;margin-top:19px;color:#f6d670;font-size:14px;font-weight:800;text-decoration:none}
+.comprehensive-hero-link:hover{text-decoration:underline;text-underline-offset:4px}
+.comprehensive-section-note{font-size:13px;color:#6b7c91;font-weight:700}
+.comprehensive-hub .univ-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.comprehensive-hub .univ-featured-card{height:245px;padding:23px}
+.comprehensive-hub .univ-featured-card h3{font-size:27px}
+.comprehensive-hub .univ-featured-meta span{font-size:14px;line-height:1.6}
+.comprehensive-hub .univ-featured-foot{font-size:13px}
+.comprehensive-hub .univ-featured-foot>span:first-child{display:block}
+.comprehensive-hub .univ-featured-card:hover,.comprehensive-hub .univ-featured-card:focus-visible{border-color:#c9a44c;outline:2px solid #c9a44c;outline-offset:-2px}
+.comprehensive-hub .univ-year-head strong span{font-size:14px;letter-spacing:0}
+.comprehensive-hub .univ-year-head:focus-visible{outline:3px solid #c9a44c;outline-offset:-3px}
+.comprehensive-hub .univ-year-details{padding:14px}
+.comprehensive-hub .univ-record-list{gap:18px}
+.comprehensive-hub .univ-record-card{display:block;padding:19px;cursor:pointer}
+.comprehensive-hub .univ-record-card:focus-within{border-color:#c9a44c;background:#fffdf7}
+.comprehensive-hub .univ-record-info{padding:0;display:grid;grid-template-columns:1fr auto;column-gap:18px;margin-bottom:20px}
+.comprehensive-hub .univ-record-top{grid-column:1/-1;justify-content:flex-start;gap:9px}
+.comprehensive-hub .univ-record-info h3{grid-column:1;margin:13px 0 9px;font-size:27px}
+.comprehensive-hub .univ-record-info h3 a{color:inherit;text-decoration:none}
+.comprehensive-hub .univ-record-info h3 a:focus-visible{outline:2px solid #c9a44c;outline-offset:4px;border-radius:4px}
+.comprehensive-hub .univ-series.is-federation{background:#fff4d9;color:#966a11;font-size:12px;padding:7px 11px}
+.comprehensive-hub .univ-status{font-size:12px;padding:7px 11px}
+.comprehensive-hub .univ-record-meta{font-size:14px;margin-bottom:5px;grid-column:1}
+.comprehensive-hub .univ-record-link{grid-column:2;grid-row:2/5;align-self:center;font-size:14px;padding:12px 14px;margin:0;border:1px solid #dce4eb;border-radius:8px;background:#fff;color:#17365d}
+.comprehensive-hub .univ-record-card.is-clickable:hover .univ-record-link{text-decoration:none;border-color:#c9a44c}
+.comprehensive-divisions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.comprehensive-divisions.has-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+.comprehensive-hub .univ-ranking-panel{display:block;min-width:0;color:inherit;text-decoration:none;transition:border-color .16s,background .16s}
+.comprehensive-hub .univ-ranking-panel:hover,.comprehensive-hub .univ-ranking-panel:focus-visible{border-color:#c9a44c;outline:2px solid #c9a44c;outline-offset:-2px}
+.comprehensive-hub .univ-ranking-head{padding:12px 14px;justify-content:center;position:relative;min-height:49px}
+.comprehensive-hub .univ-ranking-head strong{font-size:17px;text-align:center}
+.comprehensive-division-arrow{position:absolute;right:12px;font-size:18px;opacity:.55}
+.comprehensive-hub .univ-ranking-body{padding:5px 13px 9px}
+.comprehensive-hub .univ-rank-row{grid-template-columns:24px 56px minmax(0,1fr);gap:5px;min-height:41px;padding:7px 0;font-size:12px;line-height:1.45}
+.comprehensive-hub .univ-rank-row strong{font-size:15px;white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;word-break:keep-all;line-height:1.45}
+.comprehensive-hub .univ-rank-row:first-child strong{font-size:17px}
+.comprehensive-hub .univ-rank-row:first-child .univ-rank-label{color:#966a11}
+.comprehensive-hub .univ-ranking-panel.is-women .univ-rank-row strong{color:#8f3456}
+.comprehensive-hub .univ-rank-empty{font-size:14px;padding:20px;line-height:1.6;text-align:center}
+.comprehensive-record-footer{margin:13px 1px 0;color:#718296;font-size:12px;line-height:1.5}
+.comprehensive-hub .univ-year-placeholder{font-size:14px;color:#6b7c91}
+.comprehensive-hub .univ-hub-note{font-size:14px;padding:16px}
+@media(max-width:980px){.comprehensive-divisions{grid-template-columns:repeat(2,minmax(0,1fr))}.comprehensive-hub .univ-ranking-panel{grid-column:auto}.comprehensive-hub .univ-record-info{grid-row:auto}}
+@media(max-width:680px){
+ .comprehensive-hub .kvl-common-hero{min-height:260px}
+ .comprehensive-hero-sub{font-size:17px;max-width:250px}
+ .comprehensive-hub .univ-hero-desc{font-size:13px;max-width:260px}
+ .comprehensive-hero-link{font-size:13px;margin-top:14px}
+ .comprehensive-section-note{display:none}
+ .comprehensive-hub .univ-featured-grid{grid-template-columns:1fr;gap:12px}
+ .comprehensive-hub .univ-featured-card{height:220px;padding:19px}
+ .comprehensive-hub .univ-featured-card h3{font-size:25px}
+ .comprehensive-hub .univ-featured-meta span{font-size:13px}
+ .comprehensive-hub .univ-section-head p{font-size:13px;line-height:1.6}
+ .comprehensive-hub .univ-year-details{padding:8px}
+ .comprehensive-hub .univ-year-head strong span{font-size:12px}
+ .comprehensive-hub .univ-record-card{padding:12px}
+ .comprehensive-hub .univ-record-info{display:block;margin-bottom:15px}
+ .comprehensive-hub .univ-record-info h3{font-size:23px}
+ .comprehensive-hub .univ-record-meta{font-size:13px}
+ .comprehensive-hub .univ-record-link{margin-top:10px;font-size:13px}
+ .comprehensive-divisions,.comprehensive-divisions.has-four{grid-template-columns:1fr;gap:10px}
+ .comprehensive-hub .univ-ranking-head strong{font-size:17px}
+ .comprehensive-hub .univ-rank-row{grid-template-columns:24px 56px minmax(0,1fr);font-size:12px;min-height:42px}
+ .comprehensive-hub .univ-rank-row strong{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){.comprehensive-hub *{transition:none!important;scroll-behavior:auto!important}}
+
+.comprehensive-hub .univ-year-details[hidden]{display:none}
+
+.comprehensive-hero-sub,.comprehensive-hub .univ-featured-meta span{word-break:keep-all}
+
+/* Region comes from the official participant snapshot, alongside the medal team. */
+.comprehensive-rank-team{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.comprehensive-region{display:inline-flex;align-items:center;padding:3px 9px;border:1px solid #b8cbe0;border-radius:6px;background:#e8f0f9;color:#173e68;font-size:16px;font-weight:800;line-height:1.35;white-space:nowrap}
+.comprehensive-hub .univ-ranking-panel.is-women .comprehensive-region{border-color:#e7c2d0;background:#fcebf2;color:#8f3456}
+.comprehensive-hub .univ-rank-row{min-height:70px}

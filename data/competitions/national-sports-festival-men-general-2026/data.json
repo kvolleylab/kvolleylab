@@ -1,15 +1,15 @@
 {
-  "status": "active",
-  "stageLabel": "남자 일반부 · 공식 대진·결과 연결 검수 중",
-  "dateLabel": "2026.10.16 ~ 10.21",
-  "locationLabel": "대한민국 · 제주특별자치도 서귀포시",
+  "status": "completed",
+  "stageLabel": "남자 일반부 · 경기 종료",
+  "dateLabel": "2026-10-16 ~ 2026-10-21",
+  "locationLabel": "제주 · 서귀포시",
   "venueLabel": "천지학생체육관(서귀포고) · 서귀포시 중앙로 140",
-  "venuePrimary": "서귀포시",
+  "venuePrimary": "천지학생체육관(서귀포고)",
   "venueSecondary": "천지학생체육관(서귀포고)",
   "groupCount": 0,
-  "knockoutTeamCount": "진행",
-  "activeOverviewNote": "제107회 전국체육대회 진행 중 · 경기별 대진·세트스코어는 원문 검증 후 반영합니다.",
-  "scheduleNote": "한국시간(KST) · 공식 대진·경기 시각 자료 수집 및 검수 중 · 임의 경기 생성 없음",
+  "knockoutTeamCount": 11,
+  "activeOverviewNote": "",
+  "scheduleNote": "한국시간(KST) · 공식 예정시각 표기. 첫 경기 이후에는 앞 경기 종료 후 연속 진행되어 실제 시작시각과 다를 수 있습니다.",
   "standingsNote": "토너먼트 대회로, 별도의 조별리그 순위가 없습니다.",
   "standingsStatus": "토너먼트 방식",
   "standingsRule": "토너먼트 방식 · 공식 대진표의 경기별 승자·부전승·순위결정전 여부는 원문을 기준으로 반영합니다.",
@@ -18,40 +18,1922 @@
     "title": "시·도 대표팀이 겨루는 전국체육대회",
     "note": "대한체육회 주최 · 제주특별자치도 개최 · 토너먼트 종목"
   },
-  "genderLinks": {
-    "men": "/competition-engine-prototype.html?competition=national-sports-festival-men-general-2026",
-    "women": "/competition-engine-prototype.html?competition=national-sports-festival-women-general-2026"
-  },
-  "participants": [],
-  "matches": [],
+  "participants": [
+    {
+      "code": "NSF107-1608050101",
+      "name": "국군체육부대",
+      "fullName": "국군체육부대",
+      "region": "제주",
+      "officialTeamId": "1608050101",
+      "drawPosition": 1,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "국군체육부대",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    },
+    {
+      "code": "NSF107-0708050101",
+      "name": "울산광역시체육회",
+      "fullName": "울산광역시체육회",
+      "region": "울산",
+      "officialTeamId": "0708050101",
+      "drawPosition": 2,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "울산광역시체육회",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    },
+    {
+      "code": "NSF107-0208050101",
+      "name": "부산광역시체육회",
+      "fullName": "부산광역시체육회",
+      "region": "부산",
+      "officialTeamId": "0208050101",
+      "drawPosition": 3,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "부산광역시체육회",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 10
+    },
+    {
+      "code": "NSF107-1108050101",
+      "name": "엔오엔",
+      "fullName": "엔오엔",
+      "region": "충남",
+      "officialTeamId": "1108050101",
+      "drawPosition": 4,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "엔오엔",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    },
+    {
+      "code": "NSF107-0808050101",
+      "name": "화성시청",
+      "fullName": "화성시청",
+      "region": "경기",
+      "officialTeamId": "0808050101",
+      "drawPosition": 5,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "화성시청",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    },
+    {
+      "code": "NSF107-1208050101",
+      "name": "전북특별자치도배구협회",
+      "fullName": "전북특별자치도배구협회",
+      "region": "전북",
+      "officialTeamId": "1208050101",
+      "drawPosition": 6,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "전북특별자치도배구협회",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    },
+    {
+      "code": "NSF107-0408050101",
+      "name": "현대제철",
+      "fullName": "현대제철",
+      "region": "인천",
+      "officialTeamId": "0408050101",
+      "drawPosition": 7,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "현대제철",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    },
+    {
+      "code": "NSF107-1408050101",
+      "name": "영천시체육회",
+      "fullName": "영천시체육회",
+      "region": "경북",
+      "officialTeamId": "1408050101",
+      "drawPosition": 8,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "영천시체육회",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    },
+    {
+      "code": "NSF107-1008050101",
+      "name": "충북선발",
+      "fullName": "충북선발",
+      "region": "충북",
+      "officialTeamId": "1008050101",
+      "drawPosition": 9,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "충북선발",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 10
+    },
+    {
+      "code": "NSF107-0608050101",
+      "name": "대전광역시체육회",
+      "fullName": "대전광역시체육회",
+      "region": "대전",
+      "officialTeamId": "0608050101",
+      "drawPosition": 10,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "대전광역시체육회",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 11
+    },
+    {
+      "code": "NSF107-0508050101",
+      "name": "비오신코리아",
+      "fullName": "비오신코리아",
+      "region": "광주",
+      "officialTeamId": "0508050101",
+      "drawPosition": 11,
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "drawTeamName": "비오신코리아",
+      "drawSourceId": "KVL-SRC-NSF107-DRAW-2026",
+      "sourcePage": 3,
+      "rosterCount": 12
+    }
+  ],
+  "matches": [
+    {
+      "id": "KVL-M-NSF107-080501-081001",
+      "date": "2026-10-16",
+      "time": "15:30",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "bracketLabel": "1회전",
+      "home": {
+        "code": "NSF107-1008050101"
+      },
+      "away": {
+        "code": "NSF107-0608050101"
+      },
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 13,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T",
+      "officialRoundId": "081001",
+      "officialRoundLabel": "예선경기１",
+      "officialMatchScore": {
+        "home": 0,
+        "away": 3
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-087002"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-081002",
+      "date": "2026-10-17",
+      "time": "13:30",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "bracketLabel": "1회전",
+      "home": {
+        "code": "NSF107-0208050101"
+      },
+      "away": {
+        "code": "NSF107-1108050101"
+      },
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T",
+      "officialRoundId": "081002",
+      "officialRoundLabel": "예선경기２",
+      "officialMatchScore": {
+        "home": 3,
+        "away": 0
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-087003"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-081003",
+      "date": "2026-10-17",
+      "time": "15:30",
+      "timeStatus": "scheduled",
+      "stage": "1회전",
+      "round": "R16",
+      "bracketLabel": "1회전",
+      "home": {
+        "code": "NSF107-0408050101"
+      },
+      "away": {
+        "code": "NSF107-1408050101"
+      },
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T",
+      "officialRoundId": "081003",
+      "officialRoundLabel": "예선경기３",
+      "officialMatchScore": {
+        "home": 0,
+        "away": 3
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-087004"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-087001",
+      "date": "2026-10-18",
+      "time": "13:30",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "8강",
+      "home": {
+        "code": "NSF107-1608050101"
+      },
+      "away": {
+        "code": "NSF107-0708050101"
+      },
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 8
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T",
+      "officialRoundId": "087001",
+      "officialRoundLabel": "준준결승경기１",
+      "officialMatchScore": {
+        "home": 3,
+        "away": 0
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-088001"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-087002",
+      "date": "2026-10-18",
+      "time": "15:30",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "8강",
+      "home": {
+        "code": "NSF107-0608050101"
+      },
+      "away": {
+        "code": "NSF107-0508050101"
+      },
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 14,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 16
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T",
+      "officialRoundId": "087002",
+      "officialRoundLabel": "준준결승경기２",
+      "officialMatchScore": {
+        "home": 3,
+        "away": 1
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-088002"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-087003",
+      "date": "2026-10-19",
+      "time": "13:30",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "8강",
+      "home": {
+        "code": "NSF107-0208050101"
+      },
+      "away": {
+        "code": "NSF107-0808050101"
+      },
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T",
+      "officialRoundId": "087003",
+      "officialRoundLabel": "준준결승경기３",
+      "officialMatchScore": {
+        "home": 0,
+        "away": 3
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-088001"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-087004",
+      "date": "2026-10-19",
+      "time": "15:30",
+      "timeStatus": "scheduled",
+      "stage": "8강",
+      "round": "QF",
+      "bracketLabel": "8강",
+      "home": {
+        "code": "NSF107-1208050101"
+      },
+      "away": {
+        "code": "NSF107-1408050101"
+      },
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 25
+          },
+          {
+            "home": 11,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T",
+      "officialRoundId": "087004",
+      "officialRoundLabel": "준준결승경기４",
+      "officialMatchScore": {
+        "home": 0,
+        "away": 3
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-088002"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-088001",
+      "date": "2026-10-20",
+      "time": "12:00",
+      "timeStatus": "scheduled",
+      "stage": "준결승",
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "home": {
+        "code": "NSF107-1608050101"
+      },
+      "away": {
+        "code": "NSF107-0808050101"
+      },
+      "score": {
+        "home": 0,
+        "away": 3,
+        "sets": [
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 27,
+            "away": 29
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088001&searchPcntGbn=T",
+      "officialRoundId": "088001",
+      "officialRoundLabel": "준결승경기１",
+      "officialMatchScore": {
+        "home": 0,
+        "away": 3
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-089000"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-088002",
+      "date": "2026-10-20",
+      "time": "14:00",
+      "timeStatus": "scheduled",
+      "stage": "준결승",
+      "round": "SF",
+      "bracketLabel": "준결승",
+      "home": {
+        "code": "NSF107-1408050101"
+      },
+      "away": {
+        "code": "NSF107-0608050101"
+      },
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 14
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088002&searchPcntGbn=T",
+      "officialRoundId": "088002",
+      "officialRoundLabel": "준결승경기２",
+      "officialMatchScore": {
+        "home": 3,
+        "away": 0
+      },
+      "dataStatus": "verified",
+      "nextMatchId": "KVL-M-NSF107-080501-089000"
+    },
+    {
+      "id": "KVL-M-NSF107-080501-089000",
+      "date": "2026-10-21",
+      "time": "10:00",
+      "timeStatus": "scheduled",
+      "stage": "결승",
+      "round": "FINAL",
+      "bracketLabel": "결승",
+      "home": {
+        "code": "NSF107-0808050101"
+      },
+      "away": {
+        "code": "NSF107-1408050101"
+      },
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 15
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "venueLabel": "천지학생체육관(서귀포고)",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=089000&searchPcntGbn=T",
+      "officialRoundId": "089000",
+      "officialRoundLabel": "결승",
+      "officialMatchScore": {
+        "home": 3,
+        "away": 0
+      },
+      "dataStatus": "verified"
+    }
+  ],
   "standings": {},
-  "finalRanking": [],
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "NSF107-0808050101",
+      "team": "화성시청",
+      "result": "우승 · 경기",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NSF107-MEDALS-2026",
+      "officialMedalTeamName": "화성시청"
+    },
+    {
+      "rank": 2,
+      "code": "NSF107-1408050101",
+      "team": "영천시체육회",
+      "result": "준우승 · 경북",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NSF107-MEDALS-2026",
+      "officialMedalTeamName": "영천시체육회"
+    },
+    {
+      "rank": 3,
+      "code": "NSF107-1608050101",
+      "team": "국군체육부대",
+      "result": "공동 3위 · 제주",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NSF107-MEDALS-2026",
+      "officialMedalTeamName": "국군체육부대"
+    },
+    {
+      "rank": 3,
+      "code": "NSF107-0608050101",
+      "team": "대전광역시체육회",
+      "result": "공동 3위 · 대전",
+      "confirmed": true,
+      "sourceId": "KVL-SRC-NSF107-MEDALS-2026",
+      "officialMedalTeamName": "대전광역시체육회"
+    }
+  ],
   "qualifications": [],
   "resources": [
     {
-      "title": "제107회 전국체육대회 — 공식 대회개요",
-      "url": "https://meet.sports.or.kr/national/event/outline.do"
+      "title": "대한체육회 공식 대진표 · 남자 일반부",
+      "url": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do?searchClassCd=08&searchKindCd=05&searchDetailClassCd=080501"
     },
     {
-      "title": "배구 세부종별 경기장·경기일정",
-      "url": "https://meet.sports.or.kr/national/event/venue.do"
+      "title": "대한체육회 공식 배구 메달명세",
+      "url": "https://meet.sports.or.kr/national/medal/medalClass.do?searchClassCd=08&searchKindCd="
     },
     {
-      "title": "대한체육회 공식 토너먼트 대진표 — 배구 선택",
-      "url": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do"
+      "title": "대한배구협회 기술총회 자료 · 경기방식",
+      "url": "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=2404&p_idNm=notice"
     },
     {
-      "title": "대한체육회 공식 종목별 경기일정·결과",
-      "url": "https://meet.sports.or.kr/national/schedule/scheduleClass.do"
+      "title": "대한배구협회 사전 대진표 및 연습일정",
+      "url": "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=2389&p_idNm=notice"
+    },
+    {
+      "title": "대한배구협회 경기결과·경기시각 안내",
+      "url": "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=2407&p_idNm=notice"
     }
   ],
-  "resourcesNote": "공식 대진 및 일정은 대한체육회 사이트에서 배구·해당 종별을 선택해 조회합니다. 2026-10-17 기준 경기별 정규화·대조 중인 프로토타입입니다.",
+  "resourcesNote": "대한체육회 최종 대진·세부전적·참가선수·메달명세를 2026.10.26 대조했습니다.",
   "domesticRules": {
     "knockout": {
-      "title": "전국체전 배구 종별 토너먼트",
-      "body": "남자 일반부는 조별리그가 아닌 토너먼트 종목입니다. 경기장: 천지학생체육관(서귀포고) (서귀포시 중앙로 140). 공식 원문 대진의 시·도/대표팀, 부전승, 라운드, 경기 시간과 점수가 검증되면 이 페이지에 연결합니다.",
-      "note": "공식 확인: 대회기간·종별·경기장 / 미연결: 참가팀·대진·경기 결과",
-      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleTDaejin.do"
+      "title": "전국체전 배구 토너먼트 경기방식",
+      "body": "모든 부문은 3세트 선취 토너먼트로 진행합니다. 3·4위전과 5~8위 순위결정전은 실시하지 않으며 준결승 패배 두 팀은 공동 3위입니다. 부전승은 공식 참가팀과 승자 진출 경로를 기준으로 표시합니다.",
+      "note": "대한배구협회 기술총회 자료 · 1. 경기방법",
+      "sourceUrl": "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=2404&p_idNm=notice"
     }
+  },
+  "champion": "화성시청",
+  "bracketRounds": [
+    {
+      "round": "R16",
+      "label": "1회전",
+      "slots": [
+        {
+          "byeTeam": "NSF107-1608050101"
+        },
+        {
+          "byeTeam": "NSF107-0708050101"
+        },
+        {
+          "matchId": "KVL-M-NSF107-080501-081002"
+        },
+        {
+          "byeTeam": "NSF107-0808050101"
+        },
+        {
+          "byeTeam": "NSF107-1208050101"
+        },
+        {
+          "matchId": "KVL-M-NSF107-080501-081003"
+        },
+        {
+          "matchId": "KVL-M-NSF107-080501-081001"
+        },
+        {
+          "byeTeam": "NSF107-0508050101"
+        }
+      ]
+    },
+    {
+      "round": "QF",
+      "label": "8강",
+      "slots": [
+        {
+          "matchId": "KVL-M-NSF107-080501-087001"
+        },
+        {
+          "matchId": "KVL-M-NSF107-080501-087003"
+        },
+        {
+          "matchId": "KVL-M-NSF107-080501-087004"
+        },
+        {
+          "matchId": "KVL-M-NSF107-080501-087002"
+        }
+      ]
+    },
+    {
+      "round": "SF",
+      "label": "준결승",
+      "slots": [
+        {
+          "matchId": "KVL-M-NSF107-080501-088001"
+        },
+        {
+          "matchId": "KVL-M-NSF107-080501-088002"
+        }
+      ]
+    },
+    {
+      "round": "FINAL",
+      "label": "결승",
+      "slots": [
+        {
+          "matchId": "KVL-M-NSF107-080501-089000"
+        }
+      ]
+    }
+  ],
+  "divisionLinks": [
+    {
+      "key": "men-general",
+      "label": "남자 일반부",
+      "gender": "men",
+      "url": "national-sports-festival-2026.html?competition=national-sports-festival-men-general-2026"
+    },
+    {
+      "key": "men-university",
+      "label": "남자 대학부",
+      "gender": "men",
+      "url": "national-sports-festival-2026.html?competition=national-sports-festival-men-university-2026"
+    },
+    {
+      "key": "men-u18",
+      "label": "남자 18세 이하부",
+      "gender": "men",
+      "url": "national-sports-festival-2026.html?competition=national-sports-festival-men-u18-2026"
+    },
+    {
+      "key": "women-general",
+      "label": "여자 일반부",
+      "gender": "women",
+      "url": "national-sports-festival-2026.html?competition=national-sports-festival-women-general-2026"
+    },
+    {
+      "key": "women-u18",
+      "label": "여자 18세 이하부",
+      "gender": "women",
+      "url": "national-sports-festival-2026.html?competition=national-sports-festival-women-u18-2026"
+    }
+  ],
+  "sourceVerification": {
+    "checkedAt": "2026-10-26",
+    "officialParticipants": 11,
+    "officialMatches": 10,
+    "verifiedMatches": 10,
+    "sourceConflicts": []
+  },
+  "rosters": {
+    "NSF107-1608050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088001&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "강정민",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "김건우",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "김완종",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "박성진",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "배상진",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "손찬홍",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "C",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "송민근",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "LI",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "이상현",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "이율리",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "이준",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "이현승",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "임성진",
+          "affiliation": "국군체육부대",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-0708050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "김정호",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "김종덕",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "류제호",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "박성찬",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "우병헌",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "이승용",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "이원근",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "이태희",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "전우현",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "정민기",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "정재훈",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        },
+        {
+          "name": "최형진",
+          "affiliation": "울산광역시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087001&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-0208050101": {
+      "statusLabel": "공식 참가선수 10명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "김성준",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "김찬유",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "변혜민",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "Li",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "손주상",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "이예찬",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "이창엽",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "이형두",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "임재민",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "진욱재",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "황민석",
+          "affiliation": "부산광역시 체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-1108050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "고대영",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "김민철",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "김병욱",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "라광균",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "Li",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "박상원",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "박지윤",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "이민욱",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "정성환",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "정태현",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "조진구",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "Li",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "최진성",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        },
+        {
+          "name": "한종윤",
+          "affiliation": "엔오엔",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081002&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-0808050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088001&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=089000&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "김정윤",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "C",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "김현웅",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "C",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "신윤호",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "Li",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "안우재",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "C",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "윤준호",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "이현승",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "최여름",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "최익제",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "R",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "하덕호",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "황원선",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "마유민",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        },
+        {
+          "name": "김준영",
+          "affiliation": "화성시청",
+          "grade": null,
+          "position": "라이트",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087003&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-1208050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "고우진",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "김도현",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "송대근",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "안상협",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "오서준",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "오창훈",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "Li",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "은재서",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "이용덕",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "이지훈",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "정명도",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "하장훈",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        },
+        {
+          "name": "한창현",
+          "affiliation": "전북특별자치도배구협회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-0408050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "김성민",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "박상훈",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "LI",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "박종안",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "배순후",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "배인호",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "백관웅",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "이광호",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "LI",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "이승호",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "이재목",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "이지석",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "조승연",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "진창대",
+          "affiliation": "현대제철(강스파이크)",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-1408050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087004&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088002&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=089000&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "고현성",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "김인균",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "손태훈",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "엄윤식",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "여민수",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "이창윤",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "임진석",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "최은석",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "최찬울",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "한정훈",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "홍지원",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        },
+        {
+          "name": "황영권",
+          "affiliation": "영천시체육회",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081003&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-1008050101": {
+      "statusLabel": "공식 참가선수 10명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "김상윤",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "S.OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "김승구",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "김한수",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "OH.L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "배홍희",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "정수용",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "정승현",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "조찬호",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "최가을",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "함형진",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "현종원",
+          "affiliation": "충청북도체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-0608050101": {
+      "statusLabel": "공식 참가선수 11명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T",
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=088002&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "금태용",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "김보명",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "김승현",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "김영대",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "김헌수",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "박민엽",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "윤준혁",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "이기범",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "이태원",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "전우준",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        },
+        {
+          "name": "한광호",
+          "affiliation": "대전광역시체육회",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=081001&searchPcntGbn=T"
+        }
+      ]
+    },
+    "NSF107-0508050101": {
+      "statusLabel": "공식 참가선수 12명",
+      "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+      "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T",
+      "sourceUrls": [
+        "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+      ],
+      "players": [
+        {
+          "name": "강동완",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "기동균",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "김백",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "OP/S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "김상곤",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "문지훈",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "박현수",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "신우성",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "OP",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "이여송",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "장수웅",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "OH",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "최민국",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "S",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "최수형",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "MB",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        },
+        {
+          "name": "장승우",
+          "affiliation": "비오신코리아",
+          "grade": null,
+          "position": "L",
+          "sourceId": "KVL-SRC-NSF107-RESULTS-2026",
+          "sourceUrl": "https://meet.sports.or.kr/national/schedule/scheduleDetailT.do?searchClassCd=08&searchDetailClassCd=080501&searchRhCd=087002&searchPcntGbn=T"
+        }
+      ]
+    }
+  },
+  "rosterNote": "2026 전국체전 공식 참가선수 · 가나다순",
+  "rosterSourceNote": "선수명·소속·학년·포지션은 대한체육회 경기 상세의 참가선수 표기입니다. 등번호와 신장은 해당 자료에 제공되지 않습니다.",
+  "rosterVerification": {
+    "checkedAt": "2026-10-26",
+    "teamCount": 11,
+    "playerCount": 127,
+    "linkedProfileCount": 0,
+    "sourceId": "KVL-SRC-NSF107-RESULTS-2026"
   }
 }
