@@ -1,6 +1,6 @@
 # V-리그 남녀 최근 결과 + 다음 경기 — 2026-10-28
 
-Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. Merge·Pages·실제 운영 확인은 release PR에 추가한다.
+Status: DEPLOYED / LIVE VERIFIED. PR #192, merge `a0a0036062d35a8e94c4741a938a5fc74fb4370d`, Pages run `40599980863` success.
 
 사용자 요청: 남녀 각각 최근 결과 1경기와 다음 예정 1경기를 함께 표시. 동일 대화의 운영 V-리그 수정 범위에서, #190에서 PROPOSED로 남긴 경기 영역을 이번 요청으로 승인했다.
 
@@ -35,3 +35,12 @@ Drive `KVL_운영원칙_MASTER_v16`을 읽고 최종 수정 `2026-10-27T16:24:09
 ## 배포와 복구
 
 관련 CI 통과 후 해당 PR을 병합하고 Pages 성공·운영 남녀 페이지를 확인한다. 기존 무관한 Player Master 등록 인원 고정/갱신 SHA 누락 및 VNL/timeline workflow 오류는 별도로 기록하며 전체 CI green으로 표현하지 않는다. 문제 발생 시 이 PR만 revert한다. 원본 일정/명단/순위 파일은 바뀌지 않았다.
+
+
+## 운영 확인
+
+남녀 운영 overview 모두 남녀 카드 2개, 개막 전 결과 빈 상태, 10/31 남자14:00·여자16:00 개막전을 확인했다. 순위표 7행과 지난 시즌 순위순 참가팀 7개 한 줄, 가로 넘침 0이 유지된다. 여자 다음 경기 클릭은 여자 일정의 `date=2026-10-31` 및 해당 날짜 GS칼텍스–한국도로공사 대진으로 이동했다.
+
+[남자부](https://kvolleylab.com/competition-engine.html?competition=v-league-men-2026-27&view=overview) · [여자부](https://kvolleylab.com/competition-engine.html?competition=v-league-women-2026-27&view=overview)
+
+![운영 남녀 최근 결과·다음 경기 카드](vleague-match-summary-20261028/desktop-live.jpg)
