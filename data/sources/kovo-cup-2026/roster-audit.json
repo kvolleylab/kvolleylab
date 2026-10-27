@@ -1,0 +1,1517 @@
+{
+  "sourceId": "KVL-SRC-KOVOCUP-2026-PAMPHLET",
+  "verifiedAt": "2026-10-27",
+  "sourceTitle": "2026 여수·NH농협컵 프로배구대회 공식 팸플릿",
+  "sourceSha256": "b391cc1868f380481eb6c591033e54b0187637d36e337733cb9c4e9ac7df9f3e",
+  "comparisonSha256": "ef497ea15f799df73dbb67c055a2fe2aff7c0e8bba355272d61018b028eb35a5",
+  "scope": "Pamphlet-listed players; not match-day entries or current club membership.",
+  "profileRule": "Reuse the pre-existing ID only after exact Korean name + date of birth; conflicts remain unlinked.",
+  "nationalityRule": "Existing reviewed team-sheet country values are retained only when explicit; pending values are not inferred. Pamphlet does not state nationality.",
+  "supplementaryFields": "English names, explicit country values and Volleybox URLs come from existing V-League team sheets A:J, matched on Korean name and prior DOB. Four additional English names are transcribed from the pamphlet. Country is a legacy team-sheet field; missing values stay unknown.",
+  "teams": [
+    {
+      "gender": "men",
+      "teamCode": "OKF",
+      "name": "OK저축은행",
+      "count": 17,
+      "profileLinks": 8,
+      "sourcePage": 37
+    },
+    {
+      "gender": "men",
+      "teamCode": "HDC",
+      "name": "현대캐피탈",
+      "count": 18,
+      "profileLinks": 6,
+      "sourcePage": 39
+    },
+    {
+      "gender": "men",
+      "teamCode": "KAL",
+      "name": "대한항공",
+      "count": 19,
+      "profileLinks": 6,
+      "sourcePage": 41
+    },
+    {
+      "gender": "men",
+      "teamCode": "SFB",
+      "name": "삼성화재",
+      "count": 22,
+      "profileLinks": 13,
+      "sourcePage": 43
+    },
+    {
+      "gender": "men",
+      "teamCode": "KEP",
+      "name": "한국전력",
+      "count": 15,
+      "profileLinks": 6,
+      "sourcePage": 45
+    },
+    {
+      "gender": "men",
+      "teamCode": "KBI",
+      "name": "KB손해보험",
+      "count": 19,
+      "profileLinks": 8,
+      "sourcePage": 47
+    },
+    {
+      "gender": "men",
+      "teamCode": "WRC",
+      "name": "우리카드",
+      "count": 20,
+      "profileLinks": 7,
+      "sourcePage": 49
+    },
+    {
+      "gender": "women",
+      "teamCode": "SOO",
+      "name": "SOOP",
+      "count": 17,
+      "profileLinks": 0,
+      "sourcePage": 23
+    },
+    {
+      "gender": "women",
+      "teamCode": "IBK",
+      "name": "IBK기업은행",
+      "count": 18,
+      "profileLinks": 0,
+      "sourcePage": 25
+    },
+    {
+      "gender": "women",
+      "teamCode": "RSP",
+      "name": "정관장",
+      "count": 16,
+      "profileLinks": 0,
+      "sourcePage": 27
+    },
+    {
+      "gender": "women",
+      "teamCode": "HPS",
+      "name": "흥국생명",
+      "count": 20,
+      "profileLinks": 0,
+      "sourcePage": 29
+    },
+    {
+      "gender": "women",
+      "teamCode": "GSC",
+      "name": "GS칼텍스",
+      "count": 17,
+      "profileLinks": 0,
+      "sourcePage": 31
+    },
+    {
+      "gender": "women",
+      "teamCode": "KEX",
+      "name": "한국도로공사",
+      "count": 15,
+      "profileLinks": 0,
+      "sourcePage": 33
+    },
+    {
+      "gender": "women",
+      "teamCode": "HHC",
+      "name": "현대건설",
+      "count": 18,
+      "profileLinks": 0,
+      "sourcePage": 35
+    }
+  ],
+  "unlinked": [
+    {
+      "team": "OKF",
+      "name": "김도훈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "신장호",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "페이즈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "박원빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "진상헌",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "박창성",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "박인우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "김준호",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "OKF",
+      "name": "러셀",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "장추안",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "황승빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "김진영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "최민호",
+      "existingId": "KVL-P-001608",
+      "reason": "DOB conflict"
+    },
+    {
+      "team": "HDC",
+      "name": "레오",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "이재현",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "이준협",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "이승준",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "배준솔",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "이시우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "장아성",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HDC",
+      "name": "송원근",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "김규민",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "한선수",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "류",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "최원빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "케트진스키",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "조재영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "서현일",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "최준혁",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "정의영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "김민재",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "김영태",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "이준호",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KAL",
+      "name": "임재영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "박준서",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "이재현",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "양수현",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "이윤수",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "김준우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "김민혁",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "호키",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "왕빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SFB",
+      "name": "김요한",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "배해찬솔",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "정민수",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "강선규",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "하승우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "우스만",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "진지위",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "방강호",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "쇼",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEP",
+      "name": "이태호",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "차영석",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "타루샤",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "나웅진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "박상하",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "장하랑",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "리누스",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "이준영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "성한희",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "지은우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "이학진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KBI",
+      "name": "임동균",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "이시몬",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "한태준",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "박상우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "김영준",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "박준혁",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "이유빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "김동민",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "김동영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "아라우조",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "마틴",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "김형근",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "서원진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "WRC",
+      "name": "손유민",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "오드리아나",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "한다혜",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "임주은",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "박연화",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "고의정",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "전새얀",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "송은채",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "박은서",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "박수빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "이즈쉬에",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "고예림",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "김서영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "전하리",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "유가람",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "서지혜",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "이원정",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "SOO",
+      "name": "하혜진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "이소영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "이주아",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "박은서",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "김하경",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "미와",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "임명옥",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "육서영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "김채연",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "최정민",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "김채원",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "황민경",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "전수민",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "최연진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "강유정",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "빅토리아",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "정솔민",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "하예지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "IBK",
+      "name": "남은서",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "염혜선",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "전다빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "노란",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "박은진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "도수빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "박혜민",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "김지윤",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "부키리치",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "이선우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "신은지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "종휘",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "이지수",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "최서현",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "최효서",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "박여름",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "RSP",
+      "name": "곽선옥",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "김다은",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "자스티스",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "신연경",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "서채현",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "이고은",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "최은지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "변지수",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "김수지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "박혜진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "정윤주",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "박민지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "고민지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "정호영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "이신영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "표승주",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "박수연",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "임혜림",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "킨델란",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "이나연",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HPS",
+      "name": "문지윤",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "최가은",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "김효임",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "이윤신",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "서채원",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "실바",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "최윤영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "최유림",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "김주향",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "이주아",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "김지원",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "박사랑",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "김미연",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "권민지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "유서연",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "타나차",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "한수진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "GSC",
+      "name": "오세연",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "박윤서",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "김다은",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "이윤정",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "손혜진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "박정아",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "마미",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "김세빈",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "문정원",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "이지윤",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "오은채",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "김현지",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "김세인",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "이수연",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "강소휘",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "KEX",
+      "name": "모마",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "이예림",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "이채영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "김다인",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "이영주",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "김사랑",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "김연견",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "나현수",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "배유나",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "강서우",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "정지윤",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "김희진",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "김수현",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "한미르",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "이민영",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "조던",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "이한비",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "메가",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    },
+    {
+      "team": "HHC",
+      "name": "구솔",
+      "existingId": null,
+      "reason": "No verified existing profile ID"
+    }
+  ],
+  "conflicts": [
+    {
+      "team": "OKF",
+      "name": "김대환",
+      "difference": "키(cm): 190 → 189",
+      "sourcePage": 37
+    },
+    {
+      "team": "HDC",
+      "name": "김명관",
+      "difference": "키(cm): 196 → 195",
+      "sourcePage": 39
+    },
+    {
+      "team": "HDC",
+      "name": "최민호",
+      "difference": "생년월일: 1988-04-28 → 1988-04-19",
+      "sourcePage": 39
+    },
+    {
+      "team": "HDC",
+      "name": "홍동선",
+      "difference": "키(cm): 199 → 198",
+      "sourcePage": 39
+    },
+    {
+      "team": "KAL",
+      "name": "케트진스키",
+      "difference": "포지션: OH → OP",
+      "sourcePage": 41
+    },
+    {
+      "team": "KAL",
+      "name": "임동혁",
+      "difference": "키(cm): 200 → 201",
+      "sourcePage": 41
+    },
+    {
+      "team": "KAL",
+      "name": "김영태",
+      "difference": "포지션: OH → MB",
+      "sourcePage": 41
+    },
+    {
+      "team": "KAL",
+      "name": "이준호",
+      "difference": "키(cm): 193 → 194",
+      "sourcePage": 41
+    },
+    {
+      "team": "SFB",
+      "name": "황두연",
+      "difference": "키(cm): 190 → 189",
+      "sourcePage": 43
+    },
+    {
+      "team": "SFB",
+      "name": "이우진",
+      "difference": "키(cm): 196 → 195",
+      "sourcePage": 43
+    },
+    {
+      "team": "SFB",
+      "name": "김요한",
+      "difference": "키(cm): 186.4 → 186",
+      "sourcePage": 43
+    },
+    {
+      "team": "SFB",
+      "name": "양희준",
+      "difference": "키(cm): 201 → 199",
+      "sourcePage": 43
+    },
+    {
+      "team": "KEP",
+      "name": "하승우",
+      "difference": "생년월일: 1995-06-22 → 1995-06-02",
+      "sourcePage": 45
+    },
+    {
+      "team": "KEP",
+      "name": "우스만",
+      "difference": "키(cm): 194 → 188",
+      "sourcePage": 45
+    },
+    {
+      "team": "KEP",
+      "name": "이태호",
+      "difference": "키(cm): 203 → 201",
+      "sourcePage": 45
+    },
+    {
+      "team": "KBI",
+      "name": "성한희",
+      "difference": "키(cm): 175 → 174",
+      "sourcePage": 47
+    },
+    {
+      "team": "WRC",
+      "name": "한태준",
+      "difference": "키(cm): 180 → 181",
+      "sourcePage": 49
+    },
+    {
+      "team": "WRC",
+      "name": "박상우",
+      "difference": "생년월일: 2003-08-06 → 2003-08-08",
+      "sourcePage": 49
+    },
+    {
+      "team": "WRC",
+      "name": "손유민",
+      "difference": "키(cm): 196 → 197",
+      "sourcePage": 49
+    },
+    {
+      "team": "SOO",
+      "name": "고의정",
+      "difference": "키(cm): 181 → 183",
+      "sourcePage": 23
+    },
+    {
+      "team": "SOO",
+      "name": "송은채",
+      "difference": "키(cm): 174.8 → 175",
+      "sourcePage": 23
+    },
+    {
+      "team": "SOO",
+      "name": "김서영",
+      "difference": "키(cm): 181 → 180",
+      "sourcePage": 23
+    },
+    {
+      "team": "SOO",
+      "name": "전하리",
+      "difference": "키(cm): 172 → 170",
+      "sourcePage": 23
+    },
+    {
+      "team": "IBK",
+      "name": "김하경",
+      "difference": "키(cm): 174 → 173",
+      "sourcePage": 25
+    },
+    {
+      "team": "IBK",
+      "name": "빅토리아",
+      "difference": "키(cm): 191 → 192",
+      "sourcePage": 25
+    },
+    {
+      "team": "IBK",
+      "name": "남은서",
+      "difference": "키(cm): 166 → 167",
+      "sourcePage": 25
+    },
+    {
+      "team": "HPS",
+      "name": "자스티스",
+      "difference": "키(cm): 177 → 176",
+      "sourcePage": 29
+    },
+    {
+      "team": "HPS",
+      "name": "변지수",
+      "difference": "키(cm): 181 → 180",
+      "sourcePage": 29
+    },
+    {
+      "team": "HPS",
+      "name": "정호영",
+      "difference": "생년월일: 2001-08-21 → 2001-08-23",
+      "sourcePage": 29
+    },
+    {
+      "team": "HPS",
+      "name": "표승주",
+      "difference": "생년월일: 1992-08-07 → 1992-08-27",
+      "sourcePage": 29
+    },
+    {
+      "team": "HPS",
+      "name": "킨델란",
+      "difference": "키(cm): 190 → 188",
+      "sourcePage": 29
+    },
+    {
+      "team": "KEX",
+      "name": "오은채",
+      "difference": "키(cm): 180.3 → 180",
+      "sourcePage": 33
+    },
+    {
+      "team": "HHC",
+      "name": "메가",
+      "difference": "키(cm): 185 → 184",
+      "sourcePage": 35
+    },
+    {
+      "team": "HHC",
+      "name": "구솔",
+      "difference": "키(cm): 182 → 181",
+      "sourcePage": 35
+    }
+  ],
+  "totalPlayers": 251,
+  "profileLinks": 54
+}

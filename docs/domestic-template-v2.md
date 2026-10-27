@@ -1,5 +1,9 @@
 # Domestic Template v2 — Home presentation
 
+## 2026-10-27 · 프로팀 명단 표시
+
+KOVO컵 남녀 `structure.roster.profile=club`, `placement=below-participants`를 선택 적용한다. 기존 `full`/`domestic-snapshot` 및 공통 명단 모듈을 유지한다. 팀 선택 시 PC·모바일 모두 전체 팀 카드 아래에 명단을 표시한다. PC는 등번호·선수명(영문 병기)·POS·키·생년월일·국적·VB, 모바일은 앞의 네 항목과 펼칠 수 있는 상세정보를 사용한다. 기존 학교 모바일 아코디언과 국제대회 열 구성은 유지한다. 대회 팸플릿 명단은 경기별 엔트리·현재 구단 명단과 구분해 표시하며, 기존 Player ID의 정확한 이름·생년월일 일치가 확인된 경우만 프로필에 연결한다. [검수 보고서](validation/kovo-cup-rosters-20261027.md).
+
 2026-10-24 사용자 운영 반영 요청에 따라 홈 디자인과 승인된 국내대회 시안을 공통 Competition Engine v2 위에 적용한다.
 
 ## 적용 범위

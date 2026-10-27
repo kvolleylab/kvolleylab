@@ -193,3 +193,18 @@ CBS 4개·춘계 3개 원문 별칭은 출처 대조 후 해당 competitionId에
 ## 2026-10-27 · 종합대회 순위 지역 표기를 오른쪽 일반 글씨로 조정
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR에 기록). 운영 반영 요청에 이어 사용자가 지역을 팀명 위의 작은 카드 대신 팀명 오른쪽 끝의 일반 글씨로 표시하도록 수정했다. 종합대회 목록, 전국체전·소년체전 overview 우승팀/최종순위, 최종 입상팀 카드를 같은 방식으로 적용한다. 지역은 400 굵기·배경/테두리 없음·오른쪽 정렬, 긴 팀명은 줄바꿈하며 기존 공동 3위와 팀 링크를 유지한다. 앞선 같은 날짜의 16px 지역 배지 디자인을 이 범위에서 대체한다. 최신 main의 학교 로고·소재지 및 KOVO Cup 변경을 보존한다. [검수·복구](validation/comprehensive-region-text-20261027.md).
+
+
+## 2026-10-27 · KOVO컵 참가팀에서 팸플릿 선수명단 표시
+
+Status: APPROVED (구현 범위) / IMPLEMENTED / VERIFIED / READY FOR REVIEW. 사용자가 국제대회와 같은 팀 선택→명단 목록을 제안한 뒤 진행을 지시했다. 공통 명단 렌더러의 club 옵션으로 남녀 14팀·251명을 연결하고 PC·모바일 모두 팀 카드 전체 아래에 표시한다. 기존 Player ID는 이름·생년월일이 일치하는 54명만 연결하며 새 ID와 Master 수정은 없다. 팸플릿 기준 명단임을 명시하고 실제 경기별 엔트리/현재 구단 명단과 구분한다. 5개 생년월일 충돌과 1개 음력 표기는 확인 중으로 남긴다. 기존 학교의 모바일 아코디언·국제대회 열 구성·경기·순위·Hero는 유지한다. 앞선 Cup pending-only 결정을 이 구현 범위에서 대체한다. 운영 merge는 별도 승인 후 진행한다. [검수·출처·복구](validation/kovo-cup-rosters-20261027.md).
+
+
+## 2026-10-28 · KOVO컵 명단의 국적에 국기 병기
+
+Status: APPROVED (표시 수정) / IMPLEMENTED / VERIFIED (local preview). 사용자 요청으로 PC 국적 열, 모바일 상세정보, 인쇄 명단에 국기 + 국가명을 표시한다. 기존 국제대회에서 사용하는 FlagCDN 이미지 방식을 재사용하며 검수된 nationalityCode가 있는 경우만 표시한다. 국적 미확인은 그대로 유지하고 선수 데이터·ID는 변경하지 않는다. 기존 공개 승인 대기 상태는 유지한다. [검수 보고서](validation/kovo-cup-rosters-20261027.md).
+
+
+## 2026-10-28 · KOVO컵 선수정보 공개 및 운영 반영 승인
+
+Status: APPROVED / RELEASE AUTHORIZED. 사용자가 생년월일을 포함한 팸플릿 명단의 `kvolleylab/kvolleylab` 업로드와 운영사이트 반영 요청에 “선수정보 공개 승인”이라고 명시적으로 답했다. 남녀 14팀·251명 명단, 54개 기존 프로필 연결, 국기+국가명 표시, 6개 생년월일 확인 중 표시의 검수 범위로 진행한다. 앞선 공개 승인 대기 기록을 대체하며 CI·merge·운영 화면 검증 결과는 release PR에 기록한다. 원본 PDF/XLSX, 인증된 Drive 주소, 비공개 개인 메모는 공개 대상에 포함하지 않는다. [검수 보고서](validation/kovo-cup-rosters-20261027.md).

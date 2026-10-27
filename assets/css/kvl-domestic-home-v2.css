@@ -356,6 +356,54 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[dat
 html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters .kvl1180-vb-short{display:inline}
 }
 
+/* Opt-in club snapshots: compact team cards, one roster below the entire list. */
+.has-club-rosters .kvl-club-roster-table{border:1px solid var(--dv2-line);border-radius:12px;overflow:hidden}
+.has-club-rosters .kvl-club-roster-head,.has-club-rosters .kvl-club-roster-row{display:grid;grid-template-columns:52px minmax(150px,1fr) 60px 72px 104px 96px 64px;align-items:center;gap:12px;padding:12px 16px}
+.has-club-rosters .kvl-club-roster-head{background:var(--dv2-soft);color:var(--dv2-accent);font-size:13px;font-weight:700}
+.has-club-rosters .kvl-club-roster-row{min-height:70px;border-top:1px solid var(--dv2-line);font-size:14px;color:#42566b}
+.has-club-rosters .kvl-club-roster-row:hover{background:var(--dv2-soft)}
+.has-club-rosters .kvl-club-roster-row>span{min-width:0}
+.has-club-rosters .kvl-club-roster-row>[hidden]{display:none!important}
+.has-club-rosters .kvl-club-number{font-variant-numeric:tabular-nums;font-weight:700;color:var(--dv2-accent)}
+.has-club-rosters .kvl-club-name strong{display:block;font-size:16px;color:#253b50}
+.has-club-rosters .kvl-club-name a{color:var(--dv2-accent);text-decoration:underline;text-underline-offset:3px}
+.has-club-rosters .kvl-club-name a span{font-size:11px}
+.has-club-rosters .kvl-club-name small{display:block;margin-top:3px;color:#65788c;font-size:11px;line-height:1.45;overflow-wrap:anywhere}
+.has-club-rosters .kvl-club-position{font-weight:700;color:var(--dv2-accent)}
+.has-club-rosters .kvl-club-birth{font-variant-numeric:tabular-nums}
+.has-club-rosters .kvl-club-details{display:none}
+.has-club-rosters .kvl-club-nationality-label,#kvl1180PrintRoot .kvl-club-nationality-label{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.has-club-rosters .kvl-club-nationality-label img,#kvl1180PrintRoot .kvl-club-nationality-label img{display:block;flex:none;width:22px;height:15px;object-fit:contain;box-shadow:0 0 0 1px rgba(0,0,0,.12);border-radius:2px}
+@media screen and (min-width:681px) and (max-width:850px){
+.has-club-rosters .kvl-club-roster-table{overflow-x:auto}
+.has-club-rosters .kvl-club-roster-head,.has-club-rosters .kvl-club-roster-row{min-width:670px;gap:8px;padding:12px}
+}
+@media screen and (max-width:680px){
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters.has-club-rosters .kvl1180-participant-buttons{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters.has-club-rosters .kvl1180-participant-button{display:flex!important;flex-direction:column;align-items:center;justify-content:center;min-height:114px!important;gap:6px!important;padding:10px 4px!important;text-align:center!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters.has-club-rosters .kvl1180-participant-button-copy{text-align:center!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters.has-club-rosters .kvl1180-participant-button strong{font-size:14px!important;white-space:normal!important;word-break:keep-all}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters.has-club-rosters .kvl1180-participant-button small{display:block!important;margin:3px 0 0!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters.has-club-rosters .kvl1180-participant-chevron{display:none!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters.has-club-rosters #team-roster{margin-top:20px}
+.has-club-rosters .kvl-club-roster-head,.has-club-rosters .kvl-club-roster-row{grid-template-columns:30px minmax(0,1fr) 32px 48px;gap:6px;padding:10px 8px}
+.has-club-rosters .kvl-club-roster-head{font-size:11px}
+.has-club-rosters .kvl-club-roster-head>span{white-space:nowrap}
+.has-club-rosters .kvl-club-roster-head>span:nth-child(n+5),.has-club-rosters .kvl-club-birth,.has-club-rosters .kvl-club-nationality,.has-club-rosters .kvl-club-desktop-link{display:none}
+.has-club-rosters .kvl-club-roster-row{font-size:12px;align-items:start}
+.has-club-rosters .kvl-club-name strong{font-size:15px;line-height:1.4}
+.has-club-rosters .kvl-club-name small{font-size:10px}
+.has-club-rosters .kvl-club-number,.has-club-rosters .kvl-club-position,.has-club-rosters .kvl-club-height{padding-top:3px}
+.has-club-rosters .kvl-club-links{grid-column:2/-1}
+.has-club-rosters .kvl-club-details{display:block;font-size:12px}
+.has-club-rosters .kvl-club-details summary{width:fit-content;padding:6px 12px 6px 0;color:var(--dv2-accent);cursor:pointer;min-height:32px}
+.has-club-rosters .kvl-club-details dl{margin:4px 0;padding:10px;background:var(--dv2-soft);border-radius:8px}
+.has-club-rosters .kvl-club-details dl>div{display:flex;align-items:center;gap:8px;margin:5px 0}
+.has-club-rosters .kvl-club-details dt{flex:0 0 64px;color:#65788c}
+.has-club-rosters .kvl-club-details dd{margin:0}
+.has-club-rosters .kvl-club-details p{margin:8px 0;font-size:11px;line-height:1.6;color:#65788c}
+}
+
 /* Regional representatives use plain text at the right end of the team row. */
 [data-kvl-audience="comprehensive"] .dv2-region,
 html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-region{flex:none;margin-left:auto;color:#65788c;font-size:15px;font-weight:400;line-height:1.45;white-space:nowrap;text-align:right}

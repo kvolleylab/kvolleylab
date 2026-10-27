@@ -6,6 +6,9 @@ on:
     paths:
       - 'data/competitions/kovo-cup-*/config.json'
       - 'data/competitions/kovo-cup-*/data.json'
+      - 'data/competitions/kovo-cup-*/rosters.json'
+      - 'data/sources/kovo-cup-2026/**'
+      - 'tests/kovo-cup-rosters.test.cjs'
       - 'data/competitions/v-league-*/config.json'
       - 'data/competitions/v-league-*/data.json'
       - 'assets/js/kvl-domestic-home-v2.js'
@@ -42,3 +45,9 @@ jobs:
         run: node tests/competition-v2-pro-cup-pool-columns.test.cjs
       - name: Cup desktop lineup midpoint and five-set lane
         run: node tests/kovo-cup-desktop-matchup-alignment.test.cjs
+      - name: Install DOM test dependency
+        run: npm install --prefix /tmp/kvl-roster-tests --no-audit --no-fund jsdom@26.1.0
+      - name: Cup roster interactions, source integrity and domestic regressions
+        env:
+          KVL_JSDOM_PATH: /tmp/kvl-roster-tests/node_modules/jsdom
+        run: node --test tests/kovo-cup-rosters.test.cjs tests/domestic-home-v2.test.cjs
