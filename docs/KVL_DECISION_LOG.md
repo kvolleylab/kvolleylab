@@ -240,3 +240,7 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-10-28 · V-리그 남자부 마우스 오버를 연한 금색으로 변경
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 확인은 release PR). 사용자가 운영 V-리그 남자부에서 클릭 전에 마우스를 올렸을 때의 회색 음영을 연한 금색으로 변경하도록 요청했다. 기존 공통 CSS에 pro-league 남자부 범위의 hover 배경 `#FFF3D6`만 추가한다. 탭·요약 지표·참가팀·순위표·명단 행·경기일·라운드 필터에 적용하며 남녀 페이지의 남자부 경기 요약 카드도 같은 금색을 쓴다. 여자부 경기 카드의 분홍색, 평상시/선택 배경, 점수 색, 구조·데이터·다른 대회는 유지한다. 검수·복구: [보고서](validation/vleague-men-gold-hover-20261028.md).
+
+## 2026-10-28 · V-리그 남자부 금색 hover 철회 및 기존 색 복원
+
+Status: APPROVED / IMPLEMENTED / RELEASE AUTHORIZED (검증·merge·Pages·live 결과는 release PR). 사용자가 직전 금색 hover 변경에 “그냥 다시 원래대로 돌려줘”라고 요청했다. #194에서 추가한 금색 hover CSS를 제거하고 CSS 연결·기존 cache smoke를 #193의 상태로 정확히 복원한다. 위의 금색 hover 결정을 이 범위에서 대체한다. #192의 최근 결과+다음 경기, 명단·국기·순위·PC 참가팀 배치 및 #193의 종합대회 로고는 유지한다. 기준 main: 605a276b4ea3e77fb7e6d691106051d959a68743. 복원 대상 3개 파일은 985a01d와 바이트 단위로 일치하며 이전 금색 검수 문서·이미지는 이력으로 보존한다.
