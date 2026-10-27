@@ -99,8 +99,21 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview
       structure:Object.assign({},original.structure,{
         presentation:'domestic-home-v2',
         presentationCategory:'pro-cup',
-        divisionLabel:original.gender==='women'?'여자부':'남자부'
+        divisionLabel:original.gender==='women'?'여자부':'남자부',
+        divisionKey:original.gender,
+        hubUrl:'kovo-cup.html',
+        hubCategoryLabel:'프로 V-리그',
+        hubLabel:'KOVO컵',
+        eyebrow:'PRO VOLLEYBALL · KOVO CUP',
+        heroTagline:original.officialName,
+        participants:Object.assign({},original.structure.participants,{
+          searchLabels:{label:'참가팀 검색',placeholder:'팀명 검색',sortNote:'조별 구분 · 가나다순'}
+        })
       }),
+      divisionLinks:[
+        {key:'men',label:'남자부',gender:'men',url:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-men-2026'},
+        {key:'women',label:'여자부',gender:'women',url:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-women-2026'}
+      ],
       genderLinks:{
         men:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-men-2026',
         women:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-women-2026'
