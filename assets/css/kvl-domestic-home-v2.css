@@ -483,3 +483,61 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl
     white-space:nowrap!important;
   }
 }
+
+
+/* KOVO Cup PC: equal gaps between both team-name groups and the match score.
+ * The fixed-width legacy side blocks and opposing auto margins had caused
+ * asymmetric visual spacing. Keep the outer match-row position, set-score
+ * reservation, mobile layout and non-Cup templates unchanged.
+ */
+@media screen and (min-width:901px){
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-match-board{
+    grid-template-columns:minmax(0,1fr) 62px minmax(0,1fr)!important;
+    column-gap:12px!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side{
+    display:flex!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    align-items:center!important;
+    gap:8px!important;
+    padding:0!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-left{
+    justify-content:flex-end!important;
+    text-align:right!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-right{
+    justify-content:flex-start!important;
+    text-align:left!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-inline-logo{
+    flex:0 0 46px!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-slot-copy{
+    flex:0 1 auto!important;
+    width:auto!important;
+    max-width:calc(100% - 54px)!important;
+    min-width:0!important;
+    margin:0!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-slot-copy strong{
+    display:block!important;
+    width:auto!important;
+    max-width:100%!important;
+    min-width:0!important;
+    margin:0!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-score{
+    justify-self:center!important;
+    width:62px!important;
+    min-width:62px!important;
+    max-width:62px!important;
+    margin:0!important;
+    text-align:center!important;
+  }
+}
