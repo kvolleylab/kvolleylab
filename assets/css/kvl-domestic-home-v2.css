@@ -369,3 +369,75 @@ html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl
 [data-kvl-audience="comprehensive"] .dv2-ranked-team>b{font-size:16px;line-height:1.45;overflow-wrap:anywhere;word-break:keep-all}
 [data-kvl-audience="comprehensive"] .dv2-ranking-list small{font-size:12px;flex:none;white-space:nowrap}
 html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-region{margin:0 auto 6px}
+
+
+/* Shared PRO Cup presentation (domestic-home-v2) · 2026-10-27 */
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2{
+ --dv2-accent:#292d33;--dv2-soft:#f5f3ed;--dv2-line:#e5e1da;--dv2-light:#e4bc6b;
+ --kvl-theme-primary:#25272c;--kvl-theme-strong:#14171b;
+ --kvl-theme-dark:#0b0d10;--kvl-theme-soft:#f6f4ef;--kvl-theme-border:#dbd3bf;
+ background:#f6f6f5;color:#20262d;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2[data-kvl-gender="women"]{
+ --dv2-accent:#9b4c70;--dv2-soft:#fff2f6;--dv2-line:#eadfe3;--dv2-light:#e4bc6b;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 .kvl1180-hero{
+ min-height:228px!important;background-color:#12151a!important;
+ background-image:linear-gradient(90deg,rgba(10,12,16,.84),rgba(10,12,16,.5) 40%,rgba(10,12,16,.06) 77%),var(--kvl-hero-image-desktop)!important;
+ background-size:100% 100%,contain!important;background-position:center,center!important;background-repeat:no-repeat!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2[data-kvl-gender="women"] .kvl1180-hero{
+ background-image:linear-gradient(90deg,rgba(15,11,17,.85),rgba(25,14,23,.50) 40%,rgba(15,11,17,.06) 77%),var(--kvl-hero-image-desktop)!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 .kvl1180-hero h1,
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2[data-kvl-gender] .kvl1180-hero h1{color:#e9c57c!important;text-shadow:0 2px 12px rgba(0,0,0,.28)}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 .kvl1180-hero h1 em{color:#f0d89c!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2[data-kvl-gender="women"] .kvl1180-tabs a.is-active{
+ background:#fff2f6!important;color:#9b4c70!important;box-shadow:inset 0 -3px #9b4c70!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-match-board{
+ display:grid!important;grid-template-columns:minmax(0,1fr) 62px minmax(0,1fr)!important;
+ width:min(100%,560px)!important;min-width:0!important;gap:10px!important;justify-self:center!important;align-items:center!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side{
+ display:grid!important;align-items:center!important;min-width:0!important;gap:8px!important;padding:0!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-left{
+ grid-template-columns:46px minmax(0,1fr)!important;text-align:right!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-right{
+ grid-template-columns:minmax(0,1fr) 46px!important;text-align:left!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-inline-logo{
+ width:46px!important;height:46px!important;min-width:46px!important;display:grid!important;place-items:center!important;padding:0!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-inline-logo img{
+ display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-score{
+ width:62px!important;min-width:62px!important;text-align:center!important;color:#4b5563!important;font-variant-numeric:tabular-nums!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-set-scores,
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 #knockout :is(.kvl1180-team-score,.kvl1180-match-sets){color:#4b5563!important}
+@media(max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 .kvl1180-hero,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2[data-kvl-gender="women"] .kvl1180-hero{
+  background-image:linear-gradient(90deg,rgba(10,12,16,.82),rgba(10,12,16,.43) 55%,rgba(10,12,16,.08)),var(--kvl-hero-image-mobile)!important;
+  background-size:100% 100%,contain!important;background-position:center,center!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-match-board{
+  width:100%!important;grid-template-columns:minmax(0,1fr) 50px minmax(0,1fr)!important;gap:5px!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-left{
+  grid-template-columns:34px minmax(0,1fr)!important;gap:4px!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-side.is-right{
+  grid-template-columns:minmax(0,1fr) 34px!important;gap:4px!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-inline-logo{
+  width:34px!important;height:34px!important;min-width:34px!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-cup-domestic-v2 :is(#schedule,#team-results) .kvl1180-score{
+  width:50px!important;min-width:50px!important;
+ }
+}
