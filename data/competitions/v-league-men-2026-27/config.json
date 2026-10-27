@@ -90,7 +90,10 @@
       "mode": "standings"
     },
     "overviewTeamOrder": "previous-season-rank",
-    "overviewTeamColumns": 7
+    "overviewTeamColumns": 7,
+    "overviewMatches": {
+      "mode": "recent-next"
+    }
   },
   "hero": {
     "showImage": true,

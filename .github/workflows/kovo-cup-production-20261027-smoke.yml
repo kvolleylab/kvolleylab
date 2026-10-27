@@ -14,6 +14,7 @@ on:
       - 'data/competitions/v-league-*/rosters.json'
       - 'data/sources/v-league-2026-27/**'
       - 'tests/vleague-rosters.test.cjs'
+      - 'tests/vleague-match-summary.test.cjs'
       - 'assets/js/kvl-domestic-home-v2.js'
       - 'assets/js/kvl-competition-template-v2.js'
       - 'assets/js/kvl-competition-components-v2.js'
@@ -28,6 +29,7 @@ on:
     paths:
       - 'data/competitions/v-league-*/**'
       - 'tests/vleague-rosters.test.cjs'
+      - 'tests/vleague-match-summary.test.cjs'
       - 'tests/kovo-cup-production-template-20261027.test.cjs'
       - 'tests/kovo-cup-desktop-matchup-alignment.test.cjs'
       - '.github/workflows/kovo-cup-production-20261027-smoke.yml'
@@ -55,4 +57,4 @@ jobs:
       - name: Cup roster interactions, source integrity and domestic regressions
         env:
           KVL_JSDOM_PATH: /tmp/kvl-roster-tests/node_modules/jsdom
-        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/domestic-home-v2.test.cjs
+        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/domestic-home-v2.test.cjs
