@@ -22,10 +22,10 @@ function ranking(d){
  const rankText=r=>(counts.get(Number(r.rank))>1?'공동 ':'')+r.rank+'위';
  if(!ranks.length)return '<div class="dv2-empty">최종순위 확정 후 표시합니다.</div>';
  const region=r=>regional?team(r.code).region||'':'';
- const badge=r=>region(r)?`<span class="dv2-region-badge" aria-label="대표 지역 ${esc(region(r))}">${esc(region(r))}</span>`:'';
+ const regionText=r=>region(r)?`<span class="dv2-region" aria-label="대표 지역 ${esc(region(r))}">${esc(region(r))}</span>`:'';
  const result=r=>{const value=r.result||'',suffix=' · '+region(r);return region(r)&&value.endsWith(suffix)?value.slice(0,-suffix.length):value;};
- const rows=ranks.map(r=>`<a href="${esc(href('team',{team:r.code}))}"><span class="dv2-rank">${trophy(r.rank)}<span>${esc(rankText(r))}</span></span>${regional?`<span class="dv2-ranked-team">${badge(r)}<b>${esc(r.team||team(r.code).name)}</b></span>`:`<b>${esc(r.team||team(r.code).name)}</b>`}<small>${esc(result(r))}</small></a>`).join('');
- return `<div class="dv2-ranking">${champ?`<a class="dv2-champion" href="${esc(href('team',{team:champ.code}))}">${teamLogo(team(champ.code))}<span class="dv2-champion-copy"><small>CHAMPION</small>${badge(champ)}<strong>${esc(champ.team||team(champ.code).name)}</strong></span>${trophy(1)}</a>`:''}<div class="dv2-ranking-list">${rows}</div></div>`;
+ const rows=ranks.map(r=>`<a href="${esc(href('team',{team:r.code}))}"><span class="dv2-rank">${trophy(r.rank)}<span>${esc(rankText(r))}</span></span>${regional?`<span class="dv2-ranked-team"><span class="dv2-ranked-team-copy"><b>${esc(r.team||team(r.code).name)}</b><small>${esc(result(r))}</small></span>${regionText(r)}</span>`:`<b>${esc(r.team||team(r.code).name)}</b><small>${esc(result(r))}</small>`}</a>`).join('');
+ return `<div class="dv2-ranking">${champ?`<a class="dv2-champion" href="${esc(href('team',{team:champ.code}))}">${teamLogo(team(champ.code))}<span class="dv2-champion-copy"><small>CHAMPION</small>${regional?`<span class="dv2-team-name-row"><strong>${esc(champ.team||team(champ.code).name)}</strong>${regionText(champ)}</span>`:`<strong>${esc(champ.team||team(champ.code).name)}</strong>`}</span>${trophy(1)}</a>`:''}<div class="dv2-ranking-list">${rows}</div></div>`;
 }
 function initialCalendarMonth(d,dates){
  const today=new Date(Date.now()+9*60*60*1000).toISOString().slice(0,10); // Korea Standard Time

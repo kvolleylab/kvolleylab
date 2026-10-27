@@ -356,19 +356,24 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[dat
 html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"] #rosters.has-inline-rosters .kvl1180-vb-short{display:inline}
 }
 
-/* Regional representatives in comprehensive competition results. */
-[data-kvl-audience="comprehensive"] .dv2-region-badge,
-html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-region{display:inline-flex;align-items:center;width:fit-content;padding:3px 10px;border:1px solid var(--dv2-line);border-radius:6px;background:var(--dv2-soft);color:var(--dv2-accent);font-size:16px;font-weight:800;line-height:1.4;white-space:nowrap}
-[data-kvl-audience="comprehensive"] .dv2-champion-copy{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+/* Regional representatives use plain text at the right end of the team row. */
+[data-kvl-audience="comprehensive"] .dv2-region,
+html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-region{flex:none;margin-left:auto;color:#65788c;font-size:15px;font-weight:400;line-height:1.45;white-space:nowrap;text-align:right}
+[data-kvl-audience="comprehensive"] .dv2-champion-copy{display:flex;flex:1;flex-direction:column;align-items:stretch;gap:5px;min-width:0}
 [data-kvl-audience="comprehensive"] .dv2-champion-copy>small{margin:0}
-[data-kvl-audience="comprehensive"] .dv2-champion-copy>strong{font-size:20px;line-height:1.4;overflow-wrap:anywhere;word-break:keep-all}
+[data-kvl-audience="comprehensive"] .dv2-team-name-row{display:flex;align-items:baseline;gap:10px;min-width:0}
+[data-kvl-audience="comprehensive"] .dv2-team-name-row>strong{flex:1;min-width:0;font-size:20px;line-height:1.4;overflow-wrap:anywhere;word-break:keep-all}
 [data-kvl-audience="comprehensive"] .dv2-champion>img,
 [data-kvl-audience="comprehensive"] .dv2-champion>.dv2-team-mark{flex:none}
 [data-kvl-audience="comprehensive"] .dv2-ranking-list a{gap:12px}
-[data-kvl-audience="comprehensive"] .dv2-ranking-list .dv2-ranked-team{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;color:#294259}
-[data-kvl-audience="comprehensive"] .dv2-ranked-team>b{font-size:16px;line-height:1.45;overflow-wrap:anywhere;word-break:keep-all}
-[data-kvl-audience="comprehensive"] .dv2-ranking-list small{font-size:12px;flex:none;white-space:nowrap}
-html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-region{margin:0 auto 6px}
+[data-kvl-audience="comprehensive"] .dv2-ranking-list .dv2-ranked-team{display:flex;flex:1;align-items:baseline;gap:10px;min-width:0;color:#294259}
+[data-kvl-audience="comprehensive"] .dv2-ranked-team-copy{display:flex;flex:1;flex-direction:column;gap:3px;min-width:0}
+[data-kvl-audience="comprehensive"] .dv2-ranked-team-copy>b{font-size:16px;line-height:1.45;overflow-wrap:anywhere;word-break:keep-all}
+[data-kvl-audience="comprehensive"] .dv2-ranked-team-copy>small{margin:0;font-size:12px;white-space:normal}
+html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl1180-final-copy{width:100%;min-width:0}
+html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-team-row{display:flex;align-items:baseline;gap:8px;width:100%;min-width:0;text-align:left}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-team-row>strong{flex:1;min-width:0;margin:0!important;overflow:visible!important;text-overflow:clip!important;white-space:normal!important;overflow-wrap:anywhere;word-break:keep-all;text-align:left}
+@media(max-width:680px){html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-region{font-size:14px}}
 
 
 /* Shared PRO Cup presentation (domestic-home-v2) · 2026-10-27 */

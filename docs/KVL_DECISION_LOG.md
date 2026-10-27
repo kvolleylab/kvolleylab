@@ -188,3 +188,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED (local 63 tests + 2 Cup smokes; 26 PC/
 2026 확정 71개(남고·고등부 클럽 22, 여고 12, 남중 20, 여중 11, 여자대학부 6)를 기존 학교 manifest/runtime에 연결한다. PNG RGBA 512×512, 실제 도안 긴 변 410px, 최소 여백 51px, 비율 유지·중앙 정렬·바깥 투명·내부 흰색/문자/분리 도형 보존을 사용한다. 소재지와 정식 학교명은 `경북 영천 금호중학교`와 같이 공통 팀 상세·명단·인쇄 제목에 표시한다. 학교 소재지는 대표 시·도와 별도 필드로 유지한다. 새 엔진·Master ID·경기/선수/명단 관계 변경은 없다.
 
 CBS 4개·춘계 3개 원문 별칭은 출처 대조 후 해당 competitionId에서만 표시/로고 연결한다. 모종중·홍천군체육회 U15·목포영화중과 이번 확인 목록 밖 학교는 fallback을 유지한다. 정상 프로 SVG 14개와 기존 프로 resolver는 유지한다. 앞선 prototype-only 제한은 이번 사용자의 명시적인 운영 반영 승인 범위에서 대체한다.
+
+
+## 2026-10-27 · 종합대회 순위 지역 표기를 오른쪽 일반 글씨로 조정
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR에 기록). 운영 반영 요청에 이어 사용자가 지역을 팀명 위의 작은 카드 대신 팀명 오른쪽 끝의 일반 글씨로 표시하도록 수정했다. 종합대회 목록, 전국체전·소년체전 overview 우승팀/최종순위, 최종 입상팀 카드를 같은 방식으로 적용한다. 지역은 400 굵기·배경/테두리 없음·오른쪽 정렬, 긴 팀명은 줄바꿈하며 기존 공동 3위와 팀 링크를 유지한다. 앞선 같은 날짜의 16px 지역 배지 디자인을 이 범위에서 대체한다. 최신 main의 학교 로고·소재지 및 KOVO Cup 변경을 보존한다. [검수·복구](validation/comprehensive-region-text-20261027.md).
