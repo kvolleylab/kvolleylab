@@ -23,7 +23,8 @@ for(const [key,n,g,byes,champion] of cases)test(key+' includes every official te
   assert.equal(doc.querySelectorAll('.kvl1180-participant-button .kvl-region-mark').length,n);
   assert.equal(doc.querySelectorAll('[data-tree-match]').length,g);assert.equal(doc.querySelectorAll('[data-tree-bye]').length,byes);assert.equal(doc.querySelectorAll('.kvl-tree-round').length,4);assert.equal(doc.querySelectorAll('#knockout .dv2-trophy').length,4);assert.equal(doc.querySelector('.dv2-calendar-month').textContent,'10월');
   assert.deepEqual([...doc.querySelectorAll('.dv2-ranking-list .dv2-region')].map(n=>n.textContent),d.finalRanking.map(r=>d.participants.find(t=>t.code===r.code).region));
-  assert.deepEqual([...doc.querySelectorAll('#knockout .kvl-final-region')].map(n=>n.textContent),d.finalRanking.map(r=>d.participants.find(t=>t.code===r.code).region));
+  assert.deepEqual([...doc.querySelectorAll('#knockout .kvl1180-final-flag.kvl-region-mark')].map(n=>n.textContent),d.finalRanking.map(r=>d.participants.find(t=>t.code===r.code).region));
+  assert.equal(doc.querySelectorAll('#knockout .kvl-final-region').length,0);
   assert.equal(doc.querySelector('.dv2-champion .dv2-region').textContent,d.participants.find(t=>t.code===d.finalRanking[0].code).region);
   assert.equal(doc.querySelectorAll('[href*="university-team"]').length,0);assert.match(doc.querySelector('.dv2-utility').textContent,/종합대회/);
   const teams=new Set(d.participants.map(t=>t.code));for(const m of d.matches){assert.ok(teams.has(m.home.code)&&teams.has(m.away.code));assert.equal((m.reportedSets||m.score.sets).length,m.score.home+m.score.away);m.score.sets.forEach((s,i)=>{const hi=Math.max(s.home,s.away),lo=Math.min(s.home,s.away),target=i===4?15:25;assert.ok((hi===target&&lo<=target-2)||(hi>target&&hi-lo===2));});if(m.reportedSets){assert.equal(m.dataStatus,'source-conflict');assert.ok(m.scoreNote);}assert.match(m.sourceUrl,/meet.sports.or.kr/);}

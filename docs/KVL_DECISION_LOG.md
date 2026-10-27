@@ -244,3 +244,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·�
 ## 2026-10-28 · V-리그 남자부 금색 hover 철회 및 기존 색 복원
 
 Status: APPROVED / IMPLEMENTED / RELEASE AUTHORIZED (검증·merge·Pages·live 결과는 release PR). 사용자가 직전 금색 hover 변경에 “그냥 다시 원래대로 돌려줘”라고 요청했다. #194에서 추가한 금색 hover CSS를 제거하고 CSS 연결·기존 cache smoke를 #193의 상태로 정확히 복원한다. 위의 금색 hover 결정을 이 범위에서 대체한다. #192의 최근 결과+다음 경기, 명단·국기·순위·PC 참가팀 배치 및 #193의 종합대회 로고는 유지한다. 기준 main: 605a276b4ea3e77fb7e6d691106051d959a68743. 복원 대상 3개 파일은 985a01d와 바이트 단위로 일치하며 이전 금색 검수 문서·이미지는 이력으로 보존한다.
+
+
+## 2026-10-28 · 종합대회 최종입상팀의 중복 지역명 제거
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 ‘대진·최종순위’의 ‘최종입상팀’ 카드를 ‘1위 → 경기 로고 → 화성시청 → 우승’으로 표시하도록 요청했다. 이 카드에서 팀명 오른쪽의 지역 글씨만 제거하고 지역 로고·순위 트로피·팀명 링크·우승/준우승/공동 3위를 가운데 세로로 배치한다. #193의 오른쪽 지역 유지 결정을 최종입상팀 카드 범위에서 대체한다. 목록과 한눈에 순위 표시는 변경하지 않으며 데이터·Hero·대진표·명단·다른 대회 렌더링은 유지한다. [검수·복구](validation/comprehensive-podium-region-once-20261028.md).
