@@ -231,3 +231,7 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·�
 ## 2026-10-28 · V-리그 남녀 최근 결과·다음 경기
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 증거는 release PR). 사용자가 남녀 각각 최근 결과 1경기 + 다음 예정 1경기를 함께 보여주는 구성을 요청했다. #190의 PROPOSED / NOT IMPLEMENTED 결정을 이 범위에서 대체한다. 한눈에의 순위표 아래·참가팀 위에 남녀 카드 2개를 배치하며 PC 2열/모바일 1열, 최종·세트별 스코어와 KST/대진/경기장 및 날짜 일정 링크를 표시한다. 동일 시즌 기존 경기 데이터를 사용하고 개막 전·결과 없음·다음 일정 없음·부문 로딩 실패를 구분한다. 현재 선수 ID/명단/국기·순위·경기·Hero·타 대회는 유지한다. [검수·선택 기준·복구](validation/vleague-match-summary-20261028.md).
+
+## 2026-10-28 · V-리그 남자부 마우스 오버를 연한 금색으로 변경
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 확인은 release PR). 사용자가 운영 V-리그 남자부에서 클릭 전에 마우스를 올렸을 때의 회색 음영을 연한 금색으로 변경하도록 요청했다. 기존 공통 CSS에 pro-league 남자부 범위의 hover 배경 `#FFF3D6`만 추가한다. 탭·요약 지표·참가팀·순위표·명단 행·경기일·라운드 필터에 적용하며 남녀 페이지의 남자부 경기 요약 카드도 같은 금색을 쓴다. 여자부 경기 카드의 분홍색, 평상시/선택 배경, 점수 색, 구조·데이터·다른 대회는 유지한다. 검수·복구: [보고서](validation/vleague-men-gold-hover-20261028.md).
