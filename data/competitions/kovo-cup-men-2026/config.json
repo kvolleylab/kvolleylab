@@ -62,7 +62,10 @@
       "layout": "domestic-snapshot",
       "domesticTeamRoute": "none",
       "allowPendingSelect": true,
-      "selectHint": "팀을 선택하면 등록 선수명단 상태를 확인할 수 있습니다. 공식 명단 검수 전에는 선수 정보를 표시하지 않습니다."
+      "selectHint": "팀을 선택하면 아래에서 2026 KOVO컵 선수명단을 볼 수 있습니다.",
+      "profile": "club",
+      "placement": "below-participants",
+      "title": "2026 KOVO컵 선수명단"
     },
     "presentation": "domestic-home-v2",
     "presentationThemeFamily": "domestic",
@@ -94,5 +97,10 @@
     "description": "2026 KOVO컵 남자부 경기일정, 조별순위, 결선 토너먼트와 참가팀."
   },
   "data": "data.json",
-  "modules": []
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    }
+  ]
 }

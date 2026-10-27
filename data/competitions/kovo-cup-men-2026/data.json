@@ -31,7 +31,8 @@
       "fullName": "OK저축은행",
       "en": "OKF",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/men/OKF.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/men/OKF.svg",
+      "rosterCount": 17
     },
     {
       "code": "HDC",
@@ -39,7 +40,8 @@
       "fullName": "현대캐피탈",
       "en": "HDC",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/men/HDC.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/men/HDC.svg",
+      "rosterCount": 18
     },
     {
       "code": "KAL",
@@ -47,7 +49,8 @@
       "fullName": "대한항공",
       "en": "KAL",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/men/KAL.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/men/KAL.svg",
+      "rosterCount": 19
     },
     {
       "code": "SFB",
@@ -55,7 +58,8 @@
       "fullName": "삼성화재",
       "en": "SFB",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/men/SFB.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/men/SFB.svg",
+      "rosterCount": 22
     },
     {
       "code": "KEP",
@@ -63,7 +67,8 @@
       "fullName": "한국전력",
       "en": "KEP",
       "group": "B",
-      "logo": "/assets/img/team-logos/v-league/2026-27/men/KEP.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/men/KEP.svg",
+      "rosterCount": 15
     },
     {
       "code": "KBI",
@@ -71,7 +76,8 @@
       "fullName": "KB손해보험",
       "en": "KBI",
       "group": "B",
-      "logo": "/assets/img/team-logos/v-league/2026-27/men/KBI.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/men/KBI.svg",
+      "rosterCount": 19
     },
     {
       "code": "WRC",
@@ -79,7 +85,8 @@
       "fullName": "우리카드",
       "en": "WRC",
       "group": "B",
-      "logo": "/assets/img/team-logos/v-league/2026-27/men/WRC.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/men/WRC.svg",
+      "rosterCount": 20
     }
   ],
   "matches": [
@@ -831,6 +838,7 @@
   },
   "activeOverviewNote": "대회 종료 · 결승 대한항공 3–1 현대캐피탈 · 우승 대한항공",
   "rosterPendingLabel": "2026 KOVO컵 당시 공식 등록 선수명단은 검수·연결 준비 중입니다. 명단이 비어 있다고 미참가를 뜻하지 않습니다.",
-  "rosterNote": "2026 KOVO컵 대회 당시 등록 선수명단 기준",
-  "rosterSourceNote": "공식 명단 및 KVL 공통 Player ID 교차 검수 후 공개 예정"
+  "rosterNote": "공식 팸플릿 수록 명단 · 실제 경기별 엔트리와 다를 수 있습니다.",
+  "rosterSourceNote": "2026 여수·NH농협컵 공식 팸플릿 기준. 국적은 기존 검수자료에서 확인된 값만 표시합니다. 자료가 다른 생년월일과 음력 여부는 확인 중입니다.",
+  "rosterPrintNote": "공식 팸플릿 수록 선수 · 경기별 엔트리 및 현재 소속과 구분"
 }

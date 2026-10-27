@@ -1,5 +1,11 @@
 # K-Volley Lab — 2026 KOVO Cup / domestic-template UI prototype
 
+## Roster follow-up — 2026-10-27
+
+Status: IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED on 2026-10-28. Owner explicitly approved publication of the reviewed player information; CI, merge and live results are recorded in the release PR.
+
+The owner requested club team selection to show the player list, like international participants, and then instructed implementation. The archived pamphlet comparison and all 14 original player pages have now been checked: 130 men, 121 women. Two `rosters` JSON modules use the shared renderer's opt-in club profile. Exact identity matches link 54 pre-existing profiles; 197 names remain unlinked. Five conflicting birth dates and one lunar-date case display pending. English names, explicit country values and validated Volleybox URLs are supplementary fields from existing reviewed team sheets, not inferred from the pamphlet. This supersedes the earlier untranscribed/pending-only status below for the Cup only. V-League season rosters remain unchanged. See [evidence, limitations and rollback](validation/kovo-cup-rosters-20261027.md).
+
 Status: PROTOTYPE ONLY, 2026-10-27 KST.
 
 Entry: /kovo-cup-domestic-template-prototype.html?competition=kovo-cup-men-2026

@@ -31,7 +31,8 @@
       "fullName": "SOOP",
       "en": "SOO",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/women/SOO.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/women/SOO.svg",
+      "rosterCount": 17
     },
     {
       "code": "IBK",
@@ -39,7 +40,8 @@
       "fullName": "IBK기업은행",
       "en": "IBK",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/women/IBK.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/women/IBK.svg",
+      "rosterCount": 18
     },
     {
       "code": "RSP",
@@ -47,7 +49,8 @@
       "fullName": "정관장",
       "en": "RSP",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/women/RSP.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/women/RSP.svg",
+      "rosterCount": 16
     },
     {
       "code": "HPS",
@@ -55,7 +58,8 @@
       "fullName": "흥국생명",
       "en": "HPS",
       "group": "A",
-      "logo": "/assets/img/team-logos/v-league/2026-27/women/HPS.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/women/HPS.svg",
+      "rosterCount": 20
     },
     {
       "code": "GSC",
@@ -63,7 +67,8 @@
       "fullName": "GS칼텍스",
       "en": "GSC",
       "group": "B",
-      "logo": "/assets/img/team-logos/v-league/2026-27/women/GSC.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/women/GSC.svg",
+      "rosterCount": 17
     },
     {
       "code": "KEX",
@@ -71,7 +76,8 @@
       "fullName": "한국도로공사",
       "en": "KEX",
       "group": "B",
-      "logo": "/assets/img/team-logos/v-league/2026-27/women/KEX.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/women/KEX.svg",
+      "rosterCount": 15
     },
     {
       "code": "HHC",
@@ -79,7 +85,8 @@
       "fullName": "현대건설",
       "en": "HHC",
       "group": "B",
-      "logo": "/assets/img/team-logos/v-league/2026-27/women/HHC.svg"
+      "logo": "/assets/img/team-logos/v-league/2026-27/women/HHC.svg",
+      "rosterCount": 18
     }
   ],
   "matches": [
@@ -734,6 +741,7 @@
   },
   "activeOverviewNote": "대회 종료 · 결승 GS칼텍스 3–2 한국도로공사 · 우승 GS칼텍스",
   "rosterPendingLabel": "2026 KOVO컵 당시 공식 등록 선수명단은 검수·연결 준비 중입니다. 명단이 비어 있다고 미참가를 뜻하지 않습니다.",
-  "rosterNote": "2026 KOVO컵 대회 당시 등록 선수명단 기준",
-  "rosterSourceNote": "공식 명단 및 KVL 공통 Player ID 교차 검수 후 공개 예정"
+  "rosterNote": "공식 팸플릿 수록 명단 · 실제 경기별 엔트리와 다를 수 있습니다.",
+  "rosterSourceNote": "2026 여수·NH농협컵 공식 팸플릿 기준. 국적은 기존 검수자료에서 확인된 값만 표시합니다. 자료가 다른 생년월일과 음력 여부는 확인 중입니다.",
+  "rosterPrintNote": "공식 팸플릿 수록 선수 · 경기별 엔트리 및 현재 소속과 구분"
 }
