@@ -9,7 +9,7 @@ const pos=css.lastIndexOf(marker);
 assert(pos>0,'scoped KOVO Cup geometry must exist');
 const patch=css.slice(pos);
 assert.match(patch, /@media screen and \(min-width:901px\)/,'change must apply on PC only');
-assert.match(patch, /\.kvl-pro-cup-domestic-v2 :is\(#schedule,#team-results\) \.kvl1180-match-row/,'must target Cup only');
+assert.match(patch, /:is\(\.kvl-pro-cup-domestic-v2,\.kvl-pro-league-domestic-v2\) :is\(#schedule,#team-results\) \.kvl1180-match-row/,'must target only opted-in pro Cup/league pages');
 assert.match(patch,/grid-template-columns:clamp\(118px,11\.8vw,150px\) minmax\(0,1fr\) clamp\(285px,25vw,300px\)!important/);
 assert.match(patch,/\.kvl1180-match-meta\{\s*grid-column:1!important;\s*grid-row:1!important/);
 assert.match(patch,/\.kvl1180-match-board\{\s*grid-column:2!important;\s*grid-row:1!important/);
@@ -87,6 +87,6 @@ for(const sideWidth of [164,192,230,240]){
 assert(read('assets/css/kvl-competition-components-v2.css').includes('[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board'), 'existing baseline stays in common competition components CSS');
 assert(css.includes('kvl-pro-cup-domestic-v2'));
 for(const html of ['competition-engine.html','kovo-cup-domestic-template-prototype.html']){
-  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-club-rosters-flags)-1|20261028-selected-hero-v03)/,'cache-bust '+html);
+  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-(?:club-rosters-flags|vleague-rosters))-1|20261028-selected-hero-v03)/,'cache-bust '+html);
 }
 console.log('PASS: Cup PC matchup centered with equal team-to-score gaps; five-set lane and mobile layout protected');

@@ -45,8 +45,10 @@ const pointsRule = [
 assert(read('assets/css/kvl-competition-base-v2.css').includes(pointsRule),
   'points must use the same shared typography token as wins and losses');
 
-const version = 'kvl-competition-components-v2.css?v=20261017-pro-cup-semibold-1';
-for (const shell of ['competition-engine.html', 'competition-engine-prototype.html']) {
+for (const [shell, version] of [
+  ['competition-engine.html', 'kvl-competition-components-v2.css?v=20261028-vleague-rosters-1'],
+  ['competition-engine-prototype.html', 'kvl-competition-components-v2.css?v=20261017-pro-cup-semibold-1']
+]) {
   assert(read(shell).includes(version), shell + ' must refresh the shared CSS asset');
 }
 for (const gender of ['men', 'women']) {

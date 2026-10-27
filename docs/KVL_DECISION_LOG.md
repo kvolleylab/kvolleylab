@@ -213,3 +213,7 @@ Status: APPROVED / RELEASE AUTHORIZED. 사용자가 생년월일을 포함한 �
 ## 2026-10-28 · 종합대회 Hero 최종 선택 및 운영 연결
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR에 기록). 사용자가 비교 시안에서 종합대회 배구 02, 전국체전 남자부 04·여자부 07, 소년체전 남자부 09·여자부 12를 명시적으로 선택했다. 기존 운영 반영 요청의 연속 범위로 5종 PC·모바일 10장과 9개 부문을 연결한다. 선택 원본의 남녀 서로 다른 장면, PC 2108×406·모바일 1258×406, 로즈 #8E315E / #6F234A / #E7A8C2를 유지한다. `finished-artwork` 공통 opt-in은 어두운 덮개 없이 contain으로 전체 이미지를 보존한다. 모바일 상세는 하단 배치로 제목과 장면을 분리하며 기존 Hero 최소 높이와 템플릿·경기·명단·지역 표시는 유지한다. 최근 대회 카드는 해당 기본 부문의 Hero를 재사용한다. 운영기준·Hero 가이드 대조, MASTER/WEB 보관, 79개 회귀 검사 및 25개 반응형 이미지 검수 완료. 앞선 공통 홈 이미지와 남녀 동일 장면은 이 선택 범위에서 대체한다. [검수·복구·선택 번호](validation/comprehensive-hero-selected-20261028.md).
+
+## 2026-10-28 · V-리그 대회 화면과 시즌 선수명단 운영 적용
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 화면은 release PR 기록). 사용자가 “V-리그도 대회 페이지 수정하고 선수명단 반영해줘”라고 요청했다. 기존 V-리그 남녀 경로에 공통 domestic-home-v2의 pro-league 옵션을 적용하고 팀 카드 아래 시즌 명단과 국기+국적을 표시한다. 10월 27일 공시까지 대조한 14팀·252명과 기존 exact-match 프로필 55개를 연결한다. 이준 전역 등록, 송민근 자유신분, 최원빈 해외임대, 김영태 MB 변경 및 외국인/아시아쿼터 28명의 공시 국적을 대조했다. Cup 당시 명단과 시즌 명단은 별도 snapshot이다. 기존 v08 Hero, 정규리그 252경기·순위·포스트시즌·선수 ID를 유지한다. 자료 충돌/음력 DOB 6건은 확인 중이다. 앞선 V-리그 pending-only 화면과 prototype 표기를 이번 범위에서 대체한다. [검수·출처·복구](validation/vleague-rosters-20261028.md).

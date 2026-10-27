@@ -21,7 +21,8 @@
       "knockoutTitle": "포스트시즌",
       "participantsTitle": "참가팀",
       "participantsKpi": "참가팀",
-      "participantsKpiUnit": "팀"
+      "participantsKpiUnit": "팀",
+      "knockoutTab": "포스트시즌"
     },
     "calendar": true,
     "schedule": {
@@ -55,14 +56,52 @@
       "mode": "flat",
       "groupLabel": "남자부 참가팀",
       "displayColumns": 3,
-      "linkMode": "team-roster"
+      "linkMode": "team-roster",
+      "sort": "name-ko",
+      "searchLabels": {
+        "label": "참가팀 검색",
+        "placeholder": "팀명 검색",
+        "sortNote": "팀명 가나다순",
+        "emptyMessage": "해당 팀을 찾을 수 없습니다."
+      }
     },
     "roster": {
       "mode": "full",
       "layout": "domestic-snapshot",
       "domesticTeamRoute": "none",
       "allowPendingSelect": true,
-      "selectHint": "프로 구단을 선택하면 2026-27 시즌 공식 등록 선수명단 연결 상태를 확인할 수 있습니다."
+      "selectHint": "팀을 선택하면 아래에서 2026-27 V-리그 선수명단을 볼 수 있습니다.",
+      "profile": "club",
+      "placement": "below-participants",
+      "title": "2026-27 V-리그 선수명단",
+      "printLabel": "시즌 등록 공시 기준 명단"
+    },
+    "presentation": "domestic-home-v2",
+    "presentationThemeFamily": "domestic",
+    "presentationCategory": "pro-league",
+    "divisionLabel": "남자부",
+    "hubUrl": "v-league.html",
+    "hubCategoryLabel": "프로 V-리그",
+    "hubLabel": "V-리그",
+    "eyebrow": "PRO VOLLEYBALL · V-LEAGUE",
+    "heroTagline": "HK흥국금융 2026-2027 V-리그 · 남자부",
+    "overviewTeamCount": 7,
+    "overviewSummary": {
+      "title": "시즌 안내",
+      "items": [
+        {
+          "label": "정규리그",
+          "value": "7개 구단 · 6라운드 · 126경기"
+        },
+        {
+          "label": "포스트시즌",
+          "value": "준PO · 단판 / PO · 3전 2선승 / 챔피언결정전 · 5전 3선승"
+        },
+        {
+          "label": "선수명단",
+          "value": "2026-10-27 등록 공시까지 대조 · 경기별 엔트리와 구분"
+        }
+      ]
     }
   },
   "hero": {
@@ -80,9 +119,14 @@
     "mobileSize": "cover"
   },
   "seo": {
-    "title": "2026-27 V-리그 남자부 프로토타입 | K-Volley Lab",
-    "description": "2026-27 V-리그 남자부 경기일정, 정규리그 순위, 참가팀과 포스트시즌 프로토타입."
+    "title": "2026-27 V-리그 남자부 | K-Volley Lab",
+    "description": "2026-27 V-리그 남자부 경기일정, 정규리그 순위, 참가팀 선수명단과 포스트시즌."
   },
   "data": "data.json",
-  "modules": []
+  "modules": [
+    {
+      "id": "rosters",
+      "source": "rosters.json"
+    }
+  ]
 }
