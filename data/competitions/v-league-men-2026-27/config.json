@@ -55,11 +55,14 @@
       "mode": "flat",
       "groupLabel": "남자부 참가팀",
       "displayColumns": 3,
-      "linkMode": "team-results"
+      "linkMode": "team-roster"
     },
     "roster": {
-      "mode": "none",
-      "domesticTeamRoute": "none"
+      "mode": "full",
+      "layout": "domestic-snapshot",
+      "domesticTeamRoute": "none",
+      "allowPendingSelect": true,
+      "selectHint": "프로 구단을 선택하면 2026-27 시즌 공식 등록 선수명단 연결 상태를 확인할 수 있습니다."
     }
   },
   "hero": {
