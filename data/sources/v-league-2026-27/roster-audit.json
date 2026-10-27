@@ -1,0 +1,1233 @@
+{
+  "sourceId": "KVL-SRC-VLEAGUE-2026-27-ROSTER-20261028",
+  "verifiedAt": "2026-10-28",
+  "season": "2026-27",
+  "membershipBasis": "Archived KOVO first registration + subsequent changes through 2026-10-20, with directly reviewed 2026-10-27 notices 158241/158242. Not a match-day entry list or a real-time register.",
+  "projectionSha256": "6f4d130a70a29efa80fc79e8966128f30f48c0bed1341bf27285192a141d26db",
+  "inputsSha256": {
+    "men": "f0cdc0530344a2e66c6238bd36d1a66a5dbeeeaac8f7d5f06859a49cdaf81fa6",
+    "women": "ca8dc28c10a6909c7a90517087b64520084bb5e0dd274fa5c777e4d027b8ec84"
+  },
+  "profileRule": "Unique exact Korean name + DOB in existing canonical identities; known source conflicts remain unlinked.",
+  "fieldScope": "Public names, number, position, DOB, height, nationality, verified profile and Volleybox URLs only. No salaries, private notes or authenticated Drive links.",
+  "nationalityRule": "Foreign/Asian-quota nationalities from all 28 KOVO registration originals; other explicit reviewed MASTER values retained. Unknown is not inferred.",
+  "teams": [
+    {
+      "gender": "men",
+      "teamCode": "KAL",
+      "name": "대한항공",
+      "count": 19,
+      "profileLinks": 7
+    },
+    {
+      "gender": "men",
+      "teamCode": "HDC",
+      "name": "현대캐피탈",
+      "count": 18,
+      "profileLinks": 6
+    },
+    {
+      "gender": "men",
+      "teamCode": "WRC",
+      "name": "우리카드",
+      "count": 20,
+      "profileLinks": 7
+    },
+    {
+      "gender": "men",
+      "teamCode": "KBI",
+      "name": "KB손해보험",
+      "count": 19,
+      "profileLinks": 8
+    },
+    {
+      "gender": "men",
+      "teamCode": "KEP",
+      "name": "한국전력",
+      "count": 15,
+      "profileLinks": 6
+    },
+    {
+      "gender": "men",
+      "teamCode": "OKF",
+      "name": "OK저축은행",
+      "count": 17,
+      "profileLinks": 8
+    },
+    {
+      "gender": "men",
+      "teamCode": "SFB",
+      "name": "삼성화재",
+      "count": 23,
+      "profileLinks": 13
+    },
+    {
+      "gender": "women",
+      "teamCode": "GSC",
+      "name": "GS칼텍스",
+      "count": 17,
+      "profileLinks": 0
+    },
+    {
+      "gender": "women",
+      "teamCode": "KEX",
+      "name": "한국도로공사",
+      "count": 15,
+      "profileLinks": 0
+    },
+    {
+      "gender": "women",
+      "teamCode": "HHC",
+      "name": "현대건설",
+      "count": 18,
+      "profileLinks": 0
+    },
+    {
+      "gender": "women",
+      "teamCode": "HPS",
+      "name": "흥국생명",
+      "count": 20,
+      "profileLinks": 0
+    },
+    {
+      "gender": "women",
+      "teamCode": "IBK",
+      "name": "IBK기업은행",
+      "count": 18,
+      "profileLinks": 0
+    },
+    {
+      "gender": "women",
+      "teamCode": "RSP",
+      "name": "정관장",
+      "count": 16,
+      "profileLinks": 0
+    },
+    {
+      "gender": "women",
+      "teamCode": "SOO",
+      "name": "SOOP",
+      "count": 17,
+      "profileLinks": 0
+    }
+  ],
+  "unlinked": [
+    {
+      "team": "KAL",
+      "name": "김규민",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "한선수",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "류",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "케트진스키",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "조재영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "서현일",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "최준혁",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "정의영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "김민재",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "김영태",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "이준호",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KAL",
+      "name": "임재영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "장추안",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "황승빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "김진영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "최민호",
+      "reason": "source-conflict"
+    },
+    {
+      "team": "HDC",
+      "name": "레오",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "이재현",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "이준협",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "이승준",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "배준솔",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "이시우",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "장아성",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HDC",
+      "name": "송원근",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "이시몬",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "한태준",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "박상우",
+      "reason": "source-conflict"
+    },
+    {
+      "team": "WRC",
+      "name": "김영준",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "박준혁",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "이유빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "김동민",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "김동영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "아라우조",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "마틴",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "김형근",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "서원진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "WRC",
+      "name": "손유민",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "차영석",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "타루샤",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "나웅진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "박상하",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "장하랑",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "리누스",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "이준영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "성한희",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "지은우",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "이학진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KBI",
+      "name": "임동균",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "배해찬솔",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "정민수",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "강선규",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "하승우",
+      "reason": "source-conflict"
+    },
+    {
+      "team": "KEP",
+      "name": "우스만",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "진지위",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "방강호",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "쇼",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEP",
+      "name": "이태호",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "김도훈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "신장호",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "페이즈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "박원빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "진상헌",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "박창성",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "박인우",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "김준호",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "OKF",
+      "name": "러셀",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "박준서",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "나두환",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "이재현",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "양수현",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "이윤수",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "김준우",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "김민혁",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "호키",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "왕빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SFB",
+      "name": "김요한",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "최가은",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "김효임",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "이윤신",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "서채원",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "실바",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "최윤영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "최유림",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "김주향",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "이주아",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "김지원",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "박사랑",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "김미연",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "권민지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "유서연",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "타나차",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "한수진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "GSC",
+      "name": "오세연",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "박윤서",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "김다은",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "이윤정",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "손혜진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "박정아",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "마미",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "김세빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "문정원",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "이지윤",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "오은채",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "김현지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "김세인",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "이수연",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "강소휘",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "KEX",
+      "name": "모마",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "이예림",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "이채영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "김다인",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "이영주",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "김사랑",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "김연견",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "나현수",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "배유나",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "강서우",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "정지윤",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "김희진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "김수현",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "한미르",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "이민영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "조던",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "이한비",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "메가",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HHC",
+      "name": "구솔",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "김다은",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "자스티스",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "신연경",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "서채현",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "이고은",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "최은지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "변지수",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "김수지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "박혜진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "정윤주",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "박민지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "고민지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "정호영",
+      "reason": "source-conflict"
+    },
+    {
+      "team": "HPS",
+      "name": "이신영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "표승주",
+      "reason": "source-conflict"
+    },
+    {
+      "team": "HPS",
+      "name": "박수연",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "임혜림",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "킨델란",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "이나연",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "HPS",
+      "name": "문지윤",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "이소영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "이주아",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "박은서",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "김하경",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "미와",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "임명옥",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "육서영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "김채연",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "최정민",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "김채원",
+      "reason": "source-conflict"
+    },
+    {
+      "team": "IBK",
+      "name": "황민경",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "전수민",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "최연진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "강유정",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "빅토리아",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "정솔민",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "하예지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "IBK",
+      "name": "남은서",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "염혜선",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "전다빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "노란",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "박은진",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "도수빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "박혜민",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "김지윤",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "부키리치",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "이선우",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "신은지",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "종휘",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "이지수",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "최서현",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "최효서",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "박여름",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "RSP",
+      "name": "곽선옥",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "오드리아나",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "한다혜",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "임주은",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "박연화",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "고의정",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "전새얀",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "송은채",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "박은서",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "박수빈",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "이즈쉬에",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "고예림",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "김서영",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "전하리",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "유가람",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "서지혜",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "이원정",
+      "reason": "no unique exact existing identity"
+    },
+    {
+      "team": "SOO",
+      "name": "하혜진",
+      "reason": "no unique exact existing identity"
+    }
+  ],
+  "pending": [
+    {
+      "team": "HDC",
+      "name": "최민호",
+      "fields": [
+        "dob"
+      ]
+    },
+    {
+      "team": "WRC",
+      "name": "박상우",
+      "fields": [
+        "dob"
+      ]
+    },
+    {
+      "team": "KEP",
+      "name": "하승우",
+      "fields": [
+        "dob"
+      ]
+    },
+    {
+      "team": "HPS",
+      "name": "정호영",
+      "fields": [
+        "dob"
+      ]
+    },
+    {
+      "team": "HPS",
+      "name": "표승주",
+      "fields": [
+        "dob"
+      ]
+    },
+    {
+      "team": "IBK",
+      "name": "김채원",
+      "fields": [
+        "dob"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "team": "KAL",
+      "name": "최원빈",
+      "reason": "not in reviewed active registration projection"
+    },
+    {
+      "team": "SFB",
+      "name": "이윤재",
+      "reason": "not in reviewed active registration projection"
+    },
+    {
+      "team": "GSC",
+      "name": "유가람",
+      "reason": "not in reviewed active registration projection"
+    },
+    {
+      "team": "KEX",
+      "name": "이예은",
+      "reason": "not in reviewed active registration projection"
+    },
+    {
+      "team": "HHC",
+      "name": "서지혜",
+      "reason": "not in reviewed active registration projection"
+    },
+    {
+      "team": "IBK",
+      "name": "고의정",
+      "reason": "not in reviewed active registration projection"
+    },
+    {
+      "team": "SOO",
+      "name": "박사랑",
+      "reason": "not in reviewed active registration projection"
+    },
+    {
+      "team": "SOO",
+      "name": "정솔민",
+      "reason": "not in reviewed active registration projection"
+    }
+  ],
+  "supplementalChanges": [
+    {
+      "noticeId": 157686,
+      "title": "2026-2027시즌 대한항공 선수 포지션 변경 등록",
+      "publishedAt": "2026-10-17T12:22:11.39611",
+      "sourceUrl": "https://kovo.co.kr/news/official-notices/157686",
+      "textSha256": "e745db302b04b4ee9b2ac134195062ef1a7a8b3fc2ccad6e1b69244014bb8e60",
+      "playerName": "김영태",
+      "team": "대한항공",
+      "action": "position-change",
+      "position": "MB",
+      "effectiveDate": "2026-10-17"
+    },
+    {
+      "noticeId": 158241,
+      "title": "2026-2027시즌 대한항공 병역의무만료(군복무) 만료 및 자유신분선수 공시",
+      "publishedAt": "2026-10-27T16:56:50.99696",
+      "sourceUrl": "https://kovo.co.kr/news/official-notices/158241",
+      "textSha256": "d2c0a6ef87d0f0604ecfdb91aa96c782ca6a09eae08e7058f43efac52712322b",
+      "playerName": "송민근",
+      "team": "대한항공",
+      "action": "free-agent",
+      "effectiveDate": "2026-10-27"
+    },
+    {
+      "noticeId": 158242,
+      "title": "2026-2027시즌 대한항공  병역의무선수(군복무) 만료에 따른 공시",
+      "publishedAt": "2026-10-27T16:57:06.014709",
+      "sourceUrl": "https://kovo.co.kr/news/official-notices/158242",
+      "textSha256": "c374180ef6eabfab5192438ec1ba1852d96fe9c38b2b3d5b5215f755c151d645",
+      "playerName": "이준",
+      "team": "대한항공",
+      "action": "military-return-registration",
+      "number": 13,
+      "position": "OH",
+      "effectiveDate": "2026-10-27"
+    }
+  ],
+  "resolvedReviewItems": [
+    {
+      "name": "김영태",
+      "issue": "Direct original 157686 resolves the trainee-suffix parser mismatch: MB, effective 2026-10-17."
+    }
+  ],
+  "totalPlayers": 252,
+  "profileLinks": 55
+}

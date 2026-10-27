@@ -2841,43 +2841,43 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-k
 
 
 /* PRO · single-league standings surface + postseason ladder · shared contract */
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league{
   border-top-color:var(--kvl-theme-border)!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-head .label{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl1180-combined-head .label{
   color:var(--kvl-theme-accent)!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-head h3{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl1180-combined-head h3{
   color:var(--kvl-theme-primary)!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-table,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-shared-combined-mobile{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl1180-combined-table,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl-shared-combined-mobile{
   border-color:var(--kvl-theme-border)!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-table-head,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-shared-combined-line.is-head{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl1180-combined-table-head,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl-shared-combined-line.is-head{
   border-bottom-color:var(--kvl-theme-border)!important;
   background:linear-gradient(90deg,var(--kvl-theme-dark),var(--kvl-theme-strong))!important;
   color:#fff!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-row{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl1180-combined-row{
   border-top-color:color-mix(in srgb,var(--kvl-theme-border) 55%,#fff)!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-row:hover{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl1180-combined-row:hover{
   background:color-mix(in srgb,var(--kvl-theme-soft) 58%,#fff)!important;
 }
 
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason{
   padding-top:2px;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-ladder{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{
   display:grid;
   grid-template-columns:minmax(0,1fr) 78px minmax(0,1fr) 78px minmax(0,1fr);
   align-items:center;
   gap:0;
   margin-top:8px;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage{
   overflow:hidden;
   min-width:0;
   border:1px solid var(--kvl-theme-border);
@@ -2885,34 +2885,34 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   background:#fff;
   box-shadow:0 5px 16px var(--kvl-theme-shadow);
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage header{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header{
   display:grid;
   gap:3px;
   padding:12px 14px;
   background:linear-gradient(90deg,var(--kvl-theme-dark),var(--kvl-theme-strong));
   color:#fff;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage header span{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header span{
   color:var(--kvl1180-gold);
   font-size:9px;
   font-weight:950;
   letter-spacing:.12em;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage header strong{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header strong{
   font-size:17px;
   line-height:1.2;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage header small{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header small{
   color:rgba(255,255,255,.78);
   font-size:10px;
   font-weight:800;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-teams{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-teams{
   display:grid;
   gap:7px;
   padding:12px;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-team{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team{
   display:grid;
   grid-template-columns:28px minmax(0,1fr);
   align-items:center;
@@ -2921,7 +2921,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   border-radius:9px;
   background:color-mix(in srgb,var(--kvl-theme-soft) 55%,#fff);
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-team b{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team b{
   display:flex;
   align-items:center;
   justify-content:center;
@@ -2930,7 +2930,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   color:var(--kvl-theme-primary);
   font-size:11px;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-team span{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team span{
   min-width:0;
   padding:0 10px;
   color:#263244;
@@ -2939,11 +2939,11 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   line-height:1.25;
   word-break:keep-all;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-team a{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team a{
   color:inherit;
   text-decoration:none;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage footer{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage footer{
   min-height:43px;
   padding:9px 12px;
   border-top:1px solid color-mix(in srgb,var(--kvl-theme-border) 68%,#fff);
@@ -2954,19 +2954,19 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   line-height:1.35;
   word-break:keep-all;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage.is-final{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final{
   border-color:color-mix(in srgb,var(--kvl-special-gold) 58%,var(--kvl-theme-border));
   box-shadow:0 7px 20px color-mix(in srgb,var(--kvl-special-gold) 14%,transparent);
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage.is-final header{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final header{
   background:linear-gradient(90deg,var(--kvl-theme-dark),color-mix(in srgb,var(--kvl-theme-strong) 72%,var(--kvl-special-gold)));
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link{
   position:relative;
   height:100%;
   min-height:120px;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link::before{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::before{
   content:"";
   position:absolute;
   top:50%;
@@ -2974,7 +2974,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   right:8px;
   border-top:2px solid color-mix(in srgb,var(--kvl-theme-primary) 48%,#d3d9df);
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link::after{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::after{
   content:"";
   position:absolute;
   top:calc(50% - 4px);
@@ -2985,7 +2985,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   border-right:2px solid var(--kvl-theme-primary);
   transform:rotate(45deg);
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link span{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link span{
   position:absolute;
   top:calc(50% - 24px);
   left:50%;
@@ -2998,7 +2998,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   font-weight:950;
   white-space:nowrap;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-note{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-note{
   margin:14px 0 0;
   padding:10px 12px;
   border-left:3px solid var(--kvl-theme-primary);
@@ -3010,83 +3010,83 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
 }
 
 @media(max-width:680px){
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-ladder{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{
     grid-template-columns:1fr;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link{
     min-height:48px;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link::before{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::before{
     top:6px;bottom:6px;left:50%;right:auto;border-top:0;border-left:2px solid color-mix(in srgb,var(--kvl-theme-primary) 48%,#d3d9df);
   }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link::after{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::after{
     top:auto;bottom:6px;right:auto;left:calc(50% - 4px);transform:rotate(135deg);
   }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-link span{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link span{
     top:50%;left:calc(50% + 28px);transform:translate(-50%,-50%);
   }
 }
 
 
 /* PRO · explicit regular-season card palettes + series postseason UI · 2026-10-09 */
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head{
   border:1px solid #3a3f46!important;
   border-bottom:0!important;
   background:linear-gradient(90deg,#0b0d10 0%,#171a1f 72%,#3a2d12 100%)!important;
   padding:14px 16px!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head .label,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head h3{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head .label,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head h3{
   color:#f0cf78!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head>p{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head>p{
   color:#d9dde2!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-table-head,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl-shared-combined-line.is-head{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-table-head,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl-shared-combined-line.is-head{
   background:#171a1f!important;
   color:#f5f5f5!important;
   border-color:#3a3f46!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-table,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="men"] #groups .is-domestic-single-league .kvl-shared-combined-mobile{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-table,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl-shared-combined-mobile{
   border-color:#3a3f46!important;
 }
 
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head{
   border:1px solid #d9a8bd!important;
   border-bottom:0!important;
   background:linear-gradient(90deg,#7f2f54 0%,#9a3b65 68%,#c65382 100%)!important;
   padding:14px 16px!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head .label,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head h3{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head .label,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head h3{
   color:#fff3f8!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head>p{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-head>p{
   color:#ffe4ef!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-table-head,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl-shared-combined-line.is-head{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-table-head,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl-shared-combined-line.is-head{
   background:#8f2f59!important;
   color:#fff!important;
   border-color:#d9a8bd!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-table,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-kvl-gender="women"] #groups .is-domestic-single-league .kvl-shared-combined-mobile{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl1180-combined-table,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #groups .is-domestic-single-league .kvl-shared-combined-mobile{
   border-color:#d9a8bd!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl1180-combined-team-copy strong,
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-shared-combined-team{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl1180-combined-team-copy strong,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl-shared-combined-team{
   color:#202735!important;
   font-weight:850!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #groups .is-domestic-single-league .kvl-team-link{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #groups .is-domestic-single-league .kvl-team-link{
   color:inherit!important;
   text-decoration:none!important;
 }
 
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-guide{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide{
   display:flex;
   align-items:center;
   justify-content:center;
@@ -3099,11 +3099,11 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   color:#556070;
   font-size:11px;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-guide b{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide b{
   color:var(--kvl-theme-primary);
   font-weight:950;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-guide i{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide i{
   color:var(--kvl-special-gold);
   font-style:normal;
   font-weight:950;
@@ -3166,7 +3166,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   font-size:19px;
   line-height:1;
 }
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-stage.is-final .kvl1180-pro-series-score b{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final .kvl1180-pro-series-score b{
   color:#b8860b;
 }
 
@@ -3215,7 +3215,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
 }
 
 @media(max-width:900px) and (min-width:681px){
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-ladder{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{
     grid-template-columns:1fr 50px 1fr 50px 1fr;
   }
   body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-summary{
@@ -3223,7 +3223,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knock
   }
 }
 @media(max-width:680px){
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-postseason-guide{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide{
     gap:5px;
     font-size:9px;
     overflow-x:auto;
@@ -3273,21 +3273,21 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
 
 /* Give the team column enough room in shared domestic/pro single-league standings. */
 @media(min-width:901px){
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-table-head,
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-row{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl1180-combined-table-head,
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl1180-combined-row{
     grid-template-columns:60px minmax(240px,2.35fr) 92px 48px 48px 60px 94px 94px 82px!important;
     column-gap:6px!important;
   }
 }
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl1180-combined-team{
   min-width:0!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team-copy{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl1180-combined-team-copy{
   min-width:0!important;
   overflow:visible!important;
 }
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team-copy strong,
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl1180-combined-team-copy strong .kvl-team-link{
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl1180-combined-team-copy strong,
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl1180-combined-team-copy strong .kvl-team-link{
   display:block!important;
   max-width:none!important;
   overflow:visible!important;
@@ -3297,7 +3297,7 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
   word-break:keep-all!important;
 }
 @media(max-width:680px){
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl-shared-combined-team{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl-shared-combined-team{
     width:auto!important;
     max-width:none!important;
     overflow:visible!important;
@@ -3305,7 +3305,7 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
     white-space:normal!important;
     word-break:keep-all!important;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],[data-kvl-family="pro"]) #groups .is-domestic-single-league .kvl-shared-combined-identity{
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic"],:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)) #groups .is-domestic-single-league .kvl-shared-combined-identity{
     min-width:220px!important;
   }
 }
@@ -3353,14 +3353,14 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
     object-fit:contain!important;
   }
 
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl1180-combined-row{
+  body.kvl1180-prototype.kvl-competition-template-v2:is(:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2),[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl1180-combined-row{
     min-height:76px!important;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl1180-combined-team{
+  body.kvl1180-prototype.kvl-competition-template-v2:is(:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2),[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl1180-combined-team{
     grid-template-columns:58px minmax(0,1fr)!important;
     gap:13px!important;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl1180-combined-team img{
+  body.kvl1180-prototype.kvl-competition-template-v2:is(:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2),[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl1180-combined-team img{
     width:56px!important;
     height:56px!important;
     object-fit:contain!important;
@@ -3417,20 +3417,20 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="domestic
     border-radius:8px!important;
   }
 
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-identity{
+  body.kvl1180-prototype.kvl-competition-template-v2:is(:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2),[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-identity{
     grid-template-columns:44px 48px minmax(132px,1fr)!important;
     min-width:236px!important;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-flag{
+  body.kvl1180-prototype.kvl-competition-template-v2:is(:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2),[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-flag{
     width:46px!important;
     height:46px!important;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-flag img{
+  body.kvl1180-prototype.kvl-competition-template-v2:is(:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2),[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-flag img{
     width:46px!important;
     height:46px!important;
     object-fit:contain!important;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-line{
+  body.kvl1180-prototype.kvl-competition-template-v2:is(:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2),[data-kvl-family="domestic"]) #groups .is-domestic-single-league .kvl-shared-combined-line{
     min-height:64px!important;
   }
 
