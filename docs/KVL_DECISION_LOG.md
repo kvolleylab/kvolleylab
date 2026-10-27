@@ -231,3 +231,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·�
 ## 2026-10-28 · V-리그 남녀 최근 결과·다음 경기
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 증거는 release PR). 사용자가 남녀 각각 최근 결과 1경기 + 다음 예정 1경기를 함께 보여주는 구성을 요청했다. #190의 PROPOSED / NOT IMPLEMENTED 결정을 이 범위에서 대체한다. 한눈에의 순위표 아래·참가팀 위에 남녀 카드 2개를 배치하며 PC 2열/모바일 1열, 최종·세트별 스코어와 KST/대진/경기장 및 날짜 일정 링크를 표시한다. 동일 시즌 기존 경기 데이터를 사용하고 개막 전·결과 없음·다음 일정 없음·부문 로딩 실패를 구분한다. 현재 선수 ID/명단/국기·순위·경기·Hero·타 대회는 유지한다. [검수·선택 기준·복구](validation/vleague-match-summary-20261028.md).
+
+
+## 2026-10-28 · 종합대회 지역 로고 형태 복원
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR 기록). 사용자가 종합대회 로고 모양을 복원하되 안의 글씨를 지역명으로 표시하도록 요청했다. 공통 텍스트 로고의 둥근 사각형과 남자부 파랑·여자부 로즈 색상을 재사용하고, 공식 참가팀의 대표 시·도를 넣는다. 경기결과·팀 기록·대진표·참가팀·명단 헤더·우승팀·최종 입상팀에 동일 원칙을 적용한다. 직전 일반 글씨만 쓰는 지역 마크 결정을 이 로고 슬롯 범위에서 대체하며, 순위 팀명 오른쪽의 일반 지역 글씨는 유지한다. 가운데 점수·긴 팀명 전체 줄바꿈·PC Hero 크기와 기존 데이터·선수 ID·다른 대회 로고·동시 V-리그 최근 경기 카드는 유지한다. [검수·범위·복구](validation/comprehensive-region-marks-20261028.md).
