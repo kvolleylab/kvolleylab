@@ -672,3 +672,34 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:is(
 .kvl-domestic-home-v2 .dv2-overview-summary>div:last-child{border-bottom:0}
 .kvl-domestic-home-v2 .dv2-overview-summary dt{font-size:14px;font-weight:700;color:var(--dv2-accent)}
 .kvl-domestic-home-v2 .dv2-overview-summary dd{margin:8px 0 0;font-size:15px;line-height:1.7;word-break:keep-all;color:#4b5563}
+
+/* Season overview: the same standings data as the full standings tab. */
+.kvl-domestic-home-v2 .dv2-overview-standings{background:#fff;border:1px solid var(--dv2-line);border-radius:12px;overflow:hidden}
+.kvl-domestic-home-v2 .dv2-standings-table{display:table;width:100%;table-layout:fixed;border-collapse:collapse;border:0;border-radius:0;white-space:normal;margin:0;color:#294259;font-size:14px;font-variant-numeric:tabular-nums}
+.kvl-domestic-home-v2 .dv2-standings-table th,.kvl-domestic-home-v2 .dv2-standings-table td{padding:13px 6px;text-align:center;border:0;border-bottom:1px solid var(--dv2-line)!important;font-size:inherit}
+.kvl-domestic-home-v2 .dv2-standings-table thead th{font-size:12px;font-weight:600;background:var(--dv2-soft)!important;color:var(--dv2-accent)!important}
+.kvl-domestic-home-v2 .dv2-standings-table thead th:first-child{width:42px}
+.kvl-domestic-home-v2 .dv2-standings-table thead th:nth-child(n+3){width:42px}
+.kvl-domestic-home-v2 .dv2-standings-table thead th:nth-child(2){text-align:left;padding-left:10px}
+.kvl-domestic-home-v2 .dv2-standings-table tbody th{font-weight:600;text-align:left;padding-left:10px;background:#fff!important}
+.kvl-domestic-home-v2 .dv2-standings-table tbody tr:hover :is(th,td){background:var(--dv2-soft)!important}
+.kvl-domestic-home-v2 .dv2-standings-table tbody a{display:flex;align-items:center;gap:8px;color:inherit;min-width:0}
+.kvl-domestic-home-v2 .dv2-standings-table tbody a:hover{color:var(--dv2-accent);text-decoration:underline}
+.kvl-domestic-home-v2 .dv2-standings-table tbody a span{min-width:0;overflow-wrap:anywhere;word-break:keep-all}
+.kvl-domestic-home-v2 .dv2-standings-table img,.kvl-domestic-home-v2 .dv2-standings-table .dv2-team-mark{width:28px;height:28px;object-fit:contain;flex:0 0 28px}
+.kvl-domestic-home-v2 .dv2-standings-table [data-stat="points"]{font-weight:700;color:var(--dv2-accent)!important}
+.kvl-domestic-home-v2 .dv2-standings-note{margin:0;padding:13px 14px;color:#657587;font-size:12px;line-height:1.6;word-break:keep-all}
+.kvl-domestic-home-v2 .dv2-team-order-note{margin:-7px 0 14px;color:#657587;font-size:12px}
+.kvl-domestic-home-v2 .dv2-team-order-footnote{margin:10px 0 0;color:#657587;font-size:11px;line-height:1.6}
+@media screen and (min-width:901px){
+ .kvl-domestic-home-v2 .dv2-team-strip[data-desktop-columns="7"]{grid-template-columns:repeat(7,minmax(0,1fr))}
+ .kvl-domestic-home-v2 .dv2-team-strip[data-desktop-columns="7"] .dv2-team-tile{padding-inline:6px}
+ .kvl-domestic-home-v2 .dv2-team-strip[data-desktop-columns="7"] .dv2-team-tile b{overflow-wrap:anywhere}
+}
+@media screen and (max-width:1100px){
+ .kvl-domestic-home-v2 .dv2-standings-table{font-size:13px}
+ .kvl-domestic-home-v2 .dv2-standings-table th,.kvl-domestic-home-v2 .dv2-standings-table td{padding-inline:4px}
+ .kvl-domestic-home-v2 .dv2-standings-table thead th:first-child{width:34px}
+ .kvl-domestic-home-v2 .dv2-standings-table thead th:nth-child(n+3){width:32px}
+ .kvl-domestic-home-v2 .dv2-standings-table tbody a{gap:5px}
+}

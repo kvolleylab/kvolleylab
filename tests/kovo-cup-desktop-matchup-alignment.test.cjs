@@ -7,7 +7,9 @@ const css=read('assets/css/kvl-domestic-home-v2.css');
 const marker='/* 2026-10-27 · KOVO Cup PC matchup geometry.';
 const pos=css.lastIndexOf(marker);
 assert(pos>0,'scoped KOVO Cup geometry must exist');
-const patch=css.slice(pos);
+const geometryEnd=css.indexOf('/* Shared optional overview summary',pos);
+assert(geometryEnd>pos,'geometry section must end before unrelated overview styles');
+const patch=css.slice(pos,geometryEnd);
 assert.match(patch, /@media screen and \(min-width:901px\)/,'change must apply on PC only');
 assert.match(patch, /:is\(\.kvl-pro-cup-domestic-v2,\.kvl-pro-league-domestic-v2\) :is\(#schedule,#team-results\) \.kvl1180-match-row/,'must target only opted-in pro Cup/league pages');
 assert.match(patch,/grid-template-columns:clamp\(118px,11\.8vw,150px\) minmax\(0,1fr\) clamp\(285px,25vw,300px\)!important/);
@@ -35,7 +37,7 @@ for(const viewport of [901,1024,1100,1180,1440]){
 }
 // The two logo/name groups must hug the score equally and keep their own
 // logo immediately beside each name, rather than inheriting opposite auto margins.
-const equalPatch=css.slice(css.lastIndexOf('/* KOVO Cup PC: equal gaps between both team-name groups'));
+const equalPatch=css.slice(css.lastIndexOf('/* KOVO Cup PC: equal gaps between both team-name groups'),geometryEnd);
 assert(equalPatch.startsWith('/* KOVO Cup PC: equal gaps'), 'equal-gap PC patch missing');
 assert.match(equalPatch, /@media screen and \(min-width:901px\)/);
 assert.match(equalPatch, /grid-template-columns:minmax\(0,1fr\) 62px minmax\(0,1fr\)!important/);
@@ -56,7 +58,7 @@ for(const width of [420,460,520,560]){
 
 // Short and long club names must never move either 46px team-logo rail.
 // Text must sit immediately beside its logo; the board has 12px score gutters.
-const rails=css.slice(css.lastIndexOf('/* KOVO Cup PC: fixed logo rails and attached team labels'));
+const rails=css.slice(css.lastIndexOf('/* KOVO Cup PC: fixed logo rails and attached team labels'),geometryEnd);
 assert(rails.startsWith('/* KOVO Cup PC: fixed logo rails and attached team labels'), 'latest Cup PC logo column rule missing');
 assert.match(rails, /@media screen and \(min-width:901px\)/);
 assert.match(rails, /\.kvl1180-side\{[^}]+display:grid!important/s);
@@ -87,6 +89,6 @@ for(const sideWidth of [164,192,230,240]){
 assert(read('assets/css/kvl-competition-components-v2.css').includes('[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board'), 'existing baseline stays in common competition components CSS');
 assert(css.includes('kvl-pro-cup-domestic-v2'));
 for(const html of ['competition-engine.html','kovo-cup-domestic-template-prototype.html']){
-  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-(?:club-rosters-flags|vleague-rosters))-1|20261028-selected-hero-v03)/,'cache-bust '+html);
+  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-(?:club-rosters-flags|vleague-rosters|vleague-overview))-1|20261028-selected-hero-v03)/,'cache-bust '+html);
 }
 console.log('PASS: Cup PC matchup centered with equal team-to-score gaps; five-set lane and mobile layout protected');
