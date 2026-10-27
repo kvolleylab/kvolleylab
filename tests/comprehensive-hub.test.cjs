@@ -22,8 +22,10 @@ test('two event cards use all nine canonical division routes and the same podium
    assert.deepEqual([...panel.querySelectorAll('.univ-rank-row strong')].map(n=>n.textContent),data.finalRanking.map(r=>r.team));
    assert.deepEqual([...panel.querySelectorAll('.comprehensive-region')].map(n=>n.textContent),data.finalRanking.map(r=>data.participants.find(t=>t.code===r.code).region));
    assert.ok(panel.classList.contains('is-'+config.competition.gender));assert.equal(config.structure.hubUrl,'comprehensive-competitions.html');
-   const hero=[...doc.querySelectorAll('.univ-featured-card')].find(a=>a.href.includes(event.pagePath));assert.ok(hero.style.cssText.includes(config.hero.mobileImage));
   }
+  const featured=[...doc.querySelectorAll('.univ-featured-card')].find(a=>a.href.includes(event.pagePath));
+  const selected=new URL(featured.href).searchParams.get('competition');
+  assert.ok(featured.style.cssText.includes(json(`data/competitions/${selected}/config.json`).hero.mobileImage));
  }
  }finally{dom.window.close();}
 });

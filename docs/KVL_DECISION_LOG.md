@@ -208,3 +208,8 @@ Status: APPROVED (표시 수정) / IMPLEMENTED / VERIFIED (local preview). 사�
 ## 2026-10-28 · KOVO컵 선수정보 공개 및 운영 반영 승인
 
 Status: APPROVED / RELEASE AUTHORIZED. 사용자가 생년월일을 포함한 팸플릿 명단의 `kvolleylab/kvolleylab` 업로드와 운영사이트 반영 요청에 “선수정보 공개 승인”이라고 명시적으로 답했다. 남녀 14팀·251명 명단, 54개 기존 프로필 연결, 국기+국가명 표시, 6개 생년월일 확인 중 표시의 검수 범위로 진행한다. 앞선 공개 승인 대기 기록을 대체하며 CI·merge·운영 화면 검증 결과는 release PR에 기록한다. 원본 PDF/XLSX, 인증된 Drive 주소, 비공개 개인 메모는 공개 대상에 포함하지 않는다. [검수 보고서](validation/kovo-cup-rosters-20261027.md).
+
+
+## 2026-10-28 · 종합대회 Hero 최종 선택 및 운영 연결
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR에 기록). 사용자가 비교 시안에서 종합대회 배구 02, 전국체전 남자부 04·여자부 07, 소년체전 남자부 09·여자부 12를 명시적으로 선택했다. 기존 운영 반영 요청의 연속 범위로 5종 PC·모바일 10장과 9개 부문을 연결한다. 선택 원본의 남녀 서로 다른 장면, PC 2108×406·모바일 1258×406, 로즈 #8E315E / #6F234A / #E7A8C2를 유지한다. `finished-artwork` 공통 opt-in은 어두운 덮개 없이 contain으로 전체 이미지를 보존한다. 모바일 상세는 하단 배치로 제목과 장면을 분리하며 기존 Hero 최소 높이와 템플릿·경기·명단·지역 표시는 유지한다. 최근 대회 카드는 해당 기본 부문의 Hero를 재사용한다. 운영기준·Hero 가이드 대조, MASTER/WEB 보관, 79개 회귀 검사 및 25개 반응형 이미지 검수 완료. 앞선 공통 홈 이미지와 남녀 동일 장면은 이 선택 범위에서 대체한다. [검수·복구·선택 번호](validation/comprehensive-hero-selected-20261028.md).
