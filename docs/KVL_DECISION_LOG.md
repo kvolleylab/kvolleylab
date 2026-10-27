@@ -236,3 +236,7 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·�
 ## 2026-10-28 · 종합대회 지역 로고 형태 복원
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR 기록). 사용자가 종합대회 로고 모양을 복원하되 안의 글씨를 지역명으로 표시하도록 요청했다. 공통 텍스트 로고의 둥근 사각형과 남자부 파랑·여자부 로즈 색상을 재사용하고, 공식 참가팀의 대표 시·도를 넣는다. 경기결과·팀 기록·대진표·참가팀·명단 헤더·우승팀·최종 입상팀에 동일 원칙을 적용한다. 직전 일반 글씨만 쓰는 지역 마크 결정을 이 로고 슬롯 범위에서 대체하며, 순위 팀명 오른쪽의 일반 지역 글씨는 유지한다. 가운데 점수·긴 팀명 전체 줄바꿈·PC Hero 크기와 기존 데이터·선수 ID·다른 대회 로고·동시 V-리그 최근 경기 카드는 유지한다. [검수·범위·복구](validation/comprehensive-region-marks-20261028.md).
+
+## 2026-10-28 · V-리그 남자부 마우스 오버를 연한 금색으로 변경
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·운영 확인은 release PR). 사용자가 운영 V-리그 남자부에서 클릭 전에 마우스를 올렸을 때의 회색 음영을 연한 금색으로 변경하도록 요청했다. 기존 공통 CSS에 pro-league 남자부 범위의 hover 배경 `#FFF3D6`만 추가한다. 탭·요약 지표·참가팀·순위표·명단 행·경기일·라운드 필터에 적용하며 남녀 페이지의 남자부 경기 요약 카드도 같은 금색을 쓴다. 여자부 경기 카드의 분홍색, 평상시/선택 배경, 점수 색, 구조·데이터·다른 대회는 유지한다. 검수·복구: [보고서](validation/vleague-men-gold-hover-20261028.md).

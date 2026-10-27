@@ -89,6 +89,6 @@ for(const sideWidth of [164,192,230,240]){
 assert(read('assets/css/kvl-competition-components-v2.css').includes('[data-kvl-family="domestic"] :is(#schedule,#team-results) .kvl1180-match-board'), 'existing baseline stays in common competition components CSS');
 assert(css.includes('kvl-pro-cup-domestic-v2'));
 for(const html of ['competition-engine.html','kovo-cup-domestic-template-prototype.html']){
-  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-(?:club-rosters-flags|vleague-rosters|vleague-overview|vleague-matches))-1|20261028-selected-hero-v03|20261028-comprehensive-layout-1|20261028-comprehensive-region-marks-1)/,'cache-bust '+html);
+  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-(?:club-rosters-flags|vleague-rosters|vleague-overview|vleague-matches|vleague-hover))-1|20261028-selected-hero-v03|20261028-comprehensive-layout-1|20261028-comprehensive-region-marks-1)/,'cache-bust '+html);
 }
 console.log('PASS: Cup PC matchup centered with equal team-to-score gaps; five-set lane and mobile layout protected');
