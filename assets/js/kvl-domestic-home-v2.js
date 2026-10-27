@@ -83,11 +83,11 @@ function apply(d){
  const school=d.structure.audience==='school',division=d.structure.divisionLabel||(d.gender==='women'?'여대부':'남대부');
  const main=q('[data-kvl-shell]');if(main.dataset.domesticHomeReady)return true;main.dataset.domesticHomeReady='true';
  const hub=d.structure.hubUrl||(school?'domestic-competitions.html?division=school':'university-competitions.html');
- main.insertAdjacentHTML('afterbegin',`<div class="dv2-utility"><span><a href="index.html">홈</a> › <a href="${esc(hub)}">국내대회 · ${esc(d.structure.hubLabel||(school?'중·고 배구':'대학배구'))}</a></span><a href="${esc(hub)}">대회 목록 ↗</a></div>`);
+ main.insertAdjacentHTML('afterbegin',`<div class="dv2-utility"><span><a href="index.html">홈</a> › <a href="${esc(hub)}">${esc(d.structure.hubCategoryLabel||'국내대회')} · ${esc(d.structure.hubLabel||(school?'중·고 배구':'대학배구'))}</a></span><a href="${esc(hub)}">대회 목록 ↗</a></div>`);
  const title=d.structure.heroTitle||d.displayName.replace(/\s+(남대부|여대부|남고부|여고부|남중부|여중부)$/,''),split=title.lastIndexOf(' ');
  q('[data-kvl="title"]').innerHTML=split>0?esc(title.slice(0,split))+'<br><em>'+esc(title.slice(split+1))+'</em>':esc(title);
  q('[data-kvl="eyebrow"]').textContent=d.structure.eyebrow||(school?'KVL DOMESTIC · SCHOOL VOLLEYBALL':'KVL DOMESTIC · UNIVERSITY VOLLEYBALL');
- q('[data-kvl="official-name"]').textContent='경기부터 기록까지, 대회의 모든 순간을 한눈에.';
+ q('[data-kvl="official-name"]').textContent=d.structure.heroTagline||'경기부터 기록까지, 대회의 모든 순간을 한눈에.';
  q('.kvl1180-hero-meta').append(q('.kvl1180-hero-status'));
  const labels={overview:'대회 한눈에',schedule:'경기 일정·결과',groups:d.structure?.labels?.groupsTab||'조별순위',knockout:d.structure?.labels?.knockoutTab||'최종순위',rosters:label(d),resources:'공식자료'};
  qa('.kvl1180-tabs a').forEach(a=>{a.innerHTML=icon(a.dataset.view)+'<span>'+esc(labels[a.dataset.view])+'</span>';});

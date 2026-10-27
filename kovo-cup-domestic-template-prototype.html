@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<base href="/">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="googlebot" content="noindex,nofollow,noarchive">
+<title>2026 KOVO컵 · 국내대회 기본 템플릿 시안 | K-Volley Lab</title>
+<meta name="description" content="기존 KOVO컵 남녀부 경기 데이터와 Hero를 K-Volley Lab 국내대회 공통 템플릿에 적용한 검수용 시안.">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/site-theme-light.css">
+<link rel="stylesheet" href="/assets/css/kvl-competition-template-v2.css?v=20261008-vleague-hero-1">
+<link rel="stylesheet" href="/assets/css/kvl-competition-components-v2.css?v=20261017-pro-cup-semibold-1">
+<link rel="stylesheet" href="/assets/css/kvl-competition-base-v2.css?v=20261007-base-foundation-1">
+<link rel="stylesheet" href="/assets/css/kvl-domestic-home-v2.css?v=20261026-pool-grid-1">
+<style>
+/* Preview-only palette and Hero framing. All layout/cards/dialogs are the existing domestic-home-v2 template. */
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2{
+ --dv2-accent:#292d33;--dv2-soft:#f5f3ed;--dv2-line:#e5e1da;--dv2-light:#e4bc6b;
+ --kvl-theme-dark:#0b0d10;--kvl-theme-accent:#b98b39;--kvl-theme-primary:#25272c;
+ --kvl-theme-strong:#14171b;--kvl-theme-soft:#f6f4ef;--kvl-theme-border:#dbd3bf;
+ --kvl-theme-hero-a:#0b0d10;--kvl-theme-hero-b:#252932;--kvl-theme-overlay-rgb:11,13,16;
+ background:#f6f6f5;color:#20262d;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2[data-kvl-gender="women"]{
+ --dv2-accent:#9b4c70;--dv2-soft:#fff2f6;--dv2-line:#eadfe3;--dv2-light:#e4bc6b;
+ --kvl-theme-accent:#b26084;--kvl-theme-primary:#2b292f;
+ --kvl-theme-soft:#fff4f7;--kvl-theme-border:#e8d3dc;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .kvl1180-hero,
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2[data-kvl-gender="women"] .kvl1180-hero{
+ background-color:#12151a!important;
+ background-image:linear-gradient(90deg,rgba(10,12,16,.83),rgba(10,12,16,.51) 39%,rgba(10,12,16,.05) 75%),var(--kvl-hero-image-desktop)!important;
+ background-size:100% 100%,contain!important;
+ background-position:center,center!important;
+ background-repeat:no-repeat!important;
+ min-height:228px!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2[data-kvl-gender="women"] .kvl1180-hero{
+ background-image:linear-gradient(90deg,rgba(15,11,17,.85),rgba(25,14,23,.52) 40%,rgba(15,11,17,.05) 75%),var(--kvl-hero-image-desktop)!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .kvl1180-hero h1,
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-gender] .kvl1180-hero h1{
+ color:#e9c57c!important;
+ text-shadow:0 2px 12px rgba(0,0,0,.28);
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .kvl1180-hero h1 em{color:#f0d89c!important}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .dv2-utility{color:#6c7178}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .dv2-utility a{color:#343840}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .dv2-team-tile img{object-fit:contain}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 #knockout :is(.kvl1180-team-score,.kvl1180-match-sets),
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 #schedule :is(.kvl1180-score,.kvl1180-set-scores){
+ color:#4b5563!important;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 #knockout .dv2-trophy.trophy-1{
+ color:#b58b42;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .kvl-cup-prototype-note{
+ max-width:1180px;margin:0 auto;padding:10px 24px;color:#736a53;background:#fcf8ed;
+ border-top:1px solid #e9ddc1;font:600 12px/1.6 Pretendard,Arial,sans-serif;
+}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2[data-kvl-gender="women"] .kvl1180-tabs a.is-active{
+ color:#9b4c70!important;background:#fff2f6!important;box-shadow:inset 0 -3px #9b4c70!important;
+}
+@media(max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .kvl1180-hero,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2[data-kvl-gender="women"] .kvl1180-hero{
+  min-height:218px!important;
+  background-size:100% 100%,contain!important;
+  background-position:center,center!important;
+  background-image:linear-gradient(90deg,rgba(10,12,16,.84),rgba(10,12,16,.43) 55%,rgba(10,12,16,.08)),var(--kvl-hero-image-mobile)!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2[data-kvl-gender="women"] .kvl1180-hero{
+  background-image:linear-gradient(90deg,rgba(15,11,17,.86),rgba(22,11,20,.43) 55%,rgba(10,12,16,.08)),var(--kvl-hero-image-mobile)!important;
+ }
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-cup-domestic-preview.kvl-domestic-home-v2 .kvl-cup-prototype-note{padding:10px 14px;font-size:11px}
+}
+</style>
+<script src="/assets/js/unified-nav.js?v=20261026-school-1" defer></script>
+<script>
+(function(){
+  'use strict';
+  var params=new URLSearchParams(location.search);
+  var allowed=new Set(['kovo-cup-men-2026','kovo-cup-women-2026']);
+  var slug=params.get('competition');
+  if(!allowed.has(slug)){
+    slug=params.get('gender')==='women'?'kovo-cup-women-2026':'kovo-cup-men-2026';
+    params.set('competition',slug);
+    history.replaceState(null,'',location.pathname+'?'+params.toString());
+  }
+  window.KVL_COMPETITION_PAGE_V2={production:false,deferRender:true,collectionRoot:'/data/competitions/'};
+  window.KVLCompetitionAdapterV2=function(original){
+    if(!original||!allowed.has(slug)||original.gender!==(slug.includes('-women-')?'women':'men')){
+      throw Error('KOVO Cup prototype data identity mismatch');
+    }
+    return Object.assign({},original,{
+      competitionFamily:'domestic',
+      structure:Object.assign({},original.structure,{
+        presentation:'domestic-home-v2',
+        presentationCategory:'pro-cup',
+        divisionLabel:original.gender==='women'?'여자부':'남자부',
+        divisionKey:original.gender,
+        hubUrl:'kovo-cup.html',
+        hubCategoryLabel:'프로 V-리그',
+        hubLabel:'KOVO컵',
+        eyebrow:'PRO VOLLEYBALL · KOVO CUP',
+        heroTagline:original.officialName,
+        participants:Object.assign({},original.structure.participants,{
+          searchLabels:{label:'참가팀 검색',placeholder:'팀명 검색',sortNote:'조별 구분 · 가나다순'}
+        })
+      }),
+      divisionLinks:[
+        {key:'men',label:'남자부',gender:'men',url:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-men-2026'},
+        {key:'women',label:'여자부',gender:'women',url:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-women-2026'}
+      ],
+      genderLinks:{
+        men:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-men-2026',
+        women:'/kovo-cup-domestic-template-prototype.html?competition=kovo-cup-women-2026'
+      },
+      recordNote:original.gender==='men'&&original.status==='active'?
+        '시안은 운영 데이터와 연결되어 있습니다. 남자부 결선 결과의 최신 반영 여부는 별도 검수가 필요하며 미확정 결과를 만들지 않습니다.':
+        '시안 전용 화면입니다. 기존 운영 데이터·Hero 이미지·팀 로고를 그대로 사용합니다.'
+    });
+  };
+})();
+</script>
+<script src="/assets/js/kvl-competition-config-v2.js?v=20261012-vleague-production-1" defer></script>
+<script src="/assets/js/kvl-competition-modules-v2.js?v=20260917-config-1" defer></script>
+<script src="/assets/js/kvl-competition-data-v2.js?v=20261012-vleague-production-1" defer></script>
+<script src="/assets/js/kvl-competition-shell-v2.js?v=20260919-mobile-1" defer></script>
+<script src="/assets/js/kvl-competition-template-v2.js?v=20261026-school-1" defer></script>
+<script src="/assets/js/kvl-competition-components-v2.js?v=20261027-pro-club-pool-logos-1" defer></script>
+<script src="/assets/js/kvl-domestic-home-v2.js?v=20261027-pro-cup-preview-1" defer></script>
+<script src="/assets/js/kvl-competition-loader-v2.js?v=20261024-domestic-home-1" defer></script>
+</head>
+<body class="kvl1180-prototype kvl-competition-template-v2 kvl-cup-domestic-preview" data-kvl-render-state="loading" data-kvl-family="domestic">
+<div class="kvl-cup-prototype-note" role="status">2026 KOVO컵 · 국내대회 기본 템플릿 적용 시안 · 실제 운영 페이지는 변경되지 않았습니다.</div>
+<p id="kvlCompetitionLoading" role="status">KOVO컵 시안을 불러오는 중입니다.</p>
+<main data-kvl-shell hidden></main>
+<noscript>시안을 보려면 JavaScript를 활성화해 주세요.</noscript>
+<footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
+</body>
+</html>

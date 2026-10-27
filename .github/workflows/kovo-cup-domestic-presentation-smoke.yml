@@ -1,0 +1,35 @@
+name: KOVO Cup Domestic Presentation Prototype Smoke
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'kovo-cup-domestic-template-prototype.html'
+      - 'assets/js/kvl-domestic-home-v2.js'
+      - 'assets/js/kvl-competition-components-v2.js'
+      - 'tests/kovo-cup-domestic-presentation-prototype.test.cjs'
+      - 'tests/competition-v2-pro-cup-pool-columns.test.cjs'
+      - '.github/workflows/kovo-cup-domestic-presentation-smoke.yml'
+  push:
+    branches: ['feature/kovo-cup-domestic-preview-clean-20261027']
+    paths:
+      - 'kovo-cup-domestic-template-prototype.html'
+      - 'assets/js/kvl-domestic-home-v2.js'
+      - 'assets/js/kvl-competition-components-v2.js'
+      - 'tests/kovo-cup-domestic-presentation-prototype.test.cjs'
+      - '.github/workflows/kovo-cup-domestic-presentation-smoke.yml'
+permissions:
+  contents: read
+jobs:
+  test-prototype-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate KOVO Cup preview without changing production
+        run: node tests/kovo-cup-domestic-presentation-prototype.test.cjs
+      - name: Verify existing KOVO Cup standings layout
+        run: node tests/competition-v2-pro-cup-pool-columns.test.cjs
