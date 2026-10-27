@@ -70,7 +70,7 @@ function applyView(){
 function applyTheme(d){
   const body=document.body;
   const gender=d.gender==='women'?'women':'men';
-  const requestedFamily=String(d.competitionFamily||d.family||'avc').toLowerCase();
+  const requestedFamily=String(d.structure?.presentation==='domestic-home-v2'&&d.structure?.presentationThemeFamily==='domestic'?'domestic':d.competitionFamily||d.family||'avc').toLowerCase();
   const family=THEME_FAMILIES.has(requestedFamily)?requestedFamily:'avc';
   body.dataset.kvlGender=gender;
   body.dataset.kvlFamily=family;
