@@ -803,19 +803,6 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:is(
 .kvl-domestic-home-v2 .dv2-summary-empty b{font-size:13px;font-weight:500}.kvl-domestic-home-v2 .dv2-summary-empty span{font-size:11px}
 .kvl-domestic-home-v2 .dv2-summary-loading,.kvl-domestic-home-v2 .dv2-summary-error{padding:30px 18px;font-size:13px;color:#657587;line-height:1.7}
 .kvl-domestic-home-v2 .dv2-summary-note{font-size:11px;color:#657587;margin:12px 0 0}
-/* V-League men: pale gold is interaction feedback, not the resting surface.
- * Scope paired match cards by their own division, including on the women's page. */
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-league-domestic-v2[data-kvl-gender="men"] :is(.dv2-metric[href],.dv2-team-tile,.kvl1180-tabs a,.dv2-day.has-match):hover,
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-league-domestic-v2[data-kvl-gender="men"] #rosters :is(.kvl1180-participant-button,.kvl-club-roster-row,.kvl1180-print-actions button,.kvl1180-vb-link):hover,
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-league-domestic-v2[data-kvl-gender="men"] #resources .kvl1180-source a:hover,
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-league-domestic-v2[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-row:hover,
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .dv2-standings-table tbody tr:hover :is(th,td),
-.kvl-domestic-home-v2.kvl-pro-league-domestic-v2 .dv2-division-matches[data-summary-gender="men"] .dv2-summary-game:hover{
- background:#fff3d6!important;
-}
-html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2.kvl-pro-league-domestic-v2[data-kvl-gender="men"] #schedule .kvl1180-stage-filters button:not(.is-active):hover{
- background:#fff3d6!important;border-color:#d6b25e!important;color:var(--dv2-accent)!important;
-}
 @media screen and (max-width:900px){.kvl-domestic-home-v2 .dv2-division-match-grid{grid-template-columns:1fr;gap:14px}}
 @media screen and (max-width:680px){
  .kvl-domestic-home-v2 .dv2-overview-matches{margin-inline:14px}
