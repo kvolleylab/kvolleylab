@@ -4,6 +4,7 @@ Status: APPROVED / IMPLEMENTED / VERIFIED. Merge, Pages and live confirmation ar
 
 - Request: replace the pale gray hover shade with pale gold on the already approved V-League men's competition pages.
 - Base: main `a0a0036062d35a8e94c4741a938a5fc74fb4370d` (#192). Isolated branch: `fix/vleague-men-gold-hover-20261028`.
+- Integrated current main `985a01dc9ac2e72059e9360e1567b176bc87dedd` (#193) before release; all concurrent comprehensive region-mark CSS/JS/cache changes are preserved.
 - Sources: current main and project rules/decision log inspected. Google Drive operating MASTER v16 (modified 2026-10-27T16:24:09.216Z) verified; this CSS-only change uses no new competition/player data.
 
 ## Change
@@ -14,7 +15,7 @@ The normal/selected background, text and neutral score colors, geometry, Hero, r
 
 ## Verification
 
-- Existing V-League roster/overview, paired matches, Cup roster and domestic interactions: **57/57 passed**.
+- Existing V-League roster/overview, paired matches, Cup roster and domestic interactions: **57/57 passed** initially; after integrating #193, these plus comprehensive hub regressions: **65/65 passed**.
 - Existing Cup desktop geometry/cache smoke: **passed**. `git diff --check`: passed.
 - Browser PC 1280: real mouse hover computed `rgb(255, 243, 214)` for the tab, participant card, overview standings cells, round filter and men's next-match link.
 - Women's page: men's next-match hover remains gold; women's next-match hover remains `rgb(255, 242, 246)`.
