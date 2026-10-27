@@ -1,6 +1,6 @@
 {
-  "status": "active",
-  "stageLabel": "남자부 · 조별리그 종료 · 10월 24일 준결승",
+  "status": "completed",
+  "stageLabel": "남자부 · 대한항공 우승 · 대회 종료",
   "dateLabel": "2026.10.19 ~ 10.25",
   "locationLabel": "대한민국 · 전남 여수",
   "venueLabel": "여수 진남체육관",
@@ -10,9 +10,9 @@
   "groupCount": 2,
   "matchCount": 12,
   "knockoutTeamCount": 4,
-  "upcomingOverviewNote": "조별리그 종료 · 10월 24일 준결승 · 10월 25일 결승",
-  "scheduleNote": "한국시간(KST) · 조별리그 9경기 종료 · 10월 24일 준결승 13:30·16:30",
-  "standingsNote": "10월 22일 조별리그 최종 순위 · KOVO 공식 경기 결과 및 순위 대조 완료",
+  "upcomingOverviewNote": "대회 종료 · 우승 대한항공 · 준우승 현대캐피탈",
+  "scheduleNote": "한국시간(KST) · 2026 KOVO컵 남자부 12경기 결과 반영 · 10월 25일 결승 대한항공 3–1 현대캐피탈",
+  "standingsNote": "조별리그 최종 순위 · 10월 24일 준결승과 25일 결승 결과 반영 · 대한항공 우승",
   "standingsStatus": "조별리그 최종 순위",
   "standingsRule": "각 조 상위 2팀이 준결승에 진출합니다.",
   "meaning": {
@@ -538,6 +538,31 @@
           "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=213",
           "https://www.newsis.com/view/NISX20261022_0003837600"
         ]
+      },
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 37,
+            "away": 35
+          },
+          {
+            "home": 25,
+            "away": 16
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-27",
+        "sources": [
+          "https://www.yna.co.kr/view/AKR20261024035951007"
+        ]
       }
     },
     {
@@ -563,6 +588,36 @@
           "https://user-api.kovo.co.kr/stat/game-schedule?gcode=002&seasonCode=824&leagueCode=213",
           "https://www.newsis.com/view/NISX20261022_0003837600"
         ]
+      },
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 15,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-27",
+        "sources": [
+          "https://www.yna.co.kr/view/AKR20261024035951007",
+          "https://www.newspim.com/news/view/20261024000075"
+        ]
       }
     },
     {
@@ -573,14 +628,44 @@
       "pool": "",
       "round": "FINAL",
       "home": {
-        "name": "준결승 1 승자"
+        "code": "KAL"
       },
       "away": {
-        "name": "준결승 2 승자"
+        "code": "HDC"
       },
       "venueLabel": "여수 진남체육관",
       "localTimeLabel": "한국 현지 13:30 KST",
-      "bracketLabel": "FINAL"
+      "bracketLabel": "FINAL",
+      "score": {
+        "home": 3,
+        "away": 1,
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
+      },
+      "scoreVerification": {
+        "status": "cross_checked",
+        "verifiedDate": "2026-10-27",
+        "sources": [
+          "https://scorecenterlive.com/livescore/sports-scores.html?date=2026-10-25&live=&nation=ko&schedule_info=498827&sports=vl",
+          "https://www.scorebase.kr/leagues/KOVO_CUP"
+        ]
+      }
     }
   ],
   "standings": {
@@ -690,7 +775,36 @@
       }
     ]
   },
-  "finalRanking": [],
+  "finalRanking": [
+    {
+      "rank": 1,
+      "code": "KAL",
+      "team": "대한항공",
+      "result": "우승",
+      "confirmed": true
+    },
+    {
+      "rank": 2,
+      "code": "HDC",
+      "team": "현대캐피탈",
+      "result": "준우승",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "WRC",
+      "team": "우리카드",
+      "result": "공동 3위",
+      "confirmed": true
+    },
+    {
+      "rank": 3,
+      "code": "KEP",
+      "team": "한국전력",
+      "result": "공동 3위",
+      "confirmed": true
+    }
+  ],
   "qualifications": [],
   "resources": [
     {
@@ -715,5 +829,5 @@
       "note": "단판 토너먼트"
     }
   },
-  "activeOverviewNote": "조별리그 9경기 종료 · 준결승 대한항공–우리카드 / 한국전력–현대캐피탈"
+  "activeOverviewNote": "대회 종료 · 결승 대한항공 3–1 현대캐피탈 · 우승 대한항공"
 }
