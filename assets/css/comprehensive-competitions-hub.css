@@ -1,8 +1,9 @@
 /* University hub structure and domestic card/trophy skin, scoped to this hub. */
 .comprehensive-hub .kvl-common-hero{--kvl-common-hero-image:url('/assets/img/competition-hero/kvl-hero-comprehensive-hub-all-pc-v03.webp?v=20261028-selected-v03');--kvl-common-hero-image-mobile:url('/assets/img/competition-hero/kvl-hero-comprehensive-hub-all-mobile-v03.webp?v=20261028-selected-v03');min-height:275px}
 .comprehensive-hub .kvl-common-hero[data-hero-mode="photo"]{background-color:#163a5f;background-image:var(--kvl-common-hero-image);background-size:auto 100%;background-position:right center;background-repeat:no-repeat}
-@media(min-width:681px) and (max-width:1100px){.comprehensive-hub .kvl-common-hero[data-hero-mode="photo"]{background-size:125% auto;background-position:right bottom}}
-@media(min-width:1101px){.comprehensive-hub .kvl-common-hero[data-hero-mode="photo"]{aspect-ratio:25 / 7}}
+@media(min-width:681px) and (max-width:1100px){.comprehensive-hub .kvl-common-hero[data-hero-mode="photo"]{background-size:166.667% auto;background-position:right center}}
+@media(min-width:681px){.comprehensive-hub .kvl-common-hero[data-hero-mode="photo"]{width:100%;min-width:0;aspect-ratio:3 / 1}}
+@media(min-width:681px){.comprehensive-hub .kvl-common-hero-copy{max-width:50%}}
 .comprehensive-hero-sub{margin:13px 0 0;color:#fff;font-size:21px;font-weight:800;line-height:1.5}
 .comprehensive-hub .univ-hero-desc{max-width:580px;line-height:1.65;font-size:15px;color:#e0e9f3}
 .comprehensive-hero-link{display:inline-flex;gap:16px;align-items:center;margin-top:19px;color:#f6d670;font-size:14px;font-weight:800;text-decoration:none}
