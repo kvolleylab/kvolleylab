@@ -2867,166 +2867,82 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.k
   background:color-mix(in srgb,var(--kvl-theme-soft) 58%,#fff)!important;
 }
 
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason{
-  padding-top:2px;
+/* Both the original pro skin and the domestic pro-league skin use this contract. */
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason{padding-top:2px}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 22px;padding:13px 16px;
+  border:1px solid #e3e7ec;border-radius:10px;background:#f8f9fb;color:#657083;font-size:12px;line-height:1.6;
 }
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide b{color:#273444;font-size:13px}
 body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 78px minmax(0,1fr) 78px minmax(0,1fr);
-  align-items:center;
-  gap:0;
-  margin-top:8px;
+  display:grid;grid-template-columns:minmax(0,1fr) 60px minmax(0,1fr) 60px minmax(0,1fr);align-items:start;gap:0;
 }
 body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage{
-  overflow:hidden;
-  min-width:0;
-  border:1px solid var(--kvl-theme-border);
-  border-radius:12px;
-  background:#fff;
-  box-shadow:0 5px 16px var(--kvl-theme-shadow);
+  min-width:0;overflow:hidden;border:1px solid #dce1e7;border-radius:12px;background:#fff;box-shadow:0 4px 15px rgba(25,35,49,.05);
 }
 body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header{
-  display:grid;
-  gap:3px;
-  padding:12px 14px;
-  background:linear-gradient(90deg,var(--kvl-theme-dark),var(--kvl-theme-strong));
-  color:#fff;
+  display:grid;gap:5px;min-height:104px;padding:16px 18px;background:linear-gradient(110deg,var(--kvl-theme-dark),var(--kvl-theme-strong));color:#fff;
 }
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header span{
-  color:var(--kvl1180-gold);
-  font-size:9px;
-  font-weight:950;
-  letter-spacing:.12em;
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header span{color:#edcf87;font-size:10px;font-weight:800;letter-spacing:.12em}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header strong{font-size:19px;line-height:1.35;word-break:keep-all}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header small{color:rgba(255,255,255,.8);font-size:12px;font-weight:600}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final{border-color:#cbb57d}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final header{background:linear-gradient(110deg,var(--kvl-theme-dark),color-mix(in srgb,var(--kvl-theme-strong) 80%,#b59a56))}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-summary{padding:14px 16px 6px;background:#fff}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-status{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px;color:#788392;font-size:10px;font-weight:700}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team{
+  position:relative;display:grid;grid-template-columns:minmax(0,1fr) 32px;align-items:center;gap:10px;min-height:76px;padding:12px 0;
 }
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header strong{
-  font-size:17px;
-  line-height:1.2;
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team+.kvl1180-pro-series-team{border-top:1px solid #edf0f3}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team>div{min-width:0;display:grid;gap:5px}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team small{color:#677386;font-size:11px;font-weight:600;line-height:1.45;word-break:keep-all;overflow-wrap:anywhere}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team strong{color:#263344;font-size:15px;font-weight:800;line-height:1.45;word-break:keep-all;overflow-wrap:anywhere}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team a{color:inherit;text-decoration:none}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team a:hover{text-decoration:underline}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-team a:focus-visible{outline:2px solid currentColor;outline-offset:3px;border-radius:2px}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-wins{color:#4b5563;font-size:24px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums;line-height:1}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-winner{grid-column:1 / -1;justify-self:start;border-radius:4px;padding:3px 7px;background:#eef1f4;color:#4b5563;font-size:10px;font-weight:800}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-games{display:grid;gap:6px;padding:14px 12px;background:#f7f8fa;border-top:1px solid #e7ebef}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-games h4{margin:0 0 4px;color:#667386;font-size:11px;font-weight:800}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-game{
+  display:grid;grid-template-columns:38px minmax(0,1fr) auto;align-items:center;gap:8px;min-height:39px;padding:9px 10px;
+  border:1px solid #e4e8ed;border-radius:7px;background:#fff;color:#697586;font-size:11px;line-height:1.45;
 }
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header small{
-  color:rgba(255,255,255,.78);
-  font-size:10px;
-  font-weight:800;
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-game>b{color:#4b5563;font-size:11px;white-space:nowrap}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-game>span{min-width:0;word-break:keep-all;overflow-wrap:anywhere}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-game>strong{color:#647184;font-size:10px;font-weight:700;white-space:nowrap}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-game-result{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:7px;align-items:center;padding-top:5px;border-top:1px solid #edf0f3}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-game-result span{color:#465365;font-size:11px;line-height:1.5;word-break:keep-all;overflow-wrap:anywhere}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-game-result span:last-child{text-align:right}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-game-result em{color:#4b5563;text-align:center;font-style:normal;font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-game.is-unused{background:transparent;border-style:dashed;color:#7b8592}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage footer{padding:13px 16px;border-top:1px solid #e7ebef;background:#fff;color:#697586;font-size:11px;line-height:1.65;word-break:keep-all}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link{position:relative;min-height:230px}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::before{content:"";position:absolute;top:203px;left:0;right:0;border-top:2px solid #b9c2cd}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::after{content:"";position:absolute;top:199px;right:1px;width:8px;height:8px;border-top:2px solid #8e9bac;border-right:2px solid #8e9bac;transform:rotate(45deg)}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link span{position:absolute;top:178px;left:50%;transform:translateX(-50%);color:#697586;font-size:10px;font-weight:700;white-space:nowrap}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-note{margin:20px 0 0;padding:12px 15px;border-left:3px solid #c3cbd5;background:#f8f9fb;color:#697586;font-size:11px;line-height:1.7;word-break:keep-all}
+@media(min-width:901px) and (max-width:1100px){
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr) 44px minmax(0,1fr)}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link span{font-size:9px}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header{padding:16px 14px}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-summary{padding:14px 12px 6px}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-series-games{padding:12px 9px}
 }
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-teams{
-  display:grid;
-  gap:7px;
-  padding:12px;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team{
-  display:grid;
-  grid-template-columns:28px minmax(0,1fr);
-  align-items:center;
-  min-height:44px;
-  border:1px solid color-mix(in srgb,var(--kvl-theme-border) 78%,#fff);
-  border-radius:9px;
-  background:color-mix(in srgb,var(--kvl-theme-soft) 55%,#fff);
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team b{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  align-self:stretch;
-  border-right:1px solid color-mix(in srgb,var(--kvl-theme-border) 78%,#fff);
-  color:var(--kvl-theme-primary);
-  font-size:11px;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team span{
-  min-width:0;
-  padding:0 10px;
-  color:#263244;
-  font-size:13px;
-  font-weight:900;
-  line-height:1.25;
-  word-break:keep-all;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-team a{
-  color:inherit;
-  text-decoration:none;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage footer{
-  min-height:43px;
-  padding:9px 12px;
-  border-top:1px solid color-mix(in srgb,var(--kvl-theme-border) 68%,#fff);
-  background:#fff;
-  color:#6b7583;
-  font-size:10px;
-  font-weight:800;
-  line-height:1.35;
-  word-break:keep-all;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final{
-  border-color:color-mix(in srgb,var(--kvl-special-gold) 58%,var(--kvl-theme-border));
-  box-shadow:0 7px 20px color-mix(in srgb,var(--kvl-special-gold) 14%,transparent);
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final header{
-  background:linear-gradient(90deg,var(--kvl-theme-dark),color-mix(in srgb,var(--kvl-theme-strong) 72%,var(--kvl-special-gold)));
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link{
-  position:relative;
-  height:100%;
-  min-height:120px;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::before{
-  content:"";
-  position:absolute;
-  top:50%;
-  left:8px;
-  right:8px;
-  border-top:2px solid color-mix(in srgb,var(--kvl-theme-primary) 48%,#d3d9df);
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::after{
-  content:"";
-  position:absolute;
-  top:calc(50% - 4px);
-  right:7px;
-  width:8px;
-  height:8px;
-  border-top:2px solid var(--kvl-theme-primary);
-  border-right:2px solid var(--kvl-theme-primary);
-  transform:rotate(45deg);
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link span{
-  position:absolute;
-  top:calc(50% - 24px);
-  left:50%;
-  transform:translateX(-50%);
-  padding:2px 6px;
-  border-radius:999px;
-  background:#fff;
-  color:var(--kvl-theme-primary);
-  font-size:9px;
-  font-weight:950;
-  white-space:nowrap;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-note{
-  margin:14px 0 0;
-  padding:10px 12px;
-  border-left:3px solid var(--kvl-theme-primary);
-  background:color-mix(in srgb,var(--kvl-theme-soft) 62%,#fff);
-  color:#657083;
-  font-size:11px;
-  font-weight:750;
-  line-height:1.5;
+@media(max-width:900px){
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{grid-template-columns:minmax(0,1fr);max-width:580px;margin:0 auto}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide{display:grid;gap:3px;margin-bottom:16px;padding:12px 14px}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header{min-height:96px;padding:14px 16px}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage header strong{font-size:18px}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link{min-height:52px}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::before{top:0;bottom:2px;left:50%;right:auto;border-top:0;border-left:2px solid #b9c2cd}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::after{top:auto;bottom:3px;right:auto;left:calc(50% - 4px);transform:rotate(135deg)}
+  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link span{top:50%;left:calc(50% + 15px);transform:translateY(-50%)}
 }
 
-@media(max-width:680px){
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{
-    grid-template-columns:1fr;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link{
-    min-height:48px;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::before{
-    top:6px;bottom:6px;left:50%;right:auto;border-top:0;border-left:2px solid color-mix(in srgb,var(--kvl-theme-primary) 48%,#d3d9df);
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link::after{
-    top:auto;bottom:6px;right:auto;left:calc(50% - 4px);transform:rotate(135deg);
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-link span{
-    top:50%;left:calc(50% + 28px);transform:translate(-50%,-50%);
-  }
-}
-
+/* Keep the women's stage headers consistent with the existing V-League standings palette. */
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #knockout .kvl1180-pro-postseason{--kvl-theme-dark:#7f2f54;--kvl-theme-strong:#9a3b65}
+body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="women"] #knockout .kvl1180-pro-postseason-stage header span{color:#ffe9f2}
 
 /* PRO · explicit regular-season card palettes + series postseason UI · 2026-10-09 */
 body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2)[data-kvl-gender="men"] #groups .is-domestic-single-league .kvl1180-combined-head{
@@ -3085,171 +3001,6 @@ body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.k
   color:inherit!important;
   text-decoration:none!important;
 }
-
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin:0 0 14px;
-  padding:9px 12px;
-  border:1px solid var(--kvl-theme-border);
-  border-radius:10px;
-  background:color-mix(in srgb,var(--kvl-theme-soft) 64%,#fff);
-  color:#556070;
-  font-size:11px;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide b{
-  color:var(--kvl-theme-primary);
-  font-weight:950;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide i{
-  color:var(--kvl-special-gold);
-  font-style:normal;
-  font-weight:950;
-}
-
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-summary{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 76px minmax(0,1fr);
-  align-items:stretch;
-  border-bottom:1px solid color-mix(in srgb,var(--kvl-theme-border) 65%,#fff);
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-team{
-  min-width:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:4px;
-  padding:12px 10px;
-  background:#fff;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-team.is-right{
-  text-align:right;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-team small{
-  color:#8a94a2;
-  font-size:8px;
-  font-weight:950;
-  letter-spacing:.08em;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-team strong{
-  min-width:0;
-  color:#202735;
-  font-size:12px;
-  font-weight:950;
-  line-height:1.25;
-  word-break:keep-all;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-team a{
-  color:inherit;
-  text-decoration:none;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-score{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:2px;
-  border-left:1px solid color-mix(in srgb,var(--kvl-theme-border) 70%,#fff);
-  border-right:1px solid color-mix(in srgb,var(--kvl-theme-border) 70%,#fff);
-  background:color-mix(in srgb,var(--kvl-theme-soft) 65%,#fff);
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-score span{
-  color:#7a8491;
-  font-size:8px;
-  font-weight:950;
-  letter-spacing:.08em;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-score b{
-  color:var(--kvl-theme-primary);
-  font-size:19px;
-  line-height:1;
-}
-body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-stage.is-final .kvl1180-pro-series-score b{
-  color:#b8860b;
-}
-
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-games{
-  display:grid;
-  gap:5px;
-  padding:9px 10px;
-  background:#fafbfc;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game{
-  display:grid;
-  grid-template-columns:38px minmax(0,1fr) auto;
-  align-items:center;
-  gap:7px;
-  min-height:30px;
-  padding:5px 7px;
-  border:1px solid #e4e7eb;
-  border-radius:7px;
-  background:#fff;
-  color:#66717f;
-  font-size:9px;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game b{
-  color:var(--kvl-theme-primary);
-  font-size:9px;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game span{
-  min-width:0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game em{
-  color:#1f2937;
-  font-style:normal;
-  font-size:10px;
-  font-weight:950;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game strong{
-  color:#8a94a2;
-  font-size:8px;
-  white-space:nowrap;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game.is-complete strong{
-  color:var(--kvl-theme-primary);
-}
-
-@media(max-width:900px) and (min-width:681px){
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-ladder{
-    grid-template-columns:1fr 50px 1fr 50px 1fr;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-summary{
-    grid-template-columns:minmax(0,1fr) 62px minmax(0,1fr);
-  }
-}
-@media(max-width:680px){
-  body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="pro"],.kvl-pro-league-domestic-v2) #knockout .kvl1180-pro-postseason-guide{
-    gap:5px;
-    font-size:9px;
-    overflow-x:auto;
-    justify-content:flex-start;
-    white-space:nowrap;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-summary{
-    grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-team{
-    padding:10px 7px;
-  }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-team strong{
-    font-size:10px;
-  }
-}
-
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game.is-unused{
-  opacity:.58;
-  border-style:dashed;
-  background:#f7f8f9;
-}
-body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] #knockout .kvl1180-pro-series-game.is-unused strong{
-  color:#9aa3ad;
-}
-
 
 /* DOMESTIC + PRO · shared standings rule card theme + full team names · 2026-10-12
  * The ranking-rule guidance card follows each competition theme.

@@ -254,3 +254,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-10-28 · 종합대회 목록·대학 U-리그 PC Hero 이미지 비중 확대
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 종합대회 배구 목록과 대학 U-리그의 PC Hero에서 이미지가 카드의 절반 정도를 차지하도록 요청했다. 종합대회 목록은 PC 카드 비율을 3:1로 조정하고 왼쪽 문구·오른쪽 장면을 절반씩 배치한다. U-리그 남녀는 공통 `hero.themeVariant=half-visual` 옵션으로 원본 비율·오른쪽 정렬과 밝은 장면을 유지한다. 기존 사진 규칙의 강제 100%×100% 배경 맞춤 대신 높이 기준 자연 비율을 사용하며, 좁은 PC에서는 기존 제목 폭과 추가 명암으로 가독성을 보존한다. 모바일 자산·배치, 선택 이미지 바이트·색, 경기/명단/ID 및 직전 최종입상팀 수정을 유지한다. 종합대회 목록의 앞선 25:7 비율과 해당 U-리그 PC 사진 표시 결정을 이 범위에서 대체한다. [검수·복구](validation/hub-uleague-hero-half-20261028.md).
+
+
+## 2026-10-28 · V-리그 포스트시즌 사다리 복구 및 재설계
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 운영 V-리그 포스트시즌 사다리의 표시 오류 확인과 디자인 수정을 요청했다. domestic 스킨 이식 뒤 빠졌던 시리즈 내부 CSS 범위를 공통 컴포넌트에서 복구하고, PC 3단 가로 연결/900px 이하 세로 연결, 진출 기준·팀명·승수·경기별 일정과 결과를 분리한다. 미확정 대진은 ‘진출팀 미정’과 —로 표시하며 남자부 차콜/여자부 로즈 헤더와 중립 점수색을 사용한다. QPO/PO 구분, 홈·원정 역전 시 팀 중복 방지, 시리즈 승자 다음 단계 연결, 종료 후 잔여 경기 미실시 표시를 검증했다. 기존 준PO 조건/3전 2선승/5전 3선승 설정과 선수·경기·순위 원본, 앞선 회색 hover 복원, 동시 종합대회/U-리그 Hero 변경을 유지한다. [범위·검수·복구](validation/vleague-postseason-20261028.md).

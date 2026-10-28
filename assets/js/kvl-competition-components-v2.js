@@ -337,18 +337,36 @@ function appendPlacementMatches(root,d,seeds){
   const groups=new Map();items.forEach(m=>{const key=m.placementGroup||m.placementLabel||stage(m)||'순위결정전';if(!groups.has(key))groups.set(key,[]);groups.get(key).push(m);});
   root.insertAdjacentHTML('beforeend',`<section class="kvl1180-placement-block"><div class="kvl1180-knockout-subhead"><div><p class="label">CLASSIFICATION MATCHES</p><h3>순위결정전</h3></div><p>공식 발표된 일정·시간·경기장을 먼저 표시합니다.</p></div><div class="kvl1180-placement-groups">${[...groups.entries()].map(([label,matches])=>`<section class="kvl1180-placement-group"><h4>${esc(label)}</h4><div class="kvl1180-placement-matches">${matches.map((m,i)=>bmatch(m,m.bracketLabel||m.placementLabel||`${label} ${i+1}`,seeds)).join('')}</div></section>`).join('')}</div></section>`);
 }
-function proPostseasonSeed(d,rank,fallback){
-  const row=(d.standings?.rows||[]).find(r=>Number(r.rank)===rank),p=row?resolveTeam(row.team,d):null;
-  return p&&name(p)!=='미정'?{html:teamLink(p,esc(name(p))),name:name(p),code:code(p)}:{html:esc(fallback||`정규리그 ${rank}위`),name:fallback||`정규리그 ${rank}위`,code:''};
+function proPostseasonTeam(p,entry){
+  const known=p&&participant(p)&&name(p)!=='미정';
+  return {html:known?teamLink(p,esc(name(p))):'진출팀 미정',name:known?name(p):'진출팀 미정',code:known?code(p):'',entry};
+}
+function proPostseasonSeed(d,rank){
+  const row=(d.standings?.rows||[]).find(r=>Number(r.rank)===rank);
+  return proPostseasonTeam(row?resolveTeam(row.team,d):null,`정규리그 ${rank}위`);
 }
 function proSeriesMatches(d,type){
-  const keys=type==='qpo'?['QPO','WILDCARD','WC']:type==='po'?['PO','PLAYOFF','SF']:['FINAL','CHAMPIONSHIP','CHAMP'];
-  return (d.matches||[]).filter(m=>keys.includes(round(m))||keys.some(k=>String(stage(m)).toUpperCase().includes(k)));
+  const groups={qpo:['QPO','WILDCARD','WC'],po:['PO','PLAYOFF','SF'],final:['FINAL','CHAMPIONSHIP','CHAMP']};
+  const classify=m=>{
+    const key=round(m),label=String(stage(m)).toUpperCase();
+    for(const [kind,keys] of Object.entries(groups))if(keys.includes(key))return kind;
+    if(/준(?:플레이오프|PO)|QPO|WILDCARD/.test(label))return 'qpo';
+    if(/플레이오프|PLAYOFF|^PO(?:\s|$)/.test(label))return 'po';
+    if(/챔피언|FINAL|CHAMP/.test(label))return 'final';
+    return '';
+  };
+  return (d.matches||[]).filter(m=>classify(m)===type)
+    .slice().sort((a,b)=>`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
+}
+function proSeriesResult(m){
+  const sc=score(m);
+  if(!sc||['scheduled','pending','live','in_progress','postponed','cancelled','canceled'].includes(String(m?.status||'').toLowerCase()))return null;
+  return Number.isInteger(sc.home)&&Number.isInteger(sc.away)&&Math.max(sc.home,sc.away)===3&&Math.min(sc.home,sc.away)>=0&&Math.min(sc.home,sc.away)<3?sc:null;
 }
 function proSeriesScore(matches,leftCode,rightCode){
   let left=0,right=0;
   for(const m of matches){
-    const sc=score(m);if(!sc)continue;
+    const sc=proSeriesResult(m);if(!sc)continue;
     const hc=code(resolveTeam(m.home)),ac=code(resolveTeam(m.away));
     const winner=sc.home>sc.away?hc:sc.away>sc.home?ac:'';
     if(leftCode&&winner===leftCode)left++;
@@ -356,49 +374,60 @@ function proSeriesScore(matches,leftCode,rightCode){
   }
   return {left,right};
 }
+function proSeriesTeams(left,right,matches){
+  // A scheduled pairing is authoritative; keep seed order even when home/away flips.
+  const first=matches.find(m=>participant(resolveTeam(m.home))&&participant(resolveTeam(m.away)));
+  if(!first)return [left,right];
+  const home=resolveTeam(first.home),away=resolveTeam(first.away);
+  const reverse=left.code===code(away)||right.code===code(home);
+  return [proPostseasonTeam(reverse?away:home,left.entry),proPostseasonTeam(reverse?home:away,right.entry)];
+}
+function proSeriesAdvancer(left,right,matches,winsNeeded,entry){
+  const teams=proSeriesTeams(left,right,matches),wins=proSeriesScore(matches,teams[0].code,teams[1].code);
+  const winner=wins.left>=winsNeeded?teams[0]:wins.right>=winsNeeded?teams[1]:null;
+  return winner?{...winner,entry}:proPostseasonTeam(null,entry);
+}
 function proSeriesGameRow(m,index,{notPlayed=false}={}){
   if(notPlayed)return `<div class="kvl1180-pro-series-game is-unused"><b>${index}차전</b><span>시리즈 종료</span><strong>미실시</strong></div>`;
   if(!m)return `<div class="kvl1180-pro-series-game is-pending"><b>${index}차전</b><span>일정 미정</span><strong>예정</strong></div>`;
-  const sc=score(m),label=[shortDate(date(m)),time(m)?time(m)+' KST':''].filter(Boolean).join(' · ');
-  if(!sc)return `<div class="kvl1180-pro-series-game is-pending"><b>${index}차전</b><span>${esc(label||'일정 미정')}</span><strong>예정</strong></div>`;
-  const h=resolveTeam(m.home),a=resolveTeam(m.away),winnerName=sc.home>sc.away?name(h):sc.away>sc.home?name(a):'';
-  return `<div class="kvl1180-pro-series-game is-complete"><b>${index}차전</b><span>${esc(name(h))} <em>${sc.home}-${sc.away}</em> ${esc(name(a))}</span><strong>${winnerName?esc(winnerName)+' 승':'종료'}</strong></div>`;
+  const sc=proSeriesResult(m),label=[shortDate(date(m)),time(m)?time(m)+' KST':''].filter(Boolean).join(' · ');
+  if(!sc)return `<div class="kvl1180-pro-series-game is-pending"><b>${index}차전</b><span>${esc(label||'일정 미정')}</span><strong>${['live','in_progress'].includes(String(m.status||'').toLowerCase())?'진행 중':'예정'}</strong></div>`;
+  const h=resolveTeam(m.home),a=resolveTeam(m.away);
+  return `<div class="kvl1180-pro-series-game is-complete"><b>${index}차전</b><span>${esc(label)}</span><strong>종료</strong><div class="kvl1180-pro-game-result"><span>${esc(name(h))}</span><em>${sc.home}–${sc.away}</em><span>${esc(name(a))}</span></div></div>`;
 }
 function proSeriesStage({step,title,series,left,right,matches,maxGames,winsNeeded,note,cls}){
-  if(matches?.length){
-    const first=matches[0],home=resolveTeam(first.home),away=resolveTeam(first.away);
-    if(!left.code&&code(home))left={html:teamLink(home,esc(name(home))),name:name(home),code:code(home)};
-    if(!right.code&&code(away))right={html:teamLink(away,esc(name(away))),name:name(away),code:code(away)};
-  }
-  const scoreLine=proSeriesScore(matches,left.code,right.code),clinched=scoreLine.left>=winsNeeded||scoreLine.right>=winsNeeded;
-  let completed=0,clinchedAt=0;
-  for(let i=0;i<maxGames;i++){
-    const sc=score(matches[i]);if(sc)completed++;
+  [left,right]=proSeriesTeams(left,right,matches);
+  let clinchedAt=0;
+  for(let i=0;i<matches.length;i++){
     const partial=proSeriesScore(matches.slice(0,i+1),left.code,right.code);
-    if(!clinchedAt&&(partial.left>=winsNeeded||partial.right>=winsNeeded))clinchedAt=i+1;
+    if(partial.left>=winsNeeded||partial.right>=winsNeeded){clinchedAt=i+1;break;}
   }
-  return `<section class="kvl1180-pro-postseason-stage ${cls||''}">
+  const scoreLine=proSeriesScore(clinchedAt?matches.slice(0,clinchedAt):matches,left.code,right.code);
+  const started=matches.some(m=>!!proSeriesResult(m)||['live','in_progress'].includes(String(m.status||'').toLowerCase())),paired=!!left.code&&!!right.code;
+  const status=clinchedAt?'시리즈 종료':started?'시리즈 진행 중':paired?'경기 시작 전':'대진 확정 전';
+  const teamRow=(t,wins)=>`<div class="kvl1180-pro-series-team ${wins>=winsNeeded?'is-winner':''}"><div><small>${esc(t.entry)}</small><strong>${t.html}</strong></div><b class="kvl1180-pro-series-wins" aria-label="${esc(t.name)} 시리즈 ${paired?wins+'승':'승수 미정'}">${paired?wins:'—'}</b>${wins>=winsNeeded?`<span class="kvl1180-pro-series-winner">${cls==='is-final'?'우승':'진출'}</span>`:''}</div>`;
+  return `<section class="kvl1180-pro-postseason-stage ${cls||''}" aria-label="${esc(title)}">
     <header><span>STEP ${step}</span><strong>${esc(title)}</strong><small>${esc(series)}</small></header>
     <div class="kvl1180-pro-series-summary">
-      <div class="kvl1180-pro-series-team"><small>TEAM A</small><strong>${left.html}</strong></div>
-      <div class="kvl1180-pro-series-score"><span>SERIES</span><b>${scoreLine.left} - ${scoreLine.right}</b></div>
-      <div class="kvl1180-pro-series-team is-right"><small>TEAM B</small><strong>${right.html}</strong></div>
+      <div class="kvl1180-pro-series-status"><span>${status}</span><span>시리즈 승</span></div>
+      ${teamRow(left,scoreLine.left)}${teamRow(right,scoreLine.right)}
     </div>
-    <div class="kvl1180-pro-series-games">${Array.from({length:maxGames},(_,i)=>proSeriesGameRow(matches[i],i+1,{notPlayed:clinched&&clinchedAt>0&&i+1>clinchedAt})).join('')}</div>
+    <div class="kvl1180-pro-series-games"><h4>경기 일정·결과</h4>${Array.from({length:maxGames},(_,i)=>proSeriesGameRow(matches[i],i+1,{notPlayed:clinchedAt>0&&i+1>clinchedAt})).join('')}</div>
     <footer>${esc(note)}</footer>
   </section>`;
 }
 function renderProPostseason(root,d,c){
-  const seed1=proPostseasonSeed(d,1,'정규리그 1위'),seed2=proPostseasonSeed(d,2,'정규리그 2위'),seed3=proPostseasonSeed(d,3,'정규리그 3위'),seed4=proPostseasonSeed(d,4,'정규리그 4위');
-  const qpoWinner={html:'준PO 승자',name:'준PO 승자',code:''},poEntry={html:'준PO 승자 / 정규리그 3위',name:'준PO 승자 / 정규리그 3위',code:''},poWinner={html:'플레이오프 승자',name:'플레이오프 승자',code:''};
+  const seed1=proPostseasonSeed(d,1),seed2=proPostseasonSeed(d,2),seed3=proPostseasonSeed(d,3),seed4=proPostseasonSeed(d,4);
   const qpo=proSeriesMatches(d,'qpo'),po=proSeriesMatches(d,'po'),finals=proSeriesMatches(d,'final');
+  const poEntry=proSeriesAdvancer(seed3,seed4,qpo,1,'준PO 승자 / 미개최 시 정규리그 3위');
+  const poWinner=proSeriesAdvancer(seed2,poEntry,po,2,'플레이오프 승자');
   root.innerHTML=`<div class="kvl1180-pro-postseason">
-    <div class="kvl1180-pro-postseason-guide"><b>준PO · 단판</b><i>→</i><b>PO · 3전 2선승</b><i>→</i><b>챔피언결정전 · 5전 3선승</b></div>
+    <div class="kvl1180-pro-postseason-guide"><b>포스트시즌 진출 경로</b><span>정규리그 2위는 PO, 1위는 챔피언결정전으로 직행합니다.</span></div>
     <div class="kvl1180-pro-postseason-ladder">
       ${proSeriesStage({step:1,title:c.qpoLabel||'준플레이오프',series:'조건부 · 단판',left:seed3,right:seed4,matches:qpo,maxGames:1,winsNeeded:1,note:c.qpoRule||'정규리그 3·4위 승점 차가 3점 이내일 때 실시',cls:'is-qpo'})}
-      <div class="kvl1180-pro-postseason-link"><span>승자</span></div>
+      <div class="kvl1180-pro-postseason-link" aria-hidden="true"><span>승자 진출</span></div>
       ${proSeriesStage({step:2,title:c.poLabel||'플레이오프',series:'3전 2선승',left:seed2,right:poEntry,matches:po,maxGames:3,winsNeeded:2,note:c.poRule||'준PO 미개최 시 정규리그 3위가 플레이오프 직행',cls:'is-po'})}
-      <div class="kvl1180-pro-postseason-link"><span>승자</span></div>
+      <div class="kvl1180-pro-postseason-link" aria-hidden="true"><span>승자 진출</span></div>
       ${proSeriesStage({step:3,title:c.finalLabel||'챔피언결정전',series:'5전 3선승',left:seed1,right:poWinner,matches:finals,maxGames:5,winsNeeded:3,note:c.finalRule||'시리즈 승자가 V-리그 챔피언',cls:'is-final'})}
     </div>
     <p class="kvl1180-pro-postseason-note">${esc(c.note||'정규리그 순위와 포스트시즌 결과가 확정되면 실제 팀명·경기별 결과·시리즈 승수가 자동 갱신됩니다.')}</p>
