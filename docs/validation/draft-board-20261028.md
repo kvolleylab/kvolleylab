@@ -31,6 +31,10 @@ git diff --check
 
 UI 테스트는 JSDOM이 필요하다. 설치되어 있지 않은 환경에서는 설치된 모듈 위치를 `KVL_JSDOM_PATH`로 지정할 수 있다. 테스트의 API와 선수·거래는 격리된 fixture이며 실제 저장소에 전송하지 않는다.
 
+기존 Player and Draft Integration workflow에 새 `draft-board` job과 신규 HTML/시즌 데이터 경로를 연결했다. 36개 신규 검사를 PR마다 실행한다. 원격 검사의 최종 상태는 PR Checks를 기준으로 한다.
+
+PR #199의 첫 원격 검사에서는 기존 데이터 등록 작업 3개가 실패했다. `register-skku`는 Player Master를16명으로 가정하지만 실제127명이며, `register`는78명 가정에서 AssertionError가 발생한다. `build-batch`는 이미 존재하는 대학 seed 파일 갱신에 SHA를 보내지 않아422로 실패했다. 해당 workflow/MASTER/seed 파일은 이번 기능에서 변경하지 않았고, 드래프트 결과 검증 실패와 구분한다. 상세 로그는 PR Checks에 남긴다. 운영 반영 전 이 기존 CI 상태도 검토해야 한다.
+
 | 검사 | 확인 결과 |
 |---|---|
 | 메뉴/진입 | 프로 V-리그 → V-리그 홈, KOVO컵, 드래프트 순서. 기존 신청자 메뉴 유지 |
