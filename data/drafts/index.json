@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "default_season": "2026-27",
+  "storage": {
+    "repository": "kvolleylab/kvolleylab",
+    "branch": "data/draft-board",
+    "mode": "github"
+  },
+  "seasons": [
+    {
+      "season": "2026-27",
+      "label": "2026–2027",
+      "divisions": {
+        "M": {
+          "state": "data/drafts/2026-27/men.json",
+          "sources": "data/drafts/2026-27/sources.json",
+          "applicants": "data/draft-applicants/2026-27/applicants.json",
+          "links": "data/draft-applicants/2026-27/player-links.json"
+        }
+      }
+    }
+  ]
+}

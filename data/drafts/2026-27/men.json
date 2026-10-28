@@ -1,0 +1,521 @@
+{
+  "schema_version": 1,
+  "season": "2026-27",
+  "division": "M",
+  "revision": 0,
+  "source_id": "KOVO-2026-27-M-157978",
+  "updated_at": null,
+  "event": {
+    "starts_at": "2026-10-28T14:30:00+09:00",
+    "venue": "서울 메이필드 호텔",
+    "status": "scheduled",
+    "note": "공식 사전 안내 기준 · 현장 진행/결과는 입력 대기",
+    "source_url": "https://kovo.co.kr/news/kovo/press/157978"
+  },
+  "teams": [
+    {
+      "id": "SFB",
+      "name": "삼성화재",
+      "logo": "assets/img/team-logos/v-league/2026-27/men/SFB.svg",
+      "balls": 35,
+      "probability": 35,
+      "color": null
+    },
+    {
+      "id": "OKF",
+      "name": "OK저축은행",
+      "logo": "assets/img/team-logos/v-league/2026-27/men/OKF.svg",
+      "balls": 30,
+      "probability": 30,
+      "color": null
+    },
+    {
+      "id": "KEP",
+      "name": "한국전력",
+      "logo": "assets/img/team-logos/v-league/2026-27/men/KEP.svg",
+      "balls": 20,
+      "probability": 20,
+      "color": null
+    },
+    {
+      "id": "KBI",
+      "name": "KB손해보험",
+      "logo": "assets/img/team-logos/v-league/2026-27/men/KBI.svg",
+      "balls": 8,
+      "probability": 8,
+      "color": null
+    },
+    {
+      "id": "WRC",
+      "name": "우리카드",
+      "logo": "assets/img/team-logos/v-league/2026-27/men/WRC.svg",
+      "balls": 4,
+      "probability": 4,
+      "color": null
+    },
+    {
+      "id": "HDC",
+      "name": "현대캐피탈",
+      "logo": "assets/img/team-logos/v-league/2026-27/men/HDC.svg",
+      "balls": 2,
+      "probability": 2,
+      "color": null
+    },
+    {
+      "id": "KAL",
+      "name": "대한항공",
+      "logo": "assets/img/team-logos/v-league/2026-27/men/KAL.svg",
+      "balls": 1,
+      "probability": 1,
+      "color": null
+    }
+  ],
+  "rules": {
+    "rounds": [
+      {
+        "round": 1,
+        "direction": "forward",
+        "order": [],
+        "verification": "unverified",
+        "source_url": "",
+        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+      },
+      {
+        "round": 2,
+        "direction": "reverse",
+        "order": [],
+        "verification": "unverified",
+        "source_url": "",
+        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+      },
+      {
+        "round": 3,
+        "direction": "forward",
+        "order": [],
+        "verification": "unverified",
+        "source_url": "",
+        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+      },
+      {
+        "round": 4,
+        "direction": "reverse",
+        "order": [],
+        "verification": "unverified",
+        "source_url": "",
+        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+      }
+    ],
+    "trainees": {
+      "direction": "reverse",
+      "order": [],
+      "limit": null,
+      "verification": "unverified",
+      "source_url": "",
+      "note": "참고 엑셀의 역순 표시. 해당 시즌 지명 순서·인원 제한·추가 지명 운영은 공식 시행세칙 확인 필요."
+    }
+  },
+  "draws": [],
+  "trades": [],
+  "trade_review": {
+    "status": "pending",
+    "source_url": "",
+    "note": "거래 내역 확인 중"
+  },
+  "picks": [
+    {
+      "id": "2026-27:M:1:SFB",
+      "round": 1,
+      "original_team": "SFB",
+      "current_team": "SFB",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:1:OKF",
+      "round": 1,
+      "original_team": "OKF",
+      "current_team": "OKF",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:1:KEP",
+      "round": 1,
+      "original_team": "KEP",
+      "current_team": "KEP",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:1:KBI",
+      "round": 1,
+      "original_team": "KBI",
+      "current_team": "KBI",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:1:WRC",
+      "round": 1,
+      "original_team": "WRC",
+      "current_team": "WRC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:1:HDC",
+      "round": 1,
+      "original_team": "HDC",
+      "current_team": "HDC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:1:KAL",
+      "round": 1,
+      "original_team": "KAL",
+      "current_team": "KAL",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:2:SFB",
+      "round": 2,
+      "original_team": "SFB",
+      "current_team": "SFB",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:2:OKF",
+      "round": 2,
+      "original_team": "OKF",
+      "current_team": "OKF",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:2:KEP",
+      "round": 2,
+      "original_team": "KEP",
+      "current_team": "KEP",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:2:KBI",
+      "round": 2,
+      "original_team": "KBI",
+      "current_team": "KBI",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:2:WRC",
+      "round": 2,
+      "original_team": "WRC",
+      "current_team": "WRC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:2:HDC",
+      "round": 2,
+      "original_team": "HDC",
+      "current_team": "HDC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:2:KAL",
+      "round": 2,
+      "original_team": "KAL",
+      "current_team": "KAL",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:3:SFB",
+      "round": 3,
+      "original_team": "SFB",
+      "current_team": "SFB",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:3:OKF",
+      "round": 3,
+      "original_team": "OKF",
+      "current_team": "OKF",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:3:KEP",
+      "round": 3,
+      "original_team": "KEP",
+      "current_team": "KEP",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:3:KBI",
+      "round": 3,
+      "original_team": "KBI",
+      "current_team": "KBI",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:3:WRC",
+      "round": 3,
+      "original_team": "WRC",
+      "current_team": "WRC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:3:HDC",
+      "round": 3,
+      "original_team": "HDC",
+      "current_team": "HDC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:3:KAL",
+      "round": 3,
+      "original_team": "KAL",
+      "current_team": "KAL",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:4:SFB",
+      "round": 4,
+      "original_team": "SFB",
+      "current_team": "SFB",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:4:OKF",
+      "round": 4,
+      "original_team": "OKF",
+      "current_team": "OKF",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:4:KEP",
+      "round": 4,
+      "original_team": "KEP",
+      "current_team": "KEP",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:4:KBI",
+      "round": 4,
+      "original_team": "KBI",
+      "current_team": "KBI",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:4:WRC",
+      "round": 4,
+      "original_team": "WRC",
+      "current_team": "WRC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:4:HDC",
+      "round": 4,
+      "original_team": "HDC",
+      "current_team": "HDC",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    },
+    {
+      "id": "2026-27:M:4:KAL",
+      "round": 4,
+      "original_team": "KAL",
+      "current_team": "KAL",
+      "result": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      }
+    }
+  ],
+  "trainees": {
+    "SFB": {
+      "status": "waiting",
+      "entries": []
+    },
+    "OKF": {
+      "status": "waiting",
+      "entries": []
+    },
+    "KEP": {
+      "status": "waiting",
+      "entries": []
+    },
+    "KBI": {
+      "status": "waiting",
+      "entries": []
+    },
+    "WRC": {
+      "status": "waiting",
+      "entries": []
+    },
+    "HDC": {
+      "status": "waiting",
+      "entries": []
+    },
+    "KAL": {
+      "status": "waiting",
+      "entries": []
+    }
+  },
+  "audit": []
+}
