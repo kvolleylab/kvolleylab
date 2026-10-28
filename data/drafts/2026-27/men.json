@@ -2,14 +2,14 @@
   "schema_version": 1,
   "season": "2026-27",
   "division": "M",
-  "revision": 1,
+  "revision": 56,
   "source_id": "KOVO-2026-27-M-157978",
-  "updated_at": "2026-10-28T02:35:45.799Z",
+  "updated_at": "2026-10-28T23:53:10.725Z",
   "event": {
     "starts_at": "2026-10-28T14:30:00+09:00",
     "venue": "서울 메이필드 호텔",
-    "status": "scheduled",
-    "note": "2026.10.22 공식 사전 안내 기준 · 현장 진행/결과 입력 대기",
+    "status": "completed",
+    "note": "2026-10-28 제공 기록 반영 · 일반 지명 13명 · 수련선수 5명",
     "source_url": "https://kovo.co.kr/news/kovo/press/157978"
   },
   "teams": [
@@ -19,7 +19,10 @@
       "logo": "assets/img/team-logos/v-league/2026-27/men/SFB.svg",
       "balls": 35,
       "probability": 35,
-      "color": null
+      "color": {
+        "name": "파랑",
+        "hex": "#346CBC"
+      }
     },
     {
       "id": "OKF",
@@ -27,7 +30,10 @@
       "logo": "assets/img/team-logos/v-league/2026-27/men/OKF.svg",
       "balls": 30,
       "probability": 30,
-      "color": null
+      "color": {
+        "name": "살구색",
+        "hex": "#FFDAB9"
+      }
     },
     {
       "id": "KEP",
@@ -35,7 +41,10 @@
       "logo": "assets/img/team-logos/v-league/2026-27/men/KEP.svg",
       "balls": 20,
       "probability": 20,
-      "color": null
+      "color": {
+        "name": "초록",
+        "hex": "#30996B"
+      }
     },
     {
       "id": "KBI",
@@ -43,7 +52,10 @@
       "logo": "assets/img/team-logos/v-league/2026-27/men/KBI.svg",
       "balls": 8,
       "probability": 8,
-      "color": null
+      "color": {
+        "name": "노랑",
+        "hex": "#F4CF42"
+      }
     },
     {
       "id": "WRC",
@@ -51,7 +63,10 @@
       "logo": "assets/img/team-logos/v-league/2026-27/men/WRC.svg",
       "balls": 4,
       "probability": 4,
-      "color": null
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      }
     },
     {
       "id": "HDC",
@@ -59,7 +74,10 @@
       "logo": "assets/img/team-logos/v-league/2026-27/men/HDC.svg",
       "balls": 2,
       "probability": 2,
-      "color": null
+      "color": {
+        "name": "흰색",
+        "hex": "#FFFFFF"
+      }
     },
     {
       "id": "KAL",
@@ -67,7 +85,10 @@
       "logo": "assets/img/team-logos/v-league/2026-27/men/KAL.svg",
       "balls": 1,
       "probability": 1,
-      "color": null
+      "color": {
+        "name": "보라",
+        "hex": "#8555AD"
+      }
     }
   ],
   "rules": {
@@ -114,7 +135,98 @@
       "note": "참고 엑셀의 역순 표시. 해당 시즌 지명 순서·인원 제한·추가 지명 운영은 공식 시행세칙 확인 필요."
     }
   },
-  "draws": [],
+  "draws": [
+    {
+      "id": "6d29ff43-3b13-4178-a4f6-916f596a68da",
+      "team_id": "OKF",
+      "color": {
+        "name": "살구색",
+        "hex": "#FFDAB9"
+      },
+      "note": ""
+    },
+    {
+      "id": "70d57f20-7265-442c-a32e-16629741ccac",
+      "team_id": "HDC",
+      "color": {
+        "name": "흰색",
+        "hex": "#FFFFFF"
+      },
+      "note": ""
+    },
+    {
+      "id": "7239e6fc-9a0e-4c00-89e2-b104a852701c",
+      "team_id": "WRC",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": ""
+    },
+    {
+      "id": "e9d910ee-66b5-422e-950b-13214bf28b42",
+      "team_id": "KBI",
+      "color": {
+        "name": "노랑",
+        "hex": "#F4CF42"
+      },
+      "note": "1,2,3순위 구슬 제외 후 \n다시 추첨 / 확률 다시 계산필요"
+    },
+    {
+      "id": "8219ca23-8d5f-4802-997d-ad4458d2657c",
+      "team_id": "KEP",
+      "color": {
+        "name": "초록",
+        "hex": "#30996B"
+      },
+      "note": ""
+    },
+    {
+      "id": "f30fd9f4-5d6e-4d9e-a4ad-a99e69a67711",
+      "team_id": "KEP",
+      "color": {
+        "name": "초록",
+        "hex": "#30996B"
+      },
+      "note": ""
+    },
+    {
+      "id": "0c7d8daf-81b1-45ed-b355-db592fafed2a",
+      "team_id": "KBI",
+      "color": {
+        "name": "노랑",
+        "hex": "#F4CF42"
+      },
+      "note": ""
+    },
+    {
+      "id": "2094b614-cf32-40e3-b712-c35eb2a7142c",
+      "team_id": "KEP",
+      "color": {
+        "name": "초록",
+        "hex": "#30996B"
+      },
+      "note": ""
+    },
+    {
+      "id": "f4cdf056-c783-4fad-993d-b5270071e861",
+      "team_id": "SFB",
+      "color": {
+        "name": "파랑",
+        "hex": "#346CBC"
+      },
+      "note": ""
+    },
+    {
+      "id": "a0e42a9f-3b4f-4c0d-bf9b-c63f4927ab63",
+      "team_id": "KAL",
+      "color": {
+        "name": "보라",
+        "hex": "#8555AD"
+      },
+      "note": ""
+    }
+  ],
   "trades": [],
   "trade_review": {
     "status": "pending",
@@ -128,10 +240,16 @@
       "original_team": "SFB",
       "current_team": "SFB",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "SFB",
+        "player": {
+          "name": "임인규",
+          "affiliation": "인하대",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-e444dfd3246266",
+          "player_id": "KVL-P-000011"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -141,10 +259,16 @@
       "original_team": "OKF",
       "current_team": "OKF",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "OKF",
+        "player": {
+          "name": "윤경",
+          "affiliation": "인하대",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-bcf0b9fec21a66",
+          "player_id": "KVL-P-000008"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -154,10 +278,16 @@
       "original_team": "KEP",
       "current_team": "KEP",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "KEP",
+        "player": {
+          "name": "여광우",
+          "affiliation": "인하대",
+          "position": "L",
+          "applicant_id": "KVL-DA-2026-27-M-77b9ffc98dd9be",
+          "player_id": "KVL-P-000009"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -167,10 +297,16 @@
       "original_team": "KBI",
       "current_team": "KBI",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "KBI",
+        "player": {
+          "name": "장보석",
+          "affiliation": "한양대",
+          "position": "OP",
+          "applicant_id": "KVL-DA-2026-27-M-a47b7f0bcc4e31",
+          "player_id": "KVL-P-000129"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -180,10 +316,16 @@
       "original_team": "WRC",
       "current_team": "WRC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "WRC",
+        "player": {
+          "name": "전유석",
+          "affiliation": "중부대",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-7772dc3024bc2f",
+          "player_id": "KVL-P-000107"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -193,10 +335,16 @@
       "original_team": "HDC",
       "current_team": "HDC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "HDC",
+        "player": {
+          "name": "장은석",
+          "affiliation": "한양대",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-504ede0ea65650",
+          "player_id": "KVL-P-000133"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -206,10 +354,16 @@
       "original_team": "KAL",
       "current_team": "KAL",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "이승일",
+          "affiliation": "순천제일고",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-bac6442ae03138",
+          "player_id": "KVL-P-001030"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -219,10 +373,10 @@
       "original_team": "SFB",
       "current_team": "SFB",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "SFB",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -232,10 +386,16 @@
       "original_team": "OKF",
       "current_team": "OKF",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "OKF",
+        "player": {
+          "name": "배하준",
+          "affiliation": "영천시체육회",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-d1b0775d61ef2c",
+          "player_id": "KVL-P-001527"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -245,10 +405,16 @@
       "original_team": "KEP",
       "current_team": "KEP",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "KEP",
+        "player": {
+          "name": "한재원",
+          "affiliation": "인하사대부고",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-ca9a56c7e423d1",
+          "player_id": "KVL-P-001123"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -258,10 +424,16 @@
       "original_team": "KBI",
       "current_team": "KBI",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "KBI",
+        "player": {
+          "name": "현석재",
+          "affiliation": "중부대",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-4344676b2ac8f0",
+          "player_id": "KVL-P-000106"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -271,10 +443,16 @@
       "original_team": "WRC",
       "current_team": "WRC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "WRC",
+        "player": {
+          "name": "박우영",
+          "affiliation": "한양대",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-7b2dbee70540dc",
+          "player_id": "KVL-P-000136"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -284,10 +462,10 @@
       "original_team": "HDC",
       "current_team": "HDC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "HDC",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -297,10 +475,16 @@
       "original_team": "KAL",
       "current_team": "KAL",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "송정민",
+          "affiliation": "수성고",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-M-a42b404913d892",
+          "player_id": "KVL-P-000984"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -310,10 +494,10 @@
       "original_team": "SFB",
       "current_team": "SFB",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "SFB",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -323,10 +507,10 @@
       "original_team": "OKF",
       "current_team": "OKF",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "OKF",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -336,10 +520,10 @@
       "original_team": "KEP",
       "current_team": "KEP",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "KEP",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -349,10 +533,10 @@
       "original_team": "KBI",
       "current_team": "KBI",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "KBI",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -362,10 +546,10 @@
       "original_team": "WRC",
       "current_team": "WRC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "WRC",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -375,10 +559,10 @@
       "original_team": "HDC",
       "current_team": "HDC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "HDC",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -388,10 +572,16 @@
       "original_team": "KAL",
       "current_team": "KAL",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
-        "player": null,
-        "completed_at": null,
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "홍준범",
+          "affiliation": "성균관대",
+          "position": "OP",
+          "applicant_id": "KVL-DA-2026-27-M-b2f1b54b318fd2",
+          "player_id": "KVL-P-000017"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -401,10 +591,10 @@
       "original_team": "SFB",
       "current_team": "SFB",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "SFB",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -414,10 +604,10 @@
       "original_team": "OKF",
       "current_team": "OKF",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "OKF",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -427,10 +617,10 @@
       "original_team": "KEP",
       "current_team": "KEP",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "KEP",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -440,10 +630,10 @@
       "original_team": "KBI",
       "current_team": "KBI",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "KBI",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -453,10 +643,10 @@
       "original_team": "WRC",
       "current_team": "WRC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "WRC",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -466,10 +656,10 @@
       "original_team": "HDC",
       "current_team": "HDC",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "HDC",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     },
@@ -479,41 +669,114 @@
       "original_team": "KAL",
       "current_team": "KAL",
       "result": {
-        "status": "waiting",
-        "actual_team": null,
+        "status": "passed",
+        "actual_team": "KAL",
         "player": null,
-        "completed_at": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
         "source_url": ""
       }
     }
   ],
   "trainees": {
     "SFB": {
-      "status": "waiting",
+      "status": "passed",
       "entries": []
     },
     "OKF": {
-      "status": "waiting",
-      "entries": []
+      "status": "selected",
+      "entries": [
+        {
+          "id": "69789b55-918d-413d-a61f-981e3a5c03de",
+          "status": "selected",
+          "actual_team": "OKF",
+          "player": {
+            "name": "백창진",
+            "affiliation": "홍익대",
+            "position": "L",
+            "applicant_id": "KVL-DA-2026-27-M-377a4de69f4bb6",
+            "player_id": "KVL-P-000033"
+          },
+          "completed_at": "2026-10-28T23:53:10.725Z",
+          "source_url": ""
+        }
+      ]
     },
     "KEP": {
-      "status": "waiting",
-      "entries": []
+      "status": "selected",
+      "entries": [
+        {
+          "id": "ce875be6-addc-43aa-9fe0-fb9044251056",
+          "status": "selected",
+          "actual_team": "KEP",
+          "player": {
+            "name": "옹민혁",
+            "affiliation": "경일대",
+            "position": "L",
+            "applicant_id": "KVL-DA-2026-27-M-7f3a94196bdf13",
+            "player_id": "KVL-P-000083"
+          },
+          "completed_at": "2026-10-28T23:53:10.725Z",
+          "source_url": ""
+        },
+        {
+          "id": "794b93a8-d221-4bfa-839f-2e8579933b0d",
+          "status": "selected",
+          "actual_team": "KEP",
+          "player": {
+            "name": "이율리",
+            "affiliation": "국군체육부대",
+            "position": "MB",
+            "applicant_id": "KVL-DA-2026-27-M-3e3f381a6c05cb",
+            "player_id": null
+          },
+          "completed_at": "2026-10-28T23:53:10.725Z",
+          "source_url": ""
+        }
+      ]
     },
     "KBI": {
-      "status": "waiting",
-      "entries": []
+      "status": "selected",
+      "entries": [
+        {
+          "id": "b2b59538-e185-4e37-83f6-266711e93967",
+          "status": "selected",
+          "actual_team": "KBI",
+          "player": {
+            "name": "이한샘",
+            "affiliation": "인하대",
+            "position": "S",
+            "applicant_id": "KVL-DA-2026-27-M-f0cdde678fc256",
+            "player_id": "KVL-P-000005"
+          },
+          "completed_at": "2026-10-28T23:53:10.725Z",
+          "source_url": ""
+        },
+        {
+          "id": "80bcddd0-0e8a-4cdb-97e0-e40f877aedc6",
+          "status": "selected",
+          "actual_team": "KBI",
+          "player": {
+            "name": "이산",
+            "affiliation": "순천제일고",
+            "position": "OH",
+            "applicant_id": "KVL-DA-2026-27-M-72322af4583c3b",
+            "player_id": "KVL-P-001025"
+          },
+          "completed_at": "2026-10-28T23:53:10.725Z",
+          "source_url": ""
+        }
+      ]
     },
     "WRC": {
-      "status": "waiting",
+      "status": "passed",
       "entries": []
     },
     "HDC": {
-      "status": "waiting",
+      "status": "passed",
       "entries": []
     },
     "KAL": {
-      "status": "waiting",
+      "status": "passed",
       "entries": []
     }
   },
@@ -538,6 +801,1325 @@
         "venue": "서울 메이필드 호텔",
         "status": "scheduled",
         "note": "2026.10.22 공식 사전 안내 기준 · 현장 진행/결과 입력 대기",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157978"
+      }
+    },
+    {
+      "id": "d0b40194-9871-420c-b052-dbb3de8bbc87",
+      "revision": 2,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "color",
+      "target": "SFB",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!C8:F8 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "name": "파랑",
+        "hex": "#346CBC"
+      }
+    },
+    {
+      "id": "6552bcab-ed19-4fc7-aa36-c23767146d18",
+      "revision": 3,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "color",
+      "target": "OKF",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!C9:F9 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "name": "살구색",
+        "hex": "#FFDAB9"
+      }
+    },
+    {
+      "id": "84bf7b4c-7e19-492c-bf43-7466701a0406",
+      "revision": 4,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "color",
+      "target": "KEP",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!C10:F10 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "name": "초록",
+        "hex": "#30996B"
+      }
+    },
+    {
+      "id": "cf38d495-92fb-4792-870e-f6805668e260",
+      "revision": 5,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "color",
+      "target": "KBI",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!C11:F11 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "name": "노랑",
+        "hex": "#F4CF42"
+      }
+    },
+    {
+      "id": "91f3825d-7863-432f-8da8-a0b5b0593e4f",
+      "revision": 6,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "color",
+      "target": "WRC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!C12:F12 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      }
+    },
+    {
+      "id": "da7143b4-b7d6-4469-a06c-f0eef8f28aa6",
+      "revision": 7,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "color",
+      "target": "HDC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!C13:F13 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "name": "흰색",
+        "hex": "#FFFFFF"
+      }
+    },
+    {
+      "id": "e56162b2-779c-4c34-b017-94179b20fdd6",
+      "revision": 8,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "color",
+      "target": "KAL",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!C14:F14 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "name": "보라",
+        "hex": "#8555AD"
+      }
+    },
+    {
+      "id": "6d29ff43-3b13-4178-a4f6-916f596a68da",
+      "revision": 9,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "6d29ff43-3b13-4178-a4f6-916f596a68da",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J8:N8 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "6d29ff43-3b13-4178-a4f6-916f596a68da",
+        "team_id": "OKF",
+        "color": {
+          "name": "살구색",
+          "hex": "#FFDAB9"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "70d57f20-7265-442c-a32e-16629741ccac",
+      "revision": 10,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "70d57f20-7265-442c-a32e-16629741ccac",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J9:N9 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "70d57f20-7265-442c-a32e-16629741ccac",
+        "team_id": "HDC",
+        "color": {
+          "name": "흰색",
+          "hex": "#FFFFFF"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "7239e6fc-9a0e-4c00-89e2-b104a852701c",
+      "revision": 11,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "7239e6fc-9a0e-4c00-89e2-b104a852701c",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J10:N10 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "7239e6fc-9a0e-4c00-89e2-b104a852701c",
+        "team_id": "WRC",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "e9d910ee-66b5-422e-950b-13214bf28b42",
+      "revision": 12,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "e9d910ee-66b5-422e-950b-13214bf28b42",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J11:N11 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "e9d910ee-66b5-422e-950b-13214bf28b42",
+        "team_id": "KBI",
+        "color": {
+          "name": "노랑",
+          "hex": "#F4CF42"
+        },
+        "note": "1,2,3순위 구슬 제외 후 \n다시 추첨 / 확률 다시 계산필요"
+      }
+    },
+    {
+      "id": "8219ca23-8d5f-4802-997d-ad4458d2657c",
+      "revision": 13,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "8219ca23-8d5f-4802-997d-ad4458d2657c",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J12:N12 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "8219ca23-8d5f-4802-997d-ad4458d2657c",
+        "team_id": "KEP",
+        "color": {
+          "name": "초록",
+          "hex": "#30996B"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "f30fd9f4-5d6e-4d9e-a4ad-a99e69a67711",
+      "revision": 14,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "f30fd9f4-5d6e-4d9e-a4ad-a99e69a67711",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J13:N13 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "f30fd9f4-5d6e-4d9e-a4ad-a99e69a67711",
+        "team_id": "KEP",
+        "color": {
+          "name": "초록",
+          "hex": "#30996B"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "0c7d8daf-81b1-45ed-b355-db592fafed2a",
+      "revision": 15,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "0c7d8daf-81b1-45ed-b355-db592fafed2a",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J14:N14 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "0c7d8daf-81b1-45ed-b355-db592fafed2a",
+        "team_id": "KBI",
+        "color": {
+          "name": "노랑",
+          "hex": "#F4CF42"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "2094b614-cf32-40e3-b712-c35eb2a7142c",
+      "revision": 16,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "2094b614-cf32-40e3-b712-c35eb2a7142c",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J15:N15 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "2094b614-cf32-40e3-b712-c35eb2a7142c",
+        "team_id": "KEP",
+        "color": {
+          "name": "초록",
+          "hex": "#30996B"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "f4cdf056-c783-4fad-993d-b5270071e861",
+      "revision": 17,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "f4cdf056-c783-4fad-993d-b5270071e861",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J16:N16 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "f4cdf056-c783-4fad-993d-b5270071e861",
+        "team_id": "SFB",
+        "color": {
+          "name": "파랑",
+          "hex": "#346CBC"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "a0e42a9f-3b4f-4c0d-bf9b-c63f4927ab63",
+      "revision": 18,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "draw_add",
+      "target": "a0e42a9f-3b4f-4c0d-bf9b-c63f4927ab63",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 추첨기록!J17:N17 · 사용자 제공 기록 반영",
+      "before": null,
+      "after": {
+        "id": "a0e42a9f-3b4f-4c0d-bf9b-c63f4927ab63",
+        "team_id": "KAL",
+        "color": {
+          "name": "보라",
+          "hex": "#8555AD"
+        },
+        "note": ""
+      }
+    },
+    {
+      "id": "ca6ae7aa-c7b8-43eb-93ea-5f17809ee069",
+      "revision": 19,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:1:OKF",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!C9 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "OKF",
+        "player": {
+          "name": "윤경",
+          "affiliation": "인하대",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-bcf0b9fec21a66",
+          "player_id": "KVL-P-000008"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "7e977985-2b84-4aa0-8ea8-9292ff924998",
+      "revision": 20,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:1:HDC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!D9 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "HDC",
+        "player": {
+          "name": "장은석",
+          "affiliation": "한양대",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-504ede0ea65650",
+          "player_id": "KVL-P-000133"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "3596a5f8-6c00-46c6-be50-f60a57ea946c",
+      "revision": 21,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:1:WRC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!E9 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "WRC",
+        "player": {
+          "name": "전유석",
+          "affiliation": "중부대",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-7772dc3024bc2f",
+          "player_id": "KVL-P-000107"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "d4eb0d7c-7d9f-4358-95e7-5f51071fdd71",
+      "revision": 22,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:1:KBI",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!F9 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KBI",
+        "player": {
+          "name": "장보석",
+          "affiliation": "한양대",
+          "position": "OP",
+          "applicant_id": "KVL-DA-2026-27-M-a47b7f0bcc4e31",
+          "player_id": "KVL-P-000129"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "bbe9c970-f17e-4c3a-b485-7b57a865a250",
+      "revision": 23,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:1:KEP",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!G9 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KEP",
+        "player": {
+          "name": "여광우",
+          "affiliation": "인하대",
+          "position": "L",
+          "applicant_id": "KVL-DA-2026-27-M-77b9ffc98dd9be",
+          "player_id": "KVL-P-000009"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "0fa13a22-8e30-4eff-96e7-82d7963708e8",
+      "revision": 24,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:1:SFB",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!H9 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "SFB",
+        "player": {
+          "name": "임인규",
+          "affiliation": "인하대",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-e444dfd3246266",
+          "player_id": "KVL-P-000011"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "cdc0c117-4f53-496a-9eaf-94545b38f668",
+      "revision": 25,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:1:KAL",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!I9 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "이승일",
+          "affiliation": "순천제일고",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-bac6442ae03138",
+          "player_id": "KVL-P-001030"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "029bc700-1e93-4119-a148-0f857d52c857",
+      "revision": 26,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:2:OKF",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!C13 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "OKF",
+        "player": {
+          "name": "배하준",
+          "affiliation": "영천시체육회",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-d1b0775d61ef2c",
+          "player_id": "KVL-P-001527"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "aa099a06-4651-42d0-b76e-fb17f5120b28",
+      "revision": 27,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:2:HDC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!D13 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HDC",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "5e578064-d9e9-42a3-9b5d-ed7227addb78",
+      "revision": 28,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:2:WRC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!E13 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "WRC",
+        "player": {
+          "name": "박우영",
+          "affiliation": "한양대",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-M-7b2dbee70540dc",
+          "player_id": "KVL-P-000136"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "8289ba52-e73f-415b-8b85-541470e0d085",
+      "revision": 29,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:2:KBI",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!F13 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KBI",
+        "player": {
+          "name": "현석재",
+          "affiliation": "중부대",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-4344676b2ac8f0",
+          "player_id": "KVL-P-000106"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "d8abcb7e-0a14-4652-8e83-081fed5859ef",
+      "revision": 30,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:2:KEP",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!G13 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KEP",
+        "player": {
+          "name": "한재원",
+          "affiliation": "인하사대부고",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-M-ca9a56c7e423d1",
+          "player_id": "KVL-P-001123"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "c5ea0f2e-15b1-404c-bd14-68e55ccf1248",
+      "revision": 31,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:2:SFB",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!H13 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "SFB",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "ab5e5089-69eb-47b7-bece-fc8b8d5a4a63",
+      "revision": 32,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:2:KAL",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!I13 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "송정민",
+          "affiliation": "수성고",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-M-a42b404913d892",
+          "player_id": "KVL-P-000984"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "ec6d7c5d-840c-4394-a89b-c5f899f19f03",
+      "revision": 33,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:3:OKF",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!C17 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "OKF",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "f6b0959f-d121-4cc1-b888-6e95800bc5cc",
+      "revision": 34,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:3:HDC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!D17 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HDC",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "bb3b952d-046b-42dc-a911-6fd5e5b7dd9a",
+      "revision": 35,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:3:WRC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!E17 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "WRC",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "3e8e30ca-b1f0-46d9-9d60-ae67578f1100",
+      "revision": 36,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:3:KBI",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!F17 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "KBI",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "24795d7d-afad-4321-b0bb-3a801a1dd024",
+      "revision": 37,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:3:KEP",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!G17 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "KEP",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "8dc982d5-df50-42c5-bccb-bbb05ccb5e13",
+      "revision": 38,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:3:SFB",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!H17 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "SFB",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "f7b6f910-6eb8-45b6-af4f-dcaebd22b000",
+      "revision": 39,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:3:KAL",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!I17 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "홍준범",
+          "affiliation": "성균관대",
+          "position": "OP",
+          "applicant_id": "KVL-DA-2026-27-M-b2f1b54b318fd2",
+          "player_id": "KVL-P-000017"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "c9767fcb-a0a3-44c3-9726-2a953ae1862a",
+      "revision": 40,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:4:OKF",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!C21 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "OKF",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "9b4073a7-1bea-46ee-bd72-43f645c871db",
+      "revision": 41,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:4:HDC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!D21 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HDC",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "b4e05f3a-747b-4054-bc4a-25427f2ed64c",
+      "revision": 42,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:4:WRC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!E21 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "WRC",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "9c5f9585-d5b9-4145-830e-af80e16430b2",
+      "revision": 43,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:4:KBI",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!F21 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "KBI",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "66b533a2-a2dd-4a95-9cbb-c384415f99e6",
+      "revision": 44,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:4:KEP",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!G21 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "KEP",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "333a04ca-4c57-4cc0-a518-1a2563e20927",
+      "revision": 45,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:4:SFB",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!H21 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "SFB",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "f8d174bc-4eb8-47ac-9f9c-dc085332c172",
+      "revision": 46,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "result",
+      "target": "2026-27:M:4:KAL",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!I21 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "KAL",
+        "player": null,
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      }
+    },
+    {
+      "id": "69789b55-918d-413d-a61f-981e3a5c03de",
+      "revision": 47,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "OKF",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!C25 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "69789b55-918d-413d-a61f-981e3a5c03de",
+            "status": "selected",
+            "actual_team": "OKF",
+            "player": {
+              "name": "백창진",
+              "affiliation": "홍익대",
+              "position": "L",
+              "applicant_id": "KVL-DA-2026-27-M-377a4de69f4bb6",
+              "player_id": "KVL-P-000033"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "225cf7bc-74c9-4a3a-a2dd-d1df0095ae19",
+      "revision": 48,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "HDC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!D25, 지명결과!D26 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "3de5b5e2-e2a9-4f0e-a5b6-79540482e80a",
+      "revision": 49,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "WRC",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!E25, 지명결과!E26 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "b2b59538-e185-4e37-83f6-266711e93967",
+      "revision": 50,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "KBI",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!F25 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "b2b59538-e185-4e37-83f6-266711e93967",
+            "status": "selected",
+            "actual_team": "KBI",
+            "player": {
+              "name": "이한샘",
+              "affiliation": "인하대",
+              "position": "S",
+              "applicant_id": "KVL-DA-2026-27-M-f0cdde678fc256",
+              "player_id": "KVL-P-000005"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "80bcddd0-0e8a-4cdb-97e0-e40f877aedc6",
+      "revision": 51,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "KBI",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!F26 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "b2b59538-e185-4e37-83f6-266711e93967",
+            "status": "selected",
+            "actual_team": "KBI",
+            "player": {
+              "name": "이한샘",
+              "affiliation": "인하대",
+              "position": "S",
+              "applicant_id": "KVL-DA-2026-27-M-f0cdde678fc256",
+              "player_id": "KVL-P-000005"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          }
+        ]
+      },
+      "after": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "b2b59538-e185-4e37-83f6-266711e93967",
+            "status": "selected",
+            "actual_team": "KBI",
+            "player": {
+              "name": "이한샘",
+              "affiliation": "인하대",
+              "position": "S",
+              "applicant_id": "KVL-DA-2026-27-M-f0cdde678fc256",
+              "player_id": "KVL-P-000005"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          },
+          {
+            "id": "80bcddd0-0e8a-4cdb-97e0-e40f877aedc6",
+            "status": "selected",
+            "actual_team": "KBI",
+            "player": {
+              "name": "이산",
+              "affiliation": "순천제일고",
+              "position": "OH",
+              "applicant_id": "KVL-DA-2026-27-M-72322af4583c3b",
+              "player_id": "KVL-P-001025"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "ce875be6-addc-43aa-9fe0-fb9044251056",
+      "revision": 52,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "KEP",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!G25 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "ce875be6-addc-43aa-9fe0-fb9044251056",
+            "status": "selected",
+            "actual_team": "KEP",
+            "player": {
+              "name": "옹민혁",
+              "affiliation": "경일대",
+              "position": "L",
+              "applicant_id": "KVL-DA-2026-27-M-7f3a94196bdf13",
+              "player_id": "KVL-P-000083"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "794b93a8-d221-4bfa-839f-2e8579933b0d",
+      "revision": 53,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "KEP",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!G26 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "ce875be6-addc-43aa-9fe0-fb9044251056",
+            "status": "selected",
+            "actual_team": "KEP",
+            "player": {
+              "name": "옹민혁",
+              "affiliation": "경일대",
+              "position": "L",
+              "applicant_id": "KVL-DA-2026-27-M-7f3a94196bdf13",
+              "player_id": "KVL-P-000083"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          }
+        ]
+      },
+      "after": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "ce875be6-addc-43aa-9fe0-fb9044251056",
+            "status": "selected",
+            "actual_team": "KEP",
+            "player": {
+              "name": "옹민혁",
+              "affiliation": "경일대",
+              "position": "L",
+              "applicant_id": "KVL-DA-2026-27-M-7f3a94196bdf13",
+              "player_id": "KVL-P-000083"
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          },
+          {
+            "id": "794b93a8-d221-4bfa-839f-2e8579933b0d",
+            "status": "selected",
+            "actual_team": "KEP",
+            "player": {
+              "name": "이율리",
+              "affiliation": "국군체육부대",
+              "position": "MB",
+              "applicant_id": "KVL-DA-2026-27-M-3e3f381a6c05cb",
+              "player_id": null
+            },
+            "completed_at": "2026-10-28T23:53:10.725Z",
+            "source_url": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "34165e2f-a290-4a69-bd19-903c74446230",
+      "revision": 54,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "SFB",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!H25, 지명결과!H26 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "35aacece-b4c0-46af-bd77-d63c29bd7470",
+      "revision": 55,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "trainee",
+      "target": "KAL",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 지명결과!I25, 지명결과!I26 · 사용자 제공 기록 반영",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "0b918ec2-2a4a-4bab-b45b-81cc08559331",
+      "revision": 56,
+      "at": "2026-10-28T23:53:10.725Z",
+      "actor": "kvolleylab",
+      "action": "event",
+      "target": "2026-27",
+      "reason": "USER-RECORD-20261028-M-f70d5fd59e34 · 진행 상태 · 사용자 제공 기록 반영",
+      "before": {
+        "starts_at": "2026-10-28T14:30:00+09:00",
+        "venue": "서울 메이필드 호텔",
+        "status": "scheduled",
+        "note": "2026.10.22 공식 사전 안내 기준 · 현장 진행/결과 입력 대기",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157978"
+      },
+      "after": {
+        "starts_at": "2026-10-28T14:30:00+09:00",
+        "venue": "서울 메이필드 호텔",
+        "status": "completed",
+        "note": "2026-10-28 제공 기록 반영 · 일반 지명 13명 · 수련선수 5명",
         "source_url": "https://kovo.co.kr/news/kovo/press/157978"
       }
     }
