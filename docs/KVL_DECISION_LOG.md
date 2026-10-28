@@ -249,3 +249,8 @@ Status: APPROVED / IMPLEMENTED / RELEASE AUTHORIZED (검증·merge·Pages·live 
 ## 2026-10-28 · 종합대회 최종입상팀의 중복 지역명 제거
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 ‘대진·최종순위’의 ‘최종입상팀’ 카드를 ‘1위 → 경기 로고 → 화성시청 → 우승’으로 표시하도록 요청했다. 이 카드에서 팀명 오른쪽의 지역 글씨만 제거하고 지역 로고·순위 트로피·팀명 링크·우승/준우승/공동 3위를 가운데 세로로 배치한다. #193의 오른쪽 지역 유지 결정을 최종입상팀 카드 범위에서 대체한다. 목록과 한눈에 순위 표시는 변경하지 않으며 데이터·Hero·대진표·명단·다른 대회 렌더링은 유지한다. [검수·복구](validation/comprehensive-podium-region-once-20261028.md).
+
+
+## 2026-10-28 · 종합대회 목록·대학 U-리그 PC Hero 이미지 비중 확대
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 종합대회 배구 목록과 대학 U-리그의 PC Hero에서 이미지가 카드의 절반 정도를 차지하도록 요청했다. 종합대회 목록은 PC 카드 비율을 3:1로 조정하고 왼쪽 문구·오른쪽 장면을 절반씩 배치한다. U-리그 남녀는 공통 `hero.themeVariant=half-visual` 옵션으로 원본 비율·오른쪽 정렬과 밝은 장면을 유지한다. 기존 사진 규칙의 강제 100%×100% 배경 맞춤 대신 높이 기준 자연 비율을 사용하며, 좁은 PC에서는 기존 제목 폭과 추가 명암으로 가독성을 보존한다. 모바일 자산·배치, 선택 이미지 바이트·색, 경기/명단/ID 및 직전 최종입상팀 수정을 유지한다. 종합대회 목록의 앞선 25:7 비율과 해당 U-리그 PC 사진 표시 결정을 이 범위에서 대체한다. [검수·복구](validation/hub-uleague-hero-half-20261028.md).
