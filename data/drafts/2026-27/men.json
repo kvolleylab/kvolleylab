@@ -2,14 +2,14 @@
   "schema_version": 1,
   "season": "2026-27",
   "division": "M",
-  "revision": 0,
+  "revision": 1,
   "source_id": "KOVO-2026-27-M-157978",
-  "updated_at": null,
+  "updated_at": "2026-10-28T02:35:45.799Z",
   "event": {
     "starts_at": "2026-10-28T14:30:00+09:00",
     "venue": "서울 메이필드 호텔",
     "status": "scheduled",
-    "note": "공식 사전 안내 기준 · 현장 진행/결과는 입력 대기",
+    "note": "2026.10.22 공식 사전 안내 기준 · 현장 진행/결과 입력 대기",
     "source_url": "https://kovo.co.kr/news/kovo/press/157978"
   },
   "teams": [
@@ -517,5 +517,29 @@
       "entries": []
     }
   },
-  "audit": []
+  "audit": [
+    {
+      "id": "614410e5-d4ca-4392-b742-1b5f64490851",
+      "revision": 1,
+      "at": "2026-10-28T02:35:45.799Z",
+      "actor": "kvolleylab",
+      "action": "event",
+      "target": "2026-27",
+      "reason": "KOVO 공식 본문 재대조: 사전 안내의 발표일을 진행 상태 설명에 명시",
+      "before": {
+        "starts_at": "2026-10-28T14:30:00+09:00",
+        "venue": "서울 메이필드 호텔",
+        "status": "scheduled",
+        "note": "공식 사전 안내 기준 · 현장 진행/결과는 입력 대기",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157978"
+      },
+      "after": {
+        "starts_at": "2026-10-28T14:30:00+09:00",
+        "venue": "서울 메이필드 호텔",
+        "status": "scheduled",
+        "note": "2026.10.22 공식 사전 안내 기준 · 현장 진행/결과 입력 대기",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157978"
+      }
+    }
+  ]
 }
