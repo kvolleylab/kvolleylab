@@ -125,7 +125,7 @@ function eventEditor(){
   const event=state.event;
   // datetime-local is explicitly Korea time, independent of the visitor's operating system timezone.
   const local=event.starts_at?new Date(new Date(event.starts_at).getTime()+9*3600e3).toISOString().slice(0,16):'';
-  form('개최 정보·진행 상태',`<div class="db-fields">${field('개최 일시 · 한국시간','startsAt',local,'datetime-local')}${field('장소','venue',event.venue,'text','maxlength="200"')}${select('진행 상태','eventStatus',Object.entries(EVENT_STATUS),event.status)}</div>${textarea('진행 상태 설명','note',event.note,'maxlength="1000"')}${field('공식 출처 URL','sourceURL',event.source_url,'url')}<p>완료로 바꾸려면 7팀 추첨과 1R~4R의 지명·패스 기록이 모두 필요합니다.</p>`,async f=>save({type:'event',value:{starts_at:f.get('startsAt')?f.get('startsAt')+':00+09:00':'',venue:f.get('venue'),status:f.get('eventStatus'),note:f.get('note'),source_url:f.get('sourceURL')},reason:f.get('reason')}));
+  form('개최 정보·진행 상태',`<div class="db-fields">${field('개최 일시 · 한국시간','startsAt',local,'datetime-local')}${field('장소','venue',event.venue,'text','maxlength="200"')}${select('진행 상태','eventStatus',Object.entries(EVENT_STATUS),event.status)}</div>${textarea('진행 상태 설명','note',event.note,'maxlength="1000"')}${field('공식 출처 URL','sourceURL',event.source_url,'url')}<p>완료로 바꾸려면 7팀 추첨과 1R~4R·수련선수의 지명·패스 기록이 모두 필요합니다.</p>`,async f=>save({type:'event',value:{starts_at:f.get('startsAt')?f.get('startsAt')+':00+09:00':'',venue:f.get('venue'),status:f.get('eventStatus'),note:f.get('note'),source_url:f.get('sourceURL')},reason:f.get('reason')}));
 }
 function colorEditor(id){
   const t=state.teams.find(t=>t.id===id);
@@ -166,6 +166,7 @@ async function loadSeason(season){
     paint();$('season').value=season;
     const u=new URL(location.href);u.searchParams.set('season',season);history.replaceState(null,'',u);
     status(remote.status==='fulfilled'?`저장소 확인 완료 · ${state.updated_at?dateText(state.updated_at):'사전 안내 자료'} · 버전 ${state.revision}`:'저장소 연결 지연 · 배포된 사전 자료 표시 중 · 최신 현황은 새로고침으로 확인하세요.');
+    if(remote.status==='rejected')console.warn('Draft repository read unavailable:',remote.reason?.message||'Network error');
   }catch(err){if(turn===generation){error(err.message);$('draftBoard').innerHTML='';$('draftBoard').setAttribute('aria-busy','false');status('자료 불러오기 실패');}}
 }
 $('season').onchange=()=>loadSeason($('season').value);

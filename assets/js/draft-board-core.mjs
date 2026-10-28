@@ -136,7 +136,7 @@ export function validate(state) {
     ensure(!state.trades.some(t=>t.status!=='cancelled'),'확인 중/확정 거래가 있어 거래 없음으로 표시할 수 없습니다.');
   }
   if(state.trade_review.status==='confirmed')ensure(state.trades.some(t=>t.status==='confirmed'),'확정된 거래가 없습니다.');
-  if(state.event.status==='completed')ensure(lottery(state).complete&&state.picks.every(p=>p.result.status!=='waiting'),'완료 상태에는 추첨 7팀과 1R~4R 전체 지명/패스 기록이 필요합니다.');
+  if(state.event.status==='completed')ensure(lottery(state).complete&&state.picks.every(p=>p.result.status!=='waiting')&&Object.values(state.trainees).every(g=>g.status!=='waiting'),'완료 상태에는 추첨 7팀과 1R~4R·수련선수 전체 지명/패스 기록이 필요합니다.');
   ensure(Array.isArray(state.audit)&&state.audit.length===state.revision,'수정 이력과 저장 버전이 일치하지 않습니다.');
   unique(state.audit.map(a=>a.id),'수정 이력 ID');
   return state;

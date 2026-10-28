@@ -8,7 +8,7 @@ export class DraftStore {
   #token=''; #sha=null; #actor=null; #state=null; #pending=false; #uncertain=false;
   constructor({repository,branch,path,fetcher=fetch}) {
     if(repository!=='kvolleylab/kvolleylab'||!branch||!/^data\/drafts\/\d{4}-\d{2}\/(men|women)\.json$/.test(path))throw new Error('저장 경로 설정 오류');
-    this.repository=repository;this.branch=branch;this.path=path;this.fetcher=fetcher;
+    this.repository=repository;this.branch=branch;this.path=path;this.fetcher=fetcher.bind(globalThis);
     this.endpoint=`https://api.github.com/repos/${repository}`;
   }
   get actor(){return this.#actor;}
@@ -18,7 +18,10 @@ export class DraftStore {
   async #request(url,options={}) {
     const headers={Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',...options.headers};
     if(this.#token)headers.Authorization=`Bearer ${this.#token}`;
-    const response=await this.fetcher(url,{...options,headers,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});
+    const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),12000);
+    let response;
+    try{response=await this.fetcher(url,{...options,headers,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer',signal:controller.signal});}
+    finally{clearTimeout(timeout);}
     if(!response.ok) {
       const error=new Error(response.status===409?'다른 관리자가 먼저 수정했습니다. 최신 내용을 다시 불러온 뒤 입력해 주세요.':
         [401,403].includes(response.status)?'저장 권한이 없거나 인증이 만료되었습니다. 저장소 Contents 쓰기 권한을 확인하세요.':

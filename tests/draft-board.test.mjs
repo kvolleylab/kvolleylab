@@ -72,6 +72,8 @@ test('blank is waiting, pass explicit, completed state rejects incomplete result
   s=change(s,'result',{status:'passed',actual_team:'SFB'},ID('SFB'));assert.equal(pick(s,'SFB').result.player,null);assert.equal(pick(s,'SFB').result.status,'passed');
   for(const t of s.teams)s=draw(s,t.id);
   for(const p of s.picks.filter(p=>p.result.status==='waiting'))s=change(s,'result',{status:'passed',actual_team:p.current_team},p.id);
+  assert.throws(()=>change(s,'event',{status:'completed'}),/수련선수/);
+  for(const t of s.teams)s=change(s,'trainee',{status:'passed'},t.id);
   s=change(s,'event',{status:'completed'});assert.equal(s.event.status,'completed');
 });
 test('multiple trainees, corrections and deletion retain per-entry identity',()=>{

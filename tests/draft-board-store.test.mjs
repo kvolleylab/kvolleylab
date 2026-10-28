@@ -65,3 +65,7 @@ test('tampered repository/path is refused; tokens never appear in serialized sto
  assert.throws(()=>new DraftStore({...settings,repository:'attacker/repository'}),/경로/);assert.throws(()=>new DraftStore({...settings,path:'data/drafts/../../index.html'}),/경로/);
  const b=await backend();try{const a=new DraftStore({...settings,fetcher:b.fetcher});await a.connect('admin-fixture');assert.ok(!JSON.stringify(a).includes('admin-fixture'));a.disconnect();assert.equal(a.editable,false);}finally{await b.cleanup();}
 });
+test('native browser fetch keeps its global receiver instead of the DraftStore instance',async()=>{
+ const s=new DraftStore({...settings,fetcher:function(){assert.equal(this,globalThis);return Promise.resolve(new Response(JSON.stringify({content:Buffer.from(JSON.stringify(seed)).toString('base64'),sha:'receiver-check'})));}});
+ assert.equal((await s.load()).revision,0);
+});
