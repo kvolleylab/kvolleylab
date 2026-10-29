@@ -2,9 +2,9 @@
   "schema_version": 1,
   "season": "2026-27",
   "division": "M",
-  "revision": 56,
+  "revision": 58,
   "source_id": "KOVO-2026-27-M-157978",
-  "updated_at": "2026-10-28T23:53:10.725Z",
+  "updated_at": "2026-10-29T14:30:19.974Z",
   "event": {
     "starts_at": "2026-10-28T14:30:00+09:00",
     "venue": "서울 메이필드 호텔",
@@ -133,6 +133,13 @@
       "verification": "unverified",
       "source_url": "",
       "note": "참고 엑셀의 역순 표시. 해당 시즌 지명 순서·인원 제한·추가 지명 운영은 공식 시행세칙 확인 필요."
+    },
+    "lottery": {
+      "reset_after_rank": 3,
+      "automatic_last": true,
+      "verification": "user_record",
+      "source_url": "",
+      "note": "2026-10-29 사용자 정정: 1~3순위 팀 구슬 제외 후 재추첨. 6순위 확정 후 남은 팀은 추첨 없이 7순위 자동 확정. 표시 확률은 단계 시작의 구슬 비율."
     }
   },
   "draws": [
@@ -214,15 +221,6 @@
       "color": {
         "name": "파랑",
         "hex": "#346CBC"
-      },
-      "note": ""
-    },
-    {
-      "id": "a0e42a9f-3b4f-4c0d-bf9b-c63f4927ab63",
-      "team_id": "KAL",
-      "color": {
-        "name": "보라",
-        "hex": "#8555AD"
       },
       "note": ""
     }
@@ -2122,6 +2120,129 @@
         "note": "2026-10-28 제공 기록 반영 · 일반 지명 13명 · 수련선수 5명",
         "source_url": "https://kovo.co.kr/news/kovo/press/157978"
       }
+    },
+    {
+      "id": "e5a73b4d-49a7-4f28-b6c3-313c3ca3f1c5",
+      "revision": 57,
+      "at": "2026-10-29T14:30:19.974Z",
+      "actor": "kvolleylab",
+      "action": "rules",
+      "target": "2026-27",
+      "reason": "2026-10-29 사용자 요청 · 상위 3팀 구슬 제외 후 재추첨 및 마지막 순위 자동 확정 설정",
+      "before": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          }
+        ],
+        "trainees": {
+          "direction": "reverse",
+          "order": [],
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "참고 엑셀의 역순 표시. 해당 시즌 지명 순서·인원 제한·추가 지명 운영은 공식 시행세칙 확인 필요."
+        }
+      },
+      "after": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          }
+        ],
+        "trainees": {
+          "direction": "reverse",
+          "order": [],
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "참고 엑셀의 역순 표시. 해당 시즌 지명 순서·인원 제한·추가 지명 운영은 공식 시행세칙 확인 필요."
+        },
+        "lottery": {
+          "reset_after_rank": 3,
+          "automatic_last": true,
+          "verification": "user_record",
+          "source_url": "",
+          "note": "2026-10-29 사용자 정정: 1~3순위 팀 구슬 제외 후 재추첨. 6순위 확정 후 남은 팀은 추첨 없이 7순위 자동 확정. 표시 확률은 단계 시작의 구슬 비율."
+        }
+      }
+    },
+    {
+      "id": "3c18fc27-c63e-4646-9f62-880c67409d7c",
+      "revision": 58,
+      "at": "2026-10-29T14:30:19.974Z",
+      "actor": "kvolleylab",
+      "action": "draw_remove",
+      "target": "a0e42a9f-3b4f-4c0d-bf9b-c63f4927ab63",
+      "reason": "2026-10-29 사용자 정정 · 대한항공은 실제 10번째 추첨이 아니라 6순위 확정 후 남은 팀의 7순위 자동 확정. 원본 기록은 감사 이력에 보존.",
+      "before": {
+        "id": "a0e42a9f-3b4f-4c0d-bf9b-c63f4927ab63",
+        "team_id": "KAL",
+        "color": {
+          "name": "보라",
+          "hex": "#8555AD"
+        },
+        "note": ""
+      },
+      "after": null
     }
   ]
 }
