@@ -2,7 +2,39 @@
 
 작성: 2026-10-30 KST. **운영 적용·자동 스케줄·실제 Issue 알림 승인 대기**.
 
-## 검사 기준과 결과
+## 최종 로컬 검증
+
+2026-10-30 **01:21:13 KST** 시작한 최종 전체 시범: **PASS 121 / FAIL 3 / NOT VERIFIED 5 / NOT RUN 1**. [최종 기계 보고서](final-report.json), [최종 읽기 보고서](final-report.md), [최종 이력](final-state.json), [최신 합성 테스트 로그](synthetic-final-tests.log).
+
+- Python **128/128 PASS**(기존 73 + 신규 55), 기존 핵심 JS **107/108 PASS**(알려진 과거 CSS 해시 검사 1개 FAIL).
+- Chromium **72/72 PASS**, 72화면 실행 상태도 PASS. 운영 HTML/CSS/JS/JSON 변경 없음.
+- Drive 경기 MASTER 276건 / 4대회 운영 JSON / 공식 관측 11경기 PASS. 전체 공식 source 전수는 NOT VERIFIED 유지.
+- 앞선 state를 이어받아 오류 ID 38개와 최초 발견일 보존, **새 이벤트 0개**. 브라우저 접근 실패 연속 카운터는 성공 후 0으로 복구.
+- 남은 NOT VERIFIED: 무표식 레거시 공개등급, 전체 공식 시즌, Drive 선수 MASTER 전수, 실제 배포 갱신 시각, 배포 gate의 운영 연결. 미병합 드래프트 지명 결과는 NOT RUN.
+
+최종 로컬 보고서의 데이터 HEAD는 `b1a5f884df5e6b48357a4ae79d1997f18ca145b7`이며 해당 production 데이터는 main `58311bec…`와 동일하다. 감사 코드 digest도 기록했다. 이후 hosted runner의 선수 프로필 전수 검사 제한 시간을 90→240초로 조정하고, MASTER 19열의 순서 변경을 데이터 오류로 오인하지 않는 계약 검사를 추가했다. 마지막 합성 테스트는 **56/56 PASS**, Python 전체는 **129/129 PASS**이며 실제 MASTER 24/252행의 새 계약 통과도 확인했다. 최종 GitHub 실행 증거는 아래에 기록한다.
+
+## 최종 GitHub Actions 검증
+
+[실행 40913439956](https://github.com/kvolleylab/kvolleylab/actions/runs/40913439956)은 **SUCCESS**, 2026-10-30 01:37:45~01:40:19 KST(154초)다. [정제된 Actions 보고서](actions-final-report.json), [읽기 보고서](actions-final-report.md), [실행·artifact·commit 근거](actions-evidence.json).
+
+| 항목 | 최종 결과 |
+|---|---|
+| 실행·의존성·artifact | PASS |
+| 합성 테스트 / Python 전체 | 56/56 PASS / 129/129 PASS |
+| 기존 핵심 JS | 107 PASS / 과거 CSS 해시 검사 1 FAIL. 프로필 전수 검사 포함 완료 |
+| Chromium 72화면 | 72/72 PASS |
+| P0/P1 gate / 변경 공개 export gate | PASS (변경 서비스 JSON 없음) |
+| 검사 묶음 | PASS 111 / FAIL 3 / NOT VERIFIED 6 / NOT RUN 3 |
+| Issue 게시 | NOT RUN: notify job SKIPPED, 승인 조건 유지 |
+
+검사 head는 `8ec3253a45c14639f9c8aa2ae43306f44aff25f5`, GitHub가 실제 테스트한 PR merge commit은 `c610502390330d565b19abb2228299626a1cb56e`다. 감사 코드 SHA-256은 `89e070a773643268d04f84090fad49d7cd2bb302ace4b1bce89ac1567ebf0e30`. 이후 보고서만 추가하는 commit에서도 이 코드 digest가 동일함을 확인한다.
+
+PR에서는 외부 공식/운영 조회를 수행하지 않아 두 항목이 NOT RUN이며, Drive 인증 미설정으로 경기 MASTER 두 항목이 NOT VERIFIED다. 로컬의 권한 있는 읽기 비교와 구분해야 한다. 나머지 미검증은 레거시 공개등급, 선수 MASTER 전수, 배포 시각, 운영 배포 gate다. 이 범위를 모두 PASS로 합산하지 않는다.
+
+작동 코드는 GitHub에서 직접 검증했다. 기존 workflow 3개 실패는 아래 별도 오류 기록 그대로이며, 신규 감사의 SUCCESS가 저장소 전체 CI의 정상화를 뜻하지 않는다. 자동 알림·일일 schedule·main 병합·운영 배포·Secrets 변경은 수행하지 않았다.
+
+## 최초 검사 기준과 결과
 
 작업 시작 및 변경/제출 전 재조회한 main 데이터 기준은 `58311bec50e6cf94079b6c7f6b4152bc9816cf7a`다. 로컬 시범은 이 main 데이터와 feature worktree의 신규 감사 코드를 함께 실행했다. 보고서의 SHA는 검사 데이터의 HEAD이며, 감사 코드는 이 Draft PR의 diff다. 운영 페이지/MASTER/기존 Player ID/기존 workflow를 수정하지 않았다.
 

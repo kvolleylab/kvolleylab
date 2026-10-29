@@ -56,7 +56,7 @@
 - 명시적 연기·취소가 관측되면 공식 상태를 기대값으로 보고한다. 임의 점수와 추정 결과는 만들지 않는다.
 - V-리그 공식 경기번호는 남녀 통합 순번이고 서비스 ID는 남녀별 순번이다. 숫자 치환을 하지 않는다. 검수된 provider map 또는 시즌·남녀부·날짜·양 팀·라운드가 모두 일치하는 유일 후보만 비교한다. 애매하면 NOT VERIFIED.
 - 종료 API의 `startTime`은 실제 첫 서브 시각이다. 예정 시각과 직접 비교하지 않는다. 향후 공식 예정 시각 필드가 확인될 때만 별도 확장한다.
-- 완전한 MASTER 범위와 부분 공식 feed를 구분한다. 부분 feed에서 안 보이는 경기를 누락으로 신고하지 않는다.
+- 완전한 MASTER 범위와 부분 공식 feed를 구분한다. 부분 feed에서 안 보이는 경기를 누락으로 신고하지 않는다. MASTER의 알려진 19열 순서가 바뀌면 NOT VERIFIED로 중단하며, 잘못 읽은 열로 경기 불일치를 확정하지 않는다.
 - 컵 결선은 현재 main과 MASTER에 반영되어 있다. 오래된 미병합 수정 PR을 신규 결선 누락의 근거로 쓰지 않는다.
 
 ## 5. 오류 모델과 재검증
@@ -165,6 +165,8 @@ python -B -m scripts.quality_audit.runner --root . --output /tmp/kvl-audit-outpu
 ## 11. 예상 비용과 의존성
 
 현재 저장소가 공개이고 표준 GitHub-hosted Linux runner를 사용하는 한 Actions 실행은 무료 범주다. 첫 설치 포함 5~15분/회로 예산을 잡으면 일 1회 약 150~450 runner분/월이며 실제 실행 시간으로 조정한다. 이는 실측 확정 비용이 아닌 상한 계획치다. PR 검사 횟수는 추가된다. report 세 파일의 14일 보관만 사용하며, 대형 screenshot·원본 문서는 저장하지 않는다. GitHub 정책·runner 종류·private 전환·저장 용량에 따라 비용이 달라질 수 있다.
+
+최종 시범 Actions 실측은 154초/회, 정제 artifact ZIP 15,173바이트였다. 같은 조건에서 하루 1회·30일이면 약 77분/월이지만 source 상태와 runner 부하에 따라 달라지므로 위 예산에 여유를 둔다.
 
 ChatGPT/OpenAI 사용료는 자동 점검 기준 **0**이다. Python 표준 라이브러리, PyYAML, Node.js, jsdom, Playwright를 사용한다. Google 인증을 선택할 경우 Google Cloud/Sheets의 해당 계정 정책·quota를 별도 확인한다. 유료 AI 분석을 추가하더라도 기본 감사 workflow의 필수 의존성으로 만들지 않는다.
 
