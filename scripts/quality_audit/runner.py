@@ -83,7 +83,9 @@ def regression(root):
         for test in CORE_TESTS:
             scope = 'regression:' + test
             try:
-                run = execute(['node', '--experimental-vm-modules', '--test', '--test-reporter=tap', 'tests/' + test], checkout)
+                # The existing full catalog/profile sweep is CPU-heavy on hosted runners.
+                timeout = 240 if test == 'player-profile-coverage.test.mjs' else 90
+                run = execute(['node', '--experimental-vm-modules', '--test', '--test-reporter=tap', 'tests/' + test], checkout, timeout=timeout)
                 if 'MODULE_NOT_FOUND' in run.stdout + run.stderr or 'fatal: path' in run.stdout + run.stderr:
                     results.append(check(scope, 'NOT VERIFIED', note='의존성 또는 과거 기준 commit 미접근; 회귀 실패와 구분', operational=True))
                     continue
