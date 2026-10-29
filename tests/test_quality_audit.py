@@ -7,7 +7,7 @@ import unittest
 
 from scripts.quality_audit.core import assessed, check, finding, reconcile, public_finding, stable_id
 from scripts.quality_audit import checks
-from scripts.quality_audit.sources import official_checks, official_row, master_rows, drive_checks
+from scripts.quality_audit.sources import official_checks, official_row, master_rows, drive_checks, MASTER_COLUMNS
 from scripts.quality_audit.issues import decode_issue, issue_body, plan, publish_allowed, publish, add_pipeline_status
 
 TIME = '2026-10-30T09:00:00+09:00'
@@ -221,11 +221,19 @@ class SourceAndSecurity(unittest.TestCase):
         self.assertNotIn('secret-invalid-json', json.dumps(r))
 
     def test_master_header_and_scores(self):
-        header = ['MatchID', 'SeasonID', '성별'] + [''] * 16
+        header = MASTER_COLUMNS
         r = ['M1', 'kovo-cup-2026', '남자', 'A', '조별리그', '2026-10-20', '', '14:00',
              'Home', 'Away', '', '', '종료', '3', '0', '25-20 25-20 25-20']
         self.assertEqual(master_rows([header, r])[0]['score']['home'], 3)
         with self.assertRaises(ValueError): master_rows([['Wrong']])
+
+    def test_reordered_master_columns_are_not_a_confirmed_match_error(self):
+        header = list(MASTER_COLUMNS); header[5], header[6] = header[6], header[5]
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp, 'cup-master.json').write_text(json.dumps({'values': [header]}))
+            result = drive_checks([], tmp)[0]
+        self.assertEqual(result['outcome'], 'NOT VERIFIED')
+        self.assertEqual(result['findings'], [])
 
     def test_publication_gate_fail_closed(self):
         self.assertFalse(checks.publication_records([{'player_id': 'P'}]))

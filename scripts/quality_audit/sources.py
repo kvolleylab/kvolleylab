@@ -15,6 +15,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import kovo_match_schedule_bridge as bridge
 
 MAX_BYTES = 4_000_000
+MASTER_COLUMNS = ['MatchID', 'SeasonID', '성별', '라운드', '단계', '날짜', '요일', '시간(KST)',
+                  '홈팀', '원정팀', '경기장', '도시', '상태', '홈세트', '원정세트', '세트스코어',
+                  'SourceURL', '검증상태', '비고']
 
 
 class NoRedirect(HTTPRedirectHandler):
@@ -114,7 +117,7 @@ def official_checks(local, fetch=bridge.read_public_json):
 
 
 def master_rows(values):
-    if not values or values[0][:3] != ['MatchID', 'SeasonID', '성별']:
+    if not values or values[0][:19] != MASTER_COLUMNS:
         raise ValueError('Unsupported MASTER header')
     records = []
     for row in values[1:]:
