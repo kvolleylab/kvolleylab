@@ -13,7 +13,29 @@ export function lottery(state) {
     if (!duplicate) ranks[draw.team_id] = Object.keys(ranks).length+1;
     return {...draw, sequence:index+1, duplicate, rank:duplicate?null:ranks[draw.team_id]};
   });
-  return {ranks,records,complete:Object.keys(ranks).length===state.teams.length};
+  let automatic=null;
+  if(state.rules.lottery?.automatic_last && Object.keys(ranks).length===state.teams.length-1) {
+    const remaining=state.teams.find(t=>!Object.hasOwn(ranks,t.id));
+    ranks[remaining.id]=state.teams.length;
+    automatic={team_id:remaining.id,rank:state.teams.length,color:remaining.color};
+  }
+  return {ranks,records,automatic,complete:Object.keys(ranks).length===state.teams.length};
+}
+// These are ball shares at the START of each pool, not final rank probabilities.
+// Duplicate redraws do not remove another team's allocation from that pool.
+export function lotteryStages(state) {
+  const draw=lottery(state),reset=state.rules.lottery?.reset_after_rank;
+  const ranges=reset?[[1,reset],[reset+1,state.teams.length]]:[[1,state.teams.length]];
+  return ranges.map(([from,to])=>{
+    const excluded=state.teams.filter(t=>(draw.ranks[t.id]||Infinity)<from);
+    const ready=excluded.length===from-1;
+    const pool=state.teams.filter(t=>!excluded.some(x=>x.id===t.id));
+    const total=ready&&pool.every(t=>t.balls!==null)?pool.reduce((n,t)=>n+t.balls,0):null;
+    return {from,to,total,excluded,entries:Array.from({length:to-from+1},(_,i)=>{
+      const rank=from+i,team=state.teams.find(t=>draw.ranks[t.id]===rank)||null;
+      return {rank,team,automatic:Boolean(draw.automatic&&team&&draw.automatic.team_id===team.id),probability:team&&total>0?team.balls/total*100:null};
+    })};
+  });
 }
 export function owners(state) {
   const result = Object.fromEntries(state.picks.map(p=>[p.id,p.original_team]));
@@ -74,6 +96,14 @@ export function validate(state) {
   unique(state.draws.map(d=>d.id),'추첨 기록 ID');
   for(const d of state.draws){team(d.team_id);validColor(d.color);ensure(text(d.note),'추첨 메모 오류');}
   ensure(state.rules.rounds.length===4,'1R~4R 규칙이 필요합니다.');
+  if(state.rules.lottery){
+    const rule=state.rules.lottery;
+    ensure(rule.reset_after_rank===null||(Number.isInteger(rule.reset_after_rank)&&rule.reset_after_rank>0&&rule.reset_after_rank<teams.size-1),'재추첨 구슬 제외 순위 오류');
+    ensure(typeof rule.automatic_last==='boolean','마지막 순위 자동 확정 설정 오류');
+    ensure(['user_record','verified','unverified'].includes(rule.verification)&&text(rule.note,1000),'추첨 방식 확인 정보 오류');
+    validSource(rule.source_url);
+    if(rule.verification==='verified')ensure(isHTTPS(rule.source_url),'확정 추첨 방식의 공식 출처가 필요합니다.');
+  }
   unique(state.rules.rounds.map(r=>r.round),'라운드');
   for(const rule of [...state.rules.rounds,state.rules.trainees]) {
     const trainee=rule===state.rules.trainees;
@@ -172,6 +202,7 @@ export function applyCommand(input,command,{actor,now=new Date().toISOString(),i
       const t=state.teams.find(t=>t.id===command.target);ensure(t,'팀을 찾지 못했습니다.');before=t.color;t.color=clone(command.value);after=t.color;break;
     }
     case 'draw_add': {
+      ensure(!state.rules.lottery?.automatic_last||!lottery(state).complete,'자동 확정을 포함해 모든 순위가 정해졌습니다. 기존 기록을 정정하세요.');
       const t=state.teams.find(t=>t.id===command.value.team_id);ensure(t,'추첨 팀을 선택하세요.');
       const d={id,team_id:t.id,color:clone(t.color),note:command.value.note||''};before=null;state.draws.push(d);after=d;target=id;break;
     }

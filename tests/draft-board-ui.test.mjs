@@ -45,8 +45,18 @@ test('real page module: admin forms, applicant selection, trades, persistence, e
   await t.test('public view, exact original navigation, and local admin flag cannot enable writes',async()=>{
    assert.equal(document.querySelectorAll('[data-right]').length,28);assert.equal(document.querySelectorAll('[data-action="result"]').length,0);
    dom.window.localStorage.setItem('kvlAdminAccess','1');assert.equal(document.querySelectorAll('[data-action="result"]').length,0);assert.match($('#saveStatus').textContent,/저장소 확인 완료/);assert.match($('#draftBoard').textContent,/확률/);
+   assert.ok($('#adminLoadBar').hidden);assert.equal($('#season').selectedOptions[0].textContent,'2026년');assert.equal($('#season').value,'2026-27');
+   assert.doesNotMatch($('#draftBoard').textContent,/주요 수정 이력|시즌 출처와 확인 필요 자료/);
   });
   await auth();
+  await t.test('authenticated editor receives audit, source details and manual reload controls',async()=>{
+   assert.equal($('#adminLoadBar').hidden,false);assert.match($('#draftBoard').textContent,/주요 수정 이력/);assert.match($('#draftBoard').textContent,/시즌 출처와 확인 필요 자료/);
+  });
+  await t.test('lottery settings persist and round edits preserve the separate lottery policy',async()=>{
+   click('[data-action="lottery-rules"]');input('resetAfter','3');$('#draftForm [name="automaticLast"]').checked=true;input('verification','user_record','change');input('note','상위3팀 제외 후 재추첨');await submit();
+   assert.equal(persisted.rules.lottery.reset_after_rank,3);assert.equal(persisted.rules.lottery.automatic_last,true);
+   click('[data-action="rules"]');await submit();assert.equal(persisted.rules.lottery.reset_after_rank,3);assert.equal(persisted.rules.lottery.automatic_last,true);
+  });
   await t.test('color editor saves and duplicate draw editor only creates one lottery rank',async()=>{
    click('[data-action="color"][data-target="SFB"]');$('#draftForm [name="unknown"]').checked=false;input('colorName','검증용 빨강');input('hex','#ff0000');await submit();assert.equal(persisted.teams[0].color.name,'검증용 빨강');
    for(let n=0;n<2;n++){click('[data-action="draw-add"]');input('team','SFB','change');await submit();}

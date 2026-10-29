@@ -15,7 +15,8 @@ const check=(label,name,checked=false)=>`<label class="db-check"><input type="ch
 function error(message){$('draftError').hidden=!message;$('draftError').textContent=message||'';}
 function status(message){$('saveStatus').textContent=message;}
 function paint(){
-  $('draftBoard').innerHTML=renderBoard(state,sources,{admin:store.editable});$('draftBoard').setAttribute('aria-busy','false');
+  $('draftBoard').innerHTML=renderBoard(state,sources,{admin:store.editable,applicantCount:applicantError?null:applicants.length});$('draftBoard').setAttribute('aria-busy','false');
+  $('adminLoadBar').hidden=!store.editable;
   $('adminBar').hidden=!store.actor;
   $('adminBar').innerHTML=store.actor?`<div><b>${e(store.actor)} · 관리자 입력</b><span>저장 대상 ${e(store.repository)} / ${e(store.branch)} · 입력할 때마다 영구 저장</span></div><div><button class="da-button" data-action="event">개최 정보·상태</button> <button class="da-button" id="logout">관리자 종료</button></div>`:'';
   $('adminOpen').textContent=store.actor?'관리자 인증됨':'관리자 입력';
@@ -118,8 +119,12 @@ function rulesEditor(){
   const rules=[...state.rules.rounds,state.rules.trainees];
   form('시즌별 라운드·수련선수 운영',`<p>확인된 공식 자료에 맞춰 이 시즌의 규칙만 변경합니다. 직접 지정은 팀 코드 7개를 쉼표로 구분합니다.</p><p>${state.teams.map(t=>`${e(t.name)} ${e(t.id)}`).join(' · ')}</p>${rules.map((r,i)=>`<fieldset><legend>${i<4?r.round+'R':'수련선수'}</legend><div class="db-fields">${select('진행 순서','direction'+i,[['forward','정순'],['reverse','역순'],['custom','직접 지정'],...(i===4?[['unordered','순서 없음']]:[])],r.direction)}${select('공식 확인 상태','verification'+i,[['unverified','확인 중 · 양식 기준'],['verified','공식 확인 완료']],r.verification)}</div>${field('직접 지정 순서 (선택 시 7팀 필수)','order'+i,(r.order||[]).join(','))}${field('공식 규칙 출처 URL','source'+i,r.source_url,'url')}${textarea('운영 설명','note'+i,r.note,'maxlength="1000"')}${i===4?field('팀당 최대 인원 (제한 미확인/없음은 빈칸)','limit',r.limit??'','number','min="1" step="1"'):''}</fieldset>`).join('')}`,async f=>{
     const next=rules.map((r,i)=>({...r,direction:f.get('direction'+i),verification:f.get('verification'+i),order:f.get('order'+i).split(',').map(s=>s.trim()).filter(Boolean),source_url:f.get('source'+i),note:f.get('note'+i)}));
-    next[4].limit=f.get('limit')===''?null:Number(f.get('limit'));await save({type:'rules',value:{rounds:next.slice(0,4),trainees:next[4]},reason:f.get('reason')});
+    next[4].limit=f.get('limit')===''?null:Number(f.get('limit'));await save({type:'rules',value:{...state.rules,rounds:next.slice(0,4),trainees:next[4]},reason:f.get('reason')});
   });
+}
+function lotteryEditor(){
+  const rule=state.rules.lottery||{reset_after_rank:null,automatic_last:false,verification:'unverified',note:'',source_url:''};
+  form('시즌별 구슬 추첨 방식',`<p>단계별 확률은 각 추첨 단계 시작의 구슬 비율로 계산합니다. 중복 추첨이 나와도 같은 단계의 구슬 수는 유지합니다.</p>${field('재추첨에서 제외할 상위 순위 수 · 없으면 빈칸','resetAfter',rule.reset_after_rank??'','number','min="1" max="5" step="1"')}${check('6순위 결정 후 남은 팀을 7순위로 자동 확정','automaticLast',rule.automatic_last)}${select('확인 상태','verification',[['unverified','확인 중'],['user_record','사용자 현장 기록'],['verified','공식 확인 완료']],rule.verification)}${field('공식 출처 URL','sourceURL',rule.source_url,'url')}${textarea('추첨 방식 근거·설명','note',rule.note,'maxlength="1000"')}`,async f=>save({type:'rules',value:{...state.rules,lottery:{reset_after_rank:f.get('resetAfter')===''?null:Number(f.get('resetAfter')),automatic_last:f.has('automaticLast'),verification:f.get('verification'),source_url:f.get('sourceURL'),note:f.get('note')}},reason:f.get('reason')}));
 }
 function eventEditor(){
   const event=state.event;
@@ -143,13 +148,13 @@ document.addEventListener('click',ev=>{
   if(!store.editable){login();return;}
   ({'result':()=>resultEditor(target),'trainee':()=>resultEditor(target,true,entry),'trainee-status':()=>resultEditor(target,true,null,true),
     'draw-add':()=>drawEditor(),'draw-edit':()=>drawEditor(target),'trade-add':()=>tradeEditor(),'trade-edit':()=>tradeEditor(target),
-    'rules':rulesEditor,'event':eventEditor,'color':()=>colorEditor(target),'trade-review':reviewEditor}[action])?.();
+    'rules':rulesEditor,'lottery-rules':lotteryEditor,'event':eventEditor,'color':()=>colorEditor(target),'trade-review':reviewEditor}[action])?.();
 });
 $('adminOpen').onclick=()=>{if(state)login();};
 async function loadSeason(season){
   const turn=++generation,entry=index.seasons.find(s=>s.season===season),config=entry?.divisions.M;
   error('');$('draftBoard').setAttribute('aria-busy','true');$('draftBoard').innerHTML='<p class="db-empty">시즌 자료를 불러오고 있습니다.</p>';
-  store?.disconnect();state=null;$('adminBar').hidden=true;$('adminOpen').textContent='관리자 입력';
+  store?.disconnect();state=null;$('adminBar').hidden=true;$('adminLoadBar').hidden=true;$('adminOpen').textContent='관리자 입력';
   if(!config){error('등록되지 않은 시즌입니다. 시즌 선택에서 확인된 자료를 선택하세요.');$('draftBoard').innerHTML='';$('draftBoard').setAttribute('aria-busy','false');return;}
   status('드래프트 정보를 불러오고 있습니다.');
   const nextStore=new DraftStore({...index.storage,path:config.state});
@@ -179,7 +184,7 @@ $('refresh').onclick=async()=>{
 };
 try{
   index=await fetchJSON('data/drafts/index.json');
-  $('season').innerHTML=index.seasons.filter(s=>s.divisions.M).map(s=>`<option value="${e(s.season)}">${e(s.label)}</option>`).join('');$('season').disabled=false;
+  $('season').innerHTML=index.seasons.filter(s=>s.divisions.M).map(s=>`<option value="${e(s.season)}">${e(s.year??s.season.slice(0,4))}년</option>`).join('');$('season').disabled=false;
   await loadSeason(params.get('season')||index.default_season);
   if(params.get('admin')==='1'&&state)login();
 }catch(err){error(err.message);status('드래프트 시즌 목록을 불러오지 못했습니다.');}
