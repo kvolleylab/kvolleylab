@@ -48,6 +48,8 @@
 
 현재 표의 “실행하는 검사”는 기능 설명이다. 특정 실행의 PASS/FAIL/NOT VERIFIED/NOT RUN은 JSON 보고서의 해당 행으로 판단한다. 외부 출처 실패, 브라우저 미설치, Git 과거 commit 미접근은 데이터 결함으로 바꾸지 않는다.
 
+브라우저는 HTTPS 운영 origin의 요청을 검사 checkout의 바이트로 응답한다. 실제 사이트에 쓰거나 production 검증을 완화하지 않는다. 이는 HTTP localhost에서 HTTPS canonical 계약이 실패하는 오탐을 방지한다. 외부 글꼴/국기는 차단된 조건이며 국내 로고와 기하 검사는 이 통제된 범위에 한정한다. 현재 승인된 pro 국내 presentation의 `--dv2-accent`(남자 #292d33 / 여자 #9b4c70)를 검사하며 오래된 base theme 변수로 덮어 판단하지 않는다.
+
 ### 경기 정규화 주의
 
 - Engine v2 기존 계약은 score가 있으면 종료, 없으면 예정으로 표시한다. 이 계약을 유지한다. 시간이 지났다는 이유로 종료로 바꾸지 않는다.
@@ -91,7 +93,7 @@
 - source 접근 실패: 서로 다른 실행 ID로 3회 연속 실패할 때 별도 OP_ACCESS 운영 경고. 같은 실행 재시도는 횟수를 늘리지 않음. 성공 시 복구.
 - workflow 실행/의존성/아티팩트 실패: OP_EXECUTION 운영 경고. 데이터 결함과 다른 ID로 관리. 알림 job 자체가 실패하면 GitHub Actions 실패 알림이 마지막 경로다.
 
-Issues가 결함 이력의 기준이다. Actions cache는 연속 접근 실패 횟수를 보조한다. cache가 삭제되면 미확정 접근 실패의 3회 카운터는 다시 시작할 수 있다. 이미 생성된 Issue 이력은 재조회로 보존한다. 동시에 같은 브랜치의 알림이 실행되지 않도록 workflow concurrency를 둔다.
+Issues가 결함 이력의 기준이다. 최초 승인된 main 실행은 정제된 시범 state로 최초 발견일을 보존하고 실제 Issue 이력으로 갱신한다. Actions cache는 연속 접근 실패 횟수를 보조한다. cache가 삭제되면 미확정 접근 실패의 3회 카운터는 다시 시작할 수 있다. 이미 생성된 Issue 이력은 재조회로 보존한다. 동시에 같은 브랜치의 알림이 실행되지 않도록 workflow concurrency를 둔다.
 
 PRIVATE finding은 공개 출력 전에 값·경로·식별키·출처를 삭제하고 불투명 ID만 남긴다. PRIVATE finding은 공개 Issue에 게시하지 않는다. CONFIRMED P0/P1은 Actions gate를 실패시켜 Actions 실패 알림으로 검수를 요청한다. 이를 수집기 실행 장애로 잘못 게시하지 않는다. 원문은 해당 비공개 자료의 권한 있는 환경에서 사람이 검토한다. 공개 로그·artifact·Issue에 MASTER 원문, 회원 메모, 토큰 또는 예외 메시지를 출력하지 않는다.
 

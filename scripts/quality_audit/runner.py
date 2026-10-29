@@ -184,9 +184,12 @@ def run(root, *, live=False, core_tests=False, ui=False, master_input=None, prev
     if ui:
         try:
             r = execute(['node', 'scripts/quality_audit/ui.cjs', str(root)], root, timeout=360)
-            checks += [json.loads(line) for line in r.stdout.splitlines() if line.strip()]
-            if r.returncode and not any(c['id'] == 'ui:runner' for c in checks):
-                checks.append(check('ui:runner', 'NOT VERIFIED', note='브라우저 실행 미완료', operational=True))
+            ui_rows = [json.loads(line) for line in r.stdout.splitlines() if line.strip()]
+            checks += ui_rows
+            if not any(c['id'] == 'ui:runner' for c in ui_rows):
+                completed = r.returncode == 0 and len(ui_rows) == 72
+                checks.append(check('ui:runner', 'PASS' if completed else 'NOT VERIFIED', count=len(ui_rows),
+                                    note='72개 화면 검사 실행 상태. 각 화면의 결과와 구분', operational=True))
         except subprocess.TimeoutExpired as exc:
             output = exc.stdout.decode('utf-8', errors='replace') if isinstance(exc.stdout, bytes) else exc.stdout or ''
             for line in output.splitlines():
@@ -254,7 +257,8 @@ def main():
         failed = True
         report, state = failure_report(type(exc).__name__, run_id=a.run_id)
     data_gate_failed = a.gate and any(f['verification'] == 'CONFIRMED' and f['severity'] in {'P0', 'P1'} for f in report['findings'])
-    report['gate'] = {'enforced': a.gate, 'outcome': 'FAIL' if data_gate_failed else 'PASS'}
+    report['gate'] = {'enforced': a.gate, 'outcome': ('NOT VERIFIED' if failed else
+                     'NOT RUN' if not a.gate else 'FAIL' if data_gate_failed else 'PASS')}
     output.mkdir(parents=True, exist_ok=True)
     (output / 'report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     (output / 'report.md').write_text(render_markdown(report), encoding='utf-8')

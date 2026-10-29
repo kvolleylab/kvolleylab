@@ -83,6 +83,8 @@ Drive 원문은 임시 입력으로만 읽었고 이 PR에 넣지 않았다. 공
 
 첫 실행의 브라우저 전체 검사 시간 초과는 NOT VERIFIED로 기록했다. 실행 성공을 UI PASS로 해석하지 않았다. 화면별 결과를 즉시 보존하고 글꼴/이미지 대기 시간을 제한하도록 감사 harness를 보완했다. 공개 P0/P1 및 비공개 P0/P1은 Actions gate를 실패시키고, 비공개 건을 공개 Issue로 게시하거나 실행 장애로 잘못 분류하지 않는 테스트를 추가했다. 보완 후 합성 테스트는 **55/55 PASS**다. 후속 Actions 결과는 아래에 기록한다.
 
+브라우저 원인은 HTTP localhost의 canonical URL이 production의 HTTPS 계약을 충족하지 못한 검사 환경 문제였다. HTTPS origin 요청을 checkout 바이트로 응답하도록 수정했고 실제 production 검증은 유지했다. 테마도 기존 base 변수 대신 10/27~28 승인된 국내 presentation의 dv2-accent를 기준으로 검사했다. 보완된 Chromium을 로컬에서 실행한 결과 **72/72 PASS**(1180/390/360px × 4대회 × 6화면)다. 중간 harness 실행에서 나온 렌더/테마 판정은 운영 오류로 등록하거나 Issue로 게시하지 않았다.
+
 ### 별도로 확인한 기존 CI 실패
 
 PR 전체에서 호출되는 기존 일회성 작업 세 개가 실패했다. [정제된 상세 기록](ci-baseline-observations.json). 다음 오류는 로컬 시범의 4개와 별도이며, 기존 workflow를 수정하거나 비활성화하지 않았다.

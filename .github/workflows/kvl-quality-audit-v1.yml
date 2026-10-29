@@ -76,7 +76,12 @@ jobs:
         if: github.ref == 'refs/heads/main' && vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python -B -m scripts.quality_audit.issues --hydrate "$RUNNER_TEMP/kvl-audit-state/state.json"
+        run: |
+          mkdir -p "$RUNNER_TEMP/kvl-audit-state"
+          if [ ! -f "$RUNNER_TEMP/kvl-audit-state/state.json" ]; then
+            cp docs/quality-audit/pilot-state.json "$RUNNER_TEMP/kvl-audit-state/state.json"
+          fi
+          python -B -m scripts.quality_audit.issues --hydrate "$RUNNER_TEMP/kvl-audit-state/state.json"
       - name: Install Chromium
         if: github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule'
         run: node "$RUNNER_TEMP/kvl-audit-deps/node_modules/playwright/cli.js" install --with-deps chromium
