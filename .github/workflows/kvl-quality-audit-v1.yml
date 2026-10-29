@@ -1,0 +1,147 @@
+name: KVL Quality Audit v1
+
+on:
+  workflow_dispatch:
+    inputs:
+      live:
+        description: Read official sources and deployed public JSON
+        type: boolean
+        default: true
+      browser:
+        description: Run Chromium at 1180 / 390 / 360 px
+        type: boolean
+        default: true
+      notify:
+        description: Publish Issues only after approval and only on main
+        type: boolean
+        default: false
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/**'
+      - 'players.json'
+      - '*.html'
+      - 'assets/js/**'
+      - 'assets/css/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/kvl-quality-audit-v1.yml'
+  # APPROVAL REQUIRED: no automatic schedule in v1 pilot.
+  # After approval only: schedule: [{cron: '0 0 * * *'}]  # 09:00 KST
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kvl-quality-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    permissions:
+      contents: read
+      issues: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated audit dependencies
+        run: |
+          python -m pip install -r scripts/quality_audit/requirements.txt
+          npm install --prefix "$RUNNER_TEMP/kvl-audit-deps" --no-audit --no-fund jsdom@26.1.0 playwright@1.56.1
+      - name: Synthetic acceptance tests
+        run: python -B -m unittest discover -s tests -p test_quality_audit.py -v
+      - name: Gate changed public exports
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: python -B -m scripts.quality_audit.export_gate --base "$BASE_SHA"
+      - name: Restore operational counters (trusted main only)
+        if: github.ref == 'refs/heads/main' && vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/kvl-audit-state
+          key: kvl-quality-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: kvl-quality-state-v1-
+      - name: Read authoritative Issue history (trusted main only)
+        if: github.ref == 'refs/heads/main' && vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -B -m scripts.quality_audit.issues --hydrate "$RUNNER_TEMP/kvl-audit-state/state.json"
+      - name: Install Chromium
+        if: github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule'
+        run: node "$RUNNER_TEMP/kvl-audit-deps/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Run read-only audit
+        if: always()
+        env:
+          KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-audit-deps/node_modules/jsdom
+          KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-audit-deps/node_modules/playwright
+          LIVE: ${{ github.event_name != 'pull_request' && (inputs.live || github.event_name == 'schedule') }}
+          BROWSER: ${{ github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule' }}
+        shell: bash
+        run: |
+          args=(--root . --output "$RUNNER_TEMP/kvl-audit-output" --core-tests --state "$RUNNER_TEMP/kvl-audit-state/state.json" --run-id "$GITHUB_RUN_ID")
+          if [ "$LIVE" = true ]; then args+=(--live); fi
+          if [ "$BROWSER" = true ]; then args+=(--ui); fi
+          python -B -m scripts.quality_audit.runner "${args[@]}"
+      - name: Save only sanitized operational state
+        if: always() && github.ref == 'refs/heads/main' && vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
+        run: |
+          mkdir -p "$RUNNER_TEMP/kvl-audit-state"
+          if [ -f "$RUNNER_TEMP/kvl-audit-output/state.json" ]; then
+            cp "$RUNNER_TEMP/kvl-audit-output/state.json" "$RUNNER_TEMP/kvl-audit-state/state.json"
+          fi
+      - name: Publish sanitized report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-quality-audit-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-audit-output/report.json
+            ${{ runner.temp }}/kvl-audit-output/report.md
+            ${{ runner.temp }}/kvl-audit-output/state.json
+          retention-days: 14
+          if-no-files-found: error
+      - name: Write check summary
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/kvl-audit-output/report.md" ]; then
+            cat "$RUNNER_TEMP/kvl-audit-output/report.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  notify:
+    needs: audit
+    if: always() && vars.KVL_QUALITY_AUDIT_APPROVED == 'true' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.notify))
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: kvl-quality-audit-${{ github.run_id }}
+          path: ${{ runner.temp }}/kvl-audit-notify
+      - name: Deduplicated public Issue ledger
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KVL_AUDIT_APPROVED: ${{ vars.KVL_QUALITY_AUDIT_APPROVED }}
+          EXECUTION_RESULT: ${{ needs.audit.result }}
+        run: python -B -m scripts.quality_audit.issues --report "$RUNNER_TEMP/kvl-audit-notify/report.json" --execution-result "$EXECUTION_RESULT" --publish
