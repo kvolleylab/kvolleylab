@@ -5,7 +5,7 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
 const {JSDOM}=require(process.env.KVL_JSDOM_PATH||'jsdom');
-const root=new URL('../',import.meta.url),seed=JSON.parse(await fs.readFile(new URL('data/drafts/2026-27/men.json',root)));
+const root=new URL('../',import.meta.url),seed=JSON.parse(await fs.readFile(new URL('tests/fixtures/draft-board-empty-2026-27.json',root)));
 const html=await fs.readFile(new URL('v-league-draft.html',root),'utf8');
 let persisted=structuredClone(seed),sha='seed',requests=0,deny=false,serial=0;
 const json=(v,status=200)=>new Response(JSON.stringify(v),{status});

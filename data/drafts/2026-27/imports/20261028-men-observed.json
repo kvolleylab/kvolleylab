@@ -1,0 +1,598 @@
+{
+  "source_id": "USER-RECORD-20261028-M-f70d5fd59e34",
+  "season": "2026-27",
+  "division": "M",
+  "event_date": "2026-10-28",
+  "filename": "2026-27_남자신인드래프트_실시간기록_v1(2).xlsx",
+  "sha256": "f70d5fd59e34d9bc51446aaaacc404da6122e52b3a28a15d232aa802a338c9ca",
+  "record_status": "user_observed",
+  "colors": [
+    {
+      "team_id": "SFB",
+      "name": "파랑",
+      "hex": "#346CBC",
+      "balls": 35,
+      "probability": 35.0,
+      "locator": "추첨기록!C8:F8"
+    },
+    {
+      "team_id": "OKF",
+      "name": "살구색",
+      "hex": "#FFDAB9",
+      "balls": 30,
+      "probability": 30.0,
+      "locator": "추첨기록!C9:F9"
+    },
+    {
+      "team_id": "KEP",
+      "name": "초록",
+      "hex": "#30996B",
+      "balls": 20,
+      "probability": 20.0,
+      "locator": "추첨기록!C10:F10"
+    },
+    {
+      "team_id": "KBI",
+      "name": "노랑",
+      "hex": "#F4CF42",
+      "balls": 8,
+      "probability": 8.0,
+      "locator": "추첨기록!C11:F11"
+    },
+    {
+      "team_id": "WRC",
+      "name": "빨강",
+      "hex": "#DA4545",
+      "balls": 4,
+      "probability": 4.0,
+      "locator": "추첨기록!C12:F12"
+    },
+    {
+      "team_id": "HDC",
+      "name": "흰색",
+      "hex": "#FFFFFF",
+      "balls": 2,
+      "probability": 2.0,
+      "locator": "추첨기록!C13:F13"
+    },
+    {
+      "team_id": "KAL",
+      "name": "보라",
+      "hex": "#8555AD",
+      "balls": 1,
+      "probability": 1.0,
+      "locator": "추첨기록!C14:F14"
+    }
+  ],
+  "draws": [
+    {
+      "sequence": 1,
+      "team_id": "OKF",
+      "color_name": "살구색",
+      "note": "",
+      "locator": "추첨기록!J8:N8"
+    },
+    {
+      "sequence": 2,
+      "team_id": "HDC",
+      "color_name": "흰색",
+      "note": "",
+      "locator": "추첨기록!J9:N9"
+    },
+    {
+      "sequence": 3,
+      "team_id": "WRC",
+      "color_name": "빨강",
+      "note": "",
+      "locator": "추첨기록!J10:N10"
+    },
+    {
+      "sequence": 4,
+      "team_id": "KBI",
+      "color_name": "노랑",
+      "note": "1,2,3순위 구슬 제외 후 \n다시 추첨 / 확률 다시 계산필요",
+      "locator": "추첨기록!J11:N11"
+    },
+    {
+      "sequence": 5,
+      "team_id": "KEP",
+      "color_name": "초록",
+      "note": "",
+      "locator": "추첨기록!J12:N12"
+    },
+    {
+      "sequence": 6,
+      "team_id": "KEP",
+      "color_name": "초록",
+      "note": "",
+      "locator": "추첨기록!J13:N13"
+    },
+    {
+      "sequence": 7,
+      "team_id": "KBI",
+      "color_name": "노랑",
+      "note": "",
+      "locator": "추첨기록!J14:N14"
+    },
+    {
+      "sequence": 8,
+      "team_id": "KEP",
+      "color_name": "초록",
+      "note": "",
+      "locator": "추첨기록!J15:N15"
+    },
+    {
+      "sequence": 9,
+      "team_id": "SFB",
+      "color_name": "파랑",
+      "note": "",
+      "locator": "추첨기록!J16:N16"
+    },
+    {
+      "sequence": 10,
+      "team_id": "KAL",
+      "color_name": "보라",
+      "note": "",
+      "locator": "추첨기록!J17:N17"
+    }
+  ],
+  "picks": [
+    {
+      "round": 1,
+      "original_team": "OKF",
+      "actual_team": "OKF",
+      "status": "selected",
+      "name": "윤경",
+      "position": "OH",
+      "affiliation": "인하대",
+      "raw": "윤경 OH\n(인하대)",
+      "locator": "지명결과!C9"
+    },
+    {
+      "round": 1,
+      "original_team": "HDC",
+      "actual_team": "HDC",
+      "status": "selected",
+      "name": "장은석",
+      "position": "MB",
+      "affiliation": "한양대",
+      "raw": "장은석 MB\n(한양대)",
+      "locator": "지명결과!D9"
+    },
+    {
+      "round": 1,
+      "original_team": "WRC",
+      "actual_team": "WRC",
+      "status": "selected",
+      "name": "전유석",
+      "position": "OH",
+      "affiliation": "중부대",
+      "raw": "전유석 OH\n(중부대)",
+      "locator": "지명결과!E9"
+    },
+    {
+      "round": 1,
+      "original_team": "KBI",
+      "actual_team": "KBI",
+      "status": "selected",
+      "name": "장보석",
+      "position": "OP",
+      "affiliation": "한양대",
+      "raw": "장보석 OP\n(한양대)",
+      "locator": "지명결과!F9"
+    },
+    {
+      "round": 1,
+      "original_team": "KEP",
+      "actual_team": "KEP",
+      "status": "selected",
+      "name": "여광우",
+      "position": "L",
+      "affiliation": "인하대",
+      "raw": "여광우 L\n(인하대)",
+      "locator": "지명결과!G9"
+    },
+    {
+      "round": 1,
+      "original_team": "SFB",
+      "actual_team": "SFB",
+      "status": "selected",
+      "name": "임인규",
+      "position": "MB",
+      "affiliation": "인하대",
+      "raw": "임인규 MB\n(인하대)",
+      "locator": "지명결과!H9"
+    },
+    {
+      "round": 1,
+      "original_team": "KAL",
+      "actual_team": "KAL",
+      "status": "selected",
+      "name": "이승일",
+      "position": "OH",
+      "affiliation": "순천제일고",
+      "raw": "이승일 OH\n(순천제일고)",
+      "locator": "지명결과!I9"
+    },
+    {
+      "round": 2,
+      "original_team": "OKF",
+      "actual_team": "OKF",
+      "status": "selected",
+      "name": "배하준",
+      "position": "MB",
+      "affiliation": "영천시체육회",
+      "raw": "배하준 MB\n(영천시체육회)",
+      "locator": "지명결과!C13"
+    },
+    {
+      "round": 2,
+      "original_team": "HDC",
+      "actual_team": "HDC",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!D13"
+    },
+    {
+      "round": 2,
+      "original_team": "WRC",
+      "actual_team": "WRC",
+      "status": "selected",
+      "name": "박우영",
+      "position": "OH",
+      "affiliation": "한양대",
+      "raw": "박우영 OH\n(한양대)",
+      "locator": "지명결과!E13"
+    },
+    {
+      "round": 2,
+      "original_team": "KBI",
+      "actual_team": "KBI",
+      "status": "selected",
+      "name": "현석재",
+      "position": "MB",
+      "affiliation": "중부대",
+      "raw": "현석재 MB\n(중부대)",
+      "locator": "지명결과!F13"
+    },
+    {
+      "round": 2,
+      "original_team": "KEP",
+      "actual_team": "KEP",
+      "status": "selected",
+      "name": "한재원",
+      "position": "MB",
+      "affiliation": "인하사대부고",
+      "raw": "한재원 MB\n(인하사대부고)",
+      "locator": "지명결과!G13"
+    },
+    {
+      "round": 2,
+      "original_team": "SFB",
+      "actual_team": "SFB",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!H13"
+    },
+    {
+      "round": 2,
+      "original_team": "KAL",
+      "actual_team": "KAL",
+      "status": "selected",
+      "name": "송정민",
+      "position": "S",
+      "affiliation": "순천제일고",
+      "raw": "송정민 S\n(순천제일고)",
+      "locator": "지명결과!I13"
+    },
+    {
+      "round": 3,
+      "original_team": "OKF",
+      "actual_team": "OKF",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!C17"
+    },
+    {
+      "round": 3,
+      "original_team": "HDC",
+      "actual_team": "HDC",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!D17"
+    },
+    {
+      "round": 3,
+      "original_team": "WRC",
+      "actual_team": "WRC",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!E17"
+    },
+    {
+      "round": 3,
+      "original_team": "KBI",
+      "actual_team": "KBI",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!F17"
+    },
+    {
+      "round": 3,
+      "original_team": "KEP",
+      "actual_team": "KEP",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!G17"
+    },
+    {
+      "round": 3,
+      "original_team": "SFB",
+      "actual_team": "SFB",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!H17"
+    },
+    {
+      "round": 3,
+      "original_team": "KAL",
+      "actual_team": "KAL",
+      "status": "selected",
+      "name": "홍준범",
+      "position": "OP",
+      "affiliation": "성균관대",
+      "raw": "홍준범 OP\n(성균관대)",
+      "locator": "지명결과!I17"
+    },
+    {
+      "round": 4,
+      "original_team": "OKF",
+      "actual_team": "OKF",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!C21"
+    },
+    {
+      "round": 4,
+      "original_team": "HDC",
+      "actual_team": "HDC",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!D21"
+    },
+    {
+      "round": 4,
+      "original_team": "WRC",
+      "actual_team": "WRC",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!E21"
+    },
+    {
+      "round": 4,
+      "original_team": "KBI",
+      "actual_team": "KBI",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!F21"
+    },
+    {
+      "round": 4,
+      "original_team": "KEP",
+      "actual_team": "KEP",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!G21"
+    },
+    {
+      "round": 4,
+      "original_team": "SFB",
+      "actual_team": "SFB",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!H21"
+    },
+    {
+      "round": 4,
+      "original_team": "KAL",
+      "actual_team": "KAL",
+      "status": "passed",
+      "raw": "-",
+      "locator": "지명결과!I21"
+    }
+  ],
+  "trainees": [
+    {
+      "team_id": "OKF",
+      "status": "selected",
+      "entries": [
+        {
+          "status": "selected",
+          "name": "백창진",
+          "position": "L",
+          "affiliation": "홍익대",
+          "raw": "백창진 L\n(홍익대)",
+          "locator": "지명결과!C25"
+        }
+      ],
+      "source_cells": [
+        {
+          "status": "selected",
+          "name": "백창진",
+          "position": "L",
+          "affiliation": "홍익대",
+          "raw": "백창진 L\n(홍익대)",
+          "locator": "지명결과!C25"
+        }
+      ]
+    },
+    {
+      "team_id": "HDC",
+      "status": "passed",
+      "entries": [],
+      "source_cells": [
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!D25"
+        },
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!D26"
+        }
+      ]
+    },
+    {
+      "team_id": "WRC",
+      "status": "passed",
+      "entries": [],
+      "source_cells": [
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!E25"
+        },
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!E26"
+        }
+      ]
+    },
+    {
+      "team_id": "KBI",
+      "status": "selected",
+      "entries": [
+        {
+          "status": "selected",
+          "name": "이한샘",
+          "position": "S",
+          "affiliation": "인하대",
+          "raw": "이한샘 S\n(인하대)",
+          "locator": "지명결과!F25"
+        },
+        {
+          "status": "selected",
+          "name": "이산",
+          "position": "OH",
+          "affiliation": "순천제일고",
+          "raw": "이산 OH\n(순천제일고)",
+          "locator": "지명결과!F26"
+        }
+      ],
+      "source_cells": [
+        {
+          "status": "selected",
+          "name": "이한샘",
+          "position": "S",
+          "affiliation": "인하대",
+          "raw": "이한샘 S\n(인하대)",
+          "locator": "지명결과!F25"
+        },
+        {
+          "status": "selected",
+          "name": "이산",
+          "position": "OH",
+          "affiliation": "순천제일고",
+          "raw": "이산 OH\n(순천제일고)",
+          "locator": "지명결과!F26"
+        }
+      ]
+    },
+    {
+      "team_id": "KEP",
+      "status": "selected",
+      "entries": [
+        {
+          "status": "selected",
+          "name": "옹민혁",
+          "position": "L",
+          "affiliation": "경일대",
+          "raw": "옹민혁 L\n(경일대)",
+          "locator": "지명결과!G25"
+        },
+        {
+          "status": "selected",
+          "name": "이율리",
+          "position": "MB",
+          "affiliation": "국군체육부대",
+          "raw": "이율리 MB\n(국군체육부대)",
+          "locator": "지명결과!G26"
+        }
+      ],
+      "source_cells": [
+        {
+          "status": "selected",
+          "name": "옹민혁",
+          "position": "L",
+          "affiliation": "경일대",
+          "raw": "옹민혁 L\n(경일대)",
+          "locator": "지명결과!G25"
+        },
+        {
+          "status": "selected",
+          "name": "이율리",
+          "position": "MB",
+          "affiliation": "국군체육부대",
+          "raw": "이율리 MB\n(국군체육부대)",
+          "locator": "지명결과!G26"
+        }
+      ]
+    },
+    {
+      "team_id": "SFB",
+      "status": "passed",
+      "entries": [],
+      "source_cells": [
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!H25"
+        },
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!H26"
+        }
+      ]
+    },
+    {
+      "team_id": "KAL",
+      "status": "passed",
+      "entries": [],
+      "source_cells": [
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!I25"
+        },
+        {
+          "status": "passed",
+          "raw": "-",
+          "locator": "지명결과!I26"
+        }
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "locator": "지명결과!I13",
+      "player": "송정민",
+      "field": "affiliation",
+      "original": "순천제일고",
+      "corrected": "수성고",
+      "reason": "KOVO 공식 신청자 명단 49번 및 당일 현장 사진 설명 재대조",
+      "sources": [
+        "https://kovo.co.kr/news/kovo/press/157978",
+        "https://www.news1.kr/photos/8184298"
+      ]
+    }
+  ],
+  "notes": [
+    "구슬 색상명·추첨 상세는 사용자 제공 현장 기록 기준. 색상 원형은 화면 표시용 대표색이며 살구색은 #FFDAB9를 사용한다.",
+    "4번째 구슬 메모는 기록으로 보존한다. 상단 확률은 공식 최초 확률을 유지한다.",
+    "라운드별 실제 팀명이 원지명권 팀과 모두 같지만, 이를 공식적인 거래 없음의 증거로 사용하지 않는다.",
+    "첨부 파일은 수정하지 않았다. 송정민의 소속 정정은 홈페이지 반영 자료에만 적용한다."
+  ]
+}

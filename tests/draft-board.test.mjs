@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {applyCommand,validate,lottery,pickRank,columns,rightID,createSeason,playerSnapshot,profileURL} from '../assets/js/draft-board-core.mjs';
 import {renderBoard} from '../assets/js/draft-board-render.mjs';
-const seed=JSON.parse(fs.readFileSync(new URL('../data/drafts/2026-27/men.json',import.meta.url)));
+const seed=JSON.parse(fs.readFileSync(new URL('./fixtures/draft-board-empty-2026-27.json',import.meta.url)));
 const sources=JSON.parse(fs.readFileSync(new URL('../data/drafts/2026-27/sources.json',import.meta.url)));
 const base=()=>structuredClone(seed),ID=(team,round=2)=>rightID('2026-27','M',round,team);
 let serial=0;

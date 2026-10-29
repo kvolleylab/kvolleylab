@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {DraftStore} from '../assets/js/draft-board-store.mjs';
-const seed=JSON.parse(await fs.readFile(new URL('../data/drafts/2026-27/men.json',import.meta.url)));
+const seed=JSON.parse(await fs.readFile(new URL('./fixtures/draft-board-empty-2026-27.json',import.meta.url)));
 const settings={repository:'kvolleylab/kvolleylab',branch:'data/draft-board',path:'data/drafts/2026-27/men.json'};
 // Disk-backed GitHub contract fixture: no public fake data or credentials.
 async function backend(){
