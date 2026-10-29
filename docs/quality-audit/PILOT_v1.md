@@ -77,6 +77,24 @@ Drive 원문은 임시 입력으로만 읽었고 이 PR에 넣지 않았다. 공
 
 최초 report/state를 입력으로 00:53:08 KST에 같은 검사를 재실행했다. 검사별 결과·건수, 오류 ID 38개, 최초 발견일이 모두 동일했다. 최초 새 CONFIRMED 이벤트 4개 → 반복 실행 새 이벤트 **0개**. [반복 실행 근거](repeat-evidence.json). GitHub Actions의 실제 실행 링크와 Chromium 결과는 Draft PR 생성 후 갱신하며, 그 전에는 NOT RUN이다.
 
+### GitHub Actions 첫 실행
+
+[Draft PR #200](https://github.com/kvolleylab/kvolleylab/pull/200), [실행 40907182797](https://github.com/kvolleylab/kvolleylab/actions/runs/40907182797). 2026-10-30 01:00~01:07 KST, workflow 실행 SUCCESS. 의존성/합성 테스트/공개 export gate/Chromium 설치/정제 artifact 업로드 성공, notify는 승인 조건에 따라 SKIPPED. PR에서는 공식/운영 외부 조회를 수행하지 않아 두 항목은 NOT RUN, Drive 인증은 NOT VERIFIED다.
+
+첫 실행의 브라우저 전체 검사 시간 초과는 NOT VERIFIED로 기록했다. 실행 성공을 UI PASS로 해석하지 않았다. 화면별 결과를 즉시 보존하고 글꼴/이미지 대기 시간을 제한하도록 감사 harness를 보완했다. 공개 P0/P1 및 비공개 P0/P1은 Actions gate를 실패시키고, 비공개 건을 공개 Issue로 게시하거나 실행 장애로 잘못 분류하지 않는 테스트를 추가했다. 보완 후 합성 테스트는 **55/55 PASS**다. 후속 Actions 결과는 아래에 기록한다.
+
+### 별도로 확인한 기존 CI 실패
+
+PR 전체에서 호출되는 기존 일회성 작업 세 개가 실패했다. [정제된 상세 기록](ci-baseline-observations.json). 다음 오류는 로컬 시범의 4개와 별도이며, 기존 workflow를 수정하거나 비활성화하지 않았다.
+
+| 오류 ID | 상태 | 기존 작업과 확인 원인 | 실행 근거 |
+|---|---|---|---|
+| KVL-QA-43EC2525512B3199 | P2 / CONFIRMED | Kyungil 등록: 과거 MASTER 78명 고정 assertion | [run](https://github.com/kvolleylab/kvolleylab/actions/runs/40907181799) |
+| KVL-QA-CDB139B034111207 | P2 / CONFIRMED | SKKU 등록: 기대 16명, 현재 127명 | [run](https://github.com/kvolleylab/kvolleylab/actions/runs/40907181555) |
+| KVL-QA-45419C1C7ED90270 | P2 / CONFIRMED | 대학 배치: 기존 파일 갱신 API의 sha 누락, HTTP 422 | [run](https://github.com/kvolleylab/kvolleylab/actions/runs/40907181506) |
+
+Materialize reviewed batches는 SUCCESS였고, 실행 후 PR head와 변경 파일을 재조회했을 때 감사 외 데이터 파일 추가/수정은 없었다. 기존 세 실패 때문에 PR의 전체 CI 상태를 전부 정상으로 표시하지 않는다.
+
 ## 승인 요청 범위
 
 구현과 시범 결과를 Draft PR로 검토한다. 이번 작업에서 merge, Pages 배포, schedule, Secrets, Issues write 활성화를 하지 않는다. 승인 후에도 먼저 main 수동 실행을 하고, 사용자 알림 수신과 필요한 Drive 인증을 확인한 다음 매일 KST 09:00 스케줄을 활성화한다. 전체 공식 source/선수 MASTER/배포 gate의 미검증 부분은 별도 승인 작업으로 남긴다.

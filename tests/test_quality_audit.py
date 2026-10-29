@@ -367,6 +367,13 @@ class Issues(unittest.TestCase):
         recovered = add_pipeline_status({'findings': []}, [issue], 'success', run_id='3')
         self.assertEqual(plan(recovered, [issue])[0]['action'], 'resolve')
 
+    def test_private_data_gate_is_not_published_as_execution_failure(self):
+        self.f['visibility'] = 'PRIVATE'; self.f['severity'] = 'P0'
+        report = {'findings': [public_finding(self.f)], 'gate': {'outcome': 'FAIL'},
+                  'checks': [{'id': 'audit:execution', 'outcome': 'PASS'}]}
+        add_pipeline_status(report, [], 'failure', run_id='1')
+        self.assertEqual(plan(report, []), [])
+
     def test_escalation_retry_after_comment_before_patch_is_idempotent(self):
         class Fake:
             def __init__(self): self.comments = []; self.calls = []

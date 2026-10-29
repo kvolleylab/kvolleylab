@@ -93,7 +93,7 @@
 
 Issues가 결함 이력의 기준이다. Actions cache는 연속 접근 실패 횟수를 보조한다. cache가 삭제되면 미확정 접근 실패의 3회 카운터는 다시 시작할 수 있다. 이미 생성된 Issue 이력은 재조회로 보존한다. 동시에 같은 브랜치의 알림이 실행되지 않도록 workflow concurrency를 둔다.
 
-PRIVATE finding은 공개 출력 전에 값·경로·식별키·출처를 삭제하고 불투명 ID만 남긴다. PRIVATE finding은 공개 Issue에 게시하지 않는다. 원문은 해당 비공개 자료의 권한 있는 환경에서 사람이 검토한다. 공개 로그·artifact·Issue에 MASTER 원문, 회원 메모, 토큰 또는 예외 메시지를 출력하지 않는다.
+PRIVATE finding은 공개 출력 전에 값·경로·식별키·출처를 삭제하고 불투명 ID만 남긴다. PRIVATE finding은 공개 Issue에 게시하지 않는다. CONFIRMED P0/P1은 Actions gate를 실패시켜 Actions 실패 알림으로 검수를 요청한다. 이를 수집기 실행 장애로 잘못 게시하지 않는다. 원문은 해당 비공개 자료의 권한 있는 환경에서 사람이 검토한다. 공개 로그·artifact·Issue에 MASTER 원문, 회원 메모, 토큰 또는 예외 메시지를 출력하지 않는다.
 
 ### 사용자가 실제 알림을 받는 설정
 
@@ -144,7 +144,7 @@ python -B -m scripts.quality_audit.runner --root . --output /tmp/kvl-audit-outpu
 
 재실행은 `--state /tmp/kvl-audit-output/state.json --run-id manual-2`를 추가한다. 같은 실행 재시도는 동일 run-id를 사용한다. `--master-input /보안/임시경로`는 cup-master.json/league-master.json의 Google Sheets values 응답을 읽는다. 출력 폴더와 입력 폴더를 저장소 안에 두지 않는다.
 
-기본 종료 코드는 실행 완료 0, 실행 장애 2다. 시범 workflow는 확인된 기존 데이터 오류도 report에 남기며 실행 성공과 데이터 PASS를 구분한다. 선택 `--gate`는 CONFIRMED P0/P1이 있으면 1을 반환한다. 신규 합성 테스트와 PR 공개 export gate의 실패는 Actions job을 실패시킨다. 기존 회귀 실패는 report에서 FAIL로 유지한다.
+기본 종료 코드는 실행 완료 0, 실행 장애 2다. 시범 workflow는 확인된 기존 데이터 오류도 report에 남기며 실행 성공과 데이터 PASS를 구분한다. workflow에 지정한 `--gate`는 CONFIRMED P0/P1이 있으면 1을 반환한다. 신규 합성 테스트와 PR 공개 export gate의 실패도 Actions job을 실패시킨다. 기존 P2 회귀 실패는 report에서 FAIL로 유지한다.
 
 신규 workflow가 default branch에 없을 때 GitHub UI의 수동 실행 항목이 아직 나타나지 않을 수 있다. Draft PR에서는 pull_request 검증으로 실행 근거를 확보한다. main 등록 이후 `Actions → KVL Quality Audit v1 → Run workflow`가 수동 운영 경로다.
 

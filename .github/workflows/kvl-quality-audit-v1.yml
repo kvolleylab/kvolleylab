@@ -89,7 +89,7 @@ jobs:
           BROWSER: ${{ github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule' }}
         shell: bash
         run: |
-          args=(--root . --output "$RUNNER_TEMP/kvl-audit-output" --core-tests --state "$RUNNER_TEMP/kvl-audit-state/state.json" --run-id "$GITHUB_RUN_ID")
+          args=(--root . --output "$RUNNER_TEMP/kvl-audit-output" --core-tests --gate --state "$RUNNER_TEMP/kvl-audit-state/state.json" --run-id "$GITHUB_RUN_ID")
           if [ "$LIVE" = true ]; then args+=(--live); fi
           if [ "$BROWSER" = true ]; then args+=(--ui); fi
           python -B -m scripts.quality_audit.runner "${args[@]}"

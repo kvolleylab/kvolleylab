@@ -183,11 +183,21 @@ def run(root, *, live=False, core_tests=False, ui=False, master_input=None, prev
     checks += regression(root) if core_tests else [check('regression', 'NOT RUN', note='--core-tests 미지정')]
     if ui:
         try:
-            r = execute(['node', 'scripts/quality_audit/ui.cjs', str(root)], root, timeout=240)
-            checks += json.loads(r.stdout)['checks']
+            r = execute(['node', 'scripts/quality_audit/ui.cjs', str(root)], root, timeout=360)
+            checks += [json.loads(line) for line in r.stdout.splitlines() if line.strip()]
             if r.returncode and not any(c['id'] == 'ui:runner' for c in checks):
                 checks.append(check('ui:runner', 'NOT VERIFIED', note='브라우저 실행 미완료', operational=True))
-        except (OSError, ValueError, subprocess.TimeoutExpired):
+        except subprocess.TimeoutExpired as exc:
+            output = exc.stdout.decode('utf-8', errors='replace') if isinstance(exc.stdout, bytes) else exc.stdout or ''
+            for line in output.splitlines():
+                try:
+                    c = json.loads(line)
+                    if c.get('id', '').startswith('ui:') and c.get('outcome') in {'PASS', 'FAIL', 'NOT VERIFIED'}:
+                        checks.append(c)
+                except ValueError:
+                    continue
+            checks.append(check('ui:runner', 'NOT VERIFIED', note='브라우저 전체 제한시간 초과; 완료된 화면의 결과만 보존', operational=True))
+        except (OSError, ValueError):
             checks.append(check('ui:runner', 'NOT VERIFIED', note='Playwright/Chromium 실행 실패', operational=True))
     else:
         checks.append(check('ui:browser', 'NOT RUN', note='--ui 미지정; DOM 테스트 통과를 시각 검증으로 간주하지 않음'))
@@ -243,6 +253,8 @@ def main():
     except Exception as exc:
         failed = True
         report, state = failure_report(type(exc).__name__, run_id=a.run_id)
+    data_gate_failed = a.gate and any(f['verification'] == 'CONFIRMED' and f['severity'] in {'P0', 'P1'} for f in report['findings'])
+    report['gate'] = {'enforced': a.gate, 'outcome': 'FAIL' if data_gate_failed else 'PASS'}
     output.mkdir(parents=True, exist_ok=True)
     (output / 'report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     (output / 'report.md').write_text(render_markdown(report), encoding='utf-8')
@@ -252,7 +264,7 @@ def main():
     # Audit runtime/coverage failure is distinct from confirmed data defects.
     if failed:
         return 2
-    if a.gate and any(f['verification'] == 'CONFIRMED' and f['severity'] in {'P0', 'P1'} for f in report['findings']):
+    if data_gate_failed:
         return 1
     return 0
 

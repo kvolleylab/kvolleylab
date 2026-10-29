@@ -162,6 +162,11 @@ def publish(operations, client):
 
 def add_pipeline_status(report, existing, result, *, run_id=None, commit='UNKNOWN'):
     from .core import assessed, check, finding, reconcile
+    # An intentional data/security gate is not a failed collector or execution.
+    # Private incidents use the failed Actions notification; never public Issue details.
+    if (result == 'failure' and report.get('gate', {}).get('outcome') == 'FAIL'
+            and any(c['id'] == 'audit:execution' and c['outcome'] == 'PASS' for c in report.get('checks', []))):
+        result = 'success'
     previous = {'findings': {}, 'operations': {}}
     for issue in existing:
         f = decode_issue(issue)
