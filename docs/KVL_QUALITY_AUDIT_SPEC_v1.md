@@ -105,11 +105,11 @@ PRIVATE finding은 공개 출력 전에 값·경로·식별키·출처를 삭제
 
 신규 workflow 기본 권한은 `contents: read`. audit job은 이력 복원용 `issues: read`만 추가한다. `issues: write`는 별도 notify job에 한정하며 아래 조건을 모두 만족할 때만 실행한다.
 
-1. 저장소 변수 `KVL_QUALITY_AUDIT_APPROVED=true`.
+1. 2026-10-30 사용자 승인과 활성화 commit의 기본 활성 설정. 선택적 저장소 변수 `KVL_QUALITY_AUDIT_APPROVED`가 없거나 `true`이면 활성, `false` 또는 다른 비어 있지 않은 값이면 자동 실행·알림을 중지한다. 변수 삭제는 승인된 기본 활성 상태로 복귀하므로 중지하려면 명시적으로 `false`를 사용한다.
 2. `refs/heads/main`.
-3. 승인 후 추가할 schedule 또는 수동 실행의 `notify=true`.
+3. 매일 09:00 KST schedule, 감사 전용 파일의 main 반영, 또는 수동 실행의 `notify=true`.
 
-PR은 읽기·시험·안전한 report만 수행한다. `pull_request_target`은 쓰지 않는다. checkout은 `persist-credentials: false`다. 원본 수집기처럼 contents 쓰기나 git push를 하지 않는다. 14일 보관 artifact는 report.json/report.md/정제된 state.json 세 파일뿐이다.
+승인 기본값 변경은 공개 코드 검토와 PR 이력에 남긴다. 별도 브라우저 인증·PAT·OpenAI 키가 필요하지 않다. 런타임의 Issue 프로그램은 여전히 명시적 `KVL_AUDIT_APPROVED=true`와 main·허용 이벤트를 모두 확인한다. PR은 읽기·시험·안전한 report만 수행한다. `pull_request_target`은 쓰지 않는다. checkout은 `persist-credentials: false`다. 원본 수집기처럼 contents 쓰기나 git push를 하지 않는다. 14일 보관 artifact는 report.json/report.md/정제된 state.json 세 파일뿐이다.
 
 `export_gate.py`는 PR에서 새로 추가/변경한 `data/**/*.json`, `players.json`에 파일 해시가 일치하는 PUBLIC+VERIFIED 검수 manifest를 요구한다. 누락/다른 해시/내부 PRIVATE·DRAFT 레코드는 실패한다. 파일 단위 승인이 중첩된 비공개 표시를 덮어쓸 수 없다. manifest의 `source_ids`, `verified_at`은 실제 검수 증거여야 하며 임의로 채워 통과시키지 않는다.
 
@@ -156,11 +156,11 @@ python -B -m scripts.quality_audit.runner --root . --output /tmp/kvl-audit-outpu
 2. 사용자 승인 후 main 병합. PR #200을 `dd49cabf9af4e96b0d7e1a38862ec0213e40455b`로 병합 완료했다.
 3. main에서 먼저 알림 없는 운영 점검. 브라우저 로그인 의존성을 없애기 위해 감사 코드의 main 반영 시 같은 검사를 실행하며 수동 경로도 유지한다. 새 source 상태·브라우저 결과 확인.
 4. 필요하면 별도 승인된 read-only Drive 인증을 구성하고 실패를 데이터 누락과 구분하는지 재검증.
-5. Issue 알림 승인 후 변수 설정 및 수동 notify 시험, 사용자 수신 확인.
-6. 별도 승인된 workflow 변경에서 `schedule: [{cron: '0 0 * * *'}]` 추가. UTC 00:00 = KST 09:00. GitHub 스케줄은 지연/누락될 수 있어 정시 SLA가 아니다. 공개 저장소는 장기 비활동 시 예약 실행이 중단될 수 있다.
+5. 승인 기록을 workflow에 포함해 추가 브라우저 로그인·자격 증명 없이 활성화한다. main 감사 코드 반영 실행에서 Issue 게시와 이력 재실행을 확인한다. 계정별 이메일/모바일 실수신은 별도 확인한다.
+6. 승인된 후속 workflow 변경에서 `schedule: [{cron: '0 0 * * *'}]` 추가. UTC 00:00 = KST 09:00. GitHub 스케줄은 지연/누락될 수 있어 정시 SLA가 아니다. 공개 저장소는 장기 비활동 시 예약 실행이 중단될 수 있다.
 7. required check/배포 gate 연결은 기존 writer와 함께 검토하고 별도 승인. PRIVATE export 방지의 실제 배포 검증을 완료한다.
 
-중지: 승인 변수 false 또는 schedule 제거. 기존 수집기·사이트·MASTER는 감사 프로그램을 중지해도 그대로 유지된다. 새 프로그램 제거는 감사 파일을 되돌리는 PR로 처리한다. 데이터 복구는 필요하지 않다.
+중지: 저장소 변수 `KVL_QUALITY_AUDIT_APPROVED=false` 또는 감사 workflow 비활성화. schedule만 제거하면 감사 코드 변경 시 실행·알림은 남으므로 전체 중지와 구분한다. 변수 삭제는 기본 활성 상태로 되돌린다. 기존 수집기·사이트·MASTER는 감사 프로그램을 중지해도 그대로 유지된다. 새 프로그램 제거는 감사 파일을 되돌리는 PR로 처리한다. 데이터 복구는 필요하지 않다.
 
 ## 11. 예상 비용과 의존성
 

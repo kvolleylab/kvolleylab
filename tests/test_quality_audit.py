@@ -305,11 +305,12 @@ class ExportAndWorkflow(unittest.TestCase):
                          verified_at=TIME, sha256=sha256(f.read_bytes()).hexdigest())
                 self.assertEqual(validate_changed(tmp, ['players.json'], {'players.json': e}), ['players.json'])
 
-    def test_workflow_release_validation_separates_write_token(self):
+    def test_approved_daily_workflow_separates_write_token(self):
         import yaml
         p = Path(__file__).resolve().parents[1] / '.github/workflows/kvl-quality-audit-v1.yml'
         wf = yaml.safe_load(p.read_text()); events = wf.get('on', wf.get(True))
-        self.assertEqual(set(events), {'workflow_dispatch', 'pull_request', 'push'})
+        self.assertEqual(set(events), {'workflow_dispatch', 'pull_request', 'push', 'schedule'})
+        self.assertEqual(events['schedule'], [{'cron': '0 0 * * *'}])
         self.assertEqual(events['push']['branches'], ['main'])
         self.assertEqual(events['push']['paths'], ['.github/workflows/kvl-quality-audit-v1.yml',
                                                 'scripts/quality_audit/**', 'tests/test_quality_audit.py'])
@@ -356,11 +357,14 @@ class Issues(unittest.TestCase):
         with self.assertRaises(ValueError): plan({'findings': [self.f]}, [self.existing, self.existing])
 
     def test_publishing_never_on_pr_or_feature_branch(self):
-        env = dict(KVL_AUDIT_APPROVED='true', GITHUB_REF='refs/heads/main', GITHUB_EVENT_NAME='workflow_dispatch')
-        self.assertTrue(publish_allowed(env))
-        env['GITHUB_EVENT_NAME'] = 'pull_request'; self.assertFalse(publish_allowed(env))
-        env['GITHUB_EVENT_NAME'] = 'workflow_dispatch'; env['GITHUB_REF'] = 'refs/heads/feature/test'
-        self.assertFalse(publish_allowed(env))
+        for event in ('workflow_dispatch', 'schedule', 'push', 'pull_request', 'pull_request_target', 'workflow_run'):
+            for ref in ('refs/heads/main', 'refs/heads/feature/test', 'refs/pull/201/merge'):
+                for approved in ('true', 'false', '', 'invalid'):
+                    env = dict(KVL_AUDIT_APPROVED=approved, GITHUB_REF=ref, GITHUB_EVENT_NAME=event)
+                    expected = (event in {'workflow_dispatch', 'schedule', 'push'}
+                                and ref == 'refs/heads/main' and approved == 'true')
+                    with self.subTest(event=event, ref=ref, approved=approved):
+                        self.assertEqual(publish_allowed(env), expected)
         self.assertFalse(publish_allowed({}))
 
     def test_fake_client_updates_do_not_comment(self):

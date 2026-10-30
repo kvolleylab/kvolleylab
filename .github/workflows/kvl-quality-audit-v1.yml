@@ -34,8 +34,8 @@ on:
       - 'scripts/**'
       - 'tests/**'
       - '.github/workflows/kvl-quality-audit-v1.yml'
-  # APPROVAL REQUIRED: no automatic schedule in v1 pilot.
-  # After approval only: schedule: [{cron: '0 0 * * *'}]  # 09:00 KST
+  schedule:
+    - cron: '0 0 * * *'  # 09:00 Asia/Seoul (KST)
 
 permissions:
   contents: read
@@ -46,6 +46,10 @@ concurrency:
 
 jobs:
   audit:
+    # The activation commit records owner approval. An unset override is enabled.
+    # Set KVL_QUALITY_AUDIT_APPROVED=false to stop schedule/release runs and alerts.
+    # Unexpected non-empty override values also disable them; PR/manual checks remain.
+    if: (github.event_name != 'schedule' && github.event_name != 'push') || vars.KVL_QUALITY_AUDIT_APPROVED == '' || vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 18
     permissions:
@@ -74,14 +78,14 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python -B -m scripts.quality_audit.export_gate --base "$BASE_SHA"
       - name: Restore operational counters (trusted main only)
-        if: github.ref == 'refs/heads/main' && vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
+        if: github.ref == 'refs/heads/main' && (vars.KVL_QUALITY_AUDIT_APPROVED == '' || vars.KVL_QUALITY_AUDIT_APPROVED == 'true')
         uses: actions/cache@v4
         with:
           path: ${{ runner.temp }}/kvl-audit-state
           key: kvl-quality-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: kvl-quality-state-v1-
       - name: Read authoritative Issue history (trusted main only)
-        if: github.ref == 'refs/heads/main' && vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
+        if: github.ref == 'refs/heads/main' && (vars.KVL_QUALITY_AUDIT_APPROVED == '' || vars.KVL_QUALITY_AUDIT_APPROVED == 'true')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -107,7 +111,7 @@ jobs:
           if [ "$BROWSER" = true ]; then args+=(--ui); fi
           python -B -m scripts.quality_audit.runner "${args[@]}"
       - name: Save only sanitized operational state
-        if: always() && github.ref == 'refs/heads/main' && vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
+        if: always() && github.ref == 'refs/heads/main' && (vars.KVL_QUALITY_AUDIT_APPROVED == '' || vars.KVL_QUALITY_AUDIT_APPROVED == 'true')
         run: |
           mkdir -p "$RUNNER_TEMP/kvl-audit-state"
           if [ -f "$RUNNER_TEMP/kvl-audit-output/state.json" ]; then
@@ -133,7 +137,7 @@ jobs:
 
   notify:
     needs: audit
-    if: always() && vars.KVL_QUALITY_AUDIT_APPROVED == 'true' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.notify))
+    if: always() && (vars.KVL_QUALITY_AUDIT_APPROVED == '' || vars.KVL_QUALITY_AUDIT_APPROVED == 'true') && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.notify))
     runs-on: ubuntu-latest
     timeout-minutes: 4
     permissions:
@@ -155,6 +159,6 @@ jobs:
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
-          KVL_AUDIT_APPROVED: ${{ vars.KVL_QUALITY_AUDIT_APPROVED }}
+          KVL_AUDIT_APPROVED: ${{ (vars.KVL_QUALITY_AUDIT_APPROVED == '' || vars.KVL_QUALITY_AUDIT_APPROVED == 'true') && 'true' || 'false' }}
           EXECUTION_RESULT: ${{ needs.audit.result }}
         run: python -B -m scripts.quality_audit.issues --report "$RUNNER_TEMP/kvl-audit-notify/report.json" --execution-result "$EXECUTION_RESULT" --publish
