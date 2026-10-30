@@ -11,7 +11,7 @@
 | 후속 최신 main | `7a3f97947dffe738d48081596aa72d52be95e120`, #199 남녀 드래프트 운영 반영 보존 |
 | 합성 테스트 | PASS — 56건 재실행 |
 | 운영 검증 PR #201 | PASS — [Actions 41055500344](https://github.com/kvolleylab/kvolleylab/actions/runs/41055500344), PASS 117 / FAIL 3 / NOT VERIFIED 6 / NOT RUN 3 |
-| main 운영 실행 | NOT VERIFIED — [Actions 41055901858](https://github.com/kvolleylab/kvolleylab/actions/runs/41055901858) 실행 결과 확인 중 |
+| main 운영 실행 | PASS — [Actions 41055901858](https://github.com/kvolleylab/kvolleylab/actions/runs/41055901858), PASS 125 / FAIL 3 / NOT VERIFIED 7 / NOT RUN 1. 점검 실행·P0/P1 gate PASS |
 | 매일 09:00 KST schedule | 설정 검증 PASS — 활성화 변경의 main 병합 시 적용, 최초 실제 예약 실행은 NOT RUN |
 | Issue 실제 게시·반복 실행 | NOT RUN — 활성화 변경의 main 실행에서 확인 후 PR에 증거 기록 |
 | 이메일·모바일 실제 수신 | NOT VERIFIED — 계정별 전달 확인 필요 |
@@ -36,3 +36,7 @@ PR #199의 기존 6개 드래프트 테스트(지명권, 저장소 계약, 관�
 - 기존 4건의 공개 CONFIRMED 결함은 최초 시범 발견일을 보존해 Issue에 최초 등록한다. 이미 고쳐진 결함은 재검사로 해결 여부를 판단하며 새 오류로 만들지 않는다.
 
 `Watch → Custom → Issues` 및 GitHub `Settings → Notifications`의 이메일/GitHub Mobile 설정으로 알림을 받을 수 있다. 계정 설정과 실제 수신함은 이번 연결에서 확인하지 못했으므로 알림 실수신은 NOT VERIFIED다. 운영 Issue 생성 성공과 이메일 수신 성공을 구분한다.
+
+## main 운영 점검 증거
+
+2026-10-30 21:31 KST, `d35633199e09df09f33cc8b1f434fa70de923b80`에서 공식 3개 endpoint 접근 및 11개 관측 경기, 운영 4대회 JSON, Player ID 1,842개, UI 72개 화면, Python 129건이 통과했다. 기존 회귀 24개 파일의 169개 하위 검사 중 168개가 통과했고 과거 CSS 고정 해시 1개는 기존 FAIL이다. YAML 2개·JSON 1개·과거 CSS 해시를 합해 P2 CONFIRMED 4건이 재확인됐다. P0/P1 신규 결함은 없었다. Drive 인증, 공식 전체 시즌, 레거시 공개등급, 배포 시각과 실제 배포 차단 연결은 NOT VERIFIED이며 관리자 운영 저장은 NOT RUN이다. [해시·세부 검사 증거](activation-main-evidence.json).
