@@ -36,6 +36,10 @@ node --experimental-vm-modules --test tests/draft-board.test.mjs tests/draft-boa
 
 JSDOM은 기존 QA 의존성을 `KVL_JSDOM_PATH`로 지정했다. GitHub Actions의 draft-board 검사에도 새 목록 검사를 추가했다. 원격 CI 결과는 PR에 기록하며 관련 검사 통과를 전체 기존 CI 통과로 표현하지 않는다.
 
+원격 head `c3eade2336adb9b8a675a016726657dd6a774ee0`의 [draft-board 검사](https://github.com/kvolleylab/kvolleylab/actions/runs/40999340131)는 **56 passed / 0 failed**다. 모바일에서 윤경 이름을 클릭해 기존 윤경 프로필과 신청 명단으로 돌아가기 링크도 확인했다.
+
+최신 main의 공개 데이터 gate는 이 PR의 JSON 6개에 검수 manifest가 없음을 감지했다. 공식 59명 상세자료와 경로만 담은 신청자/드래프트 index 2개는 실제 대조 근거·정확한 SHA-256을 manifest에 기록하고 검사 통과를 확인했다. 기존 현장 수입 원본의 `record_status=user_observed`, 현장 결과 men.json 및 관련 sources.json은 공식 최종자료 대조가 남아 있어 **미확인 3개 파일로 유지**한다. 이들을 VERIFIED로 바꾸거나 검사 규칙을 완화하지 않았다. 따라서 전체 공개 export gate 및 운영 release는 통과 상태가 아니다. 기존 전체 감사의 미해결 항목과 이 공개 전 확인 필요 항목은 PR에 구분한다.
+
 ![요약 지표](draft-summary-list-20261030/summary.jpg)
 
 ![공식 명단](draft-summary-list-20261030/applicants.jpg)

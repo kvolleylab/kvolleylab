@@ -1,5 +1,39 @@
 {
   "schema_version": 1,
   "purpose": "Changed public JSON requires reviewed source IDs, PUBLIC + VERIFIED, verified_at and exact SHA-256. Empty does not approve legacy records.",
-  "files": {}
+  "files": {
+    "data/draft-applicants/2026-27/list-details.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "6919f5a4c99d6eef7e13ca057424365738114ae23b3407ecc3c674ba628061b2",
+      "evidence": "docs/validation/draft-summary-list-20261030.md",
+      "review_note": "공식 KOVO PDF 59행과 첨부 사진을 이름·순번·소속·신장·생년으로 대조한 신청 당시 상세정보. 원본 PDF SHA와 각 행의 신청자 ID·출처를 검증했다."
+    },
+    "data/draft-applicants/index.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "5ac08f7bfc91bdf4ba6b58a08cac3f14e3f9a57612e370180bea4c989ed8c7ce",
+      "evidence": "docs/validation/draft-summary-list-20261030.md",
+      "review_note": "검증된 시즌 자료의 파일 경로 연결. 기존 명단·ID·부문을 유지하고 상세자료 경로의 존재·시즌 일치 및 실패 시 동작을 검사했다. 개별 지명 결과의 확인 상태를 변경하지 않는다."
+    },
+    "data/drafts/index.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "55e721187d4fbbad953371a2187b869502048ec55ba93e9e07b164693ca9d9e8",
+      "evidence": "docs/validation/draft-summary-list-20261030.md",
+      "review_note": "2026-27 남자부의 기존 공개 시즌·저장소·부문·자료 경로 연결을 검증했다. 인증정보 없음. 참조 대상의 미확인 경기·거래·현장 기록을 VERIFIED로 변경하지 않는다."
+    }
+  }
 }
