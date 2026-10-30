@@ -1,0 +1,139 @@
+{
+  "season": "2026-27",
+  "division": "W",
+  "allocation": {
+    "source_id": "KOVO-2026-27-W-157977",
+    "title": "KOVO 여자 신인선수 드래프트 개최 안내",
+    "url": "https://kovo.co.kr/news/kovo/press/157977",
+    "published_at": "2026-10-22",
+    "quote": "올해 드래프트 지명 순서는 지난 시즌 최종 순위의 역순을 기준으로 한 확률 추첨으로 결정된다.",
+    "verified_at": "2026-10-30"
+  },
+  "final_results": {
+    "title": "KOVO 여자 신인선수 드래프트 공식 최종 결과",
+    "url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+    "published_at": "2026-10-28",
+    "verified_at": "2026-10-30",
+    "sha256": "a1f947fe4ced1b1cd6fa0db44d9ae9510bf8f2d1573e797d7151e800921fe734",
+    "archive_file_id": "19MuWEqAX3Fe4YQBPnAuvZ-M3Z_ytt3Sr"
+  },
+  "participation": {
+    "applicant_count": 58,
+    "participant_count": 57,
+    "source_url": "https://www.yna.co.kr/amp/view/AKR20261028081651007",
+    "withdrawn_applicant_id": "KVL-DA-2026-27-W-f20a5224a33f91",
+    "note": "연합뉴스 2026-10-28 11:39: 애너벨 박(박주은) 신청 취소. 원본 공식 신청자 명단 58명은 그대로 보존할 것."
+  },
+  "selection_summary": {
+    "season": "2026-27",
+    "division": "W",
+    "applicant_count": 58,
+    "participant_count": 57,
+    "selected_count": 16,
+    "includes_trainees": true,
+    "historical_lowest": true,
+    "url": "https://www.yna.co.kr/amp/view/AKR20261028081651007",
+    "title": "연합뉴스 · 여자 신인드래프트 57명 중 16명 지명",
+    "published_at": "2026-10-28",
+    "verified_at": "2026-10-30"
+  },
+  "pending": [
+    "구슬 색상·중복을 포함한 실제 전체 추첨 기록",
+    "7순위 자동 확정 여부와 단계별 구슬 제거 방식",
+    "수련선수 운영 시행세칙"
+  ],
+  "source_discrepancies": [
+    "공식 결과 PDF 총합 각주: 총58명이라고 하나 세부 44+1+1=46으로 내부 불일치. 연합뉴스 현장 기사: 원명단58명 중 애너벨 박 신청 취소로 실제 참가57명, 16명 선발(28.07%).",
+    "공식 결과 PDF의 트레이드 각주에는 IBK 자체2R→SOOP 설명 누락. 해당2R 순위 셀에는 7순위(SOOP)로 표기되며 KOVO press157977 본문에서 거래 확인.",
+    "보도 일부 선수명 이하수/김규슬/오혜솔 및 현대 곽도연·IBK 이혜수 귀속은 오류. 공식 결과 PDF와 공식 신청자 명단의 이혜수/김주솔/오해솔 및 트레이드 실제 팀을 따름.",
+    "공식 신청자 원문 Audrey Pak, 결과표 Audrey Park. 동일 선수 applicant_id KVL-DA-2026-27-W-0cf7985a21d49d로 연결하고 원문별 표기 출처 보존."
+  ],
+  "trade_evidence": [
+    {
+      "id": "pyo-seungju-pick-swap",
+      "status": "confirmed",
+      "announced_date": "2026-04-21",
+      "agreement_date": null,
+      "announcement_note": "정관장 구단의 4월21일 발표를 인용한 스포츠조선; 흥국생명 측 기사 발표는 4월27일. 공식 원문 거래계약 체결일은 미확인.",
+      "legs": [
+        {
+          "round": 1,
+          "original_team": "흥국생명",
+          "from": "흥국생명",
+          "to": "정관장"
+        },
+        {
+          "round": 2,
+          "original_team": "정관장",
+          "from": "정관장",
+          "to": "흥국생명"
+        }
+      ],
+      "conditions": "표승주 및 정관장 2R 지명권 → 흥국생명 / 흥국생명 1R 지명권 → 정관장",
+      "official_sources": [
+        "https://kovo.co.kr/news/kovo/press/157977",
+        "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      ],
+      "date_evidence": [
+        "https://www.sportschosun.com/volleyball/2026-04-21/202604210100142740009249",
+        "https://www.newsis.com/view/NISX20260427_0003608062"
+      ]
+    },
+    {
+      "id": "kim-hee-jin-hyundai-ibk-r2",
+      "status": "confirmed",
+      "announced_date": "2025-05-26",
+      "agreement_date": "2025-05-23",
+      "agreement_note": "연합뉴스·뉴시스 구단 발표 인용 보도: 23일 오전 합의, 26일 계약 체결 및 발표.",
+      "legs": [
+        {
+          "round": 2,
+          "original_team": "현대건설",
+          "from": "현대건설",
+          "to": "IBK기업은행"
+        }
+      ],
+      "conditions": "김희진 → 현대건설 / 현금 및 현대건설 2026-27 2R 지명권 → IBK기업은행",
+      "official_sources": [
+        "https://kovo.co.kr/news/kovo/press/157977",
+        "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      ],
+      "date_evidence": [
+        "https://www.yna.co.kr/amp/view/AKR20250526056500007",
+        "https://www.newsis.com/view/NISX20250526_0003189561"
+      ]
+    },
+    {
+      "id": "ko-ui-jeong-ibk-soop-r2",
+      "status": "confirmed",
+      "announced_date": "2026-08-10",
+      "agreement_date": null,
+      "registration_date": "2026-08-12",
+      "legs": [
+        {
+          "round": 2,
+          "original_team": "IBK기업은행",
+          "from": "IBK기업은행",
+          "to": "SOOP"
+        }
+      ],
+      "conditions": "고의정 및 IBK기업은행 2026-27 2R 지명권 → SOOP / 정솔민 → IBK기업은행",
+      "official_sources": [
+        "https://kovo.co.kr/news/kovo/press/157977",
+        "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      ],
+      "registration_sources": [
+        "https://kovo.co.kr/news/official-notices/156625",
+        "https://kovo.co.kr/news/official-notices/156626"
+      ],
+      "date_evidence": [
+        "https://www.osen.co.kr/article/G1112854671"
+      ]
+    }
+  ],
+  "video": {
+    "url": "https://vod.sooplive.com/player/211023189",
+    "verification": "unverified",
+    "note": "전체 중계 영상은 존재하나 확인 환경의 지역 저작권 제한으로 실제 추첨 프레임 미확인. 중복 횟수를 0으로 추정하지 않음."
+  }
+}

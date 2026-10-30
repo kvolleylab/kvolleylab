@@ -45,7 +45,7 @@ test('Song Jeongmin affiliation correction is sourced and links the same verifie
 });
 test('prior saved audit remains first and every imported change has a source cell or event locator',()=>{
   assert.equal(state.audit[0].revision,1);assert.equal(state.audit[0].action,'event');assert.match(state.audit[0].after.note,/2026.10.22/);
-  assert.equal(state.revision,58);assert.equal(state.audit.length,58);assert.ok(state.audit.slice(1,56).every(a=>a.reason.includes(record.source_id)));
+  assert.equal(state.revision,60);assert.equal(state.audit.length,60);assert.ok(state.audit.slice(1,56).every(a=>a.reason.includes(record.source_id)));
   assert.equal(state.audit[57].action,'draw_remove');assert.equal(state.audit[57].before.team_id,'KAL');assert.match(state.audit[57].reason,/자동 확정/);
   assert.equal(record.sha256,'f70d5fd59e34d9bc51446aaaacc404da6122e52b3a28a15d232aa802a338c9ca');
 });
@@ -77,7 +77,7 @@ test('automatic last rank is opt-in and never changes a result identity or an in
   const s=structuredClone(state);s.event.status='drawing';s.draws=s.draws.slice(0,8);assert.equal(lottery(s).automatic,null);
   s.draws=structuredClone(state.draws);s.rules.lottery.automatic_last=false;assert.equal(lottery(s).complete,false);assert.equal(lottery(s).ranks.KAL,undefined);
   assert.throws(()=>applyCommand(state,{type:'draw_add',value:{team_id:'KAL'},reason:'test'},{actor:'test'}),/자동 확정/);
-  const replayed=importObserved(empty,record,context);assert.deepEqual(state.picks.map(p=>[p.id,p.result.actual_team,p.result.player]),replayed.picks.map(p=>[p.id,p.result.actual_team,p.result.player]));
+  const replayed=importObserved(empty,record,context);const originalHong=replayed.picks.find(p=>p.id==='2026-27:M:3:KAL');assert.equal(originalHong.result.player.position,'OP');originalHong.result.player.position='OP/MB';assert.deepEqual(state.picks.map(p=>[p.id,p.result.actual_team,p.result.player]),replayed.picks.map(p=>[p.id,p.result.actual_team,p.result.player]));
   assert.deepEqual(state.teams,replayed.teams);
 });
 test('public view puts compact results first and only admins receive audit and source detail markup',()=>{

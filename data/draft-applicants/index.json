@@ -1,12 +1,15 @@
 {
   "schema_version": 1,
   "default_season": "2026-27",
-  "seasons": [{
-    "season": "2026-27",
-    "label": "2026–2027",
-    "applicants": "data/draft-applicants/2026-27/applicants.json",
-    "links": "data/draft-applicants/2026-27/player-links.json",
-    "results": "data/draft-applicants/2026-27/results.json",
-    "details": "data/draft-applicants/2026-27/list-details.json"
-  }]
+  "seasons": [
+    {
+      "season": "2026-27",
+      "label": "2026–2027",
+      "applicants": "data/draft-applicants/2026-27/applicants.json",
+      "links": "data/draft-applicants/2026-27/player-links.json",
+      "results": "data/draft-applicants/2026-27/results.json",
+      "details": "data/draft-applicants/2026-27/list-details.json",
+      "women_details": "data/draft-applicants/2026-27/women-list-details.json"
+    }
+  ]
 }

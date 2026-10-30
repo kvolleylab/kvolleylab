@@ -3,7 +3,7 @@ import {DraftStore,fetchJSON} from './draft-board-store.mjs';
 import {renderBoard,e,teamName,sourceLink,badge,dateText} from './draft-board-render.mjs';
 import {joinApplicants} from './draft-applicants-core.mjs';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
-let index,state,sources,store,applicants=[],applicantError='',generation=0,busy=false;
+let index,state,sources,store,applicants=[],applicantError='',generation=0,busy=false,division=params.get('gender')==='W'?'W':'M';
 const editor=$('editor');
 const options=(values,selected)=>values.map(([v,label])=>`<option value="${e(v)}" ${String(v)===String(selected)?'selected':''}>${e(label)}</option>`).join('');
 const teamOptions=selected=>options(state.teams.map(t=>[t.id,t.name]),selected);
@@ -15,6 +15,7 @@ const check=(label,name,checked=false)=>`<label class="db-check"><input type="ch
 function error(message){$('draftError').hidden=!message;$('draftError').textContent=message||'';}
 function status(message){$('saveStatus').textContent=message;}
 function paint(){
+  document.body.dataset.gender=state.division;document.querySelectorAll('[data-division]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.division===state.division));b.disabled=!index.seasons.find(s=>s.season===state.season)?.divisions[b.dataset.division];});
   $('draftBoard').innerHTML=renderBoard(state,sources,{admin:store.editable,applicantCount:applicantError?null:applicants.length});$('draftBoard').setAttribute('aria-busy','false');
   $('adminLoadBar').hidden=!store.editable;
   $('adminBar').hidden=!store.actor;
@@ -53,12 +54,12 @@ function login(){
 }
 function resultEditor(id,trainee=false,entryID=null,statusOnly=false){
   const p=trainee?null:state.picks.find(p=>p.id===id);
-  const old=trainee?state.trainees[id].entries.find(e=>e.id===entryID):p.result;
+  const old=statusOnly?state.trainees[id]:trainee?state.trainees[id].entries.find(e=>e.id===entryID):p.result;
   let selectedPlayer=old?.player?structuredClone(old.player):null;
   const currentStatus=statusOnly?state.trainees[id].status:old?.status||'selected';
   const currentTeam=old?.actual_team||(trainee?id:p.current_team);
   const title=trainee?`${teamName(state,id)} · 수련선수`:`${p.round}R ${teamName(state,p.original_team)} 원지명권`;
-  const statusItems=Object.entries(PICK_STATUS).filter(([key])=>statusOnly?key!=='selected':trainee?key==='selected':true);
+  const statusItems=Object.entries(PICK_STATUS).filter(([key])=>statusOnly?key!=='selected':trainee?key==='selected':key!=='not_recorded');
   const playerForm=statusOnly?'':`<div id="playerFields"><fieldset><legend>신청자 검색 또는 직접 입력</legend>${applicantError?`<p class="db-form-error">${e(applicantError)}</p>`:''}${field('신청자 검색 · 선수명/학교/포지션','search','','search','autocomplete="off" placeholder="예: 윤경, 인하대, OH"')}<div id="applicantMatches" class="db-applicant-results" hidden></div><p id="playerChosen" class="db-picked-player" hidden></p><button class="da-button" id="manualEntry" type="button">직접 입력으로 전환</button></fieldset><div class="db-fields">${field('선수명','playerName',old?.player?.name||'','text','maxlength="80"')}${field('학교·소속','affiliation',old?.player?.affiliation||'','text','maxlength="100"')}${field('포지션','position',old?.player?.position||'','text','maxlength="40" placeholder="OH / OP / MB / S / L"')}</div><p class="db-help">검증된 신청자 연결을 선택한 경우에만 기존 선수 프로필로 연결합니다. 소속·포지션을 확인하지 못하면 비워 둘 수 있습니다.</p></div>`;
   form(title,`<p>${trainee?'수련선수는 팀당 여러 명을 입력할 수 있습니다.':`현재 보유팀: <b>${e(teamName(state,p.current_team))}</b> · 추첨 순위가 바뀌어도 이 원지명권에 저장됩니다.`}</p><div class="db-fields">${select('지명 상태','status',statusItems,currentStatus)}${teamSelect('실제 지명팀','actualTeam',currentTeam)}</div>${playerForm}${field('지명 결과 출처 URL (확인된 경우)','sourceURL',old?.source_url||'','url','placeholder="https://…"')}${old?.actual_team?check('공식 결과 정정: 지명 당시 실제 지명팀 변경 또는 결과 초기화','correctTeam'):''}`,async f=>{
     const resultStatus=f.get('status'),manual={name:f.get('playerName')?.trim()||'',affiliation:f.get('affiliation')?.trim()||'',position:f.get('position')?.trim()||'',applicant_id:null,player_id:null};
@@ -104,8 +105,8 @@ function tradeEditor(id){
     $('tradeLegs').onchange=ev=>{if(ev.target.matches('[data-leg-pick]')){const row=ev.target.closest('.db-trade-leg'),p=state.picks.find(p=>p.id===ev.target.value);row.querySelector('[data-leg-from]').value=p.current_team;}};
     $('tradeLegs').onclick=ev=>{const b=ev.target.closest('[data-remove-leg]');if(b){legs=readLegs();legs.splice(Number(b.dataset.removeLeg),1);renderLegs();}};
   }
-  form(t?'지명권 거래 수정':'지명권 양도·맞교환 등록',`<p>거래 단위로 저장합니다. 맞교환은 지명권을 추가해 양방향을 한 번에 등록하세요. 확인 중 거래는 보유팀에 반영되지 않습니다.</p><div class="db-fields">${select('거래 상태','tradeStatus',[['pending','확인 중'],['confirmed','확정']],t?.status||'pending')}${field('거래일','date',t?.date||'','date')}</div><fieldset><legend>거래할 지명권</legend><div id="tradeLegs"></div><button type="button" class="da-button" id="addLeg">지명권 추가 · 맞교환</button></fieldset>${textarea('관련 선수 또는 거래 조건','conditions',t?.conditions||'','maxlength="2000"')}${field('공식 출처 URL · 확정 거래 필수','sourceURL',t?.source_url||'','url','placeholder="https://…"')}`,async f=>{
-    await save({type:t?'trade_edit':'trade_add',target:id,value:{status:f.get('tradeStatus'),date:f.get('date'),conditions:f.get('conditions'),source_url:f.get('sourceURL'),legs:readLegs()},reason:f.get('reason')});
+  form(t?'지명권 거래 수정':'지명권 양도·맞교환 등록',`<p>거래 단위로 저장합니다. 맞교환은 지명권을 추가해 양방향을 한 번에 등록하세요. 확인 중 거래는 보유팀에 반영되지 않습니다.</p><div class="db-fields">${select('거래 상태','tradeStatus',[['pending','확인 중'],['confirmed','확정']],t?.status||'pending')}${select('날짜 기준','dateKind',[['transaction','거래일'],['announcement','발표일']],t?.date_kind||'transaction')}${field('거래일 또는 발표일','date',t?.date||'','date')}</div><fieldset><legend>거래할 지명권</legend><div id="tradeLegs"></div><button type="button" class="da-button" id="addLeg">지명권 추가 · 맞교환</button></fieldset>${textarea('관련 선수 또는 거래 조건','conditions',t?.conditions||'','maxlength="2000"')}${field('공식 출처 URL · 확정 거래 필수','sourceURL',t?.source_url||'','url','placeholder="https://…"')}`,async f=>{
+    await save({type:t?'trade_edit':'trade_add',target:id,value:{status:f.get('tradeStatus'),date:f.get('date'),date_kind:f.get('dateKind'),conditions:f.get('conditions'),source_url:f.get('sourceURL'),legs:readLegs()},reason:f.get('reason')});
   },{extra:t?'<button type="button" class="da-button db-danger" id="cancelTrade">거래 취소</button>':'',after:()=>{
     renderLegs();$('addLeg').onclick=()=>{legs=readLegs();const available=state.picks.find(p=>!legs.some(l=>l.pick_id===p.id));if(available){legs.push({pick_id:available.id,from:available.current_team,to:state.teams.find(t=>t.id!==available.current_team).id});renderLegs();}};
     if(t)$('cancelTrade').onclick=()=>form('지명권 거래 취소',`<p>취소 이력은 남고, 해당 거래는 현재 보유팀 계산에서 제외됩니다. 이미 지명한 팀과 선수 기록은 보존됩니다.</p>${check('이 지명권을 받은 뒤 재양도한 후속 거래도 함께 취소','cascade')}`,async f=>save({type:'trade_cancel',target:id,cascade:f.has('cascade'),reason:f.get('reason')}),{saveLabel:'거래 취소 저장'});
@@ -113,7 +114,7 @@ function tradeEditor(id){
 }
 function tradeDetail(id,right=false){
   const list=right?state.trades.filter(t=>t.legs.some(l=>l.pick_id===id)):state.trades.filter(t=>t.id===id);
-  modal('지명권 거래 상세',list.map(t=>`<article>${badge(TRADE_STATUS[t.status],t.status)}<dl class="db-facts"><dt>거래일</dt><dd>${e(t.date||'미확인')}</dd><dt>지명권</dt><dd>${t.legs.map(l=>{const p=state.picks.find(p=>p.id===l.pick_id);return `${p.round}R ${e(teamName(state,p.original_team))} 원지명권<br>${e(teamName(state,l.from))} → ${e(teamName(state,l.to))}`;}).join('<br><br>')}</dd><dt>선수·조건</dt><dd>${e(t.conditions||'미확인')}</dd><dt>공식 출처</dt><dd>${sourceLink(t.source_url)}</dd>${t.cancel_reason?`<dt>취소 사유</dt><dd>${e(t.cancel_reason)}</dd>`:''}</dl></article>`).join('<hr>'));
+  modal('지명권 거래 상세',list.map(t=>`<article>${badge(TRADE_STATUS[t.status],t.status)}<dl class="db-facts"><dt>${t.date_kind==='announcement'?'발표일':'거래일'}</dt><dd>${e(t.date||'미확인')}</dd><dt>지명권</dt><dd>${t.legs.map(l=>{const p=state.picks.find(p=>p.id===l.pick_id);return `${p.round}R ${e(teamName(state,p.original_team))} 원지명권<br>${e(teamName(state,l.from))} → ${e(teamName(state,l.to))}`;}).join('<br><br>')}</dd><dt>선수·조건</dt><dd>${e(t.conditions||'미확인')}</dd><dt>공식 출처</dt><dd>${sourceLink(t.source_url)}</dd>${t.cancel_reason?`<dt>취소 사유</dt><dd>${e(t.cancel_reason)}</dd>`:''}</dl></article>`).join('<hr>'));
 }
 function rulesEditor(){
   const rules=[...state.rules.rounds,state.rules.trainees];
@@ -125,6 +126,10 @@ function rulesEditor(){
 function lotteryEditor(){
   const rule=state.rules.lottery||{reset_after_rank:null,automatic_last:false,verification:'unverified',note:'',source_url:''};
   form('시즌별 구슬 추첨 방식',`<p>단계별 확률은 각 추첨 단계 시작의 구슬 비율로 계산합니다. 중복 추첨이 나와도 같은 단계의 구슬 수는 유지합니다.</p>${field('재추첨에서 제외할 상위 순위 수 · 없으면 빈칸','resetAfter',rule.reset_after_rank??'','number','min="1" max="5" step="1"')}${check('6순위 결정 후 남은 팀을 7순위로 자동 확정','automaticLast',rule.automatic_last)}${select('확인 상태','verification',[['unverified','확인 중'],['user_record','사용자 현장 기록'],['verified','공식 확인 완료']],rule.verification)}${field('공식 출처 URL','sourceURL',rule.source_url,'url')}${textarea('추첨 방식 근거·설명','note',rule.note,'maxlength="1000"')}`,async f=>save({type:'rules',value:{...state.rules,lottery:{reset_after_rank:f.get('resetAfter')===''?null:Number(f.get('resetAfter')),automatic_last:f.has('automaticLast'),verification:f.get('verification'),source_url:f.get('sourceURL'),note:f.get('note')}},reason:f.get('reason')}));
+}
+function lotteryResultEditor(){
+  const r=state.lottery_result;
+  form('공식 확정 순위 · 추첨 상세 확인',`<p>최종 순위와 실제 나온 구슬 기록을 구분합니다. 결과표만 확인했다면 중복 횟수를 0회로 입력하지 않습니다.</p><p>${state.teams.map(t=>`${e(t.name)} ${e(t.id)}`).join(' · ')}</p>${field('확정 순위 · 팀 코드 7개를 순서대로 입력','order',r?.order.join(',')||'')}${select('전체 구슬 기록 확인 상태','logStatus',[['unverified','미확인'],['partial','일부 확인'],['complete','전체 확인']],r?.draw_log_status||'unverified')}${select('7순위 결정 방식','lastMethod',[['unknown','미확인'],['drawn','실제 추첨'],['automatic','자동 확정']],r?.last_rank_method||'unknown')}${field('확정 순위 출처 URL','sourceURL',r?.source_url||'','url','required')}${textarea('확인 설명','note',r?.note||'')}`,async f=>save({type:'lottery_result',value:{order:f.get('order').split(',').map(v=>v.trim()),draw_log_status:f.get('logStatus'),last_rank_method:f.get('lastMethod'),source_url:f.get('sourceURL'),verified_at:new Date().toISOString().slice(0,10),note:f.get('note')},reason:f.get('reason')}));
 }
 function eventEditor(){
   const event=state.event;
@@ -148,11 +153,12 @@ document.addEventListener('click',ev=>{
   if(!store.editable){login();return;}
   ({'result':()=>resultEditor(target),'trainee':()=>resultEditor(target,true,entry),'trainee-status':()=>resultEditor(target,true,null,true),
     'draw-add':()=>drawEditor(),'draw-edit':()=>drawEditor(target),'trade-add':()=>tradeEditor(),'trade-edit':()=>tradeEditor(target),
-    'rules':rulesEditor,'lottery-rules':lotteryEditor,'event':eventEditor,'color':()=>colorEditor(target),'trade-review':reviewEditor}[action])?.();
+    'rules':rulesEditor,'lottery-rules':lotteryEditor,'lottery-result':lotteryResultEditor,'event':eventEditor,'color':()=>colorEditor(target),'trade-review':reviewEditor}[action])?.();
 });
 $('adminOpen').onclick=()=>{if(state)login();};
-async function loadSeason(season){
-  const turn=++generation,entry=index.seasons.find(s=>s.season===season),config=entry?.divisions.M;
+async function loadSeason(season,nextDivision=division){
+  const turn=++generation,entry=index.seasons.find(s=>s.season===season),config=entry?.divisions[nextDivision];
+  division=nextDivision;document.body.dataset.gender=division;
   error('');$('draftBoard').setAttribute('aria-busy','true');$('draftBoard').innerHTML='<p class="db-empty">시즌 자료를 불러오고 있습니다.</p>';
   store?.disconnect();state=null;$('adminBar').hidden=true;$('adminLoadBar').hidden=true;$('adminOpen').textContent='관리자 입력';
   if(!config){error('등록되지 않은 시즌입니다. 시즌 선택에서 확인된 자료를 선택하세요.');$('draftBoard').innerHTML='';$('draftBoard').setAttribute('aria-busy','false');return;}
@@ -164,17 +170,18 @@ async function loadSeason(season){
     if(source.status!=='fulfilled')throw source.reason;
     const loaded=remote.status==='fulfilled'?remote.value:seed.status==='fulfilled'?validate(seed.value):null;
     if(!loaded)throw new Error('시즌 자료를 불러올 수 없습니다. 잠시 후 다시 시도해 주세요.');
-    if(loaded.season!==season||loaded.division!=='M'||source.value.season!==season||source.value.division!=='M')throw new Error('요청한 시즌/부문과 자료가 일치하지 않습니다.');
+    if(loaded.season!==season||loaded.division!==nextDivision||source.value.season!==season||source.value.division!==nextDivision)throw new Error('요청한 시즌/부문과 자료가 일치하지 않습니다.');
     state=loaded;sources=source.value;store=nextStore;applicants=[];applicantError='';
-    try{if(apps.status!=='fulfilled'||links.status!=='fulfilled')throw new Error();applicants=joinApplicants(apps.value,links.value).filter(a=>a.gender==='M'&&a.season===season&&a.application_status==='confirmed');}
+    try{if(apps.status!=='fulfilled'||links.status!=='fulfilled')throw new Error();applicants=joinApplicants(apps.value,links.value).filter(a=>a.gender===nextDivision&&a.season===season&&a.application_status==='confirmed');}
     catch{applicantError='신청자 검색 자료를 불러오지 못했습니다. 직접 입력은 가능합니다.';}
     paint();$('season').value=season;
-    const u=new URL(location.href);u.searchParams.set('season',season);history.replaceState(null,'',u);
+    const u=new URL(location.href);u.searchParams.set('season',season);u.searchParams.set('gender',division);history.replaceState(null,'',u);
     status(remote.status==='fulfilled'?`저장소 확인 완료 · ${state.updated_at?dateText(state.updated_at):'사전 안내 자료'} · 버전 ${state.revision}`:'저장소 연결 지연 · 배포된 사전 자료 표시 중 · 최신 현황은 새로고침으로 확인하세요.');
     if(remote.status==='rejected')console.warn('Draft repository read unavailable:',remote.reason?.message||'Network error');
   }catch(err){if(turn===generation){error(err.message);$('draftBoard').innerHTML='';$('draftBoard').setAttribute('aria-busy','false');status('자료 불러오기 실패');}}
 }
-$('season').onchange=()=>loadSeason($('season').value);
+$('season').onchange=()=>{if(!busy)loadSeason($('season').value)};
+document.querySelectorAll('[data-division]').forEach(b=>b.onclick=()=>{if(!busy&&b.dataset.division!==division)loadSeason($('season').value,b.dataset.division)});
 $('refresh').onclick=async()=>{
   if(busy)return;
   if(store?.actor){
@@ -184,7 +191,7 @@ $('refresh').onclick=async()=>{
 };
 try{
   index=await fetchJSON('data/drafts/index.json');
-  $('season').innerHTML=index.seasons.filter(s=>s.divisions.M).map(s=>`<option value="${e(s.season)}">${e(s.year??s.season.slice(0,4))}년</option>`).join('');$('season').disabled=false;
+  $('season').innerHTML=index.seasons.filter(s=>s.divisions.M||s.divisions.W).map(s=>`<option value="${e(s.season)}">${e(s.year??s.season.slice(0,4))}년</option>`).join('');$('season').disabled=false;
   await loadSeason(params.get('season')||index.default_season);
   if(params.get('admin')==='1'&&state)login();
 }catch(err){error(err.message);status('드래프트 시즌 목록을 불러오지 못했습니다.');}

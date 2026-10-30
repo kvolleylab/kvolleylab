@@ -1,6 +1,6 @@
 // Draft rights are identified BEFORE the lottery. No result is keyed by column.
 export const EVENT_STATUS = {scheduled:'예정', drawing:'추첨 중', selecting:'지명 중', completed:'완료'};
-export const PICK_STATUS = {waiting:'지명 대기', selected:'지명 완료', passed:'패스'};
+export const PICK_STATUS = {waiting:'지명 대기', selected:'지명 완료', passed:'패스', not_recorded:'공식표 미기재'};
 export const TRADE_STATUS = {pending:'확인 중', confirmed:'확정', cancelled:'취소'};
 const clone = value => structuredClone(value);
 const ensure = (test, message) => { if (!test) throw new Error(message); };
@@ -13,13 +13,19 @@ export function lottery(state) {
     if (!duplicate) ranks[draw.team_id] = Object.keys(ranks).length+1;
     return {...draw, sequence:index+1, duplicate, rank:duplicate?null:ranks[draw.team_id]};
   });
+  const confirmed=state.lottery_result;
+  if(confirmed) {
+    const officialRanks=Object.fromEntries(confirmed.order.map((id,i)=>[id,i+1]));
+    const automatic=confirmed.last_rank_method==='automatic'?{team_id:confirmed.order[6],rank:7,color:state.teams.find(t=>t.id===confirmed.order[6]).color}:null;
+    return {ranks:officialRanks,records,automatic,complete:confirmed.order.length===7,logStatus:confirmed.draw_log_status,rankSource:confirmed.source_url};
+  }
   let automatic=null;
   if(state.rules.lottery?.automatic_last && Object.keys(ranks).length===state.teams.length-1) {
     const remaining=state.teams.find(t=>!Object.hasOwn(ranks,t.id));
     ranks[remaining.id]=state.teams.length;
     automatic={team_id:remaining.id,rank:state.teams.length,color:remaining.color};
   }
-  return {ranks,records,automatic,complete:Object.keys(ranks).length===state.teams.length};
+  return {ranks,records,automatic,complete:Object.keys(ranks).length===state.teams.length,logStatus:'recorded'};
 }
 // These are ball shares at the START of each pool, not final rank probabilities.
 // Duplicate redraws do not remove another team's allocation from that pool.
@@ -95,6 +101,16 @@ export function validate(state) {
   const unique = (list,label) => ensure(new Set(list).size===list.length,`${label} 중복`);
   unique(state.draws.map(d=>d.id),'추첨 기록 ID');
   for(const d of state.draws){team(d.team_id);validColor(d.color);ensure(text(d.note),'추첨 메모 오류');}
+  if(state.lottery_result){
+    const r=state.lottery_result;
+    ensure(Array.isArray(r.order)&&r.order.length===7&&new Set(r.order).size===7&&r.order.every(id=>teams.has(id)),'확정 추첨 순위는 서로 다른 7팀이어야 합니다.');
+    ensure(isHTTPS(r.source_url)&&text(r.verified_at,40)&&r.verified_at,'확정 순위의 출처와 확인일이 필요합니다.');
+    ensure(['unverified','partial','complete'].includes(r.draw_log_status)&&['unknown','drawn','automatic'].includes(r.last_rank_method),'추첨 상세 확인 상태 오류');
+    ensure(text(r.note,1000),'확정 순위 설명 오류');
+    const observed=[...new Set(state.draws.map(d=>d.team_id))];
+    ensure(observed.every((id,i)=>id===r.order[i]),'실제 추첨 기록과 확정 순위가 다릅니다. 순위와 기록을 함께 대조하세요.');
+    if(r.draw_log_status==='complete')ensure(observed.length===(r.last_rank_method==='automatic'?6:7),'전체 추첨 확인 상태에는 실제 구슬 기록이 필요합니다.');
+  }
   ensure(state.rules.rounds.length===4,'1R~4R 규칙이 필요합니다.');
   if(state.rules.lottery){
     const rule=state.rules.lottery;
@@ -129,7 +145,7 @@ export function validate(state) {
     ensure(Array.isArray(t.legs)&&t.legs.length>0,'거래할 지명권이 필요합니다.');
     unique(t.legs.map(l=>l.pick_id),'동일 거래의 지명권');
     for(const leg of t.legs){ensure(pickIDs.has(leg.pick_id),'존재하지 않는 지명권');team(leg.from);team(leg.to);ensure(leg.from!==leg.to,'양도팀과 양수팀이 같습니다.');}
-    ensure(text(t.conditions,2000)&&text(t.date,30),'거래 정보 오류');validSource(t.source_url);
+    ensure(text(t.conditions,2000)&&text(t.date,30),'거래 정보 오류');ensure(!t.date_kind||['transaction','announcement'].includes(t.date_kind),'거래 날짜 구분 오류');validSource(t.source_url);
     if(t.status==='confirmed')ensure(/^\d{4}-\d{2}-\d{2}$/.test(t.date)&&isHTTPS(t.source_url),'확정 거래에는 거래일과 공식 출처가 필요합니다.');
     if(t.status==='cancelled')ensure(t.cancel_reason?.trim(),'취소 사유가 필요합니다.');
   }
@@ -137,7 +153,7 @@ export function validate(state) {
   for(const p of state.picks)ensure(p.current_team===ownership[p.id],'보유팀이 확정된 거래 이력과 일치하지 않습니다.');
   const people=new Set(),personIDs=new Set();
   function checkResult(r) {
-    ensure(Object.hasOwn(PICK_STATUS,r.status),'지명 상태 오류');
+    ensure(['waiting','selected','passed'].includes(r.status),'지명 상태 오류');
     if(r.status==='waiting'){ensure(!r.actual_team&&!r.player&&!r.completed_at,'대기 칸에 확정 기록을 넣을 수 없습니다.');return;}
     team(r.actual_team);ensure(r.completed_at&&!Number.isNaN(Date.parse(r.completed_at)),'지명 시각 오류');validSource(r.source_url);
     if(r.status==='passed'){ensure(!r.player,'패스에 선수를 지정할 수 없습니다.');return;}
@@ -154,6 +170,7 @@ export function validate(state) {
   const traineeIDs=[];
   for(const [id,group] of Object.entries(state.trainees)) {
     team(id);ensure(Object.hasOwn(PICK_STATUS,group.status),'수련선수 상태 오류');
+    if(group.status==='not_recorded')ensure(isHTTPS(group.source_url),'수련선수 미기재 상태는 확인한 결과표 출처가 필요합니다.');
     ensure(group.status==='selected'?group.entries.length>0:group.entries.length===0,'수련선수 목록과 상태가 일치하지 않습니다.');
     ensure(state.rules.trainees.limit===null||group.entries.length<=state.rules.trainees.limit,'수련선수 최대 인원 초과');
     for(const entry of group.entries){traineeIDs.push(entry.id);checkResult(entry);ensure(entry.actual_team===id,'수련선수는 실제 지명팀에 기록하세요.');}
@@ -196,13 +213,14 @@ export function applyCommand(input,command,{actor,now=new Date().toISOString(),i
   const state=clone(input),ctx={now};let before,after,target=command.target||state.season;
   const pick = () => {const p=state.picks.find(p=>p.id===command.target);ensure(p,'지명권을 찾지 못했습니다.');return p;};
   switch(command.type) {
+    case 'lottery_result': before=state.lottery_result||null;state.lottery_result=clone(command.value);after=state.lottery_result;break;
     case 'event': before=clone(state.event);state.event={...state.event,...command.value};after=state.event;break;
     case 'rules': before=clone(state.rules);state.rules=clone(command.value);after=state.rules;break;
     case 'color': {
       const t=state.teams.find(t=>t.id===command.target);ensure(t,'팀을 찾지 못했습니다.');before=t.color;t.color=clone(command.value);after=t.color;break;
     }
     case 'draw_add': {
-      ensure(!state.rules.lottery?.automatic_last||!lottery(state).complete,'자동 확정을 포함해 모든 순위가 정해졌습니다. 기존 기록을 정정하세요.');
+      ensure(state.lottery_result||!state.rules.lottery?.automatic_last||!lottery(state).complete,'자동 확정을 포함해 모든 순위가 정해졌습니다. 기존 기록을 정정하세요.');
       const t=state.teams.find(t=>t.id===command.value.team_id);ensure(t,'추첨 팀을 선택하세요.');
       const d={id,team_id:t.id,color:clone(t.color),note:command.value.note||''};before=null;state.draws.push(d);after=d;target=id;break;
     }
@@ -217,14 +235,14 @@ export function applyCommand(input,command,{actor,now=new Date().toISOString(),i
     }
     case 'trade_add': {
       before=null;const value=clone(command.value);ensure(['confirmed','pending'].includes(value.status),'신규 거래 상태 오류');
-      const t={id,sequence:Math.max(0,...state.trades.map(t=>t.sequence))+1,status:value.status,date:value.date,conditions:value.conditions||'',source_url:value.source_url||'',legs:value.legs};
+      const t={id,sequence:Math.max(0,...state.trades.map(t=>t.sequence))+1,status:value.status,date:value.date,date_kind:value.date_kind||'transaction',conditions:value.conditions||'',source_url:value.source_url||'',legs:value.legs};
       state.trades.push(t);after=t;target=id;state.trade_review.status=state.trades.some(t=>t.status==='pending')?'pending':'confirmed';break;
     }
     case 'trade_edit': {
       const t=state.trades.find(t=>t.id===command.target);ensure(t&&t.status!=='cancelled','취소된 거래는 수정하지 않고 새 거래를 등록하세요.');
       before=clone(t);const v=command.value;
       ensure(['confirmed','pending'].includes(v.status),'취소는 거래 취소 기능을 이용하세요.');
-      Object.assign(t,{status:v.status,date:v.date,conditions:v.conditions||'',source_url:v.source_url||'',legs:clone(v.legs)});after=t;
+      Object.assign(t,{status:v.status,date:v.date,date_kind:v.date_kind||'transaction',conditions:v.conditions||'',source_url:v.source_url||'',legs:clone(v.legs)});after=t;
       state.trade_review.status=state.trades.some(t=>t.status==='pending')?'pending':'confirmed';break;
     }
     case 'trade_cancel': {
@@ -254,7 +272,7 @@ export function applyCommand(input,command,{actor,now=new Date().toISOString(),i
         const entry={id:old?.id||id,...resultValue(old,command.value,ctx,command)};
         if(old)Object.assign(old,entry);else group.entries.push(entry);
       }else {ensure(group.entries.length===0,'선수가 남아 있습니다. 개별 삭제 후 패스/대기로 바꾸세요.');}
-      group.status=group.entries.length?'selected':command.remove_id?'waiting':command.value.status;after=group;break;
+      group.status=group.entries.length?'selected':command.remove_id?'waiting':command.value.status;if(group.status==='not_recorded')group.source_url=command.value.source_url||'';after=group;break;
     }
     default:throw new Error('지원하지 않는 수정입니다.');
   }

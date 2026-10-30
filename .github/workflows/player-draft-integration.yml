@@ -40,7 +40,7 @@ jobs:
       - name: Verify draft rights, persistent storage and admin forms
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-tests/node_modules/jsdom
-        run: node --experimental-vm-modules --test tests/draft-board.test.mjs tests/draft-board-store.test.mjs tests/draft-board-ui.test.mjs tests/draft-board-observed.test.mjs tests/draft-applicant-list.test.mjs
+        run: node --experimental-vm-modules --test tests/draft-board.test.mjs tests/draft-board-store.test.mjs tests/draft-board-ui.test.mjs tests/draft-board-observed.test.mjs tests/draft-applicant-list.test.mjs tests/draft-women.test.mjs
   identity-and-routing:
     runs-on: ubuntu-latest
     timeout-minutes: 10

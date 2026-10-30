@@ -19,10 +19,9 @@
     ]
   },
   "pending": [
-    "구슬 색상·전체 추첨 기록의 공식 원본 대조",
-    "해당 시즌 라운드별 순서와 수련선수 운영 시행세칙",
-    "라운드 지명권 트레이드 공식 공시와 거래 조건",
-    "전체 지명·패스 결과에 대한 KOVO 공식 최종 결과표 대조"
+    "구슬 색상·중복·자동 7순위 등 사용자 현장 기록의 공식 원본 대조",
+    "단계별 구슬 제거와 수련선수 운영 시행세칙",
+    "공식 거래 부재 여부 대조"
   ],
   "observation": {
     "source_id": "USER-RECORD-20261028-M-f70d5fd59e34",
@@ -33,7 +32,7 @@
     "imported_on": "2026-10-29",
     "status": "user_observed",
     "summary": "2026.10.28 사용자 제공 현장 기록 · 실제 추첨 9회(중복 3회) · 7순위 자동 확정 · 일반 지명 13명 · 수련선수 5명",
-    "note": "구슬 색상과 추첨 상세는 제공된 기록을 반영했습니다. 공식 최종 결과표와 시행세칙은 추가 대조 중입니다.",
+    "note": "구슬 색상과 추첨 상세는 사용자 제공 현장 기록 기준. 일반·수련선수 결과는 KOVO 공식 최종 결과표와 대조 완료.",
     "color_note": "구슬 색상명·추첨 상세는 사용자 제공 현장 기록 기준. 색상 원형은 화면 표시용 대표색이며 살구색은 #FFDAB9를 사용한다."
   },
   "cross_checks": [
@@ -62,6 +61,16 @@
         "https://kovo.co.kr/news/kovo/press/157978",
         "https://www.news1.kr/photos/8184298"
       ]
+    },
+    {
+      "player": "홍준범",
+      "field": "position",
+      "original": "OP",
+      "corrected": "OP/MB",
+      "reason": "공식 최종 결과표 대조",
+      "sources": [
+        "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      ]
     }
   ],
   "lottery_correction": {
@@ -86,5 +95,13 @@
     "published_at": "2026-10-29",
     "verified_at": "2026-10-30",
     "note": "수련 포함 18/59=30.508…%, 화면은 소수점 첫째 자리 30.5%. 완료 상태와 인원이 근거 자료와 일치할 때만 역대 최저 문구 표시."
+  },
+  "final_results": {
+    "title": "KOVO 남자 신인선수 드래프트 공식 최종 결과",
+    "url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+    "published_at": "2026-10-28",
+    "verified_at": "2026-10-30",
+    "sha256": "8ec697df2d1dc4e732704f1b10da786924c9dc4fc53a3cbe8fafca4bda52e7a9",
+    "archive_file_id": "1Tlh4GRVXjBbyNbKnZvNDSkHP8Fp1Tdp3"
   }
 }

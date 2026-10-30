@@ -63,3 +63,7 @@
   .da-official-roster caption{text-align:left;font-size:16px}
   .da-official-roster caption span{display:block;max-width:calc(100vw - 60px);line-height:1.6}
 }
+
+.draft-applicants-page[data-gender=W] .da-official-roster .da-name{color:#985268}
+
+.da-roster-withdrawn{display:block;margin-top:4px;color:#805263;font-size:11px;font-weight:600}
