@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-30",
+  "source": "https://user-api.kovo.co.kr/mains/games/schedules",
+  "rule": "2026-27 season + gender + date + both teams + round unique exact join; no numeric conversion",
+  "matches": {
+    "023:001:MALE:1": "VL2627-M-001",
+    "023:001:FEMALE:2": "VL2627-W-001",
+    "023:001:MALE:3": "VL2627-M-002",
+    "023:001:FEMALE:4": "VL2627-W-002",
+    "023:001:FEMALE:6": "VL2627-W-003",
+    "023:001:FEMALE:8": "VL2627-W-004"
+  }
+}

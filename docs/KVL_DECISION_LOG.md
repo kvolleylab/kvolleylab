@@ -259,3 +259,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-10-28 · V-리그 포스트시즌 사다리 복구 및 재설계
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 운영 V-리그 포스트시즌 사다리의 표시 오류 확인과 디자인 수정을 요청했다. domestic 스킨 이식 뒤 빠졌던 시리즈 내부 CSS 범위를 공통 컴포넌트에서 복구하고, PC 3단 가로 연결/900px 이하 세로 연결, 진출 기준·팀명·승수·경기별 일정과 결과를 분리한다. 미확정 대진은 ‘진출팀 미정’과 —로 표시하며 남자부 차콜/여자부 로즈 헤더와 중립 점수색을 사용한다. QPO/PO 구분, 홈·원정 역전 시 팀 중복 방지, 시리즈 승자 다음 단계 연결, 종료 후 잔여 경기 미실시 표시를 검증했다. 기존 준PO 조건/3전 2선승/5전 3선승 설정과 선수·경기·순위 원본, 앞선 회색 hover 복원, 동시 종합대회/U-리그 Hero 변경을 유지한다. [범위·검수·복구](validation/vleague-postseason-20261028.md).
+
+
+## 2026-10-30 · KVL Quality Audit v1 읽기 전용 시범
+
+Status: IMPLEMENTATION AUTHORIZED / DRAFT PR / RELEASE AND SCHEDULE NOT AUTHORIZED. 사용자가 기존 운영 기준 조사, 독립 감사 프로그램·테스트·GitHub Actions 개발, 실제 읽기 전용 시범 및 Draft PR 제출을 요청했다. `feature/kvl-quality-audit-v1`에서 경기/Player ID/명단/공개등급/기존 회귀/UI 점검과 안정적 오류 ID·중복 없는 Issue 알림 체계를 구현한다. 기존 공식 수집기·테스트·공개 catalog loader를 재사용한다. 운영 홈페이지·MASTER·Player ID·완료된 AVC·기존 workflow는 변경하지 않는다. 신규 schedule은 넣지 않으며 main 병합·배포·Drive 인증·실제 Issue 알림은 별도 사용자 승인 대상이다. ChatGPT/OpenAI 구독 없이 규칙 기반으로 실행한다. [운영 명세](KVL_QUALITY_AUDIT_SPEC_v1.md), [기존 자동화](quality-audit/EXISTING_AUTOMATION_v1.md), [시범 결과](quality-audit/PILOT_v1.md).

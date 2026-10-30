@@ -1,0 +1,2798 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-30T01:21:13+09:00",
+  "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+  "mode": "READ_ONLY",
+  "checks": [
+    {
+      "id": "matches:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 23,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "matches:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 23,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "matches:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 21,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "matches:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 21,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "competition-links",
+      "outcome": "PASS",
+      "count": 276,
+      "note": "4개 대상 대회의 경기/대회 ID 중복 및 남녀부·시즌 연결",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:canonical",
+      "outcome": "PASS",
+      "count": 1842,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 130,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 121,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 131,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 121,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:data/master/player_master_229_v2.json",
+      "outcome": "PASS",
+      "count": 229,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:data/master/player_master_school_v1.json",
+      "outcome": "PASS",
+      "count": 6,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:data/master/player_master_international_v1.json",
+      "outcome": "PASS",
+      "count": 221,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "workflow-safety",
+      "outcome": "FAIL",
+      "count": 50,
+      "note": "기존 권한/스케줄은 변경하지 않음. 쓰기 권한은 용도 검수 후보",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "paths",
+      "outcome": "PASS",
+      "count": 138,
+      "note": "핵심 HTML의 정적 링크/자산; 동적 프로필 경로는 기존 DOM 테스트에서 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "security:json",
+      "outcome": "FAIL",
+      "count": 32200,
+      "note": "명시적 비공개·인증정보·검수 전 필드 탐지. 무표식 레거시의 공개등급은 별도 미검증",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "security:legacy-classification",
+      "outcome": "NOT VERIFIED",
+      "count": 4583,
+      "note": "명시적 access_level 없는 선수 레코드; 기존 검수 근거의 별도 매핑 필요",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "notices",
+      "outcome": "PASS",
+      "count": 2,
+      "note": "기존 공시 검수 큐 재사용; 후속 검수로 해결된 공시 제외. 현재 등록 자동 확정 아님",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "drive:cup",
+      "outcome": "PASS",
+      "count": 24,
+      "note": "전체 명시 범위 비교",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "drive:league",
+      "outcome": "PASS",
+      "count": 252,
+      "note": "전체 명시 범위 비교",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "official:main",
+      "outcome": "PASS",
+      "count": 4,
+      "note": "기존 수집기 읽기 성공; 경기 비교는 통합 관측 검사",
+      "complete": true,
+      "operational": false,
+      "source_url": "https://user-api.kovo.co.kr/mains/games/schedules",
+      "source_checked_at": "2026-10-30T01:21:20+09:00"
+    },
+    {
+      "id": "official:female",
+      "outcome": "PASS",
+      "count": 4,
+      "note": "기존 수집기 읽기 성공; 경기 비교는 통합 관측 검사",
+      "complete": true,
+      "operational": false,
+      "source_url": "https://user-api.kovo.co.kr/mains/games/schedules?gender=FEMALE",
+      "source_checked_at": "2026-10-30T01:21:26+09:00"
+    },
+    {
+      "id": "official:ended",
+      "outcome": "PASS",
+      "count": 5,
+      "note": "기존 수집기 읽기 성공; 경기 비교는 통합 관측 검사",
+      "complete": true,
+      "operational": false,
+      "source_url": "https://user-api.kovo.co.kr/mains/games/schedules/ended?gender=FEMALE",
+      "source_checked_at": "2026-10-30T01:21:30+09:00"
+    },
+    {
+      "id": "official:observed",
+      "outcome": "PASS",
+      "count": 11,
+      "note": "관측된 경기만 비교; 전체 시즌 검증 아님",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "official:full-season",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "기존 rolling API는 일부 경기만 제공. 전체 컵/시즌 공식 결과·세트 점수 전수 대조는 미완료",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "deployed:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "deployed:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "deployed:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "deployed:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "regression:competition-v2-config.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "1edae004b8620b072dee0a958595b318816071835bfe9bab588b5e7be154ded9"
+      }
+    },
+    {
+      "id": "regression:competition-v2-data-contract.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "4a16eccf9049bc73c2241dcfb38f3f5ecff8e47e40514df09c5a9a57c79ef7f5"
+      }
+    },
+    {
+      "id": "regression:competition-v2-production-starter.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "f706f6cbc897114e0b1da2e4043932b8996a73baa60c104339b034232ce9fe1b"
+      }
+    },
+    {
+      "id": "regression:competition-calendar-gender.test.cjs",
+      "outcome": "PASS",
+      "count": 5,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "d19e8aa609551d54ba98ed820744be738ded630afe007a62ec336257d8f127c6"
+      }
+    },
+    {
+      "id": "regression:kovo-cup-production-template-20261027.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "a1732b3c4eb6ae07de0e47b95266d280164ed1c4e3fc17276865d4a3fe55ab80"
+      }
+    },
+    {
+      "id": "regression:competition-v2-pro-cup-pool-columns.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "e0b2015c86fbd1505c77631ed2d103bc88f030df7b5d530dca598a4fb26d9c3c"
+      }
+    },
+    {
+      "id": "regression:kovo-cup-desktop-matchup-alignment.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "5503247e820358d1e6dc5266e7759634f6eaddfe5275a23d59fc2ad285002d4d"
+      }
+    },
+    {
+      "id": "regression:kovo-cup-rosters.test.cjs",
+      "outcome": "PASS",
+      "count": 10,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "41360920220e14a9492ab2dbc679e5367b964ca892ead73e99522f42c4e4b656"
+      }
+    },
+    {
+      "id": "regression:vleague-rosters.test.cjs",
+      "outcome": "PASS",
+      "count": 17,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "9fadb9a2d246fac7461398dab3d9063b751efde94671af52c6a39000b18c1cc5"
+      }
+    },
+    {
+      "id": "regression:vleague-match-summary.test.cjs",
+      "outcome": "PASS",
+      "count": 9,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "8b5ea5ce14a26bf45f97e55602b7db2b26c6ad4803f0c2ed63b307ccc81d4824"
+      }
+    },
+    {
+      "id": "regression:vleague-postseason.test.cjs",
+      "outcome": "PASS",
+      "count": 6,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "ec3ee4b5542ce589bf62ec7b6c46309eeb61d30c2851cf5a26a7df30deee2a11"
+      }
+    },
+    {
+      "id": "regression:domestic-home-v2.test.cjs",
+      "outcome": "PASS",
+      "count": 21,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "e8c061ae728ea0367dc398ff98d823eb1ea418ca4e0d58e755380ddee23aedc4"
+      }
+    },
+    {
+      "id": "regression:draft-applicants.test.mjs",
+      "outcome": "PASS",
+      "count": 7,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "6f623aa40b1a391b0cff970346da794a40d78b367c21f03ffbf2888ea155fc4e"
+      }
+    },
+    {
+      "id": "regression:draft-lottery.test.mjs",
+      "outcome": "PASS",
+      "count": 4,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "f497665da95b3985b0ab31b57e48873b9fa10b57f456e37512d85e64dfa9dbf0"
+      }
+    },
+    {
+      "id": "regression:draft-profile-routing.test.mjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "9291483a9595302926d4b624ec21d189416879058da5d57524c4f50a6bc3ced5"
+      }
+    },
+    {
+      "id": "regression:player-reviewed-identities.test.mjs",
+      "outcome": "PASS",
+      "count": 6,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "418efef316c8335f590189a68664fb15ab16272e46ad6bf3cbbdb51cbfc5a2ac"
+      }
+    },
+    {
+      "id": "regression:player-integration.test.mjs",
+      "outcome": "FAIL",
+      "count": 15,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 1,
+        "stdout_sha256": "3f3fbf0d0930ffdb730e92f47213e0e9f19895538b6dd6149d644263c0b77d02"
+      }
+    },
+    {
+      "id": "regression:player-profile-coverage.test.mjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "5a09702e70080d61edae6a7e4c4f4b7b5fee3aee028b6962fb1aa73b229b6b19"
+      }
+    },
+    {
+      "id": "regression:python",
+      "outcome": "PASS",
+      "count": 128,
+      "note": "기존 수집기 및 신규 audit 합성 테스트",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "d2ed9a2b26e6875ab996ed990a87b5663d1c447cff2ac3c520ec616e9c77169e"
+      }
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:overview:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:schedule:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:groups:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:knockout:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:rosters:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:resources:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:overview:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:schedule:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:groups:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:knockout:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:rosters:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:resources:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:overview:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:schedule:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:groups:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:knockout:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:rosters:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:resources:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:overview:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:schedule:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:groups:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:knockout:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:rosters:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:resources:1180",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:overview:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:schedule:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:groups:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:knockout:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:rosters:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:resources:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:overview:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:schedule:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:groups:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:knockout:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:rosters:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:resources:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:overview:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:schedule:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:groups:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:knockout:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:rosters:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:resources:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:overview:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:schedule:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:groups:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:knockout:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:rosters:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:resources:390",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:overview:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:schedule:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:groups:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:knockout:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:rosters:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-men-2026:resources:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:overview:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:schedule:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:groups:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:knockout:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:rosters:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:kovo-cup-women-2026:resources:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:overview:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:schedule:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:groups:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:knockout:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:rosters:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-men-2026-27:resources:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:overview:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:schedule:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:groups:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:knockout:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:rosters:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:v-league-women-2026-27:resources:360",
+      "outcome": "PASS",
+      "count": 1,
+      "complete": true,
+      "note": "Chromium 실제 렌더: 가로 넘침·로고·점수 중앙·팀명 잘림·명단 연결. 색상 미세차/육안 전체는 별도 검수"
+    },
+    {
+      "id": "ui:runner",
+      "outcome": "PASS",
+      "count": 72,
+      "note": "72개 화면 검사 실행 상태. 각 화면의 결과와 구분",
+      "complete": true,
+      "operational": true
+    },
+    {
+      "id": "drive:roster-full",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "선수 MASTER는 검수중. v1은 경기 MASTER 비교만 인증 adapter 제공",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "sync:timestamps",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "Drive 수정 시각/commit 시각은 실제 배포 시각과 다름; 배포 manifest 미설정",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "draft:selection-results",
+      "outcome": "NOT RUN",
+      "count": 0,
+      "note": "운영 main의 신청자/프로필은 기존 테스트. 미병합 결과 페이지는 별도 PR 범위",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "security:release-enforcement",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "감사 gate 구현; required check/실제 배포 차단 연결은 승인 후 설정",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "audit:execution",
+      "outcome": "PASS",
+      "count": 0,
+      "note": "점검 프로그램 실행 완료; 데이터 검증 결과와 구분",
+      "complete": true,
+      "operational": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "KVL-QA-F893D12902695F92",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/apply-schedules-light-theme.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/apply-schedules-light-theme.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/apply-schedules-light-theme.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-808E87682DB4AF8B",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/apply-university-v7-to-site.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/apply-university-v7-to-site.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/apply-university-v7-to-site.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-81F500EF9CAEB467",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/audit-vnl-18-country-pages.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/audit-vnl-18-country-pages.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/audit-vnl-18-country-pages.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-BD80CDB8D941365E",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/audit-vnl-player-master-country-coverage.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/audit-vnl-player-master-country-coverage.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/audit-vnl-player-master-country-coverage.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-33E93763371830BA",
+      "rule": "WORKFLOW_YAML",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/build-player-timeline-v1.yml",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": ".github/workflows/build-player-timeline-v1.yml",
+      "related": {},
+      "actual": "YAML parse failure at line 66",
+      "expected": "valid YAML",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/build-player-timeline-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-9AF408624F6D48A0",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/build-university-player-master-batch.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/build-university-player-master-batch.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/build-university-player-master-batch.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-C86EE5EB60755B49",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/build-vnl-match-master-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/build-vnl-match-master-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/build-vnl-match-master-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-A965AF7EF78DF107",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/build-vnl-match-results-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/build-vnl-match-results-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/build-vnl-match-results-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-C8DCE2EF09390771",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/build-vnl-standings-master-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/build-vnl-standings-master-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/build-vnl-standings-master-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-1CF493D851E6F666",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/complete-final-four-vnl-rosters.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/complete-final-four-vnl-rosters.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/complete-final-four-vnl-rosters.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-4AF76F765DE8B3CF",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/connect-all-vnl-player-master-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/connect-all-vnl-player-master-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/connect-all-vnl-player-master-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-ED1252BAFE2C0358",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/connect-schedules-to-match-master-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/connect-schedules-to-match-master-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/connect-schedules-to-match-master-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-26469250C2757F15",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/connect-usa-player-master-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/connect-usa-player-master-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/connect-usa-player-master-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-7680EE5A3A32F8B4",
+      "rule": "WORKFLOW_YAML",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/connect-vnl-schedules-v1.yml",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": ".github/workflows/connect-vnl-schedules-v1.yml",
+      "related": {},
+      "actual": "YAML parse failure at line 35",
+      "expected": "valid YAML",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/connect-vnl-schedules-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-BDB20DE3081D56C3",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/connect-vnl-standings-ui-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/connect-vnl-standings-ui-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/connect-vnl-standings-ui-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-ED180FB5B1A348BC",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/expand-player-timeline-all-v1.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/expand-player-timeline-all-v1.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/expand-player-timeline-all-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-831B8633C5547D6C",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/improve-schedule-visibility.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/improve-schedule-visibility.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/improve-schedule-visibility.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-5559320A4075DD77",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/install-global-light-theme.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/install-global-light-theme.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/install-global-light-theme.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-38344311ED5EB758",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/install-unified-navigation.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/install-unified-navigation.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/install-unified-navigation.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-F75F58E7D301A86A",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/kovo-official-notices-collector.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/kovo-official-notices-collector.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/kovo-official-notices-collector.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-BA270EB09B454969",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-argentina-vnl-page.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-argentina-vnl-page.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-argentina-vnl-page.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-358116836400DADE",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-belgium-vnl-page.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-belgium-vnl-page.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-belgium-vnl-page.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-894179E42109FAC6",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-bulgaria-china-ukraine-vnl.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-bulgaria-china-ukraine-vnl.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-bulgaria-china-ukraine-vnl.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-FC91214A51D6B8E6",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-canada-vnl-page.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-canada-vnl-page.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-canada-vnl-page.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-98CE7E9BF8D73611",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-cuba-vnl-page.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-cuba-vnl-page.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-cuba-vnl-page.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-85CEE1B18705777E",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-france-vnl-page.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-france-vnl-page.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-france-vnl-page.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-069304FEE16D4A1C",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-germany-serbia-turkiye-vnl.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-germany-serbia-turkiye-vnl.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-germany-serbia-turkiye-vnl.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-C974E749E02A926A",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-italy-vnl-page.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-italy-vnl-page.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-italy-vnl-page.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-F8DA20A7C3DCC851",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/link-usa-iran-slovenia-vnl.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/link-usa-iran-slovenia-vnl.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/link-usa-iran-slovenia-vnl.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-B0497870D110AD07",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/materialize-reviewed-batches.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/materialize-reviewed-batches.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/materialize-reviewed-batches.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-8D0D4A00734A4424",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/populate-six-v25-rosters.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/populate-six-v25-rosters.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/populate-six-v25-rosters.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-440E643B078A6C4A",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/rebuild-final-player-master-229.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/rebuild-final-player-master-229.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/rebuild-final-player-master-229.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-BBB6F1592695C53C",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/register-four-static-vnl-teams.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/register-four-static-vnl-teams.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/register-four-static-vnl-teams.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-E2BEEE4E5F3AAFD6",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/register-kyungil-player-master.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/register-kyungil-player-master.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/register-kyungil-player-master.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-63C59019AB335BFE",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/register-skku-player-master.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/register-skku-player-master.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/register-skku-player-master.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-05AA485D14D3187A",
+      "rule": "WORKFLOW_WRITE_REVIEW",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/run-populate-six-v25-rosters.yml",
+      "severity": "P3",
+      "verification": "SUSPECTED",
+      "path": ".github/workflows/run-populate-six-v25-rosters.yml",
+      "related": {},
+      "actual": "contents write",
+      "expected": "review necessity and branch restrictions",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/run-populate-six-v25-rosters.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-CF9992DBB4ABFE4F",
+      "rule": "JSON_PARSE",
+      "check_id": "security:json",
+      "entity": "data/master/vnl-2026-men-matches-v2.json",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": "data/master/vnl-2026-men-matches-v2.json",
+      "related": {},
+      "actual": "invalid JSON",
+      "expected": "valid JSON",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": "data/master/vnl-2026-men-matches-v2.json",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    },
+    {
+      "id": "KVL-QA-F08B7B55D038BE39",
+      "rule": "REGRESSION_FAILED",
+      "check_id": "regression:player-integration.test.mjs",
+      "entity": "player-integration.test.mjs",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": "tests/player-integration.test.mjs",
+      "related": {},
+      "actual": 1,
+      "expected": 0,
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": "tests/player-integration.test.mjs",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T01:21:13+09:00",
+      "github_sha": "b1a5f884df5e6b48357a4ae79d1997f18ca145b7",
+      "resolved_at": null,
+      "occurrences": 3,
+      "last_run": "pilot-3"
+    }
+  ],
+  "events": [],
+  "summary": {
+    "PASS": 121,
+    "FAIL": 3,
+    "NOT VERIFIED": 5,
+    "NOT RUN": 1
+  },
+  "inventory": [
+    {
+      "path": ".github/workflows/apply-schedules-light-theme.yml",
+      "name": "Apply schedules light theme",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/apply-university-v7-to-site.yml",
+      "name": "Apply university roster v7 to site",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/audit-vnl-18-country-pages.yml",
+      "name": "Audit VNL 18 country pages",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/audit-vnl-player-master-country-coverage.yml",
+      "name": "Audit VNL Player Master country coverage",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/build-player-timeline-v1.yml",
+      "syntax": "FAIL",
+      "line": 66
+    },
+    {
+      "path": ".github/workflows/build-university-player-master-batch.yml",
+      "name": "Build university Player Master batch",
+      "events": [
+        "pull_request",
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python scripts/build_university_player_master_batch.py"
+      ]
+    },
+    {
+      "path": ".github/workflows/build-vnl-match-master-v1.yml",
+      "name": "Build VNL Match Master v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/build-vnl-match-results-v1.yml",
+      "name": "Build VNL Match Results v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/build-vnl-standings-master-v1.yml",
+      "name": "Build VNL Standings Master v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/complete-final-four-vnl-rosters.yml",
+      "name": "Complete final four VNL rosters",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/connect-all-vnl-player-master-v1.yml",
+      "name": "Connect all VNL players to Player Master v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/connect-schedules-to-match-master-v1.yml",
+      "name": "Connect schedules to Match Master v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/connect-usa-player-master-v1.yml",
+      "name": "Connect USA Player Master v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/connect-vnl-schedules-v1.yml",
+      "syntax": "FAIL",
+      "line": 35
+    },
+    {
+      "path": ".github/workflows/connect-vnl-standings-ui-v1.yml",
+      "name": "Connect VNL Standings UI v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/expand-player-timeline-all-v1.yml",
+      "name": "Expand Player Timeline all v1",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/improve-schedule-visibility.yml",
+      "name": "Improve schedule visibility",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/install-global-light-theme.yml",
+      "name": "Install global light theme",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/install-unified-navigation.yml",
+      "name": "Install unified navigation",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-cup-domestic-presentation-smoke.yml",
+      "name": "KOVO Cup Domestic Presentation Prototype Smoke",
+      "events": [
+        "workflow_dispatch",
+        "pull_request",
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "node tests/kovo-cup-domestic-presentation-prototype.test.cjs",
+        "node tests/competition-v2-pro-cup-pool-columns.test.cjs"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-cup-final-20261018-live-observation.yml",
+      "name": "KOVO Cup Final One-Day Live Observation 2026-10-18",
+      "events": [
+        "schedule",
+        "workflow_dispatch",
+        "push"
+      ],
+      "schedule": [
+        {
+          "cron": "0 4 18 10 *"
+        }
+      ],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "TODAY_KST=\"$(TZ=Asia/Seoul date +%F)\"",
+        "python -m unittest discover -s tests -p test_kovo_cup_final_20261018_monitor.py -v",
+        "python scripts/kovo_cup_final_20261018_monitor.py \\",
+        "python scripts/kovo_cup_final_20261018_monitor.py \\"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-cup-production-20261027-smoke.yml",
+      "name": "KOVO Cup production + domestic template focused regression",
+      "events": [
+        "workflow_dispatch",
+        "pull_request",
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "node tests/kovo-cup-production-template-20261027.test.cjs",
+        "node tests/kovo-cup-domestic-presentation-prototype.test.cjs",
+        "node tests/competition-v2-pro-cup-pool-columns.test.cjs",
+        "node tests/kovo-cup-desktop-matchup-alignment.test.cjs",
+        "npm install --prefix /tmp/kvl-roster-tests --no-audit --no-fund jsdom@26.1.0",
+        "node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs test"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-match-collector-pilot.yml",
+      "name": "KOVO Match Collector Pilot",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python -m unittest discover -s tests -p 'test_kovo_match_collector.py' -v",
+        "python scripts/kovo_match_collector.py \\"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-match-detail-one-shot.yml",
+      "name": "KOVO Official Match Detail One-Shot Probe",
+      "events": [
+        "workflow_dispatch",
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python -m unittest discover -s tests -p test_kovo_public_match_detail_probe.py -v",
+        "python scripts/kovo_public_match_detail_probe.py"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-match-feed-pilot.yml",
+      "name": "KOVO Match-Only Feed Pilot",
+      "events": [
+        "workflow_dispatch",
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python -m unittest discover -s tests -p 'test_kovo_match_feed.py' -v",
+        "python scripts/kovo_match_feed.py \\"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-notice-structure-diagnostic.yml",
+      "name": "KOVO Public Notice Structure Diagnostic",
+      "events": [
+        "push",
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python scripts/kovo_notice_structure_diagnostic.py"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-official-notices-collector.yml",
+      "name": "KOVO Official Notices Collector",
+      "events": [
+        "workflow_dispatch",
+        "schedule",
+        "push"
+      ],
+      "schedule": [
+        {
+          "cron": "13 23 * * *"
+        }
+      ],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python -m unittest discover -s tests -p test_kovo_official_notices.py -v",
+        "if [ -n \"$NOTICE_ID\" ]; then",
+        "python scripts/kovo_verify_roster_contracts.py",
+        "git config user.name \"github-actions[bot]\""
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-public-api-connection-probe.yml",
+      "name": "KOVO Public API Connection Probe",
+      "events": [
+        "push",
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python3 - <<'PY'"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-public-match-source-discovery.yml",
+      "name": "KOVO Public Match Source Discovery",
+      "events": [
+        "workflow_dispatch",
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python -m unittest discover -s tests -p test_kovo_live_source_probe.py -v",
+        "python scripts/kovo_live_source_probe.py --max-assets 3"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-public-schedule-api-probe.yml",
+      "name": "KOVO Public Schedule API Probe",
+      "events": [
+        "workflow_dispatch",
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python -m unittest discover -s tests -p test_kovo_public_schedule_probe.py -v",
+        "python scripts/kovo_public_schedule_probe.py"
+      ]
+    },
+    {
+      "path": ".github/workflows/kovo-public-schedule-match-bridge.yml",
+      "name": "KOVO Public Schedule Match Bridge",
+      "events": [
+        "workflow_dispatch",
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python -m unittest discover -s tests -p test_kovo_match_schedule_bridge.py -v",
+        "python scripts/kovo_match_schedule_bridge.py \\"
+      ]
+    },
+    {
+      "path": ".github/workflows/kvl-quality-audit-v1.yml",
+      "name": "KVL Quality Audit v1",
+      "events": [
+        "workflow_dispatch",
+        "pull_request"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python -m pip install -r scripts/quality_audit/requirements.txt",
+        "python -B -m unittest discover -s tests -p test_quality_audit.py -v",
+        "python -B -m scripts.quality_audit.export_gate --base \"$BASE_SHA\"",
+        "mkdir -p \"$RUNNER_TEMP/kvl-audit-state\"",
+        "node \"$RUNNER_TEMP/kvl-audit-deps/node_modules/playwright/cli.js\" install --with-deps chromium",
+        "args=(--root . --output \"$RUNNER_TEMP/kvl-audit-output\" --core-tests --gate --state \"$RUNNER_TEMP/kvl-audit-state/state.json\" --run-id \"$GITHUB_RUN_ID",
+        "mkdir -p \"$RUNNER_TEMP/kvl-audit-state\"",
+        "if [ -f \"$RUNNER_TEMP/kvl-audit-output/report.md\" ]; then",
+        "python -B -m scripts.quality_audit.issues --report \"$RUNNER_TEMP/kvl-audit-notify/report.json\" --execution-result \"$EXECUTION_RESULT\" --publish"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-argentina-vnl-page.yml",
+      "name": "Link Argentina VNL page",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-belgium-vnl-page.yml",
+      "name": "Link Belgium VNL page",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-bulgaria-china-ukraine-vnl.yml",
+      "name": "Link Bulgaria China Ukraine VNL pages",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-canada-vnl-page.yml",
+      "name": "Link Canada VNL page",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-cuba-vnl-page.yml",
+      "name": "Link Cuba VNL page",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-france-vnl-page.yml",
+      "name": "Link France VNL page",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-germany-serbia-turkiye-vnl.yml",
+      "name": "Link Germany Serbia Türkiye VNL pages",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-italy-vnl-page.yml",
+      "name": "Link Italy VNL page",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/link-usa-iran-slovenia-vnl.yml",
+      "name": "Link USA Iran Slovenia VNL pages",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/materialize-reviewed-batches.yml",
+      "name": "Materialize reviewed batches",
+      "events": [
+        "pull_request",
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "for script in scripts/materialize_*_batch.py; do",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/player-draft-integration.yml",
+      "name": "Player and Draft Integration",
+      "events": [
+        "pull_request",
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "npm install --prefix \"$RUNNER_TEMP/kvl-tests\" --no-package-lock --no-audit --no-fund jsdom@26.1.0",
+        "python -m unittest discover -s tests -p test_draft_applicants.py"
+      ]
+    },
+    {
+      "path": ".github/workflows/populate-six-v25-rosters.yml",
+      "name": "Populate six VNL v25 rosters",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/rebuild-final-player-master-229.yml",
+      "name": "Rebuild final 229-player Player Master",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/register-four-static-vnl-teams.yml",
+      "name": "Register four static VNL teams",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/register-kyungil-player-master.yml",
+      "name": "Register Kyungil players in Player Master",
+      "events": [
+        "pull_request",
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/register-skku-player-master.yml",
+      "name": "Register SKKU players in Player Master",
+      "events": [
+        "pull_request",
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python scripts/register_skku_player_master.py",
+        "python - <<'PY'"
+      ]
+    },
+    {
+      "path": ".github/workflows/run-populate-six-v25-rosters.yml",
+      "name": "Run six VNL v25 roster population",
+      "events": [
+        "push"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "write"
+      },
+      "commands": [
+        "python - <<'PY'",
+        "git config user.name 'github-actions[bot]'"
+      ]
+    },
+    {
+      "path": ".github/workflows/validate-university-player-master.yml",
+      "name": "Validate university Player Master",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "schedule": [],
+      "permissions": {
+        "contents": "read"
+      },
+      "commands": [
+        "python - <<'PY'"
+      ]
+    }
+  ],
+  "runtime": {
+    "openai_api_required": false,
+    "chatgpt_subscription_required": false,
+    "audit_code_sha256": "7b2157aa23c6a63ab2dff1faeddf9bd803ca3feca25db72b26dcb026a4deb9df"
+  },
+  "gate": {
+    "enforced": true,
+    "outcome": "PASS"
+  }
+}
