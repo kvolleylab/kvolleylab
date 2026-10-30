@@ -83,9 +83,18 @@ test('automatic last rank is opt-in and never changes a result identity or an in
 test('public view puts compact results first and only admins receive audit and source detail markup',()=>{
   const html=renderBoard(state,sources,{applicantCount:59});
   assert.ok(html.indexOf('id="draftResults"')<html.indexOf('id="draftAllocation"'));
-  assert.match(html,/신청 : <b>59명/);assert.match(html,/지명 : <b>18명/);
+  assert.match(html,/<strong>59명<\/strong><span>드래프트 참가/);assert.match(html,/<strong>18명<\/strong><span>최종 지명/);
+  assert.match(html,/<strong>30\.5%<\/strong>/);assert.match(html,/역대 최저 지명률/);
+  assert.match(html,/gender=M&layout=table&sort=source#applicants/);
   for(const text of ['진행 상태','주요 수정 이력','시즌 출처와 확인 필요 자료','기록 기준','지명 완료','실제 지명 ·','시즌 운영 규칙'])assert.ok(!html.includes(text),text);
   assert.equal((html.match(/class="db-pick-name"/g)||[]).length,18);
   assert.match(html,/9회 · 중복 3회 · 7순위 자동 확정/);assert.match(html,/자동 확정<br><small>추첨 없음/);
   const admin=renderBoard(state,sources,{admin:true});assert.match(admin,/주요 수정 이력/);assert.match(admin,/시즌 출처와 확인 필요 자료/);
+});
+test('summary derives the rate and only uses the historical claim for its verified completed snapshot',()=>{
+  const changed=structuredClone(state);changed.picks.find(p=>p.result.status==='selected').result={status:'passed',actual_team:'OKF',player:null};
+  const html=renderBoard(changed,sources,{applicantCount:59});assert.match(html,/<strong>28\.8%/);assert.doesNotMatch(html,/역대 최저 지명률/);
+  const ongoing={...state,event:{...state.event,status:'selecting'}};assert.match(renderBoard(ongoing,sources,{applicantCount:59}),/현재 지명률/);
+  const unknown=renderBoard(state,sources);assert.doesNotMatch(unknown,/NaN|Infinity|30\.5%|역대 최저 지명률/);
+  assert.doesNotMatch(renderBoard(state,sources,{applicantCount:0}),/NaN|Infinity/);
 });

@@ -20,7 +20,7 @@ function paint(){
   $('adminBar').hidden=!store.actor;
   $('adminBar').innerHTML=store.actor?`<div><b>${e(store.actor)} · 관리자 입력</b><span>저장 대상 ${e(store.repository)} / ${e(store.branch)} · 입력할 때마다 영구 저장</span></div><div><button class="da-button" data-action="event">개최 정보·상태</button> <button class="da-button" id="logout">관리자 종료</button></div>`:'';
   $('adminOpen').textContent=store.actor?'관리자 인증됨':'관리자 입력';
-  $('applicantsFooter').href=`draft-hub.html?season=${encodeURIComponent(state.season)}&gender=${state.division}`;
+  $('applicantsFooter').href=`draft-hub.html?season=${encodeURIComponent(state.season)}&gender=${state.division}&layout=table&sort=source#applicants`;
 }
 function close(){if(!busy)editor.close();}
 $('editorClose').addEventListener('click',close);

@@ -30,3 +30,36 @@
 .da-lottery-foot p{margin:0}.da-lottery-foot a{color:var(--da-ink);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 @media(max-width:1100px){.da-lottery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:600px){.da-lottery{padding:18px 12px 14px;margin-bottom:26px}.da-lottery-head{gap:8px;margin-bottom:14px}.da-lottery-head>div{gap:6px}.da-lottery-head h2{font-size:16px}.da-lottery-total{font-size:11px}.da-lottery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.da-lottery-team{padding:12px 3px 11px}.da-lottery-team img{width:52px;height:52px;margin-bottom:8px}.da-lottery-team h3{font-size:11px;margin-bottom:6px}.da-lottery-team strong{font-size:20px}.da-lottery-team p>span,.da-lottery-team strong small{font-size:10px}.da-lottery-foot{font-size:10px}}
+
+/* Official men's application snapshot: school groups and source-order rows. */
+#applicants{scroll-margin-top:22px}
+.da-roster-wrap{width:100%;overflow:auto;border:1px solid #aebfce;border-radius:8px;background:#fff;overscroll-behavior-x:contain}
+.da-main .da-official-roster{display:table;width:100%;min-width:1038px;max-width:none;border-collapse:separate;border-spacing:0;table-layout:fixed;font-size:14px;color:#172f49;text-align:center}
+.da-official-roster caption{caption-side:top;padding:18px 12px;font-size:20px;font-weight:750;letter-spacing:-.5px;color:#102740;background:#fff}
+.da-official-roster th,.da-official-roster td{padding:8px 6px;line-height:1.45;height:38px;vertical-align:middle;border-right:1px solid #c2ced9;border-bottom:1px solid #c2ced9;overflow-wrap:anywhere}
+.da-official-roster th{font-weight:500}.da-official-roster thead th{background:#eef2f6;font-weight:650;color:#36516e;border-top:1px solid #aebfce}
+.da-official-roster thead small{font-size:10px;font-weight:400;margin-left:4px;color:#718299}
+.da-official-roster tr>:last-child{border-right:0}.da-official-roster tbody tr:last-child>td{border-bottom:0}
+.da-official-roster .da-roster-school,.da-official-roster .da-roster-category{background:#fff;word-break:keep-all}
+.da-official-roster .da-roster-highlight>.da-roster-fact{background:#e2efda}
+.da-roster-num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.da-official-roster .da-roster-name{position:sticky;left:0;z-index:2;background:#fff;box-shadow:1px 0 #c2ced9}
+.da-official-roster thead .da-roster-name{z-index:3;background:#eef2f6}
+.da-official-roster .da-name{display:inline-block;font-size:15px;font-weight:650;line-height:1.45;padding:0;color:#173e69}
+.da-official-roster a.da-name{text-decoration:underline;text-decoration-color:#9dafbf;text-underline-offset:3px}
+.da-official-roster button.da-name{min-height:22px}.da-official-roster .da-name:hover{color:var(--da-accent)}
+.da-roster-legend{font-size:12px;color:#60758c;line-height:1.7;margin:12px 0 0}.da-roster-legend>span{display:inline-block;width:12px;height:12px;border:1px solid #becfb3;background:#e2efda;margin-right:6px;vertical-align:-1px}
+.da-roster-scroll-hint{display:none;font-size:11px;color:#60758c;line-height:1.6;margin:0 0 10px}
+.da-roster-notice{padding:10px 14px;background:#fff5dd;font-size:12px;line-height:1.7;color:#715920}.da-roster-notice[hidden]{display:none}
+@media(max-width:1250px){.da-roster-scroll-hint{display:block}}
+@media(max-width:600px){#applicants{scroll-margin-top:65px}.da-official-roster caption{font-size:18px;padding:14px 10px}.da-roster-legend{font-size:11px}}
+@media(max-width:600px){
+  .da-main .da-official-roster{min-width:866px;width:866px;font-size:13px}
+  .da-official-roster col:nth-child(1),.da-official-roster thead th:first-child,.da-official-roster .da-roster-category{display:none}
+  .da-official-roster col:nth-child(2){width:38px!important}
+  .da-official-roster col:nth-child(3){width:92px!important}
+  .da-official-roster col:nth-child(4){width:38px!important}
+  .da-official-roster col:nth-child(5){width:90px!important}
+  .da-official-roster caption{text-align:left;font-size:16px}
+  .da-official-roster caption span{display:block;max-width:calc(100vw - 60px);line-height:1.6}
+}

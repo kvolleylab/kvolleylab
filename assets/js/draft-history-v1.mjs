@@ -4,7 +4,7 @@ let indexPromise;
 const cache=new Map();
 async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw new Error(`Draft source unavailable: ${path}`);return r.json()}
 export function loadDraftIndex(){return indexPromise??=json('data/draft-applicants/index.json').then(index=>{
- const keys=new Set();for(const s of index.seasons||[]){if(!/^\d{4}-\d{2}$/.test(s.season)||keys.has(s.season))throw new Error('Invalid draft season');keys.add(s.season);for(const path of [s.applicants,s.links,s.results].filter(Boolean))if(!path.startsWith(`data/draft-applicants/${s.season}/`)||path.includes('..'))throw new Error('Invalid draft source')}
+ const keys=new Set();for(const s of index.seasons||[]){if(!/^\d{4}-\d{2}$/.test(s.season)||keys.has(s.season))throw new Error('Invalid draft season');keys.add(s.season);for(const path of [s.applicants,s.links,s.results,s.details].filter(Boolean))if(!path.startsWith(`data/draft-applicants/${s.season}/`)||path.includes('..'))throw new Error('Invalid draft source')}
  if(!keys.has(index.default_season))throw new Error('Missing default draft season');return index;
 })}
 export function mergeResults(rows,results,season){

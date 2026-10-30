@@ -1,0 +1,26 @@
+{
+  "workflow_run": "https://github.com/kvolleylab/kvolleylab/actions/runs/40913439956",
+  "job_id": 123587248797,
+  "head_sha": "8ec3253a45c14639f9c8aa2ae43306f44aff25f5",
+  "tested_merge_sha": "c610502390330d565b19abb2228299626a1cb56e",
+  "audit_code_sha256": "89e070a773643268d04f84090fad49d7cd2bb302ace4b1bce89ac1567ebf0e30",
+  "workflow_result": "SUCCESS",
+  "notify": "SKIPPED",
+  "duration_seconds": 154,
+  "artifact_id": 12915302018,
+  "artifact_zip_sha256": "e84d0ed6b1bd551c3cff27959445a4dc80704cd873cb17e9f1d6f6182e5c1b6c",
+  "artifact_bytes": 15173,
+  "synthetic_tests": 56,
+  "python_tests": 129,
+  "ui_pass": 72,
+  "summary": {
+    "PASS": 111,
+    "FAIL": 3,
+    "NOT VERIFIED": 6,
+    "NOT RUN": 3
+  },
+  "gate": {
+    "enforced": true,
+    "outcome": "PASS"
+  }
+}

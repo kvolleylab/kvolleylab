@@ -271,3 +271,12 @@ Status: APPROVED (사용자 제공 기록을 참고한 업데이트 범위) / IM
 ## 2026-10-29 · 드래프트 결과 우선 화면·단계별 확률·자동 7순위
 
 Status: APPROVED (사용자가 요청한 화면·기록 수정) / IMPLEMENTED / VERIFIED / READY FOR REVIEW. 결과표를 구슬 배분 위로 올리고 선수명·소속·포지션/패스 중심으로 단순화한다. 공개 시즌 선택은 연도로 표시하며 진행 상태 대신 신청59·지명18을 기존 데이터에서 계산한다. 개최 정보와 구슬 글자를 키우고 확률은 신청자 화면의 파랑으로 맞춘다. 저장소 확인·버전·재조회, 주요 수정 이력과 시즌 자료 패널은 실제 관리자에게만 표시하고 공개 관찰 기록 문단은 제거한다. 시즌별 추첨 방식 설정을 추가하고 사용자 정정에 따라 1~3순위100개/4~7순위64개 시작 구슬 비율을 표시한다. 대한항공은 추첨 없이 자동7순위이며 실제 추첨은9회·중복3회다. 앞선10회 기록은 원본과 감사 이력에 보존하고 runtime revision58에 정정한다. 원지명권28개·실제 지명팀·선수·프로필 연결·거래 모델은 유지한다. 사진은 이번 메시지에서 확인되지 않아 정확한 사진 대조는 NOT VERIFIED. 관련50개 검사와 PC/360px/390px 검수 통과. 앞선 공개 상태/이력 표시와10회 추첨 결정을 이 요청 범위에서 대체하며 운영 merge·배포 승인 범위는 확장하지 않는다. [검수·확률 의미·복구](validation/draft-board-ui-20261029.md).
+
+
+## 2026-10-30 · KVL Quality Audit v1 읽기 전용 시범
+
+Status: IMPLEMENTATION AUTHORIZED / DRAFT PR / RELEASE AND SCHEDULE NOT AUTHORIZED. 사용자가 기존 운영 기준 조사, 독립 감사 프로그램·테스트·GitHub Actions 개발, 실제 읽기 전용 시범 및 Draft PR 제출을 요청했다. `feature/kvl-quality-audit-v1`에서 경기/Player ID/명단/공개등급/기존 회귀/UI 점검과 안정적 오류 ID·중복 없는 Issue 알림 체계를 구현한다. 기존 공식 수집기·테스트·공개 catalog loader를 재사용한다. 운영 홈페이지·MASTER·Player ID·완료된 AVC·기존 workflow는 변경하지 않는다. 신규 schedule은 넣지 않으며 main 병합·배포·Drive 인증·실제 Issue 알림은 별도 사용자 승인 대상이다. ChatGPT/OpenAI 구독 없이 규칙 기반으로 실행한다. [운영 명세](KVL_QUALITY_AUDIT_SPEC_v1.md), [기존 자동화](quality-audit/EXISTING_AUTOMATION_v1.md), [시범 결과](quality-audit/PILOT_v1.md).
+
+## 2026-10-30 · 드래프트 3개 요약 지표·사진 형식의 공식 신청자 목록
+
+Status: APPROVED (사용자 요청 범위) / IMPLEMENTED / VERIFIED / PRIVATE PREVIEW DEPLOYED / READY FOR REVIEW. 사용자가 첨부한 두 사진에 맞춰 기존 신청·지명 문장을 59명 드래프트 참가 / 18명 최종 지명 / 30.5% 역대 최저 지명률로 대체하고, 참가 신청자 버튼은 공식 순번의 목록을 열도록 한다. 지표는 기존 신청자·결과에서 계산하며 역대 최저 문구는 근거 자료·시즌·인원·완료 상태가 일치할 때만 표시한다. 남자 59명 명단은 10열, 소속별 묶음과 대상 29명 초록 음영으로 구성한다. 공식 PDF·첨부 사진에 대조한 생년월일·체중·출신학교를 별도 자료에 보관하며 기존 ID·신청자 원본·53개 프로필 링크·검색·필터·여자부·지명권·입력 revision58은 유지한다. 모바일은 이름까지 먼저 보이고 상세 열은 가로 이동한다. 앞선 신청/지명 문장 표시를 이 범위에서 대체한다. 관련 검사67개와 PC/360px/390px·검색 검수 통과, 소유자 전용 미리보기 배포 성공. 운영 merge·배포 승인 범위는 확장하지 않는다. [사진·출처·검수·복구](validation/draft-summary-list-20261030.md).

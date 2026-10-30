@@ -50,3 +50,14 @@
  .db-draw-slot{min-height:216px}.db-draw-slot>b{font-size:12px}.db-draw-slot .db-rank{font-size:30px}
  .db-results-public .db-results td{height:86px}
 }
+
+/* Event summary: numeric value above a quiet label, matching the supplied reference. */
+.db-event{grid-template-columns:minmax(0,1fr) minmax(0,.9fr) minmax(420px,1.7fr)}
+.db-event>.db-event-outcomes{justify-content:center;padding:16px 10px}
+.db-event .db-outcomes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;text-align:center;font-weight:400}
+.db-outcomes>div{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.db-outcomes strong{font-size:22px;line-height:1.2;font-weight:750;color:#111;font-variant-numeric:tabular-nums}
+.db-outcomes span{font-size:13px;line-height:1.5;font-weight:400;color:#626a73;white-space:nowrap}
+.db-outcomes a{color:inherit;text-decoration:none}.db-outcomes a:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1100px){.db-event{grid-template-columns:1fr 1fr}.db-event>div:first-child{grid-column:auto}.db-event>.db-event-outcomes{grid-column:1/-1;border-top:1px solid var(--da-line);padding:20px 12px}}
+@media(max-width:680px){.db-event{grid-template-columns:1fr}.db-event>.db-event-outcomes{border:0;padding:20px 8px}.db-outcomes strong{font-size:21px}.db-outcomes span{font-size:11px}.db-outcomes>div{gap:12px}}
