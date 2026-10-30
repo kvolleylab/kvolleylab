@@ -1,6 +1,6 @@
 # KVL Quality Audit v1 운영 명세
 
-작성: 2026-10-30 KST. 상태: **구현·시범 검증 / 운영 적용 승인 대기**.
+작성: 2026-10-30 KST. 상태: **운영 적용 승인 / main 설치 완료 / 자동 일정·알림 활성화 검증 중**. 후속 실행 증거는 [운영 전환 기록](quality-audit/ACTIVATION_v1.md)에 기록한다.
 
 이 프로그램은 GitHub Actions의 Python·Node.js·Chromium으로 실행한다. ChatGPT Pro, Plus, Work, OpenAI API 키·결제·세션을 사용하지 않는다. 구독 변경이나 해지는 이미 GitHub에 설치된 프로그램의 실행 조건이 아니다. AI 분석은 오류 보고서를 사람이 검토한 뒤 요청하는 선택 절차다.
 
@@ -10,8 +10,8 @@
 - 독립 경로: `scripts/quality_audit/`, `tests/test_quality_audit.py`, 신규 workflow, 이 명세와 검수 보고서.
 - 경기 MASTER, 서비스 JSON/HTML/CSS, Player ID, 공시 수집 결과, 완료된 AVC Production은 읽기만 한다.
 - 기존 테스트 중 검수 JSON을 쓰는 테스트는 임시 복사본에서 실행한다. 감사 출력은 저장소 밖의 지정 디렉터리에만 쓴다.
-- 기존 49개 workflow의 스케줄·권한·명령은 변경하지 않는다. 신규 workflow에는 활성 `schedule`이 없다.
-- main 병합, Pages 배포, Drive 공유 변경, Secrets/Variables 설정, 실제 Issue 게시를 이번 시범 단계에서 수행하지 않는다.
+- 기존 workflow의 스케줄·권한·명령은 변경하지 않는다. 감사 코드·감사 테스트·감사 workflow가 main에 반영될 때 읽기 전용 운영 검증을 실행한다. PR/수동 실행도 유지한다.
+- 사용자는 2026-10-30 main 병합, 운영 검증, 매일 09:00 KST 점검 및 Issue 알림을 승인했다. Drive 공유·자격 증명 추가, 기존 운영 데이터 자동 수정은 이 승인에 포함하지 않는다.
 
 기준 main은 작업 시작과 제출 직전에 재조회한다. 보고서에는 실제 검사한 commit을 기록하며 과거 작업의 SHA를 현재 상태로 간주하지 않는다.
 
@@ -41,7 +41,7 @@
 | A 공식 비교 | 기존 `kovo_match_schedule_bridge.py`의 공개 읽기·정규화 재사용. 관측 경기의 상태·최종 세트승·팀·날짜·라운드 비교 | rolling API 밖의 경기. 미관측을 누락이나 종료로 추정하지 않음 |
 | B 선수·팀 | 실제 공개 catalog loader의 1,842 ID 계약, 원장별 중복/누락 ID, 명단의 ID 존재·생년월일 충돌·팀 연결·동일 대회 중복, 출처 없는 연결, 기존 프로필/신원 테스트 | Drive 선수 MASTER 전수, 동명이인의 신규 신원 확정, 모든 학교 소속 이력 |
 | B 공시 | 기존 검수 큐와 후속 명시적 공시 검수 근거 비교 | 등록·방출·임대 자동 확정 및 MASTER 자동 반영 |
-| C UI | 기존 18개 핵심 JS 테스트 묶음, Chromium 4대회×6화면×3폭. 렌더·넘침·국내 로고·점수 중앙·팀명 잘림·메뉴·남녀 테마·팀 클릭 명단 | 외부 이미지 가용성, 모든 학교/국제 페이지 육안 검사, 인쇄/PDF, 미병합 드래프트 결과 페이지 |
+| C UI | 기존 24개 핵심 JS 테스트 묶음(PR #199의 드래프트 6개 포함), Chromium 4대회×6화면×3폭. 렌더·넘침·국내 로고·점수 중앙·팀명 잘림·메뉴·남녀 테마·팀 클릭 명단 | 외부 이미지 가용성, 모든 학교/국제·드래프트 페이지 육안 검사, 인쇄/PDF, 운영 관리자 저장 |
 | D 동기화 | 경기 MASTER와 서비스의 MatchID 기반 비교, 운영 JSON 구조 비교, Engine v2 schema 계약 | 인증 없는 Actions의 Drive 읽기, 선수 MASTER 전체, 배포 manifest 기반 갱신 시각 |
 | E 반복 작업 | 기존 workflow/수집기/검수 경로 및 대상 기록 수 분석 | 사람이 실제 수행한 입력 횟수·시간은 로그 없이 추정하지 않음 |
 | F 안전 | 전체 data JSON 파싱·명시적 비공개/검수전 레코드/인증정보 키, 필수 HTML 경로, 기존 회귀, workflow YAML·권한 검토 | 무표식 레거시 공개등급, 모든 JS의 의미적 보안 분석, branch protection 설정·실배포 차단 적용 |
@@ -153,8 +153,8 @@ python -B -m scripts.quality_audit.runner --root . --output /tmp/kvl-audit-outpu
 ## 10. 승인 후 활성화 순서와 복구
 
 1. Draft PR의 코드·시범 보고·기존 오류 및 미검증 범위를 검토한다.
-2. 사용자 승인 후 main 병합. 이는 현재 요청에서 승인된 단계가 아니다.
-3. main에서 먼저 `notify=false`로 수동 점검. 새 source 상태·브라우저 결과 확인.
+2. 사용자 승인 후 main 병합. PR #200을 `dd49cabf9af4e96b0d7e1a38862ec0213e40455b`로 병합 완료했다.
+3. main에서 먼저 알림 없는 운영 점검. 브라우저 로그인 의존성을 없애기 위해 감사 코드의 main 반영 시 같은 검사를 실행하며 수동 경로도 유지한다. 새 source 상태·브라우저 결과 확인.
 4. 필요하면 별도 승인된 read-only Drive 인증을 구성하고 실패를 데이터 누락과 구분하는지 재검증.
 5. Issue 알림 승인 후 변수 설정 및 수동 notify 시험, 사용자 수신 확인.
 6. 별도 승인된 workflow 변경에서 `schedule: [{cron: '0 0 * * *'}]` 추가. UTC 00:00 = KST 09:00. GitHub 스케줄은 지연/누락될 수 있어 정시 SLA가 아니다. 공개 저장소는 장기 비활동 시 예약 실행이 중단될 수 있다.
