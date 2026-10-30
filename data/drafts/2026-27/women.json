@@ -2,9 +2,9 @@
   "schema_version": 1,
   "season": "2026-27",
   "division": "W",
-  "revision": 45,
+  "revision": 68,
   "source_id": "KOVO-2026-27-W-157977",
-  "updated_at": "2026-10-30T12:27:53.115Z",
+  "updated_at": "2026-10-30T14:28:29.835Z",
   "event": {
     "starts_at": "2026-10-28T10:30:00+09:00",
     "venue": "메이필드 호텔",
@@ -18,7 +18,10 @@
       "name": "정관장",
       "balls": 35,
       "probability": 35,
-      "color": null,
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
       "logo": "assets/img/team-logos/v-league/2026-27/women/RSP.svg"
     },
     {
@@ -26,7 +29,10 @@
       "name": "SOOP",
       "balls": 30,
       "probability": 30,
-      "color": null,
+      "color": {
+        "name": "파랑",
+        "hex": "#346CBC"
+      },
       "logo": "assets/img/team-logos/v-league/2026-27/women/SOO.svg"
     },
     {
@@ -34,7 +40,10 @@
       "name": "IBK기업은행",
       "balls": 20,
       "probability": 20,
-      "color": null,
+      "color": {
+        "name": "초록",
+        "hex": "#30996B"
+      },
       "logo": "assets/img/team-logos/v-league/2026-27/women/IBK.svg"
     },
     {
@@ -42,7 +51,10 @@
       "name": "흥국생명",
       "balls": 8,
       "probability": 8,
-      "color": null,
+      "color": {
+        "name": "보라",
+        "hex": "#8555AD"
+      },
       "logo": "assets/img/team-logos/v-league/2026-27/women/HPS.svg"
     },
     {
@@ -50,7 +62,10 @@
       "name": "현대건설",
       "balls": 4,
       "probability": 4,
-      "color": null,
+      "color": {
+        "name": "노랑",
+        "hex": "#F4CF42"
+      },
       "logo": "assets/img/team-logos/v-league/2026-27/women/HHC.svg"
     },
     {
@@ -58,7 +73,10 @@
       "name": "한국도로공사",
       "balls": 2,
       "probability": 2,
-      "color": null,
+      "color": {
+        "name": "흰색",
+        "hex": "#FFFFFF"
+      },
       "logo": "assets/img/team-logos/v-league/2026-27/women/KEX.svg"
     },
     {
@@ -66,7 +84,10 @@
       "name": "GS칼텍스",
       "balls": 1,
       "probability": 1,
-      "color": null,
+      "color": {
+        "name": "검정",
+        "hex": "#333333"
+      },
       "logo": "assets/img/team-logos/v-league/2026-27/women/GSC.svg"
     }
   ],
@@ -113,10 +134,137 @@
       "automatic_last": false,
       "verification": "user_record",
       "source_url": "",
-      "note": "2026-10-30 운영자 제공 설명: 1~3순위 추첨 후 해당 3팀의 구슬을 제외하고 4~7순위 추첨. 마지막 7순위의 자동 확정 여부·구슬 색상·중복 횟수는 미확인. 치지직 제공 영상은 확인 환경의 지역 제한으로 재생하지 못함."
+      "note": "2026-10-30 운영자 확인: 1~3순위 팀의 구슬을 제외하고 4~7순위 추첨. 제공된 영상 관찰 기록 14회 중 중복 8회(정관장 7회·도로공사 1회), 방송 배분 화면에서 7팀 구슬 색상 확인. 7순위 결정 방식은 미확인. 원영상 직접 재생 검증과 사용자 제공 자료 검증은 구분함."
     }
   },
-  "draws": [],
+  "draws": [
+    {
+      "id": "women-video-20261030-draw-01",
+      "team_id": "IBK",
+      "color": {
+        "name": "초록",
+        "hex": "#30996B"
+      },
+      "note": "사용자 제공 영상 관찰 기록 1회: 초록 IBK · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-02",
+      "team_id": "SOO",
+      "color": {
+        "name": "파랑",
+        "hex": "#346CBC"
+      },
+      "note": "사용자 제공 영상 관찰 기록 2회: 파랑 SOOP · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-03",
+      "team_id": "HHC",
+      "color": {
+        "name": "노랑",
+        "hex": "#F4CF42"
+      },
+      "note": "사용자 제공 영상 관찰 기록 3회: 노랑 현대건설 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-04",
+      "team_id": "KEX",
+      "color": {
+        "name": "흰색",
+        "hex": "#FFFFFF"
+      },
+      "note": "사용자 제공 영상 관찰 기록 4회: 흰색 도로공사 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-05",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 5회: 빨강 정관장 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-06",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 6회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-07",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 7회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-08",
+      "team_id": "KEX",
+      "color": {
+        "name": "흰색",
+        "hex": "#FFFFFF"
+      },
+      "note": "사용자 제공 영상 관찰 기록 8회: 흰색 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-09",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 9회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-10",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 10회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-11",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 11회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-12",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 12회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-13",
+      "team_id": "RSP",
+      "color": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      },
+      "note": "사용자 제공 영상 관찰 기록 13회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    },
+    {
+      "id": "women-video-20261030-draw-14",
+      "team_id": "HPS",
+      "color": {
+        "name": "보라",
+        "hex": "#8555AD"
+      },
+      "note": "사용자 제공 영상 관찰 기록 14회: 보라 흥국생명 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+    }
+  ],
   "trades": [
     {
       "id": "women-official-20261030-1",
@@ -1979,6 +2127,512 @@
           }
         ]
       }
+    },
+    {
+      "id": "women-video-20261030-1",
+      "revision": 46,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "color",
+      "target": "IBK",
+      "reason": "방송 배분 화면의 팀별 색상 표기 확인 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+      "before": null,
+      "after": {
+        "name": "초록",
+        "hex": "#30996B"
+      }
+    },
+    {
+      "id": "women-video-20261030-2",
+      "revision": 47,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "color",
+      "target": "SOO",
+      "reason": "방송 배분 화면의 팀별 색상 표기 확인 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+      "before": null,
+      "after": {
+        "name": "파랑",
+        "hex": "#346CBC"
+      }
+    },
+    {
+      "id": "women-video-20261030-3",
+      "revision": 48,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "color",
+      "target": "HHC",
+      "reason": "방송 배분 화면의 팀별 색상 표기 확인 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+      "before": null,
+      "after": {
+        "name": "노랑",
+        "hex": "#F4CF42"
+      }
+    },
+    {
+      "id": "women-video-20261030-4",
+      "revision": 49,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "color",
+      "target": "KEX",
+      "reason": "방송 배분 화면의 팀별 색상 표기 확인 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+      "before": null,
+      "after": {
+        "name": "흰색",
+        "hex": "#FFFFFF"
+      }
+    },
+    {
+      "id": "women-video-20261030-5",
+      "revision": 50,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "color",
+      "target": "RSP",
+      "reason": "방송 배분 화면의 팀별 색상 표기 확인 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+      "before": null,
+      "after": {
+        "name": "빨강",
+        "hex": "#DA4545"
+      }
+    },
+    {
+      "id": "women-video-20261030-6",
+      "revision": 51,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "color",
+      "target": "HPS",
+      "reason": "방송 배분 화면의 팀별 색상 표기 확인 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+      "before": null,
+      "after": {
+        "name": "보라",
+        "hex": "#8555AD"
+      }
+    },
+    {
+      "id": "women-video-20261030-7",
+      "revision": 52,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "color",
+      "target": "GSC",
+      "reason": "방송 배분 화면의 팀별 색상 표기 확인 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+      "before": null,
+      "after": {
+        "name": "검정",
+        "hex": "#333333"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-01",
+      "revision": 53,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-01",
+      "reason": "사용자 영상 확인 전사 1/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-01",
+        "team_id": "IBK",
+        "color": {
+          "name": "초록",
+          "hex": "#30996B"
+        },
+        "note": "사용자 제공 영상 관찰 기록 1회: 초록 IBK · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-02",
+      "revision": 54,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-02",
+      "reason": "사용자 영상 확인 전사 2/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-02",
+        "team_id": "SOO",
+        "color": {
+          "name": "파랑",
+          "hex": "#346CBC"
+        },
+        "note": "사용자 제공 영상 관찰 기록 2회: 파랑 SOOP · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-03",
+      "revision": 55,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-03",
+      "reason": "사용자 영상 확인 전사 3/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-03",
+        "team_id": "HHC",
+        "color": {
+          "name": "노랑",
+          "hex": "#F4CF42"
+        },
+        "note": "사용자 제공 영상 관찰 기록 3회: 노랑 현대건설 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-04",
+      "revision": 56,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-04",
+      "reason": "사용자 영상 확인 전사 4/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-04",
+        "team_id": "KEX",
+        "color": {
+          "name": "흰색",
+          "hex": "#FFFFFF"
+        },
+        "note": "사용자 제공 영상 관찰 기록 4회: 흰색 도로공사 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-05",
+      "revision": 57,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-05",
+      "reason": "사용자 영상 확인 전사 5/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-05",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 5회: 빨강 정관장 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-06",
+      "revision": 58,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-06",
+      "reason": "사용자 영상 확인 전사 6/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-06",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 6회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-07",
+      "revision": 59,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-07",
+      "reason": "사용자 영상 확인 전사 7/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-07",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 7회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-08",
+      "revision": 60,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-08",
+      "reason": "사용자 영상 확인 전사 8/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-08",
+        "team_id": "KEX",
+        "color": {
+          "name": "흰색",
+          "hex": "#FFFFFF"
+        },
+        "note": "사용자 제공 영상 관찰 기록 8회: 흰색 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-09",
+      "revision": 61,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-09",
+      "reason": "사용자 영상 확인 전사 9/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-09",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 9회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-10",
+      "revision": 62,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-10",
+      "reason": "사용자 영상 확인 전사 10/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-10",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 10회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-11",
+      "revision": 63,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-11",
+      "reason": "사용자 영상 확인 전사 11/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-11",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 11회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-12",
+      "revision": 64,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-12",
+      "reason": "사용자 영상 확인 전사 12/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-12",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 12회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-13",
+      "revision": 65,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-13",
+      "reason": "사용자 영상 확인 전사 13/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-13",
+        "team_id": "RSP",
+        "color": {
+          "name": "빨강",
+          "hex": "#DA4545"
+        },
+        "note": "사용자 제공 영상 관찰 기록 13회: 빨강 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-draw-14",
+      "revision": 66,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "draw_add",
+      "target": "women-video-20261030-draw-14",
+      "reason": "사용자 영상 확인 전사 14/14 입력 · 중복도 원순서 보존",
+      "before": null,
+      "after": {
+        "id": "women-video-20261030-draw-14",
+        "team_id": "HPS",
+        "color": {
+          "name": "보라",
+          "hex": "#8555AD"
+        },
+        "note": "사용자 제공 영상 관찰 기록 14회: 보라 흥국생명 · USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      }
+    },
+    {
+      "id": "women-video-20261030-8",
+      "revision": 67,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "lottery_result",
+      "target": "2026-27",
+      "reason": "제공된 원시 추첨 14회와 공식 최종 순위를 별도 관리",
+      "before": {
+        "order": [
+          "IBK",
+          "SOO",
+          "HHC",
+          "KEX",
+          "RSP",
+          "HPS",
+          "GSC"
+        ],
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "verified_at": "2026-10-30",
+        "draw_log_status": "unverified",
+        "last_rank_method": "unknown",
+        "note": "공식 최종 결과표에서 7팀 확정 순위만 확인. 실제 구슬 기록과 중복 횟수는 미확인."
+      },
+      "after": {
+        "order": [
+          "IBK",
+          "SOO",
+          "HHC",
+          "KEX",
+          "RSP",
+          "HPS",
+          "GSC"
+        ],
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "verified_at": "2026-10-30",
+        "draw_log_status": "partial",
+        "last_rank_method": "unknown",
+        "note": "공식 최종 결과표의 7팀 순위 유지. 사용자 제공 영상 기록 14회(중복 8회)를 6순위 흥국생명까지 반영. GS칼텍스의 마지막 순위 결정 방식은 미확인이며 가상 15번째 추첨을 추가하지 않음."
+      }
+    },
+    {
+      "id": "women-video-20261030-9",
+      "revision": 68,
+      "at": "2026-10-30T14:28:29.835Z",
+      "actor": "KVL source review",
+      "action": "rules",
+      "target": "2026-27",
+      "reason": "구슬 색상·관찰 순서의 확인 범위 및 남은 미확인 항목 갱신",
+      "before": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          }
+        ],
+        "trainees": {
+          "direction": "unordered",
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "수련선수 지명 순서·인원 제한 시행세칙 미확인"
+        },
+        "lottery": {
+          "reset_after_rank": 3,
+          "automatic_last": false,
+          "verification": "user_record",
+          "source_url": "",
+          "note": "2026-10-30 운영자 제공 설명: 1~3순위 추첨 후 해당 3팀의 구슬을 제외하고 4~7순위 추첨. 마지막 7순위의 자동 확정 여부·구슬 색상·중복 횟수는 미확인. 치지직 제공 영상은 확인 환경의 지역 제한으로 재생하지 못함."
+        }
+      },
+      "after": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          }
+        ],
+        "trainees": {
+          "direction": "unordered",
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "수련선수 지명 순서·인원 제한 시행세칙 미확인"
+        },
+        "lottery": {
+          "reset_after_rank": 3,
+          "automatic_last": false,
+          "verification": "user_record",
+          "source_url": "",
+          "note": "2026-10-30 운영자 확인: 1~3순위 팀의 구슬을 제외하고 4~7순위 추첨. 제공된 영상 관찰 기록 14회 중 중복 8회(정관장 7회·도로공사 1회), 방송 배분 화면에서 7팀 구슬 색상 확인. 7순위 결정 방식은 미확인. 원영상 직접 재생 검증과 사용자 제공 자료 검증은 구분함."
+        }
+      }
     }
   ],
   "lottery_result": {
@@ -1993,8 +2647,8 @@
     ],
     "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
     "verified_at": "2026-10-30",
-    "draw_log_status": "unverified",
+    "draw_log_status": "partial",
     "last_rank_method": "unknown",
-    "note": "공식 최종 결과표에서 7팀 확정 순위만 확인. 실제 구슬 기록과 중복 횟수는 미확인."
+    "note": "공식 최종 결과표의 7팀 순위 유지. 사용자 제공 영상 기록 14회(중복 8회)를 6순위 흥국생명까지 반영. GS칼텍스의 마지막 순위 결정 방식은 미확인이며 가상 15번째 추첨을 추가하지 않음."
   }
 }
