@@ -297,3 +297,8 @@ Status: APPROVED / MAIN INSTALLED / ACTIVATION VERIFICATION IN PROGRESS. 사용�
 ## 2026-10-30 · 승인된 감사 일정·Issue 운영 구성
 
 Status: APPROVED / CONFIGURED (main 실행·병합 증거는 활성화 PR). 기존 사용자 승인에 따라 UTC 00:00/KST 09:00 일정과 감사 전용 코드의 main 반영 시 중복 없는 Issue 갱신을 구성한다. 승인을 코드 이력에 남기고 기본 활성화해 웹 로그인과 별도 PAT 설정에 의존하지 않는다. 선택적 `KVL_QUALITY_AUDIT_APPROVED=false` 또는 다른 비어 있지 않은 미지원 값은 자동 실행·알림을 중지하며 변수 삭제는 기본 활성 상태로 복귀한다. 기존 pilot의 “변수 true 설정 전 무조건 비활성” 조건을 이번 승인된 운영 구성으로 대체한다. 명시적 main·허용 이벤트·런타임 승인 true·최소 권한·PRIVATE 비공개·신규/상승/재발만 알림은 유지한다. Drive 인증과 계정별 알림 수신은 미검증으로 구분한다. [운영 전환 기록](quality-audit/ACTIVATION_v1.md).
+
+
+## 2026-10-30 · KVL Quality Audit v1 운영 활성 및 알림 재실행 검증
+
+Status: ACTIVE / MAIN VERIFIED / ISSUE PUBLICATION VERIFIED. 사용자 승인에 따라 #200 설치 → #201 main 읽기 전용 운영 검증 → #202 매일 09:00 KST 일정·중복 없는 Issue 알림 활성화를 완료했다. 활성화 commit `772598bc665eb9029fd8d87fce98499e67e4d4b6`, Actions `41056879688`의 audit/notify 성공. 기존 공개 P2 4건을 #204~#207에 최초 발견일 그대로 등록했고 실제 notify 재실행은 create 0 / update 4 / 댓글 0으로 중복을 방지했다. 최종 PASS125/FAIL3/NOT VERIFIED7/NOT RUN1, Python129·UI72 PASS, P0/P1 gate PASS. 동시에 반영된 #199/#203 드래프트와 기존 공시를 보존했다. 기존 오류는 자동 수정하지 않는다. 최초 예약 이벤트(10월31일09시 예정), Drive 인증, 실제 이메일/모바일 수신·배포차단 연결은 미검증으로 남긴다. ChatGPT/OpenAI 구독·키·세션 비종속. [운영 전환·복구·실행 증거](quality-audit/ACTIVATION_v1.md).

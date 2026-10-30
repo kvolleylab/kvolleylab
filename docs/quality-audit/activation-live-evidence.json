@@ -1,0 +1,824 @@
+{
+  "checked_at": "2026-10-30T21:41:43+09:00",
+  "github_sha": "772598bc665eb9029fd8d87fce98499e67e4d4b6",
+  "summary": {
+    "PASS": 125,
+    "FAIL": 3,
+    "NOT VERIFIED": 7,
+    "NOT RUN": 1
+  },
+  "gate": {
+    "enforced": true,
+    "outcome": "PASS"
+  },
+  "runtime": {
+    "openai_api_required": false,
+    "chatgpt_subscription_required": false,
+    "audit_code_sha256": "e18e757fdfaf7c2ea88b35701f5a43cdc696efd18a1ed45294f1da4cf252901d"
+  },
+  "run_url": "https://github.com/kvolleylab/kvolleylab/actions/runs/41056879688",
+  "artifact_id": 12977322852,
+  "artifact_sha256": "4a08aec7c9c6e4345b4acf13147cd1fce61e5b0308546d83c987d057751d3daf",
+  "report_sha256": "d6c902b6ae47978e8250a9050e4965aacc5c911432588d06c3a58e136f247c75",
+  "checks": [
+    {
+      "id": "matches:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 23,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "matches:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 23,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "matches:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 21,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "matches:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "경과 시간으로 경기 종료를 추정하지 않음; KST·식별키·세트 합계 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "standings:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 21,
+      "note": "조별/정규리그 승패·승점 및 컵 결선 연결; 동률 규정 전체는 기존 엔진 테스트 사용",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "competition-links",
+      "outcome": "PASS",
+      "count": 276,
+      "note": "4개 대상 대회의 경기/대회 ID 중복 및 남녀부·시즌 연결",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:canonical",
+      "outcome": "PASS",
+      "count": 1842,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 130,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 121,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 131,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "rosters:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 121,
+      "note": "대회 당시 Snapshot 기준; 이름만으로 소속/신원 확정하지 않음",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:data/master/player_master_229_v2.json",
+      "outcome": "PASS",
+      "count": 229,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:data/master/player_master_school_v1.json",
+      "outcome": "PASS",
+      "count": 6,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "players:data/master/player_master_international_v1.json",
+      "outcome": "PASS",
+      "count": 221,
+      "note": "같은 원장 안의 ID 검사; 시즌 Snapshot 반복은 중복 ID 발급과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "workflow-safety",
+      "outcome": "FAIL",
+      "count": 50,
+      "note": "기존 권한/스케줄은 변경하지 않음. 쓰기 권한은 용도 검수 후보",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "paths",
+      "outcome": "PASS",
+      "count": 138,
+      "note": "핵심 HTML의 정적 링크/자산; 동적 프로필 경로는 기존 DOM 테스트에서 검사",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "security:json",
+      "outcome": "FAIL",
+      "count": 33125,
+      "note": "명시적 비공개·인증정보·검수 전 필드 탐지. 무표식 레거시의 공개등급은 별도 미검증",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "security:legacy-classification",
+      "outcome": "NOT VERIFIED",
+      "count": 4659,
+      "note": "명시적 access_level 없는 선수 레코드; 기존 검수 근거의 별도 매핑 필요",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "notices",
+      "outcome": "PASS",
+      "count": 2,
+      "note": "기존 공시 검수 큐 재사용; 후속 검수로 해결된 공시 제외. 현재 등록 자동 확정 아님",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "drive:cup",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "Actions 읽기 전용 Drive 인증 미설정; 자료 미접근이며 데이터 누락 아님",
+      "complete": false,
+      "operational": true
+    },
+    {
+      "id": "drive:league",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "Actions 읽기 전용 Drive 인증 미설정; 자료 미접근이며 데이터 누락 아님",
+      "complete": false,
+      "operational": true
+    },
+    {
+      "id": "official:main",
+      "outcome": "PASS",
+      "count": 4,
+      "note": "기존 수집기 읽기 성공; 경기 비교는 통합 관측 검사",
+      "complete": true,
+      "operational": false,
+      "source_url": "https://user-api.kovo.co.kr/mains/games/schedules",
+      "source_checked_at": "2026-10-30T21:41:44+09:00"
+    },
+    {
+      "id": "official:female",
+      "outcome": "PASS",
+      "count": 4,
+      "note": "기존 수집기 읽기 성공; 경기 비교는 통합 관측 검사",
+      "complete": true,
+      "operational": false,
+      "source_url": "https://user-api.kovo.co.kr/mains/games/schedules?gender=FEMALE",
+      "source_checked_at": "2026-10-30T21:41:45+09:00"
+    },
+    {
+      "id": "official:ended",
+      "outcome": "PASS",
+      "count": 5,
+      "note": "기존 수집기 읽기 성공; 경기 비교는 통합 관측 검사",
+      "complete": true,
+      "operational": false,
+      "source_url": "https://user-api.kovo.co.kr/mains/games/schedules/ended?gender=FEMALE",
+      "source_checked_at": "2026-10-30T21:41:45+09:00"
+    },
+    {
+      "id": "official:observed",
+      "outcome": "PASS",
+      "count": 11,
+      "note": "관측된 경기만 비교; 전체 시즌 검증 아님",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "official:full-season",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "기존 rolling API는 일부 경기만 제공. 전체 컵/시즌 공식 결과·세트 점수 전수 대조는 미완료",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "deployed:kovo-cup-men-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "deployed:kovo-cup-women-2026",
+      "outcome": "PASS",
+      "count": 12,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "deployed:v-league-men-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "deployed:v-league-women-2026-27",
+      "outcome": "PASS",
+      "count": 126,
+      "note": "운영 JSON과 검사 commit 구조 비교; 배포 시각의 증명과 구분",
+      "complete": true,
+      "operational": false
+    },
+    {
+      "id": "regression:competition-v2-config.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "e5360964bd610e5d4f1de8c17551b3ec5a314a1398bce0691622e981dc0f282f"
+      }
+    },
+    {
+      "id": "regression:competition-v2-data-contract.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "ec8fe5a5b76e03cd216bcb4d7df7161ee505422d46c0c52d8036f5df2985074c"
+      }
+    },
+    {
+      "id": "regression:competition-v2-production-starter.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "a8fa41f63429a909c3e050ca4491a0a8a63756cd26abf150f8ce8336e06ca766"
+      }
+    },
+    {
+      "id": "regression:competition-calendar-gender.test.cjs",
+      "outcome": "PASS",
+      "count": 5,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "d808ffa3faf9cc0a7d77ad0cacd9b30e358c66972458188eaf18aeae4e2c876d"
+      }
+    },
+    {
+      "id": "regression:kovo-cup-production-template-20261027.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "b4e69fd5e2948c66eba34d3b41858aae9240389e9193561f6cd5afa4346fdcb2"
+      }
+    },
+    {
+      "id": "regression:competition-v2-pro-cup-pool-columns.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "c8cae068b5cfb1e849805e0d51a20ffebf8518318184a2320dbc88677809fab5"
+      }
+    },
+    {
+      "id": "regression:kovo-cup-desktop-matchup-alignment.test.cjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "bbd77c6ec208d0362da15022b9778eb5a75fe5056a9ea0c9e117f4aa7de3e131"
+      }
+    },
+    {
+      "id": "regression:kovo-cup-rosters.test.cjs",
+      "outcome": "PASS",
+      "count": 10,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "680f970551884de6a24cb819764081a15b2f7cbeb56063d39de92e84825bb546"
+      }
+    },
+    {
+      "id": "regression:vleague-rosters.test.cjs",
+      "outcome": "PASS",
+      "count": 17,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "356f334928cb0f91247e557f6fb9f3e0554c47997c7c74eb0f7595f82534e85e"
+      }
+    },
+    {
+      "id": "regression:vleague-match-summary.test.cjs",
+      "outcome": "PASS",
+      "count": 9,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "27cdbfb4ce5d598fe3ddd7e3b4d1238a1dd15966c9afda27ebb0a9df10472aa8"
+      }
+    },
+    {
+      "id": "regression:vleague-postseason.test.cjs",
+      "outcome": "PASS",
+      "count": 6,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "fbdd39eae1dd1c7914911a7a79075edbad4d3f3663eaf538efa23d433d6e19a2"
+      }
+    },
+    {
+      "id": "regression:domestic-home-v2.test.cjs",
+      "outcome": "PASS",
+      "count": 21,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "efa20ada0e453d736deaf2cc5153431f4c1b4cd185ac50252834ca3b6e4fe2e5"
+      }
+    },
+    {
+      "id": "regression:draft-applicants.test.mjs",
+      "outcome": "PASS",
+      "count": 7,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "fdda2a67e90bc5d23d382ce010e7c5263a501fccc00484b5c326132361b6fc62"
+      }
+    },
+    {
+      "id": "regression:draft-lottery.test.mjs",
+      "outcome": "PASS",
+      "count": 4,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "a376fde80001fc3645da3a1e581daf25e3c46a86fc8681e79069c1ea83eb53d5"
+      }
+    },
+    {
+      "id": "regression:draft-profile-routing.test.mjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "6b002ced98242b05bddfba2f2a9797e55bf335759fcc439085bd9283c81a877f"
+      }
+    },
+    {
+      "id": "regression:player-reviewed-identities.test.mjs",
+      "outcome": "PASS",
+      "count": 6,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "eafc6ae9c90ebbdcebbb63e3de1229915f0ff7d4f79ae1f714ab8dd40cb2a7a3"
+      }
+    },
+    {
+      "id": "regression:player-integration.test.mjs",
+      "outcome": "FAIL",
+      "count": 15,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 1,
+        "stdout_sha256": "deb5cb6f3b4536a5fa89f13b5523b6db54dd6cde2c6ad55ff8f83dea256d9216"
+      }
+    },
+    {
+      "id": "regression:player-profile-coverage.test.mjs",
+      "outcome": "PASS",
+      "count": 1,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "1ad57894afcca568e1fb906afea352127be6c46aa7e30838c3901b239ca8ed26"
+      }
+    },
+    {
+      "id": "regression:draft-board.test.mjs",
+      "outcome": "PASS",
+      "count": 19,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "4fdfbfd9fff2c5a9dcce36990d7f0ba3997a6fa28de63901c3c53238b8f6acb9"
+      }
+    },
+    {
+      "id": "regression:draft-board-store.test.mjs",
+      "outcome": "PASS",
+      "count": 6,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "9b4040f7dd67a5631fff252bca2d3900552615dc125c45f4c5a89f54e476fc8f"
+      }
+    },
+    {
+      "id": "regression:draft-board-ui.test.mjs",
+      "outcome": "PASS",
+      "count": 13,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "0b5230e001ded06a0b08c14b33e4022a3e7d1d9c6cb67dc71c1692316fce0e85"
+      }
+    },
+    {
+      "id": "regression:draft-board-observed.test.mjs",
+      "outcome": "PASS",
+      "count": 13,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "d5acd278d3ff12c7deadc578f63291923106f6bb78d3cd39b625dc5631ab5180"
+      }
+    },
+    {
+      "id": "regression:draft-applicant-list.test.mjs",
+      "outcome": "PASS",
+      "count": 5,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "40a489cb7de9bd63bd30955bcd59785b432cabadd548014cd05b501df3dac4ee"
+      }
+    },
+    {
+      "id": "regression:draft-women.test.mjs",
+      "outcome": "PASS",
+      "count": 8,
+      "note": "기존 테스트 그대로 호출; 임시 복사본만 쓰기 허용",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "d7a4de3e0832a516a7db48e7815bb5504af5255eed26aa7939325d7f52e34321"
+      }
+    },
+    {
+      "id": "regression:python",
+      "outcome": "PASS",
+      "count": 129,
+      "note": "기존 수집기 및 신규 audit 합성 테스트",
+      "complete": true,
+      "operational": false,
+      "evidence": {
+        "exit_code": 0,
+        "stdout_sha256": "58b18beda53d817d2b108e3cbd29bee2478d06bd1774f3bd3f4d2e69c2edd07d"
+      }
+    },
+    {
+      "id": "ui:runner",
+      "outcome": "PASS",
+      "count": 72,
+      "note": "72개 화면 검사 실행 상태. 각 화면의 결과와 구분",
+      "complete": true,
+      "operational": true
+    },
+    {
+      "id": "drive:roster-full",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "선수 MASTER는 검수중. v1은 경기 MASTER 비교만 인증 adapter 제공",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "sync:timestamps",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "Drive 수정 시각/commit 시각은 실제 배포 시각과 다름; 배포 manifest 미설정",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "draft:live-admin-storage",
+      "outcome": "NOT RUN",
+      "count": 0,
+      "note": "PR #199의 결과·신청자·지명권 기존 테스트는 regression으로 재사용. 운영 관리자 저장과 드래프트 화면 전체 시각 검수는 실행하지 않음",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "security:release-enforcement",
+      "outcome": "NOT VERIFIED",
+      "count": 0,
+      "note": "감사 gate 구현; required check/실제 배포 차단 연결은 승인 후 설정",
+      "complete": false,
+      "operational": false
+    },
+    {
+      "id": "audit:execution",
+      "outcome": "PASS",
+      "count": 0,
+      "note": "점검 프로그램 실행 완료; 데이터 검증 결과와 구분",
+      "complete": true,
+      "operational": false
+    }
+  ],
+  "confirmed_findings": [
+    {
+      "id": "KVL-QA-33E93763371830BA",
+      "rule": "WORKFLOW_YAML",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/build-player-timeline-v1.yml",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": ".github/workflows/build-player-timeline-v1.yml",
+      "related": {},
+      "actual": "YAML parse failure at line 66",
+      "expected": "valid YAML",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/build-player-timeline-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T21:41:43+09:00",
+      "github_sha": "772598bc665eb9029fd8d87fce98499e67e4d4b6",
+      "resolved_at": null,
+      "occurrences": 2,
+      "last_run": "41056879688"
+    },
+    {
+      "id": "KVL-QA-7680EE5A3A32F8B4",
+      "rule": "WORKFLOW_YAML",
+      "check_id": "workflow-safety",
+      "entity": ".github/workflows/connect-vnl-schedules-v1.yml",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": ".github/workflows/connect-vnl-schedules-v1.yml",
+      "related": {},
+      "actual": "YAML parse failure at line 35",
+      "expected": "valid YAML",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": ".github/workflows/connect-vnl-schedules-v1.yml",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T21:41:43+09:00",
+      "github_sha": "772598bc665eb9029fd8d87fce98499e67e4d4b6",
+      "resolved_at": null,
+      "occurrences": 2,
+      "last_run": "41056879688"
+    },
+    {
+      "id": "KVL-QA-CF9992DBB4ABFE4F",
+      "rule": "JSON_PARSE",
+      "check_id": "security:json",
+      "entity": "data/master/vnl-2026-men-matches-v2.json",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": "data/master/vnl-2026-men-matches-v2.json",
+      "related": {},
+      "actual": "invalid JSON",
+      "expected": "valid JSON",
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": "data/master/vnl-2026-men-matches-v2.json",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T21:41:43+09:00",
+      "github_sha": "772598bc665eb9029fd8d87fce98499e67e4d4b6",
+      "resolved_at": null,
+      "occurrences": 2,
+      "last_run": "41056879688"
+    },
+    {
+      "id": "KVL-QA-F08B7B55D038BE39",
+      "rule": "REGRESSION_FAILED",
+      "check_id": "regression:player-integration.test.mjs",
+      "entity": "player-integration.test.mjs",
+      "severity": "P2",
+      "verification": "CONFIRMED",
+      "path": "tests/player-integration.test.mjs",
+      "related": {},
+      "actual": 1,
+      "expected": 0,
+      "source_url": null,
+      "source_checked_at": null,
+      "suggestion": "근거를 검토한 뒤 별도 수정 PR을 승인합니다.",
+      "impact": "tests/player-integration.test.mjs",
+      "owner_task": "운영자 검수",
+      "processing": "OPEN",
+      "visibility": "PUBLIC",
+      "first_seen": "2026-10-30T00:49:10+09:00",
+      "last_seen": "2026-10-30T21:41:43+09:00",
+      "github_sha": "772598bc665eb9029fd8d87fce98499e67e4d4b6",
+      "resolved_at": null,
+      "occurrences": 2,
+      "last_run": "41056879688"
+    }
+  ],
+  "ui_viewports": [
+    1180,
+    390,
+    360
+  ],
+  "ui_checks": 72,
+  "ui_pass": 72,
+  "notification_verification": {
+    "run_id": 41056879688,
+    "first_job_id": 124068668254,
+    "repeat_job_id": 124069179414,
+    "first": {
+      "mode": "published",
+      "actions": {
+        "create": 4,
+        "update": 0,
+        "resolve": 0
+      }
+    },
+    "repeat": {
+      "mode": "published",
+      "actions": {
+        "create": 0,
+        "update": 4,
+        "resolve": 0
+      }
+    },
+    "issues": [
+      {
+        "number": 207,
+        "url": "https://github.com/kvolleylab/kvolleylab/issues/207",
+        "id": "KVL-QA-F08B7B55D038BE39",
+        "first_seen": "2026-10-30T00:49:10+09:00",
+        "last_seen": "2026-10-30T21:41:43+09:00",
+        "comments": 0,
+        "last_run": "41056879688"
+      },
+      {
+        "number": 206,
+        "url": "https://github.com/kvolleylab/kvolleylab/issues/206",
+        "id": "KVL-QA-CF9992DBB4ABFE4F",
+        "first_seen": "2026-10-30T00:49:10+09:00",
+        "last_seen": "2026-10-30T21:41:43+09:00",
+        "comments": 0,
+        "last_run": "41056879688"
+      },
+      {
+        "number": 205,
+        "url": "https://github.com/kvolleylab/kvolleylab/issues/205",
+        "id": "KVL-QA-7680EE5A3A32F8B4",
+        "first_seen": "2026-10-30T00:49:10+09:00",
+        "last_seen": "2026-10-30T21:41:43+09:00",
+        "comments": 0,
+        "last_run": "41056879688"
+      },
+      {
+        "number": 204,
+        "url": "https://github.com/kvolleylab/kvolleylab/issues/204",
+        "id": "KVL-QA-33E93763371830BA",
+        "first_seen": "2026-10-30T00:49:10+09:00",
+        "last_seen": "2026-10-30T21:41:43+09:00",
+        "comments": 0,
+        "last_run": "41056879688"
+      }
+    ],
+    "first_seen_preserved": true,
+    "duplicate_issues_created": 0,
+    "repeated_comments_created": 0,
+    "email_mobile_delivery": "NOT VERIFIED"
+  },
+  "run_conclusion": "success",
+  "schedule": {
+    "cron": "0 0 * * *",
+    "timezone": "UTC",
+    "kst": "09:00",
+    "configuration": "ACTIVE",
+    "first_scheduled_run": "NOT RUN",
+    "next_scheduled_kst": "2026-10-31T09:00:00+09:00"
+  }
+}
