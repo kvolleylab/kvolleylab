@@ -2,9 +2,9 @@
   "schema_version": 1,
   "season": "2026-27",
   "division": "M",
-  "revision": 58,
+  "revision": 60,
   "source_id": "KOVO-2026-27-M-157978",
-  "updated_at": "2026-10-29T14:30:19.974Z",
+  "updated_at": "2026-10-30T05:31:51.679Z",
   "event": {
     "starts_at": "2026-10-28T14:30:00+09:00",
     "venue": "서울 메이필드 호텔",
@@ -97,33 +97,33 @@
         "round": 1,
         "direction": "forward",
         "order": [],
-        "verification": "unverified",
-        "source_url": "",
-        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
       },
       {
         "round": 2,
         "direction": "reverse",
         "order": [],
-        "verification": "unverified",
-        "source_url": "",
-        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
       },
       {
         "round": 3,
         "direction": "forward",
         "order": [],
-        "verification": "unverified",
-        "source_url": "",
-        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
       },
       {
         "round": 4,
         "direction": "reverse",
         "order": [],
-        "verification": "unverified",
-        "source_url": "",
-        "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
       }
     ],
     "trainees": {
@@ -575,12 +575,12 @@
         "player": {
           "name": "홍준범",
           "affiliation": "성균관대",
-          "position": "OP",
+          "position": "OP/MB",
           "applicant_id": "KVL-DA-2026-27-M-b2f1b54b318fd2",
           "player_id": "KVL-P-000017"
         },
         "completed_at": "2026-10-28T23:53:10.725Z",
-        "source_url": ""
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
       }
     },
     {
@@ -2243,6 +2243,152 @@
         "note": ""
       },
       "after": null
+    },
+    {
+      "id": "men-official-position-20261030",
+      "revision": 59,
+      "at": "2026-10-30T05:31:51.679Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:M:3:KAL",
+      "reason": "KOVO 공식 최종 결과표 대조: 홍준범 포지션 OP → OP/MB. 지명 당시 실제 팀·시각·신청자 ID 보존.",
+      "before": {
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "홍준범",
+          "affiliation": "성균관대",
+          "position": "OP",
+          "applicant_id": "KVL-DA-2026-27-M-b2f1b54b318fd2",
+          "player_id": "KVL-P-000017"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KAL",
+        "player": {
+          "name": "홍준범",
+          "affiliation": "성균관대",
+          "position": "OP/MB",
+          "applicant_id": "KVL-DA-2026-27-M-b2f1b54b318fd2",
+          "player_id": "KVL-P-000017"
+        },
+        "completed_at": "2026-10-28T23:53:10.725Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "men-official-rounds-20261030",
+      "revision": 60,
+      "at": "2026-10-30T05:31:51.679Z",
+      "actor": "KVL official source review",
+      "action": "rules",
+      "target": "2026-27",
+      "reason": "KOVO 최종 결과표 1·3R 정순/2·4R 역순 대조. 추첨·수련 세칙의 미확인 상태 유지.",
+      "before": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "order": [],
+            "verification": "unverified",
+            "source_url": "",
+            "note": "참고 엑셀 기준. 해당 시즌 공식 시행세칙 확인 필요."
+          }
+        ],
+        "trainees": {
+          "direction": "reverse",
+          "order": [],
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "참고 엑셀의 역순 표시. 해당 시즌 지명 순서·인원 제한·추가 지명 운영은 공식 시행세칙 확인 필요."
+        },
+        "lottery": {
+          "reset_after_rank": 3,
+          "automatic_last": true,
+          "verification": "user_record",
+          "source_url": "",
+          "note": "2026-10-29 사용자 정정: 1~3순위 팀 구슬 제외 후 재추첨. 6순위 확정 후 남은 팀은 추첨 없이 7순위 자동 확정. 표시 확률은 단계 시작의 구슬 비율."
+        }
+      },
+      "after": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "order": [],
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "order": [],
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "order": [],
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "order": [],
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/158275/2026~2027%20KOVO%20%EB%82%A8%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "공식 최종 결과표의 라운드별 순위 직접 대조"
+          }
+        ],
+        "trainees": {
+          "direction": "reverse",
+          "order": [],
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "참고 엑셀의 역순 표시. 해당 시즌 지명 순서·인원 제한·추가 지명 운영은 공식 시행세칙 확인 필요."
+        },
+        "lottery": {
+          "reset_after_rank": 3,
+          "automatic_last": true,
+          "verification": "user_record",
+          "source_url": "",
+          "note": "2026-10-29 사용자 정정: 1~3순위 팀 구슬 제외 후 재추첨. 6순위 확정 후 남은 팀은 추첨 없이 7순위 자동 확정. 표시 확률은 단계 시작의 구슬 비율."
+        }
+      }
     }
   ]
 }

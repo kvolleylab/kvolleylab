@@ -1,0 +1,1766 @@
+{
+  "schema_version": 1,
+  "season": "2026-27",
+  "division": "W",
+  "revision": 41,
+  "source_id": "KOVO-2026-27-W-157977",
+  "updated_at": "2026-10-30T05:30:35.464Z",
+  "event": {
+    "starts_at": "2026-10-28T10:30:00+09:00",
+    "venue": "메이필드 호텔",
+    "status": "completed",
+    "note": "KOVO 공식 최종 결과표 대조",
+    "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+  },
+  "teams": [
+    {
+      "id": "RSP",
+      "name": "정관장",
+      "balls": 35,
+      "probability": 35,
+      "color": null,
+      "logo": "assets/img/team-logos/v-league/2026-27/women/RSP.svg"
+    },
+    {
+      "id": "SOO",
+      "name": "SOOP",
+      "balls": 30,
+      "probability": 30,
+      "color": null,
+      "logo": "assets/img/team-logos/v-league/2026-27/women/SOO.svg"
+    },
+    {
+      "id": "IBK",
+      "name": "IBK기업은행",
+      "balls": 20,
+      "probability": 20,
+      "color": null,
+      "logo": "assets/img/team-logos/v-league/2026-27/women/IBK.svg"
+    },
+    {
+      "id": "HPS",
+      "name": "흥국생명",
+      "balls": 8,
+      "probability": 8,
+      "color": null,
+      "logo": "assets/img/team-logos/v-league/2026-27/women/HPS.svg"
+    },
+    {
+      "id": "HHC",
+      "name": "현대건설",
+      "balls": 4,
+      "probability": 4,
+      "color": null,
+      "logo": "assets/img/team-logos/v-league/2026-27/women/HHC.svg"
+    },
+    {
+      "id": "KEX",
+      "name": "한국도로공사",
+      "balls": 2,
+      "probability": 2,
+      "color": null,
+      "logo": "assets/img/team-logos/v-league/2026-27/women/KEX.svg"
+    },
+    {
+      "id": "GSC",
+      "name": "GS칼텍스",
+      "balls": 1,
+      "probability": 1,
+      "color": null,
+      "logo": "assets/img/team-logos/v-league/2026-27/women/GSC.svg"
+    }
+  ],
+  "rules": {
+    "rounds": [
+      {
+        "round": 1,
+        "direction": "forward",
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+      },
+      {
+        "round": 2,
+        "direction": "reverse",
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+      },
+      {
+        "round": 3,
+        "direction": "forward",
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+      },
+      {
+        "round": 4,
+        "direction": "reverse",
+        "verification": "verified",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+      }
+    ],
+    "trainees": {
+      "direction": "unordered",
+      "limit": null,
+      "verification": "unverified",
+      "source_url": "",
+      "note": "수련선수 지명 순서·인원 제한 시행세칙 미확인"
+    },
+    "lottery": {
+      "reset_after_rank": null,
+      "automatic_last": false,
+      "verification": "unverified",
+      "source_url": "",
+      "note": "확정 순위와 최초 배분만 확인. 구슬 제거 방식·중복·색상·7순위 확정 방식은 미확인."
+    }
+  },
+  "draws": [],
+  "trades": [
+    {
+      "id": "women-official-20261030-1",
+      "sequence": 1,
+      "status": "confirmed",
+      "date": "2025-05-26",
+      "date_kind": "announcement",
+      "conditions": "김희진 → 현대건설 / 현금 및 현대건설 2026-27 2R 지명권 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 연합뉴스·뉴시스 구단 발표 인용 보도: 23일 오전 합의, 26일 계약 체결 및 발표. 발표일 근거: https://www.yna.co.kr/amp/view/AKR20250526056500007 · https://www.newsis.com/view/NISX20250526_0003189561",
+      "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+      "legs": [
+        {
+          "pick_id": "2026-27:W:2:HHC",
+          "from": "HHC",
+          "to": "IBK"
+        }
+      ]
+    },
+    {
+      "id": "women-official-20261030-2",
+      "sequence": 2,
+      "status": "confirmed",
+      "date": "2026-04-21",
+      "date_kind": "announcement",
+      "conditions": "표승주 및 정관장 2R 지명권 → 흥국생명 / 흥국생명 1R 지명권 → 정관장. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 정관장 구단의 4월21일 발표를 인용한 스포츠조선; 흥국생명 측 기사 발표는 4월27일. 공식 원문 거래계약 체결일은 미확인. 발표일 근거: https://www.sportschosun.com/volleyball/2026-04-21/202604210100142740009249 · https://www.newsis.com/view/NISX20260427_0003608062",
+      "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+      "legs": [
+        {
+          "pick_id": "2026-27:W:1:HPS",
+          "from": "HPS",
+          "to": "RSP"
+        },
+        {
+          "pick_id": "2026-27:W:2:RSP",
+          "from": "RSP",
+          "to": "HPS"
+        }
+      ]
+    },
+    {
+      "id": "women-official-20261030-3",
+      "sequence": 3,
+      "status": "confirmed",
+      "date": "2026-08-10",
+      "date_kind": "announcement",
+      "conditions": "고의정 및 IBK기업은행 2026-27 2R 지명권 → SOOP / 정솔민 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다.  발표일 근거: https://www.osen.co.kr/article/G1112854671",
+      "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+      "legs": [
+        {
+          "pick_id": "2026-27:W:2:IBK",
+          "from": "IBK",
+          "to": "SOO"
+        }
+      ]
+    }
+  ],
+  "trade_review": {
+    "status": "confirmed",
+    "source_url": "",
+    "note": "거래 내역 확인 중"
+  },
+  "picks": [
+    {
+      "id": "2026-27:W:1:RSP",
+      "round": 1,
+      "original_team": "RSP",
+      "current_team": "RSP",
+      "result": {
+        "status": "selected",
+        "actual_team": "RSP",
+        "player": {
+          "name": "김아중",
+          "affiliation": "청수고",
+          "position": "L",
+          "applicant_id": "KVL-DA-2026-27-W-d14a553bfbd037",
+          "player_id": null
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:1:SOO",
+      "round": 1,
+      "original_team": "SOO",
+      "current_team": "SOO",
+      "result": {
+        "status": "selected",
+        "actual_team": "SOO",
+        "player": {
+          "name": "김미주",
+          "affiliation": "중앙여고",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-W-0f71824f535b74",
+          "player_id": "KVL-P-001149"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:1:IBK",
+      "round": 1,
+      "original_team": "IBK",
+      "current_team": "IBK",
+      "result": {
+        "status": "selected",
+        "actual_team": "IBK",
+        "player": {
+          "name": "Audrey Park",
+          "affiliation": "UCLA",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-W-0cf7985a21d49d",
+          "player_id": null
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:1:HPS",
+      "round": 1,
+      "original_team": "HPS",
+      "current_team": "RSP",
+      "result": {
+        "status": "selected",
+        "actual_team": "RSP",
+        "player": {
+          "name": "오세인",
+          "affiliation": "중앙여고",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-5157360ca35184",
+          "player_id": "KVL-P-001211"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:1:HHC",
+      "round": 1,
+      "original_team": "HHC",
+      "current_team": "HHC",
+      "result": {
+        "status": "selected",
+        "actual_team": "HHC",
+        "player": {
+          "name": "정가영",
+          "affiliation": "일신여상",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-c94f8b1bd6a64d",
+          "player_id": "KVL-P-001414"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:1:KEX",
+      "round": 1,
+      "original_team": "KEX",
+      "current_team": "KEX",
+      "result": {
+        "status": "selected",
+        "actual_team": "KEX",
+        "player": {
+          "name": "유다은",
+          "affiliation": "근영여고",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-ab765c609ec538",
+          "player_id": "KVL-P-001216"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:1:GSC",
+      "round": 1,
+      "original_team": "GSC",
+      "current_team": "GSC",
+      "result": {
+        "status": "selected",
+        "actual_team": "GSC",
+        "player": {
+          "name": "박은빈",
+          "affiliation": "선명여고",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-3b498ca74c6746",
+          "player_id": "KVL-P-001190"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:2:RSP",
+      "round": 2,
+      "original_team": "RSP",
+      "current_team": "HPS",
+      "result": {
+        "status": "passed",
+        "actual_team": "HPS",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:2:SOO",
+      "round": 2,
+      "original_team": "SOO",
+      "current_team": "SOO",
+      "result": {
+        "status": "selected",
+        "actual_team": "SOO",
+        "player": {
+          "name": "김주솔",
+          "affiliation": "청수고",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-W-387ffcea1b5200",
+          "player_id": "KVL-P-001169"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:2:IBK",
+      "round": 2,
+      "original_team": "IBK",
+      "current_team": "SOO",
+      "result": {
+        "status": "selected",
+        "actual_team": "SOO",
+        "player": {
+          "name": "이혜수",
+          "affiliation": "목포여상",
+          "position": "OH/L",
+          "applicant_id": "KVL-DA-2026-27-W-a5f775aef1afcd",
+          "player_id": "KVL-P-001340"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:2:HPS",
+      "round": 2,
+      "original_team": "HPS",
+      "current_team": "HPS",
+      "result": {
+        "status": "selected",
+        "actual_team": "HPS",
+        "player": {
+          "name": "강민주",
+          "affiliation": "한봄고",
+          "position": "OP/OH/L",
+          "applicant_id": "KVL-DA-2026-27-W-3d59efe25a59e9",
+          "player_id": "KVL-P-001135"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:2:HHC",
+      "round": 2,
+      "original_team": "HHC",
+      "current_team": "IBK",
+      "result": {
+        "status": "selected",
+        "actual_team": "IBK",
+        "player": {
+          "name": "곽도연",
+          "affiliation": "선명여고",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-W-f0232e5b2c9310",
+          "player_id": "KVL-P-001142"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:2:KEX",
+      "round": 2,
+      "original_team": "KEX",
+      "current_team": "KEX",
+      "result": {
+        "status": "selected",
+        "actual_team": "KEX",
+        "player": {
+          "name": "김현아",
+          "affiliation": "중앙여고",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-W-34d1f7a755be51",
+          "player_id": "KVL-P-001176"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:2:GSC",
+      "round": 2,
+      "original_team": "GSC",
+      "current_team": "GSC",
+      "result": {
+        "status": "selected",
+        "actual_team": "GSC",
+        "player": {
+          "name": "오해솔",
+          "affiliation": "선명여고",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-W-6d00c71e57cbb6",
+          "player_id": null
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:3:RSP",
+      "round": 3,
+      "original_team": "RSP",
+      "current_team": "RSP",
+      "result": {
+        "status": "passed",
+        "actual_team": "RSP",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:3:SOO",
+      "round": 3,
+      "original_team": "SOO",
+      "current_team": "SOO",
+      "result": {
+        "status": "passed",
+        "actual_team": "SOO",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:3:IBK",
+      "round": 3,
+      "original_team": "IBK",
+      "current_team": "IBK",
+      "result": {
+        "status": "passed",
+        "actual_team": "IBK",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:3:HPS",
+      "round": 3,
+      "original_team": "HPS",
+      "current_team": "HPS",
+      "result": {
+        "status": "passed",
+        "actual_team": "HPS",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:3:HHC",
+      "round": 3,
+      "original_team": "HHC",
+      "current_team": "HHC",
+      "result": {
+        "status": "passed",
+        "actual_team": "HHC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:3:KEX",
+      "round": 3,
+      "original_team": "KEX",
+      "current_team": "KEX",
+      "result": {
+        "status": "selected",
+        "actual_team": "KEX",
+        "player": {
+          "name": "나민지",
+          "affiliation": "선명여고",
+          "position": "L",
+          "applicant_id": "KVL-DA-2026-27-W-201d96ada7ab1d",
+          "player_id": "KVL-P-001178"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:3:GSC",
+      "round": 3,
+      "original_team": "GSC",
+      "current_team": "GSC",
+      "result": {
+        "status": "passed",
+        "actual_team": "GSC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:4:RSP",
+      "round": 4,
+      "original_team": "RSP",
+      "current_team": "RSP",
+      "result": {
+        "status": "passed",
+        "actual_team": "RSP",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:4:SOO",
+      "round": 4,
+      "original_team": "SOO",
+      "current_team": "SOO",
+      "result": {
+        "status": "passed",
+        "actual_team": "SOO",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:4:IBK",
+      "round": 4,
+      "original_team": "IBK",
+      "current_team": "IBK",
+      "result": {
+        "status": "passed",
+        "actual_team": "IBK",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:4:HPS",
+      "round": 4,
+      "original_team": "HPS",
+      "current_team": "HPS",
+      "result": {
+        "status": "passed",
+        "actual_team": "HPS",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:4:HHC",
+      "round": 4,
+      "original_team": "HHC",
+      "current_team": "HHC",
+      "result": {
+        "status": "passed",
+        "actual_team": "HHC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:4:KEX",
+      "round": 4,
+      "original_team": "KEX",
+      "current_team": "KEX",
+      "result": {
+        "status": "passed",
+        "actual_team": "KEX",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "2026-27:W:4:GSC",
+      "round": 4,
+      "original_team": "GSC",
+      "current_team": "GSC",
+      "result": {
+        "status": "passed",
+        "actual_team": "GSC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    }
+  ],
+  "trainees": {
+    "RSP": {
+      "status": "not_recorded",
+      "entries": [],
+      "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+    },
+    "SOO": {
+      "status": "not_recorded",
+      "entries": [],
+      "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+    },
+    "IBK": {
+      "status": "passed",
+      "entries": []
+    },
+    "HPS": {
+      "status": "selected",
+      "entries": [
+        {
+          "id": "women-official-20261030-33",
+          "status": "selected",
+          "actual_team": "HPS",
+          "player": {
+            "name": "홍수화",
+            "affiliation": "세화여고",
+            "position": "L",
+            "applicant_id": "KVL-DA-2026-27-W-15b8930423e261",
+            "player_id": "KVL-P-001281"
+          },
+          "completed_at": "2026-10-30T05:30:35.464Z",
+          "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+        },
+        {
+          "id": "women-official-20261030-34",
+          "status": "selected",
+          "actual_team": "HPS",
+          "player": {
+            "name": "노윤아",
+            "affiliation": "세화여고",
+            "position": "OP/OH",
+            "applicant_id": "KVL-DA-2026-27-W-dd7c4db32020c9",
+            "player_id": "KVL-P-001180"
+          },
+          "completed_at": "2026-10-30T05:30:35.464Z",
+          "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+        }
+      ]
+    },
+    "HHC": {
+      "status": "passed",
+      "entries": []
+    },
+    "KEX": {
+      "status": "passed",
+      "entries": []
+    },
+    "GSC": {
+      "status": "passed",
+      "entries": []
+    }
+  },
+  "audit": [
+    {
+      "id": "women-official-20261030-1",
+      "revision": 1,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trade_add",
+      "target": "women-official-20261030-1",
+      "reason": "KOVO 개최 안내·공식 결과표 지명권 양도 확인: kim-hee-jin-hyundai-ibk-r2",
+      "before": null,
+      "after": {
+        "id": "women-official-20261030-1",
+        "sequence": 1,
+        "status": "confirmed",
+        "date": "2025-05-26",
+        "date_kind": "announcement",
+        "conditions": "김희진 → 현대건설 / 현금 및 현대건설 2026-27 2R 지명권 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 연합뉴스·뉴시스 구단 발표 인용 보도: 23일 오전 합의, 26일 계약 체결 및 발표. 발표일 근거: https://www.yna.co.kr/amp/view/AKR20250526056500007 · https://www.newsis.com/view/NISX20250526_0003189561",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:2:HHC",
+            "from": "HHC",
+            "to": "IBK"
+          }
+        ]
+      }
+    },
+    {
+      "id": "women-official-20261030-2",
+      "revision": 2,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trade_add",
+      "target": "women-official-20261030-2",
+      "reason": "KOVO 개최 안내·공식 결과표 지명권 양도 확인: pyo-seungju-pick-swap",
+      "before": null,
+      "after": {
+        "id": "women-official-20261030-2",
+        "sequence": 2,
+        "status": "confirmed",
+        "date": "2026-04-21",
+        "date_kind": "announcement",
+        "conditions": "표승주 및 정관장 2R 지명권 → 흥국생명 / 흥국생명 1R 지명권 → 정관장. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 정관장 구단의 4월21일 발표를 인용한 스포츠조선; 흥국생명 측 기사 발표는 4월27일. 공식 원문 거래계약 체결일은 미확인. 발표일 근거: https://www.sportschosun.com/volleyball/2026-04-21/202604210100142740009249 · https://www.newsis.com/view/NISX20260427_0003608062",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:1:HPS",
+            "from": "HPS",
+            "to": "RSP"
+          },
+          {
+            "pick_id": "2026-27:W:2:RSP",
+            "from": "RSP",
+            "to": "HPS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "women-official-20261030-3",
+      "revision": 3,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trade_add",
+      "target": "women-official-20261030-3",
+      "reason": "KOVO 개최 안내·공식 결과표 지명권 양도 확인: ko-ui-jeong-ibk-soop-r2",
+      "before": null,
+      "after": {
+        "id": "women-official-20261030-3",
+        "sequence": 3,
+        "status": "confirmed",
+        "date": "2026-08-10",
+        "date_kind": "announcement",
+        "conditions": "고의정 및 IBK기업은행 2026-27 2R 지명권 → SOOP / 정솔민 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다.  발표일 근거: https://www.osen.co.kr/article/G1112854671",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:2:IBK",
+            "from": "IBK",
+            "to": "SOO"
+          }
+        ]
+      }
+    },
+    {
+      "id": "women-official-20261030-4",
+      "revision": 4,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "lottery_result",
+      "target": "2026-27",
+      "reason": "공식 확정 순위와 미확인 실제 추첨 기록을 분리",
+      "before": null,
+      "after": {
+        "order": [
+          "IBK",
+          "SOO",
+          "HHC",
+          "KEX",
+          "RSP",
+          "HPS",
+          "GSC"
+        ],
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+        "verified_at": "2026-10-30",
+        "draw_log_status": "unverified",
+        "last_rank_method": "unknown",
+        "note": "공식 최종 결과표에서 7팀 확정 순위만 확인. 실제 구슬 기록과 중복 횟수는 미확인."
+      }
+    },
+    {
+      "id": "women-official-20261030-5",
+      "revision": 5,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:1:IBK",
+      "reason": "KOVO 공식 최종 결과표 1R / IBK기업은행 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "IBK",
+        "player": {
+          "name": "Audrey Park",
+          "affiliation": "UCLA",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-W-0cf7985a21d49d",
+          "player_id": null
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-6",
+      "revision": 6,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:1:SOO",
+      "reason": "KOVO 공식 최종 결과표 1R / SOOP 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "SOO",
+        "player": {
+          "name": "김미주",
+          "affiliation": "중앙여고",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-W-0f71824f535b74",
+          "player_id": "KVL-P-001149"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-7",
+      "revision": 7,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:1:HHC",
+      "reason": "KOVO 공식 최종 결과표 1R / 현대건설 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "HHC",
+        "player": {
+          "name": "정가영",
+          "affiliation": "일신여상",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-c94f8b1bd6a64d",
+          "player_id": "KVL-P-001414"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-8",
+      "revision": 8,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:1:KEX",
+      "reason": "KOVO 공식 최종 결과표 1R / 한국도로공사 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KEX",
+        "player": {
+          "name": "유다은",
+          "affiliation": "근영여고",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-ab765c609ec538",
+          "player_id": "KVL-P-001216"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-9",
+      "revision": 9,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:1:RSP",
+      "reason": "KOVO 공식 최종 결과표 1R / 정관장 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "RSP",
+        "player": {
+          "name": "김아중",
+          "affiliation": "청수고",
+          "position": "L",
+          "applicant_id": "KVL-DA-2026-27-W-d14a553bfbd037",
+          "player_id": null
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-10",
+      "revision": 10,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:1:HPS",
+      "reason": "KOVO 공식 최종 결과표 1R / 흥국생명 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "RSP",
+        "player": {
+          "name": "오세인",
+          "affiliation": "중앙여고",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-5157360ca35184",
+          "player_id": "KVL-P-001211"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-11",
+      "revision": 11,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:1:GSC",
+      "reason": "KOVO 공식 최종 결과표 1R / GS칼텍스 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "GSC",
+        "player": {
+          "name": "박은빈",
+          "affiliation": "선명여고",
+          "position": "OP/OH",
+          "applicant_id": "KVL-DA-2026-27-W-3b498ca74c6746",
+          "player_id": "KVL-P-001190"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-12",
+      "revision": 12,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:2:IBK",
+      "reason": "KOVO 공식 최종 결과표 2R / IBK기업은행 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "SOO",
+        "player": {
+          "name": "이혜수",
+          "affiliation": "목포여상",
+          "position": "OH/L",
+          "applicant_id": "KVL-DA-2026-27-W-a5f775aef1afcd",
+          "player_id": "KVL-P-001340"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-13",
+      "revision": 13,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:2:SOO",
+      "reason": "KOVO 공식 최종 결과표 2R / SOOP 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "SOO",
+        "player": {
+          "name": "김주솔",
+          "affiliation": "청수고",
+          "position": "S",
+          "applicant_id": "KVL-DA-2026-27-W-387ffcea1b5200",
+          "player_id": "KVL-P-001169"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-14",
+      "revision": 14,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:2:HHC",
+      "reason": "KOVO 공식 최종 결과표 2R / 현대건설 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "IBK",
+        "player": {
+          "name": "곽도연",
+          "affiliation": "선명여고",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-W-f0232e5b2c9310",
+          "player_id": "KVL-P-001142"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-15",
+      "revision": 15,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:2:KEX",
+      "reason": "KOVO 공식 최종 결과표 2R / 한국도로공사 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KEX",
+        "player": {
+          "name": "김현아",
+          "affiliation": "중앙여고",
+          "position": "MB",
+          "applicant_id": "KVL-DA-2026-27-W-34d1f7a755be51",
+          "player_id": "KVL-P-001176"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-16",
+      "revision": 16,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:2:RSP",
+      "reason": "KOVO 공식 최종 결과표 2R / 정관장 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HPS",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-17",
+      "revision": 17,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:2:HPS",
+      "reason": "KOVO 공식 최종 결과표 2R / 흥국생명 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "HPS",
+        "player": {
+          "name": "강민주",
+          "affiliation": "한봄고",
+          "position": "OP/OH/L",
+          "applicant_id": "KVL-DA-2026-27-W-3d59efe25a59e9",
+          "player_id": "KVL-P-001135"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-18",
+      "revision": 18,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:2:GSC",
+      "reason": "KOVO 공식 최종 결과표 2R / GS칼텍스 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "GSC",
+        "player": {
+          "name": "오해솔",
+          "affiliation": "선명여고",
+          "position": "OH",
+          "applicant_id": "KVL-DA-2026-27-W-6d00c71e57cbb6",
+          "player_id": null
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-19",
+      "revision": 19,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:3:IBK",
+      "reason": "KOVO 공식 최종 결과표 3R / IBK기업은행 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "IBK",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-20",
+      "revision": 20,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:3:SOO",
+      "reason": "KOVO 공식 최종 결과표 3R / SOOP 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "SOO",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-21",
+      "revision": 21,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:3:HHC",
+      "reason": "KOVO 공식 최종 결과표 3R / 현대건설 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HHC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-22",
+      "revision": 22,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:3:KEX",
+      "reason": "KOVO 공식 최종 결과표 3R / 한국도로공사 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "selected",
+        "actual_team": "KEX",
+        "player": {
+          "name": "나민지",
+          "affiliation": "선명여고",
+          "position": "L",
+          "applicant_id": "KVL-DA-2026-27-W-201d96ada7ab1d",
+          "player_id": "KVL-P-001178"
+        },
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-23",
+      "revision": 23,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:3:RSP",
+      "reason": "KOVO 공식 최종 결과표 3R / 정관장 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "RSP",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-24",
+      "revision": 24,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:3:HPS",
+      "reason": "KOVO 공식 최종 결과표 3R / 흥국생명 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HPS",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-25",
+      "revision": 25,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:3:GSC",
+      "reason": "KOVO 공식 최종 결과표 3R / GS칼텍스 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "GSC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-26",
+      "revision": 26,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:4:IBK",
+      "reason": "KOVO 공식 최종 결과표 4R / IBK기업은행 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "IBK",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-27",
+      "revision": 27,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:4:SOO",
+      "reason": "KOVO 공식 최종 결과표 4R / SOOP 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "SOO",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-28",
+      "revision": 28,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:4:HHC",
+      "reason": "KOVO 공식 최종 결과표 4R / 현대건설 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HHC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-29",
+      "revision": 29,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:4:KEX",
+      "reason": "KOVO 공식 최종 결과표 4R / 한국도로공사 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "KEX",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-30",
+      "revision": 30,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:4:RSP",
+      "reason": "KOVO 공식 최종 결과표 4R / 정관장 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "RSP",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-31",
+      "revision": 31,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:4:HPS",
+      "reason": "KOVO 공식 최종 결과표 4R / 흥국생명 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "HPS",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-32",
+      "revision": 32,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "result",
+      "target": "2026-27:W:4:GSC",
+      "reason": "KOVO 공식 최종 결과표 4R / GS칼텍스 원지명권 열",
+      "before": {
+        "status": "waiting",
+        "actual_team": null,
+        "player": null,
+        "completed_at": null,
+        "source_url": ""
+      },
+      "after": {
+        "status": "passed",
+        "actual_team": "GSC",
+        "player": null,
+        "completed_at": "2026-10-30T05:30:35.464Z",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-33",
+      "revision": 33,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "HPS",
+      "reason": "KOVO 공식 최종 결과표 수련선수",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "women-official-20261030-33",
+            "status": "selected",
+            "actual_team": "HPS",
+            "player": {
+              "name": "홍수화",
+              "affiliation": "세화여고",
+              "position": "L",
+              "applicant_id": "KVL-DA-2026-27-W-15b8930423e261",
+              "player_id": "KVL-P-001281"
+            },
+            "completed_at": "2026-10-30T05:30:35.464Z",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "women-official-20261030-34",
+      "revision": 34,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "HPS",
+      "reason": "KOVO 공식 최종 결과표 수련선수",
+      "before": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "women-official-20261030-33",
+            "status": "selected",
+            "actual_team": "HPS",
+            "player": {
+              "name": "홍수화",
+              "affiliation": "세화여고",
+              "position": "L",
+              "applicant_id": "KVL-DA-2026-27-W-15b8930423e261",
+              "player_id": "KVL-P-001281"
+            },
+            "completed_at": "2026-10-30T05:30:35.464Z",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+          }
+        ]
+      },
+      "after": {
+        "status": "selected",
+        "entries": [
+          {
+            "id": "women-official-20261030-33",
+            "status": "selected",
+            "actual_team": "HPS",
+            "player": {
+              "name": "홍수화",
+              "affiliation": "세화여고",
+              "position": "L",
+              "applicant_id": "KVL-DA-2026-27-W-15b8930423e261",
+              "player_id": "KVL-P-001281"
+            },
+            "completed_at": "2026-10-30T05:30:35.464Z",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+          },
+          {
+            "id": "women-official-20261030-34",
+            "status": "selected",
+            "actual_team": "HPS",
+            "player": {
+              "name": "노윤아",
+              "affiliation": "세화여고",
+              "position": "OP/OH",
+              "applicant_id": "KVL-DA-2026-27-W-dd7c4db32020c9",
+              "player_id": "KVL-P-001180"
+            },
+            "completed_at": "2026-10-30T05:30:35.464Z",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "women-official-20261030-35",
+      "revision": 35,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "IBK",
+      "reason": "KOVO 공식 결과표의 명시적 대시",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "women-official-20261030-36",
+      "revision": 36,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "HHC",
+      "reason": "KOVO 공식 결과표의 명시적 대시",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "women-official-20261030-37",
+      "revision": 37,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "KEX",
+      "reason": "KOVO 공식 결과표의 명시적 대시",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "women-official-20261030-38",
+      "revision": 38,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "GSC",
+      "reason": "KOVO 공식 결과표의 명시적 대시",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "passed",
+        "entries": []
+      }
+    },
+    {
+      "id": "women-official-20261030-39",
+      "revision": 39,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "SOO",
+      "reason": "KOVO 공식 결과표 빈칸: 패스로 추정하지 않음",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "not_recorded",
+        "entries": [],
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-40",
+      "revision": 40,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "trainee",
+      "target": "RSP",
+      "reason": "KOVO 공식 결과표 빈칸: 패스로 추정하지 않음",
+      "before": {
+        "status": "waiting",
+        "entries": []
+      },
+      "after": {
+        "status": "not_recorded",
+        "entries": [],
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "women-official-20261030-41",
+      "revision": 41,
+      "at": "2026-10-30T05:30:35.464Z",
+      "actor": "KVL official source review",
+      "action": "event",
+      "target": "2026-27",
+      "reason": "KOVO 공식 결과 확정: 일반14·수련2; 미기재 수련 칸 별도 보존",
+      "before": {
+        "starts_at": "2026-10-28T10:30:00+09:00",
+        "venue": "메이필드 호텔",
+        "status": "scheduled",
+        "note": "KOVO 공식 최종 결과표 대조",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      },
+      "after": {
+        "starts_at": "2026-10-28T10:30:00+09:00",
+        "venue": "메이필드 호텔",
+        "status": "completed",
+        "note": "KOVO 공식 최종 결과표 대조",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    }
+  ],
+  "lottery_result": {
+    "order": [
+      "IBK",
+      "SOO",
+      "HHC",
+      "KEX",
+      "RSP",
+      "HPS",
+      "GSC"
+    ],
+    "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+    "verified_at": "2026-10-30",
+    "draw_log_status": "unverified",
+    "last_rank_method": "unknown",
+    "note": "공식 최종 결과표에서 7팀 확정 순위만 확인. 실제 구슬 기록과 중복 횟수는 미확인."
+  }
+}
