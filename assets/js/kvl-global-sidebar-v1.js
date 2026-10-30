@@ -62,7 +62,7 @@
     group('vleague',icon.league,'프로 V-리그',[
       link('vleague-home','competition-engine.html?competition=v-league-men-2026-27',null,'V-리그 홈'),
       link('vleague-cup','competition-engine.html?competition=kovo-cup-men-2026',null,'KOVO컵'),
-      link('vleague-draft','v-league-draft.html',null,'드래프트')
+      link('vleague-draft','v-league-draft.html',null,'신인 드래프트')
     ]),
     group('national',icon.flag,'국가대표팀',[
       link('national-home','national-team.html',null,'대표팀 홈'),
