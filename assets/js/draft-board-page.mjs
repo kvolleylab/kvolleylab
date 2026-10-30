@@ -1,6 +1,6 @@
 import {EVENT_STATUS,PICK_STATUS,TRADE_STATUS,validate,lottery,playerSnapshot} from './draft-board-core.mjs';
 import {DraftStore,fetchJSON} from './draft-board-store.mjs';
-import {renderBoard,e,teamName,sourceLink,badge,dateText} from './draft-board-render.mjs';
+import {renderBoard,e,teamName,sourceLink,badge,dateText,tradeSummary} from './draft-board-render.mjs?v=20261030-women-2';
 import {joinApplicants} from './draft-applicants-core.mjs';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 let index,state,sources,store,applicants=[],applicantError='',generation=0,busy=false,division=params.get('gender')==='W'?'W':'M';
@@ -105,7 +105,7 @@ function tradeEditor(id){
     $('tradeLegs').onchange=ev=>{if(ev.target.matches('[data-leg-pick]')){const row=ev.target.closest('.db-trade-leg'),p=state.picks.find(p=>p.id===ev.target.value);row.querySelector('[data-leg-from]').value=p.current_team;}};
     $('tradeLegs').onclick=ev=>{const b=ev.target.closest('[data-remove-leg]');if(b){legs=readLegs();legs.splice(Number(b.dataset.removeLeg),1);renderLegs();}};
   }
-  form(t?'지명권 거래 수정':'지명권 양도·맞교환 등록',`<p>거래 단위로 저장합니다. 맞교환은 지명권을 추가해 양방향을 한 번에 등록하세요. 확인 중 거래는 보유팀에 반영되지 않습니다.</p><div class="db-fields">${select('거래 상태','tradeStatus',[['pending','확인 중'],['confirmed','확정']],t?.status||'pending')}${select('날짜 기준','dateKind',[['transaction','거래일'],['announcement','발표일']],t?.date_kind||'transaction')}${field('거래일 또는 발표일','date',t?.date||'','date')}</div><fieldset><legend>거래할 지명권</legend><div id="tradeLegs"></div><button type="button" class="da-button" id="addLeg">지명권 추가 · 맞교환</button></fieldset>${textarea('관련 선수 또는 거래 조건','conditions',t?.conditions||'','maxlength="2000"')}${field('공식 출처 URL · 확정 거래 필수','sourceURL',t?.source_url||'','url','placeholder="https://…"')}`,async f=>{
+  form(t?'지명권 거래 수정':'지명권 양도·맞교환 등록',`<p>거래 단위로 저장합니다. 맞교환은 지명권을 추가해 양방향을 한 번에 등록하세요. 확인 중 거래는 보유팀에 반영되지 않습니다.</p><div class="db-fields">${select('거래 상태','tradeStatus',[['pending','확인 중'],['confirmed','확정']],t?.status||'pending')}${select('날짜 기준','dateKind',[['transaction','거래일'],['announcement','발표일']],t?.date_kind||'transaction')}${field('거래일 또는 발표일','date',t?.date||'','date')}</div><fieldset><legend>거래할 지명권</legend><div id="tradeLegs"></div><button type="button" class="da-button" id="addLeg">지명권 추가 · 맞교환</button></fieldset>${textarea('관련 선수 또는 거래 조건','conditions',t?.conditions||'','maxlength="2000" placeholder="IBK 고의정(OH) + 2R 지명권 ↔ SOOP 정솔민(L)"')}<p class="db-help">각 구단이 내주는 선수(포지션)와 지명권을 ↔ 양쪽에 적습니다. 거래 당시의 소속·포지션을 기록합니다.</p>${field('공식 출처 URL · 확정 거래 필수','sourceURL',t?.source_url||'','url','placeholder="https://…"')}`,async f=>{
     await save({type:t?'trade_edit':'trade_add',target:id,value:{status:f.get('tradeStatus'),date:f.get('date'),date_kind:f.get('dateKind'),conditions:f.get('conditions'),source_url:f.get('sourceURL'),legs:readLegs()},reason:f.get('reason')});
   },{extra:t?'<button type="button" class="da-button db-danger" id="cancelTrade">거래 취소</button>':'',after:()=>{
     renderLegs();$('addLeg').onclick=()=>{legs=readLegs();const available=state.picks.find(p=>!legs.some(l=>l.pick_id===p.id));if(available){legs.push({pick_id:available.id,from:available.current_team,to:state.teams.find(t=>t.id!==available.current_team).id});renderLegs();}};
@@ -114,7 +114,7 @@ function tradeEditor(id){
 }
 function tradeDetail(id,right=false){
   const list=right?state.trades.filter(t=>t.legs.some(l=>l.pick_id===id)):state.trades.filter(t=>t.id===id);
-  modal('지명권 거래 상세',list.map(t=>`<article>${badge(TRADE_STATUS[t.status],t.status)}<dl class="db-facts"><dt>${t.date_kind==='announcement'?'발표일':'거래일'}</dt><dd>${e(t.date||'미확인')}</dd><dt>지명권</dt><dd>${t.legs.map(l=>{const p=state.picks.find(p=>p.id===l.pick_id);return `${p.round}R ${e(teamName(state,p.original_team))} 원지명권<br>${e(teamName(state,l.from))} → ${e(teamName(state,l.to))}`;}).join('<br><br>')}</dd><dt>선수·조건</dt><dd>${e(t.conditions||'미확인')}</dd><dt>공식 출처</dt><dd>${sourceLink(t.source_url)}</dd>${t.cancel_reason?`<dt>취소 사유</dt><dd>${e(t.cancel_reason)}</dd>`:''}</dl></article>`).join('<hr>'));
+  modal('지명권 거래 상세',list.map(t=>`<article>${badge(TRADE_STATUS[t.status],t.status)}${tradeSummary(t)}<dl class="db-facts"><dt>${t.date_kind==='announcement'?'발표일':'거래일'}</dt><dd>${e(t.date||'미확인')}</dd><dt>지명권</dt><dd>${t.legs.map(l=>{const p=state.picks.find(p=>p.id===l.pick_id);return `${p.round}R ${e(teamName(state,p.original_team))} 원지명권<br>${e(teamName(state,l.from))} → ${e(teamName(state,l.to))}`;}).join('<br><br>')}</dd><dt>공식 출처</dt><dd>${sourceLink(t.source_url)}</dd>${t.cancel_reason?`<dt>취소 사유</dt><dd>${e(t.cancel_reason)}</dd>`:''}</dl></article>`).join('<hr>'));
 }
 function rulesEditor(){
   const rules=[...state.rules.rounds,state.rules.trainees];

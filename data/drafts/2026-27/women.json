@@ -2,9 +2,9 @@
   "schema_version": 1,
   "season": "2026-27",
   "division": "W",
-  "revision": 41,
+  "revision": 45,
   "source_id": "KOVO-2026-27-W-157977",
-  "updated_at": "2026-10-30T05:30:35.464Z",
+  "updated_at": "2026-10-30T12:27:53.115Z",
   "event": {
     "starts_at": "2026-10-28T10:30:00+09:00",
     "venue": "메이필드 호텔",
@@ -109,11 +109,11 @@
       "note": "수련선수 지명 순서·인원 제한 시행세칙 미확인"
     },
     "lottery": {
-      "reset_after_rank": null,
+      "reset_after_rank": 3,
       "automatic_last": false,
-      "verification": "unverified",
+      "verification": "user_record",
       "source_url": "",
-      "note": "확정 순위와 최초 배분만 확인. 구슬 제거 방식·중복·색상·7순위 확정 방식은 미확인."
+      "note": "2026-10-30 운영자 제공 설명: 1~3순위 추첨 후 해당 3팀의 구슬을 제외하고 4~7순위 추첨. 마지막 7순위의 자동 확정 여부·구슬 색상·중복 횟수는 미확인. 치지직 제공 영상은 확인 환경의 지역 제한으로 재생하지 못함."
     }
   },
   "draws": [],
@@ -124,7 +124,7 @@
       "status": "confirmed",
       "date": "2025-05-26",
       "date_kind": "announcement",
-      "conditions": "김희진 → 현대건설 / 현금 및 현대건설 2026-27 2R 지명권 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 연합뉴스·뉴시스 구단 발표 인용 보도: 23일 오전 합의, 26일 계약 체결 및 발표. 발표일 근거: https://www.yna.co.kr/amp/view/AKR20250526056500007 · https://www.newsis.com/view/NISX20250526_0003189561",
+      "conditions": "IBK 김희진(MB) ↔ 현대건설 2R 지명권 + 현금",
       "source_url": "https://kovo.co.kr/news/kovo/press/157977",
       "legs": [
         {
@@ -140,7 +140,7 @@
       "status": "confirmed",
       "date": "2026-04-21",
       "date_kind": "announcement",
-      "conditions": "표승주 및 정관장 2R 지명권 → 흥국생명 / 흥국생명 1R 지명권 → 정관장. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 정관장 구단의 4월21일 발표를 인용한 스포츠조선; 흥국생명 측 기사 발표는 4월27일. 공식 원문 거래계약 체결일은 미확인. 발표일 근거: https://www.sportschosun.com/volleyball/2026-04-21/202604210100142740009249 · https://www.newsis.com/view/NISX20260427_0003608062",
+      "conditions": "정관장 표승주(OH) + 2R 지명권 ↔ 흥국생명 1R 지명권",
       "source_url": "https://kovo.co.kr/news/kovo/press/157977",
       "legs": [
         {
@@ -161,7 +161,7 @@
       "status": "confirmed",
       "date": "2026-08-10",
       "date_kind": "announcement",
-      "conditions": "고의정 및 IBK기업은행 2026-27 2R 지명권 → SOOP / 정솔민 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다.  발표일 근거: https://www.osen.co.kr/article/G1112854671",
+      "conditions": "IBK 고의정(OH) + 2R 지명권 ↔ SOOP 정솔민(L)",
       "source_url": "https://kovo.co.kr/news/kovo/press/157977",
       "legs": [
         {
@@ -1744,6 +1744,240 @@
         "status": "completed",
         "note": "KOVO 공식 최종 결과표 대조",
         "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf"
+      }
+    },
+    {
+      "id": "8c9ed7d2-2a6a-4f46-8d20-111c9df85776",
+      "revision": 42,
+      "at": "2026-10-30T12:27:53.115Z",
+      "actor": "KVL source review",
+      "action": "rules",
+      "target": "2026-27",
+      "reason": "운영자 확인에 따라 여자부 추첨을 1~3순위와 4~7순위로 구분. 실제 추첨 로그와 7순위 결정 방식은 추정하지 않음.",
+      "before": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          }
+        ],
+        "trainees": {
+          "direction": "unordered",
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "수련선수 지명 순서·인원 제한 시행세칙 미확인"
+        },
+        "lottery": {
+          "reset_after_rank": null,
+          "automatic_last": false,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "확정 순위와 최초 배분만 확인. 구슬 제거 방식·중복·색상·7순위 확정 방식은 미확인."
+        }
+      },
+      "after": {
+        "rounds": [
+          {
+            "round": 1,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 2,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 3,
+            "direction": "forward",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          },
+          {
+            "round": 4,
+            "direction": "reverse",
+            "verification": "verified",
+            "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/drafts-test/2026~2027%20KOVO%20%EC%97%AC%EC%9E%90%20%EC%8B%A0%EC%9D%B8%EC%84%A0%EC%88%98%20%EB%93%9C%EB%9E%98%ED%94%84%ED%8A%B8%20%EA%B2%B0%EA%B3%BC.pdf",
+            "note": "KOVO 공식 최종 결과표의 라운드별 순위 확인"
+          }
+        ],
+        "trainees": {
+          "direction": "unordered",
+          "limit": null,
+          "verification": "unverified",
+          "source_url": "",
+          "note": "수련선수 지명 순서·인원 제한 시행세칙 미확인"
+        },
+        "lottery": {
+          "reset_after_rank": 3,
+          "automatic_last": false,
+          "verification": "user_record",
+          "source_url": "",
+          "note": "2026-10-30 운영자 제공 설명: 1~3순위 추첨 후 해당 3팀의 구슬을 제외하고 4~7순위 추첨. 마지막 7순위의 자동 확정 여부·구슬 색상·중복 횟수는 미확인. 치지직 제공 영상은 확인 환경의 지역 제한으로 재생하지 못함."
+        }
+      }
+    },
+    {
+      "id": "0510dca2-55cb-4fa7-afc4-2d707c7075a3",
+      "revision": 43,
+      "at": "2026-10-30T12:27:53.115Z",
+      "actor": "KVL source review",
+      "action": "trade_edit",
+      "target": "women-official-20261030-1",
+      "reason": "거래 상대·선수의 당시 포지션·지명권을 교환 형식으로 정리. 원래 발표일 및 출처 설명은 시즌 출처와 기존 감사 이력에 보존.",
+      "before": {
+        "id": "women-official-20261030-1",
+        "sequence": 1,
+        "status": "confirmed",
+        "date": "2025-05-26",
+        "date_kind": "announcement",
+        "conditions": "김희진 → 현대건설 / 현금 및 현대건설 2026-27 2R 지명권 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 연합뉴스·뉴시스 구단 발표 인용 보도: 23일 오전 합의, 26일 계약 체결 및 발표. 발표일 근거: https://www.yna.co.kr/amp/view/AKR20250526056500007 · https://www.newsis.com/view/NISX20250526_0003189561",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:2:HHC",
+            "from": "HHC",
+            "to": "IBK"
+          }
+        ]
+      },
+      "after": {
+        "id": "women-official-20261030-1",
+        "sequence": 1,
+        "status": "confirmed",
+        "date": "2025-05-26",
+        "date_kind": "announcement",
+        "conditions": "IBK 김희진(MB) ↔ 현대건설 2R 지명권 + 현금",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:2:HHC",
+            "from": "HHC",
+            "to": "IBK"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ed146144-8449-4250-b64e-371a236d9f45",
+      "revision": 44,
+      "at": "2026-10-30T12:27:53.115Z",
+      "actor": "KVL source review",
+      "action": "trade_edit",
+      "target": "women-official-20261030-2",
+      "reason": "거래 상대·선수의 당시 포지션·지명권을 교환 형식으로 정리. 원래 발표일 및 출처 설명은 시즌 출처와 기존 감사 이력에 보존.",
+      "before": {
+        "id": "women-official-20261030-2",
+        "sequence": 2,
+        "status": "confirmed",
+        "date": "2026-04-21",
+        "date_kind": "announcement",
+        "conditions": "표승주 및 정관장 2R 지명권 → 흥국생명 / 흥국생명 1R 지명권 → 정관장. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다. 정관장 구단의 4월21일 발표를 인용한 스포츠조선; 흥국생명 측 기사 발표는 4월27일. 공식 원문 거래계약 체결일은 미확인. 발표일 근거: https://www.sportschosun.com/volleyball/2026-04-21/202604210100142740009249 · https://www.newsis.com/view/NISX20260427_0003608062",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:1:HPS",
+            "from": "HPS",
+            "to": "RSP"
+          },
+          {
+            "pick_id": "2026-27:W:2:RSP",
+            "from": "RSP",
+            "to": "HPS"
+          }
+        ]
+      },
+      "after": {
+        "id": "women-official-20261030-2",
+        "sequence": 2,
+        "status": "confirmed",
+        "date": "2026-04-21",
+        "date_kind": "announcement",
+        "conditions": "정관장 표승주(OH) + 2R 지명권 ↔ 흥국생명 1R 지명권",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:1:HPS",
+            "from": "HPS",
+            "to": "RSP"
+          },
+          {
+            "pick_id": "2026-27:W:2:RSP",
+            "from": "RSP",
+            "to": "HPS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "45cf2355-21fc-4d15-8bac-b00a2e4bd747",
+      "revision": 45,
+      "at": "2026-10-30T12:27:53.115Z",
+      "actor": "KVL source review",
+      "action": "trade_edit",
+      "target": "women-official-20261030-3",
+      "reason": "거래 상대·선수의 당시 포지션·지명권을 교환 형식으로 정리. 원래 발표일 및 출처 설명은 시즌 출처와 기존 감사 이력에 보존.",
+      "before": {
+        "id": "women-official-20261030-3",
+        "sequence": 3,
+        "status": "confirmed",
+        "date": "2026-08-10",
+        "date_kind": "announcement",
+        "conditions": "고의정 및 IBK기업은행 2026-27 2R 지명권 → SOOP / 정솔민 → IBK기업은행. 날짜는 구단 발표일 기준이며 계약 체결일과 구분합니다.  발표일 근거: https://www.osen.co.kr/article/G1112854671",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:2:IBK",
+            "from": "IBK",
+            "to": "SOO"
+          }
+        ]
+      },
+      "after": {
+        "id": "women-official-20261030-3",
+        "sequence": 3,
+        "status": "confirmed",
+        "date": "2026-08-10",
+        "date_kind": "announcement",
+        "conditions": "IBK 고의정(OH) + 2R 지명권 ↔ SOOP 정솔민(L)",
+        "source_url": "https://kovo.co.kr/news/kovo/press/157977",
+        "legs": [
+          {
+            "pick_id": "2026-27:W:2:IBK",
+            "from": "IBK",
+            "to": "SOO"
+          }
+        ]
       }
     }
   ],
