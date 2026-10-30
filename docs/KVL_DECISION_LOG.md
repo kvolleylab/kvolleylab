@@ -285,6 +285,11 @@ Status: APPROVED (사용자 요청 범위) / IMPLEMENTED / VERIFIED / PRIVATE PR
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 사용자가 여자부를 동일 양식으로 확장하고 실제 결과 검색·반영 후 “실제 홈페이지에 반영시켜”라고 운영 배포를 명시 승인했다. 앞선 드래프트 private-only/미승인 제한을 이 범위에서 대체한다. 최신 사이드바 이름 `신인 드래프트`를 유지한다. 여자 공식 신청58명과 취소1명을 구분해 실제57명·지명16명·28.1%를 표시하고, 58행10열 공식 목록과 기존52개 프로필 연결을 보존한다. KOVO 공식표 기준 14일반+2수련 및 3거래4권리를 원지명권 위치에 반영한다. 확정순위와 실제 구슬 로그를 분리하며 중복·색상·마지막 순위 결정 방식은 미확인으로 둔다. 남자 공식 최종표도 대조하고 홍준범 OP/MB를 감사 이력으로 정정한다. 입력 브랜치 `3a80baab6386c6e45212f119bdd2511874c7a92c`, 남자 revision60/여자 revision41. 공식 원본은 기존 Drive 공식자료 폴더에 보관했다. 관련72개 검사·105개 프로필 회귀 통과. merge·Pages·운영 확인은 PR #199 release 기록으로 구분한다. [자료·검수·복구](validation/draft-women-20261030.md).
 
+
+## 2026-10-30 · 여자 드래프트 단계별 확률·로즈 Hero·거래 요약·4R 표시
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR 기록). 이전 실제 홈페이지 반영 요청에 이어 운영자가 여자부 1~3순위 후 해당 팀 구슬을 제외하는 방식을 확인했다. 100개/46개 단계 시작 구슬 비율을 공통 추첨 카드로 표시하며, 실제 순서·중복 횟수·색상·7순위 자동 확정은 추정하지 않는다. Hero는 `KVL_COMPETITION_THEME_POLICY_V1`의 #8E315E / #6F234A, 강조 #E7A8C2를 사용한다. 거래 당시 선수·포지션·지명권을 ↔ 요약으로 표시하고, 모든 7개 권리가 패스인 4R만 공개 표에서 생략한다. 관리자 표와 저장된 28개 권리는 유지한다. 치지직 제공 영상은 지역 시청 제한으로 실제 프레임 미확인. [검수·복구](validation/draft-women-refine-20261030.md).
+
 ## 2026-10-30 · KVL Quality Audit v1 운영 적용 승인
 
 Status: APPROVED / MAIN INSTALLED / ACTIVATION VERIFICATION IN PROGRESS. 사용자가 PR 병합 → 운영 검증 → 매일 오전 9시 점검·중복 없는 Issue 알림 활성화 순서에 “승인한다”라고 답했다. PR #200을 `dd49cabf9af4e96b0d7e1a38862ec0213e40455b`로 병합했다. 앞선 감사의 RELEASE AND SCHEDULE NOT AUTHORIZED 기록을 이 운영 범위에서 대체한다. GitHub 웹 인증이 완료되지 않아 감사 전용 코드의 main 반영 시 운영 검증을 실행하는 경로를 추가한다. 수동 실행과 최소 권한은 유지하며 먼저 알림 없는 점검을 검증한 뒤 일정·알림을 활성화한다. 최신 #199 드래프트·공시 변경을 보존하고 기존 드래프트 검사를 재사용한다. 홈페이지·MASTER·Player ID·기존 workflow 수정이나 Drive 인증 공개를 승인한 것으로 확대하지 않는다. 실행·활성화 상태는 [운영 전환 기록](quality-audit/ACTIVATION_v1.md)에서 구분한다.

@@ -145,12 +145,13 @@
         "KOVO-2026-27-W-157977",
         "KOVO-2026-27-M-FINAL",
         "KOVO-2026-27-W-FINAL",
-        "USER-RECORD-20261028-M-f70d5fd59e34"
+        "USER-RECORD-20261028-M-f70d5fd59e34",
+        "USER-CONFIRMATION-20261030-W-LOTTERY"
       ],
       "verified_at": "2026-10-30",
-      "sha256": "145fc340f43efa135aebaaa2c6a8dd065b51b566d6bbf13140b9cfa0667da39e",
-      "evidence": "docs/validation/draft-women-20261030.md",
-      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+      "sha256": "426d7f94488d0ea6ec004df9150a4ac453efed309f90fb51d79e04c54b330b3d",
+      "evidence": "docs/validation/draft-women-refine-20261030.md",
+      "review_note": "공개 적합성·권리 보존·거래 당시 포지션·출처 대조. 1~3순위 이후 구슬 제외 방식은 사용자 제공 확인이며 공식 영상 검증으로 승격하지 않음. 실제 추첨·색상·중복·자동 7순위 미확인 유지."
     },
     "data/drafts/2026-27/women.json": {
       "access_level": "PUBLIC",
@@ -160,12 +161,13 @@
         "KOVO-2026-27-W-157977",
         "KOVO-2026-27-M-FINAL",
         "KOVO-2026-27-W-FINAL",
-        "USER-RECORD-20261028-M-f70d5fd59e34"
+        "USER-RECORD-20261028-M-f70d5fd59e34",
+        "USER-CONFIRMATION-20261030-W-LOTTERY"
       ],
       "verified_at": "2026-10-30",
-      "sha256": "98b884e192e007ab29cb4f864a5f4848d61bfe88072b285edf4ca5a70344c139",
-      "evidence": "docs/validation/draft-women-20261030.md",
-      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+      "sha256": "f65be047c1cbc51e088cb47ea0e735aa40eaa6b8d0e20bbe7dd12513e5a4a07b",
+      "evidence": "docs/validation/draft-women-refine-20261030.md",
+      "review_note": "공개 적합성·권리 보존·거래 당시 포지션·출처 대조. 1~3순위 이후 구슬 제외 방식은 사용자 제공 확인이며 공식 영상 검증으로 승격하지 않음. 실제 추첨·색상·중복·자동 7순위 미확인 유지."
     }
   }
 }

@@ -73,3 +73,13 @@
 
 .db-confirmed-ranking{grid-template-columns:minmax(0,1fr)}
 @media(max-width:680px){.db-season-control{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}.db-season-control .db-gender{width:100%;margin:0 0 4px;grid-column:1/-1}.db-season-control .db-gender button{flex:1}.db-season-control label{white-space:nowrap}.db-season-control select{width:130px}}
+
+/* KVL_COMPETITION_THEME_POLICY_V1: women always use the approved Rose palette. */
+.draft-board-page[data-gender=W] .db-banner{background:linear-gradient(120deg,#8E315E,#6F234A)}
+.draft-board-page[data-gender=W] .db-banner .da-eyebrow{color:#E7A8C2}
+.draft-board-page[data-gender=W] .db-banner>div>p:last-child,.draft-board-page[data-gender=W] .db-season-control label{color:#FFF1F6}
+.draft-board-page[data-gender=W] .db-season-control .db-gender button[data-division=W][aria-pressed=true]{color:#8E315E;background:#FFF1F6}
+.db-trade-row .db-trade-exchange,.db-dialog .db-trade-exchange{font-size:17px;font-weight:750;line-height:1.75;color:#17365d;margin:10px 0;word-break:keep-all;overflow-wrap:anywhere}
+.draft-board-page[data-gender=W] .db-trade-exchange{color:#8E315E}
+.db-trade-rights{font-size:12px;line-height:1.8;color:#657a90}
+@media(max-width:680px){.db-trade-row .db-trade-exchange,.db-dialog .db-trade-exchange{font-size:15px}}

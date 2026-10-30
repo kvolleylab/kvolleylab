@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {validate,lottery,columns,pickRank,applyCommand} from '../assets/js/draft-board-core.mjs';
-import {renderBoard} from '../assets/js/draft-board-render.mjs';
+import {validate,lottery,lotteryStages,columns,pickRank,applyCommand} from '../assets/js/draft-board-core.mjs';
+import {renderBoard,tradeSummary} from '../assets/js/draft-board-render.mjs';
 import {mergeResults} from '../assets/js/draft-history-v1.mjs';
 import {joinApplicants} from '../assets/js/draft-applicants-core.mjs';
 import {mergeListDetails} from '../assets/js/draft-applicant-list.mjs';
@@ -18,11 +18,46 @@ test('official women final PDF: 28 rights, 14 regular plus two trainees, fixed o
  assert.deepEqual([1,3,4].map(r=>right(r,'IBK').current_team),['IBK','IBK','IBK']);assert.deepEqual(state.trainees.HPS.entries.map(e=>e.player.name),['홍수화','노윤아']);
  assert.equal(state.trainees.SOO.status,'not_recorded');assert.equal(state.trainees.RSP.status,'not_recorded');assert.equal(state.trainees.GSC.status,'passed');
 });
-test('confirmed ranking never invents draws, duplicate counts, colors, automatic rank or later-pool odds',()=>{
+test('confirmed ranking never invents draws, duplicate counts, colors or automatic rank',()=>{
  const l=lottery(state);assert.equal(l.records.length,0);assert.equal(l.logStatus,'unverified');assert.equal(l.automatic,null);assert.equal(l.complete,true);assert.ok(state.teams.every(t=>t.color===null));
  const html=renderBoard(state,sources,{applicantCount:58});assert.match(html,/57명/);assert.match(html,/16명/);assert.match(html,/28\.1%/);assert.match(html,/공식 신청 58명 · 참가 취소 1명/);assert.match(html,/나온 구슬·중복 횟수 미확인/);assert.doesNotMatch(html,/중복 0회|7순위 자동 확정|64개 구슬/);
  assert.equal((html.match(/지명권 양도/g)||[]).length,5); // Four badges plus the allocation note.
  assert.ok(html.indexOf('id="draftResults"')<html.indexOf('id="draftAllocation"'));assert.doesNotMatch(html,/주요 수정 이력|시즌 출처와 확인 필요 자료/);
+});
+test('owner-confirmed women lottery excludes the first three teams only for the second pool',()=>{
+ const [first,second]=lotteryStages(state);
+ assert.equal(state.rules.lottery.verification,'user_record');assert.equal(first.total,100);assert.equal(second.total,46);
+ assert.deepEqual(first.entries.map(e=>[e.rank,e.team.id,e.probability]),[[1,'IBK',20],[2,'SOO',30],[3,'HHC',4]]);
+ assert.deepEqual(second.entries.map(e=>[e.rank,e.team.id]),[[4,'KEX'],[5,'RSP'],[6,'HPS'],[7,'GSC']]);
+ assert.deepEqual(second.excluded.map(t=>t.id).sort(),['HHC','IBK','SOO']);
+ for(const entry of second.entries){assert.equal(entry.probability,entry.team.balls/46*100);assert.equal(entry.automatic,false);}
+ const html=renderBoard(state,sources,{applicantCount:58});
+ for(const value of ['1–3순위','4–7순위','100개 구슬 기준','46개 구슬 기준','4.35%','76.09%','17.39%','2.17%'])assert.ok(html.includes(value),value);
+ assert.match(html,/각 단계 시작 시 구슬 비율/);assert.match(html,/나온 구슬·중복 횟수 미확인/);
+});
+test('public fourth round hides only seven explicit passes; waiting, selected and admin rounds stay available',()=>{
+ for(const seed of [state,read('data/drafts/2026-27/men.json')]){
+  const snapshot=structuredClone(seed),opts={applicantCount:seed.division==='W'?58:59};
+  assert.doesNotMatch(renderBoard(seed,sources,opts),/data-round="4"/);
+  assert.match(renderBoard(seed,sources,{...opts,admin:true}),/data-round="4"/);
+  for(const status of ['waiting','selected']){
+   const variant=structuredClone(seed),p=variant.picks.find(p=>p.round===4);
+   p.result=status==='waiting'?{status,actual_team:null,player:null}:{...variant.picks.find(p=>p.result.status==='selected').result};
+   assert.match(renderBoard(variant,sources,opts),/data-round="4"/);
+  }
+  assert.deepEqual(seed,snapshot);assert.equal(seed.picks.length,28);
+ }
+});
+test('exchange summaries keep historical positions and terms through edits and cancellation',()=>{
+ const trade=state.trades.find(t=>t.legs.some(l=>l.pick_id==='2026-27:W:2:IBK'));
+ assert.equal(trade.conditions,'IBK 고의정(OH) + 2R 지명권 ↔ SOOP 정솔민(L)');
+ assert.match(renderBoard(state,sources),/db-trade-exchange[^>]*>IBK 고의정\(OH\) \+ 2R 지명권 ↔ SOOP 정솔민\(L\)/);
+ const changed=applyCommand(state,{type:'trade_edit',target:trade.id,value:{...trade,conditions:'IBK 고의정(OH) + 2R 지명권 ↔ SOOP 정솔민(L) · 확인'},reason:'isolated presentation edit'},{actor:'test'});
+ assert.deepEqual(changed.picks,state.picks);
+ const cancelled=applyCommand(changed,{type:'trade_cancel',target:trade.id,reason:'isolated cancellation'},{actor:'test'});
+ assert.equal(cancelled.trades.find(t=>t.id===trade.id).conditions,changed.trades.find(t=>t.id===trade.id).conditions);
+ assert.deepEqual(cancelled.picks.map(p=>p.result),state.picks.map(p=>p.result));
+ assert.equal(tradeSummary({conditions:'<img src=x onerror=alert(1)>'}).includes('<img'),false);
 });
 test('actual observations can be added later; false complete logs and contradictory rank edits are rejected atomically',()=>{
  const ctx={actor:'test',now:'2026-10-30T08:00:00Z'};
