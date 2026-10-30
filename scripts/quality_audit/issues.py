@@ -126,7 +126,7 @@ class GitHub:
 
 def publish_allowed(env):
     return (env.get('KVL_AUDIT_APPROVED') == 'true' and env.get('GITHUB_REF') == 'refs/heads/main'
-            and env.get('GITHUB_EVENT_NAME') in {'schedule', 'workflow_dispatch'})
+            and env.get('GITHUB_EVENT_NAME') in {'schedule', 'workflow_dispatch', 'push'})
 
 
 def publish(operations, client):
@@ -188,7 +188,7 @@ def main():
     p.add_argument('--execution-result', choices=['success', 'failure', 'cancelled', 'skipped'])
     a = p.parse_args()
     if a.publish and not publish_allowed(os.environ):
-        p.error('Issue publication requires approval variable, trusted main and manual/scheduled event')
+        p.error('Issue publication requires explicit enabled approval, trusted main and manual/scheduled/release event')
     client = GitHub(os.environ['GITHUB_REPOSITORY'], os.environ['GH_TOKEN'])
     existing = client.list_issues()
     if a.hydrate:

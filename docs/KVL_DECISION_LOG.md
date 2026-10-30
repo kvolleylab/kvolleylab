@@ -293,3 +293,7 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-10-30 · KVL Quality Audit v1 운영 적용 승인
 
 Status: APPROVED / MAIN INSTALLED / ACTIVATION VERIFICATION IN PROGRESS. 사용자가 PR 병합 → 운영 검증 → 매일 오전 9시 점검·중복 없는 Issue 알림 활성화 순서에 “승인한다”라고 답했다. PR #200을 `dd49cabf9af4e96b0d7e1a38862ec0213e40455b`로 병합했다. 앞선 감사의 RELEASE AND SCHEDULE NOT AUTHORIZED 기록을 이 운영 범위에서 대체한다. GitHub 웹 인증이 완료되지 않아 감사 전용 코드의 main 반영 시 운영 검증을 실행하는 경로를 추가한다. 수동 실행과 최소 권한은 유지하며 먼저 알림 없는 점검을 검증한 뒤 일정·알림을 활성화한다. 최신 #199 드래프트·공시 변경을 보존하고 기존 드래프트 검사를 재사용한다. 홈페이지·MASTER·Player ID·기존 workflow 수정이나 Drive 인증 공개를 승인한 것으로 확대하지 않는다. 실행·활성화 상태는 [운영 전환 기록](quality-audit/ACTIVATION_v1.md)에서 구분한다.
+
+## 2026-10-30 · 승인된 감사 일정·Issue 운영 구성
+
+Status: APPROVED / CONFIGURED (main 실행·병합 증거는 활성화 PR). 기존 사용자 승인에 따라 UTC 00:00/KST 09:00 일정과 감사 전용 코드의 main 반영 시 중복 없는 Issue 갱신을 구성한다. 승인을 코드 이력에 남기고 기본 활성화해 웹 로그인과 별도 PAT 설정에 의존하지 않는다. 선택적 `KVL_QUALITY_AUDIT_APPROVED=false` 또는 다른 비어 있지 않은 미지원 값은 자동 실행·알림을 중지하며 변수 삭제는 기본 활성 상태로 복귀한다. 기존 pilot의 “변수 true 설정 전 무조건 비활성” 조건을 이번 승인된 운영 구성으로 대체한다. 명시적 main·허용 이벤트·런타임 승인 true·최소 권한·PRIVATE 비공개·신규/상승/재발만 알림은 유지한다. Drive 인증과 계정별 알림 수신은 미검증으로 구분한다. [운영 전환 기록](quality-audit/ACTIVATION_v1.md).
