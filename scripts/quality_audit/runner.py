@@ -24,6 +24,9 @@ CORE_TESTS = [
     'domestic-home-v2.test.cjs', 'draft-applicants.test.mjs', 'draft-lottery.test.mjs',
     'draft-profile-routing.test.mjs', 'player-reviewed-identities.test.mjs',
     'player-integration.test.mjs', 'player-profile-coverage.test.mjs',
+    # PR #199 is now on main. Reuse its existing invariants and DOM checks.
+    'draft-board.test.mjs', 'draft-board-store.test.mjs', 'draft-board-ui.test.mjs',
+    'draft-board-observed.test.mjs', 'draft-applicant-list.test.mjs', 'draft-women.test.mjs',
 ]
 
 
@@ -208,7 +211,7 @@ def run(root, *, live=False, core_tests=False, ui=False, master_input=None, prev
         checks.append(check('ui:browser', 'NOT RUN', note='--ui 미지정; DOM 테스트 통과를 시각 검증으로 간주하지 않음'))
     checks += [check('drive:roster-full', 'NOT VERIFIED', note='선수 MASTER는 검수중. v1은 경기 MASTER 비교만 인증 adapter 제공'),
                check('sync:timestamps', 'NOT VERIFIED', note='Drive 수정 시각/commit 시각은 실제 배포 시각과 다름; 배포 manifest 미설정'),
-               check('draft:selection-results', 'NOT RUN', note='운영 main의 신청자/프로필은 기존 테스트. 미병합 결과 페이지는 별도 PR 범위'),
+               check('draft:live-admin-storage', 'NOT RUN', note='PR #199의 결과·신청자·지명권 기존 테스트는 regression으로 재사용. 운영 관리자 저장과 드래프트 화면 전체 시각 검수는 실행하지 않음'),
                check('security:release-enforcement', 'NOT VERIFIED', note='감사 gate 구현; required check/실제 배포 차단 연결은 승인 후 설정')]
     checks.append(check('audit:execution', 'PASS', covered=['runner'], note='점검 프로그램 실행 완료; 데이터 검증 결과와 구분'))
     registry, events = reconcile(checks, previous, at=checked, commit=commit, run_id=run_id)

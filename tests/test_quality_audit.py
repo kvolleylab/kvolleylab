@@ -305,11 +305,14 @@ class ExportAndWorkflow(unittest.TestCase):
                          verified_at=TIME, sha256=sha256(f.read_bytes()).hexdigest())
                 self.assertEqual(validate_changed(tmp, ['players.json'], {'players.json': e}), ['players.json'])
 
-    def test_workflow_is_manual_pr_only_and_separates_write_token(self):
+    def test_workflow_release_validation_separates_write_token(self):
         import yaml
         p = Path(__file__).resolve().parents[1] / '.github/workflows/kvl-quality-audit-v1.yml'
         wf = yaml.safe_load(p.read_text()); events = wf.get('on', wf.get(True))
-        self.assertEqual(set(events), {'workflow_dispatch', 'pull_request'})
+        self.assertEqual(set(events), {'workflow_dispatch', 'pull_request', 'push'})
+        self.assertEqual(events['push']['branches'], ['main'])
+        self.assertEqual(events['push']['paths'], ['.github/workflows/kvl-quality-audit-v1.yml',
+                                                'scripts/quality_audit/**', 'tests/test_quality_audit.py'])
         self.assertEqual(wf['permissions'], {'contents': 'read'})
         self.assertEqual(wf['jobs']['audit']['permissions']['contents'], 'read')
         self.assertNotIn('write', wf['jobs']['audit']['permissions'].values())

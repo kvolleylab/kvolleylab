@@ -1,6 +1,14 @@
 name: KVL Quality Audit v1
 
 on:
+  # Owner approved operational activation on 2026-10-30 KST.
+  # Validate an audit release on main without a browser login or extra token.
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/kvl-quality-audit-v1.yml'
+      - 'scripts/quality_audit/**'
+      - 'tests/test_quality_audit.py'
   workflow_dispatch:
     inputs:
       live:
@@ -83,15 +91,15 @@ jobs:
           fi
           python -B -m scripts.quality_audit.issues --hydrate "$RUNNER_TEMP/kvl-audit-state/state.json"
       - name: Install Chromium
-        if: github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule'
+        if: github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule' || github.event_name == 'push'
         run: node "$RUNNER_TEMP/kvl-audit-deps/node_modules/playwright/cli.js" install --with-deps chromium
       - name: Run read-only audit
         if: always()
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-audit-deps/node_modules/jsdom
           KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-audit-deps/node_modules/playwright
-          LIVE: ${{ github.event_name != 'pull_request' && (inputs.live || github.event_name == 'schedule') }}
-          BROWSER: ${{ github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule' }}
+          LIVE: ${{ github.event_name != 'pull_request' && (inputs.live || github.event_name == 'schedule' || github.event_name == 'push') }}
+          BROWSER: ${{ github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule' || github.event_name == 'push' }}
         shell: bash
         run: |
           args=(--root . --output "$RUNNER_TEMP/kvl-audit-output" --core-tests --gate --state "$RUNNER_TEMP/kvl-audit-state/state.json" --run-id "$GITHUB_RUN_ID")
