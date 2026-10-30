@@ -1,5 +1,171 @@
 {
   "schema_version": 1,
   "purpose": "Changed public JSON requires reviewed source IDs, PUBLIC + VERIFIED, verified_at and exact SHA-256. Empty does not approve legacy records.",
-  "files": {}
+  "files": {
+    "data/draft-applicants/2026-27/list-details.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "6919f5a4c99d6eef7e13ca057424365738114ae23b3407ecc3c674ba628061b2",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/draft-applicants/index.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "8a9ed3b5456215b6598335eca4aa31e2688d52860f81905f0359b38bc2754428",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/drafts/index.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "f13b9ea083d13f12a76fa57e2c366902b80d8ecb66b1c132363afb61a0bbd064",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/draft-applicants/2026-27/lottery.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "18e28f085e59caaac379a2009c2082818d4196eae5d0107dbd85dbe42c812a06",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/draft-applicants/2026-27/results.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "341e99d0fdcbae5900e8a9bb657ac7af57b3998ade08a82d27d9fb0e5ad304e4",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/draft-applicants/2026-27/women-list-details.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "1355b149660aab454f469bebe8290e9d3c2d24688d0712c8024a5382112e693d",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/drafts/2026-27/imports/20261028-men-observed.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "77faa4c919ecec516fead5961810b6be96add60c0c8582b0ff8853015bda250f",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/drafts/2026-27/men.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "302dab6456a78099f9678ee76ab4564fa867b9f05e9c3af3436e9865b571370f",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/drafts/2026-27/sources.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "61e9b6b1f4578e88ab0bd7bbe7c4e633a60a8c4950ff59a434fda7e7c4d6c6e9",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/drafts/2026-27/women-sources.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "145fc340f43efa135aebaaa2c6a8dd065b51b566d6bbf13140b9cfa0667da39e",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/drafts/2026-27/women.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "USER-RECORD-20261028-M-f70d5fd59e34"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "98b884e192e007ab29cb4f864a5f4848d61bfe88072b285edf4ca5a70344c139",
+      "evidence": "docs/validation/draft-women-20261030.md",
+      "review_note": "공식 PDF·출처·신원·경로 및 공개 적합성 검토. 지명 결과·권리 거래는 공식 대조; 사용자 현장 기록/미확인 구슬·세칙은 기존 출처와 미확인 상태를 그대로 보존한다. 이 manifest는 모든 필드를 공식 사실로 승격하지 않는다."
+    }
+  }
 }

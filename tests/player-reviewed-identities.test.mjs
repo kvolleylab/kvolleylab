@@ -5,6 +5,8 @@ import path from 'node:path';
 import vm from 'node:vm';
 import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
+import {joinApplicants} from '../assets/js/draft-applicants-core.mjs';
+import {mergeResults} from '../assets/js/draft-history-v1.mjs';
 const require=createRequire(import.meta.url),{JSDOM,VirtualConsole}=require(process.env.KVL_JSDOM_PATH||'jsdom');
 const root=path.resolve(new URL('..',import.meta.url).pathname),base='8c4327c9669f2c251be16c8d0fe596168159bf6b';
 const read=f=>fs.readFileSync(path.join(root,f),'utf8'),json=f=>JSON.parse(read(f));
@@ -45,7 +47,12 @@ test('only six reviewed applicant links change; original 99 links and remaining 
  assert.equal(after.links.length,before.links.length);let changed=0;
  for(let i=0;i<before.links.length;i++){const b=before.links[i],a=after.links[i],c=byApplicant.get(b.applicant_id);if(!c){assert.deepEqual(a,b);continue}changed++;assert.notEqual(b.status,'matched');assert.equal(a.status,'matched');assert.equal(a.player_id,c.player_id);assert.equal(a.profile_verified,true);assert.ok(a.evidence.some(e=>e.rule==='name_birth_date'&&e.master_checked));assert.ok(a.evidence.some(e=>e.reviewer==='project_owner'))}
  assert.equal(changed,6);const linked=after.links.filter(x=>x.status==='matched');assert.equal(linked.length,105);assert.equal(new Set(linked.map(x=>x.player_id)).size,105);assert.equal(after.links.filter(x=>x.status!=='matched').length,12);
- for(const f of ['data/draft-applicants/2026-27/applicants.json','data/draft-applicants/2026-27/results.json'])assert.equal(read(f),original(f));
+ assert.equal(read('data/draft-applicants/2026-27/applicants.json'),original('data/draft-applicants/2026-27/applicants.json'));
+ // Final selections are a separate, sourced annual overlay; they no longer stay empty.
+ const rows=joinApplicants(json('data/draft-applicants/2026-27/applicants.json'),after),snapshot=structuredClone(rows);
+ const joined=mergeResults(rows,json('data/draft-applicants/2026-27/results.json'),'2026-27');
+ assert.deepEqual(rows,snapshot);assert.equal(joined.length,117);assert.equal(joined.filter(r=>r.selection.status==='selected').length,34);
+ for(let i=0;i<rows.length;i++){const {selection,application_status,application_update,...facts}=joined[i],{selection:oldSelection,application_status:oldStatus,...originalFacts}=rows[i];assert.deepEqual(facts,originalFacts);}
 });
 test('actual combined catalog changes exactly six names and preserves all 1842 IDs and other identity/history fields',async()=>{
  const b=await app(original),a=await app();try{

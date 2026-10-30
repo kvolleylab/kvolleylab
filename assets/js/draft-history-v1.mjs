@@ -4,7 +4,7 @@ let indexPromise;
 const cache=new Map();
 async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw new Error(`Draft source unavailable: ${path}`);return r.json()}
 export function loadDraftIndex(){return indexPromise??=json('data/draft-applicants/index.json').then(index=>{
- const keys=new Set();for(const s of index.seasons||[]){if(!/^\d{4}-\d{2}$/.test(s.season)||keys.has(s.season))throw new Error('Invalid draft season');keys.add(s.season);for(const path of [s.applicants,s.links,s.results].filter(Boolean))if(!path.startsWith(`data/draft-applicants/${s.season}/`)||path.includes('..'))throw new Error('Invalid draft source')}
+ const keys=new Set();for(const s of index.seasons||[]){if(!/^\d{4}-\d{2}$/.test(s.season)||keys.has(s.season))throw new Error('Invalid draft season');keys.add(s.season);for(const path of [s.applicants,s.links,s.results,s.details,s.women_details].filter(Boolean))if(!path.startsWith(`data/draft-applicants/${s.season}/`)||path.includes('..'))throw new Error('Invalid draft source')}
  if(!keys.has(index.default_season))throw new Error('Missing default draft season');return index;
 })}
 export function mergeResults(rows,results,season){
@@ -13,10 +13,15 @@ export function mergeResults(rows,results,season){
  for(const r of results.results||[]){
   if(seen.has(r.applicant_id)||!byId.has(r.applicant_id)||r.season!==season)throw new Error('Invalid draft result identity');seen.add(r.applicant_id);
   if(r.record_status!=='VERIFIED'||r.access_level!=='PUBLIC'||!r.source_url||!/^https:\/\//.test(r.source_url)||!r.verified_at||!['selected','undrafted'].includes(r.status))throw new Error('Unverified draft result');
-  if(r.status==='selected'&&(!r.team||!Number.isInteger(r.round)||r.round<1||!Number.isInteger(r.pick)||r.pick<1))throw new Error('Incomplete selected result');
+  if(r.status==='selected'&&(!r.team||(r.kind==='trainee'?(r.round!==null||r.pick!==null):(!Number.isInteger(r.round)||r.round<1||r.round>4||!Number.isInteger(r.pick)||r.pick<1||r.pick>7))))throw new Error('Incomplete selected result');
+ }
+ const updates=new Map();
+ for(const u of results.application_updates||[]){
+  if(!byId.has(u.applicant_id)||updates.has(u.applicant_id)||u.season!==season||u.application_status!=='withdrawn'||u.record_status!=='VERIFIED'||u.access_level!=='PUBLIC'||!/^https:\/\//.test(u.source_url||'')||!u.verified_at||seen.has(u.applicant_id))throw new Error('Invalid application update');
+  updates.set(u.applicant_id,u);
  }
  const map=new Map((results.results||[]).map(x=>[x.applicant_id,x]));
- return rows.map(row=>({...row,selection:map.has(row.applicant_id)?{...map.get(row.applicant_id)}:{status:'unverified',team:null,round:null,pick:null}}));
+ return rows.map(row=>({...row,...(updates.has(row.applicant_id)?{application_status:'withdrawn',application_update:{...updates.get(row.applicant_id)}}:{}),selection:map.has(row.applicant_id)?{...map.get(row.applicant_id)}:{status:'unverified',team:null,round:null,pick:null}}));
 }
 export async function loadDraftSeason(season){
  const index=await loadDraftIndex(),entry=index.seasons.find(x=>x.season===(season||index.default_season));if(!entry)throw new Error('Unknown draft season');

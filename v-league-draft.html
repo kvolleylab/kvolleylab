@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>신인선수 드래프트 | K-Volley Lab</title>
+<meta name="description" content="시즌별 KOVO 신인선수 드래프트 구슬 추첨, 라운드 지명 결과와 지명권 거래 이력.">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="assets/css/pretendard-global.css">
+<link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css">
+<link rel="stylesheet" href="assets/css/draft-hub-v2.css?v=20261030-women-1">
+<link rel="stylesheet" href="assets/css/draft-board-v1.css?v=20261030-women-1">
+<script defer src="assets/js/unified-nav.js?v=20261028-draft-1"></script>
+<script type="module" src="assets/js/draft-board-page.mjs?v=20261030-women-1"></script>
+</head><body class="draft-applicants-page draft-board-page" data-gender="M">
+<a class="da-skip" href="#draftResults">지명결과로 바로가기</a>
+<main class="da-main db-main">
+<div class="da-utility"><span>프로 V-리그 <span aria-hidden="true">/</span> <b>신인 드래프트</b></span><button id="adminOpen" type="button">관리자 입력</button></div>
+<header class="db-banner"><div><p class="da-eyebrow">K-VOLLEY LAB · PRO V-LEAGUE</p><h1>신인선수 드래프트</h1><p>새로운 시작을 함께할 선수들, 추첨부터 지명까지.</p></div><div class="db-season-control"><div class="da-gender db-gender" role="group" aria-label="드래프트 부문"><button type="button" data-division="M" aria-pressed="true">남자부</button><button type="button" data-division="W" aria-pressed="false">여자부</button></div><label for="season">연도</label><select id="season" aria-label="드래프트 연도" disabled></select></div></header>
+<div class="db-content">
+<div id="draftError" class="da-error" role="alert" hidden></div>
+<div class="db-load-bar" id="adminLoadBar" hidden><span id="saveStatus" role="status" aria-live="polite">드래프트 정보를 불러오고 있습니다.</span><button class="da-button" id="refresh" type="button">최신 저장 불러오기</button></div>
+<div id="adminBar" class="db-admin-bar" hidden></div>
+<div id="draftBoard" aria-busy="true"><p class="db-empty">시즌 자료를 확인하고 있습니다.</p></div>
+<footer class="da-footer"><div><b>K-Volley Lab</b><span>배구의 다음을 기록합니다.</span></div><a href="draft-hub.html?season=2026-27&gender=M&layout=table&sort=source#applicants" id="applicantsFooter">공식 참가 신청자 명단 ↗</a></footer>
+</div>
+</main>
+<dialog id="editor" class="da-dialog db-dialog" aria-labelledby="editorTitle"><div class="da-dialog-head"><h2 id="editorTitle"></h2><button type="button" class="da-close" id="editorClose" aria-label="닫기">×</button></div><div id="editorBody" class="da-dialog-body"></div></dialog>
+<noscript>이 페이지는 JavaScript가 필요합니다. <a href="https://kovo.co.kr/news/kovo/press/157978">KOVO 공식 안내 보기</a></noscript>
+</body></html>

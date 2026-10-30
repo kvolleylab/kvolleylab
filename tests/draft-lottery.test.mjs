@@ -36,7 +36,7 @@ test('reject mismatched seasons, missing sources, duplicate teams, and wrong tot
   }
 });
 
-test('cards show the requested logo, team, balls (probability) and clear on another division or year', () => {
+test('cards show both divisions and clear on an unknown year', () => {
   const dom = new JSDOM('<section id="lottery" hidden></section>');
   try {
     const host = dom.window.document.querySelector('section');
@@ -48,7 +48,7 @@ test('cards show the requested logo, team, balls (probability) and clear on anot
     assert.equal(host.querySelector('li').firstElementChild.tagName, 'IMG');
     assert.match(host.textContent, /최종 지명 순서와는 다릅니다/);
     renderLottery(host, data, '2026-27', 'W');
-    assert.equal(host.hidden, true); assert.equal(host.children.length, 0);
+    assert.equal(host.hidden, false); assert.equal(host.querySelectorAll('li').length,7);assert.equal(host.querySelector('li h3').textContent,'정관장');assert.equal(host.querySelector('li p').textContent,'35개 (35%)');
     renderLottery(host, data, '2027-28', 'M');
     assert.equal(host.hidden, true);
     renderLottery(host, data, '2026-27', 'M');

@@ -14,7 +14,7 @@
   const nationalPages=new Set(['national-team.html','national-team-history.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
   const analysisPages=new Set(['player-compare.html','player-cohort.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html','national-youth-sports-festival-2026.html','comprehensive-competitions.html','national-sports-festival-volleyball-2026-unified-ui-prototype.html']);
-  const vleaguePages=new Set(['v-league.html','kovo-cup.html']);
+  const vleaguePages=new Set(['v-league.html','kovo-cup.html','v-league-draft.html']);
   const isProCompetitionPrototype=path==='competition-engine-prototype.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
   const isProCompetitionProduction=path==='competition-engine.html'&&/^(?:v-league|kovo-cup)-(?:men|women)-/.test(params.get('competition')||'');
   const universityLeaguePages=new Set(['university-league.html']);
@@ -61,7 +61,8 @@
     {type:'divider'},
     group('vleague',icon.league,'프로 V-리그',[
       link('vleague-home','competition-engine.html?competition=v-league-men-2026-27',null,'V-리그 홈'),
-      link('vleague-cup','competition-engine.html?competition=kovo-cup-men-2026',null,'KOVO컵')
+      link('vleague-cup','competition-engine.html?competition=kovo-cup-men-2026',null,'KOVO컵'),
+      link('vleague-draft','v-league-draft.html',null,'신인 드래프트')
     ]),
     group('national',icon.flag,'국가대표팀',[
       link('national-home','national-team.html',null,'대표팀 홈'),
@@ -102,6 +103,7 @@
   ];
 
   const isChildActive=(item)=>{
+    if(item.key==='vleague-draft')return active==='vleague'&&path==='v-league-draft.html';
     if(item.key==='vleague-home')return active==='vleague'&&(path==='v-league.html'||((isProCompetitionPrototype||isProCompetitionProduction)&&/^v-league-/.test(params.get('competition')||'')));
     if(item.key==='vleague-cup')return active==='vleague'&&(path==='kovo-cup.html'||((isProCompetitionPrototype||isProCompetitionProduction)&&/^kovo-cup-/.test(params.get('competition')||'')));
 
