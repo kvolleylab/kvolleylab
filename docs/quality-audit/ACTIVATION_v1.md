@@ -2,6 +2,8 @@
 
 사용자 승인: 2026-10-30 KST, PR 병합·운영 점검·매일 09:00 KST 점검·Issue 알림 활성화.
 
+현재 상태: **ACTIVE / 최초 운영 실행·Issue 게시·중복 방지 재실행 VERIFIED**. 활성화 commit: `772598bc665eb9029fd8d87fce98499e67e4d4b6` (PR #202).
+
 ## 확인한 상태
 
 | 항목 | 결과와 근거 |
@@ -12,8 +14,8 @@
 | 합성 테스트 | PASS — 56건 재실행 |
 | 운영 검증 PR #201 | PASS — [Actions 41055500344](https://github.com/kvolleylab/kvolleylab/actions/runs/41055500344), PASS 117 / FAIL 3 / NOT VERIFIED 6 / NOT RUN 3 |
 | main 운영 실행 | PASS — [Actions 41055901858](https://github.com/kvolleylab/kvolleylab/actions/runs/41055901858), PASS 125 / FAIL 3 / NOT VERIFIED 7 / NOT RUN 1. 점검 실행·P0/P1 gate PASS |
-| 매일 09:00 KST schedule | 설정 검증 PASS — 활성화 변경의 main 병합 시 적용, 최초 실제 예약 실행은 NOT RUN |
-| Issue 실제 게시·반복 실행 | NOT RUN — 활성화 변경의 main 실행에서 확인 후 PR에 증거 기록 |
+| 매일 09:00 KST schedule | PASS — main에 활성화. 최초 실제 예약 실행은 NOT RUN, 2026-10-31 09:00 KST 예정(시작 지연 가능) |
+| Issue 실제 게시·반복 실행 | PASS — 최초 create 4, 재실행 create 0 / update 4 / 댓글 0. Issue #204~#207 |
 | 이메일·모바일 실제 수신 | NOT VERIFIED — 계정별 전달 확인 필요 |
 | Drive Actions 인증 | NOT VERIFIED — 자격 증명 미설정, 파일은 공개하지 않음 |
 
@@ -40,3 +42,19 @@ PR #199의 기존 6개 드래프트 테스트(지명권, 저장소 계약, 관�
 ## main 운영 점검 증거
 
 2026-10-30 21:31 KST, `d35633199e09df09f33cc8b1f434fa70de923b80`에서 공식 3개 endpoint 접근 및 11개 관측 경기, 운영 4대회 JSON, Player ID 1,842개, UI 72개 화면, Python 129건이 통과했다. 기존 회귀 24개 파일의 169개 하위 검사 중 168개가 통과했고 과거 CSS 고정 해시 1개는 기존 FAIL이다. YAML 2개·JSON 1개·과거 CSS 해시를 합해 P2 CONFIRMED 4건이 재확인됐다. P0/P1 신규 결함은 없었다. Drive 인증, 공식 전체 시즌, 레거시 공개등급, 배포 시각과 실제 배포 차단 연결은 NOT VERIFIED이며 관리자 운영 저장은 NOT RUN이다. [해시·세부 검사 증거](activation-main-evidence.json).
+
+
+## 활성화 후 최종 확인
+
+[운영 실행 41056879688](https://github.com/kvolleylab/kvolleylab/actions/runs/41056879688)의 audit와 notify가 모두 성공했다. 첫 main 검증 이후 반영된 #203 여자 드래프트 변경도 보존했다. 최종 점검은 PASS 125 / FAIL 3 / NOT VERIFIED 7 / NOT RUN 1, P0/P1 gate PASS다. Python 129건·UI 72개 화면 통과, JS 회귀 24개 파일 중 23개 PASS / 기존 player-integration 파일 FAIL이다. JS 하위 검사 범위는 172건이며 실패 파일의 전체를 통과로 표시하지 않는다.
+
+첫 Issue 처리: create 4 / update 0 / resolve 0. 같은 보고서의 실제 notify job 재실행: create 0 / update 4 / resolve 0. 오류 ID·Issue 번호·최초 발견일(2026-10-30 00:49:10 KST)이 유지됐으며 4개 Issue 모두 댓글 0개다. PRIVATE 또는 SUSPECTED 항목은 신규 Issue로 게시되지 않았다. 정상 반복 알림용 별도 메일·댓글은 생성하지 않는다.
+
+| 기존 오류 | 공개 이력 |
+|---|---|
+| P2 기존 timeline workflow YAML | [#204](https://github.com/kvolleylab/kvolleylab/issues/204) |
+| P2 기존 VNL workflow YAML | [#205](https://github.com/kvolleylab/kvolleylab/issues/205) |
+| P2 기존 VNL JSON 파싱 | [#206](https://github.com/kvolleylab/kvolleylab/issues/206) |
+| P2 기존 player-integration 회귀 | [#207](https://github.com/kvolleylab/kvolleylab/issues/207) |
+
+[최종 실행·artifact 해시·검사·Issue 재실행 증거](activation-live-evidence.json). 기존 오류의 수정은 수행하지 않았다. 최초 예약 이벤트 자체, Drive 인증 연동, 이메일/모바일 수신 및 다른 미검증 항목은 완료했다고 표현하지 않는다. ChatGPT Pro 해지·Plus 변경과 무관하게 GitHub의 Python·Node·Chromium과 기본 GITHUB_TOKEN으로 작동한다.

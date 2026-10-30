@@ -1,6 +1,6 @@
 # KVL Quality Audit v1 운영 명세
 
-작성: 2026-10-30 KST. 상태: **운영 적용 승인 / 일일 점검·Issue 운영 구성**. 후속 실행 증거는 [운영 전환 기록](quality-audit/ACTIVATION_v1.md)에 기록한다.
+작성: 2026-10-30 KST. 상태: **운영 활성 / 최초 실행·Issue 중복 방지 검증 완료**. 후속 실행 증거는 [운영 전환 기록](quality-audit/ACTIVATION_v1.md)에 기록한다.
 
 이 프로그램은 GitHub Actions의 Python·Node.js·Chromium으로 실행한다. ChatGPT Pro, Plus, Work, OpenAI API 키·결제·세션을 사용하지 않는다. 구독 변경이나 해지는 이미 GitHub에 설치된 프로그램의 실행 조건이 아니다. AI 분석은 오류 보고서를 사람이 검토한 뒤 요청하는 선택 절차다.
 
