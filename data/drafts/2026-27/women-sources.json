@@ -38,8 +38,7 @@
     "verified_at": "2026-10-30"
   },
   "pending": [
-    "구슬 색상·중복을 포함한 실제 전체 추첨 기록",
-    "7순위 자동 확정 여부",
+    "7순위 결정 방식(추첨 또는 자동 확정) 및 제공 기록 이후의 진행",
     "수련선수 운영 시행세칙"
   ],
   "source_discrepancies": [
@@ -154,7 +153,7 @@
     "title": "치지직 배구 중계 A · 2026~2027 KOVO 여자 신인선수 드래프트",
     "verification": "unverified",
     "checked_at": "2026-10-30",
-    "note": "현재 접속 국가에서는 시청할 수 없는 영상입니다. 실제 영상 프레임은 확인하지 못했으므로 구슬 색상·추첨 순서·중복 횟수의 근거로 사용하지 않음.",
+    "note": "확인 환경의 지역 제한으로 원영상을 직접 재생하지 못함. 구슬 색상은 별도 첨부 방송 화면, 추첨 14회는 사용자가 영상을 확인해 제공한 전사를 observation 출처로 반영함.",
     "alternatives": [
       {
         "url": "https://vod.sooplive.com/player/211023189",
@@ -168,6 +167,21 @@
     "source_type": "user_record",
     "provided_at": "2026-10-30",
     "reset_after_rank": 3,
-    "note": "2026-10-30 운영자 제공 설명: 1~3순위 추첨 후 해당 3팀의 구슬을 제외하고 4~7순위 추첨. 마지막 7순위의 자동 확정 여부·구슬 색상·중복 횟수는 미확인. 치지직 제공 영상은 확인 환경의 지역 제한으로 재생하지 못함."
+    "note": "2026-10-30 운영자 확인: 1~3순위 팀의 구슬을 제외하고 4~7순위 추첨. 제공된 영상 관찰 기록 14회 중 중복 8회(정관장 7회·도로공사 1회), 방송 배분 화면에서 7팀 구슬 색상 확인. 7순위 결정 방식은 미확인. 원영상 직접 재생 검증과 사용자 제공 자료 검증은 구분함."
+  },
+  "observation": {
+    "source_id": "USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+    "source_type": "user_video_transcription",
+    "title": "사용자 제공 여자 드래프트 영상 관찰 기록 및 방송 배분 화면",
+    "provided_at": "2026-10-30",
+    "imported_on": "2026-10-30",
+    "video_url": "https://chzzk.naver.com/video/15897933",
+    "filename": "image(20261030-141603).png",
+    "archive_file_id": "1ID3LsN8TUisSDwId0ym7uCnHSxGSeX5C",
+    "sha256": "e7e750c1cad8d41fbd942b22cd0ea2c8b10d901ce2d65080d4169dea4e80b82e",
+    "color_note": "첨부 방송 화면의 색상 이름·팀·구슬 수를 직접 대조. 원영상 재생 검증을 대신한 것으로 표시하지 않음. 색상값(hex)은 화면용 대표색.",
+    "observed_draw_count": 14,
+    "observed_duplicate_count": 8,
+    "last_rank_method": "unknown"
   }
 }

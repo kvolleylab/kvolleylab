@@ -302,3 +302,7 @@ Status: APPROVED / CONFIGURED (main 실행·병합 증거는 활성화 PR). 기�
 ## 2026-10-30 · KVL Quality Audit v1 운영 활성 및 알림 재실행 검증
 
 Status: ACTIVE / MAIN VERIFIED / ISSUE PUBLICATION VERIFIED. 사용자 승인에 따라 #200 설치 → #201 main 읽기 전용 운영 검증 → #202 매일 09:00 KST 일정·중복 없는 Issue 알림 활성화를 완료했다. 활성화 commit `772598bc665eb9029fd8d87fce98499e67e4d4b6`, Actions `41056879688`의 audit/notify 성공. 기존 공개 P2 4건을 #204~#207에 최초 발견일 그대로 등록했고 실제 notify 재실행은 create 0 / update 4 / 댓글 0으로 중복을 방지했다. 최종 PASS125/FAIL3/NOT VERIFIED7/NOT RUN1, Python129·UI72 PASS, P0/P1 gate PASS. 동시에 반영된 #199/#203 드래프트와 기존 공시를 보존했다. 기존 오류는 자동 수정하지 않는다. 최초 예약 이벤트(10월31일09시 예정), Drive 인증, 실제 이메일/모바일 수신·배포차단 연결은 미검증으로 남긴다. ChatGPT/OpenAI 구독·키·세션 비종속. [운영 전환·복구·실행 증거](quality-audit/ACTIVATION_v1.md).
+
+## 2026-10-30 · 여자 드래프트 사용자 영상 전사·방송 배분 화면 반영
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (실제 배포 증거는 release PR). 사용자가 원영상에서 확인해 제공한 14회 순서와 첨부 방송 화면의 7팀 색상을 반영한다. 정관장 중복7회·도로공사 중복1회, 총8회이며 중복행은 유지하고 신규 순위는 부여하지 않는다. GS칼텍스는 검정1개와 공식7순위를 유지하되 제공된14회 이후 실제 추첨·자동 확정 여부는 미확인으로 둔다. 이전 색상·중복 미확인 판단을 제공된 범위에서 대체하며 원영상 직접 검증으로 승격하지 않는다. 23개 감사 명령으로 여자 revision45→68, 지명권28개·선수 결과·거래·남자부 보존. 기존 실제 홈페이지 반영 승인 범위의 후속 데이터 갱신이다. [자료·검수·복구](validation/draft-women-draws-20261030.md).

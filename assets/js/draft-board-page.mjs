@@ -1,6 +1,6 @@
 import {EVENT_STATUS,PICK_STATUS,TRADE_STATUS,validate,lottery,playerSnapshot} from './draft-board-core.mjs';
 import {DraftStore,fetchJSON} from './draft-board-store.mjs';
-import {renderBoard,e,teamName,sourceLink,badge,dateText,tradeSummary} from './draft-board-render.mjs?v=20261030-women-2';
+import {renderBoard,e,teamName,sourceLink,badge,dateText,tradeSummary} from './draft-board-render.mjs?v=20261030-women-draws-1';
 import {joinApplicants} from './draft-applicants-core.mjs';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 let index,state,sources,store,applicants=[],applicantError='',generation=0,busy=false,division=params.get('gender')==='W'?'W':'M';
