@@ -9,6 +9,7 @@ import {mergeListDetails} from '../assets/js/draft-applicant-list.mjs';
 const read=p=>JSON.parse(fs.readFileSync(new URL('../'+p,import.meta.url))),state=read('data/drafts/2026-27/women.json'),sources=read('data/drafts/2026-27/women-sources.json');
 const applicants=joinApplicants(read('data/draft-applicants/2026-27/applicants.json'),read('data/draft-applicants/2026-27/player-links.json')),results=read('data/draft-applicants/2026-27/results.json');
 const right=(r,t)=>state.picks.find(p=>p.id===`2026-27:W:${r}:${t}`);
+function unobserved(){const seed=structuredClone(state);seed.draws=[];seed.teams.forEach(t=>t.color=null);seed.lottery_result.draw_log_status='unverified';return seed;}
 test('official women final PDF: 28 rights, 14 regular plus two trainees, fixed order and four traded rights',()=>{
  validate(state);assert.equal(state.picks.length,28);assert.equal(new Set(state.picks.map(p=>p.id)).size,28);
  assert.deepEqual(columns(state).map(t=>t.id),['IBK','SOO','HHC','KEX','RSP','HPS','GSC']);
@@ -19,7 +20,7 @@ test('official women final PDF: 28 rights, 14 regular plus two trainees, fixed o
  assert.equal(state.trainees.SOO.status,'not_recorded');assert.equal(state.trainees.RSP.status,'not_recorded');assert.equal(state.trainees.GSC.status,'passed');
 });
 test('confirmed ranking never invents draws, duplicate counts, colors or automatic rank',()=>{
- const l=lottery(state);assert.equal(l.records.length,0);assert.equal(l.logStatus,'unverified');assert.equal(l.automatic,null);assert.equal(l.complete,true);assert.ok(state.teams.every(t=>t.color===null));
+ const state=unobserved(),l=lottery(state);assert.equal(l.records.length,0);assert.equal(l.logStatus,'unverified');assert.equal(l.automatic,null);assert.equal(l.complete,true);assert.ok(state.teams.every(t=>t.color===null));
  const html=renderBoard(state,sources,{applicantCount:58});assert.match(html,/57명/);assert.match(html,/16명/);assert.match(html,/28\.1%/);assert.match(html,/공식 신청 58명 · 참가 취소 1명/);assert.match(html,/나온 구슬·중복 횟수 미확인/);assert.doesNotMatch(html,/중복 0회|7순위 자동 확정|64개 구슬/);
  assert.equal((html.match(/지명권 양도/g)||[]).length,5); // Four badges plus the allocation note.
  assert.ok(html.indexOf('id="draftResults"')<html.indexOf('id="draftAllocation"'));assert.doesNotMatch(html,/주요 수정 이력|시즌 출처와 확인 필요 자료/);
@@ -33,7 +34,7 @@ test('owner-confirmed women lottery excludes the first three teams only for the 
  for(const entry of second.entries){assert.equal(entry.probability,entry.team.balls/46*100);assert.equal(entry.automatic,false);}
  const html=renderBoard(state,sources,{applicantCount:58});
  for(const value of ['1–3순위','4–7순위','100개 구슬 기준','46개 구슬 기준','4.35%','76.09%','17.39%','2.17%'])assert.ok(html.includes(value),value);
- assert.match(html,/각 단계 시작 시 구슬 비율/);assert.match(html,/나온 구슬·중복 횟수 미확인/);
+ assert.match(html,/각 단계 시작 시 구슬 비율/);assert.match(html,/확인된 추첨 14회 · 중복 8회/);
 });
 test('public fourth round hides only seven explicit passes; waiting, selected and admin rounds stay available',()=>{
  for(const seed of [state,read('data/drafts/2026-27/men.json')]){
@@ -60,7 +61,7 @@ test('exchange summaries keep historical positions and terms through edits and c
  assert.equal(tradeSummary({conditions:'<img src=x onerror=alert(1)>'}).includes('<img'),false);
 });
 test('actual observations can be added later; false complete logs and contradictory rank edits are rejected atomically',()=>{
- const ctx={actor:'test',now:'2026-10-30T08:00:00Z'};
+ const state=unobserved(),ctx={actor:'test',now:'2026-10-30T08:00:00Z'};
  const first=applyCommand(state,{type:'draw_add',value:{team_id:'IBK'},reason:'video fixture'},ctx);
  const repeated=applyCommand(first,{type:'draw_add',value:{team_id:'IBK'},reason:'video fixture duplicate'},ctx);assert.equal(lottery(repeated).records[1].duplicate,true);assert.equal(lottery(repeated).records[1].rank,null);assert.equal(lottery(repeated).ranks.IBK,1);
  assert.throws(()=>applyCommand(state,{type:'draw_add',value:{team_id:'HPS'},reason:'wrong first'},ctx),/확정 순위/);
@@ -75,4 +76,22 @@ test('original 58 applicants retained, one sourced withdrawal overlay, 16 select
  const before=structuredClone(applicants),rows=mergeResults(applicants,results,'2026-27'),women=rows.filter(r=>r.gender==='W');assert.equal(women.length,58);assert.equal(women.filter(r=>r.application_status==='withdrawn').length,1);assert.equal(women.filter(r=>r.selection.status==='selected').length,16);assert.equal(women.filter(r=>r.selection.kind==='trainee').length,2);assert.ok(women.filter(r=>r.selection.kind==='trainee').every(r=>r.selection.round===null&&r.selection.pick===null));assert.deepEqual(applicants,before);
  const details=read('data/draft-applicants/2026-27/women-list-details.json'),enriched=mergeListDetails(rows,details,'2026-27').filter(r=>r.gender==='W');assert.equal(enriched.length,58);assert.ok(enriched.every(r=>r.birth_date&&r.weight_kg&&r.previous_school));
  const broken=structuredClone(results);broken.application_updates[0].applicant_id=women.find(r=>r.selection.status==='selected').applicant_id;assert.throws(()=>mergeResults(applicants,broken,'2026-27'),/application update/);
+});
+
+test('provided women video sequence preserves all 14 observations, eight duplicates and six observed ranks',()=>{
+ const evidence=read('data/drafts/2026-27/imports/20261030-women-video-observed.json'),draw=lottery(state);
+ const sequence=['IBK','SOO','HHC','KEX','RSP','RSP','RSP','KEX','RSP','RSP','RSP','RSP','RSP','HPS'];
+ assert.deepEqual(state.draws.map(d=>d.team_id),sequence);assert.deepEqual(evidence.draws.map(d=>d.team_id),sequence);
+ assert.deepEqual(draw.records.map(r=>r.rank),[1,2,3,4,5,null,null,null,null,null,null,null,null,6]);
+ assert.deepEqual(draw.records.filter(r=>r.duplicate).map(r=>r.sequence),[6,7,8,9,10,11,12,13]);
+ assert.equal(draw.records.filter(r=>r.duplicate&&r.team_id==='RSP').length,7);assert.equal(draw.records.filter(r=>r.duplicate&&r.team_id==='KEX').length,1);
+ for(const [id,name,balls] of [['IBK','초록',20],['SOO','파랑',30],['HHC','노랑',4],['KEX','흰색',2],['RSP','빨강',35],['HPS','보라',8],['GSC','검정',1]]){
+  const t=state.teams.find(t=>t.id===id);assert.equal(t.color.name,name);assert.equal(t.balls,balls);assert.equal(t.probability,balls);
+  for(const d of state.draws.filter(d=>d.team_id===id))assert.deepEqual(d.color,t.color);
+ }
+ assert.equal(draw.logStatus,'partial');assert.equal(draw.automatic,null);assert.equal(draw.ranks.GSC,7);assert.ok(!state.draws.some(d=>d.team_id==='GSC'));
+ assert.throws(()=>applyCommand(state,{type:'lottery_result',value:{...state.lottery_result,draw_log_status:'complete'},reason:'last rank still unobserved'},{actor:'test'}),/실제 구슬 기록/);
+ assert.equal(sources.observation.source_type,'user_video_transcription');assert.equal(sources.video.verification,'unverified');
+ const html=renderBoard(state,sources,{applicantCount:58});assert.match(html,/확인된 추첨 14회 · 중복 8회/);assert.doesNotMatch(html,/나온 구슬·중복 횟수 미확인|7순위 자동 확정/);
+ assert.equal((html.match(/class="db-duplicate"/g)||[]).length,8);
 });

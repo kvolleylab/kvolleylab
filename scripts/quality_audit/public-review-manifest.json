@@ -146,12 +146,13 @@
         "KOVO-2026-27-M-FINAL",
         "KOVO-2026-27-W-FINAL",
         "USER-RECORD-20261028-M-f70d5fd59e34",
-        "USER-CONFIRMATION-20261030-W-LOTTERY"
+        "USER-CONFIRMATION-20261030-W-LOTTERY",
+        "USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
       ],
       "verified_at": "2026-10-30",
-      "sha256": "426d7f94488d0ea6ec004df9150a4ac453efed309f90fb51d79e04c54b330b3d",
-      "evidence": "docs/validation/draft-women-refine-20261030.md",
-      "review_note": "공개 적합성·권리 보존·거래 당시 포지션·출처 대조. 1~3순위 이후 구슬 제외 방식은 사용자 제공 확인이며 공식 영상 검증으로 승격하지 않음. 실제 추첨·색상·중복·자동 7순위 미확인 유지."
+      "sha256": "d3e3f8d902bbcaee74aef5b0e34ef95a14393ca94914629d21872cdf1c84d228",
+      "evidence": "docs/validation/draft-women-draws-20261030.md",
+      "review_note": "사용자 영상 전사14회·첨부 방송 화면7팀 색상 및 공개 적합성 검토. 직접 원영상 검증으로 승격하지 않음. 7순위 결정 방식 미확인·공식 결과·28개 권리·감사 이력 보존."
     },
     "data/drafts/2026-27/women.json": {
       "access_level": "PUBLIC",
@@ -162,12 +163,25 @@
         "KOVO-2026-27-M-FINAL",
         "KOVO-2026-27-W-FINAL",
         "USER-RECORD-20261028-M-f70d5fd59e34",
-        "USER-CONFIRMATION-20261030-W-LOTTERY"
+        "USER-CONFIRMATION-20261030-W-LOTTERY",
+        "USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
       ],
       "verified_at": "2026-10-30",
-      "sha256": "f65be047c1cbc51e088cb47ea0e735aa40eaa6b8d0e20bbe7dd12513e5a4a07b",
-      "evidence": "docs/validation/draft-women-refine-20261030.md",
-      "review_note": "공개 적합성·권리 보존·거래 당시 포지션·출처 대조. 1~3순위 이후 구슬 제외 방식은 사용자 제공 확인이며 공식 영상 검증으로 승격하지 않음. 실제 추첨·색상·중복·자동 7순위 미확인 유지."
+      "sha256": "448554cc37ea1021567d32b366427e9b87bc4b22e978cb81ceae2d335797c2ce",
+      "evidence": "docs/validation/draft-women-draws-20261030.md",
+      "review_note": "사용자 영상 전사14회·첨부 방송 화면7팀 색상 및 공개 적합성 검토. 직접 원영상 검증으로 승격하지 않음. 7순위 결정 방식 미확인·공식 결과·28개 권리·감사 이력 보존."
+    },
+    "data/drafts/2026-27/imports/20261030-women-video-observed.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-W-FINAL",
+        "USER-VIDEO-RECORD-20261030-W-e7e750c1cad8"
+      ],
+      "verified_at": "2026-10-30",
+      "sha256": "1e1fdb6ea149636c15cb7913a35ce91661af50be90df41bc55ca9ce45fa75423",
+      "evidence": "docs/validation/draft-women-draws-20261030.md",
+      "review_note": "사용자 영상 전사14회·첨부 방송 화면7팀 색상 및 공개 적합성 검토. 직접 원영상 검증으로 승격하지 않음. 7순위 결정 방식 미확인·공식 결과·28개 권리·감사 이력 보존."
     }
   }
 }

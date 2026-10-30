@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "season": "2026-27",
+  "division": "W",
+  "source_id": "USER-VIDEO-RECORD-20261030-W-e7e750c1cad8",
+  "source_type": "user_video_transcription",
+  "title": "사용자 제공 여자 드래프트 영상 관찰 기록 및 방송 배분 화면",
+  "provided_at": "2026-10-30",
+  "imported_on": "2026-10-30",
+  "video_url": "https://chzzk.naver.com/video/15897933",
+  "filename": "image(20261030-141603).png",
+  "archive_file_id": "1ID3LsN8TUisSDwId0ym7uCnHSxGSeX5C",
+  "sha256": "e7e750c1cad8d41fbd942b22cd0ea2c8b10d901ce2d65080d4169dea4e80b82e",
+  "color_note": "첨부 방송 화면의 색상 이름·팀·구슬 수를 직접 대조. 원영상 재생 검증을 대신한 것으로 표시하지 않음. 색상값(hex)은 화면용 대표색.",
+  "observed_draw_count": 14,
+  "observed_duplicate_count": 8,
+  "last_rank_method": "unknown",
+  "raw_transcription": [
+    "1. 초록 IBK",
+    "2. 파랑 SOOP",
+    "3. 노랑 현대건설",
+    "4. 흰색 도로공사",
+    "5. 빨강 정관장",
+    "6. 빨강",
+    "7. 빨강",
+    "8. 흰색",
+    "9. 빨강",
+    "10. 빨강",
+    "11. 빨강",
+    "12. 빨강",
+    "13. 빨강",
+    "14. 보라 흥국생명"
+  ],
+  "colors": {
+    "IBK": {
+      "name": "초록",
+      "hex": "#30996B"
+    },
+    "SOO": {
+      "name": "파랑",
+      "hex": "#346CBC"
+    },
+    "HHC": {
+      "name": "노랑",
+      "hex": "#F4CF42"
+    },
+    "KEX": {
+      "name": "흰색",
+      "hex": "#FFFFFF"
+    },
+    "RSP": {
+      "name": "빨강",
+      "hex": "#DA4545"
+    },
+    "HPS": {
+      "name": "보라",
+      "hex": "#8555AD"
+    },
+    "GSC": {
+      "name": "검정",
+      "hex": "#333333"
+    }
+  },
+  "draws": [
+    {
+      "sequence": 1,
+      "team_id": "IBK",
+      "color_name": "초록"
+    },
+    {
+      "sequence": 2,
+      "team_id": "SOO",
+      "color_name": "파랑"
+    },
+    {
+      "sequence": 3,
+      "team_id": "HHC",
+      "color_name": "노랑"
+    },
+    {
+      "sequence": 4,
+      "team_id": "KEX",
+      "color_name": "흰색"
+    },
+    {
+      "sequence": 5,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 6,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 7,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 8,
+      "team_id": "KEX",
+      "color_name": "흰색"
+    },
+    {
+      "sequence": 9,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 10,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 11,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 12,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 13,
+      "team_id": "RSP",
+      "color_name": "빨강"
+    },
+    {
+      "sequence": 14,
+      "team_id": "HPS",
+      "color_name": "보라"
+    }
+  ],
+  "scope": "영상 순서는 사용자 전사, 팀별 색상·배분 수는 첨부 방송 화면 대조. GS칼텍스 검정 1개는 배분 정보이며 실제 추첨 기록이 아님. 7순위는 기존 공식 결과를 유지."
+}
