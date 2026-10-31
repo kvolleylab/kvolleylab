@@ -4,7 +4,9 @@ const {JSDOM}=require(process.env.KVL_JSDOM_PATH||'jsdom');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),json=p=>JSON.parse(read(p));
 const configApi=require('../assets/js/kvl-competition-config-v2.js'),dataApi=require('../assets/js/kvl-competition-data-v2.js');
 function setup({gender='men',now='2026-10-28T03:00:00Z',edit,failPeer=false,wrongSeason=false}={}){
- const sources={},configs={};for(const g of ['men','women']){const base=`data/competitions/v-league-${g}-2026-27/`;sources[g]=json(base+'data.json');configs[g]=json(base+'config.json');if(edit)edit(sources[g],g);}
+ // These unit cases deliberately start before opening day. Operating season
+ // records will acquire scores; reset the fixture instead of asserting they do not.
+ const sources={},configs={};for(const g of ['men','women']){const base=`data/competitions/v-league-${g}-2026-27/`;sources[g]=json(base+'data.json');configs[g]=json(base+'config.json');sources[g].status='upcoming';for(const m of sources[g].matches){delete m.score;delete m.scoreVerification;m.status='scheduled';}if(edit)edit(sources[g],g);}
  const dom=new JSDOM('<body class="kvl1180-prototype kvl-competition-template-v2"><main data-kvl-shell></main></body>',{url:`https://kvolleylab.com/competition-engine.html?competition=v-league-${gender}-2026-27&view=overview`,runScripts:'outside-only',pretendToBeVisual:true});
  const w=dom.window;w.CSS={escape:s=>String(s).replace(/[^a-zA-Z0-9_-]/g,c=>'\\'+c)};const errors=[];w.addEventListener('error',e=>errors.push(e.error));w.Date.now=()=>Date.parse(now);w.matchMedia=()=>({matches:false});w.HTMLElement.prototype.scrollIntoView=()=>{};w.KVL_COMPETITION_PAGE_V2={deferRender:true,production:true,collectionRoot:'/data/competitions/'};
  const requests=[];w.fetch=async url=>{const u=new URL(url),g=u.pathname.includes('-women-')?'women':'men';requests.push(u.pathname);if(failPeer)throw Error('network unavailable');const value=u.pathname.endsWith('config.json')?structuredClone(configs[g]):structuredClone(sources[g]);if(wrongSeason&&value.competition)value.competition.season='2025-26';return {ok:true,json:async()=>value};};

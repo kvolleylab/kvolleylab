@@ -1,0 +1,198 @@
+name: V-League Auto Update v1
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Update the authenticated MASTER, verified match data and Pages (activation required)'
+        type: boolean
+        default: false
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/kovo_vleague_*.py'
+      - 'tests/test_kovo_vleague_*.py'
+      - 'tests/fixtures/kovo_vleague/**'
+      - 'tests/vleague-*.test.cjs'
+      - '.github/workflows/vleague-auto-update-v1.yml'
+  schedule:
+    # Default cron is UTC. Daily reconciliation: 09:17 KST.
+    - cron: '17 0 * * *'
+    # 12:07-23:52 KST, every 15 minutes, away from the top of the hour.
+    # No fixed-latency guarantee: each run reconciles the FULL regular season.
+    - cron: '7,22,37,52 3-14 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kvl-vleague-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    if: >-
+      github.repository == 'kvolleylab/kvolleylab' &&
+      (github.event_name != 'schedule' || vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true') &&
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Source, standings, MASTER and publication safety tests
+        run: python -B -m unittest discover -s tests -p 'test_kovo_vleague_*.py' -v
+      - name: Inspect the current Pages configuration without deploying
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -B scripts/kovo_vleague_ops.py inspect-pages --report "$RUNNER_TEMP/kvl-vleague-preview/pages-configuration.json"
+      - name: Install existing DOM test dependency outside the checkout
+        run: npm install --prefix "$RUNNER_TEMP/kvl-vleague-deps" --no-audit --no-fund jsdom@26.1.0
+      - name: Preserve existing V-League page behavior
+        env:
+          KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
+        run: node --test tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs
+      - name: Verify real official full-season data without changing MASTER or site
+        run: python -B scripts/kovo_vleague_update.py --root . --output "$RUNNER_TEMP/kvl-vleague-preview"
+      - name: Render real candidate scores and standings through the existing engine
+        env:
+          KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
+          KVL_VLEAGUE_CANDIDATE_ROOT: ${{ runner.temp }}/kvl-vleague-preview/candidate
+        run: node --test tests/vleague-auto-update-ui.test.cjs
+      - name: Keep sanitized verification report and public candidate JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vleague-preview-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-vleague-preview/report.json
+            ${{ runner.temp }}/kvl-vleague-preview/report.md
+            ${{ runner.temp }}/kvl-vleague-preview/pages-configuration.json
+            ${{ runner.temp }}/kvl-vleague-preview/candidate/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Publish check summary
+        if: always()
+        run: |
+          if [ -f "$RUNNER_TEMP/kvl-vleague-preview/report.md" ]; then
+            cat "$RUNNER_TEMP/kvl-vleague-preview/report.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  publish:
+    needs: check
+    if: >-
+      needs.check.result == 'success' &&
+      github.repository == 'kvolleylab/kvolleylab' && github.ref == 'refs/heads/main' &&
+      vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true' &&
+      (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.publish))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    env:
+      KVL_VLEAGUE_PUBLISH_APPROVED: 'true'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify current main and the existing Pages branch deployment
+        run: python -B scripts/kovo_vleague_ops.py preflight --root . --report "$RUNNER_TEMP/kvl-vleague-publish/preflight.json"
+      - name: Authenticate only the trusted publisher to the existing MASTER
+        id: google-auth
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.KVL_GOOGLE_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.KVL_GOOGLE_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/spreadsheets
+          create_credentials_file: false
+          export_environment_variables: false
+      - name: Collect fresh data, apply precise MASTER cells, verify readback and generate data
+        env:
+          KVL_GOOGLE_ACCESS_TOKEN: ${{ steps.google-auth.outputs.access_token }}
+        run: python -B scripts/kovo_vleague_update.py --root . --publish --output "$RUNNER_TEMP/kvl-vleague-publish"
+      - name: Commit only approved V-League generated paths
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- data/competitions/v-league-men-2026-27/data.json data/competitions/v-league-women-2026-27/data.json data/kovo/vleague/2026-27/state_v1.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update verified V-League results and standings'
+            git push origin HEAD:main
+          fi
+      - name: Request Pages build explicitly and verify published data
+        run: python -B scripts/kovo_vleague_ops.py deploy --root . --sha "$(git rev-parse HEAD)" --report "$RUNNER_TEMP/kvl-vleague-publish/deploy.json"
+      - name: Keep sanitized publication receipts only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vleague-publish-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-vleague-publish/report.json
+            ${{ runner.temp }}/kvl-vleague-publish/report.md
+            ${{ runner.temp }}/kvl-vleague-publish/preflight.json
+            ${{ runner.temp }}/kvl-vleague-publish/deploy.json
+          retention-days: 7
+          if-no-files-found: warn
+
+  notify_failure:
+    needs: [check, publish]
+    if: >-
+      always() && github.ref == 'refs/heads/main' && github.repository == 'kvolleylab/kvolleylab' &&
+      vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true' &&
+      (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.publish)) &&
+      (needs.check.result == 'failure' || needs.publish.result == 'failure')
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: read
+      issues: write
+    env:
+      KVL_VLEAGUE_PUBLISH_APPROVED: 'true'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: vleague-*-${{ github.run_id }}
+          path: ${{ runner.temp }}/kvl-vleague-notify
+          merge-multiple: false
+      - name: Deduplicate failure Issue without raw MASTER or secret data
+        shell: bash
+        run: |
+          base="$RUNNER_TEMP/kvl-vleague-notify"
+          publisher="$base/vleague-publish-$GITHUB_RUN_ID"
+          report="$base/vleague-preview-$GITHUB_RUN_ID/report.json"
+          if [ -f "$publisher/report.json" ]; then
+            report="$publisher/report.json"
+          fi
+          ops="$publisher/preflight.json"
+          if [ -f "$publisher/deploy.json" ]; then
+            ops="$publisher/deploy.json"
+          fi
+          python -B scripts/kovo_vleague_ops.py notify-failure --report "$report" --ops-report "$ops" --run-url "https://github.com/kvolleylab/kvolleylab/actions/runs/$GITHUB_RUN_ID"
