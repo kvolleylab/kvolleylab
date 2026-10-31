@@ -5,7 +5,8 @@ are used. The two opening score excerpts come from public_contract_v1.json;
 all team identities and the 252-game schedule in this test are synthetic.
 """
 from copy import deepcopy
-from datetime import date
+from datetime import date, datetime, timezone
+import hashlib
 import io
 import json
 import os
@@ -452,6 +453,72 @@ class MainFlowTests(unittest.TestCase):
         self.assertEqual(client.writes, [])
         self.assertEqual(before, {p: (self.root / p).read_bytes() for p in update.DATA_PATHS.values()})
         self.assertFalse((self.root / update.STATE_PATH).exists())
+
+    def test_nested_private_draft_or_sensitive_payload_blocks_all_publication(self):
+        secret = "SYNTHETIC_PUBLICATION_SECRET"
+        payloads = ({"access_level": "PRIVATE", "note": secret},
+                    {"record_status": "DRAFT", "note": secret},
+                    {"client_secret": secret})
+        for payload in payloads:
+            with self.subTest(payload_kind=next(iter(payload))):
+                originals = deepcopy(self.originals)
+                originals["MALE"]["resources"].append({"nested": [payload]})
+                seed_root(self.root, originals)
+                before = {p: (self.root / p).read_bytes() for p in update.DATA_PATHS.values()}
+                client = MemorySheets(self.master_values)
+                with patch.object(update, "apply_update_plan", wraps=update.apply_update_plan) as write_master:
+                    result, _ = self.invoke(["--publish"], client, trusted=True)
+                self.assertEqual(result, 1)
+                write_master.assert_not_called()
+                self.assertEqual(client.writes, [])
+                self.assertEqual(before, {p: (self.root / p).read_bytes() for p in update.DATA_PATHS.values()})
+                self.assertFalse((self.root / update.STATE_PATH).exists())
+                self.assertFalse((self.output / "candidate").exists())
+                report = update.read_json(self.output / "report.json")
+                self.assertTrue(all(item["outcome"] == "PASS" for item in report["quality_audit"]))
+                self.assertEqual(report["publication_gate"]["status"], "FAIL")
+                self.assertEqual(report["publication_gate"]["rejected_file_count"], 1)
+                self.assertEqual(report["publication_gate"]["files"], {})
+                self.assertFalse(report["master_written"])
+                self.assertFalse(report["production_written"])
+                for artifact in self.output.rglob("*"):
+                    if artifact.is_file():
+                        self.assertNotIn(secret, artifact.read_text())
+
+    def test_publication_receipts_hash_exact_payloads_without_noop_churn(self):
+        client = MemorySheets(self.master_values)
+        before_check = datetime.now(timezone.utc)
+        result, _ = self.invoke(["--publish"], client, trusted=True)
+        after_check = datetime.now(timezone.utc)
+        self.assertEqual(result, 0)
+        receipt = update.read_json(self.output / "report.json")["publication_gate"]
+        self.assertEqual(receipt["status"], "PASS")
+        self.assertEqual(set(receipt["files"]), update.ALLOWED_OUTPUTS)
+        self.assertLessEqual(before_check, datetime.fromisoformat(receipt["checked_at"]))
+        self.assertLessEqual(datetime.fromisoformat(receipt["checked_at"]), after_check)
+        before = {p: (self.root / p).read_bytes() for p in update.ALLOWED_OUTPUTS}
+        hashes = {}
+        for relative, entry in receipt["files"].items():
+            hashes[relative] = hashlib.sha256(before[relative]).hexdigest()
+            self.assertEqual(entry["sha256"], hashes[relative])
+            self.assertEqual(entry["access_level"], "PUBLIC")
+            self.assertEqual(entry["record_status"], "VERIFIED")
+            self.assertEqual(entry["checked_at"], receipt["checked_at"])
+            self.assertEqual(entry["verified_at"], receipt["checked_at"])
+            self.assertIn("automated", entry["verification_method"])
+            self.assertTrue(entry["source_ids"])
+            for url in entry["source_ids"]:
+                source.validate_request_url(url)
+        self.snapshot["fetched_at"] = "2026-10-31T10:45:00+00:00"
+        result, _ = self.invoke(["--publish"], client, trusted=True)
+        self.assertEqual(result, 0)
+        report = update.read_json(self.output / "report.json")
+        self.assertEqual(report["changed_files"], [])
+        self.assertFalse(report["master_written"])
+        self.assertFalse(report["production_written"])
+        self.assertEqual(len(client.writes), 1)
+        self.assertEqual(before, {p: (self.root / p).read_bytes() for p in update.ALLOWED_OUTPUTS})
+        self.assertEqual(hashes, {p: e["sha256"] for p, e in report["publication_gate"]["files"].items()})
 
     def test_publish_reads_back_master_before_local_write_and_second_run_is_noop(self):
         client = MemorySheets(self.master_values)

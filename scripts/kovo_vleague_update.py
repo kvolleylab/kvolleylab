@@ -19,6 +19,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+from tempfile import TemporaryDirectory
 from urllib.parse import urlsplit
 
 from kovo_vleague_source import collect_season, SourceError, validate_request_url
@@ -291,6 +292,55 @@ def quality_audit_gate(root, plan):
     return [{"id": check["id"], "outcome": check["outcome"], "count": check["count"]} for check in results]
 
 
+def publication_gate(plan):
+    """Check exact candidate bytes using the existing public-export contract.
+
+    This runtime receipt describes automated official-source reconciliation and
+    output security checks. It neither claims human review nor updates the
+    persistent manual-review manifest or reclassifies preserved legacy fields.
+    """
+    from quality_audit.checks import security
+    from quality_audit.export_gate import validate_changed
+
+    require(set(plan["candidates"]) == ALLOWED_OUTPUTS,
+            "Publication requires exactly the three allowlisted JSON outputs")
+    paths = sorted(ALLOWED_OUTPUTS)
+    source_ids = {}
+    for gender, relative in DATA_PATHS.items():
+        source_ids[relative] = sorted({r["source_url"] for r in plan["matched"] if r["gender"] == gender}
+                                      | {plan["candidates"][relative]["automation"]["standingsSource"]})
+    source_ids[STATE_PATH] = sorted({r["source_url"] for r in plan["matched"]})
+    for sources in source_ids.values():
+        require(bool(sources), "Publication evidence is missing official sources")
+        for source_url in sources:
+            validate_request_url(source_url)
+
+    checked_at = datetime.now(timezone.utc).isoformat()
+    entries = {}
+    with TemporaryDirectory(prefix="kvl-vleague-publication-") as temporary:
+        root = Path(temporary)
+        for relative in paths:
+            file = root / relative
+            write_json(file, plan["candidates"][relative])
+            entries[relative] = {
+                "access_level": "PUBLIC", "record_status": "VERIFIED",
+                "source_ids": source_ids[relative], "verified_at": checked_at,
+                "checked_at": checked_at, "sha256": hashlib.sha256(file.read_bytes()).hexdigest(),
+                "verification_method": "automated official-season schedule/final-score and standings reconciliation; public-export security checks",
+                "verification_scope": "Regular-season updates and output security; preserved metadata retains its existing provenance.",
+            }
+        failures = validate_changed(root, paths, entries)
+        security_results = security(root, paths)
+    passed = not failures and security_results[0]["outcome"] == "PASS"
+    return {"check": "PUBLIC_VERIFIED_AUTOMATED_EXPORT", "status": "PASS" if passed else "FAIL",
+            "checked_at": checked_at, "file_count": len(paths), "rejected_file_count": len(failures),
+            # Never attach rejected payloads, sensitive finding pointers or a
+            # VERIFIED assertion for files that failed the nested-record scan.
+            "files": entries if passed else {},
+            "security": [{"id": item["id"], "outcome": item["outcome"], "count": item["count"]}
+                         for item in security_results]}
+
+
 def write_candidates(root, plan):
     check_local_preconditions(root, plan)
     for relative in plan["changed_files"]:
@@ -321,7 +371,7 @@ def report_markdown(report):
               f"운영 파일 쓰기: {report.get('production_written', False)}",
               f"실행 모드: {report.get('mode', 'STAGING_ONLY')}"]
     if report.get("error_code"):
-        lines += ["", "검증 또는 연결 실패로 적용을 중단했습니다. 기존 운영 데이터를 유지합니다.",
+        lines += ["", "검증 또는 연결 실패로 후속 적용을 중단했습니다. MASTER·운영 파일·배포 상태를 재대조해야 합니다.",
                   f"오류 종류: `{report['error_code']}`"]
     return "\n".join(lines) + "\n"
 
@@ -357,6 +407,8 @@ def main():
         plan = prepare_update(originals, snapshot, previous, values)
         report = plan["report"]
         report["quality_audit"] = quality_audit_gate(root, plan)
+        report["publication_gate"] = publication_gate(plan)
+        require(report["publication_gate"]["status"] == "PASS", "KVL public-export security rejected candidate data")
         if args.publish:
             ensure_publish_context(root)
             check_local_preconditions(root, plan)
