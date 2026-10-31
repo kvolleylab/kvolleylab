@@ -1,5 +1,12 @@
 (()=>{
   const PRIVATE_REVIEW_MODE=true;
+  if(!document.querySelector('link[rel~="icon"]')){
+    const iconLink=document.createElement('link');
+    iconLink.rel='icon';
+    iconLink.type='image/x-icon';
+    iconLink.href='/favicon.ico?v=kvl-gold-v1';
+    document.head.appendChild(iconLink);
+  }
   if(!document.querySelector('link[href*="pretendard-global.css"]')){const fontLink=document.createElement('link');fontLink.rel='stylesheet';fontLink.href='assets/css/pretendard-global.css?v=20260725-1';document.head.appendChild(fontLink)}
   if(!document.querySelector('link[href*="school-logo-runtime.css"]')){const logoStyle=document.createElement('link');logoStyle.rel='stylesheet';logoStyle.href='assets/css/school-logo-runtime.css?v=20261027-1';document.head.appendChild(logoStyle)}
   if(!document.querySelector('script[src*="school-logo-runtime.js"]')){const logoScript=document.createElement('script');logoScript.src='assets/js/school-logo-runtime.js?v=20261027-1';logoScript.defer=true;document.head.appendChild(logoScript)}
