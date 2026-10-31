@@ -1,0 +1,91 @@
+{
+  "date_kst": "2026-11-01",
+  "status": "DEPLOYED_AND_LIVE_VERIFIED",
+  "pull_request": "https://github.com/kvolleylab/kvolleylab/pull/214",
+  "merge_sha": "0f5dc8d06b3e8139e7809f31eba97e34e36314b0",
+  "runtime_tested_sha": "0b0d9d687c3d1710307ed064a86a3eb9aa9e6876",
+  "release_head_sha": "0f74800291246a7c886b00fd3914fc53642efef7",
+  "pages": {
+    "url": "https://github.com/kvolleylab/kvolleylab/actions/runs/41216436496",
+    "conclusion": "success"
+  },
+  "quality_audit": {
+    "url": "https://github.com/kvolleylab/kvolleylab/actions/runs/41215871832",
+    "conclusion": "success",
+    "ui_screens_passed": 72,
+    "viewports": [
+      1180,
+      390,
+      360
+    ]
+  },
+  "public_http": [
+    {
+      "name": "icon",
+      "url": "https://kvolleylab.com/favicon.ico?v=kvl-gold-v1",
+      "status": 200,
+      "content_type": "image/vnd.microsoft.icon",
+      "bytes": 17235,
+      "matches_candidate": true,
+      "sha256": "0795d4f28f7027fde4c40319ee15118131af84b1dded805db651fa91897bfcad"
+    },
+    {
+      "name": "home",
+      "url": "https://kvolleylab.com/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 33223,
+      "matches_candidate": true,
+      "sha256": "272eb39343e9484d47d82562ebb102cd4e61d223cd5ef81c65e85b494a5381b5"
+    },
+    {
+      "name": "navigation",
+      "url": "https://kvolleylab.com/assets/js/unified-nav.js?v=20261016-home-v021-release",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 13759,
+      "matches_candidate": true,
+      "sha256": "13837ac9698f5ad726e533a204b878fa3c3fec24ccee5915827698e89c804f03"
+    }
+  ],
+  "browser": {
+    "home": {
+      "url": "https://kvolleylab.com/",
+      "title": "K-Volley Lab | 배구 일정·선수 검색·진출 계산기",
+      "icon_count": 1,
+      "icon_url": "https://kvolleylab.com/favicon.ico?v=kvl-gold-v1",
+      "sidebar_count": 1,
+      "search_present": true,
+      "viewport_width": 1363,
+      "horizontal_overflow": false
+    },
+    "players": {
+      "url": "https://kvolleylab.com/players.html",
+      "title": "선수 | K-Volley Lab",
+      "icon_count": 1,
+      "icon_url": "https://kvolleylab.com/favicon.ico?v=kvl-gold-v1",
+      "sidebar_count": 1,
+      "viewport_width": 1363,
+      "horizontal_overflow": false,
+      "navigated_via_home_link": true
+    },
+    "ico": {
+      "url": "https://kvolleylab.com/favicon.ico?v=kvl-gold-v1",
+      "image_complete": true,
+      "natural_width": 64,
+      "natural_height": 64
+    }
+  },
+  "screenshot": "kvl_favicon_live_0f5dc8d_v1.jpg",
+  "limitations": [
+    "No direct observation of the user's existing desktop-browser cache.",
+    "Native browser tab chrome is not included in the icon-resource screenshot."
+  ],
+  "unrelated_baseline_workflows": [
+    "Register SKKU player master",
+    "Register Kyungil player master",
+    "Build university batch",
+    "connect-vnl-schedules-v1.yml",
+    "build-player-timeline-v1.yml"
+  ]
+}

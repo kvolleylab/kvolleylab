@@ -1,7 +1,7 @@
 # KVL gold volleyball favicon v1
 
 Date: 2026-11-01 (Asia/Seoul)
-Status: APPROVED / RELEASE AUTHORIZED / ASSET VERIFIED / DEPLOYMENT VERIFICATION PENDING
+Status: DEPLOYED / LIVE VERIFIED
 Base commit: `444eff62474089029c6b5aacfae191d321585364`
 Branch: `feature/kvl-gold-favicon-20261101`
 
@@ -35,8 +35,8 @@ PASS: removing the one added home link restores the original homepage byte-for-b
 PASS: removing the seven-line icon block restores the original shared script byte-for-byte.
 PASS: `node --check assets/js/unified-nav.js`.
 PASS: independent review found no material regression risk and confirmed no duplicate icon link on home.
-NOT RUN: native Chromium rendering and physical desktop/mobile browser inspection. The local browser binary is absent; the official Playwright installer returned an invalid/truncated archive. Do not label the HTML mockup as browser-tested.
-NOT RUN: production merge, Pages deployment and live icon request verification.
+Initial prototype check (superseded by CI and cloud verification below): native Chromium rendering and physical desktop/mobile browser inspection were not run. The local browser binary is absent; the official Playwright installer returned an invalid/truncated archive. Do not label the HTML mockup as browser-tested.
+Initial prototype check (superseded below): production merge, Pages deployment and live icon request verification had not run.
 
 ## Release and recovery
 
@@ -57,3 +57,16 @@ Preview: [KVL_favicon_preview_v1.html](KVL_favicon_preview_v1.html).
 ## Candidate CI browser verification
 
 [Quality Audit run 41215871832](https://github.com/kvolleylab/kvolleylab/actions/runs/41215871832), code head `0b0d9d687c3d1710307ed064a86a3eb9aa9e6876`: success. Chromium 141.0.7390.37 / Playwright 1.56.1 executed the candidate code. Artifact report contains 72 rendered UI cases plus the runner check, all PASS; no UI findings. Coverage: KOVO Cup men/women and V-League men/women, six views, at 1180/390/360 px. The overall audit gate passed; three existing non-UI findings and the separately identified legacy registration workflow failures were not caused by this change. Home/favicon-specific checks remain in the cloud-browser post-deployment verification. This approval commit only changes documentation.
+
+## Production verification — completed 2026-11-01 KST
+
+- PR #214 merged as `0f5dc8d06b3e8139e7809f31eba97e34e36314b0` after the explicit user approval. [Pages run 41216436496](https://github.com/kvolleylab/kvolleylab/actions/runs/41216436496) completed successfully (build, report-build-status, deploy).
+- Public HTTPS reads of `/favicon.ico?v=kvl-gold-v1`, `/`, and the home version of `assets/js/unified-nav.js` all returned 200. All three matched the validated candidate bytes exactly. ICO MIME: `image/vnd.microsoft.icon`; 17,235 bytes; SHA-256 `0795d4f28f7027fde4c40319ee15118131af84b1dded805db651fa91897bfcad`.
+- Cloud Chrome home reload: one expected icon link, one sidebar, existing title and search field, no horizontal overflow at 1363 px.
+- Actual navigation from home to `players.html`: one identical icon link, existing title, one sidebar and no horizontal overflow.
+- Opening the public ICO URL in Chrome produced a complete 64 x 64 image. [Saved screenshot](kvl_favicon_live_0f5dc8d_v1.jpg) depicts the actual deployed icon resource, not browser tab chrome.
+- 72 candidate PC/mobile UI cases passed before release. The follow-up approval commit changed documentation only.
+- Existing push failures in VNL schedule connection and player timeline workflows also occurred at prior main; their files were unchanged. They did not prevent the Pages deployment and were not modified in this scope.
+- User-browser cache behavior cannot be inspected from this remote browser. Reopening an old tab or a hard refresh may be necessary if it still shows a previously cached icon.
+
+[Machine-readable release evidence](kvl_favicon_release_v1.json). This snapshot is archived in a verification branch; the deployed runtime remains the merge SHA above.
