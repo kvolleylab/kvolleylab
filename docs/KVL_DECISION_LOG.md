@@ -321,3 +321,8 @@ Status: APPROVED / RELEASE AUTHORIZED / ACTIVATION IN PROGRESS. 사용자가 PR 
 ## 2026-11-01 · 메뉴의 금색 KVL 배구공을 사용하는 파비콘 검토본
 
 Status: PROTOTYPE / ASSET VERIFIED / NOT DEPLOYED. 사용자가 브라우저 탭의 기본 지구본을 바꾸려는 맥락에서 현재 메뉴 맨 위의 KVL 배구공 심벌을 제안했다. 기존 `kvl-ball-international-gold.webp`를 그대로 재사용한 ICO 16/32/48/64px, 홈의 정적 연결, 공통 내비게이션의 중복 없는 연결을 분리 브랜치에서 준비한다. 사용자의 금색·흰색 표현과 달리 지정된 메뉴 원본은 금색·짙은 남색이므로 이 검토본은 원본 색상을 유지하며 재색칠한 결과로 표시하지 않는다. 원본 자산·제목·메뉴 배치·경기/선수 데이터는 보존한다. 실제 브라우저 검수와 운영 반영 승인은 남아 있다. [변경·검수·복구](validation/kvl-favicon_v1.md), [적용 예상 미리보기](validation/KVL_favicon_preview_v1.html).
+
+
+## 2026-11-01 · 금색 KVL 배구공 파비콘 운영 반영 승인
+
+Status: APPROVED / RELEASE AUTHORIZED / DEPLOYMENT VERIFICATION PENDING. 사용자가 기존 메뉴의 금색·짙은 남색 KVL 배구공을 그대로 활용한 파비콘과 [PR #214](https://github.com/kvolleylab/kvolleylab/pull/214)의 검토 결과를 확인한 뒤 “승인한다”라고 명시적으로 답했다. 앞선 파비콘 검토본의 운영 승인 대기 상태를 이 범위에서 대체한다. ICO 16/32/48/64px, 홈의 정적 연결, 공통 내비게이션의 중복 없는 연결만 운영 전환한다. 코드 기준은 `0b0d9d687c3d1710307ed064a86a3eb9aa9e6876`, 재확인한 main은 `444eff62474089029c6b5aacfae191d321585364`이다. 브라우저 검수는 작동하는 클라우드 Chrome으로 진행하며 병합·Pages·실제 아이콘 응답·홈/내부 페이지 연결을 확인한 뒤 PR에 배포 증거를 남긴다. 원본 로고·경기/선수 데이터·사이트 제목·기존 메뉴 기능은 이 승인에 따른 변경 대상이 아니다. [검수 및 복구](validation/kvl-favicon_v1.md).
