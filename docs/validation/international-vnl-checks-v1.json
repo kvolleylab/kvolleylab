@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "baseCommit": "757f0d2e668ed79a529e2f9554f5f02e9828253d",
+  "checkedAt": "2026-10-31",
+  "checks": [
+    {
+      "name": "VNL presentation contract matches canonical competition and season",
+      "pass": true
+    },
+    {
+      "name": "All original meaning and qualification text remains present",
+      "pass": true
+    },
+    {
+      "name": "Unmapped explanation is preserved",
+      "pass": true
+    },
+    {
+      "name": "Upcoming and active seasons do not expose completed result claims",
+      "pass": true
+    },
+    {
+      "name": "Evidence states distinguish unverified from not applicable; verified requires sources",
+      "pass": true
+    },
+    {
+      "name": "Preliminary scope contains 108 matches; finals excluded",
+      "pass": true
+    },
+    {
+      "name": "Competition/match/team/player identifiers remain canonical and unique per record",
+      "pass": true
+    },
+    {
+      "name": "Completed ranking retains all 18 ranks; ties are driven by actual data",
+      "pass": true
+    },
+    {
+      "name": "Calendar initial month follows state and KST month boundary",
+      "pass": true
+    },
+    {
+      "name": "Non-VNL international settings validate without importing VNL phases",
+      "pass": true
+    },
+    {
+      "name": "Wrong competition/family is rejected",
+      "pass": true
+    },
+    {
+      "name": "Presentation functions do not mutate canonical data",
+      "pass": true
+    },
+    {
+      "name": "Existing production/shared/data files are unchanged against the recorded main SHA",
+      "pass": true
+    }
+  ],
+  "counts": {
+    "matches": 116,
+    "preliminary": 108,
+    "finals": 8,
+    "teams": 18,
+    "rosterPlayers": 284
+  },
+  "warnings": [
+    "Drive schedule MASTER is dated 2026-07-21; later web results were preserved, not synchronized into MASTER.",
+    "Historical V2 production/print gates are not a release approval for this prototype. Print/PDF was not tested.",
+    "The canonical VNL config currently uses the same approved image for PC and mobile. No new Hero asset was generated."
+  ]
+}

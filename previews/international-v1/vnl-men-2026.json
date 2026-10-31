@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "presentation": "international-home-v1",
+  "competitionId": "KVL-COMP-000001",
+  "season": "2026",
+  "baseSlug": "vnl-men-2026",
+  "labels": {
+    "overview": "대회 한눈에",
+    "schedule": "경기일정·결과",
+    "groups": "예선순위",
+    "knockout": "대진·최종순위",
+    "rosters": "참가국·선수명단",
+    "resources": "공식자료"
+  },
+  "standingsScope": {"stages": ["예선"], "expectedMatches": 108},
+  "explanation": {
+    "facts": [
+      {"label": "어떤 대회인가요?", "text": "18개국 국가대표팀이 예선 리그와 파이널을 거쳐 시즌 챔피언을 가리는 국제대회입니다.", "state": "verified", "sources": ["formula"]},
+      {"label": "참가 대상·자격", "text": "2026 시즌 공식 참가국 18개국이 출전합니다. 참가국과 대회 당시 등록 선수명단을 함께 확인할 수 있습니다.", "state": "verified", "sources": ["formula", "standings"]}
+    ],
+    "flow": [
+      {"title": "예선 리그", "detail": "18개국 · 팀당 12경기 · 3주", "view": "groups", "sources": ["formula"]},
+      {"title": "8강 파이널", "detail": "상위 7개국 + 개최국 중국", "view": "knockout", "sources": ["formula", "standings"]},
+      {"title": "준결승", "detail": "8강 승리 4개국", "view": "knockout", "sources": ["formula"]},
+      {"title": "결승·3위전", "detail": "우승·준우승·3위 확정", "view": "knockout", "sources": ["formula"]}
+    ],
+    "cards": [
+      {"ref": "finals", "kind": "rule", "sources": ["formula", "standings"]},
+      {"ref": "champion", "kind": "result", "sources": ["final"]},
+      {"ref": "ranking", "kind": "ranking", "sources": ["worldRanking2026"]}
+    ],
+    "relations": [
+      {"label": "LA28 올림픽 직행권", "state": "not_applicable", "text": "2026 VNL 자체의 직접 출전권은 없습니다. LA28의 세계랭킹 경로는 2028 VNL 예선 종료 시점을 기준으로 합니다.", "sources": ["olympics"]},
+      {"label": "다른 국제대회 출전권", "state": "unverified", "text": "이 화면에는 확인된 출전권만 표시합니다. 별도 출전권에 관한 미확인 내용은 자격 부여로 표시하지 않습니다.", "sources": []}
+    ]
+  },
+  "sources": {
+    "formula": {"title": "VNL 2026 대회 방식", "publisher": "Volleyball World", "url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/competition/formula"},
+    "standings": {"title": "VNL 2026 남자부 공식 순위", "publisher": "Volleyball World", "url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/standings/men/"},
+    "final": {"title": "2026 결승 · 폴란드 3–2 미국", "publisher": "FIVB", "url": "https://www.fivb.com/poland-defend-vnl-title-outlasting-usa-in-spectacular-five-set-final/"},
+    "worldRanking2026": {"title": "2026 VNL 경기의 세계랭킹 반영", "publisher": "Volleyball World", "url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-nations-league/news/ran-takahashi-on-fire-as-japan-strip-poland-of-world-s-number-one-status"},
+    "olympics": {"title": "LA28 출전 체계 공식 발표", "publisher": "FIVB", "url": "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/"}
+  },
+  "verifiedAt": "2026-10-31",
+  "sourceCommit": "757f0d2e668ed79a529e2f9554f5f02e9828253d"
+}
