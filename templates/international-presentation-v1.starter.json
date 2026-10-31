@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "presentation": "international-home-v1",
+  "competitionId": "REPLACE_WITH_EXISTING_COMPETITION_ID",
+  "season": "REPLACE_WITH_SEASON",
+  "baseSlug": "REPLACE_WITH_EXISTING_SLUG",
+  "labels": {
+    "overview": "대회 한눈에",
+    "schedule": "경기일정·결과",
+    "groups": "순위",
+    "knockout": "대진·최종순위",
+    "rosters": "참가국·선수명단",
+    "resources": "공식자료"
+  },
+  "standingsScope": {"stages": [], "expectedMatches": null},
+  "explanation": {
+    "facts": [],
+    "flow": [],
+    "cards": [],
+    "relations": [
+      {"label": "세계랭킹·다른 대회와의 관계", "state": "unverified", "text": "해당 시즌 공식 근거 확인 후 입력", "sources": []}
+    ]
+  },
+  "sources": {},
+  "verifiedAt": null,
+  "sourceCommit": null
+}
