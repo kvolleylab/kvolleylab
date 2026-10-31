@@ -10,7 +10,7 @@ function load(gender){
 }
 function setup(gender,{mobile=false,team='',view='rosters',transform}={}){
  const dom=new JSDOM('<body class="kvl1180-prototype kvl-competition-template-v2"><main data-kvl-shell></main></body>',{url:`https://kvolleylab.com/competition-engine.html?competition=v-league-${gender}-2026-27&view=${view}${team?'&team='+team:''}`,runScripts:'outside-only',pretendToBeVisual:true});
- const w=dom.window;w.KVL_COMPETITION_PAGE_V2={deferRender:true};w.matchMedia=()=>({matches:mobile});w.HTMLElement.prototype.scrollIntoView=()=>{};
+ const w=dom.window;w.KVL_COMPETITION_PAGE_V2={deferRender:true};w.Date.now=()=>Date.parse('2026-10-28T03:00:00Z');w.matchMedia=()=>({matches:mobile});w.HTMLElement.prototype.scrollIntoView=()=>{};
  for(const name of ['data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));
  w.KVL_COMPETITION_V2_DATA=w.KVLCompetitionDataV2.normalize(load(gender));if(transform)transform(w.KVL_COMPETITION_V2_DATA);
  w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
@@ -33,7 +33,7 @@ for(const gender of ['men','women']){
     if(p.dobStatus){assert.equal(p.dob,null);assert.equal(p.playerId,null);assert(p.sourceNote);}
    }
   }
-  assert.equal(d.matches.length,126);assert.equal(new Set(d.matches.map(m=>m.id)).size,126);assert(d.matches.every(m=>!m.score));
+  assert.equal(d.matches.length,126);assert.equal(new Set(d.matches.map(m=>m.id)).size,126);
  });
  for(const mobile of [false,true])test(gender+': '+(mobile?'mobile':'desktop')+' team selection, search, deselection and history',()=>{
   const {w,doc,d}=setup(gender,{mobile});try{
@@ -48,7 +48,7 @@ for(const gender of ['men','women']){
   }finally{w.close();}
  });
  test(gender+': season UI, all rounds, standings and postseason remain available',()=>{
-  const {w,doc,d}=setup(gender,{view:'overview'});try{
+  const {w,doc,d}=setup(gender,{view:'overview',transform:d=>{d.status='upcoming';}});try{
    assert.equal(doc.querySelector('[data-gender-link=men]').textContent,'남자부');assert.equal(doc.querySelector('[data-gender-link=women]').textContent,'여자부');
    assert.equal(doc.querySelector('.dv2-overview-summary'),null);assert.equal(doc.querySelectorAll('.dv2-standings-table tbody tr').length,7);assert.equal(doc.querySelector('.kvl1180-tabs [data-view=knockout] span').textContent,'포스트시즌');
    assert.equal(doc.querySelectorAll('.is-domestic-single-league .kvl1180-combined-row').length,7);assert.equal(doc.querySelectorAll('.kvl1180-pro-postseason-stage').length,3);
@@ -78,9 +78,11 @@ for(const gender of ['men','women']){
    const source=json('data/sources/v-league-2026-27/previous-season-ranking.json').divisions[gender];
    assert.deepEqual(Array.from(d.previousSeasonRanking.rows,r=>r.teamCode),source.rows.map(r=>r.teamCode));assert.equal(d.previousSeasonRanking.sourceId,source.sourceId);
    assert.equal(d.structure.participants.sort,'name-ko');
-   assert([...doc.querySelectorAll('.dv2-standings-table [data-stat=rank]')].every(e=>e.textContent==='—'));
-   assert([...doc.querySelectorAll('.dv2-standings-table [data-stat=points]')].every(e=>e.textContent==='0'));
-   assert.match(doc.querySelector('.dv2-standings-note').textContent,/개막 전/);
+   // Current standings may already contain official results; previous-season
+   // participant order must remain independent of the current season's values.
+   assert.deepEqual([...doc.querySelectorAll('.dv2-standings-table [data-stat=rank]')].map(e=>e.textContent),Array.from(d.standings.rows,r=>String(r.rank??'—')));
+   assert.deepEqual([...doc.querySelectorAll('.dv2-standings-table [data-stat=points]')].map(e=>e.textContent),Array.from(d.standings.rows,r=>String(r.points??'—')));
+   assert.equal(doc.querySelector('.dv2-standings-note').textContent,d.standingsNote);
    assert.equal(doc.querySelector('.dv2-overview-standings').parentElement.querySelector('a').getAttribute('href').includes('view=groups'),true);
   }finally{w.close();}
  });

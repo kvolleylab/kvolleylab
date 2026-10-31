@@ -306,3 +306,8 @@ Status: ACTIVE / MAIN VERIFIED / ISSUE PUBLICATION VERIFIED. 사용자 승인에
 ## 2026-10-30 · 여자 드래프트 사용자 영상 전사·방송 배분 화면 반영
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (실제 배포 증거는 release PR). 사용자가 원영상에서 확인해 제공한 14회 순서와 첨부 방송 화면의 7팀 색상을 반영한다. 정관장 중복7회·도로공사 중복1회, 총8회이며 중복행은 유지하고 신규 순위는 부여하지 않는다. GS칼텍스는 검정1개와 공식7순위를 유지하되 제공된14회 이후 실제 추첨·자동 확정 여부는 미확인으로 둔다. 이전 색상·중복 미확인 판단을 제공된 범위에서 대체하며 원영상 직접 검증으로 승격하지 않는다. 23개 감사 명령으로 여자 revision45→68, 지명권28개·선수 결과·거래·남자부 보존. 기존 실제 홈페이지 반영 승인 범위의 후속 데이터 갱신이다. [자료·검수·복구](validation/draft-women-draws-20261030.md).
+
+
+## 2026-10-31 · V-리그 GitHub 자동 업데이트 구축
+
+Status: IMPLEMENTATION AUTHORIZED / IMPLEMENTED / VERIFIED LOCALLY / READY FOR REVIEW / NOT ACTIVE. 사용자가 V-리그의 ChatGPT 비종속 자동 업데이트와 GitHub 실행 가능 여부를 질문한 뒤 “진행해”라고 구축을 지시했다. 기존 MASTER를 원본으로 유지하면서 공식 정규리그 전체 수집 → ID·점수·공식 순위 대조 → 정확한 MASTER 셀 반영·재조회 → 허용 JSON → Pages 검증의 GitHub Actions 경로를 구현한다. 남녀 각 126경기의 공식 연결과 실제 개막전 2경기를 읽기 전용으로 대조했다. 기존 명단·선수 ID·포스트시즌·공통 UI·공시/감사 일정은 유지한다. `KVL_VLEAGUE_UPDATE_APPROVED=true` 전 예약 게시·Issue는 비활성이다. 운영 병합·배포 승인, GitHub용 Google 실행 권한 연결, 실제 MASTER 쓰기·Pages 배포는 아직 완료로 표시하지 않는다. 기존 Quality Audit의 활성화 승인을 새 수집기의 운영 승인으로 확대하지 않는다. [운영 명세](KVL_VLEAGUE_AUTO_UPDATE_v1.md), [실제 자료·검수·복구](validation/vleague-auto-update_v1.md).
