@@ -311,3 +311,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (실제 배포 �
 ## 2026-10-31 · V-리그 GitHub 자동 업데이트 구축
 
 Status: IMPLEMENTATION AUTHORIZED / IMPLEMENTED / VERIFIED LOCALLY AND ON GITHUB / READY FOR REVIEW / NOT ACTIVE. 사용자가 V-리그의 ChatGPT 비종속 자동 업데이트와 GitHub 실행 가능 여부를 질문한 뒤 “진행해”라고 구축을 지시했다. 기존 MASTER를 원본으로 유지하면서 공식 정규리그 전체 수집 → ID·점수·공식 순위 대조 → 정확한 MASTER 셀 반영·재조회 → 허용 JSON → Pages 검증의 GitHub Actions 경로를 구현한다. 남녀 각 126경기의 공식 연결과 실제 개막전 2경기를 읽기 전용으로 대조했다. 기존 명단·선수 ID·포스트시즌·공통 UI·공시/감사 일정은 유지한다. `KVL_VLEAGUE_UPDATE_APPROVED=true` 전 예약 게시·Issue는 비활성이다. 운영 병합·배포 승인, GitHub용 Google 실행 권한 연결, 실제 MASTER 쓰기·Pages 배포는 아직 완료로 표시하지 않는다. 기존 Quality Audit의 활성화 승인을 새 수집기의 운영 승인으로 확대하지 않는다. [운영 명세](KVL_VLEAGUE_AUTO_UPDATE_v1.md), [실제 자료·검수·복구](validation/vleague-auto-update_v1.md).
+
+
+## 2026-11-01 · V-리그 자동 업데이트 운영 반영·실행 권한 연결 승인
+
+Status: APPROVED / RELEASE AUTHORIZED / ACTIVATION IN PROGRESS. 사용자가 PR #213 운영 반영과 기존 Google MASTER의 GitHub 실행 권한 연결을 요청하는 확인에 “승인한다”라고 명시적으로 답했다. 앞선 NOT ACTIVE 기록의 승인 대기 상태를 이 범위에서 대체한다. 검증된 정규리그 수집·MASTER 정밀 반영·공개 JSON·Pages 검증과 승인된 일정·중복 없는 실패 Issue를 운영 전환한다. 코드 기준 `857f344a0b8480cdc5eac2e3779115bda2618344`, V-리그 Actions `41213686346` 및 Quality Audit `41213686347` 성공. 기존 선수 등록 workflow 3개 실패는 검수 문서에 기록한 별도 legacy 문제이며 이 승인으로 수정 범위를 확대하지 않는다. 병합, GitHub용 Google 권한 연결, 첫 MASTER 쓰기·재조회, 실제 Pages 반영을 각각 확인한 후 완료 상태를 기록한다. 권한 연결 이전에 검증을 우회하거나 MASTER 확인 없이 자동 공개하지 않는다. [운영 명세](KVL_VLEAGUE_AUTO_UPDATE_v1.md), [검수 근거](validation/vleague-auto-update_v1.md).

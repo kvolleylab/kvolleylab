@@ -1,6 +1,6 @@
 # V-리그 자동 업데이트 v1
 
-작성일: 2026-10-31. 상태: **구현·로컬 및 GitHub 읽기 전용 검증 완료 / 운영 활성화 전**. 검토: [PR #213](https://github.com/kvolleylab/kvolleylab/pull/213).
+작성일: 2026-10-31. 2026-11-01 사용자 운영 승인. 상태: **구현·검증 완료 / 운영 반영 승인 / 권한 연결·최초 실행 진행 중**. 검토: [PR #213](https://github.com/kvolleylab/kvolleylab/pull/213).
 
 ## 목적과 실행 위치
 
