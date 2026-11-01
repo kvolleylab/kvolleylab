@@ -50,3 +50,7 @@ Drive 원본: [2026 VNL 여자부](https://drive.google.com/drive/folders/1jeoVO
 ## 배포·복구
 
 PR #216 head를 재확인하고 사용자 승인에 따라 merge. Pages의 해당 commit 성공과 실제 홈페이지 남녀 config/새 Hero·화면을 각각 확인해야 DEPLOYED다. 복구는 최신 main에서 이 PR의 운영 변경을 revert하는 별도 PR로 처리한다. 후속 타 작업을 덮는 reset/force push는 하지 않는다. 여자 원본 Drive 보관물과 기존 ID는 삭제하지 않는다. 다른 국제대회 일괄 전환은 이번 범위가 아니다.
+
+### GitHub 공개 데이터 검수 기록
+
+최초 운영 HEAD `5fe103c4`의 Quality Audit는 새/변경 JSON4개에 exact-hash 공개 검수 manifest가 없어 export gate에서 차단됐다. 공식 출처·공개 적합성·미확인 필드 표기를 확인한 해당4개만 `public-review-manifest.json`에 기록했고 gate를 재실행한다. 검증/보호 규칙을 완화하지 않는다. 별도 legacy 선수등록3개는 기존 데이터 개수 가정(성균관대16→현재127, 경일대 assertion)과 기존 파일 갱신 SHA 누락으로 실패하며 이번 운영 파일/MASTER와 분리한다. PRO 회귀/컵 표시/materialize 검사는 성공했다.
