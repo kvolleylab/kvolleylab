@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+  <title>관리자 로그인 테스트 · K-Volley Lab</title>
+  <meta name="description" content="K-Volley Lab 관리자 계정 확인과 로그아웃을 검증하는 테스트 전용 화면입니다.">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="admin-login.css">
+  <script type="module" src="admin-login.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 이동</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="https://kvolleylab.com/" aria-label="K-Volley Lab 홈페이지로 이동">
+        <img src="../../assets/images/brand/kvl-ball-international-gold.webp" alt="" width="44" height="44">
+        <span>K-Volley Lab<small>배구 데이터 · 분석 플랫폼</small></span>
+      </a>
+      <span class="test-badge">테스트 전용</span>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <div class="page-location"><a href="https://kvolleylab.com/">K-Volley Lab</a><span aria-hidden="true">/</span><span>관리자 로그인</span></div>
+    <div class="login-layout">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">KVL 관리자</p>
+        <h1 id="page-title">관리자 계정으로<br>시작하세요.</h1>
+        <p class="intro-description">기존 GitHub 운영 계정을 확인하고,<br class="desktop-break"> 관리자 로그인과 로그아웃을 테스트합니다.</p>
+        <div class="scope-card">
+          <h2>이번 단계에서 확인할 내용</h2>
+          <ul class="scope-list">
+            <li><span class="step-number" aria-hidden="true">01</span><span>관리자 계정과 권한 확인</span></li>
+            <li><span class="step-number" aria-hidden="true">02</span><span>관리자 이외 계정의 인증 거부</span></li>
+            <li><span class="step-number" aria-hidden="true">03</span><span>로그아웃 후 인증 상태 해제</span></li>
+          </ul>
+          <p class="scope-note">홈페이지 편집과 회원 기능은 이 확인을 마친 뒤 별도로 연결합니다.</p>
+        </div>
+      </section>
+
+      <div class="auth-card">
+        <div class="card-topline">
+          <span class="card-label">관리자 인증</span>
+          <span id="session-state" class="session-state" role="status" aria-live="polite">로그인 전</span>
+        </div>
+        <div id="message" class="message" role="alert" hidden></div>
+
+        <section id="login-panel" aria-labelledby="login-title">
+          <h2 id="login-title">GitHub 계정 확인</h2>
+          <p class="card-description">K-Volley Lab 저장소의 소유자 계정으로 로그인하세요.</p>
+          <form id="login-form">
+            <label for="token">GitHub 인증 토큰</label>
+            <input id="token" name="token" type="password" placeholder="발급받은 토큰을 입력하세요" required maxlength="255" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="go" aria-describedby="token-help">
+            <p id="token-help" class="field-help">토큰은 이 탭에서만 사용하며, 새로고침하거나 로그아웃하면 다시 입력해야 합니다.</p>
+            <button id="login-button" class="button primary" type="submit">관리자로 로그인</button>
+            <button id="cancel-button" class="button secondary" type="button" hidden>인증 취소</button>
+          </form>
+
+          <details class="token-guide">
+            <summary>처음이라면, 인증 토큰 준비하기</summary>
+            <div class="guide-content">
+              <ol>
+                <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">GitHub 토큰 발급 화면 열기 <span aria-hidden="true">↗</span></a></li>
+                <li><b>Resource owner</b>에서 <b>kvolleylab</b>을 선택하세요.</li>
+                <li>기간을 <b>7일</b>처럼 짧게 설정하고, 저장소는 <b>kvolleylab/kvolleylab</b>만 선택하세요.</li>
+                <li>권한은 기본 <b>Metadata · Read-only</b>만 사용합니다. Contents 쓰기 권한은 필요하지 않습니다.</li>
+                <li>생성한 토큰을 위 입력칸에 붙여 넣으세요.</li>
+              </ol>
+              <p class="guide-note">토큰은 비밀번호처럼 다뤄 주세요. 채팅으로 보내지 말고 이 테스트 화면에만 입력하세요.</p>
+            </div>
+          </details>
+        </section>
+
+        <section id="account-panel" aria-labelledby="account-title" tabindex="-1" hidden>
+          <div class="verified-symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></div>
+          <h2 id="account-title">관리자 확인 완료</h2>
+          <p class="card-description">확인된 계정으로 관리자 로그인 테스트를 진행할 수 있습니다.</p>
+          <dl class="account-details">
+            <div><dt>GitHub 계정</dt><dd id="account-login">—</dd></div>
+            <div><dt>확인된 권한</dt><dd id="account-role">—</dd></div>
+            <div><dt>마지막 확인</dt><dd id="checked-at">—</dd></div>
+          </dl>
+          <div class="account-actions">
+            <button id="recheck-button" class="button primary" type="button">관리자 권한 다시 확인</button>
+            <button id="logout-button" class="button secondary" type="button">로그아웃</button>
+          </div>
+          <p class="field-help account-help">인증은 최대 15분간 유지되며, 새로고침하거나 로그아웃하면 해제됩니다. 발급한 토큰 자체를 폐기하려면 GitHub 설정에서 삭제해 주세요.</p>
+        </section>
+        <noscript><p class="message">관리자 인증을 이용하려면 브라우저에서 JavaScript를 활성화해 주세요.</p></noscript>
+      </div>
+    </div>
+    <footer class="page-footer"><span>K-Volley Lab</span><p>관리자 계정 확인 · 읽기 전용 테스트</p></footer>
+  </main>
+</body>
+</html>

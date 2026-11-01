@@ -414,3 +414,7 @@ Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·l
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED; deployment evidence is recorded in the release PR. 사용자가 ‘다른 대회들의 달력’과 국내대회 기본 템플릿을 V-리그 기준으로 맞추되 1경기와 2경기 이상을 구분하도록 요청했다. 현재 달력의 하루 1경기는 실제 단계·대진/확정 점수·장소·KST, 여러 경기는 N경기 요약 후 날짜 팝업의 전체 목록으로 표시한다. 선택 팀 범위도 같은 원칙이다. 날짜 검정/휴일 빨강, 경기일만 음영, 7열 모바일 맞춤, 내부 흰 카드 제거를 공통 컴포넌트로 승격한다. 기존 V-리그 전용 약칭·도시·올스타전은 별도 설정으로 보존한다.
 
 Base main `7ce64bd0177203b1f5110cd5848a52c606f0a51d`: PR #227의 챔피언결정전 자동화·PR #229의 모바일 명단/순위를 포함한다. 공통 Engine의 47개 대회와 기존 AVC 남녀의 달력만 적용하며 전체 AVC 디자인을 이식하지 않는다. 이전 ‘V-리그 달력만 변경’ 및 ‘팀의 여러 경기를 모두 칸에 표시’ 결정을 이 범위에서 대체한다. config/data/MASTER/ID/경기 결과/명단은 보존한다. 신규 공통 템플릿에도 같은 모듈을 연결한다. [표시 계약·출처·검수·복구](validation/competition-calendar-standard-20261102.md).
+
+## 2026-11-02 · 관리자 로그인 우선 테스트
+
+Status: APPROVED SCOPE / PROTOTYPE / IMPLEMENTED / 모의 검사 VERIFIED. 사용자가 회원 전체 기능에 앞서 관리자 로그인을 만들어 테스트하도록 요청했다. 기존 드래프트의 GitHub 계정·권한 확인 원칙을 재사용한 독립 읽기 전용 시안을 `previews/admin-login-v1/`에 준비했다. 인증된 사용자·저장소·소유자 ID와 GitHub가 반환한 관리자 역할을 모두 확인하고, 토큰을 브라우저 저장소에 기록하지 않으며 로그아웃·새로고침·만료 시 해제한다. 모의 응답 15개와 PC/모바일 화면을 검증했고 별도 소유자 전용 테스트 Site에 게시했다. 실제 관리자 로그인과 다른 실계정 거부는 사용자의 직접 인증 전까지 NOT VERIFIED다. KVL 운영사이트는 미변경이며 회원 인증 공급자 선택·Supabase 도입·개인 메모 권한·편집 기능을 확정하지 않는다. 상세 범위·기준 main·검증·복구는 [관리자 로그인 테스트 v1](ADMIN_LOGIN_TEST_v1.md)을 따른다.
