@@ -1,0 +1,250 @@
+{
+  "views": [
+    {
+      "calendar": true,
+      "cards": [
+        {
+          "color": "rgb(23, 54, 93)",
+          "key": "total",
+          "label": "전체 경기",
+          "value": "15경기"
+        },
+        {
+          "color": "rgb(91, 58, 142)",
+          "key": "wins",
+          "label": "승",
+          "value": "13승"
+        },
+        {
+          "color": "rgb(102, 117, 138)",
+          "key": "losses",
+          "label": "패",
+          "value": "2패"
+        },
+        {
+          "color": "rgb(91, 58, 142)",
+          "key": "preliminary",
+          "label": "승률 (예선)",
+          "value": "83.3%"
+        },
+        {
+          "color": "rgb(91, 58, 142)",
+          "key": "overall",
+          "label": "승률 (전체)",
+          "value": "86.7%"
+        }
+      ],
+      "listOpen": true,
+      "note": "등록 15경기 · 완료 15경기 · 승·패와 승률은 완료 경기 기준",
+      "page": 1585,
+      "team": "POL",
+      "viewport": 1585,
+      "width": 1600
+    },
+    {
+      "calendar": true,
+      "cards": [
+        {
+          "key": "total",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 115,
+            "x": 15,
+            "y": 135.265625
+          },
+          "value": "15경기"
+        },
+        {
+          "key": "wins",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 115,
+            "x": 130,
+            "y": 135.265625
+          },
+          "value": "13승"
+        },
+        {
+          "key": "losses",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 115,
+            "x": 245,
+            "y": 135.265625
+          },
+          "value": "2패"
+        },
+        {
+          "key": "preliminary",
+          "overflow": false,
+          "rect": {
+            "height": 99.6875,
+            "width": 172.5,
+            "x": 15,
+            "y": 217.265625
+          },
+          "value": "83.3%"
+        },
+        {
+          "key": "overall",
+          "overflow": false,
+          "rect": {
+            "height": 99.6875,
+            "width": 172.5,
+            "x": 187.5,
+            "y": 217.265625
+          },
+          "value": "86.7%"
+        }
+      ],
+      "listOpen": true,
+      "page": 375,
+      "team": "POL",
+      "title": "390px VNL 폴란드",
+      "viewport": 375,
+      "width": 390
+    },
+    {
+      "calendar": true,
+      "cards": [
+        {
+          "key": "total",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 105,
+            "x": 15,
+            "y": 135.265625
+          },
+          "value": "12경기"
+        },
+        {
+          "key": "wins",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 105,
+            "x": 120,
+            "y": 135.265625
+          },
+          "value": "3승"
+        },
+        {
+          "key": "losses",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 105,
+            "x": 225,
+            "y": 135.265625
+          },
+          "value": "9패"
+        },
+        {
+          "key": "preliminary",
+          "overflow": false,
+          "rect": {
+            "height": 99.6875,
+            "width": 157.5,
+            "x": 15,
+            "y": 217.265625
+          },
+          "value": "25.0%"
+        },
+        {
+          "key": "overall",
+          "overflow": false,
+          "rect": {
+            "height": 99.6875,
+            "width": 157.5,
+            "x": 172.5,
+            "y": 217.265625
+          },
+          "value": "25.0%"
+        }
+      ],
+      "listOpen": true,
+      "page": 345,
+      "team": "CUB",
+      "title": "360px VNL 쿠바",
+      "viewport": 345,
+      "width": 360
+    },
+    {
+      "calendar": true,
+      "cards": [
+        {
+          "key": "total",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 115,
+            "x": 15,
+            "y": 131.796875
+          },
+          "value": "4경기"
+        },
+        {
+          "key": "wins",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 115,
+            "x": 130,
+            "y": 131.796875
+          },
+          "value": "0승"
+        },
+        {
+          "key": "losses",
+          "overflow": false,
+          "rect": {
+            "height": 82,
+            "width": 115,
+            "x": 245,
+            "y": 131.796875
+          },
+          "value": "4패"
+        },
+        {
+          "key": "preliminary",
+          "overflow": false,
+          "rect": {
+            "height": 99.6875,
+            "width": 172.5,
+            "x": 15,
+            "y": 213.796875
+          },
+          "value": "0.0%"
+        },
+        {
+          "key": "overall",
+          "overflow": false,
+          "rect": {
+            "height": 99.6875,
+            "width": 172.5,
+            "x": 187.5,
+            "y": 213.796875
+          },
+          "value": "0.0%"
+        }
+      ],
+      "listOpen": true,
+      "page": 375,
+      "team": "MOK",
+      "title": "390px 국내 목포대",
+      "viewport": 375,
+      "width": 390
+    }
+  ],
+  "sourceBase": "2791e93f730a13c7f64e209d802b7e1df43b4758",
+  "popup": {
+    "matches": 1,
+    "open": true,
+    "text": "2026.08.02 · 1경기×결승20:30 KST미국2 : 3폴란드21-2525-2327-2523-2510-15Ningbo Beilun Gymnasium이 날짜 경기 일정·결과 보기 ›"
+  },
+  "appErrors": []
+}

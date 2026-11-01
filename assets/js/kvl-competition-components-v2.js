@@ -195,13 +195,42 @@ function matchGroups(list,prefix){
  const groups=new Map();list.forEach(m=>{const dt=date(m)||'미정';if(!groups.has(dt))groups.set(dt,[]);groups.get(dt).push(m);});
  return [...groups.entries()].map(([dt,games])=>`<section id="${prefix==='schedule'?'date':prefix+'-date'}-${esc(dt)}" class="kvl1180-date-group"><header class="kvl1180-date-head"><div class="kvl1180-date-title"><strong>${esc(fmtDate(dt))}</strong><span>${esc([...new Set(games.map(stage))].join(' · '))}</span></div><span>${games.length}경기</span></header><div>${games.map(matchRow).join('')}</div></section>`).join('')||'<div class="kvl1180-schedule-empty">선택한 조건의 경기가 없습니다.</div>';
 }
+function teamRecordStats(d,list,teamCode){
+ const unfinished=new Set(['upcoming','scheduled','active','live','in_progress','cancelled','postponed','예정','진행중','취소','연기']);
+ const done=list.filter(m=>{const s=score(m);return s&&Number.isInteger(s.home)&&Number.isInteger(s.away)&&s.home>=0&&s.away>=0&&s.home!==s.away&&!unfinished.has(String(m.status||'').toLowerCase());});
+ const wins=done.filter(m=>{const s=score(m);return window.KVLCompetitionDataV2.participant(d,m.home)?.code===teamCode?s.home>s.away:s.away>s.home;}).length;
+ return {total:list.length,played:done.length,wins,losses:done.length-wins,rate:done.length?(wins/done.length*100).toFixed(1):null};
+}
+function teamPreliminaryScope(d,list){
+ const settings=d.structure?.teamResults||{},configured=settings.preliminaryStages,knockout=new Set(['QF','SF','FINAL','BRONZE','3RD']);
+ const eligible=m=>!knockout.has(round(m));
+ if(Array.isArray(configured))return {state:configured.length?'available':'none',matches:list.filter(m=>eligible(m)&&configured.includes(stage(m)))};
+ const pools=d.standings?.pools||[];
+ if(pools.length){
+  // Same preliminary membership boundary as domesticOverallRows. A later
+  // round-robin pool (e.g. U-league's six-team league) is not preliminary.
+  const membership=new Map();pools.forEach(p=>(p.rows||[]).forEach(r=>membership.set(code(r.team),p.id||String(p.title||'').replace(/조$/,''))));
+  return {state:'available',matches:list.filter(m=>eligible(m)&&pool(m)&&[m.home,m.away].every(t=>membership.get(window.KVLCompetitionDataV2.participant(d,t)?.code)===pool(m)))};
+ }
+ const labels=['예선','조별리그'],known=stages(d).some(s=>labels.includes(s))||(d.matches||[]).some(m=>labels.includes(stage(m)));
+ const state=known?'available':d.structure?.standings?.mode==='none'||d.structure?.presentationCategory==='pro-league'?'none':'unknown';
+ return {state,matches:known?list.filter(m=>eligible(m)&&labels.includes(stage(m))):[]};
+}
+function teamRecordSummary(d,t,list){
+ const all=teamRecordStats(d,list,t.code),scope=teamPreliminaryScope(d,list),prelim=teamRecordStats(d,scope.matches,t.code),prelimLabel=d.structure?.teamResults?.preliminaryLabel||'예선';
+ const metric=(key,label,value,unit,cls='',note='')=>`<article class="${cls}" data-team-record="${key}"><span>${esc(label)}</span><strong>${esc(value)}${unit?`<small>${esc(unit)}</small>`:''}</strong>${note?`<small class="kvl-team-record-detail">${esc(note)}</small>`:''}</article>`;
+ const rate=(key,label,record,note)=>metric(key,label,record.rate??'—',record.rate===null?'':'%','is-rate',note);
+ const prelimNote=scope.state==='none'?'해당 없음':scope.state==='unknown'?'단계 확인 중':prelim.played?`${prelim.wins}승 ${prelim.losses}패 · ${prelim.played}경기`:'완료 경기 없음';
+ return `<div class="kvl-team-record-wrap"><div class="kvl-team-record-summary is-dual-rate" aria-label="${esc(name(t))} 대회 성적 요약">${metric('total','전체 경기',all.total,'경기')}${metric('wins','승',all.wins,'승','is-wins')}${metric('losses','패',all.losses,'패','is-losses')}${rate('preliminary','승률 ('+prelimLabel+')',prelim,prelimNote)}${rate('overall','승률 (전체)',all,all.played?`${all.wins}승 ${all.losses}패 · ${all.played}경기`:'완료 경기 없음')}</div><p class="kvl-team-record-note">등록 ${all.total}경기 · 완료 ${all.played}경기${all.total>all.played?' · 미완료 '+(all.total-all.played)+'경기':''} · 승·패와 승률은 완료 경기 기준</p></div>`;
+}
 function renderTeamResults(d){
  const root=q('[data-kvl-component="team-results"]');if(!root)return;
  const requested=new URLSearchParams(location.search).get('team'),t=window.KVLCompetitionDataV2.participant(d,requested);
  if(!t){root.innerHTML=`<div class="kvl1180-section-head"><div><p class="label">TEAM RESULTS</p><h2>국가별 경기결과</h2></div></div><p class="kvl1180-schedule-empty">이 대회에서 해당 참가국을 찾을 수 없습니다.</p><a class="kvl-team-roster-link" href="${esc(viewUrl('schedule'))}">전체 경기일정 보기</a>`;return;}
  const list=(d.matches||[]).filter(m=>[m.home,m.away].some(side=>window.KVLCompetitionDataV2.participant(d,side)?.code===t.code)).sort((a,b)=>(date(a)+time(a)).localeCompare(date(b)+time(b))),done=list.filter(m=>score(m)),wins=done.filter(m=>{const s=score(m);return window.KVLCompetitionDataV2.participant(d,m.home)?.code===t.code?s.home>s.away:s.away>s.home;}).length,losses=done.length-wins,pending=list.length-done.length,winRate=done.length?(wins/done.length*100).toFixed(1):'0.0',domestic=isDomesticLike(d);
  const identity=`${isRegional(d)?regionMark(t):logo(t)?`<img src="${esc(logo(t))}" alt="${esc(name(t))} 엠블럼">`:''}<div><p class="label">TEAM RESULTS · ${esc(t.code)}</p><h2>${esc(profileName(t))} 경기결과</h2>${en(t)?`<p class="kvl-team-results-en">${esc(en(t))}</p>`:''}<p class="kvl-team-competition">${esc(d.displayName)}</p></div>`;
- const summary=domestic?`<div class="kvl-team-record-wrap"><div class="kvl-team-record-summary" aria-label="${esc(name(t))} 대회 성적 요약"><article><span>전체 경기</span><strong>${list.length}<small>경기</small></strong></article><article class="is-wins"><span>승</span><strong>${wins}<small>승</small></strong></article><article class="is-losses"><span>패</span><strong>${losses}<small>패</small></strong></article><article class="is-rate"><span>승률</span><strong>${winRate}<small>%</small></strong></article></div>${pending?`<p class="kvl-team-record-note">완료 ${done.length}경기 · 예정 ${pending}경기 · 한국시간(KST)</p>`:`<p class="kvl-team-record-note">전체 일정 완료 · 한국시간(KST)</p>`}</div>`:`<div class="kvl1180-schedule-summary"><strong>${esc(name(t))} · 전체 ${list.length}경기</strong><span>완료 ${done.length} · ${wins}승 ${losses}패 · 예정 ${pending} · 한국시간(KST)</span></div>`;
+ const recordSummary=(domestic&&d.structure?.presentation==='domestic-home-v2')||d.structure?.teamResults?.summary==='record';
+ const summary=recordSummary?teamRecordSummary(d,t,list):domestic?`<div class="kvl-team-record-wrap"><div class="kvl-team-record-summary" aria-label="${esc(name(t))} 대회 성적 요약"><article><span>전체 경기</span><strong>${list.length}<small>경기</small></strong></article><article class="is-wins"><span>승</span><strong>${wins}<small>승</small></strong></article><article class="is-losses"><span>패</span><strong>${losses}<small>패</small></strong></article><article class="is-rate"><span>승률</span><strong>${winRate}<small>%</small></strong></article></div>${pending?`<p class="kvl-team-record-note">완료 ${done.length}경기 · 예정 ${pending}경기 · 한국시간(KST)</p>`:`<p class="kvl-team-record-note">전체 일정 완료 · 한국시간(KST)</p>`}</div>`:`<div class="kvl1180-schedule-summary"><strong>${esc(name(t))} · 전체 ${list.length}경기</strong><span>완료 ${done.length} · ${wins}승 ${losses}패 · 예정 ${pending} · 한국시간(KST)</span></div>`;
  root.innerHTML=`<div class="kvl1180-section-head kvl-team-results-head">${rosterIdentity(d,t,identity)}<div class="kvl-team-actions">${rosterButton(d,t)}<a href="${esc(viewUrl('schedule'))}">전체 경기일정 보기</a></div></div>${summary}<div class="kvl1180-schedule-list">${matchGroups(list,'team')}</div>`;
  bindInternalRosterLinks(d,root);
  window.KVLDomesticHomeV2?.enhanceTeamCalendar?.(d);

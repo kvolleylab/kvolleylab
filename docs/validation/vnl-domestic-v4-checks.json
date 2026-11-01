@@ -1,0 +1,142 @@
+{
+  "revision": 4,
+  "checkedAt": "2026-11-01T06:21:05.428125+00:00",
+  "mainCommit": "2791e93f730a13c7f64e209d802b7e1df43b4758",
+  "previousFeatureCommit": "cc88626a5bee27f9af90ea3ebaef96e43b5f0813",
+  "checks": [
+    {
+      "check": "Four expected browser views",
+      "passed": true
+    },
+    {
+      "check": "POL at 1600: five expected values",
+      "passed": true
+    },
+    {
+      "check": "POL at 1600: calendar and full list open",
+      "passed": true
+    },
+    {
+      "check": "POL at 1600: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "check": "POL at 390: five expected values",
+      "passed": true
+    },
+    {
+      "check": "POL at 390: calendar and full list open",
+      "passed": true
+    },
+    {
+      "check": "POL at 390: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "check": "POL at 390: mobile 3+2 layout",
+      "passed": true
+    },
+    {
+      "check": "CUB at 360: five expected values",
+      "passed": true
+    },
+    {
+      "check": "CUB at 360: calendar and full list open",
+      "passed": true
+    },
+    {
+      "check": "CUB at 360: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "check": "CUB at 360: mobile 3+2 layout",
+      "passed": true
+    },
+    {
+      "check": "MOK at 390: five expected values",
+      "passed": true
+    },
+    {
+      "check": "MOK at 390: calendar and full list open",
+      "passed": true
+    },
+    {
+      "check": "MOK at 390: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "check": "MOK at 390: mobile 3+2 layout",
+      "passed": true
+    },
+    {
+      "check": "Poland final popup retains one match and five set scores",
+      "passed": true
+    },
+    {
+      "check": "No observed app errors",
+      "passed": true
+    },
+    {
+      "check": "Build input matches source: assets/css/kvl-competition-components-v2.css",
+      "passed": true
+    },
+    {
+      "check": "Build input matches source: assets/css/kvl-domestic-home-v2.css",
+      "passed": true
+    },
+    {
+      "check": "Build input matches source: assets/js/kvl-domestic-home-v2.js",
+      "passed": true
+    },
+    {
+      "check": "Build input matches source: assets/js/kvl-competition-components-v2.js",
+      "passed": true
+    },
+    {
+      "check": "Build input matches source: data/competitions/vnl-men-2026/config.json",
+      "passed": true
+    },
+    {
+      "check": "Build input matches source: data/competitions/vnl-men-2026/data.json",
+      "passed": true
+    },
+    {
+      "check": "Protected data equals main: data/competitions/vnl-men-2026/config.json",
+      "passed": true
+    },
+    {
+      "check": "Protected data equals main: data/competitions/vnl-men-2026/data.json",
+      "passed": true
+    },
+    {
+      "check": "Protected data equals main: data/competitions/university-league-men-2026/data.json",
+      "passed": true
+    },
+    {
+      "check": "Protected data equals main: data/competitions/university-goseong-men-2026/data.json",
+      "passed": true
+    },
+    {
+      "check": "Only selected runtime files changed since revision 3",
+      "passed": true
+    }
+  ],
+  "protectedDataSha256": {
+    "data/competitions/vnl-men-2026/config.json": "76593958c21531f7736b12d6dbccd72bfcd4ca2083b786b9b08b2d1acb4dea4f",
+    "data/competitions/vnl-men-2026/data.json": "09765934285b25a76ed3ca7a0bc39d72c653433de4c44e01a6971cd548eef6f6",
+    "data/competitions/university-league-men-2026/data.json": "5fb0c8cb99f5d3803f5170bd61cc5fc6619514e968a9e310ed1a2e714225af35",
+    "data/competitions/university-goseong-men-2026/data.json": "4952877454f7d229486e4d285d81dfb516d3f4dfc7c49ccbfd168fa50e9ca6ae"
+  },
+  "regressionResults": {
+    "domesticAndSchool": 54,
+    "teamCalendarAndRecord": 12,
+    "kovoCup": 2,
+    "totalPassed": 68,
+    "note": "Existing domestic/school and KOVO suites passed; final affected team suite passed all 12 after correcting a raw-data expectation."
+  },
+  "notPerformed": [
+    "physical-device validation",
+    "print/PDF validation",
+    "production deployment"
+  ]
+}

@@ -344,3 +344,8 @@ Status: REQUESTED CHANGES IMPLEMENTED / PROTOTYPE / READY FOR REVIEW / PRODUCTIO
 ## 2026-11-01 · VNL 시안의 국제 기본 기준 채택 및 팀 경기 표시 보완
 
 Status: DESIGN BASELINE ADOPTED / REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 현재 2026 VNL 페이지를 국제 기본 템플릿의 기준으로 지정했다. 앞선 국제 기준 확정 보류를 이 디자인 범위에서 대체하며, 별도 대안 PR #212는 재개하지 않는다. 국내 Hero 글자 크기를 VNL 규격으로 맞추고, 경기장·현지시간 문구는 세트 스코어 중심에 정렬한다. 팀 선택 시 달력과 전체 목록을 기본 펼침으로 표시하며 달력에 대진/등록 스코어를 표기한다. 단일 VNL 예선순위의 중복 상태 열만 선택적으로 제거한다. 데이터·MASTER·ID·의미/시즌 구조 원문 및 운영 main은 변경하지 않는다. 적용은 PR #216과 비공개 시안이며 운영 병합/Pages/일괄 적용 승인으로 확대하지 않는다. [국제 기준](international-template-v2.md) · [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · 팀 성적 카드와 예선·전체 승률
+
+Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 경기일정·결과의 팀 로고 선택 시 전체 경기·승·패·승률(예선, 전체)을 대학배구와 같은 양식으로 표시하고 국내 기본 템플릿에도 적용하도록 요청했다. 기존 공통 성적 카드를 5개 지표로 확장하고 달력 위에 둔다. PC는 5칸, 모바일은 3+2칸이며 VNL은 FIVB 보라색을 사용한다. 예선은 명시된 단계 또는 기존 예선 조 소속으로 제한해 U-리그 6강리그/결선을 제외한다. 미완료 경기는 승률 분모에 넣지 않는다. PR #216 및 비공개 시안에서 검증하며 운영 main·원본 config/data·MASTER·ID는 유지한다. [검수 기록](validation/vnl-domestic-template-v1.md).

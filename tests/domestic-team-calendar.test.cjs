@@ -101,3 +101,37 @@ test('the team calendar hook leaves non-opted-in VNL production rendering intact
   assert.equal(doc.querySelector('#team-results').innerHTML,before);assert.equal(doc.querySelector('[data-dv2-team-calendar]'),null);
  }finally{w.close();}
 });
+function recordValues(doc){return Object.fromEntries([...doc.querySelectorAll('[data-team-record]')].map(e=>[e.dataset.teamRecord,e.querySelector('strong').textContent]));}
+test('VNL opt-in shares university cards and keeps preliminary and entire-event win rates separate',()=>{
+ const {w,d,doc,route}=setup('vnl-men-2026');try{
+  assert.equal(doc.querySelector('.is-dual-rate'),null);const before=JSON.stringify(d.matches);
+  d.structure.teamResults={summary:'record',preliminaryStages:['예선']};route('POL');
+  assert.deepEqual(recordValues(doc),{total:'15경기',wins:'13승',losses:'2패',preliminary:'83.3%',overall:'86.7%'});
+  assert.match(doc.querySelector('[data-team-record="preliminary"]').textContent,/10승 2패 · 12경기/);
+  route('CUB');assert.deepEqual(recordValues(doc),{total:'12경기',wins:'3승',losses:'9패',preliminary:'25.0%',overall:'25.0%'});
+  assert.equal(JSON.stringify(d.matches),before);
+ }finally{w.close();}
+});
+test('domestic U-league preliminary rate excludes the six-team league and knockout',()=>{
+ const {w,d,doc,route}=setup('university-league-men-2026');try{
+  route('SKKU');const before=recordValues(doc),prelim=doc.querySelector('[data-team-record="preliminary"]').textContent;
+  assert.equal(before.preliminary,'83.3%');assert.match(prelim,/5승 1패 · 6경기/);
+  for(const m of d.matches.filter(m=>m.stage!=='예선'&&[m.home.code,m.away.code].includes('SKKU')))m.score=m.home.code==='SKKU'?{home:0,away:3,sets:[]}:{home:3,away:0,sets:[]};
+  w.KVLCompetitionComponentsV2.render();assert.equal(doc.querySelector('[data-team-record="preliminary"]').textContent,prelim);assert.notEqual(recordValues(doc).overall,before.overall);
+ }finally{w.close();}
+});
+test('record cards exclude unfinished and tied scores; zero completed games are not a zero-percent record',()=>{
+ const {w,d,doc,code}=setup();try{
+  const original=d.matches.find(m=>[m.home.code,m.away.code].includes(code)),other=d.participants.find(t=>t.code!==code).code;
+  d.matches=[null,{home:0,away:0},{home:3,away:1},{home:1,away:3}].map((score,i)=>({...original,id:'record-'+i,home:{code},away:{code:other},score,...(i===2?{status:'live'}:{})}));
+  w.KVLCompetitionComponentsV2.render();assert.deepEqual(recordValues(doc),{total:'4경기',wins:'0승',losses:'1패',preliminary:'0.0%',overall:'0.0%'});
+  d.matches.pop();w.KVLCompetitionComponentsV2.render();assert.equal(recordValues(doc).overall,'—');assert.equal(recordValues(doc).preliminary,'—');assert.match(doc.querySelector('.kvl-team-record-note').textContent,/등록 3경기 · 완료 0경기 · 미완료 3경기/);
+ }finally{w.close();}
+});
+test('preliminary stage selection distinguishes not applicable, unknown and no completed matches',()=>{
+ const {w,d,doc}=setup('vnl-men-2026');try{
+  d.structure.teamResults={summary:'record',preliminaryStages:[]};w.KVLCompetitionComponentsV2.render();assert.match(doc.querySelector('[data-team-record="preliminary"]').textContent,/—해당 없음/);
+  delete d.structure.teamResults.preliminaryStages;d.structure.schedule.stages=['전체','본선'];d.matches=d.matches.map(m=>({...m,stage:'본선'}));w.KVLCompetitionComponentsV2.render();assert.match(doc.querySelector('[data-team-record="preliminary"]').textContent,/—단계 확인 중/);
+  d.structure.teamResults.preliminaryStages=['본선'];d.structure.teamResults.preliminaryLabel='본선';d.matches=d.matches.map(m=>({...m,score:null}));w.KVLCompetitionComponentsV2.render();assert.match(doc.querySelector('[data-team-record="preliminary"]').textContent,/승률 \(본선\).*—완료 경기 없음/);
+ }finally{w.close();}
+});

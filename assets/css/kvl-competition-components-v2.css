@@ -3304,3 +3304,25 @@ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot
 html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family] #groups .is-single-league.is-status-hidden :is(.kvl1180-combined-table-head,.kvl1180-combined-row){grid-template-columns:60px minmax(180px,2.35fr) 48px 48px 60px 94px 94px 126px!important;column-gap:6px!important}
 html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family] #groups .is-single-league.is-status-hidden :is(.kvl1180-combined-table-head,.kvl1180-combined-row)>*{grid-column:auto!important}
 html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family] #groups .is-single-league.is-status-hidden .kvl-shared-combined-line{grid-template-columns:minmax(236px,1fr) 100px 48px 60px 94px 94px!important}
+
+/* Team record cards: university presentation shared with opted-in international views. */
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));overflow:hidden;border:1px solid #dce5ec;border-radius:14px;background:#fff;box-shadow:0 6px 18px rgba(23,54,93,.055)}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate article{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;min-height:108px;padding:16px 10px;text-align:center}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate article+article{border-left:1px solid #e6ecef}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate span{color:#6b7888;font-size:12px;font-weight:650;line-height:1.3}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate strong{display:flex;align-items:baseline;gap:4px;margin-top:9px;color:#17365d;font-size:30px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate strong small{font-size:13px;font-weight:700;color:inherit}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate :is(.is-rate,.is-wins) strong{color:var(--kvl-theme-primary,#5b3a8e)}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate .is-losses strong{color:#66758a}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-detail{display:block;margin-top:9px;color:#768393;font-size:11px;font-weight:500;line-height:1.4;word-break:keep-all}
+html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate+.kvl-team-record-note{font-size:11px;color:#7a8794;line-height:1.5;text-align:right;margin:9px 2px 0}
+@media(max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate{grid-template-columns:repeat(6,minmax(0,1fr))}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate article{grid-column:span 2;min-height:82px;padding:13px 5px;border:0;border-left:1px solid #e6ecef}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate article:first-child{border-left:0}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate article.is-rate{grid-column:span 3;border-top:1px solid #e6ecef;min-height:96px}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate article:nth-child(4){border-left:0}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate strong{font-size:25px}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate span{font-size:11px}
+ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate+.kvl-team-record-note{font-size:10px;text-align:left}
+}

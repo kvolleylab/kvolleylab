@@ -1,8 +1,8 @@
 # 2026 VNL 남자부 · 국제 기본 템플릿 기준 시안
 
-상태: **DESIGN BASELINE ADOPTED / REVISION 3 READY FOR REVIEW / 운영 미반영** · 2026-11-01
+상태: **DESIGN BASELINE ADOPTED / REVISION 4 READY FOR REVIEW / 운영 미반영** · 2026-11-01
 
-사용자가 현재 2026 VNL 시안을 국제대회 기본 템플릿의 기준으로 지정했다. 국내 기본 템플릿과 공통 Engine V2를 함께 사용하며, 국내 Hero 크기도 VNL과 맞춘다. 별도 대안 PR #212는 재개하지 않는다. 최신 요청 네 가지를 같은 시안에 반영했다.
+사용자가 현재 2026 VNL 시안을 국제대회 기본 템플릿의 기준으로 지정했다. 국내 기본 템플릿과 공통 Engine V2를 함께 사용하며, 국내 Hero 크기도 VNL과 맞춘다. 별도 대안 PR #212는 재개하지 않는다. 기존 네 가지 수정에 이어 팀 성적 요약을 같은 시안에 추가했다.
 
 - 비공개 시안: https://kvl-vnl-domestic-template-v1.daewook1029.chatgpt.site
 - Draft PR: https://github.com/kvolleylab/kvolleylab/pull/216
@@ -10,13 +10,38 @@
 - 비교 main: `2791e93f730a13c7f64e209d802b7e1df43b4758`
 - 국제 기준: [international-template-v2.md](../international-template-v2.md)
 - 국내 기준: [domestic-template-v2.md](../domestic-template-v2.md)
-- 화면/검수: `previews/vnl-domestic-v1/index.html`, `qa.html`, `revision-qa.html`
+- 화면/검수: `previews/vnl-domestic-v1/index.html`, `qa.html`, `revision-qa.html`, `team-record-qa.html`
+
+## Revision 4 · 팀 성적 요약 (최신 요청)
+
+경기일정·결과의 국기/로고를 선택하면 대학배구와 같은 성적 카드에 **전체 경기·승·패·예선 승률·전체 승률**을 표시한다. 기존 대학 공통 렌더러를 확장했고 VNL 시안은 표시 설정으로 선택했다. 카드 → 팀 달력 → 기본으로 열린 전체 목록 순서이며 팝업·명단 연결을 유지한다. PC 5칸, 모바일 3+2칸이다.
+
+| 등록 데이터 사례 | 전체 경기 | 승 | 패 | 예선 승률 | 전체 승률 |
+|---|---:|---:|---:|---:|---:|
+| VNL 폴란드 | 15 | 13 | 2 | 83.3% (10승2패/12경기) | 86.7% |
+| VNL 쿠바 | 12 | 3 | 9 | 25.0% | 25.0% |
+| 고성 목포대 | 4 | 0 | 4 | 0.0% | 0.0% |
+
+전체 경기는 등록 일정 수, 승·패/승률은 완료 경기 기준이다. 예정·진행중·취소·미등록/동점 점수는 분모에서 제외한다. 예선 승률에는 결선이 포함되지 않으며 대학 U-리그의 6강리그도 제외한다. 완료 경기 없음/예선 해당 없음/단계 확인 중을 구분한다.
+
+변경 파일: `assets/js/kvl-competition-components-v2.js`, `assets/css/kvl-competition-components-v2.css`, VNL의 `bridge.js`, `tests/domestic-team-calendar.test.cjs`, 국내/국제 기준 및 결정 로그. 같은 common 컴포넌트를 사용하며 별도 엔진은 만들지 않는다.
+
+검수: VNL PC1600(본문1180)·390·360 및 국내 목포대390에서 카드 수치·이동·가로 넘침·열린 목록을 확인했다. 폴란드 로고 클릭과 결승 날짜 팝업도 정상이다. 국내/중고54개, 팀 달력/성적12개, KOVO컵2개 등 최종68개 회귀 통과. 기존 여섯 탭/Hero/설명·명단 검증은 변경하지 않은 영역의 이전 증빙을 재사용한다. 관찰된 앱 콘솔 오류0건. 인쇄/실물 기기 검수는 하지 않았다.
+
+원본 VNL config/data, 고성·U-리그 data를 최신 main `2791e93`과 바이트 비교해 같음을 확인했다. Drive 운영원칙 MASTER v16의 수정 시각(2026-10-27T16:24:09Z)도 이전 확인과 같다. 운영 홈페이지/MASTER는 변경하지 않았다. 이번 범위에서 미해결 기능 오류는 발견하지 못했다.
+
+증빙: `vnl-domestic-v4-browser-evidence.json`, `vnl-domestic-v4-checks.json`. 격리 검수 화면: `previews/vnl-domestic-v1/team-record-qa.html`. 직전 복구 기준은 feature commit `cc88626a5bee27f9af90ea3ebaef96e43b5f0813`이다.
+
+![PC 팀 성적 카드](vnl-domestic-v4-pc.jpg)
+![모바일 VNL·국내 공통 카드](vnl-domestic-v4-mobile.jpg)
+
+## Revision 3 · 기존 검수 이력
 
 ![PC 경기장 설명의 스코어 중심 정렬](vnl-domestic-v3-pc.jpg)
 ![모바일 팀 달력·기본 펼침 목록·국내 Hero](vnl-domestic-v3-mobile.jpg)
 ![중복 상태 열을 제거한 PC 예선순위](vnl-domestic-v3-standings.jpg)
 
-## 최신 네 가지 요청
+## Revision 3의 네 가지 요청
 
 | 요청 | 반영 내용 |
 |---|---|

@@ -9,6 +9,7 @@ window.KVLCompetitionAdapterV2=d=>{
  standings:{...d.standings,rows:d.standings.rows.map(r=>r.team.code==='CHN'&&r.status==='host-qualified'?{...r,statusLabel:'개최국'}:r)},structure:{...d.structure,
   presentation:'domestic-home-v2',heroPresentation:'preserve',divisionLabel:'남자부',heroTitle:d.displayName,heroTagline:d.officialName,
   standings:{...d.structure.standings,showStatus:false},
+  teamResults:{...d.structure.teamResults,summary:'record',preliminaryStages:['예선']},
   hubUrl:'https://kvolleylab.com/competition.html',hubCategoryLabel:'국제대회',hubLabel:'VNL',
   eyebrow:'KVL INTERNATIONAL · VOLLEYBALL NATIONS LEAGUE',
   labels:{...d.structure.labels,participantsTitle:'참가국',groupsTab:'예선순위',knockoutTab:'대진·최종순위'},
