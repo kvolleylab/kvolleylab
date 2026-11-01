@@ -151,6 +151,7 @@ function renderQualifications(d){
 function renderCalendar(d){
   const root=q('[data-kvl-component="calendar"]'),section=q('[data-kvl-section="calendar"]');if(!root)return;
   if(section)section.dataset.kvlEmpty=String(!cfg(d).calendar);if(!cfg(d).calendar){if(section)section.hidden=true;return;}else if(section)section.hidden=false;
+  if(window.KVLMatchCalendarV1){window.KVLMatchCalendarV1.mount(root,d,{scheduleUrl:date=>viewUrl('schedule',{date}),teamUrl:team=>viewUrl('team',{team})});return;}
   const list=(d.matches||[]).filter(m=>!isNotRequired(m)).sort((a,b)=>`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
   const months=[...new Set(list.map(m=>date(m).slice(0,7)).filter(Boolean))].sort();
   if(!months.length){root.innerHTML='<div class="kvl1180-schedule-empty">공식 일정 발표 후 월간 달력을 표시합니다.</div>';return;}

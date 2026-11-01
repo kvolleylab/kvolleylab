@@ -12,7 +12,7 @@ function setup(slug='university-league-women-2026'){
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
  for(const name of ['data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));
  const d=w.KVLCompetitionDataV2.normalize(raw);w.KVL_COMPETITION_V2_DATA=d;
- w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-domestic-home-v2.js'));
+ w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));
  return {w,d,code,doc:w.document,route:(next,extra='')=>{w.history.pushState(null,'',`?competition=${slug}&view=team&team=${next}${extra}`);w.dispatchEvent(new w.PopStateEvent('popstate'));}};
 }
 test('team calendar contains only the selected team, including home and away games; overview month stays independent',()=>{
@@ -45,22 +45,18 @@ test('changing team and returning to a calendar date rebuilds one calendar witho
   route('UNKNOWN');assert.equal(doc.querySelector('[data-dv2-team-calendar]'),null);
  }finally{w.close();}
 });
-test('team date cells show registered scores or vs, retain every same-day match and escape names',()=>{
+test('multiple selected-team matches use a count and retain every game in the dialog and list',()=>{
  const {w,d,doc,code}=setup();try{
   const first=d.matches.find(m=>[m.home.code,m.away.code].includes(code)),other=d.participants.find(t=>t.code!==code);
   d.participants.find(t=>t.code===code).name='긴 팀 이름 <학교>';
-  d.matches=[{...first,id:'calendar-future',date:'2026-12-01',home:{code},away:{code:other.code},score:{home:3,away:1,sets:[]}},
-   {...first,id:'calendar-past-unscored',date:'2026-12-01',home:{code:other.code},away:{code},score:null}];
-  // The render hook runs before apply(): it must use the passed data, not global current.
+  d.matches=[{...first,id:'calendar-final',date:'2026-12-01',home:{code},away:{code:other.code},status:'final',score:{home:3,away:1,sets:[]}},
+   {...first,id:'calendar-scheduled',date:'2026-12-01',home:{code:other.code},away:{code},status:'scheduled',score:null}];
   w.KVLCompetitionComponentsV2.render();w.KVLDomesticHomeV2.apply(d);
-  const cells=[...doc.querySelectorAll('[data-dv2-team-calendar] .dv2-team-game')];assert.equal(cells.length,2);
-  assert.deepEqual(cells.map(c=>c.querySelector('b').textContent),['3-1','vs']);
-  assert.ok(cells.every(c=>c.textContent.includes('긴 팀 이름 <학교>')));assert.equal(doc.querySelector('학교'),null);
-  assert.equal(doc.querySelectorAll('[data-dv2-team-calendar] .dv2-day small').length,0);
-  assert.equal(doc.querySelector('.dv2-team-match-list').open,true);
-  doc.querySelector('[data-dv2-team-calendar] [data-dv2-date]').click();assert.equal(doc.querySelectorAll('.dv2-day-match').length,2);
-  w.Date.now=()=>Date.parse('2026-12-02T00:00:00Z');w.KVLCompetitionComponentsV2.render();
-  assert.deepEqual([...doc.querySelectorAll('[data-dv2-team-calendar] .dv2-team-game-score')].map(e=>e.textContent),['3-1','vs']);
+  const cal=doc.querySelector('[data-dv2-team-calendar]');assert.equal(cal.querySelector('.kvl-calendar-count').textContent,'2경기');assert.equal(cal.querySelector('.dv2-calendar-game'),null);
+  cal.querySelector('[data-dv2-date]').click();const cards=[...doc.querySelectorAll('.dv2-day-match')];assert.equal(cards.length,2);
+  assert.deepEqual(cards.map(c=>c.querySelector('.dv2-match-teams>strong').textContent),['3 : 1','VS']);
+  assert.ok(cards.every(c=>c.textContent.includes('긴 팀 이름 <학교>')));assert.equal(doc.querySelector('학교'),null);
+  assert.equal(doc.querySelector('.dv2-team-match-list').open,true);assert.equal(doc.querySelectorAll('.dv2-team-match-list [data-match-id]').length,2);
  }finally{w.close();}
 });
 test('hiding a single-league status never removes grouped competitions pool labels',()=>{

@@ -21,6 +21,7 @@ const flag=name=>TEAM[name]?`https://flagcdn.com/w80/${TEAM[name].flag}.png`:'';
 function renderCalendar(){
   const root=$('calendarRoot');
   if(!root||root.querySelector('.has-match')||!data)return;
+  if(window.KVLCalendarAVCAdapterV1?.mount(root,data,TEAM))return;
   const matches=Array.isArray(data.matches)?data.matches:[];
   const byDate=matches.reduce((map,m)=>{(map[m.date]??=[]).push(m);return map},{});
   const year=2026,month=8,first=new Date(year,month-1,1),last=new Date(year,month,0),cells=[];

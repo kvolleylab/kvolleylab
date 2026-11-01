@@ -17,6 +17,10 @@ on:
       - 'tests/vleague-match-summary.test.cjs'
       - 'tests/vleague-postseason.test.cjs'
       - 'tests/vleague-calendar.test.cjs'
+      - 'tests/competition-calendar-standard.test.cjs'
+      - 'assets/js/kvl-match-calendar-v1.js'
+      - 'assets/js/kvl-calendar-avc-adapter-v1.js'
+      - 'assets/css/kvl-match-calendar-v1.css'
       - 'assets/js/kvl-calendar-display-v1.js'
       - 'assets/js/kvl-domestic-home-v2.js'
       - 'assets/js/kvl-competition-template-v2.js'
@@ -36,6 +40,10 @@ on:
       - 'tests/vleague-match-summary.test.cjs'
       - 'tests/vleague-postseason.test.cjs'
       - 'tests/vleague-calendar.test.cjs'
+      - 'tests/competition-calendar-standard.test.cjs'
+      - 'assets/js/kvl-match-calendar-v1.js'
+      - 'assets/js/kvl-calendar-avc-adapter-v1.js'
+      - 'assets/css/kvl-match-calendar-v1.css'
       - 'assets/js/kvl-calendar-display-v1.js'
       - 'tests/kovo-cup-production-template-20261027.test.cjs'
       - 'tests/kovo-cup-desktop-matchup-alignment.test.cjs'
@@ -64,4 +72,4 @@ jobs:
       - name: Cup roster interactions, source integrity and domestic regressions
         env:
           KVL_JSDOM_PATH: /tmp/kvl-roster-tests/node_modules/jsdom
-        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/vleague-calendar.test.cjs tests/domestic-home-v2.test.cjs
+        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/vleague-calendar.test.cjs tests/domestic-home-v2.test.cjs tests/competition-calendar-standard.test.cjs tests/domestic-team-calendar.test.cjs

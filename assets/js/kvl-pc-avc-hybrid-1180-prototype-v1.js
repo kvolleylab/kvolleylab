@@ -47,6 +47,7 @@ function renderKorea(matches){
 function calendarTeam(m,side){return teamLabel(m,side).replace('예선 종합 ','예선 ')}
 function renderCalendar(matches){
   const root=$('calendarRoot');if(!root)return;
+  if(window.KVLCalendarAVCAdapterV1?.mount(root,data,TEAM_INFO))return;
   const byDate=(matches||[]).reduce((o,m)=>{(o[m.date]??=[]).push(m);return o},{}),year=2026,month=9,first=new Date(year,month-1,1),last=new Date(year,month,0),cells=[];
   for(let i=0;i<first.getDay();i++)cells.push('<div class="kvl1180-day is-empty"></div>');
   for(let d=1;d<=last.getDate();d++){

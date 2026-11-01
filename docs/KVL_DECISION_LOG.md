@@ -407,3 +407,10 @@ KOVO 현행 대회개요와 운영요강 제16·18·19조를 직접 검사했다
 ## 2026-11-02 · V-리그 모바일 간격·국적 국기·등번호·달력 결과
 
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 모바일 정규리그 순위의 다섯 열 간격 통일, 선수명단 POS 왼쪽 국적 국기, 등번호 확대, 종료 경기 달력의 실제 세트 결과를 요청했다. 같은 폭의 순위 열, 기존 국적의 국기 전용 모바일 표시,20px 등번호, 종료+유효 스코어에 한정한 결과 문구로 적용한다. PR #228의 가변 팀 열 배치를 이 범위에서 대체한다. 다른 대회·PC 명단·인쇄·국적 원문·등록 스코어·ID·MASTER는 유지한다. [검수·범위·복구](validation/vleague-mobile-v2-20261102.md).
+
+
+## 2026-11-02 · 대회 달력을 V-리그 기준으로 공통화
+
+Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED; deployment evidence is recorded in the release PR. 사용자가 ‘다른 대회들의 달력’과 국내대회 기본 템플릿을 V-리그 기준으로 맞추되 1경기와 2경기 이상을 구분하도록 요청했다. 현재 달력의 하루 1경기는 실제 단계·대진/확정 점수·장소·KST, 여러 경기는 N경기 요약 후 날짜 팝업의 전체 목록으로 표시한다. 선택 팀 범위도 같은 원칙이다. 날짜 검정/휴일 빨강, 경기일만 음영, 7열 모바일 맞춤, 내부 흰 카드 제거를 공통 컴포넌트로 승격한다. 기존 V-리그 전용 약칭·도시·올스타전은 별도 설정으로 보존한다.
+
+Base main `7ce64bd0177203b1f5110cd5848a52c606f0a51d`: PR #227의 챔피언결정전 자동화·PR #229의 모바일 명단/순위를 포함한다. 공통 Engine의 47개 대회와 기존 AVC 남녀의 달력만 적용하며 전체 AVC 디자인을 이식하지 않는다. 이전 ‘V-리그 달력만 변경’ 및 ‘팀의 여러 경기를 모두 칸에 표시’ 결정을 이 범위에서 대체한다. config/data/MASTER/ID/경기 결과/명단은 보존한다. 신규 공통 템플릿에도 같은 모듈을 연결한다. [표시 계약·출처·검수·복구](validation/competition-calendar-standard-20261102.md).

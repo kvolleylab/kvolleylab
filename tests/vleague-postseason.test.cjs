@@ -12,7 +12,7 @@ function setup(gender,transform,{width=1180,now,domestic=true}={}){
  Object.defineProperty(w,'innerWidth',{value:width});if(now!==undefined)w.Date.now=()=>now;
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
  for(const name of ['data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));
- w.KVL_COMPETITION_V2_DATA=w.KVLCompetitionDataV2.normalize(d);w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));if(domestic)w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
+ w.KVL_COMPETITION_V2_DATA=w.KVLCompetitionDataV2.normalize(d);w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));if(domestic)w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
  assert.equal(JSON.stringify(d),before,'rendering must not mutate the source');
  return {w,doc:w.document,d};
 }
