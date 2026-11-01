@@ -38,7 +38,9 @@
     },
     "standings": {
       "mode": "single-league",
-      "title": "여자부 정규리그 순위"
+      "title": "여자부 정규리그 순위",
+      "showStatus": false,
+      "mobileStats": "wins-losses-points"
     },
     "knockout": {
       "mode": "pro-postseason",

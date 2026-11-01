@@ -244,12 +244,13 @@
         "USER-REQUEST-VLEAGUE-CALENDAR-20261101",
         "KVL-COMP-VLEAGUE-M-2026-27",
         "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
-        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101"
+        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101",
+        "USER-REQUEST-VLEAGUE-STANDINGS-20261102"
       ],
-      "verified_at": "2026-11-01",
-      "sha256": "e62f55920c7ce6c0ee9219bb8b96a6f0d9594f6a02416517cadfac3f75173831",
-      "evidence": "docs/validation/vleague-calendar-v3-20261101.md",
-      "review_note": "기존 공개 표시 설정을 유지하고 MASTER의 올스타전 예정일 2027-01-17을 달력 주석으로만 추가했다. 공개 일정 발표 보도로 교차확인했다. 정규리그 경기·ID·시간·결과·명단·MASTER는 변경하지 않는다."
+      "verified_at": "2026-11-02",
+      "sha256": "e627934b5585eb4c5bc3f4da679f3a2ee2f00056494a6ea117537f2deacac50f",
+      "evidence": "docs/validation/vleague-standings-mobile-20261102.md",
+      "review_note": "기존 공개 config에서 순위표 표시 옵션(showStatus, mobileStats)만 변경했다. 사용자 요청에 따른 중복 상태 제거와 모바일 승·패·승점 표시다. 경기·순위 원본 수치·산식·ID·명단·MASTER는 그대로이며 기존 공개 검수/출처 범위를 유지한다."
     },
     "data/competitions/v-league-women-2026-27/config.json": {
       "access_level": "PUBLIC",
@@ -259,12 +260,13 @@
         "KVL-COMP-VLEAGUE-W-2026-27",
         "USER-REQUEST-VLEAGUE-CALENDAR-V2-20261101",
         "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
-        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101"
+        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101",
+        "USER-REQUEST-VLEAGUE-STANDINGS-20261102"
       ],
-      "verified_at": "2026-11-01",
-      "sha256": "a21d0ceea5e165237dd44b322ab9b8676919713cdc5fb6cd4bab99b65d55387b",
-      "evidence": "docs/validation/vleague-calendar-v3-20261101.md",
-      "review_note": "기존 공개 표시 설정을 유지하고 MASTER의 올스타전 예정일 2027-01-17을 달력 주석으로만 추가했다. 공개 일정 발표 보도로 교차확인했다. 정규리그 경기·ID·시간·결과·명단·MASTER는 변경하지 않는다."
+      "verified_at": "2026-11-02",
+      "sha256": "834c65b28ae35a0b58553dd16fb139c56bbd17116385b8ddba65be340cbf7dc0",
+      "evidence": "docs/validation/vleague-standings-mobile-20261102.md",
+      "review_note": "기존 공개 config에서 순위표 표시 옵션(showStatus, mobileStats)만 변경했다. 사용자 요청에 따른 중복 상태 제거와 모바일 승·패·승점 표시다. 경기·순위 원본 수치·산식·ID·명단·MASTER는 그대로이며 기존 공개 검수/출처 범위를 유지한다."
     }
   }
 }

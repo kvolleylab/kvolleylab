@@ -101,7 +101,7 @@ if(!candidateRoot){
                       [expected.wins,expected.losses,expected.points,expected.setRatio,expected.pointRatio].map(String));
      assert.equal(mobileRows[i].querySelector('.kvl-shared-combined-rank').textContent,expected.rank==null?'-':`${expected.rank}위`);
      assert.deepEqual([...mobileRows[i].querySelectorAll('.kvl-shared-combined-stat')].map(s=>s.textContent),
-                      [`${expected.wins}승`,String(expected.points),expected.setRatio,expected.pointRatio,expected.statusLabel]);
+                      [expected.wins,expected.losses,expected.points].map(String));
     }
     assert.equal(doc.querySelector('.dv2-standings-note').textContent,sources[gender].standingsNote);
 
