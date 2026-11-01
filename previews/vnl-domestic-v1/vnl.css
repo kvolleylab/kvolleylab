@@ -1,11 +1,6 @@
 /* VNL identity and country-specific adjustments on the unchanged domestic layout. */
 #kvl-vnl-domestic-preview{--dv2-accent:#5b3a8e;--dv2-soft:#f3effa;--dv2-light:#d8c7ed;--dv2-line:#e0dbea;font-family:Arial,'Noto Sans KR','Malgun Gothic',sans-serif!important}
 #kvl-vnl-domestic-preview .kvl1180-main,#kvl-vnl-domestic-preview .kvl1180-main *{font-family:Arial,'Noto Sans KR','Malgun Gothic',sans-serif!important;box-sizing:border-box}
-#kvl-vnl-domestic-preview .kvl1180-hero{background-color:#35205a!important;background-image:linear-gradient(90deg,#35205a 0%,#35205af0 30%,#35205a44 70%,#35205a0a),var(--dv2-hero-image,var(--kvl-hero-image-desktop))!important}
-#kvl-vnl-domestic-preview .kvl1180-hero h1,#kvl-vnl-domestic-preview .kvl1180-hero h1 em{color:#e7c472!important}
-#kvl-vnl-domestic-preview .kvl1180-hero .kvl1180-eyebrow{color:#e5d8f5!important}
-#kvl-vnl-domestic-preview .kvl1180-hero-location{width:auto!important;max-width:none!important;white-space:normal!important;overflow:visible!important;display:flex!important;gap:8px;flex-wrap:wrap}
-#kvl-vnl-domestic-preview .kvl1180-hero-location>span{display:block!important;padding:0!important;white-space:normal!important}
 #kvl-vnl-domestic-preview .dv2-utility{gap:10px}
 #kvl-vnl-domestic-preview .vnl-preview-tag{margin-left:auto;white-space:nowrap;font-size:10px;color:#6d5a88}
 #kvl-vnl-domestic-preview .dv2-utility>a{order:3}
@@ -14,7 +9,7 @@
 #kvl-vnl-domestic-preview [data-kvl-section="qualifications"]{margin-bottom:28px!important}
 #kvl-vnl-domestic-preview [data-kvl-section="qualifications"] .kvl1180-section-head{margin-bottom:16px!important}
 #kvl-vnl-domestic-preview [data-kvl-section="qualifications"] .kvl1180-section-head>p{white-space:normal!important;line-height:1.6!important}
-#kvl-vnl-domestic-preview .kvl1180-stake{border-radius:12px!important;background:#fff!important;box-shadow:none!important;min-width:0!important;padding:22px!important}
+#kvl-vnl-domestic-preview .kvl1180-stake{border-radius:12px!important;box-shadow:none!important;min-width:0!important;padding:22px!important}
 #kvl-vnl-domestic-preview .kvl1180-stake h3{font-size:21px!important;line-height:1.4!important;white-space:normal!important;word-break:keep-all}
 #kvl-vnl-domestic-preview .kvl1180-stake>p{font-size:15px!important;line-height:1.85!important;white-space:normal!important;word-break:keep-all}
 #kvl-vnl-domestic-preview .kvl1180-stake-confirmed span{line-height:1.8!important;white-space:normal!important;word-break:keep-all}
@@ -22,10 +17,6 @@
 #kvl-vnl-domestic-preview .kvl1180-stake-confirmed{position:static!important;display:grid!important;gap:4px!important;margin-top:16px!important;padding-top:12px!important;font-size:13px!important;line-height:1.6!important}
 #kvl-vnl-domestic-preview .kvl1180-stake-confirmed span{text-align:left!important;font-weight:700!important}
 #kvl-vnl-domestic-preview .kvl1180-stake-foot{position:static!important;margin-top:auto!important;padding-top:14px!important;font-size:12px!important;line-height:1.6!important}
-#kvl-vnl-domestic-preview .kvl1180-stake.is-wc,#kvl-vnl-domestic-preview .kvl1180-stake.is-wr{border-color:#cdbce7!important}
-#kvl-vnl-domestic-preview .kvl1180-stake.is-wc .kvl1180-stake-brand,#kvl-vnl-domestic-preview .kvl1180-stake.is-wc h3{color:#5b3a8e!important}
-#kvl-vnl-domestic-preview .kvl1180-stake.is-wr .kvl1180-stake-brand,#kvl-vnl-domestic-preview .kvl1180-stake.is-wr .kvl1180-stake-foot,#kvl-vnl-domestic-preview .kvl1180-stake.is-wc .kvl1180-stake-foot{color:#5b3a8e!important}
-#kvl-vnl-domestic-preview .kvl1180-stake.is-la{background:#fffdf7!important}
 #kvl-vnl-domestic-preview :is(.kvl1180-score,.kvl1180-team-score,.kvl1180-set-scores,.kvl1180-set-scores span,.kvl1180-match-sets,.dv2-match-teams>strong,.dv2-setline){color:#4b5563!important}
 #kvl-vnl-domestic-preview :is(#schedule,#team-results) .kvl1180-score{color:#4b5563!important}
 #kvl-vnl-domestic-preview #schedule button[data-stage].is-active{background:#5b3a8e!important;border-color:#5b3a8e!important;color:#fff!important}
@@ -38,7 +29,6 @@
 #kvl-vnl-domestic-preview .vnl-preview-footer{text-align:center;padding:24px;font-size:11px;color:#758397}
 @media(max-width:680px){
  #kvl-vnl-domestic-preview .vnl-preview-tag{display:none}
- #kvl-vnl-domestic-preview .kvl1180-hero-location{gap:4px!important}
  #kvl-vnl-domestic-preview .kvl1180-stake{padding:20px!important}
  #kvl-vnl-domestic-preview .kvl1180-stake h3{font-size:20px!important}
  #kvl-vnl-domestic-preview .kvl1180-stake>p{font-size:14px!important}

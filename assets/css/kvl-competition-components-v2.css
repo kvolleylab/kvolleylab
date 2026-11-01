@@ -2084,7 +2084,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #
     border-top-style:dashed!important;
     border-top-color:#C9A24A!important;
   }
-  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-qf-pair::after{
+  body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="domestic"] #knockout .kvl1180-qf-pair:has(> .kvl1180-match.is-direct-entry,> .kvl1180-match.is-bye)::after{
     right:calc(0px - var(--kvl-link-half))!important;
     top:25%!important;
     bottom:25%!important;

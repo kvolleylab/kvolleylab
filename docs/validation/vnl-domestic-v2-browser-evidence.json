@@ -1,0 +1,737 @@
+{
+  "revision": "2026-11-01-user-feedback",
+  "views": [
+    {
+      "width": 1600,
+      "main": 1180,
+      "page": 1585,
+      "tabs": 6,
+      "view": "overview",
+      "viewport": 1585,
+      "visible": true
+    },
+    {
+      "width": 1600,
+      "main": 1180,
+      "page": 1585,
+      "tabs": 6,
+      "view": "schedule",
+      "viewport": 1585,
+      "visible": true
+    },
+    {
+      "width": 1600,
+      "main": 1180,
+      "page": 1585,
+      "tabs": 6,
+      "view": "groups",
+      "viewport": 1585,
+      "visible": true
+    },
+    {
+      "width": 1600,
+      "main": 1180,
+      "page": 1585,
+      "tabs": 6,
+      "view": "knockout",
+      "viewport": 1585,
+      "visible": true
+    },
+    {
+      "width": 1600,
+      "main": 1180,
+      "page": 1585,
+      "tabs": 6,
+      "view": "rosters",
+      "viewport": 1585,
+      "visible": true
+    },
+    {
+      "width": 1600,
+      "main": 1180,
+      "page": 1600,
+      "tabs": 6,
+      "view": "resources",
+      "viewport": 1600,
+      "visible": true
+    },
+    {
+      "width": 390,
+      "main": 375,
+      "page": 375,
+      "tabs": 6,
+      "view": "overview",
+      "viewport": 375,
+      "visible": true
+    },
+    {
+      "width": 390,
+      "main": 375,
+      "page": 375,
+      "tabs": 6,
+      "view": "schedule",
+      "viewport": 375,
+      "visible": true
+    },
+    {
+      "width": 390,
+      "main": 375,
+      "page": 375,
+      "tabs": 6,
+      "view": "groups",
+      "viewport": 375,
+      "visible": true
+    },
+    {
+      "width": 390,
+      "main": 375,
+      "page": 375,
+      "tabs": 6,
+      "view": "knockout",
+      "viewport": 375,
+      "visible": true
+    },
+    {
+      "width": 390,
+      "main": 375,
+      "page": 375,
+      "tabs": 6,
+      "view": "rosters",
+      "viewport": 375,
+      "visible": true
+    },
+    {
+      "width": 390,
+      "main": 390,
+      "page": 390,
+      "tabs": 6,
+      "view": "resources",
+      "viewport": 390,
+      "visible": true
+    },
+    {
+      "width": 360,
+      "main": 345,
+      "page": 345,
+      "tabs": 6,
+      "view": "overview",
+      "viewport": 345,
+      "visible": true
+    },
+    {
+      "width": 360,
+      "main": 345,
+      "page": 345,
+      "tabs": 6,
+      "view": "schedule",
+      "viewport": 345,
+      "visible": true
+    },
+    {
+      "width": 360,
+      "main": 345,
+      "page": 345,
+      "tabs": 6,
+      "view": "groups",
+      "viewport": 345,
+      "visible": true
+    },
+    {
+      "width": 360,
+      "main": 345,
+      "page": 345,
+      "tabs": 6,
+      "view": "knockout",
+      "viewport": 345,
+      "visible": true
+    },
+    {
+      "width": 360,
+      "main": 345,
+      "page": 345,
+      "tabs": 6,
+      "view": "rosters",
+      "viewport": 345,
+      "visible": true
+    },
+    {
+      "width": 360,
+      "main": 360,
+      "page": 360,
+      "tabs": 6,
+      "view": "resources",
+      "viewport": 360,
+      "visible": true
+    }
+  ],
+  "hero": [
+    {
+      "width": 1600,
+      "original": {
+        "cards": [
+          {
+            "background": "linear-gradient(145deg, rgb(248, 251, 255), rgb(237, 246, 255))",
+            "brand": "rgb(4, 85, 173)",
+            "foot": "rgb(11, 100, 184)",
+            "kind": "kvl1180-stake is-wc has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(255, 250, 241), rgb(255, 245, 223))",
+            "brand": "rgb(139, 84, 0)",
+            "foot": "rgb(164, 103, 0)",
+            "kind": "kvl1180-stake is-la has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(245, 252, 248), rgb(233, 248, 239))",
+            "brand": "rgb(8, 120, 62)",
+            "foot": "rgb(20, 112, 61)",
+            "kind": "kvl1180-stake is-wr ",
+            "title": "rgb(14, 36, 67)"
+          }
+        ],
+        "hero": {
+          "height": 224.90625,
+          "position": "50% 50%, 50% 50%",
+          "size": "cover, cover",
+          "imageReady": true,
+          "gradient": "linear-gradient(90deg, rgba(37, 24, 58, 0.12) 0%, rgba(37, 24, 58, 0.06) 42%, rgba(37, 24, 58, 0.01) 68%, rgba(37, 24, 58, 0) 82%),"
+        },
+        "title": {
+          "color": "rgb(242, 232, 207)",
+          "fontSize": "38px",
+          "fontWeight": "800"
+        }
+      },
+      "preview": {
+        "cards": [
+          {
+            "background": "linear-gradient(145deg, rgb(248, 251, 255), rgb(237, 246, 255))",
+            "brand": "rgb(4, 85, 173)",
+            "foot": "rgb(11, 100, 184)",
+            "kind": "kvl1180-stake is-wc has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(255, 250, 241), rgb(255, 245, 223))",
+            "brand": "rgb(139, 84, 0)",
+            "foot": "rgb(164, 103, 0)",
+            "kind": "kvl1180-stake is-la has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(245, 252, 248), rgb(233, 248, 239))",
+            "brand": "rgb(8, 120, 62)",
+            "foot": "rgb(20, 112, 61)",
+            "kind": "kvl1180-stake is-wr ",
+            "title": "rgb(14, 36, 67)"
+          }
+        ],
+        "hero": {
+          "height": 222.90625,
+          "position": "50% 50%, 50% 50%",
+          "size": "cover, cover",
+          "imageReady": true,
+          "gradient": "linear-gradient(90deg, rgba(37, 24, 58, 0.12) 0%, rgba(37, 24, 58, 0.06) 42%, rgba(37, 24, 58, 0.01) 68%, rgba(37, 24, 58, 0) 82%),"
+        },
+        "title": {
+          "color": "rgb(242, 232, 207)",
+          "fontSize": "38px",
+          "fontWeight": "800"
+        }
+      }
+    },
+    {
+      "width": 390,
+      "original": {
+        "cards": [
+          {
+            "background": "linear-gradient(145deg, rgb(248, 251, 255), rgb(237, 246, 255))",
+            "brand": "rgb(4, 85, 173)",
+            "foot": "rgb(11, 100, 184)",
+            "kind": "kvl1180-stake is-wc has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(255, 250, 241), rgb(255, 245, 223))",
+            "brand": "rgb(201, 149, 23)",
+            "foot": "rgb(164, 103, 0)",
+            "kind": "kvl1180-stake is-la has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(245, 252, 248), rgb(233, 248, 239))",
+            "brand": "rgb(8, 120, 62)",
+            "foot": "rgb(20, 112, 61)",
+            "kind": "kvl1180-stake is-wr ",
+            "title": "rgb(14, 36, 67)"
+          }
+        ],
+        "hero": {
+          "height": 180.46875,
+          "position": "100% 50%, 100% 50%",
+          "size": "auto 100%, auto 100%",
+          "imageReady": true,
+          "gradient": "linear-gradient(105deg, rgba(37, 24, 58, 0.28) 0%, rgba(37, 24, 58, 0.14) 48%, rgba(37, 24, 58, 0.02) 76%),"
+        },
+        "title": {
+          "color": "rgb(242, 232, 207)",
+          "fontSize": "24px",
+          "fontWeight": "800"
+        }
+      },
+      "preview": {
+        "cards": [
+          {
+            "background": "linear-gradient(145deg, rgb(248, 251, 255), rgb(237, 246, 255))",
+            "brand": "rgb(4, 85, 173)",
+            "foot": "rgb(11, 100, 184)",
+            "kind": "kvl1180-stake is-wc has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(255, 250, 241), rgb(255, 245, 223))",
+            "brand": "rgb(201, 149, 23)",
+            "foot": "rgb(164, 103, 0)",
+            "kind": "kvl1180-stake is-la has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(245, 252, 248), rgb(233, 248, 239))",
+            "brand": "rgb(8, 120, 62)",
+            "foot": "rgb(20, 112, 61)",
+            "kind": "kvl1180-stake is-wr ",
+            "title": "rgb(14, 36, 67)"
+          }
+        ],
+        "hero": {
+          "height": 180.46875,
+          "position": "100% 50%, 100% 50%",
+          "size": "auto 100%, auto 100%",
+          "imageReady": true,
+          "gradient": "linear-gradient(105deg, rgba(37, 24, 58, 0.28) 0%, rgba(37, 24, 58, 0.14) 48%, rgba(37, 24, 58, 0.02) 76%),"
+        },
+        "title": {
+          "color": "rgb(242, 232, 207)",
+          "fontSize": "24px",
+          "fontWeight": "800"
+        }
+      }
+    },
+    {
+      "width": 360,
+      "original": {
+        "cards": [
+          {
+            "background": "linear-gradient(145deg, rgb(248, 251, 255), rgb(237, 246, 255))",
+            "brand": "rgb(4, 85, 173)",
+            "foot": "rgb(11, 100, 184)",
+            "kind": "kvl1180-stake is-wc has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(255, 250, 241), rgb(255, 245, 223))",
+            "brand": "rgb(201, 149, 23)",
+            "foot": "rgb(164, 103, 0)",
+            "kind": "kvl1180-stake is-la has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(245, 252, 248), rgb(233, 248, 239))",
+            "brand": "rgb(8, 120, 62)",
+            "foot": "rgb(20, 112, 61)",
+            "kind": "kvl1180-stake is-wr ",
+            "title": "rgb(14, 36, 67)"
+          }
+        ],
+        "hero": {
+          "height": 180.46875,
+          "position": "100% 50%, 100% 50%",
+          "size": "auto 100%, auto 100%",
+          "imageReady": true,
+          "gradient": "linear-gradient(105deg, rgba(37, 24, 58, 0.28) 0%, rgba(37, 24, 58, 0.14) 48%, rgba(37, 24, 58, 0.02) 76%),"
+        },
+        "title": {
+          "color": "rgb(242, 232, 207)",
+          "fontSize": "24px",
+          "fontWeight": "800"
+        }
+      },
+      "preview": {
+        "cards": [
+          {
+            "background": "linear-gradient(145deg, rgb(248, 251, 255), rgb(237, 246, 255))",
+            "brand": "rgb(4, 85, 173)",
+            "foot": "rgb(11, 100, 184)",
+            "kind": "kvl1180-stake is-wc has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(255, 250, 241), rgb(255, 245, 223))",
+            "brand": "rgb(201, 149, 23)",
+            "foot": "rgb(164, 103, 0)",
+            "kind": "kvl1180-stake is-la has-confirmed-result",
+            "title": "rgb(14, 36, 67)"
+          },
+          {
+            "background": "linear-gradient(145deg, rgb(245, 252, 248), rgb(233, 248, 239))",
+            "brand": "rgb(8, 120, 62)",
+            "foot": "rgb(20, 112, 61)",
+            "kind": "kvl1180-stake is-wr ",
+            "title": "rgb(14, 36, 67)"
+          }
+        ],
+        "hero": {
+          "height": 180.46875,
+          "position": "100% 50%, 100% 50%",
+          "size": "auto 100%, auto 100%",
+          "imageReady": true,
+          "gradient": "linear-gradient(105deg, rgba(37, 24, 58, 0.28) 0%, rgba(37, 24, 58, 0.14) 48%, rgba(37, 24, 58, 0.02) 76%),"
+        },
+        "title": {
+          "color": "rgb(242, 232, 207)",
+          "fontSize": "24px",
+          "fontWeight": "800"
+        }
+      }
+    }
+  ],
+  "fixtures": [
+    {
+      "board": {
+        "bottom": 696.09375,
+        "height": 46,
+        "left": 630,
+        "right": 1030,
+        "top": 650.09375,
+        "width": 400,
+        "x": 630,
+        "y": 650.09375
+      },
+      "columns": "150px 635px 285px",
+      "detailHeight": 18.421875,
+      "detailLine": "18.432px",
+      "detailWhiteSpace": "nowrap",
+      "id": "KVL-M-000001",
+      "setCount": 3,
+      "sets": {
+        "bottom": 680.59375,
+        "height": 15,
+        "left": 1161.5,
+        "right": 1446.5,
+        "top": 665.59375,
+        "width": 285,
+        "x": 1161.5,
+        "y": 665.59375
+      }
+    },
+    {
+      "board": {
+        "bottom": 807.515625,
+        "height": 46,
+        "left": 630,
+        "right": 1030,
+        "top": 761.515625,
+        "width": 400,
+        "x": 630,
+        "y": 761.515625
+      },
+      "columns": "150px 635px 285px",
+      "detailHeight": 18.421875,
+      "detailLine": "18.432px",
+      "detailWhiteSpace": "nowrap",
+      "id": "KVL-M-000002",
+      "setCount": 5,
+      "sets": {
+        "bottom": 792.015625,
+        "height": 15,
+        "left": 1161.5,
+        "right": 1446.5,
+        "top": 777.015625,
+        "width": 285,
+        "x": 1161.5,
+        "y": 777.015625
+      }
+    },
+    {
+      "board": {
+        "bottom": 918.9375,
+        "height": 46,
+        "left": 630,
+        "right": 1030,
+        "top": 872.9375,
+        "width": 400,
+        "x": 630,
+        "y": 872.9375
+      },
+      "columns": "150px 635px 285px",
+      "detailHeight": 18.421875,
+      "detailLine": "18.432px",
+      "detailWhiteSpace": "nowrap",
+      "id": "KVL-M-000003",
+      "setCount": 3,
+      "sets": {
+        "bottom": 903.4375,
+        "height": 15,
+        "left": 1161.5,
+        "right": 1446.5,
+        "top": 888.4375,
+        "width": 285,
+        "x": 1161.5,
+        "y": 888.4375
+      }
+    }
+  ],
+  "brackets": [
+    {
+      "width": 360,
+      "pairs": [
+        {
+          "afterBackground": "none",
+          "afterBorder": "solid",
+          "bye": false,
+          "childLines": [
+            {
+              "bye": false,
+              "style": "solid"
+            },
+            {
+              "bye": false,
+              "style": "solid"
+            }
+          ]
+        },
+        {
+          "afterBackground": "none",
+          "afterBorder": "solid",
+          "bye": false,
+          "childLines": [
+            {
+              "bye": false,
+              "style": "solid"
+            },
+            {
+              "bye": false,
+              "style": "solid"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 1600,
+      "viewport": 1585,
+      "pairs": [
+        {
+          "afterBackground": "none",
+          "afterBorder": "solid",
+          "bye": false,
+          "childLines": [
+            {
+              "bye": false,
+              "style": "solid"
+            },
+            {
+              "bye": false,
+              "style": "solid"
+            }
+          ]
+        },
+        {
+          "afterBackground": "none",
+          "afterBorder": "solid",
+          "bye": false,
+          "childLines": [
+            {
+              "bye": false,
+              "style": "solid"
+            },
+            {
+              "bye": false,
+              "style": "solid"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "countries": [
+    "독일Germany · 14명",
+    "미국USA · 18명",
+    "벨기에Belgium · 18명",
+    "불가리아Bulgaria · 16명",
+    "브라질Brazil · 14명",
+    "세르비아Serbia · 18명",
+    "슬로베니아Slovenia · 18명",
+    "아르헨티나Argentina · 16명",
+    "우크라이나Ukraine · 15명",
+    "이란Iran · 15명",
+    "이탈리아Italy · 14명",
+    "일본Japan · 16명",
+    "중국China · 15명",
+    "캐나다Canada · 15명",
+    "쿠바Cuba · 15명",
+    "튀르키예Türkiye · 16명",
+    "폴란드Poland · 16명",
+    "프랑스France · 15명"
+  ],
+  "teamCalendar": {
+    "popup": {
+      "link": "/previews/vnl-domestic-v1/index.html?competition=vnl-men-2026&view=team&team=CUB&date=2026-07-15#team-date-2026-07-15",
+      "matchCount": 1,
+      "text": "2026.07.15 · 1경기×예선15:30 KST벨기에0 : 3쿠바23-2519-2520-25Asue Arena Osaka이 날짜 경기 일정·결과 보기 ›"
+    },
+    "returned": {
+      "calendarTeam": "CUB",
+      "calendars": 1,
+      "day": true,
+      "open": true,
+      "page": 345,
+      "viewport": 345
+    }
+  },
+  "china": [
+    "18위중국China개최국11140.3030.866개최국",
+    "18위중국China개최국11140.3030.866개최국",
+    "18위중국China개최국11140.3030.866개최국",
+    "18위중국개최국1승40.3030.866개최국"
+  ],
+  "meaning": {
+    "afterMetrics": true,
+    "beforeCalendar": true,
+    "cards": [
+      {
+        "descriptionBottom": 830.671875,
+        "resultTop": 846.671875,
+        "text": "VNL 파이널8개국상위 7개국 + 개최국18개국 예선 종료 후 상위 7개국과 파이널 개최국 중국이 8강 토너먼트에 진출합니다.대회 결과일본 · 폴란드 · 슬로베니아 · 이탈리아 · 미국 · 튀르키예 · 우크라이나 · 중국예선 → 8강 파이널"
+      },
+      {
+        "descriptionBottom": 830.671875,
+        "resultTop": 846.671875,
+        "text": "시즌 최종 성적2026폴란드 우승폴란드가 결승에서 미국을 3-2로 꺾고 2026 VNL 남자부 우승을 차지했습니다.대회 결과폴란드VNL 2026 챔피언"
+      },
+      {
+        "descriptionBottom": 830.671875,
+        "text": "FIVB 세계랭킹공식 랭킹VNL 경기 랭킹 반영VNL 경기 결과는 FIVB World Ranking 계산에 반영됩니다.경기별 World Ranking 포인트"
+      }
+    ],
+    "closedDetails": 0,
+    "text": "\n    SEASON STRUCTURE대회 의미 · 시즌 구조VNL은 예선 리그와 8강 파이널로 구성됩니다.\n    VNL 파이널8개국상위 7개국 + 개최국18개국 예선 종료 후 상위 7개국과 파이널 개최국 중국이 8강 토너먼트에 진출합니다.대회 결과일본 · 폴란드 · 슬로베니아 · 이탈리아 · 미국 · 튀르키예 · 우크라이나 · 중국예선 → 8강 파이널시즌 최종 성적2026폴란드 우승폴란드가 결승에서 미국을 3-2로 꺾고 2026 VNL 남자부 우승을 차지했습니다.대회 결과폴란드VNL 2026 챔피언FIVB 세계랭킹공식 랭킹VNL 경기 랭킹 반영VNL 경기 결과는 FIVB World Ranking 계산에 반영됩니다.경기별 World Ranking 포인트\n  ",
+    "visible": true
+  },
+  "domesticBye": [
+    {
+      "afterBackground": "linear-gradient(rgb(111, 139, 166), rgb(111, 139, 166)), repeating-linear-gradient(rgb(201, 162, 74) 0px, rgb(201, 162, 74) 6px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 11px)",
+      "afterBorder": "none",
+      "bye": true,
+      "childLines": [
+        {
+          "bye": false,
+          "style": "solid"
+        },
+        {
+          "bye": true,
+          "style": "dashed"
+        }
+      ]
+    },
+    {
+      "afterBackground": "linear-gradient(rgb(111, 139, 166), rgb(111, 139, 166)), repeating-linear-gradient(rgb(201, 162, 74) 0px, rgb(201, 162, 74) 6px, rgba(0, 0, 0, 0) 6px, rgba(0, 0, 0, 0) 11px)",
+      "afterBorder": "none",
+      "bye": true,
+      "childLines": [
+        {
+          "bye": false,
+          "style": "solid"
+        },
+        {
+          "bye": true,
+          "style": "dashed"
+        }
+      ]
+    }
+  ],
+  "domesticFixture": [
+    {
+      "board": {
+        "bottom": 720.1875,
+        "height": 46,
+        "left": 630,
+        "right": 1030,
+        "top": 674.1875,
+        "width": 400,
+        "x": 630,
+        "y": 674.1875
+      },
+      "columns": "150px 635px 285px",
+      "sets": {
+        "bottom": 704.6875,
+        "height": 15,
+        "left": 1161.5,
+        "right": 1446.5,
+        "top": 689.6875,
+        "width": 285,
+        "x": 1161.5,
+        "y": 689.6875
+      }
+    },
+    {
+      "board": {
+        "bottom": 816.6875,
+        "height": 46,
+        "left": 630,
+        "right": 1030,
+        "top": 770.6875,
+        "width": 400,
+        "x": 630,
+        "y": 770.6875
+      },
+      "columns": "150px 635px 285px",
+      "sets": {
+        "bottom": 801.1875,
+        "height": 15,
+        "left": 1161.5,
+        "right": 1446.5,
+        "top": 786.1875,
+        "width": 285,
+        "x": 1161.5,
+        "y": 786.1875
+      }
+    },
+    {
+      "board": {
+        "bottom": 912.6875,
+        "height": 46,
+        "left": 630,
+        "right": 1030,
+        "top": 866.6875,
+        "width": 400,
+        "x": 630,
+        "y": 866.6875
+      },
+      "columns": "150px 635px 285px",
+      "sets": {
+        "bottom": 897.1875,
+        "height": 15,
+        "left": 1161.5,
+        "right": 1446.5,
+        "top": 882.1875,
+        "width": 285,
+        "x": 1161.5,
+        "y": 882.1875
+      }
+    }
+  ],
+  "domesticCalendar": {
+    "days": [
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27",
+      "2026-06-28"
+    ],
+    "list": "전체 4경기 목록 보기",
+    "team": "MOK"
+  },
+  "appErrors": []
+}

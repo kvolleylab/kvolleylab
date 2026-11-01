@@ -5,8 +5,9 @@ const params=new URLSearchParams(location.search);
 if(!params.has('competition')){params.set('competition','vnl-men-2026');history.replaceState(null,'',location.pathname+'?'+params);}
 window.KVLCompetitionAdapterV2=d=>{
  if(d.competitionId!=='KVL-COMP-000001'||d.season!=='2026'||d.competitionFamily!=='fivb')throw Error('This preview only supports VNL men 2026');
- return {...d,participants:d.participants.map(t=>({...t,logo:t.flag})),structure:{...d.structure,
-  presentation:'domestic-home-v2',divisionLabel:'남자부',heroTitle:d.displayName,heroTagline:d.officialName,
+ return {...d,participants:d.participants.map(t=>({...t,logo:t.flag})).sort((a,b)=>a.name.localeCompare(b.name,'ko-KR')),
+ standings:{...d.standings,rows:d.standings.rows.map(r=>r.team.code==='CHN'&&r.status==='host-qualified'?{...r,statusLabel:'개최국'}:r)},structure:{...d.structure,
+  presentation:'domestic-home-v2',heroPresentation:'preserve',divisionLabel:'남자부',heroTitle:d.displayName,heroTagline:d.officialName,
   hubUrl:'https://kvolleylab.com/competition.html',hubCategoryLabel:'국제대회',hubLabel:'VNL',
   eyebrow:'KVL INTERNATIONAL · VOLLEYBALL NATIONS LEAGUE',
   labels:{...d.structure.labels,participantsTitle:'참가국',groupsTab:'예선순위',knockoutTab:'대진·최종순위'},
