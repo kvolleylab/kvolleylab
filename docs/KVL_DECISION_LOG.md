@@ -349,3 +349,8 @@ Status: DESIGN BASELINE ADOPTED / REQUESTED CHANGES IMPLEMENTED / PREVIEW / PROD
 ## 2026-11-01 · 팀 성적 카드와 예선·전체 승률
 
 Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 경기일정·결과의 팀 로고 선택 시 전체 경기·승·패·승률(예선, 전체)을 대학배구와 같은 양식으로 표시하고 국내 기본 템플릿에도 적용하도록 요청했다. 기존 공통 성적 카드를 5개 지표로 확장하고 달력 위에 둔다. PC는 5칸, 모바일은 3+2칸이며 VNL은 FIVB 보라색을 사용한다. 예선은 명시된 단계 또는 기존 예선 조 소속으로 제한해 U-리그 6강리그/결선을 제외한다. 미완료 경기는 승률 분모에 넣지 않는다. PR #216 및 비공개 시안에서 검증하며 운영 main·원본 config/data·MASTER·ID는 유지한다. [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · 한눈에 보기 요약 항목 및 투명 배경 아이콘
+
+Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 VNL 한눈에 보기 요약을 참가국·전체 일정·파이널 진출·대회 장소로 바꾸고 운영 VNL의 아이콘 모양을 사용하되 색상은 유지하도록 요청했다. 기존 shell의 사람/달력/트로피/위치핀 SVG를 재사용하고 원본 `knockoutTeamCount` 8개국을 대진 화면에 연결한다. 국내 기본 템플릿의 요약 아이콘도 배경을 제거하되 색상·모양·문구·수치는 유지한다. `structure.overviewMetrics` 선택 설정으로 구분하며 공통 엔진/자산을 복제하지 않는다. PR #216 및 비공개 시안만 갱신하며 운영 main·MASTER·config/data는 변경하지 않는다. [검수 기록](validation/vnl-domestic-template-v1.md).

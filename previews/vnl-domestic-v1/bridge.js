@@ -9,6 +9,7 @@ window.KVLCompetitionAdapterV2=d=>{
  standings:{...d.standings,rows:d.standings.rows.map(r=>r.team.code==='CHN'&&r.status==='host-qualified'?{...r,statusLabel:'개최국'}:r)},structure:{...d.structure,
   presentation:'domestic-home-v2',heroPresentation:'preserve',divisionLabel:'남자부',heroTitle:d.displayName,heroTagline:d.officialName,
   standings:{...d.structure.standings,showStatus:false},
+  overviewMetrics:{...d.structure.overviewMetrics,scheduleLabel:'전체 일정',third:'qualifiers',teamUnit:'개국',iconStyle:'solid'},
   teamResults:{...d.structure.teamResults,summary:'record',preliminaryStages:['예선']},
   hubUrl:'https://kvolleylab.com/competition.html',hubCategoryLabel:'국제대회',hubLabel:'VNL',
   eyebrow:'KVL INTERNATIONAL · VOLLEYBALL NATIONS LEAGUE',
@@ -32,7 +33,6 @@ window.KVLDomesticHomeV2.apply=d=>{
  if(meaning)overview.after(meaning); // Move the original rendered DOM; never copy/rewrite explanation text.
  q('[data-gender-link="men"]').textContent='남자부';q('[data-gender-link="women"]').textContent='여자부';
  const rosterTab=q('.kvl1180-tabs [data-view="rosters"] span');if(rosterTab)rosterTab.textContent='참가국·선수명단';
- qa('.dv2-metric em').forEach(el=>{if(el.textContent==='팀')el.textContent='개국';});
  const all=q('.dv2-overview-teams .dv2-heading>a');if(all)all.textContent=all.textContent.replace('팀','개국');
  const groupHeading=q('.kvl1180-combined-head>div>.label'),groupNote=q('.kvl1180-combined-head>p');
  if(groupHeading)groupHeading.textContent=d.structure.labels.standingsEyebrow;

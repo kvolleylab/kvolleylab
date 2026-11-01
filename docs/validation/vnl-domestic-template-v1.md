@@ -1,8 +1,8 @@
 # 2026 VNL 남자부 · 국제 기본 템플릿 기준 시안
 
-상태: **DESIGN BASELINE ADOPTED / REVISION 4 READY FOR REVIEW / 운영 미반영** · 2026-11-01
+상태: **DESIGN BASELINE ADOPTED / REVISION 5 READY FOR REVIEW / 운영 미반영** · 2026-11-01
 
-사용자가 현재 2026 VNL 시안을 국제대회 기본 템플릿의 기준으로 지정했다. 국내 기본 템플릿과 공통 Engine V2를 함께 사용하며, 국내 Hero 크기도 VNL과 맞춘다. 별도 대안 PR #212는 재개하지 않는다. 기존 네 가지 수정에 이어 팀 성적 요약을 같은 시안에 추가했다.
+사용자가 현재 2026 VNL 시안을 국제대회 기본 템플릿의 기준으로 지정했다. 국내 기본 템플릿과 공통 Engine V2를 함께 사용하며, 국내 Hero 크기도 VNL과 맞춘다. 별도 대안 PR #212는 재개하지 않는다. 팀 성적 요약에 이어 한눈에 보기 요약 항목과 아이콘을 수정했다.
 
 - 비공개 시안: https://kvl-vnl-domestic-template-v1.daewook1029.chatgpt.site
 - Draft PR: https://github.com/kvolleylab/kvolleylab/pull/216
@@ -12,7 +12,22 @@
 - 국내 기준: [domestic-template-v2.md](../domestic-template-v2.md)
 - 화면/검수: `previews/vnl-domestic-v1/index.html`, `qa.html`, `revision-qa.html`, `team-record-qa.html`
 
-## Revision 4 · 팀 성적 요약 (최신 요청)
+## Revision 5 · 한눈에 보기 요약과 아이콘 (최신 요청)
+
+운영 VNL의 실제 화면과 공통 shell을 비교해 **참가국18개국 / 전체 일정116경기 / 파이널 진출8개국 / 대회 장소**로 수정했다. 사람·달력·트로피·위치핀은 운영 SVG symbol을 그대로 참조한다. 기존 시안 보라색 #5B3A8E와 카드 크기·간격을 유지하고 아이콘 배경만 없앴다. 파이널 진출은 원본 `knockoutTeamCount`를 읽고 대진·최종순위로 연결한다. 국내 기본 템플릿은 아이콘 배경만 제거하고 선형 모양과 색상(#24577C, 고성 남자 기준)을 유지한다.
+
+구현: `assets/js/kvl-domestic-home-v2.js`, `assets/css/kvl-domestic-home-v2.css`, `previews/vnl-domestic-v1/bridge.js`. 선택 설정은 국내/국제 기준 문서에 기록했다. VNL·국내 데이터를 중복 저장하거나 수정하지 않았다.
+
+검수: PC1600/본문1180, VNL390·360, 국내390의 요약 항목·수치·아이콘·색상·투명 배경·가로 넘침을 확인했다. 파이널 카드에서 대진 화면 이동 정상. 국내/중고/팀 달력 기존 회귀66개 PASS, JS 문법·diff 공백 검사 PASS, 관찰된 앱 오류0건. 다른 탭·Hero·설명·명단의 변경 없는 영역은 이전 증빙을 유지한다. 실물 기기/인쇄 검수 미수행.
+
+main은 `2791e93f730a13c7f64e209d802b7e1df43b4758`로 동일하며 Drive MASTER v16의 수정 시각도 이전과 같다. VNL config/data와 공통 shell이 main과 동일함을 바이트 비교했다. 운영 main/Pages에는 적용하지 않았다. 직전 복구 commit은 `35f7c368d2fba8e4d5d8c823e542f0ab588968c9`다.
+
+증빙: `vnl-domestic-v5-browser-evidence.json`. 검수 화면: `previews/vnl-domestic-v1/overview-qa.html`.
+
+![PC 요약 카드와 아이콘](vnl-domestic-v5-pc.jpg)
+![모바일 VNL 및 국내 아이콘](vnl-domestic-v5-mobile.jpg)
+
+## Revision 4 · 팀 성적 요약
 
 경기일정·결과의 국기/로고를 선택하면 대학배구와 같은 성적 카드에 **전체 경기·승·패·예선 승률·전체 승률**을 표시한다. 기존 대학 공통 렌더러를 확장했고 VNL 시안은 표시 설정으로 선택했다. 카드 → 팀 달력 → 기본으로 열린 전체 목록 순서이며 팝업·명단 연결을 유지한다. PC 5칸, 모바일 3+2칸이다.
 
