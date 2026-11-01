@@ -54,8 +54,10 @@
   const matched=participants.find(p=>venue&&normalized(p.venue)===normalized(venue));
   const city=entry?.[1]||matched?.city||venue||'장소 미정';
   const round=roundLabel(match),time=timeLabel(match.time);
-  return {round,homeLabel:alias(home),awayLabel:alias(away),line1:[round,alias(home),'vs',alias(away)].filter(Boolean).join(' '),line2:`(${city}, ${time})`,
-   fullLabel:[match.stage||match.round,full(home)+' vs '+full(away),venue||'장소 미정',time+' KST'].filter(Boolean).join(' · ')};
+  const score=match.score,scored=match.status==='final'&&score&&Number.isInteger(score.home)&&Number.isInteger(score.away)&&score.home>=0&&score.away>=0&&score.home!==score.away;
+  const resultLabel=scored?score.home+'-'+score.away:'vs';
+  return {round,homeLabel:alias(home),awayLabel:alias(away),resultLabel,line1:[round,alias(home),resultLabel,alias(away)].filter(Boolean).join(' '),line2:`(${city}, ${time})`,
+   fullLabel:[match.stage||match.round,full(home)+' '+resultLabel+' '+full(away),venue||'장소 미정',time+' KST'].filter(Boolean).join(' · ')};
  }
  return Object.freeze({coverage,holidays,dateInfo,roundLabel,timeLabel,game});
 });
