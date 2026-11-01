@@ -47,7 +47,37 @@ for(const gender of ['men','women']){
    const a=final.querySelector('.kvl1180-pro-series-team a');assert.equal(new URL(a.href).searchParams.get('view'),'team');
   }finally{w.close();}
  });
+ test(gender+': active regular-season ranks do not qualify teams after standings change',()=>{
+  const {w,doc}=setup(gender,d=>{ranked(d);d.status='active';d.standings.rows.reverse().forEach((row,index)=>{row.rank=index+1;});d.matches=[match(d,'LEAGUE',1,0,1,[3,0])];});try{
+   const stages=[...doc.querySelectorAll('.kvl1180-pro-postseason-stage')];
+   assert(stages.every(s=>wins(s).join('')==='——'));
+   assert.equal(doc.querySelectorAll('.kvl1180-pro-series-team a').length,0);
+   assert.equal(doc.querySelectorAll('.kvl1180-pro-series-winner').length,0);
+   assert.equal(doc.querySelectorAll('.kvl1180-pro-series-game.is-complete').length,0,'a completed regular-season game is not a playoff result');
+  }finally{w.close();}
+ });
+ test(gender+': explicit scheduled playoff pairing remains authoritative during an active season',()=>{
+  const {w,doc,d}=setup(gender,d=>{ranked(d);d.status='active';d.matches=[match(d,'PO',1,4,5),match(d,'PO',2,5,4)];});try{
+   const po=doc.querySelector('.is-po');
+   assert.deepEqual([...po.querySelectorAll('.kvl1180-pro-series-team a')].map(e=>e.dataset.teamResults),[d.participants[4].code,d.participants[5].code]);
+   assert.deepEqual(wins(po),['0','0']);
+   assert.equal(po.querySelectorAll('.is-pending').length,3);
+   for(const selector of ['.is-qpo','.is-final']){
+    const stage=doc.querySelector(selector);assert.deepEqual(wins(stage),['—','—']);assert.equal(stage.querySelectorAll('.kvl1180-pro-series-team a').length,0);
+   }
+   assert.equal(doc.querySelectorAll('.kvl1180-pro-series-winner').length,0);
+  }finally{w.close();}
+ });
 }
+test('an actual playoff winner advances during an active season without promoting the live first-place team',()=>{
+ const {w,doc,d}=setup('men',d=>{ranked(d);d.status='active';d.matches=[match(d,'PO',2,5,4,[1,3]),match(d,'PO',1,4,5,[3,0])];});try{
+  const po=doc.querySelector('.is-po'),final=doc.querySelector('.is-final');
+  assert.deepEqual(wins(po),['2','0']);assert.equal(po.querySelectorAll('.is-unused').length,1);
+  assert.deepEqual([...final.querySelectorAll('.kvl1180-pro-series-team a')].map(e=>e.dataset.teamResults),[d.participants[4].code]);
+  assert.deepEqual(wins(final),['—','—']);
+  assert.equal(final.querySelectorAll('.kvl1180-pro-series-winner').length,0);
+ }finally{w.close();}
+});
 test('a three-win championship marks the champion and hides unneeded scheduled games',()=>{
  const {w,doc}=setup('women',d=>{ranked(d);d.matches=[match(d,'FINAL',1,0,1,[3,0]),match(d,'FINAL',2,1,0,[2,3]),match(d,'FINAL',3,0,1,[3,1]),match(d,'FINAL',4,1,0),match(d,'FINAL',5,0,1)];});try{
   const final=doc.querySelector('.is-final');assert.deepEqual(wins(final),['3','0']);assert.equal(final.querySelectorAll('.is-unused').length,2);assert.equal(final.querySelector('.kvl1180-pro-series-winner').textContent,'우승');

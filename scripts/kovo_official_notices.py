@@ -90,13 +90,16 @@ def money_to_krw(value):
 
 
 def detect_kind(title):
-    if "임의해지 해지" in title or "임의해지해지" in title:
+    compact = re.sub(r"\s+", "", title)
+    if "임의해지해지" in compact:
         return "reinstatement"
-    if "해외임대" in title or "임대" in title:
+    if "등록해지" in compact or "등록말소" in compact:
+        return "registration_termination"
+    if "해외임대" in compact or "임대" in compact:
         return "loan"
     if "임의해지" in title or "임의탈퇴" in title:
         return "voluntary_termination"
-    if "계약해지" in title or "계약 해지" in title:
+    if "계약해지" in compact:
         return "contract_termination"
     if "방출" in title or "퇴단" in title:
         return "release"
@@ -108,13 +111,13 @@ def detect_kind(title):
         return "fa"
     if "이적" in title:
         return "transfer"
-    if "외국인" in title or "아시아쿼터" in title:
-        return "foreign_or_asian_quota"
-    if "배번 변경" in title or "등번호 변경" in title:
+    if "배번변경" in compact or "등번호변경" in compact:
         return "number_change"
-    if "포지션 변경" in title:
+    if "포지션변경" in compact:
         return "position_change"
-    if "선수등록" in title or "추가선수 등록" in title or "추가 선수 등록" in title:
+    if "외국인" in compact or "아시아쿼터" in compact:
+        return "foreign_or_asian_quota"
+    if "선수등록" in compact:
         return "registration"
     return "other_player_notice"
 

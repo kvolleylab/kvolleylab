@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "competition": {
+    "competitionId": "",
+    "slug": "",
+    "season": "",
+    "gender": ""
+  },
+  "state": "DRAFT",
+  "owner": "",
+  "page": {
+    "route": "",
+    "qa": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""}
+  },
+  "sources": [
+    {
+      "sourceId": "",
+      "issuer": "",
+      "url": "",
+      "format": "",
+      "adapterPath": "",
+      "parserVersion": "",
+      "qualification": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""},
+      "permissionReview": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""}
+    }
+  ],
+  "master": {
+    "spreadsheetId": "",
+    "sheetId": null,
+    "tabTitle": "",
+    "writeRange": "",
+    "permissionReview": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""},
+    "writeReadback": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""}
+  },
+  "automation": {
+    "enabled": false,
+    "workflowPath": "",
+    "startDate": "",
+    "endDate": "",
+    "timezone": "Asia/Seoul",
+    "intervalMinutes": null,
+    "integration": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""},
+    "endGuard": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""}
+  },
+  "archive": {
+    "driveFolderId": "",
+    "metadataPath": "",
+    "procedurePath": "",
+    "graceDays": null,
+    "readOnlyAfterArchive": true,
+    "versionedCorrections": true,
+    "verification": {"status": "NOT_VERIFIED", "evidence": "", "verifiedAt": "", "verifiedBy": ""}
+  }
+}

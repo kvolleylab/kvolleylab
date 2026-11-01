@@ -261,6 +261,42 @@
       "sha256": "e9fb53cd1322400fc9efd3f16c24a96b4730280cba8e0d6d3cc3206e7c01e35d",
       "evidence": "docs/validation/vleague-calendar-v2-20261101.md",
       "review_note": "사용자 요청으로 달력 전용 SOO 약칭을 S∞P에서 SOOP으로 변경. 기존 공개 config의 이 한 필드 외 값은 동일하며 정식명/경기/명단/MASTER/ID와 공개 범위를 유지한다."
+    },
+    "data/player-updates/config.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OPERATING-MASTER-v17",
+        "MK-OFFICIAL-RSS",
+        "NEWSIS-OFFICIAL-RSS"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "e17a22f20c03df71e6f82d2880595d3545a513dcc99d8e918e6819b4db96ea10",
+      "evidence": "docs/validation/competition-automation-extension-20261101.md",
+      "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
+    },
+    "data/player-updates/master_targets.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER",
+        "KVL-VLEAGUE-2026-27-W-PLAYER-MASTER"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "900333e24c99fc41e77ce7d4f7f07b55d61c3c3700971beb57959b4951f23b17",
+      "evidence": "docs/validation/competition-automation-extension-20261101.md",
+      "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
+    },
+    "data/player-updates/reviewed_mappings.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OPERATING-MASTER-v17"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "1dff32237df45dea561ca4231130724e4ab94a30288bac5b2ec2c0bd05de63ad",
+      "evidence": "docs/validation/competition-automation-extension-20261101.md",
+      "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
     }
   }
 }

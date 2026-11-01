@@ -24,6 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import kovo_vleague_update as update
 import kovo_vleague_source as source
 import kovo_vleague_master as master
+import kvl_competition_lifecycle as lifecycle
 from kovo_vleague_standings import StandingsError
 from test_kovo_vleague_source import FakeSeasonSource, FIXTURE, STAMP
 
@@ -96,12 +97,14 @@ def candidate_originals(plan):
 
 
 def seed_root(root, originals, state=None):
+    policy = update.read_json(Path(__file__).resolve().parents[1] / lifecycle.DEFAULT_POLICY)
+    update.write_json(root / lifecycle.DEFAULT_POLICY, policy)
     for gender, relative in update.DATA_PATHS.items():
         update.write_json(root / relative, originals[gender])
         slug = Path(relative).parent.name
         update.write_json((root / relative).with_name("config.json"), {
             "slug": slug, "schemaVersion": 2,
-            "competition": {"competitionId": "SYNTHETIC-" + gender,
+            "competition": {"competitionId": next(c["competition_id"] for c in policy["competitions"] if c["gender"] == gender),
                             "season": "2026-27", "gender": update.DIVISIONS[gender]},
         })
     if state is not None:
@@ -393,6 +396,7 @@ class MainFlowTests(unittest.TestCase):
     def invoke(self, arguments=(), client=None, *, trusted=False):
         argv = ["kovo_vleague_update.py", "--root", str(self.root), "--output", str(self.output), *arguments]
         with patch.object(sys, "argv", argv), patch.object(update, "collect_season", return_value=deepcopy(self.snapshot)), \
+                patch.object(lifecycle, "utc_now", return_value=datetime.fromisoformat(STAMP)), \
                 patch.object(update.SheetsClient, "from_environment", return_value=client) as connect, \
                 redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
             if trusted:

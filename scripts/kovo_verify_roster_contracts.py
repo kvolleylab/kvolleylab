@@ -16,7 +16,7 @@ from pathlib import Path
 
 BASE = Path("data/kovo/official-notices/2026-27")
 ACTIVE_EVENTS = {"registration", "reinstatement", "foreign_or_asian_quota", "transfer"}
-INACTIVE_EVENTS = {"free_agent", "voluntary_termination", "contract_termination", "release", "retirement"}
+INACTIVE_EVENTS = {"free_agent", "voluntary_termination", "contract_termination", "registration_termination", "release", "retirement"}
 
 
 def normal(value):
@@ -129,7 +129,8 @@ def project(notices, as_of=None):
             elif kind in INACTIVE_EVENTS or kind=="loan":
                 if kind=="loan" and ev.get("loan_end") and ev["loan_end"] < as_of:
                     warnings.append({"notice_id":notice["id"],"reason":"loan_expired_unverified_return","name":name})
-                    continue
+                    # Expiry is not evidence of a return. Keep the departure in
+                    # the projection until a later explicit registration event.
                 if target:
                     del active[target]
                     applied.append(ev["event_id"])

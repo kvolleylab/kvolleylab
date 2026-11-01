@@ -1,6 +1,8 @@
 # V-리그 자동 업데이트 v1
 
-작성일: 2026-10-31. 2026-11-01 사용자 운영 승인. 상태: **코드 main 설치 완료 / 실행 권한 미확인 / 최초 경기 데이터 반영 미완료**. 설치: [PR #213](https://github.com/kvolleylab/kvolleylab/pull/213). [운영 전환 현황](validation/vleague-activation_v1.md).
+작성일: 2026-10-31. 2026-11-01 사용자 운영 승인. 상태: **기존 v1 운영 연결·최초 수동 MASTER 반영·공개 게시 검증 완료**. 설치: [PR #213](https://github.com/kvolleylab/kvolleylab/pull/213), 후속 수정: [PR #215](https://github.com/kvolleylab/kvolleylab/pull/215). 최초 실제 성공: [Actions #7](https://github.com/kvolleylab/kvolleylab/actions/runs/41305975071). 예약 실행의 첫 후속 성공은 이 수동 실행의 성공과 별도로 확인한다. [운영 전환 기록](validation/vleague-activation_v1.md).
+
+2026-11-01 추가한 실행 기간·보관 검증은 별도의 기능 변경이며, main 배포 여부는 [확장 검증 기록](validation/competition-automation-extension-20261101.md)을 따른다. 운영 전 준비 중이던 이전 문서 상태는 최초 성공 기록으로 대체한다.
 
 ## 목적과 실행 위치
 
@@ -100,6 +102,37 @@ workflow는 `google-github-actions/auth@v3`로 `https://www.googleapis.com/auth/
 수동 실행의 `publish` 기본값은 false다. true여도 활성화 변수와 trusted-main 조건이 없으면 게시하지 않는다. 이 워크플로에는 main 보호 규칙을 우회하는 권한이 없다. 직접 bot push가 허용되지 않는 저장소 정책이면 운영 전환 전에 소유자가 게시 방식을 검토해야 한다.
 
 ## 일정·실패·복구
+
+### 대회별 실행 기간과 종료 후 처리
+
+`config/automation/vleague-2026-27_v1.json`이 현재 정규리그 자동화의 시간 경계다.
+기존 canonical Competition_ID와 각 126경기 범위는 유지한다.
+
+| 항목 | 현재 설정 |
+|---|---|
+| 시간대 | Asia/Seoul |
+| 갱신 시작(포함) | 2026-10-31 00:00 KST |
+| 공식 연결 데이터의 마지막 정규리그 편성일 | 남녀 모두 2027-04-02 |
+| 최종 확인 기간 | 마지막 편성일 다음부터 7일 |
+| 갱신 종료(미포함) | 2027-04-10 00:00 KST |
+
+이는 운영상 갱신 마감이며 공식 대회·포스트시즌 종료일이 아니다. 근거는 정책 파일의
+Source ID·URL·관측 시각·기준 커밋에 남긴다. 실제 일정이 검토한 기간 밖으로 이동하면
+공식 근거를 확인해 정책을 변경해야 한다. 페이지 `dateLabel`만으로 자동 연장하지 않는다.
+
+경량 기간 검사는 비싼 수집 전에 수행한다. 게시 진입·MASTER 재조회 후 쓰기 직전·로컬 저장·
+Git push·Pages 요청 전에도 실제 시각을 다시 확인한다. 수동 실행으로 종료 경계를 우회하지 않는다.
+정상 종료는 실패 Issue가 아닌 `SKIPPED`이며, 정책 오류나 실행 중 마감은 정제된 실패 사유를 남긴다.
+PR 회귀 검사는 기간 이후에도 유지한다.
+
+종료 시 `STOPPED_PENDING_ARCHIVE`로 멈춘다. `ARCHIVED`는 전체 정규리그 최종 결과,
+검수된 공식 종료 근거, MASTER 재조회, 공개 JSON과 배포 커밋의 일치, 고정 스냅샷·해시를
+모두 검증한 뒤에만 부여한다. 현재 진행 중 시즌의 archive manifest는 생성하지 않았다.
+GitHub cron은 종료 후에도 경량 검사에 깨어날 수 있다. 자동 수집·게시 중지와 cron 자체 중지는 구분한다.
+
+공통 정책: [대회 자동화 운영기준](KVL_COMPETITION_AUTOMATION_OPERATING_STANDARD_v1.md).
+
+### 반복 일정과 복구
 
 승인 후 일정은 KST 09:17 하루 한 번, KST 12:07~23:52의 15분 간격이다. cron에는 UTC 값을 사용한다. GitHub 예약 실행은 지연되거나 누락될 수 있으므로 정확한 시각 또는 실시간 중계를 보장하지 않는다. 다음 실행도 전체 시즌을 대조하므로 중간 실행 누락을 보완한다.
 

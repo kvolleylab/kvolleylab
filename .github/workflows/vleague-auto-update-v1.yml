@@ -11,7 +11,11 @@ on:
     branches: [main]
     paths:
       - 'scripts/kovo_vleague_*.py'
+      - 'scripts/kvl_competition_lifecycle.py'
       - 'tests/test_kovo_vleague_*.py'
+      - 'tests/test_kvl_competition_lifecycle.py'
+      - 'config/automation/vleague-2026-27_v1.json'
+      - 'data/automation/archive/vleague-2026-27-regular/**'
       - 'tests/fixtures/kovo_vleague/**'
       - 'tests/vleague-*.test.cjs'
       - '.github/workflows/vleague-auto-update-v1.yml'
@@ -30,11 +34,49 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  check:
+  lifecycle:
     if: >-
       github.repository == 'kvolleylab/kvolleylab' &&
       (github.event_name != 'schedule' || vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true') &&
       (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    outputs:
+      allow_update: ${{ steps.window.outputs.allow_update }}
+      phase: ${{ steps.window.outputs.phase }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Evaluate the reviewed season window before source requests or dependency installs
+        id: window
+        run: python3 -B scripts/kvl_competition_lifecycle.py --root . --report "$RUNNER_TEMP/kvl-vleague-lifecycle/lifecycle.json" --github-output "$GITHUB_OUTPUT"
+      - name: Keep the sanitized window decision
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vleague-lifecycle-${{ github.run_id }}
+          path: ${{ runner.temp }}/kvl-vleague-lifecycle/lifecycle.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Summarize the update window separately from sporting completion
+        if: always()
+        env:
+          LIFECYCLE_PHASE: ${{ steps.window.outputs.phase }}
+          UPDATE_ALLOWED: ${{ steps.window.outputs.allow_update }}
+        run: |
+          printf '### V-League update window\n\nPhase: `%s` · Update allowed: `%s`\n\nA closed window stops updates; it does not certify season completion or archive verification.\n' "$LIFECYCLE_PHASE" "$UPDATE_ALLOWED" >> "$GITHUB_STEP_SUMMARY"
+
+  check:
+    needs: lifecycle
+    if: >-
+      always() && !cancelled() &&
+      github.repository == 'kvolleylab/kvolleylab' &&
+      (github.event_name != 'schedule' || vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true') &&
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) &&
+      (github.event_name == 'pull_request' || needs.lifecycle.outputs.allow_update == 'true')
     runs-on: ubuntu-latest
     timeout-minutes: 12
     permissions:
@@ -51,7 +93,9 @@ jobs:
         with:
           node-version: '24'
       - name: Source, standings, MASTER and publication safety tests
-        run: python -B -m unittest discover -s tests -p 'test_kovo_vleague_*.py' -v
+        run: |
+          python -B -m unittest discover -s tests -p 'test_kovo_vleague_*.py' -v
+          python -B -m unittest discover -s tests -p 'test_kvl_competition_lifecycle.py' -v
       - name: Inspect the current Pages configuration without deploying
         env:
           GH_TOKEN: ${{ github.token }}
@@ -63,8 +107,10 @@ jobs:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
         run: node --test tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs
       - name: Verify real official full-season data without changing MASTER or site
+        if: needs.lifecycle.outputs.allow_update == 'true'
         run: python -B scripts/kovo_vleague_update.py --root . --output "$RUNNER_TEMP/kvl-vleague-preview"
       - name: Render real candidate scores and standings through the existing engine
+        if: needs.lifecycle.outputs.allow_update == 'true'
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
           KVL_VLEAGUE_CANDIDATE_ROOT: ${{ runner.temp }}/kvl-vleague-preview/candidate
@@ -89,9 +135,9 @@ jobs:
           fi
 
   publish:
-    needs: check
+    needs: [lifecycle, check]
     if: >-
-      needs.check.result == 'success' &&
+      needs.lifecycle.result == 'success' && needs.lifecycle.outputs.allow_update == 'true' && needs.check.result == 'success' &&
       github.repository == 'kvolleylab/kvolleylab' && github.ref == 'refs/heads/main' &&
       vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true' &&
       (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.publish))
@@ -112,9 +158,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Recheck the live clock before authentication or publishing
+        id: window
+        run: python -B scripts/kvl_competition_lifecycle.py --root . --report "$RUNNER_TEMP/kvl-vleague-publish/lifecycle.json" --github-output "$GITHUB_OUTPUT"
       - name: Verify current main and the existing Pages branch deployment
+        if: steps.window.outputs.allow_update == 'true'
         run: python -B scripts/kovo_vleague_ops.py preflight --root . --report "$RUNNER_TEMP/kvl-vleague-publish/preflight.json"
       - name: Authenticate only the trusted publisher to the existing MASTER
+        if: steps.window.outputs.allow_update == 'true'
         id: google-auth
         uses: google-github-actions/auth@v3
         with:
@@ -125,27 +176,35 @@ jobs:
           create_credentials_file: false
           export_environment_variables: false
       - name: Collect fresh data, apply precise MASTER cells, verify readback and generate data
+        if: steps.window.outputs.allow_update == 'true'
         env:
           KVL_GOOGLE_ACCESS_TOKEN: ${{ steps.google-auth.outputs.access_token }}
         run: python -B scripts/kovo_vleague_update.py --root . --publish --output "$RUNNER_TEMP/kvl-vleague-publish"
       - name: Commit only approved V-League generated paths
+        if: steps.window.outputs.allow_update == 'true'
         shell: bash
         run: |
+          python -B scripts/kvl_competition_lifecycle.py --root . --require-open --report "$RUNNER_TEMP/kvl-vleague-publish/lifecycle.json"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- data/competitions/v-league-men-2026-27/data.json data/competitions/v-league-women-2026-27/data.json data/kovo/vleague/2026-27/state_v1.json
           if ! git diff --cached --quiet; then
             git commit -m 'Update verified V-League results and standings'
+            python -B scripts/kvl_competition_lifecycle.py --root . --require-open --report "$RUNNER_TEMP/kvl-vleague-publish/lifecycle.json"
             git push origin HEAD:main
           fi
       - name: Request Pages build explicitly and verify published data
-        run: python -B scripts/kovo_vleague_ops.py deploy --root . --sha "$(git rev-parse HEAD)" --report "$RUNNER_TEMP/kvl-vleague-publish/deploy.json"
+        if: steps.window.outputs.allow_update == 'true'
+        run: |
+          python -B scripts/kvl_competition_lifecycle.py --root . --require-open --report "$RUNNER_TEMP/kvl-vleague-publish/lifecycle.json"
+          python -B scripts/kovo_vleague_ops.py deploy --root . --sha "$(git rev-parse HEAD)" --report "$RUNNER_TEMP/kvl-vleague-publish/deploy.json"
       - name: Keep sanitized publication receipts only
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: vleague-publish-${{ github.run_id }}
           path: |
+            ${{ runner.temp }}/kvl-vleague-publish/lifecycle.json
             ${{ runner.temp }}/kvl-vleague-publish/report.json
             ${{ runner.temp }}/kvl-vleague-publish/report.md
             ${{ runner.temp }}/kvl-vleague-publish/preflight.json
@@ -154,12 +213,12 @@ jobs:
           if-no-files-found: warn
 
   notify_failure:
-    needs: [check, publish]
+    needs: [lifecycle, check, publish]
     if: >-
       always() && github.ref == 'refs/heads/main' && github.repository == 'kvolleylab/kvolleylab' &&
       vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true' &&
       (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.publish)) &&
-      (needs.check.result == 'failure' || needs.publish.result == 'failure')
+      (needs.lifecycle.result == 'failure' || needs.check.result == 'failure' || needs.publish.result == 'failure')
     runs-on: ubuntu-latest
     timeout-minutes: 4
     permissions:
@@ -188,11 +247,17 @@ jobs:
           base="$RUNNER_TEMP/kvl-vleague-notify"
           publisher="$base/vleague-publish-$GITHUB_RUN_ID"
           report="$base/vleague-preview-$GITHUB_RUN_ID/report.json"
+          if [ ! -f "$report" ]; then
+            report="$base/vleague-lifecycle-$GITHUB_RUN_ID/lifecycle.json"
+          fi
           if [ -f "$publisher/report.json" ]; then
             report="$publisher/report.json"
           fi
           ops="$publisher/preflight.json"
           if [ -f "$publisher/deploy.json" ]; then
             ops="$publisher/deploy.json"
+          fi
+          if [ -f "$publisher/lifecycle.json" ] && python -c 'import json, sys; sys.exit(json.load(open(sys.argv[1]))["status"] != "FAILED")' "$publisher/lifecycle.json"; then
+            ops="$publisher/lifecycle.json"
           fi
           python -B scripts/kovo_vleague_ops.py notify-failure --report "$report" --ops-report "$ops" --run-url "https://github.com/kvolleylab/kvolleylab/actions/runs/$GITHUB_RUN_ID"

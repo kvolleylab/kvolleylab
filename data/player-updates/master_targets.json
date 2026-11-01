@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "configuration_status": "TARGET_SCHEMA_VERIFIED",
+  "verified_on": "2026-11-01",
+  "verification_basis": "Connected read-only inspection of existing men's and women's player MASTER metadata and row 3 headers.",
+  "runtime_connector": "NOT_CONNECTED",
+  "writeback": "NOT_IMPLEMENTED",
+  "readback_activation": "NOT_CONNECTED",
+  "season": "2026-27",
+  "maximum_snapshot_age_hours": 24,
+  "header_row": 3,
+  "headers": ["구단", "등번호", "선수명", "풀네임", "포지션", "생년월일", "키(cm)", "국적", "등록 상태", "원문 공시", "Player_ID", "비고", "현재등록 판단"],
+  "player_id_column": "K",
+  "allowed_cell_mappings": {
+    "number_change": {"value_column": "B", "event_field": "new_number"},
+    "position_change": {"value_column": "E", "event_field": "new_position"}
+  },
+  "source_column": "J",
+  "membership_mapping": "BLOCKED_STATUS_VOCABULARY_AND_REVISION_JOURNAL_NOT_CONNECTED",
+  "existing_history_tab": {
+    "title": "KOVO_선수별변동이력",
+    "header_row": 3,
+    "observed_header_count": 19,
+    "missing_required_columns": ["Player_ID", "효력일", "원문 revision"],
+    "status": "SCHEMA_EXTENSION_REQUIRED_NO_WRITES"
+  },
+  "observed_limitations": [
+    "Player_ID was blank in the inspected leading current-roster rows; do not fill IDs by matching names.",
+    "Season guidance and current-registration decisions remain under review.",
+    "Row formulas, protected ranges, manual locks and complete event revision history need fresh runtime readback before plans can be considered ready."
+  ],
+  "targets": [
+    {
+      "id": "vleague-men-2026-27-player-master",
+      "gender": "남",
+      "spreadsheet_id": "1WD2odv51xNDx9BqRfAjkkLVu0p_DX2EX_GEbqR-G4og",
+      "spreadsheet_title": "2026-27_V리그_남자부_선수명단_MASTER_검수중",
+      "sheet_id": 710020121,
+      "sheet_title": "현재등록_공시기반",
+      "snapshot_kind": "current_roster"
+    },
+    {
+      "id": "vleague-women-2026-27-player-master",
+      "gender": "여",
+      "spreadsheet_id": "18-SkyyCeCXBKSUbCCevhAFDmyjSOPrQubreSXIG2PBU",
+      "spreadsheet_title": "2026-27_V리그_여자부_선수명단_MASTER_검수중",
+      "sheet_id": 710030121,
+      "sheet_title": "현재등록_공시기반",
+      "snapshot_kind": "current_roster"
+    }
+  ]
+}

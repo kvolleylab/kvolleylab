@@ -372,3 +372,16 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-11-01 · V-리그 달력 SOOP·공휴일 음영·모바일 전체 표시
 
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 운영 달력 후속 수정으로 사용자가 여자부 `S∞P`를 `SOOP`으로, 공휴일을 빨간 날짜+연한 빨강 음영으로, 여자부 평일 날짜를 검정색으로 바꾸고 모바일 가로 이동을 없애도록 요청했다. 앞선 PR #223의 해당 약칭·날짜색·가로 이동 결정을 이 범위에서 대체한다. 남녀 같은 공휴일 색상과 7열 너비 맞춤을 사용하며 모바일 긴 대진은 팀명 단위로 줄바꿈한다. 기존 공식 공휴일 범위와 실제 경기시간·ID·결과·명단·MASTER는 그대로 보존한다. V-리그 선택 설정과 범위 제한 CSS로 적용하며 다른 대회 표시에는 확대하지 않는다. 관련33개 검사 및 PC·390px·360px 달력/상세 창 검수 통과. [검수·색상·변경 범위·복구](validation/vleague-calendar-v2-20261101.md).
+
+
+## 2026-11-01 · 최초 V-리그 실제 반영 성공 기록 보완
+
+Status: USER APPROVED / FIRST MANUAL MASTER WRITE VERIFIED / DEPLOYED VERIFIED. 기존 초기 연결 점검의 미확인 상태를 후속 실행 증거로 갱신한다. Actions 41305975071에서 check·publish 성공, MASTER 556셀 반영 및 재조회 일치, 공개 데이터 커밋 e9fa468eee6b327373ba4da68d802a6dad1f390b와 Pages 빌드 SHA 및 실제 남녀 JSON 일치를 확인했다. 수동 최초 성공과 아직 관측하지 않은 후속 예약 성공은 구분한다. 기존 계정 설정을 다시 요구하지 않는다. [운영 전환 기록](validation/vleague-activation_v1.md).
+
+## 2026-11-01 · 대회 운영 묶음·선수 공시·기사·실행 종료 및 보관
+
+Status: REQUESTED / IMPLEMENTED / LOCALLY VERIFIED / OPERATING MASTER v17 APPLIED / READY FOR REVIEW / NEW CODE NOT DEPLOYED. 사용자가 선수 명단·등록·이적 및 공식 공시·기사 수집을 보완하고, 실행 종료일과 ‘페이지 제작 + MASTER 연결 + 자동 업데이트 + 종료 후 기록 보관’을 대회 추가의 기본 운영 단위로 요청했다. 기존 Google 운영원칙 MASTER를 같은 문서 ID로 v17 갱신하고 재조회했다. GitHub 신규 scaffold에는 비활성 operations manifest와 운영 준비 검사를 추가한다. 기존 V-리그 정규리그는 명시된 KST 기간과 최종 확인 7일 후 2027-04-10 00:00 종료 경계를 사용한다. 이는 공식 대회/포스트시즌 종료일을 주장하지 않는다. 종료는 STOPPED_PENDING_ARCHIVE이며 공식 최종 결과·MASTER·배포·해시 증거 검증 후에만 보관 상태를 인정한다. 로컬 보관 준비 명령은 검증된 스냅샷만 생성하고 외부 쓰기와 정책 자동 변경은 하지 않는다.
+
+선수 공시는 원문 버전·Player_ID·효력일 검토로 연결하며 등록 해지를 등록으로 분류하던 오류와 임대 만료만으로 소속을 되살리던 오류를 수정한다. 기사 RSS는 미확정 메타데이터로 분리한다. 실제 남녀 선수 MASTER의 파일·탭·헤더는 확인했지만 ID 공란·이력 schema·상태값 검토가 남아 외부 writer는 미연결이다. 선수/기사 감시는 경기 기간과 분리하되 2027-06-01 내부 검토기한과 2027-10-31 운영 종료일을 명시한다. 두 날짜 모두 공식 대회 종료일이 아니다. 대학 공식 PDF에서 참가22팀 표를 추출했고 공개 XLSX 구조도 확인했으나 실제 중고·엘리트 선수/결과 엑셀과 OCR 운영 검증은 미완료로 남긴다.
+
+통합 기준 main e95126d65a346407f5128477750c1f328f148198의 PR #225 달력 변경을 보존한다. 진행 중 순위를 확정 포스트시즌 시드로 쓰던 기존 오류가 자동화 UI 검사를 막아 해당 확정 조건만 수정했다. 관련302개 로컬 검사 통과. 신규 코드 운영 병합/배포는 검토 PR과 운영자 승인 후 구분 기록하며 미확정 선수 사실을 승인 없이 반영하지 않는다. [운영 기준](KVL_COMPETITION_AUTOMATION_OPERATING_STANDARD_v1.md) · [검증·남은 연결·복구](validation/competition-automation-extension-20261101.md).

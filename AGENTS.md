@@ -12,6 +12,14 @@ This file is the entrypoint for K-Volley Lab development. Do not rely solely on 
 4. Reconcile the latest approved decisions with the live code; distinguish `APPROVED`, `PROTOTYPE`, `IMPLEMENTED`, `VERIFIED`, and `DEPLOYED`. A screenshot or old chat summary is not proof of deployment.
 5. Report any conflict between older general documentation and newer approved decisions. Do not silently overwrite a newer decision with an older template.
 
+For a new competition or automation extension, also read
+`docs/KVL_COMPETITION_AUTOMATION_OPERATING_STANDARD_v1.md`. Treat page creation,
+the exact MASTER connection, bounded automatic updates, and verified archival
+as one operating package. A generated page or a successful parser alone is not
+proof that this package is active. Use the operations manifest and activation
+checks in `scripts/scaffold-competition-v2.cjs`; keep existing source and player
+identities, review unresolved player changes, and record actual runtime evidence.
+
 ## Seven mandatory development rules
 
 1. **Check sources first.** Verify current GitHub main, relevant Google Drive MASTER, and applicable operation/design standards before editing.

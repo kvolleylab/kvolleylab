@@ -13,6 +13,7 @@ inspect-pages is limited to fixed read-only configuration queries.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
@@ -23,6 +24,8 @@ import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
+
+from kvl_competition_lifecycle import LifecycleError, require_update_window
 
 REPOSITORY = "kvolleylab/kvolleylab"
 PREFIX = "/repos/" + REPOSITORY
@@ -38,7 +41,10 @@ MAX_BYTES = 3_000_000
 UPDATER_CODES = {
     "SourceError": "SOURCE_VALIDATION_FAILED", "UpdateError": "UPDATE_VALIDATION_FAILED",
     "StandingsError": "STANDINGS_VALIDATION_FAILED", "MasterError": "MASTER_SYNC_FAILED",
+    "LifecycleError": "LIFECYCLE_VALIDATION_FAILED",
 }
+LIFECYCLE_CODES = {"LIFECYCLE_VALIDATION_FAILED", "UPDATE_WINDOW_CLOSED", "UPDATE_WINDOW_NOT_STARTED",
+                   "VERIFIED_ARCHIVE", "SCHEDULE_OUTSIDE_REVIEWED_UPDATE_WINDOW"}
 SAFE_CODES = {
     "PUBLISH_NOT_APPROVED", "UNTRUSTED_CONTEXT", "TOKEN_MISSING", "BAD_REPOSITORY",
     "PAGES_NOT_BRANCH_MAIN", "PAGES_DOMAIN_CHANGED", "MAIN_HEAD_CHANGED", "LOCAL_GIT_FAILED",
@@ -49,7 +55,7 @@ SAFE_CODES = {
     "SOURCE_VALIDATION_FAILED", "UPDATE_VALIDATION_FAILED", "STANDINGS_VALIDATION_FAILED",
     "MASTER_SYNC_FAILED", "UPDATER_FAILED", "REPORT_INVALID", "RUN_URL_INVALID",
     "ISSUE_LOOKUP_LIMIT", "DUPLICATE_TRACKING_ISSUES", "INVALID_WAIT_LIMIT",
-}
+} | LIFECYCLE_CODES
 
 
 class OpsError(RuntimeError):
@@ -287,6 +293,32 @@ def verify_public(expected, expected_sha, reader, *, timeout=20, nonce=None):
     return outcomes
 
 
+def deployment_receipt(root, expected, expected_sha, build_requested):
+    """Bind the live semantic JSON verification to future public snapshots."""
+    require_committed_data(root)
+    exact_hashes = {}
+    for path in DATA_PATHS:
+        try:
+            raw = (Path(root) / path).read_bytes()
+        except OSError:
+            raise OpsError("LOCAL_DATA_INVALID") from None
+        require(canonical(decode_json(raw)) == canonical(expected[path]), "LOCAL_DATA_INVALID")
+        exact_hashes[path] = hashlib.sha256(raw).hexdigest()
+    return {"status": "DEPLOYED_VERIFIED", "expected_sha": expected_sha, "built_sha": expected_sha,
+            "build_requested": build_requested, "verified_files": list(DATA_PATHS),
+            "verified_at": datetime.now(timezone.utc).isoformat(),
+            "verified_file_sha256": exact_hashes,
+            "verified_payload_sha256": {
+                path: hashlib.sha256(canonical(expected[path]).encode("utf-8")).hexdigest() for path in DATA_PATHS}}
+
+
+def require_deployment_window(root):
+    try:
+        require_update_window(root)
+    except LifecycleError as exc:
+        raise OpsError(str(exc) if str(exc) in LIFECYCLE_CODES else "LIFECYCLE_VALIDATION_FAILED") from None
+
+
 def deploy(root, expected_sha, *, client=None, environment=None, public_reader=read_public_json,
            timeout=600, interval=10, sleeper=time.sleep, clock=time.monotonic):
     require(1 <= timeout <= 600 and 1 <= interval <= 30, "INVALID_WAIT_LIMIT")
@@ -298,8 +330,7 @@ def deploy(root, expected_sha, *, client=None, environment=None, public_reader=r
     outcomes = verify_public(expected, expected_sha, public_reader)
     if build and build["status"] == "built" and build["commit"] == expected_sha and all(v is True for v in outcomes.values()):
         require(remote_head(client) == expected_sha, "MAIN_HEAD_CHANGED")
-        return {"status": "DEPLOYED_VERIFIED", "expected_sha": expected_sha,
-                "built_sha": expected_sha, "build_requested": False, "verified_files": list(DATA_PATHS)}
+        return deployment_receipt(root, expected, expected_sha, False)
 
     current_in_progress = bool(build and build["commit"] == expected_sha
                                and build["status"] in ("building", "queued"))
@@ -309,8 +340,11 @@ def deploy(root, expected_sha, *, client=None, environment=None, public_reader=r
                                 ("url", "created_at", "updated_at", "commit", "status")}) \
         if build and build["status"] == "errored" else None
     if request_build:
+        # The network preflight may cross the deadline. Guard the actual POST,
+        # including direct CLI use; a read-only verification remains available.
         check_context(env)
         require(remote_head(client) == expected_sha, "MAIN_HEAD_CHANGED")
+        require_deployment_window(root)
         response = client.request("POST", PREFIX + "/pages/builds")
         require(isinstance(response, dict) and response.get("status") in ("queued", "building")
                 and response.get("url") == API + PREFIX + "/pages/builds/latest", "BUILD_RESPONSE_INVALID")
@@ -334,9 +368,7 @@ def deploy(root, expected_sha, *, client=None, environment=None, public_reader=r
                 outcomes = verify_public(expected, expected_sha, public_reader,
                                          timeout=min(10, max(0.1, (deadline-clock()) / 2)))
                 if all(value is True for value in outcomes.values()):
-                    return {"status": "DEPLOYED_VERIFIED", "expected_sha": expected_sha,
-                            "built_sha": build["commit"], "build_requested": request_build,
-                            "verified_files": list(DATA_PATHS)}
+                    return deployment_receipt(root, expected, expected_sha, request_build)
         remaining = deadline - clock()
         if remaining <= 0:
             break
@@ -351,6 +383,10 @@ def safe_failure(report, ops_report=None):
     if not isinstance(raw_code, str):
         raw_code = None
     code = UPDATER_CODES.get(raw_code, raw_code if raw_code in SAFE_CODES else "UPDATER_FAILED")
+    if raw_code == "LifecycleError":
+        lifecycle_code = (ops_report or {}).get("reason_code") or report.get("lifecycle_reason_code")
+        if isinstance(lifecycle_code, str) and lifecycle_code in LIFECYCLE_CODES:
+            code = lifecycle_code
     summary = {"reason_code": code, "master_written": report.get("master_written") is True,
                "master_readback_verified": report.get("master_readback_verified") is True,
                "production_written": report.get("production_written") is True,
@@ -372,14 +408,18 @@ def safe_failure(report, ops_report=None):
 def issue_body(summary, run_url, fingerprint):
     lines = [f"{ISSUE_MARKER}{fingerprint} -->", "## V-리그 자동 업데이트 확인 필요", "",
              f"사유 코드: `{summary['reason_code']}`", "", f"실행 기록: {run_url}", "",
-             "자동 갱신이 완료됐다고 확인할 수 없어 운영 상태 확인이 필요합니다.",
-             "다음 실행은 공식 기록·MASTER·운영 데이터·배포 상태를 다시 대조합니다.", "",
+             "자동 갱신이 완료됐다고 확인할 수 없어 운영 상태 확인이 필요합니다."]
+    if summary["reason_code"] in LIFECYCLE_CODES:
+        lines += ["자동 갱신 기간·대상 범위·보관 증거를 확인해야 합니다. 기간이 닫힌 뒤에는 반복 실행만으로 재개되지 않습니다."]
+    else:
+        lines += ["다음 실행은 공식 기록·MASTER·운영 데이터·배포 상태를 다시 대조합니다."]
+    lines += ["",
              f"MASTER 변경 기록: {str(summary['master_written']).lower()}",
              f"MASTER 읽기 대조 완료: {str(summary['master_readback_verified']).lower()}",
              f"로컬 운영 데이터 작성: {str(summary['production_written']).lower()}"]
     if summary["master_may_be_ahead"]:
         lines += ["", "MASTER가 먼저 갱신되고 홈페이지는 아직 반영되지 않았을 수 있습니다.",
-                  "기존 결과를 지우지 않고 다음 실행에서 동일 데이터와 배포를 다시 확인합니다."]
+                  "기존 결과를 지우지 않고, 허용된 갱신 기간의 복구 실행에서 동일 데이터와 배포를 다시 확인합니다."]
     for gender, counts in summary["counts"].items():
         label = "남자부" if gender == "MALE" else "여자부"
         lines += ["", label + ": " + ", ".join(f"{key}={value}" for key, value in sorted(counts.items()))]

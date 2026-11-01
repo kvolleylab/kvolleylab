@@ -79,11 +79,12 @@ class DeploymentTests(unittest.TestCase):
             self.expected[relative] = value
         self.git = patch.object(ops, "git_head", return_value=SHA)
         self.clean = patch.object(ops, "require_committed_data")
-        self.git.start(); self.clean.start()
+        self.window = patch.object(ops, "require_update_window")
+        self.git.start(); self.clean.start(); self.window.start()
         self.clock = FakeClock()
 
     def tearDown(self):
-        self.git.stop(); self.clean.stop(); self.temp.cleanup()
+        self.git.stop(); self.clean.stop(); self.window.stop(); self.temp.cleanup()
 
     def live(self, url, *, timeout=20):
         self.assertIn("kvl_verify=" + SHA + "-", url)
@@ -99,6 +100,23 @@ class DeploymentTests(unittest.TestCase):
         result = ops.preflight(self.root, client=client, environment=ENV)
         self.assertEqual(result["status"], "PREFLIGHT_OK")
         self.assertEqual(result["expected_sha"], SHA)
+        self.assertEqual(client.writes(), [])
+
+    def test_deployment_receipt_binds_verified_public_payloads_for_archive(self):
+        result = self.run_deploy(FakeClient())
+        self.assertEqual(set(result["verified_payload_sha256"]), set(ops.DATA_PATHS))
+        self.assertIsNotNone(ops.datetime.fromisoformat(result["verified_at"]).tzinfo)
+        for path, value in self.expected.items():
+            expected_hash = ops.hashlib.sha256(ops.canonical(value).encode("utf-8")).hexdigest()
+            self.assertEqual(result["verified_payload_sha256"][path], expected_hash)
+            self.assertEqual(result["verified_file_sha256"][path], ops.hashlib.sha256((self.root / path).read_bytes()).hexdigest())
+
+    def test_deadline_crossed_during_preflight_blocks_actual_pages_post(self):
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER}])
+        with patch.object(ops, "require_update_window", side_effect=ops.LifecycleError("UPDATE_WINDOW_CLOSED")):
+            with self.assertRaisesRegex(ops.OpsError, "UPDATE_WINDOW_CLOSED"):
+                self.run_deploy(client)
+        self.assertTrue(any(call[0] == "GET" for call in client.calls))
         self.assertEqual(client.writes(), [])
 
     def test_unapproved_or_untrusted_context_cannot_call_api(self):
@@ -210,6 +228,26 @@ class NotificationTests(unittest.TestCase):
         return {"error_code": "MasterError", "master_written": True, "master_readback_verified": True,
                 "production_written": True, "raw_master": "PRIVATE SECRET", "error": "token=SECRET",
                 "divisions": {"MALE": {"matched": 126, "completed": 1, "changed_matches": 1, "raw": "PRIVATE"}}}
+
+    def test_late_deadline_failure_preserves_partial_write_facts_and_requires_review(self):
+        report = {**self.report(), "error_code": "LifecycleError", "lifecycle_reason_code": "UPDATE_WINDOW_CLOSED",
+                  "production_written": False}
+        summary = ops.safe_failure(report)
+        self.assertEqual(summary["reason_code"], "UPDATE_WINDOW_CLOSED")
+        self.assertTrue(summary["master_may_be_ahead"])
+        self.assertFalse(summary["production_written"])
+        body = ops.issue_body(summary, RUN, "synthetic")
+        self.assertIn("반복 실행만으로 재개되지 않습니다", body)
+        self.assertNotIn("다음 실행은", body)
+        self.assertNotIn("PRIVATE", body)
+
+    def test_lifecycle_configuration_failure_is_distinct_from_normal_closed_window(self):
+        summary = ops.safe_failure({"error_code": "LifecycleError", "reason_code": "POLICY_OR_EVIDENCE_UNREADABLE"})
+        self.assertEqual(summary["reason_code"], "LIFECYCLE_VALIDATION_FAILED")
+        self.assertFalse(summary["master_may_be_ahead"])
+        malicious = ops.safe_failure({"error_code": "LifecycleError", "lifecycle_reason_code": "token=secret"})
+        self.assertEqual(malicious["reason_code"], "LIFECYCLE_VALIDATION_FAILED")
+        self.assertNotIn("secret", json.dumps(malicious))
 
     def test_create_sanitized_issue_and_unchanged_run_has_no_mutation(self):
         client = FakeClient()

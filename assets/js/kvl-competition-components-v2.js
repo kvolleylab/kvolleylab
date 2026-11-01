@@ -373,7 +373,9 @@ function proPostseasonTeam(p,entry){
   return {html:known?teamLink(p,esc(name(p))):'진출팀 미정',name:known?name(p):'진출팀 미정',code:known?code(p):'',entry};
 }
 function proPostseasonSeed(d,rank){
-  const row=(d.standings?.rows||[]).find(r=>Number(r.rank)===rank);
+  // A current regular-season rank is not a confirmed postseason seed.
+  // Active-season pairings still come from the explicit series fixtures below.
+  const row=d.status==='completed'?(d.standings?.rows||[]).find(r=>Number(r.rank)===rank):null;
   return proPostseasonTeam(row?resolveTeam(row.team,d):null,`정규리그 ${rank}위`);
 }
 function proSeriesMatches(d,type){

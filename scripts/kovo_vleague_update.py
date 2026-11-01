@@ -25,6 +25,7 @@ from urllib.parse import urlsplit
 from kovo_vleague_source import collect_season, SourceError, validate_request_url
 from kovo_vleague_standings import calculate_standings, validate_final_match, StandingsError
 from kovo_vleague_master import build_update_plan, apply_update_plan, SheetsClient
+from kvl_competition_lifecycle import LifecycleError, require_update_window
 
 SEASON = "2026-27"
 DIVISIONS = {"MALE": "men", "FEMALE": "women"}
@@ -360,6 +361,21 @@ def ensure_publish_context(root):
             "Tracked working files changed before publishing")
 
 
+class WindowCheckedSheets:
+    """Recheck real time immediately before a MASTER mutation, after rereading."""
+
+    def __init__(self, client, root, candidates):
+        self.client, self.root, self.candidates = client, root, candidates
+        self.spreadsheet_id = client.spreadsheet_id
+
+    def read_values(self):
+        return self.client.read_values()
+
+    def batch_update_values(self, updates):
+        require_update_window(self.root, candidates=self.candidates)
+        return self.client.batch_update_values(updates)
+
+
 def report_markdown(report):
     lines = ["# V-리그 자동 업데이트 v1", "", f"상태: **{report['status']}**", "",
              f"공식 일정: {report.get('source_coverage', 0)}경기", "",
@@ -370,6 +386,11 @@ def report_markdown(report):
               f"MASTER 변경 셀: {report.get('master_changed_cells', '미확인')}",
               f"운영 파일 쓰기: {report.get('production_written', False)}",
               f"실행 모드: {report.get('mode', 'STAGING_ONLY')}"]
+    if report.get("lifecycle"):
+        lifecycle = report["lifecycle"]
+        lines += ["", f"자동 갱신 단계: {lifecycle['phase']}",
+                  f"갱신 마감(미포함): {lifecycle['ends_at']}",
+                  "갱신 마감은 운영상 중단 시각이며, 공식 대회 종료 또는 기록 보관 완료를 의미하지 않습니다."]
     if report.get("error_code"):
         lines += ["", "검증 또는 연결 실패로 후속 적용을 중단했습니다. MASTER·운영 파일·배포 상태를 재대조해야 합니다.",
                   f"오류 종류: `{report['error_code']}`"]
@@ -394,6 +415,7 @@ def main():
         if args.publish:
             require(args.source_file is None and args.master_snapshot is None, "Publishing cannot replay file snapshots")
             ensure_publish_context(root)
+            report["lifecycle"] = require_update_window(root)
         originals = {gender: read_json(root / relative) for gender, relative in DATA_PATHS.items()}
         previous = read_json(root / STATE_PATH) if (root / STATE_PATH).exists() else None
         snapshot = read_json(args.source_file) if args.source_file else collect_season()
@@ -411,12 +433,14 @@ def main():
         require(report["publication_gate"]["status"] == "PASS", "KVL public-export security rejected candidate data")
         if args.publish:
             ensure_publish_context(root)
+            report["lifecycle"] = require_update_window(root, candidates=plan["candidates"])
             check_local_preconditions(root, plan)
             require(plan["master_plan"] is not None, "MASTER must be checked before site update")
-            receipt = apply_update_plan(client, plan["master_plan"])
+            receipt = apply_update_plan(WindowCheckedSheets(client, root, plan["candidates"]), plan["master_plan"])
             report["master_written"] = bool(plan["master_plan"]["changes"])
             report["master_readback_verified"] = True
             # A later Git push failure leaves MASTER ahead; next run is idempotent.
+            report["lifecycle"] = require_update_window(root, candidates=plan["candidates"])
             write_candidates(root, plan)
             report["production_written"] = bool(plan["changed_files"])
             report["mode"] = "MASTER_VERIFIED_LOCAL_DATA_READY"
@@ -432,10 +456,12 @@ def main():
         # Do not put raw MASTER values, authentication exceptions or HTTP bodies
         # into public artifacts. Full source/parser errors remain local exceptions.
         report.update(status="FAILED", error_code=type(exc).__name__)
+        if isinstance(exc, LifecycleError):
+            report["lifecycle_reason_code"] = str(exc)
         write_json(args.output / "report.json", report)
         (args.output / "report.md").write_text(report_markdown(report), encoding="utf-8")
         print(f"V-league update stopped: {type(exc).__name__}", file=sys.stderr)
-        if isinstance(exc, (UpdateError, SourceError, StandingsError)):
+        if isinstance(exc, (UpdateError, SourceError, StandingsError, LifecycleError)):
             print(str(exc), file=sys.stderr)
         return 1
 
