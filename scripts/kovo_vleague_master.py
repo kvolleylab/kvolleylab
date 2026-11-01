@@ -142,7 +142,7 @@ def _desired_values(record, row):
     _require(re.fullmatch(r"(?:[01]\d|2[0-3]):[0-5]\d", time), f"Invalid KST time: {mid}")
     venue = _text(record, "venue")
     desired = {6: day, 7: "월화수목금토일"[parsed_day.weekday()], 8: time,
-               11: venue, 13: STATUS_LABELS[status], 17: source_url, 18: "공식검증"}
+               11: venue, 13: STATUS_LABELS[status], 17: source_url, 18: "공식확정"}
     _require(row[12] in set(STATUS_LABELS.values()) | {"진행 중"}, f"Unknown existing MASTER status: {mid}")
     if row[12] in {"연기", "취소"} and desired[13] != row[12]:
         raise MasterError(f"Administrative status correction requires review: {mid}")

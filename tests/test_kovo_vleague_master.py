@@ -78,6 +78,27 @@ class MasterTests(unittest.TestCase):
         self.assertEqual(client.values[1][:12], self.values[1][:12])
         self.assertEqual(client.values[1][18], self.values[1][18])
 
+    def test_verified_updates_match_existing_strict_dropdown_labels(self):
+        # Observed MASTER validation: M and R reject labels outside these lists.
+        # In particular, the former "공식검증" label is not a permitted R value.
+        verification_labels = {"미검증", "1차확인", "교차검증", "공식확정"}
+        status_labels = {"scheduled": "예정", "live": "진행중", "final": "종료",
+                         "postponed": "연기", "cancelled": "취소"}
+        allowed = {13: set(status_labels.values()), 18: verification_labels}
+        for status, label in status_labels.items():
+            for previous_verification in verification_labels:
+                with self.subTest(status=status, previous=previous_verification):
+                    values = copy.deepcopy(self.values)
+                    values[1][17] = previous_verification
+                    plan = self.plan(values, fixture_record(status=status))
+                    for cell in plan["changes"]:
+                        if cell["column"] in allowed:
+                            self.assertIn(cell["value"], allowed[cell["column"]])
+                    client = FakeClient(values)
+                    master.apply_update_plan(client, plan)
+                    self.assertEqual(client.values[1][12], label)
+                    self.assertEqual(client.values[1][17], "공식확정")
+
     def test_shuffled_rows_are_matched_by_id(self):
         values = [master.HEADERS.copy(), fixture_row("VL2627-M-002", "KB손해보험", "삼성화재"), fixture_row()]
         plan = self.plan(values)
