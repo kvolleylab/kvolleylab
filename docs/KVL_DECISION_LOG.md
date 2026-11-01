@@ -359,3 +359,8 @@ Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTH
 ## 2026-11-01 · 요약 아이콘 크기를 운영 VNL에 맞춤
 
 Status: REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 요약 아이콘을 운영 홈페이지 VNL과 같은 크기로 확대하고 국내 기본 템플릿의 기본값으로 지정했다. 기존22px를 운영 geometry의 기본 `clamp(28px,2.55vw,36px)`, 좁은 PC27px, 모바일31px로 대체한다. 변경 범위는 `.dv2-metric-icon svg`이며 색상·배경 없음·모양·탭/Hero/다른 트로피는 유지한다. PR #216 및 기존 비공개 시안에서만 반영하며 운영 main/데이터는 변경하지 않는다. [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · VNL 남녀 공통 화면 운영 적용 승인
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 사용자가 “여자부도 동일하게 만들어주고 이 페이지를 실제 홈페이지에 반영해줘”라고 명시적으로 지시했다. PR #216의 승인 대기 상태를 대체하고 승인된 국내 공통 개선·VNL 남자부 표시 설정·여자부 동일 화면·홈페이지 남녀 진입을 운영 전환한다. 국내 공통 표시 모듈에 국제 opt-in을 추가하며 엔진을 복제하지 않는다. 남자 data.json·의미/시즌 구조·ID·MASTER를 보존한다. 기존 여자 MASTER가 없어 공식1662의116경기·독립순위·252명 공개 명단을 출처별 ID로 검증·연결하며 KVL MASTER 매핑/신체정보·한글명 확인 완료로 표시하지 않는다. 남자 보라/여자 로즈, 국기·계절별 내용은 별도 config/data다. 기존 AVC 운영과 다른 국제대회는 일괄 전환하지 않는다. 병합·Pages·실사이트 증거는 PR #216에 기록한다. [근거·검수·범위·복구](validation/vnl-production-20261101.md).

@@ -124,3 +124,8 @@ KOVO컵 남녀 `structure.roster.profile=club`, `placement=below-participants`�
 - 긴 팀명은 자연스럽게 줄바꿈하며 말줄임/잘림을 사용하지 않는다. 득실비 제목의 b/small은 같은 줄에서 이어서 표시한다.
 - 작은 PC 창에서는 카드 안의 최소 480px 표만 가로 스크롤한다. 모바일과 인쇄 레이아웃, 기존 17px 글씨 크기는 유지한다.
 - [화면 및 검수](validation/domestic-pool-layout-20261026.md).
+
+
+## 2026-11-01 VNL 공통 개선 운영 승인
+
+사용자 VNL 남녀 운영 반영 지시로 PR #216에 준비된 공통 개선을 적용한다. Hero 글자 크기, 중립 스코어와5세트 기준 정렬, 스코어 중심 보조정보, 일반 실선/부전승 점선, 팀5개 성적·달력·펼친 전체 목록, 배경 없는 요약 아이콘(기본clamp(28px,2.55vw,36px),901–1180px27px,모바일31px)은 국내 기본값이다. 기존 국내 데이터·색상·모든 ID는 유지한다. 국제 적용은 같은 모듈의 명시적 `international-home-v2` 선택이며 국내/국제 엔진을 복제하지 않는다. [검수·복구](validation/vnl-production-20261101.md).

@@ -73,6 +73,7 @@ test('hiding a single-league status never removes grouped competitions pool labe
 });
 test('single-league status can be omitted without losing result, metrics or default columns',()=>{
  const {w,d,doc}=setup('vnl-men-2026');try{
+  delete d.structure.standings.showStatus;w.KVLCompetitionComponentsV2.render();
   const snapshot=JSON.stringify(d.standings),getRows=()=>[...doc.querySelectorAll('.kvl1180-combined-row')].map(r=>[...r.children].map(c=>c.textContent));
   const before=getRows();assert.equal(before.length,18);assert.ok(before.every(r=>r.length===9));
   d.structure.standings.showStatus=false;w.KVLCompetitionComponentsV2.render();
@@ -97,6 +98,7 @@ test('preserve Hero mode keeps the original title, metadata and status DOM',()=>
 });
 test('the team calendar hook leaves non-opted-in VNL production rendering intact',()=>{
  const {w,d,doc,route,code}=setup('vnl-men-2026');try{
+  delete d.structure.presentation;
   const before=doc.querySelector('#team-results').innerHTML;assert.equal(w.KVLDomesticHomeV2.apply(d),false);route(code);
   assert.equal(doc.querySelector('#team-results').innerHTML,before);assert.equal(doc.querySelector('[data-dv2-team-calendar]'),null);
  }finally{w.close();}
@@ -104,7 +106,7 @@ test('the team calendar hook leaves non-opted-in VNL production rendering intact
 function recordValues(doc){return Object.fromEntries([...doc.querySelectorAll('[data-team-record]')].map(e=>[e.dataset.teamRecord,e.querySelector('strong').textContent]));}
 test('VNL opt-in shares university cards and keeps preliminary and entire-event win rates separate',()=>{
  const {w,d,doc,route}=setup('vnl-men-2026');try{
-  assert.equal(doc.querySelector('.is-dual-rate'),null);const before=JSON.stringify(d.matches);
+  assert.ok(doc.querySelector('.is-dual-rate'));const before=JSON.stringify(d.matches);
   d.structure.teamResults={summary:'record',preliminaryStages:['예선']};route('POL');
   assert.deepEqual(recordValues(doc),{total:'15경기',wins:'13승',losses:'2패',preliminary:'83.3%',overall:'86.7%'});
   assert.match(doc.querySelector('[data-team-record="preliminary"]').textContent,/10승 2패 · 12경기/);

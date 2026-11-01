@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "slug": "vnl-women-2026",
+  "competition": {
+    "competitionId": "VBW-TOURNAMENT-1662",
+    "displayName": "2026 VNL 여자부",
+    "officialName": "Volleyball Nations League 2026 · Women",
+    "season": "2026",
+    "gender": "women",
+    "competitionFamily": "fivb"
+  },
+  "structure": {
+    "labels": {
+      "groupsTab": "예선순위",
+      "groupsKpi": "예선 경기",
+      "groupsKpiUnit": "경기",
+      "knockoutKpi": "파이널 진출",
+      "standingsTitle": "예선순위",
+      "standingsEyebrow": "PRELIMINARY STANDINGS",
+      "participantsTitle": "참가국",
+      "rostersTab": "참가국·선수명단",
+      "knockoutTab": "대진·최종순위"
+    },
+    "calendar": true,
+    "schedule": {
+      "stages": [
+        "전체",
+        "예선",
+        "8강",
+        "준결승",
+        "3위결정전",
+        "결승"
+      ]
+    },
+    "standings": {
+      "mode": "single-league",
+      "title": "예선 종합순위",
+      "showStatus": false,
+      "statusLabels": {
+        "host-qualified": "개최국"
+      }
+    },
+    "knockout": {
+      "mode": "bracket-8",
+      "title": "파이널 토너먼트"
+    },
+    "participants": {
+      "mode": "flat",
+      "groupLabel": "VNL 2026 여자부 참가국",
+      "linkMode": "team-roster",
+      "sort": "name-ko",
+      "searchLabels": {
+        "label": "참가국 검색",
+        "placeholder": "국가명 검색",
+        "sortNote": "국가명 가나다순",
+        "emptyMessage": "검색한 국가가 없습니다."
+      }
+    },
+    "roster": {
+      "mode": "full"
+    },
+    "presentation": "international-home-v2",
+    "heroPresentation": "preserve",
+    "meaningPlacement": "before-calendar",
+    "divisionLabel": "여자부",
+    "hubUrl": "competition.html",
+    "hubCategoryLabel": "국제대회",
+    "hubLabel": "VNL",
+    "overviewMetrics": {
+      "scheduleLabel": "전체 일정",
+      "third": "qualifiers",
+      "teamUnit": "개국",
+      "iconStyle": "solid"
+    },
+    "teamResults": {
+      "summary": "record",
+      "preliminaryStages": [
+        "예선"
+      ]
+    },
+    "genderLinks": {
+      "men": "/competition-engine.html?competition=vnl-men-2026",
+      "women": "/competition-engine.html?competition=vnl-women-2026"
+    }
+  },
+  "hero": {
+    "pcImage": "/assets/images/competitions/vnl-women-2026-hero-pc-v01.webp",
+    "mobileImage": "/assets/images/competitions/vnl-women-2026-hero-mobile-v01.webp",
+    "alt": "KVL 제작 여자 국제배구 경기 일러스트",
+    "showImage": true,
+    "mode": "photo",
+    "position": "right top",
+    "mobilePosition": "right center",
+    "mimeType": "image/webp"
+  },
+  "seo": {
+    "title": "2026 VNL 여자부 | K-Volley Lab",
+    "description": "2026 VNL 여자부 116경기 일정과 결과, 예선순위, 파이널 대진, 최종순위 및 18개국 공식 등록 선수명단."
+  },
+  "data": "data.json"
+}

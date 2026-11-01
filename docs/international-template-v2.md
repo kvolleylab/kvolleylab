@@ -1,14 +1,14 @@
 # 국제대회 기본 템플릿 · 2026 VNL 기준
 
-2026-11-01 사용자 지정: **현재 2026 VNL 남자부 시안을 국제 기본 템플릿의 디자인 기준으로 채택**한다. 국내 Hero 글자 크기도 같은 규격으로 맞춘다. 기준 채택과 운영 배포는 구분한다. 현재 상태: DESIGN BASELINE ADOPTED / PREVIEW IMPLEMENTED / PRODUCTION NOT AUTHORIZED.
+2026-11-01 사용자 지정: **현재 2026 VNL 남자부 시안을 국제 기본 템플릿의 디자인 기준으로 채택**한다. 국내 Hero 글자 크기도 같은 규격으로 맞춘다. 기준 채택과 운영 배포는 구분한다. 현재 상태: DESIGN BASELINE ADOPTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 2026-11-01 후속 사용자 지시로 VNL 남녀 운영 적용을 승인했다. [운영 범위·검수](validation/vnl-production-20261101.md), 실제 배포 증거는 PR #216에 기록한다.
 
 ## 기준 화면과 공통 구현
 
 - 기준 시안: https://kvl-vnl-domestic-template-v1.daewook1029.chatgpt.site
-- 구현/검토: `previews/vnl-domestic-v1/index.html`, `bridge.js`, `vnl.css`, Draft PR #216.
+- 최초 시안/검토: `previews/vnl-domestic-v1/index.html`, `bridge.js`, `vnl.css`, Draft PR #216.
 - 공통 표시: `assets/js/kvl-domestic-home-v2.js`, `assets/css/kvl-domestic-home-v2.css`. 기존 이름의 선택 모듈을 함께 사용하며 국제 엔진이나 국내 엔진을 별도로 복제하지 않는다.
 - 공통 Engine V2: `kvl-competition-config/data/shell/template/components/modules/loader-v2.js`. 공통 순위 표시 선택은 `structure.standings.showStatus`로 제어한다.
-- 시안 빌더 `scripts/build-vnl-domestic-preview-v1.py`가 원본의 실행 조건과 선택자만 제한적으로 연결한다. 현재 실행 허용은 VNL 남자 2026의 정확한 ID·시즌·계열이다. 다른 국제대회까지 운영 지원이 완료된 것으로 간주하지 않는다.
+- 운영 선택: `structure.presentation: international-home-v2`, `heroPresentation: preserve`, `meaningPlacement: before-calendar`. 국내와 같은 표시 모듈/엔진을 쓰며 국제 CSS는 opt-in에만 적용한다. 시안 빌더도 이제 운영 파일을 그대로 사용한다. VNL 남녀만 선택 설정을 켜고 다른 대회는 변경하지 않는다.
 
 ## 세 가지 관리 영역
 
@@ -40,6 +40,10 @@
 
 최신 승인된 config/data와 운영 기준을 확인한 뒤 대회별 명칭·계열·성별·상태·단계·순위 방식·진출 규정·설명·공식 근거·국기/로고·명단 링크를 입력 또는 선택한다. 기존 모듈로 처리되는지 먼저 확인한다. VNL 구조를 임의로 복사하지 않는다. 랭킹/다른 대회 진출권은 해당 시즌 근거가 확인된 내용만 표시하며 미확인과 해당 없음은 구분한다.
 
-현재 브랜치의 공유 모듈을 사용하는 격리 미리보기에서 실행 허용/표시 선택만 확장해 1180·390·360 및 관련 탭·팀 경로를 검수한다. 원본 데이터를 바꾸지 않고 문서화한 수정이 필요한 사실은 별도 제안한다. 이후 사용자가 지정한 대회부터 운영 적용한다. 이번 변경으로 AVC·VNL·국내 운영 화면을 교체하거나 다른 대회 config를 일괄 수정하지 않는다.
+현재 브랜치의 공유 모듈을 사용하는 격리 미리보기에서 실행 허용/표시 선택만 확장해 1180·390·360 및 관련 탭·팀 경로를 검수한다. 원본 데이터를 바꾸지 않고 문서화한 수정이 필요한 사실은 별도 제안한다. 이후 사용자가 지정한 대회부터 운영 적용한다. 운영 승인은 VNL 남녀와 앞서 승인된 국내 공통 개선에 한한다. AVC 및 다른 국제대회 config를 일괄 수정하지 않는다.
 
 검수·화면·배포 상태: [VNL 검수 기록](validation/vnl-domestic-template-v1.md). 기존 대안 PR #212는 이번 기준에 포함하지 않는다.
+
+## 여자부 및 성별 전환
+
+`data/competitions/vnl-women-2026/`은 여자 공식 자료로 별도 구성한다. `structure.genderLinks`로 남녀 전환을 연결하고 현재 탭을 유지하되 이전 성별의 팀 선택을 전달하지 않는다. 여자부는 계열과 무관하게 로즈다. 경기/국가/명단/설명·확정 결과는 남자부에서 복사하지 않는다. 새 데이터 출처와 미확인 필드 범위는 [운영 검수 기록](validation/vnl-production-20261101.md)을 따른다.
