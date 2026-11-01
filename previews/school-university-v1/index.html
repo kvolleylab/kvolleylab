@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <base href="/">
+  <title>중·고 배구대회 · 시안 | K-Volley Lab</title>
+  <meta name="description" content="대학대회 페이지의 구성을 적용한 중·고 배구대회 시안입니다.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/site-theme-light.css">
+  <link rel="stylesheet" href="assets/css/kvl-common-hero-v1.css">
+  <link rel="stylesheet" href="assets/css/university-competitions-hub-v2.css">
+  <link rel="stylesheet" href="assets/css/university-template-card-skin.css">
+  <link rel="stylesheet" href="previews/school-university-v1/school.css">
+  <script src="assets/js/unified-nav.js" defer></script>
+  <script src="previews/school-university-v1/school.js" defer></script>
+</head>
+<body class="school-university-preview">
+  <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+  <main class="univ-hub-main school-university-main">
+    <aside class="school-review-bar" aria-label="시안 안내">
+      <span><b>PROTOTYPE</b> 중·고 페이지 시안 · 운영 미반영</span>
+      <a href="https://kvolleylab.com/university-competitions.html" target="_blank" rel="noopener">대학대회 원본 ↗</a>
+    </aside>
+    <section class="kvl-common-hero" data-hero-mode="photo" aria-labelledby="pageTitle">
+      <div class="kvl-common-hero-copy">
+        <p class="kvl-common-hero-eyebrow">SCHOOL COMPETITION</p>
+        <h1 id="pageTitle">중·고 배구대회</h1>
+        <p class="kvl-common-hero-sub">Middle & High School Volleyball Competitions</p>
+        <p class="univ-hero-desc">중·고 배구의 일정과 기록을 한 곳에서 확인합니다.</p>
+      </div>
+    </section>
+
+    <section class="univ-section" aria-labelledby="featuredTitle">
+      <div class="univ-section-head"><h2 id="featuredTitle">2026 대회</h2><a class="univ-more-link" href="#recordsTitle">더 많은 대회 보기 →</a></div>
+      <div id="schoolFeaturedGrid" class="univ-featured-grid" aria-live="polite"><p class="univ-hub-note">대회를 불러오는 중입니다.</p></div>
+    </section>
+
+    <section class="univ-section" aria-labelledby="categoryTitle">
+      <div class="univ-section-head"><div><h2 id="categoryTitle">대회별 보기</h2><p>대회를 선택하면 아래 연도별 기록으로 이동합니다.</p></div></div>
+      <div id="schoolCategoryGrid" class="univ-category-grid"></div>
+    </section>
+
+    <section class="univ-section school-records-section" aria-labelledby="recordsTitle">
+      <div class="univ-section-head school-records-head">
+        <div><h2 id="recordsTitle" tabindex="-1">연도별 기록</h2><p>대회별 일정과 장소, 남녀 고등부·중등부의 입상 기록을 비교합니다.</p></div>
+        <label class="univ-year-control"><span class="sr-only">연도 선택</span><select id="schoolYearSelect" aria-label="연도 선택"></select></label>
+      </div>
+      <div class="school-filter-bar">
+        <div class="school-division-filters" role="group" aria-label="부문 선택">
+          <button type="button" data-division="all" aria-pressed="true">전체 부문</button>
+          <button type="button" data-division="high-men" aria-pressed="false">남고부</button>
+          <button type="button" data-division="high-women" aria-pressed="false">여고부</button>
+          <button type="button" data-division="middle-men" aria-pressed="false">남중부</button>
+          <button type="button" data-division="middle-women" aria-pressed="false">여중부</button>
+        </div>
+        <div class="school-search-row">
+          <label class="school-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="schoolSearch" type="search" aria-label="대회, 개최지, 입상 학교 검색" placeholder="대회·개최지·입상 학교 검색" autocomplete="off"></label>
+          <select id="schoolStatus" aria-label="대회 상태"><option value="all">모든 상태</option><option value="completed">대회 종료</option><option value="live">진행 중</option><option value="upcoming">개최 예정</option></select>
+          <select id="schoolSort" aria-label="정렬"><option value="recent">최신순</option><option value="oldest">이전순</option><option value="name">가나다순</option></select>
+        </div>
+      </div>
+      <p id="schoolResultCount" class="school-result-count" aria-live="polite"></p>
+      <div id="schoolRecords" class="univ-records" aria-live="polite"><p class="univ-hub-note">연도별 기록을 불러오는 중입니다.</p></div>
+      <p class="school-source-note">현재 홈페이지에 연결된 기록을 표시합니다. 공동 순위는 그대로 유지하며, 확인되지 않은 순위는 확인 중으로 표시합니다.<br>대회·부문별 상세 링크는 기존 홈페이지로 연결됩니다.</p>
+    </section>
+  </main>
+  <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
+</body>
+</html>
