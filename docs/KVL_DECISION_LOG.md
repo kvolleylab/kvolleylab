@@ -364,3 +364,8 @@ Status: REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사
 ## 2026-11-01 · VNL 남녀 공통 화면 운영 적용 승인
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 사용자가 “여자부도 동일하게 만들어주고 이 페이지를 실제 홈페이지에 반영해줘”라고 명시적으로 지시했다. PR #216의 승인 대기 상태를 대체하고 승인된 국내 공통 개선·VNL 남자부 표시 설정·여자부 동일 화면·홈페이지 남녀 진입을 운영 전환한다. 국내 공통 표시 모듈에 국제 opt-in을 추가하며 엔진을 복제하지 않는다. 남자 data.json·의미/시즌 구조·ID·MASTER를 보존한다. 기존 여자 MASTER가 없어 공식1662의116경기·독립순위·252명 공개 명단을 출처별 ID로 검증·연결하며 KVL MASTER 매핑/신체정보·한글명 확인 완료로 표시하지 않는다. 남자 보라/여자 로즈, 국기·계절별 내용은 별도 config/data다. 기존 AVC 운영과 다른 국제대회는 일괄 전환하지 않는다. 병합·Pages·실사이트 증거는 PR #216에 기록한다. [근거·검수·범위·복구](validation/vnl-production-20261101.md).
+
+
+## 2026-11-01 · 중·고 허브를 대학대회 형식으로 검토하는 시안
+
+Status: REQUESTED / PROTOTYPE / READY FOR REVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 국내대회 메뉴의 기존 중·고 허브를 대학대회 허브와 동일한 형식으로 다시 만들되 우선 프로토타입만 제작하도록 요청했다. 기준 main `ff9cd11e4dfe22f9b51a36a1ac1190f5ad4e9a52`, 브랜치 `feature/school-university-hub-v1`. 현재 대학 허브의 2026 대회·대회별 보기·연도별 기록과 승인된 카드/트로피 CSS를 그대로 재사용하고, 네 부문 순위 배치·기존 검색/필터를 시안 경로 안에서 구성한다. 운영 중·고 허브/공통 파일/상세 엔진/MASTER/ID/카탈로그는 변경하지 않는다. 앞선 중·고 운영 승인은 그대로 유지되며 이번 디자인을 승인한 것으로 간주하지 않는다. 별도 소유자 전용 검토 사이트만 게시한다. [시안·검수·영향 범위](validation/school-university-hub-prototype-v1.md).

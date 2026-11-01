@@ -1,0 +1,85 @@
+/* Prototype only. University hub styles are reused without production edits. */
+.school-university-main .kvl-common-hero{
+  --kvl-common-hero-image:url('/assets/img/home-hero/kvl-home-hero-pc-v01.webp');
+  --kvl-common-hero-image-mobile:url('/assets/img/home-hero/kvl-home-hero-mobile-v01.webp');
+  --kvl-common-hero-position:center center;
+  --kvl-common-hero-position-mobile:72% center;
+}
+.school-university-main{font-family:Arial,'Noto Sans KR','Malgun Gothic',sans-serif}
+.school-university-main .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.school-university-main button,.school-university-main input,.school-university-main select{font-family:inherit}
+.school-review-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;color:#728195;font-size:11px;line-height:1.5}
+.school-review-bar b{margin-right:7px;color:#9a741e;font-size:10px;letter-spacing:.05em}
+.school-review-bar a{color:#526983;text-decoration:none;white-space:nowrap}
+.school-university-main :is(a,button,input,select):focus-visible{outline:3px solid #c9a44c;outline-offset:3px}
+.school-university-main .univ-featured-card{--featured-image:url('/assets/img/home-hero/kvl-home-hero-mobile-v01.webp');--featured-position:72% center}
+.school-university-main .univ-featured-badge{background:#f5f8fb;color:#36516c;font-size:10px;padding:5px 8px}
+.school-university-main .univ-category-symbol{font-size:18px}
+.school-university-main .univ-category-copy h3{overflow-wrap:anywhere;word-break:keep-all}
+.school-university-main .univ-record-card{grid-template-columns:minmax(240px,1.05fr) minmax(0,1.8fr);scroll-margin-top:24px}
+.school-university-main .univ-record-info{grid-row:auto;align-self:stretch}
+.school-record-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;min-width:0}
+.school-university-main .univ-ranking-panel{grid-column:auto;min-width:0;text-decoration:none;color:inherit;transition:border-color .15s}
+.school-university-main a.univ-ranking-panel:hover{border-color:#c9a44c}
+.school-university-main .univ-ranking-head small{color:inherit;opacity:.8;font-size:10px}
+.school-university-main .univ-rank-row{grid-template-columns:25px 54px minmax(0,1fr)}
+.school-university-main .univ-rank-row strong{white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;overflow-wrap:anywhere;padding:5px 0;line-height:1.45}
+.school-university-main .univ-record-top{justify-content:flex-start;flex-wrap:wrap;gap:6px}
+.school-university-main .univ-record-info h3{margin-bottom:16px}
+.school-university-main .univ-record-link{padding-top:18px}
+.school-university-main .univ-record-meta svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.school-university-main .univ-status.is-upcoming{background:#eaf3ff;color:#1b5faf}
+.school-partial-badge{font-size:10px;font-weight:700;color:#977024}
+.school-partial-note{margin:6px 0 3px;padding-top:6px;border-top:1px solid #edf1f4;color:#7b8795;font-size:10px;line-height:1.6}
+.school-detail-links{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:14px;padding-top:12px;border-top:1px solid #edf1f4}
+.school-detail-links a{font-size:11px;font-weight:700;color:#62768b;text-decoration:none}
+.school-detail-links a:hover{text-decoration:underline;color:#145fb8}
+.school-filter-bar{padding:13px 14px;border:1px solid #e0e8f0;border-radius:12px;background:#fff}
+.school-division-filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.school-division-filters button{padding:8px 14px;border:1px solid #dfe6ed;border-radius:7px;background:#fff;color:#65788d;font-size:12px;font-weight:700;cursor:pointer}
+.school-division-filters button[aria-pressed="true"]{background:#17365d;border-color:#17365d;color:#fff}
+.school-search-row{display:grid;grid-template-columns:minmax(0,1fr) 120px 104px;gap:8px}
+.school-search{display:flex;align-items:center;gap:8px;min-width:0;border:1px solid #dfe6ed;border-radius:7px;padding-left:11px;background:#fbfcfd}
+.school-search svg{width:16px;height:16px;flex:none;fill:none;stroke:#7a899a;stroke-width:1.7;stroke-linecap:round}
+.school-search input{min-width:0;width:100%;padding:10px 8px 10px 0;border:0;border-radius:7px;background:transparent;color:#17365d;font-size:12px}
+.school-search input::placeholder{color:#8391a1}
+.school-search-row select{min-width:0;padding:9px 8px;border:1px solid #dfe6ed;border-radius:7px;background:#fff;color:#526983;font-size:12px;font-weight:700}
+.school-result-count{margin:10px 2px;color:#6e7e90;font-size:11px;line-height:1.5}
+.school-source-note{color:#8592a0;font-size:11px;line-height:1.8;margin:14px 0}
+.school-university-main .univ-year-head strong span{letter-spacing:0}
+.school-university-main .school-empty{padding:32px 16px;text-align:center;color:#65788d;font-size:13px;line-height:1.7}
+.school-empty button{border:1px solid #d7e0e9;border-radius:7px;background:white;color:#17365d;padding:8px 12px;font:inherit;font-size:12px;cursor:pointer}
+.school-university-main .univ-year-placeholder{border-style:solid;color:#7b8998}
+.school-university-main .school-selected-division .school-record-panels{grid-template-columns:1fr}
+.school-university-main .school-selected-division .univ-record-card{grid-template-columns:minmax(0,1.05fr) minmax(0,1.8fr)}
+@media(max-width:1100px) and (min-width:681px){
+  .school-university-main .univ-record-card{grid-template-columns:1fr}
+  .school-university-main .univ-record-info{padding-bottom:12px}
+  .school-university-main .univ-record-link{margin-top:0;padding-top:6px}
+  .school-university-main .univ-category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:680px){
+  .school-university-main .univ-record-card,.school-university-main #recordsTitle{scroll-margin-top:64px}
+  .school-review-bar{gap:4px;padding:10px 0;font-size:9px}
+  .school-review-bar b{font-size:8px;margin-right:4px}
+  .school-review-bar a{font-size:9px}
+  .school-records-head{align-items:center;gap:8px}
+  .school-university-main .univ-year-control{width:auto;flex:none}
+  .school-university-main .univ-year-control select{min-width:80px;width:auto;padding:9px 8px;font-size:12px}
+  .school-university-main .univ-record-card,.school-university-main .school-selected-division .univ-record-card{grid-template-columns:1fr}
+  .school-record-panels{grid-template-columns:1fr;gap:8px}
+  .school-university-main .univ-category-symbol{font-size:16px}
+  .school-university-main .univ-rank-row{grid-template-columns:23px 56px minmax(0,1fr)}
+  .school-university-main .univ-ranking-head small{font-size:9px}
+  .school-university-main .univ-record-info h3{margin-bottom:12px}
+  .school-university-main .univ-record-link{padding-top:9px}
+  .school-filter-bar{padding:10px}
+  .school-division-filters{gap:5px}
+  .school-division-filters button{padding:8px 9px;font-size:11px}
+  .school-search-row{grid-template-columns:1fr 1fr}
+  .school-search{grid-column:1/-1}
+  .school-search input{font-size:16px}
+  .school-search input::placeholder{font-size:12px}
+  .school-source-note{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.school-university-main *{scroll-behavior:auto!important;transition:none!important}}
