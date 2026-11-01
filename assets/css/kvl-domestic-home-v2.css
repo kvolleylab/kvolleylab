@@ -404,6 +404,21 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:is(
 .has-club-rosters .kvl-club-details p{margin:8px 0;font-size:11px;line-height:1.6;color:#65788c}
 }
 
+/* V-League mobile roster: nationality flag immediately before POS. */
+@media screen and (max-width:680px){
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters :is(.kvl-club-roster-head,.kvl-club-roster-row){grid-template-columns:34px minmax(0,1fr) 30px 30px 44px;gap:6px}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters .kvl-club-roster-head>span{grid-row:1}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters :is(.kvl-club-roster-head>span:nth-child(1),.kvl-club-number){grid-column:1;grid-row:1;text-align:center}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters :is(.kvl-club-roster-head>span:nth-child(2),.kvl-club-name){grid-column:2;grid-row:1}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters :is(.kvl-club-roster-head>span:nth-child(6),.kvl-club-nationality){display:flex;grid-column:3;grid-row:1;justify-content:center;align-items:center;min-height:24px}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters :is(.kvl-club-roster-head>span:nth-child(3),.kvl-club-position){grid-column:4;grid-row:1;text-align:center}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters :is(.kvl-club-roster-head>span:nth-child(4),.kvl-club-height){grid-column:5;grid-row:1;text-align:center}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters .kvl-club-links{grid-column:2/-1;grid-row:2}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters .kvl-club-number{font-size:20px;line-height:1.2;font-weight:800}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters .kvl-club-nationality .kvl-club-nationality-label{position:relative;gap:0;justify-content:center}
+ body.kvl-pro-league-domestic-v2 #rosters.has-club-rosters .kvl-club-nationality .kvl-club-nationality-label:has(img)>span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+
 /* Regional representatives use plain text at the right end of the team row. */
 [data-kvl-audience="comprehensive"] .dv2-region,
 html body.kvl-domestic-home-v2[data-kvl-audience="comprehensive"] #knockout .kvl-final-region{flex:none;margin-left:auto;color:#65788c;font-size:15px;font-weight:400;line-height:1.45;white-space:nowrap;text-align:right}

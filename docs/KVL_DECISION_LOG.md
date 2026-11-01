@@ -382,3 +382,8 @@ Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·l
 ## 2026-11-02 · V-리그 중복 상태 열 제거·모바일 승패승점
 
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 운영 정규리그 순위의 중복 ‘상태’를 제거하고 모바일에 ‘승·패·승점’을 표시하도록 요청했다. 남녀 config의 기존 `showStatus: false`와 새 선택 설정 `mobileStats: wins-losses-points`를 공통 렌더러에서 처리한다. PC의 결과·득실비는 유지하며 모바일 결과는 팀명 아래에 남긴다. 모바일 360/390px에서 표 전체를 가로 이동 없이 표시한다. 다른 대회의 기본 표시와 조별순위, 데이터·MASTER·ID·산식은 보존한다. [검수·범위·복구](validation/vleague-standings-mobile-20261102.md).
+
+
+## 2026-11-02 · V-리그 모바일 간격·국적 국기·등번호·달력 결과
+
+Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 모바일 정규리그 순위의 다섯 열 간격 통일, 선수명단 POS 왼쪽 국적 국기, 등번호 확대, 종료 경기 달력의 실제 세트 결과를 요청했다. 같은 폭의 순위 열, 기존 국적의 국기 전용 모바일 표시,20px 등번호, 종료+유효 스코어에 한정한 결과 문구로 적용한다. PR #228의 가변 팀 열 배치를 이 범위에서 대체한다. 다른 대회·PC 명단·인쇄·국적 원문·등록 스코어·ID·MASTER는 유지한다. [검수·범위·복구](validation/vleague-mobile-v2-20261102.md).
