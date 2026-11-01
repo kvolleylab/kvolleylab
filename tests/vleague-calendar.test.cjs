@@ -45,7 +45,7 @@ async function setup(slug='v-league-men-2026-27',query='',now='2026-11-01T00:00:
  for(const name of ['config','data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));
  const d=w.KVLCompetitionDataV2.normalize(raw);w.KVL_COMPETITION_V2_DATA=d;
  w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();
- w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(d);await w.KVLDomesticHomeV2.matchesReady;
+ w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(d);await w.KVLDomesticHomeV2.matchesReady;
  return {w,d,doc:w.document};
 }
 for(const gender of ['men','women'])test(gender+': two-line overview and selected-team calendars preserve dialogs and records',async()=>{
@@ -72,9 +72,9 @@ test('holiday date color survives month navigation; only actual match days recei
   assert.deepEqual([...cal.querySelectorAll('.dv2-day:not(.outside) .dv2-calendar-date.is-holiday')].map(el=>el.textContent),['6','7','8','9','14','21','28']);
  }finally{w.close();}
 });
-test('university presentation keeps the original count calendar',async()=>{
+test('university calendar shares single-match details and multiple-match counts',async()=>{
  const {w,doc}=await setup('university-league-women-2026');try{
-  const cal=doc.querySelector('[data-dv2-calendar]');assert(!cal.classList.contains('dv2-vleague-calendar'));assert.equal(cal.querySelector('.dv2-calendar-game'),null);assert.match(cal.textContent,/경기/);
+  const cal=doc.querySelector('[data-dv2-calendar]');assert(!cal.classList.contains('dv2-vleague-calendar'));assert(cal.classList.contains('kvl-match-calendar'));for(const day of cal.querySelectorAll('[data-dv2-date]')){const count=w.KVL_COMPETITION_V2_DATA.matches.filter(m=>m.date===day.dataset.dv2Date).length;assert.equal(day.querySelectorAll('.dv2-calendar-game').length,count===1?1:0);if(count>1)assert.equal(day.querySelector('.kvl-calendar-count').textContent,count+'경기');}
  }finally{w.close();}
 });
 

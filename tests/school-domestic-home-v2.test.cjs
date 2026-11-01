@@ -9,7 +9,7 @@ function setup(slug,view='overview'){
  w.KVL_COMPETITION_PAGE_V2={deferRender:true};w.matchMedia=()=>({matches:false});w.CSS={escape:v=>String(v)};w.HTMLElement.prototype.scrollIntoView=()=>{};
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
  for(const name of ['data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));
- w.KVL_COMPETITION_V2_DATA=w.KVLCompetitionDataV2.normalize(d);w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
+ w.KVL_COMPETITION_V2_DATA=w.KVLCompetitionDataV2.normalize(d);w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
  return {w,doc:w.document,d:w.KVL_COMPETITION_V2_DATA};
 }
 for(const c of catalog)for(const [key,label] of migration.divisions)test(c.enginePrefix+' '+key+' renders the common template and preserves division through tab/record navigation',()=>{

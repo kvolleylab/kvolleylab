@@ -12,7 +12,7 @@ function setup({gender='men',now='2026-10-28T03:00:00Z',edit,failPeer=false,wron
  const requests=[];w.fetch=async url=>{const u=new URL(url),g=u.pathname.includes('-women-')?'women':'men';requests.push(u.pathname);if(failPeer)throw Error('network unavailable');const value=u.pathname.endsWith('config.json')?structuredClone(configs[g]):structuredClone(sources[g]);if(wrongSeason&&value.competition)value.competition.season='2025-26';return {ok:true,json:async()=>value};};
  for(const name of ['config','data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));
  const d=dataApi.normalize(configApi.assemble(configs[gender],sources[gender],{slug:configs[gender].slug,canonical:w.location.href}));w.KVL_COMPETITION_V2_DATA=d;
- w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(d);
+ w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(d);
  return {w,doc:w.document,d,requests,errors,ready:w.KVLDomesticHomeV2.matchesReady};
 }
 const result={home:3,away:2,sets:[{home:25,away:20},{home:23,away:25},{home:26,away:24},{home:18,away:25},{home:15,away:12}]};

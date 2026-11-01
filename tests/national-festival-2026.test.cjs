@@ -7,7 +7,7 @@ function setup(key,view='overview'){
  const d=contract.assemble(c,s,{slug,canonical:url});assert.deepEqual(api.validate(d,{production:true}),[]);
  const dom=new JSDOM('<body class="kvl1180-prototype kvl-competition-template-v2"><main data-kvl-shell></main></body>',{url,runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window;
  w.KVL_COMPETITION_PAGE_V2={deferRender:true};w.matchMedia=()=>({matches:false});w.CSS={escape:v=>String(v)};w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLDialogElement.prototype.showModal=function(){this.open=true;};w.HTMLDialogElement.prototype.close=function(){this.open=false;};
- for(const n of ['data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${n}-v2.js`));w.KVL_COMPETITION_V2_DATA=w.KVLCompetitionDataV2.normalize(d);w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
+ for(const n of ['data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${n}-v2.js`));w.KVL_COMPETITION_V2_DATA=w.KVLCompetitionDataV2.normalize(d);w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
  return {w,doc:w.document,d};
 }
 for(const [key,n,g,byes,champion] of cases)test(key+' includes every official team/match and correct knockout path, podium and interactive navigation',()=>{

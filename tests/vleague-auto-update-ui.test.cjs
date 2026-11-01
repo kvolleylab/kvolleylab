@@ -63,7 +63,7 @@ if(!candidateRoot){
   const d=w.KVLCompetitionDataV2.normalize(structuredClone(assembled[gender]));
   w.KVL_COMPETITION_V2_DATA=d;
   w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();
-  w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(d);
+  w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(d);
   await w.KVLDomesticHomeV2.matchesReady;
   return {w,doc:w.document,d,errors,requests};
  }
