@@ -1,0 +1,23 @@
+{
+  "blocked": [],
+  "changes": [],
+  "configuration_status": "TARGET_SCHEMA_VERIFIED",
+  "no_update_reasons": [
+    "no_reviewed_events"
+  ],
+  "readback_activation": "NOT_CONNECTED",
+  "reviewed_event_count": 0,
+  "runtime_connector": "NOT_CONNECTED",
+  "schema_version": 1,
+  "scope": "Local review plan only. Fresh source/row/formula/lock/revision readback and external writer activation are still required.",
+  "skipped": [],
+  "target_readiness": {
+    "vleague-men-2026-27-player-master": [
+      "fresh_runtime_snapshot_missing"
+    ],
+    "vleague-women-2026-27-player-master": [
+      "fresh_runtime_snapshot_missing"
+    ]
+  },
+  "writeback": "NOT_IMPLEMENTED"
+}
