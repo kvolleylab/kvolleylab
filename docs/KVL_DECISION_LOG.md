@@ -354,3 +354,8 @@ Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTH
 ## 2026-11-01 · 한눈에 보기 요약 항목 및 투명 배경 아이콘
 
 Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 VNL 한눈에 보기 요약을 참가국·전체 일정·파이널 진출·대회 장소로 바꾸고 운영 VNL의 아이콘 모양을 사용하되 색상은 유지하도록 요청했다. 기존 shell의 사람/달력/트로피/위치핀 SVG를 재사용하고 원본 `knockoutTeamCount` 8개국을 대진 화면에 연결한다. 국내 기본 템플릿의 요약 아이콘도 배경을 제거하되 색상·모양·문구·수치는 유지한다. `structure.overviewMetrics` 선택 설정으로 구분하며 공통 엔진/자산을 복제하지 않는다. PR #216 및 비공개 시안만 갱신하며 운영 main·MASTER·config/data는 변경하지 않는다. [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · 요약 아이콘 크기를 운영 VNL에 맞춤
+
+Status: REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 요약 아이콘을 운영 홈페이지 VNL과 같은 크기로 확대하고 국내 기본 템플릿의 기본값으로 지정했다. 기존22px를 운영 geometry의 기본 `clamp(28px,2.55vw,36px)`, 좁은 PC27px, 모바일31px로 대체한다. 변경 범위는 `.dv2-metric-icon svg`이며 색상·배경 없음·모양·탭/Hero/다른 트로피는 유지한다. PR #216 및 기존 비공개 시안에서만 반영하며 운영 main/데이터는 변경하지 않는다. [검수 기록](validation/vnl-domestic-template-v1.md).

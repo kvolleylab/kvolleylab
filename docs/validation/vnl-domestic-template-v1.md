@@ -1,6 +1,6 @@
 # 2026 VNL 남자부 · 국제 기본 템플릿 기준 시안
 
-상태: **DESIGN BASELINE ADOPTED / REVISION 5 READY FOR REVIEW / 운영 미반영** · 2026-11-01
+상태: **DESIGN BASELINE ADOPTED / REVISION 6 READY FOR REVIEW / 운영 미반영** · 2026-11-01
 
 사용자가 현재 2026 VNL 시안을 국제대회 기본 템플릿의 기준으로 지정했다. 국내 기본 템플릿과 공통 Engine V2를 함께 사용하며, 국내 Hero 크기도 VNL과 맞춘다. 별도 대안 PR #212는 재개하지 않는다. 팀 성적 요약에 이어 한눈에 보기 요약 항목과 아이콘을 수정했다.
 
@@ -12,7 +12,18 @@
 - 국내 기준: [domestic-template-v2.md](../domestic-template-v2.md)
 - 화면/검수: `previews/vnl-domestic-v1/index.html`, `qa.html`, `revision-qa.html`, `team-record-qa.html`
 
-## Revision 5 · 한눈에 보기 요약과 아이콘 (최신 요청)
+## Revision 6 · 운영 VNL과 같은 요약 아이콘 크기 (최신 요청)
+
+요약 아이콘을22px에서 운영 VNL과 같은 크기로 확대하고 국내 기본 템플릿의 기본값으로 지정했다. 공통 CSS의 `.dv2-metric-icon svg`만 변경했다. 기본 `clamp(28px,2.55vw,36px)`, 좁은 PC901–1180px에서27px, 모바일680px 이하에서31px이다. 기준은 운영 `assets/css/kvl-competition-geometry-v2.css`의 KPI 규칙이다. 배경 없음·기존 대회색·모양과 탭/Hero/다른 트로피 크기는 유지한다.
+
+브라우저 검수: 운영 VNL 원본과 시안을 같은1600px/390px에서 비교해36px/31px 일치를 확인했다. VNL360px과 국내 고성390px도31px이며 카드·본문 가로 넘침 없음. 탭 아이콘은 기존PC22px/모바일19px로 유지된다. `git diff --check` 통과. 이번은 CSS 크기 변경으로 기능 회귀는 직전66개 결과를 재사용했으며 새로 반복 실행하지 않았다.
+
+증빙: `vnl-domestic-v6-browser-evidence.json`. 최신 main은 `2791e93f730a13c7f64e209d802b7e1df43b4758`로 동일하다. 코드 변경은 공통 CSS1개이고 JS/config/data/MASTER는 수정하지 않았다. 운영 main/Pages 미반영, PR #216 및 비공개 시안만 갱신한다. 직전 복구 commit: `9ebee36a8d81e52d1a30e753fb32e2193bf0bf6f`.
+
+![확대한 PC 요약 아이콘](vnl-domestic-v6-pc.jpg)
+![모바일 및 국내 동일 크기](vnl-domestic-v6-mobile.jpg)
+
+## Revision 5 · 한눈에 보기 요약과 아이콘
 
 운영 VNL의 실제 화면과 공통 shell을 비교해 **참가국18개국 / 전체 일정116경기 / 파이널 진출8개국 / 대회 장소**로 수정했다. 사람·달력·트로피·위치핀은 운영 SVG symbol을 그대로 참조한다. 기존 시안 보라색 #5B3A8E와 카드 크기·간격을 유지하고 아이콘 배경만 없앴다. 파이널 진출은 원본 `knockoutTeamCount`를 읽고 대진·최종순위로 연결한다. 국내 기본 템플릿은 아이콘 배경만 제거하고 선형 모양과 색상(#24577C, 고성 남자 기준)을 유지한다.
 

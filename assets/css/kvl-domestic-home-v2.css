@@ -877,3 +877,8 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:not
 
 /* Reuse the shared shell sprite for competitions that choose filled overview icons. */
 .dv2-metric-icon svg.is-solid{fill:currentColor;stroke:none}
+
+/* Overview icon size follows the production VNL KPI geometry. */
+.dv2-metric-icon svg{width:clamp(28px,2.55vw,36px);height:clamp(28px,2.55vw,36px)}
+@media(max-width:1180px) and (min-width:901px){.dv2-metric-icon svg{width:27px;height:27px}}
+@media(max-width:680px){.dv2-metric-icon svg{width:31px;height:31px}}
