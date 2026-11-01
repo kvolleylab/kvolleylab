@@ -372,3 +372,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·li
 ## 2026-11-01 · V-리그 달력 SOOP·공휴일 음영·모바일 전체 표시
 
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 운영 달력 후속 수정으로 사용자가 여자부 `S∞P`를 `SOOP`으로, 공휴일을 빨간 날짜+연한 빨강 음영으로, 여자부 평일 날짜를 검정색으로 바꾸고 모바일 가로 이동을 없애도록 요청했다. 앞선 PR #223의 해당 약칭·날짜색·가로 이동 결정을 이 범위에서 대체한다. 남녀 같은 공휴일 색상과 7열 너비 맞춤을 사용하며 모바일 긴 대진은 팀명 단위로 줄바꿈한다. 기존 공식 공휴일 범위와 실제 경기시간·ID·결과·명단·MASTER는 그대로 보존한다. V-리그 선택 설정과 범위 제한 CSS로 적용하며 다른 대회 표시에는 확대하지 않는다. 관련33개 검사 및 PC·390px·360px 달력/상세 창 검수 통과. [검수·색상·변경 범위·복구](validation/vleague-calendar-v2-20261101.md).
+
+
+## 2026-11-01 · V-리그 올스타전 표시·현재 성별 우선·경기일만 음영
+
+Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 올스타전 빨간 글씨, 여자부 최근 결과/다음 경기의 여자 우선 배치, 경기 없는 휴일 음영 제거를 요청했다. 기존 MASTER의2027-01-17 예정일을 대회별 표시 설정으로 연결하고 정규리그 경기로 추가하지 않는다. 현재 성별을 PC 왼쪽/모바일 위에 두며, 달력 음영은 해당 달력의 실제 경기일만 적용한다. 공휴일·일요일 숫자는 빨강으로 유지한다. PR #225의 경기 없는 휴일 음영 결정을 이 범위에서 대체한다. 35개 관련 검사와PC·390px·360px 검수 통과. MASTER·252경기·ID·결과·명단 및 다른 대회 표시 설정은 유지한다. [출처·검수·범위·복구](validation/vleague-calendar-v3-20261101.md).

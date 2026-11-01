@@ -53,7 +53,10 @@ for(const gender of ['men','women'])test(gender+': two-line overview and selecte
   for(const day of cal.querySelectorAll('[data-dv2-date]')){const matches=selected.d.matches.filter(m=>m.date===day.dataset.dv2Date&&[m.home.code,m.away.code].includes(teamCode));assert.equal(day.querySelectorAll('.dv2-calendar-game').length,matches.length);assert.equal(day.querySelector('.dv2-team-game'),null);}
  }finally{selected.w.close();}
 });
-test('holiday paint survives month navigation and does not require a match',async()=>{
+test('holiday date color survives month navigation; only actual match days receive shading',async()=>{
+ const empty=await setup('v-league-men-2026-27','','2026-10-01T00:00:00Z');try{
+  const date=empty.doc.querySelector('.dv2-calendar-date[title="한글날"]');assert(date.classList.contains('is-holiday'));assert(!date.parentElement.classList.contains('is-holiday-day'));assert(!date.parentElement.classList.contains('has-match'));assert.equal(date.parentElement.children.length,1);
+ }finally{empty.w.close();}
  const {w,doc}=await setup();try{
   const cal=doc.querySelector('[data-dv2-calendar]');cal.querySelector('[data-dv2-month="1"]').click();assert.equal(cal.querySelector('.dv2-calendar-date[title="기독탄신일"]').textContent,'25');assert(cal.querySelector('.dv2-calendar-date[title="기독탄신일"]').parentElement.classList.contains('is-holiday-day'));
   cal.querySelector('[data-dv2-month="1"]').click();cal.querySelector('[data-dv2-month="1"]').click();
@@ -65,4 +68,17 @@ test('university presentation keeps the original count calendar',async()=>{
  const {w,doc}=await setup('university-league-women-2026');try{
   const cal=doc.querySelector('[data-dv2-calendar]');assert(!cal.classList.contains('dv2-vleague-calendar'));assert.equal(cal.querySelector('.dv2-calendar-game'),null);assert.match(cal.textContent,/경기/);
  }finally{w.close();}
+});
+
+for(const gender of ['men','women'])test(gender+': All-Star annotation follows the season config without becoming a league fixture',async()=>{
+ for(const query of ['', '&view=team&team='+(gender==='men'?'KBI':'SOO')]){
+  const {w,d,doc}=await setup(`v-league-${gender}-2026-27`,query,'2027-01-01T00:00:00Z');try{
+   const before=JSON.stringify(d),cal=doc.querySelector(query?'[data-dv2-team-month]':'[data-dv2-calendar]');
+   const label=cal.querySelector('.dv2-calendar-event');assert.equal(label.textContent,'올스타전');assert.equal(label.parentElement.querySelector('.dv2-calendar-date').textContent,'17');
+   assert(label.parentElement.getAttribute('aria-label').includes('2027-01-17'));assert(!label.parentElement.hasAttribute('data-dv2-date'));assert(!label.parentElement.classList.contains('has-match'));assert(!label.parentElement.classList.contains('is-holiday-day'));
+   assert.equal(d.matches.length,126);assert(!d.matches.some(m=>m.date==='2027-01-17'));assert.equal(JSON.stringify(d),before);
+   cal.querySelector('[data-dv2-month="1"]').click();assert.equal(cal.querySelector('.dv2-calendar-event'),null);
+   cal.querySelector('[data-dv2-month="-1"]').click();assert.equal(cal.querySelectorAll('.dv2-calendar-event').length,1);
+  }finally{w.close();}
+ }
 });
