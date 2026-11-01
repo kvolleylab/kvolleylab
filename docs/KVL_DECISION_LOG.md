@@ -331,3 +331,36 @@ Status: APPROVED / RELEASE AUTHORIZED / DEPLOYMENT VERIFICATION PENDING. 사용�
 ## 2026-11-01 · V-리그 수집기 설치와 최초 연결 확인 결과
 
 Status: APPROVED / CODE INSTALLED / RUNTIME AUTH NOT VERIFIED / FIRST DATA WRITE NOT APPLIED. 사용자 승인에 따라 PR #213을 `444eff62474089029c6b5aacfae191d321585364`로 병합했다. 후속 파비콘 PR #214를 보존한다. 실제 MASTER의 M/R strict dropdown을 확인해 작성기의 `공식검증`을 허용 값 `공식확정`으로 수정하고 20개 조합 회귀를 추가한다. 시트 검증 규칙은 변경하지 않는다. 관리 화면 인증은 도구 시간 초과로 결과 미확인이며 Google 실행 권한·GitHub 활성화 변수는 이번 작업에서 설정하지 않았다. 최초 MASTER 쓰기 요청 중단 후 다시 읽은 두 개막전은 여전히 예정·점수 공란이므로 경기 결과 반영 완료로 표시하지 않는다. 운영 승인 자체는 유지하며 인증·첫 반영·공개 배포 확인을 이어서 완료해야 한다. [상태·검증·이어갈 단계](validation/vleague-activation_v1.md).
+
+## 2026-11-01 · 국제 개정 보류 및 국내 기본 템플릿 VNL 시안
+
+Status: SCOPE CONFIRMED / PROTOTYPE / READY FOR REVIEW / PRODUCTION NOT AUTHORIZED. 사용자의 최신 지시로 국제 템플릿 개정(PR #212)은 잠시 보류하고, 승인된 `domestic-home-v2`를 직접 사용한 2026 VNL 남자부 시안을 별도 브랜치에서 제작한다. VNL의 FIVB 보라색과 기존 ‘대회 의미 · 시즌 구조’ 원문을 유지한다. 기준 main `2791e93f730a13c7f64e209d802b7e1df43b4758`, 브랜치 `feature/vnl-domestic-template-v1`. 국내 공통 파일은 수정하지 않고 빌드 시 미리보기용 실행 조건·CSS 선택자를 연결한다. VNL config/data와 공통 Engine V2, 기존 국내·AVC·VNL 운영 화면은 변경하지 않는다. 국제 공통 템플릿의 개정·확정·다른 대회 적용 및 운영 병합 승인은 포함하지 않는다. [시안·화면·검수·복구](validation/vnl-domestic-template-v1.md).
+
+## 2026-11-01 · VNL 시안 8개 피드백과 국내 팀 달력 보완
+
+Status: REQUESTED CHANGES IMPLEMENTED / PROTOTYPE / READY FOR REVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 기존 운영 VNL Hero·설명 카드 색상 복원, 경기행 5세트 기준 중앙 정렬, 보조 정보 한 줄, 중국 ‘개최국’ 표시, 일반 사다리 실선, 국가 가나다순과 선택 팀 달력을 요청했다. 경기행·부전승·팀 달력은 국내 기본 템플릿에도 같은 형태로 보완하도록 명시했다. 앞선 ‘국내 공통 파일을 수정하지 않는다’는 초기 시안 제약을 이 세 기능과 선택적 원본 Hero 보존의 브랜치 제안 범위에서 대체한다. 공통 소스 4개 파일을 Draft PR #216에서 보완하며 운영 main/Pages·wrapper/config/data·MASTER·기존 ID·Hero 자산은 변경하지 않는다. 국제 템플릿 개정 PR #212는 보류를 유지한다. 국내와 VNL은 같은 달력 렌더러를 사용하고, VNL 표시용 어댑터에서만 국가 정렬·중국 상태 문구를 바꾼다. [변경·화면·검수·승인 후 범위](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · VNL 시안의 국제 기본 기준 채택 및 팀 경기 표시 보완
+
+Status: DESIGN BASELINE ADOPTED / REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 현재 2026 VNL 페이지를 국제 기본 템플릿의 기준으로 지정했다. 앞선 국제 기준 확정 보류를 이 디자인 범위에서 대체하며, 별도 대안 PR #212는 재개하지 않는다. 국내 Hero 글자 크기를 VNL 규격으로 맞추고, 경기장·현지시간 문구는 세트 스코어 중심에 정렬한다. 팀 선택 시 달력과 전체 목록을 기본 펼침으로 표시하며 달력에 대진/등록 스코어를 표기한다. 단일 VNL 예선순위의 중복 상태 열만 선택적으로 제거한다. 데이터·MASTER·ID·의미/시즌 구조 원문 및 운영 main은 변경하지 않는다. 적용은 PR #216과 비공개 시안이며 운영 병합/Pages/일괄 적용 승인으로 확대하지 않는다. [국제 기준](international-template-v2.md) · [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · 팀 성적 카드와 예선·전체 승률
+
+Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 경기일정·결과의 팀 로고 선택 시 전체 경기·승·패·승률(예선, 전체)을 대학배구와 같은 양식으로 표시하고 국내 기본 템플릿에도 적용하도록 요청했다. 기존 공통 성적 카드를 5개 지표로 확장하고 달력 위에 둔다. PC는 5칸, 모바일은 3+2칸이며 VNL은 FIVB 보라색을 사용한다. 예선은 명시된 단계 또는 기존 예선 조 소속으로 제한해 U-리그 6강리그/결선을 제외한다. 미완료 경기는 승률 분모에 넣지 않는다. PR #216 및 비공개 시안에서 검증하며 운영 main·원본 config/data·MASTER·ID는 유지한다. [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · 한눈에 보기 요약 항목 및 투명 배경 아이콘
+
+Status: REQUESTED CHANGES IMPLEMENTED / VERIFIED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 VNL 한눈에 보기 요약을 참가국·전체 일정·파이널 진출·대회 장소로 바꾸고 운영 VNL의 아이콘 모양을 사용하되 색상은 유지하도록 요청했다. 기존 shell의 사람/달력/트로피/위치핀 SVG를 재사용하고 원본 `knockoutTeamCount` 8개국을 대진 화면에 연결한다. 국내 기본 템플릿의 요약 아이콘도 배경을 제거하되 색상·모양·문구·수치는 유지한다. `structure.overviewMetrics` 선택 설정으로 구분하며 공통 엔진/자산을 복제하지 않는다. PR #216 및 비공개 시안만 갱신하며 운영 main·MASTER·config/data는 변경하지 않는다. [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · 요약 아이콘 크기를 운영 VNL에 맞춤
+
+Status: REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 요약 아이콘을 운영 홈페이지 VNL과 같은 크기로 확대하고 국내 기본 템플릿의 기본값으로 지정했다. 기존22px를 운영 geometry의 기본 `clamp(28px,2.55vw,36px)`, 좁은 PC27px, 모바일31px로 대체한다. 변경 범위는 `.dv2-metric-icon svg`이며 색상·배경 없음·모양·탭/Hero/다른 트로피는 유지한다. PR #216 및 기존 비공개 시안에서만 반영하며 운영 main/데이터는 변경하지 않는다. [검수 기록](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · VNL 남녀 공통 화면 운영 적용 승인
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 사용자가 “여자부도 동일하게 만들어주고 이 페이지를 실제 홈페이지에 반영해줘”라고 명시적으로 지시했다. PR #216의 승인 대기 상태를 대체하고 승인된 국내 공통 개선·VNL 남자부 표시 설정·여자부 동일 화면·홈페이지 남녀 진입을 운영 전환한다. 국내 공통 표시 모듈에 국제 opt-in을 추가하며 엔진을 복제하지 않는다. 남자 data.json·의미/시즌 구조·ID·MASTER를 보존한다. 기존 여자 MASTER가 없어 공식1662의116경기·독립순위·252명 공개 명단을 출처별 ID로 검증·연결하며 KVL MASTER 매핑/신체정보·한글명 확인 완료로 표시하지 않는다. 남자 보라/여자 로즈, 국기·계절별 내용은 별도 config/data다. 기존 AVC 운영과 다른 국제대회는 일괄 전환하지 않는다. 병합·Pages·실사이트 증거는 PR #216에 기록한다. [근거·검수·범위·복구](validation/vnl-production-20261101.md).

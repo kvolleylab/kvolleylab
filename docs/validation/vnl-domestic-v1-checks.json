@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "baseCommit": "2791e93f730a13c7f64e209d802b7e1df43b4758",
+  "checks": [
+    "unchanged source: assets/css/kvl-competition-components-v2.css",
+    "unchanged preview input: assets/css/kvl-competition-components-v2.css",
+    "unchanged source: assets/css/kvl-domestic-home-v2.css",
+    "unchanged preview input: assets/css/kvl-domestic-home-v2.css",
+    "unchanged source: assets/js/kvl-domestic-home-v2.js",
+    "unchanged preview input: assets/js/kvl-domestic-home-v2.js",
+    "unchanged source: data/competitions/vnl-men-2026/config.json",
+    "unchanged preview input: data/competitions/vnl-men-2026/config.json",
+    "unchanged source: data/competitions/vnl-men-2026/data.json",
+    "unchanged preview input: data/competitions/vnl-men-2026/data.json",
+    "meaning title and note retained",
+    "full explanation: finals",
+    "description/result separation: finals",
+    "full explanation: champion",
+    "description/result separation: champion",
+    "full explanation: ranking",
+    "description/result separation: ranking",
+    "explanation visible between metrics and calendar",
+    "six views at three widths",
+    "all tabs render without page overflow",
+    "1180px desktop main",
+    "original single-league standings, no final aggregation"
+  ],
+  "viewChecks": 18,
+  "data": {
+    "countries": 18,
+    "matches": 116,
+    "preliminaryMatches": 108,
+    "rosterPlayers": 284
+  },
+  "sourceHashes": {
+    "assets/css/kvl-competition-components-v2.css": "760e4259dee8b08bde16b1626114b533c07d5c3d230490b4d91c3d5cd839f9a0",
+    "assets/css/kvl-domestic-home-v2.css": "fb69bd6619e6d91a6eee5b0b905889f6d58c5d66dc0d9e56b6999d3f57ecf6da",
+    "assets/js/kvl-domestic-home-v2.js": "48c9e78f78b2d40ca58d8fb89a8489344ae1913ca67a17681f6c37488976d723",
+    "data/competitions/vnl-men-2026/config.json": "76593958c21531f7736b12d6dbccd72bfcd4ca2083b786b9b08b2d1acb4dea4f",
+    "data/competitions/vnl-men-2026/data.json": "09765934285b25a76ed3ca7a0bc39d72c653433de4c44e01a6971cd548eef6f6"
+  }
+}

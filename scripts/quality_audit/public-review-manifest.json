@@ -182,6 +182,60 @@
       "sha256": "1e1fdb6ea149636c15cb7913a35ce91661af50be90df41bc55ca9ce45fa75423",
       "evidence": "docs/validation/draft-women-draws-20261030.md",
       "review_note": "사용자 영상 전사14회·첨부 방송 화면7팀 색상 및 공개 적합성 검토. 직접 원영상 검증으로 승격하지 않음. 7순위 결정 방식 미확인·공식 결과·28개 권리·감사 이력 보존."
+    },
+    "data/competitions/vnl-men-2026/config.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-APPROVAL-VNL-PRESENTATION-20261101",
+        "KVL-COMP-000001"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "cea176395b6103b90fa95e6bc30b94ecb9ec5ceacc355074d0099decc30ab246",
+      "evidence": "docs/validation/vnl-production-20261101.md",
+      "review_note": "사용자 운영 승인, 공개 공식 자료/표시 config/출처 메타데이터의 공개 적합성과 exact hash 검토. 남자 원본 data.json은 변경 없음. 여자 공식 경기/예선수치 독립 대조 및 공식 명단 확인. 여자 한글명·신체정보·소속·KVL MASTER ID 매핑 미확인을 그대로 보존하며 이 파일 공개 검수로 미확인 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/competitions/vnl-women-2026/config.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-APPROVAL-VNL-PRESENTATION-20261101",
+        "VBW-VNL-2026-W-SCHEDULE",
+        "VBW-VNL-2026-W-STANDINGS",
+        "VBW-VNL-2026-W-ROSTERS"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "fcc9d68d0fa7c2effab7cf8fce29ad14c89bcbf1a2fb1c42b22062dcbcc1d5fc",
+      "evidence": "docs/validation/vnl-production-20261101.md",
+      "review_note": "사용자 운영 승인, 공개 공식 자료/표시 config/출처 메타데이터의 공개 적합성과 exact hash 검토. 남자 원본 data.json은 변경 없음. 여자 공식 경기/예선수치 독립 대조 및 공식 명단 확인. 여자 한글명·신체정보·소속·KVL MASTER ID 매핑 미확인을 그대로 보존하며 이 파일 공개 검수로 미확인 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/competitions/vnl-women-2026/data.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-APPROVAL-VNL-PRESENTATION-20261101",
+        "VBW-VNL-2026-W-SCHEDULE",
+        "VBW-VNL-2026-W-STANDINGS",
+        "VBW-VNL-2026-W-ROSTERS"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "dfa96dbba943d41a2836306cfb80d239cd142016d62bfd988d2bcb7d673bc902",
+      "evidence": "docs/validation/vnl-production-20261101.md",
+      "review_note": "사용자 운영 승인, 공개 공식 자료/표시 config/출처 메타데이터의 공개 적합성과 exact hash 검토. 남자 원본 data.json은 변경 없음. 여자 공식 경기/예선수치 독립 대조 및 공식 명단 확인. 여자 한글명·신체정보·소속·KVL MASTER ID 매핑 미확인을 그대로 보존하며 이 파일 공개 검수로 미확인 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/competitions/vnl-women-2026/source-manifest.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-APPROVAL-VNL-PRESENTATION-20261101",
+        "VBW-VNL-2026-W-SCHEDULE",
+        "VBW-VNL-2026-W-STANDINGS",
+        "VBW-VNL-2026-W-ROSTERS"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "92a7610d6809c5b432888c0e1ffedd5a29550f7ac58026d6bd84f936806bce74",
+      "evidence": "docs/validation/vnl-production-20261101.md",
+      "review_note": "사용자 운영 승인, 공개 공식 자료/표시 config/출처 메타데이터의 공개 적합성과 exact hash 검토. 남자 원본 data.json은 변경 없음. 여자 공식 경기/예선수치 독립 대조 및 공식 명단 확인. 여자 한글명·신체정보·소속·KVL MASTER ID 매핑 미확인을 그대로 보존하며 이 파일 공개 검수로 미확인 필드를 공식 사실로 승격하지 않는다."
     }
   }
 }

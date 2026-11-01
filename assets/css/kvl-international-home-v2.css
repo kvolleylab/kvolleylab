@@ -1,0 +1,44 @@
+/* International opt-in for the shared domestic presentation. Theme Policy v1. */
+body.kvl-domestic-home-v2[data-kvl-presentation="international-home-v2"]{--dv2-accent:var(--kvl-theme-primary);--dv2-soft:var(--kvl-theme-soft);--dv2-light:#d8c7ed;--dv2-line:#e0dbea;font-family:Arial,'Noto Sans KR','Malgun Gothic',sans-serif!important}
+body.kvl-domestic-home-v2[data-kvl-presentation="international-home-v2"][data-kvl-gender="women"]{--dv2-accent:#8E315E;--dv2-soft:#FFF1F6;--dv2-light:#E7A8C2;--dv2-line:#ead8e1}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-main,body[data-kvl-presentation="international-home-v2"] .kvl1180-main *{font-family:Arial,'Noto Sans KR','Malgun Gothic',sans-serif!important;box-sizing:border-box}
+body[data-kvl-presentation="international-home-v2"] .dv2-team-tile b,body[data-kvl-presentation="international-home-v2"] .kvl1180-slot-copy strong,body[data-kvl-presentation="international-home-v2"] .kvl1180-participant-button strong{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;word-break:keep-all;overflow-wrap:anywhere}
+body[data-kvl-presentation="international-home-v2"] .dv2-team-tile img,body[data-kvl-presentation="international-home-v2"] .dv2-champion>img{object-fit:contain!important}
+body[data-kvl-presentation="international-home-v2"] [data-kvl-section="qualifications"]{margin-bottom:28px!important}
+body[data-kvl-presentation="international-home-v2"] [data-kvl-section="qualifications"] .kvl1180-section-head{margin-bottom:16px!important}
+body[data-kvl-presentation="international-home-v2"] [data-kvl-section="qualifications"] .kvl1180-section-head>p{white-space:normal!important;line-height:1.6!important}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake{border-radius:12px!important;box-shadow:none!important;min-width:0!important;padding:22px!important}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake h3{font-size:21px!important;line-height:1.4!important;white-space:normal!important;word-break:keep-all}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake>p{font-size:15px!important;line-height:1.85!important;white-space:normal!important;word-break:keep-all}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake-confirmed span{line-height:1.8!important;white-space:normal!important;word-break:keep-all}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;overflow:visible!important}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake-confirmed{position:static!important;display:grid!important;gap:4px!important;margin-top:16px!important;padding-top:12px!important;font-size:13px!important;line-height:1.6!important}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake-confirmed span{text-align:left!important;font-weight:700!important}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-stake-foot{position:static!important;margin-top:auto!important;padding-top:14px!important;font-size:12px!important;line-height:1.6!important}
+body[data-kvl-presentation="international-home-v2"] :is(.kvl1180-score,.kvl1180-team-score,.kvl1180-set-scores,.kvl1180-set-scores span,.kvl1180-match-sets,.dv2-match-teams>strong,.dv2-setline){color:#4b5563!important}
+body[data-kvl-presentation="international-home-v2"] :is(#schedule,#team-results) .kvl1180-score{color:#4b5563!important}
+body[data-kvl-presentation="international-home-v2"] #schedule button[data-stage].is-active{background:var(--dv2-accent)!important;border-color:var(--dv2-accent)!important;color:#fff!important}
+body[data-kvl-presentation="international-home-v2"] #knockout :is(.kvl1180-team-score,.kvl1180-match-sets){color:#4b5563!important}
+body[data-kvl-presentation="international-home-v2"] #knockout .kvl1180-round-title{background:var(--dv2-accent)!important;color:#fff!important}
+body[data-kvl-presentation="international-home-v2"] #knockout .kvl1180-bracket-team.is-winner .kvl1180-bracket-copy strong,body[data-kvl-presentation="international-home-v2"] #knockout .kvl1180-bracket-team.is-winner .kvl1180-bracket-copy a{color:var(--dv2-accent)!important}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-korean a{color:var(--dv2-accent)!important;text-decoration:underline!important;text-underline-offset:3px}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-table{overflow-x:auto!important;max-width:100%}
+body[data-kvl-presentation="international-home-v2"] .kvl1180-combined-table{overflow-x:auto!important;max-width:100%}
+@media(max-width:680px){
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-stake{padding:20px!important}
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-stake h3{font-size:20px!important}
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-stake>p{font-size:14px!important}
+ body[data-kvl-presentation="international-home-v2"] [data-kvl-section="qualifications"] .kvl1180-section-head{display:block!important}
+ body[data-kvl-presentation="international-home-v2"] [data-kvl-section="qualifications"] .kvl1180-section-head>p{margin-top:8px!important;max-width:100%!important;font-size:12px!important}
+ body[data-kvl-presentation="international-home-v2"] #schedule .kvl1180-slot-copy strong,body[data-kvl-presentation="international-home-v2"] #team-results .kvl1180-slot-copy strong{font-size:15px!important}
+ body[data-kvl-presentation="international-home-v2"] :is(#schedule,#team-results) .kvl1180-side.is-left{grid-template-columns:32px minmax(0,1fr)!important;gap:5px!important}
+ body[data-kvl-presentation="international-home-v2"] :is(#schedule,#team-results) .kvl1180-side.is-right{grid-template-columns:minmax(0,1fr) 32px!important;gap:5px!important}
+ body[data-kvl-presentation="international-home-v2"] :is(#schedule,#team-results) .kvl1180-inline-logo{width:32px!important;min-width:32px!important;max-width:32px!important;height:26px!important;padding:0!important;border-radius:3px!important}
+ body[data-kvl-presentation="international-home-v2"] :is(#schedule,#team-results) .kvl1180-slot-copy strong{font-size:14px!important}
+ body[data-kvl-presentation="international-home-v2"] :is(#schedule,#team-results) .kvl1180-slot-copy a{white-space:normal!important;word-break:keep-all!important;overflow-wrap:anywhere!important;overflow:visible!important;text-overflow:clip!important}
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-table{display:block!important}
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-table-head,body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-row{display:grid!important;grid-template-columns:45px 170px 130px 45px 95px 60px 130px 45px!important;gap:8px!important;min-width:900px!important;padding:12px!important;align-items:center!important}
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-row>span{grid-area:auto!important;display:block!important;font-size:13px!important}
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-row>span:before{display:none!important}
+ body[data-kvl-presentation="international-home-v2"] .kvl1180-roster-row [data-player-action-slot]{display:none!important}
+}

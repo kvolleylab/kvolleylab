@@ -16,7 +16,10 @@
       "groupsKpiUnit": "경기",
       "knockoutKpi": "파이널 진출",
       "standingsTitle": "예선순위",
-      "standingsEyebrow": "PRELIMINARY STANDINGS"
+      "standingsEyebrow": "PRELIMINARY STANDINGS",
+      "participantsTitle": "참가국",
+      "rostersTab": "참가국·선수명단",
+      "knockoutTab": "대진·최종순위"
     },
     "calendar": true,
     "schedule": {
@@ -31,7 +34,11 @@
     },
     "standings": {
       "mode": "single-league",
-      "title": "예선 종합순위"
+      "title": "예선 종합순위",
+      "showStatus": false,
+      "statusLabels": {
+        "host-qualified": "개최국"
+      }
     },
     "knockout": {
       "mode": "bracket-8",
@@ -39,10 +46,41 @@
     },
     "participants": {
       "mode": "flat",
-      "groupLabel": "VNL 2026 참가국"
+      "groupLabel": "VNL 2026 참가국",
+      "linkMode": "team-roster",
+      "sort": "name-ko",
+      "searchLabels": {
+        "label": "참가국 검색",
+        "placeholder": "국가명 검색",
+        "sortNote": "국가명 가나다순",
+        "emptyMessage": "검색한 국가가 없습니다."
+      }
     },
     "roster": {
       "mode": "full"
+    },
+    "presentation": "international-home-v2",
+    "heroPresentation": "preserve",
+    "meaningPlacement": "before-calendar",
+    "divisionLabel": "남자부",
+    "hubUrl": "competition.html",
+    "hubCategoryLabel": "국제대회",
+    "hubLabel": "VNL",
+    "overviewMetrics": {
+      "scheduleLabel": "전체 일정",
+      "third": "qualifiers",
+      "teamUnit": "개국",
+      "iconStyle": "solid"
+    },
+    "teamResults": {
+      "summary": "record",
+      "preliminaryStages": [
+        "예선"
+      ]
+    },
+    "genderLinks": {
+      "men": "/competition-engine.html?competition=vnl-men-2026",
+      "women": "/competition-engine.html?competition=vnl-women-2026"
     }
   },
   "hero": {

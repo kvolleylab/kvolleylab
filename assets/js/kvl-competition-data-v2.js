@@ -76,10 +76,11 @@ function validate(d,{production=false}={}){
 }
 function normalize(source){
  const d=JSON.parse(JSON.stringify(source));
+ if(d.structure?.genderLinks)d.genderLinks={...d.genderLinks,...d.structure.genderLinks};
  const side=t=>{const p=participant(d,t);return p?{...p,...t,code:p.code}:t;};
  d.matches=list(d.matches).map(m=>({...m,home:side(m.home),away:side(m.away),localTimeLabel:localTimeLabel(m),score:m.score?{...m.score,sets:list(m.score.sets).map(pair).filter(Boolean)}:null}));
  const standings=d.standings&&typeof d.standings==='object'?d.standings:{};
- const standingRow=r=>r&&typeof r==='object'?{...r,team:side(r.team)}:r;
+ const standingRow=r=>r&&typeof r==='object'?{...r,team:side(r.team),...(d.structure?.standings?.statusLabels?.[r.status]?{statusLabel:d.structure.standings.statusLabels[r.status]}:{})}:r;
  d.standings={...standings,rows:list(standings.rows).map(standingRow),combinedRows:list(standings.combinedRows).map(standingRow),pools:list(standings.pools).map(p=>({...p,rows:list(p?.rows).map(standingRow)}))};
  d.participants=list(d.participants);d.resources=list(d.resources);d.finalRanking=list(d.finalRanking);d.qualifications=list(d.qualifications);d.rosters=d.rosters||{};
  return d;

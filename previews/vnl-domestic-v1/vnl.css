@@ -1,0 +1,48 @@
+/* VNL identity and country-specific adjustments on the unchanged domestic layout. */
+#kvl-vnl-domestic-preview{--dv2-accent:#5b3a8e;--dv2-soft:#f3effa;--dv2-light:#d8c7ed;--dv2-line:#e0dbea;font-family:Arial,'Noto Sans KR','Malgun Gothic',sans-serif!important}
+#kvl-vnl-domestic-preview .kvl1180-main,#kvl-vnl-domestic-preview .kvl1180-main *{font-family:Arial,'Noto Sans KR','Malgun Gothic',sans-serif!important;box-sizing:border-box}
+#kvl-vnl-domestic-preview .dv2-utility{gap:10px}
+#kvl-vnl-domestic-preview .vnl-preview-tag{margin-left:auto;white-space:nowrap;font-size:10px;color:#6d5a88}
+#kvl-vnl-domestic-preview .dv2-utility>a{order:3}
+#kvl-vnl-domestic-preview .dv2-team-tile b,#kvl-vnl-domestic-preview .kvl1180-slot-copy strong,#kvl-vnl-domestic-preview .kvl1180-participant-button strong{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;word-break:keep-all;overflow-wrap:anywhere}
+#kvl-vnl-domestic-preview .dv2-team-tile img,#kvl-vnl-domestic-preview .dv2-champion>img{object-fit:contain!important}
+#kvl-vnl-domestic-preview [data-kvl-section="qualifications"]{margin-bottom:28px!important}
+#kvl-vnl-domestic-preview [data-kvl-section="qualifications"] .kvl1180-section-head{margin-bottom:16px!important}
+#kvl-vnl-domestic-preview [data-kvl-section="qualifications"] .kvl1180-section-head>p{white-space:normal!important;line-height:1.6!important}
+#kvl-vnl-domestic-preview .kvl1180-stake{border-radius:12px!important;box-shadow:none!important;min-width:0!important;padding:22px!important}
+#kvl-vnl-domestic-preview .kvl1180-stake h3{font-size:21px!important;line-height:1.4!important;white-space:normal!important;word-break:keep-all}
+#kvl-vnl-domestic-preview .kvl1180-stake>p{font-size:15px!important;line-height:1.85!important;white-space:normal!important;word-break:keep-all}
+#kvl-vnl-domestic-preview .kvl1180-stake-confirmed span{line-height:1.8!important;white-space:normal!important;word-break:keep-all}
+#kvl-vnl-domestic-preview .kvl1180-stake{display:flex!important;flex-direction:column!important;height:auto!important;min-height:0!important;overflow:visible!important}
+#kvl-vnl-domestic-preview .kvl1180-stake-confirmed{position:static!important;display:grid!important;gap:4px!important;margin-top:16px!important;padding-top:12px!important;font-size:13px!important;line-height:1.6!important}
+#kvl-vnl-domestic-preview .kvl1180-stake-confirmed span{text-align:left!important;font-weight:700!important}
+#kvl-vnl-domestic-preview .kvl1180-stake-foot{position:static!important;margin-top:auto!important;padding-top:14px!important;font-size:12px!important;line-height:1.6!important}
+#kvl-vnl-domestic-preview :is(.kvl1180-score,.kvl1180-team-score,.kvl1180-set-scores,.kvl1180-set-scores span,.kvl1180-match-sets,.dv2-match-teams>strong,.dv2-setline){color:#4b5563!important}
+#kvl-vnl-domestic-preview :is(#schedule,#team-results) .kvl1180-score{color:#4b5563!important}
+#kvl-vnl-domestic-preview #schedule button[data-stage].is-active{background:#5b3a8e!important;border-color:#5b3a8e!important;color:#fff!important}
+#kvl-vnl-domestic-preview #knockout :is(.kvl1180-team-score,.kvl1180-match-sets){color:#4b5563!important}
+#kvl-vnl-domestic-preview #knockout .kvl1180-round-title{background:#5b3a8e!important;color:#fff!important}
+#kvl-vnl-domestic-preview #knockout .kvl1180-bracket-team.is-winner .kvl1180-bracket-copy strong,#kvl-vnl-domestic-preview #knockout .kvl1180-bracket-team.is-winner .kvl1180-bracket-copy a{color:#5b3a8e!important}
+#kvl-vnl-domestic-preview .kvl1180-roster-korean a{color:#5b3a8e!important;text-decoration:underline!important;text-underline-offset:3px}
+#kvl-vnl-domestic-preview .kvl1180-roster-table{overflow-x:auto!important;max-width:100%}
+#kvl-vnl-domestic-preview .kvl1180-combined-table{overflow-x:auto!important;max-width:100%}
+#kvl-vnl-domestic-preview .vnl-preview-footer{text-align:center;padding:24px;font-size:11px;color:#758397}
+@media(max-width:680px){
+ #kvl-vnl-domestic-preview .vnl-preview-tag{display:none}
+ #kvl-vnl-domestic-preview .kvl1180-stake{padding:20px!important}
+ #kvl-vnl-domestic-preview .kvl1180-stake h3{font-size:20px!important}
+ #kvl-vnl-domestic-preview .kvl1180-stake>p{font-size:14px!important}
+ #kvl-vnl-domestic-preview [data-kvl-section="qualifications"] .kvl1180-section-head{display:block!important}
+ #kvl-vnl-domestic-preview [data-kvl-section="qualifications"] .kvl1180-section-head>p{margin-top:8px!important;max-width:100%!important;font-size:12px!important}
+ #kvl-vnl-domestic-preview #schedule .kvl1180-slot-copy strong,#kvl-vnl-domestic-preview #team-results .kvl1180-slot-copy strong{font-size:15px!important}
+ #kvl-vnl-domestic-preview :is(#schedule,#team-results) .kvl1180-side.is-left{grid-template-columns:32px minmax(0,1fr)!important;gap:5px!important}
+ #kvl-vnl-domestic-preview :is(#schedule,#team-results) .kvl1180-side.is-right{grid-template-columns:minmax(0,1fr) 32px!important;gap:5px!important}
+ #kvl-vnl-domestic-preview :is(#schedule,#team-results) .kvl1180-inline-logo{width:32px!important;min-width:32px!important;max-width:32px!important;height:26px!important;padding:0!important;border-radius:3px!important}
+ #kvl-vnl-domestic-preview :is(#schedule,#team-results) .kvl1180-slot-copy strong{font-size:14px!important}
+ #kvl-vnl-domestic-preview :is(#schedule,#team-results) .kvl1180-slot-copy a{white-space:normal!important;word-break:keep-all!important;overflow-wrap:anywhere!important;overflow:visible!important;text-overflow:clip!important}
+ #kvl-vnl-domestic-preview .kvl1180-roster-table{display:block!important}
+ #kvl-vnl-domestic-preview .kvl1180-roster-table-head,#kvl-vnl-domestic-preview .kvl1180-roster-row{display:grid!important;grid-template-columns:45px 170px 130px 45px 95px 60px 130px 45px!important;gap:8px!important;min-width:900px!important;padding:12px!important;align-items:center!important}
+ #kvl-vnl-domestic-preview .kvl1180-roster-row>span{grid-area:auto!important;display:block!important;font-size:13px!important}
+ #kvl-vnl-domestic-preview .kvl1180-roster-row>span:before{display:none!important}
+ #kvl-vnl-domestic-preview .kvl1180-roster-row [data-player-action-slot]{display:none!important}
+}
