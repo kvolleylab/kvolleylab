@@ -1,6 +1,6 @@
 {
-  "status": "upcoming",
-  "stageLabel": "남자부 · 10월 31일 개막",
+  "status": "active",
+  "stageLabel": "남자부 · 정규리그 진행 중",
   "dateLabel": "2026.10.31 ~ 2027.04.22",
   "locationLabel": "대한민국 · 전국",
   "venueLabel": "각 구단 홈경기장",
@@ -11,10 +11,9 @@
   "matchCount": 126,
   "knockoutTeamCount": 4,
   "upcomingOverviewNote": "정규리그 개막 전 · 공식 일정 126경기 반영 완료",
-  "scheduleNote": "한국시간(KST) · 남자부 정규리그 126경기 · 1~6라운드",
-  "standingsNote": "시즌 개막 전 · 경기 결과 반영 후 정규리그 순위를 업데이트합니다.",
-  "standingsStatus": "시즌 시작 전",
-  "standingsRule": "정규리그 순위는 KOVO 공식 순위 산정 기준에 따라 업데이트합니다.",
+  "scheduleNote": "KOVO 공식 정규리그 일정·종료 경기 결과 기준 · 경기 시각은 한국시간(KST)입니다.",
+  "standingsStatus": "정규리그 진행 중",
+  "standingsRule": "KOVO 공식 순위 · 종료 경기의 승점·승패·세트 및 점수 합계 대조",
   "meaning": {
     "eyebrow": "PRO V-LEAGUE",
     "title": "2026-27 프로배구 시즌",
@@ -118,7 +117,30 @@
         "code": "HDC"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "final",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "scoreVerification": true,
+      "officialSourceKey": "023:001:MALE:1",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-002",
@@ -133,8 +155,35 @@
       "away": {
         "code": "SFB"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "final",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 24,
+            "away": 26
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 38,
+            "away": 36
+          },
+          {
+            "home": 19,
+            "away": 25
+          }
+        ]
+      },
+      "scoreVerification": true,
+      "officialSourceKey": "023:001:MALE:3",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-003",
@@ -150,7 +199,11 @@
         "code": "WRC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:5",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-004",
@@ -165,8 +218,12 @@
       "away": {
         "code": "OKF"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:7",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-005",
@@ -182,7 +239,11 @@
         "code": "HDC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:9",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-006",
@@ -198,7 +259,11 @@
         "code": "KEP"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:11",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-007",
@@ -214,7 +279,11 @@
         "code": "WRC"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:13",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-008",
@@ -230,7 +299,11 @@
         "code": "KBI"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:15",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-009",
@@ -246,7 +319,11 @@
         "code": "KEP"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:17",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-010",
@@ -262,7 +339,11 @@
         "code": "KAL"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:19",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-011",
@@ -278,7 +359,11 @@
         "code": "HDC"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:21",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-012",
@@ -294,7 +379,11 @@
         "code": "KBI"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:23",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-013",
@@ -310,7 +399,11 @@
         "code": "SFB"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:25",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-014",
@@ -326,7 +419,11 @@
         "code": "HDC"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:27",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-015",
@@ -342,7 +439,11 @@
         "code": "OKF"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:29",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-016",
@@ -358,7 +459,11 @@
         "code": "WRC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:31",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-017",
@@ -373,8 +478,12 @@
       "away": {
         "code": "KAL"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:33",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-018",
@@ -390,7 +499,11 @@
         "code": "KEP"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:35",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-019",
@@ -406,7 +519,11 @@
         "code": "OKF"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:37",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-020",
@@ -422,7 +539,11 @@
         "code": "KBI"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:39",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-021",
@@ -438,7 +559,11 @@
         "code": "KAL"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:41",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-022",
@@ -454,7 +579,11 @@
         "code": "HDC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:43",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-023",
@@ -470,7 +599,11 @@
         "code": "SFB"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:45",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-024",
@@ -486,7 +619,11 @@
         "code": "KBI"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:47",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-025",
@@ -502,7 +639,11 @@
         "code": "KEP"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:49",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-026",
@@ -518,7 +659,11 @@
         "code": "HDC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:51",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-027",
@@ -533,8 +678,12 @@
       "away": {
         "code": "WRC"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:53",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-028",
@@ -550,7 +699,11 @@
         "code": "OKF"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:55",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-029",
@@ -566,7 +719,11 @@
         "code": "KEP"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:57",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-030",
@@ -582,7 +739,11 @@
         "code": "KBI"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:59",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-031",
@@ -598,7 +759,11 @@
         "code": "OKF"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:61",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-032",
@@ -614,7 +779,11 @@
         "code": "KAL"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:63",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-033",
@@ -629,8 +798,12 @@
       "away": {
         "code": "KEP"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:65",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-034",
@@ -646,7 +819,11 @@
         "code": "SFB"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:67",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-035",
@@ -662,7 +839,11 @@
         "code": "WRC"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:69",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-036",
@@ -677,8 +858,12 @@
       "away": {
         "code": "HDC"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:71",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-037",
@@ -694,7 +879,11 @@
         "code": "SFB"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:73",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-038",
@@ -710,7 +899,11 @@
         "code": "OKF"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:75",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-039",
@@ -726,7 +919,11 @@
         "code": "WRC"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:77",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-040",
@@ -742,7 +939,11 @@
         "code": "KBI"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:79",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-041",
@@ -758,7 +959,11 @@
         "code": "KAL"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:81",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-042",
@@ -774,7 +979,11 @@
         "code": "WRC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:83",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-043",
@@ -790,7 +999,11 @@
         "code": "KBI"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:85",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-044",
@@ -806,7 +1019,11 @@
         "code": "OKF"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:87",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-045",
@@ -822,7 +1039,11 @@
         "code": "HDC"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:89",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-046",
@@ -838,7 +1059,11 @@
         "code": "KEP"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:91",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-047",
@@ -853,8 +1078,12 @@
       "away": {
         "code": "SFB"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:93",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-048",
@@ -870,7 +1099,11 @@
         "code": "KAL"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:95",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-049",
@@ -886,7 +1119,11 @@
         "code": "KEP"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:97",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-050",
@@ -902,7 +1139,11 @@
         "code": "WRC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:99",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-051",
@@ -917,8 +1158,12 @@
       "away": {
         "code": "KAL"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:101",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-052",
@@ -934,7 +1179,11 @@
         "code": "OKF"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:103",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-053",
@@ -950,7 +1199,11 @@
         "code": "HDC"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:105",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-054",
@@ -966,7 +1219,11 @@
         "code": "SFB"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:107",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-055",
@@ -982,7 +1239,11 @@
         "code": "KBI"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:109",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-056",
@@ -998,7 +1259,11 @@
         "code": "WRC"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:111",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-057",
@@ -1014,7 +1279,11 @@
         "code": "SFB"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:113",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-058",
@@ -1030,7 +1299,11 @@
         "code": "KAL"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:115",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-059",
@@ -1046,7 +1319,11 @@
         "code": "KBI"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:117",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-060",
@@ -1062,7 +1339,11 @@
         "code": "HDC"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:119",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-061",
@@ -1078,7 +1359,11 @@
         "code": "KEP"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:121",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-062",
@@ -1094,7 +1379,11 @@
         "code": "KAL"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:123",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-063",
@@ -1109,8 +1398,12 @@
       "away": {
         "code": "OKF"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:125",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-064",
@@ -1126,7 +1419,11 @@
         "code": "KAL"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:127",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-065",
@@ -1142,7 +1439,11 @@
         "code": "KBI"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:129",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-066",
@@ -1158,7 +1459,11 @@
         "code": "SFB"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:131",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-067",
@@ -1174,7 +1479,11 @@
         "code": "WRC"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:133",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-068",
@@ -1189,8 +1498,12 @@
       "away": {
         "code": "HDC"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:135",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-069",
@@ -1206,7 +1519,11 @@
         "code": "SFB"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:137",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-070",
@@ -1222,7 +1539,11 @@
         "code": "KEP"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:139",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-071",
@@ -1238,7 +1559,11 @@
         "code": "OKF"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:141",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-072",
@@ -1254,7 +1579,11 @@
         "code": "HDC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:143",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-073",
@@ -1269,8 +1598,12 @@
       "away": {
         "code": "WRC"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:145",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-074",
@@ -1286,7 +1619,11 @@
         "code": "KAL"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:147",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-075",
@@ -1302,7 +1639,11 @@
         "code": "OKF"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:149",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-076",
@@ -1318,7 +1659,11 @@
         "code": "KBI"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:151",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-077",
@@ -1334,7 +1679,11 @@
         "code": "KEP"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:153",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-078",
@@ -1350,7 +1699,11 @@
         "code": "SFB"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:155",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-079",
@@ -1366,7 +1719,11 @@
         "code": "KBI"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:157",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-080",
@@ -1382,7 +1739,11 @@
         "code": "HDC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:159",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-081",
@@ -1398,7 +1759,11 @@
         "code": "OKF"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:161",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-082",
@@ -1414,7 +1779,11 @@
         "code": "KAL"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:163",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-083",
@@ -1429,8 +1798,12 @@
       "away": {
         "code": "KEP"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:165",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-084",
@@ -1446,7 +1819,11 @@
         "code": "WRC"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:167",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-085",
@@ -1462,7 +1839,11 @@
         "code": "SFB"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:169",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-086",
@@ -1477,8 +1858,12 @@
       "away": {
         "code": "OKF"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:171",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-087",
@@ -1494,7 +1879,11 @@
         "code": "HDC"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:173",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-088",
@@ -1510,7 +1899,11 @@
         "code": "WRC"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:175",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-089",
@@ -1526,7 +1919,11 @@
         "code": "KBI"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:177",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-090",
@@ -1542,7 +1939,11 @@
         "code": "SFB"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:179",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-091",
@@ -1558,7 +1959,11 @@
         "code": "KAL"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:181",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-092",
@@ -1574,7 +1979,11 @@
         "code": "OKF"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:183",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-093",
@@ -1590,7 +1999,11 @@
         "code": "KBI"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:185",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-094",
@@ -1606,7 +2019,11 @@
         "code": "WRC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:187",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-095",
@@ -1622,7 +2039,11 @@
         "code": "KEP"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:189",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-096",
@@ -1638,7 +2059,11 @@
         "code": "HDC"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:191",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-097",
@@ -1653,8 +2078,12 @@
       "away": {
         "code": "SFB"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:193",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-098",
@@ -1670,7 +2099,11 @@
         "code": "WRC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:195",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-099",
@@ -1686,7 +2119,11 @@
         "code": "KAL"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:197",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-100",
@@ -1702,7 +2139,11 @@
         "code": "KBI"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:199",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-101",
@@ -1718,7 +2159,11 @@
         "code": "KEP"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:201",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-102",
@@ -1734,7 +2179,11 @@
         "code": "OKF"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:203",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-103",
@@ -1749,8 +2198,12 @@
       "away": {
         "code": "KAL"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:205",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-104",
@@ -1766,7 +2219,11 @@
         "code": "HDC"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:207",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-105",
@@ -1782,7 +2239,11 @@
         "code": "KEP"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:209",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-106",
@@ -1798,7 +2259,11 @@
         "code": "WRC"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:211",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-107",
@@ -1814,7 +2279,11 @@
         "code": "KBI"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:213",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-108",
@@ -1830,7 +2299,11 @@
         "code": "SFB"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:215",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-109",
@@ -1846,7 +2319,11 @@
         "code": "KAL"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:217",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-110",
@@ -1861,8 +2338,12 @@
       "away": {
         "code": "WRC"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:219",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-111",
@@ -1878,7 +2359,11 @@
         "code": "SFB"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:221",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-112",
@@ -1894,7 +2379,11 @@
         "code": "KEP"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:223",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-113",
@@ -1910,7 +2399,11 @@
         "code": "KBI"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:225",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-114",
@@ -1926,7 +2419,11 @@
         "code": "SFB"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:227",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-115",
@@ -1942,7 +2439,11 @@
         "code": "OKF"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:229",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-116",
@@ -1958,7 +2459,11 @@
         "code": "KAL"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:231",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-117",
@@ -1973,8 +2478,12 @@
       "away": {
         "code": "HDC"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:233",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-118",
@@ -1990,7 +2499,11 @@
         "code": "OKF"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:235",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-119",
@@ -2006,7 +2519,11 @@
         "code": "KAL"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:237",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-120",
@@ -2021,8 +2538,12 @@
       "away": {
         "code": "KEP"
       },
-      "venueLabel": "평택 이충문화체육센터",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "평택이충문화체육관",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:239",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-121",
@@ -2038,7 +2559,11 @@
         "code": "WRC"
       },
       "venueLabel": "천안 유관순체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:241",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-122",
@@ -2054,7 +2579,11 @@
         "code": "SFB"
       },
       "venueLabel": "부산 강서체육관",
-      "localTimeLabel": "한국 현지 14:00 KST"
+      "localTimeLabel": "한국 현지 14:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:243",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-123",
@@ -2070,7 +2599,11 @@
         "code": "HDC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:245",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-124",
@@ -2086,7 +2619,11 @@
         "code": "OKF"
       },
       "venueLabel": "인천 계양체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:247",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-125",
@@ -2102,7 +2639,11 @@
         "code": "KBI"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:249",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-M-126",
@@ -2118,13 +2659,17 @@
         "code": "KEP"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:MALE:251",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     }
   ],
   "standings": {
     "rows": [
       {
-        "rank": null,
+        "rank": 1,
         "team": {
           "code": "KAL",
           "name": "대한항공",
@@ -2132,15 +2677,62 @@
           "en": "KAL"
         },
         "poolId": "LEAGUE",
-        "wins": 0,
+        "games": 1,
+        "wins": 1,
         "losses": 0,
-        "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "points": 3,
+        "setWins": 3,
+        "setLosses": 0,
+        "pointsFor": 75,
+        "pointsAgainst": 67,
+        "setRatio": "MAX",
+        "pointRatio": "1.119",
+        "statusLabel": "1위"
       },
       {
-        "rank": null,
+        "rank": 2,
+        "team": {
+          "code": "SFB",
+          "name": "삼성화재",
+          "fullName": "삼성화재",
+          "en": "SFB"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "points": 3,
+        "setWins": 3,
+        "setLosses": 1,
+        "pointsFor": 112,
+        "pointsAgainst": 104,
+        "setRatio": "3.000",
+        "pointRatio": "1.077",
+        "statusLabel": "2위"
+      },
+      {
+        "rank": 3,
+        "team": {
+          "code": "KBI",
+          "name": "KB손해보험",
+          "fullName": "KB손해보험",
+          "en": "KBI"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "points": 0,
+        "setWins": 1,
+        "setLosses": 3,
+        "pointsFor": 104,
+        "pointsAgainst": 112,
+        "setRatio": "0.333",
+        "pointRatio": "0.929",
+        "statusLabel": "3위"
+      },
+      {
+        "rank": 4,
         "team": {
           "code": "HDC",
           "name": "현대캐피탈",
@@ -2148,12 +2740,17 @@
           "en": "HDC"
         },
         "poolId": "LEAGUE",
+        "games": 1,
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "setWins": 0,
+        "setLosses": 3,
+        "pointsFor": 67,
+        "pointsAgainst": 75,
+        "setRatio": "0.000",
+        "pointRatio": "0.893",
+        "statusLabel": "4위"
       },
       {
         "rank": null,
@@ -2164,28 +2761,17 @@
           "en": "WRC"
         },
         "poolId": "LEAGUE",
+        "games": 0,
         "wins": 0,
         "losses": 0,
         "points": 0,
+        "setWins": 0,
+        "setLosses": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
         "setRatio": "-",
         "pointRatio": "-",
-        "statusLabel": "개막 전"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "KBI",
-          "name": "KB손해보험",
-          "fullName": "KB손해보험",
-          "en": "KBI"
-        },
-        "poolId": "LEAGUE",
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "statusLabel": "경기 전"
       },
       {
         "rank": null,
@@ -2196,12 +2782,17 @@
           "en": "KEP"
         },
         "poolId": "LEAGUE",
+        "games": 0,
         "wins": 0,
         "losses": 0,
         "points": 0,
+        "setWins": 0,
+        "setLosses": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
         "setRatio": "-",
         "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "statusLabel": "경기 전"
       },
       {
         "rank": null,
@@ -2212,28 +2803,17 @@
           "en": "OKF"
         },
         "poolId": "LEAGUE",
+        "games": 0,
         "wins": 0,
         "losses": 0,
         "points": 0,
+        "setWins": 0,
+        "setLosses": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
         "setRatio": "-",
         "pointRatio": "-",
-        "statusLabel": "개막 전"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "SFB",
-          "name": "삼성화재",
-          "fullName": "삼성화재",
-          "en": "SFB"
-        },
-        "poolId": "LEAGUE",
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "statusLabel": "경기 전"
       }
     ]
   },
@@ -2301,5 +2881,15 @@
         "teamCode": "SFB"
       }
     ]
+  },
+  "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 2/126경기 종료 · 2026-11-01 21:21 KST 반영",
+  "updatedAt": "2026-11-01T12:21:03+00:00",
+  "automation": {
+    "version": 1,
+    "source": "KOVO_PUBLIC_STAT_API",
+    "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
+    "regularSeasonOnly": true,
+    "completedMatches": 2
   }
 }

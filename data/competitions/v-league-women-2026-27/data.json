@@ -1,6 +1,6 @@
 {
-  "status": "upcoming",
-  "stageLabel": "여자부 · 10월 31일 개막",
+  "status": "active",
+  "stageLabel": "여자부 · 정규리그 진행 중",
   "dateLabel": "2026.10.31 ~ 2027.04.22",
   "locationLabel": "대한민국 · 전국",
   "venueLabel": "각 구단 홈경기장",
@@ -11,10 +11,9 @@
   "matchCount": 126,
   "knockoutTeamCount": 4,
   "upcomingOverviewNote": "정규리그 개막 전 · 공식 일정 126경기 반영 완료",
-  "scheduleNote": "한국시간(KST) · 여자부 정규리그 126경기 · 1~6라운드",
-  "standingsNote": "시즌 개막 전 · 경기 결과 반영 후 정규리그 순위를 업데이트합니다.",
-  "standingsStatus": "시즌 시작 전",
-  "standingsRule": "정규리그 순위는 KOVO 공식 순위 산정 기준에 따라 업데이트합니다.",
+  "scheduleNote": "KOVO 공식 정규리그 일정·종료 경기 결과 기준 · 경기 시각은 한국시간(KST)입니다.",
+  "standingsStatus": "정규리그 진행 중",
+  "standingsRule": "KOVO 공식 순위 · 종료 경기의 승점·승패·세트 및 점수 합계 대조",
   "meaning": {
     "eyebrow": "PRO V-LEAGUE",
     "title": "2026-27 프로배구 시즌",
@@ -118,7 +117,30 @@
         "code": "KEX"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "final",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "scoreVerification": true,
+      "officialSourceKey": "023:001:FEMALE:2",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-002",
@@ -134,7 +156,30 @@
         "code": "SOO"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "final",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 22
+          }
+        ]
+      },
+      "scoreVerification": true,
+      "officialSourceKey": "023:001:FEMALE:4",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-003",
@@ -150,7 +195,11 @@
         "code": "HHC"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:6",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-004",
@@ -166,7 +215,11 @@
         "code": "RSP"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:8",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-005",
@@ -181,8 +234,12 @@
       "away": {
         "code": "KEX"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:10",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-006",
@@ -198,7 +255,11 @@
         "code": "GSC"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:12",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-007",
@@ -214,7 +275,11 @@
         "code": "HHC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:14",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-008",
@@ -230,7 +295,11 @@
         "code": "HPS"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:16",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-009",
@@ -245,8 +314,12 @@
       "away": {
         "code": "IBK"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:18",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-010",
@@ -262,7 +335,11 @@
         "code": "GSC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:20",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-011",
@@ -278,7 +355,11 @@
         "code": "KEX"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:22",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-012",
@@ -294,7 +375,11 @@
         "code": "HPS"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:24",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-013",
@@ -310,7 +395,11 @@
         "code": "SOO"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:26",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-014",
@@ -326,7 +415,11 @@
         "code": "KEX"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:28",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-015",
@@ -342,7 +435,11 @@
         "code": "RSP"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:30",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-016",
@@ -357,8 +454,12 @@
       "away": {
         "code": "HHC"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:32",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-017",
@@ -374,7 +475,11 @@
         "code": "GSC"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:34",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-018",
@@ -390,7 +495,11 @@
         "code": "IBK"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:36",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-019",
@@ -405,8 +514,12 @@
       "away": {
         "code": "RSP"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:38",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-020",
@@ -422,7 +535,11 @@
         "code": "HPS"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:40",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-021",
@@ -438,7 +555,11 @@
         "code": "GSC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:42",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-022",
@@ -454,7 +575,11 @@
         "code": "KEX"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:44",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-023",
@@ -470,7 +595,11 @@
         "code": "SOO"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:46",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-024",
@@ -486,7 +615,11 @@
         "code": "GSC"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:48",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-025",
@@ -502,7 +635,11 @@
         "code": "IBK"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:50",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-026",
@@ -517,8 +654,12 @@
       "away": {
         "code": "KEX"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:52",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-027",
@@ -534,7 +675,11 @@
         "code": "HHC"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:54",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-028",
@@ -550,7 +695,11 @@
         "code": "RSP"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:56",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-029",
@@ -566,7 +715,11 @@
         "code": "IBK"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:58",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-030",
@@ -581,8 +734,12 @@
       "away": {
         "code": "HPS"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:60",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-031",
@@ -598,7 +755,11 @@
         "code": "HHC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:62",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-032",
@@ -614,7 +775,11 @@
         "code": "GSC"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:64",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-033",
@@ -630,7 +795,11 @@
         "code": "IBK"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:66",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-034",
@@ -646,7 +815,11 @@
         "code": "SOO"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:68",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-035",
@@ -662,7 +835,11 @@
         "code": "HHC"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:70",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-036",
@@ -678,7 +855,11 @@
         "code": "KEX"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:72",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-037",
@@ -694,7 +875,11 @@
         "code": "SOO"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:74",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-038",
@@ -710,7 +895,11 @@
         "code": "GSC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:76",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-039",
@@ -726,7 +915,11 @@
         "code": "HHC"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:78",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-040",
@@ -742,7 +935,11 @@
         "code": "HPS"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:80",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-041",
@@ -757,8 +954,12 @@
       "away": {
         "code": "GSC"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:82",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-042",
@@ -774,7 +975,11 @@
         "code": "HHC"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:84",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-043",
@@ -790,7 +995,11 @@
         "code": "HPS"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:86",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-044",
@@ -805,8 +1014,12 @@
       "away": {
         "code": "RSP"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:88",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-045",
@@ -822,7 +1035,11 @@
         "code": "KEX"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:90",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-046",
@@ -838,7 +1055,11 @@
         "code": "IBK"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:92",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-047",
@@ -854,7 +1075,11 @@
         "code": "SOO"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:94",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-048",
@@ -870,7 +1095,11 @@
         "code": "GSC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:96",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-049",
@@ -886,7 +1115,11 @@
         "code": "IBK"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:98",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-050",
@@ -901,8 +1134,12 @@
       "away": {
         "code": "HHC"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:100",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-051",
@@ -918,7 +1155,11 @@
         "code": "HPS"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:102",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-052",
@@ -934,7 +1175,11 @@
         "code": "RSP"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:104",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-053",
@@ -950,7 +1195,11 @@
         "code": "KEX"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:106",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-054",
@@ -966,7 +1215,11 @@
         "code": "SOO"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:108",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-055",
@@ -982,7 +1235,11 @@
         "code": "HPS"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:110",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-056",
@@ -998,7 +1255,11 @@
         "code": "RSP"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:112",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-057",
@@ -1014,7 +1275,11 @@
         "code": "SOO"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:114",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-058",
@@ -1030,7 +1295,11 @@
         "code": "IBK"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:116",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-059",
@@ -1046,7 +1315,11 @@
         "code": "HPS"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:118",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-060",
@@ -1062,7 +1335,11 @@
         "code": "KEX"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:120",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-061",
@@ -1077,8 +1354,12 @@
       "away": {
         "code": "IBK"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:122",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-062",
@@ -1094,7 +1375,11 @@
         "code": "GSC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:124",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-063",
@@ -1110,7 +1395,11 @@
         "code": "RSP"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:126",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-064",
@@ -1126,7 +1415,11 @@
         "code": "GSC"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:128",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-065",
@@ -1142,7 +1435,11 @@
         "code": "HPS"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:130",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-066",
@@ -1158,7 +1455,11 @@
         "code": "SOO"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:132",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-067",
@@ -1174,7 +1475,11 @@
         "code": "HHC"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:134",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-068",
@@ -1190,7 +1495,11 @@
         "code": "KEX"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:136",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-069",
@@ -1206,7 +1515,11 @@
         "code": "SOO"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:138",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-070",
@@ -1222,7 +1535,11 @@
         "code": "IBK"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:140",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-071",
@@ -1238,7 +1555,11 @@
         "code": "RSP"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:142",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-072",
@@ -1253,8 +1574,12 @@
       "away": {
         "code": "KEX"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:144",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-073",
@@ -1270,7 +1595,11 @@
         "code": "HHC"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:146",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-074",
@@ -1286,7 +1615,11 @@
         "code": "GSC"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:148",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-075",
@@ -1302,7 +1635,11 @@
         "code": "RSP"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:150",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-076",
@@ -1317,8 +1654,12 @@
       "away": {
         "code": "HPS"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:152",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-077",
@@ -1334,7 +1675,11 @@
         "code": "IBK"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:154",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-078",
@@ -1350,7 +1695,11 @@
         "code": "SOO"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:156",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-079",
@@ -1366,7 +1715,11 @@
         "code": "HPS"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:158",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-080",
@@ -1382,7 +1735,11 @@
         "code": "KEX"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:160",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-081",
@@ -1398,7 +1755,11 @@
         "code": "RSP"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:162",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-082",
@@ -1413,8 +1774,12 @@
       "away": {
         "code": "GSC"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:164",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-083",
@@ -1430,7 +1795,11 @@
         "code": "IBK"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:166",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-084",
@@ -1446,7 +1815,11 @@
         "code": "HHC"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:168",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-085",
@@ -1462,7 +1835,11 @@
         "code": "SOO"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:170",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-086",
@@ -1478,7 +1855,11 @@
         "code": "RSP"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:172",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-087",
@@ -1494,7 +1875,11 @@
         "code": "KEX"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:174",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-088",
@@ -1510,7 +1895,11 @@
         "code": "HHC"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:176",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-089",
@@ -1526,7 +1915,11 @@
         "code": "HPS"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:178",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-090",
@@ -1542,7 +1935,11 @@
         "code": "SOO"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:180",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-091",
@@ -1558,7 +1955,11 @@
         "code": "GSC"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:182",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-092",
@@ -1574,7 +1975,11 @@
         "code": "RSP"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:184",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-093",
@@ -1590,7 +1995,11 @@
         "code": "HPS"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:186",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-094",
@@ -1605,8 +2014,12 @@
       "away": {
         "code": "HHC"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:188",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-095",
@@ -1622,7 +2035,11 @@
         "code": "IBK"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:190",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-096",
@@ -1638,7 +2055,11 @@
         "code": "KEX"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:192",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-097",
@@ -1654,7 +2075,11 @@
         "code": "SOO"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:194",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-098",
@@ -1670,7 +2095,11 @@
         "code": "HHC"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:196",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-099",
@@ -1686,7 +2115,11 @@
         "code": "RSP"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:198",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-100",
@@ -1702,7 +2135,11 @@
         "code": "HPS"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:200",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-101",
@@ -1718,7 +2155,11 @@
         "code": "IBK"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:202",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-102",
@@ -1733,8 +2174,12 @@
       "away": {
         "code": "RSP"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:204",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-103",
@@ -1750,7 +2195,11 @@
         "code": "GSC"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:206",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-104",
@@ -1766,7 +2215,11 @@
         "code": "KEX"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:208",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-105",
@@ -1781,8 +2234,12 @@
       "away": {
         "code": "IBK"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:210",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-106",
@@ -1798,7 +2255,11 @@
         "code": "HHC"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:212",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-107",
@@ -1814,7 +2275,11 @@
         "code": "HPS"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:214",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-108",
@@ -1830,7 +2295,11 @@
         "code": "SOO"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:216",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-109",
@@ -1846,7 +2315,11 @@
         "code": "GSC"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:218",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-110",
@@ -1862,7 +2335,11 @@
         "code": "HHC"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:220",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-111",
@@ -1878,7 +2355,11 @@
         "code": "SOO"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:222",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-112",
@@ -1894,7 +2375,11 @@
         "code": "IBK"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:224",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-113",
@@ -1910,7 +2395,11 @@
         "code": "HPS"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:226",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-114",
@@ -1926,7 +2415,11 @@
         "code": "SOO"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:228",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-115",
@@ -1942,7 +2435,11 @@
         "code": "RSP"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:230",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-116",
@@ -1958,7 +2455,11 @@
         "code": "GSC"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:232",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-117",
@@ -1974,7 +2475,11 @@
         "code": "KEX"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:234",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-118",
@@ -1990,7 +2495,11 @@
         "code": "RSP"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:236",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-119",
@@ -2005,8 +2514,12 @@
       "away": {
         "code": "GSC"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:238",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-120",
@@ -2022,7 +2535,11 @@
         "code": "IBK"
       },
       "venueLabel": "인천 삼산월드체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:240",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-121",
@@ -2038,7 +2555,11 @@
         "code": "HHC"
       },
       "venueLabel": "김천실내체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:242",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-122",
@@ -2054,7 +2575,11 @@
         "code": "SOO"
       },
       "venueLabel": "대전 충무체육관",
-      "localTimeLabel": "한국 현지 16:00 KST"
+      "localTimeLabel": "한국 현지 16:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:244",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-123",
@@ -2070,7 +2595,11 @@
         "code": "KEX"
       },
       "venueLabel": "화성종합실내체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:246",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-124",
@@ -2086,7 +2615,11 @@
         "code": "RSP"
       },
       "venueLabel": "서울 장충체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:248",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-125",
@@ -2101,8 +2634,12 @@
       "away": {
         "code": "HPS"
       },
-      "venueLabel": "SOOP 스타디움(염주체육관)",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "venueLabel": "숲 스타디움",
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:250",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     },
     {
       "id": "VL2627-W-126",
@@ -2118,13 +2655,17 @@
         "code": "IBK"
       },
       "venueLabel": "수원체육관",
-      "localTimeLabel": "한국 현지 19:00 KST"
+      "localTimeLabel": "한국 현지 19:00 KST",
+      "status": "scheduled",
+      "officialSourceKey": "023:001:FEMALE:252",
+      "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
+      "updatedAt": "2026-11-01T12:21:03+00:00"
     }
   ],
   "standings": {
     "rows": [
       {
-        "rank": null,
+        "rank": 1,
         "team": {
           "code": "GSC",
           "name": "GS칼텍스",
@@ -2132,15 +2673,62 @@
           "en": "GSC"
         },
         "poolId": "LEAGUE",
-        "wins": 0,
+        "games": 1,
+        "wins": 1,
         "losses": 0,
-        "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "points": 3,
+        "setWins": 3,
+        "setLosses": 0,
+        "pointsFor": 75,
+        "pointsAgainst": 61,
+        "setRatio": "MAX",
+        "pointRatio": "1.230",
+        "statusLabel": "1위"
       },
       {
-        "rank": null,
+        "rank": 2,
+        "team": {
+          "code": "HPS",
+          "name": "흥국생명",
+          "fullName": "흥국생명",
+          "en": "HPS"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "points": 3,
+        "setWins": 3,
+        "setLosses": 0,
+        "pointsFor": 75,
+        "pointsAgainst": 62,
+        "setRatio": "MAX",
+        "pointRatio": "1.210",
+        "statusLabel": "2위"
+      },
+      {
+        "rank": 3,
+        "team": {
+          "code": "SOO",
+          "name": "SOOP",
+          "fullName": "SOOP",
+          "en": "SOO"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "points": 0,
+        "setWins": 0,
+        "setLosses": 3,
+        "pointsFor": 62,
+        "pointsAgainst": 75,
+        "setRatio": "0.000",
+        "pointRatio": "0.827",
+        "statusLabel": "3위"
+      },
+      {
+        "rank": 4,
         "team": {
           "code": "KEX",
           "name": "한국도로공사",
@@ -2148,12 +2736,17 @@
           "en": "KEX"
         },
         "poolId": "LEAGUE",
+        "games": 1,
         "wins": 0,
-        "losses": 0,
+        "losses": 1,
         "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "setWins": 0,
+        "setLosses": 3,
+        "pointsFor": 61,
+        "pointsAgainst": 75,
+        "setRatio": "0.000",
+        "pointRatio": "0.813",
+        "statusLabel": "4위"
       },
       {
         "rank": null,
@@ -2164,28 +2757,17 @@
           "en": "HHC"
         },
         "poolId": "LEAGUE",
+        "games": 0,
         "wins": 0,
         "losses": 0,
         "points": 0,
+        "setWins": 0,
+        "setLosses": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
         "setRatio": "-",
         "pointRatio": "-",
-        "statusLabel": "개막 전"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "HPS",
-          "name": "흥국생명",
-          "fullName": "흥국생명",
-          "en": "HPS"
-        },
-        "poolId": "LEAGUE",
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "statusLabel": "경기 전"
       },
       {
         "rank": null,
@@ -2196,12 +2778,17 @@
           "en": "IBK"
         },
         "poolId": "LEAGUE",
+        "games": 0,
         "wins": 0,
         "losses": 0,
         "points": 0,
+        "setWins": 0,
+        "setLosses": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
         "setRatio": "-",
         "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "statusLabel": "경기 전"
       },
       {
         "rank": null,
@@ -2212,28 +2799,17 @@
           "en": "RSP"
         },
         "poolId": "LEAGUE",
+        "games": 0,
         "wins": 0,
         "losses": 0,
         "points": 0,
+        "setWins": 0,
+        "setLosses": 0,
+        "pointsFor": 0,
+        "pointsAgainst": 0,
         "setRatio": "-",
         "pointRatio": "-",
-        "statusLabel": "개막 전"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "SOO",
-          "name": "SOOP",
-          "fullName": "SOOP",
-          "en": "SOO"
-        },
-        "poolId": "LEAGUE",
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "개막 전"
+        "statusLabel": "경기 전"
       }
     ]
   },
@@ -2302,5 +2878,15 @@
       }
     ],
     "note": "SOOP은 전신 페퍼저축은행의 순위를 기준으로 표시합니다."
+  },
+  "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 2/126경기 종료 · 2026-11-01 21:21 KST 반영",
+  "updatedAt": "2026-11-01T12:21:03+00:00",
+  "automation": {
+    "version": 1,
+    "source": "KOVO_PUBLIC_STAT_API",
+    "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
+    "regularSeasonOnly": true,
+    "completedMatches": 2
   }
 }
