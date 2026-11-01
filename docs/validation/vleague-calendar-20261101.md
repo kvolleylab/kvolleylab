@@ -40,6 +40,7 @@ The season-specific KR holiday coverage is explicitly bounded to 2026-09-27 thro
 - `assets/css/kvl-domestic-home-v2.css`: `.dv2-vleague-calendar`-scoped rules, wider PC calendar column, single-column overview at <=1299px and local calendar scrolling below its 644px readable width. Same two lines at 390px/360px.
 - Both `data/competitions/v-league-*-2026-27/config.json`: aliases and venue-city display mappings only.
 - `competition-engine.html`: helper before renderer; domestic JS/CSS cache token `20261101-vleague-calendar-1`. Production validation stays enabled.
+- `scripts/quality_audit/public-review-manifest.json`: exact reviewed hashes for the two public display configs, linked to this evidence.
 - New focused tests and existing workflow registration; existing CSS cache assertion accepts the new token.
 - No match/roster/MASTER data, global navigation, Hero assets, VNL/AVC config, international template or school prototype changes.
 
@@ -47,6 +48,7 @@ The season-specific KR holiday coverage is explicitly bounded to 2026-09-27 thro
 
 - Focused calendar, team calendar, paired match summary and VNL production regressions: **32/32 passed**. All 252 season fixtures match requested alias/round/city/time format; read-only rendering preserves records.
 - Additional config, domestic, roster, Cup geometry and postseason checks: **47/49 passed** after updating the cache-token assertion. The two pending-postseason assertions fail identically on a clean archive of base main; they are pre-existing and remain unchanged. Four other postseason scenarios pass. No claim that all repository tests pass.
+- Changed-public-export gate: passed after reviewing and registering the two display configs; no gate rules or access controls changed.
 - `git diff --check`: passed. No data.json/rosters.json changes.
 - Browser PC viewport1440: main1180, calendar738.66, inner width/scrollWidth717/717; all seven weekdays fit. Ordinary viewport1363 also fits the full week.
 - Browser mobile390/360: body375/345 (15px scrollbar), no document overflow; calendar alone scrolls. All matchup/location spans fit their cells. Horizontal movement reaches the final weekday.
