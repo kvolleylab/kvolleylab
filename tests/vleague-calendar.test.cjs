@@ -5,13 +5,13 @@ const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p
 const contract=require('../assets/js/kvl-competition-config-v2.js'),display=require('../assets/js/kvl-calendar-display-v1.js');
 function source(gender){const base=`data/competitions/v-league-${gender}-2026-27/`;return {c:json(base+'config.json'),d:json(base+'data.json')};}
 test('requested aliases, actual round/venue/time and all 252 season fixtures',()=>{
- const expected={men:['항공','삼성','KB','현대','우카','한전','OK'],women:['GS','흥국','S∞P','도공','현대','IBK','정관장']};
+ const expected={men:['항공','삼성','KB','현대','우카','한전','OK'],women:['GS','흥국','SOOP','도공','현대','IBK','정관장']};
  for(const gender of ['men','women']){
   const {c,d}=source(gender),before=JSON.stringify(d),options=c.structure.calendarDisplay;
   assert.deepEqual(Object.values(options.teamAliases),expected[gender]);assert.equal(d.matches.length,126);
   for(const match of d.matches){const result=display.game(match,d,options);assert.match(result.line1,/^[1-6]R \S+ vs \S+$/);assert.match(result.line2,/^\((인천|천안|서울|평택|수원|부산|대전|김천|화성|광주), \d+시\)$/);assert(!result.line1.includes('1경기'));}
   const match=d.matches.find(m=>m.date==='2026-11-01');const result=display.game(match,d,options);
-  assert.equal(result.line1,gender==='men'?'1R KB vs 삼성':'1R 흥국 vs S∞P');assert.equal(result.line2,gender==='men'?'(평택, 14시)':'(인천, 16시)');
+  assert.equal(result.line1,gender==='men'?'1R KB vs 삼성':'1R 흥국 vs SOOP');assert.equal(result.line2,gender==='men'?'(평택, 14시)':'(인천, 16시)');
   assert.match(result.fullLabel,gender==='men'?/KB손해보험 vs 삼성화재/:/흥국생명 vs SOOP/);assert.equal(JSON.stringify(d),before);
  }
 });
@@ -43,8 +43,8 @@ async function setup(slug='v-league-men-2026-27',query='',now='2026-11-01T00:00:
 for(const gender of ['men','women'])test(gender+': two-line overview and selected-team calendars preserve dialogs and records',async()=>{
  const {w,d,doc}=await setup(`v-league-${gender}-2026-27`);try{
   const before=JSON.stringify(d),cal=doc.querySelector('[data-dv2-calendar]');assert(cal.classList.contains('dv2-vleague-calendar'));
-  const day=cal.querySelector('[data-dv2-date="2026-11-01"]');assert.equal(day.querySelector('.dv2-calendar-matchup').textContent,gender==='men'?'1R KB vs 삼성':'1R 흥국 vs S∞P');
-  assert.equal(day.querySelector('.dv2-calendar-game').children.length,2);assert(day.querySelector('.dv2-calendar-date').classList.contains('is-holiday'));assert.equal(day.querySelector('.dv2-team-game,small'),null);
+  const day=cal.querySelector('[data-dv2-date="2026-11-01"]');assert.equal(day.querySelector('.dv2-calendar-matchup').textContent,gender==='men'?'1R KB vs 삼성':'1R 흥국 vs SOOP');
+  assert.equal(day.querySelector('.dv2-calendar-game').children.length,2);assert(day.querySelector('.dv2-calendar-date').classList.contains('is-holiday'));assert(day.classList.contains('is-holiday-day'));assert(cal.querySelector('.dv2-calendar-fit'));assert.equal(cal.querySelector('.dv2-calendar-scroll'),null);assert(!cal.textContent.includes('좌우로'));assert(!cal.querySelector('[data-dv2-date="2026-11-03"]').classList.contains('is-holiday-day'));assert.equal(day.querySelector('.dv2-team-game,small'),null);
   day.click();assert(doc.querySelector('#dv2-day-dialog').open);assert.match(doc.querySelector('.dv2-match-teams').textContent,gender==='men'?/KB손해보험.*삼성화재/s:/흥국생명.*SOOP/s);assert(doc.querySelector('.dv2-setline').textContent.length>0);doc.querySelector('#dv2-day-dialog').close();
   assert.equal(JSON.stringify(d),before);
  }finally{w.close();}
@@ -55,7 +55,7 @@ for(const gender of ['men','women'])test(gender+': two-line overview and selecte
 });
 test('holiday paint survives month navigation and does not require a match',async()=>{
  const {w,doc}=await setup();try{
-  const cal=doc.querySelector('[data-dv2-calendar]');cal.querySelector('[data-dv2-month="1"]').click();assert.equal(cal.querySelector('.dv2-calendar-date[title="기독탄신일"]').textContent,'25');
+  const cal=doc.querySelector('[data-dv2-calendar]');cal.querySelector('[data-dv2-month="1"]').click();assert.equal(cal.querySelector('.dv2-calendar-date[title="기독탄신일"]').textContent,'25');assert(cal.querySelector('.dv2-calendar-date[title="기독탄신일"]').parentElement.classList.contains('is-holiday-day'));
   cal.querySelector('[data-dv2-month="1"]').click();cal.querySelector('[data-dv2-month="1"]').click();
   assert.equal(cal.querySelector('.dv2-calendar-date[title="설날 대체공휴일"]').textContent,'9');
   assert.deepEqual([...cal.querySelectorAll('.dv2-day:not(.outside) .dv2-calendar-date.is-holiday')].map(el=>el.textContent),['6','7','8','9','14','21','28']);

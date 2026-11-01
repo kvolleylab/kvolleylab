@@ -367,3 +367,8 @@ Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 사용자가 “
 ## 2026-11-01 · V-리그 홈 달력 공휴일·두 줄 대진
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 운영 V-리그 홈 및 남녀 달력을 공휴일 날짜 빨강, 요청한 팀 약칭, `1R KB vs 삼성` / `(평택, 14시)` 두 줄로 수정하도록 요청했다. 기존 경기일 음영은 유지하고 내부 흰 카드·왼쪽 색 띠는 제거한다. 공통 달력의 V-리그 선택 설정으로 적용하며 모바일은 같은 문구를 달력 영역 안의 가로 이동으로 보존한다. 약칭은 표시 전용이며 정식 팀명·ID·명단·경기결과·MASTER는 유지한다. 네이버 직접 조회는 실패해 NOT VERIFIED로 기록하고 공식 KASA 월력요항으로 해당 시즌 공휴일을 대조했다. 기존 포스트시즌 검사2건은 수정 전 main에서도 실패하므로 별도로 기록한다. 중·고 시안의 운영 미승인 범위와 VNL/AVC·다른 대회 화면은 확대 변경하지 않는다. [범위·검수·출처·복구](validation/vleague-calendar-20261101.md).
+
+
+## 2026-11-01 · V-리그 달력 SOOP·공휴일 음영·모바일 전체 표시
+
+Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 운영 달력 후속 수정으로 사용자가 여자부 `S∞P`를 `SOOP`으로, 공휴일을 빨간 날짜+연한 빨강 음영으로, 여자부 평일 날짜를 검정색으로 바꾸고 모바일 가로 이동을 없애도록 요청했다. 앞선 PR #223의 해당 약칭·날짜색·가로 이동 결정을 이 범위에서 대체한다. 남녀 같은 공휴일 색상과 7열 너비 맞춤을 사용하며 모바일 긴 대진은 팀명 단위로 줄바꿈한다. 기존 공식 공휴일 범위와 실제 경기시간·ID·결과·명단·MASTER는 그대로 보존한다. V-리그 선택 설정과 범위 제한 CSS로 적용하며 다른 대회 표시에는 확대하지 않는다. 관련33개 검사 및 PC·390px·360px 달력/상세 창 검수 통과. [검수·색상·변경 범위·복구](validation/vleague-calendar-v2-20261101.md).
