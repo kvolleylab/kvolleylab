@@ -19,6 +19,14 @@ def event(nid,name,kind,gender="남",team="OK저축은행",**extra):
     return item
 
 class TestProjection(unittest.TestCase):
+    def test_quota_registration_termination_is_inactive(self):
+        original=notice(10,"남","KB손해보험","2026-2027시즌 KB손해보험 선수등록(1차) 공시",
+            people=[{"player_name":"타루샤 차메스","number":"5","position":"아웃사이드히터"}])
+        change=event(158328,"타루샤 차메스","registration_termination",team="KB손해보험")
+        result=module.project([original,notice(158328,"남","KB손해보험","아시아쿼터 선수 등록 해지",events=[change])])
+        self.assertEqual(result["active_players"],[])
+        self.assertEqual(result["audit"]["applied_events"],1)
+
     def base(self):
         return notice(10,"남","OK저축은행","2026-2027시즌 OK저축은행 선수등록(1차) 공시",
           people=[{"player_name":"김테스트","number":"10","position":"세터","salary_krw":50000000,"option_krw":10000000,"total_krw":60000000}])
@@ -62,8 +70,12 @@ class TestProjection(unittest.TestCase):
         during=module.project([self.base(),n],as_of="2026-08-01")
         after=module.project([self.base(),n],as_of="2026-10-15")
         self.assertEqual(during["audit"]["total"],0)
-        self.assertEqual(after["audit"]["total"],1)
+        self.assertEqual(after["audit"]["total"],0)
         self.assertEqual(after["audit"]["warnings"][0]["reason"],"loan_expired_unverified_return")
+
+        restored=event(19,"김테스트","registration",to_team="OK저축은행")
+        confirmed=module.project([self.base(),n,notice(19,"남","OK저축은행","재등록",events=[restored])],as_of="2026-10-15")
+        self.assertEqual(confirmed["audit"]["total"],1)
 
     def test_identical_names_different_clubs_not_merged(self):
         docs=[self.base(),notice(11,"남","삼성화재","2026-2027시즌 삼성화재 선수등록(1차) 공시",

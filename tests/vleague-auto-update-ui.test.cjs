@@ -33,7 +33,7 @@ if(!candidateRoot){
  const originalCandidate=JSON.stringify(sources);
 
  function expectedPicks(gender){
-  const eligible=sources[gender].matches.filter(m=>!['live','postponed','cancelled'].includes(m.status));
+  const eligible=sources[gender].matches.filter(m=>m.notRequired!==true&&!['live','postponed','cancelled','not_required'].includes(m.status));
   const stamp=m=>Date.parse(`${m.date}T${m.time}:00+09:00`);
   const ordered=list=>list.slice().sort((a,b)=>stamp(a)-stamp(b)||a.id.localeCompare(b.id));
   return {recent:ordered(eligible.filter(m=>m.status==='final'&&m.score&&stamp(m)<=observedAt)).at(-1)||null,
@@ -72,10 +72,18 @@ if(!candidateRoot){
   test(`${gender}: actual collector results, official standings and roster links at ${width}px`,async()=>{
    const {w,doc,d,errors,requests}=await render(gender,width);
    try{
-    const finals=sources[gender].matches.filter(m=>m.status==='final');
+    const regular=sources[gender].matches.filter(m=>/^[1-6]라운드$/.test(m.stage));
+    const postseason=sources[gender].matches.filter(m=>['준플레이오프','플레이오프','챔피언결정전'].includes(m.stage));
+    const finals=sources[gender].matches.filter(m=>m.status==='final'&&m.notRequired!==true);
     assert(finals.length>0,'a real completed match must be present for this integration test');
-    assert.equal(sources[gender].automation.completedMatches,finals.length);
-    assert.equal(doc.querySelectorAll('.kvl1180-match-row').length,126);
+    assert.equal(regular.length,126,'postseason additions must preserve all regular-season fixtures');
+    assert.equal(sources[gender].matches.length,regular.length+postseason.length);
+    assert.equal(sources[gender].automation.completedMatches,regular.filter(m=>m.status==='final').length);
+    assert.equal(doc.querySelectorAll('.kvl1180-match-row').length,regular.length+postseason.length);
+    for(const match of postseason.filter(m=>m.notRequired===true||m.status==='not_required')){
+     const row=doc.querySelector(`.kvl1180-match-row[data-match-id="${match.id}"]`);
+     assert.equal(row.querySelector('.kvl1180-score').textContent,'미실시');assert.equal(row.querySelector('.is-upcoming'),null);
+    }
     for(const match of finals){
      const row=doc.querySelector(`.kvl1180-match-row[data-match-id="${match.id}"]`);
      assert(row,`schedule contains ${match.id}`);

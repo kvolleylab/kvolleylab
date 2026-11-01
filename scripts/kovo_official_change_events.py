@@ -6,7 +6,7 @@ from html.parser import HTMLParser
 FIELDS = ("event_id","notice_id","notice_date","season","kind","player_name","registered_name",
 "gender","from_team","to_team","destination","jersey_number","position",
 "previous_number","new_number","previous_position","new_position",
-"salary_krw","option_krw","loan_start","loan_end","effective_date","confidence","source_url","notes")
+"salary_krw","option_krw","loan_start","loan_end","effective_date","effective_date_basis","confidence","source_url","notes")
 
 class VisibleLines(HTMLParser):
     def __init__(self):
@@ -108,7 +108,13 @@ def parse_events(html,title,notice_id,notice_date,kind,team,gender,source_url):
         loan_end=date_iso(dates[1]) if len(dates)>1 else ""
         to_team=team if kind in ("transfer","registration","foreign_or_asian_quota","reinstatement") else ""
         effective=loan_start if kind=="loan" and loan_start else general_date
+        explicit_date=date_iso(get("효력발생일","적용일","등록일","이적일"))
+        date_basis="loan_start" if kind=="loan" and loan_start else "notice_date_fallback"
+        if explicit_date:
+            effective=explicit_date;date_basis="explicit_effective_date"
         confidence="high" if kind!="other_player_notice" and player and gender else "review"
+        # A list is not one identity. Do not create/merge a comma-named player.
+        if re.search(r"[,，、]|\s및\s",player):confidence="review"
         if kind=="transfer" and not from_team:confidence="review"
         if kind=="loan" and not (destination and loan_start):confidence="review"
         if kind in ("number_change","position_change") and not (new_num or new_pos):confidence="review"
@@ -125,6 +131,6 @@ def parse_events(html,title,notice_id,notice_date,kind,team,gender,source_url):
             "jersey_number":number,"position":position,"previous_number":old_num,"new_number":new_num,
             "previous_position":old_pos,"new_position":new_pos,
             "salary_krw":salary,"option_krw":option,"loan_start":loan_start,"loan_end":loan_end,
-            "effective_date":effective,"confidence":confidence,"source_url":source_url,"notes":notes
+            "effective_date":effective,"effective_date_basis":date_basis,"confidence":confidence,"source_url":source_url,"notes":notes
         })
     return events

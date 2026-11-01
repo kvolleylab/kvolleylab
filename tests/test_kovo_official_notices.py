@@ -59,6 +59,10 @@ class KovoNoticeTests(unittest.TestCase):
             "남자부 선수 은퇴": "retirement",
             "2026-27 추가선수 등록": "registration",
             "정관장 선수 배번 변경 등록": "number_change",
+            "2026-2027시즌 KB손해보험 아시아쿼터 선수 등록 해지 공시": "registration_termination",
+            "외국인 선수등록 말소 공시": "registration_termination",
+            "2026-2027시즌 삼성화재 신인선수 등록 공시": "registration",
+            "외국인 선수 포지션 변경 공시": "position_change",
         }
         for title, expected in cases.items():
             with self.subTest(title=title):
@@ -81,11 +85,42 @@ class KovoNoticeTests(unittest.TestCase):
         self.assertTrue(kovo.relevant("2026-2027시즌 삼성화재 선수등록(1차) 공시", "2026-06-30", "2026-27", "2026-04-01"))
         self.assertFalse(kovo.relevant("2023-2024시즌 삼성화재 선수등록 공시", "2023-06-30", "2026-27", "2026-04-01"))
 
+    def test_change_discovery_without_season_or_quota_keywords(self):
+        cases = {
+            "대한항공 선수 등번호 변경 공시": "number_change",
+            "대한항공 선수 배번\t변경 공시": "number_change",
+            "대한항공 선수 포지션\u00a0변경 공시": "position_change",
+            "대한항공 선수 등록 해지 공시": "registration_termination",
+            "대한항공 선수 등록\n말소 공시": "registration_termination",
+            "대한항공 추가 선수 등록 공시": "registration",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertTrue(kovo.relevant(title, "2026-11-02", "2026-27", "2026-04-01"))
+                self.assertEqual(kovo.detect_kind(title), expected)
+                self.assertFalse(kovo.relevant(title, "2026-03-31", "2026-27", "2026-04-01"))
+        for title in ("경기장 출입구 번호 변경 안내", "배구 경기 규정 안내", "대한항공 구단 소식"):
+            with self.subTest(unrelated=title):
+                self.assertFalse(kovo.relevant(title, "2026-11-02", "2026-27", "2026-04-01"))
+
 
 if __name__ == "__main__":
     unittest.main()
 
 class EventExtractionTests(unittest.TestCase):
+    def test_effective_date_is_distinct_from_notice_date(self):
+        from kovo_official_change_events import parse_events
+        args=("신인선수 등록",42,"2026-11-01","registration","삼성화재","남","url")
+        implicit=parse_events("<p>선수명 : 김테스트</p><p>공시일 : 2026.11.01</p>",*args)[0]
+        self.assertEqual(implicit["effective_date_basis"],"notice_date_fallback")
+        explicit=parse_events("<p>선수명 : 김테스트</p><p>등록일 : 2026.11.03</p>",*args)[0]
+        self.assertEqual((explicit["effective_date"],explicit["effective_date_basis"]),("2026-11-03","explicit_effective_date"))
+
+    def test_multiple_names_are_review_only(self):
+        from kovo_official_change_events import parse_events
+        event=parse_events("<p>선수명 : 손현종, 황두연</p>","선수 방출",42,"2026-11-01","release","삼성화재","남","url")[0]
+        self.assertEqual(event["confidence"],"review")
+
     def test_loan_and_termination(self):
         from kovo_official_change_events import parse_events
         loan="<p>선수명 : 이다현</p><p>임대구단 : 일본 NEC Red Rockets Kawasaki</p><p>임대기간 : 2026.07.01~2027.05.31</p><p>공시일 : 2026년 6월 30일</p>"

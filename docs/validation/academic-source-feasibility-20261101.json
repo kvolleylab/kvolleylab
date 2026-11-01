@@ -1,0 +1,204 @@
+{
+  "status": "official_sample_parse_verified",
+  "verified_at_utc": "2026-11-01T14:06:58.712470+00:00",
+  "university_elite_pdf": {
+    "source": "existing KVL Drive official-source archive",
+    "source_url": "https://drive.google.com/file/d/1qkV-B6YAJsG4Rn8GOEmODF3Ro2XlIhDj/view",
+    "bytes": 153431,
+    "sha256": "127f2a21c2b492d2af9a1715466825e7cc08668d19ebc54b9931b6a73052cf4f",
+    "page_count": 4,
+    "text_layer_confirmed": true,
+    "participant_table_shape": [
+      6,
+      5
+    ],
+    "participant_counts": {
+      "men": 15,
+      "women": 7
+    },
+    "normalized_rows": [
+      {
+        "division": "men",
+        "group": "A",
+        "team_source_name": "한양대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "A",
+        "team_source_name": "경상국립대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "A",
+        "team_source_name": "충남대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "A",
+        "team_source_name": "홍익대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "A",
+        "team_source_name": "중부대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "B",
+        "team_source_name": "조선대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "B",
+        "team_source_name": "호남대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "B",
+        "team_source_name": "인하대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "B",
+        "team_source_name": "경일대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "B",
+        "team_source_name": "경희대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "C",
+        "team_source_name": "국립목포대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "C",
+        "team_source_name": "성균관대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "C",
+        "team_source_name": "명지대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "C",
+        "team_source_name": "우석대",
+        "source_page": 2
+      },
+      {
+        "division": "men",
+        "group": "C",
+        "team_source_name": "경기대",
+        "source_page": 2
+      },
+      {
+        "division": "women",
+        "group": "A",
+        "team_source_name": "경일대",
+        "source_page": 2
+      },
+      {
+        "division": "women",
+        "group": "A",
+        "team_source_name": "호남대",
+        "source_page": 2
+      },
+      {
+        "division": "women",
+        "group": "A",
+        "team_source_name": "동의대",
+        "source_page": 2
+      },
+      {
+        "division": "women",
+        "group": "B",
+        "team_source_name": "목포과학대",
+        "source_page": 2
+      },
+      {
+        "division": "women",
+        "group": "B",
+        "team_source_name": "단국대",
+        "source_page": 2
+      },
+      {
+        "division": "women",
+        "group": "B",
+        "team_source_name": "우석대",
+        "source_page": 2
+      },
+      {
+        "division": "women",
+        "group": "B",
+        "team_source_name": "광주여대",
+        "source_page": 2
+      }
+    ],
+    "venue_conflict": "Page 2 repeats men B for both venues and omits C. Visually confirmed; block automatic venue assignment."
+  },
+  "public_university_club_pdf": {
+    "notice_url": "https://www.kusf.or.kr/news/news_view.html?board=notice&seq=1384",
+    "download_url": "https://www.kusf.or.kr/include/download.php?FILE_SEQ=1&FILE_TASK_TYPE=2026050008",
+    "http_status": 200,
+    "bytes": 159408,
+    "sha256": "49d8bce2026142383b9aef513ba79469f445fba8ddebf3ead6ca4e1470f15790",
+    "page_count": 7,
+    "text_layer_confirmed": true,
+    "images_total": 0,
+    "page_char_counts": [
+      844,
+      1118,
+      1053,
+      1166,
+      385,
+      1486,
+      283
+    ]
+  },
+  "public_university_club_xlsx": {
+    "notice_url": "https://www.kusf.or.kr/news/news_view.html?board=notice&seq=1384",
+    "download_url": "https://www.kusf.or.kr/include/download.php?FILE_SEQ=2&FILE_TASK_TYPE=2026050008",
+    "http_status": 200,
+    "bytes": 18889,
+    "sha256": "b7bdd74c5d3c03a69c197e248804dcd0607754184f5e50fe82245c8a0cbed0f0",
+    "zip_magic_confirmed": true,
+    "sheet": "신청서",
+    "dimension": "A1:K46",
+    "merged_ranges": 44,
+    "formula_count": 0,
+    "macros": false,
+    "external_links": false,
+    "roster_header_range": "A15:K16",
+    "name_range": "B17:B36",
+    "populated_player_names": 0,
+    "important_limit": "Blank club tournament application template, not an elite/highschool registered roster or results workbook."
+  },
+  "not_verified": [
+    "Official middle/highschool federation PDF/XLSX attachment parsing",
+    "Production unattended periodic source discovery/download",
+    "Elite university or highschool actual roster/results workbook",
+    "Scanned PDF OCR accuracy"
+  ],
+  "download_limitations": [
+    {
+      "source": "KUVF public 2024 U-league PDF download",
+      "result": "HTTP 503; no workaround attempted"
+    }
+  ]
+}

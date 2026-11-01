@@ -24,8 +24,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import kovo_vleague_update as update
 import kovo_vleague_source as source
 import kovo_vleague_master as master
-from kovo_vleague_standings import StandingsError
-from test_kovo_vleague_source import FakeSeasonSource, FIXTURE, STAMP
+import kvl_competition_lifecycle as lifecycle
+from kovo_vleague_standings import StandingsError, calculate_standings, OFFICIAL_TOTAL_FIELDS
+from test_kovo_vleague_source import FakeSeasonSource, FIXTURE, STAMP, synthetic_postseason
 
 
 class IntegrationSource(FakeSeasonSource):
@@ -95,17 +96,292 @@ def candidate_originals(plan):
     return {gender: deepcopy(plan["candidates"][path]) for gender, path in update.DATA_PATHS.items()}
 
 
+def add_postseason(snapshot, *, gender="MALE", phase="202", legs=1, final_legs=0, home="002", away="003"):
+    snapshot["matches"] = [r for r in snapshot["matches"] if not (r["gender"] == gender and r["phase_id"] == phase)]
+    for leg in range(1, legs + 1):
+        raw = synthetic_postseason(gender, phase, leg, final=leg <= final_legs)
+        prefix = source.GENDERS[gender]
+        raw.update(hcode=prefix + home, acode=prefix + away, hsname="Synthetic " + prefix + home,
+                   asname="Synthetic " + prefix + away)
+        snapshot["matches"].append(source.normalize_match(raw, season="2026-27", gender=gender,
+                 phase_id=phase, source_url=source.schedule_url("2026-27", gender, phase_id=phase), observed_at=STAMP))
+    next(c for c in snapshot["coverage"]["postseason"] if c["gender"] == gender and c["phase_id"] == phase).update(received=legs)
+
+
+def finish_regular_snapshot(originals, snapshot, *, close_qpo_gap=False):
+    """Fully synthetic final season, with explicit reconciled official totals."""
+    for gender in update.DIVISIONS:
+        local = deepcopy(originals[gender])
+        for match in local["matches"]:
+            flipped = close_qpo_gap and match["home"]["code"].endswith("03") and match["away"]["code"].endswith("04") and update.record_round(match) <= 3
+            match.update(status="final", score={"home": 0 if flipped else 3, "away": 3 if flipped else 0,
+                         "sets": [{"home": 20 if flipped else 25, "away": 25 if flipped else 20}] * 3})
+        for record in snapshot["matches"]:
+            if record["gender"] == gender and record["phase_id"] == "201":
+                flipped = close_qpo_gap and record["home"]["provider_code"].endswith("003") and record["away"]["provider_code"].endswith("004") and record["round"] <= 3
+                record.update(status="final", sets_won={"home": 0 if flipped else 3, "away": 3 if flipped else 0},
+                              sets=[{"home": 20 if flipped else 25, "away": 25 if flipped else 20}] * 3)
+        calculated = calculate_standings(local["participants"], local["matches"], rules_verified=True)
+        rank_snapshot = next(s for s in snapshot["official_standings"] if s["gender"] == gender)
+        rank_snapshot["rows"] = [{"provider_code": source.GENDERS[gender] + row["team"]["code"][1:],
+                                  "name": row["team"]["name"], "rank": rank,
+                                  **{src: row[local_key] for src, local_key in OFFICIAL_TOTAL_FIELDS.items()}}
+                                 for rank, row in enumerate(calculated["rows"], 1)]
+        # Provider identifiers have four digits; synthetic local codes have two.
+        for row in rank_snapshot["rows"]:
+            row["provider_code"] = source.GENDERS[gender] + row["provider_code"][1:].zfill(3)
+
+
 def seed_root(root, originals, state=None):
+    policy = update.read_json(Path(__file__).resolve().parents[1] / lifecycle.DEFAULT_POLICY)
+    update.write_json(root / lifecycle.DEFAULT_POLICY, policy)
     for gender, relative in update.DATA_PATHS.items():
         update.write_json(root / relative, originals[gender])
         slug = Path(relative).parent.name
         update.write_json((root / relative).with_name("config.json"), {
             "slug": slug, "schemaVersion": 2,
-            "competition": {"competitionId": "SYNTHETIC-" + gender,
+            "competition": {"competitionId": next(c["competition_id"] for c in policy["competitions"] if c["gender"] == gender),
                             "season": "2026-27", "gender": update.DIVISIONS[gender]},
         })
     if state is not None:
         update.write_json(root / update.STATE_PATH, state)
+
+
+class PostseasonUpdateTests(unittest.TestCase):
+    def setUp(self):
+        self.originals, self.snapshot, self.master_values = fixture_bundle(finals=False)
+
+    def test_empty_phase_requests_do_not_create_fake_postseason_games(self):
+        plan = update.prepare_update(self.originals, self.snapshot)
+        for gender, path in update.DATA_PATHS.items():
+            self.assertEqual(len(plan["candidates"][path]["matches"]), 126)
+            self.assertEqual(plan["report"]["divisions"][gender]["postseason"]["matched"], 0)
+            self.assertFalse(plan["report"]["divisions"][gender]["postseason"]["complete"])
+
+    def test_new_official_fixture_gets_stable_series_id_and_preserves_regular_ids(self):
+        add_postseason(self.snapshot, legs=3)
+        plan = update.prepare_update(self.originals, self.snapshot)
+        candidate = plan["candidates"][update.DATA_PATHS["MALE"]]
+        self.assertEqual([m["id"] for m in candidate["matches"][:126]], [m["id"] for m in self.originals["MALE"]["matches"]])
+        self.assertEqual([m["id"] for m in candidate["matches"][126:]], [f"VL2627-M-PO-{n:03d}" for n in (1, 2, 3)])
+        self.assertEqual([m["round"] for m in candidate["matches"][126:]], ["1차전", "2차전", "3차전"])
+        self.assertEqual(plan["report"]["divisions"]["MALE"]["matched"], 126)
+        self.assertEqual(plan["report"]["divisions"]["MALE"]["postseason"]["matched"], 3)
+        later = deepcopy(self.snapshot)
+        next(r for r in later["matches"] if r.get("series_game") == 2)["date"] = "2027-04-11"
+        new = update.prepare_update(candidate_originals(plan), later, plan["candidates"][update.STATE_PATH])
+        self.assertEqual(new["candidates"][update.STATE_PATH], plan["candidates"][update.STATE_PATH])
+        self.assertEqual(new["candidates"][update.DATA_PATHS["MALE"]]["matches"][-2]["id"], "VL2627-M-PO-002")
+
+    def test_postseason_pending_fixture_is_not_promoted_or_written(self):
+        add_postseason(self.snapshot)
+        pending = self.snapshot["matches"].pop()
+        pending["fixture_ready"] = False
+        pending["time"] = None
+        self.snapshot["pending_matches"] = [pending]
+        plan = update.prepare_update(self.originals, self.snapshot, master_values=self.master_values)
+        self.assertEqual(len(plan["matched"]), 252)
+        self.assertEqual(len(plan["candidates"][update.DATA_PATHS["MALE"]]["matches"]), 126)
+        self.assertEqual(plan["report"]["divisions"]["MALE"]["pending_postseason_fixtures"], 1)
+
+    def test_postseason_coverage_cannot_hide_a_missing_fixture(self):
+        add_postseason(self.snapshot, legs=3)
+        self.snapshot["matches"].pop()
+        with self.assertRaisesRegex(update.UpdateError, "coverage"):
+            update.prepare_update(self.originals, self.snapshot)
+
+    def test_regular_season_completion_keeps_season_active_and_locks_standings(self):
+        finish_regular_snapshot(self.originals, self.snapshot)
+        add_postseason(self.snapshot, legs=2, final_legs=2)
+        plan = update.prepare_update(self.originals, self.snapshot)
+        candidate = plan["candidates"][update.DATA_PATHS["MALE"]]
+        self.assertTrue(candidate["regularSeasonComplete"])
+        self.assertEqual(candidate["status"], "active")
+        self.assertEqual(sum(r["games"] for r in candidate["standings"]["rows"]), 252)
+        self.assertEqual(plan["report"]["divisions"]["MALE"]["completed"], 126)
+        self.assertEqual(plan["report"]["divisions"]["MALE"]["postseason"]["completed"], 2)
+
+    def test_championship_clinch_completes_only_that_division(self):
+        finish_regular_snapshot(self.originals, self.snapshot)
+        add_postseason(self.snapshot, legs=2, final_legs=2)
+        add_postseason(self.snapshot, phase="203", legs=3, final_legs=3, home="001", away="002")
+        plan = update.prepare_update(self.originals, self.snapshot)
+        self.assertEqual(plan["candidates"][update.DATA_PATHS["MALE"]]["status"], "completed")
+        self.assertEqual(plan["candidates"][update.DATA_PATHS["FEMALE"]]["status"], "active")
+        post = plan["report"]["divisions"]["MALE"]["postseason"]
+        self.assertEqual(post, {"matched": 5, "completed": 5, "complete": True, "champion": "M01"})
+
+    def test_swept_series_retains_published_unused_leg_and_marks_not_required(self):
+        finish_regular_snapshot(self.originals, self.snapshot)
+        add_postseason(self.snapshot, legs=3)
+        first = update.prepare_update(self.originals, self.snapshot)
+        original_ids = [m["id"] for m in first["candidates"][update.DATA_PATHS["MALE"]]["matches"]]
+        later = deepcopy(self.snapshot)
+        add_postseason(later, legs=2, final_legs=2)
+        plan = update.prepare_update(candidate_originals(first), later, first["candidates"][update.STATE_PATH])
+        candidate = plan["candidates"][update.DATA_PATHS["MALE"]]
+        self.assertEqual([m["id"] for m in candidate["matches"]], original_ids)
+        unused = candidate["matches"][-1]
+        self.assertEqual((unused["status"], unused["notRequired"], unused["non_play_reason"]),
+                         ("not_required", True, "series_clinched"))
+        self.assertNotIn("score", unused)
+        self.assertEqual(set(plan["candidates"][update.STATE_PATH]["links"]), set(first["candidates"][update.STATE_PATH]["links"]))
+        repeat = update.prepare_update(candidate_originals(plan), later, plan["candidates"][update.STATE_PATH])
+        self.assertEqual(repeat["changed_files"], [])
+
+    def test_unused_legs_never_seen_before_are_not_created(self):
+        finish_regular_snapshot(self.originals, self.snapshot)
+        add_postseason(self.snapshot, legs=3, final_legs=2)
+        plan = update.prepare_update(self.originals, self.snapshot)
+        self.assertEqual(len(plan["candidates"][update.DATA_PATHS["MALE"]]["matches"]), 128)
+        self.assertEqual(len(plan["matched"]), 254)
+
+    def test_missing_unfinished_leg_and_changed_existing_provider_identity_block(self):
+        add_postseason(self.snapshot, legs=3)
+        first = update.prepare_update(self.originals, self.snapshot)
+        for mode in ("removed", "provider_changed"):
+            changed = deepcopy(self.snapshot)
+            if mode == "removed":
+                add_postseason(changed, legs=2)
+            else:
+                row = next(r for r in changed["matches"] if r.get("series_game") == 1)
+                row.update(number=999, source_key="023:001:MALE:999")
+            with self.assertRaises(update.UpdateError):
+                update.prepare_update(candidate_originals(first), changed, first["candidates"][update.STATE_PATH])
+
+    def test_postseason_result_before_prior_leg_or_after_clinch_is_blocked(self):
+        for mode in ("missing_earlier", "extra_result"):
+            snapshot = deepcopy(self.snapshot)
+            add_postseason(snapshot, legs=3, final_legs=3)
+            if mode == "missing_earlier":
+                row = next(r for r in snapshot["matches"] if r.get("series_game") == 1)
+                row.update(status="scheduled", sets_won={"home": 0, "away": 0}, sets=None)
+            with self.assertRaises(update.UpdateError):
+                update.prepare_update(self.originals, snapshot)
+
+    def test_new_fixture_master_readback_then_series_clinch_and_unused_row(self):
+        finish_regular_snapshot(self.originals, self.snapshot)
+        add_postseason(self.snapshot, legs=3)
+        first = update.prepare_update(self.originals, self.snapshot, master_values=self.master_values)
+        client = MemorySheets(self.master_values)
+        receipt = master.apply_update_plan(client, first["master_plan"])
+        self.assertEqual(receipt["status"], "VERIFIED")
+        row_number = master.POSTSEASON_ROWS["VL2627-M-PO-003"]
+        self.assertEqual(client.values[row_number - 1][0], "VL2627-M-PO-003")
+        self.assertEqual(client.values[row_number - 1][12], "예정")
+        self.assertTrue(all(row[18] == "KEEP_PRIVATE_SYNTHETIC_NOTE" for row in client.values[1:253]))
+        self.assertTrue(all(row[18] == "" for row in client.values[253:]))
+        later = deepcopy(self.snapshot)
+        add_postseason(later, legs=2, final_legs=2)
+        next_plan = update.prepare_update(candidate_originals(first), later,
+                                         first["candidates"][update.STATE_PATH], client.values)
+        second_receipt = master.apply_update_plan(client, next_plan["master_plan"])
+        self.assertEqual(second_receipt["status"], "VERIFIED")
+        self.assertEqual(client.values[row_number - 1][12], "미실시")
+        self.assertEqual(client.values[row_number - 1][13:16], ["", "", ""])
+        replay = update.prepare_update(candidate_originals(next_plan), later,
+                                      next_plan["candidates"][update.STATE_PATH], client.values)
+        self.assertEqual(replay["master_plan"]["changes"], [])
+        self.assertEqual(replay["changed_files"], [])
+
+    def test_unused_leg_manual_lock_remains_protected(self):
+        finish_regular_snapshot(self.originals, self.snapshot)
+        add_postseason(self.snapshot, legs=3)
+        first = update.prepare_update(self.originals, self.snapshot)
+        originals = candidate_originals(first)
+        originals["MALE"]["matches"][-1]["automationLocked"] = True
+        later = deepcopy(self.snapshot)
+        add_postseason(later, legs=2, final_legs=2)
+        with self.assertRaisesRegex(update.UpdateError, "locked"):
+            update.prepare_update(originals, later, first["candidates"][update.STATE_PATH])
+
+    def test_qpo_removed_after_final_points_gap_is_recorded_and_playoff_continues(self):
+        add_postseason(self.snapshot, phase="204", home="003", away="004")
+        first = update.prepare_update(self.originals, self.snapshot, master_values=self.master_values)
+        client = MemorySheets(self.master_values)
+        master.apply_update_plan(client, first["master_plan"])
+        later = deepcopy(self.snapshot)
+        finish_regular_snapshot(self.originals, later)
+        add_postseason(later, phase="204", legs=0)
+        add_postseason(later, phase="202", legs=2, final_legs=2)
+        plan = update.prepare_update(candidate_originals(first), later, first["candidates"][update.STATE_PATH], client.values)
+        record = next(r for r in plan["matched"] if r["match_id"] == "VL2627-M-QPO-001")
+        self.assertEqual(record["non_play_reason"], "qualification_gap")
+        evidence = record["qualification_evidence"]
+        self.assertEqual(evidence["regular_completed"], 126)
+        self.assertTrue(evidence["official_standings_verified"])
+        self.assertEqual(evidence["source_url"], source.standings_url("2026-27", "MALE"))
+        self.assertEqual(evidence["third"], {"code": "M03", "points": 72})
+        self.assertEqual(evidence["fourth"], {"code": "M04", "points": 54})
+        self.assertEqual(plan["report"]["divisions"]["MALE"]["postseason"]["completed"], 2)
+        receipt = master.apply_update_plan(client, plan["master_plan"])
+        self.assertEqual(receipt["status"], "VERIFIED")
+        self.assertEqual(client.values[master.POSTSEASON_ROWS["VL2627-M-QPO-001"] - 1][12], "미실시")
+        again = update.prepare_update(candidate_originals(plan), later, plan["candidates"][update.STATE_PATH], client.values)
+        self.assertEqual(again["changed_files"], [])
+        self.assertEqual(again["master_plan"]["changes"], [])
+
+    def test_qpo_still_published_after_gap_is_marked_not_required_without_cancellation(self):
+        add_postseason(self.snapshot, phase="204", home="003", away="004")
+        first = update.prepare_update(self.originals, self.snapshot)
+        later = deepcopy(self.snapshot)
+        finish_regular_snapshot(self.originals, later)
+        plan = update.prepare_update(candidate_originals(first), later, first["candidates"][update.STATE_PATH])
+        match = plan["candidates"][update.DATA_PATHS["MALE"]]["matches"][-1]
+        self.assertEqual((match["status"], match["non_play_reason"]), ("not_required", "qualification_gap"))
+        self.assertNotIn("score", match)
+
+    def test_qpo_required_by_reconciled_points_cannot_disappear(self):
+        add_postseason(self.snapshot, phase="204", home="003", away="004")
+        first = update.prepare_update(self.originals, self.snapshot)
+        later = deepcopy(self.snapshot)
+        finish_regular_snapshot(self.originals, later, close_qpo_gap=True)
+        add_postseason(later, phase="204", legs=0)
+        with self.assertRaisesRegex(update.UpdateError, "unresolved postseason"):
+            update.prepare_update(candidate_originals(first), later, first["candidates"][update.STATE_PATH])
+
+    def test_qpo_waiver_cannot_use_unreconciled_official_rank_totals(self):
+        add_postseason(self.snapshot, phase="204", home="003", away="004")
+        first = update.prepare_update(self.originals, self.snapshot)
+        later = deepcopy(self.snapshot)
+        finish_regular_snapshot(self.originals, later)
+        add_postseason(later, phase="204", legs=0)
+        third = next(row for group in later["official_standings"] if group["gender"] == "MALE"
+                     for row in group["rows"] if row["rank"] == 3)
+        third["points"] += 1
+        with self.assertRaises(StandingsError):
+            update.prepare_update(candidate_originals(first), later, first["candidates"][update.STATE_PATH])
+
+    def test_qpo_waiver_requires_published_third_fourth_team_identity(self):
+        add_postseason(self.snapshot, phase="204", home="001", away="002")
+        first = update.prepare_update(self.originals, self.snapshot)
+        later = deepcopy(self.snapshot)
+        finish_regular_snapshot(self.originals, later)
+        add_postseason(later, phase="204", legs=0)
+        with self.assertRaisesRegex(update.UpdateError, "third/fourth"):
+            update.prepare_update(candidate_originals(first), later, first["candidates"][update.STATE_PATH])
+
+    def test_master_independently_rejects_tampered_qpo_qualification_evidence(self):
+        add_postseason(self.snapshot, phase="204", home="003", away="004")
+        first = update.prepare_update(self.originals, self.snapshot, master_values=self.master_values)
+        client = MemorySheets(self.master_values)
+        master.apply_update_plan(client, first["master_plan"])
+        later = deepcopy(self.snapshot)
+        finish_regular_snapshot(self.originals, later)
+        add_postseason(later, phase="204", legs=0)
+        valid = update.prepare_update(candidate_originals(first), later,
+                                      first["candidates"][update.STATE_PATH], client.values)
+        for mode in ("points", "verification", "source_phase", "missing_regular", "teams"):
+            records = deepcopy(valid["matched"])
+            qpo = next(r for r in records if r["match_id"] == "VL2627-M-QPO-001")
+            proof = qpo["qualification_evidence"]
+            if mode == "points": proof["third"]["points"] += 1
+            elif mode == "verification": proof["official_standings_verified"] = False
+            elif mode == "source_phase": proof["source_url"] = proof["source_url"].replace("leagueCode=201", "leagueCode=203")
+            elif mode == "missing_regular": records.remove(next(r for r in records if r["match_id"] == "VL2627-M-001"))
+            else: proof["third"]["code"] = "M01"
+            with self.subTest(mode=mode), self.assertRaises(master.MasterError):
+                master.build_update_plan(client.values, records)
 
 
 class MemorySheets:
@@ -124,6 +400,8 @@ class MemorySheets:
         self.writes.append(deepcopy(updates))
         for item in updates:
             location = re.search(r"!([A-S])(\d+)$", item["range"])
+            while len(self.values) < int(location[2]):
+                self.values.append([""] * 19)
             self.values[int(location[2]) - 1][ord(location[1]) - 65] = item["values"][0][0]
 
 
@@ -246,7 +524,8 @@ class UpdaterPlanTests(unittest.TestCase):
 
     def test_preserves_roster_participant_future_and_postseason_metadata(self):
         postseason = {"id": "VL2627-M-POST-1", "date": "2027-04-01", "stage": "플레이오프",
-                      "home": {"code": "M01"}, "away": {"code": "M02"}, "custom": "KEEP_POSTSEASON"}
+                      "home": {"code": "M01"}, "away": {"code": "M02"}, "custom": "KEEP_POSTSEASON",
+                      "seriesGame": 1, "round": "1차전", "status": "scheduled", "time": "14:00"}
         self.originals["MALE"]["matches"].append(postseason)
         before = deepcopy(self.originals)
         plan = update.prepare_update(self.originals, self.snapshot)
@@ -393,6 +672,7 @@ class MainFlowTests(unittest.TestCase):
     def invoke(self, arguments=(), client=None, *, trusted=False):
         argv = ["kovo_vleague_update.py", "--root", str(self.root), "--output", str(self.output), *arguments]
         with patch.object(sys, "argv", argv), patch.object(update, "collect_season", return_value=deepcopy(self.snapshot)), \
+                patch.object(lifecycle, "utc_now", return_value=datetime.fromisoformat(STAMP)), \
                 patch.object(update.SheetsClient, "from_environment", return_value=client) as connect, \
                 redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
             if trusted:

@@ -245,12 +245,13 @@
         "KVL-COMP-VLEAGUE-M-2026-27",
         "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
         "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101",
-        "USER-REQUEST-VLEAGUE-STANDINGS-20261102"
+        "USER-REQUEST-VLEAGUE-STANDINGS-20261102",
+        "KOVO-2026-27-LEAGUE-INFO-158236-ATTACHMENT-4573"
       ],
       "verified_at": "2026-11-02",
-      "sha256": "e627934b5585eb4c5bc3f4da679f3a2ee2f00056494a6ea117537f2deacac50f",
-      "evidence": "docs/validation/vleague-standings-mobile-20261102.md",
-      "review_note": "기존 공개 config에서 순위표 표시 옵션(showStatus, mobileStats)만 변경했다. 사용자 요청에 따른 중복 상태 제거와 모바일 승·패·승점 표시다. 경기·순위 원본 수치·산식·ID·명단·MASTER는 그대로이며 기존 공개 검수/출처 범위를 유지한다."
+      "sha256": "d6dd38e908170d787b7fb10d57414403ba5eb1b05c72712b832be005ae4f3d18",
+      "evidence": "docs/validation/vleague-postseason-automation-20261102.md",
+      "review_note": "최신 올스타전·달력·모바일 승패승점 표시 설정을 보존하고 KOVO 현행 운영요강 제16·18·19조의 남녀 포스트시즌 기간과 출처를 연결했다. 개별 대진·시각·결과를 추정하지 않는다. 정규 순위표의 원본 수치·공식 ID·명단은 유지한다."
     },
     "data/competitions/v-league-women-2026-27/config.json": {
       "access_level": "PUBLIC",
@@ -261,12 +262,49 @@
         "USER-REQUEST-VLEAGUE-CALENDAR-V2-20261101",
         "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
         "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101",
-        "USER-REQUEST-VLEAGUE-STANDINGS-20261102"
+        "USER-REQUEST-VLEAGUE-STANDINGS-20261102",
+        "KOVO-2026-27-LEAGUE-INFO-158236-ATTACHMENT-4573"
       ],
       "verified_at": "2026-11-02",
-      "sha256": "834c65b28ae35a0b58553dd16fb139c56bbd17116385b8ddba65be340cbf7dc0",
-      "evidence": "docs/validation/vleague-standings-mobile-20261102.md",
-      "review_note": "기존 공개 config에서 순위표 표시 옵션(showStatus, mobileStats)만 변경했다. 사용자 요청에 따른 중복 상태 제거와 모바일 승·패·승점 표시다. 경기·순위 원본 수치·산식·ID·명단·MASTER는 그대로이며 기존 공개 검수/출처 범위를 유지한다."
+      "sha256": "79c4f9b9d3f9ad6f23066485bd4cfdbafc613505924f8ed532c126c31025a840",
+      "evidence": "docs/validation/vleague-postseason-automation-20261102.md",
+      "review_note": "최신 올스타전·달력·모바일 승패승점 표시 설정을 보존하고 KOVO 현행 운영요강 제16·18·19조의 남녀 포스트시즌 기간과 출처를 연결했다. 개별 대진·시각·결과를 추정하지 않는다. 정규 순위표의 원본 수치·공식 ID·명단은 유지한다."
+    },
+    "data/player-updates/config.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OPERATING-MASTER-v17",
+        "MK-OFFICIAL-RSS",
+        "NEWSIS-OFFICIAL-RSS"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "e17a22f20c03df71e6f82d2880595d3545a513dcc99d8e918e6819b4db96ea10",
+      "evidence": "docs/validation/competition-automation-extension-20261101.md",
+      "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
+    },
+    "data/player-updates/master_targets.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER",
+        "KVL-VLEAGUE-2026-27-W-PLAYER-MASTER"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "900333e24c99fc41e77ce7d4f7f07b55d61c3c3700971beb57959b4951f23b17",
+      "evidence": "docs/validation/competition-automation-extension-20261101.md",
+      "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
+    },
+    "data/player-updates/reviewed_mappings.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OPERATING-MASTER-v17"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "1dff32237df45dea561ca4231130724e4ab94a30288bac5b2ec2c0bd05de63ad",
+      "evidence": "docs/validation/competition-automation-extension-20261101.md",
+      "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
     }
   }
 }

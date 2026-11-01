@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "monitoring_scope": "Player notices and news continue through the off-season; tournament score schedules are controlled separately.",
+  "monitoring_window": {
+    "enabled": true,
+    "season": "2026-27",
+    "timezone": "Asia/Seoul",
+    "starts_on": "2026-11-01",
+    "ends_on": "2027-10-31",
+    "review_due_on": "2027-06-01",
+    "review_due_behavior": "pause_until_config_reviewed",
+    "season_rollover": "manual_review_required",
+    "basis": "KVL operational window, not an official competition end date. Review the next season's source index and MASTER before extending."
+  },
+  "news_keywords": ["배구", "V리그", "V-리그", "브이리그", "KOVO", "KUVF", "volleyball"],
+  "news_sources": [
+    {
+      "id": "KVL-SRC-RSS-MK-SPORTS",
+      "publisher": "매일경제",
+      "enabled": true,
+      "url": "https://www.mk.co.kr/rss/71000001/",
+      "documentation_url": "https://www.mk.co.kr/rss",
+      "feed_hosts": ["www.mk.co.kr"],
+      "article_hosts": ["www.mk.co.kr", "m.mk.co.kr"],
+      "scope": "Review metadata: title, source link and feed publication date only. No article body, photo or automatic republication."
+    },
+    {
+      "id": "KVL-SRC-RSS-NEWSIS-SPORTS",
+      "publisher": "뉴시스",
+      "enabled": true,
+      "url": "https://www.newsis.com/RSS/sports.xml",
+      "documentation_url": "https://www.newsis.com/RSS/index.php",
+      "feed_hosts": ["www.newsis.com"],
+      "article_hosts": ["www.newsis.com", "mobile.newsis.com"],
+      "scope": "Review metadata: title, source link and feed publication date only. No article body, photo or automatic republication."
+    }
+  ]
+}

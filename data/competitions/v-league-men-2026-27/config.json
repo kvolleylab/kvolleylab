@@ -52,7 +52,20 @@
       "poRule": "정규리그 2위 vs 준PO 승자 · 준PO 미개최 시 정규리그 3위 진출",
       "finalLabel": "챔피언결정전",
       "finalRule": "정규리그 1위 vs 플레이오프 승자",
-      "note": "준플레이오프는 조건부 단판, 플레이오프는 3전 2선승제, 챔피언결정전은 5전 3선승제로 표시합니다. 실제 대진은 정규리그 순위 확정 후 자동 갱신됩니다."
+      "periods": {
+        "qpo": { "startDate": "2027-04-06", "endDate": "2027-04-06" },
+        "po": { "startDate": "2027-04-08", "endDate": "2027-04-12" },
+        "final": { "startDate": "2027-04-14", "endDate": "2027-04-22" }
+      },
+      "periodSource": {
+        "sourceId": "KOVO-2026-27-LEAGUE-INFO-158236-ATTACHMENT-4573",
+        "sourceUrl": "https://cdn.kovo.co.kr/1/games/v-leagues/league-info-test/HK%ED%9D%A5%EA%B5%AD%EA%B8%88%EC%9C%B5%202026~2027%20V-%EB%A6%AC%EA%B7%B8%20%EC%9A%B4%EC%98%81%EC%9A%94%EA%B0%95.pdf",
+        "pdfPage": 3,
+        "printedPages": "268–269",
+        "article": "제16조",
+        "checkedAt": "2026-11-02T00:31:18+09:00"
+      },
+      "note": "준플레이오프는 조건부 단판, 플레이오프는 3전 2선승, 챔피언결정전은 5전 3선승입니다. 각 차전의 대진·날짜·시각·경기장은 공식 편성 후 반영합니다."
     },
     "participants": {
       "mode": "flat",

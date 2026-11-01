@@ -29,6 +29,13 @@ on:
       - 'tests/test_kovo_official_notices.py'
       - 'scripts/kovo_verify_roster_contracts.py'
       - 'tests/test_kovo_verify_roster_contracts.py'
+      - 'scripts/kvl_player_updates.py'
+      - 'tests/test_kvl_player_updates.py'
+      - 'scripts/kvl_player_master_plan.py'
+      - 'tests/test_kvl_player_master_plan.py'
+      - 'data/player-updates/config.json'
+      - 'data/player-updates/reviewed_mappings.json'
+      - 'data/player-updates/master_targets.json'
 
 permissions:
   contents: write
@@ -39,6 +46,7 @@ concurrency:
 
 jobs:
   collect:
+    if: github.repository == 'kvolleylab/kvolleylab' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -52,40 +60,61 @@ jobs:
         run: |
           python -m unittest discover -s tests -p test_kovo_official_notices.py -v
           python -m unittest discover -s tests -p test_kovo_verify_roster_contracts.py -v
+          python -m unittest discover -s tests -p test_kvl_player_updates.py -v
+          python -m unittest discover -s tests -p test_kvl_player_master_plan.py -v
+      - name: Check monitoring period and season review deadline before network access
+        id: period
+        run: python scripts/kvl_player_updates.py --check-window --github-output "$GITHUB_OUTPUT"
       - name: Download official public notices without credentials
+        if: steps.period.outputs.active == 'true'
         env:
           MAX_PAGES: ${{ inputs.max_pages || '12' }}
           MAX_DETAILS: ${{ inputs.max_details || '180' }}
           NOTICE_ID: ${{ inputs.notice_id || '' }}
         shell: bash
         run: |
+          python scripts/kvl_player_updates.py --require-active-window
           if [ -n "$NOTICE_ID" ]; then
             python scripts/kovo_official_notices.py --max-pages 0 --max-details 1 --notice-id "$NOTICE_ID"
           else
             python scripts/kovo_official_notices.py --max-pages "$MAX_PAGES" --max-details "$MAX_DETAILS"
           fi
-      - name: Build reviewed candidate roster, salary and change queue
+      - name: Build unreviewed candidate roster, salary and change queue
+        if: steps.period.outputs.active == 'true'
         run: python scripts/kovo_verify_roster_contracts.py
+      - name: Version player evidence and collect separate news metadata
+        if: steps.period.outputs.active == 'true'
+        run: python scripts/kvl_player_updates.py --collect-news
+      - name: Report verified MASTER targets and local plan readiness without external access
+        if: steps.period.outputs.active == 'true'
+        run: python scripts/kvl_player_master_plan.py
       - name: Store diagnostic summary
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: kovo-notice-report
-          path: data/kovo/official-notices/2026-27/run_report.json
+          path: |
+            data/kovo/official-notices/2026-27/run_report.json
+            data/player-updates/run_report.json
           retention-days: 14
           if-no-files-found: ignore
       - name: Commit normalized facts (never update homepage or Drive MASTER)
+        if: steps.period.outputs.active == 'true'
         shell: bash
         run: |
+          python scripts/kvl_player_updates.py --validate-public
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/kovo/official-notices/2026-27/index.json data/kovo/official-notices/2026-27/registration_rows.csv data/kovo/official-notices/2026-27/change_events.csv data/kovo/official-notices/2026-27/roster_projection.json data/kovo/official-notices/2026-27/roster_review_queue.json
           if [ -f data/kovo/official-notices/2026-27/latest_changes.json ]; then
             git add data/kovo/official-notices/2026-27/latest_changes.json
           fi
+          git add data/player-updates/official_candidates.json data/player-updates/reviewed_events.json data/player-updates/news_candidates.json data/player-updates/master_change_plan.json
           if git diff --cached --quiet; then
             echo "No source notice changes to commit"
           else
+            python scripts/kvl_player_updates.py --require-active-window
             git commit -m "data(kovo): update normalized official notices [skip ci]"
+            python scripts/kvl_player_updates.py --require-active-window
             git push origin HEAD:main
           fi
