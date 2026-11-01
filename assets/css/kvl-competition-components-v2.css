@@ -3299,3 +3299,8 @@ html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot
 html body.kvl1180-prototype.kvl-competition-template-v2 #knockout .kvl-tree-slot .kvl1180-match-sets{font-size:11px!important;color:#4b5563!important;white-space:normal!important;line-height:1.5!important}
 .kvl-tree-bye>p{font-size:11px;color:#77899a;margin:8px 0 0}
 @media print{.kvl-tree-scroll{overflow:visible}.kvl-tree-bracket{min-width:0;grid-template-columns:repeat(var(--tree-columns),minmax(0,1fr));gap:20px}.kvl-tree-links{width:20px}.kvl-tree-round-body{height:calc(var(--tree-slots)*300px)}.kvl-tree-slot{break-inside:avoid}}
+
+/* Optional single-league presentation: result already communicates status. */
+html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family] #groups .is-single-league.is-status-hidden :is(.kvl1180-combined-table-head,.kvl1180-combined-row){grid-template-columns:60px minmax(180px,2.35fr) 48px 48px 60px 94px 94px 126px!important;column-gap:6px!important}
+html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family] #groups .is-single-league.is-status-hidden :is(.kvl1180-combined-table-head,.kvl1180-combined-row)>*{grid-column:auto!important}
+html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family] #groups .is-single-league.is-status-hidden .kvl-shared-combined-line{grid-template-columns:minmax(236px,1fr) 100px 48px 60px 94px 94px!important}

@@ -8,6 +8,7 @@ window.KVLCompetitionAdapterV2=d=>{
  return {...d,participants:d.participants.map(t=>({...t,logo:t.flag})).sort((a,b)=>a.name.localeCompare(b.name,'ko-KR')),
  standings:{...d.standings,rows:d.standings.rows.map(r=>r.team.code==='CHN'&&r.status==='host-qualified'?{...r,statusLabel:'개최국'}:r)},structure:{...d.structure,
   presentation:'domestic-home-v2',heroPresentation:'preserve',divisionLabel:'남자부',heroTitle:d.displayName,heroTagline:d.officialName,
+  standings:{...d.structure.standings,showStatus:false},
   hubUrl:'https://kvolleylab.com/competition.html',hubCategoryLabel:'국제대회',hubLabel:'VNL',
   eyebrow:'KVL INTERNATIONAL · VOLLEYBALL NATIONS LEAGUE',
   labels:{...d.structure.labels,participantsTitle:'참가국',groupsTab:'예선순위',knockoutTab:'대진·최종순위'},
@@ -35,7 +36,7 @@ window.KVLDomesticHomeV2.apply=d=>{
  const groupHeading=q('.kvl1180-combined-head>div>.label'),groupNote=q('.kvl1180-combined-head>p');
  if(groupHeading)groupHeading.textContent=d.structure.labels.standingsEyebrow;
  if(groupNote)groupNote.textContent=d.standingsNote;
- q('.dv2-utility').insertAdjacentHTML('beforeend','<small class="vnl-preview-tag">국내 기본 템플릿 시안</small>');
+ q('.dv2-utility').insertAdjacentHTML('beforeend','<small class="vnl-preview-tag">국제 기본 템플릿 기준 시안</small>');
  localLabels();return result;
 };
 document.addEventListener('click',e=>{

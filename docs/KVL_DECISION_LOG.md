@@ -339,3 +339,8 @@ Status: SCOPE CONFIRMED / PROTOTYPE / READY FOR REVIEW / PRODUCTION NOT AUTHORIZ
 ## 2026-11-01 · VNL 시안 8개 피드백과 국내 팀 달력 보완
 
 Status: REQUESTED CHANGES IMPLEMENTED / PROTOTYPE / READY FOR REVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 기존 운영 VNL Hero·설명 카드 색상 복원, 경기행 5세트 기준 중앙 정렬, 보조 정보 한 줄, 중국 ‘개최국’ 표시, 일반 사다리 실선, 국가 가나다순과 선택 팀 달력을 요청했다. 경기행·부전승·팀 달력은 국내 기본 템플릿에도 같은 형태로 보완하도록 명시했다. 앞선 ‘국내 공통 파일을 수정하지 않는다’는 초기 시안 제약을 이 세 기능과 선택적 원본 Hero 보존의 브랜치 제안 범위에서 대체한다. 공통 소스 4개 파일을 Draft PR #216에서 보완하며 운영 main/Pages·wrapper/config/data·MASTER·기존 ID·Hero 자산은 변경하지 않는다. 국제 템플릿 개정 PR #212는 보류를 유지한다. 국내와 VNL은 같은 달력 렌더러를 사용하고, VNL 표시용 어댑터에서만 국가 정렬·중국 상태 문구를 바꾼다. [변경·화면·검수·승인 후 범위](validation/vnl-domestic-template-v1.md).
+
+
+## 2026-11-01 · VNL 시안의 국제 기본 기준 채택 및 팀 경기 표시 보완
+
+Status: DESIGN BASELINE ADOPTED / REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사용자가 현재 2026 VNL 페이지를 국제 기본 템플릿의 기준으로 지정했다. 앞선 국제 기준 확정 보류를 이 디자인 범위에서 대체하며, 별도 대안 PR #212는 재개하지 않는다. 국내 Hero 글자 크기를 VNL 규격으로 맞추고, 경기장·현지시간 문구는 세트 스코어 중심에 정렬한다. 팀 선택 시 달력과 전체 목록을 기본 펼침으로 표시하며 달력에 대진/등록 스코어를 표기한다. 단일 VNL 예선순위의 중복 상태 열만 선택적으로 제거한다. 데이터·MASTER·ID·의미/시즌 구조 원문 및 운영 main은 변경하지 않는다. 적용은 PR #216과 비공개 시안이며 운영 병합/Pages/일괄 적용 승인으로 확대하지 않는다. [국제 기준](international-template-v2.md) · [검수 기록](validation/vnl-domestic-template-v1.md).

@@ -1,6 +1,12 @@
 # K-Volley Lab 국제대회 페이지 기본 템플릿 v2
 
-## 목적
+## 2026-11-01 · 최신 디자인 기준: 2026 VNL 시안
+
+사용자가 현재 2026 VNL 남자부 시안을 **국제대회 기본 템플릿의 디자인 기준**으로 지정했다. 이전 AVC 기반 geometry 설명은 기존 운영 화면과 역사적 검증의 기준이며, 새 표시 기준은 [international-template-v2.md](international-template-v2.md)를 따른다. 국내 템플릿과 공통 카드·탭·표·경기행·달력·모바일 동작 및 Competition Engine V2를 공유한다. VNL 예선·파이널 규정이나 데이터는 다른 국제대회의 기본값으로 고정하지 않는다.
+
+상태는 **DESIGN BASELINE ADOPTED / PREVIEW IMPLEMENTED / PRODUCTION NOT AUTHORIZED**다. 이 기준 지정은 운영 main 병합·전체 대회 일괄 적용 승인이 아니다. 현재 구현은 `feature/vnl-domestic-template-v1` / PR #216의 격리된 시안에서 검증한다. 별도 국제 개정 대안 PR #212를 병합하거나 재개하지 않는다. 아래 기존 인쇄/PDF 검수 이력도 새 변경의 검증 완료로 전용하지 않는다.
+
+## 목적 (이전 V2 기준 이력)
 2026 AVC 남자·여자 대륙선수권 프로토타입을 PC 1180px, 모바일 390px/360px에서 교차 검수한 결과를 K-Volley Lab 국제대회 공통 기준으로 승격한다.
 
 V2는 특정 실제 대회 페이지를 복제하는 방식이 아니라 **공통 구조 + 성별/대회계열 테마 + 대회 데이터 + 대회 상태(upcoming/active/completed)** 를 분리한 재사용 기준이다. V1은 역사적 동결 스냅샷으로 보존하고 신규 대회는 V2를 우선한다.

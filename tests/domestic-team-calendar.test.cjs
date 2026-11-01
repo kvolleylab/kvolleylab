@@ -32,7 +32,8 @@ test('team calendar contains only the selected team, including home and away gam
   }
   assert.deepEqual([...seen].sort(),[...new Set(expected.map(m=>m.date))].sort());
   assert.equal(doc.querySelector('[data-dv2-calendar]').innerHTML,overview);assert.equal(JSON.stringify(d),before);
-  assert.equal(doc.querySelector('.dv2-team-match-list').open,false);
+  assert.equal(doc.querySelector('.dv2-team-match-list').open,true);
+  assert.equal(doc.querySelectorAll('.dv2-team-match-list [data-match-id]').length,expected.length);
  }finally{w.close();}
 });
 test('changing team and returning to a calendar date rebuilds one calendar without losing the selected team',()=>{
@@ -42,6 +43,44 @@ test('changing team and returning to a calendar date rebuilds one calendar witho
   const date=d.matches.find(m=>[m.home.code,m.away.code].includes(other)).date;route(other,'&date='+date);
   assert.equal(doc.querySelectorAll('.dv2-team-match-list').length,1);assert.equal(doc.querySelector('.dv2-team-match-list').open,true);assert.ok(doc.querySelector('#team-date-'+date));
   route('UNKNOWN');assert.equal(doc.querySelector('[data-dv2-team-calendar]'),null);
+ }finally{w.close();}
+});
+test('team date cells show registered scores or vs, retain every same-day match and escape names',()=>{
+ const {w,d,doc,code}=setup();try{
+  const first=d.matches.find(m=>[m.home.code,m.away.code].includes(code)),other=d.participants.find(t=>t.code!==code);
+  d.participants.find(t=>t.code===code).name='긴 팀 이름 <학교>';
+  d.matches=[{...first,id:'calendar-future',date:'2026-12-01',home:{code},away:{code:other.code},score:{home:3,away:1,sets:[]}},
+   {...first,id:'calendar-past-unscored',date:'2026-12-01',home:{code:other.code},away:{code},score:null}];
+  // The render hook runs before apply(): it must use the passed data, not global current.
+  w.KVLCompetitionComponentsV2.render();w.KVLDomesticHomeV2.apply(d);
+  const cells=[...doc.querySelectorAll('[data-dv2-team-calendar] .dv2-team-game')];assert.equal(cells.length,2);
+  assert.deepEqual(cells.map(c=>c.querySelector('b').textContent),['3-1','vs']);
+  assert.ok(cells.every(c=>c.textContent.includes('긴 팀 이름 <학교>')));assert.equal(doc.querySelector('학교'),null);
+  assert.equal(doc.querySelectorAll('[data-dv2-team-calendar] .dv2-day small').length,0);
+  assert.equal(doc.querySelector('.dv2-team-match-list').open,true);
+  doc.querySelector('[data-dv2-team-calendar] [data-dv2-date]').click();assert.equal(doc.querySelectorAll('.dv2-day-match').length,2);
+  w.Date.now=()=>Date.parse('2026-12-02T00:00:00Z');w.KVLCompetitionComponentsV2.render();
+  assert.deepEqual([...doc.querySelectorAll('[data-dv2-team-calendar] .dv2-team-game-score')].map(e=>e.textContent),['3-1','vs']);
+ }finally{w.close();}
+});
+test('hiding a single-league status never removes grouped competitions pool labels',()=>{
+ const {w,d,doc}=setup('university-goseong-men-2026');try{
+  const before=doc.querySelector('.kvl1180-combined-table').textContent;
+  d.structure.standings.showStatus=false;w.KVLCompetitionComponentsV2.render();
+  assert.equal(doc.querySelector('.kvl1180-combined-table').textContent,before);
+  assert.equal(doc.querySelector('.is-status-hidden'),null);
+ }finally{w.close();}
+});
+test('single-league status can be omitted without losing result, metrics or default columns',()=>{
+ const {w,d,doc}=setup('vnl-men-2026');try{
+  const snapshot=JSON.stringify(d.standings),getRows=()=>[...doc.querySelectorAll('.kvl1180-combined-row')].map(r=>[...r.children].map(c=>c.textContent));
+  const before=getRows();assert.equal(before.length,18);assert.ok(before.every(r=>r.length===9));
+  d.structure.standings.showStatus=false;w.KVLCompetitionComponentsV2.render();
+  const after=getRows();assert.deepEqual(after,before.map(r=>r.filter((_,i)=>i!==2)));
+  assert.equal(doc.querySelector('.kvl1180-combined-table-head').children.length,8);
+  assert.ok([...doc.querySelectorAll('.kvl-shared-combined-line')].every(r=>r.children.length===6));
+  assert.equal(doc.querySelectorAll('.kvl1180-combined-pool').length,0);assert.equal(JSON.stringify(d.standings),snapshot);
+  delete d.structure.standings.showStatus;w.KVLCompetitionComponentsV2.render();assert.deepEqual(getRows(),before);
  }finally{w.close();}
 });
 test('an empty selected-team schedule gets the same calendar empty state',()=>{

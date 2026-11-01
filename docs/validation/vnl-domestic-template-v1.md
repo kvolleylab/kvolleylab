@@ -1,84 +1,80 @@
-# 2026 VNL 남자부 · 국내 기본 템플릿 수정 시안
+# 2026 VNL 남자부 · 국제 기본 템플릿 기준 시안
 
-상태: **READY FOR REVIEW / 운영 미반영** · 2026-11-01
+상태: **DESIGN BASELINE ADOPTED / REVISION 3 READY FOR REVIEW / 운영 미반영** · 2026-11-01
 
-국제 기본 템플릿 개정(PR #212)은 보류 상태다. 국내 `domestic-home-v2`를 사용한 VNL 시안에 사용자 피드백 8개를 반영하고, 국내 템플릿의 경기행·부전승 연결선·선택 팀 달력도 같은 브랜치에서 보완했다.
+사용자가 현재 2026 VNL 시안을 국제대회 기본 템플릿의 기준으로 지정했다. 국내 기본 템플릿과 공통 Engine V2를 함께 사용하며, 국내 Hero 크기도 VNL과 맞춘다. 별도 대안 PR #212는 재개하지 않는다. 최신 요청 네 가지를 같은 시안에 반영했다.
 
 - 비공개 시안: https://kvl-vnl-domestic-template-v1.daewook1029.chatgpt.site
 - Draft PR: https://github.com/kvolleylab/kvolleylab/pull/216
 - 브랜치: `feature/vnl-domestic-template-v1`
-- 비교 기준 main: `2791e93f730a13c7f64e209d802b7e1df43b4758`
-- 화면: `previews/vnl-domestic-v1/index.html`; 반응형 검수: `qa.html`, `mobile-qa.html`
+- 비교 main: `2791e93f730a13c7f64e209d802b7e1df43b4758`
+- 국제 기준: [international-template-v2.md](../international-template-v2.md)
+- 국내 기준: [domestic-template-v2.md](../domestic-template-v2.md)
+- 화면/검수: `previews/vnl-domestic-v1/index.html`, `qa.html`, `revision-qa.html`
 
-![PC Hero와 설명 카드](vnl-domestic-v2-pc.jpg)
-![3세트와 5세트 경기 정렬](vnl-domestic-v2-schedule.jpg)
-![390px와 360px 모바일](vnl-domestic-v2-mobile.jpg)
+![PC 경기장 설명의 스코어 중심 정렬](vnl-domestic-v3-pc.jpg)
+![모바일 팀 달력·기본 펼침 목록·국내 Hero](vnl-domestic-v3-mobile.jpg)
+![중복 상태 열을 제거한 PC 예선순위](vnl-domestic-v3-standings.jpg)
 
-## 8개 요청 반영
+## 최신 네 가지 요청
 
-| 요청 | 결과 |
+| 요청 | 반영 내용 |
 |---|---|
-| 1. 기존 VNL Hero | 국내 Hero 덮어쓰기를 분리했다. 원래 이미지·그라데이션·위치·제목 색상/크기/굵기·날짜·장소·상태 배치를 사용한다. PC cover, 모바일 auto 100%로 비율을 유지하고 승인된 WebP와 내장 자산을 그대로 사용한다. |
-| 2. 설명 카드 색상 | 파이널의 연한 파랑, 랭킹의 연한 초록과 원래 브랜드/제목/각주 색상을 복원했다. 시즌 최종 성적의 연한 금색도 원래 값이다. |
-| 3. 경기행 중앙 정렬 | 시간 150px / 가변 대진 / 세트 285px로 구분하고 대진을 가운데 영역 중앙에 둔다. 세트는 5칸을 항상 확보해 3·5세트 경기의 로고·국가명·스코어 위치가 같다. 국내 기본 템플릿도 같은 규칙이다. |
-| 4. 보조 정보 한 줄 | 단계·경기장·현지시간을 한 줄로 표시한다. 좁은 화면에서는 해당 행 내부 스크롤만 허용한다. |
-| 5. 중국 표기 | 표시용 어댑터에서 ‘개최국’으로 변경했다. 원본 순위/진출 상태/설명은 수정하지 않았다. |
-| 6. 사다리 실선 | 일반 연결은 실선, 실제 부전승/직행이 있는 쌍만 기존 점선이다. VNL에는 부전승이 없으므로 일반 연결 전체가 실선이다. 국내 고성대회 실제 부전승 점선도 확인했다. |
-| 7. 가나다순 | 전체 18개국을 한국어 이름순으로 정렬했다. 선택·검색·명단·기존 프로필 연결을 유지한다. |
-| 8. 선택 팀 달력 | 경기 목록의 국기/로고·팀명을 누르면 그 팀 경기만 월간 달력에 표시한다. 날짜 팝업에는 해당 팀 경기와 세트 점수를 표시하고, 목록 이동에서도 팀과 날짜를 유지한다. 전체 목록은 달력 아래에서 펼친다. 국내와 VNL이 같은 렌더러를 사용한다. |
+| 국제 기본 기준과 국내 Hero | 현재 VNL 시안을 국제 디자인 기준으로 문서화했다. 국내 Hero 제목·상단 영문 분류·부제·날짜·장소·상태 글자 크기를 VNL과 맞췄다. 국내 색상·이미지·글꼴·제목 줄 배치는 유지한다. |
+| 경기장 안내 정렬 | PC의 단계·경기장·현지시간 안내를 전체 세트 스코어와 같은 중심축에 정렬했다. 쿠바–폴란드 3세트 및 중국–슬로베니아 5세트 경기 모두 스코어/설명 중심 x=830px로 일치했다. 한 줄과 해당 행 내부 스크롤을 유지한다. |
+| 팀 달력 및 목록 | 국기/로고 또는 팀명 선택 시 팀 달력과 전체 목록이 둘 다 펼쳐진다. 날짜에는 `이란 vs 쿠바` / `이란 3-1 쿠바` 형식으로 표시한다. 실제 등록 스코어 유무를 사용하며 날짜로 종료를 추정하지 않는다. 한 날짜의 여러 경기도 모두 표시한다. PC는 가로, 모바일은 이름/점수/이름을 세로로 놓고 긴 이름을 줄바꿈한다. |
+| 예선순위 중복 제거 | `structure.standings.showStatus: false`로 상태 열만 생략한다. 결과·모든 원래 순위 수치·중국 ‘개최국’ 표기는 유지한다. 다른 대회의 기본 상태 열과 조별순위의 조 열은 바꾸지 않는다. |
 
-## 적용 기준과 색상
+## 공통 개선과 VNL 설정
 
-국내 템플릿 문서 및 10월 26~27일 승인 기록, 운영원칙 MASTER v16(Drive 수정 2026-10-27T16:24:09Z), DESIGN_SYSTEM, Theme Policy v1, Competition Page Template v2, Hero 가이드와 개발 워크플로를 기준으로 한다. 기존 시안에서 확인한 자료를 재사용하고, 이번에는 최신 main의 실제 경로 `competition-engine.html?competition=vnl-men-2026`와 비교했다. 오래된 `vnl.html`은 비교 기준이 아니다.
+공통 코드는 `assets/js/kvl-domestic-home-v2.js`와 CSS의 Hero 글자 크기·경기행·팀 달력, `assets/js/kvl-competition-components-v2.js`와 CSS의 선택적 순위 열이다. 기존 선택 모듈을 사용하며 국내/국제 엔진을 복제하지 않는다.
 
-| 용도 | 값 |
+`previews/vnl-domestic-v1/bridge.js`는 정확한 VNL 2026 남자 ID·시즌·계열에만 표시 선택을 적용한다. 원본 Hero 보존, 참가국 가나다순, 중국 문구, VNL 메뉴 명칭과 단일 예선순위의 상태 생략은 이 어댑터의 선택이다. VNL 예선·8강 파이널 방식은 다른 대회의 기본 규칙으로 지정하지 않는다. 새 국제 기준은 표시 항목과 대회별 입력·적용 절차를 별도로 문서화한다.
+
+국제 기준 문서 `docs/KVL_COMPETITION_PAGE_TEMPLATE_V2.md`의 새 승인 기록과 `docs/international-template-v2.md`가 최신 기준이다. 아래쪽 기존 AVC geometry와 인쇄 검증 상태는 역사적 기준으로 명시했다. 국내 문서와 결정 로그도 같은 범위를 기록한다.
+
+## 유지한 Hero·설명·색상
+
+원래 VNL의 승인 Hero 이미지, 비율, 그라데이션, 제목 #F2E8CF와 글자 크기를 유지한다. 국내 Hero도 PC 제목 `clamp(30px,2.45vw,38px)` / 모바일24px, 부제15/12px, 날짜·장소14/11.5px, 영문 분류11/10px, 상태11/9px로 일치한다. PC/390/360 실제 계산값을 모두 비교했다.
+
+`data/competitions/vnl-men-2026/data.json`의 `meaning`·`qualifications`를 그대로 사용한다. 기존 설명 DOM은 **한눈에 기본 정보·요약 카드 아래, 월간 달력 위**에 있다. 파이널 진출 방식·시즌 최종 성적·세계랭킹 관련 원문 전체를 보존하고 결과와 설명을 구분한다. 기본 닫힘이나 중복 저장이 없다. 원문·숫자를 수정하지 않았다.
+
+| 용도 | 기준값 |
 |---|---|
-| VNL 보라 / 연한 배경 | #5B3A8E / #F3EFFA |
-| Hero 제목 | 원래 #F2E8CF, PC 38px / 모바일 24px, 굵기 800 |
+| FIVB 남자 보라 / 연한 배경 | #5B3A8E / #F3EFFA |
+| Hero 제목 | #F2E8CF, PC 최대38px / 모바일24px |
 | 파이널 카드 / 브랜드 | #F8FBFF → #EDF6FF / #0455AD |
 | 세계랭킹 카드 / 브랜드 | #F5FCF8 → #E9F8EF / #08783E |
-| 일반 스코어·세트 | 중립 #4B5563 |
-| 글꼴 | Arial, Noto Sans KR, Malgun Gothic, sans-serif 유지 |
+| 일반 경기 스코어·세트 | #4B5563 |
+| 팀 달력 | 국가명 #142B45, 흰 카드, 표시선 #5D9EE8, 결과는 계열색 |
+| 글꼴 | Arial, Noto Sans KR, Malgun Gothic, sans-serif |
 
-Hero 제목 스타일과 배경 비율·위치·그라데이션은 PC/390/360에서 원본과 일치한다. PC 원본의 계산 글꼴은 Pretendard 우선 스택이며, 시안은 요청된 Arial 기준을 유지해 Hero 총높이가 약 2px 다르다. 모바일 Hero 높이는 원본과 같다. 이미지 파일이나 해상도는 변경하지 않았다.
-
-## 원문과 운영 보호
-
-`data/competitions/vnl-men-2026/data.json`의 `meaning`·`qualifications`를 그대로 사용한다. 기존 V2 설명 DOM을 **요약 카드 아래, 월간 달력 위**에 배치했다. 파이널 진출 방식과 실제 진출 8개국, 폴란드 우승·결승 결과, 세계랭킹 설명 및 제목·브랜드·보조 표시·각주·결과 국가를 모두 보존한다. 설명과 결과는 겹치지 않으며 접힌 영역에 숨기지 않는다. 설명 중복 저장도 없다.
-
-**공통 소스 4개 파일은 이 feature 브랜치에서만 수정했다.** 앞선 시안의 ‘공통 파일 수정 0건’은 초기 버전 기록이며 이번 수정본에는 적용되지 않는다. 운영 main/Pages, wrapper/config/data, MASTER, Hero 자산, 경기/국가/팀/Player ID·명단은 변경하지 않았다. 운영 AVC·VNL·국내 화면은 기존 main을 계속 사용한다.
-
-| 변경 범위 | 파일 |
-|---|---|
-| 국내 공통 제안 | `assets/js/kvl-domestic-home-v2.js`, `assets/css/kvl-domestic-home-v2.css`: 팀 달력/독립 월 상태, 경기행 정렬, 선택적 Hero 보존 |
-| 공통 엔진 최소 보완 | `assets/js/kvl-competition-components-v2.js`: 선택적 팀 후처리 한 줄; `assets/css/kvl-competition-components-v2.css`: 부전승 선택자 |
-| VNL 표시 설정 | `previews/vnl-domestic-v1/bridge.js`, `vnl.css`: 원문 DOM 배치, 국가 정렬, 중국 상태 문구, VNL 색상 |
-| 국내 기준 문서 | `docs/domestic-template-v2.md`의 2026-11-01 보완안 |
-| 빌드/검증/회귀 | `scripts/build-vnl-domestic-preview-v1.py`, `scripts/verify-vnl-domestic-preview-v1.py`, `tests/domestic-team-calendar.test.cjs` |
-
-빌드는 별도 호스팅 폴더에 현재 브랜치 자산을 복사하고 정확한 VNL ID·연도·FIVB 계열의 시안에서만 국내 실행 조건과 CSS 선택자를 연결한다. `competitionFamily=fivb`를 유지하며 독립 엔진 사본을 관리하지 않는다. 생성된 `provenance.json`에 공통 4개 파일과 VNL config/data의 입력 해시를 남긴다. 원본 비교/국내 검수 wrapper는 로컬 canonical 검증만 끈 QA 전용 산출물이며 운영 wrapper는 수정하지 않는다.
+운영원칙 MASTER v16(Drive 수정2026-10-27T16:24:09Z), Theme Policy v1, DESIGN_SYSTEM, Hero 가이드, 최신 국내 승인 기록과 기존 운영 VNL을 참조했다. 이번 확인에서 MASTER 수정 시각은 이전 읽은 최신본과 같았다.
 
 ## 검수 결과
 
-- PC 본문 1180px, 모바일 390px·360px × 6개 화면, 총 18개 조합 통과. 페이지 가로 넘침 없음.
-- 원본 Hero의 이미지 배치·제목 스타일, 파랑/초록 설명 카드 색상은 세 폭에서 일치한다.
-- 쿠바–폴란드 3세트와 중국–슬로베니아 5세트의 대진 x좌표·폭이 같고, 세트 영역 285px 및 보조 설명 한 줄을 확인했다.
-- 중국은 개최국만 표시, 참가국 가나다순, VNL 일반 연결 실선, 고성 실제 부전승 점선을 확인했다.
-- 쿠바 12경기 달력 → 7월 15일 벨기에–쿠바 1경기 팝업 → 선택 팀/날짜를 유지한 목록 이동. 고성 목포대 4경기 달력도 브라우저에서 확인했다.
-- 기존 국내/중고 회귀 54개, 신규 달력 회귀 5개, KOVO컵 표시·순위 회귀 2개 등 61개 통과. 비선택 국제 화면 불변, 팀 변경·빈 일정·원본 데이터 불변·두 달력 월 상태 독립성을 포함한다.
-- 원본 VNL 18개국·116경기(예선108/결선8)·284명 보존. 단일 예선순위 18행은 각각 12경기이며 결선 합산 없음.
-- 기존 v1의 필터(예선108/결승1), 한눈에 보기 달력/팝업, 폴란드16명 명단/프로필 링크 검수는 재사용했다. 앱 콘솔 오류는 관찰되지 않았다.
+- 실제 브라우저: PC 본문1180px, 모바일390/360 × 6개 화면, 18조합에서 탭 이동·본문 가로 넘침 없음.
+- VNL/국내 Hero의 다섯 텍스트 크기 모두 세 폭에서 일치. 기존 VNL 이미지 배치와 제목색 유지.
+- 3·5세트 경기에서 스코어 중심과 안내 중심 일치 및 안내 한 줄 확인.
+- PC 순위표8열, 모바일6영역에서 상태 생략·결과 유지. 18개국과 중국 ‘개최국’ 유지.
+- 쿠바12경기의 기본 펼침, 대진/결과 셀, 6월/7월 이동, 7월15일 벨기에–쿠바 팝업 및 팀·날짜를 유지한 전체 목록 이동 확인. 고성 목포대4경기도 동일 공통 동작 확인.
+- 자동 회귀: 기존 국내/중고54개, 팀 달력·순위 선택8개, KOVO컵 표시/정렬2개, 총64개 통과. 경기 전후 표시·같은 날 여러 경기·긴 이름/HTML 문자·빈 일정·팀 변경·기존 데이터·조 열 보존을 포함한다.
+- 소스/관찰 대조37항목 PASS: `vnl-domestic-v3-browser-evidence.json`, `vnl-domestic-v3-checks.json`. 브라우저 자동화 확장 자체의 metadata 전송 오류77건은 앱 오류와 구분했고, 관찰된 앱 콘솔 오류는0건이다.
+- 기존 v2의 사다리 실선/실제 부전승 점선, 파랑·초록 카드색 복원, 가나다순 및 v1 명단/프로필 연결 검증을 재사용했다. 해당 변경은 이번에 다시 수정하지 않았다. 이전 v1/v2 증빙은 이력으로 보존한다.
 
-증빙: `vnl-domestic-v2-browser-evidence.json`, `vnl-domestic-v2-checks.json`(45항목 PASS). v1 증빙은 초기 이력으로 보존한다. 검증 스크립트는 브라우저 관찰 파일과 소스/데이터를 대조하며 브라우저 실행을 대신하지 않는다.
+## 운영과 데이터 보호
 
-실물 모바일·인쇄·외부 링크 전체 응답은 재검수하지 않았다. 미확인 데이터·소속팀·Player ID를 보완하거나 MASTER를 수정하지 않았다. 이번 요청 범위에서 남은 기능 오류는 발견하지 못했다.
+운영 main/Pages·AVC·VNL·국내 페이지에 적용하지 않았다. 공통 소스4개는 이 feature 브랜치와 별도 비공개 시안에서만 바뀐다. wrapper/config/data·MASTER·Hero 자산·기존 ID를 수정하지 않았다. VNL18개국·116경기(예선108/결선8)·284명 명단을 보존하며 예선순위18행은 각12경기다. 생성된 `provenance.json`에 원본 데이터와 공유 소스의 해시를 남긴다.
 
-## 재현과 승인 후 범위
+이번 범위에서 미해결 기능 오류는 발견하지 못했다. 실물 기기·인쇄/PDF·외부 링크 전체 응답 및 다른 국제대회 운영 전환은 이번 검수 범위가 아니다. 현재 공유 렌더러를 사용하는 국내 대회까지 자동 회귀했지만 다른 국제대회의 표시 선택/운영 연결을 완료한 것으로 주장하지 않는다.
+
+## 재현과 운영 반영 범위
 
 ```sh
 python scripts/build-vnl-domestic-preview-v1.py /absolute/separate-preview/dist
-python scripts/verify-vnl-domestic-preview-v1.py /absolute/separate-preview/dist
+python scripts/verify-vnl-template-v3.py /absolute/separate-preview/dist
 KVL_JSDOM_PATH=/path/to/jsdom node --test tests/domestic-home-v2.test.cjs tests/school-domestic-home-v2.test.cjs tests/domestic-team-calendar.test.cjs
+node --test tests/kovo-cup-desktop-matchup-alignment.test.cjs tests/kovo-cup-domestic-presentation-prototype.test.cjs
 ```
 
-시안 승인 후 국내 공통 4개 파일의 보완과 지정된 VNL 표시 설정을 별도 운영 변경으로 적용한다. 운영 적용 시 공통 파일의 캐시 버전과 대상 대회 범위를 확인한다. 비선택 국제대회에는 국내 Hero/팀 달력을 강제하지 않는다. 국제 기본 템플릿 개정·확정·다른 국제대회 적용은 계속 보류한다. 현재 복구는 브랜치/비공개 시안만 이전 버전으로 되돌리면 되며 운영 파일 복구는 필요하지 않다.
+디자인 기준 지정은 기록했으며 실제 운영 반영은 사용자 확인 후 별도 수행한다. 승인 시 선택한 국제대회부터 표시 설정/공유 컴포넌트를 순차 적용하고, 국내 공통 변경 영향도 함께 확인한다. main 병합·운영 배포·기타 대회 일괄 변경은 이번 작업에 포함하지 않았다.
