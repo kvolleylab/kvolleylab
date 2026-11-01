@@ -11,7 +11,7 @@
   "matchCount": 126,
   "knockoutTeamCount": 4,
   "upcomingOverviewNote": "정규리그 개막 전 · 공식 일정 126경기 반영 완료",
-  "scheduleNote": "KOVO 공식 정규리그 일정·종료 경기 결과 기준 · 경기 시각은 한국시간(KST)입니다.",
+  "scheduleNote": "KOVO 공식 정규리그·준플레이오프·플레이오프·챔피언결정전 일정 및 결과 기준 · 경기 시각은 한국시간(KST)입니다.",
   "standingsStatus": "정규리그 진행 중",
   "standingsRule": "KOVO 공식 순위 · 종료 경기의 승점·승패·세트 및 점수 합계 대조",
   "meaning": {
@@ -2880,13 +2880,20 @@
     "note": "SOOP은 전신 페퍼저축은행의 순위를 기준으로 표시합니다."
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 2/126경기 종료 · 2026-11-01 21:21 KST 반영",
-  "updatedAt": "2026-11-01T12:21:03+00:00",
+  "regularSeasonComplete": false,
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 2/126경기 종료 · 2026-11-02 01:53 KST 반영",
+  "updatedAt": "2026-11-01T16:53:03+00:00",
   "automation": {
-    "version": 1,
+    "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
-    "regularSeasonOnly": true,
-    "completedMatches": 2
+    "regularSeasonOnly": false,
+    "completedMatches": 2,
+    "postseason": {
+      "matched": 0,
+      "completed": 0,
+      "complete": false,
+      "champion": null
+    }
   }
 }
