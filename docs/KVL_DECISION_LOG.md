@@ -377,3 +377,8 @@ Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·l
 ## 2026-11-01 · V-리그 올스타전 표시·현재 성별 우선·경기일만 음영
 
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 올스타전 빨간 글씨, 여자부 최근 결과/다음 경기의 여자 우선 배치, 경기 없는 휴일 음영 제거를 요청했다. 기존 MASTER의2027-01-17 예정일을 대회별 표시 설정으로 연결하고 정규리그 경기로 추가하지 않는다. 현재 성별을 PC 왼쪽/모바일 위에 두며, 달력 음영은 해당 달력의 실제 경기일만 적용한다. 공휴일·일요일 숫자는 빨강으로 유지한다. PR #225의 경기 없는 휴일 음영 결정을 이 범위에서 대체한다. 35개 관련 검사와PC·390px·360px 검수 통과. MASTER·252경기·ID·결과·명단 및 다른 대회 표시 설정은 유지한다. [출처·검수·범위·복구](validation/vleague-calendar-v3-20261101.md).
+
+
+## 2026-11-02 · V-리그 중복 상태 열 제거·모바일 승패승점
+
+Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 운영 정규리그 순위의 중복 ‘상태’를 제거하고 모바일에 ‘승·패·승점’을 표시하도록 요청했다. 남녀 config의 기존 `showStatus: false`와 새 선택 설정 `mobileStats: wins-losses-points`를 공통 렌더러에서 처리한다. PC의 결과·득실비는 유지하며 모바일 결과는 팀명 아래에 남긴다. 모바일 360/390px에서 표 전체를 가로 이동 없이 표시한다. 다른 대회의 기본 표시와 조별순위, 데이터·MASTER·ID·산식은 보존한다. [검수·범위·복구](validation/vleague-standings-mobile-20261102.md).

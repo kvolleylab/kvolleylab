@@ -57,6 +57,31 @@ for(const gender of ['men','women']){
    assert.match(doc.querySelector('.dv2-calendar-month').textContent,/10/);doc.querySelector('[data-dv2-month="1"]').click();assert.match(doc.querySelector('.dv2-calendar-month').textContent,/11/);
   }finally{w.close();}
  });
+ test(gender+': standings omit duplicate status and show mobile wins, losses and points without changing results',()=>{
+  const {w,doc,d}=setup(gender,{mobile:true,view:'groups'});try{
+   const block=doc.querySelector('.is-domestic-single-league'),before=JSON.stringify(d);
+   assert.deepEqual([...block.querySelector('.kvl1180-combined-table-head').children].map(c=>c.textContent),['순위','팀','승','패','승점','세트 득실비','점수 득실비','결과']);
+   assert(!block.querySelector('.kvl1180-combined-pool'));
+   const mobile=block.querySelector('.kvl-shared-combined-table');
+   assert.deepEqual([...mobile.firstElementChild.children].map(c=>c.textContent),['순위팀 · 결과','승','패','승점']);
+   const rows=[...mobile.querySelectorAll('.kvl-shared-combined-line:not(.is-head)')];
+   assert.equal(rows.length,d.standings.rows.length);
+   for(let i=0;i<rows.length;i++){
+    const source=d.standings.rows[i];
+    assert.deepEqual([...rows[i].querySelectorAll('.kvl-shared-combined-stat')].map(c=>c.textContent),[source.wins,source.losses,source.points].map(v=>String(v??'-')));
+    assert.equal(rows[i].querySelector('.kvl-shared-combined-result').textContent,block.querySelectorAll('.kvl1180-combined-result')[i].textContent);
+    assert(rows[i].querySelector('.kvl-shared-combined-team .kvl-team-link'));
+   }
+   assert.equal(JSON.stringify(d),before);
+   // Unknown values stay unknown, while numeric zero remains visible.
+   Object.assign(d.standings.rows[0],{wins:0,losses:null,points:undefined});w.KVLCompetitionComponentsV2.render();
+   assert.deepEqual([...doc.querySelectorAll('.is-mobile-record-summary .kvl-shared-combined-line:not(.is-head)')[0].querySelectorAll('.kvl-shared-combined-stat')].map(c=>c.textContent),['0','-','-']);
+   // A competition without the optional setting keeps the established layout.
+   delete d.structure.standings.mobileStats;w.KVLCompetitionComponentsV2.render();
+   assert(!doc.querySelector('.is-mobile-record-summary'));
+   assert.deepEqual([...doc.querySelector('.is-domestic-single-league .kvl-shared-combined-line.is-head').children].map(c=>c.textContent),['순위팀','결과','승','승점','세트 득실비','점수 득실비']);
+  }finally{w.close();}
+ });
  test(gender+': deep links and print use season labels and complete nationality flags',async()=>{
   const first=Object.keys(expected[gender])[0],{w,doc,d}=setup(gender,{team:first});try{
    Object.defineProperty(w.HTMLImageElement.prototype,'complete',{get:()=>true});let printed=0;w.print=()=>printed++;
