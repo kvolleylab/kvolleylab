@@ -331,3 +331,7 @@ Status: APPROVED / RELEASE AUTHORIZED / DEPLOYMENT VERIFICATION PENDING. 사용�
 ## 2026-11-01 · V-리그 수집기 설치와 최초 연결 확인 결과
 
 Status: APPROVED / CODE INSTALLED / RUNTIME AUTH NOT VERIFIED / FIRST DATA WRITE NOT APPLIED. 사용자 승인에 따라 PR #213을 `444eff62474089029c6b5aacfae191d321585364`로 병합했다. 후속 파비콘 PR #214를 보존한다. 실제 MASTER의 M/R strict dropdown을 확인해 작성기의 `공식검증`을 허용 값 `공식확정`으로 수정하고 20개 조합 회귀를 추가한다. 시트 검증 규칙은 변경하지 않는다. 관리 화면 인증은 도구 시간 초과로 결과 미확인이며 Google 실행 권한·GitHub 활성화 변수는 이번 작업에서 설정하지 않았다. 최초 MASTER 쓰기 요청 중단 후 다시 읽은 두 개막전은 여전히 예정·점수 공란이므로 경기 결과 반영 완료로 표시하지 않는다. 운영 승인 자체는 유지하며 인증·첫 반영·공개 배포 확인을 이어서 완료해야 한다. [상태·검증·이어갈 단계](validation/vleague-activation_v1.md).
+
+## 2026-11-01 · 국제 개정 보류 및 국내 기본 템플릿 VNL 시안
+
+Status: SCOPE CONFIRMED / PROTOTYPE / READY FOR REVIEW / PRODUCTION NOT AUTHORIZED. 사용자의 최신 지시로 국제 템플릿 개정(PR #212)은 잠시 보류하고, 승인된 `domestic-home-v2`를 직접 사용한 2026 VNL 남자부 시안을 별도 브랜치에서 제작한다. VNL의 FIVB 보라색과 기존 ‘대회 의미 · 시즌 구조’ 원문을 유지한다. 기준 main `2791e93f730a13c7f64e209d802b7e1df43b4758`, 브랜치 `feature/vnl-domestic-template-v1`. 국내 공통 파일은 수정하지 않고 빌드 시 미리보기용 실행 조건·CSS 선택자를 연결한다. VNL config/data와 공통 Engine V2, 기존 국내·AVC·VNL 운영 화면은 변경하지 않는다. 국제 공통 템플릿의 개정·확정·다른 대회 적용 및 운영 병합 승인은 포함하지 않는다. [시안·화면·검수·복구](validation/vnl-domestic-template-v1.md).
