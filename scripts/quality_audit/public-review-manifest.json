@@ -236,6 +236,30 @@
       "sha256": "92a7610d6809c5b432888c0e1ffedd5a29550f7ac58026d6bd84f936806bce74",
       "evidence": "docs/validation/vnl-production-20261101.md",
       "review_note": "사용자 운영 승인, 공개 공식 자료/표시 config/출처 메타데이터의 공개 적합성과 exact hash 검토. 남자 원본 data.json은 변경 없음. 여자 공식 경기/예선수치 독립 대조 및 공식 명단 확인. 여자 한글명·신체정보·소속·KVL MASTER ID 매핑 미확인을 그대로 보존하며 이 파일 공개 검수로 미확인 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/competitions/v-league-men-2026-27/config.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-REQUEST-VLEAGUE-CALENDAR-20261101",
+        "KVL-COMP-VLEAGUE-M-2026-27"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "749412f4c09b6fe12db8783e8843a5619f9d6968f5e2c4ff7ac8f2bb78a4ae9e",
+      "evidence": "docs/validation/vleague-calendar-20261101.md",
+      "review_note": "운영 페이지의 공개 표시 config 검토. 요청한 달력 약칭과 검증된 기존 경기장·도시 매핑만 추가하며 원본 경기/명단/ID/MASTER는 변경하지 않는다. PRIVATE/DRAFT 개인정보가 없음을 확인했다. 파일 공개 적합성 검토이며 기존 미확인 사항이나 포스트시즌 확정 대진을 새로 검증한 것으로 승격하지 않는다."
+    },
+    "data/competitions/v-league-women-2026-27/config.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-REQUEST-VLEAGUE-CALENDAR-20261101",
+        "KVL-COMP-VLEAGUE-W-2026-27"
+      ],
+      "verified_at": "2026-11-01",
+      "sha256": "ce933161836f565ef2b366bc38f5ad8d868a621d3530e736fb1044afe76fadcd",
+      "evidence": "docs/validation/vleague-calendar-20261101.md",
+      "review_note": "운영 페이지의 공개 표시 config 검토. 요청한 달력 약칭과 검증된 기존 경기장·도시 매핑만 추가하며 원본 경기/명단/ID/MASTER는 변경하지 않는다. PRIVATE/DRAFT 개인정보가 없음을 확인했다. 파일 공개 적합성 검토이며 기존 미확인 사항이나 포스트시즌 확정 대진을 새로 검증한 것으로 승격하지 않는다."
     }
   }
 }
