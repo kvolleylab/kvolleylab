@@ -326,3 +326,8 @@ Status: PROTOTYPE / ASSET VERIFIED / NOT DEPLOYED. 사용자가 브라우저 탭
 ## 2026-11-01 · 금색 KVL 배구공 파비콘 운영 반영 승인
 
 Status: APPROVED / RELEASE AUTHORIZED / DEPLOYMENT VERIFICATION PENDING. 사용자가 기존 메뉴의 금색·짙은 남색 KVL 배구공을 그대로 활용한 파비콘과 [PR #214](https://github.com/kvolleylab/kvolleylab/pull/214)의 검토 결과를 확인한 뒤 “승인한다”라고 명시적으로 답했다. 앞선 파비콘 검토본의 운영 승인 대기 상태를 이 범위에서 대체한다. ICO 16/32/48/64px, 홈의 정적 연결, 공통 내비게이션의 중복 없는 연결만 운영 전환한다. 코드 기준은 `0b0d9d687c3d1710307ed064a86a3eb9aa9e6876`, 재확인한 main은 `444eff62474089029c6b5aacfae191d321585364`이다. 브라우저 검수는 작동하는 클라우드 Chrome으로 진행하며 병합·Pages·실제 아이콘 응답·홈/내부 페이지 연결을 확인한 뒤 PR에 배포 증거를 남긴다. 원본 로고·경기/선수 데이터·사이트 제목·기존 메뉴 기능은 이 승인에 따른 변경 대상이 아니다. [검수 및 복구](validation/kvl-favicon_v1.md).
+
+
+## 2026-11-01 · V-리그 수집기 설치와 최초 연결 확인 결과
+
+Status: APPROVED / CODE INSTALLED / RUNTIME AUTH NOT VERIFIED / FIRST DATA WRITE NOT APPLIED. 사용자 승인에 따라 PR #213을 `444eff62474089029c6b5aacfae191d321585364`로 병합했다. 후속 파비콘 PR #214를 보존한다. 실제 MASTER의 M/R strict dropdown을 확인해 작성기의 `공식검증`을 허용 값 `공식확정`으로 수정하고 20개 조합 회귀를 추가한다. 시트 검증 규칙은 변경하지 않는다. 관리 화면 인증은 도구 시간 초과로 결과 미확인이며 Google 실행 권한·GitHub 활성화 변수는 이번 작업에서 설정하지 않았다. 최초 MASTER 쓰기 요청 중단 후 다시 읽은 두 개막전은 여전히 예정·점수 공란이므로 경기 결과 반영 완료로 표시하지 않는다. 운영 승인 자체는 유지하며 인증·첫 반영·공개 배포 확인을 이어서 완료해야 한다. [상태·검증·이어갈 단계](validation/vleague-activation_v1.md).
