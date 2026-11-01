@@ -182,6 +182,9 @@ Competition_ID·정규리그 MatchID·공개 경로를 보존한다. 준PO 미�
   Git/Pages 반영 전에 실제 시각을 다시 확인한다. 종료일은 우승 확정이나 보관 완료를 뜻하지 않는다.
 - 화면은 확정 정규 순위만 포스트시즌 시드로 사용하고, 공식 기간과 실제 차전 번호를
   표시한다. 최신 PR #228의 모바일 승·패·승점 표시와 PR #226의 달력 변경을 보존한다.
+  최종 병합 직전에 도착한 PR #229의 모바일 간격·명단 국기/등번호·종료 경기 달력 점수도
+  통합했다. 최종 기반 main은 `5421f0d928af3065d6e998d9a0bc2b4753c3f065`이며,
+  페이지 캐시 버전과 결정 이력 충돌을 해결하면서 양쪽 변경을 보존했다.
 
 ## 8. 검증과 운영 전환 기록 방식
 
@@ -199,8 +202,8 @@ Competition_ID·정규리그 MatchID·공개 경로를 보존한다. 준PO 미�
 
 최신 main 통합 후 로컬 검사 결과는 V-리그 source·standings·MASTER·publish·ops176개,
 실행 기간·전체 시즌 종료·보관45개, 공시/명단/선수/기사/MASTER 계획57개로
-**Python278개 통과**다. JavaScript11개 검사 파일(config/starter/operations,
-명단/검색/최근·다음/포스트시즌/실제 후보/달력/기존Cup)도 통과했다.
+**Python278개 통과**다. JavaScript12개 검사 파일(config/starter/operations,
+명단/검색/최근·다음/포스트시즌/실제 후보/달력/기존Cup 및 desktop matchup)도 통과했다. PR #229 통합 뒤 다시 실행하여 양쪽 동작의 공존을 확인했다.
 정적 검사는 Python AST20파일, Node syntax8파일, workflow YAML3개,
 shell25개, JSON9개 및 공개 export gate/공백 검사 통과다.
 
