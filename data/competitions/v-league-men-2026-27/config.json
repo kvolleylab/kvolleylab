@@ -93,6 +93,29 @@
     "overviewTeamColumns": 7,
     "overviewMatches": {
       "mode": "recent-next"
+    },
+    "calendarDisplay": {
+      "mode": "vleague-compact",
+      "holidayRegion": "KR",
+      "teamAliases": {
+        "KAL": "항공",
+        "SFB": "삼성",
+        "KBI": "KB",
+        "HDC": "현대",
+        "WRC": "우카",
+        "KEP": "한전",
+        "OKF": "OK"
+      },
+      "venueCities": {
+        "인천 계양체육관": "인천",
+        "천안 유관순체육관": "천안",
+        "서울 장충체육관": "서울",
+        "평택 이충문화체육센터": "평택",
+        "수원체육관": "수원",
+        "부산 강서체육관": "부산",
+        "대전 충무체육관": "대전",
+        "평택이충문화체육관": "평택"
+      }
     }
   },
   "hero": {

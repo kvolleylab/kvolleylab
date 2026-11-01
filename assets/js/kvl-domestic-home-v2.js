@@ -136,15 +136,23 @@ function teamCalendarGame(m,state){
 }
 function calendar(root=q('[data-dv2-calendar]'),state=null){
  if(!root)return;
+ const source=state?.data||current,options=source.structure?.calendarDisplay,display=window.KVLCalendarDisplayV1;
+ const compact=options?.mode==='vleague-compact'&&Boolean(display);
+ root.classList.toggle('dv2-vleague-calendar',compact);
  const availableMonths=state?.months||months,selectedMonth=state?.month||month,records=state?.matches||current.matches||[];
  if(!availableMonths.length){root.innerHTML='<div class="dv2-empty">공식 일정 발표 후 표시합니다.</div>';return;}
  const [year,mo]=selectedMonth.split('-').map(Number),offset=new Date(Date.UTC(year,mo-1,1)).getUTCDay(),days=new Date(Date.UTC(year,mo,0)).getUTCDate(),cells=[];
  for(let i=0;i<Math.ceil((offset+days)/7)*7;i++){
   const date=new Date(Date.UTC(year,mo-1,i-offset+1)),key=date.toISOString().slice(0,10),games=records.filter(m=>m.date===key),outside=date.getUTCMonth()!==mo-1,final=games.some(m=>m.round==='FINAL'||m.stage==='결승');
-  const content=`<span>${date.getUTCDate()}</span>${games.length?(state?games.map(m=>teamCalendarGame(m,state)).join(''):`<small>${final?'결승 · ':''}${games.length}<em>경기</em></small>`):''}`;
-  cells.push(games.length?`<button type="button" class="dv2-day has-match${outside?' outside':''}${final?' final':''}" data-dv2-date="${key}" aria-label="${key}, ${games.length}경기${final?', 결승':''}">${content}</button>`:`<div class="dv2-day${outside?' outside':''}">${content}</div>`);
+  const holiday=compact?display.dateInfo(key,options.holidayRegion):{red:false,name:''};
+  const summaries=compact?games.map(m=>display.game(m,source,options)):[];
+  const details=compact?summaries.map(summary=>`<span class="dv2-calendar-game" title="${esc(summary.fullLabel)}"><span class="dv2-calendar-matchup">${esc(summary.line1)}</span><span class="dv2-calendar-location">${esc(summary.line2)}</span></span>`).join(''):state?games.map(m=>teamCalendarGame(m,state)).join(''):`<small>${final?'결승 · ':''}${games.length}<em>경기</em></small>`;
+  const content=`<span class="dv2-calendar-date${holiday.red?' is-holiday':''}"${holiday.name?` title="${esc(holiday.name)}"`:''}>${date.getUTCDate()}</span>${games.length?details:''}`;
+  const accessible=[key,holiday.name,compact?summaries.map(s=>s.fullLabel).join('; '):games.length+'경기'+(final?', 결승':'')].filter(Boolean).join(', ');
+  cells.push(games.length?`<button type="button" class="dv2-day has-match${outside?' outside':''}${final?' final':''}" data-dv2-date="${key}" aria-label="${esc(accessible)}">${content}</button>`:`<div class="dv2-day${outside?' outside':''}"${holiday.name?` aria-label="${esc(key+', '+holiday.name)}"`:''}>${content}</div>`);
  }
- root.innerHTML=`<div class="dv2-calendar-top"><small>${state?'TEAM CALENDAR':'TOURNAMENT CALENDAR'}</small><h3><span class="dv2-calendar-year">${year}<em>년</em></span><span class="dv2-calendar-month">${String(mo).padStart(2,'0')}<em>월</em></span></h3><div class="dv2-calendar-controls"><button data-dv2-month="-1" aria-label="이전 달" ${selectedMonth===availableMonths[0]?'disabled':''}>‹</button><button data-dv2-month="1" aria-label="다음 달" ${selectedMonth===availableMonths.at(-1)?'disabled':''}>›</button></div></div><div class="dv2-week">${['일','월','화','수','목','금','토'].map(w=>`<span>${w}</span>`).join('')}</div><div class="dv2-calendar-grid">${cells.join('')}</div><p class="dv2-calendar-hint">경기일을 선택하면 대진과 세트별 점수를 볼 수 있습니다.</p>`;
+ const grid=`<div class="dv2-week">${['일','월','화','수','목','금','토'].map(w=>`<span>${w}</span>`).join('')}</div><div class="dv2-calendar-grid">${cells.join('')}</div>`;
+ root.innerHTML=`<div class="dv2-calendar-top"><small>${state?'TEAM CALENDAR':'TOURNAMENT CALENDAR'}</small><h3><span class="dv2-calendar-year">${year}<em>년</em></span><span class="dv2-calendar-month">${String(mo).padStart(2,'0')}<em>월</em></span></h3><div class="dv2-calendar-controls"><button data-dv2-month="-1" aria-label="이전 달" ${selectedMonth===availableMonths[0]?'disabled':''}>‹</button><button data-dv2-month="1" aria-label="다음 달" ${selectedMonth===availableMonths.at(-1)?'disabled':''}>›</button></div></div>${compact?`<div class="dv2-calendar-scroll" tabindex="0" role="region" aria-label="${year}년 ${mo}월 경기 달력, 가로 스크롤"><div class="dv2-calendar-board">${grid}</div></div>`:grid}<p class="dv2-calendar-hint">${compact?'<span class="dv2-calendar-scroll-hint">달력을 좌우로 움직여 확인할 수 있습니다. </span>':''}경기일을 선택하면 대진과 세트별 점수를 볼 수 있습니다.</p>`;
 }
 function openDay(date,state=null){
  const dialog=q('#dv2-day-dialog'),games=(state?.matches||current.matches||[]).filter(m=>m.date===date).sort((a,b)=>(a.time||'').localeCompare(b.time||''));

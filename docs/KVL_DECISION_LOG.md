@@ -364,3 +364,6 @@ Status: REQUESTED CHANGES IMPLEMENTED / PREVIEW / PRODUCTION NOT AUTHORIZED. 사
 ## 2026-11-01 · VNL 남녀 공통 화면 운영 적용 승인
 
 Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 사용자가 “여자부도 동일하게 만들어주고 이 페이지를 실제 홈페이지에 반영해줘”라고 명시적으로 지시했다. PR #216의 승인 대기 상태를 대체하고 승인된 국내 공통 개선·VNL 남자부 표시 설정·여자부 동일 화면·홈페이지 남녀 진입을 운영 전환한다. 국내 공통 표시 모듈에 국제 opt-in을 추가하며 엔진을 복제하지 않는다. 남자 data.json·의미/시즌 구조·ID·MASTER를 보존한다. 기존 여자 MASTER가 없어 공식1662의116경기·독립순위·252명 공개 명단을 출처별 ID로 검증·연결하며 KVL MASTER 매핑/신체정보·한글명 확인 완료로 표시하지 않는다. 남자 보라/여자 로즈, 국기·계절별 내용은 별도 config/data다. 기존 AVC 운영과 다른 국제대회는 일괄 전환하지 않는다. 병합·Pages·실사이트 증거는 PR #216에 기록한다. [근거·검수·범위·복구](validation/vnl-production-20261101.md).
+## 2026-11-01 · V-리그 홈 달력 공휴일·두 줄 대진
+
+Status: APPROVED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·live 증거는 release PR). 사용자가 운영 V-리그 홈 및 남녀 달력을 공휴일 날짜 빨강, 요청한 팀 약칭, `1R KB vs 삼성` / `(평택, 14시)` 두 줄로 수정하도록 요청했다. 기존 경기일 음영은 유지하고 내부 흰 카드·왼쪽 색 띠는 제거한다. 공통 달력의 V-리그 선택 설정으로 적용하며 모바일은 같은 문구를 달력 영역 안의 가로 이동으로 보존한다. 약칭은 표시 전용이며 정식 팀명·ID·명단·경기결과·MASTER는 유지한다. 네이버 직접 조회는 실패해 NOT VERIFIED로 기록하고 공식 KASA 월력요항으로 해당 시즌 공휴일을 대조했다. 기존 포스트시즌 검사2건은 수정 전 main에서도 실패하므로 별도로 기록한다. 중·고 시안의 운영 미승인 범위와 VNL/AVC·다른 대회 화면은 확대 변경하지 않는다. [범위·검수·출처·복구](validation/vleague-calendar-20261101.md).

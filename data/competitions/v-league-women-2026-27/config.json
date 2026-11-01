@@ -93,6 +93,29 @@
     "overviewTeamColumns": 7,
     "overviewMatches": {
       "mode": "recent-next"
+    },
+    "calendarDisplay": {
+      "mode": "vleague-compact",
+      "holidayRegion": "KR",
+      "teamAliases": {
+        "GSC": "GS",
+        "HPS": "흥국",
+        "SOO": "S∞P",
+        "KEX": "도공",
+        "HHC": "현대",
+        "IBK": "IBK",
+        "RSP": "정관장"
+      },
+      "venueCities": {
+        "서울 장충체육관": "서울",
+        "김천실내체육관": "김천",
+        "수원체육관": "수원",
+        "인천 삼산월드체육관": "인천",
+        "화성종합실내체육관": "화성",
+        "대전 충무체육관": "대전",
+        "SOOP 스타디움(염주체육관)": "광주",
+        "숲 스타디움": "광주"
+      }
     }
   },
   "hero": {
