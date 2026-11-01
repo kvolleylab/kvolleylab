@@ -113,7 +113,8 @@ function overviewMatches(d,before){
  const section=document.createElement('section');section.className='dv2-overview-matches kvl1180-view';section.dataset.view='overview';section.setAttribute('aria-labelledby','dv2-overview-matches-title');
  section.innerHTML='<div class="dv2-heading"><h2 id="dv2-overview-matches-title">최근 결과 · 다음 경기</h2></div><div class="dv2-division-match-grid"></div><p class="dv2-summary-note">이번 시즌 공식 기록 반영 기준 · 실시간 중계가 아닙니다.</p>';
  before.before(section);
- matchesReady=Promise.all(['men','women'].map(async gender=>{
+ const genders=d.gender==='women'?['women','men']:['men','women'];
+ matchesReady=Promise.all(genders.map(async gender=>{
   const label=gender==='men'?'남자부':'여자부',card=document.createElement('article');card.className='dv2-division-matches';card.dataset.summaryGender=gender;
   card.innerHTML=`<header><h3>${label}<small>${esc(d.season)}</small></h3><a href="${esc(divisionSchedule(d,gender))}">${label} 전체 일정 ›</a></header><div class="dv2-summary-body" aria-busy="true"><p class="dv2-summary-loading">경기 정보를 불러오는 중입니다.</p></div>`;
   section.querySelector('.dv2-division-match-grid').append(card);const body=card.querySelector('.dv2-summary-body');
@@ -146,10 +147,11 @@ function calendar(root=q('[data-dv2-calendar]'),state=null){
   const date=new Date(Date.UTC(year,mo-1,i-offset+1)),key=date.toISOString().slice(0,10),games=records.filter(m=>m.date===key),outside=date.getUTCMonth()!==mo-1,final=games.some(m=>m.round==='FINAL'||m.stage==='결승');
   const holiday=compact?display.dateInfo(key,options.holidayRegion):{red:false,name:''};
   const summaries=compact?games.map(m=>display.game(m,source,options)):[];
+  const events=compact&&Array.isArray(options.events)?options.events.filter(event=>event?.date===key&&typeof event.label==='string'):[];
   const details=compact?summaries.map(summary=>`<span class="dv2-calendar-game" title="${esc(summary.fullLabel)}"><span class="dv2-calendar-matchup"><span class="dv2-calendar-side">${esc([summary.round,summary.homeLabel].filter(Boolean).join(' '))}</span> <span class="dv2-calendar-side">vs ${esc(summary.awayLabel)}</span></span><span class="dv2-calendar-location">${esc(summary.line2)}</span></span>`).join(''):state?games.map(m=>teamCalendarGame(m,state)).join(''):`<small>${final?'결승 · ':''}${games.length}<em>경기</em></small>`;
-  const content=`<span class="dv2-calendar-date${holiday.red?' is-holiday':''}"${holiday.name?` title="${esc(holiday.name)}"`:''}>${date.getUTCDate()}</span>${games.length?details:''}`;
-  const accessible=[key,holiday.name,compact?summaries.map(s=>s.fullLabel).join('; '):games.length+'경기'+(final?', 결승':'')].filter(Boolean).join(', ');
-  cells.push(games.length?`<button type="button" class="dv2-day has-match${outside?' outside':''}${final?' final':''}${holiday.red?' is-holiday-day':''}" data-dv2-date="${key}" aria-label="${esc(accessible)}">${content}</button>`:`<div class="dv2-day${outside?' outside':''}${holiday.red?' is-holiday-day':''}"${holiday.name?` aria-label="${esc(key+', '+holiday.name)}"`:''}>${content}</div>`);
+  const content=`<span class="dv2-calendar-date${holiday.red?' is-holiday':''}"${holiday.name?` title="${esc(holiday.name)}"`:''}>${date.getUTCDate()}</span>${games.length?details:''}${events.map(event=>`<span class="dv2-calendar-event">${esc(event.label)}</span>`).join('')}`;
+  const accessible=[key,holiday.name,...events.map(event=>event.label),compact?summaries.map(s=>s.fullLabel).join('; '):games.length+'경기'+(final?', 결승':'')].filter(Boolean).join(', ');
+  cells.push(games.length?`<button type="button" class="dv2-day has-match${outside?' outside':''}${final?' final':''}${holiday.red?' is-holiday-day':''}" data-dv2-date="${key}" aria-label="${esc(accessible)}">${content}</button>`:`<div class="dv2-day${outside?' outside':''}"${holiday.name||events.length?` aria-label="${esc(accessible)}"`:''}>${content}</div>`);
  }
  const grid=`<div class="dv2-week">${['일','월','화','수','목','금','토'].map(w=>`<span>${w}</span>`).join('')}</div><div class="dv2-calendar-grid">${cells.join('')}</div>`;
  root.innerHTML=`<div class="dv2-calendar-top"><small>${state?'TEAM CALENDAR':'TOURNAMENT CALENDAR'}</small><h3><span class="dv2-calendar-year">${year}<em>년</em></span><span class="dv2-calendar-month">${String(mo).padStart(2,'0')}<em>월</em></span></h3><div class="dv2-calendar-controls"><button data-dv2-month="-1" aria-label="이전 달" ${selectedMonth===availableMonths[0]?'disabled':''}>‹</button><button data-dv2-month="1" aria-label="다음 달" ${selectedMonth===availableMonths.at(-1)?'disabled':''}>›</button></div></div>${compact?`<div class="dv2-calendar-fit" role="region" aria-label="${year}년 ${mo}월 경기 달력"><div class="dv2-calendar-board">${grid}</div></div>`:grid}<p class="dv2-calendar-hint">경기일을 선택하면 대진과 세트별 점수를 볼 수 있습니다.</p>`;

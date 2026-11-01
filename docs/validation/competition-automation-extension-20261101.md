@@ -1,7 +1,8 @@
 # 대회 운영 묶음·선수 공시·기사 자동화 확장 검증
 
 작성일: 2026-11-01. 최초 조사 main: `2b13d05ee5ce2b2055e3f8a4c1b011c2437b48c3`.
-최종 통합 main: `e95126d65a346407f5128477750c1f328f148198`(최신 PR #225 달력 수정 보존).
+최종 통합 main: `bc9b0bdcbf8ba5fed891b76d5cc06c9962236c82`(최신 PR #226 올스타전·성별 우선·달력 수정 보존).
+검토 PR: [#227](https://github.com/kvolleylab/kvolleylab/pull/227).
 브랜치: `feature/competition-automation-lifecycle-v1`.
 
 상태: **요청 범위 구현·로컬 검증 완료 / 운영 MASTER v17 반영·재조회 완료 / READY FOR REVIEW / 신규 코드 운영 미배포**.

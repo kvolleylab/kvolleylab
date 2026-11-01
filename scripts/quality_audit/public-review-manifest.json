@@ -242,12 +242,14 @@
       "record_status": "VERIFIED",
       "source_ids": [
         "USER-REQUEST-VLEAGUE-CALENDAR-20261101",
-        "KVL-COMP-VLEAGUE-M-2026-27"
+        "KVL-COMP-VLEAGUE-M-2026-27",
+        "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
+        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101"
       ],
       "verified_at": "2026-11-01",
-      "sha256": "749412f4c09b6fe12db8783e8843a5619f9d6968f5e2c4ff7ac8f2bb78a4ae9e",
-      "evidence": "docs/validation/vleague-calendar-20261101.md",
-      "review_note": "운영 페이지의 공개 표시 config 검토. 요청한 달력 약칭과 검증된 기존 경기장·도시 매핑만 추가하며 원본 경기/명단/ID/MASTER는 변경하지 않는다. PRIVATE/DRAFT 개인정보가 없음을 확인했다. 파일 공개 적합성 검토이며 기존 미확인 사항이나 포스트시즌 확정 대진을 새로 검증한 것으로 승격하지 않는다."
+      "sha256": "e62f55920c7ce6c0ee9219bb8b96a6f0d9594f6a02416517cadfac3f75173831",
+      "evidence": "docs/validation/vleague-calendar-v3-20261101.md",
+      "review_note": "기존 공개 표시 설정을 유지하고 MASTER의 올스타전 예정일 2027-01-17을 달력 주석으로만 추가했다. 공개 일정 발표 보도로 교차확인했다. 정규리그 경기·ID·시간·결과·명단·MASTER는 변경하지 않는다."
     },
     "data/competitions/v-league-women-2026-27/config.json": {
       "access_level": "PUBLIC",
@@ -255,12 +257,14 @@
       "source_ids": [
         "USER-REQUEST-VLEAGUE-CALENDAR-20261101",
         "KVL-COMP-VLEAGUE-W-2026-27",
-        "USER-REQUEST-VLEAGUE-CALENDAR-V2-20261101"
+        "USER-REQUEST-VLEAGUE-CALENDAR-V2-20261101",
+        "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
+        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101"
       ],
       "verified_at": "2026-11-01",
-      "sha256": "e9fb53cd1322400fc9efd3f16c24a96b4730280cba8e0d6d3cc3206e7c01e35d",
-      "evidence": "docs/validation/vleague-calendar-v2-20261101.md",
-      "review_note": "사용자 요청으로 달력 전용 SOO 약칭을 S∞P에서 SOOP으로 변경. 기존 공개 config의 이 한 필드 외 값은 동일하며 정식명/경기/명단/MASTER/ID와 공개 범위를 유지한다."
+      "sha256": "a21d0ceea5e165237dd44b322ab9b8676919713cdc5fb6cd4bab99b65d55387b",
+      "evidence": "docs/validation/vleague-calendar-v3-20261101.md",
+      "review_note": "기존 공개 표시 설정을 유지하고 MASTER의 올스타전 예정일 2027-01-17을 달력 주석으로만 추가했다. 공개 일정 발표 보도로 교차확인했다. 정규리그 경기·ID·시간·결과·명단·MASTER는 변경하지 않는다."
     },
     "data/player-updates/config.json": {
       "access_level": "PUBLIC",

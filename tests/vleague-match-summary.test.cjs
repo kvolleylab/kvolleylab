@@ -19,7 +19,7 @@ const result={home:3,away:2,sets:[{home:25,away:20},{home:23,away:25},{home:26,a
 function game(d,id,date,time,score,extra={}){return {id,date,time,home:{code:d.participants[0].code},away:{code:d.participants[1].code},score,...extra};}
 for(const gender of ['men','women'])test(gender+': both divisions, season-only empty state, real next fixtures and deep links',async()=>{
  const {w,doc,d,requests,errors,ready}=setup({gender});try{await ready;
-  const cards=[...doc.querySelectorAll('[data-summary-gender]')];assert.deepEqual(cards.map(c=>c.dataset.summaryGender),['men','women']);
+  const cards=[...doc.querySelectorAll('[data-summary-gender]')];assert.deepEqual(cards.map(c=>c.dataset.summaryGender),gender==='women'?['women','men']:['men','women']);
   assert.equal(doc.querySelectorAll('[data-kind=recent] .dv2-summary-empty').length,2);assert.equal(doc.querySelectorAll('.dv2-summary-game').length,2);
   for(const g of ['men','women']){const c=doc.querySelector(`[data-summary-gender=${g}]`),a=c.querySelector('.dv2-summary-game'),u=new URL(a.href);assert.equal(u.searchParams.get('competition'),`v-league-${g}-2026-27`);assert.equal(u.searchParams.get('view'),'schedule');assert.equal(u.searchParams.get('date'),'2026-10-31');assert.equal(c.querySelector('.dv2-summary-body').getAttribute('aria-busy'),'false');assert.match(a.textContent,g==='men'?/대한항공.*VS.*현대캐피탈/s:/GS칼텍스.*VS.*한국도로공사/s);assert.match(a.textContent,g==='men'?/14:00 KST/:/16:00 KST/);assert(!c.textContent.includes('KOVO컵'));}
   assert.equal(requests.length,2);assert(requests.every(p=>p.includes(gender==='men'?'-women-':'-men-')));
