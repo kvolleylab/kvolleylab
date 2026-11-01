@@ -51,6 +51,8 @@ class FakeClient:
             for item in updates:
                 m = re.search(r"!([A-S])(\d+)$", item["range"])
                 row, col = int(m[2]) - 1, ord(m[1]) - 65
+                while len(self.values) <= row:
+                    self.values.append([])
                 while len(self.values[row]) < 19:
                     self.values[row].append("")
                 self.values[row][col] = item["values"][0][0]
@@ -292,6 +294,124 @@ class MasterTests(unittest.TestCase):
         for range_name in ("'경기일정_MASTER'!A2:S2", "'경기일정_MASTER'!S2", "'다른시트'!N2"):
             with self.subTest(range=range_name), self.assertRaises(master.MasterError):
                 client.batch_update_values([{"range": range_name, "majorDimension": "ROWS", "values": [[1]]}])
+
+
+def postseason_record(phase="PO", game=1, gender="M", **changes):
+    phase_id, stage, _ = master.POSTSEASON_PHASES[phase]
+    male = gender == "M"
+    return fixture_record(**{
+        "match_id": f"VL2627-{gender}-{phase}-{game:03d}",
+        "competition_slug": "v-league-men-2026-27" if male else "v-league-women-2026-27",
+        "gender": "MALE" if male else "FEMALE", "round": game, "series_game": game,
+        "phase_id": phase_id, "stage": stage, "date": f"2027-04-{6 + game:02d}",
+        "source_key": f"023:001:{'MALE' if male else 'FEMALE'}:{252 + game}",
+        "source_url": f"https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode={phase_id}&gender={'1' if male else '2'}&page=0&size=200",
+        **changes})
+
+
+class PostseasonMasterTests(unittest.TestCase):
+    def setUp(self):
+        self.values = [master.HEADERS.copy(), fixture_row()]
+
+    def test_new_fixture_initializes_only_reserved_blank_cells_and_keeps_regular_values(self):
+        for gender in ("M", "W"):
+            for phase, (_, _, maximum) in master.POSTSEASON_PHASES.items():
+                for game in range(1, maximum + 1):
+                    record = postseason_record(phase, game, gender, status="scheduled", score=None)
+                    plan = master.build_update_plan(self.values, [record])
+                    reserved = master.POSTSEASON_ROWS[record["match_id"]]
+                    self.assertTrue(all(c["row"] == reserved for c in plan["changes"]))
+                    self.assertFalse({12, 19} & {c["column"] for c in plan["changes"]})
+                    client = FakeClient(self.values)
+                    receipt = master.apply_update_plan(client, plan)
+                    self.assertEqual(receipt["status"], "VERIFIED")
+                    self.assertEqual(client.values[1], self.values[1])
+                    self.assertEqual(client.values[reserved - 1][0], record["match_id"])
+                    self.assertEqual(client.values[reserved - 1][3], str(game))
+                    self.assertEqual(client.values[reserved - 1][4], record["stage"])
+                    self.assertEqual(client.values[reserved - 1][18], "")
+
+    def test_new_fixture_retry_and_rebuilt_plan_are_idempotent(self):
+        record = postseason_record()
+        plan = master.build_update_plan(self.values, [record])
+        client = FakeClient(self.values, error_after_write=True)
+        self.assertEqual(master.apply_update_plan(client, plan)["status"], "VERIFIED_AFTER_UNCERTAIN_RESPONSE")
+        self.assertEqual(master.apply_update_plan(client, plan)["changed_cells"], 0)
+        self.assertEqual(master.build_update_plan(client.values, [record])["changes"], [])
+        self.assertEqual(len(client.calls), 1)
+
+    def test_reserved_row_content_formula_and_note_prevent_initialization(self):
+        record = postseason_record()
+        row_number = master.POSTSEASON_ROWS[record["match_id"]]
+        for column, value in ((1, "=1+1"), (10, "사용자 편집"), (19, "[LOCK]")):
+            values = copy.deepcopy(self.values) + [[] for _ in range(row_number - len(self.values))]
+            values[row_number - 1] = [""] * 19
+            values[row_number - 1][column - 1] = value
+            with self.assertRaises(master.MasterError):
+                master.build_update_plan(values, [record])
+
+    def test_concurrent_edit_to_blank_target_prevents_entire_batch(self):
+        record = postseason_record()
+        plan = master.build_update_plan(self.values, [record])
+        client = FakeClient(self.values)
+        while len(client.values) < 271:
+            client.values.append([])
+        client.values[master.POSTSEASON_ROWS[record["match_id"]] - 1] = [""] * 18 + ["새 메모"]
+        with self.assertRaises(master.MasterError):
+            master.apply_update_plan(client, plan)
+        self.assertFalse(client.calls)
+
+    def test_unconfirmed_creation_is_never_reported_as_saved(self):
+        record = postseason_record()
+        client = FakeClient(self.values, drop_write=True, error_after_write=True)
+        with self.assertRaises(master.MasterError):
+            master.apply_update_plan(client, master.build_update_plan(self.values, [record]))
+        self.assertEqual(len(client.calls), 1)
+
+    def test_existing_postseason_identity_and_user_notes_remain_protected(self):
+        record = postseason_record(status="scheduled", score=None)
+        client = FakeClient(self.values)
+        master.apply_update_plan(client, master.build_update_plan(self.values, [record]))
+        row = client.values[master.POSTSEASON_ROWS[record["match_id"]] - 1]
+        row[11], row[18] = "사용자 도시", "검토 메모"
+        plan = master.build_update_plan(client.values, [postseason_record()])
+        self.assertTrue(all(c["column"] in master.WRITABLE_COLUMNS for c in plan["changes"]))
+        master.apply_update_plan(client, plan)
+        self.assertEqual((row[11], row[18]), ("사용자 도시", "검토 메모"))
+        with self.assertRaises(master.MasterError):
+            master.build_update_plan(client.values, [postseason_record(home_name="삼성화재")])
+
+    def test_invalid_postseason_id_phase_source_or_game_is_refused(self):
+        for changes in ({"match_id": "VL2627-M-PO-004"}, {"phase_id": "203"},
+                        {"series_game": 2}, {"stage": "챔피언결정전"},
+                        {"source_url": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1"},
+                        {"home_name": ""}, {"time": ""}, {"venue": ""}):
+            with self.subTest(changes=changes), self.assertRaises(master.MasterError):
+                master.build_update_plan(self.values, [postseason_record(**changes)])
+
+    def test_unused_game_requires_a_real_winning_series_and_existing_master_row(self):
+        client = FakeClient(self.values)
+        scheduled = [postseason_record(game=n, status="scheduled", score=None) for n in (1, 2, 3)]
+        master.apply_update_plan(client, master.build_update_plan(self.values, scheduled))
+        unused = postseason_record(game=3, status="not_required", score=None,
+                                  notRequired=True, non_play_reason="series_clinched")
+        records = [postseason_record(game=1), postseason_record(game=2), unused]
+        plan = master.build_update_plan(client.values, records)
+        master.apply_update_plan(client, plan)
+        self.assertEqual(client.values[master.POSTSEASON_ROWS[unused["match_id"]] - 1][12], "미실시")
+        self.assertEqual(master.build_update_plan(client.values, records)["changes"], [])
+        for invalid in ([unused], [postseason_record(game=1), unused],
+                        [postseason_record(game=2), postseason_record(game=3), unused]):
+            with self.assertRaises(master.MasterError):
+                master.build_update_plan(client.values, invalid)
+        with self.assertRaises(master.MasterError):
+            master.build_update_plan(self.values, records)
+
+    def test_low_level_client_blocks_identity_writes_outside_reserved_rows(self):
+        client = master.SheetsClient(lambda *args: None)
+        for cell in ("A2", "I253", "E272", "L254", "S254"):
+            with self.subTest(cell=cell), self.assertRaises(master.MasterError):
+                client.batch_update_values([{"range": f"'경기일정_MASTER'!{cell}", "majorDimension": "ROWS", "values": [["x"]]}])
 
 
 if __name__ == "__main__":

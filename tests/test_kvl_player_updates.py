@@ -1,8 +1,12 @@
 """Offline evidence/review boundary and publisher RSS contract tests."""
 import copy
+from contextlib import redirect_stderr, redirect_stdout
+from datetime import datetime, timezone
 import importlib.util
+import io
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 import sys
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts/kvl_player_updates.py"
@@ -182,6 +186,37 @@ class PlayerReviewTests(unittest.TestCase):
         self.assertTrue(module.monitoring_status(config, "2027-05-31")["allowed"])
         with self.assertRaises(ValueError):
             module.monitoring_status({}, "2026-11-01")
+
+    def test_required_window_rechecks_actual_kst_clock_without_output_writes(self):
+        config = {"monitoring_window": {"enabled": True, "season": "2026-27", "starts_on": "2026-11-01",
+                  "ends_on": "2027-10-31", "review_due_on": "2027-06-01", "timezone": "Asia/Seoul"}}
+        clock_values = iter((datetime(2027, 5, 31, 14, 59, 59, tzinfo=timezone.utc),
+                             datetime(2027, 5, 31, 15, 0, 0, tzinfo=timezone.utc)))
+        with patch.object(module, "datetime") as clock, patch.object(module, "read", return_value=config), \
+                patch.object(module, "write") as write, patch.object(module, "collect_news") as collect, \
+                patch.object(module, "validate_public_outputs") as validate, \
+                patch.object(sys, "argv", [str(SCRIPT), "--require-active-window"]), \
+                redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()) as errors:
+            clock.now.side_effect = lambda zone: next(clock_values).astimezone(zone)
+            module.main()
+            with self.assertRaises(SystemExit) as stopped:
+                module.main()
+            self.assertEqual(stopped.exception.code, 1)
+            self.assertIn("season_review_due on 2027-06-01", errors.getvalue())
+            self.assertEqual(clock.now.call_count, 2)
+            write.assert_not_called()
+            collect.assert_not_called()
+            validate.assert_not_called()
+
+    def test_required_window_cannot_be_bypassed_by_validation_or_collection_mode(self):
+        for other in ("--validate-public", "--collect-news", "--check-window"):
+            with self.subTest(other=other), \
+                    patch.object(sys, "argv", [str(SCRIPT), "--require-active-window", other]), \
+                    patch.object(module, "read") as read, redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit) as stopped:
+                    module.main()
+                self.assertEqual(stopped.exception.code, 2)
+                read.assert_not_called()
 
 
 class NewsMetadataTests(unittest.TestCase):

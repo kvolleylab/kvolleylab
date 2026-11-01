@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Read KOVO's public 2026-27 regular-season schedule and official team totals.
+"""Read KOVO's public 2026-27 schedule through the championship series.
 
 These routes and query parameters were observed in the public KOVO web app
 (`/assets/index-D20G7jIw.js`) and verified without authentication on 2026-10-31.
 The full schedule response contains per-set points; the homepage's small
 `/mains/games/schedules` response is deliberately NOT used for season coverage.
+The same official app identifies postseason phases 204/202/203. Their current
+season responses were verified as valid empty pages on 2026-11-02 KST; the
+roundName/series-game contract was checked against official 2025-26 results.
 
 This module only returns a validated source snapshot. It does not write MASTER,
 competition data, player records, Git commits, or deployment state.
@@ -37,6 +40,11 @@ SEASONS = {
     }
 }
 GENDERS = {"MALE": "1", "FEMALE": "2"}
+POSTSEASON_PHASES = {
+    "204": {"stage": "준플레이오프", "code": "QPO", "max_games": 1},
+    "202": {"stage": "플레이오프", "code": "PO", "max_games": 3},
+    "203": {"stage": "챔피언결정전", "code": "CH", "max_games": 5},
+}
 
 
 class SourceError(ValueError):
@@ -91,7 +99,8 @@ def validate_request_url(url):
     pairs = parse_qsl(parts.query, keep_blank_values=True)
     require(len(pairs) == len(dict(pairs)), "Duplicate source query keys")
     params = dict(pairs)
-    require(params.get("seasonCode") == "023" and params.get("leagueCode") == "201"
+    require(params.get("seasonCode") == "023"
+            and params.get("leagueCode") in {"201", *POSTSEASON_PHASES}
             and params.get("gender") in ("1", "2"), "Unapproved season/phase/gender")
     if parts.path == "/stat/game-schedule":
         require(set(params) == {"gcode", "seasonCode", "leagueCode", "gender", "page", "size"}
@@ -99,6 +108,7 @@ def validate_request_url(url):
                 and re.fullmatch(r"[0-9]", params["page"]), "Unapproved schedule query")
     elif parts.path == "/stat/league/team-rank":
         require(set(params) == {"seasonCode", "leagueCode", "gender", "round", "page", "size"}
+                and params["leagueCode"] == "201"
                 and params["round"] == "0" and params["page"] == "0"
                 and params["size"] == "30", "Unapproved standings query")
     else:
@@ -170,11 +180,12 @@ class PublicClient:
         raise SourceError("Source request did not complete")
 
 
-def schedule_url(season, gender, page=0):
+def schedule_url(season, gender, page=0, *, phase_id="201"):
     config = SEASONS[season]
+    require(phase_id in {"201", *POSTSEASON_PHASES}, "Unapproved schedule phase")
     return API_ORIGIN + "/stat/game-schedule?" + urlencode({
         "gcode": config["match_type"], "seasonCode": config["season_id"],
-        "leagueCode": config["phase_id"], "gender": GENDERS[gender],
+        "leagueCode": phase_id, "gender": GENDERS[gender],
         "page": page, "size": PAGE_SIZE,
     })
 
@@ -202,30 +213,49 @@ def validate_final_sets(sets, won):
             "Per-set winners disagree with official match result")
 
 
-def normalize_match(raw, *, season, gender, source_url, observed_at):
+def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="201"):
     config = SEASONS[season]
+    require(phase_id in {"201", *POSTSEASON_PHASES}, "Unapproved schedule phase")
+    post = POSTSEASON_PHASES.get(phase_id)
     require(isinstance(raw, dict), "Schedule row is not an object")
     require(raw.get("seasonCode") == config["season_id"]
-            and raw.get("leagueCode") == config["phase_id"]
+            and raw.get("leagueCode") == phase_id
             and raw.get("gender") == GENDERS[gender], "Schedule row has wrong season/phase/gender")
-    require(raw.get("gpart") == config["phase_id"], "Unexpected game phase")
+    require(raw.get("gpart") == phase_id, "Unexpected game phase")
     season_name = text_value(raw.get("seasonName"), "seasonName", maximum=160)
     require(str(config["start_year"]) in season_name and str(config["end_year"]) in season_name,
             "Official season name conflicts with configured season")
     number = integer(raw.get("gnum"), "gnum", minimum=1, maximum=1000)
     round_number = integer(raw.get("round"), "round", minimum=1, maximum=config["rounds"])
+    series_game = None
+    if post:
+        # The official raw `round` stays 1 throughout a postseason series.
+        # Its published roundName, not list order/date/gnum, identifies the leg.
+        leg = re.fullmatch(re.escape(post["stage"]) + r"\s+([1-5])차전", str(raw.get("roundName", "")))
+        require(leg is not None and int(leg.group(1)) <= post["max_games"],
+                "Official postseason series-game label is missing or invalid")
+        require(raw.get("leagueName") == post["stage"], "Official postseason label conflicts with phase")
+        require(round_number == 1, "Unexpected official postseason round field")
+        series_game = int(leg.group(1))
     day = valid_date(raw.get("gdate"), "gdate")
     require(date(config["start_year"], 7, 1) <= day <= date(config["end_year"], 6, 30),
             "Game date is outside this season")
-    start = clock_value(raw.get("gstime"), "gstime")
+    start = clock_value(raw.get("gstime"), "gstime", empty=bool(post))
     end = clock_value(raw.get("getime"), "getime", empty=True)
     sides = {}
     for side, code_key, name_key in (("home", "hcode", "hsname"), ("away", "acode", "asname")):
         code = raw.get(code_key)
-        require(isinstance(code, str) and re.fullmatch(r"[12]\d{3}", code)
-                and code[0] == GENDERS[gender], "Invalid official team code")
-        sides[side] = {"provider_code": code, "name": text_value(raw.get(name_key), name_key)}
-    require(sides["home"]["provider_code"] != sides["away"]["provider_code"], "Same team on both sides")
+        if post and code in (None, "", "0"):
+            label = raw.get(name_key)
+            require(label in (None, "") or isinstance(label, str) and len(label) <= 100,
+                    "Invalid unresolved postseason team label")
+            sides[side] = {"provider_code": None, "name": label or "팀 미정"}
+        else:
+            require(isinstance(code, str) and re.fullmatch(r"[12]\d{3}", code)
+                    and code[0] == GENDERS[gender], "Invalid official team code")
+            sides[side] = {"provider_code": code, "name": text_value(raw.get(name_key), name_key)}
+    require(not sides["home"]["provider_code"] or not sides["away"]["provider_code"]
+            or sides["home"]["provider_code"] != sides["away"]["provider_code"], "Same team on both sides")
     won = {"home": integer(raw.get("hspoint"), "hspoint", maximum=3),
            "away": integer(raw.get("aspoint"), "aspoint", maximum=3)}
     points = []
@@ -252,22 +282,58 @@ def normalize_match(raw, *, season, gender, source_url, observed_at):
         require(result_marker == expected, "Official winner marker disagrees with set wins")
     else:
         require(result_marker in (None, ""), "Non-final game has winner marker")
-    return {
+    venue = raw.get("place")
+    if not (post and venue in (None, "")):
+        venue = text_value(venue, "place")
+    ready = bool(start and venue and all(sides[s]["provider_code"] for s in sides))
+    require(ready or post and status == "scheduled", "Unresolved postseason fixture contains a score")
+    normalized = {
         "source_key": f"{config['season_id']}:{config['match_type']}:{gender}:{number}",
         "season_id": config["season_id"], "match_type": config["match_type"],
-        "gender": gender, "number": number, "phase_id": config["phase_id"],
+        "gender": gender, "number": number, "phase_id": phase_id,
         "phase_name": text_value(raw.get("leagueName"), "leagueName"),
         "round": round_number, "date": day.isoformat(), "time": start,
-        "venue": text_value(raw.get("place"), "place"),
+        "venue": venue or None,
         "home": sides["home"], "away": sides["away"], "status": status,
         "sets_won": won, "sets": points if points else None,
         "source_url": source_url,
         "detail_url": API_ORIGIN + f"/stat/game-schedule/{number}?" + urlencode({
             "gcode": config["match_type"], "seasonCode": config["season_id"],
-            "leagueCode": config["phase_id"],
+            "leagueCode": phase_id,
         }),
         "observed_at": observed_at,
     }
+    if post:
+        normalized.update(series_game=series_game, stage=post["stage"], fixture_ready=ready)
+    return normalized
+
+
+def read_postseason_schedule(fetcher, *, season, gender, phase_id, observed_at):
+    """A valid empty phase is waiting for official fixtures, never a season end.
+
+    Each supported series fits one bounded page. A missing/error envelope is a
+    failure; only a consistent explicit zero page is accepted as unpublished.
+    """
+    phase = POSTSEASON_PHASES[phase_id]
+    url = schedule_url(season, gender, phase_id=phase_id)
+    payload = envelope_payload(fetcher(url))
+    require(isinstance(payload, dict) and isinstance(payload.get("content"), list)
+            and isinstance(payload.get("page"), dict), "Postseason page contract is missing")
+    meta, content = payload["page"], payload["content"]
+    total = integer(meta.get("totalElements"), "postseason total", maximum=phase["max_games"])
+    require(meta.get("number") == 0 and type(meta.get("number")) is int
+            and meta.get("size") == PAGE_SIZE and type(meta.get("size")) is int
+            and meta.get("totalPages") == (1 if total else 0)
+            and type(meta.get("totalPages")) is int and len(content) == total,
+            "Incomplete or inconsistent postseason pagination")
+    rows = [normalize_match(row, season=season, gender=gender, phase_id=phase_id,
+                            source_url=url, observed_at=observed_at) for row in content]
+    require(len({r["source_key"] for r in rows}) == total, "Duplicate postseason source identities")
+    require({r["series_game"] for r in rows} == set(range(1, total + 1)),
+            "Missing or duplicate postseason series game")
+    return rows, {"gender": gender, "phase_id": phase_id, "stage": phase["stage"],
+                  "received": total, "complete": True, "fixture_state": "published" if total else "not_published",
+                  "source_url": url}
 
 
 def read_gender_schedule(fetcher, *, season, gender, observed_at):
@@ -342,7 +408,7 @@ def normalize_standings(data, *, season, gender, source_url, observed_at):
 
 
 def collect_season(season="2026-27", *, fetcher=None, include_standings=True, now=None):
-    """Return both complete regular-season schedules; raise on any partial result.
+    """Read both regular seasons and every supported postseason phase.
 
     `fetcher(url)` is injectable for offline tests and must return the unmodified
     official JSON envelope. Official standings contain only teams with played
@@ -352,23 +418,30 @@ def collect_season(season="2026-27", *, fetcher=None, include_standings=True, no
     require(season in SEASONS, "Season has no reviewed official mapping")
     reader = fetcher or PublicClient()
     stamp = now or utc_now()
-    matches, coverage, standings = [], [], []
+    matches, pending_matches, coverage, postseason_coverage, standings = [], [], [], [], []
     for gender in GENDERS:
         observed, covered = read_gender_schedule(reader, season=season, gender=gender, observed_at=stamp)
         matches.extend(observed)
         coverage.append(covered)
+        for phase_id in POSTSEASON_PHASES:
+            observed_post, covered_post = read_postseason_schedule(reader, season=season, gender=gender,
+                                            phase_id=phase_id, observed_at=stamp)
+            matches.extend(row for row in observed_post if row["fixture_ready"])
+            pending_matches.extend(row for row in observed_post if not row["fixture_ready"])
+            postseason_coverage.append(covered_post)
         if include_standings:
             url = standings_url(season, gender)
             standings.append(normalize_standings(reader(url), season=season, gender=gender,
                                                  source_url=url, observed_at=stamp))
-    require(len({m["number"] for m in matches}) == len(matches), "Official global game numbers overlap")
+    all_matches = matches + pending_matches
+    require(len({m["number"] for m in all_matches}) == len(all_matches), "Official global game numbers overlap")
     matches.sort(key=lambda m: (m["date"], m["time"], m["number"]))
-    stable = [{k: v for k, v in m.items() if k != "observed_at"} for m in matches]
+    stable = [{k: v for k, v in m.items() if k != "observed_at"} for m in all_matches]
     return {"schema_version": 1, "season": season, "fetched_at": stamp,
             "source": "KOVO_PUBLIC_STAT_API", "coverage": {
-                "kind": "season", "phase": "regular", "complete": True,
-                "genders": list(GENDERS), "details": coverage,
-            }, "matches": matches, "official_standings": standings,
+                "kind": "season", "phase": "through_championship", "complete": True,
+                "genders": list(GENDERS), "details": coverage, "postseason": postseason_coverage,
+            }, "matches": matches, "pending_matches": pending_matches, "official_standings": standings,
             "content_sha256": hashlib.sha256(json.dumps(stable, ensure_ascii=False,
                 sort_keys=True, separators=(",", ":")).encode()).hexdigest()}
 

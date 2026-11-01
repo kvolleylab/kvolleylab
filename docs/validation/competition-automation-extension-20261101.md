@@ -5,7 +5,10 @@
 검토 PR: [#227](https://github.com/kvolleylab/kvolleylab/pull/227).
 브랜치: `feature/competition-automation-lifecycle-v1`.
 
-상태: **요청 범위 구현·로컬 검증 완료 / 운영 MASTER v17 반영·재조회 완료 / READY FOR REVIEW / 신규 코드 운영 미배포**.
+상태: **2026-11-01 최초 구현·검증의 과거 기록**. 이때는 신규 코드 운영 미배포였다.
+2026-11-02 사용자가 PR #227 병합과 운영 적용을 명시적으로 승인했고,
+정규리그 한정 범위는 챔피언결정전까지로 보완했다.
+최신 공식 일정·구현·검증·운영 전환 증거는 [후속 검증](vleague-postseason-automation-20261102.md)과 PR #227을 따른다.
 기존 승인된 V-리그 수집의 최초 실제 성공과 이번 확장 기능의 배포 상태를 구분한다.
 
 ## 변경 범위

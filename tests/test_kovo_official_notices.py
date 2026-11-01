@@ -85,6 +85,24 @@ class KovoNoticeTests(unittest.TestCase):
         self.assertTrue(kovo.relevant("2026-2027시즌 삼성화재 선수등록(1차) 공시", "2026-06-30", "2026-27", "2026-04-01"))
         self.assertFalse(kovo.relevant("2023-2024시즌 삼성화재 선수등록 공시", "2023-06-30", "2026-27", "2026-04-01"))
 
+    def test_change_discovery_without_season_or_quota_keywords(self):
+        cases = {
+            "대한항공 선수 등번호 변경 공시": "number_change",
+            "대한항공 선수 배번\t변경 공시": "number_change",
+            "대한항공 선수 포지션\u00a0변경 공시": "position_change",
+            "대한항공 선수 등록 해지 공시": "registration_termination",
+            "대한항공 선수 등록\n말소 공시": "registration_termination",
+            "대한항공 추가 선수 등록 공시": "registration",
+        }
+        for title, expected in cases.items():
+            with self.subTest(title=title):
+                self.assertTrue(kovo.relevant(title, "2026-11-02", "2026-27", "2026-04-01"))
+                self.assertEqual(kovo.detect_kind(title), expected)
+                self.assertFalse(kovo.relevant(title, "2026-03-31", "2026-27", "2026-04-01"))
+        for title in ("경기장 출입구 번호 변경 안내", "배구 경기 규정 안내", "대한항공 구단 소식"):
+            with self.subTest(unrelated=title):
+                self.assertFalse(kovo.relevant(title, "2026-11-02", "2026-27", "2026-04-01"))
+
 
 if __name__ == "__main__":
     unittest.main()

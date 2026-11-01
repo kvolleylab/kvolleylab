@@ -23,7 +23,7 @@ on:
     # Default cron is UTC. Daily reconciliation: 09:17 KST.
     - cron: '17 0 * * *'
     # 12:07-23:52 KST, every 15 minutes, away from the top of the hour.
-    # No fixed-latency guarantee: each run reconciles the FULL regular season.
+    # No fixed-latency guarantee: reconcile regular season + QPO/PO/championship.
     - cron: '7,22,37,52 3-14 * * *'
 
 permissions:
@@ -106,11 +106,14 @@ jobs:
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
         run: node --test tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs
+      - name: Recheck the live clock immediately before preview collection
+        id: preview-window
+        run: python -B scripts/kvl_competition_lifecycle.py --root . --report "$RUNNER_TEMP/kvl-vleague-preview/lifecycle.json" --github-output "$GITHUB_OUTPUT"
       - name: Verify real official full-season data without changing MASTER or site
-        if: needs.lifecycle.outputs.allow_update == 'true'
+        if: steps.preview-window.outputs.allow_update == 'true'
         run: python -B scripts/kovo_vleague_update.py --root . --output "$RUNNER_TEMP/kvl-vleague-preview"
       - name: Render real candidate scores and standings through the existing engine
-        if: needs.lifecycle.outputs.allow_update == 'true'
+        if: steps.preview-window.outputs.allow_update == 'true'
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
           KVL_VLEAGUE_CANDIDATE_ROOT: ${{ runner.temp }}/kvl-vleague-preview/candidate
@@ -123,6 +126,7 @@ jobs:
           path: |
             ${{ runner.temp }}/kvl-vleague-preview/report.json
             ${{ runner.temp }}/kvl-vleague-preview/report.md
+            ${{ runner.temp }}/kvl-vleague-preview/lifecycle.json
             ${{ runner.temp }}/kvl-vleague-preview/pages-configuration.json
             ${{ runner.temp }}/kvl-vleague-preview/candidate/
           retention-days: 7

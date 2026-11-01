@@ -7,6 +7,7 @@ const icons={overview:'<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3
 const icon=key=>`<svg viewBox="0 0 24 24" aria-hidden="true">${icons[key]||icons.overview}</svg>`;
 const trophy=rank=>international(current)&&Number(rank)>3?'':`<span class="dv2-trophy trophy-${Number(rank)}" aria-hidden="true"><svg viewBox="0 0 28 30" width="28" height="30"><path class="trophy-handles" d="M7 5H3v4c0 4 2 6 6 6M21 5h4v4c0 4-2 6-6 6"/><path class="trophy-cup" d="M7 3h14v8c0 5-3.1 8-7 8s-7-3-7-8V3Z"/><path class="trophy-shine" d="M10 6v5c0 2 .7 3.6 2 4.5"/><path class="trophy-stem" d="M12 18h4v6h-4z"/><path class="trophy-base" d="M9 24h10l2 3H7z"/></svg></span>`;
 const href=(view,extra)=>window.KVLCompetitionTemplateV2.viewUrl(view,extra);
+const isNotRequired=m=>m?.notRequired===true||String(m?.status||'').toLowerCase()==='not_required';
 function metricIcon(key){
  const solid={rosters:'users',schedule:'calendar',groups:'layers',knockout:'trophy',venue:'pin'};
  return current?.structure?.overviewMetrics?.iconStyle==='solid'&&solid[key]?`<svg class="is-solid" viewBox="0 0 24 24" aria-hidden="true"><use href="#kvl-icon-${solid[key]}-solid"/></svg>`:icon(key);
@@ -68,7 +69,7 @@ function matchClock(m){
 function selectOverviewMatches(d,now=Date.now()){
  const today=new Date(now+9*3600000).toISOString().slice(0,10),api=window.KVLCompetitionDataV2;
  const excluded=new Set(['cancelled','canceled','postponed','abandoned','suspended','live','in_progress','in-progress','취소','연기','중단','진행중','경기중']);
- const records=(d.matches||[]).map(m=>({m,clock:matchClock(m)})).filter(r=>r.clock&&!excluded.has(String(r.m.status||'').toLowerCase())&&api.participant(d,r.m.home)&&api.participant(d,r.m.away));
+ const records=(d.matches||[]).map(m=>({m,clock:matchClock(m)})).filter(r=>r.clock&&!isNotRequired(r.m)&&!excluded.has(String(r.m.status||'').toLowerCase())&&api.participant(d,r.m.home)&&api.participant(d,r.m.away));
  const final=m=>{const s=m.score;return s&&Number.isInteger(s.home)&&Number.isInteger(s.away)&&Math.max(s.home,s.away)===3&&Math.min(s.home,s.away)>=0&&Math.min(s.home,s.away)<3&&m.scoreVerification!==false;};
  const byTime=(a,b)=>a.clock.sort-b.clock.sort||String(a.m.id).localeCompare(String(b.m.id));
  const recent=records.filter(r=>final(r.m)&&(r.clock.at===null?r.m.date<=today:r.clock.at<=now)).sort(byTime).at(-1)?.m||null;
@@ -125,7 +126,7 @@ function overviewMatches(d,before){
 }
 function initialCalendarMonth(d,dates,availableMonths=months){
  const today=new Date(Date.now()+9*60*60*1000).toISOString().slice(0,10); // Korea Standard Time
- const lastMatch=(d.matches||[]).map(m=>m.date).filter(Boolean).sort().at(-1);
+ const lastMatch=(d.matches||[]).filter(m=>!isNotRequired(m)).map(m=>m.date).filter(Boolean).sort().at(-1);
  if(!dates.length)return undefined;
  if(d.status==='completed'||today>dates.at(-1))return (lastMatch||dates.at(-1)).slice(0,7);
  const thisMonth=today.slice(0,7);return availableMonths.includes(thisMonth)?thisMonth:availableMonths[0];
@@ -140,7 +141,7 @@ function calendar(root=q('[data-dv2-calendar]'),state=null){
  const source=state?.data||current,options=source.structure?.calendarDisplay,display=window.KVLCalendarDisplayV1;
  const compact=options?.mode==='vleague-compact'&&Boolean(display);
  root.classList.toggle('dv2-vleague-calendar',compact);
- const availableMonths=state?.months||months,selectedMonth=state?.month||month,records=state?.matches||current.matches||[];
+ const availableMonths=state?.months||months,selectedMonth=state?.month||month,records=(state?.matches||current.matches||[]).filter(m=>!isNotRequired(m));
  if(!availableMonths.length){root.innerHTML='<div class="dv2-empty">공식 일정 발표 후 표시합니다.</div>';return;}
  const [year,mo]=selectedMonth.split('-').map(Number),offset=new Date(Date.UTC(year,mo-1,1)).getUTCDay(),days=new Date(Date.UTC(year,mo,0)).getUTCDate(),cells=[];
  for(let i=0;i<Math.ceil((offset+days)/7)*7;i++){
@@ -157,7 +158,7 @@ function calendar(root=q('[data-dv2-calendar]'),state=null){
  root.innerHTML=`<div class="dv2-calendar-top"><small>${state?'TEAM CALENDAR':'TOURNAMENT CALENDAR'}</small><h3><span class="dv2-calendar-year">${year}<em>년</em></span><span class="dv2-calendar-month">${String(mo).padStart(2,'0')}<em>월</em></span></h3><div class="dv2-calendar-controls"><button data-dv2-month="-1" aria-label="이전 달" ${selectedMonth===availableMonths[0]?'disabled':''}>‹</button><button data-dv2-month="1" aria-label="다음 달" ${selectedMonth===availableMonths.at(-1)?'disabled':''}>›</button></div></div>${compact?`<div class="dv2-calendar-fit" role="region" aria-label="${year}년 ${mo}월 경기 달력"><div class="dv2-calendar-board">${grid}</div></div>`:grid}<p class="dv2-calendar-hint">경기일을 선택하면 대진과 세트별 점수를 볼 수 있습니다.</p>`;
 }
 function openDay(date,state=null){
- const dialog=q('#dv2-day-dialog'),games=(state?.matches||current.matches||[]).filter(m=>m.date===date).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
+ const dialog=q('#dv2-day-dialog'),games=(state?.matches||current.matches||[]).filter(m=>m.date===date&&!isNotRequired(m)).sort((a,b)=>(a.time||'').localeCompare(b.time||''));
  q('#dv2-day-title',dialog).textContent=date.replaceAll('-','.')+' · '+games.length+'경기';
  q('.dv2-day-matches',dialog).innerHTML=games.map(m=>{
   const home=team(m.home.code),away=team(m.away.code),s=m.score,scored=s&&Number.isFinite(s.home)&&Number.isFinite(s.away);
@@ -170,7 +171,7 @@ function enhanceTeamCalendar(d=current){
  const root=q('[data-kvl-component="team-results"]'),list=root&&q('.kvl1180-schedule-list',root),params=new URLSearchParams(location.search),code=params.get('team');
  if(!list||!code||q('[data-dv2-team-calendar]',root))return;
  const selected=d.participants.find(t=>t.code===code);if(!selected)return;
- const matches=d.matches.filter(m=>[m.home.code,m.away.code].includes(code)),dates=matches.map(m=>m.date).filter(Boolean).sort(),available=[];
+ const matches=d.matches.filter(m=>[m.home.code,m.away.code].includes(code)),dates=matches.filter(m=>!isNotRequired(m)).map(m=>m.date).filter(Boolean).sort(),available=[];
  if(dates.length){let cursor=dates[0].slice(0,7);const end=dates.at(-1).slice(0,7);while(cursor<=end&&available.length<24){available.push(cursor);const [y,m]=cursor.split('-').map(Number);cursor=new Date(Date.UTC(y,m,1)).toISOString().slice(0,7);}}
  const section=document.createElement('section');section.className='dv2-team-calendar';section.dataset.dv2TeamCalendar=code;section.innerHTML=heading(selected.name+' 경기 일정')+'<div class="dv2-calendar" data-dv2-team-month></div>';list.before(section);
  teamCalendar={teamCode:code,data:d,matches,months:available,month:initialCalendarMonth({...d,matches},dates,available),root:q('[data-dv2-team-month]',section)};
@@ -245,7 +246,7 @@ function apply(d){
   if(groupHeading)groupHeading.textContent=d.structure.labels?.standingsEyebrow||'STANDINGS';
   if(groupNote)groupNote.textContent=d.standingsNote||'';
  }
- const dates=[...(d.dateLabel?.match(/\d{4}-\d{2}-\d{2}/g)||[]),...d.matches.map(m=>m.date).filter(Boolean)].sort();
+ const dates=[...(d.dateLabel?.match(/\d{4}-\d{2}-\d{2}/g)||[]),...d.matches.filter(m=>!isNotRequired(m)).map(m=>m.date).filter(Boolean)].sort();
  months=[];if(dates.length){const start=dates[0].slice(0,7),end=dates.at(-1).slice(0,7);let cursor=start;while(cursor<=end&&months.length<24){months.push(cursor);const [y,m]=cursor.split('-').map(Number);cursor=new Date(Date.UTC(y,m,1)).toISOString().slice(0,7);}}month=initialCalendarMonth(d,dates);calendar();
  document.body.insertAdjacentHTML('beforeend','<dialog id="dv2-day-dialog" aria-labelledby="dv2-day-title"><div class="dv2-dialog-heading"><h2 id="dv2-day-title"></h2><button type="button" data-dv2-close aria-label="상세 창 닫기">×</button></div><div class="dv2-day-matches"></div><a class="dv2-day-schedule" href="#">이 날짜 경기 일정·결과 보기 ›</a></dialog>');
  const dialog=q('#dv2-day-dialog');dialog.addEventListener('click',event=>{if(event.target.closest('[data-dv2-close]')||event.target===dialog)dialog.close();});

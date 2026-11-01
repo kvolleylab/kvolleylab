@@ -73,6 +73,7 @@ jobs:
           NOTICE_ID: ${{ inputs.notice_id || '' }}
         shell: bash
         run: |
+          python scripts/kvl_player_updates.py --require-active-window
           if [ -n "$NOTICE_ID" ]; then
             python scripts/kovo_official_notices.py --max-pages 0 --max-details 1 --notice-id "$NOTICE_ID"
           else
@@ -112,6 +113,8 @@ jobs:
           if git diff --cached --quiet; then
             echo "No source notice changes to commit"
           else
+            python scripts/kvl_player_updates.py --require-active-window
             git commit -m "data(kovo): update normalized official notices [skip ci]"
+            python scripts/kvl_player_updates.py --require-active-window
             git push origin HEAD:main
           fi

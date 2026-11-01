@@ -244,12 +244,14 @@
         "USER-REQUEST-VLEAGUE-CALENDAR-20261101",
         "KVL-COMP-VLEAGUE-M-2026-27",
         "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
-        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101"
+        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101",
+        "USER-REQUEST-VLEAGUE-STANDINGS-20261102",
+        "KOVO-2026-27-LEAGUE-INFO-158236-ATTACHMENT-4573"
       ],
-      "verified_at": "2026-11-01",
-      "sha256": "e62f55920c7ce6c0ee9219bb8b96a6f0d9594f6a02416517cadfac3f75173831",
-      "evidence": "docs/validation/vleague-calendar-v3-20261101.md",
-      "review_note": "기존 공개 표시 설정을 유지하고 MASTER의 올스타전 예정일 2027-01-17을 달력 주석으로만 추가했다. 공개 일정 발표 보도로 교차확인했다. 정규리그 경기·ID·시간·결과·명단·MASTER는 변경하지 않는다."
+      "verified_at": "2026-11-02",
+      "sha256": "d6dd38e908170d787b7fb10d57414403ba5eb1b05c72712b832be005ae4f3d18",
+      "evidence": "docs/validation/vleague-postseason-automation-20261102.md",
+      "review_note": "최신 올스타전·달력·모바일 승패승점 표시 설정을 보존하고 KOVO 현행 운영요강 제16·18·19조의 남녀 포스트시즌 기간과 출처를 연결했다. 개별 대진·시각·결과를 추정하지 않는다. 정규 순위표의 원본 수치·공식 ID·명단은 유지한다."
     },
     "data/competitions/v-league-women-2026-27/config.json": {
       "access_level": "PUBLIC",
@@ -259,12 +261,14 @@
         "KVL-COMP-VLEAGUE-W-2026-27",
         "USER-REQUEST-VLEAGUE-CALENDAR-V2-20261101",
         "KVL-VLEAGUE-2026-27-ALLSTAR-MASTER",
-        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101"
+        "USER-REQUEST-VLEAGUE-CALENDAR-V3-20261101",
+        "USER-REQUEST-VLEAGUE-STANDINGS-20261102",
+        "KOVO-2026-27-LEAGUE-INFO-158236-ATTACHMENT-4573"
       ],
-      "verified_at": "2026-11-01",
-      "sha256": "a21d0ceea5e165237dd44b322ab9b8676919713cdc5fb6cd4bab99b65d55387b",
-      "evidence": "docs/validation/vleague-calendar-v3-20261101.md",
-      "review_note": "기존 공개 표시 설정을 유지하고 MASTER의 올스타전 예정일 2027-01-17을 달력 주석으로만 추가했다. 공개 일정 발표 보도로 교차확인했다. 정규리그 경기·ID·시간·결과·명단·MASTER는 변경하지 않는다."
+      "verified_at": "2026-11-02",
+      "sha256": "79c4f9b9d3f9ad6f23066485bd4cfdbafc613505924f8ed532c126c31025a840",
+      "evidence": "docs/validation/vleague-postseason-automation-20261102.md",
+      "review_note": "최신 올스타전·달력·모바일 승패승점 표시 설정을 보존하고 KOVO 현행 운영요강 제16·18·19조의 남녀 포스트시즌 기간과 출처를 연결했다. 개별 대진·시각·결과를 추정하지 않는다. 정규 순위표의 원본 수치·공식 ID·명단은 유지한다."
     },
     "data/player-updates/config.json": {
       "access_level": "PUBLIC",

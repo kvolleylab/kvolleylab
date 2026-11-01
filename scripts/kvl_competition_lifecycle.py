@@ -25,6 +25,12 @@ from kovo_vleague_standings import StandingsError, validate_final_match
 
 DEFAULT_POLICY = "config/automation/vleague-2026-27_v1.json"
 REGULAR_STAGE = re.compile(r"[1-6]라운드")
+SEASON_SCOPE = "season_through_championship"
+POSTSEASON_SERIES = {
+    "QPO": {"stage": "준플레이오프", "wins": 1, "maximum": 1},
+    "PO": {"stage": "플레이오프", "wins": 2, "maximum": 3},
+    "CH": {"stage": "챔피언결정전", "wins": 3, "maximum": 5},
+}
 
 
 class LifecycleError(ValueError):
@@ -82,7 +88,7 @@ def official_url(value):
     require(isinstance(value, str), "OFFICIAL_SOURCE_REQUIRED")
     parsed = urlsplit(value)
     require(parsed.scheme == "https" and parsed.hostname in
-            {"kovo.co.kr", "www.kovo.co.kr", "user-api.kovo.co.kr"}
+            {"kovo.co.kr", "www.kovo.co.kr", "user-api.kovo.co.kr", "cdn.kovo.co.kr"}
             and parsed.port in (None, 443) and not parsed.username and not parsed.password
             and parsed.path not in ("", "/"), "OFFICIAL_SOURCE_REQUIRED")
     require(not any(re.search(r"(?:^|[-_])(?:token|secret|password|signature|sig|credential|authorization|key)(?:$|[-_])", key, re.I)
@@ -90,10 +96,12 @@ def official_url(value):
 
 
 def validate_policy(policy):
-    require(policy.get("schema_version") == 1 and policy.get("phase_scope") == "regular_season",
+    require(policy.get("schema_version") == 1 and policy.get("phase_scope") == SEASON_SCOPE,
             "POLICY_SCOPE_INVALID")
-    require(policy.get("auto_next_season") is False and policy.get("auto_postseason") is False,
+    require(policy.get("auto_next_season") is False and policy.get("auto_postseason") is True,
             "AUTOMATIC_SCOPE_EXPANSION_PROHIBITED")
+    require(policy.get("included_phases") == ["regular_season", "semi_playoff", "playoff", "championship"],
+            "POLICY_PHASES_INVALID")
     require(isinstance(policy.get("automation_id"), str) and
             re.fullmatch(r"[a-z0-9-]+", policy["automation_id"]), "AUTOMATION_ID_INVALID")
     require(isinstance(policy.get("season"), str) and re.fullmatch(r"\d{4}-\d{2}", policy["season"]),
@@ -116,6 +124,10 @@ def validate_policy(policy):
     timestamp(basis.get("observed_at"))
     require(isinstance(basis.get("repository_commit"), str) and
             re.fullmatch(r"[0-9a-f]{40}", basis["repository_commit"]), "BASIS_COMMIT_REQUIRED")
+    require(basis.get("postseason_format") == {
+        "semi_playoff": {"maximum_games": 1, "wins_required": 1, "third_fourth_points_gap_maximum": 3},
+        "playoff": {"maximum_games": 3, "wins_required": 2},
+        "championship": {"maximum_games": 5, "wins_required": 3}}, "POSTSEASON_FORMAT_REVIEW_REQUIRED")
     competitions, evidence = policy.get("competitions"), basis.get("evidence")
     require(isinstance(competitions, list) and competitions and all(isinstance(c, dict) for c in competitions),
             "COMPETITION_SCOPE_INVALID")
@@ -136,9 +148,23 @@ def validate_policy(policy):
             and {e.get("competition_id") for e in evidence} == ids, "BOTH_DIVISIONS_NEED_SOURCE_EVIDENCE")
     evidence_dates = []
     for item in evidence:
-        require(bool(item.get("source_id")) and bool(item.get("last_match_id")), "SCHEDULE_EVIDENCE_REQUIRED")
+        require(bool(item.get("source_id")) and item.get("evidence_kind") == "official_competition_regulations"
+                and isinstance(item.get("sha256"), str) and re.fullmatch(r"[0-9a-f]{64}", item["sha256"]),
+                "SCHEDULE_EVIDENCE_REQUIRED")
         official_url(item.get("source_url"))
-        evidence_dates.append(calendar_day(item.get("last_fixture_day")))
+        evidence_dates.append(calendar_day(item.get("last_possible_fixture_day")))
+        division = next(c["gender"] for c in competitions if c["competition_id"] == item["competition_id"])
+        periods = basis.get("division_periods", {}).get(division, {})
+        require(isinstance(periods, dict) and set(periods) == {"semi_playoff", "playoff", "championship"},
+                "POSTSEASON_PERIODS_REQUIRED")
+        previous_end = first
+        for phase in ("semi_playoff", "playoff", "championship"):
+            period = periods[phase]
+            require(isinstance(period, dict), "POSTSEASON_PERIOD_INVALID")
+            phase_start, phase_end = calendar_day(period.get("starts_on")), calendar_day(period.get("ends_on"))
+            require(previous_end < phase_start <= phase_end <= last, "POSTSEASON_PERIOD_INVALID")
+            previous_end = phase_end
+        require(previous_end == evidence_dates[-1], "POSTSEASON_LAST_POSSIBLE_DAY_MISMATCH")
     require(max(evidence_dates) == last, "LAST_FIXTURE_BASIS_INVALID")
     require(isinstance(policy.get("identity_state_path"), str)
             and policy["identity_state_path"] not in paths, "IDENTITY_STATE_PATH_REQUIRED")
@@ -151,8 +177,113 @@ def load_policy(root, relative=DEFAULT_POLICY):
     return policy
 
 
+def postseason_status(data, regular_complete):
+    """Validate series completion without inventing fixtures or deciding a date.
+
+    Required wins follow the reviewed 2026-27 competition format. A published
+    potential fourth/fifth game is not an unfinished match once its series has
+    already been clinched. It is counted as not played only when its ordinal is
+    after that actual clincher; a missing earlier game or a played extra game
+    remains an error. Regular-season ranks determine conditional QPO eligibility
+    only after every regular fixture has a valid final result.
+    """
+    by_stage = {rule["stage"]: key for key, rule in POSTSEASON_SERIES.items()}
+    matches = [m for m in data["matches"] if m.get("stage") in by_stage]
+    require(len({m.get("id") for m in matches}) == len(matches)
+            and all(isinstance(m.get("id"), str) and m["id"] for m in matches),
+            "POSTSEASON_FIXTURE_ID_INVALID")
+    seeds, qpo_required = {}, None
+    if regular_complete:
+        rows = data.get("standings", {}).get("rows", [])
+        if (isinstance(rows, list) and len(rows) == 7
+                and all(isinstance(row, dict) and type(row.get("rank")) is int
+                        and type(row.get("points")) is int and row["points"] >= 0
+                        and isinstance(row.get("team"), dict) and isinstance(row["team"].get("code"), str)
+                        and row["team"]["code"] for row in rows)
+                and {row["rank"] for row in rows} == set(range(1, 8))
+                and len({row["team"]["code"] for row in rows}) == 7):
+            seeds = {row["rank"]: row for row in rows}
+            require(seeds[3]["points"] >= seeds[4]["points"], "POSTSEASON_SEED_POINTS_INVALID")
+            qpo_required = seeds[3]["points"] - seeds[4]["points"] <= 3
+    series, completed, ignored = {}, 0, 0
+    for key, rule in POSTSEASON_SERIES.items():
+        games = [m for m in matches if m["stage"] == rule["stage"]]
+        ordinals = {}
+        for match in games:
+            ordinal = match.get("seriesGame")
+            require(type(ordinal) is int and 1 <= ordinal <= rule["maximum"]
+                    and match.get("round") == f"{ordinal}차전" and ordinal not in ordinals,
+                    "POSTSEASON_GAME_ORDINAL_INVALID")
+            require(match.get("status") in ("scheduled", "live", "final", "postponed", "cancelled", "not_required"),
+                    "POSTSEASON_STATUS_INVALID")
+            ordinals[ordinal] = match
+        required = qpo_required if key == "QPO" else True
+        pair, wins, winner, clincher, played, not_played = None, {}, None, None, 0, 0
+        last_result_day = None
+        for ordinal, match in sorted(ordinals.items()):
+            if clincher is not None:
+                require(match.get("status") in ("scheduled", "not_required", "cancelled") and match.get("score") is None,
+                        "POSTSEASON_GAME_AFTER_CLINCH")
+                not_played += 1
+                continue
+            if required is False:
+                require(match.get("status") in ("scheduled", "not_required", "cancelled") and match.get("score") is None,
+                        "UNREQUIRED_QPO_WAS_PLAYED")
+                not_played += 1
+                continue
+            require(match.get("status") != "not_required", "POSTSEASON_NOT_REQUIRED_UNPROVEN")
+            if match.get("status") != "final":
+                continue
+            require(regular_complete and seeds and all(n in ordinals and ordinals[n].get("status") == "final"
+                                                      for n in range(1, ordinal)),
+                    "POSTSEASON_FINAL_BEFORE_PREREQUISITE")
+            try:
+                score = validate_final_match(match)
+            except StandingsError:
+                raise LifecycleError("FINAL_RESULT_INVALID") from None
+            result_day = calendar_day(match.get("date"))
+            preceding_series = None if key == "QPO" else series["QPO" if key == "PO" else "PO"]
+            predecessor_day = preceding_series.get("last_result_day") if preceding_series else None
+            require((last_result_day is None or result_day >= last_result_day)
+                    and (predecessor_day is None or result_day >= calendar_day(predecessor_day)),
+                    "POSTSEASON_FINAL_CHRONOLOGY_INVALID")
+            last_result_day = result_day
+            actual_pair = {match["home"]["code"], match["away"]["code"]}
+            require(pair is None or actual_pair == pair, "POSTSEASON_SERIES_TEAM_MISMATCH")
+            pair = actual_pair
+            if key == "QPO":
+                expected_pair = {seeds[3]["team"]["code"], seeds[4]["team"]["code"]}
+                require(match["home"]["code"] == seeds[3]["team"]["code"], "POSTSEASON_HOME_RIGHT_MISMATCH")
+            elif key == "PO":
+                third = series["QPO"]["winner"] if qpo_required else seeds[3]["team"]["code"]
+                require(third is not None and series["QPO"]["complete"], "POSTSEASON_FINAL_BEFORE_PREREQUISITE")
+                expected_pair = {seeds[2]["team"]["code"], third}
+            else:
+                require(series["PO"]["complete"] and series["PO"]["winner"] is not None,
+                        "POSTSEASON_FINAL_BEFORE_PREREQUISITE")
+                expected_pair = {seeds[1]["team"]["code"], series["PO"]["winner"]}
+            require(actual_pair == expected_pair, "POSTSEASON_QUALIFICATION_MISMATCH")
+            won = match["home" if score["home"] == 3 else "away"]["code"]
+            wins[won] = wins.get(won, 0) + 1
+            played += 1
+            if wins[won] == rule["wins"]:
+                winner, clincher = won, ordinal
+        complete = required is False or winner is not None
+        completed += played
+        ignored += not_played
+        series[key] = {"required": required, "matched": len(games), "played": played,
+                       "not_played": not_played, "complete": complete, "winner": winner,
+                       "clinching_game": clincher,
+                       "last_result_day": last_result_day.isoformat() if last_result_day is not None else None}
+    complete = regular_complete and bool(seeds) and all(item["complete"] for item in series.values())
+    return {"matched": len(matches), "completed": completed,
+            "unresolved": max(0, len(matches) - completed - ignored), "not_played": ignored,
+            "qpo_required": qpo_required, "complete": complete,
+            "champion": series["CH"]["winner"] if complete else None, "series": series}
+
+
 def fixture_status(root, policy, candidates=None):
-    """Inspect regular-season coverage without fetching any provider endpoint."""
+    """Inspect fixed regular coverage and the complete postseason locally."""
     result = {}
     for item in policy["competitions"]:
         path = item["data_path"]
@@ -167,7 +298,10 @@ def fixture_status(root, policy, candidates=None):
         require(len(regular) == item["expected_regular_matches"]
                 and len({m.get("id") for m in regular}) == len(regular)
                 and all(isinstance(m.get("id"), str) and m["id"] for m in regular), "FIXTURE_COVERAGE_INVALID")
-        dates = [calendar_day(m.get("date")) for m in regular]
+        supported = regular + [m for m in matches if m.get("stage") in
+                               {rule["stage"] for rule in POSTSEASON_SERIES.values()}]
+        require(len(supported) == len(matches), "UNSUPPORTED_SEASON_STAGE")
+        dates = [calendar_day(m.get("date")) for m in supported]
         completed = 0
         for match in regular:
             if match.get("status") != "final":
@@ -177,9 +311,13 @@ def fixture_status(root, policy, candidates=None):
             except StandingsError:
                 raise LifecycleError("FINAL_RESULT_INVALID") from None
             completed += 1
+        postseason = postseason_status(data, completed == len(regular))
+        completed_dates = [calendar_day(m["date"]) for m in supported if m.get("status") == "final"]
         result[item["competition_id"]] = {
             "matched": len(regular), "completed": completed, "unresolved": len(regular) - completed,
             "first_fixture_day": min(dates).isoformat(), "last_fixture_day": max(dates).isoformat(),
+            "last_completed_fixture_day": max(completed_dates).isoformat() if completed_dates else None,
+            "postseason": postseason, "season_complete": completed == len(regular) and postseason["complete"],
         }
     return result
 
@@ -213,26 +351,27 @@ def verify_archive(root, policy, divisions, now):
     require(manifest_path.is_relative_to(archive_directory), "ARCHIVE_MANIFEST_PATH_INVALID")
     manifest = read_json(manifest_path)
     require(manifest.get("schema_version") == 1 and manifest.get("automation_id") == policy["automation_id"]
-            and manifest.get("season") == policy["season"] and manifest.get("phase_scope") == "regular_season",
+            and manifest.get("season") == policy["season"] and manifest.get("phase_scope") == policy["phase_scope"],
             "ARCHIVE_SCOPE_INVALID")
     created = timestamp(manifest.get("created_at"))
-    require(created <= now and all(group["unresolved"] == 0 for group in divisions.values()),
+    require(created <= now and all(group["season_complete"] for group in divisions.values()),
             "ARCHIVE_REQUIRES_FINAL_RESULTS")
+    require(created >= timestamp(policy["update_window"]["ends_at"]), "ARCHIVE_BEFORE_UPDATE_WINDOW_CLOSED")
     ids = {c["competition_id"] for c in policy["competitions"]}
     official = manifest.get("official_completion")
     require(isinstance(official, list) and len(official) == len(ids)
             and all(isinstance(e, dict) for e in official)
             and {e.get("competition_id") for e in official} == ids, "OFFICIAL_COMPLETION_REQUIRED")
     zone = ZoneInfo(policy["timezone"])
-    final_day_start = max(datetime.combine(calendar_day(d["last_fixture_day"]), time.min, zone)
+    final_day_start = max(datetime.combine(calendar_day(d["last_completed_fixture_day"]), time.min, zone)
                           for d in divisions.values())
     require(final_day_start <= created, "ARCHIVE_BEFORE_FINAL_FIXTURE_DAY")
     for entry in official:
-        require(entry.get("review_status") == "VERIFIED" and entry.get("phase_scope") == "regular_season"
+        require(entry.get("review_status") == "VERIFIED" and entry.get("phase_scope") == policy["phase_scope"]
                 and isinstance(entry.get("source_id"), str) and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.:-]{2,127}", entry["source_id"]),
                 "OFFICIAL_COMPLETION_REQUIRED")
         official_url(entry.get("source_url"))
-        division_day = calendar_day(divisions[entry["competition_id"]]["last_fixture_day"])
+        division_day = calendar_day(divisions[entry["competition_id"]]["last_completed_fixture_day"])
         require(datetime.combine(division_day, time.min, zone) <= timestamp(entry.get("verified_at")) <= created,
                 "OFFICIAL_COMPLETION_TIME_INVALID")
     expected_paths = {c["data_path"] for c in policy["competitions"]} | {policy["identity_state_path"]}
@@ -266,6 +405,11 @@ def verify_archive(root, policy, divisions, now):
         require(verified.get("matched") == item["expected_regular_matches"]
                 and verified.get("completed") == item["expected_regular_matches"]
                 and verified.get("standings_verified") is True, "ARCHIVE_FINAL_STANDINGS_REQUIRED")
+        expected_postseason = divisions[item["competition_id"]]["postseason"]
+        post = verified.get("postseason", {})
+        require(isinstance(post, dict) and all(post.get(key) == expected_postseason[key]
+                for key in ("matched", "completed", "complete", "champion")),
+                "ARCHIVE_FINAL_POSTSEASON_REQUIRED")
     deployment = hashed_json(root, receipts.get("deployment"), archive_directory)
     commit = deployment.get("expected_sha")
     require(deployment.get("status") == "DEPLOYED_VERIFIED" and isinstance(commit, str)
@@ -299,7 +443,7 @@ def evaluate(root, policy, *, now=None, candidates=None):
     result = {"schema_version": 1, "automation_id": policy["automation_id"], "season": policy["season"],
               "checked_at": now.astimezone(timezone.utc).isoformat(), "timezone": policy["timezone"],
               "starts_at": start.isoformat(), "ends_at": end.isoformat(), "end_exclusive": True,
-              "phase_scope": "regular_season", "divisions": divisions,
+              "phase_scope": policy["phase_scope"], "divisions": divisions,
               "official_competition_end_inferred": False, "allow_update": False,
               "master_written": False, "production_written": False}
     if archive_sha:
@@ -310,7 +454,8 @@ def evaluate(root, policy, *, now=None, candidates=None):
     elif now >= end:
         result.update(status="SKIPPED", phase="STOPPED_PENDING_ARCHIVE", reason_code="UPDATE_WINDOW_CLOSED",
                       archive_blockers=["OFFICIAL_COMPLETION_AND_ARCHIVE_NOT_VERIFIED"] +
-                      (["UNFINISHED_REGULAR_SEASON"] if any(d["unresolved"] for d in divisions.values()) else []))
+                      (["UNFINISHED_REGULAR_SEASON"] if any(d["unresolved"] for d in divisions.values()) else []) +
+                      (["UNFINISHED_POSTSEASON"] if any(not d["postseason"]["complete"] for d in divisions.values()) else []))
     else:
         require(all(calendar_day(d["first_fixture_day"]) >= start.astimezone(zone).date()
                     and calendar_day(d["last_fixture_day"]) < end.astimezone(zone).date()
@@ -352,7 +497,7 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
     require(isinstance(now, datetime) and now.tzinfo is not None and now.utcoffset() is not None,
             "CURRENT_TIME_MUST_HAVE_TIMEZONE")
     divisions = fixture_status(root, policy)
-    require(all(group["unresolved"] == 0 for group in divisions.values()), "ARCHIVE_REQUIRES_FINAL_RESULTS")
+    require(all(group["season_complete"] for group in divisions.values()), "ARCHIVE_REQUIRES_FINAL_RESULTS")
     namespace_relative = f"data/automation/archive/{policy['automation_id']}"
     namespace = local_path(root, namespace_relative)
     require(not namespace.exists(), "ARCHIVE_ALREADY_EXISTS")
@@ -362,7 +507,7 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
     require(set(completion) == {"schema_version", "automation_id", "season", "phase_scope", "official_completion"}
             and completion.get("schema_version") == 1
             and completion.get("automation_id") == policy["automation_id"]
-            and completion.get("season") == policy["season"] and completion.get("phase_scope") == "regular_season",
+            and completion.get("season") == policy["season"] and completion.get("phase_scope") == policy["phase_scope"],
             "OFFICIAL_COMPLETION_SCOPE_INVALID")
     completion_fields = {"competition_id", "review_status", "phase_scope", "source_id", "source_url", "verified_at"}
     require(isinstance(completion["official_completion"], list)
@@ -391,7 +536,8 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
         receipt_fields = {
             "publication": {"schema_version", "season", "checked_at", "status", "mode", "source_coverage", "divisions",
                             "changed_files", "master_checked", "master_changed_cells", "production_written", "master_written",
-                            "master_readback_verified", "quality_audit", "publication_gate", "lifecycle"},
+                            "master_readback_verified", "quality_audit", "publication_gate", "lifecycle",
+                            "postseason_source_coverage"},
             "deployment": {"status", "expected_sha", "built_sha", "build_requested", "verified_files", "verified_at",
                            "verified_file_sha256", "verified_payload_sha256"},
         }
@@ -410,8 +556,13 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
                         and set(groups) == {c["gender"] for c in policy["competitions"]}, "ARCHIVE_RECEIPT_FIELDS_INVALID")
                 receipt = {key: original_receipt.get(key) for key in
                            ("schema_version", "season", "checked_at", "status", "mode", "master_checked", "master_readback_verified")}
-                receipt["divisions"] = {gender: {key: group.get(key) for key in ("matched", "completed", "standings_verified")}
-                                        for gender, group in groups.items()}
+                receipt["divisions"] = {}
+                for gender, group in groups.items():
+                    require(isinstance(group, dict) and isinstance(group.get("postseason"), dict),
+                            "ARCHIVE_RECEIPT_FIELDS_INVALID")
+                    receipt["divisions"][gender] = {key: group.get(key) for key in ("matched", "completed", "standings_verified")}
+                    receipt["divisions"][gender]["postseason"] = {
+                        key: group["postseason"].get(key) for key in ("matched", "completed", "complete", "champion")}
                 receipt["publication_gate"] = {
                     "status": gate.get("status"), "checked_at": gate.get("checked_at"),
                     "files": {path: {"sha256": entry.get("sha256")} for path, entry in gate["files"].items()}}
@@ -427,7 +578,7 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
                                  "sha256": hashlib.sha256(receipt_file.read_bytes()).hexdigest()}
         deployment = read_json(staged_root / references["deployment"]["path"])
         manifest = {"schema_version": 1, "automation_id": policy["automation_id"], "season": policy["season"],
-                    "phase_scope": "regular_season", "created_at": now.astimezone(timezone.utc).isoformat(),
+                    "phase_scope": policy["phase_scope"], "created_at": now.astimezone(timezone.utc).isoformat(),
                     "official_completion": completion["official_completion"], "snapshots": snapshots,
                     "receipts": references, "deployment_commit": deployment.get("expected_sha")}
         (staged_root / manifest_relative).write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

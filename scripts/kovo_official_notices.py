@@ -24,10 +24,11 @@ TEAMS = {
     "흥국생명": "여", "IBK기업은행": "여", "정관장": "여",
     "SOOP": "여", "페퍼저축은행": "여",
 }
-KEYWORDS = ("선수등록", "추가등록", "추가선수 등록", "추가 선수 등록",
+KEYWORDS = ("선수등록", "추가등록", "추가선수등록",
             "임의해지", "임의탈퇴", "자유신분", "이적", "FA", "보상선수",
             "외국인", "아시아쿼터", "신인선수", "계약", "방출", "임대",
-            "계약해지", "계약 해지", "등록말소", "은퇴", "퇴단")
+            "계약해지", "등록해지", "등록말소", "은퇴", "퇴단",
+            "등번호변경", "배번변경", "포지션변경")
 FIELDS = ("notice_id", "notice_date", "notice_title", "notice_kind", "team", "gender",
           "number", "player_name", "position", "salary_krw", "option_krw",
           "total_krw", "remarks", "source_url")
@@ -133,7 +134,8 @@ def relevant(title, created, season, since):
         return False
     normalized = re.sub(r"[\s./]", "-", title)
     season_hit = season in normalized or season.replace("-", "-20") in normalized
-    return season_hit or any(word.lower() in title.lower() for word in KEYWORDS)
+    compact = re.sub(r"\s+", "", title).lower()
+    return season_hit or any(word.lower() in compact for word in KEYWORDS)
 
 
 def extract_rows(bodies):

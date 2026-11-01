@@ -474,10 +474,13 @@ def main():
     parser.add_argument("--output-dir", type=Path, default=DEFAULT)
     parser.add_argument("--reviews", type=Path, default=DEFAULT / "reviewed_mappings.json")
     parser.add_argument("--config", type=Path, default=DEFAULT / "config.json")
-    parser.add_argument("--collect-news", action="store_true")
-    parser.add_argument("--check-window", action="store_true", help="Check dates before any network collection")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--collect-news", action="store_true")
+    mode.add_argument("--check-window", action="store_true", help="Check dates before any network collection")
+    mode.add_argument("--require-active-window", action="store_true",
+                      help="Recheck the current clock; fail outside the monitoring window without writing files")
     parser.add_argument("--github-output", type=Path)
-    parser.add_argument("--validate-public", action="store_true", help="Fail closed on private fields or credentials before committing public output")
+    mode.add_argument("--validate-public", action="store_true", help="Fail closed on private fields or credentials before committing public output")
     args = parser.parse_args()
     if args.validate_public:
         validate_public_outputs(args.output_dir, args.index.parent)
@@ -485,6 +488,11 @@ def main():
         return
     config = read(args.config, {})
     guard = monitoring_status(config)
+    if args.require_active_window:
+        print(json.dumps({"monitoring": guard}, ensure_ascii=False))
+        if not guard["allowed"]:
+            parser.exit(1, f"MONITORING_WINDOW_CLOSED: {guard['reason']} on {guard['today']}; collection/publication blocked\n")
+        return
     if args.github_output:
         with args.github_output.open("a", encoding="utf-8") as output:
             output.write("active=" + str(guard["allowed"]).lower() + "\n")

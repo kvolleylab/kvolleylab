@@ -1,38 +1,75 @@
 {
   "schema_version": 1,
   "automation_id": "vleague-2026-27-regular",
+  "identity_note": "Existing automation and archive namespace ID is retained for continuity; phase_scope and included_phases define the expanded full-season behavior.",
   "season": "2026-27",
-  "phase_scope": "regular_season",
+  "phase_scope": "season_through_championship",
+  "included_phases": [
+    "regular_season",
+    "semi_playoff",
+    "playoff",
+    "championship"
+  ],
   "timezone": "Asia/Seoul",
   "auto_next_season": false,
-  "auto_postseason": false,
+  "auto_postseason": true,
   "update_window": {
     "starts_at": "2026-10-31T00:00:00+09:00",
-    "ends_at": "2027-04-10T00:00:00+09:00",
+    "ends_at": "2027-04-30T00:00:00+09:00",
     "end_exclusive": true,
     "reconciliation_days": 7,
-    "meaning": "Operator update cutoff: seven calendar days after the last verified regular-season fixture day. This is not an official competition or postseason end date."
+    "meaning": "Operator update cutoff: seven complete Korean calendar days after the official championship schedule envelope ending 2027-04-22. Early series completion does not remove the correction window, and the clock does not itself certify sporting completion."
   },
   "schedule_basis": {
     "first_fixture_day": "2026-10-31",
-    "last_fixture_day": "2027-04-02",
-    "observed_at": "2026-11-01T12:21:03+00:00",
-    "repository_commit": "2b13d05ee5ce2b2055e3f8a4c1b011c2437b48c3",
-    "source": "KOVO_PUBLIC_STAT_API",
+    "last_fixture_day": "2027-04-22",
+    "date_meaning": "Official full-season and division envelopes, including every possible championship game. Individual game dates, times and participants are read from the official game schedule when published.",
+    "observed_at": "2026-11-01T15:30:33+00:00",
+    "repository_commit": "bc9b0bdcbf8ba5fed891b76d5cc06c9962236c82",
+    "source": "KOVO_OFFICIAL_COMPETITION_REGULATIONS",
+    "official_periods": {
+      "regular_season": {"starts_on": "2026-10-31", "ends_on": "2027-04-02"},
+      "semi_playoff": {"starts_on": "2027-04-05", "ends_on": "2027-04-06"},
+      "playoff": {"starts_on": "2027-04-07", "ends_on": "2027-04-12"},
+      "championship": {"starts_on": "2027-04-13", "ends_on": "2027-04-22"}
+    },
+    "postseason_format": {
+      "semi_playoff": {"maximum_games": 1, "wins_required": 1, "third_fourth_points_gap_maximum": 3},
+      "playoff": {"maximum_games": 3, "wins_required": 2},
+      "championship": {"maximum_games": 5, "wins_required": 3}
+    },
+    "division_periods": {
+      "MALE": {
+        "semi_playoff": {"starts_on": "2027-04-06", "ends_on": "2027-04-06"},
+        "playoff": {"starts_on": "2027-04-08", "ends_on": "2027-04-12"},
+        "championship": {"starts_on": "2027-04-14", "ends_on": "2027-04-22"}
+      },
+      "FEMALE": {
+        "semi_playoff": {"starts_on": "2027-04-05", "ends_on": "2027-04-05"},
+        "playoff": {"starts_on": "2027-04-07", "ends_on": "2027-04-11"},
+        "championship": {"starts_on": "2027-04-13", "ends_on": "2027-04-21"}
+      }
+    },
     "evidence": [
       {
         "competition_id": "KVL-COMP-VLEAGUE-M-2026-27",
-        "source_id": "023:001:MALE:251",
-        "source_url": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-        "last_match_id": "VL2627-M-126",
-        "last_fixture_day": "2027-04-02"
+        "source_id": "KOVO-2026-27-LEAGUE-INFO-158236-ATTACHMENT-4573",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/league-info-test/HK흥국금융%202026~2027%20V-리그%20운영요강.pdf",
+        "evidence_kind": "official_competition_regulations",
+        "sha256": "6fc933863c2b26f66ff8f32796e846f641c278cffe06504dbb9fe92265713150",
+        "page": 3,
+        "articles": [16, 18],
+        "last_possible_fixture_day": "2027-04-22"
       },
       {
         "competition_id": "KVL-COMP-VLEAGUE-W-2026-27",
-        "source_id": "023:001:FEMALE:252",
-        "source_url": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-        "last_match_id": "VL2627-W-126",
-        "last_fixture_day": "2027-04-02"
+        "source_id": "KOVO-2026-27-LEAGUE-INFO-158236-ATTACHMENT-4573",
+        "source_url": "https://cdn.kovo.co.kr/1/games/v-leagues/league-info-test/HK흥국금융%202026~2027%20V-리그%20운영요강.pdf",
+        "evidence_kind": "official_competition_regulations",
+        "sha256": "6fc933863c2b26f66ff8f32796e846f641c278cffe06504dbb9fe92265713150",
+        "page": 3,
+        "articles": [16, 18],
+        "last_possible_fixture_day": "2027-04-21"
       }
     ]
   },

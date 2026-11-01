@@ -30,6 +30,8 @@ const stage=m=>m?.stageLabel||m?.stage||m?.round||'경기';
 const pool=m=>m?.group||m?.pool||'';
 const round=m=>String(m?.round||'').toUpperCase();
 const venue=m=>m?.venueLabel||m?.venue?.arena||m?.venue?.cityKo||m?.venue?.city_ko||m?.venue?.countryKo||m?.venue?.country_ko||'';
+const isNotRequired=m=>m?.notRequired===true||String(m?.status||'').toLowerCase()==='not_required';
+const nonPlayReason=m=>m?.non_play_reason==='qualification_gap'?'준PO 미개최':'시리즈 종료';
 function score(m){const s=m?.score;if(!s)return null;const hv=s.home??s.homeSets??s.home_sets,av=s.away??s.awaySets??s.away_sets;if(hv===null||hv===undefined||hv===''||av===null||av===undefined||av==='')return null;const h=Number(hv),a=Number(av);return Number.isFinite(h)&&Number.isFinite(a)?{home:h,away:a,sets:Array.isArray(m.reportedSets)?m.reportedSets:Array.isArray(s.sets)?s.sets:[]}:null;}
 function fmtDate(v){if(!v)return '일정 미정';const d=new Date(`${v}T12:00:00Z`);return `${Number(v.slice(5,7))}월 ${Number(v.slice(8,10))}일 (${WEEK[d.getUTCDay()]})`;}
 const viewUrl=(view,params)=>window.KVLCompetitionTemplateV2.viewUrl(view,params);
@@ -149,7 +151,7 @@ function renderQualifications(d){
 function renderCalendar(d){
   const root=q('[data-kvl-component="calendar"]'),section=q('[data-kvl-section="calendar"]');if(!root)return;
   if(section)section.dataset.kvlEmpty=String(!cfg(d).calendar);if(!cfg(d).calendar){if(section)section.hidden=true;return;}else if(section)section.hidden=false;
-  const list=(d.matches||[]).slice().sort((a,b)=>`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
+  const list=(d.matches||[]).filter(m=>!isNotRequired(m)).sort((a,b)=>`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
   const months=[...new Set(list.map(m=>date(m).slice(0,7)).filter(Boolean))].sort();
   if(!months.length){root.innerHTML='<div class="kvl1180-schedule-empty">공식 일정 발표 후 월간 달력을 표시합니다.</div>';return;}
   root.innerHTML=months.map(ym=>{
@@ -167,16 +169,17 @@ function renderCalendar(d){
   }).join('');
 }
 
-function stages(d){const x=d.structure?.schedule?.stages;if(Array.isArray(x)&&x.length)return x;return ['전체',...[...new Set((d.matches||[]).map(stage).filter(Boolean))]];}
+function stages(d){const x=d.structure?.schedule?.stages;if(Array.isArray(x)&&x.length){const post=d.structure?.knockout?.mode==='pro-postseason'?['준플레이오프','플레이오프','챔피언결정전'].filter(s=>(d.matches||[]).some(m=>stage(m)===s)):[];return [...new Set([...x,...post])];}return ['전체',...[...new Set((d.matches||[]).map(stage).filter(Boolean))]];}
 function setLine(m){const s=score(m);if(!s?.sets?.length)return s&&isDomesticLike(data())?'<span class="kvl1180-set-points-pending">세트별 득점 확인 중</span>':'';return s.sets.map(x=>{const hv=x?.home??x?.[0],av=x?.away??x?.[1];if(hv===null||hv===undefined||hv===''||av===null||av===undefined||av==='')return '';const h=Number(hv),a=Number(av);return Number.isFinite(h)&&Number.isFinite(a)?`<span>${h}-${a}</span>`:'';}).filter(Boolean).join('');}
 function side(t,pos){const p=participant(t)||t,domestic=isDomesticLike(data()),asset=logo(p),mark=isRegional(data())?regionMark(p,'kvl1180-inline-logo'):asset?`<span class="kvl1180-inline-logo">${teamLink(p,`<img src="${esc(asset)}" alt="${esc(name(p))} 엠블럼" loading="lazy">`,'kvl-team-flag-link')}</span>`:`<span class="kvl1180-inline-logo kvl1180-seed-icon ${domestic?'is-school-mark':''}">${esc(domestic?schoolMark(name(p)):code(p)||'?')}</span>`,english=domestic?'':(en(p)||code(p)),copy=`<span class="kvl1180-slot-copy"><strong>${teamLink(p)}</strong>${english?`<small>${teamLink(p,esc(english),'kvl-team-en-link')}</small>`:''}</span>`;return pos==='left'?`<span class="kvl1180-side is-left">${mark}${copy}</span>`:`<span class="kvl1180-side is-right">${copy}${mark}</span>`;}
 function matchRow(m){
- const s=score(m),d=data(),domestic=isDomesticLike(d);
+ const unused=isNotRequired(m),s=unused?null:score(m),d=data(),domestic=isDomesticLike(d);
  const shortVenue=domestic?venue(m).replace(/^고성군\s*/,''):venue(m);
  const metaDetail=domestic?[stage(m),pool(m)?groupLabel(pool(m)):'',shortVenue].filter(Boolean).join(' · '):'';
  const detail=domestic?'':[stage(m),pool(m)?groupLabel(pool(m)):'',venue(m),window.KVLCompetitionDataV2.localTimeLabel(m)].filter(Boolean).join(' · ');
- const timeText=domestic?`${time(m)||'시간 미정'}`:`${time(m)||'시간 미정'} KST`;
- return `<article data-match-id="${esc(mid(m))}" class="kvl1180-match-row ${[code(m.home),code(m.away)].includes(d.focusTeamCode)?'is-korea':''}"><div class="kvl1180-match-meta"><time>${esc(timeText)}</time>${metaDetail?`<span class="kvl1180-match-meta-detail">${esc(metaDetail)}</span>`:''}</div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s?'':'is-upcoming'}">${s?`${s.home}-${s.away}`:'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${setLine(m)}</div>${m.scoreNote?`<p class="kvl-score-note">${esc(m.scoreNote)}</p>`:''}${detail?`<div class="kvl1180-match-detail">${esc(detail)}</div>`:''}</article>`;
+ const timeText=unused?nonPlayReason(m):domestic?`${time(m)||'시간 미정'}`:`${time(m)||'시간 미정'} KST`;
+ const note=unused?[nonPlayReason(m)+'로 경기를 진행하지 않습니다.',m.scoreNote].filter(Boolean).join(' '):m.scoreNote;
+ return `<article data-match-id="${esc(mid(m))}"${unused?' data-match-state="not_required"':''} class="kvl1180-match-row ${[code(m.home),code(m.away)].includes(d.focusTeamCode)?'is-korea':''}"><div class="kvl1180-match-meta"><time>${esc(timeText)}</time>${metaDetail?`<span class="kvl1180-match-meta-detail">${esc(metaDetail)}</span>`:''}</div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s||unused?'':'is-upcoming'}">${unused?'미실시':s?`${s.home}-${s.away}`:'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${unused?'':setLine(m)}</div>${note?`<p class="kvl-score-note">${esc(note)}</p>`:''}${detail?`<div class="kvl1180-match-detail">${esc(detail)}</div>`:''}</article>`;
 }
 function renderSchedule(d){
   const filters=q('[data-kvl-component="schedule-filters"]'),summary=q('[data-kvl-component="schedule-summary"]'),root=q('[data-kvl-component="schedule-list"]');if(!root)return;
@@ -186,7 +189,7 @@ function renderSchedule(d){
   const pools=[...new Set((d.matches||[]).filter(m=>stage(m)===runtime.stage).map(m=>pool(m)).filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b),'en',{numeric:true,sensitivity:'base'}));
   if(poolRoot){poolRoot.hidden=!pools.length;poolRoot.innerHTML=pools.length?`<label>조 선택 <select aria-label="조 선택"><option>전체</option>${pools.map(g=>`<option>${esc(g)}</option>`).join('')}</select></label>`:'';const select=q('select',poolRoot);if(select){select.value=runtime.pool;select.onchange=()=>{runtime.pool=select.value;renderSchedule(d);};}}
   let list=(d.matches||[]).slice();if(runtime.pool!=='전체')list=list.filter(m=>pool(m)===runtime.pool);if(runtime.stage!=='전체')list=list.filter(m=>stage(m)===runtime.stage);list.sort((a,b)=>`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
-  const done=list.filter(m=>score(m)).length;if(summary)summary.innerHTML=`<strong>${esc(runtime.stage)}</strong><span>${list.length}경기 · 완료 ${done} · 예정 ${list.length-done} · ${esc(d.timezoneSummary||'한국시간(KST)')}</span>`;
+  const unused=list.filter(isNotRequired).length,done=list.filter(m=>!isNotRequired(m)&&score(m)).length;if(summary)summary.innerHTML=`<strong>${esc(runtime.stage)}</strong><span>${list.length}경기 · 완료 ${done} · 예정 ${list.length-done-unused}${unused?' · 미실시 '+unused:''} · ${esc(d.timezoneSummary||'한국시간(KST)')}</span>`;
   root.innerHTML=matchGroups(list,'schedule');
   const wanted=new URLSearchParams(location.search).get('date'),el=wanted?document.getElementById(`date-${wanted}`):null;if(el)requestAnimationFrame(()=>el.scrollIntoView({block:'start'}));
 }
@@ -243,8 +246,14 @@ function poolCard(p){const rows=p.rows||[],domestic=isDomesticLike(data());retur
 function poolRankLabel(d,r){const pools=d.standings?.pools||[];for(const p of pools){const found=(p.rows||[]).find(x=>code(x.team)===code(r.team));if(found)return `${groupLabel(p.id||String(p.title||'').replace('조',''))} ${found.rank==null?'순위 미정':found.rank+'위'}`;}return r.rank==null?'순위 미정':`예선 ${r.rank}위`;}
 function qfPair(d,r,c){if(c.mode==='single-league'||r.status!=='qualified')return '';if(r.pairingLabel)return String(r.pairingLabel);const m=(d.matches||[]).find(m=>round(m)==='QF'&&[code(m.home),code(m.away)].includes(code(r.team)));if(!m)return '';const other=code(m.home)===code(r.team)?m.away:m.home,rows=d.standings?.combinedRows||[],opponent=rows.find(x=>code(x.team)===code(other));return r.rank!=null&&opponent?.rank!=null?`${r.rank}-${opponent.rank}`:'';}
 function showStandingsStatus(c){return c.mode!=='single-league'||c.showStatus!==false;}
+function mobileRecordSummary(c){return c.mode==='single-league'&&c.showStatus===false&&c.mobileStats==='wins-losses-points';}
 function combinedRow(d,r,c){const st=statusOf(r),t=resolveTeam(r.team||{},d),pool=c.mode==='single-league'?(r.statusLabel||(r.rank==null?'개막 전':`${r.rank}위`)):poolRankLabel(d,r),pair=qfPair(d,r,c);return `<div class="kvl1180-combined-row ${st.cls}"><span class="kvl1180-combined-rank">${r.rank==null?'-':esc(r.rank)+'위'}</span>${teamCell(t,'kvl1180-combined-team')}${showStandingsStatus(c)?`<span class="kvl1180-combined-pool">${esc(pool)}</span>`:''}<span class="kvl1180-combined-stat">${esc(r.wins??'-')}</span><span class="kvl1180-combined-stat">${esc(r.losses??'-')}</span><span class="kvl1180-combined-stat">${esc(r.points??'-')}</span><span class="kvl1180-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl1180-combined-stat">${esc(r.pointRatio??'-')}</span><span><b class="kvl1180-combined-result ${st.cls}">${esc(st.label||'')}</b>${pair?`<small class="kvl1180-qf-pairing">${esc(pair)}</small>`:''}</span></div>`;}
-function mobileCombinedLine(d,r,c){const st=statusOf(r),raw=r.team||{},t=resolveTeam(raw,d),pair=qfPair(d,r,c),rankLabel=c.mode==='single-league'?(r.statusLabel||(r.rank==null?'개막 전':`${r.rank}위`)):poolRankLabel(d,r);return `<div class="kvl-shared-combined-line ${code(t)===d.focusTeamCode?'is-korea':''}"><span class="kvl-shared-combined-identity ${isDomesticLike(d)&&!logo(t)?'is-text-only':''}"><span class="kvl-shared-combined-rank">${r.rank==null?'-':esc(r.rank)+'위'}</span>${logo(t)?`<span class="kvl-shared-combined-flag"><img src="${esc(logo(t))}" alt="${esc(name(t))} 엠블럼"></span>`:''}<strong class="kvl-shared-combined-team">${teamLink(t)}</strong></span><span class="kvl-shared-combined-result ${st.cls}"><b>${esc(st.label||'')}</b>${pair?`<small>${esc(pair)}</small>`:''}</span><span class="kvl-shared-combined-stat">${esc(r.wins??'-')}승</span><span class="kvl-shared-combined-stat">${esc(r.points??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl-shared-combined-stat">${esc(r.pointRatio??'-')}</span>${showStandingsStatus(c)?`<span class="kvl-shared-combined-stat">${esc(rankLabel)}</span>`:''}</div>`;}
+function mobileCombinedLine(d,r,c){
+  const st=statusOf(r),t=resolveTeam(r.team||{},d),pair=qfPair(d,r,c),compact=mobileRecordSummary(c),rankLabel=c.mode==='single-league'?(r.statusLabel||(r.rank==null?'개막 전':`${r.rank}위`)):poolRankLabel(d,r);
+  const result=`<span class="kvl-shared-combined-result ${st.cls}"><b>${esc(st.label||'')}</b>${pair?`<small>${esc(pair)}</small>`:''}</span>`;
+  const stats=compact?[r.wins??'-',r.losses??'-',r.points??'-']:[`${r.wins??'-'}승`,r.points??'-',r.setRatio??'-',r.pointRatio??'-'];
+  return `<div class="kvl-shared-combined-line ${code(t)===d.focusTeamCode?'is-korea':''}"><span class="kvl-shared-combined-identity ${isDomesticLike(d)&&!logo(t)?'is-text-only':''}"><span class="kvl-shared-combined-rank">${r.rank==null?'-':esc(r.rank)+'위'}</span>${logo(t)?`<span class="kvl-shared-combined-flag"><img src="${esc(logo(t))}" alt="${esc(name(t))} 엠블럼"></span>`:''}<strong class="kvl-shared-combined-team">${teamLink(t)}</strong>${compact?result:''}</span>${compact?'':result}${stats.map(v=>`<span class="kvl-shared-combined-stat">${esc(v)}</span>`).join('')}${showStandingsStatus(c)?`<span class="kvl-shared-combined-stat">${esc(rankLabel)}</span>`:''}</div>`;
+}
 function overallRatioValue(v){const s=String(v??'').trim().toUpperCase();if(s==='MAX')return Number.POSITIVE_INFINITY;const n=Number(v);return Number.isFinite(n)?n:Number.NEGATIVE_INFINITY;}
 function domesticOverallRows(d){
   const pools=d.standings?.pools||[],stats=new Map();
@@ -290,7 +299,7 @@ function domesticOverallBlock(d,rows,c){
   return `<section class="kvl1180-combined-block is-domestic-overall"><div class="kvl1180-combined-head"><div><p class="label">PRELIMINARY OVERALL</p><h3>${esc(title)}</h3></div><p>승률 → 세트 득실비 → 점수 득실비</p></div><div class="kvl1180-combined-table"><div class="kvl1180-combined-table-head"><span>순위</span><span>팀</span><span>조</span><span>경기</span><span>승</span><span>패</span><span>승률</span><span>세트 득실비</span><span>점수 득실비</span><span>결과</span></div>${rows.map(r=>{const qualified=domesticOverallQualified(r);return `<div class="kvl1180-combined-row is-domestic-overall-row ${qualified?'is-qualified':''}"><span class="kvl1180-combined-rank">${esc(r.overallRank??'-')}위</span>${domesticOverallTeam(r.team||{})}<span class="kvl1180-combined-pool">${esc(groupLabel(r.poolId))}</span><span class="kvl1180-combined-stat">${esc(r.games)}</span><span class="kvl1180-combined-stat">${esc(r.wins??0)}</span><span class="kvl1180-combined-stat">${esc(r.losses??0)}</span><span class="kvl1180-combined-stat">${esc(r.winRateLabel)}</span><span class="kvl1180-combined-stat">${esc(r.setRatio??'-')}</span><span class="kvl1180-combined-stat">${esc(r.pointRatio??'-')}</span><span class="kvl-domestic-overall-result">${qualified?'<b class="kvl1180-combined-result is-qualified">진출</b>':''}</span></div>`;}).join('')}</div><div class="kvl-shared-combined-mobile is-domestic-overall-mobile"><div class="kvl-shared-combined-table"><div class="kvl-shared-combined-line is-head"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank-head">순위</span><span class="kvl-shared-combined-country-head">팀</span></span><span>조</span><span>경기</span><span>승</span><span>패</span><span>승률</span><span>세트 득실비</span><span>점수 득실비</span><span>결과</span></div>${rows.map(domesticOverallMobileLine).join('')}</div></div><p class="kvl1180-groups-footnote">예선 종합순위는 조별 진출 순위와 별개인 K-Volley Lab 산출 순위입니다. 조별 경기 수가 다른 경우 승률을 우선 적용합니다.</p></section>`;
 }
 
-function combinedBlock(d,rows,c){const title=c.title||c.combinedTitle||(c.mode==='single-league'?'정규리그 순위':'예선 종합순위'),single=c.mode==='single-league',domestic=isDomesticLike(d),eyebrow=single?'REGULAR SEASON STANDINGS':'PRELIMINARY OVERALL',summary=single?'정규리그 전체 순위 · 공식 결과 기준':'각 조 성적을 대회 규정에 따라 통합한 순위';return `<section class="kvl1180-combined-block ${single?'is-single-league':''} ${showStandingsStatus(c)?'':'is-status-hidden'} ${single&&domestic?'is-domestic-single-league':''}"><div class="kvl1180-combined-head"><div><p class="label">${eyebrow}</p><h3>${esc(title)}</h3></div><p>${esc(summary)}</p></div><div class="kvl1180-combined-table"><div class="kvl1180-combined-table-head"><span>순위</span><span>${domestic?'팀':'국가'}</span>${showStandingsStatus(c)?`<span>${single?'상태':'조'}</span>`:''}<span>승</span><span>패</span><span>승점</span><span>세트 득실비</span><span>점수 득실비</span><span>결과</span></div>${rows.map(r=>combinedRow(d,r,c)).join('')}</div><div class="kvl-shared-combined-mobile"><div class="kvl-shared-combined-table"><div class="kvl-shared-combined-line is-head"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank-head">순위</span><span class="kvl-shared-combined-country-head">${domestic?'팀':'국가'}</span></span><span>결과</span><span>승</span><span>승점</span><span>세트 득실비</span><span>점수 득실비</span>${showStandingsStatus(c)?`<span>${single?'상태':'조순위'}</span>`:''}</div>${rows.map(r=>mobileCombinedLine(d,r,c)).join('')}</div></div></section>`;}
+function combinedBlock(d,rows,c){const title=c.title||c.combinedTitle||(c.mode==='single-league'?'정규리그 순위':'예선 종합순위'),single=c.mode==='single-league',compact=mobileRecordSummary(c),domestic=isDomesticLike(d),eyebrow=single?'REGULAR SEASON STANDINGS':'PRELIMINARY OVERALL',summary=single?'정규리그 전체 순위 · 공식 결과 기준':'각 조 성적을 대회 규정에 따라 통합한 순위';return `<section class="kvl1180-combined-block ${single?'is-single-league':''} ${showStandingsStatus(c)?'':'is-status-hidden'} ${compact?'is-mobile-record-summary':''} ${single&&domestic?'is-domestic-single-league':''}"><div class="kvl1180-combined-head"><div><p class="label">${eyebrow}</p><h3>${esc(title)}</h3></div><p>${esc(summary)}</p></div><div class="kvl1180-combined-table"><div class="kvl1180-combined-table-head"><span>순위</span><span>${domestic?'팀':'국가'}</span>${showStandingsStatus(c)?`<span>${single?'상태':'조'}</span>`:''}<span>승</span><span>패</span><span>승점</span><span>세트 득실비</span><span>점수 득실비</span><span>결과</span></div>${rows.map(r=>combinedRow(d,r,c)).join('')}</div><div class="kvl-shared-combined-mobile"><div class="kvl-shared-combined-table"><div class="kvl-shared-combined-line is-head"><span class="kvl-shared-combined-identity"><span class="kvl-shared-combined-rank-head">순위</span><span class="kvl-shared-combined-country-head">${domestic?'팀':'국가'}${compact?' · 결과':''}</span></span>${compact?'<span>승</span><span>패</span><span>승점</span>':'<span>결과</span><span>승</span><span>승점</span><span>세트 득실비</span><span>점수 득실비</span>'}${showStandingsStatus(c)?`<span>${single?'상태':'조순위'}</span>`:''}</div>${rows.map(r=>mobileCombinedLine(d,r,c)).join('')}</div></div></section>`;}
 function renderDomesticRuleCard(d,key,anchor){
   if(!anchor)return;
   const domestic=isDomesticLike(d),spec=d.domesticRules?.[key],selector=`[data-kvl-domestic-rule="${key}"]`;
@@ -372,11 +381,31 @@ function proPostseasonTeam(p,entry){
   const known=p&&participant(p)&&name(p)!=='미정';
   return {html:known?teamLink(p,esc(name(p))):'진출팀 미정',name:known?name(p):'진출팀 미정',code:known?code(p):'',entry};
 }
+function proRegularComplete(d){
+  // The full season remains active until the championship has been decided.
+  // Preserve legacy completed seasons, but never override an explicit false.
+  return d.regularSeasonComplete===true||(d.regularSeasonComplete==null&&d.status==='completed');
+}
 function proPostseasonSeed(d,rank){
   // A current regular-season rank is not a confirmed postseason seed.
   // Active-season pairings still come from the explicit series fixtures below.
-  const row=d.status==='completed'?(d.standings?.rows||[]).find(r=>Number(r.rank)===rank):null;
+  const row=proRegularComplete(d)?(d.standings?.rows||[]).find(r=>Number(r.rank)===rank):null;
   return proPostseasonTeam(row?resolveTeam(row.team,d):null,`정규리그 ${rank}위`);
+}
+function proQpoPointsGap(d){
+  if(!proRegularComplete(d))return null;
+  const rows=d.standings?.rows||[],third=rows.find(r=>Number(r.rank)===3),fourth=rows.find(r=>Number(r.rank)===4);
+  return third&&fourth&&Number.isInteger(third.points)&&Number.isInteger(fourth.points)&&fourth.points>=0&&third.points>=fourth.points
+    ?third.points-fourth.points:null;
+}
+function proSeriesOrdinal(m,fallback=0){
+  const value=m?.seriesGame??Number(String(m?.round||'').match(/^([1-5])차전$/)?.[1]);
+  return Number.isInteger(value)&&value>=1&&value<=5?value:fallback;
+}
+function proPeriodLabel(period){
+  const start=period?.startDate,end=period?.endDate;
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(start||'')||!/^\d{4}-\d{2}-\d{2}$/.test(end||'')||start>end)return '';
+  return start===end?start.replaceAll('-','.'):`${start.replaceAll('-','.')} ~ ${end.slice(5).replace('-','.')}`;
 }
 function proSeriesMatches(d,type){
   const groups={qpo:['QPO','WILDCARD','WC'],po:['PO','PLAYOFF','SF'],final:['FINAL','CHAMPIONSHIP','CHAMP']};
@@ -389,11 +418,11 @@ function proSeriesMatches(d,type){
     return '';
   };
   return (d.matches||[]).filter(m=>classify(m)===type)
-    .slice().sort((a,b)=>`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
+    .slice().sort((a,b)=>proSeriesOrdinal(a)&&proSeriesOrdinal(b)?proSeriesOrdinal(a)-proSeriesOrdinal(b):`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
 }
 function proSeriesResult(m){
   const sc=score(m);
-  if(!sc||['scheduled','pending','live','in_progress','postponed','cancelled','canceled'].includes(String(m?.status||'').toLowerCase()))return null;
+  if(isNotRequired(m)||!sc||['scheduled','pending','live','in_progress','postponed','cancelled','canceled'].includes(String(m?.status||'').toLowerCase()))return null;
   return Number.isInteger(sc.home)&&Number.isInteger(sc.away)&&Math.max(sc.home,sc.away)===3&&Math.min(sc.home,sc.away)>=0&&Math.min(sc.home,sc.away)<3?sc:null;
 }
 function proSeriesScore(matches,leftCode,rightCode){
@@ -420,50 +449,54 @@ function proSeriesAdvancer(left,right,matches,winsNeeded,entry){
   const winner=wins.left>=winsNeeded?teams[0]:wins.right>=winsNeeded?teams[1]:null;
   return winner?{...winner,entry}:proPostseasonTeam(null,entry);
 }
-function proSeriesGameRow(m,index,{notPlayed=false}={}){
-  if(notPlayed)return `<div class="kvl1180-pro-series-game is-unused"><b>${index}차전</b><span>시리즈 종료</span><strong>미실시</strong></div>`;
+function proSeriesGameRow(m,index,{notPlayed=false,notHeld=false}={}){
+  if(notHeld)return `<div class="kvl1180-pro-series-game is-unused"><b>${index}차전</b><span>승점 차 4점 이상</span><strong>미개최</strong></div>`;
+  if(notPlayed||isNotRequired(m))return `<div class="kvl1180-pro-series-game is-unused"><b>${index}차전</b><span>${esc(nonPlayReason(m))}</span><strong>미실시</strong></div>`;
   if(!m)return `<div class="kvl1180-pro-series-game is-pending"><b>${index}차전</b><span>일정 미정</span><strong>예정</strong></div>`;
   const sc=proSeriesResult(m),label=[shortDate(date(m)),time(m)?time(m)+' KST':''].filter(Boolean).join(' · ');
   if(!sc)return `<div class="kvl1180-pro-series-game is-pending"><b>${index}차전</b><span>${esc(label||'일정 미정')}</span><strong>${['live','in_progress'].includes(String(m.status||'').toLowerCase())?'진행 중':'예정'}</strong></div>`;
   const h=resolveTeam(m.home),a=resolveTeam(m.away);
   return `<div class="kvl1180-pro-series-game is-complete"><b>${index}차전</b><span>${esc(label)}</span><strong>종료</strong><div class="kvl1180-pro-game-result"><span>${esc(name(h))}</span><em>${sc.home}–${sc.away}</em><span>${esc(name(a))}</span></div></div>`;
 }
-function proSeriesStage({step,title,series,left,right,matches,maxGames,winsNeeded,note,cls}){
-  [left,right]=proSeriesTeams(left,right,matches);
+function proSeriesStage({step,title,series,left,right,matches,maxGames,winsNeeded,note,cls,period,notHeld=false}){
+  if(!notHeld)[left,right]=proSeriesTeams(left,right,matches);
+  const games=new Map(matches.map((m,i)=>[proSeriesOrdinal(m,i+1),m]));
   let clinchedAt=0;
-  for(let i=0;i<matches.length;i++){
-    const partial=proSeriesScore(matches.slice(0,i+1),left.code,right.code);
-    if(partial.left>=winsNeeded||partial.right>=winsNeeded){clinchedAt=i+1;break;}
+  for(let i=1;!notHeld&&i<=maxGames;i++){
+    const partial=proSeriesScore([...games].filter(([n])=>n<=i).map(([,m])=>m),left.code,right.code);
+    if(partial.left>=winsNeeded||partial.right>=winsNeeded){clinchedAt=i;break;}
   }
-  const scoreLine=proSeriesScore(clinchedAt?matches.slice(0,clinchedAt):matches,left.code,right.code);
-  const started=matches.some(m=>!!proSeriesResult(m)||['live','in_progress'].includes(String(m.status||'').toLowerCase())),paired=!!left.code&&!!right.code;
-  const status=clinchedAt?'시리즈 종료':started?'시리즈 진행 중':paired?'경기 시작 전':'대진 확정 전';
+  const scoreLine=proSeriesScore(notHeld?[]:clinchedAt?[...games].filter(([n])=>n<=clinchedAt).map(([,m])=>m):matches,left.code,right.code);
+  const started=matches.some(m=>!!proSeriesResult(m)||['live','in_progress'].includes(String(m.status||'').toLowerCase())),paired=!notHeld&&!!left.code&&!!right.code;
+  const status=notHeld?'준PO 미개최':clinchedAt?'시리즈 종료':started?'시리즈 진행 중':paired?'경기 시작 전':'대진 확정 전';
+  const periodLabel=proPeriodLabel(period);
   const teamRow=(t,wins)=>`<div class="kvl1180-pro-series-team ${wins>=winsNeeded?'is-winner':''}"><div><small>${esc(t.entry)}</small><strong>${t.html}</strong></div><b class="kvl1180-pro-series-wins" aria-label="${esc(t.name)} 시리즈 ${paired?wins+'승':'승수 미정'}">${paired?wins:'—'}</b>${wins>=winsNeeded?`<span class="kvl1180-pro-series-winner">${cls==='is-final'?'우승':'진출'}</span>`:''}</div>`;
   return `<section class="kvl1180-pro-postseason-stage ${cls||''}" aria-label="${esc(title)}">
-    <header><span>STEP ${step}</span><strong>${esc(title)}</strong><small>${esc(series)}</small></header>
+    <header><span>STEP ${step}</span><strong>${esc(title)}</strong><small>${esc(series)}</small>${periodLabel?`<small data-postseason-period>공식 기간 ${esc(periodLabel)}</small>`:''}</header>
     <div class="kvl1180-pro-series-summary">
       <div class="kvl1180-pro-series-status"><span>${status}</span><span>시리즈 승</span></div>
       ${teamRow(left,scoreLine.left)}${teamRow(right,scoreLine.right)}
     </div>
-    <div class="kvl1180-pro-series-games"><h4>경기 일정·결과</h4>${Array.from({length:maxGames},(_,i)=>proSeriesGameRow(matches[i],i+1,{notPlayed:clinchedAt>0&&i+1>clinchedAt})).join('')}</div>
+    <div class="kvl1180-pro-series-games"><h4>경기 일정·결과</h4>${Array.from({length:maxGames},(_,i)=>proSeriesGameRow(games.get(i+1),i+1,{notPlayed:clinchedAt>0&&i+1>clinchedAt,notHeld})).join('')}</div>
     <footer>${esc(note)}</footer>
   </section>`;
 }
 function renderProPostseason(root,d,c){
   const seed1=proPostseasonSeed(d,1),seed2=proPostseasonSeed(d,2),seed3=proPostseasonSeed(d,3),seed4=proPostseasonSeed(d,4);
   const qpo=proSeriesMatches(d,'qpo'),po=proSeriesMatches(d,'po'),finals=proSeriesMatches(d,'final');
-  const poEntry=proSeriesAdvancer(seed3,seed4,qpo,1,'준PO 승자 / 미개최 시 정규리그 3위');
+  const gap=proQpoPointsGap(d),qpoNotHeld=gap!==null&&gap>3&&!!seed3.code&&!!seed4.code;
+  const poEntry=qpoNotHeld?{...seed3,entry:'정규리그 3위 · 준PO 미개최로 직행'}:proSeriesAdvancer(seed3,seed4,qpo,1,'준PO 승자 / 미개최 시 정규리그 3위');
   const poWinner=proSeriesAdvancer(seed2,poEntry,po,2,'플레이오프 승자');
   root.innerHTML=`<div class="kvl1180-pro-postseason">
     <div class="kvl1180-pro-postseason-guide"><b>포스트시즌 진출 경로</b><span>정규리그 2위는 PO, 1위는 챔피언결정전으로 직행합니다.</span></div>
     <div class="kvl1180-pro-postseason-ladder">
-      ${proSeriesStage({step:1,title:c.qpoLabel||'준플레이오프',series:'조건부 · 단판',left:seed3,right:seed4,matches:qpo,maxGames:1,winsNeeded:1,note:c.qpoRule||'정규리그 3·4위 승점 차가 3점 이내일 때 실시',cls:'is-qpo'})}
+      ${proSeriesStage({step:1,title:c.qpoLabel||'준플레이오프',series:'조건부 · 단판',left:seed3,right:seed4,matches:qpo,maxGames:1,winsNeeded:1,note:qpoNotHeld?`정규리그 3·4위 승점 차 ${gap}점 · 3위가 플레이오프에 직행합니다.`:c.qpoRule||'정규리그 3·4위 승점 차가 3점 이내일 때 실시',cls:'is-qpo',period:c.periods?.qpo,notHeld:qpoNotHeld})}
+      <div class="kvl1180-pro-postseason-link" aria-hidden="true"><span>${qpoNotHeld?'3위 직행':'승자 진출'}</span></div>
+      ${proSeriesStage({step:2,title:c.poLabel||'플레이오프',series:'3전 2선승',left:seed2,right:poEntry,matches:po,maxGames:3,winsNeeded:2,note:c.poRule||'준PO 미개최 시 정규리그 3위가 플레이오프 직행',cls:'is-po',period:c.periods?.po})}
       <div class="kvl1180-pro-postseason-link" aria-hidden="true"><span>승자 진출</span></div>
-      ${proSeriesStage({step:2,title:c.poLabel||'플레이오프',series:'3전 2선승',left:seed2,right:poEntry,matches:po,maxGames:3,winsNeeded:2,note:c.poRule||'준PO 미개최 시 정규리그 3위가 플레이오프 직행',cls:'is-po'})}
-      <div class="kvl1180-pro-postseason-link" aria-hidden="true"><span>승자 진출</span></div>
-      ${proSeriesStage({step:3,title:c.finalLabel||'챔피언결정전',series:'5전 3선승',left:seed1,right:poWinner,matches:finals,maxGames:5,winsNeeded:3,note:c.finalRule||'시리즈 승자가 V-리그 챔피언',cls:'is-final'})}
+      ${proSeriesStage({step:3,title:c.finalLabel||'챔피언결정전',series:'5전 3선승',left:seed1,right:poWinner,matches:finals,maxGames:5,winsNeeded:3,note:c.finalRule||'시리즈 승자가 V-리그 챔피언',cls:'is-final',period:c.periods?.final})}
     </div>
-    <p class="kvl1180-pro-postseason-note">${esc(c.note||'정규리그 순위와 포스트시즌 결과가 확정되면 실제 팀명·경기별 결과·시리즈 승수가 자동 갱신됩니다.')}</p>
+    <p class="kvl1180-pro-postseason-note">${esc(c.note||'정규리그 순위와 포스트시즌 결과가 확정되면 실제 팀명·경기별 결과·시리즈 승수가 자동 갱신됩니다.')}${c.periodSource?.sourceUrl?` <a data-postseason-source href="${esc(c.periodSource.sourceUrl)}" target="_blank" rel="noopener noreferrer">KOVO 운영요강</a>`:''}</p>
   </div>`;
 }
 function renderBracketTree(root,d,c){

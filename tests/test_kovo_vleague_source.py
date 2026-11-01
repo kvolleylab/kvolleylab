@@ -35,10 +35,32 @@ def synthetic_season(gender):
     return result
 
 
+def synthetic_postseason(gender="MALE", phase="202", leg=1, *, final=False, away_wins=False):
+    """Synthetic current-season record using the observed official roundName contract."""
+    row = deepcopy(FIXTURE["schedules"]["m" if gender == "MALE" else "w"]["rows"][0 if final else 1])
+    prefix = source.GENDERS[gender]
+    rule = source.POSTSEASON_PHASES[phase]
+    day = {"204": 6, "202": 8, "203": 14}[phase] + 2 * (leg - 1) - (gender == "FEMALE")
+    row.update(leagueCode=phase, gpart=phase, leagueName=rule["stage"],
+               round=1, roundName=f"{rule['stage']} {leg}차전", gender=prefix,
+               gnum={"204": 253, "202": 255, "203": 261}[phase] + (leg - 1) * 2 + (gender == "FEMALE"),
+               hcode=prefix + "001", acode=prefix + "002", hsname="Synthetic " + prefix + "001",
+               asname="Synthetic " + prefix + "002", gdate=f"2027-04-{day:02d}")
+    if final and away_wins:
+        row["hcode"], row["acode"] = row["acode"], row["hcode"]
+        row["hsname"], row["asname"] = row["asname"], row["hsname"]
+        row["hspoint"], row["aspoint"] = row["aspoint"], row["hspoint"]
+        for n in range(1, 6):
+            row[f"hs{n}point"], row[f"as{n}point"] = row[f"as{n}point"], row[f"hs{n}point"]
+        row["result"] = "L"
+    return row
+
+
 class FakeSeasonSource:
     def __init__(self, size=200):
         self.size = size
         self.rows = {g: synthetic_season(g) for g in source.GENDERS}
+        self.postseason = {(g, p): [] for g in source.GENDERS for p in source.POSTSEASON_PHASES}
         self.calls = []
 
     def __call__(self, url):
@@ -48,6 +70,11 @@ class FakeSeasonSource:
         gender = "MALE" if query["gender"] == ["1"] else "FEMALE"
         if urlsplit(url).path == "/stat/league/team-rank":
             return {"result": {"status": 200}, "payload": []}
+        phase = query["leagueCode"][0]
+        if phase in source.POSTSEASON_PHASES:
+            rows = self.postseason[(gender, phase)]
+            return {"result": {"status": 200}, "payload": {"content": deepcopy(rows),
+                    "page": {"number": 0, "size": 200, "totalElements": len(rows), "totalPages": 1 if rows else 0}}}
         page = int(query["page"][0])
         rows = self.rows[gender]
         return {"result": {"status": 200}, "payload": {
@@ -117,7 +144,9 @@ class SourceContractTests(unittest.TestCase):
         result = source.collect_season(fetcher=fixture, now=STAMP)
         self.assertEqual(len(result["matches"]), 252)
         self.assertTrue(result["coverage"]["complete"])
-        self.assertEqual(len(fixture.calls), 4)
+        self.assertEqual(len(fixture.calls), 10)
+        self.assertEqual(len(result["coverage"]["postseason"]), 6)
+        self.assertTrue(all(r["fixture_state"] == "not_published" for r in result["coverage"]["postseason"]))
         later = source.collect_season(fetcher=fixture, now="2026-10-31T10:00:00+00:00")
         self.assertEqual(result["content_sha256"], later["content_sha256"])
 
@@ -125,7 +154,7 @@ class SourceContractTests(unittest.TestCase):
         fixture = FakeSeasonSource(size=60)
         result = source.collect_season(fetcher=fixture, now=STAMP)
         self.assertEqual(len(result["matches"]), 252)
-        self.assertEqual(len(fixture.calls), 8)
+        self.assertEqual(len(fixture.calls), 14)
         self.assertEqual([x["pages"] for x in result["coverage"]["details"]], [3, 3])
 
     def test_small_homepage_payload_is_never_complete_season(self):
@@ -148,7 +177,7 @@ class SourceContractTests(unittest.TestCase):
         for mode in ("truncated", "wrong_page", "changed_total"):
             def broken(url):
                 data = fixture(url)
-                if "/stat/game-schedule?" in url:
+                if "/stat/game-schedule?" in url and "leagueCode=201" in url:
                     if mode == "truncated": data["payload"]["content"].pop()
                     if mode == "wrong_page": data["payload"]["page"]["number"] += 1
                     if mode == "changed_total": data["payload"]["page"]["totalElements"] = 127
@@ -183,6 +212,67 @@ class SourceContractTests(unittest.TestCase):
                     base + "&gender=2", base.replace("seasonCode=023", "seasonCode=024"),
                     base.replace("/stat/game-schedule", "/mains/games/schedules")):
             with self.assertRaises(source.SourceError): source.validate_request_url(url)
+
+    def test_postseason_phase_round_name_and_global_ids_are_preserved(self):
+        reader = FakeSeasonSource()
+        reader.postseason[("MALE", "203")] = [synthetic_postseason(phase="203", leg=n) for n in range(1, 6)]
+        result = source.collect_season(fetcher=reader, now=STAMP)
+        observed = [r for r in result["matches"] if r["phase_id"] == "203"]
+        self.assertEqual([r["series_game"] for r in observed], [1, 2, 3, 4, 5])
+        self.assertEqual([r["round"] for r in observed], [1] * 5)
+        self.assertEqual(observed[-1]["source_key"], "023:001:MALE:269")
+        self.assertEqual(observed[-1]["stage"], "챔피언결정전")
+        self.assertEqual(len(result["matches"]), 257)
+
+    def test_postseason_missing_or_wrong_leg_is_not_guessed_from_row_order(self):
+        for change in ({"roundName": "플레이오프"}, {"roundName": "플레이오프 4차전"},
+                       {"roundName": "플레이오프 2차전"}, {"leagueName": "챔피언결정전"}):
+            reader = FakeSeasonSource()
+            row = synthetic_postseason()
+            row.update(change)
+            reader.postseason[("MALE", "202")] = [row]
+            with self.assertRaises(source.SourceError):
+                source.collect_season(fetcher=reader, now=STAMP)
+
+    def test_unpublished_and_incomplete_postseason_pages_are_different(self):
+        reader = FakeSeasonSource()
+        for replacement in ({"content": [], "page": {"size": 200, "number": 0, "totalElements": 1, "totalPages": 1}},
+                            {"content": [], "page": {"size": 200, "number": 0, "totalElements": 0, "totalPages": 1}}):
+            def broken(url):
+                if "leagueCode=202" in url:
+                    return {"result": {"status": 200}, "payload": replacement}
+                return reader(url)
+            with self.assertRaises(source.SourceError):
+                source.collect_season(fetcher=broken, now=STAMP)
+
+    def test_unconfirmed_postseason_teams_time_or_venue_stay_pending(self):
+        for change in ({"hcode": None, "hsname": "정규리그 2위"}, {"gstime": ""}, {"place": None}):
+            reader = FakeSeasonSource()
+            row = synthetic_postseason()
+            row.update(change)
+            reader.postseason[("MALE", "202")] = [row]
+            result = source.collect_season(fetcher=reader, now=STAMP)
+            self.assertEqual(len(result["matches"]), 252)
+            self.assertEqual(len(result["pending_matches"]), 1)
+            self.assertFalse(result["pending_matches"][0]["fixture_ready"])
+        row = synthetic_postseason(final=True)
+        row["hcode"] = None
+        reader.postseason[("MALE", "202")] = [row]
+        with self.assertRaises(source.SourceError):
+            source.collect_season(fetcher=reader, now=STAMP)
+
+    def test_postseason_global_number_collision_and_excess_games_fail(self):
+        for rows in ([{**synthetic_postseason(), "gnum": 1}],
+                     [synthetic_postseason(phase="204", leg=1)] * 2):
+            reader = FakeSeasonSource()
+            reader.postseason[("MALE", rows[0]["leagueCode"])] = rows
+            with self.assertRaises(source.SourceError):
+                source.collect_season(fetcher=reader, now=STAMP)
+
+    def test_postseason_team_totals_are_not_accepted_as_regular_standings(self):
+        url = source.standings_url("2026-27", "MALE").replace("leagueCode=201", "leagueCode=203")
+        with self.assertRaises(source.SourceError):
+            source.validate_request_url(url)
 
 
 class PublicClientTests(unittest.TestCase):
