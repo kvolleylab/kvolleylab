@@ -86,10 +86,17 @@ test('an empty selected-team schedule gets the same calendar empty state',()=>{
   assert.match(doc.querySelector('[data-dv2-team-calendar]').textContent,/공식 일정 발표 후 표시합니다/);assert.equal(doc.querySelectorAll('[data-dv2-team-calendar] [data-dv2-date]').length,0);
  }finally{w.close();}
 });
-test('preserve Hero mode keeps the original title, metadata and status DOM',()=>{
+test('preserve Hero mode keeps the original title, metadata and status DOM with the university list link',()=>{
  const {w,d,doc}=setup();try{
-  const original=doc.querySelector('.kvl1180-hero').innerHTML;d.structure.heroPresentation='preserve';w.KVLDomesticHomeV2.apply(d);
-  assert.equal(doc.querySelector('.kvl1180-hero').innerHTML,original);assert.equal(doc.body.dataset.domesticHero,'preserve');
+  const hero=doc.querySelector('.kvl1180-hero'),original=hero.innerHTML;
+  assert.equal(d.competitionFamily,'domestic');assert.match(d.competitionId,/^KVL-COMP-UNIV-/);
+  d.structure.heroPresentation='preserve';w.KVLDomesticHomeV2.apply(d);
+  const links=hero.querySelectorAll('.dv2-hero-list');assert.equal(links.length,1);
+  const list=links[0];assert.equal(list.tagName,'A');assert.equal(list.parentElement,hero);
+  assert.equal(list.getAttribute('href'),d.structure.hubUrl||'university-competitions.html');
+  assert.equal(list.getAttribute('aria-label'),'대학배구 대회 목록');
+  const preserved=hero.cloneNode(true);preserved.querySelector('.dv2-hero-list').remove();
+  assert.equal(preserved.innerHTML,original);assert.equal(doc.body.dataset.domesticHero,'preserve');
  }finally{w.close();}
 });
 test('the team calendar hook leaves non-opted-in VNL production rendering intact',()=>{
