@@ -158,8 +158,14 @@ python scripts/kvl_player_master_plan.py --snapshots /tmp/roster-readback.json -
 
 `data/player-updates/pilot.json`은 `enabled: false`, `event_scope: null`이다. 공식 효력일과 실행계정 접근권한이 해결되기 전에는 이 값을 켜지 않는다. 번호/포지션 후보 12건의 원문 5개에는 명시적 효력일이 없었으며, 날짜가 있는 군복무 만료 등록 공시를 이번 제한 범위에 대신 적용하지 않는다.
 
-GitHub 실행계정은 기존 `kvl-v-league-updater@kvl-automation.iam.gserviceaccount.com`을 그대로 사용한다. 남자 선수 MASTER에는 현재 소유자만 표시되어 있다. 이 파일에 실행계정 편집권한을 연결하고 실제 서비스계정 읽기를 확인해야 한다. WIF 신뢰범위·키 파일·프로젝트 IAM 권한을 확장하지 않는다. Google 로그인으로 공유 설정을 진행하려던 단계는 자동 승인 검토가 특정 계정 인증 권한 부족으로 거부했으며 우회하지 않았다.
+GitHub 실행계정은 기존 `kvl-v-league-updater@kvl-automation.iam.gserviceaccount.com`을 그대로 사용한다. 사용자가 공유를 완료한 뒤 2026-11-02 20:30 KST native Drive 권한 재조회에서 남자 선수 MASTER의 `writer` 권한을 확인했다. 현재등록표13열·전용 이력표22열 헤더도 설정과 일치한다. 이 관측은 `access_verification.json`에 별도 기록하며 앞선 공유 전 `pilot_verification.json`은 당시 기록으로 보존한다. 실제 서비스계정 읽기는 아래 수동 진단 결과로 추가 확인한다. WIF 신뢰범위·키 파일·프로젝트 IAM 권한은 기존 범위를 사용한다.
 
 런타임은 기존 신뢰 workflow의 별도 선수 job에서 09:17 KST 일일 실행 또는 명시적 수동 실행으로 제한한다. 활성화 검사에 실패하면 Google 인증 전에 건너뛴다. 실제 예약 성공은 해당 run 영수증으로 별도 기록한다. 현재 구현·단위검사·수동 Drive 관측을 예약 자동 쓰기 성공으로 표시하지 않는다.
 
 상세 증거·복구: [1차 연결 검수 기록](validation/player-master-pilot-20261102.md).
+
+### 공유 후 읽기 전용 접근 진단
+
+`V-League Auto Update v1`을 `main`에서 수동 실행할 때 `player_master_access_check`만 선택한다. `publish`는 선택 해제한다. 진단 입력이 true이면 실수로 publish도 선택해도 기존 경기·선수 쓰기와 알림 작업은 모두 제외된다. 기존 서비스 계정과 WIF로 `spreadsheets.readonly` 범위의 토큰을 발급받아 고정된 남자 MASTER의 metadata, `현재등록_공시기반!A3:M3`, `KVL_자동반영이력!A1:V1`만 GET한다.
+
+진단은 선수값·이력·GitHub 데이터·Pages를 변경하지 않고, 정제한 결과만 Actions 요약과 `player-master-access-<run_id>` artifact에 남긴다. 원격 전체 행·인증정보·비공개 메모는 출력하지 않는다. 읽기 성공과 실제 쓰기 성공·공식 효력일 승인은 별개다. `pilot.enabled=false`를 유지한 상태에서만 이 준비 진단을 허용한다. [공유 확인 및 실행 절차](validation/player-master-access-20261102.md).

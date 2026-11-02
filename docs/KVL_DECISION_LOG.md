@@ -441,6 +441,9 @@ Status: USER REQUESTED / IMPLEMENTED / NATIVE CONNECTION OBSERVED / AUTOMATIC WR
 Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 최종 병합·Pages·운영 증거는 release PR에 기록한다. 사용자가 상단 헤더와 HERO 사이 경로줄을 제거하고 대학배구 대회목록을 HERO 우상단 버튼으로 옮기도록 요청했다. 공통 domestic-home 후처리의 경로줄을 제거하고 대학 U-리그·고성·단양 남녀에만 기존 허브로 이동하는 버튼을 제공한다. PR #234의 공통 모바일 헤더와 홈 링크, HERO cover는 보존한다.
 
 모바일 대회내 달력의 단일 경기는 “단계·홈팀 / vs 또는 실제 등록 결과·원정팀 / (확인된 장소, 시간)” 3행으로 통일한다. 긴 팀명은 한 행 말줄임, 장소는 시간 영역을 남겨 줄이고 전체 문구는 접근성 이름/팝업에 유지한다. 종전의 모바일 추가 줄바꿈·말줄임 없음 결정을 이 표시 범위에서 대체한다. 2경기 이상 N경기/팝업과 PC 배치는 유지한다. Base main `dfad9ca877cff9e53cd5ce0c066002113eae73fb`의 선수 MASTER 작업과 공시 갱신을 보존하며 config/data/MASTER/ID/점수/명단은 변경하지 않는다. [표시 계약·검수·제약·복구](validation/mobile-hero-navigation-calendar-20261102.md).
+## 2026-11-02 · 선수 MASTER 편집자 공유 확인과 읽기 진단
+
+Status: EDITOR SHARING VERIFIED / RUNTIME READ PENDING / AUTOMATIC WRITE DISABLED. 사용자가 남자부 선수 MASTER 공유를 완료했다. 20:30 KST native Drive 권한 재조회에서 기존 실행계정의 writer 권한과 두 헤더 행의 일치를 확인했다. 앞선 공유 미설정 상태는 현재 권한 관측으로 대체하며 당시 기록은 보존한다. 실제 서비스계정 읽기를 증명하려고 기존 신뢰 V-리그 workflow에 수동 읽기 전용 진단을 추가한다. 진단 시 기존 경기·선수 쓰기 작업은 제외하고 고정된 한 문서의 metadata·헤더35셀만 Sheets readonly scope로 조회한다. 기존 WIF·키·프로젝트 IAM을 확장하지 않는다. 자동 쓰기는 disabled, 공식 효력일은 미확정이며 이번 확인으로 사건을 승인하지 않는다. Base main `0f02f6b35d939c7a7e63d8ea375031a11baf091a`; PR236 표시 변경을 보존한다. [공유 확인·수동 실행·제약](validation/player-master-access-20261102.md).
 
 
 ## 2026-11-02 · 대학·V리그 한눈에 보기의 조별·정규리그 선두 카드

@@ -11,7 +11,8 @@
   "event_scope": null,
   "blockers": [
     "The official notice gives a publication date but no explicit effective date.",
-    "The existing GitHub service account is not shared on this player MASTER; runtime access has not been verified."
+    "Editor sharing was verified on 2026-11-02; actual service-account runtime read access has not yet been verified."
   ],
-  "verification_record": "data/player-updates/pilot_verification.json"
+  "verification_record": "data/player-updates/pilot_verification.json",
+  "access_verification_record": "data/player-updates/access_verification.json"
 }
