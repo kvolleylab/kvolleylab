@@ -434,3 +434,10 @@ Status: USER REQUESTED / IMPLEMENTED / NATIVE CONNECTION OBSERVED / AUTOMATIC WR
 우리카드 오재성 `KVL-P-001585`의 이름·생년월일·기존 ID·공식157018과 현재 MASTER/운영 사이트의5번 일치를 확인했다. 공식 공시에는 공시일만 있고 명시적 효력일이 없어 승인 사건을 만들지 않는다. 남자 MASTER의 기존 신원검수 L57에 이번 관측 메모를 저장하고, 전용 `KVL_자동반영이력` 탭710020128의22열 헤더만 준비하여 재조회했다. 적용 이력0행·선수값 변경0·현재등록표와 기존 변동이력 보존을 확인했다.
 
 단일 사건 writer·전체 재조회·중복 방지·현재 시즌 export·Pages SHA/공개 바이트 검증을 구현한다. 명시적 효력일, 최신 원문 revision, 정확한 ID와 셀 메타데이터, 전용 저널을 요구하며 비활성 gate에서는 인증·외부 요청·쓰기0이다. 기존 신뢰 workflow 안에 별도 일일 선수 job을 두고 WIF 범위·키·프로젝트 권한을 확장하지 않는다. 선수 MASTER에는 기존 실행계정 공유가 없고, 이를 설정하려던 Google 로그인은 자동 승인 검토에서 특정 계정 인증 권한 부족으로 거부되어 우회하지 않았다. `enabled=false`와 승인0건을 유지한다. 수동 관측·단위검증·코드 배포와 실제 예약 선수값 쓰기 성공은 별도 상태로 기록한다. [검수·근거·복구](validation/player-master-pilot-20261102.md).
+
+
+## 2026-11-02 · HERO 경로줄 제거·대학 목록 버튼 및 모바일 달력 3줄
+
+Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 최종 병합·Pages·운영 증거는 release PR에 기록한다. 사용자가 상단 헤더와 HERO 사이 경로줄을 제거하고 대학배구 대회목록을 HERO 우상단 버튼으로 옮기도록 요청했다. 공통 domestic-home 후처리의 경로줄을 제거하고 대학 U-리그·고성·단양 남녀에만 기존 허브로 이동하는 버튼을 제공한다. PR #234의 공통 모바일 헤더와 홈 링크, HERO cover는 보존한다.
+
+모바일 대회내 달력의 단일 경기는 “단계·홈팀 / vs 또는 실제 등록 결과·원정팀 / (확인된 장소, 시간)” 3행으로 통일한다. 긴 팀명은 한 행 말줄임, 장소는 시간 영역을 남겨 줄이고 전체 문구는 접근성 이름/팝업에 유지한다. 종전의 모바일 추가 줄바꿈·말줄임 없음 결정을 이 표시 범위에서 대체한다. 2경기 이상 N경기/팝업과 PC 배치는 유지한다. Base main `dfad9ca877cff9e53cd5ce0c066002113eae73fb`의 선수 MASTER 작업과 공시 갱신을 보존하며 config/data/MASTER/ID/점수/명단은 변경하지 않는다. [표시 계약·검수·제약·복구](validation/mobile-hero-navigation-calendar-20261102.md).

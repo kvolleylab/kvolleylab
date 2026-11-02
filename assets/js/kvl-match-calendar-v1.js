@@ -8,6 +8,15 @@ const active=m=>m?.notRequired!==true&&m?.status!=='not_required';
 const validDate=key=>/^\d{4}-\d{2}-\d{2}$/.test(key||'')&&Number.isFinite(Date.parse(key+'T00:00:00Z'))&&new Date(key+'T00:00:00Z').toISOString().slice(0,10)===key;
 const resolve=(d,side)=>(d.participants||[]).find(t=>t.code===side?.code)||side||{};
 const name=t=>t.name||t.fullName||t.code||'미정';
+function locationMarkup(summary,match){
+ const time=display().timeLabel(match.time),suffix=', '+time+')',label=summary.line2;
+ // Reuse the display helper's verified venue text; only split its known time suffix.
+ if(!label.startsWith('(')||!label.endsWith(suffix))return `<span class="dv2-calendar-location">${esc(label)}</span>`;
+ const venue=label.slice(1,-suffix.length),clock=String(match.time||'').match(/^([01]\d|2[0-3]):([0-5]\d)$/);
+ const compactTime=clock&&clock[2]!=='00'?Number(clock[1])+':'+clock[2]:time;
+ const timeMarkup=compactTime===time?esc(time):`<span class="dv2-calendar-time-wide">${esc(time)}</span><span class="dv2-calendar-time-mobile">${esc(compactTime)}</span>`;
+ return `<span class="dv2-calendar-location" title="${esc(label)}"><span class="dv2-calendar-location-open">(</span><span class="dv2-calendar-venue">${esc(venue)}</span><span class="dv2-calendar-time">, ${timeMarkup})</span></span>`;
+}
 function range(d,matches,team){
  const dates=matches.map(m=>m.date).filter(validDate).sort();
  if(!team)dates.push(...(d.dateLabel?.match(/\d{4}-\d{2}-\d{2}/g)||[]).filter(validDate));
@@ -34,7 +43,7 @@ function render(state){
   const events=Array.isArray(settings.events)?settings.events.filter(e=>e?.date===key&&typeof e.label==='string'):[];
   const final=games.some(m=>m.round==='FINAL'||m.stage==='결승');
   let details='';
-  if(games.length===1){const s=summaries[0];details=`<span class="dv2-calendar-game" title="${esc(s.fullLabel)}"><span class="dv2-calendar-matchup"><span class="dv2-calendar-side">${esc([s.round,s.homeLabel].filter(Boolean).join(' '))}</span> <span class="dv2-calendar-side">${esc(s.resultLabel)} ${esc(s.awayLabel)}</span></span><span class="dv2-calendar-location">${esc(s.line2)}</span></span>`;}
+  if(games.length===1){const s=summaries[0];details=`<span class="dv2-calendar-game" title="${esc(s.fullLabel)}"><span class="dv2-calendar-matchup"><span class="dv2-calendar-side">${esc([s.round,s.homeLabel].filter(Boolean).join(' '))}</span> <span class="dv2-calendar-side">${esc(s.resultLabel)} ${esc(s.awayLabel)}</span></span>${locationMarkup(s,games[0])}</span>`;}
   else if(games.length>1)details=`<span class="kvl-calendar-count"><b>${games.length}</b>경기</span>${final?'<span class="kvl-calendar-stage">결승 포함</span>':''}`;
   const content=`<span class="dv2-calendar-date${holiday.red?' is-holiday':''}"${holiday.name?` title="${esc(holiday.name)}"`:''}>${date.getUTCDate()}</span>${details}${events.map(e=>`<span class="dv2-calendar-event">${esc(e.label)}</span>`).join('')}`;
   const accessible=[key,holiday.name,...events.map(e=>e.label),games.length===1?summaries[0].fullLabel:games.length?games.length+'경기 · 전체 대진과 결과 보기':''].filter(Boolean).join(', ');

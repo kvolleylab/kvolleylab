@@ -171,8 +171,11 @@ function apply(d){
  document.body.dataset.domesticHero=d.structure.heroPresentation==='preserve'?'preserve':'domestic';
  const school=d.structure.audience==='school',division=d.structure.divisionLabel||(d.gender==='women'?'여대부':'남대부');
  const main=q('[data-kvl-shell]');if(main.dataset.domesticHomeReady)return true;main.dataset.domesticHomeReady='true';
- const hub=d.structure.hubUrl||(school?'domestic-competitions.html?division=school':'university-competitions.html');
- main.insertAdjacentHTML('afterbegin',`<div class="dv2-utility"><span><a href="index.html">홈</a> › <a href="${esc(hub)}">${esc(d.structure.hubCategoryLabel||'국내대회')} · ${esc(d.structure.hubLabel||(school?'중·고 배구':'대학배구'))}</a></span><a href="${esc(hub)}">대회 목록 ↗</a></div>`);
+ if(d.competitionFamily==='domestic'&&/^KVL-COMP-UNIV-/.test(d.competitionId||'')){
+  const hero=q('.kvl1180-hero',main),hub=d.structure.hubUrl||'university-competitions.html';
+  hero.classList.add('dv2-hero-with-list');
+  hero.insertAdjacentHTML('beforeend',`<a class="dv2-hero-list" href="${esc(hub)}" aria-label="대학배구 대회 목록">대회 목록 <span aria-hidden="true">↗</span></a>`);
+ }
  if(d.structure.heroPresentation!=='preserve'){
  const title=d.structure.heroTitle||d.displayName.replace(/\s+(남대부|여대부|남고부|여고부|남중부|여중부)$/,''),split=title.lastIndexOf(' ');
  q('[data-kvl="title"]').innerHTML=split>0?esc(title.slice(0,split))+'<br><em>'+esc(title.slice(split+1))+'</em>':esc(title);
