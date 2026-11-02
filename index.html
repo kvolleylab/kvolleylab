@@ -76,6 +76,39 @@ main.homeproto{max-width:1180px;margin:0 auto;padding:0 0 28px}
 .compact-filters button{padding:6px 8px}.events{gap:8px}.event{padding:13px 10px;min-height:88px;gap:10px}.event-glyph{width:38px;height:38px}.event-glyph svg{width:26px;height:26px}.event-copy strong{font-size:12px}.event-copy small{font-size:10px}.event-copy .event-label{font-size:9px}.people-grid{gap:8px}.person-art{height:101px}.person-meta{padding:10px 8px 12px}.person-meta:after{display:none}.person-meta b{font-size:12px}.person-meta small{font-size:10px;line-height:1.5}.person-art.team-art{gap:4px}.national-art span{font-size:20px}.national-art span small{font-size:7px}.tool-card{min-height:92px;padding:12px 10px;gap:9px}.tool-symbol{width:36px;height:36px}.tool-symbol svg{width:25px;height:25px}.tool-card b{font-size:12px}.tool-card small{font-size:10px}.proto-flag{font-size:9px;padding:20px 14px 0}
 }
 @media(max-width:370px){.home-hero{padding-left:20px;padding-right:20px}.home-hero h1{font-size:28px}.home-board{padding:0 12px}.match-team{gap:5px}.match-team b{font-size:11px}.match-team img{width:32px;height:35px}.event{padding:11px 8px;gap:7px}.event-glyph{width:34px;height:34px}.person-art{height:89px}.person-meta b{font-size:11px}.tool-card{padding:11px 8px;gap:7px}.tool-symbol{width:32px;height:34px}}
+/* Home-only match summaries: two status cards, each with both divisions. */
+#home-matches .match-column{min-width:0;padding:15px 12px 4px;display:grid;grid-template-rows:auto repeat(2,minmax(0,1fr))}
+#home-matches .match-column h3{margin:0 0 4px;font-size:15px;color:#152b47;line-height:1.4}
+#home-matches .home-match{display:block;min-width:0;padding:14px 0 12px;border-radius:0}
+#home-matches .home-match+.home-match{border-top:1px solid var(--line)}
+#home-matches a.home-match:hover{background:#f8fafc}
+#home-matches .match-top{flex-wrap:wrap;gap:6px;font-size:11px}
+#home-matches .match-gender{color:#163A5F;background:#EEF4F8;font-size:11px;padding:3px 6px}
+#home-matches [data-gender="women"] .match-gender{color:#8E315E;background:#FFF1F6}
+#home-matches .match-date{font-size:11px;margin:7px 0 0;line-height:1.55}
+#home-matches .match-center{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:6px;padding:12px 0 10px}
+#home-matches .match-team{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}
+#home-matches .match-team img{width:42px;height:40px;margin:0}
+#home-matches .match-team b{font-size:13px;line-height:1.4;overflow-wrap:anywhere;word-break:keep-all}
+#home-matches .match-score{font-size:27px;color:#4B5563;letter-spacing:0;font-variant-numeric:tabular-nums}
+#home-matches .match-score.pending{font-size:18px;color:#65788c}
+#home-matches .set-scores{gap:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);padding:5px 4px;font-size:11px;text-align:center;line-height:1.5;color:#4B5563}
+#home-matches .match-venue{margin:0;min-height:29px;display:grid;place-content:center;text-align:center;color:#65788c;font-size:11px;line-height:1.5;overflow-wrap:anywhere}
+#home-matches .match-more{display:block;text-align:right;font-size:11px;font-weight:650;color:#315c8c;margin-top:8px;line-height:1.5}
+#home-matches .match-empty{display:block;color:#65788c;font-size:12px;line-height:1.6;padding:14px 0}
+@media(max-width:680px){
+ #home-matches{gap:14px}
+ #home-matches .match-column{padding:16px 16px 4px}
+ #home-matches .match-column h3{font-size:16px}
+ #home-matches .match-top,#home-matches .match-gender{font-size:12px}
+ #home-matches .match-date{font-size:12px}
+ #home-matches .match-center{padding:11px 0;gap:10px}
+ #home-matches .match-team{gap:5px}
+ #home-matches .match-team img{width:40px;height:38px}
+ #home-matches .match-team b{font-size:14px}
+ #home-matches .match-score{font-size:28px}
+ #home-matches .set-scores,#home-matches .match-venue,#home-matches .match-more{font-size:12px}
+}
 </style>
 </head>
 <body class="home-v021">
@@ -181,21 +214,26 @@ q.addEventListener('keydown',e=>{if(e.key==='Escape'){results.classList.remove('
 document.addEventListener('click',e=>{if(!e.target.closest('.finder-wrap')){results.classList.remove('show');q.setAttribute('aria-expanded','false')}});
 // Reuse verified competition JSON. No screenshot scores or invented fixtures.
 const matchHost=document.querySelector('#home-matches'),matchSource=document.querySelector('#match-source');
-const feeds=[
- {slug:'university-league-men-2026',title:'대학 U-리그 남자부'},
- {slug:'kovo-cup-men-2026',title:'KOVO컵 남자부'},
- {slug:'v-league-men-2026-27',title:'V-리그 남자부'}
-];
+const feeds=['men','women'].flatMap(gender=>[
+ {slug:'university-league-'+gender+'-2026',title:'대학 U-리그',gender},
+ {slug:'kovo-cup-'+gender+'-2026',title:'KOVO컵',gender},
+ {slug:'v-league-'+gender+'-2026-27',title:'V-리그',gender}
+]);
 const element=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n};
-function emptyMatch(title,message){
- const card=element('article','panel match-card');
- const center=element('div','match-center');const copy=element('div');copy.append(element('b','',title),element('small','',message));center.append(copy);
- const link=element('a','match-cta','경기 일정 · 결과 보기 ›');link.href='/competition-calendar.html';card.append(center,link);return card;
+const genderLabel=gender=>gender==='women'?'여자부':'남자부';
+function matchTop(gender,title){
+ const top=element('div','match-top');top.append(element('strong','match-gender',genderLabel(gender)));
+ if(title)top.append(element('span','',title));return top;
+}
+function emptyMatch(gender,finished,failed){
+ const row=element('div','home-match');row.dataset.gender=gender;
+ row.append(matchTop(gender),element('span','match-empty',failed?'경기 기록을 불러오지 못했습니다.':finished?'확인된 경기 결과가 없습니다.':'확인된 다음 일정이 없습니다.'));return row;
 }
 function matchCard(record,finished){
- const {match:m,feed,data}=record,card=element('article','panel match-card'+(finished?'':' upcoming'));card.dataset.matchId=m.id;card.dataset.source='/data/competitions/'+feed.slug+'/data.json';
- const top=element('div','match-top');top.append(element('strong',finished?'finished':'',finished?'경기 종료':'경기 예정'),element('span','',feed.title));
- const date=new Intl.DateTimeFormat('ko-KR',{month:'2-digit',day:'2-digit',weekday:'short',timeZone:'Asia/Seoul'}).format(new Date(m.date+'T12:00:00+09:00'));
+ const {match:m,feed,data}=record,card=element('a','home-match');card.dataset.matchId=m.id;card.dataset.source='/data/competitions/'+feed.slug+'/data.json';card.dataset.gender=feed.gender;
+ card.href='/competition-engine.html?'+new URLSearchParams({competition:feed.slug,view:'schedule',date:m.date});
+ const top=matchTop(feed.gender,feed.title);
+ const date=new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',weekday:'short',timeZone:'Asia/Seoul'}).format(new Date(m.date+'T12:00:00+09:00'));
  const when=element('p','match-date',date+' · '+(m.time?m.time+' KST':'시간 미정')+' · '+(m.stage||''));
  when.title=m.venueLabel||'';
  const center=element('div','match-center');
@@ -205,28 +243,57 @@ function matchCard(record,finished){
   if(team.logo){const img=element('img');img.src=team.logo;img.alt='';img.width=52;img.height=48;cell.append(img)}
   cell.append(element('b','',team.name||team.fullName));center.append(cell);
  });
- const sets=element('div','set-scores');
+ const sets=element('div',finished?'set-scores':'match-venue');
  if(finished&&Array.isArray(m.score.sets)&&m.score.sets.length){m.score.sets.forEach((set,i)=>{const score=element('abbr','',set.home+'–'+set.away);score.title=(i+1)+'세트';sets.append(score)});sets.setAttribute('aria-label','세트별 점수')}
  else sets.textContent=finished?'세트 점수 미확인':(m.venueLabel||'경기장 미정');
- const link=element('a','match-cta',finished?'경기 결과 보기 ›':'경기 일정 보기 ›');link.href='/competition-engine.html?competition='+feed.slug+'&view=schedule';
- card.append(top,when,center,sets,link);return card;
+ card.append(top,when,center,sets,element('span','match-more',finished?'경기 결과 보기 ›':'경기 일정 보기 ›'));return card;
+}
+// Same KST/date and completed-score rules as the existing domestic match summary.
+// The home keeps its stricter, explicit scoreVerification requirement.
+function matchClock(m){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(m.date||''))return null;
+ const day=Date.parse(m.date+'T00:00:00+09:00');
+ if(!Number.isFinite(day)||new Date(day+9*3600000).toISOString().slice(0,10)!==m.date)return null;
+ const hasTime=typeof m.time==='string'&&m.time.trim()!=='';
+ if(hasTime&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(m.time))return null;
+ return {day,at:hasTime?Date.parse(m.date+'T'+m.time+':00+09:00'):null};
+}
+function chooseMatch(records,gender,finished,now){
+ const today=new Date(now+9*3600000).toISOString().slice(0,10);
+ const choices=records.filter(r=>{
+  const m=r.match,c=matchClock(m),state=String(m.status||'').toLowerCase();
+  if(r.feed.gender!==gender||!c)return false;
+  if(finished){const s=m.score;return ['', 'final','completed','finished','종료'].includes(state)&&Boolean(m.scoreVerification)&&s&&Number.isInteger(s.home)&&Number.isInteger(s.away)&&Math.max(s.home,s.away)===3&&Math.min(s.home,s.away)>=0&&Math.min(s.home,s.away)<3&&(c.at===null?m.date<=today:c.at<=now);}
+  return ['','scheduled','upcoming','예정'].includes(state)&&!m.score&&(c.at===null?m.date>=today:c.at>=now);
+ });
+ const time=r=>{const c=matchClock(r.match);return c.at===null?c.day+86399999:c.at};
+ choices.sort((a,b)=>time(a)-time(b)||String(a.match.id).localeCompare(String(b.match.id)));
+ return (finished?choices.at(-1):choices[0])||null;
 }
 async function loadMatches(){
- const loaded=await Promise.allSettled(feeds.map(async feed=>{const response=await fetch('/data/competitions/'+feed.slug+'/data.json');if(!response.ok)throw Error('HTTP '+response.status);return {feed,data:await response.json()}}));
+ const loaded=await Promise.allSettled(feeds.map(async feed=>{
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
+  try{const response=await fetch('/data/competitions/'+feed.slug+'/data.json',{cache:'no-cache',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();if(!Array.isArray(data.matches)||!Array.isArray(data.participants))throw Error('Invalid match feed');return {feed,data};}finally{clearTimeout(timer)}
+ }));
  const records=loaded.filter(r=>r.status==='fulfilled').flatMap(({value:{feed,data}})=>(data.matches||[]).filter(m=>[m.home,m.away].every(side=>data.participants?.some(t=>t.code===side?.code))).map(match=>({match,feed,data})));
- const timestamp=r=>new Date(r.match.date+'T'+(r.match.time||'00:00')+':00+09:00').getTime();
- const now=Date.now();
- const completed=records.filter(r=>timestamp(r)<=now&&r.match.scoreVerification&&Number.isInteger(r.match.score?.home)&&Number.isInteger(r.match.score?.away)).sort((a,b)=>timestamp(b)-timestamp(a))[0];
- const upcoming=records.filter(r=>timestamp(r)>now&&!r.match.score).sort((a,b)=>timestamp(a)-timestamp(b))[0];
- matchHost.replaceChildren(completed?matchCard(completed,true):emptyMatch('경기 결과 미확인','검증된 결과를 불러오지 못했습니다.'),upcoming?matchCard(upcoming,false):emptyMatch('예정 경기 확인 중','확정된 다음 일정은 통합 달력에서 확인하세요.'));
+ const now=Date.now(),selected=[];
+ matchHost.replaceChildren(...[true,false].map(finished=>{
+  const card=element('article','panel match-column');card.dataset.kind=finished?'recent':'next';
+  const title=element('h3','',finished?'최근 경기 결과':'다음 경기');title.id='home-match-'+card.dataset.kind;card.setAttribute('aria-labelledby',title.id);card.append(title);
+  for(const gender of ['men','women']){const record=chooseMatch(records,gender,finished,now);if(record)selected.push(record);
+   const failed=loaded.some((r,i)=>r.status==='rejected'&&feeds[i].gender===gender);
+   card.append(record?matchCard(record,finished):emptyMatch(gender,finished,failed));}
+  return card;
+ }));
  matchHost.setAttribute('aria-busy','false');
  matchSource.replaceChildren();
- if(completed){const source=element('a','','U-리그 공식 자료');source.href=completed.data.resources[0].url;source.target='_blank';source.rel='noopener';matchSource.append(source,' · ')}
+ const sourceUrls=new Set();
+ for(const record of selected){const resource=record.data.resources?.[0];if(!resource?.url||!/^https?:\/\//i.test(resource.url)||sourceUrls.has(resource.url))continue;sourceUrls.add(resource.url);const source=element('a','',resource.title||record.feed.title+' 공식 자료');source.href=resource.url;source.target='_blank';source.rel='noopener';matchSource.append(source,' · ')}
  const stamp=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
  matchSource.append('대회 기록 조회 '+stamp+' KST · 실시간 중계 아님');
  if(loaded.some(r=>r.status==='rejected'))matchSource.append(' · 일부 기록 조회 실패');
 }
-loadMatches().catch(()=>{matchHost.replaceChildren(emptyMatch('경기 기록 조회 실패','확인되지 않은 결과는 표시하지 않습니다.'));matchHost.setAttribute('aria-busy','false')});
+loadMatches().catch(()=>{matchHost.replaceChildren(emptyMatch('men',true,true),emptyMatch('women',true,true));matchHost.setAttribute('aria-busy','false')});
 
 })();
 </script>
