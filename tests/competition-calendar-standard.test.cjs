@@ -54,3 +54,59 @@ test('KR holiday coverage includes earlier 2026 competitions and does not extrap
  for(const key of ['2026-03-02','2026-05-01','2026-05-25','2026-06-03','2026-07-17','2026-08-17','2026-09-25','2027-07-19','2027-12-27'])assert(display.dateInfo(key,'KR').red,key);
  assert.equal(display.dateInfo('2028-07-17','KR').verified,false);assert.equal(display.dateInfo('2026-07-18','KR').red,false);
 });
+
+test('single-match calendar labels keep two matchup rows plus the venue/time row for mobile',()=>{
+ const {w,doc,cal}=setup();try{
+  const fixture={stage:'1라운드',home:{code:'S'},away:{code:'W'},time:'19:00',venueLabel:'대전 충무체육관'},d={
+   status:'completed',participants:[{code:'S',name:'삼성화재',fullName:'삼성화재 블루팡스'},{code:'W',name:'우리카드'}],
+   structure:{calendarDisplay:{mode:'vleague-compact',teamAliases:{S:'삼성',W:'우카'},venueCities:{'대전 충무체육관':'대전'}}},
+   matches:[{...fixture,id:'scheduled',date:'2026-07-01',status:'scheduled'},{...fixture,id:'finished',date:'2026-07-02',status:'final',score:{home:3,away:1,sets:[{home:25,away:20},{home:25,away:22},{home:20,away:25},{home:25,away:23}]}},{...fixture,id:'live',date:'2026-07-03',status:'live',score:{home:2,away:1}}]
+  },before=JSON.stringify(d);
+  w.KVLMatchCalendarV1.mount(cal,d);
+  for(const [date,result] of [['2026-07-01','vs'],['2026-07-02','3-1'],['2026-07-03','vs']]){
+   const day=cal.querySelector('[data-dv2-date="'+date+'"]'),game=day.querySelector('.dv2-calendar-game');
+   assert.equal(game.children.length,2,'desktop matchup/location information groups stay intact');
+   assert.deepEqual([...game.querySelectorAll('.dv2-calendar-side')].map(el=>el.textContent),['1R 삼성',result+' 우카']);
+   assert.equal(game.querySelector('.dv2-calendar-matchup').textContent,'1R 삼성 '+result+' 우카');
+   assert.equal(game.querySelector('.dv2-calendar-location').textContent,'(대전, 19시)');
+   assert.equal(game.querySelector('.dv2-calendar-venue').textContent,'대전');
+   assert.equal(game.querySelector('.dv2-calendar-time').textContent,', 19시)');
+   assert.equal(day.querySelector('.kvl-calendar-count'),null);
+   assert.match(day.getAttribute('aria-label'),/삼성화재 블루팡스/);assert.match(game.title,/대전 충무체육관/);assert.match(game.title,/19시 KST/);
+  }
+  cal.querySelector('[data-dv2-date="2026-07-02"]').click();
+  assert.equal(doc.querySelector('.dv2-match-teams>strong').textContent,'3 : 1');
+  assert.equal(doc.querySelector('.dv2-match-meta>span').textContent,'19:00 KST');
+  assert.equal(doc.querySelectorAll('.dv2-setline>span').length,4);
+  assert.equal(JSON.stringify(d),before);
+ }finally{w.close();}
+});
+test('mobile venue/time spans preserve long international labels, minutes and unconfirmed fields',()=>{
+ const {w,doc,cal}=setup();try{
+  const venue='Ningbo Beilun Sports and Arts Center, Main Court <확인>',fixture={stage:'예선',home:{code:'DOM'},away:{code:'NED'},status:'scheduled'},d={
+   status:'completed',participants:[{code:'DOM',name:'도미니카공화국',city:'등록 도시',venue:'등록 체육관'},{code:'NED',name:'네덜란드'}],structure:{},matches:[
+    {...fixture,id:'minutes',date:'2026-07-01',time:'19:30',venueLabel:venue},
+    {...fixture,id:'missing',date:'2026-07-02',time:'',venueLabel:''},
+    {...fixture,id:'invalid',date:'2026-07-03',time:'25:10',venueLabel:'확인된 장소'}
+   ]
+  },before=JSON.stringify(d);
+  w.KVLMatchCalendarV1.mount(cal,d);
+  const minutes=cal.querySelector('[data-dv2-date="2026-07-01"]'),game=minutes.querySelector('.dv2-calendar-game');
+  assert.deepEqual([...game.querySelectorAll('.dv2-calendar-side')].map(el=>el.textContent),['예선 도미니카공화국','vs 네덜란드']);
+  assert.equal(game.querySelector('.dv2-calendar-venue').textContent,venue,'commas in a verified venue are preserved');
+  assert.equal(game.querySelector('.dv2-calendar-time-wide').textContent,'19시30분');
+  assert.equal(game.querySelector('.dv2-calendar-time-mobile').textContent,'19:30');
+  assert.equal(game.querySelector('.dv2-calendar-location').title,'('+venue+', 19시30분)');
+  assert(minutes.getAttribute('aria-label').includes(venue));assert.match(game.title,/도미니카공화국 vs 네덜란드/);assert.match(game.title,/19시30분 KST/);
+  assert.equal(doc.querySelector('확인'),null,'venue strings remain escaped text');
+  minutes.click();assert.equal(doc.querySelector('.dv2-match-meta>span').textContent,'19:30 KST');assert.equal(doc.querySelector('.dv2-match-venue').textContent,venue);doc.querySelector('#dv2-day-dialog').close();
+  const missing=cal.querySelector('[data-dv2-date="2026-07-02"]');
+  assert.equal(missing.querySelector('.dv2-calendar-venue').textContent,'장소 미정');
+  assert.equal(missing.querySelector('.dv2-calendar-time').textContent,', 시간 미정)');
+  assert(!missing.textContent.includes('등록 도시'),'no home-city inference when the venue is absent');
+  const invalid=cal.querySelector('[data-dv2-date="2026-07-03"]');assert.equal(invalid.querySelector('.dv2-calendar-time').textContent,', 시간 미정)');
+  assert.equal(invalid.querySelector('.dv2-calendar-time-mobile'),null,'an invalid clock is not compacted into a claimed time');
+  assert.equal(JSON.stringify(d),before);
+ }finally{w.close();}
+});
+

@@ -16,7 +16,7 @@ for(const c of catalog)for(const [key,label] of migration.divisions)test(c.engin
  const slug=c.enginePrefix+'-'+key,{w,doc,d}=setup(slug);try{
   assert.ok(doc.body.classList.contains('kvl-domestic-home-v2'));assert.equal(doc.body.dataset.kvlGender,key.endsWith('women')?'women':'men');
   assert.equal(doc.querySelector('.kvl1180-gender .is-active').textContent,label);assert.equal(doc.querySelectorAll('[data-division-link]').length,4);
-  assert.match(doc.querySelector('.dv2-utility').textContent,/중·고/);assert.equal(doc.querySelector('.dv2-calendar-month').textContent,d.matches.map(m=>m.date).sort().at(-1).slice(5,7)+'월');
+  assert.equal(doc.querySelector('.dv2-utility'),null,'competition breadcrumb row is removed');assert.equal(doc.querySelector('.dv2-calendar-month').textContent,d.matches.map(m=>m.date).sort().at(-1).slice(5,7)+'월');
   doc.querySelector('[data-view=knockout][href]').click();assert.equal(new URL(w.location.href).searchParams.get('view'),'knockout');
   for(const a of doc.querySelectorAll('[data-division-link]'))assert.equal(new URL(a.href).searchParams.get('view'),'knockout');
   doc.querySelector('[data-view=rosters][href]').click();assert.equal(doc.querySelectorAll('.kvl1180-participant-button').length,d.participants.length);
