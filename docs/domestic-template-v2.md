@@ -1,5 +1,9 @@
 # Domestic Template v2 — Home presentation
 
+## 2026-11-02 · 전용 진입 페이지 달력 연결 보완
+
+공통 엔진 URL뿐 아니라 메뉴가 연결하는 고성/단양 및 종합대회 전용 HTML에서도 달력 의존성을 함께 로드한다. `kvl-calendar-display-v1.js` → `kvl-match-calendar-v1.js` → `kvl-domestic-home-v2.js` 순서와 `kvl-match-calendar-v1.css`가 필수다. 기존 전용 주소·성별/부문 전환·팀 상세 경로를 유지한다. 검수는 수동으로 스크립트를 주입한 공통 엔진 검사에 더해 **실제 HTML의 파일 연결 그대로** 실행해야 한다. [누락 원인·수정·검수](validation/university-calendar-entrypoints-20261102.md).
+
 ## 2026-11-02 · 모든 대회의 공통 달력 기준
 
 사용자 후속 요청으로 V-리그의 달력 표시 기준을 다른 대회 및 국내 기본 템플릿에 공통 적용한다. 이 절은 아래의 ‘한눈에 경기 수만 표시’, ‘선택 팀의 여러 경기를 칸 안에 모두 표시’, ‘V-리그만 적용’이라는 이전 달력 규칙을 대체한다. 다른 화면의 적용 범위는 확대하지 않는다.

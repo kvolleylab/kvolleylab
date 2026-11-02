@@ -50,7 +50,8 @@ jobs:
     # Set KVL_QUALITY_AUDIT_APPROVED=false to stop schedule/release runs and alerts.
     # Unexpected non-empty override values also disable them; PR/manual checks remain.
     if: (github.event_name != 'schedule' && github.event_name != 'push') || vars.KVL_QUALITY_AUDIT_APPROVED == '' || vars.KVL_QUALITY_AUDIT_APPROVED == 'true'
-    runs-on: ubuntu-latest
+    # Playwright 1.56.1 supports this image; ubuntu-latest can move ahead of it.
+    runs-on: ubuntu-24.04
     timeout-minutes: 18
     permissions:
       contents: read

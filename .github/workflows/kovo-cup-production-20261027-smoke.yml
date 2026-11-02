@@ -18,6 +18,12 @@ on:
       - 'tests/vleague-postseason.test.cjs'
       - 'tests/vleague-calendar.test.cjs'
       - 'tests/competition-calendar-standard.test.cjs'
+      - 'tests/competition-calendar-entrypoints.test.cjs'
+      - 'university-competition.html'
+      - 'university-competition-danyang.html'
+      - 'national-sports-festival-2026.html'
+      - 'national-youth-sports-festival-2026.html'
+      - 'kovo-cup-domestic-template-prototype.html'
       - 'assets/js/kvl-match-calendar-v1.js'
       - 'assets/js/kvl-calendar-avc-adapter-v1.js'
       - 'assets/css/kvl-match-calendar-v1.css'
@@ -41,6 +47,12 @@ on:
       - 'tests/vleague-postseason.test.cjs'
       - 'tests/vleague-calendar.test.cjs'
       - 'tests/competition-calendar-standard.test.cjs'
+      - 'tests/competition-calendar-entrypoints.test.cjs'
+      - 'university-competition.html'
+      - 'university-competition-danyang.html'
+      - 'national-sports-festival-2026.html'
+      - 'national-youth-sports-festival-2026.html'
+      - 'kovo-cup-domestic-template-prototype.html'
       - 'assets/js/kvl-match-calendar-v1.js'
       - 'assets/js/kvl-calendar-avc-adapter-v1.js'
       - 'assets/css/kvl-match-calendar-v1.css'
@@ -72,4 +84,4 @@ jobs:
       - name: Cup roster interactions, source integrity and domestic regressions
         env:
           KVL_JSDOM_PATH: /tmp/kvl-roster-tests/node_modules/jsdom
-        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/vleague-calendar.test.cjs tests/domestic-home-v2.test.cjs tests/competition-calendar-standard.test.cjs tests/domestic-team-calendar.test.cjs
+        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/vleague-calendar.test.cjs tests/domestic-home-v2.test.cjs tests/competition-calendar-standard.test.cjs tests/competition-calendar-entrypoints.test.cjs tests/domestic-team-calendar.test.cjs
