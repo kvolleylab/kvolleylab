@@ -285,7 +285,7 @@ body.kvl-competition-template-v2 .kvl1180-roster-club::before{content:none!impor
  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{background-image:linear-gradient(105deg,color-mix(in srgb,var(--kvl-theme-hero-a) 96%,transparent),color-mix(in srgb,var(--kvl-theme-hero-b) 88%,transparent) 68%,color-mix(in srgb,var(--kvl-theme-hero-a) 65%,transparent)),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important}
  html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-hero-mode="photo"] .kvl1180-hero{
   background-image:linear-gradient(105deg,rgba(var(--kvl-theme-overlay-rgb),.28) 0%,rgba(var(--kvl-theme-overlay-rgb),.14) 48%,rgba(var(--kvl-theme-overlay-rgb),.02) 76%),var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
-  background-size:auto 100%!important;
+  background-size:cover!important;
   background-position:var(--kvl-hero-position-mobile,right center)!important;
  }
  body.kvl-competition-template-v2 [data-kvl-component="calendar"]{gap:10px}
@@ -638,7 +638,7 @@ html body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="dom
       rgba(var(--kvl-theme-overlay-rgb),.42) 61%,
       rgba(var(--kvl-theme-overlay-rgb),.16) 100%),
     var(--kvl-hero-image-desktop,none)!important;
-  background-size:100% 100%,100% 100%!important;
+  background-size:100% 100%,cover!important;
   background-position:center center!important;
   background-repeat:no-repeat!important;
   background-clip:padding-box!important;
@@ -652,7 +652,7 @@ html body.kvl1180-prototype.kvl-competition-template-v2:is([data-kvl-family="dom
         rgba(var(--kvl-theme-overlay-rgb),.28) 78%,
         rgba(var(--kvl-theme-overlay-rgb),.10) 100%),
       var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
-    background-size:100% 100%,100% 100%!important;
+    background-size:100% 100%,cover!important;
     background-position:center center!important;
   }
 }
@@ -2532,16 +2532,16 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-gender="men"]:not(:i
 }
 
 
-/* GAMES Hero no-crop rule · 2026-10-01
-   Approved PC/mobile artwork must remain fully visible. Shared family rule:
-   no tournament-specific selector and no effect on AVC/FIVB production. */
+/* GAMES Hero fill rule · 2026-11-02
+   Shared cover sizing fills the banner while preserving artwork proportions.
+   Existing assets, theme colors and configured focal positions are retained. */
 html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="games"][data-kvl-hero-mode="photo"] .kvl1180-hero{
-  background-size:100% 100%,contain!important;
+  background-size:100% 100%,cover!important;
   background-repeat:no-repeat!important;
 }
 @media(max-width:680px){
   html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="games"][data-kvl-hero-mode="photo"] .kvl1180-hero{
-    background-size:100% 100%,contain!important;
+    background-size:100% 100%,cover!important;
     background-repeat:no-repeat!important;
   }
 }
@@ -2681,7 +2681,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"] .kvl11
     linear-gradient(90deg,rgba(var(--kvl-theme-overlay-rgb),.12) 0%,rgba(var(--kvl-theme-overlay-rgb),.06) 42%,rgba(var(--kvl-theme-overlay-rgb),.01) 68%,rgba(var(--kvl-theme-overlay-rgb),0) 82%),
     var(--kvl-hero-image-desktop,none)!important;
   /* PRO Hero artwork uses the shared full-canvas safe-area ratio. Preserve player proportions; crop only safe background when viewport geometry differs. */
-  background-size:100% 100%,var(--kvl-hero-size,cover)!important;
+  background-size:100% 100%,cover!important;
   background-position:center center,var(--kvl-hero-position,right center)!important;
   background-repeat:no-repeat,no-repeat!important;
   background-color:var(--kvl-theme-dark)!important;
@@ -2832,7 +2832,7 @@ body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-family="pro"][data-k
     background-image:
       linear-gradient(105deg,rgba(var(--kvl-theme-overlay-rgb),.28) 0%,rgba(var(--kvl-theme-overlay-rgb),.14) 48%,rgba(var(--kvl-theme-overlay-rgb),.02) 76%),
       var(--kvl-hero-image-mobile,var(--kvl-hero-image-desktop,none))!important;
-    background-size:100% 100%,var(--kvl-hero-size-mobile,var(--kvl-hero-size,cover))!important;
+    background-size:100% 100%,cover!important;
     background-position:center center,var(--kvl-hero-position-mobile,right center)!important;
     background-repeat:no-repeat,no-repeat!important;
     border-bottom-width:3px!important;
@@ -3345,3 +3345,4 @@ html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-
  html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate span{font-size:11px}
  html body.kvl1180-prototype.kvl-competition-template-v2 #team-results .kvl-team-record-summary.is-dual-rate+.kvl-team-record-note{font-size:10px;text-align:left}
 }
+

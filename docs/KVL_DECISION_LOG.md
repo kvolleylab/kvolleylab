@@ -418,3 +418,10 @@ Base main `7ce64bd0177203b1f5110cd5848a52c606f0a51d`: PR #227의 챔피언결정
 ## 2026-11-02 · 고성·단양 전용 경로 달력 누락 복구
 
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED; merge·Pages·live 증거는 release PR. 사용자가 대학 고성·단양 달력 누락을 보고했다. PR #230에서 공통 Engine에는 새 달력을 연결했으나 대학 목록이 사용하는 전용 HTML에 필수 JS/CSS를 빠뜨린 회귀였다. 해당 남녀 페이지, 같은 국내 후처리를 쓰는 종합대회 전용 경로와 기존 Cup 시안의 연결을 보완한다. 디자인·데이터·MASTER·ID·공통 엔진은 바꾸지 않는다. 실제 HTML 의존성으로 실행하는 회귀검사를 추가하고 기존 ‘공통 config 검증이면 모든 진입 경로도 검증됐다’는 검수 범위를 바로잡는다. Base `998157da98f99fcea7f0aef3f3052f34b4f0b42f`. [원인·수정·검수·복구](validation/university-calendar-entrypoints-20261102.md).
+
+## 2026-11-02 · 홈 기준 모바일 공통 헤더·홈 이동 및 대회 HERO 채움
+
+Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED (기록된 범위) / RELEASE AUTHORIZED; merge·Pages·live 증거는 release PR 및 검수 기록에 남긴다. 사용자가 모바일 상단을 홈 기준으로 통일하고, 헤더 클릭 시 홈페이지로 이동하며 대회 HERO 이미지가 영역을 꽉 채우도록 요청했다. 공통 내비게이션에 58px 네이비 브랜드 바를 추가하고 전체 바를 `/index.html` 링크로 사용한다. 기존 메뉴 버튼은 별도 동작으로 유지하며 홈의 중복 모바일 바만 숨긴다. PC 메뉴·홈 유틸리티는 유지한다.
+
+대회 공통 CSS의 이미지 레이어는 비율을 보존하는 `cover`로 통일한다. 이전 GAMES·종합대회의 `contain`/전체 구도 보존 및 일부 높이만 맞춤·가로세로 강제 맞춤 결정을 이 이미지 표시 범위에서 대체한다. 원본 이미지 바이트·테마색·기존 PC/모바일 자산·데이터·MASTER·ID·명단·경기 결과는 유지하며 기존 AVC의 화면 전체를 다른 템플릿으로 전환하지 않는다. Base main `be0ffe4f13aebdb59ea45d74ce6a816b2168a7d0`이며 PR #233의 고성·단양 달력 복구를 보존한다. 최종 로컬 검수 후 main 재조회에서도 같은 SHA를 확인했다. 모바일 V-리그 남녀·KOVO컵·VNL·아시안게임·대학 고성, 전국체전 900/901px 경계 및 V-리그 1180px PC에서 헤더·이미지 채움·가로 넘침을 검수했다. 고성 전용 경로의 달력 1개와 AVC 여자 전용 디자인의 기존 이미지 채움·새 헤더도 확인했다. 메뉴 열기/Escape, 헤더의 Enter/빈 영역 클릭으로 홈 이동은 preview에서 정상 동작했다. AVC 남자 준비 전 관찰은 완료 검사로 판단하지 않으며 PASS 기록에서 제외한다. 실제 운영 배포·HTTPS 원본 코드 재확인은 후속 증거와 구분한다. [변경·검수 범위·제약·복구](validation/mobile-header-hero-20261102.md).
+

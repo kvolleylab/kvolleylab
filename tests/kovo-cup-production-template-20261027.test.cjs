@@ -34,7 +34,11 @@ assert.match(css,/Shared PRO Cup presentation \(domestic-home-v2\)/);
 assert.match(css,/grid-template-columns:minmax\(0,1fr\) 62px minmax\(0,1fr\)/,'score center must be fixed and symmetric');
 assert.match(css,/color:#4b5563!important/,'score colors stay neutral');
 assert.match(css,/--kvl-hero-image-mobile/,'original mobile Hero must be used');
-assert.match(css,/background-size:100% 100%,contain!important/,'Hero must never crop');
+// The 2026-11-02 display contract fills the banner without stretching artwork.
+const proHeroRules=[...css.matchAll(/:is\(\.kvl-pro-cup-domestic-v2,\.kvl-pro-league-domestic-v2\)(?:\[data-kvl-gender="women"\])? \.kvl1180-hero\{([^}]+)\}/g)].map(match=>match[1]);
+const proHeroSizes=proHeroRules.map(rule=>rule.match(/background-size:([^;]+)/)?.[1]).filter(Boolean);
+assert.deepEqual(proHeroSizes,['100% 100%,cover!important','100% 100%,cover!important'],
+  'PC and mobile PRO Hero must fill the banner while preserving image proportions');
 assert.match(engine,/kvl-domestic-home-v2\.js/);
 for(const gender of ['men','women']){
   const base='data/competitions/kovo-cup-'+gender+'-2026/';
