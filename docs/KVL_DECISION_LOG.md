@@ -441,3 +441,12 @@ Status: USER REQUESTED / IMPLEMENTED / NATIVE CONNECTION OBSERVED / AUTOMATIC WR
 Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 최종 병합·Pages·운영 증거는 release PR에 기록한다. 사용자가 상단 헤더와 HERO 사이 경로줄을 제거하고 대학배구 대회목록을 HERO 우상단 버튼으로 옮기도록 요청했다. 공통 domestic-home 후처리의 경로줄을 제거하고 대학 U-리그·고성·단양 남녀에만 기존 허브로 이동하는 버튼을 제공한다. PR #234의 공통 모바일 헤더와 홈 링크, HERO cover는 보존한다.
 
 모바일 대회내 달력의 단일 경기는 “단계·홈팀 / vs 또는 실제 등록 결과·원정팀 / (확인된 장소, 시간)” 3행으로 통일한다. 긴 팀명은 한 행 말줄임, 장소는 시간 영역을 남겨 줄이고 전체 문구는 접근성 이름/팝업에 유지한다. 종전의 모바일 추가 줄바꿈·말줄임 없음 결정을 이 표시 범위에서 대체한다. 2경기 이상 N경기/팝업과 PC 배치는 유지한다. Base main `dfad9ca877cff9e53cd5ce0c066002113eae73fb`의 선수 MASTER 작업과 공시 갱신을 보존하며 config/data/MASTER/ID/점수/명단은 변경하지 않는다. [표시 계약·검수·제약·복구](validation/mobile-hero-navigation-calendar-20261102.md).
+
+
+## 2026-11-02 · 대학·V리그 한눈에 보기의 조별·정규리그 선두 카드
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 최종 회귀·감사 gate와 병합·Pages·실제 HTTPS 확인은 release PR에 기록한다. 사용자는 참가팀 수와 중복되는 순위 카드의 개선을 요청했고, 대학은 각 조 선두, V리그는 현재 1위와 승점을 보여주며 기존 조편성/순위 페이지로 연결하는 제안에 “진행해”라고 승인했다. 기존 해당 두 유형의 조 수/팀 수 요약 결정을 이 범위에서 대체한다. 참가팀·등록 경기·장소 카드와 기존 이동 구조는 유지한다.
+
+대학은 예선만 사용하고 U리그 후속6강리그·대회 우승과 구분한다. 조가 없는 여자U리그는 예선1위로 표시한다. V리그는 공식 정규리그 순위의 기존 rank1을 읽으며 승점으로 재정렬하지 않는다. 시작 전·진행 중·예선/정규리그 완료·순위 확인 중을 구분하고, 경기수/결과 불일치·복수1위·명시적 미검증 자료로 선두를 추정하지 않는다. 연기 경기는 예선 종료 판정에 미완료로 남긴다. 데이터 내용 변경 시각에 임의의TTL을 걸지 않는다.
+
+Base main `0f02f6b35d939c7a7e63d8ea375031a11baf091a`이며 PR #236의 헤더·HERO·대학 목록 버튼·모바일 달력3줄을 보존한다. 새 표시의 대상은 대학ID/family와 pro V리그이며 KOVO컵·학교·종합·VNL·AVC는 기존 카드를 유지한다. config/data/MASTER/ID/명단/원본이미지/순위산식/자동화는 변경하지 않는다. Google 운영원칙 MASTER v17과 기존 공개 데이터/검증 경로를 확인했고 외부 결과를 새로 수집하거나 MASTER를 쓴 것으로 표시하지 않는다. [표시·근거·검수·복구](validation/overview-standing-cards-20261102.md).
