@@ -46,7 +46,7 @@ assert(read('assets/css/kvl-competition-base-v2.css').includes(pointsRule),
   'points must use the same shared typography token as wins and losses');
 
 for (const [shell, version] of [
-  ['competition-engine.html', 'kvl-competition-components-v2.css?v=20261102-vleague-mobile-2'],
+  ['competition-engine.html', 'kvl-competition-components-v2.css?v=20261102-hero-cover-1'],
   ['competition-engine-prototype.html', 'kvl-competition-components-v2.css?v=20261017-pro-cup-semibold-1']
 ]) {
   assert(read(shell).includes(version), shell + ' must refresh the shared CSS asset');
@@ -75,3 +75,4 @@ for (const gender of ['men', 'women']) {
   }
 }
 console.log('PASS: KOVO Cup men/women seven-column standings geometry and semibold 600 W/L/points typography');
+

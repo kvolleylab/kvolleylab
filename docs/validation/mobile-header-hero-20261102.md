@@ -38,7 +38,7 @@ Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED (아래 확인 범위) / RELE
 | 대회 HERO 표시 | `assets/css/kvl-domestic-home-v2.css`, `assets/css/kvl-competition-components-v2.css` |
 | 주요 진입 경로의 캐시 버전 | `index.html`, `competition-engine.html`, `university-competition.html`, `university-competition-danyang.html`, `national-sports-festival-2026.html`, `national-youth-sports-festival-2026.html` |
 | 새 대회 기본 연결 | `templates/competition-page-production-v2.html` |
-| 기존 HERO 표시 계약 검사 | `tests/kovo-cup-production-template-20261027.test.cjs` |
+| 기존 HERO 표시·자산 버전 검사 | `tests/kovo-cup-production-template-20261027.test.cjs`, `tests/competition-v2-pro-cup-pool-columns.test.cjs`, `tests/kovo-cup-desktop-matchup-alignment.test.cjs` |
 | 기록 | 본 문서, `docs/KVL_DECISION_LOG.md` |
 
 정확한 최종 변경 목록은 release PR의 파일 목록으로 확인한다. 미리보기 서버·검수 보조 파일은 배포 대상이 아니다.
@@ -68,6 +68,8 @@ Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED (아래 확인 범위) / RELE
 | AVC 여자 전용 화면 390px | PASS — preview | 기존 전용 디자인의 원본 이미지 채움을 유지하고 새 헤더 1개·58px·가로 넘침 없음을 화면 캡처로 확인 |
 | 메뉴 열기·Escape 닫기 | PASS — preview | 메뉴를 열어도 현재 페이지 유지, Escape로 닫기 확인 |
 | 홈 이동 | PASS — preview | 헤더 링크의 Enter 및 글씨 밖 오른쪽 빈 헤더 영역 클릭 모두 `/index.html`로 이동 |
+
+focused-regressions의 고정 자산 버전 검사 두 곳도 실제 변경된 `20261102-hero-cover-1`과 일치하도록 갱신했다. 순위·결과·명단·로고·레이아웃 기능 검사는 그대로 유지한다. 수정한 검사 파일의 문법과 새 버전 허용/옛 버전 또는 누락 거부를 로컬에서 확인했고, 전체 CI 결과는 release PR에 기록한다.
 
 ## 검증의 한계와 남은 확인
 
