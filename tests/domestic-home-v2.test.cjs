@@ -114,7 +114,7 @@ for(const slug of [
  try{
   const doc=w.document,before=JSON.stringify(d),standings=doc.querySelector('[data-kvl-component=standings]').innerHTML,knockout=doc.querySelector('[data-kvl-component=knockout]').innerHTML;
   const grouped=d.structure.standings.mode!=='single-league',groups=grouped?d.standings.pools:[{rows:d.standings.rows}];
-  const leaders=groups.map(g=>{const rows=g.rows.filter(r=>r.rank===1);assert.equal(rows.length,1);return {group:g,row:rows[0]};});
+  const leaders=Array.from(groups,g=>{const rows=g.rows.filter(r=>r.rank===1);assert.equal(rows.length,1);return {group:g,row:rows[0]};});
   const expected=leaders.map(({group,row})=>{
    const code=row.team?.code||row.teamCode,t=d.participants.find(t=>t.code===code);assert.ok(t);
    return {code,name:t.name||t.fullName,prefix:league?(d.regularSeasonComplete===true?'정규리그 1위':'현재 1위'):grouped?String(group.id).replace(/조$/,'')+'조 1위':'예선 최종 1위'};
