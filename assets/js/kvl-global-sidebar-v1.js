@@ -150,6 +150,15 @@
 
   document.body.classList.add('kvl-sidebar-enabled');
   document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html" aria-label="K-Volley Lab 홈"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav><button class="kvl-global-collapse" type="button" aria-expanded="true" title="사이드바 접기"><span class="kvl-global-icon">${icon.collapse}</span><span class="kvl-global-collapse-label">접기</span></button></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-controls="kvlGlobalSidebar" aria-label="메뉴 열기">☰ <span>메뉴</span></button>`);
+  // One home-style mobile header for every page using the shared navigation.
+  // Keep the menu control separate so opening it never follows the home link.
+  const mobileHeader=document.createElement('a');
+  mobileHeader.className='kvl-global-mobile-header';
+  mobileHeader.href='/index.html';
+  mobileHeader.setAttribute('aria-label','K-Volley Lab 홈으로 이동');
+  mobileHeader.innerHTML='<img src="/assets/images/brand/kvl-ball-domestic-navywhite.webp" alt="" width="30" height="30"><span>K-Volley Lab</span>';
+  document.body.prepend(mobileHeader);
+  document.body.classList.add('kvl-mobile-header-enabled');
   const sidebar=document.querySelector('.kvl-global-sidebar');
   sidebar.id='kvlGlobalSidebar';
   const toggle=document.querySelector('.kvl-global-toggle');
