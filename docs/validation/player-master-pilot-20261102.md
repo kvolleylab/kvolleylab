@@ -61,6 +61,12 @@ Google 실제 화면 렌더링은 로그인 권한 차단으로 미확인이다.
 
 수동 native 관측과 가상 클라이언트 회귀검사는 실제 GitHub 선수 writer 성공을 대체하지 않는다. 이번 변경에서 다른 기존 workflow 실패를 수정하거나 전체 저장소 CI가 모두 성공했다고 주장하지 않는다.
 
+## 공개 export 검수
+
+PR #235의 첫 Quality Audit에서 공개 JSON 4개의 검수 manifest 누락/이전 해시가 확인됐다. `master_change_plan.json`, `master_targets.json`, `pilot.json`, `pilot_verification.json`의 실제 내용을 다시 검토해 공식 공시157018·기존 MASTER 출처 및 정확한 SHA-256을 `scripts/quality_audit/public-review-manifest.json`에 기록했다. 공개 보안 검사와 별도 검토에서 인증정보·원격 전체 행·비공개 메모가 없음을 확인했다. 기존 MASTER의 공개 설정, 기존 선수 ID, 공식 번호 변경, 현재값 관측 및 차단 상태만 포함한다.
+
+이 공개 적합성 검수는 사건의 효력일 또는 자동 운영 성공을 승인하지 않는다. `effective_date=null`, `NOT_VERIFIED`, `enabled=false`, 승인/적용 사건0을 유지했다. export gate 자체나 검수 규칙은 변경하지 않았다.
+
 ## 복구 및 다음 활성화
 
 문제 발생 시 먼저 `pilot.json.enabled=false`를 유지한다. 구현 파일을 이전 commit으로 되돌려도 기존 경기 자동화와 원본 선수값은 유지된다. 연결 메모는 검수 이력이며 불필요하게 삭제하지 않는다. 비어 있는 전용 저널은 미사용 상태로 보존할 수 있다. 실제 적용 후의 복구는 단순 역쓰기 대신 원문·현재값·적용 이력 재대조로 진행한다.
