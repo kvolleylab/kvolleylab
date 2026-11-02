@@ -1,4 +1,4 @@
-# K-Volley Lab 관리자 로그인 테스트 v1
+# K-Volley Lab 관리자 로그인 테스트 v1.1
 
 검증일: 2026-11-02 (Asia/Seoul)
 
@@ -36,7 +36,7 @@ K-Volley Lab 운영 홈페이지 반영은 **NOT DEPLOYED**.
 | `previews/admin-login-v1/admin-login.css` | 기존 밝은 KVL 스타일·네이비·골드·Arial·모바일 레이아웃 |
 | `previews/admin-login-v1/admin-auth.mjs` | GitHub 계정·대상 저장소·관리자 역할 확인, 메모리 인증상태 |
 | `previews/admin-login-v1/admin-login.mjs` | 입력값 비우기, 성공·실패·재확인·로그아웃·이동 후 초기화 |
-| `tests/admin-auth-v1.test.mjs` | 인증·권한·만료·실패·경쟁조건 모의 검사 12개 |
+| `tests/admin-auth-v1.test.mjs` | 인증·권한·만료·실패·경쟁조건·브라우저 수신자 모의 검사 13개 |
 | `tests/admin-login-ui-v1.test.mjs` | 화면·입력 제거·저장값 위조 거부·페이지 복귀 모의 검사 3개 |
 
 허용 기준은 인증된 GitHub 사용자 ID `293255989`, 저장소 ID `1267923840`, 저장소 소유자 ID와 경로의 일치다.
@@ -71,7 +71,7 @@ K-Volley Lab 운영 홈페이지 반영은 **NOT DEPLOYED**.
 
 | 항목 | 결과 |
 | --- | --- |
-| 인증 모듈 검사 | 모의 응답 12개 통과 |
+| 인증 모듈 검사 | 모의 응답 13개 통과 |
 | 화면 통합 검사 | jsdom 모의 응답 3개 통과 |
 | 잘못된 계정·쓰기 역할·누락된 역할·다른 저장소 거부 | 모의 검사 통과 |
 | 만료·로그아웃·네트워크 실패·요청 취소·늦은 성공 응답 | 모의 검사 통과 |
@@ -79,7 +79,8 @@ K-Volley Lab 운영 홈페이지 반영은 **NOT DEPLOYED**.
 | PC 브라우저 화면·필수 입력·토큰 안내 펼침 | 확인 |
 | 390px·360px 폭 iframe의 모바일 화면 | 확인, 가로 넘침 없음. 브라우저 세로 스크롤바를 제외한 본문 폭은 375px·345px |
 | 실제 GitHub 관리자 계정 성공 | NOT VERIFIED — 소유자의 직접 인증 필요 |
-| 실제 다른 GitHub 계정의 인증 거부·실제 브라우저 API/CORS | NOT VERIFIED |
+| 실제 다른 GitHub 계정의 인증 거부 | NOT VERIFIED |
+| 실제 브라우저 API/CORS | Chrome 미리보기에서 공개 API 200 및 무효 QA 값의 인증 API 401 확인. 게시 도메인에서의 소유자 인증은 NOT VERIFIED |
 | 이메일 발송·일반 회원 가입·회원 간 비공개 메모 격리 | 이번 범위에 없음 |
 
 검수 화면: [PC](validation/admin-login-v1/desktop.jpg), [모바일](validation/admin-login-v1/mobile.jpg).
@@ -92,13 +93,45 @@ KVL_JSDOM_PATH=/path/to/node_modules/jsdom node --experimental-vm-modules tests/
 ```
 
 Node 24.22.1, jsdom 26.1.0으로 실행했다. 브라우저 검수에는 실제 사용자 인증정보를 입력하지 않았다.
-브라우저 확장 자체의 메시지 전송 오류 로그가 있었으며, 테스트 화면 자체의 JS 오류는 관찰되지 않았다.
+초기 v1의 입력 전 화면 검사에서는 브라우저 확장 자체의 메시지 전송 오류 로그만 관찰했다.
+그 검사는 native fetch를 호출하지 않아 아래의 실제 로그인 시도 오류를 검출하지 못했다.
+
+## 2026-11-02 · v1.1 브라우저 요청 오류 수정
+
+사용자가 게시된 테스트 화면에서 ‘인증 서버에 연결하지 못했습니다’ 오류를 보고했다.
+기존 구현은 `fetch`를 클래스 필드에 그대로 저장한 뒤 메서드처럼 호출하여 브라우저의 Window 수신자를 잃었다.
+실제 Chrome 미리보기에서 같은 방식이 `TypeError: Illegal invocation`을 발생시키는 것을 재현했다.
+일반 예외를 모두 네트워크 오류로 처리하면서 사용자에게 인터넷 연결을 확인하라는 부정확한 안내가 표시됐다.
+
+현재 main의 기존 `DraftStore`가 사용하는 `fetcher.bind(globalThis)`를 재사용했다.
+새 일반 함수 회귀 검사는 수정 전 1건 실패, 수정 후 성공했으며 로그인과 권한 재확인의 총 6회 요청 모두 전역 수신자를 확인한다.
+실패 응답의 원문·입력값은 표시하지 않고 JSON 해석 실패를 별도 오류로 구분한다.
+그 밖의 요청 실패 문구도 인터넷 문제로 단정하지 않도록 수정했다.
+상단 `테스트 전용 · v1.1` 배지와 모듈 URL 버전으로 수정본 및 캐시를 구분한다.
+
+| 검사 | 수정 전 | 수정 후 |
+| --- | --- | --- |
+| 브라우저 native fetch 호출 | Illegal invocation | GitHub 공개 저장소 API HTTP 200 |
+| 실제 AdminAuth + 의도적으로 무효인 QA 값 | code=network, signedIn=false | GitHub HTTP 401, code=invalid, signedIn=false |
+| 수신자를 검사하는 일반 함수 회귀 검사 | 실패 | 통과 |
+| 전체 모의 인증·UI 검사 | 기존 15개로 수신자 오류 미검출 | 16개 통과 |
+
+브라우저 API 검사는 `http://terminal.local:4173/`의 로컬 미리보기에서 수행했다.
+실제 사용자 토큰을 요청·열람·저장·사용하지 않았으며 유효하지 않은 고정 QA 문자열만 사용했다.
+진단용 임시 페이지는 게시 소스에서 제거했다. CSP나 허용 계정·저장소·권한 기준은 완화하지 않았다.
+실제 GitHub 소유자 로그인 성공 및 두 실계정 간 거부는 여전히 소유자의 직접 테스트가 필요하다.
+
+증빙: [브라우저 요청 재현·수정 결과](validation/admin-login-v1/browser-fetch-fix.jpg), [v1.1 화면](validation/admin-login-v1/v1_1-desktop.jpg).
+수정 시작 시 확인한 최신 main은 `e97256be78f77de3e3e60e671d3caaa601825ea2`, 기존 PR #231 head는 `8b38536679dbdc2ecfb6607dc1214bd6da80a876`이다.
+동일 PR 브랜치와 소유자 전용 테스트 Site를 수정하며 운영 홈페이지에 병합하지 않는다.
 
 ## 비공개 Site 게시와 복구
 
 - Site ID: `appgprj_6ae7cdad7ad08191907dee8640f92194`.
-- 게시 소스 commit: `77a6c2cf94e285a6099eafcfcd74b72cf27ef3ee`.
-- 배포 ID: `appgdep_6ae7cea899ec819194d0495a38a4d114`, native 결과 `succeeded`.
+- 현재 v1.1 게시 소스 commit: `5821f4a2a58f2a99f4ddd787d8b46f48c047d966`.
+- 현재 배포 ID: `appgdep_6ae89bb5fa308191989fb64aaac9ac50`, native 결과 `succeeded` (2026-11-02 14:18:44 UTC).
+- 현재 version ID: `appgprj_6ae7cdad7ad08191907dee8640f92194~appgver_854d4486d2848191895b98a0993c1122`.
+- 이전 v1 게시 소스는 `77a6c2cf94e285a6099eafcfcd74b72cf27ef3ee`, 배포 ID는 `appgdep_6ae7cea899ec819194d0495a38a4d114`였다. 이전 버전에는 위의 브라우저 요청 오류가 있다.
 - 게시된 주소를 열어 소유자용 ChatGPT 로그인 게이트를 확인했다. 게이트 뒤의 실제 사용자 인증은 미검증이다.
 - 원본 테스트 HTML을 정적 배포 루트로 복사할 때 브랜드·favicon 상대경로만 조정했다. 임시 모바일 QA wrapper는 배포에서 제외했다.
 - 코드 변경은 새 시안과 검사·문서에 한정된다. 실제 홈페이지 배포는 소유자의 별도 승인을 거친다.

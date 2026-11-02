@@ -24,7 +24,7 @@ async function setup({ ownerId = 293255989 } = {}) {
   const auth = new vm.SourceTextModule(authSource, { context });
   await auth.link(() => { throw new Error('Unexpected auth import'); });
   const ui = new vm.SourceTextModule(uiSource, { context });
-  await ui.link(specifier => { assert.equal(specifier, './admin-auth.mjs'); return auth; });
+  await ui.link(specifier => { assert.equal(specifier, './admin-auth.mjs?v=1.1'); return auth; });
   await ui.evaluate();
   const $ = id => dom.window.document.getElementById(id);
   const submit = async () => {

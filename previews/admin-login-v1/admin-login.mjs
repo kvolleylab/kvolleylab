@@ -1,4 +1,4 @@
-import { AdminAuth } from './admin-auth.mjs';
+import { AdminAuth } from './admin-auth.mjs?v=1.1';
 
 const auth = new AdminAuth();
 const $ = id => document.getElementById(id);

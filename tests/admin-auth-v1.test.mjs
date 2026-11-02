@@ -49,6 +49,20 @@ test('owner and server-confirmed admin role succeeds using GET requests only', a
   assert.equal(auth.session.role, 'admin');
 });
 
+test('browser fetch keeps its global receiver during sign-in and recheck', async () => {
+  let requests = 0;
+  const fetcher = async function (url) {
+    if (this !== globalThis) throw new TypeError('Illegal invocation');
+    requests += 1;
+    return url.endsWith('/user') ? response(owner) : url.endsWith('/permission') ?
+      response({ permission: 'admin', user: owner }) : response(repository);
+  };
+  const auth = new AdminAuth({ fetcher });
+  assert.equal((await auth.signIn('fixture-not-a-real-credential')).role, 'admin');
+  assert.equal((await auth.recheck()).role, 'admin');
+  assert.equal(requests, 6);
+});
+
 test('a login name without the pinned user ID is refused', async () => {
   const { auth, requests } = fixture({ user: { ...owner, id: 22 } });
   await assert.rejects(auth.signIn('fixture'), { code: 'denied' });
@@ -122,9 +136,12 @@ test('late success after logout cannot restore authentication', async () => {
 
 test('malformed JSON and network errors fail closed without echoing input', async () => {
   const secret = 'fixture-sensitive-value';
-  for (const fetcher of [async () => { throw new Error(secret); }, async () => ({ ok: true, json: async () => { throw new Error(secret); } })]) {
+  for (const [fetcher, code] of [
+    [async () => { throw new Error(secret); }, 'network'],
+    [async () => ({ ok: true, json: async () => { throw new Error(secret); } }), 'response']
+  ]) {
     const auth = new AdminAuth({ fetcher });
-    await assert.rejects(auth.signIn(secret), error => error.code === 'network' && !error.message.includes(secret));
+    await assert.rejects(auth.signIn(secret), error => error.code === code && !error.message.includes(secret));
     assert.equal(auth.session, null);
   }
 });

@@ -15,7 +15,8 @@ export class AdminAuth {
   #fetch; #now; #timeout;
 
   constructor({ fetcher = globalThis.fetch, now = () => Date.now(), timeoutMs = 12000 } = {}) {
-    this.#fetch = fetcher;
+    // Native browser fetch requires its Window/Worker receiver, including rechecks.
+    this.#fetch = fetcher.bind(globalThis);
     this.#now = now;
     this.#timeout = timeoutMs;
   }
@@ -45,7 +46,8 @@ export class AdminAuth {
       if (response.status === 429) throw new AdminAuthError('limited', 'GitHub 요청이 잠시 제한됐습니다. 잠시 후 다시 시도해 주세요.');
       throw new AdminAuthError('service', 'GitHub 응답을 확인하지 못했습니다. 잠시 후 다시 시도해 주세요.');
     }
-    return response.json();
+    try { return await response.json(); }
+    catch { throw new AdminAuthError('response', 'GitHub 인증 응답을 읽지 못했습니다. 잠시 후 다시 시도해 주세요. (AUTH-RESPONSE)'); }
   }
 
   async #verify(token, signal) {
@@ -91,7 +93,7 @@ export class AdminAuth {
         throw new AdminAuthError('cancelled', '인증을 취소했습니다.');
       }
       if (error instanceof AdminAuthError) throw error;
-      throw new AdminAuthError('network', '인증 서버에 연결하지 못했습니다. 인터넷 연결을 확인한 뒤 다시 시도해 주세요.');
+      throw new AdminAuthError('network', '브라우저에서 GitHub 인증 요청을 완료하지 못했습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요. 계속되면 이 오류 문구를 알려 주세요. (AUTH-REQUEST)');
     } finally {
       clearTimeout(timer);
       if (this.#controller === controller) this.#controller = null;
