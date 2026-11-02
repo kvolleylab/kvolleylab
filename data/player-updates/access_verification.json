@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-11-02T20:30:50+09:00",
+  "status": "EDITOR_SHARING_VERIFIED_RUNTIME_READ_PENDING",
+  "target_id": "vleague-men-2026-27-player-master",
+  "spreadsheet_id": "1WD2odv51xNDx9BqRfAjkkLVu0p_DX2EX_GEbqR-G4og",
+  "native_drive_permission": {
+    "role": "writer",
+    "verified": true
+  },
+  "native_header_check": {
+    "current_roster_columns": 13,
+    "application_journal_columns": 22,
+    "headers_match": true
+  },
+  "runtime_read": {
+    "status": "NOT_VERIFIED",
+    "run_url": null
+  },
+  "runtime_write": {
+    "status": "NOT_TESTED",
+    "player_values_changed": 0
+  },
+  "pilot_enabled": false,
+  "effective_date_verified": false,
+  "scope": "Sharing metadata and native connector header verification only. This is not a GitHub runtime read or write receipt.",
+  "service_account_setting": "KVL_GOOGLE_SERVICE_ACCOUNT",
+  "expected_service_account_verified": true
+}
