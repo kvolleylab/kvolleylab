@@ -453,3 +453,7 @@ Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 최
 대학은 예선만 사용하고 U리그 후속6강리그·대회 우승과 구분한다. 조가 없는 여자U리그는 예선1위로 표시한다. V리그는 공식 정규리그 순위의 기존 rank1을 읽으며 승점으로 재정렬하지 않는다. 시작 전·진행 중·예선/정규리그 완료·순위 확인 중을 구분하고, 경기수/결과 불일치·복수1위·명시적 미검증 자료로 선두를 추정하지 않는다. 연기 경기는 예선 종료 판정에 미완료로 남긴다. 데이터 내용 변경 시각에 임의의TTL을 걸지 않는다.
 
 Base main `0f02f6b35d939c7a7e63d8ea375031a11baf091a`이며 PR #236의 헤더·HERO·대학 목록 버튼·모바일 달력3줄을 보존한다. 새 표시의 대상은 대학ID/family와 pro V리그이며 KOVO컵·학교·종합·VNL·AVC는 기존 카드를 유지한다. config/data/MASTER/ID/명단/원본이미지/순위산식/자동화는 변경하지 않는다. Google 운영원칙 MASTER v17과 기존 공개 데이터/검증 경로를 확인했고 외부 결과를 새로 수집하거나 MASTER를 쓴 것으로 표시하지 않는다. [표시·근거·검수·복구](validation/overview-standing-cards-20261102.md).
+
+## 2026-11-02 · 홈 경기 일정·결과 남녀 동시 표시
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 병합·Pages·운영 증거는 release PR에 기록한다. 사용자가 기존 두 카드 안에 남녀의 최근 결과와 다음 경기를 함께 넣는 제안에 진행을 요청하고 모바일 가독성을 강조했다. 기존 홈의 두 흰색 카드를 최근 결과/다음 경기로 유지하고 각 카드에 남자부·여자부 한 경기씩 표시한다. 여자 라벨은 공통 Rose, 스코어는 중립색이며 모바일 팀명14px·스코어28px와 세로 흐름을 적용한다. 기존 남자 3개 feed에 대응 여자 3개만 연결하고 명시적 결과 검수 조건·원본 점수/ID/MASTER·홈 검색/메뉴·Hero를 보존한다. 기록 조회 실패와 일정 없음은 구분하며 각 경기에서 실제 대회/날짜 경로로 이동한다. Initial base `3dd01417357aec3830a206ebfffbe138e7d16b34`; release base `2145e2069b2904ccd554c1056325d4063d7e9d6c`의 PR #238 요약 카드 개선까지 보존한다. [출처·검수·범위·복구](validation/home-gender-matches-20261102.md).
