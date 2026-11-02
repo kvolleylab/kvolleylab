@@ -1,21 +1,55 @@
 {
   "schema_version": 1,
-  "verified_at": "2026-11-02T20:30:50+09:00",
-  "status": "EDITOR_SHARING_VERIFIED_RUNTIME_READ_PENDING",
+  "verified_at": "2026-11-02T21:26:17+09:00",
+  "status": "EDITOR_SHARING_AND_RUNTIME_READ_VERIFIED",
   "target_id": "vleague-men-2026-27-player-master",
   "spreadsheet_id": "1WD2odv51xNDx9BqRfAjkkLVu0p_DX2EX_GEbqR-G4og",
   "native_drive_permission": {
     "role": "writer",
-    "verified": true
+    "verified": true,
+    "verified_at": "2026-11-02T20:30:50+09:00"
   },
   "native_header_check": {
     "current_roster_columns": 13,
     "application_journal_columns": 22,
-    "headers_match": true
+    "headers_match": true,
+    "verified_at": "2026-11-02T20:30:50+09:00"
   },
   "runtime_read": {
-    "status": "NOT_VERIFIED",
-    "run_url": null
+    "status": "READ_ACCESS_VERIFIED",
+    "run_url": "https://github.com/kvolleylab/kvolleylab/actions/runs/41444659754",
+    "run_id": 41444659754,
+    "run_number": 26,
+    "run_attempt": 1,
+    "job_id": 125274678025,
+    "commit_sha": "e97256be78f77de3e3e60e671d3caaa601825ea2",
+    "completed_at": "2026-11-02T21:26:17+09:00",
+    "scope": "Workbook metadata and exactly two header rows; no player rows or write requests.",
+    "ranges": [
+      "'현재등록_공시기반'!A3:M3",
+      "'KVL_자동반영이력'!A1:V1"
+    ],
+    "report": {
+      "schema_version": 1,
+      "status": "READ_ACCESS_VERIFIED",
+      "ready": true,
+      "reason": "read_only_headers_verified",
+      "checked_at": "2026-11-02T12:26:13.862776+00:00",
+      "target_id": "vleague-men-2026-27-player-master",
+      "read_access_verified": true,
+      "metadata_valid": true,
+      "headers_valid": true,
+      "authentication_attempted": true,
+      "no_data_written": true,
+      "write_access_tested": false
+    },
+    "artifact": {
+      "id": 13142175720,
+      "name": "player-master-access-41444659754",
+      "sha256": "34c6b464f8dbaea44088d6255adc49d42354af142f246aa76184585fff9a3c0e",
+      "report_sha256": "ec9364812157cbe7430fdc90976fcb8b9fa13b28671f61573fe8e3de847ebe18",
+      "expires_at": "2026-11-09T12:26:14Z"
+    }
   },
   "runtime_write": {
     "status": "NOT_TESTED",
@@ -23,7 +57,7 @@
   },
   "pilot_enabled": false,
   "effective_date_verified": false,
-  "scope": "Sharing metadata and native connector header verification only. This is not a GitHub runtime read or write receipt.",
+  "scope": "Native editor sharing and GitHub service-account metadata/header reads are verified. Actual player-row reads, writes, event approval and automatic publication are not verified by this diagnostic.",
   "service_account_setting": "KVL_GOOGLE_SERVICE_ACCOUNT",
   "expected_service_account_verified": true
 }

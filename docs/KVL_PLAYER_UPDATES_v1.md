@@ -12,7 +12,7 @@
 | 검토 기록 | 정확한 후보 ID·원문 버전·추출 버전에 승인 연결 | 수정 원문이 나오면 기존 승인 재사용 불가 |
 | 검토 완료 내보내기 | `reviewed_events.json` 생성 | MASTER에 적용할 수 있는 검토 완료 이벤트 목록 |
 | 기사 발견 | 매일경제·뉴시스 공식 스포츠 RSS에서 배구 관련 제목 검색 | 제목·원문 링크·매체·피드 제공 시각만 수집 |
-| 선수 MASTER 연결 1차 | 기존 남녀 MASTER 재조회, 남자부 전용 적용 이력 탭, 1건 한정 writer·재조회·현재 시즌 export 구현 | **IMPLEMENTED_NOT_ACTIVATED** — 효력일과 실행계정 접근권한 미확인으로 실제 선수값 쓰기 차단 |
+| 선수 MASTER 연결 1차 | 기존 남녀 MASTER 재조회, 남자부 전용 적용 이력 탭, 1건 한정 writer·재조회·현재 시즌 export 구현 | **IMPLEMENTED_NOT_ACTIVATED** — 남자 MASTER metadata·헤더 접근 확인; 공식 효력일·단일 사건 검토와 실제 쓰기 검증 전까지 선수값 자동 쓰기 차단 |
 | Google MASTER / 홈페이지 | 연결된 Drive에서 현재값 대조 완료, GitHub 자동 쓰기는 **NOT_CONNECTED** | 오재성의 기존 ID·등번호 5·원문 연결 일치. 번호를 다시 바꾸거나 적용 사건을 생성하지 않음 |
 
 실제 MASTER의 대상 표와 헤더는 확인했다. 기존 선수 ID·현재 등록 판단·변동 이력의 원문 revision·실행 시점 읽기 검증 연결이 완료되기 전에는 `reviewed_events.json`을 “반영 완료”로 표시하지 않는다. 기존 경기 일정/결과 자동 업데이트와 선수 명단 반영은 서로 다른 권한·검토 단계다.
@@ -135,7 +135,7 @@ python scripts/kvl_player_master_plan.py --snapshots /tmp/roster-readback.json -
 
 오프라인 회귀 검증은 등록 해지 분류, 동명이인/다중 선수 차단, 원문 정정 시 승인 무효화, 게시일/적용일 구분, 부분 조회 시 과거 데이터 유지, 미등록 Player_ID 거부, RSS/Atom 메타데이터 범위, 반복 실행 중복 방지, 개별 피드 장애 보존을 포함한다.
 
-선택한 기존 Player_ID의 현재값은 대조했고, 별도 적용 저널과 쓰기·재조회·공개 명단 생성 경로를 구현했다. 남은 활성화 조건은 **명시된 효력일의 공식 근거 → 실행계정의 대상 MASTER 접근 → 승인된 단일 사건의 실제 실행·읽기 검증·게시 검증**이다. 이 실제 운영 성공을 확인하기 전에는 선수 명단까지 완전 자동 갱신 중이라고 표시하지 않는다. 후보 수집·검토 완료 내보내기·로컬 변경 계획·운영 반영 상태를 각각 구분해 보고한다.
+선택한 기존 Player_ID의 현재값은 대조했고, 별도 적용 저널과 쓰기·재조회·공개 명단 생성 경로를 구현했다. 2026-11-02 수동 실행에서 기존 실행계정의 남자 MASTER metadata·헤더 접근을 확인했다. 남은 활성화 조건은 **명시된 효력일의 공식 근거 → 승인된 단일 사건과 최신 선수 행·수식·보호 상태 대조 → 실제 실행·쓰기 후 재조회·게시 검증**이다. 이 실제 운영 성공을 확인하기 전에는 선수 명단까지 완전 자동 갱신 중이라고 표시하지 않는다. 후보 수집·검토 완료 내보내기·로컬 변경 계획·운영 반영 상태를 각각 구분해 보고한다.
 
 ## 8. 선수 MASTER 연결 1차 — 2026-11-02
 
@@ -156,9 +156,9 @@ python scripts/kvl_player_master_plan.py --snapshots /tmp/roster-readback.json -
 
 ### 활성화 상태와 남은 설정
 
-`data/player-updates/pilot.json`은 `enabled: false`, `event_scope: null`이다. 공식 효력일과 실행계정 접근권한이 해결되기 전에는 이 값을 켜지 않는다. 번호/포지션 후보 12건의 원문 5개에는 명시적 효력일이 없었으며, 날짜가 있는 군복무 만료 등록 공시를 이번 제한 범위에 대신 적용하지 않는다.
+`data/player-updates/pilot.json`은 `enabled: false`, `event_scope: null`, `status: BLOCKED_EFFECTIVE_DATE`다. 실행계정의 남자 MASTER metadata·헤더 읽기는 확인했지만 공식 효력일 근거와 승인된 단일 사건이 준비되기 전에는 자동 쓰기를 켜지 않는다. 번호/포지션 후보 12건의 원문 5개에는 명시적 효력일이 없었으며, 날짜가 있는 군복무 만료 등록 공시를 이번 제한 범위에 대신 적용하지 않는다.
 
-GitHub 실행계정은 기존 `kvl-v-league-updater@kvl-automation.iam.gserviceaccount.com`을 그대로 사용한다. 사용자가 공유를 완료한 뒤 2026-11-02 20:30 KST native Drive 권한 재조회에서 남자 선수 MASTER의 `writer` 권한을 확인했다. 현재등록표13열·전용 이력표22열 헤더도 설정과 일치한다. 이 관측은 `access_verification.json`에 별도 기록하며 앞선 공유 전 `pilot_verification.json`은 당시 기록으로 보존한다. 실제 서비스계정 읽기는 아래 수동 진단 결과로 추가 확인한다. WIF 신뢰범위·키 파일·프로젝트 IAM 권한은 기존 범위를 사용한다.
+GitHub 실행계정은 기존 `kvl-v-league-updater@kvl-automation.iam.gserviceaccount.com`을 그대로 사용한다. 사용자가 공유를 완료한 뒤 2026-11-02 20:30 KST native Drive 권한 재조회에서 남자 선수 MASTER의 `writer` 권한을 확인했다. 현재등록표13열·전용 이력표22열 헤더도 설정과 일치한다. 이어 21:26 KST 사용자가 실행한 [Actions #26](https://github.com/kvolleylab/kvolleylab/actions/runs/41444659754)에서 실제 서비스계정 인증과 두 헤더 행 읽기가 성공했다. 로그와 다운로드한 정제 보고서의 내용·해시를 대조해 `access_verification.json`에 기록했다. 앞선 공유 전 `pilot_verification.json`과 native 관측 시각은 당시 기록으로 보존한다. WIF 신뢰범위·키 파일·프로젝트 IAM 권한은 기존 범위를 사용한다.
 
 런타임은 기존 신뢰 workflow의 별도 선수 job에서 09:17 KST 일일 실행 또는 명시적 수동 실행으로 제한한다. 활성화 검사에 실패하면 Google 인증 전에 건너뛴다. 실제 예약 성공은 해당 run 영수증으로 별도 기록한다. 현재 구현·단위검사·수동 Drive 관측을 예약 자동 쓰기 성공으로 표시하지 않는다.
 
@@ -169,3 +169,5 @@ GitHub 실행계정은 기존 `kvl-v-league-updater@kvl-automation.iam.gservicea
 `V-League Auto Update v1`을 `main`에서 수동 실행할 때 `player_master_access_check`만 선택한다. `publish`는 선택 해제한다. 진단 입력이 true이면 실수로 publish도 선택해도 기존 경기·선수 쓰기와 알림 작업은 모두 제외된다. 기존 서비스 계정과 WIF로 `spreadsheets.readonly` 범위의 토큰을 발급받아 고정된 남자 MASTER의 metadata, `현재등록_공시기반!A3:M3`, `KVL_자동반영이력!A1:V1`만 GET한다.
 
 진단은 선수값·이력·GitHub 데이터·Pages를 변경하지 않고, 정제한 결과만 Actions 요약과 `player-master-access-<run_id>` artifact에 남긴다. 원격 전체 행·인증정보·비공개 메모는 출력하지 않는다. 읽기 성공과 실제 쓰기 성공·공식 효력일 승인은 별개다. `pilot.enabled=false`를 유지한 상태에서만 이 준비 진단을 허용한다. [공유 확인 및 실행 절차](validation/player-master-access-20261102.md).
+
+2026-11-02 실제 진단은 `READ_ACCESS_VERIFIED`, `metadata_valid=true`, `headers_valid=true`, `no_data_written=true`, `write_access_tested=false`로 완료됐다. 다른 다섯 job은 모두 건너뛰었다. 이 결과는 남자 MASTER 한 개의 metadata와 헤더35셀에 한정되며 선수 행·여자 MASTER·실제 쓰기·자동 게시 검증을 뜻하지 않는다. 일반 선수 반영 경로의 `runtime_connector: NOT_CONNECTED`, `writeback: IMPLEMENTED_NOT_ACTIVATED`, `readback_activation: NOT_CONNECTED`는 유지한다.
