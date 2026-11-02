@@ -28,5 +28,6 @@ Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED. 운영 수정 �
 - 실제 브라우저: 고성 남 390px 달력345/345·본문375/375, 고성 여 360px 달력315/315·본문345/345. 메뉴의 남녀 전환으로 이동했다. 고성 7/2 2경기 팝업과 세트 점수 확인.
 - 실제 브라우저: 단양 남 PC 본문1180px·달력737/737·페이지1425/1425. 8/20 결승 인하대3:1성균관대와 전체 세트 점수 확인. 단양 여자부로 실제 전환하여 모바일360px 달력315/315·본문345/345 및 결승 5세트 점수도 확인했다.
 - `git diff --check` PASS, data/config 변경 없음. 로컬 HTTP 미리보기에서만 production 검증을 끈 별도 복사본을 사용하며, repo의 운영 플래그는 바꾸지 않았다. 자동검사는 HTTPS 실제 경로 및 production 검증을 사용한다.
+- 배포 Quality Audit에서 `ubuntu-latest`가 Ubuntu 26.04로 이동하여 고정된 Playwright 1.56.1의 Chromium 설치가 실패했다(`Playwright does not support chromium on ubuntu26.04-x64`). audit 작업만 지원되는 Ubuntu 24.04로 고정했다. 감사 항목·의존성 버전·권한·승인 조건은 유지한다.
 
 배포 후 대학대회 목록의 실제 링크, 남녀 전환, 전용 경로의 달력/팝업을 재확인해야 DEPLOYED로 기록한다. 복구는 이 PR의 연결 보완만 되돌리고 PR #230 공통 표시 규칙이나 병행 데이터 갱신을 되돌리지 않는다.
