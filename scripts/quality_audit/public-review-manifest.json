@@ -290,10 +290,10 @@
         "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER",
         "KVL-VLEAGUE-2026-27-W-PLAYER-MASTER"
       ],
-      "verified_at": "2026-11-02T20:30:50+09:00",
-      "sha256": "132e0ddca7b764a8aa500ed39bec1a59bd21fbd94b26d842ae9a9cabd1e5ca4c",
+      "verified_at": "2026-11-02T21:26:17+09:00",
+      "sha256": "0e429f3a7c2defe11f31018f21736e43c3d9a6a90d92eb7907b63400c4dc85fe",
       "evidence": "docs/validation/player-master-access-20261102.md",
-      "review_note": "사용자가 공유한 기존 남자 MASTER의 native Drive writer 권한과 헤더를 재조회했다. 공개 가능한 계정·대상 식별자와 관측 상태만 포함한다. 실제 서비스계정 runtime 읽기/쓰기와 효력일은 미확인 상태이며 enabled=false와 사건 승인0을 유지한다. 원격 선수 행·비공개 메모·인증정보는 포함하지 않는다."
+      "review_note": "실제 Actions41444659754의 인증·GET 로그와 다운로드한 정제 보고서·해시를 대조했다. 남자 MASTER metadata·헤더35셀 읽기만 검증했고 선수 행·여자 MASTER·쓰기·쓰기 후 재조회·자동 게시를 성공 처리하지 않는다. native 공유 관측 시각을 보존하며 enabled=false·event_scope=null·공식 효력일 미확정·승인0건을 유지한다. 인증정보·만료 다운로드 URL·비공개 메모는 포함하지 않는다."
     },
     "data/player-updates/reviewed_mappings.json": {
       "access_level": "PUBLIC",
@@ -326,10 +326,10 @@
         "KVL-SRC-KOVO-NOTICE-157018",
         "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER"
       ],
-      "verified_at": "2026-11-02T20:30:50+09:00",
-      "sha256": "858d7190a7f3402d65a0e44199b50a5a5760325888370840529149c1e4b34929",
+      "verified_at": "2026-11-02T21:26:17+09:00",
+      "sha256": "1c5216a1e7d535c6b9550e0a8f3c642d4026e40a2e5cafa5c4a233d306a0465d",
       "evidence": "docs/validation/player-master-access-20261102.md",
-      "review_note": "사용자가 공유한 기존 남자 MASTER의 native Drive writer 권한과 헤더를 재조회했다. 공개 가능한 계정·대상 식별자와 관측 상태만 포함한다. 실제 서비스계정 runtime 읽기/쓰기와 효력일은 미확인 상태이며 enabled=false와 사건 승인0을 유지한다. 원격 선수 행·비공개 메모·인증정보는 포함하지 않는다."
+      "review_note": "실제 Actions41444659754의 인증·GET 로그와 다운로드한 정제 보고서·해시를 대조했다. 남자 MASTER metadata·헤더35셀 읽기만 검증했고 선수 행·여자 MASTER·쓰기·쓰기 후 재조회·자동 게시를 성공 처리하지 않는다. native 공유 관측 시각을 보존하며 enabled=false·event_scope=null·공식 효력일 미확정·승인0건을 유지한다. 인증정보·만료 다운로드 URL·비공개 메모는 포함하지 않는다."
     },
     "data/player-updates/pilot_verification.json": {
       "access_level": "PUBLIC",
@@ -349,10 +349,10 @@
       "source_ids": [
         "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER"
       ],
-      "verified_at": "2026-11-02T20:30:50+09:00",
-      "sha256": "b41bfd8cb96c266d1b5d2557155afa51fdcafa7cb40670acbefcb3874ba7c98d",
+      "verified_at": "2026-11-02T21:26:17+09:00",
+      "sha256": "13b15c59c4ca23eb2b7c265f4a195a2912a5b8e10c86d264857e6f8849715922",
       "evidence": "docs/validation/player-master-access-20261102.md",
-      "review_note": "사용자가 공유한 기존 남자 MASTER의 native Drive writer 권한과 헤더를 재조회했다. 공개 가능한 계정·대상 식별자와 관측 상태만 포함한다. 실제 서비스계정 runtime 읽기/쓰기와 효력일은 미확인 상태이며 enabled=false와 사건 승인0을 유지한다. 원격 선수 행·비공개 메모·인증정보는 포함하지 않는다."
+      "review_note": "실제 Actions41444659754의 인증·GET 로그와 다운로드한 정제 보고서·해시를 대조했다. 남자 MASTER metadata·헤더35셀 읽기만 검증했고 선수 행·여자 MASTER·쓰기·쓰기 후 재조회·자동 게시를 성공 처리하지 않는다. native 공유 관측 시각을 보존하며 enabled=false·event_scope=null·공식 효력일 미확정·승인0건을 유지한다. 인증정보·만료 다운로드 URL·비공개 메모는 포함하지 않는다."
     }
   }
 }

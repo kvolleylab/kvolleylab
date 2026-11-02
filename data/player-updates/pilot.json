@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "enabled": false,
-  "status": "BLOCKED_EFFECTIVE_DATE_AND_RUNTIME_ACCESS",
+  "status": "BLOCKED_EFFECTIVE_DATE",
   "scope": {
     "candidate_id": "KVL-PC-1edba5fa875766ef2a4da329",
     "player_id": "KVL-P-001585",
@@ -10,8 +10,7 @@
   },
   "event_scope": null,
   "blockers": [
-    "The official notice gives a publication date but no explicit effective date.",
-    "Editor sharing was verified on 2026-11-02; actual service-account runtime read access has not yet been verified."
+    "The official notice gives a publication date but no explicit effective date."
   ],
   "verification_record": "data/player-updates/pilot_verification.json",
   "access_verification_record": "data/player-updates/access_verification.json"

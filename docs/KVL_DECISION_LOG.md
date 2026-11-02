@@ -457,3 +457,9 @@ Base main `0f02f6b35d939c7a7e63d8ea375031a11baf091a`이며 PR #236의 헤더·HE
 ## 2026-11-02 · 홈 경기 일정·결과 남녀 동시 표시
 
 Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 병합·Pages·운영 증거는 release PR에 기록한다. 사용자가 기존 두 카드 안에 남녀의 최근 결과와 다음 경기를 함께 넣는 제안에 진행을 요청하고 모바일 가독성을 강조했다. 기존 홈의 두 흰색 카드를 최근 결과/다음 경기로 유지하고 각 카드에 남자부·여자부 한 경기씩 표시한다. 여자 라벨은 공통 Rose, 스코어는 중립색이며 모바일 팀명14px·스코어28px와 세로 흐름을 적용한다. 기존 남자 3개 feed에 대응 여자 3개만 연결하고 명시적 결과 검수 조건·원본 점수/ID/MASTER·홈 검색/메뉴·Hero를 보존한다. 기록 조회 실패와 일정 없음은 구분하며 각 경기에서 실제 대회/날짜 경로로 이동한다. Initial base `3dd01417357aec3830a206ebfffbe138e7d16b34`; release base `2145e2069b2904ccd554c1056325d4063d7e9d6c`의 PR #238 요약 카드 개선까지 보존한다. [출처·검수·범위·복구](validation/home-gender-matches-20261102.md).
+
+## 2026-11-02 · 선수 MASTER 실제 읽기 진단 성공
+
+Status: EDITOR SHARING VERIFIED / RUNTIME METADATA AND HEADERS VERIFIED / AUTOMATIC WRITE DISABLED. 사용자가 요청된 진단을 실행했고 [Actions #26](https://github.com/kvolleylab/kvolleylab/actions/runs/41444659754)이 21:26:17 KST 성공했다. 실행 SHA는 `e97256be78f77de3e3e60e671d3caaa601825ea2`, attempt1이다. 실제 인증·GET 로그와 다운로드한 report의 내용·해시를 확인했다. `READ_ACCESS_VERIFIED`, metadata/header 일치, no_data_written=true, write_access_tested=false이며 기존 다섯 job은 모두 건너뛰었다. 남자 MASTER metadata와 헤더35셀 접근에 한정한다.
+
+앞선 runtime 읽기 미확인 상태를 이 실행 증거로 대체한다. pilot은 `enabled=false`, `event_scope=null`, `BLOCKED_EFFECTIVE_DATE`로 유지하고 해결된 접근 차단 사유만 제거한다. 공식 효력일·사건 승인·선수 행·여자 MASTER·실제 쓰기·쓰기 후 재조회·자동 게시 완료로 확대하지 않는다. 기존 native 관측 시각과 과거 연결 기록을 보존한다. 기준 main은 실행 SHA와 같으며 PR #238/#239의 표시 작업을 보존한다. [실행 증거·범위·해시·남은 조건](validation/player-master-access-20261102.md).
