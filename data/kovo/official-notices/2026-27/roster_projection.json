@@ -3713,6 +3713,22 @@
       "total_krw": 90000000
     },
     {
+      "contract_source": "https://kovo.co.kr/news/official-notices/158491",
+      "gender": "여",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/158491",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-02",
+      "name": "정가영",
+      "number": "19",
+      "option_krw": 0,
+      "position": "아웃사이드히터",
+      "registration_source": "https://kovo.co.kr/news/official-notices/158491",
+      "salary_date": "2026-11-02",
+      "salary_krw": 45000000,
+      "team": "현대건설",
+      "total_krw": 45000000
+    },
+    {
       "contract_source": "https://kovo.co.kr/news/official-notices/155572",
       "gender": "여",
       "last_change_source": "https://kovo.co.kr/news/official-notices/155572",
@@ -3743,6 +3759,22 @@
       "salary_krw": null,
       "team": "현대건설",
       "total_krw": null
+    },
+    {
+      "contract_source": "https://kovo.co.kr/news/official-notices/158492",
+      "gender": "여",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/158492",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-02",
+      "name": "김윤우",
+      "number": "23",
+      "option_krw": 20000000,
+      "position": "세터",
+      "registration_source": "https://kovo.co.kr/news/official-notices/158492",
+      "salary_date": "2026-11-02",
+      "salary_krw": 30000000,
+      "team": "현대건설",
+      "total_krw": 50000000
     },
     {
       "contract_source": "https://kovo.co.kr/news/official-notices/155572",
@@ -4176,9 +4208,11 @@
       "158326-01",
       "158327-01",
       "158327-02",
-      "158328-01"
+      "158328-01",
+      "158491-01",
+      "158492-01"
     ],
-    "applied_events": 62,
+    "applied_events": 64,
     "blocked_events": [
       {
         "event_id": "157686-01",
@@ -4349,7 +4383,7 @@
       {
         "gender": "여",
         "team": "현대건설",
-        "total": 18
+        "total": 20
       },
       {
         "gender": "여",
@@ -4357,7 +4391,7 @@
         "total": 20
       }
     ],
-    "total": 257,
+    "total": 259,
     "warnings": [
       {
         "name": "이다현",

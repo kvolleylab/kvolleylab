@@ -1,5 +1,36 @@
 {
-  "candidates": [],
+  "candidates": [
+    {
+      "candidate_id": "KVL-NEWS-3794f9be7b4f3264ec69418d",
+      "feed_url": "https://www.newsis.com/RSS/sports.xml",
+      "first_seen_at": "2026-11-02T09:48:02.566191+00:00",
+      "may_update_player_master": false,
+      "published_at": "2026-11-02T13:21:35+09:00",
+      "published_at_raw": "Mon, 02 Nov 2026 13:21:35 +0900",
+      "publisher": "뉴시스",
+      "revision_id": "6902f9c49c565604b1b1487f5029d68fa9e3abf6abce97d94d8306c10b66e22d",
+      "source_id": "KVL-SRC-RSS-NEWSIS-SPORTS",
+      "source_type": "publisher_rss",
+      "status": "unverified_report",
+      "title": "경기도, 프로 경기장 다회용기 공급 확대…\"농구·배구 15만개\"",
+      "url": "https://www.newsis.com/view/NISX20261102_0003850936"
+    },
+    {
+      "candidate_id": "KVL-NEWS-4bf380de05b19ce30f550342",
+      "feed_url": "https://www.newsis.com/RSS/sports.xml",
+      "first_seen_at": "2026-11-02T09:48:02.566191+00:00",
+      "may_update_player_master": false,
+      "published_at": "2026-11-02T16:09:50+09:00",
+      "published_at_raw": "Mon, 02 Nov 2026 16:09:50 +0900",
+      "publisher": "뉴시스",
+      "revision_id": "91e7ba99588d1ca5ab6408e959788eb45826a8dc3b82f00d101573b1b9fec7b5",
+      "source_id": "KVL-SRC-RSS-NEWSIS-SPORTS",
+      "source_type": "publisher_rss",
+      "status": "unverified_report",
+      "title": "케트진스키·왕빈·킨델라 등 프로배구 '새 얼굴' 데뷔전 눈도장",
+      "url": "https://www.newsis.com/view/NISX20261102_0003851298"
+    }
+  ],
   "schema_version": 1,
   "scope": "Title/link/date metadata only; title filter has incomplete coverage; no official player facts."
 }
