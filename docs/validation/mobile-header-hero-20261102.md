@@ -38,6 +38,7 @@ Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED (아래 확인 범위) / RELE
 | 대회 HERO 표시 | `assets/css/kvl-domestic-home-v2.css`, `assets/css/kvl-competition-components-v2.css` |
 | 주요 진입 경로의 캐시 버전 | `index.html`, `competition-engine.html`, `university-competition.html`, `university-competition-danyang.html`, `national-sports-festival-2026.html`, `national-youth-sports-festival-2026.html` |
 | 새 대회 기본 연결 | `templates/competition-page-production-v2.html` |
+| 기존 HERO 표시 계약 검사 | `tests/kovo-cup-production-template-20261027.test.cjs` |
 | 기록 | 본 문서, `docs/KVL_DECISION_LOG.md` |
 
 정확한 최종 변경 목록은 release PR의 파일 목록으로 확인한다. 미리보기 서버·검수 보조 파일은 배포 대상이 아니다.
@@ -53,6 +54,7 @@ Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED (아래 확인 범위) / RELE
 | 변경 JS 문법 | PASS | 공통 사이드바와 `unified-nav.js`의 `node --check` 통과 |
 | 헤더 소스 독립 검토 | PASS | 별도 홈 링크와 메뉴 버튼, 루트 절대경로, 중복 헤더 억제, 메뉴 아래 쌓임 순서, PC/인쇄 숨김 확인 |
 | HERO 변경 독립 검토 | PASS | 기준 main과 두 CSS의 diff 대조. 변경이 HERO 이미지 크기·초점 위치 및 관련 주석에 한정됨을 확인 |
+| 기존 HERO 테스트 기준 갱신 | PASS — local assertion | PR #234 첫 focused-regressions 실행은 종전 `Hero must never crop` assertion 때문에 실패했다. 최신 요청에 맞춰 PRO PC·모바일 두 규칙의 `cover`를 검사하도록 갱신하고, 변경 CSS는 통과하며 기준 main의 `contain` CSS는 거부됨을 확인했다. 나머지 대회 데이터·결과 검사는 유지하며 전체 CI 재실행 결과는 PR에 기록한다. |
 | 모바일 헤더 크기·색상 | PASS — preview | 실제 브라우저 계산값 58px, `rgb(7, 24, 45)` 확인 |
 | 홈 중복 표시 | PASS — preview | 공통 헤더가 표시되고 기존 `.home-utility`는 `display:none` |
 | V-리그 남자 390px·여자 360px | PASS — preview | 배경 `100% 100%, cover`, 가로 넘침 없음 |
