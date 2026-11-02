@@ -23,6 +23,67 @@ const teamHref=t=>current.structure?.participants?.linkMode==='team-roster'?href
 const teamTile=(t,subtitle)=>`<a class="dv2-team-tile" href="${esc(teamHref(t))}">${teamLogo(t)}<b>${esc(t.name)}</b><small>${esc(subtitle??((regional()?'':t.region)||(current.structure?.participants?.mode==='groups'&&t.group?String(t.group).replace(/조$/,'')+'조':label(current))))}</small></a>`;
 function heading(title,view,action='전체보기'){return `<div class="dv2-heading"><h2>${esc(title)}</h2>${view?`<a href="${esc(href(view))}">${esc(action)} ›</a>`:''}</div>`;}
 function metric(title,value,unit,view,key){return `<a class="dv2-metric" href="${esc(href(view))}"><span class="dv2-metric-icon">${metricIcon(key||view)}</span><span><small>${esc(title)}</small><strong>${esc(value)}<em>${esc(unit)}</em></strong></span><b class="dv2-arrow" aria-hidden="true">›</b></a>`;}
+// Summarize the same verified rows as the standings page; never calculate a new rank.
+function selectOverviewStanding(d,now=Date.now()){
+ const university=d?.competitionFamily==='domestic'&&/^KVL-COMP-UNIV-/.test(d.competitionId||'');
+ const league=d?.competitionFamily==='pro'&&d.structure?.presentationCategory==='pro-league'&&/^KVL-COMP-VLEAGUE-/.test(d.competitionId||'');
+ if(!university&&!league)return null;
+ const grouped=university&&d.structure?.standings?.mode!=='single-league',pools=d.standings?.pools||[];
+ const title=league?'정규리그 순위':grouped?'예선 조별 현황':'예선 순위',cta=league?'전체 순위 보기':grouped?'조편성·순위 보기':'예선 순위 보기';
+ const model=(state,rows,detail='')=>({state,title,cta,rows,detail});
+ const pending=()=>model('pending',[{prefix:'',teamName:'순위 확인 중',teamCode:null}]);
+ if(!Number.isFinite(now))return pending();
+ const participants=d.participants||[],byCode=new Map(participants.map(t=>[t.code,t]));
+ const groups=grouped?pools.map(p=>({id:p.id,rows:p.rows||[],matchCount:p.matchCount})):[{id:'',rows:d.standings?.rows||[]}];
+ const poolName=id=>String(id).replace(/조$/,'')+'조';
+ const rowCode=r=>r.team?.code||r.teamCode;
+ const records=(d.matches||[]).filter(m=>league?/^[1-6]라운드$/.test(m.stage||''):m.stage==='예선');
+ const today=new Date(now+9*3600000).toISOString().slice(0,10);
+ const excluded=new Set(['cancelled','canceled','postponed','abandoned','취소','연기','미실시']);
+ const unfinished=new Set(['scheduled','upcoming','live','in_progress','in-progress','suspended','예정','진행중','경기중','중단']);
+ const status=m=>String(m.status||'').toLowerCase();
+ const final=m=>{const s=m.score;return s&&Number.isInteger(s.home)&&Number.isInteger(s.away)&&Math.max(s.home,s.away)===3&&Math.min(s.home,s.away)>=0&&Math.min(s.home,s.away)<3&&m.scoreVerification!==false&&!unfinished.has(status(m))&&!excluded.has(status(m))&&!isNotRequired(m);};
+ const active=records.filter(m=>!isNotRequired(m)&&!excluded.has(status(m)));
+ const beforeStart=d.status==='upcoming'||(active.length>0&&active.every(m=>{const c=matchClock(m);return c&&!m.score&&!['live','in_progress','in-progress','진행중','경기중'].includes(status(m))&&(c.at===null?m.date>today:c.at>now);}));
+ if(beforeStart){
+  const rows=grouped&&groups.length?groups.map(g=>({prefix:poolName(g.id),teamName:g.rows.length?g.rows.length+'팀':'조편성 확인 중',teamCode:null})):[{prefix:'',teamName:league?'개막 전':'예선 시작 전',teamCode:null}];
+  return model('upcoming',rows,grouped?'예선 시작 전':'');
+ }
+ if(!groups.length||!active.length||!participants.length||byCode.size!==participants.length)return pending();
+ const allRows=groups.flatMap(g=>g.rows),codes=allRows.map(rowCode);
+ if(codes.length!==participants.length||new Set(codes).size!==participants.length||codes.some(code=>!byCode.has(code)))return pending();
+ if(grouped&&(new Set(groups.map(g=>g.id)).size!==groups.length||groups.some(g=>!g.id)||records.some(m=>!groups.some(g=>g.id===m.pool))))return pending();
+ const ids=records.map(m=>m.id);
+ if(ids.some(id=>typeof id!=='string'||!id)||new Set(ids).size!==ids.length)return pending();
+ if(active.some(m=>{const c=matchClock(m);return !c||!byCode.has(m.home?.code)||!byCode.has(m.away?.code)||m.home.code===m.away.code||(m.score&&!final(m))||(!final(m)&&(m.date<today||['completed','finished','final','종료'].includes(status(m))))||(final(m)&&(c.at===null?m.date>today:c.at>now));}))return pending();
+ const complete=active.filter(final);
+ if(!complete.length)return pending();
+ if(league&&(!d.automation||d.automation.source!=='KOVO_PUBLIC_STAT_API'||!d.automation.standingsSource||d.automation.completedMatches!==complete.length))return pending();
+ const leaders=[];
+ for(const g of groups){
+  const members=new Set(g.rows.map(rowCode)),matches=grouped?records.filter(m=>m.pool===g.id):records;
+  if(!matches.length||(g.matchCount!=null&&g.matchCount!==matches.length)||matches.some(m=>!members.has(m.home?.code)||!members.has(m.away?.code)))return pending();
+  const played=new Map([...members].map(code=>[code,0]));
+  for(const m of matches.filter(final)){played.set(m.home.code,played.get(m.home.code)+1);played.set(m.away.code,played.get(m.away.code)+1);}
+  if(g.rows.some(r=>{const games=r.games??(r.wins+r.losses);return !Number.isInteger(r.wins)||r.wins<0||!Number.isInteger(r.losses)||r.losses<0||!Number.isInteger(games)||games!==r.wins+r.losses||games!==played.get(rowCode(r));}))return pending();
+  const first=g.rows.filter(r=>r.rank===1);
+  if(first.length!==1||!played.get(rowCode(first[0])))return pending();
+  leaders.push({group:g.id,row:first[0],team:byCode.get(rowCode(first[0]))});
+ }
+ const required=records.filter(m=>!isNotRequired(m)&&!['cancelled','canceled','abandoned','취소','미실시'].includes(status(m)));
+ const allComplete=required.length>0&&required.every(final);
+ if(league&&d.regularSeasonComplete===true&&!allComplete)return pending();
+ const finished=league?d.regularSeasonComplete===true:allComplete;
+ const rows=leaders.map(l=>({prefix:league?(finished?'정규리그 1위':'현재 1위'):grouped?poolName(l.group)+' 1위':finished?'예선 최종 1위':'예선 1위',teamName:l.team.name||l.team.fullName,teamCode:l.team.code}));
+ if(rows.some(r=>!r.teamName))return pending();
+ if(league&&(!Number.isFinite(leaders[0].row.points)||leaders[0].row.points<0))return pending();
+ const detail=league?`승점 ${leaders[0].row.points}점`:grouped?(finished?'예선 최종 순위':'현재 조별 순위'):(finished?'예선 종료':'현재 예선 순위');
+ return model(finished?'completed':'active',rows,detail);
+}
+function overviewStandingMetric(d){
+ const m=selectOverviewStanding(d);if(!m)return '';
+ return `<a class="dv2-metric dv2-standing-metric" data-standing-state="${esc(m.state)}" href="${esc(href('groups'))}"><span class="dv2-metric-icon">${metricIcon('groups')}</span><span class="dv2-standing-copy"><small class="dv2-standing-label">${esc(m.title)}</small><span class="dv2-standing-lines">${m.rows.map(r=>`<span class="dv2-standing-line"${r.teamCode?` data-standing-leader="${esc(r.teamCode)}"`:''}><span class="dv2-standing-prefix">${esc(r.prefix)}</span><strong class="dv2-standing-team">${esc(r.teamName)}</strong></span>`).join('')}</span>${m.detail?`<small class="dv2-standing-detail">${esc(m.detail)}</small>`:''}<small class="dv2-standing-cta">${esc(m.cta)} <span aria-hidden="true">›</span></small></span></a>`;
+}
 function ranking(d){
  const ranks=d.finalRanking||[],champ=ranks.find(r=>r.rank===1),regional=d.structure?.audience==='comprehensive';
  const counts=new Map();ranks.forEach(r=>counts.set(Number(r.rank),(counts.get(Number(r.rank))||0)+1));
@@ -194,9 +255,9 @@ function apply(d){
  const venueTitle=singleVenue?(d.venueSecondary||arenas[0]):(d.venuePrimary||d.locationLabel||'경기장');
  const venueSupplement=singleVenue?(d.venuePrimary||d.locationLabel||''):(d.venueSecondary||d.venueLabel||'');
  const metrics=d.structure.overviewMetrics||{},teamUnit=metrics.teamUnit||'팀';
- const thirdMetric=metrics.third==='qualifiers'
+ const thirdMetric=overviewStandingMetric(d)||(metrics.third==='qualifiers'
   ?metric(d.structure.labels?.knockoutKpi||'결선 진출',d.knockoutTeamCount??'미정',teamUnit,'knockout')
-  :metric(singleLeague?(d.structure.labels?.groupsTab||'리그순위'):pools?'예선 조 편성':'최종순위',singleLeague?d.participants.length:pools||d.finalRanking.length,pools?'개 조':'팀',singleLeague||pools?'groups':'knockout');
+  :metric(singleLeague?(d.structure.labels?.groupsTab||'리그순위'):pools?'예선 조 편성':'최종순위',singleLeague?d.participants.length:pools||d.finalRanking.length,pools?'개 조':'팀',singleLeague||pools?'groups':'knockout'));
  overview.innerHTML=`${heading('대회 한눈에 보기')}<p class="dv2-subtitle">${esc(division)} · ${d.status==='completed'?'대회 종료':'대회 기록'}</p><div class="dv2-metrics">${metric(label(d),d.participants.length,teamUnit,'rosters')}${metric(metrics.scheduleLabel||'등록 경기',d.matches.length,'경기','schedule')}${thirdMetric}<div class="dv2-metric dv2-venue"><span class="dv2-metric-icon">${metricIcon('venue')}</span><span><small>대회 장소</small><strong>${esc(venueTitle)}</strong><small>${esc(venueSupplement)}</small></span></div></div>`;
  if(d.recordNote)overview.insertAdjacentHTML('beforeend',`<p class="dv2-record-note">${esc(d.recordNote)}</p>`);
  const calendarSection=q('[data-kvl-section="calendar"]');calendarSection.classList.add('dv2-calendar-section');calendarSection.innerHTML=heading('대회 일정','schedule','전체 일정·결과')+'<div class="dv2-calendar" data-dv2-calendar></div>';
@@ -214,5 +275,5 @@ function apply(d){
 }
 document.addEventListener('keydown',event=>{if(enabled(current)&&event.key===' '&&event.target.matches('.dv2-metric[href]')){event.preventDefault();event.target.click();}});
 window.addEventListener('popstate',()=>{if(enabled(current)){q('.dv2-participant-search')?.remove();q('#rosters>.dv2-empty')?.remove();enhanceParticipants();enhanceTrophies();}});
-window.KVLDomesticHomeV2={apply,selectOverviewMatches,enhanceTeamCalendar,get matchesReady(){return matchesReady;}};
+window.KVLDomesticHomeV2={apply,selectOverviewMatches,selectOverviewStanding,enhanceTeamCalendar,get matchesReady(){return matchesReady;}};
 })();

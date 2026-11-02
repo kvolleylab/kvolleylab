@@ -444,3 +444,12 @@ Status: REQUESTED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 최종 
 ## 2026-11-02 · 선수 MASTER 편집자 공유 확인과 읽기 진단
 
 Status: EDITOR SHARING VERIFIED / RUNTIME READ PENDING / AUTOMATIC WRITE DISABLED. 사용자가 남자부 선수 MASTER 공유를 완료했다. 20:30 KST native Drive 권한 재조회에서 기존 실행계정의 writer 권한과 두 헤더 행의 일치를 확인했다. 앞선 공유 미설정 상태는 현재 권한 관측으로 대체하며 당시 기록은 보존한다. 실제 서비스계정 읽기를 증명하려고 기존 신뢰 V-리그 workflow에 수동 읽기 전용 진단을 추가한다. 진단 시 기존 경기·선수 쓰기 작업은 제외하고 고정된 한 문서의 metadata·헤더35셀만 Sheets readonly scope로 조회한다. 기존 WIF·키·프로젝트 IAM을 확장하지 않는다. 자동 쓰기는 disabled, 공식 효력일은 미확정이며 이번 확인으로 사건을 승인하지 않는다. Base main `0f02f6b35d939c7a7e63d8ea375031a11baf091a`; PR236 표시 변경을 보존한다. [공유 확인·수동 실행·제약](validation/player-master-access-20261102.md).
+
+
+## 2026-11-02 · 대학·V리그 한눈에 보기의 조별·정규리그 선두 카드
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 최종 회귀·감사 gate와 병합·Pages·실제 HTTPS 확인은 release PR에 기록한다. 사용자는 참가팀 수와 중복되는 순위 카드의 개선을 요청했고, 대학은 각 조 선두, V리그는 현재 1위와 승점을 보여주며 기존 조편성/순위 페이지로 연결하는 제안에 “진행해”라고 승인했다. 기존 해당 두 유형의 조 수/팀 수 요약 결정을 이 범위에서 대체한다. 참가팀·등록 경기·장소 카드와 기존 이동 구조는 유지한다.
+
+대학은 예선만 사용하고 U리그 후속6강리그·대회 우승과 구분한다. 조가 없는 여자U리그는 예선1위로 표시한다. V리그는 공식 정규리그 순위의 기존 rank1을 읽으며 승점으로 재정렬하지 않는다. 시작 전·진행 중·예선/정규리그 완료·순위 확인 중을 구분하고, 경기수/결과 불일치·복수1위·명시적 미검증 자료로 선두를 추정하지 않는다. 연기 경기는 예선 종료 판정에 미완료로 남긴다. 데이터 내용 변경 시각에 임의의TTL을 걸지 않는다.
+
+Base main `0f02f6b35d939c7a7e63d8ea375031a11baf091a`이며 PR #236의 헤더·HERO·대학 목록 버튼·모바일 달력3줄을 보존한다. 새 표시의 대상은 대학ID/family와 pro V리그이며 KOVO컵·학교·종합·VNL·AVC는 기존 카드를 유지한다. config/data/MASTER/ID/명단/원본이미지/순위산식/자동화는 변경하지 않는다. Google 운영원칙 MASTER v17과 기존 공개 데이터/검증 경로를 확인했고 외부 결과를 새로 수집하거나 MASTER를 쓴 것으로 표시하지 않는다. [표시·근거·검수·복구](validation/overview-standing-cards-20261102.md).
