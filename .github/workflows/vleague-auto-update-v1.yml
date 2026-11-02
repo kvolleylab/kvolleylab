@@ -11,6 +11,10 @@ on:
         description: '선수 MASTER 접근만 확인 (수정·게시 없음)'
         type: boolean
         default: false
+      player_current_value_check:
+        description: '오재성 현재값 확인 기록 저장·재조회 (선수값·홈페이지 변경 없음, 다른 실행 선택보다 우선)'
+        type: boolean
+        default: false
   pull_request:
     branches: [main]
     paths:
@@ -40,6 +44,7 @@ concurrency:
 jobs:
   lifecycle:
     if: >-
+      inputs.player_current_value_check != true &&
       inputs.player_master_access_check != true &&
       github.repository == 'kvolleylab/kvolleylab' &&
       (github.event_name != 'schedule' || vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true') &&
@@ -77,6 +82,7 @@ jobs:
   check:
     needs: lifecycle
     if: >-
+      inputs.player_current_value_check != true &&
       inputs.player_master_access_check != true &&
       always() && !cancelled() &&
       github.repository == 'kvolleylab/kvolleylab' &&
@@ -147,6 +153,7 @@ jobs:
   publish:
     needs: [lifecycle, check]
     if: >-
+      inputs.player_current_value_check != true &&
       inputs.player_master_access_check != true &&
       needs.lifecycle.result == 'success' && needs.lifecycle.outputs.allow_update == 'true' && needs.check.result == 'success' &&
       github.repository == 'kvolleylab/kvolleylab' && github.ref == 'refs/heads/main' &&
@@ -228,6 +235,7 @@ jobs:
     # player's monitoring window is independent of the match/season end gate.
     needs: publish
     if: >-
+      inputs.player_current_value_check != true &&
       inputs.player_master_access_check != true &&
       always() && !cancelled() &&
       github.repository == 'kvolleylab/kvolleylab' && github.ref == 'refs/heads/main' &&
@@ -329,9 +337,87 @@ jobs:
         run: |
           printf '### Player MASTER pilot\n\nReady: `%s` · Gate: `%s`\n\nOnly a verified one-event approval can activate Google authentication and publication. A blocked gate performs no player MASTER write or export. The sanitized receipts distinguish MASTER verification from Pages verification.\n' "$PLAYER_PILOT_READY" "$PLAYER_PILOT_REASON" >> "$GITHUB_STEP_SUMMARY"
 
+  player_current_value_check:
+    # Explicit one-player record mode takes priority over publish/access flags.
+    # It never starts from the existing schedules or writes player/event data.
+    if: >-
+      !cancelled() && github.repository == 'kvolleylab/kvolleylab' &&
+      github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' &&
+      inputs.player_current_value_check == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      KVL_PLAYER_CURRENT_VALUE_CHECK: 'true'
+      KVL_PLAYER_MASTER_SERVICE_ACCOUNT: ${{ vars.KVL_GOOGLE_SERVICE_ACCOUNT }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check the approved one-player current-value scope before source requests or authentication
+        id: current-gate
+        run: python -B scripts/kvl_player_current_value_pilot.py --check-ready --root . --github-output "$GITHUB_OUTPUT"
+      - name: Verify fresh official current-roster and notice evidence before Google authentication
+        if: steps.current-gate.outputs.ready == 'true'
+        run: python -B scripts/kvl_player_current_value_pilot.py --collect-evidence --root . --output "$RUNNER_TEMP/player-current-value/evidence.json"
+      - name: Verify the fresh checkout still matches main immediately before Google authentication
+        if: steps.current-gate.outputs.ready == 'true'
+        shell: bash
+        run: |
+          python -B - <<'PY'
+          import subprocess
+          try:
+              head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True,
+                                             stderr=subprocess.DEVNULL, timeout=30).strip()
+              remote = subprocess.check_output(['git', 'ls-remote', 'origin', 'refs/heads/main'], text=True,
+                                               stderr=subprocess.DEVNULL, timeout=30).split()
+          except (subprocess.SubprocessError, OSError):
+              raise SystemExit('Current-value check blocked: main could not be verified') from None
+          if len(remote) != 2 or remote[0] != head:
+              raise SystemExit('Current-value check blocked: main changed before authentication')
+          PY
+      - name: Authenticate the existing account only for the separate current-value record
+        if: steps.current-gate.outputs.ready == 'true'
+        id: current-google-auth
+        uses: google-github-actions/auth@v3
+        with:
+          workload_identity_provider: ${{ vars.KVL_GOOGLE_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.KVL_GOOGLE_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/spreadsheets
+          create_credentials_file: false
+          export_environment_variables: false
+      - name: Record only an unchanged current value and verify the separate record by reading it back
+        if: steps.current-gate.outputs.ready == 'true'
+        env:
+          KVL_GOOGLE_ACCESS_TOKEN: ${{ steps.current-google-auth.outputs.access_token }}
+        run: python -B scripts/kvl_player_current_value_pilot.py --record --root . --evidence "$RUNNER_TEMP/player-current-value/evidence.json" --output "$RUNNER_TEMP/player-current-value/report.json"
+      - name: Keep only the sanitized current-value verification report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: player-current-value-${{ github.run_id }}
+          path: ${{ runner.temp }}/player-current-value/report.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Summarize current-value verification separately from player event application
+        if: always()
+        env:
+          CURRENT_VALUE_READY: ${{ steps.current-gate.outputs.ready }}
+        run: |
+          printf '### Player current-value verification\n\nConfiguration ready: `%s`\n\nThis manual mode may store and read back one separate current-value record only when the official evidence and existing MASTER value agree. The sanitized report records the actual result. Player cells, historical events and website data are outside this mode; an unknown effective date remains unknown.\n' "$CURRENT_VALUE_READY" >> "$GITHUB_STEP_SUMMARY"
+
   player_master_access_check:
     # Manual read-only diagnostic in the existing WIF-trusted workflow.
     if: >-
+      inputs.player_current_value_check != true &&
       github.repository == 'kvolleylab/kvolleylab' &&
       github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' &&
       inputs.player_master_access_check == true
@@ -392,6 +478,7 @@ jobs:
   notify_failure:
     needs: [lifecycle, check, publish]
     if: >-
+      inputs.player_current_value_check != true &&
       inputs.player_master_access_check != true &&
       always() && github.ref == 'refs/heads/main' && github.repository == 'kvolleylab/kvolleylab' &&
       vars.KVL_VLEAGUE_UPDATE_APPROVED == 'true' &&

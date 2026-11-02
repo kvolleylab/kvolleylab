@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "status": "MANUAL_CURRENT_VALUE_VERIFICATION_ONLY",
+  "execution_mode": "manual_only",
+  "record_type": "official_current_state",
+  "approved_on": "2026-11-03",
+  "reviewer": "KVL-OP-CURRENT-REVIEW",
+  "target_id": "vleague-men-2026-27-player-master",
+  "scope": {
+    "player_id": "KVL-P-001585",
+    "season": "2026-27",
+    "gender": "남",
+    "team": "우리카드",
+    "field": "number",
+    "value": "5"
+  },
+  "expected_current_sha256": "36193372cc161608ac02826cd1f97759aac72908cc0548072aaf65b40b7c2331",
+  "notice_html_sha256": "bf8be0d5a538ef75fdada84e7befb39ce7bd8b12551ed97734d1555a97d47579",
+  "effective_date": null,
+  "effective_date_status": "unknown",
+  "maximum_observation_age_seconds": 300,
+  "player_cell_writes": false,
+  "event_journal_writes": false,
+  "automatic_schedule": false,
+  "publication": false
+}

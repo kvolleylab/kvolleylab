@@ -353,6 +353,36 @@
       "sha256": "13b15c59c4ca23eb2b7c265f4a195a2912a5b8e10c86d264857e6f8849715922",
       "evidence": "docs/validation/player-master-access-20261102.md",
       "review_note": "실제 Actions41444659754의 인증·GET 로그와 다운로드한 정제 보고서·해시를 대조했다. 남자 MASTER metadata·헤더35셀 읽기만 검증했고 선수 행·여자 MASTER·쓰기·쓰기 후 재조회·자동 게시를 성공 처리하지 않는다. native 공유 관측 시각을 보존하며 enabled=false·event_scope=null·공식 효력일 미확정·승인0건을 유지한다. 인증정보·만료 다운로드 URL·비공개 메모는 포함하지 않는다."
+    },
+    "data/player-updates/current_value_pilot.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OPERATING-MASTER-v18",
+        "KVL-SRC-KOVO-NOTICE-157018",
+        "KOVO-PLAYER-0001550",
+        "KOVO-TEAM-1009-CURRENT",
+        "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER"
+      ],
+      "verified_at": "2026-11-03T01:04:46+09:00",
+      "sha256": "8937e89ede374c7010b77e4efe0395f367fe18246058886ae863e62d27a3a5cc",
+      "evidence": "docs/validation/player-current-value-20261103.md",
+      "review_note": "사용자 승인 범위는 오재성 1명의 이미 같은 현재 등번호 확인 기록이다. 공식 현재명단·선수상세·공시·현재 시즌을 대조했고 native 실제 1행 저장·재조회와 동일 실행 재시도 추가0행을 검증했다. 효력일과 공식 명단 기준일은 null, 선수 셀 변경0이다. GitHub 설정은 수동 전용 검토본이며 실제 서비스계정 쓰기·운영 병합·게시 성공으로 표시하지 않는다. 원격 전체 행·비공개 메모·private plan hash·인증정보는 포함하지 않는다."
+    },
+    "data/player-updates/current_value_verification.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OPERATING-MASTER-v18",
+        "KVL-SRC-KOVO-NOTICE-157018",
+        "KOVO-PLAYER-0001550",
+        "KOVO-TEAM-1009-CURRENT",
+        "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER"
+      ],
+      "verified_at": "2026-11-03T01:04:46+09:00",
+      "sha256": "db00e41fa7c3212c3eb8b98f077f406cf643fe6a3f685d5b096bdc68ba74a8e9",
+      "evidence": "docs/validation/player-current-value-20261103.md",
+      "review_note": "사용자 승인 범위는 오재성 1명의 이미 같은 현재 등번호 확인 기록이다. 공식 현재명단·선수상세·공시·현재 시즌을 대조했고 native 실제 1행 저장·재조회와 동일 실행 재시도 추가0행을 검증했다. 효력일과 공식 명단 기준일은 null, 선수 셀 변경0이다. GitHub 설정은 수동 전용 검토본이며 실제 서비스계정 쓰기·운영 병합·게시 성공으로 표시하지 않는다. 원격 전체 행·비공개 메모·private plan hash·인증정보는 포함하지 않는다."
     }
   }
 }
