@@ -414,3 +414,7 @@ Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED (merge·Pages·l
 Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED; deployment evidence is recorded in the release PR. 사용자가 ‘다른 대회들의 달력’과 국내대회 기본 템플릿을 V-리그 기준으로 맞추되 1경기와 2경기 이상을 구분하도록 요청했다. 현재 달력의 하루 1경기는 실제 단계·대진/확정 점수·장소·KST, 여러 경기는 N경기 요약 후 날짜 팝업의 전체 목록으로 표시한다. 선택 팀 범위도 같은 원칙이다. 날짜 검정/휴일 빨강, 경기일만 음영, 7열 모바일 맞춤, 내부 흰 카드 제거를 공통 컴포넌트로 승격한다. 기존 V-리그 전용 약칭·도시·올스타전은 별도 설정으로 보존한다.
 
 Base main `7ce64bd0177203b1f5110cd5848a52c606f0a51d`: PR #227의 챔피언결정전 자동화·PR #229의 모바일 명단/순위를 포함한다. 공통 Engine의 47개 대회와 기존 AVC 남녀의 달력만 적용하며 전체 AVC 디자인을 이식하지 않는다. 이전 ‘V-리그 달력만 변경’ 및 ‘팀의 여러 경기를 모두 칸에 표시’ 결정을 이 범위에서 대체한다. config/data/MASTER/ID/경기 결과/명단은 보존한다. 신규 공통 템플릿에도 같은 모듈을 연결한다. [표시 계약·출처·검수·복구](validation/competition-calendar-standard-20261102.md).
+
+## 2026-11-02 · 고성·단양 전용 경로 달력 누락 복구
+
+Status: REQUESTED / IMPLEMENTED / VERIFIED / RELEASE AUTHORIZED; merge·Pages·live 증거는 release PR. 사용자가 대학 고성·단양 달력 누락을 보고했다. PR #230에서 공통 Engine에는 새 달력을 연결했으나 대학 목록이 사용하는 전용 HTML에 필수 JS/CSS를 빠뜨린 회귀였다. 해당 남녀 페이지, 같은 국내 후처리를 쓰는 종합대회 전용 경로와 기존 Cup 시안의 연결을 보완한다. 디자인·데이터·MASTER·ID·공통 엔진은 바꾸지 않는다. 실제 HTML 의존성으로 실행하는 회귀검사를 추가하고 기존 ‘공통 config 검증이면 모든 진입 경로도 검증됐다’는 검수 범위를 바로잡는다. Base `998157da98f99fcea7f0aef3f3052f34b4f0b42f`. [원인·수정·검수·복구](validation/university-calendar-entrypoints-20261102.md).
