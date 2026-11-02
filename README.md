@@ -128,6 +128,8 @@ kvolleylab/
 10. [`docs/PROJECT_BOARD.md`](docs/PROJECT_BOARD.md) — Backlog / Doing / Review / Done 현황
 11. [`docs/CHANGELOG.md`](docs/CHANGELOG.md) — 주요 변경 이력
 
+선수 공시·MASTER 연결의 현재 범위와 활성화 조건은 [`docs/KVL_PLAYER_UPDATES_v1.md`](docs/KVL_PLAYER_UPDATES_v1.md)를 따른다. 1차 writer·재조회·현재 시즌 export는 구현했지만, 실제 선수값 자동 쓰기는 공식 효력일과 실행계정 접근 확인 전까지 비활성이다.
+
 ## Development Workflow
 
 모든 신규 기능은 다음 순서로 진행합니다.

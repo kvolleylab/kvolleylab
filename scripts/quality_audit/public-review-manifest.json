@@ -290,10 +290,10 @@
         "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER",
         "KVL-VLEAGUE-2026-27-W-PLAYER-MASTER"
       ],
-      "verified_at": "2026-11-01",
-      "sha256": "900333e24c99fc41e77ce7d4f7f07b55d61c3c3700971beb57959b4951f23b17",
-      "evidence": "docs/validation/competition-automation-extension-20261101.md",
-      "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
+      "verified_at": "2026-11-02T18:40:47+09:00",
+      "sha256": "95d69e5c434aa048ccbf2143f5436fe1bbbfa7ea6cb65bb08a833482da86c39a",
+      "evidence": "docs/validation/player-master-pilot-20261102.md",
+      "review_note": "공개 운영 설정·기존 ID 연결·현재값 관측·자동 반영 차단 상태와 정확한 파일 해시를 검토했다. 공식 원문 및 기존 MASTER를 재조회했고 원격 전체 행·비공개 메모·인증정보는 포함하지 않았다. 효력일 NOT_VERIFIED, enabled=false, 승인/적용 사건 0을 유지한다. 이 기록은 효력일 확정·자동운영 성공·적용 사건 승인을 의미하지 않는다."
     },
     "data/player-updates/reviewed_mappings.json": {
       "access_level": "PUBLIC",
@@ -305,6 +305,43 @@
       "sha256": "1dff32237df45dea561ca4231130724e4ab94a30288bac5b2ec2c0bd05de63ad",
       "evidence": "docs/validation/competition-automation-extension-20261101.md",
       "review_note": "공개 가능한 운영 설정 메타데이터 확인: 공식 RSS 안내, 기존 MASTER ID·탭·헤더, 명시적 운영기간, 비어 있는 승인 목록을 검증했다. 선수 신원·이적 사실 승인 또는 runtime 쓰기 연결을 의미하지 않는다. 생성 후보와 기사 보도는 별도 미확정 검토 상태를 유지한다."
+    },
+    "data/player-updates/master_change_plan.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OPERATING-MASTER-v17",
+        "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER",
+        "KVL-VLEAGUE-2026-27-W-PLAYER-MASTER"
+      ],
+      "verified_at": "2026-11-02T18:40:47+09:00",
+      "sha256": "ee2174a60e32d3c74e8dba916d443f8498e03fdc4ddc9489ff975a191f535253",
+      "evidence": "docs/validation/player-master-pilot-20261102.md",
+      "review_note": "공개 운영 설정·기존 ID 연결·현재값 관측·자동 반영 차단 상태와 정확한 파일 해시를 검토했다. 공식 원문 및 기존 MASTER를 재조회했고 원격 전체 행·비공개 메모·인증정보는 포함하지 않았다. 효력일 NOT_VERIFIED, enabled=false, 승인/적용 사건 0을 유지한다. 이 기록은 효력일 확정·자동운영 성공·적용 사건 승인을 의미하지 않는다."
+    },
+    "data/player-updates/pilot.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-SRC-KOVO-NOTICE-157018",
+        "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER"
+      ],
+      "verified_at": "2026-11-02T18:40:47+09:00",
+      "sha256": "dc91f0aba9c8d5eea966cf69b57cb1020092fc795a15398c953b6470354f703b",
+      "evidence": "docs/validation/player-master-pilot-20261102.md",
+      "review_note": "공개 운영 설정·기존 ID 연결·현재값 관측·자동 반영 차단 상태와 정확한 파일 해시를 검토했다. 공식 원문 및 기존 MASTER를 재조회했고 원격 전체 행·비공개 메모·인증정보는 포함하지 않았다. 효력일 NOT_VERIFIED, enabled=false, 승인/적용 사건 0을 유지한다. 이 기록은 효력일 확정·자동운영 성공·적용 사건 승인을 의미하지 않는다."
+    },
+    "data/player-updates/pilot_verification.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-SRC-KOVO-NOTICE-157018",
+        "KVL-VLEAGUE-2026-27-M-PLAYER-MASTER"
+      ],
+      "verified_at": "2026-11-02T18:40:47+09:00",
+      "sha256": "699363f80d3e380d9c180eec35e05b5fe9fbeaa4fb3078611c988b398275a5a4",
+      "evidence": "docs/validation/player-master-pilot-20261102.md",
+      "review_note": "공개 운영 설정·기존 ID 연결·현재값 관측·자동 반영 차단 상태와 정확한 파일 해시를 검토했다. 공식 원문 및 기존 MASTER를 재조회했고 원격 전체 행·비공개 메모·인증정보는 포함하지 않았다. 효력일 NOT_VERIFIED, enabled=false, 승인/적용 사건 0을 유지한다. 이 기록은 효력일 확정·자동운영 성공·적용 사건 승인을 의미하지 않는다."
     }
   }
 }

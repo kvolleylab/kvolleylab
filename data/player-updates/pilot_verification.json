@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "status": "CURRENT_VALUE_VERIFIED_AUTOMATIC_WRITE_BLOCKED",
+  "verified_at": "2026-11-02T17:12:34+09:00",
+  "base_commit": "cf2ee1aad55c34ff09cb67f32659d1fe941420e5",
+  "player_id": "KVL-P-001585",
+  "player_name": "오재성",
+  "team": "우리카드",
+  "season": "2026-27",
+  "gender": "남",
+  "candidate_id": "KVL-PC-1edba5fa875766ef2a4da329",
+  "source_id": "KVL-SRC-KOVO-NOTICE-157018",
+  "source_url": "https://kovo.co.kr/news/official-notices/157018",
+  "source_body_sha256": "bf8be0d5a538ef75fdada84e7befb39ce7bd8b12551ed97734d1555a97d47579",
+  "source_version": "393b30747cd4370b5c23ade9cdf228dff35c6f026c3c743ec7cc3c810fcadcfd",
+  "revision_id": "KVL-PCR-4166bd02354a1c324825f1473ee3876c1d4cd8e22c6b248daa4ec506687034d2",
+  "published_date": "2026-09-16",
+  "effective_date": null,
+  "effective_date_status": "NOT_VERIFIED",
+  "official_transition": {
+    "previous_number": "3",
+    "new_number": "5"
+  },
+  "identity": {
+    "basis": "existing_canonical_id_and_birth_date",
+    "canonical_registry": "data/national/player_id_links_v1.json",
+    "unique_master_match": true,
+    "unique_live_roster_match": true,
+    "birth_date_match": true
+  },
+  "master": {
+    "target_id": "vleague-men-2026-27-player-master",
+    "sheet_title": "현재등록_공시기반",
+    "row_number": 57,
+    "number": "5",
+    "identity_audit_cell": "선수ID_신원검수!L57",
+    "identity_audit_readback_verified": true,
+    "journal_title": "KVL_자동반영이력",
+    "journal_sheet_id": 710020128,
+    "journal_header_count": 22,
+    "journal_applied_event_rows": 0
+  },
+  "website": {
+    "url": "https://kvolleylab.com/data/competitions/v-league-men-2026-27/rosters.json",
+    "number": 5,
+    "last_change_source_matches": true,
+    "raw_sha256": "84024e79877dd1938341e239602d943250bda8162a3981d76ff2db447656f0aa",
+    "local_main_bytes_match_live": true
+  },
+  "preservation": {
+    "현재등록_공시기반": {
+      "unchanged": true,
+      "before_sha256": "288df2f5e23474af9238da66380894637216c5db3d1fb38640934a282db66096",
+      "after_sha256": "288df2f5e23474af9238da66380894637216c5db3d1fb38640934a282db66096"
+    },
+    "KOVO_선수별변동이력": {
+      "unchanged": true,
+      "before_sha256": "7fbdf4ae1cc7ac161c60d38cc8127e7e6e73cc2adf5a323f2a747609cab7234b",
+      "after_sha256": "7fbdf4ae1cc7ac161c60d38cc8127e7e6e73cc2adf5a323f2a747609cab7234b"
+    }
+  },
+  "changes": {
+    "player_value_cells": 0,
+    "player_ids": 0,
+    "legacy_history_rows": 0,
+    "website_roster_files": 0,
+    "identity_audit_cells": 1,
+    "new_journal_header_cells": 22
+  },
+  "runtime": {
+    "enabled": false,
+    "reviewed_events": 0,
+    "applied_events": 0,
+    "service_account_shared": false,
+    "service_account_runtime_access": "NOT_VERIFIED",
+    "blocked_reasons": [
+      "explicit_effective_date_missing",
+      "service_account_workbook_access_missing"
+    ],
+    "browser_auth": "AUTO_REVIEW_DENIED_GOOGLE_ACCOUNT_AUTHORITY"
+  },
+  "scope": "Current-value observation and setup receipt only. This is not an applied-event receipt or proof of scheduled player updates."
+}
