@@ -153,8 +153,10 @@ def build_plan(config, exported, ledger, snapshots, journal, now=None):
         blocked.append({"event_id": change["event_id"], "reasons": ["multiple_events_target_same_cell_requires_ordered_review"]})
     changes = [change for change in changes if change not in conflicted]
     return {"schema_version": 1, "configuration_status": config["configuration_status"],
-            "runtime_connector": "NOT_CONNECTED", "writeback": "NOT_IMPLEMENTED", "readback_activation": "NOT_CONNECTED",
-            "scope": "Local review plan only. Fresh source/row/formula/lock/revision readback and external writer activation are still required.",
+            "runtime_connector": config.get("runtime_connector", "NOT_CONNECTED"),
+            "writeback": config.get("writeback", "NOT_IMPLEMENTED"),
+            "readback_activation": config.get("readback_activation", "NOT_CONNECTED"),
+            "scope": "Local review plan only. The separate one-event writer requires explicit activation, fresh source/row/metadata readback and a verified application journal.",
             "target_readiness": target_status, "reviewed_event_count": len(exported.get("events", [])),
             "changes": changes, "blocked": blocked, "skipped": skipped,
             "no_update_reasons": ["no_reviewed_events"] if not exported.get("events") else []}
@@ -174,7 +176,7 @@ def main():
     plan = build_plan(read(args.targets), read(args.events, {"events": []}), read(args.ledger, {}), snapshots, journal)
     public_security_scan(plan)
     write(args.output, plan)
-    print(f"MASTER_PLAN local_changes={len(plan['changes'])} blocked={len(plan['blocked'])} runtime=NOT_CONNECTED writeback=NOT_IMPLEMENTED")
+    print(f"MASTER_PLAN local_changes={len(plan['changes'])} blocked={len(plan['blocked'])} runtime={plan['runtime_connector']} writeback={plan['writeback']}")
 
 
 if __name__ == "__main__":

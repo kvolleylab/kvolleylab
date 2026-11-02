@@ -9,7 +9,7 @@
   "reviewed_event_count": 0,
   "runtime_connector": "NOT_CONNECTED",
   "schema_version": 1,
-  "scope": "Local review plan only. Fresh source/row/formula/lock/revision readback and external writer activation are still required.",
+  "scope": "Local review plan only. The separate one-event writer requires explicit activation, fresh source/row/metadata readback and a verified application journal.",
   "skipped": [],
   "target_readiness": {
     "vleague-men-2026-27-player-master": [
@@ -19,5 +19,5 @@
       "fresh_runtime_snapshot_missing"
     ]
   },
-  "writeback": "NOT_IMPLEMENTED"
+  "writeback": "IMPLEMENTED_NOT_ACTIVATED"
 }

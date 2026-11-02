@@ -1,0 +1,81 @@
+name: Player MASTER Pilot Safety Checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/player-master-pilot-ci.yml'
+      - '.github/workflows/vleague-auto-update-v1.yml'
+      - 'scripts/kvl_player*.py'
+      - 'scripts/kovo_official_*.py'
+      - 'scripts/kovo_verify_roster_contracts.py'
+      - 'scripts/kovo_vleague_ops.py'
+      - 'tests/test_kvl_player*.py'
+      - 'tests/test_kovo_official_notices.py'
+      - 'tests/test_kovo_verify_roster_contracts.py'
+      - 'tests/test_kovo_vleague_ops.py'
+      - 'tests/vleague-rosters.test.cjs'
+      - 'data/player-updates/**'
+      - 'data/competitions/v-league-men-2026-27/rosters.json'
+      - 'data/competitions/v-league-women-2026-27/rosters.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/player-master-pilot-ci.yml'
+      - '.github/workflows/vleague-auto-update-v1.yml'
+      - 'scripts/kvl_player*.py'
+      - 'scripts/kovo_official_*.py'
+      - 'scripts/kovo_verify_roster_contracts.py'
+      - 'scripts/kovo_vleague_ops.py'
+      - 'tests/test_kvl_player*.py'
+      - 'tests/test_kovo_official_notices.py'
+      - 'tests/test_kovo_verify_roster_contracts.py'
+      - 'tests/test_kovo_vleague_ops.py'
+      - 'tests/vleague-rosters.test.cjs'
+      - 'data/player-updates/**'
+      - 'data/competitions/v-league-men-2026-27/rosters.json'
+      - 'data/competitions/v-league-women-2026-27/rosters.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: player-master-pilot-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify official evidence, scoped MASTER writes, export preservation and Pages guards offline
+        run: |
+          python -B -m unittest discover -s tests -p 'test_kvl_player*.py' -v
+          python -B -m unittest discover -s tests -p 'test_kovo_official_notices.py' -v
+          python -B -m unittest discover -s tests -p 'test_kovo_verify_roster_contracts.py' -v
+          python -B -m unittest discover -s tests -p 'test_kovo_vleague_ops.py' -v
+      - name: Evaluate the real configuration without source requests or Google authentication
+        run: python -B scripts/kvl_player_master_pilot.py --preflight --root . --output "$RUNNER_TEMP/kvl-player-master-ci"
+      - name: Install existing roster DOM test dependency outside the checkout
+        run: npm install --prefix "$RUNNER_TEMP/kvl-player-master-deps" --no-audit --no-fund jsdom@26.1.0
+      - name: Preserve current roster identity, links, sources and rendering
+        env:
+          KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-player-master-deps/node_modules/jsdom
+        run: node --test tests/vleague-rosters.test.cjs
+      - name: Keep the read-only activation decision
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: player-master-pilot-ci-${{ github.run_id }}
+          path: ${{ runner.temp }}/kvl-player-master-ci/report.json
+          retention-days: 7
+          if-no-files-found: warn

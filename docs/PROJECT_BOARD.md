@@ -1,6 +1,13 @@
 # K-Volley Lab Project Board
 
-최종 갱신: 2026-10-23
+최종 갱신: 2026-11-02
+
+## 2026-11-02 · 선수 MASTER 연결 1차
+
+- 완료: 오재성 기존 ID·공식 원문·MASTER·운영 명단 대조, 원격 연결 검증 메모와 빈 적용 저널 저장·재조회.
+- 구현: 단일 사건의 허용 셀 쓰기·재조회·중복 방지·현재 시즌 export·Pages 검증과 GitHub 활성화 gate.
+- 차단 유지: 명시적 효력일 미확인, 실행계정의 선수 MASTER 공유 미연결. `pilot.json.enabled=false`.
+- 실제 운영 완료 조건: 적합한 공식 사건과 권한을 확인한 후 단일 사건의 런타임·재조회·게시 영수증. [근거·복구](validation/player-master-pilot-20261102.md).
 
 ## 2026-10-23 scoped update
 

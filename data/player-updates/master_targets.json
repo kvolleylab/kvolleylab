@@ -1,19 +1,39 @@
 {
   "schema_version": 1,
   "configuration_status": "TARGET_SCHEMA_VERIFIED",
-  "verified_on": "2026-11-01",
-  "verification_basis": "Connected read-only inspection of existing men's and women's player MASTER metadata and row 3 headers.",
+  "verified_on": "2026-11-02",
+  "verification_basis": "Fresh connected native Sheets metadata, bounded cells and exact Player_ID review; dedicated men pilot journal created and read back.",
   "runtime_connector": "NOT_CONNECTED",
-  "writeback": "NOT_IMPLEMENTED",
+  "writeback": "IMPLEMENTED_NOT_ACTIVATED",
   "readback_activation": "NOT_CONNECTED",
   "season": "2026-27",
   "maximum_snapshot_age_hours": 24,
   "header_row": 3,
-  "headers": ["구단", "등번호", "선수명", "풀네임", "포지션", "생년월일", "키(cm)", "국적", "등록 상태", "원문 공시", "Player_ID", "비고", "현재등록 판단"],
+  "headers": [
+    "구단",
+    "등번호",
+    "선수명",
+    "풀네임",
+    "포지션",
+    "생년월일",
+    "키(cm)",
+    "국적",
+    "등록 상태",
+    "원문 공시",
+    "Player_ID",
+    "비고",
+    "현재등록 판단"
+  ],
   "player_id_column": "K",
   "allowed_cell_mappings": {
-    "number_change": {"value_column": "B", "event_field": "new_number"},
-    "position_change": {"value_column": "E", "event_field": "new_position"}
+    "number_change": {
+      "value_column": "B",
+      "event_field": "new_number"
+    },
+    "position_change": {
+      "value_column": "E",
+      "event_field": "new_position"
+    }
   },
   "source_column": "J",
   "membership_mapping": "BLOCKED_STATUS_VOCABULARY_AND_REVISION_JOURNAL_NOT_CONNECTED",
@@ -21,13 +41,19 @@
     "title": "KOVO_선수별변동이력",
     "header_row": 3,
     "observed_header_count": 19,
-    "missing_required_columns": ["Player_ID", "효력일", "원문 revision"],
+    "missing_required_columns": [
+      "Player_ID",
+      "효력일",
+      "원문 revision"
+    ],
     "status": "SCHEMA_EXTENSION_REQUIRED_NO_WRITES"
   },
   "observed_limitations": [
-    "Player_ID was blank in the inspected leading current-roster rows; do not fill IDs by matching names.",
-    "Season guidance and current-registration decisions remain under review.",
-    "Row formulas, protected ranges, manual locks and complete event revision history need fresh runtime readback before plans can be considered ready."
+    "Men current-roster has 55 existing Player_ID values; women current-roster has 0. Never fill blank IDs by name matching.",
+    "The selected existing player and current value match the official notice and live website, but the notice does not explicitly state an effective date.",
+    "The dedicated men pilot journal has verified headers and no applied events; the 19-column legacy history is preserved and is not certified as a complete revision journal.",
+    "The GitHub service account is not shared on the player workbook. Writer implementation and native connector inspection do not prove scheduled runtime access.",
+    "All formulas, notes, validation, protection, source revisions and allowed period must be freshly checked before a future write."
   ],
   "targets": [
     {
@@ -37,7 +63,37 @@
       "spreadsheet_title": "2026-27_V리그_남자부_선수명단_MASTER_검수중",
       "sheet_id": 710020121,
       "sheet_title": "현재등록_공시기반",
-      "snapshot_kind": "current_roster"
+      "snapshot_kind": "current_roster",
+      "journal": {
+        "sheet_id": 710020128,
+        "title": "KVL_자동반영이력",
+        "header_row": 1,
+        "headers": [
+          "Event_ID",
+          "Player_ID",
+          "Source_ID",
+          "Revision_ID",
+          "Source_Version",
+          "Season",
+          "Gender",
+          "Team",
+          "Kind",
+          "Effective_Date",
+          "Source_URL",
+          "Value_Column",
+          "Before_Value",
+          "After_Value",
+          "Before_Source_URL",
+          "After_Source_URL",
+          "Applied_At",
+          "Status",
+          "Row_Number",
+          "Row_Before_SHA256",
+          "Row_After_SHA256",
+          "Approval_SHA256"
+        ],
+        "scope": "EXPLICIT_ONE_EVENT_PILOT_ONLY_NOT_LEGACY_HISTORY"
+      }
     },
     {
       "id": "vleague-women-2026-27-player-master",

@@ -12,8 +12,8 @@
 | 검토 기록 | 정확한 후보 ID·원문 버전·추출 버전에 승인 연결 | 수정 원문이 나오면 기존 승인 재사용 불가 |
 | 검토 완료 내보내기 | `reviewed_events.json` 생성 | MASTER에 적용할 수 있는 검토 완료 이벤트 목록 |
 | 기사 발견 | 매일경제·뉴시스 공식 스포츠 RSS에서 배구 관련 제목 검색 | 제목·원문 링크·매체·피드 제공 시각만 수집 |
-| 선수 MASTER 연결 준비 | 기존 남녀 MASTER의 spreadsheet/tab ID 및 A:M 헤더 검증, 로컬 변경 계획 작성 | 원격 조회·쓰기·읽기 검증 활성화는 미연결 |
-| Google MASTER / 홈페이지 | **NOT_CONNECTED** | 이 스크립트는 현재 선수 소속이나 대회 명단을 직접 변경하지 않음 |
+| 선수 MASTER 연결 1차 | 기존 남녀 MASTER 재조회, 남자부 전용 적용 이력 탭, 1건 한정 writer·재조회·현재 시즌 export 구현 | **IMPLEMENTED_NOT_ACTIVATED** — 효력일과 실행계정 접근권한 미확인으로 실제 선수값 쓰기 차단 |
+| Google MASTER / 홈페이지 | 연결된 Drive에서 현재값 대조 완료, GitHub 자동 쓰기는 **NOT_CONNECTED** | 오재성의 기존 ID·등번호 5·원문 연결 일치. 번호를 다시 바꾸거나 적용 사건을 생성하지 않음 |
 
 실제 MASTER의 대상 표와 헤더는 확인했다. 기존 선수 ID·현재 등록 판단·변동 이력의 원문 revision·실행 시점 읽기 검증 연결이 완료되기 전에는 `reviewed_events.json`을 “반영 완료”로 표시하지 않는다. 기존 경기 일정/결과 자동 업데이트와 선수 명단 반영은 서로 다른 권한·검토 단계다.
 
@@ -129,10 +129,37 @@ python scripts/kvl_player_master_plan.py --snapshots /tmp/roster-readback.json -
 
 스냅샷 입력은 `snapshots` 배열이며 각 항목에 config와 같은 `spreadsheet_id`, `spreadsheet_title`, `sheet_id`, `sheet_title`, `snapshot_kind: current_roster`, `header_row`, `headers`, `fetched_at`, `formula_metadata_complete`, `lock_metadata_complete`가 필요하다. 각 `rows` 항목은 `row_number`, 13개 `values`, 13개 `formulas`, 확인된 `manual_locked` 상태를 포함한다. 적용 이력은 `complete: true`와 `events` 배열에 `event_id`, `player_id`, `source_id`, `revision_id`를 기록한다. 확인하지 않은 메타데이터를 완료로 표시하면 안 된다. 원본 스냅샷과 비공개 메모를 저장소에 커밋하지 않는다.
 
-상태는 **대상 schema 확인 완료 / runtime_connector: NOT_CONNECTED / writeback: NOT_IMPLEMENTED / readback_activation: NOT_CONNECTED**다. 현재 승인된 선수 이벤트는 0건이므로 실제 선수 MASTER를 갱신할 수 있는 승인 자료도 아직 없다.
+2026-11-02 1차 연결 후 상태는 **대상 schema·남자부 전용 저널 확인 완료 / runtime_connector: NOT_CONNECTED / writeback: IMPLEMENTED_NOT_ACTIVATED / readback_activation: NOT_CONNECTED**다. 별도 writer는 구현되었으나 현재 승인된 선수 이벤트는 0건이다. 실제 활성화 상태는 `pilot.json`과 아래 8절을 따른다.
 
 ## 7. 검증과 남은 연결
 
 오프라인 회귀 검증은 등록 해지 분류, 동명이인/다중 선수 차단, 원문 정정 시 승인 무효화, 게시일/적용일 구분, 부분 조회 시 과거 데이터 유지, 미등록 Player_ID 거부, RSS/Atom 메타데이터 범위, 반복 실행 중복 방지, 개별 피드 장애 보존을 포함한다.
 
-남은 연결은 **기존 Player_ID와 현재 등록 판단 검토 → 변동 이력 schema 보완 → 실행 시점 공식 근거/MASTER 재조회 → 승인된 범위의 쓰기 및 읽기 검증 → 홈페이지 데이터 생성**이다. 이 연결과 실제 운영 실행 성공을 확인하기 전에는 선수 명단까지 완전 자동 갱신 중이라고 표시하지 않는다. 후보 수집·검토 완료 내보내기·로컬 변경 계획·운영 반영 상태를 각각 구분해 보고한다.
+선택한 기존 Player_ID의 현재값은 대조했고, 별도 적용 저널과 쓰기·재조회·공개 명단 생성 경로를 구현했다. 남은 활성화 조건은 **명시된 효력일의 공식 근거 → 실행계정의 대상 MASTER 접근 → 승인된 단일 사건의 실제 실행·읽기 검증·게시 검증**이다. 이 실제 운영 성공을 확인하기 전에는 선수 명단까지 완전 자동 갱신 중이라고 표시하지 않는다. 후보 수집·검토 완료 내보내기·로컬 변경 계획·운영 반영 상태를 각각 구분해 보고한다.
+
+## 8. 선수 MASTER 연결 1차 — 2026-11-02
+
+사용자가 1차 연결을 진행하도록 요청했다. 승인 범위는 기존 선수 ID 1명에 대한 번호 또는 포지션 변경의 검증·저장·재조회·현재 시즌 명단 연결이다. 전체 후보나 등록·이적·해지 사건의 일괄 적용 승인이 아니다.
+
+실제 점검 대상은 우리카드 오재성 `KVL-P-001585`, 공식 공시 `157018`이다. 이름·생년월일을 기존 canonical registry, 남자 MASTER `현재등록_공시기반!A57:M57`, 기존 신원 검수 행, 운영 홈페이지 명단과 대조했다. MASTER와 홈페이지에는 이미 5번이 있다. 공개 공시는 3→5 변경과 **공시일**만 명시하며 실제 효력일은 확인되지 않았다. 공시일을 효력일로 채우거나 이미 맞는 번호를 되돌려 변경 검증을 만들지 않는다.
+
+실제 원격 작업은 기존 `선수ID_신원검수!L57`의 연결 검증 메모 1셀과 신규 `KVL_자동반영이력`의 22열 헤더 준비다. 새 탭 sheet ID는 `710020128`이고 적용 이력은 **0행**이다. 기존 19열 변동 이력과 현재등록 선수값은 원격 재조회에서 동일했다. 이 점검은 적용 사건이 아닌 관측 기록 `pilot_verification.json`으로 공개한다.
+
+### 실행 경로
+
+- `kvl_player_master_pilot.py`: 로컬 활성화 검사 → 실제 공식 공시 재조회 → 새 파싱 결과와 승인 원문 revision 일치 → 원격 writer → 검증된 공개 export. 비활성 상태에서는 인증·공시 요청·쓰기 모두 0이다.
+- `kvl_player_master_apply.py`: 정확히 1건의 기존 K열 ID, 공시의 명시적 효력일, 최근 5분 원문 근거, 전체 현재표의 수식·메모·검증 규칙·보호 상태, 별도 적용 저널을 검사한다. B/E 및 J와 적용 저널 한 행만 같은 Sheets 요청에 기록하고 다시 조회한다.
+- `kvl_player_master_export.py`: 실제 재조회 성공 영수증만 받아 해당 시즌 명단의 번호/포지션과 관련 원문 연결을 갱신한다. 선수 ID·최초 등록 근거/날짜·명단 Source ID 및 다른 선수·과거 대회는 보존한다. 값이 이미 일치하면 불필요한 값 변경을 만들지 않는다.
+- `kvl_player_master_publish.py`: 선수 감시기간·정확한 main·검증 영수증을 다시 확인한 뒤 Pages 빌드 SHA와 허용된 공개 JSON 바이트를 대조한다. 경기 자동화의 종료일을 선수 감시 종료일로 재사용하지 않는다.
+
+동일 `event_id + revision_id`를 반복하면 추가 적용 이력·선수값·공개 파일 변경은 0이다. 원문 정정, 효력일 미확정, 동명이인, ID 공란, 최신값 충돌, 수식/보호/수동잠금, 지원하지 않는 셀 검증 규칙, 중간 사용자 수정, 재조회 불일치는 자동 덮어쓰기 없이 차단한다. 서버 응답을 잃어도 먼저 재조회하고 동일 쓰기를 무조건 반복하지 않는다. Sheets의 원자적 batch는 해당 요청 내 변경에만 적용되며, 공동 편집자와의 전역 잠금을 제공한다고 주장하지 않는다.
+
+### 활성화 상태와 남은 설정
+
+`data/player-updates/pilot.json`은 `enabled: false`, `event_scope: null`이다. 공식 효력일과 실행계정 접근권한이 해결되기 전에는 이 값을 켜지 않는다. 번호/포지션 후보 12건의 원문 5개에는 명시적 효력일이 없었으며, 날짜가 있는 군복무 만료 등록 공시를 이번 제한 범위에 대신 적용하지 않는다.
+
+GitHub 실행계정은 기존 `kvl-v-league-updater@kvl-automation.iam.gserviceaccount.com`을 그대로 사용한다. 남자 선수 MASTER에는 현재 소유자만 표시되어 있다. 이 파일에 실행계정 편집권한을 연결하고 실제 서비스계정 읽기를 확인해야 한다. WIF 신뢰범위·키 파일·프로젝트 IAM 권한을 확장하지 않는다. Google 로그인으로 공유 설정을 진행하려던 단계는 자동 승인 검토가 특정 계정 인증 권한 부족으로 거부했으며 우회하지 않았다.
+
+런타임은 기존 신뢰 workflow의 별도 선수 job에서 09:17 KST 일일 실행 또는 명시적 수동 실행으로 제한한다. 활성화 검사에 실패하면 Google 인증 전에 건너뛴다. 실제 예약 성공은 해당 run 영수증으로 별도 기록한다. 현재 구현·단위검사·수동 Drive 관측을 예약 자동 쓰기 성공으로 표시하지 않는다.
+
+상세 증거·복구: [1차 연결 검수 기록](validation/player-master-pilot-20261102.md).

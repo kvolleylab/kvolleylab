@@ -49,7 +49,7 @@ class MasterPlanTests(unittest.TestCase):
         result = plan.build_plan(*inputs, now=NOW)
         self.assertEqual(inputs, before)
         self.assertEqual(result["runtime_connector"], "NOT_CONNECTED")
-        self.assertEqual(result["writeback"], "NOT_IMPLEMENTED")
+        self.assertEqual(result["writeback"], inputs[0]["writeback"])
         self.assertEqual(len(result["changes"]), 1)
         self.assertEqual(result["changes"][0]["updates"][0], {"cell": "E4", "before": "OH", "after": "L"})
         self.assertNotIn("SYNTHETIC_LOCAL_ONLY_NOTE", json.dumps(result))

@@ -2,6 +2,14 @@
 
 이 문서는 프로젝트의 주요 구조 변경, 기능 추가, 복구 작업을 기록합니다.
 
+## 2026-11-02 — Scoped player MASTER connection pilot
+
+- Add one-event number/position writer, native readback, application journal, idempotent current-season export and exact Pages verification.
+- Keep Google authentication and writes disabled until explicit effective-date evidence, one pinned review and workbook access are verified.
+- Verify 오재성 `KVL-P-001585` against the existing MASTER and live roster; both already show number 5. Record the connection check without manufacturing a value change or applied event.
+- Prepare a dedicated empty journal on the existing men's MASTER. Preserve current player values, IDs, legacy history and historical tournament rosters.
+- See [scope, evidence, blockers and recovery](validation/player-master-pilot-20261102.md). CI, merge and deployment evidence is recorded on the release PR.
+
 ## 2026-10-24 — Reviewed player names and draft links
 
 - Apply six names explicitly reviewed by the project owner, retaining permanent IDs and correction evidence.
