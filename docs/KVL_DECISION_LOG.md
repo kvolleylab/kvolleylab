@@ -463,3 +463,14 @@ Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 병
 Status: EDITOR SHARING VERIFIED / RUNTIME METADATA AND HEADERS VERIFIED / AUTOMATIC WRITE DISABLED. 사용자가 요청된 진단을 실행했고 [Actions #26](https://github.com/kvolleylab/kvolleylab/actions/runs/41444659754)이 21:26:17 KST 성공했다. 실행 SHA는 `e97256be78f77de3e3e60e671d3caaa601825ea2`, attempt1이다. 실제 인증·GET 로그와 다운로드한 report의 내용·해시를 확인했다. `READ_ACCESS_VERIFIED`, metadata/header 일치, no_data_written=true, write_access_tested=false이며 기존 다섯 job은 모두 건너뛰었다. 남자 MASTER metadata와 헤더35셀 접근에 한정한다.
 
 앞선 runtime 읽기 미확인 상태를 이 실행 증거로 대체한다. pilot은 `enabled=false`, `event_scope=null`, `BLOCKED_EFFECTIVE_DATE`로 유지하고 해결된 접근 차단 사유만 제거한다. 공식 효력일·사건 승인·선수 행·여자 MASTER·실제 쓰기·쓰기 후 재조회·자동 게시 완료로 확대하지 않는다. 기존 native 관측 시각과 과거 연결 기록을 보존한다. 기준 main은 실행 SHA와 같으며 PR #238/#239의 표시 작업을 보존한다. [실행 증거·범위·해시·남은 조건](validation/player-master-access-20261102.md).
+
+
+## 2026-11-03 · 현재값 확인 기록 채택과 오재성 첫 검증
+
+Status: POLICY APPROVED / FIRST NATIVE RECORD VERIFIED / MANUAL IMPLEMENTATION READY FOR REVIEW / GITHUB WRITE NOT EXECUTED / NOT DEPLOYED. 사용자가 “현재값 확인 기록”을 별도로 도입하고 오재성 1명부터 검증하도록 명시했다. 이 승인은 첫 확인 기록의 생성·검증 범위이며, 선수값 변경·전체 선수 확대·새 예약 실행·운영 코드 병합 승인으로 확대하지 않는다. 기존 Google 운영원칙을 같은 문서 ID의 v18로 개정하고 11-3-1절·현재값과 사건의 구분·원문과 시각·첫 범위·변경 이력을 재조회했다.
+
+공식 공시157018·우리카드 현재명단·선수0001550 상세·현재 시즌과 시즌 목록을 조회해 기존 KVL-P-001585/우리카드/남자2026–27/번호5 및 신원 보조값 L을 대조했다. 현재명단의 시즌 필드·명시 기준 시각과 실제 변경 효력일은 없으므로 공식 현재 시즌 맥락만 인정하고 effective_date/source_as_of=null을 보존한다. 현재등록 원본의 날짜 표기를 바꾸지 않는다.
+
+기존 남자 MASTER의 별도 KVL_현재값확인 26열 탭에 native 실행 native-20261103-oh-current-v1의 한 행을 01:02 KST 저장했다. 실제 재조회에서 선수값 변경0셀·지정 현재등록 범위 보존·기존 적용 이력 보존을 확인했다. 동일 실행으로 공식 자료를 다시 조회한 재시도는 already_verified·추가0행이며 원래 관측·검토 시각을 보존한다. 공개 영수증에서 비공개 MASTER 파생 계획 hash를 제외하고 최초 저장 기록과 이번 재조회 시각을 분리했다.
+
+GitHub는 기존 workflow의 player_current_value_check 수동 입력으로 같은 범위를 구현한다. 새 모드에서 기존 다른 job을 제외하고 기존 WIF·계정·기간을 사용한다. 실제 GitHub 선수 행 읽기·확인 기록 쓰기·재조회는 아직 실행하지 않았다. 기존 pilot은 enabled=false/event_scope=null/BLOCKED_EFFECTIVE_DATE, 승인 사건0건을 유지한다. base56006570b078266470765b991fb81ade68abaa3d, [PR #241](https://github.com/kvolleylab/kvolleylab/pull/241). [승인 기준](proposals/player-current-value-policy-v1.md) · [실제 검증·제약·복구·후속 실행](validation/player-current-value-20261103.md).

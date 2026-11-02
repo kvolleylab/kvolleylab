@@ -1,6 +1,6 @@
 # KVL 선수 공시·기사 업데이트 운영 기준 v1
 
-적용 기준: `KVL_운영원칙_MASTER_v17`의 **원문 → 검토 → MASTER → 홈페이지** 순서와 기존 Player_ID 유지 원칙. 이 문서는 선수 등록·이적 관련 수집·검토 흐름의 구현 범위를 정의한다. 대회 일정의 종료일과 기록 보관은 대회 생애주기 운영 기준에서 관리한다.
+적용 기준: `KVL_운영원칙_MASTER_v18`의 **원문 → 검토 → MASTER → 홈페이지** 순서와 기존 Player_ID 유지 원칙. 이 문서는 선수 등록·이적 관련 수집·검토 흐름의 구현 범위를 정의한다. 대회 일정의 종료일과 기록 보관은 대회 생애주기 운영 기준에서 관리한다. 2026-11-03 채택한 현재값 확인 기록은 효력일 확정 사건과 구분한다.
 
 ## 1. 이번 구현의 실제 범위
 
@@ -13,7 +13,8 @@
 | 검토 완료 내보내기 | `reviewed_events.json` 생성 | MASTER에 적용할 수 있는 검토 완료 이벤트 목록 |
 | 기사 발견 | 매일경제·뉴시스 공식 스포츠 RSS에서 배구 관련 제목 검색 | 제목·원문 링크·매체·피드 제공 시각만 수집 |
 | 선수 MASTER 연결 1차 | 기존 남녀 MASTER 재조회, 남자부 전용 적용 이력 탭, 1건 한정 writer·재조회·현재 시즌 export 구현 | **IMPLEMENTED_NOT_ACTIVATED** — 남자 MASTER metadata·헤더 접근 확인; 공식 효력일·단일 사건 검토와 실제 쓰기 검증 전까지 선수값 자동 쓰기 차단 |
-| Google MASTER / 홈페이지 | 연결된 Drive에서 현재값 대조 완료, GitHub 자동 쓰기는 **NOT_CONNECTED** | 오재성의 기존 ID·등번호 5·원문 연결 일치. 번호를 다시 바꾸거나 적용 사건을 생성하지 않음 |
+| 현재값 확인 기록 | 오재성 1명의 공시·공식 현재명단·신원·5번을 대조하고 native 연결에서 별도 확인 기록 1행 저장·재조회, 같은 실행 재시도 추가 0행 | **NATIVE_VERIFIED / GITHUB_RUNTIME_NOT_EXECUTED** — 선수값 변경 0셀, 공식 효력일 미확정 |
+| Google MASTER / 홈페이지 | native 현재값 확인 기록 검증 완료; GitHub 서비스계정의 선수 행·확인 기록 쓰기 실행은 미검증 | 홈페이지와 공개 명단 파일은 이 확인 기록으로 변경하지 않음 |
 
 실제 MASTER의 대상 표와 헤더는 확인했다. 기존 선수 ID·현재 등록 판단·변동 이력의 원문 revision·실행 시점 읽기 검증 연결이 완료되기 전에는 `reviewed_events.json`을 “반영 완료”로 표시하지 않는다. 기존 경기 일정/결과 자동 업데이트와 선수 명단 반영은 서로 다른 권한·검토 단계다.
 
@@ -171,3 +172,13 @@ GitHub 실행계정은 기존 `kvl-v-league-updater@kvl-automation.iam.gservicea
 진단은 선수값·이력·GitHub 데이터·Pages를 변경하지 않고, 정제한 결과만 Actions 요약과 `player-master-access-<run_id>` artifact에 남긴다. 원격 전체 행·인증정보·비공개 메모는 출력하지 않는다. 읽기 성공과 실제 쓰기 성공·공식 효력일 승인은 별개다. `pilot.enabled=false`를 유지한 상태에서만 이 준비 진단을 허용한다. [공유 확인 및 실행 절차](validation/player-master-access-20261102.md).
 
 2026-11-02 실제 진단은 `READ_ACCESS_VERIFIED`, `metadata_valid=true`, `headers_valid=true`, `no_data_written=true`, `write_access_tested=false`로 완료됐다. 다른 다섯 job은 모두 건너뛰었다. 이 결과는 남자 MASTER 한 개의 metadata와 헤더35셀에 한정되며 선수 행·여자 MASTER·실제 쓰기·자동 게시 검증을 뜻하지 않는다. 일반 선수 반영 경로의 `runtime_connector: NOT_CONNECTED`, `writeback: IMPLEMENTED_NOT_ACTIVATED`, `readback_activation: NOT_CONNECTED`는 유지한다.
+
+## 9. 별도 현재값 확인 기록 — 2026-11-03
+
+사용자는 현재값 확인 기록을 별도로 도입하고 오재성 한 명부터 검증하도록 승인했다. Google 운영원칙 MASTER v18 11-3-1절과 [승인 기준](proposals/player-current-value-policy-v1.md)에 따라 기존 ID `KVL-P-001585`, 우리카드, 남자부 2026–27, 현재 등번호 5로 첫 범위를 고정한다. 포지션 L은 신원·출처 대조에 사용하며 선수값을 바꾸지 않는다.
+
+공식 현재명단·선수 상세·변경 공시·현재 시즌 맥락을 실제로 대조했다. native 연결에서 남자 MASTER의 `KVL_현재값확인`에 26열 한 행을 저장·재조회했고, 같은 실행을 다시 검증하여 추가 0행과 원래 확인 시각 보존을 확인했다. `effective_date`와 `source_as_of`는 미확정이다. 원격 전체 행과 비공개 메모는 공개 영수증에 포함하지 않는다.
+
+GitHub 구현은 `current_value_pilot.json`과 `kvl_player_current_value_pilot.py`, 기존 workflow의 `player_current_value_check` 수동 모드다. 기본 입력 false이고 새 schedule은 없다. 값이 다르거나 출처 revision·신원·메타데이터·운영기간이 바뀌면 중단한다. 같은 GitHub run ID의 재시도는 추가 0행, 새 명시적 실행은 별도 확인 기록이다. 이 경로는 기존 사건 pilot을 활성화하거나 선수 셀·명단·홈페이지를 쓰지 않는다.
+
+상태는 **native 기록 검증 완료 / GitHub 수동 구현 검토 중 / 실제 GitHub 서비스계정 쓰기 미실행 / 미배포**다. 현재값의 native 확인 기록과 기존 사건 writer, GitHub runtime 성공을 구분한다. [실제 기록·검증·복구·다음 실행](validation/player-current-value-20261103.md)과 [정제된 영수증](../data/player-updates/current_value_verification.json)을 기준으로 이어간다.
