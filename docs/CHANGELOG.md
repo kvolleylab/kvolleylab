@@ -2,6 +2,14 @@
 
 이 문서는 프로젝트의 주요 구조 변경, 기능 추가, 복구 작업을 기록합니다.
 
+## 2026-11-03 — 일반 회원 가입·본인확인 검토 시안
+
+- 이메일 PKCE·카카오 OAuth, 닉네임 기본/실명 선택 공개, 본인확인 서버 어댑터를 독립 시안으로 준비한다.
+- private 회원정보 RLS, 서버 지정 관리자와 조회 기록, 일회 인증건·현재 세션 검사, 로그아웃 개인정보 제거를 구현한다.
+- Supabase 플러그인 연결 및 Free 조직·프로젝트 0개를 확인했다. 새 프로젝트 조직 확인 전 실제 Auth·DB·메일·문자와 운영 회원 기능을 활성화하지 않는다.
+- 43개 로컬 검사와 1180/390/360px preview 검수를 수행했다. 실제 공급자/호스팅 검증은 미완료이며 운영 홈페이지·선수/대회 데이터는 변경하지 않는다.
+- [구현·남은 연결·복구](MEMBER_ONBOARDING_v1.md) · [검수 증거](validation/member-onboarding-v1/README.md).
+
 ## 2026-11-02 — Scoped player MASTER connection pilot
 
 - Add one-event number/position writer, native readback, application journal, idempotent current-season export and exact Pages verification.

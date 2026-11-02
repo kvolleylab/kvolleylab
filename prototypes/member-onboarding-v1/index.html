@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>회원가입 · K-Volley Lab</title>
+  <meta name="description" content="이메일 또는 카카오로 시작하고, 본인확인과 닉네임·실명 공개 여부를 설정하는 K-Volley Lab 회원가입 화면입니다.">
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="ui.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 이동</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="https://kvolleylab.com/" aria-label="K-Volley Lab 홈페이지">
+        <img src="../../assets/images/brand/kvl-ball-international-gold.webp" width="44" height="44" alt="">
+        <span>K-Volley Lab<small>배구 데이터 · 분석 플랫폼</small></span>
+      </a>
+      <a class="home-link" href="https://kvolleylab.com/">홈페이지로 <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main" class="page-shell">
+    <section id="preview-banner" class="preview-banner" aria-label="미리보기 안내" hidden>
+      <div><strong>가입 화면 미리보기</strong><p>예시 정보로 화면을 확인합니다. 실제 가입·본인인증은 진행되지 않습니다.</p></div>
+      <button id="exit-preview" class="small-button" type="button">미리보기 종료</button>
+    </section>
+
+    <div id="app" class="onboarding-layout" aria-busy="false">
+      <aside class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">KVL MEMBERS</p>
+        <h1 id="page-title">배구를 보는<br>나만의 이름.</h1>
+        <p class="intro-description">닉네임으로 시작하고,<br>실명 공개는 직접 선택하세요.</p>
+        <div class="intro-note">
+          <span class="note-line" aria-hidden="true"></span>
+          <p>이메일 또는 카카오 계정으로 시작합니다.<br>휴대폰 본인확인 후 회원정보를 설정합니다.</p>
+        </div>
+        <div class="principles" aria-label="회원정보 안내">
+          <div><span class="principle-number">01</span><p><b>닉네임이 기본</b><span>게시물에 표시할 이름을 정하세요.</span></p></div>
+          <div><span class="principle-number">02</span><p><b>실명 공개는 선택</b><span>공개 여부를 직접 결정합니다.</span></p></div>
+          <div><span class="principle-number">03</span><p><b>추가 혜택은 추후 안내</b><span>실명 공개 회원을 위한 혜택을 준비합니다.</span></p></div>
+        </div>
+      </aside>
+
+      <div class="flow-column">
+        <div class="flow-heading"><span>회원가입</span><span id="flow-status" class="status-badge" role="status" aria-live="polite">연결 준비 중</span></div>
+        <ol class="steps" aria-label="가입 순서">
+          <li id="step-login" class="is-current" aria-current="step"><span class="step-number">1</span><span>로그인</span></li>
+          <li id="step-identity"><span class="step-number">2</span><span>본인확인</span></li>
+          <li id="step-profile"><span class="step-number">3</span><span>회원정보</span></li>
+        </ol>
+
+        <div id="feedback" class="feedback" tabindex="-1" role="status" aria-live="polite" hidden></div>
+
+        <section id="login-panel" class="card login-card" aria-labelledby="login-title">
+          <div class="section-label">01 · 계정으로 시작하기</div>
+          <h2 id="login-title">K-Volley Lab에 오신 것을 환영해요.</h2>
+          <p class="section-description">편한 방법으로 가입·로그인하세요.</p>
+
+          <div id="connection-banner" class="connection-banner">
+            <strong>회원가입 연결 준비 중</strong>
+            <p>이메일·카카오 로그인과 휴대폰 본인확인 연결 후 이용할 수 있습니다.</p>
+          </div>
+
+          <button id="kakao-login" class="button kakao-button" type="button" disabled>카카오로 시작하기</button>
+          <div class="separator"><span>또는 이메일</span></div>
+          <form id="email-form">
+            <label for="email">이메일 주소</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" maxlength="254" required aria-describedby="email-help" disabled>
+            <p id="email-help" class="field-help">이메일로 보내드리는 링크에서 가입·로그인을 이어갑니다.</p>
+            <button id="send-email" class="button primary" type="submit" disabled>이메일 인증 링크 받기</button>
+          </form>
+          <div id="email-sent-panel" class="email-sent-panel" hidden><strong>이메일을 확인해 주세요.</strong><p>메일에 있는 링크를 현재 사용 중인 브라우저에서 열어 주세요.</p></div>
+
+          <div id="preview-entry" class="preview-entry">
+            <p>먼저 회원가입 화면을 살펴보세요.</p>
+            <button id="enter-preview" class="button secondary" type="button">가입 화면 미리보기 <span aria-hidden="true">→</span></button>
+            <small>예시 정보로 확인하며 이메일·인증 문자는 발송되지 않습니다.</small>
+          </div>
+        </section>
+
+        <div id="member-panel" hidden>
+          <section class="card identity-card" aria-labelledby="identity-title">
+            <div class="section-title-row"><div><div class="section-label">02 · 휴대폰 본인확인</div><h2 id="identity-title">본인확인을 진행해 주세요.</h2></div><span id="identity-status" class="status-badge muted">확인 전</span></div>
+            <p id="identity-description" class="section-description">본인확인 후 다음 회원 기능을 이용할 수 있습니다.</p>
+            <button id="verify-identity" class="button secondary" type="button" disabled>휴대폰 본인확인</button>
+            <p id="identity-help" class="field-help">본인확인 서비스 연결 후 진행할 수 있습니다.</p>
+          </section>
+
+          <section class="card profile-card" aria-labelledby="profile-heading">
+            <div class="section-label">03 · 회원정보 설정</div>
+            <h2 id="profile-heading" tabindex="-1">어떤 이름으로 활동할까요?</h2>
+            <p class="section-description">닉네임을 정하고, 실명 공개 여부를 선택하세요.</p>
+            <form id="profile-form">
+              <label for="nickname">닉네임 <span class="required-label">필수</span></label>
+              <input id="nickname" name="nickname" type="text" autocomplete="nickname" placeholder="사용할 닉네임을 입력하세요" minlength="2" maxlength="40" required aria-describedby="nickname-help">
+              <p id="nickname-help" class="field-help">2~40자 · 실명을 공개하지 않으면 닉네임이 표시됩니다.</p>
+
+              <div class="name-choice">
+                <label class="switch-label" for="publish-real-name"><span><b>게시물에 실명 공개</b><small>선택 사항 · 기본값은 닉네임입니다.</small></span><span class="switch"><input id="publish-real-name" name="publishRealName" type="checkbox" role="switch" aria-describedby="real-name-choice-help"><span class="switch-track" aria-hidden="true"></span></span></label>
+                <p id="real-name-choice-help" class="choice-help">선택하면 아래 표시 예시가 실명으로 바뀝니다.</p>
+                <div id="real-name-fields" class="real-name-fields" hidden>
+                  <label for="real-name">공개할 실명</label>
+                  <input id="real-name" name="realName" type="text" autocomplete="name" placeholder="공개할 이름을 입력하세요" maxlength="80" aria-describedby="real-name-source">
+                  <p id="real-name-source" class="field-help name-source">직접 입력한 이름 · 본인확인 전</p>
+                </div>
+              </div>
+
+              <section class="author-preview" aria-labelledby="author-preview-title">
+                <div class="preview-heading"><h3 id="author-preview-title">게시물 작성자 표시 예시</h3><span id="author-name-mode">닉네임</span></div>
+                <div class="sample-author"><span id="author-avatar" class="author-avatar" aria-hidden="true">K</span><div><strong id="author-name">닉네임을 입력하세요</strong><p id="author-caption">닉네임으로 표시됩니다.</p></div></div>
+                <p class="example-note">표시 방식만 확인하는 예시이며, 실제 게시물은 변경되지 않습니다.</p>
+              </section>
+
+              <div class="benefit-note"><span aria-hidden="true">+</span><p><strong>실명 공개 회원에게 추가 혜택 제공 예정</strong><small>세부 혜택은 확정 후 안내합니다.</small></p></div>
+              <p id="onboarding-note" class="onboarding-note">본인확인이 필요합니다. 회원정보 화면을 먼저 확인할 수 있습니다.</p>
+              <button id="save-profile" class="button primary" type="submit">회원정보 저장</button>
+            </form>
+          </section>
+          <div class="member-actions"><button id="refresh-profile" class="text-button" type="button">정보 다시 확인</button><button id="logout" class="text-button" type="button">로그아웃</button></div>
+        </div>
+        <noscript><p class="feedback">회원가입 화면을 이용하려면 브라우저에서 JavaScript를 활성화해 주세요.</p></noscript>
+      </div>
+    </div>
+    <footer class="page-footer"><span>K-Volley Lab</span><p>회원가입 화면 시안 · 닉네임 기본 / 실명 공개 선택</p></footer>
+  </main>
+</body>
+</html>

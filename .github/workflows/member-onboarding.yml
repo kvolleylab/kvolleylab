@@ -1,0 +1,28 @@
+name: Member onboarding verification
+
+on:
+  pull_request:
+    paths:
+      - 'prototypes/member-onboarding-v1/**'
+      - 'supabase/**'
+      - 'tests/member-onboarding-*.test.mjs'
+      - 'tools/member-onboarding/**'
+      - '.github/workflows/member-onboarding.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  member-isolation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tools/member-onboarding/package-lock.json
+      - run: npm ci --prefix tools/member-onboarding --no-audit --no-fund
+      - run: npm test --prefix tools/member-onboarding

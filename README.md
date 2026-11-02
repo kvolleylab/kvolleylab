@@ -21,6 +21,8 @@ K-Volley Lab의 목표는 흩어진 배구 자료를 한곳에 모아 선수, �
 
 2026-10-23 선수·드래프트 통합 검수 및 회원 기능 제한: [구현/검증 보고서](docs/PLAYER_DRAFT_INTEGRATION_v1.md).
 
+2026-11-03 이메일·카카오·휴대폰 본인확인 가입 시안: [회원 연결 인계](docs/MEMBER_ONBOARDING_v1.md). Supabase 연결은 확인했으며, 새 프로젝트 생성과 실제 인증 검증 전까지 회원 기능은 비활성입니다.
+
 ## Current Status
 
 | 영역 | 상태 |
