@@ -474,3 +474,9 @@ Status: POLICY APPROVED / FIRST NATIVE RECORD VERIFIED / MANUAL IMPLEMENTATION R
 기존 남자 MASTER의 별도 KVL_현재값확인 26열 탭에 native 실행 native-20261103-oh-current-v1의 한 행을 01:02 KST 저장했다. 실제 재조회에서 선수값 변경0셀·지정 현재등록 범위 보존·기존 적용 이력 보존을 확인했다. 동일 실행으로 공식 자료를 다시 조회한 재시도는 already_verified·추가0행이며 원래 관측·검토 시각을 보존한다. 공개 영수증에서 비공개 MASTER 파생 계획 hash를 제외하고 최초 저장 기록과 이번 재조회 시각을 분리했다.
 
 GitHub는 기존 workflow의 player_current_value_check 수동 입력으로 같은 범위를 구현한다. 새 모드에서 기존 다른 job을 제외하고 기존 WIF·계정·기간을 사용한다. 실제 GitHub 선수 행 읽기·확인 기록 쓰기·재조회는 아직 실행하지 않았다. 기존 pilot은 enabled=false/event_scope=null/BLOCKED_EFFECTIVE_DATE, 승인 사건0건을 유지한다. base56006570b078266470765b991fb81ade68abaa3d, [PR #241](https://github.com/kvolleylab/kvolleylab/pull/241). [승인 기준](proposals/player-current-value-policy-v1.md) · [실제 검증·제약·복구·후속 실행](validation/player-current-value-20261103.md).
+
+## 2026-11-03 · 통합달력 월 카드 공통 규격과 겹침 시안
+
+Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / NOT DEPLOYED TO OPERATING SITE. 최신 main `f7d51ee1264b8f2811fef618e4f01f597acdb154`에서 PR #159의 기존 한국어 3열 카드 시안을 재사용했다. 사용자 요청에 따라 전체 메뉴·HERO·필터·보기·데이터 연결을 유지하고, 11월 2일 공통 경기 달력의 일요일 시작/중앙 날짜/셀 규격을 월 카드 내부에 축소 적용했다. 남자 FIVB Purple·AVC Green·대학 Navy·중고 Orange·프로 Charcoal/Gold, 별도 여자 Rose, 공통 단일 계열색 막대+남/여 배지, 50% 겹침과 Hover 최상단 강조를 검수 시안에 구현했다. 운영 UI 승인으로 확대하지 않는다.
+
+23개 회귀검사 및 PC 1600/1180px·모바일 390/360px 렌더링 확인. 26개 원본 대회·MASTER·ID·기간 데이터 변경 없음. 현재 통합 기간 피드에 프로 대회가 없어 실제 V-리그/KOVO컵 막대는 제공되지 않으며 색상은 격리 fixture로 검증했다. 기존 시안 주소를 유지하고 새 Draft PR에서 사용자 디자인 검수 후 운영 반영한다. [범위·근거·검수·한계·복구](validation/calendar-layer-prototype-20261103.md).
