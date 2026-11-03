@@ -29,6 +29,19 @@ export function selectItems(data,{year=2026,category='',all=false,today=todayKST
   return list.filter(x=>x.showInRecent!==false&&x.startDate&&x.endDate&&x.startDate<=today)
     .sort((a,b)=>(temporalStatus(b,today)==='active')-(temporalStatus(a,today)==='active')||dateSort(a,b)).slice(0,limit);
 }
+// Categories are global; each year's records are filtered independently.
+export function groupByYear(data,{category='',selectedYear=2026,today=todayKST()}={}) {
+  const years=[...new Set([2026,2025,2024,2023,2022,selectedYear,...(data.competitions||[]).map(yearOf).filter(y=>Number.isInteger(y)&&y>0)])].sort((a,b)=>b-a);
+  return years.map(year=>({year,count:(data.competitions||[]).filter(x=>yearOf(x)===year).length,
+    items:selectItems(data,{year,category,all:year!==2026,today})}));
+}
+export function hubUrl(path,{year,category='',all=false}={}) {
+  const params=new URLSearchParams();
+  if(year!==undefined)params.set('year',year);
+  if(all)params.set('view','all');
+  if(category)params.set('category',category);
+  return path+(params.size?'?'+params:'');
+}
 export function displayCard(item,detail,today=todayKST()) {
   const phase=temporalStatus(item,today),c={...item.card};
   c.status=({upcoming:'대회 예정',active:'대회 진행 중',completed:'대회 종료',unknown:'일정 확인 중'})[phase];

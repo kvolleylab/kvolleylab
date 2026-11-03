@@ -1,32 +1,18 @@
-import {CATEGORIES,yearOf,selectItems,displayCard,todayKST} from './international-hub-model-v1.mjs';
+import {CATEGORIES,groupByYear,selectItems,hubUrl,displayCard,todayKST} from './international-hub-model-v1.mjs';
 import {resolveHeroSource,renderCard} from './international-hub-cards-prototype-v1.mjs';
+import {categoryIcon} from './international-hub-icons-v1.mjs';
 const root=document.getElementById('hubContent');
 const params=new URLSearchParams(location.search);
 const selectedYear=/^\d{4}$/.test(params.get('year')||'')?Number(params.get('year')):2026;
 const category=params.get('category')||'';
-const isList=params.get('view')==='all'||Boolean(category);
+const isList=params.get('view')==='all';
+const categoryLabel=CATEGORIES.find(([key])=>key===category)?.[1];
 const today=todayKST();
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const url=(year,category='',all=false)=>{
-  const u=new URL(location.href);u.search='';u.hash='';
-  u.searchParams.set('year',year);
-  if(all)u.searchParams.set('view','all');
-  if(category)u.searchParams.set('category',category);
-  return u.pathname+u.search;
-};
-// Original KVL category pictograms: one 40px canvas, 1.7px strokes, no event logos.
-const ball='<circle cx="28" cy="28" r="8"/><path d="M21 25q8-1 9 10M27 20q-3 7 8 9M21 32q3-5 12-8"/>';
-const iconPaths={
- 'olympic':'<path d="M12 18c-8-5-4-10 0-14 0 6 6 6 3 11-1 2-2 2-3 3ZM9 20h8l-2 15h-4L9 20ZM6 20h14"/>'+ball,
- 'world-championship':'<circle cx="17" cy="17" r="13"/><path d="M4 17h26M17 4c-8 7-8 19 0 26M17 4c7 5 8 12 6 18M7 10h20M6 24h12"/>'+ball,
- 'vnl':'<path d="M4 10h22M4 10v24M26 10v9M5 15h20M5 20h13M5 25h12M10 10v19M16 10v10M22 10v9"/>'+ball,
- 'continental':'<circle cx="17" cy="17" r="13"/><path d="m8 8 6 2 2 6-5 4-5-3M22 7l-2 5 7 4M14 24l1 5M25 4l6 3 3 6"/>'+ball,
- 'asian-games':'<path d="m5 13 4-7 8-2 4 4 7 1 3 6-7 1-2 5-5-3-3 7-5-4-1-6-3-2ZM5 32h10M9 28v8"/>'+ball,
- 'multi-sport':'<path d="m6 4 5 14M14 4l5 14M5 4h9M23 4h8l-6 12M13 19a10 10 0 1 0 4 17"/><path d="m10 25 2 3 4-1-2 4 1 3-4-1-3 1 1-4-2-3Z"/>'+ball
-};
-function shortcuts(year,active=''){
- return '<nav class="hub-shortcuts" aria-label="'+year+'년 대회 종류">'+CATEGORIES.map(([key,label])=>
-  '<a class="hub-shortcut" href="'+url(year,key)+'"'+(active===key?' aria-current="page"':'')+'><span class="hub-shortcut-icon"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+iconPaths[key]+'</svg></span><span>'+label+'</span></a>').join('')+'</nav>';
+const url=(year,category='',all=false)=>hubUrl(location.pathname,{year,category,all});
+function shortcuts(){
+ return '<section class="hub-navigation" aria-labelledby="hub-category-heading"><div class="hub-navigation-heading"><h2 id="hub-category-heading">대회 종류</h2>'+(category?'<a class="hub-reset" href="'+url()+'">국제대회 홈 <span aria-hidden="true">↗</span></a>':'')+'</div><nav class="hub-shortcuts" aria-label="국제대회 전체 연도 대회 종류">'+CATEGORIES.map(([key,label])=>
+  '<a class="hub-shortcut" href="'+url(undefined,category===key?'':key)+'"'+(category===key?' aria-current="true" aria-label="'+label+' 선택 해제"':'')+'><span class="hub-shortcut-icon">'+categoryIcon(key)+'</span><span>'+label+'</span></a>').join('')+'</nav></section>';
 }
 const mediaCache=new Map(),detailCache=new Map();
 async function fetchJSON(path){const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();}
@@ -51,7 +37,7 @@ async function fillGrid(grid,items,empty){
  grid.dataset.loaded='true';
 }
 function yearBlock(year,open,count){
- return '<section class="hub-year" data-year="'+year+'"><div class="hub-year-heading"><h2><button class="hub-year-toggle" type="button" aria-expanded="'+open+'" aria-controls="year-'+year+'"><span>'+year+'년</span><svg class="hub-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m7 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button></h2>'+(count?'<a class="hub-all-link" href="'+url(year,'',true)+'">전체대회보기 <span aria-hidden="true">→</span></a>':'')+'</div><div class="hub-year-body" id="year-'+year+'"'+(open?'':' hidden')+'><div class="senior-featured-grid"></div>'+shortcuts(year)+'</div></section>';
+ return '<section class="hub-year" data-year="'+year+'"><div class="hub-year-heading"><h2><button class="hub-year-toggle" type="button" aria-expanded="'+open+'" aria-controls="year-'+year+'"><span>'+year+'년</span><svg class="hub-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="m7 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button></h2>'+(count?'<a class="hub-all-link" href="'+url(year,category,true)+'">전체대회보기 <span aria-hidden="true">→</span></a>':'')+'</div><div class="hub-year-body" id="year-'+year+'"'+(open?'':' hidden')+'><div class="senior-featured-grid"></div></div></section>';
 }
 async function start(){
  root.setAttribute('aria-busy','true');
@@ -59,18 +45,16 @@ async function start(){
   const data=await fetchJSON('data/international/senior-competitions.json');
   if(!Array.isArray(data.competitions))throw Error('Invalid competition list');
   if(isList){
-   const label=CATEGORIES.find(([key])=>key===category)?.[1];
-   const items=category&&!label?[]:selectItems(data,{year:selectedYear,category,all:true,today});
-   root.innerHTML='<section class="hub-list"><a class="hub-back" href="'+url(selectedYear)+'">← 연도별 국제대회</a><div class="hub-list-heading"><h2>'+selectedYear+'년 '+esc(label||'전체 국제대회')+'</h2><span>'+items.length+'개 대회</span></div>'+shortcuts(selectedYear,category)+'<div class="hub-list-controls"><p>'+ (category?'선택한 종류의 등록 대회를 최신순으로 확인하세요.':'예정 대회를 포함한 전체 등록 대회를 최신순으로 확인하세요.')+'</p>'+(category?'<a class="hub-all-link" href="'+url(selectedYear,'',true)+'">전체대회보기 →</a>':'')+'</div><div class="senior-featured-grid"></div></section>';
-   await fillGrid(root.querySelector('.senior-featured-grid'),items,category&&!label?'등록된 대회 종류가 아닙니다. 위에서 대회 종류를 선택해 주세요.':'등록된 대회가 없습니다.');
+   const items=category&&!categoryLabel?[]:selectItems(data,{year:selectedYear,category,all:true,today});
+   root.innerHTML=shortcuts()+'<section class="hub-list"><a class="hub-back" href="'+url(selectedYear,category)+'">← 연도별 '+esc(categoryLabel||'국제대회')+'</a><div class="hub-list-heading"><h2>'+selectedYear+'년 '+esc(categoryLabel||'전체 국제대회')+'</h2><span>'+items.length+'개 대회</span></div><div class="hub-list-controls"><p>예정 대회를 포함한 전체 등록 대회를 최신순으로 확인하세요.</p></div><div class="senior-featured-grid"></div></section>';
+   await fillGrid(root.querySelector('.senior-featured-grid'),items,category&&!categoryLabel?'등록된 대회 종류가 아닙니다. 위에서 대회 종류를 선택해 주세요.':'등록된 대회가 없습니다.');
   }else{
-   const years=[...new Set([2026,2025,2024,2023,2022,selectedYear,...data.competitions.map(yearOf).filter(Number.isFinite)])].sort((a,b)=>b-a);
-   root.innerHTML='<div class="hub-years">'+years.map(year=>yearBlock(year,year===selectedYear,data.competitions.filter(x=>yearOf(x)===year).length)).join('')+'</div>';
+   const groups=groupByYear(data,{category,selectedYear,today});
+   root.innerHTML=shortcuts()+(category?'<div class="hub-filter-heading"><h2>'+esc(categoryLabel||'등록되지 않은 대회 종류')+'</h2><span>전체 연도 기록</span></div>':'')+'<div class="hub-years">'+groups.map(({year,count})=>yearBlock(year,year===selectedYear,count)).join('')+'</div>';
    const loadYear=async section=>{
     if(section.dataset.loaded)return;section.dataset.loaded='true';
-    const year=Number(section.dataset.year),items=selectItems(data,{year,all:year!==2026,today});
-    if(!data.competitions.some(x=>yearOf(x)===year))section.querySelector('.hub-shortcuts').remove();
-    await fillGrid(section.querySelector('.senior-featured-grid'),items,'검수 완료된 대회부터 순차적으로 추가됩니다.');
+    const group=groups.find(x=>x.year===Number(section.dataset.year));
+    await fillGrid(section.querySelector('.senior-featured-grid'),group.items,category?'등록된 대회가 없습니다.':'검수 완료된 대회부터 순차적으로 추가됩니다.');
    };
    for(const section of root.querySelectorAll('.hub-year')){
     section.querySelector('button').addEventListener('click',()=>{

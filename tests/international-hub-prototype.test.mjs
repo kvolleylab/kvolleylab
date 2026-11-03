@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {selectItems,categoryOf,displayCard,todayKST,dateSort} from '../assets/js/international-hub-model-v1.mjs';
+import {selectItems,categoryOf,displayCard,todayKST,dateSort,groupByYear,hubUrl} from '../assets/js/international-hub-model-v1.mjs';
 const data=JSON.parse(readFileSync(new URL('../data/international/senior-competitions.json',import.meta.url)));
 const today='2026-11-04';
 test('real registry: newest three, all five, existing category counts',()=>{
@@ -32,4 +32,28 @@ test('date ties use startDate descending; games mapping is compatible',()=>{
  assert.equal(categoryOf({family:'games',id:'asian-games-men-2026'}),'asian-games');
  assert.equal(categoryOf({family:'games',id:'pan-american-games'}),'multi-sport');
  assert.equal(categoryOf({family:'continental'}),'continental');
+});
+
+test('global category keeps all years, including future records, without changing home recent limit',()=>{
+ // Test-only fixtures exercise years absent from the real registry; never shipped as content.
+ const fixture={competitions:[
+  {id:'old-vnl',family:'vnl',year:2025,startDate:'2025-06-01',endDate:'2025-08-01'},
+  {id:'old-continental',family:'continental',year:2025,startDate:'2025-07-01',endDate:'2025-09-01'},
+  {id:'new-vnl',family:'vnl',year:2026,startDate:'2026-06-01',endDate:'2026-08-01'},
+  {id:'other-confederation',family:'continental',year:2024,startDate:'2024-06-01',endDate:'2024-08-01'}
+ ]};
+ const groups=groupByYear(fixture,{category:'vnl',today:'2026-01-01'});
+ assert.deepEqual(groups.find(x=>x.year===2026).items.map(x=>x.id),['new-vnl']);
+ assert.deepEqual(groups.find(x=>x.year===2025).items.map(x=>x.id),['old-vnl']);
+ assert.equal(groups.find(x=>x.year===2024).items.length,0);
+ assert.equal(groupByYear(fixture,{category:'continental'}).find(x=>x.year===2024).items[0].id,'other-confederation');
+ assert.equal(groupByYear(data,{today}).find(x=>x.year===2026).items.length,3);
+ assert.equal(groupByYear(data,{category:'olympic',today}).every(x=>!x.items.length),true);
+});
+test('category navigation is year-independent and year all-view preserves category',()=>{
+ const path='/international-competitions-hub-prototype.html';
+ assert.equal(hubUrl(path,{category:'vnl'}),path+'?category=vnl');
+ assert.equal(hubUrl(path,{year:2026,category:'vnl',all:true}),path+'?year=2026&view=all&category=vnl');
+ assert.equal(hubUrl(path,{year:2026,category:'vnl'}),path+'?year=2026&category=vnl');
+ assert.equal(hubUrl(path),path);
 });
