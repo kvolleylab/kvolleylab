@@ -190,7 +190,8 @@ test('mobile first tap opens period information, second tap retains the original
   p.d.body.dispatchEvent(new p.w.Event('pointerdown',{bubbles:true}));assert.equal(tip.hidden,true);p.close();
 });
 test('production calendar, shared UI, Hero images, masters and all data remain byte-for-byte unchanged',()=>{
-  const diff=execFileSync('git',['diff','--name-only','f7d51ee1264b8f2811fef618e4f01f597acdb154','--','competition-calendar.html','index.html','player.html','players.html','domestic-competitions.html','competition-engine.html','university-competition.html','university-competition-danyang.html','data','assets/img','assets/images','assets/js/unified-nav.js','assets/js/kvl-global-sidebar-v1.js','assets/js/competition-calendar-gender-v1.js','assets/js/school-competitions-hub.js','assets/css/competition-calendar-v2.css'],{cwd:root,encoding:'utf8'});
+  // Latest main incorporated in this prototype branch; unrelated approved main changes are preserved.
+  const diff=execFileSync('git',['diff','--name-only','f560f3b0473eca5e3933461f13b725ed4a9cdb32','--','competition-calendar.html','index.html','player.html','players.html','domestic-competitions.html','competition-engine.html','university-competition.html','university-competition-danyang.html','data','assets/img','assets/images','assets/js/unified-nav.js','assets/js/kvl-global-sidebar-v1.js','assets/js/competition-calendar-gender-v1.js','assets/js/school-competitions-hub.js','assets/css/competition-calendar-v2.css'],{cwd:root,encoding:'utf8'});
   assert.equal(diff.trim(),'');
   const prod=read('competition-calendar.html');
   const extract=s=>s.match(/<section class="cc-calendar-hero"[\s\S]*?<\/section>/)[0];
