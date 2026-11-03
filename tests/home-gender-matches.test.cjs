@@ -9,6 +9,7 @@ async function setup({now='2026-11-02T12:00:00Z',edit,fail=()=>false}={}){
  const dom=new JSDOM(html,{url:'https://kvolleylab.com/',runScripts:'outside-only'}),w=dom.window;
  w.Date.now=()=>Date.parse(now);w.fetch=async url=>{const s=url.split('/')[3];requests.push(s);if(fail(s))throw Error('offline');return {ok:true,json:async()=>sources[s]};};
  const ready=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('home did not finish loading')),2000);const observer=new w.MutationObserver(()=>{if(w.document.querySelector('#home-matches').getAttribute('aria-busy')==='false'){clearTimeout(timer);observer.disconnect();resolve();}});observer.observe(w.document.querySelector('#home-matches'),{attributes:true});});
+ w.eval(fs.readFileSync(path.join(root,'assets/js/kvl-competition-data-v2.js'),'utf8'));
  for(const script of w.document.querySelectorAll('script:not([src])'))w.eval(script.textContent);
  await ready;return {w,doc:w.document,sources,before,requests,close:()=>w.close()};
 }
@@ -17,20 +18,21 @@ function game(d,id,date,time,extra={}){return {id,date,time,home:{code:d.partici
 function reset(sources){for(const d of Object.values(sources))d.matches=[];}
 const pick=(doc,kind,g)=>doc.querySelector(`[data-kind="${kind}"] [data-gender="${g}"]`);
 test('operating feeds render both divisions in two cards with exact scores, logos and dated links',async()=>{
- const s=await setup();try{
+ const s=await setup({now:'2026-11-03T14:00:00Z'});try{
   assert.equal(s.requests.length,6);assert.equal(s.doc.querySelectorAll('.match-column').length,2);
   assert.deepEqual([...s.doc.querySelectorAll('[data-match-id]')].map(n=>n.dataset.matchId),['VL2627-M-002','VL2627-W-002','VL2627-M-003','VL2627-W-003']);
   for(const g of ['men','women'])for(const kind of ['recent','next']){const row=pick(s.doc,kind,g),url=new URL(row.href);assert.equal(url.searchParams.get('competition'),slug(g));assert.equal(url.searchParams.get('view'),'schedule');assert.equal(url.searchParams.get('date'),kind==='recent'?'2026-11-01':'2026-11-03');assert.equal(row.querySelectorAll('img').length,2);for(const img of row.querySelectorAll('img'))assert(fs.existsSync(path.join(root,new URL(img.src).pathname)));}
   assert.match(pick(s.doc,'recent','women').textContent,/흥국생명.*3 : 0.*SOOP/s);
   assert.deepEqual([...pick(s.doc,'recent','women').querySelectorAll('abbr')].map(n=>n.textContent),['25–20','25–20','25–22']);
-  assert.match(pick(s.doc,'next','women').textContent,/IBK기업은행.*VS.*현대건설/s);
+  assert.match(s.doc.querySelector('[data-kind=next] h3').textContent,/오늘 경기/);
+  for(const g of ['men','women']){const match=s.sources[slug(g)].matches.find(m=>m.id==='VL2627-'+(g==='men'?'M':'W')+'-003');assert.equal(pick(s.doc,'next',g).querySelector('.match-score').textContent,`${match.score.home} : ${match.score.away}`);assert.match(pick(s.doc,'next',g).textContent,/종료/);}
   assert.equal(s.doc.querySelectorAll('#match-source a').length,1);assert.match(s.doc.querySelector('#match-source').textContent,/KOVO 공식 홈페이지/);assert(!s.doc.querySelector('#match-source').textContent.includes('U-리그 공식 자료'));
   assert.equal(JSON.stringify(s.sources),s.before);
  }finally{s.close();}
 });
 test('each division selects independently and excludes unverified, partial, cancelled and invalid fixtures',async()=>{
  const s=await setup({edit:sources=>{reset(sources);for(const g of ['men','women']){const d=sources[slug(g)],date=g==='men'?'2026-11-01':'2026-10-30';d.matches=[game(d,g+'-final',date,'14:00',{score,scoreVerification:true,status:'final'}),game(d,g+'-partial','2026-11-02','10:00',{score:{home:2,away:1},scoreVerification:true}),game(d,g+'-unverified','2026-11-02','11:00',{score,scoreVerification:false}),game(d,g+'-cancelled','2026-11-03','10:00',{status:'cancelled'}),game(d,g+'-live','2026-11-02','12:00',{score,scoreVerification:true,status:'live'}),game(d,g+'-invalid','2026-11-31','10:00'),game(d,g+'-unknown','2026-11-03','11:00',{home:{code:'MISSING'}}),game(d,g+'-next','2026-11-04','19:00')];}}});try{
-  for(const g of ['men','women']){assert.equal(pick(s.doc,'recent',g).dataset.matchId,g+'-final');assert.equal(pick(s.doc,'next',g).dataset.matchId,g+'-next');assert.equal(pick(s.doc,'recent',g).querySelectorAll('abbr').length,5);}
+  for(const g of ['men','women']){assert.equal(pick(s.doc,'recent',g).dataset.matchId,g+'-final');assert.equal(pick(s.doc,'next',g).dataset.matchId,g+'-live');assert.match(pick(s.doc,'next',g).textContent,/상태 확인 중/);assert.equal(pick(s.doc,'next',g).querySelector('.match-score').textContent,'VS');assert.equal(pick(s.doc,'recent',g).querySelectorAll('abbr').length,5);}
   assert.equal(JSON.stringify(s.sources),s.before);
  }finally{s.close();}
 });

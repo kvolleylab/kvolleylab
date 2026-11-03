@@ -33,11 +33,13 @@ if(!candidateRoot){
  const originalCandidate=JSON.stringify(sources);
 
  function expectedPicks(gender){
-  const eligible=sources[gender].matches.filter(m=>m.notRequired!==true&&!['live','postponed','cancelled','not_required'].includes(m.status));
+  const eligible=sources[gender].matches.filter(m=>m.notRequired!==true&&!['postponed','cancelled','not_required'].includes(m.status));
   const stamp=m=>Date.parse(`${m.date}T${m.time}:00+09:00`);
   const ordered=list=>list.slice().sort((a,b)=>stamp(a)-stamp(b)||a.id.localeCompare(b.id));
-  return {recent:ordered(eligible.filter(m=>m.status==='final'&&m.score&&stamp(m)<=observedAt)).at(-1)||null,
-          next:ordered(eligible.filter(m=>m.status==='scheduled'&&!m.score&&stamp(m)>=observedAt))[0]||null};
+  const today=new Date(observedAt+9*3600000).toISOString().slice(0,10),sameDay=ordered(eligible.filter(m=>m.date===today));
+  assert(sameDay.length<=1,'this actual-season integration expects one match per division per date');
+  return {recent:ordered(eligible.filter(m=>m.status==='final'&&m.score&&stamp(m)<=observedAt&&(!sameDay.length||m.date<today))).at(-1)||null,
+          next:sameDay[0]||ordered(eligible.filter(m=>m.status==='scheduled'&&!m.score&&stamp(m)>=observedAt))[0]||null};
  }
 
  async function render(gender,width){
@@ -122,15 +124,16 @@ if(!candidateRoot){
       const anchor=card.querySelector(`[data-kind="${kind}"] .dv2-summary-game`),match=picks[kind];
       if(!match){assert.equal(anchor,null);continue;}
       assert.equal(anchor.dataset.matchId,match.id);
+      if(kind==='next'&&match.date===new Date(observedAt+9*3600000).toISOString().slice(0,10))assert.match(anchor.parentElement.querySelector('h4').textContent,/오늘 경기/);
       const href=new URL(anchor.href);
       assert.equal(href.searchParams.get('competition'),`v-league-${division}-2026-27`);
       assert.equal(href.searchParams.get('date'),match.date);assert.equal(href.searchParams.get('view'),'schedule');
-      if(kind==='recent'){
+      if(match.status==='final'){
        assert.equal(anchor.querySelector('.dv2-summary-score').textContent,`${match.score.home} : ${match.score.away}`);
        assert.deepEqual([...anchor.querySelectorAll('.dv2-summary-sets > span')].map(s=>s.textContent),match.score.sets.map(s=>`${s.home}–${s.away}`));
       }else{
-       assert.equal(anchor.querySelector('.dv2-summary-score').textContent,'VS');
-       assert(!sources[division].matches.filter(m=>m.status==='final').some(m=>m.id===match.id),'completed game cannot remain next');
+       const score=match.liveScore;
+       assert.equal(anchor.querySelector('.dv2-summary-score').textContent,score?`${score.home} : ${score.away}`:'VS');
       }
      }
     }
