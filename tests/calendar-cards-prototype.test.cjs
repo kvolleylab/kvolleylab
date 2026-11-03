@@ -10,12 +10,13 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const source=read('assets/js/competition-calendar-cards-prototype-v1.js');
 const period=JSON.parse(read('data/calendar/2026-competition-periods.json'));
 const genders=JSON.parse(read('data/calendar/2026-competition-genders.json'));
+const domestic=JSON.parse(read('data/calendar/2026-domestic-competitions.json'));
 const html=read('competition-calendar-cards-prototype.html');
 async function mount(query='view=year&year=2026',options={}){
   const dom=new JSDOM(html,{url:'https://calendar.test/competition-calendar-cards-prototype.html?'+query,runScripts:'outside-only',pretendToBeVisual:true});
   const w=dom.window;w.matchMedia=()=>({matches:options.mobile||false});w.scrollTo=()=>{};
   const data=options.data||period;let copied='';w.KVLCalendarLayerPriority=options.priority;
-  w.fetch=async url=>({ok:!options.missingData&&(url.includes('periods')||!options.missingGenders),json:async()=>url.includes('periods')?structuredClone(data):structuredClone(options.genders||genders)});
+  w.fetch=async url=>({ok:!options.missingData&&(url.includes('periods')||!options.missingGenders)&&!(url.includes('domestic-competitions')&&options.missingLocations),json:async()=>structuredClone(url.includes('periods')?data:url.includes('domestic-competitions')?(options.domestic||domestic):(options.genders||genders))});
   Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async text=>{copied=text}}});
   w.eval(options.source||source);
   for(let i=0;i<30;i++)await Promise.resolve();
@@ -196,14 +197,14 @@ test('production calendar, shared UI, Hero images, masters and all data remain b
   assert.equal(extract(html),extract(prod));assert.match(html,/max-width:1180px/);
 });
 
-test('separate women always use official Rose; annual joint events remain a text-free family-colored bar',async()=>{
+test('separate women always use official Rose; annual joint events retain their family color and gender tooltip',async()=>{
   const fixtures=[['fivb-men','FIVB 남자','international',['men'],'#5B3A8E'],['avc-men','AVC 남자','international',['men'],'#176638'],['university-men','대학 남자','domestic-university',['men'],'#1B223A'],['school-men','중고 남자','domestic-school',['men'],'#D97706'],['v-league-men','V-리그 남자','vleague',['men'],'#252525'],['kovo-cup-men','KOVO컵 남자','domestic-pro',['men'],'#252525'],['fivb-women','FIVB 여자','international',['women'],'#8E315E'],['avc-women','AVC 여자','international',['women'],'#8E315E'],['university-women','대학 여자','domestic-university',['women'],'#8E315E'],['school-women','중고 여자','domestic-school',['women'],'#8E315E'],['v-league-women','V-리그 여자','vleague',['women'],'#8E315E'],['kovo-cup-women','KOVO컵 여자','domestic-pro',['women'],'#8E315E'],['university-joint','대학 남녀공통','domestic-university',['men','women'],'#1B223A']];
   // Isolated fixtures verify future inputs; they are never published as schedules.
   const data={categories:period.categories,events:fixtures.map(([id,title,category],i)=>({id,title,category,start:`2026-01-${String(i+1).padStart(2,'0')}`,end:`2026-01-${String(i+1).padStart(2,'0')}`,href:'competition-engine.html?competition='+id}))};
   const map={schema:'calendar-genders-v1',year:2026,events:Object.fromEntries(fixtures.map(([id,,,g])=>[id,{genders:g}]))};
   const before=JSON.stringify({data,map});const p=await mount('view=year&year=2026',{data,genders:map});
   for(const [id,,,,color] of fixtures){const bars=p.d.querySelectorAll(`[data-range-event="${id}"]`);assert.equal(bars.length,1);assert.equal(bars[0].style.getPropertyValue('--event-color'),color);assert.equal(bars[0].classList.contains('is-pro'),color==='#252525');}
-  const joint=p.d.querySelector('[data-range-event="university-joint"]');assert.equal(joint.textContent,'');joint.dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));assert.match(p.d.querySelector('#ccRangeTooltip').textContent,/남녀공통/);
+  const joint=p.d.querySelector('[data-range-event="university-joint"]');assert.match(joint.textContent,/대학 남녀공통/);joint.dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));assert.match(p.d.querySelector('#ccRangeTooltip').textContent,/남녀공통/);
   assert.equal(JSON.stringify({data,map}),before);p.close();
 });
 test('overlapping priority is pro, international, university, school and is configurable',async()=>{
@@ -255,10 +256,10 @@ function pairedFixture(){
   ];
   return {data:{categories:period.categories,events:events.map(([id,title,start,end])=>({id,title,start,end,category:'international',href:`competition-engine.html?competition=${id}#schedule`}))},genders:{schema:'calendar-genders-v1',year:2026,events:Object.fromEntries(events.map(([id,,,,g])=>[id,{genders:[g]}]))}};
 }
-test('annual bars have no visible title or badges; every original 2026 event and month geometry are preserved',async()=>{
+test('annual bars show names and locations; every original 2026 event and month geometry are preserved',async()=>{
   for(const category of ['all','international','domestic','vleague']){
     const query='view=year&year=2026&category='+category,p=await mount(query),before=await mount(query,{source:baselineSource});
-    for(const bar of p.d.querySelectorAll('.cc-card-period')){assert.equal(bar.textContent,'');assert.equal(bar.children.length,0);assert.ok(bar.getAttribute('aria-label'));}
+    for(const bar of p.d.querySelectorAll('.cc-card-period')){assert.ok(bar.querySelector('span').textContent.trim());assert.match(bar.textContent,/ \(.+\)$/);assert.ok(bar.getAttribute('aria-label'));assert.doesNotMatch(bar.textContent,/장소 미등록/);}
     const shape=x=>[...x.d.querySelectorAll('.cc-card-board')].map(e=>({cls:e.className,rows:e.style.getPropertyValue('--calendar-rows')}));
     assert.deepEqual(shape(p),shape(before));
     const coverage=x=>[...x.d.querySelectorAll('[data-range-event]')].map(e=>[e.dataset.rangeEvent,e.dataset.rangeStart,e.dataset.rangeEnd]);
@@ -305,10 +306,46 @@ test('ambiguous duplicate candidates are not collapsed into an invented shared c
   const fixture=pairedFixture();fixture.data.events.push({...fixture.data.events[0],id:'duplicate-men'});fixture.genders.events['duplicate-men']={genders:['men']};
   const p=await mount('view=year&year=2026',fixture);for(const id of ['avc-men-test','avc-women-test','duplicate-men']){const a=p.d.querySelector(`[data-range-event="${id}"]`);assert.deepEqual(JSON.parse(a.dataset.rangeMembers),[id]);}p.close();
 });
-test('monthly displayed period labels, badges, colors, links and row sizing are unchanged for all twelve months',async()=>{
+test('monthly badges, colors, links and row sizing are preserved while labels gain locations for all twelve months',async()=>{
   for(let month=1;month<=12;month++){
     const query=`view=month&year=2026&month=${month}`,p=await mount(query),before=await mount(query,{source:baselineSource});
-    const view=x=>({bars:[...x.d.querySelectorAll('.cc-card-period')].map(a=>({text:a.innerHTML,href:a.href,style:a.getAttribute('style')})),rows:x.d.querySelector('.cc-card-board').getAttribute('style')});
-    assert.deepEqual(view(p),view(before));p.close();before.close();
+    const view=x=>({bars:[...x.d.querySelectorAll('.cc-card-period')].map(a=>({badges:a.querySelector('.cc-joint-badges')?.innerHTML,href:a.href,style:a.getAttribute('style')})),rows:x.d.querySelector('.cc-card-board').getAttribute('style')});
+    assert.deepEqual(view(p),view(before));
+    for(const a of p.d.querySelectorAll('.cc-card-period>span')){assert.match(a.textContent,/ \(.+\)$/);assert.doesNotMatch(a.textContent,/장소 미등록/);}
+    p.close();before.close();
   }
+});
+
+test('locations use existing exact-ID metadata, deduplicate old suffixes and appear in full tooltip titles',async()=>{
+  const p=await mount('view=year&year=2026');
+  for(const [id,label] of [
+    ['ibk-middle-high-2026','IBK배 중고배구대회 (충북 제천)'],
+    ['cbs-middle-high-2026','CBS배 중고배구대회 (경북 영천)'],
+    ['danyang-university-2026','대학배구 단양대회 (충북 단양)'],
+    ['spring-middle-high-2026','춘계 중고연맹전 (충북 단양)'],
+    ['avc-men-continental-2026','AVC 남자 대륙선수권 (일본 후쿠오카현 / 기타큐슈)']
+  ]){
+    const a=p.d.querySelector(`[data-range-event="${id}"]`);assert.equal(a.textContent,label);
+    a.dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));
+    const e=period.events.find(e=>e.id===id);assert.ok(p.d.querySelector('#ccRangeTooltip strong').textContent.startsWith(e.title+' ('));
+    assert.match(a.getAttribute('aria-label'),/ \(.+\)/);
+  }
+  p.close();
+});
+test('optional location feed failure retains all events, original periods/links and known locations',async()=>{
+  const p=await mount('view=year&year=2026',{missingLocations:true});
+  assert.equal(new Set([...p.d.querySelectorAll('[data-range-event]')].map(a=>a.dataset.rangeEvent)).size,26);
+  assert.match(p.d.querySelector('[data-range-event="spring-middle-high-2026"]').textContent,/장소 미등록/);
+  assert.match(p.d.querySelector('[data-range-event="vnl-men-2026"]').textContent,/예선 다국가/);
+  const a=p.d.querySelector('[data-range-event="ibk-middle-high-2026"]');assert.equal(a.textContent,'IBK배 중고배구대회(제천)');
+  p.close();
+});
+test('location strings are escaped; unrelated parentheses and each merged member location are retained',async()=>{
+  const fixture=pairedFixture();fixture.data.events[0].location='서울 <체육관>';fixture.data.events[1].location='부산 & 경기장';
+  fixture.data.events[0].short_title='AVC 남자 선수권 (결선)';
+  const p=await mount('view=year&year=2026',fixture),a=p.d.querySelector('[data-range-event="avc-men-test"]');
+  assert.match(a.textContent,/AVC 남자 선수권 \(결선\) \(서울 <체육관>\)/);assert.match(a.textContent,/부산 & 경기장/);
+  assert.equal(a.querySelector('체육관'),null);a.dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));
+  assert.equal(p.d.querySelectorAll('#ccRangeTooltip strong').length,2);assert.match(p.d.querySelector('#ccRangeTooltip').textContent,/부산 & 경기장/);
+  p.close();
 });

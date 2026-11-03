@@ -484,3 +484,7 @@ Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / NOT DEPLOYED TO OPERATING 
 ## 2026-11-03 · 통합달력 연간 막대 가독성 v4
 
 Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYED. 기존 PR #243 시안의 전체 디자인·카드 크기·날짜 배치를 보존하고 연간 막대 텍스트를 제거한다. 6px 막대/3px 간격(50% 겹침), 기존 계열색, 기존 Tooltip에 전체 정보 및 남녀공통 표시를 적용했다. 같은 대회·같은 전체 기간의 남녀 한 쌍만 표시 단계에서 통합하며 원본 ID와 두 링크를 보존한다. 성별 필터와 월간보기는 각각의 원본을 사용한다. 현재 26개 실제 데이터에 새로운 통합 쌍은 없으며 데이터 삭제·일정 변경·우선순위에 따른 숨김은 하지 않았다. v3의 연간 대회명/배지 표시 결정을 이번 시안에서 대체한다. 29개 회귀검사와 수정 전후 12개 카드 위치/크기 일치·7~9월 겹친 막대 접근성·모바일 월간 보존을 검수했다. [비교·검증·범위·복구](validation/calendar-readability-prototype-20261103.md).
+
+## 2026-11-03 · 통합달력 운영 막대 모양과 장소 v5
+
+Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYED. 사용자가 현재 시안 달력을 그대로 두고 막대는 운영 통합달력의 디자인으로, 기존 색상 기준은 유지하며 대회명 뒤에 `(장소)`를 요청했다. v4 무텍스트6px 막대를 대체해 운영의 옅은 배경·얇은 테두리·16px/8px 글자 규격과 이름을 적용한다. 기존 50% 겹침 및 달력 크기/날짜 배치를 보존하고 겹침의 노출 영역에 글자를 배치한다. 장소는 기존 공개 기간 피드 및 같은 ID의 국내 일정 메타데이터만 읽으며 원본 데이터·기간·ID·링크를 수정하지 않는다. 연간/월간 막대와 Tooltip/상세 제목에 장소를 표시하고 기존 장소 괄호는 중복하지 않는다. 최신 main `f560f3b0473eca5e3933461f13b725ed4a9cdb32`, Draft PR #243. 32개 회귀검사·PC 전후 카드/날짜 geometry 일치·모바일360px·Tooltip 검수 완료. [범위·출처·검수·복구](validation/calendar-bar-location-prototype-20261103.md).

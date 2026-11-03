@@ -210,25 +210,38 @@
 
 .cc-cards-prototype .cc-card-day.is-compact{padding-top:2px;padding-bottom:2px}
 
-/* Annual readability v4: calendar geometry is unchanged; only its overlay
-   becomes a 6px stroke with a 3px step (50% overlap). */
-.cc-cards-prototype .cc-card-board.is-compact .cc-card-week-ranges{grid-auto-rows:3px}
+/* v5: production integrated-calendar bar skin; retain the prototype's
+   calendar geometry, 50% layer spacing, palette and floating tooltip.
+   Labels sit in the exposed half so overlap never strikes through the text. */
+.cc-cards-prototype .cc-card-board.is-compact .cc-card-week-ranges{grid-auto-rows:8px}
+.cc-cards-prototype #competitionCalendar .cc-card-period,
 .cc-cards-prototype #competitionCalendar .cc-card-period.is-compact{
- height:6px;min-height:0;padding:0;border-width:1px 2px;border-radius:3px;
- background:color-mix(in srgb,var(--event-color) 48%,#fff);
- border-top-color:color-mix(in srgb,var(--event-color) 30%,#fff);
- border-bottom-color:color-mix(in srgb,var(--event-color) 70%,#fff);
- box-shadow:none;gap:0;
+ height:26px;min-height:0;margin:0 3px;padding:0 9px;border:1px solid color-mix(in srgb,var(--event-color) 38%,#d7dee8);
+ border-radius:4px;background:color-mix(in srgb,var(--event-color) 22%,white);box-shadow:none;
+ color:#334155;font-size:12px!important;font-weight:600!important;line-height:16px!important;letter-spacing:-.01em;
+ align-items:flex-end;gap:3px;
 }
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.continues-before{border-left-width:0;border-top-left-radius:0;border-bottom-left-radius:0}
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.continues-after{border-right-width:0;border-top-right-radius:0;border-bottom-right-radius:0}
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-pro{background:#252525;border-color:#c9a44c}
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-range-active,
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact:focus-visible{
- z-index:200;background:color-mix(in srgb,var(--event-color) 76%,#fff);box-shadow:0 0 0 1px var(--event-color);
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact{
+ height:16px;padding:0 5px;border-radius:3px;font-size:8px!important;line-height:14px!important;
 }
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-pro.is-range-active,
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-pro:focus-visible{background:#252525;box-shadow:0 0 0 1px #c9a44c}
+.cc-cards-prototype #competitionCalendar .cc-card-period>span{
+ display:block;visibility:visible;align-self:flex-end!important;line-height:12px!important;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:inherit;font-weight:600;
+}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact>span{line-height:8px!important;transform:translateY(1px)}
+.cc-cards-prototype #competitionCalendar .cc-card-period.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
+.cc-cards-prototype #competitionCalendar .cc-card-period.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-range-active,
+.cc-cards-prototype #competitionCalendar .cc-card-period:focus-visible{
+ z-index:200;filter:none;transform:none;box-shadow:none;
+ border-color:color-mix(in srgb,var(--event-color) 55%,#cbd5e1);background:color-mix(in srgb,var(--event-color) 28%,white);
+}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-pro,
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-pro.is-range-active,
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-pro:focus-visible{background:#252525;color:#f3d389;border-color:#c9a44c}
+@media(max-width:680px){
+ .cc-cards-prototype #competitionCalendar .cc-card-period:not(.is-compact){height:24px;padding:0 5px;font-size:10px!important;line-height:12px!important}
+}
 .cc-range-tooltip-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
 .cc-range-tooltip-links a{color:#e8c879;font-size:11px;text-decoration:underline;text-underline-offset:3px}
 .cc-range-tooltip-links a:focus-visible{outline:2px solid #e8c879;outline-offset:3px}
