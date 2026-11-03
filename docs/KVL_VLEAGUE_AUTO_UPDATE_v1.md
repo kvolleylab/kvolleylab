@@ -172,3 +172,16 @@ Sheets의 쓰기 전/후 대조도 원자적 compare-and-swap은 아니다. 자�
 - [GitHub Pages 빌드 API](https://docs.github.com/en/rest/pages/pages#request-a-github-pages-build)
 - [GITHUB_TOKEN push와 Pages 빌드](https://docs.github.com/en/actions/concepts/security/github_token)
 - [예약 이벤트의 시간·제약](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
+
+
+## 2026-11-03 · 오늘 경기 요약과 관측 세트 스코어
+
+홈과 V-리그의 기존 다음 경기 칸은 KST 오늘 경기를 우선하여 경기 전·진행·종료까지 유지한다. 최근 결과에는 같은 날 경기를 중복 노출하지 않고, 다음 날부터 확정 결과로 이동한다. 새 카드/구역을 추가하지 않는다. 남녀는 독립 선택하며 같은 날 여러 경기는 진행 중, 시작 시각이 지난 미확인 경기, 예정, 종료 순서로 한 경기만 보여준다. 전체 일정 링크는 유지한다.
+
+기존 공식 `stat/game-schedule` 수집기의 `live` 판정과 `sets_won`만 별도 `liveScore`로 전달한다. 필드는 `home`, `away`, 정확한 `sourceKey`, 실제 수집 시각 `observedAt`이다. 기존 `score`·세트별 최종 점수·검수 완료·승패·순위에는 포함하지 않는다. 최종 결과 확인 시 `liveScore`를 제거한다. 세트 승수 또는 진행 상태의 역행은 검토 대상으로 중지한다. 경기 중 포인트, 현재 세트 번호, 실시간 중계는 지원했다고 표시하지 않는다.
+
+브라우저는 공식 출처 URL/경기 연결 키/당일 관측 시각/유효한 세트 승수를 검사한다. 유효한 관측만 점수와 확인 시각을 표시하며 30분이 지나면 ‘갱신 지연’으로 바꾼다. 관측 없는 진행 상태나 시작 시각만 지난 예정 경기는 ‘상태 확인 중’과 VS로 유지한다. 종료로 추측하지 않는다.
+
+기존 15분 수집 일정과 전체 시즌·MASTER·게시 gate를 유지한다. 진행 중인 경기만 실제 재관측 시각이 갱신되어 같은 세트 스코어라도 JSON을 갱신할 수 있다. 이는 현재 점수의 마지막 실제 확인 시각을 보존하기 위한 제한된 예외이며 동일 관측 재실행은 변경0이다. 진행 경기가 없고 원문 내용이 동일하면 기존 무변경 게시 방지를 유지한다. 화면이 보일 때 기존 공개 JSON을 5분마다 다시 읽고 1분마다 날짜/지연 상태를 계산한다. 다운로드 시각을 공식 확인 시각으로 사용하지 않는다.
+
+실제 검증·운영 재시도 및 진행 중 관측의 미확인 범위는 [검수 기록](validation/today-match-summary-20261103.md)을 따른다.

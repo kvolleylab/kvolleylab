@@ -474,3 +474,12 @@ Status: POLICY APPROVED / FIRST NATIVE RECORD VERIFIED / MANUAL IMPLEMENTATION R
 기존 남자 MASTER의 별도 KVL_현재값확인 26열 탭에 native 실행 native-20261103-oh-current-v1의 한 행을 01:02 KST 저장했다. 실제 재조회에서 선수값 변경0셀·지정 현재등록 범위 보존·기존 적용 이력 보존을 확인했다. 동일 실행으로 공식 자료를 다시 조회한 재시도는 already_verified·추가0행이며 원래 관측·검토 시각을 보존한다. 공개 영수증에서 비공개 MASTER 파생 계획 hash를 제외하고 최초 저장 기록과 이번 재조회 시각을 분리했다.
 
 GitHub는 기존 workflow의 player_current_value_check 수동 입력으로 같은 범위를 구현한다. 새 모드에서 기존 다른 job을 제외하고 기존 WIF·계정·기간을 사용한다. 실제 GitHub 선수 행 읽기·확인 기록 쓰기·재조회는 아직 실행하지 않았다. 기존 pilot은 enabled=false/event_scope=null/BLOCKED_EFFECTIVE_DATE, 승인 사건0건을 유지한다. base56006570b078266470765b991fb81ade68abaa3d, [PR #241](https://github.com/kvolleylab/kvolleylab/pull/241). [승인 기준](proposals/player-current-value-policy-v1.md) · [실제 검증·제약·복구·후속 실행](validation/player-current-value-20261103.md).
+
+
+## 2026-11-03 · 홈·V-리그 기존 칸에 오늘 경기 유지
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 병합·Pages·운영 화면의 최종 증거는 release PR에서 확인한다. 사용자는 오늘 경기가 최근/다음 사이에서 사라지는 문제와 15분 점수 확인 불가를 지적했고, 별도 구역 추가는 PC/모바일 공간을 차지하므로 기존 두 칸을 유지하는 제안에 “그렇게 만들어줘”라고 요청했다. 오늘 경기는 기존 다음 칸에서 KST 당일 경기 전·진행·종료까지 유지한다. 최근 결과는 오늘 이전의 확정 결과, 오늘 없으면 기존 다음 일정을 표시한다. 남녀는 독립이며 중복 없이 다음 날 자동 전환한다. 이전 홈·대회 요약의 ‘진행 중 제외/시작 시각 이후 다음 경기 제외’ 결정을 이 표시 범위에서 대체한다.
+
+공식 일정 수집에서 이미 확인하는 세트 승수만 별도 liveScore와 실제 관측 시각으로 연결한다. 최종 score/승패/순위/선수값과 분리하고 경기 연결·공식 출처·관측 시각을 검증한다. 갱신 지연과 상태 미확인을 구분하며 포인트·현재 세트 번호를 추정하지 않는다. 기존 수집 주기·MASTER 게시 gate·ID·명단·달력·검색·메뉴를 보존한다. 진행 중에만 실제 관측 시각 갱신을 허용하고 동일 관측은 변경0이다.
+
+Initial base `f7d51ee1264b8f2811fef618e4f01f597acdb154`, release base `f70e3d1271e8c49f0e2cf2b64e258444e46cc70c`: 기존 자동화가 게시한 오늘 실제 남녀 결과를 보존한다. 실제 경기 MASTER를 읽었으며 수동 결과 쓰기는 하지 않았다. 실패했던 기존 예약 실행41621555027의 failed-jobs 재실행은 공식 수집·MASTER 재조회·Pages 공개 검증까지 성공했다. 실제 진행 중 관측을 이번 세션에서 완료했다고 확대하지 않는다. [표시 계약·테스트·복구·제약](validation/today-match-summary-20261103.md).

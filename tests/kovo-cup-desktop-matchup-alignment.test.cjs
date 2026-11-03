@@ -89,7 +89,7 @@ for(const sideWidth of [164,192,230,240]){
 assert(read('assets/css/kvl-competition-components-v2.css').includes(':is([data-kvl-family="domestic"],[data-kvl-presentation="international-home-v2"]) :is(#schedule,#team-results) .kvl1180-match-board'), 'existing baseline stays in common competition components CSS');
 assert(css.includes('kvl-pro-cup-domestic-v2'));
 for(const html of ['competition-engine.html','kovo-cup-domestic-template-prototype.html']){
-  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-(?:club-rosters-flags|vleague-rosters|vleague-overview|vleague-matches))-1|20261028-selected-hero-v03|20261028-comprehensive-layout-1|20261028-comprehensive-region-marks-1|20261028-hero-half-1|20261101-vnl-production-1|20261101-vleague-calendar-[123]|20261102-vleague-mobile-2|20261102-calendar-(?:standard|entry)-1|20261102-hero-cover-1|20261102-hero-navigation-1|20261102-overview-standings-1)/,'cache-bust '+html);
+  assert.match(read(html),/kvl-domestic-home-v2\.css\?v=(?:(?:20261027-(?:cup-pc-labels-tight|club-rosters)|20261028-(?:club-rosters-flags|vleague-rosters|vleague-overview|vleague-matches))-1|20261028-selected-hero-v03|20261028-comprehensive-layout-1|20261028-comprehensive-region-marks-1|20261028-hero-half-1|20261101-vnl-production-1|20261101-vleague-calendar-[123]|20261102-vleague-mobile-2|20261102-calendar-(?:standard|entry)-1|20261102-hero-cover-1|20261102-hero-navigation-1|20261102-overview-standings-1|20261103-today-summary-1)/,'cache-bust '+html);
 }
 console.log('PASS: Cup PC matchup centered with equal team-to-score gaps; five-set lane and mobile layout protected');
 

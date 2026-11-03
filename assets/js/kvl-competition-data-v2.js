@@ -28,6 +28,51 @@ function rosterTarget(d,ref){
  return {available:!!safe,mode,code:t.code,url:safe?url:null};
 }
 function pair(set){const h=set?.home??set?.[0],a=set?.away??set?.[1];return h!==null&&h!==undefined&&h!==''&&a!==null&&a!==undefined&&a!==''&&Number.isFinite(Number(h))&&Number.isFinite(Number(a))?{home:Number(h),away:Number(a)}:null;}
+// Shared home / V-League two-slot summary. Dates are always Korea-local.
+function summaryClock(m){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(m?.date||''))return null;
+ const day=Date.parse(m.date+'T00:00:00+09:00');
+ if(!Number.isFinite(day)||new Date(day+9*3600000).toISOString().slice(0,10)!==m.date)return null;
+ const timed=typeof m.time==='string'&&m.time.trim()!=='';
+ if(timed&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(m.time))return null;
+ const at=timed?Date.parse(m.date+'T'+m.time+':00+09:00'):null;
+ return {day,at,sort:at??day+86399999};
+}
+const summaryStatus=m=>String(m.status||'').toLowerCase();
+const summaryLive=m=>['live','in_progress','in-progress','진행중','경기중'].includes(summaryStatus(m));
+function summaryFinal(m,{requireVerification=false}={}){
+ const s=m.score,status=summaryStatus(m);
+ const allowed=requireVerification?['','final','completed','finished','종료']:['','scheduled','upcoming','예정','final','completed','finished','종료'];
+ return allowed.includes(status)&&(requireVerification?Boolean(m.scoreVerification):m.scoreVerification!==false)&&s&&Number.isInteger(s.home)&&Number.isInteger(s.away)&&Math.max(s.home,s.away)===3&&Math.min(s.home,s.away)>=0&&Math.min(s.home,s.away)<3;
+}
+function selectMatchSummary(matches,now=Date.now(),options={}){
+ const today=new Date(now+9*3600000).toISOString().slice(0,10);
+ const excluded=['cancelled','canceled','postponed','abandoned','not_required','취소','연기','미실시'];
+ const records=list(matches).map(m=>({m,c:summaryClock(m)})).filter(r=>r.c&&!r.m.notRequired&&!excluded.includes(summaryStatus(r.m)));
+ const byTime=(a,b)=>a.c.sort-b.c.sort||String(a.m.id).localeCompare(String(b.m.id));
+ // In-play first, then elapsed/unconfirmed, upcoming and today's final result.
+ const priority=r=>summaryLive(r.m)?0:summaryFinal(r.m,options)?3:r.c.at!==null&&r.c.at<=now?1:2;
+ const sameDay=records.filter(r=>r.m.date===today).sort((a,b)=>priority(a)-priority(b)||byTime(a,b));
+ const todayMatch=sameDay[0]?.m||null;
+ const recent=records.filter(r=>summaryFinal(r.m,options)&&(todayMatch?r.m.date<today:r.c.at===null?r.m.date<=today:r.c.at<=now)).sort(byTime).at(-1)?.m||null;
+ const future=records.filter(r=>!r.m.score&&['','scheduled','upcoming','예정'].includes(summaryStatus(r.m))&&(r.c.at===null?r.m.date>=today:r.c.at>=now)).sort(byTime)[0]?.m||null;
+ return {recent,next:todayMatch||future,today,hasToday:!!todayMatch};
+}
+function matchSummaryState(m,now=Date.now(),options={}){
+ const c=summaryClock(m),today=new Date(now+9*3600000).toISOString().slice(0,10),isToday=m.date===today;
+ const finished=summaryFinal(m,options)&&c&&(c.at===null?m.date<=today:c.at<=now);
+ if(finished)return {kind:'final',label:isToday?'오늘 경기 종료':'경기 종료',finished:true,score:m.score,detail:''};
+ if(summaryLive(m)){
+  const p=m.liveScore,observed=Date.parse(p?.observedAt||'');let source;try{source=new URL(m.source);}catch{};
+  const valid=p&&p.sourceKey===m.officialSourceKey&&/^023:001:(MALE|FEMALE):\d+$/.test(p.sourceKey||'')&&source?.origin==='https://user-api.kovo.co.kr'&&source.pathname==='/stat/game-schedule'&&Number.isInteger(p.home)&&Number.isInteger(p.away)&&p.home>=0&&p.home<3&&p.away>=0&&p.away<3&&Number.isFinite(observed)&&observed<=now+60000&&c&&observed>=c.day&&new Date(observed+9*3600000).toISOString().slice(0,10)===m.date;
+  const stale=!valid||now-observed>30*60000;
+  const stamp=valid?new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(observed)):'';
+  return {kind:stale?'stale':'live',label:!valid?'상태 확인 중':stale?'갱신 지연':'진행 중',finished:false,score:valid?p:null,detail:valid?'세트 스코어 · '+stamp+' 확인':'세트 스코어 확인 중'};
+ }
+ if(['suspended','중단'].includes(summaryStatus(m)))return {kind:'waiting',label:'경기 중단',finished:false,score:null,detail:'공식 경기 상태 확인 중'};
+ if(c&&(c.at!==null&&c.at<=now||['final','completed','finished','종료'].includes(summaryStatus(m))))return {kind:'waiting',label:'상태 확인 중',finished:false,score:null,detail:'공식 경기 상태 확인 중'};
+ return {kind:'scheduled',label:isToday?'오늘 경기 예정':'경기 예정',finished:false,score:null,detail:''};
+}
 function validate(d,{production=false}={}){
  const errors=[];
  for(const key of ['competitionId','displayName','officialName'])if(typeof d[key]!=='string'||!d[key].trim())errors.push(key+' is required');
@@ -85,5 +130,5 @@ function normalize(source){
  d.participants=list(d.participants);d.resources=list(d.resources);d.finalRanking=list(d.finalRanking);d.qualifications=list(d.qualifications);d.rosters=d.rosters||{};
  return d;
 }
-return {validate,normalize,pair,participant,localTimeLabel,rosterTarget,supportedModes:MODES};
+return {validate,normalize,pair,participant,localTimeLabel,rosterTarget,selectMatchSummary,matchSummaryState,supportedModes:MODES};
 });
