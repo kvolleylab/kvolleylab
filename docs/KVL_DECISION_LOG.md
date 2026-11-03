@@ -497,3 +497,7 @@ Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYE
 ## 2026-11-03 · 통합달력 운영 막대 모양과 장소 v5
 
 Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYED. 사용자가 현재 시안 달력을 그대로 두고 막대는 운영 통합달력의 디자인으로, 기존 색상 기준은 유지하며 대회명 뒤에 `(장소)`를 요청했다. v4 무텍스트6px 막대를 대체해 운영의 옅은 배경·얇은 테두리·16px/8px 글자 규격과 이름을 적용한다. 기존 50% 겹침 및 달력 크기/날짜 배치를 보존하고 겹침의 노출 영역에 글자를 배치한다. 장소는 기존 공개 기간 피드 및 같은 ID의 국내 일정 메타데이터만 읽으며 원본 데이터·기간·ID·링크를 수정하지 않는다. 연간/월간 막대와 Tooltip/상세 제목에 장소를 표시하고 기존 장소 괄호는 중복하지 않는다. 최신 main `f560f3b0473eca5e3933461f13b725ed4a9cdb32`, Draft PR #243. 32개 회귀검사·PC 전후 카드/날짜 geometry 일치·모바일360px·Tooltip 검수 완료. [범위·출처·검수·복구](validation/calendar-bar-location-prototype-20261103.md).
+
+## 2026-11-03 · 통합달력 막대 분리·중앙 정렬·종료 표현 v6
+
+Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYED. 사용자가 막대 겹침 제거·글자 세로 중앙·종료 대회 막대와 말풍선의 흐림을 요청했다. 연간16px/18px 간격, 월간26px/30px, 모바일 월간24px/28px로 전체 행을 확보하고 글자·배지를 중앙 정렬한다. 기존 50% 겹침 및 하단 글자 배치를 대체한다. 겹침을 없애는 데 필요한 만큼 밀집 주의 높이를 늘리며 3열×4행·달력 디자인·색상·대회명 뒤 장소·모든 일정은 유지한다. 운영 통합달력의 `.62` 종료 opacity를 막대와 별도 고정 Tooltip에 적용하고 KST 종료일 다음 날부터 종료 처리한다. 최신 main `f560f3b0473eca5e3933461f13b725ed4a9cdb32`, Draft PR #243. 33개 회귀검사와 PC/360px 연간·월간의 겹침0·중앙 오차0·가로 넘침 없음 확인. 원본 데이터·MASTER·ID·링크 변경 및 운영 배포 없음. [근거·검증·제약·복구](validation/calendar-separated-prototype-20261103.md).

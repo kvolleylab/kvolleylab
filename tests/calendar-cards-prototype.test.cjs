@@ -15,6 +15,7 @@ const html=read('competition-calendar-cards-prototype.html');
 async function mount(query='view=year&year=2026',options={}){
   const dom=new JSDOM(html,{url:'https://calendar.test/competition-calendar-cards-prototype.html?'+query,runScripts:'outside-only',pretendToBeVisual:true});
   const w=dom.window;w.matchMedia=()=>({matches:options.mobile||false});w.scrollTo=()=>{};
+  if(options.now){const NativeDate=w.Date;w.Date=class extends NativeDate{constructor(...args){super(...(args.length?args:[options.now]))}static now(){return new NativeDate(options.now).getTime()}};}
   const data=options.data||period;let copied='';w.KVLCalendarLayerPriority=options.priority;
   w.fetch=async url=>({ok:!options.missingData&&(url.includes('periods')||!options.missingGenders)&&!(url.includes('domestic-competitions')&&options.missingLocations),json:async()=>structuredClone(url.includes('periods')?data:url.includes('domestic-competitions')?(options.domestic||domestic):(options.genders||genders))});
   Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async text=>{copied=text}}});
@@ -257,7 +258,7 @@ function pairedFixture(){
   ];
   return {data:{categories:period.categories,events:events.map(([id,title,start,end])=>({id,title,start,end,category:'international',href:`competition-engine.html?competition=${id}#schedule`}))},genders:{schema:'calendar-genders-v1',year:2026,events:Object.fromEntries(events.map(([id,,,,g])=>[id,{genders:[g]}]))}};
 }
-test('annual bars show names and locations; every original 2026 event and month geometry are preserved',async()=>{
+test('annual bars show names and locations; every original 2026 event and row-sizing expression are preserved',async()=>{
   for(const category of ['all','international','domestic','vleague']){
     const query='view=year&year=2026&category='+category,p=await mount(query),before=await mount(query,{source:baselineSource});
     for(const bar of p.d.querySelectorAll('.cc-card-period')){assert.ok(bar.querySelector('span').textContent.trim());assert.match(bar.textContent,/ \(.+\)$/);assert.ok(bar.getAttribute('aria-label'));assert.doesNotMatch(bar.textContent,/장소 미등록/);}
@@ -291,7 +292,7 @@ test('gender filters retain their own event/color/link and monthly view keeps bo
   const monthly=await mount('view=month&year=2026&month=8',fixture);
   for(const id of ['avc-men-test','avc-women-test']){const a=monthly.d.querySelector(`[data-range-event="${id}"]`);assert.ok(a.textContent.trim());assert.deepEqual(JSON.parse(a.dataset.rangeMembers),[id]);}monthly.close();
 });
-test('merging does not alter date geometry or leave duplicate/omitted days across month and week boundaries',async()=>{
+test('merging preserves row-sizing expressions and does not leave duplicate/omitted days across month and week boundaries',async()=>{
   const fixture=pairedFixture(),p=await mount('view=year&year=2026',fixture),before=await mount('view=year&year=2026',{...fixture,source:baselineSource});
   assert.deepEqual([...p.d.querySelectorAll('.cc-card-board')].map(e=>e.getAttribute('style')),[...before.d.querySelectorAll('.cc-card-board')].map(e=>e.getAttribute('style')));
   for(const sourceEvent of fixture.data.events){
@@ -349,4 +350,27 @@ test('location strings are escaped; unrelated parentheses and each merged member
   assert.equal(a.querySelector('체육관'),null);a.dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));
   assert.equal(p.d.querySelectorAll('#ccRangeTooltip strong').length,2);assert.match(p.d.querySelector('#ccRangeTooltip').textContent,/부산 & 경기장/);
   p.close();
+});
+
+test('ended bars and shared tooltip change at the KST day after the inclusive end date',async()=>{
+  const data={categories:period.categories,events:[
+    {id:'ended',title:'종료 대회',start:'2026-08-27',end:'2026-08-28'},
+    {id:'ends-today',title:'오늘까지 대회',start:'2026-08-28',end:'2026-08-29'},
+    {id:'next',title:'다음 대회',start:'2026-08-30',end:'2026-08-31'}
+  ].map(e=>({...e,category:'international',location:'서울',href:'competition-engine.html?competition='+e.id}))};
+  const map={schema:'calendar-genders-v1',year:2026,events:Object.fromEntries(data.events.map(e=>[e.id,{genders:['men']}]))};
+  for(const [now,states] of [
+    ['2026-08-29T14:59:59Z',['ended','live','upcoming']],
+    ['2026-08-29T15:00:00Z',['ended','ended','live']]
+  ])for(const view of ['year','month']){
+    const p=await mount(`view=${view}&year=2026&month=8`,{data,genders:map,now});
+    for(const [i,e] of data.events.entries()){
+      const bars=[...p.d.querySelectorAll(`[data-range-event="${e.id}"]`)];assert.ok(bars.length);
+      assert.ok(bars.every(a=>a.classList.contains('status-'+states[i])));
+      bars[0].dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));
+      const tip=p.d.querySelector('#ccRangeTooltip');assert.equal(tip.classList.contains('status-ended'),states[i]==='ended');
+      assert.match(tip.textContent,/서울/);assert.equal(tip.hidden,false);
+    }
+    p.close();
+  }
 });

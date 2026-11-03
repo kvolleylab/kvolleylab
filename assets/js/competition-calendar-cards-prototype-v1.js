@@ -149,6 +149,7 @@
     const joint=members.length>1,annual=anchor.classList.contains('is-compact');
     clearTimeout(hideRangeTimer);activeRange?.removeAttribute('aria-describedby');activeRange=anchor;
     root.querySelectorAll('[data-range-event]').forEach(a=>a.classList.toggle('is-range-active',rangeMembers(a).some(e=>members.some(member=>member.id===e.id))));
+    rangeTip.classList.toggle('status-ended',statusOf(event)==='ended');
     const genderText=joint?'남 · 여 (동일기간)':genderLabel(event);
     const group=annual?`${esc(labelOf(event.category))} · `:'';
     rangeTip.innerHTML=`${members.map(e=>`<strong>${esc(titleWithLocation(e,e.title))}</strong>`).join('')}<span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${group}${esc(familyLabels[familyOf(event)])} · ${esc(genderText)}</span>${joint?`<span class="cc-range-tooltip-links">${members.map(e=>`<a href="${esc(eventHref(e))}">${esc(genderLabel(e))} 대회 보기 →</a>`).join('')}</span>`:`<span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`}`;
@@ -237,8 +238,8 @@
         weeks[week].push({event,col,span,start:segmentStart,end:segmentEnd});cursor+=span;
       }
     });
-    // Repack each week to avoid empty lanes. Earlier/higher priority layers are
-    // in front; every later layer exposes its lower half, including both ends.
+    // Repack each week to avoid empty lanes. Priority orders the separated
+    // rows; CSS reserves a complete bar plus a gap for every occupied lane.
     weeks.forEach(items=>{
       const occupied=[];
       items.sort((a,b)=>priority[familyOf(a.event)]-priority[familyOf(b.event)]||a.event.start.localeCompare(b.event.start)||a.event.id.localeCompare(b.event.id));
@@ -258,7 +259,7 @@
     const title=members.map(e=>titleWithLocation(e,e.title)).join(' / ');
     // Production-style labels return in both views. Full titles and locations
     // remain available in the existing tooltip when the bar is ellipsized.
-    return `<a class="cc-card-period ${compact?'is-compact':''} ${before?'continues-before':''} ${after?'continues-after':''} ${colorOf(event)===palette.pro?'is-pro':''}" href="${esc(href)}" data-range-event="${esc(event.id)}" data-range-members="${esc(JSON.stringify(members.map(e=>e.id)))}" data-range-start="${start}" data-range-end="${end}" data-range-lane="${lane}" data-family="${family}" aria-label="${esc(title)} · ${esc(genderLabel(event))} · ${formatDate(event.start)} – ${formatDate(event.end)}" style="--event-color:${colorOf(event)};--layer:${lane};grid-column:${col+1}/span ${span};grid-row:${lane+1}"><span>${esc(periodTitle(event))}</span>${compact?'':badges(event)}</a>`;
+    return `<a class="cc-card-period status-${statusOf(event)} ${compact?'is-compact':''} ${before?'continues-before':''} ${after?'continues-after':''} ${colorOf(event)===palette.pro?'is-pro':''}" href="${esc(href)}" data-range-event="${esc(event.id)}" data-range-members="${esc(JSON.stringify(members.map(e=>e.id)))}" data-range-start="${start}" data-range-end="${end}" data-range-lane="${lane}" data-family="${family}" aria-label="${esc(title)} · ${esc(genderLabel(event))} · ${formatDate(event.start)} – ${formatDate(event.end)}" style="--event-color:${colorOf(event)};--layer:${lane};grid-column:${col+1}/span ${span};grid-row:${lane+1}"><span>${esc(periodTitle(event))}</span>${compact?'':badges(event)}</a>`;
   }
   function grid(m,compact){
     const first=civil(year,m,1),offset=first.getUTCDay(),last=civil(year,m+1,0).getUTCDate();
@@ -277,7 +278,7 @@
     }
     const sizingWeeks=rangeWeeks(m,compact,cells,offset);
     const weeks=compact?rangeWeeks(m,compact,cells,offset,annualPeriods(visibleEvents())):sizingWeeks;
-    // Preserve the existing card and date geometry independently of the bar skin.
+    // Reserve each complete lane below the dates. Busy weeks grow only as needed.
     const rows=sizingWeeks.map(items=>`minmax(var(--range-min-week),calc(var(--range-date-height) + ${Math.max(0,...items.map(s=>s.lane))} * var(--range-lane-height) + var(--range-bar-height) + 2px))`).join(' ');
     return `<div class="cc-card-weekdays">${t.weekdays.map((s,i)=>`<span class="${i===0?'is-sunday':i===6?'is-saturday':''}">${s}</span>`).join('')}</div><div class="cc-card-board ${compact?'is-compact':''} ${compact&&sizingWeeks.some(items=>items.some(s=>s.lane>=3))?'is-dense':''}" style="--calendar-rows:${rows}"><div class="cc-card-grid ${compact?'is-compact':''}" data-calendar-month="${m}" data-start-weekday="0">${days}</div><div class="cc-card-period-layer">${weeks.map((items,index)=>`<div class="cc-card-week-ranges" data-range-week="${index}" style="grid-row:${index+1}">${items.map(item=>rangeBar(item,compact)).join('')}</div>`).join('')}</div></div>`;
   }

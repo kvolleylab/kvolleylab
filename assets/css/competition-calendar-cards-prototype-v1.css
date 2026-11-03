@@ -141,10 +141,10 @@
 .cc-card-period.is-compact>span{visibility:hidden}
 .cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
 .cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
-.cc-range-tooltip{position:fixed;z-index:2500;box-sizing:border-box;width:max-content;max-width:min(360px,calc(100vw - 24px));padding:15px 18px 13px;border:1px solid #ffffff38;border-radius:13px;background:rgba(16,35,63,.87);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 30px #10233f28;color:#fff;font-family:Arial,sans-serif;line-height:1.55;pointer-events:auto;overflow-wrap:anywhere}
+.cc-range-tooltip{position:fixed;z-index:2500;box-sizing:border-box;width:max-content;max-width:min(360px,calc(100vw - 24px));padding:15px 18px 13px;border:1px solid #ffffff38;border-radius:13px;background:var(--tip-bg,rgba(16,35,63,.87));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 30px #10233f28;color:#fff;font-family:Arial,sans-serif;line-height:1.55;pointer-events:auto;overflow-wrap:anywhere}
 .cc-range-tooltip[hidden]{display:none}
-.cc-range-tooltip:after{content:"";position:absolute;left:var(--tip-arrow,20px);top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:rgba(16,35,63,.87)}
-.cc-range-tooltip.is-below:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:rgba(16,35,63,.87)}
+.cc-range-tooltip:after{content:"";position:absolute;left:var(--tip-arrow,20px);top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--tip-bg,rgba(16,35,63,.87))}
+.cc-range-tooltip.is-below:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--tip-bg,rgba(16,35,63,.87))}
 .cc-range-tooltip>strong{display:block;font-size:13px;font-weight:750;word-break:keep-all}
 .cc-range-tooltip-date{display:block;font-size:12px;margin-top:6px;font-weight:650;white-space:normal}
 .cc-range-tooltip-date em{font-size:10px;font-style:normal;color:#dae6f1;white-space:nowrap}
@@ -166,8 +166,8 @@
 .cc-cards-prototype .cc-card-weekdays>span{padding:5px 0;font-size:11px;font-weight:600;color:#7d8b9c}
 .cc-cards-prototype .cc-card-weekdays .is-sunday,.cc-cards-prototype .cc-card-day.is-sunday .cc-card-day-number{color:#c53040}
 .cc-cards-prototype .cc-card-weekdays .is-saturday,.cc-cards-prototype .cc-card-day.is-saturday .cc-card-day-number{color:#2c6cb0}
-.cc-cards-prototype .cc-card-board{--range-min-week:78px;--range-date-height:32px;--range-bar-height:26px;--range-lane-height:13px;--range-gap:0px}
-.cc-cards-prototype .cc-card-board.is-compact{--range-min-week:44px;--range-date-height:22px;--range-bar-height:18px;--range-lane-height:9px;--range-gap:0px}
+.cc-cards-prototype .cc-card-board{--range-min-week:78px;--range-date-height:32px;--range-bar-height:26px;--range-lane-height:30px;--range-gap:0px}
+.cc-cards-prototype .cc-card-board.is-compact{--range-min-week:44px;--range-date-height:22px;--range-bar-height:16px;--range-lane-height:18px;--range-gap:0px}
 .cc-cards-prototype .cc-card-grid,.cc-cards-prototype .cc-card-grid.is-compact{gap:0;grid-template-rows:var(--calendar-rows)}
 .cc-cards-prototype .cc-card-day,.cc-cards-prototype .cc-card-day.is-compact{border:0;border-radius:7px;padding:5px 2px;gap:8px;box-shadow:none}
 .cc-cards-prototype .cc-card-day.has-events{background:#f0f4f8;box-shadow:inset 0 0 0 2px #fff}
@@ -194,8 +194,8 @@
 .cc-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .cc-cards-prototype .cc-card-month-foot{font-size:11px}
 @media(max-width:680px){
- .cc-cards-prototype .cc-card-board{--range-min-week:66px;--range-date-height:27px;--range-bar-height:24px;--range-lane-height:12px}
- .cc-cards-prototype .cc-card-board.is-compact{--range-min-week:44px;--range-date-height:22px;--range-bar-height:18px;--range-lane-height:9px}
+ .cc-cards-prototype .cc-card-board{--range-min-week:66px;--range-date-height:27px;--range-bar-height:24px;--range-lane-height:28px}
+ .cc-cards-prototype .cc-card-board.is-compact{--range-min-week:44px;--range-date-height:22px;--range-bar-height:16px;--range-lane-height:18px}
  .cc-year-select select{font-size:18px;max-width:95px}
  .cc-cards-prototype #competitionCalendar .cc-card-period{font-size:10px}
 }
@@ -203,32 +203,32 @@
 .cc-cards-prototype .cc-card-board.is-compact .cc-card-period{font-size:9px!important;line-height:9px!important}
 .cc-cards-prototype .cc-card-board.is-compact .cc-card-period>span{line-height:9px!important}
 
-.cc-cards-prototype .cc-card-board.is-compact.is-dense{--range-date-height:20px;--range-bar-height:16px;--range-lane-height:8px}
+.cc-cards-prototype .cc-card-board.is-compact.is-dense{--range-date-height:22px;--range-bar-height:16px;--range-lane-height:18px}
 .cc-cards-prototype .cc-card-board.is-compact.is-dense .cc-card-period{font-size:8px!important;line-height:8px!important}
 .cc-cards-prototype .cc-card-board.is-compact.is-dense .cc-card-period>span{line-height:8px!important}
 .cc-cards-prototype .cc-card-board.is-compact.is-dense .cc-joint-badges{font-size:7px;line-height:8px}
 
 .cc-cards-prototype .cc-card-day.is-compact{padding-top:2px;padding-bottom:2px}
 
-/* v5: production integrated-calendar bar skin; retain the prototype's
-   calendar geometry, 50% layer spacing, palette and floating tooltip.
-   Labels sit in the exposed half so overlap never strikes through the text. */
-.cc-cards-prototype .cc-card-board.is-compact .cc-card-week-ranges{grid-auto-rows:8px}
+/* v6: full-height separated lanes, centered labels, and the production
+   ended-state opacity. The weekly sizing formula reserves all required lanes. */
+.cc-cards-prototype .cc-card-board.is-compact .cc-card-week-ranges{grid-auto-rows:var(--range-lane-height)}
 .cc-cards-prototype #competitionCalendar .cc-card-period,
 .cc-cards-prototype #competitionCalendar .cc-card-period.is-compact{
  height:26px;min-height:0;margin:0 3px;padding:0 9px;border:1px solid color-mix(in srgb,var(--event-color) 38%,#d7dee8);
  border-radius:4px;background:color-mix(in srgb,var(--event-color) 22%,white);box-shadow:none;
  color:#334155;font-size:12px!important;font-weight:600!important;line-height:16px!important;letter-spacing:-.01em;
- align-items:flex-end;gap:3px;
+ align-items:center;gap:3px;
 }
 .cc-cards-prototype #competitionCalendar .cc-card-period.is-compact{
  height:16px;padding:0 5px;border-radius:3px;font-size:8px!important;line-height:14px!important;
 }
 .cc-cards-prototype #competitionCalendar .cc-card-period>span{
- display:block;visibility:visible;align-self:flex-end!important;line-height:12px!important;
+ display:block;visibility:visible;align-self:center!important;line-height:16px!important;
  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:inherit;font-weight:600;
 }
-.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact>span{line-height:8px!important;transform:translateY(1px)}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact>span{line-height:14px!important;transform:none}
+.cc-cards-prototype #competitionCalendar .cc-card-period .cc-joint-badges{align-self:center}
 .cc-cards-prototype #competitionCalendar .cc-card-period.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
 .cc-cards-prototype #competitionCalendar .cc-card-period.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
 .cc-cards-prototype #competitionCalendar .cc-card-period.is-range-active,
@@ -245,3 +245,8 @@
 .cc-range-tooltip-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
 .cc-range-tooltip-links a{color:#e8c879;font-size:11px;text-decoration:underline;text-underline-offset:3px}
 .cc-range-tooltip-links a:focus-visible{outline:2px solid #e8c879;outline-offset:3px}
+
+/* The live calendar places its tooltip inside a .62-opacity ended bar.
+   Our viewport-safe tooltip is separate, so it receives that opacity itself. */
+.cc-cards-prototype #competitionCalendar .cc-card-period.status-ended{opacity:.62}
+.cc-range-tooltip.status-ended{--tip-bg:#10233f;opacity:.62;-webkit-backdrop-filter:none;backdrop-filter:none}
