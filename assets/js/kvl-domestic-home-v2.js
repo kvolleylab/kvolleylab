@@ -128,14 +128,8 @@ function matchClock(m){
  return {day,at:minutes===null?null:day+minutes*60000,sort:day+(minutes===null?86399999:minutes*60000)};
 }
 function selectOverviewMatches(d,now=Date.now()){
- const today=new Date(now+9*3600000).toISOString().slice(0,10),api=window.KVLCompetitionDataV2;
- const excluded=new Set(['cancelled','canceled','postponed','abandoned','suspended','live','in_progress','in-progress','취소','연기','중단','진행중','경기중']);
- const records=(d.matches||[]).map(m=>({m,clock:matchClock(m)})).filter(r=>r.clock&&!isNotRequired(r.m)&&!excluded.has(String(r.m.status||'').toLowerCase())&&api.participant(d,r.m.home)&&api.participant(d,r.m.away));
- const final=m=>{const s=m.score;return s&&Number.isInteger(s.home)&&Number.isInteger(s.away)&&Math.max(s.home,s.away)===3&&Math.min(s.home,s.away)>=0&&Math.min(s.home,s.away)<3&&m.scoreVerification!==false;};
- const byTime=(a,b)=>a.clock.sort-b.clock.sort||String(a.m.id).localeCompare(String(b.m.id));
- const recent=records.filter(r=>final(r.m)&&(r.clock.at===null?r.m.date<=today:r.clock.at<=now)).sort(byTime).at(-1)?.m||null;
- const next=records.filter(r=>!r.m.score&&(r.clock.at===null?r.m.date>=today:r.clock.at>=now)&&!['completed','finished','종료'].includes(String(r.m.status||'').toLowerCase())).sort(byTime)[0]?.m||null;
- return {recent,next,today};
+ const api=window.KVLCompetitionDataV2;
+ return api.selectMatchSummary((d.matches||[]).filter(m=>api.participant(d,m.home)&&api.participant(d,m.away)),now);
 }
 function divisionSchedule(d,gender,date){
  const u=new URL(d.genderLinks?.[gender]||location.href,location.href);
@@ -145,13 +139,13 @@ function divisionSchedule(d,gender,date){
  return u.pathname+u.search;
 }
 function summaryGame(d,m,kind,today){
- const title=kind==='recent'?'최근 결과':'다음 경기';
+ const title=kind==='recent'?'최근 결과':m?.date===today?'오늘 경기':'다음 경기';
  if(!m)return `<section class="dv2-summary-slot" data-kind="${kind}"><h4>${title}</h4><div class="dv2-summary-empty"><b>${kind==='recent'?'아직 확인된 경기 결과가 없습니다.':'확인된 다음 일정이 없습니다.'}</b><span>${kind==='recent'?'이번 시즌 경기 종료 후 표시합니다.':'일정이 확정되면 표시합니다.'}</span></div></section>`;
- const finished=kind==='recent',api=window.KVLCompetitionDataV2,home=api.participant(d,m.home),away=api.participant(d,m.away);
+ const api=window.KVLCompetitionDataV2,state=api.matchSummaryState(m),finished=state.finished,home=api.participant(d,m.home),away=api.participant(d,m.away);
  const date=new Intl.DateTimeFormat('ko-KR',{month:'numeric',day:'numeric',weekday:'short',timeZone:'Asia/Seoul'}).format(new Date(m.date+'T12:00:00+09:00'));
  const side=(t,win,role)=>`<span class="dv2-summary-side${win?' is-winner':''}">${teamLogo(t)}<b>${esc(t.name||t.fullName)}</b><small>${role}</small></span>`;
  const sets=finished?(m.score.sets||[]).map((s,i)=>{const p=api.pair(s);return p?`<span aria-label="${i+1}세트 ${p.home} 대 ${p.away}">${p.home}–${p.away}</span>`:'';}).join(''):'';
- return `<section class="dv2-summary-slot" data-kind="${kind}"><h4>${title}${m.date===today?'<span class="dv2-summary-today">오늘</span>':''}</h4><a class="dv2-summary-game" data-match-id="${esc(m.id)}" href="${esc(divisionSchedule(d,d.gender,m.date))}"><span class="dv2-summary-when">${esc(date)} · ${esc(m.time?m.time+' KST':'시간 미정')}${m.stage?' · '+esc(m.stage):''}</span><span class="dv2-summary-matchup">${side(home,finished&&m.score.home>m.score.away,'홈')}<strong class="dv2-summary-score">${finished?`${m.score.home} : ${m.score.away}`:'VS'}</strong>${side(away,finished&&m.score.away>m.score.home,'원정')}</span>${finished?`<span class="dv2-summary-sets" aria-label="세트별 점수">${sets||'세트별 점수 확인 중'}</span>`:''}<span class="dv2-summary-venue">${esc(m.venueLabel||'경기장 미정')}</span><span class="dv2-summary-cta">${finished?'경기 결과 보기':'경기 일정 보기'} ›</span></a></section>`;
+ return `<section class="dv2-summary-slot" data-kind="${kind}"><h4>${title}${kind==='next'?`<span class="dv2-summary-today" data-match-state="${state.kind}">${esc(state.label.replace(/^오늘 경기 /,'').replace('경기 예정','예정'))}</span>`:''}</h4><a class="dv2-summary-game" data-match-id="${esc(m.id)}" href="${esc(divisionSchedule(d,d.gender,m.date))}"><span class="dv2-summary-when">${esc(date)} · ${esc(m.time?m.time+' KST':'시간 미정')}${m.stage?' · '+esc(m.stage):''}</span><span class="dv2-summary-matchup">${side(home,finished&&m.score.home>m.score.away,'홈')}<strong class="dv2-summary-score">${state.score?`${state.score.home} : ${state.score.away}`:'VS'}</strong>${side(away,finished&&m.score.away>m.score.home,'원정')}</span>${finished?`<span class="dv2-summary-sets" aria-label="세트별 점수">${sets||'세트별 점수 확인 중'}</span>`:''}<span class="dv2-summary-venue">${esc(state.detail||(m.venueLabel||'경기장 미정'))}</span><span class="dv2-summary-cta">${finished?'경기 결과 보기':state.kind==='scheduled'?'경기 일정 보기':'경기 현황 보기'} ›</span></a></section>`;
 }
 function summaryDivision(d){
  const picked=selectOverviewMatches(d);
@@ -173,14 +167,20 @@ async function loadSummaryDivision(d,gender){
 function overviewMatches(d,before){
  if(d.structure?.overviewMatches?.mode!=='recent-next'||d.structure.presentationCategory!=='pro-league')return;
  const section=document.createElement('section');section.className='dv2-overview-matches kvl1180-view';section.dataset.view='overview';section.setAttribute('aria-labelledby','dv2-overview-matches-title');
- section.innerHTML='<div class="dv2-heading"><h2 id="dv2-overview-matches-title">최근 결과 · 다음 경기</h2></div><div class="dv2-division-match-grid"></div><p class="dv2-summary-note">이번 시즌 공식 기록 반영 기준 · 실시간 중계가 아닙니다.</p>';
+ section.innerHTML='<div class="dv2-heading"><h2 id="dv2-overview-matches-title">최근 결과 · 오늘/다음 경기</h2></div><div class="dv2-division-match-grid"></div><p class="dv2-summary-note">이번 시즌 공식 기록 반영 기준 · 실시간 중계가 아닙니다.</p>';
  before.before(section);
  const genders=d.gender==='women'?['women','men']:['men','women'];
  matchesReady=Promise.all(genders.map(async gender=>{
   const label=gender==='men'?'남자부':'여자부',card=document.createElement('article');card.className='dv2-division-matches';card.dataset.summaryGender=gender;
   card.innerHTML=`<header><h3>${label}<small>${esc(d.season)}</small></h3><a href="${esc(divisionSchedule(d,gender))}">${label} 전체 일정 ›</a></header><div class="dv2-summary-body" aria-busy="true"><p class="dv2-summary-loading">경기 정보를 불러오는 중입니다.</p></div>`;
   section.querySelector('.dv2-division-match-grid').append(card);const body=card.querySelector('.dv2-summary-body');
-  try{const source=gender===d.gender?d:await loadSummaryDivision(d,gender);if(section.isConnected)body.innerHTML=summaryDivision(source);}
+  try{
+   let source=gender===d.gender?d:await loadSummaryDivision(d,gender),refreshing=false;
+   const render=()=>{if(section.isConnected){const html=summaryDivision(source);if(body.innerHTML!==html)body.innerHTML=html;}};render();
+   const refresh=async()=>{if(refreshing||document.hidden||!section.isConnected)return;refreshing=true;try{source=await loadSummaryDivision(d,gender);delete body.dataset.refreshFailed;render();}catch{if(section.isConnected)body.dataset.refreshFailed='true';}finally{refreshing=false;}};
+   const clockTimer=setInterval(()=>{if(!section.isConnected){clearInterval(clockTimer);clearInterval(fetchTimer);document.removeEventListener('visibilitychange',refresh);return;}if(!document.hidden)render();},60000);
+   const fetchTimer=setInterval(refresh,300000);document.addEventListener('visibilitychange',refresh);
+  }
   catch{if(section.isConnected)body.innerHTML='<p class="dv2-summary-error" role="status">경기 정보를 불러오지 못했습니다. 위의 전체 일정에서 확인해 주세요.</p>';}
   finally{body.setAttribute('aria-busy','false');}
  }));

@@ -41,10 +41,10 @@ test('selection uses timestamps, excludes partial/cancelled/postponed/future res
   const before=JSON.stringify(d),picked=w.KVLDomesticHomeV2.selectOverviewMatches(d,Date.parse('2026-11-02T00:00:00+09:00'));assert.equal(picked.recent.id,'late');assert.equal(picked.next.id,'next');assert.equal(JSON.stringify(d),before);
  }finally{w.close();}
 });
-test('KST day boundary and elapsed start times never leave an old fixture as the next match',async()=>{
+test('KST day boundary retains elapsed same-day fixture until the next day',async()=>{
  const {w,d,ready}=setup();try{await ready;d.matches=[game(d,'yesterday','2026-10-31','23:00',null),game(d,'unknown-time','2026-11-01','',null),game(d,'scheduled','2026-11-01','14:00',null),game(d,'tomorrow','2026-11-02','14:00',null)];
   let p=w.KVLDomesticHomeV2.selectOverviewMatches(d,Date.parse('2026-10-31T15:30:00Z'));assert.equal(p.today,'2026-11-01');assert.equal(p.next.id,'scheduled');
-  p=w.KVLDomesticHomeV2.selectOverviewMatches(d,Date.parse('2026-11-01T05:01:00Z'));assert.equal(p.next.id,'unknown-time');
+  p=w.KVLDomesticHomeV2.selectOverviewMatches(d,Date.parse('2026-11-01T05:01:00Z'));assert.equal(p.next.id,'scheduled');
   p=w.KVLDomesticHomeV2.selectOverviewMatches(d,Date.parse('2026-11-01T15:01:00Z'));assert.equal(p.next.id,'tomorrow');
  }finally{w.close();}
 });

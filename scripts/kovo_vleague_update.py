@@ -292,6 +292,19 @@ def join_records(originals, snapshot, previous_state=None):
             validate_final_match({"id": local["id"], "stage": local["stage"], "status": "final",
                                   "home": {"code": codes["home"]}, "away": {"code": codes["away"]},
                                   "score": record["score"]})
+        elif source["status"] == "live":
+            won = source.get("sets_won", {})
+            require(set(won) == {"home", "away"}
+                    and all(type(won[s]) is int and 0 <= won[s] < 3 for s in ("home", "away")),
+                    "Invalid provisional set wins")
+            # This is a dated schedule snapshot, never a final result or point feed.
+            record["live_score"] = {**won, "sourceKey": source["source_key"],
+                                    "observedAt": snapshot["fetched_at"]}
+        previous_live = local.get("liveScore")
+        if previous_live:
+            require(source["status"] in ("live", "final"), "Live state regression requires review")
+            require(all(source["sets_won"][s] >= previous_live[s] for s in ("home", "away")),
+                    "Provisional set correction requires review")
         if local.get("score") is not None:
             require(source["status"] == "final" and local["score"] == record["score"],
                     "Final result correction or regression requires review")
@@ -409,6 +422,10 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
             if record["status"] == "final":
                 match["score"] = deepcopy(record["score"])
                 match["scoreVerification"] = True
+            if record["status"] == "live":
+                match["liveScore"] = deepcopy(record["live_score"])
+            else:
+                match.pop("liveScore", None)
             if record["status"] == "not_required":
                 match.update(notRequired=True, non_play_reason=record["non_play_reason"])
             match["officialSourceKey"] = record["source_key"]

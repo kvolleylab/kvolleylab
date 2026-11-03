@@ -196,10 +196,29 @@
       },
       "venueLabel": "화성종합실내체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "scheduled",
+      "status": "final",
       "officialSourceKey": "023:001:FEMALE:6",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-01T12:21:03+00:00"
+      "updatedAt": "2026-11-03T12:08:16+00:00",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 20
+          }
+        ]
+      },
+      "scoreVerification": true
     },
     {
       "id": "VL2627-W-004",
@@ -2709,6 +2728,48 @@
       {
         "rank": 3,
         "team": {
+          "code": "IBK",
+          "name": "IBK기업은행",
+          "fullName": "IBK기업은행",
+          "en": "IBK"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "points": 3,
+        "setWins": 3,
+        "setLosses": 0,
+        "pointsFor": 75,
+        "pointsAgainst": 66,
+        "setRatio": "MAX",
+        "pointRatio": "1.136",
+        "statusLabel": "3위"
+      },
+      {
+        "rank": 4,
+        "team": {
+          "code": "HHC",
+          "name": "현대건설",
+          "fullName": "현대건설",
+          "en": "HHC"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "points": 0,
+        "setWins": 0,
+        "setLosses": 3,
+        "pointsFor": 66,
+        "pointsAgainst": 75,
+        "setRatio": "0.000",
+        "pointRatio": "0.880",
+        "statusLabel": "4위"
+      },
+      {
+        "rank": 5,
+        "team": {
           "code": "SOO",
           "name": "SOOP",
           "fullName": "SOOP",
@@ -2725,10 +2786,10 @@
         "pointsAgainst": 75,
         "setRatio": "0.000",
         "pointRatio": "0.827",
-        "statusLabel": "3위"
+        "statusLabel": "5위"
       },
       {
-        "rank": 4,
+        "rank": 6,
         "team": {
           "code": "KEX",
           "name": "한국도로공사",
@@ -2746,49 +2807,7 @@
         "pointsAgainst": 75,
         "setRatio": "0.000",
         "pointRatio": "0.813",
-        "statusLabel": "4위"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "HHC",
-          "name": "현대건설",
-          "fullName": "현대건설",
-          "en": "HHC"
-        },
-        "poolId": "LEAGUE",
-        "games": 0,
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setWins": 0,
-        "setLosses": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "경기 전"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "IBK",
-          "name": "IBK기업은행",
-          "fullName": "IBK기업은행",
-          "en": "IBK"
-        },
-        "poolId": "LEAGUE",
-        "games": 0,
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setWins": 0,
-        "setLosses": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "경기 전"
+        "statusLabel": "6위"
       },
       {
         "rank": null,
@@ -2881,14 +2900,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 2/126경기 종료 · 2026-11-02 01:53 KST 반영",
-  "updatedAt": "2026-11-01T16:53:03+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 3/126경기 종료 · 2026-11-03 21:08 KST 반영",
+  "updatedAt": "2026-11-03T12:08:16+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 2,
+    "completedMatches": 3,
     "postseason": {
       "matched": 0,
       "completed": 0,

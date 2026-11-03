@@ -938,3 +938,8 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:not
  .kvl-domestic-home-v2 .dv2-standing-metric .dv2-standing-team{font-size:13px}
  .kvl-domestic-home-v2 .dv2-standing-metric .dv2-standing-detail{font-size:10px}
 }
+
+/* Keep today/live status inside the existing V-League summary heading. */
+.kvl-pro-league-domestic-v2 .dv2-summary-today[data-match-state="live"]{color:#117650;background:#eaf7f0}
+.kvl-pro-league-domestic-v2 .dv2-summary-today[data-match-state="waiting"],
+.kvl-pro-league-domestic-v2 .dv2-summary-today[data-match-state="stale"]{color:#85651b;background:#faf5e7}

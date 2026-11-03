@@ -5,7 +5,7 @@ are used. The two opening score excerpts come from public_contract_v1.json;
 all team identities and the 252-game schedule in this test are synthetic.
 """
 from copy import deepcopy
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 import hashlib
 import io
 import json
@@ -519,8 +519,37 @@ class UpdaterPlanTests(unittest.TestCase):
         male = plan["candidates"][update.DATA_PATHS["MALE"]]
         self.assertEqual(male["matches"][0]["status"], "live")
         self.assertNotIn("score", male["matches"][0])
+        self.assertEqual(male["matches"][0]["liveScore"], {"home": 1, "away": 0,
+                         "sourceKey": live["source_key"], "observedAt": snapshot["fetched_at"]})
+        self.assertNotIn("scoreVerification", male["matches"][0])
+        self.assertEqual(update.publication_gate(plan)["status"], "PASS")
         self.assertEqual(plan["report"]["divisions"]["MALE"]["completed"], 0)
         self.assertTrue(all(row["wins"] == row["losses"] == 0 for row in male["standings"]["rows"]))
+
+    def test_live_observation_refreshes_without_polluting_final_results(self):
+        originals, snapshot, _ = fixture_bundle(finals=False)
+        row = snapshot["matches"][0]
+        row.update(status="live", sets_won={"home": 1, "away": 0}, sets=[{"home": 25, "away": 20}])
+        first = update.prepare_update(originals, snapshot)
+        updated = {g: first["candidates"][path] for g, path in update.DATA_PATHS.items()}
+        same = update.prepare_update(updated, snapshot, first["candidates"][update.STATE_PATH])
+        self.assertEqual(same["changed_files"], [])
+        snapshot["fetched_at"] = (datetime.fromisoformat(snapshot["fetched_at"]) + timedelta(minutes=15)).isoformat()
+        again = update.prepare_update(updated, snapshot, first["candidates"][update.STATE_PATH])
+        self.assertEqual(again["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]["liveScore"]["observedAt"], snapshot["fetched_at"])
+        self.assertIn(update.DATA_PATHS["MALE"], again["changed_files"])
+        row["sets_won"]["home"] = 0
+        with self.assertRaises(update.UpdateError):
+            update.prepare_update(updated, snapshot)
+
+    def test_final_result_removes_provisional_snapshot(self):
+        originals = deepcopy(self.originals)
+        originals["MALE"]["matches"][0]["liveScore"] = {"home": 1, "away": 0,
+            "sourceKey": self.snapshot["matches"][0]["source_key"], "observedAt": self.snapshot["fetched_at"]}
+        plan = update.prepare_update(originals, self.snapshot)
+        match = plan["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]
+        self.assertNotIn("liveScore", match)
+        self.assertEqual(max(match["score"]["home"], match["score"]["away"]), 3)
 
     def test_preserves_roster_participant_future_and_postseason_metadata(self):
         postseason = {"id": "VL2627-M-POST-1", "date": "2027-04-01", "stage": "플레이오프",

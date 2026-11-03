@@ -17,6 +17,7 @@ from .sources import official_checks, drive_checks, deployed_checks
 
 CORE_TESTS = [
     'home-gender-matches.test.cjs',
+    'today-match-summary.test.cjs',
     'competition-v2-config.test.cjs', 'competition-v2-data-contract.test.cjs',
     'competition-v2-production-starter.test.cjs', 'competition-calendar-gender.test.cjs',
     'kovo-cup-production-template-20261027.test.cjs', 'competition-v2-pro-cup-pool-columns.test.cjs',
