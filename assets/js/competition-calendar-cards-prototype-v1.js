@@ -78,8 +78,36 @@
   const shortBarTitle=e=>(e.short_title||e.title).replace('대학배구 ','').replace('중고 2차 연맹전','익산 연맹전').replace('중고 1차 연맹전','삼척 연맹전').replace('춘계전국중고배구연맹전','춘계 중·고').replace(' 대륙선수권',' 대륙').replace(' 유럽선수권',' 유럽').replace(' 아프리카선수권',' 아프리카').replace(' 남미선수권',' 남미').replace(/남자부|남자배구|남자/g,'남').replace(/여자부|여자배구|여자/g,'여');
   const labelOf=c=>payload?.categories.find(x=>x.id===c)?.label||t.period;
   const displayTitle=e=>e.short_title||e.title;
-  const assignedGenders=e=>genderMap?.events?.[e.id]?.genders||[];
+  const assignedGenders=e=>e.periodMembers?[...new Set(e.periodMembers.flatMap(assignedGenders))]:genderMap?.events?.[e.id]?.genders||[];
   const visibleEvents=()=>payload.events.filter(e=>(active==='all'||(active==='domestic'?e.category.startsWith('domestic-'):e.category===active))&&(gender==='all'||assignedGenders(e).includes(gender)));
+  // Only annual display bars may combine a verified male/female pair. Never
+  // group by family and dates alone: separate events/age groups must remain.
+  const neutralTitle=e=>e.title.normalize('NFKC').toLowerCase()
+    .replace(/남자부|여자부|남자|여자/g,'')
+    .replace(/\b(?:men|women|boys|girls|male|female)(?:'s)?\b/g,'')
+    .replace(/\s+/g,' ').trim();
+  function annualPeriods(events){
+    const buckets=new Map();
+    for(const e of events){
+      if(assignedGenders(e).length!==1||!neutralTitle(e))continue;
+      const key=JSON.stringify([e.category,familyOf(e),neutralTitle(e),e.start,e.end]);
+      if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(e);
+    }
+    const pairs=new Map();
+    for(const entries of buckets.values()){
+      if(entries.length!==2||new Set(entries.flatMap(assignedGenders)).size!==2)continue;
+      const members=[...entries].sort((a,b)=>assignedGenders(a)[0]==='men'?-1:1);
+      const joined={...members[0],periodMembers:members};
+      members.forEach(e=>pairs.set(e.id,joined));
+    }
+    const emitted=new Set();
+    return events.flatMap(e=>{const shown=pairs.get(e.id)||e;if(emitted.has(shown.id))return [];emitted.add(shown.id);return [shown]});
+  }
+  const rangeMembers=anchor=>{
+    let ids=[anchor.dataset.rangeEvent];
+    try{if(anchor.dataset.rangeMembers)ids=JSON.parse(anchor.dataset.rangeMembers)}catch{}
+    return ids.map(id=>payload?.events.find(e=>e.id===id)).filter(Boolean);
+  };
   const eventsAt=(date,events=visibleEvents())=>events.filter(e=>e.start<=date&&e.end>=date);
   const overlaps=(e,y,m)=>e.start<=iso(civil(y,m+1,0))&&e.end>=iso(civil(y,m,1));
   const monthEvents=m=>visibleEvents().filter(e=>overlaps(e,year,m)).sort((a,b)=>a.start.localeCompare(b.start)||a.title.localeCompare(b.title,'ko'));
@@ -101,10 +129,13 @@
     root.querySelectorAll('.is-range-active').forEach(a=>a.classList.remove('is-range-active'));
   }
   function showRange(anchor,touch=false){
-    const event=payload?.events.find(e=>e.id===anchor.dataset.rangeEvent);if(!event)return;
+    const members=rangeMembers(anchor),event=members[0];if(!event)return;
+    const joint=members.length>1,annual=anchor.classList.contains('is-compact');
     clearTimeout(hideRangeTimer);activeRange?.removeAttribute('aria-describedby');activeRange=anchor;
-    root.querySelectorAll('[data-range-event]').forEach(a=>a.classList.toggle('is-range-active',a.dataset.rangeEvent===event.id));
-    rangeTip.innerHTML=`<strong>${esc(event.title)}</strong><span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${esc(familyLabels[familyOf(event)])} · ${esc(genderLabel(event))}</span><span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`;
+    root.querySelectorAll('[data-range-event]').forEach(a=>a.classList.toggle('is-range-active',rangeMembers(a).some(e=>members.some(member=>member.id===e.id))));
+    const genderText=joint?'남 · 여 (동일기간)':genderLabel(event);
+    const group=annual?`${esc(labelOf(event.category))} · `:'';
+    rangeTip.innerHTML=`${members.map(e=>`<strong>${esc(e.title)}</strong>`).join('')}<span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${group}${esc(familyLabels[familyOf(event)])} · ${esc(genderText)}</span>${joint?`<span class="cc-range-tooltip-links">${members.map(e=>`<a href="${esc(eventHref(e))}">${esc(genderLabel(e))} 대회 보기 →</a>`).join('')}</span>`:`<span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`}`;
     rangeTip.style.maxWidth=`${Math.min(360,document.documentElement.clientWidth-24)}px`;
     rangeTip.hidden=false;anchor.setAttribute('aria-describedby',rangeTip.id);
     const rect=anchor.getBoundingClientRect(),box=rangeTip.getBoundingClientRect(),edge=12;
@@ -127,6 +158,8 @@
   });
   rangeTip.addEventListener('pointerenter',()=>clearTimeout(hideRangeTimer));
   rangeTip.addEventListener('pointerleave',deferHideRange);
+  rangeTip.addEventListener('focusin',()=>clearTimeout(hideRangeTimer));
+  rangeTip.addEventListener('focusout',e=>{if(!rangeTip.contains(e.relatedTarget)&&e.relatedTarget!==activeRange)deferHideRange()});
   document.addEventListener('pointerdown',e=>{lastPointerType=e.pointerType||'mouse';if(!e.target.closest('[data-range-event],#ccRangeTooltip'))hideRange()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')hideRange()});
   window.addEventListener('scroll',()=>{
@@ -174,12 +207,12 @@
   }
   // Reuse the original weekly range/lane model, now with Sunday-first indices.
   // A lane stays with an event across weeks; all intersecting periods are kept.
-  function rangeWeeks(m,compact,cells,offset){
+  function rangeWeeks(m,compact,cells,offset,events=visibleEvents()){
     const first=iso(civil(year,m,compact?1:1-offset));
     const last=iso(civil(year,m,compact?civil(year,m+1,0).getUTCDate():cells-offset));
     const gridStart=civil(year,m,1-offset).getTime(),dayIndex=date=>Math.round((Date.parse(date+'T00:00:00Z')-gridStart)/86400000);
     const weeks=Array.from({length:cells/7},()=>[]);
-    visibleEvents().filter(e=>e.start<=last&&e.end>=first).forEach(event=>{
+    events.filter(e=>e.start<=last&&e.end>=first).forEach(event=>{
       const start=event.start<first?first:event.start,end=event.end>last?last:event.end;
       let cursor=dayIndex(start),endIndex=dayIndex(end);
       while(cursor<=endIndex){
@@ -204,8 +237,12 @@
     return weeks;
   }
   function rangeBar({event,lane,col,span,start,end},compact){
-    const before=event.start<start,after=event.end>end,family=familyOf(event);
-    return `<a class="cc-card-period ${compact?'is-compact':''} ${before?'continues-before':''} ${after?'continues-after':''} ${colorOf(event)===palette.pro?'is-pro':''}" href="${esc(eventHref(event))}" data-range-event="${esc(event.id)}" data-range-start="${start}" data-range-end="${end}" data-range-lane="${lane}" data-family="${family}" aria-label="${esc(event.title)} · ${esc(genderLabel(event))} · ${formatDate(event.start)} – ${formatDate(event.end)}" style="--event-color:${colorOf(event)};--layer:${lane};grid-column:${col+1}/span ${span};grid-row:${lane+1}"><span>${esc(shortBarTitle(event))}</span>${badges(event)}</a>`;
+    const before=event.start<start,after=event.end>end,family=familyOf(event),members=event.periodMembers||[event];
+    const href=members.length>1?calendarHref('month',Number(start.slice(0,4)),Number(start.slice(5,7)),start):eventHref(event);
+    const title=members.map(e=>e.title).join(' / ');
+    // Annual bars deliberately have no visible text or badges. The accessible
+    // name and existing tooltip retain the original titles and every member.
+    return `<a class="cc-card-period ${compact?'is-compact':''} ${before?'continues-before':''} ${after?'continues-after':''} ${colorOf(event)===palette.pro?'is-pro':''}" href="${esc(href)}" data-range-event="${esc(event.id)}" data-range-members="${esc(JSON.stringify(members.map(e=>e.id)))}" data-range-start="${start}" data-range-end="${end}" data-range-lane="${lane}" data-family="${family}" aria-label="${esc(title)} · ${esc(genderLabel(event))} · ${formatDate(event.start)} – ${formatDate(event.end)}" style="--event-color:${colorOf(event)};--layer:${lane};grid-column:${col+1}/span ${span};grid-row:${lane+1}">${compact?'':`<span>${esc(shortBarTitle(event))}</span>${badges(event)}`}</a>`;
   }
   function grid(m,compact){
     const first=civil(year,m,1),offset=first.getUTCDay(),last=civil(year,m+1,0).getUTCDate();
@@ -222,9 +259,11 @@
       const attrs=`class="${cls}" data-date="${date}" data-event-count="${dayEvents.length}" aria-label="${esc(label)}"${today?' aria-current="date"':''}`;
       days+=compact||!inMonth?`<a ${attrs} href="${calendarHref('month',d.getUTCFullYear(),d.getUTCMonth()+1,date)}">${body}</a>`:`<button type="button" ${attrs} aria-pressed="${isSelected}" data-select-date="${date}">${body}</button>`;
     }
-    const weeks=rangeWeeks(m,compact,cells,offset);
-    const rows=weeks.map(items=>`minmax(var(--range-min-week),calc(var(--range-date-height) + ${Math.max(0,...items.map(s=>s.lane))} * var(--range-lane-height) + var(--range-bar-height) + 2px))`).join(' ');
-    return `<div class="cc-card-weekdays">${t.weekdays.map((s,i)=>`<span class="${i===0?'is-sunday':i===6?'is-saturday':''}">${s}</span>`).join('')}</div><div class="cc-card-board ${compact?'is-compact':''} ${compact&&weeks.some(items=>items.some(s=>s.lane>=3))?'is-dense':''}" style="--calendar-rows:${rows}"><div class="cc-card-grid ${compact?'is-compact':''}" data-calendar-month="${m}" data-start-weekday="0">${days}</div><div class="cc-card-period-layer">${weeks.map((items,index)=>`<div class="cc-card-week-ranges" data-range-week="${index}" style="grid-row:${index+1}">${items.map(item=>rangeBar(item,compact)).join('')}</div>`).join('')}</div></div>`;
+    const sizingWeeks=rangeWeeks(m,compact,cells,offset);
+    const weeks=compact?rangeWeeks(m,compact,cells,offset,annualPeriods(visibleEvents())):sizingWeeks;
+    // Preserve the existing card and date geometry; only the overlay shrinks.
+    const rows=sizingWeeks.map(items=>`minmax(var(--range-min-week),calc(var(--range-date-height) + ${Math.max(0,...items.map(s=>s.lane))} * var(--range-lane-height) + var(--range-bar-height) + 2px))`).join(' ');
+    return `<div class="cc-card-weekdays">${t.weekdays.map((s,i)=>`<span class="${i===0?'is-sunday':i===6?'is-saturday':''}">${s}</span>`).join('')}</div><div class="cc-card-board ${compact?'is-compact':''} ${compact&&sizingWeeks.some(items=>items.some(s=>s.lane>=3))?'is-dense':''}" style="--calendar-rows:${rows}"><div class="cc-card-grid ${compact?'is-compact':''}" data-calendar-month="${m}" data-start-weekday="0">${days}</div><div class="cc-card-period-layer">${weeks.map((items,index)=>`<div class="cc-card-week-ranges" data-range-week="${index}" style="grid-row:${index+1}">${items.map(item=>rangeBar(item,compact)).join('')}</div>`).join('')}</div></div>`;
   }
   function miniCalendar(m){
     const events=monthEvents(m);

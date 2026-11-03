@@ -209,3 +209,26 @@
 .cc-cards-prototype .cc-card-board.is-compact.is-dense .cc-joint-badges{font-size:7px;line-height:8px}
 
 .cc-cards-prototype .cc-card-day.is-compact{padding-top:2px;padding-bottom:2px}
+
+/* Annual readability v4: calendar geometry is unchanged; only its overlay
+   becomes a 6px stroke with a 3px step (50% overlap). */
+.cc-cards-prototype .cc-card-board.is-compact .cc-card-week-ranges{grid-auto-rows:3px}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact{
+ height:6px;min-height:0;padding:0;border-width:1px 2px;border-radius:3px;
+ background:color-mix(in srgb,var(--event-color) 48%,#fff);
+ border-top-color:color-mix(in srgb,var(--event-color) 30%,#fff);
+ border-bottom-color:color-mix(in srgb,var(--event-color) 70%,#fff);
+ box-shadow:none;gap:0;
+}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.continues-before{border-left-width:0;border-top-left-radius:0;border-bottom-left-radius:0}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.continues-after{border-right-width:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-pro{background:#252525;border-color:#c9a44c}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-range-active,
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact:focus-visible{
+ z-index:200;background:color-mix(in srgb,var(--event-color) 76%,#fff);box-shadow:0 0 0 1px var(--event-color);
+}
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-pro.is-range-active,
+.cc-cards-prototype #competitionCalendar .cc-card-period.is-compact.is-pro:focus-visible{background:#252525;box-shadow:0 0 0 1px #c9a44c}
+.cc-range-tooltip-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.cc-range-tooltip-links a{color:#e8c879;font-size:11px;text-decoration:underline;text-underline-offset:3px}
+.cc-range-tooltip-links a:focus-visible{outline:2px solid #e8c879;outline-offset:3px}

@@ -17,7 +17,7 @@ async function mount(query='view=year&year=2026',options={}){
   const data=options.data||period;let copied='';w.KVLCalendarLayerPriority=options.priority;
   w.fetch=async url=>({ok:!options.missingData&&(url.includes('periods')||!options.missingGenders),json:async()=>url.includes('periods')?structuredClone(data):structuredClone(options.genders||genders)});
   Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async text=>{copied=text}}});
-  w.eval(source);
+  w.eval(options.source||source);
   for(let i=0;i<30;i++)await Promise.resolve();
   return {dom,w,d:w.document,copied:()=>copied,close:()=>w.close()};
 }
@@ -196,14 +196,14 @@ test('production calendar, shared UI, Hero images, masters and all data remain b
   assert.equal(extract(html),extract(prod));assert.match(html,/max-width:1180px/);
 });
 
-test('separate women always use official Rose; joint events remain one family-colored bar with two badges',async()=>{
+test('separate women always use official Rose; annual joint events remain a text-free family-colored bar',async()=>{
   const fixtures=[['fivb-men','FIVB 남자','international',['men'],'#5B3A8E'],['avc-men','AVC 남자','international',['men'],'#176638'],['university-men','대학 남자','domestic-university',['men'],'#1B223A'],['school-men','중고 남자','domestic-school',['men'],'#D97706'],['v-league-men','V-리그 남자','vleague',['men'],'#252525'],['kovo-cup-men','KOVO컵 남자','domestic-pro',['men'],'#252525'],['fivb-women','FIVB 여자','international',['women'],'#8E315E'],['avc-women','AVC 여자','international',['women'],'#8E315E'],['university-women','대학 여자','domestic-university',['women'],'#8E315E'],['school-women','중고 여자','domestic-school',['women'],'#8E315E'],['v-league-women','V-리그 여자','vleague',['women'],'#8E315E'],['kovo-cup-women','KOVO컵 여자','domestic-pro',['women'],'#8E315E'],['university-joint','대학 남녀공통','domestic-university',['men','women'],'#1B223A']];
   // Isolated fixtures verify future inputs; they are never published as schedules.
   const data={categories:period.categories,events:fixtures.map(([id,title,category],i)=>({id,title,category,start:`2026-01-${String(i+1).padStart(2,'0')}`,end:`2026-01-${String(i+1).padStart(2,'0')}`,href:'competition-engine.html?competition='+id}))};
   const map={schema:'calendar-genders-v1',year:2026,events:Object.fromEntries(fixtures.map(([id,,,g])=>[id,{genders:g}]))};
   const before=JSON.stringify({data,map});const p=await mount('view=year&year=2026',{data,genders:map});
   for(const [id,,,,color] of fixtures){const bars=p.d.querySelectorAll(`[data-range-event="${id}"]`);assert.equal(bars.length,1);assert.equal(bars[0].style.getPropertyValue('--event-color'),color);assert.equal(bars[0].classList.contains('is-pro'),color==='#252525');}
-  assert.deepEqual([...p.d.querySelectorAll('[data-range-event="university-joint"] .cc-joint-badges i')].map(e=>e.textContent),['남','여']);
+  const joint=p.d.querySelector('[data-range-event="university-joint"]');assert.equal(joint.textContent,'');joint.dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));assert.match(p.d.querySelector('#ccRangeTooltip').textContent,/남녀공통/);
   assert.equal(JSON.stringify({data,map}),before);p.close();
 });
 test('overlapping priority is pro, international, university, school and is configurable',async()=>{
@@ -240,4 +240,75 @@ test('all month footers remain navigable and missing-data filter changes keep th
   const missing=await mount('view=year&year=2027',{missingData:true});
   missing.d.querySelector('[data-filter="international"]').click();
   assert.ok(missing.d.querySelector('.cc-data-error'));assert.equal(missing.d.querySelectorAll('.cc-month-card').length,0);missing.close();
+});
+
+const baselineSource=execFileSync('git',['show','dc20e8d0dfcbf95de6d73b20a9fe03247fb29426:assets/js/competition-calendar-cards-prototype-v1.js'],{cwd:root,encoding:'utf8'});
+function pairedFixture(){
+  const events=[
+    ['avc-men-test','2026 AVC 남자 선수권','2026-08-01','2026-09-10','men'],
+    ['avc-women-test','2026 AVC 여자 선수권','2026-08-01','2026-09-10','women'],
+    ['avc-u21-men-test','2026 AVC 남자 U21 선수권','2026-08-01','2026-09-10','men'],
+    ['avc-u21-women-test','2026 AVC 여자 U21 선수권','2026-08-01','2026-09-10','women'],
+    ['fivb-men-test','2026 FIVB 남자 선수권','2026-08-01','2026-08-10','men'],
+    ['fivb-women-test','2026 FIVB 여자 선수권','2026-08-01','2026-08-11','women'],
+    ['avc-other-women','2026 AVC 여자 클럽컵','2026-08-01','2026-09-10','women']
+  ];
+  return {data:{categories:period.categories,events:events.map(([id,title,start,end])=>({id,title,start,end,category:'international',href:`competition-engine.html?competition=${id}#schedule`}))},genders:{schema:'calendar-genders-v1',year:2026,events:Object.fromEntries(events.map(([id,,,,g])=>[id,{genders:[g]}]))}};
+}
+test('annual bars have no visible title or badges; every original 2026 event and month geometry are preserved',async()=>{
+  for(const category of ['all','international','domestic','vleague']){
+    const query='view=year&year=2026&category='+category,p=await mount(query),before=await mount(query,{source:baselineSource});
+    for(const bar of p.d.querySelectorAll('.cc-card-period')){assert.equal(bar.textContent,'');assert.equal(bar.children.length,0);assert.ok(bar.getAttribute('aria-label'));}
+    const shape=x=>[...x.d.querySelectorAll('.cc-card-board')].map(e=>({cls:e.className,rows:e.style.getPropertyValue('--calendar-rows')}));
+    assert.deepEqual(shape(p),shape(before));
+    const coverage=x=>[...x.d.querySelectorAll('[data-range-event]')].map(e=>[e.dataset.rangeEvent,e.dataset.rangeStart,e.dataset.rangeEnd]);
+    assert.deepEqual(coverage(p),coverage(before));p.close();before.close();
+  }
+});
+test('only exact male/female pairs of the same competition and entire period merge, preserving both IDs and links',async()=>{
+  const fixture=pairedFixture(),original=JSON.stringify(fixture),p=await mount('view=year&year=2026',fixture);
+  for(const month of [8,9]){
+    const bars=[...p.d.querySelectorAll(`#cc-month-${month} [data-range-event]`)];
+    const adult=bars.filter(a=>a.dataset.rangeEvent==='avc-men-test');assert.ok(adult.length);
+    for(const a of adult){assert.deepEqual(JSON.parse(a.dataset.rangeMembers),['avc-men-test','avc-women-test']);assert.equal(a.style.getPropertyValue('--event-color'),'#176638');assert.match(a.href,/view=month/);}
+    assert.ok(bars.some(a=>a.dataset.rangeEvent==='avc-u21-men-test'));assert.ok(bars.some(a=>a.dataset.rangeEvent==='avc-other-women'));
+    assert.ok(!bars.some(a=>a.dataset.rangeEvent==='avc-women-test'));
+  }
+  const bar=p.d.querySelector('[data-range-event="avc-men-test"]');bar.dispatchEvent(new p.w.FocusEvent('focusin',{bubbles:true}));
+  const tip=p.d.querySelector('#ccRangeTooltip');assert.match(tip.textContent,/남 · 여/);assert.match(tip.textContent,/국제대회 · AVC/);
+  for(const id of ['avc-men-test','avc-women-test'])assert.ok([...tip.querySelectorAll('a')].some(a=>a.href==='https://kvolleylab.com/competition-engine.html?competition='+id+'#schedule'));
+  for(const id of ['fivb-men-test','fivb-women-test'])assert.ok(p.d.querySelector(`[data-range-event="${id}"]`));
+  assert.equal(JSON.stringify(fixture),original);p.close();
+});
+test('gender filters retain their own event/color/link and monthly view keeps both titles',async()=>{
+  const fixture=pairedFixture();
+  for(const [gender,id,color] of [['men','avc-men-test','#176638'],['women','avc-women-test','#8E315E']]){
+    const p=await mount('view=year&year=2026&gender='+gender,fixture),a=p.d.querySelector(`[data-range-event="${id}"]`);
+    assert.deepEqual(JSON.parse(a.dataset.rangeMembers),[id]);assert.equal(a.style.getPropertyValue('--event-color'),color);assert.equal(a.href,'https://kvolleylab.com/competition-engine.html?competition='+id+'#schedule');p.close();
+  }
+  const monthly=await mount('view=month&year=2026&month=8',fixture);
+  for(const id of ['avc-men-test','avc-women-test']){const a=monthly.d.querySelector(`[data-range-event="${id}"]`);assert.ok(a.textContent.trim());assert.deepEqual(JSON.parse(a.dataset.rangeMembers),[id]);}monthly.close();
+});
+test('merging does not alter date geometry or leave duplicate/omitted days across month and week boundaries',async()=>{
+  const fixture=pairedFixture(),p=await mount('view=year&year=2026',fixture),before=await mount('view=year&year=2026',{...fixture,source:baselineSource});
+  assert.deepEqual([...p.d.querySelectorAll('.cc-card-board')].map(e=>e.getAttribute('style')),[...before.d.querySelectorAll('.cc-card-board')].map(e=>e.getAttribute('style')));
+  for(const sourceEvent of fixture.data.events){
+    const covered=[];
+    for(const a of p.d.querySelectorAll('[data-range-members]'))if(JSON.parse(a.dataset.rangeMembers).includes(sourceEvent.id)){
+      for(let date=new Date(a.dataset.rangeStart+'T00:00:00Z');date.toISOString().slice(0,10)<=a.dataset.rangeEnd;date.setUTCDate(date.getUTCDate()+1))covered.push(date.toISOString().slice(0,10));
+    }
+    const days=(Date.parse(sourceEvent.end)-Date.parse(sourceEvent.start))/86400000+1;
+    assert.equal(covered.length,days);assert.equal(new Set(covered).size,days);assert.equal(covered[0],sourceEvent.start);assert.equal(covered.at(-1),sourceEvent.end);
+  }p.close();before.close();
+});
+test('ambiguous duplicate candidates are not collapsed into an invented shared competition',async()=>{
+  const fixture=pairedFixture();fixture.data.events.push({...fixture.data.events[0],id:'duplicate-men'});fixture.genders.events['duplicate-men']={genders:['men']};
+  const p=await mount('view=year&year=2026',fixture);for(const id of ['avc-men-test','avc-women-test','duplicate-men']){const a=p.d.querySelector(`[data-range-event="${id}"]`);assert.deepEqual(JSON.parse(a.dataset.rangeMembers),[id]);}p.close();
+});
+test('monthly displayed period labels, badges, colors, links and row sizing are unchanged for all twelve months',async()=>{
+  for(let month=1;month<=12;month++){
+    const query=`view=month&year=2026&month=${month}`,p=await mount(query),before=await mount(query,{source:baselineSource});
+    const view=x=>({bars:[...x.d.querySelectorAll('.cc-card-period')].map(a=>({text:a.innerHTML,href:a.href,style:a.getAttribute('style')})),rows:x.d.querySelector('.cc-card-board').getAttribute('style')});
+    assert.deepEqual(view(p),view(before));p.close();before.close();
+  }
 });

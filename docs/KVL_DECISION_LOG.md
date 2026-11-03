@@ -480,3 +480,7 @@ GitHub는 기존 workflow의 player_current_value_check 수동 입력으로 같�
 Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / NOT DEPLOYED TO OPERATING SITE. 최신 main `f7d51ee1264b8f2811fef618e4f01f597acdb154`에서 PR #159의 기존 한국어 3열 카드 시안을 재사용했다. 사용자 요청에 따라 전체 메뉴·HERO·필터·보기·데이터 연결을 유지하고, 11월 2일 공통 경기 달력의 일요일 시작/중앙 날짜/셀 규격을 월 카드 내부에 축소 적용했다. 남자 FIVB Purple·AVC Green·대학 Navy·중고 Orange·프로 Charcoal/Gold, 별도 여자 Rose, 공통 단일 계열색 막대+남/여 배지, 50% 겹침과 Hover 최상단 강조를 검수 시안에 구현했다. 운영 UI 승인으로 확대하지 않는다.
 
 23개 회귀검사 및 PC 1600/1180px·모바일 390/360px 렌더링 확인. 26개 원본 대회·MASTER·ID·기간 데이터 변경 없음. 현재 통합 기간 피드에 프로 대회가 없어 실제 V-리그/KOVO컵 막대는 제공되지 않으며 색상은 격리 fixture로 검증했다. 기존 시안 주소를 유지하고 새 Draft PR에서 사용자 디자인 검수 후 운영 반영한다. [범위·근거·검수·한계·복구](validation/calendar-layer-prototype-20261103.md).
+
+## 2026-11-03 · 통합달력 연간 막대 가독성 v4
+
+Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYED. 기존 PR #243 시안의 전체 디자인·카드 크기·날짜 배치를 보존하고 연간 막대 텍스트를 제거한다. 6px 막대/3px 간격(50% 겹침), 기존 계열색, 기존 Tooltip에 전체 정보 및 남녀공통 표시를 적용했다. 같은 대회·같은 전체 기간의 남녀 한 쌍만 표시 단계에서 통합하며 원본 ID와 두 링크를 보존한다. 성별 필터와 월간보기는 각각의 원본을 사용한다. 현재 26개 실제 데이터에 새로운 통합 쌍은 없으며 데이터 삭제·일정 변경·우선순위에 따른 숨김은 하지 않았다. v3의 연간 대회명/배지 표시 결정을 이번 시안에서 대체한다. 29개 회귀검사와 수정 전후 12개 카드 위치/크기 일치·7~9월 겹친 막대 접근성·모바일 월간 보존을 검수했다. [비교·검증·범위·복구](validation/calendar-readability-prototype-20261103.md).
