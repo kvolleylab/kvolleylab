@@ -103,6 +103,7 @@ jobs:
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-audit-deps/node_modules/jsdom
           KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-audit-deps/node_modules/playwright
+          KVL_AUDIT_DRIVE_MODE: disabled
           LIVE: ${{ github.event_name != 'pull_request' && (inputs.live || github.event_name == 'schedule' || github.event_name == 'push') }}
           BROWSER: ${{ github.event_name == 'pull_request' || inputs.browser || github.event_name == 'schedule' || github.event_name == 'push' }}
         shell: bash

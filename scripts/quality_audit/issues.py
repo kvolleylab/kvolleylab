@@ -70,6 +70,9 @@ def plan(report, existing):
             continue
         issue, old = pair
         f['first_seen'] = old['first_seen']
+        if (f['rule'] == 'OP_ACCESS' and f['check_id'] in {'drive:cup', 'drive:league'}
+                and f == old):
+            continue
         if f['verification'] == 'RESOLVED':
             if old['verification'] != 'RESOLVED':
                 operations.append({'action': 'resolve', 'number': issue['number'], 'finding': f})

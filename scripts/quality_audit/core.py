@@ -63,6 +63,46 @@ def public_finding(item):
     return f
 
 
+def drive_availability(c, registry, ops, events, *, at, commit, run_id):
+    key = c['id']
+    fid = stable_id('OP_ACCESS', key, 'availability')
+    prior = registry.get(fid)
+    counter = ops.get(key, {})
+    # v1 included optional/unconfigured checks. Keep the Issue, restart just the streak.
+    if counter.get('policy') != 2:
+        counter = {}
+    if c['drive_local']:
+        return
+    last = counter.get('last_run')
+    # A rerun may restore an older cache than the authoritative public Issue.
+    for recorded in (last, (prior or {}).get('last_run')):
+        if str(run_id).isdigit() and str(recorded).isdigit() and int(run_id) < int(recorded):
+            return
+    if not c['operational']:
+        ops[key] = dict(policy=2, consecutive_failures=0, warned=False, last_run=run_id)
+        if c['drive_live_verified'] and prior and prior['verification'] != 'RESOLVED':
+            prior.update(verification='RESOLVED', processing='RESOLVED', resolved_at=at,
+                         last_seen=at, last_run=run_id, github_sha=commit)
+        return
+    if last and last == run_id:
+        return
+    n = counter.get('consecutive_failures', 0) + 1
+    ops[key] = dict(policy=2, consecutive_failures=n, warned=n >= 3, last_run=run_id)
+    if n < 3:
+        return
+    item = finding('OP_ACCESS', key, 'availability', severity='P2', actual=c['drive_reason'],
+                   expected='successful read-only check')
+    open_prior = prior and prior['verification'] != 'RESOLVED'
+    if not open_prior:
+        events.append(dict(id=fid, event='OPERATION_WARNING', check_id=key, public=True))
+    else:
+        item.update(processing=prior.get('processing', 'OPEN'), owner_task=prior.get('owner_task', item['owner_task']))
+    old_count = prior.get('occurrences', 0) if prior else 0
+    item.update(first_seen=prior['first_seen'] if prior else at, last_seen=at, last_run=run_id,
+                github_sha=commit, resolved_at=None, occurrences=old_count + (3 if n == 3 else 1))
+    registry[fid] = item
+
+
 def reconcile(checks, previous=None, *, at=None, commit='UNKNOWN', run_id=None):
     """No resolution on missing coverage; retries of the same run are idempotent."""
     at = at or now_kst()
@@ -99,6 +139,11 @@ def reconcile(checks, previous=None, *, at=None, commit='UNKNOWN', run_id=None):
                 events.append({'id': fid, 'event': event,
                                'public': f['visibility'] == 'PUBLIC'})
             registry[fid] = f
+        if 'drive_live_verified' in c and c['id'] in {'drive:cup', 'drive:league'}:
+            # Match coverage below can never prove recovery for this operational finding.
+            seen.add(stable_id('OP_ACCESS', c['id'], 'availability'))
+            drive_availability(c, registry, ops, events, at=at, commit=commit, run_id=run_id)
+            continue
         if c.get('operational') and c['outcome'] == 'NOT VERIFIED':
             oldop = ops.get(c['id'], {})
             n = oldop.get('consecutive_failures', 0)
