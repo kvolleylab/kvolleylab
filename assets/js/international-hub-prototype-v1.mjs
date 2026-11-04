@@ -1,4 +1,4 @@
-import {CATEGORIES,groupByYear,selectItems,hubUrl,displayCard,todayKST} from './international-hub-model-v1.mjs';
+import {CATEGORIES,groupByYear,selectItems,hubUrl,displayCard,todayKST} from './international-hub-model-v1.mjs?v=20261104-3';
 import {resolveHeroSource,renderCard} from './international-hub-cards-prototype-v1.mjs';
 import {categoryIcon} from './international-hub-icons-v1.mjs';
 const root=document.getElementById('hubContent');
@@ -11,8 +11,22 @@ const today=todayKST();
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const url=(year,category='',all=false)=>hubUrl(location.pathname,{year,category,all});
 function shortcuts(){
- return '<section class="hub-navigation" aria-labelledby="hub-category-heading"><div class="hub-navigation-heading"><h2 id="hub-category-heading">대회 종류</h2>'+(category?'<a class="hub-reset" href="'+url()+'">국제대회 홈 <span aria-hidden="true">↗</span></a>':'')+'</div><nav class="hub-shortcuts" aria-label="국제대회 전체 연도 대회 종류">'+CATEGORIES.map(([key,label])=>
-  '<a class="hub-shortcut" href="'+url(undefined,category===key?'':key)+'"'+(category===key?' aria-current="true" aria-label="'+label+' 선택 해제"':'')+'><span class="hub-shortcut-icon">'+categoryIcon(key)+'</span><span>'+label+'</span></a>').join('')+'</nav></section>';
+ const links = CATEGORIES.map(([key, label, edition]) => {
+   const active = category === key;
+   const lines = [edition.nextLabel, edition.nextCompetitionName]
+     .filter(Boolean)
+     .map(line => `<span>${esc(line)}</span>`)
+     .join('');
+   return `<a class="hub-shortcut" href="${url(undefined, active ? '' : key)}"
+       aria-label="${esc(active ? label + ' 선택 해제' : label)}" aria-describedby="edition-${key}"${active ? ' aria-current="true"' : ''}>
+     <span class="hub-shortcut-icon">${categoryIcon(key)}</span>
+     <span class="hub-shortcut-copy">
+       <span class="hub-shortcut-label">${esc(label)}</span>
+       <span class="hub-next-edition" id="edition-${key}">${lines}</span>
+     </span>
+   </a>`;
+ }).join('');
+ return '<section class="hub-navigation" aria-labelledby="hub-category-heading"><div class="hub-navigation-heading"><h2 id="hub-category-heading">대회 종류</h2>'+(category?'<a class="hub-reset" href="'+url()+'">국제대회 홈 <span aria-hidden="true">↗</span></a>':'')+'</div><nav class="hub-shortcuts" aria-label="국제대회 전체 연도 대회 종류">'+links+'</nav></section>';
 }
 const mediaCache=new Map(),detailCache=new Map();
 async function fetchJSON(path){const r=await fetch(path,{cache:'no-cache'});if(!r.ok)throw Error('HTTP '+r.status);return r.json();}

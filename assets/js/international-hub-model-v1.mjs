@@ -1,7 +1,11 @@
 // K-Volley Lab · international hub prototype v1 · 2026-11-04
 export const CATEGORIES = [
-  ['olympic','올림픽'], ['world-championship','세계선수권'], ['vnl','VNL'],
-  ['continental','대륙선수권'], ['asian-games','아시안게임'], ['multi-sport','종합경기대회']
+  ['olympic', '올림픽', {nextLabel: '2028 LA'}],
+  ['world-championship', '세계선수권', {nextLabel: '2027 월드컵'}],
+  ['vnl', 'VNL', {nextLabel: '2027 VNL'}],
+  ['continental', '대륙선수권', {nextLabel: '2028 예정'}],
+  ['asian-games', '아시안게임', {nextLabel: '2030 도하'}],
+  ['multi-sport', '종합경기대회', {nextLabel: '2027 리마', nextCompetitionName: '팬아메리칸게임'}]
 ];
 export function todayKST(now=new Date()) {
   const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now).map(x=>[x.type,x.value]));

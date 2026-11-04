@@ -491,3 +491,7 @@ Status: USER REQUESTED / PROTOTYPE / READY FOR REVIEW / KVL PRODUCTION NOT CHANG
 ## 2026-11-04 · 국제대회 카테고리 최상위 탐색과 공통 아이콘
 
 Status: USER REQUESTED / PROTOTYPE / READY FOR REVIEW / KVL PRODUCTION NOT CHANGED. 최신 사용자 요청에 따라 앞선 시안의 ‘2026 블록 안 카테고리’와 ‘해당 연도 한정 필터’ 결정을 대체한다. HERO 아래·연도별 기록 위에6종류 메뉴를 한 번 배치하고 모든 연도의 family를 필터링한다. category URL·재선택 해제·국제대회 홈·연도 전체보기의 선택 유지·기존 연도 아코디언을 지원한다. 기본 홈의 실제 최근3개 정책과 기존 HERO/대회 카드/원본 URL은 유지한다. 장기 재사용할64px 캔버스/2.2px 선의 자체 배구·메달·지구·네트·태양·성화 SVG6종을 분리한다. 공식 시즌 로고 및 문자만의 임시 마크는 사용하지 않는다. 실제 등록5개, 원본 family·데이터·Production·Drive MASTER는 보존한다. PC1180의6열/카드3개와 모바일390·360의3열×2행/카드1열, 필터·선택 유지·전체보기·새로고침 검수 및6개 테스트 PASS. 과거 실데이터는 없으며 연도 간 필터는 테스트 전용 fixture로 확인했다. 기존 Draft PR #246에 후속 반영하며 운영 병합은 승인하지 않는다. [v2 검수·범위·복구](validation/international-years-prototype-v2.md).
+
+## 2026-11-04 · 국제대회 종류 카드의 다음 개최 문구
+
+PROTOTYPE / READY FOR REVIEW. PR #246의 기존 6개 카테고리 데이터에 사용자가 지정한 nextLabel과 선택적 nextCompetitionName을 추가했다. 올림픽 2028 LA, 세계선수권 2027 월드컵, VNL 2027 VNL, 대륙선수권 2028 예정, 아시안게임 2030 도하, 종합경기대회 2027 리마·팬아메리칸게임을 표시한다. 둘째 줄은 종합경기대회에만 사용한다. 모든 카드가 두 줄에 해당하는 최소 높이를 확보하며 보조문구 클릭도 기존 연도별 카테고리 필터로 연결된다. 이 문구는 프로토타입 표시 데이터이며 기존 대회 registry의 목록·시즌 기록과 별개다. [검수 기록](validation/international-years-prototype-v2.md).

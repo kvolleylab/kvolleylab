@@ -46,3 +46,11 @@ Cloud Browser 고정폭 iframe으로 실제 화면과 DOM 치수를 확인했다
 프로토타입 HTML/CSS, controller/model, 자체 아이콘 모듈, 테스트 및 문서만 수정했다. 운영 허브·Competition Engine·AVC/VNL/아시안게임·원본 registry·Drive MASTER는 변경하지 않았다. 코드 비교에서 protected production 경로 diff는0이다.
 
 복구는 이 revision을 feature 브랜치에서 revert하거나 검토 Site를 이전 저장 버전으로 되돌리는 범위다. KVL production 복구 작업은 필요 없다. 사용자 검수 후 별도 명시적 운영 반영 승인이 있어야 최신 main에 맞춰 운영 적용을 진행한다.
+
+## v3 검수 · 2026-11-04
+
+카테고리 데이터의 nextLabel과 선택적 nextCompetitionName을 카드 제목 아래에 표시했다. 향후 개최 문구는 해당 데이터에서 교체한다. `2028 예정`을 포함한 6개 문구는 사용자 지정 표기다. 실제 등록 대회 수는 5개이며 기존 최근 카드·대회 링크·아이콘 SVG 자산은 보존했다.
+
+1180px 브라우저에서 6열·카드 높이 약143px, 390px·360px에서 3열×2행·높이116px을 확인했다. 각 화면 폭에서 6개 높이가 같고 보조정보와 페이지의 가로 넘침은0이다. 제목은 각각13px/12px, 보조정보는11px/10px이다. 360px에서도 ‘2027 VNL’은 한 줄이고, ‘2027 리마’ 다음 줄에 ‘팬아메리칸게임’이 표시됐다. ‘2027 VNL’ 클릭 후 해당 필터와 연도 전체보기 URL 보존, ‘팬아메리칸게임’ 클릭 선택 및 ‘2027 리마’ 재클릭 해제를 확인했다. 데이터/라우팅 테스트6개 통과. 브라우저 viewport 검수이며 실제 모바일 기기 검수는 후속 검토 범위다.
+
+기존 시안 HEAD 34202d4f1fe27df44a303c4be19a1dd3297ce1a9. 검수 시점 main 4d115851ebec134f90c2547e488410bb4f76d26c. 비공개 시안과 Draft PR #246에 한정한다. 복구는 해당 revision revert 또는 검토 Site v2 복원으로 진행한다.
