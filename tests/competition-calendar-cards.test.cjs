@@ -14,7 +14,7 @@ const verified=JSON.parse(read('data/calendar/verified-events.json'));
 const html=read('competition-calendar.html');
 async function mount(query='view=year&year=2026',options={}){
   const dom=new JSDOM(html,{url:'https://kvolleylab.com/competition-calendar.html?'+query,runScripts:'outside-only',pretendToBeVisual:true});
-  const w=dom.window;w.matchMedia=()=>({matches:options.mobile||false});w.scrollTo=()=>{};
+  const w=dom.window;w.matchMedia=()=>({matches:options.mobile||false});w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=function(){};
   if(options.now){const NativeDate=w.Date;w.Date=class extends NativeDate{constructor(...args){super(...(args.length?args:[options.now]))}static now(){return new NativeDate(options.now).getTime()}};}
   const data=options.data||period;let copied='';w.KVLCalendarLayerPriority=options.priority;
   w.fetch=async url=>url.includes('verified-events')?{ok:true,json:async()=>structuredClone(options.verified||[])}:({status:options.missingData?404:200,ok:!options.missingData&&(url.includes('periods')||!options.missingGenders)&&!(url.includes('domestic-competitions')&&options.missingLocations),json:async()=>structuredClone(url.includes('periods')?data:url.includes('domestic-competitions')?(options.domestic||domestic):(options.genders||genders))});
@@ -123,14 +123,49 @@ test('default Korean and future translation hooks retain existing language ident
   assert.doesNotMatch(p.d.querySelector('#competitionCalendar').textContent,/TOURNAMENT CALENDAR|EVENTS|SCHEDULE/);
   assert.match(source,/KVLCalendarTranslations/);p.close();
 });
-test('all event destinations preserve original path/query/hash; local targets exist',async()=>{
-  for(const e of period.events){const target=new URL(e.href,'https://kvolleylab.com/');
-    if(target.origin==='https://kvolleylab.com')assert.ok(fs.existsSync(path.join(root,target.pathname)),e.href);
+test('bars route to KVL and retain internal paths, including the West Japan results page',async()=>{
+  const p=await mount('view=year&year=2026',{verified});
+  const all=[...period.events,...verified];
+  assert.equal(new Set(all.map(e=>e.id)).size,39);
+  for(const e of all){
+    const bar=p.d.querySelector(`[data-range-event="${e.id}"]`);
+    assert.ok(bar,e.id);
+    const url=new URL(bar.href),original=new URL(e.href,'https://kvolleylab.com/');
+    assert.equal(url.origin,'https://kvolleylab.com',e.id);
+    assert.ok(fs.existsSync(path.join(root,url.pathname)),e.id);
+    if(original.origin===url.origin)assert.equal(url.href,original.href);
+    else if(e.id==='west-japan-university-men-selection-2026'){
+      assert.equal(url.pathname,'/international-university-west-japan-select-2026.html');
+      assert.equal(url.searchParams.get('view'),'matches');
+    }else{
+      assert.equal(url.pathname,'/competition-calendar.html');
+      assert.equal(url.hash,'#cc-event-'+e.id);
+      assert.equal(url.searchParams.get('date'),bar.dataset.rangeStart);
+    }
   }
-  const p=await mount('view=month&year=2026&month=8&date=2026-08-29');
-  for(const card of p.d.querySelectorAll('[data-event-id]')){
-    const e=period.events.find(e=>e.id===card.dataset.eventId);assert.equal(card.querySelector('a').href,new URL(e.href,'https://kvolleylab.com/').href);
-  }p.close();
+  p.close();
+});
+test('second tap on a prior-season bar opens the selected calendar card and exposes the article only as an explicit source',async()=>{
+  for(const gender of ['men','women']){
+    const p=await mount('view=year&year=2026&category=vleague&gender='+gender,{verified,mobile:true});
+    const id='v-league-'+gender+'-2025-26',a=p.d.querySelector('#cc-month-3 [data-range-event="'+id+'"]');
+    const tap=new p.w.MouseEvent('click',{bubbles:true,cancelable:true});
+    a.dispatchEvent(tap);assert.ok(tap.defaultPrevented);
+    assert.equal(p.d.querySelector('#ccRangeTooltip').hidden,false);
+    const out=new p.w.Event('pointerout',{bubbles:true});Object.defineProperty(out,'pointerType',{value:'touch'});a.dispatchEvent(out);
+    await new Promise(resolve=>setTimeout(resolve,180));
+    assert.equal(p.d.querySelector('#ccRangeTooltip').hidden,false);
+    p.d.addEventListener('click',e=>{assert.equal(e.defaultPrevented,false);e.preventDefault()},{once:true});a.click();
+    const u=new URL(a.href);assert.equal(u.searchParams.get('month'),'3');assert.equal(u.searchParams.get('gender'),gender);
+    const dest=await mount(u.search.slice(1)+u.hash,{verified,mobile:true});
+    assert.equal(dest.w.location.hash,u.hash);
+    const card=dest.d.getElementById('cc-event-'+id);
+    assert.ok(card.closest('#ccSelectedDay'));assert.equal(card.querySelector('h3').textContent.includes('V-리그'),true);
+    const link=card.querySelector('a');assert.match(link.textContent,/일정 출처 보기 \(외부\)/);assert.equal(link.target,'_blank');assert.equal(link.href,verified.find(e=>e.id===id).href);
+    const list=dest.d.querySelector('.cc-card-all-events [data-event-id="'+id+'"]');
+    assert.equal(new URL(list.querySelector('.cc-card-event-action').href).hash,u.hash);
+    dest.close();p.close();
+  }
 });
 test('existing Goseong summary modal retains results and routes its local links to the operating site',async()=>{
   const p=await mount('view=month&year=2026&month=6&date=2026-06-25');
@@ -161,7 +196,7 @@ test('period segments cover every included day exactly once without overlapping 
         const event=period.events.find(e=>e.id===bar.dataset.rangeEvent);
         assert.equal(bar.classList.contains('continues-before'),event.start<bar.dataset.rangeStart);
         assert.equal(bar.classList.contains('continues-after'),event.end>bar.dataset.rangeEnd);
-        assert.equal(bar.href,new URL(event.href,'https://kvolleylab.com/').href);
+        assert.equal(new URL(bar.href).origin,'https://kvolleylab.com');
       }
     }p.close();
   }
