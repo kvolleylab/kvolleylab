@@ -18,7 +18,7 @@
     unclassified:n=>` · 분류 미확인 ${n}건은 전체에서 표시`,monthEvents:'이달의 대회',selectedDay:'선택한 날짜',selected:'선택',
     periodNote:'대회 기간 기준이며, 모든 날짜에 경기가 열리는 것은 아닙니다.',dayHint:'기간 막대에 마우스를 올리거나 터치하면 대회 정보를 확인할 수 있습니다.',
     noDayEvents:'이 날짜에 등록된 대회 일정이 없습니다.',noMonthEvents:'이달에 등록된 대회 일정이 없습니다.',
-    allMonth:'이달 전체 대회 보기',period:'대회 기간',details:'일정·결과 보기',summary:'대회 요약 보기',joint:'남녀부 공동 개최',
+    allMonth:'이달 전체 대회 보기',period:'대회 기간',details:'일정·결과 보기',summary:'대회 요약 보기',periodDetails:'대회 기간·장소 보기',sourceLink:'일정 출처 보기 (외부)',joint:'남녀부 공동 개최',
     dataMissing:y=>`${y}년 대회 일정 데이터가 없습니다.`,retry:'다시 불러오기',back2026:'2026년 달력 보기',
     matchNote:'날짜가 확인된 경기만 집계하며, 대회 전체 경기 수를 날짜별 경기 수로 사용하지 않습니다.',
     daySchedule:'날짜별 대회',otherMonth:'다른 달',yearHint:'기간 막대에서 대회 정보를, 날짜에서 그날의 대회를 확인하세요.',rangeHint:'선택하여 대회 일정 보기',touchHint:'한 번 더 눌러 대회 일정 보기'
@@ -126,9 +126,20 @@
   const formatDate=s=>{const [y,m,d]=s.split('-').map(Number);return `${y}.${pad(m)}.${pad(d)}`};
   const fullDate=s=>{const d=new Date(s+'T00:00:00Z');return `${t.day(d.getUTCMonth()+1,d.getUTCDate())} ${t.fullWeekdays[d.getUTCDay()]}`};
   const duration=e=>Math.round((new Date(e.end+'T00:00:00Z')-new Date(e.start+'T00:00:00Z'))/86400000)+1;
-  // Existing public links retain their full path/query/hash. On the isolated
-  // preview host they open the operating destination instead of a missing clone.
-  const eventHref=e=>new URL(e.href,'https://kvolleylab.com/').href;
+  const siteOrigin='https://kvolleylab.com';
+  function competitionPage(e){
+    if(e.id==='west-japan-university-men-selection-2026')return siteOrigin+'/international-university-west-japan-select-2026.html?view=matches';
+    if(!e.href)return null;
+    const url=new URL(e.href,siteOrigin);
+    return url.origin===siteOrigin?url.href:null;
+  }
+  function eventHref(e,date){
+    const page=competitionPage(e);
+    if(page)return page;
+    // Use the visible segment of a season when it crosses a month or year.
+    const day=date||[e.start,iso(civil(year,month,1))].sort().at(-1);
+    return calendarHref('month',Number(day.slice(0,4)),Number(day.slice(5,7)),day)+'#cc-event-'+encodeURIComponent(e.id);
+  }
   const datedMatches=(events,date)=>events.flatMap(e=>(e.matches||[]).filter(m=>m.date===date).map(m=>({event:e,match:m})));
   // One floating tooltip avoids clipping at month-card and viewport edges.
   const rangeTip=document.createElement('div');
@@ -147,7 +158,7 @@
     rangeTip.classList.toggle('status-ended',statusOf(event)==='ended');
     const genderText=joint?'남 · 여 (동일기간)':genderLabel(event);
     const group=annual?`${esc(labelOf(event.category))} · `:'';
-    rangeTip.innerHTML=`${members.map(e=>`<strong>${esc(titleWithLocation(e,e.title))}</strong>`).join('')}<span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${group}${esc(familyLabels[familyOf(event)])} · ${esc(genderText)}</span>${event.period_note?`<span class="cc-range-tooltip-meta">${esc(event.period_note)}</span>`:''}${joint?`<span class="cc-range-tooltip-links">${members.map(e=>`<a href="${esc(eventHref(e))}">${esc(genderLabel(e))} 대회 보기 →</a>`).join('')}</span>`:`<span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`}`;
+    rangeTip.innerHTML=`${members.map(e=>`<strong>${esc(titleWithLocation(e,e.title))}</strong>`).join('')}<span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${group}${esc(familyLabels[familyOf(event)])} · ${esc(genderText)}</span>${event.period_note?`<span class="cc-range-tooltip-meta">${esc(event.period_note)}</span>`:''}${joint?`<span class="cc-range-tooltip-links">${members.map(e=>`<a href="${esc(eventHref(e,anchor.dataset.rangeStart))}">${esc(genderLabel(e))} 대회 보기 →</a>`).join('')}</span>`:`<span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`}`;
     rangeTip.style.maxWidth=`${Math.min(360,document.documentElement.clientWidth-24)}px`;
     rangeTip.hidden=false;anchor.setAttribute('aria-describedby',rangeTip.id);
     const rect=anchor.getBoundingClientRect(),box=rangeTip.getBoundingClientRect(),edge=12;
@@ -159,7 +170,7 @@
   }
   const deferHideRange=()=>{clearTimeout(hideRangeTimer);hideRangeTimer=setTimeout(hideRange,160)};
   root.addEventListener('pointerover',e=>{const a=e.target.closest('[data-range-event]');if(a&&e.pointerType!=='touch')showRange(a)});
-  root.addEventListener('pointerout',e=>{const a=e.target.closest('[data-range-event]');if(a&&!a.contains(e.relatedTarget)&&!rangeTip.contains(e.relatedTarget))deferHideRange()});
+  root.addEventListener('pointerout',e=>{const a=e.target.closest('[data-range-event]');if(a&&e.pointerType!=='touch'&&!a.contains(e.relatedTarget)&&!rangeTip.contains(e.relatedTarget))deferHideRange()});
   root.addEventListener('focusin',e=>{const a=e.target.closest('[data-range-event]');if(a)showRange(a)});
   root.addEventListener('focusout',e=>{if(e.target.closest('[data-range-event]')&&!rangeTip.contains(e.relatedTarget))deferHideRange()});
   root.addEventListener('click',e=>{
@@ -194,6 +205,7 @@
   function syncUrl(){
     const url=new URL(calendarHref(view,year,month,view==='month'?selected:null),location.href);
     if(!explicitView)url.searchParams.delete('view');
+    if(linkedEventCard())url.hash=location.hash;
     history.replaceState(null,'',url);
   }
   function syncViewSwitch(){
@@ -250,7 +262,7 @@
   }
   function rangeBar({event,lane,col,span,start,end},compact){
     const before=event.start<start,after=event.end>end,family=familyOf(event),members=event.periodMembers||[event];
-    const href=members.length>1?calendarHref('month',Number(start.slice(0,4)),Number(start.slice(5,7)),start):eventHref(event);
+    const href=members.length>1?calendarHref('month',Number(start.slice(0,4)),Number(start.slice(5,7)),start):eventHref(event,start);
     const title=members.map(e=>titleWithLocation(e,e.title)).join(' / ');
     // Production-style labels return in both views. Full titles and locations
     // remain available in the existing tooltip when the bar is ellipsized.
@@ -283,8 +295,35 @@
   }
   function eventCard(e,date){
     const status=statusOf(e),matches=date?datedMatches([e],date):[];
-    return `<article class="cc-card-event" data-event-id="${esc(e.id)}" style="--event-color:${colorOf(e)}"><div class="cc-card-event-top"><span class="cc-card-category"><i></i>${esc(labelOf(e.category))}</span><span class="cc-card-status status-${status}">${t[status]}</span></div><a class="cc-card-event-link" href="${esc(eventHref(e))}"><h3>${esc(titleWithLocation(e))}</h3><span aria-hidden="true">↗</span></a><p class="cc-card-event-period">${formatDate(e.start)} – ${formatDate(e.end)} <span>· ${t.duration(duration(e))}</span>${e.period_note?`<span>${esc(e.period_note)}</span>`:''}</p><p class="cc-card-event-meta">${assignedGenders(e).length===2?t.joint:assignedGenders(e).map(g=>t[g]).join(' · ')}</p>${matches.length?`<div class="cc-card-confirmed"><strong>${t.matches(matches.length)}</strong>${matches.map(({match})=>`<p>${esc(match.time||'')} ${esc(match.teamA||'')} – ${esc(match.teamB||'')}</p>`).join('')}</div>`:''}<a class="cc-card-event-action${e.podiums?.length?' cc-focus-event':''}" href="${esc(eventHref(e))}">${e.podiums?.length?t.summary:t.details} <span aria-hidden="true">→</span></a></article>`;
+    const page=competitionPage(e);
+    const href=page||eventHref(e,date);
+    const title=`<h3>${esc(titleWithLocation(e))}</h3>`;
+    const atDetail=date&&!page;
+    const heading=atDetail?`<div class="cc-card-event-link">${title}</div>`:`<a class="cc-card-event-link" href="${esc(href)}">${title}<span aria-hidden="true">→</span></a>`;
+    let action='';
+    if(atDetail){
+      const source=e.source_url||e.href;
+      if(/^https?:\/\//i.test(source))action=`<a class="cc-card-event-action" href="${esc(source)}" target="_blank" rel="noopener noreferrer">${t.sourceLink} ↗</a>`;
+    }else{
+      const label=e.podiums?.length?t.summary:page?t.details:t.periodDetails;
+      action=`<a class="cc-card-event-action${e.podiums?.length?' cc-focus-event':''}" href="${esc(href)}">${label} <span aria-hidden="true">→</span></a>`;
+    }
+    return `<article class="cc-card-event" data-event-id="${esc(e.id)}"${date?` id="cc-event-${esc(e.id)}" tabindex="-1"`:''} style="--event-color:${colorOf(e)}"><div class="cc-card-event-top"><span class="cc-card-category"><i></i>${esc(labelOf(e.category))}</span><span class="cc-card-status status-${status}">${t[status]}</span></div>${heading}<p class="cc-card-event-period">${formatDate(e.start)} – ${formatDate(e.end)} <span>· ${t.duration(duration(e))}</span>${e.period_note?`<span>${esc(e.period_note)}</span>`:''}</p><p class="cc-card-event-meta">${assignedGenders(e).length===2?t.joint:assignedGenders(e).map(g=>t[g]).join(' · ')}</p>${matches.length?`<div class="cc-card-confirmed"><strong>${t.matches(matches.length)}</strong>${matches.map(({match})=>`<p>${esc(match.time||'')} ${esc(match.teamA||'')} – ${esc(match.teamB||'')}</p>`).join('')}</div>`:''}${action}</article>`;
   }
+  function linkedEventCard(){
+    if(!location.hash.startsWith('#cc-event-'))return null;
+    try{return document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch{return null}
+  }
+  function revealLinkedEvent(){
+    const card=linkedEventCard();
+    if(!card)return;
+    const header=document.querySelector('.cc-sticky-header');
+    const inset=header.offsetHeight+(parseFloat(getComputedStyle(header).top)||0)+10;
+    card.style.scrollMarginTop=inset+'px';
+    card.focus({preventScroll:true});
+    card.scrollIntoView({block:'start'});
+  }
+  window.addEventListener('hashchange',revealLinkedEvent);
   function renderSelected(){
     const target=document.getElementById('ccSelectedDay');if(!target)return;
     const events=eventsAt(selected),matches=datedMatches(events,selected);
@@ -344,6 +383,7 @@
       ?domestic.competitions.filter(e=>typeof e.id==='string'&&typeof e.location==='string').map(e=>[e.id,e.location]):[]);
     genderMap=map?.schema==='calendar-genders-v1'&&map.year===year&&map.events?map:(!data?{events:{}}:null);
     if(!genderMap)gender='all';render();
+    if(linkedEventCard())requestAnimationFrame(revealLinkedEvent);
   }).catch(()=>{
     dataMissing=true;payload={events:[],categories:[]};genderMap={events:{}};render();
   });
