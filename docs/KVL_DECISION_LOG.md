@@ -483,3 +483,15 @@ Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 병
 공식 일정 수집에서 이미 확인하는 세트 승수만 별도 liveScore와 실제 관측 시각으로 연결한다. 최종 score/승패/순위/선수값과 분리하고 경기 연결·공식 출처·관측 시각을 검증한다. 갱신 지연과 상태 미확인을 구분하며 포인트·현재 세트 번호를 추정하지 않는다. 기존 수집 주기·MASTER 게시 gate·ID·명단·달력·검색·메뉴를 보존한다. 진행 중에만 실제 관측 시각 갱신을 허용하고 동일 관측은 변경0이다.
 
 Initial base `f7d51ee1264b8f2811fef618e4f01f597acdb154`, release base `f70e3d1271e8c49f0e2cf2b64e258444e46cc70c`: 기존 자동화가 게시한 오늘 실제 남녀 결과를 보존한다. 실제 경기 MASTER를 읽었으며 수동 결과 쓰기는 하지 않았다. 실패했던 기존 예약 실행41621555027의 failed-jobs 재실행은 공식 수집·MASTER 재조회·Pages 공개 검증까지 성공했다. 실제 진행 중 관측을 이번 세션에서 완료했다고 확대하지 않는다. [표시 계약·테스트·복구·제약](validation/today-match-summary-20261103.md).
+
+## 2026-11-04 · 국제대회 연도별 허브 검수용 프로토타입
+
+Status: USER REQUESTED / PROTOTYPE / READY FOR REVIEW / KVL PRODUCTION NOT CHANGED. 국제 허브의 기존 HERO·최근 카드와 대학 허브의 연도별 사용성을 결합한다. 2026 열린 블록 안에 실제 최근3개와 자체 SVG 카테고리6개를 두고, 같은 시안의 전체보기·분류 필터·과거연도 아코디언으로 연결한다. KST 진행 중 우선·종료일/시작일 최신순·최근 영역 미래 제외, 전체보기 예정 포함, games 호환 mapping을 사용한다. 실제 등록5개와 원래 URL/slug·Hero·family·Drive MASTER는 보존한다. 남자 아시안게임의 오래된 index 진행문구는 연결된 data.json의 완료 상태를 시안에서만 읽어 표시한다. 없는 대회·과거 결과를 만들지 않는다. PC1180/모바일390·360의 기본/전체/6분류와4개 데이터 테스트 통과. feature/international-years-prototype-v1, base f560f3b0473eca5e3933461f13b725ed4a9cdb32. 운영 교체·병합은 별도 승인 전 진행하지 않는다. [검수·범위·복구](validation/international-years-prototype-v1.md).
+
+## 2026-11-04 · 국제대회 카테고리 최상위 탐색과 공통 아이콘
+
+Status: USER REQUESTED / PROTOTYPE / READY FOR REVIEW / KVL PRODUCTION NOT CHANGED. 최신 사용자 요청에 따라 앞선 시안의 ‘2026 블록 안 카테고리’와 ‘해당 연도 한정 필터’ 결정을 대체한다. HERO 아래·연도별 기록 위에6종류 메뉴를 한 번 배치하고 모든 연도의 family를 필터링한다. category URL·재선택 해제·국제대회 홈·연도 전체보기의 선택 유지·기존 연도 아코디언을 지원한다. 기본 홈의 실제 최근3개 정책과 기존 HERO/대회 카드/원본 URL은 유지한다. 장기 재사용할64px 캔버스/2.2px 선의 자체 배구·메달·지구·네트·태양·성화 SVG6종을 분리한다. 공식 시즌 로고 및 문자만의 임시 마크는 사용하지 않는다. 실제 등록5개, 원본 family·데이터·Production·Drive MASTER는 보존한다. PC1180의6열/카드3개와 모바일390·360의3열×2행/카드1열, 필터·선택 유지·전체보기·새로고침 검수 및6개 테스트 PASS. 과거 실데이터는 없으며 연도 간 필터는 테스트 전용 fixture로 확인했다. 기존 Draft PR #246에 후속 반영하며 운영 병합은 승인하지 않는다. [v2 검수·범위·복구](validation/international-years-prototype-v2.md).
+
+## 2026-11-04 · 국제대회 종류 카드의 다음 개최 문구
+
+PROTOTYPE / READY FOR REVIEW. PR #246의 기존 6개 카테고리 데이터에 사용자가 지정한 nextLabel과 선택적 nextCompetitionName을 추가했다. 올림픽 2028 LA, 세계선수권 2027 월드컵, VNL 2027 VNL, 대륙선수권 2028 예정, 아시안게임 2030 도하, 종합경기대회 2027 리마·팬아메리칸게임을 표시한다. 둘째 줄은 종합경기대회에만 사용한다. 모든 카드가 두 줄에 해당하는 최소 높이를 확보하며 보조문구 클릭도 기존 연도별 카테고리 필터로 연결된다. 이 문구는 프로토타입 표시 데이터이며 기존 대회 registry의 목록·시즌 기록과 별개다. [검수 기록](validation/international-years-prototype-v2.md).

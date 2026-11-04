@@ -1,0 +1,118 @@
+// Reuses the approved senior-hub-v1 HERO renderer and source resolver. Production files are unchanged.
+import {CATEGORIES,categoryOf} from './international-hub-model-v1.mjs';
+  const resolveHeroSource=async item=>{
+    const hero=item.hero||{};
+    if(hero.mode==='source-page'&&hero.sourcePage){
+      const res=await fetch(hero.sourcePage,{cache:'no-cache'});
+      if(!res.ok)throw new Error('hero source page');
+      const html=await res.text();
+      const doc=new DOMParser().parseFromString(html,'text/html');
+      const node=doc.querySelector(hero.selector||'.kvl1180-hero');
+      if(!node)throw new Error('hero selector');
+      const mobile=node.style.getPropertyValue('--kvl-hero-image-mobile').trim();
+      const pc=node.style.getPropertyValue('--kvl-hero-image-pc').trim();
+      if(mobile)return {imageCss:mobile,sourcePosition:'center center'};
+      if(pc)return {imageCss:pc,sourcePosition:'center center'};
+    }
+    if(hero.mode==='competition-config'&&hero.config){
+      const res=await fetch(hero.config,{cache:'no-cache'});
+      if(!res.ok)throw new Error('hero config');
+      const config=await res.json();
+      const h=config.hero||{};
+      const chunks=Array.isArray(h.mobileB64Chunks)&&h.mobileB64Chunks.length?h.mobileB64Chunks:
+        (Array.isArray(h.b64Chunks)&&h.b64Chunks.length?h.b64Chunks:
+        (Array.isArray(h.pcB64Chunks)&&h.pcB64Chunks.length?h.pcB64Chunks:[]));
+      if(chunks.length){
+        const parts=await Promise.all(chunks.map(async path=>{
+          const chunkRes=await fetch(path,{cache:'no-cache'});
+          if(!chunkRes.ok)throw new Error('hero chunk');
+          return (await chunkRes.text()).trim();
+        }));
+        return {
+          imageCss:'url("data:'+(h.mimeType||'image/webp')+';base64,'+parts.join('')+'")',
+          sourcePosition:h.mobilePosition||h.position||'center center'
+        };
+      }
+      const image=h.mobileImage||h.pcImage;
+      if(image)return {image:image,sourcePosition:h.mobilePosition||h.position||'center center'};
+    }
+    return {};
+  };
+
+  const renderCard=(item,source={})=>{
+    const c=item.card||{};
+    const card=document.createElement('a');
+    card.className='senior-recent-card';
+    card.href=document.body.dataset.productionOrigin?new URL(item.href,document.body.dataset.productionOrigin).href:item.href;
+    card.setAttribute('aria-label',(item.title||item.card?.title)+' · 대회 보기');
+    card.dataset.competition=item.id;
+    card.style.setProperty('--recent-a',c.themeA||'#074827');
+    card.style.setProperty('--recent-b',c.themeB||'#0e7b43');
+    // Tournament titles are always rendered in the shared hero gold via CSS.
+    card.style.setProperty('--recent-eyebrow',c.eyebrowColor||'#e6c46c');
+    card.style.setProperty('--recent-overlay-pc',c.overlayPc||'linear-gradient(105deg,rgba(3,27,51,.42) 0%,rgba(3,27,51,.22) 48%,rgba(3,27,51,.04) 76%)');
+    card.style.setProperty('--recent-overlay-mobile',c.overlayMobile||'linear-gradient(90deg,rgba(3,27,51,.20) 0%,rgba(3,27,51,.10) 42%,rgba(3,27,51,.02) 68%,rgba(3,27,51,0) 82%)');
+
+    const imageCss=source.imageCss||(source.image?'url("'+source.image+'")':(c.image?'url("'+c.image+'")':''));
+    if(imageCss){
+      card.classList.add('has-photo');
+      card.style.setProperty('--recent-image',imageCss);
+      card.style.setProperty('--recent-image-pc-pos',source.sourcePosition||c.imagePositionPc||'center center');
+      card.style.setProperty('--recent-image-mobile-pos',source.sourcePosition||c.imagePositionMobile||'center center');
+    }
+
+    const hero=document.createElement('div');
+    hero.className='senior-recent-hero';
+
+    const copy=document.createElement('div');
+    copy.className='senior-recent-copy';
+
+    const eyebrow=document.createElement('p');
+    eyebrow.className='senior-recent-eyebrow';
+    eyebrow.textContent=(CATEGORIES.find(([key])=>key===categoryOf(item))?.[1]||item.brand||'국제대회')+' · '+(item.gender==='women'?'여자':'남자');
+
+    const title=document.createElement('h3');
+    title.textContent=c.title||item.title||'국제대회';
+
+    const sub=document.createElement('p');
+    sub.className='senior-recent-sub';
+    sub.textContent=c.subtitle||'';
+
+    const meta=document.createElement('div');
+    meta.className='senior-recent-meta';
+
+    const date=document.createElement('div');
+    date.className='senior-recent-meta-row';
+    date.innerHTML='<span class="senior-recent-icon" aria-hidden="true">▣</span><span></span>';
+    date.lastElementChild.textContent=c.dateLabel||'';
+
+    const place=document.createElement('div');
+    place.className='senior-recent-meta-row';
+    place.innerHTML='<span class="senior-recent-icon" aria-hidden="true">●</span><span></span>';
+    place.lastElementChild.textContent=c.locationLabel||item.location||'';
+
+    meta.append(date,place);
+    copy.append(eyebrow,title,sub,meta);
+
+    const status=document.createElement('div');
+    status.className='senior-recent-status';
+
+    [c.status,c.teamCount].filter(Boolean).forEach(value=>{
+      const pill=document.createElement('span');
+      pill.textContent=value;
+      status.appendChild(pill);
+    });
+
+    const accent=document.createElement('span');
+    accent.className='is-accent';
+    accent.textContent=c.accentStatus||'대회 보기';
+    accent.title=accent.textContent;
+    status.appendChild(accent);
+
+    hero.append(copy,status);
+    card.appendChild(hero);
+    return card;
+  };
+
+
+export {resolveHeroSource,renderCard};

@@ -1,0 +1,91 @@
+/* Prototype-only additions; original common HERO and recent-card CSS remain intact. */
+.international-years-prototype{--hub-navy:#17365d;--hub-line:#dfe6ed}
+.hub-mobile-break{display:none}
+.hub-years{margin-top:24px;border:1px solid var(--hub-line);border-radius:12px;background:#fff;overflow:hidden}
+.hub-year+.hub-year{border-top:1px solid var(--hub-line)}
+.hub-year-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 18px;background:#fbfcfd;min-height:72px}
+.hub-year-heading h2{margin:0;min-width:0}
+.hub-year-toggle{display:flex;align-items:center;gap:12px;padding:19px 0;border:0;background:none;color:var(--hub-navy);font-size:27px;font-weight:900;cursor:pointer;letter-spacing:-.035em}
+.hub-chevron{color:#718297;transition:transform .16s ease}
+.hub-year-toggle[aria-expanded="true"] .hub-chevron{transform:rotate(90deg)}
+.hub-all-link{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--hub-navy)!important;font-size:13px;font-weight:800;text-decoration:none}
+.hub-all-link:hover,.hub-back:hover{text-decoration:underline}
+.hub-year-body{padding:16px;background:#fff;border-top:1px solid var(--hub-line)}
+.hub-year-body[hidden]{display:none}
+.hub-navigation{margin-top:25px}
+.hub-navigation-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:11px}
+.hub-navigation-heading h2{margin:0;color:var(--hub-navy);font-size:16px;font-weight:850;letter-spacing:-.025em}
+.hub-reset{display:inline-flex;align-items:center;gap:6px;min-height:32px;color:#526a83!important;font-size:12px;font-weight:750;text-decoration:none}
+.hub-reset:hover{text-decoration:underline}
+.hub-shortcuts{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.hub-shortcut{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:112px;padding:12px 6px;border:1px solid var(--hub-line);border-radius:12px;background:#fff;color:var(--hub-navy)!important;text-decoration:none;font-size:13px;font-weight:800;text-align:center;transition:background .16s,border-color .16s,box-shadow .16s}
+.hub-shortcut-icon{display:grid;place-items:center;flex:none;width:60px;height:60px;padding:4px;border-radius:14px;background:#f3f6fa;color:var(--hub-navy);box-sizing:border-box}
+.hub-category-art{display:block;width:52px;height:52px}
+.hub-shortcut-copy{display:flex;flex-direction:column;align-items:center;gap:4px;max-width:100%}
+.hub-shortcut-label{line-height:1.25;white-space:nowrap}
+.hub-next-edition{display:block;min-height:2.6em;font-size:11px;line-height:1.3;font-weight:700;color:#54677c}
+.hub-next-edition>span{display:block;white-space:nowrap}
+.hub-shortcut:hover{background:#f8fafc;border-color:#9abbd5;box-shadow:0 3px 9px rgba(23,54,93,.06)}
+.hub-shortcut[aria-current]{background:#f3effa;border-color:#5b3a8e;box-shadow:inset 0 0 0 1px #5b3a8e;color:#5b3a8e!important}
+.hub-shortcut[aria-current] .hub-shortcut-icon{background:#fff;color:#5b3a8e}
+.hub-shortcut[aria-current]::after{content:'';position:absolute;right:9px;top:9px;width:6px;height:6px;border-radius:50%;background:#5b3a8e}
+.hub-filter-heading{display:flex;align-items:baseline;gap:10px;margin:25px 0 12px}
+.hub-filter-heading h2{margin:0;font-size:23px;color:var(--hub-navy);letter-spacing:-.03em}
+.hub-filter-heading span{font-size:12px;color:#718297}
+.hub-filter-heading+.hub-years{margin-top:0}
+.hub-empty{grid-column:1/-1;margin:0;padding:30px 14px;border:1px dashed #ccd6df;border-radius:10px;background:#f8fafc;color:#64748b;text-align:center;font-size:13px;line-height:1.8}
+.hub-list{margin-top:24px}
+.hub-back{display:inline-flex;align-items:center;min-height:44px;color:#526a83!important;text-decoration:none;font-size:13px;font-weight:750}
+.hub-list-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 0}
+.hub-list-heading h2{margin:0;color:var(--hub-navy);font-size:27px;letter-spacing:-.035em}
+.hub-list-heading>span{flex-shrink:0;color:#718297;font-size:13px;font-weight:700}
+.hub-list-controls{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:14px 0 12px}
+.hub-list-controls p{margin:0;color:#6f8094;font-size:12px;line-height:1.6}
+.hub-retry{margin-top:12px;padding:8px 14px;background:#fff;border:1px solid #c7d3df;border-radius:8px;color:var(--hub-navy);cursor:pointer}
+.international-years-prototype :is(a,button):focus-visible{outline:3px solid #9abbd5;outline-offset:3px}
+/* Long result badges wrap within the existing HERO rather than leaving the card. */
+.international-years-prototype .senior-recent-status{max-width:calc(100% - 36px)}
+.international-years-prototype .senior-recent-status .is-accent{white-space:normal;line-height:1.4;text-align:center;overflow-wrap:anywhere}
+@media(min-width:901px){
+ .international-years-prototype .senior-featured-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .international-years-prototype .senior-recent-hero{height:260px}
+}
+@media(max-width:900px){
+ .international-years-prototype .senior-recent-status{max-width:28%}
+ .hub-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:680px){
+ .hub-mobile-break{display:block}
+ .hub-years{margin-top:18px}
+ .hub-year-heading{padding:0 12px;min-height:64px}
+ .hub-year-toggle{font-size:23px;gap:8px;padding:17px 0}
+ .hub-all-link{font-size:11px;gap:4px}
+ .hub-year-body{padding:10px}
+ .hub-navigation{margin-top:19px}
+ .hub-navigation-heading{margin-bottom:9px}
+ .hub-navigation-heading h2{font-size:14px}
+ .hub-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ .hub-shortcut{min-height:105px;gap:5px;padding:8px 3px;font-size:12px;white-space:nowrap;border-radius:10px}
+ .hub-shortcut-icon{width:48px;height:48px;border-radius:12px}
+ .hub-category-art{width:40px;height:40px}
+ .hub-next-edition{font-size:10px}
+ .hub-filter-heading{margin-top:20px}
+ .hub-filter-heading h2{font-size:21px}
+ .hub-list-heading h2{font-size:22px}
+ .hub-list-heading>span{font-size:11px}
+ .hub-list-controls{align-items:flex-start;gap:8px}
+ .hub-list-controls p{font-size:11px}
+ .hub-list-controls .hub-all-link{min-height:20px}
+ .international-years-prototype .senior-recent-hero{min-height:184px;height:auto;padding:17px 13px;align-items:flex-start;flex-direction:column;gap:12px}
+ .international-years-prototype .senior-recent-copy{width:100%}
+ .international-years-prototype .senior-recent-hero h3{font-size:19px;line-height:1.25}
+ .international-years-prototype .senior-recent-sub{display:none}
+ .international-years-prototype .senior-recent-meta{margin-top:10px;gap:5px}
+ .international-years-prototype .senior-recent-status{position:relative;inset:auto;max-width:100%;align-self:flex-end;margin-top:auto}
+ .international-years-prototype .senior-recent-status span:not(.is-accent){display:none}
+ .international-years-prototype .senior-recent-status .is-accent{font-size:10px;padding:5px 8px}
+ .hub-empty{padding:24px 12px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.international-years-prototype *{transition:none!important;scroll-behavior:auto!important}}
+/* Preserve the existing gold result badge while keeping text legible over photographs. */
+.international-years-prototype .senior-recent-status .is-accent{background:rgba(7,24,39,.78);border-color:rgba(230,196,108,.65);color:#f6e7b5}
