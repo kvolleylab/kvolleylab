@@ -484,6 +484,12 @@ Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED; 병
 
 Initial base `f7d51ee1264b8f2811fef618e4f01f597acdb154`, release base `f70e3d1271e8c49f0e2cf2b64e258444e46cc70c`: 기존 자동화가 게시한 오늘 실제 남녀 결과를 보존한다. 실제 경기 MASTER를 읽었으며 수동 결과 쓰기는 하지 않았다. 실패했던 기존 예약 실행41621555027의 failed-jobs 재실행은 공식 수집·MASTER 재조회·Pages 공개 검증까지 성공했다. 실제 진행 중 관측을 이번 세션에서 완료했다고 확대하지 않는다. [표시 계약·테스트·복구·제약](validation/today-match-summary-20261103.md).
 
+## 2026-11-04 · 검수된 연도별 국제대회 허브 운영 연결
+
+사용자가 검토 Site v3의 홈페이지 반영을 승인했다. 베이스 main은 `4d115851ebec134f90c2547e488410bb4f76d26c`, 검토 원본은 PR #246의 `08a169f341626e8f2711631883442ca9a5498024`다. 기존 `international-competition-senior-national-team.html` 경로에서 국제대회 HERO, 다음 개최 문구가 있는 6개 카테고리, 2026 최근3개와 과거 연도 기록을 표시한다. 같은 경로에서 카테고리 선택·해제, 연도 전체보기, 새로고침을 처리한다. 메뉴 활성화는 공통 내비게이션이 담당하고 대회 링크는 기존 registry의 상대 URL을 사용한다. 기존 대회 원본·Competition Engine·MASTER는 보존한다.
+
+운영 경로를 사용한 사전 검수에서 데이터/라우팅 테스트6개와 등록5건의 대상 파일을 확인했다. 브라우저에서 1180px 6열/최근3개, 390·360px 3열×2행/최근1열, 동등한 카드 높이와 가로 넘침0, VNL 필터를 유지하는 전체보기와 기존 상세 링크를 확인했다. 실제 배포는 운영 PR의 병합 및 Pages 실행 결과로 구분한다. 복구는 이 운영 연결 커밋 revert로 한정한다.
+
 ## 2026-11-03 · 통합달력 월 카드 공통 규격과 겹침 시안
 
 Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / NOT DEPLOYED TO OPERATING SITE. 최신 main `f7d51ee1264b8f2811fef618e4f01f597acdb154`에서 PR #159의 기존 한국어 3열 카드 시안을 재사용했다. 사용자 요청에 따라 전체 메뉴·HERO·필터·보기·데이터 연결을 유지하고, 11월 2일 공통 경기 달력의 일요일 시작/중앙 날짜/셀 규격을 월 카드 내부에 축소 적용했다. 남자 FIVB Purple·AVC Green·대학 Navy·중고 Orange·프로 Charcoal/Gold, 별도 여자 Rose, 공통 단일 계열색 막대+남/여 배지, 50% 겹침과 Hover 최상단 강조를 검수 시안에 구현했다. 운영 UI 승인으로 확대하지 않는다.
