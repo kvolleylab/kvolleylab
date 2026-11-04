@@ -383,6 +383,25 @@
       "sha256": "db00e41fa7c3212c3eb8b98f077f406cf643fe6a3f685d5b096bdc68ba74a8e9",
       "evidence": "docs/validation/player-current-value-20261103.md",
       "review_note": "사용자 승인 범위는 오재성 1명의 이미 같은 현재 등번호 확인 기록이다. 공식 현재명단·선수상세·공시·현재 시즌을 대조했고 native 실제 1행 저장·재조회와 동일 실행 재시도 추가0행을 검증했다. 효력일과 공식 명단 기준일은 null, 선수 셀 변경0이다. GitHub 설정은 수동 전용 검토본이며 실제 서비스계정 쓰기·운영 병합·게시 성공으로 표시하지 않는다. 원격 전체 행·비공개 메모·private plan hash·인증정보는 포함하지 않는다."
+    },
+    "data/calendar/verified-events.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "PR-243-bb8bf4a127fee639d4dc586bfd809d2cd2d552cf",
+        "KOVO 2025-26 미디어가이드 및 남녀 챔피언결정전 최종 기록",
+        "KOVO 2026-27 일정 MASTER 및 운영요강 제16조",
+        "2026 KOVO컵 시즌정보",
+        "2026 KUSF 대학배구 일정표 및 KUVF 여대부 결승 안내",
+        "제55회 전국소년체전 및 제107회 전국체전 배구 기록",
+        "2026 대회기간 MASTER 및 대한배구협회 전국종별 공지 2303",
+        "KB손해보험 퓨처스 대회 일정 9766",
+        "Volleyball World AVC Men Cup 2026"
+      ],
+      "verified_at": "2026-11-04T09:09:06+00:00",
+      "sha256": "75d1b88638637589c130b0a3ecda002bbd177a1fc1c088faaac70238a0b52de1",
+      "evidence": "https://github.com/kvolleylab/kvolleylab/blob/bb8bf4a127fee639d4dc586bfd809d2cd2d552cf/docs/KVL_DECISION_LOG.md",
+      "review_note": "검토본의 13개 남녀부·시즌별 대회 기간과 공개용 파일을 바이트 단위로 대조했다. 공개 대회명, 분류, 일자, 장소, 경기 일정 링크를 포함한다. 2026–27 V-리그 종료일은 챔피언결정전 최장 예정일이며 period_note에 표시한다."
     }
   }
 }
