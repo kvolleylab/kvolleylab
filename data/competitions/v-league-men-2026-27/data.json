@@ -239,10 +239,33 @@
       },
       "venueLabel": "평택이충문화체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "scheduled",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:7",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-01T12:21:03+00:00"
+      "updatedAt": "2026-11-04T18:17:01+00:00",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
+      },
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-005",
@@ -2732,6 +2755,27 @@
       {
         "rank": 3,
         "team": {
+          "code": "OKF",
+          "name": "OK저축은행",
+          "fullName": "OK저축은행",
+          "en": "OKF"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 1,
+        "losses": 0,
+        "points": 3,
+        "setWins": 3,
+        "setLosses": 1,
+        "pointsFor": 97,
+        "pointsAgainst": 87,
+        "setRatio": "3.000",
+        "pointRatio": "1.115",
+        "statusLabel": "3위"
+      },
+      {
+        "rank": 4,
+        "team": {
           "code": "SFB",
           "name": "삼성화재",
           "fullName": "삼성화재",
@@ -2748,10 +2792,10 @@
         "pointsAgainst": 104,
         "setRatio": "3.000",
         "pointRatio": "1.077",
-        "statusLabel": "3위"
+        "statusLabel": "4위"
       },
       {
-        "rank": 4,
+        "rank": 5,
         "team": {
           "code": "KBI",
           "name": "KB손해보험",
@@ -2759,20 +2803,20 @@
           "en": "KBI"
         },
         "poolId": "LEAGUE",
-        "games": 1,
+        "games": 2,
         "wins": 0,
-        "losses": 1,
+        "losses": 2,
         "points": 0,
-        "setWins": 1,
-        "setLosses": 3,
-        "pointsFor": 104,
-        "pointsAgainst": 112,
+        "setWins": 2,
+        "setLosses": 6,
+        "pointsFor": 191,
+        "pointsAgainst": 209,
         "setRatio": "0.333",
-        "pointRatio": "0.929",
-        "statusLabel": "4위"
+        "pointRatio": "0.914",
+        "statusLabel": "5위"
       },
       {
-        "rank": 5,
+        "rank": 6,
         "team": {
           "code": "HDC",
           "name": "현대캐피탈",
@@ -2790,10 +2834,10 @@
         "pointsAgainst": 75,
         "setRatio": "0.000",
         "pointRatio": "0.893",
-        "statusLabel": "5위"
+        "statusLabel": "6위"
       },
       {
-        "rank": 6,
+        "rank": 7,
         "team": {
           "code": "KEP",
           "name": "한국전력",
@@ -2811,28 +2855,7 @@
         "pointsAgainst": 75,
         "setRatio": "0.000",
         "pointRatio": "0.840",
-        "statusLabel": "6위"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "OKF",
-          "name": "OK저축은행",
-          "fullName": "OK저축은행",
-          "en": "OKF"
-        },
-        "poolId": "LEAGUE",
-        "games": 0,
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setWins": 0,
-        "setLosses": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "경기 전"
+        "statusLabel": "7위"
       }
     ]
   },
@@ -2903,14 +2926,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 3/126경기 종료 · 2026-11-03 21:08 KST 반영",
-  "updatedAt": "2026-11-03T12:08:16+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 4/126경기 종료 · 2026-11-05 03:17 KST 반영",
+  "updatedAt": "2026-11-04T18:17:01+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 3,
+    "completedMatches": 4,
     "postseason": {
       "matched": 0,
       "completed": 0,

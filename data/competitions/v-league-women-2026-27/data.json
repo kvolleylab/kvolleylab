@@ -235,10 +235,29 @@
       },
       "venueLabel": "인천 삼산월드체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "scheduled",
+      "status": "final",
       "officialSourceKey": "023:001:FEMALE:8",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-01T12:21:03+00:00"
+      "updatedAt": "2026-11-04T18:17:01+00:00",
+      "score": {
+        "home": 3,
+        "away": 0,
+        "sets": [
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 29,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 19
+          }
+        ]
+      },
+      "scoreVerification": true
     },
     {
       "id": "VL2627-W-005",
@@ -2686,6 +2705,27 @@
       {
         "rank": 1,
         "team": {
+          "code": "HPS",
+          "name": "흥국생명",
+          "fullName": "흥국생명",
+          "en": "HPS"
+        },
+        "poolId": "LEAGUE",
+        "games": 2,
+        "wins": 2,
+        "losses": 0,
+        "points": 6,
+        "setWins": 6,
+        "setLosses": 0,
+        "pointsFor": 154,
+        "pointsAgainst": 128,
+        "setRatio": "MAX",
+        "pointRatio": "1.203",
+        "statusLabel": "1위"
+      },
+      {
+        "rank": 2,
+        "team": {
           "code": "GSC",
           "name": "GS칼텍스",
           "fullName": "GS칼텍스",
@@ -2702,27 +2742,6 @@
         "pointsAgainst": 61,
         "setRatio": "MAX",
         "pointRatio": "1.230",
-        "statusLabel": "1위"
-      },
-      {
-        "rank": 2,
-        "team": {
-          "code": "HPS",
-          "name": "흥국생명",
-          "fullName": "흥국생명",
-          "en": "HPS"
-        },
-        "poolId": "LEAGUE",
-        "games": 1,
-        "wins": 1,
-        "losses": 0,
-        "points": 3,
-        "setWins": 3,
-        "setLosses": 0,
-        "pointsFor": 75,
-        "pointsAgainst": 62,
-        "setRatio": "MAX",
-        "pointRatio": "1.210",
         "statusLabel": "2위"
       },
       {
@@ -2770,6 +2789,27 @@
       {
         "rank": 5,
         "team": {
+          "code": "RSP",
+          "name": "정관장",
+          "fullName": "정관장",
+          "en": "RSP"
+        },
+        "poolId": "LEAGUE",
+        "games": 1,
+        "wins": 0,
+        "losses": 1,
+        "points": 0,
+        "setWins": 0,
+        "setLosses": 3,
+        "pointsFor": 66,
+        "pointsAgainst": 79,
+        "setRatio": "0.000",
+        "pointRatio": "0.835",
+        "statusLabel": "5위"
+      },
+      {
+        "rank": 6,
+        "team": {
           "code": "SOO",
           "name": "SOOP",
           "fullName": "SOOP",
@@ -2786,10 +2826,10 @@
         "pointsAgainst": 75,
         "setRatio": "0.000",
         "pointRatio": "0.827",
-        "statusLabel": "5위"
+        "statusLabel": "6위"
       },
       {
-        "rank": 6,
+        "rank": 7,
         "team": {
           "code": "KEX",
           "name": "한국도로공사",
@@ -2807,28 +2847,7 @@
         "pointsAgainst": 75,
         "setRatio": "0.000",
         "pointRatio": "0.813",
-        "statusLabel": "6위"
-      },
-      {
-        "rank": null,
-        "team": {
-          "code": "RSP",
-          "name": "정관장",
-          "fullName": "정관장",
-          "en": "RSP"
-        },
-        "poolId": "LEAGUE",
-        "games": 0,
-        "wins": 0,
-        "losses": 0,
-        "points": 0,
-        "setWins": 0,
-        "setLosses": 0,
-        "pointsFor": 0,
-        "pointsAgainst": 0,
-        "setRatio": "-",
-        "pointRatio": "-",
-        "statusLabel": "경기 전"
+        "statusLabel": "7위"
       }
     ]
   },
@@ -2900,14 +2919,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 3/126경기 종료 · 2026-11-03 21:08 KST 반영",
-  "updatedAt": "2026-11-03T12:08:16+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 4/126경기 종료 · 2026-11-05 03:17 KST 반영",
+  "updatedAt": "2026-11-04T18:17:01+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 3,
+    "completedMatches": 4,
     "postseason": {
       "matched": 0,
       "completed": 0,
