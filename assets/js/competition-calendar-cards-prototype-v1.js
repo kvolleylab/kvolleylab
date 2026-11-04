@@ -1,5 +1,5 @@
-/* KVL calendar card prototype v1 · layer revision 2026-11-03
- * Uses the production period data and gender mapping without changing either.
+/* KVL calendar card prototype · November 2026
+ * Augments the production data with verified prototype-only tournament periods.
  * Sunday-first civil dates; date-level match counts require dated match records.
  */
 (()=>{
@@ -68,15 +68,21 @@
     if(/asian-games|아시안게임/.test(key))return 'games';
     if(/university|대학/.test(key))return 'university';
     if(e.category==='domestic-school')return 'school';
+    if(e.category.startsWith('domestic-'))return 'domestic';
     return 'international';
   };
-  const palette={fivb:'#5B3A8E',avc:'#176638',university:'#1B223A',school:'#D97706',pro:'#252525',women:'#8E315E',games:'#8F2436',international:'#466580'};
-  const familyLabels={fivb:'FIVB',avc:'AVC',university:'대학',school:'중·고',pro:'V-리그 / KOVO컵',games:'아시안게임',international:'기타 국제대회'};
-  const colorOf=e=>palette[assignedGenders(e).length===1&&assignedGenders(e)[0]==='women'?'women':familyOf(e)];
+  const palette={fivb:'#A474F1',avc:'#7CCB47',domestic:'#58A9F4',school:'#FF9E35',pro:'#252525',women:'#FF72B1',games:'#8F2436',international:'#A474F1'};
+  const familyLabels={fivb:'FIVB',avc:'AVC',domestic:'국내 종합·실업',university:'대학',school:'중·고',pro:'V-리그 / KOVO컵',games:'아시안게임',international:'기타 국제대회'};
+  function colorOf(e){
+    const genders=assignedGenders(e);
+    if(genders.length===1&&genders[0]==='women')return palette.women;
+    if(e.category.startsWith('domestic-')&&e.category!=='domestic-school')return palette.domestic;
+    return palette[familyOf(e)]||palette.international;
+  }
   const genderLabel=e=>assignedGenders(e).length===2?'남녀공통':assignedGenders(e).map(g=>t[g]).join(' · ')||'성별 미확인';
-  const priority={pro:0,fivb:1,avc:1,games:1,international:1,university:2,school:3,...window.KVLCalendarLayerPriority};
+  const priority={pro:0,fivb:1,avc:1,games:1,international:1,university:2,domestic:2,school:3,...window.KVLCalendarLayerPriority};
   const badges=e=>assignedGenders(e).length===2?'<b class="cc-joint-badges" aria-hidden="true"><i>남</i><i>여</i></b>':'';
-  const labelOf=c=>payload?.categories.find(x=>x.id===c)?.label||t.period;
+  const labelOf=c=>payload?.categories.find(x=>x.id===c)?.label||({vleague:t.vleague,'domestic-general':t.domestic}[c])||t.period;
   const displayTitle=e=>e.short_title||e.title;
   // Location is a display-only lookup. Never import dates, IDs or links from the
   // older domestic calendar into the canonical period feed.
@@ -94,7 +100,7 @@
   const periodTitle=e=>e.periodMembers
     ?e.periodMembers.map(member=>titleWithLocation(member)).join(' / ')
     :titleWithLocation(e);
-  const assignedGenders=e=>e.periodMembers?[...new Set(e.periodMembers.flatMap(assignedGenders))]:genderMap?.events?.[e.id]?.genders||[];
+  const assignedGenders=e=>e.periodMembers?[...new Set(e.periodMembers.flatMap(assignedGenders))]:e.genders||genderMap?.events?.[e.id]?.genders||[];
   const visibleEvents=()=>payload.events.filter(e=>(active==='all'||(active==='domestic'?e.category.startsWith('domestic-'):e.category===active))&&(gender==='all'||assignedGenders(e).includes(gender)));
   // Only annual display bars may combine a verified male/female pair. Never
   // group by family and dates alone: separate events/age groups must remain.
@@ -152,7 +158,7 @@
     rangeTip.classList.toggle('status-ended',statusOf(event)==='ended');
     const genderText=joint?'남 · 여 (동일기간)':genderLabel(event);
     const group=annual?`${esc(labelOf(event.category))} · `:'';
-    rangeTip.innerHTML=`${members.map(e=>`<strong>${esc(titleWithLocation(e,e.title))}</strong>`).join('')}<span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${group}${esc(familyLabels[familyOf(event)])} · ${esc(genderText)}</span>${joint?`<span class="cc-range-tooltip-links">${members.map(e=>`<a href="${esc(eventHref(e))}">${esc(genderLabel(e))} 대회 보기 →</a>`).join('')}</span>`:`<span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`}`;
+    rangeTip.innerHTML=`${members.map(e=>`<strong>${esc(titleWithLocation(e,e.title))}</strong>`).join('')}<span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${group}${esc(familyLabels[familyOf(event)])} · ${esc(genderText)}</span>${event.period_note?`<span class="cc-range-tooltip-meta">${esc(event.period_note)}</span>`:''}${joint?`<span class="cc-range-tooltip-links">${members.map(e=>`<a href="${esc(eventHref(e))}">${esc(genderLabel(e))} 대회 보기 →</a>`).join('')}</span>`:`<span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`}`;
     rangeTip.style.maxWidth=`${Math.min(360,document.documentElement.clientWidth-24)}px`;
     rangeTip.hidden=false;anchor.setAttribute('aria-describedby',rangeTip.id);
     const rect=anchor.getBoundingClientRect(),box=rangeTip.getBoundingClientRect(),edge=12;
@@ -212,8 +218,8 @@
     const entries=['all','men','women'];
     const missing=payload.events.filter(e=>!assignedGenders(e).length).length;
     const genderToolbar=genderMap?`<div class="cc-gender-toolbar"><div class="cc-gender-options" role="group" aria-label="${t.genderFilter}">${entries.map(g=>`<button type="button" class="cc-gender-option ${gender===g?'active':''}" data-gender="${g}" aria-pressed="${gender===g}">${t[g]}</button>`).join('')}</div><span class="cc-gender-explainer">${t.genderNote}${missing?t.unclassified(missing):''}</span></div>`:`<div class="cc-gender-toolbar cc-gender-unavailable" role="status">${t.genderMissing}</div>`;
-    const items=[['all',null],['international','#64748b'],['domestic','#1B223A'],['vleague','#252525']];
-    return `${genderToolbar}<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a aria-label="${t.previousYear}" href="${calendarHref(view,year-1,month)}">‹</a><label class="cc-year-select"><span class="cc-visually-hidden">연도 선택</span><select aria-label="연도 선택" data-year-select>${Array.from({length:7},(_,i)=>year-3+i).map(y=>`<option value="${y}" ${y===year?'selected':''}>${t.year(y)}</option>`).join('')}</select></label><a aria-label="${t.nextYear}" href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${calendarHref('month',todayYear,todayMonth,todayIso)}">${t.today}</a><button class="cc-share-btn" type="button" data-share>${t.share}</button></div><div class="cc-filters" role="group" aria-label="${t.categoryFilter}">${items.map(([id,color])=>`<button class="cc-filter ${active===id?'active':''}" data-filter="${id}" aria-pressed="${active===id}">${color?`<span class="cc-filter-dot" style="background:${color}"></span>`:''}${t[id]}</button>`).join('')}</div></div>`;
+    const items=[['all',null],['international','#DC2626'],['domestic','#2563EB'],['vleague','#111111']];
+    return `${genderToolbar}<div class="cc-toolbar"><div class="cc-toolbar-left"><div class="cc-year-nav"><a aria-label="${t.previousYear}" href="${calendarHref(view,year-1,month)}">‹</a><label class="cc-year-select"><strong aria-hidden="true">${t.year(year)}</strong><select aria-label="연도 선택" data-year-select>${Array.from({length:7},(_,i)=>year-3+i).map(y=>`<option value="${y}" ${y===year?'selected':''}>${t.year(y)}</option>`).join('')}</select></label><a aria-label="${t.nextYear}" href="${calendarHref(view,year+1,month)}">›</a></div><a class="cc-today-btn" href="${calendarHref('month',todayYear,todayMonth,todayIso)}">${t.today}</a><button class="cc-share-btn" type="button" data-share>${t.share}</button></div><div class="cc-filters" role="group" aria-label="${t.categoryFilter}">${items.map(([id,color])=>`<button class="cc-filter ${active===id?'active':''}" data-filter="${id}" aria-pressed="${active===id}">${color?`<span class="cc-filter-dot" style="background:${color}"></span>`:''}${t[id]}</button>`).join('')}</div></div>`;
   }
   function monthShortcuts(m){
     return `<nav class="cc-month-shortcuts" aria-label="${t.monthJump}">${Array.from({length:12},(_,i)=>`<a href="${calendarHref('month',year,i+1)}" ${i+1===m?'aria-current="page"':''}>${t.month(i+1)}</a>`).join('')}</nav>`;
@@ -288,7 +294,7 @@
   }
   function eventCard(e,date){
     const status=statusOf(e),matches=date?datedMatches([e],date):[];
-    return `<article class="cc-card-event" data-event-id="${esc(e.id)}" style="--event-color:${colorOf(e)}"><div class="cc-card-event-top"><span class="cc-card-category"><i></i>${esc(labelOf(e.category))}</span><span class="cc-card-status status-${status}">${t[status]}</span></div><a class="cc-card-event-link" href="${esc(eventHref(e))}"><h3>${esc(titleWithLocation(e))}</h3><span aria-hidden="true">↗</span></a><p class="cc-card-event-period">${formatDate(e.start)} – ${formatDate(e.end)} <span>· ${t.duration(duration(e))}</span></p><p class="cc-card-event-meta">${assignedGenders(e).length===2?t.joint:assignedGenders(e).map(g=>t[g]).join(' · ')}</p>${matches.length?`<div class="cc-card-confirmed"><strong>${t.matches(matches.length)}</strong>${matches.map(({match})=>`<p>${esc(match.time||'')} ${esc(match.teamA||'')} – ${esc(match.teamB||'')}</p>`).join('')}</div>`:''}<a class="cc-card-event-action${e.podiums?.length?' cc-focus-event':''}" href="${esc(eventHref(e))}">${e.podiums?.length?t.summary:t.details} <span aria-hidden="true">→</span></a></article>`;
+    return `<article class="cc-card-event" data-event-id="${esc(e.id)}" style="--event-color:${colorOf(e)}"><div class="cc-card-event-top"><span class="cc-card-category"><i></i>${esc(labelOf(e.category))}</span><span class="cc-card-status status-${status}">${t[status]}</span></div><a class="cc-card-event-link" href="${esc(eventHref(e))}"><h3>${esc(titleWithLocation(e))}</h3><span aria-hidden="true">↗</span></a><p class="cc-card-event-period">${formatDate(e.start)} – ${formatDate(e.end)} <span>· ${t.duration(duration(e))}</span>${e.period_note?`<span>${esc(e.period_note)}</span>`:''}</p><p class="cc-card-event-meta">${assignedGenders(e).length===2?t.joint:assignedGenders(e).map(g=>t[g]).join(' · ')}</p>${matches.length?`<div class="cc-card-confirmed"><strong>${t.matches(matches.length)}</strong>${matches.map(({match})=>`<p>${esc(match.time||'')} ${esc(match.teamA||'')} – ${esc(match.teamB||'')}</p>`).join('')}</div>`:''}<a class="cc-card-event-action${e.podiums?.length?' cc-focus-event':''}" href="${esc(eventHref(e))}">${e.podiums?.length?t.summary:t.details} <span aria-hidden="true">→</span></a></article>`;
   }
   function renderSelected(){
     const target=document.getElementById('ccSelectedDay');if(!target)return;
@@ -327,17 +333,27 @@
     share.onclick=async()=>{syncUrl();try{await navigator.clipboard.writeText(location.href);share.textContent=t.copied;setTimeout(()=>share.textContent=t.share,1400)}catch{prompt(t.copyPrompt,location.href)}};
   }
   if(!explicitView)window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{const v=responsiveView();if(v!==view&&payload){view=v;render()}},160)});
-  const readJson=async path=>{const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error('calendar data');return r.json()};
+  const readJson=async (path,allowMissing=false)=>{
+    const response=await fetch(path,{cache:'no-store'});
+    if(allowMissing&&response.status===404)return null;
+    if(!response.ok)throw Error('calendar data');
+    return response.json();
+  };
   Promise.all([
-    readJson(`data/calendar/${year}-competition-periods.json?v=20260921-world-events-1`),
+    readJson(`data/calendar/${year}-competition-periods.json?v=20260921-world-events-1`,true),
     readJson(`data/calendar/${year}-competition-genders.json?v=20261019-genders-v1`).catch(()=>null),
-    readJson(`data/calendar/${year}-domestic-competitions.json`).catch(()=>null)
-  ]).then(([data,map,domestic])=>{
-    if(!Array.isArray(data.events)||!Array.isArray(data.categories))throw Error('calendar schema');
-    payload=data;
+    readJson(`data/calendar/${year}-domestic-competitions.json`).catch(()=>null),
+    readJson('data/calendar/prototype/verified-events.json?v=20261104')
+  ]).then(([data,map,domestic,verified])=>{
+    if(data&&(!Array.isArray(data.events)||!Array.isArray(data.categories)))throw Error('calendar schema');
+    const baseEvents=data?.events||[];
+    const seen=new Set(baseEvents.map(e=>e.id));
+    const additions=verified.filter(e=>!seen.has(e.id)&&e.start<=`${year}-12-31`&&e.end>=`${year}-01-01`);
+    if(!data&&!additions.length)throw Error('unregistered year');
+    payload={events:[...baseEvents,...additions],categories:data?.categories||[]};
     domesticLocations=new Map(domestic?.year===year&&Array.isArray(domestic.competitions)
       ?domestic.competitions.filter(e=>typeof e.id==='string'&&typeof e.location==='string').map(e=>[e.id,e.location]):[]);
-    genderMap=map?.schema==='calendar-genders-v1'&&map.year===year&&map.events?map:null;
+    genderMap=map?.schema==='calendar-genders-v1'&&map.year===year&&map.events?map:(!data?{events:{}}:null);
     if(!genderMap)gender='all';render();
   }).catch(()=>{
     dataMissing=true;payload={events:[],categories:[]};genderMap={events:{}};render();

@@ -501,3 +501,20 @@ Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYE
 ## 2026-11-03 · 통합달력 막대 분리·중앙 정렬·종료 표현 v6
 
 Status: USER-REQUESTED PROTOTYPE / READY FOR REVIEW / OPERATING SITE NOT DEPLOYED. 사용자가 막대 겹침 제거·글자 세로 중앙·종료 대회 막대와 말풍선의 흐림을 요청했다. 연간16px/18px 간격, 월간26px/30px, 모바일 월간24px/28px로 전체 행을 확보하고 글자·배지를 중앙 정렬한다. 기존 50% 겹침 및 하단 글자 배치를 대체한다. 겹침을 없애는 데 필요한 만큼 밀집 주의 높이를 늘리며 3열×4행·달력 디자인·색상·대회명 뒤 장소·모든 일정은 유지한다. 운영 통합달력의 `.62` 종료 opacity를 막대와 별도 고정 Tooltip에 적용하고 KST 종료일 다음 날부터 종료 처리한다. 최신 main `f560f3b0473eca5e3933461f13b725ed4a9cdb32`, Draft PR #243. 33개 회귀검사와 PC/360px 연간·월간의 겹침0·중앙 오차0·가로 넘침 없음 확인. 원본 데이터·MASTER·ID·링크 변경 및 운영 배포 없음. [근거·검증·제약·복구](validation/calendar-separated-prototype-20261103.md).
+
+## 2026-11-04 · 통합달력 필터 카드와 대회기간 보강 v7
+
+검수 시안 PR #243. 운영 달력 소스를 main `4d115851`에서 확인했고 이후 `3080d60a`에서도 해당 HTML·CSS·기간 피드는 같았다. 연도 선택은 운영 연도 표기 위에 같은 크기의 기본 선택 컨트롤을 놓는다. 운영본과 같은 DOM/CSS로 카드·버튼·글꼴 치수를 맞추고 필터 점은 국제 빨강, 국내 파랑, V-리그 검정으로 표시한다. 연간·월간 기간 막대는 별도 여자부 밝은 핑크, 국내 일반·대학·KOVO컵 연한 파랑, 중고 오렌지, AVC 연두, FIVB 및 기타 국제 연보라를 쓴다. 남자 V-리그는 검정·금색, 남자 아시안게임은 기존 대회색을 쓴다.
+
+Drive MASTER와 대회별 자료를 대조해 누락된 남녀부·시즌별 기간 13건을 추가했다. 기존 26건에 시안 전용 `data/calendar/prototype/verified-events.json`을 더해 2026년 39건을 표시한다. 연도를 넘는 기간은 실제 시작일과 종료일로 조회하며 성별 필터에도 반영한다.
+
+| 대회 | 기간 및 근거 |
+|---|---|
+| 2025–26 V-리그 | 남 2025.10.20–2026.04.10, 여 2025.10.18–2026.04.05. [KOVO 미디어가이드](https://drive.google.com/file/d/1Q6t6vvNGgTLjmcSBLzdB6mZHnN6CkJtr/view), [남자부 최종전](https://newspim.com/news/view/20260410001243), [여자부 최종전](https://gscaltexmediahub.com/news/corp-news/gscaltex-seoul-kixx-v-league-champion/). |
+| 2026–27 V-리그 | 2026.10.31 개막. 챔피언결정전 최대 예정일은 남 2027.04.22, 여 2027.04.21이며 말풍선과 상세 카드에 예정일 의미를 표시한다. [일정 MASTER](https://docs.google.com/spreadsheets/d/180no_j27R_uw2adWH2BiWbbZ6QUWKVblqymIqNvkBU8/edit), [운영요강 제16조](https://drive.google.com/file/d/1mbIvry0THALFsphh3NqD4Wsw-4zueroU/view). |
+| KOVO컵 | 여 10.11–18, 남 10.19–25, 여수 진남체육관. [시즌정보](https://docs.google.com/spreadsheets/d/1QiNtjjXn2BNz991MfBteWi15I99Bt8dx1Jh1PE9-0Lo/edit). |
+| KUSF 대학배구 U-리그 | 남 03.25–10.06, 여 03.28–09.17. 여자부 초기 계획 09.19에서 최종 결승일을 반영했다. [일정표](https://drive.google.com/file/d/1qRzk0eTKwgJt4e7Scotw8Vx2tb1tTPZD/view), [여대부 결승 안내](https://kuvf.co.kr/31/?bmode=view&idx=174165381). |
+| 전국소년체전·전국체전 배구 | 부산 05.23–26, 제주 10.16–21. [소년체전 기록](https://drive.google.com/file/d/1-xHEDqVzZjW25EYGo9-_Axhpg8JTBN2p/view), [전국체전 기록](https://drive.google.com/file/d/17mFRDLQTeNC293fMBzodoBPOsevQwUu4/view). |
+| 제81회 전국종별·단양 퓨처스·AVC 남자컵 | 제천 05.02–08, 단양 06.07–16, 인도 아마다바드 06.20–28. 퓨처스는 초기 계획 06.06–15보다 실제 일정이 하루 늦었다. [대회기간 MASTER](https://docs.google.com/spreadsheets/d/17pRiWG-3oVoBJ8N2b4fvcKro8y9a2OpRlFn9PMRxejw/edit), [종별 공지](https://www.kva.or.kr/info/m/notice/view.do?boardSeq=2303), [퓨처스 일정](https://www.kbstarsvc.co.kr/news/news/news_content.asp?num=9766&page=3), [AVC 공식 페이지](https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/). |
+
+검증은 35개 회귀검사, 2026년 365일의 12가지 성별·대회 필터 조합 및 연도 경계를 포함한다. 브라우저에서 1440·1180·390·360px 운영 카드와 시안의 버튼·연도·필터 크기/위치/타이포그래피 일치를 확인했다. 데스크톱 카드 높이 68px 및 연도 20px, 모바일 카드 높이 95px 및 연도 18px. 복구 기준은 이전 시안 v6이며 운영 홈페이지 반영은 별도 검수 단계에서 결정한다.

@@ -11,13 +11,14 @@ const source=read('assets/js/competition-calendar-cards-prototype-v1.js');
 const period=JSON.parse(read('data/calendar/2026-competition-periods.json'));
 const genders=JSON.parse(read('data/calendar/2026-competition-genders.json'));
 const domestic=JSON.parse(read('data/calendar/2026-domestic-competitions.json'));
+const verified=JSON.parse(read('data/calendar/prototype/verified-events.json'));
 const html=read('competition-calendar-cards-prototype.html');
 async function mount(query='view=year&year=2026',options={}){
   const dom=new JSDOM(html,{url:'https://calendar.test/competition-calendar-cards-prototype.html?'+query,runScripts:'outside-only',pretendToBeVisual:true});
   const w=dom.window;w.matchMedia=()=>({matches:options.mobile||false});w.scrollTo=()=>{};
   if(options.now){const NativeDate=w.Date;w.Date=class extends NativeDate{constructor(...args){super(...(args.length?args:[options.now]))}static now(){return new NativeDate(options.now).getTime()}};}
   const data=options.data||period;let copied='';w.KVLCalendarLayerPriority=options.priority;
-  w.fetch=async url=>({ok:!options.missingData&&(url.includes('periods')||!options.missingGenders)&&!(url.includes('domestic-competitions')&&options.missingLocations),json:async()=>structuredClone(url.includes('periods')?data:url.includes('domestic-competitions')?(options.domestic||domestic):(options.genders||genders))});
+  w.fetch=async url=>url.includes('prototype/verified-events')?{ok:true,json:async()=>structuredClone(options.verified||[])}:({status:options.missingData?404:200,ok:!options.missingData&&(url.includes('periods')||!options.missingGenders)&&!(url.includes('domestic-competitions')&&options.missingLocations),json:async()=>structuredClone(url.includes('periods')?data:url.includes('domestic-competitions')?(options.domestic||domestic):(options.genders||genders))});
   Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async text=>{copied=text}}});
   w.eval(options.source||source);
   for(let i=0;i<30;i++)await Promise.resolve();
@@ -190,17 +191,17 @@ test('mobile first tap opens period information, second tap retains the original
   a.click();assert.equal(secondPrevented,false);assert.equal(a.href,'https://kvolleylab.com/goseong-university-2026.html');
   p.d.body.dispatchEvent(new p.w.Event('pointerdown',{bubbles:true}));assert.equal(tip.hidden,true);p.close();
 });
-test('production calendar, shared UI, Hero images, masters and all data remain byte-for-byte unchanged',()=>{
+test('production calendar, shared UI, Hero images, masters and operating data remain byte-for-byte unchanged',()=>{
   // Latest main incorporated in this prototype branch; unrelated approved main changes are preserved.
-  const diff=execFileSync('git',['diff','--name-only','f560f3b0473eca5e3933461f13b725ed4a9cdb32','--','competition-calendar.html','index.html','player.html','players.html','domestic-competitions.html','competition-engine.html','university-competition.html','university-competition-danyang.html','data','assets/img','assets/images','assets/js/unified-nav.js','assets/js/kvl-global-sidebar-v1.js','assets/js/competition-calendar-gender-v1.js','assets/js/school-competitions-hub.js','assets/css/competition-calendar-v2.css'],{cwd:root,encoding:'utf8'});
+  const diff=execFileSync('git',['diff','--name-only','f560f3b0473eca5e3933461f13b725ed4a9cdb32','--','competition-calendar.html','index.html','player.html','players.html','domestic-competitions.html','competition-engine.html','university-competition.html','university-competition-danyang.html','data','assets/img','assets/images','assets/js/unified-nav.js','assets/js/kvl-global-sidebar-v1.js','assets/js/competition-calendar-gender-v1.js','assets/js/school-competitions-hub.js','assets/css/competition-calendar-v2.css',':(exclude)data/calendar/prototype/**'],{cwd:root,encoding:'utf8'});
   assert.equal(diff.trim(),'');
   const prod=read('competition-calendar.html');
   const extract=s=>s.match(/<section class="cc-calendar-hero"[\s\S]*?<\/section>/)[0];
   assert.equal(extract(html),extract(prod));assert.match(html,/max-width:1180px/);
 });
 
-test('separate women always use official Rose; annual joint events retain their family color and gender tooltip',async()=>{
-  const fixtures=[['fivb-men','FIVB 남자','international',['men'],'#5B3A8E'],['avc-men','AVC 남자','international',['men'],'#176638'],['university-men','대학 남자','domestic-university',['men'],'#1B223A'],['school-men','중고 남자','domestic-school',['men'],'#D97706'],['v-league-men','V-리그 남자','vleague',['men'],'#252525'],['kovo-cup-men','KOVO컵 남자','domestic-pro',['men'],'#252525'],['fivb-women','FIVB 여자','international',['women'],'#8E315E'],['avc-women','AVC 여자','international',['women'],'#8E315E'],['university-women','대학 여자','domestic-university',['women'],'#8E315E'],['school-women','중고 여자','domestic-school',['women'],'#8E315E'],['v-league-women','V-리그 여자','vleague',['women'],'#8E315E'],['kovo-cup-women','KOVO컵 여자','domestic-pro',['women'],'#8E315E'],['university-joint','대학 남녀공통','domestic-university',['men','women'],'#1B223A']];
+test('separate women use bright pink; annual joint events retain their family color and gender tooltip',async()=>{
+  const fixtures=[['fivb-men','FIVB 남자','international',['men'],'#A474F1'],['avc-men','AVC 남자','international',['men'],'#7CCB47'],['university-men','대학 남자','domestic-university',['men'],'#58A9F4'],['school-men','중고 남자','domestic-school',['men'],'#FF9E35'],['v-league-men','V-리그 남자','vleague',['men'],'#252525'],['kovo-cup-men','KOVO컵 남자','domestic-pro',['men'],'#58A9F4'],['fivb-women','FIVB 여자','international',['women'],'#FF72B1'],['avc-women','AVC 여자','international',['women'],'#FF72B1'],['university-women','대학 여자','domestic-university',['women'],'#FF72B1'],['school-women','중고 여자','domestic-school',['women'],'#FF72B1'],['v-league-women','V-리그 여자','vleague',['women'],'#FF72B1'],['kovo-cup-women','KOVO컵 여자','domestic-pro',['women'],'#FF72B1'],['university-joint','대학 남녀공통','domestic-university',['men','women'],'#58A9F4']];
   // Isolated fixtures verify future inputs; they are never published as schedules.
   const data={categories:period.categories,events:fixtures.map(([id,title,category],i)=>({id,title,category,start:`2026-01-${String(i+1).padStart(2,'0')}`,end:`2026-01-${String(i+1).padStart(2,'0')}`,href:'competition-engine.html?competition='+id}))};
   const map={schema:'calendar-genders-v1',year:2026,events:Object.fromEntries(fixtures.map(([id,,,g])=>[id,{genders:g}]))};
@@ -273,7 +274,7 @@ test('only exact male/female pairs of the same competition and entire period mer
   for(const month of [8,9]){
     const bars=[...p.d.querySelectorAll(`#cc-month-${month} [data-range-event]`)];
     const adult=bars.filter(a=>a.dataset.rangeEvent==='avc-men-test');assert.ok(adult.length);
-    for(const a of adult){assert.deepEqual(JSON.parse(a.dataset.rangeMembers),['avc-men-test','avc-women-test']);assert.equal(a.style.getPropertyValue('--event-color'),'#176638');assert.match(a.href,/view=month/);}
+    for(const a of adult){assert.deepEqual(JSON.parse(a.dataset.rangeMembers),['avc-men-test','avc-women-test']);assert.equal(a.style.getPropertyValue('--event-color'),'#7CCB47');assert.match(a.href,/view=month/);}
     assert.ok(bars.some(a=>a.dataset.rangeEvent==='avc-u21-men-test'));assert.ok(bars.some(a=>a.dataset.rangeEvent==='avc-other-women'));
     assert.ok(!bars.some(a=>a.dataset.rangeEvent==='avc-women-test'));
   }
@@ -285,7 +286,7 @@ test('only exact male/female pairs of the same competition and entire period mer
 });
 test('gender filters retain their own event/color/link and monthly view keeps both titles',async()=>{
   const fixture=pairedFixture();
-  for(const [gender,id,color] of [['men','avc-men-test','#176638'],['women','avc-women-test','#8E315E']]){
+  for(const [gender,id,color] of [['men','avc-men-test','#7CCB47'],['women','avc-women-test','#FF72B1']]){
     const p=await mount('view=year&year=2026&gender='+gender,fixture),a=p.d.querySelector(`[data-range-event="${id}"]`);
     assert.deepEqual(JSON.parse(a.dataset.rangeMembers),[id]);assert.equal(a.style.getPropertyValue('--event-color'),color);assert.equal(a.href,'https://kvolleylab.com/competition-engine.html?competition='+id+'#schedule');p.close();
   }
@@ -308,10 +309,10 @@ test('ambiguous duplicate candidates are not collapsed into an invented shared c
   const fixture=pairedFixture();fixture.data.events.push({...fixture.data.events[0],id:'duplicate-men'});fixture.genders.events['duplicate-men']={genders:['men']};
   const p=await mount('view=year&year=2026',fixture);for(const id of ['avc-men-test','avc-women-test','duplicate-men']){const a=p.d.querySelector(`[data-range-event="${id}"]`);assert.deepEqual(JSON.parse(a.dataset.rangeMembers),[id]);}p.close();
 });
-test('monthly badges, colors, links and row sizing are preserved while labels gain locations for all twelve months',async()=>{
+test('monthly badges, links and row sizing are preserved while labels gain locations for all twelve months',async()=>{
   for(let month=1;month<=12;month++){
     const query=`view=month&year=2026&month=${month}`,p=await mount(query),before=await mount(query,{source:baselineSource});
-    const view=x=>({bars:[...x.d.querySelectorAll('.cc-card-period')].map(a=>({badges:a.querySelector('.cc-joint-badges')?.innerHTML,href:a.href,style:a.getAttribute('style')})),rows:x.d.querySelector('.cc-card-board').getAttribute('style')});
+    const view=x=>({bars:[...x.d.querySelectorAll('.cc-card-period')].map(a=>({badges:a.querySelector('.cc-joint-badges')?.innerHTML,href:a.href,row:a.style.gridRow,col:a.style.gridColumn})),rows:x.d.querySelector('.cc-card-board').getAttribute('style')});
     assert.deepEqual(view(p),view(before));
     for(const a of p.d.querySelectorAll('.cc-card-period>span')){assert.match(a.textContent,/ \(.+\)$/);assert.doesNotMatch(a.textContent,/장소 미등록/);}
     p.close();before.close();
@@ -373,4 +374,36 @@ test('ended bars and shared tooltip change at the KST day after the inclusive en
     }
     p.close();
   }
+});
+
+test('verified additions appear with exact dates in all 2026 category and gender filters',async()=>{
+  const all=[...period.events,...verified];
+  assert.equal(new Set(all.map(e=>e.id)).size,all.length);
+  for(const gender of ['all','women','men'])for(const category of ['all','international','domestic','vleague']){
+    const p=await mount('view=year&year=2026&gender='+gender+'&category='+category,{verified});
+    const eligible=all.filter(e=>(gender==='all'||(e.genders||genders.events[e.id].genders).includes(gender))&&
+      (category==='all'||(category==='domestic'?e.category.startsWith('domestic-'):e.category===category)));
+    for(const dateCell of p.d.querySelectorAll('.cc-card-day[data-date]')){
+      const day=dateCell.dataset.date;
+      const actual=[...dateCell.closest('.cc-card-board').querySelectorAll('[data-range-event]')].filter(a=>a.dataset.rangeStart<=day&&day<=a.dataset.rangeEnd);
+      const wanted=eligible.filter(e=>e.start<=day&&day<=e.end).map(e=>e.id).sort();
+      assert.deepEqual(actual.flatMap(a=>JSON.parse(a.dataset.rangeMembers)).sort(),wanted,day);
+      assert.equal(new Set(actual.map(a=>a.dataset.rangeLane)).size,actual.length);
+    }
+    p.close();
+  }
+});
+test('cross-year seasons survive a missing yearly feed and never duplicate base records',async()=>{
+  for(const [year,first,last] of [[2025,'2025-10-18','2025-12-31'],[2027,'2027-01-01','2027-04-22']]){
+    const p=await mount('view=year&category=vleague&year='+year,{missingData:true,verified});
+    const bars=[...p.d.querySelectorAll('[data-range-event]')];assert.ok(bars.length);
+    assert.equal(bars.map(b=>b.dataset.rangeStart).sort().at(0),first);
+    assert.equal(bars.map(b=>b.dataset.rangeEnd).sort().at(-1),last);
+    p.d.querySelector('[data-gender=women]').click();
+    assert.equal(p.d.querySelector('[data-range-event]').dataset.rangeEvent.includes('women'),true);p.close();
+  }
+  const p=await mount('view=month&year=2026&month=6&date=2026-06-25',{verified:[...verified,{...period.events.find(e=>e.id==='goseong-university-2026'),title:'duplicate'}]});
+  assert.equal(selectedIds(p).filter(id=>id==='goseong-university-2026').length,1);
+  const indices=Object.fromEntries([...p.d.querySelectorAll('.cc-filter-dot')].map(dot=>[dot.parentElement.dataset.filter,dot.style.background]));
+  assert.deepEqual(indices,{international:'rgb(220, 38, 38)',domestic:'rgb(37, 99, 235)',vleague:'rgb(17, 17, 17)'});p.close();
 });
