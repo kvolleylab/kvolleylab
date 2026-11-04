@@ -321,6 +321,22 @@
       "total_krw": 250000000
     },
     {
+      "contract_source": "https://kovo.co.kr/news/official-notices/158550",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/158550",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-03",
+      "name": "배하준",
+      "number": "4",
+      "option_krw": 0,
+      "position": "미들블로커",
+      "registration_source": "https://kovo.co.kr/news/official-notices/158550",
+      "salary_date": "2026-11-03",
+      "salary_krw": 40000000,
+      "team": "OK저축은행",
+      "total_krw": 40000000
+    },
+    {
       "contract_source": "https://kovo.co.kr/news/official-notices/155582",
       "gender": "남",
       "last_change_source": "https://kovo.co.kr/news/official-notices/155582",
@@ -511,6 +527,38 @@
       "salary_krw": 80000000,
       "team": "OK저축은행",
       "total_krw": 100000000
+    },
+    {
+      "contract_source": "https://kovo.co.kr/news/official-notices/158550",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/158550",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-03",
+      "name": "윤경",
+      "number": "20",
+      "option_krw": 0,
+      "position": "아웃사이드히터",
+      "registration_source": "https://kovo.co.kr/news/official-notices/158550",
+      "salary_date": "2026-11-03",
+      "salary_krw": 40000000,
+      "team": "OK저축은행",
+      "total_krw": 40000000
+    },
+    {
+      "contract_source": "https://kovo.co.kr/news/official-notices/158550",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/158550",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-03",
+      "name": "백창진 (수런선수)",
+      "number": "21",
+      "option_krw": 0,
+      "position": "리베로",
+      "registration_source": "https://kovo.co.kr/news/official-notices/158550",
+      "salary_date": "2026-11-03",
+      "salary_krw": 24000000,
+      "team": "OK저축은행",
+      "total_krw": 24000000
     },
     {
       "contract_source": "https://kovo.co.kr/news/official-notices/155582",
@@ -3057,6 +3105,38 @@
       "total_krw": 180000000
     },
     {
+      "contract_source": "https://kovo.co.kr/news/official-notices/158552",
+      "gender": "여",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/158552",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-03",
+      "name": "오세인",
+      "number": "1",
+      "option_krw": 0,
+      "position": "아웃사이드히터",
+      "registration_source": "https://kovo.co.kr/news/official-notices/158552",
+      "salary_date": "2026-11-03",
+      "salary_krw": 45000000,
+      "team": "정관장",
+      "total_krw": 45000000
+    },
+    {
+      "contract_source": "https://kovo.co.kr/news/official-notices/158552",
+      "gender": "여",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/158552",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-03",
+      "name": "김아중",
+      "number": "2",
+      "option_krw": 0,
+      "position": "리베로",
+      "registration_source": "https://kovo.co.kr/news/official-notices/158552",
+      "salary_date": "2026-11-03",
+      "salary_krw": 45000000,
+      "team": "정관장",
+      "total_krw": 45000000
+    },
+    {
       "contract_source": "https://kovo.co.kr/news/official-notices/155575",
       "gender": "여",
       "last_change_source": "https://kovo.co.kr/news/official-notices/155575",
@@ -4261,9 +4341,14 @@
       "158492-01",
       "158548-01",
       "158548-02",
-      "158548-03"
+      "158548-03",
+      "158550-01",
+      "158550-02",
+      "158550-03",
+      "158552-01",
+      "158552-02"
     ],
-    "applied_events": 67,
+    "applied_events": 72,
     "blocked_events": [
       {
         "event_id": "157686-01",
@@ -4304,6 +4389,14 @@
         "notice_id": 158486,
         "reason": "not_verified",
         "source_url": "https://kovo.co.kr/news/official-notices/158486"
+      },
+      {
+        "event_id": "158551-01",
+        "kind": "free_agent",
+        "name": "박성진, 강정민",
+        "notice_id": 158551,
+        "reason": "not_verified",
+        "source_url": "https://kovo.co.kr/news/official-notices/158551"
       }
     ],
     "prior_season_events_ignored": 31,
@@ -4379,7 +4472,7 @@
       {
         "gender": "남",
         "team": "OK저축은행",
-        "total": 17
+        "total": 20
       },
       {
         "gender": "남",
@@ -4424,7 +4517,7 @@
       {
         "gender": "여",
         "team": "정관장",
-        "total": 16
+        "total": 18
       },
       {
         "gender": "여",
@@ -4442,7 +4535,7 @@
         "total": 20
       }
     ],
-    "total": 262,
+    "total": 267,
     "warnings": [
       {
         "name": "이다현",
