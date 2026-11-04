@@ -1,0 +1,257 @@
+/* Calendar interior only. The production Hero, sidebar and 1180px shell are reused. */
+.cc-calendar-cards #competitionCalendar{--calendar-ink:#102c49;--calendar-muted:#718399;--calendar-line:#dce6f0;--calendar-blue:#edf5fd;--calendar-gold:#ad7c21}
+.cc-calendar-cards #competitionCalendar *{box-sizing:border-box}
+.cc-calendar-cards #competitionCalendar a{color:var(--calendar-ink)}
+.cc-calendar-cards #competitionCalendar button{font-family:inherit;cursor:pointer}
+.cc-calendar-cards #competitionCalendar a:focus-visible,.cc-calendar-cards #competitionCalendar button:focus-visible,.cc-calendar-cards #competitionCalendar summary:focus-visible{outline:3px solid #d6b25e;outline-offset:3px}
+.cc-calendar-cards .cc-month-shortcuts{border:0;box-shadow:none;padding:7px 8px;margin-bottom:18px;gap:5px;border-radius:12px}
+.cc-calendar-cards .cc-month-shortcuts a{font-size:12px;min-height:36px}
+.cc-calendar-cards .cc-month-shortcuts a[aria-current=page]{background:#102c49;color:#fff!important;box-shadow:none}
+.cc-card-guide{display:flex;justify-content:space-between;gap:12px;margin:0 0 20px;color:#526a82;font-size:12px;line-height:1.6}
+.cc-card-guide span{color:var(--calendar-muted)}
+.cc-calendar-cards .cc-year-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.cc-calendar-cards .cc-card-month{min-width:0;padding:19px 15px 0;border:1px solid var(--calendar-line);border-radius:19px;box-shadow:0 4px 16px #102c4904;overflow:hidden}
+.cc-calendar-cards .cc-card-month .cc-month-head{padding:0 3px 19px;border:0;gap:8px}
+.cc-calendar-cards .cc-card-month .cc-month-head a{font-size:21px;letter-spacing:-.045em}
+.cc-calendar-cards .cc-card-month .cc-month-head span{font-size:11px;font-weight:600;color:var(--calendar-muted)}
+.cc-card-weekdays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-bottom:8px}
+.cc-card-weekdays>span{text-align:center;color:#526a82;font-size:11px;padding:8px 0;font-weight:600}
+.cc-card-weekdays .is-sunday,.cc-card-day.is-sunday .cc-card-day-number{color:#bd5a69}
+.cc-card-weekdays .is-saturday,.cc-card-day.is-saturday .cc-card-day-number{color:#3373a8}
+.cc-card-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cc-card-day{min-width:0;min-height:91px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:9px;padding:12px 3px 8px;border:1px solid transparent;border-radius:9px;background:transparent;text-decoration:none;line-height:1.2;transition:background .15s,border-color .15s;position:relative}
+.cc-card-day-number{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:50%;font-size:16px;font-weight:600;color:var(--calendar-ink);flex-shrink:0}
+.cc-card-day.has-events{background:var(--calendar-blue)}
+.cc-card-day:hover{background:#e7f0fa;border-color:#b6cde3}
+.cc-card-day.is-outside .cc-card-day-number{color:#a8b6c7}
+.cc-card-day.is-outside.has-events{background:#f6f9fd}
+.cc-card-day.is-today .cc-card-day-number{color:#fff;background:#102c49}
+.cc-card-day.is-selected{border:2px solid #c49b42;background:#fff8e9;padding:11px 2px 7px}
+.cc-card-day-count{font-size:12px;color:#466680;white-space:nowrap;font-weight:500;letter-spacing:-.02em}
+.cc-card-day-space{height:15px}
+.cc-card-dots{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-height:4px;flex-shrink:0}
+.cc-card-dots i{width:4px;height:4px;background:var(--dot);border-radius:50%;display:block}
+.cc-card-grid.is-compact{gap:5px 4px}
+.cc-card-day.is-compact{min-height:44px;height:44px;border-radius:6px;gap:3px;padding:3px 0}
+.cc-card-day.is-compact .cc-card-day-number{min-width:22px;height:22px;font-size:11px}
+.cc-card-day.is-compact .cc-card-day-count{display:none}
+.cc-card-day.is-compact .cc-card-day-space{display:none}
+.cc-card-month-foot{display:flex;align-items:center;gap:8px;min-height:42px;margin-top:13px;border-top:1px solid #edf2f7;text-decoration:none;color:#718399!important;font-size:10px;line-height:1.5}
+.cc-card-month-foot>span:last-child:not(:first-child){margin-left:auto}
+.cc-card-month-foot .cc-card-dots{margin-left:0!important}
+.cc-calendar-cards .cc-month-layout{display:block}
+.cc-card-monthly{padding:30px 32px 20px;background:#fff;border:1px solid var(--calendar-line);border-radius:19px;box-shadow:0 4px 20px #102c4903}
+.cc-card-monthly-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 24px;padding:0;background:transparent;border:0}
+.cc-card-monthly-head p{margin:0 0 10px;font-size:12px;color:#718399;line-height:1.4}
+.cc-card-monthly-head p span{margin-left:9px;color:#476681;font-weight:700}
+.cc-card-monthly-head h2{margin:0;font-size:30px;color:var(--calendar-ink);font-weight:800;letter-spacing:-.05em}
+.cc-card-monthly-head nav{display:flex;gap:8px}
+.cc-card-monthly-head nav a{display:grid;place-items:center;width:37px;height:37px;border:1px solid #dce6ef;border-radius:10px;text-decoration:none;font-size:25px;background:#fff}
+.cc-card-monthly-head nav a:hover{background:#edf5fd;border-color:#acc7e1}
+.cc-card-monthly .cc-card-weekdays{margin-bottom:10px}
+.cc-card-monthly .cc-card-weekdays span{font-size:12px}
+.cc-card-monthly-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;padding:0;color:#718399;font-size:11px;line-height:1.6}
+.cc-card-monthly-foot p{margin:0}
+.cc-card-key{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:10px}
+.cc-card-key i{display:block;width:10px;height:10px;border-radius:50%;margin-left:8px}
+.cc-card-key .today-key{background:#102c49}
+.cc-card-key .selected-key{background:#fff8e9;border:2px solid #c49b42;border-radius:3px}
+.cc-card-agenda{margin:24px 0 0;padding:24px 26px;background:#fff;border:1px solid var(--calendar-line);border-radius:18px;scroll-margin-top:240px}
+.cc-card-agenda-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cc-card-caption{font-size:11px;color:#8b6b28}
+.cc-card-agenda-head h2{margin:7px 0 0;font-size:21px;color:var(--calendar-ink);letter-spacing:-.04em}
+.cc-card-agenda-head>strong{font-size:12px;padding:7px 10px;border-radius:8px;color:#496781;background:#f1f6fb;white-space:nowrap}
+.cc-card-note,.cc-card-match-note{color:#718399;font-size:11px;line-height:1.65;margin:11px 0 20px}
+.cc-card-event-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cc-card-event{min-width:0;padding:17px 17px 13px;border:1px solid #e4ecf4;border-radius:12px;background:#fff}
+.cc-card-event-top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px}
+.cc-card-category{display:inline-flex;align-items:center;gap:6px;color:#5e778d}
+.cc-card-category i{height:6px;width:6px;border-radius:50%;background:var(--event-color);display:inline-block}
+.cc-card-status{padding:3px 7px;border-radius:5px;background:#f2f5f8;color:#708093;font-size:10px;line-height:1.4;white-space:nowrap}
+.cc-card-status.status-live{color:#916b18;background:#fff4d8}
+.cc-card-status.status-upcoming{color:#316b9b;background:#eef5fd}
+.cc-card-event-link{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;text-decoration:none;margin:15px 0 12px}
+.cc-card-event-link h3{margin:0;color:var(--calendar-ink);font-size:15px;line-height:1.6;overflow-wrap:anywhere;word-break:keep-all}
+.cc-card-event-link>span{flex-shrink:0;color:#8095a9}
+.cc-card-event-period{font-size:11px;color:#526c85;line-height:1.7;margin:0;overflow-wrap:anywhere}
+.cc-card-event-period>span{display:block;color:#8a9bae}
+.cc-card-event-meta{font-size:10px;line-height:1.7;color:#7a8e9f;margin:8px 0 15px;word-break:keep-all;overflow-wrap:anywhere}
+.cc-card-event-action{display:flex;justify-content:space-between;align-items:center;padding-top:11px;border-top:1px solid #edf2f7;font-size:10px;text-decoration:none;color:#526c85!important}
+.cc-card-event>.cc-card-event-action.cc-focus-event{padding:11px 0 0;margin:0;border:0;border-top:1px solid #edf2f7;border-radius:0;background:transparent;box-shadow:none;transform:none}
+.cc-card-event:hover{border-color:#c6d8e9}
+.cc-card-confirmed{padding:10px;margin:12px 0;background:#f1f6fb;border-radius:7px;font-size:11px;color:#456781}
+.cc-card-confirmed p{margin:6px 0 0}
+.cc-card-empty{grid-column:1/-1;margin:0;padding:25px 10px;color:#7c8fa3;font-size:13px;text-align:center}
+.cc-card-all-events{padding:0 25px;margin-top:18px;border:1px solid var(--calendar-line);border-radius:14px;background:#fff}
+.cc-card-all-events summary{cursor:pointer;padding:19px 0;font-size:13px;color:#365671;line-height:1.4}
+.cc-card-all-events summary>span{float:right;font-size:11px;color:#7c8fa3}
+.cc-card-all-events[open] .cc-card-event-list{padding-bottom:22px}
+@media(max-width:1100px) and (min-width:901px){.cc-calendar-cards .cc-year-grid{gap:14px}.cc-calendar-cards .cc-card-month{padding:16px 10px 0}.cc-card-day.is-compact{height:38px;min-height:38px}}
+@media(max-width:900px){.cc-calendar-cards .cc-year-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cc-card-event-list{grid-template-columns:repeat(2,minmax(0,1fr))}.cc-card-guide{display:block}.cc-card-guide>span{display:block;margin-top:5px}}
+@media(max-width:680px){
+  .cc-calendar-cards .cc-year-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+  .cc-calendar-cards .cc-month-shortcuts{grid-template-columns:repeat(6,minmax(0,1fr));padding:6px;gap:3px;margin-bottom:14px}
+  .cc-calendar-cards .cc-month-shortcuts a{font-size:11px;min-height:34px}
+  .cc-card-guide{font-size:11px;margin:0 4px 14px}
+  .cc-calendar-cards .cc-card-month{padding:18px 15px 0}
+  .cc-card-monthly{padding:22px 13px 16px;border-radius:16px}
+  .cc-card-monthly-head{margin-bottom:19px;gap:10px;flex-direction:row;align-items:center}
+  .cc-card-monthly-head h2{font-size:24px}
+  .cc-card-monthly-head p{font-size:10px;margin-bottom:7px}
+  .cc-card-monthly-head p span{margin-left:5px}
+  .cc-card-monthly-head nav{gap:6px}
+  .cc-card-monthly-head nav a{width:32px;height:34px;font-size:23px;border-radius:8px}
+  .cc-card-weekdays,.cc-card-grid{gap:4px}
+  .cc-card-weekdays>span,.cc-card-monthly .cc-card-weekdays span{font-size:11px;padding:7px 0}
+  .cc-card-day{min-height:64px;padding:7px 0 6px;gap:5px;border-radius:6px}
+  .cc-card-day-number{font-size:12px;min-width:23px;height:23px}
+  .cc-card-day-count{font-size:9px;letter-spacing:-.06em}
+  .cc-card-dots{gap:3px}
+  .cc-card-dots i{width:3px;height:3px}
+  .cc-card-day.is-selected{padding:6px 0 5px}
+  .cc-card-day-space{height:11px}
+  .cc-card-monthly-foot{flex-direction:column;gap:11px;font-size:10px;text-align:center;margin-top:17px}
+  .cc-card-monthly-foot p{max-width:260px;word-break:keep-all}
+  .cc-card-agenda{padding:20px 16px;margin-top:17px;border-radius:15px}
+  .cc-card-agenda-head h2{font-size:19px}
+  .cc-card-agenda-head>strong{font-size:11px;padding:6px 8px}
+  .cc-card-note{margin-bottom:16px;font-size:10px;word-break:keep-all}
+  .cc-card-event-list{grid-template-columns:minmax(0,1fr);gap:11px}
+  .cc-card-event{padding:16px}
+  .cc-card-event-link h3{font-size:15px}
+  .cc-card-event-period>span{display:inline}
+  .cc-card-all-events{padding:0 16px}
+}
+@media(prefers-reduced-motion:reduce){.cc-card-day{transition:none}}
+
+/* Continuous period bars sit below dates; the approved white cards stay intact. */
+.cc-card-board{position:relative;--range-min-week:91px;--range-date-height:45px;--range-lane-height:23px;--range-gap:6px}
+.cc-card-board.is-compact{--range-min-week:44px;--range-date-height:25px;--range-lane-height:10px;--range-gap:5px}
+.cc-card-board .cc-card-grid{grid-template-rows:var(--calendar-rows);row-gap:var(--range-gap)}
+.cc-card-board .cc-card-day{height:auto;min-height:0}
+.cc-card-board .cc-card-day-count,.cc-card-board .cc-card-day-space,.cc-card-board .cc-card-day>.cc-card-dots{display:none}
+.cc-card-period-layer{position:absolute;inset:0;display:grid;grid-template-rows:var(--calendar-rows);row-gap:var(--range-gap);pointer-events:none}
+.cc-card-week-ranges{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));grid-auto-rows:var(--range-lane-height);padding-top:var(--range-date-height);align-content:start;min-width:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period{pointer-events:auto;display:flex;align-items:center;min-width:0;height:19px;margin:0 3px;padding:0 8px;border-radius:5px;background:color-mix(in srgb,var(--event-color) 20%,#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--event-color) 20%,transparent);color:#36546d;text-decoration:none;font-size:12px;line-height:1.3;position:relative;transition:background .14s,box-shadow .14s}
+.cc-card-period>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-calendar-cards #competitionCalendar .cc-card-period.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-range-active{background:color-mix(in srgb,var(--event-color) 36%,#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--event-color) 65%,#fff);z-index:2}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-compact{height:7px;padding:0;border-radius:3px;margin-right:2px;margin-left:2px}
+.cc-card-period.is-compact>span{visibility:hidden}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-compact.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-compact.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.cc-range-tooltip{position:fixed;z-index:2500;box-sizing:border-box;width:max-content;max-width:min(360px,calc(100vw - 24px));padding:15px 18px 13px;border:1px solid #ffffff38;border-radius:13px;background:var(--tip-bg,rgba(16,35,63,.87));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 30px #10233f28;color:#fff;font-family:Arial,sans-serif;line-height:1.55;pointer-events:auto;overflow-wrap:anywhere}
+.cc-range-tooltip[hidden]{display:none}
+.cc-range-tooltip:after{content:"";position:absolute;left:var(--tip-arrow,20px);top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--tip-bg,rgba(16,35,63,.87))}
+.cc-range-tooltip.is-below:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--tip-bg,rgba(16,35,63,.87))}
+.cc-range-tooltip>strong{display:block;font-size:13px;font-weight:750;word-break:keep-all}
+.cc-range-tooltip-date{display:block;font-size:12px;margin-top:6px;font-weight:650;white-space:normal}
+.cc-range-tooltip-date em{font-size:10px;font-style:normal;color:#dae6f1;white-space:nowrap}
+.cc-range-tooltip-meta{display:block;margin-top:7px;color:#d3dfec;font-size:10px}
+.cc-range-tooltip-hint{display:block;margin-top:5px;font-size:10px;color:#e8c879}
+@media(max-width:680px){
+  .cc-card-board{--range-min-week:64px;--range-date-height:36px;--range-lane-height:22px;--range-gap:4px}
+  .cc-card-board.is-compact{--range-date-height:25px;--range-lane-height:15px}
+  .cc-calendar-cards #competitionCalendar .cc-card-period{padding:0 4px;height:18px;font-size:10px;margin:0 2px}
+  .cc-calendar-cards #competitionCalendar .cc-card-period.is-compact{height:11px}
+  .cc-range-tooltip{padding:13px 15px;max-width:calc(100vw - 24px)}
+}
+@media(prefers-reduced-motion:reduce){.cc-card-period{transition:none}}
+
+/* 2026-11-03: compact form of the current kvl-match-calendar-v1 geometry.
+   Same centered dates, zero column gap, 7px cells and inset white separation.
+   Only calendar interiors and their existing period interaction are restyled. */
+.cc-calendar-cards .cc-card-weekdays{gap:0;padding-bottom:10px;margin-bottom:0}
+.cc-calendar-cards .cc-card-weekdays>span{padding:5px 0;font-size:11px;font-weight:600;color:#7d8b9c}
+.cc-calendar-cards .cc-card-weekdays .is-sunday,.cc-calendar-cards .cc-card-day.is-sunday .cc-card-day-number{color:#c53040}
+.cc-calendar-cards .cc-card-weekdays .is-saturday,.cc-calendar-cards .cc-card-day.is-saturday .cc-card-day-number{color:#2c6cb0}
+.cc-calendar-cards .cc-card-board{--range-min-week:78px;--range-date-height:32px;--range-bar-height:26px;--range-lane-height:30px;--range-gap:0px}
+.cc-calendar-cards .cc-card-board.is-compact{--range-min-week:44px;--range-date-height:22px;--range-bar-height:16px;--range-lane-height:18px;--range-gap:0px}
+.cc-calendar-cards .cc-card-grid,.cc-calendar-cards .cc-card-grid.is-compact{gap:0;grid-template-rows:var(--calendar-rows)}
+.cc-calendar-cards .cc-card-day,.cc-calendar-cards .cc-card-day.is-compact{border:0;border-radius:7px;padding:5px 2px;gap:8px;box-shadow:none}
+.cc-calendar-cards .cc-card-day.has-events{background:#f0f4f8;box-shadow:inset 0 0 0 2px #fff}
+.cc-calendar-cards .cc-card-day.is-sunday.has-events{background:#fff0f1}
+.cc-calendar-cards .cc-card-day:hover{background:#e8eef5;box-shadow:inset 0 0 0 2px #cfdae5}
+.cc-calendar-cards .cc-card-day-number,.cc-calendar-cards .cc-card-day.is-compact .cc-card-day-number{font-size:13px;line-height:18px;height:18px;min-width:22px;font-weight:700;color:#20252b;font-variant-numeric:tabular-nums}
+.cc-calendar-cards .cc-card-day.is-today .cc-card-day-number{background:#102c49;color:#fff}
+.cc-calendar-cards .cc-card-day.is-selected{background:#fff8e9;box-shadow:inset 0 0 0 2px #c49b42}
+.cc-calendar-cards .cc-card-week-ranges{isolation:isolate}
+.cc-calendar-cards #competitionCalendar .cc-card-period,
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-compact{height:var(--range-bar-height);margin:0 1px;padding:0 4px 1px;border:1px solid color-mix(in srgb,var(--event-color) 40%,#fff);border-left:3px solid var(--event-color);border-right:2px solid var(--event-color);border-radius:4px;background:color-mix(in srgb,var(--event-color) 18%,#fff);color:var(--event-color);box-shadow:0 1px 1px #fff;align-items:flex-end;gap:3px;font-size:10px;line-height:10px;font-weight:700;z-index:calc(100 - var(--layer));transition:box-shadow .15s,background .15s}
+.cc-calendar-cards #competitionCalendar .cc-card-period>span{visibility:visible;flex:1;min-width:0;line-height:10px;align-self:flex-end}
+.cc-calendar-cards #competitionCalendar .cc-card-period.continues-before{border-left-width:0;margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period.continues-after{border-right-width:0;margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-range-active,
+.cc-calendar-cards #competitionCalendar .cc-card-period:focus-visible{z-index:200;background:color-mix(in srgb,var(--event-color) 22%,#fff);box-shadow:0 0 0 1px var(--event-color),0 3px 7px #102c4920;align-items:center}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-range-active>span{align-self:center}
+.cc-joint-badges{display:inline-flex;gap:2px;flex:none;font-size:8px;line-height:10px;align-self:flex-end}
+.cc-joint-badges i{font-style:normal;font-weight:700;border-radius:2px;padding:0 2px;background:#fff;color:#245b99}
+.cc-joint-badges i+i{color:#8e315e}
+.cc-year-select{display:inline-grid;position:relative;align-items:center}
+.cc-year-select select{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.cc-year-select:focus-within{outline:2px solid #327bbd;outline-offset:2px;border-radius:4px}
+.cc-visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.cc-calendar-cards .cc-card-month-foot{font-size:11px}
+@media(max-width:680px){
+ .cc-calendar-cards .cc-card-board{--range-min-week:66px;--range-date-height:27px;--range-bar-height:24px;--range-lane-height:28px}
+ .cc-calendar-cards .cc-card-board.is-compact{--range-min-week:44px;--range-date-height:22px;--range-bar-height:16px;--range-lane-height:18px}
+ .cc-calendar-cards #competitionCalendar .cc-card-period{font-size:10px}
+}
+
+.cc-calendar-cards .cc-card-board.is-compact .cc-card-period{font-size:9px!important;line-height:9px!important}
+.cc-calendar-cards .cc-card-board.is-compact .cc-card-period>span{line-height:9px!important}
+
+.cc-calendar-cards .cc-card-board.is-compact.is-dense{--range-date-height:22px;--range-bar-height:16px;--range-lane-height:18px}
+.cc-calendar-cards .cc-card-board.is-compact.is-dense .cc-card-period{font-size:8px!important;line-height:8px!important}
+.cc-calendar-cards .cc-card-board.is-compact.is-dense .cc-card-period>span{line-height:8px!important}
+.cc-calendar-cards .cc-card-board.is-compact.is-dense .cc-joint-badges{font-size:7px;line-height:8px}
+
+.cc-calendar-cards .cc-card-day.is-compact{padding-top:2px;padding-bottom:2px}
+
+/* v6: full-height separated lanes, centered labels, and the production
+   ended-state opacity. The weekly sizing formula reserves all required lanes. */
+.cc-calendar-cards .cc-card-board.is-compact .cc-card-week-ranges{grid-auto-rows:var(--range-lane-height)}
+.cc-calendar-cards #competitionCalendar .cc-card-period,
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-compact{
+ height:26px;min-height:0;margin:0 3px;padding:0 9px;border:1px solid color-mix(in srgb,var(--event-color) 38%,#d7dee8);
+ border-radius:4px;background:color-mix(in srgb,var(--event-color) 22%,white);box-shadow:none;
+ color:#334155;font-size:12px!important;font-weight:600!important;line-height:16px!important;letter-spacing:-.01em;
+ align-items:center;gap:3px;
+}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-compact{
+ height:16px;padding:0 5px;border-radius:3px;font-size:8px!important;line-height:14px!important;
+}
+.cc-calendar-cards #competitionCalendar .cc-card-period>span{
+ display:block;visibility:visible;align-self:center!important;line-height:16px!important;
+ overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:inherit;font-weight:600;
+}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-compact>span{line-height:14px!important;transform:none}
+.cc-calendar-cards #competitionCalendar .cc-card-period .cc-joint-badges{align-self:center}
+.cc-calendar-cards #competitionCalendar .cc-card-period.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.cc-calendar-cards #competitionCalendar .cc-card-period.is-range-active,
+.cc-calendar-cards #competitionCalendar .cc-card-period:focus-visible{
+ z-index:200;filter:none;transform:none;box-shadow:none;
+ border-color:color-mix(in srgb,var(--event-color) 55%,#cbd5e1);background:color-mix(in srgb,var(--event-color) 28%,white);
+}
+@media(max-width:680px){
+ .cc-calendar-cards #competitionCalendar .cc-card-period:not(.is-compact){height:24px;padding:0 5px;font-size:10px!important;line-height:12px!important}
+}
+.cc-range-tooltip-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+.cc-range-tooltip-links a{color:#e8c879;font-size:11px;text-decoration:underline;text-underline-offset:3px}
+.cc-range-tooltip-links a:focus-visible{outline:2px solid #e8c879;outline-offset:3px}
+
+/* The live calendar places its tooltip inside a .62-opacity ended bar.
+   Our viewport-safe tooltip is separate, so it receives that opacity itself. */
+.cc-calendar-cards #competitionCalendar .cc-card-period.status-ended{opacity:.62}
+.cc-range-tooltip.status-ended{--tip-bg:#10233f;opacity:.62;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* The shared navigation supplies the fixed mobile brand header. */
+.cc-brand-header{background:#07182d;border-bottom:1px solid #ffffff24}
+.cc-brand-header a{display:flex;align-items:center;gap:8px;min-height:46px;padding:0 22px;color:white;text-decoration:none;font-size:15px}
+.cc-brand-header img{width:30px;height:30px}
+.cc-brand-header span{margin-left:auto;font-size:12px;color:#d6e5f3}
+.cc-brand-header a:hover span{text-decoration:underline}
+.cc-brand-header a:focus-visible{outline:3px solid #f0c75e;outline-offset:-3px}
+@media(max-width:900px){.kvl-mobile-header-enabled .cc-brand-header{display:none}}

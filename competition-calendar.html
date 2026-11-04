@@ -15,10 +15,10 @@
   <link rel="stylesheet" href="assets/css/competition-calendar-details.css?v=20260725-1">
   <link rel="stylesheet" href="assets/css/competition-calendar-gender-v1.css?v=20261019-1">
   <script>document.documentElement.classList.add('kvl-sidebar-shell-ready');try{document.documentElement.classList.toggle('kvl-sidebar-pref-collapsed',localStorage.getItem('kvl.sidebarCollapsed.v1')==='1')}catch{}</script>
-  <link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css?v=20260722-9">
+  <link rel="stylesheet" href="assets/css/kvl-global-sidebar-v1.css?v=20261102-mobile-header-1">
   <script src="assets/js/unified-nav.js?v=20260724-2" defer></script>
-  <script src="assets/js/kvl-global-sidebar-v1.js?v=20260724-2" defer></script>
-  <script src="assets/js/competition-calendar-gender-v1.js?v=20261019-1" defer></script>
+  <script src="assets/js/kvl-global-sidebar-v1.js?v=20261102-mobile-header-1" defer></script>
+  <script src="assets/js/competition-calendar-cards-v1.js?v=20261104-calendar-8" defer></script>
   <script src="assets/js/competition-calendar-details.js?v=20260921-world-events-1" defer></script>
 
   <style>
@@ -38,10 +38,7 @@
     .cc-calendar-live .cc-sticky-header .cc-toolbar{flex-wrap:wrap}
     .cc-calendar-live .cc-toolbar-left{flex-shrink:0;max-width:100%}
     .cc-calendar-live .cc-today-btn,.cc-calendar-live .cc-share-btn{white-space:nowrap}
-    .cc-mobile-brand{display:none}
     @media(max-width:900px){
-      .cc-mobile-brand{position:fixed;inset:0 0 auto;z-index:130;display:flex;height:58px;align-items:center;justify-content:flex-end;padding:0 18px;background:#fff;border-bottom:1px solid #dbe3ed}
-      .cc-mobile-brand a{color:#102c49;text-decoration:none;font-size:14px;font-weight:800;letter-spacing:.04em}
       .cc-calendar-live .cc-sticky-header{top:66px}
     }
     @media(max-width:680px){
@@ -123,11 +120,14 @@
       body.cc-calendar-homehero .cc-calendar-hero h1{font-size:28px!important}
     }
   </style>
+  <link rel="stylesheet" href="assets/css/competition-calendar-cards-v1.css?v=20261104-calendar-8">
 </head>
-<body class="competition-calendar-page cc-calendar-live cc-calendar-homehero">
+<body class="competition-calendar-page cc-calendar-live cc-calendar-homehero cc-calendar-cards">
   <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
-  <div class="cc-mobile-brand"><a href="index.html" aria-label="K-Volley Lab 홈">K-VOLLEY LAB</a></div>
   <main class="cc-main">
+    <nav class="cc-brand-header" aria-label="홈 바로가기">
+      <a href="/index.html" aria-label="K-Volley Lab 홈으로 이동"><img src="/assets/images/brand/kvl-ball-domestic-navywhite.webp" width="30" height="30" alt=""><strong>K-Volley Lab</strong><span>홈으로</span></a>
+    </nav>
     <section class="cc-calendar-hero" aria-labelledby="ccCalendarTitle">
       <p class="cc-eyebrow">VOLLEYBALL COMPETITION CALENDAR</p>
       <h1 id="ccCalendarTitle">배구 대회 통합 달력</h1>
@@ -155,7 +155,7 @@
     const heading=document.getElementById('ccCalendarHeading');
     let firstRender=true;
     function connect(){
-      const year=controls.querySelector('.cc-year-nav strong')?.textContent;
+      const year=controls.querySelector('[data-year-select] option:checked')?.textContent;
       const text=year?year+' 대회 일정':'대회 일정';
       if(heading.textContent!==text)heading.textContent=text;
       main.querySelectorAll('.cc-view-switch a').forEach(a=>{
