@@ -1,0 +1,54 @@
+/* V-League men: date anchor and accessible floating page-top control. */
+@media screen {
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] #schedule .kvl1180-date-group {
+    scroll-margin-top: 88px;
+  }
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] #schedule .kvl1180-date-group.kvl-vleague-selected-date > .kvl1180-date-head {
+    background: #fff8e9;
+    border-left: 3px solid #bc9850;
+  }
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top {
+    position: fixed;
+    z-index: 1800;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    width: 56px;
+    height: 56px;
+    padding: 8px;
+    border: 1px solid #b9954f;
+    border-radius: 50%;
+    background: #202634;
+    color: #f1d58e;
+    box-shadow: 0 5px 18px rgb(18 28 43 / 23%);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1px;
+    font: 700 10px/1.2 Arial, sans-serif;
+  }
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top:not([hidden]) { display: flex; }
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top[hidden] { display: none !important; }
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top:hover { background: #343d50; }
+  html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top:focus-visible { outline: 3px solid #cfad68; outline-offset: 3px; }
+  html[data-site-mode="private-review"] body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top {
+    bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+  @media (max-width: 680px) {
+    html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] #schedule .kvl1180-date-group { scroll-margin-top: 68px; }
+    html body.kvl-pro-league-domestic-v2[data-kvl-gender="men"] .kvl-vleague-back-to-top {
+      right: max(12px, env(safe-area-inset-right));
+      width: 52px;
+      height: 52px;
+    }
+  }
+}
