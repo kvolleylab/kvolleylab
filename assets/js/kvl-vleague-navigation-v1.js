@@ -13,15 +13,31 @@
       body.dataset.kvlRenderState==='ready'&&shell&&!shell.hidden;
   };
 
+  // Schedule dates use Korea Standard Time, not the visitor's local time.
+  const todayInKorea=()=>new Date(Date.now()+9*60*60*1000).toISOString().slice(0,10);
   function jumpToDate(){
+    if(!isReady())return;
     const query=new URLSearchParams(location.search);
-    const date=query.get('date')||'';
-    if(query.get('view')!=='schedule'||!/^\d{4}-\d{2}-\d{2}$/.test(date))return;
+    if(query.get('view')!=='schedule')return;
     const schedule=document.getElementById('schedule');
-    const target=document.getElementById('date-'+date);
-    if(!schedule||schedule.hidden||!target||!schedule.contains(target))return;
+    if(!schedule||schedule.hidden)return;
+    const groups=[...schedule.querySelectorAll('.kvl1180-date-group[id^="date-"]')]
+      .filter(el=>/^date-\d{4}-\d{2}-\d{2}$/.test(el.id));
+    const requested=query.get('date')||'';
+    const explicit=/^\d{4}-\d{2}-\d{2}$/.test(requested);
+    const dates=groups.map(el=>el.id.slice(5)).sort();
+    const today=todayInKorea();
+    // A chosen date takes precedence; otherwise go to today's match or next available.
+    const wanted=explicit?requested:(dates.find(date=>date>=today)||dates.at(-1));
+    const target=wanted?document.getElementById('date-'+wanted):null;
+    if(!target||!schedule.contains(target))return;
+
+    schedule.querySelectorAll('.kvl-vleague-selected-date').forEach(el=>{
+      if(el!==target)el.classList.remove('kvl-vleague-selected-date');
+    });
     requestAnimationFrame(()=>{
-      if(!target.isConnected||schedule.hidden)return;
+      if(!isReady()||!target.isConnected||schedule.hidden||
+         new URLSearchParams(location.search).get('view')!=='schedule')return;
       target.classList.add('kvl-vleague-selected-date');
       target.scrollIntoView({block:'start',behavior:'auto'});
       target.tabIndex=-1;
@@ -56,6 +72,15 @@
     observer.disconnect();
     installBackToTop();
     jumpToDate();
+    // The shared tab controller uses pushState without a page reload, so
+    // listen for an actual schedule tab click as well as initial page load.
+    document.addEventListener('click',event=>{
+      if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+      const tab=event.target.closest?.('.kvl1180-tabs a[data-view="schedule"]');
+      if(tab&&tab.getAttribute('aria-disabled')!=='true')
+        requestAnimationFrame(jumpToDate);
+    });
+    window.addEventListener('popstate',()=>requestAnimationFrame(jumpToDate));
   }
   observer.observe(body,{attributes:true,attributeFilter:['data-kvl-render-state']});
   start();
