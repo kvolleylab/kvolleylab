@@ -280,8 +280,13 @@ def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="2
     if status == "final":
         expected = "W" if won["home"] > won["away"] else "L"
         require(result_marker == expected, "Official winner marker disagrees with set wins")
+    elif status == "live":
+        # KOVO may expose W/L before the official end time is published.
+        # An in-play marker is provisional and must never certify a winner.
+        require(result_marker in (None, "", "W", "L"),
+                "Unrecognized provisional result marker")
     else:
-        require(result_marker in (None, ""), "Non-final game has winner marker")
+        require(result_marker in (None, ""), "Scheduled game has winner marker")
     venue = raw.get("place")
     if not (post and venue in (None, "")):
         venue = text_value(venue, "place")
