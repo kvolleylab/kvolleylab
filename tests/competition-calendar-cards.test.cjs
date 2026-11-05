@@ -142,7 +142,14 @@ test('bars route to KVL and retain internal paths, including the West Japan resu
     const url=new URL(bar.href),original=new URL(e.href,'https://kvolleylab.com/');
     assert.equal(url.origin,'https://kvolleylab.com',e.id);
     assert.ok(fs.existsSync(path.join(root,url.pathname)),e.id);
-    if(original.origin===url.origin)assert.equal(url.href,original.href);
+    const routes={
+      'vnl-women-2026':'/competition-engine.html?competition=vnl-women-2026',
+      'asian-games-men-volleyball-2026':'/competition-engine.html?competition=asian-games-men-2026',
+      'asian-games-women-volleyball-2026':'/competition-engine.html?competition=asian-games-women-2026',
+      'cbs-middle-high-2026':'/school-competition-cbs-2026.html'
+    };
+    if(routes[e.id])assert.equal(url.pathname+url.search,routes[e.id]);
+    else if(original.origin===url.origin)assert.equal(url.href,original.href);
     else if(e.id==='west-japan-university-men-selection-2026'){
       assert.equal(url.pathname,'/international-university-west-japan-select-2026.html');
       assert.equal(url.searchParams.get('view'),'matches');
@@ -493,3 +500,8 @@ test('a late request cannot replace the next selected date or reopen a dismissed
   const dialog=p.d.querySelector('#dv2-day-dialog');assert.match(dialog.querySelector('h2').textContent,/2026.11.02/);assert.equal(dialog.querySelectorAll('[data-calendar-match]').length,0);
   p.d.querySelector('[data-select-date="2026-11-01"]').click();dialog.close();await flush();assert.equal(dialog.open,false);p.close();
 });
+
+ test('CBS women filter retains the women division when opening its existing tournament route',async()=>{
+ const p=await mount('view=month&year=2026&month=8&gender=women');
+ assert.equal(new URL(p.d.querySelector('[data-range-event="cbs-middle-high-2026"]').href).searchParams.get('division'),'high-women');p.close();
+ });

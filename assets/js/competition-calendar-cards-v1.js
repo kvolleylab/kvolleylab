@@ -127,8 +127,15 @@
   const fullDate=s=>{const d=new Date(s+'T00:00:00Z');return `${t.day(d.getUTCMonth()+1,d.getUTCDate())} ${t.fullWeekdays[d.getUTCDay()]}`};
   const duration=e=>Math.round((new Date(e.end+'T00:00:00Z')-new Date(e.start+'T00:00:00Z'))/86400000)+1;
   const siteOrigin='https://kvolleylab.com';
+  const tournamentRoutes={
+    'west-japan-university-men-selection-2026':'international-university-west-japan-select-2026.html?view=matches',
+    'vnl-women-2026':'competition-engine.html?competition=vnl-women-2026',
+    'asian-games-men-volleyball-2026':'competition-engine.html?competition=asian-games-men-2026',
+    'asian-games-women-volleyball-2026':'competition-engine.html?competition=asian-games-women-2026',
+    'cbs-middle-high-2026':'school-competition-cbs-2026.html'
+  };
   function competitionPage(e){
-    if(e.id==='west-japan-university-men-selection-2026')return siteOrigin+'/international-university-west-japan-select-2026.html?view=matches';
+    if(tournamentRoutes[e.id])return siteOrigin+'/'+tournamentRoutes[e.id]+(e.id==='cbs-middle-high-2026'&&gender==='women'?'?division=high-women':'');
     if(!e.href)return null;
     const url=new URL(e.href,siteOrigin);
     return url.origin===siteOrigin?url.href:null;
