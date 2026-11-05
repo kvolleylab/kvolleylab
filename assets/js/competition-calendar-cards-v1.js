@@ -21,7 +21,7 @@
     allMonth:'이달 전체 대회 보기',period:'대회 기간',details:'일정·결과 보기',summary:'대회 요약 보기',periodDetails:'대회 기간·장소 보기',sourceLink:'일정 출처 보기 (외부)',joint:'남녀부 공동 개최',
     dataMissing:y=>`${y}년 대회 일정 데이터가 없습니다.`,retry:'다시 불러오기',back2026:'2026년 달력 보기',
     matchNote:'날짜가 확인된 경기만 집계하며, 대회 전체 경기 수를 날짜별 경기 수로 사용하지 않습니다.',
-    daySchedule:'날짜별 대회',otherMonth:'다른 달',yearHint:'기간 막대에서 대회 정보를, 날짜에서 그날의 대회를 확인하세요.',rangeHint:'선택하여 대회 일정 보기',touchHint:'한 번 더 눌러 대회 일정 보기'
+    daySchedule:'날짜별 대회',otherMonth:'다른 달',yearHint:'기간 막대에서 대회 정보를, 날짜에서 그날의 대회를 확인하세요.',rangeHint:'선택하여 대회 일정 보기',touchHint:'말풍선을 눌러 대회 보기 →'
   };
   // Keep locale/query state. Additional locale dictionaries can override keys;
   // absent translations fall back to Korean, the existing site default.
@@ -159,6 +159,7 @@
     const genderText=joint?'남 · 여 (동일기간)':genderLabel(event);
     const group=annual?`${esc(labelOf(event.category))} · `:'';
     rangeTip.innerHTML=`${members.map(e=>`<strong>${esc(titleWithLocation(e,e.title))}</strong>`).join('')}<span class="cc-range-tooltip-date">${formatDate(event.start)} – ${formatDate(event.end)} <em>· ${t.duration(duration(event))}</em></span><span class="cc-range-tooltip-meta">${t[statusOf(event)]} · ${group}${esc(familyLabels[familyOf(event)])} · ${esc(genderText)}</span>${event.period_note?`<span class="cc-range-tooltip-meta">${esc(event.period_note)}</span>`:''}${joint?`<span class="cc-range-tooltip-links">${members.map(e=>`<a href="${esc(eventHref(e,anchor.dataset.rangeStart))}">${esc(genderLabel(e))} 대회 보기 →</a>`).join('')}</span>`:`<span class="cc-range-tooltip-hint">${touch?t.touchHint:t.rangeHint}</span>`}`;
+    if(!joint)rangeTip.innerHTML=`<a class="cc-range-tooltip-target" href="${esc(eventHref(event,anchor.dataset.rangeStart))}">${rangeTip.innerHTML}</a>`;
     rangeTip.style.maxWidth=`${Math.min(360,document.documentElement.clientWidth-24)}px`;
     rangeTip.hidden=false;anchor.setAttribute('aria-describedby',rangeTip.id);
     const rect=anchor.getBoundingClientRect(),box=rangeTip.getBoundingClientRect(),edge=12;
@@ -171,16 +172,17 @@
   const deferHideRange=()=>{clearTimeout(hideRangeTimer);hideRangeTimer=setTimeout(hideRange,160)};
   root.addEventListener('pointerover',e=>{const a=e.target.closest('[data-range-event]');if(a&&e.pointerType!=='touch')showRange(a)});
   root.addEventListener('pointerout',e=>{const a=e.target.closest('[data-range-event]');if(a&&e.pointerType!=='touch'&&!a.contains(e.relatedTarget)&&!rangeTip.contains(e.relatedTarget))deferHideRange()});
-  root.addEventListener('focusin',e=>{const a=e.target.closest('[data-range-event]');if(a)showRange(a)});
+  root.addEventListener('focusin',e=>{const a=e.target.closest('[data-range-event]');if(a&&lastPointerType!=='touch')showRange(a)});
   root.addEventListener('focusout',e=>{if(e.target.closest('[data-range-event]')&&!rangeTip.contains(e.relatedTarget))deferHideRange()});
   root.addEventListener('click',e=>{
     const a=e.target.closest('[data-range-event]');if(!a)return;
     if(lastPointerType==='touch'||window.matchMedia('(hover: none), (max-width: 680px)').matches){
-      if(touchRange!==a){e.preventDefault();touchRange=a;showRange(a,true)}
+      e.preventDefault();
+      if(touchRange===a)hideRange();else{touchRange=a;showRange(a,true)}
     }
   });
   rangeTip.addEventListener('pointerenter',()=>clearTimeout(hideRangeTimer));
-  rangeTip.addEventListener('pointerleave',deferHideRange);
+  rangeTip.addEventListener('pointerleave',e=>{if(e.pointerType!=='touch'&&!touchRange)deferHideRange()});
   rangeTip.addEventListener('focusin',()=>clearTimeout(hideRangeTimer));
   rangeTip.addEventListener('focusout',e=>{if(!rangeTip.contains(e.relatedTarget)&&e.relatedTarget!==activeRange)deferHideRange()});
   document.addEventListener('pointerdown',e=>{lastPointerType=e.pointerType||'mouse';if(!e.target.closest('[data-range-event],#ccRangeTooltip'))hideRange()});
@@ -203,7 +205,7 @@
     return `${location.pathname.split('/').pop()||'competition-calendar.html'}?${q}`;
   }
   function syncUrl(){
-    const url=new URL(calendarHref(view,year,month,view==='month'?selected:null),location.href);
+    const url=new URL(calendarHref(view,year,month,selected),location.href);
     if(!explicitView)url.searchParams.delete('view');
     if(linkedEventCard())url.hash=location.hash;
     history.replaceState(null,'',url);
@@ -276,12 +278,12 @@
     for(let i=0;i<cells;i++){
       const d=civil(year,m,i-offset+1),date=iso(d),inMonth=d.getUTCMonth()+1===m&&d.getUTCFullYear()===year;
       if(compact&&!inMonth){days+='<span class="cc-card-day is-compact is-outside" aria-hidden="true"></span>';continue}
-      const dayEvents=eventsAt(date,events),today=date===todayIso,isSelected=!compact&&date===selected;
+      const dayEvents=eventsAt(date,events),today=date===todayIso,isSelected=date===selected;
       const cls=`cc-card-day ${compact?'is-compact':''} ${inMonth?'':'is-outside'} ${dayEvents.length?'has-events':''} ${today?'is-today':''} ${isSelected?'is-selected':''} ${i%7===0?'is-sunday':i%7===6?'is-saturday':''}`;
       const label=`${date} ${t.fullWeekdays[d.getUTCDay()]}${today?' · '+t.today:''} · ${t.count(dayEvents.length)}`;
       const body=`<span class="cc-card-day-number">${d.getUTCDate()}</span>${dayEvents.length?`<span class="cc-card-day-count">${t.count(dayEvents.length)}</span>${dots(dayEvents)}`:'<span class="cc-card-day-space" aria-hidden="true"></span>'}`;
       const attrs=`class="${cls}" data-date="${date}" data-event-count="${dayEvents.length}" aria-label="${esc(label)}"${today?' aria-current="date"':''}`;
-      days+=compact||!inMonth?`<a ${attrs} href="${calendarHref('month',d.getUTCFullYear(),d.getUTCMonth()+1,date)}">${body}</a>`:`<button type="button" ${attrs} aria-pressed="${isSelected}" data-select-date="${date}">${body}</button>`;
+      days+=`<button type="button" ${attrs} aria-haspopup="dialog" aria-pressed="${isSelected}" data-select-date="${date}">${body}</button>`;
     }
     const sizingWeeks=rangeWeeks(m,compact,cells,offset);
     const weeks=compact?rangeWeeks(m,compact,cells,offset,annualPeriods(visibleEvents())):sizingWeeks;
@@ -353,7 +355,8 @@
     root.querySelectorAll('[data-select-date]').forEach(b=>b.onclick=()=>{
       selected=b.dataset.selectDate;
       root.querySelectorAll('[data-select-date]').forEach(d=>{const yes=d.dataset.selectDate===selected;d.classList.toggle('is-selected',yes);d.setAttribute('aria-pressed',String(yes))});
-      renderSelected();syncUrl();
+      hideRange();renderSelected();syncUrl();
+      window.KVLCompetitionCalendarDayV1.open({date:selected,events:eventsAt(selected),gender,href:eventHref,color:colorOf,title:e=>titleWithLocation(e,e.title)});
     });
     const yearSelect=controls.querySelector('[data-year-select]');
     yearSelect.onchange=()=>location.href=calendarHref(view,Number(yearSelect.value),month);

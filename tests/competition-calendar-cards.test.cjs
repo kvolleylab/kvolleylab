@@ -19,6 +19,15 @@ async function mount(query='view=year&year=2026',options={}){
   const data=options.data||period;let copied='';w.KVLCalendarLayerPriority=options.priority;
   w.fetch=async url=>url.includes('verified-events')?{ok:true,json:async()=>structuredClone(options.verified||[])}:({status:options.missingData?404:200,ok:!options.missingData&&(url.includes('periods')||!options.missingGenders)&&!(url.includes('domestic-competitions')&&options.missingLocations),json:async()=>structuredClone(url.includes('periods')?data:url.includes('domestic-competitions')?(options.domestic||domestic):(options.genders||genders))});
   Object.defineProperty(w.navigator,'clipboard',{value:{writeText:async text=>{copied=text}}});
+  const calendarFetch=w.fetch;
+  w.fetch=async url=>{
+    if(url.startsWith('data/calendar/'))return calendarFetch(url);
+    if(options.matchFetch)return options.matchFetch(url);
+    const file=path.join(root,url);return {ok:fs.existsSync(file),json:async()=>JSON.parse(fs.readFileSync(file,'utf8'))};
+  };
+  w.HTMLDialogElement.prototype.showModal=function(){this.open=true};
+  w.HTMLDialogElement.prototype.close=function(){this.open=false;this.dispatchEvent(new w.Event('close'))};
+  for(const file of ['kvl-calendar-display-v1.js','kvl-match-calendar-v1.js','competition-calendar-day-v1.js'])w.eval(read('assets/js/'+file));
   w.eval(options.source||source);
   for(let i=0;i<30;i++)await Promise.resolve();
   return {dom,w,d:w.document,copied:()=>copied,close:()=>w.close()};
@@ -145,7 +154,7 @@ test('bars route to KVL and retain internal paths, including the West Japan resu
   }
   p.close();
 });
-test('second tap on a prior-season bar opens the selected calendar card and exposes the article only as an explicit source',async()=>{
+test('prior-season tooltip links to the selected calendar card and keeps the article an explicit source',async()=>{
   for(const gender of ['men','women']){
     const p=await mount('view=year&year=2026&category=vleague&gender='+gender,{verified,mobile:true});
     const id='v-league-'+gender+'-2025-26',a=p.d.querySelector('#cc-month-3 [data-range-event="'+id+'"]');
@@ -155,7 +164,9 @@ test('second tap on a prior-season bar opens the selected calendar card and expo
     const out=new p.w.Event('pointerout',{bubbles:true});Object.defineProperty(out,'pointerType',{value:'touch'});a.dispatchEvent(out);
     await new Promise(resolve=>setTimeout(resolve,180));
     assert.equal(p.d.querySelector('#ccRangeTooltip').hidden,false);
-    p.d.addEventListener('click',e=>{assert.equal(e.defaultPrevented,false);e.preventDefault()},{once:true});a.click();
+    p.d.addEventListener('click',e=>{assert.equal(e.defaultPrevented,true);e.preventDefault()},{once:true});a.click();
+    assert.equal(p.d.querySelector('#ccRangeTooltip').hidden,true);a.click();
+    assert.equal(p.d.querySelector('#ccRangeTooltip a').href,a.href);
     const u=new URL(a.href);assert.equal(u.searchParams.get('month'),'3');assert.equal(u.searchParams.get('gender'),gender);
     const dest=await mount(u.search.slice(1)+u.hash,{verified,mobile:true});
     assert.equal(dest.w.location.hash,u.hash);
@@ -216,13 +227,13 @@ test('range tooltip shows original full name and complete period, highlights eve
   p.d.querySelector('[data-filter="international"]').click();assert.equal(tip.hidden,true);
   assert.equal(p.d.querySelectorAll('[data-range-event="goseong-university-2026"]').length,0);p.close();
 });
-test('mobile first tap opens period information, second tap retains the original destination, outside tap dismisses',async()=>{
+test('mobile first tap opens, second tap closes, tooltip opens tournament, outside tap dismisses',async()=>{
   const p=await mount('view=month&year=2026&month=6',{mobile:true});
   const a=p.d.querySelector('[data-range-event="goseong-university-2026"]'),tip=p.d.getElementById('ccRangeTooltip');
   const first=new p.w.MouseEvent('click',{bubbles:true,cancelable:true});a.dispatchEvent(first);
-  assert.equal(first.defaultPrevented,true);assert.equal(tip.hidden,false);assert.match(tip.textContent,/한 번 더 눌러/);
+  assert.equal(first.defaultPrevented,true);assert.equal(tip.hidden,false);assert.match(tip.textContent,/말풍선을 눌러/);
   let secondPrevented=null;p.d.addEventListener('click',e=>{secondPrevented=e.defaultPrevented;e.preventDefault()},{once:true});
-  a.click();assert.equal(secondPrevented,false);assert.equal(a.href,'https://kvolleylab.com/goseong-university-2026.html');
+  a.click();assert.equal(secondPrevented,true);assert.equal(tip.hidden,true);a.click();assert.equal(tip.hidden,false);assert.equal(tip.querySelector('a').href,a.href);assert.equal(a.href,'https://kvolleylab.com/goseong-university-2026.html');
   p.d.body.dispatchEvent(new p.w.Event('pointerdown',{bubbles:true}));assert.equal(tip.hidden,true);p.close();
 });
 
@@ -414,4 +425,71 @@ test('the real calendar entry loads the card renderer and places an accessible h
     assert.ok(doc.querySelector('script[src^="'+path+'"],link[href^="'+path+'"]'),path);
   }
   dom.window.close();
+});
+
+const flush=async()=>{for(let i=0;i<60;i++)await Promise.resolve()};
+test('year and month date buttons open the shared V-League dialog with exact results, teams and set scores',async()=>{
+  for(const view of ['year','month']){
+    const p=await mount(`view=${view}&year=2026&month=11&category=vleague`,{verified});
+    const button=p.d.querySelector('[data-select-date="2026-11-01"]');assert.equal(button.tagName,'BUTTON');assert.equal(button.getAttribute('aria-haspopup'),'dialog');button.click();await flush();
+    const dialog=p.d.querySelector('#dv2-day-dialog');assert.equal(dialog.open,true);assert.match(dialog.querySelector('h2').textContent,/2026.11.01 · 2개 대회 · 등록 경기 2경기/);
+    const men=dialog.querySelector('[data-day-event="v-league-men-2026-27"]');
+    assert.equal(men.querySelector('.dv2-match-teams>strong').textContent,'1 : 3');assert.match(men.textContent,/KB손해보험/);assert.match(men.textContent,/삼성화재/);assert.match(men.textContent,/38-36/);
+    assert.equal(dialog.querySelectorAll('[data-calendar-match]').length,2);
+    dialog.querySelector('[data-dv2-close]').click();assert.equal(dialog.open,false);
+    p.d.querySelector('[data-select-date="2026-11-02"]').click();await flush();assert.equal(dialog.querySelectorAll('[data-calendar-match]').length,0);assert.match(dialog.textContent,/등록된 세부 경기가 없습니다/);p.close();
+  }
+});
+test('desktop bar keeps native navigation; mobile tooltip link navigates without opening a date dialog',async()=>{
+  for(const mobile of [false,true]){
+    const p=await mount('view=month&year=2026&month=6',{mobile}),bar=p.d.querySelector('[data-range-event="goseong-university-2026"]');
+    let prevented;p.d.addEventListener('click',e=>{prevented=e.defaultPrevented;e.preventDefault()},{once:true});bar.click();assert.equal(prevented,mobile);
+    if(mobile){const a=p.d.querySelector('#ccRangeTooltip a');p.d.addEventListener('click',e=>{assert.equal(e.defaultPrevented,false);e.preventDefault()},{once:true});a.click();assert.equal(a.href,bar.href)}
+    assert.equal(p.d.querySelector('#dv2-day-dialog'),null);p.close();
+  }
+});
+test('joint tournament day results obey gender filters and keep divisions distinct',async()=>{
+  for(const gender of ['all','men','women']){
+    const p=await mount(`view=month&year=2026&month=6&category=domestic&gender=${gender}`);
+    p.d.querySelector('[data-select-date="2026-06-29"]').click();await flush();
+    const section=p.d.querySelector('[data-day-event="goseong-university-2026"]');
+    const expectedCount=['men','women'].filter(g=>gender==='all'||gender===g).reduce((n,g)=>n+JSON.parse(read(`data/competitions/university-goseong-${g}-2026/data.json`)).matches.filter(m=>m.date==='2026-06-29').length,0);
+    assert.equal(section.querySelectorAll('[data-calendar-match]').length,expectedCount);
+    if(gender!=='all')assert.ok([...section.querySelectorAll('.cc-day-division')].every(x=>x.textContent===(gender==='men'?'남자부':'여자부')));p.close();
+  }
+});
+test('legacy AVC, West Japan draws and inline friendly fixtures retain their real scores and dates',async()=>{
+  for(const [date,event,score] of [
+    ['2026-08-21','avc-women-continental-2026','1 : 3'],
+    ['2026-08-25','west-japan-university-men-selection-2026','1 : 1'],
+    ['2026-08-29','korea-bahrain-men-friendlies-2026','VS'],
+    ['2026-06-20','avc-men-cup-2026','2 : 3']
+  ]){
+    const p=await mount(`view=month&year=2026&month=${Number(date.slice(5,7))}`,{verified});
+    p.d.querySelector(`[data-select-date="${date}"]`).click();await flush();
+    const section=p.d.querySelector(`[data-day-event="${event}"]`);assert.ok(section,event);assert.ok([...section.querySelectorAll('.dv2-match-teams>strong')].some(e=>e.textContent===score),event);
+    assert.doesNotMatch(section.textContent,/불러오지 못했습니다|\[object Object\]/);p.close();
+  }
+});
+test('all configured public exports exist and unresolved competitions stay period-only',async()=>{
+  const requested=new Set();
+  const p=await mount('view=year&year=2026',{verified,matchFetch:async url=>{requested.add(url);assert.ok(fs.existsSync(path.join(root,url)),url);return {ok:true,json:async()=>JSON.parse(read(url))}}});
+  for(const date of ['2026-03-13','2026-04-07','2026-05-23','2026-06-09','2026-06-25','2026-07-07','2026-07-31','2026-08-13','2026-08-28','2026-09-04','2026-09-16','2026-09-27','2026-10-16','2026-10-20','2026-11-01']){
+    p.d.querySelector(`[data-select-date="${date}"]`).click();await flush();assert.doesNotMatch(p.d.querySelector('#dv2-day-dialog').textContent,/불러오지 못했습니다/);
+  }
+  assert.ok(requested.size>=45,requested.size);
+  p.d.querySelector('[data-select-date="2026-01-03"]').click();await flush();assert.match(p.d.querySelector('#dv2-day-dialog').textContent,/대회 기간만 확인/);assert.equal(p.d.querySelectorAll('#dv2-day-dialog [data-calendar-match]').length,0);p.close();
+});
+test('failed match loads are distinct from no fixtures and can be retried',async()=>{
+  let failed=true;
+  const p=await mount('view=month&year=2026&month=11&gender=men&category=vleague',{verified,matchFetch:async url=>({ok:!failed,json:async()=>JSON.parse(read(url))})});
+  p.d.querySelector('[data-select-date="2026-11-01"]').click();await flush();const dialog=p.d.querySelector('#dv2-day-dialog');assert.match(dialog.textContent,/불러오지 못했습니다/);assert.doesNotMatch(dialog.textContent,/등록된 세부 경기가 없습니다/);
+  failed=false;dialog.querySelector('[data-day-retry]').click();await flush();assert.equal(dialog.querySelectorAll('[data-calendar-match]').length,1);assert.equal(dialog.querySelector('[data-day-retry]'),null);p.close();
+});
+test('a late request cannot replace the next selected date or reopen a dismissed dialog',async()=>{
+  const pending=[];
+  const p=await mount('view=month&year=2026&month=11&category=vleague',{verified,matchFetch:url=>new Promise(resolve=>pending.push(()=>resolve({ok:true,json:async()=>JSON.parse(read(url))})))});
+  p.d.querySelector('[data-select-date="2026-11-01"]').click();p.d.querySelector('[data-select-date="2026-11-02"]').click();pending.forEach(done=>done());await flush();
+  const dialog=p.d.querySelector('#dv2-day-dialog');assert.match(dialog.querySelector('h2').textContent,/2026.11.02/);assert.equal(dialog.querySelectorAll('[data-calendar-match]').length,0);
+  p.d.querySelector('[data-select-date="2026-11-01"]').click();dialog.close();await flush();assert.equal(dialog.open,false);p.close();
 });
