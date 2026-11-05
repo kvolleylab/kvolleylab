@@ -103,6 +103,51 @@ class SourceContractTests(unittest.TestCase):
         self.assertEqual(item["status"], "scheduled")
         self.assertIsNone(item["sets"])
 
+    def test_live_provisional_winner_marker_remains_unverified(self):
+        # KOVO may supply W/L while the match is underway and getime is blank.
+        # Neither marker may turn provisional set wins into a final result.
+        for gender in source.GENDERS:
+            for marker in ("W", "L", "", None):
+                with self.subTest(gender=gender, marker=marker):
+                    row = deepcopy(FIXTURE["schedules"]["m" if gender == "MALE" else "w"]["rows"][1])
+                    row.update(hspoint=1, aspoint=0, hs1point=25, as1point=20,
+                               getime="", result=marker)
+                    match = self.normalize(row, gender)
+                    self.assertEqual(match["status"], "live")
+                    self.assertEqual(match["sets_won"], {"home": 1, "away": 0})
+                    self.assertEqual(match["sets"], [{"home": 25, "away": 20}])
+                    self.assertNotIn("winner", match)
+
+    def test_scheduled_and_unknown_provisional_winner_markers_still_fail(self):
+        scheduled = deepcopy(FIXTURE["schedules"]["m"]["rows"][1])
+        for marker in ("W", "L", "?", 0):
+            with self.subTest(scheduled_marker=marker):
+                with self.assertRaises(source.SourceError):
+                    self.normalize({**scheduled, "result": marker})
+        live = {**scheduled, "hspoint": 1, "hs1point": 25, "as1point": 20}
+        for marker in ("?", 0, True):
+            with self.subTest(live_marker=marker):
+                with self.assertRaises(source.SourceError):
+                    self.normalize({**live, "result": marker})
+        with self.assertRaisesRegex(source.SourceError, "no official end marker"):
+            self.normalize({**live, "hspoint": 3, "result": "W"})
+
+    def test_full_season_read_accepts_live_marker_but_does_not_finalize_game(self):
+        reader = FakeSeasonSource()
+        for gender in source.GENDERS:
+            row = reader.rows[gender][0]
+            row.update(hspoint=1, aspoint=0, hs1point=25, as1point=20,
+                       getime="", result="W")
+        snapshot = source.collect_season(fetcher=reader, now=STAMP)
+        self.assertTrue(snapshot["coverage"]["complete"])
+        self.assertEqual(len(snapshot["matches"]), 252)
+        for gender in source.GENDERS:
+            observed = [m for m in snapshot["matches"]
+                        if m["gender"] == gender and m["number"] in (1, 2)]
+            self.assertEqual(len(observed), 1)
+            self.assertEqual(observed[0]["status"], "live")
+            self.assertEqual(observed[0]["sets_won"], {"home": 1, "away": 0})
+
     def test_final_requires_per_set_points_and_correct_winner(self):
         for mutation in (lambda r: r.pop("hs2point"),
                          lambda r: r.update(hs2point=0, as2point=0),
