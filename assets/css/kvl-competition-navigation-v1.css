@@ -61,16 +61,6 @@
     opacity: 1!important;
     font-weight: 800;
   }
-  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .kvl-calendar-today-badge {
-    display: block;
-    margin-top: -6px;
-    color: #8a641f;
-    font-size: 9px;
-    font-weight: 800;
-    line-height: 1.1;
-    white-space: nowrap;
-    pointer-events: none;
-  }
   @media (max-width:680px) {
     html body.kvl1180-prototype.kvl-competition-template-v2 #schedule .kvl1180-date-group {
       scroll-margin-top: 68px;
@@ -83,10 +73,6 @@
     html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .dv2-day.kvl-calendar-today .dv2-calendar-date {
       min-width: 22px;
       height: 22px;
-    }
-    html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .kvl-calendar-today-badge {
-      font-size: 8px;
-      margin-top: -5px;
     }
   }
 }
