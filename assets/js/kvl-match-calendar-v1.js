@@ -57,14 +57,15 @@ function dialog(){
  el.innerHTML='<div class="dv2-dialog-heading"><h2 id="dv2-day-title"></h2><button type="button" data-dv2-close aria-label="상세 창 닫기">×</button></div><div class="dv2-day-matches"></div><a class="dv2-day-schedule">이 날짜 경기 일정·결과 보기 ›</a>';
  el.addEventListener('click',e=>{if(e.target===el||e.target.closest('[data-dv2-close]'))el.close();});document.body.append(el);return el;
 }
+function matchCard(m,data,options={}){
+ const side=t=>{const url=options.teamUrl?.(t.code),mark=options.mark?.(t)??((t.logo||t.flag)?`<img src="${esc(t.logo||t.flag)}" alt="" loading="lazy">`:'');return url?`<a href="${esc(url)}">${mark}<b>${esc(name(t))}</b></a>`:`<span>${mark}<b>${esc(name(t))}</b></span>`;};
+ const summary=display().game(m,data,data.structure?.calendarDisplay||{}),s=m.score;
+  return `<article class="dv2-day-match" data-calendar-match="${esc(m.id)}"><div class="dv2-match-meta"><b>${esc(m.stage||'경기')}${m.pool?' · '+esc(m.pool)+'조':''}</b><span>${esc(m.time||'시간 미정')} KST</span></div><div class="dv2-match-teams">${side(resolve(data,m.home))}<strong>${esc(options.resultLabel||(summary.resultLabel==='vs'?'VS':summary.resultLabel.replace('-', ' : ')))}</strong>${side(resolve(data,m.away))}</div><div class="dv2-setline">${(m.reportedSets||s?.sets||[]).map((set,i)=>`<span title="${i+1}세트">${esc(set.home)}-${esc(set.away)}</span>`).join('')||'세트별 득점 확인 중'}</div>${m.scoreNote?`<p class="kvl-score-note">${esc(m.scoreNote)}</p>`:''}<small class="dv2-match-venue">${esc(m.venueLabel||data.venueLabel||'장소 미정')}</small>${m.localTimeLabel?`<small class="dv2-match-venue">${esc(m.localTimeLabel)}</small>`:''}</article>`;
+}
 function openDay(state,date){
  const {data,options}=state,games=state.records.filter(m=>m.date===date),el=dialog();
  el.querySelector('#dv2-day-title').textContent=date.replaceAll('-','.')+' · '+games.length+'경기';
- const side=t=>{const url=options.teamUrl?.(t.code),mark=options.mark?.(t)??((t.logo||t.flag)?`<img src="${esc(t.logo||t.flag)}" alt="" loading="lazy">`:'');return url?`<a href="${esc(url)}">${mark}<b>${esc(name(t))}</b></a>`:`<span>${mark}<b>${esc(name(t))}</b></span>`;};
- el.querySelector('.dv2-day-matches').innerHTML=games.map(m=>{
-  const summary=display().game(m,data,data.structure?.calendarDisplay||{}),s=m.score;
-  return `<article class="dv2-day-match" data-calendar-match="${esc(m.id)}"><div class="dv2-match-meta"><b>${esc(m.stage||'경기')}${m.pool?' · '+esc(m.pool)+'조':''}</b><span>${esc(m.time||'시간 미정')} KST</span></div><div class="dv2-match-teams">${side(resolve(data,m.home))}<strong>${esc(summary.resultLabel==='vs'?'VS':summary.resultLabel.replace('-', ' : '))}</strong>${side(resolve(data,m.away))}</div><div class="dv2-setline">${(m.reportedSets||s?.sets||[]).map((set,i)=>`<span title="${i+1}세트">${esc(set.home)}-${esc(set.away)}</span>`).join('')||'세트별 득점 확인 중'}</div>${m.scoreNote?`<p class="kvl-score-note">${esc(m.scoreNote)}</p>`:''}<small class="dv2-match-venue">${esc(m.venueLabel||data.venueLabel||'장소 미정')}</small>${m.localTimeLabel?`<small class="dv2-match-venue">${esc(m.localTimeLabel)}</small>`:''}</article>`;
- }).join('');
+ el.querySelector('.dv2-day-matches').innerHTML=games.map(m=>matchCard(m,data,options)).join('');
  const link=el.querySelector('.dv2-day-schedule'),url=options.scheduleUrl?.(date);link.hidden=!url;if(url)link.href=url;
  el.showModal();
 }
@@ -79,5 +80,5 @@ function mount(root,data,options={}){
  });
  render(state);dialog();return true;
 }
-window.KVLMatchCalendarV1={mount};
+window.KVLMatchCalendarV1={mount,dialog,matchCard};
 })();

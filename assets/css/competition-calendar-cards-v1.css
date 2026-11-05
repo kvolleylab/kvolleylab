@@ -145,7 +145,7 @@
 .cc-range-tooltip[hidden]{display:none}
 .cc-range-tooltip:after{content:"";position:absolute;left:var(--tip-arrow,20px);top:100%;transform:translateX(-50%);border:6px solid transparent;border-top-color:var(--tip-bg,rgba(16,35,63,.87))}
 .cc-range-tooltip.is-below:after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--tip-bg,rgba(16,35,63,.87))}
-.cc-range-tooltip>strong{display:block;font-size:13px;font-weight:750;word-break:keep-all}
+.cc-range-tooltip strong{display:block;font-size:13px;font-weight:750;word-break:keep-all}
 .cc-range-tooltip-date{display:block;font-size:12px;margin-top:6px;font-weight:650;white-space:normal}
 .cc-range-tooltip-date em{font-size:10px;font-style:normal;color:#dae6f1;white-space:nowrap}
 .cc-range-tooltip-meta{display:block;margin-top:7px;color:#d3dfec;font-size:10px}
@@ -255,3 +255,26 @@
 .cc-brand-header a:hover span{text-decoration:underline}
 .cc-brand-header a:focus-visible{outline:3px solid #f0c75e;outline-offset:-3px}
 @media(max-width:900px){.kvl-mobile-header-enabled .cc-brand-header{display:none}}
+
+/* Touch range cards and the shared V-League day dialog. */
+.cc-range-tooltip .cc-range-tooltip-target{display:block;color:inherit;text-decoration:none;margin:-15px -18px -13px;padding:15px 18px 13px}
+.cc-range-tooltip .cc-range-tooltip-target:focus-visible{outline:2px solid #6f96c0;outline-offset:5px;border-radius:3px}
+#dv2-day-dialog.cc-day-dialog .cc-day-competitions{display:block;padding:18px}
+.cc-day-dialog .cc-day-message{margin:0 0 14px;color:#61758a;font-size:13px;line-height:1.6}
+.cc-day-dialog .cc-day-competition{border:1px solid #dce5ee;border-top:4px solid var(--event-color);border-radius:11px;padding:16px;margin:0 0 16px}
+.cc-day-dialog .cc-day-competition:last-child{margin-bottom:0}
+.cc-day-dialog .cc-day-competition h3{word-break:keep-all;font-size:16px;line-height:1.5;margin:0 0 5px}
+.cc-day-dialog .cc-day-competition h3 a{color:#183149;text-decoration:none}
+.cc-day-dialog .cc-day-competition header>p{color:#61758a;font-size:12px;margin:0 0 14px}
+.cc-day-dialog .cc-day-games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cc-day-dialog .cc-day-game{min-width:0}
+.cc-day-dialog .cc-day-division{margin:0 0 6px;font-size:12px;font-weight:700;color:#536d84}
+.cc-day-dialog [data-day-retry]{display:block;margin-top:8px;border:1px solid #dce5ee;background:#f0f4f8;color:#183149;padding:7px 12px;border-radius:6px;cursor:pointer}
+@media(max-width:680px){
+ .cc-range-tooltip .cc-range-tooltip-target{margin:-13px -15px;padding:13px 15px}
+ #dv2-day-dialog.cc-day-dialog .cc-day-competitions{padding:12px}
+ .cc-day-dialog .cc-day-competition{padding:12px}
+ .cc-day-dialog .cc-day-games{grid-template-columns:minmax(0,1fr)}
+ .cc-day-dialog .dv2-dialog-heading h2{word-break:keep-all;font-size:15px;line-height:1.5}
+ .cc-day-dialog .dv2-dialog-heading button{flex-shrink:0}
+}
