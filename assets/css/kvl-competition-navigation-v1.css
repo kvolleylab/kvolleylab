@@ -45,13 +45,11 @@
   }
 
   /* Today is marked even when it has no match; holiday red stays visible. */
-  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"])
-  .kvl-match-calendar .dv2-day.kvl-calendar-today {
+  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .dv2-day.kvl-calendar-today {
     position: relative;
     box-shadow: inset 0 0 0 2px #b9954f!important;
   }
-  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"])
-  .kvl-match-calendar .dv2-day.kvl-calendar-today .dv2-calendar-date {
+  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .dv2-day.kvl-calendar-today .dv2-calendar-date {
     display: grid;
     place-items: center;
     min-width: 25px;
@@ -63,8 +61,7 @@
     opacity: 1!important;
     font-weight: 800;
   }
-  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"])
-  .kvl-match-calendar .kvl-calendar-today-badge {
+  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .kvl-calendar-today-badge {
     display: block;
     margin-top: -6px;
     color: #8a641f;
@@ -83,13 +80,11 @@
       width: 52px;
       height: 52px;
     }
-    html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"])
-    .kvl-match-calendar .dv2-day.kvl-calendar-today .dv2-calendar-date {
+    html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .dv2-day.kvl-calendar-today .dv2-calendar-date {
       min-width: 22px;
       height: 22px;
     }
-    html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"])
-    .kvl-match-calendar .kvl-calendar-today-badge {
+    html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .kvl-calendar-today-badge {
       font-size: 8px;
       margin-top: -5px;
     }
