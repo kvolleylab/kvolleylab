@@ -1,5 +1,24 @@
 /* Year navigation and category cards for the senior international hub. */
 .international-years-hub{--hub-navy:#17365d;--hub-line:#dfe6ed}
+/* Approved red arena artwork; retain the shared HERO geometry and live text. */
+.international-years-hub .kvl-common-hero{
+ --kvl-common-hero-a:#360508;
+ --kvl-common-hero-b:#820b1b;
+ --kvl-common-hero-image:url('/assets/img/competition-hero/kvl-hero-international-hub-pc-v1.webp');
+ --kvl-common-hero-image-mobile:url('/assets/img/competition-hero/kvl-hero-international-hub-mobile-v1.webp');
+ --kvl-common-hero-position:center 75%;
+ --kvl-common-hero-position-mobile:72% center;
+}
+.international-years-hub .kvl-common-hero[data-hero-mode="photo"]{
+ background-image:linear-gradient(90deg,rgba(54,5,8,.12),transparent 65%),var(--kvl-common-hero-image);
+ background-size:cover;
+ background-repeat:no-repeat;
+}
+@media(max-width:680px){
+ .international-years-hub .kvl-common-hero[data-hero-mode="photo"]{
+  background-image:linear-gradient(90deg,rgba(54,5,8,.44),rgba(54,5,8,.12) 58%,transparent 85%),var(--kvl-common-hero-image-mobile);
+ }
+}
 .hub-mobile-break{display:none}
 .hub-years{margin-top:24px;border:1px solid var(--hub-line);border-radius:12px;background:#fff;overflow:hidden}
 .hub-year+.hub-year{border-top:1px solid var(--hub-line)}

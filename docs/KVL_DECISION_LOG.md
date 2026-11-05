@@ -1,5 +1,9 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-05 · 국제대회 허브 메인 HERO 이미지 적용
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 첨부한 붉은 경기장 이미지를 운영 국제대회 페이지 메인 HERO에 반영하도록 요청했다. 기존 `international-competition-senior-national-team.html` 경로와 HERO 크기·문구·골드 글자·6개 카테고리·연도 탐색을 유지하고, 전용 허브 CSS 변수와 PC/모바일 WebP만 연결한다. 업로드한 2048×682 이미지의 구도와 비율을 보존한 웹용 자산을 사용하며 2026-11-02의 영역 채움 결정을 따라 표시 영역에서 `cover`를 적용한다. 이 허브에서는 기존 청색 SVG를 사용자 지정 붉은 이미지로 대체하며 다른 대회 테마에는 적용하지 않는다. Base main `ba981d65e56055fa185304794773ae5e40b14778`. PC1180·모바일390/360에서 경기장과 제목·가로 넘침0·정상 이미지, VNL 선택 후 전체보기의 필터 유지 확인. [변경·검수·복구](validation/international-hub-hero-v1.md). 병합·Pages·운영 확인은 해당 release PR과 구분해 기록한다.
+
 ## 2026-10-26 — Draft Hub 팀별 추첨 확률 카드
 
 Status: APPROVED / IMPLEMENTED / VERIFIED. 2026-10-26 사용자가 “반영해”로 운영 적용을 승인했다. 실제 배포 확인은 PR #166에 기록한다. 사용자 요청 URL의 2026-27 남자부에 드래프트 연도와 공식 참가 신청자 사이 로고·팀명·구슬 수(확률)를 표시한다. KOVO 공식 확률 및 총 100개 구슬을 대조하고 기존 V-리그 로고를 재사용한다. 신청자·선수 ID·프로필·지명 결과는 변경하지 않는다. 여자부/미등록 시즌에는 남자부 배분을 노출하지 않으며 로딩 실패는 신청자 기능에 전파하지 않는다. PC/390px/360px, 자동 검사 12개 통과. [검수·출처·적용 파일·복구](validation/draft-lottery-20261026.md). 승인된 운영 적용 범위는 이 추첨 카드이며 다른 기능과 데이터 변경은 포함하지 않는다.
