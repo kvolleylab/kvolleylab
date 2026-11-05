@@ -1,0 +1,19 @@
+{
+  "name": "kvl-member-onboarding-tooling",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "vendor": "node vendor.mjs",
+    "test": "node run-tests.mjs"
+  },
+  "dependencies": {
+    "@portone/browser-sdk": "0.1.13",
+    "@supabase/supabase-js": "2.118.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.11",
+    "esbuild": "0.28.2",
+    "jsdom": "26.1.0",
+    "supabase": "3.0.0"
+  }
+}

@@ -1,0 +1,83 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test
+> node run-tests.mjs
+
+✔ unconfigured preview never creates an auth client, sends a message, or grants verification/benefits (4.997378ms)
+✔ configuration rejects secret/legacy keys, non-project domains, credentials and URL suffixes (0.787944ms)
+✔ config fetch retains the browser fetch receiver (0.359291ms)
+✔ email request is not login success, has a fixed callback, and throttles duplicate requests (1.619665ms)
+✔ Kakao uses provider OAuth and never derives a member identity from an email address (0.586542ms)
+✔ PKCE code and token-hash callbacks are exchanged once through the correct API and removed from URL (1.236909ms)
+✔ ambiguous or unsupported callback values cannot establish a UI session (0.679461ms)
+✔ revoked or foreign-user server profiles never reach the UI (2.806829ms)
+✔ profile update contains only permitted fields and a user cannot set verified or benefits flags (0.7317ms)
+✔ late profile response cannot restore private information after logout (2.761732ms)
+✔ failed logout remains cleared on focus/refresh/reload until a fresh login callback succeeds (0.544598ms)
+✔ logging out while identity start is pending prevents a delayed authentication popup (0.368954ms)
+✔ logging out while the provider SDK loads prevents a delayed popup and verification request (2.029029ms)
+✔ browser identity success cannot mark a member verified without server confirmation (0.405189ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32.011193
+▶ member onboarding: database access and identity boundaries
+  ✔ private storage, safe definer roles, and explicit function grants (42.175541ms)
+  ✔ two members have separate profiles and cannot choose a different owner (34.802387ms)
+  ✔ ownership stays immutable even if a future grant accidentally permits the column (4.087363ms)
+  ✔ profile validation and disclosure are independent of identity and benefits (29.371456ms)
+  ✔ persisted provider identity allows email-less Kakao and rejects unconfirmed email-only identities (19.076646ms)
+  ✔ expired, mismatched, anonymous, malformed, banned, deleted, and revoked sessions fail closed (32.059816ms)
+  ✔ only a server-assigned administrator may read another real name and successful reads are audited (20.346479ms)
+  ✔ identity requests bind to the server-authenticated user/session and replace earlier pending requests (26.11662ms)
+  ✔ consume rejects mismatched bindings and stale timestamps without changing identity (23.631581ms)
+  ✔ atomic consume stores the provider name once, retracts mismatched-name disclosure, and never awards benefits (30.596516ms)
+  ✔ duplicate consume attempts produce exactly one identity and one success (6.806899ms)
+  ✔ identity-first onboarding exposes the verified name before a profile exists and permits the first profile save (16.224991ms)
+✔ member onboarding: database access and identity boundaries (2755.23047ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2761.303657
+✔ identity handler is disabled unless every required setting and tested contract gate is present (37.206985ms)
+✔ exact origin checks, preflight, content type, and bounded strict request bodies (8.342316ms)
+✔ bearer is verified server-side and persisted active-session status is required (8.407595ms)
+✔ start binds server-generated identifiers to validated Auth user/session and returns the SDK contract (3.997737ms)
+✔ start rejects unexpected database binding and expired request responses (5.892695ms)
+✔ complete first retrieves the request scoped to this user/session, preventing cross-account lookup (2.538284ms)
+✔ PortOne lookup uses the exact server-scoped GET contract without leaking the user token (2.173776ms)
+✔ provider results require VERIFIED, exact id, live channel, exact customer echo, safe name, and request-bound timestamps (11.696516ms)
+✔ provider optional fields are not claimed to be universally supported, and contract-gated missing echoes fail closed (0.737057ms)
+✔ token expiry during provider lookup and database revocation/replay rejection cannot mark a member verified (1.963381ms)
+✔ only one concurrent completion can consume the request; the replay response contains no verified flag (1.83654ms)
+✔ saved identity followed by failed profile read reports refresh-needed, with no leaked private payload (0.702796ms)
+✔ completion response whitelists profile fields and refuses a forged benefit flag or different member (3.82646ms)
+✔ network, malformed upstream JSON, and oversized responses are safe errors without credentials or raw provider details (2.772275ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.769051
+(node:51) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ preview renders untrusted names as text, never authenticates or persists, and both exit controls clear inputs (152.980085ms)
+✔ live-mode logout immediately clears private UI and an offline sign-out cannot restore it on focus (40.293608ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 199.003003

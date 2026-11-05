@@ -1,0 +1,17 @@
+{
+  "dependencies": [
+    {
+      "name": "@supabase/supabase-js",
+      "version": "2.118.0",
+      "file": "supabase-js.mjs",
+      "sha256": "93c2cfcf3421e6223704171638407a856cb9d1b3820dcd161377aabd3c730911"
+    },
+    {
+      "name": "@portone/browser-sdk",
+      "version": "0.1.13",
+      "file": "portone-v2.mjs",
+      "sha256": "cb57927d93223bdb2fe72da3b075dc24040bb85ac9ee1a5d25d66d2dcf1b46cb"
+    }
+  ],
+  "note": "PortOne npm package is the official loader; it loads the provider browser SDK when identity verification is requested. No provider script runs while identityEnabled is false."
+}
