@@ -58,22 +58,16 @@
       const label=q('.dv2-calendar-date',el);
       return label&&Number(label.textContent.trim())===dayNumber;
     }):null;
+    // Remove any leftover text badges from an earlier version; keep the date highlight.
+    qa('.kvl-calendar-today-badge',calendar).forEach(el=>el.remove());
     qa('.kvl-calendar-today',calendar).forEach(el=>{
       if(el===target)return;
       el.classList.remove('kvl-calendar-today');
       el.removeAttribute('aria-current');
-      q('.kvl-calendar-today-badge',el)?.remove();
     });
     if(!target)return;
     target.classList.add('kvl-calendar-today');
     target.setAttribute('aria-current','date');
-    const label=q('.dv2-calendar-date',target);
-    if(label&&!q('.kvl-calendar-today-badge',target)){
-      const badge=document.createElement('span');
-      badge.className='kvl-calendar-today-badge';
-      badge.textContent='오늘';
-      label.after(badge);
-    }
   }
 
   function mountTodayCalendar(calendar){
