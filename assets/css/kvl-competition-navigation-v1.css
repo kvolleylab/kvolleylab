@@ -1,0 +1,92 @@
+/* Competition Engine V2 common navigation. Scoped to production competition pages only. */
+@media screen {
+  html body.kvl1180-prototype.kvl-competition-template-v2 #schedule .kvl1180-date-group {
+    scroll-margin-top: 88px;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 #schedule .kvl1180-date-group.kvl-comp-selected-date > .kvl1180-date-head {
+    border-left: 3px solid #b9954f;
+    background: #fff8e9;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top {
+    position: fixed;
+    z-index: 1800;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    width: 56px;
+    height: 56px;
+    padding: 8px;
+    border: 1px solid #b9954f;
+    border-radius: 50%;
+    background: #1b223a;
+    color: #f1d58e;
+    box-shadow: 0 5px 18px rgb(18 28 43 / 23%);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1px;
+    font: 700 10px/1.2 Arial, sans-serif;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top:not([hidden]) {display:flex;}
+  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top[hidden] {display:none!important;}
+  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top:hover {background:#343d50;}
+  html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top:focus-visible {outline:3px solid #cfad68;outline-offset:3px;}
+  html[data-site-mode="private-review"] body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top {
+    bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+
+  /* Today is marked even when it has no match; holiday red stays visible. */
+  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .dv2-day.kvl-calendar-today {
+    position: relative;
+    box-shadow: inset 0 0 0 2px #b9954f!important;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .dv2-day.kvl-calendar-today .dv2-calendar-date {
+    display: grid;
+    place-items: center;
+    min-width: 25px;
+    height: 25px;
+    padding: 0 3px;
+    border-radius: 50%;
+    background: #ad863d;
+    color: #fff!important;
+    opacity: 1!important;
+    font-weight: 800;
+  }
+  html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .kvl-calendar-today-badge {
+    display: block;
+    margin-top: -6px;
+    color: #8a641f;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  @media (max-width:680px) {
+    html body.kvl1180-prototype.kvl-competition-template-v2 #schedule .kvl1180-date-group {
+      scroll-margin-top: 68px;
+    }
+    html body.kvl1180-prototype.kvl-competition-template-v2 .kvl-comp-back-to-top {
+      right: max(12px, env(safe-area-inset-right));
+      width: 52px;
+      height: 52px;
+    }
+    html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .dv2-day.kvl-calendar-today .dv2-calendar-date {
+      min-width: 22px;
+      height: 22px;
+    }
+    html body.kvl1180-prototype.kvl-competition-template-v2 :is([data-dv2-calendar], [data-kvl-component="calendar"]).kvl-match-calendar .kvl-calendar-today-badge {
+      font-size: 8px;
+      margin-top: -5px;
+    }
+  }
+}
