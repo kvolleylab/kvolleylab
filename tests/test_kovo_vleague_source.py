@@ -362,3 +362,15 @@ class PublicClientTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class VerifiedLiveSetTests(unittest.TestCase):
+    def test_only_completed_sets_corroborated_by_win_counts_are_published(self):
+        sets = [{"home": 28, "away": 26}, {"home": 7, "away": 9}]
+        self.assertEqual(source.verified_live_sets(sets, {"home": 1, "away": 0}),
+                         [{"home": 28, "away": 26, "status": "completed"}])
+        for invalid in (None, [], [{"home": 24, "away": 23}], [{"home": 25, "away": 26}], [{"home": 20, "away": 25}]):
+            self.assertEqual(source.verified_live_sets(invalid, {"home": 1, "away": 0}), [])
+
+    def test_two_two_with_partial_fifth_publishes_four_completed_sets_only(self):
+        sets = [{"home": 25, "away": 20}, {"home": 20, "away": 25}] * 2 + [{"home": 8, "away": 7}]
+        self.assertEqual(len(source.verified_live_sets(sets, {"home": 2, "away": 2})), 4)

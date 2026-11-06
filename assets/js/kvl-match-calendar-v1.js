@@ -39,7 +39,7 @@ function render(state){
  const cells=[];
  for(let i=0;i<Math.ceil((offset+days)/7)*7;i++){
   const date=new Date(Date.UTC(year,mo-1,i-offset+1)),key=date.toISOString().slice(0,10),games=byDate.get(key)||[],outside=date.getUTCMonth()!==mo-1;
-  const holiday=display().dateInfo(key,settings.holidayRegion??'KR'),summaries=games.map(m=>display().game(m,data,settings));
+  const holiday=display().dateInfo(key,settings.holidayRegion??'KR'),summaries=games.map(m=>{const summary=display().game(m,data,settings);if(data.structure?.presentationCategory!=='pro-league')return summary;const state=window.KVLCompetitionDataV2?.matchSummaryState(m);if(!state||state.finished||state.kind==='scheduled')return summary;const resultLabel=state.score?state.score.home+'-'+state.score.away:'—';return {...summary,resultLabel,fullLabel:summary.fullLabel.replace(' '+summary.resultLabel+' ',' '+resultLabel+' ')+' · '+state.label+' · '+state.detail};});
   const events=Array.isArray(settings.events)?settings.events.filter(e=>e?.date===key&&typeof e.label==='string'):[];
   const final=games.some(m=>m.round==='FINAL'||m.stage==='결승');
   let details='';
@@ -59,8 +59,9 @@ function dialog(){
 }
 function matchCard(m,data,options={}){
  const side=t=>{const url=options.teamUrl?.(t.code),mark=options.mark?.(t)??((t.logo||t.flag)?`<img src="${esc(t.logo||t.flag)}" alt="" loading="lazy">`:'');return url?`<a href="${esc(url)}">${mark}<b>${esc(name(t))}</b></a>`:`<span>${mark}<b>${esc(name(t))}</b></span>`;};
- const summary=display().game(m,data,data.structure?.calendarDisplay||{}),s=m.score;
-  return `<article class="dv2-day-match" data-calendar-match="${esc(m.id)}"><div class="dv2-match-meta"><b>${esc(m.stage||'경기')}${m.pool?' · '+esc(m.pool)+'조':''}</b><span>${esc(m.time||'시간 미정')} KST</span></div><div class="dv2-match-teams">${side(resolve(data,m.home))}<strong>${esc(options.resultLabel||(summary.resultLabel==='vs'?'VS':summary.resultLabel.replace('-', ' : ')))}</strong>${side(resolve(data,m.away))}</div><div class="dv2-setline">${(m.reportedSets||s?.sets||[]).map((set,i)=>`<span title="${i+1}세트">${esc(set.home)}-${esc(set.away)}</span>`).join('')||'세트별 득점 확인 중'}</div>${m.scoreNote?`<p class="kvl-score-note">${esc(m.scoreNote)}</p>`:''}<small class="dv2-match-venue">${esc(m.venueLabel||data.venueLabel||'장소 미정')}</small>${m.localTimeLabel?`<small class="dv2-match-venue">${esc(m.localTimeLabel)}</small>`:''}</article>`;
+ const summary=display().game(m,data,data.structure?.calendarDisplay||{}),s=m.score,state=data.structure?.presentationCategory==='pro-league'?window.KVLCompetitionDataV2?.matchSummaryState(m):null;
+ const result=state?(state.score?state.score.home+' : '+state.score.away:state.kind==='scheduled'?'VS':'—'):(summary.resultLabel==='vs'?'VS':summary.resultLabel.replace('-', ' : '));
+  return `<article class="dv2-day-match" data-calendar-match="${esc(m.id)}"><div class="dv2-match-meta"><b>${esc(m.stage||'경기')}${m.pool?' · '+esc(m.pool)+'조':''}</b><span>${esc(m.time||'시간 미정')} KST</span></div><div class="dv2-match-teams">${side(resolve(data,m.home))}<strong>${esc(options.resultLabel||result)}</strong>${side(resolve(data,m.away))}</div><div class="dv2-setline">${(state?.sets||m.reportedSets||s?.sets||[]).map((set,i)=>`<span title="${i+1}세트">${esc(set.home)}-${esc(set.away)}</span>`).join('')||'세트별 득점 확인 중'}</div>${state&&!state.finished&&state.kind!=='scheduled'?`<p class="kvl-live-observation"><b>${esc(state.label)}</b> · ${esc(state.detail)}</p>`:''}${m.scoreNote?`<p class="kvl-score-note">${esc(m.scoreNote)}</p>`:''}<small class="dv2-match-venue">${esc(m.venueLabel||data.venueLabel||'장소 미정')}</small>${m.localTimeLabel?`<small class="dv2-match-venue">${esc(m.localTimeLabel)}</small>`:''}</article>`;
 }
 function openDay(state,date){
  const {data,options}=state,games=state.records.filter(m=>m.date===date),el=dialog();
@@ -80,5 +81,13 @@ function mount(root,data,options={}){
  });
  render(state);dialog();return true;
 }
-window.KVLMatchCalendarV1={mount,dialog,matchCard};
+function refresh(root,data){
+ const previous=states.get(root);if(!previous)return false;
+ const month=previous.month;mount(root,data,previous.options);const next=states.get(root);
+ if(next.months.includes(month)){next.month=month;render(next);}
+ const el=document.getElementById('dv2-day-dialog');
+ if(el?.open)el.querySelectorAll('[data-calendar-match]').forEach(row=>{const m=data.matches.find(m=>m.id===row.dataset.calendarMatch);if(m)row.outerHTML=matchCard(m,data,next.options);});
+ return true;
+}
+window.KVLMatchCalendarV1={mount,dialog,matchCard,refresh};
 })();

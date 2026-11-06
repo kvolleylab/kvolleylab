@@ -99,7 +99,10 @@ class CurrentValueWorkflowTests(unittest.TestCase):
     def test_new_input_is_explicit_boolean_and_off_by_default(self):
         input_text = self.text.split('    inputs:\n', 1)[1].split('  pull_request:', 1)[0]
         inputs = named_blocks(input_text, r'^      ([a-z_]+):\s*$')
-        self.assertEqual(set(inputs), {'publish', 'player_master_access_check', NEW_JOB})
+        self.assertEqual(set(inputs), {'publish', 'match_only', 'player_master_access_check', NEW_JOB})
+        self.assertRegex(inputs['match_only'], r'(?m)^        type: boolean$')
+        self.assertRegex(inputs['match_only'], r'(?m)^        default: false$')
+        self.assertIn('inputs.match_only != true', condition(self.jobs['player_master_pilot']))
         self.assertRegex(inputs[NEW_JOB], r'(?m)^        type: boolean$')
         self.assertRegex(inputs[NEW_JOB], r'(?m)^        default: false$')
         self.assertIn('다른 실행 선택보다 우선', inputs[NEW_JOB])

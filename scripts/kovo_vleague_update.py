@@ -22,7 +22,7 @@ import sys
 from tempfile import TemporaryDirectory
 from urllib.parse import parse_qs, urlsplit
 
-from kovo_vleague_source import collect_season, SourceError, validate_request_url, POSTSEASON_PHASES
+from kovo_vleague_source import collect_season, SourceError, validate_request_url, POSTSEASON_PHASES, verified_live_sets
 from kovo_vleague_standings import calculate_standings, validate_final_match, StandingsError
 from kovo_vleague_master import build_update_plan, apply_update_plan, SheetsClient
 from kvl_competition_lifecycle import LifecycleError, require_update_window, postseason_status
@@ -297,9 +297,10 @@ def join_records(originals, snapshot, previous_state=None):
             require(set(won) == {"home", "away"}
                     and all(type(won[s]) is int and 0 <= won[s] < 3 for s in ("home", "away")),
                     "Invalid provisional set wins")
-            # This is a dated schedule snapshot, never a final result or point feed.
+            # Dated provisional observations, never final results or standings input.
             record["live_score"] = {**won, "sourceKey": source["source_key"],
                                     "observedAt": snapshot["fetched_at"]}
+            record["live_sets"] = verified_live_sets(source.get("sets"), won)
         previous_live = local.get("liveScore")
         if previous_live:
             require(source["status"] in ("live", "final"), "Live state regression requires review")
@@ -424,8 +425,10 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
                 match["scoreVerification"] = True
             if record["status"] == "live":
                 match["liveScore"] = deepcopy(record["live_score"])
+                match["liveSets"] = deepcopy(record["live_sets"])
             else:
                 match.pop("liveScore", None)
+                match.pop("liveSets", None)
             if record["status"] == "not_required":
                 match.update(notRequired=True, non_play_reason=record["non_play_reason"])
             match["officialSourceKey"] = record["source_key"]

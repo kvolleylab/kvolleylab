@@ -213,6 +213,30 @@ def validate_final_sets(sets, won):
             "Per-set winners disagree with official match result")
 
 
+def verified_live_sets(sets, won):
+    """Return only completed sets corroborated by the official set-win counters.
+
+    A partly played next set is deliberately omitted. A temporarily inconsistent
+    points/counters response cannot certify set points; keep the separate wins
+    observation and wait for the next source read instead of inventing points.
+    """
+    count = won["home"] + won["away"]
+    if not sets or len(sets) < count or len(sets) > count + 1:
+        return []
+    totals = {"home": 0, "away": 0}
+    completed = []
+    for index, points in enumerate(sets[:count]):
+        h, a = points["home"], points["away"]
+        target = 15 if index == 4 else 25
+        top, low = max(h, a), min(h, a)
+        if max(totals.values()) >= 3 or not ((top == target and low <= target - 2)
+                or (top > target and top - low == 2)):
+            return []
+        totals["home" if h > a else "away"] += 1
+        completed.append({"home": h, "away": a, "status": "completed"})
+    return completed if totals == won else []
+
+
 def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="201"):
     config = SEASONS[season]
     require(phase_id in {"201", *POSTSEASON_PHASES}, "Unapproved schedule phase")
