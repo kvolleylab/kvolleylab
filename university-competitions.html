@@ -11,13 +11,13 @@
   <link rel="stylesheet" href="assets/css/kvl-common-hero-v1.css?v=20260919-1">
   <link rel="stylesheet" href="assets/css/university-competitions-hub-v2.css?v=20261002-university-mobile-featured-1">
   <script src="assets/js/unified-nav.js?v=20261004-uleague-production-1" defer></script>
-  <script src="assets/js/university-competitions-hub-v2.js?v=20261026-domestic-cards" defer></script>
-  <link rel="stylesheet" href="assets/css/university-template-card-skin.css?v=20261026-domestic-cards">
+  <link rel="stylesheet" href="assets/css/university-hub-years-v1.css?v=20261106-1">
+  <script src="assets/js/university-hub-years-v1.js?v=20261106-1" defer></script>
 </head>
 <body>
 <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
 
-<main class="univ-hub-main">
+<main class="univ-hub-main university-years-hub">
   <section class="kvl-common-hero" data-hero-mode="photo" aria-labelledby="pageTitle">
     <div class="kvl-common-hero-copy">
       <p class="kvl-common-hero-eyebrow">UNIVERSITY COMPETITION</p>
@@ -27,71 +27,11 @@
     </div>
   </section>
 
-  <section class="univ-section" aria-labelledby="featuredTitle">
-    <div class="univ-section-head">
-      <h2 id="featuredTitle">2026 대회</h2>
-      <a class="univ-more-link" href="#recordsTitle">더 많은 대회 보기 →</a>
-    </div>
-    <div id="univFeaturedGrid" class="univ-featured-grid" aria-live="polite">
-      <div class="univ-hub-note">2026 대회를 불러오는 중입니다.</div>
-    </div>
-  </section>
-
-  <section class="univ-section" aria-labelledby="categoryTitle">
-    <div class="univ-section-head is-stackable">
-      <div>
-        <h2 id="categoryTitle">대회별 보기</h2>
-        <p>대회 유형별로 빠르게 이동하고, 아래 연도별 기록에서 최종순위를 비교할 수 있습니다.</p>
-      </div>
-    </div>
-    <div class="univ-category-grid">
-      <a class="univ-category-card" href="#featured-kusf-u-league-2026">
-        <div class="univ-category-symbol">U</div>
-        <div class="univ-category-copy"><h3>대학 U-리그</h3><p>KUSF 대학배구 U-리그</p></div>
-        <span class="univ-category-arrow">→</span>
-      </a>
-      <a class="univ-category-card" href="#featured-gosung-2026">
-        <div class="univ-category-symbol">연</div>
-        <div class="univ-category-copy"><h3>연맹 대회</h3><p>고성·단양 등 연맹 단기대회</p></div>
-        <span class="univ-category-arrow">→</span>
-      </a>
-      <div id="otherUniversityCompetitions" class="univ-category-card" aria-label="기타 참가대회">
-        <div class="univ-category-symbol"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 30" width="28" height="30" style="color:#bd912d">
-  <path d="M7 5H3v4c0 4 2 6 6 6M21 5h4v4c0 4-2 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M7 3h14v8c0 5-3.1 8-7 8s-7-3-7-8V3Z" fill="currentColor" opacity=".92"/>
-  <path d="M10 6v5c0 2 .7 3.6 2 4.5" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity=".48"/>
-  <path d="M12 18h4v6h-4z" fill="currentColor" opacity=".8"/>
-  <path d="M9 24h10l2 3H7z" fill="currentColor"/>
-</svg></div>
-        <div class="univ-category-copy"><h3>기타 참가대회</h3><p>초청대회 · 국제대회 · 종합대회 등</p></div>
-        <span class="univ-category-arrow">→</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="univ-section" aria-labelledby="recordsTitle">
-    <div class="univ-section-head">
-      <div>
-        <h2 id="recordsTitle">연도별 기록</h2>
-        <p>대회별 일정과 장소, 각 부문의 1~4위 기록을 빠르게 비교할 수 있습니다.</p>
-      </div>
-      <label class="univ-year-control">
-        <span class="sr-only">연도 선택</span>
-        <select id="univYearSelect" aria-label="연도 선택">
-          <option value="2026" selected>2026년</option>
-          <option value="2025">2025년</option>
-          <option value="2024">2024년</option>
-          <option value="2023">2023년</option>
-        </select>
-      </label>
-    </div>
-    <div id="univRecords" class="univ-records" aria-live="polite">
-      <div class="univ-hub-note">연도별 기록을 불러오는 중입니다.</div>
-    </div>
-    <p class="univ-hub-note">현재 홈페이지에 연결된 2026 기록부터 표시합니다. 과거 시즌 데이터는 검수 완료 순서대로 같은 구조에 추가합니다.</p>
-  </section>
+<section class="section" aria-labelledby="categoryHeading"><div class="section-head"><div><h2 id="categoryHeading">대회종류</h2><p>대회 유형을 선택하면 아래 목록이 바뀝니다.</p></div><button id="reset" type="button" class="year-select">전체 대회 보기 ↗</button></div><span id="otherUniversityCompetitions"></span><div id="categories" class="category-grid" role="group" aria-label="대회종류 필터"></div></section>
+<section class="section" aria-labelledby="yearHeading"><div class="section-head year-head"><div><h2 id="yearHeading">2026년</h2><p id="resultDesc">대회 일정과 남녀 최종순위를 함께 확인하세요.</p></div><div class="year-tools"><span class="section-small" id="count">3개 대회</span><select id="yearSelect" class="year-select" aria-label="연도 선택"><option value="2026">2026년</option><option value="2025">2025년</option><option value="2024">2024년</option><option value="2023">2023년</option></select></div></div><div class="tournaments" id="tournaments" aria-live="polite"><div class="empty">대회 기록을 불러오는 중입니다.</div></div></section>
+<section id="recordsTitle" class="archive" aria-label="과거 연도별 기록"><h2>과거 연도별 기록</h2><div id="archiveRows"></div></section>
+<noscript><p>대회 기록을 보려면 JavaScript를 활성화해 주세요.</p></noscript>
 </main>
-
 <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
 </body>
 </html>
