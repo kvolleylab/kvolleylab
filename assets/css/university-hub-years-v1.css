@@ -4,62 +4,59 @@
 .university-years-hub button,.university-years-hub select{font:inherit}
 .university-years-hub button{cursor:pointer}
 .university-years-hub a{color:inherit}
-.university-years-hub{width:min(1180px,calc(100% - 32px));margin:auto;padding-bottom:64px}
 .university-years-hub .section{margin-top:27px}
 .university-years-hub .section-head{display:flex;gap:15px;justify-content:space-between;align-items:flex-end;margin:0 0 14px}
-.university-years-hub .section-head h2{display:flex;align-items:center;gap:8px;font-size:22px;margin:0 0 4px;font-weight:950;letter-spacing:-.04em}
+.university-years-hub .section-head h2{display:flex;align-items:center;gap:8px;font-size:22px;margin:0 0 4px;font-weight:800;letter-spacing:-.04em}
 .university-years-hub .section-head h2:before{content:"";width:4px;height:23px;border-radius:4px;background:#d7a93e}
 .university-years-hub .section-head p{font-size:12px;color:#7f8fa2;margin:0;line-height:1.5;font-weight:700}
 .university-years-hub .section-small{color:#71849b;font-size:12px;font-weight:800}
 .university-years-hub .category-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:11px}
-.university-years-hub .category{min-width:0;min-height:144px;border:1px solid #e0e7ed;border-radius:14px;background:#fff;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:9px;padding:15px 7px;text-align:center;color:#263e5c;transition:border .16s,transform .16s,box-shadow .16s;box-shadow:0 4px 14px rgba(29,61,99,.025)}
-.university-years-hub .category:hover{border-color:#d9b45b;transform:translateY(-2px);box-shadow:0 8px 18px rgba(37,56,83,.08)}
-.university-years-hub .category.active{border:2px solid #c5a054;background:#fffdfa;box-shadow:0 8px 24px rgba(170,126,33,.10)}
+.university-years-hub .category{min-width:0;min-height:144px;border:1px solid #e0e7ed;border-radius:12px;background:#fff;display:flex;align-items:center;flex-direction:column;justify-content:center;gap:9px;padding:15px 7px;text-align:center;color:#263e5c;transition:border-color .16s;box-shadow:none}
+.university-years-hub .category:hover{border-color:#c9a44c;transform:none;box-shadow:none}
+.university-years-hub .category.active{border-color:#c9a44c;background:#fff8e5;box-shadow:none}
 .university-years-hub .cat-symbol{display:grid;place-items:center;width:54px;height:54px;border-radius:15px;background:#f8f3e6;color:#b88c27}
 .university-years-hub .cat-symbol svg{width:32px;height:32px;stroke:currentColor;stroke-width:1.85;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .university-years-hub .category strong{font-size:14px;line-height:1.3;letter-spacing:-.042em;white-space:nowrap}
-.university-years-hub .category small{font-size:10.5px;color:#8a98a8;font-weight:750;letter-spacing:-.02em}
+.university-years-hub .category small{font-size:10.5px;color:#8a98a8;font-weight:600;letter-spacing:-.02em}
 .university-years-hub .category.active small{color:#9e7e37}
 .university-years-hub .year-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .university-years-hub .year-tools{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .university-years-hub .year-tools .section-small{white-space:nowrap}
 .university-years-hub .year-select{border-radius:8px;padding:8px 28px 8px 12px;border:1px solid #d8e0e8;background:white;color:#233a58;font-size:12px;font-weight:800}
 .university-years-hub .tournaments{display:grid;gap:14px}
-.university-years-hub .tournament{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.24fr) minmax(236px,.95fr) minmax(236px,.95fr);align-items:stretch;gap:12px;min-height:236px;padding:14px;border:1px solid #d6dfe8;border-radius:15px;background:#1b223a;box-shadow:0 6px 20px rgba(20,38,62,.085)}
-.university-years-hub .tournament:before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--photo),url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDQ2MCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIHN0b3AtY29sb3I9IiMxMzJkNDciLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyMzRiNjkiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iYyIgeDI9IjAiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZWZiMjhjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjY2E4MDY5Ii8+PC9saW5lYXJHcmFkaWVudD48cGF0dGVybiBpZD0icGVvcGxlIiB3aWR0aD0iMTUiIGhlaWdodD0iMTQiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPjxjaXJjbGUgY3g9IjciIGN5PSI2IiByPSIyLjUiIGZpbGw9IiNmMWQ2YmQiIG9wYWNpdHk9Ii41NSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNDYwIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTTAgNTZRNjAwLTI1IDEyMDAgNTZWMjI1UTYwMCAxNTAgMCAyMjVaIiBmaWxsPSIjMWY0NjY0Ii8+PHBhdGggZD0iTTAgNThRNjAwLTE1IDEyMDAgNThWMjIwUTYwMCAxNDUgMCAyMjBaIiBmaWxsPSJ1cmwoI3Blb3BsZSkiIG9wYWNpdHk9Ii45Ii8+PHBhdGggZD0iTTAgMTIwUTYwMCAzNSAxMjAwIDEyME0wIDE2NVE2MDAgODIgMTIwMCAxNjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhmYjRjZSIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIuMzUiLz48cGF0aCBkPSJNMCAyMjhMMTIwMCAyMjhMMTIwMCA0NjBMMCA0NjBaIiBmaWxsPSIjMjQ0ZTY4Ii8+PHBhdGggZD0iTTI2MCAzMzBMNjYwIDIzNUwxMTUwIDMzNUw3NTAgNDQ3WiIgZmlsbD0iIzU5YTZiZCIgb3BhY2l0eT0iLjg1Ii8+PHBhdGggZD0iTTM1NSAzMzVMNjcwIDI2NEwxMDQ1IDMzNkw3MzIgNDE2WiIgZmlsbD0idXJsKCNjKSIgc3Ryb2tlPSIjZjJkZmQxIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNNTM1IDI5N0w5MDIgMzYxTTcwOCAyNTdMNzA4IDQyME00NDUgMzU0TDgxMyAyODUiIHN0cm9rZT0iI2ZmZjZlOCIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSI0IiBvcGFjaXR5PSIuODgiLz48cGF0aCBkPSJNNjc4IDI0Nkw2NzggNDI2TTY4NCAyNDdMNjg0IDQyNyIgc3Ryb2tlPSIjZDVlZGY4IiBzdHJva2Utd2lkdGg9IjQiLz48ZyBzdHJva2U9IiNkNWVkZjgiIG9wYWNpdHk9Ii43Ij48cGF0aCBkPSJNNjc4IDI1M2g4Ii8+PHBhdGggZD0iTTY3OCAyNjhoOCIvPjxwYXRoIGQ9Ik02NzggMjgzaDgiLz48cGF0aCBkPSJNNjc4IDI5OGg4Ii8+PHBhdGggZD0iTTY3OCAzMTNoOCIvPjxwYXRoIGQ9Ik02NzggMzI4aDgiLz48cGF0aCBkPSJNNjc4IDM0M2g4Ii8+PHBhdGggZD0iTTY3OCAzNThoOCIvPjxwYXRoIGQ9Ik02NzggMzczaDgiLz48cGF0aCBkPSJNNjc4IDM4OGg4Ii8+PHBhdGggZD0iTTY3OCA0MDNoOCIvPjwvZz48ZyBmaWxsPSIjZThlZWVjIiBvcGFjaXR5PSIuOTUiPjxjaXJjbGUgY3g9IjU5MCIgY3k9IjMxMiIgcj0iOCIvPjxyZWN0IHg9IjU4NSIgeT0iMzIwIiB3aWR0aD0iMTAiIGhlaWdodD0iMjIiIHJ4PSIzIi8+PGNpcmNsZSBjeD0iNzkwIiBjeT0iMzEyIiByPSI4Ii8+PHJlY3QgeD0iNzg1IiB5PSIzMjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIyMiIgcng9IjMiLz48Y2lyY2xlIGN4PSI4NzQiIGN5PSIzNDQiIHI9IjgiLz48cmVjdCB4PSI4NjkiIHk9IjM1MiIgd2lkdGg9IjEwIiBoZWlnaHQ9IjIyIiByeD0iMyIvPjwvZz48ZyBmaWxsPSIjMjAyZjRiIj48Y2lyY2xlIGN4PSI1MDYiIGN5PSIzNDciIHI9IjgiLz48cmVjdCB4PSI1MDEiIHk9IjM1NSIgd2lkdGg9IjEwIiBoZWlnaHQ9IjIzIiByeD0iMyIvPjxjaXJjbGUgY3g9IjYxOCIgY3k9IjM2NSIgcj0iOCIvPjxyZWN0IHg9IjYxMyIgeT0iMzczIiB3aWR0aD0iMTAiIGhlaWdodD0iMjMiIHJ4PSIzIi8+PGNpcmNsZSBjeD0iNzQ4IiBjeT0iMzgyIiByPSI4Ii8+PHJlY3QgeD0iNzQzIiB5PSIzOTAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIyMyIgcng9IjMiLz48L2c+PGNpcmNsZSBjeD0iNzA1IiBjeT0iMjI5IiByPSI2IiBmaWxsPSIjZjZjNTU2Ii8+PC9zdmc+');background-position:var(--photo-pos,center center),center;background-size:cover,cover;background-repeat:no-repeat}
-.university-years-hub .tournament:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,19,36,.96) 0%,rgba(4,23,43,.91) 24%,rgba(7,28,50,.59) 52%,rgba(6,25,48,.18) 100%)}
+.university-years-hub .tournament{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.24fr) minmax(236px,.95fr) minmax(236px,.95fr);align-items:stretch;gap:12px;min-height:236px;padding:14px;border:1px solid #d6dfe8;border-radius:12px;background:#1b223a;box-shadow:none;transition:border-color .16s}
 .university-years-hub .tourney-info{display:flex;min-width:0;flex-direction:column;justify-content:center;align-items:flex-start;padding:10px 12px;color:#fff}
 .university-years-hub .tourney-labels{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
-.university-years-hub .type-badge,.university-years-hub .status-badge{border-radius:5px;padding:5px 7px;font-size:10px;font-weight:950;letter-spacing:-.01em}
+.university-years-hub .type-badge,.university-years-hub .status-badge{border-radius:5px;padding:5px 7px;font-size:10px;font-weight:800;letter-spacing:-.01em}
 .university-years-hub .type-badge{background:#e1b454;color:#102943}
 .university-years-hub .status-badge{background:rgba(255,255,255,.16);color:#f1f5fa;border:1px solid rgba(255,255,255,.18)}
-.university-years-hub .tourney-info h3{color:#f8d573;line-height:1.25;font-size:22px;font-weight:950;letter-spacing:-.047em;margin:0 0 10px;overflow-wrap:break-word}
-.university-years-hub .tourney-info .meta{display:flex;align-items:start;gap:7px;margin:0 0 6px;font-size:11px;font-weight:750;line-height:1.45;color:#eef4fa}
+.university-years-hub .tourney-info h3{color:#f8d573;line-height:1.25;font-size:22px;font-weight:800;letter-spacing:-.047em;margin:0 0 10px;overflow-wrap:break-word}
+.university-years-hub .tourney-info .meta{display:flex;align-items:start;gap:7px;margin:0 0 6px;font-size:11px;font-weight:600;line-height:1.45;color:#eef4fa}
 .university-years-hub .meta svg{flex:0 0 14px;width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
-.university-years-hub .tourney-info .cta{display:inline-flex;gap:10px;align-items:center;margin-top:9px;color:#1f3857;background:#fff;border-radius:20px;padding:7px 11px;font-size:11px;font-weight:950;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.17)}
+.university-years-hub .tourney-info .cta{display:inline-flex;gap:10px;align-items:center;margin-top:9px;color:#1f3857;background:#fff;border-radius:20px;padding:7px 11px;font-size:11px;font-weight:800;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.17)}
 .university-years-hub .tourney-info .cta:hover{background:#f8e5b3}
-.university-years-hub .rank-card{position:relative;align-self:stretch;overflow:hidden;background:#fff;border-radius:11px;border:1px solid #d9e6f2;box-shadow:0 9px 18px rgba(2,14,26,.16)}
+.university-years-hub .rank-card{position:relative;align-self:stretch;overflow:hidden;background:#fff;border-radius:12px;border:1px solid #d9e6f2;box-shadow:none}
 .university-years-hub .rank-card.women{border-color:#f0dce4}
 .university-years-hub .rank-head{min-height:43px;display:flex;flex-wrap:wrap;align-content:center;justify-content:space-between;align-items:center;column-gap:4px;row-gap:2px;padding:8px 12px;background:#eef5fc;color:#174f8b}
 .university-years-hub .rank-card.women .rank-head{background:#fff1f5;color:#b44068}
-.university-years-hub .rank-head strong{font-size:12px;white-space:nowrap;font-weight:950}
-.university-years-hub .rank-head small{font-size:9px;color:#697f9c;line-height:1.28;font-weight:780}
+.university-years-hub .rank-head strong{font-size:13px;white-space:nowrap;font-weight:800}
+.university-years-hub .rank-head small{font-size:9px;color:#697f9c;line-height:1.28;font-weight:600}
 .university-years-hub .rank-body{padding:6px 10px 8px}
 .university-years-hub .rank-row{display:grid;grid-template-columns:24px 59px minmax(0,1fr);gap:5px;align-items:center;min-height:36px;border-bottom:1px solid #edf1f5}
 .university-years-hub .rank-row:last-child{border-bottom:none}
-.university-years-hub .rank-row .rank-label{font-weight:850;color:#637386;font-size:11px;white-space:nowrap}
-.university-years-hub .rank-row .team{font-weight:900;color:#17365d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}
+.university-years-hub .rank-row .rank-label{font-weight:400;color:#637386;font-size:12px;white-space:nowrap}
+.university-years-hub .rank-row .team{font-weight:700;color:#17365d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}
 .university-years-hub .rank-row .trophy{display:grid;place-items:center;width:22px;height:23px}
 .university-years-hub .rank-row svg{display:block;width:21px;height:23px}
-.university-years-hub .rank-row .fourth{width:20px;height:20px;display:grid;place-items:center;border-radius:50%;background:#eef2f6;color:#657789;font-size:10px;font-weight:950}
+.university-years-hub .rank-row .fourth{width:20px;height:20px;display:grid;place-items:center;border-radius:50%;background:#eef2f6;color:#657789;font-size:10px;font-weight:800}
 .university-years-hub .rank-empty{padding:45px 12px;text-align:center;font-size:13px;color:#8291a3}
 .university-years-hub .archive{margin-top:24px;padding-top:17px;border-top:1px solid #e5eaf0}
 .university-years-hub .archive h2{font-size:17px;margin:0 0 12px;color:#3b4f67}
 .university-years-hub .archive-row{border:1px solid #e0e7ef;border-radius:10px;background:#fff;margin-bottom:8px;overflow:hidden}
-.university-years-hub .archive-toggle{background:#fff;color:#213856;display:flex;width:100%;justify-content:space-between;align-items:center;min-height:46px;padding:12px 15px;border:0;text-align:left;font-weight:900;font-size:13px}
+.university-years-hub .archive-toggle{background:#fff;color:#213856;display:flex;width:100%;justify-content:space-between;align-items:center;min-height:46px;padding:12px 15px;border:0;text-align:left;font-weight:700;font-size:13px}
 .university-years-hub .archive-toggle:hover{background:#f9fafc}
-.university-years-hub .archive-body{border-top:1px solid #ebeff3;padding:14px 16px;font-size:12px;color:#7e8b9b;font-weight:750}
-.university-years-hub .empty{background:white;border:1px dashed #cfdae4;border-radius:12px;padding:34px;text-align:center;color:#718397;font-size:13px;font-weight:750}
+.university-years-hub .archive-body{border-top:1px solid #ebeff3;padding:14px 16px;font-size:12px;color:#7e8b9b;font-weight:600}
+.university-years-hub .empty{background:white;border:1px dashed #cfdae4;border-radius:12px;padding:34px;text-align:center;color:#718397;font-size:13px;font-weight:600}
 .university-years-hub .empty strong{display:block;font-size:16px;margin-bottom:6px;color:#293f5c}
 .university-years-hub .hint{margin:12px 0 0;font-size:11px;color:#8997a7;line-height:1.5}
 .university-years-hub .hide{display:none!important}
@@ -75,7 +72,6 @@
 .university-years-hub .rank-row .team{font-size:11px}
 }
 @media(max-width:700px){
-.university-years-hub{width:calc(100% - 24px);padding-bottom:30px}
 .university-years-hub .section{margin-top:23px}
 .university-years-hub .section-head h2{font-size:19px}
 .university-years-hub .section-head h2:before{height:19px}
@@ -90,14 +86,12 @@
 .university-years-hub .year-head{align-items:end}
 .university-years-hub .year-select{font-size:11px;padding:7px 22px 7px 8px}
 .university-years-hub .section-small{font-size:10px}
-.university-years-hub .tournament{display:flex;flex-direction:column;gap:9px;padding:10px;min-height:0;border-radius:13px}
-.university-years-hub .tournament:before{height:175px;bottom:auto;background-position:var(--mobile-pos,var(--photo-pos,center center))}
-.university-years-hub .tournament:after{height:175px;bottom:auto;background:linear-gradient(90deg,rgba(7,23,44,.93),rgba(7,24,46,.48))}
-.university-years-hub .tourney-info{min-height:155px;justify-content:center;padding:7px 10px}
+.university-years-hub .tournament{display:flex;flex-direction:column;gap:9px;padding:10px;min-height:0;border-radius:12px}
+.university-years-hub .tourney-info{min-height:182px;justify-content:center;margin:-10px -10px 0;padding:20px}
 .university-years-hub .tourney-info h3{max-width:90%;font-size:20px;margin-bottom:8px}
 .university-years-hub .tourney-info .meta{font-size:10px;margin-bottom:4px}
 .university-years-hub .tourney-info .cta{margin-top:6px}
-.university-years-hub .rank-card{box-shadow:0 3px 10px rgba(0,0,0,.04)}
+.university-years-hub .rank-card{box-shadow:none}
 .university-years-hub .rank-head{min-height:39px;padding:8px 12px}
 .university-years-hub .rank-head strong{font-size:12px}
 .university-years-hub .rank-row{grid-template-columns:25px 64px minmax(0,1fr);min-height:34px;gap:4px}
@@ -109,7 +103,6 @@
 @media(min-width:520px) and (max-width:700px){
 .university-years-hub .tournament{display:grid;grid-template-columns:1fr 1fr}
 .university-years-hub .tourney-info{grid-column:1 / -1}
-.university-years-hub .tournament:before,.university-years-hub .tournament:after{height:174px}
 .university-years-hub .rank-card{min-width:0}
 .university-years-hub .rank-row{grid-template-columns:23px 47px minmax(0,1fr);gap:2px}
 .university-years-hub .rank-row .rank-label{font-size:10px}
@@ -121,7 +114,6 @@
 }
 @media(min-width:701px){
 .university-years-hub .tournament{grid-template-columns:minmax(0,1.1fr) repeat(2,minmax(0,1fr));gap:12px;padding:14px;min-height:236px;background:#1b223a}
-.university-years-hub .tournament:before,.university-years-hub .tournament:after{display:none}
 .university-years-hub .tourney-info{position:relative;isolation:isolate;overflow:hidden;grid-column:auto;min-height:236px;margin:-14px 0 -14px -14px;padding:22px;color:#fff}
 .university-years-hub .tourney-info:before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--photo);background-size:cover;background-position:var(--mobile-pos,center);background-repeat:no-repeat}
 .university-years-hub .tourney-info:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,23,44,.93),rgba(7,24,46,.48))}
@@ -133,9 +125,51 @@
 }
 .university-years-hub .tourney-title-line{display:block;word-break:keep-all}
 
-.university-years-hub{font-family:Arial,'Malgun Gothic',sans-serif;color:#1b223a;letter-spacing:-.025em;padding-top:20px}
+/* Inherit the live shared Pretendard font; retain original .univ-hub-main/HERO sizing. */
+.university-years-hub{font-family:inherit;color:#1b223a;letter-spacing:normal}
 .university-years-hub h2,.university-years-hub h3{font-family:inherit}
 .university-years-hub .tourney-info .cta{color:#1f3857!important}
 .university-years-hub .tourney-info .meta{color:#eef4fa!important}
 .university-years-hub .category{color:#263e5c}
 .university-years-hub .tourney-title-line{display:block;word-break:keep-all}
+
+.university-years-hub .tourney-info{position:relative;isolation:isolate;z-index:2;pointer-events:none}
+.university-years-hub .tourney-info:before{content:"";position:absolute;inset:0;z-index:-2;background:var(--photo) var(--mobile-pos,center)/cover no-repeat}
+.university-years-hub .tourney-info:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,23,44,.93),rgba(7,24,46,.48))}
+.university-years-hub .tournament:hover,.university-years-hub .tournament:focus-within{border-color:#c9a44c}
+.university-years-hub .tournament-link{position:absolute;inset:0;z-index:1;border-radius:inherit}
+.university-years-hub .tournament-link:focus-visible{outline-offset:-3px}
+.university-years-hub .gender-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.university-years-hub .gender-links .cta{pointer-events:auto;position:relative;margin-top:0;min-height:36px;border:1px solid #c7dcf2;border-radius:8px;background:#eef5fc;color:#174f8b!important;font-size:12px;font-weight:700;box-shadow:none}
+.university-years-hub .gender-links .cta.women{background:#fff1f5;border-color:#edc8d6;color:#b44068!important}
+.university-years-hub .gender-links .cta:hover{border-color:#c9a44c;background:#fff8e5}
+.university-years-hub .rank-card{letter-spacing:normal}
+.university-years-hub .trophy .dv2-trophy{width:21px;height:23px}
+/* Results without a standalone competition page keep the original white surface. */
+.university-years-hub .tournament.results-only{background:#fff;min-height:0;padding:16px;border-color:#e0e8f0;border-radius:12px;box-shadow:none}
+.university-years-hub .results-only:hover,.university-years-hub .results-only:focus-within{border-color:#c9a44c}
+.university-years-hub .results-only .tourney-info{margin:0;padding:8px;min-height:0;pointer-events:auto;color:#17365d}
+.university-years-hub .results-only .tourney-info:before,.university-years-hub .results-only .tourney-info:after{display:none}
+.university-years-hub .results-only .tourney-info h3{color:#17365d;font-size:20px}
+.university-years-hub .results-only:hover h3,.university-years-hub .results-only:focus-within h3{color:#9a6d12}
+.university-years-hub .results-only .tourney-info .meta{color:#64778c!important}
+.university-years-hub .results-only .status-badge{background:#f2f5f8;color:#64778c;border-color:#e0e8f0}
+.university-years-hub .record-sources{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;font-size:11px;color:#718397;line-height:1.5}
+.university-years-hub .record-sources>span{width:100%}
+.university-years-hub .record-sources a{pointer-events:auto;color:#64778c;text-underline-offset:3px}
+.university-years-hub .record-sources a:hover{color:#9a6d12}
+.university-years-hub .archive-body{background:#f5f7fa;padding:14px}
+@media(max-width:1050px) and (min-width:701px){
+ .university-years-hub .rank-row{grid-template-columns:21px 48px minmax(0,1fr)}
+ .university-years-hub .rank-row .team{font-size:12px}
+ .university-years-hub .rank-head strong{font-size:12px}
+}
+@media(max-width:700px){
+ .university-years-hub .rank-head strong{font-size:12px}
+ .university-years-hub .gender-links .cta{min-height:40px}
+ .university-years-hub .tourney-info h3{max-width:100%}
+ .university-years-hub .archive-body{padding:10px}
+ .university-years-hub .tournament.results-only{padding:10px}
+ .university-years-hub .results-only .tourney-info h3{font-size:19px}
+}
+.university-years-hub .archive-note{margin:0 0 12px;color:#64778c;font-size:12px;font-weight:400}

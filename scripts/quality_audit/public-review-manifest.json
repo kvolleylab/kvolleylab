@@ -402,6 +402,35 @@
       "sha256": "75d1b88638637589c130b0a3ecda002bbd177a1fc1c088faaac70238a0b52de1",
       "evidence": "https://github.com/kvolleylab/kvolleylab/blob/bb8bf4a127fee639d4dc586bfd809d2cd2d552cf/docs/KVL_DECISION_LOG.md",
       "review_note": "검토본의 13개 남녀부·시즌별 대회 기간과 공개용 파일을 바이트 단위로 대조했다. 공개 대회명, 분류, 일자, 장소, 경기 일정 링크를 포함한다. 2026–27 V-리그 종료일은 챔피언결정전 최장 예정일이며 period_note에 표시한다."
+    },
+    "data/archive/university-results-v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "university-league-2025-men",
+        "university-league-2025-women",
+        "university-league-2025-notice",
+        "university-goseong-2025-men",
+        "university-goseong-2025-women",
+        "university-goseong-2025-notice",
+        "university-danyang-2025-men",
+        "university-danyang-2025-women",
+        "university-danyang-2025-notice",
+        "university-league-2024-men",
+        "university-league-2024-men-playoff",
+        "university-league-2024-women",
+        "university-league-2024-notice",
+        "university-danyang-2024-men",
+        "university-danyang-2024-women",
+        "university-danyang-2024-notice",
+        "university-goseong-2024-men",
+        "university-goseong-2024-women",
+        "university-goseong-2024-notice"
+      ],
+      "verified_at": "2026-11-07",
+      "sha256": "61c3d7d837d8d89d3d3f5cf18a84e5737ef03aaab39ffca055ea5dfe02e54e6d",
+      "evidence": "docs/validation/university-hub-parity-archive-v1.md",
+      "review_note": "KUVF 공식 공개 결승·준결승 및 2024 남자 U-리그 6강 최종순위 대조. 과거 6대회 48개 팀 순위 요약만 공개하며 개인정보·원문 파일은 포함하지 않는다. 기존 MASTER는 변경하지 않는다."
     }
   }
 }

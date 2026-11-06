@@ -1,5 +1,9 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-07 · 대학 허브 기본 템플릿 복원·과거 결과 카드
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 실제 홈페이지 반영 승인 후 이어진 사용자 수정 요청: 공통 글꼴·원래 메인 HERO 여백·국내 템플릿 카드/트로피를 복원하고, 2026 대회 전체 카드의 금색 hover/클릭 및 남녀부 바로가기를 제공한다. PC 왼쪽 HERO·오른쪽 네이비 순위 배치는 유지한다. 2025·2024는 공식 기록을 확인한 U-리그·연맹1·2차전 각3개를 이미지 없는 흰색 결과 카드와 금색 hover로 연결한다. 별도 대회 페이지 없는 과거 기록에는 페이지를 임의 생성하지 않는다. 기존 대회 데이터/Engine V2 불변. 실제 공통 Pretendard 상속은 오래된 일반 Arial 문서보다 이번 기본 템플릿 일치 요청을 우선한 범위 한정 보정이다. Base main `ef239869b3bc303f711228f146011b367668f0d3`. [출처·검수·복구](validation/university-hub-parity-archive-v1.md). 배포 확인은 release PR에 별도 기록한다.
+
 ## 2026-11-06 · 대학배구 대회 허브 개편 운영 적용
 
 Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 승인한 대학대회 프로토타입을 기존 `university-competitions.html` 주소에 적용한다. PC 대회 카드는 왼쪽에 모바일 구도의 축소 HERO, 오른쪽에 남녀 최종순위 카드, 순위 바탕은 네이비 `#1B223A`로 확정했다. 고성·단양 제목은 `2026 대한항공배`와 `전국대학배구 고성대회/단양대회` 두 줄로 표시한다. U-리그 남자 순위 제목의 `6강`과 준결승·결승 안내 문구를 화면에서 제거한다. 2026-10-26의 기존 대학 허브 배치 유지 결정은 이 범위에서 대체한다. 최초 프로토타입 한정 지시 이후 사용자가 명시적으로 실제 홈페이지 반영을 승인했다. 기존 JSON 순위 24건·상태·일정·대회 경로·공식 HERO 자산·공통 메뉴·Competition Engine V2는 보존한다. Base main `cbedc3ea03864e9ca264fdcba9cd3ab614f8c777`. [검수·적용 범위·복구](validation/university-hub-years-v1.md). 병합/Pages 완료 및 운영 화면 확인은 release PR 및 배포 실행 기록으로 구분한다.
