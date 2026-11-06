@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "scope": "대학 허브의 과거 U-리그·연맹 1·2차전 결과 요약. 연맹전 남자부는 A그룹. 신규 대회 페이지·Engine·자동화 등록이 아님.",
+  "verifiedAt": "2026-11-07",
+  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다.",
+  "driveVerification": "KVL_운영원칙_MASTER_v18 및 기존 대학 원본 구조 확인. 2024·2025 대학 결과 MASTER는 검색에서 발견되지 않아 연맹 공식 공개 기록을 직접 대조한 별도 허브 요약본. 기존 MASTER 수정 없음.",
+  "sources": {
+    "university-league-2025-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.goosisoft.com/534",
+      "scope": "남자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-league-2025-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://www.kuvf.co.kr/539",
+      "scope": "여자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-league-2025-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=154469721",
+      "scope": "공식 대회명·기간·장소",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-goseong-2025-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.goosisoft.com/561",
+      "scope": "남자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-goseong-2025-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://www.kuvf.co.kr/580",
+      "scope": "여자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-goseong-2025-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=164614499",
+      "scope": "공식 대회명·기간·장소",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-danyang-2025-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.goosisoft.com/592",
+      "scope": "남자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-danyang-2025-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/598",
+      "scope": "여자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-danyang-2025-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=164614875",
+      "scope": "공식 대회명·기간·장소",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-league-2024-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.goosisoft.com/480",
+      "scope": "남자부 결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-league-2024-men-playoff": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.goosisoft.com/482",
+      "scope": "남자부 6강 플레이오프 최종 3·4위",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-league-2024-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://www.kuvf.co.kr/486",
+      "scope": "여자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-league-2024-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=18388076",
+      "scope": "공식 대회명·기간·장소",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-danyang-2024-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.goosisoft.com/493",
+      "scope": "남자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-danyang-2024-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/505",
+      "scope": "여자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-danyang-2024-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=24944401",
+      "scope": "공식 대회명·기간·장소",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-goseong-2024-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/512",
+      "scope": "남자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-goseong-2024-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/523",
+      "scope": "여자부 결승·준결승 결과",
+      "verifiedAt": "2026-11-07"
+    },
+    "university-goseong-2024-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=24944401",
+      "scope": "공식 대회명·기간·장소",
+      "verifiedAt": "2026-11-07"
+    }
+  },
+  "competitions": [
+    {
+      "id": "university-league-2025",
+      "year": 2025,
+      "type": "uleague",
+      "title": "2025 KUSF 대학배구 U-리그",
+      "startDate": "2025-03-29",
+      "endDate": "2025-10-01",
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-league-2025-notice"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "중부대"
+          },
+          {
+            "rank": 3,
+            "team": "한양대"
+          },
+          {
+            "rank": 3,
+            "team": "성균관대"
+          }
+        ],
+        "sourceIds": [
+          "university-league-2025-men"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "경일대"
+          },
+          {
+            "rank": 2,
+            "team": "단국대"
+          },
+          {
+            "rank": 3,
+            "team": "광주여대"
+          },
+          {
+            "rank": 3,
+            "team": "목포과학대"
+          }
+        ],
+        "sourceIds": [
+          "university-league-2025-women"
+        ]
+      }
+    },
+    {
+      "id": "university-goseong-2025",
+      "year": 2025,
+      "type": "first",
+      "title": "2025 현대캐피탈배 전국대학배구 고성대회",
+      "startDate": "2025-06-25",
+      "endDate": "2025-07-03",
+      "location": "경남 고성군 · 국민체육센터·실내체육관",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-goseong-2025-notice"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "조선대"
+          },
+          {
+            "rank": 2,
+            "team": "인하대"
+          },
+          {
+            "rank": 3,
+            "team": "명지대"
+          },
+          {
+            "rank": 3,
+            "team": "성균관대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2025-men"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "광주여대"
+          },
+          {
+            "rank": 2,
+            "team": "경일대"
+          },
+          {
+            "rank": 3,
+            "team": "목포과학대"
+          },
+          {
+            "rank": 3,
+            "team": "호남대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2025-women"
+        ]
+      }
+    },
+    {
+      "id": "university-danyang-2025",
+      "year": 2025,
+      "type": "second",
+      "title": "2025 현대캐피탈배 전국대학배구 단양대회",
+      "startDate": "2025-07-30",
+      "endDate": "2025-08-07",
+      "location": "충북 단양군 · 국민체육센터·문화체육센터",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-danyang-2025-notice"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "한양대"
+          },
+          {
+            "rank": 2,
+            "team": "조선대"
+          },
+          {
+            "rank": 3,
+            "team": "홍익대"
+          },
+          {
+            "rank": 3,
+            "team": "중부대"
+          }
+        ],
+        "sourceIds": [
+          "university-danyang-2025-men"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "경일대"
+          },
+          {
+            "rank": 2,
+            "team": "목포과학대"
+          },
+          {
+            "rank": 3,
+            "team": "단국대"
+          },
+          {
+            "rank": 3,
+            "team": "광주여대"
+          }
+        ],
+        "sourceIds": [
+          "university-danyang-2025-women"
+        ]
+      }
+    },
+    {
+      "id": "university-league-2024",
+      "year": 2024,
+      "type": "uleague",
+      "title": "2024 KUSF 대학배구 U-리그",
+      "startDate": "2024-04-03",
+      "endDate": "2024-10-07",
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-league-2024-notice"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "한양대"
+          },
+          {
+            "rank": 2,
+            "team": "인하대"
+          },
+          {
+            "rank": 3,
+            "team": "성균관대"
+          },
+          {
+            "rank": 4,
+            "team": "중부대"
+          }
+        ],
+        "sourceIds": [
+          "university-league-2024-men",
+          "university-league-2024-men-playoff"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "광주여대"
+          },
+          {
+            "rank": 2,
+            "team": "경일대"
+          },
+          {
+            "rank": 3,
+            "team": "단국대"
+          },
+          {
+            "rank": 3,
+            "team": "우석대"
+          }
+        ],
+        "sourceIds": [
+          "university-league-2024-women"
+        ]
+      }
+    },
+    {
+      "id": "university-danyang-2024",
+      "year": 2024,
+      "type": "first",
+      "title": "2024 대한항공배 전국대학배구 단양대회",
+      "startDate": "2024-06-24",
+      "endDate": "2024-07-02",
+      "location": "충북 단양군 · 국민체육센터·문화체육센터",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-danyang-2024-notice"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "한양대"
+          },
+          {
+            "rank": 3,
+            "team": "성균관대"
+          },
+          {
+            "rank": 3,
+            "team": "중부대"
+          }
+        ],
+        "sourceIds": [
+          "university-danyang-2024-men"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "우석대"
+          },
+          {
+            "rank": 2,
+            "team": "광주여대"
+          },
+          {
+            "rank": 3,
+            "team": "단국대"
+          },
+          {
+            "rank": 3,
+            "team": "목포과학대"
+          }
+        ],
+        "sourceIds": [
+          "university-danyang-2024-women"
+        ]
+      }
+    },
+    {
+      "id": "university-goseong-2024",
+      "year": 2024,
+      "type": "second",
+      "title": "2024 대한항공배 전국대학배구 고성대회",
+      "startDate": "2024-07-10",
+      "endDate": "2024-07-18",
+      "location": "경남 고성군 · 국민체육센터·실내체육관",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-goseong-2024-notice"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "중부대"
+          },
+          {
+            "rank": 3,
+            "team": "경기대"
+          },
+          {
+            "rank": 3,
+            "team": "경희대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2024-men"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "단국대"
+          },
+          {
+            "rank": 2,
+            "team": "광주여대"
+          },
+          {
+            "rank": 3,
+            "team": "경일대"
+          },
+          {
+            "rank": 3,
+            "team": "우석대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2024-women"
+        ]
+      }
+    }
+  ]
+}
