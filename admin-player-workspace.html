@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>KVL 관리자 선수 작업공간 | K-Volley Lab</title>
+  <link rel="stylesheet" href="assets/css/pretendard-global.css">
+  <link rel="stylesheet" href="assets/css/admin-player-workspace-v1.css?v=20261106-1">
+  <script defer src="assets/js/player-school-master-v2.js?v=20260811-1"></script>
+  <script defer src="assets/js/player-school-master-compat-v2.js?v=20260811-1"></script>
+  <script defer src="assets/js/player-search-v2.js?v=20261023-1"></script>
+  <script type="module" src="assets/js/admin-player-workspace-v1.mjs?v=20261106-1"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><span><strong>K-Volley Lab</strong><small>관리자 선수 작업공간</small></span></a><span class="private-badge">ADMIN ONLY</span></header>
+<main class="shell">
+<section id="loginView" class="login-card"><p class="eyebrow">KVL PRIVATE WORKSPACE</p><h1>관리자 로그인</h1><p class="intro">공개 홈페이지와 분리된 관리자 전용 선수 기록 공간입니다. 일반 회원가입 경로는 제공하지 않습니다.</p>
+<form id="loginForm" class="login-form"><label>이메일<input id="email" type="email" autocomplete="username" required></label><label>비밀번호<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" class="primary" type="submit">관리자로 로그인</button></form><p id="loginMessage" class="message" role="status"></p></section>
+<section id="workspaceView" hidden>
+<div class="workspace-head"><div><p class="eyebrow">2026–27 ADMIN ANALYSIS</p><h1>선수 메모 · 관심 선수</h1><p>공개 선수 DB의 기존 Player ID를 그대로 사용합니다.</p></div><div class="account-box"><span id="accountEmail"></span><button id="logoutButton" class="secondary" type="button">로그아웃</button></div></div>
+<div class="summary-grid"><article><small>관심 선수</small><strong id="bookmarkCount">0</strong></article><article><small>개인 메모</small><strong id="noteCount">0</strong></article><article><small>기본 시즌</small><strong>2026–27</strong></article></div>
+<nav class="tabs"><button type="button" class="active" data-view="search">선수 검색</button><button type="button" data-view="bookmarks">관심 선수</button><button type="button" data-view="notes">내 메모</button></nav>
+<section id="searchPane" class="pane"><div class="pane-head"><div><p class="eyebrow">PLAYER SEARCH</p><h2>선수 찾기</h2></div><span id="catalogStatus" class="muted">선수 DB 불러오는 중</span></div>
+<form id="searchForm" class="search-row"><input id="playerQuery" type="search" placeholder="선수명, 팀, 학교, Player ID"><select id="genderFilter"><option value="">전체 성별</option><option value="M">남자</option><option value="W">여자</option></select><button class="primary" type="submit">검색</button></form><p id="searchCount" class="muted"></p><div id="searchResults" class="player-list"></div></section>
+<section id="bookmarksPane" class="pane" hidden><div class="pane-head"><div><p class="eyebrow">WATCHLIST</p><h2>관심 선수</h2></div></div><div id="bookmarkResults" class="player-list"></div></section>
+<section id="notesPane" class="pane" hidden><div class="pane-head"><div><p class="eyebrow">PRIVATE NOTES</p><h2>내 메모</h2></div></div><div id="noteResults" class="note-list"></div></section>
+<p id="workspaceMessage" class="message" role="status"></p>
+</section></main>
+<dialog id="noteDialog" class="note-dialog"><form id="noteForm" method="dialog"><div class="dialog-head"><div><small id="notePlayerId"></small><h2 id="notePlayerName">선수 메모</h2></div><button id="noteClose" type="button" class="icon-button">×</button></div><input id="noteId" type="hidden"><input id="notePlayer" type="hidden"><label>시즌<input id="noteSeason" maxlength="20" value="2026-27" required></label><label>제목<input id="noteTitle" maxlength="120" required></label><label>메모<textarea id="noteBody" maxlength="10000" rows="10" required></textarea></label><div class="dialog-actions"><button id="deleteNoteButton" type="button" class="danger" hidden>메모 삭제</button><span></span><button type="button" class="secondary" id="cancelNoteButton">취소</button><button type="submit" class="primary">저장</button></div></form></dialog>
+</body></html>
