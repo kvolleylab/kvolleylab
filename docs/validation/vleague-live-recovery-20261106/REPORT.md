@@ -76,3 +76,11 @@ Evidence images: [home 1440](home-1440.jpg), [home 360](home-360.jpg), [overview
 | Cycle 2 at a later observation | pending after approved deployment | pending | NOT VERIFIED |
 
 This report intentionally distinguishes existing historical publication, local repairs, a successful dry-run and actual production recovery.
+
+## GitHub PR verification update
+
+PR [#262](https://github.com/kvolleylab/kvolleylab/pull/262) was submitted with tested tree `fe8bc7b3b8f9a1a201c852e413857d5fb5bbf924` (remote commit `3ab7c951ab2241823d719a7f52df0cc1c491424c`). Local and remote trees were identical. [V-League validation 42238082961](https://github.com/kvolleylab/kvolleylab/actions/runs/42238082961) passed source/MASTER safety tests, UI regressions, a fresh official collection and actual candidate rendering; publish and player writes were correctly skipped.
+
+A focused Cup regression rejected only the new CSS cache-version string; its accepted-version list was extended without relaxing geometry checks and this regression was added to the V-League workflow. No Cup production layout/data changed.
+
+Other existing repository workflows are not all green: university batch generation attempts to update an existing file without its SHA (HTTP 422), SKKU registration expects 16 MASTER rows but finds 127, and Kyungil registration expects the earlier 78-row state. Their script/data files are unchanged in this PR. The legacy connect-vnl-schedules/build-player-timeline workflow failures also existed on main `6bef7f7` ([42237223684](https://github.com/kvolleylab/kvolleylab/actions/runs/42237223684), [42237221696](https://github.com/kvolleylab/kvolleylab/actions/runs/42237221696)). These are separately recorded limitations, not permission to alter player MASTER or protected international workflows.
