@@ -34,6 +34,7 @@ Google Drive KVL_운영원칙_MASTER_v18과 대학 폴더 검색 확인. 2024/20
 - `node --check assets/js/university-hub-years-v1.js`: PASS.
 - `node tests/university-hub-years.test.cjs`: PASS. 기존 24순위 불변/공식3이미지, 남녀6경로, 과거6대회48순위/출처 참조/2024시리즈 순서/3·4위 구분/이미지 및 가짜 페이지 없음/서로 다른 DOM ID.
 - `git diff --check`: PASS.
+- Quality Audit 56개 단위 검사 PASS. 새 공개 JSON의 출처·확인일·SHA-256을 `scripts/quality_audit/public-review-manifest.json`에 등록한 뒤 export gate PASS. 기존 manifest 항목/검증기는 변경하지 않는다.
 - 브라우저 PC1348px, mobile360/390 iframe(내부345/375px): 가로 넘침0. 원래 메인 HERO PC225px/mobile215px, 공통 Pretendard, 2026 네이비 배경, archive 흰색·이미지 없음 확인.
 - 연도2024 선택→연맹1차 필터→단양 1개, 전체 보기→2026 3개 복귀, 2025 아코디언 펼치기 3개/중복ID없음 확인.
 - 2026 고성 전체 카드 Enter→남자부 URL, 모바일 여자부 버튼→여자부 URL 확인. 로컬 HTTP에서 상세 Engine이 HTTPS canonical 검증으로 로딩을 거부하므로 검증기를 변경하지 않고 실제 HTTPS 운영 상세 페이지를 확인한다.
