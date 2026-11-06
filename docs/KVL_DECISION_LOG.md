@@ -1,5 +1,9 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-06 · 대학배구 대회 허브 개편 운영 적용
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 승인한 대학대회 프로토타입을 기존 `university-competitions.html` 주소에 적용한다. PC 대회 카드는 왼쪽에 모바일 구도의 축소 HERO, 오른쪽에 남녀 최종순위 카드, 순위 바탕은 네이비 `#1B223A`로 확정했다. 고성·단양 제목은 `2026 대한항공배`와 `전국대학배구 고성대회/단양대회` 두 줄로 표시한다. U-리그 남자 순위 제목의 `6강`과 준결승·결승 안내 문구를 화면에서 제거한다. 2026-10-26의 기존 대학 허브 배치 유지 결정은 이 범위에서 대체한다. 최초 프로토타입 한정 지시 이후 사용자가 명시적으로 실제 홈페이지 반영을 승인했다. 기존 JSON 순위 24건·상태·일정·대회 경로·공식 HERO 자산·공통 메뉴·Competition Engine V2는 보존한다. Base main `cbedc3ea03864e9ca264fdcba9cd3ab614f8c777`. [검수·적용 범위·복구](validation/university-hub-years-v1.md). 병합/Pages 완료 및 운영 화면 확인은 release PR 및 배포 실행 기록으로 구분한다.
+
 ## 2026-11-05 · 국제대회 허브 메인 HERO 이미지 적용
 
 Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 첨부한 붉은 경기장 이미지를 운영 국제대회 페이지 메인 HERO에 반영하도록 요청했다. 기존 `international-competition-senior-national-team.html` 경로와 HERO 크기·문구·골드 글자·6개 카테고리·연도 탐색을 유지하고, 전용 허브 CSS 변수와 PC/모바일 WebP만 연결한다. 업로드한 2048×682 이미지의 구도와 비율을 보존한 웹용 자산을 사용하며 2026-11-02의 영역 채움 결정을 따라 표시 영역에서 `cover`를 적용한다. 이 허브에서는 기존 청색 SVG를 사용자 지정 붉은 이미지로 대체하며 다른 대회 테마에는 적용하지 않는다. Base main `ba981d65e56055fa185304794773ae5e40b14778`. PC1180·모바일390/360에서 경기장과 제목·가로 넘침0·정상 이미지, VNL 선택 후 전체보기의 필터 유지 확인. [변경·검수·복구](validation/international-hub-hero-v1.md). 병합·Pages·운영 확인은 해당 release PR과 구분해 기록한다.
