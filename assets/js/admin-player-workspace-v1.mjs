@@ -54,8 +54,8 @@ async function toggleBookmark(id){
   msg(bookmarks.has(id)?'관심 선수에서 해제하는 중…':'관심 선수에 등록하는 중…');
   try{const d=await api('toggle_bookmark',{player_id:id});d.saved?bookmarks.add(id):bookmarks.delete(id);$('bookmarkCount').textContent=String(bookmarks.size);renderCurrent();msg(d.saved?'관심 선수에 등록했습니다.':'관심 선수에서 해제했습니다.')}catch(err){msg(err.message,true)}
 }
-function openPlayerNote(id){const p=byId.get(id);$('noteId').value='';$('notePlayer').value=id;$('notePlayerId').textContent=id;$('notePlayerName').textContent=(p?.name||id)+' · 선수 메모';$('noteSeason').value='2026-27';$('noteTitle').value='';$('noteBody').value='';$('deleteNoteButton').hidden=true;$('noteDialog').showModal()}
-function openNote(id){const n=notes.find(x=>x.id===id);if(!n)return;$('noteId').value=n.id;$('notePlayer').value=n.player_id;$('notePlayerId').textContent=n.player_id;$('notePlayerName').textContent=pname(n.player_id)+' · 선수 메모';$('noteSeason').value=n.season||'2026-27';$('noteTitle').value=n.title;$('noteBody').value=n.body;$('deleteNoteButton').hidden=false;$('noteDialog').showModal()}
+function openPlayerNote(id){const p=byId.get(id);$('noteId').value='';$('noteRevision').value='';$('notePlayer').value=id;$('notePlayerId').textContent=id;$('notePlayerName').textContent=(p?.name||id)+' · 선수 메모';$('noteSeason').value='2026-27';$('noteTitle').value='';$('noteBody').value='';$('deleteNoteButton').hidden=true;$('noteDialog').showModal()}
+function openNote(id){const n=notes.find(x=>x.id===id);if(!n)return;$('noteId').value=n.id;$('noteRevision').value=String(n.revision);$('notePlayer').value=n.player_id;$('notePlayerId').textContent=n.player_id;$('notePlayerName').textContent=pname(n.player_id)+' · 선수 메모';$('noteSeason').value=n.season||'2026-27';$('noteTitle').value=n.title;$('noteBody').value=n.body;$('deleteNoteButton').hidden=false;$('noteDialog').showModal()}
 function closeNote(){$('noteDialog').close()}
 
 $('loginForm').addEventListener('submit',async ev=>{
@@ -75,10 +75,10 @@ document.querySelector('.tabs').addEventListener('click',ev=>{const b=ev.target.
 document.addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;if(b.dataset.bookmark)toggleBookmark(b.dataset.bookmark);if(b.dataset.notePlayer)openPlayerNote(b.dataset.notePlayer);if(b.dataset.editNote)openNote(b.dataset.editNote)});
 $('noteClose').addEventListener('click',closeNote);$('cancelNoteButton').addEventListener('click',closeNote);
 $('noteForm').addEventListener('submit',async ev=>{
-  ev.preventDefault();const payload={id:$('noteId').value||null,player_id:$('notePlayer').value,season:$('noteSeason').value.trim(),title:$('noteTitle').value.trim(),body:$('noteBody').value.trim()};if(!payload.title||!payload.body)return;
+  ev.preventDefault();const payload={id:$('noteId').value||null,expected_revision:$('noteRevision').value?Number($('noteRevision').value):null,player_id:$('notePlayer').value,season:$('noteSeason').value.trim(),title:$('noteTitle').value.trim(),body:$('noteBody').value.trim()};if(!payload.title||!payload.body)return;
   msg('메모 저장 중…');try{await api('save_note',payload);closeNote();await refreshState();changeView('notes');msg('메모를 저장했습니다.')}catch(err){msg(err.message,true)}
 });
-$('deleteNoteButton').addEventListener('click',async()=>{const id=$('noteId').value;if(!id||!confirm('이 메모를 삭제할까요?'))return;msg('메모 삭제 중…');try{await api('delete_note',{id});closeNote();await refreshState();changeView('notes');msg('메모를 삭제했습니다.')}catch(err){msg(err.message,true)}});
+$('deleteNoteButton').addEventListener('click',async()=>{const id=$('noteId').value;if(!id||!confirm('이 메모를 삭제할까요?'))return;msg('메모 삭제 중…');try{await api('delete_note',{id,expected_revision:Number($('noteRevision').value)});closeNote();await refreshState();changeView('notes');msg('메모를 삭제했습니다.')}catch(err){msg(err.message,true)}});
 
 async function loadCatalog(){
   if(players.length)return;const catalog=await window.KVLPlayerCatalogReady;if(!Array.isArray(catalog))throw new Error('선수 DB를 불러올 수 없습니다.');
