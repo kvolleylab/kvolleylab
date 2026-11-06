@@ -174,15 +174,15 @@ function stages(d){const x=d.structure?.schedule?.stages;if(Array.isArray(x)&&x.
 function setLine(m){const s=score(m);if(!s?.sets?.length)return s&&isDomesticLike(data())?'<span class="kvl1180-set-points-pending">세트별 득점 확인 중</span>':'';return s.sets.map(x=>{const hv=x?.home??x?.[0],av=x?.away??x?.[1];if(hv===null||hv===undefined||hv===''||av===null||av===undefined||av==='')return '';const h=Number(hv),a=Number(av);return Number.isFinite(h)&&Number.isFinite(a)?`<span>${h}-${a}</span>`:'';}).filter(Boolean).join('');}
 function side(t,pos){const p=participant(t)||t,domestic=isDomesticLike(data()),asset=logo(p),mark=isRegional(data())?regionMark(p,'kvl1180-inline-logo'):asset?`<span class="kvl1180-inline-logo">${teamLink(p,`<img src="${esc(asset)}" alt="${esc(name(p))} 엠블럼" loading="lazy">`,'kvl-team-flag-link')}</span>`:`<span class="kvl1180-inline-logo kvl1180-seed-icon ${domestic?'is-school-mark':''}">${esc(domestic?schoolMark(name(p)):code(p)||'?')}</span>`,english=domestic?'':(en(p)||code(p)),copy=`<span class="kvl1180-slot-copy"><strong>${teamLink(p)}</strong>${english?`<small>${teamLink(p,esc(english),'kvl-team-en-link')}</small>`:''}</span>`;return pos==='left'?`<span class="kvl1180-side is-left">${mark}${copy}</span>`:`<span class="kvl1180-side is-right">${copy}${mark}</span>`;}
 function matchRow(m){
- const unused=isNotRequired(m),s=unused?null:score(m),d=data(),domestic=isDomesticLike(d);
+ const unused=isNotRequired(m),d=data(),domestic=isDomesticLike(d),state=d.structure?.presentationCategory==='pro-league'&&!unused?window.KVLCompetitionDataV2.matchSummaryState(m):null,s=unused?null:state?state.score:score(m);
  const shortVenue=domestic?venue(m).replace(/^고성군\s*/,''):venue(m);
  const metaDetail=domestic?[stage(m),pool(m)?groupLabel(pool(m)):'',shortVenue].filter(Boolean).join(' · '):'';
  const detail=domestic?'':[stage(m),pool(m)?groupLabel(pool(m)):'',venue(m),window.KVLCompetitionDataV2.localTimeLabel(m)].filter(Boolean).join(' · ');
  const timeText=unused?nonPlayReason(m):domestic?`${time(m)||'시간 미정'}`:`${time(m)||'시간 미정'} KST`;
  const note=unused?[nonPlayReason(m)+'로 경기를 진행하지 않습니다.',m.scoreNote].filter(Boolean).join(' '):m.scoreNote;
- return `<article data-match-id="${esc(mid(m))}"${unused?' data-match-state="not_required"':''} class="kvl1180-match-row ${[code(m.home),code(m.away)].includes(d.focusTeamCode)?'is-korea':''}"><div class="kvl1180-match-meta"><time>${esc(timeText)}</time>${metaDetail?`<span class="kvl1180-match-meta-detail">${esc(metaDetail)}</span>`:''}</div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s||unused?'':'is-upcoming'}">${unused?'미실시':s?`${s.home}-${s.away}`:'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${unused?'':setLine(m)}</div>${note?`<p class="kvl-score-note">${esc(note)}</p>`:''}${detail?`<div class="kvl1180-match-detail">${esc(detail)}</div>`:''}</article>`;
+ return `<article data-match-id="${esc(mid(m))}"${unused?' data-match-state="not_required"':state?` data-match-state="${state.kind}"`:''} class="kvl1180-match-row ${[code(m.home),code(m.away)].includes(d.focusTeamCode)?'is-korea':''}"><div class="kvl1180-match-meta"><time>${esc(timeText)}</time>${metaDetail?`<span class="kvl1180-match-meta-detail">${esc(metaDetail)}</span>`:''}</div><div class="kvl1180-match-board">${side(m.home,'left')}<b class="kvl1180-score ${s||unused?'':'is-upcoming'}">${unused?'미실시':s?`${s.home}-${s.away}`:state&&state.kind!=='scheduled'?'—':'VS'}</b>${side(m.away,'right')}</div><div class="kvl1180-set-scores">${unused?'':state&&!state.finished?(state.sets||[]).map((p,i)=>`<span>${i+1}세트 ${p.home}-${p.away}</span>`).join(''):setLine(m)}</div>${state&&!state.finished&&state.kind!=='scheduled'?`<p class="kvl-live-observation"><b>${esc(state.label)}</b> · ${esc(state.detail)}</p>`:''}${note?`<p class="kvl-score-note">${esc(note)}</p>`:''}${detail?`<div class="kvl1180-match-detail">${esc(detail)}</div>`:''}</article>`;
 }
-function renderSchedule(d){
+function renderSchedule(d,scrollToDate=true){
   const filters=q('[data-kvl-component="schedule-filters"]'),summary=q('[data-kvl-component="schedule-summary"]'),root=q('[data-kvl-component="schedule-list"]');if(!root)return;
   const ss=stages(d);if(!ss.includes(runtime.stage))runtime.stage='전체';
   if(filters){filters.innerHTML=ss.map(s=>`<button type="button" data-stage="${esc(s)}" class="${s===runtime.stage?'is-active':''}">${esc(s)}</button>`).join('');qa('[data-stage]',filters).forEach(b=>b.onclick=()=>{runtime.stage=b.dataset.stage;runtime.pool='전체';renderSchedule(d);});}
@@ -192,7 +192,7 @@ function renderSchedule(d){
   let list=(d.matches||[]).slice();if(runtime.pool!=='전체')list=list.filter(m=>pool(m)===runtime.pool);if(runtime.stage!=='전체')list=list.filter(m=>stage(m)===runtime.stage);list.sort((a,b)=>`${date(a)}T${time(a)}`.localeCompare(`${date(b)}T${time(b)}`));
   const unused=list.filter(isNotRequired).length,done=list.filter(m=>!isNotRequired(m)&&score(m)).length;if(summary)summary.innerHTML=`<strong>${esc(runtime.stage)}</strong><span>${list.length}경기 · 완료 ${done} · 예정 ${list.length-done-unused}${unused?' · 미실시 '+unused:''} · ${esc(d.timezoneSummary||'한국시간(KST)')}</span>`;
   root.innerHTML=matchGroups(list,'schedule');
-  const wanted=new URLSearchParams(location.search).get('date'),el=wanted?document.getElementById(`date-${wanted}`):null;if(el)requestAnimationFrame(()=>el.scrollIntoView({block:'start'}));
+  const wanted=new URLSearchParams(location.search).get('date'),el=wanted?document.getElementById(`date-${wanted}`):null;if(el&&scrollToDate)requestAnimationFrame(()=>el.scrollIntoView({block:'start'}));
 }
 
 function matchGroups(list,prefix){
@@ -638,5 +638,14 @@ function render(d=data()){applyVisualBaseline(d);applyStructureLabels(d);bindKpi
 if(!window.KVL_COMPETITION_PAGE_V2?.deferRender){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>render(),{once:true});else render();}
 window.addEventListener('popstate',()=>{renderParticipants(data());renderTeamResults(data());});
 window.addEventListener('resize',()=>positionRoster(data(),new URLSearchParams(location.search).get('team')));
-window.KVLCompetitionComponentsV2={render,printRoster};
+function refreshLiveMatches(changed=false){
+ const d=data();if(d.structure?.presentationCategory!=='pro-league')return;
+ if(changed){renderSchedule(d,false);renderStandings(d);renderKnockout(d);}
+ const byId=new Map((d.matches||[]).map(m=>[m.id,m]));
+ qa('.kvl1180-match-row[data-match-id]').forEach(row=>{
+  const m=byId.get(row.dataset.matchId);if(!m)return;
+  const template=document.createElement('template');template.innerHTML=matchRow(m);if(row.outerHTML!==template.content.firstElementChild.outerHTML)row.replaceWith(template.content.firstElementChild);
+ });
+}
+window.KVLCompetitionComponentsV2={render,printRoster,refreshLiveMatches};
 })();

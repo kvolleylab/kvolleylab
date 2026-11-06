@@ -169,7 +169,7 @@ main.homeproto{max-width:1180px;margin:0 auto;padding:0 0 28px}
 </div>
 
 </main>
-<script src="assets/js/kvl-competition-data-v2.js?v=20261103-today-summary-1"></script>
+<script src="assets/js/kvl-competition-data-v2.js?v=20261106-live-recovery-1"></script>
 <script>
 (()=>{'use strict';
 const competitions=[
@@ -245,15 +245,16 @@ function matchCard(record,recent){
  when.title=m.venueLabel||'';
  const center=element('div','match-center');
  [m.home,m.away].forEach((side,i)=>{
-  if(i)center.append(element('strong','match-score'+(state.score?'':' pending'),state.score?state.score.home+' : '+state.score.away:'VS'));
+  if(i)center.append(element('strong','match-score'+(state.score?'':' pending'),state.score?state.score.home+' : '+state.score.away:state.kind==='scheduled'?'VS':'—'));
   const team=data.participants.find(t=>t.code===side.code),cell=element('div','match-team');
   if(team.logo){const img=element('img');img.src=team.logo;img.alt='';img.width=52;img.height=48;cell.append(img)}
   cell.append(element('b','',team.name||team.fullName));center.append(cell);
  });
- const sets=element('div',finished?'set-scores':'match-venue');
- if(finished&&Array.isArray(m.score.sets)&&m.score.sets.length){m.score.sets.forEach((set,i)=>{const score=element('abbr','',set.home+'–'+set.away);score.title=(i+1)+'세트';sets.append(score)});sets.setAttribute('aria-label','세트별 점수')}
- else sets.textContent=finished?'세트 점수 미확인':state.detail||(m.venueLabel||'경기장 미정');
- card.append(top,when,center,sets,element('span','match-more',finished?'경기 결과 보기 ›':state.kind==='scheduled'?'경기 일정 보기 ›':'경기 현황 보기 ›'));return card;
+ const sets=element('div','set-scores');
+ if(state.sets?.length){state.sets.forEach((set,i)=>{const score=element('abbr','',(finished?'':(i+1)+'세트 ')+set.home+'–'+set.away);score.title=(i+1)+'세트'+(finished?'':' · 종료 세트 관측값');sets.append(score)});sets.setAttribute('aria-label',finished?'세트별 점수':state.kind==='stale'?'마지막 관측 세트별 점수':'종료 세트별 점수')}
+ else if(finished||state.kind==='live')sets.textContent='세트별 점수 확인 중';
+ const detail=element('div','match-venue',state.detail||(m.venueLabel||'경기장 미정'));
+ card.append(top,when,center,sets,detail,element('span','match-more',finished?'경기 결과 보기 ›':state.kind==='scheduled'?'경기 일정 보기 ›':'경기 현황 보기 ›'));return card;
 }
 // One selector for home and the V-League overview; source records remain unchanged.
 function chooseMatch(records,gender,finished,now){
@@ -265,7 +266,7 @@ let lastLoaded=null;
 async function loadMatches(){
  const loaded=await Promise.allSettled(feeds.map(async feed=>{
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
-  try{const response=await fetch('/data/competitions/'+feed.slug+'/data.json',{cache:'no-cache',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();if(!Array.isArray(data.matches)||!Array.isArray(data.participants))throw Error('Invalid match feed');return {feed,data};}finally{clearTimeout(timer)}
+  try{const response=await fetch('/data/competitions/'+feed.slug+'/data.json?kvlPoll='+Math.floor(Date.now()/60000),{cache:'no-store',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);const data=await response.json();if(!Array.isArray(data.matches)||!Array.isArray(data.participants))throw Error('Invalid match feed');return {feed,data};}finally{clearTimeout(timer)}
  }));
  const retained=loaded.map((r,i)=>r.status==='rejected'&&lastLoaded?.[i]?.status==='fulfilled'?{...lastLoaded[i],refreshFailed:true}:r);
  lastLoaded=retained;renderMatches(retained);

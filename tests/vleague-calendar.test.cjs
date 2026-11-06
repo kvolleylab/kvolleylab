@@ -36,7 +36,8 @@ test('official season public/substitute holidays and Sundays only; no extrapolat
  assert.equal(display.dateInfo('2026-11-01','KR').red,true);assert.equal(display.dateInfo('2027-02-30','KR').red,false);
  assert.equal(display.dateInfo('2028-02-09','KR').verified,false);assert.equal(display.dateInfo('2027-02-09','US').red,false);
 });
-async function setup(slug='v-league-men-2026-27',query='',now='2026-11-01T00:00:00Z'){
+// Completed Nov 1 fixtures are observed after both matches, not before tip-off.
+async function setup(slug='v-league-men-2026-27',query='',now='2026-11-01T12:00:00Z'){
  const c=json(`data/competitions/${slug}/config.json`),raw=contract.assemble(c,json(`data/competitions/${slug}/data.json`),{slug,canonical:'https://kvolleylab.com/competition-engine.html?competition='+slug});
  const dom=new JSDOM('<body class="kvl1180-prototype kvl-competition-template-v2"><main data-kvl-shell></main></body>',{url:'https://kvolleylab.com/competition-engine.html?competition='+slug+query,runScripts:'outside-only',pretendToBeVisual:true});
  const w=dom.window;w.Date.now=()=>Date.parse(now);w.KVL_COMPETITION_PAGE_V2={deferRender:true,collectionRoot:'/data/competitions/'};w.matchMedia=()=>({matches:false});w.CSS={escape:s=>s};w.HTMLElement.prototype.scrollIntoView=()=>{};

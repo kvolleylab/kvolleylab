@@ -943,3 +943,8 @@ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2:not
 .kvl-pro-league-domestic-v2 .dv2-summary-today[data-match-state="live"]{color:#117650;background:#eaf7f0}
 .kvl-pro-league-domestic-v2 .dv2-summary-today[data-match-state="waiting"],
 .kvl-pro-league-domestic-v2 .dv2-summary-today[data-match-state="stale"]{color:#85651b;background:#faf5e7}
+
+/* Dated V-League observations must never look like a current final result. */
+.kvl-pro-league-domestic-v2 .kvl-live-observation{grid-column:1/-1;margin:4px 0 0;font-size:12px;line-height:1.5;color:#64748b;overflow-wrap:anywhere}
+.kvl-pro-league-domestic-v2 [data-match-state="stale"] .kvl1180-score{color:#64748b}
+.kvl-pro-league-domestic-v2 .dv2-summary-sets{flex-wrap:wrap}

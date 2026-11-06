@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kvl-vleague-scheduler",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-06",
+  "workers_dev": true,
+  "observability": {"enabled": true},
+  "vars": {"KVL_SCHEDULER_APPROVED":"false", "KVL_NOTIFICATIONS_APPROVED":"false"},
+  "triggers": {"crons": []},
+  "durable_objects": {"bindings":[{"name":"COORDINATOR","class_name":"VLeagueCoordinator"}]},
+  "migrations": [{"tag":"v1","new_sqlite_classes":["VLeagueCoordinator"]}]
+}

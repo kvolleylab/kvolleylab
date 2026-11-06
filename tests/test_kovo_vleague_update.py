@@ -521,6 +521,7 @@ class UpdaterPlanTests(unittest.TestCase):
         self.assertNotIn("score", male["matches"][0])
         self.assertEqual(male["matches"][0]["liveScore"], {"home": 1, "away": 0,
                          "sourceKey": live["source_key"], "observedAt": snapshot["fetched_at"]})
+        self.assertEqual(male["matches"][0]["liveSets"], [{"home": 25, "away": 20, "status": "completed"}])
         self.assertNotIn("scoreVerification", male["matches"][0])
         self.assertEqual(update.publication_gate(plan)["status"], "PASS")
         self.assertEqual(plan["report"]["divisions"]["MALE"]["completed"], 0)
@@ -546,9 +547,11 @@ class UpdaterPlanTests(unittest.TestCase):
         originals = deepcopy(self.originals)
         originals["MALE"]["matches"][0]["liveScore"] = {"home": 1, "away": 0,
             "sourceKey": self.snapshot["matches"][0]["source_key"], "observedAt": self.snapshot["fetched_at"]}
+        originals["MALE"]["matches"][0]["liveSets"] = [{"home": 25, "away": 20, "status": "completed"}]
         plan = update.prepare_update(originals, self.snapshot)
         match = plan["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]
         self.assertNotIn("liveScore", match)
+        self.assertNotIn("liveSets", match)
         self.assertEqual(max(match["score"]["home"], match["score"]["away"]), 3)
 
     def test_preserves_roster_participant_future_and_postseason_metadata(self):

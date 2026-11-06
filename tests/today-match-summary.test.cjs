@@ -32,7 +32,7 @@ test('live takes priority on multi-match days; cancelled and postponed games sta
 });
 test('stale observed scores retain their timestamp and are explicitly delayed',()=>{
  const m=live();m.liveScore.observedAt='2026-11-03T10:00:00Z';const s=api.matchSummaryState(m,now,options);
- assert.equal(s.kind,'stale');assert.equal(s.label,'갱신 지연');assert.equal(s.score.home,1);assert.match(s.detail,/19:00/);
+ assert.equal(s.kind,'stale');assert.equal(s.label,'갱신 지연');assert.equal(s.score,null);assert.equal(s.historicalScore.home,1);assert.match(s.detail,/마지막 확인.*19:00 KST/);
 });
 test('unproven, cross-match, future, prior-day and malformed scores never appear as live scores',()=>{
  for(const change of [m=>delete m.liveScore,m=>m.liveScore.sourceKey='023:001:FEMALE:6',m=>m.liveScore.observedAt='2026-11-04T11:00:00Z',m=>m.liveScore.observedAt='2026-11-02T11:00:00Z',m=>m.liveScore.home=3,m=>m.source='not a url',m=>m.source='https://example.com/stat/game-schedule']){

@@ -517,3 +517,7 @@ Initial base `f7d51ee1264b8f2811fef618e4f01f597acdb154`, release base `f70e3d127
 Base `a50b3d894015f2a156ce6341ca60b580fbd3196f`. 상태: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED; 운영 배포는 릴리스 PR의 Pages 성공과 공개 파일 확인으로 추적한다. 변경 파일, 검증과 복구는 [검증 기록](validation/calendar-day-interactions-20261105.md)에 남긴다.
 
 여자 VNL과 아시안게임 남녀·CBS배는 현재 등록된 개별 대회 페이지로 이동 경로를 보정한다. 원본 일정의 근거 링크는 변경하지 않는다. CBS배 여자부 선택 시 여자고등부로 진입한다.
+
+## 2026-11-06 — V-League live recovery candidate (#257 / #259)
+
+Status: **IMPLEMENTED / LOCAL QA VERIFIED / NOT DEPLOYED**. Owner requested isolated fixes and review before production deployment. Shared live-score rendering now includes certified completed-set points and a KST observation timestamp; stale scores at 30 minutes are explicitly historical. Added an inert Cloudflare wake-up/watchdog implementation that invokes the existing approved publisher and preserves MASTER/roster identity gates. No activation, merge or deployment is authorized by this entry. Actual two-cycle live acceptance remains open; see [evidence and release gate](validation/vleague-live-recovery-20261106/REPORT.md).

@@ -1,10 +1,15 @@
 name: V-League Auto Update v1
+run-name: ${{ (github.event_name == 'schedule' || (inputs.publish && !inputs.player_master_access_check && !inputs.player_current_value_check)) && 'V-League live publisher' || 'V-League validation' }}
 
 on:
   workflow_dispatch:
     inputs:
       publish:
         description: 'Publish approved match data and the separately gated player pilot (each activation required)'
+        type: boolean
+        default: false
+      match_only:
+        description: '경기 publisher만 실행 (보조 스케줄러용, 선수 pilot 제외)'
         type: boolean
         default: false
       player_master_access_check:
@@ -26,6 +31,16 @@ on:
       - 'data/automation/archive/vleague-2026-27-regular/**'
       - 'tests/fixtures/kovo_vleague/**'
       - 'tests/vleague-*.test.cjs'
+      - 'tests/vleague-*.test.mjs'
+      - 'assets/css/kvl-domestic-home-v2.css'
+      - 'tests/today-match-summary.test.cjs'
+      - 'tests/test_kvl_player_current_value_workflow.py'
+      - 'infra/vleague-scheduler/**'
+      - 'index.html'
+      - 'competition-engine.html'
+      - 'assets/js/kvl-competition-*.js'
+      - 'assets/js/kvl-domestic-home-v2.js'
+      - 'assets/js/kvl-match-calendar-v1.js'
       - '.github/workflows/vleague-auto-update-v1.yml'
   schedule:
     # Default cron is UTC. Daily reconciliation: 09:17 KST.
@@ -108,6 +123,7 @@ jobs:
         run: |
           python -B -m unittest discover -s tests -p 'test_kovo_vleague_*.py' -v
           python -B -m unittest discover -s tests -p 'test_kvl_competition_lifecycle.py' -v
+          python -B -m unittest discover -s tests -p 'test_kvl_player_current_value_workflow.py' -v
       - name: Inspect the current Pages configuration without deploying
         env:
           GH_TOKEN: ${{ github.token }}
@@ -117,7 +133,7 @@ jobs:
       - name: Preserve existing V-League page behavior
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
-        run: node --test tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs
+        run: node --test --test-concurrency=2 tests/vleague-calendar.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/today-match-summary.test.cjs tests/vleague-live-recovery.test.cjs tests/vleague-scheduler.test.mjs
       - name: Recheck the live clock immediately before preview collection
         id: preview-window
         run: python -B scripts/kvl_competition_lifecycle.py --root . --report "$RUNNER_TEMP/kvl-vleague-preview/lifecycle.json" --github-output "$GITHUB_OUTPUT"
@@ -235,6 +251,7 @@ jobs:
     # player's monitoring window is independent of the match/season end gate.
     needs: publish
     if: >-
+      inputs.match_only != true &&
       inputs.player_current_value_check != true &&
       inputs.player_master_access_check != true &&
       always() && !cancelled() &&
