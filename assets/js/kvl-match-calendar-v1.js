@@ -39,7 +39,7 @@ function render(state){
  const cells=[];
  for(let i=0;i<Math.ceil((offset+days)/7)*7;i++){
   const date=new Date(Date.UTC(year,mo-1,i-offset+1)),key=date.toISOString().slice(0,10),games=byDate.get(key)||[],outside=date.getUTCMonth()!==mo-1;
-  const holiday=display().dateInfo(key,settings.holidayRegion??'KR'),summaries=games.map(m=>{const summary=display().game(m,data,settings);if(data.structure?.presentationCategory!=='pro-league')return summary;const state=window.KVLCompetitionDataV2?.matchSummaryState(m);if(!state||state.finished||state.kind==='scheduled')return summary;const resultLabel=state.score?state.score.home+'-'+state.score.away:'—';return {...summary,resultLabel,fullLabel:[summary.round,summary.homeLabel,resultLabel,summary.awayLabel,state.label,state.detail].filter(Boolean).join(' ')};});
+  const holiday=display().dateInfo(key,settings.holidayRegion??'KR'),summaries=games.map(m=>{const summary=display().game(m,data,settings);if(data.structure?.presentationCategory!=='pro-league')return summary;const state=window.KVLCompetitionDataV2?.matchSummaryState(m);if(!state||state.finished||state.kind==='scheduled')return summary;const resultLabel=state.score?state.score.home+'-'+state.score.away:'—';return {...summary,resultLabel,fullLabel:summary.fullLabel.replace(' '+summary.resultLabel+' ',' '+resultLabel+' ')+' · '+state.label+' · '+state.detail};});
   const events=Array.isArray(settings.events)?settings.events.filter(e=>e?.date===key&&typeof e.label==='string'):[];
   const final=games.some(m=>m.round==='FINAL'||m.stage==='결승');
   let details='';
