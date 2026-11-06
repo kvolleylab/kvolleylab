@@ -31,7 +31,8 @@
 - Supabase Edge Function deployment: ACTIVE, version 2.
 - Active admin account count was verified as 1 before this release.
 - The assistant never receives or stores the administrator password.
-- A real successful login + bookmark + note + logout/relogin persistence check must be completed by the owner after Pages deployment.
+- Owner E2E verification completed on 2026-11-06: successful admin login, player search, bookmark creation, private note creation, logout, re-login, and persistence of both bookmark and note.
+- Post-verification Supabase readback confirmed 1 active admin, 2 stored bookmarks, and 2 stored notes.
 
 ## Known limitation
 - Password recovery is deliberately not linked here yet because the project's earlier recovery redirect still pointed to localhost. A KVL recovery route will be implemented separately before general-member login is opened.
