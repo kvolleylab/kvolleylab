@@ -13,8 +13,12 @@ function loginMsg(text='',error=false){const el=$('loginMessage');el.textContent
 function normalize(p){return {...p,id:p.playerId||p.id,name:p.nameKo||p.name||p.nameEn||p.playerId,team:p.team||p.club||'',school:p.school||'',rawPosition:p.rawPosition||p.position||'',gender:p.gender||''}}
 function pname(id){return byId.get(id)?.name||id}
 function affiliation(p){return p?.school||p?.team||p?.club||'소속 미확인'}
-function playerMeta(p){return [affiliation(p),p?.rawPosition||'포지션 미확인',p?.gender?(p.gender==='W'?'여자':'남자'):''].filter(Boolean)}
-function profileHref(id){return 'player.html?id='+encodeURIComponent(id)}
+function affiliationGrade(p){
+  const base=affiliation(p),grade=p?.gradeLabel||(p?.grade?String(p.grade)+'학년':'');
+  return grade&&base!=='소속 미확인'?base+' · '+grade:base;
+}
+function playerMeta(p){return [affiliationGrade(p),p?.rawPosition||'포지션 미확인',p?.gender?(p.gender==='W'?'여자':'남자'):''].filter(Boolean)}
+function profileHref(id){return 'player.html?id='+encodeURIComponent(id)+'&admin=1&return='+encodeURIComponent('admin-player-workspace.html')}
 
 async function api(action,payload={}){
   const {data,error}=await supabase.functions.invoke(FUNCTION_NAME,{body:{action,...payload}});
@@ -48,13 +52,13 @@ function row(p){
   return `<article class="player-row">
     <div class="player-avatar" aria-hidden="true">${e((p.name||'K').slice(0,1))}</div>
     <div class="player-main">
-      <div class="player-title"><strong>${e(p.name)}</strong><span class="player-id">${e(p.id)}</span></div>
+      <div class="player-title"><strong>${e(p.name)}</strong></div>
       <div class="player-meta">${meta.map(x=>`<span>${e(x)}</span>`).join('')}</div>
     </div>
     <div class="row-actions">
       <button class="bookmark ${saved?'saved':''}" type="button" data-bookmark="${e(p.id)}">${saved?'★ 관심선수':'☆ 관심선수'}</button>
       <button class="note-button" type="button" data-note-player="${e(p.id)}">메모 작성</button>
-      <a class="profile-link" href="${e(profileHref(p.id))}" target="_blank" rel="noopener">프로필 보기</a>
+      <a class="profile-link" href="${e(profileHref(p.id))}">프로필 보기</a>
     </div>
   </article>`;
 }
@@ -84,7 +88,7 @@ function renderNotes(){
         <div class="note-player">
           <span class="season-pill">${e(n.season||'시즌 미지정')}</span>
           <strong>${e(pname(n.player_id))}</strong>
-          <span class="player-id">${e(n.player_id)}</span>
+          
         </div>
         <button type="button" data-edit-note="${e(n.id)}">수정</button>
       </div>
@@ -123,13 +127,13 @@ function setNoteMeta(id){
 }
 function openPlayerNote(id){
   const p=byId.get(id);
-  $('noteId').value='';$('noteRevision').value='';$('notePlayer').value=id;$('notePlayerId').textContent=id;
+  $('noteId').value='';$('noteRevision').value='';$('notePlayer').value=id;$('notePlayerId').textContent='';
   $('notePlayerName').textContent=(p?.name||id)+' · 선수 메모';setNoteMeta(id);
   $('noteSeason').value='2026-27';$('noteTitle').value='';$('noteBody').value='';$('deleteNoteButton').hidden=true;$('noteDialog').showModal();$('noteTitle').focus();
 }
 function openNote(id){
   const n=notes.find(x=>x.id===id);if(!n)return;
-  $('noteId').value=n.id;$('noteRevision').value=String(n.revision);$('notePlayer').value=n.player_id;$('notePlayerId').textContent=n.player_id;
+  $('noteId').value=n.id;$('noteRevision').value=String(n.revision);$('notePlayer').value=n.player_id;$('notePlayerId').textContent='';
   $('notePlayerName').textContent=pname(n.player_id)+' · 선수 메모';setNoteMeta(n.player_id);
   $('noteSeason').value=n.season||'2026-27';$('noteTitle').value=n.title;$('noteBody').value=n.body;$('deleteNoteButton').hidden=false;$('noteDialog').showModal();
 }
