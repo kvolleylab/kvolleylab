@@ -368,23 +368,33 @@
       },
       "venueLabel": "부산 강서체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:13",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-07T05:54:48+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-07T09:54:58+00:00",
+      "score": {
         "home": 1,
-        "away": 0,
-        "sourceKey": "023:001:MALE:13",
-        "observedAt": "2026-11-07T05:54:48+00:00"
+        "away": 3,
+        "sets": [
+          {
+            "home": 27,
+            "away": 25
+          },
+          {
+            "home": 17,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 18,
+            "away": 25
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 27,
-          "away": 25,
-          "status": "completed"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-008",
@@ -2778,41 +2788,20 @@
           "en": "WRC"
         },
         "poolId": "LEAGUE",
-        "games": 1,
-        "wins": 1,
+        "games": 2,
+        "wins": 2,
         "losses": 0,
-        "points": 3,
-        "setWins": 3,
-        "setLosses": 0,
-        "pointsFor": 75,
-        "pointsAgainst": 63,
-        "setRatio": "MAX",
+        "points": 6,
+        "setWins": 6,
+        "setLosses": 1,
+        "pointsFor": 175,
+        "pointsAgainst": 147,
+        "setRatio": "6.000",
         "pointRatio": "1.190",
         "statusLabel": "1위"
       },
       {
         "rank": 2,
-        "team": {
-          "code": "OKF",
-          "name": "OK저축은행",
-          "fullName": "OK저축은행",
-          "en": "OKF"
-        },
-        "poolId": "LEAGUE",
-        "games": 1,
-        "wins": 1,
-        "losses": 0,
-        "points": 3,
-        "setWins": 3,
-        "setLosses": 1,
-        "pointsFor": 97,
-        "pointsAgainst": 87,
-        "setRatio": "3.000",
-        "pointRatio": "1.115",
-        "statusLabel": "2위"
-      },
-      {
-        "rank": 3,
         "team": {
           "code": "KAL",
           "name": "대한항공",
@@ -2830,10 +2819,10 @@
         "pointsAgainst": 163,
         "setRatio": "1.333",
         "pointRatio": "1.055",
-        "statusLabel": "3위"
+        "statusLabel": "2위"
       },
       {
-        "rank": 4,
+        "rank": 3,
         "team": {
           "code": "SFB",
           "name": "삼성화재",
@@ -2851,6 +2840,27 @@
         "pointsAgainst": 200,
         "setRatio": "1.000",
         "pointRatio": "1.005",
+        "statusLabel": "3위"
+      },
+      {
+        "rank": 4,
+        "team": {
+          "code": "OKF",
+          "name": "OK저축은행",
+          "fullName": "OK저축은행",
+          "en": "OKF"
+        },
+        "poolId": "LEAGUE",
+        "games": 2,
+        "wins": 1,
+        "losses": 1,
+        "points": 3,
+        "setWins": 4,
+        "setLosses": 4,
+        "pointsFor": 181,
+        "pointsAgainst": 187,
+        "setRatio": "1.000",
+        "pointRatio": "0.968",
         "statusLabel": "4위"
       },
       {
@@ -2985,14 +2995,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 6/126경기 종료 · 2026-11-07 14:54 KST 반영",
-  "updatedAt": "2026-11-07T05:54:48+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 7/126경기 종료 · 2026-11-07 18:54 KST 반영",
+  "updatedAt": "2026-11-07T09:54:58+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 6,
+    "completedMatches": 7,
     "postseason": {
       "matched": 0,
       "completed": 0,
