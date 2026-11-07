@@ -169,7 +169,7 @@ main.homeproto{max-width:1180px;margin:0 auto;padding:0 0 28px}
 </div>
 
 </main>
-<script src="assets/js/kvl-competition-data-v2.js?v=20261106-live-recovery-1"></script>
+<script src="assets/js/kvl-competition-data-v2.js?v=20261107-missing-observation-2"></script>
 <script>
 (()=>{'use strict';
 const competitions=[
@@ -254,7 +254,8 @@ function matchCard(record,recent){
  if(state.sets?.length){state.sets.forEach((set,i)=>{const score=element('abbr','',(finished?'':(i+1)+'세트 ')+set.home+'–'+set.away);score.title=(i+1)+'세트'+(finished?'':' · 종료 세트 관측값');sets.append(score)});sets.setAttribute('aria-label',finished?'세트별 점수':state.kind==='stale'?'마지막 관측 세트별 점수':'종료 세트별 점수')}
  else if(finished||state.kind==='live')sets.textContent='세트별 점수 확인 중';
  const detail=element('div','match-venue',state.detail||(m.venueLabel||'경기장 미정'));
- card.append(top,when,center,sets,detail,element('span','match-more',finished?'경기 결과 보기 ›':state.kind==='scheduled'?'경기 일정 보기 ›':'경기 현황 보기 ›'));return card;
+ card.append(top,when,center);if(sets.textContent)card.append(sets);
+ card.append(detail,element('span','match-more',finished?'경기 결과 보기 ›':state.kind==='scheduled'?'경기 일정 보기 ›':'경기 현황 보기 ›'));return card;
 }
 // One selector for home and the V-League overview; source records remain unchanged.
 function chooseMatch(records,gender,finished,now){

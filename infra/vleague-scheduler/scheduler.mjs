@@ -23,12 +23,12 @@ export function publicHealth(feeds, now) {
       if (!/^\d{4}-\d{2}-\d{2}$/.test(m.date||'') || m.date > day || m.notRequired === true || !/^\d{2}:\d{2}$/.test(m.time || '') || ['final','cancelled','postponed','not_required'].includes(m.status)) continue;
       const start = Date.parse(`${m.date}T${m.time}:00+09:00`);
       if (now < start) continue;
-      const observed = Date.parse(m.liveScore?.observedAt || m.updatedAt || '');
+      const observed = Date.parse(m.status==='live' ? m.liveScore?.observedAt || '' : '');
       // A scheduled fixture has no live observation. Allow 30 minutes from start.
       const baseline = Math.max(start, Number.isFinite(observed) && observed <= now + MINUTE ? observed : start);
       if (now - baseline >= 30 * MINUTE) problems.push({gender:index===0?'men':'women',matchId:m.id,
         reason:m.status==='live'?'LIVE_OBSERVATION_STALE':'STARTED_MATCH_UNOBSERVED',
-        observedAt:Number.isFinite(observed)?new Date(observed).toISOString():null});
+        observedAt:Number.isFinite(observed)&&observed<=now+MINUTE?new Date(observed).toISOString():null});
     }
   }
   return problems;
