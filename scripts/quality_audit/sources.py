@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import re
 import sys
+from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
@@ -144,36 +145,113 @@ def master_rows(values):
     return records
 
 
+def drive_token():
+    import google.auth
+    from google.auth.transport.requests import Request as AuthRequest
+    credentials, _ = google.auth.default(scopes=['https://www.googleapis.com/auth/spreadsheets.readonly'])
+    credentials.refresh(AuthRequest())
+    return credentials.token
+
+
+def drive_http_reason(exc):
+    if exc.code == 401:
+        return 'AUTH_FAILED'
+    if exc.code == 403:
+        # Google also returns 403 for quota or disabled API. Never publish the body.
+        try:
+            errors = json.loads(exc.read(16_385))['error']['errors']
+            reasons = {e['reason'] for e in errors}
+        except (AttributeError, KeyError, TypeError, ValueError, OSError):
+            reasons = set()
+        if reasons & {'rateLimitExceeded', 'userRateLimitExceeded', 'quotaExceeded', 'dailyLimitExceeded'}:
+            return 'QUOTA'
+        if reasons & {'insufficientPermissions', 'forbidden', 'insufficientFilePermissions'}:
+            return 'PERMISSION_DENIED'
+        return 'HTTP_403_UNCLASSIFIED'
+    if exc.code == 404:
+        return 'NOT_FOUND_OR_HIDDEN'
+    if exc.code == 429:
+        return 'QUOTA'
+    return 'SHEETS_REQUEST_FAILED'
+
+
 def drive_checks(local, input_dir=None):
-    """Opt-in private local export or allowlisted Sheets read with read-only credentials."""
+    """Keep local export, live access and data validation evidence separate."""
     results = []
-    # File IDs are never hardcoded/published here; configure a private mapping in a Secret.
+    mode = os.environ.get('KVL_AUDIT_DRIVE_MODE', 'required')
     for name, season in [('cup', 'kovo-cup-2026'), ('league', 'v-league-2026-27')]:
         scope = 'drive:' + name
-        try:
-            mapping = json.loads(os.environ.get('KVL_AUDIT_DRIVE_MAP', '{}'))
-            if input_dir:
+
+        def unknown(reason, *, operational=False):
+            row = check(scope, 'NOT VERIFIED', note=reason, operational=operational)
+            row.update(drive_reason=reason, drive_live_verified=False, drive_local=bool(input_dir))
+            return row
+
+        if input_dir:
+            try:
                 payload = json.loads((Path(input_dir) / f'{name}-master.json').read_text())
-            elif name in mapping and os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'):
-                import google.auth
-                from google.auth.transport.requests import Request as AuthRequest
-                credentials, _ = google.auth.default(scopes=['https://www.googleapis.com/auth/spreadsheets.readonly'])
-                credentials.refresh(AuthRequest())
-                entry = mapping[name]
-                if not re.fullmatch(r'[a-zA-Z0-9_-]+', entry['id']):
-                    raise ValueError('Invalid file ID')
-                # Fixed bounded public-facts table; cannot point at a private-note worksheet.
-                rng = quote("'경기일정_MASTER'!A1:S600", safe='')
-                payload = get_json('https://sheets.googleapis.com/v4/spreadsheets/' + entry['id'] + '/values/' + rng,
-                                   token=credentials.token)
-            else:
-                results.append(check(scope, 'NOT VERIFIED', note='Actions 읽기 전용 Drive 인증 미설정; 자료 미접근이며 데이터 누락 아님', operational=True))
+            except (OSError, ValueError):
+                results.append(unknown('LOCAL_EXPORT_UNAVAILABLE'))
                 continue
+        else:
+            if mode == 'disabled':
+                results.append(unknown('DISABLED'))
+                continue
+            if mode != 'required':
+                results.append(unknown('CONFIG_INVALID', operational=True))
+                continue
+            try:
+                mapping = json.loads(os.environ.get('KVL_AUDIT_DRIVE_MAP', '{}'))
+                if not isinstance(mapping, dict):
+                    raise ValueError()
+                if name not in mapping or not os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'):
+                    results.append(unknown('CONFIG_MISSING', operational=True))
+                    continue
+                file_id = mapping[name]['id']
+                if not isinstance(file_id, str) or not re.fullmatch(r'[a-zA-Z0-9_-]+', file_id):
+                    raise ValueError()
+            except (ValueError, TypeError, KeyError):
+                results.append(unknown('CONFIG_INVALID', operational=True))
+                continue
+            try:
+                token = drive_token()
+            except ImportError:
+                results.append(unknown('AUTH_DEPENDENCY_MISSING', operational=True))
+                continue
+            except Exception as exc:
+                # google-auth is optional. Transport failure does not establish bad credentials.
+                reason = ('AUTH_TRANSPORT' if type(exc).__name__ == 'TransportError' else
+                          'AUTH_FAILED' if type(exc).__name__ in {'DefaultCredentialsError', 'RefreshError'}
+                          else 'AUTH_EXECUTION_FAILED')
+                results.append(unknown(reason, operational=True))
+                continue
+            rng = quote("'경기일정_MASTER'!A1:S600", safe='')
+            try:
+                payload = get_json('https://sheets.googleapis.com/v4/spreadsheets/' + file_id + '/values/' + rng, token=token)
+            except json.JSONDecodeError:
+                results.append(unknown('MASTER_RESPONSE_INVALID'))
+                continue
+            except HTTPError as exc:
+                results.append(unknown(drive_http_reason(exc), operational=True))
+                continue
+            except Exception:
+                results.append(unknown('SHEETS_REQUEST_FAILED', operational=True))
+                continue
+
+        try:
             remote = master_rows(payload['values'])
+            if any(m['season_id'] != season for m in remote):
+                raise ValueError('season')
             selected = [m for m in local if m['season_id'] == season]
-            results.append(compare_matches(selected, remote, scope, checked_at=now_kst(), complete=True, sensitive=True))
-        except Exception as exc:
-            results.append(check(scope, 'NOT VERIFIED', note='MASTER 접근/스키마 검증 실패: ' + type(exc).__name__, complete=False, operational=True))
+            result = compare_matches(selected, remote, scope, checked_at=now_kst(), complete=True, sensitive=True)
+        except (ValueError, TypeError, KeyError, IndexError, AttributeError, OverflowError):
+            results.append(unknown('MASTER_CONTRACT'))
+            continue
+        result['drive_local'] = bool(input_dir)
+        result['drive_live_verified'] = bool(not input_dir and result['complete'] and result['count'] > 0)
+        result['drive_reason'] = ('LOCAL_EXPORT' if input_dir else
+                                  'MASTER_COMPARED' if result['complete'] else 'MASTER_INCONCLUSIVE')
+        results.append(result)
     return results
 
 

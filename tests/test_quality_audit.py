@@ -403,5 +403,190 @@ class Issues(unittest.TestCase):
         self.assertEqual(len(fake.comments), 1)
 
 
+class DrivePolicyTests(unittest.TestCase):
+    def setUp(self):
+        from unittest.mock import patch
+        self.patch = patch
+        self.season = 'kovo-cup-2026'
+        self.row = ['M1', self.season, '남자', '', '결승', '2026-10-25', '', '14:00',
+                    'Home', 'Away', '', '', '예정', '', '', '']
+        self.values = [MASTER_COLUMNS, self.row]
+        self.local = master_rows(self.values)
+        self.env = {'KVL_AUDIT_DRIVE_MAP': json.dumps({'cup': {'id': 'FILE_CANARY'}, 'league': {'id': 'OTHER_CANARY'}}),
+                    'GOOGLE_APPLICATION_CREDENTIALS': 'CREDENTIAL_CANARY'}
+        self.fid = stable_id('OP_ACCESS', 'drive:cup', 'availability')
+
+    def observe(self, mode='required', *, env=None, failure=None, response=None, auth_error=None):
+        from scripts.quality_audit import sources
+        config = {**(self.env if env is None else env), 'KVL_AUDIT_DRIVE_MODE': mode}
+        with self.patch.dict('os.environ', config, clear=True), \
+             self.patch.object(sources, 'drive_token', return_value='TOKEN_CANARY', side_effect=auth_error) as auth, \
+             self.patch.object(sources, 'get_json', side_effect=failure, return_value=(
+                 {'values': self.values} if response is None else response)) as fetch:
+            rows = drive_checks(self.local)
+            self.calls = auth.call_count, fetch.call_count
+        return rows[0]
+
+    def http(self, status, reason):
+        from io import BytesIO
+        from urllib.error import HTTPError
+        return HTTPError('https://private.invalid/FILE_CANARY', status, 'RAW_CANARY', {},
+                         BytesIO(json.dumps({'error': {'errors': [{'reason': reason}]}}).encode()))
+
+    def runs(self, row, *identifiers, state=None):
+        for ident in identifiers:
+            state, ev = reconcile([row], state, run_id=str(ident), at=TIME)
+        return state, ev
+
+    def assert_reason(self, row, reason, op):
+        self.assertEqual((row['outcome'], row['drive_reason'], row['operational']),
+                         ('NOT VERIFIED', reason, op))
+        self.assertFalse(row['drive_live_verified'])
+
+    def test_disabled_18_runs_no_calls_findings_or_events(self):
+        row = self.observe('disabled')
+        self.assert_reason(row, 'DISABLED', False)
+        self.assertEqual(self.calls, (0, 0))
+        state, events = self.runs(row, *range(1, 19))
+        self.assertFalse(events or state['findings'])
+        self.assertEqual(state['operations']['drive:cup']['consecutive_failures'], 0)
+
+    def test_required_missing_partial_invalid_mode_or_mapping(self):
+        for env in ({}, {'GOOGLE_APPLICATION_CREDENTIALS':'CREDENTIAL_CANARY'},
+                    {'KVL_AUDIT_DRIVE_MAP': '{}'}, {'KVL_AUDIT_DRIVE_MAP': self.env['KVL_AUDIT_DRIVE_MAP']}):
+            self.assert_reason(self.observe(env=env), 'CONFIG_MISSING', True)
+            self.assertEqual(self.calls, (0, 0))
+        for mapping in ('RAW_CANARY', '[]', '{"cup":{"id":"bad space"}}'):
+            self.assert_reason(self.observe(env={**self.env,'KVL_AUDIT_DRIVE_MAP':mapping}), 'CONFIG_INVALID', True)
+        self.assert_reason(self.observe('typo'), 'CONFIG_INVALID', True)
+        state, _ = self.runs(self.observe(env={}), 1, 2, 3)
+        self.assertEqual(state['findings'][self.fid]['severity'], 'P2')
+
+    def test_credential_failure_before_sheet_read(self):
+        for cls, reason in [('DefaultCredentialsError', 'AUTH_FAILED'), ('RefreshError', 'AUTH_FAILED'),
+                            ('TransportError','AUTH_TRANSPORT')]:
+            row = self.observe(auth_error=type(cls,(Exception,),{})('RAW_CANARY'))
+            self.assert_reason(row, reason, True)
+            self.assertEqual(self.calls, (2, 0))
+        self.assert_reason(self.observe(auth_error=ImportError('RAW_CANARY')), 'AUTH_DEPENDENCY_MISSING', True)
+
+    def test_401_403_404_quota_timeout_are_distinct(self):
+        for code, raw, reason in [(401,'','AUTH_FAILED'),(403,'forbidden','PERMISSION_DENIED'),
+                                  (403,'userRateLimitExceeded','QUOTA'),(403,'other','HTTP_403_UNCLASSIFIED'),
+                                  (404,'','NOT_FOUND_OR_HIDDEN'),(429,'','QUOTA'),
+                                  (503,'','SHEETS_REQUEST_FAILED')]:
+            self.assert_reason(self.observe(failure=self.http(code, raw)), reason, True)
+        self.assert_reason(self.observe(failure=TimeoutError()), 'SHEETS_REQUEST_FAILED', True)
+
+    def test_403_third_independent_run_warns_retry_does_not_increment(self):
+        c = self.observe(failure=self.http(403, 'forbidden'))
+        state, ev = self.runs(c, 1, 2, 2)
+        self.assertFalse(ev or state['findings'])
+        state, ev = self.runs(c, 3, state=state)
+        self.assertEqual(len(ev), 1)
+        self.assertEqual(state['findings'][self.fid]['severity'], 'P2')
+        repeated, ev = self.runs(c, 3, state=state)
+        self.assertEqual(repeated, state)
+        self.assertFalse(ev)
+
+    def test_disabled_breaks_failure_streak(self):
+        denied = self.observe(failure=self.http(403, 'forbidden'))
+        state, _ = self.runs(denied, 1, 2)
+        state, _ = self.runs(self.observe('disabled'), 3, state=state)
+        state, _ = self.runs(denied, 4, state=state)
+        self.assertFalse(state['findings'])
+        self.assertEqual(state['operations']['drive:cup']['consecutive_failures'], 1)
+
+    def test_invalid_schema_or_response_stays_unverified_no_p2(self):
+        for data in ({}, {'values':[['BAD']]}, {'values':[MASTER_COLUMNS, ['x']]}):
+            row = self.observe(response=data)
+            self.assert_reason(row, 'MASTER_CONTRACT', False)
+            self.assertFalse(self.runs(row,1,2,3)[0]['findings'])
+        self.assert_reason(self.observe(failure=json.JSONDecodeError('RAW_CANARY','',0)), 'MASTER_RESPONSE_INVALID', False)
+        malformed = list(self.row)
+        malformed[0] = ['unhashable-match-id']
+        self.assert_reason(self.observe(response={'values': [MASTER_COLUMNS, malformed]}), 'MASTER_CONTRACT', False)
+        wrong = list(self.row)
+        wrong[1] = 'v-league-2026-27'
+        self.assert_reason(self.observe(response={'values':[MASTER_COLUMNS,wrong]}), 'MASTER_CONTRACT', False)
+
+    def test_local_export_and_inconclusive_reads_do_not_close(self):
+        denied = self.observe(failure=self.http(403, 'forbidden'))
+        state, _ = self.runs(denied, 1,2,3)
+        with tempfile.TemporaryDirectory() as tmp:
+            Path(tmp, 'cup-master.json').write_text(json.dumps({'values':self.values}))
+            offline = drive_checks(self.local, tmp)[0]
+        self.assertEqual(offline['outcome'], 'PASS')
+        offline['covered_entities'].append('availability')  # IDs cannot resolve an operational Issue.
+        for row in (offline, self.observe('disabled'), self.observe(response={'values':[MASTER_COLUMNS]}),
+                    self.observe(response={'values':self.values + [self.row]}), self.observe(response={})):
+            self.assertFalse(row['drive_live_verified'])
+            next_state, _ = self.runs(row, 4, state=state)
+            self.assertEqual(next_state['findings'][self.fid], state['findings'][self.fid])
+
+    def test_live_target_read_resolves_without_cached_operations(self):
+        state, _ = self.runs(self.observe(failure=self.http(403, 'forbidden')), 1,2,3)
+        old = state['findings'][self.fid]
+        state['operations'].clear()
+        stale, _ = self.runs(self.observe(), 2, state=state)
+        self.assertEqual(stale, state)
+        state, _ = self.runs(self.observe(), 4, state=state)
+        item = state['findings'][self.fid]
+        self.assertEqual(item['verification'], 'RESOLVED')
+        issue = {'number':210,'body':issue_body(old)}
+        self.assertEqual([x['action'] for x in plan({'findings':[item]}, [issue])], ['resolve'])
+        denied=self.observe(failure=self.http(403,'forbidden'))
+        state, _ = self.runs(denied,5,6,7,state=state)
+        self.assertTrue(plan({'findings':[state['findings'][self.fid]]}, [{'number':210,'body':issue_body(item)}])[0]['reopen'])
+
+    def test_match_difference_private_and_separate_from_access(self):
+        bad = list(self.row); bad[7] = '17:00'
+        row = self.observe(response={'values':[MASTER_COLUMNS,bad]})
+        self.assertEqual(row['outcome'], 'FAIL')
+        self.assertTrue(row['drive_live_verified'])
+        self.assertEqual([(f['rule'],f['visibility']) for f in row['findings']], [('SOURCE_TIME','PRIVATE')])
+        state, _ = self.runs(self.observe(failure=self.http(403,'forbidden')), 1,2,3)
+        state, _ = self.runs(row,4,state=state)
+        self.assertEqual(state['findings'][self.fid]['verification'],'RESOLVED')
+        self.assertEqual(state['findings'][row['findings'][0]['id']]['verification'],'CONFIRMED')
+
+    def test_old_cache_18_preserves_issue_and_restarts_failure_streak(self):
+        oldcheck=check('drive:cup','NOT VERIFIED',operational=True)
+        legacy, _ = self.runs(oldcheck,*range(1,19))
+        old=deepcopy(legacy['findings'][self.fid])
+        issue={'number':210,'body':issue_body(old)}
+        denied=self.observe(failure=self.http(403,'forbidden'))
+        for first in (denied,self.observe('disabled')):
+            state,_=self.runs(first,19,state=legacy)
+            self.assertEqual(plan({'findings':[state['findings'][self.fid]]},[issue]), [])
+            self.assertEqual(state['findings'][self.fid],old)
+        state,_=self.runs(denied,19,20,21,state=legacy)
+        item=state['findings'][self.fid]
+        self.assertEqual((item['occurrences'],item['first_seen'],item['actual']), (21,old['first_seen'],'PERMISSION_DENIED'))
+        self.assertEqual(plan({'findings':[item]},[issue])[0]['action'],'update')
+
+    def test_scopes_are_independent_and_late_rerun_is_ignored(self):
+        blocked=self.observe(failure=self.http(403,'forbidden'))
+        league=dict(blocked, id='drive:league')
+        state=None
+        for n in range(1,4):
+            state,_=reconcile([league,blocked],state,run_id=str(n))
+        state,_=self.runs(self.observe(),4,state=state)
+        self.assertEqual(state['findings'][self.fid]['verification'],'RESOLVED')
+        self.assertEqual(state['findings'][stable_id('OP_ACCESS','drive:league','availability')]['verification'],'CONFIRMED')
+        before=deepcopy(state)
+        state,_=self.runs(blocked,2,state=state)
+        self.assertEqual(before,state)
+
+    def test_exception_body_ids_tokens_never_appear_in_public_outputs(self):
+        from scripts.quality_audit.core import render_markdown
+        c=self.observe(failure=self.http(403,'forbidden'))
+        state,ev=self.runs(c,1,2,3)
+        report=dict(checks=[c],findings=list(state['findings'].values()),events=ev,github_sha='fixture',checked_at=TIME)
+        blobs=[json.dumps(report),render_markdown(report),issue_body(report['findings'][0]),json.dumps(state)]
+        for b in blobs:
+            self.assertFalse(any(s in b for s in ('TOKEN_CANARY','FILE_CANARY','CREDENTIAL_CANARY','RAW_CANARY','OTHER_CANARY')))
+
+
 if __name__ == '__main__':
     unittest.main()
