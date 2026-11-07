@@ -78,7 +78,7 @@
         <span id="catalogStatus" class="muted">선수 DB 불러오는 중</span>
       </div>
       <form id="searchForm" class="search-row">
-        <input id="playerQuery" type="search" placeholder="선수명, 팀, 학교, Player ID">
+        <input id="playerQuery" type="search" placeholder="선수명, 팀, 학교">
         <select id="genderFilter" aria-label="성별 필터"><option value="">전체 성별</option><option value="M">남자</option><option value="W">여자</option></select>
         <button class="primary" type="submit">검색</button>
       </form>
@@ -139,7 +139,7 @@
 <dialog id="noteDialog" class="note-dialog">
   <form id="noteForm" method="dialog">
     <div class="dialog-head">
-      <div><small id="notePlayerId"></small><h2 id="notePlayerName">선수 메모</h2><p id="notePlayerMeta">선수 개인 기록</p></div>
+      <div><small id="notePlayerId" hidden></small><h2 id="notePlayerName">선수 메모</h2><p id="notePlayerMeta">선수 개인 기록</p></div>
       <button id="noteClose" type="button" class="icon-button" aria-label="닫기">×</button>
     </div>
     <input id="noteId" type="hidden"><input id="noteRevision" type="hidden"><input id="notePlayer" type="hidden">
