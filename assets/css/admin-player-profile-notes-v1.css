@@ -1,0 +1,19 @@
+.admin-private-notes{margin:18px 0 22px;background:#fff;border:1px solid #d8e2eb;border-radius:16px;padding:22px;box-shadow:0 8px 24px rgba(22,50,78,.05)}
+.admin-private-notes-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:16px}
+.admin-private-notes-head h2{margin:2px 0 6px;color:#0b2239;font-size:22px;letter-spacing:-.03em}
+.admin-private-notes-head h2 em{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 7px;margin-left:5px;border-radius:999px;background:#f8f1df;color:#7a5a10;font-style:normal;font-size:11px;vertical-align:middle}
+.admin-private-notes-head p{margin:0;color:#718196;font-size:12px;line-height:1.55}
+.admin-private-eyebrow{color:#9b7417!important;font-weight:900;letter-spacing:.1em;font-size:10px!important}
+.admin-private-notes-head>a,.admin-private-empty a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:#153e70;border:1px solid #ccd8e3;background:#fff;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:900;white-space:nowrap}
+.admin-private-notes-list{display:grid;gap:10px}
+.admin-private-note{border:1px solid #e1e8ee;border-radius:13px;padding:16px;background:#fbfcfd}
+.admin-private-note-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.admin-private-note-head h3{margin:7px 0 0;color:#153e70;font-size:17px}
+.admin-private-season{display:inline-block;background:#f8f1df;color:#78580e;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:900}
+.admin-private-note-date{color:#7e8e9e;font-size:11px;white-space:nowrap}
+.admin-private-note>p{white-space:pre-wrap;margin:13px 0 10px;line-height:1.65;color:#40566e;font-size:14px}
+.admin-private-note footer{border-top:1px solid #e9eef2;padding-top:9px;color:#8796a5;font-size:10px;min-height:10px}
+.admin-private-empty{display:grid;gap:7px;text-align:center;padding:30px 18px;border:1px dashed #ccd7e1;border-radius:12px;color:#748596}
+.admin-private-empty strong{color:#17304d}
+.admin-private-empty a{justify-self:center;margin-top:5px}
+@media(max-width:700px){.admin-private-notes{padding:16px;margin:14px 0 18px}.admin-private-notes-head,.admin-private-note-head{flex-direction:column}.admin-private-notes-head>a{width:100%}.admin-private-note-date{white-space:normal}}
