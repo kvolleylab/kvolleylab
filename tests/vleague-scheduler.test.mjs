@@ -19,3 +19,13 @@ test('health endpoint cannot invoke mutation; durable lease rejects overlap',asy
 test('recovery immediately after an ambiguous alert also emits the recovery',async()=>{const store=memory(),comments=[],stale=fake({age:30,comments});let once=true;const fetcher=async(u,o)=>{const r=await stale.fetcher(u,o);if(u.endsWith('/comments')&&o.method==='POST'&&once){once=false;throw Error('timeout after write');}return r;};await assert.rejects(tick(env,store,now,fetcher));const fresh=fake({comments});await tick(env,store,now+60000,fresh.fetcher);assert.equal(comments.length,2);assert(comments[1].body.includes('해소'));assert.equal((await store.get('incident')).open,false);});
 
 test('unresolved previous-day matches remain unhealthy while unused fixtures are excluded',()=>{const rows=feeds(31);for(const f of rows){f.matches[0].date='2026-11-05';f.matches[0].liveScore.observedAt='2026-11-05T10:00:00Z';}assert.equal(publicHealth(rows,now).length,2);for(const f of rows)f.matches[0].notRequired=true;assert.equal(publicHealth(rows,now).length,0);});
+
+test('fixture metadata writes cannot reset the missing-live observation deadline',()=>{
+ const rows=feeds(0);for(const f of rows){const m=f.matches[0];m.status='scheduled';delete m.liveScore;m.updatedAt=new Date(now).toISOString();}
+ const start=Date.parse('2026-11-06T19:00:00+09:00');
+ assert.equal(publicHealth(rows,start+29*60000).length,0);
+ const problems=publicHealth(rows,start+30*60000);assert.equal(problems.length,2);
+ assert(problems.every(p=>p.reason==='STARTED_MATCH_UNOBSERVED'&&p.observedAt===null));
+ for(const f of rows)f.matches[0].status='live';
+ assert(publicHealth(rows,now).every(p=>p.reason==='LIVE_OBSERVATION_STALE'&&p.observedAt===null));
+});

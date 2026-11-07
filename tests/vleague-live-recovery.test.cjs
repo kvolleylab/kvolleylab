@@ -6,8 +6,9 @@ const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p
 const api=require('../assets/js/kvl-competition-data-v2.js'),config=require('../assets/js/kvl-competition-config-v2.js');
 const start=Date.parse('2026-11-06T10:43:00Z');
 function fixtures(){const feeds={},configs={};for(const gender of ['men','women']){const base=`data/competitions/v-league-${gender}-2026-27/`;feeds[gender]=json(base+'data.json');configs[gender]=json(base+'config.json');const m=feeds[gender].matches.find(m=>m.date==='2026-11-06');delete m.score;delete m.scoreVerification;m.status='live';m.officialSourceKey=`023:001:${gender==='men'?'MALE':'FEMALE'}:11`;m.source='https://user-api.kovo.co.kr/stat/game-schedule?gender='+(gender==='men'?1:2);m.liveScore={home:gender==='men'?0:1,away:gender==='men'?1:0,sourceKey:m.officialSourceKey,observedAt:new Date(start).toISOString()};m.liveSets=[{home:gender==='men'?21:25,away:gender==='men'?25:20,status:'completed'}];}return {feeds,configs};}
-async function setup(gender='men',home=false,failInitial=false){
+async function setup(gender='men',home=false,failInitial=false,missing=false){
  const {feeds,configs}=fixtures(),html=home?read('index.html'):'<body class="kvl1180-prototype kvl-competition-template-v2"><main data-kvl-shell></main></body>';
+ if(missing)for(const feed of Object.values(feeds)){const m=feed.matches.find(m=>m.date==='2026-11-06');m.status='scheduled';delete m.liveScore;delete m.liveSets;}
  const dom=new JSDOM(html,{url:home?'https://kvolleylab.com/':`https://kvolleylab.com/competition-engine.html?competition=v-league-${gender}-2026-27&view=overview`,runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window;
  let now=start,fail=failInitial;const timers=[],requests=[],errors=[];w.Date.now=()=>now;w.setInterval=(fn,ms)=>{timers.push({fn,ms});return timers.length};w.CSS={escape:s=>s};w.matchMedia=()=>({matches:false});w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','')};w.HTMLDialogElement.prototype.close=function(){this.removeAttribute('open')};w.addEventListener('error',e=>errors.push(e.error));
  w.fetch=async(input,options)=>{const u=new URL(input,w.location.href);requests.push({url:u,options});if(fail)throw Error('network unavailable');const g=u.pathname.includes('-women-')?'women':'men',value=u.pathname.endsWith('config.json')?configs[g]:u.pathname.includes('v-league-')?feeds[g]:{matches:[],participants:[]};return {ok:true,json:async()=>structuredClone(value)};};
@@ -46,3 +47,18 @@ test('home renders both first-set observations and retains only labeled historic
 });
 
 test('initial peer fetch failure recovers on the next poll',async()=>{const s=await setup('men',false,true);try{assert(s.doc.querySelector('[data-summary-gender=women] .dv2-summary-error'));s.setFail(false);await s.run(300000);assert.match(s.doc.querySelector('[data-summary-gender=women] [data-kind=next]').textContent,/1 : 0/);}finally{s.w.close();}});
+
+for(const mode of ['home','men','women'])test(`${mode}: missing first observation expires in summary, schedule and dialog without a score`,async()=>{
+ const s=await setup(mode==='women'?'women':'men',mode==='home',false,true);
+ try{
+  const text=s.doc.querySelector(mode==='home'?'#home-matches':'.dv2-overview-matches').textContent;
+  assert.equal((text.match(/최종 관측 없음/g)||[]).length,2);assert.equal((text.match(/갱신 지연/g)||[]).length,2);
+  if(mode==='home')assert.equal(s.doc.querySelectorAll('.home-match[data-match-state="stale"] .set-scores').length,0);
+  if(mode!=='home'){
+   const row=s.doc.querySelector('.kvl1180-match-row[data-match-id$="006"]');assert.match(row.textContent,/갱신 지연.*최종 관측 없음/s);
+   assert.equal(row.querySelector('.kvl1180-score').textContent,'—');
+   s.doc.querySelector('[data-dv2-date="2026-11-06"]').click();assert.match(s.doc.querySelector('#dv2-day-dialog').textContent,/갱신 지연.*최종 관측 없음/s);
+  }
+  assert.deepEqual(s.errors,[]);
+ }finally{s.w.close();}
+});

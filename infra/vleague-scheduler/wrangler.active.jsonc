@@ -1,0 +1,14 @@
+{
+  // Activation configuration only. Deploy explicitly after release approval,
+  // secure account selection, and installation of the dedicated GitHub secret.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kvl-vleague-scheduler",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-06",
+  "workers_dev": true,
+  "observability": {"enabled": true},
+  "vars": {"KVL_SCHEDULER_APPROVED":"true", "KVL_NOTIFICATIONS_APPROVED":"true"},
+  "triggers": {"crons": ["2,7,12,17,22,27,32,37,42,47,52,57 0,3-14 * * *"]},
+  "durable_objects": {"bindings":[{"name":"COORDINATOR","class_name":"VLeagueCoordinator"}]},
+  "migrations": [{"tag":"v1","new_sqlite_classes":["VLeagueCoordinator"]}]
+}

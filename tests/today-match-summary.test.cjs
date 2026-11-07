@@ -36,11 +36,24 @@ test('stale observed scores retain their timestamp and are explicitly delayed',(
 });
 test('unproven, cross-match, future, prior-day and malformed scores never appear as live scores',()=>{
  for(const change of [m=>delete m.liveScore,m=>m.liveScore.sourceKey='023:001:FEMALE:6',m=>m.liveScore.observedAt='2026-11-04T11:00:00Z',m=>m.liveScore.observedAt='2026-11-02T11:00:00Z',m=>m.liveScore.home=3,m=>m.source='not a url',m=>m.source='https://example.com/stat/game-schedule']){
-  const m=live();change(m);assert.equal(api.matchSummaryState(m,now,options).score,null);assert.equal(api.matchSummaryState(m,now,options).label,'상태 확인 중');
+  const m=live();change(m);assert.equal(api.matchSummaryState(m,now,options).score,null);assert.equal(api.matchSummaryState(m,now,options).label,'갱신 지연');
  }
  const m=live({score:result,scoreVerification:true});assert(!api.matchSummaryState(m,now,options).finished);
 });
 test('home explicit final verification stays stricter than legacy competition results',()=>{
  const m=game('today',undefined,{status:'final',score:result,scoreVerification:false});
  assert(!api.matchSummaryState(m,now,options).finished);assert.equal(api.matchSummaryState(m,now,options).score,null);
+});
+
+test('official unobserved fixture expires exactly 30 minutes after KST start without inventing an observation',()=>{
+ const m=live({status:'scheduled',liveScore:undefined,liveSets:undefined,updatedAt:new Date(now).toISOString()});
+ const kickoff=Date.parse('2026-11-03T19:00:00+09:00');
+ assert.equal(api.matchSummaryState(m,kickoff-1).kind,'scheduled');
+ assert.equal(api.matchSummaryState(m,kickoff+29*60000).kind,'waiting');
+ for(const t of [kickoff+30*60000,now,now+86400000]){
+  const s=api.matchSummaryState(m,t);assert.equal(s.label,'갱신 지연');assert.equal(s.score,null);assert.equal(s.observedAt,null);
+  assert.match(s.detail,/최종 관측 없음.*19:00 KST/);assert.deepEqual(s.sets,[]);
+ }
+ for(const status of ['postponed','cancelled','suspended'])assert.notEqual(api.matchSummaryState({...m,status},now).label,'갱신 지연');
+ assert.equal(api.matchSummaryState(game('cup'),now).kind,'waiting');
 });

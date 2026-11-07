@@ -1,5 +1,9 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-07 · V-리그 최초 관측 누락·스케줄러 보완 v2
+
+Status: IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED / LIVE RECOVERY NOT VERIFIED. 사용자 추가 수정 요청에 따라 `fix/vleague-missing-observation-v2`에서 작업했다. Base main `208b7babc27d15697e5b55cca934ab1e6a1bf0a1`. 최초 관측이 없는 공식 V-리그 경기는 KST 시작 30분 후 ‘갱신 지연 / 최종 관측 없음 / —’으로 표시하고, watchdog은 `updatedAt`을 라이브 관측으로 인정하지 않는다. Cloudflare 명시적 활성화 설정을 준비하되 기본 설정은 비활성을 유지한다. 18:53 기존 publisher가 남녀 최종 결과를 반영했지만 이전 실행과 4시간 간격이므로 라이브 복구 성공이 아니다. 새 운영 배포 승인·Cloudflare 인증/활성화·실경기 2회 연속 전체 경로 검증은 별도 미완료 단계다. [원인·테스트·화면·배포 및 복구 절차](validation/vleague-missing-observation-v2.md). 선수 MASTER/명단/ID/국제대회/Cup 데이터 불변.
+
 ## 2026-11-07 · 대학 허브 기본 템플릿 복원·과거 결과 카드
 
 Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 실제 홈페이지 반영 승인 후 이어진 사용자 수정 요청: 공통 글꼴·원래 메인 HERO 여백·국내 템플릿 카드/트로피를 복원하고, 2026 대회 전체 카드의 금색 hover/클릭 및 남녀부 바로가기를 제공한다. PC 왼쪽 HERO·오른쪽 네이비 순위 배치는 유지한다. 2025·2024는 공식 기록을 확인한 U-리그·연맹1·2차전 각3개를 이미지 없는 흰색 결과 카드와 금색 hover로 연결한다. 별도 대회 페이지 없는 과거 기록에는 페이지를 임의 생성하지 않는다. 기존 대회 데이터/Engine V2 불변. 실제 공통 Pretendard 상속은 오래된 일반 Arial 문서보다 이번 기본 템플릿 일치 요청을 우선한 범위 한정 보정이다. Base main `ef239869b3bc303f711228f146011b367668f0d3`. [출처·검수·복구](validation/university-hub-parity-archive-v1.md). 배포 확인은 release PR에 별도 기록한다.
