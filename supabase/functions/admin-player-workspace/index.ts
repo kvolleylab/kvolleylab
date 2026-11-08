@@ -17,6 +17,7 @@ function response(origin:string|null,status:number,body:Record<string,unknown>){
 function validPlayerId(v:unknown){return typeof v==="string"&&/^KVL-P-\d{6}$/.test(v)}
 function validUuid(v:unknown){return typeof v==="string"&&/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v)}
 function validRevision(v:unknown){return Number.isInteger(v)&&Number(v)>0}
+function clean(v:unknown,max:number){return String(v??"").trim().slice(0,max)}
 
 Deno.serve(async req=>{
   const origin=req.headers.get("Origin");
@@ -36,7 +37,8 @@ Deno.serve(async req=>{
     if(action==="status"){
       const [b]=await sql`select count(*)::int as count from kvl_admin_private.bookmarks where user_id=${userId}::uuid`;
       const [n]=await sql`select count(*)::int as count from kvl_admin_private.notes where user_id=${userId}::uuid`;
-      return response(origin,200,{ok:true,bookmark_count:b.count,note_count:n.count});
+      const [a]=await sql`select count(*)::int as count, count(*) filter (where publication_status='member_candidate')::int as candidate_count from kvl_admin_private.player_analyses where user_id=${userId}::uuid`;
+      return response(origin,200,{ok:true,bookmark_count:b.count,note_count:n.count,analysis_count:a.count,analysis_candidate_count:a.candidate_count});
     }
     if(action==="list_bookmarks"){
       const items=await sql`select player_id,created_at from kvl_admin_private.bookmarks where user_id=${userId}::uuid order by created_at desc limit 1000`;
@@ -55,7 +57,7 @@ Deno.serve(async req=>{
     }
     if(action==="save_note"){
       if(!validPlayerId(body.player_id))return response(origin,400,{ok:false,error:"invalid_player_id"});
-      const season=String(body.season||"").trim().slice(0,20),title=String(body.title||"").trim().slice(0,120),noteBody=String(body.body||"").trim().slice(0,10000);
+      const season=clean(body.season,20),title=clean(body.title,120),noteBody=clean(body.body,10000);
       if(!season||!title||!noteBody)return response(origin,400,{ok:false,error:"note_fields_required"});
       if(body.id){
         if(!validUuid(body.id)||!validRevision(body.expected_revision))return response(origin,400,{ok:false,error:"invalid_note_revision"});
@@ -70,6 +72,40 @@ Deno.serve(async req=>{
       const rows=await sql`delete from kvl_admin_private.notes where id=${body.id}::uuid and user_id=${userId}::uuid and revision=${body.expected_revision} returning id`;
       if(!rows.length)return response(origin,409,{ok:false,error:"note_changed_reload"});return response(origin,200,{ok:true});
     }
+
+    if(action==="list_analyses"){
+      const items=await sql`select id,player_id,season,title,summary,strengths,improvements,tactical_notes,recent_changes,related_note_ids,publication_status,revision,created_at,updated_at from kvl_admin_private.player_analyses where user_id=${userId}::uuid order by updated_at desc limit 500`;
+      return response(origin,200,{ok:true,items});
+    }
+    if(action==="save_analysis"){
+      if(!validPlayerId(body.player_id))return response(origin,400,{ok:false,error:"invalid_player_id"});
+      const season=clean(body.season,40),title=clean(body.title,160),summary=clean(body.summary,6000);
+      const strengths=clean(body.strengths,12000),improvements=clean(body.improvements,12000),tacticalNotes=clean(body.tactical_notes,12000),recentChanges=clean(body.recent_changes,12000);
+      const publicationStatus=body.publication_status==="member_candidate"?"member_candidate":"private";
+      const noteIds=Array.isArray(body.related_note_ids)?[...new Set(body.related_note_ids.map(String))]:[];
+      if(!season||!title||!summary)return response(origin,400,{ok:false,error:"analysis_fields_required"});
+      if(noteIds.length>50||noteIds.some(id=>!validUuid(id)))return response(origin,400,{ok:false,error:"invalid_related_notes"});
+      const noteCsv=noteIds.join(",");
+      if(noteIds.length){
+        const [check]=await sql`select count(*)::int as count from kvl_admin_private.notes where user_id=${userId}::uuid and player_id=${body.player_id} and id = any(string_to_array(${noteCsv}, ',')::uuid[])`;
+        if(check.count!==noteIds.length)return response(origin,400,{ok:false,error:"related_notes_not_owned"});
+      }
+      if(body.id){
+        if(!validUuid(body.id)||!validRevision(body.expected_revision))return response(origin,400,{ok:false,error:"invalid_analysis_revision"});
+        const rows=await sql`update kvl_admin_private.player_analyses set season=${season},title=${title},summary=${summary},strengths=${strengths},improvements=${improvements},tactical_notes=${tacticalNotes},recent_changes=${recentChanges},related_note_ids=case when ${noteCsv}='' then '{}'::uuid[] else string_to_array(${noteCsv}, ',')::uuid[] end,publication_status=${publicationStatus},revision=revision+1,updated_at=clock_timestamp() where id=${body.id}::uuid and user_id=${userId}::uuid and player_id=${body.player_id} and revision=${body.expected_revision} returning id,revision,updated_at`;
+        if(!rows.length)return response(origin,409,{ok:false,error:"analysis_changed_reload"});
+        return response(origin,200,{ok:true,item:rows[0]});
+      }
+      const rows=await sql`insert into kvl_admin_private.player_analyses(user_id,player_id,season,title,summary,strengths,improvements,tactical_notes,recent_changes,related_note_ids,publication_status) values(${userId}::uuid,${body.player_id},${season},${title},${summary},${strengths},${improvements},${tacticalNotes},${recentChanges},case when ${noteCsv}='' then '{}'::uuid[] else string_to_array(${noteCsv}, ',')::uuid[] end,${publicationStatus}) returning id,revision,updated_at`;
+      return response(origin,200,{ok:true,item:rows[0]});
+    }
+    if(action==="delete_analysis"){
+      if(!validUuid(body.id)||!validRevision(body.expected_revision))return response(origin,400,{ok:false,error:"invalid_analysis_revision"});
+      const rows=await sql`delete from kvl_admin_private.player_analyses where id=${body.id}::uuid and user_id=${userId}::uuid and revision=${body.expected_revision} returning id`;
+      if(!rows.length)return response(origin,409,{ok:false,error:"analysis_changed_reload"});
+      return response(origin,200,{ok:true});
+    }
+
     return response(origin,400,{ok:false,error:"unknown_action"});
   }catch(err){console.error("admin-player-workspace",err instanceof Error?err.message:String(err));return response(origin,500,{ok:false,error:"server_error"})}
 });
