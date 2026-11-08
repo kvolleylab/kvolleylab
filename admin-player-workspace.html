@@ -54,7 +54,7 @@
       <article><small>관심 선수</small><strong id="bookmarkCount">0</strong><span>내 추적 목록</span></article>
       <article><small>개인 메모</small><strong id="noteCount">0</strong><span>비공개 기록</span></article>
       <article><small>기본 시즌</small><strong>2026–27</strong><span>메모 기본값</span></article>
-      <article><small>접근 권한</small><strong class="role-summary">ADMIN</strong><span>회원 UX 선행 검수</span></article>
+      <article><small>선수 분석</small><strong id="analysisCount">0</strong><span><b id="analysisCandidateCount">0</b>건 회원 공개 후보</span></article>
     </div>
 
     <nav class="tabs" aria-label="로그인 사용자 기능">
@@ -68,7 +68,7 @@
         <span class="tab-kicker">PRIVATE</span><b>내 메모 <em id="noteTabCount"></em></b>
       </button>
       <button type="button" data-view="analysis">
-        <span class="tab-kicker">NEXT</span><b>분석</b>
+        <span class="tab-kicker">ANALYSIS</span><b>분석 <em id="analysisTabCount"></em></b>
       </button>
     </nav>
 
@@ -107,29 +107,28 @@
 
     <section id="analysisPane" class="pane" hidden>
       <div class="pane-head">
-        <div><p class="eyebrow">KVL ANALYSIS</p><h2>분석</h2><p>관리자 단계에서 분석 자료를 먼저 쌓은 뒤, 향후 회원에게 공개할 범위를 분리합니다.</p></div>
-        <span class="admin-only-label">관리자 전용 준비 영역</span>
+        <div><p class="eyebrow">KVL ANALYSIS · PLAYER</p><h2>선수 분석</h2><p>개인 메모를 근거로 시즌별 선수 분석을 작성합니다. ‘회원 공개 후보’로 표시해도 현재는 실제 회원에게 공개되지 않습니다.</p></div>
+        <span class="admin-only-label">ADMIN ONLY</span>
       </div>
-      <div class="analysis-grid">
-        <article>
-          <span class="analysis-step">01</span>
-          <h3>선수 분석</h3>
-          <p>관심선수와 개인 메모를 기반으로 시즌별 선수 분석을 축적합니다.</p>
-          <strong><span id="analysisBookmarkCount">0</span>명 추적 · <span id="analysisNoteCount">0</span>개 메모</strong>
-        </article>
-        <article>
-          <span class="analysis-step">02</span>
-          <h3>경기 분석</h3>
-          <p>향후 경기별 전력분석 자료와 선수 메모를 연결하는 영역입니다.</p>
-          <strong>다음 개발 단계</strong>
-        </article>
-        <article>
-          <span class="analysis-step">03</span>
-          <h3>회원 공개 후보</h3>
-          <p>관리자 분석 중 어떤 자료를 로그인 회원에게 제공할지 별도로 선별합니다.</p>
-          <strong>아직 외부 공개 없음</strong>
-        </article>
+
+      <div class="analysis-status-grid">
+        <article><small>전체 분석</small><strong id="analysisTotalCount">0</strong></article>
+        <article><small>나만 보기</small><strong id="analysisPrivateCount">0</strong></article>
+        <article><small>회원 공개 후보</small><strong id="analysisCandidatePaneCount">0</strong></article>
       </div>
+
+      <div class="analysis-toolbar">
+        <input id="analysisQuery" type="search" placeholder="선수명·분석 제목·내용에서 검색">
+        <select id="analysisSeasonFilter" aria-label="분석 시즌 필터"><option value="">전체 시즌</option></select>
+        <select id="analysisStatusFilter" aria-label="분석 상태 필터">
+          <option value="">전체 상태</option>
+          <option value="private">나만 보기</option>
+          <option value="member_candidate">회원 공개 후보</option>
+        </select>
+        <button id="analysisStartFromSearch" class="secondary" type="button">선수 검색에서 작성</button>
+      </div>
+      <p id="analysisFilterCount" class="muted result-caption"></p>
+      <div id="analysisResults" class="analysis-list"></div>
     </section>
 
     <p id="workspaceMessage" class="message workspace-message" role="status"></p>
@@ -155,4 +154,43 @@
     </div>
   </form>
 </dialog>
+
+<dialog id="analysisDialog" class="note-dialog analysis-dialog">
+  <form id="analysisForm" method="dialog">
+    <div class="dialog-head">
+      <div><h2 id="analysisPlayerName">선수 분석</h2><p id="analysisPlayerMeta">선수 분석 자료</p></div>
+      <button id="analysisClose" type="button" class="icon-button" aria-label="닫기">×</button>
+    </div>
+    <input id="analysisId" type="hidden"><input id="analysisRevision" type="hidden"><input id="analysisPlayer" type="hidden">
+
+    <div class="analysis-form-top">
+      <label>시즌<input id="analysisSeason" maxlength="40" value="2026-27" required></label>
+      <label>상태<select id="analysisStatus"><option value="private">나만 보기</option><option value="member_candidate">회원 공개 후보</option></select></label>
+    </div>
+
+    <label>분석 제목<input id="analysisTitle" maxlength="160" placeholder="예: 2026-27 시즌 공격·리시브 종합 평가" required></label>
+    <label>핵심 요약<textarea id="analysisSummary" maxlength="6000" rows="5" placeholder="이 선수의 현재 가치와 핵심 특징을 짧고 명확하게 정리합니다." required></textarea></label>
+
+    <div class="analysis-form-columns">
+      <label>장점<textarea id="analysisStrengths" maxlength="12000" rows="6" placeholder="강점, 경쟁력, 확실한 무기"></textarea></label>
+      <label>보완점<textarea id="analysisImprovements" maxlength="12000" rows="6" placeholder="보완이 필요한 기술·판단·전술 요소"></textarea></label>
+    </div>
+
+    <label>전술적 특징<textarea id="analysisTactical" maxlength="12000" rows="6" placeholder="로테이션, 역할, 공격 선택, 블로킹·수비 등 전술 관점"></textarea></label>
+    <label>최근 변화<textarea id="analysisRecentChanges" maxlength="12000" rows="5" placeholder="최근 경기·대회·시즌에서 나타난 변화"></textarea></label>
+
+    <fieldset class="analysis-related">
+      <legend>관련 메모 <span>선택 사항</span></legend>
+      <p>이 선수에게 남긴 기존 메모 중 분석 근거로 연결할 항목을 선택합니다.</p>
+      <div id="analysisRelatedNotes"></div>
+    </fieldset>
+
+    <p class="note-privacy">‘회원 공개 후보’는 내부 분류일 뿐입니다. 현재 일반 회원에게 분석 내용은 공개되지 않습니다.</p>
+    <div class="dialog-actions">
+      <button id="deleteAnalysisButton" type="button" class="danger" hidden>분석 삭제</button>
+      <span></span><button type="button" class="secondary" id="cancelAnalysisButton">취소</button><button type="submit" class="primary">분석 저장</button>
+    </div>
+  </form>
+</dialog>
+
 </body></html>
