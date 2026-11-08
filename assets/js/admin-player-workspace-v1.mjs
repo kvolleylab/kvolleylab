@@ -6,7 +6,7 @@ const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
 const FUNCTION_NAME='admin-player-workspace';
 const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 const $=id=>document.getElementById(id);
-let players=[],byId=new Map(),bookmarks=new Set(),notes=[],currentView='search';
+let players=[],byId=new Map(),bookmarks=new Set(),notes=[],analyses=[],currentView='search';
 
 function msg(text='',error=false){const el=$('workspaceMessage');el.textContent=text;el.classList.toggle('error',error)}
 function loginMsg(text='',error=false){const el=$('loginMessage');el.textContent=text;el.classList.toggle('error',error)}
@@ -19,6 +19,7 @@ function affiliationGrade(p){
 }
 function playerMeta(p){return [affiliationGrade(p),p?.rawPosition||'포지션 미확인',p?.gender?(p.gender==='W'?'여자':'남자'):''].filter(Boolean)}
 function profileHref(id){return 'player.html?id='+encodeURIComponent(id)+'&admin=1&return='+encodeURIComponent('admin-player-workspace.html')}
+function formatDate(value){const d=new Date(value);return Number.isNaN(d.getTime())?String(value||''):d.toLocaleString('ko-KR')}
 
 async function api(action,payload={}){
   const {data,error}=await supabase.functions.invoke(FUNCTION_NAME,{body:{action,...payload}});
@@ -27,10 +28,11 @@ async function api(action,payload={}){
   return data;
 }
 function updateCounts(){
-  const bm=bookmarks.size,nt=notes.length;
+  const bm=bookmarks.size,nt=notes.length,at=analyses.length,ac=analyses.filter(x=>x.publication_status==='member_candidate').length;
   $('bookmarkCount').textContent=String(bm);$('noteCount').textContent=String(nt);
   $('bookmarkTabCount').textContent=bm?String(bm):'';$('noteTabCount').textContent=nt?String(nt):'';
-  $('analysisBookmarkCount').textContent=String(bm);$('analysisNoteCount').textContent=String(nt);
+  $('analysisCount').textContent=String(at);$('analysisCandidateCount').textContent=String(ac);$('analysisTabCount').textContent=at?String(at):'';
+  $('analysisTotalCount').textContent=String(at);$('analysisPrivateCount').textContent=String(at-ac);$('analysisCandidatePaneCount').textContent=String(ac);
 }
 function updateNoteSeasonOptions(){
   const select=$('noteSeasonFilter'),previous=select.value;
@@ -38,26 +40,32 @@ function updateNoteSeasonOptions(){
   select.innerHTML='<option value="">전체 시즌</option>'+seasons.map(s=>`<option value="${e(s)}">${e(s)}</option>`).join('');
   select.value=seasons.includes(previous)?previous:'';
 }
+function updateAnalysisSeasonOptions(){
+  const select=$('analysisSeasonFilter'),previous=select.value;
+  const seasons=[...new Set(analyses.map(a=>a.season).filter(Boolean))].sort((a,b)=>b.localeCompare(a,'ko'));
+  select.innerHTML='<option value="">전체 시즌</option>'+seasons.map(s=>`<option value="${e(s)}">${e(s)}</option>`).join('');
+  select.value=seasons.includes(previous)?previous:'';
+}
 async function refreshState(){
-  const [status,bm,ns]=await Promise.all([api('status'),api('list_bookmarks'),api('list_notes')]);
-  bookmarks=new Set((bm.items||[]).map(x=>x.player_id));notes=ns.items||[];
-  updateCounts();updateNoteSeasonOptions();renderCurrent();
+  const [status,bm,ns,as]=await Promise.all([api('status'),api('list_bookmarks'),api('list_notes'),api('list_analyses')]);
+  bookmarks=new Set((bm.items||[]).map(x=>x.player_id));notes=ns.items||[];analyses=as.items||[];
+  updateCounts();updateNoteSeasonOptions();updateAnalysisSeasonOptions();renderCurrent();
 }
 function showWorkspace(user){$('accountEmail').textContent=user.email||'관리자';$('loginView').hidden=true;$('workspaceView').hidden=false}
 function showLogin(){$('workspaceView').hidden=true;$('loginView').hidden=false;$('password').value=''}
 
 function row(p){
-  const saved=bookmarks.has(p.id);
-  const meta=playerMeta(p);
+  const saved=bookmarks.has(p.id),meta=playerMeta(p),analysisCount=analyses.filter(a=>a.player_id===p.id).length;
   return `<article class="player-row">
     <div class="player-avatar" aria-hidden="true">${e((p.name||'K').slice(0,1))}</div>
     <div class="player-main">
-      <div class="player-title"><strong>${e(p.name)}</strong></div>
+      <div class="player-title"><strong>${e(p.name)}</strong>${analysisCount?`<span class="analysis-mini-badge">분석 ${analysisCount}</span>`:''}</div>
       <div class="player-meta">${meta.map(x=>`<span>${e(x)}</span>`).join('')}</div>
     </div>
     <div class="row-actions">
       <button class="bookmark ${saved?'saved':''}" type="button" data-bookmark="${e(p.id)}">${saved?'★ 관심선수':'☆ 관심선수'}</button>
       <button class="note-button" type="button" data-note-player="${e(p.id)}">메모 작성</button>
+      <button class="analysis-button" type="button" data-analysis-player="${e(p.id)}">선수 분석</button>
       <a class="profile-link" href="${e(profileHref(p.id))}">프로필 보기</a>
     </div>
   </article>`;
@@ -82,14 +90,10 @@ function filteredNotes(){
 function renderNotes(){
   const list=filteredNotes();$('noteFilterCount').textContent=`${list.length.toLocaleString('ko-KR')}개 표시`;
   $('noteResults').innerHTML=list.length?list.map(n=>{
-    const p=byId.get(n.player_id),meta=playerMeta(p),updated=new Date(n.updated_at).toLocaleString('ko-KR');
+    const p=byId.get(n.player_id),meta=playerMeta(p),updated=formatDate(n.updated_at);
     return `<article class="note-card">
       <div class="note-card-top">
-        <div class="note-player">
-          <span class="season-pill">${e(n.season||'시즌 미지정')}</span>
-          <strong>${e(pname(n.player_id))}</strong>
-          
-        </div>
+        <div class="note-player"><span class="season-pill">${e(n.season||'시즌 미지정')}</span><strong>${e(pname(n.player_id))}</strong></div>
         <button type="button" data-edit-note="${e(n.id)}">수정</button>
       </div>
       <div class="note-player-meta">${meta.map(x=>`<span>${e(x)}</span>`).join('')}</div>
@@ -99,7 +103,45 @@ function renderNotes(){
     </article>`;
   }).join(''):'<div class="empty"><strong>조건에 맞는 메모가 없습니다.</strong><span>검색어 또는 시즌 필터를 바꾸거나 선수 검색에서 새 메모를 작성하세요.</span></div>';
 }
-function renderAnalysis(){updateCounts()}
+
+function filteredAnalyses(){
+  const q=$('analysisQuery').value.trim().toLocaleLowerCase(),season=$('analysisSeasonFilter').value,status=$('analysisStatusFilter').value;
+  return analyses.filter(a=>{
+    const p=byId.get(a.player_id),hay=[a.title,a.summary,a.strengths,a.improvements,a.tactical_notes,a.recent_changes,a.season,p?.name,affiliation(p)].join(' ').toLocaleLowerCase();
+    return (!q||hay.includes(q))&&(!season||a.season===season)&&(!status||a.publication_status===status);
+  });
+}
+function analysisSection(label,value){
+  if(!value)return'';
+  return `<div class="analysis-card-section"><small>${e(label)}</small><p>${e(value)}</p></div>`;
+}
+function renderAnalysis(){
+  updateCounts();
+  const list=filteredAnalyses();$('analysisFilterCount').textContent=`${list.length.toLocaleString('ko-KR')}개 분석 표시`;
+  $('analysisResults').innerHTML=list.length?list.map(a=>{
+    const p=byId.get(a.player_id),meta=playerMeta(p),candidate=a.publication_status==='member_candidate',linked=(a.related_note_ids||[]).map(id=>notes.find(n=>n.id===id)).filter(Boolean);
+    return `<article class="analysis-card">
+      <div class="analysis-card-head">
+        <div>
+          <div class="analysis-card-labels"><span class="season-pill">${e(a.season||'시즌 미지정')}</span><span class="analysis-state ${candidate?'candidate':'private'}">${candidate?'회원 공개 후보':'나만 보기'}</span></div>
+          <h3>${e(a.title)}</h3>
+          <strong class="analysis-player-name">${e(pname(a.player_id))}</strong>
+          <div class="note-player-meta">${meta.map(x=>`<span>${e(x)}</span>`).join('')}</div>
+        </div>
+        <button type="button" data-edit-analysis="${e(a.id)}">수정</button>
+      </div>
+      <div class="analysis-summary"><small>핵심 요약</small><p>${e(a.summary)}</p></div>
+      <div class="analysis-card-sections">
+        ${analysisSection('장점',a.strengths)}
+        ${analysisSection('보완점',a.improvements)}
+        ${analysisSection('전술적 특징',a.tactical_notes)}
+        ${analysisSection('최근 변화',a.recent_changes)}
+      </div>
+      ${linked.length?`<div class="analysis-linked-notes"><small>연결 메모 ${linked.length}개</small>${linked.map(n=>`<span>${e(n.season)} · ${e(n.title)}</span>`).join('')}</div>`:''}
+      <footer><span>최근 수정 ${e(formatDate(a.updated_at))}</span><span>revision ${e(a.revision)}</span></footer>
+    </article>`;
+  }).join(''):'<div class="empty"><strong>작성된 선수 분석이 없습니다.</strong><span>선수 검색 또는 관심선수에서 ‘선수 분석’을 눌러 첫 분석을 작성하세요.</span></div>';
+}
 function renderCurrent(){
   if(currentView==='search')renderSearch();
   else if(currentView==='bookmarks')renderBookmarks();
@@ -122,6 +164,7 @@ async function toggleBookmark(id){
     msg(d.saved?'관심 선수에 등록했습니다.':'관심 선수에서 해제했습니다.');
   }catch(err){msg(err.message,true)}
 }
+
 function setNoteMeta(id){
   const p=byId.get(id),parts=playerMeta(p);$('notePlayerMeta').textContent=parts.join(' · ')||'선수 개인 기록';
 }
@@ -139,6 +182,26 @@ function openNote(id){
 }
 function closeNote(){$('noteDialog').close()}
 
+function renderRelatedNotes(playerId,selected=[]){
+  const chosen=new Set(selected),items=notes.filter(n=>n.player_id===playerId).sort((a,b)=>String(b.updated_at).localeCompare(String(a.updated_at)));
+  $('analysisRelatedNotes').innerHTML=items.length?items.map(n=>`<label class="analysis-note-option"><input type="checkbox" name="analysisRelatedNote" value="${e(n.id)}" ${chosen.has(n.id)?'checked':''}><span><b>${e(n.season||'시즌 미지정')} · ${e(n.title)}</b><small>${e(formatDate(n.updated_at))}</small><em>${e(n.body)}</em></span></label>`).join(''):'<div class="analysis-note-empty">이 선수에게 작성된 기존 메모가 없습니다.</div>';
+}
+function setAnalysisPlayerMeta(id){
+  const p=byId.get(id),parts=playerMeta(p);$('analysisPlayerMeta').textContent=parts.join(' · ')||'선수 분석 자료';
+}
+function resetAnalysisFields(){
+  $('analysisId').value='';$('analysisRevision').value='';$('analysisSeason').value='2026-27';$('analysisStatus').value='private';$('analysisTitle').value='';$('analysisSummary').value='';$('analysisStrengths').value='';$('analysisImprovements').value='';$('analysisTactical').value='';$('analysisRecentChanges').value='';$('deleteAnalysisButton').hidden=true;
+}
+function openPlayerAnalysis(id){
+  const p=byId.get(id);resetAnalysisFields();$('analysisPlayer').value=id;$('analysisPlayerName').textContent=(p?.name||id)+' · 선수 분석';setAnalysisPlayerMeta(id);renderRelatedNotes(id,[]);$('analysisDialog').showModal();$('analysisTitle').focus();
+}
+function openAnalysis(id){
+  const a=analyses.find(x=>x.id===id);if(!a)return;
+  $('analysisId').value=a.id;$('analysisRevision').value=String(a.revision);$('analysisPlayer').value=a.player_id;$('analysisPlayerName').textContent=pname(a.player_id)+' · 선수 분석';setAnalysisPlayerMeta(a.player_id);
+  $('analysisSeason').value=a.season||'2026-27';$('analysisStatus').value=a.publication_status||'private';$('analysisTitle').value=a.title||'';$('analysisSummary').value=a.summary||'';$('analysisStrengths').value=a.strengths||'';$('analysisImprovements').value=a.improvements||'';$('analysisTactical').value=a.tactical_notes||'';$('analysisRecentChanges').value=a.recent_changes||'';renderRelatedNotes(a.player_id,a.related_note_ids||[]);$('deleteAnalysisButton').hidden=false;$('analysisDialog').showModal();
+}
+function closeAnalysis(){$('analysisDialog').close()}
+
 $('loginForm').addEventListener('submit',async ev=>{
   ev.preventDefault();$('loginButton').disabled=true;loginMsg('관리자 계정을 확인하는 중…');
   try{
@@ -148,20 +211,29 @@ $('loginForm').addEventListener('submit',async ev=>{
   }catch(err){await supabase.auth.signOut().catch(()=>{});showLogin();loginMsg(err.message||'로그인에 실패했습니다.',true)}
   finally{$('loginButton').disabled=false}
 });
-$('logoutButton').addEventListener('click',async()=>{msg('로그아웃 중…');await supabase.auth.signOut();bookmarks.clear();notes=[];showLogin();loginMsg('로그아웃했습니다.')});
+$('logoutButton').addEventListener('click',async()=>{msg('로그아웃 중…');await supabase.auth.signOut();bookmarks.clear();notes=[];analyses=[];showLogin();loginMsg('로그아웃했습니다.')});
 $('searchForm').addEventListener('submit',ev=>{ev.preventDefault();renderSearch()});
 $('genderFilter').addEventListener('change',renderSearch);
-let debounce;$('playerQuery').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(renderSearch,120)});
+let debounce;
+$('playerQuery').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(renderSearch,120)});
 $('noteQuery').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(renderNotes,120)});
 $('noteSeasonFilter').addEventListener('change',renderNotes);
+$('analysisQuery').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(renderAnalysis,120)});
+$('analysisSeasonFilter').addEventListener('change',renderAnalysis);
+$('analysisStatusFilter').addEventListener('change',renderAnalysis);
+$('analysisStartFromSearch').addEventListener('click',()=>{changeView('search');setTimeout(()=>$('playerQuery').focus(),250)});
 document.querySelector('.tabs').addEventListener('click',ev=>{const b=ev.target.closest('[data-view]');if(b)changeView(b.dataset.view)});
 document.addEventListener('click',ev=>{
   const b=ev.target.closest('button');if(!b)return;
   if(b.dataset.bookmark)toggleBookmark(b.dataset.bookmark);
   if(b.dataset.notePlayer)openPlayerNote(b.dataset.notePlayer);
   if(b.dataset.editNote)openNote(b.dataset.editNote);
+  if(b.dataset.analysisPlayer)openPlayerAnalysis(b.dataset.analysisPlayer);
+  if(b.dataset.editAnalysis)openAnalysis(b.dataset.editAnalysis);
 });
 $('noteClose').addEventListener('click',closeNote);$('cancelNoteButton').addEventListener('click',closeNote);
+$('analysisClose').addEventListener('click',closeAnalysis);$('cancelAnalysisButton').addEventListener('click',closeAnalysis);
+
 $('noteForm').addEventListener('submit',async ev=>{
   ev.preventDefault();
   const payload={id:$('noteId').value||null,expected_revision:$('noteRevision').value?Number($('noteRevision').value):null,player_id:$('notePlayer').value,season:$('noteSeason').value.trim(),title:$('noteTitle').value.trim(),body:$('noteBody').value.trim()};
@@ -174,6 +246,37 @@ $('deleteNoteButton').addEventListener('click',async()=>{
   msg('메모 삭제 중…');
   try{await api('delete_note',{id,expected_revision:Number($('noteRevision').value)});closeNote();await refreshState();changeView('notes');msg('메모를 삭제했습니다.')}catch(err){msg(err.message,true)}
 });
+
+$('analysisForm').addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  const related=[...document.querySelectorAll('[name="analysisRelatedNote"]:checked')].map(x=>x.value);
+  const payload={
+    id:$('analysisId').value||null,
+    expected_revision:$('analysisRevision').value?Number($('analysisRevision').value):null,
+    player_id:$('analysisPlayer').value,
+    season:$('analysisSeason').value.trim(),
+    publication_status:$('analysisStatus').value,
+    title:$('analysisTitle').value.trim(),
+    summary:$('analysisSummary').value.trim(),
+    strengths:$('analysisStrengths').value.trim(),
+    improvements:$('analysisImprovements').value.trim(),
+    tactical_notes:$('analysisTactical').value.trim(),
+    recent_changes:$('analysisRecentChanges').value.trim(),
+    related_note_ids:related
+  };
+  if(!payload.season||!payload.title||!payload.summary)return;
+  msg('선수 분석 저장 중…');
+  try{await api('save_analysis',payload);closeAnalysis();await refreshState();changeView('analysis');msg('선수 분석을 저장했습니다.')}catch(err){msg(err.message,true)}
+});
+$('deleteAnalysisButton').addEventListener('click',async()=>{
+  const id=$('analysisId').value;if(!id||!confirm('이 선수 분석을 삭제할까요?'))return;
+  msg('선수 분석 삭제 중…');
+  try{await api('delete_analysis',{id,expected_revision:Number($('analysisRevision').value)});closeAnalysis();await refreshState();changeView('analysis');msg('선수 분석을 삭제했습니다.')}catch(err){msg(err.message,true)}
+});
+
+for(const dialog of [$('noteDialog'),$('analysisDialog')]){
+  dialog.addEventListener('click',ev=>{if(ev.target===dialog)dialog=== $('noteDialog')?closeNote():closeAnalysis()});
+}
 
 async function loadCatalog(){
   if(players.length)return;
