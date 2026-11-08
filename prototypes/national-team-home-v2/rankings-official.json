@@ -1,0 +1,149 @@
+{
+  "retrievedDateKST": "2026-11-09",
+  "officialUpdatedAtUTC": "2026-10-15T10:40:00Z",
+  "officialUpdatedAtKST": "2026-10-15T19:40:00+09:00",
+  "officialDateText": "15 Oct 2026 - 10:40 am UTC",
+  "note": "Current official API snapshot, not 2028 Olympic qualifying ranking. trend is official UI display field; prior snapshot date not provided.",
+  "teams": {
+    "men": {
+      "rank": 25,
+      "points": 163.1,
+      "officialTrend": 0,
+      "changeFromPreviousVerifiedSnapshot": null,
+      "previousSnapshotDate": null,
+      "confederationRank": 3,
+      "sourcePage": "https://en.volleyballworld.com/volleyball/world-ranking/men",
+      "sourceApi": "https://en.volleyballworld.com/api/v1/worldranking/volleyball/1/0/50",
+      "sourceDateText": "15 Oct 2026 - 10:40 am UTC",
+      "rawSha256": "f19f6e73fd052fb7097490d9b4d4ee6e37f465cacca33745a835b00e6e9f26c2",
+      "asia": [
+        {
+          "rank": 5,
+          "federationCode": "JPN",
+          "federationName": "Japan",
+          "decimalPoints": 352.7,
+          "trend": 0
+        },
+        {
+          "rank": 19,
+          "federationCode": "IRI",
+          "federationName": "Iran",
+          "decimalPoints": 224.7,
+          "trend": 0
+        },
+        {
+          "rank": 25,
+          "federationCode": "KOR",
+          "federationName": "Korea",
+          "decimalPoints": 163.1,
+          "trend": 0
+        },
+        {
+          "rank": 34,
+          "federationCode": "CHN",
+          "federationName": "China",
+          "decimalPoints": 134.53,
+          "trend": 0
+        },
+        {
+          "rank": 39,
+          "federationCode": "BRN",
+          "federationName": "Bahrain",
+          "decimalPoints": 126.81,
+          "trend": 2
+        },
+        {
+          "rank": 40,
+          "federationCode": "PAK",
+          "federationName": "Pakistan",
+          "decimalPoints": 125.42,
+          "trend": -1
+        },
+        {
+          "rank": 42,
+          "federationCode": "AUS",
+          "federationName": "Australia",
+          "decimalPoints": 121.75,
+          "trend": 0
+        },
+        {
+          "rank": 44,
+          "federationCode": "QAT",
+          "federationName": "Qatar",
+          "decimalPoints": 120.64,
+          "trend": 0
+        }
+      ]
+    },
+    "women": {
+      "rank": 28,
+      "points": 156.0,
+      "officialTrend": 0,
+      "changeFromPreviousVerifiedSnapshot": null,
+      "previousSnapshotDate": null,
+      "confederationRank": 4,
+      "sourcePage": "https://en.volleyballworld.com/volleyball/world-ranking/women",
+      "sourceApi": "https://en.volleyballworld.com/api/v1/worldranking/volleyball/0/0/50",
+      "sourceDateText": "15 Oct 2026 - 10:40 am UTC",
+      "rawSha256": "deb186381b0be10afd949916a1327e84ef4c45beeb029bf54bb0d29f1b55a68d",
+      "asia": [
+        {
+          "rank": 6,
+          "federationCode": "JPN",
+          "federationName": "Japan",
+          "decimalPoints": 337.16,
+          "trend": 0
+        },
+        {
+          "rank": 7,
+          "federationCode": "CHN",
+          "federationName": "China",
+          "decimalPoints": 324.9,
+          "trend": 0
+        },
+        {
+          "rank": 13,
+          "federationCode": "THA",
+          "federationName": "Thailand",
+          "decimalPoints": 244.01,
+          "trend": 0
+        },
+        {
+          "rank": 28,
+          "federationCode": "KOR",
+          "federationName": "Korea",
+          "decimalPoints": 156.0,
+          "trend": 0
+        },
+        {
+          "rank": 33,
+          "federationCode": "VIE",
+          "federationName": "Vietnam",
+          "decimalPoints": 140.91,
+          "trend": 0
+        },
+        {
+          "rank": 38,
+          "federationCode": "TPE",
+          "federationName": "Chinese Taipei",
+          "decimalPoints": 125.23,
+          "trend": 0
+        },
+        {
+          "rank": 40,
+          "federationCode": "IRI",
+          "federationName": "Iran",
+          "decimalPoints": 120.75,
+          "trend": 0
+        },
+        {
+          "rank": 44,
+          "federationCode": "KAZ",
+          "federationName": "Kazakhstan",
+          "decimalPoints": 113.84,
+          "trend": 0
+        }
+      ]
+    }
+  }
+}

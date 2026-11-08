@@ -529,3 +529,12 @@ Base `a50b3d894015f2a156ce6341ca60b580fbd3196f`. 상태: USER APPROVED / IMPLEME
 ## 2026-11-06 — V-League live recovery candidate (#257 / #259)
 
 Status: **IMPLEMENTED / LOCAL QA VERIFIED / NOT DEPLOYED**. Owner requested isolated fixes and review before production deployment. Shared live-score rendering now includes certified completed-set points and a KST observation timestamp; stale scores at 30 minutes are explicitly historical. Added an inert Cloudflare wake-up/watchdog implementation that invokes the existing approved publisher and preserves MASTER/roster identity gates. No activation, merge or deployment is authorized by this entry. Actual two-cycle live acceptance remains open; see [evidence and release gate](validation/vleague-live-recovery-20261106/REPORT.md).
+
+## 2026-11-09 · 국가대표팀 홈 v2 정보 구조 (PROTOTYPE)
+
+- 상태: PROTOTYPE / READY FOR REVIEW. 운영 반영 승인 전이며 main·DB·MASTER·자동화는 변경하지 않음.
+- 범위: `prototypes/national-team-home-v2/`, 기존 v1 기반 독립 Site.
+- 내용: 2026 남녀 각 4개 출전대회 최종 성적을 최우선 배치. LA28 실제 진행·남녀 월드컵 진출 경로·공식 랭킹 스냅샷을 추가. 공통 메뉴/HERO/1180px/카드/골드 hover 재사용.
+- 검수/출처/제약/복구: 해당 폴더 `README.md`, `tournaments-official.json`, `rankings-official.json`.
+- 기준 main: `2190b137d9e2682005ec922333b2ecbb2d38ae8f`. 기존 v1 PR #272는 운영 미반영 상태이며, v2가 후속 디자인 검수 대상이다.
+- 다음 단계: 사용자가 독립 미리보기 v2를 디자인 승인한 후 운영 적용용 변경을 별도로 준비한다. 이번 프로토타입 자체를 운영 DEPLOYED로 표시하지 않는다.
