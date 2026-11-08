@@ -529,3 +529,9 @@ Base `a50b3d894015f2a156ce6341ca60b580fbd3196f`. 상태: USER APPROVED / IMPLEME
 ## 2026-11-06 — V-League live recovery candidate (#257 / #259)
 
 Status: **IMPLEMENTED / LOCAL QA VERIFIED / NOT DEPLOYED**. Owner requested isolated fixes and review before production deployment. Shared live-score rendering now includes certified completed-set points and a KST observation timestamp; stale scores at 30 minutes are explicitly historical. Added an inert Cloudflare wake-up/watchdog implementation that invokes the existing approved publisher and preserves MASTER/roster identity gates. No activation, merge or deployment is authorized by this entry. Actual two-cycle live acceptance remains open; see [evidence and release gate](validation/vleague-live-recovery-20261106/REPORT.md).
+
+## 2026-11-08 · 국가대표팀 홈 독립 프로토타입 v1
+
+Status: **PROTOTYPE / REVIEW READY / NO PRODUCTION RELEASE AUTHORIZATION**. 사용자는 현재·과거·미래 국가대표 허브의 작동형 PC/모바일 시안을 요청했고 main 병합과 운영 배포를 금지했다. Base `fc0df22a57b90078cb3d7ba76e6a8cdbdf770ed2`, branch `feature/national-team-home-prototype-v1`. 공통 메뉴/HERO/현재 글꼴을 재사용하며 남녀 전환, 최근·다음 경기, 출전대회, 대회별 명단, 히스토리·세대추적, LA28/랭킹을 독립 화면으로 구성한다. 기존 데이터와 ID는 읽기만 하며 미구축/미확인 항목을 추정하지 않는다.
+
+별도 비공개 검토 Site에만 게시했다. PC 및 360/390px 반응형 화면과 주요 동작을 확인했다. 상세 데이터 범위·검증·제약·재현·다음 단계는 [프로토타입 인계 기록](../prototypes/national-team-home-v1/README.md)에 기록한다. 정식 반영은 디자인 승인 후 별도 작업이다.
