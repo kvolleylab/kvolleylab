@@ -411,23 +411,33 @@
       },
       "venueLabel": "천안 유관순체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:15",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-08T05:57:12+00:00",
-      "liveScore": {
-        "home": 0,
+      "updatedAt": "2026-11-08T10:09:48+00:00",
+      "score": {
+        "home": 3,
         "away": 1,
-        "sourceKey": "023:001:MALE:15",
-        "observedAt": "2026-11-08T05:57:12+00:00"
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 19
+          },
+          {
+            "home": 34,
+            "away": 32
+          },
+          {
+            "home": 25,
+            "away": 10
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 23,
-          "away": 25,
-          "status": "completed"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-009",
@@ -2816,6 +2826,27 @@
       {
         "rank": 2,
         "team": {
+          "code": "HDC",
+          "name": "현대캐피탈",
+          "fullName": "현대캐피탈",
+          "en": "HDC"
+        },
+        "poolId": "LEAGUE",
+        "games": 3,
+        "wins": 2,
+        "losses": 1,
+        "points": 6,
+        "setWins": 6,
+        "setLosses": 5,
+        "pointsFor": 270,
+        "pointsAgainst": 250,
+        "setRatio": "1.200",
+        "pointRatio": "1.080",
+        "statusLabel": "2위"
+      },
+      {
+        "rank": 3,
+        "team": {
           "code": "KAL",
           "name": "대한항공",
           "fullName": "대한항공",
@@ -2832,10 +2863,10 @@
         "pointsAgainst": 163,
         "setRatio": "1.333",
         "pointRatio": "1.055",
-        "statusLabel": "2위"
+        "statusLabel": "3위"
       },
       {
-        "rank": 3,
+        "rank": 4,
         "team": {
           "code": "SFB",
           "name": "삼성화재",
@@ -2853,10 +2884,10 @@
         "pointsAgainst": 200,
         "setRatio": "1.000",
         "pointRatio": "1.005",
-        "statusLabel": "3위"
+        "statusLabel": "4위"
       },
       {
-        "rank": 4,
+        "rank": 5,
         "team": {
           "code": "OKF",
           "name": "OK저축은행",
@@ -2874,27 +2905,6 @@
         "pointsAgainst": 187,
         "setRatio": "1.000",
         "pointRatio": "0.968",
-        "statusLabel": "4위"
-      },
-      {
-        "rank": 5,
-        "team": {
-          "code": "HDC",
-          "name": "현대캐피탈",
-          "fullName": "현대캐피탈",
-          "en": "HDC"
-        },
-        "poolId": "LEAGUE",
-        "games": 2,
-        "wins": 1,
-        "losses": 1,
-        "points": 3,
-        "setWins": 3,
-        "setLosses": 4,
-        "pointsFor": 163,
-        "pointsAgainst": 164,
-        "setRatio": "0.750",
-        "pointRatio": "0.994",
         "statusLabel": "5위"
       },
       {
@@ -2927,16 +2937,16 @@
           "en": "KBI"
         },
         "poolId": "LEAGUE",
-        "games": 2,
+        "games": 3,
         "wins": 0,
-        "losses": 2,
+        "losses": 3,
         "points": 0,
-        "setWins": 2,
-        "setLosses": 6,
-        "pointsFor": 191,
-        "pointsAgainst": 209,
+        "setWins": 3,
+        "setLosses": 9,
+        "pointsFor": 277,
+        "pointsAgainst": 316,
         "setRatio": "0.333",
-        "pointRatio": "0.914",
+        "pointRatio": "0.877",
         "statusLabel": "7위"
       }
     ]
@@ -3008,14 +3018,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 7/126경기 종료 · 2026-11-08 14:57 KST 반영",
-  "updatedAt": "2026-11-08T05:57:12+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 8/126경기 종료 · 2026-11-08 19:09 KST 반영",
+  "updatedAt": "2026-11-08T10:09:48+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 7,
+    "completedMatches": 8,
     "postseason": {
       "matched": 0,
       "completed": 0,
