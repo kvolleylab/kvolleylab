@@ -20,6 +20,12 @@ proof that this package is active. Use the operations manifest and activation
 checks in `scripts/scaffold-competition-v2.cjs`; keep existing source and player
 identities, review unresolved player changes, and record actual runtime evidence.
 
+For template reuse, model/plan changes, or next-season setup, also read
+`docs/KVL_MODEL_INDEPENDENT_OPERATIONS_v1.md`. Reuse versioned templates,
+input contracts and repeatable commands; do not depend on chat memory or a
+particular model. Record tool-access limits and manual handoff steps honestly.
+Documentation readiness is not proof of live execution or next-season support.
+
 ## Seven mandatory development rules
 
 1. **Check sources first.** Verify current GitHub main, relevant Google Drive MASTER, and applicable operation/design standards before editing.

@@ -1,5 +1,30 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-10(KST) · 모델·요금제 독립 운영 및 이번 시즌 인증 유지
+
+Status: USER APPROVED POLICY / DOCUMENTATION UPDATE; 신규 기능 배포·다음 시즌 개통 완료를 뜻하지 않는다.
+사용자는 이번 시즌에는 180일 GitHub 토큰을 유지하고, 다음 시즌과 모든 홈페이지 양식을
+기본 요금제·다른 모델에서도 재사용할 수 있도록 운영기준에 남기도록 요청했다.
+GitHub App 인증 전환은 보류한다. 기존 토큰·Worker·승인 gate·운영 데이터는 변경하지 않는다.
+토큰의 실제 만료일은 GitHub 설정에서 별도로 확인해야 하며 이 기록에서 특정 날짜로 확정하지 않는다.
+
+Google Drive의 같은 문서 ID를 유지한 운영원칙 MASTER v19에 11-7~11-9를 추가했다.
+확정 양식의 코드·설정·명세·검수 재사용, 모델 밖의 정기 실행, 실행 가능한 인수인계,
+다음 시즌 입력·인증·기간·전체 경로 재검증이 원칙이다.
+파일 위치·요청 양식·기존 명령·남은 확장은 [운영 안내](KVL_MODEL_INDEPENDENT_OPERATIONS_v1.md)에 둔다.
+모든 허브/선수 양식의 자동 생성기나 다음 시즌 원클릭 개통이 완성됐다고 표현하지 않는다.
+
+확인한 main은 `713617e8e043bdf7f7ee61c21b12b0138dc38981`이다.
+현재 runtime의 종료 경계는 `2027-04-30T00:00:00+09:00`이며 종료 미포함이다.
+사용자의 2027년 5월 이후 중지 허용을 종료 경계 자동 연장 승인으로 해석하지 않는다.
+공식 일정이 범위를 벗어나면 근거와 어댑터 지원을 확인한 별도 변경이 필요하다.
+
+이전 11월 7일 기록의 NOT DEPLOYED는 당시 상태다. 후속 배포와 사용자 PC의 Worker 활성화
+증거는 [PR #262 최신 운영 기록](https://github.com/kvolleylab/kvolleylab/pull/262#issuecomment-6744152447)과
+[PR #270](https://github.com/kvolleylab/kvolleylab/pull/270)을 확인한다.
+활성 설정 배포와 경기 중 2회 연속 전체 경로 검증은 구분한다. 이번 문서 작업은 새 라이브 성공 증거가 아니다.
+검증 범위는 문서 재조회·참조 파일 존재·문서 diff이며 실제 선수/경기 MASTER나 화면은 수정하지 않는다.
+
 ## 2026-11-07 · V-리그 최초 관측 누락·스케줄러 보완 v2
 
 Status: IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED / LIVE RECOVERY NOT VERIFIED. 사용자 추가 수정 요청에 따라 `fix/vleague-missing-observation-v2`에서 작업했다. Base main `208b7babc27d15697e5b55cca934ab1e6a1bf0a1`. 최초 관측이 없는 공식 V-리그 경기는 KST 시작 30분 후 ‘갱신 지연 / 최종 관측 없음 / —’으로 표시하고, watchdog은 `updatedAt`을 라이브 관측으로 인정하지 않는다. Cloudflare 명시적 활성화 설정을 준비하되 기본 설정은 비활성을 유지한다. 18:53 기존 publisher가 남녀 최종 결과를 반영했지만 이전 실행과 4시간 간격이므로 라이브 복구 성공이 아니다. 새 운영 배포 승인·Cloudflare 인증/활성화·실경기 2회 연속 전체 경로 검증은 별도 미완료 단계다. [원인·테스트·화면·배포 및 복구 절차](validation/vleague-missing-observation-v2.md). 선수 MASTER/명단/ID/국제대회/Cup 데이터 불변.
