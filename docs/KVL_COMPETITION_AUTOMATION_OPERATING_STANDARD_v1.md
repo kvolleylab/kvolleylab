@@ -4,8 +4,10 @@
 선수 명단·등록·이적·공식 공시 및 별도 기사 수집, 대학·중고 공식 첨부자료 처리.
 
 상위 기준은 같은 문서 ID를 유지한
-[KVL 운영원칙 MASTER v18](https://docs.google.com/document/d/1iu1aWoTdSf2L7VCco5X7pCPxs9qVlM9rskZ8_hI76FY/edit)이다.
+[KVL 운영원칙 MASTER v19](https://docs.google.com/document/d/1iu1aWoTdSf2L7VCco5X7pCPxs9qVlM9rskZ8_hI76FY/edit)이다.
 특정 시즌의 실행·검증 상태는 이 문서의 원칙과 분리하여 STATUS와 validation 기록에 둔다.
+모델·요금제 변경 및 다음 시즌의 인수인계는
+[모델·요금제 독립 운영 안내](KVL_MODEL_INDEPENDENT_OPERATIONS_v1.md)를 함께 따른다.
 
 ## 1. 대회 추가의 완료 단위
 
