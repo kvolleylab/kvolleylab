@@ -1,0 +1,155 @@
+/* K-Volley Lab · Domestic main hub HERO geometry v1
+ * Scope: university, comprehensive, school and legacy domestic hubs.
+ * Competition detail HERO (Competition Engine V2) intentionally excluded.
+ * Preserve each hub's approved artwork, palette and all underlying data.
+ */
+:root {
+  --kvl-domestic-hub-width: 1180px;
+  --kvl-domestic-hub-hero-pc: 225px;
+  --kvl-domestic-hub-hero-mobile: 215px;
+  --kvl-domestic-hub-pad-pc: 24px 30px;
+  --kvl-domestic-hub-pad-mobile: 20px 18px;
+}
+
+/* One geometry contract, independent of the page-specific HERO component. */
+.university-years-hub .kvl-common-hero,
+.comprehensive-hub .kvl-common-hero,
+body.school-competitions-hub-page #app .school-hero,
+body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-hero {
+  box-sizing: border-box;
+  min-height: var(--kvl-domestic-hub-hero-pc);
+  height: auto; /* Long Korean titles must never be clipped. */
+  padding: var(--kvl-domestic-hub-pad-pc);
+  border-radius: 0;
+}
+
+/* Older domestic index used a 1280px shell and a 42px top offset. */
+body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-main {
+  box-sizing: border-box;
+  max-width: var(--kvl-domestic-hub-width);
+  padding: 0 20px 72px;
+}
+body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-hero h1 {
+  font-size: 42px;
+  line-height: 1.14;
+  margin: 8px 0 10px;
+}
+body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-hero p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-status {
+  margin-top: 11px;
+}
+
+/* Comprehensive hub: retire the legacy 3:1 geometry without losing the
+ * right-aligned event photograph. Apply a readable text-side overlay. */
+.comprehensive-hub .kvl-common-hero[data-hero-mode="photo"] {
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: auto;
+  background-color: #163a5f;
+  background-image:
+    linear-gradient(90deg, rgba(7,27,53,.76) 0%, rgba(7,27,53,.4) 49%, rgba(7,27,53,0) 82%),
+    var(--kvl-common-hero-image);
+  background-size: 100% 100%, auto 100%;
+  background-position: center, right center;
+  background-repeat: no-repeat;
+}
+.comprehensive-hub .kvl-common-hero-copy {
+  max-width: 50%;
+}
+.comprehensive-hero-sub {
+  margin-top: 8px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+.comprehensive-hub .univ-hero-desc {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.comprehensive-hero-link {
+  margin-top: 9px;
+  font-size: 13px;
+}
+
+/* School hub keeps its original background and teal accent, while sharing
+ * the university hub's desktop title size and compact vertical rhythm. */
+body.school-competitions-hub-page #app .school-hero h1 {
+  font-size: 42px !important;
+  line-height: 1.12;
+  margin: 6px 0 7px;
+}
+body.school-competitions-hub-page #app .hero-note {
+  font-size: 12px;
+  line-height: 1.45;
+}
+body.school-competitions-hub-page #app .hero-link {
+  margin-top: 7px;
+  font-size: 11px;
+}
+
+/* The original school stylesheet uses a 767px breakpoint. Preserve its
+ * mobile text flow until 767px, while unifying 681–767px HERO geometry. */
+@media (max-width: 767px) {
+  body.school-competitions-hub-page #app .hero-copy {
+    max-width: 100%;
+  }
+}
+@media (max-width: 680px) {
+  .university-years-hub .kvl-common-hero,
+  .comprehensive-hub .kvl-common-hero,
+  body.school-competitions-hub-page #app .school-hero,
+  body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-hero {
+    min-height: var(--kvl-domestic-hub-hero-mobile);
+    height: auto;
+    padding: var(--kvl-domestic-hub-pad-mobile);
+  }
+  .comprehensive-hub .kvl-common-hero[data-hero-mode="photo"] {
+    background-image:
+      linear-gradient(105deg, rgba(7,27,53,.8) 0%, rgba(7,27,53,.5) 56%, rgba(7,27,53,.06) 90%),
+      var(--kvl-common-hero-image-mobile);
+    background-size: 100% 100%, cover;
+    background-position: center, right center;
+  }
+  .comprehensive-hub .kvl-common-hero-copy {
+    max-width: 100%;
+  }
+  .comprehensive-hero-sub {
+    font-size: 15px;
+    line-height: 1.35;
+    margin-top: 6px;
+  }
+  .comprehensive-hub .univ-hero-desc {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 5px;
+  }
+  .comprehensive-hero-link {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+  body.school-competitions-hub-page #app .school-hero h1 {
+    font-size: 29px !important;
+    line-height: 1.2;
+  }
+  body.school-competitions-hub-page #app .hero-note {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  body.school-competitions-hub-page #app .hero-link {
+    margin-top: 8px;
+    font-size: 10px;
+  }
+  body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-main {
+    padding: 0 12px 54px;
+  }
+  body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-hero h1 {
+    font-size: 29px;
+  }
+  body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-status span {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}
