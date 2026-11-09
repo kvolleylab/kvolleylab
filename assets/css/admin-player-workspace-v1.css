@@ -117,3 +117,44 @@
   .analysis-status-grid{grid-template-columns:1fr}
   .analysis-toolbar{grid-template-columns:1fr}.analysis-toolbar select{grid-column:1/-1}
 }
+
+
+/* KVL Analysis · Match v1 */
+.analysis-mode-tabs{display:flex;gap:8px;margin:0 0 14px;padding:5px;background:#eef2f5;border-radius:12px}
+.analysis-mode-tabs button{flex:1;text-align:left;padding:11px 13px;border-radius:9px;background:transparent;color:#637486}
+.analysis-mode-tabs button small{display:block;font-size:9px;letter-spacing:.1em;opacity:.65;margin-bottom:2px}
+.analysis-mode-tabs button b{font-size:13px}
+.analysis-mode-tabs button.active{background:#fff;color:var(--navy);box-shadow:0 2px 8px rgba(22,48,76,.08)}
+.match-analysis-toolbar{display:grid;grid-template-columns:minmax(0,1fr) 170px 130px 150px auto;gap:8px;align-items:center;margin-top:14px}
+.match-analysis-toolbar input,.match-analysis-toolbar select,.match-picker-grid select,.match-analysis-dialog select{width:100%;border:1px solid #cfd9e4;border-radius:10px;background:#fff;padding:11px 12px;outline:none;color:var(--ink)}
+.match-analysis-toolbar input:focus,.match-analysis-toolbar select:focus,.match-picker-grid select:focus,.match-analysis-dialog select:focus{border-color:#2f659a;box-shadow:0 0 0 3px rgba(47,101,154,.12)}
+.match-analysis-list{display:grid;gap:12px;margin-top:15px}
+.match-analysis-card .analysis-card-head{align-items:flex-start}
+.match-analysis-teams{display:block;margin-top:6px;color:#17304d;font-size:17px}
+.match-analysis-teams span{color:#8a99a8;font-size:11px;font-weight:700;margin:0 4px}
+.match-analysis-teams em{display:inline-block;margin-left:7px;padding:3px 7px;border-radius:999px;background:#edf3f8;color:#214d7b;font-size:11px;font-style:normal}
+.match-analysis-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.match-analysis-meta span{background:#f3f6f9;color:#6d7f90;border-radius:999px;padding:4px 7px;font-size:10px}
+.match-type-badge{display:inline-flex;align-items:center;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:900}
+.match-type-badge.pre{background:#eaf3fb;color:#245a84}.match-type-badge.post{background:#eef7f0;color:#2e6841}
+.match-analysis-dialog{width:min(920px,calc(100% - 28px))}
+.match-picker-grid{display:grid;grid-template-columns:220px 160px minmax(0,1fr);gap:10px}
+.match-select-field{min-width:0}
+.match-selected-summary{border:1px solid #dde6ed;border-radius:12px;background:#f8fafc;padding:12px 14px;display:grid;gap:5px;color:#6d7e8e;font-size:11px}
+.match-selected-summary strong{color:#153e70;font-size:14px}
+.match-analysis-form-top{grid-template-columns:150px 170px 140px}
+.match-link-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.match-link-columns .analysis-related{min-width:0}
+.match-link-columns #matchRelatedPlayerAnalyses,.match-link-columns #matchRelatedNotes{display:grid;gap:7px;max-height:250px;overflow:auto}
+@media(max-width:900px){
+  .match-analysis-toolbar{grid-template-columns:1fr 160px 130px 145px}.match-analysis-toolbar .primary{grid-column:1/-1}
+  .match-picker-grid{grid-template-columns:1fr 1fr}.match-select-field{grid-column:1/-1}
+}
+@media(max-width:700px){
+  .analysis-mode-tabs{overflow:hidden}.analysis-mode-tabs button{padding:10px}
+  .match-analysis-toolbar{grid-template-columns:1fr 1fr}.match-analysis-toolbar input,.match-analysis-toolbar .primary{grid-column:1/-1}
+  .match-picker-grid,.match-analysis-form-top,.match-link-columns{grid-template-columns:1fr}.match-select-field{grid-column:auto}
+}
+@media(max-width:420px){
+  .match-analysis-toolbar{grid-template-columns:1fr}.match-analysis-toolbar select{grid-column:1/-1}
+}
