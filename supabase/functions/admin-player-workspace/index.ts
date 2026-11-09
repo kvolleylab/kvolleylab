@@ -18,6 +18,8 @@ function validPlayerId(v:unknown){return typeof v==="string"&&/^KVL-P-\d{6}$/.te
 function validUuid(v:unknown){return typeof v==="string"&&/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(v)}
 function validRevision(v:unknown){return Number.isInteger(v)&&Number(v)>0}
 function clean(v:unknown,max:number){return String(v??"").trim().slice(0,max)}
+function validKey(v:unknown,max=160){return typeof v==="string"&&v.length>0&&v.length<=max&&/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(v)}
+function validDate(v:unknown){return v===""||v===null||v===undefined||(typeof v==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(v))}
 
 Deno.serve(async req=>{
   const origin=req.headers.get("Origin");
@@ -38,7 +40,8 @@ Deno.serve(async req=>{
       const [b]=await sql`select count(*)::int as count from kvl_admin_private.bookmarks where user_id=${userId}::uuid`;
       const [n]=await sql`select count(*)::int as count from kvl_admin_private.notes where user_id=${userId}::uuid`;
       const [a]=await sql`select count(*)::int as count, count(*) filter (where publication_status='member_candidate')::int as candidate_count from kvl_admin_private.player_analyses where user_id=${userId}::uuid`;
-      return response(origin,200,{ok:true,bookmark_count:b.count,note_count:n.count,analysis_count:a.count,analysis_candidate_count:a.candidate_count});
+      const [m]=await sql`select count(*)::int as count, count(*) filter (where publication_status='member_candidate')::int as candidate_count from kvl_admin_private.match_analyses where user_id=${userId}::uuid`;
+      return response(origin,200,{ok:true,bookmark_count:b.count,note_count:n.count,analysis_count:a.count,analysis_candidate_count:a.candidate_count,match_analysis_count:m.count,match_analysis_candidate_count:m.candidate_count});
     }
     if(action==="list_bookmarks"){
       const items=await sql`select player_id,created_at from kvl_admin_private.bookmarks where user_id=${userId}::uuid order by created_at desc limit 1000`;
@@ -103,6 +106,49 @@ Deno.serve(async req=>{
       if(!validUuid(body.id)||!validRevision(body.expected_revision))return response(origin,400,{ok:false,error:"invalid_analysis_revision"});
       const rows=await sql`delete from kvl_admin_private.player_analyses where id=${body.id}::uuid and user_id=${userId}::uuid and revision=${body.expected_revision} returning id`;
       if(!rows.length)return response(origin,409,{ok:false,error:"analysis_changed_reload"});
+      return response(origin,200,{ok:true});
+    }
+
+
+    if(action==="list_match_analyses"){
+      const items=await sql`select id,competition_key,match_id,season,analysis_type,match_date,match_time,stage,home_code,home_name,away_code,away_name,venue,title,summary,serve_receive,attack_plan,block_defense,rotation_matchups,key_points,result_review,related_player_analysis_ids,related_note_ids,publication_status,revision,created_at,updated_at from kvl_admin_private.match_analyses where user_id=${userId}::uuid order by updated_at desc limit 500`;
+      return response(origin,200,{ok:true,items});
+    }
+    if(action==="save_match_analysis"){
+      const competitionKey=clean(body.competition_key,120),matchId=clean(body.match_id,160);
+      const season=clean(body.season,40),analysisType=body.analysis_type==="post_match"?"post_match":"pre_match";
+      const matchDate=clean(body.match_date,10),matchTime=clean(body.match_time,20),stage=clean(body.stage,80);
+      const homeCode=clean(body.home_code,40),homeName=clean(body.home_name,120),awayCode=clean(body.away_code,40),awayName=clean(body.away_name,120),venue=clean(body.venue,180);
+      const title=clean(body.title,180),summary=clean(body.summary,8000),serveReceive=clean(body.serve_receive,16000),attackPlan=clean(body.attack_plan,16000),blockDefense=clean(body.block_defense,16000),rotationMatchups=clean(body.rotation_matchups,16000),keyPoints=clean(body.key_points,16000),resultReview=clean(body.result_review,16000);
+      const publicationStatus=body.publication_status==="member_candidate"?"member_candidate":"private";
+      const playerAnalysisIds=Array.isArray(body.related_player_analysis_ids)?[...new Set(body.related_player_analysis_ids.map(String))]:[];
+      const noteIds=Array.isArray(body.related_note_ids)?[...new Set(body.related_note_ids.map(String))]:[];
+      if(!validKey(competitionKey,120)||!validKey(matchId,160)||!season||!title||!summary||!validDate(matchDate))return response(origin,400,{ok:false,error:"match_analysis_fields_required"});
+      if(playerAnalysisIds.length>100||playerAnalysisIds.some(id=>!validUuid(id))||noteIds.length>100||noteIds.some(id=>!validUuid(id)))return response(origin,400,{ok:false,error:"invalid_match_analysis_links"});
+      const analysisCsv=playerAnalysisIds.join(","),noteCsv=noteIds.join(",");
+      if(playerAnalysisIds.length){
+        const [check]=await sql`select count(*)::int as count from kvl_admin_private.player_analyses where user_id=${userId}::uuid and id = any(string_to_array(${analysisCsv}, ',')::uuid[])`;
+        if(check.count!==playerAnalysisIds.length)return response(origin,400,{ok:false,error:"linked_player_analyses_not_owned"});
+      }
+      if(noteIds.length){
+        const [check]=await sql`select count(*)::int as count from kvl_admin_private.notes where user_id=${userId}::uuid and id = any(string_to_array(${noteCsv}, ',')::uuid[])`;
+        if(check.count!==noteIds.length)return response(origin,400,{ok:false,error:"linked_notes_not_owned"});
+      }
+      if(body.id){
+        if(!validUuid(body.id)||!validRevision(body.expected_revision))return response(origin,400,{ok:false,error:"invalid_match_analysis_revision"});
+        const rows=await sql`update kvl_admin_private.match_analyses set season=${season},match_date=case when ${matchDate}='' then null else ${matchDate}::date end,match_time=${matchTime},stage=${stage},home_code=${homeCode},home_name=${homeName},away_code=${awayCode},away_name=${awayName},venue=${venue},title=${title},summary=${summary},serve_receive=${serveReceive},attack_plan=${attackPlan},block_defense=${blockDefense},rotation_matchups=${rotationMatchups},key_points=${keyPoints},result_review=${resultReview},related_player_analysis_ids=case when ${analysisCsv}='' then '{}'::uuid[] else string_to_array(${analysisCsv}, ',')::uuid[] end,related_note_ids=case when ${noteCsv}='' then '{}'::uuid[] else string_to_array(${noteCsv}, ',')::uuid[] end,publication_status=${publicationStatus},revision=revision+1,updated_at=clock_timestamp() where id=${body.id}::uuid and user_id=${userId}::uuid and competition_key=${competitionKey} and match_id=${matchId} and analysis_type=${analysisType} and revision=${body.expected_revision} returning id,revision,updated_at`;
+        if(!rows.length)return response(origin,409,{ok:false,error:"match_analysis_changed_reload"});
+        return response(origin,200,{ok:true,item:rows[0]});
+      }
+      const existing=await sql`select id from kvl_admin_private.match_analyses where user_id=${userId}::uuid and competition_key=${competitionKey} and match_id=${matchId} and analysis_type=${analysisType} limit 1`;
+      if(existing.length)return response(origin,409,{ok:false,error:"match_analysis_exists"});
+      const rows=await sql`insert into kvl_admin_private.match_analyses(user_id,competition_key,match_id,season,analysis_type,match_date,match_time,stage,home_code,home_name,away_code,away_name,venue,title,summary,serve_receive,attack_plan,block_defense,rotation_matchups,key_points,result_review,related_player_analysis_ids,related_note_ids,publication_status) values(${userId}::uuid,${competitionKey},${matchId},${season},${analysisType},case when ${matchDate}='' then null else ${matchDate}::date end,${matchTime},${stage},${homeCode},${homeName},${awayCode},${awayName},${venue},${title},${summary},${serveReceive},${attackPlan},${blockDefense},${rotationMatchups},${keyPoints},${resultReview},case when ${analysisCsv}='' then '{}'::uuid[] else string_to_array(${analysisCsv}, ',')::uuid[] end,case when ${noteCsv}='' then '{}'::uuid[] else string_to_array(${noteCsv}, ',')::uuid[] end,${publicationStatus}) returning id,revision,updated_at`;
+      return response(origin,200,{ok:true,item:rows[0]});
+    }
+    if(action==="delete_match_analysis"){
+      if(!validUuid(body.id)||!validRevision(body.expected_revision))return response(origin,400,{ok:false,error:"invalid_match_analysis_revision"});
+      const rows=await sql`delete from kvl_admin_private.match_analyses where id=${body.id}::uuid and user_id=${userId}::uuid and revision=${body.expected_revision} returning id`;
+      if(!rows.length)return response(origin,409,{ok:false,error:"match_analysis_changed_reload"});
       return response(origin,200,{ok:true});
     }
 
