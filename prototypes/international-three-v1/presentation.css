@@ -1,0 +1,57 @@
+/* Opt-in extension only; core template CSS remains byte-identical to main. */
+html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-presentation="international-home-v2"]{--dv2-accent:var(--kvl-theme-primary)!important;--dv2-soft:var(--kvl-theme-soft)!important}
+.prototype-review-nav{max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;gap:8px 16px;align-items:center;flex-wrap:wrap;font:12px Arial,sans-serif;color:#667185}
+.prototype-review-nav>span{font-size:10px;font-weight:700;letter-spacing:.08em;color:#8b6b24}
+.prototype-review-nav a{color:#526175;text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+.prototype-review-nav a:hover,.prototype-review-nav a[aria-current]{color:#8b6b24;border-color:#c9a553}
+.kvl-meaning-compact .kvl1180-section-head{margin-bottom:16px!important}
+.kvl-meaning-items{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.kvl-meaning-items article+article{border-left:1px solid #e3e7eb;padding-left:24px}
+.kvl-meaning-items h3{font-size:16px;line-height:1.4;margin:0 0 8px;color:#17365d}
+.kvl-meaning-items p{font-size:13px;line-height:1.7;color:#647184;margin:0}
+.kvl-full-ranking{margin-top:28px;border-top:1px solid #e0e5eb;padding-top:22px}
+.kvl-full-ranking ol{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+.kvl-full-ranking li{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:49px;padding:10px 12px;border-bottom:1px solid #e8edf1;font-size:14px}
+.kvl-full-ranking li>span{font-weight:700;color:#647184}.kvl-full-ranking a{color:#17365d;font-weight:700;text-decoration:none}.kvl-full-ranking a:hover{color:#a67c20}.kvl-full-ranking small{color:#7b8795}.kvl-full-ranking .is-korea{background:#f2f7f4;border-radius:5px}.kvl-coach{margin:0 0 12px;padding:12px 16px;border:1px solid #dfe6e3;background:#f8faf9;border-radius:8px;color:#33485b;font:14px Arial,sans-serif}
+html body.kvl-official-logo-hero.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{background-color:#07512f!important;background-image:var(--kvl-hero-image-desktop)!important;background-size:auto 82%!important;background-repeat:no-repeat!important;background-position:calc(100% - 32px) center!important}
+html body.kvl-official-logo-hero .kvl1180-hero-copy{max-width:70%!important}
+.kvl-preserved-meaning{margin:0 0 18px}
+html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-presentation] .kvl1180-tabs a.is-active{color:var(--dv2-accent)!important;border-bottom-color:var(--dv2-accent)!important;background:var(--dv2-soft)!important}
+@media(max-width:680px){
+ .prototype-review-nav{padding:9px 12px;gap:3px 12px;font-size:10px}.prototype-review-nav>span{width:100%;font-size:9px}
+ .kvl-meaning-items{grid-template-columns:1fr;gap:16px}.kvl-meaning-items article+article{border-left:0;border-top:1px solid #e3e7eb;padding-left:0;padding-top:16px}.kvl-meaning-items h3{font-size:14px}.kvl-meaning-items p{font-size:12px}
+ .kvl-full-ranking ol{grid-template-columns:1fr}.kvl-full-ranking li{font-size:13px}
+ html body.kvl-official-logo-hero.kvl1180-prototype.kvl-competition-template-v2 .kvl1180-hero{background-size:auto 54%!important;background-position:calc(100% - 12px) center!important}
+ html body.kvl-official-logo-hero .kvl1180-hero-copy{max-width:73%!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-presentation] .kvl1180-hero h1{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;word-break:keep-all!important;font-size:22px!important;line-height:1.25!important}
+}
+/* Narrow-screen opt-in: keep every statistic visible without table or bracket panning. */
+@media(max-width:680px){
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl1180-pool-grid{grid-template-columns:minmax(0,1fr)!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups :is(.kvl1180-pool-card,.kvl1180-pool-row,.kvl1180-pool-table-head){min-width:0!important;width:100%!important;max-width:100%!important;overflow:visible!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups :is(.kvl1180-pool-row,.kvl1180-pool-table-head){display:grid!important;grid-template-columns:22px minmax(62px,1fr) 20px 20px 28px 42px 42px!important;gap:2px!important;padding:10px 6px!important;font-size:10px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl1180-pool-row>span{font-size:10px!important;min-width:0!important;grid-area:auto!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl1180-pool-team{display:flex!important;gap:4px!important;align-items:center!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl1180-pool-team img{width:18px!important;height:13px!important;min-width:18px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl1180-pool-team strong{font-size:10px!important;white-space:normal!important;word-break:keep-all}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl1180-pool-team small{display:none!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-ratio-head{font-size:9px!important;line-height:1.2!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl1180-combined-table{display:none!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-mobile{display:block!important;overflow:visible!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-table{width:100%!important;min-width:0!important;max-width:100%!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-line{width:100%!important;min-width:0!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:8px!important;padding:12px!important;border-bottom:1px solid #e1e8e5!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-line.is-head{display:none!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-identity{grid-column:1/4!important;display:flex!important;gap:6px!important;min-width:0!important;white-space:normal!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-result{grid-column:4!important;grid-row:1!important;min-width:0!important;white-space:normal!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-result b{min-width:0!important;white-space:normal!important;font-size:9px!important;padding:4px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-stat{font-size:11px!important;white-space:normal!important;grid-area:auto!important;text-align:center!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-stat::before{display:block;font-size:8px;color:#758397;margin-bottom:3px}
+ #groups .kvl-shared-combined-stat:nth-child(3)::before{content:'승리'}#groups .kvl-shared-combined-stat:nth-child(4)::before{content:'승점'}#groups .kvl-shared-combined-stat:nth-child(5)::before{content:'세트 득실비'}#groups .kvl-shared-combined-stat:nth-child(6)::before{content:'점수 득실비'}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #groups .kvl-shared-combined-stat:last-child{grid-column:1/-1!important;text-align:left!important;color:#708095!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #knockout :is(.kvl1180-bracket,.kvl1180-bracket-ladder){display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;overflow:visible!important;padding:0!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #knockout :is(.kvl1180-round,.kvl1180-round-body,.kvl1180-qf-pair){display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;min-width:0!important;height:auto!important;min-height:0!important;gap:12px!important;padding:0!important;margin:0 0 18px!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #knockout :is(.kvl1180-match,.kvl1180-bronze){width:100%!important;min-width:0!important;margin:0!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #knockout .kvl1180-bracket-gap{display:none!important}
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #knockout :is(.kvl1180-match,.kvl1180-qf-pair,.kvl1180-round,.kvl1180-round-body)::before,
+ html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-gender][data-kvl-presentation] #knockout :is(.kvl1180-match,.kvl1180-qf-pair,.kvl1180-round,.kvl1180-round-body)::after{content:none!important;display:none!important}
+}
