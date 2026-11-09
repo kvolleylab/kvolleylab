@@ -431,6 +431,38 @@
       "sha256": "61c3d7d837d8d89d3d3f5cf18a84e5737ef03aaab39ffca055ea5dfe02e54e6d",
       "evidence": "docs/validation/university-hub-parity-archive-v1.md",
       "review_note": "KUVF 공식 공개 결승·준결승 및 2024 남자 U-리그 6강 최종순위 대조. 과거 6대회 48개 팀 순위 요약만 공개하며 개인정보·원문 파일은 포함하지 않는다. 기존 MASTER는 변경하지 않는다."
+    },
+    "data/national/national-team-home-v2.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "https://www.fivb.com/wp-content/uploads/2026/09/VVO-LA28-Qualification-System-1.pdf",
+        "https://www.fivb.com/qualified-teams-confirmed-for-the-2027-fivb-volleyball-womens-world-cup/",
+        "https://en.volleyballworld.com/volleyball/world-ranking/men",
+        "https://en.volleyballworld.com/api/v1/worldranking/volleyball/1/0/50",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/news/indonesia-triumph-in-ahmedabad-for-first-ever-avc-cup-honors",
+        "https://www.jva.or.jp/international2026/menasianeastern/",
+        "https://www.jva.or.jp/international2026/menasianeastern/?entry=result",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-triumph-as-asian-champs-and-qualify-for-la-2028",
+        "https://www.jva.or.jp/international/2026/asianchampionship_men/",
+        "https://www.jva.or.jp/international/2026/asianchampionship_men/?entry=results",
+        "https://www.jva.or.jp/international/2026/asia_men/?entry=results",
+        "https://asianvolleyball.net/new/avc-unveils-2026-international-volleyball-calendar-and-host-cities/",
+        "https://en.volleyballworld.com/volleyball/world-ranking/women",
+        "https://en.volleyballworld.com/api/v1/worldranking/volleyball/0/0/50",
+        "https://asianvolleyball.net/new/korea-sweep-chinese-taipei-to-capture-avc-womens-volleyball-cup-2026-title/",
+        "https://www.jva.or.jp/international2026/womenasianeastern/",
+        "https://www.jva.or.jp/international2026/womenasianeastern/?entry=results",
+        "https://www.kva.or.kr/user/usr11Board/usrBoardDetail.do?boardSq=357&p_idNm=International&searchKeyword=&searchty=",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-women-continental/standings/",
+        "https://en.volleyballworld.com/news/qualified-teams-confirmed-for-the-2027-fivb-volleyball-women-s-world-cup",
+        "https://www.jva.or.jp/international/2026/asia_women/?entry=results"
+      ],
+      "verified_at": "2026-11-09T00:02:27+00:00",
+      "sha256": "b17396f8c5082359b5bc3490f829582744c36f28ad5116e09602b90c04296a6d",
+      "evidence": "docs/validation/national-team-home-v2-production-20261109.md",
+      "review_note": "사용자가 검수한 v2의 공개 projection을 바이트 그대로 운영 경로에 추가한다. 공식 대회 성적·세계랭킹 스냅샷·공개 대표팀 명단 및 기존 Player MASTER 연결 ID만 포함한다. 비공개 메모·연락처·인증정보는 포함하지 않는다. 기존 MASTER와 대회 DB를 수정하지 않는다. 랭킹 기준일 2026-10-15, 직전 비교 기준일 미제공은 미확인으로 표시한다."
     }
   }
 }
