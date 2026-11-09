@@ -529,3 +529,9 @@ Base `a50b3d894015f2a156ce6341ca60b580fbd3196f`. 상태: USER APPROVED / IMPLEME
 ## 2026-11-06 — V-League live recovery candidate (#257 / #259)
 
 Status: **IMPLEMENTED / LOCAL QA VERIFIED / NOT DEPLOYED**. Owner requested isolated fixes and review before production deployment. Shared live-score rendering now includes certified completed-set points and a KST observation timestamp; stale scores at 30 minutes are explicitly historical. Added an inert Cloudflare wake-up/watchdog implementation that invokes the existing approved publisher and preserves MASTER/roster identity gates. No activation, merge or deployment is authorized by this entry. Actual two-cycle live acceptance remains open; see [evidence and release gate](validation/vleague-live-recovery-20261106/REPORT.md).
+
+## 2026-11-09 · 국가대표팀 홈 v2 운영 적용 승인
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 v2를 실제 홈페이지에 반영하도록 명시적으로 승인했다. 시안 PR #274의 디자인·데이터 기준을 기존 `national-team.html` 주소로 옮기며, 운영 PR에서 병합·Pages·실제 화면 검증을 기록한다.
+
+2026 출전대회 최종 성적을 우선하고 LA28 로드맵·공식 랭킹 스냅샷을 함께 전환한다. 공통 메뉴·HERO·1180px·카드·색상 체계를 유지하고 기존 선수 ID/MASTER·명단·대회 DB·자동화는 보존한다. 최신 main `2190b137d9e2682005ec922333b2ecbb2d38ae8f` 기반의 별도 운영 변경이며 prototype 폴더를 main에 옮기지 않는다. [변경 범위·검수·출처·복구](validation/national-team-home-v2-production-20261109.md).
