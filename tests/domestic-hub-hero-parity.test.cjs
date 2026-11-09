@@ -44,3 +44,13 @@ test('changes do not target individual Competition Engine V2 HERO nodes', () => 
   assert.doesNotMatch(shared, /\.kvl1180-hero/);
   assert.doesNotMatch(shared, /\.kvl-competition-template-v2/);
 });
+test('comprehensive photo fills both desktop and mobile HERO surfaces', () => {
+  const [desktop, mobile] = shared.split(/@media\s*\(max-width:\s*680px\)/);
+  assert.ok(mobile, 'mobile breakpoint must exist');
+  assert.match(desktop, /background-size:\s*100%\s+100%,\s*cover/);
+  assert.match(desktop, /background-position:\s*center,\s*center/);
+  assert.match(mobile, /background-size:\s*100%\s+100%,\s*cover/);
+  assert.match(mobile, /background-position:\s*center,\s*center/);
+  assert.doesNotMatch(shared, /background-size:\s*100%\s+100%,\s*auto\s+100%/);
+  assert.match(read('comprehensive-competitions.html'), /20261110-comprehensive-fullbleed-v2/);
+});
