@@ -54,10 +54,11 @@ test('only six reviewed applicant links change; original 99 links and remaining 
  assert.deepEqual(rows,snapshot);assert.equal(joined.length,117);assert.equal(joined.filter(r=>r.selection.status==='selected').length,34);
  for(let i=0;i<rows.length;i++){const {selection,application_status,application_update,...facts}=joined[i],{selection:oldSelection,application_status:oldStatus,...originalFacts}=rows[i];assert.deepEqual(facts,originalFacts);}
 });
-test('actual combined catalog changes exactly six names and preserves all 1842 IDs and other identity/history fields',async()=>{
+test('reviewed identities remain stable while the catalog adds the approved pro-player extension',async()=>{
  const b=await app(original),a=await app();try{
-  assert.equal(a.catalog.length,1842);assert.equal(new Set(a.catalog.map(p=>p.playerId)).size,1842);assert.equal(a.catalog.length,b.catalog.length);let changed=0;
-  for(let i=0;i<b.catalog.length;i++){const old=b.catalog[i],now=structuredClone(a.catalog[i]),c=byId.get(old.playerId);if(c){assert.equal(old.nameKo,c.before);assert.equal(now.nameKo,c.after);assert.equal(now.school,c.school);now.nameKo=old.nameKo;changed++}assert.deepEqual(now,old,old.playerId)}assert.equal(changed,6);
+  const proIds=new Set(json('data/master/player_master_pro_v1.json').map(p=>p.system.player_id)),beforeMap=new Map(b.catalog.map(p=>[p.playerId,p])),afterMap=new Map(a.catalog.map(p=>[p.playerId,p]));
+  assert.equal(b.catalog.length,1842);assert.equal(a.catalog.length,2037);assert.equal(new Set(a.catalog.map(p=>p.playerId)).size,2037);assert.equal([...proIds].filter(id=>!beforeMap.has(id)).length,195);let changed=0;
+  for(const old of b.catalog){const now=structuredClone(afterMap.get(old.playerId));assert.ok(now,old.playerId);const c=byId.get(old.playerId);if(c){assert.equal(old.nameKo,c.before);assert.equal(now.nameKo,c.after);assert.equal(now.school,c.school);now.nameKo=old.nameKo;changed++;if(proIds.has(old.playerId)){assert.equal(now.birthDate,old.birthDate);continue}}if(proIds.has(old.playerId)){assert.equal(now.nameKo,old.nameKo,old.playerId);assert.equal(now.birthDate,old.birthDate,old.playerId);continue}assert.deepEqual(now,old,old.playerId)}assert.equal(changed,6);
  }finally{a.close();b.close()}
 });
 test('approved names remain searchable by school and official-draft filter with canonical profile URLs',async()=>{
