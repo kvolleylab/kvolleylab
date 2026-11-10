@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "enabled": false,
+  "previewParam": "member-gate-preview",
+  "loginPath": "member-login.html",
+  "protectedPaths": [
+    "players.html",
+    "player.html",
+    "player-search.html",
+    "player-profile.html",
+    "growth-timeline.html",
+    "teams.html",
+    "university-teams.html",
+    "university-team.html",
+    "draft-hub.html",
+    "player-compare.html",
+    "player-cohort.html",
+    "records.html"
+  ],
+  "signupEnabled": false,
+  "kakaoEnabled": false,
+  "identityVerificationEnabled": false,
+  "note": "운영 게이트는 일반회원 로그인 검수 완료 후 enabled=true로 전환"
+}
