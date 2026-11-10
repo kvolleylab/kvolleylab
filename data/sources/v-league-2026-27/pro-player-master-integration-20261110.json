@@ -1,0 +1,2560 @@
+{
+  "generated_at": "2026-11-10",
+  "season": "2026-27",
+  "source": "V-League reviewed season rosters",
+  "total": 252,
+  "men": 131,
+  "women": 121,
+  "max_existing_player_id": 1645,
+  "new_id_start": "KVL-P-001646",
+  "new_id_end": "KVL-P-001840",
+  "new_ids": 195,
+  "reused_existing_ids": 57,
+  "unique_name_conflict_reuse": [
+    {
+      "name": "최민호",
+      "id": "KVL-P-001608",
+      "team": "현대캐피탈",
+      "dobStatus": "source-conflict",
+      "sourceDob": "1988-04-19",
+      "canonicalDob": "1988-04-28"
+    },
+    {
+      "name": "하승우",
+      "id": "KVL-P-001554",
+      "team": "한국전력",
+      "dobStatus": "source-conflict",
+      "sourceDob": "1995-06-02",
+      "canonicalDob": "1995-06-02"
+    }
+  ],
+  "rules": [
+    "Preserve roster playerId when present.",
+    "Use exact Korean name + DOB when uniquely found.",
+    "For DOB-conflict rows, reuse a unique existing same-name canonical ID when one exists; retain the conflict note.",
+    "Otherwise allocate a new permanent pro Player ID above the current repository high-water mark.",
+    "Do not overwrite the historical 2026-10-28 roster audit."
+  ],
+  "mappings": [
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "김규민",
+      "dob": "1990-12-28",
+      "player_id": "KVL-P-001646",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "한선수",
+      "dob": "1985-12-16",
+      "player_id": "KVL-P-001647",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "류",
+      "dob": "2000-09-23",
+      "player_id": "KVL-P-001648",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "이상욱",
+      "dob": "1995-07-08",
+      "player_id": "KVL-P-001551",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "케트진스키",
+      "dob": "2000-01-27",
+      "player_id": "KVL-P-001649",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "정지석",
+      "dob": "1995-03-10",
+      "player_id": "KVL-P-001547",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "김선호",
+      "dob": "1999-01-18",
+      "player_id": "KVL-P-001519",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "조재영",
+      "dob": "1991-08-21",
+      "player_id": "KVL-P-001650",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "이준",
+      "dob": "1999-07-30",
+      "player_id": "KVL-P-001542",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "서현일",
+      "dob": "2003-04-02",
+      "player_id": "KVL-P-001651",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "김관우",
+      "dob": "2006-08-20",
+      "player_id": "KVL-P-001507",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "정한용",
+      "dob": "2001-07-31",
+      "player_id": "KVL-P-001514",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "임동혁",
+      "dob": "1999-03-09",
+      "player_id": "KVL-P-001520",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "최준혁",
+      "dob": "2004-03-25",
+      "player_id": "KVL-P-001652",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "정의영",
+      "dob": "2007-07-05",
+      "player_id": "KVL-P-001653",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "김민재",
+      "dob": "2003-04-04",
+      "player_id": "KVL-P-001654",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "김영태",
+      "dob": "2002-06-04",
+      "player_id": "KVL-P-001655",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "이준호",
+      "dob": "2007-05-22",
+      "player_id": "KVL-P-001656",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KAL",
+      "team_name": "대한항공",
+      "name": "임재영",
+      "dob": "1998-03-29",
+      "player_id": "KVL-P-001657",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "장추안",
+      "dob": "1994-08-09",
+      "player_id": "KVL-P-001658",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "황승빈",
+      "dob": "1992-08-26",
+      "player_id": "KVL-P-001659",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "박경민",
+      "dob": "1999-06-05",
+      "player_id": "KVL-P-001517",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "김명관",
+      "dob": "1997-07-08",
+      "player_id": "KVL-P-001540",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "허수봉",
+      "dob": "1998-04-07",
+      "player_id": "KVL-P-001537",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "김진영",
+      "dob": "2002-08-21",
+      "player_id": "KVL-P-001660",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "최민호",
+      "dob": null,
+      "player_id": "KVL-P-001608",
+      "mode": "unique-name-conflict-reuse",
+      "dob_status": "source-conflict"
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "홍동선",
+      "dob": "2001-05-16",
+      "player_id": "KVL-P-001525",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "레오",
+      "dob": "1990-03-23",
+      "player_id": "KVL-P-001661",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "이재현",
+      "dob": "2002-10-21",
+      "player_id": "KVL-P-001662",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "이준협",
+      "dob": "2001-04-27",
+      "player_id": "KVL-P-001663",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "이승준",
+      "dob": "2000-11-30",
+      "player_id": "KVL-P-001664",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "신호진",
+      "dob": "2001-02-26",
+      "player_id": "KVL-P-001515",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "정태준",
+      "dob": "2000-03-14",
+      "player_id": "KVL-P-001522",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "배준솔",
+      "dob": "2006-04-24",
+      "player_id": "KVL-P-001665",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "이시우",
+      "dob": "1994-04-07",
+      "player_id": "KVL-P-001666",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "장아성",
+      "dob": "2002-06-07",
+      "player_id": "KVL-P-001667",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "HDC",
+      "team_name": "현대캐피탈",
+      "name": "송원근",
+      "dob": "1997-01-23",
+      "player_id": "KVL-P-001668",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "이시몬",
+      "dob": "1992-11-09",
+      "player_id": "KVL-P-001669",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "한태준",
+      "dob": "2004-04-05",
+      "player_id": "KVL-P-001670",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "박상우",
+      "dob": null,
+      "player_id": "KVL-P-001671",
+      "mode": "new-pro-id",
+      "dob_status": "source-conflict"
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "오재성",
+      "dob": "1992-04-02",
+      "player_id": "KVL-P-001585",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "이승원",
+      "dob": "1993-04-11",
+      "player_id": "KVL-P-001548",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "박진우",
+      "dob": "1990-03-18",
+      "player_id": "KVL-P-001596",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "김영준",
+      "dob": "2000-10-18",
+      "player_id": "KVL-P-001672",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "박준혁",
+      "dob": "1997-02-23",
+      "player_id": "KVL-P-001673",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "한성정",
+      "dob": "1996-07-25",
+      "player_id": "KVL-P-001544",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "이유빈",
+      "dob": "2002-03-26",
+      "player_id": "KVL-P-001674",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "김동민",
+      "dob": "1997-12-27",
+      "player_id": "KVL-P-001675",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "김동영",
+      "dob": "1996-07-02",
+      "player_id": "KVL-P-001676",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "조근호",
+      "dob": "1990-05-23",
+      "player_id": "KVL-P-001597",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "아라우조",
+      "dob": "1991-06-13",
+      "player_id": "KVL-P-001677",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "마틴",
+      "dob": "2001-05-15",
+      "player_id": "KVL-P-001678",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "김형근",
+      "dob": "2002-07-01",
+      "player_id": "KVL-P-001679",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "서원진",
+      "dob": "2002-11-29",
+      "player_id": "KVL-P-001680",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "정성규",
+      "dob": "1998-06-09",
+      "player_id": "KVL-P-001566",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "손유민",
+      "dob": "2004-07-07",
+      "player_id": "KVL-P-001681",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "WRC",
+      "team_name": "우리카드",
+      "name": "김지한",
+      "dob": "1999-09-16",
+      "player_id": "KVL-P-001521",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "차영석",
+      "dob": "1994-04-17",
+      "player_id": "KVL-P-001682",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "황택의",
+      "dob": "1996-11-12",
+      "player_id": "KVL-P-001545",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "신승훈",
+      "dob": "2000-05-05",
+      "player_id": "KVL-P-001530",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "장지원",
+      "dob": "2001-03-17",
+      "player_id": "KVL-P-001526",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "타루샤",
+      "dob": "2002-01-08",
+      "player_id": "KVL-P-001683",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "홍상혁",
+      "dob": "1998-07-20",
+      "player_id": "KVL-P-001535",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "나웅진",
+      "dob": "2002-05-22",
+      "player_id": "KVL-P-001684",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "나경복",
+      "dob": "1994-04-08",
+      "player_id": "KVL-P-001576",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "김형진",
+      "dob": "1995-03-10",
+      "player_id": "KVL-P-001553",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "우상조",
+      "dob": "1992-06-27",
+      "player_id": "KVL-P-001580",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "박상하",
+      "dob": "1986-04-04",
+      "player_id": "KVL-P-001685",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "장하랑",
+      "dob": "2000-12-06",
+      "player_id": "KVL-P-001686",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "리누스",
+      "dob": "1999-11-01",
+      "player_id": "KVL-P-001687",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "이준영",
+      "dob": "2003-07-04",
+      "player_id": "KVL-P-001688",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "성한희",
+      "dob": "2002-09-27",
+      "player_id": "KVL-P-001689",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "지은우",
+      "dob": "2002-07-09",
+      "player_id": "KVL-P-001690",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "이학진",
+      "dob": "2007-10-03",
+      "player_id": "KVL-P-001691",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "임동균",
+      "dob": "2004-02-28",
+      "player_id": "KVL-P-001692",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KBI",
+      "team_name": "KB손해보험",
+      "name": "윤서진",
+      "dob": "2005-04-24",
+      "player_id": "KVL-P-001506",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "서재덕",
+      "dob": "1989-07-21",
+      "player_id": "KVL-P-001594",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "이민규",
+      "dob": "1992-12-03",
+      "player_id": "KVL-P-001578",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "배해찬솔",
+      "dob": "2003-10-24",
+      "player_id": "KVL-P-001693",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "정민수",
+      "dob": "1991-10-05",
+      "player_id": "KVL-P-001694",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "강선규",
+      "dob": "2003-08-11",
+      "player_id": "KVL-P-001695",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "하승우",
+      "dob": null,
+      "player_id": "KVL-P-001554",
+      "mode": "unique-name-conflict-reuse",
+      "dob_status": "source-conflict"
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "우스만",
+      "dob": "1999-05-22",
+      "player_id": "KVL-P-001696",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "박승수",
+      "dob": "2002-01-30",
+      "player_id": "KVL-P-001516",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "진지위",
+      "dob": "1993-04-18",
+      "player_id": "KVL-P-001697",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "방강호",
+      "dob": "2007-06-26",
+      "player_id": "KVL-P-001698",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "쇼",
+      "dob": "1998-08-28",
+      "player_id": "KVL-P-001699",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "전진선",
+      "dob": "1996-09-11",
+      "player_id": "KVL-P-001546",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "신영석",
+      "dob": "1986-10-04",
+      "player_id": "KVL-P-001618",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "이태호",
+      "dob": "2000-08-16",
+      "player_id": "KVL-P-001700",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "KEP",
+      "team_name": "한국전력",
+      "name": "윤하준",
+      "dob": "2006-03-25",
+      "player_id": "KVL-P-001510",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "김정호",
+      "dob": "1997-03-01",
+      "player_id": "KVL-P-001536",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "정성현",
+      "dob": "1991-05-18",
+      "player_id": "KVL-P-001579",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "김도훈",
+      "dob": "1998-04-19",
+      "player_id": "KVL-P-001701",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "김대환",
+      "dob": "2005-05-20",
+      "player_id": "KVL-P-000025",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "신장호",
+      "dob": "1996-06-01",
+      "player_id": "KVL-P-001702",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "차지환",
+      "dob": "1996-05-09",
+      "player_id": "KVL-P-001543",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "페이즈",
+      "dob": "2001-11-23",
+      "player_id": "KVL-P-001703",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "박원빈",
+      "dob": "1992-04-07",
+      "player_id": "KVL-P-001704",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "전광인",
+      "dob": "1991-09-18",
+      "player_id": "KVL-P-001583",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "송희채",
+      "dob": "1992-04-29",
+      "player_id": "KVL-P-001586",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "노재욱",
+      "dob": "1992-07-10",
+      "player_id": "KVL-P-001587",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "진상헌",
+      "dob": "1986-04-22",
+      "player_id": "KVL-P-001705",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "박창성",
+      "dob": "1998-09-21",
+      "player_id": "KVL-P-001706",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "진성태",
+      "dob": "1993-02-03",
+      "player_id": "KVL-P-001574",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "박인우",
+      "dob": "2003-02-16",
+      "player_id": "KVL-P-001707",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "김준호",
+      "dob": "2002-10-04",
+      "player_id": "KVL-P-001708",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "OKF",
+      "team_name": "OK저축은행",
+      "name": "러셀",
+      "dob": "1993-08-25",
+      "player_id": "KVL-P-001709",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "김우진",
+      "dob": "2000-08-13",
+      "player_id": "KVL-P-001523",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "박준서",
+      "dob": "2002-05-17",
+      "player_id": "KVL-P-001710",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "조국기",
+      "dob": "1989-03-11",
+      "player_id": "KVL-P-001598",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "강승일",
+      "dob": "2005-03-31",
+      "player_id": "KVL-P-001509",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "나두환",
+      "dob": "2000-04-22",
+      "player_id": "KVL-P-001711",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "유광우",
+      "dob": "1985-04-22",
+      "player_id": "KVL-P-001619",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "이재현",
+      "dob": "2002-11-02",
+      "player_id": "KVL-P-001712",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "황두연",
+      "dob": "1993-04-09",
+      "player_id": "KVL-P-001570",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "부용찬",
+      "dob": "1989-12-27",
+      "player_id": "KVL-P-001614",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "양수현",
+      "dob": "2002-04-08",
+      "player_id": "KVL-P-001713",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "이윤수",
+      "dob": "2003-09-15",
+      "player_id": "KVL-P-001714",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "김준우",
+      "dob": "2000-04-24",
+      "player_id": "KVL-P-001715",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "이우진",
+      "dob": "2005-05-16",
+      "player_id": "KVL-P-001511",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "손현종",
+      "dob": "1992-04-08",
+      "player_id": "KVL-P-001581",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "박찬웅",
+      "dob": "1997-08-13",
+      "player_id": "KVL-P-001565",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "김민혁",
+      "dob": "2003-03-21",
+      "player_id": "KVL-P-001716",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "호키",
+      "dob": "1997-05-19",
+      "player_id": "KVL-P-001717",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "최현민",
+      "dob": "2006-01-02",
+      "player_id": "KVL-P-001508",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "박태성",
+      "dob": "2001-04-09",
+      "player_id": "KVL-P-001524",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "왕빈",
+      "dob": "2001-06-23",
+      "player_id": "KVL-P-001718",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "김요한",
+      "dob": "2003-02-28",
+      "player_id": "KVL-P-001719",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "송명근",
+      "dob": "1993-03-12",
+      "player_id": "KVL-P-001575",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "M",
+      "team_code": "SFB",
+      "team_name": "삼성화재",
+      "name": "양희준",
+      "dob": "1999-06-13",
+      "player_id": "KVL-P-001531",
+      "mode": "preserved-roster-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "최가은",
+      "dob": "2001-02-28",
+      "player_id": "KVL-P-001720",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "김효임",
+      "dob": "2007-09-22",
+      "player_id": "KVL-P-001721",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "이윤신",
+      "dob": "2005-11-17",
+      "player_id": "KVL-P-001722",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "서채원",
+      "dob": "2003-09-05",
+      "player_id": "KVL-P-001723",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "실바",
+      "dob": "1991-10-29",
+      "player_id": "KVL-P-001724",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "최윤영",
+      "dob": "2007-10-09",
+      "player_id": "KVL-P-001725",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "최유림",
+      "dob": "2005-12-30",
+      "player_id": "KVL-P-001726",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "김주향",
+      "dob": "1999-03-27",
+      "player_id": "KVL-P-001727",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "이주아",
+      "dob": "2006-07-12",
+      "player_id": "KVL-P-001728",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "김지원",
+      "dob": "2001-10-26",
+      "player_id": "KVL-P-001729",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "박사랑",
+      "dob": "2003-08-26",
+      "player_id": "KVL-P-001730",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "김미연",
+      "dob": "1993-03-05",
+      "player_id": "KVL-P-001731",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "권민지",
+      "dob": "2001-11-02",
+      "player_id": "KVL-P-001732",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "유서연",
+      "dob": "1999-01-12",
+      "player_id": "KVL-P-001733",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "타나차",
+      "dob": "2000-05-26",
+      "player_id": "KVL-P-001734",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "한수진",
+      "dob": "1999-07-02",
+      "player_id": "KVL-P-001735",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "GSC",
+      "team_name": "GS칼텍스",
+      "name": "오세연",
+      "dob": "2002-05-04",
+      "player_id": "KVL-P-001736",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "박윤서",
+      "dob": "2007-05-11",
+      "player_id": "KVL-P-001737",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "김다은",
+      "dob": "2006-07-01",
+      "player_id": "KVL-P-001738",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "이윤정",
+      "dob": "1997-05-29",
+      "player_id": "KVL-P-001739",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "손혜진",
+      "dob": "2006-04-19",
+      "player_id": "KVL-P-001740",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "박정아",
+      "dob": "1993-03-26",
+      "player_id": "KVL-P-001741",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "마미",
+      "dob": "1991-10-25",
+      "player_id": "KVL-P-001742",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "김세빈",
+      "dob": "2005-06-16",
+      "player_id": "KVL-P-001743",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "문정원",
+      "dob": "1992-03-24",
+      "player_id": "KVL-P-001744",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "이지윤",
+      "dob": "2007-02-28",
+      "player_id": "KVL-P-001745",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "오은채",
+      "dob": "2007-03-22",
+      "player_id": "KVL-P-001746",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "김현지",
+      "dob": "1997-06-28",
+      "player_id": "KVL-P-001747",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "김세인",
+      "dob": "2003-02-06",
+      "player_id": "KVL-P-001748",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "이수연",
+      "dob": "2006-11-05",
+      "player_id": "KVL-P-001749",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "강소휘",
+      "dob": "1997-07-18",
+      "player_id": "KVL-P-001750",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "KEX",
+      "team_name": "한국도로공사",
+      "name": "모마",
+      "dob": "1993-10-09",
+      "player_id": "KVL-P-001751",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "이예림",
+      "dob": "1998-01-10",
+      "player_id": "KVL-P-001752",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "이채영",
+      "dob": "2007-03-15",
+      "player_id": "KVL-P-001753",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "김다인",
+      "dob": "1998-10-15",
+      "player_id": "KVL-P-001754",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "이영주",
+      "dob": "1999-03-09",
+      "player_id": "KVL-P-001755",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "김사랑",
+      "dob": "2004-03-12",
+      "player_id": "KVL-P-001756",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "김연견",
+      "dob": "1993-12-01",
+      "player_id": "KVL-P-001757",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "나현수",
+      "dob": "1999-09-15",
+      "player_id": "KVL-P-001758",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "배유나",
+      "dob": "1989-11-30",
+      "player_id": "KVL-P-001759",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "강서우",
+      "dob": "2007-02-03",
+      "player_id": "KVL-P-001760",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "정지윤",
+      "dob": "2001-01-01",
+      "player_id": "KVL-P-001761",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "김희진",
+      "dob": "1991-04-29",
+      "player_id": "KVL-P-001762",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "김수현",
+      "dob": "2007-02-08",
+      "player_id": "KVL-P-001763",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "한미르",
+      "dob": "2002-07-13",
+      "player_id": "KVL-P-001764",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "이민영",
+      "dob": "2007-02-01",
+      "player_id": "KVL-P-001765",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "조던",
+      "dob": "2003-12-19",
+      "player_id": "KVL-P-001766",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "이한비",
+      "dob": "1996-10-28",
+      "player_id": "KVL-P-001767",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "메가",
+      "dob": "1999-09-20",
+      "player_id": "KVL-P-001768",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HHC",
+      "team_name": "현대건설",
+      "name": "구솔",
+      "dob": "2001-07-23",
+      "player_id": "KVL-P-001769",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "김다은",
+      "dob": "2001-01-25",
+      "player_id": "KVL-P-001770",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "자스티스",
+      "dob": "1999-10-09",
+      "player_id": "KVL-P-001771",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "신연경",
+      "dob": "1994-03-09",
+      "player_id": "KVL-P-001772",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "서채현",
+      "dob": "2006-01-26",
+      "player_id": "KVL-P-001773",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "이고은",
+      "dob": "1995-01-09",
+      "player_id": "KVL-P-001774",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "최은지",
+      "dob": "1992-06-07",
+      "player_id": "KVL-P-001775",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "변지수",
+      "dob": "1997-03-01",
+      "player_id": "KVL-P-001776",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "김수지",
+      "dob": "1987-06-20",
+      "player_id": "KVL-P-001777",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "박혜진",
+      "dob": "2002-04-15",
+      "player_id": "KVL-P-001778",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "정윤주",
+      "dob": "2003-04-14",
+      "player_id": "KVL-P-001779",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "박민지",
+      "dob": "1999-05-12",
+      "player_id": "KVL-P-001780",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "고민지",
+      "dob": "1998-04-27",
+      "player_id": "KVL-P-001781",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "정호영",
+      "dob": null,
+      "player_id": "KVL-P-001782",
+      "mode": "new-pro-id",
+      "dob_status": "source-conflict"
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "이신영",
+      "dob": "2006-01-09",
+      "player_id": "KVL-P-001783",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "표승주",
+      "dob": null,
+      "player_id": "KVL-P-001784",
+      "mode": "new-pro-id",
+      "dob_status": "source-conflict"
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "박수연",
+      "dob": "2003-04-17",
+      "player_id": "KVL-P-001785",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "임혜림",
+      "dob": "2004-10-04",
+      "player_id": "KVL-P-001786",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "킨델란",
+      "dob": "2003-12-26",
+      "player_id": "KVL-P-001787",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "이나연",
+      "dob": "1992-03-25",
+      "player_id": "KVL-P-001788",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "HPS",
+      "team_name": "흥국생명",
+      "name": "문지윤",
+      "dob": "2000-07-25",
+      "player_id": "KVL-P-001789",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "이소영",
+      "dob": "1994-10-17",
+      "player_id": "KVL-P-001790",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "이주아",
+      "dob": "2000-08-21",
+      "player_id": "KVL-P-001791",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "박은서",
+      "dob": "2000-09-04",
+      "player_id": "KVL-P-001792",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "김하경",
+      "dob": "1996-11-15",
+      "player_id": "KVL-P-001793",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "미와",
+      "dob": "1997-07-19",
+      "player_id": "KVL-P-001794",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "임명옥",
+      "dob": "1986-03-15",
+      "player_id": "KVL-P-001795",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "육서영",
+      "dob": "2001-06-09",
+      "player_id": "KVL-P-001796",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "김채연",
+      "dob": "1999-12-11",
+      "player_id": "KVL-P-001797",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "최정민",
+      "dob": "2002-12-21",
+      "player_id": "KVL-P-001798",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "김채원",
+      "dob": null,
+      "player_id": "KVL-P-001799",
+      "mode": "new-pro-id",
+      "dob_status": "calendar-unconfirmed"
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "황민경",
+      "dob": "1990-06-02",
+      "player_id": "KVL-P-001800",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "전수민",
+      "dob": "2005-07-21",
+      "player_id": "KVL-P-001801",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "최연진",
+      "dob": "2006-03-24",
+      "player_id": "KVL-P-001802",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "강유정",
+      "dob": "2007-06-22",
+      "player_id": "KVL-P-001803",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "빅토리아",
+      "dob": "2000-01-11",
+      "player_id": "KVL-P-001804",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "정솔민",
+      "dob": "2007-09-14",
+      "player_id": "KVL-P-001805",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "하예지",
+      "dob": "2007-08-20",
+      "player_id": "KVL-P-001806",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "IBK",
+      "team_name": "IBK기업은행",
+      "name": "남은서",
+      "dob": "2006-01-22",
+      "player_id": "KVL-P-001807",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "염혜선",
+      "dob": "1991-02-03",
+      "player_id": "KVL-P-001808",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "전다빈",
+      "dob": "2006-07-08",
+      "player_id": "KVL-P-001809",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "노란",
+      "dob": "1994-03-17",
+      "player_id": "KVL-P-001810",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "박은진",
+      "dob": "1999-12-15",
+      "player_id": "KVL-P-001811",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "도수빈",
+      "dob": "1998-06-21",
+      "player_id": "KVL-P-001812",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "박혜민",
+      "dob": "2000-11-08",
+      "player_id": "KVL-P-001813",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "김지윤",
+      "dob": "2007-06-05",
+      "player_id": "KVL-P-001814",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "부키리치",
+      "dob": "1999-06-13",
+      "player_id": "KVL-P-001815",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "이선우",
+      "dob": "2002-07-12",
+      "player_id": "KVL-P-001816",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "신은지",
+      "dob": "2005-06-29",
+      "player_id": "KVL-P-001817",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "종휘",
+      "dob": "1997-12-08",
+      "player_id": "KVL-P-001818",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "이지수",
+      "dob": "2003-06-18",
+      "player_id": "KVL-P-001819",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "최서현",
+      "dob": "2005-02-03",
+      "player_id": "KVL-P-001820",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "최효서",
+      "dob": "2004-05-20",
+      "player_id": "KVL-P-001821",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "박여름",
+      "dob": "2007-06-29",
+      "player_id": "KVL-P-001822",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "RSP",
+      "team_name": "정관장",
+      "name": "곽선옥",
+      "dob": "2005-01-01",
+      "player_id": "KVL-P-001823",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "오드리아나",
+      "dob": "1997-10-30",
+      "player_id": "KVL-P-001824",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "한다혜",
+      "dob": "1995-02-28",
+      "player_id": "KVL-P-001825",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "임주은",
+      "dob": "2003-05-19",
+      "player_id": "KVL-P-001826",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "박연화",
+      "dob": "2003-11-12",
+      "player_id": "KVL-P-001827",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "고의정",
+      "dob": "2000-07-05",
+      "player_id": "KVL-P-001828",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "전새얀",
+      "dob": "1996-11-27",
+      "player_id": "KVL-P-001829",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "송은채",
+      "dob": "2006-01-15",
+      "player_id": "KVL-P-001830",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "박은서",
+      "dob": "2003-04-16",
+      "player_id": "KVL-P-001831",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "박수빈",
+      "dob": "2005-10-19",
+      "player_id": "KVL-P-001832",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "이즈쉬에",
+      "dob": "1997-12-02",
+      "player_id": "KVL-P-001833",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "고예림",
+      "dob": "1994-06-12",
+      "player_id": "KVL-P-001834",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "김서영",
+      "dob": "2007-11-05",
+      "player_id": "KVL-P-001835",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "전하리",
+      "dob": "2001-07-16",
+      "player_id": "KVL-P-001836",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "유가람",
+      "dob": "2005-09-30",
+      "player_id": "KVL-P-001837",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "서지혜",
+      "dob": "2005-08-14",
+      "player_id": "KVL-P-001838",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "이원정",
+      "dob": "2000-01-12",
+      "player_id": "KVL-P-001839",
+      "mode": "new-pro-id",
+      "dob_status": null
+    },
+    {
+      "gender": "W",
+      "team_code": "SOO",
+      "team_name": "SOOP",
+      "name": "하혜진",
+      "dob": "1996-09-07",
+      "player_id": "KVL-P-001840",
+      "mode": "new-pro-id",
+      "dob_status": null
+    }
+  ]
+}
