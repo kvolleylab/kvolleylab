@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>KVL Template Manager v1 | 관리자 편집 시안</title>
+  <style>
+:root{font-family:Arial,sans-serif;color:#152338;background:#f3f5f9;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}.topbar{background:#10192b;color:#fff;padding:15px max(20px,calc((100vw - 1640px)/2));display:flex;justify-content:space-between;gap:20px;align-items:center}.topbrand{display:flex;gap:12px;align-items:center}.topbrand strong{display:block;letter-spacing:.1px}.topbrand small{display:block;color:#c3cad5;margin-top:3px}.topbrand em{font-style:normal;color:#e4ba68}.kvl-mark{border:2px solid #d8ae5c;border-radius:11px;padding:9px 6px;color:#efc672;font-weight:900;letter-spacing:-1px}.topright{display:flex;align-items:center;gap:15px;font-size:12px}.topright a{color:#dae2ed}.lock{border:1px solid #3d526f;border-radius:20px;padding:8px 10px;color:#c7d3e4}.layout{display:grid;grid-template-columns:minmax(380px,610px) minmax(390px,1fr);gap:24px;max-width:1640px;padding:22px 20px 60px;margin:0 auto;align-items:start}.intro{padding:7px 5px 12px}.intro h1{font-size:25px;letter-spacing:-.6px;margin:8px 0}.intro p{font-size:13px;line-height:1.55;color:#697487;margin:0}.eyebrow{font-size:10px;color:#a77d32;font-weight:900;letter-spacing:1.2px}.card{background:white;border:1px solid #dde4ef;border-radius:14px;padding:18px;margin:0 0 16px;box-shadow:0 2px 9px #1a29450a}.card h2{font-size:16px;margin:0 0 14px}.hint{font-size:12px;line-height:1.5;color:#7a8494;margin:8px 0 14px}.field{display:flex;flex-direction:column;font-size:12px;font-weight:700;color:#44526a;margin:0 0 11px;gap:5px;min-width:0}.field input,.field select{width:100%;padding:10px 11px;min-height:39px;border:1px solid #d8e0ea;border-radius:7px;background:#fff;color:#1d2d45}.field input[type=range]{padding:8px 0;min-height:30px;accent-color:#aa8642}.field input[type=color]{padding:3px;height:39px}.field input[type=file]{font-size:11px;padding:8px}.field output{font-size:11px;color:#aa8642}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.subheading{font-size:13px;font-weight:800;color:#122f54;border-top:1px solid #edf0f4;margin:12px 0 13px;padding-top:14px}.notice{font-size:12px;line-height:1.5;color:#775923;background:#fff6e5;border:1px solid #f5dcb0;padding:9px 11px;border-radius:8px}.secondary,.primary,.linkbutton{font-weight:800;font-size:12px;border-radius:7px;padding:9px 11px;border:1px solid #c8d3e4;color:#1b3658;background:#f5f7fb;min-height:36px}.primary{background:#142a4e;color:#fff;border-color:#142a4e}.linkbutton{border:0;background:transparent;color:#5c748f}.actions{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.tabbar{display:flex;gap:8px;border-bottom:1px solid #e3e7ed;padding-bottom:11px;margin:0 0 12px}.tabbar button{font-size:12px;padding:9px 11px;border:1px solid #dde4ed;background:#f5f7fa;color:#66778d;border-radius:8px}.tabbar button[aria-selected=true]{color:#fff;background:#193c65;border-color:#193c65}.table-scroller{overflow:auto;max-height:400px;max-width:100%;border:1px solid #e3e9f1;border-radius:9px}table{border-collapse:collapse;width:100%;font-size:11px}th{position:sticky;top:0;background:#f0f4f9;z-index:1;white-space:nowrap}th,td{border-bottom:1px solid #e3e9f1;padding:5px;text-align:left}td input{font-size:11px;padding:7px 5px;min-width:70px;border:1px solid #e0e6ef;border-radius:4px}td input[data-field="id"]{min-width:112px}td input[data-field="date"]{min-width:100px}td input[data-field="stage"]{min-width:100px}td button{border:0;border-radius:4px;color:#943c42;background:#fff1f1;padding:7px}.report{font-size:12px;line-height:1.55;background:#eef3fa;border:1px solid #d9e5f4;border-radius:8px;margin:10px 0;padding:12px;white-space:pre-wrap;max-height:230px;overflow:auto}.report.good{background:#e9f7ef;border-color:#afe1c3;color:#155c39}.report.bad{background:#fff0f0;border-color:#edc6c6;color:#8f3333}.publish{display:block;width:100%;border:1px dashed #adbbcd;padding:11px;color:#6e7b8e;border-radius:8px;background:#f5f7fa;font-weight:800}.preview{position:sticky;top:20px;border:1px solid #dce2ea;border-radius:15px;padding:21px;background:#fff;min-width:0;box-shadow:0 4px 20px #1a294508}.preview-title{display:flex;justify-content:space-between;gap:16px;align-items:center}.preview-title h2{font-size:17px;margin:7px 0}.preview-title p{font-size:12px;color:#8590a0;margin:0 0 14px}.switch{display:flex;padding:3px;background:#eef2f7;border-radius:8px}.switch button{background:transparent;border:0;padding:8px 11px;border-radius:6px;font-size:12px;color:#65758a}.switch button.active{background:#fff;box-shadow:0 1px 5px #0002;color:#142a4e;font-weight:800}.stage{padding:16px;background:#e6ebf2;border-radius:12px;overflow-x:auto;display:flex;justify-content:center}.canvas{width:100%;max-width:960px;background:#fff;box-shadow:0 5px 19px #1d2f4b16;border-radius:10px;overflow:hidden;transition:max-width .2s}.canvas.mobile{max-width:360px}.hero{background:#1b223a;min-height:206px;background-position:center;background-repeat:no-repeat;background-size:cover;display:flex;align-items:center;position:relative;isolation:isolate}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,17,31,.94),rgba(8,17,31,.78) 43%,rgba(8,17,31,.1) 100%);z-index:-1}.hero-info{padding:23px 30px;max-width:65%;color:#fff}.hero-tag{font-size:10px;font-weight:900;letter-spacing:1px;color:#ddd9d0}.hero h3{margin:12px 0 10px;color:#e4ba68;font-size:32px;line-height:1.1;letter-spacing:-.5px;overflow-wrap:anywhere}.hero p{margin:6px 0;color:#f2f5f8;font-size:12px}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px}.metric{display:flex;align-items:center;gap:12px;background:#f5f7fb;border:1px solid #e6eaf2;border-radius:10px;padding:14px;color:#667993;font-size:12px}.metric strong{display:block;font-size:24px;color:#1c2d48;margin-top:4px}.metric-icon{color:#2c537c;font-size:32px;line-height:1}.sample-result{border-top:1px solid #e6eaf1;margin:0 16px 20px;padding-top:14px;font-size:12px;color:#243851}.sample-result>strong{display:block;margin-bottom:9px}.game{display:flex;justify-content:space-between;gap:8px;background:#f7f9fc;border-radius:7px;padding:9px;margin-bottom:6px;align-items:center}.game span{overflow:hidden;text-overflow:ellipsis}.game small{color:#75869a}.footnote{font-size:11px;line-height:1.55;color:#858f9c}.canvas.mobile .hero{min-height:215px}.canvas.mobile .hero-info{padding:17px;max-width:80%}.canvas.mobile .hero h3{font-size:min(24px,var(--hero-title,24px));line-height:1.18}.canvas.mobile .hero p{font-size:11px}.canvas.mobile .metrics{gap:8px;padding:11px}.canvas.mobile .metric{gap:5px;padding:9px}.canvas.mobile .metric strong{font-size:20px}.canvas.mobile .metric-icon{font-size:23px!important}.canvas.mobile .sample-result{margin:0 10px 12px}.canvas.mobile .game{flex-wrap:wrap}.toast{position:fixed;right:20px;bottom:20px;background:#152a48;color:white;padding:12px 15px;border-radius:10px;z-index:10;font-size:13px;box-shadow:0 9px 22px #0003}@media(max-width:1060px){.layout{grid-template-columns:1fr}.preview{position:static;order:-1}.sidebar{min-width:0}}@media(max-width:580px){.topbar{padding:12px}.topright .lock{display:none}.layout{padding:12px;gap:12px}.card{padding:14px}.preview{padding:12px}.preview-title{align-items:flex-start}.stage{padding:9px}.hero-info{padding:18px;max-width:78%}.hero h3{font-size:25px!important}.two{grid-template-columns:1fr}.intro h1{font-size:21px}}
+
+</style>
+  <script defer>
+/* KVL Template Manager v1 — isolated, local-only editing prototype. No writes to production. */
+(function (root, factory) {
+  'use strict';
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  if (typeof document === 'object') { root.KVLTemplateManagerV1 = api; api.init(); }
+})(typeof window === 'object' ? window : globalThis, function () {
+  'use strict';
+  const clone = value => JSON.parse(JSON.stringify(value));
+  const isObject = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+  const slugRe = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+  const dayRe = /^\d{4}-\d{2}-\d{2}$/;
+  const clockRe = /^([01]\d|2[0-3]):[0-5]\d$/;
+  const palettes = { domestic:'#1b223a', avc:'#206e50', fivb:'#5b3a8e', games:'#7b2839', pro:'#202124' };
+  const sampleConfig = {
+    schemaVersion:2, slug:'sample-university-men-2027',
+    competition:{competitionId:'KVL-SAMPLE-UNIVERSITY-M-2027',displayName:'샘플 전국대학배구대회',officialName:'KVL TEST EVENT (NOT OFFICIAL)',season:'2027',gender:'men',competitionFamily:'domestic'},
+    hero:{showImage:false,mode:'photo',pcImage:'',mobileImage:'',position:'center center',mobilePosition:'center center',size:'contain',mobileSize:'contain'},
+    seo:{title:'샘플 전국대학배구대회 | KVL TEST',description:'관리자 테스트용 데이터입니다.'},
+    structure:{calendar:true,standings:{mode:'none'},participants:{mode:'flat'},roster:{mode:'none'},knockout:{mode:'none'}},data:'data.json',modules:[]
+  };
+  const sampleData = {
+    status:'upcoming',stageLabel:'대회 시작 전',dateLabel:'2027-06-01 ~ 2027-06-05',locationLabel:'샘플 개최지',venueLabel:'샘플 체육관',teamCount:4,matchCount:2,
+    participants:[{code:'T01',name:'샘플 A',group:'A'},{code:'T02',name:'샘플 B',group:'A'},{code:'T03',name:'샘플 C',group:'B'},{code:'T04',name:'샘플 D',group:'B'}],
+    matches:[{id:'TEST-M01',date:'2027-06-01',time:'14:00',stage:'예선',home:{code:'T01'},away:{code:'T02'},venueLabel:'샘플 체육관'},
+             {id:'TEST-M02',date:'2027-06-01',time:'16:00',stage:'예선',home:{code:'T03'},away:{code:'T04'},venueLabel:'샘플 체육관'}],
+    finalRanking:[],qualifications:[],resources:[]
+  };
+  const defaultDesign = () => ({titleColor:'#e4ba68',fontSize:32,iconSize:32,iconAlign:'left',fit:'contain',xPos:50});
+  function sampleState() { return {config:clone(sampleConfig),data:clone(sampleData),design:defaultDesign()}; }
+  function escapeHTML(value) { return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function validDate(value) {
+    if (!dayRe.test(value || '')) return false;
+    const d = new Date(value + 'T00:00:00Z');
+    return Number.isFinite(d.valueOf()) && d.toISOString().slice(0,10) === value;
+  }
+  function validate(config, data) {
+    const errors=[], warnings=[];
+    if (!isObject(config) || config.schemaVersion!==2 || !slugRe.test(config.slug||'')) errors.push('config.schemaVersion(2) 또는 slug 형식이 올바르지 않습니다.');
+    const c = config && config.competition;
+    if (!isObject(c) || ['competitionId','displayName','officialName','season','gender','competitionFamily'].some(key=>!String(c[key]??'').trim())) errors.push('대회 기본 메타데이터 필수값을 확인하세요.');
+    if (c && !['domestic','avc','fivb','games','pro'].includes(c.competitionFamily)) errors.push('지원하지 않는 대회 계열입니다.');
+    if (c && !['men','women'].includes(c.gender)) errors.push('성별은 men / women 중 선택하세요.');
+    if (!isObject(config && config.structure)) errors.push('대회 구조(structure)가 필요합니다.');
+    if (config && config.data!=='data.json') warnings.push('기존 data 경로를 유지했습니다. 내보내기 파일명과 경로를 확인하세요.');
+    if (!isObject(data) || !Array.isArray(data.participants) || !Array.isArray(data.matches)) errors.push('참가팀·경기 목록이 배열이어야 합니다.');
+    const teams = Array.isArray(data && data.participants) ? data.participants : [];
+    const matches = Array.isArray(data && data.matches) ? data.matches : [];
+    const teamCodes = new Set(), matchIds = new Set();
+    teams.forEach((t, index) => {
+      const code=String(t&&t.code||'').trim();
+      if (!code) errors.push('참가팀 '+(index+1)+'의 팀 코드가 없습니다.');
+      else if (teamCodes.has(code)) errors.push('중복 팀 코드: '+code);
+      else teamCodes.add(code);
+      if (!String(t&&t.name||'').trim()) errors.push('참가팀 '+(index+1)+'의 팀명이 없습니다.');
+    });
+    matches.forEach((m, index) => {
+      const tag='경기 '+(index+1), id=String(m&&m.id||'').trim();
+      if (!id) errors.push(tag+' ID가 없습니다.');
+      else if (matchIds.has(id)) errors.push('중복 경기 ID: '+id);
+      else matchIds.add(id);
+      if (!validDate(m&&m.date)) errors.push(tag+' 날짜가 올바르지 않습니다. (YYYY-MM-DD)');
+      if (m&&m.time&&!clockRe.test(m.time)) errors.push(tag+' 시작 시각이 올바르지 않습니다. (HH:MM)');
+      const home=m&&m.home&&m.home.code, away=m&&m.away&&m.away.code;
+      if (!teamCodes.has(home) || !teamCodes.has(away)) errors.push(tag+'의 팀 코드를 참가팀 목록에서 찾을 수 없습니다.');
+      if (home && away && home===away) errors.push(tag+'의 홈팀과 원정팀이 같습니다.');
+      if (m&&m.score!==undefined&&m.score!==null) {
+        const h=m.score.home, a=m.score.away;
+        if (![h,a].every(n=>Number.isInteger(n)&&n>=0&&n<=3) || Math.max(h,a)!==3 || Math.min(h,a)>=3) errors.push(tag+' 점수는 3-0, 3-1, 3-2 또는 반대 결과만 허용합니다.');
+        if (!m.scoreVerification) warnings.push(tag+'의 점수는 공식 근거 검수가 필요합니다.');
+        if (Array.isArray(m.score.sets)&&m.score.sets.length&&m.score.sets.length!==h+a) warnings.push(tag+'의 세트별 점수 개수와 경기 점수가 다릅니다.');
+      }
+    });
+    if (Number.isInteger(data&&data.matchCount)&&data.matchCount!==matches.length) warnings.push('matchCount와 경기 목록 개수가 다릅니다.');
+    if (Number.isInteger(data&&data.teamCount)&&data.teamCount!==teams.length) warnings.push('teamCount와 참가팀 목록 개수가 다릅니다.');
+    if (c && /v-league|kovo-cup/.test(config.slug||'')) warnings.push('자동화 운영 대회: 이 시안에서 만든 데이터는 기존 자동 수집 파이프라인에 쓰지 마세요.');
+    return {errors,warnings,valid:!errors.length};
+  }
+  function parseCSV(csv) {
+    if (typeof csv!=='string') throw Error('CSV 문자 데이터를 입력하세요.');
+    const rows=[]; let row=[],cell='',quoted=false;
+    const text=csv.replace(/^\uFEFF/,'');
+    for (let i=0;i<text.length;i++) {
+      const ch=text[i];
+      if (ch==='"') { if (quoted && text[i+1]==='"') {cell+='"';i++;} else if (quoted || !cell) quoted=!quoted; else cell+=ch; }
+      else if (ch===',' && !quoted) {row.push(cell);cell='';}
+      else if ((ch==='\n'||ch==='\r')&&!quoted) {if(ch==='\r'&&text[i+1]==='\n')i++;row.push(cell);if(row.some(v=>v.trim()))rows.push(row);row=[];cell='';}
+      else cell+=ch;
+    }
+    if (quoted) throw Error('CSV 따옴표가 닫히지 않았습니다.');
+    row.push(cell);if(row.some(v=>v.trim()))rows.push(row);
+    return rows;
+  }
+  const csvNames = {
+    id:['id','경기id','경기번호'],date:['date','날짜','일자'],time:['time','시간','시각'],stage:['stage','단계','라운드'],
+    home:['home','홈코드','홈팀코드'],away:['away','원정코드','원정팀코드'],venue:['venue','장소','경기장'],
+    homeScore:['homescore','홈세트','홈점수'],awayScore:['awayscore','원정세트','원정점수']
+  };
+  function importMatchesCSV(text, existing) {
+    const rows=parseCSV(text);if(rows.length<2)throw Error('헤더와 경기 데이터 행이 필요합니다.');
+    if(rows.length>1001)throw Error('한 번에 1,000경기 이하만 추가할 수 있습니다.');
+    const headers=rows[0].map(x=>x.trim().toLowerCase().replace(/[ _-]/g,''));
+    const cols={};for(const [field,names] of Object.entries(csvNames))cols[field]=headers.findIndex(h=>names.includes(h));
+    for(const field of ['id','date','home','away'])if(cols[field]<0)throw Error('필수 CSV 열이 없습니다: '+field);
+    const known=new Set((existing||[]).map(m=>m.id)), added=[];
+    for(const [i,row] of rows.slice(1).entries()){
+      const get=f=>cols[f]<0?'':String(row[cols[f]]??'').trim();
+      const id=get('id');if(!id)throw Error('CSV '+(i+2)+'행에 경기 ID가 없습니다.');
+      if(known.has(id))throw Error('경기 ID 중복으로 추가를 취소했습니다: '+id);
+      known.add(id);
+      const m={id,date:get('date'),time:get('time'),stage:get('stage'),home:{code:get('home')},away:{code:get('away')},venueLabel:get('venue')};
+      const hs=get('homeScore'), as=get('awayScore');
+      if(hs!==''||as!==''){
+        m.score={home:hs===''?null:Number(hs),away:as===''?null:Number(as)};
+        m.scoreVerification=false;m.status='pending_review';
+      }
+      added.push(m);
+    }
+    return added;
+  }
+  function init() {
+    const $ = id => document.getElementById(id);
+    let state=sampleState(),images={pc:null,mobile:null},tab='matches';
+    const maxJsonBytes=5*1024*1024,maxImgBytes=16*1024*1024;
+    const showMessage=(message,bad=false)=>{const r=$('report');r.textContent=message;r.className='report'+(bad?' bad':'');};
+    const showReport=()=>{
+      const result=validate(state.config,state.data),text=[result.valid?'기본 구조 검증 통과':'검증 오류 '+result.errors.length+'건'];
+      for(const error of result.errors.slice(0,18))text.push('오류 · '+error);
+      for(const warn of result.warnings.slice(0,18))text.push('확인 · '+warn);
+      if(result.valid)text.push('미리보기 검증과 공식 데이터 확인 후에만 운영 반영할 수 있습니다.');
+      $('report').className='report '+(result.valid?'good':'bad');$('report').textContent=text.join('\n');return result;
+    };
+    const releaseImages=()=>{for(const key of ['pc','mobile']){if(images[key]&&images[key].url)URL.revokeObjectURL(images[key].url);}images={pc:null,mobile:null};};
+    const labelFor=code=>{
+      const t=(state.data.participants||[]).find(t=>t.code===code);
+      return t ? t.name : code||'미정';
+    };
+    function render() {
+      const c=state.config.competition,d=state.data,des=state.design;
+      $('displayName').value=c.displayName||'';$('family').value=c.competitionFamily||'domestic';$('gender').value=c.gender||'men';
+      $('dateLabel').value=d.dateLabel||'';$('locationLabel').value=d.locationLabel||'';
+      $('fit').value=des.fit;$('xPos').value=des.xPos;$('xOut').textContent=des.xPos+'%';
+      $('fontSize').value=des.fontSize;$('fontOut').textContent=des.fontSize+'px';
+      $('titleColor').value=des.titleColor;$('iconSize').value=des.iconSize;$('iconOut').textContent=des.iconSize+'px';$('iconAlign').value=des.iconAlign;
+      renderTables();renderPreview();
+    }
+    function safeHeroUrl(value) {
+      if(!value||typeof value!=='string')return '';
+      if(value.startsWith('/'))return 'https://kvolleylab.com'+value;
+      try{const u=new URL(value);return u.protocol==='https:'?u.href:'';}catch{return '';}
+    }
+    function renderPreview() {
+      const c=state.config.competition,d=state.data,des=state.design,hero=state.config.hero||{};
+      const background=c.gender==='women'?'#a54b75':(palettes[c.competitionFamily]||palettes.domestic);
+      const preview=$('heroPreview');preview.style.backgroundColor=background;
+      const mobile=$('canvas').classList.contains('mobile');
+      const custom=(mobile?images.mobile||images.pc:images.pc);
+      const imageURL=(custom&&custom.url)||safeHeroUrl(mobile?(hero.mobileImage||hero.pcImage):hero.pcImage);
+      preview.style.backgroundImage=imageURL?'url('+JSON.stringify(imageURL)+')':'none';
+      preview.style.backgroundSize=des.fit;preview.style.backgroundPosition=des.xPos+'% center';
+      $('previewTag').textContent='K-VOLLEY LAB · '+({domestic:'국내대회',avc:'AVC',fivb:'FIVB',games:'종합경기대회',pro:'프로 V-리그'}[c.competitionFamily]||'대회')+' · '+(c.gender==='women'?'여자부':'남자부');
+      $('previewName').textContent=c.displayName||'대회명';$('previewName').style.color=des.titleColor;
+      $('previewName').style.fontSize=des.fontSize+'px';$('previewDate').textContent=d.dateLabel||'기간 미입력';$('previewPlace').textContent=d.locationLabel||'개최지 미입력';
+      $('previewTeams').textContent=String((d.participants||[]).length);$('previewMatches').textContent=String((d.matches||[]).length);
+      const metrics=$('canvas').querySelector('.metrics');metrics.style.direction=des.iconAlign==='right'?'rtl':'ltr';
+      for(const icon of $('canvas').querySelectorAll('.metric-icon'))icon.style.fontSize=des.iconSize+'px';
+      const games=$('previewGames');games.replaceChildren();
+      for(const m of (d.matches||[]).slice(0,3)) {
+        const row=document.createElement('div');row.className='game';
+        const match=document.createElement('span');match.textContent=(m.date||'날짜 미정')+' · '+labelFor(m.home&&m.home.code)+' vs '+labelFor(m.away&&m.away.code);
+        const score=document.createElement('small');score.textContent=m.score?String(m.score.home)+'-'+String(m.score.away)+(m.scoreVerification?'':' · 검수 대기'):'예정';
+        row.append(match,score);games.append(row);
+      }
+      if(!(d.matches||[]).length){const t=document.createElement('span');t.textContent='등록된 경기가 없습니다.';games.append(t);}
+    }
+    function renderTables() {
+      const matches=$('matchRows');matches.textContent='';
+      (state.data.matches||[]).forEach((m,i)=>{
+        const tr=document.createElement('tr');
+        const fields=[['id',m.id||''],['date',m.date||''],['time',m.time||''],['stage',m.stage||''],['home',m.home&&m.home.code||''],['away',m.away&&m.away.code||''],['homeScore',m.score&&m.score.home!==undefined?m.score.home:''],['awayScore',m.score&&m.score.away!==undefined?m.score.away:'']];
+        for(const [key,val] of fields){const td=document.createElement('td'),input=document.createElement('input');input.type='text';input.value=String(val??'');input.dataset.index=String(i);input.dataset.field=key;input.setAttribute('aria-label','경기 '+(i+1)+' '+key);td.append(input);tr.append(td);}
+        const td=document.createElement('td'),button=document.createElement('button');button.textContent='삭제';button.type='button';button.dataset.deleteMatch=String(i);td.append(button);tr.append(td);matches.append(tr);
+      });
+      const teams=$('teamRows');teams.textContent='';
+      (state.data.participants||[]).forEach((t,i)=>{
+        const tr=document.createElement('tr');
+        for(const key of ['code','name','group']){const td=document.createElement('td'),input=document.createElement('input');input.type='text';input.value=String(t[key]??'');input.dataset.index=String(i);input.dataset.field=key;input.setAttribute('aria-label','참가팀 '+(i+1)+' '+key);td.append(input);tr.append(td);}
+        const td=document.createElement('td'),button=document.createElement('button');button.type='button';button.textContent='삭제';button.dataset.deleteTeam=String(i);td.append(button);tr.append(td);teams.append(tr);
+      });
+    }
+    function touchCount(){state.data.matchCount=(state.data.matches||[]).length;state.data.teamCount=(state.data.participants||[]).length;}
+    $('matchRows').addEventListener('change',event=>{
+      const el=event.target;if(!el.dataset.field)return;
+      const m=state.data.matches[Number(el.dataset.index)],key=el.dataset.field,val=el.value.trim();if(!m)return;
+      if(key==='home'||key==='away')m[key]={...(isObject(m[key])?m[key]:{}),code:val};
+      else if(key==='homeScore'||key==='awayScore'){
+        const score=isObject(m.score)?{...m.score}:{};
+        delete score.sets;score[key==='homeScore'?'home':'away']=val===''?null:Number(val);
+        if(score.home===null&&score.away===null) {delete m.score;delete m.scoreVerification;delete m.status;}
+        else{m.score=score;m.scoreVerification=false;m.status='pending_review';}
+      } else m[key]=val;
+      renderPreview();showMessage('변경되었습니다. 내보내기 전에 데이터 검증을 실행하세요.');
+    });
+    $('teamRows').addEventListener('change',event=>{
+      const el=event.target;if(!el.dataset.field)return;
+      const t=state.data.participants[Number(el.dataset.index)];if(!t)return;
+      t[el.dataset.field]=el.value.trim();renderPreview();showMessage('참가팀을 수정했습니다. 팀 코드를 변경했다면 기존 경기 연결을 확인하세요.');
+    });
+    $('matchRows').addEventListener('click',event=>{
+      const btn=event.target.closest('[data-delete-match]');if(!btn)return;
+      state.data.matches.splice(Number(btn.dataset.deleteMatch),1);touchCount();renderTables();renderPreview();showMessage('경기를 초안에서 제외했습니다.');
+    });
+    $('teamRows').addEventListener('click',event=>{
+      const btn=event.target.closest('[data-delete-team]');if(!btn)return;
+      state.data.participants.splice(Number(btn.dataset.deleteTeam),1);touchCount();renderTables();renderPreview();showMessage('참가팀을 초안에서 제외했습니다. 경기의 팀 코드 연결을 확인하세요.');
+    });
+    $('addMatch').addEventListener('click',()=>{
+      const ids=new Set(state.data.matches.map(m=>m.id));let n=1;while(ids.has('NEW-M'+String(n).padStart(3,'0')))n++;
+      state.data.matches.push({id:'NEW-M'+String(n).padStart(3,'0'),date:'',time:'',stage:'',home:{code:''},away:{code:''},venueLabel:''});touchCount();renderTables();renderPreview();showMessage('새 경기 행을 추가했습니다. 날짜·팀 코드를 입력하세요.');
+    });
+    $('addTeam').addEventListener('click',()=>{
+      const codes=new Set(state.data.participants.map(t=>t.code));let n=1;while(codes.has('NEW'+n))n++;
+      state.data.participants.push({code:'NEW'+n,name:'',group:''});touchCount();renderTables();renderPreview();showMessage('새 참가팀 행을 추가했습니다.');
+    });
+    $('tabMatches').addEventListener('click',()=>switchTab('matches'));$('tabTeams').addEventListener('click',()=>switchTab('teams'));
+    function switchTab(value){tab=value;$('matchPanel').hidden=tab!=='matches';$('teamsPanel').hidden=tab!=='teams';$('tabMatches').setAttribute('aria-selected',String(tab==='matches'));$('tabTeams').setAttribute('aria-selected',String(tab==='teams'));}
+    for(const [id,apply] of [
+      ['displayName',v=>state.config.competition.displayName=v],['family',v=>state.config.competition.competitionFamily=v],['gender',v=>state.config.competition.gender=v],
+      ['dateLabel',v=>state.data.dateLabel=v],['locationLabel',v=>state.data.locationLabel=v],['fit',v=>state.design.fit=v],
+      ['xPos',v=>state.design.xPos=Number(v)],['fontSize',v=>state.design.fontSize=Number(v)],['titleColor',v=>state.design.titleColor=v],
+      ['iconSize',v=>state.design.iconSize=Number(v)],['iconAlign',v=>state.design.iconAlign=v]
+    ]){$(id).addEventListener('input',event=>{apply(event.target.value);if(id==='fit'||id==='xPos'){
+      state.config.hero=state.config.hero||{};
+      state.config.hero.position=state.design.xPos+'% center';state.config.hero.mobilePosition=state.design.xPos+'% center';
+      state.config.hero.size=state.design.fit;state.config.hero.mobileSize=state.design.fit;
+    }renderPreview();if(id==='xPos')$('xOut').textContent=state.design.xPos+'%';if(id==='fontSize')$('fontOut').textContent=state.design.fontSize+'px';if(id==='iconSize')$('iconOut').textContent=state.design.iconSize+'px';});}
+    for(const [id,key] of [['heroPC','pc'],['heroMobile','mobile']]){
+      $(id).addEventListener('change',event=>{
+        const file=event.target.files&&event.target.files[0];if(!file)return;
+        if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>maxImgBytes){showMessage('PNG·JPEG·WebP 형식의 16MB 이하 이미지만 가능합니다.',true);event.target.value='';return;}
+        if(images[key]&&images[key].url)URL.revokeObjectURL(images[key].url);
+        images[key]={file,url:URL.createObjectURL(file)};
+        showMessage('HERO '+(key==='pc'?'PC':'모바일')+' 이미지를 미리보기에 불러왔습니다. WebP 두 파일을 내려받아야 배포할 수 있습니다.');renderPreview();
+      });
+    }
+    async function readJSONInput(input){const file=input.files&&input.files[0];if(!file)return null;if(file.size>maxJsonBytes)throw Error('JSON 파일은 5MB 이하로 제한합니다.');const j=JSON.parse(await file.text());if(!isObject(j))throw Error('JSON 최상위는 객체여야 합니다.');return j;}
+    $('loadFiles').addEventListener('click',async()=>{
+      try{
+        const config=await readJSONInput($('configFile')),data=await readJSONInput($('dataFile'));
+        if(!config&&!data){showMessage('가져올 JSON 파일을 선택하세요.',true);return;}
+        const next={config:config||state.config,data:data||state.data,design:defaultDesign()};
+        const candidate=validate(next.config,next.data);
+        if(config&&(!isObject(config.competition)||!isObject(config.hero))){showMessage('Competition Engine V2 config.json 형식이 아닙니다.',true);return;}
+        if(data&&(!Array.isArray(data.matches)||!Array.isArray(data.participants))){showMessage('대회 data.json에 matches·participants 배열이 필요합니다.',true);return;}
+        state=clone(next);releaseImages();state.design.fit=['cover','contain'].includes(state.config.hero?.size)?state.config.hero.size:'cover';
+        render();showMessage('JSON 파일을 불러왔습니다. 기존 필드와 연결을 보존합니다. 검증 결과: '+candidate.errors.length+'개 오류 / '+candidate.warnings.length+'개 확인 항목',candidate.errors.length>0);
+      }catch(err){showMessage('파일을 읽지 못했습니다: '+err.message,true);}
+    });
+    $('resetDemo').addEventListener('click',()=>{releaseImages();state=sampleState();$('configFile').value='';$('dataFile').value='';$('heroPC').value='';$('heroMobile').value='';render();showMessage('테스트 샘플 대회로 복원했습니다.');});
+    $('csvFile').addEventListener('change',async event=>{
+      const file=event.target.files&&event.target.files[0];if(!file)return;
+      try{
+        if(file.size>1024*1024)throw Error('CSV 파일은 1MB 이하로 제한합니다.');
+        const added=importMatchesCSV(await file.text(),state.data.matches);
+        state.data.matches.push(...added);touchCount();renderTables();renderPreview();showMessage('CSV 경기 '+added.length+'건을 추가했습니다. 참가팀 코드와 공식 근거를 검증하세요.');
+      }catch(err){showMessage('CSV 가져오기 실패: '+err.message,true);}finally{event.target.value='';}
+    });
+    function download(name,mime,blob){const href=URL.createObjectURL(blob),a=document.createElement('a');a.href=href;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(href),1500);}
+    const jsonSave=(name,value)=>download(name,'application/json',new Blob([JSON.stringify(value,null,2)+'\n'],{type:'application/json;charset=utf-8'}));
+    $('csvSample').addEventListener('click',()=>download('KVL_match_import_v1.csv','text/csv',new Blob(['\uFEFFid,date,time,stage,home,away,venue,homeScore,awayScore\nTEST-M03,2027-06-02,14:00,예선,T01,T03,샘플 체육관,,\n'],{type:'text/csv;charset=utf-8'})));
+    $('validate').addEventListener('click',showReport);
+    function exportConfig(){
+      const draft=clone(state.config);draft.hero=draft.hero||{};
+      draft.hero.position=state.design.xPos+'% center';draft.hero.mobilePosition=state.design.xPos+'% center';
+      draft.hero.size=state.design.fit;draft.hero.mobileSize=state.design.fit;
+      if(images.pc||images.mobile){
+        draft.hero.showImage=true;draft.hero.mode='photo';draft.hero.mimeType='image/webp';
+        draft.hero.pcImage='/assets/img/competition-hero/kvl-hero-'+draft.slug+'-pc-v01.webp';
+        draft.hero.mobileImage='/assets/img/competition-hero/kvl-hero-'+draft.slug+'-mobile-v01.webp';
+      }
+      return draft;
+    }
+    const gate=()=>{const report=showReport();return report.valid;};
+    $('saveConfig').addEventListener('click',()=>{if(!gate())return;if((images.pc||images.mobile))showMessage('설정에 WebP 예정 경로가 포함됩니다. PC·모바일 WebP를 모두 내려받고 동일 경로로 게시해야 합니다.');jsonSave('config.json',exportConfig());});
+    $('saveData').addEventListener('click',()=>{if(!gate())return;jsonSave('data.json',state.data);});
+    $('saveDesign').addEventListener('click',()=>jsonSave('design-overrides-v1.json',{schemaVersion:1,slug:state.config.slug,previewOnly:true,...state.design}));
+    $('saveDraft').addEventListener('click',()=>jsonSave('KVL_template_manager_draft_v1.json',{schemaVersion:1,previewOnly:true,config:exportConfig(),data:state.data,design:state.design,note:'이미지 원본 바이트는 포함하지 않습니다. 시안 전용이며 서버에 반영되지 않습니다.'}));
+    function imageFor(kind){return images[kind]||images.pc||images.mobile;}
+    async function renderWebp(kind){
+      const item=imageFor(kind);if(!item){showMessage('WebP를 만들 사진을 먼저 선택하세요.',true);return;}
+      const img=new Image();img.src=item.url;await img.decode();
+      const w=kind==='pc'?2108:1258,h=406,canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+      const ctx=canvas.getContext('2d');const c=state.config.competition;
+      ctx.fillStyle=c.gender==='women'?'#a54b75':palettes[c.competitionFamily]||palettes.domestic;ctx.fillRect(0,0,w,h);
+      const cover=state.design.fit==='cover',scale=cover?Math.max(w/img.naturalWidth,h/img.naturalHeight):Math.min(w/img.naturalWidth,h/img.naturalHeight);
+      const dw=img.naturalWidth*scale,dh=img.naturalHeight*scale,x=(w-dw)*state.design.xPos/100,y=(h-dh)/2;
+      ctx.drawImage(img,x,y,dw,dh);
+      const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/webp',.88));
+      if(!blob||blob.type!=='image/webp')throw Error('이 브라우저는 WebP 이미지 생성이 불가능합니다.');
+      download('kvl-hero-'+state.config.slug+'-'+kind+'-v01.webp','image/webp',blob);
+      showMessage((kind==='pc'?'PC 2108×406':'모바일 1258×406')+' WebP 초안을 생성했습니다. 원본과 화면 비율이 다르면 contain은 여백, cover는 크롭이 발생합니다.');
+    }
+    for(const kind of ['pc','mobile'])$('save'+(kind==='pc'?'PC':'Mobile')).addEventListener('click',()=>renderWebp(kind).catch(err=>showMessage('WebP 생성 실패: '+err.message,true)));
+    $('showPC').addEventListener('click',()=>{setPreview(false);});$('showMobile').addEventListener('click',()=>{setPreview(true);});
+    function setPreview(mobile){$('canvas').classList.toggle('mobile',mobile);$('showPC').classList.toggle('active',!mobile);$('showMobile').classList.toggle('active',mobile);renderPreview();}
+    window.addEventListener('pagehide',releaseImages);
+    render();showMessage('테스트 샘플 데이터가 준비되었습니다. 기존 운영 대회의 JSON 파일도 불러올 수 있습니다.');
+  }
+  return {sampleState,parseCSV,importMatchesCSV,validate,validDate,init};
+});
+
+</script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbrand"><span class="kvl-mark">KVL</span><div><strong>K-Volley Lab</strong><small>Template Manager <em>v1 PREVIEW</em></small></div></div>
+    <div class="topright"><span class="lock">운영 데이터 쓰기 차단</span><span>개발 검수용 · 로컬 실행</span></div>
+  </header>
+  <main class="layout">
+    <section class="sidebar" aria-label="대회 편집">
+      <div class="intro"><div class="eyebrow">COMPETITION EDITOR</div><h1>대회 템플릿 편집</h1><p>디자인과 경기 데이터를 하나의 화면에서 수정하세요. 이 시안은 브라우저 안에서만 변경되며, 실제 사이트에 게시하지 않습니다.</p></div>
+      <div class="card">
+        <h2>① 대회 파일 불러오기</h2>
+        <p class="hint">실제 대회의 <code>config.json</code>과 <code>data.json</code>을 가져올 수 있습니다. 업로드한 파일은 서버로 전송하지 않습니다.</p>
+        <label class="field">설정 파일 (config.json)<input id="configFile" type="file" accept=".json,application/json"></label>
+        <label class="field">경기 데이터 (data.json)<input id="dataFile" type="file" accept=".json,application/json"></label>
+        <button id="loadFiles" class="secondary" type="button">선택한 파일 불러오기</button>
+        <button id="resetDemo" class="linkbutton" type="button">샘플 대회로 다시 시작</button>
+      </div>
+      <div class="card">
+        <h2>② 디자인·대회 정보</h2>
+        <label class="field">대회명<input id="displayName" type="text" maxlength="100"></label>
+        <div class="two"><label class="field">대회 계열<select id="family"><option value="domestic">국내대회</option><option value="avc">AVC</option><option value="fivb">FIVB</option><option value="games">종합경기대회</option><option value="pro">V-리그·KOVO컵</option></select></label><label class="field">성별<select id="gender"><option value="men">남자부</option><option value="women">여자부</option></select></label></div>
+        <div class="two"><label class="field">대회 기간<input id="dateLabel" type="text" maxlength="90"></label><label class="field">개최지<input id="locationLabel" type="text" maxlength="90"></label></div>
+        <div class="subheading">HERO 사진</div>
+        <label class="field">PC 사진 선택<input id="heroPC" type="file" accept="image/jpeg,image/png,image/webp"></label>
+        <label class="field">모바일 사진 선택 (선택)<input id="heroMobile" type="file" accept="image/jpeg,image/png,image/webp"></label>
+        <p class="hint">모바일 사진이 없다면 PC 사진으로 각각의 규격을 생성합니다. 이미지 권리를 확인한 뒤 사용하세요.</p>
+        <div class="two"><label class="field">사진 맞춤 방식<select id="fit"><option value="contain">전체 보존 (contain)</option><option value="cover">빈틈없이 채움 (cover)</option></select></label><label class="field">사진 가로 위치 <output id="xOut">50%</output><input id="xPos" type="range" min="0" max="100" step="1" value="50"></label></div>
+        <div class="two"><label class="field">글씨 크기 <output id="fontOut">32px</output><input id="fontSize" type="range" min="20" max="44" step="1" value="32"></label><label class="field">제목 색상<input id="titleColor" type="color" value="#e4ba68"></label></div>
+        <div class="two"><label class="field">아이콘 크기 <output id="iconOut">32px</output><input id="iconSize" type="range" min="20" max="44" step="1" value="32"></label><label class="field">아이콘 배열<select id="iconAlign"><option value="left">텍스트 왼쪽</option><option value="right">텍스트 오른쪽</option></select></label></div>
+        <p class="notice">글씨·아이콘 조정은 이번 시안의 미리보기 설정입니다. 실제 공통 엔진 연결은 후속 개발 단계에서 진행합니다.</p>
+      </div>
+      <div class="card">
+        <h2>③ 경기 데이터 편집</h2>
+        <div class="tabbar" role="tablist" aria-label="표 편집 종류"><button id="tabMatches" role="tab" aria-selected="true">경기일정·결과</button><button id="tabTeams" role="tab" aria-selected="false">참가팀</button></div>
+        <div id="matchPanel">
+          <div class="actions"><button id="addMatch" type="button" class="secondary">+ 경기 추가</button><button id="csvSample" type="button" class="secondary">CSV 양식 받기</button></div>
+          <label class="field">CSV 경기 일괄 추가<input id="csvFile" type="file" accept=".csv,text/csv,text/plain"></label>
+          <p class="hint">CSV의 홈팀·원정팀은 팀명이 아닌 참가팀 코드로 입력합니다. 기존 경기 ID와 중복되면 추가하지 않습니다.</p>
+          <div class="table-scroller"><table><thead><tr><th>ID</th><th>날짜</th><th>시각</th><th>단계</th><th>홈 코드</th><th>원정 코드</th><th>홈 세트</th><th>원정 세트</th><th>삭제</th></tr></thead><tbody id="matchRows"></tbody></table></div>
+        </div>
+        <div id="teamsPanel" hidden>
+          <div class="actions"><button id="addTeam" type="button" class="secondary">+ 참가팀 추가</button></div>
+          <div class="table-scroller"><table><thead><tr><th>팀 코드</th><th>팀명</th><th>조</th><th>삭제</th></tr></thead><tbody id="teamRows"></tbody></table></div>
+        </div>
+      </div>
+      <div class="card" id="exportCard">
+        <h2>④ 검증·내보내기</h2><p class="hint">기존 키·출처·로스터 연결은 보존하고, 변경한 항목만 적용합니다. 순위 자동 계산과 게시 기능은 이 단계에 포함되지 않습니다.</p>
+        <button id="validate" type="button" class="primary">데이터 검증</button>
+        <div id="report" class="report" role="status" aria-live="polite">검증 전입니다.</div>
+        <div class="actions export-actions"><button id="saveConfig" class="secondary" type="button">config.json</button><button id="saveData" class="secondary" type="button">data.json</button><button id="saveDesign" class="secondary" type="button">디자인 초안</button><button id="saveDraft" class="secondary" type="button">전체 초안</button></div>
+        <div class="actions export-actions"><button id="savePC" class="secondary" type="button">PC WebP</button><button id="saveMobile" class="secondary" type="button">모바일 WebP</button></div>
+        <button type="button" disabled class="publish">홈페이지 게시 (관리자 인증·승인 연동 후 제공)</button>
+      </div>
+    </section>
+    <aside class="preview" aria-label="실시간 미리보기">
+      <div class="preview-title"><div><span class="eyebrow">LIVE PREVIEW</span><h2>실시간 화면 미리보기</h2><p>좌측에서 값을 바꾸면 즉시 반영됩니다.</p></div><div class="switch" role="group" aria-label="화면 크기"><button class="active" id="showPC" type="button">PC</button><button id="showMobile" type="button">모바일</button></div></div>
+      <div class="stage"><div class="canvas" id="canvas"><section class="hero" id="heroPreview"><div class="hero-info"><div class="hero-tag" id="previewTag">K-VOLLEY LAB · 국내대회</div><h3 id="previewName">샘플 대학배구 대회</h3><p id="previewDate">2027-06-01 ~ 2027-06-05</p><p id="previewPlace">충청북도</p></div></section><div class="metrics"><div class="metric" id="metricTeams"><span class="metric-icon">♟</span><div>참가팀<strong id="previewTeams">4</strong></div></div><div class="metric" id="metricMatches"><span class="metric-icon">▦</span><div>경기 수<strong id="previewMatches">2</strong></div></div></div><div class="sample-result"><strong>경기일정 · 결과</strong><div id="previewGames"></div></div></div></div>
+      <p class="footnote">이 미리보기는 편집 편의용 축약 화면입니다. 운영 중인 Competition Engine V2 전체 화면·순위 산식과 픽셀 단위로 동일하지 않습니다.</p>
+    </aside>
+  </main>
+</body>
+</html>
