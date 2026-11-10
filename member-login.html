@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>로그인 | K-Volley Lab</title>
+<link rel="stylesheet" href="assets/css/pretendard-global.css">
+<link rel="stylesheet" href="assets/css/member-login-v1.css?v=20261110-1">
+<script type="module" src="assets/js/member-login-v1.mjs?v=20261110-1"></script>
+</head>
+<body>
+<header class="member-login-header"><a href="index.html"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><span><strong>K-Volley Lab</strong><small>선수·팀 로그인</small></span></a><span>MEMBER PREVIEW</span></header>
+<main class="member-login-shell">
+<section id="loginCard" class="member-login-card">
+<p class="eyebrow">KVL PLAYER · TEAM ACCESS</p><h1>로그인</h1>
+<p class="intro">선수·팀 기능을 로그인 사용자 중심으로 전환하기 위한 준비 화면입니다. 현재 일반 회원가입은 열지 않았으며 관리자 계정으로 전체 흐름을 먼저 검수합니다.</p>
+<form id="loginForm"><label>이메일<input id="email" type="email" autocomplete="username" required></label><label>비밀번호<input id="password" type="password" autocomplete="current-password" required></label><button id="loginButton" type="submit">로그인</button></form>
+<p id="loginMessage" class="message" role="status"></p>
+<div class="member-login-pending"><strong>일반회원 가입 준비 중</strong><span>이메일·카카오 로그인, 본인확인, 닉네임/선택 실명 공개 기준을 검수한 뒤 회원가입을 엽니다.</span><small>비밀번호 재설정 경로도 실제 KVL 도메인으로 연결한 뒤 제공할 예정입니다.</small></div>
+<a class="home-link" href="index.html">홈으로 돌아가기</a>
+</section>
+<section id="signedCard" class="member-login-card signed" hidden>
+<p class="eyebrow">SIGNED IN</p><span id="signedRole" class="role-pill"></span><h1>로그인 상태입니다</h1><strong id="signedEmail"></strong><p id="signedStatus" class="intro"></p>
+<div class="signed-actions"><a id="continueLink" href="players.html">선수·팀 계속 이용</a><a id="adminWorkspaceLink" href="admin-player-workspace.html">관리자 선수·팀</a><button id="logoutButton" type="button">로그아웃</button></div>
+</section>
+</main>
+</body></html>
