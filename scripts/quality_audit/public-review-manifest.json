@@ -463,6 +463,55 @@
       "sha256": "b17396f8c5082359b5bc3490f829582744c36f28ad5116e09602b90c04296a6d",
       "evidence": "docs/validation/national-team-home-v2-production-20261109.md",
       "review_note": "사용자가 검수한 v2의 공개 projection을 바이트 그대로 운영 경로에 추가한다. 공식 대회 성적·세계랭킹 스냅샷·공개 대표팀 명단 및 기존 Player MASTER 연결 ID만 포함한다. 비공개 메모·연락처·인증정보는 포함하지 않는다. 기존 MASTER와 대회 DB를 수정하지 않는다. 랭킹 기준일 2026-10-15, 직전 비교 기준일 미제공은 미확인으로 표시한다."
+    },
+    "data/competitions/v-league-men-2026-27/rosters.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-SRC-VLEAGUE-2026-27-ROSTER-20261028",
+        "KOVO-OFFICIAL-NOTICES-2026-27-ROSTER"
+      ],
+      "verified_at": "2026-11-10",
+      "evidence": "docs/validation/player-team-member-foundation-v1.md",
+      "review_note": "2026-27 KOVO 등록 공시 기반 시즌 명단과 기존 KVL Player ID를 대조해 프로 선수 검색·프로필 연결을 검수했다. 기존 ID를 우선 보존하고, exact name+DOB 또는 검수된 same-name conflict reuse 규칙을 적용하며 신규 ID는 기존 high-water mark 이후에만 발급했다. 공개 선수 프로필 필드만 포함하며 관리자 메모·회원정보는 포함하지 않는다.",
+      "sha256": "309d0eb87c1f04fb3f8d76315d703d40bf6aa65e8ca5a1a950b5adf50b23d915"
+    },
+    "data/competitions/v-league-women-2026-27/rosters.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-SRC-VLEAGUE-2026-27-ROSTER-20261028",
+        "KOVO-OFFICIAL-NOTICES-2026-27-ROSTER"
+      ],
+      "verified_at": "2026-11-10",
+      "evidence": "docs/validation/player-team-member-foundation-v1.md",
+      "review_note": "2026-27 KOVO 등록 공시 기반 시즌 명단과 기존 KVL Player ID를 대조해 프로 선수 검색·프로필 연결을 검수했다. 기존 ID를 우선 보존하고, exact name+DOB 또는 검수된 same-name conflict reuse 규칙을 적용하며 신규 ID는 기존 high-water mark 이후에만 발급했다. 공개 선수 프로필 필드만 포함하며 관리자 메모·회원정보는 포함하지 않는다.",
+      "sha256": "3ff36d5ff8e76162d4f504fff5ee00390dd20fecb51c12ffe3240bdd2773854b"
+    },
+    "data/master/player_master_pro_v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-SRC-VLEAGUE-2026-27-ROSTER-20261028",
+        "KOVO-OFFICIAL-NOTICES-2026-27-ROSTER",
+        "KVL-PRO-PLAYER-INTEGRATION-20261110"
+      ],
+      "verified_at": "2026-11-10",
+      "evidence": "docs/validation/player-team-member-foundation-v1.md",
+      "review_note": "2026-27 KOVO 등록 공시 기반 시즌 명단과 기존 KVL Player ID를 대조해 프로 선수 검색·프로필 연결을 검수했다. 기존 ID를 우선 보존하고, exact name+DOB 또는 검수된 same-name conflict reuse 규칙을 적용하며 신규 ID는 기존 high-water mark 이후에만 발급했다. 공개 선수 프로필 필드만 포함하며 관리자 메모·회원정보는 포함하지 않는다.",
+      "sha256": "6af967c0454399f37199210f00a2757f35b7c3f873d2bac230d617ca0ba7890e"
+    },
+    "data/sources/v-league-2026-27/pro-player-master-integration-20261110.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-SRC-VLEAGUE-2026-27-ROSTER-20261028",
+        "KVL-PRO-PLAYER-INTEGRATION-20261110"
+      ],
+      "verified_at": "2026-11-10",
+      "evidence": "docs/validation/player-team-member-foundation-v1.md",
+      "review_note": "프로 선수 252명의 Player ID 통합 규칙·결과를 공개 검수용 audit로 기록한다. 기존 ID 57명 재사용, 신규 195명 발급, 남자 131명·여자 121명, 중복 ID 0을 검증했다. 이 audit는 관리자 메모·회원정보·비공개 분석 데이터를 포함하지 않는다.",
+      "sha256": "f31bdf64949bdba3825c3295018eb5b5fec5162c3cd4a3ba420bea176648106e"
     }
   }
 }
