@@ -1,5 +1,5 @@
 import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
-import {searchPlayers,escapeHTML as e} from './player-workspace-core.mjs';
+import {searchPlayers,escapeHTML as e} from './player-workspace-core.mjs?v=20261111-pro-1';
 
 const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
 const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
