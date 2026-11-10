@@ -130,7 +130,7 @@ body.school-competitions-hub-page #app .hero-link {
      * Right alignment (not center cropping) retains the torch and match,
      * and the navy overlay protects the copy's ~62% text-safe zone. */
     background-image:
-      linear-gradient(90deg, rgba(13,49,89,.94) 0%, rgba(13,49,89,.80) 60%, rgba(13,49,89,.06) 100%),
+      linear-gradient(90deg, rgba(13,49,89,.96) 0%, rgba(13,49,89,.88) 62%, rgba(13,49,89,.06) 100%),
       var(--kvl-common-hero-image-mobile);
     background-size: 100% 100%, cover;
     background-position: center, right center;
