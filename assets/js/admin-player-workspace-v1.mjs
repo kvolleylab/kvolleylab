@@ -1,5 +1,5 @@
 import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
-import {searchPlayers,escapeHTML as e} from './player-workspace-core.mjs';
+import {searchPlayers,escapeHTML as e} from './player-workspace-core.mjs?v=20261111-pro-1';
 
 const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
 const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
@@ -444,6 +444,10 @@ async function restoreSession(){
     const {data,error}=await supabase.auth.getUser();
     if(error||!data.user){showLogin();return}
     await api('status');showWorkspace(data.user);await Promise.all([loadCatalog(),loadMatchCatalog()]);await refreshState();msg('관리자 세션을 복원했습니다.');
+    const q=new URLSearchParams(location.search),notePlayer=q.get('notePlayer'),editNote=q.get('editNote');
+    if(notePlayer&&byId.has(notePlayer)){openPlayerNote(notePlayer);q.delete('notePlayer')}
+    else if(editNote&&notes.some(n=>n.id===editNote)){openNote(editNote);q.delete('editNote')}
+    if(notePlayer||editNote){const url=new URL(location.href);url.search=q.toString();history.replaceState(null,'',url.pathname+(q.toString()?'?'+q.toString():'')+url.hash)}
   }catch{await supabase.auth.signOut().catch(()=>{});showLogin()}
 }
 restoreSession();

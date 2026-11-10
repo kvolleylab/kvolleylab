@@ -1,4 +1,5 @@
 (()=>{
+  if(!document.querySelector('script[src*="member-access-gate-v1.mjs"]')){const memberGate=document.createElement('script');memberGate.type='module';memberGate.src='assets/js/member-access-gate-v1.mjs?v=20261111-1';document.head.appendChild(memberGate)}
   const PRIVATE_REVIEW_MODE=true;
   if(!document.querySelector('link[rel~="icon"]')){
     const iconLink=document.createElement('link');

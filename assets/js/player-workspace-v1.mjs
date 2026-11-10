@@ -1,5 +1,5 @@
 // Approved B workspace UI, connected to the unchanged production data pipeline.
-import {LEVELS,searchPlayers,escapeHTML as e} from './player-workspace-core.mjs';
+import {LEVELS,searchPlayers,escapeHTML as e} from './player-workspace-core.mjs?v=20261111-pro-1';
 import {loadDraftIndex,loadDraftSeason,validateAgainstCatalog} from './draft-history-v1.mjs';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const paths={cards:'<rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',bookmark:'<path d="M6 3h12v18l-6-4-6 4z"/>',note:'<path d="M14 4H5v17h14v-9M8 9h3M8 13h3M8 17h7m-1-7 7-7-3-3-7 7v3z"/>',arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',down:'<path d="m6 9 6 6 6-6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',user:'<circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/>',sliders:'<path d="M3 6h7m4 0h7M3 12h12m4 0h2M3 18h3m4 0h11M10 3v6M15 9v6M6 15v6"/>',flask:'<path d="M9 3h6M10 3v7L4 20h16l-6-10V3M8 14h8"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',plus:'<path d="M12 4v16M4 12h16"/>',shirt:'<path d="m5 5 5-2c0 3 4 3 4 0l5 2 4 7-5 3v9H6v-9l-5-3z" transform="translate(1 1) scale(.9)"/><path d="M10 12h4M12 12v6"/>',check:'<path d="m5 12 4 4L19 6"/>'};
@@ -16,7 +16,7 @@ function updateGradeCaption(){const grades=getFilters().grades;$('gradeSelection
 function syncDependentFilters(){
  const level=$('filters').elements.level.value,select=$('schoolFilter'),previous=select.value;
  const schools=[...new Set(players.filter(p=>!level||p.level===level).map(p=>p.school).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko'));
- const label=level==='high_school'?'모든 고등학교':level==='university'?'모든 대학교':level==='middle_school'?'모든 중학교':'모든 학교';
+ const label=level==='professional'?'모든 프로팀':level==='high_school'?'모든 고등학교':level==='university'?'모든 대학교':level==='middle_school'?'모든 중학교':'모든 학교·팀';
  select.innerHTML=`<option value="">${schools.length?label:'해당 학교 없음'}</option>${schools.map(name=>`<option>${e(name)}</option>`).join('')}`;
  select.value=schools.includes(previous)?previous:'';select.disabled=!schools.length;
  const fourth=document.querySelector('[name="grade"][value="4"]');fourth.disabled=['high_school','middle_school'].includes(level);if(fourth.disabled)fourth.checked=false;fourth.closest('label').hidden=fourth.disabled;

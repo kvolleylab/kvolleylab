@@ -6,8 +6,8 @@
   <title>KVL 로그인 UX 미리보기 | K-Volley Lab</title>
   <link rel="stylesheet" href="assets/css/pretendard-global.css">
   <link rel="stylesheet" href="assets/css/admin-player-workspace-v1.css?v=20261110-1">
-  <script defer src="assets/js/player-search-v2.js?v=20261023-1"></script>
-  <script type="module" src="assets/js/admin-player-workspace-v1.mjs?v=20261110-1"></script>
+  <script defer src="assets/js/player-search-v2.js?v=20261111-pro-1"></script>
+  <script type="module" src="assets/js/admin-player-workspace-v1.mjs?v=20261111-core-1"></script>
 </head>
 <body data-player-workspace>
 <header class="topbar">
@@ -54,7 +54,7 @@
       <article><small>관심 선수</small><strong id="bookmarkCount">0</strong><span>내 추적 목록</span></article>
       <article><small>개인 메모</small><strong id="noteCount">0</strong><span>비공개 기록</span></article>
       <article><small>기본 시즌</small><strong>2026–27</strong><span>메모 기본값</span></article>
-      <article><small>분석 자료</small><strong id="analysisCount">0</strong><span><b id="analysisPlayerCount">0</b> 선수 · <b id="matchAnalysisCount">0</b> 경기</span></article>
+      <article hidden aria-hidden="true"><small>분석 자료</small><strong id="analysisCount">0</strong><span><b id="analysisPlayerCount">0</b> 선수 · <b id="matchAnalysisCount">0</b> 경기</span></article><article><small>접근 권한</small><strong class="role-summary">ADMIN</strong><span>선수·메모 검수 운영</span></article>
     </div>
 
     <nav class="tabs" aria-label="로그인 사용자 기능">
@@ -67,7 +67,7 @@
       <button type="button" data-view="notes">
         <span class="tab-kicker">PRIVATE</span><b>내 메모 <em id="noteTabCount"></em></b>
       </button>
-      <button type="button" data-view="analysis">
+      <button type="button" data-view="analysis" hidden aria-hidden="true">
         <span class="tab-kicker">ANALYSIS</span><b>분석 <em id="analysisTabCount"></em></b>
       </button>
     </nav>
@@ -105,7 +105,7 @@
       <div id="noteResults" class="note-list"></div>
     </section>
 
-    <section id="analysisPane" class="pane" hidden>
+    <section id="analysisPane" class="pane" hidden data-feature-status="paused">
       <div class="pane-head">
         <div><p class="eyebrow">KVL ANALYSIS</p><h2>분석</h2><p>선수 관찰 기록과 선수 분석을 경기 단위 전술 분석까지 연결합니다. 모든 자료는 현재 관리자 전용입니다.</p></div>
         <span class="admin-only-label">ADMIN ONLY</span>
