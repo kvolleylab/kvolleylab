@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>KVL 로그인 UX 미리보기 | K-Volley Lab</title>
+  <title>KVL 관리자 선수·팀 | K-Volley Lab</title>
   <link rel="stylesheet" href="assets/css/pretendard-global.css">
   <link rel="stylesheet" href="assets/css/admin-player-workspace-v1.css?v=20261110-1">
-  <script defer src="assets/js/player-search-v2.js?v=20261023-1"></script>
-  <script type="module" src="assets/js/admin-player-workspace-v1.mjs?v=20261110-1"></script>
+  <script defer src="assets/js/player-search-v2.js?v=20261110-pro-1"></script>
+  <script type="module" src="assets/js/admin-player-workspace-v1.mjs?v=20261110-player-notes-1"></script>
 </head>
 <body data-player-workspace>
 <header class="topbar">
   <a class="brand" href="index.html">
     <img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt="">
-    <span><strong>K-Volley Lab</strong><small>로그인 사용자 UX 미리보기</small></span>
+    <span><strong>K-Volley Lab</strong><small>관리자 선수·팀</small></span>
   </a>
   <div class="topbar-actions">
-    <a class="home-link" href="index.html">홈으로</a>
+    <a class="home-link" href="member-login.html?return=players.html">회원 로그인 미리보기</a><a class="home-link" href="index.html">홈으로</a>
     <span class="private-badge">ADMIN PREVIEW</span>
   </div>
 </header>
@@ -25,7 +25,7 @@
   <section id="loginView" class="login-card">
     <p class="eyebrow">KVL PRIVATE PREVIEW</p>
     <h1>관리자 로그인</h1>
-    <p class="intro">향후 회원이 로그인했을 때 사용할 관심선수·메모·분석 UI를 먼저 관리자 계정으로 검수하는 공간입니다. 일반 회원 로그인은 아직 열지 않았습니다.</p>
+    <p class="intro">향후 회원이 사용할 선수·팀 기능을 관리자 계정으로 먼저 검수하는 공간입니다. 현재 핵심 기능은 선수 프로필, 관심선수와 날짜별 개인 메모입니다.</p>
     <form id="loginForm" class="login-form">
       <label>이메일<input id="email" type="email" autocomplete="username" required></label>
       <label>비밀번호<input id="password" type="password" autocomplete="current-password" required></label>
@@ -38,9 +38,9 @@
     <section class="workspace-hero">
       <div class="workspace-copy">
         <p class="eyebrow">SIGNED-IN EXPERIENCE · PREVIEW</p>
-        <h1>내 선수 공간</h1>
-        <p>공개 KVL 선수 정보를 그대로 보면서, 로그인 사용자에게만 필요한 관심선수와 개인 메모를 연결합니다.</p>
-        <div class="preview-note"><strong>현재 단계</strong><span>관리자 계정으로 회원 로그인 UX를 먼저 검수 중입니다. 일반 방문자에게는 이 기능이 아직 노출되지 않습니다.</span></div>
+        <h1>내 선수·팀 공간</h1>
+        <p>프로·대학·학교·국제 선수 프로필을 확인하고, 관심선수와 개인 메모를 로그인 계정에 계속 누적합니다.</p>
+        <div class="preview-note"><strong>현재 단계</strong><span>관리자 계정으로 선수·팀 로그인 UX를 먼저 검수 중입니다. 분석 기능은 현재 보류 상태이며 일반 회원 가입은 아직 열지 않습니다.</span></div>
       </div>
       <div class="account-card">
         <span class="role-pill">관리자</span>
@@ -54,7 +54,7 @@
       <article><small>관심 선수</small><strong id="bookmarkCount">0</strong><span>내 추적 목록</span></article>
       <article><small>개인 메모</small><strong id="noteCount">0</strong><span>비공개 기록</span></article>
       <article><small>기본 시즌</small><strong>2026–27</strong><span>메모 기본값</span></article>
-      <article><small>분석 자료</small><strong id="analysisCount">0</strong><span><b id="analysisPlayerCount">0</b> 선수 · <b id="matchAnalysisCount">0</b> 경기</span></article>
+      <article><small>프로 선수</small><strong>252</strong><span>남자 131 · 여자 121</span><span hidden><b id="analysisCount">0</b><b id="analysisPlayerCount">0</b><b id="matchAnalysisCount">0</b></span></article>
     </div>
 
     <nav class="tabs" aria-label="로그인 사용자 기능">
@@ -67,14 +67,14 @@
       <button type="button" data-view="notes">
         <span class="tab-kicker">PRIVATE</span><b>내 메모 <em id="noteTabCount"></em></b>
       </button>
-      <button type="button" data-view="analysis">
+      <button type="button" data-view="analysis" hidden aria-hidden="true" tabindex="-1">
         <span class="tab-kicker">ANALYSIS</span><b>분석 <em id="analysisTabCount"></em></b>
       </button>
     </nav>
 
     <section id="searchPane" class="pane">
       <div class="pane-head">
-        <div><p class="eyebrow">PLAYER SEARCH</p><h2>선수 찾기</h2><p>검색 결과에서 바로 관심선수 등록, 메모 작성, 공개 프로필 확인이 가능합니다.</p></div>
+        <div><p class="eyebrow">PLAYER SEARCH</p><h2>선수 찾기</h2><p>프로선수를 포함한 KVL 선수 DB에서 관심선수 등록, 메모 작성, 프로필 확인이 가능합니다.</p></div>
         <span id="catalogStatus" class="muted">선수 DB 불러오는 중</span>
       </div>
       <form id="searchForm" class="search-row">

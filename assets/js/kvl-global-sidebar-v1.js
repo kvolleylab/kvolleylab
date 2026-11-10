@@ -53,7 +53,7 @@
   };
 
   const link=(key,href,svg,label,extra='')=>({type:'link',key,href,svg,label,extra});
-  const group=(key,svg,label,children)=>({type:'group',key,svg,label,children});
+  const group=(key,svg,label,children,extra='')=>({type:'group',key,svg,label,children,extra});
   const items=[
     link('home','index.html',icon.home,'홈'),
     link('schedules',scheduleHref,icon.calendar,'경기일정'),
@@ -90,7 +90,7 @@
       link('analysis-compare','player-compare.html',null,'선수 비교'),
       link('analysis-cohort','player-cohort.html',null,'대표팀 세대추적'),
       link('analysis-records','records.html',null,'기록')
-    ]),
+    ],'member'),
 
     {type:'divider'},
     group('tools',icon.calculator,'TOOLS',[
@@ -145,7 +145,7 @@
     if(item.type==='divider')return '<div class="kvl-global-divider" aria-hidden="true"></div>';
     if(item.type==='link')return renderLink(item);
     const current=active===item.key||item.children.some(isChildActive);
-    return `<div class="kvl-global-group ${current?'open':''}" data-group="${item.key}"><button class="kvl-global-group-toggle ${current?'active':''}" type="button" aria-expanded="${current}"><span class="kvl-global-icon">${item.svg}</span><span class="kvl-global-label">${item.label}</span><span class="kvl-global-chevron">${icon.chevron}</span></button><div class="kvl-global-submenu">${item.children.map(child=>renderLink(child,true)).join('')}</div></div>`;
+    return `<div class="kvl-global-group ${current?'open':''}" data-group="${item.key}"><button class="kvl-global-group-toggle ${current?'active':''}" type="button" aria-expanded="${current}"><span class="kvl-global-icon">${item.svg}</span><span class="kvl-global-label">${item.label}</span>${item.extra==='member'?'<span class="kvl-member-gate-badge" data-kvl-member-badge>로그인 예정</span>':''}<span class="kvl-global-chevron">${icon.chevron}</span></button><div class="kvl-global-submenu">${item.children.map(child=>renderLink(child,true)).join('')}</div></div>`;
   }).join('');
 
   document.body.classList.add('kvl-sidebar-enabled');
@@ -159,6 +159,9 @@
   mobileHeader.innerHTML='<img src="/assets/images/brand/kvl-ball-domestic-navywhite.webp" alt="" width="30" height="30"><span>K-Volley Lab</span>';
   document.body.prepend(mobileHeader);
   document.body.classList.add('kvl-mobile-header-enabled');
+  const syncMemberBadge=status=>{const badge=document.querySelector('[data-kvl-member-badge]');if(!badge)return;const access=Boolean(status?.access);badge.classList.toggle('is-access',access);badge.textContent=status?.role==='admin'?'관리자':access?'로그인됨':'로그인 예정';};
+  window.addEventListener('kvl:member-access',ev=>syncMemberBadge(ev.detail));
+  window.KVLMemberAccessReady?.then(syncMemberBadge).catch(()=>{});
   const sidebar=document.querySelector('.kvl-global-sidebar');
   sidebar.id='kvlGlobalSidebar';
   const toggle=document.querySelector('.kvl-global-toggle');
