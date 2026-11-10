@@ -2,7 +2,7 @@ import {getMemberAccess,safeReturnPath} from './kvl-member-access-v1.mjs';
 
 const GATE_MODE='preview'; // switch to 'enforced' only after general-member onboarding is approved.
 const GATED_PATHS=new Set([
-  'players.html','player.html','teams.html','university-teams.html','university-team.html',
+  'players.html','player.html','player-search.html','player-profile.html','growth-timeline.html','teams.html','university-teams.html','university-team.html',
   'draft-hub.html','player-compare.html','player-cohort.html','records.html'
 ]);
 const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
