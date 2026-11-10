@@ -18,7 +18,7 @@ async function app(source=read){
  w.Blob=Blob;w.Response=Response;w.DecompressionStream=DecompressionStream;w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=()=>{};
  w.HTMLDialogElement.prototype.showModal=function(){this.open=true};w.HTMLDialogElement.prototype.close=function(){this.open=false};
  w.fetch=async input=>{const f=new URL(typeof input==='string'?input:input.url,w.location.href).pathname.slice(1);try{return new Response(source(f),{status:200})}catch{return new Response('',{status:404})}};
- for(const f of ['player-school-master-v2.js','player-school-master-compat-v2.js','player-search-v2.js'])w.eval(read('assets/js/'+f));
+ for(const f of ['player-school-master-v2.js','player-school-master-compat-v2.js','player-search-v2.js'])w.eval(source('assets/js/'+f));
  const catalog=JSON.parse(JSON.stringify(await w.KVLPlayerCatalogReady)),modules=new Map();
  async function module(f){if(modules.has(f))return modules.get(f);const m=new vm.SourceTextModule(read(f),{context:dom.getInternalVMContext(),identifier:f});modules.set(f,m);await m.link((s,r)=>module(path.posix.normalize(path.posix.join(path.posix.dirname(r.identifier),s))));return m}
  return {w,d:w.document,catalog,async run(f){await(await module(f)).evaluate()},close(){w.close()}};
