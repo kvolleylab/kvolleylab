@@ -16,7 +16,7 @@ function updateGradeCaption(){const grades=getFilters().grades;$('gradeSelection
 function syncDependentFilters(){
  const level=$('filters').elements.level.value,select=$('schoolFilter'),previous=select.value;
  const schools=[...new Set(players.filter(p=>!level||p.level===level).map(p=>p.school).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko'));
- const label=level==='high_school'?'모든 고등학교':level==='university'?'모든 대학교':level==='middle_school'?'모든 중학교':'모든 학교';
+ const label=level==='professional'?'모든 프로팀':level==='high_school'?'모든 고등학교':level==='university'?'모든 대학교':level==='middle_school'?'모든 중학교':'모든 학교·팀';
  select.innerHTML=`<option value="">${schools.length?label:'해당 학교 없음'}</option>${schools.map(name=>`<option>${e(name)}</option>`).join('')}`;
  select.value=schools.includes(previous)?previous:'';select.disabled=!schools.length;
  const fourth=document.querySelector('[name="grade"][value="4"]');fourth.disabled=['high_school','middle_school'].includes(level);if(fourth.disabled)fourth.checked=false;fourth.closest('label').hidden=fourth.disabled;
