@@ -44,13 +44,21 @@ test('changes do not target individual Competition Engine V2 HERO nodes', () => 
   assert.doesNotMatch(shared, /\.kvl1180-hero/);
   assert.doesNotMatch(shared, /\.kvl-competition-template-v2/);
 });
-test('comprehensive photo fills both desktop and mobile HERO surfaces', () => {
-  const [desktop, mobile] = shared.split(/@media\s*\(max-width:\s*680px\)/);
-  assert.ok(mobile, 'mobile breakpoint must exist');
-  assert.match(desktop, /background-size:\s*100%\s+100%,\s*cover/);
-  assert.match(desktop, /background-position:\s*center,\s*center/);
+test('comprehensive PC image occupies the RIGHT 50% media slot (not full background)', () => {
+  const [desktop] = shared.split(/@media\s*\(max-width:\s*680px\)/);
+  const art = desktop.match(/\.comprehensive-hub \.kvl-common-hero\[data-hero-mode="photo"\]::before\s*\{([^}]+)\}/);
+  assert.ok(art, 'dedicated PC image pseudo-element must exist');
+  assert.match(art[1], /inset:\s*0\s+0\s+0\s+50%/);
+  assert.match(art[1], /background-size:\s*100%\s+100%,\s*auto\s+130%/);
+  assert.match(art[1], /background-position:\s*center,\s*right\s+top/);
+  assert.match(art[1], /var\(--kvl-common-hero-image\)/);
+  assert.match(desktop, /isolation:\s*isolate/);
+});
+test('mobile keeps its distinct artwork right-aligned and text-safe', () => {
+  const [,mobile] = shared.split(/@media\s*\(max-width:\s*680px\)/);
+  assert.ok(mobile);
+  assert.match(mobile, /var\(--kvl-common-hero-image-mobile\)/);
   assert.match(mobile, /background-size:\s*100%\s+100%,\s*cover/);
-  assert.match(mobile, /background-position:\s*center,\s*center/);
-  assert.doesNotMatch(shared, /background-size:\s*100%\s+100%,\s*auto\s+100%/);
-  assert.match(read('comprehensive-competitions.html'), /20261110-comprehensive-fullbleed-v2/);
+  assert.match(mobile, /background-position:\s*center,\s*right center/);
+  assert.match(read('comprehensive-competitions.html'), /20261110-comprehensive-right-half-v3/);
 });
