@@ -6,7 +6,7 @@ export const MEMBER_ACCESS_FUNCTION='member-access';
 export const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 const GATED_PATHS=new Set([
-  'players.html','player.html','teams.html','university-teams.html','university-team.html',
+  'players.html','player.html','player-search.html','player-profile.html','growth-timeline.html','teams.html','university-teams.html','university-team.html',
   'draft-hub.html','player-compare.html','player-cohort.html','records.html'
 ]);
 
