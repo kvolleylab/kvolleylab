@@ -22,15 +22,15 @@ for(const gender of ['men','women']){
   const d=load(gender);assert.equal(d.competitionFamily,'pro');assert.equal(d.structure.presentationCategory,'pro-league');assert.equal(d.structure.knockout.mode,'pro-postseason');
   assert.deepEqual(Object.fromEntries(Object.entries(d.rosters).map(([code,r])=>[code,r.players.length])),expected[gender]);
   const known=new Map(json('data/national/player_id_links_v1.json').links.map(p=>[p.player_id,{name:p.name_ko,dob:p.birth_date}]));
-  for(const f of ['data/master/player_master_229_v2.json','data/master/player_master_school_v1.json']){const raw=json(f);for(const p of Array.isArray(raw)?raw:raw.players)if(!known.has(p.system.player_id))known.set(p.system.player_id,{name:p.identity.name_ko,dob:p.identity.birth_date});}
+  for(const f of ['data/master/player_master_229_v2.json','data/master/player_master_school_v1.json','data/master/player_master_pro_v1.json']){const raw=json(f);for(const p of Array.isArray(raw)?raw:raw.players)if(!known.has(p.system.player_id))known.set(p.system.player_id,{name:p.identity.name_ko,dob:p.identity.birth_date});}
   for(const t of d.participants){
    const r=d.rosters[t.code];assert.equal(t.rosterCount,r.players.length);assert.equal(r.rosterKind,'season-notice-snapshot');assert(dataApi.rosterTarget(d,t).available);
    assert.equal(new Set(r.players.map(p=>p.number)).size,r.players.length);
    for(const p of r.players){
     assert.equal(p.sourceId,r.sourceId);assert.match(p.registrationSource,/^https:\/\/kovo.co.kr\/news\/official-notices\/\d+$/);
     assert(p.nationalityCode&&p.nationality);assert(p.heightCm>100&&p.heightCm<230);
-    if(p.playerId)assert.deepEqual(known.get(p.playerId),{name:p.name,dob:p.dob});
-    if(p.dobStatus){assert.equal(p.dob,null);assert.equal(p.playerId,null);assert(p.sourceNote);}
+    if(p.playerId){const hit=known.get(p.playerId);assert(hit);assert.equal(hit.name,p.name);if(p.dob)assert.equal(hit.dob,p.dob);}
+    if(p.dobStatus){assert.equal(p.dob,null);assert(p.playerId);assert(p.sourceNote);}
    }
   }
   assert.equal(d.matches.length,126);assert.equal(new Set(d.matches.map(m=>m.id)).size,126);
@@ -135,6 +135,6 @@ test('latest reviewed changes supersede older MASTER and Cup membership',()=>{
  assert(!kal.some(p=>['최원빈','송민근'].includes(p.name)));assert.equal(kal.find(p=>p.name==='김영태').position,'MB');assert(kal.find(p=>p.name==='김영태').lastChangeSource.endsWith('/157686'));
  assert(!d.rosters.SFB.players.some(p=>p.name==='이윤재'));
  const all=[...Object.values(d.rosters),...Object.values(load('women').rosters)].flatMap(r=>r.players);
- assert.equal(all.filter(p=>p.nationalityCode!=='KOR').length,28);assert.equal(all.filter(p=>p.dobStatus).length,6);assert.equal(all.filter(p=>p.playerId).length,55);
+ assert.equal(all.filter(p=>p.nationalityCode!=='KOR').length,28);assert.equal(all.filter(p=>p.dobStatus).length,6);assert.equal(all.filter(p=>p.playerId).length,252);assert.equal(new Set(all.map(p=>p.playerId)).size,252);
  const text=JSON.stringify(all);assert(!/drive.google|docs.google|salary|관찰메모|예상 연봉/.test(text));
 });
