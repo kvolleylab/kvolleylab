@@ -1,4 +1,4 @@
-export const LEVELS={middle_school:'중학',high_school:'고교',university:'대학',international:'국제',national:'대표팀',domestic:'국내'};
+export const LEVELS={middle_school:'중학',high_school:'고교',university:'대학',professional:'프로',international:'국제',national:'대표팀',domestic:'국내'};
 export function searchPlayers(players,f={}){
  const words=(f.q||'').trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
  const grades=(Array.isArray(f.grades)?f.grades:f.grade?[f.grade]:[]).map(String).filter(Boolean);
