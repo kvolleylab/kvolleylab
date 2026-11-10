@@ -99,6 +99,16 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 function validSlug(s){return SLUG.test(s||'');}
 function group(family){return family==='pro'?'pro':family==='domestic'?'domestic':'international';}
 function catalogFromTree(tree){const entries=(tree&&tree.tree)||[];return [...new Set(entries.filter(x=>/^data\/competitions\/[a-z0-9-]+\/config\.json$/.test(x.path)).map(x=>x.path.split('/')[2]))].sort();}
+function displaySlug(slug){
+ const g=s=>s==='women'?'여자부':'남자부';let m;
+ if((m=slug.match(/^v-league-(men|women)-(\d{4}-\d{2})$/)))return m[2]+' V-리그 '+g(m[1]);
+ if((m=slug.match(/^kovo-cup-(men|women)-(\d{4})$/)))return m[2]+' KOVO컵 '+g(m[1]);
+ if((m=slug.match(/^vnl-(men|women)-(\d{4})$/)))return m[2]+' VNL '+g(m[1]);
+ if((m=slug.match(/^asian-games-(men|women)-(\d{4})$/)))return m[2]+' 아시안게임 '+g(m[1]);
+ if((m=slug.match(/^university-(goseong|danyang)-(men|women)-(\d{4})$/)))return m[3]+' 전국대학배구 '+(m[1]==='goseong'?'고성':'단양')+'대회 '+g(m[2]);
+ if((m=slug.match(/^national-sports-festival-(men|women)-(general|u18|university)-(\d{4})$/)))return m[3]+' 전국체육대회 '+g(m[1])+' · '+({general:'일반부',u18:'18세 이하',university:'대학부'}[m[2]]);
+ return slug.replaceAll('-',' · ');
+}
 function cleanTokens(input){if(!input||typeof input!=='object'||Array.isArray(input))throw Error('디자인 설정은 객체여야 합니다.');const out={};for(const [k,v] of Object.entries(input)){if(Object.prototype.hasOwnProperty.call(RANGE,k)){if(!Number.isFinite(v)||v<RANGE[k][0]||v>RANGE[k][1])throw Error(k+' 값이 허용 범위를 벗어났습니다.');out[k]=v;}else if(k==='nameMode'){if(!MODES.includes(v))throw Error('허용하지 않은 팀명 표시 방식입니다.');out[k]=v;}else if(k==='heroFit'){if(!FIT.includes(v))throw Error('허용하지 않은 HERO 크기입니다.');out[k]=v;}else if(k==='heroPosition'){if(!POS.includes(v))throw Error('허용하지 않은 HERO 위치입니다.');out[k]=v;}else if(k==='heroColor'){if(!/^#[0-9a-f]{6}$/i.test(v))throw Error('HERO 색은 #RRGGBB여야 합니다.');out[k]=v;}else throw Error('정의되지 않은 디자인 항목: '+k);}return out;}
 function normalizeOverrides(input){if(!input||input.schemaVersion!==2||input.type!=='kvl-visual-overrides')throw Error('KVL 디자인 설정 v2가 아닙니다.');const out={schemaVersion:2,type:'kvl-visual-overrides',global:{},families:{},competitions:{}};out.global=cleanTokens(input.global||{});for(const [k,v] of Object.entries(input.families||{})){if(!SCOPE.includes(k)||k==='all')throw Error('허용하지 않은 공통 범위입니다: '+k);out.families[k]=cleanTokens(v);}for(const [k,v] of Object.entries(input.competitions||{})){if(!validSlug(k))throw Error('대회 식별자 오류: '+k);out.competitions[k]=cleanTokens(v);}return out;}
 function scopeId(scope,slug){if(scope==='competition'){if(!validSlug(slug))throw Error('먼저 대회를 선택하세요.');return {kind:'competitions',key:slug};}if(scope==='all')return {kind:'global',key:null};if(!SCOPE.includes(scope))throw Error('허용하지 않은 적용 범위입니다.');return {kind:'families',key:scope};}
@@ -109,13 +119,13 @@ function safeAsset(asset){if(!asset||typeof asset!=='string')return '';try{const
 function safeProfile(config,data){if(!config||!data||!validSlug(config.slug))throw Error('기존 대회 config에 올바른 slug가 없습니다.');if(!config.competition||!config.competition.displayName||!config.competition.competitionFamily)throw Error('대회 설정의 competition 필드가 누락되었습니다.');if(!Array.isArray(data.participants)||!Array.isArray(data.matches))throw Error('참가팀 또는 경기 기록 형식이 잘못되었습니다.');return {config,data};}
 function presentation(config,data){const teamMap=(data.participants||[]),standings=chooseRows(data);const rows=standings.rows.map(r=>({row:r,team:Object.assign({},pickTeam(data,r.team),r.team||{})}));const longNames=teamMap.slice().sort((a,b)=>String(b.name||'').length-String(a.name||'').length);const teams=[...longNames.slice(0,2),...teamMap.slice(0,3)].filter((t,i,a)=>a.findIndex(z=>z.code===t.code)===i).slice(0,4);return {teams,standings:{name:standings.name,rows:rows.slice(0,7)},matches:data.matches.slice(0,4)};}
 function reportChange(diff){return Object.entries(diff).map(([k,v])=>`${k}: ${v}`).join('\n');}
-const api={DEFAULT,validSlug,group,catalogFromTree,cleanTokens,normalizeOverrides,scopeId,effective,chooseRows,pickTeam,safeAsset,safeProfile,presentation,reportChange};
+const api={DEFAULT,validSlug,group,catalogFromTree,displaySlug,cleanTokens,normalizeOverrides,scopeId,effective,chooseRows,pickTeam,safeAsset,safeProfile,presentation,reportChange};
 function init(){
  const $=id=>document.getElementById(id), state={catalog:[],config:null,data:null,overrides:normalizeOverrides({schemaVersion:2,type:'kvl-visual-overrides'}),scope:'competition',history:[],heroUrl:null,view:'pc',loading:false};
  const output=(msg,error=false)=>{$('report').textContent=msg;$('report').classList.toggle('error',error);};
  const status=(msg,error=false)=>{$('loadStatus').textContent=msg;$('loadStatus').style.color=error?'#b2354a':'#6b7f94';};
  const sourceLink=()=>{if(state.config)$('originalLink').href=SITE+'/competition-engine.html?competition='+encodeURIComponent(state.config.slug);};
- function addOptions(list){const select=$('compSelect');const prev=select.value;select.replaceChildren(new Option('대회를 선택하세요',''));list.forEach(s=>select.add(new Option(s.replaceAll('-',' · '),s)));if(list.includes(prev))select.value=prev;}
+ function addOptions(list){const select=$('compSelect');const prev=select.value;select.replaceChildren(new Option('대회를 선택하세요',''));list.forEach(s=>select.add(new Option(displaySlug(s),s)));if(list.includes(prev))select.value=prev;}
  function controls(){const v=state.config?effective(state.overrides,state.config):DEFAULT;document.querySelectorAll('[data-field]').forEach(el=>{el.value=v[el.dataset.field];const out=document.querySelector(`[data-out="${el.dataset.field}"]`);if(out)out.textContent=String(v[el.dataset.field])+(el.type==='range'?'px':'');});const key=state.scope;const desc={competition:'선택한 대회만 수정합니다.',domestic:'국내대회 공통: 대학·중고·종합대회에 적용됩니다. 프로대회는 제외합니다.',international:'FIVB·AVC·아시안게임 등 국제대회에 적용됩니다.',pro:'V-리그·KOVO컵에 적용됩니다.',all:'모든 대회에 적용되는 기본값입니다.'};$('scopeInfo').textContent=desc[key];}
  function cssSet(k,v){$('preview').style.setProperty(k,v);}
  function logoHtml(t){const name=t.name||t.fullName||t.code||'팀';const src=safeAsset(t.logo||t.flag);return `<span class="logo">${src?`<img src="${esc(src)}" alt="" loading="lazy">`:`<span class="fallback">${esc((name||'?').slice(0,2))}</span>`}</span>`;}
