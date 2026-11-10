@@ -29,3 +29,25 @@ test('fixture metadata writes cannot reset the missing-live observation deadline
  for(const f of rows)f.matches[0].status='live';
  assert(publicHealth(rows,now).every(p=>p.reason==='LIVE_OBSERVATION_STALE'&&p.observedAt===null));
 });
+
+test('all requests use Workers-compatible manual redirects',async()=>{
+ const f=fake({runs:[run(31)]}); await tick(env,memory(),now,f.fetcher);
+ assert(f.calls.length>=5); assert(f.calls.every(c=>c.options.redirect==='manual'));
+});
+test('redirect responses fail closed without contacting Location',async()=>{
+ const calls=[];
+ await assert.rejects(tick(env,memory(),now,async(u,o)=>{
+  calls.push({u,o});return new Response(null,{status:302,headers:{Location:'https://untrusted.invalid/'}});
+ }),e=>e.message==='REDIRECT_REJECTED');
+ assert.equal(calls.length,1);assert.equal(calls[0].o.redirect,'manual');
+});
+test('failure diagnostics exclude token, response body and raw exceptions',async()=>{
+ const {failureDetails}=await import('../infra/vleague-scheduler/scheduler.mjs');
+ for(const status of [401,403,429,500]){
+  try{await tick(env,memory(),now,async()=>new Response(env.GITHUB_TOKEN,{status}));assert.fail();}
+  catch(e){assert.deepEqual(failureDetails(e),{stage:'GITHUB_RUNS',reason:'HTTP_ERROR',httpStatus:status});}
+ }
+ try{await tick(env,memory(),now,async()=>{throw Error(env.GITHUB_TOKEN);});assert.fail();}
+ catch(e){assert.deepEqual(failureDetails(e),{stage:'GITHUB_RUNS',reason:'REQUEST_FAILED',httpStatus:null});}
+ assert.equal(JSON.stringify(failureDetails(Error(env.GITHUB_TOKEN))).includes(env.GITHUB_TOKEN),false);
+});
