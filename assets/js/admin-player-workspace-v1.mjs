@@ -444,6 +444,10 @@ async function restoreSession(){
     const {data,error}=await supabase.auth.getUser();
     if(error||!data.user){showLogin();return}
     await api('status');showWorkspace(data.user);await Promise.all([loadCatalog(),loadMatchCatalog()]);await refreshState();msg('관리자 세션을 복원했습니다.');
+    const q=new URLSearchParams(location.search),notePlayer=q.get('notePlayer'),editNote=q.get('editNote');
+    if(notePlayer&&byId.has(notePlayer)){openPlayerNote(notePlayer);q.delete('notePlayer')}
+    else if(editNote&&notes.some(n=>n.id===editNote)){openNote(editNote);q.delete('editNote')}
+    if(notePlayer||editNote){const url=new URL(location.href);url.search=q.toString();history.replaceState(null,'',url.pathname+(q.toString()?'?'+q.toString():'')+url.hash)}
   }catch{await supabase.auth.signOut().catch(()=>{});showLogin()}
 }
 restoreSession();
