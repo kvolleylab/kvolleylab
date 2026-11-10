@@ -1,5 +1,11 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-10 · 종합대회 배구 완성형 HERO v04
+
+Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 선택 원본을 기준으로 PC·모바일 WebP 제작, PR 제출, 검증 후 main 병합과 실제 Pages 배포 확인까지 명시적으로 승인했다. 기존 v03 및 경기·순위·선수·MASTER는 보존한다. 별도 브랜치의 미병합 PR #281 확대/사진분리 방식 대신 완성형 v04 파노라마를 사용한다.
+
+공통 외형 1180px·PC225px·모바일215px과 기존 HTML 텍스트/링크를 유지한다. 독립 PC2108×406/mobile1258×406, 단일 배경·비율 보존 cover/right center, 중복 오버레이 제거. 모바일의 왼쪽62% 설명문과 주요 피사체 안전영역을 확보한다. 이번 결정은 해당 허브의 이전 v03 이미지 및 중복 그라데이션 표시만 대체하며 다른 허브·상세화면으로 확장하지 않는다. 5개 폭 브라우저 검수 및 관련14개 검사 통과. 기준main `54bb76ca43be9d0bca6c53ce86b699a374f26948`. [제작·측정·기존 검사 실패·복구](validation/comprehensive-hero-v04-20261110.md). 병합·Pages·HTTPS 증거는 릴리스 PR에 기록한다.
+
 ## 2026-11-10(KST) · 모델·요금제 독립 운영 및 이번 시즌 인증 유지
 
 Status: USER APPROVED POLICY / DOCUMENTATION UPDATE; 신규 기능 배포·다음 시즌 개통 완료를 뜻하지 않는다.

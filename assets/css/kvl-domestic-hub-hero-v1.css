@@ -42,19 +42,16 @@ body.domestic-competitions-page:not(.school-competitions-hub-page) .dc-status {
   margin-top: 11px;
 }
 
-/* Comprehensive hub: use the existing event photo as a full-bleed image
- * across the entire HERO, not a right-aligned background strip. The navy
- * gradient is a separate overlay to keep the left-side title legible. */
+/* Comprehensive v04 is one finished panorama. Its text-safe navy is baked
+ * into the artwork: no additional dark overlay or right-half crop layer. */
 .comprehensive-hub .kvl-common-hero[data-hero-mode="photo"] {
   width: 100%;
   min-width: 0;
   aspect-ratio: auto;
-  background-color: #163a5f;
-  background-image:
-    linear-gradient(90deg, rgba(7,27,53,.68) 0%, rgba(7,27,53,.31) 48%, rgba(7,27,53,.06) 100%),
-    var(--kvl-common-hero-image);
-  background-size: 100% 100%, cover;
-  background-position: center, center;
+  background-color: #071b35;
+  background-image: var(--kvl-common-hero-image);
+  background-size: cover;
+  background-position: right center;
   background-repeat: no-repeat;
 }
 .comprehensive-hub .kvl-common-hero-copy {
@@ -108,21 +105,25 @@ body.school-competitions-hub-page #app .hero-link {
     padding: var(--kvl-domestic-hub-pad-mobile);
   }
   .comprehensive-hub .kvl-common-hero[data-hero-mode="photo"] {
-    background-image:
-      linear-gradient(105deg, rgba(7,27,53,.78) 0%, rgba(7,27,53,.39) 58%, rgba(7,27,53,.08) 100%),
-      var(--kvl-common-hero-image-mobile);
-    background-size: 100% 100%, cover;
-    background-position: center, center;
+    background-image: var(--kvl-common-hero-image-mobile);
+    /* The mobile artwork keeps all subjects in its responsive right focal
+     * area. Natural cover may trim quiet navy, never the torch or players. */
+    background-size: cover;
+    background-position: right center;
   }
   .comprehensive-hub .kvl-common-hero-copy {
     max-width: 100%;
+    width: 100%;
+    text-shadow: 0 1px 3px #071b35;
   }
   .comprehensive-hero-sub {
+    max-width: 62%;
     font-size: 15px;
     line-height: 1.35;
     margin-top: 6px;
   }
   .comprehensive-hub .univ-hero-desc {
+    max-width: 62%;
     font-size: 12px;
     line-height: 1.4;
     margin-top: 5px;
