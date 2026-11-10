@@ -83,6 +83,7 @@ The new member table has RLS enabled and no direct grants to public/anon/authent
 - Added `member-login.html`.
 - General signup remains CLOSED.
 - Player·Team gate mode is currently `preview`, not `enforced`.
+- Gate coverage includes current/legacy player routes (`players`, `player`, `player-search`, `player-profile`, `growth-timeline`), team routes, Draft Hub, compare, cohort and records.
 - Public visitors are not blocked yet.
 - Add `?memberGate=1` to a Player·Team page to test the redirect/login gate before rollout.
 - Shared sidebar shows a Player·Team login-readiness badge and recognizes an existing admin session.
