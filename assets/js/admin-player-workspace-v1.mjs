@@ -71,7 +71,6 @@ function row(p){
     <div class="row-actions">
       <button class="bookmark ${saved?'saved':''}" type="button" data-bookmark="${e(p.id)}">${saved?'★ 관심선수':'☆ 관심선수'}</button>
       <button class="note-button" type="button" data-note-player="${e(p.id)}">메모 작성</button>
-      <button class="analysis-button" type="button" data-analysis-player="${e(p.id)}">선수 분석</button>
       <a class="profile-link" href="${e(profileHref(p.id))}">프로필 보기</a>
     </div>
   </article>`;
