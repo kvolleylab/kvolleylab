@@ -454,23 +454,33 @@
       },
       "venueLabel": "대전 충무체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:17",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-10T10:59:31+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-10T14:19:05+00:00",
+      "score": {
         "home": 1,
-        "away": 0,
-        "sourceKey": "023:001:MALE:17",
-        "observedAt": "2026-11-10T10:59:31+00:00"
+        "away": 3,
+        "sets": [
+          {
+            "home": 25,
+            "away": 22
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 33,
+            "away": 35
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 25,
-          "away": 22,
-          "status": "completed"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-010",
@@ -2860,6 +2870,27 @@
       {
         "rank": 3,
         "team": {
+          "code": "KEP",
+          "name": "한국전력",
+          "fullName": "한국전력",
+          "en": "KEP"
+        },
+        "poolId": "LEAGUE",
+        "games": 3,
+        "wins": 2,
+        "losses": 1,
+        "points": 6,
+        "setWins": 6,
+        "setLosses": 5,
+        "pointsFor": 266,
+        "pointsAgainst": 275,
+        "setRatio": "1.200",
+        "pointRatio": "0.967",
+        "statusLabel": "3위"
+      },
+      {
+        "rank": 4,
+        "team": {
           "code": "KAL",
           "name": "대한항공",
           "fullName": "대한항공",
@@ -2876,27 +2907,6 @@
         "pointsAgainst": 163,
         "setRatio": "1.333",
         "pointRatio": "1.055",
-        "statusLabel": "3위"
-      },
-      {
-        "rank": 4,
-        "team": {
-          "code": "SFB",
-          "name": "삼성화재",
-          "fullName": "삼성화재",
-          "en": "SFB"
-        },
-        "poolId": "LEAGUE",
-        "games": 2,
-        "wins": 1,
-        "losses": 1,
-        "points": 3,
-        "setWins": 4,
-        "setLosses": 4,
-        "pointsFor": 201,
-        "pointsAgainst": 200,
-        "setRatio": "1.000",
-        "pointRatio": "1.005",
         "statusLabel": "4위"
       },
       {
@@ -2923,22 +2933,22 @@
       {
         "rank": 6,
         "team": {
-          "code": "KEP",
-          "name": "한국전력",
-          "fullName": "한국전력",
-          "en": "KEP"
+          "code": "SFB",
+          "name": "삼성화재",
+          "fullName": "삼성화재",
+          "en": "SFB"
         },
         "poolId": "LEAGUE",
-        "games": 2,
+        "games": 3,
         "wins": 1,
-        "losses": 1,
+        "losses": 2,
         "points": 3,
-        "setWins": 3,
-        "setLosses": 4,
-        "pointsFor": 159,
-        "pointsAgainst": 172,
-        "setRatio": "0.750",
-        "pointRatio": "0.924",
+        "setWins": 5,
+        "setLosses": 7,
+        "pointsFor": 304,
+        "pointsAgainst": 307,
+        "setRatio": "0.714",
+        "pointRatio": "0.990",
         "statusLabel": "6위"
       },
       {
@@ -3031,14 +3041,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 8/126경기 종료 · 2026-11-10 19:59 KST 반영",
-  "updatedAt": "2026-11-10T10:59:31+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 9/126경기 종료 · 2026-11-10 23:19 KST 반영",
+  "updatedAt": "2026-11-10T14:19:05+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 8,
+    "completedMatches": 9,
     "postseason": {
       "matched": 0,
       "completed": 0,
