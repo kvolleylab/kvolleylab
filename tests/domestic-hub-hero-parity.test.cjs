@@ -44,13 +44,20 @@ test('changes do not target individual Competition Engine V2 HERO nodes', () => 
   assert.doesNotMatch(shared, /\.kvl1180-hero/);
   assert.doesNotMatch(shared, /\.kvl-competition-template-v2/);
 });
-test('comprehensive photo fills both desktop and mobile HERO surfaces', () => {
+test('finished comprehensive panoramas use a single natural-ratio background', () => {
   const [desktop, mobile] = shared.split(/@media\s*\(max-width:\s*680px\)/);
   assert.ok(mobile, 'mobile breakpoint must exist');
-  assert.match(desktop, /background-size:\s*100%\s+100%,\s*cover/);
-  assert.match(desktop, /background-position:\s*center,\s*center/);
-  assert.match(mobile, /background-size:\s*100%\s+100%,\s*cover/);
-  assert.match(mobile, /background-position:\s*center,\s*center/);
-  assert.doesNotMatch(shared, /background-size:\s*100%\s+100%,\s*auto\s+100%/);
-  assert.match(read('comprehensive-competitions.html'), /20261110-comprehensive-fullbleed-v2/);
+  for (const section of [desktop, mobile]) {
+    assert.match(section, /background-size:\s*cover/);
+    assert.match(section, /background-position:\s*right center/);
+    assert.doesNotMatch(section, /linear-gradient/);
+    assert.doesNotMatch(section, /background-size:\s*100%\s+100%/);
+  }
+  assert.doesNotMatch(shared, /::before|::after/);
+  const css = read('assets/css/comprehensive-competitions-hub.css');
+  for (const screen of ['pc', 'mobile']) {
+    assert.match(css, new RegExp('kvl-hero-comprehensive-hub-all-' + screen + '-v04\\.webp'));
+    assert.ok(fs.existsSync(path.resolve(__dirname, '..', 'assets/img/competition-hero/kvl-hero-comprehensive-hub-all-' + screen + '-v03.webp')), 'v03 rollback asset remains');
+  }
+  assert.match(read('comprehensive-competitions.html'), /20261110-panorama-v04/);
 });
