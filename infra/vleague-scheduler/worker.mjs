@@ -1,4 +1,4 @@
-import {tick} from './scheduler.mjs';
+import {tick,failureDetails} from './scheduler.mjs';
 export class VLeagueCoordinator {
   constructor(ctx,env) { this.ctx=ctx;this.env=env; }
   async fetch(request) {
@@ -12,7 +12,12 @@ export class VLeagueCoordinator {
     });
     if (!acquired) return Response.json({status:'ALREADY_RUNNING'});
     try {return Response.json(await tick(this.env,this.ctx.storage,now));}
-    catch {await this.ctx.storage.put('health',{status:'WATCHDOG_FAILED',checkedAt:new Date(now).toISOString()});throw Error('VLEAGUE_WATCHDOG_FAILED');}
+    catch (error) {
+      const failure={status:'WATCHDOG_FAILED',checkedAt:new Date(now).toISOString(),...failureDetails(error)};
+      await this.ctx.storage.put('health',failure);
+      console.error(JSON.stringify(failure));
+      throw Error('VLEAGUE_WATCHDOG_FAILED');
+    }
     finally {await this.ctx.storage.delete('leaseUntil');}
   }
 }

@@ -33,14 +33,35 @@ export function publicHealth(feeds, now) {
   }
   return problems;
 }
+class SchedulerRequestError extends Error {
+  constructor(stage, reason, httpStatus = null) {
+    super(reason); this.stage = stage; this.reason = reason; this.httpStatus = httpStatus;
+  }
+}
+export function failureDetails(error) {
+  // Never expose raw messages, response bodies, URLs, headers or tokens.
+  return error instanceof SchedulerRequestError
+    ? {stage:error.stage,reason:error.reason,httpStatus:error.httpStatus}
+    : {stage:'SCHEDULER',reason:'INTERNAL_ERROR',httpStatus:null};
+}
+// Workers rejects redirect:'error' before sending any request. Manual keeps
+// credentials at the original endpoint; reject 3xx without following Location.
 async function requestJSON(url, options, fetcher) {
-  const response = await fetcher(url, {...options, redirect:'error', signal:AbortSignal.timeout(10000)});
-  if (!response.ok) throw Error(`HTTP_${response.status}`);
-  return response.status === 204 ? null : response.json();
+  const stage = url.startsWith(API) ? (url.includes('/runs?') ? 'GITHUB_RUNS' :
+    url.endsWith('/dispatches') ? 'GITHUB_DISPATCH' : 'GITHUB_NOTIFICATIONS') : 'PUBLIC_FEED';
+  let response;
+  try {
+    response = await fetcher(url, {...options, redirect:'manual', signal:AbortSignal.timeout(10000)});
+  } catch { throw new SchedulerRequestError(stage,'REQUEST_FAILED'); }
+  if (!response.ok) throw new SchedulerRequestError(stage,
+    response.status >= 300 && response.status < 400 ? 'REDIRECT_REJECTED' : 'HTTP_ERROR',response.status);
+  if (response.status === 204) return null;
+  try { return await response.json(); }
+  catch { throw new SchedulerRequestError(stage,'INVALID_JSON'); }
 }
 export async function tick(env, storage, now=Date.now(), fetcher=fetch) {
   if (env.KVL_SCHEDULER_APPROVED !== 'true' || !inWindow(now)) return {status:'INACTIVE'};
-  if (!env.GITHUB_TOKEN) throw Error('GITHUB_CREDENTIAL_NOT_CONFIGURED');
+  if (!env.GITHUB_TOKEN) throw new SchedulerRequestError('CONFIG','GITHUB_CREDENTIAL_NOT_CONFIGURED');
   const headers = {Authorization:`Bearer ${env.GITHUB_TOKEN}`,Accept:'application/vnd.github+json',
     'X-GitHub-Api-Version':'2022-11-28','User-Agent':'KVL-VLeague-Scheduler','Content-Type':'application/json'};
   const gh = (path, options={}) => requestJSON(API+path,{...options,headers},fetcher);

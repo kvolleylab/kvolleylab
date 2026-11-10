@@ -560,3 +560,13 @@ Status: **IMPLEMENTED / LOCAL QA VERIFIED / NOT DEPLOYED**. Owner requested isol
 Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 v2를 실제 홈페이지에 반영하도록 명시적으로 승인했다. 시안 PR #274의 디자인·데이터 기준을 기존 `national-team.html` 주소로 옮기며, 운영 PR에서 병합·Pages·실제 화면 검증을 기록한다.
 
 2026 출전대회 최종 성적을 우선하고 LA28 로드맵·공식 랭킹 스냅샷을 함께 전환한다. 공통 메뉴·HERO·1180px·카드·색상 체계를 유지하고 기존 선수 ID/MASTER·명단·대회 DB·자동화는 보존한다. 최신 main `2190b137d9e2682005ec922333b2ecbb2d38ae8f` 기반의 별도 운영 변경이며 prototype 폴더를 main에 옮기지 않는다. [변경 범위·검수·출처·복구](validation/national-team-home-v2-production-20261109.md).
+
+## 2026-11-10 · Worker redirect runtime compatibility repair
+
+Status: IMPLEMENTED / LOCAL RUNTIME VERIFIED / NOT DEPLOYED. User requested repair
+following the 20:23 live failure diagnosis. On base94ac61db…, local workerd reproduced
+unsupported redirect:error failing before GitHub requests. Replace with manual plus
+non-2xx rejection, preserve credentials' destination and add sanitized failure categories.
+No approval gates, tokens, schedules, MASTER or match/player data changed. Real Cloudflare
+redeployment and two consecutive live full-path observations remain required.
+[Evidence and release instructions](validation/vleague-worker-redirect-20261110.md).
