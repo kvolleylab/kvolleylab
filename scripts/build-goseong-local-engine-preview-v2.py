@@ -20,6 +20,7 @@ COMPETITIONS = (SLUG, "university-goseong-women-2026")
 DIRS = (
     "assets/css",
     "assets/js",
+    "assets/vendor",
     "assets/images/brand",
     "assets/images/universities",
     "assets/images/school-logos",
@@ -28,6 +29,8 @@ DIRS = (
 )
 FILES = (
     "competition-engine.html",
+    "admin-competition-layout-v3.html",
+    "prototypes/kvl-existing-competition-editor-v2.html",
     "prototypes/kvl-goseong-engine-compare-v1.html",
     "assets/js/kvl-goseong-layout-compare-v1.js",
     "data/master/school_logo_manifest_2026.json",
