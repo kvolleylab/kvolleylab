@@ -256,7 +256,13 @@ def run(root: Path, output: Path, executable: str | None = None):
 
             context.route("**/*",handler)
             page=context.new_page()
+            console_errors=[]
+            failed_requests=[]
+            error_responses=[]
             page.on("pageerror",lambda error:errors.append(str(error)))
+            page.on("console",lambda msg:console_errors.append(msg.text) if msg.type=="error" else None)
+            page.on("requestfailed",lambda request:failed_requests.append({"url":request.url.split("?")[0],"failure":request.failure}))
+            page.on("response",lambda response:error_responses.append({"url":response.url.split("?")[0],"status":response.status}) if response.status>=400 else None)
             checks=[]
             def tick(msg): checks.append(msg)
             try:
@@ -271,6 +277,8 @@ def run(root: Path, output: Path, executable: str | None = None):
                 except Exception as failed:
                     info={"loginMessage":page.locator("#loginMessage").inner_text(),
                           "requests":requests,"pageErrors":errors,
+                          "consoleErrors":console_errors,"failedRequests":failed_requests,
+                          "errorResponses":error_responses,
                           "message":"fixture-only fake login, no real Supabase calls"}
                     (output/"login-diagnostic.json").write_text(
                         json.dumps(info,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
