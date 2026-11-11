@@ -170,6 +170,11 @@ function init(){
    if(!['domestic','international','pro'].includes(scope))throw Error('허용하지 않은 범위입니다.');
    return {scope:'family',scope_key:scope,tokens:clone(state.overrides.families[scope]||{})};
  };
+ api.exportEffectiveChanges=()=>{
+   if(!state.config)throw Error('기존 대회 로딩을 먼저 완료하세요.');
+   const family=group(state.config.competition.competitionFamily);
+   return cleanTokens({...state.overrides.global,...(state.overrides.families[family]||{}),...(state.overrides.competitions[state.config.slug]||{})});
+ };
  api.applyServerDrafts=records=>{
    if(!Array.isArray(records)||records.length>300)throw Error('임시저장 목록 형식이 잘못되었습니다.');
    const payload={schemaVersion:2,type:'kvl-visual-overrides',global:{},families:{},competitions:{}};
