@@ -78,9 +78,15 @@ function row(p){
 }
 function renderSearch(){
   if(!players.length)return;
-  const result=searchPlayers(players,{q:$('playerQuery').value.trim(),gender:$('genderFilter').value}).slice(0,80);
-  $('searchCount').textContent=`검색 결과 ${result.length.toLocaleString('ko-KR')}명${result.length===80?' · 최대 80명 표시':''}`;
-  $('searchResults').innerHTML=result.length?result.map(row).join(''):'<div class="empty">조건에 맞는 선수가 없습니다.</div>';
+  const level=$('levelFilterAdmin').value,team=$('teamFilterAdmin').value;
+  const baseLevel=level==='professional_current'?'':level;
+  let result=searchPlayers(players,{q:$('playerQuery').value.trim(),gender:$('genderFilter').value,level:baseLevel});
+  if(level==='professional_current')result=result.filter(p=>p.currentPro===true);
+  if(team)result=result.filter(p=>p.currentPro===true&&p.team===team);
+  result=result.slice(0,80);
+  const scope=level==='professional_current'?' · 2026-27 V-리그 등록선수':'';
+  $('searchCount').textContent=`검색 결과 ${result.length.toLocaleString('ko-KR')}명${scope}${result.length===80?' · 최대 80명 표시':''}`;
+  $('searchResults').innerHTML=result.length?result.map(row).join(''):'<div class="empty"><strong>조건에 맞는 선수가 없습니다.</strong><span>분류·팀·성별 조건을 확인해 주세요.</span></div>';
 }
 function renderBookmarks(){
   const rows=[...bookmarks].map(id=>byId.get(id)).filter(Boolean).sort((a,b)=>a.name.localeCompare(b.name,'ko'));
@@ -283,13 +289,15 @@ function openPlayerNote(id){
   const p=byId.get(id);
   $('noteId').value='';$('noteRevision').value='';$('notePlayer').value=id;$('notePlayerId').textContent='';
   $('notePlayerName').textContent=(p?.name||id)+' · 선수 메모';setNoteMeta(id);
-  $('noteSeason').value='2026-27';$('noteTitle').value='';$('noteBody').value='';$('deleteNoteButton').hidden=true;$('noteDialog').showModal();$('noteTitle').focus();
+  $('noteSeason').value='2026-27';$('noteTitle').value='';$('noteBody').value='';$('noteAudit').hidden=true;$('noteAudit').textContent='';$('deleteNoteButton').hidden=true;$('noteDialog').showModal();$('noteTitle').focus();
 }
 function openNote(id){
   const n=notes.find(x=>x.id===id);if(!n)return;
   $('noteId').value=n.id;$('noteRevision').value=String(n.revision);$('notePlayer').value=n.player_id;$('notePlayerId').textContent='';
   $('notePlayerName').textContent=pname(n.player_id)+' · 선수 메모';setNoteMeta(n.player_id);
-  $('noteSeason').value=n.season||'2026-27';$('noteTitle').value=n.title;$('noteBody').value=n.body;$('deleteNoteButton').hidden=false;$('noteDialog').showModal();
+  $('noteSeason').value=n.season||'2026-27';$('noteTitle').value=n.title;$('noteBody').value=n.body;
+  $('noteAudit').hidden=false;$('noteAudit').textContent='작성 '+formatDate(n.created_at)+' · 최근 수정 '+formatDate(n.updated_at);
+  $('deleteNoteButton').hidden=false;$('noteDialog').showModal();
 }
 function closeNote(){$('noteDialog').close()}
 
@@ -322,9 +330,15 @@ $('loginForm').addEventListener('submit',async ev=>{
   }catch(err){await supabase.auth.signOut().catch(()=>{});showLogin();loginMsg(err.message||'로그인에 실패했습니다.',true)}
   finally{$('loginButton').disabled=false}
 });
-$('logoutButton').addEventListener('click',async()=>{msg('로그아웃 중…');await supabase.auth.signOut();bookmarks.clear();notes=[];analyses=[];matchAnalyses=[];showLogin();loginMsg('로그아웃했습니다.')});
+$('logoutButton').addEventListener('click',async()=>{msg('로그아웃 중…');await supabase.auth.signOut();bookmarks.clear();notes=[];analyses=[];matchAnalyses=[];location.href='member-login.html?next='+encodeURIComponent('players.html?member-gate-preview=1')});
 $('searchForm').addEventListener('submit',ev=>{ev.preventDefault();renderSearch()});
 $('genderFilter').addEventListener('change',renderSearch);
+$('levelFilterAdmin').addEventListener('change',()=>{
+  const pro=$('levelFilterAdmin').value==='professional_current';
+  $('teamFilterAdmin').disabled=!pro;if(!pro)$('teamFilterAdmin').value='';
+  renderSearch();
+});
+$('teamFilterAdmin').addEventListener('change',renderSearch);
 let debounce;
 $('playerQuery').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(renderSearch,120)});
 $('noteQuery').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(renderNotes,120)});
@@ -437,7 +451,10 @@ async function loadCatalog(){
   if(players.length)return;
   const catalog=await window.KVLPlayerCatalogReady;if(!Array.isArray(catalog))throw new Error('선수 DB를 불러올 수 없습니다.');
   players=catalog.map(normalize).filter(p=>p.id);byId=new Map(players.map(p=>[p.id,p]));
-  $('catalogStatus').textContent=`공개 DB ${players.length.toLocaleString('ko-KR')}명`;renderSearch();
+  const proTeams=[...new Set(players.filter(p=>p.currentPro===true).map(p=>p.team).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko'));
+  $('teamFilterAdmin').innerHTML='<option value="">전체 프로팀</option>'+proTeams.map(team=>'<option value="'+e(team)+'">'+e(team)+'</option>').join('');
+  const currentProCount=players.filter(p=>p.currentPro===true).length;
+  $('catalogStatus').textContent=`전체 ${players.length.toLocaleString('ko-KR')}명 · 현재 프로 ${currentProCount.toLocaleString('ko-KR')}명`;renderSearch();
 }
 async function restoreSession(){
   try{
