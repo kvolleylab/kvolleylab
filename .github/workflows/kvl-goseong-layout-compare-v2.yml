@@ -38,6 +38,12 @@ jobs:
           else
             python -m playwright install --with-deps chromium
           fi
+      - name: Install Korean glyphs for readable QA screenshots
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends fonts-nanum || sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          fc-match -f '%{family}\n' 'sans:lang=ko' | head -n 1
       - name: Check visual editor and admin bridge safety
         run: |
           node tests/kvl-goseong-layout-compare-v1.test.cjs
