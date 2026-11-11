@@ -576,3 +576,16 @@ non-2xx rejection, preserve credentials' destination and add sanitized failure c
 No approval gates, tokens, schedules, MASTER or match/player data changed. Real Cloudflare
 redeployment and two consecutive live full-path observations remain required.
 [Evidence and release instructions](validation/vleague-worker-redirect-20261110.md).
+
+## 2026-11-11 · Isolate match publication from player identity validation
+
+Status: USER REQUESTED REPAIR / IMPLEMENTED / MATCH QA PASSED / NOT DEPLOYED.
+After #286, real publisher runs failed before official collection because player
+identity tests were in the recurring match gate. Retain roster rendering in that
+gate, move player identity validation to its existing player/Cup CI, and require
+it before any activated player pilot authenticates. Recognize the new pro MASTER
+without concealing cross-source ID collisions. Do not reassign IDs, modify rosters,
+MASTERs, international or Cup records, or claim that player integrity is repaired.
+Existing match source/readback/allowlist/Pages guards remain mandatory. The concrete
+release requires approval; no further Worker deployment is needed for this scope.
+Base99d4fc29; [cause, validation, remaining conflicts and release gate](validation/vleague-publisher-isolation-20261111.md).

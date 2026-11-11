@@ -645,6 +645,10 @@ class UpdaterPlanTests(unittest.TestCase):
             seed_root(root, self.originals)
             protected = ["data/competitions/v-league-men-2026-27/config.json",
                          "data/competitions/v-league-women-2026-27/rosters.json",
+                         "data/competitions/v-league-men-2026-27/rosters.json",
+                         "data/master/player_master_pro_vleague_2026_27_v1.json",
+                         "data/national/player_id_links_v1.json",
+                         "data/competitions/asian-games-men-2026/data.json",
                          "data/competitions/kovo-cup-men-2026/data.json"]
             for relative in protected:
                 update.write_json(root / relative, {"must": "remain unchanged"})
