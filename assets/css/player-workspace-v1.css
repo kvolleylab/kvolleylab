@@ -14,3 +14,26 @@
 
 /* The existing profile lives inside an accessible modal with its own scrolling. */
 .profile-dialog{inset:0;margin:auto;height:92dvh;border:1px solid var(--line);border-radius:16px}.profile-dialog #profileContent{display:flex;flex-direction:column;height:100%}.profile-dialog .dialog-top{position:static;flex-shrink:0}.profile-dialog .profile-frame{flex:1;min-height:0;height:auto}@media(max-width:600px){.profile-dialog{height:94dvh;border-radius:12px}}
+
+
+/* 2026-11-12 member-facing player readability */
+.section-heading{margin-top:28px}.section-heading h2{font-size:26px;letter-spacing:-.04em}
+.filter-card{border-radius:14px;padding:18px 20px;background:#fff;box-shadow:0 6px 18px rgba(20,49,77,.04)}
+.results-toolbar{margin-top:22px}
+.player-grid{gap:16px}
+.player-card{border-radius:14px;box-shadow:0 4px 15px rgba(25,59,91,.04)}
+.card-profile{padding:21px 20px 17px}
+.card-name h3{font-size:22px;line-height:1.22}
+.card-name small{font-size:11px}
+.card-affiliation strong{font-size:16px}
+.card-meta{gap:10px;padding-top:14px}
+.card-meta span{font-size:11px}.card-meta b{font-size:18px}
+.card-bottom{min-height:48px;padding:0 15px}
+.card-detail,.save-button,.compare-button{font-size:12px}
+.player-grid.compact-grid .tile-name{font-size:18px}
+@media(max-width:680px){
+  .player-grid:not(.compact-grid){grid-template-columns:1fr}
+  .player-card .card-head{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+  .card-profile{padding:18px 16px 15px}.card-name h3{font-size:21px}
+  .section-heading h2{font-size:23px}
+}
