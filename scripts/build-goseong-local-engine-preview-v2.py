@@ -103,8 +103,8 @@ def build(dst: Path) -> dict:
         encoding="utf-8",
     )
 
-    config = json.loads((dst / "data/competitions" / SLUG / "config.json").read_text())
-    data = json.loads((dst / "data/competitions" / SLUG / "data.json").read_text())
+    config = json.loads((dst / "data/competitions" / SLUG / "config.json").read_text(encoding="utf-8"))
+    data = json.loads((dst / "data/competitions" / SLUG / "data.json").read_text(encoding="utf-8"))
     if config.get("slug") != SLUG or config["competition"]["gender"] != "men":
         raise ValueError("Wrong Goseong competition configuration")
     if data.get("status") != "completed":
