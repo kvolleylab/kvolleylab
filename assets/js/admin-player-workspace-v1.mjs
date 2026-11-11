@@ -78,13 +78,15 @@ function row(p){
 }
 function renderSearch(){
   if(!players.length)return;
-  const level=$('levelFilterAdmin').value,team=$('teamFilterAdmin').value;
-  const baseLevel=level==='professional_current'?'':level;
-  let result=searchPlayers(players,{q:$('playerQuery').value.trim(),gender:$('genderFilter').value,level:baseLevel});
-  if(level==='professional_current')result=result.filter(p=>p.currentPro===true);
+  const level=$('levelFilterAdmin').value,team=$('teamFilterAdmin').value,query=$('playerQuery').value.trim();
+  const proKeyword=/^(?:프로|프로배구|v-?리그)$/i.test(query);
+  const currentProOnly=level==='professional_current'||(!level&&proKeyword);
+  const baseLevel=currentProOnly?'':level;
+  let result=searchPlayers(players,{q:proKeyword&&currentProOnly?'':query,gender:$('genderFilter').value,level:baseLevel});
+  if(currentProOnly)result=result.filter(p=>p.currentPro===true);
   if(team)result=result.filter(p=>p.currentPro===true&&p.team===team);
   result=result.slice(0,80);
-  const scope=level==='professional_current'?' · 2026-27 V-리그 등록선수':'';
+  const scope=currentProOnly?' · 2026-27 V-리그 등록선수':'';
   $('searchCount').textContent=`검색 결과 ${result.length.toLocaleString('ko-KR')}명${scope}${result.length===80?' · 최대 80명 표시':''}`;
   $('searchResults').innerHTML=result.length?result.map(row).join(''):'<div class="empty"><strong>조건에 맞는 선수가 없습니다.</strong><span>분류·팀·성별 조건을 확인해 주세요.</span></div>';
 }
