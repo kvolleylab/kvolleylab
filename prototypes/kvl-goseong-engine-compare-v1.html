@@ -143,6 +143,9 @@ function apply(){
   try {doc=frame.contentDocument;if(!doc){message("같은 도메인에서만 실제 운영 화면을 수정하여 비교할 수 있습니다.",true);return;}}
   catch{message("다른 도메인 iframe이므로 디자인 비교를 실행할 수 없습니다.",true);return;}
   try{
+    if(doc.body?.dataset.kvlRenderState!=='ready'){
+      message('실제 Competition Engine 렌더링을 확인하는 중입니다.');return;
+    }
     const result=window.KVLGoseongCompareV1.applyDocument(doc,current,SLUG);
     message("고성대회 남자부 · CSS "+result.cssLength+"자 적용\n원본 데이터와 운영 페이지 변경 없음.");
     changed=true;
@@ -172,7 +175,21 @@ $("baseline").addEventListener("load",()=>{
     if(doc?.body?.classList.contains("kvl-competition-template-v2")) message("원본 로딩 완료 · 조정 시안 화면 로딩 중입니다.");
   }catch{}
 });
-$("after").addEventListener("load",apply);
+function onAdjustedFrameLoad(){
+  let doc;
+  try{doc=$("after").contentDocument;}catch{}
+  if(!doc?.body){message('격리된 동일 출처 미리보기만 지원합니다.',true);return;}
+  const check=()=>{
+    if(doc.body.dataset.kvlRenderState==='ready'){observer.disconnect();apply();return;}
+    if(doc.body.dataset.kvlRenderState==='error'){
+      observer.disconnect();message('실제 Engine 데이터 로딩에 실패했습니다. 브라우저 오류를 확인하세요.',true);
+    }
+  };
+  const observer=new MutationObserver(check);
+  observer.observe(doc.body,{attributes:true,attributeFilter:['data-kvl-render-state']});
+  check();
+}
+$("after").addEventListener("load",onAdjustedFrameLoad);
 $("view").addEventListener("change",paths);
 $("width").addEventListener("change",paths);
 $("recommended").addEventListener("click",()=>{current={...initial};updateControls();apply();});
@@ -199,6 +216,18 @@ function boot(){
     message("KVL 디자인 비교 모듈을 불러오지 못했습니다.",true);return;
   }
   current={...initial};updateControls();paths();
+  if(new URLSearchParams(location.search).get('fromAdmin')==='1'&&window.opener){
+    window.addEventListener('message',event=>{
+      if(event.origin!==location.origin||event.source!==window.opener)return;
+      if(event.data?.type!=='kvl-goseong-layout-tokens-v1'||event.data?.slug!==SLUG)return;
+      try{
+        current=window.KVLGoseongCompareV1.normalize(event.data.tokens||{});
+        updateControls();apply();
+        message('관리자 편집기의 수정값을 비교 화면에 불러왔습니다. 실제 운영 데이터는 읽기 전용입니다.');
+      }catch(e){message('관리자 설정값 검증 실패: '+e.message,true);}
+    });
+    window.opener.postMessage({type:'kvl-goseong-preview-ready',slug:SLUG},location.origin);
+  }
 }
 window.addEventListener("load",boot,{once:true});
 })();

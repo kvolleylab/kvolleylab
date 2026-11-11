@@ -1,0 +1,67 @@
+name: KVL Goseong real Engine layout QA v2
+
+on:
+  pull_request:
+    paths:
+      - "assets/js/kvl-goseong-layout-compare-v1.js"
+      - "admin-competition-layout-v3.html"
+      - "prototypes/kvl-existing-competition-editor-v2.html"
+      - "tests/kvl-goseong-admin-preview-bridge-v2.test.cjs"
+      - "prototypes/kvl-goseong-engine-compare-v1.html"
+      - "scripts/build-goseong-local-engine-preview-v2.py"
+      - "scripts/qa-goseong-local-engine-v2.py"
+      - "tests/test_goseong_local_preview_v2.py"
+      - "data/competitions/university-goseong-men-2026/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    name: Actual Engine browser comparison (isolated)
+    runs-on: windows-2025
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify native Korean font and Chrome (no package downloads)
+        shell: pwsh
+        run: |
+          $font = Join-Path $env:WINDIR "Fonts\malgun.ttf"
+          if (-not (Test-Path -LiteralPath $font)) { throw "Malgun Gothic Korean font is missing from this Windows runner" }
+          $chrome = Join-Path $env:ProgramFiles "Google\Chrome\Application\chrome.exe"
+          if (-not (Test-Path -LiteralPath $chrome)) {
+            $chrome = Join-Path ${env:ProgramFiles(x86)} "Google\Chrome\Application\chrome.exe"
+          }
+          if (-not (Test-Path -LiteralPath $chrome)) { throw "Preinstalled Chrome not found" }
+          "KVL_CHROMIUM=$chrome" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          Write-Host "Korean glyph source verified (OS font, not uploaded). Chrome ready."
+      - name: Install browser-test dependencies
+        run: |
+          python -m pip install playwright pillow
+      - name: Check visual editor and admin bridge safety
+        run: |
+          node tests/kvl-goseong-layout-compare-v1.test.cjs
+          node tests/kvl-goseong-admin-preview-bridge-v2.test.cjs
+      - name: Test preview builder safety
+        run: python -m unittest tests/test_goseong_local_preview_v2.py
+      - name: Prepare isolated local Engine
+        run: |
+          python scripts/build-goseong-local-engine-preview-v2.py "${RUNNER_TEMP}/kvl-goseong-preview"
+      - name: Compare original and layout-only changes
+        run: |
+          python scripts/qa-goseong-local-engine-v2.py "${RUNNER_TEMP}/kvl-goseong-preview" --output "${RUNNER_TEMP}/kvl-goseong-browser-qa" --chromium "$KVL_CHROMIUM"
+      - name: Save screenshots and computed-style evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-goseong-layout-qa-${{ github.run_id }}
+          path: ${{ runner.temp }}/kvl-goseong-browser-qa/
+          if-no-files-found: warn
+          retention-days: 14
