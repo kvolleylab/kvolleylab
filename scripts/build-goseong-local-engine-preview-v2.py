@@ -48,7 +48,9 @@ def digest(path: Path) -> str:
 
 
 def ensure_external_destination(dst: Path) -> None:
-    if dst == ROOT or dst in ROOT.parents or ROOT in dst.parents:
+    root = ROOT.resolve()
+    dst = dst.resolve()
+    if dst == root or dst in root.parents or root in dst.parents:
         raise ValueError("Preview directory must be outside the GitHub checkout")
     if dst.exists() and any(dst.iterdir()):
         raise ValueError("Preview destination must be new or empty (no overwrites)")
