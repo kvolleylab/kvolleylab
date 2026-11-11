@@ -22,6 +22,11 @@ function affiliationGrade(p){
   return grade&&base!=='소속 미확인'?base+' · '+grade:base;
 }
 function playerMeta(p){return [affiliationGrade(p),p?.rawPosition||'포지션 미확인',p?.gender?(p.gender==='W'?'여자':'남자'):''].filter(Boolean)}
+function levelLabel(p){
+  if(p?.currentPro)return '프로';
+  const map={university:'대학',high_school:'고교',middle_school:'중학',international:'국제',national:'대표팀',domestic:'국내'};
+  return map[p?.level]||'선수';
+}
 function profileHref(id){return 'player.html?id='+encodeURIComponent(id)+'&admin=1&return='+encodeURIComponent('admin-player-workspace.html')}
 function formatDate(value){const d=new Date(value);return Number.isNaN(d.getTime())?String(value||''):d.toLocaleString('ko-KR')}
 
@@ -61,18 +66,24 @@ function showWorkspace(user){$('accountEmail').textContent=user.email||'관리�
 function showLogin(){$('workspaceView').hidden=true;$('loginView').hidden=false;$('password').value=''}
 
 function row(p){
-  const saved=bookmarks.has(p.id),meta=playerMeta(p),analysisCount=analyses.filter(a=>a.player_id===p.id).length;
-  return `<article class="player-row">
+  const saved=bookmarks.has(p.id),aff=affiliationGrade(p),position=p.rawPosition||'포지션 미확인';
+  const facts=[
+    position,
+    p.height?`${p.height}cm`:'',
+    p.jersey!==undefined&&p.jersey!==null&&p.jersey!==''?`#${p.jersey}`:'',
+    p.gender?(p.gender==='W'?'여자':'남자'):''
+  ].filter(Boolean);
+  return `<article class="player-row ${p.gender==='W'?'player-row-women':'player-row-men'}">
     <div class="player-avatar" aria-hidden="true">${e((p.name||'K').slice(0,1))}</div>
     <div class="player-main">
-      <div class="player-title"><strong>${e(p.name)}</strong>${analysisCount?`<span class="analysis-mini-badge">분석 ${analysisCount}</span>`:''}</div>
-      <div class="player-meta">${meta.map(x=>`<span>${e(x)}</span>`).join('')}</div>
+      <div class="player-title"><strong>${e(p.name)}</strong><span class="player-level-badge">${e(levelLabel(p))}</span>${p.currentPro?'<span class="current-roster-badge">2026-27 등록</span>':''}</div>
+      <div class="player-affiliation">${e(aff)}</div>
+      <div class="player-facts">${facts.map(x=>`<span>${e(x)}</span>`).join('')}</div>
     </div>
     <div class="row-actions">
       <button class="bookmark ${saved?'saved':''}" type="button" data-bookmark="${e(p.id)}">${saved?'★ 관심선수':'☆ 관심선수'}</button>
-      <button class="note-button" type="button" data-note-player="${e(p.id)}">메모 작성</button>
-      <button class="analysis-button" type="button" data-analysis-player="${e(p.id)}">선수 분석</button>
-      <a class="profile-link" href="${e(profileHref(p.id))}">프로필 보기</a>
+      <button class="note-button" type="button" data-note-player="${e(p.id)}">메모</button>
+      <a class="profile-link profile-link-primary" href="${e(profileHref(p.id))}">프로필</a>
     </div>
   </article>`;
 }
@@ -104,16 +115,27 @@ function filteredNotes(){
 function renderNotes(){
   const list=filteredNotes();$('noteFilterCount').textContent=`${list.length.toLocaleString('ko-KR')}개 표시`;
   $('noteResults').innerHTML=list.length?list.map(n=>{
-    const p=byId.get(n.player_id),meta=playerMeta(p),updated=formatDate(n.updated_at);
+    const p=byId.get(n.player_id),meta=playerMeta(p),created=formatDate(n.created_at),updated=formatDate(n.updated_at);
+    const changed=String(n.created_at||'')!==String(n.updated_at||'');
     return `<article class="note-card">
       <div class="note-card-top">
-        <div class="note-player"><span class="season-pill">${e(n.season||'시즌 미지정')}</span><strong>${e(pname(n.player_id))}</strong></div>
-        <button type="button" data-edit-note="${e(n.id)}">수정</button>
+        <div class="note-owner">
+          <div class="note-owner-avatar" aria-hidden="true">${e((pname(n.player_id)||'K').slice(0,1))}</div>
+          <div>
+            <div class="note-player"><strong>${e(pname(n.player_id))}</strong><span class="season-pill">${e(n.season||'시즌 미지정')}</span></div>
+            <div class="note-player-meta">${meta.map(x=>`<span>${e(x)}</span>`).join('')}</div>
+          </div>
+        </div>
+        <div class="note-date-stack"><span>작성 ${e(created)}</span>${changed?`<b>수정 ${e(updated)}</b>`:''}</div>
       </div>
-      <div class="note-player-meta">${meta.map(x=>`<span>${e(x)}</span>`).join('')}</div>
-      <h3>${e(n.title)}</h3>
-      <p>${e(n.body)}</p>
-      <footer><span>최근 수정 ${e(updated)}</span><span>revision ${e(n.revision)}</span></footer>
+      <div class="note-card-body">
+        <h3>${e(n.title)}</h3>
+        <p>${e(n.body)}</p>
+      </div>
+      <footer>
+        <a href="${e(profileHref(n.player_id))}">선수 프로필</a>
+        <button type="button" data-edit-note="${e(n.id)}">메모 수정</button>
+      </footer>
     </article>`;
   }).join(''):'<div class="empty"><strong>조건에 맞는 메모가 없습니다.</strong><span>검색어 또는 시즌 필터를 바꾸거나 선수 검색에서 새 메모를 작성하세요.</span></div>';
 }
@@ -265,12 +287,12 @@ function renderCurrent(){
   if(currentView==='search')renderSearch();
   else if(currentView==='bookmarks')renderBookmarks();
   else if(currentView==='notes')renderNotes();
-  else renderAnalysisMode();
+  else if(currentView==='analysis')renderAnalysisMode();
 }
 function changeView(next){
-  if(!['search','bookmarks','notes','analysis'].includes(next))return;
+  if(!['search','bookmarks','notes','memberPreview','analysis'].includes(next))return;
   currentView=next;
-  for(const name of ['search','bookmarks','notes','analysis'])$(name+'Pane').hidden=name!==next;
+  for(const name of ['search','bookmarks','notes','memberPreview','analysis'])$(name+'Pane').hidden=name!==next;
   document.querySelectorAll('.tabs [data-view]').forEach(b=>{const active=b.dataset.view===next;b.classList.toggle('active',active);active?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
   renderCurrent();window.scrollTo({top:Math.max(0,document.querySelector('.tabs').offsetTop-90),behavior:'smooth'});
 }

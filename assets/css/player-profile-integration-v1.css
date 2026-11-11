@@ -12,3 +12,20 @@ html.kvl-profile-embedded.kvl-sidebar-shell-ready body.kvl-integrated-profile{pa
 @media(max-width:600px){.kvl-integrated-profile .pd-main{padding:18px 14px 90px}.pd-draft-title{font-size:16px}.pd-draft-history{overflow-wrap:anywhere}}
 
 html.kvl-profile-embedded .kvl-global-toggle,html.kvl-profile-embedded .kvl-global-backdrop,html.kvl-profile-embedded .kvl-review-mode-badge{display:none!important}
+
+
+/* 2026-11-12 profile readability */
+.kvl-integrated-profile .pd-main{padding-top:24px}
+.kvl-integrated-profile .pd-hero{gap:16px}
+.kvl-integrated-profile .pd-card{border-radius:16px;padding:23px}
+.kvl-integrated-profile .pd-title{font-size:clamp(34px,4vw,46px);letter-spacing:-.045em;line-height:1.12}
+.kvl-integrated-profile .pd-sub{font-size:16px}
+.kvl-integrated-profile .pd-summary{gap:9px}
+.kvl-integrated-profile .pd-stat{min-height:70px;padding:14px}
+.kvl-integrated-profile .pd-stat span{font-size:11px}
+.kvl-integrated-profile .pd-stat strong{font-size:19px}
+.kvl-integrated-profile .pd-grid{gap:16px;margin-top:16px}
+.kvl-integrated-profile .pd-section h2{font-size:19px}
+.kvl-integrated-profile .pd-info-item{padding:14px}
+.kvl-integrated-profile .pd-info-item span{font-size:11px}.kvl-integrated-profile .pd-info-item strong{font-size:16px}
+@media(max-width:800px){.kvl-integrated-profile .pd-card{padding:18px}.kvl-integrated-profile .pd-title{font-size:34px}.kvl-integrated-profile .pd-sub{font-size:15px}}
