@@ -369,6 +369,22 @@
       "total_krw": 600000000
     },
     {
+      "contract_source": "https://kovo.co.kr/news/official-notices/159134",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/159134",
+      "last_status": "reinstatement",
+      "latest_change_date": "2026-11-10",
+      "name": "곽명우",
+      "number": "2",
+      "option_krw": 0,
+      "position": "세터",
+      "registration_source": "https://kovo.co.kr/news/official-notices/159134",
+      "salary_date": "2026-11-10",
+      "salary_krw": 40000000,
+      "team": "OK저축은행",
+      "total_krw": 40000000
+    },
+    {
       "contract_source": "https://kovo.co.kr/news/official-notices/155582",
       "gender": "남",
       "last_change_source": "https://kovo.co.kr/news/official-notices/155582",
@@ -1935,6 +1951,22 @@
       "salary_krw": 2400000,
       "team": "한국전력",
       "total_krw": 2400000
+    },
+    {
+      "contract_source": "https://kovo.co.kr/news/official-notices/159206",
+      "gender": "남",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/159206",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-11",
+      "name": "이율리(수련)",
+      "number": "15",
+      "option_krw": 0,
+      "position": "미들블로커",
+      "registration_source": "https://kovo.co.kr/news/official-notices/159206",
+      "salary_date": "2026-11-11",
+      "salary_krw": 24000000,
+      "team": "한국전력",
+      "total_krw": 24000000
     },
     {
       "contract_source": "https://kovo.co.kr/news/official-notices/155581",
@@ -4585,9 +4617,11 @@
       "158806-02",
       "158806-03",
       "158821-01",
-      "158821-02"
+      "158821-02",
+      "159134-01",
+      "159206-01"
     ],
-    "applied_events": 87,
+    "applied_events": 89,
     "blocked_events": [
       {
         "event_id": "157686-01",
@@ -4711,7 +4745,7 @@
       {
         "gender": "남",
         "team": "OK저축은행",
-        "total": 20
+        "total": 21
       },
       {
         "gender": "남",
@@ -4731,7 +4765,7 @@
       {
         "gender": "남",
         "team": "한국전력",
-        "total": 18
+        "total": 19
       },
       {
         "gender": "남",
@@ -4774,7 +4808,7 @@
         "total": 20
       }
     ],
-    "total": 281,
+    "total": 283,
     "warnings": [
       {
         "name": "이다현",
