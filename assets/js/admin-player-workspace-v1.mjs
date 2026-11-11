@@ -302,6 +302,10 @@ function openNote(id){
   $('deleteNoteButton').hidden=false;$('noteDialog').showModal();
 }
 function closeNote(){$('noteDialog').close()}
+function noteReturnPath(){
+  const raw=new URLSearchParams(location.search).get('return');if(!raw)return'';
+  try{const url=new URL(raw,location.origin);if(url.origin!==location.origin)return'';return url.pathname.split('/').pop()+url.search+url.hash}catch{return''}
+}
 
 function renderRelatedNotes(playerId,selected=[]){
   const chosen=new Set(selected),items=notes.filter(n=>n.player_id===playerId).sort((a,b)=>String(b.updated_at).localeCompare(String(a.updated_at)));
@@ -377,12 +381,12 @@ $('noteForm').addEventListener('submit',async ev=>{
   const payload={id:$('noteId').value||null,expected_revision:$('noteRevision').value?Number($('noteRevision').value):null,player_id:$('notePlayer').value,season:$('noteSeason').value.trim(),title:$('noteTitle').value.trim(),body:$('noteBody').value.trim()};
   if(!payload.title||!payload.body)return;
   msg('메모 저장 중…');
-  try{await api('save_note',payload);closeNote();await refreshState();changeView('notes');msg('메모를 저장했습니다.')}catch(err){msg(err.message,true)}
+  try{await api('save_note',payload);const back=noteReturnPath();closeNote();await refreshState();if(back){location.href=back;return}changeView('notes');msg('메모를 저장했습니다.')}catch(err){msg(err.message,true)}
 });
 $('deleteNoteButton').addEventListener('click',async()=>{
   const id=$('noteId').value;if(!id||!confirm('이 메모를 삭제할까요?'))return;
   msg('메모 삭제 중…');
-  try{await api('delete_note',{id,expected_revision:Number($('noteRevision').value)});closeNote();await refreshState();changeView('notes');msg('메모를 삭제했습니다.')}catch(err){msg(err.message,true)}
+  try{await api('delete_note',{id,expected_revision:Number($('noteRevision').value)});const back=noteReturnPath();closeNote();await refreshState();if(back){location.href=back;return}changeView('notes');msg('메모를 삭제했습니다.')}catch(err){msg(err.message,true)}
 });
 
 $('analysisForm').addEventListener('submit',async ev=>{
