@@ -1,0 +1,25 @@
+name: KVL admin layout backend v5 boundary smoke
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/verify-admin-layout-edge-boundary-v5.py'
+      - 'supabase/functions/admin-competition-layout-drafts/**'
+      - 'supabase/migrations/20261111234956_competition_layout_drafts_v1.sql'
+      - '.github/workflows/kvl-admin-layout-backend-v5.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  anonymous-boundary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify published Edge only accepts valid authenticated callers
+        run: python scripts/verify-admin-layout-edge-boundary-v5.py
