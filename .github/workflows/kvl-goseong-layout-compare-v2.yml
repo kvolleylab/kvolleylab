@@ -20,30 +20,31 @@ permissions:
 jobs:
   browser-qa:
     name: Actual Engine browser comparison (isolated)
-    runs-on: ubuntu-latest
+    runs-on: windows-2025
     timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Verify native Korean font and Chrome (no package downloads)
+        shell: pwsh
+        run: |
+          $font = Join-Path $env:WINDIR "Fonts\malgun.ttf"
+          if (-not (Test-Path -LiteralPath $font)) { throw "Malgun Gothic Korean font is missing from this Windows runner" }
+          $chrome = Join-Path $env:ProgramFiles "Google\Chrome\Application\chrome.exe"
+          if (-not (Test-Path -LiteralPath $chrome)) {
+            $chrome = Join-Path ${env:ProgramFiles(x86)} "Google\Chrome\Application\chrome.exe"
+          }
+          if (-not (Test-Path -LiteralPath $chrome)) { throw "Preinstalled Chrome not found" }
+          "KVL_CHROMIUM=$chrome" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          Write-Host "Korean glyph source verified (OS font, not uploaded). Chrome ready."
       - name: Install browser-test dependencies
         run: |
-          python -m pip install --upgrade pip
           python -m pip install playwright pillow
-          if [ -x /usr/bin/google-chrome ]; then
-            echo 'KVL_CHROMIUM=/usr/bin/google-chrome' >> "$GITHUB_ENV"
-          elif [ -x /usr/bin/chromium ]; then
-            echo 'KVL_CHROMIUM=/usr/bin/chromium' >> "$GITHUB_ENV"
-          else
-            python -m playwright install --with-deps chromium
-          fi
-      - name: Install Korean glyphs for readable QA screenshots
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends fonts-nanum || sudo apt-get install -y --no-install-recommends fonts-noto-cjk
-          fc-cache -f
-          fc-match -f '%{family}\n' 'sans:lang=ko' | head -n 1
       - name: Check visual editor and admin bridge safety
         run: |
           node tests/kvl-goseong-layout-compare-v1.test.cjs
@@ -55,7 +56,7 @@ jobs:
           python scripts/build-goseong-local-engine-preview-v2.py "${RUNNER_TEMP}/kvl-goseong-preview"
       - name: Compare original and layout-only changes
         run: |
-          python scripts/qa-goseong-local-engine-v2.py "${RUNNER_TEMP}/kvl-goseong-preview" --output "${RUNNER_TEMP}/kvl-goseong-browser-qa" ${KVL_CHROMIUM:+--chromium "$KVL_CHROMIUM"}
+          python scripts/qa-goseong-local-engine-v2.py "${RUNNER_TEMP}/kvl-goseong-preview" --output "${RUNNER_TEMP}/kvl-goseong-browser-qa" --chromium "$KVL_CHROMIUM"
       - name: Save screenshots and computed-style evidence
         if: always()
         uses: actions/upload-artifact@v4
