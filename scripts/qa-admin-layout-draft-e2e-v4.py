@@ -266,7 +266,16 @@ def run(root: Path, output: Path, executable: str | None = None):
                 page.locator("#email").fill(BASE_MAIL)
                 page.locator("#password").fill(FIXTURE_PASS)
                 page.locator("#loginForm button").click()
-                page.locator("#workspace").wait_for(state="visible",timeout=12000)
+                try:
+                    page.locator("#workspace").wait_for(state="visible",timeout=12000)
+                except Exception as failed:
+                    info={"loginMessage":page.locator("#loginMessage").inner_text(),
+                          "requests":requests,"pageErrors":errors,
+                          "message":"fixture-only fake login, no real Supabase calls"}
+                    (output/"login-diagnostic.json").write_text(
+                        json.dumps(info,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+                    page.screenshot(path=str(output/"login-diagnostic.png"),full_page=False)
+                    raise AssertionError("Mock admin login did not advance: "+str(info)) from failed
                 page.locator("#draftMessage").get_by_text("불러왔습니다",exact=False).wait_for(timeout=16000)
                 page.wait_for_function(
                     "() => document.querySelector('#editorFrame')?.contentWindow?.KVLExistingEditorV2?.currentSlug?.()==='university-goseong-men-2026'",
