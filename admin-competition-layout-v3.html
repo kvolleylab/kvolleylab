@@ -83,13 +83,30 @@ const editor=()=>{
 };
 async function call(action,payload={}){
   const {data,error}=await supabase.functions.invoke('admin-competition-layout-drafts',{body:{action,...payload}});
-  if(error)throw Error(error.message||'관리자 서버 요청 실패');
+  if(error){
+    let serverCode='';
+    // FunctionsHttpError.context holds the non-2xx Response and the server error code.
+    try{serverCode=String((await error.context?.json?.())?.error||'');}catch{}
+    const failure=new Error(serverCode||error.message||'관리자 서버 요청 실패');
+    failure.status=error.context?.status||null;
+    throw failure;
+  }
   if(!data?.ok)throw Error(data?.error||'관리자 확인 또는 저장 실패');
   return data;
 }
+// The child frame may still be initializing when the saved admin session is resumed.
+async function readyEditor(maxWaitMs=12000){
+  const start=Date.now();
+  for(;;){
+    try{return editor();}catch(error){
+      if(Date.now()-start>maxWaitMs)throw error;
+      await new Promise(resolve=>setTimeout(resolve,100));
+    }
+  }
+}
 async function reload(){
   const d=await call('list');records=d.items||[];
-  try{editor().applyServerDrafts(records);}catch(error){status(error.message,true);return;}
+  try{(await readyEditor()).applyServerDrafts(records);}catch(error){status('편집기 로딩 실패: '+error.message,true);return;}
   status('저장된 디자인 '+records.length+'개 범위를 불러왔습니다. 운영 홈페이지에는 게시되지 않았습니다.');
   $('revisionBox').replaceChildren(new Option('이력을 먼저 확인',''));
   $('revisionBox').disabled=true;$('restoreBtn').disabled=true;
