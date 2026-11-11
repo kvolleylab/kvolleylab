@@ -5,9 +5,9 @@
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>KVL 로그인 UX 미리보기 | K-Volley Lab</title>
   <link rel="stylesheet" href="assets/css/pretendard-global.css">
-  <link rel="stylesheet" href="assets/css/admin-player-workspace-v1.css?v=20261111-fix-1">
+  <link rel="stylesheet" href="assets/css/admin-player-workspace-v1.css?v=20261112-ux-2">
   <script defer src="assets/js/player-search-v2.js?v=20261111-currentpro-1"></script>
-  <script type="module" src="assets/js/admin-player-workspace-v1.mjs?v=20261111-fix-1"></script>
+  <script type="module" src="assets/js/admin-player-workspace-v1.mjs?v=20261112-ux-2"></script>
 </head>
 <body data-player-workspace>
 <header class="topbar">
@@ -37,10 +37,10 @@
   <section id="workspaceView" hidden>
     <section class="workspace-hero">
       <div class="workspace-copy">
-        <p class="eyebrow">SIGNED-IN EXPERIENCE · PREVIEW</p>
-        <h1>내 선수 공간</h1>
-        <p>공개 KVL 선수 정보를 그대로 보면서, 로그인 사용자에게만 필요한 관심선수와 개인 메모를 연결합니다.</p>
-        <div class="preview-note"><strong>현재 단계</strong><span>관리자 계정으로 회원 로그인 UX를 먼저 검수 중입니다. 일반 방문자에게는 이 기능이 아직 노출되지 않습니다.</span></div>
+        <p class="eyebrow">KVL PLAYER WORKSPACE</p>
+        <h1>선수 기록</h1>
+        <p>선수를 찾고, 관심선수로 모으고, 프로필과 메모를 한 흐름에서 확인합니다.</p>
+        <div class="preview-note"><strong>관리자 검수</strong><span>선수·메모 UX와 일반회원 로그인 디자인을 여기서 먼저 확정합니다. 일반 회원 기능은 아직 공개하지 않습니다.</span></div>
       </div>
       <div class="account-card">
         <span class="role-pill">관리자</span>
@@ -66,6 +66,9 @@
       </button>
       <button type="button" data-view="notes">
         <span class="tab-kicker">PRIVATE</span><b>내 메모 <em id="noteTabCount"></em></b>
+      </button>
+      <button type="button" data-view="memberPreview">
+        <span class="tab-kicker">MEMBER UX</span><b>로그인 미리보기</b>
       </button>
       <button type="button" data-view="analysis" hidden aria-hidden="true">
         <span class="tab-kicker">ANALYSIS</span><b>분석 <em id="analysisTabCount"></em></b>
@@ -114,6 +117,43 @@
         <span id="noteFilterCount" class="muted"></span>
       </div>
       <div id="noteResults" class="note-list"></div>
+    </section>
+
+    <section id="memberPreviewPane" class="pane member-preview-pane" hidden>
+      <div class="pane-head member-preview-heading">
+        <div><p class="eyebrow">MEMBER LOGIN · ADMIN PREVIEW</p><h2>일반회원 로그인 디자인</h2><p>실제 일반회원 인증은 아직 비활성입니다. 아래 화면은 관리자만 볼 수 있는 최종 UX 검수용 시안입니다.</p></div>
+        <span class="admin-only-label">ADMIN PREVIEW ONLY</span>
+      </div>
+
+      <div class="member-preview-stage">
+        <section class="member-preview-brand">
+          <div class="member-preview-logo"><img src="assets/images/brand/kvl-ball-domestic-navywhite.webp" alt=""><span>K-Volley Lab</span></div>
+          <p class="member-preview-kicker">PLAYERS · TEAMS · RECORDS</p>
+          <h3>배구의 기록을<br>한곳에서 이어보세요.</h3>
+          <p>로그인하면 선수·팀 정보와 관심선수, 개인 메모를 같은 흐름에서 사용할 수 있도록 준비합니다.</p>
+          <div class="member-preview-benefits">
+            <span>선수·팀 전체 정보</span><span>관심선수 저장</span><span>개인 메모 누적</span><span>선수 비교·기록</span>
+          </div>
+        </section>
+
+        <section class="member-preview-login-card">
+          <div class="member-preview-card-head"><small>KVL MEMBER</small><h3>로그인</h3><p>다시 만나 반갑습니다.</p></div>
+          <label>이메일<input type="email" value="member@example.com" readonly aria-label="이메일 미리보기"></label>
+          <label>비밀번호<input type="password" value="password" readonly aria-label="비밀번호 미리보기"></label>
+          <div class="member-preview-login-options"><label><input type="checkbox" checked disabled> 로그인 상태 유지</label><button type="button" disabled>비밀번호 찾기</button></div>
+          <button class="member-preview-primary" type="button" disabled>로그인</button>
+          <div class="member-preview-divider"><span>또는</span></div>
+          <button class="member-preview-kakao" type="button" disabled><b>●</b> 카카오로 시작하기</button>
+          <p class="member-preview-signup">K-Volley Lab이 처음이라면 <button type="button" disabled>회원가입</button></p>
+          <div class="member-preview-disabled">현재는 관리자 검수 단계로 실제 로그인·회원가입이 동작하지 않습니다.</div>
+        </section>
+      </div>
+
+      <div class="member-preview-policy">
+        <article><strong>오픈 전 유지</strong><p>일반회원 가입 OFF · 카카오 로그인 OFF · 본인확인 OFF</p></article>
+        <article><strong>오픈 시 권장</strong><p>이메일 또는 카카오 → 닉네임 → 필요 시 본인확인 순서</p></article>
+        <article><strong>권한 원칙</strong><p>로그인 후에만 선수·팀 영역과 개인 기능 사용</p></article>
+      </div>
     </section>
 
     <section id="analysisPane" class="pane" hidden data-feature-status="paused">
