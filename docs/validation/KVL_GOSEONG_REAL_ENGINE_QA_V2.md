@@ -85,3 +85,17 @@ GitHub Actions 검증 작업: `.github/workflows/kvl-goseong-layout-compare-v2.y
 2. 실제 렌더링과 기존 운영 기준 간 차이, 특히 긴 팀명/모바일 360px을 검토
 3. 관리자 v3 draft-only 저장과 실 Engine 비교를 같은 환경에서 실제 로그인 테스트
 4. 사용자의 시안 확정/게시 승인 이후에만 서비스 반영을 별도 PR로 수행
+
+## 2026-11-11 실제 브라우저 실행 기록
+
+- 검증 성공: [GitHub Actions run #43035358864](https://github.com/kvolleylab/kvolleylab/actions/runs/43035358864) (`success`, 실제 local Engine V2)
+- 원본/변경 후 12개 조합 × 2회 = **24회 렌더링**. `browser-qa.json`: `status: PASS`, `caseCount: 12`, `pageErrors: []`
+- 1180px 참가팀 로고 **48 → 46px**, 글씨 **14 → 13px**
+- 390px/360px 참가팀 로고 **38 → 36px**, 글씨 **12 → 11.2px**
+- 세 가지 화면 폭의 조별순위 승 `transform: matrix(1,0,0,1,3,0)`, 패 `matrix(1,0,0,1,-3,0)`; 머리글도 같은 기준으로 검사 통과
+- 실제 DOM 참가학교 15개 / 조별순위 15행 / 경기 35개 유지. 모든 대회 ID/팀 ID/경기 ID/최종순위 원본과 동일
+- 12개 case에서 변경으로 인한 신규 페이지 가로 overflow 없음
+- 아티팩트: `kvl-goseong-layout-qa-43035358864` (원본/변경 전체 스크린샷과 계산 스타일 JSON)
+- 주의: GitHub 최초 CI의 한글 fallback 글꼴 부족으로 일부 모바일 제목이 □로 나타남. 이는 CI 스크린샷 글꼴 문제이며 운영 실제 사이트 문제로 단정하지 않는다. 한글 글꼴 설치를 보완한 후속 run은 별도 검증 상태로 취급해야 한다.
+- 이번 'actual Engine'은 **GitHub 체크아웃의 원본 렌더링 파일과 대회 데이터로 localhost에서 구동**한 것이다. `kvolleylab.com` 도메인을 직접 캡처하거나 관리자 Supabase DB에서 실제 게시한 것은 아니다.
+
