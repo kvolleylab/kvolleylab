@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - "assets/js/kvl-goseong-layout-compare-v1.js"
+      - "admin-competition-layout-v3.html"
+      - "prototypes/kvl-existing-competition-editor-v2.html"
+      - "tests/kvl-goseong-admin-preview-bridge-v2.test.cjs"
       - "prototypes/kvl-goseong-engine-compare-v1.html"
       - "scripts/build-goseong-local-engine-preview-v2.py"
       - "scripts/qa-goseong-local-engine-v2.py"
@@ -29,6 +32,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install playwright pillow
           python -m playwright install --with-deps chromium
+      - name: Check visual editor and admin bridge safety
+        run: |
+          node tests/kvl-goseong-layout-compare-v1.test.cjs
+          node tests/kvl-goseong-admin-preview-bridge-v2.test.cjs
       - name: Test preview builder safety
         run: python -m unittest tests/test_goseong_local_preview_v2.py
       - name: Prepare isolated local Engine
