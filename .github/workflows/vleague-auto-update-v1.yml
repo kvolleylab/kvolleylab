@@ -37,6 +37,7 @@ on:
       - 'assets/css/kvl-domestic-home-v2.css'
       - 'tests/today-match-summary.test.cjs'
       - 'tests/test_kvl_player_current_value_workflow.py'
+      - 'tests/test_kvl_vleague_job_isolation.py'
       - 'infra/vleague-scheduler/**'
       - 'index.html'
       - 'competition-engine.html'
@@ -126,16 +127,19 @@ jobs:
           python -B -m unittest discover -s tests -p 'test_kovo_vleague_*.py' -v
           python -B -m unittest discover -s tests -p 'test_kvl_competition_lifecycle.py' -v
           python -B -m unittest discover -s tests -p 'test_kvl_player_current_value_workflow.py' -v
+          python -B -m unittest discover -s tests -p 'test_kvl_vleague_job_isolation.py' -v
       - name: Inspect the current Pages configuration without deploying
         env:
           GH_TOKEN: ${{ github.token }}
         run: python -B scripts/kovo_vleague_ops.py inspect-pages --report "$RUNNER_TEMP/kvl-vleague-preview/pages-configuration.json"
       - name: Install existing DOM test dependency outside the checkout
         run: npm install --prefix "$RUNNER_TEMP/kvl-vleague-deps" --no-audit --no-fund jsdom@26.1.0
+      # Player identity validation belongs to player CI and the player write gate.
+      # Keep roster rendering covered without coupling match updates to player IDs.
       - name: Preserve existing V-League page behavior
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-deps/node_modules/jsdom
-        run: node --test --test-concurrency=2 tests/kovo-cup-desktop-matchup-alignment.test.cjs tests/competition-calendar-standard.test.cjs tests/vleague-calendar.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/today-match-summary.test.cjs tests/vleague-live-recovery.test.cjs tests/vleague-scheduler.test.mjs
+        run: node --test --test-concurrency=2 tests/kovo-cup-desktop-matchup-alignment.test.cjs tests/competition-calendar-standard.test.cjs tests/vleague-calendar.test.cjs tests/vleague-roster-ui.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/today-match-summary.test.cjs tests/vleague-live-recovery.test.cjs tests/vleague-scheduler.test.mjs
       - name: Recheck the live clock immediately before preview collection
         id: preview-window
         run: python -B scripts/kvl_competition_lifecycle.py --root . --report "$RUNNER_TEMP/kvl-vleague-preview/lifecycle.json" --github-output "$GITHUB_OUTPUT"
@@ -292,6 +296,13 @@ jobs:
           PY
           python -B -m unittest discover -s tests -p 'test_kvl_player_master*.py' -v
           python -B scripts/kvl_player_master_pilot.py --preflight --require-ready --root . --output "$RUNNER_TEMP/kvl-player-master-pilot/pre-auth"
+      - uses: actions/setup-node@v4
+        if: steps.player-gate.outputs.ready == 'true'
+        with:
+          node-version: '24'
+      - name: Block player writes on unresolved roster identity conflicts
+        if: steps.player-gate.outputs.ready == 'true'
+        run: node --test tests/vleague-rosters.test.cjs
       - name: Authenticate the existing trusted service account only for an activated pilot
         if: steps.player-gate.outputs.ready == 'true'
         id: player-google-auth

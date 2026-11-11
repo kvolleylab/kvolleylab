@@ -15,6 +15,11 @@ on:
       - 'tests/test_kovo_verify_roster_contracts.py'
       - 'tests/test_kovo_vleague_ops.py'
       - 'tests/vleague-rosters.test.cjs'
+      - 'tests/vleague-roster-ui.test.cjs'
+      - 'data/master/player_master_pro_vleague_2026_27_v1.json'
+      - 'data/master/player_master_229_v2.json'
+      - 'data/master/player_master_school_v1.json'
+      - 'data/national/player_id_links_v1.json'
       - 'data/player-updates/**'
       - 'data/competitions/v-league-men-2026-27/rosters.json'
       - 'data/competitions/v-league-women-2026-27/rosters.json'
@@ -32,6 +37,11 @@ on:
       - 'tests/test_kovo_verify_roster_contracts.py'
       - 'tests/test_kovo_vleague_ops.py'
       - 'tests/vleague-rosters.test.cjs'
+      - 'tests/vleague-roster-ui.test.cjs'
+      - 'data/master/player_master_pro_vleague_2026_27_v1.json'
+      - 'data/master/player_master_229_v2.json'
+      - 'data/master/player_master_school_v1.json'
+      - 'data/national/player_id_links_v1.json'
       - 'data/player-updates/**'
       - 'data/competitions/v-league-men-2026-27/rosters.json'
       - 'data/competitions/v-league-women-2026-27/rosters.json'
@@ -70,7 +80,7 @@ jobs:
       - name: Preserve current roster identity, links, sources and rendering
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-player-master-deps/node_modules/jsdom
-        run: node --test tests/vleague-rosters.test.cjs
+        run: node --test tests/vleague-rosters.test.cjs tests/vleague-roster-ui.test.cjs
       - name: Keep the read-only activation decision
         if: always()
         uses: actions/upload-artifact@v4

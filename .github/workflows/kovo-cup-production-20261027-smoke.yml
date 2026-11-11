@@ -14,6 +14,11 @@ on:
       - 'data/competitions/v-league-*/rosters.json'
       - 'data/sources/v-league-2026-27/**'
       - 'tests/vleague-rosters.test.cjs'
+      - 'tests/vleague-roster-ui.test.cjs'
+      - 'data/master/player_master_pro_vleague_2026_27_v1.json'
+      - 'data/master/player_master_229_v2.json'
+      - 'data/master/player_master_school_v1.json'
+      - 'data/national/player_id_links_v1.json'
       - 'tests/vleague-match-summary.test.cjs'
       - 'tests/vleague-postseason.test.cjs'
       - 'tests/vleague-calendar.test.cjs'
@@ -45,6 +50,11 @@ on:
     paths:
       - 'data/competitions/v-league-*/**'
       - 'tests/vleague-rosters.test.cjs'
+      - 'tests/vleague-roster-ui.test.cjs'
+      - 'data/master/player_master_pro_vleague_2026_27_v1.json'
+      - 'data/master/player_master_229_v2.json'
+      - 'data/master/player_master_school_v1.json'
+      - 'data/national/player_id_links_v1.json'
       - 'tests/vleague-match-summary.test.cjs'
       - 'tests/vleague-postseason.test.cjs'
       - 'tests/vleague-calendar.test.cjs'
@@ -88,4 +98,4 @@ jobs:
       - name: Cup roster interactions, source integrity and domestic regressions
         env:
           KVL_JSDOM_PATH: /tmp/kvl-roster-tests/node_modules/jsdom
-        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/vleague-calendar.test.cjs tests/domestic-home-v2.test.cjs tests/competition-calendar-standard.test.cjs tests/competition-calendar-entrypoints.test.cjs tests/domestic-team-calendar.test.cjs tests/school-domestic-home-v2.test.cjs tests/national-festival-2026.test.cjs
+        run: node --test tests/kovo-cup-rosters.test.cjs tests/vleague-rosters.test.cjs tests/vleague-roster-ui.test.cjs tests/vleague-match-summary.test.cjs tests/vleague-postseason.test.cjs tests/vleague-calendar.test.cjs tests/domestic-home-v2.test.cjs tests/competition-calendar-standard.test.cjs tests/competition-calendar-entrypoints.test.cjs tests/domestic-team-calendar.test.cjs tests/school-domestic-home-v2.test.cjs tests/national-festival-2026.test.cjs
