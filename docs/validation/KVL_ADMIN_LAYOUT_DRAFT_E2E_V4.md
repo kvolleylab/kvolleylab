@@ -85,3 +85,13 @@
 - 로고/글씨/승패 디자인의 게시 및 전국대학배구 이외의 공통 적용은 후속 단계에서 별도 검수와 승인 진행.
 
 **복구**: Draft PR 브랜치를 미병합으로 유지하면 운영 영향 없음. 테스트 SQLite 저장소는 GitHub Runner의 임시 폴더이며 종료 시 삭제. 
+
+## 2026-11-12 재로그인 검증 확장
+
+최종 run: [GitHub Actions #43050053674](https://github.com/kvolleylab/kvolleylab/actions/runs/43050053674), `completed/success`.
+
+최종 아티팩트: `kvl-admin-layout-draft-e2e-v4-43050053674` (ID `13868443739`). 모의 관리자 로그아웃 → 일반 사용자 로그인 거부 → **새 관리자 로그인 후 기존 디자인 설정(로고 52px) 자동 복원**까지 추가 검증해 총 9개 E2E 시나리오 `PASS`.
+
+- `admin-draft-e2e.json`: `status=PASS`, `pageErrors=[]`, `mockedSupabase=true`, `mockedAuth=true`, `realSupabaseWrites=false`, `productionDeploy=false`.
+- 기존 테스트의 409 revision 충돌 표시와 v1→v2→v3 복원도 재확인.
+- 실제 운영 관리자 비밀번호 사용/실 Supabase 연결/DB·Edge 배포는 실시하지 않음. 이는 **격리 모의 서비스 기반 실브라우저 테스트**임.
