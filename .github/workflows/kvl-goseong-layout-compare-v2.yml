@@ -1,0 +1,47 @@
+name: KVL Goseong real Engine layout QA v2
+
+on:
+  pull_request:
+    paths:
+      - "assets/js/kvl-goseong-layout-compare-v1.js"
+      - "prototypes/kvl-goseong-engine-compare-v1.html"
+      - "scripts/build-goseong-local-engine-preview-v2.py"
+      - "scripts/qa-goseong-local-engine-v2.py"
+      - "tests/test_goseong_local_preview_v2.py"
+      - "data/competitions/university-goseong-men-2026/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    name: Actual Engine browser comparison (isolated)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install browser-test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install playwright pillow
+          python -m playwright install --with-deps chromium
+      - name: Test preview builder safety
+        run: python -m unittest tests/test_goseong_local_preview_v2.py
+      - name: Prepare isolated local Engine
+        run: |
+          python scripts/build-goseong-local-engine-preview-v2.py "${RUNNER_TEMP}/kvl-goseong-preview"
+      - name: Compare original and layout-only changes
+        run: |
+          python scripts/qa-goseong-local-engine-v2.py "${RUNNER_TEMP}/kvl-goseong-preview" --output "${RUNNER_TEMP}/kvl-goseong-browser-qa"
+      - name: Save screenshots and computed-style evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-goseong-layout-qa-${{ github.run_id }}
+          path: ${{ runner.temp }}/kvl-goseong-browser-qa/
+          if-no-files-found: warn
+          retention-days: 14
