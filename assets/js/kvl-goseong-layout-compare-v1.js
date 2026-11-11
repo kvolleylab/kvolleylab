@@ -19,7 +19,7 @@ const NUMERIC={
 const MODES=new Set(["natural","two","shrink","one"]);
 const FITS=new Set(["contain","cover"]);
 const POSITIONS=new Set(["center center","left center","right center","70% center"]);
-const rootSel='html body.kvl1180-prototype.kvl-competition-template-v2[data-kvl-layout-preview="'+SLUG+'"]';
+const rootSel='html body.kvl1180-prototype.kvl-competition-template-v2.kvl-domestic-home-v2[data-kvl-family="domestic"][data-kvl-gender="men"][data-kvl-layout-preview="'+SLUG+'"]';
 const has=(obj,key)=>Object.prototype.hasOwnProperty.call(obj,key);
 function normalize(input){
   if(!input||typeof input!=="object"||Array.isArray(input))throw Error("invalid_layout_tokens");
