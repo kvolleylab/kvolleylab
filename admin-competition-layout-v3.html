@@ -50,6 +50,7 @@ button.danger{background:#fce8eb;color:#9c2b40}
 <div class="card">
 <div class="row">
 <button id="saveBtn" type="button">현재 범위 임시저장</button>
+<button id="enginePreviewBtn" type="button" class="secondary">고성대회 실제 화면 비교</button>
 <button id="historyBtn" type="button" class="secondary">변경 이력 확인</button>
 <label for="revisionBox" style="margin:0">복원할 버전</label>
 <select id="revisionBox" aria-label="복원할 버전" disabled><option value="">이력을 먼저 확인</option></select>
@@ -130,6 +131,25 @@ $('saveBtn').addEventListener('click',async()=>{
   }catch(e){
     status(e.message==='revision_conflict'?'다른 창에서 변경된 설정이 있습니다. 새로 불러와 차이를 확인한 뒤 다시 수정하세요.':e.message,true);
   }finally{busy=false;$('saveBtn').disabled=false;}
+});
+$('enginePreviewBtn').addEventListener('click',()=>{
+  try{
+    const api=editor();
+    if(api.currentSlug()!=='university-goseong-men-2026')throw Error('이번 검증 대상은 2026 고성대회 남자부입니다. 먼저 해당 대회를 선택하세요.');
+    const tokens=api.exportEffectiveChanges();
+    let preview=null;
+    const onReady=event=>{
+      if(event.origin!==location.origin||event.source!==preview)return;
+      if(event.data?.type!=='kvl-goseong-preview-ready'||event.data?.slug!=='university-goseong-men-2026')return;
+      preview.postMessage({type:'kvl-goseong-layout-tokens-v1',slug:'university-goseong-men-2026',tokens},location.origin);
+      window.removeEventListener('message',onReady);
+      status('선택한 디자인 변경값을 기존 대회 Engine 비교 화면으로 전달했습니다. 운영 홈페이지는 변경되지 않습니다.');
+    };
+    window.addEventListener('message',onReady);
+    preview=window.open('/prototypes/kvl-goseong-engine-compare-v1.html?fromAdmin=1','_blank');
+    if(!preview){window.removeEventListener('message',onReady);throw Error('팝업이 차단되었습니다. 브라우저의 새 창 허용 설정을 확인해 주세요.');}
+    window.setTimeout(()=>window.removeEventListener('message',onReady),30000);
+  }catch(e){status(e.message,true);}
 });
 $('historyBtn').addEventListener('click',async()=>{
   try{
