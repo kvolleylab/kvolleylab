@@ -62,6 +62,9 @@ DOM_SNAPSHOT = """() => {
     viewportWidth: document.documentElement.clientWidth,
     visibleView: q('main .kvl1180-view:not([hidden])')?.dataset.view ?? null,
     tabs: document.querySelectorAll('.kvl1180-tabs a[data-view]').length,
+    renderedTeamCards: document.querySelectorAll('#rosters .kvl1180-participant-button').length,
+    renderedPoolRows: document.querySelectorAll('#groups .kvl1180-pool-row').length,
+    renderedScheduleRows: document.querySelectorAll('#schedule .kvl1180-match-row').length,
     dataState: document.body.dataset.kvlRenderState,
   };
 }"""
@@ -104,7 +107,7 @@ def source_data(root: Path):
 
 def qa(root: Path, output: Path, executable: str | None = None):
     from playwright.sync_api import sync_playwright
-    from PIL import Image, ImageChops
+    from PIL import Image
 
     d = source_data(root)
     output.mkdir(parents=True,exist_ok=True)
@@ -142,6 +145,9 @@ def qa(root: Path, output: Path, executable: str | None = None):
                         snap=page.evaluate(DOM_SNAPSHOT)
                         if snap["status"]!="ready" or (snap["teams"],snap["matches"],snap["pools"])!=(15,35,3):
                             raise AssertionError(f"Rendered record count mismatch {width}/{view}/{label}: {snap}")
+                        if snap["renderedTeamCards"] != 15 or snap["renderedPoolRows"] != 15 or snap["renderedScheduleRows"] != 35:
+                            raise AssertionError(f"Rendered UI rows missing {width}/{view}/{label}: "
+                                                 f"{snap['renderedTeamCards']}/{snap['renderedPoolRows']}/{snap['renderedScheduleRows']}")
                         file=f"{view}-{width}-{label}.png"
                         page.screenshot(path=str(output/file), full_page=True, animations="disabled")
                         row[label]={"image":file,"sha256":sha256((output/file).read_bytes()).hexdigest(),
