@@ -43,10 +43,11 @@ if(params.get('admin')!=='1') {
     const cards=sorted.length?sorted.map(n=>{
       const created=fmt(n.created_at),updated=fmt(n.updated_at);
       const changed=String(n.updated_at||'')&&String(n.updated_at)!==String(n.created_at||'');
+      const back='player.html?id='+encodeURIComponent(playerId)+'&admin=1';
       return `<article class="admin-private-note">
         <div class="admin-private-note-head">
           <div><span class="admin-private-season">${esc(n.season||'시즌 미지정')}</span><h3>${esc(n.title||'제목 없음')}</h3></div>
-          <div class="admin-private-note-tools"><span class="admin-private-note-date">작성 ${esc(created)}</span><a href="admin-player-workspace.html?editNote=${encodeURIComponent(n.id)}">수정</a></div>
+          <div class="admin-private-note-tools"><span class="admin-private-note-date">작성 ${esc(created)}</span><a href="admin-player-workspace.html?editNote=${encodeURIComponent(n.id)}&return=${encodeURIComponent(back)}">수정</a></div>
         </div>
         <p>${esc(n.body||'')}</p>
         <footer>${changed?`<span>최근 수정 ${esc(updated)}</span>`:''}</footer>
@@ -54,7 +55,7 @@ if(params.get('admin')!=='1') {
     }).join(''):`<div class="admin-private-empty"><strong>이 선수에게 남긴 메모가 없습니다.</strong><span>내 선수 공간에서 메모를 작성하면 이 프로필에 날짜순으로 표시됩니다.</span></div>`;
     section.innerHTML=`<div class="admin-private-notes-head">
       <div><p class="admin-private-eyebrow">PRIVATE · ADMIN ONLY</p><h2 id="adminPrivateNotesTitle">내 비공개 메모 <em>${sorted.length}</em></h2><p>이 내용은 현재 관리자 계정에서만 보이며 공개 선수 프로필에는 표시되지 않습니다.</p></div>
-      <div class="admin-private-profile-actions"><a href="admin-player-workspace.html?notePlayer=${encodeURIComponent(playerId)}">새 메모 작성</a><a href="admin-player-workspace.html">내 선수 공간</a></div>
+      <div class="admin-private-profile-actions"><a href="admin-player-workspace.html?notePlayer=${encodeURIComponent(playerId)}&return=${encodeURIComponent('player.html?id='+playerId+'&admin=1')}">새 메모 작성</a><a href="admin-player-workspace.html">내 선수 공간</a></div>
     </div>
     <div class="admin-private-notes-list">${cards}</div>`;
     return section;

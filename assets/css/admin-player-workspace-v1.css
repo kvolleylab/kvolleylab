@@ -28,7 +28,7 @@
 .tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0 12px}.tabs button{padding:13px 14px;background:#e8edf3;color:#556b82;border-radius:11px;font-weight:900;text-align:left;border:1px solid transparent}.tabs button:hover{background:#dfe6ed}.tabs button.active{background:var(--navy);color:#fff;border-color:var(--navy)}.tab-kicker{display:block;font-size:9px;letter-spacing:.1em;opacity:.62;margin-bottom:3px}.tabs b{font-size:14px}.tabs em{display:inline-grid;place-items:center;min-width:19px;height:19px;margin-left:4px;padding:0 5px;border-radius:999px;background:rgba(255,255,255,.16);font-style:normal;font-size:10px}
 
 .pane{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}.pane-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}.pane-head>div>p:last-child{margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.55}.pane h2{font-size:27px}.muted{color:var(--muted);font-size:13px}.result-caption{margin:12px 0 0}
-.search-row{display:grid;grid-template-columns:minmax(0,1fr) 150px 100px;gap:10px}
+.search-row{display:grid;grid-template-columns:minmax(220px,1fr) 180px 170px 130px 92px;gap:9px}
 .player-list{display:grid;gap:10px;margin-top:16px}.player-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;padding:15px;border:1px solid var(--line);border-radius:13px;transition:border-color .15s,box-shadow .15s}.player-row:hover{border-color:#b8c9da;box-shadow:0 6px 18px rgba(26,57,89,.05)}
 .player-avatar{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#e6eef6,#d5e2ee);color:var(--navy2);display:grid;place-items:center;font-weight:900;font-size:16px}.player-main{min-width:0}.player-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.player-title strong{font-size:17px;color:var(--navy)}.player-meta,.note-player-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px;color:var(--muted);font-size:12px}.player-meta span,.note-player-meta span{background:#f3f6f9;border-radius:999px;padding:4px 7px}.player-id{font-family:ui-monospace,Consolas,monospace;color:#78899a;font-size:10px}
 .row-actions{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.row-actions button,.profile-link{padding:9px 11px;border-radius:9px;font-weight:900;font-size:12px;text-decoration:none;display:inline-flex;align-items:center}.bookmark{background:#f1f5fa;color:#254b75}.bookmark.saved{background:#fff3cf;color:#8b6510}.note-button{background:#eaf2fb;color:#214d7b}.profile-link{background:#fff;color:#5e7082;border:1px solid #d5dfe8}
@@ -49,7 +49,7 @@
   .shell{width:min(100% - 20px,1180px);margin-top:16px}.login-card{padding:23px;margin-top:5vh}.workspace-hero{padding:20px;border-radius:16px}.workspace-copy h1{font-size:31px}.preview-note{display:grid}
   .account-card{grid-template-columns:1fr}.account-card .role-pill{grid-row:auto}.account-card button{grid-column:auto}.summary-grid{gap:7px}.summary-grid article{padding:12px}.summary-grid strong{font-size:19px}
   .tabs{display:flex;overflow-x:auto;padding-bottom:2px}.tabs button{min-width:128px;white-space:nowrap}.pane{padding:16px}.pane-head{align-items:flex-start;flex-direction:column}.pane h2{font-size:24px}
-  .search-row{grid-template-columns:1fr 110px}.search-row .primary{grid-column:1/-1}.player-row{grid-template-columns:40px 1fr}.player-avatar{width:40px;height:40px}.row-actions{grid-column:1/-1;justify-content:flex-start;padding-left:54px}
+  .search-row{grid-template-columns:1fr 1fr}.search-row input{grid-column:1/-1}.search-row .primary{grid-column:1/-1}.player-row{grid-template-columns:40px 1fr}.player-avatar{width:40px;height:40px}.row-actions{grid-column:1/-1;justify-content:flex-start;padding-left:54px}
   .note-toolbar{grid-template-columns:1fr 120px}.note-toolbar .muted{grid-column:1/-1}.note-card-top,.note-card footer{align-items:flex-start;flex-direction:column}.note-form-grid{grid-template-columns:1fr}.dialog-actions{grid-template-columns:1fr 1fr}.dialog-actions span{display:none}.dialog-actions .danger{grid-column:1/-1;order:3}
 }
 @media(max-width:420px){
@@ -158,3 +158,5 @@
 @media(max-width:420px){
   .match-analysis-toolbar{grid-template-columns:1fr}.match-analysis-toolbar select{grid-column:1/-1}
 }
+
+.note-audit{margin:-2px 0 0;padding:9px 11px;border-radius:9px;background:#f7f9fb;color:#78899a;font-size:10px;font-weight:700}
