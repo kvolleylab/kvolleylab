@@ -29,9 +29,9 @@ check(preview.includes("window.KVLGoseongCompareV1.normalize"),"preview never ac
 check(preview.includes("MutationObserver(check)"),"preview waits for async Engine load");
 inspectHTML(editor,/<script>([\s\S]*?)<\/script>\s*<\/body>/);
 inspectHTML(preview,/<script>([\s\S]*?)<\/script>\s*<\/body>/);
-const module=admin.match(/<script type="module">([\s\S]*?)<\/script>/);
-assert(module,"admin module missing");
-new Function(module[1].replace(/^import\s+\{createClient\}[^\n]*\n/m,""));assertions++;
+const adminModule=admin.match(/<script type="module">([\s\S]*?)<\/script>/);
+assert(adminModule,"admin module missing");
+new Function(adminModule[1].replace(/^import\s+\{createClient\}[^\n]*\n/m,""));assertions++;
 const context={module:{exports:{}}};vm.runInNewContext(compareJS,context,{filename:"goseong-layout.js"});
 const api=context.module.exports;
 check(api.normalize({nameMode:"two",logoSize:46,winX:3}).logoSize===46,"validated design draft accepted");
