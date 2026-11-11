@@ -78,6 +78,12 @@ APPLY = """tokens => {
 @contextmanager
 def serve(directory: Path):
     class Handler(SimpleHTTPRequestHandler):
+        def guess_type(self, path):
+            # Windows MIME registries can map .mjs to text/plain; modules must be JavaScript.
+            if str(path).lower().endswith(".mjs"):
+                return "text/javascript"
+            return super().guess_type(path)
+
         def __init__(self, *args, **kwargs):
             super().__init__(*args, directory=str(directory), **kwargs)
 

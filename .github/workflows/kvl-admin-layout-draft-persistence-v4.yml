@@ -1,0 +1,57 @@
+name: KVL Admin Layout Draft Persistence QA v4
+
+on:
+  pull_request:
+    paths:
+      - 'admin-competition-layout-v3.html'
+      - 'prototypes/kvl-existing-competition-editor-v2.html'
+      - 'scripts/qa-admin-layout-draft-e2e-v4.py'
+      - 'scripts/build-goseong-local-engine-preview-v2.py'
+      - 'supabase/functions/admin-competition-layout-drafts/**'
+      - '.github/workflows/kvl-admin-layout-draft-persistence-v4.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  admin-draft-browser-qa:
+    name: Browser reload and revision workflow (mock Supabase)
+    runs-on: windows-2025
+    timeout-minutes: 16
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify Chrome and Korean font present
+        shell: pwsh
+        run: |
+          $font = Join-Path $env:WINDIR "Fonts\malgun.ttf"
+          $chrome = Join-Path $env:ProgramFiles "Google\Chrome\Application\chrome.exe"
+          if (-not (Test-Path -LiteralPath $font)) { throw "Missing native Korean font" }
+          if (-not (Test-Path -LiteralPath $chrome)) { throw "Missing preinstalled Chrome" }
+          "KVL_CHROMIUM=$chrome" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+      - name: Install offline browser tests
+        run: python -m pip install playwright pillow
+      - name: Run existing layout UI and token safety checks
+        run: |
+          node --test tests/kvl-admin-layout-drafts-v3.test.mjs
+          node tests/kvl-goseong-admin-preview-bridge-v2.test.cjs
+          python -m unittest tests/test_goseong_local_preview_v2.py
+      - name: Build read-only existing competition fixture
+        run: python scripts/build-goseong-local-engine-preview-v2.py "${RUNNER_TEMP}/kvl-admin-drafts-v4"
+      - name: Simulate admin login, saving, re-login, history, restore and 409
+        run: |
+          python scripts/qa-admin-layout-draft-e2e-v4.py "${RUNNER_TEMP}/kvl-admin-drafts-v4" --output "${RUNNER_TEMP}/kvl-admin-layout-e2e-v4" --chromium "$KVL_CHROMIUM"
+      - name: Upload simulated API browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-admin-layout-draft-e2e-v4-${{ github.run_id }}
+          path: ${{ runner.temp }}/kvl-admin-layout-e2e-v4/
+          if-no-files-found: warn
+          retention-days: 14
