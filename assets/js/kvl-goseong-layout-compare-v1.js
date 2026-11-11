@@ -51,17 +51,19 @@ function rules(tokens){
   const scope=rootSel;
   const teamImgs=scope+" .dv2-team-tile img, "+scope+" .dv2-team-tile .dv2-team-mark";
   const matchLogo=scope+" :is(#schedule,#team-results) .kvl1180-inline-logo";
+  const participantFlag=scope+" #rosters .kvl-participant-flag";
+  const participantName=scope+" #rosters .kvl1180-participant-button-copy strong";
   if(has(v,"logoSize")){
-    a(teamImgs+"{width:"+v.logoSize+"px!important;height:"+v.logoSize+"px!important;object-fit:contain!important;}");
+    a(teamImgs+","+participantFlag+"{width:"+v.logoSize+"px!important;height:"+v.logoSize+"px!important;object-fit:contain!important;}");
     a(matchLogo+"{width:"+Math.round(v.logoSize*.875)+"px!important;min-width:"+Math.round(v.logoSize*.875)+"px!important;max-width:"+Math.round(v.logoSize*.875)+"px!important;height:"+Math.round(v.logoSize*.875)+"px!important;}");
-    a("@media(max-width:680px){"+teamImgs+"{width:"+Math.round(v.logoSize*.79)+"px!important;height:"+Math.round(v.logoSize*.79)+"px!important;}"+matchLogo+"{width:"+Math.round(v.logoSize*.79)+"px!important;min-width:"+Math.round(v.logoSize*.79)+"px!important;max-width:"+Math.round(v.logoSize*.79)+"px!important;height:"+Math.round(v.logoSize*.79)+"px!important;}}");
+    a("@media(max-width:680px){"+teamImgs+","+participantFlag+"{width:"+Math.round(v.logoSize*.79)+"px!important;height:"+Math.round(v.logoSize*.79)+"px!important;}"+matchLogo+"{width:"+Math.round(v.logoSize*.79)+"px!important;min-width:"+Math.round(v.logoSize*.79)+"px!important;max-width:"+Math.round(v.logoSize*.79)+"px!important;height:"+Math.round(v.logoSize*.79)+"px!important;}}");
   }
   if(has(v,"logoX")||has(v,"logoY")){
     const dx=v.logoX||0,dy=v.logoY||0,translation="translate("+dx+"px,"+dy+"px)";
-    a(teamImgs+","+matchLogo+","+scope+" .dv2-standings-table img{transform:"+translation+"!important;}");
+    a(teamImgs+","+participantFlag+","+matchLogo+","+scope+" .dv2-standings-table img{transform:"+translation+"!important;}");
   }
-  if(has(v,"logoGap"))a(teamImgs+"{margin-bottom:"+v.logoGap+"px!important;}");
-  const names=scope+" .dv2-team-tile b,"+scope+" #groups .kvl1180-pool-team-copy strong,"+scope+" .dv2-standings-table tbody a span";
+  if(has(v,"logoGap"))a(teamImgs+","+participantFlag+"{margin-bottom:"+v.logoGap+"px!important;}");
+  const names=scope+" .dv2-team-tile b,"+participantName+","+scope+" #groups .kvl1180-pool-team-copy strong,"+scope+" .dv2-standings-table tbody a span";
   if(has(v,"nameSize")){
     a(names+"{font-size:"+v.nameSize+"px!important;}");
     a("@media(max-width:680px){"+names+"{font-size:"+Math.round(v.nameSize*.86*10)/10+"px!important;}}");
