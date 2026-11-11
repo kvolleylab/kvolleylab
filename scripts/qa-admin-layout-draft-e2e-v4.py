@@ -10,6 +10,7 @@ Run:
 """
 from __future__ import annotations
 from base64 import urlsafe_b64encode
+from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -69,8 +70,14 @@ class DraftSimulator:
                   primary key(user_id,scope,scope_key,revision)
                 );
             """)
+    @contextmanager
     def conn(self):
-        return sqlite3.connect(self.path)
+        db=sqlite3.connect(self.path)
+        try:
+            yield db
+            db.commit()
+        finally:
+            db.close()
 
     def get(self, user_id, scope="competition", key=SLUG):
         with self.conn() as db:
@@ -315,7 +322,7 @@ def run(root: Path, output: Path, executable: str | None = None):
                 assert saved and saved["revision"]==2 and saved["tokens"].get("logoSize")==60,saved
                 tick("second save creates revision 2")
                 page.locator("#historyBtn").click()
-                page.locator("#revisionBox option[value='1']").wait_for(timeout=12000)
+                page.locator("#revisionBox option[value='1']").wait_for(state="attached",timeout=12000)
                 page.locator("#revisionBox").select_option("1")
                 page.locator("#restoreBtn").click()
                 page.locator("#draftMessage").get_by_text("복원했습니다",exact=False).wait_for(timeout=12000)
