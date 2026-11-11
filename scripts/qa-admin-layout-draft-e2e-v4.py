@@ -349,6 +349,20 @@ def run(root: Path, output: Path, executable: str | None = None):
                 page.locator("#loginMessage").get_by_text("admin_only",exact=False).wait_for(timeout=12000)
                 assert page.locator("#workspace").is_hidden()
                 tick("non-admin user denied even after valid mock login")
+
+                # Explicit logout + fresh administrator login must recover the draft,
+                # not merely preserve an old in-memory session on browser reload.
+                page.locator("#email").fill(BASE_MAIL)
+                page.locator("#password").fill(FIXTURE_PASS)
+                page.locator("#loginForm button").click()
+                page.locator("#workspace").wait_for(state="visible",timeout=12000)
+                page.locator("#draftMessage").get_by_text("불러왔습니다",exact=False).wait_for(timeout=15000)
+                page.wait_for_function(
+                    "() => document.querySelector('#editorFrame')?.contentWindow?.KVLExistingEditorV2?.currentSlug?.()==='university-goseong-men-2026'",
+                    timeout=15000)
+                assert page.frame_locator("#editorFrame").locator('[data-field="logoSize"]').input_value()=="52"
+                tick("fresh administrator login after sign-out reloads saved draft")
+
                 assert requests["blocked"]==0,requests
                 assert not errors,errors
                 result={"status":"PASS","mockedSupabase":True,"mockedAuth":True,
