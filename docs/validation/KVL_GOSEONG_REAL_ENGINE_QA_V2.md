@@ -99,3 +99,16 @@ GitHub Actions 검증 작업: `.github/workflows/kvl-goseong-layout-compare-v2.y
 - 주의: GitHub 최초 CI의 한글 fallback 글꼴 부족으로 일부 모바일 제목이 □로 나타남. 이는 CI 스크린샷 글꼴 문제이며 운영 실제 사이트 문제로 단정하지 않는다. 한글 글꼴 설치를 보완한 후속 run은 별도 검증 상태로 취급해야 한다.
 - 이번 'actual Engine'은 **GitHub 체크아웃의 원본 렌더링 파일과 대회 데이터로 localhost에서 구동**한 것이다. `kvolleylab.com` 도메인을 직접 캡처하거나 관리자 Supabase DB에서 실제 게시한 것은 아니다.
 
+
+## 2026-11-11 23:55 KST · Windows 한글 글꼴 재검증 성공
+
+- 배경: Ubuntu 26.04 GitHub Actions 환경에서 `fonts-nanum`/`fonts-noto-cjk`의 apt 패키지 다운로드가 DNS 장애로 실패. **운영 KVL 장애나 데이터 문제가 아님.**
+- 해결: 해당 격리 브라우저 QA에만 `windows-2025` 러너 지정. 운영 시스템과의 종속성 없이 Windows 기본 **맑은 고딕(Malgun Gothic)** 파일 존재 확인, 설치된 Chrome에서 기존 Engine을 렌더링. 별도 글꼴 파일을 저장소/아티팩트에 포함하지 않음.
+- Windows 경로와 UTF-8 데이터 파일 처리를 수정: 격리 미리보기 디렉터리의 canonical path 검사, `config.json`·`data.json` UTF-8 읽기. 원본 운영 파일에는 무변경.
+- **성공한 GitHub Actions:** [#43042879036](https://github.com/kvolleylab/kvolleylab/actions/runs/43042879036), `conclusion: success`.
+- 검증 산출물: `kvl-goseong-layout-qa-43042879036` (아티팩트 ID `13866610938`) — 실제 Engine 로컬 렌더링 4개 view × 3개 폭 × 원본/시안 = 24화면, `browser-qa.json`의 `status=PASS`, `caseCount=12`, `pageErrors=[]`.
+- PC 참가팀 로고 **48→46px**, 팀명 **14→13px**; 모바일 390/360 로고 **38→36px**, 팀명 **12→11.2px**. 조별순위 승/패 이동 +3/−3px, 머리글 동시 이동 검증.
+- 각 시안은 경기 35개, 참가팀 15개, A/B/C 3조, 실제 DOM 참가팀 15카드/조별순위 15행/경기 목록 35행 유지, 입력 source/ID/score 동등성 및 새 문서 overflow 없음을 검증.
+- Windows 환경의 실제 Engine 로컬 스크린샷에서 한국어를 육안으로 확인. 사각형 글꼴 문제 해소. 로컬 스크린샷은 **운영 도메인 직접 촬영이 아니며** 운영 사이트 자체나 Supabase 관리자 로그인/서버 저장은 별도로 검증해야 함.
+- 화면 비교에서 두 줄 확보 옵션은 실제 팀명이 짧아도 카드 높이를 늘리는 모습이 보임. 이 선택을 국내대회 공통 기준으로 승격하려면 긴 이름 샘플과 조별/모바일의 사용성 추가 검토 필요.
+- 본 기능은 여전히 **격리 Draft PR / NOT MERGED / NOT DEPLOYED**이며 이 실행 성공만으로 운영 배포를 승인하지 않음.
