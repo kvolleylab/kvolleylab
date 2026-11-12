@@ -24,6 +24,9 @@ button.danger{background:#fce8eb;color:#9c2b40}
 .toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:14px 0}
 #editorFrame{width:100%;height:850px;border:1px solid #d6e0eb;border-radius:12px;background:white}
 #revisionBox{min-width:260px;max-width:340px}
+.admin-draft-toolbar{position:sticky;top:0;z-index:45;border-color:#d7c18a}
+#saveBtn{background:#d6b25e;color:#1b2740;font-weight:800}
+@media(max-width:700px){.admin-draft-toolbar{position:relative}}
 [hidden]{display:none!important}
 @media(max-width:700px){header{flex-direction:column;align-items:flex-start}.card{padding:15px}main{padding:0 12px}#editorFrame{height:950px}}
 </style>
@@ -34,7 +37,7 @@ button.danger{background:#fce8eb;color:#9c2b40}
 <div class="alert">이 관리자 테스트는 <b>완료된 2026 전국대학배구 고성대회 남자부만</b> 대상으로 합니다. 경기 결과·순위·선수 MASTER는 읽기 전용이며, 저장은 관리자 개인의 디자인 임시저장에만 적용됩니다. <b>홈페이지 디자인 게시 기능은 비활성화</b>되어 있습니다.</div>
 <section class="card login" id="loginView">
 <h1>관리자 로그인</h1>
-<p>기존 KVL 관리자 계정을 사용합니다. 서버에서 관리자 권한을 다시 확인합니다.</p>
+<p>기존 KVL 관리자 계정을 사용합니다. 로그인한 다음 디자인 편집기 오른쪽 아래에서 <b>현재 범위 임시저장</b> 버튼을 사용할 수 있습니다.</p>
 <form id="loginForm">
 <label for="email">이메일</label><input id="email" type="email" autocomplete="username" required>
 <label for="password">비밀번호</label><input id="password" type="password" autocomplete="current-password" required>
@@ -47,7 +50,7 @@ button.danger{background:#fce8eb;color:#9c2b40}
 <div><b>기존 대회 디자인</b><p>종료된 고성대회 남자부의 기존 정보를 불러와 로고·팀명·승패 간격을 조정합니다. 다른 대회·공통 양식 설정은 이 테스트에서 변경할 수 없습니다.</p></div>
 <div class="row"><button id="refreshBtn" type="button" class="secondary">저장된 설정 다시 불러오기</button><button id="logoutBtn" type="button" class="secondary">로그아웃</button></div>
 </div>
-<div class="card">
+<div class="card admin-draft-toolbar">
 <div class="row">
 <button id="saveBtn" type="button">현재 범위 임시저장</button>
 <button id="enginePreviewBtn" type="button" class="secondary">고성대회 실제 화면 비교</button>
@@ -57,10 +60,10 @@ button.danger{background:#fce8eb;color:#9c2b40}
 <button id="restoreBtn" type="button" class="secondary" disabled>선택 버전으로 복원</button>
 <button type="button" disabled title="운영 배포 승인과 검증이 필요합니다">홈페이지 게시 · 미구현</button>
 </div>
-<p id="draftMessage" role="status" class="status">디자인 임시저장 준비 중</p>
+<p id="draftMessage" role="status" class="status">디자인 임시저장 준비 중</p><p class="status">편집기 내부 오른쪽 아래에서도 같은 저장 버튼을 사용할 수 있습니다.</p>
 </div>
 <div style="margin-top:15px">
-<iframe id="editorFrame" title="관리자 인증 후 고성대회 디자인 편집기" src="about:blank" data-src="/prototypes/kvl-existing-competition-editor-v2.html?adminTest=goseong&amp;v=20261112-1"></iframe>
+<iframe id="editorFrame" title="관리자 인증 후 고성대회 디자인 편집기" src="about:blank" data-src="/prototypes/kvl-existing-competition-editor-v2.html?adminTest=goseong&amp;v=20261112-2"></iframe>
 </div>
 </section>
 </main>
@@ -113,7 +116,11 @@ async function readyEditor(maxWaitMs=12000){
 async function reload(){
   const d=await call('list');
   records=(d.items||[]).filter(r=>r.scope==='competition'&&r.scope_key===TEST_SLUG);
-  try{(await readyEditor()).applyServerDrafts(records);}catch(error){status('편집기 로딩 실패: '+error.message,true);return;}
+  try{
+    const api=await readyEditor();
+    api.enableAdminSaveDock?.();
+    api.applyServerDrafts(records);
+  }catch(error){status('편집기 로딩 실패: '+error.message,true);return;}
   status('저장된 디자인 '+records.length+'개 범위를 불러왔습니다. 운영 홈페이지에는 게시되지 않았습니다.');
   $('revisionBox').replaceChildren(new Option('이력을 먼저 확인',''));
   $('revisionBox').disabled=true;$('restoreBtn').disabled=true;
@@ -147,20 +154,44 @@ $('logoutBtn').addEventListener('click',async()=>{
   $('draftMessage').textContent='관리자 로그인 후 디자인을 불러옵니다.';
 });
 $('refreshBtn').addEventListener('click',async()=>{try{await reload();}catch(e){status(e.message,true)}});
-$('editorFrame').addEventListener('load',()=>{if(records.length)try{editor().applyServerDrafts(records);}catch{}});
-$('saveBtn').addEventListener('click',async()=>{
-  if(busy)return;busy=true;$('saveBtn').disabled=true;
+$('editorFrame').addEventListener('load',()=>{
+  if(!$('workspace').hidden)try{
+    const api=editor();
+    api.enableAdminSaveDock?.();
+    if(records.length)api.applyServerDrafts(records);
+  }catch{}
+});
+function notifyEditorSave(ok,message){
+  const frame=$('editorFrame').contentWindow;
+  frame?.postMessage({type:'kvl-goseong-save-result-v1',slug:TEST_SLUG,ok,message},location.origin);
+}
+window.addEventListener('message',event=>{
+  if(event.origin!==location.origin||event.source!==$('editorFrame').contentWindow||
+     $('workspace').hidden||event.data?.type!=='kvl-goseong-save-request-v1'||
+     event.data.slug!==TEST_SLUG)return;
+  void saveDraft();
+});
+async function saveDraft(){
+  if($('workspace').hidden){notifyEditorSave(false,'관리자 로그인 후 저장할 수 있습니다.');return;}
+  if(busy){notifyEditorSave(false,'이미 다른 요청이 진행 중입니다.');return;}
+  busy=true;$('saveBtn').disabled=true;
   try{
     const payload=enforceScope(editor().exportCurrentDraft());
     const prior=records.find(r=>same(r,payload.scope,payload.scope_key));
     const result=await call('save',{...payload,expected_revision:prior?.revision??null});
-    status('임시저장 완료 · '+payload.scope+' / '+payload.scope_key+' · 버전 '+result.revision+'. 아직 운영 페이지에 게시되지 않았습니다.');
+    const saved='임시저장 완료 · 버전 '+result.revision+' · 방문자 화면에는 게시되지 않았습니다.';
+    status(saved);
     const latest=await call('list');
     records=(latest.items||[]).filter(r=>r.scope==='competition'&&r.scope_key===TEST_SLUG);
+    notifyEditorSave(true,saved);
   }catch(e){
-    status(e.message==='revision_conflict'?'다른 창에서 변경된 설정이 있습니다. 새로 불러와 차이를 확인한 뒤 다시 수정하세요.':e.message,true);
+    const message=e.message==='revision_conflict'
+      ?'다른 창에서 변경된 설정이 있습니다. 저장된 설정을 다시 불러와 비교한 뒤 수정하세요.'
+      :e.message;
+    status(message,true);notifyEditorSave(false,message);
   }finally{busy=false;$('saveBtn').disabled=false;}
-});
+}
+$('saveBtn').addEventListener('click',()=>{void saveDraft();});
 $('enginePreviewBtn').addEventListener('click',()=>{
   try{
     const api=editor();
