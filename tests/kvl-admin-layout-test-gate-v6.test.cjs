@@ -25,6 +25,14 @@ ok(editor.includes("$('scope').disabled=true"),"child disallows family/global ed
 ok(editor.includes("if(ADMIN_TEST&&(state.config.slug!==TEST_SLUG||state.scope!=='competition'))"),"child prevents manual programmatic scope escalation");
 ok(editor.includes("if(ADMIN_TEST&&(r.scope!=='competition'||r.scope_key!==TEST_SLUG))return;"),"child ignores other admin scopes");
 ok(comparator.includes("kvl-goseong-layout-tokens-v1")&&js.includes("preview_target_mismatch"),"actual Engine comparison is read-only and slug-scoped");
+ok(page.includes("api.enableAdminSaveDock?.()"),"authenticated parent explicitly enables in-editor save control");
+ok(page.includes("event.source!==$('editorFrame').contentWindow"),"iframe save action must originate from authenticated editor");
+ok(page.includes("event.data?.type!=='kvl-goseong-save-request-v1'"),"parent rejects arbitrary messages");
+ok(page.includes("notifyEditorSave(true,saved)"),"parent sends save confirmation back to editor");
+ok(editor.includes("if(!ADMIN_TEST||window.parent===window)return false"),"editor floating save only enabled in authenticated embedded test mode");
+ok(editor.includes("window.parent.postMessage({type:'kvl-goseong-save-request-v1',slug:TEST_SLUG},location.origin)"),"child delegates to parent, not direct Supabase access");
+ok(editor.includes("event.origin!==location.origin||event.source!==window.parent"),"save response validates origin and parent");
+ok(editor.includes('id="adminSaveInEditor"'),"persistent save button exists in editor markup");
 for(const [name,html,rx] of [
  ["admin",page,/<script type="module">([\s\S]*?)<\/script>/],
  ["editor",editor,/<script>([\s\S]*?)<\/script>\s*<\/body>/],
