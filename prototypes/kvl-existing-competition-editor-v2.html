@@ -21,6 +21,27 @@ nav{background:white;border:1px solid #dde4ef;border-radius:14px;padding:18px;bo
 body:has(#scope:disabled) #slugInput,body:has(#scope:disabled) #loadSlug,
 body:has(#scope:disabled) #tabs [data-tab="save"],
 body:has(#scope:disabled) #panel-save {display:none!important}
+
+/* Floating save action is visible ONLY after the parent confirms admin authorization. */
+#adminSaveDock{
+  position:fixed;z-index:1000;right:16px;bottom:16px;display:flex;
+  align-items:center;gap:12px;max-width:min(680px,calc(100% - 32px));
+  padding:12px 15px;border-radius:12px;background:#172a46;color:#fff;
+  border:1px solid #d5b368;box-shadow:0 14px 36px rgba(8,25,46,.3);
+}
+#adminSaveDock[hidden]{display:none!important}
+#adminSaveDock .save-dock-copy{display:grid;gap:3px;min-width:0;flex:1}
+#adminSaveDock .save-dock-copy strong{font-size:13px;color:#f3d18d}
+#adminSaveDock .save-dock-copy small{font-size:11px;color:#c4d4e5;line-height:1.35}
+#adminSaveInEditor{border:0;border-radius:8px;background:#d5b368;
+  color:#1e2636;font-size:13px;font-weight:900;padding:13px 16px;white-space:nowrap;cursor:pointer}
+#adminSaveInEditor:disabled{opacity:.55;cursor:wait}
+@media(max-width:650px){
+  #adminSaveDock{right:8px;bottom:8px;left:8px;max-width:none;gap:8px;padding:10px}
+  #adminSaveInEditor{padding:11px 10px;font-size:12px}
+  #adminSaveDock .save-dock-copy strong{font-size:12px}
+  #adminSaveDock .save-dock-copy small{font-size:10px}
+}
 </style>
 </head>
 <body>
@@ -88,6 +109,11 @@ body:has(#scope:disabled) #panel-save {display:none!important}
  <p class="source">원본 데이터: GitHub <code>kvolleylab/kvolleylab</code>의 현재 <code>main</code> 공개 JSON. 운영 Pages 배포 시점과 차이가 있을 수 있습니다. 실제 적용에는 기존 대회별 CSS·모바일 회귀 검사가 필요합니다.</p>
 </section>
 </main>
+<div id="adminSaveDock" hidden aria-label="관리자 전용 디자인 임시저장">
+ <div class="save-dock-copy"><strong>고성대회 남자부 디자인</strong>
+ <small id="adminSaveFeedback" role="status" aria-live="polite">수정값은 방문자 화면에 게시되지 않습니다.</small></div>
+ <button id="adminSaveInEditor" type="button">현재 범위 임시저장</button>
+</div>
 <script>
 /* KVL Existing Competition Editor v2: safe visual overrides only; no write/publishing/auth. */
 (function(root,factory){'use strict';const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;if(typeof document==='object'){root.KVLExistingEditorV2=api;api.init();}})(typeof window==='object'?window:globalThis,function(){
@@ -129,7 +155,8 @@ function presentation(config,data){const teamMap=(data.participants||[]),standin
 function reportChange(diff){return Object.entries(diff).map(([k,v])=>`${k}: ${v}`).join('\n');}
 const api={DEFAULT,validSlug,group,catalogFromTree,displaySlug,cleanTokens,normalizeOverrides,scopeId,effective,chooseRows,pickTeam,safeAsset,safeProfile,presentation,reportChange};
 function init(){
- const $=id=>document.getElementById(id), state={catalog:[],config:null,data:null,overrides:normalizeOverrides({schemaVersion:2,type:'kvl-visual-overrides'}),scope:'competition',history:[],heroUrl:null,view:'pc',loading:false};
+ const $=id=>document.getElementById(id);let saveDockReady=false;
+ const state={catalog:[],config:null,data:null,overrides:normalizeOverrides({schemaVersion:2,type:'kvl-visual-overrides'}),scope:'competition',history:[],heroUrl:null,view:'pc',loading:false};
  const output=(msg,error=false)=>{$('report').textContent=msg;$('report').classList.toggle('error',error);};
  const status=(msg,error=false)=>{$('loadStatus').textContent=msg;$('loadStatus').style.color=error?'#b2354a':'#6b7f94';};
  const sourceLink=()=>{if(state.config)$('originalLink').href=SITE+'/competition-engine.html?competition='+encodeURIComponent(state.config.slug);};
@@ -180,6 +207,29 @@ function init(){
   const fallback=['v-league-men-2026-27','v-league-women-2026-27','kovo-cup-men-2026','kovo-cup-women-2026','university-goseong-men-2026','university-goseong-women-2026','university-danyang-men-2026','university-danyang-women-2026','vnl-men-2026','vnl-women-2026','asian-games-men-2026'];try{const tree=await requestJSON(TREE);const slugs=catalogFromTree(tree);if(!slugs.length)throw Error('대회 설정을 찾지 못했습니다.');state.catalog=slugs;addOptions(slugs);status(`${slugs.length}개 대회의 config.json을 찾았습니다. 대회를 선택하세요.`);}catch(e){state.catalog=fallback;addOptions(fallback);status('자동 목록 조회가 제한돼 주요 대회 목록을 표시합니다. 직접 slug를 입력해도 됩니다.');}if(state.catalog.includes('university-goseong-men-2026'))await open('university-goseong-men-2026');else await open(state.catalog[0]);}
  // Explicit, local-only API for the authenticated parent editor; this does not grant publishing rights.
  api.currentSlug=()=>state.config?.slug||'';
+ api.enableAdminSaveDock=()=>{
+   if(!ADMIN_TEST||window.parent===window)return false;
+   const dock=$('adminSaveDock'),btn=$('adminSaveInEditor'),feedback=$('adminSaveFeedback');
+   if(!dock||!btn||!feedback)return false;
+   if(!saveDockReady){
+     btn.addEventListener('click',()=>{
+       btn.disabled=true;
+       feedback.textContent='디자인 설정을 임시저장하는 중입니다...';
+       window.parent.postMessage({type:'kvl-goseong-save-request-v1',slug:TEST_SLUG},location.origin);
+     });
+     window.addEventListener('message',event=>{
+       if(event.origin!==location.origin||event.source!==window.parent||
+          event.data?.slug!==TEST_SLUG)return;
+       if(event.data?.type==='kvl-goseong-save-result-v1'){
+         btn.disabled=false;
+         feedback.textContent=String(event.data.message||'저장 결과를 확인하세요.');
+         feedback.style.color=event.data.ok?'#b6f0cb':'#ffc5c5';
+       }
+     });
+     saveDockReady=true;
+   }
+   dock.hidden=false;return true;
+ };
  api.exportCurrentDraft=()=>{
    if(!state.config)throw Error('기존 대회 로딩을 먼저 완료하세요.');
    if(ADMIN_TEST&&(state.config.slug!==TEST_SLUG||state.scope!=='competition'))throw Error('이 관리자 테스트는 고성대회 남자부에만 저장할 수 있습니다.');
