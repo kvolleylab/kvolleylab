@@ -18,6 +18,10 @@ ok(page.includes("scope==='competition'&&r.scope_key===TEST_SLUG"),"only Goseong
 ok(page.includes('disabled title="운영 배포 승인과 검증이 필요합니다"'),"publish disabled");
 ok(page.includes("admin-competition-layout-drafts"),"existing authenticated backend used");
 ok(!page.includes("service_role")&&!page.includes("sb_secret_"),"no server secrets embedded");
+ok(page.includes("#saveBtn{")&&page.includes("position:fixed;right:20px;bottom:20px"),"save button remains visible while scrolling outside editor iframe");
+ok(page.includes("saveFeedback(message)"),"save success appears in visible status toast");
+ok(page.includes('id="saveToast"'),"save toast exists in parent viewport");
+ok(page.includes('aria-label="현재 범위 임시저장"'),"save button accessible label preserved");
 ok(editor.includes("ADMIN_TEST=")&&editor.includes("adminTest')==='goseong'"),"child knows scoped test mode");
 ok(editor.includes("new URL('/data/competitions/',location.origin).href"),"child loads existing site data, not GitHub/raw for test mode");
 ok(editor.includes("if(ADMIN_TEST&&slug!==TEST_SLUG)"),"child refuses other competitions");
@@ -25,14 +29,6 @@ ok(editor.includes("$('scope').disabled=true"),"child disallows family/global ed
 ok(editor.includes("if(ADMIN_TEST&&(state.config.slug!==TEST_SLUG||state.scope!=='competition'))"),"child prevents manual programmatic scope escalation");
 ok(editor.includes("if(ADMIN_TEST&&(r.scope!=='competition'||r.scope_key!==TEST_SLUG))return;"),"child ignores other admin scopes");
 ok(comparator.includes("kvl-goseong-layout-tokens-v1")&&js.includes("preview_target_mismatch"),"actual Engine comparison is read-only and slug-scoped");
-ok(page.includes("api.enableAdminSaveDock?.()"),"authenticated parent explicitly enables in-editor save control");
-ok(page.includes("event.source!==$('editorFrame').contentWindow"),"iframe save action must originate from authenticated editor");
-ok(page.includes("event.data?.type!=='kvl-goseong-save-request-v1'"),"parent rejects arbitrary messages");
-ok(page.includes("notifyEditorSave(true,saved)"),"parent sends save confirmation back to editor");
-ok(editor.includes("if(!ADMIN_TEST||window.parent===window)return false"),"editor floating save only enabled in authenticated embedded test mode");
-ok(editor.includes("window.parent.postMessage({type:'kvl-goseong-save-request-v1',slug:TEST_SLUG},location.origin)"),"child delegates to parent, not direct Supabase access");
-ok(editor.includes("event.origin!==location.origin||event.source!==window.parent"),"save response validates origin and parent");
-ok(editor.includes('id="adminSaveInEditor"'),"persistent save button exists in editor markup");
 for(const [name,html,rx] of [
  ["admin",page,/<script type="module">([\s\S]*?)<\/script>/],
  ["editor",editor,/<script>([\s\S]*?)<\/script>\s*<\/body>/],
