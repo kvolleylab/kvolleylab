@@ -1,0 +1,66 @@
+name: KVL Goseong admin layout TEST page QA v6
+
+on:
+  pull_request:
+    paths:
+      - 'admin-competition-layout-test.html'
+      - 'prototypes/kvl-existing-competition-editor-v2.html'
+      - 'prototypes/kvl-goseong-engine-compare-v1.html'
+      - 'assets/js/kvl-goseong-layout-compare-v1.js'
+      - 'scripts/build-goseong-local-engine-preview-v2.py'
+      - 'scripts/qa-admin-layout-site-v6.py'
+      - 'scripts/qa-goseong-local-engine-v2.py'
+      - 'tests/kvl-admin-layout-test-gate-v6.test.cjs'
+      - '.github/workflows/kvl-admin-layout-test-page-v6.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  admin-preview-e2e:
+    name: Goseong admin test page + existing Engine E2E
+    runs-on: windows-2025
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify native Korean font and Chrome
+        shell: pwsh
+        run: |
+          $font = Join-Path $env:WINDIR "Fonts\malgun.ttf"
+          $chrome = Join-Path $env:ProgramFiles "Google\Chrome\Application\chrome.exe"
+          if (-not (Test-Path -LiteralPath $font)) { throw "Windows Korean system font missing" }
+          if (-not (Test-Path -LiteralPath $chrome)) { throw "Windows Chrome missing" }
+          "KVL_CHROMIUM=$chrome" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+      - name: Install isolated browser QA dependencies
+        run: python -m pip install playwright pillow
+      - name: Verify administrator test page and contract isolation
+        run: |
+          node tests/kvl-admin-layout-test-gate-v6.test.cjs
+          node tests/kvl-goseong-layout-compare-v1.test.cjs
+          node tests/kvl-goseong-admin-preview-bridge-v2.test.cjs
+          python -m unittest tests/test_goseong_local_preview_v2.py
+      - name: Build isolated existing tournament Engine
+        run: python scripts/build-goseong-local-engine-preview-v2.py "${RUNNER_TEMP}/kvl-admin-layout-v6"
+      - name: Run mock admin authorization and design persistence tests
+        run: |
+          python scripts/qa-admin-layout-site-v6.py "${RUNNER_TEMP}/kvl-admin-layout-v6" --output "${RUNNER_TEMP}/kvl-admin-layout-e2e-v6" --chromium "$KVL_CHROMIUM"
+      - name: Compare actual Goseong Engine at PC and mobile widths
+        run: |
+          python scripts/qa-goseong-local-engine-v2.py "${RUNNER_TEMP}/kvl-admin-layout-v6" --output "${RUNNER_TEMP}/kvl-goseong-engine-qa-v6" --chromium "$KVL_CHROMIUM"
+      - name: Upload isolated QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-admin-layout-test-v6-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-admin-layout-e2e-v6/
+            ${{ runner.temp }}/kvl-goseong-engine-qa-v6/
+          if-no-files-found: warn
+          retention-days: 14
