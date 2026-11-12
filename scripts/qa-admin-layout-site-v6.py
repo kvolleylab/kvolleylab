@@ -299,10 +299,18 @@ def run(root: Path, output: Path, executable: str | None = None):
                 frame=page.frame_locator("#editorFrame")
                 frame.locator('[data-field="logoSize"]').evaluate(
                     "(el) => {el.value='52';el.dispatchEvent(new Event('input',{bubbles:true}));}")
-                frame.locator("#adminSaveInEditor").wait_for(state="visible",timeout=12000)
-                frame.locator("#adminSaveInEditor").click()
+                # The parent save button must remain clickable even while the user
+                # is scrolled into the embedded design editor.
+                page.evaluate("window.scrollTo(0,document.documentElement.scrollHeight)")
+                page.wait_for_timeout(100)
+                bbox=page.locator("#saveBtn").bounding_box()
+                viewport=page.viewport_size
+                assert bbox and viewport and bbox["x"]>=0 and bbox["y"]>=0 and (
+                    bbox["x"]+bbox["width"] <= viewport["width"]+2
+                ) and (bbox["y"]+bbox["height"]<=viewport["height"]+2),bbox
+                page.locator("#saveBtn").click()
                 page.locator("#draftMessage").get_by_text("임시저장 완료",exact=False).wait_for(timeout=12000)
-                frame.locator("#adminSaveFeedback").get_by_text("임시저장 완료",exact=False).wait_for(timeout=12000)
+                page.locator("#saveToast").get_by_text("임시저장 완료",exact=False).wait_for(timeout=12000)
                 saved=store.get(ADMIN_ID)
                 assert saved and saved["revision"]==1 and saved["tokens"].get("logoSize")==52,saved
                 tick("first scoped draft saved in SQLite fixture")
