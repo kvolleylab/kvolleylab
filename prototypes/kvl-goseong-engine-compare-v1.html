@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>KVL 고성대회 남자부 · 실제 Engine 비교 v1</title>
+<style>
+:root{font:14px Arial,"Malgun Gothic",sans-serif;color:#1b2a40;background:#eef2f6}
+*{box-sizing:border-box}body{margin:0}button,select,input{font:inherit}
+header{background:#142238;color:white;padding:17px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+header strong{font-size:20px;color:#f1d29a}header span{font-size:12px;color:#dce4f0}
+main{max-width:2530px;margin:auto;padding:20px 19px 65px}
+h1{margin:0;font-size:24px}p{margin:7px 0;line-height:1.6;color:#5e7188}
+.notice{border:1px solid #ebd9a8;background:#fff8e9;color:#785d20;border-radius:10px;padding:12px 14px;line-height:1.55;font-size:12px;margin:14px 0}
+.layout{display:grid;grid-template-columns:minmax(275px,350px) minmax(0,1fr);gap:18px;align-items:start}
+.controls{background:white;border:1px solid #dce4ee;border-radius:14px;padding:18px;position:sticky;top:14px;max-height:calc(100vh - 28px);overflow:auto}
+.controls h2{font-size:16px;margin:0 0 12px}
+.controls h3{font-size:12px;color:#1b3b5f;margin:17px 0 8px;padding-top:13px;border-top:1px solid #e5eaf0}
+.controls label{font-size:12px;color:#304961;font-weight:700;display:block;margin:10px 0 5px}
+.controls input[type=range]{width:100%;accent-color:#ad8345}
+.controls select{width:100%;border:1px solid #ccd7e3;border-radius:7px;padding:10px;background:white}
+.range{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:10px;align-items:center}.range output{text-align:right;font-variant-numeric:tabular-nums;color:#8c632a;font-size:12px}
+.buttons{display:flex;gap:7px;flex-wrap:wrap}.buttons button{border:1px solid #d4dfeb;background:#f5f7fa;color:#1b3756;padding:9px 11px;font-size:12px;font-weight:700;border-radius:7px;cursor:pointer}
+.buttons button.primary{background:#183759;border-color:#183759;color:white}
+.status{min-height:50px;font-size:12px;white-space:pre-wrap;background:#f4f7fb;border-radius:8px;padding:10px;line-height:1.45}
+.status.error{color:#9d3140;background:#fff0f0}
+.preview-area{min-width:0}
+.toolbar{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;padding:14px 16px;border:1px solid #d8e2ec;background:white;border-radius:12px;margin:0 0 13px}
+.toolbar select{border:1px solid #cfd9e4;padding:8px;border-radius:6px;background:white}
+.toolbar label{font-size:12px;font-weight:700;color:#354d68}
+.toolbar a{font-size:12px;color:#1a5a91}
+.frame-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.frame-card{background:#fff;border:1px solid #d8e2ed;border-radius:13px;min-width:0;padding:12px}
+.frame-card h2{font-size:14px;margin:2px 0 5px;color:#243e5a}
+.frame-card p{margin:0 0 9px;font-size:11px;color:#77879b}
+.viewport{background:#dfe8f0;border:1px solid #d7e2ee;border-radius:9px;overflow:auto;max-width:100%;max-height:calc(100vh - 220px)}
+.viewport iframe{border:0;background:white;display:block;height:1000px;width:1180px}
+.meta{margin-top:13px;color:#697991;font-size:11px;line-height:1.5}
+.field-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.field-pair label{margin-top:4px}
+@media(max-width:1300px){.layout{grid-template-columns:1fr}.controls{position:static;max-height:none}.frame-grid{grid-template-columns:1fr}.viewport{max-height:70vh}}
+@media(max-width:560px){header{padding:15px;display:block}header span{display:block;margin-top:8px}main{padding:14px 9px}.controls{padding:14px}.frame-card{padding:8px}.toolbar{padding:10px}}
+</style>
+<script src="/assets/js/kvl-goseong-layout-compare-v1.js" defer></script>
+</head>
+<body>
+<header><div><strong>K-VOLLEY LAB</strong> <span>2026 고성대회 남자부 · Engine V2 검수</span></div><span>READ ONLY · NOT DEPLOYED</span></header>
+<main>
+<h1>원본 ↔ 디자인 조정 비교</h1>
+<p>종료된 2026 대한항공배 전국대학배구 고성대회 남자부의 실제 Competition Engine V2 화면을 동일한 조건에서 두 번 불러옵니다. 오른쪽에만 한정된 CSS를 추가해 위치·줄바꿈을 비교합니다.</p>
+<div class="notice"><b>안전 범위:</b> 경기 35개, 참가팀 15개, 조별순위 3개 조 등 운영 데이터는 읽기 전용입니다. 이 도구는 대회 결과·선수 ID·MASTER·V-리그 자동화를 수정하거나 서버에 저장·게시하지 않습니다. 같은 도메인에서만 실제 Engine iframe 스타일 적용이 가능합니다.</div>
+<div class="layout">
+<section class="controls" aria-label="레이아웃 조정">
+<h2>편집 컨트롤</h2>
+<div class="buttons">
+<button type="button" class="primary" id="recommended">비교 권장값</button>
+<button type="button" id="reset">원본과 동일하게</button>
+<button type="button" id="download">설정 JSON 저장</button>
+</div>
+<h3>참가팀 카드·경기 로고</h3>
+<label for="nameMode">팀명 줄바꿈</label>
+<select id="nameMode" data-enum="nameMode">
+<option value="">원본 유지</option>
+<option value="natural">자연 줄바꿈</option>
+<option value="two">두 줄 공간 확보</option>
+<option value="shrink">긴 이름 글씨 축소</option>
+<option value="one">한 줄 제한 (잘림 위험)</option>
+</select>
+<div id="sliders"></div>
+<h3>화면 적용 결과</h3>
+<div id="status" class="status" role="status">원본 Engine 로딩 중입니다.</div>
+<p class="meta">승·패는 원래 순위를 변경하지 않고 숫자와 머리글을 함께 이동합니다. 실제 순위 계산식과 점수는 전혀 수정하지 않습니다.</p>
+</section>
+<section class="preview-area">
+<div class="toolbar">
+<div class="buttons">
+<label>화면 <select id="view">
+<option value="rosters">참가팀·로고</option>
+<option value="groups">조별순위·승패</option>
+<option value="schedule">경기일정·스코어</option>
+<option value="overview">대회 한눈에</option>
+</select></label>
+<label>화면 폭 <select id="width">
+<option value="1180">PC · 1180px</option>
+<option value="390">모바일 · 390px</option>
+<option value="360">모바일 · 360px</option>
+</select></label>
+</div>
+<a id="production" href="https://kvolleylab.com/competition-engine.html?competition=university-goseong-men-2026&view=rosters" target="_blank" rel="noopener noreferrer">기존 운영 대회 페이지 확인</a>
+</div>
+<div class="frame-grid">
+<article class="frame-card">
+<h2>기존 운영 디자인 (원본)</h2><p>CSS 변경 없음 · 운영 대회 데이터</p>
+<div class="viewport"><iframe id="baseline" name="kvl-goseong-baseline" title="원본 기존 대회" loading="eager"></iframe></div>
+</article>
+<article class="frame-card">
+<h2>디자인 조정 시안 (미게시)</h2><p>원본 데이터에 스타일만 덧씌움</p>
+<div class="viewport"><iframe id="after" name="kvl-goseong-adjusted" title="디자인 조정 대회" loading="eager"></iframe></div>
+</article>
+</div>
+<p class="meta">주의: 이 페이지는 운영 사이트와 동일한 origin에서 실행해야 실제 Engine DOM에 접근합니다. GitHub의 소스 파일을 다운로드해 <code>file://</code>로 열면 전체 운영 데이터와 비교하지 못할 수 있습니다. 별도 운영 배포 승인이 없는 한 정식 URL에 게시되지 않습니다.</p>
+</section>
+</div>
+</main>
+<script>
+(()=>{
+"use strict";
+const $=id=>document.getElementById(id);
+const SLUG="university-goseong-men-2026";
+const initial={nameMode:"two",nameSize:13,logoSize:46,logoX:0,logoY:-2,logoGap:9,winX:3,lossX:-3,rowPad:10};
+const sliders=[
+  ["nameSize","팀명 글씨",10,22,14],
+  ["logoSize","로고 크기",26,84,48],
+  ["logoX","로고 좌우 이동",-24,24,0],
+  ["logoY","로고 상하 이동",-24,24,0],
+  ["logoGap","로고 아래 간격",0,28,12],
+  ["winX","승 숫자·머리글 이동",-20,20,0],
+  ["lossX","패 숫자·머리글 이동",-20,20,0],
+  ["rowPad","순위표 행 상하 간격",3,22,9]
+];
+const ranges=new Map(sliders.map(s=>[s[0],s]));
+let current={},lastLoad="",changed=false;
+function message(value,error=false){$("status").textContent=value;$("status").classList.toggle("error",error);}
+for(const [key,label,min,max,base] of sliders){
+  const box=document.createElement("div");
+  box.innerHTML='<label for="field-'+key+'">'+label+'</label><div class="range"><input id="field-'+key+'" type="range" min="'+min+'" max="'+max+'" value="'+base+'" step="1"><output id="output-'+key+'">'+base+'</output></div>';
+  $("sliders").append(box);
+  $("field-"+key).addEventListener("input",()=>{
+    current[key]=Number($("field-"+key).value);$("output-"+key).textContent=String(current[key]);apply();
+  });
+}
+$("nameMode").addEventListener("change",()=>{if($("nameMode").value)current.nameMode=$("nameMode").value;else delete current.nameMode;apply();});
+function updateControls(){
+  $("nameMode").value=current.nameMode||"";
+  for(const [key,,min,max,base] of sliders){
+    const v=Object.hasOwn(current,key)?current[key]:base;
+    $("field-"+key).value=String(Math.max(min,Math.min(max,v)));
+    $("output-"+key).textContent=String(v);
+  }
+}
+function apply(){
+  const frame=$("after");let doc;
+  try {doc=frame.contentDocument;if(!doc){message("같은 도메인에서만 실제 운영 화면을 수정하여 비교할 수 있습니다.",true);return;}}
+  catch{message("다른 도메인 iframe이므로 디자인 비교를 실행할 수 없습니다.",true);return;}
+  try{
+    if(doc.body?.dataset.kvlRenderState!=='ready'){
+      message('실제 Competition Engine 렌더링을 확인하는 중입니다.');return;
+    }
+    const result=window.KVLGoseongCompareV1.applyDocument(doc,current,SLUG);
+    message("고성대회 남자부 · CSS "+result.cssLength+"자 적용\n원본 데이터와 운영 페이지 변경 없음.");
+    changed=true;
+  }catch(e){
+    // Engine creates its UI after the initial iframe load; retry once it is ready.
+    message("운영 Engine 로딩 또는 동일 출처 확인 중: "+e.message,true);
+  }
+}
+function paths(){
+  const view=$("view").value,width=Number($("width").value),uri="/competition-engine.html?competition="+SLUG+"&view="+view;
+  const link=new URL("https://kvolleylab.com/competition-engine.html");
+  link.searchParams.set("competition",SLUG);link.searchParams.set("view",view);
+  $("production").href=link.href;
+  for(const id of ["baseline","after"]){
+    const frame=$(id);
+    frame.style.width=width+"px";
+    frame.style.height=(width===1180?"1100":"970")+"px";
+    if(lastLoad!==uri){frame.src=uri;}
+  }
+  if(lastLoad===uri)apply();
+  lastLoad=uri;
+  message("두 프레임에서 "+view+" 화면을 "+width+"px 폭으로 불러옵니다.");
+}
+$("baseline").addEventListener("load",()=>{
+  try{
+    const doc=$("baseline").contentDocument;
+    if(doc?.body?.classList.contains("kvl-competition-template-v2")) message("원본 로딩 완료 · 조정 시안 화면 로딩 중입니다.");
+  }catch{}
+});
+function onAdjustedFrameLoad(){
+  let doc;
+  try{doc=$("after").contentDocument;}catch{}
+  if(!doc?.body){message('격리된 동일 출처 미리보기만 지원합니다.',true);return;}
+  const check=()=>{
+    if(doc.body.dataset.kvlRenderState==='ready'){observer.disconnect();apply();return;}
+    if(doc.body.dataset.kvlRenderState==='error'){
+      observer.disconnect();message('실제 Engine 데이터 로딩에 실패했습니다. 브라우저 오류를 확인하세요.',true);
+    }
+  };
+  const observer=new MutationObserver(check);
+  observer.observe(doc.body,{attributes:true,attributeFilter:['data-kvl-render-state']});
+  check();
+}
+$("after").addEventListener("load",onAdjustedFrameLoad);
+$("view").addEventListener("change",paths);
+$("width").addEventListener("change",paths);
+$("recommended").addEventListener("click",()=>{current={...initial};updateControls();apply();});
+$("reset").addEventListener("click",()=>{current={};updateControls();apply();});
+$("download").addEventListener("click",()=>{
+  const api=window.KVLGoseongCompareV1;
+  if(!api){message("디자인 모듈이 없습니다.",true);return;}
+  try{
+    const payload={
+      schemaVersion:2,type:"kvl-visual-overrides",
+      global:{},families:{},
+      competitions:{[SLUG]:api.normalize(current)},
+      note:"Goseong visual compare, read-only, NOT PUBLISHED"
+    };
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob),a=document.createElement("a");
+    a.href=url;a.download="KVL_Goseong_Layout_Compare_v1.json";a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    message("개별 대회 디자인 설정만 저장했습니다. 홈페이지에는 게시되지 않습니다.");
+  }catch(e){message(e.message,true);}
+});
+function boot(){
+  if(!window.KVLGoseongCompareV1){
+    message("KVL 디자인 비교 모듈을 불러오지 못했습니다.",true);return;
+  }
+  current={...initial};updateControls();paths();
+  if(new URLSearchParams(location.search).get('fromAdmin')==='1'&&window.opener){
+    window.addEventListener('message',event=>{
+      if(event.origin!==location.origin||event.source!==window.opener)return;
+      if(event.data?.type!=='kvl-goseong-layout-tokens-v1'||event.data?.slug!==SLUG)return;
+      try{
+        current=window.KVLGoseongCompareV1.normalize(event.data.tokens||{});
+        updateControls();apply();
+        message('관리자 편집기의 수정값을 비교 화면에 불러왔습니다. 실제 운영 데이터는 읽기 전용입니다.');
+      }catch(e){message('관리자 설정값 검증 실패: '+e.message,true);}
+    });
+    window.opener.postMessage({type:'kvl-goseong-preview-ready',slug:SLUG},location.origin);
+  }
+}
+window.addEventListener("load",boot,{once:true});
+})();
+</script>
+</body></html>
