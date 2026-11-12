@@ -18,6 +18,10 @@ ok(page.includes("scope==='competition'&&r.scope_key===TEST_SLUG"),"only Goseong
 ok(page.includes('disabled title="운영 배포 승인과 검증이 필요합니다"'),"publish disabled");
 ok(page.includes("admin-competition-layout-drafts"),"existing authenticated backend used");
 ok(!page.includes("service_role")&&!page.includes("sb_secret_"),"no server secrets embedded");
+ok(page.includes("#saveBtn{")&&page.includes("position:fixed;right:20px;bottom:20px"),"save button remains visible while scrolling outside editor iframe");
+ok(page.includes("saveFeedback(message)"),"save success appears in visible status toast");
+ok(page.includes('id="saveToast"'),"save toast exists in parent viewport");
+ok(page.includes('aria-label="현재 범위 임시저장"'),"save button accessible label preserved");
 ok(editor.includes("ADMIN_TEST=")&&editor.includes("adminTest')==='goseong'"),"child knows scoped test mode");
 ok(editor.includes("new URL('/data/competitions/',location.origin).href"),"child loads existing site data, not GitHub/raw for test mode");
 ok(editor.includes("if(ADMIN_TEST&&slug!==TEST_SLUG)"),"child refuses other competitions");

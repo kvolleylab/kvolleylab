@@ -24,6 +24,26 @@ button.danger{background:#fce8eb;color:#9c2b40}
 .toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:14px 0}
 #editorFrame{width:100%;height:850px;border:1px solid #d6e0eb;border-radius:12px;background:white}
 #revisionBox{min-width:260px;max-width:340px}
+/* Same save action remains in the parent viewport above the scrolling editor iframe. */
+#saveBtn{
+  position:fixed;right:20px;bottom:20px;z-index:10000;
+  padding:15px 22px;border-radius:999px;
+  border:2px solid #ba9142;background:#e5c581;color:#192a43;
+  font-weight:900;box-shadow:0 12px 35px rgba(9,25,47,.3)
+}
+#saveBtn:disabled{opacity:.65;cursor:wait}
+#saveToast{
+  position:fixed;right:20px;bottom:86px;z-index:10000;
+  max-width:min(450px,calc(100vw - 40px));
+  padding:12px 16px;border:1px solid #bbd4b8;border-radius:9px;
+  background:#f0fff3;color:#215438;font-size:13px;
+  box-shadow:0 10px 35px rgba(9,25,47,.2);line-height:1.5
+}
+#saveToast.error{color:#a33140;background:#fff1f1;border-color:#e6aeb2}
+@media(max-width:700px){
+ #saveBtn{right:12px;left:12px;bottom:12px;max-width:none;width:calc(100% - 24px);padding:14px}
+ #saveToast{right:12px;left:12px;bottom:72px;max-width:none}
+}
 [hidden]{display:none!important}
 @media(max-width:700px){header{flex-direction:column;align-items:flex-start}.card{padding:15px}main{padding:0 12px}#editorFrame{height:950px}}
 </style>
@@ -34,7 +54,7 @@ button.danger{background:#fce8eb;color:#9c2b40}
 <div class="alert">이 관리자 테스트는 <b>완료된 2026 전국대학배구 고성대회 남자부만</b> 대상으로 합니다. 경기 결과·순위·선수 MASTER는 읽기 전용이며, 저장은 관리자 개인의 디자인 임시저장에만 적용됩니다. <b>홈페이지 디자인 게시 기능은 비활성화</b>되어 있습니다.</div>
 <section class="card login" id="loginView">
 <h1>관리자 로그인</h1>
-<p>기존 KVL 관리자 계정을 사용합니다. 서버에서 관리자 권한을 다시 확인합니다.</p>
+<p>기존 KVL 관리자 계정을 사용합니다. 로그인하면 화면 오른쪽 아래에 <b>현재 범위 임시저장</b> 버튼이 나타납니다.</p>
 <form id="loginForm">
 <label for="email">이메일</label><input id="email" type="email" autocomplete="username" required>
 <label for="password">비밀번호</label><input id="password" type="password" autocomplete="current-password" required>
@@ -49,7 +69,7 @@ button.danger{background:#fce8eb;color:#9c2b40}
 </div>
 <div class="card">
 <div class="row">
-<button id="saveBtn" type="button">현재 범위 임시저장</button>
+<button id="saveBtn" type="button" title="고성대회 남자부 디자인 임시저장 (운영 홈페이지에는 미게시)" aria-label="현재 범위 임시저장">현재 범위 임시저장</button>
 <button id="enginePreviewBtn" type="button" class="secondary">고성대회 실제 화면 비교</button>
 <button id="historyBtn" type="button" class="secondary">변경 이력 확인</button>
 <label for="revisionBox" style="margin:0">복원할 버전</label>
@@ -58,9 +78,11 @@ button.danger{background:#fce8eb;color:#9c2b40}
 <button type="button" disabled title="운영 배포 승인과 검증이 필요합니다">홈페이지 게시 · 미구현</button>
 </div>
 <p id="draftMessage" role="status" class="status">디자인 임시저장 준비 중</p>
+<p class="status">편집기에서 로고·팀명·승패 간격을 바꾼 뒤 화면 오른쪽 아래의 금색 저장 버튼을 누르세요.</p>
 </div>
+<div id="saveToast" role="status" aria-live="polite" hidden></div>
 <div style="margin-top:15px">
-<iframe id="editorFrame" title="관리자 인증 후 고성대회 디자인 편집기" src="about:blank" data-src="/prototypes/kvl-existing-competition-editor-v2.html?adminTest=goseong&amp;v=20261112-1"></iframe>
+<iframe id="editorFrame" title="관리자 인증 후 고성대회 디자인 편집기" src="about:blank" data-src="/prototypes/kvl-existing-competition-editor-v2.html?adminTest=goseong&amp;v=20261112-3"></iframe>
 </div>
 </section>
 </main>
@@ -80,6 +102,12 @@ let records=[],busy=false;
 const loginStatus=(message,bad=false)=>{const el=$('loginMessage');el.textContent=message;el.classList.toggle('error',bad)};
 const status=(message,bad=false)=>{const el=$('draftMessage');el.textContent=message;el.classList.toggle('error',bad)};
 const same=(item,scope,key)=>item.scope===scope&&item.scope_key===key;
+const saveFeedback=(message,error=false)=>{
+  const toast=$('saveToast');
+  toast.textContent=message;
+  toast.classList.toggle('error',error);
+  toast.hidden=false;
+};
 const editor=()=>{
   const frame=$('editorFrame');
   if(frame.contentWindow?.location.origin!==location.origin)throw Error('같은 사이트에서 편집기를 실행해야 합니다.');
@@ -150,15 +178,20 @@ $('refreshBtn').addEventListener('click',async()=>{try{await reload();}catch(e){
 $('editorFrame').addEventListener('load',()=>{if(records.length)try{editor().applyServerDrafts(records);}catch{}});
 $('saveBtn').addEventListener('click',async()=>{
   if(busy)return;busy=true;$('saveBtn').disabled=true;
+  saveFeedback('고성대회 남자부 디자인을 임시저장하는 중입니다...');
   try{
     const payload=enforceScope(editor().exportCurrentDraft());
     const prior=records.find(r=>same(r,payload.scope,payload.scope_key));
     const result=await call('save',{...payload,expected_revision:prior?.revision??null});
-    status('임시저장 완료 · '+payload.scope+' / '+payload.scope_key+' · 버전 '+result.revision+'. 아직 운영 페이지에 게시되지 않았습니다.');
+    const message='임시저장 완료 · 고성대회 남자부 · 버전 '+result.revision+' (홈페이지에는 미게시)';
+    status(message);saveFeedback(message);
     const latest=await call('list');
     records=(latest.items||[]).filter(r=>r.scope==='competition'&&r.scope_key===TEST_SLUG);
   }catch(e){
-    status(e.message==='revision_conflict'?'다른 창에서 변경된 설정이 있습니다. 새로 불러와 차이를 확인한 뒤 다시 수정하세요.':e.message,true);
+    const message=e.message==='revision_conflict'
+      ?'다른 창에서 변경된 설정이 있습니다. 다시 불러와 차이를 확인한 뒤 수정하세요.'
+      :e.message;
+    status(message,true);saveFeedback(message,true);
   }finally{busy=false;$('saveBtn').disabled=false;}
 });
 $('enginePreviewBtn').addEventListener('click',()=>{
