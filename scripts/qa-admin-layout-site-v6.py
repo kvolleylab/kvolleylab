@@ -299,8 +299,10 @@ def run(root: Path, output: Path, executable: str | None = None):
                 frame=page.frame_locator("#editorFrame")
                 frame.locator('[data-field="logoSize"]').evaluate(
                     "(el) => {el.value='52';el.dispatchEvent(new Event('input',{bubbles:true}));}")
-                page.locator("#saveBtn").click()
+                frame.locator("#adminSaveInEditor").wait_for(state="visible",timeout=12000)
+                frame.locator("#adminSaveInEditor").click()
                 page.locator("#draftMessage").get_by_text("임시저장 완료",exact=False).wait_for(timeout=12000)
+                frame.locator("#adminSaveFeedback").get_by_text("임시저장 완료",exact=False).wait_for(timeout=12000)
                 saved=store.get(ADMIN_ID)
                 assert saved and saved["revision"]==1 and saved["tokens"].get("logoSize")==52,saved
                 tick("first scoped draft saved in SQLite fixture")
