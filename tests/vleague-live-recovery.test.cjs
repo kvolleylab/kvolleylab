@@ -62,3 +62,23 @@ for(const mode of ['home','men','women'])test(`${mode}: missing first observatio
   assert.deepEqual(s.errors,[]);
  }finally{s.w.close();}
 });
+
+for(const mode of ['home','men','women'])test(`${mode}: partial set prefix and pending end retain central score and expire safely`,async()=>{
+ const s=await setup(mode==='women'?'women':'men',mode==='home');try{
+ for(const g of ['men','women']){
+  const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');
+  m.liveScore={...m.liveScore,home:1,away:2};
+ }
+ await s.run(300000);
+ const cards=()=>mode==='home'?[...s.doc.querySelectorAll('.home-match[data-match-id]')].filter(c=>c.dataset.matchId.endsWith('006')):[...s.doc.querySelectorAll('[data-summary-gender] [data-kind=next]')];
+ assert(cards().every(c=>c.textContent.includes('1 : 2')&&c.textContent.includes('1세트')));
+ for(const g of ['men','women']){
+  const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');m.liveScore={...m.liveScore,home:1,away:3,finalPending:true};
+ }
+ await s.run(300000);
+ assert(cards().every(c=>c.textContent.includes('1 : 3')&&c.textContent.includes('종료 확인 중')&&c.textContent.includes('최종 결과 미확정')));
+ s.setNow(start+30*60000);await s.run(60000);
+ assert(cards().every(c=>c.textContent.includes('갱신 지연')&&c.textContent.includes('당시 1 : 3')));
+ assert.deepEqual(s.errors,[]);
+ }finally{s.w.close();}
+});

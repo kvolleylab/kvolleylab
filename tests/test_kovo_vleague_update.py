@@ -521,7 +521,7 @@ class UpdaterPlanTests(unittest.TestCase):
         self.assertNotIn("score", male["matches"][0])
         self.assertEqual(male["matches"][0]["liveScore"], {"home": 1, "away": 0,
                          "sourceKey": live["source_key"], "observedAt": snapshot["fetched_at"]})
-        self.assertEqual(male["matches"][0]["liveSets"], [{"home": 25, "away": 20, "status": "completed"}])
+        self.assertEqual(male["matches"][0]["liveSets"], [{"home": 25, "away": 20, "status": "completed", "observedAt": snapshot["fetched_at"]}])
         self.assertNotIn("scoreVerification", male["matches"][0])
         self.assertEqual(update.publication_gate(plan)["status"], "PASS")
         self.assertEqual(plan["report"]["divisions"]["MALE"]["completed"], 0)
@@ -869,3 +869,62 @@ class MainFlowTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PartialObservationRecoveryTests(unittest.TestCase):
+    def test_missing_points_preserve_certified_prefix_with_original_timestamp(self):
+        originals, snapshot, _ = fixture_bundle(finals=False)
+        row = snapshot["matches"][0]
+        row.update(status="live", sets_won={"home": 0, "away": 1}, sets=[{"home": 23, "away": 25}])
+        first = update.prepare_update(originals, snapshot)
+        originals = candidate_originals(first)
+        previous = deepcopy(originals["MALE"]["matches"][0]["liveSets"])
+        row.update(sets_won={"home": 1, "away": 2}, sets=None)
+        snapshot["fetched_at"] = (datetime.fromisoformat(snapshot["fetched_at"]) + timedelta(minutes=20)).isoformat()
+        plan = update.prepare_update(originals, snapshot)
+        match = plan["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]
+        self.assertEqual(match["liveSets"], previous)
+        self.assertEqual(match["liveScore"]["home"], 1)
+        self.assertNotIn("score", match)
+        # Present contradictory points must not be replaced by old points.
+        row["sets"] = [{"home": 8, "away": 9}]
+        changed = update.prepare_update(originals, snapshot)
+        self.assertEqual(changed["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]["liveSets"], [])
+        # Different fixture date cannot inherit earlier points.
+        row.update(sets=None, date="2026-11-20")
+        changed = update.prepare_update(originals, snapshot)
+        self.assertEqual(changed["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]["liveSets"], [])
+
+    def test_pending_end_allows_other_division_final_and_never_finalizes_master(self):
+        originals, snapshot, master_rows = fixture_bundle()
+        row = next(r for r in snapshot["matches"] if r["gender"] == "MALE")
+        final_row = deepcopy(row)
+        row.update(status="live", final_pending=True)
+        next(r for r in snapshot["official_standings"] if r["gender"] == "MALE")["rows"] = []
+        plan = update.prepare_update(originals, snapshot, master_values=master_rows)
+        male = plan["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]
+        female = plan["candidates"][update.DATA_PATHS["FEMALE"]]["matches"][0]
+        self.assertTrue(male["liveScore"]["finalPending"])
+        self.assertNotIn("score", male)
+        self.assertEqual(female["status"], "final")
+        matched = next(r for r in plan["matched"] if r["gender"] == "MALE")
+        self.assertIsNone(matched["score"])
+        self.assertEqual(matched["status"], "live")
+        self.assertEqual(plan["report"]["divisions"]["MALE"]["completed"], 0)
+        self.assertEqual(update.publication_gate(plan)["status"], "PASS")
+        # Complete official end evidence promotes the same identity next poll.
+        original_snapshot = fixture_bundle()[1]
+        final_plan = update.prepare_update(candidate_originals(plan), original_snapshot)
+        final = final_plan["candidates"][update.DATA_PATHS["MALE"]]["matches"][0]
+        self.assertEqual(final["status"], "final")
+        self.assertNotIn("liveScore", final)
+        self.assertEqual(final["id"], male["id"])
+
+    def test_pending_flag_cannot_bypass_counter_or_final_guards(self):
+        originals, snapshot, _ = fixture_bundle(finals=False)
+        row = snapshot["matches"][0]
+        for home, away, pending in [(3, 3, True), (3, 1, False), (2, 1, True)]:
+            with self.subTest(home=home, away=away, pending=pending):
+                row.update(status="live", sets_won={"home": home, "away": away}, final_pending=pending)
+                with self.assertRaises(update.UpdateError):
+                    update.prepare_update(originals, snapshot)
