@@ -216,12 +216,12 @@ def validate_final_sets(sets, won):
 def verified_live_sets(sets, won):
     """Return only completed sets corroborated by the official set-win counters.
 
-    A partly played next set is deliberately omitted. A temporarily inconsistent
-    points/counters response cannot certify set points; keep the separate wins
-    observation and wait for the next source read instead of inventing points.
+    Certify the contiguous legal prefix independently of missing later sets.
+    Each prefix winner must fit within the official counters. Stop at the first
+    incomplete/inconsistent set; never infer missing points or a later index.
     """
     count = won["home"] + won["away"]
-    if not sets or len(sets) < count or len(sets) > count + 1:
+    if not sets or len(sets) > count + 1:
         return []
     totals = {"home": 0, "away": 0}
     completed = []
@@ -231,10 +231,13 @@ def verified_live_sets(sets, won):
         top, low = max(h, a), min(h, a)
         if max(totals.values()) >= 3 or not ((top == target and low <= target - 2)
                 or (top > target and top - low == 2)):
-            return []
-        totals["home" if h > a else "away"] += 1
+            break
+        side = "home" if h > a else "away"
+        if totals[side] >= won[side]:
+            break
+        totals[side] += 1
         completed.append({"home": h, "away": a, "status": "completed"})
-    return completed if totals == won else []
+    return completed
 
 
 def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="201"):
@@ -296,7 +299,7 @@ def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="2
         validate_final_sets(points, won)
         status = "final"
     elif points or max(won.values()) > 0:
-        require(max(won.values()) < 3, "Winning result has no official end marker yet")
+        require(min(won.values()) < 3, "Both teams have match-winning counters")
         status = "live"
     else:
         status = "scheduled"
@@ -332,6 +335,8 @@ def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="2
         }),
         "observed_at": observed_at,
     }
+    if status == "live" and max(won.values()) == 3:
+        normalized["final_pending"] = True
     if post:
         normalized.update(series_game=series_game, stage=post["stage"], fixture_ready=ready)
     return normalized

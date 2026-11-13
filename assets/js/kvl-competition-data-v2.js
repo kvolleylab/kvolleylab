@@ -71,14 +71,14 @@ function matchSummaryState(m,now=Date.now(),options={}){
  if(finished)return {kind:'final',label:isToday?'오늘 경기 종료':'경기 종료',finished:true,score:m.score,sets:list(m.score.sets),detail:''};
  if(summaryLive(m)){
   const p=m.liveScore,observed=Date.parse(p?.observedAt||'');let source;try{source=new URL(m.source);}catch{};
-  const valid=p&&p.sourceKey===m.officialSourceKey&&/^023:001:(MALE|FEMALE):\d+$/.test(p.sourceKey||'')&&source?.origin==='https://user-api.kovo.co.kr'&&source.pathname==='/stat/game-schedule'&&Number.isInteger(p.home)&&Number.isInteger(p.away)&&p.home>=0&&p.home<3&&p.away>=0&&p.away<3&&Number.isFinite(observed)&&observed<=now+60000&&c&&observed>=c.day&&new Date(observed+9*3600000).toISOString().slice(0,10)===m.date;
+  const valid=p&&p.sourceKey===m.officialSourceKey&&/^023:001:(MALE|FEMALE):\d+$/.test(p.sourceKey||'')&&source?.origin==='https://user-api.kovo.co.kr'&&source.pathname==='/stat/game-schedule'&&Number.isInteger(p.home)&&Number.isInteger(p.away)&&p.home>=0&&p.home<=3&&p.away>=0&&p.away<=3&&Math.min(p.home,p.away)<3&&(Math.max(p.home,p.away)<3?p.finalPending!==true:p.finalPending===true)&&Number.isFinite(observed)&&observed<=now+60000&&c&&observed>=c.day&&new Date(observed+9*3600000).toISOString().slice(0,10)===m.date;
   if(!valid){const missing=missingLiveObservation(m,c,now);if(missing)return missing;}
   const stale=!valid||now-observed>=30*60000;
   const stamp=valid?new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(observed)):'';
   const sets=valid?verifiedLiveSets(m.liveSets,p):[];
-  return {kind:stale?'stale':'live',label:!valid?'상태 확인 중':stale?'갱신 지연':'진행 중',finished:false,
+  return {kind:stale?'stale':'live',label:!valid?'상태 확인 중':stale?'갱신 지연':p.finalPending?'종료 확인 중':'진행 중',finished:false,
    score:valid&&!stale?p:null,sets,observedAt:valid?p.observedAt:null,historicalScore:valid&&stale?p:null,
-   detail:valid?(stale?'마지막 확인 ':'세트 승수 · ')+stamp+' KST'+(stale?' · 당시 '+p.home+' : '+p.away:' 확인'):'세트 스코어 확인 중'};
+   detail:valid?(stale?'마지막 확인 ':'세트 승수 · ')+stamp+' KST'+(stale?' · 당시 '+p.home+' : '+p.away:p.finalPending?' · 최종 결과 미확정':' 확인'):'세트 스코어 확인 중'};
  }
  if(['suspended','중단'].includes(summaryStatus(m)))return {kind:'waiting',label:'경기 중단',finished:false,score:null,detail:'공식 경기 상태 확인 중'};
  if(['','scheduled','upcoming','예정'].includes(summaryStatus(m))){const missing=missingLiveObservation(m,c,now);if(missing)return missing;}
@@ -87,13 +87,14 @@ function matchSummaryState(m,now=Date.now(),options={}){
 }
 function verifiedLiveSets(sets,won){
  const rows=list(sets),count=won.home+won.away,totals={home:0,away:0};
- if(rows.length!==count)return [];
+ if(rows.length>count)return [];
  for(let i=0;i<rows.length;i++){
   const s=rows[i],h=s?.home,a=s?.away,target=i===4?15:25,top=Math.max(h,a),low=Math.min(h,a);
   if(s?.status!=='completed'||!Number.isInteger(h)||!Number.isInteger(a)||low<0||top>199||Math.max(totals.home,totals.away)>=3||!((top===target&&low<=target-2)||(top>target&&top-low===2)))return [];
   totals[h>a?'home':'away']++;
+  if(totals.home>won.home||totals.away>won.away)return [];
  }
- return totals.home===won.home&&totals.away===won.away?rows:[];
+ return rows;
 }
 function validate(d,{production=false}={}){
  const errors=[];

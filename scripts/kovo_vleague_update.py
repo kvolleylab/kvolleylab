@@ -295,12 +295,16 @@ def join_records(originals, snapshot, previous_state=None):
         elif source["status"] == "live":
             won = source.get("sets_won", {})
             require(set(won) == {"home", "away"}
-                    and all(type(won[s]) is int and 0 <= won[s] < 3 for s in ("home", "away")),
+                    and all(type(won[s]) is int and 0 <= won[s] <= 3 for s in ("home", "away"))
+                    and min(won.values()) < 3
+                    and (source.get("final_pending", False) is (max(won.values()) == 3)),
                     "Invalid provisional set wins")
             # Dated provisional observations, never final results or standings input.
             record["live_score"] = {**won, "sourceKey": source["source_key"],
                                     "observedAt": snapshot["fetched_at"]}
-            record["live_sets"] = verified_live_sets(source.get("sets"), won)
+            if source.get("final_pending"):
+                record["live_score"]["finalPending"] = True
+            record["live_sets"] = retained_live_sets(local, source, won, snapshot["fetched_at"])
         previous_live = local.get("liveScore")
         if previous_live:
             require(source["status"] in ("live", "final"), "Live state regression requires review")
@@ -392,6 +396,46 @@ def join_records(originals, snapshot, previous_state=None):
     return matched, links, provider_teams
 
 
+def retained_live_sets(local, source, won, observed_at):
+    """Retain only a previously certified, same-game prefix when points disappear.
+
+    A conflicting present row takes precedence: no old row is carried across a
+    correction. Retained rows keep their own observation time, not the new poll's.
+    """
+    points = source.get("sets") or []
+    current = verified_live_sets(points, won)
+    for row in current:
+        row["observedAt"] = observed_at
+    previous = local.get("liveScore") or {}
+    old = local.get("liveSets") or []
+    if (previous.get("sourceKey") != source["source_key"]
+            or local.get("officialSourceKey") != source["source_key"]
+            or local.get("source") != source["source_url"]
+            or local.get("date") != source["date"]
+            or not all(type(previous.get(k)) is int and previous[k] <= won[k] for k in ("home", "away"))):
+        return current
+    try:
+        previous_at = datetime.fromisoformat(previous.get("observedAt", "").replace("Z", "+00:00"))
+        current_at = datetime.fromisoformat(observed_at.replace("Z", "+00:00"))
+        if (previous_at.tzinfo is None or previous_at > current_at
+                or previous_at.astimezone(KST).date().isoformat() != source["date"]):
+            return current
+    except (ValueError, TypeError):
+        return current
+    certified = verified_live_sets(old, previous)
+    if len(certified) != len(old) or any(row.get("status") != "completed" for row in old):
+        return current
+    # Do not mask changed/partial points with previously observed values.
+    if any(i < len(old) and any(row[k] != old[i][k] for k in ("home", "away"))
+           for i, row in enumerate(points)):
+        return current
+    if len(current) < len(points):
+        return current
+    for row in old[len(current):]:
+        current.append({**row, "observedAt": row.get("observedAt", previous.get("observedAt"))})
+    return current
+
+
 def prepare_update(originals, snapshot, previous_state=None, master_values=None):
     matched, links, provider_teams = join_records(originals, snapshot, previous_state)
     by_id = {r["match_id"]: r for r in matched}
@@ -473,6 +517,8 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
         candidates[DATA_PATHS[gender]] = candidate
         totals[gender] = {"matched": EXPECTED_GAMES, "completed": completed,
                           "standings_verified": True, "postseason": post_summary,
+                          "final_confirmation_pending": [r["match_id"] for r in matched
+                                                         if r["gender"] == gender and r.get("live_score", {}).get("finalPending")],
                           "pending_postseason_fixtures": sum(r["gender"] == gender for r in snapshot.get("pending_matches", [])),
                           "changed_matches": sum(next((m for m in original["matches"] if m["id"] == after["id"]), None) != after
                                                  for after in candidate["matches"])}

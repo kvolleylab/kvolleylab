@@ -129,8 +129,11 @@ class SourceContractTests(unittest.TestCase):
             with self.subTest(live_marker=marker):
                 with self.assertRaises(source.SourceError):
                     self.normalize({**live, "result": marker})
-        with self.assertRaisesRegex(source.SourceError, "no official end marker"):
-            self.normalize({**live, "hspoint": 3, "result": "W"})
+        pending = self.normalize({**live, "hspoint": 3, "result": "W"})
+        self.assertEqual(pending["status"], "live")
+        self.assertTrue(pending["final_pending"])
+        with self.assertRaises(source.SourceError):
+            self.normalize({**live, "hspoint": 3, "aspoint": 3})
 
     def test_full_season_read_accepts_live_marker_but_does_not_finalize_game(self):
         reader = FakeSeasonSource()
@@ -148,12 +151,24 @@ class SourceContractTests(unittest.TestCase):
             self.assertEqual(observed[0]["status"], "live")
             self.assertEqual(observed[0]["sets_won"], {"home": 1, "away": 0})
 
+    def test_full_season_accepts_winning_counter_before_end_without_certifying_final(self):
+        reader = FakeSeasonSource()
+        row = reader.rows["MALE"][0]
+        row.update(hspoint=1, aspoint=3, hs1point=23, as1point=25, getime="", result="L")
+        snapshot = source.collect_season(fetcher=reader, now=STAMP)
+        pending = next(m for m in snapshot["matches"] if m["gender"] == "MALE")
+        self.assertTrue(snapshot["coverage"]["complete"])
+        self.assertEqual(len(snapshot["matches"]), 252)
+        self.assertEqual(pending["status"], "live")
+        self.assertTrue(pending["final_pending"])
+        self.assertEqual(pending["sets_won"], {"home": 1, "away": 3})
+        self.assertNotIn("winner", pending)
+
     def test_final_requires_per_set_points_and_correct_winner(self):
         for mutation in (lambda r: r.pop("hs2point"),
                          lambda r: r.update(hs2point=0, as2point=0),
                          lambda r: r.update(hspoint=2),
-                         lambda r: r.update(result="L"),
-                         lambda r: r.update(getime="")):
+                         lambda r: r.update(result="L")):
             row = deepcopy(FIXTURE["schedules"]["m"]["rows"][0])
             mutation(row)
             with self.assertRaises(source.SourceError):
@@ -374,3 +389,12 @@ class VerifiedLiveSetTests(unittest.TestCase):
     def test_two_two_with_partial_fifth_publishes_four_completed_sets_only(self):
         sets = [{"home": 25, "away": 20}, {"home": 20, "away": 25}] * 2 + [{"home": 8, "away": 7}]
         self.assertEqual(len(source.verified_live_sets(sets, {"home": 2, "away": 2})), 4)
+
+    def test_partial_prefix_survives_later_missing_points(self):
+        first = [{"home": 23, "away": 25}]
+        self.assertEqual(source.verified_live_sets(first, {"home": 1, "away": 2}),
+                         [{"home": 23, "away": 25, "status": "completed"}])
+        self.assertEqual(source.verified_live_sets(first, {"home": 0, "away": 0}), [])
+        self.assertEqual(source.verified_live_sets(first, {"home": 1, "away": 0}), [])
+        self.assertEqual(len(source.verified_live_sets(first + [{"home": 7, "away": 9}],
+                                                      {"home": 1, "away": 1})), 1)

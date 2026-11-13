@@ -589,3 +589,16 @@ MASTERs, international or Cup records, or claim that player integrity is repaire
 Existing match source/readback/allowlist/Pages guards remain mandatory. The concrete
 release requires approval; no further Worker deployment is needed for this scope.
 Base99d4fc29; [cause, validation, remaining conflicts and release gate](validation/vleague-publisher-isolation-20261111.md).
+
+## 2026-11-13 · Preserve verified partial sets and await the official end marker
+
+Status: USER REQUESTED REPAIR / IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED.
+On base `b6f8537b`, retain independently verified same-game completed-set points
+when later points are missing, and represent three-set wins without an official
+end marker as provisional `종료 확인 중`. Final-result and standings gates remain
+strict; 30-minute stale observations remain historical. User-approved cadence is
+approximately 20 minutes. Worker configuration and protected data are unchanged.
+345 regression tests and six actual-candidate DOM tests passed; a read-only
+252-match official/MASTER comparison required no data changes. Production approval
+and two consecutive actual live full-path observations are still required.
+[Incident, scope, evidence and release gate](validation/vleague-partial-observations-v1.md).
