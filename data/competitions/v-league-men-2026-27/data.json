@@ -587,24 +587,29 @@
       },
       "venueLabel": "수원체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:23",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-13T11:29:09+00:00",
-      "liveScore": {
-        "home": 2,
+      "updatedAt": "2026-11-13T11:48:50+00:00",
+      "score": {
+        "home": 3,
         "away": 0,
-        "sourceKey": "023:001:MALE:23",
-        "observedAt": "2026-11-13T11:29:09+00:00"
+        "sets": [
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 25,
-          "away": 23,
-          "status": "completed",
-          "observedAt": "2026-11-13T11:29:09+00:00"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-013",
@@ -2892,6 +2897,27 @@
       {
         "rank": 1,
         "team": {
+          "code": "KEP",
+          "name": "한국전력",
+          "fullName": "한국전력",
+          "en": "KEP"
+        },
+        "poolId": "LEAGUE",
+        "games": 4,
+        "wins": 3,
+        "losses": 1,
+        "points": 9,
+        "setWins": 9,
+        "setLosses": 5,
+        "pointsFor": 341,
+        "pointsAgainst": 340,
+        "setRatio": "1.800",
+        "pointRatio": "1.003",
+        "statusLabel": "1위"
+      },
+      {
+        "rank": 2,
+        "team": {
           "code": "HDC",
           "name": "현대캐피탈",
           "fullName": "현대캐피탈",
@@ -2908,10 +2934,10 @@
         "pointsAgainst": 337,
         "setRatio": "1.500",
         "pointRatio": "1.077",
-        "statusLabel": "1위"
+        "statusLabel": "2위"
       },
       {
-        "rank": 2,
+        "rank": 3,
         "team": {
           "code": "WRC",
           "name": "우리카드",
@@ -2929,27 +2955,6 @@
         "pointsAgainst": 247,
         "setRatio": "3.000",
         "pointRatio": "1.134",
-        "statusLabel": "2위"
-      },
-      {
-        "rank": 3,
-        "team": {
-          "code": "KEP",
-          "name": "한국전력",
-          "fullName": "한국전력",
-          "en": "KEP"
-        },
-        "poolId": "LEAGUE",
-        "games": 3,
-        "wins": 2,
-        "losses": 1,
-        "points": 6,
-        "setWins": 6,
-        "setLosses": 5,
-        "pointsFor": 266,
-        "pointsAgainst": 275,
-        "setRatio": "1.200",
-        "pointRatio": "0.967",
         "statusLabel": "3위"
       },
       {
@@ -3024,16 +3029,16 @@
           "en": "KBI"
         },
         "poolId": "LEAGUE",
-        "games": 3,
+        "games": 4,
         "wins": 0,
-        "losses": 3,
+        "losses": 4,
         "points": 0,
         "setWins": 3,
-        "setLosses": 9,
-        "pointsFor": 277,
-        "pointsAgainst": 316,
-        "setRatio": "0.333",
-        "pointRatio": "0.877",
+        "setLosses": 12,
+        "pointsFor": 342,
+        "pointsAgainst": 391,
+        "setRatio": "0.250",
+        "pointRatio": "0.875",
         "statusLabel": "7위"
       }
     ]
@@ -3105,14 +3110,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 11/126경기 종료 · 2026-11-13 20:29 KST 반영",
-  "updatedAt": "2026-11-13T11:29:09+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 12/126경기 종료 · 2026-11-13 20:48 KST 반영",
+  "updatedAt": "2026-11-13T11:48:50+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 11,
+    "completedMatches": 12,
     "postseason": {
       "matched": 0,
       "completed": 0,
