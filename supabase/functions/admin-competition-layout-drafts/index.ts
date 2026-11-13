@@ -72,6 +72,10 @@ Deno.serve(async(req:Request)=>{
       if(!rev(body.restore_revision))return respond(400,{ok:false,error:"invalid_restore_revision"});
       restoreRevision=Number(body.restore_revision);
     }
+    // Postgres.js infers JSON input types from bare ::jsonb casts and can
+    // double-encode an already-stringified parameter into a JSONB string.
+    // Bind as TEXT first, then let PostgreSQL parse the JSON text into an
+    // object. The table's jsonb_typeof(tokens)='object' CHECK remains enabled.
     const result=await sql.begin(async tx=>{
       const rows=await tx`select id,revision from kvl_admin_private.competition_layout_drafts
         where user_id=${userId}::uuid and scope=${scope} and scope_key=${scopeKey} for update`;
@@ -86,21 +90,21 @@ Deno.serve(async(req:Request)=>{
         }
         const revision=row.revision+1;
         await tx`update kvl_admin_private.competition_layout_drafts
-          set tokens=${JSON.stringify(tokens)}::jsonb,revision=${revision},updated_at=clock_timestamp()
+          set tokens=${JSON.stringify(tokens)}::text::jsonb,revision=${revision},updated_at=clock_timestamp()
           where id=${row.id}::uuid`;
         await tx`insert into kvl_admin_private.competition_layout_draft_revisions
           (layout_id,editor_user_id,revision,tokens,action)
-          values(${row.id}::uuid,${userId}::uuid,${revision},${JSON.stringify(tokens)}::jsonb,${action})`;
+          values(${row.id}::uuid,${userId}::uuid,${revision},${JSON.stringify(tokens)}::text::jsonb,${action})`;
         return {revision,tokens};
       }
       if(expected!==null)return {conflict:true,revision:null};
       if(restoreRevision!==null)return {missing:true};
       const inserted=await tx`insert into kvl_admin_private.competition_layout_drafts
         (user_id,scope,scope_key,tokens,revision)
-        values(${userId}::uuid,${scope},${scopeKey},${JSON.stringify(tokens)}::jsonb,1) returning id`;
+        values(${userId}::uuid,${scope},${scopeKey},${JSON.stringify(tokens)}::text::jsonb,1) returning id`;
       await tx`insert into kvl_admin_private.competition_layout_draft_revisions
         (layout_id,editor_user_id,revision,tokens,action)
-        values(${inserted[0].id}::uuid,${userId}::uuid,1,${JSON.stringify(tokens)}::jsonb,'save')`;
+        values(${inserted[0].id}::uuid,${userId}::uuid,1,${JSON.stringify(tokens)}::text::jsonb,'save')`;
       return {revision:1,tokens};
     });
     if("conflict" in result)return respond(409,{ok:false,error:"revision_conflict",current_revision:result.revision});
