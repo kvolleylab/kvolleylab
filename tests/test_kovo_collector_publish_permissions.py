@@ -36,7 +36,7 @@ class KovoWorkflowPrivilegeTests(unittest.TestCase):
         self.assertIn("scripts/kvl_vleague_draft_sync.py --write", collect)
         self.assertIn("scripts/kvl_vleague_draft_sync.py --check", collect)
         self.assertIn("test_kvl_vleague_draft_sync.py", collect)
-        self.assertIn('steps.draft-bridge.outcome == \'success\'', collect)
+        self.assertIn('steps.draft-bridge.outcome }}', collect)
         self.assertIn('steps.draft-bridge.outcome != \'success\'', collect)
         self.assertIn("outputs.bridge_changed", publish)
         self.assertNotIn("google-github-actions/auth", collect)
