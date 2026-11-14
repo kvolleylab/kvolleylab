@@ -434,12 +434,18 @@
         "university-goseong-2023-men",
         "university-goseong-2023-women",
         "university-jecheon-2023-men",
-        "university-jecheon-2023-women"
+        "university-jecheon-2023-women",
+        "university-goseong-2022-men-school",
+        "university-goseong-2022-awards",
+        "university-goseong-2022-women",
+        "university-muan-2022-official-municipality",
+        "university-muan-2022-women",
+        "university-muan-2022-date"
       ],
       "verified_at": "2026-11-14",
-      "sha256": "f29263c9bcfd6c5039150cccd36bee12b4ea98ac62b9134688dbf0560ec1a1c4",
+      "sha256": "58f78892d4f853c1270dcb208366769c5f400e18e100ebc6baf96e79553b4266",
       "evidence": "docs/validation/university-historical-results-20261114.md",
-      "review_note": "기존 2024~2025 공식 6대회 48개 순위를 보존한다. KUSF 2013~2023 남자, 2020~2023 여자 U-리그 공식 우승·준우승과 KUVF 공식 경기결과에 따른 2023 고성·제천 남녀 결승/준결승을 추가. 전체 19대회, 94개 순위. 미확인 과거 3·4위, 2013~2019 여자부, 개최일을 추정하지 않는다. 경기·선수 MASTER 변경 없음."
+      "review_note": "기존 2024~2025 공식 6대회 48개 순위 보존. KUSF 2013~2023 남자/2020~2023 여자 U-리그 공식 1·2위, KUVF 공식 2023 고성·제천 1~4위 및 2022 고성·무안 검증된 결선과 여자부 풀리그 순위 추가. 총 21대회, 109개 순위. 2022 무안 여자부 4위, U-리그 과거 3·4위 등 미확인값은 추정하지 않음. 기존 MASTER 변경 없음."
     },
     "data/national/national-team-home-v2.json": {
       "access_level": "PUBLIC",
