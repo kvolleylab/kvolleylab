@@ -8,7 +8,7 @@ let players=[],byId=new Map(),draftRows=[],draftIndex=null,draftLoadFailed=false
 const UI_KEY='kvl-player-workspace-public-ui-v1';
 function persist(){setQueryURL()}
 function profileHref(p){const query=new URLSearchParams({id:p.id,return:location.pathname+location.search});if(p.level==='professional'&&window.KVLPlayerIdCollisionV1?.isConflict(p.id))query.set('scope','pro');return 'player.html?'+query}
-function compareButton(p){return p.limited?'':`<button class="compare-button" type="button" data-compare-id="${e(p.id)}" data-compare-name="${e(p.name)}">비교 추가</button>`}
+function compareButton(p){return p.limited||window.KVLPlayerIdCollisionV1?.isConflict(p.id)?'':`<button class="compare-button" type="button" data-compare-id="${e(p.id)}" data-compare-name="${e(p.name)}">비교 추가</button>`}
 function saveButton(p,iconOnly=false){return `<button class="save-button ${iconOnly?'icon-only':''}" type="button" data-member-unavailable aria-label="${e(p.name)} 관심선수 기능 안내">${icon('bookmark')}${iconOnly?'':'관심선수'}</button>`}
 function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(x=>{x.innerHTML=icon(x.dataset.icon)})}
 function getFilters(){const data=new FormData($('filters')),filters=Object.fromEntries(data);delete filters.grade;return {...filters,q:$('playerSearch').value,grades:data.getAll('grade')}}
