@@ -425,12 +425,17 @@
         "university-danyang-2024-notice",
         "university-goseong-2024-men",
         "university-goseong-2024-women",
-        "university-goseong-2024-notice"
+        "university-goseong-2024-notice",
+        "kusf-u-league-history-volleyball",
+        "university-league-2023-notice",
+        "university-league-2022-notice",
+        "university-league-2022-playoff",
+        "university-league-2021-calendar"
       ],
-      "verified_at": "2026-11-07",
-      "sha256": "61c3d7d837d8d89d3d3f5cf18a84e5737ef03aaab39ffca055ea5dfe02e54e6d",
-      "evidence": "docs/validation/university-hub-parity-archive-v1.md",
-      "review_note": "KUVF 공식 공개 결승·준결승 및 2024 남자 U-리그 6강 최종순위 대조. 과거 6대회 48개 팀 순위 요약만 공개하며 개인정보·원문 파일은 포함하지 않는다. 기존 MASTER는 변경하지 않는다."
+      "verified_at": "2026-11-14",
+      "sha256": "4e96919f14b585b9dce02c004dedf367163f460c781d68793b2765626ca260ac",
+      "evidence": "docs/validation/university-historical-results-20261114.md",
+      "review_note": "기존 2024~2025 공식 6대회 48개 순위를 유지하고, KUSF 공식 역대 우승·준우승(2013~2023 U-리그 11개 연도, 남22·여8)을 출처와 함께 추가한다. 3·4위, 2013~2019 여자부, 개최기간 미확인은 추정하지 않는다. 신규 경기·선수/MASTER 데이터 없음."
     },
     "data/national/national-team-home-v2.json": {
       "access_level": "PUBLIC",
