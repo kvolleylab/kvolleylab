@@ -1,0 +1,28 @@
+name: V-League round matrix checks
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'competition-engine.html'
+      - 'assets/js/kvl-competition-components-v2.js'
+      - 'assets/js/kvl-domestic-home-v2.js'
+      - 'assets/js/kvl-vleague-matrix-*.js'
+      - 'assets/css/kvl-vleague-matrix-*.css'
+      - 'tests/vleague-matrix-*.test.cjs'
+      - 'tests/fixtures/vleague-matrix-*.json'
+      - '.github/workflows/vleague-matrix-ui.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install --prefix /tmp/kvl-matrix-qa --no-audit --no-fund jsdom@26.1.0
+      - run: node --test tests/vleague-matrix-core.test.cjs tests/vleague-matrix-ui.test.cjs
+        env:
+          NODE_PATH: /tmp/kvl-matrix-qa/node_modules
