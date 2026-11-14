@@ -56,9 +56,13 @@ jobs:
           python-version: '3.12'
       - name: Install isolated DOM test dependency
         run: npm install --prefix "$RUNNER_TEMP/kvl-tests" --no-package-lock --no-audit --no-fund jsdom@26.1.0
+      # The 2026-10-24 six-name-only before/after tests are historical release
+      # attestations, not valid invariants after adding 252 professional profiles.
+      # Current tests retain unique Player IDs, verify all pro profiles, and
+      # exercise the draft and profile routes. Historical tests remain in repo.
       - name: Verify matching, retained identities and all profile routes
         env:
           KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-tests/node_modules/jsdom
         run: |
           python -m unittest discover -s tests -p test_draft_applicants.py
-          node --experimental-vm-modules --test tests/player-integration.test.mjs tests/draft-applicants.test.mjs tests/draft-profile-routing.test.mjs tests/player-profile-coverage.test.mjs tests/player-reviewed-identities.test.mjs tests/draft-profile-selection.test.mjs
+          node --experimental-vm-modules --test tests/player-current-integrity.test.mjs tests/draft-applicants.test.mjs tests/draft-profile-routing.test.mjs tests/player-profile-coverage.test.mjs tests/draft-profile-selection.test.mjs
