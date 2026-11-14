@@ -105,7 +105,10 @@ jobs:
         id: draft-bridge
         if: steps.period.outputs.active == 'true'
         continue-on-error: true
-        run: python -B scripts/kvl_vleague_draft_sync.py --write
+        run: |
+          python -B scripts/kvl_vleague_draft_sync.py --write
+          python -B scripts/kvl_vleague_draft_sync.py --check
+          python -B -m unittest discover -s tests -p test_kvl_vleague_draft_sync.py -v
       - name: Store diagnostic summary
         if: always()
         uses: actions/upload-artifact@v4
