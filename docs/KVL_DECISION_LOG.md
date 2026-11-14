@@ -1,5 +1,14 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-14 · 승패 조견표 KVL 브랜드 디자인 v4
+
+Status: DESIGN PROTOTYPE / VISUALLY VERIFIED / NOT DEPLOYED.
+사용자는 v3의 고정형 표를 KVL 고유 디자인으로 바꾼 시안을 요청했다. v3를 보존하고 `prototypes/vleague-matrix-v4`에 별도 표현층을 추가한다.
+공통 네이비 내비게이션, PRO 차콜/여자부 로즈, 골드 강조를 사용한다. 6라운드 배열·팀 순서·숫자/공란·누적 계산·60초 재조회는 v3 엔진을 그대로 읽어 유지한다.
+남녀 360/390/768/1180px 8조건에서 가로 넘침 0px와 실제 성별 전환을 확인했다. main 데이터 참조는 `be7b530d0102a231eda2fb877cea5e3f19dcd27c`이다.
+운영/MASTER/자동화 변경 및 배포는 없으며 새 실경기 전체 경로의 추가 검증으로 간주하지 않는다.
+[디자인·재현·검수·복구](../prototypes/vleague-matrix-v4/README.md). 기존 Draft PR #328에서 사용자 검수를 기다린다.
+
 ## 2026-11-14 · V-리그 고정형 6라운드 승패 조견표 v3 프로토타입
 
 Status: PROTOTYPE / IMPLEMENTED / VERIFIED WITH LIMITS / READY FOR REVIEW / NOT DEPLOYED.

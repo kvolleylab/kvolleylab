@@ -1,0 +1,95 @@
+/* KVL visual variant. The v3 matrix engine and data contract remain unchanged. */
+body.matrix-brand {
+  --matrix-dark: #14171b;
+  --matrix-accent: #1c1f24;
+  --matrix-soft: #f2f3f4;
+  --matrix-border: #d3d8de;
+  --matrix-gold: #d6b25e;
+  --matrix-gold-soft: #faf0d8;
+}
+body.matrix-brand[data-gender="women"] {
+  --matrix-dark: #7f2f54;
+  --matrix-accent: #8f2f59;
+  --matrix-soft: #fff1f6;
+  --matrix-border: #ead4de;
+}
+html body.matrix-brand, html body.matrix-brand.kvl-sidebar-enabled {background:#f4f7fb!important}
+.matrix-brand .matrix-main {padding-top:24px;padding-bottom:32px}
+.matrix-brand .matrix-page-head {
+  position:relative;overflow:hidden;align-items:center;min-height:132px;
+  padding:24px 26px;border:0;border-bottom:3px solid var(--matrix-gold);
+  border-radius:12px 12px 0 0;background:var(--matrix-dark);color:#fff;
+}
+.matrix-brand .matrix-page-head::after {
+  content:"KVL";position:absolute;right:215px;bottom:-24px;pointer-events:none;
+  font-size:115px;font-weight:900;letter-spacing:-.09em;line-height:1;
+  color:#fff;opacity:.035;
+}
+.matrix-brand .matrix-eyebrow {color:#e6c46c;font-size:10px;letter-spacing:.13em;margin-bottom:10px}
+.matrix-brand .matrix-page-head h1 {color:#fff;font-size:31px;font-weight:800;letter-spacing:-.045em}
+.matrix-brand .matrix-page-head h1 em {font-style:normal;color:#e6c46c}
+.matrix-brand .matrix-title-row {gap:10px}
+.matrix-brand .matrix-prototype {background:transparent;border-color:#ffffff38;color:#d6dce3;font-size:10px;font-weight:500}
+.matrix-brand .matrix-switch {position:relative;z-index:1;gap:3px;border:1px solid #ffffff30;background:#ffffff0a;border-radius:8px;padding:4px}
+.matrix-brand .matrix-switch button {min-height:37px;padding:0 17px;font-size:13px;border-radius:4px;color:#e1e5eb;font-weight:600}
+.matrix-brand .matrix-switch button[aria-pressed=true],.matrix-brand[data-gender=women] .matrix-switch button[aria-pressed=true] {background:#e6c46c;color:#20232a;font-weight:800}
+.matrix-brand .matrix-explainer {margin:0 0 23px;padding:12px 16px;border:1px solid #dfe4eb;border-top:0;background:#fff;border-radius:0 0 8px 8px;font-size:11px;color:#657184}
+.matrix-brand .matrix-explainer strong {color:#263748;font-weight:700}
+.matrix-brand .matrix-explainer a {color:var(--matrix-accent);font-weight:650}
+.matrix-brand .matrix-grid {gap:22px 20px}
+.matrix-brand .matrix-round {background:transparent;border:0;box-shadow:none;overflow:visible}
+.matrix-brand .matrix-round-title {justify-content:space-between;min-height:29px;margin:0 0 9px;padding-left:12px;border-left:3px solid var(--matrix-gold)}
+.matrix-brand .matrix-round-title h2 {font-size:18px;line-height:1;letter-spacing:-.03em;text-decoration:none;color:var(--matrix-dark);font-weight:850}
+.matrix-brand .matrix-round-state {position:static;font-size:10px;background:#e9edf2;border:1px solid #dfe4ea;color:#647386;border-radius:4px;line-height:1;padding:5px 7px}
+.matrix-brand .matrix-round:first-child .matrix-round-state {color:var(--matrix-accent);border-color:var(--matrix-border);background:var(--matrix-soft)}
+.matrix-brand .matrix-table-wrap {border:1px solid var(--matrix-border);border-top:2px solid var(--matrix-dark);border-radius:7px;overflow-x:auto;background:#fff}
+.matrix-brand .matrix-table {border:0;border-style:hidden;background:#fff;min-width:330px}
+.matrix-brand .matrix-table th,.matrix-brand .matrix-table td {height:31px;border-color:#d8dde3;color:#17212b;font-size:14px}
+.matrix-brand .matrix-table thead th {height:35px;background:var(--matrix-dark);color:#f8fafc;border-color:#ffffff20;font-size:12px;font-weight:600}
+.matrix-brand .matrix-table thead th:nth-child(2) {color:#f1d99f}
+.matrix-brand .matrix-table tbody th.matrix-team {background:var(--matrix-soft);color:var(--matrix-accent);font-size:13px;font-weight:750;letter-spacing:-.04em;border-right:2px solid var(--matrix-border)}
+.matrix-brand .matrix-table td.matrix-total {background:var(--matrix-gold-soft);color:#6a4d13;font-size:17px;font-weight:800}
+.matrix-brand .matrix-table td.is-first {background:#e6c46c;color:#20232a;font-weight:800}
+.matrix-brand .matrix-table td.matrix-self {background:linear-gradient(to top right,#f5f7f9 calc(50% - .5px),#bdc5ce 50%,#f5f7f9 calc(50% + .5px))}
+.matrix-brand .matrix-foot {margin-top:24px;border-top:1px solid #d5dde5;color:#657184;font-size:11px}
+.matrix-brand #matrix-status {display:inline-flex;align-items:center;gap:6px}
+.matrix-brand #matrix-status::before {content:"";height:5px;width:5px;border-radius:50%;background:#9da8b5;flex:none}
+.matrix-brand #matrix-status[data-state=live]::before {background:#2e7b66}
+.matrix-brand #matrix-status[data-state=error]::before,.matrix-brand #matrix-status[data-state=warning]::before {background:#ae711d}
+.matrix-brand .matrix-note {font-size:11px;line-height:1.7;color:#758291}
+.matrix-brand .matrix-footer {display:flex;justify-content:space-between;align-items:center;margin-top:24px;color:#8190a0;font-size:10px;letter-spacing:.05em}
+.matrix-brand .matrix-footer strong {color:#162d43;letter-spacing:.015em;font-size:11px;font-weight:800}
+@media(max-width:900px) {
+  .matrix-brand .matrix-main {padding-top:18px}
+  .matrix-brand .matrix-grid {gap:22px}
+  .matrix-brand .matrix-table th,.matrix-brand .matrix-table td {height:35px}
+  .matrix-brand .matrix-table tbody th.matrix-team {font-size:14px}
+}
+@media(max-width:480px) {
+  .matrix-brand .matrix-main {padding:14px 10px 24px}
+  .matrix-brand .matrix-page-head {min-height:143px;padding:18px 16px 16px;display:block;border-radius:8px 8px 0 0}
+  .matrix-brand .matrix-page-head::after {right:18px;bottom:6px;font-size:84px}
+  .matrix-brand .matrix-eyebrow {font-size:9px;letter-spacing:.06em;margin:0 0 8px}
+  .matrix-brand .matrix-page-head h1 {font-size:26px}
+  .matrix-brand .matrix-prototype {font-size:9px;padding:3px 5px}
+  .matrix-brand .matrix-switch {display:inline-flex;margin-top:13px;padding:3px}
+  .matrix-brand .matrix-switch button {min-height:31px;padding:0 17px;font-size:12px}
+  .matrix-brand .matrix-explainer {padding:10px 8px;margin-bottom:19px;font-size:10px;letter-spacing:-.035em}
+  .matrix-brand .matrix-round-title {margin-bottom:8px;min-height:26px;padding-left:10px}
+  .matrix-brand .matrix-round-title h2 {font-size:17px}
+  .matrix-brand .matrix-round-state {padding:4px 6px;font-size:10px}
+  .matrix-brand .matrix-table th,.matrix-brand .matrix-table td {height:31px;font-size:14px}
+  .matrix-brand .matrix-table thead th {height:36px;font-size:12px;font-weight:600;letter-spacing:-.08em}
+  .matrix-brand .matrix-table tbody th.matrix-team {font-size:12px;letter-spacing:-.075em}
+  .matrix-brand .matrix-table td.matrix-total {font-size:16px}
+  .matrix-brand .matrix-table-wrap {border-radius:5px}
+  .matrix-brand .matrix-grid {gap:21px}
+  .matrix-brand .matrix-footer {gap:9px;font-size:9px;letter-spacing:0}
+}
+@media print {
+  html body.matrix-brand {background:#fff!important}
+  .matrix-brand .matrix-page-head {min-height:auto;padding:12px 0;background:#fff;color:#132943;border-radius:0}
+  .matrix-brand .matrix-page-head h1,.matrix-brand .matrix-page-head h1 em {color:#132943}
+  .matrix-brand .matrix-page-head::after {display:none}
+  .matrix-brand .matrix-explainer {border:0;padding:8px 0}
+}
