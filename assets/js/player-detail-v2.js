@@ -34,14 +34,39 @@ Promise.all([
  const known=new Set(masterPlayers.map(x=>x.system?.player_id).filter(Boolean));
  const fallbackPlayers=(nationalLinks?.links||[]).map(nationalFallbackCanonical).filter(x=>x.system.player_id&&!known.has(x.system.player_id));
  const players=[...masterPlayers,...fallbackPlayers];
- const q=new URLSearchParams(location.search),id=q.get('id'),name=q.get('name');
- const p=players.find(x=>x.system?.player_id===id)||players.find(x=>name&&((x.identity?.name_ko||'').toLowerCase()===name.toLowerCase()||(x.identity?.name_en||'').toLowerCase()===name.toLowerCase()));
+ const q=new URLSearchParams(location.search),id=q.get('id'),name=q.get('name'),scope=q.get('scope')||'';
+ const collision=window.KVLPlayerIdCollisionV1?.isConflict(id)===true;
+ const pro=collision?masterPlayers.find(x=>x.system?.player_id===id&&x.system?.competition_level==='professional'):null;
+ const national=collision?(nationalLinks?.links||[]).find(x=>x.player_id===id):null;
+ // A bare permanent URL cannot silently choose one of two different people.
+ // Keep both historical sources untouched and force an explicit context.
+ if(collision&&pro&&national&&!['pro','national'].includes(scope)){
+  const pName=pro.identity?.name_ko||'이름 확인 중',nName=national.name_ko||'이름 확인 중';
+  document.title='선수 ID 신원 확인 | K-Volley Lab';
+  window.KVL_PROFILE_CONTEXT={id,level:'ambiguous',scope:'unresolved'};
+  area.innerHTML=`<section class="pd-card pd-identity-choice" aria-labelledby="pd-identity-choice-title">
+   <p class="pd-identity-choice-eyebrow">K-Volley Lab · 선수 신원 확인</p>
+   <h1 id="pd-identity-choice-title">서로 다른 선수의 기록을 구분해야 합니다</h1>
+   <p>기존 선수 식별번호가 과거 대표팀 자료와 프로 V-리그 자료에 각각 사용되었습니다. 잘못된 선수를 보여주지 않도록 조회 대상을 선택해 주세요.</p>
+   <div class="pd-identity-choice-options">
+    <a href="player.html?id=${encodeURIComponent(id)}&amp;scope=pro"><strong>${esc(pName)}</strong><span>2026-27 프로 V-리그 선수 정보 보기</span></a>
+    <a href="player.html?id=${encodeURIComponent(id)}&amp;scope=national"><strong>${esc(nName)}</strong><span>과거 국가대표 연결 정보 보기</span></a>
+   </div>
+   <small>서로 다른 인물이며 자동으로 합치지 않습니다. 기존 영구 ID 정리는 별도 검수 중입니다.</small></section>`;
+  return;
+ }
+ // Only a scoped link may resolve a colliding ID; unknown contexts fail closed.
+ const p=collision
+  ?(scope==='pro'?pro:scope==='national'&&national?nationalFallbackCanonical(national):null)
+  :players.find(x=>x.system?.player_id===id)||players.find(x=>name&&((x.identity?.name_ko||'').toLowerCase()===name.toLowerCase()||(x.identity?.name_en||'').toLowerCase()===name.toLowerCase()));
  const pid=p?.system?.player_id;
- // Expose only the resolved public identity scope. Legacy national-link IDs
- // overlap the 2026-27 pro snapshot; never use a national alias to rename
- // a different professional player.
- window.KVL_PROFILE_CONTEXT={id:pid||'',level:p?.system?.competition_level||''};
- render(p,timelines.find(t=>t.player_id===pid)?.events||[],observations.filter(o=>o.player_id===pid&&o.visibility==='public'&&o.status!=='deleted'),competitions,participantSets);
+ // A representative-team ID cannot overwrite a different professional name,
+ // history or private-note identity.
+ window.KVL_PROFILE_CONTEXT={id:pid||'',level:p?.system?.competition_level||'',
+   name:p?.identity?.name_ko||'',dob:p?.identity?.birth_date||'',scope:collision?scope:''};
+ render(p,collision?[]:(timelines.find(t=>t.player_id===pid)?.events||[]),
+   collision?[]:observations.filter(o=>o.player_id===pid&&o.visibility==='public'&&o.status!=='deleted'),
+   competitions,participantSets);
 }).catch(err=>{console.error(err);area.innerHTML='<div class="pd-empty">선수 데이터를 불러오지 못했습니다.</div>'});
 function renderTimeline(events){if(!events.length)return'';return[...events].sort((a,b)=>String(b.start_date||b.year||'').localeCompare(String(a.start_date||a.year||''))).map(e=>{const period=e.end_date?`${val(e.start_date,e.year)} ~ ${e.end_date}`:`${val(e.start_date,e.year)} ~ 현재`;return`<div class="pd-timeline-item"><div class="pd-timeline-year">${esc(period)}</div><div><strong>${esc(e.team||e.organization||e.title||'-')}</strong><div>${esc([e.position,e.note].filter(Boolean).join(' · '))}</div></div></div>`}).join('')}
 function renderObservations(notes){if(!notes.length)return'';return[...notes].sort((a,b)=>String(b.observed_at||'').localeCompare(String(a.observed_at||''))).map(n=>`<div class="pd-observation"><div class="pd-observation-head"><strong>${esc(val(n.observed_at,'날짜 미상'))}</strong>${n.competition_id?`<span>${esc(n.competition_id)}</span>`:''}</div>${n.summary?`<p>${esc(n.summary)}</p>`:''}</div>`).join('')}
