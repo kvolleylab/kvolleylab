@@ -80,3 +80,13 @@ node --test tests/vleague-draft-bridge-ui.test.cjs
 - 신규 시즌은 날짜·성별·구단 ID·공식 API 스키마·워크플로 실행 기간·원본 MASTER 연결을 검토한 뒤 별도의 브리지/구단 스냅샷을 생성한다. 2026-27 파일을 2027-28로 자동 덮어쓰지 않는다.
 - 공시가 없는 실행은 별도 알림을 보내지 않는다. 장애·검수 대기만 관리자 검증 대상으로 남기며, 별도 GPT 공시 알림 자동화의 새 공시만 알림 원칙과 충돌시키지 않는다.
 - 공식 자료의 사실·출처 링크만 게시하고 원문 PDF·사진을 대량 재배포하지 않는다. 상업적 이용 시 KOVO 원문 이용조건을 별도 확인한다.
+
+## 재시도 결과 및 신규 P1 신원 보호 (2026-11-15 KST)
+
+- [Player and Draft Integration 최신 유효 CI run 43611950516](https://github.com/kvolleylab/kvolleylab/actions/runs/43611950516): 과거 1,842명 하드코딩 테스트 대신 최신 전체 선수 검색 및 2026-27 프로 MASTER 영구 ID·프로필 경로를 검증하도록 정비한 뒤 두 잡 성공. 과거 2026-10-24 여섯 이름 정정 스냅샷은 변경 없이 보존하며 매 PR마다 재사용하지 않는다.
+- [KVL Quality Audit run 43608431473](https://github.com/kvolleylab/kvolleylab/actions/runs/43608431473)의 실제 보고서 확인: READ_ONLY 검사 113 PASS/7 FAIL/8 NOT VERIFIED/3 NOT RUN. 특히 프로 로스터 대비 국가대표 링크의 `PLAYER_DOB_CONFLICT` P1 25건, 기존 workflow YAML 파싱 실패 2건, 기존 레거시 JSON parse 실패 1건 및 일부 구형 회귀검사가 포함된다. 전용 브리지 CI의 통과가 전체 품질감사 완료를 의미하지 않는다.
+- 교차 원장 직접 대조: `data/national/player_id_links_v1.json`과 `data/master/player_master_pro_vleague_2026_27_v1.json` 사이에 **서로 다른 선수에게 동일 KVL-P 번호가 사용된 충돌 26건** 확인. Quality Audit와 건수 차이는 기준과 비교 대상 차이이며 해소 완료가 아니다. 추적: [Issue #334](https://github.com/kvolleylab/kvolleylab/issues/334).
+- 구단/프로 선수의 검증된 공식 이름·DOB를 기존 대표팀 링크가 무조건 덮어쓰지 않도록 `player-search-v2.js`, `player-canonical-identity-v1.js`, `player-detail-v2.js`에 **표시단 보호** 적용. 기존 검증된 대학 선수 국가대표 이름 정정은 유지하고, 영구 ID 원장 수정·삭제·재발급은 하지 않는다.
+- 추가 `tests/player-current-integrity.test.mjs`에 프로 MASTER 252명 이름/DOB 직접 비교, `tests/player-national-pro-identity-collision.test.mjs`에 프로 3명/대학 1명 상세 UI 보호 검사를 추가하여 CI에 연결.
+- 신규 신원 보호 CI 최종 결과, 실제 PC·모바일 브라우저 화면, Pages build 및 Google Sheets MASTER writer 성공은 각 단계별로 별도 확인해야 한다. 현재 PR Draft/운영 미배포 유지.
+
