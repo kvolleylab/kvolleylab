@@ -42,6 +42,8 @@ and first-set points, so that route was not selected as the live supplement.
   match fields, source URLs, end marker, time, selected-prefix count and fixed
   decision codes. No raw MASTER/HTTP bodies, credentials, players, lineups or
   feeds. Evidence survives later gate failures; report summaries show counts.
+- Archive receipts accept the new optional diagnostic field but strip it from
+  public archived receipts, preserving the existing sanitization boundary.
 - Postseason broadcast contracts are unverified: existing postseason collection
   is unchanged. No Worker, cron, credentials or approval-variable change.
 
@@ -52,6 +54,10 @@ and first-set points, so that route was not selected as the live supplement.
 mismatch, conflict/invalid points, ahead/behind counters, source outages,
 provisional three-set wins, lookup bounds, attribution, retention timestamps,
 candidate export and failure-time evidence. No synthetic case is live proof.
+The first PR CI caught the new receipt field at the archive boundary; the
+allowlist and its existing sanitization regression were updated and all45
+lifecycle tests re-passed. Separate player identity/registration checks remain
+outside this repair and are not reported as passed.
 
 Read-only actual collection at16:46:25 KST covered252 matches. Independent
 경기일정_MASTER A1:S253 FORMULA read: candidate READY, MASTER changed cells0,
