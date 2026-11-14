@@ -103,6 +103,8 @@ function applyCompetition(input,bridge){
  if(included&&latest){
   result.rosterNote='KOVO 공식 등록 공시 대조 · 최근 확인된 공시 '+latest+
      ' · 실제 경기별 엔트리 및 선수등록 효력일과는 다를 수 있습니다.';
+  result.rosterPrintNote='2026-27 시즌 공식 등록 공시 대조 · '+latest+
+     ' 게시 공시까지 반영 · 경기별 엔트리와 구분';
  }
  return result;
 }
