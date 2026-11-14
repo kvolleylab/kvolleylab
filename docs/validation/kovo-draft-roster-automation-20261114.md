@@ -90,3 +90,21 @@ node --test tests/vleague-draft-bridge-ui.test.cjs
 - 추가 `tests/player-current-integrity.test.mjs`에 프로 MASTER 252명 이름/DOB 직접 비교, `tests/player-national-pro-identity-collision.test.mjs`에 프로 3명/대학 1명 상세 UI 보호 검사를 추가하여 CI에 연결.
 - 신규 신원 보호 CI 최종 결과, 실제 PC·모바일 브라우저 화면, Pages build 및 Google Sheets MASTER writer 성공은 각 단계별로 별도 확인해야 한다. 현재 PR Draft/운영 미배포 유지.
 
+
+
+## 2026-11-15 · 프로·대표팀 동일 Player_ID 26건의 안전한 조회 구분 및 예약 게시 권한 분리
+
+**추가 구현 (PR #332 미병합):**
+
+1. `assets/js/player-id-collision-quarantine-v1.js`: 기존 국대 링크/프로 MASTER의 이름 또는 생년월일이 다른 영구 ID 26건(`KVL-P-001620` ~ `KVL-P-001645`)을 검수 대상으로 격리. 소스 파일은 불변. `tests/player-id-collision-quarantine.test.mjs`가 정확한 실제 충돌 집합을 전수 비교한다. 이후 원본 추가 충돌·해소가 생기면 검사를 실패시켜 재검토한다.
+2. `player.html?id=...`로 충돌 ID만 단독 열면 두 선수의 원본 실명과 조회 대상 선택 화면을 보여준다. 검증된 프로 구단·선수 검색 링크는 `&scope=pro`, 같은 ID의 기존 대표팀 조회는 `&scope=national`로 안전하게 분리한다. 기존 ID 자체는 삭제·재할당하지 않는다. 타 선수 이력, 국가대표 경기 목록, 공개 메모 또는 개인 메모를 섞지 않는다.
+3. 기존 비교함/선수 비교/관리자 프로필 메모는 이 26개 번호가 정식 분리될 때까지 신규 표시·연결을 중지한다. 노트 원본/DB에 쓰거나 기존 내용을 지우지 않는다. 비충돌 선수 검색·비교·드래프트 기존 경로는 유지한다. 임시 경로 분리는 **영구 Player_ID registry 정합성 해결이나 Supabase 서버 메모 키 마이그레이션이 아님**.
+4. 기존 `.github/workflows/kovo-official-notices-collector.yml`에서 전체 작업에 `pages:write`를 주던 방식을 제거. `collect` job은 `contents:write`로 공식 공시·검증 브리지 JSON만 커밋, 별도 `publish_bridge` job만 `contents:read,pages:write` 사용. `KVL_DRAFT_ROSTER_PUBLISH_APPROVED=true`(별도 운영 승인 변수), 정상 수집, main 한정, 변경이 실제 확인된 경우 또는 명시적 수동 재검증 요청일 때만 Pages 빌드 호출한다. 저장할 자료가 없거나 승인 없이 예약 게시하지 않는다.
+5. 정기 수집기 자체에서 Python 원본 대조 8개 검사와 `--write`/ `--check` 재생성 검증을 수행한다. 공시 후보 수집과 홈페이지 게시를 분리하고, 검증 오류 시 기존 사이트 파일을 유지하며 Actions 경고에 남긴다.
+6. Sheets read-only 현황: 남자 `현재등록_공시기반` 2026-10-16, 여자 2026-10-15 표기가 유지된다. 각 구단 시트와 `선수ID_신원검수`, `KVL_자동반영이력`의 schema 존재를 직접 확인했다. 최신 draft 변경이 Google Sheets MASTER에 자동 적용된 상태라고 주장하지 않는다. 새로운 등록 writer는 공식효력일/원본 ID/실행계정 공유 권한·보호 셀/저널/재조회 검증이 필요하다.
+
+**잔여 운영 경계:**
+
+- 실제 예약 실행·신규 공시 발생 후 자동 GitHub commit / GitHub Pages HTTPS 실증은 **아직 수행·검증하지 않음**. PR의 CI 성공은 운영 완료와 다르다.
+- `main` 병합·사이트 활성화는 PR 검사·사용자 운영 승인·게시 변수 설정 후 별도 검증.
+- 글로벌 Quality Audit은 확인 시점 115 PASS/5 FAIL/8 NOT VERIFIED/3 NOT RUN. 운영 원장 ID 충돌, 다른 레거시 테스트·보안 검수 이슈는 [Issue #334](https://github.com/kvolleylab/kvolleylab/issues/334) 및 독립 Quality Audit 과제로 남긴다. `Quality Audit` workflow 결과가 success여도 보고서 안의 FAIL이 0임을 뜻하지 않는다.
