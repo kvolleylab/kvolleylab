@@ -40,18 +40,26 @@ vm.runInContext(source.slice(0, source.indexOf('function render()')) + 'globalTh
     assert.ok(context.adapter.row(card).includes('여자부 보기'), 'Every current card must provide an independent women link');
   }
   const archive = JSON.parse(read('data/archive/university-results-v1.json'));
-  assert.equal(archive.competitions.length, 21);
-  assert.equal(new Set(archive.competitions.map(c => c.id)).size, 21);
+  assert.equal(archive.competitions.length, 28);
+  assert.equal(new Set(archive.competitions.map(c => c.id)).size, 28);
   for (const item of archive.competitions) {
     const card = context.adapter.fromArchive(item, archive.sources);
     const markup = context.adapter.row(card);
     assert.equal(card.resultsOnly, true);
     assert.ok(!markup.includes('--photo:') && !markup.includes('tournament-link'), 'Unpublished archive must not imply an image or standalone page');
     assert.notEqual(context.adapter.row(card, 'archive'), markup, 'Archive accordion and year selector need distinct IDs');
-    assert.equal(item.men.rankings.length + (item.women?.rankings.length || 0), item.year === 2022 && item.type === 'second' ? 7 : item.year >= 2024 || item.type !== 'uleague' ? 8 : item.women ? 4 : 2);
+    const expectedRanks = (item.year >= 2024 || item.type !== 'uleague') ? ({
+      '2022-second':7,'2018-second':7,'2019-first':6,'2019-second':6,'2020-second':3
+    }[item.year+'-'+item.type] || 8) : item.women ? 4 : 2;
+    assert.equal((item.men?.rankings.length || 0) + (item.women?.rankings.length || 0), expectedRanks);
     if (!item.women) assert.ok(markup.includes('single-division') && !markup.includes('rank-card women'));
+    if (!item.men) {
+      assert.equal(item.status,'partially-cancelled');
+      assert.ok(markup.includes('single-division') && !markup.includes('rank-card men'));
+      assert.ok(markup.includes('여자부 완료 · 남자부 중단') && markup.includes('08.22 중단'));
+    }
     if (item.year <= 2023 && item.type === 'uleague') assert.ok(markup.includes('공식 확인된 1·2위만 표시'));
-    for (const id of [...item.sourceIds, ...item.men.sourceIds, ...(item.women?.sourceIds || [])]) {
+    for (const id of [...(item.sourceIds||[]), ...(item.men?.sourceIds||[]), ...(item.women?.sourceIds || [])]) {
       assert.ok(archive.sources[id]?.url.startsWith('https://'));
     }
   }
@@ -92,6 +100,31 @@ vm.runInContext(source.slice(0, source.indexOf('function render()')) + 'globalTh
   assert.deepEqual(muan22.men.rankings.map(r=>r.team),['인하대','성균관대','한양대','경기대']);
   assert.deepEqual(muan22.women.rankings.map(r=>r.team),['목포과학대','우석대','단국대']);
   assert.deepEqual(muan22.women.rankings.map(r=>r.rank),[1,2,3],'Unverified 4th cannot be fabricated');
+  const haenam18=record(2018,'first'),cheongyang18=record(2018,'second');
+  assert.match(haenam18.title,/해남/);
+  assert.match(cheongyang18.title,/청양/);
+  assert.deepEqual(haenam18.men.rankings.map(r=>r.team),['성균관대','경기대','홍익대','충남대']);
+  assert.deepEqual(haenam18.men.rankings.map(r=>r.rank),[1,2,3,3]);
+  assert.deepEqual(haenam18.women.rankings.map(r=>r.team),['우석대','서울여대','목포과학대','호남대']);
+  assert.deepEqual(haenam18.women.rankings.map(r=>r.rank),[1,2,3,4]);
+  assert.deepEqual(cheongyang18.men.rankings.map(r=>r.team),['한양대','경희대','충남대','경기대']);
+  assert.deepEqual(cheongyang18.women.rankings.map(r=>r.team),['단국대','목포과학대','우석대']);
+  assert.deepEqual(cheongyang18.women.rankings.map(r=>r.rank),[1,2,3]);
+  const inje19=record(2019,'first'),haenam19=record(2019,'second');
+  assert.deepEqual(inje19.men.rankings.map(r=>r.team),['인하대','홍익대']);
+  assert.deepEqual(inje19.women.rankings.map(r=>r.team),['우석대','단국대','목포과학대','서울여대']);
+  assert.deepEqual(haenam19.men.rankings.map(r=>r.team),['경기대','경희대']);
+  assert.deepEqual(haenam19.women.rankings.map(r=>r.team),['목포과학대','우석대','서울여대','호남대']);
+  assert.deepEqual(haenam19.women.rankings.map(r=>r.rank),[1,2,3,3]);
+  const gos20=record(2020,'first'),muan20=record(2020,'second'),gos21=record(2021,'first');
+  assert.deepEqual(gos20.men.rankings.map(r=>r.team),['성균관대','홍익대','인하대','중부대']);
+  assert.deepEqual(gos20.women.rankings.map(r=>r.rank),[1,2,3,4]);
+  assert.equal(muan20.men,undefined,"Suspended men's event has no champion");
+  assert.deepEqual(muan20.women.rankings.map(r=>r.team),['목포과학대','단국대','우석대']);
+  assert.deepEqual(muan20.women.rankings.map(r=>r.rank),[1,2,3]);
+  assert.deepEqual(gos21.men.rankings.map(r=>r.team),['홍익대','인하대','경기대','성균관대']);
+  assert.deepEqual(gos21.women.rankings.map(r=>r.team),['우석대','단국대','목포과학대','호남대']);
+  assert.equal(record(2021,'second'),undefined,'Cancelled Jecheon 2021 must not have awards');
   assert.equal(record(2022, 'uleague').men.rankings[0].team, '인하대');
   assert.equal(record(2022, 'uleague').women.rankings[0].team, '경일대');
   assert.equal(record(2013, 'uleague').women, undefined);
@@ -111,5 +144,5 @@ vm.runInContext(source.slice(0, source.indexOf('function render()')) + 'globalTh
   const html = read('university-competitions.html');
   assert.ok(html.includes('assets/js/unified-nav.js'));
   assert.ok(!html.includes('assets/js/university-competitions-hub-v2.js'));
-  console.log(`PASS: ${cards.length} official HERO routes; ${rankCount} unchanged 2026 ranks; 21 sourced archive events / 109 historical ranks; 2013–2026 dynamic year options; optional women panels; no fake links/images.`);
+  console.log(`PASS: ${cards.length} official HERO routes; ${rankCount} unchanged 2026 ranks; 28 sourced archive events / 155 historical ranks; 2013–2026 dynamic year options; optional women panels; no fake links/images.`);
 })().catch(error => { console.error(error); process.exitCode = 1; });
