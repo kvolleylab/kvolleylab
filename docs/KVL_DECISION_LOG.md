@@ -1,5 +1,16 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-14 · KOVO 공시와 2026-27 신인 선수명단·프로필의 GPT 독립 연동 검수
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / OFFLINE CI VERIFIED / **NOT DEPLOYED**.
+사용자는 드래프트 결과·KOVO 공식 등록 공시·V-리그 참가팀 선수명단·선수 프로필을 하나로 묶는 자동화를 요청하고, GPT 예약 작업 외에서 독립 실행되도록 요구했다.
+
+기존 `kovo-official-notices-collector.yml`(08:13 KST)로부터 공식 공시 데이터를 받고 `scripts/kvl_vleague_draft_sync.py`로 공식 등록·지명·ID 검증 결과를 파생한다. 공개 JSON `data/kovo/official-notices/2026-27/draft_registration_bridge.json`을 별도 생성한 뒤 V-리그 남녀 명단·선수 검색·프로필에서 같은 자료를 읽는 브라우저 오버레이를 구성한다. 원본 시즌 명단·선수 MASTER·대표팀/대학/국제 기록은 수정하지 않는다. `KVL_DRAFT_ROSTER_PUBLISH_APPROVED` 변수의 명시적 승인·trusted main·공개 JSON 바이트 대조가 없는 Pages 빌드는 차단한다.
+
+공식 지명34, 공식 신인 등록32, 안전한 프로필 파생 레코드28, 드래프트 보류6, 기타 등록/명칭·이적 검수 대상27. 기존 2026-10-27 스냅샷과 신규 추가 인원 수는 별개다. 동명이인/확인되지 않은 등록·이적/소속은 자동 승격하지 않고 구단·신원 검수 대기로 보존한다.
+
+독립 브리지 CI https://github.com/kvolleylab/kvolleylab/actions/runs/43607685347 (2026-11-14; Python8 + JS7 성공). 드래프트 프로필용 별도 PR #332는 예전 전체 Integration CI의 구형 테스트 계약 충돌을 보유했으므로 모든 CI PASS 또는 홈페이지 배포 완료로 부르지 않는다. 연속 운영/Google MASTER 자동쓰기/비신인 변동 전반 자동화는 아직 미완료이며 Issue #331로 추적한다. 상세 검증/재현/복구: [2026-11-14 자동화 기록](validation/kovo-draft-roster-automation-20261114.md). 운영 main 병합/게시에는 사용자 승인 필요.
+
 ## 2026-11-14 · 신인 드래프트 지명 구단의 선수 프로필 노출
 
 Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / CI REVIEW PENDING / **NOT DEPLOYED**.
