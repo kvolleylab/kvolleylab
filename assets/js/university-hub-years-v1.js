@@ -84,7 +84,7 @@ function renderArchives(){
     const data=archives.filter(c=>c.year===y);
     const note=data.some(c=>c.type==='first'||c.type==='second')?'연맹전 남자부는 A그룹 최종순위입니다.':'공식 확인된 순위만 표시하며 미확인 순위는 비워 둡니다.';
     const body=`<p class="archive-note">${note}</p><div class="tournaments">${data.map(c=>row(c,'archive')).join('')}</div>`;
-    return `<div class="archive-row"><button class="archive-toggle" type="button" data-year="${y}" aria-controls="archive-${y}" aria-expanded="${openYears.has(y)}"><span>${y}년 대회 기록${data.length?' · '+data.length+'개 대회':''}</span><span aria-hidden="true">${openYears.has(y)?'−':'＋'}</span></button><div id="archive-${y}" class="archive-body${openYears.has(y)?'':' hide'}">${body}</div></div>`;
+    return `<div class="archive-row"><button class="archive-toggle" type="button" data-year="${y}" aria-controls="archive-${y}" aria-expanded="${openYears.has(Number(y))}"><span>${y}년 대회 기록${data.length?' · '+data.length+'개 대회':''}</span><span aria-hidden="true">${openYears.has(Number(y))?'−':'＋'}</span></button><div id="archive-${y}" class="archive-body${openYears.has(Number(y))?'':' hide'}">${body}</div></div>`;
   }).join('');
   E('#archiveRows').querySelectorAll('.archive-toggle').forEach(b=>b.addEventListener('click',()=>{const y=Number(b.dataset.year),open=b.getAttribute('aria-expanded')!=='true';open?openYears.add(y):openYears.delete(y);b.setAttribute('aria-expanded',String(open));b.querySelector('span:last-child').textContent=open?'−':'＋';b.nextElementSibling.classList.toggle('hide',!open);}));
 }
