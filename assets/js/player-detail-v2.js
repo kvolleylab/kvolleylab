@@ -37,6 +37,10 @@ Promise.all([
  const q=new URLSearchParams(location.search),id=q.get('id'),name=q.get('name');
  const p=players.find(x=>x.system?.player_id===id)||players.find(x=>name&&((x.identity?.name_ko||'').toLowerCase()===name.toLowerCase()||(x.identity?.name_en||'').toLowerCase()===name.toLowerCase()));
  const pid=p?.system?.player_id;
+ // Expose only the resolved public identity scope. Legacy national-link IDs
+ // overlap the 2026-27 pro snapshot; never use a national alias to rename
+ // a different professional player.
+ window.KVL_PROFILE_CONTEXT={id:pid||'',level:p?.system?.competition_level||''};
  render(p,timelines.find(t=>t.player_id===pid)?.events||[],observations.filter(o=>o.player_id===pid&&o.visibility==='public'&&o.status!=='deleted'),competitions,participantSets);
 }).catch(err=>{console.error(err);area.innerHTML='<div class="pd-empty">선수 데이터를 불러오지 못했습니다.</div>'});
 function renderTimeline(events){if(!events.length)return'';return[...events].sort((a,b)=>String(b.start_date||b.year||'').localeCompare(String(a.start_date||a.year||''))).map(e=>{const period=e.end_date?`${val(e.start_date,e.year)} ~ ${e.end_date}`:`${val(e.start_date,e.year)} ~ 현재`;return`<div class="pd-timeline-item"><div class="pd-timeline-year">${esc(period)}</div><div><strong>${esc(e.team||e.organization||e.title||'-')}</strong><div>${esc([e.position,e.note].filter(Boolean).join(' · '))}</div></div></div>`}).join('')}
