@@ -1,5 +1,29 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-14 · 승패 조견표 KVL 브랜드 디자인 v4
+
+Status: DESIGN PROTOTYPE / VISUALLY VERIFIED / NOT DEPLOYED.
+사용자는 v3의 고정형 표를 KVL 고유 디자인으로 바꾼 시안을 요청했다. v3를 보존하고 `prototypes/vleague-matrix-v4`에 별도 표현층을 추가한다.
+공통 네이비 내비게이션, PRO 차콜/여자부 로즈, 골드 강조를 사용한다. 6라운드 배열·팀 순서·숫자/공란·누적 계산·60초 재조회는 v3 엔진을 그대로 읽어 유지한다.
+남녀 360/390/768/1180px 8조건에서 가로 넘침 0px와 실제 성별 전환을 확인했다. main 데이터 참조는 `be7b530d0102a231eda2fb877cea5e3f19dcd27c`이다.
+운영/MASTER/자동화 변경 및 배포는 없으며 새 실경기 전체 경로의 추가 검증으로 간주하지 않는다.
+[디자인·재현·검수·복구](../prototypes/vleague-matrix-v4/README.md). 기존 Draft PR #328에서 사용자 검수를 기다린다.
+
+## 2026-11-14 · V-리그 고정형 6라운드 승패 조견표 v3 프로토타입
+
+Status: PROTOTYPE / IMPLEMENTED / VERIFIED WITH LIMITS / READY FOR REVIEW / NOT DEPLOYED.
+사용자는 선택형 v1·v2 대신 엑셀 기록표처럼 1~6라운드를 PC 2×3, 모바일 한 열로 동시에 비교하는 별도 시안을 요청했다.
+행·열 순서는 `previousSeasonRanking`, 약칭은 현행 시즌 config를 사용한다. 셀은 해당 라운드 획득 세트 수, 0패와 공란 구분, 총승점/순위는 해당 라운드까지 누적한다.
+미시작 라운드 순위·승점은 공란이며 진행 중 상태를 표시한다. 흰 표·회색 헤더/팀명·살구색 총승점·노란 1위 외 추가 장식을 넣지 않는다.
+현행 공통 Pretendard·내비게이션을 유지한다. 이 범위에서는 예전 Arial 일반 지침보다 공통 UI 유지 요청과 현행 기준을 따른다.
+
+기준 main `774c1ef2504ab891cef9e33611ef80961cc824f0`, 브랜치 `feature/vleague-round-matrix-v3`.
+[코드/재현/운영 연결 계획](../prototypes/vleague-matrix-v3/README.md), [검수 기록](validation/vleague-matrix-v3-20261114.md).
+남녀 252경기 MASTER 대조 불일치 0, 신규 20개·기존 55개 검사 통과(수집 후보 미제공 검사 1개 건너뜀), 8개 화면 폭/성별 조건 가로 넘침 0px.
+KOVO 당해 운영요강 제22조 확인, 기존 자동화 실행·main 데이터 읽기 및 1분 타이머 재조회 확인.
+새 경기 종료 이벤트의 전체 경로는 아직 관측하지 못했다. 운영 홈페이지·MASTER·공통 엔진·자동화는 변경하지 않았다.
+사용자 검수와 후속 승인 후 `view=groups` 정규리그 순위표 아래에 두 V-리그만 조건부 연결한다. 이 기록은 운영 적용 승인이나 배포 완료가 아니다.
+
 ## 2026-11-10 · 종합대회 배구 완성형 HERO v04
 
 Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 선택 원본을 기준으로 PC·모바일 WebP 제작, PR 제출, 검증 후 main 병합과 실제 Pages 배포 확인까지 명시적으로 승인했다. 기존 v03 및 경기·순위·선수·MASTER는 보존한다. 별도 브랜치의 미병합 PR #281 확대/사진분리 방식 대신 완성형 v04 파노라마를 사용한다.
