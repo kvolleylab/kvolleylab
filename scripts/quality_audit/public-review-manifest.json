@@ -430,12 +430,16 @@
         "university-league-2023-notice",
         "university-league-2022-notice",
         "university-league-2022-playoff",
-        "university-league-2021-calendar"
+        "university-league-2021-calendar",
+        "university-goseong-2023-men",
+        "university-goseong-2023-women",
+        "university-jecheon-2023-men",
+        "university-jecheon-2023-women"
       ],
       "verified_at": "2026-11-14",
-      "sha256": "4e96919f14b585b9dce02c004dedf367163f460c781d68793b2765626ca260ac",
+      "sha256": "f29263c9bcfd6c5039150cccd36bee12b4ea98ac62b9134688dbf0560ec1a1c4",
       "evidence": "docs/validation/university-historical-results-20261114.md",
-      "review_note": "기존 2024~2025 공식 6대회 48개 순위를 유지하고, KUSF 공식 역대 우승·준우승(2013~2023 U-리그 11개 연도, 남22·여8)을 출처와 함께 추가한다. 3·4위, 2013~2019 여자부, 개최기간 미확인은 추정하지 않는다. 신규 경기·선수/MASTER 데이터 없음."
+      "review_note": "기존 2024~2025 공식 6대회 48개 순위를 보존한다. KUSF 2013~2023 남자, 2020~2023 여자 U-리그 공식 우승·준우승과 KUVF 공식 경기결과에 따른 2023 고성·제천 남녀 결승/준결승을 추가. 전체 19대회, 94개 순위. 미확인 과거 3·4위, 2013~2019 여자부, 개최일을 추정하지 않는다. 경기·선수 MASTER 변경 없음."
     },
     "data/national/national-team-home-v2.json": {
       "access_level": "PUBLIC",
