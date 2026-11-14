@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/kvl_vleague_draft_sync.py'
       - 'tests/test_kvl_vleague_draft_sync.py'
+      - 'tests/test_kvl_vleague_draft_deploy.py'
       - 'tests/vleague-draft-bridge-ui.test.cjs'
       - 'assets/js/kvl-vleague-draft-bridge-v1.js'
       - 'assets/js/kvl-competition-loader-v2.js'
@@ -33,6 +34,8 @@ jobs:
           node-version: '24'
       - name: Verify pure official draft registration reconciliation
         run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_sync.py' -v
+      - name: Verify publishing is blocked without user approval
+        run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_deploy.py' -v
       - name: Generate public bridge only in disposable runner
         run: |
           python -B scripts/kvl_vleague_draft_sync.py --write
