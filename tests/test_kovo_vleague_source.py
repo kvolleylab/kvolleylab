@@ -67,6 +67,9 @@ class FakeSeasonSource:
         self.calls.append(url)
         source.validate_request_url(url)
         query = parse_qs(urlsplit(url).query)
+        if urlsplit(url).path == "/stat/real-time":
+            # A missing optional broadcast must not stop the season publisher.
+            return {"result": {"status": 200}, "payload": {"game": {}}}
         gender = "MALE" if query["gender"] == ["1"] else "FEMALE"
         if urlsplit(url).path == "/stat/league/team-rank":
             return {"result": {"status": 200}, "payload": []}

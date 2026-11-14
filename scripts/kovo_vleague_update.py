@@ -22,7 +22,8 @@ import sys
 from tempfile import TemporaryDirectory
 from urllib.parse import parse_qs, urlsplit
 
-from kovo_vleague_source import collect_season, SourceError, validate_request_url, POSTSEASON_PHASES, verified_live_sets
+from kovo_vleague_source import (collect_season, SourceError, validate_request_url,
+                                POSTSEASON_PHASES, verified_live_sets, live_points_url)
 from kovo_vleague_standings import calculate_standings, validate_final_match, StandingsError
 from kovo_vleague_master import build_update_plan, apply_update_plan, SheetsClient
 from kvl_competition_lifecycle import LifecycleError, require_update_window, postseason_status
@@ -88,6 +89,9 @@ def expected_source(record):
             and params.get("leagueCode") == [record["phase_id"]]
             and params.get("gender") == ["1" if record["gender"] == "MALE" else "2"],
             "Source URL conflicts with game phase/gender")
+    if record.get("live_points_source_url"):
+        require(record["status"] == "live" and record["live_points_source_url"] == live_points_url(record),
+                "Live points source conflicts with game identity")
     if record["phase_id"] in POSTSEASON_PHASES:
         phase = POSTSEASON_PHASES[record["phase_id"]]
         require(record.get("fixture_ready") is True and record.get("stage") == phase["stage"]
@@ -406,6 +410,8 @@ def retained_live_sets(local, source, won, observed_at):
     current = verified_live_sets(points, won)
     for row in current:
         row["observedAt"] = observed_at
+        if source.get("live_points_source_url"):
+            row["sourceUrl"] = source["live_points_source_url"]
     previous = local.get("liveScore") or {}
     old = local.get("liveSets") or []
     if (previous.get("sourceKey") != source["source_key"]
@@ -424,6 +430,9 @@ def retained_live_sets(local, source, won, observed_at):
         return current
     certified = verified_live_sets(old, previous)
     if len(certified) != len(old) or any(row.get("status") != "completed" for row in old):
+        return current
+    if any(row.get("sourceUrl") and (source["phase_id"] != "201"
+           or row["sourceUrl"] != live_points_url(source)) for row in old):
         return current
     # Do not mask changed/partial points with previously observed values.
     if any(i < len(old) and any(row[k] != old[i][k] for k in ("home", "away"))
@@ -580,6 +589,8 @@ def publication_gate(plan):
     source_ids = {}
     for gender, relative in DATA_PATHS.items():
         source_ids[relative] = sorted({r["source_url"] for r in plan["matched"] if r["gender"] == gender}
+                                      | {s["sourceUrl"] for r in plan["matched"] if r["gender"] == gender
+                                         for s in r.get("live_sets", []) if s.get("sourceUrl")}
                                       | {c["source_url"] for c in plan["report"].get("postseason_source_coverage", []) if c["gender"] == gender}
                                       | {plan["candidates"][relative]["automation"]["standingsSource"]})
     source_ids[STATE_PATH] = sorted({r["source_url"] for r in plan["matched"]})
@@ -659,6 +670,11 @@ def report_markdown(report):
         waiting = sum(c.get("fixture_state") == "not_published" for c in report["postseason_source_coverage"])
         lines += ["", f"포스트시즌 공식 경로 확인: {len(report['postseason_source_coverage'])}개 · 아직 개별 편성 전: {waiting}개",
                   "공식 개별 대진·시간·장소가 확인된 경기만 MASTER에 등록합니다. 빈 응답은 대회 종료를 뜻하지 않습니다."]
+    if report.get("live_points_checks"):
+        lines += ["", "| 경기 출처 ID | 이번 출처의 종료세트 득점 | 결정 |", "|---|---:|---|"]
+        for item in report["live_points_checks"]:
+            lines.append(f"| {item['source_key']} | {item['verified_sets']}/{item['completed_sets']} | {item['decision']} |")
+        lines += ["", "수집 원본의 점수 필드와 보완 판정은 source-observations.json에 보관합니다. 진행 중 점수는 종료세트로 게시하지 않습니다."]
     lines += ["", f"MASTER 확인: {'완료' if report.get('master_checked') else '실행환경 인증 미연결 / 미검증'}",
               f"MASTER 변경 셀: {report.get('master_changed_cells', '미확인')}",
               f"운영 파일 쓰기: {report.get('production_written', False)}",
@@ -686,6 +702,7 @@ def main():
     root = args.root.resolve()
     report = {"schema_version": 1, "season": SEASON, "status": "FAILED", "mode": "STAGING_ONLY",
               "production_written": False, "master_written": False}
+    live_observations = []
     args.output.mkdir(parents=True, exist_ok=True)
     try:
         require(not args.output.resolve().is_relative_to(root / "data"), "Report output must be outside production data")
@@ -695,7 +712,8 @@ def main():
             report["lifecycle"] = require_update_window(root)
         originals = {gender: read_json(root / relative) for gender, relative in DATA_PATHS.items()}
         previous = read_json(root / STATE_PATH) if (root / STATE_PATH).exists() else None
-        snapshot = read_json(args.source_file) if args.source_file else collect_season()
+        snapshot = (read_json(args.source_file) if args.source_file else
+                    collect_season(live_observations=live_observations))
         values, client = None, None
         if args.master_snapshot:
             raw = read_json(args.master_snapshot)
@@ -705,6 +723,10 @@ def main():
             values = client.read_values()
         plan = prepare_update(originals, snapshot, previous, values)
         report = plan["report"]
+        report["live_points_checks"] = [
+            {"source_key": e["source_key"], "completed_sets": sum(e["schedule"]["wins"].values()),
+             "verified_sets": e["selected_sets"], "decision": e["decision"]}
+            for e in live_observations]
         report["quality_audit"] = quality_audit_gate(root, plan)
         report["publication_gate"] = publication_gate(plan)
         require(report["publication_gate"]["status"] == "PASS", "KVL public-export security rejected candidate data")
@@ -741,6 +763,13 @@ def main():
         if isinstance(exc, (UpdateError, SourceError, StandingsError, LifecycleError)):
             print(str(exc), file=sys.stderr)
         return 1
+    finally:
+        # Separate bounded public match evidence survives later MASTER/gate failures.
+        # Never copy a replay file or raw HTTP/MASTER/player payload into artifacts.
+        write_json(args.output / "source-observations.json", {
+            "schema_version": 1, "kind": "public_match_points_only",
+            "live_read": args.source_file is None, "matches": live_observations,
+        })
 
 
 if __name__ == "__main__":
