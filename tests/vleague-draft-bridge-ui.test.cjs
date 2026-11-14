@@ -33,7 +33,7 @@ test('source bridge is source-bound, scoped to exactly this season, and non-dest
  assert.ok(bridge.registration_count>20);
  const text=JSON.stringify(bridge);
  assert.ok(!text.includes('salary_krw'));
- assert.ok(!text.includes('Google Drive'));
+ assert.ok(!text.includes('drive.google.com'));
  assert.ok(!text.includes('access_token'));
  assert.deepEqual(bridgeApi.applyCompetition({competitionId:'NOT-VLEAGUE',foo:2},bridge),{competitionId:'NOT-VLEAGUE',foo:2});
 });
