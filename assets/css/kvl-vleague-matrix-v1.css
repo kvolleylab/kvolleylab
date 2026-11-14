@@ -1,0 +1,82 @@
+/* Approved KVL matrix v4, scoped to the two 2026–27 V-League standings pages. */
+.kvl-vleague-matrix {
+  --matrix-dark:#14171b;--matrix-accent:#1c1f24;--matrix-soft:#f2f3f4;
+  --matrix-border:#d3d8de;--matrix-gold:#d6b25e;--matrix-gold-soft:#faf0d8;
+  min-width:0;margin-top:30px;padding-top:24px;border-top:1px solid #dde2e8;
+  color:#17212b;font-family:inherit;
+}
+.kvl-vleague-matrix[data-matrix-gender="women"] {
+  --matrix-dark:#7f2f54;--matrix-accent:#8f2f59;--matrix-soft:#fff1f6;--matrix-border:#ead4de;
+}
+.kvl-vleague-matrix *{box-sizing:border-box}
+.kvl-vleague-matrix .matrix-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:0 0 10px}
+.kvl-vleague-matrix .matrix-heading p{margin:0 0 5px;color:#8b6b28;font-size:10px;font-weight:750;letter-spacing:.1em}
+.kvl-vleague-matrix .matrix-heading h3{margin:0;color:var(--matrix-dark);font-size:23px;line-height:1.3;font-weight:800;letter-spacing:-.04em}
+.kvl-vleague-matrix .matrix-heading>span{color:#758291;font-size:11px;white-space:nowrap}
+.kvl-vleague-matrix .matrix-explainer{margin:0 0 20px;color:#657184;font-size:12px;line-height:1.6}
+.kvl-vleague-matrix .matrix-explainer strong{color:#263748;font-weight:700}
+.kvl-vleague-matrix .matrix-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 20px}
+.kvl-vleague-matrix .matrix-round{min-width:0;margin:0;padding:0;background:transparent;border:0;box-shadow:none;overflow:visible}
+.kvl-vleague-matrix .matrix-round-title{display:flex;align-items:center;justify-content:space-between;gap:5px;min-height:29px;margin:0 0 9px;padding-left:12px;border-left:3px solid var(--matrix-gold)}
+.kvl-vleague-matrix .matrix-round-title h4{margin:0;font-size:18px;line-height:1;letter-spacing:-.03em;color:var(--matrix-dark);font-weight:850}
+.kvl-vleague-matrix .matrix-round-state{font-size:10px;background:#e9edf2;border:1px solid #dfe4ea;color:#647386;border-radius:4px;line-height:1;padding:5px 7px;white-space:nowrap}
+.kvl-vleague-matrix .matrix-round:first-child .matrix-round-state{color:var(--matrix-accent);border-color:var(--matrix-border);background:var(--matrix-soft)}
+.kvl-vleague-matrix .matrix-table-wrap{max-width:100%;border:1px solid var(--matrix-border);border-top:2px solid var(--matrix-dark);border-radius:7px;overflow-x:auto;overscroll-behavior-x:contain;background:#fff}
+html body .kvl-vleague-matrix .matrix-table{display:table!important;overflow:visible!important;table-layout:fixed;border-collapse:collapse;width:100%;min-width:330px;margin:0;border:0;border-style:hidden;background:#fff;font-variant-numeric:tabular-nums}
+.kvl-vleague-matrix .matrix-table .col-rank{width:7%}
+.kvl-vleague-matrix .matrix-table .col-total{width:10%}
+.kvl-vleague-matrix .matrix-table .col-round{width:9%}
+.kvl-vleague-matrix .matrix-table .col-team{width:11%}
+.kvl-vleague-matrix .matrix-table .col-result{width:9%}
+.kvl-vleague-matrix .matrix-table th,.kvl-vleague-matrix .matrix-table td{border:1px solid #d8dde3;text-align:center;vertical-align:middle;padding:0 1px;height:31px;font-size:14px;line-height:1.2;background:#fff;color:#17212b}
+.kvl-vleague-matrix .matrix-table thead th{height:35px;background:var(--matrix-dark);color:#f8fafc;border-color:#ffffff20;font-size:12px;font-weight:600;letter-spacing:-.035em;white-space:nowrap}
+.kvl-vleague-matrix .matrix-table thead th:nth-child(2){color:#f1d99f}
+.kvl-vleague-matrix .matrix-table thead th span{display:inline}
+.kvl-vleague-matrix .matrix-table tbody th.matrix-team{background:var(--matrix-soft);color:var(--matrix-accent);font-size:13px;font-weight:750;letter-spacing:-.04em;border-right:2px solid var(--matrix-border);white-space:nowrap}
+.kvl-vleague-matrix .matrix-table td.matrix-total{background:var(--matrix-gold-soft);color:#6a4d13;font-size:17px;font-weight:800}
+.kvl-vleague-matrix .matrix-table td.is-first{background:#e6c46c;color:#20232a;font-weight:800}
+.kvl-vleague-matrix .matrix-table td.matrix-self{background:linear-gradient(to top right,#f5f7f9 calc(50% - .5px),#bdc5ce 50%,#f5f7f9 calc(50% + .5px))}
+.kvl-vleague-matrix .matrix-table sup{font-size:9px;margin-left:1px}
+/* Override the global light theme's !important table and hover colors only here. */
+.kvl-vleague-matrix .matrix-table th,.kvl-vleague-matrix .matrix-table td{background:#fff!important;color:#17212b!important;border-color:#d8dde3!important}
+.kvl-vleague-matrix .matrix-table thead th{background:var(--matrix-dark)!important;color:#f8fafc!important;border-color:#ffffff20!important}
+.kvl-vleague-matrix .matrix-table thead th:nth-child(2){color:#f1d99f!important}
+.kvl-vleague-matrix .matrix-table tbody th.matrix-team{background:var(--matrix-soft)!important;color:var(--matrix-accent)!important;border-right-color:var(--matrix-border)!important}
+.kvl-vleague-matrix .matrix-table td.matrix-total{background:var(--matrix-gold-soft)!important;color:#6a4d13!important}
+.kvl-vleague-matrix .matrix-table td.is-first{background:#e6c46c!important;color:#20232a!important}
+.kvl-vleague-matrix .matrix-table td.matrix-self{background:linear-gradient(to top right,#f5f7f9 calc(50% - .5px),#bdc5ce 50%,#f5f7f9 calc(50% + .5px))!important}
+.kvl-vleague-matrix .matrix-issue{margin:0 0 14px;border-left:3px solid #b88419;padding:7px 10px;background:#fff6de;color:#694d1e;font-size:12px;line-height:1.6}
+.kvl-vleague-matrix .matrix-note{margin:18px 0 0;color:#758291;font-size:11px;line-height:1.7}
+@media(max-width:900px){
+  .kvl-vleague-matrix .matrix-grid{grid-template-columns:minmax(0,1fr);gap:22px}
+  .kvl-vleague-matrix .matrix-table th,.kvl-vleague-matrix .matrix-table td{height:35px}
+}
+@media(max-width:680px){
+  .kvl-vleague-matrix{margin-left:calc(-1 * var(--kvl-base-card-pad-mobile-x,16px) + 11px);margin-right:calc(-1 * var(--kvl-base-card-pad-mobile-x,16px) + 11px);padding-top:20px}
+  .kvl-vleague-matrix .matrix-heading,.kvl-vleague-matrix .matrix-explainer,.kvl-vleague-matrix .matrix-note{margin-left:3px;margin-right:3px}
+}
+@media(max-width:480px){
+  .kvl-vleague-matrix .matrix-heading h3{font-size:21px}
+  .kvl-vleague-matrix .matrix-heading>span{font-size:10px}
+  .kvl-vleague-matrix .matrix-explainer{font-size:11px;margin-bottom:17px;letter-spacing:-.035em}
+  .kvl-vleague-matrix .matrix-round-title{min-height:26px;margin-bottom:8px;padding-left:10px}
+  .kvl-vleague-matrix .matrix-round-title h4{font-size:17px}
+  .kvl-vleague-matrix .matrix-round-state{padding:4px 6px}
+  .kvl-vleague-matrix .matrix-table th,.kvl-vleague-matrix .matrix-table td{height:31px;font-size:14px}
+  .kvl-vleague-matrix .matrix-table thead th{height:36px;font-size:12px;letter-spacing:-.08em}
+  .kvl-vleague-matrix .matrix-table thead th span{display:block;line-height:1.12}
+  .kvl-vleague-matrix .matrix-table tbody th.matrix-team{font-size:12px;letter-spacing:-.075em}
+  .kvl-vleague-matrix .matrix-table td.matrix-total{font-size:16px}
+  .kvl-vleague-matrix .matrix-table .col-rank{width:8%}
+  .kvl-vleague-matrix .matrix-table .col-total{width:9%}
+  .kvl-vleague-matrix .matrix-table:has(.col-result.is-wide) .col-result{width:8.666666%}
+  .kvl-vleague-matrix .matrix-table:has(.col-result.is-wide) .col-result.is-wide{width:11%}
+  .kvl-vleague-matrix .matrix-table:has(.col-result.is-wide ~ .col-result.is-wide) .col-result:not(.is-wide){width:8.2%}
+  .kvl-vleague-matrix .matrix-table-wrap{border-radius:5px}
+  .kvl-vleague-matrix .matrix-grid{gap:21px}
+}
+@media print{
+  .kvl-vleague-matrix .matrix-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .kvl-vleague-matrix .matrix-round{break-inside:avoid}
+  .kvl-vleague-matrix .matrix-table th,.kvl-vleague-matrix .matrix-table td{height:24px;print-color-adjust:exact}
+}

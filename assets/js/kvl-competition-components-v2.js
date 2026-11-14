@@ -315,7 +315,7 @@ function combinedPendingBlock(c){const title=c.title||c.combinedTitle||'예선 �
 function renderStandings(d){
   const root=q('[data-kvl-component="standings"]');if(!root)return;const c=cfg(d).standings,s=d.standings||{},domestic=isDomesticLike(d);
   if(c.mode==='none'){root.innerHTML=`<div class="kvl1180-schedule-empty">${esc(c.emptyMessage||'이 대회는 별도 예선 순위를 사용하지 않습니다.')}</div>`;return;}
-  if(c.mode==='single-league'){root.innerHTML=combinedBlock(d,s.rows||[],c);return;}
+  if(c.mode==='single-league'){root.innerHTML=combinedBlock(d,s.rows||[],c)+(window.KVLVLeagueMatrixV1?.render(d)||'');return;}
   const pools=s.pools||[],domesticOverall=domestic&&c.overall!==false&&pools.length>1?domesticOverallBlock(d,domesticOverallRows(d),c):'';
   const sharedCombined=c.combined===false?'':domesticOverall||(s.combinedRows?.length?combinedBlock(d,s.combinedRows,c):combinedPendingBlock(c));
   root.innerHTML=`<div class="kvl1180-pool-grid">${pools.map(poolCard).join('')}</div>${sharedCombined}`;

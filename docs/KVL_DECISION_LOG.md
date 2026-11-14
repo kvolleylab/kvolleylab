@@ -1,5 +1,12 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-14 · V-리그 승패 조견표 v4 정규리그 순위 아래 연결
+
+Status: USER APPROVED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED.
+사용자가 조견표를 기존 '정규리그 순위' 페이지의 순위표 아래에 배치하도록 승인했다. PR #328의 v4 디자인·계산을 최신 main `d75279c88a0b9ab8d7f304ae16b058ca8523b0a4`에 연결한다. 기존 프로토타입 배포 보류를 이번 남녀 2026–27 V-리그 연결 범위에서 대체한다.
+
+두 대회만 고정 6라운드 표를 표시하며 PC 2×3 / 모바일 1열이다. 전년도 순서·공식 약칭·종료 경기 누적 계산을 유지한다. 기존 페이지의 데이터 갱신에 함께 재계산하며 MASTER·JSON·수집/발행 주기·명단·공통 메뉴와 다른 대회는 변경하지 않는다. 계산/연결 및 기존 회귀 89개, 공개 데이터 연동 6개 통과. 남녀 360·390·768·1180px에서 넘침/잘린 셀 0. 실제 경기 중 새 수집 주기 검증과 UI 검증을 구분한다. [출처·계산·검수·수정 파일·복구](validation/vleague-matrix-production-v4.md). 병합·Pages·공개 화면 증거는 릴리스 PR에서 추적한다.
+
 ## 2026-11-10 · 종합대회 배구 완성형 HERO v04
 
 Status: USER APPROVED / IMPLEMENTED / PREVIEW VERIFIED / RELEASE AUTHORIZED. 사용자가 선택 원본을 기준으로 PC·모바일 WebP 제작, PR 제출, 검증 후 main 병합과 실제 Pages 배포 확인까지 명시적으로 승인했다. 기존 v03 및 경기·순위·선수·MASTER는 보존한다. 별도 브랜치의 미병합 PR #281 확대/사진분리 방식 대신 완성형 v04 파노라마를 사용한다.
