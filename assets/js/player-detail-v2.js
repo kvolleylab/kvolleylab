@@ -24,8 +24,13 @@ Promise.all([
  Promise.all(masterSources.map(loadMasterSource)).then(mergePlayers),
  loadJson(nationalLinksUrl,true),
  loadJson(timelineUrl,true),loadJson(observationUrl,true),loadJson(competitionUrl,true),
- Promise.all(participantUrls.map(url=>loadJson(url,true).then(data=>Array.isArray(data)?{participants:data}:data||{participants:[]})))
-]).then(([masterPlayers,nationalLinks,timelines,observations,competitions,participantSets])=>{
+ Promise.all(participantUrls.map(url=>loadJson(url,true).then(data=>Array.isArray(data)?{participants:data}:data||{participants:[]}))),
+ window.KVLVLeagueDraftBridgeV1?.load().catch(err=>{console.warn('[KVL draft professional profiles]',err);return null;})||Promise.resolve(null)
+]).then(([masterPlayers,nationalLinks,timelines,observations,competitions,participantSets,draftBridge])=>{
+ // Registration and draft evidence may create a public professional view for an
+ // existing verified KVL-P ID, while retaining the student's prior history.
+ const additions=draftBridge?window.KVLVLeagueDraftBridgeV1.profilesFrom(masterPlayers,draftBridge):[];
+ masterPlayers=mergePlayers([masterPlayers,additions]);
  const known=new Set(masterPlayers.map(x=>x.system?.player_id).filter(Boolean));
  const fallbackPlayers=(nationalLinks?.links||[]).map(nationalFallbackCanonical).filter(x=>x.system.player_id&&!known.has(x.system.player_id));
  const players=[...masterPlayers,...fallbackPlayers];
