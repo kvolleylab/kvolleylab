@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "scope": "대학배구 허브 역대 결과 요약: 2024~2025 U-리그/연맹 1·2차전, 2023 U-리그 및 연맹 고성·제천, 2013~2022 KUSF 대학배구 U-리그. 신규 상세 대회/Engine/자동화 등록이 아님.",
+  "scope": "대학배구 허브 공식 결과 요약: 2024~2025 U-리그/연맹 1·2차전, 2022~2023 U-리그 및 연맹 1·2차전, 2013~2021 KUSF 대학배구 U-리그. 신규 상세 대회/Engine/자동화 등록이 아님.",
   "verifiedAt": "2026-11-14",
-  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다. 2013~2023 U-리그는 KUSF 공식 역대표의 우승·준우승만 싣고 3·4위는 검증 전까지 게시하지 않는다. 2023 연맹 고성·제천은 남자 A그룹 준결승 패자와 여자부 준결승 패자를 각각 공동3위로 표시한다.",
+  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다. 2013~2023 U-리그는 KUSF 공식 역대표의 우승·준우승만 싣고 3·4위는 검증 전까지 게시하지 않는다. 2023 연맹 고성·제천은 남자 A그룹 준결승 패자와 여자부 준결승 패자를 각각 공동3위로 표시한다. 2022 고성·무안 여자부는 풀리그 순위를 적용한다(공동 3위 아님). 2022 무안 여자부는 최종 확정 1~3위만 우선 공개하고 미확인 4위는 비워 둔다.",
   "driveVerification": "KVL_운영원칙_MASTER_v18 및 기존 대학 원본 구조 확인. 2024·2025 대학 결과 MASTER는 검색에서 발견되지 않아 연맹 공식 공개 기록을 직접 대조한 별도 허브 요약본. 기존 MASTER 수정 없음. 2013~2023 대학 경기결과 MASTER도 별도 검증되지 않아 KUSF 공개 역대표를 사용하며, 개최일 미확인 연도는 날짜를 추정하지 않는다.",
   "sources": {
     "university-league-2025-men": {
@@ -171,6 +171,42 @@
       "publisher": "한국대학배구연맹",
       "url": "https://kuvf.co.kr/456",
       "scope": "2023 연맹 대회 준결승·결승 기록과 최종 1~4위 근거",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-goseong-2022-men-school": {
+      "publisher": "인하대학교 총동창회(학교 발표 재전재)",
+      "url": "https://inhain.com/news/1873bf5f-d915-4eb6-b090-62e819520ebd",
+      "scope": "2022 남자부 고성대회 우승 사실",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-goseong-2022-awards": {
+      "publisher": "2022 대학배구 고성대회 당시 경기·시상 집계",
+      "url": "https://dajungdasom.tistory.com/2383",
+      "scope": "2022 고성 남자부 A그룹 결승·준결승 및 여자부 최종 순위 기록; 비공식 보조기록",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-goseong-2022-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/359",
+      "scope": "2022 여자부 고성대회 5개팀 풀리그 결과",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-muan-2022-official-municipality": {
+      "publisher": "무안군 대회 결과 발표(보도)",
+      "url": "https://www.thebigdata.co.kr/view.php?ud=202207271623404930e91b94b033_23",
+      "scope": "2022 무안 남자부 A그룹 결승·준결승, 여자부 풀리그 최종 1~3위",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-muan-2022-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/371",
+      "scope": "2022 무안 여자부 풀리그 10경기 스코어",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-muan-2022-date": {
+      "publisher": "무안군 대회 개최 발표(보도)",
+      "url": "https://www.mokpotimes.com/news/articleView.html?idxno=107445",
+      "scope": "2022 무안대회 7월18~26일 일정·무안스포츠파크 개최지",
       "verifiedAt": "2026-11-14"
     }
   },
@@ -780,6 +816,137 @@
         ],
         "sourceIds": [
           "kusf-u-league-history-volleyball"
+        ]
+      }
+    },
+    {
+      "id": "university-goseong-2022",
+      "year": 2022,
+      "type": "first",
+      "title": "2022 대한항공배 전국대학배구 고성대회",
+      "startDate": "2022-06-29",
+      "endDate": "2022-07-07",
+      "location": "경남 고성군 · 국민체육센터",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-goseong-2022-men-school",
+        "university-goseong-2022-awards",
+        "university-goseong-2022-women"
+      ],
+      "men": {
+        "label": "남자부 A그룹 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "경기대"
+          },
+          {
+            "rank": 3,
+            "team": "성균관대"
+          },
+          {
+            "rank": 3,
+            "team": "홍익대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2022-men-school",
+          "university-goseong-2022-awards"
+        ]
+      },
+      "women": {
+        "label": "여자부 풀리그 최종순위",
+        "note": "풀리그 확정 순위 · 공동3위 아님",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "경일대"
+          },
+          {
+            "rank": 2,
+            "team": "단국대"
+          },
+          {
+            "rank": 3,
+            "team": "우석대"
+          },
+          {
+            "rank": 4,
+            "team": "호남대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2022-women",
+          "university-goseong-2022-awards"
+        ]
+      }
+    },
+    {
+      "id": "university-muan-2022",
+      "year": 2022,
+      "type": "second",
+      "title": "2022 대한항공배 전국대학배구 무안대회",
+      "startDate": "2022-07-18",
+      "endDate": "2022-07-26",
+      "location": "전남 무안군 · 무안스포츠파크 실내체육관",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-muan-2022-official-municipality",
+        "university-muan-2022-women",
+        "university-muan-2022-date"
+      ],
+      "men": {
+        "label": "남자부 A그룹 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "성균관대"
+          },
+          {
+            "rank": 3,
+            "team": "한양대"
+          },
+          {
+            "rank": 3,
+            "team": "경기대"
+          }
+        ],
+        "sourceIds": [
+          "university-muan-2022-official-municipality"
+        ]
+      },
+      "women": {
+        "label": "여자부 풀리그 최종순위",
+        "note": "공식 확인된 1~3위 · 4위 확인 중",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "목포과학대"
+          },
+          {
+            "rank": 2,
+            "team": "우석대"
+          },
+          {
+            "rank": 3,
+            "team": "단국대"
+          }
+        ],
+        "sourceIds": [
+          "university-muan-2022-women",
+          "university-muan-2022-official-municipality"
         ]
       }
     },
