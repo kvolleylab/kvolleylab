@@ -29,3 +29,18 @@ html.kvl-profile-embedded .kvl-global-toggle,html.kvl-profile-embedded .kvl-glob
 .kvl-integrated-profile .pd-info-item{padding:14px}
 .kvl-integrated-profile .pd-info-item span{font-size:11px}.kvl-integrated-profile .pd-info-item strong{font-size:16px}
 @media(max-width:800px){.kvl-integrated-profile .pd-card{padding:18px}.kvl-integrated-profile .pd-title{font-size:34px}.kvl-integrated-profile .pd-sub{font-size:15px}}
+
+
+/* Verified draft selection is a separate career fact, not a registration override. */
+.kvl-integrated-profile .pd-draft-selection{margin-top:18px;padding:17px 18px;background:#f3f8fe;border:1px solid #cbdff5;border-radius:14px;min-width:0}
+.kvl-integrated-profile .pd-draft-selection-eyebrow{margin:0 0 9px;color:#28598f;font-size:12px;font-weight:900;letter-spacing:.02em}
+.kvl-integrated-profile .pd-draft-selection-main{display:flex;align-items:baseline;flex-wrap:wrap;gap:7px 12px}
+.kvl-integrated-profile .pd-draft-selection-main strong{font-size:22px;line-height:1.3;color:#153e70;word-break:keep-all}
+.kvl-integrated-profile .pd-draft-selection-main span{font-size:14px;font-weight:800;color:#28598f}
+.kvl-integrated-profile .pd-draft-selection-origin{margin:8px 0 0;color:#475d76;font-size:13px}
+.kvl-integrated-profile .pd-draft-selection-links{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:12px}
+.kvl-integrated-profile .pd-draft-selection-links a{font-size:13px;font-weight:800;color:#1e4d85;text-underline-offset:3px}
+.kvl-integrated-profile .pd-draft-selection-caution{font-size:12px;line-height:1.55;color:#63758b;margin:12px 0 0}
+.kvl-integrated-profile .pd-player-women .pd-draft-selection{background:#fff7fa;border-color:#f3cedb}
+.kvl-integrated-profile .pd-player-women .pd-draft-selection-eyebrow,.kvl-integrated-profile .pd-player-women .pd-draft-selection-main strong,.kvl-integrated-profile .pd-player-women .pd-draft-selection-main span,.kvl-integrated-profile .pd-player-women .pd-draft-selection-links a{color:#985268}
+@media(max-width:600px){.kvl-integrated-profile .pd-draft-selection{padding:15px}.kvl-integrated-profile .pd-draft-selection-main strong{font-size:20px}}
