@@ -46,8 +46,7 @@ on:
       - 'assets/js/kvl-vleague-draft-bridge-v1.js'
 
 permissions:
-  contents: write
-  pages: write
+  contents: read
 
 concurrency:
   group: kovo-official-notices-collector-main
@@ -56,6 +55,11 @@ concurrency:
 jobs:
   collect:
     if: github.repository == 'kvolleylab/kvolleylab' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    outputs:
+      bridge_changed: ${{ steps.bridge-commit.outputs.bridge_changed }}
+      window_active: ${{ steps.period.outputs.active }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -97,6 +101,11 @@ jobs:
       - name: Report verified MASTER targets and local plan readiness without external access
         if: steps.period.outputs.active == 'true'
         run: python scripts/kvl_player_master_plan.py
+      - name: Build source-verified draft registrations and limited professional profiles
+        id: draft-bridge
+        if: steps.period.outputs.active == 'true'
+        continue-on-error: true
+        run: python -B scripts/kvl_vleague_draft_sync.py --write
       - name: Store diagnostic summary
         if: always()
         uses: actions/upload-artifact@v4
@@ -108,11 +117,11 @@ jobs:
             data/kovo/official-notices/2026-27/draft_registration_bridge.json
           retention-days: 14
           if-no-files-found: ignore
-      - name: Build source-verified draft registrations and limited professional profiles
-        id: draft-bridge
-        if: steps.period.outputs.active == 'true'
-        continue-on-error: true
-        run: python -B scripts/kvl_vleague_draft_sync.py --write
+      - name: Flag draft bridge reconciliation errors without destroying collected notices
+        if: steps.period.outputs.active == 'true' && steps.draft-bridge.outcome != 'success'
+        run: |
+          echo "::warning::KOVO draft bridge validation failed. No new bridge file was committed."
+          echo "### Draft bridge withheld — manual source/identity review needed" >> "$GITHUB_STEP_SUMMARY"
       - name: Commit normalized facts and independently reviewed draft projection (never write Drive MASTER)
         id: bridge-commit
         if: steps.period.outputs.active == 'true'
@@ -142,13 +151,30 @@ jobs:
             python scripts/kvl_player_updates.py --require-active-window
             git push origin HEAD:main
           fi
-      - name: Request trusted Pages build and verify the draft bridge
-        if: >-
-          steps.period.outputs.active == 'true' &&
-          steps.draft-bridge.outcome == 'success' &&
-          vars.KVL_DRAFT_ROSTER_PUBLISH_APPROVED == 'true' &&
-          (steps.bridge-commit.outputs.bridge_changed == 'true' ||
-           (github.event_name == 'workflow_dispatch' && inputs.publish_bridge == true))
+  publish_bridge:
+    needs: collect
+    if: >-
+      github.repository == 'kvolleylab/kvolleylab' &&
+      github.ref == 'refs/heads/main' &&
+      needs.collect.result == 'success' &&
+      needs.collect.outputs.window_active == 'true' &&
+      vars.KVL_DRAFT_ROSTER_PUBLISH_APPROVED == 'true' &&
+      (needs.collect.outputs.bridge_changed == 'true' ||
+       (github.event_name == 'workflow_dispatch' && inputs.publish_bridge == true))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify current bridge commit and explicit existing Pages deployment
         env:
           KVL_DRAFT_ROSTER_PUBLISH_APPROVED: 'true'
           GH_TOKEN: ${{ github.token }}
