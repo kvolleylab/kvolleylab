@@ -41,6 +41,10 @@ test('2026-27 player catalog preserves legacy IDs while extending to pro players
    assert.ok(publicProfile,'all current pro master IDs must resolve to searchable profiles');
    assert.equal(publicProfile.level,'professional');
    assert.equal(publicProfile.team,player.current_roster.team_name);
+   assert.equal(publicProfile.nameKo,player.identity.name_ko,
+     'national link ID collision must not rename a different professional');
+   assert.equal(publicProfile.birthDate,player.identity.birth_date,
+     'national link ID collision must not replace professional DOB');
   }
  }finally{dom.window.close()}
 });
