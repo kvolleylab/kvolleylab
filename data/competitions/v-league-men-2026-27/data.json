@@ -629,19 +629,20 @@
       "status": "live",
       "officialSourceKey": "023:001:MALE:25",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-14T06:54:16+00:00",
+      "updatedAt": "2026-11-14T07:14:23+00:00",
       "liveScore": {
         "home": 1,
-        "away": 2,
+        "away": 3,
         "sourceKey": "023:001:MALE:25",
-        "observedAt": "2026-11-14T06:54:16+00:00"
+        "observedAt": "2026-11-14T07:14:23+00:00",
+        "finalPending": true
       },
       "liveSets": [
         {
           "home": 28,
           "away": 30,
           "status": "completed",
-          "observedAt": "2026-11-14T06:54:16+00:00"
+          "observedAt": "2026-11-14T07:14:23+00:00"
         }
       ]
     },
@@ -3124,8 +3125,8 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 12/126경기 종료 · 2026-11-14 15:54 KST 반영",
-  "updatedAt": "2026-11-14T06:54:16+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 12/126경기 종료 · 2026-11-14 16:14 KST 반영",
+  "updatedAt": "2026-11-14T07:14:23+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
