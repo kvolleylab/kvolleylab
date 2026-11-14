@@ -1,5 +1,14 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-15 · KOVO 신인등록 자동화의 신원·권한 안전성 보완
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / CI UNDER REVIEW / **NOT DEPLOYED**.
+원본 국대 링크와 프로 2026-27 선수 MASTER 사이 동일 `KVL-P` ID가 서로 다른 26명에게 사용됨을 확인했다. 영구 ID 임의 변경·병합은 하지 않고 **조회 문맥 분리**를 적용한다. 충돌 번호의 단독 `player.html?id=...` 진입은 양쪽 선수 선택 화면을 표시하며, 프로팀 명단/선수 검색은 `scope=pro`, 국대 히스토리 연결은 `scope=national`로 구분한다. 잘못 연결될 수 있는 국가대표 이력/개인 메모/선수 비교는 충돌 해소 전까지 격리한다. 원본 ID 마이그레이션은 [Issue #334](https://github.com/kvolleylab/kvolleylab/issues/334)에서 별도 신원 검수·관리자 메모 서버 참조 대조·사용자 승인 후 수행한다.
+
+자동화 예약 수집을 모델이나 ChatGPT 접속 없이 GitHub Actions에서 수행하도록 설계. KOVO collector는 `contents:write`만 갖고, 별도의 승인 가드가 있는 Pages 게시 job은 `contents:read,pages:write`로 격리한다. 실제 `KVL_DRAFT_ROSTER_PUBLISH_APPROVED` 활성화·GitHub Pages 배포·Drive MASTER 자동 등록 writer는 완료되지 않았다. 명세·검수: [자동화 검증 2026-11-15 추가](validation/kovo-draft-roster-automation-20261114.md).
+
+
+
 ## 2026-11-15 · KOVO 선수 자동화 재시도: 통합 CI 복구·프로/대표팀 중복 ID 오표기 보호
 
 Status: FEATURE BRANCH IMPLEMENTED / SCOPED CI VERIFIED / **NOT DEPLOYED**.
