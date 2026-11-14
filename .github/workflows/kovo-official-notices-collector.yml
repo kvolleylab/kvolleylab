@@ -18,6 +18,11 @@ on:
         type: string
         required: false
         default: ''
+      publish_bridge:
+        description: 'After explicit repository approval, verify/build the current draft roster bridge even when unchanged'
+        type: boolean
+        required: false
+        default: false
   schedule:
     - cron: '13 23 * * *'
   push:
@@ -36,9 +41,13 @@ on:
       - 'data/player-updates/config.json'
       - 'data/player-updates/reviewed_mappings.json'
       - 'data/player-updates/master_targets.json'
+      - 'scripts/kvl_vleague_draft_sync.py'
+      - 'scripts/kvl_vleague_draft_deploy.py'
+      - 'assets/js/kvl-vleague-draft-bridge-v1.js'
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: kovo-official-notices-collector-main
@@ -96,9 +105,16 @@ jobs:
           path: |
             data/kovo/official-notices/2026-27/run_report.json
             data/player-updates/run_report.json
+            data/kovo/official-notices/2026-27/draft_registration_bridge.json
           retention-days: 14
           if-no-files-found: ignore
-      - name: Commit normalized facts (never update homepage or Drive MASTER)
+      - name: Build source-verified draft registrations and limited professional profiles
+        id: draft-bridge
+        if: steps.period.outputs.active == 'true'
+        continue-on-error: true
+        run: python -B scripts/kvl_vleague_draft_sync.py --write
+      - name: Commit normalized facts and independently reviewed draft projection (never write Drive MASTER)
+        id: bridge-commit
         if: steps.period.outputs.active == 'true'
         shell: bash
         run: |
@@ -110,6 +126,14 @@ jobs:
             git add data/kovo/official-notices/2026-27/latest_changes.json
           fi
           git add data/player-updates/official_candidates.json data/player-updates/reviewed_events.json data/player-updates/news_candidates.json data/player-updates/master_change_plan.json
+          if [ "${{ steps.draft-bridge.outcome }}" = 'success' ] && [ -f data/kovo/official-notices/2026-27/draft_registration_bridge.json ]; then
+            git add -- data/kovo/official-notices/2026-27/draft_registration_bridge.json
+          fi
+          if git diff --cached --name-only | grep -Fxq data/kovo/official-notices/2026-27/draft_registration_bridge.json; then
+            echo 'bridge_changed=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'bridge_changed=false' >> "$GITHUB_OUTPUT"
+          fi
           if git diff --cached --quiet; then
             echo "No source notice changes to commit"
           else
@@ -118,3 +142,22 @@ jobs:
             python scripts/kvl_player_updates.py --require-active-window
             git push origin HEAD:main
           fi
+      - name: Request trusted Pages build and verify the draft bridge
+        if: >-
+          steps.period.outputs.active == 'true' &&
+          steps.draft-bridge.outcome == 'success' &&
+          vars.KVL_DRAFT_ROSTER_PUBLISH_APPROVED == 'true' &&
+          (steps.bridge-commit.outputs.bridge_changed == 'true' ||
+           (github.event_name == 'workflow_dispatch' && inputs.publish_bridge == true))
+        env:
+          KVL_DRAFT_ROSTER_PUBLISH_APPROVED: 'true'
+          GH_TOKEN: ${{ github.token }}
+        run: python -B scripts/kvl_vleague_draft_deploy.py --root . --sha "$(git rev-parse HEAD)" --report "$RUNNER_TEMP/draft-pages-receipt.json"
+      - name: Record sanitized Pages receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-draft-pages-receipt
+          path: ${{ runner.temp }}/draft-pages-receipt.json
+          retention-days: 14
+          if-no-files-found: ignore
