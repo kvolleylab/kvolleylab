@@ -1,0 +1,88 @@
+# 대학배구 허브 역대 U-리그 기록 자동 확장 — 2026-11-14
+
+- 상태: **USER REQUESTED / IMPLEMENTED IN FEATURE BRANCH / PRODUCTION NOT DEPLOYED**
+- 기준 main: `774c1ef2504ab891cef9e33611ef80961cc824f0`
+- 브랜치: `feature/university-historical-results-2013-2023`
+- 운영 경로(변경 대상): `university-competitions.html`
+
+## 요청 및 구현 범위
+
+대학배구 허브의 과거 대회결과가 2024년까지만 있는 문제를 해결한다. 기존 2026년 세 대회와 2025·2024년 U-리그/연맹1·2차전의 공식 기록, 순위, 링크, HERO, 카드/트로피, 모바일 배치 및 금색 hover는 유지한다. 2023년에는 UI 옵션만 있으나 원본 데이터가 없었으며 2022년 이전은 연도 목록도 없었다.
+
+새 결과를 `data/archive/university-results-v1.json`에 추가하면 `assets/js/university-hub-years-v1.js`가 고정 연도 목록 대신 JSON의 실제 연도에서 최신순으로 선택창 및 아코디언을 생성한다. 따라서 향후 2012년, 2000년 등의 신규 검증 기록을 추가해도 연도 코드를 수정할 필요가 없다. `?year=YYYY` 경로도 등록된 연도에서 동작한다. 자료가 존재하지 않는 연도나 출처 확인이 불가능한 대회는 표시하지 않는다.
+
+## 이번에 추가한 검증된 기록
+
+- 2013~2023년 **남자부 U-리그 11개 연도**, 우승·준우승 22개 순위.
+- 2020~2023년 **여자부 U-리그 4개 연도**, 우승·준우승 8개 순위.
+- 기존 2024·2025년 대회 6개/남녀 48개 순위는 변경하지 않는다.
+- 추가 확인한 **2023 연맹 고성대회(1차전)·제천대회(2차전) 남녀부** 총 2개 대회, 16개 최종 순위.
+- **2022 연맹 고성대회(1차전)·무안대회(2차전)** 남녀부 공식/학교/지역 발표 검증 결과 2개 대회, 남녀 순위 15개 추가.
+- 총 과거 **28개 대회 요약, 남녀 155개 출처 확인 순위** (2018~2021 연맹대회 7건 추가).
+- 2013~2019년 **U-리그** 여자부 기록은 참조 KUSF 역대표에 없어 해당 연도 U-리그 카드에는 남자부만 표시한다. 연맹대회 여자부 결과는 별도로 확인된 경우 표시한다.
+- **U-리그 2013~2023년** 3·4위는 확인되지 않았으므로 생성하지 않는다. 해당 카드에 '공식 확인된 1·2위만 표시'를 명시한다. **2023 연맹 고성·제천**은 KUVF 준결승 패자를 공동 3위로 검증하여 남녀 최종 1~4위(공동 3위)를 표시한다.
+- 기간을 검증하지 못한 연도에는 실제 날짜처럼 보이는 가공 데이터를 넣지 않고 '대회 기간 자료 확인 중'으로 표시한다. 2020 무안대회는 당초 일정과 8월22일 중단 사실을 함께 표시한다.
+- 새 항목은 상세 경기/로스터/선수정보나 신규 대회 자동화가 아닌 **결과 요약 카드**다. 별도의 대회 페이지가 없으므로 링크는 공식 결과 기록으로만 연결한다.
+
+## 공식 출처와 적용 기준
+
+- KUSF 대학스포츠 U-리그 공식 소개 페이지, '역대 종목별 우승팀 현황'의 대학배구 남자·여자부: https://www.kusf.or.kr/league/league_info.html
+- 2023 한국대학배구연맹 개최 알림(2023.04.05~10.11): https://kuvf.co.kr/31/?bmode=view&idx=14478564
+- 2022 한국대학배구연맹 개최 알림: https://kuvf.co.kr/31/?bmode=view&idx=11109524
+- 2022 남자부 9월 26일 결승 변경 공지: https://kuvf.co.kr/31/?bmode=view&idx=12613597
+- 2021 남녀부 개최 기간 참고, 한국대학배구연맹 연간 계획: https://www.kuvf.co.kr/32
+- 2023 고성 남자부: 중부대 3–0 인하대 결승, 중부대·인하대 우승/준우승, 준결승 탈락 한양대·경기대 공동 3위: https://www.kuvf.co.kr/430
+- 2023 고성 여자부: 단국대 3–2 광주여대 결승, 준결승 탈락 목포과학대·경일대 공동 3위: https://kuvf.co.kr/441
+- 2023 제천 남자부: 인하대 3–2 경기대 결승, 준결승 탈락 성균관대·중부대 공동 3위: https://www.kuvf.co.kr/449
+- 2023 제천 여자부: 단국대 3–1 광주여대 결승, 준결승 탈락 우석대·목포과학대 공동 3위: https://kuvf.co.kr/456
+- 공식 2023 개최 장소·기간 교차검증: 문화체육관광부 고성 2023.06.29~07.07 https://www.mcst.go.kr/site/s_culture/sports/sportsView.jsp?pSeq=5052 ; 제천 2023.08.16~08.24 https://www.mcst.go.kr/site/s_culture/sports/sportsView.jsp?pRo=-1&pSeq=4933
+- 2022 고성·무안 연맹대회 여자부는 **토너먼트가 아닌 5개교 풀리그**이므로 우승·준우승·3위(·4위) 개별 순위로 표시하며 공동3위로 처리하지 않는다.
+- 2022 고성 여자부 KUVF 경기표: https://kuvf.co.kr/359 ; 최종 1위 경일대, 2위 단국대, 3위 우석대, 4위 호남대. 동일 팀·형식·성적 교차 보조 기록: https://dajungdasom.tistory.com/2383 ; 우승 학교발표: https://mobile.newsis.com/view/NISX20220704_0001930752
+- 2022 고성 남자 A그룹: 인하대 1위, 경기대 2위, 성균관대·홍익대 공동3위. 학교 발표: https://inhain.com/news/1873bf5f-d915-4eb6-b090-62e819520ebd ; 준결승/시상 집계 보조: https://dajungdasom.tistory.com/2383
+- 2022 무안 남자 A그룹: 인하대 1위, 성균관대 2위, 한양대·경기대 공동3위. 무안군 결과 발표 보도: https://www.thebigdata.co.kr/view.php?ud=202207271623404930e91b94b033_23
+- 2022 무안 여자부 KUVF 풀리그 10경기: https://kuvf.co.kr/371 ; 무안군 최종 발표 남녀 순위: https://www.thebigdata.co.kr/view.php?ud=202207271623404930e91b94b033_23 ; 여대 1위 목포과학대, 2위 우석대, 3위 단국대. 4위는 발표 원문에 없어 **미확인**으로 표시하지 않는다.
+- 2022 고성 기간 6.29–7.07 https://www.sentv.co.kr/article/view/sentv202206270065?d=pc ; 무안 기간 7.18–7.26 https://www.mokpotimes.com/news/articleView.html?idxno=107445
+
+원본 파일을 Drive로 복제하지 않는다. Google Drive K-volley lab의 대학대회 소스 및 최신 `KVL_운영원칙_MASTER_v19`를 확인했으나 2013~2023 경기 결과 MASTER는 별도 확정되지 않았다. 공개 KUSF 역대표를 직접 결과 근거로 사용한다. ID, 선수/학교/경기 DB, 2026 대회 엔진·자동화, 기존 Google Drive MASTER는 변경하지 않는다.
+
+## 변경 파일
+
+1. `data/archive/university-results-v1.json` — 공식 요약 기록과 출처 메타데이터.
+2. `assets/js/university-hub-years-v1.js` — 연도 자동 생성, 남녀 일부 기록 지원, 날짜 미확인 표시, 출처 이름 표기.
+3. `university-competitions.html` — 정적 선택창 연도 목록 정리와 JS 캐시 무효화.
+4. `assets/css/university-hub-years-v1.css` — 남녀 중 한 부문의 기록만 있는 과거 연도용 PC 2열 카드.
+5. `tests/university-hub-years.test.cjs` — 과거 28대회·155순위·동적 연도·부분 기록/2026 회귀 검사.
+6. `scripts/quality_audit/public-review-manifest.json` — 공개 데이터 원본 출처·검증일·SHA-256 갱신.
+7. `docs/KVL_DECISION_LOG.md` — 추가 작업 결정 기록.
+
+## 검증/제약
+
+- 변환된 JavaScript 및 테스트 소스 구문 검사: 통과.
+- 신규 결과 JSON 파싱·ID 유일성(28개)·공식 출처 URL·기존 2024/2025 순위 불변 확인.
+- 공개 JSON SHA-256: `3fdb4ea026c4ea51463787479ed8a0354c997992c4148b20cc54ca2dfd4b3313` (기존 manifest SHA와 SHA 구현을 교차 확인).
+- 해당 변경은 **feature 브랜치**로 격리되어 있으며 운영 `main`에는 반영하지 않는다.
+- 기능/데이터 모의 검사는 통과. 실제 PC1440px / 모바일390·360px 브라우저 시각검증과 GitHub Pages 운영 배포는 수행하지 않았다. 실행하지 않은 항목은 PASS로 표기하지 않는다.
+- PR #327 최초 head의 **GitHub Actions Quality Audit v1은 전체 결과 FAIL(113 PASS, 7 FAIL, 8 NOT VERIFIED, 3 NOT RUN)**. 대학 아카이브 변경이 원인인지 분리 검증하지 않았으며 통합 QA 성공으로 표시하지 않는다. 관련 선수 MASTER 워크플로도 별도 실패했다. PR 변경분 최종 Actions는 별도 재실행·확인 필요.
+
+## 향후 과거 대회 추가 방법
+
+기존 원본을 확인하고 대회별 ID, 연도, 유형, 제목, 확인된 일정 및 남/녀 공식 순위와 출처 ID를 `data/archive/university-results-v1.json`에 넣는다. 가공·미확인 순위는 비워 둔다. `public-review-manifest.json`의 원본 SHA-256·출처 IDs·검증일을 갱신하고 테스트/PC/모바일 검수를 수행한다. UI 연도 옵션 변경은 별도로 필요하지 않다.
+
+## 배포 승인/복구
+
+GitHub PR 검토 및 사용자 별도 운영 반영 승인 후 merge/Pages/live 화면 검증한다. 미배포 상태에서는 운영 페이지가 달라지지 않는 것이 정상이다. 문제가 있으면 해당 신규 PR의 squash/merge commit만 되돌린다.
+
+## 2026-11-14 추가 검증: 2018~2021 연맹대회
+
+- **2021 고성** 남A 홍익대 우승·인하대 준우승, 경기대·성균관대 공동3위: KUVF 경기결과 https://kuvf.goosisoft.com/328 . 여자부 4팀 풀리그 우석대·단국대·목포과학대·호남대 순: https://kuvf.co.kr/311 . 2021 제천대회는 코로나19로 취소되어 시상 결과를 만들지 않는다. 대회 기간 6.28~7.06: https://v.daum.net/v/20210627181313264
+- **2020 고성** 남A 성균관대 우승·홍익대 준우승, 인하대·중부대 공동3위: KUVF https://kuvf.goosisoft.com/224 . 여자부 풀리그 단국대·목포과학대·우석대·호남대 순: KUVF https://kuvf.co.kr/278/?bmode=view&idx=4203648
+- **2020 무안** 8월22일 남자부 대회 중단(한양대학교 체육부 발표 https://hysports.hanyang.ac.kr/-38 ). **남자부 우승·준우승 없음**. 여자부만 8월20일 완료하여 목포과학대·단국대·우석대 1~3위(https://kuvf.co.kr/278/?bmode=view&idx=4549104); 여자 4위는 확인 전 비공개. 당초 기간과 실제 중단일을 나란히 표시. 대회 당시 기록 보조 https://dajungdasom.tistory.com/2255
+- **2019 인제** 남A 1인하·2홍익(당시 경기결과 https://dajungdasom.tistory.com/2169); 여자부 1우석·2단국·3목포과학·4서울여(한국대학배구연맹 KUSF 기자단 https://kuvf.co.kr/36/?bmode=view&idx=2137131); 개최 공지 https://kuvf.co.kr/31/?bmode=view&idx=2004381 . 남A 3·4위는 검증 전 미게재
+- **2019 해남** 남A 경기대 3:2 경희대 결승, 1경기·2경희(보도 https://www.kyeonggi.com/article/201908151080775 ); 여자부 목포과학대 3:1 우석대 결승, 서울여대·호남대 공동3위(연맹 KUSF 기자단 https://kuvf.co.kr/36/?bmode=view&idx=2185426); 개최공고 https://kuvf.co.kr/31/?bmode=view&idx=2004388 . 남A 3·4위 검증 전 미게재
+- **2018 해남** 남A 성균관대 3:2 경기대 결승, 4강 탈락 홍익대·충남대 공동3위; 여자 우석대 3:0 서울여대 결승과 목포과학대 3:0 호남대 **별도 3위전**으로 3·4위 구분. 당시 경기표 https://dajungdasom.tistory.com/2051 , 학교발표 전북CBS https://v.daum.net/v/20180709150907226
+- **2018 청양** 남A 1한양·2경희·공동3 충남·경기; 여자부 1단국·2목포과학·3우석. 청양군 대회 결과 보도 https://www.ccnnews.co.kr/news/articleView.html?idxno=119876 ; 당시 경기표 https://dajungdasom.tistory.com/2052 . 여자 4위 확인 전 미게재
+
+### 출처 상태와 검증 주의
+
+연맹 공식 경기 페이지·KUSF 역대 현황·학교 및 개최지의 공식 발표를 우선한다. 일부 2018/2019 결과는 당시 기록 블로그로 경기별 스코어를 보강한 **공식/보조 교차출처**이며 해당 내용이 모두 KUVF 1차 공식 기록이라고 주장하지 않는다. 공식 원문과 불일치가 발견되면 보류 후 정정한다. 2017년 이전 연맹대회는 별도 공식확인/검수 후 추가한다. 기존 2026년 세 대회와 2024/2025년 원본 6개는 변경하지 않았다.
+
