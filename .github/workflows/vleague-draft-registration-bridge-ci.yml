@@ -37,6 +37,8 @@ jobs:
         run: |
           python -B scripts/kvl_vleague_draft_sync.py --write
           python -B scripts/kvl_vleague_draft_sync.py --check
+      - name: Verify browser roster and player overlay contract
+        run: node --test tests/vleague-draft-bridge-ui.test.cjs
       - name: Save sanitized preview artifact; do not publish
         if: always()
         uses: actions/upload-artifact@v4
