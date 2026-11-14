@@ -40,17 +40,17 @@ vm.runInContext(source.slice(0, source.indexOf('function render()')) + 'globalTh
     assert.ok(context.adapter.row(card).includes('여자부 보기'), 'Every current card must provide an independent women link');
   }
   const archive = JSON.parse(read('data/archive/university-results-v1.json'));
-  assert.equal(archive.competitions.length, 17);
-  assert.equal(new Set(archive.competitions.map(c => c.id)).size, 17);
+  assert.equal(archive.competitions.length, 19);
+  assert.equal(new Set(archive.competitions.map(c => c.id)).size, 19);
   for (const item of archive.competitions) {
     const card = context.adapter.fromArchive(item, archive.sources);
     const markup = context.adapter.row(card);
     assert.equal(card.resultsOnly, true);
     assert.ok(!markup.includes('--photo:') && !markup.includes('tournament-link'), 'Unpublished archive must not imply an image or standalone page');
     assert.notEqual(context.adapter.row(card, 'archive'), markup, 'Archive accordion and year selector need distinct IDs');
-    assert.equal(item.men.rankings.length + (item.women?.rankings.length || 0), item.year >= 2024 ? 8 : item.women ? 4 : 2);
+    assert.equal(item.men.rankings.length + (item.women?.rankings.length || 0), item.year >= 2024 || item.type !== 'uleague' ? 8 : item.women ? 4 : 2);
     if (!item.women) assert.ok(markup.includes('single-division') && !markup.includes('rank-card women'));
-    if (item.year <= 2023) assert.ok(markup.includes('공식 확인된 1·2위만 표시'));
+    if (item.year <= 2023 && item.type === 'uleague') assert.ok(markup.includes('공식 확인된 1·2위만 표시'));
     for (const id of [...item.sourceIds, ...item.men.sourceIds, ...(item.women?.sourceIds || [])]) {
       assert.ok(archive.sources[id]?.url.startsWith('https://'));
     }
@@ -61,7 +61,7 @@ vm.runInContext(source.slice(0, source.indexOf('function render()')) + 'globalTh
   assert.deepEqual(Array.from(context.adapter.archiveYears()), Array.from({length: 13}, (_,i) => String(2025 - i)));
   context.adapter.setArchives([...normalized, {year:'2012'}]);
   assert.equal(context.adapter.yearOptions().at(-1), '2012', 'Any earlier sourced year must be auto-discovered');
-  const history = archive.competitions.filter(c => c.year <= 2023);
+  const history = archive.competitions.filter(c => c.year <= 2023 && c.type === 'uleague');
   assert.equal(history.length, 11, 'Older U-League years 2013–2023 should be seeded');
   for (const item of history) {
     assert.equal(item.type, 'uleague');
@@ -70,6 +70,17 @@ vm.runInContext(source.slice(0, source.indexOf('function render()')) + 'globalTh
     assert.ok(context.adapter.row(context.adapter.fromArchive(item,archive.sources)).includes('kusf.or.kr'));
   }
   const record = (year, type) => archive.competitions.find(c => c.year === year && c.type === type);
+  for (const [type,location,men,women] of [
+    ['first',/고성/,['중부대','인하대','한양대','경기대'],['단국대','광주여대','목포과학대','경일대']],
+    ['second',/제천/,['인하대','경기대','성균관대','중부대'],['단국대','광주여대','우석대','목포과학대']]
+  ]) {
+    const cup = record(2023,type);
+    assert.match(cup.title,location);
+    assert.deepEqual(cup.men.rankings.map(r=>r.team),men);
+    assert.deepEqual(cup.women.rankings.map(r=>r.team),women);
+    assert.deepEqual(cup.men.rankings.map(r=>r.rank),[1,2,3,3]);
+    assert.deepEqual(cup.women.rankings.map(r=>r.rank),[1,2,3,3]);
+  }
   assert.equal(record(2023, 'uleague').men.rankings[0].team, '경기대');
   assert.equal(record(2023, 'uleague').women.rankings[0].team, '단국대');
   assert.equal(record(2022, 'uleague').men.rankings[0].team, '인하대');
@@ -91,5 +102,5 @@ vm.runInContext(source.slice(0, source.indexOf('function render()')) + 'globalTh
   const html = read('university-competitions.html');
   assert.ok(html.includes('assets/js/unified-nav.js'));
   assert.ok(!html.includes('assets/js/university-competitions-hub-v2.js'));
-  console.log(`PASS: ${cards.length} official HERO routes; ${rankCount} unchanged 2026 ranks; 17 sourced archive events / 78 historical ranks; 2013–2026 dynamic year options; optional women panels; no fake links/images.`);
+  console.log(`PASS: ${cards.length} official HERO routes; ${rankCount} unchanged 2026 ranks; 19 sourced archive events / 94 historical ranks; 2013–2026 dynamic year options; optional women panels; no fake links/images.`);
 })().catch(error => { console.error(error); process.exitCode = 1; });
