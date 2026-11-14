@@ -1,5 +1,16 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-14 · 신인 드래프트 지명 구단의 선수 프로필 노출
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / CI REVIEW PENDING / **NOT DEPLOYED**.
+사용자는 KOVO V-리그 참가팀 선수명단 공시 갱신과 함께, 신인 드래프트에서 선발된 프로 구단을 선수 프로필에서도 보여 달라고 요청했다. 공식 Draft Hub 지명 결과 34명 중 Player_ID 검증 링크가 존재하는 30명에 한해 프로필 상단에 **지명 구단·라운드·순위**를 보이는 검수용 코드를 구현한다. 수련선수 지명은 별도 표기한다.
+
+**지명 != 선수등록/현재 소속.** 정식 등록이 확인될 때까지 학교·기존 소속·학년·대회 이력 및 Player_ID를 자동으로 바꾸지 않는다. 미연결 4명은 별도 신원 검수 후 처리한다. 향후 등록 공시 → MASTER → 14개 구단 선수명단·선수 프로필까지의 실제 자동 갱신 및 검증은 [Issue #331](https://github.com/kvolleylab/kvolleylab/issues/331)로 추적한다. 현재 collector의 MASTER readback/writer는 아직 미연결이며, 이 브랜치가 이를 해결했다고 간주하지 않는다.
+
+작업 기준 `main=6d3ba0ddc7334c54095e779955c6e76c2b62a6f3`. 추가 검수/복구: [2026-11-14 명세](validation/draft-profile-affiliation-20261114.md). 사용자 승인 없이 main 병합/운영 반영 금지.
+
+
+
 ## 2026-11-14 · V-리그 승패 조견표 v4 정규리그 순위 아래 연결
 
 Status: USER APPROVED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED.
