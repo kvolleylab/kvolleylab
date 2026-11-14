@@ -33,3 +33,12 @@
 - 회귀 테스트: 34개 지명, 30개 검증 프로필, 4개 미연결 보류, 윤경 1라운드 1순위 / OK저축은행, 수련선수, 중복 렌더 방지, 기존 학교 보존.
 - GitHub PR CI 실제 통과와 브라우저 360/390px 및 PC 검수, 공식 출처/링크 검증은 별도 증거를 남겨야 한다. **미실시 항목을 통과로 표시하지 않는다.**
 - 운영 배포는 별도 사용자 승인 후. 되돌릴 때는 해당 PR merge commit을 revert한다. 기존 MASTER를 오래된 버전으로 덮어쓰지 않는다.
+
+
+## GitHub Actions 검증 결과 (2026-11-14)
+- [Player and Draft Integration CI run 43600667912](https://github.com/kvolleylab/kvolleylab/actions/runs/43600667912)
+- `draft-board` job: **success**.
+- `identity-and-routing` job: **failure**, 전체 Node 34개 중 24개 성공/10개 실패. Python 신청명단 테스트 14개 통과.
+- **이번 변경에 새로 추가한 `tests/draft-profile-selection.test.mjs`의 4개는 전부 통과**: 34 지명/30 연결/4 보류, 정확한 Player_ID·구단, 기존 학교 무변경 및 출처, 수련선수 표기.
+- 기존 실패 대표 원인: 이전 테스트가 URL 버전 쿼리(`player-workspace-core.mjs?v=20261111-pro-1`)를 실제 파일 경로로 취급하는 오류, 과거 선수 수 `1,842` 명 고정 검증과 최신 `2,013`명 카탈로그의 불일치, 과거 여섯 선수 정정 시점의 해시 고정 검사. 본 변경은 기존 `player_master_pro`, 원래 CI 테스트의 검증 계약, 데이터 로더를 수정하지 않았다.
+- 따라서 **새 기능 단위 테스트는 통과했지만 전체 기존 CI는 통과하지 않았으며 READY FOR REVIEW / 배포 완료로 표시할 수 없다**. 별도 기존 테스트 계약 정비와 PC·모바일 실제 브라우저 검증이 필요하다.
