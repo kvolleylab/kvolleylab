@@ -602,3 +602,7 @@ approximately 20 minutes. Worker configuration and protected data are unchanged.
 252-match official/MASTER comparison required no data changes. Production approval
 and two consecutive actual live full-path observations are still required.
 [Incident, scope, evidence and release gate](validation/vleague-partial-observations-v1.md).
+
+## 2026-11-14 · 대학배구 과거 대회결과 연도 자동 확장과 공식 역대 U-리그 결과
+
+Status: USER REQUESTED / FEATURE IMPLEMENTED / REVIEW PENDING / NOT DEPLOYED. 사용자가 대학배구 메인 결과가 2024년에서 끝나는 문제를 지적하여 과거 대회 추가 기능을 요청했다. 기준 main `774c1ef2504ab891cef9e33611ef80961cc824f0`. 기존 2026 대회 3개 및 2024·2025 과거 6개 기록과 카드/트로피/남녀 링크/공통 HERO를 유지한다. 과거 연도 목록을 아카이브 JSON 기반 동적으로 생성한다. KUSF 공식 역대 U-리그 우승·준우승만 2013~2023 남자 11년, 2020~2023 여자 4년에 추가한다. 과거 3·4위·2013~2019 여자부 및 개최일 미확인은 추정하거나 임의 표시하지 않는다. 신규 상세 대회페이지·경기·선수·MASTER·자동화는 대상이 아니다. 별도 브랜치/PR 검증 및 사용자의 운영 반영 승인이 필요하다. [소스·검수·변경/복구](validation/university-historical-results-20261114.md).
