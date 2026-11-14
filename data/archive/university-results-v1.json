@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "scope": "대학 허브의 과거 U-리그·연맹 1·2차전 결과 요약. 연맹전 남자부는 A그룹. 신규 대회 페이지·Engine·자동화 등록이 아님.",
-  "verifiedAt": "2026-11-07",
-  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다.",
-  "driveVerification": "KVL_운영원칙_MASTER_v18 및 기존 대학 원본 구조 확인. 2024·2025 대학 결과 MASTER는 검색에서 발견되지 않아 연맹 공식 공개 기록을 직접 대조한 별도 허브 요약본. 기존 MASTER 수정 없음.",
+  "scope": "대학 허브의 역대 대회 결과 요약: 2024·2025 U-리그/연맹 1·2차전, 2013~2023 KUSF 대학배구 U-리그 공식 확인 우승·준우승. 신규 상세 대회 페이지·Engine·자동화 등록이 아님.",
+  "verifiedAt": "2026-11-14",
+  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다. 2013~2023 U-리그는 KUSF 공식 역대표의 우승·준우승만 싣고 3·4위는 검증 전까지 게시하지 않는다.",
+  "driveVerification": "KVL_운영원칙_MASTER_v18 및 기존 대학 원본 구조 확인. 2024·2025 대학 결과 MASTER는 검색에서 발견되지 않아 연맹 공식 공개 기록을 직접 대조한 별도 허브 요약본. 기존 MASTER 수정 없음. 2013~2023 대학 경기결과 MASTER도 별도 검증되지 않아 KUSF 공개 역대표를 사용하며, 개최일 미확인 연도는 날짜를 추정하지 않는다.",
   "sources": {
     "university-league-2025-men": {
       "publisher": "한국대학배구연맹",
@@ -118,6 +118,36 @@
       "url": "https://kuvf.co.kr/31/?bmode=view&idx=24944401",
       "scope": "공식 대회명·기간·장소",
       "verifiedAt": "2026-11-07"
+    },
+    "kusf-u-league-history-volleyball": {
+      "publisher": "한국대학스포츠협의회(KUSF)",
+      "url": "https://www.kusf.or.kr/league/league_info.html",
+      "scope": "대학배구 U-리그 연도별 남녀 우승·준우승 공식 역대 현황",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-league-2023-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=14478564",
+      "scope": "2023 U-리그 공식 개최 일정·장소",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-league-2022-notice": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=11109524",
+      "scope": "2022 U-리그 개최 일정",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-league-2022-playoff": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/31/?bmode=view&idx=12613597",
+      "scope": "2022 남자부 결승 9월 26일 일정 변경",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-league-2021-calendar": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://www.kuvf.co.kr/32",
+      "scope": "2021 남녀 U-리그 개최 일정",
+      "verifiedAt": "2026-11-14"
     }
   },
   "competitions": [
@@ -499,6 +529,445 @@
           "university-goseong-2024-women"
         ]
       }
+    },
+    {
+      "id": "university-league-2023",
+      "year": 2023,
+      "type": "uleague",
+      "title": "2023 KUSF 대학배구 U-리그",
+      "startDate": "2023-04-05",
+      "endDate": "2023-10-11",
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball",
+        "university-league-2023-notice"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "경기대"
+          },
+          {
+            "rank": 2,
+            "team": "명지대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "단국대"
+          },
+          {
+            "rank": 2,
+            "team": "목포과학대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      }
+    },
+    {
+      "id": "university-league-2022",
+      "year": 2022,
+      "type": "uleague",
+      "title": "2022 KUSF 대학배구 U-리그",
+      "startDate": "2022-04-16",
+      "endDate": "2022-09-26",
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball",
+        "university-league-2022-notice",
+        "university-league-2022-playoff"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "성균관대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "경일대"
+          },
+          {
+            "rank": 2,
+            "team": "목포과학대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      }
+    },
+    {
+      "id": "university-league-2021",
+      "year": 2021,
+      "type": "uleague",
+      "title": "2021 KUSF 대학배구 U-리그",
+      "startDate": "2021-04-24",
+      "endDate": "2021-09-16",
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball",
+        "university-league-2021-calendar"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "홍익대"
+          },
+          {
+            "rank": 2,
+            "team": "성균관대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "단국대"
+          },
+          {
+            "rank": 2,
+            "team": "목포과학대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      }
+    },
+    {
+      "id": "university-league-2020",
+      "year": 2020,
+      "type": "uleague",
+      "title": "2020 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "홍익대"
+          },
+          {
+            "rank": 2,
+            "team": "인하대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "단국대"
+          },
+          {
+            "rank": 2,
+            "team": "목포과학대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-league-2019",
+      "year": 2019,
+      "type": "uleague",
+      "title": "2019 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "중부대"
+          },
+          {
+            "rank": 2,
+            "team": "경기대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
+      "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-league-2018",
+      "year": 2018,
+      "type": "uleague",
+      "title": "2018 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "중부대"
+          },
+          {
+            "rank": 2,
+            "team": "성균관대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
+      "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-league-2017",
+      "year": 2017,
+      "type": "uleague",
+      "title": "2017 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "홍익대"
+          },
+          {
+            "rank": 2,
+            "team": "경희대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
+      "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-league-2016",
+      "year": 2016,
+      "type": "uleague",
+      "title": "2016 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "중부대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
+      "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-league-2015",
+      "year": 2015,
+      "type": "uleague",
+      "title": "2015 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "경기대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
+      "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-league-2014",
+      "year": 2014,
+      "type": "uleague",
+      "title": "2014 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "홍익대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
+      "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-league-2013",
+      "year": 2013,
+      "type": "uleague",
+      "title": "2013 KUSF 대학배구 U-리그",
+      "startDate": null,
+      "endDate": null,
+      "location": "참가대학 체육관 · 홈&어웨이",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "kusf-u-league-history-volleyball"
+      ],
+      "men": {
+        "label": "남자부 최종순위",
+        "note": "공식 확인된 1·2위만 표시",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "경기대"
+          },
+          {
+            "rank": 2,
+            "team": "인하대"
+          }
+        ],
+        "sourceIds": [
+          "kusf-u-league-history-volleyball"
+        ]
+      },
+      "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
+      "dateVerificationStatus": "NOT_VERIFIED"
     }
   ]
 }
