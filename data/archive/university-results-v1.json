@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "scope": "대학배구 연도별 과거 대회결과 요약: 2013~2025 KUSF U-리그, 2019~2025 검증된 연맹대회 결과 카드. 2020 무안대회 남자부는 중단/미확정이며 여자부만 순위 확정. 신규 경기 Engine·선수·자동화 등록 아님.",
+  "scope": "대학배구 과거 대회결과 요약: 2013~2025 KUSF U-리그, 2018~2025 확인된 연맹대회 일부. 2020 무안 남자부는 중단·미확정이고 여자부만 순위 확정. 새로운 경기 Engine·선수·자동화 등록이 아님.",
   "verifiedAt": "2026-11-14",
-  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다. 2013~2023 U-리그는 KUSF 공식 역대표의 우승·준우승만 싣고 3·4위는 검증 전까지 게시하지 않는다. 2023 연맹 고성·제천은 남자 A그룹 준결승 패자와 여자부 준결승 패자를 각각 공동3위로 표시한다. 2022 고성·무안 여자부는 풀리그 순위를 적용한다(공동 3위 아님). 2022 무안 여자부는 최종 확정 1~3위만 우선 공개하고 미확인 4위는 비워 둔다. 2019·2020·2021 여자부 풀리그는 실제 3·4위를 구분한다. 2020 무안대회는 남자부가 코로나19로 중단됐으므로 남자 순위 없이 여자부 확정 1~3위만 표시한다. 2019 남자 A그룹은 1·2위만 검증해 표시한다.",
+  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다. 2013~2023 U-리그는 KUSF 공식 역대표의 우승·준우승만 싣고 3·4위는 검증 전까지 게시하지 않는다. 2023 연맹 고성·제천은 남자 A그룹 준결승 패자와 여자부 준결승 패자를 각각 공동3위로 표시한다. 2022 고성·무안 여자부는 풀리그 순위를 적용한다(공동 3위 아님). 2022 무안 여자부는 최종 확정 1~3위만 우선 공개하고 미확인 4위는 비워 둔다. 2019·2020·2021 여자부 풀리그는 실제 3·4위를 구분한다. 2020 무안대회는 남자부가 코로나19로 중단됐으므로 남자 순위 없이 여자부 확정 1~3위만 표시한다. 2019 남자 A그룹은 1·2위만 검증해 표시한다. 2018 해남 남자부는 4강 탈락 공동3위, 여자부는 별도의 3위전 승부로 3·4위를 구분한다. 2018 청양 남자부는 공동3위, 여자부 4위는 확인 전 미게재.",
   "driveVerification": "KVL_운영원칙_MASTER_v18 및 기존 대학 원본 구조 확인. 2024·2025 대학 결과 MASTER는 검색에서 발견되지 않아 연맹 공식 공개 기록을 직접 대조한 별도 허브 요약본. 기존 MASTER 수정 없음. 2013~2023 대학 경기결과 MASTER도 별도 검증되지 않아 KUSF 공개 역대표를 사용하며, 개최일 미확인 연도는 날짜를 추정하지 않는다.",
   "sources": {
     "university-league-2025-men": {
@@ -303,6 +303,30 @@
       "publisher": "2019 대회 당시 경기별 결과 및 최종시상 기록(보조)",
       "url": "https://dajungdasom.tistory.com/2190",
       "scope": "2019 해남 여대부 4강 탈락 서울여대/호남대 공동3위",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-haenam-2018-match-results": {
+      "publisher": "2018 당시 경기결과 기록(보조)",
+      "url": "https://dajungdasom.tistory.com/2051",
+      "scope": "2018 해남 남자 A그룹 4강·결승(성균관대 3:2 경기대), 여자부 결승·3위전 스코어",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-haenam-2018-women-school": {
+      "publisher": "우석대학교 발표(전북CBS 보도)",
+      "url": "https://v.daum.net/v/20180709150907226",
+      "scope": "2018 해남 여자부 우석대 우승·서울여대 준우승",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-cheongyang-2018-final": {
+      "publisher": "청양군 대회 최종시상 발표 보도",
+      "url": "https://www.ccnnews.co.kr/news/articleView.html?idxno=119876",
+      "scope": "2018 청양 남A·여대부 공식 최종 1~3위(남 공동3위)",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-cheongyang-2018-match-results": {
+      "publisher": "2018 당시 경기결과 기록(보조)",
+      "url": "https://dajungdasom.tistory.com/2052",
+      "scope": "2018 청양 남A그룹 결승·준결승 및 여자부 경기별 결과·날짜",
       "verifiedAt": "2026-11-14"
     }
   },
@@ -1495,6 +1519,133 @@
       },
       "verificationNote": "KUSF 역대 자료에서 해당 연도 여자부 우승·준우승은 확인되지 않아 표시하지 않음",
       "dateVerificationStatus": "NOT_VERIFIED"
+    },
+    {
+      "id": "university-haenam-2018",
+      "year": 2018,
+      "type": "first",
+      "title": "2018 ㈜동양환경배 전국대학배구 해남대회",
+      "startDate": "2018-06-29",
+      "endDate": "2018-07-07",
+      "location": "전남 해남군 · 우슬체육관",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-haenam-2018-match-results",
+        "university-haenam-2018-women-school"
+      ],
+      "men": {
+        "label": "남자부 A그룹 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "성균관대"
+          },
+          {
+            "rank": 2,
+            "team": "경기대"
+          },
+          {
+            "rank": 3,
+            "team": "홍익대"
+          },
+          {
+            "rank": 3,
+            "team": "충남대"
+          }
+        ],
+        "sourceIds": [
+          "university-haenam-2018-match-results"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "note": "3·4위 결정전 반영 · 공동3위 아님",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "우석대"
+          },
+          {
+            "rank": 2,
+            "team": "서울여대"
+          },
+          {
+            "rank": 3,
+            "team": "목포과학대"
+          },
+          {
+            "rank": 4,
+            "team": "호남대"
+          }
+        ],
+        "sourceIds": [
+          "university-haenam-2018-women-school",
+          "university-haenam-2018-match-results"
+        ]
+      }
+    },
+    {
+      "id": "university-cheongyang-2018",
+      "year": 2018,
+      "type": "second",
+      "title": "2018 ㈜동양환경배 전국대학배구 청양대회",
+      "startDate": "2018-07-16",
+      "endDate": "2018-07-23",
+      "location": "충남 청양군 · 군민체육관·문화체육센터",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-cheongyang-2018-final",
+        "university-cheongyang-2018-match-results"
+      ],
+      "men": {
+        "label": "남자부 A그룹 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "한양대"
+          },
+          {
+            "rank": 2,
+            "team": "경희대"
+          },
+          {
+            "rank": 3,
+            "team": "충남대"
+          },
+          {
+            "rank": 3,
+            "team": "경기대"
+          }
+        ],
+        "sourceIds": [
+          "university-cheongyang-2018-final"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "note": "공식 확인 1~3위 · 4위 확인 중",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "단국대"
+          },
+          {
+            "rank": 2,
+            "team": "목포과학대"
+          },
+          {
+            "rank": 3,
+            "team": "우석대"
+          }
+        ],
+        "sourceIds": [
+          "university-cheongyang-2018-final"
+        ]
+      }
     },
     {
       "id": "university-league-2017",
