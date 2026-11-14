@@ -69,6 +69,16 @@ if(params.get('admin')!=='1') {
   (async()=>{
     setBackLink();
     const hero=await waitForHero().catch(()=>null);if(!hero)return;
+    // A historical national profile and a pro profile still share this
+    // KVL-P identifier. Never show or add notes under an ambiguous ID.
+    // Server-side ID migration is required before private note linkage.
+    if(window.KVLPlayerIdCollisionV1?.isConflict(playerId)){
+      const notice=document.createElement('section');
+      notice.className='admin-private-notes';
+      notice.innerHTML='<div class="admin-private-empty"><strong>선수 식별번호 중복 검수 중</strong><span>이 번호가 서로 다른 선수에게 연결되어 개인 메모를 잠시 표시하지 않습니다. 기존 메모 데이터는 변경되지 않습니다.</span></div>';
+      hero.insertAdjacentElement('afterend',notice);
+      return;
+    }
     try{
       const {data,error}=await supabase.auth.getUser();
       if(error||!data.user){hero.insertAdjacentElement('afterend',renderAuthRequired());return}
