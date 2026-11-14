@@ -606,25 +606,29 @@
       },
       "venueLabel": "서울 장충체육관",
       "localTimeLabel": "한국 현지 16:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:FEMALE:26",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-14T08:34:11+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-14T08:53:48+00:00",
+      "score": {
         "home": 3,
         "away": 0,
-        "sourceKey": "023:001:FEMALE:26",
-        "observedAt": "2026-11-14T08:34:11+00:00",
-        "finalPending": true
+        "sets": [
+          {
+            "home": 26,
+            "away": 24
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 17
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 26,
-          "away": 24,
-          "status": "completed",
-          "observedAt": "2026-11-14T08:34:11+00:00"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-W-014",
@@ -2913,6 +2917,27 @@
       {
         "rank": 2,
         "team": {
+          "code": "GSC",
+          "name": "GS칼텍스",
+          "fullName": "GS칼텍스",
+          "en": "GSC"
+        },
+        "poolId": "LEAGUE",
+        "games": 4,
+        "wins": 3,
+        "losses": 1,
+        "points": 9,
+        "setWins": 10,
+        "setLosses": 3,
+        "pointsFor": 323,
+        "pointsAgainst": 283,
+        "setRatio": "3.333",
+        "pointRatio": "1.141",
+        "statusLabel": "2위"
+      },
+      {
+        "rank": 3,
+        "team": {
           "code": "KEX",
           "name": "한국도로공사",
           "fullName": "한국도로공사",
@@ -2929,27 +2954,6 @@
         "pointsAgainst": 302,
         "setRatio": "1.800",
         "pointRatio": "1.093",
-        "statusLabel": "2위"
-      },
-      {
-        "rank": 3,
-        "team": {
-          "code": "GSC",
-          "name": "GS칼텍스",
-          "fullName": "GS칼텍스",
-          "en": "GSC"
-        },
-        "poolId": "LEAGUE",
-        "games": 3,
-        "wins": 2,
-        "losses": 1,
-        "points": 6,
-        "setWins": 7,
-        "setLosses": 3,
-        "pointsFor": 247,
-        "pointsAgainst": 224,
-        "setRatio": "2.333",
-        "pointRatio": "1.103",
         "statusLabel": "3위"
       },
       {
@@ -3003,16 +3007,16 @@
           "en": "SOO"
         },
         "poolId": "LEAGUE",
-        "games": 3,
+        "games": 4,
         "wins": 0,
-        "losses": 3,
+        "losses": 4,
         "points": 0,
         "setWins": 2,
-        "setLosses": 9,
-        "pointsFor": 234,
-        "pointsAgainst": 268,
-        "setRatio": "0.222",
-        "pointRatio": "0.873",
+        "setLosses": 12,
+        "pointsFor": 293,
+        "pointsAgainst": 344,
+        "setRatio": "0.167",
+        "pointRatio": "0.852",
         "statusLabel": "6위"
       },
       {
@@ -3106,14 +3110,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 12/126경기 종료 · 2026-11-14 17:34 KST 반영",
-  "updatedAt": "2026-11-14T08:34:11+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 13/126경기 종료 · 2026-11-14 17:53 KST 반영",
+  "updatedAt": "2026-11-14T08:53:48+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 12,
+    "completedMatches": 13,
     "postseason": {
       "matched": 0,
       "completed": 0,
