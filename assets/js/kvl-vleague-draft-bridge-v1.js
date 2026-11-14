@@ -81,7 +81,7 @@ function applyCompetition(input,bridge){
    number:r.number,name:r.name,en:p?.identity?.name_en||'',position:r.position,
    heightCm:p?.physical?.height_cm||r.height_cm||null,
    dob:p?.identity?.birth_date||null,
-   dobStatus:p?.identity?.birth_date?undefined:'not-in-official-public-registration',
+   ...(p?.identity?.birth_date?{}:{dobStatus:'not-in-official-public-registration'}),
    nationality:nationality==='KOR'?'대한민국':nationality||'',
    nationalityCode:nationality==='KOR'?'KOR':nationality||'',
    playerId:r.player_id||null,volleybox:p?.links?.volleybox||null,
