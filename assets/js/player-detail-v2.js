@@ -24,14 +24,23 @@ Promise.all([
  Promise.all(masterSources.map(loadMasterSource)).then(mergePlayers),
  loadJson(nationalLinksUrl,true),
  loadJson(timelineUrl,true),loadJson(observationUrl,true),loadJson(competitionUrl,true),
- Promise.all(participantUrls.map(url=>loadJson(url,true).then(data=>Array.isArray(data)?{participants:data}:data||{participants:[]})))
-]).then(([masterPlayers,nationalLinks,timelines,observations,competitions,participantSets])=>{
+ Promise.all(participantUrls.map(url=>loadJson(url,true).then(data=>Array.isArray(data)?{participants:data}:data||{participants:[]}))),
+ window.KVLVLeagueDraftBridgeV1?.load().catch(err=>{console.warn('[KVL draft professional profiles]',err);return null;})||Promise.resolve(null)
+]).then(([masterPlayers,nationalLinks,timelines,observations,competitions,participantSets,draftBridge])=>{
+ // Registration and draft evidence may create a public professional view for an
+ // existing verified KVL-P ID, while retaining the student's prior history.
+ const additions=draftBridge?window.KVLVLeagueDraftBridgeV1.profilesFrom(masterPlayers,draftBridge):[];
+ masterPlayers=mergePlayers([masterPlayers,additions]);
  const known=new Set(masterPlayers.map(x=>x.system?.player_id).filter(Boolean));
  const fallbackPlayers=(nationalLinks?.links||[]).map(nationalFallbackCanonical).filter(x=>x.system.player_id&&!known.has(x.system.player_id));
  const players=[...masterPlayers,...fallbackPlayers];
  const q=new URLSearchParams(location.search),id=q.get('id'),name=q.get('name');
  const p=players.find(x=>x.system?.player_id===id)||players.find(x=>name&&((x.identity?.name_ko||'').toLowerCase()===name.toLowerCase()||(x.identity?.name_en||'').toLowerCase()===name.toLowerCase()));
  const pid=p?.system?.player_id;
+ // Expose only the resolved public identity scope. Legacy national-link IDs
+ // overlap the 2026-27 pro snapshot; never use a national alias to rename
+ // a different professional player.
+ window.KVL_PROFILE_CONTEXT={id:pid||'',level:p?.system?.competition_level||''};
  render(p,timelines.find(t=>t.player_id===pid)?.events||[],observations.filter(o=>o.player_id===pid&&o.visibility==='public'&&o.status!=='deleted'),competitions,participantSets);
 }).catch(err=>{console.error(err);area.innerHTML='<div class="pd-empty">선수 데이터를 불러오지 못했습니다.</div>'});
 function renderTimeline(events){if(!events.length)return'';return[...events].sort((a,b)=>String(b.start_date||b.year||'').localeCompare(String(a.start_date||a.year||''))).map(e=>{const period=e.end_date?`${val(e.start_date,e.year)} ~ ${e.end_date}`:`${val(e.start_date,e.year)} ~ 현재`;return`<div class="pd-timeline-item"><div class="pd-timeline-year">${esc(period)}</div><div><strong>${esc(e.team||e.organization||e.title||'-')}</strong><div>${esc([e.position,e.note].filter(Boolean).join(' · '))}</div></div></div>`}).join('')}

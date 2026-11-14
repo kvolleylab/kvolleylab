@@ -9,6 +9,11 @@
     const area=document.getElementById('playerArea');
     const title=area?.querySelector('.pd-title');
     if(!title)return false;
+    // The legacy national-link index reused some KVL-P IDs now present in
+    // the pro 2026-27 MASTER. A national alias is NOT a verified correction
+    // of an unrelated professional player's official name or birth date.
+    const scope=window.KVL_PROFILE_CONTEXT;
+    if(scope?.id===id&&scope?.level==='professional'){done=true;return true;}
     const name=String(canonical.name_ko||'').trim();
     const birth=String(canonical.birth_date||'').trim();
     if(name){

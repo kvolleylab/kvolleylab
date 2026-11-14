@@ -1,5 +1,36 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-15 · KOVO 선수 자동화 재시도: 통합 CI 복구·프로/대표팀 중복 ID 오표기 보호
+
+Status: FEATURE BRANCH IMPLEMENTED / SCOPED CI VERIFIED / **NOT DEPLOYED**.
+사용자가 2026-11-14 23시 이후 자동화 재시도를 요청함. 기존 `Player and Draft Integration` CI의 2026-10-24 구형 선수수 1,842명 고정, 경로 `?v=` 테스트 구현 및 비현재 해시 검사 문제를 확인하고 현재 시점 영구 ID/프로 선수 검색·드래프트 연결을 검증하는 새 `player-current-integrity` 테스트로 교체했다. 기존 역사 스냅샷은 삭제하지 않고 유지. [해당 CI 43611950516](https://github.com/kvolleylab/kvolleylab/actions/runs/43611950516) 2개 잡 성공, 후속 P1 보호 검증도 통과.
+
+동시에 `data/national/player_id_links_v1.json` ↔ `player_master_pro_vleague_2026_27_v1.json`에서 다른 선수에게 같은 영구 Player_ID 26건을 확인. 기존 링크가 프로 선수의 이름/DOB를 잘못 덮는 문제를 **선수 검색 및 프로필 표시단에서만 차단**. 대표팀/대학 승인 이름 정정은 유지. 근본적인 permanent ID migration은 승인 없이 실행하지 않음: [Issue #334](https://github.com/kvolleylab/kvolleylab/issues/334).
+
+KVL 전체 Quality Audit은 기존 명단 ID 원장 충돌 및 다른 레거시 검증 문제로 FAIL이며, 대회 로스터/MASTER 및 프로 선수 ID 일괄 수정을 하지 않았다. 신규 KOVO 공시→신인 선수명단·프로필 연동은 [PR #332](https://github.com/kvolleylab/kvolleylab/pull/332) Draft에만 있고, GitHub 일정 실행 및 운영 Pages 게시·MASTER writeback은 미실시. 상세 근거·복구: [2026-11-14 자동화 QA](validation/kovo-draft-roster-automation-20261114.md). 운영 반영은 사용자 별도 승인·실제 데이터 무결성 검증 후 시행.
+
+## 2026-11-14 · KOVO 공시와 2026-27 신인 선수명단·프로필의 GPT 독립 연동 검수
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / OFFLINE CI VERIFIED / **NOT DEPLOYED**.
+사용자는 드래프트 결과·KOVO 공식 등록 공시·V-리그 참가팀 선수명단·선수 프로필을 하나로 묶는 자동화를 요청하고, GPT 예약 작업 외에서 독립 실행되도록 요구했다.
+
+기존 `kovo-official-notices-collector.yml`(08:13 KST)로부터 공식 공시 데이터를 받고 `scripts/kvl_vleague_draft_sync.py`로 공식 등록·지명·ID 검증 결과를 파생한다. 공개 JSON `data/kovo/official-notices/2026-27/draft_registration_bridge.json`을 별도 생성한 뒤 V-리그 남녀 명단·선수 검색·프로필에서 같은 자료를 읽는 브라우저 오버레이를 구성한다. 원본 시즌 명단·선수 MASTER·대표팀/대학/국제 기록은 수정하지 않는다. `KVL_DRAFT_ROSTER_PUBLISH_APPROVED` 변수의 명시적 승인·trusted main·공개 JSON 바이트 대조가 없는 Pages 빌드는 차단한다.
+
+공식 지명34, 공식 신인 등록32, 안전한 프로필 파생 레코드28, 드래프트 보류6, 기타 등록/명칭·이적 검수 대상27. 기존 2026-10-27 스냅샷과 신규 추가 인원 수는 별개다. 동명이인/확인되지 않은 등록·이적/소속은 자동 승격하지 않고 구단·신원 검수 대기로 보존한다.
+
+독립 브리지 CI https://github.com/kvolleylab/kvolleylab/actions/runs/43607685347 (2026-11-14; Python8 + JS7 성공). 드래프트 프로필용 별도 PR #332는 예전 전체 Integration CI의 구형 테스트 계약 충돌을 보유했으므로 모든 CI PASS 또는 홈페이지 배포 완료로 부르지 않는다. 연속 운영/Google MASTER 자동쓰기/비신인 변동 전반 자동화는 아직 미완료이며 Issue #331로 추적한다. 상세 검증/재현/복구: [2026-11-14 자동화 기록](validation/kovo-draft-roster-automation-20261114.md). 운영 main 병합/게시에는 사용자 승인 필요.
+
+## 2026-11-14 · 신인 드래프트 지명 구단의 선수 프로필 노출
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / CI REVIEW PENDING / **NOT DEPLOYED**.
+사용자는 KOVO V-리그 참가팀 선수명단 공시 갱신과 함께, 신인 드래프트에서 선발된 프로 구단을 선수 프로필에서도 보여 달라고 요청했다. 공식 Draft Hub 지명 결과 34명 중 Player_ID 검증 링크가 존재하는 30명에 한해 프로필 상단에 **지명 구단·라운드·순위**를 보이는 검수용 코드를 구현한다. 수련선수 지명은 별도 표기한다.
+
+**지명 != 선수등록/현재 소속.** 정식 등록이 확인될 때까지 학교·기존 소속·학년·대회 이력 및 Player_ID를 자동으로 바꾸지 않는다. 미연결 4명은 별도 신원 검수 후 처리한다. 향후 등록 공시 → MASTER → 14개 구단 선수명단·선수 프로필까지의 실제 자동 갱신 및 검증은 [Issue #331](https://github.com/kvolleylab/kvolleylab/issues/331)로 추적한다. 현재 collector의 MASTER readback/writer는 아직 미연결이며, 이 브랜치가 이를 해결했다고 간주하지 않는다.
+
+작업 기준 `main=6d3ba0ddc7334c54095e779955c6e76c2b62a6f3`. 추가 검수/복구: [2026-11-14 명세](validation/draft-profile-affiliation-20261114.md). 사용자 승인 없이 main 병합/운영 반영 금지.
+
+
+
 ## 2026-11-14 · V-리그 승패 조견표 v4 정규리그 순위 아래 연결
 
 Status: USER APPROVED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED.

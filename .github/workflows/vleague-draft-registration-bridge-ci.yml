@@ -1,0 +1,52 @@
+name: V-League Draft Registration Bridge CI
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/kvl_vleague_draft_sync.py'
+      - 'tests/test_kvl_vleague_draft_sync.py'
+      - 'tests/test_kvl_vleague_draft_deploy.py'
+      - 'tests/vleague-draft-bridge-ui.test.cjs'
+      - 'assets/js/kvl-vleague-draft-bridge-v1.js'
+      - 'assets/js/kvl-competition-loader-v2.js'
+      - 'assets/js/player-detail-v2.js'
+      - 'assets/js/player-search-v2.js'
+      - '.github/workflows/kovo-official-notices-collector.yml'
+      - '.github/workflows/vleague-draft-registration-bridge-ci.yml'
+      - 'data/draft-applicants/2026-27/**'
+      - 'data/kovo/official-notices/2026-27/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify pure official draft registration reconciliation
+        run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_sync.py' -v
+      - name: Verify publishing is blocked without user approval
+        run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_deploy.py' -v
+      - name: Generate public bridge only in disposable runner
+        run: |
+          python -B scripts/kvl_vleague_draft_sync.py --write
+          python -B scripts/kvl_vleague_draft_sync.py --check
+      - name: Verify browser roster and player overlay contract
+        run: node --test tests/vleague-draft-bridge-ui.test.cjs
+      - name: Save sanitized preview artifact; do not publish
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vleague-draft-registration-preview
+          path: data/kovo/official-notices/2026-27/draft_registration_bridge.json
+          retention-days: 7
+          if-no-files-found: ignore
