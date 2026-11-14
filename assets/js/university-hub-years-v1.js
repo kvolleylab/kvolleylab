@@ -23,7 +23,7 @@ const dates=(start,end)=>start&&end?[start,end].map(x=>String(x).replaceAll('-',
 function fromArchive(item,sources){
   const panel=sex=>item[sex]?({label:item[sex].label,note:item[sex].note||'',r:(item[sex].rankings||[]).map(r=>[r.rank,r.team])}):null;
   const references=['men','women'].flatMap(sex=>(item[sex]?.sourceIds||[]).slice(0,1).map(id=>({sex,url:sources[id]?.url,publisher:sources[id]?.publisher||'공식자료'}))).filter(source=>/^https:\/\//.test(source.url||''));
-  return {id:item.id,year:String(item.year),type:item.type,typeName:C[item.type].title,status:'대회 종료',title:item.title,date:dates(item.startDate,item.endDate),location:item.location,resultsOnly:true,men:panel('men'),women:panel('women'),sources:references};
+  return {id:item.id,year:String(item.year),type:item.type,typeName:C[item.type].title,status:item.status==='partially-cancelled'?'여자부 완료 · 남자부 중단':'대회 종료',title:item.title,date:item.dateLabel||dates(item.startDate,item.endDate),location:item.location,resultsOnly:true,men:panel('men'),women:panel('women'),sources:references};
 }
 
 const typeFor=item=>item.category==='uleague'?'uleague':/1차/.test(item.series||'')?'first':/2차/.test(item.series||'')?'second':item.category==='international'?'intl':item.category==='overall'?'overall':'other';
@@ -58,7 +58,7 @@ function row(c,prefix='featured'){
     ? `<div class="record-sources"><span>출처: ${escapeHtml([...new Set(c.sources.map(source=>source.publisher))].join(' · '))}</span>${c.sources.map(source=>`<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${source.sex==='men'?'남자부':'여자부'} 공식 기록 ↗</a>`).join('')}</div>`
     : `<div class="gender-links"><a class="cta men" href="${escapeHtml(c.url)}" aria-label="${escapeHtml(c.title)} 남자부 보기">남자부 <span aria-hidden="true">↗</span></a>${c.womenUrl?`<a class="cta women" href="${escapeHtml(c.womenUrl)}" aria-label="${escapeHtml(c.title)} 여자부 보기">여자부 <span aria-hidden="true">↗</span></a>`:''}</div>`;
   const imageStyle=official?'':` style="--photo:${c.image?`url('${escapeHtml(c.image)}')`:'none'};--mobile-pos:${c.mobile}"`;
-  return `<article id="${prefix}-${escapeHtml(c.id)}" class="tournament ${official?'results-only':'is-clickable'}${official&&!c.women?' single-division':''}" data-type="${c.type}"${imageStyle}>
+  return `<article id="${prefix}-${escapeHtml(c.id)}" class="tournament ${official?'results-only':'is-clickable'}${official&&Boolean(c.men)!==Boolean(c.women)?' single-division':''}" data-type="${c.type}"${imageStyle}>
     ${!official&&c.url?`<a class="tournament-link" href="${escapeHtml(c.url)}" aria-label="${escapeHtml(c.title)} 대회 보기"></a>`:''}
     <div class="tourney-info"><div class="tourney-labels"><span class="type-badge">${escapeHtml(c.typeName)}</span><span class="status-badge">${c.status}</span></div><h3>${titleMarkup(c.title)}</h3><p class="meta"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/></svg>${escapeHtml(c.date)}</p><p class="meta"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>${escapeHtml(c.location)}</p>${actions}</div>${c.men?ranking(c.men,'men'):''}${c.women?ranking(c.women,'women'):''}</article>`;
 }
