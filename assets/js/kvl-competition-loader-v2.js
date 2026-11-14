@@ -15,6 +15,12 @@
    data=modules.apply(contract.assemble(definition,source,route),definitions,payloads);
   }
   if(config.source){const response=await fetch(new URL(config.source,location.href));if(!response.ok)throw Error('Competition data: '+response.status);data=await response.json();}
+  // 2026-27 V-League only: append source-verified rookie registrations.
+  // The official bridge is a public view, not a MASTER rewrite; failure keeps
+  // the last reviewed season snapshot and cannot break other competitions.
+  const draftBridge=window.KVLVLeagueDraftBridgeV1;
+  if(draftBridge?.genderOf(data)){try{data=draftBridge.applyCompetition(data,await draftBridge.load());}
+    catch(err){console.warn('[KVL draft registration overlay]',err);}}
   if(typeof window.KVLCompetitionAdapterV2==='function')data=await window.KVLCompetitionAdapterV2(data);
   if(String(data?.competitionFamily||data?.family||'').toLowerCase()==='domestic'&&window.KVLSchoolLogos){await window.KVLSchoolLogos.ready;data=window.KVLSchoolLogos.decorate(data);}
   const api=window.KVLCompetitionDataV2,errors=api.validate(data||{},{production:config.production===true});if(errors.length)throw Error(errors.join('; '));
