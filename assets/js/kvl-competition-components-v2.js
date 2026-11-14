@@ -574,8 +574,9 @@ function sortedRosterPlayers(r){
   return (an-bn)||String(a.name||a.en||'').localeCompare(String(b.name||b.en||''),'ko-KR');
  });
 }
-function rosterProfileName(p){
- const profile=/^KVL-P-\d+$/.test(p.playerId||'')?`player.html?id=${encodeURIComponent(p.playerId)}`:'';
+function rosterProfileName(p,professional=false){
+ const id=p.playerId||'',guard=window.KVLPlayerIdCollisionV1;
+ const profile=/^KVL-P-\d+$/.test(id)?(guard?.profileUrl(id,professional?'pro':'')||`player.html?id=${encodeURIComponent(id)}`):'';
  return profile?`<a href="${esc(profile)}" data-player-id="${esc(p.playerId)}" aria-label="${esc(p.name)} 선수 프로필">${esc(p.name)} <span aria-hidden="true">↗</span></a>`:esc(p.name||'미확인');
 }
 function rosterVolleybox(p){
@@ -596,7 +597,7 @@ function clubRosterNationality(p){
 function clubRosterRow(p){
  const vb=rosterVolleybox(p),birth=p.dob||(p.dobStatus?'확인 중':'미확인');
  const link=vb?`<a class="kvl1180-vb-link" href="${esc(vb)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(p.name)} Volleybox 프로필">VB ↗</a>`:'<span aria-label="Volleybox 미확인">—</span>';
- return `<div class="kvl-club-roster-row" role="row" data-roster-player data-player-id="${esc(p.playerId||'')}"><span class="kvl-club-number" role="cell">${esc(p.number??'—')}</span><span class="kvl-club-name" role="cell"><strong>${rosterProfileName(p)}</strong>${p.en?`<small>${esc(p.en)}</small>`:''}</span><span class="kvl-club-position" role="cell">${esc(p.position||'—')}</span><span class="kvl-club-height" role="cell">${p.heightCm>0?esc(p.heightCm)+'cm':'미확인'}</span><span class="kvl-club-birth" role="cell"${p.sourceNote?` title="${esc(p.sourceNote)}"`:''}>${esc(birth)}</span><span class="kvl-club-nationality" role="cell">${clubRosterNationality(p)}</span><span class="kvl-club-links" role="cell"><span class="kvl-club-desktop-link">${link}</span><details class="kvl-club-details"><summary aria-label="${esc(p.name)} 선수 상세정보">상세</summary><dl><div><dt>생년월일</dt><dd>${esc(birth)}</dd></div><div><dt>국적</dt><dd>${clubRosterNationality(p)}</dd></div><div><dt>Volleybox</dt><dd>${link}</dd></div></dl>${p.sourceNote?`<p>${esc(p.sourceNote)}</p>`:''}</details></span><span data-player-action-slot="${esc(p.playerId||'')}" hidden></span></div>`;
+ return `<div class="kvl-club-roster-row" role="row" data-roster-player data-player-id="${esc(p.playerId||'')}"><span class="kvl-club-number" role="cell">${esc(p.number??'—')}</span><span class="kvl-club-name" role="cell"><strong>${rosterProfileName(p,true)}</strong>${p.en?`<small>${esc(p.en)}</small>`:''}</span><span class="kvl-club-position" role="cell">${esc(p.position||'—')}</span><span class="kvl-club-height" role="cell">${p.heightCm>0?esc(p.heightCm)+'cm':'미확인'}</span><span class="kvl-club-birth" role="cell"${p.sourceNote?` title="${esc(p.sourceNote)}"`:''}>${esc(birth)}</span><span class="kvl-club-nationality" role="cell">${clubRosterNationality(p)}</span><span class="kvl-club-links" role="cell"><span class="kvl-club-desktop-link">${link}</span><details class="kvl-club-details"><summary aria-label="${esc(p.name)} 선수 상세정보">상세</summary><dl><div><dt>생년월일</dt><dd>${esc(birth)}</dd></div><div><dt>국적</dt><dd>${clubRosterNationality(p)}</dd></div><div><dt>Volleybox</dt><dd>${link}</dd></div></dl>${p.sourceNote?`<p>${esc(p.sourceNote)}</p>`:''}</details></span><span data-player-action-slot="${esc(p.playerId||'')}" hidden></span></div>`;
 }
 
 function renderRoster(d,teamCode){
