@@ -16,7 +16,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 import hashlib
 import json
 import math
@@ -32,6 +32,8 @@ API_ORIGIN = "https://user-api.kovo.co.kr"
 PAGE_SIZE = 200
 MAX_BYTES = 2_000_000
 MAX_PAGES = 10
+MAX_LIVE_LOOKUPS = 4
+KST = timezone(timedelta(hours=9))
 SEASONS = {
     "2026-27": {
         "season_id": "023", "match_type": "001", "phase_id": "201",
@@ -99,6 +101,17 @@ def validate_request_url(url):
     pairs = parse_qsl(parts.query, keep_blank_values=True)
     require(len(pairs) == len(dict(pairs)), "Duplicate source query keys")
     params = dict(pairs)
+    if parts.path == "/stat/real-time":
+        require(set(params) == {"season", "round", "gnum", "gcode", "hcode", "acode", "page", "size"}
+                and params["season"] == "023" and params["gcode"] == "001"
+                and re.fullmatch(r"[1-6]", params["round"])
+                and re.fullmatch(r"[1-9]\d{0,2}|1000", params["gnum"])
+                and all(re.fullmatch(r"[12]\d{3}", params[k]) for k in ("hcode", "acode"))
+                and params["hcode"] != params["acode"]
+                and params["hcode"][0] == params["acode"][0]
+                and params["page"] == "0" and params["size"] == "1",
+                "Unapproved live-points query")
+        return url
     require(params.get("seasonCode") == "023"
             and params.get("leagueCode") in {"201", *POSTSEASON_PHASES}
             and params.get("gender") in ("1", "2"), "Unapproved season/phase/gender")
@@ -240,6 +253,113 @@ def verified_live_sets(sets, won):
     return completed
 
 
+def live_points_url(match):
+    """Public text-broadcast route observed in KOVO's app on 2026-11-14.
+
+    Read one feed row only; the independent `game` object contains all five
+    set scores. No lineup/player/feed data is used or persisted. Regular season
+    only until the postseason contract has been observed independently.
+    """
+    require(match["phase_id"] == "201", "Live supplement is regular-season only")
+    return validate_request_url(API_ORIGIN + "/stat/real-time?" + urlencode({
+        "season": match["season_id"], "round": match["round"], "gnum": match["number"],
+        "gcode": match["match_type"], "hcode": match["home"]["provider_code"],
+        "acode": match["away"]["provider_code"], "page": 0, "size": 1,
+    }))
+
+
+def live_game_points(data, match):
+    payload = envelope_payload(data)
+    game = payload.get("game") if isinstance(payload, dict) else None
+    require(isinstance(game, dict), "REALTIME_GAME_MISSING")
+    expected = {"seasonCode": match["season_id"], "round": match["round"],
+                "gameNum": match["number"], "homeCode": match["home"]["provider_code"],
+                "awayCode": match["away"]["provider_code"], "gameDate": match["date"],
+                "gameStartTime": match["time"]}
+    require(all(type(game.get(k)) is type(v) and game[k] == v for k, v in expected.items()),
+            "REALTIME_IDENTITY_MISMATCH")
+    won = {side: integer(game.get(f"{side}SetPoint"), "live set wins", maximum=3)
+           for side in ("home", "away")}
+    require(min(won.values()) < 3, "REALTIME_INVALID_COUNTERS")
+    current_set = integer(game.get("setIng"), "live set number", minimum=1, maximum=5)
+    count = sum(won.values())
+    require(current_set == (count if max(won.values()) == 3 else count + 1),
+            "REALTIME_SET_COUNTER_MISMATCH")
+    points, trailing = [], False
+    for n in range(1, 6):
+        row = {side: integer(game.get(f"{side}S{n}Point"), "live set points", maximum=199)
+               for side in ("home", "away")}
+        if row == {"home": 0, "away": 0}:
+            trailing = True
+        else:
+            require(not trailing, "REALTIME_POINTS_GAP")
+            points.append(row)
+    return won, points, current_set
+
+
+def supplement_live_points(matches, reader, stamp, observations):
+    """Add missing completed points, never promote wins, final status or ranks.
+
+    Schedule identity/wins remain authoritative. A supplemental source failure
+    cannot block the healthy schedule publisher. Conflicting completed points
+    are not merged; an ongoing rally is never certified as a completed set.
+    Evidence contains only bounded, validated public match fields and enums.
+    """
+    today = datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(KST).date().isoformat()
+    lookups = 0
+    for match in matches:
+        if match["date"] != today or match["phase_id"] != "201":
+            continue
+        won, points = match["sets_won"], match["sets"] or []
+        current = verified_live_sets(points, won)
+        count = sum(won.values())
+        evidence = {"source_key": match["source_key"], "observed_at": stamp,
+                    "schedule": {"url": match["source_url"], "status": match["status"],
+                                 "end_time": match.get("end_time"),
+                                 "wins": dict(won), "points": [dict(p) for p in points],
+                                 "verified_sets": len(current)},
+                    "decision": "SCHEDULE_COMPLETE", "selected_sets": len(current)}
+        observations.append(evidence)
+        if match["status"] != "live" or len(current) >= count:
+            continue
+        evidence["decision"] = "LOOKUP_LIMIT"
+        if lookups >= MAX_LIVE_LOOKUPS:
+            continue
+        lookups += 1
+        url = live_points_url(match)
+        evidence["realtime"] = {"url": url, "observed_at": stamp}
+        try:
+            data = reader(url)
+        except SourceError:
+            evidence["decision"] = "REALTIME_UNAVAILABLE"
+            continue
+        try:
+            live_won, live_points, current_set = live_game_points(data, match)
+        except SourceError as exc:
+            # Never expose response text, arbitrary exception messages or player data.
+            evidence["decision"] = str(exc) if str(exc) in {
+                "REALTIME_GAME_MISSING", "REALTIME_IDENTITY_MISMATCH", "REALTIME_INVALID_COUNTERS",
+                "REALTIME_SET_COUNTER_MISMATCH", "REALTIME_POINTS_GAP"} else "REALTIME_INVALID_FIELDS"
+            continue
+        evidence["realtime"].update(wins=live_won, points=live_points, current_set=current_set)
+        if any(live_won[s] < won[s] for s in won):
+            evidence["decision"] = "REALTIME_BEHIND_SCHEDULE"
+            continue
+        # Both sources' win counters must corroborate every accepted prefix.
+        live_completed = verified_live_sets(live_points, live_won)
+        candidate = verified_live_sets(live_completed[:count], won)
+        if any(any(row[s] != candidate[i][s] for s in won)
+               for i, row in enumerate(current) if i < len(candidate)):
+            evidence["decision"] = "COMPLETED_POINTS_CONFLICT"
+            continue
+        if len(candidate) <= len(current):
+            evidence["decision"] = "REALTIME_POINTS_INCOMPLETE"
+            continue
+        match["sets"] = [{s: row[s] for s in won} for row in candidate]
+        match["live_points_source_url"] = url
+        evidence.update(decision="SUPPLEMENTED", selected_sets=len(candidate))
+
+
 def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="201"):
     config = SEASONS[season]
     require(phase_id in {"201", *POSTSEASON_PHASES}, "Unapproved schedule phase")
@@ -325,6 +445,7 @@ def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="2
         "gender": gender, "number": number, "phase_id": phase_id,
         "phase_name": text_value(raw.get("leagueName"), "leagueName"),
         "round": round_number, "date": day.isoformat(), "time": start,
+        "end_time": end,
         "venue": venue or None,
         "home": sides["home"], "away": sides["away"], "status": status,
         "sets_won": won, "sets": points if points else None,
@@ -441,7 +562,8 @@ def normalize_standings(data, *, season, gender, source_url, observed_at):
     return {"gender": gender, "source_url": source_url, "observed_at": observed_at, "rows": rows}
 
 
-def collect_season(season="2026-27", *, fetcher=None, include_standings=True, now=None):
+def collect_season(season="2026-27", *, fetcher=None, include_standings=True, now=None,
+                   live_observations=None):
     """Read both regular seasons and every supported postseason phase.
 
     `fetcher(url)` is injectable for offline tests and must return the unmodified
@@ -469,6 +591,8 @@ def collect_season(season="2026-27", *, fetcher=None, include_standings=True, no
                                                  source_url=url, observed_at=stamp))
     all_matches = matches + pending_matches
     require(len({m["number"] for m in all_matches}) == len(all_matches), "Official global game numbers overlap")
+    observations = live_observations if live_observations is not None else []
+    supplement_live_points(matches, reader, stamp, observations)
     matches.sort(key=lambda m: (m["date"], m["time"], m["number"]))
     stable = [{k: v for k, v in m.items() if k != "observed_at"} for m in all_matches]
     return {"schema_version": 1, "season": season, "fetched_at": stamp,

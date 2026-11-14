@@ -602,3 +602,19 @@ approximately 20 minutes. Worker configuration and protected data are unchanged.
 252-match official/MASTER comparison required no data changes. Production approval
 and two consecutive actual live full-path observations are still required.
 [Incident, scope, evidence and release gate](validation/vleague-partial-observations-v1.md).
+
+## 2026-11-14 · Supplement missing completed live-set points from official broadcast
+
+Status: USER REQUESTED REPAIR / IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED.
+On base `aa517e887`, add bounded anonymous KOVO `/stat/real-time` reads only when
+today's regular-season schedule lacks completed-set points. Verify exact game
+identity, both sources' win counters and legal terminal points. Keep schedule
+wins/final markers/standings authoritative; unavailable or conflicting extra
+data cannot block valid schedule publication. Preserve source/timestamps and
+retain sanitized point/decision evidence in check/publish artifacts. No Worker,
+cron, protected data or UI redesign. Approximately20-minute cadence and30-minute
+stale rule remain. New production approval and two consecutive actual live
+end-to-end checks are still required. #325's historical NOT DEPLOYED note above
+was superseded by its approved merge452628249 and Pages43373473979 on11/13;
+this new supplement is not included in that earlier approval.
+[Contract, validation and release gate](validation/vleague-live-set-points-v1.md).

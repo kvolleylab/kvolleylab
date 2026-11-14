@@ -637,6 +637,7 @@ class ArchivePreparationTests(SeasonFixture):
         folder = self.inputs()
         receipt = update.read_json(folder / "publication.json")
         receipt["lifecycle"] = {"raw_master": {"private_note": "SYNTHETIC_PRIVATE_DIAGNOSTIC"}}
+        receipt["live_points_checks"] = [{"private_note": "SYNTHETIC_PRIVATE_DIAGNOSTIC"}]
         update.write_json(folder / "publication.json", receipt)
         input_sha = hashlib.sha256((folder / "publication.json").read_bytes()).hexdigest()
         result = self.prepare(folder)

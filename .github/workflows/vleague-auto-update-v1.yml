@@ -160,6 +160,7 @@ jobs:
           path: |
             ${{ runner.temp }}/kvl-vleague-preview/report.json
             ${{ runner.temp }}/kvl-vleague-preview/report.md
+            ${{ runner.temp }}/kvl-vleague-preview/source-observations.json
             ${{ runner.temp }}/kvl-vleague-preview/lifecycle.json
             ${{ runner.temp }}/kvl-vleague-preview/pages-configuration.json
             ${{ runner.temp }}/kvl-vleague-preview/candidate/
@@ -247,6 +248,7 @@ jobs:
             ${{ runner.temp }}/kvl-vleague-publish/lifecycle.json
             ${{ runner.temp }}/kvl-vleague-publish/report.json
             ${{ runner.temp }}/kvl-vleague-publish/report.md
+            ${{ runner.temp }}/kvl-vleague-publish/source-observations.json
             ${{ runner.temp }}/kvl-vleague-publish/preflight.json
             ${{ runner.temp }}/kvl-vleague-publish/deploy.json
           retention-days: 7

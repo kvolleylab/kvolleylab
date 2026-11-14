@@ -537,7 +537,7 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
             "publication": {"schema_version", "season", "checked_at", "status", "mode", "source_coverage", "divisions",
                             "changed_files", "master_checked", "master_changed_cells", "production_written", "master_written",
                             "master_readback_verified", "quality_audit", "publication_gate", "lifecycle",
-                            "postseason_source_coverage"},
+                            "postseason_source_coverage", "live_points_checks"},
             "deployment": {"status", "expected_sha", "built_sha", "build_requested", "verified_files", "verified_at",
                            "verified_file_sha256", "verified_payload_sha256"},
         }
