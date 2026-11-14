@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "scope": "대학 허브의 역대 대회 결과 요약: 2024·2025 U-리그/연맹 1·2차전, 2013~2023 KUSF 대학배구 U-리그 공식 확인 우승·준우승. 신규 상세 대회 페이지·Engine·자동화 등록이 아님.",
+  "scope": "대학배구 허브 역대 결과 요약: 2024~2025 U-리그/연맹 1·2차전, 2023 U-리그 및 연맹 고성·제천, 2013~2022 KUSF 대학배구 U-리그. 신규 상세 대회/Engine/자동화 등록이 아님.",
   "verifiedAt": "2026-11-14",
-  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다. 2013~2023 U-리그는 KUSF 공식 역대표의 우승·준우승만 싣고 3·4위는 검증 전까지 게시하지 않는다.",
+  "rankingMethod": "결승 승패로 1·2위, 준결승 탈락팀은 공동 3위. 준결승 없이 6강 리그 상위 2팀이 결승을 치른 2024 U-리그 남자부는 결승 1·2위와 6강 리그 3·4위를 구분한다. 2013~2023 U-리그는 KUSF 공식 역대표의 우승·준우승만 싣고 3·4위는 검증 전까지 게시하지 않는다. 2023 연맹 고성·제천은 남자 A그룹 준결승 패자와 여자부 준결승 패자를 각각 공동3위로 표시한다.",
   "driveVerification": "KVL_운영원칙_MASTER_v18 및 기존 대학 원본 구조 확인. 2024·2025 대학 결과 MASTER는 검색에서 발견되지 않아 연맹 공식 공개 기록을 직접 대조한 별도 허브 요약본. 기존 MASTER 수정 없음. 2013~2023 대학 경기결과 MASTER도 별도 검증되지 않아 KUSF 공개 역대표를 사용하며, 개최일 미확인 연도는 날짜를 추정하지 않는다.",
   "sources": {
     "university-league-2025-men": {
@@ -147,6 +147,30 @@
       "publisher": "한국대학배구연맹",
       "url": "https://www.kuvf.co.kr/32",
       "scope": "2021 남녀 U-리그 개최 일정",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-goseong-2023-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://www.kuvf.co.kr/430",
+      "scope": "2023 연맹 대회 준결승·결승 기록과 최종 1~4위 근거",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-goseong-2023-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/441",
+      "scope": "2023 연맹 대회 준결승·결승 기록과 최종 1~4위 근거",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-jecheon-2023-men": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://www.kuvf.co.kr/449",
+      "scope": "2023 연맹 대회 준결승·결승 기록과 최종 1~4위 근거",
+      "verifiedAt": "2026-11-14"
+    },
+    "university-jecheon-2023-women": {
+      "publisher": "한국대학배구연맹",
+      "url": "https://kuvf.co.kr/456",
+      "scope": "2023 연맹 대회 준결승·결승 기록과 최종 1~4위 근거",
       "verifiedAt": "2026-11-14"
     }
   },
@@ -577,6 +601,134 @@
         ],
         "sourceIds": [
           "kusf-u-league-history-volleyball"
+        ]
+      }
+    },
+    {
+      "id": "university-goseong-2023",
+      "year": 2023,
+      "type": "first",
+      "title": "2023 대한항공배 전국대학배구 고성대회",
+      "startDate": "2023-06-29",
+      "endDate": "2023-07-07",
+      "location": "경남 고성군 · 국민체육센터·반다비체육문화센터",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-goseong-2023-men",
+        "university-goseong-2023-women"
+      ],
+      "men": {
+        "label": "남자부 A그룹 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "중부대"
+          },
+          {
+            "rank": 2,
+            "team": "인하대"
+          },
+          {
+            "rank": 3,
+            "team": "한양대"
+          },
+          {
+            "rank": 3,
+            "team": "경기대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2023-men"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "단국대"
+          },
+          {
+            "rank": 2,
+            "team": "광주여대"
+          },
+          {
+            "rank": 3,
+            "team": "목포과학대"
+          },
+          {
+            "rank": 3,
+            "team": "경일대"
+          }
+        ],
+        "sourceIds": [
+          "university-goseong-2023-women"
+        ]
+      }
+    },
+    {
+      "id": "university-jecheon-2023",
+      "year": 2023,
+      "type": "second",
+      "title": "2023 대한항공배 전국대학배구 제천대회",
+      "startDate": "2023-08-16",
+      "endDate": "2023-08-24",
+      "location": "충북 제천시 · 제천실내체육관·어울림체육센터",
+      "status": "completed",
+      "presentation": "results-only",
+      "pagePath": null,
+      "sourceIds": [
+        "university-jecheon-2023-men",
+        "university-jecheon-2023-women"
+      ],
+      "men": {
+        "label": "남자부 A그룹 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "인하대"
+          },
+          {
+            "rank": 2,
+            "team": "경기대"
+          },
+          {
+            "rank": 3,
+            "team": "성균관대"
+          },
+          {
+            "rank": 3,
+            "team": "중부대"
+          }
+        ],
+        "sourceIds": [
+          "university-jecheon-2023-men"
+        ]
+      },
+      "women": {
+        "label": "여자부 최종순위",
+        "rankings": [
+          {
+            "rank": 1,
+            "team": "단국대"
+          },
+          {
+            "rank": 2,
+            "team": "광주여대"
+          },
+          {
+            "rank": 3,
+            "team": "우석대"
+          },
+          {
+            "rank": 3,
+            "team": "목포과학대"
+          }
+        ],
+        "sourceIds": [
+          "university-jecheon-2023-women"
         ]
       }
     },
