@@ -1,0 +1,101 @@
+name: V-League Draft Registration Bridge CI
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/kvl_vleague_draft_sync.py'
+      - 'scripts/kvl_vleague_draft_seed_reviewed.py'
+      - 'data/kovo/official-notices/2026-27/draft_registration_bridge.json'
+      - 'scripts/quality_audit/public-review-manifest.json'
+      - 'tests/test_kvl_vleague_draft_sync.py'
+      - 'tests/test_kvl_vleague_draft_deploy.py'
+      - 'tests/test_kovo_collector_publish_permissions.py'
+      - 'tests/vleague-draft-bridge-ui.test.cjs'
+      - 'assets/js/kvl-vleague-draft-bridge-v1.js'
+      - 'assets/js/kvl-competition-loader-v2.js'
+      - 'assets/js/player-detail-v2.js'
+      - 'assets/js/player-search-v2.js'
+      - '.github/workflows/kovo-official-notices-collector.yml'
+      - '.github/workflows/vleague-draft-registration-bridge-ci.yml'
+      - 'data/draft-applicants/2026-27/**'
+      - 'data/kovo/official-notices/2026-27/**'
+  push:
+    branches:
+      - feature/draft-profile-affiliation-20261114
+    paths:
+      - '.github/workflows/vleague-draft-registration-bridge-ci.yml'
+      - 'scripts/kvl_vleague_draft_seed_reviewed.py'
+      - 'scripts/kvl_vleague_draft_sync.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify pure official draft registration reconciliation
+        run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_sync.py' -v
+      - name: Verify publishing is blocked without user approval
+        run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_deploy.py' -v
+      - name: Verify collector and Pages publisher have separate privileges
+        run: python -B -m unittest discover -s tests -p 'test_kovo_collector_publish_permissions.py' -v
+      - name: Generate public bridge only in disposable runner
+        run: |
+          python -B scripts/kvl_vleague_draft_sync.py --write
+          python -B scripts/kvl_vleague_draft_sync.py --check
+      - name: Verify browser roster and player overlay contract
+        run: node --test tests/vleague-draft-bridge-ui.test.cjs
+      - name: Save sanitized preview artifact; do not publish
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vleague-draft-registration-preview
+          path: data/kovo/official-notices/2026-27/draft_registration_bridge.json
+          retention-days: 7
+          if-no-files-found: ignore
+
+  seed-reviewed-bridge:
+    needs: verify-bridge
+    if: >-
+      github.repository == 'kvolleylab/kvolleylab' &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/feature/draft-profile-affiliation-20261114' &&
+      needs.verify-bridge.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: One-time seed of 32 reviewed registrations, 28 verified profiles
+        run: |
+          python -B scripts/kvl_vleague_draft_seed_reviewed.py
+          python -B scripts/kvl_vleague_draft_seed_reviewed.py --check
+      - name: Commit only the vetted bridge and public review hash to this isolated branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/kovo/official-notices/2026-27/draft_registration_bridge.json scripts/quality_audit/public-review-manifest.json
+          if git diff --cached --quiet; then
+            echo "Seed already reviewed and byte-identical."
+          else
+            git commit -m "data(kovo): seed source-verified rookie registration bridge [skip ci]"
+            git push origin HEAD:refs/heads/feature/draft-profile-affiliation-20261114
+          fi

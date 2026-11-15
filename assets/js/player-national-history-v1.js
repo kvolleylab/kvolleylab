@@ -3,8 +3,12 @@ const BASE='data/national/national_team_history_v1.json';
 const CONTEXT='data/national/national_team_context_v1.json';
 const LINKS='data/national/player_id_links_v1.json';
 const LEGACY=['data/national/national_team_history_2018_2019.json','data/national/national_team_history_2016_2017.json','data/national/national_team_history_2014_2015.json','data/national/national_team_roster_2014_u18.json','data/national/national_team_history_2012_2013.json','data/national/national_team_roster_2012_u20.json','data/national/national_team_history_2010_2011.json','data/national/national_team_status_2015_corrections.json','data/national/national_team_world_u23_2015.json','data/national/national_team_roster_2010_u18.json','data/national/national_team_research_2010_u20.json','data/national/national_team_roster_2019_u19.json'];
-const id=new URLSearchParams(location.search).get('id')||'';
+const params=new URLSearchParams(location.search),id=params.get('id')||'';
 if(!id)return;
+// A shared legacy KVL-P identifier refers to two different people. The
+// professional profile must never inherit the unrelated person's national
+// appearances; an unresolved link only displays a disambiguation screen.
+if(window.KVLPlayerIdCollisionV1?.isConflict(id)&&params.get('scope')!=='national')return;
 const esc=v=>String(v??'').replace(/[&<>'\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
 const get=async url=>{try{const r=await fetch(url,{cache:'no-store'});return r.ok?await r.json():null}catch{return null}};
 const isAge=level=>/^U\d+$/i.test(String(level||'').trim());
