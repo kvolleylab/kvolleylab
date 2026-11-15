@@ -15,6 +15,7 @@ on:
       - 'tests/test_kvl_vleague_draft_deploy.py'
       - 'tests/test_kovo_collector_publish_permissions.py'
       - 'tests/vleague-draft-bridge-ui.test.cjs'
+      - 'tests/vleague-draft-education.test.cjs'
       - 'assets/js/kvl-vleague-draft-bridge-v1.js'
       - 'assets/js/kvl-competition-loader-v2.js'
       - 'assets/js/player-detail-v2.js'
@@ -32,6 +33,7 @@ on:
       - 'scripts/kvl_vleague_draft_sync.py'
       - 'scripts/kvl_draft_education_v1.py'
       - 'scripts/kvl_draft_education_seed_v1.py'
+      - 'tests/vleague-draft-education.test.cjs'
   workflow_dispatch:
 
 permissions:
