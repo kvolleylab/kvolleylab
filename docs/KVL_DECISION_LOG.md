@@ -1,5 +1,10 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-15 · 승패 조견표의 상대팀 칸을 승점으로 정정
+
+Status: USER CLARIFIED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED.
+사용자가 상대팀 칸은 해당 경기 획득 승점, R승점은 해당 라운드 합계, 총점은 모든 라운드 합계라고 명확히 정정했다. 11월 14일 v4의 세트 승수 표시와 라운드 시점 총승점 정의를 대체한다. 3–0·3–1은 3:0점, 3–2는 2:1점이며 0점과 미진행 공란을 구분한다. 모든 표의 `총점`에는 현재까지 종료된 정규리그 전체 승점을 동일하게 표시한다. 순위는 해당 라운드까지 누적 기준을 유지하고 설명에 명시한다. 기존 자동화·경기/선수 JSON·팀 순서·디자인·다른 대회를 변경하지 않는다. 기준 main `b775ee2f`. 25개 계산·연결 검사와 남녀 4개 폭 브라우저 검수를 완료했다. 병합·Pages·운영 증거는 release PR에 기록한다. [정의·검수·변경·복구](validation/vleague-matrix-points-v5.md).
+
 ## 2026-11-14 · V-리그 승패 조견표 v4 정규리그 순위 아래 연결
 
 Status: USER APPROVED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED.

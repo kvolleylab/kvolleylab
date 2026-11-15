@@ -1,4 +1,4 @@
-/* Pure read-only V-League matrix. Source: approved matrix v4, PR #328. */
+/* Read-only V-League match-points matrix. Scoring clarified on 2026-11-15. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
@@ -31,12 +31,16 @@
     }
     return h===s.home && a===s.away;
   }
+  function matchPoints(score) {
+    const winner=score.home>score.away?'home':'away',loser=winner==='home'?'away':'home';
+    return {[winner]:Math.min(score.home,score.away)===2?2:3,[loser]:Math.min(score.home,score.away)===2?1:0};
+  }
   function add(stats,m) {
     const h=stats[m.home.code],a=stats[m.away.code],s=m.score;
     h.games++;a.games++;h.setWins+=s.home;h.setLosses+=s.away;a.setWins+=s.away;a.setLosses+=s.home;
     const winner=s.home>s.away?h:a,loser=winner===h?a:h;
     winner.wins++;loser.losses++;
-    winner.points+=Math.min(s.home,s.away)===2?2:3;loser.points+=Math.min(s.home,s.away)===2?1:0;
+    const points=matchPoints(s);h.points+=points.home;a.points+=points.away;
     for (const t of s.sets) {h.pointsFor+=t.home;h.pointsAgainst+=t.away;a.pointsFor+=t.away;a.pointsAgainst+=t.home;}
   }
   // Cross multiplication preserves exact quotients; rounded display ratios do not break ties.
@@ -108,6 +112,8 @@
     const fixtures=[...byPair.values()],finals=[];
     for(const m of fixtures){if(m.status!=='final')continue;if(validateScore(m))finals.push(m);else issues.push({round:m.matrixRound,id:m.id,code:'INVALID_FINAL'});}
     for(let r=1;r<=6;r++){const count=fixtures.filter(m=>m.matrixRound===r).length;if(count!==21)issues.push({round:r,code:'SCHEDULE_COVERAGE',count,expected:21});}
+    const seasonStats=Object.fromEntries(codes.map(c=>[c,blank(c)]));
+    for(const m of finals)add(seasonStats,m);
     const rounds=[];
     for(let r=1;r<=6;r++){
       const own=finals.filter(m=>m.matrixRound===r),upto=finals.filter(m=>m.matrixRound<=r),scheduled=fixtures.filter(m=>m.matrixRound===r);
@@ -116,13 +122,13 @@
       const rankings=ranks(stats,upto,data.standings);
       const issuesUpto=issues.filter(x=>x.round<=r),started=own.length>0||scheduled.some(m=>['live','in_progress'].includes(m.status));
       const matrix=Object.fromEntries(codes.map(c=>[c,Object.fromEntries(codes.map(o=>[o,null]))]));
-      for(const m of own){matrix[m.home.code][m.away.code]=m.score.home;matrix[m.away.code][m.home.code]=m.score.away;}
+      for(const m of own){const p=matchPoints(m.score);matrix[m.home.code][m.away.code]=p.home;matrix[m.away.code][m.home.code]=p.away;}
       rounds.push({round:r,completed:own.length,expected:21,started,complete:own.length===21,
         cumulativeComplete:upto.length===r*21,issues:issuesUpto,rankSource:rankings.official?'official-reconciled':'rules-calculated',
-        rows:teams.map(t=>({...t,...stats[t.code],rPoints:rs[t.code].points,rank:issuesUpto.length?null:rankings.byCode[t.code].rank,
-          tied:rankings.byCode[t.code].tied,sets:matrix[t.code]}))});
+        rows:teams.map(t=>({...t,...stats[t.code],totalPoints:seasonStats[t.code].points,rPoints:rs[t.code].points,rank:issuesUpto.length?null:rankings.byCode[t.code].rank,
+          tied:rankings.byCode[t.code].tied,opponentPoints:matrix[t.code]}))});
     }
     return {teams,rounds,issues,notices,completed:finals.length,fixtures:fixtures.length,updatedAt:data.updatedAt,source:data.automation?.source};
   }
-  return {build,roundOf,validateScore,compare,ratioCompare,ranks};
+  return {build,roundOf,validateScore,matchPoints,compare,ratioCompare,ranks};
 });

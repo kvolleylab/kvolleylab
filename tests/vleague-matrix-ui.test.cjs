@@ -39,13 +39,22 @@ for(const gender of ['men','women'])test(gender+': matrix follows original stand
     for(const round of a.doc.querySelectorAll('.matrix-round')){
       assert.deepEqual([...round.querySelectorAll('tbody tr')].map(x=>x.dataset.team),order);
       assert.deepEqual([...round.querySelectorAll('thead th')].slice(4).map(x=>x.textContent),order.map(c=>a.config.structure.calendarDisplay.teamAliases[c]));
+      assert.equal(round.querySelector('thead th:nth-child(2)').textContent,'총점');
+      for(const row of round.querySelectorAll('tbody tr')){
+        const official=a.source.standings.rows.find(t=>t.team.code===row.dataset.team);
+        assert.equal(row.querySelector('.matrix-total').textContent,String(official.points),'season total stays the same across all six tables');
+        const own=row.querySelector('.matrix-round-points').textContent;
+        if(own!=='')assert.equal([...row.querySelectorAll('[data-opponent]')].reduce((n,c)=>n+Number(c.textContent),0),Number(own));
+      }
     }
+    assert.match(a.doc.querySelector('.matrix-explainer').textContent,/획득 승점/);
+    assert.doesNotMatch(a.doc.querySelector('.kvl-vleague-matrix').textContent,/획득 세트|0세트/);
     const model=Matrix.build(a.d,a.d),latest=model.rounds.filter(x=>x.started).at(-1);
     for(const t of latest.rows){const official=a.source.standings.rows.find(x=>x.team.code===t.code);assert.equal(t.points,official.points);assert.equal(t.rank,official.rank);}
     for(const m of a.source.matches.filter(m=>m.status==='final')){
       const r=Matrix.roundOf(m);
-      assert.equal(a.doc.querySelector(`[data-round="${r}"] [data-team="${m.home.code}"] [data-opponent="${m.away.code}"]`).textContent,String(m.score.home));
-      assert.equal(a.doc.querySelector(`[data-round="${r}"] [data-team="${m.away.code}"] [data-opponent="${m.home.code}"]`).textContent,String(m.score.away));
+      assert.equal(a.doc.querySelector(`[data-round="${r}"] [data-team="${m.home.code}"] [data-opponent="${m.away.code}"]`).textContent,String(m.score.home===3?(m.score.away===2?2:3):(m.score.home===2?1:0)));
+      assert.equal(a.doc.querySelector(`[data-round="${r}"] [data-team="${m.away.code}"] [data-opponent="${m.home.code}"]`).textContent,String(m.score.away===3?(m.score.home===2?2:3):(m.score.away===2?1:0)));
     }
     a.w.KVLCompetitionComponentsV2.refreshLiveMatches(true);
     assert.equal(a.doc.querySelectorAll('.kvl-vleague-matrix').length,1);assert.equal(JSON.stringify(a.d),before);assert.deepEqual(a.errors,[]);
