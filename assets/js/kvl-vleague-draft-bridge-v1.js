@@ -7,6 +7,7 @@
 'use strict';
 
 const SOURCE='data/kovo/official-notices/2026-27/draft_registration_bridge.json';
+const EDUCATION_SOURCE='data/draft-applicants/2026-27/education-v1.json';
 const idPattern=/^KVL-P-[0-9]{6}$/;
 const urlPattern=/^https:\/\/kovo\.co\.kr\/news\/official-notices\/[0-9]+$/;
 const validHash=x=>/^[0-9a-f]{64}$/.test(x||'');
@@ -39,13 +40,68 @@ function validBridge(b){
  return true;
 }
 
+
+function validEducation(input){
+ if(!input||input.schema_version!==1||input.season!=='2026-27'
+    ||!Array.isArray(input.records)||input.record_count!==input.records.length)return false;
+ const seen=new Set();
+ for(const gender of ['M','W']){
+  const src=input.sources?.[gender];
+  if(!src||src.source_id!=='KOVO-2026-27-'+gender+'-'+(gender==='M'?'157978':'157977')
+     ||src.source_url!=='https://kovo.co.kr/news/kovo/press/'+(gender==='M'?'157978':'157977')
+     ||!validHash(src.source_sha256)||!src.verified_at)return false;
+ }
+ for(const r of input.records){
+  if(!r||!r.applicant_id||seen.has(r.applicant_id)||!r.name||!['M','W'].includes(r.gender)
+    ||r.source_id!==input.sources[r.gender].source_id
+    ||(!r.high_school&&!r.university)
+    ||(r.high_school&&typeof r.high_school!=='string')
+    ||(r.university&&typeof r.university!=='string')
+    ||r.high_school?.length>100||r.university?.length>100)return false;
+  seen.add(r.applicant_id);
+ }
+ return true;
+}
+
+/* Education is a verified source snapshot. The match must be exact by
+   applicant ID, gender and name; never guess a Player_ID from school/name. */
+function withEducation(bridge,education){
+ if(!validBridge(bridge))throw new Error('Invalid V-League draft bridge');
+ if(!validEducation(education))throw new Error('Invalid KOVO draft education');
+ const result=copy(bridge),rows=new Map(education.records.map(r=>[r.applicant_id,r]));
+ const byPlayer=new Map();
+ for(const r of result.registered){
+  const school=rows.get(r.applicant_id);
+  if(!school||school.gender!==r.gender||school.name!==r.name)continue;
+  const educationInfo={
+   ...(school.high_school?{high_school:school.high_school}:{}),
+   ...(school.university?{university:school.university}:{})
+  };
+  r.education=educationInfo;
+  if(r.player_id)byPlayer.set(r.player_id,{name:r.name,gender:r.gender,education:educationInfo});
+ }
+ for(const p of result.profiles){
+  const record=byPlayer.get(p.system?.player_id);
+  if(!record||p.identity?.name_ko!==record.name||p.identity?.gender!==record.gender)continue;
+  p.current_roster={...p.current_roster,...record.education};
+ }
+ return result;
+}
+
 async function load(){
  if(!fetchPromise)fetchPromise=fetch(SOURCE,{cache:'no-store'}).then(r=>{
   if(!r.ok)throw new Error('V-League draft bridge unavailable: '+r.status);
   return r.json();
- }).then(data=>{
+ }).then(async data=>{
   if(!validBridge(data))throw new Error('V-League draft bridge invalid');
-  return data;
+  try{
+   const response=await fetch(EDUCATION_SOURCE,{cache:'no-store'});
+   if(!response.ok)throw new Error('Education source unavailable: '+response.status);
+   return withEducation(data,await response.json());
+  }catch(error){
+   console.warn('[KVL verified draft education unavailable — omitted]',error);
+   return data;
+  }
  });
  return fetchPromise;
 }
@@ -136,5 +192,5 @@ function profilesFrom(existing,bridge){
  return safe;
 }
 
-return {SOURCE,validBridge,load,applyCompetition,profilesFrom,genderOf};
+return {SOURCE,EDUCATION_SOURCE,validBridge,validEducation,withEducation,load,applyCompetition,profilesFrom,genderOf};
 });
