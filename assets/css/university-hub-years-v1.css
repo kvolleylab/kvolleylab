@@ -173,3 +173,8 @@
  .university-years-hub .results-only .tourney-info h3{font-size:19px}
 }
 .university-years-hub .archive-note{margin:0 0 12px;color:#64778c;font-size:12px;font-weight:400}
+
+/* Archived years can have a verified men's U-League podium without a women's result. */
+@media(min-width:701px){
+ .university-years-hub .tournament.results-only.single-division{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+}

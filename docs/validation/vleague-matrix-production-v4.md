@@ -1,5 +1,7 @@
 # V-리그 승패 조견표 v4 운영 연결
 
+> 2026-11-15 정정: 상대팀 칸과 총점의 정의는 [승점 기준 v5](vleague-matrix-points-v5.md)로 대체한다. 아래는 v4 당시의 검수 이력이다.
+
 2026-11-14 · USER APPROVED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED
 
 ## 위치와 범위

@@ -1,0 +1,53 @@
+name: University historical archive scoped QA
+on:
+  pull_request:
+    paths:
+      - "university-competitions.html"
+      - "assets/js/university-hub-years-v1.js"
+      - "assets/css/university-hub-years-v1.css"
+      - "data/archive/university-results-v1.json"
+      - "tests/university-hub-years.test.cjs"
+      - "scripts/quality_audit/public-review-manifest.json"
+      - ".github/workflows/university-historical-archive-qa.yml"
+  push:
+    branches: ["feature/university-verified-archive-release-20261114"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  university-archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: JavaScript syntax and hub regression
+        run: |
+          node --check assets/js/university-hub-years-v1.js
+          node tests/university-hub-years.test.cjs
+      - name: Historical data and publication hash
+        run: |
+          python3 - <<'PY'
+          import json, hashlib
+          from pathlib import Path
+          p=Path("data/archive/university-results-v1.json")
+          data=json.loads(p.read_text())
+          m=json.loads(Path("scripts/quality_audit/public-review-manifest.json").read_text())
+          events=data["competitions"]
+          assert len(events)==27 and len({e["id"] for e in events})==27
+          n=sum(len(e.get(sex,{}).get("rankings",[])) for e in events for sex in ("men","women"))
+          assert n==147,n
+          assert "university-haenam-2018" not in {e["id"] for e in events}
+          muan=next(e for e in events if e["id"]=="university-muan-2020")
+          assert "men" not in muan and len(muan["women"]["rankings"])==3
+          for e in events:
+            assert e["year"]<=2025
+            refs=e.get("sourceIds",[])+[id for s in ("men","women") for id in e.get(s,{}).get("sourceIds",[])]
+            for source_id in refs:
+              assert source_id in data["sources"] and data["sources"][source_id]["url"].startswith("https://")
+          rec=m["files"][str(p)]
+          assert rec["record_status"]=="VERIFIED" and rec["access_level"]=="PUBLIC"
+          assert rec["sha256"]==hashlib.sha256(p.read_bytes()).hexdigest()
+          print("PASS: 27 events / 147 ranking entries / 2018 withholding / 2020 Muan boundary / exact public SHA256")
+          PY

@@ -11,7 +11,33 @@ for(const g of ['men','women'])test(`${g}: real 126 fixtures, 12 finals and all 
  for(const t of x.rounds[0].rows){const o=data.standings.rows.find(o=>o.team.code===t.code);for(const k of ['rank','games','wins','losses','points','setWins','setLosses','pointsFor','pointsAgainst'])assert.equal(t[k],o[k],`${g} ${t.code} ${k}`);}
  assert.equal(JSON.stringify(data),copy);assert.equal(x.rounds[0].rankSource,'official-reconciled');assert.ok(x.rounds.slice(1).every(r=>!r.started));
 });
-test('0 is displayed; unplayed is null; diagonal stays blank',()=>{const {data,config}=load('men'),x=M.build(data,config),row=x.rounds[0].rows.find(t=>t.code==='HDC');assert.equal(row.sets.KAL,0);assert.equal(row.sets.WRC,null);assert.equal(row.sets.HDC,null);const html=A.render(x);assert.match(html,/현대캐피탈 대 대한항공: 0세트 획득">0</);assert.equal((html.match(/class="matrix-self"/g)||[]).length,42);assert.equal((html.match(/class="matrix-table"/g)||[]).length,6);});
+test('0 is displayed; unplayed is null; diagonal stays blank',()=>{const {data,config}=load('men'),x=M.build(data,config),row=x.rounds[0].rows.find(t=>t.code==='HDC');assert.equal(row.opponentPoints.KAL,0);assert.equal(row.opponentPoints.WRC,null);assert.equal(row.opponentPoints.HDC,null);const html=A.render(x);assert.match(html,/현대캐피탈 대 대한항공: 0승점 획득">0</);assert.equal((html.match(/class="matrix-self"/g)||[]).length,42);assert.equal((html.match(/class="matrix-table"/g)||[]).length,6);});
+test('all six legal match results award 3:0 or 2:1 league points in both directions',()=>{
+ for(const [h,a,hp,ap] of [[3,0,3,0],[3,1,3,0],[3,2,2,1],[0,3,0,3],[1,3,0,3],[2,3,1,2]]){
+  const {data,config}=load('men');data.matches.forEach(m=>{m.status='scheduled';m.score=null;});
+  const game=finalize(data.matches[0],h,a),x=M.build(data,config),home=x.rounds[0].rows.find(t=>t.code===game.home.code),away=x.rounds[0].rows.find(t=>t.code===game.away.code);
+  assert.equal(home.opponentPoints[away.code],hp,`${h}:${a} home`);assert.equal(away.opponentPoints[home.code],ap,`${h}:${a} away`);
+  assert.equal(home.rPoints,hp);assert.equal(away.rPoints,ap);assert.equal(home.totalPoints,hp);assert.equal(away.totalPoints,ap);
+ }
+});
+test('season total sums every round, while each row sums to its own round points',()=>{
+ const {data,config}=load('men');data.matches.forEach(m=>{m.status='scheduled';m.score=null;});
+ const first=finalize(data.matches[0],3,1),h=first.home.code,a=first.away.code;
+ const second=data.matches.find(m=>M.roundOf(m)===2&&[m.home.code,m.away.code].includes(h)&&[m.home.code,m.away.code].includes(a));
+ finalize(second,second.home.code===h?3:2,second.home.code===h?2:3);
+ const x=M.build(data,config);
+ for(const round of x.rounds){
+  assert.equal(round.rows.find(t=>t.code===h).totalPoints,5);assert.equal(round.rows.find(t=>t.code===a).totalPoints,1);
+  for(const row of round.rows)assert.equal(Object.values(row.opponentPoints).reduce((n,p)=>n+(p??0),0),row.rPoints);
+ }
+ assert.equal(x.rounds[0].rows.find(t=>t.code===h).points,3,'round-end ranking keeps its own cumulative basis');
+ assert.equal(x.rounds[0].rows.find(t=>t.code===h).rPoints,3);assert.equal(x.rounds[1].rows.find(t=>t.code===h).rPoints,2);
+ assert.equal(x.rounds[2].started,false);assert(Object.values(x.rounds[2].rows[0].opponentPoints).every(p=>p===null));
+ finalize(first,2,3);const corrected=M.build(data,config);
+ assert.equal(corrected.rounds[0].rows.find(t=>t.code===h).opponentPoints[a],1);
+ assert.equal(corrected.rounds[0].rows.find(t=>t.code===h).totalPoints,3);
+ assert.equal(corrected.rounds[0].rows.find(t=>t.code===a).totalPoints,3);
+});
 test('all 126 results produce 6 x 21 fixtures and 378 league points',()=>{const {data,config}=load('men');data.matches.forEach((m,i)=>finalize(m,i%2?3:i%3,i%2?i%3:3));data.standings={rows:[]};const x=M.build(data,config);assert.equal(x.completed,126);for(const [i,r]of x.rounds.entries()){assert.equal(r.completed,21);assert.equal(r.complete,true);assert.equal(r.rows.reduce((s,t)=>s+t.rPoints,0),63);assert.equal(r.rows.reduce((s,t)=>s+t.points,0),63*(i+1));assert.ok(r.rows.every(t=>t.games===6*(i+1)));}assert.equal(x.rounds[5].rows.reduce((s,t)=>s+t.points,0),378);});
 test('partial round 3 accumulates rounds 1-3 and no round 4 results',()=>{const {data,config}=load('men');data.matches.forEach(m=>{m.status='scheduled';m.score=null;});data.matches.filter(m=>M.roundOf(m)<3).forEach(m=>finalize(m));data.matches.filter(m=>M.roundOf(m)===3).slice(0,2).forEach(m=>finalize(m,3,2));const x=M.build(data,config);assert.equal(x.rounds[2].completed,2);assert.equal(x.rounds[2].rows.reduce((s,t)=>s+t.points,0),132);assert.equal(x.rounds[2].rows.reduce((s,t)=>s+t.rPoints,0),6);assert.equal(x.rounds[3].started,false);});
 test('round parsing uses stage fallback and rejects contradictory rounds/postseason',()=>{assert.equal(M.roundOf({stage:'3라운드',round:''}),3);assert.equal(M.roundOf({stage:'정규리그',round:'6'}),6);assert.equal(M.roundOf({stage:'3라운드',round:'2'}),null);assert.equal(M.roundOf({stage:'플레이오프',round:'1'}),null);});
