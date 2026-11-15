@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/vleague-draft-review-snapshot-v1.yml'
       - 'data/kovo/official-notices/2026-27/draft_registration_bridge.json'
+      - 'data/draft-applicants/2026-27/education-v1.json'
       - 'assets/js/kvl-vleague-draft-bridge-v1.js'
       - 'scripts/kvl_vleague_draft_seed_reviewed.py'
   workflow_dispatch:
@@ -24,6 +25,7 @@ jobs:
         run: |
           python -B scripts/kvl_vleague_draft_seed_reviewed.py --check
           python -B scripts/kvl_vleague_draft_sync.py --check
+          python -B scripts/kvl_draft_education_v1.py --check
           python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_sync.py' -v
       - name: Pack real V-League source snapshot for isolated screen review
         uses: actions/upload-artifact@v4
@@ -35,6 +37,7 @@ jobs:
             data/competitions/v-league-men-2026-27/rosters.json
             data/competitions/v-league-women-2026-27/rosters.json
             data/kovo/official-notices/2026-27/draft_registration_bridge.json
+            data/draft-applicants/2026-27/education-v1.json
             assets/js/kvl-vleague-draft-bridge-v1.js
             assets/img/team-logos/v-league/2026-27/men/*.svg
             assets/img/team-logos/v-league/2026-27/women/*.svg
