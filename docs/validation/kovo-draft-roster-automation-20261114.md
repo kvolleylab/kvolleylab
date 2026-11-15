@@ -108,3 +108,16 @@ node --test tests/vleague-draft-bridge-ui.test.cjs
 - 실제 예약 실행·신규 공시 발생 후 자동 GitHub commit / GitHub Pages HTTPS 실증은 **아직 수행·검증하지 않음**. PR의 CI 성공은 운영 완료와 다르다.
 - `main` 병합·사이트 활성화는 PR 검사·사용자 운영 승인·게시 변수 설정 후 별도 검증.
 - 글로벌 Quality Audit은 확인 시점 115 PASS/5 FAIL/8 NOT VERIFIED/3 NOT RUN. 운영 원장 ID 충돌, 다른 레거시 테스트·보안 검수 이슈는 [Issue #334](https://github.com/kvolleylab/kvolleylab/issues/334) 및 독립 Quality Audit 과제로 남긴다. `Quality Audit` workflow 결과가 success여도 보고서 안의 FAIL이 0임을 뜻하지 않는다.
+
+
+## 검수 브랜치 초기 데이터 생성 완료 (2026-11-15)
+
+`feature/draft-profile-affiliation-20261114`에서 소스 검증 CI 성공 후 **격리된 push job**으로 `data/kovo/official-notices/2026-27/draft_registration_bridge.json`과 공개 출처 검수 원장 `scripts/quality_audit/public-review-manifest.json`을 생성했다.
+
+- GitHub commit: `8ab55fe100319fee9290dcfc56a3bc7ddc4a6487`. (운영 `main` 아님.)
+- 공개 JSON SHA-256: `00174e9b007701e6aed2a09ec9ba2e63a9b6584551c5911d610a12513a78e84b`; 검수 원장의 `sha256`과 일치.
+- 공식 신인 지명 34명, KOVO 등록 공시 확인 32명, 정확 ID 연결 프로필 28명, 드래프트 신원 보류 6건, 기타 후보27건. 실제 신규 등록 인원과 기존 공시명단 전체를 혼동하지 않는다.
+- 이 파일은 코드가 운영에 반영될 경우 최초 예약 수집 전에도 안전한 등록 정보를 표시하기 위한 **시드**이며, 미확인 등록·이적을 공개 MASTER 값으로 승격시키거나 실제 Google Sheets에 기록하지 않는다.
+- 자동 시드 job은 PR 전용 브랜치에서만 `contents:write`를 사용하고, 원본이 바뀌면 `SOURCE_CHANGED_REVIEW_REQUIRED`로 새 검수를 요구한다. 무인으로 추가 ID를 발급하지 않는다.
+- 메인에 반영된 운영 설정/Pages 배포/모바일 브라우저 검수는 별도 사실이며, 이 commit의 성공만으로 `DEPLOYED`라 하지 않는다.
+
