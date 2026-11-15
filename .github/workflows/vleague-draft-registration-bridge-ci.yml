@@ -4,6 +4,10 @@ on:
   pull_request:
     paths:
       - 'scripts/kvl_vleague_draft_sync.py'
+      - 'scripts/kvl_draft_education_v1.py'
+      - 'scripts/kvl_draft_education_seed_v1.py'
+      - 'tests/test_kvl_draft_education_v1.py'
+      - 'data/draft-applicants/2026-27/education-v1.json'
       - 'scripts/kvl_vleague_draft_seed_reviewed.py'
       - 'data/kovo/official-notices/2026-27/draft_registration_bridge.json'
       - 'scripts/quality_audit/public-review-manifest.json'
@@ -26,6 +30,8 @@ on:
       - '.github/workflows/vleague-draft-registration-bridge-ci.yml'
       - 'scripts/kvl_vleague_draft_seed_reviewed.py'
       - 'scripts/kvl_vleague_draft_sync.py'
+      - 'scripts/kvl_draft_education_v1.py'
+      - 'scripts/kvl_draft_education_seed_v1.py'
   workflow_dispatch:
 
 permissions:
@@ -45,6 +51,8 @@ jobs:
           node-version: '24'
       - name: Verify pure official draft registration reconciliation
         run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_sync.py' -v
+      - name: Verify official KOVO high school and university source matching
+        run: python -B -m unittest discover -s tests -p 'test_kvl_draft_education_v1.py' -v
       - name: Verify publishing is blocked without user approval
         run: python -B -m unittest discover -s tests -p 'test_kvl_vleague_draft_deploy.py' -v
       - name: Verify collector and Pages publisher have separate privileges
@@ -53,14 +61,20 @@ jobs:
         run: |
           python -B scripts/kvl_vleague_draft_sync.py --write
           python -B scripts/kvl_vleague_draft_sync.py --check
+      - name: Generate and verify academic source in disposable runner
+        run: |
+          python -B scripts/kvl_draft_education_v1.py --write
+          python -B scripts/kvl_draft_education_v1.py --check
       - name: Verify browser roster and player overlay contract
-        run: node --test tests/vleague-draft-bridge-ui.test.cjs
+        run: node --test tests/vleague-draft-bridge-ui.test.cjs tests/vleague-draft-education.test.cjs
       - name: Save sanitized preview artifact; do not publish
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: vleague-draft-registration-preview
-          path: data/kovo/official-notices/2026-27/draft_registration_bridge.json
+          path: |
+            data/kovo/official-notices/2026-27/draft_registration_bridge.json
+            data/draft-applicants/2026-27/education-v1.json
           retention-days: 7
           if-no-files-found: ignore
 
@@ -87,12 +101,14 @@ jobs:
         run: |
           python -B scripts/kvl_vleague_draft_seed_reviewed.py
           python -B scripts/kvl_vleague_draft_seed_reviewed.py --check
+          python -B scripts/kvl_draft_education_seed_v1.py
+          python -B scripts/kvl_draft_education_seed_v1.py --check
       - name: Commit only the vetted bridge and public review hash to this isolated branch
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- data/kovo/official-notices/2026-27/draft_registration_bridge.json scripts/quality_audit/public-review-manifest.json
+          git add -- data/kovo/official-notices/2026-27/draft_registration_bridge.json data/draft-applicants/2026-27/education-v1.json scripts/quality_audit/public-review-manifest.json
           if git diff --cached --quiet; then
             echo "Seed already reviewed and byte-identical."
           else
