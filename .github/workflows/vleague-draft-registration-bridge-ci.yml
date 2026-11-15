@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - 'scripts/kvl_vleague_draft_sync.py'
+      - 'scripts/kvl_vleague_draft_seed_reviewed.py'
+      - 'data/kovo/official-notices/2026-27/draft_registration_bridge.json'
+      - 'scripts/quality_audit/public-review-manifest.json'
       - 'tests/test_kvl_vleague_draft_sync.py'
       - 'tests/test_kvl_vleague_draft_deploy.py'
       - 'tests/test_kovo_collector_publish_permissions.py'
@@ -16,6 +19,13 @@ on:
       - '.github/workflows/vleague-draft-registration-bridge-ci.yml'
       - 'data/draft-applicants/2026-27/**'
       - 'data/kovo/official-notices/2026-27/**'
+  push:
+    branches:
+      - feature/draft-profile-affiliation-20261114
+    paths:
+      - '.github/workflows/vleague-draft-registration-bridge-ci.yml'
+      - 'scripts/kvl_vleague_draft_seed_reviewed.py'
+      - 'scripts/kvl_vleague_draft_sync.py'
   workflow_dispatch:
 
 permissions:
@@ -53,3 +63,39 @@ jobs:
           path: data/kovo/official-notices/2026-27/draft_registration_bridge.json
           retention-days: 7
           if-no-files-found: ignore
+
+  seed-reviewed-bridge:
+    needs: verify-bridge
+    if: >-
+      github.repository == 'kvolleylab/kvolleylab' &&
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/feature/draft-profile-affiliation-20261114' &&
+      needs.verify-bridge.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: One-time seed of 32 reviewed registrations, 28 verified profiles
+        run: |
+          python -B scripts/kvl_vleague_draft_seed_reviewed.py
+          python -B scripts/kvl_vleague_draft_seed_reviewed.py --check
+      - name: Commit only the vetted bridge and public review hash to this isolated branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/kovo/official-notices/2026-27/draft_registration_bridge.json scripts/quality_audit/public-review-manifest.json
+          if git diff --cached --quiet; then
+            echo "Seed already reviewed and byte-identical."
+          else
+            git commit -m "data(kovo): seed source-verified rookie registration bridge [skip ci]"
+            git push origin HEAD:refs/heads/feature/draft-profile-affiliation-20261114
+          fi
