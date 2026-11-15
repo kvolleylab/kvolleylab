@@ -669,32 +669,29 @@
       },
       "venueLabel": "서울 장충체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:27",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-15T06:39:05+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-15T06:59:02+00:00",
+      "score": {
         "home": 0,
-        "away": 2,
-        "sourceKey": "023:001:MALE:27",
-        "observedAt": "2026-11-15T06:39:05+00:00"
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 23,
+            "away": 25
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 20,
-          "away": 25,
-          "status": "completed",
-          "observedAt": "2026-11-15T06:39:05+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=27&gcode=001&hcode=1009&acode=1005&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 27,
-          "status": "completed",
-          "observedAt": "2026-11-15T06:39:05+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=27&gcode=001&hcode=1009&acode=1005&page=0&size=1"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-015",
@@ -2942,6 +2939,27 @@
       {
         "rank": 1,
         "team": {
+          "code": "HDC",
+          "name": "현대캐피탈",
+          "fullName": "현대캐피탈",
+          "en": "HDC"
+        },
+        "poolId": "LEAGUE",
+        "games": 5,
+        "wins": 4,
+        "losses": 1,
+        "points": 12,
+        "setWins": 12,
+        "setLosses": 6,
+        "pointsFor": 440,
+        "pointsAgainst": 405,
+        "setRatio": "2.000",
+        "pointRatio": "1.086",
+        "statusLabel": "1위"
+      },
+      {
+        "rank": 2,
+        "team": {
           "code": "KEP",
           "name": "한국전력",
           "fullName": "한국전력",
@@ -2958,27 +2976,6 @@
         "pointsAgainst": 340,
         "setRatio": "1.800",
         "pointRatio": "1.003",
-        "statusLabel": "1위"
-      },
-      {
-        "rank": 2,
-        "team": {
-          "code": "HDC",
-          "name": "현대캐피탈",
-          "fullName": "현대캐피탈",
-          "en": "HDC"
-        },
-        "poolId": "LEAGUE",
-        "games": 4,
-        "wins": 3,
-        "losses": 1,
-        "points": 9,
-        "setWins": 9,
-        "setLosses": 6,
-        "pointsFor": 363,
-        "pointsAgainst": 337,
-        "setRatio": "1.500",
-        "pointRatio": "1.077",
         "statusLabel": "2위"
       },
       {
@@ -2990,16 +2987,16 @@
           "en": "WRC"
         },
         "poolId": "LEAGUE",
-        "games": 3,
+        "games": 4,
         "wins": 3,
-        "losses": 0,
+        "losses": 1,
         "points": 8,
         "setWins": 9,
-        "setLosses": 3,
-        "pointsFor": 280,
-        "pointsAgainst": 247,
-        "setRatio": "3.000",
-        "pointRatio": "1.134",
+        "setLosses": 6,
+        "pointsFor": 348,
+        "pointsAgainst": 324,
+        "setRatio": "1.500",
+        "pointRatio": "1.074",
         "statusLabel": "3위"
       },
       {
@@ -3155,14 +3152,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 13/126경기 종료 · 2026-11-15 15:39 KST 반영",
-  "updatedAt": "2026-11-15T06:39:05+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 14/126경기 종료 · 2026-11-15 15:59 KST 반영",
+  "updatedAt": "2026-11-15T06:59:02+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 13,
+    "completedMatches": 14,
     "postseason": {
       "matched": 0,
       "completed": 0,
