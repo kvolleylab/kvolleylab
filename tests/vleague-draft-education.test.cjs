@@ -71,5 +71,5 @@ test('college/high-school data does not create new professional player IDs',()=>
  assert.deepEqual(after,before);
  const flagged=x.registered.find(p=>p.name==='김아중');
  assert.equal(flagged.player_id,null);
- assert.equal(knownIds.has('KVL-P-000008'),false,'original university ID stays university source');
+ assert.equal(knownIds.has('KVL-P-000008'),true,'pre-existing university Player_ID must be retained');
 });
