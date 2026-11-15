@@ -1,5 +1,12 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-15 · 신인 선수 프로필 학교 이력 선택 표시 v2
+
+Status: USER REQUESTED / PROTOTYPE IMPLEMENTED / SCOPED CI AND PC·MOBILE QA VERIFIED / NOT DEPLOYED.
+사용자 검수 의견에 따라 일반 공개 선수 정보에서는 빈/미확인 학교·선수 ID·기술적 자료 구분을 기본 표시에서 생략하고, 공식 KOVO 드래프트 참가신청서의 `출신 고등학교` 및 `출신 대학교`를 별도로 표시한다. 고교 직접 지명자는 대학교 공란을 숨기고, 대학 출신은 둘 다 확인될 때 함께 표시한다. 중학교·산업체 소속을 학교로 추측하지 않는다.
+
+남녀 2026-27 드래프트 공식 117명 대조 중 116명 학력 항목 1개 이상 검증(고교111·대학59·동시54). 신인 등록 브리지의 기존 32명/프로필 ID28명/보류6건은 변경하지 않고, 정확한 applicant_id·이름·성별과 일치한 경우에만 별도 `education-v1.json` 자료를 합쳐 표시한다. [신규 CI 43727264487](https://github.com/kvolleylab/kvolleylab/actions/runs/43727264487) 출처·결합·게시 가드 검사 전부 성공. 독립 검수 HTML은 PC1280/태블릿768/모바일390·360px UI·이벤트·가로넘침·콘솔오류 검사 통과. 별도 승인 없이 운영 main/Google MASTER/기존 Player_ID/개인 메모는 변경하지 않는다. 상세 [검증보고](validation/vleague-draft-education-v2.md).
+
 ## 2026-11-15 · 승패 조견표의 상대팀 칸을 승점으로 정정
 
 Status: USER CLARIFIED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED.
