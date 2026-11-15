@@ -634,3 +634,21 @@ this new supplement is not included in that earlier approval.
 ## 2026-11-14 · 대학배구 과거 확정 결과 홈페이지 운영 반영 승인
 
 Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED IN ISOLATED PR. 사용자가 "확정된 부분에서는 홈페이지에 반영해"를 승인했다. 선행 PR #327의 전체 미검증 초안은 운영에 합치지 않고, main `6d3ba0ddc7334c54095e779955c6e76c2b62a6f3` 기준 독립 릴리스 브랜치 `feature/university-verified-archive-release-20261114`에서 공식·학교·지자체 출처로 확인된 대학배구 과거 결과만 연결한다. 과거 27대회·순위 147개(기존 2024/25 6대회·48개 순위 불변), 2013~2023 U-리그 공식 남녀 1·2위, 2018 청양 및 2019~2023 연맹대회 선별 결과를 포함한다. **2018 해남은 독립 검증 부족으로 운영 제외**, 2020 무안 남자부는 최종 순위 미확정으로 비워 두고 여자부 결과만 공개한다. 연도별 선택 및 아코디언은 아카이브 데이터에서 자동 생성한다. 기존 2026 대회 카드 3개, HERO·메뉴·상세 엔진·선수/경기 MASTER·V-리그 실경기 자동화는 변경하지 않는다. GitHub Actions QA·Pages 배포와 운영 확인 전에는 DEPLOYED로 표시하지 않으며 PR #327은 잔여 조사용 Draft로 유지한다. [출처·검수·배포 및 복구](validation/university-historical-release-20261114.md).
+
+
+## 2026-11-15 · Compact live completed-set points in schedule rows
+
+Status: USER REQUESTED FIX / IMPLEMENTED IN ISOLATED BRANCH / DOM QA PASSED / NOT DEPLOYED.
+User reported overlapping first/second-set labels in the Woori Card–Hyundai Capital
+live schedule. Base `d12347123c680a09c64607f2d89c881e16fc3ed1`. The existing PC
+schedule reserves five point cells within 285px; visible `1세트 20-25` exceeds
+a cell's width. Render live completed-set points as `20-25`, matching finished
+rows, and preserve the set number in title/aria-label. Applies to men's/women's
+schedule and team-result rows; summary cards and the shared CSS stay unchanged.
+Bump the production engine script URL to invalidate the cached renderer.
+No source, score, ID, MASTER, roster, standings, Worker or cron changes.
+37 regression tests plus six DOM checks against the actual published JSON passed.
+These are not pixel-layout or continuous live acceptance evidence. Candidate
+browser access to the local preview returned ERR_CONNECTION_REFUSED; actual
+1440/390/360 layout verification and production approval/deployment remain pending.
+Rollback is a revert of this display-only change. Release evidence belongs in its PR.

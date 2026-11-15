@@ -31,7 +31,11 @@ for(const gender of ['men','women'])test(`${gender}: both summary divisions, sch
  for(const [i,points] of [[1,{home:25,away:20}],[2,{home:25,away:22}]]){
    const now=start+i*15*60000;s.setNow(now);
    for(const g of ['men','women']){const m=feeds[g].matches.find(m=>m.date==='2026-11-06');m.liveScore={...m.liveScore,home:i,away:1,observedAt:new Date(now).toISOString()};const initial=g==='men'?[{home:21,away:25},{home:25,away:20}]:[{home:25,away:20},{home:21,away:25}];m.liveSets=[...initial,...(i===2?[points]:[])].map(p=>({...p,status:'completed'}));}
-   await s.run(300000);assert.equal(score(),`${i}-1`);assert.match(doc.querySelector('#dv2-day-dialog').textContent,new RegExp(i===1?'19:58 KST':'20:13 KST'));assert.equal(d.rosters,roster);assert.equal(JSON.stringify(d.matches.map(m=>m.id)),JSON.stringify(ids));
+   await s.run(300000);assert.equal(score(),`${i}-1`);
+   const setSpans=[...doc.querySelectorAll(`.kvl1180-match-row[data-match-id="${current().id}"] .kvl1180-set-scores>span`)];
+   assert.equal(setSpans.length,i+1);
+   for(const [n,span] of setSpans.entries()){assert.match(span.textContent,/^\d+-\d+$/);assert.equal(span.getAttribute('title'),`${n+1}세트`);assert.equal(span.getAttribute('aria-label'),`${n+1}세트 ${span.textContent}`);}
+   assert.match(doc.querySelector('#dv2-day-dialog').textContent,new RegExp(i===1?'19:58 KST':'20:13 KST'));assert.equal(d.rosters,roster);assert.equal(JSON.stringify(d.matches.map(m=>m.id)),JSON.stringify(ids));
  }
  assert(s.requests.every(r=>r.options.cache==='no-store'&&r.url.searchParams.has('kvlPoll')));
  s.setFail();s.setNow(start+60*60000);await s.run(300000);await s.run(60000);assert.equal(score(),'—');assert.match(doc.querySelector('#dv2-day-dialog').textContent,/갱신 지연.*당시 2 : 1/s);assert.deepEqual(s.errors,[]);
