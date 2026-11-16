@@ -118,6 +118,21 @@ $('accountButton').innerHTML=icon('user')+' 로그인 정보';$('accountButton')
 document.addEventListener('click',ev=>{const t=ev.target.closest('button,a');if(!t)return;if(t.dataset.close){t.dataset.close==='profileDialog'?closeProfile():$(t.dataset.close).close();return}if(t.dataset.savePlayer){toggleBookmark(t.dataset.savePlayer);return}if(t.dataset.notePlayer){openPlayerNote(t.dataset.notePlayer);return}if(t.dataset.editNote){openNote(t.dataset.editNote);return}if(t.hasAttribute('data-account-open')){$('accountDialog').showModal();return}if(t.dataset.view){changeView(t.dataset.view,true);return}if(t.dataset.layout){setLayout(t.dataset.layout);return}if(t.dataset.quick){$('filters').elements.level.value=t.dataset.quick;syncDependentFilters();limit=pageSize();changeView('search',true);return}if(t.dataset.profile){if(ev.ctrlKey||ev.metaKey||ev.shiftKey||ev.altKey||ev.button!==0)return;ev.preventDefault();openProfile(t.dataset.profile);return}if(t.hasAttribute('data-all-grades')){document.querySelectorAll('[name="grade"]').forEach(c=>c.checked=false);updateGradeCaption();limit=pageSize();renderSearch()}if(t.hasAttribute('data-reset-filters'))resetFilters()});
 for(const dialog of document.querySelectorAll('dialog')){let pressed=false;const outside=ev=>{const r=dialog.getBoundingClientRect();return ev.target===dialog&&(ev.clientX<r.left||ev.clientX>=r.right||ev.clientY<r.top||ev.clientY>=r.bottom)};dialog.addEventListener('pointerdown',ev=>pressed=ev.button===0&&outside(ev));dialog.addEventListener('pointercancel',()=>pressed=false);dialog.addEventListener('click',ev=>{const close=pressed&&outside(ev);pressed=false;if(close)dialog.id==='profileDialog'?closeProfile():dialog.close()})}
 $('profileDialog').addEventListener('cancel',ev=>{ev.preventDefault();closeProfile()});
+$('memberNoteForm').addEventListener('submit',async ev=>{
+ ev.preventDefault();if(!memberReady)return;
+ const payload={id:$('memberNoteId').value||null,expected_revision:$('memberNoteRevision').value?Number($('memberNoteRevision').value):null,player_id:$('memberNotePlayer').value,season:$('memberNoteSeason').value.trim(),title:$('memberNoteTitleInput').value.trim(),body:$('memberNoteBody').value.trim()};
+ if(!payload.title||!payload.body)return;
+ $('memberNoteError').textContent='';
+ try{await privateApi('save_note',payload);$('memberNoteDialog').close();await refreshPrivateState();if(view!=='notes')changeView(view)}
+ catch(err){$('memberNoteError').textContent=err.message||'메모 저장에 실패했습니다.'}
+});
+$('memberDeleteNote').addEventListener('click',async()=>{
+ const id=$('memberNoteId').value;if(!id||!confirm('이 메모를 삭제할까요?'))return;
+ try{await privateApi('delete_note',{id,expected_revision:Number($('memberNoteRevision').value)});$('memberNoteDialog').close();await refreshPrivateState()}
+ catch(err){$('memberNoteError').textContent=err.message||'메모 삭제에 실패했습니다.'}
+});
+document.addEventListener('input',ev=>{if(ev.target?.id==='memberNoteSearch'){noteQuery=ev.target.value;renderNotes()}});
+document.addEventListener('change',ev=>{if(ev.target?.id==='memberNoteSeasonFilter'){noteSeason=ev.target.value;renderNotes()}});
 window.addEventListener('message',ev=>{const frame=document.querySelector('.profile-frame');if(ev.origin===location.origin&&ev.source===frame?.contentWindow&&ev.data?.type==='kvl:close-profile')closeProfile()});
 $('searchForm').addEventListener('submit',ev=>{ev.preventDefault();limit=pageSize();changeView('search',true)});let debounce;$('playerSearch').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(()=>{limit=pageSize();changeView('search')},120)});
 $('filters').addEventListener('change',ev=>{if(ev.target.name==='level')syncDependentFilters();else if(ev.target.name==='grade')updateGradeCaption();limit=pageSize();renderSearch()});$('filters').addEventListener('submit',ev=>ev.preventDefault());$('filters').addEventListener('reset',()=>setTimeout(()=>{$('playerSearch').value='';syncDependentFilters();limit=pageSize();renderSearch()},0));
@@ -132,5 +147,5 @@ try{
  for(const pos of [...new Set(players.flatMap(p=>p.rawPosition.split(/[/,+]/)).filter(Boolean))].sort())$('positionFilter').insertAdjacentHTML('beforeend',`<option>${e(pos)}</option>`);
  try{draftIndex=await loadDraftIndex();const bundles=await Promise.all(draftIndex.seasons.map(s=>loadDraftSeason(s.season)));draftRows=bundles.flatMap(b=>validateAgainstCatalog(b.rows,catalog));for(const s of draftIndex.seasons)$('draftSeason').insertAdjacentHTML('beforeend',`<option value="${e(s.season)}">${e(s.label)} 공식 신청 확인</option>`)}catch(err){draftLoadFailed=true;$('draftSeason').disabled=true;$('draftFilterStatus').hidden=false;$('draftFilterStatus').textContent='드래프트 연결 자료를 불러오지 못했습니다. 전체 선수 검색은 이용할 수 있습니다.';console.warn(err)}
  await loadHighlights();restoreFilters();try{const saved=JSON.parse(sessionStorage.getItem(UI_KEY)||'null');if(saved?.url===location.href){limit=Math.max(limit,Math.min(players.length,saved.limit||limit));requestAnimationFrame(()=>window.scrollTo(0,saved.scrollY||0))}}catch{}
- renderSearch();if(params.get('id'))openProfile(params.get('id'));
+ await refreshPrivateState();if(!memberReady)renderSearch();if(params.get('id'))openProfile(params.get('id'));
 }catch(err){$('catalogCount').textContent='DB 로딩 오류';$('resultCount').textContent='선수 정보를 불러오지 못했습니다.';$('playerGrid').innerHTML='<div class="empty-state"><h3>선수 정보를 불러오지 못했습니다.</h3><p>네트워크 연결을 확인한 후 페이지를 새로고침해 주세요.</p></div>';console.error(err)}
