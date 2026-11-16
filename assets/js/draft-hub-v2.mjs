@@ -7,7 +7,7 @@ const $=id=>document.getElementById(id);
 const paths={search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',bookmark:'<path d="M6 3h12v18l-6-4-6 4z"/>',check:'<path d="m5 12 4 4L19 6"/>',table:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 4v16"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',sliders:'<path d="M3 6h7m4 0h7M3 12h12m4 0h2M3 18h3m4 0h11M10 3v6M15 9v6M6 15v6"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M4 15v6h16v-6"/>'};
 const icon=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${paths[n]||''}</svg>`;
 document.querySelectorAll('[data-icon]').forEach(x=>x.innerHTML=icon(x.dataset.icon));
-const params=new URLSearchParams(location.search);let gender=params.get('gender')==='W'?'W':'M',layout=['table','cards','compact'].includes(params.get('layout'))?params.get('layout'):'cards',dataset=null,lottery=null,all=[],current=[],byId=new Map(),timer;
+const params=new URLSearchParams(location.search);let gender=params.get('gender')==='W'?'W':'M',layout=['table','cards','compact'].includes(params.get('layout'))?params.get('layout'):'table',dataset=null,lottery=null,all=[],current=[],byId=new Map(),timer;
 const workspaceBase='players.html';
 let listDetailsErrors={};
 $('daWorkspace').href=workspaceBase;
