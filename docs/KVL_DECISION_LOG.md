@@ -673,3 +673,8 @@ Base `0cc1e348d06cca495b6593b111e9a9ad4ac0b7fd`; isolated branch `fix/national-t
 Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 사용자가 “운영 연결단계진행해”를 명시했다. 승인된 통합 프로토타입을 `/olympic-roadmap.html`로 운영 연결하고 대표팀 홈의 남자 ROAD TO LA28 하단에서 진입한다. 여자대표팀은 기존 `/la28-volleyball-qualification.html` 안내를 유지한다. 기존 LA28 URL과 내용은 변경하지 않는다. 62개 역사 기록·출처·미확인 목록 및 로드맵 디자인·동작을 보존하고, 올림픽 주기 JSON과 역사 JSON을 분리한다. 2032 미발표 규정에는 배정 숫자를 노출하지 않으며 관리자 검증·공식 최종 결과 없이 주기 전환을 허용하지 않는다.
 
 Base `ff587a18f7878ef984d72b71d6bd1700f25426ca`. 원본 `6cedb89b517e977309416fafd71597692f82cfb8`, 통합 시안 `ce566a591394788a4100db5fd9c0fe807e256e8c`. 당일 최신 대표팀 카드 단색 스타일과 Draft Hub 변경을 유지한다. Node 18개 및 PC·390/360px 브라우저 검증 통과. 병합·Pages·실제 운영 확인 전에는 DEPLOYED로 표시하지 않으며 최종 증거는 운영 연결 PR에 남긴다. [검증 및 한계](validation/olympic-roadmap-production-v1.md), [운영·전환·복구](KVL_OLYMPIC_ROADMAP_OPERATIONS_v1.md).
+
+
+## 2026-11-17 · 로그인 계정의 선수 페이지 UX 연속성 보완
+
+Status: USER REQUESTED CONTINUATION / IMPLEMENTED IN ISOLATED BRANCH / NOT DEPLOYED. 사용자가 로그인 후 관심선수·메모를 별도 관리자 페이지가 아니라 `players.html` 안에서 이어서 사용하는 구조를 계속 진행하도록 요청했다. PR #344의 통합 구조를 유지하며 전역 로그인 계정 링크는 관리자도 기본적으로 `players.html`로 이동한다. ADMIN 역할 표시는 유지하고, 명시적인 관리자 선수 공간 진입 버튼은 로그인 페이지에 남긴다. 개인 데이터 로딩 실패·세션 만료 시 현재 선수 검색 쿼리를 보존한 재로그인 링크를 제공하고, 숨김 추적 섹션의 누락된 접근성 참조를 정리한다. Supabase 스키마·Edge Function·관심선수/메모 데이터·선수 MASTER는 변경하지 않는다. Base `196d72ea3727c5f0515462f2a0f048b3fba68bd5`; 검증과 복구 기준은 [validation/member-player-ux-continuity-20261117.md](../validation/member-player-ux-continuity-20261117.md)에 기록한다. 운영 병합은 별도 사용자 승인 전까지 금지한다.
