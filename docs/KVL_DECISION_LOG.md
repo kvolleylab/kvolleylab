@@ -661,3 +661,9 @@ Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / N
 
 Base `811f270f3dddc04bb0df0e5ed14ddb9ba1b11c07`; isolated branch `fix/draft-list-national-tournament-tint-20261116`. 검증·미실시 브라우저 항목·복구: [검증 기록](validation/draft-list-national-team-card-tint-20261116.md). 운영 배포에는 별도 승인과 Pages·실화면 검증이 필요하다.
 
+## 2026-11-16 · 대표팀 출전대회 카드 대회군 단색 강조 (이전 그라데이션 결정 대체)
+
+Status: USER CORRECTION / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / NOT DEPLOYED. 최신 사용자는 PR #339의 연녹색 그림자/그라데이션 적용이 의도와 다르다고 정정했다. 실제 의도는 상단 3px 대회군 고유 색상을 **대회명, 기간·개최지, 최종 순위가 있는 전체 상단 정보 영역에 꽉 차는 단색 배경**으로 적용하는 것이다. 상단 별도 색 띠는 제거한다. AVC 계열은 기존 진녹색 `#176638`, 아이치·나고야 아시안게임은 기존 붉은색 `#8c2934`을 사용한다. 흰 글자로 대비를 유지하고 마우스 hover/키보드 focus 시 골드 `#d6b25e`로 전환한다. LA28/월드컵 출전권 안내와 하단 링크는 흰 배경(별도의 출전권 획득 강조 규칙은 그대로)으로 구분한다. 여자대표팀과 PC·모바일에도 같은 규칙이다. 이 결정은 같은 날 앞선 결정 로그의 `얕은 연녹색 그라데이션`과 `아시안게임 색상 변경 없음` 부분을 대체하며, Draft Hub 목록 기본값과 선행 PR #339의 그 외 내용은 유지한다.
+
+Base `0cc1e348d06cca495b6593b111e9a9ad4ac0b7fd`; isolated branch `fix/national-team-solid-family-cards-20261116`. 검증·운영 승인 게이트·복구: [검증 기록](validation/national-team-solid-family-cards-20261116.md). PR #339는 2026-11-16 13:59Z Pages 배포 성공, 본 수정은 승인 전이므로 운영 미반영.
+
