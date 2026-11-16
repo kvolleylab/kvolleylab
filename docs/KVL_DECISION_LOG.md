@@ -678,3 +678,8 @@ Base `ff587a18f7878ef984d72b71d6bd1700f25426ca`. 원본 `6cedb89b517e977309416fa
 ## 2026-11-17 · 로그인 계정의 선수 페이지 UX 연속성 보완
 
 Status: USER REQUESTED CONTINUATION / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / NOT DEPLOYED. 사용자가 로그인 후 관심선수·메모를 별도 관리자 페이지가 아니라 `players.html` 안에서 이어서 사용하는 구조를 계속 진행하도록 요청했다. PR #344의 통합 구조를 유지하며 전역 로그인 계정 링크는 관리자도 기본적으로 `players.html`로 이동한다. ADMIN 역할 표시는 유지하고, 명시적인 관리자 선수 공간 진입 버튼은 로그인 페이지에 남긴다. 개인 데이터 로딩 실패·세션 만료 시 현재 선수 검색 쿼리를 보존한 재로그인 링크를 제공하고, 숨김 추적 섹션의 누락된 접근성 참조를 정리한다. Supabase 스키마·Edge Function·관심선수/메모 데이터·선수 MASTER는 변경하지 않는다. Base `196d72ea3727c5f0515462f2a0f048b3fba68bd5`; 검증과 복구 기준은 [validation/member-player-ux-continuity-20261117.md](../validation/member-player-ux-continuity-20261117.md)에 기록한다. 운영 병합은 별도 사용자 승인 전까지 금지한다.
+
+
+## 2026-11-17 · 선수 목록형 및 통합 팀→선수 작업공간
+
+Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / QA PENDING / NOT DEPLOYED. 사용자는 선수 페이지에도 Draft Hub와 같은 목록형이 필요하고, 팀에서 선수에게 접근해 관심선수와 메모를 빠르게 사용하는 흐름이 필요하다고 요청했다. 기존 `players.html`에 목록/카드/간편 보기 3가지를 두고 대규모 선수 DB 탐색 기본값은 목록형으로 한다. 기존 검색·분류·성별·포지션·학교/팀 필터와 ‘내 추적 선수’ 필터는 같은 목록에 그대로 적용한다. 기존 준비 중 `teams.html`과 학교 중심 초기 `team-detail.html`을 새 중복 DB 없이 현재 Player Master 카탈로그를 팀 기준으로 묶는 통합 팀 허브·팀 명단 화면으로 확장한다. 팀 상세 선수 행에서 관심선수 등록/해제, 새 메모 작성, 비교, 프로필 진입을 제공하며 같은 Supabase 개인 데이터에 연결한다. 대학 전용 분석 페이지는 유지한다. Supabase 스키마·Edge Function·Player Master·대회 데이터는 변경하지 않는다. Base는 PR #345 후속 브랜치 `b1564d2`; 검증·복구 기준은 [validation/player-team-workspace-v1-20261117.md](../validation/player-team-workspace-v1-20261117.md)에 기록하며 운영 병합은 별도 승인 전까지 금지한다.
