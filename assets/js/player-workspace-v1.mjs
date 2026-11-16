@@ -69,9 +69,19 @@ function filteredNotes(){
  const q=noteQuery.trim().toLocaleLowerCase();
  return notes.filter(n=>{const p=byId.get(n.player_id),hay=[n.title,n.body,n.season,p?.name,playerAffiliation(p)].join(' ').toLocaleLowerCase();return(!q||hay.includes(q))&&(!noteSeason||n.season===noteSeason)});
 }
+function noteCard(n){
+ const p=byId.get(n.player_id),created=formatDate(n.created_at),updated=formatDate(n.updated_at),changed=String(n.created_at||'')!==String(n.updated_at||'');
+ return `<article class="note-card"><div class="note-header"><div><h3>${e(p?.name||n.player_id)} · ${e(n.title||'제목 없음')}</h3><div class="note-context">${e(playerAffiliation(p))} · ${e(n.season||'시즌 미지정')}</div></div><div class="note-date"><span>작성 ${e(created)}</span>${changed?`<b>수정 ${e(updated)}</b>`:''}</div></div><p class="note-text">${e(n.body||'')}</p><div class="note-actions"><button type="button" data-profile="${e(n.player_id)}">선수 프로필</button><button type="button" data-edit-note="${e(n.id)}">수정</button></div></article>`;
+}
+function renderNoteList(){
+ const list=filteredNotes(),listEl=document.querySelector('#notesBody .note-list'),countEl=document.getElementById('memberNoteCount');
+ if(countEl)countEl.innerHTML='<b>'+list.length+'</b>개 메모';
+ if(listEl)listEl.innerHTML=list.length?list.map(noteCard).join(''):'<div class="empty-state"><h3>메모가 없습니다.</h3><p>선수 카드의 메모 버튼에서 첫 기록을 남겨보세요.</p><button class="button secondary" data-view="search">선수 찾기</button></div>';
+}
 function renderNotes(){
- const list=filteredNotes(),seasons=[...new Set(notes.map(n=>n.season).filter(Boolean))].sort((a,b)=>b.localeCompare(a,'ko'));
- $('notesBody').innerHTML=`<div class="workspace-tools"><label class="search-field">메모 검색<input id="memberNoteSearch" type="search" value="${e(noteQuery)}" placeholder="선수명·제목·내용"></label><label>시즌<select id="memberNoteSeasonFilter"><option value="">전체 시즌</option>${seasons.map(s=>`<option value="${e(s)}" ${s===noteSeason?'selected':''}>${e(s)}</option>`).join('')}</select></label><p><b>${list.length}</b>개 메모</p></div><div class="note-list">${list.length?list.map(n=>{const p=byId.get(n.player_id),created=formatDate(n.created_at),updated=formatDate(n.updated_at),changed=String(n.created_at||'')!==String(n.updated_at||'');return `<article class="note-card"><div class="note-header"><div><h3>${e(p?.name||n.player_id)} · ${e(n.title||'제목 없음')}</h3><div class="note-context">${e(playerAffiliation(p))} · ${e(n.season||'시즌 미지정')}</div></div><div class="note-date"><span>작성 ${e(created)}</span>${changed?`<b>수정 ${e(updated)}</b>`:''}</div></div><p class="note-text">${e(n.body||'')}</p><div class="note-actions"><button type="button" data-profile="${e(n.player_id)}">선수 프로필</button><button type="button" data-edit-note="${e(n.id)}">수정</button></div></article>`}).join(''):'<div class="empty-state"><h3>메모가 없습니다.</h3><p>선수 카드의 메모 버튼에서 첫 기록을 남겨보세요.</p><button class="button secondary" data-view="search">선수 찾기</button></div>'}</div>`;
+ const seasons=[...new Set(notes.map(n=>n.season).filter(Boolean))].sort((a,b)=>b.localeCompare(a,'ko'));
+ $('notesBody').innerHTML=`<div class="workspace-tools"><label class="search-field">메모 검색<input id="memberNoteSearch" type="search" value="${e(noteQuery)}" placeholder="선수명·제목·내용"></label><label>시즌<select id="memberNoteSeasonFilter"><option value="">전체 시즌</option>${seasons.map(s=>`<option value="${e(s)}" ${s===noteSeason?'selected':''}>${e(s)}</option>`).join('')}</select></label><p id="memberNoteCount"></p></div><div class="note-list"></div>`;
+ renderNoteList();
 }
 function setQueryURL(){const url=new URL(location.href),f=getFilters();for(const k of ['q','level','gender','position','school','type','draftSeason','draft']){const value=f[k]||'';value?url.searchParams.set(k,value):url.searchParams.delete(k)}url.searchParams.delete('grade');for(const g of f.grades)url.searchParams.append('grade',g);url.searchParams.set('layout',layout);history.replaceState(null,'',url)}
 function restoreFilters(){const form=$('filters');$('playerSearch').value=params.get('q')||'';for(const k of ['level','gender','position','type','draftSeason'])if(params.get(k))form.elements[k].value=params.get(k);form.elements.draft.checked=['1','eligible'].includes(params.get('draft'));syncDependentFilters();let school=params.get('school')||'';if(school.startsWith('code:'))school=players.find(p=>p.schoolCode===school.slice(5))?.school||'';if(school.startsWith('name:'))school=school.slice(5);if(school)form.elements.school.value=school;for(const c of form.querySelectorAll('[name="grade"]'))c.checked=!c.disabled&&params.getAll('grade').includes(c.value);updateGradeCaption();if([...form.elements].some(x=>['school','draftSeason','type'].includes(x.name)&&x.value)||form.elements.draft.checked||params.has('grade')){$('extraFilters').hidden=false;$('moreFilters').setAttribute('aria-expanded','true')}}
@@ -131,8 +141,8 @@ $('memberDeleteNote').addEventListener('click',async()=>{
  try{await privateApi('delete_note',{id,expected_revision:Number($('memberNoteRevision').value)});$('memberNoteDialog').close();await refreshPrivateState()}
  catch(err){$('memberNoteError').textContent=err.message||'메모 삭제에 실패했습니다.'}
 });
-document.addEventListener('input',ev=>{if(ev.target?.id==='memberNoteSearch'){noteQuery=ev.target.value;renderNotes()}});
-document.addEventListener('change',ev=>{if(ev.target?.id==='memberNoteSeasonFilter'){noteSeason=ev.target.value;renderNotes()}});
+document.addEventListener('input',ev=>{if(ev.target?.id==='memberNoteSearch'){noteQuery=ev.target.value;renderNoteList()}});
+document.addEventListener('change',ev=>{if(ev.target?.id==='memberNoteSeasonFilter'){noteSeason=ev.target.value;renderNoteList()}});
 window.addEventListener('message',ev=>{const frame=document.querySelector('.profile-frame');if(ev.origin===location.origin&&ev.source===frame?.contentWindow&&ev.data?.type==='kvl:close-profile')closeProfile()});
 $('searchForm').addEventListener('submit',ev=>{ev.preventDefault();limit=pageSize();changeView('search',true)});let debounce;$('playerSearch').addEventListener('input',()=>{clearTimeout(debounce);debounce=setTimeout(()=>{limit=pageSize();changeView('search')},120)});
 $('filters').addEventListener('change',ev=>{if(ev.target.name==='level')syncDependentFilters();else if(ev.target.name==='grade')updateGradeCaption();limit=pageSize();renderSearch()});$('filters').addEventListener('submit',ev=>ev.preventDefault());$('filters').addEventListener('reset',()=>setTimeout(()=>{$('playerSearch').value='';syncDependentFilters();limit=pageSize();renderSearch()},0));
