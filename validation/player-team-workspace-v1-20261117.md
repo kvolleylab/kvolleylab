@@ -46,6 +46,7 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - Team roster direct actions wired to the existing admin-player-workspace bookmark/note API and compare tray.
 - Supabase readback after code-only work: auth users 1 / active admins 1 / member accounts 0 / bookmarks 2 / notes 5.
 - Existing university-team.html remains unchanged.
+- Direct member view routes: `players.html?view=tracking` and `players.html?view=notes` are wired; team detail links to both.
 
 ## QA gate
 Before release:
