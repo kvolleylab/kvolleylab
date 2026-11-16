@@ -99,7 +99,14 @@ async function refreshPrivateState(){
   const [bm,ns]=await Promise.all([privateApi('list_bookmarks'),privateApi('list_notes')]);
   bookmarks=new Set((bm.items||[]).map(x=>x.player_id));notes=ns.items||[];memberReady=true;updateAccountUI();
   if(view==='notes')renderNotes();else renderSearch();
- }catch(err){memberReady=false;$('accountButton').innerHTML=icon('lock')+' 로그인 확인 필요';$('accountDialogBody').innerHTML='<p>개인 기록을 불러오지 못했습니다. 다시 로그인한 뒤 확인해 주세요.</p>';console.warn('Private player workspace unavailable',err)}
+ }catch(err){
+  memberReady=false;
+  const next='players.html'+location.search;
+  const relogin='member-login.html?'+new URLSearchParams({next}).toString();
+  $('accountButton').innerHTML=icon('lock')+' 로그인 확인 필요';
+  $('accountDialogBody').innerHTML=`<p>개인 기록을 불러오지 못했습니다. 다시 로그인한 뒤 확인해 주세요.</p><div class="account-choices"><a class="button primary" href="${e(relogin)}">다시 로그인</a></div>`;
+  console.warn('Private player workspace unavailable',err);
+ }
 }
 async function toggleBookmark(id){
  if(!memberReady)return $('accountDialog').showModal();
