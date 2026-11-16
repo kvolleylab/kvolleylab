@@ -78,8 +78,44 @@ function restoreFilters(){const form=$('filters');$('playerSearch').value=params
 function resetFilters(){$('filters').reset();$('playerSearch').value='';syncDependentFilters();limit=pageSize();renderSearch()}
 function openProfile(id){const p=byId.get(id);if(!p)return;lastFocus=document.activeElement;const href=profileHref(id);$('profileContent').innerHTML=`<div class="dialog-top"><h2 id="profileName">${e(p.name)} · 선수 프로필</h2><div class="profile-dialog-actions"><a href="${e(href)}">전체 화면</a><button class="close-button" data-close="profileDialog" aria-label="선수 프로필 닫기">×</button></div></div><iframe class="profile-frame" title="${e(p.name)} 선수 프로필" src="${e(href+'&embed=1')}"></iframe>`;$('profileDialog').showModal();$('profileDialog').scrollTop=0}
 function closeProfile(){$('profileDialog').close();$('profileContent').innerHTML='';lastFocus?.focus({preventScroll:true})}
-$('accountButton').innerHTML=icon('lock')+' 개인 기능 준비 중';$('accountButton').addEventListener('click',()=>$('accountDialog').showModal());
-document.addEventListener('click',ev=>{const t=ev.target.closest('button,a');if(!t)return;if(t.dataset.close){t.dataset.close==='profileDialog'?closeProfile():$(t.dataset.close).close();return}if(t.hasAttribute('data-member-unavailable')||t.hasAttribute('data-account-open')){$('accountDialog').showModal();return}if(t.dataset.view){changeView(t.dataset.view,true);return}if(t.dataset.layout){setLayout(t.dataset.layout);return}if(t.dataset.quick){$('filters').elements.level.value=t.dataset.quick;syncDependentFilters();limit=pageSize();changeView('search',true);return}if(t.dataset.profile){if(ev.ctrlKey||ev.metaKey||ev.shiftKey||ev.altKey||ev.button!==0)return;ev.preventDefault();openProfile(t.dataset.profile);return}if(t.hasAttribute('data-all-grades')){document.querySelectorAll('[name="grade"]').forEach(c=>c.checked=false);updateGradeCaption();limit=pageSize();renderSearch()}if(t.hasAttribute('data-reset-filters'))resetFilters()});
+function updateAccountUI(){
+ if(!memberReady)return;
+ $('accountButton').innerHTML=icon('user')+' 관리자 로그인';
+ $('accountDialogBody').innerHTML=`<p><strong>관리자 계정으로 로그인 중입니다.</strong></p><div class="account-choices"><button type="button" data-view="tracking">관심선수 ${bookmarks.size}명</button><button type="button" data-view="notes">개인 메모 ${notes.length}개</button></div><p class="account-disclaimer">선수·팀 페이지 안에서 바로 관심선수와 메모를 사용할 수 있습니다.</p>`;
+ updateMemberBadges();
+}
+async function refreshPrivateState(){
+ try{
+  const [bm,ns]=await Promise.all([privateApi('list_bookmarks'),privateApi('list_notes')]);
+  bookmarks=new Set((bm.items||[]).map(x=>x.player_id));notes=ns.items||[];memberReady=true;updateAccountUI();
+  if(view==='notes')renderNotes();else renderSearch();
+ }catch(err){memberReady=false;$('accountButton').innerHTML=icon('lock')+' 로그인 확인 필요';$('accountDialogBody').innerHTML='<p>개인 기록을 불러오지 못했습니다. 다시 로그인한 뒤 확인해 주세요.</p>';console.warn('Private player workspace unavailable',err)}
+}
+async function toggleBookmark(id){
+ if(!memberReady)return $('accountDialog').showModal();
+ const button=document.querySelector('[data-save-player="'+CSS.escape(id)+'"]');if(button)button.disabled=true;
+ try{
+  const result=await privateApi('toggle_bookmark',{player_id:id});
+  result.saved?bookmarks.add(id):bookmarks.delete(id);updateMemberBadges();renderSearch();
+ }catch(err){console.warn(err)}
+ finally{document.querySelectorAll('[data-save-player="'+CSS.escape(id)+'"]').forEach(b=>b.disabled=false)}
+}
+function notePlayerMeta(id){
+ const p=byId.get(id);return [p?.name,playerAffiliation(p),p?.rawPosition].filter(Boolean).join(' · ');
+}
+function openPlayerNote(id){
+ if(!memberReady)return $('accountDialog').showModal();
+ $('memberNoteId').value='';$('memberNoteRevision').value='';$('memberNotePlayer').value=id;$('memberNoteSeason').value='2026-27';$('memberNoteTitleInput').value='';$('memberNoteBody').value='';$('memberNoteAudit').hidden=true;$('memberNoteError').textContent='';$('memberDeleteNote').hidden=true;
+ $('memberNoteTitle').textContent=(byId.get(id)?.name||'선수')+' · 메모';$('memberNotePlayerMeta').textContent=notePlayerMeta(id);$('memberNoteDialog').showModal();$('memberNoteTitleInput').focus();
+}
+function openNote(id){
+ const n=notes.find(x=>x.id===id);if(!n)return;
+ $('memberNoteId').value=n.id;$('memberNoteRevision').value=String(n.revision);$('memberNotePlayer').value=n.player_id;$('memberNoteSeason').value=n.season||'2026-27';$('memberNoteTitleInput').value=n.title||'';$('memberNoteBody').value=n.body||'';$('memberNoteError').textContent='';
+ $('memberNoteAudit').hidden=false;$('memberNoteAudit').textContent='작성 '+formatDate(n.created_at)+' · 최근 수정 '+formatDate(n.updated_at);$('memberDeleteNote').hidden=false;
+ $('memberNoteTitle').textContent=(byId.get(n.player_id)?.name||'선수')+' · 메모';$('memberNotePlayerMeta').textContent=notePlayerMeta(n.player_id);$('memberNoteDialog').showModal();
+}
+$('accountButton').innerHTML=icon('user')+' 로그인 정보';$('accountButton').addEventListener('click',()=>$('accountDialog').showModal());
+document.addEventListener('click',ev=>{const t=ev.target.closest('button,a');if(!t)return;if(t.dataset.close){t.dataset.close==='profileDialog'?closeProfile():$(t.dataset.close).close();return}if(t.dataset.savePlayer){toggleBookmark(t.dataset.savePlayer);return}if(t.dataset.notePlayer){openPlayerNote(t.dataset.notePlayer);return}if(t.dataset.editNote){openNote(t.dataset.editNote);return}if(t.hasAttribute('data-account-open')){$('accountDialog').showModal();return}if(t.dataset.view){changeView(t.dataset.view,true);return}if(t.dataset.layout){setLayout(t.dataset.layout);return}if(t.dataset.quick){$('filters').elements.level.value=t.dataset.quick;syncDependentFilters();limit=pageSize();changeView('search',true);return}if(t.dataset.profile){if(ev.ctrlKey||ev.metaKey||ev.shiftKey||ev.altKey||ev.button!==0)return;ev.preventDefault();openProfile(t.dataset.profile);return}if(t.hasAttribute('data-all-grades')){document.querySelectorAll('[name="grade"]').forEach(c=>c.checked=false);updateGradeCaption();limit=pageSize();renderSearch()}if(t.hasAttribute('data-reset-filters'))resetFilters()});
 for(const dialog of document.querySelectorAll('dialog')){let pressed=false;const outside=ev=>{const r=dialog.getBoundingClientRect();return ev.target===dialog&&(ev.clientX<r.left||ev.clientX>=r.right||ev.clientY<r.top||ev.clientY>=r.bottom)};dialog.addEventListener('pointerdown',ev=>pressed=ev.button===0&&outside(ev));dialog.addEventListener('pointercancel',()=>pressed=false);dialog.addEventListener('click',ev=>{const close=pressed&&outside(ev);pressed=false;if(close)dialog.id==='profileDialog'?closeProfile():dialog.close()})}
 $('profileDialog').addEventListener('cancel',ev=>{ev.preventDefault();closeProfile()});
 window.addEventListener('message',ev=>{const frame=document.querySelector('.profile-frame');if(ev.origin===location.origin&&ev.source===frame?.contentWindow&&ev.data?.type==='kvl:close-profile')closeProfile()});
