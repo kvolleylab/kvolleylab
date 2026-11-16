@@ -2,6 +2,7 @@ import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
 
 const params=new URLSearchParams(location.search);
 const adminMode=params.get('admin')==='1';
+const embedded=params.get('embed')==='1';
 const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
 const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
 const FUNCTION_NAME='admin-player-workspace';
@@ -17,8 +18,10 @@ function renderNotes(notes){
   const section=document.createElement('section');section.className='admin-private-notes';section.setAttribute('aria-labelledby','adminPrivateNotesTitle');
   const sorted=[...notes].sort((a,b)=>String(b.created_at||b.updated_at||'').localeCompare(String(a.created_at||a.updated_at||'')));
   const returnPath='player.html?id='+encodeURIComponent(playerId)+(adminMode?'&admin=1':'');
-  const cards=sorted.length?sorted.map(n=>{const created=fmt(n.created_at),updated=fmt(n.updated_at),changed=String(n.updated_at||'')&&String(n.updated_at)!==String(n.created_at||'');return `<article class="admin-private-note"><div class="admin-private-note-head"><div><span class="admin-private-season">${esc(n.season||'시즌 미지정')}</span><h3>${esc(n.title||'제목 없음')}</h3></div><div class="admin-private-note-tools"><span class="admin-private-note-date">작성 ${esc(created)}</span><a href="admin-player-workspace.html?editNote=${encodeURIComponent(n.id)}&return=${encodeURIComponent(returnPath)}">수정</a></div></div><p>${esc(n.body||'')}</p><footer>${changed?`<span>최근 수정 ${esc(updated)}</span>`:''}</footer></article>`}).join(''):`<div class="admin-private-empty"><strong>이 선수에게 남긴 메모가 없습니다.</strong><span>새 메모를 작성하면 이 프로필에 날짜순으로 계속 쌓입니다.</span></div>`;
-  section.innerHTML=`<div class="admin-private-notes-head"><div><p class="admin-private-eyebrow">PRIVATE · ADMIN</p><h2 id="adminPrivateNotesTitle">내 비공개 메모 <em>${sorted.length}</em></h2><p>현재 로그인한 관리자 계정에서만 보입니다.</p></div><div class="admin-private-profile-actions"><a href="admin-player-workspace.html?notePlayer=${encodeURIComponent(playerId)}&return=${encodeURIComponent(returnPath)}">새 메모 작성</a>${adminMode?'<a href="admin-player-workspace.html">내 선수 공간</a>':''}</div></div><div class="admin-private-notes-list">${cards}</div>`;
+  const editControl=n=>adminMode?`<a href="admin-player-workspace.html?editNote=${encodeURIComponent(n.id)}&return=${encodeURIComponent(returnPath)}">수정</a>`:embedded?`<button type="button" data-private-edit-note="${esc(n.id)}">수정</button>`:`<a href="players.html?editNote=${encodeURIComponent(n.id)}">수정</a>`;
+  const newControl=adminMode?`<a href="admin-player-workspace.html?notePlayer=${encodeURIComponent(playerId)}&return=${encodeURIComponent(returnPath)}">새 메모 작성</a>`:embedded?`<button type="button" data-private-new-note="${esc(playerId)}">새 메모 작성</button>`:`<a href="players.html?notePlayer=${encodeURIComponent(playerId)}">새 메모 작성</a>`;
+  const cards=sorted.length?sorted.map(n=>{const created=fmt(n.created_at),updated=fmt(n.updated_at),changed=String(n.updated_at||'')&&String(n.updated_at)!==String(n.created_at||'');return `<article class="admin-private-note"><div class="admin-private-note-head"><div><span class="admin-private-season">${esc(n.season||'시즌 미지정')}</span><h3>${esc(n.title||'제목 없음')}</h3></div><div class="admin-private-note-tools"><span class="admin-private-note-date">작성 ${esc(created)}</span>${editControl(n)}</div></div><p>${esc(n.body||'')}</p><footer>${changed?`<span>최근 수정 ${esc(updated)}</span>`:''}</footer></article>`}).join(''):`<div class="admin-private-empty"><strong>이 선수에게 남긴 메모가 없습니다.</strong><span>새 메모를 작성하면 이 프로필에 날짜순으로 계속 쌓입니다.</span></div>`;
+  section.innerHTML=`<div class="admin-private-notes-head"><div><p class="admin-private-eyebrow">PRIVATE · ADMIN</p><h2 id="adminPrivateNotesTitle">내 비공개 메모 <em>${sorted.length}</em></h2><p>현재 로그인한 관리자 계정에서만 보입니다.</p></div><div class="admin-private-profile-actions">${newControl}${adminMode?'<a href="admin-player-workspace.html">내 선수 공간</a>':''}</div></div><div class="admin-private-notes-list">${cards}</div>`;
   return section;
 }
 (async()=>{
@@ -29,6 +32,12 @@ function renderNotes(notes){
     setBackLink();
     const response=await api('list_notes');
     const notes=(response.items||[]).filter(n=>n.player_id===playerId);
-    hero.insertAdjacentElement('afterend',renderNotes(notes));
+    const section=renderNotes(notes);hero.insertAdjacentElement('afterend',section);
+    if(embedded){
+      section.addEventListener('click',ev=>{
+        const edit=ev.target.closest('[data-private-edit-note]');if(edit){parent.postMessage({type:'kvl:edit-note',noteId:edit.dataset.privateEditNote},location.origin);return}
+        const add=ev.target.closest('[data-private-new-note]');if(add)parent.postMessage({type:'kvl:new-note',playerId:add.dataset.privateNewNote},location.origin);
+      });
+    }
   }catch{ /* Non-admin visitors see the normal profile only. */ }
 })();
