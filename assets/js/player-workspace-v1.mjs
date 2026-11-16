@@ -1,13 +1,23 @@
 // Approved B workspace UI, connected to the unchanged production data pipeline.
+import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
 import {LEVELS,searchPlayers,escapeHTML as e} from './player-workspace-core.mjs?v=20261111-pro-1';
 import {loadDraftIndex,loadDraftSeason,validateAgainstCatalog} from './draft-history-v1.mjs';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const paths={cards:'<rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',bookmark:'<path d="M6 3h12v18l-6-4-6 4z"/>',note:'<path d="M14 4H5v17h14v-9M8 9h3M8 13h3M8 17h7m-1-7 7-7-3-3-7 7v3z"/>',arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',down:'<path d="m6 9 6 6 6-6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',user:'<circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/>',sliders:'<path d="M3 6h7m4 0h7M3 12h12m4 0h2M3 18h3m4 0h11M10 3v6M15 9v6M6 15v6"/>',flask:'<path d="M9 3h6M10 3v7L4 20h16l-6-10V3M8 14h8"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',plus:'<path d="M12 4v16M4 12h16"/>',shirt:'<path d="m5 5 5-2c0 3 4 3 4 0l5 2 4 7-5 3v9H6v-9l-5-3z" transform="translate(1 1) scale(.9)"/><path d="M10 12h4M12 12v6"/>',check:'<path d="m5 12 4 4L19 6"/>'};
 const icon=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${paths[n]||paths.user}</svg>`;
+const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
+const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
+const PRIVATE_FUNCTION='admin-player-workspace';
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let players=[],byId=new Map(),draftRows=[],draftIndex=null,draftLoadFailed=false,limit=12,layout=params.get('layout')==='compact'?'compact':'cards',view='search',lastFocus=null;
+let bookmarks=new Set(),notes=[],memberReady=false,noteQuery='',noteSeason='';
 const UI_KEY='kvl-player-workspace-public-ui-v1';
 function persist(){setQueryURL()}
 function profileHref(id){const query=new URLSearchParams({id,return:location.pathname+location.search});return 'player.html?'+query}
+function formatDate(value){const d=new Date(value);return Number.isNaN(d.getTime())?String(value||''):d.toLocaleString('ko-KR',{year:'numeric',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}
+async function privateApi(action,payload={}){const {data,error}=await supabase.functions.invoke(PRIVATE_FUNCTION,{body:{action,...payload}});if(error||!data?.ok)throw new Error(data?.error||error?.message||'개인 기능을 불러올 수 없습니다.');return data}
+function updateMemberBadges(){$('savedBadge').textContent=bookmarks.size?String(bookmarks.size):'';$('notesBadge').textContent=notes.length?String(notes.length):'';if(memberReady){$('memberSummary').hidden=false;$('memberSummary').innerHTML=`<div><h2>내 선수 기록</h2><p>관심선수와 개인 메모가 이 페이지에 바로 연결됩니다.</p></div><div class="member-metrics"><button type="button" data-view="tracking"><strong>${bookmarks.size}</strong>관심선수</button><button type="button" data-view="notes"><strong>${notes.length}</strong>메모</button></div>`;}}
+function playerAffiliation(p){return p?.school||p?.team||'소속 미확인'}
 function compareButton(p){return p.limited?'':`<button class="compare-button" type="button" data-compare-id="${e(p.id)}" data-compare-name="${e(p.name)}">비교 추가</button>`}
 function saveButton(p,iconOnly=false){return `<button class="save-button ${iconOnly?'icon-only':''}" type="button" data-member-unavailable aria-label="${e(p.name)} 관심선수 기능 안내">${icon('bookmark')}${iconOnly?'':'관심선수'}</button>`}
 function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(x=>{x.innerHTML=icon(x.dataset.icon)})}
