@@ -652,3 +652,12 @@ These are not pixel-layout or continuous live acceptance evidence. Candidate
 browser access to the local preview returned ERR_CONNECTION_REFUSED; actual
 1440/390/360 layout verification and production approval/deployment remain pending.
 Rollback is a revert of this display-only change. Release evidence belongs in its PR.
+
+## 2026-11-16 · Draft Hub 목록 기본값 및 대표팀 AVC 카드 강조 범위
+
+Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / NOT DEPLOYED. 사용자는 `선수·팀 → Draft Hub`에 들어갈 때 선수 명단을 먼저 목록형으로 표시하도록 요청했다. 기본 `layout`만 `cards`에서 `table`로 바꾸며 명시적인 카드·간편 보기 URL, 목록 전환 버튼, 필터·검색·공식 명단 순, 남녀부·모바일을 유지한다.
+
+`대표팀 홈 → 2026 출전대회`에서는 AVC컵 카드의 상단 녹색 강조를 개최지·최종 순위 영역 아래까지 연한 녹색 그라데이션으로 확장한다. 동일 AVC 카드에 일관 적용한다. LA28/월드컵 출전권 안내와 하단 링크는 흰 배경으로 남기며 마우스 hover 또는 키보드 focus 시 강조 영역은 금색, 기존 금색 테두리 hover도 유지한다. 아시안게임 색상은 변경하지 않는다. 자료·MASTER·명단·경기결과·내비게이션·자동화는 변경하지 않는다.
+
+Base `811f270f3dddc04bb0df0e5ed14ddb9ba1b11c07`; isolated branch `fix/draft-list-national-tournament-tint-20261116`. 검증·미실시 브라우저 항목·복구: [검증 기록](validation/draft-list-national-team-card-tint-20261116.md). 운영 배포에는 별도 승인과 Pages·실화면 검증이 필요하다.
+
