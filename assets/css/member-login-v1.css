@@ -6,3 +6,9 @@
 .member-closed-features span{padding:7px 9px;border-radius:999px;background:#eef4f8;color:#46647f;font-size:10px;font-weight:800}
 .member-closed-home{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:10px;background:#143d6b;color:#fff;text-decoration:none;font-weight:900;font-size:13px}
 .member-closed-note{margin:14px 0 0;color:#8b98a5;font-size:10px}
+
+.member-login-card{max-width:500px}
+.member-signed-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.member-signed-actions a{display:flex;align-items:center;justify-content:center;border:1px solid #ced9e2;border-radius:10px;padding:12px 14px;color:#34516c;text-decoration:none;font-size:13px;font-weight:900}
+#memberLoginMessage.error{color:#9f4949}
+@media(max-width:520px){.member-signed-actions{grid-template-columns:1fr}}
