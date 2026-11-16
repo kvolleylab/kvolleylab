@@ -49,7 +49,8 @@
     file:'<svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"></path><path d="M16 3v4h4M8 11h8M8 15h8M8 19h5"></path></svg>',
     request:'<svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"></path><path d="m8 10 4 3 4-3"></path></svg>',
     chevron:'<svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg>',
-    collapse:'<svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"></path><path d="M20 4v16"></path></svg>'
+    collapse:'<svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"></path><path d="M20 4v16"></path></svg>',
+    user:'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 21c.7-5 3.2-7.5 7.5-7.5s6.8 2.5 7.5 7.5"></path></svg>'
   };
 
   const link=(key,href,svg,label,extra='')=>({type:'link',key,href,svg,label,extra});
@@ -149,7 +150,7 @@
   }).join('');
 
   document.body.classList.add('kvl-sidebar-enabled');
-  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html" aria-label="K-Volley Lab 홈"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav><button class="kvl-global-collapse" type="button" aria-expanded="true" title="사이드바 접기"><span class="kvl-global-icon">${icon.collapse}</span><span class="kvl-global-collapse-label">접기</span></button></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-controls="kvlGlobalSidebar" aria-label="메뉴 열기">☰ <span>메뉴</span></button>`);
+  document.body.insertAdjacentHTML('afterbegin',`<aside class="kvl-global-sidebar" aria-label="K-Volley Lab 메뉴"><div class="kvl-global-sidebar-head"><a class="kvl-global-brand" href="index.html" aria-label="K-Volley Lab 홈"><span class="kvl-global-mark">K</span><strong>K-VOLLEY LAB</strong></a><button class="kvl-global-close" type="button" aria-label="메뉴 닫기">×</button></div><nav class="kvl-global-nav">${nav}</nav><div class="kvl-global-account" id="kvlGlobalAccount"><a class="kvl-global-account-link" data-kvl-auth-link href="member-login.html"><span class="kvl-global-icon">${icon.user}</span><span class="kvl-global-label">로그인</span><span class="kvl-global-account-role" data-kvl-auth-role hidden></span></a><button class="kvl-global-account-logout" type="button" data-kvl-auth-logout hidden>로그아웃</button></div><button class="kvl-global-collapse" type="button" aria-expanded="true" title="사이드바 접기"><span class="kvl-global-icon">${icon.collapse}</span><span class="kvl-global-collapse-label">접기</span></button></aside><div class="kvl-global-backdrop"></div><button class="kvl-global-toggle" type="button" aria-expanded="false" aria-controls="kvlGlobalSidebar" aria-label="메뉴 열기">☰ <span>메뉴</span></button>`);
   // One home-style mobile header for every page using the shared navigation.
   // Keep the menu control separate so opening it never follows the home link.
   const mobileHeader=document.createElement('a');
