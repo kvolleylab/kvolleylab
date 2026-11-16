@@ -1,6 +1,6 @@
 # Player List + Unified Team Workspace v1 — 2026-11-17
 
-Status: IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / BROWSER QA NOT RUN / NOT DEPLOYED
+Status: IMPLEMENTED IN ISOLATED BRANCH / REFINED STATIC QA VERIFIED / BROWSER QA NOT RUN / NOT DEPLOYED
 
 ## Base
 - stacked on PR #345 branch head: b1564d2332a8ea441b58c1131058d8d58673b0d4
@@ -50,6 +50,17 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - Supabase readback after code-only work: auth users 1 / active admins 1 / member accounts 0 / bookmarks 2 / notes 5.
 - Existing university-team.html remains unchanged.
 - Direct member view routes: `players.html?view=tracking` and `players.html?view=notes` are wired; team detail links to both.
+
+## Refined team UX static checks
+- Team directory/detail module syntax: PASS.
+- DOM references missing: 0.
+- Hub analytics overload removed: average height and position distribution are not rendered in directory cards.
+- Hub tracked-player count uses the same private bookmark source as the player workspace.
+- Detail personal scopes `전체 / 관심 / 메모`: wired.
+- Position chips: wired.
+- Grade chips: rendered only when actual grade data exists.
+- `메모 선수` is calculated from unique player IDs, not total note rows.
+- Supabase readback remains auth 1 / active admin 1 / bookmarks 2 / notes 5.
 
 ## QA gate
 Before release:
