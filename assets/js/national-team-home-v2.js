@@ -20,7 +20,7 @@ function renderCompetitions(){
 function renderProgress(){
  const t=db.teams[gender],r=t.ranking,men=gender==='men';
  const detail=$('roadmap-detail-link');detail.href=men?'olympic-roadmap.html':'la28-volleyball-qualification.html';detail.innerHTML=(men?'출전권·남자대표팀 역사 전체보기':'올림픽 출전권·전체 경로 상세보기')+' <span>↗</span>';
- $('summary-strip').innerHTML=`<a class="summary-ranking" href="#ranking"><span>대한민국 세계랭킹</span><strong>${r.rank}<em>위</em> <small>${r.points.toFixed(2)}점</small></strong><small>2026.10.15 공식 기준</small></a><a class="summary-cup" href="#roadmap"><span>2027 FIVB 월드컵</span><strong>출전권 확보 <i>✓</i></strong><small>${men?'아시아선수권 3위':'10.2 세계랭킹 경로'}</small></a><a class="summary-la" href="#roadmap"><span>LA 2028 올림픽</span><strong>월드컵에서 다음 도전 <b>→</b></strong><small>출전권 미확보 · 로드맵 보기</small></a>`;
+ $('summary-strip').innerHTML=`<a class="summary-ranking" href="#ranking"><span>대한민국 세계랭킹</span><strong>${r.rank}<em>위</em> <small>${r.points.toFixed(2)}점</small></strong><small>2026.10.15 공식 기준</small></a><a class="summary-cup" href="#roadmap"><span>2027 FIVB 월드컵</span><strong>출전권 확보 <i>✓</i></strong><small>${men?'아시아선수권 3위':'10.2 세계랭킹 경로'}</small></a><a class="summary-la" href="${men?'olympic-roadmap.html':'#roadmap'}"><span>LA 2028 올림픽</span><strong>월드컵에서 다음 도전 <b>→</b></strong><small>출전권 미확보 · 로드맵 보기</small></a>`;
  const steps=[
  ['2026','아시아선수권',men?'3위 · 동메달':'최종 6위','LA28 아시아 직행권 미획득','done'],
  ['2027','FIVB 월드컵','출전권 확보',`${men?'아시아선수권 3위로 진출':'2026.10.2 세계랭킹 경로로 진출'}<br>올림픽 미확보 팀 중 상위 3팀에 LA28 출전권`,'current'],

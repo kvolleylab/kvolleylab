@@ -673,3 +673,8 @@ Base `0cc1e348d06cca495b6593b111e9a9ad4ac0b7fd`; isolated branch `fix/national-t
 Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 사용자가 “운영 연결단계진행해”를 명시했다. 승인된 통합 프로토타입을 `/olympic-roadmap.html`로 운영 연결하고 대표팀 홈의 남자 ROAD TO LA28 하단에서 진입한다. 여자대표팀은 기존 `/la28-volleyball-qualification.html` 안내를 유지한다. 기존 LA28 URL과 내용은 변경하지 않는다. 62개 역사 기록·출처·미확인 목록 및 로드맵 디자인·동작을 보존하고, 올림픽 주기 JSON과 역사 JSON을 분리한다. 2032 미발표 규정에는 배정 숫자를 노출하지 않으며 관리자 검증·공식 최종 결과 없이 주기 전환을 허용하지 않는다.
 
 Base `ff587a18f7878ef984d72b71d6bd1700f25426ca`. 원본 `6cedb89b517e977309416fafd71597692f82cfb8`, 통합 시안 `ce566a591394788a4100db5fd9c0fe807e256e8c`. 당일 최신 대표팀 카드 단색 스타일과 Draft Hub 변경을 유지한다. Node 18개 및 PC·390/360px 브라우저 검증 통과. 병합·Pages·실제 운영 확인 전에는 DEPLOYED로 표시하지 않으며 최종 증거는 운영 연결 PR에 남긴다. [검증 및 한계](validation/olympic-roadmap-production-v1.md), [운영·전환·복구](KVL_OLYMPIC_ROADMAP_OPERATIONS_v1.md).
+
+
+## 2026-11-17 · 올림픽·대표팀 로드맵 공통 메뉴 연결 보정
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 운영 연결 승인 후 사용자가 홈페이지와 연결이 자연스럽지 않다고 지적했다. 실제 대표팀 홈에서 로드맵으로 이동하면 공통 왼쪽 메뉴·모바일 브랜드 바·로그인이 별도 가로 헤더로 바뀌는 문제를 확인했다. 기존 공통 내비게이션을 로드맵과 검증 페이지에 적용하고, 국가대표팀 하위 메뉴 및 남자대표팀 상단 LA28 현황에서 직접 진입하도록 보정한다. 2026-11-16 운영 문서의 별도 소형 헤더 사용 방침을 대체한다. 로드맵 내부 글꼴·행 높이·색상·필터·62개 기록·주기 설정 및 여자부 기존 경로는 유지한다. Base `196d72ea3727c5f0515462f2a0f048b3fba68bd5`. 기존 Node 18개와 PC/모바일 브라우저 검증 통과. 병합·Pages·실제 운영 검증은 수정 PR에서 기록한다. [확인한 문제·검증·복구](validation/olympic-roadmap-site-connection-v1.md).

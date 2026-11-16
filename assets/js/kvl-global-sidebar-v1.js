@@ -11,7 +11,7 @@
     :`competition-calendar.html?view=year&year=${calendarYear}`;
 
   const competitionPages=new Set(['competition.html','competition-engine.html','vnl.html','match.html','japan.html','brazil.html','poland.html','iran.html','usa.html','france.html','argentina.html','italy.html','canada.html','belgium.html','cuba.html','slovenia.html','bulgaria.html','germany.html','serbia.html','turkiye.html','china.html','ukraine.html','avc-men-cup.html']);
-  const nationalPages=new Set(['national-team.html','national-team-history.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
+  const nationalPages=new Set(['national-team.html','national-team-history.html','olympic-roadmap.html','national-team-history-verification.html','la28-volleyball-qualification.html','fivb-world-ranking-events.html','fivb-world-ranking-la28-2028.html']);
   const analysisPages=new Set(['player-compare.html','player-cohort.html']);
   const domesticPages=new Set(['domestic-competitions.html','danyang-university-2026.html','ibk-middle-high-2026.html','school-competition-results-2026.html','university-competitions.html','university-competition.html','university-competition-danyang.html','university-team.html','national-sports-festival-2026.html','national-youth-sports-festival-2026.html','comprehensive-competitions.html','national-sports-festival-volleyball-2026-unified-ui-prototype.html']);
   const vleaguePages=new Set(['v-league.html','kovo-cup.html','v-league-draft.html']);
@@ -67,6 +67,7 @@
     ]),
     group('national',icon.flag,'국가대표팀',[
       link('national-home','national-team.html',null,'대표팀 홈'),
+      link('national-roadmap','olympic-roadmap.html',null,'올림픽·대표팀 로드맵'),
       link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀'),
       link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀')
     ]),
@@ -109,6 +110,7 @@
     if(item.key==='vleague-cup')return active==='vleague'&&(path==='kovo-cup.html'||((isProCompetitionPrototype||isProCompetitionProduction)&&/^kovo-cup-/.test(params.get('competition')||'')));
 
     if(item.key==='national-home')return active==='national'&&path==='national-team.html';
+    if(item.key==='national-roadmap')return active==='national'&&['olympic-roadmap.html','national-team-history-verification.html'].includes(path);
     if(item.key==='national-senior')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='senior';
     if(item.key==='national-age')return active==='national'&&path==='national-team-history.html'&&params.get('scope')==='age';
 
