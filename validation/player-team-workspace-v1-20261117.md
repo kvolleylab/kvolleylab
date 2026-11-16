@@ -1,6 +1,6 @@
 # Player List + Unified Team Workspace v1 — 2026-11-17
 
-Status: IMPLEMENTED IN ISOLATED BRANCH / QA PENDING / NOT DEPLOYED
+Status: IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / BROWSER QA NOT RUN / NOT DEPLOYED
 
 ## Base
 - stacked on PR #345 branch head: b1564d2332a8ea441b58c1131058d8d58673b0d4
@@ -33,16 +33,27 @@ Group identity includes level + gender + current affiliation key.
 ## Legacy compatibility
 team-detail.html retains fallback resolution for legacy name/id query parameters when a matching current affiliation exists.
 
+## Static QA evidence
+- Changed/new JS module syntax: PASS.
+- Referenced DOM IDs missing: 0.
+- Player layouts table/cards/compact wired: PASS; default table confirmed.
+- Existing tracking bookmark filter remains wired.
+- Team pages use the same player-search-v2 catalog loader.
+- All seven Player Master/national-link sources loaded for the grouping test.
+- Normalized catalog in test: 854 unique Player IDs.
+- Team groups: 53; professional 14, university 22, international 11, middle_school 2, high_school 3, national 1.
+- Duplicate current-team membership across group keys: 0 players.
+- Team roster direct actions wired to the existing admin-player-workspace bookmark/note API and compare tray.
+- Supabase readback after code-only work: auth users 1 / active admins 1 / member accounts 0 / bookmarks 2 / notes 5.
+- Existing university-team.html remains unchanged.
+
 ## QA gate
 Before release:
-- syntax checks for all new/changed JS modules
-- DOM reference checks
-- player list/card/compact render contract
-- team grouping counts and unique player checks
-- direct bookmark/note API action wiring
-- existing compare tray wiring
-- PC/mobile browser review
-- Supabase bookmark/note count readback unchanged until intentional user action
+- PC/mobile browser review on an actual served preview.
+- Visual density review for player list rows at 1180/768/390/360 widths.
+- Team card and roster-row interaction check with the signed-in admin session.
+- Bookmark add/remove and memo create smoke test, then confirm the intentional data delta.
+- Production merge/Pages check only after explicit user approval.
 
 ## Release
 Do not merge or deploy without explicit user approval.
