@@ -1,5 +1,5 @@
 /* Use the live KVL navigation shell while preserving the approved timeline. */
-.olympic-site-page{width:min(100%,1180px);margin:0 auto;padding:0 20px 32px}
+.olympic-site-page{width:min(100%,1180px);margin:0 auto;padding:0 20px 32px;container-type:inline-size}
 .olympic-site-page>.preview-nav{margin:22px 0 13px;max-width:none;gap:12px;flex-wrap:wrap}
 .olympic-site-page>.preview-nav [aria-current]{color:#536273}
 .olympic-site-page>.oq-summary,.olympic-site-page>.roadmap,.olympic-site-page>.verification{width:100%;max-width:none;margin-left:0!important;margin-right:0!important}
@@ -9,6 +9,7 @@
 .olympic-site-page .roadmap,.olympic-site-page .roadmap button,.olympic-site-page .roadmap a,.olympic-site-page .verification,.olympic-site-page .verification a{font-family:Arial,"Noto Sans KR",sans-serif!important}
 body.olympic-site .top{bottom:52px}
 body.olympic-site>.skip{z-index:2100}
+@container(max-width:760px){.oq-summary .oq-quota-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){html:has(body.olympic-site){scroll-padding-top:74px}}
 @media(max-width:640px){
   .olympic-site-page{padding:0 12px 24px}
