@@ -20,8 +20,8 @@ function apply(state){
   document.documentElement.dataset.kvlAuth=state.authenticated&&state.access?(state.role||'member'):'signed-out';
   document.querySelectorAll('[data-kvl-auth-link]').forEach(link=>{
     const signedIn=state.authenticated&&state.access;
-    const label=signedIn?(state.role==='admin'?'관리자':'내 계정'):'로그인';
-    const href=signedIn?(state.role==='admin'?'admin-player-workspace.html':'players.html'):loginHref();
+    const label=signedIn?'내 계정':'로그인';
+    const href=signedIn?'players.html':loginHref();
     const labelEl=link.querySelector('[data-kvl-auth-label]');
     if(labelEl){if(labelEl.textContent!==label)labelEl.textContent=label}
     else if(link.textContent!==label)link.textContent=label;
