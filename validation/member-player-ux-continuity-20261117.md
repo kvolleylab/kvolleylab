@@ -1,6 +1,6 @@
 # Member Player UX Continuity — 2026-11-17
 
-Status: IMPLEMENTED IN ISOLATED BRANCH / STATIC QA PENDING / NOT DEPLOYED
+Status: IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / NOT DEPLOYED
 
 ## Base
 - main: `196d72ea3727c5f0515462f2a0f048b3fba68bd5`
@@ -30,6 +30,15 @@ Verified before this branch:
 - Member accounts: 0
 - Bookmarks: 2
 - Notes: 5
+
+## Static QA
+- Branch is 0 commits behind base main and contains only the expected UX/documentation files.
+- `member-session-v1.mjs`: module syntax PASS.
+- `player-workspace-v1.mjs`: module syntax PASS, including existing top-level await.
+- `unified-nav.js`: script syntax PASS.
+- Existing tracking bookmark filter, bookmark toggle, note list/save/delete actions, and profile postMessage bridge remain present.
+- Supabase readback after the code-only change still reports auth users 1 / active admins 1 / member accounts 0 / bookmarks 2 / notes 5.
+- Browser pixel/interaction QA is not claimed in this environment.
 
 ## Release gate
 Do not merge to `main` without explicit user approval.
