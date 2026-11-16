@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "id": "la2028",
+  "year": 2028,
+  "name": "LA28 로스앤젤레스 올림픽",
+  "hostCity": "로스앤젤레스",
+  "summaryTitle": "LA28 출전권 한눈에 보기",
+  "progressStatus": "qualification_in_progress",
+  "archiveStatus": "not_archived",
+  "archivedAt": null,
+  "checkedAt": "2026-11-16",
+  "updatedAt": "2026-11-16",
+  "rules": {
+    "status": "official_verified",
+    "version": "2026-05-12",
+    "totalPerGender": 12,
+    "genders": [
+      "M",
+      "W"
+    ],
+    "allocation": [
+      {
+        "id": "host",
+        "name": "개최국",
+        "count": 1,
+        "summary": "미국 자동 출전",
+        "sourceIds": [
+          "la28-pdf",
+          "fivb-system"
+        ]
+      },
+      {
+        "id": "continental",
+        "name": "2026 대륙선수권",
+        "count": 5,
+        "summary": "5개 대륙별 1장",
+        "sourceIds": [
+          "la28-pdf",
+          "fivb-continental"
+        ]
+      },
+      {
+        "id": "world-cup",
+        "name": "2027 FIVB 월드컵",
+        "count": 3,
+        "summary": "기출전국 제외 상위 3팀",
+        "sourceIds": [
+          "world-cup-field",
+          "la28-field"
+        ]
+      },
+      {
+        "id": "ranking",
+        "name": "2028 FIVB 세계랭킹",
+        "count": 3,
+        "summary": "미출전국 대상 · 대륙 우선",
+        "sourceIds": [
+          "la28-pdf"
+        ]
+      }
+    ],
+    "details": [
+      {
+        "title": "개최국 · 미국",
+        "text": "미국은 남녀 각각 개최국 1장을 배정받습니다. 선수 자격과 국가올림픽위원회의 확인 절차는 공식 규정을 따릅니다.",
+        "sourceIds": [
+          "la28-pdf"
+        ]
+      },
+      {
+        "title": "2026 대륙선수권 · 대륙별 1장",
+        "text": "아시아·유럽·아프리카·남미·북중미카리브해의 남녀 대회별 1장입니다. 북중미카리브해는 개최국 미국을 제외한 상위 4팀의 별도 올림픽 예선 우승팀을 선발합니다.",
+        "sourceIds": [
+          "la28-pdf",
+          "fivb-continental"
+        ]
+      },
+      {
+        "title": "2027 FIVB 월드컵 · 기출전국 제외",
+        "text": "LA28 출전권을 이미 확보한 팀을 제외하고 최종 순위가 높은 3팀에 배정합니다. 전체 순위 1~3위로만 한정하지 않습니다. 2027년부터 World Championship의 공식 명칭은 World Cup으로 바뀝니다.",
+        "sourceIds": [
+          "world-cup-field",
+          "la28-field"
+        ]
+      },
+      {
+        "title": "2028 세계랭킹 · 대륙 대표성 우선",
+        "text": "2028 VNL 예선 종료 시점의 FIVB 세계랭킹을 사용합니다. VNL 최종 순위가 아닙니다. 출전팀이 없는 대륙의 팀을 우선 고려한 뒤 다른 미진출팀에 배정합니다. 남자는 6월 18일, 여자는 6월 11일(잠정·TBC) 기준입니다.",
+        "sourceIds": [
+          "la28-pdf"
+        ]
+      },
+      {
+        "title": "미사용 출전권 재배정",
+        "text": "일반 미사용권은 해당 진출 대회의 차순위 미진출 국가올림픽위원회에 재배정합니다. 개최국 미사용권은 위 세계랭킹 마감 시점의 최상위 미진출팀에 배정합니다.",
+        "sourceIds": [
+          "la28-pdf"
+        ]
+      }
+    ],
+    "rankingCutoff": {
+      "M": {
+        "date": "2028-06-18",
+        "status": "official_scheduled"
+      },
+      "W": {
+        "date": "2028-06-11",
+        "status": "tentative"
+      }
+    }
+  },
+  "korea": {
+    "country": "KOR",
+    "gender": "M",
+    "worldCupStatus": "qualified",
+    "olympicStatus": "not_yet_qualified",
+    "summary": [
+      "대한민국 남자대표팀",
+      "2027 월드컵 출전 확정",
+      "LA28 출전권 아직 미확보"
+    ],
+    "routeStatus": [
+      {
+        "name": "2026 AVC 남자 아시아선수권",
+        "status": "3위 · LA28 아시아 직행권 미획득",
+        "condition": "아시아 직행권은 일본이 확보",
+        "url": "https://kvolleylab.com/continental-championship-2026.html?id=avc-men-continental-2026"
+      },
+      {
+        "name": "2027 FIVB 남자 월드컵",
+        "status": "대한민국 출전 확정",
+        "condition": "기출전국을 제외한 최종 순위 상위 3팀",
+        "url": "https://kvolleylab.com/fivb-world-cup-2027.html"
+      },
+      {
+        "name": "2028 세계랭킹",
+        "status": "최종 경로 · 결과 미확정",
+        "condition": "대륙 대표성 우선, 이후 미출전국 랭킹 순",
+        "url": "https://kvolleylab.com/fivb-world-ranking-la28-2028.html"
+      }
+    ],
+    "sourceIds": [
+      "world-cup-field",
+      "la28-field",
+      "asian-result"
+    ]
+  },
+  "finalOutcome": {
+    "qualification": null,
+    "gamesResult": null,
+    "officialSourceIds": [],
+    "verifiedAt": null
+  },
+  "relatedLinks": [
+    {
+      "label": "2026 대륙선수권 5개 대회",
+      "url": "https://kvolleylab.com/continental-championships-2026.html"
+    },
+    {
+      "label": "2026 AVC 남자 아시아선수권",
+      "url": "https://kvolleylab.com/continental-championship-2026.html?id=avc-men-continental-2026"
+    },
+    {
+      "label": "2027 FIVB 월드컵",
+      "url": "https://kvolleylab.com/fivb-world-cup-2027.html"
+    },
+    {
+      "label": "2028 세계랭킹 출전 경로",
+      "url": "https://kvolleylab.com/fivb-world-ranking-la28-2028.html"
+    },
+    {
+      "label": "기존 LA28 출전권 페이지",
+      "url": "https://kvolleylab.com/la28-volleyball-qualification.html"
+    }
+  ],
+  "trackingPolicy": "대회 정보·일정·결과와 대회별 공식 로스터를 연결해 추적합니다. 국가별 상시 대표팀 명단과 대회별 최종 명단은 구분합니다.",
+  "sources": [
+    {
+      "id": "la28-pdf",
+      "title": "IOC · FIVB LA28 공식 출전 규정 (2026.05.12판)",
+      "url": "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+      "checkedAt": "2026-11-16"
+    },
+    {
+      "id": "fivb-system",
+      "title": "FIVB · 올림픽 출전자격 체계",
+      "url": "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/",
+      "checkedAt": "2026-11-16"
+    },
+    {
+      "id": "fivb-continental",
+      "title": "FIVB · 대륙선수권과 LA28·월드컵",
+      "url": "https://www.fivb.com/continental-championships-set-the-course-for-la28-and-world-cup-qualification/",
+      "checkedAt": "2026-11-16"
+    },
+    {
+      "id": "world-cup-field",
+      "title": "Volleyball World · 2027 남자 월드컵 참가 32팀 확정",
+      "url": "https://en.volleyballworld.com/news/the-field-is-set-32-teams-bound-for-the-2027-fivb-men-s-volleyball-world-cup-in-poland",
+      "checkedAt": "2026-11-16"
+    },
+    {
+      "id": "la28-field",
+      "title": "Volleyball World · LA28 남자 출전 확정팀과 남은 경로",
+      "url": "https://en.volleyballworld.com/news/la-2028-men-s-volleyball-who-qualified-so-far",
+      "checkedAt": "2026-11-16"
+    },
+    {
+      "id": "asian-result",
+      "title": "Volleyball World · 2026 아시아선수권 최종 결과",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-triumph-as-asian-champs-and-qualify-for-la-2028",
+      "checkedAt": "2026-11-16"
+    }
+  ],
+  "verificationNotes": [
+    "대한민국의 2027 월드컵 진출은 2026년 10월 19일 공식 참가팀 발표를 기준으로 확인했습니다.",
+    "공식 PDF의 개최국 사용 확인 기한은 본문과 일정표가 다르므로 요약에 확정 기한을 싣지 않았습니다."
+  ],
+  "adminVerification": {
+    "status": "verified_for_prototype",
+    "checkedAt": "2026-11-16",
+    "productionApproved": false
+  }
+}
