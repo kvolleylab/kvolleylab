@@ -46,3 +46,10 @@
 .tournament-main h3 a{color:inherit}.tournament-main h3 a:hover{color:#99701e}
 
 .fallback-links{display:flex;flex-wrap:wrap;gap:10px;padding:18px 0;font-size:13px}.fallback-links a{padding:10px 14px;border:1px solid #dfe6ed;border-radius:7px;background:#fff;color:#35536f}
+
+/* 2026-11-16 AVC card tint: competition/result zone only; qualification note and links stay white. */
+.tournament-card.avc .tournament-top{background:#e2f0e7}
+.tournament-card.avc .tournament-main{background:linear-gradient(180deg,#e2f0e7 0%,#f0f7f2 100%)}
+.tournament-card.avc:hover .tournament-top,.tournament-card.avc:focus-within .tournament-top{background:#f6e9ca}
+.tournament-card.avc:hover .tournament-main,.tournament-card.avc:focus-within .tournament-main{background:linear-gradient(180deg,#f6e9ca 0%,#fffbf3 100%)}
+.tournament-card.avc:hover .family-label,.tournament-card.avc:focus-within .family-label{color:#977325}
