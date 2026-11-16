@@ -20,7 +20,7 @@
 .status-strip a>span{font-size:11px;color:#728095;font-weight:650}.status-strip strong{font-size:18px;letter-spacing:-.5px;line-height:1.2}.status-strip strong small{font-size:12px;color:#758398;font-weight:500;letter-spacing:0}.status-strip strong em{font-style:normal;font-size:14px}.status-strip a>small{font-size:11px;color:#7c8897}
 .status-strip .summary-ranking strong{font-size:28px;color:var(--team);line-height:.95}.status-strip i{font-style:normal;color:#a88635;font-size:14px}.status-strip b{font-size:18px;color:#ad8b3c}.status-strip a:hover strong{color:#9b772a}
 .competition-grid,.competition-grid:has(> :nth-child(3)){grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.tournament-card{--family:#176638;min-width:0;border:1px solid #dfe6ed;border-top:3px solid var(--family);background:#fff;border-radius:12px;overflow:hidden;transition:border-color .18s,box-shadow .18s}
+.tournament-card{--family:#176638;min-width:0;border:1px solid #dfe6ed;border-top:1px solid #dfe6ed;background:#fff;border-radius:12px;overflow:hidden;transition:border-color .18s,box-shadow .18s}
 .tournament-card.games{--family:#8c2934}.tournament-card:hover,.journey-panel:hover,.ranking-panel:hover,.feature-card:hover{border-color:#c9a44c;box-shadow:0 4px 14px #1b304708;transform:none}
 .tournament-top{display:flex;justify-content:space-between;align-items:center;padding:15px 19px 0}.family-label{font-size:10px;font-weight:800;color:var(--family);letter-spacing:.2px}.ended{font-size:10px;color:#738191;background:#f4f6f8;padding:4px 7px;border-radius:4px}
 .tournament-main{padding:12px 19px 15px;display:grid;grid-template-columns:minmax(0,1fr) 68px;gap:13px;align-items:center}
@@ -47,9 +47,27 @@
 
 .fallback-links{display:flex;flex-wrap:wrap;gap:10px;padding:18px 0;font-size:13px}.fallback-links a{padding:10px 14px;border:1px solid #dfe6ed;border-radius:7px;background:#fff;color:#35536f}
 
-/* 2026-11-16 AVC card tint: competition/result zone only; qualification note and links stay white. */
-.tournament-card.avc .tournament-top{background:#e2f0e7}
-.tournament-card.avc .tournament-main{background:linear-gradient(180deg,#e2f0e7 0%,#f0f7f2 100%)}
-.tournament-card.avc:hover .tournament-top,.tournament-card.avc:focus-within .tournament-top{background:#f6e9ca}
-.tournament-card.avc:hover .tournament-main,.tournament-card.avc:focus-within .tournament-main{background:linear-gradient(180deg,#f6e9ca 0%,#fffbf3 100%)}
-.tournament-card.avc:hover .family-label,.tournament-card.avc:focus-within .family-label{color:#977325}
+/* 2026-11-16 correction: fill the whole tournament/result area with its existing family color.
+   AVC = solid green; Asian Games = solid red; no colored top stripe or pale gradient.
+   Qualification messages and destination links remain on the white card background. */
+.tournament-card:is(.avc,.games) .tournament-top,
+.tournament-card:is(.avc,.games) .tournament-main{
+  background:var(--family);
+  color:#fff;
+  transition:background-color .18s,color .18s;
+}
+.tournament-card:is(.avc,.games) :is(.family-label,.tournament-main h3,.tournament-main h3 a,.tournament-main p,.final-place small,.final-place strong){
+  color:#fff;
+}
+.tournament-card:is(.avc,.games) .ended{color:#fff;background:rgba(255,255,255,.18)}
+.tournament-card:is(.avc,.games) .final-place{border-left-color:rgba(255,255,255,.34)}
+.tournament-card:is(.avc,.games):is(:hover,:focus-within) :is(.tournament-top,.tournament-main){
+  background:#d6b25e;
+  color:#1b3047;
+}
+.tournament-card:is(.avc,.games):is(:hover,:focus-within) :is(.family-label,.tournament-main h3,.tournament-main h3 a,.tournament-main p,.final-place small,.final-place strong){
+  color:#1b3047;
+}
+.tournament-card:is(.avc,.games):is(:hover,:focus-within) .ended{background:rgba(27,48,71,.12);color:#1b3047}
+.tournament-card:is(.avc,.games):is(:hover,:focus-within) .final-place{border-left-color:rgba(27,48,71,.28)}
+.tournament-card:is(.avc,.games) .tournament-main h3 a:hover{text-decoration:underline;color:inherit}
