@@ -1,5 +1,5 @@
 import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
-const SUPABASE_URL='https://byaukvbwdhextiqycrRds.supabase.co'.replace('crRds','crds');
+const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
 const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
 const FUNCTION_NAME='member-access';
 const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
