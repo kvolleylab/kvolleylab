@@ -1,5 +1,6 @@
 (()=>{
-  if(!document.querySelector('script[src*="member-access-gate-v1.mjs"]')){const memberGate=document.createElement('script');memberGate.type='module';memberGate.src='assets/js/member-access-gate-v1.mjs?v=20261111-1';document.head.appendChild(memberGate)}
+  if(!document.querySelector('script[src*="member-session-v1.mjs"]')){const memberSession=document.createElement('script');memberSession.type='module';memberSession.src='assets/js/member-session-v1.mjs?v=20261116-1';document.head.appendChild(memberSession)}
+  if(!document.querySelector('script[src*="member-access-gate-v1.mjs"]')){const memberGate=document.createElement('script');memberGate.type='module';memberGate.src='assets/js/member-access-gate-v1.mjs?v=20261116-1';document.head.appendChild(memberGate)}
   const PRIVATE_REVIEW_MODE=true;
   if(!document.querySelector('link[rel~="icon"]')){
     const iconLink=document.createElement('link');
@@ -120,9 +121,9 @@
   new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1)rewriteMatchLinks(node)}))).observe(document.documentElement,{childList:true,subtree:true});
 
   document.querySelectorAll('body>.site-header,body>.kvl-unified-header').forEach(header=>header.style.display='none');
-  if(!document.querySelector('link[href*="kvl-global-sidebar-v1.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-v1.css?v=20261102-mobile-header-1';document.head.appendChild(link)}
+  if(!document.querySelector('link[href*="kvl-global-sidebar-v1.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-v1.css?v=20261116-auth-1';document.head.appendChild(link)}
   if(!document.querySelector('link[href*="kvl-global-sidebar-submenus.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/kvl-global-sidebar-submenus.css?v=20260725-1';document.head.appendChild(link)}
-  if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20261102-mobile-header-1';script.defer=true;document.head.appendChild(script)}
+  if(!document.querySelector('script[src*="kvl-global-sidebar-v1.js"]')){const script=document.createElement('script');script.src='assets/js/kvl-global-sidebar-v1.js?v=20261116-auth-1';script.defer=true;document.head.appendChild(script)}
 
   if(path==='vnl.html'){
     if(!document.querySelector('link[href*="competition-hub.css"]')){const link=document.createElement('link');link.rel='stylesheet';link.href='assets/css/competition-hub.css?v=20260728-2';document.head.appendChild(link)}
