@@ -667,3 +667,9 @@ Status: USER CORRECTION / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / 
 
 Base `0cc1e348d06cca495b6593b111e9a9ad4ac0b7fd`; isolated branch `fix/national-team-solid-family-cards-20261116`. 검증·운영 승인 게이트·복구: [검증 기록](validation/national-team-solid-family-cards-20261116.md). PR #339는 2026-11-16 13:59Z Pages 배포 성공, 본 수정은 승인 전이므로 운영 미반영.
 
+## 2026-11-16 · 동아시아 대표팀 출전대회 링크 역할 구분
+
+Status: USER REPORTED / IMPLEMENTED IN ISOLATED BRANCH / QA VERIFIED / NOT DEPLOYED. 국가대표팀 홈의 ‘동아시아 배구선수권대회’ 제목을 누르면 원래 별도인 외부 일본배구협회 공식 결과 페이지로 이동하던 문제를 확인했다. 2026 남녀 East Asian 카드의 `kvlHref`는 `null`이며 대응하는 KVL 전용 상세 페이지는 main에서 확인되지 않았다. JVA 남녀 결과 링크 자체는 대회/한국 최종순위와 일치하는 공식 자료이므로 그대로 유지한다. KVL 내부 링크가 미등록인 남녀 동아시아 대회 제목만 비클릭 텍스트로 표시하고 별도 ‘공식 결과 ↗’ 링크 및 ‘KVL 상세 준비 중’은 남긴다. 이후 검증된 전용 KVL URL이 `kvlHref`에 추가되면 대회명 내부 링크를 복구한다. 타 대회 제목 링크·공식 출처·대회 데이터·명단·자동화를 변경하지 않는다.
+
+Base `51740df91032cd881e3c02fa49b6e2da25acd065`, branch `fix/national-team-east-asian-title-link-v1`. 실제 8개 카드 로직 평가 8/8 PASS, V8 구문 검사 PASS, 운영 및 브라우저 직접 검증은 미실시. [검증 기록](validation/national-team-east-asian-link-20261116.md). 운영 적용은 별도 사용자 승인 필요.
+
