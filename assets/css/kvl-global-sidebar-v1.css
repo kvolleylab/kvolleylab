@@ -9,3 +9,12 @@
   body.kvl-mobile-header-enabled .home-utility{display:none!important}
 }
 @media print{.kvl-global-mobile-header{display:none!important}}
+
+.kvl-global-account{flex:0 0 auto;margin-top:12px;padding:10px 0 9px;border-top:1px solid rgba(255,255,255,.09)}
+.kvl-global-account-link{display:flex;align-items:center;gap:11px;min-height:42px;padding:0 11px;border-radius:8px;color:#fff;text-decoration:none;font:800 13px Arial,sans-serif;background:rgba(255,255,255,.07)}
+.kvl-global-account-link:hover{background:rgba(255,255,255,.12)}
+.kvl-global-account-role{margin-left:auto;padding:3px 5px;border-radius:999px;background:#d6b25e;color:#10233f;font-size:8px;font-weight:900}
+.kvl-global-account-logout{width:100%;margin-top:6px;padding:7px 10px;border:1px solid rgba(255,255,255,.13);border-radius:7px;background:transparent;color:rgba(238,244,252,.68);font:700 10px Arial,sans-serif;cursor:pointer}
+.kvl-global-account-logout:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+.kvl-sidebar-collapsed .kvl-global-account-link{justify-content:center;padding:0}.kvl-sidebar-collapsed .kvl-global-account-role,.kvl-sidebar-collapsed .kvl-global-account-logout{display:none}
+@media(max-width:900px){.kvl-sidebar-collapsed .kvl-global-account-link{justify-content:flex-start;padding:0 11px}.kvl-sidebar-collapsed .kvl-global-account-role{display:inline-flex}.kvl-sidebar-collapsed .kvl-global-account-logout:not([hidden]){display:block}}
