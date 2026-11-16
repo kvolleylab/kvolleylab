@@ -667,3 +667,9 @@ Status: USER CORRECTION / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / 
 
 Base `0cc1e348d06cca495b6593b111e9a9ad4ac0b7fd`; isolated branch `fix/national-team-solid-family-cards-20261116`. 검증·운영 승인 게이트·복구: [검증 기록](validation/national-team-solid-family-cards-20261116.md). PR #339는 2026-11-16 13:59Z Pages 배포 성공, 본 수정은 승인 전이므로 운영 미반영.
 
+
+## 2026-11-16 · 올림픽 출전권 요약·남자대표팀 역사 로드맵 운영 연결 승인
+
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 사용자가 “운영 연결단계진행해”를 명시했다. 승인된 통합 프로토타입을 `/olympic-roadmap.html`로 운영 연결하고 대표팀 홈의 남자 ROAD TO LA28 하단에서 진입한다. 여자대표팀은 기존 `/la28-volleyball-qualification.html` 안내를 유지한다. 기존 LA28 URL과 내용은 변경하지 않는다. 62개 역사 기록·출처·미확인 목록 및 로드맵 디자인·동작을 보존하고, 올림픽 주기 JSON과 역사 JSON을 분리한다. 2032 미발표 규정에는 배정 숫자를 노출하지 않으며 관리자 검증·공식 최종 결과 없이 주기 전환을 허용하지 않는다.
+
+Base `ff587a18f7878ef984d72b71d6bd1700f25426ca`. 원본 `6cedb89b517e977309416fafd71597692f82cfb8`, 통합 시안 `ce566a591394788a4100db5fd9c0fe807e256e8c`. 당일 최신 대표팀 카드 단색 스타일과 Draft Hub 변경을 유지한다. Node 18개 및 PC·390/360px 브라우저 검증 통과. 병합·Pages·실제 운영 확인 전에는 DEPLOYED로 표시하지 않으며 최종 증거는 운영 연결 PR에 남긴다. [검증 및 한계](validation/olympic-roadmap-production-v1.md), [운영·전환·복구](KVL_OLYMPIC_ROADMAP_OPERATIONS_v1.md).

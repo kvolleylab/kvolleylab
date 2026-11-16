@@ -1,0 +1,4363 @@
+{
+  "schemaVersion": 1,
+  "version": "v1",
+  "verifiedAt": "2026-11-16",
+  "updatedAt": "2026-11-16",
+  "baseCommit": "811f270f3dddc04bb0df0e5ed14ddb9ba1b11c07",
+  "scope": {
+    "country": "KOR",
+    "gender": "M",
+    "ageCategory": "senior",
+    "startYear": 2000,
+    "endYear": 2028
+  },
+  "cycle": {
+    "name": "ROAD TO LA28",
+    "olympicYear": 2028,
+    "startYear": 2025
+  },
+  "displayPolicy": {
+    "recentYears": 3,
+    "currentYear": 2026,
+    "archiveThrough": 2023,
+    "unknownDates": "known-dates-first"
+  },
+  "coverageNote": "2000–2028 주요 기록을 선별 수록했습니다. 기록이 없거나 날짜가 미확인인 것은 대한민국의 불참을 의미하지 않습니다.",
+  "sources": [
+    {
+      "id": "hist-avc_champ",
+      "title": "AVC Asian Senior Men Volleyball Championship historical rankings",
+      "url": "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official text; direct fetch 502",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-kva_champ",
+      "title": "대한배구협회 아시아남자배구선수권 역대성적",
+      "url": "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-avc_games",
+      "title": "AVC Asian Games: Men's Volleyball historical rankings",
+      "url": "https://asianvolleyball.net/new/asian-games-mens-volleyball/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official text; direct fetch 502",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-oca_profile",
+      "title": "OCA Hangzhou 2022 — Team Republic of Korea (Men)",
+      "url": "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-avc_cup",
+      "title": "AVC Cup for Men historical rankings",
+      "url": "https://asianvolleyball.net/new/avc-cup-for-men-2/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official text; direct fetch 502",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-kva_world",
+      "title": "대한배구협회 세계남자배구선수권 역대성적",
+      "url": "https://www.kva.or.kr/user/template.do?fileNm=bsns4_5",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-usav_2014",
+      "title": "USA Volleyball 2014 Men's National Team results",
+      "url": "https://usavolleyball.org/wp-content/uploads/2021/01/2014-MNT.pdf",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official PDF",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-kva_league",
+      "title": "대한배구협회 월드리그 역대성적",
+      "url": "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-vcc_2022_standings",
+      "title": "Volleyball Challenger Cup 2022 Men's Standings",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/challenger-cup/2022/standings/men/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-vcc_2022_rule",
+      "title": "Croatia and Korea to welcome 2022 Volleyball Challenger Cup tournaments",
+      "url": "https://en.volleyballworld.com/news/croatia-and-korea-to-welcome-2022-challenger-cup-tournaments",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official article",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-avcc_2024",
+      "title": "Qatar win AVC Challenge Cup, qualify for Volleyball Challenger Cup",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/challenger-cup/news/qatar-win-avc-challenge-cup-qualify-for-volleyball-challenger-cup",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-eastern_2019",
+      "title": "GTM of 2019 AVC Eastern Zone Men's Volleyball Championship completed",
+      "url": "https://asianvolleyball.net/new/gtm-of-2019-avc-eastern-zone-mens-volleyball-championship-completed/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official text; direct fetch 502",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-eastern_2019_results",
+      "title": "Undefeated China and Chinese Taipei set for title clash",
+      "url": "https://asianvolleyball.net/new/undefeated-china-and-chinese-taipei-set-for-title-clash-at-avc-eastern-zone-mens-championship/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official text",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-w2022_teams",
+      "title": "Men’s World Champs: 30 days to go!",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-cup/2022/news/men-s-world-champs-30-days-to-go",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official article",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian2021_rule",
+      "title": "21st Asian Senior Men's Championship set to kick off on Sept 12 in Japan",
+      "url": "https://asianvolleyball.net/new/21st-asian-senior-mens-championship-set-to-kick-off-on-sept-12-in-japan/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official article",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian2021_results",
+      "title": "Iran extend continental reign with sweep of Japan",
+      "url": "https://www.fivb.com/iran-extend-continental-reign-with-sweep-of-japan/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official article",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-usav_2006",
+      "title": "2006 USA Men’s National Team Results",
+      "url": "https://usavolleyball.org/wp-content/uploads/2021/01/2006mResults.pdf",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read official PDF",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_standings",
+      "title": "Men's World Championship 2025 - Standings",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-cup/2025/standings/",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_preview",
+      "title": "Men’s World Championship Pool Previews: Pool C",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/news/men-s-world-championship-pool-previews-pool-c",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2025-09-09"
+    },
+    {
+      "id": "now-w25_fra",
+      "title": "France–Korea, 14 September 2025",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21075/?match=france-vs-korea",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_arg",
+      "title": "Argentina–Korea, 16 September 2025",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21087/?match=argentina-vs-korea",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_fin",
+      "title": "Finland–Korea, 18 September 2025",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21103/?match=Finland-vs-Korea",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-avc25_final",
+      "title": "Bahrain snatch historic AVC Nations Cup gold",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/2025/news/bahrain-snatch-historic-avc-nations-cup-gold",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2025-06-25"
+    },
+    {
+      "id": "now-avc26_preview",
+      "title": "AVC Men’s Cup to serve off on Saturday in India",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/news/avc-men-s-cup-to-serve-off-on-saturday-in-india",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-06-19"
+    },
+    {
+      "id": "now-avc26_final",
+      "title": "Indonesia triumph in Ahmedabad for first-ever AVC Cup honors",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/news/indonesia-triumph-in-ahmedabad-for-first-ever-avc-cup-honors",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-06-28"
+    },
+    {
+      "id": "now-asian26_semifinal",
+      "title": "Japan and Iran on to continental final, book World Cup berths",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-and-iran-on-to-continental-final-book-world-cup-berths",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-09-12"
+    },
+    {
+      "id": "now-asian26_jpn_kor",
+      "title": "Japan–Korea semifinal, 12 September 2026",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/schedule/28851/?match=tbd-vs-tbd",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-asian26_final",
+      "title": "Japan triumph as Asian champs and qualify for LA 2028!",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-triumph-as-asian-champs-and-qualify-for-la-2028",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-09-13"
+    },
+    {
+      "id": "now-worldcup_rename",
+      "title": "The FIVB Volleyball World Cup Takes the Sport Into a New Era",
+      "url": "https://www.fivb.com/the-fivb-volleyball-world-cup-takes-the-sport-into-a-new-era/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-03-05"
+    },
+    {
+      "id": "now-worldcup27_field",
+      "title": "The field is set: 32 teams bound for the 2027 FIVB Men’s Volleyball World Cup in Poland",
+      "url": "https://en.volleyballworld.com/news/the-field-is-set-32-teams-bound-for-the-2027-fivb-men-s-volleyball-world-cup-in-poland",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-10-19"
+    },
+    {
+      "id": "now-worldcup27_fivb",
+      "title": "32 teams bound for the 2027 FIVB Men’s Volleyball World Cup in Poland",
+      "url": "https://www.fivb.com/32-teams-bound-for-the-2027-fivb-mens-volleyball-world-cup-in-poland/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-10-19"
+    },
+    {
+      "id": "now-la28_fivb",
+      "title": "Volleyball and beach volleyball qualification systems for LA28 Olympic Games confirmed",
+      "url": "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2025-12-11"
+    },
+    {
+      "id": "now-la28_system",
+      "title": "Qualification System – Games of the XXXIV Olympiad – LA28 – Volleyball",
+      "url": "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+      "publisher": "IOC / FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": "2026-05-12",
+      "publishedAt": null
+    },
+    {
+      "id": "now-fivb_calendar",
+      "title": "Volleyball Calendar 2025–2028, Board of Administration update 5 December 2025",
+      "url": "https://www.fivb.com/wp-content/uploads/2025/05/Volleyball-Calendar-2025-2028_V24_07DEC2023_forpostingonweb_BOAUpdate5DEC2025.pdf",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": "2025-12-05",
+      "publishedAt": null
+    },
+    {
+      "id": "now-la28_fivb_archived",
+      "title": "Qualification System LA28 Volleyball — version 10 December 2025",
+      "url": "https://www.fivb.com/wp-content/uploads/2026/09/VVO-LA28-Qualification-System-1.pdf",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": "2025-12-10",
+      "publishedAt": null
+    },
+    {
+      "id": "now-asian26_bronze_match",
+      "title": "Korea–Australia: 2026 Asian Championship bronze match",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/schedule/28853/?match=korea-vs-australia",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_jva_results",
+      "title": "第20回アジア競技大会（2026/愛知・名古屋）試合結果",
+      "url": "https://www.jva.or.jp/international/2026/asia_men/?entry=results",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_jva_overview",
+      "title": "第20回アジア競技大会（2026/愛知・名古屋）概要",
+      "url": "https://www.jva.or.jp/international/2026/asia_men/",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-eastasia26_jva_results",
+      "title": "2026男子アジア東部地区選手権大会 試合結果",
+      "url": "https://www.jva.or.jp/international2026/menasianeastern/?entry=result",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-eastasia26_jva_overview",
+      "title": "2026男子アジア東部地区選手権大会 概要",
+      "url": "https://www.jva.or.jp/international2026/menasianeastern/",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-kva-olympic-history",
+      "title": "올림픽 남자부 역대성적",
+      "url": "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+      "publisher": "대한배구협회",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-avc-tokyo2020-semifinal",
+      "title": "IRAN MAKE A STEP CLOSER TO SECURING TOKYO 2020 BERTH AFTER EPIC 3-2 COMEBACK WIN AGAINST KOREA",
+      "url": "https://asianvolleyball.net/new/iran-make-a-step-closer-to-securing-tokyo-2020-berth-after-epic-3-2-comeback-win-against-korea/",
+      "publisher": "AVC",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2020-01-11"
+    },
+    {
+      "id": "oly-va-2008-report",
+      "title": "46th Annual Report 2007–2008",
+      "url": "https://volleyball.org.au/wp-content/uploads/filr/2658/AnnualReport2007-2008.pdf",
+      "publisher": "Australian Volleyball Federation",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": "PDF 63번째 페이지 (인쇄 p.62), lines 3651–3668",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-fivb-2008-bulletin",
+      "title": "World Volley News No.25 March 2008",
+      "url": "https://www.fivb.org/EN/Infomedia/WorldVolleyNews/WV_News_25_E06%20final.pdf",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2008-03"
+    },
+    {
+      "id": "oly-jva-2012-report",
+      "title": "第３期・2012年度 事業報告書（2012年4月1日～2013年3月31日）",
+      "url": "https://www.jva.or.jp/wp-content/uploads/2024/02/2012-2013workreport2.pdf",
+      "publisher": "日本バレーボール協会",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": "男子大会 최종순위 lines 164–172",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-jva-2012-qualifier-entry",
+      "title": "2012ロンドンオリンピック世界最終予選兼アジア大陸予選大会 試合日決定！",
+      "url": "https://archive.jva.or.jp/news/20120216.html",
+      "publisher": "日本バレーボール協会",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2012-02-16"
+    },
+    {
+      "id": "oly-jva-2016-qualifier",
+      "title": "2016リオデジャネイロオリンピックバレーボール世界最終予選 大会概要",
+      "url": "https://oqt2016.jva.or.jp/outline/",
+      "publisher": "日本バレーボール協会 / 대회 조직위원회",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-jva-2016-all-qualifiers",
+      "title": "出場チームが続々決定！ 第31回オリンピック競技大会(2016/リオデジャネイロ)男女バレーボール競技",
+      "url": "https://www.jva.or.jp/topics/11254/",
+      "publisher": "日本バレーボール協会",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-fivb-2020-qualifier-rules",
+      "title": "Five Olympic vacancies at stake as five continental qualifiers set to begin",
+      "url": "https://www.fivb.com/five-olympic-vacancies-at-stake-as-five-continental-qualifiers-set-to-begin/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-fivb-paris2024-regulations",
+      "title": "GAMES OF THE XXXIII OLYMPIAD — PARIS 2024 VOLLEYBALL COMPETITION, Competition Regulations, Version 3",
+      "url": "https://images.volleyballworld.com/image/upload/fl_attachment/fivb-prd/mu9xuncsjrxpjy7hnld7.pdf",
+      "publisher": "FIVB / Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": "pp.5–7 예선 명단·진출방식, men's pools p.12",
+      "version": null,
+      "publishedAt": "2024-07-12"
+    },
+    {
+      "id": "oly-vw-paris2024-qualified",
+      "title": "Paris 2024: Men’s volleyball national teams qualified",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-olympic-games-paris-2024/news/paris-2024-men-s-volleyball-national-teams-qualified",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2024-06-23"
+    }
+  ],
+  "events": [
+    {
+      "id": "olympics-2000-men",
+      "competitionId": "olympics-2000-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2000,
+      "editionYear": 2000,
+      "heldYear": 2000,
+      "nameKo": "시드니 올림픽",
+      "officialName": "Sydney 2000 Olympic Games — Men’s Volleyball",
+      "category": "olympics",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 9,
+      "result": "본선 참가 · 9위",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2000-men",
+          "status": "qualified",
+          "label": "올림픽 출전",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-avc-tokyo2020-semifinal"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "gate",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified",
+        "qualifierParticipation": "unverified"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://asianvolleyball.net/new/iran-make-a-step-closer-to-securing-tokyo-2020-berth-after-epic-3-2-comeback-win-against-korea/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "1999년 아시아예선 우승 경로는 별도 공식 결과 원문 미확보. 초기 연대기 범위 시작인 2000년 이전 경로로 참고만 보관.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2001",
+      "competitionId": "kor-m-asian-championship-2001",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2001,
+      "editionYear": 2001,
+      "heldYear": 2001,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2001 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 1,
+      "result": "우승",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-games-2002",
+      "competitionId": "kor-m-asian-games-2002",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2002,
+      "editionYear": 2002,
+      "heldYear": 2002,
+      "nameKo": "부산 아시안게임",
+      "officialName": "2002 Asian Games Men's Volleyball",
+      "category": "asian-games",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 1,
+      "result": "금메달",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_games",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-games-mens-volleyball/",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2003",
+      "competitionId": "kor-m-asian-championship-2003",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2003,
+      "editionYear": 2003,
+      "heldYear": 2003,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2003 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 1,
+      "result": "우승",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "olympics-2004-men",
+      "competitionId": "olympics-2004-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2004,
+      "editionYear": 2004,
+      "heldYear": 2004,
+      "nameKo": "아테네 올림픽",
+      "officialName": "Athens 2004 Olympic Games — Men’s Volleyball",
+      "category": "olympics",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "edition_year",
+      "eventStatus": "completed",
+      "actualParticipation": false,
+      "participationConfirmed": false,
+      "participationStatus": "not_qualified",
+      "finalRank": null,
+      "result": "본선 진출 실패",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2004-men",
+          "status": "not_qualified",
+          "label": "본선 진출 실패",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-avc-tokyo2020-semifinal"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "partial",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified",
+        "qualifierParticipation": "unverified"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://asianvolleyball.net/new/iran-make-a-step-closer-to-securing-tokyo-2020-berth-after-epic-3-2-comeback-win-against-korea/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "본선 불참 사실은 공식 자료로 확정. 2004 도쿄 예선 7위·1승6패는 당시 언론과 2차 자료에서 일치하나 공식 원문 미확보로 미확인 목록에 분리. 본선 진출 실패 표시 가능, 예선 세부는 확정값으로 표시하지 말 것.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2005",
+      "competitionId": "kor-m-asian-championship-2005",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2005,
+      "editionYear": 2005,
+      "heldYear": 2005,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2005 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-games-2006",
+      "competitionId": "kor-m-asian-games-2006",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2006,
+      "editionYear": 2006,
+      "heldYear": 2006,
+      "nameKo": "도하 아시안게임",
+      "officialName": "2006 Asian Games Men's Volleyball",
+      "category": "asian-games",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 1,
+      "result": "금메달",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_games",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-games-mens-volleyball/",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-championship-2006",
+      "competitionId": "kor-m-world-championship-2006",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2006,
+      "editionYear": 2006,
+      "heldYear": 2006,
+      "nameKo": "FIVB 남자 세계선수권",
+      "officialName": "2006 FIVB Volleyball Men's World Championship",
+      "category": "world-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 17,
+      "result": "본선 참가 · 공동 17위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_world",
+        "hist-oca_profile",
+        "hist-usav_2006"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_5",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm",
+        "https://usavolleyball.org/wp-content/uploads/2021/01/2006mResults.pdf"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "USA Volleyball 공식 2006 기록의 최종 순위는 17. China, Greece, Korea, Venezuela로 공동 17위를 확인. 체코협회 PDF의 19번째 표시와 충돌은 공동순위와 정렬순위 차이로 해결.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2006",
+      "competitionId": "kor-m-world-league-2006",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2006,
+      "editionYear": 2006,
+      "heldYear": 2006,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2006 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 10,
+      "result": "10위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2007",
+      "competitionId": "kor-m-asian-championship-2007",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2007,
+      "editionYear": 2007,
+      "heldYear": 2007,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2007 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2007",
+      "competitionId": "kor-m-world-league-2007",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2007,
+      "editionYear": 2007,
+      "heldYear": 2007,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2007 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 9,
+      "result": "9위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "oqt-2008-tokyo-men",
+      "competitionId": "oqt-2008-tokyo-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2008,
+      "editionYear": 2008,
+      "heldYear": 2008,
+      "nameKo": "올림픽 세계예선 겸 아시아예선",
+      "officialName": "FIVB World Olympic Qualification Tournament — Tokyo",
+      "category": "olympic-qualifier",
+      "startDate": "2008-05-31",
+      "endDate": "2008-06-08",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위 · 출전권 미획득",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2008-men",
+          "status": "not_qualified",
+          "label": "올림픽 출전권 미획득",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-va-2008-report",
+            "oly-fivb-2008-bulletin"
+          ]
+        }
+      ],
+      "qualifierParticipation": true,
+      "qualificationPath": null,
+      "eliminationStage": "예선 최종순위에서 출전권 미획득",
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-va-2008-report",
+        "oly-fivb-2008-bulletin"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://volleyball.org.au/wp-content/uploads/filr/2658/AnnualReport2007-2008.pdf",
+        "https://www.fivb.org/EN/Infomedia/WorldVolleyNews/WV_News_25_E06%20final.pdf"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "단일 탈락 확정 경기·시점 미확인. 한국-일본전 패배만을 최종 탈락 경기로 단정하지 않는다.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-cup-2008",
+      "competitionId": "kor-m-avc-cup-2008",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2008,
+      "editionYear": 2008,
+      "heldYear": 2008,
+      "nameKo": "AVC 남자컵",
+      "officialName": "2008 AVC Cup for Men",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 2,
+      "result": "준우승",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_cup"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/avc-cup-for-men-2/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2008",
+      "competitionId": "kor-m-world-league-2008",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2008,
+      "editionYear": 2008,
+      "heldYear": 2008,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2008 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 13,
+      "result": "13위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "olympics-2008-men",
+      "competitionId": "olympics-2008-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2008,
+      "editionYear": 2008,
+      "heldYear": 2008,
+      "nameKo": "베이징 올림픽",
+      "officialName": "Beijing 2008 Olympic Games — Men’s Volleyball",
+      "category": "olympics",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "edition_year",
+      "eventStatus": "completed",
+      "actualParticipation": false,
+      "participationConfirmed": false,
+      "participationStatus": "not_qualified",
+      "finalRank": null,
+      "result": "본선 진출 실패",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2008-men",
+          "status": "not_qualified",
+          "label": "본선 진출 실패",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-va-2008-report",
+            "oly-fivb-2008-bulletin"
+          ]
+        }
+      ],
+      "qualifierParticipation": true,
+      "qualificationPath": null,
+      "eliminationStage": "예선 최종순위에서 출전권 미획득",
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified",
+        "qualifierParticipation": "confirmed"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-va-2008-report",
+        "oly-fivb-2008-bulletin"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://volleyball.org.au/wp-content/uploads/filr/2658/AnnualReport2007-2008.pdf",
+        "https://www.fivb.org/EN/Infomedia/WorldVolleyNews/WV_News_25_E06%20final.pdf"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "단일 탈락 확정 경기·시점 미확인. 한국-일본전 패배만을 최종 탈락 경기로 단정하지 않는다.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2009",
+      "competitionId": "kor-m-asian-championship-2009",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2009,
+      "editionYear": 2009,
+      "heldYear": 2009,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2009 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2009",
+      "competitionId": "kor-m-world-league-2009",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2009,
+      "editionYear": 2009,
+      "heldYear": 2009,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2009 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 14,
+      "result": "14위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-games-2010",
+      "competitionId": "kor-m-asian-games-2010",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2010,
+      "editionYear": 2010,
+      "heldYear": 2010,
+      "nameKo": "광저우 아시안게임",
+      "officialName": "2010 Asian Games Men's Volleyball",
+      "category": "asian-games",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "동메달",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_games",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-games-mens-volleyball/",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-cup-2010",
+      "competitionId": "kor-m-avc-cup-2010",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2010,
+      "editionYear": 2010,
+      "heldYear": 2010,
+      "nameKo": "AVC 남자컵",
+      "officialName": "2010 AVC Cup for Men",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 6,
+      "result": "6위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_cup"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/avc-cup-for-men-2/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2010",
+      "competitionId": "kor-m-world-league-2010",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2010,
+      "editionYear": 2010,
+      "heldYear": 2010,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2010 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 16,
+      "result": "16위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2011",
+      "competitionId": "kor-m-asian-championship-2011",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2011,
+      "editionYear": 2011,
+      "heldYear": 2011,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2011 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2011",
+      "competitionId": "kor-m-world-league-2011",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2011,
+      "editionYear": 2011,
+      "heldYear": 2011,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2011 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 13,
+      "result": "13위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "oqt-2012-tokyo-men",
+      "competitionId": "oqt-2012-tokyo-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2012,
+      "editionYear": 2012,
+      "heldYear": 2012,
+      "nameKo": "올림픽 세계최종예선 겸 아시아예선",
+      "officialName": "2012 London Olympic World Qualification Tournament and Asian Continental Qualification Tournament — Men",
+      "category": "olympic-qualifier",
+      "startDate": "2012-06-01",
+      "endDate": "2012-06-10",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 6,
+      "result": "6위 · 출전권 미획득",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2012-men",
+          "status": "not_qualified",
+          "label": "올림픽 출전권 미획득",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-jva-2012-report",
+            "oly-jva-2012-qualifier-entry"
+          ]
+        }
+      ],
+      "qualifierParticipation": true,
+      "qualificationPath": null,
+      "eliminationStage": "예선 최종순위에서 출전권 미획득",
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-jva-2012-report",
+        "oly-jva-2012-qualifier-entry"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://www.jva.or.jp/wp-content/uploads/2024/02/2012-2013workreport2.pdf",
+        "https://archive.jva.or.jp/news/20120216.html"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "단일 탈락 확정 경기·승패수 공식 원문 미확인.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-cup-2012",
+      "competitionId": "kor-m-avc-cup-2012",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2012,
+      "editionYear": 2012,
+      "heldYear": 2012,
+      "nameKo": "AVC 남자컵",
+      "officialName": "2012 AVC Cup for Men",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 5,
+      "result": "5위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_cup"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/avc-cup-for-men-2/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2012",
+      "competitionId": "kor-m-world-league-2012",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2012,
+      "editionYear": 2012,
+      "heldYear": 2012,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2012 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 14,
+      "result": "14위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "olympics-2012-men",
+      "competitionId": "olympics-2012-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2012,
+      "editionYear": 2012,
+      "heldYear": 2012,
+      "nameKo": "런던 올림픽",
+      "officialName": "London 2012 Olympic Games — Men’s Volleyball",
+      "category": "olympics",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "edition_year",
+      "eventStatus": "completed",
+      "actualParticipation": false,
+      "participationConfirmed": false,
+      "participationStatus": "not_qualified",
+      "finalRank": null,
+      "result": "본선 진출 실패",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2012-men",
+          "status": "not_qualified",
+          "label": "본선 진출 실패",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-jva-2012-report",
+            "oly-jva-2012-qualifier-entry"
+          ]
+        }
+      ],
+      "qualifierParticipation": true,
+      "qualificationPath": null,
+      "eliminationStage": "예선 최종순위에서 출전권 미획득",
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified",
+        "qualifierParticipation": "confirmed"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-jva-2012-report",
+        "oly-jva-2012-qualifier-entry"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://www.jva.or.jp/wp-content/uploads/2024/02/2012-2013workreport2.pdf",
+        "https://archive.jva.or.jp/news/20120216.html"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "단일 탈락 확정 경기·승패수 공식 원문 미확인.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2013",
+      "competitionId": "kor-m-asian-championship-2013",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2013,
+      "editionYear": 2013,
+      "heldYear": 2013,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2013 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 2,
+      "result": "준우승",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2013",
+      "competitionId": "kor-m-world-league-2013",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2013,
+      "editionYear": 2013,
+      "heldYear": 2013,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2013 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 15,
+      "result": "15위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-games-2014",
+      "competitionId": "kor-m-asian-games-2014",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2014,
+      "editionYear": 2014,
+      "heldYear": 2014,
+      "nameKo": "인천 아시안게임",
+      "officialName": "2014 Asian Games Men's Volleyball",
+      "category": "asian-games",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "동메달",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_games",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-games-mens-volleyball/",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-cup-2014",
+      "competitionId": "kor-m-avc-cup-2014",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2014,
+      "editionYear": 2014,
+      "heldYear": 2014,
+      "nameKo": "AVC 남자컵",
+      "officialName": "2014 AVC Cup for Men",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 1,
+      "result": "우승",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_cup",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/avc-cup-for-men-2/",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "결승 인도전 3-0 승리 (OCA 팀 소개 교차확인).",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-championship-2014",
+      "competitionId": "kor-m-world-championship-2014",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2014,
+      "editionYear": 2014,
+      "heldYear": 2014,
+      "nameKo": "FIVB 남자 세계선수권",
+      "officialName": "2014 FIVB Volleyball Men's World Championship",
+      "category": "world-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 17,
+      "result": "본선 참가 · 공동 17위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_world",
+        "hist-usav_2014"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_5",
+        "https://usavolleyball.org/wp-content/uploads/2021/01/2014-MNT.pdf"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "USA Volleyball 공식 2014 기록의 17T 표기로 공동 순위 확인.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-league-2014",
+      "competitionId": "kor-m-world-league-2014",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2014,
+      "editionYear": 2014,
+      "heldYear": 2014,
+      "nameKo": "FIVB 월드리그",
+      "officialName": "2014 FIVB Volleyball World League",
+      "category": "world-league",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 19,
+      "result": "19위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-kva_league"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/template.do?fileNm=bsns4_10"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2015",
+      "competitionId": "kor-m-asian-championship-2015",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2015,
+      "editionYear": 2015,
+      "heldYear": 2015,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2015 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 7,
+      "result": "7위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-cup-2016",
+      "competitionId": "kor-m-avc-cup-2016",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2016,
+      "editionYear": 2016,
+      "heldYear": 2016,
+      "nameKo": "AVC 남자컵",
+      "officialName": "2016 AVC Cup for Men",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 8,
+      "result": "8위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_cup"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/avc-cup-for-men-2/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "qualification-2016-men",
+      "competitionId": "qualification-2016-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2016,
+      "editionYear": 2016,
+      "heldYear": 2016,
+      "nameKo": "올림픽 출전권 경쟁",
+      "officialName": "Rio 2016 Olympic Games — Men’s Volleyball — Qualification",
+      "category": "qualification-allocation",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": null,
+      "participationConfirmed": null,
+      "participationStatus": "not_applicable",
+      "finalRank": null,
+      "result": "최종예선 참가권 미획득",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2016-men",
+          "status": "not_qualified",
+          "label": "최종예선 참가권 미획득",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-jva-2016-qualifier",
+            "oly-jva-2016-all-qualifiers"
+          ]
+        }
+      ],
+      "qualifierParticipation": false,
+      "qualificationPath": "세계최종예선 겸 아시아예선 참가권 미획득. 아시아 참가팀은 개최국 일본과 랭킹 기준 상위 3팀 이란·호주·중국.",
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-jva-2016-qualifier",
+        "oly-jva-2016-all-qualifiers"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://oqt2016.jva.or.jp/outline/",
+        "https://www.jva.or.jp/topics/11254/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "실제 예선 경기에 참가해 탈락한 기록과 구분합니다.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "olympics-2016-men",
+      "competitionId": "olympics-2016-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2016,
+      "editionYear": 2016,
+      "heldYear": 2016,
+      "nameKo": "리우 올림픽",
+      "officialName": "Rio 2016 Olympic Games — Men’s Volleyball",
+      "category": "olympics",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "edition_year",
+      "eventStatus": "completed",
+      "actualParticipation": false,
+      "participationConfirmed": false,
+      "participationStatus": "not_qualified",
+      "finalRank": null,
+      "result": "본선 진출 실패",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2016-men",
+          "status": "not_qualified",
+          "label": "본선 진출 실패",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-jva-2016-qualifier",
+            "oly-jva-2016-all-qualifiers"
+          ]
+        }
+      ],
+      "qualifierParticipation": false,
+      "qualificationPath": "세계최종예선 겸 아시아예선 참가권 미획득. 아시아 참가팀은 개최국 일본과 랭킹 기준 상위 3팀 이란·호주·중국.",
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified",
+        "qualifierParticipation": "confirmed"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-jva-2016-qualifier",
+        "oly-jva-2016-all-qualifiers"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://oqt2016.jva.or.jp/outline/",
+        "https://www.jva.or.jp/topics/11254/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "실제 예선 경기 탈락이 아니다. 한국의 당시 랭킹 숫자와 탈락 결정일은 별도 미확인.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2017",
+      "competitionId": "kor-m-asian-championship-2017",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2017,
+      "editionYear": 2017,
+      "heldYear": 2017,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2017 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-games-2018",
+      "competitionId": "kor-m-asian-games-2018",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2018,
+      "editionYear": 2018,
+      "heldYear": 2018,
+      "nameKo": "자카르타·팔렘방 아시안게임",
+      "officialName": "2018 Asian Games Men's Volleyball",
+      "category": "asian-games",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 2,
+      "result": "은메달",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_games",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-games-mens-volleyball/",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-cup-2018",
+      "competitionId": "kor-m-avc-cup-2018",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2018,
+      "editionYear": 2018,
+      "heldYear": 2018,
+      "nameKo": "AVC 남자컵",
+      "officialName": "2018 AVC Cup for Men",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 4,
+      "result": "4위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_cup"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/avc-cup-for-men-2/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-vnl-2018",
+      "competitionId": "kor-m-vnl-2018",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2018,
+      "editionYear": 2018,
+      "heldYear": 2018,
+      "nameKo": "FIVB 발리볼네이션스리그",
+      "officialName": "2018 FIVB Volleyball Nations League",
+      "category": "vnl",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": null,
+      "result": "본선 참가 · 강등",
+      "qualificationOutcomes": [
+        {
+          "target": "2019 VNL",
+          "status": "not_qualified",
+          "label": "2019 VNL 잔류 실패",
+          "reason": "2018 VNL 강등",
+          "route": "retention",
+          "sourceIds": [
+            "hist-oca_profile"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "OCA 남자팀 공식 소개는 2018 첫 VNL 참가 후 강등을 명시. 16위·1승14패는 이번 조사에서 원본 FIVB 최종표 직접 확인을 못해 메인 필드에 넣지 않음.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2019",
+      "competitionId": "kor-m-asian-championship-2019",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2019,
+      "editionYear": 2019,
+      "heldYear": 2019,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2019 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 4,
+      "result": "4위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "oqt-2020-asia-men",
+      "competitionId": "oqt-2020-asia-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2020,
+      "editionYear": 2020,
+      "heldYear": 2020,
+      "nameKo": "도쿄 올림픽 아시아 최종예선",
+      "officialName": "AVC Men’s Tokyo Volleyball Qualification 2020",
+      "category": "olympic-qualifier",
+      "startDate": "2020-01-07",
+      "endDate": "2020-01-12",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": null,
+      "result": "준결승 탈락 · 이란에 2-3",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2020-men",
+          "status": "not_qualified",
+          "label": "올림픽 출전권 미획득",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-avc-tokyo2020-semifinal",
+            "oly-fivb-2020-qualifier-rules"
+          ]
+        }
+      ],
+      "qualifierParticipation": true,
+      "qualificationPath": null,
+      "eliminationStage": "아시아 최종예선 준결승",
+      "eliminationMatch": {
+        "date": "2020-01-11",
+        "opponent": "IRI",
+        "score": "2-3",
+        "sets": [
+          [
+            25,
+            22
+          ],
+          [
+            21,
+            25
+          ],
+          [
+            18,
+            25
+          ],
+          [
+            25,
+            22
+          ],
+          [
+            13,
+            15
+          ]
+        ]
+      },
+      "matches": [
+        {
+          "date": "2020-01-11",
+          "stage": "준결승",
+          "opponent": "IRI",
+          "setScore": "2-3",
+          "setScores": [
+            [
+              25,
+              22
+            ],
+            [
+              21,
+              25
+            ],
+            [
+              18,
+              25
+            ],
+            [
+              25,
+              22
+            ],
+            [
+              13,
+              15
+            ]
+          ]
+        }
+      ],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal",
+        "oly-fivb-2020-qualifier-rules"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://asianvolleyball.net/new/iran-make-a-step-closer-to-securing-tokyo-2020-berth-after-epic-3-2-comeback-win-against-korea/",
+        "https://www.fivb.com/five-olympic-vacancies-at-stake-as-five-continental-qualifiers-set-to-begin/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "도쿄 2020 명칭 유지, 실제 본선 개최연도 2021 별도 저장. 2019 대륙간 예선 상세 결과는 이번 조사에서 미확인.",
+        "도쿄 2020 본선은 2021년 개최. 출전권 도전이 종료된 2020년 항목에 함께 보존합니다.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "olympics-2020-men",
+      "competitionId": "olympics-2020-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2020,
+      "editionYear": 2020,
+      "heldYear": 2021,
+      "nameKo": "도쿄 2020 올림픽",
+      "officialName": "Tokyo 2020 Olympic Games — Men’s Volleyball",
+      "category": "olympics",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "edition_year",
+      "eventStatus": "completed",
+      "actualParticipation": false,
+      "participationConfirmed": false,
+      "participationStatus": "not_qualified",
+      "finalRank": null,
+      "result": "본선 진출 실패",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2020-men",
+          "status": "not_qualified",
+          "label": "본선 진출 실패",
+          "sourceIds": [
+            "oly-kva-olympic-history",
+            "oly-avc-tokyo2020-semifinal",
+            "oly-fivb-2020-qualifier-rules"
+          ]
+        }
+      ],
+      "qualifierParticipation": true,
+      "qualificationPath": null,
+      "eliminationStage": "아시아 최종예선 준결승",
+      "eliminationMatch": {
+        "date": "2020-01-11",
+        "opponent": "IRI",
+        "score": "2-3",
+        "sets": [
+          [
+            25,
+            22
+          ],
+          [
+            21,
+            25
+          ],
+          [
+            18,
+            25
+          ],
+          [
+            25,
+            22
+          ],
+          [
+            13,
+            15
+          ]
+        ]
+      },
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified",
+        "qualifierParticipation": "confirmed"
+      },
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal",
+        "oly-fivb-2020-qualifier-rules"
+      ],
+      "officialSourceUrls": [
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+        "https://asianvolleyball.net/new/iran-make-a-step-closer-to-securing-tokyo-2020-berth-after-epic-3-2-comeback-win-against-korea/",
+        "https://www.fivb.com/five-olympic-vacancies-at-stake-as-five-continental-qualifiers-set-to-begin/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "도쿄 2020 명칭 유지, 실제 본선 개최연도 2021 별도 저장. 2019 대륙간 예선 상세 결과는 이번 조사에서 미확인.",
+        "도쿄 2020 본선은 2021년 개최. 출전권 도전이 종료된 2020년 항목에 함께 보존합니다.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2021",
+      "competitionId": "kor-m-asian-championship-2021",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2021,
+      "editionYear": 2021,
+      "heldYear": 2021,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2021 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 8,
+      "result": "8위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-challenger-cup-2022",
+      "competitionId": "kor-m-challenger-cup-2022",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2022,
+      "editionYear": 2022,
+      "heldYear": 2022,
+      "nameKo": "FIVB 발리볼 챌린저컵",
+      "officialName": "2022 Volleyball Challenger Cup Men",
+      "category": "challenger-cup",
+      "startDate": "2022-07-28",
+      "endDate": "2022-07-31",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [
+        {
+          "target": "2023 VNL",
+          "status": "not_qualified",
+          "label": "2023 VNL 승격권 미획득",
+          "reason": "우승팀에 부여되는 승격권을 3위로 미획득",
+          "route": "Challenger Cup champion",
+          "sourceIds": [
+            "hist-vcc_2022_standings",
+            "hist-vcc_2022_rule"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "hist-vcc_2022_standings",
+        "hist-vcc_2022_rule"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/challenger-cup/2022/standings/men/",
+        "https://en.volleyballworld.com/news/croatia-and-korea-to-welcome-2022-challenger-cup-tournaments"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-world-championship-2022",
+      "competitionId": "kor-m-world-championship-2022",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2022,
+      "editionYear": 2022,
+      "heldYear": 2022,
+      "nameKo": "FIVB 남자 세계선수권",
+      "officialName": "2022 FIVB Volleyball Men's World Championship",
+      "category": "world-championship",
+      "startDate": "2022-08-26",
+      "endDate": "2022-09-11",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": false,
+      "participationConfirmed": false,
+      "participationStatus": "not_qualified",
+      "finalRank": null,
+      "result": "본선 진출 실패",
+      "qualificationOutcomes": [
+        {
+          "target": "2022 Men's World Championship",
+          "status": "not_qualified",
+          "label": "본선 진출 실패",
+          "reason": "공식 최종 참가 24개국 명단에 대한민국 없음. OCA 소개에서 마지막 세계선수권 참가를 2014년으로 명시.",
+          "route": "continental/ranking",
+          "sourceIds": [
+            "hist-w2022_teams",
+            "hist-oca_profile"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "hist-w2022_teams",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/men-world-cup/2022/news/men-s-world-champs-30-days-to-go",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개별 탈락 경기 미확인. 본선 진출 실패와 별도 예선 참가/탈락 구분. 2021 아시아선수권 8위는 별도 확인되지만 이 사실만으로 랭킹 경로 종료 시점을 특정하지 않음."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-cup-2022",
+      "competitionId": "kor-m-avc-cup-2022",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2022,
+      "editionYear": 2022,
+      "heldYear": 2022,
+      "nameKo": "AVC 남자컵",
+      "officialName": "2022 AVC Cup for Men",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 4,
+      "result": "4위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-championship-2023",
+      "competitionId": "kor-m-asian-championship-2023",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2023,
+      "editionYear": 2023,
+      "heldYear": 2023,
+      "nameKo": "아시아 남자배구선수권",
+      "officialName": "2023 Asian Senior Men's Volleyball Championship",
+      "category": "asian-championship",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 5,
+      "result": "5위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-asian-games-2023",
+      "competitionId": "kor-m-asian-games-2023",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2023,
+      "editionYear": 2022,
+      "heldYear": 2023,
+      "nameKo": "2022 항저우 아시안게임",
+      "officialName": "Hangzhou 2022 Men's Volleyball",
+      "category": "asian-games",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 7,
+      "result": "7위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [
+        {
+          "stage": "Top 12 cross match",
+          "opponent": "PAK",
+          "setScore": "0-3"
+        },
+        {
+          "stage": "7th-8th classification",
+          "opponent": "INA",
+          "setScore": "3-2"
+        }
+      ],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-oca_profile"
+      ],
+      "officialSourceUrls": [
+        "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "대회 공식 명칭은 Hangzhou 2022이며 실제 개최 연도는 2023.",
+        "Top 12 교차전 파키스탄전 0-3 패배 후 7~12위전으로 이동. 본선 미참가나 조별 예선 탈락으로 표기하지 않는다.",
+        "2022 항저우 아시안게임은 2023년에 개최. 대회 명칭과 실제 개최연도를 별도로 보존합니다.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-challenge-2023",
+      "competitionId": "kor-m-avc-challenge-2023",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2023,
+      "editionYear": 2023,
+      "heldYear": 2023,
+      "nameKo": "AVC 남자 챌린지컵",
+      "officialName": "2023 AVC Challenge Cup for Men",
+      "category": "avc-challenge",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "normal",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "hist-avcc_2024"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/challenger-cup/news/qatar-win-avc-challenge-cup-qualify-for-volleyball-challenger-cup"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "2024 공식 Volleyball World 결과 기사에서 한국의 2년 연속 동메달을 명시. 2023 개별 경기·날짜는 추가 확인 필요.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-avc-challenge-2024",
+      "competitionId": "kor-m-avc-challenge-2024",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2024,
+      "editionYear": 2024,
+      "heldYear": 2024,
+      "nameKo": "AVC 남자 챌린지컵",
+      "officialName": "2024 AVC Challenge Cup for Men",
+      "category": "avc-challenge",
+      "startDate": "2024-06-02",
+      "endDate": "2024-06-09",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [
+        {
+          "target": "2024 Volleyball Challenger Cup",
+          "status": "not_qualified_via_this_route",
+          "label": "챌린저컵 아시아 우승팀 출전권 미획득",
+          "reason": "준결승 파키스탄전 1-3 패배; 3위. 다른 랭킹 경로 존재와 구분.",
+          "route": "AVC Challenge Cup champion",
+          "sourceIds": [
+            "hist-avcc_2024"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [
+        {
+          "stage": "semifinal",
+          "opponent": "PAK",
+          "setScore": "1-3"
+        },
+        {
+          "stage": "bronze",
+          "opponent": "KAZ",
+          "setScore": "3-1"
+        }
+      ],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "hist-avcc_2024"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/challenger-cup/news/qatar-win-avc-challenge-cup-qualify-for-volleyball-challenger-cup"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "공식 기사 3위전 4세트에 32-20이라는 오기가 있어 세트별 점수는 제외."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "qualification-2024-men",
+      "competitionId": "qualification-2024-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2024,
+      "editionYear": 2024,
+      "heldYear": 2024,
+      "nameKo": "올림픽 출전권 경쟁",
+      "officialName": "Paris 2024 Olympic Games — Men’s Volleyball — Qualification",
+      "category": "qualification-allocation",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": null,
+      "participationConfirmed": null,
+      "participationStatus": "not_applicable",
+      "finalRank": null,
+      "result": "예선 미참가 · 랭킹 출전권 미획득",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2024-men",
+          "status": "not_qualified",
+          "label": "예선 미참가 · 랭킹 출전권 미획득",
+          "sourceIds": [
+            "oly-fivb-paris2024-regulations",
+            "oly-vw-paris2024-qualified"
+          ]
+        }
+      ],
+      "qualifierParticipation": false,
+      "qualificationPath": "2023 남자 올림픽 예선 24개국에 포함되지 않았으며, 2024 세계랭킹 배분에서도 본선 12개국에 들지 못함.",
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified"
+      },
+      "sourceIds": [
+        "oly-fivb-paris2024-regulations",
+        "oly-vw-paris2024-qualified"
+      ],
+      "officialSourceUrls": [
+        "https://images.volleyballworld.com/image/upload/fl_attachment/fivb-prd/mu9xuncsjrxpjy7hnld7.pdf",
+        "https://en.volleyballworld.com/volleyball/competitions/volleyball-olympic-games-paris-2024/news/paris-2024-men-s-volleyball-national-teams-qualified"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "실제 예선 경기에 참가해 탈락한 기록과 구분합니다.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "olympics-2024-men",
+      "competitionId": "olympics-2024-men",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2024,
+      "editionYear": 2024,
+      "heldYear": 2024,
+      "nameKo": "파리 올림픽",
+      "officialName": "Paris 2024 Olympic Games — Men’s Volleyball",
+      "category": "olympics",
+      "startDate": null,
+      "endDate": null,
+      "dateScope": "edition_year",
+      "eventStatus": "completed",
+      "actualParticipation": false,
+      "participationConfirmed": false,
+      "participationStatus": "not_qualified",
+      "finalRank": null,
+      "result": "본선 진출 실패",
+      "qualificationOutcomes": [
+        {
+          "target": "olympics-2024-men",
+          "status": "not_qualified",
+          "label": "본선 진출 실패",
+          "sourceIds": [
+            "oly-fivb-paris2024-regulations",
+            "oly-vw-paris2024-qualified"
+          ]
+        }
+      ],
+      "qualifierParticipation": false,
+      "qualificationPath": "2023 남자 올림픽 예선 24개국에 포함되지 않았으며, 2024 세계랭킹 배분에서도 본선 12개국에 들지 못함.",
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "unverified",
+        "qualifierParticipation": "confirmed"
+      },
+      "sourceIds": [
+        "oly-fivb-paris2024-regulations",
+        "oly-vw-paris2024-qualified"
+      ],
+      "officialSourceUrls": [
+        "https://images.volleyballworld.com/image/upload/fl_attachment/fivb-prd/mu9xuncsjrxpjy7hnld7.pdf",
+        "https://en.volleyballworld.com/volleyball/competitions/volleyball-olympic-games-paris-2024/news/paris-2024-men-s-volleyball-national-teams-qualified"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "‘올림픽 예선 탈락’으로 쓰지 않는다. 공식 초청명단·최종 본선명단과의 대조로 불참·미진출 확인. 당시 정확한 한국 랭킹 숫자 미확인.",
+        "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-2025-avc-nations-cup",
+      "competitionId": "kor-m-2025-avc-nations-cup",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2025,
+      "editionYear": 2025,
+      "heldYear": 2025,
+      "nameKo": "AVC 남자 네이션스컵",
+      "officialName": "AVC Men’s Volleyball Nations Cup 2025",
+      "category": "avc-cup",
+      "startDate": null,
+      "endDate": "2025-06-24",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 4,
+      "result": "4위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "partial"
+      },
+      "sourceIds": [
+        "now-avc25_final"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/2025/news/bahrain-snatch-historic-avc-nations-cup-gold"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "카타르와의 3·4위전 0–3 패. 2026 아시아선수권 불참으로 해석하면 안 됨.",
+        "대회 종료일 확인 · 시작일은 추가 확인 중입니다."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-2025-world-championship",
+      "competitionId": "kor-m-2025-world-championship",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2025,
+      "editionYear": 2025,
+      "heldYear": 2025,
+      "nameKo": "FIVB 남자 세계선수권",
+      "officialName": "FIVB Volleyball Men’s World Championship 2025",
+      "category": "world-championship",
+      "startDate": "2025-09-12",
+      "endDate": "2025-09-28",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 27,
+      "result": "본선 참가 · 27위",
+      "qualificationOutcomes": [
+        {
+          "target": "2025-world-championship-knockout",
+          "status": "not_qualified",
+          "label": "16강 진출 실패",
+          "stage": "본선 조별리그",
+          "sourceIds": [
+            "now-w25_standings",
+            "now-w25_preview",
+            "now-w25_fra",
+            "now-w25_arg",
+            "now-w25_fin"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": "세계랭킹 경로로 본선 진출",
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-w25_standings",
+        "now-w25_preview",
+        "now-w25_fra",
+        "now-w25_arg",
+        "now-w25_fin"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/men-world-cup/2025/standings/",
+        "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/news/men-s-world-championship-pool-previews-pool-c",
+        "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21075/?match=france-vs-korea",
+        "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21087/?match=argentina-vs-korea",
+        "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21103/?match=Finland-vs-Korea"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "C조 4위 · 0승 3패 · 조별리그 탈락",
+        "본선 진출 실패로 표시 금지. 본선 조별리그 탈락과 출전 예선 탈락을 구분."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-2026-avc-cup",
+      "competitionId": "avc-men-cup-2026",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2026,
+      "editionYear": 2026,
+      "heldYear": 2026,
+      "nameKo": "AVC 남자컵",
+      "officialName": "AVC Men’s Volleyball Cup 2026",
+      "category": "avc-cup",
+      "startDate": "2026-06-20",
+      "endDate": "2026-06-28",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 2,
+      "result": "준우승",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-avc26_preview",
+        "now-avc26_final"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/news/avc-men-s-cup-to-serve-off-on-saturday-in-india",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/news/indonesia-triumph-in-ahmedabad-for-first-ever-avc-cup-honors"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "2026 남자컵은 2026 아시아선수권과 별개 대회. 우승=VNL 직행 등으로 표기하지 않음."
+      ],
+      "existingLinks": {
+        "homeProjectionId": "avc-men-cup-2026",
+        "competitionMasterId": "KVL-COMP-000003",
+        "kvlHref": "avc-men-cup.html",
+        "homeProjectionPath": "data/national/national-team-home-v2.json",
+        "registryId": "avc-men-cup-2026"
+      }
+    },
+    {
+      "id": "kor-m-2026-east-asian-championship",
+      "competitionId": "east-asian-men-2026",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2026,
+      "editionYear": 2026,
+      "heldYear": 2026,
+      "nameKo": "남자 동아시아선수권",
+      "officialName": "2026男子アジア東部地区選手権大会",
+      "category": "east-asian-championship",
+      "startDate": "2026-08-05",
+      "endDate": "2026-08-09",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 1,
+      "result": "우승",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-eastasia26_jva_results",
+        "now-eastasia26_jva_overview"
+      ],
+      "officialSourceUrls": [
+        "https://www.jva.or.jp/international2026/menasianeastern/?entry=result",
+        "https://www.jva.or.jp/international2026/menasianeastern/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "결승 한국–일본 3–1 (40–38,25–17,23–25,25–22). 한국 대표팀 선수 구성은 별도 확인 필요. 올림픽 직행 대회로 표기하지 않음."
+      ],
+      "existingLinks": {
+        "homeProjectionId": "east-asian-men-2026",
+        "competitionMasterId": null,
+        "kvlHref": null,
+        "homeProjectionPath": "data/national/national-team-home-v2.json",
+        "registryId": null
+      }
+    },
+    {
+      "id": "kor-m-2026-asian-championship",
+      "competitionId": "avc-men-continental-2026",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2026,
+      "editionYear": 2026,
+      "heldYear": 2026,
+      "nameKo": "AVC 남자 아시아선수권",
+      "officialName": "AVC Men's Volleyball Asian Championship 2026",
+      "category": "asian-championship",
+      "startDate": "2026-09-04",
+      "endDate": "2026-09-13",
+      "dateScope": "competition",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 3,
+      "result": "3위",
+      "qualificationOutcomes": [
+        {
+          "target": "2027-world-cup",
+          "status": "qualified",
+          "label": "2027 월드컵 출전 확정",
+          "date": "2026-09-13",
+          "sourceIds": [
+            "now-asian26_final",
+            "now-asian26_semifinal",
+            "now-asian26_jpn_kor",
+            "now-la28_system",
+            "now-asian26_bronze_match"
+          ]
+        },
+        {
+          "target": "2028-olympics-asia-direct",
+          "status": "not_qualified_via_this_route",
+          "label": "LA28 아시아 직행권 미획득",
+          "date": "2026-09-12",
+          "reason": "준결승 일본전 0–3 패배로 우승 경로 종료. 대륙 우승팀 일본에 직행권 배정.",
+          "inference": "대륙 우승팀 1장 규정 + 준결승 결과의 결합",
+          "sourceIds": [
+            "now-asian26_final",
+            "now-asian26_semifinal",
+            "now-asian26_jpn_kor",
+            "now-la28_system",
+            "now-asian26_bronze_match"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [
+        {
+          "date": "2026-09-13",
+          "opponent": "AUS",
+          "stage": "bronze",
+          "setsWon": 3,
+          "setsLost": 2,
+          "setScores": [
+            [
+              16,
+              25
+            ],
+            [
+              25,
+              18
+            ],
+            [
+              22,
+              25
+            ],
+            [
+              25,
+              18
+            ],
+            [
+              15,
+              9
+            ]
+          ],
+          "sources": [
+            "asian26_bronze_match",
+            "asian26_final"
+          ]
+        }
+      ],
+      "importance": "key",
+      "displayStyle": "gate",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-asian26_final",
+        "now-asian26_semifinal",
+        "now-asian26_jpn_kor",
+        "now-la28_system",
+        "now-asian26_bronze_match"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-triumph-as-asian-champs-and-qualify-for-la-2028",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-and-iran-on-to-continental-final-book-world-cup-berths",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/schedule/28851/?match=tbd-vs-tbd",
+        "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/schedule/28853/?match=korea-vs-australia"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "LA28 전체 본선 진출 실패가 아님. 2027 월드컵/2028 랭킹 경로 남음.",
+        "준결승: 한국–일본 0–3 (13–25,11–25,14–25). 동메달전: 한국–호주 3–2 (16–25,25–18,22–25,25–18,15–9)."
+      ],
+      "existingLinks": {
+        "homeProjectionId": "avc-men-continental-2026",
+        "competitionMasterId": null,
+        "kvlHref": "international-competition-avc-men-continental-2026.html",
+        "homeProjectionPath": "data/national/national-team-home-v2.json",
+        "registryId": "avc-men-continental-2026"
+      }
+    },
+    {
+      "id": "kor-m-2026-asian-games",
+      "competitionId": "asian-games-men-2026",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2026,
+      "editionYear": 2026,
+      "heldYear": 2026,
+      "nameKo": "아이치·나고야 아시안게임",
+      "officialName": "20th Asian Games Aichi-Nagoya 2026 — Men’s Volleyball",
+      "category": "asian-games",
+      "startDate": "2026-09-27",
+      "endDate": "2026-10-03",
+      "dateScope": "mens_volleyball_dates",
+      "eventStatus": "completed",
+      "actualParticipation": true,
+      "participationConfirmed": true,
+      "participationStatus": "participated",
+      "finalRank": 7,
+      "result": "7위",
+      "qualificationOutcomes": [],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "major",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "confirmed",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-ag26_jva_results",
+        "now-ag26_jva_overview"
+      ],
+      "officialSourceUrls": [
+        "https://www.jva.or.jp/international/2026/asia_men/?entry=results",
+        "https://www.jva.or.jp/international/2026/asia_men/"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "JVA 공식 최종 순위로 7위 확인. 한국의 개별 경기 세부 결과는 이 JVA 페이지에서 확인하지 않았으므로 별도 공식 기록 없이 추가하지 않음."
+      ],
+      "existingLinks": {
+        "homeProjectionId": "asian-games-men-2026",
+        "competitionMasterId": null,
+        "kvlHref": "competition-engine.html?competition=asian-games-men-2026",
+        "homeProjectionPath": "data/national/national-team-home-v2.json",
+        "registryId": "asian-games-men-2026"
+      }
+    },
+    {
+      "id": "kor-m-2027-world-cup",
+      "competitionId": "kor-m-2027-world-cup",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2027,
+      "editionYear": 2027,
+      "heldYear": 2027,
+      "nameKo": "FIVB 남자 월드컵",
+      "officialName": "FIVB Men’s Volleyball World Cup 2027",
+      "category": "world-cup",
+      "startDate": "2027-09-10",
+      "endDate": "2027-09-26",
+      "dateScope": "competition",
+      "eventStatus": "scheduled_confirmed",
+      "actualParticipation": null,
+      "participationConfirmed": true,
+      "participationStatus": "confirmed",
+      "finalRank": null,
+      "result": "대한민국 출전 확정",
+      "qualificationOutcomes": [
+        {
+          "target": "2028-olympics",
+          "status": "pending",
+          "label": "LA28 출전권 도전",
+          "rule": "이미 올림픽 출전권을 얻은 팀을 제외한 최종 순위 상위 3팀",
+          "sourceIds": [
+            "now-worldcup27_field",
+            "now-worldcup27_fivb",
+            "now-worldcup_rename",
+            "now-la28_system"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "gate",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "pending",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-worldcup27_field",
+        "now-worldcup27_fivb",
+        "now-worldcup_rename",
+        "now-la28_system"
+      ],
+      "officialSourceUrls": [
+        "https://en.volleyballworld.com/news/the-field-is-set-32-teams-bound-for-the-2027-fivb-men-s-volleyball-world-cup-in-poland",
+        "https://www.fivb.com/32-teams-bound-for-the-2027-fivb-mens-volleyball-world-cup-in-poland/",
+        "https://www.fivb.com/the-fivb-volleyball-world-cup-takes-the-sport-into-a-new-era/",
+        "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "개최 확정·한국 출전 확정·결과 미정. 조 편성·개별 경기 일정 미확인."
+      ],
+      "existingLinks": {},
+      "location": "폴란드"
+    },
+    {
+      "id": "kor-m-2028-world-ranking",
+      "competitionId": "kor-m-2028-world-ranking",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2028,
+      "editionYear": 2028,
+      "heldYear": 2028,
+      "nameKo": "FIVB 세계랭킹 출전권 배분",
+      "officialName": "FIVB Volleyball World Ranking qualification pathway – LA28 men",
+      "category": "qualification-allocation",
+      "startDate": "2028-06-18",
+      "endDate": "2028-06-18",
+      "dateScope": "competition",
+      "eventStatus": "scheduled_confirmed",
+      "actualParticipation": null,
+      "participationConfirmed": null,
+      "participationStatus": "not_applicable",
+      "finalRank": null,
+      "result": "결과 미확정",
+      "qualificationOutcomes": [
+        {
+          "target": "2028-olympics",
+          "status": "pending",
+          "label": "세계랭킹 최종 경로",
+          "rule": "2028 VNL 예선 종료 시점 세계랭킹으로 미진출팀 3장. 미진출 대륙 우선 규정 적용.",
+          "sourceIds": [
+            "now-la28_system",
+            "now-la28_fivb",
+            "now-la28_fivb_archived"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "neutral",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "pending",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-la28_system",
+        "now-la28_fivb",
+        "now-la28_fivb_archived"
+      ],
+      "officialSourceUrls": [
+        "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+        "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/",
+        "https://www.fivb.com/wp-content/uploads/2026/09/VVO-LA28-Qualification-System-1.pdf"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "독립된 경기 대회가 아닌 출전권 배분 절차. 대한민국 VNL 참가 여부와 랭킹 배분 기회를 혼동하지 않음.",
+        "FIVB /2026/09 게시 경로의 PDF도 본문 버전은 2025-12-10이며 2028-06-18을 명시. IOC 2026-05-12판과 일치."
+      ],
+      "existingLinks": {}
+    },
+    {
+      "id": "kor-m-2028-olympics",
+      "competitionId": "kor-m-2028-olympics",
+      "country": "KOR",
+      "gender": "M",
+      "ageCategory": "senior",
+      "year": 2028,
+      "editionYear": 2028,
+      "heldYear": 2028,
+      "nameKo": "LA28 로스앤젤레스 올림픽",
+      "officialName": "Games of the XXXIV Olympiad – Los Angeles 2028",
+      "category": "olympics",
+      "startDate": "2028-07-14",
+      "endDate": "2028-07-30",
+      "dateScope": "games_dates",
+      "eventStatus": "scheduled_confirmed",
+      "actualParticipation": null,
+      "participationConfirmed": null,
+      "participationStatus": "not_yet_qualified",
+      "finalRank": null,
+      "result": "최종 목표 · 출전 미확정",
+      "qualificationOutcomes": [
+        {
+          "target": "2028-olympics",
+          "status": "pending",
+          "label": "출전권 미확보",
+          "sourceIds": [
+            "now-la28_system",
+            "now-asian26_final"
+          ]
+        }
+      ],
+      "qualifierParticipation": null,
+      "qualificationPath": null,
+      "eliminationStage": null,
+      "eliminationMatch": null,
+      "matches": [],
+      "importance": "key",
+      "displayStyle": "gate",
+      "verificationStatus": "confirmed",
+      "verificationScope": "실제 참가 여부·표시 결과",
+      "fieldVerification": {
+        "participation": "confirmed",
+        "result": "pending",
+        "dates": "confirmed"
+      },
+      "sourceIds": [
+        "now-la28_system",
+        "now-asian26_final"
+      ],
+      "officialSourceUrls": [
+        "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+        "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-triumph-as-asian-champs-and-qualify-for-la-2028"
+      ],
+      "verifiedAt": "2026-11-16",
+      "updatedAt": "2026-11-16",
+      "notes": [
+        "표시 기간은 올림픽 전체 기간. 남자배구 세부 일정은 별도 확인 필요.",
+        "2026-11-16 기준 아시아 직행권 미획득이며 나머지 경로 아직 미완료."
+      ],
+      "existingLinks": {},
+      "location": "미국 · 로스앤젤레스"
+    }
+  ],
+  "unresolved": [
+    {
+      "year": 2000,
+      "item": "1999-12 아시아예선 우승, 최종 중국전 3-0, 3전 전승",
+      "status": "미확인",
+      "note": "JOC는 1999-12-25~29 상하이 예선과 우승팀 출전권만 확인. 실제 한국 우승 결과와 경기 점수는 추가 공식 원문 필요."
+    },
+    {
+      "year": 2004,
+      "item": "2004-05-22~30 도쿄 예선 7위·1승6패",
+      "status": "미확인",
+      "note": "언론이 최종 일본전 전부터 본선행 좌절됐다고 서술. 최종전 일본전 0-3을 탈락 확정 경기로 기재하면 안 됨."
+    },
+    {
+      "year": 2008,
+      "item": "탈락 확정 경기 및 시각",
+      "status": "미확인",
+      "note": "최종 3위와 출전권 미획득은 확정."
+    },
+    {
+      "year": 2012,
+      "item": "3승4패·탈락 확정 경기",
+      "status": "미확인",
+      "note": "6위 최종순위는 JVA 공식 보고서로 확정."
+    },
+    {
+      "year": 2016,
+      "item": "당시 한국의 정확한 랭킹 숫자와 예선 참가권 미획득 확정일",
+      "status": "미확인",
+      "note": "예선 미참가 및 본선 미진출 확정. 경기 패배에 의한 예선 탈락 아님."
+    },
+    {
+      "year": 2019,
+      "item": "도쿄 2020 대륙간 올림픽 예선 대한민국 참가·결과",
+      "status": "미확인",
+      "note": "2020 아시아 최종예선의 준결승 탈락 기록은 별도로 확정됨."
+    },
+    {
+      "year": 2024,
+      "item": "2022 국가대표 시즌 종료 및 2024 랭킹 마감 시 한국의 정확한 순위",
+      "status": "미확인",
+      "note": "예선 24개국 미포함 및 최종 12개국 미포함은 공식 문서로 확정."
+    },
+    {
+      "year": null,
+      "item": "과거 동아시아선수권 한국 파견팀의 정식 성인대표/A대표 여부 및 최종 결과 원문",
+      "status": "부분 확인",
+      "note": "확인된 참가·결과와 미확인 세부 필드를 분리해 보존합니다."
+    },
+    {
+      "year": null,
+      "item": "2015–2017 월드리그 순위: KVA 표의 2016 연도 중복 오기 때문에 자동 전재 보류",
+      "status": "부분 확인",
+      "note": "확인된 참가·결과와 미확인 세부 필드를 분리해 보존합니다."
+    },
+    {
+      "year": null,
+      "item": "2002·2010·2018 세계선수권 개별 예선 경위와 최종 탈락 경기",
+      "status": "부분 확인",
+      "note": "확인된 참가·결과와 미확인 세부 필드를 분리해 보존합니다."
+    },
+    {
+      "year": null,
+      "item": "2018 VNL FIVB 원본 최종 순위표의 직접 접근",
+      "status": "부분 확인",
+      "note": "확인된 참가·결과와 미확인 세부 필드를 분리해 보존합니다."
+    },
+    {
+      "year": null,
+      "item": "역사표 기반 과거 대회의 정확한 시작·종료일, 개별 경기 전적",
+      "status": "부분 확인",
+      "note": "확인된 참가·결과와 미확인 세부 필드를 분리해 보존합니다."
+    },
+    {
+      "year": null,
+      "item": "2027 AVC 남자컵·동아시아선수권",
+      "status": "미확인",
+      "note": "이번 공식 검색에서 2027 구체 일정·개최지·대한민국 참가 확정 근거 확보 못함. 반복 개최 이력만으로 추가하면 안 됨."
+    },
+    {
+      "year": null,
+      "item": "2027 VNL 대한민국 참가",
+      "status": "미확인",
+      "note": "FIVB 장기 캘린더상 대회 개최와 한국 참가 자격은 별도. 확인한 공식 자료에서 대한민국 참가 확정 근거 없음. 로드맵에 한국 참가 대회로 넣지 않을 것."
+    },
+    {
+      "year": null,
+      "item": "2025 네이션스컵 개막일",
+      "status": "부분 확인",
+      "note": "종료일 6월 24일과 순위는 공식 기사로 확인. 개막일은 별도 일정 원문 확인 필요."
+    },
+    {
+      "year": null,
+      "item": "2028 올림픽 남자배구 세부 경기일",
+      "status": "부분 확인",
+      "note": "7월 14~30일은 전체 올림픽 기간. 남자배구 경기를 이 기간 전체로 단정하지 않을 것."
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "kvl-asian26-bronze-sets",
+      "field": "2026 Asian Championship Korea–Australia bronze setScores",
+      "reportedExistingKvlValue": [
+        [
+          25,
+          22
+        ],
+        [
+          25,
+          21
+        ],
+        [
+          15,
+          25
+        ],
+        [
+          21,
+          25
+        ],
+        [
+          15,
+          10
+        ]
+      ],
+      "officialVerifiedValue": [
+        [
+          16,
+          25
+        ],
+        [
+          25,
+          18
+        ],
+        [
+          22,
+          25
+        ],
+        [
+          25,
+          18
+        ],
+        [
+          15,
+          9
+        ]
+      ],
+      "officialSources": [
+        "asian26_bronze_match",
+        "asian26_final"
+      ],
+      "disposition": "Use official match-page value in prototype, preserve existing KVL conflict in report; no production mutation",
+      "existingValueEvidence": "Reviewed data/national/national-team-home-v2.json at base 811f270f3dddc04bb0df0e5ed14ddb9ba1b11c07."
+    }
+  ],
+  "integration": {
+    "mode": "reviewed_static_projection",
+    "productionChanged": true,
+    "automatedSyncEnabled": false,
+    "qualificationMasterStatus": "READ_VERIFIED_STALE_2026_07_25",
+    "historyScopeFinding": "기존 national_team_history_2000_2019 및 v1은 U18–U23 연령별 기록. 성인 연대기로 자동 전환하지 않음.",
+    "existingInputs": [
+      "data/master/competition_master.json",
+      "data/international/senior-competitions.json",
+      "data/national/national-team-home-v2.json",
+      "data/national/continental-championships-2026.json"
+    ]
+  }
+}
