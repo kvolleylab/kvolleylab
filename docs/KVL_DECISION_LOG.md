@@ -652,3 +652,11 @@ These are not pixel-layout or continuous live acceptance evidence. Candidate
 browser access to the local preview returned ERR_CONNECTION_REFUSED; actual
 1440/390/360 layout verification and production approval/deployment remain pending.
 Rollback is a revert of this display-only change. Release evidence belongs in its PR.
+
+
+## 2026-11-16 · 대한민국 남자대표팀 역사 로드맵 v1 프로토타입
+
+Status: USER REQUESTED / PROTOTYPE / IMPLEMENTED / BROWSER QA VERIFIED / PRODUCTION NOT DEPLOYED.
+Base `811f270f3dddc04bb0df0e5ed14ddb9ba1b11c07`, branch `feature/national-history-roadmap-v1`.
+2000–2028 남자 성인대표 주요 62기록을 별도 JSON과 타임라인으로 구축한다. 실제 참가·참가 확정·대회 결과·다중 출전권 결과를 분리하고, 예선 미참가를 예선 탈락으로 기록하지 않는다. 기준 흰색/남색/금색 디자인, 절제된 붉은 실패 표시, 접기·필터·상세·공식 출처를 적용한다. 2026 아시아선수권 동메달전 기존 세트 점수 충돌은 공식 값을 프로토타입에만 적용했다. 16개 미확인/부분 확인 항목을 별도 보존한다. 7개 데이터 테스트 및 PC/390/360px CSS 뷰포트 브라우저 QA를 통과했다. 실제 모바일 기기·운영 통합·자동 갱신 검증은 미실행이며 운영 파일·Drive는 변경하지 않는다. 사용자는 운영 반영 전 시안 확인을 요청했으며 아직 운영 승인은 없다.
+[범위·출처·검증·미확인·복구](validation/national-history-roadmap-v1.md).
