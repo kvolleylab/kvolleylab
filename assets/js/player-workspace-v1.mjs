@@ -43,13 +43,35 @@ function playerCard(p){if(layout==='compact')return compactPlayer(p);return `<ar
 
 hydrateIcons();limit=pageSize();
 function memberPanel(){return `<div class="empty-state">${icon('lock')}<h3>로그인된 개인 기록을 불러오지 못했습니다.</h3><p>페이지를 새로고침한 뒤 다시 확인해 주세요.</p><button class="button secondary" data-view="search">선수 검색으로 돌아가기</button></div>`}
-function changeView(next,scroll=false){if(!['search','tracking','notes'].includes(next))return;view=next;for(const v of ['search','tracking','notes'])$(`${v}View`).hidden=v!==next;document.querySelectorAll('.player-tabs [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===next);b.dataset.view===next?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});if(next==='search')renderSearch();else $(`${next}Body`).innerHTML=memberPanel();if(scroll)$('playerContent').scrollIntoView({behavior:'smooth',block:'start'})}
-function renderSearch(){syncLayout();if(!players.length)return;setQueryURL();const filters=getFilters();let results=searchPlayers(players,filters);if(filters.draftSeason){const ids=new Set(draftRows.filter(r=>r.season===filters.draftSeason&&r.application_status==='confirmed'&&r.player_id).map(r=>r.player_id));results=results.filter(p=>ids.has(p.id))}
- $('resultCount').innerHTML=`검색 결과 <b>${results.length.toLocaleString('ko-KR')}</b>명`;
- $('playerGrid').innerHTML=results.length?results.slice(0,limit).map(p=>playerCard(p)).join(''):`<div class="empty-state"><h3>조건에 맞는 선수가 없습니다.</h3><p>검색 조건을 줄이거나 초기화해 보세요.</p><button class="button secondary" data-reset-filters>검색 조건 초기화</button></div>`;
+function changeView(next,scroll=false){
+ if(!['search','tracking','notes'].includes(next))return;view=next;
+ const searchLike=next==='search'||next==='tracking';
+ $('searchView').hidden=!searchLike;$('trackingView').hidden=true;$('notesView').hidden=next!=='notes';
+ document.querySelectorAll('.player-tabs [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===next);b.dataset.view===next?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
+ if(searchLike)renderSearch();else renderNotes();
+ if(scroll)$('playerContent').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function renderSearch(){
+ syncLayout();if(!players.length)return;setQueryURL();const filters=getFilters();let results=searchPlayers(players,filters);
+ if(filters.draftSeason){const ids=new Set(draftRows.filter(r=>r.season===filters.draftSeason&&r.application_status==='confirmed'&&r.player_id).map(r=>r.player_id));results=results.filter(p=>ids.has(p.id))}
+ if(view==='tracking')results=results.filter(p=>bookmarks.has(p.id));
+ $('searchTitle').textContent=view==='tracking'?'내 추적 선수':'어떤 선수를 찾고 계신가요?';
+ const kicker=document.querySelector('#searchView .section-kicker');if(kicker)kicker.textContent=view==='tracking'?'MY WATCHLIST':'DISCOVER PLAYERS';
+ $('catalogCount').textContent=view==='tracking'?('관심선수 '+bookmarks.size.toLocaleString('ko-KR')+'명'):('공개 DB '+players.length.toLocaleString('ko-KR')+'명');
+ $('resultCount').innerHTML=(view==='tracking'?'내 추적 선수 ':'검색 결과 ')+'<b>'+results.length.toLocaleString('ko-KR')+'</b>명';
+ const empty=view==='tracking'?'<div class="empty-state">'+icon('bookmark')+'<h3>조건에 맞는 관심선수가 없습니다.</h3><p>선수 검색에서 관심선수를 추가하거나 현재 검색 조건을 바꿔보세요.</p><button class="button secondary" data-view="search">전체 선수 보기</button></div>':'<div class="empty-state"><h3>조건에 맞는 선수가 없습니다.</h3><p>검색 조건을 줄이거나 초기화해 보세요.</p><button class="button secondary" data-reset-filters>검색 조건 초기화</button></div>';
+ $('playerGrid').innerHTML=results.length?results.slice(0,limit).map(p=>playerCard(p)).join(''):empty;
  $('loadMore').hidden=results.length<=limit;$('loadMore').innerHTML=`선수 더 보기 · ${Math.min(limit,results.length)} / ${results.length} ${icon('down')}`;
  const notice=$('draftFilterStatus');notice.hidden=!draftLoadFailed&&!filters.draftSeason;if(draftLoadFailed)notice.textContent='드래프트 연결 자료를 불러오지 못했습니다. 전체 선수 검색은 이용할 수 있습니다.';else if(filters.draftSeason)notice.innerHTML=`프로필 연결이 확인된 신청자만 선수 검색에 표시됩니다. 미연결 신청자를 포함한 전체 명단은 <a href="draft-hub.html?season=${encodeURIComponent(filters.draftSeason)}">Draft Hub에서 확인하세요.</a>`;
  window.KVLCompareTray?.render();setQueryURL();
+}
+function filteredNotes(){
+ const q=noteQuery.trim().toLocaleLowerCase();
+ return notes.filter(n=>{const p=byId.get(n.player_id),hay=[n.title,n.body,n.season,p?.name,playerAffiliation(p)].join(' ').toLocaleLowerCase();return(!q||hay.includes(q))&&(!noteSeason||n.season===noteSeason)});
+}
+function renderNotes(){
+ const list=filteredNotes(),seasons=[...new Set(notes.map(n=>n.season).filter(Boolean))].sort((a,b)=>b.localeCompare(a,'ko'));
+ $('notesBody').innerHTML=`<div class="workspace-tools"><label class="search-field">메모 검색<input id="memberNoteSearch" type="search" value="${e(noteQuery)}" placeholder="선수명·제목·내용"></label><label>시즌<select id="memberNoteSeasonFilter"><option value="">전체 시즌</option>${seasons.map(s=>`<option value="${e(s)}" ${s===noteSeason?'selected':''}>${e(s)}</option>`).join('')}</select></label><p><b>${list.length}</b>개 메모</p></div><div class="note-list">${list.length?list.map(n=>{const p=byId.get(n.player_id),created=formatDate(n.created_at),updated=formatDate(n.updated_at),changed=String(n.created_at||'')!==String(n.updated_at||'');return `<article class="note-card"><div class="note-header"><div><h3>${e(p?.name||n.player_id)} · ${e(n.title||'제목 없음')}</h3><div class="note-context">${e(playerAffiliation(p))} · ${e(n.season||'시즌 미지정')}</div></div><div class="note-date"><span>작성 ${e(created)}</span>${changed?`<b>수정 ${e(updated)}</b>`:''}</div></div><p class="note-text">${e(n.body||'')}</p><div class="note-actions"><button type="button" data-profile="${e(n.player_id)}">선수 프로필</button><button type="button" data-edit-note="${e(n.id)}">수정</button></div></article>`}).join(''):'<div class="empty-state"><h3>메모가 없습니다.</h3><p>선수 카드의 메모 버튼에서 첫 기록을 남겨보세요.</p><button class="button secondary" data-view="search">선수 찾기</button></div>'}</div>`;
 }
 function setQueryURL(){const url=new URL(location.href),f=getFilters();for(const k of ['q','level','gender','position','school','type','draftSeason','draft']){const value=f[k]||'';value?url.searchParams.set(k,value):url.searchParams.delete(k)}url.searchParams.delete('grade');for(const g of f.grades)url.searchParams.append('grade',g);url.searchParams.set('layout',layout);history.replaceState(null,'',url)}
 function restoreFilters(){const form=$('filters');$('playerSearch').value=params.get('q')||'';for(const k of ['level','gender','position','type','draftSeason'])if(params.get(k))form.elements[k].value=params.get(k);form.elements.draft.checked=['1','eligible'].includes(params.get('draft'));syncDependentFilters();let school=params.get('school')||'';if(school.startsWith('code:'))school=players.find(p=>p.schoolCode===school.slice(5))?.school||'';if(school.startsWith('name:'))school=school.slice(5);if(school)form.elements.school.value=school;for(const c of form.querySelectorAll('[name="grade"]'))c.checked=!c.disabled&&params.getAll('grade').includes(c.value);updateGradeCaption();if([...form.elements].some(x=>['school','draftSeason','type'].includes(x.name)&&x.value)||form.elements.draft.checked||params.has('grade')){$('extraFilters').hidden=false;$('moreFilters').setAttribute('aria-expanded','true')}}
