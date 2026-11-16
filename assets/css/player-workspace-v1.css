@@ -37,3 +37,22 @@
   .card-profile{padding:18px 16px 15px}.card-name h3{font-size:21px}
   .section-heading h2{font-size:23px}
 }
+
+
+/* 2026-11-16 integrated signed-in player workspace */
+.member-note-dialog{width:min(640px,calc(100vw - 28px));padding:28px}
+.member-note-dialog .profile-note-head{padding-right:36px}
+.member-note-dialog .profile-note-head h2{margin:6px 0 3px;font-size:23px}
+.member-note-dialog .note-form{margin:12px 0 0;border:0;padding:0}
+.member-note-dialog .form-foot{margin-top:14px}
+.note-header .note-date{display:grid;gap:4px;text-align:right;white-space:nowrap}
+.note-header .note-date b{color:#315f82;font-size:10px}
+.note-actions button{padding:6px 9px;border-radius:7px;background:#f0f5f9;text-decoration:none}
+.note-actions button:last-child{background:#173e69;color:#fff}
+.member-summary{margin-bottom:16px}
+html[data-kvl-auth="admin"] .private-label{color:#456b89}
+@media(max-width:680px){
+  .member-note-dialog{width:calc(100vw - 18px);padding:22px 16px}
+  .note-header{display:grid;gap:8px}.note-header .note-date{text-align:left}
+  .note-actions{justify-content:flex-end}
+}
