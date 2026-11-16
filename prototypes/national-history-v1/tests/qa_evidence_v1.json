@@ -1,0 +1,47 @@
+{
+  "testedAt": "2026-11-16",
+  "method": "Chrome browser via supported CUA; actual DOM and screenshots",
+  "unitTests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "desktop": {
+    "viewportWidth": 1363,
+    "viewportHeight": 936,
+    "horizontalOverflow": false
+  },
+  "mobile": [
+    {
+      "iframeViewportWidth": 390,
+      "documentClientWidth": 390,
+      "scrollWidth": 390,
+      "state": "all records; default collapsed past"
+    },
+    {
+      "iframeViewportWidth": 360,
+      "documentClientWidth": 345,
+      "scrollWidth": 345,
+      "state": "Asian Championship detail and historical year expanded; 15px desktop scrollbar"
+    }
+  ],
+  "interactions": {
+    "allFilter": 62,
+    "keyFilter": 37,
+    "olympicFilter": 16,
+    "failureFilter": 17,
+    "yearCollapseExpand": "passed",
+    "eventDetailKeyboardEnter": "passed",
+    "eventDetailClose": "passed",
+    "deepLinkOverridesConflictingFilter": "passed",
+    "currentYearJump": "passed; focus moved to 2026 and scrollY=702",
+    "backToTop": "passed; scrollY=0",
+    "sourceLinks": "official and KVL links rendered",
+    "verificationPage": "62 records / 51 sources / 16 unresolved"
+  },
+  "limits": [
+    "Actual Android/iOS device and touch hardware not tested",
+    "Full production integration and repository-wide regression not run: production files unchanged",
+    "No automatic source monitoring is enabled"
+  ],
+  "console": "No page-origin application error observed; browser-extension metadata errors excluded"
+}

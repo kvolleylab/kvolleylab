@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#102f54">
+  <title>올림픽 출전권과 대한민국 대표팀 역사 | K-Volley Lab</title>
+  <meta name="description" content="대한민국 남자배구 국가대표팀의 2000–2028 주요 국제대회 기록과 올림픽 진출 경로. 공식 출처를 함께 보는 역사형 로드맵 프로토타입.">
+  <link rel="stylesheet" href="roadmap.css">
+  <link rel="stylesheet" href="integration.css">
+  <script type="module" src="qualification/summary.js"></script>
+  <script type="module" src="roadmap.js"></script>
+</head>
+<body>
+  <header class="kvl-integration-header"><div class="kvl-shell-inner"><a class="site-logo" href="https://kvolleylab.com/index.html"><span class="kvl-global-mark">K</span><span>K-Volley Lab</span></a><nav class="site-nav" aria-label="KVL 주요 메뉴"><a href="https://kvolleylab.com/index.html">홈</a><a href="https://kvolleylab.com/competition-calendar.html">경기일정</a><a href="https://kvolleylab.com/national-team.html" class="active">국가대표팀</a><a href="https://kvolleylab.com/domestic-competitions.html">국내대회</a><a href="https://kvolleylab.com/international-competition-senior-national-team.html">국제대회</a><a href="https://kvolleylab.com/players.html">선수·팀</a></nav><details class="mobile-menu"><summary aria-label="메뉴 열기">☰</summary><nav aria-label="KVL 모바일 메뉴"><a href="https://kvolleylab.com/index.html">홈</a><a href="https://kvolleylab.com/competition-calendar.html">경기일정</a><a href="https://kvolleylab.com/national-team.html" class="active">국가대표팀</a><a href="https://kvolleylab.com/domestic-competitions.html">국내대회</a><a href="https://kvolleylab.com/international-competition-senior-national-team.html">국제대회</a><a href="https://kvolleylab.com/players.html">선수·팀</a></nav></details></div></header>
+  <a class="skip" href="#timeline">기록으로 바로 가기</a>
+  <nav class="preview-nav" aria-label="현재 위치">
+    <a href="https://kvolleylab.com/national-team.html">국가대표팀 <span>›</span> 대표팀 홈</a>
+    <span class="preview-label">PROTOTYPE <b>v1</b></span>
+  </nav>
+  <section class="oq-summary" id="olympic-summary" aria-labelledby="oq-title"><p role="status">올림픽 출전권 자료를 불러오고 있습니다.</p></section>
+  <main class="roadmap" id="roadmap">
+    <header class="roadmap-heading">
+      <div class="heading-line"><h1>ROAD TO LA28</h1><span class="team-label">대한민국 남자대표팀</span></div>
+      <div class="heading-caption"><p>대표팀의 여정 <span>·</span> 과거의 기록에서 다음 올림픽까지</p><span class="period">2000 — 2028</span></div>
+    </header>
+    <div class="toolbar">
+      <div class="filters" role="group" aria-label="기록 필터">
+        <button type="button" data-filter="all" aria-pressed="true">전체 기록</button>
+        <button type="button" data-filter="key" aria-pressed="false">핵심 대회</button>
+        <button type="button" data-filter="olympic" aria-pressed="false">올림픽</button>
+        <button type="button" data-filter="failure" aria-pressed="false">진출 실패</button>
+      </div>
+      <button class="jump" id="jump-current" type="button">현재 연도 <span aria-hidden="true">↓</span></button>
+    </div>
+    <div class="legend"><span><i class="gold"></i>진출 관문</span><span><i class="navy"></i>주요 기록</span><span><i class="red"></i>진출 실패</span><span><i class="hollow"></i>미래 대회</span></div>
+    <p class="load-message" id="load-message" role="status">공식 기록을 불러오고 있습니다.</p>
+    <section class="timeline" id="timeline" aria-label="연도별 대표팀 기록" tabindex="-1"></section>
+    <div class="empty-state" id="empty-state" hidden>이 조건에 해당하는 검증 기록이 없습니다.</div>
+    <footer class="roadmap-footer">
+      <p>대회 또는 연도를 누르면 상세 기록을 볼 수 있습니다.<br><span id="coverage-note"></span></p>
+      <div><span id="verified-date"></span><a href="verification.html">검증 목록·미확인 항목 <span aria-hidden="true">↗</span></a></div>
+    </footer>
+  </main>
+  <footer class="page-footer"><span>K-VOLLEY LAB</span><span>대한민국 배구의 기록을 이어갑니다.</span></footer>
+  <button class="top" id="top" aria-label="맨 위로 이동" type="button">↑</button>
+  <noscript><p class="load-message">이 로드맵은 JavaScript가 필요합니다. <a href="data/roadmap_v1.json">원본 기록 보기</a></p></noscript>
+</body>
+</html>

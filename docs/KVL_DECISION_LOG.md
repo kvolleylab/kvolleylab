@@ -652,3 +652,23 @@ These are not pixel-layout or continuous live acceptance evidence. Candidate
 browser access to the local preview returned ERR_CONNECTION_REFUSED; actual
 1440/390/360 layout verification and production approval/deployment remain pending.
 Rollback is a revert of this display-only change. Release evidence belongs in its PR.
+
+
+## 2026-11-16 · 대한민국 남자대표팀 역사 로드맵 v1 프로토타입
+
+Status: USER REQUESTED / PROTOTYPE / IMPLEMENTED / BROWSER QA VERIFIED / PRODUCTION NOT DEPLOYED.
+Base `811f270f3dddc04bb0df0e5ed14ddb9ba1b11c07`, branch `feature/national-history-roadmap-v1`.
+2000–2028 남자 성인대표 주요 62기록을 별도 JSON과 타임라인으로 구축한다. 실제 참가·참가 확정·대회 결과·다중 출전권 결과를 분리하고, 예선 미참가를 예선 탈락으로 기록하지 않는다. 기준 흰색/남색/금색 디자인, 절제된 붉은 실패 표시, 접기·필터·상세·공식 출처를 적용한다. 2026 아시아선수권 동메달전 기존 세트 점수 충돌은 공식 값을 프로토타입에만 적용했다. 16개 미확인/부분 확인 항목을 별도 보존한다. 7개 데이터 테스트 및 PC/390/360px CSS 뷰포트 브라우저 QA를 통과했다. 실제 모바일 기기·운영 통합·자동 갱신 검증은 미실행이며 운영 파일·Drive는 변경하지 않는다. 사용자는 운영 반영 전 시안 확인을 요청했으며 아직 운영 승인은 없다.
+[범위·출처·검증·미확인·복구](validation/national-history-roadmap-v1.md).
+
+## 2026-11-16 — 올림픽 출전권 요약과 기존 역사 로드맵 통합 v1
+
+- 상태: PROTOTYPE / VERIFIED / READY FOR REVIEW. 운영 반영 미승인, main·운영 URL·Drive MASTER 미변경.
+- 사용자 범위: 완성된 로드맵 원본 위에 독립 상단 요약을 추가한다. 원본 62개 기록, HTML main, CSS/JS/모델, 필터, 행 치수, 색상과 반응형 구조를 보존한다.
+- 상단: 주기별 JSON에서 LA28 1/5/3/3 및 대한민국 월드컵 확정·올림픽 미확보 상태 표시. 기존 규정·출처·대회 링크는 상세 펼침에 통합.
+- 장기 운영: 상단 activeCycleId와 역사 데이터 분리. 공식 최종 결과·관리자 검토 없는 날짜 자동 전환 금지. 2032 미확정 규정은 빈 배분으로 검증. LA28 보관 스냅샷과 과거 보기, 관리자 변경안 생성 도구 추가.
+- 공통 스타일: 운영 공통 전역 CSS/사이드바 주입은 원본 보존 조건과 충돌하므로 새 헤더·상단에 한정한 남색/금색/Arial 적용. 새 사이드바·HERO 없음.
+- 근거: 최신 main 811f270f3dddc04bb0df0e5ed14ddb9ba1b11c07, 원본 로드맵 6cedb89b517e977309416fafd71597692f82cfb8, 최신 공식 IOC/FIVB/Volleyball World 자료 및 Drive MASTER 읽기 전용 비교.
+- 검증: 자동 18개 통과; PC1280/모바일390 핵심 치수 일치; 360/390 가로 넘침 없음; 필터62/37/16/17; 2032 숫자 미노출·역사62 유지. 물리 모바일 터치 미검증.
+- 구현: feature/olympic-roadmap-integration-v1; prototypes/national-history-v1/INTEGRATION_v1.md 및 integration-verification.html 참조.
+- URL 제안: olympic-roadmap.html 고정 진입점과 기존 LA28 주소 보관 역할 분리. 이번 단계는 제안만 기록하며 운영 경로를 변경하지 않는다.

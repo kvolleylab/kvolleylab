@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "activeCycleId": "la2028",
+  "updatedAt": "2026-11-16",
+  "activationMode": "official_evidence_and_admin_review",
+  "cycles": [
+    {
+      "id": "la2028",
+      "year": 2028,
+      "label": "LA28",
+      "file": "la2028_v1.json"
+    },
+    {
+      "id": "brisbane2032",
+      "year": 2032,
+      "label": "2032 브리즈번",
+      "file": "brisbane2032_v1.json"
+    }
+  ],
+  "archiveIndex": [],
+  "transitionPolicy": {
+    "calendarAutoSwitch": false,
+    "requirePreviousFinalOutcome": true,
+    "requirePreviousGamesCompletion": true,
+    "requireAdminReview": true,
+    "allowReviewedAwaitingRulesNotice": true,
+    "preserveHistoryDataset": true
+  }
+}
