@@ -58,6 +58,7 @@ hydrateIcons();limit=pageSize();
 function memberPanel(){return `<div class="empty-state">${icon('lock')}<h3>로그인된 개인 기록을 불러오지 못했습니다.</h3><p>페이지를 새로고침한 뒤 다시 확인해 주세요.</p><button class="button secondary" data-view="search">선수 검색으로 돌아가기</button></div>`}
 function changeView(next,scroll=false){
  if(!['search','tracking','notes'].includes(next))return;view=next;
+ const viewUrl=new URL(location.href);next==='search'?viewUrl.searchParams.delete('view'):viewUrl.searchParams.set('view',next);history.replaceState(null,'',viewUrl);
  const searchLike=next==='search'||next==='tracking';
  $('searchView').hidden=!searchLike;$('trackingView').hidden=true;$('notesView').hidden=next!=='notes';
  document.querySelectorAll('.player-tabs [data-view]').forEach(b=>{b.classList.toggle('active',b.dataset.view===next);b.dataset.view===next?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current')});
@@ -178,6 +179,7 @@ try{
  try{draftIndex=await loadDraftIndex();const bundles=await Promise.all(draftIndex.seasons.map(s=>loadDraftSeason(s.season)));draftRows=bundles.flatMap(b=>validateAgainstCatalog(b.rows,catalog));for(const s of draftIndex.seasons)$('draftSeason').insertAdjacentHTML('beforeend',`<option value="${e(s.season)}">${e(s.label)} 공식 신청 확인</option>`)}catch(err){draftLoadFailed=true;$('draftSeason').disabled=true;$('draftFilterStatus').hidden=false;$('draftFilterStatus').textContent='드래프트 연결 자료를 불러오지 못했습니다. 전체 선수 검색은 이용할 수 있습니다.';console.warn(err)}
  await loadHighlights();restoreFilters();try{const saved=JSON.parse(sessionStorage.getItem(UI_KEY)||'null');if(saved?.url===location.href){limit=Math.max(limit,Math.min(players.length,saved.limit||limit));requestAnimationFrame(()=>window.scrollTo(0,saved.scrollY||0))}}catch{}
  await refreshPrivateState();if(!memberReady)renderSearch();
+ const requestedView=params.get('view');if(memberReady&&['tracking','notes'].includes(requestedView))changeView(requestedView);
  const directNote=params.get('notePlayer'),directEdit=params.get('editNote');
  if(memberReady&&directNote&&byId.has(directNote))openPlayerNote(directNote);else if(memberReady&&directEdit&&notes.some(n=>n.id===directEdit))openNote(directEdit);
  if(directNote||directEdit){const url=new URL(location.href);url.searchParams.delete('notePlayer');url.searchParams.delete('editNote');history.replaceState(null,'',url)}
