@@ -62,6 +62,12 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - `메모 선수` is calculated from unique player IDs, not total note rows.
 - Supabase readback remains auth 1 / active admin 1 / bookmarks 2 / notes 5.
 
+## Browser review pages
+- `review-team-directory-v1.html`: branch-only visual review entry, not in member protected-path config.
+- `review-team-detail-v1.html`: branch-only visual review entry; use real team query parameters.
+- These review pages intentionally cannot write private bookmark/note data because the Supabase Edge Functions allow the production `https://kvolleylab.com` origin only.
+- Delete review HTML files before production merge.
+
 ## QA gate
 Before release:
 - PC/mobile browser review on an actual served preview.
