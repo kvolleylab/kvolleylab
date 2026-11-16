@@ -498,6 +498,106 @@
       "sha256": "b17396f8c5082359b5bc3490f829582744c36f28ad5116e09602b90c04296a6d",
       "evidence": "docs/validation/national-team-home-v2-production-20261109.md",
       "review_note": "사용자가 검수한 v2의 공개 projection을 바이트 그대로 운영 경로에 추가한다. 공식 대회 성적·세계랭킹 스냅샷·공개 대표팀 명단 및 기존 Player MASTER 연결 ID만 포함한다. 비공개 메모·연락처·인증정보는 포함하지 않는다. 기존 MASTER와 대회 DB를 수정하지 않는다. 랭킹 기준일 2026-10-15, 직전 비교 기준일 미제공은 미확인으로 표시한다."
+    },
+    "data/national/men-senior-history-v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "hist-avc_champ",
+        "hist-kva_champ",
+        "hist-avc_games",
+        "hist-oca_profile",
+        "hist-avc_cup",
+        "hist-kva_world",
+        "hist-usav_2014",
+        "hist-kva_league",
+        "hist-vcc_2022_standings",
+        "hist-vcc_2022_rule",
+        "hist-avcc_2024",
+        "hist-eastern_2019",
+        "hist-eastern_2019_results",
+        "hist-w2022_teams",
+        "hist-asian2021_rule",
+        "hist-asian2021_results",
+        "hist-usav_2006",
+        "now-w25_standings",
+        "now-w25_preview",
+        "now-w25_fra",
+        "now-w25_arg",
+        "now-w25_fin",
+        "now-avc25_final",
+        "now-avc26_preview",
+        "now-avc26_final",
+        "now-asian26_semifinal",
+        "now-asian26_jpn_kor",
+        "now-asian26_final",
+        "now-worldcup_rename",
+        "now-worldcup27_field",
+        "now-worldcup27_fivb",
+        "now-la28_fivb",
+        "now-la28_system",
+        "now-fivb_calendar",
+        "now-la28_fivb_archived",
+        "now-asian26_bronze_match",
+        "now-ag26_jva_results",
+        "now-ag26_jva_overview",
+        "now-eastasia26_jva_results",
+        "now-eastasia26_jva_overview",
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal",
+        "oly-va-2008-report",
+        "oly-fivb-2008-bulletin",
+        "oly-jva-2012-report",
+        "oly-jva-2012-qualifier-entry",
+        "oly-jva-2016-qualifier",
+        "oly-jva-2016-all-qualifiers",
+        "oly-fivb-2020-qualifier-rules",
+        "oly-fivb-paris2024-regulations",
+        "oly-vw-paris2024-qualified"
+      ],
+      "verified_at": "2026-11-16",
+      "sha256": "d30bdb9143726ae7817bf28da086feb449a063d173a54d515d834b95a6a37113",
+      "evidence": "docs/validation/olympic-roadmap-production-v1.md",
+      "review_note": "사용자가 승인한 공개용 역사·출전권 자료 및 주기 설정의 공개 적합성과 바이트를 검토했다. 경기 결과·출처·부분 확인 및 미확인 상태는 원본 그대로 유지한다. 2032는 규정 미확정 안내이며 배정 숫자가 없다. 이 파일 단위 VERIFIED는 미확인 역사나 미래 규정을 확정으로 승격하지 않는다. 비공개 메모·연락처·인증정보를 포함하지 않는다."
+    },
+    "data/olympics/la2028_v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "la28-pdf",
+        "fivb-system",
+        "fivb-continental",
+        "world-cup-field",
+        "la28-field",
+        "asian-result"
+      ],
+      "verified_at": "2026-11-16",
+      "sha256": "c28aafd0c322cbc4c902200b656926997e69899cdd1b351047dd8ccdb919fd0a",
+      "evidence": "docs/validation/olympic-roadmap-production-v1.md",
+      "review_note": "사용자가 승인한 공개용 역사·출전권 자료 및 주기 설정의 공개 적합성과 바이트를 검토했다. 경기 결과·출처·부분 확인 및 미확인 상태는 원본 그대로 유지한다. 2032는 규정 미확정 안내이며 배정 숫자가 없다. 이 파일 단위 VERIFIED는 미확인 역사나 미래 규정을 확정으로 승격하지 않는다. 비공개 메모·연락처·인증정보를 포함하지 않는다."
+    },
+    "data/olympics/brisbane2032_v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "ioc-2032-programme"
+      ],
+      "verified_at": "2026-11-16",
+      "sha256": "6457f49387f64a8b8da48736aac87cfa02e35cddb16c90720905c136bc7cd89c",
+      "evidence": "docs/validation/olympic-roadmap-production-v1.md",
+      "review_note": "사용자가 승인한 공개용 역사·출전권 자료 및 주기 설정의 공개 적합성과 바이트를 검토했다. 경기 결과·출처·부분 확인 및 미확인 상태는 원본 그대로 유지한다. 2032는 규정 미확정 안내이며 배정 숫자가 없다. 이 파일 단위 VERIFIED는 미확인 역사나 미래 규정을 확정으로 승격하지 않는다. 비공개 메모·연락처·인증정보를 포함하지 않는다."
+    },
+    "data/olympics/cycles_v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-OLYMPIC-ROADMAP-USER-APPROVAL-20261116",
+        "docs/KVL_OLYMPIC_ROADMAP_OPERATIONS_v1.md"
+      ],
+      "verified_at": "2026-11-16",
+      "sha256": "76247e00e243b51ac2370558bbb0a93c792176c37bf51c2af62966ba58538d57",
+      "evidence": "docs/validation/olympic-roadmap-production-v1.md",
+      "review_note": "사용자가 승인한 공개용 역사·출전권 자료 및 주기 설정의 공개 적합성과 바이트를 검토했다. 경기 결과·출처·부분 확인 및 미확인 상태는 원본 그대로 유지한다. 2032는 규정 미확정 안내이며 배정 숫자가 없다. 이 파일 단위 VERIFIED는 미확인 역사나 미래 규정을 확정으로 승격하지 않는다. 비공개 메모·연락처·인증정보를 포함하지 않는다."
     }
   }
 }
