@@ -30,7 +30,8 @@ function apply(state){
     else if(link.hasAttribute('title'))link.removeAttribute('title');
   });
   document.querySelectorAll('[data-kvl-auth-role]').forEach(el=>{
-    el.textContent=state.authenticated&&state.access?(state.role==='admin'?'ADMIN':'MEMBER'):'';
+    const value=state.authenticated&&state.access?(state.role==='admin'?'ADMIN':'MEMBER'):'';
+    if(el.textContent!==value)el.textContent=value;
     el.hidden=!(state.authenticated&&state.access);
   });
   document.querySelectorAll('[data-kvl-auth-logout]').forEach(button=>{
