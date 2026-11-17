@@ -81,6 +81,16 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - These review pages intentionally cannot write private bookmark/note data because the Supabase Edge Functions allow the production `https://kvolleylab.com` origin only.
 - Delete review HTML files before production merge.
 
+## Team card v3 static QA
+- Team directory and staff module syntax: PASS.
+- V-League coach metadata: 14 teams = men 7 + women 7.
+- Default category/gender: professional + MEN.
+- No `전체` category tab.
+- Category order: 프로 → 대학 → 고교 → 중학 → 대표팀 → 국제.
+- Card desktop main grid: logo 1fr / information 2fr.
+- Card fields: level·MEN/WOMEN, team name, roster count, head coach, roster CTA.
+- Category control matches home competition shortcut filter geometry and active navy state.
+
 ## QA gate
 Before release:
 - PC/mobile browser review on an actual served preview.
