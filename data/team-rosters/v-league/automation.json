@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "timezone": "Asia/Seoul",
+  "cron_minute_utc": 13,
+  "manual_dispatch_always_runs": true,
+  "cadence": {
+    "intensive_hours": 1,
+    "active_season_hours": 3,
+    "offseason_hours": 24,
+    "offseason_run_hour_kst": 8,
+    "active_anchor_hour_kst": 8,
+    "intensive_recent_change_days": 14
+  },
+  "safety": {
+    "preserve_review_hold_players": true,
+    "require_applied_event_for_removal": true,
+    "allow_unlinked_official_additions": true,
+    "invent_player_ids": false,
+    "overwrite_historical_frozen_seasons": false
+  }
+}
