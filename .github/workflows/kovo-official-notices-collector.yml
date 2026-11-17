@@ -157,7 +157,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/kovo-team-roster"
           gh api --method POST "/repos/$GITHUB_REPOSITORY/pages/builds" > "$RUNNER_TEMP/kovo-team-roster/pages.json"
       - name: Verify exact roster JSON on public Pages
-        if: steps.roster-publish.outputs.changed == 'true' && steps.commit.outputs.changed == 'true'
+        if: steps.period.outputs.active == 'true' && steps.roster-cadence.outputs.run == 'true'
         run: python -B scripts/kovo_team_roster_public_verify.py --root . --sha "${{ steps.commit.outputs.sha }}" --report "$RUNNER_TEMP/kovo-team-roster/public-readback.json"
       - name: Store team roster publication receipts
         if: always()
