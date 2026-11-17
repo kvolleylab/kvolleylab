@@ -32,6 +32,61 @@ test('native v2 roster displays official current club count and initial athlete'
   assert.ok(host.querySelector('.kvlrv2-profile-link'));
  }finally{dom.window.close();delete global.window}
 });
+test('name links navigate directly while row selection and keyboard stay usable',()=>{
+ const {dom,host}=mount(men,'OKF');
+ try{
+  const row=[...host.querySelectorAll('[data-choice]')].find(x=>x.textContent.includes('윤경'));
+  assert.ok(row);
+  assert.equal(row.getAttribute('role'),'option');
+  assert.equal(row.getAttribute('tabindex'),'0');
+  const nameLink=row.querySelector('.kvlrv2-name-link');
+  assert.ok(nameLink);
+  assert.equal(new URL(nameLink.href).searchParams.get('id'),'KVL-P-000008');
+  assert.match(nameLink.getAttribute('aria-label'),/윤경 선수 프로필/);
+  const other=[...host.querySelectorAll('[data-choice]')].find(x=>x.textContent.includes('김정호'));
+  assert.ok(other);
+  other.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
+  assert.match(host.querySelector('[data-detail]').textContent,/김정호/);
+ }finally{dom.window.close();delete global.window}
+ const {dom:wdom,host:whost}=mount(women,'RSP');
+ try{
+  const row=[...whost.querySelectorAll('[data-choice]')].find(x=>x.textContent.includes('김아중'));
+  assert.ok(row);
+  assert.equal(row.querySelector('.kvlrv2-name-link'),null,'unverified ID has no profile link');
+ }finally{wdom.window.close();delete global.window}
+});
+
+test('all fourteen teams retain source counts, newcomer links and evidenced schools',()=>{
+ for(const [gender,d] of [['M',men],['W',women]]){
+  assert.equal(d.participants.length,7);
+  for(const t of d.participants){
+   const {dom,host}=mount(d,t.code);
+   try{
+    assert.equal(host.querySelectorAll('.kvlrv2-row').length,d.rosters[t.code].players.length,t.name);
+    assert.ok(host.textContent.includes(t.name),t.name);
+    for(const r of bridge.registered.filter(x=>x.gender===gender&&x.team_code===t.code)){
+     const row=[...host.querySelectorAll('.kvlrv2-row')].find(el=>
+      el.querySelector('.kvlrv2-name strong')?.textContent===r.name&&
+      Number(el.querySelector('.kvlrv2-number')?.textContent)===r.number);
+     assert.ok(row,t.name+' / '+r.name);
+     row.click();
+     const link=row.querySelector('.kvlrv2-name-link'),detail=host.querySelector('[data-detail]');
+     if(r.player_id){
+      assert.ok(link,t.name+' / '+r.name+' should have name link');
+      assert.equal(new URL(link.href).searchParams.get('id'),r.player_id);
+      assert.ok(detail.querySelector('.kvlrv2-profile-link'));
+     }else{
+      assert.equal(link,null,t.name+' / '+r.name+' must have no invented profile link');
+      assert.equal(detail.querySelector('.kvlrv2-profile-link'),null);
+     }
+     for(const [field,expected] of Object.entries(r.education||{})){
+      if(['high_school','university'].includes(field))assert.ok(detail.textContent.includes(expected),r.name+' / '+field);
+     }
+    }
+   }finally{dom.window.close();delete global.window}
+  }
+ }
+});
 test('verified rookie shows high school + university and a safe canonical link',()=>{
  const {dom,host}=mount(men,'OKF');
  try{
