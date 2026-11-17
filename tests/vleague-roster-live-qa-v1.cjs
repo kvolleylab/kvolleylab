@@ -66,7 +66,7 @@ async function main(){
      }
      assert.deepEqual(pageErrors,[],'live JavaScript exceptions');
      const screenshot=path.join(OUT,'kvl-vleague-roster-live-'+gender+'-'+width+'.png');
-     if(linked)await page.goBack({waitUntil:'domcontentloaded',timeout:30000});
+     if(linked){await page.goBack({waitUntil:'domcontentloaded',timeout:30000});await page.locator('.kvlrv2').waitFor({timeout:30000})}
      await page.screenshot({path:screenshot,fullPage:true});
      record.views.push({gender,team,viewport:width+'x'+height,name,rosterCount:count,linked,overflow:metrics.scrollWidth-metrics.width,status:'PASS',screenshot:path.basename(screenshot)});
     }finally{await page.close()}
