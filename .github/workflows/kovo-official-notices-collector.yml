@@ -149,8 +149,13 @@ jobs:
         if: steps.roster-publish.outputs.changed == 'true' && steps.commit.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          KVL_VLEAGUE_PUBLISH_APPROVED: 'true'
-        run: python -B scripts/kovo_vleague_ops.py deploy --root . --sha "${{ steps.commit.outputs.sha }}" --report "$RUNNER_TEMP/kovo-team-roster/pages.json"
+        shell: bash
+        run: |
+          test "$GITHUB_REPOSITORY" = "kvolleylab/kvolleylab"
+          test "$GITHUB_REF" = "refs/heads/main"
+          test "$(git rev-parse HEAD)" = "${{ steps.commit.outputs.sha }}"
+          mkdir -p "$RUNNER_TEMP/kovo-team-roster"
+          gh api --method POST "/repos/$GITHUB_REPOSITORY/pages/builds" > "$RUNNER_TEMP/kovo-team-roster/pages.json"
       - name: Verify exact roster JSON on public Pages
         if: steps.roster-publish.outputs.changed == 'true' && steps.commit.outputs.changed == 'true'
         run: python -B scripts/kovo_team_roster_public_verify.py --root . --sha "${{ steps.commit.outputs.sha }}" --report "$RUNNER_TEMP/kovo-team-roster/public-readback.json"
