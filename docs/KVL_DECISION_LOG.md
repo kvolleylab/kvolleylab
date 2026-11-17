@@ -693,3 +693,8 @@ Status: USER REQUESTED BUILD / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFI
 ## 2026-11-17 · 팀 페이지 로고·국기 시각 식별 추가
 
 Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / QA PENDING / NOT DEPLOYED. 팀 허브와 팀 상세에서 텍스트만으로 팀을 구분하기 어려워 실제 시각 식별 자산을 연결한다. 프로 V-리그는 저장소에 이미 검증·사용 중인 2026-27 남녀 14개 팀 SVG 로고를 사용한다. 대학·중고는 `school_logo_manifest_2026.json`에서 확인된 학교 로고만 사용하며 미확인 학교에 임의 로고를 만들지 않는다. 국제·대표팀 그룹은 현재 국가명을 ISO2로 매핑해 기존 KVL 국가대표 화면과 동일한 FlagCDN 국기 방식을 사용한다. 팀 허브 카드와 팀 상세 HERO에 동일한 시각 식별 규칙을 적용한다.
+
+
+## 2026-11-17 · 팀 카드 v3 및 GitHub-only 시즌 명단 운영
+
+Status: USER DIRECTED / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA PENDING / NOT DEPLOYED. 팀 허브 기본값은 프로·MEN으로 하고 전체 탭을 제거해 프로→대학→고교→중학→대표팀→국제 순으로 표시한다. 분류 버튼은 홈의 대회 바로가기 필터와 같은 1px 테두리·5px 라운드·남색 활성 스타일을 사용한다. 팀 카드는 왼쪽 약 1/3에 로고, 오른쪽 2/3에 분류·MEN/WOMEN·팀명·선수수·감독을 배치하고 하단 구분선 뒤 선수 명단 보기만 둔다. 2026-27 V-리그 14개 팀 감독은 별도 시즌 스태프 메타데이터로 분리한다. 최신 선수명단은 GPT 비의존 GitHub Actions 파이프라인으로 유지하며 공식 공시 event ledger→projection→검증→시즌 roster snapshot→Player Master current projection→test→commit→Pages 순서로 관리한다. 시즌 종료 명단은 동결하고 새 시즌은 새 디렉터리와 currentSeason 포인터로 전환하는 기준을 `docs/KVL_TEAM_ROSTER_LIFECYCLE_v1.md`에 기록한다.
