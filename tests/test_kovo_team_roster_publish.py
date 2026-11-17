@@ -88,7 +88,7 @@ class TeamRosterPublishTests(unittest.TestCase):
                 "player_name":"타루샤 차메스","registered_name":"타루샤","gender":"남",
                 "from_team":"","to_team":"","destination":"","confidence":"high","source_url":"TERM"
             })
-        report=roster_publish.publish(root,write=True)
+        report=roster_publish.publish(root,write=True,today=datetime(2026,11,17,tzinfo=ZoneInfo("Asia/Seoul")).date())
         published=json.loads((root/"men.json").read_text(encoding="utf-8"))
         kal=published["KAL"]["players"]
         self.assertEqual(report["matched_existing"],1)
@@ -137,6 +137,14 @@ class TeamRosterPublishTests(unittest.TestCase):
         self.assertEqual(decision["mode"],"offseason")
         off_skip=datetime(2027,5,1,9,13,tzinfo=ZoneInfo("Asia/Seoul"))
         self.assertFalse(roster_publish.cadence_decision(root,off_skip,"schedule")["run"])
+
+    def test_publish_stops_after_season_end(self):
+        tmp,root=self.make_root()
+        self.addCleanup(tmp.cleanup)
+        report=roster_publish.publish(root,write=True,today=datetime(2027,5,1,tzinfo=ZoneInfo("Asia/Seoul")).date())
+        self.assertTrue(report["skipped"])
+        self.assertEqual(report["skip_reason"],"season_ended_waiting_for_rollover")
+        self.assertEqual(report["changed_files"],[])
 
     def test_manual_dispatch_always_runs(self):
         tmp,root=self.make_root()
