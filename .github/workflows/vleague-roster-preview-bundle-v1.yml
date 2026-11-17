@@ -1,0 +1,39 @@
+name: V-League Roster v2 Browser Review Bundle
+on:
+  push:
+    branches: [feature/vleague-roster-profile-integration-20261118]
+    paths:
+      - '.github/workflows/vleague-roster-preview-bundle-v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bundle:
+    if: github.repository == 'kvolleylab/kvolleylab'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify current source mappings before packaging
+        run: node --test tests/vleague-roster-profile-integration.test.cjs
+      - name: Package identical branch code and public source for isolated browser QA
+        run: |
+          zip -q -r "$RUNNER_TEMP/vleague-roster-v2-review.zip" \
+            competition-engine.html player.html players.html player-compare.html \
+            assets/js assets/css assets/img/team-logos assets/images/brand \
+            data/competitions/v-league-men-2026-27 \
+            data/competitions/v-league-women-2026-27 \
+            data/kovo/official-notices/2026-27 \
+            data/draft-applicants data/master data/national data/domestic \
+            data/competition data/timeline data/observations
+          ls -lh "$RUNNER_TEMP/vleague-roster-v2-review.zip"
+      - name: Upload exact isolated browser review bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-vleague-roster-v2-browser-review
+          path: ${{ runner.temp }}/vleague-roster-v2-review.zip
+          retention-days: 7
+          if-no-files-found: error

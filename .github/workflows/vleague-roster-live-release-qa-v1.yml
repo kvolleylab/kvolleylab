@@ -1,0 +1,49 @@
+name: V-League Roster v2 Live Pages Release QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/vleague-roster-live-release-qa-v1.yml'
+      - 'tests/vleague-roster-live-qa-v1.cjs'
+      - 'assets/js/kvl-vleague-roster-v2.js'
+      - 'assets/js/kvl-vleague-draft-bridge-v1.js'
+      - 'assets/js/kvl-competition-loader-v2.js'
+      - 'assets/js/player-detail-v2.js'
+      - 'assets/css/kvl-vleague-roster-v2.css'
+      - 'competition-engine.html'
+      - 'player.html'
+      - 'data/kovo/official-notices/2026-27/draft_registration_bridge.json'
+      - 'data/draft-applicants/2026-27/education-v1.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated Chromium for live Pages QA
+        run: |
+          npm install --prefix "$RUNNER_TEMP/kvl-live-browser" --no-audit --no-fund playwright@1.56.1
+          node "$RUNNER_TEMP/kvl-live-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Verify actual public V-League roster pages, mobile and player IDs
+        env:
+          KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-live-browser/node_modules/playwright
+        run: node tests/vleague-roster-live-qa-v1.cjs
+      - name: Preserve actual public website screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-vleague-roster-v2-live-release-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-vleague-roster-v2-live-report.json
+            ${{ runner.temp }}/kvl-vleague-roster-live-*.png
+          retention-days: 14
+          if-no-files-found: ignore
