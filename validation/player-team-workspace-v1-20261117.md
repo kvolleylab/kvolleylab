@@ -63,6 +63,13 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - `메모 선수` is calculated from unique player IDs, not total note rows.
 - Supabase readback remains auth 1 / active admin 1 / bookmarks 2 / notes 5.
 
+## Team visual identity QA
+- V-League visual coverage: 14/14 current pro teams use repository SVG logos.
+- International visual coverage: 11/11 current international national-team groups have ISO2 flag mappings.
+- Korea national-team group uses the Korea flag.
+- School/university logos are display-only and limited to verified entries in `school_logo_manifest_2026`; missing assets keep initials.
+- Visual resolver/module syntax: PASS.
+
 ## Browser review pages
 - `review-team-directory-v1.html`: branch-only visual review entry, not in member protected-path config.
 - `review-team-detail-v1.html`: branch-only visual review entry; use real team query parameters.
