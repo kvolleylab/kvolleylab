@@ -42,3 +42,21 @@
 .oq-summary .oq-quota-link:hover,.oq-summary .oq-quota-link:focus-visible{border-color:#c9a44c;background:#fffbf2}
 .oq-summary .oq-quota-action{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:3px;color:#8c691d;font-size:11px;font-weight:600}
 @media(max-width:640px){.oq-summary .oq-quota-action{font-size:9px;line-height:1.5}}
+
+/* Reuse the approved international arena without changing the historical timeline. */
+.oq-summary .oq-overview{margin:-26px -34px 0;padding:26px 34px 24px;border-radius:23px 23px 0 0;background-color:#360508;background-image:linear-gradient(90deg,rgba(54,5,8,.12),rgba(54,5,8,.08) 65%),url('../img/competition-hero/kvl-hero-international-hub-pc-v1.webp');background-size:cover;background-position:center 65%;background-repeat:no-repeat}
+.oq-summary .oq-overview h2{color:#f6e7b5;text-shadow:0 1px 8px #26020866}
+.oq-summary .oq-overview .oq-eyebrow{color:#e7c986}
+.oq-summary .oq-overview .oq-total,.oq-summary .oq-overview .oq-total strong{color:#f1e6df}
+.oq-summary .oq-overview .oq-cycle-badge{display:flex;align-items:center;gap:5px;background:#071827d9;border:1px solid #d6b25e99;color:#f6e7b5;font-weight:600}
+.oq-summary .oq-cycle-badge strong{font-size:14px;color:#f6e7b5}
+.oq-summary .oq-overview .oq-quota{background:#ffffffed}
+.oq-summary .oq-overview .oq-quota-link:hover,.oq-summary .oq-overview .oq-quota-link:focus-visible{background:#fff8e6;outline:2px solid #d6b25e;outline-offset:2px}
+.oq-summary .oq-overview .oq-korea{background:#fffaf0f5}
+@media(min-width:1500px){.oq-summary .oq-overview{margin-left:-40px;margin-right:-40px;padding-left:40px;padding-right:40px}}
+@media(max-width:680px){.oq-summary .oq-overview{background-image:linear-gradient(90deg,rgba(54,5,8,.28),rgba(54,5,8,.08) 65%),url('../img/competition-hero/kvl-hero-international-hub-mobile-v1.webp');background-position:72% center}}
+@media(max-width:640px){
+ .oq-summary .oq-overview{margin:-20px -16px 0;padding:20px 16px 18px;border-radius:20px 20px 0 0}
+ .oq-summary .oq-overview .oq-cycle-badge{flex-direction:column;gap:2px;padding:5px 9px;line-height:1.3}
+ .oq-summary .oq-cycle-badge strong{font-size:12px}
+}

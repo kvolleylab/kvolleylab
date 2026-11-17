@@ -16,3 +16,7 @@ body.olympic-site>.skip{z-index:2100}
   .olympic-site-page>.preview-nav{margin:16px 0 10px}
   .olympic-site-page>.page-footer{margin:15px 6px 28px}
 }
+
+/* This page starts with its summary; navigation remains in the shared KVL menu. */
+.olympic-summary-page{padding-top:24px}
+@media(max-width:640px){.olympic-summary-page{padding-top:16px}}

@@ -705,3 +705,11 @@ Worker or cron changes. Local265Python+101Node+6actual-candidate DOM tests pass;
 actual MASTER plan8cells, no write/deployment. New production approval and actual
 publisher/readback/Pages/live verification remain required.
 [Evidence, limits and release gate](validation/vleague-roster-gate-recovery-v1.md).
+
+## 2026-11-18 · LA28 요약 배경·총 출전권 표시 및 경로줄 제거
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 사용자가 국가대표팀 메뉴의 올림픽·대표팀 로드맵에서 국제대회 메인 HERO 이미지를 출전권 요약 배경에 재사용하고, 별도 상단 경로줄을 제거하며, 현재 올림픽 배지를 총 출전권으로 바꾸도록 요청했다. 국제대회 운영 WebP PC/mobile 두 파일을 동일 경로로 참조하고 원본 바이트·국제대회 화면은 변경하지 않는다. 요약 제목/배정 카드/한국 현황까지만 이미지 배경이며 펼친 규정과 공식 출처는 흰 바탕을 유지한다.
+
+상단 배지는 검증된 주기 데이터의 totalPerGender에서 ‘남녀 각각 총 12장’을 표시한다. 2032 규정 미발표에는 ‘규정 발표 전’이며 숫자를 대입하지 않는다. 이전에 추가한 페이지 전용 경로줄만 제거하고 공통 메뉴·대회 링크·62개 역사 기록·하단 로드맵 디자인/동작은 보존한다. 이번 지시는 기존의 새 HERO 생성 금지 원칙과 충돌하지 않는 운영 이미지 재사용이다.
+
+Base `aede0c23df1bcff61eaf19b0ca084b68c54d4c82`; branch `fix/olympic-summary-arena-v1`. 기존 Node 18/18, PC 및 모바일 390/360px 이미지/배지/넘침, 대회 왕복, 실패 필터, 연도 접기, 2032 미확정 표시 확인. 병합·Pages·운영 검증은 PR에 기록한다. [검증·출처·복구](validation/olympic-summary-arena-v1.md).
