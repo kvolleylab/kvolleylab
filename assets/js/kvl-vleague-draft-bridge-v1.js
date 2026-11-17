@@ -192,5 +192,90 @@ function profilesFrom(existing,bridge){
  return safe;
 }
 
-return {SOURCE,EDUCATION_SOURCE,validBridge,validEducation,withEducation,load,applyCompetition,profilesFrom,genderOf};
+
+/* New, already-published season roster is authoritative. Verify source,
+   team, number and name before adding only display-level profile links.
+   Never republish or replace the official 14 club source snapshots. */
+function reconcileCurrent(input,bridge){
+ const gender=genderOf(input);
+ if(!gender)return input;
+ if(!validBridge(bridge))throw new Error('Invalid V-League draft bridge');
+ const result=copy(input);
+ const profiles=new Map(bridge.profiles.map(p=>[p.system.player_id,p]));
+ const originalIds=new Set(Object.values(result.rosters||{}).flatMap(t=>(t.players||[])
+   .map(p=>p.playerId).filter(Boolean)));
+ const enriched=new Set();
+ for(const r of bridge.registered.filter(x=>x.gender===gender)){
+  const t=(result.participants||[]).find(x=>x.code===r.team_code);
+  const roster=result.rosters?.[r.team_code];
+  if(!t||t.name!==r.team||!roster||!Array.isArray(roster.players))continue;
+  const list=roster.players.filter(p=>norm(p.name)===norm(r.name)&&Number(p.number)===r.number);
+  if(list.length!==1)continue;
+  const p=list[0];
+  if(p.registrationSource!==r.registration_source_url)continue;
+  if(p.playerId&&p.playerId!==r.player_id)continue;
+  const profile=r.player_id?profiles.get(r.player_id):null;
+  const canLink=Boolean(profile&&p.playerId!==false
+    &&profile.identity?.name_ko===r.name&&profile.identity?.gender===r.gender
+    &&profile.current_roster?.team_code===r.team_code
+    &&(!p.dob||!profile.identity.birth_date||p.dob===profile.identity.birth_date)
+    &&(p.playerId===r.player_id||!originalIds.has(r.player_id))
+    &&!enriched.has(r.player_id));
+  if(canLink){
+   p.playerId=r.player_id;
+   p.profileLinkStatus='verified-official-draft-registration';
+   enriched.add(r.player_id);
+  }
+  // Academic source is independent; a verified registration may have no
+  // Player ID and still show official high school/university facts.
+  const academic=r.education||{};
+  if(academic.high_school)p.kvlHighSchool=academic.high_school;
+  if(academic.university)p.kvlUniversity=academic.university;
+  p.kvlDraft={round:r.draft_round,pick:r.draft_pick,kind:r.draft_kind,
+    source:r.draft_source_url,registrationSource:r.registration_source_url,
+    playerId:canLink?r.player_id:null};
+ }
+ return result;
+}
+
+/* Return current-professional overlays only while the original KOVO
+   registration remains present in the newest live roster. Private notes,
+   permanent Player IDs and original school enrollment remain unchanged. */
+function activeProfiles(existing,bridge,men,women){
+ if(!validBridge(bridge))return[];
+ const source=profilesFrom(existing,bridge);
+ const byRoster={M:men,W:women};
+ const byId=new Map(bridge.registered.filter(r=>r.player_id).map(r=>[r.player_id,r]));
+ const current=source.filter(p=>{
+  const r=byId.get(p.system.player_id),roster=byRoster[r?.gender]?.[r?.team_code]?.players||[];
+  return r&&roster.filter(q=>norm(q.name)===norm(r.name)&&Number(q.number)===r.number
+     &&q.registrationSource===r.registration_source_url
+     &&(!q.playerId||q.playerId===r.player_id)).length===1;
+ });
+ const known=new Map((existing||[]).filter(p=>p?.system?.player_id)
+    .map(p=>[p.system.player_id,p]));
+ return current.map(p=>{
+  const x=copy(p),r=byId.get(x.system.player_id),old=known.get(x.system.player_id);
+  const prior=old?.current_roster||{},er=r.education||{};
+  x.current_roster={
+   ...x.current_roster,
+   ...(er.high_school?{high_school:er.high_school}:{}),
+   ...(er.university?{university:er.university}:{}),
+   previous_school:er.university||er.high_school||x.current_roster?.previous_school||'',
+  };
+  x.roster_history=[...(old?.roster_history||[])];
+  if(old?.current_roster?.team_name&&old.current_roster.team_name!==x.current_roster.team_name){
+   const row={competition_name:prior.latest_competition_name||'기존 소속 기록',
+    competition_start:String(prior.season||''),school_name:prior.school_name||prior.team_name||'',
+    jersey_number:prior.jersey_number,position:prior.position};
+   x.roster_history.push(row);
+  }
+  // Leave verified original full DOB/height/profile history unchanged.
+  if(old?.identity?.birth_date&&!x.identity.birth_date)x.identity.birth_date=old.identity.birth_date;
+  x.source_ids=[...new Set([...(old?.source_ids||[]),...(x.source_ids||[])])];
+  return x;
+ });
+}
+
+return {SOURCE,EDUCATION_SOURCE,validBridge,validEducation,withEducation,load,applyCompetition,reconcileCurrent,profilesFrom,activeProfiles,genderOf};
 });
