@@ -91,6 +91,13 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - Card fields: level·MEN/WOMEN, team name, roster count, head coach, roster CTA.
 - Category control matches home competition shortcut filter geometry and active navy state.
 
+## Current pro roster overlay
+- Professional team counts and detail rosters now load current-season V-League `rosters.json` first.
+- Existing Player Master data is merged by stable Player_ID for linked professional players.
+- Official roster additions without Player_ID remain visible in team roster but cannot use bookmark, memo, compare or profile until linkage.
+- Non-professional categories continue to use Player Master.
+- Team page does not invent Player IDs or duplicate current pro membership.
+
 ## QA gate
 Before release:
 - PC/mobile browser review on an actual served preview.
