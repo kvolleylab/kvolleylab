@@ -14,6 +14,14 @@
    const [source,...payloads]=await Promise.all([definition.data,...definitions.map(m=>m.source)].map(file=>readJSON(new URL(file,route.base))));
    data=modules.apply(contract.assemble(definition,source,route),definitions,payloads);
   }
+  if(config.collectionRoot&&/^KVL-COMP-VLEAGUE-[MW]-2026-27$/.test(String(data?.competitionId||''))&&window.KVLVLeagueDraftBridgeV1){
+   try{
+    const validated=await window.KVLVLeagueDraftBridgeV1.load();
+    data=window.KVLVLeagueDraftBridgeV1.reconcileCurrent(data,validated);
+   }catch(e){
+    console.warn('V-League player profile evidence unavailable; official roster unchanged',e);
+   }
+  }
   if(config.source){const response=await fetch(new URL(config.source,location.href));if(!response.ok)throw Error('Competition data: '+response.status);data=await response.json();}
   if(typeof window.KVLCompetitionAdapterV2==='function')data=await window.KVLCompetitionAdapterV2(data);
   if(String(data?.competitionFamily||data?.family||'').toLowerCase()==='domestic'&&window.KVLSchoolLogos){await window.KVLSchoolLogos.ready;data=window.KVLSchoolLogos.decorate(data);}
