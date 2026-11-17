@@ -1,4 +1,4 @@
-import {createClient} from '../vendor/supabase-js-2.84.0.mjs';import {TEAM_LEVELS,escapeHTML as e,groupPlayerTeams,teamLabel} from './player-team-core-v1.mjs';import {attachTeamVisuals,renderTeamVisual} from './team-visuals-v1.mjs?v=20261117-1';import {catalogWithCurrentPro} from './team-pro-roster-v1.mjs?v=20261117-1';
+import {createClient} from '../vendor/supabase-js-2.84.0.mjs';import {TEAM_LEVELS,escapeHTML as e,groupPlayerTeams,teamLabel} from './player-team-core-v1.mjs';import {attachTeamVisuals,renderTeamVisual} from './team-visuals-v1.mjs?v=20261117-1';import {catalogWithCurrentPro} from './team-pro-roster-v1.mjs?v=20261117-2';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co',SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM',PRIVATE_FUNCTION='admin-player-workspace';
 const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
