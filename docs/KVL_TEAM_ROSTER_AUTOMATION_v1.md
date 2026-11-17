@@ -57,3 +57,23 @@ Player_ID 미연결 선수는 최신 roster에는 표시하되 개인 메모·�
 ## 복구
 문제가 생기면 해당 GitHub Actions commit을 revert한다.
 공시 원장 자체는 삭제하지 않고, roster snapshot만 마지막 정상 commit으로 복원한다.
+
+
+## 최초 운영 검증 — 2026-11-17
+- GitHub Actions: `KOVO Official Notices Collector` run #46 / run id `44055769916`
+- 결과: SUCCESS
+- 게시 commit: `8d7109e2adc296021558852951a4ae7d81e1fd52`
+- projection: 286명
+- 게시 roster: 287명
+  - 남자 149명
+  - 여자 138명
+- 검토 보존: 대한항공 이준 1명
+- 외국인 약칭/정식명 source 재식별: 23건
+- Pages build request: SUCCESS
+- 공개 남녀 roster exact readback: SUCCESS
+- receipt: `public-readback.json = DEPLOYED_VERIFIED`
+- 검증 파일:
+  - `data/competitions/v-league-men-2026-27/rosters.json`
+  - `data/competitions/v-league-women-2026-27/rosters.json`
+
+최초 배포 과정에서 PR 병합으로 발생한 push context가 기존 V-리그 공용 deploy helper의 허용 이벤트와 달라 Pages 요청이 한 차례 실패했으나, roster 전용 고정 Pages build endpoint와 상시 public readback으로 보정했다. V-리그 경기 자동화의 기존 보안 정책은 변경하지 않았다.
