@@ -9,7 +9,7 @@
   "archiveStatus": "not_archived",
   "archivedAt": null,
   "checkedAt": "2026-11-16",
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-17",
   "rules": {
     "status": "official_verified",
     "version": "2026-05-12",
@@ -27,7 +27,12 @@
         "sourceIds": [
           "la28-pdf",
           "fivb-system"
-        ]
+        ],
+        "link": {
+          "label": "LA28 공식 대회",
+          "url": "https://la28.org/en/games-plan/olympics/volleyball.html",
+          "checkedAt": "2026-11-17"
+        }
       },
       {
         "id": "continental",
@@ -37,7 +42,12 @@
         "sourceIds": [
           "la28-pdf",
           "fivb-continental"
-        ]
+        ],
+        "link": {
+          "label": "대회 보기",
+          "url": "continental-championships-2026.html",
+          "checkedAt": "2026-11-17"
+        }
       },
       {
         "id": "world-cup",
@@ -47,7 +57,12 @@
         "sourceIds": [
           "world-cup-field",
           "la28-field"
-        ]
+        ],
+        "link": {
+          "label": "대회 보기",
+          "url": "fivb-world-cup-2027.html",
+          "checkedAt": "2026-11-17"
+        }
       },
       {
         "id": "ranking",
@@ -56,7 +71,12 @@
         "summary": "미출전국 대상 · 대륙 우선",
         "sourceIds": [
           "la28-pdf"
-        ]
+        ],
+        "link": {
+          "label": "랭킹 경로 보기",
+          "url": "fivb-world-ranking-la28-2028.html",
+          "checkedAt": "2026-11-17"
+        }
       }
     ],
     "details": [
@@ -171,6 +191,10 @@
     {
       "label": "기존 LA28 출전권 페이지",
       "url": "https://kvolleylab.com/la28-volleyball-qualification.html"
+    },
+    {
+      "label": "LA28 올림픽 공식 배구 대회 안내",
+      "url": "https://la28.org/en/games-plan/olympics/volleyball.html"
     }
   ],
   "trackingPolicy": "대회 정보·일정·결과와 대회별 공식 로스터를 연결해 추적합니다. 국가별 상시 대표팀 명단과 대회별 최종 명단은 구분합니다.",
