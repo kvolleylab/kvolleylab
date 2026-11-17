@@ -24,6 +24,9 @@
 .kvlrv2-row:focus-visible,.kvlrv2-filters button:focus-visible,.kvlrv2-profile-link:focus-visible{outline:2px solid #24a58c;outline-offset:-2px}
 .kvlrv2-number{font-size:15px;font-weight:900;color:#315b7b}
 .kvlrv2-name{min-width:0;display:flex;flex-direction:column;gap:4px;overflow-wrap:anywhere}
+.kvlrv2-name-link{display:inline-flex;align-items:center;min-height:26px;width:fit-content;max-width:100%;color:#153b58;text-decoration:none;cursor:pointer}
+.kvlrv2-name-link:hover strong{text-decoration:underline;text-decoration-color:var(--rv-gold);text-underline-offset:3px}
+.kvlrv2-name-link:focus-visible{outline:2px solid #24a58c;outline-offset:2px;border-radius:2px}
 .kvlrv2-name strong{font-size:13px;color:#153b58}
 .kvlrv2-name small{font-size:10px;line-height:1.4;color:#8499a9}
 .kvlrv2-detail{position:sticky;top:16px}
