@@ -53,6 +53,14 @@ async function main(){
    const file=path.join(OUT,'kvl-roster-v2-'+g+'-'+width+'.png');
    await page.screenshot({path:file,fullPage:true});
    reports.push({gender:g,team,viewport:width+'x'+height,rosterCount,ready:metrics.ready,horizontalOverflow:metrics.scrollWidth-metrics.width,errors,screen:file});
+   if(g==='men'&&width===390){
+    const nameLink=row.locator('a.kvlrv2-name-link');
+    assert.equal(await nameLink.count(),1,'verified rookie name must be a direct profile link');
+    await nameLink.click();
+    await page.locator('.pd-title').waitFor({timeout:20000});
+    assert.equal((await page.locator('.pd-title').innerText()).trim(),'윤경');
+   }
+   if(g==='women')assert.equal(await row.locator('a.kvlrv2-name-link').count(),0,'unverified identity must not link');
    await page.close();
   }
   for(const [id,scope,name] of [['KVL-P-000008','','윤경'],['KVL-P-001620','pro','김규민'],['KVL-P-001620','national','임시형']]){
