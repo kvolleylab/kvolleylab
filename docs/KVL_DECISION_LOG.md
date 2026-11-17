@@ -1,5 +1,12 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-18 · V-리그 최신 참가팀 명단 v2 + 안전한 선수 프로필·고교/대학 연결
+
+Status: USER DIRECTED / IMPLEMENTED ON FEATURE BRANCH / MAIN RELEASE NOT YET VERIFIED.
+사용자가 검수한 v2 선수명단 디자인을 2026-27 V-리그 남녀 14개 구단의 실제 `참가팀 → 선수명단`에 적용하도록 요청했다. 검증된 신인 등록 32명과 프로필 연결 28명은 기존 KOVO 등록 공시 원장·현재 구단·등번호·원문 URL이 정확히 일치할 때만 인메모리로 연결한다. 남자149·여자138 선수의 기존 명단을 임의 변경하지 않고, 기존 GitHub KOVO 자동 게시기를 유지한다. 공식 KOVO 신청서에 확인된 선수의 출신 고교·대학을 개별 표시하고 미확인 사항은 감춘다. 과거 학교·대표팀·드래프트 이력 및 회원 개인 메모 원본은 삭제/재발급하지 않는다. 과거 동일 Player_ID가 서로 다른 사람에게 중복된 26건은 프로·국가대표 문맥을 분리하며, 충돌 번호의 메모/비교/즐겨찾기 연결을 보류한다. 장기 ID 이관은 Issue #334 별도 단계.
+
+최신 운영 코드 기준 main `69d4651a7331ac4d5f10e5034b1118e4da05799a`에서 새 브랜치 `feature/vleague-roster-profile-integration-20261118` 생성, 기존 충돌 PR #332를 병합하지 않고 소스 검증 자료만 재사용. [검수 PR #355](https://github.com/kvolleylab/kvolleylab/pull/355), [상세 검증](validation/vleague-roster-profile-v2-20261118.md). 독립 데이터·UI 검사 및 모든 기존 Player·Draft·VLeague 회귀, 실 Chromium PC/모바일 검증과 실제 Pages 배포는 각기 독립 증거로 판정. 이 로그만으로 운영 반영 성공을 선언하지 않는다.
+
 ## 2026-11-15 · 승패 조견표의 상대팀 칸을 승점으로 정정
 
 Status: USER CLARIFIED / IMPLEMENTED / LOCAL QA VERIFIED / RELEASE AUTHORIZED.
