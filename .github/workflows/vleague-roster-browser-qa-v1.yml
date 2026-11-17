@@ -1,0 +1,48 @@
+name: V-League Roster v2 Chromium Screenshots
+on:
+  push:
+    branches: [feature/vleague-roster-profile-integration-20261118]
+    paths:
+      - '.github/workflows/vleague-roster-browser-qa-v1.yml'
+      - 'tests/vleague-roster-browser-qa-v1.cjs'
+  pull_request:
+    paths:
+      - '.github/workflows/vleague-roster-browser-qa-v1.yml'
+      - 'tests/vleague-roster-browser-qa-v1.cjs'
+      - 'assets/js/kvl-vleague-roster-v2.js'
+      - 'assets/css/kvl-vleague-roster-v2.css'
+      - 'assets/js/player-detail-v2.js'
+      - 'assets/js/kvl-competition-loader-v2.js'
+      - 'assets/js/kvl-competition-components-v2.js'
+      - 'competition-engine.html'
+      - 'player.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated browser dependency
+        run: npm install --prefix "$RUNNER_TEMP/kvl-browser" --no-audit --no-fund playwright@1.56.1
+      - name: Install Chromium with required Linux libraries
+        run: node "$RUNNER_TEMP/kvl-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Run real desktop/tablet/mobile and profile screenshot checks
+        env:
+          KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-browser/node_modules/playwright
+        run: node tests/vleague-roster-browser-qa-v1.cjs
+      - name: Preserve screenshot and sanitized browser report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-vleague-roster-v2-chromium-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-roster-v2-browser-report.json
+            ${{ runner.temp }}/kvl-roster-v2-*.png
+          retention-days: 7
+          if-no-files-found: ignore
