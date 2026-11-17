@@ -1,6 +1,6 @@
 # V-리그 선수명단 v2 · 신인 프로필·출신학교 운영 통합 검증 (2026-11-18)
 
-Status: **IMPLEMENTED ON FEATURE BRANCH / SCOPED CI PASS / LIVE DEPLOYMENT NOT YET VERIFIED**.
+Status: **DEPLOYED ON MAIN / GITHUB PAGES LIVE BROWSER QA VERIFIED (2026-11-18 KST)**.
 
 ## 목적과 범위
 - 2026-27 V-리그 남녀 참가팀 14개 구단의 기존 `참가팀 → 선수명단`에 사용자 검수 v2 디자인(명단표 + 선수 상세 패널)을 직접 연결.
@@ -27,7 +27,7 @@ Status: **IMPLEMENTED ON FEATURE BRANCH / SCOPED CI PASS / LIVE DEPLOYMENT NOT Y
 - 불변: KOVO 기존 시간대별 팀 명단 수집 워크플로우, 게시 퍼블리셔/로스터 원본, 경기 DB, 점수/승점, Google Sheets MASTER, 기존 선수 영구 ID, Supabase 저장 메모.
 
 ## 배포와 복구 경계
-본 문서 작성 시점에서 PR #355는 검수용 Draft이며 `main` 배포·공개 Pages 실제 확인은 별도 증거가 필요하다. 변경된 코드가 운영 반영된 이후 공홈 URL의 **남녀 구단 명단 → 신인 선택 → 프로필 → 두 학교** 경로를 PC/모바일에서 실증해야 한다. 운영 자료 또는 새로운 경기 자동화 자체는 건드리지 않는다.
+PR #355는 2026-11-18 KST에 main에 병합했다. 병합 SHA: be7d39dee62abb8b02cb510930757a7e0a0bfb64. GitHub Pages 배포 run #44149858672는 SUCCESS이며, 동일 커밋에서 실행된 실제 공개 웹사이트 Chromium QA run #44149862456도 SUCCESS였다. 기존 KOVO 자동 수집기/로스터 JSON/경기 결과 원본은 수정하지 않았다.
 
 원복: PR #355의 변경 파일만 revert. 생성된 원본 KOVO 최신 선수명단/경기 점수/선수 ID를 이전 시즌 파일로 덮어쓰지 않는다. 추가 확장: Issue #331 비신인 이적·학적 표기, #334 26개 영구 ID 원장 이관.
 
@@ -43,4 +43,14 @@ Status: **IMPLEMENTED ON FEATURE BRANCH / SCOPED CI PASS / LIVE DEPLOYMENT NOT Y
 - data/national/player_id_links_v1.json과 기존 학교 MASTER의 KVL-P-000009 이름 차이는 별도 기존 검증 이름정정 테스트가 있는 사례이며, 본 PR의 **프로/대표팀 서로 다른 사람 26개 ID 충돌** 집합에 합치거나 영구 ID를 교체하지 않는다.
 - Google Drive 공식 원본/MASTER는 이번 세션에서 연결 계정 오류(link_id must identify an eligible linked account)로 **NOT VERIFIED**. GitHub에 기록된 공식출처 메타데이터·검증 테스트는 확인했으나 Drive 원본 확인을 했다고 표시하지 않는다.
 
-**운영 배포 상태는 GitHub PR 병합, Pages 공개 자산 확인, 실제 라이브 브라우저 QA 결과가 확보된 뒤 업데이트한다.**
+**운영 배포 확인 완료**: PR #355 병합, Pages 배포, 실제 공개 도메인에서 직접 이름 링크와 프로필·학교 표시의 PC/모바일 브라우저 QA까지 SUCCESS. 남녀 14팀 전체 명단·신인 안전 링크 점검은 PR 테스트에서, 운영 공개 화면 자동 점검은 대표 남녀 2팀(PC/모바일 4화면)에서 수행했다.
+
+
+## 2026-11-18 · 운영 릴리스와 공개 도메인 실증 기록
+
+- Production merge: https://github.com/kvolleylab/kvolleylab/pull/355 ; release SHA: be7d39dee62abb8b02cb510930757a7e0a0bfb64.
+- GitHub Pages build/deploy: https://github.com/kvolleylab/kvolleylab/actions/runs/44149858672 (SUCCESS, 동일 SHA).
+- Real public site Chromium QA: https://github.com/kvolleylab/kvolleylab/actions/runs/44149862456 (SUCCESS, 동일 SHA), artifact 14359395155 (actual screenshots and JSON report).
+- Live scope: men OKF / women RSP each PC 1440px and mobile 390px, real source roster present; verified 윤경 direct name click → profile with 남성고·인하대 and OK저축은행; 김아중 청수고 only, no invented profile URL; role-scoped KVL-P-001620 pro 김규민 and national 임시형 both correct; 4 viewports horizontal overflow 0px, report warnings empty.
+- PR scoped tests: male 149 + female 138 current roster players, 14 club identity/source/name/number/school checks, verified 32 registered rookies / 28 profile links, keyboard row selection / name click / existing other tournament screens. Separate, pre-existing university Player Master registration and KOVO Cup focused regression workflow failures remain (old expected counts, historical ID conflicts, obsolete script assumptions). Do not claim these unrelated workflows are green.
+- Pending independent issues: #331 non-rookie profile extension and future season migration; #334 permanent 26 colliding pro/national Player_ID migration. The temporary scope display protection is deployed, but no permanent ID reallocation. Google Drive source archive was NOT VERIFIED in this session because connection failed.
