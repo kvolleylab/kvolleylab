@@ -678,3 +678,23 @@ Base `ff587a18f7878ef984d72b71d6bd1700f25426ca`. 원본 `6cedb89b517e977309416fa
 ## 2026-11-17 · 로그인 계정의 선수 페이지 UX 연속성 보완
 
 Status: USER REQUESTED CONTINUATION / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / NOT DEPLOYED. 사용자가 로그인 후 관심선수·메모를 별도 관리자 페이지가 아니라 `players.html` 안에서 이어서 사용하는 구조를 계속 진행하도록 요청했다. PR #344의 통합 구조를 유지하며 전역 로그인 계정 링크는 관리자도 기본적으로 `players.html`로 이동한다. ADMIN 역할 표시는 유지하고, 명시적인 관리자 선수 공간 진입 버튼은 로그인 페이지에 남긴다. 개인 데이터 로딩 실패·세션 만료 시 현재 선수 검색 쿼리를 보존한 재로그인 링크를 제공하고, 숨김 추적 섹션의 누락된 접근성 참조를 정리한다. Supabase 스키마·Edge Function·관심선수/메모 데이터·선수 MASTER는 변경하지 않는다. Base `196d72ea3727c5f0515462f2a0f048b3fba68bd5`; 검증과 복구 기준은 [validation/member-player-ux-continuity-20261117.md](../validation/member-player-ux-continuity-20261117.md)에 기록한다. 운영 병합은 별도 사용자 승인 전까지 금지한다.
+
+
+## 2026-11-17 · 선수 목록형 및 통합 팀→선수 작업공간
+
+Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / BROWSER QA NOT RUN / NOT DEPLOYED. 사용자는 선수 페이지에도 Draft Hub와 같은 목록형이 필요하고, 팀에서 선수에게 접근해 관심선수와 메모를 빠르게 사용하는 흐름이 필요하다고 요청했다. 기존 `players.html`에 목록/카드/간편 보기 3가지를 두고 대규모 선수 DB 탐색 기본값은 목록형으로 한다. 기존 검색·분류·성별·포지션·학교/팀 필터와 ‘내 추적 선수’ 필터는 같은 목록에 그대로 적용한다. 기존 준비 중 `teams.html`과 학교 중심 초기 `team-detail.html`을 새 중복 DB 없이 현재 Player Master 카탈로그를 팀 기준으로 묶는 통합 팀 허브·팀 명단 화면으로 확장한다. 팀 상세 선수 행에서 관심선수 등록/해제, 새 메모 작성, 비교, 프로필 진입을 제공하며 같은 Supabase 개인 데이터에 연결한다. 대학 전용 분석 페이지는 유지한다. Supabase 스키마·Edge Function·Player Master·대회 데이터는 변경하지 않는다. 정적 검수에서 통합 선수 854명·팀 그룹 53개·현재 팀 중복 0건을 확인했고 Supabase 데이터는 관리자1/일반회원0/관심2/메모5를 유지했다. Base는 PR #345 후속 브랜치 `b1564d2`; 검증·복구 기준은 [validation/player-team-workspace-v1-20261117.md](../validation/player-team-workspace-v1-20261117.md)에 기록하며 운영 병합은 별도 승인 전까지 금지한다.
+
+
+## 2026-11-17 · 팀 허브 단순화 및 팀 상세 선수 작업 중심 강화
+
+Status: USER REQUESTED BUILD / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / BROWSER QA NOT RUN / NOT DEPLOYED. 사용자가 제안한 팀 페이지 구성을 실제로 만들도록 요청했다. 팀 허브는 분석 수치를 줄이고 팀을 빠르게 선택하는 역할에 집중한다. 카드에는 팀 식별, 분류·성별, 현재 선수 수, 로그인 계정의 관심선수 수, 시즌, 대표 선수명 일부만 표시한다. 평균신장·포지션 분포는 허브 카드에서 제거한다. 팀 상세에서는 선수명단을 핵심으로 두며 `전체 / 관심 / 메모` 개인 필터, 포지션 필터, 학년 데이터가 있는 팀에만 학년 필터를 제공한다. 상단의 개인 메모 지표는 메모 건수가 아니라 메모가 있는 고유 선수 수로 표시한다. 프로팀은 학년 필터를 숨기고 대학·중고 팀은 실제 Player Master 학년을 사용한다. 개인 관심/메모와 선수 프로필·비교 연결은 기존 동일 데이터/API를 유지하며 운영 병합은 별도 승인 전까지 금지한다.
+
+
+## 2026-11-17 · 팀 페이지 로고·국기 시각 식별 추가
+
+Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / QA PENDING / NOT DEPLOYED. 팀 허브와 팀 상세에서 텍스트만으로 팀을 구분하기 어려워 실제 시각 식별 자산을 연결한다. 프로 V-리그는 저장소에 이미 검증·사용 중인 2026-27 남녀 14개 팀 SVG 로고를 사용한다. 대학·중고는 `school_logo_manifest_2026.json`에서 확인된 학교 로고만 사용하며 미확인 학교에 임의 로고를 만들지 않는다. 국제·대표팀 그룹은 현재 국가명을 ISO2로 매핑해 기존 KVL 국가대표 화면과 동일한 FlagCDN 국기 방식을 사용한다. 팀 허브 카드와 팀 상세 HERO에 동일한 시각 식별 규칙을 적용한다.
+
+
+## 2026-11-17 · 팀 카드 v3 및 GitHub-only 시즌 명단 운영
+
+Status: USER DIRECTED / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA PENDING / NOT DEPLOYED. 팀 허브 기본값은 프로·MEN으로 하고 전체 탭을 제거해 프로→대학→고교→중학→대표팀→국제 순으로 표시한다. 분류 버튼은 홈의 대회 바로가기 필터와 같은 1px 테두리·5px 라운드·남색 활성 스타일을 사용한다. 팀 카드는 왼쪽 약 1/3에 로고, 오른쪽 2/3에 분류·MEN/WOMEN·팀명·선수수·감독을 배치하고 하단 구분선 뒤 선수 명단 보기만 둔다. 2026-27 V-리그 14개 팀 감독은 별도 시즌 스태프 메타데이터로 분리한다. 최신 선수명단은 GPT 비의존 GitHub Actions 파이프라인으로 유지하며 공식 공시 event ledger→projection→검증→시즌 roster snapshot→Player Master current projection→test→commit→Pages 순서로 관리한다. 시즌 종료 명단은 동결하고 새 시즌은 새 디렉터리와 currentSeason 포인터로 전환하는 기준을 `docs/KVL_TEAM_ROSTER_LIFECYCLE_v1.md`에 기록한다.
