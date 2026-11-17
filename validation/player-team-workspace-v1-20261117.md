@@ -69,6 +69,11 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - Korea national-team group uses the Korea flag.
 - School/university logos are display-only and limited to verified entries in `school_logo_manifest_2026`; missing assets keep initials.
 - Visual resolver/module syntax: PASS.
+- Team directory default: `프로 + MEN`; gender is split into MEN/WOMEN.
+- Category tabs intentionally omit `전체` and follow `프로 → 대학 → 고교 → 중학 → 대표팀 → 국제`.
+- Category button geometry copies the home `대회 바로가기` filter: 1px border, 5px radius, navy active state.
+- Team card layout: logo approximately left 1/3; metadata right 2/3; coach and roster count; separate bottom roster CTA.
+- V-League head coach metadata: 14/14 teams stored separately from player roster data.
 
 ## Browser review pages
 - `review-team-directory-v1.html`: branch-only visual review entry, not in member protected-path config.
