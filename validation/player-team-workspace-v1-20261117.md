@@ -47,6 +47,7 @@ team-detail.html retains fallback resolution for legacy name/id query parameters
 - Team hub cards are intentionally simplified: team identity, current roster count, tracked-player count, season and short player preview; average-height/position analytics moved out of the hub.
 - Team detail includes direct `전체 / 관심 / 메모` personal filters, position chips, and grade chips only when grade data exists.
 - Team detail `메모 선수` metric counts unique players with notes rather than total note rows.
+- Visual identity policy: 14 verified V-League SVG logos; verified school logos from `school_logo_manifest_2026`; flags for current international/national team groups; unverified schools keep initials rather than invented logos.
 - Supabase readback after code-only work: auth users 1 / active admins 1 / member accounts 0 / bookmarks 2 / notes 5.
 - Existing university-team.html remains unchanged.
 - Direct member view routes: `players.html?view=tracking` and `players.html?view=notes` are wired; team detail links to both.
