@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "currentSeason": "2026-27",
+  "seasons": [
+    {
+      "season": "2026-27",
+      "status": "active",
+      "startsOn": "2026-10-31",
+      "endsOn": "2027-04-22",
+      "men": "data/competitions/v-league-men-2026-27/rosters.json",
+      "women": "data/competitions/v-league-women-2026-27/rosters.json",
+      "projection": "data/kovo/official-notices/2026-27/roster_projection.json",
+      "reviewQueue": "data/kovo/official-notices/2026-27/roster_review_queue.json",
+      "changeEvents": "data/kovo/official-notices/2026-27/change_events.csv",
+      "frozen": false
+    }
+  ]
+}
