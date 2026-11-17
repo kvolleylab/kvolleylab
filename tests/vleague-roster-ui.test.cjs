@@ -16,18 +16,51 @@ function setup(gender,{mobile=false,team='',view='rosters',transform}={}){
  w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(w.KVL_COMPETITION_V2_DATA);
  return {w,doc:w.document,d:w.KVL_COMPETITION_V2_DATA};
 }
-const expected={men:{KAL:19,HDC:18,WRC:20,KBI:19,KEP:15,OKF:17,SFB:23},women:{GSC:17,KEX:15,HHC:18,HPS:20,IBK:18,RSP:16,SOO:17}};
+// The approved roster module changes after registration notices. Historical
+// participant counts and an old season total are not the current UI contract.
+const sourceRosters=gender=>json(`data/competitions/v-league-${gender}-2026-27/rosters.json`);
+const flagCodes=new Set(['KOR','IRI','USA','BRA','CHN','PAK','JPN','CAN','CUB','GER','SRI','THA','CMR','IDN','UKR','SRB']);
+const hasFlag=p=>Boolean(p.nationality&&flagCodes.has(p.nationalityCode));
+const sortedKeys=rows=>rows.map(row=>JSON.stringify(row)).sort();
+function assertRoster(root,players){
+ const rows=[...root.querySelectorAll('[data-roster-player]')];
+ assert.equal(rows.length,players.length,'render every current registration exactly once');
+ const key=p=>[String(p.number??'—'),p.name||'미확인',p.playerId||''];
+ assert.deepEqual(sortedKeys(rows.map(row=>[row.querySelector('.kvl-club-number').textContent,row.querySelector('.kvl-club-name strong').textContent.replace(/\s*↗$/,'').trim(),row.dataset.playerId])),sortedKeys(players.map(key)));
+ for(const row of rows){
+  const player=players.find(p=>JSON.stringify(key(p))===JSON.stringify([row.querySelector('.kvl-club-number').textContent,row.querySelector('.kvl-club-name strong').textContent.replace(/\s*↗$/,'').trim(),row.dataset.playerId]));
+  const nationality=row.querySelector('.kvl-club-nationality');
+  assert.equal(nationality.textContent,player.nationality||'미확인');
+  assert.equal(nationality.querySelectorAll('img').length,hasFlag(player)?1:0,'unknown nationality must not get an invented flag');
+  const link=row.querySelector('.kvl-club-name a');
+  if(/^KVL-P-\d+$/.test(player.playerId||''))assert.equal(new URL(link.href).searchParams.get('id'),player.playerId);
+  else assert.equal(link,null,'unlinked registration must not invent a player profile');
+ }
+ assert([...root.querySelectorAll('.kvl-club-nationality img')].every(img=>/^https:\/\/flagcdn.com\/w40\/[a-z]{2}.png$/.test(img.src)));
+}
+function assertPrint(doc,rosters){
+ const players=Object.values(rosters).flatMap(r=>r.players),rows=[...doc.querySelectorAll('.kvl-print-row')];
+ assert.equal(rows.length,players.length,'print every current registration exactly once');
+ assert.deepEqual(sortedKeys(rows.map(row=>[row.children[0].textContent,row.children[1].textContent,row.children[3].textContent,row.children[6].textContent])),sortedKeys(players.map(p=>[String(p.number??'미확인'),p.name||'미확인',p.position||'미확인',p.nationality||'미확인'])));
+ assert.equal(doc.querySelectorAll('.kvl-print-row img').length,players.filter(hasFlag).length);
+}
+function assertCurrentCount(doc,code,roster){
+ const count=roster.players.length;
+ assert.equal([...doc.querySelectorAll(`[data-team-code="${code}"] .kvl1180-participant-button-copy small`)].at(-1).textContent,`${count}명`);
+ if(roster.rosterKind==='season-notice-snapshot'&&/^등록 공시 기준 \d+명$/.test(roster.statusLabel||''))assert.equal([...doc.querySelectorAll('.kvl1180-team-profile-meta > span')].at(-1).textContent,`등록 공시 기준 ${count}명`);
+}
 for(const gender of ['men','women']){
  for(const mobile of [false,true])test(gender+': '+(mobile?'mobile':'desktop')+' team selection, search, deselection and history',()=>{
   const {w,doc,d}=setup(gender,{mobile});try{
    assert(doc.body.classList.contains('kvl-pro-league-domestic-v2'));assert(!doc.body.classList.contains('kvl-pro-cup-domestic-v2'));
    const participants=doc.querySelector('[data-kvl-component=participants]'),roster=doc.querySelector('#team-roster');
-   for(const t of d.participants){const a=doc.querySelector(`[data-team-code="${t.code}"]`);a.click();assert.equal(doc.querySelector('#kvl-roster-team').textContent,t.name);assert.equal(roster.querySelectorAll('[data-roster-player]').length,t.rosterCount);assert.equal(roster.parentElement,participants.parentElement);assert(participants.compareDocumentPosition(roster)&w.Node.DOCUMENT_POSITION_FOLLOWING);assert.equal(a.getAttribute('aria-expanded'),'true');}
+   const source=sourceRosters(gender);
+   for(const t of d.participants){const a=doc.querySelector(`[data-team-code="${t.code}"]`);a.click();assert.equal(doc.querySelector('#kvl-roster-team').textContent,t.name);assertRoster(roster,source[t.code].players);assertCurrentCount(doc,t.code,source[t.code]);assert.equal(roster.parentElement,participants.parentElement);assert(participants.compareDocumentPosition(roster)&w.Node.DOCUMENT_POSITION_FOLLOWING);assert.equal(a.getAttribute('aria-expanded'),'true');}
    const a=doc.querySelector('[data-team-code].is-active'),search=doc.querySelector('.dv2-participant-search input');assert.equal(search.placeholder,'팀명 검색');
    search.value='찾을 수 없는 팀';search.dispatchEvent(new w.Event('input'));assert(roster.hidden);
    search.value='';search.dispatchEvent(new w.Event('input'));assert(!roster.hidden);a.click();assert.equal(roster.querySelectorAll('[data-roster-player]').length,0);
    w.history.replaceState(null,'',`?competition=v-league-${gender}-2026-27&view=rosters&team=${d.participants[0].code}`);w.dispatchEvent(new w.PopStateEvent('popstate'));assert.equal(doc.querySelector('#kvl-roster-team').textContent,d.participants[0].name);
-   const flags=roster.querySelectorAll('.kvl-club-nationality img');assert.equal(flags.length,d.participants[0].rosterCount);assert([...flags].every(img=>/^https:\/\/flagcdn.com\/w40\/[a-z]{2}.png$/.test(img.src)));
+   assertRoster(roster,source[d.participants[0].code].players);
   }finally{w.close();}
  });
  test(gender+': season UI, all rounds, standings and postseason remain available',()=>{
@@ -65,13 +98,29 @@ for(const gender of ['men','women']){
    assert.deepEqual([...doc.querySelector('.is-domestic-single-league .kvl-shared-combined-line.is-head').children].map(c=>c.textContent),['순위팀','결과','승','승점','세트 득실비','점수 득실비']);
   }finally{w.close();}
  });
- test(gender+': deep links and print use season labels and complete nationality flags',async()=>{
-  const first=Object.keys(expected[gender])[0],{w,doc,d}=setup(gender,{team:first});try{
+ test(gender+': deep links and print preserve current registrations and known nationality flags',async()=>{
+  const source=sourceRosters(gender),first=Object.keys(source)[0],{w,doc,d}=setup(gender,{team:first});try{
    Object.defineProperty(w.HTMLImageElement.prototype,'complete',{get:()=>true});let printed=0;w.print=()=>printed++;
-   assert.equal(doc.querySelectorAll('[data-roster-player]').length,expected[gender][first]);assert(!doc.querySelector('.kvl1180-team-profile-meta').textContent.includes('정규리그조'));await w.KVLCompetitionComponentsV2.printRoster(d,first,'all');assert.equal(printed,1);
-   const total=gender==='men'?131:121;assert.equal(doc.querySelectorAll('.kvl-print-row').length,total);assert.equal(doc.querySelectorAll('.kvl-print-row img').length,total);
+   assertRoster(doc.querySelector('#team-roster'),source[first].players);assert(!doc.querySelector('.kvl1180-team-profile-meta').textContent.includes('정규리그조'));await w.KVLCompetitionComponentsV2.printRoster(d,first,'all');assert.equal(printed,1);
+   assertPrint(doc,source);
    assert([...doc.querySelectorAll('.kvl-print-meta')].every(e=>e.textContent.includes('시즌 등록 공시 기준')));assert(!doc.querySelector('[data-kvl-component=print]')?.textContent.includes('공식 팸플릿 수록 명단'));
   }finally{w.close();}
+ });
+ test(gender+': registration additions and removals preserve roster selection and full print output',async()=>{
+  // In-memory UI regression only: no source roster, player ID or score is written.
+  const source=sourceRosters(gender),first=Object.keys(source)[0];
+  for(const addition of [true,false]){
+   const changed=structuredClone(source);
+   if(addition)changed[first].players.push({number:99,name:'신규 등록 검증용',position:'OH',nationality:null,nationalityCode:null,playerId:null});
+   else changed[first].players.pop();
+   const {w,doc,d}=setup(gender,{team:first,transform:d=>{d.rosters=structuredClone(changed);}});
+   try{
+    const before=JSON.stringify(d);assertRoster(doc.querySelector('#team-roster'),changed[first].players);assertCurrentCount(doc,first,changed[first]);
+    Object.defineProperty(w.HTMLImageElement.prototype,'complete',{get:()=>true});let printed=0;w.print=()=>printed++;
+    await w.KVLCompetitionComponentsV2.printRoster(d,first,'all');assert.equal(printed,1);assertPrint(doc,changed);
+    assert.equal(JSON.stringify(d),before,'UI and print must not mutate roster inputs');
+   }finally{w.close();}
+  }
  });
 }
 for(const gender of ['men','women']){
