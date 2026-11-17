@@ -607,6 +607,7 @@ function renderRoster(d,teamCode){
  if(c.mode==='link-only'){root.innerHTML=`<div class="kvl1180-roster-pending">${esc(t?.name||teamCode)} · ${rosterButton(d,t)}</div>`;return;}
  if(!r?.players?.length){root.innerHTML=`<p class="kvl1180-roster-pending">${esc(d.rosterPendingLabel||'등록 선수명단은 공식 자료 확인 후 연결합니다.')}</p>`;return;}
  const domestic=hasDomesticRoster(d),clubProfile=hasClubRoster(d),players=sortedRosterPlayers(r),missing=domestic?'미확인':'-',clubLabel=clubProfile?'국적':domestic?'소속 · 학년':(d.clubSeasonLabel||'소속팀')+' · 리그';
+ if(clubProfile&&window.KVLVLeagueRosterV2?.render(root,d,t,players))return;
  const rows=clubProfile?players.map(clubRosterRow).join(''):players.map(p=>{
   const korean=`<span class="kvl1180-roster-korean" role="cell">${domestic||d.structure?.presentation==='international-home-v2'?rosterProfileName(p):esc(p.name||missing)}</span>`;
   const official=d.structure?.presentation==='international-home-v2'&&/^https:\/\/en\.volleyballworld\.com\/volleyball\/competitions\/volleyball-nations-league\/players\/\d+$/.test(p.officialProfileUrl||'')?p.officialProfileUrl:'';
