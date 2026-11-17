@@ -26,6 +26,8 @@ function renderNotes(notes){
 }
 (async()=>{
   const hero=await waitForHero().catch(()=>null);if(!hero||!playerId)return;
+  // Reused historical Player IDs must not open private notes for an unrelated athlete.
+  if(window.KVLPlayerIdCollisionV1?.isConflict(playerId))return;
   try{
     const {data,error}=await supabase.auth.getUser();if(error||!data.user)return;
     await api('status');
