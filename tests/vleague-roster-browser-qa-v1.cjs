@@ -11,8 +11,16 @@ const server=http.createServer((req,res)=>{
 });
 const start=()=>new Promise(r=>server.listen(0,'127.0.0.1',r));
 async function main(){
- await start();const port=server.address().port,base='http://127.0.0.1:'+port;
+ await start();const base='https://kvolleylab.com';
  const browser=await chromium.launch({headless:true});
+ const serve=page=>page.route('https://kvolleylab.com/**',async route=>{
+  const url=new URL(route.request().url()),pathname=decodeURIComponent(url.pathname);
+  const target=path.resolve(ROOT,'.'+pathname);
+  if(!target.startsWith(ROOT+path.sep))return route.fulfill({status:403,body:''});
+  try{const body=fs.readFileSync(target);return route.fulfill({status:200,body,contentType:mime[path.extname(target)]||'application/octet-stream'})}
+  catch{return route.fulfill({status:404,body:''})}
+ });
+
  const reports=[];
  try{
   for(const [g,team,width,height] of [
@@ -20,6 +28,7 @@ async function main(){
    ['women','RSP',390,844]
   ]){
    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+   await serve(page);
    const errors=[],requests=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(['error','warning'].includes(m.type()))errors.push(m.type()+': '+m.text())});page.on('response',res=>{if(res.status()>=400)requests.push(res.status()+' '+new URL(res.url()).pathname)});page.on('requestfailed',req=>requests.push(req.url()+' '+req.failure()?.errorText));
    const q='/competition-engine.html?competition=v-league-'+g+'-2026-27&view=rosters&team='+team;
    await page.goto(base+q,{waitUntil:'domcontentloaded',timeout:30000});
@@ -48,6 +57,7 @@ async function main(){
   }
   for(const [id,scope,name] of [['KVL-P-000008','','윤경'],['KVL-P-001620','pro','김규민'],['KVL-P-001620','national','임시형']]){
    const page=await browser.newPage();
+   await serve(page);
    const errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'/player.html?id='+id+(scope?'&scope='+scope:''),{waitUntil:'domcontentloaded'});
    await page.locator('.pd-title').waitFor({timeout:20000});
