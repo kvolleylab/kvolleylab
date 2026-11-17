@@ -688,3 +688,8 @@ Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / B
 ## 2026-11-17 · 팀 허브 단순화 및 팀 상세 선수 작업 중심 강화
 
 Status: USER REQUESTED BUILD / IMPLEMENTED IN ISOLATED BRANCH / STATIC QA VERIFIED / BROWSER QA NOT RUN / NOT DEPLOYED. 사용자가 제안한 팀 페이지 구성을 실제로 만들도록 요청했다. 팀 허브는 분석 수치를 줄이고 팀을 빠르게 선택하는 역할에 집중한다. 카드에는 팀 식별, 분류·성별, 현재 선수 수, 로그인 계정의 관심선수 수, 시즌, 대표 선수명 일부만 표시한다. 평균신장·포지션 분포는 허브 카드에서 제거한다. 팀 상세에서는 선수명단을 핵심으로 두며 `전체 / 관심 / 메모` 개인 필터, 포지션 필터, 학년 데이터가 있는 팀에만 학년 필터를 제공한다. 상단의 개인 메모 지표는 메모 건수가 아니라 메모가 있는 고유 선수 수로 표시한다. 프로팀은 학년 필터를 숨기고 대학·중고 팀은 실제 Player Master 학년을 사용한다. 개인 관심/메모와 선수 프로필·비교 연결은 기존 동일 데이터/API를 유지하며 운영 병합은 별도 승인 전까지 금지한다.
+
+
+## 2026-11-17 · 팀 페이지 로고·국기 시각 식별 추가
+
+Status: USER REQUESTED / IMPLEMENTED IN ISOLATED BRANCH / QA PENDING / NOT DEPLOYED. 팀 허브와 팀 상세에서 텍스트만으로 팀을 구분하기 어려워 실제 시각 식별 자산을 연결한다. 프로 V-리그는 저장소에 이미 검증·사용 중인 2026-27 남녀 14개 팀 SVG 로고를 사용한다. 대학·중고는 `school_logo_manifest_2026.json`에서 확인된 학교 로고만 사용하며 미확인 학교에 임의 로고를 만들지 않는다. 국제·대표팀 그룹은 현재 국가명을 ISO2로 매핑해 기존 KVL 국가대표 화면과 동일한 FlagCDN 국기 방식을 사용한다. 팀 허브 카드와 팀 상세 HERO에 동일한 시각 식별 규칙을 적용한다.
