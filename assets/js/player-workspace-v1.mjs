@@ -13,7 +13,7 @@ let players=[],byId=new Map(),draftRows=[],draftIndex=null,draftLoadFailed=false
 let bookmarks=new Set(),notes=[],memberReady=false,noteQuery='',noteSeason='';
 const UI_KEY='kvl-player-workspace-public-ui-v1';
 function persist(){setQueryURL()}
-function profileHref(id){const query=new URLSearchParams({id,return:location.pathname+location.search});return 'player.html?'+query}
+function profileHref(id){const query=new URLSearchParams({id,return:location.pathname+location.search});if(window.KVLPlayerIdCollisionV1?.isConflict(id)&&byId.get(id)?.level==='professional')query.set('scope','pro');return 'player.html?'+query}
 function formatDate(value){const d=new Date(value);return Number.isNaN(d.getTime())?String(value||''):d.toLocaleString('ko-KR',{year:'numeric',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}
 async function privateApi(action,payload={}){const {data,error}=await supabase.functions.invoke(PRIVATE_FUNCTION,{body:{action,...payload}});if(error||!data?.ok)throw new Error(data?.error||error?.message||'개인 기능을 불러올 수 없습니다.');return data}
 function updateMemberBadges(){$('savedBadge').textContent=bookmarks.size?String(bookmarks.size):'';$('notesBadge').textContent=notes.length?String(notes.length):'';if(memberReady){$('memberSummary').hidden=false;$('memberSummary').innerHTML=`<div><h2>내 선수 기록</h2><p>관심선수와 개인 메모가 이 페이지에 바로 연결됩니다.</p></div><div class="member-metrics"><button type="button" data-view="tracking"><strong>${bookmarks.size}</strong>관심선수</button><button type="button" data-view="notes"><strong>${notes.length}</strong>메모</button></div>`;}}
