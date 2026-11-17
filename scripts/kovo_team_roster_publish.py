@@ -295,10 +295,19 @@ def validate_output(rosters):
                 seen_ids[player_id] = code
 
 
-def publish(root: Path, write: bool):
+def publish(root: Path, write: bool, today: date | None = None):
     index, season = active_season(root)
     if season.get("frozen"):
-        raise PublishError("CURRENT_SEASON_FROZEN")
+        return {
+            "schema_version": 1, "season": season["season"], "skipped": True,
+            "skip_reason": "current_season_frozen", "changed_files": [],
+        }
+    today = today or datetime.now(ZoneInfo("Asia/Seoul")).date()
+    if today > date.fromisoformat(season["endsOn"]):
+        return {
+            "schema_version": 1, "season": season["season"], "skipped": True,
+            "skip_reason": "season_ended_waiting_for_rollover", "changed_files": [],
+        }
 
     projection = load_json(root, season["projection"])
     review = load_json(root, season["reviewQueue"])
