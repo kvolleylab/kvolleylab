@@ -685,3 +685,8 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 운
 Status: USER CORRECTION / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 사용자가 기존 출전권 한눈에 보기에서 대륙선수권·올림픽 등 대회로 연결되던 기능 누락을 지적했다. 통합 시 단순 정보 카드로 바뀌고 상세 영역에만 남았던 대륙선수권·월드컵·랭킹 링크를 카드 전체에 복원한다. 개최국 카드는 확인된 LA28 공식 실내배구 대회 안내로 연결한다. 내부 대회는 같은 탭에서 이동하고 대회 페이지 상단에서 해당 LA28 통합 로드맵으로 돌아온다. 원래 상세 규정·출처·관련 대회 링크는 모두 유지한다.
 
 Base `816f963e4856e5f96f4bf76bd66ccfb9f07f81c9`; branch `fix/olympic-summary-competition-links-v1`. 주기별 JSON에 선택적 링크를 저장하며 2032에 LA28 링크·숫자를 재사용하지 않는다. 역사 62개와 로드맵 디자인·필터·데이터, 기존 LA28 URL 및 규정 원문은 변경하지 않는다. 기존 18개 검증 및 PC/390/360px 브라우저 이동 확인 통과. 운영 연결 승인에 따른 보정이며 병합·Pages·운영 확인 결과는 PR에 남긴다. [검증·변경 범위·복구](validation/olympic-summary-competition-links-v1.md).
+
+
+## 2026-11-17 · KOVO 공시 → 팀 최신 명단 GitHub 자동 게시
+
+Status: USER AUTHORIZED IMPLEMENTATION / ISOLATED BRANCH / CI PENDING / NOT DEPLOYED. 사용자가 최신 팀 명단 자동화는 GPT가 아닌 GitHub에서 수행하고, 집중기간 1시간·시즌 중 3시간·비시즌 하루 1회 주기로 운영하도록 요청했다. 기존 KOVO 공식 공시 수집기의 `registration_rows/change_events → roster_projection/review_queue` 경로 뒤에 안전한 시즌 roster publisher를 연결한다. cron은 매시간 13분에 실행하되 최근 14일 변동 유무와 시즌 상태에 따라 실제 수집 주기를 자동 선택한다. 신규 공식 등록은 Player_ID가 없어도 현재 명단에 제한적으로 표시할 수 있으나 ID를 생성하지 않는다. 삭제는 applied high-confidence 비활성 이벤트가 있을 때만 허용하며 blocked 공시와 연결된 기존 선수는 마지막 검증 상태로 보존한다. 시즌 종료 후에는 공시는 하루 1회 모니터링하지만 종료 시즌 roster는 수정하지 않고 다음 시즌 baseline/currentSeason 전환을 요구한다. roster 변경 commit은 Pages build와 공개 JSON readback까지 검증한다. 세부 기준은 `docs/KVL_TEAM_ROSTER_AUTOMATION_v1.md`.

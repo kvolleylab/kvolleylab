@@ -2,6 +2,24 @@
   "schema_version": 1,
   "purpose": "Changed public JSON requires reviewed source IDs, PUBLIC + VERIFIED, verified_at and exact SHA-256. Empty does not approve legacy records.",
   "files": {
+    "data/team-rosters/v-league/index.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": ["KVL-TEAM-ROSTER-AUTOMATION-V1", "KVL-USER-DECISION-20261117"],
+      "verified_at": "2026-11-17",
+      "sha256": "5524203547696829448bb3fdae8ccaa47b3c9796c0be23ae747ec9ebcfcd6bd3",
+      "evidence": "docs/KVL_TEAM_ROSTER_AUTOMATION_v1.md",
+      "review_note": "현재 시즌 roster 경로와 동결 여부를 가리키는 공개 운영 인덱스. 선수 개인정보나 비공개 메모를 포함하지 않는다."
+    },
+    "data/team-rosters/v-league/automation.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": ["KVL-TEAM-ROSTER-AUTOMATION-V1", "KVL-USER-DECISION-20261117"],
+      "verified_at": "2026-11-17",
+      "sha256": "5e036ce9ffe22402465ec34644e1d0c3f17deb680791f81ead3349b6878f39b2",
+      "evidence": "docs/KVL_TEAM_ROSTER_AUTOMATION_v1.md",
+      "review_note": "GitHub Actions 실행주기와 fail-closed 안전규칙만 담은 공개 운영 설정. 비밀정보와 인증값을 포함하지 않는다."
+    },
     "data/draft-applicants/2026-27/list-details.json": {
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
