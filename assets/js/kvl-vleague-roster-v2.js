@@ -38,9 +38,9 @@ function render(host,d,team,players){
   const data=roster.filter(p=>filter==='all'||p.kvlDraft)
    .filter(p=>!search||norm(p.name).includes(norm(search))||norm(p.en).includes(norm(search))||String(p.number)===search);
   if(!data.some(p=>key(p)===selected))selected=data.length?key(data[0]):'';
-  list.innerHTML=data.length?data.map(p=>`<button type="button" role="option" class="kvlrv2-row${key(p)===selected?' is-selected':''}" data-choice="${esc(key(p))}" aria-selected="${key(p)===selected}">
-  <span class="kvlrv2-number">${esc(p.number??'—')}</span><span class="kvlrv2-name"><strong>${esc(p.name)}</strong>${p.en?`<small>${esc(p.en)}</small>`:''}</span>
-  <span>${esc(p.position||'—')}</span><span>${p.heightCm>0?esc(p.heightCm)+'cm':'—'}</span></button>`).join(''):'<p class="kvlrv2-empty">검색 결과가 없습니다.</p>';
+  list.innerHTML=data.length?data.map(p=>`<div role="option" tabindex="0" class="kvlrv2-row${key(p)===selected?' is-selected':''}" data-choice="${esc(key(p))}" aria-selected="${key(p)===selected}">
+  <span class="kvlrv2-number">${esc(p.number??'—')}</span><span class="kvlrv2-name">${url(p,d,team)?`<a class="kvlrv2-name-link" href="${esc(url(p,d,team))}" aria-label="${esc(p.name)} 선수 프로필 보기"><strong>${esc(p.name)}</strong></a>`:`<strong>${esc(p.name)}</strong>`}${p.en?`<small>${esc(p.en)}</small>`:''}</span>
+  <span>${esc(p.position||'—')}</span><span>${p.heightCm>0?esc(p.heightCm)+'cm':'—'}</span></div>`).join(''):'<p class="kvlrv2-empty">검색 결과가 없습니다.</p>';
   const p=roster.find(x=>key(x)===selected);
   if(!p){detail.innerHTML='<p class="kvlrv2-empty">선수를 선택해 주세요.</p>';return}
   const academic=schools(p),href=url(p,d,team),draft=p.kvlDraft||null;
@@ -59,10 +59,18 @@ function render(host,d,team,players){
    </details>`:''}</div>`;
  }
  host.onclick=ev=>{
+  // The name link navigates; the surrounding row only selects this athlete.
+  if(ev.target.closest('.kvlrv2-name-link'))return;
   const row=ev.target.closest('[data-choice]');
   if(row&&host.contains(row)){selected=row.dataset.choice;show();if(typeof matchMedia==='function'&&matchMedia('(max-width:680px)').matches)detail.scrollIntoView({block:'start',behavior:'smooth'});return}
   const btn=ev.target.closest('[data-filter]');
   if(btn&&host.contains(btn)){filter=btn.dataset.filter;host.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===btn)));show()}
+ };
+ host.onkeydown=ev=>{
+  const row=ev.target.closest('[data-choice]');
+  if(row&&ev.target===row&&host.contains(row)&&(ev.key==='Enter'||ev.key===' ')){
+   ev.preventDefault();selected=row.dataset.choice;show();
+  }
  };
  host.oninput=ev=>{if(ev.target.matches('[data-roster-search]')){search=ev.target.value.trim();show()}};
  show();return true;
