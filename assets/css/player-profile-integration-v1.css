@@ -29,3 +29,12 @@ html.kvl-profile-embedded .kvl-global-toggle,html.kvl-profile-embedded .kvl-glob
 .kvl-integrated-profile .pd-info-item{padding:14px}
 .kvl-integrated-profile .pd-info-item span{font-size:11px}.kvl-integrated-profile .pd-info-item strong{font-size:16px}
 @media(max-width:800px){.kvl-integrated-profile .pd-card{padding:18px}.kvl-integrated-profile .pd-title{font-size:34px}.kvl-integrated-profile .pd-sub{font-size:15px}}
+
+/* Existing permanent Player_ID collision: choose the correct source first. */
+.pd-identity-choice{max-width:820px;margin:14px auto 36px;padding:30px}
+.pd-identity-choice h1{font-size:25px;line-height:1.35;color:#183d5b;word-break:keep-all}
+.pd-identity-choice p{font-size:14px;line-height:1.7;color:#5c7083}
+.pd-identity-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.pd-identity-options a{padding:19px 16px;border:1px solid #d9e4ed;border-radius:12px;color:#1b4667;background:#f2f7fa;font-weight:800;text-decoration:none;line-height:1.5}
+.pd-identity-options a:hover,.pd-identity-options a:focus-visible{border-color:#d6ae5d;background:#fffaf1}
+@media(max-width:560px){.pd-identity-choice{padding:20px 14px}.pd-identity-choice h1{font-size:22px}.pd-identity-options{grid-template-columns:1fr}}
