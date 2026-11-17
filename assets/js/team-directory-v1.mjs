@@ -1,6 +1,6 @@
 import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
 import {TEAM_LEVELS,TEAM_LEVEL_ORDER,escapeHTML as e,groupPlayerTeams,teamHref,teamLabel} from './player-team-core-v1.mjs';
-import {attachTeamVisuals,renderTeamVisual} from './team-visuals-v1.mjs';
+import {attachTeamVisuals,renderTeamVisual} from './team-visuals-v1.mjs?v=20261117-1';
 const $=id=>document.getElementById(id);let teams=[],activeLevel='',activeGender='',bookmarks=new Set(),memberReady=false;
 const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co',SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM',PRIVATE_FUNCTION='admin-player-workspace';
 const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
