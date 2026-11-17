@@ -1,0 +1,41 @@
+name: KOVO Team Roster CI
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/kovo_team_roster_publish.py'
+      - 'scripts/kovo_team_roster_public_verify.py'
+      - 'tests/test_kovo_team_roster_publish.py'
+      - 'data/team-rosters/v-league/**'
+      - '.github/workflows/kovo-official-notices-collector.yml'
+      - '.github/workflows/kovo-team-roster-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  roster-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile publisher and verifier
+        run: |
+          python -m py_compile scripts/kovo_team_roster_publish.py
+          python -m py_compile scripts/kovo_team_roster_public_verify.py
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p test_kovo_team_roster_publish.py -v
+      - name: Dry-run current official projection against current rosters
+        run: |
+          python scripts/kovo_team_roster_publish.py --dry-run --report "$RUNNER_TEMP/kovo-team-roster-dry-run.json"
+          cat "$RUNNER_TEMP/kovo-team-roster-dry-run.json"
+      - name: Upload dry-run report
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-team-roster-dry-run-${{ github.run_id }}
+          path: ${{ runner.temp }}/kovo-team-roster-dry-run.json
+          retention-days: 7
