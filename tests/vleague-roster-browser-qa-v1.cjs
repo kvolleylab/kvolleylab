@@ -20,10 +20,16 @@ async function main(){
    ['women','RSP',390,844]
   ]){
    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
-   const errors=[];page.on('pageerror',e=>errors.push(e.message));
+   const errors=[],requests=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(['error','warning'].includes(m.type()))errors.push(m.type()+': '+m.text())});page.on('response',res=>{if(res.status()>=400)requests.push(res.status()+' '+new URL(res.url()).pathname)});page.on('requestfailed',req=>requests.push(req.url()+' '+req.failure()?.errorText));
    const q='/competition-engine.html?competition=v-league-'+g+'-2026-27&view=rosters&team='+team;
    await page.goto(base+q,{waitUntil:'domcontentloaded',timeout:30000});
-   await page.locator('.kvlrv2').waitFor({timeout:20000});
+   try{await page.locator('.kvlrv2').waitFor({timeout:20000})}catch(error){
+    const state=await page.evaluate(()=>({ready:document.body.dataset.kvlRenderState,body:document.body.innerText.slice(0,1800),url:location.href,views:[...document.querySelectorAll('[data-kvl-component]')].map(x=>x.dataset.kvlComponent).slice(0,20),scripts:[...document.scripts].map(s=>s.src).filter(Boolean).slice(-12)}));
+    const diagnostic={error:String(error),state,errors,requests};
+    fs.writeFileSync(path.join(OUT,'kvl-roster-v2-browser-report.json'),JSON.stringify({status:'FAILED',diagnostic},null,2));
+    await page.screenshot({path:path.join(OUT,'kvl-roster-v2-debug-'+g+'-'+width+'.png'),fullPage:true});
+    throw Error('Browser roster not visible: '+JSON.stringify(diagnostic).slice(0,3600));
+   }
    const rosterCount=await page.locator('.kvlrv2-row').count();
    assert.ok(rosterCount>12,'actual KOVO roster must load');
    const player=g==='men'?'윤경':'김아중';
