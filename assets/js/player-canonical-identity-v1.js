@@ -9,6 +9,7 @@
     const area=document.getElementById('playerArea');
     const title=area?.querySelector('.pd-title');
     if(!title)return false;
+    if(window.KVL_PROFILE_CONTEXT?.id===id&&window.KVL_PROFILE_CONTEXT?.level==='professional'){done=true;return true;}
     const name=String(canonical.name_ko||'').trim();
     const birth=String(canonical.birth_date||'').trim();
     if(name){
