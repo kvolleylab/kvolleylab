@@ -3,6 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const root=path.resolve(__dirname,'..'),json=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
 const bridgeApi=require('../assets/js/kvl-vleague-draft-bridge-v1.js'),view=require('../assets/js/kvl-vleague-roster-v2.js');
 const config=require('../assets/js/kvl-competition-config-v2.js'),mods=require('../assets/js/kvl-competition-modules-v2.js');
+const apiData=require('../assets/js/kvl-competition-data-v2.js');
 const source=json('data/kovo/official-notices/2026-27/draft_registration_bridge.json');
 const schools=json('data/draft-applicants/2026-27/education-v1.json');
 const bridge=bridgeApi.withEducation(source,schools);
@@ -81,4 +82,10 @@ test('a reused national ID cannot be assigned as a rookie by name only',()=>{
  const conflicts=new Set(national.filter(p=>/^KVL-P-0016(2[0-9]|3[0-9]|4[0-5])$/.test(p.player_id)).map(p=>p.player_id));
  assert.equal(conflicts.size,26);
  for(const r of joined)assert.equal(conflicts.has(r.player_id),false);
+});
+
+
+test('the published Competition V2 production validator accepts enriched current rosters',()=>{
+ assert.deepEqual(apiData.validate(reconciled.M,{production:true}),[]);
+ assert.deepEqual(apiData.validate(reconciled.W,{production:true}),[]);
 });
