@@ -4,6 +4,8 @@ const FALLBACK={
  women:'data/competitions/v-league-women-2026-27/rosters.json'
 };
 const INDEX='data/team-rosters/v-league/index.json';
+const PREVIEW_DATA_BASE=/githack\.com$/.test(location.hostname)?'https://raw.githubusercontent.com/kvolleylab/kvolleylab/main/':'';
+const dataUrl=path=>PREVIEW_DATA_BASE+String(path||'').replace(/^\//,'');
 const TEAM_NAMES={
  KAL:'대한항공',HDC:'현대캐피탈',WRC:'우리카드',KBI:'KB손해보험',KEP:'한국전력',OKF:'OK저축은행',SFB:'삼성화재',
  GSC:'GS칼텍스',KEX:'한국도로공사',HHC:'현대건설',HPS:'흥국생명',IBK:'IBK기업은행',RSP:'정관장',SOO:'SOOP'
@@ -11,7 +13,7 @@ const TEAM_NAMES={
 const primary=v=>String(v||'').split(/[\/,+]/).map(x=>x.trim()).filter(Boolean)[0]||'';
 async function sourceConfig(){
  try{
-  const r=await fetch(INDEX,{cache:'no-store'});if(!r.ok)throw new Error('index');
+  const r=await fetch(dataUrl(INDEX),{cache:'no-store'});if(!r.ok)throw new Error('index');
   const index=await r.json(),season=(index.seasons||[]).find(x=>x.season===index.currentSeason);
   if(!season?.men||!season?.women)throw new Error('season');
   return{season:season.season,men:season.men,women:season.women};
@@ -45,7 +47,7 @@ function normalizeRow(row,code,gender,season,base){
 }
 export async function loadCurrentProPlayers(catalog=[]){
  const cfg=await sourceConfig(),byId=new Map(catalog.filter(p=>p.playerId).map(p=>[p.playerId,p]));
- const [mr,wr]=await Promise.all([fetch(cfg.men,{cache:'no-store'}),fetch(cfg.women,{cache:'no-store'})]);
+ const [mr,wr]=await Promise.all([fetch(dataUrl(cfg.men),{cache:'no-store'}),fetch(dataUrl(cfg.women),{cache:'no-store'})]);
  if(!mr.ok||!wr.ok)throw new Error('current_pro_roster_unavailable');
  const [men,women]=await Promise.all([mr.json(),wr.json()]);
  const players=[];
