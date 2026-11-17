@@ -2,10 +2,10 @@
 
 ## 2026-11-18 · V-리그 최신 참가팀 명단 v2 + 안전한 선수 프로필·고교/대학 연결
 
-Status: USER DIRECTED / IMPLEMENTED ON FEATURE BRANCH / MAIN RELEASE NOT YET VERIFIED.
+Status: USER APPROVED / VERIFIED / DEPLOYED ON MAIN AND LIVE QA PASS (2026-11-18 KST).
 사용자가 검수한 v2 선수명단 디자인을 2026-27 V-리그 남녀 14개 구단의 실제 `참가팀 → 선수명단`에 적용하도록 요청했다. 검증된 신인 등록 32명과 프로필 연결 28명은 기존 KOVO 등록 공시 원장·현재 구단·등번호·원문 URL이 정확히 일치할 때만 인메모리로 연결한다. 남자149·여자138 선수의 기존 명단을 임의 변경하지 않고, 기존 GitHub KOVO 자동 게시기를 유지한다. 공식 KOVO 신청서에 확인된 선수의 출신 고교·대학을 개별 표시하고 미확인 사항은 감춘다. 과거 학교·대표팀·드래프트 이력 및 회원 개인 메모 원본은 삭제/재발급하지 않는다. 과거 동일 Player_ID가 서로 다른 사람에게 중복된 26건은 프로·국가대표 문맥을 분리하며, 충돌 번호의 메모/비교/즐겨찾기 연결을 보류한다. 장기 ID 이관은 Issue #334 별도 단계. **선수명 직접 클릭 → 검증된 기존 프로필 이동**도 승인 범위로 포함한다. 선수 행 자체를 누르면 v2 상세 패널을 선택하며, Player_ID 미검증 선수 이름에는 잘못된 링크를 만들지 않는다. 영구 ID 이관 없이 이 표시·연결 정책을 유지한다.
 
-최신 운영 코드 기준 main `69d4651a7331ac4d5f10e5034b1118e4da05799a`에서 새 브랜치 `feature/vleague-roster-profile-integration-20261118` 생성, 기존 충돌 PR #332를 병합하지 않고 소스 검증 자료만 재사용. [검수 PR #355](https://github.com/kvolleylab/kvolleylab/pull/355), [상세 검증](validation/vleague-roster-profile-v2-20261118.md). 독립 데이터·UI 검사 및 모든 기존 Player·Draft·VLeague 회귀, 실 Chromium PC/모바일 검증과 실제 Pages 배포는 각기 독립 증거로 판정. 이 로그만으로 운영 반영 성공을 선언하지 않는다.
+최신 운영 코드 기준 main `69d4651a7331ac4d5f10e5034b1118e4da05799a`에서 새 브랜치 `feature/vleague-roster-profile-integration-20261118` 생성, 기존 충돌 PR #332를 병합하지 않고 소스 검증 자료만 재사용. [검수 PR #355](https://github.com/kvolleylab/kvolleylab/pull/355), [상세 검증](validation/vleague-roster-profile-v2-20261118.md). 독립 데이터·UI 검사 및 모든 기존 Player·Draft·VLeague 회귀, 실 Chromium PC/모바일 검증과 실제 Pages 배포는 각기 독립 증거로 판정. 운영 증거: PR #355 squash merge be7d39dee62abb8b02cb510930757a7e0a0bfb64, GitHub Pages 성공 run #44149858672, 실제 kvolleylab.com Chromium 남녀 PC·모바일/프로필 연결/ID 충돌 검증 성공 run #44149862456. 전체 14구단은 PR 단위 테스트, 공개 웹 자동 검증은 대표 남녀 각 1구단으로 범위를 구분한다. Google Drive 원본은 이번 세션에서 연결 오류로 NOT VERIFIED. 기존 불합격 대학 등록 및 KOVO Cup focused 회귀는 별도 정비 과제로 유지한다.
 
 ## 2026-11-15 · 승패 조견표의 상대팀 칸을 승점으로 정정
 
