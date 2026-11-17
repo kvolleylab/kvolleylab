@@ -35,6 +35,8 @@ test('native v2 roster displays official current club count and initial athlete'
 test('verified rookie shows high school + university and a safe canonical link',()=>{
  const {dom,host}=mount(men,'OKF');
  try{
+  const yoon=[...host.querySelectorAll('[data-choice]')].find(x=>x.textContent.includes('윤경'));
+  assert.ok(yoon);yoon.click();
   const y=host.querySelector('[data-detail]');
   assert.match(y.textContent,/윤경/);
   assert.match(y.textContent,/남성고/);
