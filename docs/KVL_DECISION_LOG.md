@@ -678,3 +678,10 @@ Base `ff587a18f7878ef984d72b71d6bd1700f25426ca`. 원본 `6cedb89b517e977309416fa
 ## 2026-11-17 · 올림픽·대표팀 로드맵 공통 메뉴 연결 보정
 
 Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 운영 연결 승인 후 사용자가 홈페이지와 연결이 자연스럽지 않다고 지적했다. 실제 대표팀 홈에서 로드맵으로 이동하면 공통 왼쪽 메뉴·모바일 브랜드 바·로그인이 별도 가로 헤더로 바뀌는 문제를 확인했다. 기존 공통 내비게이션을 로드맵과 검증 페이지에 적용하고, 국가대표팀 하위 메뉴 및 남자대표팀 상단 LA28 현황에서 직접 진입하도록 보정한다. 2026-11-16 운영 문서의 별도 소형 헤더 사용 방침을 대체한다. 로드맵 내부 글꼴·행 높이·색상·필터·62개 기록·주기 설정 및 여자부 기존 경로는 유지한다. Base `196d72ea3727c5f0515462f2a0f048b3fba68bd5`. 기존 Node 18개와 PC/모바일 브라우저 검증 통과. 병합·Pages·실제 운영 검증은 수정 PR에서 기록한다. [확인한 문제·검증·복구](validation/olympic-roadmap-site-connection-v1.md).
+
+
+## 2026-11-17 · LA28 요약 카드 대회 바로가기 복원
+
+Status: USER CORRECTION / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 사용자가 기존 출전권 한눈에 보기에서 대륙선수권·올림픽 등 대회로 연결되던 기능 누락을 지적했다. 통합 시 단순 정보 카드로 바뀌고 상세 영역에만 남았던 대륙선수권·월드컵·랭킹 링크를 카드 전체에 복원한다. 개최국 카드는 확인된 LA28 공식 실내배구 대회 안내로 연결한다. 내부 대회는 같은 탭에서 이동하고 대회 페이지 상단에서 해당 LA28 통합 로드맵으로 돌아온다. 원래 상세 규정·출처·관련 대회 링크는 모두 유지한다.
+
+Base `816f963e4856e5f96f4bf76bd66ccfb9f07f81c9`; branch `fix/olympic-summary-competition-links-v1`. 주기별 JSON에 선택적 링크를 저장하며 2032에 LA28 링크·숫자를 재사용하지 않는다. 역사 62개와 로드맵 디자인·필터·데이터, 기존 LA28 URL 및 규정 원문은 변경하지 않는다. 기존 18개 검증 및 PC/390/360px 브라우저 이동 확인 통과. 운영 연결 승인에 따른 보정이며 병합·Pages·운영 확인 결과는 PR에 남긴다. [검증·변경 범위·복구](validation/olympic-summary-competition-links-v1.md).
