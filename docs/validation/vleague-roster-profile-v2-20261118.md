@@ -30,3 +30,17 @@ Status: **IMPLEMENTED ON FEATURE BRANCH / SCOPED CI PASS / LIVE DEPLOYMENT NOT Y
 본 문서 작성 시점에서 PR #355는 검수용 Draft이며 `main` 배포·공개 Pages 실제 확인은 별도 증거가 필요하다. 변경된 코드가 운영 반영된 이후 공홈 URL의 **남녀 구단 명단 → 신인 선택 → 프로필 → 두 학교** 경로를 PC/모바일에서 실증해야 한다. 운영 자료 또는 새로운 경기 자동화 자체는 건드리지 않는다.
 
 원복: PR #355의 변경 파일만 revert. 생성된 원본 KOVO 최신 선수명단/경기 점수/선수 ID를 이전 시즌 파일로 덮어쓰지 않는다. 추가 확장: Issue #331 비신인 이적·학적 표기, #334 26개 영구 ID 원장 이관.
+
+
+## 후속 검수 · 직접 이름 링크 및 전 구단 화면 안전성
+
+- 사용자 요청대로 선수 **이름**은 확인된 playerId가 있을 때 직접 선수 프로필로 이동하며, 행의 나머지 영역은 v2 상세 패널 선택을 유지한다. 미검증 신인은 이름을 일반 텍스트로만 제공한다. role=option 행의 Enter/Space 키보드 선택도 추가한다.
+- tests/vleague-roster-v2-ui.test.cjs에 남녀 14구단 각각의 현재 선수 수, 공식 등록 32명 직접 이름 링크의 활성/비활성, 검증된 학교만 표시되는지 확인을 추가했다.
+- tests/vleague-roster-browser-qa-v1.cjs의 실제 Chromium 검사에 모바일 윤경 이름 → 프로필 클릭 이동 및 김아중 미검증 링크 부재 검사를 추가했다.
+- 운영 배포 후의 https://kvolleylab.com 실제 사이트는 .github/workflows/vleague-roster-live-release-qa-v1.yml의 main 반영 트리거가 PC1440·모바일390 남녀 화면, 출신학교, 이름 클릭, 프로/국가대표 충돌 scope와 스크린샷/검수 보고서를 점검한다. **실제 Actions PASS가 없으면 live 확인으로 기록하지 않는다.**
+- 기존 KOVO 공식 공시 수집기와 팀 로스터 퍼블리셔 원본, 남녀 rosters.json·경기/승점/경기 결과 데이터는 수정하지 않았다.
+- 이번 PR에서는 기존 tests/vleague-rosters.test.cjs·대학 MASTER 등록 스크립트·기존 원장 데이터를 변경하지 않았다. 다른 워크플로우의 남아 있는 실패는 원본 테스트의 오래된 구단별 인원/포지션 기대값, 기존 Player_ID 소스 충돌, 이미 127명이 있는 대학 MASTER를 16명으로 가정하는 등록 스크립트, 기존 파일을 SHA 없이 쓰는 배치 스크립트 등이 포함된다. 이번 변경과 무관한 기존 정비 과제로 분리해 기록한다. 그 검사들이 정상이라는 뜻은 아니다.
+- data/national/player_id_links_v1.json과 기존 학교 MASTER의 KVL-P-000009 이름 차이는 별도 기존 검증 이름정정 테스트가 있는 사례이며, 본 PR의 **프로/대표팀 서로 다른 사람 26개 ID 충돌** 집합에 합치거나 영구 ID를 교체하지 않는다.
+- Google Drive 공식 원본/MASTER는 이번 세션에서 연결 계정 오류(link_id must identify an eligible linked account)로 **NOT VERIFIED**. GitHub에 기록된 공식출처 메타데이터·검증 테스트는 확인했으나 Drive 원본 확인을 했다고 표시하지 않는다.
+
+**운영 배포 상태는 GitHub PR 병합, Pages 공개 자산 확인, 실제 라이브 브라우저 QA 결과가 확보된 뒤 업데이트한다.**
