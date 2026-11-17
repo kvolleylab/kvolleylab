@@ -5,7 +5,10 @@
     "data/team-rosters/v-league/index.json": {
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
-      "source_ids": ["KVL-TEAM-ROSTER-AUTOMATION-V1", "KVL-USER-DECISION-20261117"],
+      "source_ids": [
+        "KVL-TEAM-ROSTER-AUTOMATION-V1",
+        "KVL-USER-DECISION-20261117"
+      ],
       "verified_at": "2026-11-17",
       "sha256": "5524203547696829448bb3fdae8ccaa47b3c9796c0be23ae747ec9ebcfcd6bd3",
       "evidence": "docs/KVL_TEAM_ROSTER_AUTOMATION_v1.md",
@@ -14,7 +17,10 @@
     "data/team-rosters/v-league/automation.json": {
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
-      "source_ids": ["KVL-TEAM-ROSTER-AUTOMATION-V1", "KVL-USER-DECISION-20261117"],
+      "source_ids": [
+        "KVL-TEAM-ROSTER-AUTOMATION-V1",
+        "KVL-USER-DECISION-20261117"
+      ],
       "verified_at": "2026-11-17",
       "sha256": "5e036ce9ffe22402465ec34644e1d0c3f17deb680791f81ead3349b6878f39b2",
       "evidence": "docs/KVL_TEAM_ROSTER_AUTOMATION_v1.md",
@@ -616,6 +622,45 @@
       "sha256": "76247e00e243b51ac2370558bbb0a93c792176c37bf51c2af62966ba58538d57",
       "evidence": "docs/validation/olympic-roadmap-production-v1.md",
       "review_note": "사용자가 승인한 공개용 역사·출전권 자료 및 주기 설정의 공개 적합성과 바이트를 검토했다. 경기 결과·출처·부분 확인 및 미확인 상태는 원본 그대로 유지한다. 2032는 규정 미확정 안내이며 배정 숫자가 없다. 이 파일 단위 VERIFIED는 미확인 역사나 미래 규정을 확정으로 승격하지 않는다. 비공개 메모·연락처·인증정보를 포함하지 않는다."
+    },
+    "data/kovo/official-notices/2026-27/draft_registration_bridge.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "KVL-SRC-KOVO-NOTICE-158324",
+        "KVL-SRC-KOVO-NOTICE-158325",
+        "KVL-SRC-KOVO-NOTICE-158326",
+        "KVL-SRC-KOVO-NOTICE-158327",
+        "KVL-SRC-KOVO-NOTICE-158491",
+        "KVL-SRC-KOVO-NOTICE-158548",
+        "KVL-SRC-KOVO-NOTICE-158550",
+        "KVL-SRC-KOVO-NOTICE-158552",
+        "KVL-SRC-KOVO-NOTICE-158701",
+        "KVL-SRC-KOVO-NOTICE-158722",
+        "KVL-SRC-KOVO-NOTICE-158805",
+        "KVL-SRC-KOVO-NOTICE-158806",
+        "KVL-SRC-KOVO-NOTICE-158821",
+        "KVL-SRC-KOVO-NOTICE-159206",
+        "KVL-SRC-KOVO-NOTICE-159300"
+      ],
+      "verified_at": "2026-11-15T00:01:29.475949Z",
+      "sha256": "00174e9b007701e6aed2a09ec9ba2e63a9b6584551c5911d610a12513a78e84b",
+      "evidence": "docs/validation/kovo-draft-roster-automation-20261114.md",
+      "review_note": "KOVO 2026-27 공식 신인 지명 34건 중 해당 구단 등록 공시 본문 SHA·등록 이벤트·팀·등번호·중복·기존 ID 대조로 안전한 등록32·프로필28만 공개. 신원 미확인 6건/일반 등록명·변동 후보27건은 자동 프로필 연결·MASTER 쓰기 금지. 공시 게시일을 효력일 또는 경기 엔트리 날짜로 단정하지 않는다."
+    },
+    "data/draft-applicants/2026-27/education-v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KOVO-2026-27-M-157978",
+        "KOVO-2026-27-W-157977"
+      ],
+      "verified_at": "2026-11-15T14:46:47.367787Z",
+      "sha256": "ade36c73440e54085b25e79a8bd429a88b3fd2d88dd44cc1cf044d42fe83d891",
+      "evidence": "docs/validation/kovo-draft-roster-automation-20261114.md",
+      "review_note": "KOVO 2026-27 드래프트 공식 신청자 PDF 남녀 117명 중 정확한 applicant_id·이름·소속·출생연도·원문 SHA 대조를 통과한 공개 고교/대학 출신 학교명만 분리. 중학교·산업체·학력 미확정 사실은 학교로 추측하지 않음."
     }
   }
 }
