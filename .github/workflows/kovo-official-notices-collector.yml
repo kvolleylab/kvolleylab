@@ -19,7 +19,7 @@ on:
         required: false
         default: ''
   schedule:
-    - cron: '13 23 * * *'
+    - cron: '13 * * * *'
   push:
     branches: [main]
     paths:
@@ -33,12 +33,18 @@ on:
       - 'tests/test_kvl_player_updates.py'
       - 'scripts/kvl_player_master_plan.py'
       - 'tests/test_kvl_player_master_plan.py'
+      - 'scripts/kovo_team_roster_publish.py'
+      - 'scripts/kovo_team_roster_public_verify.py'
+      - 'tests/test_kovo_team_roster_publish.py'
+      - 'data/team-rosters/v-league/index.json'
+      - 'data/team-rosters/v-league/automation.json'
       - 'data/player-updates/config.json'
       - 'data/player-updates/reviewed_mappings.json'
       - 'data/player-updates/master_targets.json'
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: kovo-official-notices-collector-main
@@ -48,7 +54,7 @@ jobs:
   collect:
     if: github.repository == 'kvolleylab/kvolleylab' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
         with:
@@ -62,11 +68,15 @@ jobs:
           python -m unittest discover -s tests -p test_kovo_verify_roster_contracts.py -v
           python -m unittest discover -s tests -p test_kvl_player_updates.py -v
           python -m unittest discover -s tests -p test_kvl_player_master_plan.py -v
+          python -m unittest discover -s tests -p test_kovo_team_roster_publish.py -v
       - name: Check monitoring period and season review deadline before network access
         id: period
         run: python scripts/kvl_player_updates.py --check-window --github-output "$GITHUB_OUTPUT"
+      - name: Select adaptive team-roster cadence
+        id: roster-cadence
+        run: python scripts/kovo_team_roster_publish.py --check-cadence --github-output "$GITHUB_OUTPUT"
       - name: Download official public notices without credentials
-        if: steps.period.outputs.active == 'true'
+        if: steps.period.outputs.active == 'true' && steps.roster-cadence.outputs.run == 'true'
         env:
           MAX_PAGES: ${{ inputs.max_pages || '12' }}
           MAX_DETAILS: ${{ inputs.max_details || '180' }}
@@ -80,13 +90,24 @@ jobs:
             python scripts/kovo_official_notices.py --max-pages "$MAX_PAGES" --max-details "$MAX_DETAILS"
           fi
       - name: Build unreviewed candidate roster, salary and change queue
-        if: steps.period.outputs.active == 'true'
+        if: steps.period.outputs.active == 'true' && steps.roster-cadence.outputs.run == 'true'
         run: python scripts/kovo_verify_roster_contracts.py
+      - name: Publish safe current V-League team roster snapshots
+        id: roster-publish
+        if: steps.period.outputs.active == 'true' && steps.roster-cadence.outputs.run == 'true'
+        shell: bash
+        run: |
+          python scripts/kovo_team_roster_publish.py --publish --report "$RUNNER_TEMP/kovo-team-roster/report.json"
+          if git diff --quiet -- data/competitions/v-league-men-2026-27/rosters.json data/competitions/v-league-women-2026-27/rosters.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Version player evidence and collect separate news metadata
-        if: steps.period.outputs.active == 'true'
+        if: steps.period.outputs.active == 'true' && steps.roster-cadence.outputs.run == 'true'
         run: python scripts/kvl_player_updates.py --collect-news
       - name: Report verified MASTER targets and local plan readiness without external access
-        if: steps.period.outputs.active == 'true'
+        if: steps.period.outputs.active == 'true' && steps.roster-cadence.outputs.run == 'true'
         run: python scripts/kvl_player_master_plan.py
       - name: Store diagnostic summary
         if: always()
@@ -98,8 +119,9 @@ jobs:
             data/player-updates/run_report.json
           retention-days: 14
           if-no-files-found: ignore
-      - name: Commit normalized facts (never update homepage or Drive MASTER)
-        if: steps.period.outputs.active == 'true'
+      - name: Commit normalized facts and verified current roster snapshots
+        id: commit
+        if: steps.period.outputs.active == 'true' && steps.roster-cadence.outputs.run == 'true'
         shell: bash
         run: |
           python scripts/kvl_player_updates.py --validate-public
@@ -110,11 +132,36 @@ jobs:
             git add data/kovo/official-notices/2026-27/latest_changes.json
           fi
           git add data/player-updates/official_candidates.json data/player-updates/reviewed_events.json data/player-updates/news_candidates.json data/player-updates/master_change_plan.json
+          git add data/competitions/v-league-men-2026-27/rosters.json data/competitions/v-league-women-2026-27/rosters.json
           if git diff --cached --quiet; then
-            echo "No source notice changes to commit"
+            echo "No source notice or roster changes to commit"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           else
             python scripts/kvl_player_updates.py --require-active-window
-            git commit -m "data(kovo): update normalized official notices [skip ci]"
+            git commit -m "data(kovo): update notices and current V-League rosters [skip ci]"
             python scripts/kvl_player_updates.py --require-active-window
             git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           fi
+      - name: Request Pages build for roster changes
+        if: steps.roster-publish.outputs.changed == 'true' && steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KVL_VLEAGUE_PUBLISH_APPROVED: 'true'
+        run: python -B scripts/kovo_vleague_ops.py deploy --root . --sha "${{ steps.commit.outputs.sha }}" --report "$RUNNER_TEMP/kovo-team-roster/pages.json"
+      - name: Verify exact roster JSON on public Pages
+        if: steps.roster-publish.outputs.changed == 'true' && steps.commit.outputs.changed == 'true'
+        run: python -B scripts/kovo_team_roster_public_verify.py --root . --sha "${{ steps.commit.outputs.sha }}" --report "$RUNNER_TEMP/kovo-team-roster/public-readback.json"
+      - name: Store team roster publication receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kovo-team-roster-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kovo-team-roster/report.json
+            ${{ runner.temp }}/kovo-team-roster/pages.json
+            ${{ runner.temp }}/kovo-team-roster/public-readback.json
+          retention-days: 14
+          if-no-files-found: ignore
