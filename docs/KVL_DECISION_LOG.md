@@ -1,5 +1,13 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-18 · 선수·팀 국제 국가별 역사형 대표팀 명단 및 공식 후보 원장
+
+Status: USER DIRECTED / IMPLEMENTED ON FEATURE BRANCH / QA PENDING / MAIN NOT DEPLOYED.
+사용자가 40개 국제 국가·지역을 나라별로 표시하고 각 국가 페이지에 연도별·대회별 대표팀 선수명단을 누적하며 공식 초반 후보 엔트리도 출처 확인 시 별도 보존하는 3단계 개발을 지시했다. 기존 4개 country_master 영구 ID를 변경하거나 나머지 36개 신규 영구 ID를 추정하지 않는다. 2026 VNL 남녀, 아시안게임 남녀, AVC 남자 대륙선수권과 AVC 남자컵의 원본 명단 89개 포인터를 유지한다. 원본 FINAL, 출국명단, 공개 등록/Active/Reserve를 절대 동일한 상태로 취급하지 않으며 없는 후보 엔트리/미출전/선수 탈락을 생성하지 않는다. 공식 후보 원장은 0개로 시작하여 검증된 원문이 있는 후보·롱리스트·주차·최종·경기 명단만 등록하게 한다. 선수 이름이 같다는 이유로 ID 링크를 만들지 않으며 원본/회원 권한/경기/기존 KOVO 자동화를 보호한다.
+
+Reference: feature/international-country-roster-history-v1-20261118, docs/validation/international-country-history-v1-20261118.md. Current production deploy NOT APPROVED by this implementation request alone. GitHub QA and user release approval required before merge. Google Drive original source archive NOT VERIFIED due linked account error.
+
+
 ## 2026-11-18 · 선수·팀 → 팀 통합 디렉터리 v1 / V-리그 최신 자동 명단 연결
 
 Status: USER APPROVED / VERIFIED / DEPLOYED ON MAIN · LIVE HTTPS QA PASS (2026-11-18 KST).
