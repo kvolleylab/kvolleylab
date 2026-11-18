@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>KVL 국제대표팀 통합 선수명단 v1 · 일본 2026 프로토타입</title>
+<style>
+:root{--navy:#143a58;--navy-dark:#0b243b;--gold:#d6ae5d;--bg:#f5f7fa;--line:#dce5ed;--muted:#72869a;--text:#173b56;--mint:#259c85;--red:#e02e3d;--black:#253341}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:Arial,'Malgun Gothic',sans-serif;color:var(--text);font-size:13px}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,.player-row:focus-visible{outline:2px solid #1e8b86;outline-offset:3px}
+.layout{display:grid;grid-template-columns:218px minmax(0,1fr);min-height:100vh}.sidebar{background:linear-gradient(165deg,#0b2035,#102e4b);color:#dbe6ef;min-height:100vh;padding:22px 13px;position:sticky;top:0;height:100vh;align-self:start}.brand{display:flex;align-items:center;gap:10px;padding:0 11px 24px;border-bottom:1px solid #ffffff22}.brand-mark{width:37px;height:37px;border:1.6px solid var(--gold);color:var(--gold);border-radius:50%;display:grid;place-items:center;font-size:23px;font-weight:900}.brand strong{color:#fff;font-size:17px}.brand small{display:block;font-size:9px;color:#afc5d4;margin-top:2px}.side-label{font-size:10px;color:#94aec2;letter-spacing:.09em;margin:25px 13px 10px;font-weight:900}.side-link{display:flex;align-items:center;gap:12px;min-height:42px;padding:10px 14px;border-radius:9px;text-decoration:none;color:#d4e2eb;font-weight:800}.side-link:hover,.side-link.is-active{background:#1d466b;color:white}.side-link .glyph{font-size:15px;width:18px;text-align:center}.sub-nav{margin:3px 0 0 18px;border-left:1px solid #ffffff23;padding-left:9px}.sub-nav a{display:block;text-decoration:none;border-radius:7px;font-size:12px;padding:11px 13px;color:#adc0d0}.sub-nav a.is-active{background:#274f75;color:white;font-weight:900}
+.workspace{min-width:0;width:100%;max-width:1450px;padding:31px 34px 78px;margin:0 auto}.breadcrumb{font-size:11px;color:#8799a9;margin-bottom:18px}.title-row{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}.title-row h1{margin:0;font-size:30px;letter-spacing:-.045em;color:#102e49}.intro{font-size:12px;color:#768b9d;line-height:1.6;margin:10px 0 20px}.eyebrow{font-size:10px;color:#a27e42;font-weight:900;letter-spacing:.12em;margin:0 0 7px}.preview-badge{font-size:11px;font-weight:800;color:#856629;border:1px solid #ebdab2;background:#fff9ea;border-radius:8px;padding:8px 11px;white-space:nowrap}.categories{display:flex;gap:7px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid #dbe4ec;margin-bottom:18px}.categories a{min-width:78px;border:1px solid #d7e1ea;padding:11px 18px;border-radius:10px;text-decoration:none;text-align:center;background:#fff;font-weight:800;color:#657c8e}.categories a.active{background:#163e60;color:#fff;border-color:#163e60;box-shadow:0 2px 0 var(--gold)}
+.section-title{margin:0 0 12px;font-size:21px;letter-spacing:-.035em;color:#173c58}.gender-switch{display:flex;align-items:center;gap:5px;margin:0 0 15px}.gender-switch span{border:1px solid #d7e2eb;border-radius:9px;padding:9px 16px;font-weight:850;color:#8797a6;background:#fff}.gender-switch span.active{background:#163e5f;border-color:#163e5f;color:#fff}
+.country-pane,.roster-pane{background:#fff;border:1px solid var(--line);border-radius:17px;box-shadow:0 4px 16px rgba(11,31,51,.035);padding:19px 20px;margin-top:12px}.country-header{display:flex;align-items:center;gap:15px;flex-wrap:wrap;padding-bottom:13px;border-bottom:1px solid #e7ecf0}.flag{width:60px;height:55px;display:grid;place-items:center;background:#f5f7f9;border:1px solid #e4eaf0;border-radius:12px;font-size:36px}.country-id{min-width:0}.country-id h2{margin:0;font-size:23px;letter-spacing:-.03em}.country-id small{display:block;color:var(--muted);margin-top:5px;font-size:12px}.year{margin-left:auto;border:1px solid #d2deea;border-radius:10px;background:white;color:#193d57;font-weight:800;padding:10px 14px}.tournaments{display:grid;gap:8px;padding-top:13px}.event-card{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid #e1e7ed;background:#fbfcfd;border-radius:10px;transition:border-color .18s,background .18s}.event-card.active{border-color:#94b9a9;background:#f3faf7}.event-heading{display:flex;align-items:center;gap:10px;min-width:0}.event-icon{width:27px;height:27px;border:1px solid #e0e7ed;border-radius:8px;color:#55748c;background:#fff;display:grid;place-items:center;font-size:14px;flex:none}.event-title{font-size:13px;font-weight:850;color:#193b57;line-height:1.4}.event-meta{font-size:11px;color:#8395a5;margin-top:3px}.event-action{flex:none;min-width:94px;border:1px solid #bfd0dd;border-radius:8px;background:#fff;padding:9px 13px;color:#315d7d;font-weight:850;font-size:12px}.event-action:hover,.event-card.active .event-action{background:#184562;color:white;border-color:#184562}.inline-note{font-size:11px;line-height:1.6;color:#8696a3;margin:9px 0 0}
+.roster-pane{padding:18px 20px 14px}.roster-header{display:flex;align-items:start;justify-content:space-between;flex-wrap:wrap;gap:12px}.heading-with-mark{border-left:4px solid var(--gold);padding-left:11px}.roster-header h2{font-size:20px;line-height:1.15;margin:0 0 5px;color:#173953;letter-spacing:-.04em}.roster-sub{color:#8191a0;font-size:11px;margin:0}.legend{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.legend-item{display:flex;align-items:center;gap:5px;color:#637b8e;font-size:11px;font-weight:750;white-space:nowrap}.dot{display:inline-block;width:9px;height:9px;flex:0 0 9px;border-radius:50%;vertical-align:middle;background:var(--black);border:0}.dot.red{background:var(--red)}.dot.black{background:#27323c}.dot-empty{display:inline-block;color:#b3bec7;font-size:11px;line-height:1}.dot-label{font-size:9px;color:#a0acb8}.tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:13px 0 11px}.filters{display:flex;gap:5px;flex-wrap:wrap}.filters button{padding:7px 11px;border-radius:100px;border:1px solid #dce5ed;background:#f3f6f8;color:#61798d;font-weight:800;font-size:11px}.filters button[aria-pressed=true]{background:#194762;color:#fff;border-color:#194762}.search{margin-left:auto;min-width:170px;max-width:220px;flex:1}.search input{width:100%;border:1px solid #d8e2ea;border-radius:8px;padding:8px 10px;min-height:34px;background:#fff;color:#173b56;outline-offset:2px}.result-count{font-size:11px;color:#8395a5;padding:0 0 9px}
+.table-shell{border:1px solid #e2e8ee;border-radius:11px;overflow:hidden;background:white}.table-head,.player-row{display:grid;grid-template-columns:42px minmax(135px,1.55fr) 96px 43px 59px minmax(132px,1.26fr) 82px 104px;gap:8px;align-items:center;padding:0 12px}.table-head{background:#edf2f6;min-height:37px;color:#687e8f;font-size:10px;font-weight:900}.player-row{min-height:58px;border-top:1px solid #e9eef2;background:#fff;font-size:12px;cursor:pointer;transition:background .15s}.player-row:hover,.player-row.is-selected{background:#f0f8f6}.player-row.is-selected{box-shadow:inset 3px 0 var(--mint)}.col-no{font-weight:900;color:#38627f;text-align:center}.col-name{min-width:0;padding:8px 0}.player-name{font-weight:900;font-size:13px;color:#183b56;display:block;word-break:keep-all;overflow-wrap:anywhere;line-height:1.25}.player-name:is(a):hover{text-decoration-color:var(--gold);text-underline-offset:3px}.player-en{font-size:10px;color:#8b9ca9;display:block;margin-top:4px;overflow-wrap:anywhere}.col-dob,.col-pos,.col-height{color:#45647b;white-space:nowrap}.col-pos{text-align:center;font-weight:850}.col-height{text-align:center}.col-club{font-size:11px;line-height:1.4;color:#35576e;overflow-wrap:anywhere}.unknown{color:#a0afbc}.col-vb{text-align:center}.vb-link,.source-link{font-size:11px;color:#276d83;font-weight:800;text-decoration:underline;text-underline-offset:2px}.vb-link:hover,.source-link:hover{color:#1a816e}.event-dots{display:flex;align-items:center;gap:10px;justify-content:center}.event-dots>span{display:flex;align-items:center;justify-content:center;min-width:10px}.mobile-facts{display:none}.empty-state{padding:35px 10px;text-align:center;color:#7f91a0;font-size:13px}.roster-footer{display:flex;justify-content:space-between;align-items:start;gap:10px;flex-wrap:wrap;margin:12px 2px 2px;color:#8093a2;font-size:10px;line-height:1.65}.roster-footer p{margin:0}.roster-footer strong{color:#5b7588}
+.detail{display:none;background:#f8fbfd;border:1px solid #dce8ed;border-radius:10px;margin-top:11px;padding:15px;scroll-margin-top:25px}.detail.show{display:block}.detail-title{font-size:16px;font-weight:900;margin:0 0 7px}.detail-sub{color:#7892a3;font-size:11px;margin:0 0 12px}.detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.detail-item{border:1px solid #e0e8ee;background:#fff;border-radius:8px;padding:11px;min-width:0}.detail-item strong{font-size:11px;color:#204a65}.detail-item p{font-size:11px;color:#587287;margin:5px 0 0;line-height:1.6}.detail-links{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:12px}.detail-close{margin-left:auto;border:1px solid #d8e4eb;background:#fff;color:#557086;border-radius:8px;padding:7px 13px;font-weight:800;font-size:11px}
+.foot-note{font-size:10px;line-height:1.7;color:#7a8e9f;margin:13px 0 0}.foot-note b{color:#5a7487}.foot-note a{color:#356d8b}.copyright{text-align:center;color:#94a4b1;font-size:10px;margin-top:22px}
+@media(max-width:1100px){.layout{grid-template-columns:190px minmax(0,1fr)}.workspace{padding:24px 18px 60px}.table-head,.player-row{grid-template-columns:36px minmax(116px,1.35fr) 88px 37px 50px minmax(120px,1fr) 70px 90px;gap:5px;padding-left:8px;padding-right:8px}.event-dots{gap:8px}}
+@media(max-width:850px){.sidebar{display:none}.layout{display:block}.workspace{padding:17px 13px 55px}.title-row h1{font-size:25px}.categories{gap:5px}.categories a{flex:1;min-width:69px;padding:10px 7px}.detail-grid{grid-template-columns:1fr}.country-pane,.roster-pane{padding:15px}.table-head{display:none}.player-row{grid-template-columns:30px minmax(0,1fr) 96px;grid-template-areas:"number name events" "number facts events" "number club vb";gap:5px 6px;padding:11px 10px;min-height:94px;align-items:center}.col-no{grid-area:number;align-self:start;padding-top:5px}.col-name{grid-area:name;padding:0}.col-dob,.col-pos,.col-height{display:none}.mobile-facts{display:flex;grid-area:facts;flex-wrap:wrap;gap:6px;font-size:10px;color:#7891a2;min-width:0}.mobile-facts span+span:before{content:"·";margin-right:6px;color:#c1cbd4}.col-club{grid-area:club;font-size:10px}.col-club:before{content:"소속  ";color:#93a4b1;font-weight:800}.col-vb{grid-area:vb;text-align:right}.event-dots{grid-area:events;gap:8px}.player-name{font-size:13px}.roster-header h2{font-size:18px}.legend{gap:9px}.event-card{padding:10px}.event-title{font-size:12px}.event-action{min-width:77px;font-size:11px;padding:9px 10px}}
+@media(max-width:390px){.workspace{padding:13px 10px 45px}.country-pane,.roster-pane{padding:11px}.event-card{gap:8px}.event-action{min-width:70px;padding:8px}.country-id h2{font-size:20px}.country-header{gap:9px}.flag{width:49px;height:47px;font-size:29px}.year{padding:9px}.event-dots{gap:6px}.player-row{grid-template-columns:25px minmax(0,1fr) 74px;gap:4px 4px;padding:9px 7px}.dot{width:8px;height:8px;flex-basis:8px}.vb-link{font-size:10px}.mobile-facts{font-size:9.5px}.col-club{font-size:9.5px}.player-name{font-size:12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.event-card,.player-row{transition:none}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar" aria-label="KVL 프로토타입 메뉴">
+  <div class="brand"><span class="brand-mark">⌁</span><div><strong>K-Volley Lab</strong><small>KOREAN VOLLEYBALL DATA LAB</small></div></div>
+  <div class="side-label">K-VOLLEY LAB</div>
+  <a class="side-link" href="https://kvolleylab.com/"><span class="glyph">⌂</span> 홈</a>
+  <a class="side-link" href="https://kvolleylab.com/competition.html"><span class="glyph">◇</span> 대회</a>
+  <a class="side-link" href="https://kvolleylab.com/schedules.html"><span class="glyph">▦</span> 경기일정</a>
+  <a class="side-link is-active" href="https://kvolleylab.com/teams.html"><span class="glyph">♟</span> 선수·팀</a>
+  <div class="sub-nav"><a href="https://kvolleylab.com/players.html">선수</a><a class="is-active" href="https://kvolleylab.com/teams.html?category=international">팀 · 국제</a><a href="https://kvolleylab.com/draft-hub.html">Draft Hub</a></div>
+  <a class="side-link" href="https://kvolleylab.com/"><span class="glyph">▥</span> 자료실</a>
+</aside>
+<main class="workspace">
+  <div class="breadcrumb">홈 &gt; 선수·팀 &gt; 팀 &gt; 국제 &gt; 일본</div>
+  <div class="title-row"><div><p class="eyebrow">K-VOLLEY LAB · TEAM DIRECTORY</p><h1>팀 찾기</h1></div><span class="preview-badge">PROTOTYPE v1 · 운영 미반영</span></div>
+  <p class="intro">기존 국가별 대표팀 목록과 대회 명단을 유지하면서, 아래에 통합 선수명단과 대회별 참가 표시를 추가한 독립형 시안입니다.</p>
+  <nav class="categories" aria-label="팀 분류"><a href="https://kvolleylab.com/teams.html?category=pro">프로</a><a href="https://kvolleylab.com/teams.html?category=university">대학</a><a href="https://kvolleylab.com/teams.html?category=high">고교</a><a href="https://kvolleylab.com/teams.html?category=middle">중학</a><a href="https://kvolleylab.com/teams.html?category=national">대표팀</a><a class="active" href="#country" aria-current="page">국제</a></nav>
+  <h2 class="section-title">국제 대표팀</h2>
+  <div class="gender-switch"><span class="active">MEN · 남자부</span><span title="이번 독립 시안은 2026 일본 남자대표팀만 구현">WOMEN · 여자부</span></div>
+  <section class="country-pane" id="country" aria-label="국가별 2026 대회명단">
+    <div class="country-header"><div class="flag" role="img" aria-label="일본 국기">🇯🇵</div><div class="country-id"><p class="eyebrow">NATIONAL TEAM · JPN</p><h2>일본 <span style="color:#72899d;font-size:.65em;font-weight:750">Japan</span> · 남자대표팀</h2><small>2026년 기존 대회 출처 검증본</small></div><select class="year" aria-label="연도 선택"><option value="2026">2026년</option></select></div>
+    <div class="tournaments" id="tournaments"></div>
+    <p class="inline-note">대회별 명단 보기를 누르면 아래 통합 선수명단이 해당 대회 선수만 표시됩니다. 다시 전체를 누르면 통합 목록으로 돌아옵니다.</p>
+  </section>
+  <section class="roster-pane" id="unified">
+    <div class="roster-header">
+      <div class="heading-with-mark"><h2>2026 통합 선수명단</h2><p class="roster-sub" id="rosterSummary"></p></div>
+      <div class="legend" aria-label="참가 이력 점 색상 범례"><span class="legend-item"><i class="dot red"></i> VNL</span><span class="legend-item"><i class="dot red"></i> 아시안게임</span><span class="legend-item"><i class="dot black"></i> 대륙선수권</span></div>
+    </div>
+    <div class="tools">
+      <div class="filters" role="group" aria-label="대회별 선수 필터">
+        <button type="button" data-filter="ALL" aria-pressed="true">전체</button>
+        <button type="button" data-filter="VNL" aria-pressed="false">VNL</button>
+        <button type="button" data-filter="AG" aria-pressed="false">아시안게임</button>
+        <button type="button" data-filter="AVC" aria-pressed="false">대륙선수권</button>
+        <button type="button" data-filter="MULTI" aria-pressed="false">2대회 이상</button>
+      </div>
+      <label class="search"><span style="position:absolute;clip:rect(0 0 0 0)">선수명 검색</span><input id="searchInput" type="search" placeholder="선수명 검색 (한글·영문)" autocomplete="off"></label>
+    </div>
+    <div class="result-count" id="resultCount" aria-live="polite"></div>
+    <div class="table-shell">
+      <div class="table-head" aria-hidden="true"><span style="text-align:center">NO.</span><span>선수명</span><span>생년월일</span><span style="text-align:center">POS</span><span style="text-align:center">신장</span><span>소속팀</span><span style="text-align:center">Volleybox</span><span style="text-align:center">참가 이력</span></div>
+      <div id="playerRows" aria-label="2026년 일본 남자대표팀 통합 선수명단"></div>
+    </div>
+    <section class="detail" id="playerDetail" aria-live="polite" aria-label="선수 대회별 원본 확인"></section>
+    <div class="roster-footer"><p><strong>선수명 또는 행을 누르면 대회별 상세와 공식 출처를 확인할 수 있습니다.</strong><br>신장·소속팀은 원본·확인 기준 시점의 값이며, 현재 소속팀을 실시간으로 추정하지 않습니다.</p><p>▲ 빨강 = 중요대회 · 검정 = 그 외 대회 · 빈칸 = 해당 명단 미확인</p></div>
+  </section>
+  <p class="foot-note"><b>자료 기준</b> 2026 VNL / 2026 아시안게임 / 2026 AVC 남자 대륙선수권, KVL에 이미 보관된 공개 선수명단 및 2026–27 소속 확인 기록.<br><b>통합 기준</b> 동일 영문 성명+생년월일 또는 동일 Volleybox 선수 프로필 번호+생년월일. 외부 확인이 불가능한 동일 인물 여부를 임의로 결합하지 않습니다. <b>명단 등록은 실제 경기 출전과 다릅니다.</b></p>
+  <div class="copyright">© 2026 K-Volley Lab · Prototype v1 · 운영 홈페이지 미반영</div>
+</main>
+</div>
+<script>window.KVL_UNIFIED_ROSTER_DATA = __KVL_DATA_JSON__;</script>
+<script>
+(function(){
+'use strict';
+const m=window.KVL_UNIFIED_ROSTER_DATA;
+const el=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dot=(p,event)=>{
+ const exists=p.sources.includes(event.id);
+ if(!exists)return '<span title="'+esc(event.label)+' 명단 없음" aria-label="'+esc(event.label)+' 명단 미등록"><span class="dot-empty">–</span></span>';
+ return '<span title="'+esc(event.label)+' 명단 포함" aria-label="'+esc(event.label)+' 명단 포함"><i class="dot '+(event.major?'red':'black')+'"></i></span>';
+};
+const links=p=>{
+ const vb=p.volleybox?'<a class="vb-link" href="'+esc(p.volleybox)+'" target="_blank" rel="noopener noreferrer">Volleybox</a>':
+   p.volleyboxSearch?'<a class="vb-link" href="'+esc(p.volleyboxSearch)+'" target="_blank" rel="noopener noreferrer">검색</a>':'<span class="unknown">—</span>';
+ return vb;
+};
+const rows=m.rows;
+let filter='ALL',query='',selected='';
+function filtered(){
+ const q=query.trim().toLowerCase().replace(/\s+/g,' ');
+ return rows.filter(p=>(filter==='ALL'||filter==='MULTI'&&p.sources.length>=2||p.sources.includes(filter))
+   &&(!q||[p.name,p.en,p.club,p.position].some(x=>String(x||'').toLowerCase().includes(q))));
+}
+function makeRow(p){
+ const name=p.KVLProfile?'<a class="player-name" href="'+esc(p.KVLProfile)+'" target="_blank" rel="noopener noreferrer" title="검증된 KVL 선수 프로필 열기">'+esc(p.name)+'</a>':
+  '<span class="player-name">'+esc(p.name)+'</span>';
+ return '<div role="button" tabindex="0" class="player-row'+(selected===p.key?' is-selected':'')+'" data-player="'+esc(p.key)+'" aria-label="'+esc(p.name)+' 선수 대회 이력 상세 열기">'+
+  '<span class="col-no">'+esc(p.jersey)+'</span><span class="col-name">'+name+'<span class="player-en">'+esc(p.en)+'</span></span>'+
+  '<span class="col-dob">'+esc(p.dob)+'</span><span class="col-pos">'+esc(p.position||'—')+'</span>'+
+  '<span class="col-height">'+(p.height?esc(p.height)+'cm':'—')+'</span>'+
+  '<span class="mobile-facts"><span>'+esc(p.dob)+'</span><span>'+esc(p.position||'—')+'</span><span>'+(p.height?esc(p.height)+'cm':'—')+'</span></span>'+
+  '<span class="col-club" title="'+esc(p.clubSource||'소속 미확인')+'">'+(p.club?esc(p.club):'<span class="unknown">미확인</span>')+'</span>'+
+  '<span class="col-vb">'+links(p)+'</span>'+
+  '<span class="event-dots" role="group" aria-label="'+esc(p.name)+' 대회별 등록 이력">'+m.events.map(e=>dot(p,e)).join('')+'</span></div>';
+}
+function syncFilters(){
+ document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===filter)));
+ document.querySelectorAll('[data-event-button]').forEach(b=>{
+  b.closest('.event-card').classList.toggle('active',b.dataset.eventButton===filter);
+  b.setAttribute('aria-pressed',String(b.dataset.eventButton===filter));
+ });
+}
+function renderRows(){
+ const visible=filtered();
+ if(selected&&!visible.some(p=>p.key===selected)){selected='';el('playerDetail').classList.remove('show');el('playerDetail').innerHTML='';}
+ el('playerRows').innerHTML=visible.length?visible.map(makeRow).join(''):'<div class="empty-state">선택한 조건에 해당하는 등록 선수가 없습니다.</div>';
+ el('resultCount').textContent=visible.length+'명 표시 · 통합 '+m.total+'명 (명단 기록 '+(16+12+14)+'건)';
+ syncFilters();
+}
+function showPlayer(key){
+ const p=rows.find(x=>x.key===key);if(!p)return;
+ selected=p.key;
+ const all=m.events.filter(e=>p.sources.includes(e.id));
+ el('playerDetail').innerHTML='<div class="detail-title">'+esc(p.name)+' <small style="font-size:12px;font-weight:600;color:#8499a7">'+esc(p.en)+'</small></div>'+
+  '<p class="detail-sub">'+esc(p.dob)+' · '+esc(p.position)+' · '+(p.height?esc(p.height)+'cm':'신장 확인 중')+
+  ' · '+esc(p.evidence)+'</p>'+
+  '<div class="detail-grid">'+all.map(e=>'<div class="detail-item"><strong><i class="dot '+(e.major?'red':'black')+'"></i> '+esc(e.label)+'</strong>'+
+    '<p>등번호 #'+esc(p.jerseys[e.id])+' · '+esc(p.entries[e.id])+'</p>'+
+    '<p>등록 신장 '+esc(p.heights[e.id]||'미확인')+'cm</p></div>').join('')+'</div>'+
+  '<div class="detail-links">'+(p.KVLProfile?'<a class="source-link" href="'+esc(p.KVLProfile)+'" target="_blank" rel="noopener noreferrer">KVL 선수 프로필</a>':'')+
+  (p.volleybox?'<a class="source-link" href="'+esc(p.volleybox)+'" target="_blank" rel="noopener noreferrer">Volleybox</a>':'')+
+  (p.officialProfile?'<a class="source-link" href="'+esc(p.officialProfile)+'" target="_blank" rel="noopener noreferrer">Volleyball World 프로필</a>':'')+
+  (p.clubAlt.length?'<span style="color:#8595a5;font-size:11px">다른 자료의 구단 표기: '+esc(p.clubAlt.map(x=>x.club).join(', '))+'</span>':'')+
+  '<button class="detail-close" type="button" id="detailClose">닫기 ×</button></div>'+
+  (p.club?'<p class="inline-note">소속팀 출처: '+esc(p.clubSource)+'</p>':'');
+ el('playerDetail').classList.add('show');renderRows();
+ el('playerDetail').scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+function selectFilter(next,shouldScroll){
+ filter=next;selected='';el('playerDetail').classList.remove('show');el('playerDetail').innerHTML='';
+ renderRows();if(shouldScroll)el('unified').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function init(){
+ el('rosterSummary').textContent='일본 남자대표팀 · 2026년 '+m.events.length+'개 대회 '+m.total+'명 · 동일 선수 중복 표시 제외';
+ el('tournaments').innerHTML=m.events.map(e=>{
+ const n=m.sourceSnapshot[e.id],text=e.id==='VNL'?'Active / Reserve 구분 · '+n+'명':e.id==='AG'?'등록 명단 · '+n+'명':'공식 최종 명단 · '+n+'명';
+ return '<article class="event-card"><div class="event-heading"><span class="event-icon">▣</span><div><div class="event-title">'+esc(e.label)+' 남자부</div><div class="event-meta">'+esc(text)+'</div></div></div>'+
+ '<button type="button" class="event-action" data-event-button="'+esc(e.id)+'" aria-pressed="false">명단 보기 ›</button></article>';
+ }).join('');
+ renderRows();
+ document.addEventListener('click',ev=>{
+  const action=ev.target.closest('[data-event-button],[data-filter]');
+  if(action){const choice=action.dataset.eventButton||action.dataset.filter;selectFilter(filter===choice&&ev.target.closest('[data-event-button]')?'ALL':choice,true);return;}
+  if(ev.target.closest('#detailClose')){selected='';el('playerDetail').classList.remove('show');el('playerDetail').innerHTML='';renderRows();return;}
+  const row=ev.target.closest('[data-player]');
+  if(row&&!ev.target.closest('a'))showPlayer(row.dataset.player);
+ });
+ document.addEventListener('keydown',ev=>{
+  const row=ev.target.closest('[data-player]');
+  if(row&&ev.target===row&&(ev.key==='Enter'||ev.key===' ')){ev.preventDefault();showPlayer(row.dataset.player);}
+ });
+ el('searchInput').addEventListener('input',ev=>{query=ev.target.value;renderRows()});
+}
+if(m?.status==='PROTOTYPE_ONLY_NOT_DEPLOYED')init();
+else el('playerRows').innerHTML='<div class="empty-state">검증된 프로토타입 데이터를 불러오지 못했습니다.</div>';
+})();
+</script>
+</body>
+</html>

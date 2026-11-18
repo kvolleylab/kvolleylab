@@ -1,0 +1,60 @@
+name: KVL International Unified Roster Prototype v1
+
+on:
+  push:
+    branches: [feature/international-unified-roster-prototype-v1]
+  pull_request:
+    paths:
+      - 'prototypes/kvl-international-unified-roster-v1.html'
+      - 'scripts/build-international-unified-roster-prototype-v1.cjs'
+      - 'tests/international-unified-roster-prototype-*.cjs'
+      - '.github/workflows/international-unified-roster-prototype-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  demo:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify prototype model and app syntax
+        run: |
+          node --check scripts/build-international-unified-roster-prototype-v1.cjs
+          node --check tests/international-unified-roster-prototype-v1.test.cjs
+          node --check tests/international-unified-roster-prototype-browser-v1.cjs
+          node --test tests/international-unified-roster-prototype-v1.test.cjs
+      - name: Package real 2026 Japan source data as one offline interactive HTML
+        run: |
+          node scripts/build-international-unified-roster-prototype-v1.cjs --output=dist/KVL_국제대표팀통합명단_v1.html
+          test -s dist/KVL_국제대표팀통합명단_v1.html
+      - name: Export self-contained HTML early for immediate review
+        uses: actions/upload-artifact@v4
+        with:
+          name: KVL_국제대표팀통합명단_v1-standalone
+          path: dist/KVL_국제대표팀통합명단_v1.html
+          retention-days: 14
+      - name: Install isolated Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/kvl-unified-v1" --no-audit --no-fund playwright@1.56.1
+          node "$RUNNER_TEMP/kvl-unified-v1/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Verify real offline interactivity, complete roster columns, desktop and mobile
+        env:
+          KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-unified-v1/node_modules/playwright
+        run: node tests/international-unified-roster-prototype-browser-v1.cjs
+      - name: Provide standalone demo, screenshots, and QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: KVL_국제대표팀통합명단_v1-preview
+          path: |
+            dist/KVL_국제대표팀통합명단_v1.html
+            ${{ runner.temp }}/kvl-unified-roster-prototype-qa-v1.json
+            ${{ runner.temp }}/kvl-unified-prototype-*.png
+          retention-days: 14
+          if-no-files-found: warn
