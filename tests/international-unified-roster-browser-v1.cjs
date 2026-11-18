@@ -60,7 +60,7 @@ async function testApp(){
   await page.locator('[data-kvl-unified-filter="multi"]').click();
   assert.equal(await page.locator('.kvl-unified-row').count(),14);
   await page.locator('[data-kvl-unified-filter="all"]').click();
-  await page.locator('[data-kvl-unified-search]').fill('Ishikawa');
+  await page.locator('[data-kvl-unified-search]').fill('Yuki Ishikawa');
   assert.equal(await page.locator('.kvl-unified-row').count(),1);
   await page.locator('[data-kvl-unified-search]').fill('');
   await page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first().locator('.kvl-unified-club').click();
