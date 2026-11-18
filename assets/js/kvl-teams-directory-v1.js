@@ -196,7 +196,8 @@
      sourceNote='2026 대회별 선수명단 스냅샷입니다. 현행 구단 등록 자동화와 별도로 관리됩니다.';
     }else if(state.category==='high'||state.category==='middle'){
      const division=state.category+'-'+state.gender;
-     const inputs=SOURCES.school.map(prefix=>({slug:prefix+'-'+division,label:prefix.replace(/^school-/,'').replace(/-2026$/,'').toUpperCase()}));
+     const names={'school-ibk-2026':'IBK기업은행배','school-presidents-2026':'대통령배','school-iksan-2026':'익산 연맹전','school-samcheok-2026':'삼척 연맹전','school-spring-2026':'춘계대회'};
+     const inputs=SOURCES.school.map(prefix=>({slug:prefix+'-'+division,label:names[prefix]||prefix}));
      const values=await Promise.allSettled(inputs.map(x=>readJSON(sourcePath('data',x.slug))));
      const snapshots=values.flatMap((x,i)=>x.status==='fulfilled'?[{slug:inputs[i].slug,label:inputs[i].label,...x.value}]:[]);
      if(!snapshots.length)throw Error('학교 대회 자료를 불러오지 못했습니다.');
