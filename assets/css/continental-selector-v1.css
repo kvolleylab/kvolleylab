@@ -1,0 +1,66 @@
+/* Only the new continental disclosure; historical roadmap selectors are untouched. */
+.oq-summary .oq-continental-trigger{appearance:none;cursor:pointer;text-align:left;font:inherit;width:100%}
+.oq-summary .oq-quota-title{margin:0;color:#193b60;font-size:14px;font-weight:600;line-height:1.5;word-break:keep-all}
+.oq-summary .oq-continental-trigger[aria-expanded="true"]{background:#fff8e6;border-color:#d6b25e;box-shadow:inset 0 0 0 1px #d6b25e}
+.oq-summary .oq-continental-panel{margin-top:12px;padding:19px 20px 13px;border:1px solid #e8dab9;border-radius:14px;background:#fffffff5;color:#193b60;box-shadow:0 3px 12px #351b0c12}
+.oq-summary .oq-continental-panel[hidden]{display:none!important}
+.oq-summary .oq-continental-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.oq-summary .oq-continental-eyebrow{margin:0 0 4px;color:#94702c;font-size:10px;font-weight:600;letter-spacing:.2px}
+.oq-summary .oq-continental-panel h3{margin:0;font-size:15px;color:#193b60;font-weight:700;line-height:1.5}
+.oq-summary .oq-genders{display:flex;gap:4px;background:#eef2f6;padding:3px;border-radius:9px;flex-shrink:0}
+.oq-summary .oq-genders button{border:0;min-width:52px;min-height:36px;padding:7px 13px;border-radius:7px;background:transparent;color:#607185;font-size:12px;font-family:inherit;cursor:pointer}
+.oq-summary .oq-genders button[aria-pressed="true"]{background:#173857;color:#fff;font-weight:700}
+.oq-summary .oq-continental-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.oq-summary .oq-continent-card{display:flex;flex-direction:column;gap:11px;border:1px solid #dfe5eb;border-radius:11px;padding:13px 12px 10px;background:#fff;color:#193b60;text-decoration:none;transition:border-color .15s,background .15s;min-width:0;font-family:inherit!important}
+.oq-summary .oq-continent-card:hover{border-color:#c9a44c;background:#fffdf7}
+.oq-summary .oq-continental-panel :is(a,button,summary):focus-visible{outline:2px solid #9b741e;outline-offset:3px}
+.oq-summary .oq-continent-name{display:flex;flex-wrap:wrap;gap:3px 6px;align-items:center;min-height:36px;align-content:start}
+.oq-summary .oq-continent-name strong{font-size:14px;line-height:1.35;word-break:keep-all}
+.oq-summary .oq-continent-name>span{font-size:9px;color:#8b98a6;letter-spacing:.2px}
+.oq-summary .oq-continent-result{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.oq-summary .oq-result-label{font-size:10px;color:#7a8797;line-height:1.35;white-space:nowrap}
+.oq-summary .oq-country{display:flex;gap:5px;align-items:baseline;flex-wrap:wrap;line-height:1.3}
+.oq-summary .oq-country strong{font-size:15px;font-weight:700;color:#243f5c}
+.oq-summary .oq-country-code{font-size:9px;color:#8b98a6}
+.oq-summary .oq-qualified{background:#fbf6e9;border:1px solid #f1e6ca;padding:8px 9px;border-radius:7px;margin:0 -2px}
+.oq-summary .oq-qualified .oq-result-label,.oq-summary .oq-qualified .oq-country strong{color:#89621b}
+.oq-summary .oq-qualified sup{font-size:8px}
+.oq-summary .oq-continent-action{display:flex;justify-content:space-between;align-items:center;gap:4px;color:#687e95;font-size:10px;line-height:1.6;margin-top:auto}
+.oq-summary .oq-continental-exception{margin:12px 0 0;color:#78828d;font-size:10px;line-height:1.7;word-break:keep-all}
+.oq-summary .oq-continental-exception>span{color:#926d21;font-weight:600}
+.oq-summary .oq-continental-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-top:9px;border-top:1px solid #e9edf1;padding-top:10px;color:#8a96a4;font-size:9px}
+.oq-summary .oq-continental-footer>span{white-space:nowrap}
+.oq-summary .oq-continental-sources{min-width:0}
+.oq-summary .oq-continental-sources summary{color:#688096;font-size:10px;cursor:pointer;text-underline-offset:3px}
+.oq-summary .oq-continental-sources ul{padding:0;margin:12px 0 2px;list-style:none}
+.oq-summary .oq-continental-sources li{display:flex;flex-direction:column;gap:5px;margin:0 0 10px;color:#52677c;line-height:1.6}
+.oq-summary .oq-continental-sources a{color:#4f7298;overflow-wrap:anywhere;text-underline-offset:3px}
+.oq-summary .oq-pending{font-size:11px;color:#7a8797}
+.oq-summary .oq-continental-retry{display:flex;gap:16px;align-items:center;font-size:12px}
+.oq-summary .oq-continental-retry button{padding:10px;border:1px solid #ccd5df;border-radius:7px;background:#f6f8fa;cursor:pointer}
+@container(max-width:850px){.oq-summary .oq-continental-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){
+ .oq-summary .oq-quota-title{font-size:11px;line-height:1.5}
+ .oq-summary .oq-continental-panel{padding:14px 11px 11px;border-radius:11px;margin-top:10px}
+ .oq-summary .oq-continental-heading{align-items:flex-start;gap:8px;margin-bottom:11px}
+ .oq-summary .oq-continental-panel h3{font-size:12px;max-width:160px;word-break:keep-all}
+ .oq-summary .oq-continental-eyebrow{font-size:9px;margin-bottom:3px}
+ .oq-summary .oq-genders{gap:2px;padding:2px;border-radius:7px}
+ .oq-summary .oq-genders button{min-width:38px;min-height:38px;padding:6px 8px;font-size:10px}
+ .oq-summary .oq-continental-grid{grid-template-columns:1fr;gap:7px}
+ .oq-summary .oq-continent-card{display:grid;grid-template-columns:70px minmax(0,1fr) minmax(0,1fr) 10px;align-items:center;gap:5px;padding:10px 8px;border-radius:9px}
+ .oq-summary .oq-continent-name{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-height:0}
+ .oq-summary .oq-continent-name strong{font-size:11px;line-height:1.5}
+ .oq-summary .oq-continent-name>span{font-size:8px}
+ .oq-summary .oq-continent-result{flex-direction:column;align-items:flex-start;gap:4px}
+ .oq-summary .oq-result-label{font-size:8px;letter-spacing:-.2px}
+ .oq-summary .oq-country{gap:3px}
+ .oq-summary .oq-country strong{font-size:12px}
+ .oq-summary .oq-country-code{display:none}
+ .oq-summary .oq-qualified{padding:7px 6px;margin:0}
+ .oq-summary .oq-continent-action{font-size:0;justify-content:center;margin:0}
+ .oq-summary .oq-continent-action>span{font-size:11px}
+ .oq-summary .oq-continental-exception{font-size:9px;line-height:1.65;margin-top:10px}
+ .oq-summary .oq-continental-footer{font-size:8px;margin-top:9px;gap:6px}
+ .oq-summary .oq-continental-sources summary{font-size:9px}
+}

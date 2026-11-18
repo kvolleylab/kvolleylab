@@ -1,0 +1,11 @@
+.cc26-results{display:grid;gap:8px;margin:15px 0}
+.cc26-result-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 13px;border:1px solid #dce3e9;border-radius:10px;background:#f7f9fc;color:#213c58;font-size:13px}
+.cc26-result-row>span{font-size:11px;color:#63788b}
+.cc26-result-row>strong{color:#213c58;font-size:15px!important}
+.cc26-result-qualified{background:#fff8e8;border-color:#e6d5aa}
+.cc26-result-qualified>span,.cc26-result-qualified>strong{color:#8b671f}
+.cc26-result-note{font-size:12px!important;line-height:1.65!important;color:#667584!important}
+.cc26-results-link{display:inline-flex;padding:11px 14px;border-radius:9px;border:1px solid #d8c493;background:#fff9ec;color:#795818;font-weight:700;text-decoration:none;font-size:13px}
+.cc26-result-sources{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.cc26-result-sources a{color:#416b91;font-size:12px;text-underline-offset:3px;overflow-wrap:anywhere}
+@media(max-width:560px){.cc26-result-row{padding:10px 11px}.cc26-result-row>strong{font-size:14px!important}.cc26-result-note{font-size:11px!important}}
