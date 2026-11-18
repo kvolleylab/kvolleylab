@@ -61,13 +61,20 @@ function validateSelection(db){
   });
  });
 }
-function cardEntries(directory,index,gender){
+function yearsFor(index,selection,code,gender){
+ return [...new Set([
+  ...(index?.snapshots||[]).filter(s=>s.country_code===code&&s.gender===gender).map(s=>s.year),
+  ...(selection?.sets||[]).filter(s=>s.country_code===code&&s.gender===gender).map(s=>s.year)
+ ])].sort((a,b)=>b-a);
+}
+function cardEntries(directory,index,gender,selection){
  if(!validateIndex(index,directory))throw Error('Invalid country roster index');
  return directory.countries.map(c=>{
   const relevant=index.snapshots.filter(s=>s.country_code===c.code&&s.gender===gender);
+  const candidates=(selection?.sets||[]).filter(s=>s.country_code===c.code&&s.gender===gender);
   return {code:c.code,name:c.name_ko,en:c.name_en,region:c.region,gender,
    flag:flagEmoji(c.flag_iso2),snapshots:relevant.length,
-   sourceLabel:relevant.length?gender==='men'?'남자대회 '+relevant.length+'건':'여자대회 '+relevant.length+'건':'선택한 성별의 저장 자료 없음',
+   sourceLabel:relevant.length?gender==='men'?'남자대회 '+relevant.length+'건':'여자대회 '+relevant.length+'건':candidates.length?'후보·선발 자료 '+candidates.length+'건':'선택한 성별의 저장 자료 없음',
    type:'international',action:'country',count:null};
  });
 }
@@ -133,7 +140,7 @@ function render(host,opts){
  const {country,index,selection,gender,onClose,onYearChange}=opts;
  if(!validateSelection(selection))throw Error('Unverified nomination registry');
  const matches=index.snapshots.filter(s=>s.country_code===country.code&&s.gender===gender);
- const allYears=[...new Set(matches.map(x=>x.year))].sort((a,b)=>b-a);
+ const allYears=yearsFor(index,selection,country.code,gender);
  const requested=Number(opts.year);
  let year=allYears.includes(requested)?requested:allYears[0]||2026;
  let selectedSnapshot=null,alive=true;
@@ -231,5 +238,5 @@ function render(host,opts){
  showYear();
  return {year,close:()=>{alive=false;request++;host.onclick=null}};
 }
-return {esc,REGIONS,flagEmoji,validateDirectory,validateIndex,validateSelection,cardEntries,filterCountries,sourceTeam,normalizePlayer,verifiedProfileLink,compareSelection,outcomeLabel,render};
+return {esc,REGIONS,flagEmoji,validateDirectory,validateIndex,validateSelection,yearsFor,cardEntries,filterCountries,sourceTeam,normalizePlayer,verifiedProfileLink,compareSelection,outcomeLabel,render};
 });
