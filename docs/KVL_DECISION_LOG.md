@@ -1,5 +1,11 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-19 · 국제 국가별 대회 카드 가로 정렬 및 PC 선수명단 가독성 v1
+
+Status: USER REQUESTED / IMPLEMENTED IN REVIEW PR #368 / NOT DEPLOYED.
+사용자 제공 예시를 기준으로 국제 국가 상세의 대회 카드가 PC에서 가로로 정렬되고 통합 선수명단과 별도 대회명단의 글자·행 간격이 충분히 보이도록 요청했다. 기존 KVL 이름/생년월일/POS/신장/소속팀/Volleybox/대회별 참가 이력과 실제 출처 자료, 남녀·연도·국가 전환·팀 검색 및 KOVO 자동화는 유지한다. 카드에는 확인된 대회만 표시하여 2026 일본 남자 AVC컵을 임의 추가하지 않는다(기존 등록 3개 대회). PC 821px 이상 최대 4열 카드, 선수명 15px·기본 행 14px, 모바일 820px 이하 기존 레이아웃 유지. CSS와 `teams.html` 캐시 참조, Chromium QA 단언만 수정했다. 기준 main `add517ea51490305a04595e03631b5411cd13179`, 검토 PR [#368](https://github.com/kvolleylab/kvolleylab/pull/368), [검증·인계](validation/international-roster-pc-readability-v1-20261119.md). 정적 검사 통과, 실제 PR 브라우저 및 운영 HTTPS 검증은 **미실시**. 사용자 별도 운영 승인 전 병합하지 않는다.
+
+
 ## 2026-11-18 · 국제 국가대표팀 대회별 선수명단 통합 + 소형 참가 이력 v1
 
 Status: USER APPROVED / DEPLOYED ON MAIN / PAGES + COUNTRY + TEAM + UNIFIED LIVE QA PASS (2026-11-18 KST).
