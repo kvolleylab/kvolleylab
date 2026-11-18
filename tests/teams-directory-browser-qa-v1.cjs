@@ -20,6 +20,10 @@ async function intercept(page){
   try{return route.fulfill({status:200,body:fs.readFileSync(target),contentType:MIME[path.extname(target)]||'application/octet-stream'})}
   catch{return route.fulfill({status:404,body:''})}
  });
+ // The whole website is login-gated during private review. QA stubs only
+ // the login overlay in its own browser context; production access control remains untouched.
+ await page.route('https://kvolleylab.com/assets/js/member-access-gate-v1.mjs*',
+  route=>route.fulfill({status:200,body:'// test-only access-gate stub',contentType:'application/javascript'}));
 }
 async function snapshot(page,name){
  const file=path.join(OUT,'kvl-teams-'+name+'.png');
