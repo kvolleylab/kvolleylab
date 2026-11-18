@@ -26,7 +26,7 @@ function volleybox(url){
     const u=new URL(String(url||''));
     if(u.protocol!=='https:'||!['volleybox.net','www.volleybox.net'].includes(u.hostname))return {id:'',direct:'',search:''};
     const match=u.pathname.match(/^\/(?:ko\/)?[a-z0-9-]+-p([0-9]+)\/?$/i);
-    if(match)return{id:match[1],direct:'https://volleybox.net/'+u.pathname.replace(/^\/ko\//,'').replace(/\/$/,''),search:''};
+    if(match)return{id:match[1],direct:'https://volleybox.net/'+u.pathname.replace(/^\/(?:ko\/)?/,'').replace(/\/$/,''),search:''};
     if(/^\/(?:ko\/)?search\/?$/.test(u.pathname)&&u.searchParams.has('q'))return{id:'',direct:'',search:u.href};
   }catch{}
   return{id:'',direct:'',search:''};
