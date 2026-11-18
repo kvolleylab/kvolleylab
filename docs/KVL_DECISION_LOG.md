@@ -747,3 +747,12 @@ Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 남자 NORCECA는 미국이 대륙선수권 우승, 쿠바가 별도 결정전 출전권 확보다. 개최국 미국과 대륙 배정 1장을 중복 계산하지 않는다. 여자 NORCECA도 우승과 별도 결정전 결과를 독립 필드·출처로 보존한다. FIVB 12건 근거의 결과 JSON을 요약·기존 대륙 허브·상세가 공동 참조한다. 종료 대회의 ‘발표 대기’ 문구는 정정하되 미수록 로스터/경기 DB를 완료 또는 불참으로 간주하지 않는다. 기존 ID, 62개 역사 기록, 하단 디자인/필터/접기·펼치기, 2032 규정 미발표 처리, 기존 URL과 메뉴를 보존한다. 새 HERO·새 대회 페이지·자동화는 추가하지 않는다.
 
 Base `6f1d6bf6cd2975ac6d9fa68912e8318b36cc5cd3`; branch `feature/continental-winners-inline-v1`. 승인 시안 commit `9235092ecc63a704c5354f753ef36a45954ac1e2`. Node 25/25, PC·모바일 390px, 남녀 이동/복귀와 기존 허브 연결 확인. 병합·Pages·운영 확인 전까지 DEPLOYED로 표시하지 않으며 최종 증거는 PR에 기록한다. [검증·한계·복구](validation/continental-winners-inline-v1.md).
+
+
+## 2026-11-18 — FIVB 월드컵 간편 보기 v1 (검토용)
+
+- 로드맵 월드컵 3장 카드에 남녀별 간편 펼침과 기존 월드컵 상세 페이지 왕복 연결을 추가한다.
+- 공식 참가 32개국·한국 출전 경로·추첨 상태를 독립 JSON으로 관리하고 우승·참가·올림픽 출전권을 분리한다. 역사 62개와 대륙선수권은 유지한다.
+- 2032 규정 미발표 시 LA28 수량·월드컵 정보를 가져오지 않는다.
+- 현재는 사용자 검토용이며 운영 반영 승인을 별도로 받는다. 기존 Google Drive MASTER와 대회 Engine 자동화는 변경하지 않았다.
+- 근거 및 검증: [world-cup-roadmap-v1](validation/world-cup-roadmap-v1.md).

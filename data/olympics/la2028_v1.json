@@ -9,7 +9,7 @@
   "archiveStatus": "not_archived",
   "archivedAt": null,
   "checkedAt": "2026-11-16",
-  "updatedAt": "2026-11-17",
+  "updatedAt": "2026-11-18",
   "rules": {
     "status": "official_verified",
     "version": "2026-05-12",
@@ -251,5 +251,12 @@
     "olympicLabel": "LA28",
     "dataUrl": "data/olympics/la2028-continentals-v1.json",
     "fallbackUrl": "continental-championships-2026.html"
+  },
+  "worldCupOverview": {
+    "cycleId": "la2028",
+    "year": 2027,
+    "dataUrl": "data/national/fivb-world-cup-2027-v1.json",
+    "fallbackUrl": "fivb-world-cup-2027.html",
+    "olympicLabel": "LA28"
   }
 }
