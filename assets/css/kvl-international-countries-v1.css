@@ -90,3 +90,20 @@
  .ktd-country-event .ktd-country-actions button,.ktd-country-event .ktd-country-actions a,
  .ktd-country-candidate button,.ktd-country-candidate a,.ktd-country-years button{font-size:14px}
 }
+/* PC 150%-equivalent per-competition roster typography, with an internal table scroller. */
+@media (min-width:821px){
+ .ktd-country-roster-table{
+  overflow-x:auto;overflow-y:hidden;max-width:100%;
+  overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#bacbd8 #f2f5f8
+ }
+ .ktd-country-roster-label,.ktd-country-player{
+  min-width:990px;grid-template-columns:85px minmax(420px,1fr) 105px 120px 155px;
+  gap:12px;padding:15px 18px;font-size:21px;line-height:1.45
+ }
+ .ktd-country-roster-label{font-size:21px;min-height:59px}
+ .ktd-country-player{min-height:105px}
+ .ktd-country-number,.ktd-country-person small,.ktd-country-player-links a{font-size:21px}
+ .ktd-country-person strong{font-size:24px;line-height:1.35}
+ .ktd-country-person{gap:6px}
+ .ktd-country-player-links{column-gap:15px;row-gap:5px}
+}
