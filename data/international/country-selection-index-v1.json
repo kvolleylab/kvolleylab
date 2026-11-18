@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "collection": "KVL national-team candidate and selection evidence",
+  "status": "NO_VERIFIED_CANDIDATE_SETS_REGISTERED",
+  "policy": {
+    "scope": "Source-verified official candidate/preliminary/longlist, weekly, final or match-specific rosters. Not the same as a national-team tournament roster snapshot.",
+    "no_inference": "Absence from a later roster is not a confirmed cut, disqualification, injury, non-participation or country withdrawal.",
+    "identity": "Only source-verified permanent player IDs may be compared. Names, jersey numbers and unreviewed provider IDs are not identity keys.",
+    "privacy": "Public athlete fields only. Preserve the original source URL, publication date, and review state."
+  },
+  "stage_vocabulary": [
+    "candidate_pool",
+    "longlist",
+    "week",
+    "final",
+    "match"
+  ],
+  "recorded_candidate_sets": 0,
+  "sets": []
+}
