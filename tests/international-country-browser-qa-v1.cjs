@@ -31,7 +31,7 @@ async function openPage(browser,width,url){
  await serve(page);
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(BASE+url,{waitUntil:'domcontentloaded',timeout:30000});
- await page.locator('.ktd-country-card').first().waitFor({timeout:30000});
+ await page.locator('.ktd-country-card').first().waitFor({state:'attached',timeout:30000});
  return {page,errors};
 }
 async function run(){
@@ -54,6 +54,7 @@ async function run(){
   await page.locator('#ktdSearch').fill('Japan');
   assert.equal(await page.locator('.ktd-country-card').count(),1);
   await page.locator('#ktdSearch').fill('');
+  report.cases.push({case:'International 40-country directory PC',result:'PASS',...(await screenshot(page,'list-1440'))});
   await page.locator('.ktd-country-card[data-team-code=JPN] [data-ktd-country]').click();
   await page.locator('.ktd-country-panel').waitFor({timeout:10000});
   assert.match(await page.locator('.ktd-country-heading').innerText(),/일본/);
@@ -73,7 +74,7 @@ async function run(){
   await page.locator('[data-country-close]').click();
   assert.equal(await page.locator('#ktdCountryArea').isVisible(),false);
   await page.locator('[data-ktd-gender=women]').click();
-  await page.locator('.ktd-country-card').first().waitFor({timeout:30000});
+  await page.locator('.ktd-country-card').first().waitFor({state:'attached',timeout:30000});
   assert.equal(await page.locator('.ktd-country-card').count(),40,'country identity does not disappear on gender change');
   await page.locator('.ktd-country-card[data-team-code=JPN] [data-ktd-country]').click();
   await page.locator('.ktd-country-panel').waitFor({timeout:10000});
@@ -105,6 +106,7 @@ async function run(){
   for(const width of [390,360]){
    const {page:mobile,errors:mobileErrors}=await openPage(browser,width,'/teams.html?category=international&country=JPN&gender=men&year=2026');
    await mobile.locator('.ktd-country-panel').waitFor({timeout:30000});
+   assert.equal(await mobile.locator('#ktdGrid').isVisible(),false,'country details replace long list');
    await mobile.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();
    await mobile.locator('.ktd-country-player').first().waitFor({timeout:30000});
    assert.equal(await mobile.locator('.ktd-country-player').count(),16);
