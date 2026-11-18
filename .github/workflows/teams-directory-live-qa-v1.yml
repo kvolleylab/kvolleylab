@@ -1,0 +1,44 @@
+name: KVL Team Directory v1 Live Pages QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'teams.html'
+      - 'assets/js/kvl-teams-directory-v1.js'
+      - 'assets/css/kvl-teams-directory-v1.css'
+      - 'data/team-rosters/v-league/coaches-2026-27.json'
+      - 'tests/teams-directory-live-qa-v1.cjs'
+      - '.github/workflows/teams-directory-live-qa-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-pages:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install isolated Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/kvl-td-live" --no-audit --no-fund playwright@1.56.1
+          node "$RUNNER_TEMP/kvl-td-live/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Verify real kvolleylab.com men/women teams and existing member gate
+        env:
+          KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-td-live/node_modules/playwright
+        run: node tests/teams-directory-live-qa-v1.cjs
+      - name: Store actual public site screenshots and QA report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-team-directory-live-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-teams-directory-live-report.json
+            ${{ runner.temp }}/kvl-teams-live-*.png
+          retention-days: 14
+          if-no-files-found: ignore
