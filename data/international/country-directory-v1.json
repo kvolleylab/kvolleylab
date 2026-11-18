@@ -1,0 +1,550 @@
+{
+  "schema_version": 1,
+  "collection": "KVL international national-team directory",
+  "data_years": [
+    2026
+  ],
+  "source_policy": "Only published 2026 competition participants. No country non-participation inference. Existing country_master IDs reused, never reassigned.",
+  "regions": [
+    "asia",
+    "europe",
+    "north_america",
+    "south_america",
+    "oceania"
+  ],
+  "sources": [
+    {
+      "slug": "vnl-men-2026",
+      "path": "data/competitions/vnl-men-2026/data.json"
+    },
+    {
+      "slug": "vnl-women-2026",
+      "path": "data/competitions/vnl-women-2026/data.json"
+    },
+    {
+      "slug": "asian-games-men-2026",
+      "path": "data/competitions/asian-games-men-2026/data.json",
+      "roster_path": "data/competitions/asian-games-men-2026/rosters.json"
+    },
+    {
+      "slug": "asian-games-women-2026",
+      "path": "data/competitions/asian-games-women-2026/data.json",
+      "roster_path": "data/competitions/asian-games-women-2026/rosters.json"
+    },
+    {
+      "slug": "avc-men-continental-2026",
+      "path": "data/competitions/avc-men-continental-2026-rosters.json"
+    },
+    {
+      "slug": "avc-men-cup-2026",
+      "path": "data/competition/avc-men-cup-2026-men-rosters.json"
+    }
+  ],
+  "country_count": 40,
+  "countries": [
+    {
+      "code": "NED",
+      "country_id": null,
+      "name_ko": "네덜란드",
+      "name_en": "Netherlands",
+      "flag_iso2": "nl",
+      "region": "europe",
+      "available_genders": [
+        "women"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "NEP",
+      "country_id": null,
+      "name_ko": "네팔",
+      "name_en": "Nepal",
+      "flag_iso2": "np",
+      "region": "asia",
+      "available_genders": [
+        "women"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "NZL",
+      "country_id": null,
+      "name_ko": "뉴질랜드",
+      "name_en": "New Zealand",
+      "flag_iso2": "nz",
+      "region": "oceania",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "KOR",
+      "country_id": "KVL-CTY-KOR",
+      "name_ko": "대한민국",
+      "name_en": "Korea",
+      "flag_iso2": "kr",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 4
+    },
+    {
+      "code": "DOM",
+      "country_id": null,
+      "name_ko": "도미니카공화국",
+      "name_en": "Dominican Republic",
+      "flag_iso2": "do",
+      "region": "north_america",
+      "available_genders": [
+        "women"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "GER",
+      "country_id": null,
+      "name_ko": "독일",
+      "name_en": "Germany",
+      "flag_iso2": "de",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "MGL",
+      "country_id": null,
+      "name_ko": "몽골",
+      "name_en": "Mongolia",
+      "flag_iso2": "mn",
+      "region": "asia",
+      "available_genders": [
+        "women"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "USA",
+      "country_id": null,
+      "name_ko": "미국",
+      "name_en": "USA",
+      "flag_iso2": "us",
+      "region": "north_america",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "BRN",
+      "country_id": null,
+      "name_ko": "바레인",
+      "name_en": "Bahrain",
+      "flag_iso2": "bh",
+      "region": "asia",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "VIE",
+      "country_id": null,
+      "name_ko": "베트남",
+      "name_en": "Vietnam",
+      "flag_iso2": "vn",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "BEL",
+      "country_id": null,
+      "name_ko": "벨기에",
+      "name_en": "Belgium",
+      "flag_iso2": "be",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "BUL",
+      "country_id": null,
+      "name_ko": "불가리아",
+      "name_en": "Bulgaria",
+      "flag_iso2": "bg",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "BRA",
+      "country_id": "KVL-CTY-BRA",
+      "name_ko": "브라질",
+      "name_en": "Brazil",
+      "flag_iso2": "br",
+      "region": "south_america",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "SRB",
+      "country_id": null,
+      "name_ko": "세르비아",
+      "name_en": "Serbia",
+      "flag_iso2": "rs",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "SLO",
+      "country_id": null,
+      "name_ko": "슬로베니아",
+      "name_en": "Slovenia",
+      "flag_iso2": "si",
+      "region": "europe",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "ARG",
+      "country_id": null,
+      "name_ko": "아르헨티나",
+      "name_en": "Argentina",
+      "flag_iso2": "ar",
+      "region": "south_america",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "OMA",
+      "country_id": null,
+      "name_ko": "오만",
+      "name_en": "Oman",
+      "flag_iso2": "om",
+      "region": "asia",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "UZB",
+      "country_id": null,
+      "name_ko": "우즈베키스탄",
+      "name_en": "Uzbekistan",
+      "flag_iso2": "uz",
+      "region": "asia",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "UKR",
+      "country_id": null,
+      "name_ko": "우크라이나",
+      "name_en": "Ukraine",
+      "flag_iso2": "ua",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "IRI",
+      "country_id": null,
+      "name_ko": "이란",
+      "name_en": "Iran",
+      "flag_iso2": "ir",
+      "region": "asia",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 3
+    },
+    {
+      "code": "ITA",
+      "country_id": null,
+      "name_ko": "이탈리아",
+      "name_en": "Italy",
+      "flag_iso2": "it",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "IND",
+      "country_id": null,
+      "name_ko": "인도",
+      "name_en": "India",
+      "flag_iso2": "in",
+      "region": "asia",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 3
+    },
+    {
+      "code": "INA",
+      "country_id": null,
+      "name_ko": "인도네시아",
+      "name_en": "Indonesia",
+      "flag_iso2": "id",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 3
+    },
+    {
+      "code": "JPN",
+      "country_id": "KVL-CTY-JPN",
+      "name_ko": "일본",
+      "name_en": "Japan",
+      "flag_iso2": "jp",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 5
+    },
+    {
+      "code": "CHN",
+      "country_id": null,
+      "name_ko": "중국",
+      "name_en": "China",
+      "flag_iso2": "cn",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 5
+    },
+    {
+      "code": "TPE",
+      "country_id": null,
+      "name_ko": "차이니스 타이베이",
+      "name_en": "Chinese Taipei",
+      "flag_iso2": "tw",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 4
+    },
+    {
+      "code": "CZE",
+      "country_id": null,
+      "name_ko": "체코",
+      "name_en": "Czechia",
+      "flag_iso2": "cz",
+      "region": "europe",
+      "available_genders": [
+        "women"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "KAZ",
+      "country_id": null,
+      "name_ko": "카자흐스탄",
+      "name_en": "Kazakhstan",
+      "flag_iso2": "kz",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 3
+    },
+    {
+      "code": "QAT",
+      "country_id": null,
+      "name_ko": "카타르",
+      "name_en": "Qatar",
+      "flag_iso2": "qa",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 4
+    },
+    {
+      "code": "CAN",
+      "country_id": null,
+      "name_ko": "캐나다",
+      "name_en": "Canada",
+      "flag_iso2": "ca",
+      "region": "north_america",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "CUB",
+      "country_id": null,
+      "name_ko": "쿠바",
+      "name_en": "Cuba",
+      "flag_iso2": "cu",
+      "region": "north_america",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "KGZ",
+      "country_id": null,
+      "name_ko": "키르기스스탄",
+      "name_en": "Kyrgyzstan",
+      "flag_iso2": "kg",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "THA",
+      "country_id": null,
+      "name_ko": "태국",
+      "name_en": "Thailand",
+      "flag_iso2": "th",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 5
+    },
+    {
+      "code": "TUR",
+      "country_id": null,
+      "name_ko": "튀르키예",
+      "name_en": "Türkiye",
+      "flag_iso2": "tr",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "PAK",
+      "country_id": null,
+      "name_ko": "파키스탄",
+      "name_en": "Pakistan",
+      "flag_iso2": "pk",
+      "region": "asia",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 1
+    },
+    {
+      "code": "POL",
+      "country_id": "KVL-CTY-POL",
+      "name_ko": "폴란드",
+      "name_en": "Poland",
+      "flag_iso2": "pl",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "FRA",
+      "country_id": null,
+      "name_ko": "프랑스",
+      "name_en": "France",
+      "flag_iso2": "fr",
+      "region": "europe",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "PHI",
+      "country_id": null,
+      "name_ko": "필리핀",
+      "name_en": "Philippines",
+      "flag_iso2": "ph",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "AUS",
+      "country_id": null,
+      "name_ko": "호주",
+      "name_en": "Australia",
+      "flag_iso2": "au",
+      "region": "oceania",
+      "available_genders": [
+        "men"
+      ],
+      "snapshot_count": 2
+    },
+    {
+      "code": "HKG",
+      "country_id": null,
+      "name_ko": "홍콩차이나",
+      "name_en": "Hong Kong, China",
+      "flag_iso2": "hk",
+      "region": "asia",
+      "available_genders": [
+        "men",
+        "women"
+      ],
+      "snapshot_count": 2
+    }
+  ]
+}
