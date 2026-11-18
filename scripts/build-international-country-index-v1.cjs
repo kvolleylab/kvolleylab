@@ -12,14 +12,19 @@ const REGIONS={
  south_america:'BRA ARG',
  oceania:'AUS NZL'
 };
-const SOURCES=[
- {slug:'vnl-men-2026',gender:'men',title:'2026 VNL 남자부',kind:'embedded',path:'data/competitions/vnl-men-2026/data.json',href:'competition-engine.html?competition=vnl-men-2026&view=rosters'},
- {slug:'vnl-women-2026',gender:'women',title:'2026 VNL 여자부',kind:'embedded',path:'data/competitions/vnl-women-2026/data.json',href:'competition-engine.html?competition=vnl-women-2026&view=rosters'},
- {slug:'asian-games-men-2026',gender:'men',title:'2026 아시안게임 남자부',kind:'separate',path:'data/competitions/asian-games-men-2026/data.json',rosterPath:'data/competitions/asian-games-men-2026/rosters.json',href:'competition-engine.html?competition=asian-games-men-2026&view=rosters'},
- {slug:'asian-games-women-2026',gender:'women',title:'2026 아시안게임 여자부',kind:'separate',path:'data/competitions/asian-games-women-2026/data.json',rosterPath:'data/competitions/asian-games-women-2026/rosters.json',href:'competition-engine.html?competition=asian-games-women-2026&view=rosters'},
- {slug:'avc-men-continental-2026',gender:'men',title:'2026 AVC 남자 대륙선수권',kind:'team-array',path:'data/competitions/avc-men-continental-2026-rosters.json',href:'international-competition-avc-men-continental-2026.html'},
- {slug:'avc-men-cup-2026',gender:'men',title:'2026 AVC 남자컵',kind:'cup',path:'data/competition/avc-men-cup-2026-men-rosters.json',href:'avc-men-cup.html'}
-];
+const CONFIG=read('data/international/country-source-config-v1.json');
+const SOURCES=CONFIG?.sources;
+if(CONFIG?.schema_version!==1||!Array.isArray(SOURCES)||SOURCES.length<5)
+ throw Error('Missing reviewed international competition source config');
+const used=new Set();
+for(const x of SOURCES){
+ if(!x||!/^\d{4}$/.test(String(x.year||''))||!['men','women'].includes(x.gender)
+  ||!['embedded','separate','team-array','cup'].includes(x.kind)
+  ||!/^data\/(?:competitions|competition)\/[a-z0-9_-]+(?:\/(?:data|rosters))?\.json$/.test(x.path||'')
+  ||x.rosterPath&&!/^data\/competitions\/[a-z0-9_-]+\/rosters\.json$/.test(x.rosterPath)
+  ||!x.slug||used.has(x.slug)||!x.title||!x.href)throw Error('Unreviewed or duplicate source '+x?.slug);
+ used.add(x.slug);
+}
 const CODE=/^[A-Z]{3}$/;
 const safeUrl=u=>typeof u==='string'&&/^https:\/\//.test(u)?u:null;
 const regionFor=code=>{
@@ -32,7 +37,7 @@ function build(){
  const existingIds=new Map(existing.map(x=>[x.iso3,x.country_id]));
  const countries=new Map(),snapshots=[];
  const data=SOURCES.map(src=>({...src,raw:read(src.path),rosters:src.rosterPath?read(src.rosterPath):null}));
- for(const src of data.slice(0,5)){
+ for(const src of data.filter(x=>x.kind!=='cup')){
   const participants=src.kind==='team-array'?src.raw.teams:src.raw.participants;
   if(!Array.isArray(participants))throw Error('Source participants missing: '+src.path);
   for(const team of participants){
@@ -45,7 +50,7 @@ function build(){
    countries.set(team.code,c);
   }
  }
- if(countries.size!==40)throw Error('Country roster changed: expected 40 grounded countries, got '+countries.size+'. Review source changes explicitly.');
+ if(countries.size<40)throw Error('Existing country evidence unexpectedly shrank below 40; check source revisions.');
  const english=new Map([...countries.values()].map(c=>[c.name_en.toLowerCase(),c.code]));
  for(const src of data){
   let teams;
@@ -66,7 +71,7 @@ function build(){
     snapshot_id:src.slug+':'+code,
     country_code:code,
     gender:src.gender,
-    year:2026,
+    year:src.year,
     competition_slug:src.slug,
     competition_title:src.title,
     stage,
@@ -94,8 +99,8 @@ function build(){
    snapshot_count:snapshots.filter(s=>s.country_code===c.code).length
   };
  }).sort((a,b)=>a.name_ko.localeCompare(b.name_ko,'ko'));
- const countriesOut={schema_version:1,collection:'KVL international national-team directory',data_years:[2026],
-  source_policy:'Only published 2026 competition participants. No country non-participation inference. Existing country_master IDs reused, never reassigned.',
+ const countriesOut={schema_version:1,collection:'KVL international national-team directory',data_years:[...new Set(SOURCES.map(s=>s.year))].sort((a,b)=>a-b),
+  source_policy:'Only source-approved published competition participants. No country non-participation inference. Existing country_master IDs reused, never reassigned.',
   regions:['asia','europe','north_america','south_america','oceania'],
   sources:SOURCES.map(({slug,path,rosterPath})=>({slug,path,...rosterPath?{roster_path:rosterPath}:{}})),
   country_count:overview.length,countries:overview};
