@@ -1,7 +1,7 @@
 # K-Volley Lab 팀 찾기 v1 · V-리그 공식 명단 재사용 검증
 
 Date: 2026-11-18 KST
-Status: USER AUTHORIZED / IMPLEMENTED ON FEATURE BRANCH / PRODUCTION DEPLOYMENT NOT YET VERIFIED.
+Status: USER APPROVED / VERIFIED / DEPLOYED ON MAIN AND LIVE HTTPS QA PASS (2026-11-18 KST).
 
 ## 목적·대상
 
@@ -40,3 +40,14 @@ Status: USER AUTHORIZED / IMPLEMENTED ON FEATURE BRANCH / PRODUCTION DEPLOYMENT 
 - 복구: #359 관련 teams.html 및 새 팀 디렉터리 전용 파일만 되돌리며, 현재 KOVO 로스터 게시물·수집기·회원 데이터는 원복하지 않는다.
 - 영구 Player_ID 중복 해소는 Issue #334, 비신인 이적·차기 시즌 확장은 Issue #331에 남긴다.
 - Google Drive 원본의 이번 세션 독립 대조는 불가했던 경우 NOT VERIFIED로 남긴다. 현재 명단은 운영 GitHub JSON 및 기존 공식 source 기록을 재사용한다.
+
+## 최종 운영 배포 증거 · 2026-11-18
+
+- 사용자 승인 요청 수행 PR #359: https://github.com/kvolleylab/kvolleylab/pull/359
+- main squash merge SHA: a73224d3aa45ab39a28904249da34b4c01784c8b
+- GitHub Pages deployment: https://github.com/kvolleylab/kvolleylab/actions/runs/44228768536 — SUCCESS at same SHA.
+- 실제 HTTPS GitHub Pages browser QA: https://github.com/kvolleylab/kvolleylab/actions/runs/44228772412 — SUCCESS, artifact #14393304623.
+- 공개 도메인 kvolleylab.com/teams.html 남자 7팀 149명, 여자 7팀 138명 (2026-11-18 검수 당시 자동 공시명단 기준). 실제 페이지에서 OK저축은행 21명 및 정관장 18명 상세 명단을 로드, 윤경 출신 남성고·인하대 및 프로필 이동, 김아중 청수고만 확인·미검증 프로필 링크 차단을 검증.
+- 라이브 PC1440/모바일390 남녀 4화면에서 카드/실제 JSON 수/직접 이름 링크/가로 넘침 0px PASS. 구단 14개 전체, 대학 남15·여6 및 학교 카테고리는 PR 단위 소스/Chromium 검수에서 PASS. 라이브 크로스 디바이스 QA는 남녀 대표 구단 2팀 샘플이며 전체 14팀 각각 운영 GUI 방문을 의미하지 않는다.
+- 기존 KVL 회원 접근 정책은 enabled=true, teams.html 보호 유지. 라이브 UI 테스트 브라우저에서만 테스트 전용 인증 오버레이 스텁 사용; 실제 관리자 계정 인증 실습을 수행했다고 주장하지 않는다.
+- 기존 대학 Player Master 등록 CI 실패는 별도 기존 작업으로 유지. 2026-27 감독은 소스 확인일 기준 스냅샷이며 자동 갱신 대상이 아니다. KOVO 현행 선수명단 자동화·점수·선수 영구 ID는 변경하지 않았다.
