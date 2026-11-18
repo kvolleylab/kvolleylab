@@ -16,7 +16,7 @@
   high:{title:'고교 팀',eyebrow:'HIGH SCHOOL'},
   middle:{title:'중학 팀',eyebrow:'MIDDLE SCHOOL'},
   national:{title:'대한민국 대표팀',eyebrow:'NATIONAL TEAM'},
-  international:{title:'국제 팀·대회',eyebrow:'INTERNATIONAL VOLLEYBALL'}
+  international:{title:'국제 대표팀',eyebrow:'INTERNATIONAL NATIONAL TEAMS'}
  };
  const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const short=x=>String(x||'').trim().replace(/대학교$/,'대');
@@ -100,6 +100,12 @@
   return '<span class="ktd-monogram" aria-hidden="true">'+esc(short(t.name).slice(0,2)||'팀')+'</span>';
  }
  function cardMarkup(t){
+  if(t.action==='country')return '<article class="ktd-card ktd-country-card" data-team-code="'+esc(t.code)+'">'+
+   '<div class="ktd-card-body"><div class="ktd-card-logo"><span class="ktd-flag-icon" aria-hidden="true">'+esc(t.flag)+'</span></div>'+
+   '<div class="ktd-card-copy"><div class="ktd-card-eyebrow"><strong>국제</strong> · NATIONAL TEAM</div>'+
+   '<div class="ktd-card-name-row"><h3>'+esc(t.name)+'</h3></div>'+
+   '<p class="ktd-card-meta">'+esc(t.en||t.code)+'</p><p class="ktd-card-meta">'+esc(t.sourceLabel||'선수단 자료 확인 중')+'</p></div></div>'+
+   '<button class="ktd-card-action" type="button" data-ktd-country="'+esc(t.code)+'"><span>연도·대회별 명단 보기</span><span aria-hidden="true">›</span></button></article>';
   const g=t.gender==='women'?'WOMEN':t.gender==='men'?'MEN':'';
   const label=t.type==='pro'?'프로':t.type==='university'?'대학':t.type==='high'?'고교':t.type==='middle'?'중학':t.type==='national'?'대표팀':'국제';
   const count=t.count===null||t.count===undefined?'':'<span class="ktd-card-count">'+esc(t.count)+'명</span>';
@@ -131,15 +137,27 @@
   const state={
    category:CATEGORIES[params.get('category')]?params.get('category'):'pro',
    gender:['men','women'].includes(params.get('gender'))?params.get('gender'):'men',
-   query:'',entries:[],raw:null,season:'2026-27',token:0,teamFromURL:params.get('team')||'',selected:''
+   query:'',entries:[],raw:null,season:'2026-27',token:0,teamFromURL:params.get('team')||'',selected:'',
+   region:params.get('region')||'all',countryFromURL:params.get('country')||'',selectedCountry:'',
+   countryIndex:null,selectionIndex:null,year:params.get('year')||''
   };
   const rosterArea=el('ktdRosterArea'),rosterHost=el('ktdRosterHost');
+  const countryArea=el('ktdCountryArea'),regionRow=el('ktdRegionFilters');
+  const international=()=>window.KVLInternationalCountriesV1;
+  let countryController=null;
+  const hideCountry=()=>{
+   countryController?.close?.();countryController=null;state.selectedCountry='';
+   countryArea.hidden=true;countryArea.replaceChildren();grid.hidden=false;
+  };
   const hideRoster=()=>{state.selected='';rosterArea.hidden=true;rosterHost.replaceChildren()};
   function syncUrl(){
    const p=new URLSearchParams(location.search);
    p.set('category',state.category);
-   if(state.category!=='national'&&state.category!=='international')p.set('gender',state.gender);else p.delete('gender');
+   if(state.category!=='national')p.set('gender',state.gender);else p.delete('gender');
    if(state.category==='pro'&&state.selected)p.set('team',state.selected);else p.delete('team');
+   if(state.category==='international'&&state.selectedCountry)p.set('country',state.selectedCountry);else p.delete('country');
+   if(state.category==='international'&&state.region!=='all')p.set('region',state.region);else p.delete('region');
+   if(state.category==='international'&&state.selectedCountry&&state.year)p.set('year',String(state.year));else p.delete('year');
    history.replaceState(history.state,'',location.pathname+'?'+p.toString()+location.hash);
   }
   function controls(){
@@ -147,15 +165,20 @@
    el('ktdHeading').textContent=c.title;
    el('ktdSectionEyebrow').textContent=c.eyebrow;
    catRow.querySelectorAll('[data-ktd-category]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdCategory===state.category)));
-   genders.hidden=state.category==='national'||state.category==='international';
+   genders.hidden=state.category==='national';
+   regionRow.hidden=state.category!=='international';
+   regionRow.querySelectorAll('[data-ktd-region]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdRegion===state.region)));
    genders.dataset.gender=state.gender;
    genders.querySelectorAll('[data-ktd-gender]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdGender===state.gender)));
-   el('ktdSearch').placeholder=state.category==='pro'?'구단명 검색':'팀 이름 검색';
+   el('ktdSearch').placeholder=state.category==='international'?'국가명·영문명 검색':state.category==='pro'?'구단명 검색':'팀 이름 검색';
   }
   function paint(){
    controls();
-   const list=state.entries.filter(t=>!state.query||String(t.name||'').toLowerCase().includes(state.query));
-   grid.innerHTML=list.length?list.map(cardMarkup).join(''):'<p class="ktd-empty">검색 결과가 없습니다.</p>';
+   const list=state.category==='international'&&international()
+    ?international().filterCountries(state.entries,state.region,state.query)
+    :state.entries.filter(t=>!state.query||String(t.name||'').toLowerCase().includes(state.query));
+   grid.innerHTML=list.length?list.map(cardMarkup).join(''):
+    '<p class="ktd-empty">'+(state.category==='international'?'선택한 지역에서 등록된 대회 참가 국가가 없습니다. 이것이 모든 국가의 미참가를 뜻하지는 않습니다.':'검색 결과가 없습니다.')+'</p>';
    grid.setAttribute('aria-busy','false');
   }
   function loading(){
@@ -165,7 +188,7 @@
   }
   function note(msg){el('ktdSourceNote').textContent=msg}
   async function load(){
-   const token=++state.token;hideRoster();controls();loading();
+   const token=++state.token;hideRoster();hideCountry();controls();loading();
    try{
     let list=[],raw=null,summary='',sourceNote='';
     if(state.category==='pro'){
@@ -204,6 +227,22 @@
      list=buildSchool(snapshots,state.category,state.gender);
      summary='2026 대회 참가 이력에서 확인된 '+list.length+'개 팀';
      sourceNote='2026년 연결된 학교대회 참가 기록을 합쳐 표시합니다. 학교 전체 등록팀 명부가 아닌 대회 참가팀 목록입니다.';
+    }else if(state.category==='international'){
+     const api=international();
+     if(!api)throw Error('국가별 팀 모듈을 불러오지 못했습니다.');
+     const [directory,sourceIndex,selection]=await Promise.all([
+      readJSON('data/international/country-directory-v1.json'),
+      readJSON('data/international/country-roster-index-v1.json'),
+      readJSON('data/international/country-selection-index-v1.json')
+     ]);
+     if(!api.validateIndex(sourceIndex,directory)||!api.validateSelection(selection))
+      throw Error('국제 대표팀 출처 색인 오류');
+     list=api.cardEntries(directory,sourceIndex,state.gender,selection);
+     raw={directory,sourceIndex,selection};
+     state.countryIndex=raw;state.selectionIndex=selection;
+     summary='2026 기존 대회 참가 국가·지역 '+directory.country_count+'개 · '+(state.gender==='men'?'남자':'여자')+
+       ' 명단 스냅샷 '+sourceIndex.snapshots.filter(x=>x.gender===state.gender).length+'건';
+     sourceNote='VNL·아시안게임·AVC 2026 대회 등록 자료 기반. 후보·최종 명단은 공식 근거가 있을 때만 별도 구분합니다.';
     }else{
      list=curated(state.category);
      summary='연결된 기존 자료 '+list.length+'개';
@@ -218,6 +257,10 @@
      const chosen=state.teamFromURL;state.teamFromURL='';
      await openRoster(chosen);
     }
+    if(state.category==='international'&&state.countryFromURL&&list.some(x=>x.code===state.countryFromURL)){
+     const code=state.countryFromURL;state.countryFromURL='';
+     openCountry(code);
+    }
    }catch(error){
     if(token!==state.token)return;
     state.entries=[];state.raw=null;
@@ -227,6 +270,21 @@
     note('KVL 데이터 연결 오류 · 기존 명단은 변경되지 않았습니다.');
     console.error('[KVL teams directory]',error);
    }
+  }
+  function openCountry(code){
+   if(state.category!=='international'||!state.raw?.directory)return;
+   const country=state.raw.directory.countries.find(c=>c.code===code);
+   if(!country)return;
+   hideRoster();hideCountry();state.selectedCountry=code;state.countryFromURL='';
+   const api=international(),gender=state.gender;
+   countryArea.hidden=false;grid.hidden=true;
+   countryController=api.render(countryArea,{
+    country,index:state.raw.sourceIndex,selection:state.raw.selection,gender,year:state.year,
+    onClose:()=>{hideCountry();state.year='';syncUrl();grid.scrollIntoView({behavior:'smooth',block:'start'})},
+    onYearChange:year=>{state.year=year;syncUrl()}
+   });
+   state.year=countryController.year;syncUrl();
+   countryArea.scrollIntoView({behavior:'smooth',block:'start'});
   }
   async function openRoster(code){
    if(state.category!=='pro'||!state.raw)return;
@@ -265,23 +323,31 @@
    const button=event.target.closest('[data-ktd-category]');
    if(!button||!CATEGORIES[button.dataset.ktdCategory])return;
    if(state.category===button.dataset.ktdCategory)return;
-   state.category=button.dataset.ktdCategory;state.query='';state.teamFromURL='';
+   state.category=button.dataset.ktdCategory;state.query='';state.teamFromURL='';state.countryFromURL='';state.year='';
    el('ktdSearch').value='';load();
   });
   genders.addEventListener('click',event=>{
    const button=event.target.closest('[data-ktd-gender]');
    if(!button||!['men','women'].includes(button.dataset.ktdGender)||state.gender===button.dataset.ktdGender)return;
-   state.gender=button.dataset.ktdGender;state.query='';state.teamFromURL='';
+   state.gender=button.dataset.ktdGender;state.query='';state.teamFromURL='';state.countryFromURL='';state.year='';
    el('ktdSearch').value='';load();
   });
+  regionRow.addEventListener('click',event=>{
+   const button=event.target.closest('[data-ktd-region]');
+   if(state.category!=='international'||!button||!international()?.REGIONS[button.dataset.ktdRegion])return;
+   state.region=button.dataset.ktdRegion;if(state.selectedCountry){hideCountry();state.year=''}paint();syncUrl();
+  });
   grid.addEventListener('click',event=>{
+   const countryButton=event.target.closest('[data-ktd-country]');
+   if(countryButton){openCountry(countryButton.dataset.ktdCountry);return}
    const button=event.target.closest('[data-ktd-roster]');
    if(button)openRoster(button.dataset.ktdRoster);
   });
   el('ktdSearch').addEventListener('input',event=>{
+   if(state.selectedCountry){hideCountry();state.year='';syncUrl()}
    state.query=event.target.value.trim().toLowerCase();paint();
   });
-  el('ktdRefresh').addEventListener('click',()=>{state.teamFromURL=state.selected||'';load()});
+  el('ktdRefresh').addEventListener('click',()=>{state.teamFromURL=state.selected||'';state.countryFromURL=state.selectedCountry||'';load()});
   el('ktdCloseRoster').addEventListener('click',()=>{hideRoster();syncUrl()});
   load();
  }

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "purpose": "Approved historical competition-roster sources for the international country directory; explicit additions required for new years or tournaments.",
+  "sources": [
+    {
+      "slug": "vnl-men-2026",
+      "year": 2026,
+      "gender": "men",
+      "title": "2026 VNL 남자부",
+      "kind": "embedded",
+      "path": "data/competitions/vnl-men-2026/data.json",
+      "href": "competition-engine.html?competition=vnl-men-2026&view=rosters"
+    },
+    {
+      "slug": "vnl-women-2026",
+      "year": 2026,
+      "gender": "women",
+      "title": "2026 VNL 여자부",
+      "kind": "embedded",
+      "path": "data/competitions/vnl-women-2026/data.json",
+      "href": "competition-engine.html?competition=vnl-women-2026&view=rosters"
+    },
+    {
+      "slug": "asian-games-men-2026",
+      "year": 2026,
+      "gender": "men",
+      "title": "2026 아시안게임 남자부",
+      "kind": "separate",
+      "path": "data/competitions/asian-games-men-2026/data.json",
+      "rosterPath": "data/competitions/asian-games-men-2026/rosters.json",
+      "href": "competition-engine.html?competition=asian-games-men-2026&view=rosters"
+    },
+    {
+      "slug": "asian-games-women-2026",
+      "year": 2026,
+      "gender": "women",
+      "title": "2026 아시안게임 여자부",
+      "kind": "separate",
+      "path": "data/competitions/asian-games-women-2026/data.json",
+      "rosterPath": "data/competitions/asian-games-women-2026/rosters.json",
+      "href": "competition-engine.html?competition=asian-games-women-2026&view=rosters"
+    },
+    {
+      "slug": "avc-men-continental-2026",
+      "year": 2026,
+      "gender": "men",
+      "title": "2026 AVC 남자 대륙선수권",
+      "kind": "team-array",
+      "path": "data/competitions/avc-men-continental-2026-rosters.json",
+      "href": "international-competition-avc-men-continental-2026.html"
+    },
+    {
+      "slug": "avc-men-cup-2026",
+      "year": 2026,
+      "gender": "men",
+      "title": "2026 AVC 남자컵",
+      "kind": "cup",
+      "path": "data/competition/avc-men-cup-2026-men-rosters.json",
+      "href": "avc-men-cup.html"
+    }
+  ]
+}

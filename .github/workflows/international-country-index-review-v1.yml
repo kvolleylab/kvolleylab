@@ -1,0 +1,64 @@
+name: International Country Source Index Review PR
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/international/country-source-config-v1.json'
+      - 'data/competitions/vnl-men-2026/data.json'
+      - 'data/competitions/vnl-women-2026/data.json'
+      - 'data/competitions/asian-games-men-2026/data.json'
+      - 'data/competitions/asian-games-women-2026/data.json'
+      - 'data/competitions/asian-games-men-2026/rosters.json'
+      - 'data/competitions/asian-games-women-2026/rosters.json'
+      - 'data/competitions/avc-men-continental-2026-rosters.json'
+      - 'data/competition/avc-men-cup-2026-men-rosters.json'
+      - 'scripts/build-international-country-index-v1.cjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: international-country-derived-index-v1
+  cancel-in-progress: false
+
+jobs:
+  derive-and-propose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Derive published historical source pointers
+        run: node scripts/build-international-country-index-v1.cjs --write
+      - name: Verify generated metadata and candidate identity contract
+        run: |
+          node scripts/build-international-country-index-v1.cjs --check
+          node --test tests/international-country-history-v1.test.cjs
+      - name: Open review-only PR when derived indexes differ
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- data/international/country-directory-v1.json data/international/country-roster-index-v1.json; then
+            echo "No new source-approved country metadata."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C automation/international-country-index-v1
+          git add data/international/country-directory-v1.json data/international/country-roster-index-v1.json
+          git commit -m "Update sourced international country index for review"
+          git push --force-with-lease origin HEAD:refs/heads/automation/international-country-index-v1
+          if gh pr list --head automation/international-country-index-v1 --state open --json number --jq 'length' | grep -qx '0'; then
+            gh pr create --base main --head automation/international-country-index-v1 \
+              --title "[자동 검수] 국제 국가·대회 명단 출처 색인 갱신" \
+              --body "Existing approved tournament sources changed. This PR updates only derived country metadata pointers; no master, player IDs, original rosters or candidate selections are altered. Human source review and approval required before merging."
+          else
+            echo "Existing derived-index review PR updated."
+          fi
