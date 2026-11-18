@@ -2,12 +2,12 @@
 
 ## 2026-11-18 · 선수·팀 → 팀 통합 디렉터리 v1 / V-리그 최신 자동 명단 연결
 
-Status: USER APPROVED / IMPLEMENTED ON FEATURE / PRODUCTION DEPLOYMENT PENDING.
+Status: USER APPROVED / VERIFIED / DEPLOYED ON MAIN · LIVE HTTPS QA PASS (2026-11-18 KST).
 사용자 승인에 따라 기존 '팀' 임시 안내 페이지를 PC/모바일 통합 팀 찾기 화면으로 교체한다. 프로를 기본으로 6개 분류(프로·대학·고교·중학·대표팀·국제), 남녀부 필터, 로고 폭 약 1/3, 팀명·감독·현행 선수 수, 카드 하단 선수명단 보기를 사용한다. 프로 명단은 별도 복사하지 않고 기존 GitHub KOVO 공시 수집기의 시즌별 rosters.json 및 기존 선수명단 v2·신인 검증 브리지와 직접 연결한다. 단순 카드 인원 수는 원본 명단 배열 길이로 매번 계산하고 오래된 competition.data 참여팀 수치를 사용하지 않는다. 미검증 선수 ID 연결/고교·대학교 임의 보완은 금지, 26개 역사 충돌 보호 유지.
 
 대학은 2026 대학 U-리그 검수된 참가·선수명단, 고교/중학은 구축된 2026 학교 대회 참가 목록을 통해 링크한다. 대표팀·국제는 실제 구축된 관련 페이지로 연결한다. 2026-27 감독 정보는 10월 미디어데이와 한국도로공사 정식 선임 출처를 저장한 확인일 기준 스냅샷으로 사용하며 명단 자동 갱신과 별도다. 기존 teams.html 회원 로그인 보호는 제거하지 않는다.
 
-Branch feature/teams-directory-v1-20261118; 기준 main 46d856c4911830fcfb5eaef534c9cf377885cebf; PR #359. 신규 team directory 파일/QA와 teams.html만 교체하고 V-리그 대회 원본·KOVO 자동화·경기 DB·선수 MASTER·Supabase 메모·공통 사이드바는 그대로 유지. 검증·운영 반영·복구 세부: [docs/validation/teams-directory-v1-20261118.md](validation/teams-directory-v1-20261118.md). 운영 배포 증거는 PR 및 GitHub Pages run으로 별도 기록.
+Branch feature/teams-directory-v1-20261118; 기준 main 46d856c4911830fcfb5eaef534c9cf377885cebf; PR #359. 신규 team directory 파일/QA와 teams.html만 교체하고 V-리그 대회 원본·KOVO 자동화·경기 DB·선수 MASTER·Supabase 메모·공통 사이드바는 그대로 유지. 검증·운영 반영·복구 세부: [docs/validation/teams-directory-v1-20261118.md](validation/teams-directory-v1-20261118.md). 운영 배포: PR #359 squash merge a73224d3aa45ab39a28904249da34b4c01784c8b, GitHub Pages run #44228768536 SUCCESS, kvolleylab.com 실제 페이지 Chromium 남녀 PC1440·모바일390 QA run #44228772412 SUCCESS (공식 남149·여138명, OK 21·정관장18 상세, 프로필 및 학교 증거, 가로 넘침 0). 전체 14팀은 별도 PR 검수로 확인하고 운영 실제 브라우저는 남녀 대표 2팀 샘플로 구분한다. 기존 멤버 로그인 보호는 유지하며 테스트만 QA 전용 스텁으로 UI 동작을 측정. 감독은 수동 검증 스냅샷이다. 기존 KOVO 수집기·데이터·회원 기능 불변.
 
 
 ## 2026-11-18 · V-리그 최신 참가팀 명단 v2 + 안전한 선수 프로필·고교/대학 연결
