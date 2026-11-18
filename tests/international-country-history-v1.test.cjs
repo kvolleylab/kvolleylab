@@ -126,18 +126,22 @@ test('candidate registry starts empty; comparisons require immutable IDs and fin
  const candidate={
   snapshot_id:'test-candidate',country_code:'JPN',gender:'men',year:2026,competition_slug:'avc-men-continental-2026',
   stage:'candidate_pool',source_id:'EXAMPLE-OFFICIAL-01',source_url:'https://example.org/volleyball/teams/roster',
-  published_at:'2026-08-03',
+  source_sha256:'a'.repeat(64),review_status:'VERIFIED',reviewed_at:'2026-08-04',published_at:'2026-08-03',
   players:[{name_ko:'선수 A',verified_player_id:'KVL-P-000340',identity_source_id:'SCOUT-VERIFIED'},
            {name_ko:'선수 B',verified_player_id:'KVL-P-000346',identity_source_id:'SCOUT-VERIFIED'},
            {name_ko:'선수 C'}]
  };
  assert.ok(api.validateSelection({schema_version:1,recorded_candidate_sets:1,sets:[candidate]}));
- const complete={stage:'final',identities_complete:true,source_url:'https://example.org/volleyball/final',
+ const complete={country_code:'JPN',gender:'men',year:2026,competition_slug:'avc-men-continental-2026',
+  stage:'final',identities_complete:true,official_roster_complete:true,player_count:1,
+  review_status:'VERIFIED',source_sha256:'b'.repeat(64),source_url:'https://example.org/volleyball/final',
   players:[{name_ko:'선수 A',verified_player_id:'KVL-P-000340',identity_source_id:'SCOUT-VERIFIED'}]};
  const compared=api.compareSelection(candidate,complete);
  assert.deepEqual(compared.map(x=>x.selection_state),['in_final','not_in_recorded_final','unresolved']);
  assert.match(api.outcomeLabel(compared[1].selection_state),/사유 미확인/);
  assert.deepEqual(api.compareSelection(candidate,{...complete,identities_complete:false}).map(x=>x.selection_state),['unresolved','unresolved','unresolved']);
+ assert.deepEqual(api.compareSelection(candidate,{...complete,country_code:'THA'}).map(x=>x.selection_state),['unresolved','unresolved','unresolved']);
+ assert.deepEqual(api.compareSelection(candidate,{...complete,source_sha256:null}).map(x=>x.selection_state),['unresolved','unresolved','unresolved']);
  const invalid={...candidate,source_url:'javascript:alert(1)'};
  assert.equal(api.validateSelection({schema_version:1,recorded_candidate_sets:1,sets:[invalid]}),false);
  const noSource={...candidate,players:[{name_ko:'선수 A',verified_player_id:'KVL-P-000340'}]};
