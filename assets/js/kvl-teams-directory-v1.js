@@ -237,7 +237,7 @@
      ]);
      if(!api.validateIndex(sourceIndex,directory)||!api.validateSelection(selection))
       throw Error('국제 대표팀 출처 색인 오류');
-     list=api.cardEntries(directory,sourceIndex,state.gender);
+     list=api.cardEntries(directory,sourceIndex,state.gender,selection);
      raw={directory,sourceIndex,selection};
      state.countryIndex=raw;state.selectionIndex=selection;
      summary='2026 기존 대회 참가 국가·지역 '+directory.country_count+'개 · '+(state.gender==='men'?'남자':'여자')+
