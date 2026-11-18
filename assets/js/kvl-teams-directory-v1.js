@@ -147,7 +147,7 @@
   let countryController=null;
   const hideCountry=()=>{
    countryController?.close?.();countryController=null;state.selectedCountry='';
-   countryArea.hidden=true;countryArea.replaceChildren();
+   countryArea.hidden=true;countryArea.replaceChildren();grid.hidden=false;
   };
   const hideRoster=()=>{state.selected='';rosterArea.hidden=true;rosterHost.replaceChildren()};
   function syncUrl(){
@@ -277,10 +277,10 @@
    if(!country)return;
    hideRoster();hideCountry();state.selectedCountry=code;state.countryFromURL='';
    const api=international(),gender=state.gender;
-   countryArea.hidden=false;
+   countryArea.hidden=false;grid.hidden=true;
    countryController=api.render(countryArea,{
     country,index:state.raw.sourceIndex,selection:state.raw.selection,gender,year:state.year,
-    onClose:()=>{hideCountry();state.year='';syncUrl()},
+    onClose:()=>{hideCountry();state.year='';syncUrl();grid.scrollIntoView({behavior:'smooth',block:'start'})},
     onYearChange:year=>{state.year=year;syncUrl()}
    });
    state.year=countryController.year;syncUrl();
@@ -335,7 +335,7 @@
   regionRow.addEventListener('click',event=>{
    const button=event.target.closest('[data-ktd-region]');
    if(state.category!=='international'||!button||!international()?.REGIONS[button.dataset.ktdRegion])return;
-   state.region=button.dataset.ktdRegion;paint();syncUrl();
+   state.region=button.dataset.ktdRegion;if(state.selectedCountry){hideCountry();state.year=''}paint();syncUrl();
   });
   grid.addEventListener('click',event=>{
    const countryButton=event.target.closest('[data-ktd-country]');
@@ -344,6 +344,7 @@
    if(button)openRoster(button.dataset.ktdRoster);
   });
   el('ktdSearch').addEventListener('input',event=>{
+   if(state.selectedCountry){hideCountry();state.year='';syncUrl()}
    state.query=event.target.value.trim().toLowerCase();paint();
   });
   el('ktdRefresh').addEventListener('click',()=>{state.teamFromURL=state.selected||'';state.countryFromURL=state.selectedCountry||'';load()});
