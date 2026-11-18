@@ -125,3 +125,16 @@
  .kvl-unified-name strong{font-size:14px}
  .kvl-unified-dots{gap:4px}
 }
+/* User readability refinement: match the KVL PC sidebar's 14px menu text. */
+@media (min-width:821px){
+ .kvl-unified-top p:last-child,.kvl-unified-legend>span{font-size:14px}
+ .kvl-unified-controls .kvl-unified-filters button,.kvl-unified-search input{font-size:14px}
+ .kvl-unified-count,.kvl-unified-head,.kvl-unified-row{font-size:14px}
+ .kvl-unified-head{min-height:47px}
+ .kvl-unified-row{min-height:73px}
+ .kvl-unified-name strong{font-size:16px;line-height:1.4}
+ .kvl-unified-name small,.kvl-unified-dob,.kvl-unified-pos,.kvl-unified-height,.kvl-unified-club,.kvl-unified-volleybox{font-size:14px;line-height:1.45}
+ .kvl-unified-note,.kvl-unified-detail>p,.kvl-unified-detail-head small,
+ .kvl-unified-detail-head button,.kvl-unified-detail-event strong,.kvl-unified-detail-event span,
+ .kvl-unified-detail-links a,.kvl-unified-dot-empty{font-size:14px}
+}
