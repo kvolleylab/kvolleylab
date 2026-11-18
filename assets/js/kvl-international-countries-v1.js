@@ -153,13 +153,54 @@ function render(host,opts){
   '<div class="ktd-country-years" data-country-years aria-label="연도별 명단 선택"></div>'+
   '<p class="ktd-country-note">국가별 페이지는 하나로 유지하며, 연도·대회별 등록·최종·출국 명단을 원본 스냅샷으로 구분합니다.</p>'+
   '<div data-country-events class="ktd-country-events"></div>'+
+  '<section data-country-unified class="ktd-country-unified" aria-label="연도별 통합 선수명단" hidden></section>'+
   '<section class="ktd-country-selection"><h3>후보·선발 이력</h3><div data-country-selection></div></section>'+
   '<section data-country-roster class="ktd-country-roster" hidden aria-live="polite"></section></div>';
  const yearsHost=host.querySelector('[data-country-years]'),eventsHost=host.querySelector('[data-country-events]');
  const rosterHost=host.querySelector('[data-country-roster]'),selectionHost=host.querySelector('[data-country-selection]');
- let request=0;
+ const unifiedHost=host.querySelector('[data-country-unified]');
+ let request=0,unifiedTicket=0,unifiedInstance=null;
+ async function showUnified(){
+  const ticket=++unifiedTicket,displayYear=year;
+  unifiedInstance?.destroy?.();unifiedInstance=null;unifiedHost.replaceChildren();unifiedHost.hidden=true;
+  const refs=matches.filter(x=>x.year===displayYear);
+  if(!refs.length)return;
+  const ui=typeof window==='object'?window.KVLInternationalUnifiedRosterV1:null;
+  if(!ui){console.warn('[KVL international: unified module unavailable]');return}
+  unifiedHost.hidden=false;
+  unifiedHost.innerHTML='<p class="ktd-loading">원본 대회명단을 대조하고 있습니다.</p>';
+  try{
+   const sourceSets=await Promise.all(refs.map(async snapshot=>{
+    const raw=await readJSON(snapshot.source_path),team=sourceTeam(snapshot,raw);
+    if(!team||!Array.isArray(team.players))throw Error('대회 원본명단 확인 실패: '+snapshot.snapshot_id);
+    return {snapshot,team};
+   }));
+   const [clubIndex,master]=await Promise.all([
+    displayYear===2026&&gender==='men'&&refs.some(x=>x.competition_slug==='avc-men-continental-2026')
+      ?readJSON('data/competitions/avc-men-continental-2026-clubs-2026-27.json').catch(err=>{
+        console.warn('[KVL international: club evidence unavailable]',err);return null;
+       }):Promise.resolve(null),
+    sourceSets.some(x=>x.team.players.some(p=>ID.test(p.playerId||'')))
+      ?readJSON('data/master/player_master_international_v1.json').catch(err=>{
+         console.warn('[KVL international: player ID master unavailable]',err);return [];
+       }):Promise.resolve([])
+   ]);
+   if(!alive||ticket!==unifiedTicket||displayYear!==year)return;
+   const collision=typeof window==='object'?window.KVLPlayerIdCollisionV1:null;
+   const model=ui.build(sourceSets,{
+    country,gender,year:displayYear,clubRegistry:clubIndex,
+    profileResolver:raw=>verifiedProfileLink(normalizePlayer(raw),gender,country,master,collision)
+   });
+   unifiedInstance=ui.render(unifiedHost,model);
+  }catch(err){
+   if(!alive||ticket!==unifiedTicket||displayYear!==year)return;
+   unifiedHost.innerHTML='<p class="ktd-error">통합 명단의 일부 원본 확인에 실패해 잘못된 참가 이력을 만들지 않았습니다. 위의 대회별 명단 보기에서 개별 자료를 확인할 수 있습니다.</p>';
+   console.error('[KVL international: unified roster]',err);
+  }
+ }
  function showYear(){
   selectedSnapshot=null;request++;rosterHost.hidden=true;rosterHost.replaceChildren();
+  showUnified();
   yearsHost.innerHTML=allYears.length?allYears.map(y=>'<button type="button" data-country-year="'+y+'" aria-pressed="'+(y===year)+'">'+y+'</button>').join(''):
    '<span>등록된 대회 연도 없음</span>';
   const rows=matches.filter(s=>s.year===year).sort((a,b)=>a.competition_title.localeCompare(b.competition_title,'ko'));
@@ -229,14 +270,14 @@ function render(host,opts){
  }
  host.onclick=event=>{
   const b=event.target.closest('button');if(!b||!host.contains(b))return;
-  if(b.hasAttribute('data-country-close')){alive=false;onClose?.();return}
+  if(b.hasAttribute('data-country-close')){alive=false;unifiedTicket++;unifiedInstance?.destroy?.();onClose?.();return}
   if(b.hasAttribute('data-country-roster-close')){request++;rosterHost.hidden=true;rosterHost.replaceChildren();return}
   if(b.hasAttribute('data-country-year')){const y=Number(b.dataset.countryYear);if(allYears.includes(y)){year=y;showYear();onYearChange?.(y)}return}
   if(b.hasAttribute('data-country-snapshot')){showSnapshot(b.dataset.countrySnapshot);return}
   if(b.hasAttribute('data-candidate-id')){showCandidate(b.dataset.candidateId)}
  };
  showYear();
- return {year,close:()=>{alive=false;request++;host.onclick=null}};
+ return {year,close:()=>{alive=false;request++;unifiedTicket++;unifiedInstance?.destroy?.();host.onclick=null}};
 }
 return {esc,REGIONS,flagEmoji,validateDirectory,validateIndex,validateSelection,yearsFor,cardEntries,filterCountries,sourceTeam,normalizePlayer,verifiedProfileLink,compareSelection,outcomeLabel,render};
 });
