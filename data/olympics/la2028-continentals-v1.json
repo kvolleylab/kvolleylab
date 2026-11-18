@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "cycleId": "la2028",
+  "competitionYear": 2026,
+  "checkedAt": "2026-11-18",
+  "updatedAt": "2026-11-18",
+  "verificationStatus": "official_verified",
+  "confederations": [
+    {
+      "id": "AVC",
+      "nameKo": "아시아"
+    },
+    {
+      "id": "CEV",
+      "nameKo": "유럽"
+    },
+    {
+      "id": "CAVB",
+      "nameKo": "아프리카"
+    },
+    {
+      "id": "CSV",
+      "nameKo": "남미"
+    },
+    {
+      "id": "NORCECA",
+      "nameKo": "북중미·카리브"
+    }
+  ],
+  "sources": [
+    {
+      "id": "fivb-avc-men-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 AVC 남자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/japan-triumph-at-home-to-secure-11th-continental-crown-and-la28-berth/",
+      "publishedAt": "2026-09-13",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-cev-men-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 CEV 남자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/poland-punch-ticket-to-la28-with-eurovolley-triumph/",
+      "publishedAt": "2026-09-26",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-cavb-men-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 CAVB 남자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/tunisia-crowned-african-champions-and-secure-la28-olympic-berth/",
+      "publishedAt": "2026-09-25",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-csv-men-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 CSV 남자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/brazil-reclaim-south-american-crown-in-rio-to-book-la28-olympics-and-2027-world-cup-spots/",
+      "publishedAt": "2026-09-20",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-norceca-men-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 NORCECA 남자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/usa-outlast-canada-in-five-set-thriller-to-defend-norceca-title/",
+      "publishedAt": "2026-09-17",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-norceca-men-2026-qualification",
+      "publisher": "FIVB",
+      "title": "2026 NORCECA 남자 LA28 출전권 공식 발표",
+      "url": "https://www.fivb.com/cuba-clinch-la28-ticket-with-victory-over-canada-in-norceca-qualification/",
+      "publishedAt": "2026-09-19",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-avc-women-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 AVC 여자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/thailand-retain-avc-continental-title-to-secure-first-ever-olympic-berth/",
+      "publishedAt": "2026-08-30",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-cev-women-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 CEV 여자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/turkiye-extend-european-reign-and-seal-la28-qualification/",
+      "publishedAt": "2026-09-06",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-cavb-women-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 CAVB 여자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/egypt-claim-african-title-to-secure-historic-first-olympic-berth-for-la28/",
+      "publishedAt": "2026-09-04",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-csv-women-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 CSV 여자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/brazil-keep-csv-crown-to-confirm-la28-qualification/",
+      "publishedAt": "2026-09-13",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-norceca-women-2026-champion",
+      "publisher": "FIVB",
+      "title": "2026 NORCECA 여자 대륙선수권 우승 공식 발표",
+      "url": "https://www.fivb.com/canada-defeat-usa-to-claim-first-norceca-womens-continental-championship-title/",
+      "publishedAt": "2026-08-27",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-norceca-women-2026-qualification",
+      "publisher": "FIVB",
+      "title": "2026 NORCECA 여자 LA28 출전권 공식 발표",
+      "url": "https://www.fivb.com/canada-secure-la28-olympic-berth-to-complete-historic-norceca-double/",
+      "publishedAt": "2026-08-30",
+      "checkedAt": "2026-11-18"
+    }
+  ],
+  "events": [
+    {
+      "id": "avc-men-continental-2026",
+      "gender": "men",
+      "confederation": "AVC",
+      "year": 2026,
+      "nameKo": "2026 AVC 남자 대륙선수권",
+      "officialName": "AVC Volleyball Men's Continental Championship 2026",
+      "competitionLink": {
+        "url": "international-competition-avc-men-continental-2026.html",
+        "kind": "competition",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "JPN",
+          "nameKo": "일본"
+        },
+        "sourceIds": [
+          "fivb-avc-men-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "JPN",
+          "nameKo": "일본"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-avc-men-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "cev-eurovolley-men-2026",
+      "gender": "men",
+      "confederation": "CEV",
+      "year": 2026,
+      "nameKo": "CEV Enel EuroVolley 2026 남자",
+      "officialName": "CEV Enel EuroVolley 2026 Men",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=cev-eurovolley-men-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "POL",
+          "nameKo": "폴란드"
+        },
+        "sourceIds": [
+          "fivb-cev-men-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "POL",
+          "nameKo": "폴란드"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-cev-men-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "cavb-men-continental-2026",
+      "gender": "men",
+      "confederation": "CAVB",
+      "year": 2026,
+      "nameKo": "2026 CAVB 아프리카 남자선수권",
+      "officialName": "CAVB Men's African Championship 2026",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=cavb-men-continental-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "TUN",
+          "nameKo": "튀니지"
+        },
+        "sourceIds": [
+          "fivb-cavb-men-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "TUN",
+          "nameKo": "튀니지"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-cavb-men-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "csv-men-continental-2026",
+      "gender": "men",
+      "confederation": "CSV",
+      "year": 2026,
+      "nameKo": "2026 CSV 남미 남자선수권",
+      "officialName": "CSV South American Men's Championship 2026",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=csv-men-continental-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "BRA",
+          "nameKo": "브라질"
+        },
+        "sourceIds": [
+          "fivb-csv-men-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "BRA",
+          "nameKo": "브라질"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-csv-men-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "norceca-men-continental-2026",
+      "gender": "men",
+      "confederation": "NORCECA",
+      "year": 2026,
+      "nameKo": "2026 NORCECA 남자 대륙선수권",
+      "officialName": "NORCECA Men's Continental Championship 2026",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=norceca-men-continental-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "USA",
+          "nameKo": "미국"
+        },
+        "sourceIds": [
+          "fivb-norceca-men-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "CUB",
+          "nameKo": "쿠바"
+        },
+        "pathway": "norceca_olympic_playoff",
+        "sourceIds": [
+          "fivb-norceca-men-2026-qualification"
+        ]
+      },
+      "note": "미국은 개최국으로 출전합니다. 쿠바는 별도 출전권 결정전에서 우승해 NORCECA 몫을 확보했습니다.",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "avc-women-continental-2026",
+      "gender": "women",
+      "confederation": "AVC",
+      "year": 2026,
+      "nameKo": "2026 AVC 여자 대륙선수권",
+      "officialName": "AVC Volleyball Women's Continental Championship 2026",
+      "competitionLink": {
+        "url": "international-competition-avc-women-continental-2026.html",
+        "kind": "competition",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "THA",
+          "nameKo": "태국"
+        },
+        "sourceIds": [
+          "fivb-avc-women-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "THA",
+          "nameKo": "태국"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-avc-women-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "cev-eurovolley-women-2026",
+      "gender": "women",
+      "confederation": "CEV",
+      "year": 2026,
+      "nameKo": "CEV EuroVolley 2026 여자",
+      "officialName": "CEV EuroVolley 2026 Women",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=cev-eurovolley-women-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "TUR",
+          "nameKo": "튀르키예"
+        },
+        "sourceIds": [
+          "fivb-cev-women-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "TUR",
+          "nameKo": "튀르키예"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-cev-women-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "cavb-women-continental-2026",
+      "gender": "women",
+      "confederation": "CAVB",
+      "year": 2026,
+      "nameKo": "2026 CAVB 아프리카 여자선수권",
+      "officialName": "CAVB Women's African Championship 2026",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=cavb-women-continental-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "EGY",
+          "nameKo": "이집트"
+        },
+        "sourceIds": [
+          "fivb-cavb-women-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "EGY",
+          "nameKo": "이집트"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-cavb-women-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "csv-women-continental-2026",
+      "gender": "women",
+      "confederation": "CSV",
+      "year": 2026,
+      "nameKo": "2026 CSV 남미 여자선수권",
+      "officialName": "CSV South American Women's Championship 2026",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=csv-women-continental-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "BRA",
+          "nameKo": "브라질"
+        },
+        "sourceIds": [
+          "fivb-csv-women-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "BRA",
+          "nameKo": "브라질"
+        },
+        "pathway": "continental_champion",
+        "sourceIds": [
+          "fivb-csv-women-2026-champion"
+        ]
+      },
+      "note": "",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "norceca-women-continental-2026",
+      "gender": "women",
+      "confederation": "NORCECA",
+      "year": 2026,
+      "nameKo": "2026 NORCECA 여자 대륙선수권",
+      "officialName": "NORCECA Women's Continental Championship 2026",
+      "competitionLink": {
+        "url": "continental-championship-2026.html?id=norceca-women-continental-2026",
+        "kind": "overview",
+        "checkedAt": "2026-11-18"
+      },
+      "championship": {
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "CAN",
+          "nameKo": "캐나다"
+        },
+        "sourceIds": [
+          "fivb-norceca-women-2026-champion"
+        ]
+      },
+      "qualification": {
+        "status": "qualified",
+        "verificationStatus": "official_verified",
+        "country": {
+          "code": "CAN",
+          "nameKo": "캐나다"
+        },
+        "pathway": "norceca_olympic_playoff",
+        "sourceIds": [
+          "fivb-norceca-women-2026-qualification"
+        ]
+      },
+      "note": "캐나다는 대륙선수권과 별도 올림픽 출전권 결정전에서 모두 우승했습니다.",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    }
+  ],
+  "notes": [
+    "대륙선수권 우승국과 LA28 대륙 출전권 확보국은 별개로 확인합니다.",
+    "NORCECA는 개최국 미국을 제외한 상위 4팀이 별도 올림픽 출전권 결정전을 치릅니다."
+  ]
+}
+

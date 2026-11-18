@@ -738,3 +738,12 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA PASSED. 사
 상단 배지는 검증된 주기 데이터의 totalPerGender에서 ‘남녀 각각 총 12장’을 표시한다. 2032 규정 미발표에는 ‘규정 발표 전’이며 숫자를 대입하지 않는다. 이전에 추가한 페이지 전용 경로줄만 제거하고 공통 메뉴·대회 링크·62개 역사 기록·하단 로드맵 디자인/동작은 보존한다. 이번 지시는 기존의 새 HERO 생성 금지 원칙과 충돌하지 않는 운영 이미지 재사용이다.
 
 Base `aede0c23df1bcff61eaf19b0ca084b68c54d4c82`; branch `fix/olympic-summary-arena-v1`. 기존 Node 18/18, PC 및 모바일 390/360px 이미지/배지/넘침, 대회 왕복, 실패 필터, 연도 접기, 2032 미확정 표시 확인. 병합·Pages·운영 검증은 PR에 기록한다. [검증·출처·복구](validation/olympic-summary-arena-v1.md).
+
+
+## 2026-11-18 · 대륙선수권 우승국·올림픽 출전국 간편 연결
+
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자가 승인한 시안에 이어 “오케이 홈페이지에 삽입해”로 운영 반영을 승인했다. `올림픽·대표팀 로드맵`의 `2026 대륙선수권 5장`을 누르면 요약 내부에서 남녀 5개 대륙의 우승국과 LA28 대륙 출전권 확보국을 확인한다. 각 행은 기존 대회로 연결하며 상세에서 돌아올 때 성별을 보존한다.
+
+남자 NORCECA는 미국이 대륙선수권 우승, 쿠바가 별도 결정전 출전권 확보다. 개최국 미국과 대륙 배정 1장을 중복 계산하지 않는다. 여자 NORCECA도 우승과 별도 결정전 결과를 독립 필드·출처로 보존한다. FIVB 12건 근거의 결과 JSON을 요약·기존 대륙 허브·상세가 공동 참조한다. 종료 대회의 ‘발표 대기’ 문구는 정정하되 미수록 로스터/경기 DB를 완료 또는 불참으로 간주하지 않는다. 기존 ID, 62개 역사 기록, 하단 디자인/필터/접기·펼치기, 2032 규정 미발표 처리, 기존 URL과 메뉴를 보존한다. 새 HERO·새 대회 페이지·자동화는 추가하지 않는다.
+
+Base `6f1d6bf6cd2975ac6d9fa68912e8318b36cc5cd3`; branch `feature/continental-winners-inline-v1`. 승인 시안 commit `9235092ecc63a704c5354f753ef36a45954ac1e2`. Node 25/25, PC·모바일 390px, 남녀 이동/복귀와 기존 허브 연결 확인. 병합·Pages·운영 확인 전까지 DEPLOYED로 표시하지 않으며 최종 증거는 PR에 기록한다. [검증·한계·복구](validation/continental-winners-inline-v1.md).
