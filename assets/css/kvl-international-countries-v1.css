@@ -78,3 +78,15 @@
  .ktd-country-events{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
  .ktd-country-roster-label,.ktd-country-player{grid-template-columns:48px minmax(120px,1fr) 55px 68px 100px;gap:8px;padding:12px 10px}
 }
+/* User readability refinement: align roster and competition copy with 14px KVL PC navigation. */
+@media (min-width:821px){
+ .ktd-country-heading p:last-child,.ktd-country-note,.ktd-country-event p,
+ .ktd-country-event small,.ktd-country-roster-head p,.ktd-country-unverified,
+ .ktd-country-roster-label,.ktd-country-player,.ktd-country-person small,
+ .ktd-country-player-links a,.ktd-country-source-link,
+ .ktd-country-candidate-list>div,.ktd-country-warning{font-size:14px;line-height:1.5}
+ .ktd-country-person strong{font-size:16px;line-height:1.45}
+ .ktd-country-player{min-height:75px}
+ .ktd-country-event .ktd-country-actions button,.ktd-country-event .ktd-country-actions a,
+ .ktd-country-candidate button,.ktd-country-candidate a,.ktd-country-years button{font-size:14px}
+}
