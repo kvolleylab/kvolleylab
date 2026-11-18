@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <title>팀 찾기 | K-Volley Lab</title>
-  <meta name="description" content="프로 V-리그 남녀 구단 선수명단과 대학·고교·중학·대표팀 정보를 찾아보세요.">
+  <meta name="description" content="프로·대학·학교 팀부터 40개 국제 국가대표팀의 연도별 대회 명단과 후보 선발 이력을 조회합니다.">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/site-theme-light.css">
   <link rel="stylesheet" href="assets/css/kvl-teams-directory-v1.css?v=20261118-1">
+  <link rel="stylesheet" href="assets/css/kvl-international-countries-v1.css?v=20261118-1">
   <link rel="stylesheet" href="assets/css/kvl-vleague-roster-v2.css?v=20261118-1">
   <script src="assets/js/unified-nav.js?v=20261118-1" defer></script>
   <script src="assets/js/player-id-collision-quarantine-v1.js?v=20261118-1" defer></script>
   <script src="assets/js/kvl-vleague-draft-bridge-v1.js?v=20261118-1" defer></script>
   <script src="assets/js/kvl-vleague-roster-v2.js?v=20261118-1" defer></script>
-  <script src="assets/js/kvl-teams-directory-v1.js?v=20261118-1" defer></script>
+  <script src="assets/js/kvl-international-countries-v1.js?v=20261118-1" defer></script>
+  <script src="assets/js/kvl-teams-directory-v1.js?v=20261118-2" defer></script>
 </head>
 <body class="ktd-page">
   <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -55,9 +57,20 @@
         <label class="ktd-search-label"><span class="sr-only">팀 이름 검색</span><input id="ktdSearch" type="search" placeholder="팀 이름 검색" autocomplete="off"></label>
       </div>
 
+      <div id="ktdRegionFilters" class="ktd-country-regions" role="group" aria-label="대륙별 국가 선택" hidden>
+        <button type="button" data-ktd-region="all" aria-pressed="true">전체</button>
+        <button type="button" data-ktd-region="asia" aria-pressed="false">아시아</button>
+        <button type="button" data-ktd-region="europe" aria-pressed="false">유럽</button>
+        <button type="button" data-ktd-region="north_america" aria-pressed="false">북중미</button>
+        <button type="button" data-ktd-region="south_america" aria-pressed="false">남미</button>
+        <button type="button" data-ktd-region="oceania" aria-pressed="false">오세아니아</button>
+        <button type="button" data-ktd-region="africa" aria-pressed="false">아프리카</button>
+      </div>
       <p class="ktd-source-note" id="ktdSourceNote">2026–27 V-리그 · 현재 구단 등록 공시 기준</p>
       <div id="ktdGrid" class="ktd-grid" aria-live="polite" aria-busy="true"><p class="ktd-loading">팀 정보를 불러오는 중입니다.</p></div>
     </section>
+
+    <section class="ktd-roster-wrap ktd-country-wrap" id="ktdCountryArea" aria-label="선택한 국가의 대표팀 역사·대회명단" hidden></section>
 
     <section class="ktd-roster-wrap" id="ktdRosterArea" aria-label="선택한 팀 선수명단" hidden>
       <div class="ktd-roster-heading">
