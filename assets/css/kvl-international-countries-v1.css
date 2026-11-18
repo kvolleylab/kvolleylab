@@ -1,0 +1,55 @@
+/* International country directory and national-team historical roster details. */
+.ktd-country-regions{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 13px}
+.ktd-country-regions[hidden],.ktd-country-wrap[hidden],.ktd-country-roster[hidden]{display:none!important}
+.ktd-country-regions button{min-height:34px;border-radius:10px;background:#fff;border:1px solid #dce6ee;padding:7px 12px;color:#627a91;font:800 12px Arial,'Malgun Gothic',sans-serif;cursor:pointer}
+.ktd-country-regions button[aria-pressed=true]{background:#19425f;border-color:#19425f;color:#fff}
+.ktd-country-card .ktd-card-body{min-height:136px}
+.ktd-country-card .ktd-card-logo{min-height:136px;background:#f8fafc}
+.ktd-country-card .ktd-flag-icon{font-size:52px;line-height:1.2;display:block;filter:drop-shadow(0 2px 2px rgba(20,45,70,.13))}
+.ktd-country-card .ktd-card-eyebrow{margin-bottom:7px}
+.ktd-country-card .ktd-card-count{font-size:12px;font-weight:700}
+.ktd-country-panel{background:#fff;border:1px solid #dfe7ed;border-radius:19px;padding:22px;box-shadow:0 8px 24px rgba(13,42,70,.05)}
+.ktd-country-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.ktd-country-heading{display:flex;align-items:center;gap:13px;min-width:0}
+.ktd-country-flag{width:75px;height:75px;background:#f4f7f9;border:1px solid #dfe7ed;border-radius:16px;display:grid;place-items:center;font-size:42px;flex:none}
+.ktd-country-heading h2{margin:0;font-size:26px;line-height:1.2;color:#193953;letter-spacing:-.045em}
+.ktd-country-heading p:last-child{font-size:13px;color:#7b8fa0;margin:7px 0 0}
+.ktd-country-years{display:flex;gap:7px;flex-wrap:wrap;margin:21px 0 10px}
+.ktd-country-years button{min-height:39px;border:1px solid #e0e7ed;color:#647b8d;background:#f6f8fa;border-radius:9px;font-weight:800;padding:8px 16px;cursor:pointer}
+.ktd-country-years button[aria-pressed=true]{background:#173d5b;color:#fff;border-color:#173d5b}
+.ktd-country-note{font-size:12px;color:#728697;line-height:1.7;margin:10px 0 15px}
+.ktd-country-events{display:grid;gap:10px}
+.ktd-country-event,.ktd-country-candidate{border:1px solid #e1e8ef;border-radius:13px;background:#fff;padding:15px 17px;display:flex;align-items:center;justify-content:space-between;gap:13px}
+.ktd-country-event strong,.ktd-country-candidate strong{color:#1a3d58;font-weight:850;font-size:15px}
+.ktd-country-event p,.ktd-country-candidate p{margin:5px 0 2px;font-size:12px;color:#6d8395;line-height:1.6}
+.ktd-country-event small{font-size:10px;color:#9aa9b5;overflow-wrap:anywhere}
+.ktd-country-actions,.ktd-country-candidate>div:last-child{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.ktd-country-actions button,.ktd-country-candidate button{border:1px solid #19476b;background:#19476b;color:#fff;min-height:38px;border-radius:9px;padding:10px 13px;font:800 12px Arial,'Malgun Gothic',sans-serif;white-space:nowrap;cursor:pointer}
+.ktd-country-actions a,.ktd-country-candidate a{color:#3d647f;text-decoration:none!important;background:#f4f7fa;border:1px solid #e0e7ed;border-radius:9px;padding:10px 13px;min-height:38px;font-weight:750;font-size:12px;white-space:nowrap}
+.ktd-country-actions a:hover,.ktd-country-candidate a:hover{text-decoration:underline!important}
+.ktd-country-selection{border-top:1px solid #e4eaf0;margin-top:21px;padding-top:18px}
+.ktd-country-selection h3{font-size:16px;margin:0 0 10px;color:#224660}
+.ktd-country-unverified{background:#f8fafc;border:1px dashed #d7e3eb;border-radius:10px;color:#7890a2;font-size:12px;line-height:1.65;padding:14px;margin:0}
+.ktd-country-roster{border-top:2px solid #d5e6e1;margin-top:20px;padding-top:20px;scroll-margin-top:25px}
+.ktd-country-roster-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}
+.ktd-country-roster-head h3{font-size:20px;margin:0;color:#153b56}
+.ktd-country-roster-head p{font-size:12px;margin:6px 0 0;color:#7891a3}
+.ktd-country-roster-head button{border:1px solid #dae5ed;border-radius:8px;background:#fff;padding:8px 13px;color:#4d657a;cursor:pointer;white-space:nowrap}
+.ktd-country-warning{border:1px solid #ead49b;border-radius:9px;padding:12px;color:#946917;font-size:12px;background:#fff9e9}
+.ktd-country-roster-table{border:1px solid #e0e8ed;border-radius:11px;overflow:hidden}
+.ktd-country-roster-label,.ktd-country-player{display:grid;grid-template-columns:58px minmax(120px,1fr) 64px 80px 114px;gap:8px;align-items:center;padding:12px 14px;font-size:12px;color:#406078}
+.ktd-country-roster-label{background:#f3f7f9;font-weight:900;color:#6c8598;font-size:11px}
+.ktd-country-player{border-top:1px solid #edf1f4;background:#fff;min-height:59px}
+.ktd-country-number{font-weight:900;color:#23516c;font-size:14px}
+.ktd-country-person{min-width:0;display:flex;flex-direction:column;gap:4px}
+.ktd-country-person strong{font-size:13px;color:#173e5a;overflow-wrap:anywhere}
+.ktd-country-person small{font-size:11px;color:#8093a4;overflow-wrap:anywhere}
+.ktd-country-player-links{display:flex;gap:9px;flex-wrap:wrap}
+.ktd-country-player-links a,.ktd-country-source-link{font-size:11px;color:#297b74;text-decoration:underline;text-underline-offset:2px;font-weight:800}
+.ktd-country-candidate-list{display:grid;border:1px solid #e0e8ed;border-radius:10px}
+.ktd-country-candidate-list>div{display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #edf1f5;padding:12px;font-size:12px}
+.ktd-country-candidate-list>div:last-child{border-bottom:0}
+.ktd-country-candidate-list strong{color:#234762}
+.ktd-country-candidate-list span{color:#738da0;text-align:right}
+@media(max-width:700px){.ktd-country-panel{padding:14px}.ktd-country-flag{width:58px;height:58px;font-size:32px;border-radius:12px}.ktd-country-heading h2{font-size:22px}.ktd-country-event,.ktd-country-candidate{align-items:stretch;flex-direction:column;padding:13px;gap:10px}.ktd-country-actions,.ktd-country-candidate>div:last-child{justify-content:flex-start}.ktd-country-event small{display:block}.ktd-country-roster-label,.ktd-country-player{grid-template-columns:31px minmax(88px,1fr) 41px 52px;gap:5px;padding:11px 9px;font-size:11px}.ktd-country-roster-label>span:last-child{display:none}.ktd-country-player>span:last-child{grid-column:2/-1;font-size:10px;color:#8a9aa8;margin-top:-2px}.ktd-country-person strong{font-size:12px}.ktd-country-number{font-size:12px}.ktd-country-player-links a{font-size:10px}.ktd-country-card .ktd-flag-icon{font-size:43px}}
+@media(max-width:375px){.ktd-country-roster-label,.ktd-country-player{grid-template-columns:27px minmax(80px,1fr) 36px 42px;gap:4px;padding:10px 7px}.ktd-country-event p{font-size:11px}.ktd-country-actions a,.ktd-country-actions button{padding:9px;font-size:11px}}
