@@ -85,8 +85,8 @@
  }
  function curated(category){
   if(category==='national')return [
-   {code:'KOR-M',name:'대한민국 남자대표팀',type:category,action:'link',sourceLabel:'국가대표 경기·대회 이력',href:'national-team.html'},
-   {code:'KOR-W',name:'대한민국 여자대표팀',type:category,action:'link',sourceLabel:'국가대표 경기·대회 정보',href:'national-team.html'},
+   {code:'KOR-M',name:'대한민국 남자대표팀',type:category,action:'link',sourceLabel:'국가대표 경기·대회 이력',href:'national-team.html?gender=men'},
+   {code:'KOR-W',name:'대한민국 여자대표팀',type:category,action:'link',sourceLabel:'국가대표 경기·대회 정보',href:'national-team.html?gender=women'},
    {code:'KOR-H',name:'대표팀 역사',type:category,action:'link',sourceLabel:'연도별 성인·연령별 대표팀 기록',href:'national-team-history.html'}
   ];
   return [
