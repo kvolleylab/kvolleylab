@@ -33,3 +33,14 @@ Status: USER DIRECTED / IMPLEMENTED ON FEATURE BRANCH / SOURCE AND BROWSER QA IN
 
 ## 복구 및 승인
 원본 6개 대회 데이터, 회원 개인 메모, 로그인·권한, 기존 KOVO 로스터 자동화, 기존 네비게이션 및 KVL 영구 Player_ID는 수정하지 않는다. 운영 반영은 최종 CI와 사용자 명시적 승인 후 진행하며 배포 전에 DEPLOYED 판정하지 않는다. 문제 발생 시 신규 국제 UI·색인 PR만 되돌린다.
+
+
+## 확장·운영 규칙 및 브라우저 검수
+
+- data/international/country-source-config-v1.json에 승인된 대회별 원본 경로, 연도, 성별, 포맷, 공식 KVL 대회 링크를 명시한다. 새 연도는 기존 파일/명단을 교체하는 대신 이 설정에 새 source 항목을 추가한다.
+- 결정적 생성기는 해당 설정을 읽어 등록 연도를 자동 계산한다. 새로운 국가 코드는 국가별 지역 분류 및 기존 MASTER ID 재사용 검증을 받아야 하므로 이름이 비슷하다는 이유로 자동 합치거나 신규 country_id를 발급하지 않는다.
+- .github/workflows/international-country-index-review-v1.yml은 운영 승인 후 기존 승인 소스 JSON이 변경될 때마다 파생 국가/명단 색인만 재생성하여 GitHub **검수용 PR**을 생성하는 형태다. 원본 명단, 후보 원장 또는 선수 영구 ID 자동 변경은 금지된다. 별도의 공식 웹사이트 수집기가 구현됐다는 뜻은 아니다. 이 workflow의 실제 트리거/PR 생성 성공은 본 PR 운영 반영 후 검증해야 한다.
+- 사용자가 나라를 선택하면 40개국 전체를 긴 페이지 아래에 반복해서 보여주지 않고, 목록 자리에 해당 국가의 연도·대회별 상세 화면을 표시한다. 목록으로 돌아가기, 필터 및 공유 가능한 URL을 유지한다.
+- 후보/최종 명단 등록은 공식 URL뿐 아니라 공개 원문 파일 버전 SHA-256, source_id, 게시일, reviewed_at, review_status=VERIFIED가 있어야 한다. 독립적인 완전성 검증(identities_complete, official_roster_complete, player_count 동일)이 없는 경우 최종 엔트리의 누락 선수에 대한 선발 비교를 비활성화한다.
+- 기존 팀 페이지 회원 로그인 차단은 그대로 유지한다. Chromium은 로컬 파일을 HTTPS origin으로 라우팅하고 테스트 브라우저에서만 로그인 오버레이를 격리하여 GUI를 검사한다. 이는 관리자 계정의 실제 로그인·비공개 데이터 조회 검증이 아니다.
+- 공식 자료 미확보 2027년 및 이후 시즌을 자동 생성/참가 확정하지 않는다. 대회 운영별 승인·원본 출처 연동과 실제 데이터 수집 주기 검증이 다음 작업이다.
