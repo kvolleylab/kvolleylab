@@ -58,7 +58,7 @@
 .ktd-country-wrap{margin:0 0 15px;padding:0;border:0;scroll-margin-top:25px}
 /* KVL PC readability v1 (2026-11-19): compact competition cards, no source/data changes. */
 @media (min-width:821px){
- .ktd-country-events{grid-template-columns:repeat(auto-fit,minmax(228px,1fr));align-items:stretch}
+ .ktd-country-events{grid-template-columns:repeat(auto-fill,minmax(228px,1fr));align-items:stretch}
  .ktd-country-event{min-width:0;min-height:174px;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:14px;padding:17px 16px}
  .ktd-country-event>div:first-child{min-width:0}
  .ktd-country-event strong{display:block;font-size:16px;line-height:1.4;word-break:keep-all}
@@ -75,6 +75,6 @@
  .ktd-country-player-links a{font-size:12px}
 }
 @media (min-width:821px) and (max-width:1000px){
- .ktd-country-events{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+ .ktd-country-events{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
  .ktd-country-roster-label,.ktd-country-player{grid-template-columns:48px minmax(120px,1fr) 55px 68px 100px;gap:8px;padding:12px 10px}
 }
