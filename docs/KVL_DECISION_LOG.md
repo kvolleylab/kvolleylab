@@ -2,12 +2,12 @@
 
 ## 2026-11-18 · 국제 국가대표팀 대회별 선수명단 통합 + 소형 참가 이력 v1
 
-Status: USER APPROVED FOR PRODUCTION / IMPLEMENTED ON FEATURE / LIVE RELEASE QA PENDING.
+Status: USER APPROVED / DEPLOYED ON MAIN / PAGES + COUNTRY + TEAM + UNIFIED LIVE QA PASS (2026-11-18 KST).
 사용자 검수 완료 독립 프로토타입 PR #364를 실제 `선수·팀 → 팀 → 국제 → 국가별 연도`에 반영하도록 승인했다. 기존 KVL 선수명단 기본 필드(한글/영문명·생년월일·POS·신장·출처 확인 소속팀·Volleybox·검증된 KVL 프로필)를 줄이거나 삭제하지 않고, 2026 연도별 공개 대회명단의 동일 선수만 정확한 신원 근거(출생일+영문 이름 또는 출생일+동일 Volleybox 프로필 ID)로 통합한다. 등번호만 같거나 생년월일이 없으면 합치지 않는다. 대회별 해당 선수 **공개 명단 등록**은 참가이력 칸에 작은 원으로 표시(중요 VNL·아시안게임 빨강, AVC 및 기타 검정), 실제 코트 출전이나 공식 탈락 판정과 구분한다.
 
 기존 국가 40개국·지역 색인과 대회별 명단 보기, 후보/선발 원장, 프로 및 다른 팀 분류, 기존 회원 접근·KOVO 명단 자동 수집을 모두 보존한다. 2026 일본 남자: VNL16+아시안게임12+AVC 대륙선수권14=원본 등록42건, 동일인 검증 후 26명. 실제 출전하지 않은 2026 일본 AVC컵 카드는 추가하지 않는다. 여자/다른 국가에서 식별 근거가 부족하면 별도 행으로 유지하고 누락은 추정하지 않는다. AVC 2026-27 공식 출처 확인 소속은 실시간 최신 소속으로 단정하지 않는다. 소속 미확인 시 미확인으로 표기한다.
 
-Source of design: `docs/PLAYER_STANDARD.md`, `assets/js/kvl-vleague-roster-v2.js`, PR #364의 독립 HTML, KVL 기존 국제 팀 상세 PR #361. Implementation branch `feature/international-unified-roster-live-v1`, main base `22f67b13b08ff7c1c0632c7c84b2f8fef3d869f5`; verification handoff `docs/validation/international-unified-roster-live-v1-20261118.md`. 실제 배포/라이브 QA 성공 영수증 없이 DEPLOYED라고 쓰지 않는다. 기존 국가/선수 MASTER·국제대회 원본·KOVO 자동수집기·개인 메모·회원 인증코드 불변. Google Drive 공식 자료의 독립 재대조는 아직 NOT VERIFIED.
+Source of design: `docs/PLAYER_STANDARD.md`, `assets/js/kvl-vleague-roster-v2.js`, PR #364의 독립 HTML, KVL 기존 국제 팀 상세 PR #361. Implementation branch `feature/international-unified-roster-live-v1`, main base `22f67b13b08ff7c1c0632c7c84b2f8fef3d869f5`; verification handoff `docs/validation/international-unified-roster-live-v1-20261118.md`. PR #366은 사용자의 직접 승인으로 squash merge `32343f2f8f23bc80204e0ccc120c531c05007329` 됐으며 GitHub Pages deploy #44325594905 SUCCESS(동일 SHA). 기존 국제 국가별 LIVE QA #44325602295, 기존 팀 페이지 LIVE QA #44325602013도 SUCCESS(동일 SHA). 일본 남자 26명·필드·색점·대회별 버튼·모바일 화면 Chromium 사전 테스트 #44324278001 PASS, 직후 기능 코드 변경 없이 문서만 추가. 통합명단 전용 **실제 운영 HTTPS Chromium** QA #44325602067도 **SUCCESS**(동일 기능 SHA); artifact #14436403456의 운영 화면 PC1440/모바일390·360 및 JSON report.status=PASS, 모든 화면 overflow=0px, 일본 남자 26명, 일본 여자 누락 DOB 불추정, 기존 프로팀 KOVO 현재 명단 연결 확인. 실제 사용자 계정 로그인은 테스트하지 않았으며 테스트 브라우저 내에서만 기존 인증 오버레이를 격리했다. 기존 국가/선수 MASTER·국제대회 원본·KOVO 자동수집기·개인 메모·회원 인증코드 불변. Google Drive 공식 자료의 독립 재대조는 아직 NOT VERIFIED.
 
 
 ## 2026-11-18 · 선수·팀 국제 국가별 역사형 대표팀 명단 및 공식 후보 원장

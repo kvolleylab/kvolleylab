@@ -1,6 +1,6 @@
 # 국제 국가별 대표팀 통합 선수명단 v1 · 운영 연결 검증 (2026-11-18 KST)
 
-Status: USER APPROVED FOR PRODUCTION / IMPLEMENTED ON FEATURE BRANCH / DEPLOYMENT NOT YET VERIFIED.
+Status: USER APPROVED / VERIFIED / DEPLOYED ON MAIN / PAGES + REAL COUNTRY + TEAM + UNIFIED LIVE HTTPS QA PASS (2026-11-18 KST).
 
 ## 사용자 승인과 범위
 
@@ -38,3 +38,15 @@ Status: USER APPROVED FOR PRODUCTION / IMPLEMENTED ON FEATURE BRANCH / DEPLOYMEN
 Google Drive의 원본 자료를 독립적으로 대조할 연결 계정은 이전 세션에서도 오류로 접근할 수 없었으므로 **NOT VERIFIED**. 기존 GitHub 검수·게시된 대회 JSON만 사용한다. 2026 후보 엔트리 증거 원장은 여전히 0개이며 이 기능이 자동 후보 수집, 다음 시즌 국가대표 출전 확정 또는 경기 출전 집계를 구현하는 것은 아니다.
 
 문제 발생 시 해당 PR의 `teams.html`·국제 국가 상세 UI와 신규 통합 컴포넌트만 되돌린다. 원본 데이터·KOVO 자동수집·선수 ID·회원 메모를 되돌리거나 재작성하지 않는다.
+
+## 2026-11-18 운영 반영·검증 영수증
+
+- PR: https://github.com/kvolleylab/kvolleylab/pull/366 — 사용자 운영 반영 지시로 병합됨.
+- 기능 SHA: `32343f2f8f23bc80204e0ccc120c531c05007329`.
+- GitHub Pages 배포: https://github.com/kvolleylab/kvolleylab/actions/runs/44325594905 — **SUCCESS** (동일 SHA).
+- 기존 국가별 페이지 실제 HTTPS Chromium QA: https://github.com/kvolleylab/kvolleylab/actions/runs/44325602295 — **SUCCESS** (동일 SHA).
+- 기존 팀·KOVO 명단 페이지 실제 HTTPS Chromium QA: https://github.com/kvolleylab/kvolleylab/actions/runs/44325602013 — **SUCCESS** (동일 SHA).
+- 통합 명단 기능 Chromium 사전 QA: https://github.com/kvolleylab/kvolleylab/actions/runs/44324278001 — **SUCCESS** (기능 최종 코드 SHA `87edf369d441b0b3814fd61e3ebe7232a6021874`), artifact #14434834932. PC 1440 및 모바일 390/360, 일본 26명, VNL 16·아시안게임 12·AVC 14 필터, 원본 명단 유지, 선수 출생일·소속·Volleybox, 대회 점 및 가로 넘침 0.
+- 사전 QA 성공 SHA 이후 PR의 병합 전 코드 변경 없음: docs/KVL_DECISION_LOG.md 추가만 비교 검증.
+- 통합 명단 **전용 실제 운영 HTTPS Chromium 테스트**: https://github.com/kvolleylab/kvolleylab/actions/runs/44325602067 — **SUCCESS** at `32343f2f8f23bc80204e0ccc120c531c05007329`, artifact `#14436403456` (real PC 1440·mobile 390/360 screenshots + `kvl-international-unified-live-report.json`). Report status `PASS`, all 3 viewport overflow 0px. Actual Japanese men 26 unique roster rows + original separate event roster; Japanese women original roster without invented DOB; existing live KOVO club source data preserved. Test browser intercepts login overlay only locally; real owner account login was not independently checked.
+- 회원 접근 보호 유지(실제 운영자 로그인 직접 검증 아님), 후보 장기 자동수집 없음, 원본 Drive 별도 검증 NOT VERIFIED, 기존 Player_ID와 참가 등록/코트 출전 구분 유지.
