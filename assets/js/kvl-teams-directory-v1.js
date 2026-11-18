@@ -16,7 +16,7 @@
   high:{title:'고교 팀',eyebrow:'HIGH SCHOOL'},
   middle:{title:'중학 팀',eyebrow:'MIDDLE SCHOOL'},
   national:{title:'대한민국 대표팀',eyebrow:'NATIONAL TEAM'},
-  international:{title:'국제 팀·대회',eyebrow:'INTERNATIONAL VOLLEYBALL'}
+  international:{title:'국제 대표팀',eyebrow:'INTERNATIONAL NATIONAL TEAMS'}
  };
  const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  const short=x=>String(x||'').trim().replace(/대학교$/,'대');
