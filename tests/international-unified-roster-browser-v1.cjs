@@ -43,6 +43,21 @@ async function testApp(){
   assert.match(await page.locator('.kvl-unified-count').innerText(),/26명 통합/);
   assert.match(await page.locator('.kvl-unified-count').innerText(),/42건/);
   assert.equal(await page.locator('.kvl-unified-head span').count(),8);
+  // PC readability contract: verified events share a card row and roster data is legible.
+  const layout=await page.evaluate(()=>{
+   const cards=[...document.querySelectorAll('.ktd-country-event')];
+   const px=selector=>parseFloat(getComputedStyle(document.querySelector(selector)).fontSize);
+   return {eventCount:cards.length,allCardsSameRow:cards.every(c=>Math.abs(c.getBoundingClientRect().top-cards[0].getBoundingClientRect().top)<2),
+     cardWidth:cards[0].getBoundingClientRect().width,
+     cardTitlePx:px('.ktd-country-event strong'),
+     rowPx:px('.kvl-unified-row'),namePx:px('.kvl-unified-name strong'),
+     dobPx:px('.kvl-unified-dob'),clubPx:px('.kvl-unified-club')};
+  });
+  assert.equal(layout.eventCount,3,'Do not invent a Japan AVC Cup entry');
+  assert.ok(layout.allCardsSameRow&&layout.cardWidth>=228,'PC cards must sit across one row: '+JSON.stringify(layout));
+  for(const [field,minimum] of [['cardTitlePx',16],['rowPx',14],['namePx',15],['dobPx',13],['clubPx',13]])
+   assert.ok(layout[field]>=minimum,field+' below PC readability floor: '+JSON.stringify(layout));
+  REPORT.views.push({name:'PC 1440 competition card row and enlarged roster type',status:'PASS',layout});
   const ishikawa=page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first();
   assert.match(await ishikawa.innerText(),/1995-12-11/);
   assert.match(await ishikawa.innerText(),/Ziraat Bankkart Ankara/);
