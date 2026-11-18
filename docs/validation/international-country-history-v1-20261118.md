@@ -1,7 +1,7 @@
 # KVL 국제 국가별 대표팀 역사형 명단 v1 · 검증 기록
 
 Date: 2026-11-18 KST
-Status: USER DIRECTED / IMPLEMENTED ON FEATURE BRANCH / SOURCE AND BROWSER QA IN PROGRESS / NOT DEPLOYED
+Status: USER APPROVED / VERIFIED / DEPLOYED ON MAIN / LIVE HTTPS QA PASS (2026-11-18 KST)
 
 ## 범위
 선수·팀 → 팀 → 국제 분류를 40개 국가·지역의 실제 목록으로 변경하고 국가별 남녀/연도/대회 명단을 기존 KVL 공개 대회 기록에 연결한다. 국가의 페이지는 동일 teams.html 주소를 이용한 공유 가능한 country/gender/year 쿼리로 제공한다. 기존 teams.html 회원접근 보호와 다른 5개 팀 분류는 유지한다.
@@ -32,7 +32,7 @@ Status: USER DIRECTED / IMPLEMENTED ON FEATURE BRANCH / SOURCE AND BROWSER QA IN
 - Google Drive MASTER/원본은 이 세션에서 link_id 연결 오류로 NOT VERIFIED. 기존 GitHub 공개 자료를 근거로만 사용했다.
 
 ## 복구 및 승인
-원본 6개 대회 데이터, 회원 개인 메모, 로그인·권한, 기존 KOVO 로스터 자동화, 기존 네비게이션 및 KVL 영구 Player_ID는 수정하지 않는다. 운영 반영은 최종 CI와 사용자 명시적 승인 후 진행하며 배포 전에 DEPLOYED 판정하지 않는다. 문제 발생 시 신규 국제 UI·색인 PR만 되돌린다.
+원본 6개 대회 데이터, 회원 개인 메모, 로그인·권한, 기존 KOVO 로스터 자동화, 기존 네비게이션 및 KVL 영구 Player_ID는 수정하지 않는다. 사용자의 운영 반영 지시(2026-11-18) 후 PR #361 병합·Pages 배포·실제 HTTPS 검증을 마쳤다. 후속 수정은 별도 검수·승인과 PR로 진행한다. 문제 발생 시 신규 국제 UI·색인 PR만 되돌린다.
 
 
 ## 확장·운영 규칙 및 브라우저 검수
@@ -44,3 +44,17 @@ Status: USER DIRECTED / IMPLEMENTED ON FEATURE BRANCH / SOURCE AND BROWSER QA IN
 - 후보/최종 명단 등록은 공식 URL뿐 아니라 공개 원문 파일 버전 SHA-256, source_id, 게시일, reviewed_at, review_status=VERIFIED가 있어야 한다. 독립적인 완전성 검증(identities_complete, official_roster_complete, player_count 동일)이 없는 경우 최종 엔트리의 누락 선수에 대한 선발 비교를 비활성화한다.
 - 기존 팀 페이지 회원 로그인 차단은 그대로 유지한다. Chromium은 로컬 파일을 HTTPS origin으로 라우팅하고 테스트 브라우저에서만 로그인 오버레이를 격리하여 GUI를 검사한다. 이는 관리자 계정의 실제 로그인·비공개 데이터 조회 검증이 아니다.
 - 공식 자료 미확보 2027년 및 이후 시즌을 자동 생성/참가 확정하지 않는다. 대회 운영별 승인·원본 출처 연동과 실제 데이터 수집 주기 검증이 다음 작업이다.
+
+
+## 운영 릴리스 증거 (2026-11-18 KST)
+
+- 사용자 승인으로 [PR #361](https://github.com/kvolleylab/kvolleylab/pull/361) squash merge 성공. **배포된 기능 SHA**: `8d1fbae5fb237b2be43b02a4c6fec242c8ead919`.
+- **GitHub Pages LIVE**: https://github.com/kvolleylab/kvolleylab/actions/runs/44296156330 → `SUCCESS` (동일 기능 SHA).
+- **국제 국가별 운영 홈페이지 Chromium QA**: https://github.com/kvolleylab/kvolleylab/actions/runs/44296161095 → `SUCCESS` (동일 기능 SHA). GitHub artifact `#14424681452`; 화면 캡처 5장과 JSON report. 검사 기준: 실제 `https://kvolleylab.com` HTTP·JSON.
+- LIVE 검증: 40개 국가·지역, 89개 대회 명단 포인터, 아시아 20·유럽 12개 필터, 일본 남자 VNL 16명(Reserve 구분), 일본 남자 AVC 최종 14명, 일본 여자 VNL 14명, 바레인 출국명단 13명, 기존 V-리그 여자 7개 구단과 퍼블리셔 소유 현행 등록 인원 수, PC 1440·모바일 390/360에서 가로 넘침 0px. `report.status=PASS`.
+- **기존 팀 페이지 운영 회귀 QA**: https://github.com/kvolleylab/kvolleylab/actions/runs/44296161098 → `SUCCESS`.
+- **파생 색인 검수 워크플로 첫 실행**: https://github.com/kvolleylab/kvolleylab/actions/runs/44296161131 → `SUCCESS`. 이는 해당 시점 자료로 인덱스 재계산 검사가 성공했다는 의미이며 신규 공식 후보 자료 자동 수집이나 실제 갱신 PR 발행이 검증됐다는 뜻이 아니다.
+- **기존 페이지 접근 제한 유지**: `data/member-access-v1.json`에는 `teams.html` 보호가 남아 있다. 운영 Chromium QA는 UI 테스트 전용 컨텍스트에서만 로그인 오버레이 모듈을 가로채 검수했다. **실제 관리자 계정 인증 성공/일반회원 권한 검증은 이번 범위 밖**이다.
+- **자료 한계**: 공식 후보/롱리스트 독립 검증·등록 0건. 새로운 공식 후보 원문을 자동으로 수집·등록하는 기능은 아직 없다. 최초 4개 국가 MASTER 영구 ID 외 신규 36개 ID는 생성하지 않았다. Google Drive 원본 별도 대조는 링크 계정 접근 문제로 `NOT VERIFIED`이며 기존 KVL GitHub 대회 스냅샷 자료만 재사용했다.
+- **보호 범위**: 기존 국제대회 원본, Player_ID, V-리그 KOVO 공시 자동화, 경기·순위 데이터, Supabase 회원 정보·메모 코드는 수정하지 않았다. 실제 인증 정책도 미변경.
+- **복구**: PR #361의 기능 변경만 되돌리면 기존 국제 카드 연결 화면으로 복구되며 원본 데이터/자동수집기/회원 계정은 그대로 유지. 문서 릴리스 상태 기록은 별도 docs-only 후속 PR로 반영했다.
