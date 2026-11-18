@@ -146,9 +146,9 @@
   overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#bacbd8 #f2f5f8
  }
  .kvl-unified-head,.kvl-unified-row{
-  min-width:1450px;
-  grid-template-columns:65px 275px 153px 80px 105px minmax(300px,1fr) 138px 155px;
-  column-gap:14px;padding-left:15px;padding-right:15px
+  min-width:1040px;
+  grid-template-columns:70px minmax(195px,1.1fr) 132px 54px 86px minmax(190px,1fr) 110px 90px;
+  column-gap:10px;padding-left:12px;padding-right:12px
  }
  .kvl-unified-head{font-size:21px;min-height:65px;line-height:1.35}
  .kvl-unified-row{font-size:21px;min-height:104px;line-height:1.5;padding-top:14px;padding-bottom:14px}
