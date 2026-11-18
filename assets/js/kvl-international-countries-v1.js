@@ -48,6 +48,8 @@ function validateSelection(db){
   if(!s||!CODE.test(s.country_code)||!['men','women'].includes(s.gender)||!Number.isInteger(s.year)
     ||!ALLOWED_STAGES.has(s.stage)||!String(s.competition_slug||'').match(/^[a-z0-9-]+$/)
     ||!String(s.source_id||'').trim()||!safeAnySource(s.source_url)
+    ||s.review_status!=='VERIFIED'||!/^[0-9a-f]{64}$/.test(s.source_sha256||'')
+    ||!/^\d{4}-\d{2}-\d{2}$/.test(s.reviewed_at||'')
     ||!/^\d{4}-\d{2}-\d{2}$/.test(s.published_at||'')||!Array.isArray(s.players)
     ||!s.snapshot_id||ids.has(s.snapshot_id))return false;
   ids.add(s.snapshot_id);
@@ -108,9 +110,15 @@ function verifiedProfileLink(p,gender,country,master,collision){
 /* No cut/withdrawal claims from missing names or unmatched identities. */
 function compareSelection(candidate,finalSet){
  if(!candidate||!Array.isArray(candidate.players))return[];
- const reliableFinal=finalSet&&finalSet.stage==='final'&&finalSet.identities_complete===true
-  &&Array.isArray(finalSet.players)&&safeAnySource(finalSet.source_url);
- const known=new Set(reliableFinal?finalSet.players.filter(p=>ID.test(p.verified_player_id||'')&&p.identity_source_id).map(p=>p.verified_player_id):[]);
+ const reliableFinal=finalSet&&finalSet.stage==='final'&&finalSet.review_status==='VERIFIED'
+  &&/^[0-9a-f]{64}$/.test(finalSet.source_sha256||'')
+  &&finalSet.identities_complete===true&&finalSet.official_roster_complete===true
+  &&finalSet.country_code===candidate.country_code&&finalSet.gender===candidate.gender
+  &&finalSet.year===candidate.year&&finalSet.competition_slug===candidate.competition_slug
+  &&Array.isArray(finalSet.players)&&finalSet.player_count===finalSet.players.length
+  &&finalSet.players.every(p=>ID.test(p.verified_player_id||'')&&p.identity_source_id)
+  &&safeAnySource(finalSet.source_url);
+ const known=new Set(reliableFinal?finalSet.players.map(p=>p.verified_player_id):[]);
  return candidate.players.map(p=>{
   const id=p.verified_player_id;
   let state='unresolved';
