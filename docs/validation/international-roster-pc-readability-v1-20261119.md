@@ -1,6 +1,6 @@
 # 국제 국가별 대회 카드·PC 선수명단 가독성 v1 — 2026-11-19
 
-Status: **USER REQUESTED / IMPLEMENTED IN PR #368 / STATIC REVIEW PASS / BROWSER & LIVE DEPLOY NOT VERIFIED**.
+Status: **USER REQUESTED / PR #368 CODE + CHROMIUM QA VERIFIED / PRODUCTION NOT DEPLOYED**.
 
 ## 요청 및 KVL 운영 기준
 - 사용자 첨부 PC 화면처럼 `선수·팀 → 팀 → 국제 → 국가 → 연도`의 대회 카드를 가로로 배열한다.
@@ -39,6 +39,16 @@ Status: **USER REQUESTED / IMPLEMENTED IN PR #368 / STATIC REVIEW PASS / BROWSER
 - **ADDED, NOT RUN**: `tests/international-unified-roster-browser-v1.cjs`에 PC 1440px 대회 3개 한 줄 배치, 16/14px 폰트 크기 및 PC 900px로 내려가도 기본 14px·넘침 0인지를 검증하도록 추가. 기존 1440/390/360 회귀 경로 유지. 최신 CI 재검증 전에는 새 변경의 PASS를 주장하지 않음.
 - **NOT VERIFIED**: 수정된 글씨 크기의 전체 Chromium 브라우저 검사 및 실제 모바일 렌더링, 실제 인증 계정 로그인, 사용자 운영 페이지 `kvolleylab.com`에서의 HTTPS QA, GitHub Pages 배포. PR만 생성한 상태에서 운영 반영·성공으로 표시하지 않음.
 - **NOT VERIFIED (not required for CSS-only change)**: Google Drive 별도 원본 재대조. 이미 배포된 출처 색인만 참조함.
+
+
+## PC 150% 글씨 확대 — 브라우저 CI 검증 증거 (2026-11-19 KST)
+
+최종 스타일 및 브라우저 테스트 코드를 포함한 코드 SHA `6c4f03ea30fbf71118b8bacf58e5359f1a3c55ef`:
+- **PASS** 국제 통합명단 PC/모바일 Playwright Chromium 및 데이터 검증 [run #44424948478](https://github.com/kvolleylab/kvolleylab/actions/runs/44424948478): 1440px 이름 24px·본문 21px, 900px 동일 크기·표 내부 스크롤·문서 전체 overflow 0, 별도 대회명단 24/21px, 일본 남자 26명과 대회 3개/42건, 390/360px 기존 명단 및 데이터/외부 링크/참가 점 확인.
+- **PASS** 국가별 국제대회 내역/명단/모바일 Chromium 검증 [run #44424948624](https://github.com/kvolleylab/kvolleylab/actions/runs/44424948624).
+- **PASS** 팀 디렉터리 남녀/국가/프로/KOVO/모바일 Chromium 회귀 [run #44424948417](https://github.com/kvolleylab/kvolleylab/actions/runs/44424948417). 기존 40개국과 불일치했던 구형 3개국 QA 기대값 수정 후 통과.
+- **NOT VERIFIED**: 실제 `kvolleylab.com` HTTPS 페이지에 새 글씨 크기가 배포되었는지 — 아직 PR 리뷰 단계라 main 병합·Pages 배포·운영 브라우저 검증 미실시. 개인 관리자 계정의 실제 로그인도 검증하지 않았다.
+- 일부 대학 Player Master 별도 CI 실패는 기존 다른 경로로, 이번 국제명단 브라우저 3종 PASS와 구분한다.
 
 ## 수정 파일·릴리스 게이트
 - `assets/css/kvl-international-countries-v1.css`
