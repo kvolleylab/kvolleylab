@@ -55,9 +55,28 @@ async function testApp(){
   });
   assert.equal(layout.eventCount,3,'Do not invent a Japan AVC Cup entry');
   assert.ok(layout.allCardsSameRow&&layout.cardWidth>=228,'PC cards must sit across one row: '+JSON.stringify(layout));
-  for(const [field,minimum] of [['cardTitlePx',16],['rowPx',14],['namePx',15],['dobPx',13],['clubPx',13]])
+  for(const [field,minimum] of [['cardTitlePx',16],['rowPx',14],['namePx',16],['dobPx',14],['clubPx',14]])
    assert.ok(layout[field]>=minimum,field+' below PC readability floor: '+JSON.stringify(layout));
   REPORT.views.push({name:'PC 1440 competition card row and enlarged roster type',status:'PASS',layout});
+  // Match the actual KVL desktop menu font and prevent desktop-to-tablet fallback to tiny type.
+  for(const width of [900]){
+   const tablet=await open(browser,width,'category=international&gender=men&country=JPN&year=2026');
+   const t=tablet.page;
+   await t.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+   const type=await t.evaluate(()=>{
+    const px=s=>parseFloat(getComputedStyle(document.querySelector(s)).fontSize);
+    return {row:px('.kvl-unified-row'),name:px('.kvl-unified-name strong'),
+      en:px('.kvl-unified-name small'),dob:px('.kvl-unified-dob'),club:px('.kvl-unified-club'),
+      volleybox:px('.kvl-unified-volleybox'),head:px('.kvl-unified-head'),viewport:innerWidth,
+      width:document.documentElement.scrollWidth};
+   });
+   assert.ok(type.name>=16 && [type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v>=14),
+      '900px PC/tablet width must retain sidebar-menu-sized type: '+JSON.stringify(type));
+   assert.ok(type.width<=type.viewport+2,'900px should not overflow: '+JSON.stringify(type));
+   assert.deepEqual(tablet.errors,[]);
+   REPORT.views.push({name:'900px menu-equivalent roster type and no overflow',status:'PASS',type});
+   await t.close();
+  }
   const ishikawa=page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first();
   assert.match(await ishikawa.innerText(),/1995-12-11/);
   assert.match(await ishikawa.innerText(),/Ziraat Bankkart Ankara/);
