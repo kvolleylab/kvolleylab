@@ -95,7 +95,7 @@ async function run(){
   const direct=await openPage(browser,1440,'/teams.html?category=international&country=BRN&gender=men&year=2026');
   await direct.page.locator('.ktd-country-panel').waitFor({timeout:30000});
   assert.match(await direct.page.locator('.ktd-country-heading').innerText(),/바레인/);
-  assert.ok((await direct.page.locator('.ktd-country-event').innerText()).includes('출국 명단'));
+  assert.ok((await direct.page.locator('.ktd-country-events').innerText()).includes('출국 명단'));
   await direct.page.locator('[data-country-snapshot="avc-men-continental-2026:BRN"]').click();
   await direct.page.locator('.ktd-country-player').first().waitFor({timeout:30000});
   assert.equal(await direct.page.locator('.ktd-country-player').count(),13);
