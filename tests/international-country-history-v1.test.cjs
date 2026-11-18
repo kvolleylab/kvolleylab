@@ -132,6 +132,21 @@ test('candidate registry starts empty; comparisons require immutable IDs and fin
            {name_ko:'선수 C'}]
  };
  assert.ok(api.validateSelection({schema_version:1,recorded_candidate_sets:1,sets:[candidate]}));
+ // Hypothetical verified 2027 candidate-only source must show its year independently
+ // of a finalized or registered tournament roster. This is test data, not published.
+ const candidate2027={...candidate,snapshot_id:'test-candidate-2027',year:2027,
+  source_id:'EXAMPLE-OFFICIAL-2027',published_at:'2027-01-01',reviewed_at:'2027-01-02'};
+ const candidateSet={schema_version:1,recorded_candidate_sets:1,sets:[candidate2027]};
+ assert.ok(api.validateSelection(candidateSet));
+ assert.deepEqual(api.yearsFor(snapshots,candidateSet,'JPN','men'),[2027,2026]);
+ const allCards=api.cardEntries(countries,snapshots,'men',candidateSet);
+ assert.equal(allCards.length,40);
+ assert.equal(allCards.find(c=>c.code==='JPN').snapshots,3,'candidate set does not masquerade as completed tournament');
+ const alternateGender={...candidate2027,snapshot_id:'test-candidate-future-only',country_code:'NZL',gender:'women'};
+ const femaleCandidateSet={schema_version:1,recorded_candidate_sets:1,sets:[alternateGender]};
+ assert.deepEqual(api.yearsFor(snapshots,femaleCandidateSet,'NZL','women'),[2027]);
+ assert.match(api.cardEntries(countries,snapshots,'women',femaleCandidateSet).find(c=>c.code==='NZL').sourceLabel,/후보·선발 자료 1건/);
+
  const complete={country_code:'JPN',gender:'men',year:2026,competition_slug:'avc-men-continental-2026',
   stage:'final',identities_complete:true,official_roster_complete:true,player_count:1,
   review_status:'VERIFIED',source_sha256:'b'.repeat(64),source_url:'https://example.org/volleyball/final',
