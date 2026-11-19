@@ -5,7 +5,7 @@
 Status: USER REQUESTED / IMPLEMENTED ON REVIEW BRANCH / DEPLOYMENT NOT YET VERIFIED.
 사용자는 국제 국가별 통합·개별 선수명단 글씨체가 다른 이유를 문의하고 **PC 선수명 20px, 나머지 선수 정보(영문명·등번호·생년월일·POS·신장·소속팀·Volleybox·표 제목) 17px**로 추가 축소를 요청했다. 기존 운영 코드의 공통 밝은 테마 `assets/css/site-theme-light.css`는 `Arial,"Noto Sans KR",sans-serif`를 사용하지만 `assets/css/kvl-teams-directory-v1.css`와 국제 통합명단은 `Arial,'Malgun Gothic',sans-serif`를 지정한다. 브라우저의 실제 한글 fallback이 달라질 수 있고 통합명단 선수명/헤더에 쓰인 font-weight 900도 차이를 키운다.
 
-이번 조정은 **국제 국가 패널 내부만** 공통 `Arial,"Noto Sans KR",sans-serif`로 통일하고 통합명단 제목/헤더/등번호의 과도한 굵기를 800으로 조정한다. 기존 글로벌 메뉴와 프로 구단 명단은 변경하지 않는다. 검증된 소속팀·리그 국가/리그명, `VB->`/검색 링크, 원형 대회 참가 이력, 대회별 원본/인원, 모바일 기존 카드·행 구조, 내부 가로 스크롤 및 회원·KOVO 자동화는 보존한다. 기준 main `5813a04a255b895ac07059989595aefe66fb6d7d`. 정적/브라우저/운영 검증 기록은 [v3 QA 인계](validation/international-roster-typography-v3-20261120.md)에 둔다. 운영 배포 여부는 실제 병합과 Pages·실제 HTTPS 확인 후에만 변경한다.
+초기 Chromium에서 실제 KVL 본문은 `Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif`, 국제명단은 `Arial,"Noto Sans KR",sans-serif`로 확인되어 서체 불일치 재현(CI #44552598891)됐다. 고정 Noto Sans KR 방식은 폐기하고 **국제 국가 패널 및 통합명단이 `font-family:inherit`로 실제 사이트 폰트를 상속**하도록 수정한다. 국제 전용 버튼·검색 입력도 상속하고 통합명단 제목/헤더/등번호의 과도한 굵기는 800으로 조정한다. 기존 글로벌 메뉴와 프로 구단 명단은 변경하지 않는다. 검증된 소속팀·리그 국가/리그명, `VB->`/검색 링크, 원형 대회 참가 이력, 대회별 원본/인원, 모바일 기존 카드·행 구조, 내부 가로 스크롤 및 회원·KOVO 자동화는 보존한다. 기준 main `5813a04a255b895ac07059989595aefe66fb6d7d`. 정적/브라우저/운영 검증 기록은 [v3 QA 인계](validation/international-roster-typography-v3-20261120.md)에 둔다. 운영 배포 여부는 실제 병합과 Pages·실제 HTTPS 확인 후에만 변경한다.
 
 ## 2026-11-19 · 국제 국가별 명단 리그 국가와 VB 단축링크 형식 복원
 
