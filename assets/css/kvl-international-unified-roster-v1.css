@@ -138,7 +138,7 @@
  .kvl-unified-detail-head button,.kvl-unified-detail-event strong,.kvl-unified-detail-event span,
  .kvl-unified-detail-links a,.kvl-unified-dot-empty{font-size:14px}
 }
-/* PC refined 150%-equivalent (minus 2px) roster typography: preserve all 8 fields without page-level overflow. */
+/* PC refined 150%-equivalent (minus 4px vs initial 24/21px) roster typography: preserve all 8 fields without page-level overflow. */
 @media (min-width:821px){
  .ktd-country-unified,.kvl-unified{min-width:0;max-width:100%}
  .kvl-unified-table{
@@ -150,19 +150,19 @@
   grid-template-columns:70px minmax(195px,1.1fr) 132px 54px 86px minmax(190px,1fr) 110px 90px;
   column-gap:10px;padding-left:12px;padding-right:12px
  }
- .kvl-unified-head{font-size:19px;min-height:65px;line-height:1.35}
- .kvl-unified-row{font-size:19px;min-height:104px;line-height:1.5;padding-top:14px;padding-bottom:14px}
+ .kvl-unified-head{font-size:17px;min-height:65px;line-height:1.35}
+ .kvl-unified-row{font-size:17px;min-height:104px;line-height:1.5;padding-top:14px;padding-bottom:14px}
  .kvl-unified-number,.kvl-unified-name small,
  .kvl-unified-dob,.kvl-unified-pos,.kvl-unified-height,
- .kvl-unified-club,.kvl-unified-volleybox{font-size:19px;line-height:1.45}
- .kvl-unified-name strong{font-size:22px;line-height:1.35}
+ .kvl-unified-club,.kvl-unified-volleybox{font-size:17px;line-height:1.45}
+ .kvl-unified-name strong{font-size:20px;line-height:1.35}
  .kvl-unified-name{gap:5px}
  .kvl-unified-club{overflow-wrap:anywhere}
  .kvl-unified-vb{text-align:center}
- .kvl-unified-detail-head h4{font-size:22px}
+ .kvl-unified-detail-head h4{font-size:20px}
  .kvl-unified-detail-head small,.kvl-unified-detail>p,
  .kvl-unified-detail-event strong,.kvl-unified-detail-event span,
- .kvl-unified-detail-links a{font-size:19px;line-height:1.5}
+ .kvl-unified-detail-links a{font-size:17px;line-height:1.5}
  .kvl-unified-detail-event{padding:14px}
  .kvl-unified-detail-events{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
  .kvl-unified-detail-head button{font-size:16px;min-height:36px}
@@ -172,3 +172,11 @@
 .kvl-unified-club-league{color:#66849a;font-size:.86em;font-weight:700;line-height:1.45;overflow-wrap:anywhere}
 @media(max-width:820px){.kvl-unified-club-league{font-size:10px}}
 @media(max-width:375px){.kvl-unified-club-league{font-size:9.3px}}
+
+/* Align national-team roster type with the KVL light-theme text stack, without changing global navigation. */
+.kvl-unified{font-family:Arial,"Noto Sans KR",sans-serif}
+.kvl-unified button,.kvl-unified input{font-family:inherit}
+.kvl-unified-name strong,.kvl-unified-head,.kvl-unified-number{font-weight:800}
+@media (min-width:821px){
+ .kvl-unified-club-league{font-size:17px}
+}
