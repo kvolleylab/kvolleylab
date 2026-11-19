@@ -14,6 +14,13 @@ const safeExternal=x=>/^https:\/\/(?:en\.volleyballworld\.com|www\.volleyballwor
 const safeAnySource=x=>/^https:\/\/[a-z0-9.-]+(?:\/[^\s<>"']*)?$/i.test(String(x||''))?String(x):'';
 const norm=x=>String(x||'').trim().normalize('NFKC').toLowerCase().replace(/\s+/g,' ');
 const flagEmoji=iso2=>/^[a-z]{2}$/.test(String(iso2||''))?[...iso2.toUpperCase()].map(c=>String.fromCodePoint(c.charCodeAt(0)-65+0x1F1E6)).join(''):'🏐';
+const countryFlagImage=country=>{
+ const code=String(country?.flag_iso2||'');
+ const emoji=esc(flagEmoji(code));
+ if(!/^[a-z]{2}$/.test(code))return '<span class="ktd-country-flag-fallback" aria-hidden="true">'+emoji+'</span>';
+ return '<img class="ktd-country-flag-image" src="assets/images/flags/4x3/'+esc(code)+'.svg" alt="'+esc(country.name_ko)+' 국기" decoding="async">'+
+  '<span class="ktd-country-flag-fallback" aria-hidden="true" hidden>'+emoji+'</span>';
+};
 const dataCache=new Map();
 const readJSON=async p=>{
  if(!SAFE_SOURCE.test(p)&&p!=='data/master/player_master_international_v1.json')throw Error('Unapproved roster source path: '+p);
@@ -149,7 +156,7 @@ function render(host,opts){
  let selectedSnapshot=null,alive=true;
  const candidateSets=()=>selection.sets.filter(s=>s.country_code===country.code&&s.gender===gender&&s.year===year);
  host.innerHTML='<div class="ktd-country-panel"><div class="ktd-country-top">'+
-  '<div class="ktd-country-heading"><div class="ktd-country-flag" aria-hidden="true">'+esc(flagEmoji(country.flag_iso2))+'</div>'+
+  '<div class="ktd-country-heading"><div class="ktd-country-flag">'+countryFlagImage(country)+'</div>'+
   '<div><p class="ktd-section-eyebrow">NATIONAL TEAM HISTORY · '+esc(country.code)+'</p>'+
   '<h2>'+esc(country.name_ko)+'</h2><p>'+esc(country.name_en)+' · '+(gender==='men'?'남자대표팀':'여자대표팀')+'</p></div></div>'+
   '<button type="button" class="ktd-close" data-country-close>목록으로 돌아가기 ×</button></div>'+
@@ -159,6 +166,14 @@ function render(host,opts){
   '<section data-country-unified class="ktd-country-unified" aria-label="연도별 통합 선수명단" hidden></section>'+
   '<section class="ktd-country-selection"><h3>후보·선발 이력</h3><div data-country-selection></div></section>'+
   '<section data-country-roster class="ktd-country-roster" hidden aria-live="polite"></section></div>';
+ const onFlagLoadError=event=>{
+  const img=event.target;
+  if(!img?.matches?.('img.ktd-country-flag-image'))return;
+  img.hidden=true;
+  const fallback=img.nextElementSibling;
+  if(fallback?.classList.contains('ktd-country-flag-fallback'))fallback.hidden=false;
+ };
+ host.addEventListener('error',onFlagLoadError,true);
  const yearsHost=host.querySelector('[data-country-years]'),eventsHost=host.querySelector('[data-country-events]');
  const rosterHost=host.querySelector('[data-country-roster]'),selectionHost=host.querySelector('[data-country-selection]');
  const unifiedHost=host.querySelector('[data-country-unified]');
@@ -295,7 +310,7 @@ function render(host,opts){
   if(b.hasAttribute('data-candidate-id')){showCandidate(b.dataset.candidateId)}
  };
  showYear();
- return {year,close:()=>{alive=false;request++;unifiedTicket++;unifiedInstance?.destroy?.();host.onclick=null}};
+ return {year,close:()=>{alive=false;request++;unifiedTicket++;unifiedInstance?.destroy?.();host.onclick=null;host.removeEventListener('error',onFlagLoadError,true)}};
 }
 return {esc,REGIONS,flagEmoji,validateDirectory,validateIndex,validateSelection,yearsFor,cardEntries,filterCountries,sourceTeam,normalizePlayer,verifiedProfileLink,compareSelection,outcomeLabel,render};
 });
