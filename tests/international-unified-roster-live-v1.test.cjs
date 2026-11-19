@@ -68,6 +68,24 @@ test('Club league-country metadata is shown only for source-confirmed clubs',()=
  const japan=scope('JPN','women');
  assert.ok(japan.rows.every(p=>!p.club||p.clubCountry===String(p.clubCountry||'')));
 });
+test('Verified country badge uses a single country-only label regardless of leagueName availability',()=>{
+ assert.equal(unified.countryLabel('Japan'),'🇯🇵 JAPAN');
+ assert.equal(unified.countryLabel('Italy'),'🇮🇹 ITALY');
+ assert.equal(unified.countryLabel('Türkiye'),'🇹🇷 TÜRKIYE');
+ assert.equal(unified.countryLabel(''), '');
+ const confirmedNoLeague=unified.identify({name:'국가만 확인',club:{confirmed:true,name:'Verified Japan Club',country:'Japan'}});
+ const confirmedWithLeague=unified.identify({name:'국가와 리그 확인',club:{confirmed:true,name:'Verified Japan Club',country:'Japan',leagueName:'SV.League Men'}});
+ assert.equal(unified.countryLabel(confirmedNoLeague.clubCountry),unified.countryLabel(confirmedWithLeague.clubCountry));
+ assert.equal(confirmedNoLeague.clubLeague,'');
+ assert.equal(confirmedWithLeague.clubLeague,'SV.League Men','source league metadata must remain available for detail');
+ const japan=scope('JPN','men');
+ const a=japan.rows.find(p=>p.en==='Yudai Arai');
+ const n=japan.rows.find(p=>p.en==='Yuji Nishida');
+ assert.ok(a&&n);
+ assert.equal(unified.countryLabel(a.clubCountry),unified.countryLabel(n.clubCountry),
+  'Japan clubs should show the identical country label regardless of source tournament');
+ assert.equal(unified.countryLabel(''),'', 'Missing confirmed country must not be guessed');
+});
 test('No unapproved athlete id reuse and false standalone Volleybox links',()=>{
  assert.equal(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').id,'');
  assert.ok(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').search);
