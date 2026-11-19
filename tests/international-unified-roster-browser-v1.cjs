@@ -60,9 +60,9 @@ async function testApp(){
   assert.equal(layout.eventCount,3,'Do not invent a Japan AVC Cup entry');
   assert.ok(layout.allCardsSameRow&&layout.cardWidth>=228,'PC cards must sit across one row: '+JSON.stringify(layout));
   assert.ok(layout.cardTitlePx>=16,'Keep source competition cards legible: '+JSON.stringify(layout));
-  for(const [field,exact] of [['rowPx',19],['namePx',22],['dobPx',19],['clubPx',19],['enPx',19],['headPx',19],['volleyboxPx',19]])
-   assert.equal(layout[field],exact,field+' must be exactly 2px smaller: '+JSON.stringify(layout));
-  REPORT.views.push({name:'PC 1440 revised 22px names and 19px data fields',status:'PASS',layout});
+  for(const [field,exact] of [['rowPx',17],['namePx',20],['dobPx',17],['clubPx',17],['enPx',17],['headPx',17],['volleyboxPx',17]])
+   assert.equal(layout[field],exact,field+' must equal revised PC specification: '+JSON.stringify(layout));
+  REPORT.views.push({name:'PC 1440 revised 20px names and 17px data fields',status:'PASS',layout});
   // Match the actual KVL desktop menu font and prevent desktop-to-tablet fallback to tiny type.
   for(const width of [900]){
    const tablet=await open(browser,width,'category=international&gender=men&country=JPN&year=2026');
@@ -77,12 +77,25 @@ async function testApp(){
       tableWidth:document.querySelector('.kvl-unified-table').clientWidth,
       tableScroll:document.querySelector('.kvl-unified-table').scrollWidth};
    });
-   assert.ok(type.name===22 && [type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v===19),
-      '900px PC/tablet must retain exact 22px and 19px type: '+JSON.stringify(type));
+   assert.ok(type.name===20 && [type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v===17),
+      '900px PC/tablet must retain exact 20px and 17px type: '+JSON.stringify(type));
    assert.ok(type.tableScroll>type.tableWidth,'900px table must scroll internally instead of shrinking text: '+JSON.stringify(type));
    assert.ok(type.width<=type.viewport+2,'900px document should not overflow: '+JSON.stringify(type));
    assert.deepEqual(tablet.errors,[]);
-   REPORT.views.push({name:'900px 22/19px fonts with contained roster scroll',status:'PASS',type});
+   REPORT.views.push({name:'900px 20/17px fonts with contained roster scroll',status:'PASS',type});
+   const fonts=await t.evaluate(()=>{
+    const style=s=>getComputedStyle(document.querySelector(s));
+    const base=style('body').fontFamily;
+    return {base,unified:style('.kvl-unified').fontFamily,country:style('.ktd-country-panel').fontFamily,
+      eventAction:style('.ktd-country-event button').fontFamily,search:style('.kvl-unified-search input').fontFamily,
+      titleWeight:style('.kvl-unified-name strong').fontWeight,
+      leaguePx:parseFloat(style('.kvl-unified-club-league').fontSize)};
+   });
+   for(const key of ['unified','country','eventAction','search'])assert.equal(fonts[key],fonts.base,
+    'Country-specific font should match KVL site font: '+JSON.stringify(fonts));
+   assert.equal(fonts.titleWeight,'800','Avoid extra-heavy synthetic 900 title: '+JSON.stringify(fonts));
+   assert.equal(fonts.leaguePx,17,'Verified league country should match 17px metadata');
+   REPORT.views.push({name:'Font family matches KVL site typography at PC 900',status:'PASS',fonts});
    await t.close();
   }
   const ishikawa=page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first();
@@ -142,9 +155,17 @@ async function testApp(){
      number:px('.ktd-country-number'),link:px('.ktd-country-player-links a'),
      row:px('.ktd-country-player'),header:px('.ktd-country-roster-label')};
   });
-  assert.ok(snapshotType.name===22 && ['en','number','link','row','header'].every(k=>snapshotType[k]===19),
-   'Separate tournament roster must use 22px names and 19px facts: '+JSON.stringify(snapshotType));
-  REPORT.views.push({name:'Separate tournament roster 22/19px text with all existing entries',status:'PASS',snapshotType});
+  assert.ok(snapshotType.name===20 && ['en','number','link','row','header'].every(k=>snapshotType[k]===17),
+   'Separate tournament roster must use 20px names and 17px facts: '+JSON.stringify(snapshotType));
+  REPORT.views.push({name:'Separate tournament roster 20/17px text with all existing entries',status:'PASS',snapshotType});
+  const perFonts=await page.evaluate(()=>{
+   const px=s=>parseFloat(getComputedStyle(document.querySelector(s)).fontSize);
+   return {site:getComputedStyle(document.body).fontFamily,
+     section:getComputedStyle(document.querySelector('.ktd-country-panel')).fontFamily,
+     league: px('.ktd-country-club-league')};
+  });
+  assert.equal(perFonts.section,perFonts.site,'Per-event roster must use the same KVL font family');
+  assert.equal(perFonts.league,17,'Per-event league country should match 17px metadata');
   assert.equal(await page.locator('.kvl-unified-row').count(),26,'Unified table still present');
   assert.match(await page.locator('[data-country-selection]').innerText(),/후보 엔트리/);
   await page.locator('[data-country-year="2026"]').click();
