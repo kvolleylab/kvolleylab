@@ -115,7 +115,7 @@
 @media(max-width:375px){.ktd-country-club{font-size:10px}.ktd-country-club-league{font-size:9.5px}}
 
 /* Match KVL common typography inside international country details only. */
-.ktd-country-panel{font-family:Arial,"Noto Sans KR",sans-serif}
+.ktd-country-panel{font-family:inherit}
 .ktd-country-panel button,.ktd-country-panel input{font-family:inherit}
 .ktd-country-roster-label,.ktd-country-number{font-weight:800}
 @media (min-width:821px){
