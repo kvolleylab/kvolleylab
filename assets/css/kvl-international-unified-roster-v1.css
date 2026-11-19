@@ -174,7 +174,7 @@
 @media(max-width:375px){.kvl-unified-club-league{font-size:9.3px}}
 
 /* Align national-team roster type with the KVL light-theme text stack, without changing global navigation. */
-.kvl-unified{font-family:Arial,"Noto Sans KR",sans-serif}
+.kvl-unified{font-family:inherit}
 .kvl-unified button,.kvl-unified input{font-family:inherit}
 .kvl-unified-name strong,.kvl-unified-head,.kvl-unified-number{font-weight:800}
 @media (min-width:821px){
