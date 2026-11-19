@@ -255,8 +255,11 @@ function render(host,opts){
      const club=verified?registered.club:p.club;
      const leagueCountry=verified?String(registered.leagueCountry||'').trim():p.club_country;
      const leagueName=verified?String(registered.leagueName||'').trim():p.club_league;
+     // Match the year-unified roster's country-only label. Do not infer unknown leagues.
+     const countryFormatter=typeof window==='object'?window.KVLInternationalUnifiedRosterV1?.countryLabel:null;
+     const countryDisplay=leagueCountry?(typeof countryFormatter==='function'?countryFormatter(leagueCountry):leagueCountry.toUpperCase()):'';
      const clubLine=club?'<span class="ktd-country-club"><span>'+esc(club)+'</span>'+
-      (leagueCountry?'<span class="ktd-country-club-league"> · '+esc(leagueCountry)+(leagueName?' · '+esc(leagueName):'')+'</span>':'')+'</span>':'';
+      (countryDisplay?'<span class="ktd-country-club-league"'+(leagueName?' title="'+esc('확인된 리그: '+leagueName)+'"':'')+'> · '+esc(countryDisplay)+'</span>':'')+'</span>':'';
      return '<div class="ktd-country-player"><span class="ktd-country-number">'+esc(p.number??'–')+'</span>'+
        '<span class="ktd-country-person"><strong>'+esc(p.name)+'</strong>'+(p.en&&norm(p.en)!==norm(p.name)?'<small>'+esc(p.en)+'</small>':'')+clubLine+
        '<span class="ktd-country-player-links">'+(link?'<a href="'+esc(link)+'">KVL 프로필</a>':'')+profile+vol+'</span></span>'+
