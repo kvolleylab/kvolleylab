@@ -2,11 +2,17 @@
 
 ## 2026-11-20 · V-리그 세트 전환 및 종료 직후 공식 득점 보완
 
-Status: USER REQUESTED REPAIR / IMPLEMENTED / LOCAL SAFETY QA PASSED / NOT DEPLOYED.
+Status: USER APPROVED RELEASE / IMPLEMENTED / PR SAFETY QA PASSED / DEPLOYMENT PENDING.
 사용자가11/19 실제 갱신 검증 뒤 남은 누락의 보완을 요청했다. 기준main `5813a04a255b895ac07059989595aefe66fb6d7d`. 문자중계의 세트 번호가 승수보다 한 단계 늦은 세트 사이 상태는 종료 득점·승자·연속성이 모두 맞고 다음세트 득점이 없을 때만 인정한다. 거절 전 검증된 숫자 진단도 남긴다. 실제19:59 artifact에는 원시setIng가 없어 당시 값을 확정하지 않는다.
 
-추가 확인한21:42 자연실행은 종료 표시와 불완전 득점 때문에 보완 전 전체 수집이 중단됐다. 당일 정규리그의 공식 종료시각·3승·승자표시·정상 기존 득점이 확인된 경우에만 같은 경기 문자중계의 완전한3~5세트와 대조한다. 전체 득점·승수·기존 점수가 일치해야 확정하며 실패·충돌은 계속 차단한다. 출처는 공개점수와 배포영수증에 보존한다. 이는 기존11/14 문자중계 보완을 종료 직후 검증에 제한적으로 확장하며 순위·MASTER 검수·선수·ID·Cup·국제대회·Worker/cron은 유지한다. [증거·검증·배포 제한](validation/vleague-set-transition-recovery-v1.md). 새 운영 병합·배포 승인은 아직 받지 않았으며, 실제 다음 경기 연속 검증 전 완료로 판정하지 않는다.
+추가 확인한21:42 자연실행은 종료 표시와 불완전 득점 때문에 보완 전 전체 수집이 중단됐다. 당일 정규리그의 공식 종료시각·3승·승자표시·정상 기존 득점이 확인된 경우에만 같은 경기 문자중계의 완전한3~5세트와 대조한다. 전체 득점·승수·기존 점수가 일치해야 확정하며 실패·충돌은 계속 차단한다. 출처는 공개점수와 배포영수증에 보존한다. 이는 기존11/14 문자중계 보완을 종료 직후 검증에 제한적으로 확장하며 순위·MASTER 검수·선수·ID·Cup·국제대회·Worker/cron은 유지한다. [증거·검증·배포 제한](validation/vleague-set-transition-recovery-v1.md). 2026-11-20 사용자가 검증된 PR #379 병합·운영 배포를 명시적으로 승인했다. 기존 head `8144c636`의 V-리그 CI `44553259328` 성공 후 최신 main `b00ffcdb`의 별도 국제명단 화면 변경을 보존하고 작업 기록 문서 충돌만 정리한다. 코드 배포는 병합·Pages·운영 조회 증거로 확인하며, 실제 다음 경기 연속 검증 전 복구 완료로 판정하지 않는다.
 
+## 2026-11-20 · 국제 국가별 선수명단 글꼴 일치 및 PC 20/17px 조정 v3
+
+Status: USER REQUESTED / IMPLEMENTED ON REVIEW BRANCH / DEPLOYMENT NOT YET VERIFIED.
+사용자는 국제 국가별 통합·개별 선수명단 글씨체가 다른 이유를 문의하고 **PC 선수명 20px, 나머지 선수 정보(영문명·등번호·생년월일·POS·신장·소속팀·Volleybox·표 제목) 17px**로 추가 축소를 요청했다. 기존 운영 코드의 공통 밝은 테마 `assets/css/site-theme-light.css`는 `Arial,"Noto Sans KR",sans-serif`를 사용하지만 `assets/css/kvl-teams-directory-v1.css`와 국제 통합명단은 `Arial,'Malgun Gothic',sans-serif`를 지정한다. 브라우저의 실제 한글 fallback이 달라질 수 있고 통합명단 선수명/헤더에 쓰인 font-weight 900도 차이를 키운다.
+
+초기 Chromium에서 실제 KVL 본문은 `Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif`, 국제명단은 `Arial,"Noto Sans KR",sans-serif`로 확인되어 서체 불일치 재현(CI #44552598891)됐다. 고정 Noto Sans KR 방식은 폐기하고 **국제 국가 패널 및 통합명단이 `font-family:inherit`로 실제 사이트 폰트를 상속**하도록 수정한다. 국제 전용 버튼·검색 입력도 상속하고 통합명단 제목/헤더/등번호의 과도한 굵기는 800으로 조정한다. 기존 글로벌 메뉴와 프로 구단 명단은 변경하지 않는다. 검증된 소속팀·리그 국가/리그명, `VB->`/검색 링크, 원형 대회 참가 이력, 대회별 원본/인원, 모바일 기존 카드·행 구조, 내부 가로 스크롤 및 회원·KOVO 자동화는 보존한다. 기준 main `5813a04a255b895ac07059989595aefe66fb6d7d`. 정적/브라우저/운영 검증 기록은 [v3 QA 인계](validation/international-roster-typography-v3-20261120.md)에 둔다. 운영 배포 여부는 실제 병합과 Pages·실제 HTTPS 확인 후에만 변경한다.
 
 ## 2026-11-19 · 국제 국가별 명단 리그 국가와 VB 단축링크 형식 복원
 

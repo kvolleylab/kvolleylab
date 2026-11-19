@@ -1,7 +1,7 @@
 # V-League set and match-end transition recovery v1
 
 Date: 2026-11-20 KST. Base: `5813a04a255b895ac07059989595aefe66fb6d7d`.
-Status: IMPLEMENTED / LOCAL SAFETY QA PASSED / NOT DEPLOYED.
+Status: USER APPROVED RELEASE / IMPLEMENTED / PR SAFETY QA PASSED / DEPLOYMENT PENDING.
 
 ## Actual failures and evidence limits
 
@@ -74,7 +74,10 @@ competitions and Cup remain protected.
 
 ## Release and next actual match
 
-Implementation is requested; this new PR still needs explicit production approval.
+On 2026-11-20 KST the user explicitly approved PR379 merge and production release.
+Head8144c636 passed V-League CI44553259328. Concurrent mainb00ffcdb only
+conflicted in the shared decision log; preserve both entries and all unrelated UI changes.
+Final merge, Pages and live evidence are recorded in PR379 and PR262 comments.
 Do not force-dispatch or manually write MASTER to manufacture acceptance evidence.
 After approval, verify code Pages separately from natural score publication.
 Use source-observations decisions/counters, actual MASTER receipt, commit hashes,
