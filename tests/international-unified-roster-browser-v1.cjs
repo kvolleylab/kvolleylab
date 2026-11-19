@@ -59,9 +59,10 @@ async function testApp(){
   });
   assert.equal(layout.eventCount,3,'Do not invent a Japan AVC Cup entry');
   assert.ok(layout.allCardsSameRow&&layout.cardWidth>=228,'PC cards must sit across one row: '+JSON.stringify(layout));
-  for(const [field,minimum] of [['cardTitlePx',16],['rowPx',21],['namePx',24],['dobPx',21],['clubPx',21],['enPx',21],['headPx',21],['volleyboxPx',21]])
-   assert.ok(layout[field]>=minimum,field+' below PC readability floor: '+JSON.stringify(layout));
-  REPORT.views.push({name:'PC 1440 full 150-percent-equivalent roster fonts',status:'PASS',layout});
+  assert.ok(layout.cardTitlePx>=16,'Keep source competition cards legible: '+JSON.stringify(layout));
+  for(const [field,exact] of [['rowPx',19],['namePx',22],['dobPx',19],['clubPx',19],['enPx',19],['headPx',19],['volleyboxPx',19]])
+   assert.equal(layout[field],exact,field+' must be exactly 2px smaller: '+JSON.stringify(layout));
+  REPORT.views.push({name:'PC 1440 revised 22px names and 19px data fields',status:'PASS',layout});
   // Match the actual KVL desktop menu font and prevent desktop-to-tablet fallback to tiny type.
   for(const width of [900]){
    const tablet=await open(browser,width,'category=international&gender=men&country=JPN&year=2026');
@@ -76,12 +77,12 @@ async function testApp(){
       tableWidth:document.querySelector('.kvl-unified-table').clientWidth,
       tableScroll:document.querySelector('.kvl-unified-table').scrollWidth};
    });
-   assert.ok(type.name>=24 && [type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v>=21),
-      '900px PC/tablet width must retain 150-percent-equivalent type: '+JSON.stringify(type));
+   assert.ok(type.name===22 && [type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v===19),
+      '900px PC/tablet must retain exact 22px and 19px type: '+JSON.stringify(type));
    assert.ok(type.tableScroll>type.tableWidth,'900px table must scroll internally instead of shrinking text: '+JSON.stringify(type));
    assert.ok(type.width<=type.viewport+2,'900px document should not overflow: '+JSON.stringify(type));
    assert.deepEqual(tablet.errors,[]);
-   REPORT.views.push({name:'900px 24/21px fonts with contained roster scroll',status:'PASS',type});
+   REPORT.views.push({name:'900px 22/19px fonts with contained roster scroll',status:'PASS',type});
    await t.close();
   }
   const ishikawa=page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first();
@@ -121,9 +122,9 @@ async function testApp(){
      number:px('.ktd-country-number'),link:px('.ktd-country-player-links a'),
      row:px('.ktd-country-player'),header:px('.ktd-country-roster-label')};
   });
-  assert.ok(snapshotType.name>=24 && ['en','number','link','row','header'].every(k=>snapshotType[k]>=21),
-   'Separate tournament roster must use 24px names and 21px facts: '+JSON.stringify(snapshotType));
-  REPORT.views.push({name:'Separate tournament roster 24/21px text with all existing entries',status:'PASS',snapshotType});
+  assert.ok(snapshotType.name===22 && ['en','number','link','row','header'].every(k=>snapshotType[k]===19),
+   'Separate tournament roster must use 22px names and 19px facts: '+JSON.stringify(snapshotType));
+  REPORT.views.push({name:'Separate tournament roster 22/19px text with all existing entries',status:'PASS',snapshotType});
   assert.equal(await page.locator('.kvl-unified-row').count(),26,'Unified table still present');
   assert.match(await page.locator('[data-country-selection]').innerText(),/후보 엔트리/);
   await page.locator('[data-country-year="2026"]').click();
