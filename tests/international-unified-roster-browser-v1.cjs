@@ -103,10 +103,11 @@ async function testApp(){
   assert.match(await ishikawa.innerText(),/Ziraat Bankkart Ankara/);
   assert.equal(await ishikawa.locator('.kvl-unified-volleybox').count(),1);
   assert.equal(await ishikawa.locator('.kvl-unified-volleybox').innerText(),'VB->');
-  assert.match(await ishikawa.locator('.kvl-unified-club').innerText(),/Türkiye/);
-  assert.match(await ishikawa.locator('.kvl-unified-club').innerText(),/SMS Grup Efeler Ligi/);
+  assert.equal((await ishikawa.locator('.kvl-unified-club-league').innerText()).trim(),'· 🇹🇷 TÜRKIYE');
+  assert.equal(await ishikawa.locator('.kvl-unified-club-league').getAttribute('title'),'확인된 리그: SMS Grup Efeler Ligi');
+  assert.doesNotMatch(await ishikawa.locator('.kvl-unified-club').innerText(),/SMS Grup Efeler Ligi/,'Visible roster badges are country-only');
   const arai=page.locator('.kvl-unified-row').filter({hasText:'아라이 유다이'}).first();
-  assert.match(await arai.locator('.kvl-unified-club').innerText(),/Japan/);
+  assert.equal((await arai.locator('.kvl-unified-club-league').innerText()).trim(),'· 🇯🇵 JAPAN');
   const unknownClub=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
   assert.match(await unknownClub.locator('.kvl-unified-club').innerText(),/미확인/);
   assert.equal(await unknownClub.locator('.kvl-unified-club-league').count(),0);
@@ -131,6 +132,7 @@ async function testApp(){
   await page.locator('.kvl-unified-detail:not([hidden])').waitFor({timeout:10000});
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/VNL/);
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/대륙선수권/);
+  assert.match(await page.locator('.kvl-unified-detail').innerText(),/SMS Grup Efeler Ligi/,'Detailed profile keeps source-verified league name');
   await page.locator('[data-kvl-unified-close]').click();
   assert.equal(await page.locator('.kvl-unified-detail:not([hidden])').count(),0);
   REPORT.views.push({name:'Original tournament filters 16/12/14, multi 14, search/detail',status:'PASS'});
@@ -144,8 +146,11 @@ async function testApp(){
   assert.equal(await page.locator('.ktd-country-player').count(),14,'Verified separate AVC roster remains intact');
   const nishida=page.locator('.ktd-country-player').filter({hasText:'니시다 유지'}).first();
   assert.match(await nishida.locator('.ktd-country-club').innerText(),/Osaka Bluteon/);
-  assert.match(await nishida.locator('.ktd-country-club').innerText(),/Japan/);
-  assert.match(await nishida.locator('.ktd-country-club').innerText(),/SV.League Men/);
+  assert.equal((await nishida.locator('.ktd-country-club-league').innerText()).trim(),'· 🇯🇵 JAPAN',
+   'Per-event roster must show same Japan country label, not optional league');
+  assert.equal(await nishida.locator('.ktd-country-club-league').getAttribute('title'),'확인된 리그: SV.League Men');
+  assert.doesNotMatch(await nishida.locator('.ktd-country-club').innerText(),/SV.League Men/,
+   'Source-verified league stays in tooltip instead of the list');
   assert.equal(await nishida.locator('.ktd-country-player-links a').filter({hasText:'VB->'}).count(),1);
 
 

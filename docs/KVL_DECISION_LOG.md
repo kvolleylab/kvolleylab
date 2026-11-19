@@ -1,5 +1,13 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+
+## 2026-11-20 · 국제 국가별 선수명단 소속 리그 국가 라벨 통일 v1
+
+Status: USER REQUESTED / BRANCH IMPLEMENTED / NOT DEPLOYED UNTIL VERIFIED.
+사용자가 국가별 대표팀 통합·개별 선수명단에서 일부 소속 표기는 `JAPAN`, 일부는 `JAPAN · SV LEAGUE`처럼 서로 다르게 보이는 문제를 제기했다. 2026-11-19 요청의 핵심은 **구단 소속 리그 국가명 표시**였으므로, 리그명 확인 여부와 무관하게 목록에는 `🇯🇵 JAPAN`처럼 국기와 국가명 대문자만 표시하도록 통일한다. 같은 국가의 실제 소속리그 `SV.League Men` 자료가 있더라도 명단에서 국가명 옆에 가변적으로 덧붙이지 않는다. 출처로 검증된 리그명은 선수 상세정보 및 국가 라벨 툴팁에 보존한다. 해당 국가 자체가 확인되지 않은 선수에게는 국적/소속 리그를 추정하지 않는다.
+
+구현: `assets/js/kvl-international-unified-roster-v1.js`의 공통 `countryLabel`을 국가별 개별 명단에서도 재사용, 비정상 단독 로드에서는 안전한 국가 대문자 fallback. `teams.html` JS 캐시만 변경, 20/17px 서체와 `VB->`, 참가 이력, 원본 선수 및 자동화·회원 기능 불변. 기준 main `b00ffcdb3e91d31fa264306de6dbecc02f868110`; 테스트·복구 기준 [인계](validation/international-roster-country-only-label-v1-20261120.md). 최종 운영 반영/테스트 성공 여부는 실제 PR·Actions/Pages·HTTPS 증거 확인 후 별도 기록한다.
+
 ## 2026-11-20 · V-리그 세트 전환 및 종료 직후 공식 득점 보완
 
 Status: USER APPROVED RELEASE / IMPLEMENTED / PR SAFETY QA PASSED / DEPLOYMENT PENDING.

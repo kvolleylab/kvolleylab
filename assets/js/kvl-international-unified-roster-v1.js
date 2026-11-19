@@ -14,7 +14,13 @@ const pos=x=>['O','OPP'].includes(String(x||'').toUpperCase())?'OP':String(x||''
 const knownClub=x=>x&&typeof x==='string'&&!['미확인','unknown','-'].includes(norm(x))?x.trim():'';
 const leagueText=x=>typeof x==='string'?x.trim():'';
 const LEAGUE_FLAGS={Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱',Türkiye:'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷',Oman:'🇴🇲',Greece:'🇬🇷'};
-const leagueLabel=p=>p.clubCountry?((LEAGUE_FLAGS[p.clubCountry]||'')+(LEAGUE_FLAGS[p.clubCountry]?' ':'')+p.clubCountry+(p.clubLeague?' · '+p.clubLeague:'')):'';
+/* A roster's league country is consistent regardless of whether a league name is verified.
+    Preserve the exact verified league name in the model and player detail. */
+ const countryLabel=country=>{
+   const name=leagueText(country);
+   return name?((LEAGUE_FLAGS[name]||'')+(LEAGUE_FLAGS[name]?' ':'')+name.toUpperCase()):'';
+ };
+ const leagueLabel=p=>countryLabel(p.clubCountry);
 const eventOrder=s=>{
   const slug=String(s.competition_slug||'');
   if(slug.startsWith('vnl-'))return 10;
@@ -178,7 +184,7 @@ function render(host,model){
     const vb=p.directBox?'<a href="'+esc(p.directBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 선수 프로필 열기">VB-&gt;</a>':
       p.searchBox?'<a href="'+esc(p.searchBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 검색 결과 열기">VB 검색</a>':'<span class="kvl-unified-notknown">—</span>';
     const league=leagueLabel(p);
-    const club=p.club?'<span class="kvl-unified-club-name">'+esc(p.club)+'</span>'+(league?'<span class="kvl-unified-club-league"> · '+esc(league)+'</span>':''):'<em>미확인</em>';
+    const club=p.club?'<span class="kvl-unified-club-name">'+esc(p.club)+'</span>'+(league?'<span class="kvl-unified-club-league"'+(p.clubLeague?' title="'+esc('확인된 리그: '+p.clubLeague)+'"':'')+'> · '+esc(league)+'</span>':''):'<em>미확인</em>';
     const facts='<span class="kvl-unified-mobile-facts">'+esc(p.dob||'생년월일 미확인')+' · '+esc(p.position||'—')+' · '+(p.height?esc(p.height)+'cm':'신장 미확인')+'</span>';
     return '<div class="kvl-unified-row'+(selected===p.key?' is-selected':'')+'" data-kvl-unified-athlete="'+esc(p.key)+'" tabindex="0" role="option" aria-selected="'+(selected===p.key)+'">'+
       '<span class="kvl-unified-number">'+esc(p.number)+'</span>'+
@@ -209,7 +215,7 @@ function render(host,model){
           '<span>'+(x.number!=null?'#'+esc(x.number):'등번호 미확인')+' · '+esc(x.status)+'</span>'+
           '<span>등록 신장: '+(x.height?esc(x.height)+'cm':'미확인')+'</span></div>';
       }).join('')+'</div>'+
-      (p.club?'<p>소속 확인: '+esc(p.club)+(leagueLabel(p)?' · '+esc(leagueLabel(p)):'')+' · '+esc(p.clubAsOf||'대회명단 당시')+'</p>':'')+
+      (p.club?'<p>소속 확인: '+esc(p.club)+(leagueLabel(p)?' · '+esc(leagueLabel(p)):'')+(p.clubLeague?' · 리그 '+esc(p.clubLeague):'')+' · '+esc(p.clubAsOf||'대회명단 당시')+'</p>':'')+
       (p.clubVariants.length?'<p>다른 출처의 소속팀 표기: '+esc(p.clubVariants.map(x=>x.club).join(', '))+'</p>':'')+
       '<div class="kvl-unified-detail-links">'+(p.KVLProfile?'<a href="'+esc(p.KVLProfile)+'">KVL 프로필</a>':'')+
       (p.directBox?'<a href="'+esc(p.directBox)+'" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 선수 프로필 열기">VB-&gt;</a>':'')+
@@ -234,5 +240,5 @@ function render(host,model){
   if(!hasData)list.innerHTML='<p class="ktd-empty">현재 연도에 확인된 대회명단이 없습니다.</p>';
   paint();return {destroy:()=>{host.onclick=null;host.oninput=null;host.onkeydown=null}};
 }
-return {identify,volleybox,important,compatible,build,dots,render};
+return {identify,volleybox,important,compatible,build,dots,render,countryLabel};
 });
