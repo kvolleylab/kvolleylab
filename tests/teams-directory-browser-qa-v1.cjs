@@ -105,7 +105,7 @@ async function main(){
   assert.match(await page.locator('.ktd-grid').innerText().catch(()=>page.locator('#ktdGrid').innerText()),/대한민국 여자대표팀/);
   await page.locator('[data-ktd-category="international"]').click();
   await page.locator('.ktd-card').first().waitFor({timeout:30000});
-  assert.equal(await page.locator('.ktd-card').count(),3);
+  assert.equal(await page.locator('.ktd-card').count(),40,'40-country international directory must be preserved');
   report.scenarios.push({case:'National/international routes actionable and gender buttons hidden',result:'PASS'});
   await page.locator('[data-ktd-category="pro"]').click();
   await page.locator('.ktd-card').first().waitFor({timeout:30000});

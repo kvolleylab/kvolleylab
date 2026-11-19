@@ -94,3 +94,76 @@
  .kvl-unified-name strong{font-size:11.5px}
  .kvl-unified-name small{font-size:9px}
 }
+/* KVL PC readability v1 (2026-11-19): legible data table; mobile layout stays unchanged. */
+@media (min-width:821px){
+ .kvl-unified-top{padding:20px 20px 15px}
+ .kvl-unified-top h3{font-size:22px}
+ .kvl-unified-top p:last-child{font-size:13px}
+ .kvl-unified-legend>span{font-size:12px}
+ .kvl-unified-controls{padding:12px 18px}
+ .kvl-unified-filters button{font-size:13px;min-height:36px;padding:7px 13px}
+ .kvl-unified-search{max-width:225px}
+ .kvl-unified-search input{font-size:13px;min-height:37px}
+ .kvl-unified-count{font-size:12px;padding:10px 18px}
+ .kvl-unified-table{margin:0 14px}
+ .kvl-unified-head,.kvl-unified-row{grid-template-columns:49px minmax(145px,1.35fr) 88px 42px 55px minmax(122px,1fr) 80px minmax(72px,.63fr);gap:8px;padding-left:12px;padding-right:12px}
+ .kvl-unified-head{font-size:12px;min-height:44px}
+ .kvl-unified-row{min-height:68px;font-size:14px;line-height:1.4}
+ .kvl-unified-name strong{font-size:15px;line-height:1.35}
+ .kvl-unified-name small{font-size:12px}
+ .kvl-unified-dob,.kvl-unified-pos,.kvl-unified-height,.kvl-unified-club,.kvl-unified-volleybox{font-size:13px}
+ .kvl-unified-note{font-size:12px;line-height:1.75}
+ .kvl-unified-detail-head h4{font-size:17px}
+ .kvl-unified-detail-head small,.kvl-unified-detail>p,.kvl-unified-detail-event span,.kvl-unified-detail-links a{font-size:12px}
+ .kvl-unified-detail-event strong{font-size:13px}
+}
+@media (min-width:821px) and (max-width:1000px){
+ .kvl-unified-head,.kvl-unified-row{grid-template-columns:38px minmax(112px,1.2fr) 81px 37px 47px minmax(105px,1fr) 72px minmax(58px,.65fr);gap:5px;padding-left:8px;padding-right:8px}
+ .kvl-unified-head{font-size:11px}
+ .kvl-unified-row{font-size:13px}
+ .kvl-unified-dob,.kvl-unified-pos,.kvl-unified-height,.kvl-unified-club,.kvl-unified-volleybox{font-size:12px}
+ .kvl-unified-name strong{font-size:14px}
+ .kvl-unified-dots{gap:4px}
+}
+/* User readability refinement: match the KVL PC sidebar's 14px menu text. */
+@media (min-width:821px){
+ .kvl-unified-top p:last-child,.kvl-unified-legend>span{font-size:14px}
+ .kvl-unified-controls .kvl-unified-filters button,.kvl-unified-search input{font-size:14px}
+ .kvl-unified-count,.kvl-unified-head,.kvl-unified-row{font-size:14px}
+ .kvl-unified-head{min-height:47px}
+ .kvl-unified-row{min-height:73px}
+ .kvl-unified-name strong{font-size:16px;line-height:1.4}
+ .kvl-unified-name small,.kvl-unified-dob,.kvl-unified-pos,.kvl-unified-height,.kvl-unified-club,.kvl-unified-volleybox{font-size:14px;line-height:1.45}
+ .kvl-unified-note,.kvl-unified-detail>p,.kvl-unified-detail-head small,
+ .kvl-unified-detail-head button,.kvl-unified-detail-event strong,.kvl-unified-detail-event span,
+ .kvl-unified-detail-links a,.kvl-unified-dot-empty{font-size:14px}
+}
+/* PC 150%-equivalent roster typography: preserve all 8 fields without page-level overflow. */
+@media (min-width:821px){
+ .ktd-country-unified,.kvl-unified{min-width:0;max-width:100%}
+ .kvl-unified-table{
+  overflow-x:auto;overflow-y:hidden;max-width:100%;
+  overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#bacbd8 #f2f5f8
+ }
+ .kvl-unified-head,.kvl-unified-row{
+  min-width:1040px;
+  grid-template-columns:70px minmax(195px,1.1fr) 132px 54px 86px minmax(190px,1fr) 110px 90px;
+  column-gap:10px;padding-left:12px;padding-right:12px
+ }
+ .kvl-unified-head{font-size:21px;min-height:65px;line-height:1.35}
+ .kvl-unified-row{font-size:21px;min-height:104px;line-height:1.5;padding-top:14px;padding-bottom:14px}
+ .kvl-unified-number,.kvl-unified-name small,
+ .kvl-unified-dob,.kvl-unified-pos,.kvl-unified-height,
+ .kvl-unified-club,.kvl-unified-volleybox{font-size:21px;line-height:1.45}
+ .kvl-unified-name strong{font-size:24px;line-height:1.35}
+ .kvl-unified-name{gap:5px}
+ .kvl-unified-club{overflow-wrap:anywhere}
+ .kvl-unified-vb{text-align:center}
+ .kvl-unified-detail-head h4{font-size:24px}
+ .kvl-unified-detail-head small,.kvl-unified-detail>p,
+ .kvl-unified-detail-event strong,.kvl-unified-detail-event span,
+ .kvl-unified-detail-links a{font-size:21px;line-height:1.5}
+ .kvl-unified-detail-event{padding:14px}
+ .kvl-unified-detail-events{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
+ .kvl-unified-detail-head button{font-size:16px;min-height:36px}
+}
