@@ -73,7 +73,7 @@ function cardEntries(directory,index,gender,selection){
   const relevant=index.snapshots.filter(s=>s.country_code===c.code&&s.gender===gender);
   const candidates=(selection?.sets||[]).filter(s=>s.country_code===c.code&&s.gender===gender);
   return {code:c.code,name:c.name_ko,en:c.name_en,region:c.region,gender,
-   flag:flagEmoji(c.flag_iso2),snapshots:relevant.length,
+   flag:flagEmoji(c.flag_iso2),flag_iso2:c.flag_iso2,snapshots:relevant.length,
    sourceLabel:relevant.length?gender==='men'?'남자대회 '+relevant.length+'건':'여자대회 '+relevant.length+'건':candidates.length?'후보·선발 자료 '+candidates.length+'건':'선택한 성별의 저장 자료 없음',
    type:'international',action:'country',count:null};
  });
