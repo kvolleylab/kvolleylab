@@ -89,6 +89,15 @@ async function testApp(){
   assert.match(await ishikawa.innerText(),/1995-12-11/);
   assert.match(await ishikawa.innerText(),/Ziraat Bankkart Ankara/);
   assert.equal(await ishikawa.locator('.kvl-unified-volleybox').count(),1);
+  assert.equal(await ishikawa.locator('.kvl-unified-volleybox').innerText(),'VB->');
+  assert.match(await ishikawa.locator('.kvl-unified-club').innerText(),/Türkiye/);
+  assert.match(await ishikawa.locator('.kvl-unified-club').innerText(),/SMS Grup Efeler Ligi/);
+  const arai=page.locator('.kvl-unified-row').filter({hasText:'아라이 유다이'}).first();
+  assert.match(await arai.locator('.kvl-unified-club').innerText(),/Japan/);
+  const unknownClub=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
+  assert.match(await unknownClub.locator('.kvl-unified-club').innerText(),/미확인/);
+  assert.equal(await unknownClub.locator('.kvl-unified-club-league').count(),0);
+
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-major').count(),1);
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-regular').count(),1);
   assert.ok((await page.locator('.kvl-unified-row').allInnerTexts()).filter(t=>t.includes('후카츠')).length===2,'Different Fukatsu #3 preserved');
@@ -115,6 +124,17 @@ async function testApp(){
   await page.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();
   await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
   assert.equal(await page.locator('.ktd-country-player').count(),16,'Existing per-competition roster preserved');
+  const searchLink=page.locator('.ktd-country-player').filter({hasText:'후카츠 아키히로'}).first();
+  assert.match(await searchLink.innerText(),/VB 검색/);
+  await page.locator('[data-country-snapshot="avc-men-continental-2026:JPN"]').click();
+  await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
+  assert.equal(await page.locator('.ktd-country-player').count(),14,'Verified separate AVC roster remains intact');
+  const nishida=page.locator('.ktd-country-player').filter({hasText:'니시다 유지'}).first();
+  assert.match(await nishida.locator('.ktd-country-club').innerText(),/Osaka Bluteon/);
+  assert.match(await nishida.locator('.ktd-country-club').innerText(),/Japan/);
+  assert.match(await nishida.locator('.ktd-country-club').innerText(),/SV.League Men/);
+  assert.equal(await nishida.locator('.ktd-country-player-links a').filter({hasText:'VB->'}).count(),1);
+
 
   const snapshotType=await page.evaluate(()=>{
    const px=s=>parseFloat(getComputedStyle(document.querySelector(s)).fontSize);
