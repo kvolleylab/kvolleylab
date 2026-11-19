@@ -1,11 +1,19 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+
 ## 2026-11-20 · 국제 국가별 선수명단 소속 리그 국가 라벨 통일 v1
 
 Status: USER REQUESTED / BRANCH IMPLEMENTED / NOT DEPLOYED UNTIL VERIFIED.
 사용자가 국가별 대표팀 통합·개별 선수명단에서 일부 소속 표기는 `JAPAN`, 일부는 `JAPAN · SV LEAGUE`처럼 서로 다르게 보이는 문제를 제기했다. 2026-11-19 요청의 핵심은 **구단 소속 리그 국가명 표시**였으므로, 리그명 확인 여부와 무관하게 목록에는 `🇯🇵 JAPAN`처럼 국기와 국가명 대문자만 표시하도록 통일한다. 같은 국가의 실제 소속리그 `SV.League Men` 자료가 있더라도 명단에서 국가명 옆에 가변적으로 덧붙이지 않는다. 출처로 검증된 리그명은 선수 상세정보 및 국가 라벨 툴팁에 보존한다. 해당 국가 자체가 확인되지 않은 선수에게는 국적/소속 리그를 추정하지 않는다.
 
 구현: `assets/js/kvl-international-unified-roster-v1.js`의 공통 `countryLabel`을 국가별 개별 명단에서도 재사용, 비정상 단독 로드에서는 안전한 국가 대문자 fallback. `teams.html` JS 캐시만 변경, 20/17px 서체와 `VB->`, 참가 이력, 원본 선수 및 자동화·회원 기능 불변. 기준 main `b00ffcdb3e91d31fa264306de6dbecc02f868110`; 테스트·복구 기준 [인계](validation/international-roster-country-only-label-v1-20261120.md). 최종 운영 반영/테스트 성공 여부는 실제 PR·Actions/Pages·HTTPS 증거 확인 후 별도 기록한다.
+
+## 2026-11-20 · V-리그 세트 전환 및 종료 직후 공식 득점 보완
+
+Status: USER APPROVED RELEASE / IMPLEMENTED / PR SAFETY QA PASSED / DEPLOYMENT PENDING.
+사용자가11/19 실제 갱신 검증 뒤 남은 누락의 보완을 요청했다. 기준main `5813a04a255b895ac07059989595aefe66fb6d7d`. 문자중계의 세트 번호가 승수보다 한 단계 늦은 세트 사이 상태는 종료 득점·승자·연속성이 모두 맞고 다음세트 득점이 없을 때만 인정한다. 거절 전 검증된 숫자 진단도 남긴다. 실제19:59 artifact에는 원시setIng가 없어 당시 값을 확정하지 않는다.
+
+추가 확인한21:42 자연실행은 종료 표시와 불완전 득점 때문에 보완 전 전체 수집이 중단됐다. 당일 정규리그의 공식 종료시각·3승·승자표시·정상 기존 득점이 확인된 경우에만 같은 경기 문자중계의 완전한3~5세트와 대조한다. 전체 득점·승수·기존 점수가 일치해야 확정하며 실패·충돌은 계속 차단한다. 출처는 공개점수와 배포영수증에 보존한다. 이는 기존11/14 문자중계 보완을 종료 직후 검증에 제한적으로 확장하며 순위·MASTER 검수·선수·ID·Cup·국제대회·Worker/cron은 유지한다. [증거·검증·배포 제한](validation/vleague-set-transition-recovery-v1.md). 2026-11-20 사용자가 검증된 PR #379 병합·운영 배포를 명시적으로 승인했다. 기존 head `8144c636`의 V-리그 CI `44553259328` 성공 후 최신 main `b00ffcdb`의 별도 국제명단 화면 변경을 보존하고 작업 기록 문서 충돌만 정리한다. 코드 배포는 병합·Pages·운영 조회 증거로 확인하며, 실제 다음 경기 연속 검증 전 복구 완료로 판정하지 않는다.
 
 ## 2026-11-20 · 국제 국가별 선수명단 글꼴 일치 및 PC 20/17px 조정 v3
 
