@@ -92,6 +92,13 @@ def expected_source(record):
     if record.get("live_points_source_url"):
         require(record["status"] == "live" and record["live_points_source_url"] == live_points_url(record),
                 "Live points source conflicts with game identity")
+    require(record.get("status") != "final_points_pending", "Unresolved final points cannot be exported")
+    if record.get("final_points_source_url"):
+        require(record["status"] == "final"
+                and isinstance(record.get("end_time"), str)
+                and re.fullmatch(r"(?:[01]\d|2[0-3]):[0-5]\d", record["end_time"])
+                and record["final_points_source_url"] == live_points_url(record),
+                "Final points source requires official end time and matching game identity")
     if record["phase_id"] in POSTSEASON_PHASES:
         phase = POSTSEASON_PHASES[record["phase_id"]]
         require(record.get("fixture_ready") is True and record.get("stage") == phase["stage"]
@@ -296,6 +303,11 @@ def join_records(originals, snapshot, previous_state=None):
             validate_final_match({"id": local["id"], "stage": local["stage"], "status": "final",
                                   "home": {"code": codes["home"]}, "away": {"code": codes["away"]},
                                   "score": record["score"]})
+            score_source = source.get("final_points_source_url") or local.get("scoreSourceUrl")
+            if score_source:
+                require(score_source == live_points_url(source),
+                        "Final points attribution conflicts with game identity")
+                record["score_source_url"] = score_source
         elif source["status"] == "live":
             won = source.get("sets_won", {})
             require(set(won) == {"home", "away"}
@@ -476,6 +488,8 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
             if record["status"] == "final":
                 match["score"] = deepcopy(record["score"])
                 match["scoreVerification"] = True
+                if record.get("score_source_url"):
+                    match["scoreSourceUrl"] = record["score_source_url"]
             if record["status"] == "live":
                 match["liveScore"] = deepcopy(record["live_score"])
                 match["liveSets"] = deepcopy(record["live_sets"])
@@ -589,6 +603,8 @@ def publication_gate(plan):
     source_ids = {}
     for gender, relative in DATA_PATHS.items():
         source_ids[relative] = sorted({r["source_url"] for r in plan["matched"] if r["gender"] == gender}
+                                      | {r["score_source_url"] for r in plan["matched"]
+                                         if r["gender"] == gender and r.get("score_source_url")}
                                       | {s["sourceUrl"] for r in plan["matched"] if r["gender"] == gender
                                          for s in r.get("live_sets", []) if s.get("sourceUrl")}
                                       | {c["source_url"] for c in plan["report"].get("postseason_source_coverage", []) if c["gender"] == gender}
