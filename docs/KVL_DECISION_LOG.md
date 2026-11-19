@@ -1,5 +1,11 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-19 · 국제팀 PC 선수명단 글씨 2px 축소 v2
+
+Status: USER REQUESTED / REVIEW IN PROGRESS / RELEASE NOT YET VERIFIED.
+사용자는 직전 PR #368을 홈페이지에 반영해 직접 확인한 후 "2px씩 낮춰"라고 후속 조정을 요청했다. **PC에서 한글 선수명 24→22px, 번호·영문명·생년월일·POS·신장·소속팀·Volleybox·표 헤더 21→19px**만 조정하고 기존 통합·대회별 명단, 작은 참가 점, 내부 스크롤, 여타 기본 서체 및 모바일 스타일은 변경하지 않는다. 2026-11-19 최신 main `eb43ed1f6cacf2507076547c6aa9d04c2a5e4f91`의 PR #368 실제 운영 반영 (GitHub Pages #44482327532 SUCCESS, 팀 디렉터리 운영 QA #44482331714 SUCCESS, 국가별 운영 QA #44482331737 SUCCESS)을 기준으로 한다. CSS 2개·HTML 캐시키·기존 Chromium QA 검증 기준만 수정하며 원본 데이터, 국제/국내 Player_ID, KOVO 수집기, 회원 기능은 불변. [검증/인계](validation/international-roster-font-minus2-v2-20261119.md). 병합·배포 및 운영 QA 증거는 실제 확인 후 별도 기록한다.
+
+
 ## 2026-11-19 · 국제 국가별 대회 카드 가로 정렬 및 PC 선수명단 가독성 v1
 
 Status: USER REQUESTED / PR #368 IMPLEMENTED + CHROMIUM QA PASS / NOT DEPLOYED.
