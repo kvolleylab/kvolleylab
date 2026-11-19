@@ -1,5 +1,14 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-19 · 국제 국가별 명단 리그 국가와 VB 단축링크 형식 복원
+
+Status: USER REQUESTED REVIEW / FEATURE BRANCH IMPLEMENTATION / NOT DEPLOYED.
+사용자가 국제대회 참가팀 기존 명단을 확인하고 소속팀 바로 옆 리그 국가 표시, Volleybox의 `VB->` 단축 표기를 재요청했다. 기존 AVC 남자 대륙선수권 특화 명단 `assets/js/avc-men-roster-runtime.js`는 이미 `🇮🇹 Italy · SuperLega`와 `VB↗`를 제공하지만, 최신 `teams.html`의 국가별 **연도 통합명단**은 검증된 구단만 노출하고 국가/리그 필드를 누락했으며 'Volleybox' 전체 단어를 사용한다. `docs/KVL_MOBILE_COMPETITION_ROSTER_V1.md`의 일반 규격(PC `Volleybox ↗`, 모바일 `VB↗`)과 사용자의 최신 단축 표기는 구분한다.
+
+이번 화면 정합성 변경은 검증된 소속팀과 함께 저장된 `club.country` 및 `CONFIRMED` AVC 2026-27 registry의 `leagueCountry`/`leagueName`만 재사용하고, 추정 리그나 미확인 소속을 생성하지 않는다. 선택된 구단이 바뀌면 리그 메타데이터도 함께 바꿔 국가 혼합을 방지한다. 국가별 개별 대회 명단에는 확인된 소속·리그만 선수명 아래에 추가하고 원래 표 구성을 보존한다. 웹의 직접 링크는 `VB->`, 검색 링크는 `VB 검색`으로 구분하며 22px/19px PC 글씨, 모바일, 기존 40개 국가·대회별 원본·후보·참가 이력·선수 ID·KOVO 자동화·회원 자료는 불변. 기준 main `a7769a705ef14d353bd136bb0666ee3ef7db1bb2`, [검증 원장](validation/international-club-league-vb-v1-20261119.md). 사용자 운영 반영 승인은 받지 않았으므로 브랜치 QA·PR 검수 후 별도 승인 단계까지 main은 변경하지 않는다.
+
+
+
 ## 2026-11-19 · 국제팀 PC 선수명단 글씨 2px 축소 v2
 
 Status: USER REQUESTED / REVIEW IN PROGRESS / RELEASE NOT YET VERIFIED.
