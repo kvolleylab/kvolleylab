@@ -12,6 +12,9 @@ const norm=x=>String(x||'').normalize('NFKC').trim().toLowerCase().replace(/\s+/
 const fullDOB=x=>/^\d{4}-\d{2}-\d{2}$/.test(String(x||''))?String(x):'';
 const pos=x=>['O','OPP'].includes(String(x||'').toUpperCase())?'OP':String(x||'').toUpperCase();
 const knownClub=x=>x&&typeof x==='string'&&!['미확인','unknown','-'].includes(norm(x))?x.trim():'';
+const leagueText=x=>typeof x==='string'?x.trim():'';
+const LEAGUE_FLAGS={Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱',Türkiye:'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷',Oman:'🇴🇲',Greece:'🇬🇷'};
+const leagueLabel=p=>p.clubCountry?((LEAGUE_FLAGS[p.clubCountry]||'')+(LEAGUE_FLAGS[p.clubCountry]?' ':'')+p.clubCountry+(p.clubLeague?' · '+p.clubLeague:'')):'';
 const eventOrder=s=>{
   const slug=String(s.competition_slug||'');
   if(slug.startsWith('vnl-'))return 10;
@@ -51,6 +54,8 @@ function identify(raw){
     entryStatus:String(raw?.entryStatus||''),
     official:officialLink(raw?.officialProfileUrl||raw?.vnlProfile||''),
     club:raw?.club?.confirmed===true?knownClub(raw.club.name):'',
+    clubCountry:raw?.club?.confirmed===true?leagueText(raw.club.country||raw.club.leagueCountry):'',
+    clubLeague:raw?.club?.confirmed===true?leagueText(raw.club.leagueName):'',
     clubConfirmed:raw?.club?.confirmed===true
   };
 }
@@ -87,7 +92,7 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,profileResolver
       let g=same.length===1?same[0]:null;
       if(!g){
         g={key:'p'+groups.length,en:p.en,ko:p.ko,dob:p.dob,position:p.position,height:p.height,
-          number:null,club:'',clubProof:'',clubAsOf:'',clubVariants:[],names:new Set(p.en?[norm(p.en)]:[]),
+          number:null,club:'',clubCountry:'',clubLeague:'',clubProof:'',clubAsOf:'',clubVariants:[],names:new Set(p.en?[norm(p.en)]:[]),
           vbIds:new Set(p.vb.id?[p.vb.id]:[]),directBox:p.vb.direct,searchBox:p.vb.search,
           official:p.official,KVLProfile:'',matches:[],evidence:'',ambiguity:same.length>1};
         groups.push(g);
@@ -102,15 +107,15 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,profileResolver
       if(p.ko&&(snapshot.source_format==='team-array'||(!g.ko||g.ko===g.en)))g.ko=p.ko;
       if(p.position&&(snapshot.source_format==='team-array'||!g.position))g.position=p.position;
       if(p.height&&(snapshot.source_format==='team-array'||!g.height))g.height=p.height;
-      let club=p.club,proof=club?'2026 대회 명단 (확인된 소속)':'',asOf='';
+      let club=p.club,clubCountry=p.clubCountry,clubLeague=p.clubLeague,proof=club?'2026 대회 명단 (확인된 소속)':'',asOf='';
       const registered=gender==='men'&&snapshot.competition_slug==='avc-men-continental-2026'
           &&clubRegistry?.teams?.[country.code]?.[String(p.number)];
       if(registered?.status==='CONFIRMED'&&knownClub(registered.club)&&/^https:\/\//.test(registered.source||'')){
-        club=registered.club;proof=registered.source;asOf=registered.checkedAt||'2026-09';
+        club=registered.club;clubCountry=leagueText(registered.leagueCountry);clubLeague=leagueText(registered.leagueName);proof=registered.source;asOf=registered.checkedAt||'2026-09';
       }
       if(club){
         if(g.club&&norm(g.club)!==norm(club))g.clubVariants.push({club:g.club,source:g.clubProof||'기존 대회 자료'});
-        if(asOf||!g.club){g.club=club;g.clubProof=proof;g.clubAsOf=asOf}
+        if(asOf||!g.club){g.club=club;g.clubCountry=clubCountry;g.clubLeague=clubLeague;g.clubProof=proof;g.clubAsOf=asOf}
         else if(g.club!==club)g.clubVariants.push({club,source:proof});
       }
       const profile=typeof profileResolver==='function'?profileResolver(raw,snapshot,p):'';
@@ -166,19 +171,21 @@ function render(host,model){
     detail=host.querySelector('[data-kvl-unified-detail]');
   const title=x=>x.ko||x.en||'선수';
   const matches=e=>filter==='all'||filter==='multi'&&e.count>1||e.matches.some(m=>m.id===filter);
-  const filtered=()=>model.rows.filter(p=>matches(p)&&(!query||[p.ko,p.en,p.club].some(v=>norm(v).includes(query))));
+  const filtered=()=>model.rows.filter(p=>matches(p)&&(!query||[p.ko,p.en,p.club,p.clubCountry,p.clubLeague].some(v=>norm(v).includes(query))));
   function row(p){
     const name=p.KVLProfile?'<a class="kvl-unified-name-link" href="'+esc(p.KVLProfile)+'"><strong>'+esc(title(p))+'</strong></a>':
       '<strong>'+esc(title(p))+'</strong>';
-    const vb=p.directBox?'<a href="'+esc(p.directBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer">Volleybox</a>':
-      p.searchBox?'<a href="'+esc(p.searchBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer">검색</a>':'<span class="kvl-unified-notknown">—</span>';
+    const vb=p.directBox?'<a href="'+esc(p.directBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 선수 프로필 열기">VB-&gt;</a>':
+      p.searchBox?'<a href="'+esc(p.searchBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 검색 결과 열기">VB 검색</a>':'<span class="kvl-unified-notknown">—</span>';
+    const league=leagueLabel(p);
+    const club=p.club?'<span class="kvl-unified-club-name">'+esc(p.club)+'</span>'+(league?'<span class="kvl-unified-club-league"> · '+esc(league)+'</span>':''):'<em>미확인</em>';
     const facts='<span class="kvl-unified-mobile-facts">'+esc(p.dob||'생년월일 미확인')+' · '+esc(p.position||'—')+' · '+(p.height?esc(p.height)+'cm':'신장 미확인')+'</span>';
     return '<div class="kvl-unified-row'+(selected===p.key?' is-selected':'')+'" data-kvl-unified-athlete="'+esc(p.key)+'" tabindex="0" role="option" aria-selected="'+(selected===p.key)+'">'+
       '<span class="kvl-unified-number">'+esc(p.number)+'</span>'+
       '<span class="kvl-unified-name">'+name+(p.en&&norm(p.en)!==norm(title(p))?'<small>'+esc(p.en)+'</small>':'')+'</span>'+
       '<span class="kvl-unified-dob">'+esc(p.dob||'—')+'</span><span class="kvl-unified-pos">'+esc(p.position||'—')+'</span>'+
       '<span class="kvl-unified-height">'+(p.height?esc(p.height)+'cm':'—')+'</span>'+facts+
-      '<span class="kvl-unified-club" title="'+esc(p.clubProof||'소속팀 미확인')+'">'+(p.club?esc(p.club):'<em>미확인</em>')+'</span>'+
+      '<span class="kvl-unified-club" title="'+esc(p.clubProof||'소속팀 미확인')+'">'+club+'</span>'+ 
       '<span class="kvl-unified-vb">'+vb+'</span>'+
       '<span class="kvl-unified-dots" role="group" aria-label="'+esc(title(p))+' 대회별 명단 이력">'+dots(p,events)+'</span></div>';
   }
@@ -202,10 +209,10 @@ function render(host,model){
           '<span>'+(x.number!=null?'#'+esc(x.number):'등번호 미확인')+' · '+esc(x.status)+'</span>'+
           '<span>등록 신장: '+(x.height?esc(x.height)+'cm':'미확인')+'</span></div>';
       }).join('')+'</div>'+
-      (p.club?'<p>소속 확인: '+esc(p.club)+' · '+esc(p.clubAsOf||'대회명단 당시')+'</p>':'')+
+      (p.club?'<p>소속 확인: '+esc(p.club)+(leagueLabel(p)?' · '+esc(leagueLabel(p)):'')+' · '+esc(p.clubAsOf||'대회명단 당시')+'</p>':'')+
       (p.clubVariants.length?'<p>다른 출처의 소속팀 표기: '+esc(p.clubVariants.map(x=>x.club).join(', '))+'</p>':'')+
       '<div class="kvl-unified-detail-links">'+(p.KVLProfile?'<a href="'+esc(p.KVLProfile)+'">KVL 프로필</a>':'')+
-      (p.directBox?'<a href="'+esc(p.directBox)+'" target="_blank" rel="noopener noreferrer">Volleybox</a>':'')+
+      (p.directBox?'<a href="'+esc(p.directBox)+'" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 선수 프로필 열기">VB-&gt;</a>':'')+
       (p.official?'<a href="'+esc(p.official)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'')+'</div>';
     paint();
     detail.hidden=false;

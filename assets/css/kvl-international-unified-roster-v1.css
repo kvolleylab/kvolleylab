@@ -167,3 +167,8 @@
  .kvl-unified-detail-events{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
  .kvl-unified-detail-head button{font-size:16px;min-height:36px}
 }
+/* Verified competition club country/league stays beside the club name inside the existing field. */
+.kvl-unified-club-name{font-weight:750}
+.kvl-unified-club-league{color:#66849a;font-size:.86em;font-weight:700;line-height:1.45;overflow-wrap:anywhere}
+@media(max-width:820px){.kvl-unified-club-league{font-size:10px}}
+@media(max-width:375px){.kvl-unified-club-league{font-size:9.3px}}

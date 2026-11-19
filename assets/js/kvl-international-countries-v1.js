@@ -99,7 +99,10 @@ function normalizePlayer(p){
  const dob=/^\d{4}-\d{2}-\d{2}$/.test(String(p.dob||''))?p.dob:'';
  const official=safeExternal(p.officialProfileUrl||p.vnlProfile||'');
  const volleybox=safeExternal(p.volleybox_url||p.volleybox||'');
+ const clubVerified=p.club?.confirmed===true&&typeof p.club.name==='string'&&!!p.club.name.trim()&&!['미확인','unknown','-'].includes(norm(p.club.name));
  return {name:ko,en:english,number,position,height,dob,source_player_id:p.playerId||p.officialPlayerId||'',
+  club:clubVerified?p.club.name.trim():'',club_country:clubVerified?String(p.club.country||p.club.leagueCountry||'').trim():'',
+  club_league:clubVerified?String(p.club.leagueName||'').trim():'',
   source_entry_status:String(p.entryStatus||''),official_profile:official,volleybox,
   is_volleybox_search:/\/search(?:\?|\/)/.test(volleybox)};
 }
@@ -227,7 +230,11 @@ function render(host,opts){
    if(!team||!Array.isArray(team.players))throw Error('Missing original tournament roster');
    const players=team.players.map(normalizePlayer);
    const sourceCountChanged=players.length!==snap.player_count;
-   let master=[];
+   let master=[],clubRegistry=null;
+   if(snap.competition_slug==='avc-men-continental-2026'&&gender==='men'){
+    try{clubRegistry=await readJSON('data/competitions/avc-men-continental-2026-clubs-2026-27.json')}
+    catch(e){console.warn('[KVL international per-event club registry optional]',e)}
+   }
    if(players.some(p=>ID.test(p.source_player_id||''))){
     try{master=await readJSON('data/master/player_master_international_v1.json')}catch(e){console.warn('[KVL international master optional]',e)}
    }
@@ -241,9 +248,17 @@ function render(host,opts){
     players.map(p=>{
      const link=verifiedProfileLink(p,gender,country,master,collision);
      const profile=p.official_profile?'<a href="'+esc(p.official_profile)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'';
-     const vol=p.volleybox?'<a href="'+esc(p.volleybox)+'" target="_blank" rel="noopener noreferrer">'+(p.is_volleybox_search?'Volleybox 검색':'Volleybox')+'</a>':'';
+     const vol=p.volleybox?'<a href="'+esc(p.volleybox)+'" target="_blank" rel="noopener noreferrer" aria-label="'+(p.is_volleybox_search?'Volleybox 검색 결과 열기':'Volleybox 선수 프로필 열기')+'">'+(p.is_volleybox_search?'VB 검색':'VB-&gt;')+'</a>':'';
+     const registered=clubRegistry?.teams?.[country.code]?.[String(p.number)];
+     const verified=registered?.status==='CONFIRMED'&&typeof registered.club==='string'
+      &&!!registered.club.trim()&&/^https:\/\//.test(registered.source||'');
+     const club=verified?registered.club:p.club;
+     const leagueCountry=verified?String(registered.leagueCountry||'').trim():p.club_country;
+     const leagueName=verified?String(registered.leagueName||'').trim():p.club_league;
+     const clubLine=club?'<span class="ktd-country-club"><span>'+esc(club)+'</span>'+
+      (leagueCountry?'<span class="ktd-country-club-league"> · '+esc(leagueCountry)+(leagueName?' · '+esc(leagueName):'')+'</span>':'')+'</span>':'';
      return '<div class="ktd-country-player"><span class="ktd-country-number">'+esc(p.number??'–')+'</span>'+
-       '<span class="ktd-country-person"><strong>'+esc(p.name)+'</strong>'+(p.en&&norm(p.en)!==norm(p.name)?'<small>'+esc(p.en)+'</small>':'')+
+       '<span class="ktd-country-person"><strong>'+esc(p.name)+'</strong>'+(p.en&&norm(p.en)!==norm(p.name)?'<small>'+esc(p.en)+'</small>':'')+clubLine+
        '<span class="ktd-country-player-links">'+(link?'<a href="'+esc(link)+'">KVL 프로필</a>':'')+profile+vol+'</span></span>'+
        '<span>'+esc(p.position||'–')+'</span><span>'+(p.height?esc(p.height)+'cm':'–')+'</span>'+
        '<span>'+esc(p.source_entry_status||'대회 명단')+'</span></div>';
