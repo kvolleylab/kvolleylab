@@ -794,10 +794,33 @@
       },
       "venueLabel": "평택이충문화체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "scheduled",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:33",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-01T12:21:03+00:00"
+      "updatedAt": "2026-11-19T12:24:23+00:00",
+      "score": {
+        "home": 1,
+        "away": 3,
+        "sets": [
+          {
+            "home": 20,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 20,
+            "away": 25
+          }
+        ]
+      },
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-018",
@@ -3075,16 +3098,16 @@
           "en": "KAL"
         },
         "poolId": "LEAGUE",
-        "games": 4,
-        "wins": 1,
+        "games": 5,
+        "wins": 2,
         "losses": 3,
-        "points": 4,
-        "setWins": 7,
-        "setLosses": 9,
-        "pointsFor": 358,
-        "pointsAgainst": 368,
-        "setRatio": "0.778",
-        "pointRatio": "0.973",
+        "points": 7,
+        "setWins": 10,
+        "setLosses": 10,
+        "pointsFor": 456,
+        "pointsAgainst": 458,
+        "setRatio": "1.000",
+        "pointRatio": "0.996",
         "statusLabel": "5위"
       },
       {
@@ -3117,16 +3140,16 @@
           "en": "KBI"
         },
         "poolId": "LEAGUE",
-        "games": 4,
+        "games": 5,
         "wins": 0,
-        "losses": 4,
+        "losses": 5,
         "points": 0,
-        "setWins": 3,
-        "setLosses": 12,
-        "pointsFor": 342,
-        "pointsAgainst": 391,
-        "setRatio": "0.250",
-        "pointRatio": "0.875",
+        "setWins": 4,
+        "setLosses": 15,
+        "pointsFor": 432,
+        "pointsAgainst": 489,
+        "setRatio": "0.267",
+        "pointRatio": "0.883",
         "statusLabel": "7위"
       }
     ]
@@ -3198,14 +3221,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 16/126경기 종료 · 2026-11-18 21:09 KST 반영",
-  "updatedAt": "2026-11-18T12:09:05+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 17/126경기 종료 · 2026-11-19 21:24 KST 반영",
+  "updatedAt": "2026-11-19T12:24:23+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 16,
+    "completedMatches": 17,
     "postseason": {
       "matched": 0,
       "completed": 0,
