@@ -593,12 +593,21 @@
         "fivb-continental",
         "world-cup-field",
         "la28-field",
-        "asian-result"
+        "asian-result",
+        "men-field",
+        "men-draw",
+        "women-field",
+        "women-draw",
+        "qualification-system",
+        "la28-men",
+        "la28-women",
+        "rename",
+        "qualification-pdf"
       ],
       "verified_at": "2026-11-18",
-      "sha256": "d7df528b104f03a485d383faba31c742ac0785a0eb76cfc7c47f7d30568670bd",
-      "evidence": "docs/validation/continental-winners-inline-v1.md",
-      "review_note": "공개 공식 출처의 우승국·출전권 분리와 기존 ID 연결을 검수했다. 기간·개최지 정정은 revision_note에 보존한다. 기존 참가국/규정 필드는 보존하며 미수록 경기·로스터·과거 필드를 새로 확정하는 것은 아니다."
+      "sha256": "82e718b3dce7a4e369688ef987910383a79a687e976c7f7628e0e7ef41d7c103",
+      "evidence": "docs/validation/world-cup-roadmap-v1.md",
+      "review_note": "공개 공식 자료의 참가국·기간·조 편성·기확보국과 주기별 모듈 연결을 검수했다. 미래 우승·출전권 결과·세부 일정·명단은 미확정 상태를 보존한다. MASTER 등록·자동화 완료를 의미하지 않는다."
     },
     "data/olympics/brisbane2032_v1.json": {
       "access_level": "PUBLIC",
@@ -707,6 +716,25 @@
       "sha256": "1ebf60142335c937ed100592bbafa5d3a0e251927dec26a77cefe16191fd48c1",
       "evidence": "docs/validation/continental-winners-inline-v1.md",
       "review_note": "공개 공식 출처의 우승국·출전권 분리와 기존 ID 연결을 검수했다. 기간·개최지 정정은 revision_note에 보존한다. 기존 참가국/규정 필드는 보존하며 미수록 경기·로스터·과거 필드를 새로 확정하는 것은 아니다."
+    },
+    "data/national/fivb-world-cup-2027-v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "men-field",
+        "men-draw",
+        "women-field",
+        "women-draw",
+        "qualification-system",
+        "la28-men",
+        "la28-women",
+        "rename",
+        "qualification-pdf"
+      ],
+      "verified_at": "2026-11-18",
+      "sha256": "7ab92cf215a1341295a83e527c371b676dc4fcbb867c534af4551b29fe5872d3",
+      "evidence": "docs/validation/world-cup-roadmap-v1.md",
+      "review_note": "공개 공식 자료의 참가국·기간·조 편성·기확보국과 주기별 모듈 연결을 검수했다. 미래 우승·출전권 결과·세부 일정·명단은 미확정 상태를 보존한다. MASTER 등록·자동화 완료를 의미하지 않는다."
     }
   }
 }

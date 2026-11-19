@@ -1,0 +1,1278 @@
+{
+  "schemaVersion": 1,
+  "editionYear": 2027,
+  "cycleId": "la2028",
+  "allocationId": "world-cup",
+  "verificationScope": "개최 정보·참가국·조 추첨·올림픽 규정. 미래 결과·개별 경기·엔트리는 미확인 상태 보존.",
+  "checkedAt": "2026-11-18",
+  "updatedAt": "2026-11-18",
+  "olympicHost": {
+    "code": "USA",
+    "verificationStatus": "official_verified",
+    "sourceIds": [
+      "qualification-system"
+    ]
+  },
+  "ruleText": "LA28 출전권을 이미 확보한 팀을 제외하고, 월드컵 최종 순위가 높은 3개국에 배정합니다. 월드컵 전체 1~3위로 한정하지 않습니다.",
+  "ruleSourceIds": [
+    "qualification-system",
+    "qualification-pdf"
+  ],
+  "nameNote": "2027년부터 기존 FIVB 세계선수권의 공식 명칭이 FIVB 월드컵으로 변경됩니다.",
+  "sources": [
+    {
+      "id": "men-field",
+      "title": "Volleyball World · 남자 참가 32개국·기간·대회 방식",
+      "url": "https://en.volleyballworld.com/news/the-field-is-set-32-teams-bound-for-the-2027-fivb-men-s-volleyball-world-cup-in-poland",
+      "publishedAt": "2026-10-19",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "men-draw",
+      "title": "Volleyball World · 남자 조 추첨 일정",
+      "url": "https://en.volleyballworld.com/news/designed-for-the-world-stage-2027-men-s-world-cup-unveils-its-official-logo",
+      "publishedAt": "2026-10-30",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "women-field",
+      "title": "Volleyball World · 여자 참가 32개국·기간·참가 경로",
+      "url": "https://en.volleyballworld.com/news/qualified-teams-confirmed-for-the-2027-fivb-volleyball-women-s-world-cup",
+      "publishedAt": "2026-10-05",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "women-draw",
+      "title": "FIVB · 여자 조 편성 공식 발표",
+      "url": "https://www.fivb.com/2027-fivb-womens-volleyball-world-cup-pools-revealed-during-global-draw/",
+      "publishedAt": "2026-10-26",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "qualification-system",
+      "title": "FIVB · LA28 출전자격 체계",
+      "url": "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/",
+      "publishedAt": "2025-12-11",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "la28-men",
+      "title": "Volleyball World · 남자 LA28 기확보 6개국",
+      "url": "https://en.volleyballworld.com/news/la-2028-men-s-volleyball-who-qualified-so-far",
+      "publishedAt": "2026-09-28",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "la28-women",
+      "title": "Volleyball World · 여자 LA28 기확보 6개국",
+      "url": "https://en.volleyballworld.com/news/la-2028-women-s-volleyball-six-down-six-to-go",
+      "publishedAt": "2026-09-14",
+      "checkedAt": "2026-11-18"
+    },
+    {
+      "id": "rename",
+      "title": "FIVB · World Cup 명칭 변경 발표",
+      "url": "https://www.fivb.com/the-fivb-volleyball-world-cup-takes-the-sport-into-a-new-era/",
+      "publishedAt": null,
+      "checkedAt": "2026-11-16"
+    },
+    {
+      "id": "qualification-pdf",
+      "title": "IOC · FIVB LA28 공식 출전자격 문서",
+      "url": "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+      "publishedAt": "2026-05-12",
+      "checkedAt": "2026-11-16"
+    }
+  ],
+  "events": [
+    {
+      "id": "fivb-world-cup-2027-men",
+      "gender": "men",
+      "nameKo": "2027 FIVB 남자 월드컵",
+      "officialName": "2027 FIVB Men’s Volleyball World Cup",
+      "status": "upcoming",
+      "hosts": [
+        "폴란드"
+      ],
+      "startDate": "2027-09-10",
+      "endDate": "2027-09-26",
+      "datesVerification": "official_verified",
+      "participantCount": 32,
+      "participantSourceIds": [
+        "men-field"
+      ],
+      "participants": [
+        {
+          "code": "POL",
+          "countryId": "KVL-CTY-POL",
+          "nameKo": "폴란드",
+          "nameEn": "Poland",
+          "flagIso2": "pl",
+          "qualificationRoute": "host",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "ITA",
+          "countryId": null,
+          "nameKo": "이탈리아",
+          "nameEn": "Italy",
+          "flagIso2": "it",
+          "qualificationRoute": "defending_champion",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "JPN",
+          "countryId": "KVL-CTY-JPN",
+          "nameKo": "일본",
+          "nameEn": "Japan",
+          "flagIso2": "jp",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "IRI",
+          "countryId": null,
+          "nameKo": "이란",
+          "nameEn": "Iran",
+          "flagIso2": "ir",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "KOR",
+          "countryId": "KVL-CTY-KOR",
+          "nameKo": "대한민국",
+          "nameEn": "Korea",
+          "flagIso2": "kr",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "TUN",
+          "countryId": null,
+          "nameKo": "튀니지",
+          "nameEn": "Tunisia",
+          "flagIso2": "tn",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "CMR",
+          "countryId": null,
+          "nameKo": "카메룬",
+          "nameEn": "Cameroon",
+          "flagIso2": "cm",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "ALG",
+          "countryId": null,
+          "nameKo": "알제리",
+          "nameEn": "Algeria",
+          "flagIso2": "dz",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "FRA",
+          "countryId": null,
+          "nameKo": "프랑스",
+          "nameEn": "France",
+          "flagIso2": "fr",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "FIN",
+          "countryId": null,
+          "nameKo": "핀란드",
+          "nameEn": "Finland",
+          "flagIso2": "fi",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "SLO",
+          "countryId": null,
+          "nameKo": "슬로베니아",
+          "nameEn": "Slovenia",
+          "flagIso2": "si",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "BRA",
+          "countryId": "KVL-CTY-BRA",
+          "nameKo": "브라질",
+          "nameEn": "Brazil",
+          "flagIso2": "br",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "ARG",
+          "countryId": null,
+          "nameKo": "아르헨티나",
+          "nameEn": "Argentina",
+          "flagIso2": "ar",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "CHI",
+          "countryId": null,
+          "nameKo": "칠레",
+          "nameEn": "Chile",
+          "flagIso2": "cl",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "USA",
+          "countryId": null,
+          "nameKo": "미국",
+          "nameEn": "USA",
+          "flagIso2": "us",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "CAN",
+          "countryId": null,
+          "nameKo": "캐나다",
+          "nameEn": "Canada",
+          "flagIso2": "ca",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "CUB",
+          "countryId": null,
+          "nameKo": "쿠바",
+          "nameEn": "Cuba",
+          "flagIso2": "cu",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "BUL",
+          "countryId": null,
+          "nameKo": "불가리아",
+          "nameEn": "Bulgaria",
+          "flagIso2": "bg",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "GER",
+          "countryId": null,
+          "nameKo": "독일",
+          "nameEn": "Germany",
+          "flagIso2": "de",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "UKR",
+          "countryId": null,
+          "nameKo": "우크라이나",
+          "nameEn": "Ukraine",
+          "flagIso2": "ua",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "BEL",
+          "countryId": null,
+          "nameKo": "벨기에",
+          "nameEn": "Belgium",
+          "flagIso2": "be",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "TUR",
+          "countryId": null,
+          "nameKo": "튀르키예",
+          "nameEn": "Türkiye",
+          "flagIso2": "tr",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "SRB",
+          "countryId": null,
+          "nameKo": "세르비아",
+          "nameEn": "Serbia",
+          "flagIso2": "rs",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "CZE",
+          "countryId": null,
+          "nameKo": "체코",
+          "nameEn": "Czechia",
+          "flagIso2": "cz",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "GRE",
+          "countryId": null,
+          "nameKo": "그리스",
+          "nameEn": "Greece",
+          "flagIso2": "gr",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "ROU",
+          "countryId": null,
+          "nameKo": "루마니아",
+          "nameEn": "Romania",
+          "flagIso2": "ro",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "NED",
+          "countryId": null,
+          "nameKo": "네덜란드",
+          "nameEn": "Netherlands",
+          "flagIso2": "nl",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "MEX",
+          "countryId": null,
+          "nameKo": "멕시코",
+          "nameEn": "Mexico",
+          "flagIso2": "mx",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "PUR",
+          "countryId": null,
+          "nameKo": "푸에르토리코",
+          "nameEn": "Puerto Rico",
+          "flagIso2": "pr",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "DEN",
+          "countryId": null,
+          "nameKo": "덴마크",
+          "nameEn": "Denmark",
+          "flagIso2": "dk",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "EGY",
+          "countryId": null,
+          "nameKo": "이집트",
+          "nameEn": "Egypt",
+          "flagIso2": "eg",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        },
+        {
+          "code": "EST",
+          "countryId": null,
+          "nameKo": "에스토니아",
+          "nameEn": "Estonia",
+          "flagIso2": "ee",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "men-field"
+          ]
+        }
+      ],
+      "metadataSourceIds": [
+        "men-field"
+      ],
+      "korea": {
+        "country": "KOR",
+        "participationConfirmed": true,
+        "actualParticipation": null,
+        "qualificationRoute": "continental",
+        "routeLabel": "2026 아시아선수권 3위",
+        "olympicStatus": "not_yet_qualified",
+        "sourceIds": [
+          "men-field",
+          "la28-men"
+        ],
+        "historyRecordId": "kor-m-2027-world-cup"
+      },
+      "format": {
+        "poolCount": 8,
+        "teamsPerPool": 4,
+        "advancePerPool": 2,
+        "stages": [
+          "조별리그",
+          "16강",
+          "8강",
+          "4강",
+          "결승·3위 결정전"
+        ],
+        "sourceIds": [
+          "men-field"
+        ]
+      },
+      "draw": {
+        "status": "scheduled",
+        "date": "2026-12-03",
+        "dateBasis": "official_local_date",
+        "time": null,
+        "verificationStatus": "official_verified",
+        "sourceIds": [
+          "men-draw"
+        ]
+      },
+      "pools": [],
+      "schedule": {
+        "status": "not_verified",
+        "matches": [],
+        "note": "개별 경기 날짜·시간은 아직 수록하지 않았습니다. 공식 일정 확인 후 한국시간과 현지시간을 함께 표시합니다."
+      },
+      "roster": {
+        "status": "not_collected",
+        "note": "대회별 공식 엔트리 미수록. 기존 대표팀 명단을 대회 최종 명단으로 사용하지 않습니다."
+      },
+      "olympicResult": {
+        "status": "pending",
+        "verificationStatus": "unconfirmed",
+        "qualifiedTeams": [],
+        "sourceIds": []
+      },
+      "championshipResult": {
+        "status": "pending",
+        "verificationStatus": "unconfirmed",
+        "countryCode": null,
+        "sourceIds": []
+      },
+      "officialUrl": "https://en.volleyballworld.com/volleyball/competitions/men-world-cup/",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    },
+    {
+      "id": "fivb-world-cup-2027-women",
+      "gender": "women",
+      "nameKo": "2027 FIVB 여자 월드컵",
+      "officialName": "2027 FIVB Women’s Volleyball World Cup",
+      "status": "upcoming",
+      "hosts": [
+        "미국",
+        "캐나다"
+      ],
+      "startDate": "2027-08-20",
+      "endDate": "2027-09-05",
+      "datesVerification": "official_verified",
+      "participantCount": 32,
+      "participantSourceIds": [
+        "women-field"
+      ],
+      "participants": [
+        {
+          "code": "CAN",
+          "countryId": null,
+          "nameKo": "캐나다",
+          "nameEn": "Canada",
+          "flagIso2": "ca",
+          "qualificationRoute": "host",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "USA",
+          "countryId": null,
+          "nameKo": "미국",
+          "nameEn": "USA",
+          "flagIso2": "us",
+          "qualificationRoute": "host",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "ITA",
+          "countryId": null,
+          "nameKo": "이탈리아",
+          "nameEn": "Italy",
+          "flagIso2": "it",
+          "qualificationRoute": "defending_champion",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "EGY",
+          "countryId": null,
+          "nameKo": "이집트",
+          "nameEn": "Egypt",
+          "flagIso2": "eg",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "KEN",
+          "countryId": null,
+          "nameKo": "케냐",
+          "nameEn": "Kenya",
+          "flagIso2": "ke",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "CMR",
+          "countryId": null,
+          "nameKo": "카메룬",
+          "nameEn": "Cameroon",
+          "flagIso2": "cm",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "THA",
+          "countryId": null,
+          "nameKo": "태국",
+          "nameEn": "Thailand",
+          "flagIso2": "th",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "CHN",
+          "countryId": null,
+          "nameKo": "중국",
+          "nameEn": "China",
+          "flagIso2": "cn",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "JPN",
+          "countryId": "KVL-CTY-JPN",
+          "nameKo": "일본",
+          "nameEn": "Japan",
+          "flagIso2": "jp",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "TUR",
+          "countryId": null,
+          "nameKo": "튀르키예",
+          "nameEn": "Türkiye",
+          "flagIso2": "tr",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "SRB",
+          "countryId": null,
+          "nameKo": "세르비아",
+          "nameEn": "Serbia",
+          "flagIso2": "rs",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "POL",
+          "countryId": "KVL-CTY-POL",
+          "nameKo": "폴란드",
+          "nameEn": "Poland",
+          "flagIso2": "pl",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "CUB",
+          "countryId": null,
+          "nameKo": "쿠바",
+          "nameEn": "Cuba",
+          "flagIso2": "cu",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "DOM",
+          "countryId": null,
+          "nameKo": "도미니카공화국",
+          "nameEn": "Dominican Republic",
+          "flagIso2": "do",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "PUR",
+          "countryId": null,
+          "nameKo": "푸에르토리코",
+          "nameEn": "Puerto Rico",
+          "flagIso2": "pr",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "BRA",
+          "countryId": "KVL-CTY-BRA",
+          "nameKo": "브라질",
+          "nameEn": "Brazil",
+          "flagIso2": "br",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "ARG",
+          "countryId": null,
+          "nameKo": "아르헨티나",
+          "nameEn": "Argentina",
+          "flagIso2": "ar",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "COL",
+          "countryId": null,
+          "nameKo": "콜롬비아",
+          "nameEn": "Colombia",
+          "flagIso2": "co",
+          "qualificationRoute": "continental",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "NED",
+          "countryId": null,
+          "nameKo": "네덜란드",
+          "nameEn": "Netherlands",
+          "flagIso2": "nl",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "RUS",
+          "countryId": null,
+          "nameKo": "러시아",
+          "nameEn": "Russia",
+          "flagIso2": "ru",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "GER",
+          "countryId": null,
+          "nameKo": "독일",
+          "nameEn": "Germany",
+          "flagIso2": "de",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "CZE",
+          "countryId": null,
+          "nameKo": "체코",
+          "nameEn": "Czechia",
+          "flagIso2": "cz",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "BEL",
+          "countryId": null,
+          "nameKo": "벨기에",
+          "nameEn": "Belgium",
+          "flagIso2": "be",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "FRA",
+          "countryId": null,
+          "nameKo": "프랑스",
+          "nameEn": "France",
+          "flagIso2": "fr",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "SLO",
+          "countryId": null,
+          "nameKo": "슬로베니아",
+          "nameEn": "Slovenia",
+          "flagIso2": "si",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "SWE",
+          "countryId": null,
+          "nameKo": "스웨덴",
+          "nameEn": "Sweden",
+          "flagIso2": "se",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "MEX",
+          "countryId": null,
+          "nameKo": "멕시코",
+          "nameEn": "Mexico",
+          "flagIso2": "mx",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "UKR",
+          "countryId": null,
+          "nameKo": "우크라이나",
+          "nameEn": "Ukraine",
+          "flagIso2": "ua",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "GRE",
+          "countryId": null,
+          "nameKo": "그리스",
+          "nameEn": "Greece",
+          "flagIso2": "gr",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "KOR",
+          "countryId": "KVL-CTY-KOR",
+          "nameKo": "대한민국",
+          "nameEn": "Korea",
+          "flagIso2": "kr",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "BUL",
+          "countryId": null,
+          "nameKo": "불가리아",
+          "nameEn": "Bulgaria",
+          "flagIso2": "bg",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        },
+        {
+          "code": "SUI",
+          "countryId": null,
+          "nameKo": "스위스",
+          "nameEn": "Switzerland",
+          "flagIso2": "ch",
+          "qualificationRoute": "ranking",
+          "participationConfirmed": true,
+          "actualParticipation": null,
+          "verificationStatus": "official_verified",
+          "sourceIds": [
+            "women-field"
+          ]
+        }
+      ],
+      "metadataSourceIds": [
+        "women-field"
+      ],
+      "korea": {
+        "country": "KOR",
+        "participationConfirmed": true,
+        "actualParticipation": null,
+        "qualificationRoute": "ranking",
+        "routeLabel": "FIVB 세계랭킹 경로 · 2026.10.02 기준",
+        "olympicStatus": "not_yet_qualified",
+        "sourceIds": [
+          "women-field",
+          "la28-women"
+        ],
+        "historyRecordId": null
+      },
+      "format": {
+        "poolCount": 8,
+        "teamsPerPool": 4,
+        "advancePerPool": 2,
+        "stages": [
+          "조별리그",
+          "16강",
+          "8강",
+          "4강",
+          "결승·3위 결정전"
+        ],
+        "sourceIds": [
+          "women-field"
+        ]
+      },
+      "draw": {
+        "status": "completed",
+        "date": "2026-10-26",
+        "dateBasis": "official_local_date",
+        "time": null,
+        "verificationStatus": "official_verified",
+        "sourceIds": [
+          "women-draw"
+        ]
+      },
+      "pools": [
+        {
+          "id": "A",
+          "city": "오마하",
+          "venue": "CHI Health Center Arena",
+          "teams": [
+            "ITA",
+            "BEL",
+            "COL",
+            "PUR"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        },
+        {
+          "id": "B",
+          "city": "올랜도",
+          "venue": "Kia Center",
+          "teams": [
+            "BRA",
+            "CZE",
+            "KEN",
+            "KOR"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        },
+        {
+          "id": "C",
+          "city": "퀘벡시티",
+          "venue": "Centre Videotron",
+          "teams": [
+            "TUR",
+            "DOM",
+            "FRA",
+            "EGY"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        },
+        {
+          "id": "D",
+          "city": "올랜도",
+          "venue": "Kia Center",
+          "teams": [
+            "USA",
+            "THA",
+            "MEX",
+            "GRE"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        },
+        {
+          "id": "E",
+          "city": "몬트리올",
+          "venue": "Centre Bell",
+          "teams": [
+            "POL",
+            "GER",
+            "SLO",
+            "CUB"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        },
+        {
+          "id": "F",
+          "city": "오마하",
+          "venue": "CHI Health Center Arena",
+          "teams": [
+            "JPN",
+            "RUS",
+            "ARG",
+            "BUL"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        },
+        {
+          "id": "G",
+          "city": "몬트리올",
+          "venue": "Centre Bell",
+          "teams": [
+            "CAN",
+            "SRB",
+            "UKR",
+            "CMR"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        },
+        {
+          "id": "H",
+          "city": "퀘벡시티",
+          "venue": "Centre Videotron",
+          "teams": [
+            "CHN",
+            "NED",
+            "SWE",
+            "SUI"
+          ],
+          "sourceIds": [
+            "women-draw"
+          ]
+        }
+      ],
+      "schedule": {
+        "status": "not_verified",
+        "matches": [],
+        "note": "개별 경기 날짜·시간은 아직 수록하지 않았습니다. 공식 일정 확인 후 한국시간과 현지시간을 함께 표시합니다."
+      },
+      "roster": {
+        "status": "not_collected",
+        "note": "대회별 공식 엔트리 미수록. 기존 대표팀 명단을 대회 최종 명단으로 사용하지 않습니다."
+      },
+      "olympicResult": {
+        "status": "pending",
+        "verificationStatus": "unconfirmed",
+        "qualifiedTeams": [],
+        "sourceIds": []
+      },
+      "championshipResult": {
+        "status": "pending",
+        "verificationStatus": "unconfirmed",
+        "countryCode": null,
+        "sourceIds": []
+      },
+      "officialUrl": "https://en.volleyballworld.com/volleyball/competitions/women-world-championship/",
+      "checkedAt": "2026-11-18",
+      "updatedAt": "2026-11-18"
+    }
+  ],
+  "integration": {
+    "nationalHistory": "data/national/men-senior-history-v1.json",
+    "continentalResults": "data/olympics/la2028-continentals-v1.json",
+    "olympicCycle": "data/olympics/la2028_v1.json",
+    "competitionMasterStatus": "not_registered",
+    "driveMasterStatus": "read_only_2026-07-25_snapshot",
+    "automationStatus": "not_connected",
+    "archiveStatus": "not_archived"
+  }
+}
