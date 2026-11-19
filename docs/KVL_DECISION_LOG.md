@@ -1,5 +1,13 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-20 · V-리그 세트 전환 및 종료 직후 공식 득점 보완
+
+Status: USER REQUESTED REPAIR / IMPLEMENTED / LOCAL SAFETY QA PASSED / NOT DEPLOYED.
+사용자가11/19 실제 갱신 검증 뒤 남은 누락의 보완을 요청했다. 기준main `5813a04a255b895ac07059989595aefe66fb6d7d`. 문자중계의 세트 번호가 승수보다 한 단계 늦은 세트 사이 상태는 종료 득점·승자·연속성이 모두 맞고 다음세트 득점이 없을 때만 인정한다. 거절 전 검증된 숫자 진단도 남긴다. 실제19:59 artifact에는 원시setIng가 없어 당시 값을 확정하지 않는다.
+
+추가 확인한21:42 자연실행은 종료 표시와 불완전 득점 때문에 보완 전 전체 수집이 중단됐다. 당일 정규리그의 공식 종료시각·3승·승자표시·정상 기존 득점이 확인된 경우에만 같은 경기 문자중계의 완전한3~5세트와 대조한다. 전체 득점·승수·기존 점수가 일치해야 확정하며 실패·충돌은 계속 차단한다. 출처는 공개점수와 배포영수증에 보존한다. 이는 기존11/14 문자중계 보완을 종료 직후 검증에 제한적으로 확장하며 순위·MASTER 검수·선수·ID·Cup·국제대회·Worker/cron은 유지한다. [증거·검증·배포 제한](validation/vleague-set-transition-recovery-v1.md). 새 운영 병합·배포 승인은 아직 받지 않았으며, 실제 다음 경기 연속 검증 전 완료로 판정하지 않는다.
+
+
 ## 2026-11-19 · 국제 국가별 명단 리그 국가와 VB 단축링크 형식 복원
 
 Status: USER REQUESTED REVIEW / FEATURE BRANCH IMPLEMENTATION / NOT DEPLOYED.
