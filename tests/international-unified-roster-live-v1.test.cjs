@@ -49,8 +49,24 @@ test('Different Fukatsu with same #3 do not merge and exact verified club/Volley
  assert.ok(y);assert.equal(y.dob,'1995-12-11');assert.equal(y.club,'Ziraat Bankkart Ankara');
  assert.equal(y.directBox,'https://volleybox.net/yuki-ishikawa-p705');assert.match(y.KVLProfile,/^player\.html\?id=KVL-P-\d{6}$/);
  assert.equal(y.matches.length,2);
+ assert.equal(y.clubCountry,'Türkiye','Verified 2026-27 club country must accompany the selected club');
+ assert.equal(y.clubLeague,'SMS Grup Efeler Ligi');
+ const o=m.rows.find(p=>p.en==='Tatsunori Otsuka');
+ assert.ok(o);assert.equal(o.clubCountry,'Italy');assert.ok(o.clubLeague);
+ const a=m.rows.find(p=>p.en==='Yudai Arai');
+ assert.ok(a);assert.equal(a.clubCountry,'Japan','Asian Games confirmed club country must be reused');
+ const unverified=m.rows.find(p=>p.en==='Akihiro Fukatsu');
+ assert.ok(unverified);assert.equal(unverified.club,'');assert.equal(unverified.clubCountry,'');
  assert.equal(m.rows.find(p=>p.en==='Akihiro Yamauchi').height,204);
  assert.ok(m.rows.filter(x=>x.club).length>=10);
+});
+test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
+ const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
+ assert.equal(raw.club,'');assert.equal(raw.clubCountry,'');assert.equal(raw.clubLeague,'');
+ const confirmed=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',confirmed:true}});
+ assert.equal(confirmed.club,'Some Club');assert.equal(confirmed.clubCountry,'Japan');assert.equal(confirmed.clubLeague,'');
+ const japan=scope('JPN','women');
+ assert.ok(japan.rows.every(p=>!p.club||p.clubCountry===String(p.clubCountry||'')));
 });
 test('No unapproved athlete id reuse and false standalone Volleybox links',()=>{
  assert.equal(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').id,'');
