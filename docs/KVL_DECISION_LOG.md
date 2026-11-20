@@ -1,5 +1,13 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-20 · 국제 팀찾기 40개 국가 국기 이미지 적용 v1
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / PAGES RELEASE REQUIRES QA.
+사용자가 `https://kvolleylab.com/teams.html?category=international&gender=men`의 `팀 찾기 → 국제` 국가 카드에 국가별 국기 이미지를 넣도록 요청했다. 기존 `kvl-international-countries-v1.js`의 KVL 검증 자료 `flag_iso2`와 국기 이모지만 사용한 렌더링을 확인했다. 국가 카드의 기존 **왼쪽 31% 로고 영역**과 국가명·영문명·대회 출처·버튼을 그대로 유지하면서 각 카드에 **정적 로컬 SVG 국기 이미지**를 적용한다. 국가를 선택했을 때 상세 헤더의 국기까지 동일한 파일을 사용한다. 모바일 카드 크기/간격 및 남녀·지역·국가·연도 필터, 국내 프로팀 구단 로고/명단과 회원 접근은 불변.
+
+기존 40개국의 `data/international/country-directory-v1.json`에서 검증된 ISO alpha-2 코드를 그대로 사용해 `assets/images/flags/4x3/*.svg` 40개를 self-hosting으로 추가한다. 소스는 `lipis/flag-icons` 커밋 `ac7e0eb3259eb62aa6100c435607e2fe03896a97`의 해당 파일(별도 MIT 라이선스 동봉)이며, 동일 원본을 사이트 밖 제3자 CDN에 실시간 의존하지 않는다. 국기 로딩 실패 시 기존 이모지 fallback이 보이고, 불법/미확인 코드로 파일 URL을 조합하지 않는다. 등록된 국가 코드 자체/정치·스포츠 출전 명칭을 변경하거나 경기 데이터/MASTER를 추정하지 않는다.
+
+기준 main `07b3fc0420978184ec3c7e5cc0679953bf5a59e8`. 작업·검증 인계: [40개국 국기 이미지 v1](validation/international-country-card-flags-v1-20261120.md). 실제 운영 배포와 Chromium 검증 결과는 동작 증거를 확인한 뒤 별도 기록한다.
 
 ## 2026-11-20 · 국제 국가별 선수명단 소속 리그 국가 라벨 통일 v1
 
