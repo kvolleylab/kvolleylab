@@ -4,7 +4,7 @@
 
 - 기준 main: `d3b6b8b87d2229f0b7f2d718c23ebc52f07ae073`.
 - 사용자 요청: 홈 오늘 경기의 `1세트 20–25`, `2세트 25–21`을 `20–25`, `25–21`로 표시. 오늘 실제 자동화도 별도로 확인.
-- 상태: REVIEW BRANCH / NOT DEPLOYED. 새 UI 변경의 병합·배포 승인은 별도이며 기존 PR379 승인과 혼동하지 않는다.
+- 상태: USER APPROVED RELEASE / QA PASSED / DEPLOYMENT PENDING. 2026-11-20 사용자가 PR #382 병합·배포를 명시적으로 승인했다. 승인 head `149d2f263d24c63b2ce36ffd18aa157c0c4dd15e`의 표시 코드와 테스트를 유지한다. 실제 배포는 [PR #382](https://github.com/kvolleylab/kvolleylab/pull/382)의 병합·Pages·HTTPS 및 화면 증거로 확인한다.
 - 근본 원인: 홈 inline `matchCard`와 공유 V-리그 summary가 `finished`가 아닌 경우에만 보이는 세트 번호를 붙였다. 기존 최근 경기와 일정표는 숫자만 표시하므로 같은 득점의 표기가 달랐다. 데이터 수집/파싱 오류가 아니다.
 
 ## 변경
@@ -48,3 +48,9 @@
 - 21:14 남자1–3은 공식 종료시각 공란으로 finalPending=true. 여자4세트24–20은 진행중이므로3개 종료세트에 포함하지 않았다.
 - 이번8회 문자중계 counter_state는 모두 CURRENT. PR379의 BETWEEN_SETS 및 FINAL_SUPPLEMENTED 특정 경계분기는 아직 실제 발생/검증되지 않음. 최종결과 MASTER 쓰기는 다음 자연 관측에서 확인해야 한다.
 - 과거 두 시점 실제 브라우저화면 및1440/390/360은 이 감사에서 검증하지 않음. 워커 외부감시·Cloudflare 실패알림·GitHub 메일/푸시 수신 역시 별도 미검증.
+
+## 승인 전 검증 확정 및 배포 인계
+
+- V-League CI [44736700026](https://github.com/kvolleylab/kvolleylab/actions/runs/44736700026) 성공: Python292+Node104+실제후보DOM6. 후보 DOM은 실제 브라우저로 세지 않는다. CI MASTER/production 쓰기 없음.
+- 오늘 후속 자연 publisher44736617607의21:34:16 남1–3·여3–1/각4세트 관측은 MASTER8셀 실제쓰기/readback →commit82e3567d →Pages44736935872 →21:35:10 공개검증 성공. 독립MASTER FORMULA/공식/공개JSON과1363px 실제 홈·남녀일정 일치. [연속 실제 증거](https://github.com/kvolleylab/kvolleylab/pull/262#issuecomment-7039718716).
+- 승인된 UI가 경기 중 표시되는지는 다음 실제 관측에서 확인한다. 현재 경기는 끝났으므로 최종 카드에서 숫자만 보이는 것으로 라이브 상태의 새 표시 검증을 대체하지 않는다.

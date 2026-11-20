@@ -2,10 +2,10 @@
 
 ## 2026-11-20 · 홈 오늘 경기와 V-리그 요약의 득점을 숫자로 통일
 
-Status: USER REQUESTED / REVIEW BRANCH / NOT DEPLOYED.
+Status: USER APPROVED RELEASE / IMPLEMENTED / QA PASSED / DEPLOYMENT PENDING.
 사용자가 홈 ‘오늘 경기’ 카드에서 `1세트`, `2세트` 문구를 빼고 득점만 표시하도록 요청했다. 기존 일정표 및 최근 경기 결과와 같은 `20–25 / 25–21` 형태로 홈과 같은 요약 기능의 V-리그 한눈에 보기에도 적용한다. 세트 순서는 유지하며 번호는 툴팁과 접근성 이름에 남긴다. 중앙 세트 승수(0 포함), 진행·종료 확인 중·갱신 지연 상태, KST 관측시각과 공식 검증 조건은 변경하지 않는다.
 
-기준 main `d3b6b8b87d2229f0b7f2d718c23ebc52f07ae073`. 표시 문제와 오늘 자동화 실적을 구분해 [검증 기록](validation/home-live-points-only-v1-20261120.md)에 남긴다. 수집기·MASTER·경기/선수 ID·명단·순위·Cup·국제대회·Worker/cron은 변경하지 않는다. 새 UI 변경은 PR 검토와 사용자 운영 배포 승인 전까지 미배포다.
+기준 main `d3b6b8b87d2229f0b7f2d718c23ebc52f07ae073`. 표시 문제와 오늘 자동화 실적을 구분해 [검증 기록](validation/home-live-points-only-v1-20261120.md)에 남긴다. 수집기·MASTER·경기/선수 ID·명단·순위·Cup·국제대회·Worker/cron은 변경하지 않는다. 2026-11-20 사용자가 PR #382 병합·운영 배포를 명시적으로 승인했다. 검증된 head `149d2f263d24c63b2ce36ffd18aa157c0c4dd15e`의 표시 로직을 유지하며 최신 main `82e3567d3234a08d989a4adfc77c7add138479df`의 남녀 최종 결과는 보존한다. 최종 병합·Pages·운영 화면 증거는 [PR #382 배포 기록](https://github.com/kvolleylab/kvolleylab/pull/382)에 누적한다.
 
 ## 2026-11-20 · 국제 팀찾기 40개 국가 국기 이미지 적용 v1
 
