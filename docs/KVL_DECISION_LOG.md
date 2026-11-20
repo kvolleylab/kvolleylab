@@ -1,5 +1,14 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-20 · 팀찾기 HERO 홈 배경 이미지 재사용 v1
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / PRODUCTION DEPLOY NOT YET VERIFIED.
+사용자가 `팀찾기` 페이지 상단 메인 카드 이미지를 `홈`의 메인 카드 이미지와 같게 요청했다. 실제 GitHub main `index.html`의 `.home-hero`는 PC `/assets/img/home-hero/kvl-home-hero-pc-v01.webp`, 680px 이하 모바일 `/assets/img/home-hero/kvl-home-hero-mobile-v01.webp`를 `right center/cover` 배경으로 사용한다. `teams.html`의 `.ktd-hero`는 기존에 이미지 없는 텍스트 영역이었다. 신규 이미지 생성 없이 홈의 **현재 운영 실사용 파일 그대로** 팀찾기 상단 카드에 적용한다.
+
+팀찾기 내용은 팀명과 안내 문구 그대로 유지하면서 PC 318px·모바일 264px의 홈 HERO 높이와 PC 44px·모바일 30px 헤더를 이용하며, 어두운 홈 HERO 이미지에 대비되는 흰색 텍스트와 밝은 설명 문구로 표시한다. 기존 `ktd-main` 1180px 영역 안에서 12px 둥근 모서리를 적용하고 `teams.html` 팀 검색·프로/대학/고교/중학/대표팀/국제 분류·팀/선수 명단·현재 운영 회원 접근·KOVO 자동화·홈 `index.html`은 건드리지 않는다. 참고: 홈과 팀찾기의 전체 페이지 레이아웃은 서로 다르므로 배경 원본/cover 규칙만 동일하게 하고 나머지 페이지 UI는 유지한다.
+
+Base main `2929efbf1149d914acd017cb5f0be0c057d5c7e3`. 변경 범위: `assets/css/kvl-teams-directory-v1.css`, `teams.html` 캐시, 해당 팀 디렉터리 unit/Chromium QA와 검증기록. [검증·복구 인계](validation/teams-hero-match-home-hero-v1-20261120.md). 실제 PR/Pages/운영 HTTPS 테스트 통과를 확인한 뒤 배포 상태를 기록한다.
+
 ## 2026-11-20 · 홈 오늘 경기와 V-리그 요약의 득점을 숫자로 통일
 
 Status: USER APPROVED RELEASE / IMPLEMENTED / QA PASSED / DEPLOYMENT PENDING.

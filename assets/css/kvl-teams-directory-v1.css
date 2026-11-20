@@ -58,3 +58,68 @@
 @media(max-width:820px){.ktd-main{padding:27px 16px 70px}.ktd-card h3{font-size:18px}.ktd-card-logo{padding:13px;min-height:134px}.ktd-card-body{min-height:138px}.ktd-card-copy{padding:13px}}
 @media(max-width:660px){.ktd-grid{grid-template-columns:1fr;gap:11px}.ktd-main{padding:24px 14px 62px}.ktd-categories{gap:6px;padding-bottom:16px;margin-bottom:18px}.ktd-categories button{min-width:0;flex:1 1 calc(33.333% - 6px);padding:9px 8px;white-space:nowrap;font-size:13px}.ktd-heading-row h2{font-size:21px}.ktd-controls{gap:9px}.ktd-gender{width:100%}.ktd-gender button{min-width:0;flex:1}.ktd-search-label{min-width:0;max-width:none;flex:1 1 100%}.ktd-card-body{min-height:136px}.ktd-card-logo{padding:16px;min-height:136px}.ktd-card-logo img{max-width:100px;max-height:94px}.ktd-card-name-row{gap:6px}.ktd-card h3{font-size:19px}.ktd-card-copy{padding:15px}.ktd-roster-wrap{margin-top:25px}}
 @media(max-width:375px){.ktd-card-logo{padding:10px}.ktd-card h3{font-size:17px}.ktd-card-meta{font-size:11px}.ktd-card-copy{padding:11px}}
+/* Team Finder HERO: reuse the exact home page background assets, rather than adding a new illustration.
+   Only the top page banner changes; team cards and data components retain their existing design. */
+.ktd-page .ktd-hero{
+ position:relative;
+ display:flex;
+ flex-direction:column;
+ align-items:flex-start;
+ justify-content:center;
+ min-height:318px;
+ padding:34px 46px;
+ margin-bottom:26px;
+ overflow:hidden;
+ border-radius:12px;
+ background:#07182d url('/assets/img/home-hero/kvl-home-hero-pc-v01.webp?v=20261015-home-hero-v01') right center/cover no-repeat;
+ color:#fff;
+}
+.ktd-page .ktd-hero .ktd-eyebrow{
+ margin:0 0 8px;
+ color:#9ee7f1;
+ font-size:10px;
+ line-height:1.5;
+ font-weight:650;
+ letter-spacing:3.4px;
+}
+.ktd-page .ktd-hero h1{
+ margin:12px 0;
+ max-width:650px;
+ color:#fff!important;
+ font-size:44px;
+ line-height:1.17;
+ font-weight:850;
+ letter-spacing:-.045em!important;
+ text-shadow:0 2px 12px #00112640;
+}
+.ktd-page .ktd-hero>p:last-child{
+ margin:0;
+ max-width:580px;
+ color:#e7f0f7;
+ font-size:15px;
+ line-height:1.5;
+ letter-spacing:-.025em;
+ text-shadow:0 1px 3px #00112640;
+}
+@media(max-width:680px){
+ .ktd-page .ktd-hero{
+  min-height:264px;
+  padding:27px 24px 22px;
+  background-image:url('/assets/img/home-hero/kvl-home-hero-mobile-v01.webp?v=20261015-home-hero-v01');
+ }
+ .ktd-page .ktd-hero .ktd-eyebrow{display:none}
+ .ktd-page .ktd-hero h1{
+  margin:0 0 10px;
+  font-size:30px;
+  line-height:1.18;
+ }
+ .ktd-page .ktd-hero>p:last-child{
+  max-width:450px;
+  font-size:12px;
+  line-height:1.6;
+ }
+}
+@media(max-width:375px){
+ .ktd-page .ktd-hero{padding-left:20px;padding-right:20px}
+ .ktd-page .ktd-hero h1{font-size:28px}
+}
