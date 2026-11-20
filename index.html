@@ -251,7 +251,7 @@ function matchCard(record,recent){
   cell.append(element('b','',team.name||team.fullName));center.append(cell);
  });
  const sets=element('div','set-scores');
- if(state.sets?.length){state.sets.forEach((set,i)=>{const score=element('abbr','',(finished?'':(i+1)+'세트 ')+set.home+'–'+set.away);score.title=(i+1)+'세트'+(finished?'':' · 종료 세트 관측값');sets.append(score)});sets.setAttribute('aria-label',finished?'세트별 점수':state.kind==='stale'?'마지막 관측 세트별 점수':'종료 세트별 점수')}
+ if(state.sets?.length){state.sets.forEach((set,i)=>{const score=element('abbr','',set.home+'–'+set.away);score.title=(i+1)+'세트'+(finished?'':' · 종료 세트 관측값');score.setAttribute('aria-label',(i+1)+'세트 '+set.home+' 대 '+set.away);sets.append(score)});sets.setAttribute('aria-label',finished?'세트별 점수':state.kind==='stale'?'마지막 관측 세트별 점수':'종료 세트별 점수')}
  else if(finished||state.kind==='live')sets.textContent='세트별 점수 확인 중';
  const detail=element('div','match-venue',state.detail||(m.venueLabel||'경기장 미정'));
  card.append(top,when,center);if(sets.textContent)card.append(sets);
