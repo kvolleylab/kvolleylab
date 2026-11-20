@@ -28,7 +28,7 @@ test('Team Finder HERO reuses Home PC and mobile images, without modifying share
  assert.match(css,/\.ktd-page \.ktd-hero\{/,'Only the Team Finder top HERO is adjusted');
  assert.match(css,/background:#07182d url\(/,'Reuse Home navy background with the existing image');
  assert.match(css,/background-image:url\('/,'Use Home mobile asset at the responsive breakpoint');
- assert.match(html,/kvl-teams-directory-v1\.css\?v=20261120-home-hero-v1/,'New Team Finder CSS must invalidate old cache');
+ assert.match(html,/kvl-teams-directory-v1\.css\?v=20261120-grid-v1/,'Latest Team Finder CSS must invalidate old cache');
  assert.match(html,/id="ktdGrid"/,'Existing team cards must remain');
  assert.match(html,/id="ktdGenderButtons"/,'Existing gender filter must remain');
 });
