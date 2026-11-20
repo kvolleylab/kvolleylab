@@ -6,7 +6,7 @@ const {chromium}=require(process.env.KVL_PLAYWRIGHT_PATH||'playwright');
 const ROOT=path.resolve(__dirname,'..');
 const OUT=process.env.RUNNER_TEMP||'/tmp';
 const BASE='https://kvolleylab.com';
-const MIME={'.js':'application/javascript','.mjs':'application/javascript','.html':'text/html','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.ico':'image/x-icon','.woff2':'font/woff2'};
+const MIME={'.js':'application/javascript','.mjs':'application/javascript','.html':'text/html','.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.webp':'image/webp','.ico':'image/x-icon','.woff2':'font/woff2'};
 const json=p=>JSON.parse(fs.readFileSync(path.join(ROOT,p),'utf8'));
 const men=json('data/competitions/v-league-men-2026-27/rosters.json'),women=json('data/competitions/v-league-women-2026-27/rosters.json');
 const sum=o=>Object.values(o).reduce((a,t)=>a+t.players.length,0);
@@ -32,6 +32,36 @@ async function snapshot(page,name){
  assert.ok(metrics.scrollWidth<=metrics.viewport+2,name+' horizontal overflow: '+JSON.stringify(metrics));
  return {file:path.basename(file),overflow:metrics.scrollWidth-metrics.viewport};
 }
+async function verifyHomeHero(page,expected){
+ const details=await page.evaluate(async()=>{
+  const hero=document.querySelector('.ktd-hero');
+  const style=getComputedStyle(hero);
+  const bg=style.backgroundImage;
+  const match=bg.match(/url\(["']?([^"')]+)["']?\)/);
+  if(!match)return {background:bg,loaded:false};
+  const image=new Image();
+  image.src=match[1];
+  try{await image.decode()}catch{}
+  return {
+   asset:new URL(image.src).pathname,
+   naturalWidth:image.naturalWidth,
+   naturalHeight:image.naturalHeight,
+   size:style.backgroundSize,
+   position:style.backgroundPosition,
+   minHeight:parseFloat(style.minHeight),
+   headingColor:getComputedStyle(hero.querySelector('h1')).color,
+   copyColor:getComputedStyle(hero.querySelector('p:last-child')).color,
+   documentWidth:document.documentElement.scrollWidth,
+   viewport:window.innerWidth
+  };
+ });
+ assert.equal(details.asset,'/assets/img/home-hero/'+expected,'Hero must use the exact current Home asset: '+JSON.stringify(details));
+ assert.ok(details.naturalWidth>100&&details.naturalHeight>100,'Home HERO image must decode: '+JSON.stringify(details));
+ assert.equal(details.size,'cover','Keep the Home hero crop rule');
+ assert.equal(details.headingColor,'rgb(255, 255, 255)','Dark Home image requires white heading text');
+ assert.ok(details.documentWidth<=details.viewport+2,'Team Finder hero cannot cause page overflow');
+ return details;
+}
 async function main(){
  const browser=await chromium.launch({headless:true});
  try{
@@ -40,6 +70,9 @@ async function main(){
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(BASE+'/teams.html',{waitUntil:'domcontentloaded',timeout:30000});
   await page.locator('.ktd-card').first().waitFor({timeout:30000});
+  const desktopHero=await verifyHomeHero(page,'kvl-home-hero-pc-v01.webp');
+  assert.ok(desktopHero.minHeight>=318,'Home-sized desktop hero height retained');
+  report.scenarios.push({case:'Desktop 1440 Team Finder HERO matches Home PC image',result:'PASS',details:desktopHero});
   assert.equal(await page.locator('.ktd-card').count(),7);
   assert.match(await page.locator('#ktdSummary').innerText(),new RegExp(sum(men)+'명'));
   assert.equal(await page.locator('[data-ktd-category="pro"]').getAttribute('aria-pressed'),'true');
@@ -124,6 +157,9 @@ async function main(){
    const mobileErrors=[];mobile.on('pageerror',e=>mobileErrors.push(e.message));
    await mobile.goto(BASE+'/teams.html?category=pro&gender=men',{waitUntil:'domcontentloaded',timeout:30000});
    await mobile.locator('.ktd-card').first().waitFor({timeout:30000});
+   const mobileHero=await verifyHomeHero(mobile,'kvl-home-hero-mobile-v01.webp');
+   assert.ok(mobileHero.minHeight>=264,'Home-sized mobile hero height retained');
+   report.scenarios.push({case:'Mobile '+width+' Team Finder HERO matches Home mobile image',result:'PASS',details:mobileHero});
    assert.equal(await mobile.locator('.ktd-card').count(),7);
    const summary=await mobile.locator('#ktdSummary').innerText();
    assert.match(summary,/등록 선수/);
