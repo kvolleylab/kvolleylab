@@ -14,6 +14,25 @@ const male=json('data/competitions/v-league-men-2026-27/data.json');
 const female=json('data/competitions/v-league-women-2026-27/data.json');
 const menRosters=json('data/competitions/v-league-men-2026-27/rosters.json');
 const womenRosters=json('data/competitions/v-league-women-2026-27/rosters.json');
+
+test('Team Finder HERO reuses Home PC and mobile images, without modifying shared Home assets',()=>{
+ const home=read('index.html');
+ const css=read('assets/css/kvl-teams-directory-v1.css');
+ const html=read('teams.html');
+ for(const file of ['kvl-home-hero-pc-v01.webp','kvl-home-hero-mobile-v01.webp']){
+  const asset='assets/img/home-hero/'+file;
+  assert.ok(home.includes(asset),'Home HERO must reference '+file);
+  assert.ok(css.includes(asset),'Team Finder HERO must reference exact same '+file);
+  assert.ok(fs.statSync(path.join(root,asset)).size>10000,'Source Home HERO must exist locally');
+ }
+ assert.match(css,/\.ktd-page \.ktd-hero\{/,'Only the Team Finder top HERO is adjusted');
+ assert.match(css,/background:#07182d url\(/,'Reuse Home navy background with the existing image');
+ assert.match(css,/background-image:url\('/,'Use Home mobile asset at the responsive breakpoint');
+ assert.match(html,/kvl-teams-directory-v1\.css\?v=20261120-home-hero-v1/,'New Team Finder CSS must invalidate old cache');
+ assert.match(html,/id="ktdGrid"/,'Existing team cards must remain');
+ assert.match(html,/id="ktdGenderButtons"/,'Existing gender filter must remain');
+});
+
 test('current season index continues to be the only routing source',()=>{
  assert.equal(season,'2026-27');
  assert.ok(json('data/team-rosters/v-league/index.json').seasons.some(s=>s.season===season&&s.status==='active'));
