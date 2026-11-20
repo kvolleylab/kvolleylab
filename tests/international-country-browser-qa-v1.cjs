@@ -52,7 +52,7 @@ async function run(){
   assert.equal(new Set(actualFlags.map(x=>x.path)).size,40,'Use a unique flag asset per ISO code');
   assert.ok(actualFlags.every(x=>x.loaded&&x.alt.includes('국기')&&x.fallbackHidden),
    'Every SVG flag must load locally: '+JSON.stringify(actualFlags.filter(x=>!x.loaded||!x.fallbackHidden)));
-  assert.ok(actualFlags.every(x=>/^\\/assets\\/images\\/flags\\/4x3\\/[a-z]{2}\\.svg$/.test(x.path)));
+  assert.ok(actualFlags.every(x=>x.path.startsWith('/assets/images/flags/4x3/')&&x.path.endsWith('.svg')),'Only local approved flag SVG URLs are used');
   assert.ok(actualFlags.every(x=>x.ratio>=1.2&&x.ratio<=1.5),'Keep original 4:3 flag imagery within cards');
   assert.equal((await page.locator('.ktd-country-card[data-team-code="JPN"] img').getAttribute('src')),
    'assets/images/flags/4x3/jp.svg');
