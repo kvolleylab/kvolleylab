@@ -18,7 +18,14 @@ async function ready(){
   try{
    const r=await fetch(BASE+'/teams.html?release='+encodeURIComponent(sha)+'-'+i,{cache:'no-store',signal:AbortSignal.timeout(12000)});
    const html=r.ok?await r.text():'';
-   if(html.includes('id="ktdGrid"')&&html.includes('kvl-teams-directory-v1.js'))return;
+   if(html.includes('id="ktdGrid"')&&html.includes('kvl-teams-directory-v1.js')){
+    const href=html.match(/href="(assets\/css\/kvl-teams-directory-v1\.css[^"]*)"/)?.[1];
+    if(href){
+     const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
+     const css=cssResponse.ok?await cssResponse.text():'';
+     if(css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp'))return;
+    }
+   }
    last='HTTP '+r.status+' or new directory marker not yet public';
   }catch(e){last=e.message}
   if(i<17)await wait(10000);
@@ -33,6 +40,32 @@ async function pageFor(browser,width,height){
   route=>route.fulfill({status:200,body:'// QA-only gate interception',contentType:'application/javascript'}));
  return page;
 }
+async function verifyLiveHero(page,width){
+ const meta=await page.evaluate(async()=>{
+  const hero=document.querySelector('.ktd-hero');
+  const styles=getComputedStyle(hero);
+  const match=styles.backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);
+  if(!match)return {decoded:false,asset:'',cssBackground:styles.backgroundImage};
+  const image=new Image();image.src=match[1];
+  try{await image.decode()}catch{}
+  return {
+   asset:new URL(image.src).pathname,
+   decoded:image.naturalWidth>100&&image.naturalHeight>100,
+   backgroundSize:styles.backgroundSize,
+   headingColor:getComputedStyle(hero.querySelector('h1')).color,
+   minHeight:parseFloat(styles.minHeight),
+   viewport:innerWidth,
+   scrollWidth:document.documentElement.scrollWidth
+  };
+ });
+ assert.equal(meta.asset,'/assets/img/home-hero/'+(width<=680?'kvl-home-hero-mobile-v01.webp':'kvl-home-hero-pc-v01.webp'),
+  'Live Team Finder must match Home image for current viewport: '+JSON.stringify(meta));
+ assert.ok(meta.decoded,'Live Home HERO image must load and decode: '+JSON.stringify(meta));
+ assert.equal(meta.backgroundSize,'cover');
+ assert.equal(meta.headingColor,'rgb(255, 255, 255)');
+ assert.ok(meta.scrollWidth<=meta.viewport+2);
+ return meta;
+}
 async function check(browser,gender,code,player,linked,width){
  const rosters=await read('data/competitions/v-league-'+gender+'-2026-27/rosters.json');
  const count=Object.values(rosters).reduce((n,t)=>n+t.players.length,0);
@@ -43,6 +76,8 @@ async function check(browser,gender,code,player,linked,width){
   const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
   assert.ok(response?.ok(),'Public page unavailable: '+response?.status());
   await page.locator('.ktd-card').first().waitFor({timeout:30000});
+  const hero=await verifyLiveHero(page,width);
+  result.notes.push('Live '+width+'px Team Finder HERO reuses Home '+(width<=680?'mobile':'PC')+' image: '+hero.asset);
   assert.equal(await page.locator('.ktd-card').count(),7);
   const summary=await page.locator('#ktdSummary').innerText();
   assert.ok(summary.includes(count+'명'),'Published total must match current KOVO official roster JSON: '+summary);
