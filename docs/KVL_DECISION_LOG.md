@@ -1,5 +1,14 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-20 · 팀찾기 카드 PC 3열·모바일 2열 반응형 v1
+
+Status: USER APPROVED IMPLEMENTATION / FEATURE BRANCH IMPLEMENTED / RELEASE GATED BY QA.
+사용자가 팀찾기 `teams.html`의 팀·국가 카드 목록에서 PC 한 줄에 **3팀**, 모바일 한 줄에 **2팀** 표시하는 구성을 상담한 뒤 `진행해`로 구현을 승인했다. 중간 PC/태블릿의 좁은 가로폭에서 무리하게 3개를 욱여넣지 않도록 이전 추천대로 브라우저 화면폭 기준 **1280px 이상 3열 가로 카드, 661~1279px 2열 가로 카드, 660px 이하 2열 세로 카드**를 적용한다. 카드 목록에만 한정하고, 국가별 선수 명단 표 자체의 컬럼·폰트·정보량은 변경하지 않는다.
+
+모바일 카드(360/390px) 내부 구조는 기존 로고 31% 좌우 배치에서 **위쪽 로고/국기 → 중앙 팀명·확인된 선수 수/감독·출처 → 하단 선수명단/팀정보 버튼**의 세로 정렬로 변경하고, 로고 60~78px와 약 44px 이상의 터치 가능 버튼을 유지한다. 길이가 긴 구단명·국가명은 강제로 말줄임하지 않고 여러 줄 줄바꿈한다. 기존 실제 KOVO 명단·국기 SVG 40개·감독 및 학교/대회 출처 텍스트·선수/팀 링크·전체 카드 개수·남녀 선택·지역/국가 필터·로그인 접근·상단 홈 이미지 HERO는 보호한다. 카드 행 높이는 각 그리드 행에서 동일하게 확장되며 기존 PC 구단 로고 31% 열 구조는 보존한다.
+
+기준 main `7d574422b98c63e808c61859fe0c760484f9df44`. 구현 범위: `assets/css/kvl-teams-directory-v1.css` 후행 반응형 규칙, `teams.html` CSS 캐시 버전, 팀 디렉터리 단위·Chromium·실운영 QA, 검증 문서. [인계](validation/teams-responsive-grid-v1-20261120.md). GitHub Pages/실제 운영 검증 결과는 확인한 동일 SHA 결과만 기록한다.
+
 ## 2026-11-20 · 팀찾기 HERO 홈 배경 이미지 재사용 v1
 
 Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / PRODUCTION DEPLOY NOT YET VERIFIED.
