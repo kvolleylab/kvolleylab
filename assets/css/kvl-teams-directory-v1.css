@@ -123,3 +123,82 @@
  .ktd-page .ktd-hero{padding-left:20px;padding-right:20px}
  .ktd-page .ktd-hero h1{font-size:28px}
 }
+/* Team directory density v1. Three compact horizontal cards on wide desktop;
+   two unchanged horizontal cards on medium screens and two vertical cards on mobile.
+   Keep card content, logo/flag assets, action buttons and verified roster data intact. */
+.ktd-page .ktd-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ktd-page .ktd-grid .ktd-card{height:100%;display:flex;flex-direction:column}
+.ktd-page .ktd-grid .ktd-card-body{flex:1}
+.ktd-page .ktd-grid .ktd-card-action{margin-top:auto}
+@media(min-width:1280px){
+ .ktd-page .ktd-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+ .ktd-page .ktd-grid .ktd-card-body{grid-template-columns:31% minmax(0,1fr)}
+ .ktd-page .ktd-grid .ktd-card-logo{padding:12px;min-height:140px}
+ .ktd-page .ktd-grid .ktd-card-logo img{max-width:94px;max-height:92px}
+ .ktd-page .ktd-grid .ktd-card-copy{padding:14px 12px 12px}
+ .ktd-page .ktd-grid .ktd-card h3{font-size:18px;line-height:1.35}
+ .ktd-page .ktd-grid .ktd-card-meta{font-size:11px}
+ .ktd-page .ktd-grid .ktd-card-action{padding:11px 13px;font-size:12px}
+}
+@media(max-width:660px){
+ .ktd-page .ktd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .ktd-page .ktd-grid .ktd-card{min-width:0;min-height:0}
+ .ktd-page .ktd-grid .ktd-card-body{
+  display:flex;flex-direction:column;align-items:stretch;gap:7px;
+  min-height:0;padding:12px 9px 8px
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-logo{
+  align-self:stretch;width:100%;height:78px;min-height:0;
+  padding:4px;border:0;background:transparent
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-logo img{
+  width:auto;max-width:78px;max-height:68px;object-fit:contain
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-monogram{
+  width:64px;height:64px;font-size:16px
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-copy{
+  width:100%;min-width:0;min-height:0;flex:1;
+  padding:0 1px 7px;text-align:center
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-eyebrow{
+  margin:0 0 5px;font-size:9px;line-height:1.4;letter-spacing:.025em;
+  overflow-wrap:anywhere
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-name-row{
+  display:flex;flex-direction:column;flex-wrap:nowrap;
+  align-items:center;justify-content:center;gap:3px;
+  min-height:38px
+ }
+ .ktd-page .ktd-grid .ktd-card h3{
+  font-size:15px;line-height:1.32;letter-spacing:-.035em;
+  word-break:keep-all;overflow-wrap:anywhere;text-align:center
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-count{
+  font-size:11px;line-height:1.3
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-meta{
+  margin:4px 0 0;font-size:10.5px;line-height:1.42;
+  overflow-wrap:anywhere;word-break:keep-all
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-action{
+  min-height:46px;justify-content:center;gap:5px;
+  padding:9px 7px;font-size:11px;line-height:1.3;text-align:center
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-action span:first-child{
+  min-width:0;overflow-wrap:anywhere;word-break:keep-all
+ }
+ .ktd-page .ktd-grid .ktd-card .ktd-card-action span:last-child{
+  flex:none;font-size:15px
+ }
+ .ktd-page .ktd-grid .ktd-country-card .ktd-card-logo img.ktd-country-flag-image{
+  width:72px;max-width:72px;max-height:54px
+ }
+}
+@media(max-width:375px){
+ .ktd-page .ktd-grid{gap:8px}
+ .ktd-page .ktd-grid .ktd-card-body{padding:10px 7px 7px}
+ .ktd-page .ktd-grid .ktd-card h3{font-size:14px}
+ .ktd-page .ktd-grid .ktd-card .ktd-card-meta{font-size:10px}
+ .ktd-page .ktd-grid .ktd-card .ktd-card-action{font-size:10.5px;padding:9px 5px}
+}

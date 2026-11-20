@@ -23,7 +23,7 @@ async function ready(){
     if(href){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
-     if(css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp'))return;
+     if(html.includes('20261120-grid-v1')&&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp'))return;
     }
    }
    last='HTTP '+r.status+' or new directory marker not yet public';
@@ -66,6 +66,29 @@ async function verifyLiveHero(page,width){
  assert.ok(meta.scrollWidth<=meta.viewport+2);
  return meta;
 }
+async function verifyLiveGrid(page,width){
+ const spec=await page.evaluate(()=>{
+  const grid=document.getElementById('ktdGrid'),cards=[...grid.querySelectorAll(':scope > .ktd-card')];
+  const cols=getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
+  return {cols,count:cards.length,viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,
+   cards:cards.slice(0,4).map(c=>({
+    top:c.getBoundingClientRect().top,width:c.getBoundingClientRect().width,
+    bodyDisplay:getComputedStyle(c.querySelector('.ktd-card-body')).display,
+    flexDirection:getComputedStyle(c.querySelector('.ktd-card-body')).flexDirection,
+    logoWidth:c.querySelector('.ktd-card-logo').getBoundingClientRect().width,
+    actionHeight:c.querySelector('.ktd-card-action').getBoundingClientRect().height
+   }))};
+ });
+ const expected=width>=1280?3:2;
+ assert.equal(spec.cols,expected,'Actual operating Team Finder must respect its responsive grid: '+JSON.stringify(spec));
+ assert.ok(spec.cards.slice(0,expected).every(x=>Math.abs(x.top-spec.cards[0].top)<2));
+ assert.ok(spec.cards[expected].top>spec.cards[0].top+20);
+ assert.ok(spec.cards.every(x=>x.actionHeight>=43&&x.width>140));
+ if(width<=660)assert.ok(spec.cards.every(x=>x.bodyDisplay==='flex'&&x.flexDirection==='column'&&x.logoWidth>=x.width*.77),'Mobile card logo must be stacked above team name');
+ else assert.ok(spec.cards.every(x=>x.bodyDisplay==='grid'),'Desktop team cards retain the horizontal format');
+ assert.ok(spec.scrollWidth<=spec.viewport+2);
+ return spec;
+}
 async function check(browser,gender,code,player,linked,width){
  const rosters=await read('data/competitions/v-league-'+gender+'-2026-27/rosters.json');
  const count=Object.values(rosters).reduce((n,t)=>n+t.players.length,0);
@@ -76,6 +99,8 @@ async function check(browser,gender,code,player,linked,width){
   const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
   assert.ok(response?.ok(),'Public page unavailable: '+response?.status());
   await page.locator('.ktd-card').first().waitFor({timeout:30000});
+  const grid=await verifyLiveGrid(page,width);
+  result.notes.push('Live '+width+'px Team Finder grid '+grid.cols+' columns ('+(width<=660?'vertical mobile cards':'horizontal desktop cards')+')');
   const hero=await verifyLiveHero(page,width);
   result.notes.push('Live '+width+'px Team Finder HERO reuses Home '+(width<=680?'mobile':'PC')+' image: '+hero.asset);
   assert.equal(await page.locator('.ktd-card').count(),7);
