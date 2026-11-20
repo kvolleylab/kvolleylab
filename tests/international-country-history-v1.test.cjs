@@ -86,6 +86,38 @@ test('filtering and gender availability provide grounded country cards',()=>{
  const women=api.cardEntries(countries,snapshots,'women');
  assert.equal(women.find(c=>c.code==='NZL').snapshots,0,'no published 2026 womens record is not absence of a team');
 });
+test('40 approved country cards use complete locally hosted SVG flag assets and retain safe emoji fallbacks',()=>{
+ const codes=[...new Set(countries.countries.map(c=>c.flag_iso2))].sort();
+ assert.equal(codes.length,40);
+ const assets=fs.readdirSync(path.join(ROOT,'assets/images/flags/4x3')).filter(n=>n.endsWith('.svg')).sort();
+ assert.deepEqual(assets,codes.map(c=>c+'.svg'),'all and only the approved country flag codes must exist');
+ assert.match(fs.readFileSync(path.join(ROOT,'assets/images/flags/LICENSE.txt'),'utf8'),/MIT License/);
+ for(const code of codes){
+  assert.match(code,/^[a-z]{2}$/);
+  const svg=fs.readFileSync(path.join(ROOT,'assets/images/flags/4x3',code+'.svg'),'utf8');
+  assert.match(svg,new RegExp('^<svg[^>]+id="flag-icons-'+code+'"'));
+  assert.match(svg,/viewBox="/);
+  assert.ok(!['<script','<foreignobject','onload=', '<iframe'].some(token=>svg.toLowerCase().includes(token)), 'SVG must contain no active content');
+ }
+ for(const gender of ['men','women']){
+  const entries=api.cardEntries(countries,snapshots,gender);
+  assert.equal(entries.length,40);
+  for(const entry of entries){
+   const orig=countries.countries.find(c=>c.code===entry.code);
+   assert.equal(entry.flag_iso2,orig.flag_iso2);
+   const html=dir.cardMarkup(entry);
+   assert.match(html,new RegExp('assets/images/flags/4x3/'+entry.flag_iso2+'\\.svg'));
+   assert.match(html,/ktd-country-flag-image/);
+   assert.match(html,/ktd-country-flag-fallback/);
+   assert.match(html,/loading="lazy"/);
+   assert.ok(html.includes('alt="'+entry.name+' 국기"'));
+   assert.ok(!html.includes('http:')&&!html.includes('https:'),'flag images must not depend on an external live CDN');
+  }
+ }
+ const invalid=dir.cardMarkup({action:'country',code:'TEST',name:'검증되지 않은 지역',flag_iso2:'../etc',flag:'🏐',en:'Test',sourceLabel:'No data'});
+ assert.doesNotMatch(invalid,/<img/,'unvalidated country flag paths must not be interpolated');
+ assert.match(invalid,/ktd-country-flag-fallback/);
+});
 test('existing VNL and AVC player schemas show raw status without invented candidate or profile labels',()=>{
  const male=snapshots.snapshots.find(s=>s.snapshot_id==='vnl-men-2026:JPN');
  const women=snapshots.snapshots.find(s=>s.snapshot_id==='vnl-women-2026:JPN');

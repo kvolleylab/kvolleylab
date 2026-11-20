@@ -25,7 +25,12 @@ async function waitForDeployment(){
    if(html.includes('kvl-international-countries-v1.js')&&html.includes('ktdCountryArea')){
     const country=await getJson('data/international/country-directory-v1.json');
     const roster=await getJson('data/international/country-roster-index-v1.json');
-    if(country.country_count===40&&roster.snapshot_count===89)return {country,roster};
+    if(country.country_count===40&&roster.snapshot_count===89){
+     const flag=await fetch(BASE+'/assets/images/flags/4x3/jp.svg?verify='+encodeURIComponent(SHA),
+      {cache:'no-store',signal:AbortSignal.timeout(20000)});
+     if(flag.ok&&(await flag.text()).includes('flag-icons-jp'))return {country,roster};
+     error='Local Japan flag SVG not yet deployed (HTTP '+flag.status+')';
+    }
    }
    error='Page or JSON marker absent (HTTP '+res.status+')';
   }catch(e){error=String(e.message)}
@@ -61,6 +66,18 @@ async function main(){
   const page=pc.page;
   await page.locator('.ktd-country-card').first().waitFor({timeout:30000});
   assert.equal(await page.locator('.ktd-country-card').count(),40);
+  const realFlags=await page.locator('.ktd-country-card img.ktd-country-flag-image').evaluateAll(async imgs=>{
+   return Promise.all(imgs.map(async img=>{
+    img.loading='eager';
+    try{await img.decode()}catch{}
+    return {url:new URL(img.src).pathname,loaded:img.naturalWidth>0,alt:img.alt};
+   }));
+  });
+  assert.equal(realFlags.length,40,'Every country card must have a real flag SVG');
+  assert.equal(new Set(realFlags.map(x=>x.url)).size,40);
+  assert.ok(realFlags.every(x=>x.loaded&&x.alt.includes('국기')&&x.url.startsWith('/assets/images/flags/4x3/')),
+   'All 40 actual HTTPS flag SVGs must load: '+JSON.stringify(realFlags.filter(x=>!x.loaded)));
+  REPORT.checks.push({name:'40 actual self-hosted SVG flags loaded from Pages',status:'PASS'});
   await page.locator('[data-ktd-region=asia]').click();
   assert.equal(await page.locator('.ktd-country-card').count(),20);
   await page.locator('[data-ktd-region=europe]').click();
@@ -70,6 +87,10 @@ async function main(){
   REPORT.checks.push({name:'Live source index 40 countries / 89 pointers and filtering',status:'PASS',...(await screenshot(page,'list-1440'))});
   await page.locator('.ktd-country-card[data-team-code=JPN] [data-ktd-country]').click();
   await page.locator('.ktd-country-panel').waitFor({timeout:30000});
+  const detailFlag=page.locator('.ktd-country-flag img.ktd-country-flag-image');
+  assert.ok((await detailFlag.getAttribute('src')).endsWith('/jp.svg'));
+  await detailFlag.evaluate(async img=>{await img.decode()});
+  assert.equal(await detailFlag.evaluate(img=>img.naturalWidth>0),true);
   assert.equal(await page.locator('#ktdGrid').isVisible(),false);
   assert.equal(await page.locator('.ktd-country-event').count(),3);
   await page.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();
@@ -108,6 +129,18 @@ async function main(){
   assert.deepEqual(b.errs,[]);await b.page.close();
   REPORT.checks.push({name:'Direct Bahrain link maintains 13-person departure-list status',status:'PASS'});
   for(const width of [390,360]){
+   const list=await pageFor(browser,width,'category=international&gender=men');
+   await list.page.locator('.ktd-country-card').first().waitFor({timeout:30000});
+   assert.equal(await list.page.locator('.ktd-country-card').count(),40);
+   await list.page.locator('#ktdSearch').fill('일본');
+   assert.equal(await list.page.locator('.ktd-country-card').count(),1);
+   const image=list.page.locator('.ktd-country-card img.ktd-country-flag-image');
+   await image.evaluate(async img=>{await img.decode()});
+   assert.equal(await image.evaluate(img=>img.naturalWidth>0),true);
+   assert.ok((await image.getAttribute('src')).endsWith('/jp.svg'));
+   REPORT.checks.push({name:'Live country flag card mobile '+width+'px',status:'PASS',...(await screenshot(list.page,'flag-card-'+width))});
+   assert.deepEqual(list.errs,[]);
+   await list.page.close();
    const m=await pageFor(browser,width,'category=international&country=JPN&gender=men&year=2026');
    await m.page.locator('.ktd-country-panel').waitFor({timeout:30000});
    await m.page.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();

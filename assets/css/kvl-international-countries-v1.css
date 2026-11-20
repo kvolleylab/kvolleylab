@@ -8,6 +8,26 @@
 .ktd-country-card .ktd-flag-icon{font-size:52px;line-height:1.2;display:block;filter:drop-shadow(0 2px 2px rgba(20,45,70,.13))}
 .ktd-country-card .ktd-card-eyebrow{margin-bottom:7px}
 .ktd-country-card .ktd-card-count{font-size:12px;font-weight:700}
+/* International team directory uses actual local SVG flag images (4:3), not OS-dependent emoji. */
+.ktd-country-card .ktd-card-logo img.ktd-country-flag-image{
+ display:block;width:100%;max-width:112px;max-height:84px;aspect-ratio:4/3;
+ object-fit:contain;background:#fff;border:1px solid #d8e3eb;border-radius:3px;
+ box-shadow:0 3px 9px rgba(10,34,53,.12)
+}
+.ktd-country-flag img.ktd-country-flag-image{
+ display:block;width:100%;max-width:64px;max-height:48px;aspect-ratio:4/3;
+ object-fit:contain;border:1px solid #d8e3eb;border-radius:3px;
+ box-shadow:0 2px 7px rgba(10,34,53,.1)
+}
+.ktd-country-card .ktd-country-flag-image[hidden],
+.ktd-country-card .ktd-country-flag-fallback[hidden],
+.ktd-country-flag .ktd-country-flag-image[hidden],
+.ktd-country-flag .ktd-country-flag-fallback[hidden]{display:none!important}
+.ktd-country-flag-fallback{font-size:42px;line-height:1.2}
+@media(max-width:660px){
+ .ktd-country-card .ktd-card-logo img.ktd-country-flag-image{max-width:90px;max-height:67.5px}
+ .ktd-country-flag img.ktd-country-flag-image{max-width:50px;max-height:37.5px}
+}
 .ktd-country-panel{background:#fff;border:1px solid #dfe7ed;border-radius:19px;padding:22px;box-shadow:0 8px 24px rgba(13,42,70,.05)}
 .ktd-country-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
 .ktd-country-heading{display:flex;align-items:center;gap:13px;min-width:0}
