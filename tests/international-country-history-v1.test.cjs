@@ -97,7 +97,7 @@ test('40 approved country cards use complete locally hosted SVG flag assets and 
   const svg=fs.readFileSync(path.join(ROOT,'assets/images/flags/4x3',code+'.svg'),'utf8');
   assert.match(svg,new RegExp('^<svg[^>]+id="flag-icons-'+code+'"'));
   assert.match(svg,/viewBox="/);
-  assert.doesNotMatch(svg,/<script\\b|<foreignObject\\b|onload\\s*=|<iframe\\b/i);
+  assert.ok(!['<script','<foreignobject','onload=', '<iframe'].some(token=>svg.toLowerCase().includes(token)), 'SVG must contain no active content');
  }
  for(const gender of ['men','women']){
   const entries=api.cardEntries(countries,snapshots,gender);
@@ -111,7 +111,7 @@ test('40 approved country cards use complete locally hosted SVG flag assets and 
    assert.match(html,/ktd-country-flag-fallback/);
    assert.match(html,/loading="lazy"/);
    assert.ok(html.includes('alt="'+entry.name+' 국기"'));
-   assert.doesNotMatch(html,/https?:\\/\\//,'flag images must not depend on an external live CDN');
+   assert.ok(!html.includes('http:')&&!html.includes('https:'),'flag images must not depend on an external live CDN');
   }
  }
  const invalid=dir.cardMarkup({action:'country',code:'TEST',name:'검증되지 않은 지역',flag_iso2:'../etc',flag:'🏐',en:'Test',sourceLabel:'No data'});
