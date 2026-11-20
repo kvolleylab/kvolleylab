@@ -9,6 +9,7 @@ on:
       - 'data/team-rosters/v-league/coaches-2026-27.json'
       - 'tests/teams-directory-v1.test.cjs'
       - 'tests/teams-directory-browser-qa-v1.cjs'
+      - 'tests/teams-directory-live-qa-v1.cjs'
       - '.github/workflows/teams-directory-qa-v1.yml'
   push:
     branches: [feature/teams-directory-v1-20261118]
@@ -31,6 +32,7 @@ jobs:
           node --check assets/js/kvl-teams-directory-v1.js
           node --check tests/teams-directory-v1.test.cjs
           node --check tests/teams-directory-browser-qa-v1.cjs
+          node --check tests/teams-directory-live-qa-v1.cjs
       - name: Test real current KOVO rosters, university teams and safe profile references
         run: node --test tests/teams-directory-v1.test.cjs
       - name: Install isolated Chromium

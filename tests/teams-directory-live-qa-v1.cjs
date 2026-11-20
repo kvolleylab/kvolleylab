@@ -110,7 +110,13 @@ async function check(browser,gender,code,player,linked,width){
    const a=el.getBoundingClientRect(),b=el.querySelector('.ktd-card-logo').getBoundingClientRect();
    return {fraction:b.width/a.width,width:document.documentElement.scrollWidth,viewport:innerWidth};
   });
-  assert.ok(css.fraction>=.28&&css.fraction<=.34);
+  if(width<=660){
+   assert.ok(css.fraction>=.77&&css.fraction<=1,
+    'Mobile vertical card image area should be full-width, not the old 31% horizontal slot: '+JSON.stringify(css));
+  }else{
+   assert.ok(css.fraction>=.28&&css.fraction<=.34,
+    'PC horizontal cards retain their 31% logo column: '+JSON.stringify(css));
+  }
   assert.ok(css.width<=css.viewport+2,'Mobile layout overflow');
   const club=page.locator('.ktd-card[data-team-code="'+code+'"]').first();
   await club.locator('[data-ktd-roster]').click();
