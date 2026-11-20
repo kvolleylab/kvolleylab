@@ -33,6 +33,28 @@ test('Team Finder HERO reuses Home PC and mobile images, without modifying share
  assert.match(html,/id="ktdGenderButtons"/,'Existing gender filter must remain');
 });
 
+test('Responsive team finder cards use 3 columns on wide PC and 2 vertical columns on mobile without removing team metadata',()=>{
+ const css=read('assets/css/kvl-teams-directory-v1.css');
+ const html=read('teams.html');
+ assert.match(css,/Team directory density v1/);
+ assert.ok(css.includes('@media(min-width:1280px)'), '3-up threshold must be wide desktop only');
+ assert.ok(css.includes('grid-template-columns:repeat(3,minmax(0,1fr))'));
+ assert.ok(css.includes('@media(max-width:660px)'), 'mobile layout must have a dedicated override');
+ assert.ok(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'));
+ assert.ok(css.includes('display:flex;flex-direction:column;align-items:stretch'), 'mobile teams must stack logos and text vertically');
+ assert.ok(css.includes('.ktd-card-logo')&&css.includes('.ktd-card-action'), 'keep flags/logos and actions in responsive cards');
+ assert.match(html,/kvl-teams-directory-v1\.css\?v=20261120-grid-v1/);
+ for(const scope of ['data-ktd-category="pro"','data-ktd-category="university"','data-ktd-category="international"','id="ktdGrid"']){
+  assert.ok(html.includes(scope),scope+' should remain functional');
+ }
+ const pro=dir.buildPro(male.participants,menRosters,staff,'men',season);
+ assert.equal(pro.length,7);
+ const card=dir.cardMarkup(pro.find(x=>x.code==='OKF'));
+ assert.match(card,/감독\s*:/,'coach must remain visible');
+ assert.match(card,/선수명단 보기/,'original roster action must remain');
+ assert.match(card,/ktd-card-logo/,'club logo remains in card');
+});
+
 test('current season index continues to be the only routing source',()=>{
  assert.equal(season,'2026-27');
  assert.ok(json('data/team-rosters/v-league/index.json').seasons.some(s=>s.season===season&&s.status==='active'));
