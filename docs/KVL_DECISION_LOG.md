@@ -1,5 +1,19 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-21 · Preserve honest waiting states in the live publisher candidate gate
+
+Status: USER REQUESTED REPAIR / IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED.
+On base `26842dd922c96219d4f90e0671a62becc05f7709`, repair the candidate UI
+checker that expected VS for an unobserved game after kickoff, blocking the
+other division's valid live update on11/21. Independently verify scheduled,
+waiting, live, pending-final and stale states, exact points and observation
+labels; do not weaken checks or change the honest production display.
+Unmodified failure artifact: before0/6, after6/6. Current final candidate6/6,
+Python292, Node110 and separate synthetic checker22 pass. No source, data,
+MASTER, IDs, roster, standings, international/Cup, workflow, Worker or cron
+changes. Production merge approval and subsequent natural/live verification
+remain required. [Evidence and release gate](validation/vleague-candidate-waiting-gate-v1.md).
+
 ## 2026-11-20 · 팀찾기 카드 PC 3열·모바일 2열 반응형 v1
 
 Status: USER APPROVED IMPLEMENTATION / FEATURE BRANCH IMPLEMENTED / RELEASE GATED BY QA.
