@@ -880,39 +880,33 @@
       },
       "venueLabel": "대전 충무체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:37",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-21T06:44:07+00:00",
-      "liveScore": {
-        "home": 2,
+      "updatedAt": "2026-11-21T07:19:19+00:00",
+      "score": {
+        "home": 3,
         "away": 1,
-        "sourceKey": "023:001:MALE:37",
-        "observedAt": "2026-11-21T06:44:07+00:00"
+        "sets": [
+          {
+            "home": 25,
+            "away": 27
+          },
+          {
+            "home": 25,
+            "away": 20
+          },
+          {
+            "home": 25,
+            "away": 18
+          },
+          {
+            "home": 25,
+            "away": 13
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 25,
-          "away": 27,
-          "status": "completed",
-          "observedAt": "2026-11-21T06:44:07+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=37&gcode=001&hcode=1002&acode=1008&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 20,
-          "status": "completed",
-          "observedAt": "2026-11-21T06:44:07+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=37&gcode=001&hcode=1002&acode=1008&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 18,
-          "status": "completed",
-          "observedAt": "2026-11-21T06:44:07+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=37&gcode=001&hcode=1002&acode=1008&page=0&size=1"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-020",
@@ -3081,6 +3075,27 @@
       {
         "rank": 2,
         "team": {
+          "code": "SFB",
+          "name": "삼성화재",
+          "fullName": "삼성화재",
+          "en": "SFB"
+        },
+        "poolId": "LEAGUE",
+        "games": 6,
+        "wins": 4,
+        "losses": 2,
+        "points": 12,
+        "setWins": 14,
+        "setLosses": 9,
+        "pointsFor": 582,
+        "pointsAgainst": 536,
+        "setRatio": "1.556",
+        "pointRatio": "1.086",
+        "statusLabel": "2위"
+      },
+      {
+        "rank": 3,
+        "team": {
           "code": "HDC",
           "name": "현대캐피탈",
           "fullName": "현대캐피탈",
@@ -3097,27 +3112,6 @@
         "pointsAgainst": 502,
         "setRatio": "1.444",
         "pointRatio": "1.058",
-        "statusLabel": "2위"
-      },
-      {
-        "rank": 3,
-        "team": {
-          "code": "SFB",
-          "name": "삼성화재",
-          "fullName": "삼성화재",
-          "en": "SFB"
-        },
-        "poolId": "LEAGUE",
-        "games": 5,
-        "wins": 3,
-        "losses": 2,
-        "points": 9,
-        "setWins": 11,
-        "setLosses": 8,
-        "pointsFor": 482,
-        "pointsAgainst": 458,
-        "setRatio": "1.375",
-        "pointRatio": "1.052",
         "statusLabel": "3위"
       },
       {
@@ -3171,16 +3165,16 @@
           "en": "OKF"
         },
         "poolId": "LEAGUE",
-        "games": 4,
+        "games": 5,
         "wins": 1,
-        "losses": 3,
+        "losses": 4,
         "points": 4,
-        "setWins": 7,
-        "setLosses": 10,
-        "pointsFor": 373,
-        "pointsAgainst": 392,
-        "setRatio": "0.700",
-        "pointRatio": "0.952",
+        "setWins": 8,
+        "setLosses": 13,
+        "pointsFor": 451,
+        "pointsAgainst": 492,
+        "setRatio": "0.615",
+        "pointRatio": "0.917",
         "statusLabel": "6위"
       },
       {
@@ -3273,14 +3267,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 18/126경기 종료 · 2026-11-21 15:44 KST 반영",
-  "updatedAt": "2026-11-21T06:44:07+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 19/126경기 종료 · 2026-11-21 16:19 KST 반영",
+  "updatedAt": "2026-11-21T07:19:19+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 18,
+    "completedMatches": 19,
     "postseason": {
       "matched": 0,
       "completed": 0,
