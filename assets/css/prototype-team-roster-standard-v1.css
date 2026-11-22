@@ -63,3 +63,24 @@
  .kvl-roster-standard-prototype.is-pro .kvlrv2-height{grid-area:height;justify-self:end;font-size:11px}
  .kvl-roster-standard-prototype.is-international .kvl-roster-kpis{padding:0;margin:10px 0 12px}
 }
+
+/* International bilingual name readability */
+.kvl-roster-standard-prototype.is-international .kvl-unified-name strong{
+  font-size:14px;
+  line-height:1.35;
+  color:#173a59;
+  font-weight:850;
+}
+.kvl-roster-standard-prototype.is-international .kvl-unified-name small{
+  display:block;
+  margin-top:3px;
+  font-size:12px;
+  line-height:1.35;
+  color:#526f86;
+  font-weight:700;
+  letter-spacing:-.01em;
+}
+@media(max-width:640px){
+  .kvl-roster-standard-prototype.is-international .kvl-unified-name strong{font-size:13.5px}
+  .kvl-roster-standard-prototype.is-international .kvl-unified-name small{font-size:11.5px;color:#4d6a82}
+}
