@@ -105,9 +105,11 @@
  .kvl-roster-standard-prototype.is-international .kvl-unified-height,
  .kvl-roster-standard-prototype.is-international .kvl-unified-club,
  .kvl-roster-standard-prototype.is-international .kvl-unified-volleybox,
- .kvl-roster-standard-prototype.is-international .kvl-proto-club-team,
- .kvl-roster-standard-prototype.is-international .kvl-proto-club-meta{
+ .kvl-roster-standard-prototype.is-international .kvl-proto-club-team{
   font-size:17px!important;line-height:1.45!important
+ }
+ .kvl-roster-standard-prototype.is-international .kvl-proto-club-meta{
+  font-size:15px!important;line-height:1.45!important
  }
  .kvl-roster-standard-prototype.is-international .kvl-unified-name strong{font-weight:800}
  .kvl-roster-standard-prototype.is-international .kvl-unified-name small{
@@ -119,9 +121,11 @@
  .kvl-roster-standard-prototype.is-international .kvl-unified-name small,
  .kvl-roster-standard-prototype.is-international .kvl-unified-club,
  .kvl-roster-standard-prototype.is-international .kvl-unified-volleybox,
- .kvl-roster-standard-prototype.is-international .kvl-proto-club-team,
- .kvl-roster-standard-prototype.is-international .kvl-proto-club-meta{
+ .kvl-roster-standard-prototype.is-international .kvl-proto-club-team{
   font-size:11px!important;line-height:1.45!important
+ }
+ .kvl-roster-standard-prototype.is-international .kvl-proto-club-meta{
+  font-size:9px!important;line-height:1.45!important
  }
  .kvl-proto-league-flag{width:18px;max-height:14px}
 }
