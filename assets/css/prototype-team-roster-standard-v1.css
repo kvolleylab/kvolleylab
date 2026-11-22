@@ -129,3 +129,29 @@
  }
  .kvl-proto-league-flag{width:18px;max-height:14px}
 }
+
+/* International club flag placement + safe wrapping v3 */
+.kvl-roster-standard-prototype.is-international .kvl-proto-club-teamline{
+ display:flex;align-items:center;gap:7px;min-width:0;max-width:100%
+}
+.kvl-roster-standard-prototype.is-international .kvl-proto-club-team{
+ min-width:0;overflow-wrap:normal;word-break:keep-all
+}
+.kvl-roster-standard-prototype.is-international .kvl-proto-league-flag{
+ flex:none
+}
+.kvl-roster-standard-prototype.is-international .kvl-proto-club-meta{
+ display:flex;align-items:center;flex-wrap:wrap;gap:0 5px;min-width:0;max-width:100%;
+ overflow-wrap:normal;word-break:keep-all
+}
+.kvl-roster-standard-prototype.is-international .kvl-proto-country,
+.kvl-roster-standard-prototype.is-international .kvl-proto-league{
+ white-space:nowrap;word-break:keep-all;overflow-wrap:normal
+}
+.kvl-roster-standard-prototype.is-international .kvl-proto-separator{
+ flex:none;white-space:nowrap
+}
+@media(max-width:820px){
+ .kvl-roster-standard-prototype.is-international .kvl-proto-club-teamline{gap:5px}
+ .kvl-roster-standard-prototype.is-international .kvl-proto-club-meta{gap:0 4px}
+}
