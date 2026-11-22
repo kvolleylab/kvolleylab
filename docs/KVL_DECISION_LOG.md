@@ -883,3 +883,12 @@ Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 남자 NORCECA는 미국이 대륙선수권 우승, 쿠바가 별도 결정전 출전권 확보다. 개최국 미국과 대륙 배정 1장을 중복 계산하지 않는다. 여자 NORCECA도 우승과 별도 결정전 결과를 독립 필드·출처로 보존한다. FIVB 12건 근거의 결과 JSON을 요약·기존 대륙 허브·상세가 공동 참조한다. 종료 대회의 ‘발표 대기’ 문구는 정정하되 미수록 로스터/경기 DB를 완료 또는 불참으로 간주하지 않는다. 기존 ID, 62개 역사 기록, 하단 디자인/필터/접기·펼치기, 2032 규정 미발표 처리, 기존 URL과 메뉴를 보존한다. 새 HERO·새 대회 페이지·자동화는 추가하지 않는다.
 
 Base `6f1d6bf6cd2975ac6d9fa68912e8318b36cc5cd3`; branch `feature/continental-winners-inline-v1`. 승인 시안 commit `9235092ecc63a704c5354f753ef36a45954ac1e2`. Node 25/25, PC·모바일 390px, 남녀 이동/복귀와 기존 허브 연결 확인. 병합·Pages·운영 확인 전까지 DEPLOYED로 표시하지 않으며 최종 증거는 PR에 기록한다. [검증·한계·복구](validation/continental-winners-inline-v1.md).
+
+
+## 2026-11-22 · 팀 찾기 선수명단 공통 규격 운영 반영 승인
+
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / STATIC QA PASSED / NOT YET DEPLOYED. 사용자는 현재 운영 중인 `teams.html`의 팀 카드·분류·`선수명단 보기` 위치와 디자인을 유지하고, 펼쳐지는 선수명단 영역만 공통 규격으로 정리하는 시안을 승인해 “홈페이지에 반영하자”고 지시했다.
+
+공통 요약은 선수 인원·평균 신장·관심선수·메모선수 4개다. 프로는 KOVO 공시 자동 갱신 현재명단을 그대로 사용하며 빠른 목록을 `NO. / 선수명 / POS / 생년월일 / 신장`으로 통일한다. 국제는 목록에서 한글 선수명을 우선하고, 소속팀·국가·리그도 검증된 한국어 표시명을 우선한다. 국기는 소속팀명 옆, 아래 줄은 `국가 · 리그 (1부/2부)`이며 의미 단위 중간 줄바꿈을 금지한다. 예시는 `파도바 🇮🇹 / 이탈리아 · 슈퍼레가 (1부)`다. 국제 목록의 VB→와 참가이력은 유지하고, 기존 선수 상세의 영문 선수명과 원문 팀·리그 정보는 보존한다. 국제 대회카드의 내부 `원본: data/...` 경로는 사용자 화면에서 숨기되 데이터 근거는 삭제하지 않는다.
+
+관심·메모는 Team Finder에 편집 동선을 추가하지 않고 기존 선수 페이지 개인기록을 읽기 전용으로 집계한다. 로그인하지 않은 경우 `—`, 로그인 계정은 해당 명단의 연결된 KVL Player ID 기준 실제 관심선수/메모선수 수를 표시한다. Base `2022d21e8ff5e4a0d235bbc8a286de4c361462bc`; branch `feature/team-roster-standard-v1-20261122`. 기존 대회 페이지 렌더러와 자동화 데이터는 수정하지 않는다. [검증 기록](validation/team-roster-standard-production-v1-20261122.md).
