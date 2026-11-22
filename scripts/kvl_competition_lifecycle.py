@@ -336,6 +336,41 @@ def hashed_json(root, reference, archive_directory):
     return read_json(path)
 
 
+def require_complete_publication_diagnostics(receipt, genders):
+    """Validate optional runtime diagnostics before dropping them from archives.
+
+    A preserved division or missing completed-set points is useful live output,
+    but never evidence of a fully verified season closeout. Older full receipts
+    remain valid without these optional runtime fields.
+    """
+    require(isinstance(receipt, dict), "ARCHIVE_RECEIPT_FIELDS_INVALID")
+    missing = receipt.get("incomplete_live_points", [])
+    require(isinstance(missing, list) and not missing, "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
+    isolation_fields = {"verified_divisions", "held_divisions", "division_failures", "division_observed_at"}
+    if isolation_fields & set(receipt):
+        require(isolation_fields <= set(receipt), "ARCHIVE_RECEIPT_FIELDS_INVALID")
+        verified, held = receipt["verified_divisions"], receipt["held_divisions"]
+        failures, observations = receipt["division_failures"], receipt["division_observed_at"]
+        require(isinstance(verified, list) and all(type(g) is str for g in verified)
+                and len(verified) == len(genders) and set(verified) == genders
+                and isinstance(held, list) and not held
+                and isinstance(failures, dict) and not failures,
+                "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
+        require(isinstance(observations, dict) and set(observations) == genders,
+                "ARCHIVE_RECEIPT_FIELDS_INVALID")
+        checked_at = timestamp(receipt.get("checked_at"))
+        require(all(timestamp(value) <= checked_at for value in observations.values()),
+                "ARCHIVE_RECEIPT_TIME_INVALID")
+    if "candidate_ui" in receipt:
+        require(receipt["candidate_ui"] == {
+            "status": "PASS", "scope": "exact_publication_candidate_dom_not_live_browser"},
+            "ARCHIVE_RECEIPT_FIELDS_INVALID")
+    gate = receipt.get("publication_gate")
+    require(isinstance(gate, dict), "ARCHIVE_RECEIPT_FIELDS_INVALID")
+    preserved = gate.get("preserved_unobserved_files", [])
+    require(isinstance(preserved, list) and not preserved, "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
+
+
 def verify_archive(root, policy, divisions, now):
     """A manifest is accepted only with final data and hashed verification receipts.
 
@@ -389,6 +424,7 @@ def verify_archive(root, policy, divisions, now):
     receipts = manifest.get("receipts", {})
     require(isinstance(receipts, dict), "ARCHIVE_RECEIPTS_REQUIRED")
     publication = hashed_json(root, receipts.get("publication"), archive_directory)
+    require_complete_publication_diagnostics(publication, {c["gender"] for c in policy["competitions"]})
     require(publication.get("season") == policy["season"] and publication.get("status") == "READY"
             and publication.get("mode") == "MASTER_VERIFIED_LOCAL_DATA_READY"
             and publication.get("master_checked") is True and publication.get("master_readback_verified") is True,
@@ -537,7 +573,9 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
             "publication": {"schema_version", "season", "checked_at", "status", "mode", "source_coverage", "divisions",
                             "changed_files", "master_checked", "master_changed_cells", "production_written", "master_written",
                             "master_readback_verified", "quality_audit", "publication_gate", "lifecycle",
-                            "postseason_source_coverage", "live_points_checks"},
+                            "postseason_source_coverage", "live_points_checks", "incomplete_live_points",
+                            "verified_divisions", "held_divisions", "division_failures", "division_observed_at",
+                            "candidate_ui"},
             "deployment": {"status", "expected_sha", "built_sha", "build_requested", "verified_files", "verified_at",
                            "verified_file_sha256", "verified_payload_sha256"},
         }
@@ -548,6 +586,7 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
             # verifier consumes. Optional diagnostics cannot smuggle raw/private
             # MASTER material into the public snapshot through nested objects.
             if label == "publication":
+                require_complete_publication_diagnostics(original_receipt, {c["gender"] for c in policy["competitions"]})
                 gate = original_receipt.get("publication_gate")
                 groups = original_receipt.get("divisions")
                 require(original_receipt.get("schema_version") == 1 and isinstance(gate, dict)

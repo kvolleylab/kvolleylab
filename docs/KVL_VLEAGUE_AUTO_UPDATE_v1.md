@@ -1,5 +1,14 @@
 # V-리그 자동 업데이트 v1
 
+2026-11-22 재시도·성별 장애 격리 보완은
+[검증 및 인계](validation/vleague-resilience-v1-20261122.md)에 기록한다.
+아래의 기존 전체 중단 설명 중 **공식 출처/후보 검증 오류**는 새 옵션
+`--isolate-divisions`에서 해당 부문만 보류하도록 개선한다. MASTER·인증·보안·
+승인·최신 main·배포 검증은 계속 전체 차단 조건이다. 보류된 파일은 새 관측으로
+표시하거나 fresh VERIFIED 영수증에 포함하지 않는다. 검증된 부문만 게시했거나
+종료세트 점수가 일부 미확인인 실행은 Pages 확인 뒤에도 실패 상태와 알림을 남긴다.
+이 문서 변경 자체는 운영 활성화·실경기 복구 완료를 의미하지 않는다.
+
 작성일: 2026-10-31. 2026-11-01 사용자 운영 승인. 상태: **기존 v1 운영 연결·최초 수동 MASTER 반영·공개 게시 검증 완료**. 설치: [PR #213](https://github.com/kvolleylab/kvolleylab/pull/213), 후속 수정: [PR #215](https://github.com/kvolleylab/kvolleylab/pull/215). 최초 실제 성공: [Actions #7](https://github.com/kvolleylab/kvolleylab/actions/runs/41305975071). 예약 실행의 첫 후속 성공은 이 수동 실행의 성공과 별도로 확인한다. [운영 전환 기록](validation/vleague-activation_v1.md).
 
 2026-11-02 사용자가 PR #227 병합과 챔피언결정전까지의 자동화 확장을 승인했다. 공식 일정·규정·지원 범위와 실제 병합/실행 증거는 [포스트시즌 보완 기록](validation/vleague-postseason-automation-20261102.md)을 따른다. 운영 전 준비 중이던 이전 문서 상태는 최초 성공 기록으로 대체한다.
