@@ -155,6 +155,40 @@ async function check(browser,gender,code,player,linked,width){
    overflow:css.width-css.viewport,status:'PASS',screenshot:path.basename(snap)});
  }finally{await page.close()}
 }
+async function verifyVLeagueTodayFirst(browser,gender,width){
+ const page=await pageFor(browser,width,width<=660?844:900);
+ const errors=[];page.on('pageerror',error=>errors.push(error.message));
+ try{
+  const url=BASE+'/competition-engine.html?competition=v-league-'+gender+'-2026-27&view=overview&release='+encodeURIComponent(sha);
+  const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
+  assert.ok(response?.ok(),'V-League overview must be published for '+gender);
+  await page.locator('.dv2-overview-matches .dv2-division-matches').first().waitFor({timeout:45000});
+  await page.waitForFunction(()=>{
+   const all=[...document.querySelectorAll('.dv2-division-matches .dv2-summary-body')];
+   return all.length===2&&all.every(x=>x.getAttribute('aria-busy')==='false');
+  },{timeout:45000});
+  const metrics=await page.evaluate(()=>{
+   const section=document.querySelector('.dv2-overview-matches'),h=section?.querySelector('#dv2-overview-matches-title');
+   const cards=[...section.querySelectorAll('[data-summary-gender]')];
+   return {heading:h?.textContent,counts:cards.length,divisions:cards.map(c=>({
+    gender:c.dataset.summaryGender,
+    order:[...c.querySelectorAll('.dv2-summary-slot')].map(x=>x.dataset.kind),
+    hasLoading:c.querySelector('.dv2-summary-loading')!==null
+   })),viewport:innerWidth,width:document.documentElement.scrollWidth};
+  });
+  assert.equal(metrics.heading,'오늘/다음 경기 · 최근 결과');
+  assert.equal(metrics.counts,2,'Men and women summary columns must both render');
+  for(const card of metrics.divisions){
+   assert.deepEqual(card.order,['next','recent'],'Actual '+card.gender+' overview must put today/next before recent');
+   assert.equal(card.hasLoading,false,'Do not report success before the latest records render');
+  }
+  assert.ok(metrics.width<=metrics.viewport+2);
+  assert.deepEqual(errors,[],'V-League overview runtime errors');
+  const file=path.join(OUT,'kvl-teams-live-vleague-summary-'+gender+'-'+width+'.png');
+  await page.screenshot({path:file,fullPage:true});
+  result.views.push({type:'vleague-summary',gender,width,order:metrics.divisions,status:'PASS',screenshot:path.basename(file)});
+ }finally{await page.close()}
+}
 async function main(){
  try{
   await ready();
@@ -167,6 +201,9 @@ async function main(){
    await check(browser,'men','OKF','윤경',true,390);
    await check(browser,'women','RSP','김아중',false,1440);
    await check(browser,'women','RSP','김아중',false,390);
+   // Verify both operational V-League division pages, without altering KOVO live data or the member gate.
+   await verifyVLeagueTodayFirst(browser,'men',1440);
+   await verifyVLeagueTodayFirst(browser,'women',390);
   }finally{await browser.close()}
   result.status='PASS';
   result.notes.push('Real HTTPS page and KOVO JSON loaded; auth overlay disabled only in isolated test browser.');
