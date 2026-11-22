@@ -104,12 +104,12 @@ async function testApp(){
   assert.match(await ishikawa.innerText(),/Ziraat Bankkart Ankara/);
   assert.equal(await ishikawa.locator('.kvl-unified-volleybox').count(),1);
   assert.equal(await ishikawa.locator('.kvl-unified-volleybox').innerText(),'VB->');
-  assert.equal((await ishikawa.locator('.kvl-roster-club-meta').innerText()).trim(),'튀르키예 · 에펠레르 리기 (1부)');
+  assert.equal((await ishikawa.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),'튀르키예 · 에펠레르 리기 (1부)');
   assert.match(await ishikawa.locator('.kvl-roster-league-flag').getAttribute('src'),/\/tr\.svg$/);
   assert.equal(await ishikawa.locator('.kvl-roster-club-meta').getAttribute('title'),'Türkiye · SMS Grup Efeler Ligi');
   assert.doesNotMatch(await ishikawa.locator('.kvl-unified-name').innerText(),/Yuki Ishikawa/,'Quick roster list is Korean-first');
   const arai=page.locator('.kvl-unified-row').filter({hasText:'아라이 유다이'}).first();
-  assert.match((await arai.locator('.kvl-roster-club-meta').innerText()).trim(),/^일본 · /);
+  assert.match((await arai.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^일본 · /);
   const unknownClub=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
   assert.match(await unknownClub.locator('.kvl-unified-club').innerText(),/미확인/);
   assert.match(await unknownClub.locator('.kvl-roster-club-team').innerText(),/미확인/);
