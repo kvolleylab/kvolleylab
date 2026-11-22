@@ -72,9 +72,9 @@
           "la28-pdf"
         ],
         "link": {
-          "label": "랭킹 경로 보기",
+          "label": "배정 기준·현황 보기",
           "url": "fivb-world-ranking-la28-2028.html",
-          "checkedAt": "2026-11-17"
+          "checkedAt": "2026-11-22"
         }
       }
     ],
@@ -344,5 +344,11 @@
         "la28-games-dates"
       ]
     }
+  },
+  "rankingOverview": {
+    "cycleId": "la2028",
+    "year": 2028,
+    "dataUrl": "data/olympics/la2028-ranking-v1.json",
+    "fallbackUrl": "fivb-world-ranking-la28-2028.html"
   }
 }

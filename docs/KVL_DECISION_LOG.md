@@ -899,3 +899,10 @@ Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / STATIC QA PASSED / NO
 Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자가 “운영반영해”로 PR #365의 월드컵 개선분을 승인하고 개최국 1장도 KVL 안에서 간단히 안내하도록 요청했다. 월드컵 남녀 대회 개요·참가국·출전권 3장·기존 상세 URL 연결을 운영에 반영한다. 개최국 카드에서는 미국 남녀 자동 출전 각 1장, 혼다 센터(애너하임), 배구 기간과 올림픽 개·폐막 기간을 구분해 펼친다. LA28·Volleyball World·IOC 공식 근거와 확인일을 주기 JSON에 저장한다. 역사 62개·필터·대륙선수권 우승국/출전국·기존 URL·공통 메뉴를 보존하며 2032 미확정 주기에 LA28 숫자나 개최국 정보가 섞이지 않도록 한다.
 
 Base `fd090c3638fdd46f8a25bb5fd82c95420ed48cc7`; branch `codex/world-cup-roadmap-v1`. Node 38/38, PC·모바일 390/360px, 기존 필터·연도 접기와 2032 분리 확인. Drive MASTER는 읽기 대조만 수행했으며 정식 대회 Engine/MASTER 등록·자동화는 별도다. 병합·Pages·운영 검증 전까지 배포 완료로 표시하지 않고 PR #365에 최종 증거를 기록한다. [검증·출처·복구](validation/olympic-world-cup-host-release-v1.md).
+
+
+## 2026-11-22 · 세계랭킹 출전권 간편 펼침
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 앞선 운영 반영 지시에 이어 사용자가 2028 FIVB 세계랭킹도 같은 방식으로 만들도록 요청했다. 네 번째 출전권 카드에서 남녀 기준일, 대륙 대표성 우선 → 미확보국 랭킹순, 아직 미확정인 3장, 대한민국과 이미 확보한 국가를 확인한다. 기존 상세 URL은 공통 데이터를 쓰며 성별을 유지해 로드맵으로 복귀한다. 남자 기준일 2028-06-18, 여자 2028-06-11 잠정은 IOC/FIVB 2026-05-12 규정에 근거한다. 현재 순위·포인트·예상 출전국을 만들지 않는다.
+
+Base `72cf2830536e5d73301f515201d36fa1b21acdfd`; branch `feature/world-ranking-inline-v1`. Node 46/46, PC·모바일 390/360px, 4개 역사 필터·연도 접기·2032 분리 검증. 역사 62개와 마크업·디자인, 기존 개최국/대륙/월드컵 데이터 및 공통 메뉴를 보존한다. Drive MASTER는 읽기 대조했으며 자동화·새 대회 등록은 이번 범위가 아니다. 병합·Pages·운영 검증은 PR에서 기록한다. [검증·출처·한계·복구](validation/world-ranking-inline-v1.md).
