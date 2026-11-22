@@ -62,3 +62,11 @@ node --test tests/national-history-model-v1.test.mjs tests/olympic-cycle-v1.test
 
 배포 후 Pages 성공과 실제 홈페이지 링크를 확인하고 PR에 merge SHA, Pages run, 실화면 결과를 기록한다. 복구는 이 운영 연결 커밋만 되돌린다. 다른 작업의 대표팀 카드 색상, Draft Hub, MASTER·자동화 변경은 되돌리지 않는다.
 
+
+## 2026-11-23 · 대회 상세 표시 기준
+
+사용자가 승인한 간소화 시안은 펼친 대회 영역에만 적용한다. 접힌 대회 행·타임라인·연도·필터·원본 역사 DB와 출전권 모듈은 유지한다. 확인된 일정·핵심 경기·출전 경로를 최대 3행으로 표시하고 영문명·검증 정보·세트 점수·공식 근거는 ‘세부 기록·출처’ 안에 원본 그대로 보존한다. 예선 미참가와 실제 탈락, 월드컵 참가 확정과 올림픽 출전권을 구분한다. 미확인 경위는 핵심 요약에서도 드러내고 불필요한 빈 항목은 만들지 않는다.
+
+표현 전용 `data/national/men-senior-history-summaries-v1.json`은 새로운 결과 DB가 아니다. `basis`의 참조 원본 필드가 현재 역사와 일치할 때만 승인된 요약을 쓴다. 원본 변경 시 요약을 검토하여 갱신하며 일치하지 않으면 현재 구조화된 경기/경로 및 전체 원본 상세로 돌아간다. 원본 데이터의 사실 확인일을 표현 검토일로 바꾸지 않는다. `national-history-detail-v1.js`는 기존 렌더러의 원본 상세 노드를 닫힌 하위 영역으로 옮기며 필터 재렌더링도 처리한다.
+
+표시 모듈 회귀 검증: `node --test tests/national-history-detail-v1.test.mjs`. 기존 역사·주기 보존 테스트와 함께 실행한다. 모바일 390/360px에서 출처를 펼친 상태까지 확인하고 기록 원본과 출처를 임의로 삭제하지 않는다. [검증과 전체 변경 범위](validation/national-history-simple-detail-v1.md).

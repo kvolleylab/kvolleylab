@@ -1,0 +1,36 @@
+/* Approved compact disclosure only; original timeline rows, markers and filters remain intact. */
+.roadmap .event-detail-v2{padding:12px 18px 10px;border-top:1px solid #e1e7ef;background:#fff;border-radius:0 0 13px 13px;color:#294660;font-size:14px;line-height:1.65}
+.roadmap .compact-date{margin:0 0 8px;color:#738197;font-size:12px}
+.roadmap .compact-notice{margin:0 0 8px;color:#826526;font-size:12px}
+.roadmap .compact-facts{margin:0}
+.roadmap .compact-fact{display:grid;grid-template-columns:126px minmax(0,1fr);gap:14px;padding:7px 0;border-bottom:1px solid #e7ebf0;align-items:baseline}
+.roadmap .compact-fact dt,.roadmap .compact-fact dd{margin:0;min-width:0;word-break:keep-all;overflow-wrap:anywhere}
+.roadmap .compact-fact dt{color:#5c6f84;font-weight:400}
+.roadmap .compact-match{display:flex;flex-wrap:wrap;gap:5px 8px;align-items:baseline;font-weight:600;color:#193b60}
+.roadmap .compact-score{font-size:16px;white-space:nowrap;letter-spacing:.2px}
+.roadmap .compact-score.is-loss{color:#aa5d5d}
+.roadmap .compact-note{margin:0 0 6px;color:#738197;font-size:12px}
+.roadmap .compact-actions{position:relative;margin-top:9px;min-height:40px}
+.roadmap .compact-record-link{position:absolute;left:0;top:0;display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:5px 14px;border:1px solid #294660;border-radius:7px;text-decoration:none;font-size:13px;font-weight:600;color:#193b60;background:#fff}
+.roadmap .compact-record-link:hover{background:#fff8e9;border-color:#bb8d2b;color:#89631e}
+.roadmap .compact-more>summary{display:flex;align-items:center;justify-content:flex-end;gap:9px;min-height:40px;list-style:none;cursor:pointer;color:#637a94;font-size:13px;padding:5px 0}
+.roadmap .compact-more>summary::-webkit-details-marker{display:none}
+.roadmap .has-record .compact-more>summary{margin-left:160px}
+.roadmap .compact-more>summary:after{content:'';width:7px;height:7px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg);margin:0 3px 4px}
+.roadmap .compact-more[open]>summary:after{transform:rotate(225deg);margin-bottom:0}
+.roadmap .compact-more>.event-detail{padding:14px 0 5px;border-radius:0;border-top:1px solid #e1e7ef;background:#fff;font-size:13px}
+.roadmap .compact-more .official-name{font-size:12px}
+.roadmap .compact-more .detail-grid dd,.roadmap .compact-more .detail-notes,.roadmap .compact-more .detail-outcomes,.roadmap .compact-more .detail-sources a{font-size:13px}
+.roadmap .compact-related{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:12px;font-size:13px}
+.roadmap .compact-related a{text-underline-offset:3px}
+@media(max-width:640px){
+ .roadmap .event-detail-v2{padding:11px 12px 9px}
+ .roadmap .compact-fact{grid-template-columns:76px minmax(0,1fr);gap:8px;padding:8px 0}
+ .roadmap .compact-match{gap:3px 6px}
+ .roadmap .compact-date,.roadmap .compact-note,.roadmap .compact-notice{font-size:12px}
+ .roadmap .compact-record-link{position:static;display:flex;width:100%;min-height:42px;font-size:14px}
+ .roadmap .has-record .compact-more>summary{margin-left:0}
+ .roadmap .compact-more>summary{min-height:42px;font-size:13px}
+ .roadmap .compact-more .detail-grid{grid-template-columns:1fr;gap:8px}
+ .roadmap .compact-more .match-note{overflow-wrap:anywhere}
+}
