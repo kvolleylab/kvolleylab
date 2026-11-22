@@ -149,7 +149,7 @@ function summaryGame(d,m,kind,today){
 }
 function summaryDivision(d){
  const picked=selectOverviewMatches(d);
- return summaryGame(d,picked.recent,'recent',picked.today)+summaryGame(d,picked.next,'next',picked.today);
+ return summaryGame(d,picked.next,'next',picked.today)+summaryGame(d,picked.recent,'recent',picked.today);
 }
 async function loadSummaryDivision(d,gender){
  const contract=window.KVLCompetitionConfigV2,api=window.KVLCompetitionDataV2,page=window.KVL_COMPETITION_PAGE_V2||{};
@@ -167,7 +167,7 @@ async function loadSummaryDivision(d,gender){
 function overviewMatches(d,before){
  if(d.structure?.overviewMatches?.mode!=='recent-next'||d.structure.presentationCategory!=='pro-league')return;
  const section=document.createElement('section');section.className='dv2-overview-matches kvl1180-view';section.dataset.view='overview';section.setAttribute('aria-labelledby','dv2-overview-matches-title');
- section.innerHTML='<div class="dv2-heading"><h2 id="dv2-overview-matches-title">최근 결과 · 오늘/다음 경기</h2></div><div class="dv2-division-match-grid"></div><p class="dv2-summary-note">이번 시즌 공식 기록 반영 기준 · 실시간 중계가 아닙니다.</p>';
+ section.innerHTML='<div class="dv2-heading"><h2 id="dv2-overview-matches-title">오늘/다음 경기 · 최근 결과</h2></div><div class="dv2-division-match-grid"></div><p class="dv2-summary-note">이번 시즌 공식 기록 반영 기준 · 실시간 중계가 아닙니다.</p>';
  before.before(section);
  const genders=d.gender==='women'?['women','men']:['men','women'];
  matchesReady=Promise.all(genders.map(async gender=>{
