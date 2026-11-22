@@ -48,8 +48,11 @@
   const code=iso2(country),countryText=countryName(country),tier=leagueTier(league,country);
   const flag=code?'<img class="kvl-proto-league-flag" src="assets/images/flags/4x3/'+esc(code)+'.svg" alt="" loading="lazy">':'';
   const leagueText=league?league.toUpperCase()+(tier?' ('+tier+')':''):'';
-  return '<span class="kvl-proto-club-team">'+esc(p?.club||'미확인')+'</span>'+
-    '<span class="kvl-proto-club-meta">'+flag+'<span>'+esc(countryText)+(leagueText?' · '+esc(leagueText):'')+'</span></span>';
+  return '<span class="kvl-proto-club-teamline"><span class="kvl-proto-club-team">'+esc(p?.club||'미확인')+'</span>'+flag+'</span>'+
+    '<span class="kvl-proto-club-meta">'+
+      '<span class="kvl-proto-country">'+esc(countryText)+'</span>'+
+      (leagueText?'<span class="kvl-proto-separator" aria-hidden="true">·</span><span class="kvl-proto-league">'+esc(leagueText)+'</span>':'')+
+    '</span>';
  };
  const fmtDate=value=>{
   const raw=String(value||'').trim();
