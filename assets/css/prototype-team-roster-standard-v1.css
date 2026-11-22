@@ -1,0 +1,65 @@
+/* Branch-only roster standard prototype v1 */
+.kvl-prototype-banner{
+ position:sticky;top:0;z-index:9999;
+ display:flex;align-items:center;justify-content:center;gap:8px;
+ min-height:34px;padding:7px 14px;
+ background:#fff4d8;border-bottom:1px solid #e2c472;
+ color:#745514;font:800 11px/1.4 Arial,'Malgun Gothic',sans-serif;
+}
+.kvl-roster-kpis{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;
+ padding:14px 15px 0;
+}
+.kvl-roster-kpis article{
+ position:relative;min-width:0;min-height:72px;
+ display:flex;flex-direction:column;justify-content:center;
+ padding:12px 14px;border:1px solid #dfe7ed;border-radius:11px;
+ background:#fff;
+}
+.kvl-roster-kpis span{font-size:10px;font-weight:800;color:#7890a2}
+.kvl-roster-kpis strong{margin-top:5px;font-size:21px;line-height:1.15;color:#173c59}
+.kvl-roster-kpis small{position:absolute;right:10px;bottom:9px;font-size:8px;color:#9c8a64}
+.kvl-roster-kpis .is-private{background:#fffdf8;border-color:#eadfca}
+.kvl-roster-standard-prototype.is-pro .kvlrv2-columns{
+ grid-template-columns:minmax(0,1.95fr) minmax(250px,.86fr);
+}
+.kvl-roster-standard-prototype.is-pro .kvlrv2-head,
+.kvl-roster-standard-prototype.is-pro .kvlrv2-row{
+ grid-template-columns:44px minmax(110px,1fr) 55px 92px 64px;
+ gap:9px;
+}
+.kvl-roster-standard-prototype .kvlrv2-dob,
+.kvl-roster-standard-prototype .kvlrv2-pos,
+.kvl-roster-standard-prototype .kvlrv2-height{
+ white-space:nowrap;
+}
+.kvl-roster-standard-prototype .kvlrv2-dob{font-variant-numeric:tabular-nums;color:#526f85}
+.kvl-roster-standard-prototype.is-international .kvl-roster-kpis{
+ padding:0 0 14px;
+ margin-top:14px;
+}
+.kvl-roster-standard-prototype.is-international .kvl-roster-kpis article{
+ background:#fff;
+}
+@media(max-width:920px){
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-columns{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+ .kvl-roster-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:10px 8px 0}
+ .kvl-roster-kpis article{min-height:65px;padding:10px 11px}
+ .kvl-roster-kpis strong{font-size:18px}
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-head{display:none}
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-row{
+  grid-template-columns:35px minmax(0,1fr) auto;
+  grid-template-areas:
+   "num name pos"
+   "num dob height";
+  gap:4px 8px;padding:10px 11px;min-height:67px;
+ }
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-number{grid-area:num;align-self:start;padding-top:2px}
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-name{grid-area:name}
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-pos{grid-area:pos;justify-self:end;font-weight:800;color:#315b7b}
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-dob{grid-area:dob;font-size:10px;color:#768b9b}
+ .kvl-roster-standard-prototype.is-pro .kvlrv2-height{grid-area:height;justify-self:end;font-size:11px}
+ .kvl-roster-standard-prototype.is-international .kvl-roster-kpis{padding:0;margin:10px 0 12px}
+}
