@@ -1,9 +1,20 @@
 {
   "version": "1.0",
   "season": "2026-27",
-  "updated_at": "2026-11-22",
+  "updated_at": "2026-11-23",
   "policy": "Current club is applied only when an identity-matched record has a public source and status CONFIRMED or REVIEWED. This registry supplements tournament snapshots; it never invents a club.",
   "players": {
+    "8087": {
+      "name_en": "Mohammad Reza Hazratpour",
+      "dob": "1999-03-31",
+      "club": "Paykan Tehran",
+      "leagueCountry": "Iran",
+      "leagueName": "Iranian Super League",
+      "status": "REVIEWED",
+      "as_of": "2026-11-23",
+      "source": "https://volleybox.net/mohammad-reza-hazratpour-p8087",
+      "source_kind": "current_team_roster_public_db"
+    },
     "12027": {
       "name_en": "Morteza Sharifi",
       "dob": "1999-05-27",
@@ -70,6 +81,17 @@
       "source": "https://volleybox.net/urmia-municipality-vc-t1827?season_id=127",
       "source_kind": "current_team_roster_public_db"
     },
+    "72377": {
+      "name_en": "Yousef Kazemi Poshtpari",
+      "dob": "2003-01-28",
+      "club": "Mes Rafsanjan",
+      "leagueCountry": "Iran",
+      "leagueName": "Iranian Super League",
+      "status": "REVIEWED",
+      "as_of": "2026-11-23",
+      "source": "https://volleybox.net/yousef-kazemi-p72377",
+      "source_kind": "current_team_roster_public_db"
+    },
     "72385": {
       "name_en": "Mobin Nasri Mastanabad",
       "dob": "2003-01-07",
@@ -80,6 +102,50 @@
       "as_of": "2026-11-22",
       "source": "https://en.volleyballworld.com/volleyball/competitions/svleague-men/players/182474",
       "source_kind": "official_competition_profile"
+    },
+    "105551": {
+      "name_en": "Seyed Matin Hosseini Tolouti",
+      "dob": "2005-09-26",
+      "club": "Sir Susa Scai Perugia",
+      "leagueCountry": "Italy",
+      "leagueName": "SuperLega",
+      "status": "CONFIRMED",
+      "as_of": "2026-11-23",
+      "source": "https://en.volleyballworld.com/volleyball/competitions/superlega/players/192835",
+      "source_kind": "official_competition_profile"
+    },
+    "155347": {
+      "name_en": "Ali Haghparast",
+      "dob": "2004-12-16",
+      "club": "Panionios Betsson",
+      "leagueCountry": "Greece",
+      "leagueName": "Volley League",
+      "status": "REVIEWED",
+      "as_of": "2026-11-23",
+      "source": "https://globalsportsarchive.com/people/volleyball/ali-haghparast/7924016/",
+      "source_kind": "current_match_report"
+    },
+    "223961": {
+      "name_en": "Shayan Mehrabi",
+      "dob": "2005-11-24",
+      "club": "Mehregan Noor",
+      "leagueCountry": "Iran",
+      "leagueName": "Iranian Super League",
+      "status": "REVIEWED",
+      "as_of": "2026-11-23",
+      "source": "https://volleybox.net/shayan-mehrabi-p223961",
+      "source_kind": "current_match_roster_public_db"
+    },
+    "224363": {
+      "name_en": "Mohammadnima Bateni",
+      "dob": "2007-11-09",
+      "club": "PGE Projekt Warszawa",
+      "leagueCountry": "Poland",
+      "leagueName": "TAURON Liga",
+      "status": "CONFIRMED",
+      "as_of": "2026-11-23",
+      "source": "https://www.tauronliga.pl/teams/tour/53/id/62/nocookies/1.html",
+      "source_kind": "official_league_team_roster"
     }
   }
 }
