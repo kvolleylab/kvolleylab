@@ -917,3 +917,10 @@ VNL 원본에서 `Reserve`로 명시된 선수는 통합명단에서 `VNL 예비
 국제 선수의 현재 소속 보강은 과거 대회명단을 수정하지 않고 별도 `data/international/player-club-registry-2026-27-v1.json` overlay로 관리한다. Volleybox ID와 가능한 경우 DOB를 대조하고, 공개 HTTPS 근거와 `CONFIRMED/REVIEWED` 상태가 있는 레코드만 적용한다. 초기 검증 배치는 이란 남자대표팀 7명이며 히로시마·풀라드 시르잔·허베이 바오딩·우르미아 등 현재 소속 근거를 추가했다. 이 7건의 보강은 전체 국제선수의 미확인 소속이 모두 해결됐다는 의미가 아니며, 근거가 없는 선수는 계속 미확인으로 유지한다.
 
 Base `9a51da092a2187b0cbb71ad678cdea349aab7b6a`; release branch `release2/international-country-roster-ux-v2-20261122`. 원본 89개 roster snapshot·Player ID·VB 링크·회원 접근정책·KOVO 자동화는 변경하지 않는다. [검증 기록](validation/international-country-roster-ux-v2-20261122.md).
+
+
+## 2026-11-23 · 국제 대표팀 현재 소속 2차 보완
+
+Status: USER REQUESTED / IMPLEMENTED / STATIC QA PASSED / NOT YET DEPLOYED. 사용자가 국제 국가 상세에서 소속팀 미확인 선수가 너무 많다고 지적했다. 국가 상세 UX 자체는 PR #397에서 이미 카드 전체 클릭, 통합명단 우선 진입, 연도 드롭다운, 중복 대회카드 제거, VNL 포함 대회 바로가기, `← 국가 목록`, `VNL 예비` 배지까지 운영 반영되어 있으므로 중복 수정하지 않는다.
+
+2차 데이터 배치에서는 이란 2026 통합명단의 현재 2026-27 소속을 공개 근거로 재확인해 Hazratpour→Paykan Tehran, Haghparast→Panionios Betsson, Yousef Kazemi→Mes Rafsanjan, Shayan Mehrabi→Mehregan Noor, Seyed Matin Hosseini→Sir Susa Scai Perugia, Mohammadnima Bateni→PGE Projekt Warszawa를 current-club registry에 추가한다. Bateni·Haghparast는 대회별 DOB/Volleybox 누락 때문에 동일 선수가 분리되던 신원도 보완한다. 동일 통합 알고리즘 기준 이란은 19개 선수 행 중 18개 소속 확인, Mohsen Delavari 1명만 미확인으로 남는다. 현재 소속 근거를 찾지 못한 선수는 추정하지 않는다. [검증 기록](validation/international-current-club-batch2-20261123.md).
