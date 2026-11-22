@@ -47,7 +47,7 @@
 |---|---|
 | `python -B -m unittest discover -s tests -p 'test_kovo_vleague_*.py'` | 282 PASS |
 | 기존 publisher 관련 Node 9개 파일 | 111 PASS, skip 0 |
-| lifecycle / 선수 현재값 workflow / 경기-선수 job 분리 | 각각 45 / 9 / 4 PASS |
+| lifecycle / 선수 현재값 workflow / 경기-선수 job 분리 | 각각 50 / 9 / 4 PASS |
 | 새 부문 격리 / workflow / source resilience 회귀 | 각각 18 / 16 / 14 PASS (위 Python 합계에 포함) |
 | 달력 분 단위 시각 회귀 | 11 PASS (위 Node 합계에 포함) |
 | 정확한 실제 게시 후보 DOM | 28 PASS: 기존 검사22 + 실제 후보6, skip 0 |
@@ -65,6 +65,17 @@ MASTER 수정 계획은4셀이나 실제 쓰기는 수행하지 않았다(`maste
 후보 DOM은1180/390/360px 검사 환경이며 실제 PC1440/모바일 브라우저가 아니다.
 합성 장애 주입과 MemorySheets write/readback은 동작 회귀 검사이며 실제 운영 쓰기나
 경기 중 연속 갱신 증거가 아니다. 이번 브랜치의 GitHub CI 결과는 PR에서 이어 기록한다.
+
+### PR 검사에서 발견한 보관 계약 호환성 보완
+
+[초기 PR CI45017893491](https://github.com/kvolleylab/kvolleylab/actions/runs/45017893491)에서
+Python282개는 통과했으나 lifecycle이 새 `incomplete_live_points=[]` 필드를 거부했다.
+최종 updater 보고서로 로컬에도 동일한44통과/1오류를 재현했고, 이전45개 통과 기록이
+최종 보고서 변경 전 결과였음을 확인했다. 새 runtime 진단을 엄격히 검증하되
+공개 archive에는 복사하지 않도록 보완했다. 양부문 전체 검증·누락0·보류0이어야
+보관 증거로 인정하며, 기존 MASTER·최종경기·순위·배포·hash 검증을 유지한다.
+실제 isolate 보고서 통합 및 partial/시간/타입/UI 진단 주입 거절 회귀를 추가해
+최종 lifecycle50개가 통과했다. 운영의 보관 상태나 자료를 변경하지 않았다.
 
 ## 운영 적용 및 복구
 

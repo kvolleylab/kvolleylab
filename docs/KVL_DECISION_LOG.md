@@ -16,6 +16,8 @@ Status: USER REQUESTED RESILIENCE / FEATURE BRANCH IMPLEMENTED / NOT DEPLOYED.
 검증된 승수는 있으나 종료세트 득점이 일부 미확인인 경우도 별도로 기록한다.
 부분 게시 뒤에는 Actions를 실패 상태로 남겨 기존 알림이 누락되지 않게 한다.
 실제 쓰기 후보에 대해 MASTER 변경 전에 DOM 검사를 수행한다.
+새 runtime 진단은 시즌 보관 입력에서 엄격히 검사하고 공개 archive에서는 제외한다.
+부문 보류·종료세트 누락이 있는 영수증은 정상 시즌 종료 증거로 승격하지 않는다.
 
 선수 MASTER/명단/ID, 국제대회/Cup, 화면 양식, Worker/cron, 비밀키는 변경하지 않는다.
 자세한 회귀·읽기 전용 실제 자료 대조·운영 승인과 다음 실경기 확인 항목은
