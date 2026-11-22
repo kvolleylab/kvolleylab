@@ -42,6 +42,8 @@ UPDATER_CODES = {
     "SourceError": "SOURCE_VALIDATION_FAILED", "UpdateError": "UPDATE_VALIDATION_FAILED",
     "StandingsError": "STANDINGS_VALIDATION_FAILED", "MasterError": "MASTER_SYNC_FAILED",
     "LifecycleError": "LIFECYCLE_VALIDATION_FAILED",
+    "PartialSourceError": "PARTIAL_SOURCE_FAILURE", "DivisionsUnavailable": "SOURCE_VALIDATION_FAILED",
+    "IncompleteLivePoints": "LIVE_POINTS_INCOMPLETE",
 }
 LIFECYCLE_CODES = {"LIFECYCLE_VALIDATION_FAILED", "UPDATE_WINDOW_CLOSED", "UPDATE_WINDOW_NOT_STARTED",
                    "VERIFIED_ARCHIVE", "SCHEDULE_OUTSIDE_REVIEWED_UPDATE_WINDOW"}
@@ -53,7 +55,7 @@ SAFE_CODES = {
     "NETWORK_ERROR", "RESPONSE_INVALID", "REDIRECT_BLOCKED", "RESPONSE_TOO_LARGE",
     "BUILD_FAILED", "BUILD_TIMEOUT", "SITE_NOT_VERIFIED", "BUILD_RESPONSE_INVALID",
     "SOURCE_VALIDATION_FAILED", "UPDATE_VALIDATION_FAILED", "STANDINGS_VALIDATION_FAILED",
-    "MASTER_SYNC_FAILED", "UPDATER_FAILED", "REPORT_INVALID", "RUN_URL_INVALID",
+    "MASTER_SYNC_FAILED", "UPDATER_FAILED", "REPORT_INVALID", "RUN_URL_INVALID", "PARTIAL_SOURCE_FAILURE", "LIVE_POINTS_INCOMPLETE",
     "ISSUE_LOOKUP_LIMIT", "DUPLICATE_TRACKING_ISSUES", "INVALID_WAIT_LIMIT",
 } | LIFECYCLE_CODES
 
@@ -402,6 +404,20 @@ def safe_failure(report, ops_report=None):
                   if type(group.get(key)) is int and 0 <= group[key] <= 126}
         if values:
             summary["counts"][gender] = values
+    if code in ("PARTIAL_SOURCE_FAILURE", "LIVE_POINTS_INCOMPLETE"):
+        held = report.get("held_divisions", [])
+        summary["held_divisions"] = [g for g in ("MALE", "FEMALE") if isinstance(held, list) and g in held]
+        summary["site_deployment_verified"] = (ops_report or {}).get("status") == "DEPLOYED_VERIFIED"
+        if summary["site_deployment_verified"]:
+            summary["master_may_be_ahead"] = False
+        gaps = report.get("incomplete_live_points", [])
+        summary["incomplete_live_points"] = [
+            {k: item[k] for k in ("source_key", "expected_sets", "verified_sets")}
+            for item in (gaps[:4] if isinstance(gaps, list) else [])
+            if isinstance(item, dict) and isinstance(item.get("source_key"), str)
+            and re.fullmatch(r"023:001:(?:MALE|FEMALE):(?:[1-9]\d{0,2}|1000)", item["source_key"])
+            and type(item.get("expected_sets")) is int and type(item.get("verified_sets")) is int
+            and 0 <= item["verified_sets"] < item["expected_sets"] <= 5]
     return summary
 
 
@@ -413,6 +429,16 @@ def issue_body(summary, run_url, fingerprint):
         lines += ["자동 갱신 기간·대상 범위·보관 증거를 확인해야 합니다. 기간이 닫힌 뒤에는 반복 실행만으로 재개되지 않습니다."]
     else:
         lines += ["다음 실행은 공식 기록·MASTER·운영 데이터·배포 상태를 다시 대조합니다."]
+    if summary.get("held_divisions"):
+        lines += [("검증된 부문의 Pages 게시를 확인했습니다." if summary.get("site_deployment_verified")
+                   else "검증된 부문만 후보로 준비했으며, Pages 게시는 아직 확인되지 않았습니다."),
+                  "보류 부문의 기존 관측시각은 갱신하지 않았습니다.",
+                  "보류 부문: " + ", ".join(summary["held_divisions"])]
+    if summary.get("incomplete_live_points"):
+        lines += ["종료세트 득점 일부가 미확인입니다. 세트 승수와 전체 득점 갱신의 성공을 구분합니다.",
+                  "Pages 게시 확인: " + str(summary.get("site_deployment_verified", False)).lower()]
+        for item in summary["incomplete_live_points"]:
+            lines.append(f"- {item['source_key']}: {item['verified_sets']}/{item['expected_sets']}세트 득점 검증")
     lines += ["",
              f"MASTER 변경 기록: {str(summary['master_written']).lower()}",
              f"MASTER 읽기 대조 완료: {str(summary['master_readback_verified']).lower()}",

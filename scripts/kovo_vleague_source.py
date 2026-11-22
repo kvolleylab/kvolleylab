@@ -17,11 +17,14 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+import errno
 import hashlib
 import json
 import math
 from pathlib import Path
 import re
+import socket
 import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlencode, urlsplit
@@ -33,6 +36,7 @@ PAGE_SIZE = 200
 MAX_BYTES = 2_000_000
 MAX_PAGES = 10
 MAX_LIVE_LOOKUPS = 4
+MAX_RETRY_WAIT = 30
 KST = timezone(timedelta(hours=9))
 SEASONS = {
     "2026-27": {
@@ -167,6 +171,7 @@ class PublicClient:
             "X-Service-Name": "user", "User-Agent": "KVolleyLab-VLeague-Source/1.0",
         })
         for attempt in range(self.retries + 1):
+            retry_wait = 2 ** (attempt + 1)
             try:
                 with self.opener.open(request, timeout=self.timeout) as response:
                     require(response.status == 200 and response.geturl() == url,
@@ -182,14 +187,36 @@ class PublicClient:
                 envelope_payload(result)
                 return result
             except HTTPError as exc:
-                if exc.code in (401, 403, 429):
-                    raise SourceError(f"Source denied or rate limited ({exc.code}); no retry") from exc
-                if exc.code < 500 or attempt == self.retries:
+                if exc.code in (401, 403):
+                    raise SourceError(f"Source denied ({exc.code}); no retry") from exc
+                if not (exc.code == 429 or 500 <= exc.code < 600) or attempt == self.retries:
                     raise SourceError(f"Source HTTP error ({exc.code})") from exc
+                retry_after = (exc.headers or {}).get("Retry-After")
+                if retry_after is not None:
+                    try:
+                        if re.fullmatch(r"\d+", retry_after):
+                            requested_wait = int(retry_after)
+                        else:
+                            until = parsedate_to_datetime(retry_after)
+                            require(until.tzinfo is not None, "Source retry time lacks timezone")
+                            requested_wait = max(0, math.ceil(until.timestamp() - time.time()))
+                    except (TypeError, ValueError, OverflowError) as invalid:
+                        raise SourceError("Source retry time is invalid; no retry") from invalid
+                    # Never retry earlier than instructed or wait without a bound.
+                    require(requested_wait <= MAX_RETRY_WAIT,
+                            "Source retry time exceeds allowed wait; deferred")
+                    retry_wait = max(retry_wait, requested_wait)
             except (URLError, TimeoutError, OSError) as exc:
+                reason = exc.reason if isinstance(exc, URLError) else exc
+                transient = (isinstance(reason, (TimeoutError, ConnectionError))
+                             or isinstance(reason, socket.gaierror) and reason.errno == socket.EAI_AGAIN
+                             or isinstance(reason, OSError) and reason.errno in {
+                                 errno.ETIMEDOUT, errno.ECONNRESET, errno.ECONNREFUSED,
+                                 errno.ENETUNREACH, errno.EHOSTUNREACH, errno.EPIPE})
+                require(transient, "Source connection failure is not retryable")
                 if attempt == self.retries:
                     raise SourceError("Source connection failed after bounded retries") from exc
-            self.sleep(2 ** (attempt + 1))
+            self.sleep(retry_wait)
         raise SourceError("Source request did not complete")
 
 
@@ -274,10 +301,35 @@ def live_game_points(data, match, *, observation=None):
     require(isinstance(game, dict), "REALTIME_GAME_MISSING")
     expected = {"seasonCode": match["season_id"], "round": match["round"],
                 "gameNum": match["number"], "homeCode": match["home"]["provider_code"],
-                "awayCode": match["away"]["provider_code"], "gameDate": match["date"],
-                "gameStartTime": match["time"]}
-    require(all(type(game.get(k)) is type(v) and game[k] == v for k, v in expected.items()),
-            "REALTIME_IDENTITY_MISMATCH")
+                "awayCode": match["away"]["provider_code"], "gameDate": match["date"]}
+    mismatched = [k for k, v in expected.items()
+                  if type(game.get(k)) is not type(v) or game[k] != v]
+    # The broadcast has no phase/gender/gcode fields. Its allowlisted request
+    # and the normalized schedule supply those invariants; do not infer them
+    # from a team name or accept a different season/phase's broadcast.
+    context_ok = (match.get("phase_id") == "201" and match.get("match_type") == "001"
+                  and match.get("season_id") == "023" and type(match.get("gender")) is str
+                  and match["gender"] in GENDERS
+                  and match.get("source_key") == f"023:001:{match.get('gender')}:{match.get('number')}"
+                  and all(isinstance(expected[k], str)
+                          and re.fullmatch(GENDERS.get(match.get("gender"), "!") + r"\d{3}", expected[k])
+                          for k in ("homeCode", "awayCode")))
+    identity = {"compared_fields": list(expected), "mismatched_fields": mismatched,
+                "schedule_context_valid": context_ok, "start_time_comparison": "INVALID"}
+    if observation is not None:
+        observation["identity"] = identity
+    try:
+        scheduled_time = clock_value(match.get("time"), "schedule start time")
+        broadcast_time = clock_value(game.get("gameStartTime"), "broadcast start time")
+    except SourceError as exc:
+        raise SourceError("REALTIME_IDENTITY_MISMATCH") from exc
+    identity.update(schedule_start_time=scheduled_time, realtime_start_time=broadcast_time,
+                    start_time_comparison="MATCH" if scheduled_time == broadcast_time else "DIFFERENT")
+    require(context_ok and not mismatched, "REALTIME_IDENTITY_MISMATCH")
+    # Start time is mutable fixture metadata: an actual start may replace the
+    # planned time in one official endpoint before the other. A valid difference
+    # is allowed only after every immutable game identity above agrees. Wins,
+    # terminal points and schedule-prefix conflict checks remain independent.
     won = {side: integer(game.get(f"{side}SetPoint"), "live set wins", maximum=3)
            for side in ("home", "away")}
     require(min(won.values()) < 3, "REALTIME_INVALID_COUNTERS")
@@ -620,8 +672,8 @@ def normalize_standings(data, *, season, gender, source_url, observed_at):
 
 
 def collect_season(season="2026-27", *, fetcher=None, include_standings=True, now=None,
-                   live_observations=None):
-    """Read both regular seasons and every supported postseason phase.
+                   live_observations=None, genders=None):
+    """Read complete requested divisions and every supported postseason phase.
 
     `fetcher(url)` is injectable for offline tests and must return the unmodified
     official JSON envelope. Official standings contain only teams with played
@@ -629,10 +681,17 @@ def collect_season(season="2026-27", *, fetcher=None, include_standings=True, no
     total with the finished matches before trusting their rank.
     """
     require(season in SEASONS, "Season has no reviewed official mapping")
+    selected_genders = tuple(GENDERS) if genders is None else genders
+    require(type(selected_genders) is tuple and bool(selected_genders)
+            and all(type(g) is str and g in GENDERS for g in selected_genders)
+            and len(set(selected_genders)) == len(selected_genders),
+            "Requested genders must be a nonempty unique approved tuple")
+    require(genders is None or include_standings is True,
+            "Explicit division collection requires official standings")
     reader = fetcher or PublicClient()
     stamp = now or utc_now()
     matches, pending_matches, coverage, postseason_coverage, standings = [], [], [], [], []
-    for gender in GENDERS:
+    for gender in selected_genders:
         observed, covered = read_gender_schedule(reader, season=season, gender=gender,
                                                 observed_at=stamp, allow_final_supplement=True)
         matches.extend(observed)
@@ -656,7 +715,7 @@ def collect_season(season="2026-27", *, fetcher=None, include_standings=True, no
     return {"schema_version": 1, "season": season, "fetched_at": stamp,
             "source": "KOVO_PUBLIC_STAT_API", "coverage": {
                 "kind": "season", "phase": "through_championship", "complete": True,
-                "genders": list(GENDERS), "details": coverage, "postseason": postseason_coverage,
+                "genders": list(selected_genders), "details": coverage, "postseason": postseason_coverage,
             }, "matches": matches, "pending_matches": pending_matches, "official_standings": standings,
             "content_sha256": hashlib.sha256(json.dumps(stable, ensure_ascii=False,
                 sort_keys=True, separators=(",", ":")).encode()).hexdigest()}

@@ -68,7 +68,7 @@ class LivePointsTests(unittest.TestCase):
     def test_wrong_game_season_home_away_date_time_round_or_type_never_merges(self):
         for field, value in [("gameNum", 999), ("seasonCode", "022"), ("homeCode", "2005"),
                              ("awayCode", "1009"), ("gameDate", "2026-11-01"),
-                             ("gameStartTime", "13:00"), ("round", 2), ("round", True)]:
+                             ("gameStartTime", "25:00"), ("round", 2), ("round", True)]:
             with self.subTest(field=field, value=value):
                 before = deepcopy(self.match)
                 evidence, _ = self.run_supplement({**self.game, field: value})

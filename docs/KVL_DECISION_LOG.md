@@ -1,5 +1,27 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-22 · V-리그 재시도·공식 보완·성별 장애 격리
+
+Status: USER REQUESTED RESILIENCE / FEATURE BRANCH IMPLEMENTED / NOT DEPLOYED.
+기준 main `36ed818f833dce723afa890e5c353cf98d053b4f`. 사용자는 한 번의 오류로
+업데이트가 계속 멈추지 않도록 재시도와 여러 공식 보완 경로를 요청했다.
+오늘 확인된 정각 전용 달력 검사 결함을 고치고, 동일 경기의 예정/실제 시작시각
+차이를 경기 신원과 분리한다. 시즌·단계·성별·경기번호·라운드·날짜·홈/원정 및
+승수·득점 충돌 검증은 유지한다. 공식 일정과 문자중계 외 새 공급자는 추가하지 않는다.
+
+공식 GET의 일시 통신/5xx/429만 최대 두 차례 재시도하며 서버 대기 지시를 지킨다.
+성별마다 완전한 공식 일정·순위·후보를 검증해 실패 부문의 기존 JSON·관측시각·ID
+연결을 보존한다. 검증된 다른 부문은 MASTER의 기존 잠금·수식·CAS·readback을
+통과한 경우만 게시한다. 인증·MASTER·보안·최신 main·배포 검증은 우회하지 않는다.
+검증된 승수는 있으나 종료세트 득점이 일부 미확인인 경우도 별도로 기록한다.
+부분 게시 뒤에는 Actions를 실패 상태로 남겨 기존 알림이 누락되지 않게 한다.
+실제 쓰기 후보에 대해 MASTER 변경 전에 DOM 검사를 수행한다.
+
+선수 MASTER/명단/ID, 국제대회/Cup, 화면 양식, Worker/cron, 비밀키는 변경하지 않는다.
+자세한 회귀·읽기 전용 실제 자료 대조·운영 승인과 다음 실경기 확인 항목은
+[검증 및 인계](validation/vleague-resilience-v1-20261122.md)를 따른다.
+새 PR 병합·운영 배포는 별도 사용자 승인 후 수행하며, 코드 테스트를 실경기 복구 완료로 간주하지 않는다.
+
 ## 2026-11-22 · OK저축은행 감독대행 공식 반영 및 V-리그 오늘 경기 우선 표시
 
 Status: USER REQUESTED PRODUCTION / FEATURE BRANCH IMPLEMENTED / RELEASE REQUIRES QA AND PAGES EVIDENCE.

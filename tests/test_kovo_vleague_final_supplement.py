@@ -128,7 +128,7 @@ class FinalSupplementTests(unittest.TestCase):
     def test_identity_fields_must_match_exactly(self):
         wrong = {"seasonCode": "022", "round": 2, "gameNum": 42,
                  "homeCode": "2007", "awayCode": "2006", "gameDate": "2026-11-01",
-                 "gameStartTime": "18:00"}
+                 "gameStartTime": "25:00"}
         for field, value in wrong.items():
             with self.subTest(field=field):
                 reader, observations = EndedSeason(), []

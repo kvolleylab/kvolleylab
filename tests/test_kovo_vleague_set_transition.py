@@ -169,7 +169,7 @@ class SetTransitionTests(unittest.TestCase):
     def test_wrong_game_identity_rejects_before_recording_its_fields(self):
         for field, value in [("gameNum", 999), ("homeCode", "BAD"), ("awayCode", "BAD"),
                              ("seasonCode", "022"), ("round", 2),
-                             ("gameDate", "2026-11-19"), ("gameStartTime", "13:00")]:
+                             ("gameDate", "2026-11-19"), ("gameStartTime", "25:00")]:
             with self.subTest(field=field):
                 match, game = self.make_match()
                 game[field] = value

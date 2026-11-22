@@ -339,9 +339,9 @@ class SourceContractTests(unittest.TestCase):
 
 
 class PublicClientTests(unittest.TestCase):
-    def test_auth_and_rate_limit_are_terminal_and_no_credentials_sent(self):
+    def test_auth_denial_is_terminal_and_no_credentials_sent(self):
         url = source.schedule_url("2026-27", "MALE")
-        for status in (401, 403, 429):
+        for status in (401, 403):
             calls, sleeps = [], []
             class Opener:
                 def open(self, request, timeout):
@@ -359,7 +359,7 @@ class PublicClientTests(unittest.TestCase):
         class Opener:
             def open(self, request, timeout):
                 count.append(1)
-                raise URLError("temporary")
+                raise URLError(TimeoutError("temporary"))
         with self.assertRaises(source.SourceError):
             source.PublicClient(opener=Opener(), sleeper=sleeps.append)(source.schedule_url("2026-27", "MALE"))
         self.assertEqual(len(count), 3)
