@@ -20,6 +20,11 @@ function game(d,id,date,time,score,extra={}){return {id,date,time,home:{code:d.p
 for(const gender of ['men','women'])test(gender+': both divisions, season-only empty state, real next fixtures and deep links',async()=>{
  const {w,doc,d,requests,errors,ready}=setup({gender});try{await ready;
   const cards=[...doc.querySelectorAll('[data-summary-gender]')];assert.deepEqual(cards.map(c=>c.dataset.summaryGender),gender==='women'?['women','men']:['men','women']);
+   assert.equal(doc.querySelector('#dv2-overview-matches-title').textContent,'오늘/다음 경기 · 최근 결과');
+   for(const card of cards){
+    assert.deepEqual([...card.querySelector('.dv2-summary-body').querySelectorAll('.dv2-summary-slot')].map(el=>el.dataset.kind),
+      ['next','recent'],'Today/next always precedes recent for '+card.dataset.summaryGender);
+   }
   assert.equal(doc.querySelectorAll('[data-kind=recent] .dv2-summary-empty').length,2);assert.equal(doc.querySelectorAll('.dv2-summary-game').length,2);
   for(const g of ['men','women']){const c=doc.querySelector(`[data-summary-gender=${g}]`),a=c.querySelector('.dv2-summary-game'),u=new URL(a.href);assert.equal(u.searchParams.get('competition'),`v-league-${g}-2026-27`);assert.equal(u.searchParams.get('view'),'schedule');assert.equal(u.searchParams.get('date'),'2026-10-31');assert.equal(c.querySelector('.dv2-summary-body').getAttribute('aria-busy'),'false');assert.match(a.textContent,g==='men'?/대한항공.*VS.*현대캐피탈/s:/GS칼텍스.*VS.*한국도로공사/s);assert.match(a.textContent,g==='men'?/14:00 KST/:/16:00 KST/);assert(!c.textContent.includes('KOVO컵'));}
   assert.equal(requests.length,2);assert(requests.every(p=>p.includes(gender==='men'?'-women-':'-men-')));
@@ -31,6 +36,12 @@ for(const gender of ['men','women'])test(gender+': both divisions, season-only e
 test('completed five-set results render full set scores and next fixtures for both divisions',async()=>{
  const {w,doc,ready}=setup({now:'2026-11-01T03:00:00Z',edit:d=>{d.status='active';d.matches[0].score=structuredClone(result);}});try{await ready;
   assert.equal(doc.querySelectorAll('.dv2-summary-game').length,4);assert.equal(doc.querySelectorAll('[data-kind=recent] .dv2-summary-score').length,2);
+   for(const division of doc.querySelectorAll('[data-summary-gender]')){
+    const slots=[...division.querySelectorAll('.dv2-summary-slot')];
+    assert.deepEqual(slots.map(x=>x.dataset.kind),['next','recent'],'Both populated slots must be today-first');
+    assert.match(slots[0].querySelector('h4').textContent,/오늘 경기/);
+    assert.match(slots[1].querySelector('h4').textContent,/최근 결과/);
+   }
   assert([...doc.querySelectorAll('[data-kind=recent] .dv2-summary-score')].every(e=>e.textContent==='3 : 2'));
   for(const sets of doc.querySelectorAll('.dv2-summary-sets'))assert.deepEqual([...sets.children].map(e=>e.textContent),['25–20','23–25','26–24','18–25','15–12']);
   assert.equal(doc.querySelectorAll('.dv2-summary-today').length,2);assert([...doc.querySelectorAll('[data-kind=next] a')].every(a=>new URL(a.href).searchParams.get('date')==='2026-11-01'));
