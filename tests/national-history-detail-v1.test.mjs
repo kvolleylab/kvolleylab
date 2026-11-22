@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {compactEventView,validateSummaryEntry,internalRecordHref} from '../assets/js/national-history-detail-model-v1.mjs';
+import {compactEventView,compactDates,validateSummaryEntry,internalRecordHref} from '../assets/js/national-history-detail-model-v1.mjs';
 const db=JSON.parse(readFileSync(new URL('../data/national/men-senior-history-v1.json',import.meta.url)));
 const summaries=JSON.parse(readFileSync(new URL('../data/national/men-senior-history-summaries-v1.json',import.meta.url)));
 const event=(id,data=db)=>data.events.find(e=>e.id===id);
@@ -29,7 +29,8 @@ test('Paris and Rio retain nonparticipation rather than fabricated qualifying el
 });
 test('Asian Championship separates match results from the remaining Olympic routes',()=>{
  const result=view('kor-m-2026-asian-championship');
- assert.equal(result.date,'2026.09.04–09.13');
+ assert.equal(result.date,'2026.09.04(금)~09.13(일)');
+ assert.equal(result.location,'일본 후쿠오카');
  assert.deepEqual(result.rows.slice(0,2),[{label:'준결승',match:{opponent:'일본',score:'0–3'}},{label:'3위 결정전',match:{opponent:'호주',score:'3–2'}}]);
  assert.equal(result.rows[2].text,'2027 월드컵 · 2028 세계랭킹');
  assert.equal(result.recordHref,'international-competition-avc-men-continental-2026.html');
@@ -68,4 +69,27 @@ test('record buttons only accept internal HTML competition routes',()=>{
  for(const invalid of ['https://example.com','//example.com','javascript:alert(1)','../private.html','/admin.html','data:bad','a\\b.html','bad page.html'])assert.equal(internalRecordHref(invalid),null,invalid);
  assert.equal(view('kor-m-2027-world-cup').recordHref,'fivb-world-cup-2027.html?gender=men');
  assert.equal(view('kor-m-2028-world-ranking').recordHref,'fivb-world-ranking-la28-2028.html?gender=men');
+});
+test('calendar weekdays preserve cross-year, partial and Olympic-wide date meaning',()=>{
+ assert.equal(compactDates({startDate:'2026-12-31',endDate:'2027-01-01'}),'2026.12.31(목)~2027.01.01(금)');
+ assert.equal(compactDates({startDate:'2024-02-29',endDate:'2024-02-29'}),'2024.02.29(목)');
+ assert.equal(compactDates({startDate:null,endDate:'2025-06-24'}),'2025.06.24(화) 종료 · 시작일 확인 중');
+ assert.equal(compactDates({startDate:'2026-02-30',endDate:null}),'');
+ assert.equal(compactDates({startDate:null,endDate:null}),'');
+ assert.match(view('kor-m-2028-olympics').date,/올림픽 전체 기간/);
+});
+test('locations require matching event identity and official sources, with no guessed host',()=>{
+ assert.equal(summaries.locations.length,4);
+ for(const location of summaries.locations){
+  assert.equal(view(location.eventId).location,location.label);
+  assert.ok(view(location.eventId).locationSources.every(s=>s.access==='official_source_reviewed'));
+ }
+ const changed=structuredClone(summaries),id='kor-m-2026-asian-championship';
+ changed.locations.find(l=>l.eventId===id).sourceIds=['missing-source'];
+ assert.equal(view(id,db,changed).location,'');
+ const mismatched=structuredClone(summaries);
+ mismatched.locations.find(l=>l.eventId===id).competitionId='unrelated-event';
+ assert.equal(view(id,db,mismatched).location,'');
+ assert.equal(view('olympics-2004-men').location,'');
+ assert.equal(view('kor-m-2027-world-cup').location,'폴란드');
 });

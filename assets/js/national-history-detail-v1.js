@@ -1,14 +1,20 @@
 import {validateData} from './national-history-model-v1.mjs';
-import {compactEventView} from './national-history-detail-model-v1.mjs';
+import {compactEventView} from './national-history-detail-model-v1.mjs?v=20261123-type-v1';
 
 const timeline=document.getElementById('timeline');
 const node=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;};
-async function json(url){const r=await fetch(url);if(!r.ok)throw Error('detail_data');return r.json();}
+async function json(url){const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error('detail_data');return r.json();}
 function improveEvent(container,event,db,summaries){
   if(container.dataset.detailView)return;
   const original=[...container.children].find(el=>el.classList.contains('event-detail'));if(!original)return;
   const view=compactEventView(event,db,summaries),body=node('div','event-detail-v2');
-  if(view.date)body.append(node('p','compact-date',view.date));
+  if(view.date||view.location){
+    const metadata=node('p','compact-date');
+    if(view.date)metadata.append(node('span','compact-period',view.date));
+    if(view.date&&view.location)metadata.append(document.createTextNode(' '));
+    if(view.location)metadata.append(node('span','compact-location',view.location));
+    body.append(metadata);
+  }
   if(view.notice)body.append(node('p','compact-notice',view.notice));
   if(view.rows.length){
     const rows=node('dl','compact-facts');
@@ -29,6 +35,11 @@ function improveEvent(container,event,db,summaries){
   more.append(toggle);actions.append(more);body.append(actions);
   // Move the complete original detail into the disclosure: no evidence or notes are deleted.
   original.replaceWith(body);more.append(original);
+  const sourceList=original.querySelector('.detail-sources');
+  for(const source of view.locationSources){
+    if(!sourceList||[...sourceList.querySelectorAll('a')].some(a=>a.href===source.url))continue;
+    const link=node('a','',`${source.title} ↗`);link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';sourceList.append(link);
+  }
   if(view.relatedEventIds.length){
     const related=node('div','compact-related');
     for(const id of view.relatedEventIds){const relatedEvent=db.events.find(e=>e.id===id),link=node('a','',`관련 기록 · ${relatedEvent.nameKo} →`);const url=new URL(location.href);url.searchParams.set('event',id);url.searchParams.set('filter','all');url.hash='';link.href=url.pathname+url.search;related.append(link);}
