@@ -1,0 +1,95 @@
+/* K-Volley Lab Team Finder roster standard v1 */
+.ktd-page .kvl-roster-kpis{
+ display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;padding:14px 15px 0;
+}
+.ktd-page .kvl-roster-kpis article{
+ position:relative;min-width:0;min-height:72px;display:flex;flex-direction:column;justify-content:center;
+ padding:12px 14px;border:1px solid #dfe7ed;border-radius:11px;background:#fff;
+}
+.ktd-page .kvl-roster-kpis span{font-size:10px;font-weight:800;color:#7890a2}
+.ktd-page .kvl-roster-kpis strong{margin-top:5px;font-size:21px;line-height:1.15;color:#173c59}
+.ktd-page .kvl-roster-kpis small{position:absolute;right:10px;bottom:9px;font-size:8px;color:#9c8a64}
+.ktd-page .kvl-roster-kpis .is-private{background:#fffdf8;border-color:#eadfca}
+
+.ktd-page .kvl-roster-standard.is-pro .kvlrv2-columns{
+ grid-template-columns:minmax(0,1.95fr) minmax(250px,.86fr);
+}
+.ktd-page .kvl-roster-standard.is-pro .kvlrv2-head,
+.ktd-page .kvl-roster-standard.is-pro .kvlrv2-row{
+ grid-template-columns:44px minmax(110px,1fr) 55px 92px 64px;gap:9px;
+}
+.ktd-page .kvl-roster-standard .kvlrv2-dob,
+.ktd-page .kvl-roster-standard .kvlrv2-pos,
+.ktd-page .kvl-roster-standard .kvlrv2-height{white-space:nowrap}
+.ktd-page .kvl-roster-standard .kvlrv2-dob{font-variant-numeric:tabular-nums;color:#526f85}
+
+.ktd-page .kvl-roster-standard.is-international .kvl-roster-kpis{padding:0 0 14px;margin-top:14px}
+.ktd-page .kvl-roster-standard.is-international .kvl-roster-kpis article{background:#fff}
+.ktd-page .kvl-roster-standard.is-international .kvl-unified-name small{display:none!important}
+.ktd-page .kvl-roster-standard.is-international .kvl-unified-club{
+ display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.35;
+}
+.ktd-page .kvl-roster-club-teamline{display:flex;align-items:center;gap:7px;min-width:0;max-width:100%}
+.ktd-page .kvl-roster-club-team{display:block;min-width:0;font-weight:750;color:#345b75;word-break:keep-all;overflow-wrap:normal}
+.ktd-page .kvl-roster-league-flag{
+ width:23px;height:auto;max-height:17px;object-fit:cover;border-radius:2px;
+ box-shadow:0 0 0 1px rgba(20,50,70,.12);flex:none;
+}
+.ktd-page .kvl-roster-club-meta{
+ display:flex;align-items:center;flex-wrap:wrap;gap:0 5px;min-width:0;max-width:100%;
+ color:#66849a;font-weight:700;word-break:keep-all;overflow-wrap:normal;
+}
+.ktd-page .kvl-roster-country,.ktd-page .kvl-roster-league{
+ white-space:nowrap;word-break:keep-all;overflow-wrap:normal;
+}
+.ktd-page .kvl-roster-separator{flex:none;white-space:nowrap}
+
+/* Internal repository paths are operational evidence, not end-user card copy. */
+.ktd-page .ktd-country-event small{display:none!important}
+
+@media(min-width:821px){
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-number,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-name strong,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-dob,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-pos,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-height,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-club,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-volleybox,
+ .ktd-page .kvl-roster-standard.is-international .kvl-roster-club-team{
+  font-size:17px!important;line-height:1.45!important;
+ }
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-name strong{font-weight:800}
+ .ktd-page .kvl-roster-standard.is-international .kvl-roster-club-meta{font-size:15px!important;line-height:1.45!important}
+}
+@media(max-width:920px){
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-columns{grid-template-columns:1fr}
+}
+@media(max-width:820px){
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-name strong,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-club,
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-volleybox,
+ .ktd-page .kvl-roster-standard.is-international .kvl-roster-club-team{
+  font-size:11px!important;line-height:1.45!important;
+ }
+ .ktd-page .kvl-roster-standard.is-international .kvl-roster-club-meta{font-size:9px!important;line-height:1.45!important}
+ .ktd-page .kvl-roster-club-teamline{gap:5px}
+ .ktd-page .kvl-roster-club-meta{gap:0 4px}
+ .ktd-page .kvl-roster-league-flag{width:18px;max-height:14px}
+}
+@media(max-width:640px){
+ .ktd-page .kvl-roster-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:10px 8px 0}
+ .ktd-page .kvl-roster-kpis article{min-height:65px;padding:10px 11px}
+ .ktd-page .kvl-roster-kpis strong{font-size:18px}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-head{display:none}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-row{
+  grid-template-columns:35px minmax(0,1fr) auto;
+  grid-template-areas:"num name pos" "num dob height";
+  gap:4px 8px;padding:10px 11px;min-height:67px;
+ }
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-number{grid-area:num;align-self:start;padding-top:2px}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-name{grid-area:name}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-pos{grid-area:pos;justify-self:end;font-weight:800;color:#315b7b}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-dob{grid-area:dob;font-size:10px;color:#768b9b}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-height{grid-area:height;justify-self:end;font-size:11px}
+ .ktd-page .kvl-roster-standard.is-international .kvl-roster-kpis{padding:0;margin:10px 0 12px}
+}

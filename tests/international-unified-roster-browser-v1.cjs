@@ -60,9 +60,9 @@ async function testApp(){
   assert.equal(layout.eventCount,3,'Do not invent a Japan AVC Cup entry');
   assert.ok(layout.allCardsSameRow&&layout.cardWidth>=228,'PC cards must sit across one row: '+JSON.stringify(layout));
   assert.ok(layout.cardTitlePx>=16,'Keep source competition cards legible: '+JSON.stringify(layout));
-  for(const [field,exact] of [['rowPx',17],['namePx',20],['dobPx',17],['clubPx',17],['enPx',17],['headPx',17],['volleyboxPx',17]])
+  for(const [field,exact] of [['rowPx',17],['namePx',17],['dobPx',17],['clubPx',17],['enPx',17],['headPx',17],['volleyboxPx',17]])
    assert.equal(layout[field],exact,field+' must equal revised PC specification: '+JSON.stringify(layout));
-  REPORT.views.push({name:'PC 1440 revised 20px names and 17px data fields',status:'PASS',layout});
+  REPORT.views.push({name:'PC 1440 unified 17px roster fields with Korean-first list',status:'PASS',layout});
   // Match the actual KVL desktop menu font and prevent desktop-to-tablet fallback to tiny type.
   for(const width of [900]){
    const tablet=await open(browser,width,'category=international&gender=men&country=JPN&year=2026');
@@ -77,24 +77,25 @@ async function testApp(){
       tableWidth:document.querySelector('.kvl-unified-table').clientWidth,
       tableScroll:document.querySelector('.kvl-unified-table').scrollWidth};
    });
-   assert.ok(type.name===20 && [type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v===17),
-      '900px PC/tablet must retain exact 20px and 17px type: '+JSON.stringify(type));
+   assert.ok([type.name,type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v===17),
+      '900px PC/tablet must retain exact 17px roster type: '+JSON.stringify(type));
    assert.ok(type.tableScroll>type.tableWidth,'900px table must scroll internally instead of shrinking text: '+JSON.stringify(type));
    assert.ok(type.width<=type.viewport+2,'900px document should not overflow: '+JSON.stringify(type));
    assert.deepEqual(tablet.errors,[]);
-   REPORT.views.push({name:'900px 20/17px fonts with contained roster scroll',status:'PASS',type});
+   REPORT.views.push({name:'900px 17px roster fonts with contained roster scroll',status:'PASS',type});
    const fonts=await t.evaluate(()=>{
     const style=s=>getComputedStyle(document.querySelector(s));
     const base=style('body').fontFamily;
     return {base,unified:style('.kvl-unified').fontFamily,country:style('.ktd-country-panel').fontFamily,
       eventAction:style('.ktd-country-event button').fontFamily,search:style('.kvl-unified-search input').fontFamily,
       titleWeight:style('.kvl-unified-name strong').fontWeight,
-      leaguePx:parseFloat(style('.kvl-unified-club-league').fontSize)};
+      leaguePx:parseFloat(style('.kvl-roster-club-meta').fontSize),englishDisplay:style('.kvl-unified-name small').display};
    });
    for(const key of ['unified','country','eventAction','search'])assert.equal(fonts[key],fonts.base,
     'Country-specific font should match KVL site font: '+JSON.stringify(fonts));
    assert.equal(fonts.titleWeight,'800','Avoid extra-heavy synthetic 900 title: '+JSON.stringify(fonts));
-   assert.equal(fonts.leaguePx,17,'Verified league country should match 17px metadata');
+   assert.equal(fonts.leaguePx,15,'Korean country/league second line should be 2px smaller than club name');
+   assert.equal(fonts.englishDisplay,'none','Roster list should be Korean-first; English remains in detail');
    REPORT.views.push({name:'Font family matches KVL site typography at PC 900',status:'PASS',fonts});
    await t.close();
   }
@@ -103,14 +104,15 @@ async function testApp(){
   assert.match(await ishikawa.innerText(),/Ziraat Bankkart Ankara/);
   assert.equal(await ishikawa.locator('.kvl-unified-volleybox').count(),1);
   assert.equal(await ishikawa.locator('.kvl-unified-volleybox').innerText(),'VB->');
-  assert.equal((await ishikawa.locator('.kvl-unified-club-league').innerText()).trim(),'· 🇹🇷 TÜRKIYE');
-  assert.equal(await ishikawa.locator('.kvl-unified-club-league').getAttribute('title'),'확인된 리그: SMS Grup Efeler Ligi');
-  assert.doesNotMatch(await ishikawa.locator('.kvl-unified-club').innerText(),/SMS Grup Efeler Ligi/,'Visible roster badges are country-only');
+  assert.equal((await ishikawa.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),'튀르키예 · 에펠레르 리기 (1부)');
+  assert.match(await ishikawa.locator('.kvl-roster-league-flag').getAttribute('src'),/\/tr\.svg$/);
+  assert.equal(await ishikawa.locator('.kvl-roster-club-meta').getAttribute('title'),'Türkiye · SMS Grup Efeler Ligi');
+  assert.doesNotMatch(await ishikawa.locator('.kvl-unified-name').innerText(),/Yuki Ishikawa/,'Quick roster list is Korean-first');
   const arai=page.locator('.kvl-unified-row').filter({hasText:'아라이 유다이'}).first();
-  assert.equal((await arai.locator('.kvl-unified-club-league').innerText()).trim(),'· 🇯🇵 JAPAN');
+  assert.match((await arai.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^일본(?: · .+)?$/,'Do not invent a league when the verified source only provides Japan');
   const unknownClub=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
   assert.match(await unknownClub.locator('.kvl-unified-club').innerText(),/미확인/);
-  assert.equal(await unknownClub.locator('.kvl-unified-club-league').count(),0);
+  assert.match(await unknownClub.locator('.kvl-roster-club-team').innerText(),/미확인/);
 
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-major').count(),1);
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-regular').count(),1);
