@@ -61,3 +61,12 @@ Do not merge prototype assets into production. If approved, implement the chosen
 - ISO2 values such as IT and full country names such as Italy both resolve to local flag assets.
 - Division labels are added only for recognized league names/patterns; unknown leagues are not guessed.
 - Competition cards no longer show internal `원본: data/...` paths in the prototype.
+
+
+## Korean-first list refinement
+- International roster list uses Korean-first display labels.
+- Player list hides English name; the original unified detail renderer remains untouched, so English player name is still shown in player detail.
+- Club list uses verified Korean aliases where explicitly mapped; unknown clubs keep the source name rather than guessing.
+- Country labels are Korean.
+- League labels use Korean display aliases where explicitly mapped; for Italy, SuperLega is displayed as **슈퍼레가**.
+- Original English club/league data remains in the model/detail and is not rewritten.
