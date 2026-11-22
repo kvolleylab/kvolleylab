@@ -45,11 +45,18 @@ const CLUB_KO={
  'Al Arabi Kuwait':'알 아라비',
  'Al-Seeb':'알 시브',
  'Al-Ahli Bahrain':'알 아흘리',
- 'Al-Muharraq':'알 무하라크'
+ 'Al-Muharraq':'알 무하라크',
+ 'Sir Susa Scai Perugia':'페루자',
+ 'Sir Safety Susa Perugia':'페루자',
+ 'Sir Sicoma Monini Perugia':'페루자',
+ 'Paykan Tehran':'파이칸',
+ 'Mehregan Noor':'메흐레간 누르',
+ 'Panionios Betsson':'파니오니오스',
+ 'Panionios VC':'파니오니오스'
 };
 const LEAGUE_KO={
  'SuperLega':'슈퍼레가','Superlega':'슈퍼레가','Serie A1':'세리에 A1','Serie A2':'세리에 A2',
- 'PlusLiga':'플러스리가','TAURON 1. Liga':'타우론 1.리가','PLS 1. Liga':'PLS 1.리가',
+ 'PlusLiga':'플러스리가','TAURON Liga':'타우론 리가','TAURON 1. Liga':'타우론 1.리가','PLS 1. Liga':'PLS 1.리가',
  'Iranian Super League':'이란 슈퍼리그','SMS Grup Efeler Ligi':'에펠레르 리기',
  'SV.LEAGUE':'SV.리그','SV League':'SV.리그','V-League':'V-리그',
  'Ligue A Masculine':'리그 A','Ligue B Masculine':'리그 B','Extraliga mužů':'엑스트랄리가',
@@ -84,7 +91,7 @@ const leagueTier=(league,country)=>{
  if(!raw)return'';
  if(/\b(A1|SERIE A1)\b|SUPERLEGA|SUPER LEGA/.test(n))return'1부';
  if(/\b(A2|SERIE A2)\b/.test(n))return'2부';
- if(/PLUSLIGA/.test(n))return'1부';
+ if(/PLUSLIGA|^TAURON LIGA$/.test(n))return'1부';
  if(/TAURON 1\. LIGA|PLS 1\. LIGA/.test(n))return'2부';
  if(/EFELER LIGI/.test(n))return'1부';
  if(/\b1\. LIG\b/.test(n)&&/TURK|TÜRKIYE|TR/.test(c))return'2부';
