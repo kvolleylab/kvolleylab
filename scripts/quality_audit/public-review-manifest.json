@@ -771,6 +771,47 @@
       "sha256": "2dcf850625821a1becc674e5e780081a2945188f13f439e34729539c16a85e76",
       "evidence": "validation/international-country-roster-ux-v2-20261122.md",
       "review_note": "2026-27 국제선수 현재 소속 보강용 공개 레지스트리 7건. 공식/최근 공개 근거 6건은 CONFIRMED, Volleybox 현행 팀 명단 근거 1건은 REVIEWED 상태를 유지한다. 과거 대회 명단을 덮어쓰지 않으며 Volleybox ID와 가능한 경우 DOB를 대조하고, 미확인 선수를 팀·국적·등번호로 추정하지 않는다."
+    },
+    "data/national/men-senior-history-summaries-v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "hist-oca_profile",
+        "hist-w2022_teams",
+        "now-w25_standings",
+        "now-w25_preview",
+        "now-w25_fra",
+        "now-w25_arg",
+        "now-w25_fin",
+        "now-avc25_final",
+        "now-asian26_semifinal",
+        "now-asian26_jpn_kor",
+        "now-asian26_final",
+        "now-worldcup_rename",
+        "now-worldcup27_field",
+        "now-worldcup27_fivb",
+        "now-la28_fivb",
+        "now-la28_system",
+        "now-la28_fivb_archived",
+        "now-asian26_bronze_match",
+        "now-eastasia26_jva_results",
+        "now-eastasia26_jva_overview",
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal",
+        "oly-va-2008-report",
+        "oly-fivb-2008-bulletin",
+        "oly-jva-2012-report",
+        "oly-jva-2012-qualifier-entry",
+        "oly-jva-2016-qualifier",
+        "oly-jva-2016-all-qualifiers",
+        "oly-fivb-2020-qualifier-rules",
+        "oly-fivb-paris2024-regulations",
+        "oly-vw-paris2024-qualified"
+      ],
+      "verified_at": "2026-11-23",
+      "sha256": "0302d744e361edc82c12e0da8bddd7fa986f9dc097466768b50f6613f8f18011",
+      "evidence": "docs/validation/national-history-simple-detail-v1.md",
+      "review_note": "기존 공개 역사 JSON의 검증된 사실을 간결하게 표현한 표시 전용 요약. source IDs 및 참조 필드의 동일성을 대조했다. 2004 경위 등 미확인 상태를 승격하지 않으며 새로운 경기 결과·출전권 사실 확인일이 아니다. 원본 경기 결과·출처·확인 날짜·62개 기록은 변경하지 않는다."
     }
   }
 }

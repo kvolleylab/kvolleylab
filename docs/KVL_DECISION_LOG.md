@@ -924,3 +924,10 @@ Base `9a51da092a2187b0cbb71ad678cdea349aab7b6a`; release branch `release2/intern
 Status: USER REQUESTED / IMPLEMENTED / STATIC QA PASSED / NOT YET DEPLOYED. 사용자가 국제 국가 상세에서 소속팀 미확인 선수가 너무 많다고 지적했다. 국가 상세 UX 자체는 PR #397에서 이미 카드 전체 클릭, 통합명단 우선 진입, 연도 드롭다운, 중복 대회카드 제거, VNL 포함 대회 바로가기, `← 국가 목록`, `VNL 예비` 배지까지 운영 반영되어 있으므로 중복 수정하지 않는다.
 
 2차 데이터 배치에서는 이란 2026 통합명단의 현재 2026-27 소속을 공개 근거로 재확인해 Hazratpour→Paykan Tehran, Haghparast→Panionios Betsson, Yousef Kazemi→Mes Rafsanjan, Shayan Mehrabi→Mehregan Noor, Seyed Matin Hosseini→Sir Susa Scai Perugia, Mohammadnima Bateni→PGE Projekt Warszawa를 current-club registry에 추가한다. Bateni·Haghparast는 대회별 DOB/Volleybox 누락 때문에 동일 선수가 분리되던 신원도 보완한다. 동일 통합 알고리즘 기준 이란은 19개 선수 행 중 18개 소속 확인, Mohsen Delavari 1명만 미확인으로 남는다. 현재 소속 근거를 찾지 못한 선수는 추정하지 않는다. [검증 기록](validation/international-current-club-batch2-20261123.md).
+
+
+## 2026-11-23 · 대표팀 역사 대회 상세 간소화
+
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자가 펼친 대회 정보의 가독성 개선 이미지를 확인하고 “이미지처럼 진행해줘”로 승인했다. 대회 행·연도·필터·금색 관문·붉은 실패 표시는 유지하고 펼친 내용만 일정·핵심 경기·출전 경로 중심으로 간소화한다. 세트 점수·검증 메타데이터·공식 출처를 삭제하지 않고 닫힌 ‘세부 기록·출처’로 옮긴다. 대회 기록 버튼으로 기존 KVL 페이지에 연결한다. 기존 시각 보존 방침 중 대회 펼침 영역에 한하여 이번 승인 시안을 적용하며 나머지 행과 상단 요약은 보존한다.
+
+Base `b25e6880e24538b80abc71588d61867f24474aa3`; branch `feature/national-history-simple-detail-v1`. 원본 역사 JSON·렌더러·모델·CSS의 바이트와 62개 기록을 그대로 보존하고 독립 표시 모듈 및 근거 대조형 요약을 추가한다. 원본 변경 시 오래된 요약을 자동 적용하지 않는다. Node 53/53, PC 및 모바일 390/360px, 필터 62/37/16/17, 62개 원본 상세 전수 비교, 키보드·연도 펼침·2032 분리 확인. 병합·Pages·운영 검증 증거는 PR에 기록한다. [검증·변경 파일·복구](validation/national-history-simple-detail-v1.md).

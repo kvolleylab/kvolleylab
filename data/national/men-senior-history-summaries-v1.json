@@ -1,0 +1,1852 @@
+{
+  "schemaVersion": 1,
+  "kind": "presentation_summary",
+  "historyFile": "data/national/men-senior-history-v1.json",
+  "updatedAt": "2026-11-23",
+  "scope": "기존 검증 역사 기록을 간결하게 표시하는 요약. 새로운 경기 결과 확인이나 기록 상태 변경이 아님.",
+  "entries": [
+    {
+      "eventId": "olympics-2004-men",
+      "rows": [
+        {
+          "label": "진출 경위",
+          "text": "예선 참가·탈락 단계 확인 중"
+        }
+      ],
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal"
+      ],
+      "basis": [
+        {
+          "eventId": "olympics-2004-men",
+          "field": "result",
+          "value": "본선 진출 실패"
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2004-men",
+              "status": "not_qualified",
+              "label": "본선 진출 실패",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-avc-tokyo2020-semifinal"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "notes",
+          "value": [
+            "본선 불참 사실은 공식 자료로 확정. 2004 도쿄 예선 7위·1승6패는 당시 언론과 2차 자료에서 일치하나 공식 원문 미확보로 미확인 목록에 분리. 본선 진출 실패 표시 가능, 예선 세부는 확정값으로 표시하지 말 것.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "olympics-2004-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "olympics-2008-men",
+      "rows": [
+        {
+          "label": "예선 결과",
+          "text": "도쿄 최종예선 3위 · 출전권 미획득"
+        },
+        {
+          "label": "확인 중",
+          "text": "탈락 확정 경기·시점"
+        }
+      ],
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-va-2008-report",
+        "oly-fivb-2008-bulletin"
+      ],
+      "basis": [
+        {
+          "eventId": "olympics-2008-men",
+          "field": "result",
+          "value": "본선 진출 실패"
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "qualifierParticipation",
+          "value": true
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2008-men",
+              "status": "not_qualified",
+              "label": "본선 진출 실패",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-va-2008-report",
+                "oly-fivb-2008-bulletin"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "notes",
+          "value": [
+            "단일 탈락 확정 경기·시점 미확인. 한국-일본전 패배만을 최종 탈락 경기로 단정하지 않는다.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "olympics-2008-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "result",
+          "value": "3위 · 출전권 미획득"
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "qualifierParticipation",
+          "value": true
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2008-men",
+              "status": "not_qualified",
+              "label": "올림픽 출전권 미획득",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-va-2008-report",
+                "oly-fivb-2008-bulletin"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "notes",
+          "value": [
+            "단일 탈락 확정 경기·시점 미확인. 한국-일본전 패배만을 최종 탈락 경기로 단정하지 않는다.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "oqt-2008-tokyo-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "olympics-2012-men",
+      "rows": [
+        {
+          "label": "예선 결과",
+          "text": "도쿄 최종예선 6위 · 출전권 미획득"
+        },
+        {
+          "label": "확인 중",
+          "text": "탈락 확정 경기·시점"
+        }
+      ],
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-jva-2012-report",
+        "oly-jva-2012-qualifier-entry"
+      ],
+      "basis": [
+        {
+          "eventId": "olympics-2012-men",
+          "field": "result",
+          "value": "본선 진출 실패"
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "qualifierParticipation",
+          "value": true
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2012-men",
+              "status": "not_qualified",
+              "label": "본선 진출 실패",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-jva-2012-report",
+                "oly-jva-2012-qualifier-entry"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "notes",
+          "value": [
+            "단일 탈락 확정 경기·승패수 공식 원문 미확인.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "olympics-2012-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "result",
+          "value": "6위 · 출전권 미획득"
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "qualifierParticipation",
+          "value": true
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2012-men",
+              "status": "not_qualified",
+              "label": "올림픽 출전권 미획득",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-jva-2012-report",
+                "oly-jva-2012-qualifier-entry"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "notes",
+          "value": [
+            "단일 탈락 확정 경기·승패수 공식 원문 미확인.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "oqt-2012-tokyo-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "qualification-2016-men",
+      "rows": [
+        {
+          "label": "예선",
+          "text": "세계최종예선·아시아예선 참가권 미획득"
+        }
+      ],
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-jva-2016-qualifier",
+        "oly-jva-2016-all-qualifiers"
+      ],
+      "basis": [
+        {
+          "eventId": "qualification-2016-men",
+          "field": "result",
+          "value": "최종예선 참가권 미획득"
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "qualifierParticipation",
+          "value": false
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "qualificationPath",
+          "value": "세계최종예선 겸 아시아예선 참가권 미획득. 아시아 참가팀은 개최국 일본과 랭킹 기준 상위 3팀 이란·호주·중국."
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2016-men",
+              "status": "not_qualified",
+              "label": "최종예선 참가권 미획득",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-jva-2016-qualifier",
+                "oly-jva-2016-all-qualifiers"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "notes",
+          "value": [
+            "실제 예선 경기에 참가해 탈락한 기록과 구분합니다.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "qualification-2016-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "olympics-2016-men",
+      "rows": [
+        {
+          "label": "예선",
+          "text": "세계최종예선·아시아예선 참가권 미획득"
+        }
+      ],
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-jva-2016-qualifier",
+        "oly-jva-2016-all-qualifiers"
+      ],
+      "basis": [
+        {
+          "eventId": "olympics-2016-men",
+          "field": "result",
+          "value": "본선 진출 실패"
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "qualifierParticipation",
+          "value": false
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "qualificationPath",
+          "value": "세계최종예선 겸 아시아예선 참가권 미획득. 아시아 참가팀은 개최국 일본과 랭킹 기준 상위 3팀 이란·호주·중국."
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2016-men",
+              "status": "not_qualified",
+              "label": "본선 진출 실패",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-jva-2016-qualifier",
+                "oly-jva-2016-all-qualifiers"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "notes",
+          "value": [
+            "실제 예선 경기 탈락이 아니다. 한국의 당시 랭킹 숫자와 탈락 결정일은 별도 미확인.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "olympics-2016-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "olympics-2020-men",
+      "rows": [
+        {
+          "label": "아시아예선 준결승",
+          "match": {
+            "opponent": "이란",
+            "score": "2–3"
+          }
+        }
+      ],
+      "sourceIds": [
+        "oly-kva-olympic-history",
+        "oly-avc-tokyo2020-semifinal",
+        "oly-fivb-2020-qualifier-rules"
+      ],
+      "basis": [
+        {
+          "eventId": "olympics-2020-men",
+          "field": "result",
+          "value": "본선 진출 실패"
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "qualifierParticipation",
+          "value": true
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2020-men",
+              "status": "not_qualified",
+              "label": "본선 진출 실패",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-avc-tokyo2020-semifinal",
+                "oly-fivb-2020-qualifier-rules"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "notes",
+          "value": [
+            "도쿄 2020 명칭 유지, 실제 본선 개최연도 2021 별도 저장. 2019 대륙간 예선 상세 결과는 이번 조사에서 미확인.",
+            "도쿄 2020 본선은 2021년 개최. 출전권 도전이 종료된 2020년 항목에 함께 보존합니다.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "olympics-2020-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "result",
+          "value": "준결승 탈락 · 이란에 2-3"
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "qualifierParticipation",
+          "value": true
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2020-men",
+              "status": "not_qualified",
+              "label": "올림픽 출전권 미획득",
+              "sourceIds": [
+                "oly-kva-olympic-history",
+                "oly-avc-tokyo2020-semifinal",
+                "oly-fivb-2020-qualifier-rules"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "matches",
+          "value": [
+            {
+              "date": "2020-01-11",
+              "stage": "준결승",
+              "opponent": "IRI",
+              "setScore": "2-3",
+              "setScores": [
+                [
+                  25,
+                  22
+                ],
+                [
+                  21,
+                  25
+                ],
+                [
+                  18,
+                  25
+                ],
+                [
+                  25,
+                  22
+                ],
+                [
+                  13,
+                  15
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "notes",
+          "value": [
+            "도쿄 2020 명칭 유지, 실제 본선 개최연도 2021 별도 저장. 2019 대륙간 예선 상세 결과는 이번 조사에서 미확인.",
+            "도쿄 2020 본선은 2021년 개최. 출전권 도전이 종료된 2020년 항목에 함께 보존합니다.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "oqt-2020-asia-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "qualification-2024-men",
+      "rows": [
+        {
+          "label": "예선",
+          "text": "2023 올림픽 예선 미참가"
+        },
+        {
+          "label": "최종 경로",
+          "text": "2024 세계랭킹 출전권 미획득"
+        }
+      ],
+      "sourceIds": [
+        "oly-fivb-paris2024-regulations",
+        "oly-vw-paris2024-qualified"
+      ],
+      "basis": [
+        {
+          "eventId": "qualification-2024-men",
+          "field": "result",
+          "value": "예선 미참가 · 랭킹 출전권 미획득"
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "qualifierParticipation",
+          "value": false
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "qualificationPath",
+          "value": "2023 남자 올림픽 예선 24개국에 포함되지 않았으며, 2024 세계랭킹 배분에서도 본선 12개국에 들지 못함."
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2024-men",
+              "status": "not_qualified",
+              "label": "예선 미참가 · 랭킹 출전권 미획득",
+              "sourceIds": [
+                "oly-fivb-paris2024-regulations",
+                "oly-vw-paris2024-qualified"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "notes",
+          "value": [
+            "실제 예선 경기에 참가해 탈락한 기록과 구분합니다.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "qualification-2024-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "olympics-2024-men",
+      "rows": [
+        {
+          "label": "예선",
+          "text": "2023 올림픽 예선 미참가"
+        },
+        {
+          "label": "최종 경로",
+          "text": "2024 세계랭킹 출전권 미획득"
+        }
+      ],
+      "sourceIds": [
+        "oly-fivb-paris2024-regulations",
+        "oly-vw-paris2024-qualified"
+      ],
+      "basis": [
+        {
+          "eventId": "olympics-2024-men",
+          "field": "result",
+          "value": "본선 진출 실패"
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "qualifierParticipation",
+          "value": false
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "qualificationPath",
+          "value": "2023 남자 올림픽 예선 24개국에 포함되지 않았으며, 2024 세계랭킹 배분에서도 본선 12개국에 들지 못함."
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "olympics-2024-men",
+              "status": "not_qualified",
+              "label": "본선 진출 실패",
+              "sourceIds": [
+                "oly-fivb-paris2024-regulations",
+                "oly-vw-paris2024-qualified"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "notes",
+          "value": [
+            "‘올림픽 예선 탈락’으로 쓰지 않는다. 공식 초청명단·최종 본선명단과의 대조로 불참·미진출 확인. 당시 정확한 한국 랭킹 숫자 미확인.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "olympics-2024-men",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-world-championship-2022",
+      "rows": [
+        {
+          "label": "진출 경위",
+          "text": "본선 미진출 확인 · 세부 경위 확인 중"
+        }
+      ],
+      "sourceIds": [
+        "hist-w2022_teams",
+        "hist-oca_profile"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "result",
+          "value": "본선 진출 실패"
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "2022 Men's World Championship",
+              "status": "not_qualified",
+              "label": "본선 진출 실패",
+              "reason": "공식 최종 참가 24개국 명단에 대한민국 없음. OCA 소개에서 마지막 세계선수권 참가를 2014년으로 명시.",
+              "route": "continental/ranking",
+              "sourceIds": [
+                "hist-w2022_teams",
+                "hist-oca_profile"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "notes",
+          "value": [
+            "개별 탈락 경기 미확인. 본선 진출 실패와 별도 예선 참가/탈락 구분. 2021 아시아선수권 8위는 별도 확인되지만 이 사실만으로 랭킹 경로 종료 시점을 특정하지 않음."
+          ]
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-world-championship-2022",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-asian-games-2023",
+      "rows": [
+        {
+          "label": "12강 교차전",
+          "match": {
+            "opponent": "파키스탄",
+            "score": "0–3"
+          }
+        },
+        {
+          "label": "7·8위전",
+          "match": {
+            "opponent": "인도네시아",
+            "score": "3–2"
+          }
+        },
+        {
+          "label": "대회명",
+          "text": "항저우 2022 · 2023년 개최"
+        }
+      ],
+      "sourceIds": [
+        "hist-oca_profile"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "result",
+          "value": "7위"
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "qualificationOutcomes",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "matches",
+          "value": [
+            {
+              "stage": "Top 12 cross match",
+              "opponent": "PAK",
+              "setScore": "0-3"
+            },
+            {
+              "stage": "7th-8th classification",
+              "opponent": "INA",
+              "setScore": "3-2"
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "notes",
+          "value": [
+            "대회 공식 명칭은 Hangzhou 2022이며 실제 개최 연도는 2023.",
+            "Top 12 교차전 파키스탄전 0-3 패배 후 7~12위전으로 이동. 본선 미참가나 조별 예선 탈락으로 표기하지 않는다.",
+            "2022 항저우 아시안게임은 2023년에 개최. 대회 명칭과 실제 개최연도를 별도로 보존합니다.",
+            "개최연도는 확인했으며 정확한 대회 시작·종료일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-asian-games-2023",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-2025-avc-nations-cup",
+      "rows": [
+        {
+          "label": "3위 결정전",
+          "match": {
+            "opponent": "카타르",
+            "score": "0–3"
+          }
+        }
+      ],
+      "sourceIds": [
+        "now-avc25_final"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "result",
+          "value": "4위"
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "qualificationOutcomes",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "notes",
+          "value": [
+            "카타르와의 3·4위전 0–3 패. 2026 아시아선수권 불참으로 해석하면 안 됨.",
+            "대회 종료일 확인 · 시작일은 추가 확인 중입니다."
+          ]
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-2025-avc-nations-cup",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-2025-world-championship",
+      "rows": [
+        {
+          "label": "참가 경로",
+          "text": "세계랭킹으로 본선 진출"
+        },
+        {
+          "label": "조별리그",
+          "text": "C조 4위 · 0승 3패"
+        }
+      ],
+      "sourceIds": [
+        "now-w25_standings",
+        "now-w25_preview",
+        "now-w25_fra",
+        "now-w25_arg",
+        "now-w25_fin"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "result",
+          "value": "본선 참가 · 27위"
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "qualificationPath",
+          "value": "세계랭킹 경로로 본선 진출"
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "2025-world-championship-knockout",
+              "status": "not_qualified",
+              "label": "16강 진출 실패",
+              "stage": "본선 조별리그",
+              "sourceIds": [
+                "now-w25_standings",
+                "now-w25_preview",
+                "now-w25_fra",
+                "now-w25_arg",
+                "now-w25_fin"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "notes",
+          "value": [
+            "C조 4위 · 0승 3패 · 조별리그 탈락",
+            "본선 진출 실패로 표시 금지. 본선 조별리그 탈락과 출전 예선 탈락을 구분."
+          ]
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-2025-world-championship",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-2026-east-asian-championship",
+      "rows": [
+        {
+          "label": "결승",
+          "match": {
+            "opponent": "일본",
+            "score": "3–1"
+          }
+        }
+      ],
+      "sourceIds": [
+        "now-eastasia26_jva_results",
+        "now-eastasia26_jva_overview"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "result",
+          "value": "우승"
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "qualificationOutcomes",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "notes",
+          "value": [
+            "결승 한국–일본 3–1 (40–38,25–17,23–25,25–22). 한국 대표팀 선수 구성은 별도 확인 필요. 올림픽 직행 대회로 표기하지 않음."
+          ]
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-2026-east-asian-championship",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-2026-asian-championship",
+      "rows": [
+        {
+          "label": "준결승",
+          "match": {
+            "opponent": "일본",
+            "score": "0–3"
+          }
+        },
+        {
+          "label": "3위 결정전",
+          "match": {
+            "opponent": "호주",
+            "score": "3–2"
+          }
+        },
+        {
+          "label": "남은 LA28 경로",
+          "text": "2027 월드컵 · 2028 세계랭킹"
+        }
+      ],
+      "sourceIds": [
+        "now-asian26_final",
+        "now-asian26_semifinal",
+        "now-asian26_jpn_kor",
+        "now-la28_system",
+        "now-asian26_bronze_match"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "result",
+          "value": "3위"
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "2027-world-cup",
+              "status": "qualified",
+              "label": "2027 월드컵 출전 확정",
+              "date": "2026-09-13",
+              "sourceIds": [
+                "now-asian26_final",
+                "now-asian26_semifinal",
+                "now-asian26_jpn_kor",
+                "now-la28_system",
+                "now-asian26_bronze_match"
+              ]
+            },
+            {
+              "target": "2028-olympics-asia-direct",
+              "status": "not_qualified_via_this_route",
+              "label": "LA28 아시아 직행권 미획득",
+              "date": "2026-09-12",
+              "reason": "준결승 일본전 0–3 패배로 우승 경로 종료. 대륙 우승팀 일본에 직행권 배정.",
+              "inference": "대륙 우승팀 1장 규정 + 준결승 결과의 결합",
+              "sourceIds": [
+                "now-asian26_final",
+                "now-asian26_semifinal",
+                "now-asian26_jpn_kor",
+                "now-la28_system",
+                "now-asian26_bronze_match"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "matches",
+          "value": [
+            {
+              "date": "2026-09-13",
+              "opponent": "AUS",
+              "stage": "bronze",
+              "setsWon": 3,
+              "setsLost": 2,
+              "setScores": [
+                [
+                  16,
+                  25
+                ],
+                [
+                  25,
+                  18
+                ],
+                [
+                  22,
+                  25
+                ],
+                [
+                  25,
+                  18
+                ],
+                [
+                  15,
+                  9
+                ]
+              ],
+              "sources": [
+                "asian26_bronze_match",
+                "asian26_final"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "notes",
+          "value": [
+            "LA28 전체 본선 진출 실패가 아님. 2027 월드컵/2028 랭킹 경로 남음.",
+            "준결승: 한국–일본 0–3 (13–25,11–25,14–25). 동메달전: 한국–호주 3–2 (16–25,25–18,22–25,25–18,15–9)."
+          ]
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-2026-asian-championship",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-2027-world-cup",
+      "rows": [
+        {
+          "label": "LA28 출전 조건",
+          "text": "이미 출전권을 확보한 팀을 제외한 최종 순위 상위 3팀"
+        }
+      ],
+      "sourceIds": [
+        "now-worldcup27_field",
+        "now-worldcup27_fivb",
+        "now-worldcup_rename",
+        "now-la28_system"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "result",
+          "value": "대한민국 출전 확정"
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "eventStatus",
+          "value": "scheduled_confirmed"
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "2028-olympics",
+              "status": "pending",
+              "label": "LA28 출전권 도전",
+              "rule": "이미 올림픽 출전권을 얻은 팀을 제외한 최종 순위 상위 3팀",
+              "sourceIds": [
+                "now-worldcup27_field",
+                "now-worldcup27_fivb",
+                "now-worldcup_rename",
+                "now-la28_system"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "notes",
+          "value": [
+            "개최 확정·한국 출전 확정·결과 미정. 조 편성·개별 경기 일정 미확인."
+          ]
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-2027-world-cup",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ],
+      "recordHref": "fivb-world-cup-2027.html?gender=men"
+    },
+    {
+      "eventId": "kor-m-2028-world-ranking",
+      "rows": [
+        {
+          "label": "배정 기준",
+          "text": "2028 VNL 예선 종료 시점 FIVB 세계랭킹"
+        },
+        {
+          "label": "배정 순서",
+          "text": "미진출 대륙 우선 · 나머지 미확보국 랭킹순"
+        }
+      ],
+      "sourceIds": [
+        "now-la28_system",
+        "now-la28_fivb",
+        "now-la28_fivb_archived"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "result",
+          "value": "결과 미확정"
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "eventStatus",
+          "value": "scheduled_confirmed"
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "qualifierParticipation",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "qualificationPath",
+          "value": null
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "qualificationOutcomes",
+          "value": [
+            {
+              "target": "2028-olympics",
+              "status": "pending",
+              "label": "세계랭킹 최종 경로",
+              "rule": "2028 VNL 예선 종료 시점 세계랭킹으로 미진출팀 3장. 미진출 대륙 우선 규정 적용.",
+              "sourceIds": [
+                "now-la28_system",
+                "now-la28_fivb",
+                "now-la28_fivb_archived"
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "matches",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "notes",
+          "value": [
+            "독립된 경기 대회가 아닌 출전권 배분 절차. 대한민국 VNL 참가 여부와 랭킹 배분 기회를 혼동하지 않음.",
+            "FIVB /2026/09 게시 경로의 PDF도 본문 버전은 2025-12-10이며 2028-06-18을 명시. IOC 2026-05-12판과 일치."
+          ]
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "verifiedAt",
+          "value": "2026-11-16"
+        },
+        {
+          "eventId": "kor-m-2028-world-ranking",
+          "field": "updatedAt",
+          "value": "2026-11-16"
+        }
+      ],
+      "recordHref": "fivb-world-ranking-la28-2028.html?gender=men"
+    }
+  ],
+  "sources": [
+    {
+      "id": "hist-oca_profile",
+      "title": "OCA Hangzhou 2022 — Team Republic of Korea (Men)",
+      "url": "https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-w2022_teams",
+      "title": "Men’s World Champs: 30 days to go!",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-cup/2022/news/men-s-world-champs-30-days-to-go",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official article",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_standings",
+      "title": "Men's World Championship 2025 - Standings",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-cup/2025/standings/",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_preview",
+      "title": "Men’s World Championship Pool Previews: Pool C",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/news/men-s-world-championship-pool-previews-pool-c",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2025-09-09"
+    },
+    {
+      "id": "now-w25_fra",
+      "title": "France–Korea, 14 September 2025",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21075/?match=france-vs-korea",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_arg",
+      "title": "Argentina–Korea, 16 September 2025",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21087/?match=argentina-vs-korea",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-w25_fin",
+      "title": "Finland–Korea, 18 September 2025",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/men-world-championship/schedule/21103/?match=Finland-vs-Korea",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-avc25_final",
+      "title": "Bahrain snatch historic AVC Nations Cup gold",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/2025/news/bahrain-snatch-historic-avc-nations-cup-gold",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2025-06-25"
+    },
+    {
+      "id": "now-asian26_semifinal",
+      "title": "Japan and Iran on to continental final, book World Cup berths",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-and-iran-on-to-continental-final-book-world-cup-berths",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-09-12"
+    },
+    {
+      "id": "now-asian26_jpn_kor",
+      "title": "Japan–Korea semifinal, 12 September 2026",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/schedule/28851/?match=tbd-vs-tbd",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-asian26_final",
+      "title": "Japan triumph as Asian champs and qualify for LA 2028!",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-triumph-as-asian-champs-and-qualify-for-la-2028",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-09-13"
+    },
+    {
+      "id": "now-worldcup_rename",
+      "title": "The FIVB Volleyball World Cup Takes the Sport Into a New Era",
+      "url": "https://www.fivb.com/the-fivb-volleyball-world-cup-takes-the-sport-into-a-new-era/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-03-05"
+    },
+    {
+      "id": "now-worldcup27_field",
+      "title": "The field is set: 32 teams bound for the 2027 FIVB Men’s Volleyball World Cup in Poland",
+      "url": "https://en.volleyballworld.com/news/the-field-is-set-32-teams-bound-for-the-2027-fivb-men-s-volleyball-world-cup-in-poland",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-10-19"
+    },
+    {
+      "id": "now-worldcup27_fivb",
+      "title": "32 teams bound for the 2027 FIVB Men’s Volleyball World Cup in Poland",
+      "url": "https://www.fivb.com/32-teams-bound-for-the-2027-fivb-mens-volleyball-world-cup-in-poland/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-10-19"
+    },
+    {
+      "id": "now-la28_fivb",
+      "title": "Volleyball and beach volleyball qualification systems for LA28 Olympic Games confirmed",
+      "url": "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2025-12-11"
+    },
+    {
+      "id": "now-la28_system",
+      "title": "Qualification System – Games of the XXXIV Olympiad – LA28 – Volleyball",
+      "url": "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+      "publisher": "IOC / FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": "2026-05-12",
+      "publishedAt": null
+    },
+    {
+      "id": "now-la28_fivb_archived",
+      "title": "Qualification System LA28 Volleyball — version 10 December 2025",
+      "url": "https://www.fivb.com/wp-content/uploads/2026/09/VVO-LA28-Qualification-System-1.pdf",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": "2025-12-10",
+      "publishedAt": null
+    },
+    {
+      "id": "now-asian26_bronze_match",
+      "title": "Korea–Australia: 2026 Asian Championship bronze match",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/schedule/28853/?match=korea-vs-australia",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-eastasia26_jva_results",
+      "title": "2026男子アジア東部地区選手権大会 試合結果",
+      "url": "https://www.jva.or.jp/international2026/menasianeastern/?entry=result",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-eastasia26_jva_overview",
+      "title": "2026男子アジア東部地区選手権大会 概要",
+      "url": "https://www.jva.or.jp/international2026/menasianeastern/",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-kva-olympic-history",
+      "title": "올림픽 남자부 역대성적",
+      "url": "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=F&leagueCd=02",
+      "publisher": "대한배구협회",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-avc-tokyo2020-semifinal",
+      "title": "IRAN MAKE A STEP CLOSER TO SECURING TOKYO 2020 BERTH AFTER EPIC 3-2 COMEBACK WIN AGAINST KOREA",
+      "url": "https://asianvolleyball.net/new/iran-make-a-step-closer-to-securing-tokyo-2020-berth-after-epic-3-2-comeback-win-against-korea/",
+      "publisher": "AVC",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2020-01-11"
+    },
+    {
+      "id": "oly-va-2008-report",
+      "title": "46th Annual Report 2007–2008",
+      "url": "https://volleyball.org.au/wp-content/uploads/filr/2658/AnnualReport2007-2008.pdf",
+      "publisher": "Australian Volleyball Federation",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": "PDF 63번째 페이지 (인쇄 p.62), lines 3651–3668",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-fivb-2008-bulletin",
+      "title": "World Volley News No.25 March 2008",
+      "url": "https://www.fivb.org/EN/Infomedia/WorldVolleyNews/WV_News_25_E06%20final.pdf",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2008-03"
+    },
+    {
+      "id": "oly-jva-2012-report",
+      "title": "第３期・2012年度 事業報告書（2012年4月1日～2013年3月31日）",
+      "url": "https://www.jva.or.jp/wp-content/uploads/2024/02/2012-2013workreport2.pdf",
+      "publisher": "日本バレーボール協会",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": "男子大会 최종순위 lines 164–172",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-jva-2012-qualifier-entry",
+      "title": "2012ロンドンオリンピック世界最終予選兼アジア大陸予選大会 試合日決定！",
+      "url": "https://archive.jva.or.jp/news/20120216.html",
+      "publisher": "日本バレーボール協会",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2012-02-16"
+    },
+    {
+      "id": "oly-jva-2016-qualifier",
+      "title": "2016リオデジャネイロオリンピックバレーボール世界最終予選 大会概要",
+      "url": "https://oqt2016.jva.or.jp/outline/",
+      "publisher": "日本バレーボール協会 / 대회 조직위원회",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-jva-2016-all-qualifiers",
+      "title": "出場チームが続々決定！ 第31回オリンピック競技大会(2016/リオデジャネイロ)男女バレーボール競技",
+      "url": "https://www.jva.or.jp/topics/11254/",
+      "publisher": "日本バレーボール協会",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-fivb-2020-qualifier-rules",
+      "title": "Five Olympic vacancies at stake as five continental qualifiers set to begin",
+      "url": "https://www.fivb.com/five-olympic-vacancies-at-stake-as-five-continental-qualifiers-set-to-begin/",
+      "publisher": "FIVB",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "oly-fivb-paris2024-regulations",
+      "title": "GAMES OF THE XXXIII OLYMPIAD — PARIS 2024 VOLLEYBALL COMPETITION, Competition Regulations, Version 3",
+      "url": "https://images.volleyballworld.com/image/upload/fl_attachment/fivb-prd/mu9xuncsjrxpjy7hnld7.pdf",
+      "publisher": "FIVB / Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": "pp.5–7 예선 명단·진출방식, men's pools p.12",
+      "version": null,
+      "publishedAt": "2024-07-12"
+    },
+    {
+      "id": "oly-vw-paris2024-qualified",
+      "title": "Paris 2024: Men’s volleyball national teams qualified",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/volleyball-olympic-games-paris-2024/news/paris-2024-men-s-volleyball-national-teams-qualified",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2024-06-23"
+    }
+  ]
+}
