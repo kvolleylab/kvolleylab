@@ -73,7 +73,7 @@ function compatible(group,item){
   if(group.vbIds.size&&item.vb.id&&group.vbIds.has(item.vb.id))return true;
   return !!item.en&&group.names.has(norm(item.en));
 }
-function build(sourceSets,{country,gender,year,clubRegistry=null,profileResolver=null}={}){
+function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegistry=null,profileResolver=null}={}){
   if(!country||!/^[A-Z]{3}$/.test(country.code||'')||!['men','women'].includes(gender)
       ||!Number.isInteger(year)||!Array.isArray(sourceSets))throw Error('Invalid KVL unified roster identity scope');
   const groups=[],events=[];
@@ -118,6 +118,12 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,profileResolver
           &&clubRegistry?.teams?.[country.code]?.[String(p.number)];
       if(registered?.status==='CONFIRMED'&&knownClub(registered.club)&&/^https:\/\//.test(registered.source||'')){
         club=registered.club;clubCountry=leagueText(registered.leagueCountry);clubLeague=leagueText(registered.leagueName);proof=registered.source;asOf=registered.checkedAt||'2026-09';
+      }
+      const current=p.vb.id&&playerClubRegistry?.players?.[p.vb.id];
+      if(current&&['CONFIRMED','REVIEWED'].includes(current.status)&&knownClub(current.club)&&/^https:\/\//.test(current.source||'')){
+        if(current.dob&&p.dob&&current.dob!==p.dob)throw Error('Current club registry DOB mismatch: '+p.vb.id);
+        club=current.club;clubCountry=leagueText(current.leagueCountry);clubLeague=leagueText(current.leagueName);
+        proof=current.source;asOf=current.as_of||'';
       }
       if(club){
         if(g.club&&norm(g.club)!==norm(club))g.clubVariants.push({club:g.club,source:g.clubProof||'기존 대회 자료'});
@@ -181,6 +187,8 @@ function render(host,model){
   function row(p){
     const name=p.KVLProfile?'<a class="kvl-unified-name-link" href="'+esc(p.KVLProfile)+'"><strong>'+esc(title(p))+'</strong></a>':
       '<strong>'+esc(title(p))+'</strong>';
+    const reserve=p.matches.some(m=>/^vnl-/.test(String(m.slug||''))&&/\breserve\b/i.test(String(m.status||'')))
+      ?'<span class="kvl-unified-reserve" title="'+esc(model.year+' VNL 예비명단')+'">VNL 예비</span>':'';
     const vb=p.directBox?'<a href="'+esc(p.directBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 선수 프로필 열기">VB-&gt;</a>':
       p.searchBox?'<a href="'+esc(p.searchBox)+'" class="kvl-unified-volleybox" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 검색 결과 열기">VB 검색</a>':'<span class="kvl-unified-notknown">—</span>';
     const league=leagueLabel(p);
@@ -188,7 +196,7 @@ function render(host,model){
     const facts='<span class="kvl-unified-mobile-facts">'+esc(p.dob||'생년월일 미확인')+' · '+esc(p.position||'—')+' · '+(p.height?esc(p.height)+'cm':'신장 미확인')+'</span>';
     return '<div class="kvl-unified-row'+(selected===p.key?' is-selected':'')+'" data-kvl-unified-athlete="'+esc(p.key)+'" tabindex="0" role="option" aria-selected="'+(selected===p.key)+'">'+
       '<span class="kvl-unified-number">'+esc(p.number)+'</span>'+
-      '<span class="kvl-unified-name">'+name+(p.en&&norm(p.en)!==norm(title(p))?'<small>'+esc(p.en)+'</small>':'')+'</span>'+
+      '<span class="kvl-unified-name">'+name+reserve+(p.en&&norm(p.en)!==norm(title(p))?'<small>'+esc(p.en)+'</small>':'')+'</span>'+
       '<span class="kvl-unified-dob">'+esc(p.dob||'—')+'</span><span class="kvl-unified-pos">'+esc(p.position||'—')+'</span>'+
       '<span class="kvl-unified-height">'+(p.height?esc(p.height)+'cm':'—')+'</span>'+facts+
       '<span class="kvl-unified-club" title="'+esc(p.clubProof||'소속팀 미확인')+'">'+club+'</span>'+ 

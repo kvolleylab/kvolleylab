@@ -27,6 +27,8 @@ const COUNTRY_KO={
 };
 const CLUB_KO={
  'Pallavolo Padova':'파도바',
+ 'Hiroshima Thunders':'히로시마',
+ 'Hebei Baoding Wolves':'허베이 바오딩',
  'Cuneo Volley':'쿠네오',
  'MA Acqua S.Bernardo Cuneo':'쿠네오',
  'Panionios GSS':'파니오니오스',
@@ -53,6 +55,7 @@ const LEAGUE_KO={
  'Ligue A Masculine':'리그 A','Ligue B Masculine':'리그 B','Extraliga mužů':'엑스트랄리가',
  'Prime Volleyball League':'프라임 배구리그','Liga UNA Seguros':'리가 UNA 세구로스',
  'Volley League':'발리리그','First Division Volleyball League':'1부 배구리그',
+ 'Chinese Volleyball Super League':'중국 슈퍼리그',
  '1. Bundesliga':'분데스리가','2. Bundesliga':'2. 분데스리가'
 };
 
@@ -91,7 +94,7 @@ const leagueTier=(league,country)=>{
  if(/LIGUE B/.test(n))return'2부';
  if(/2\. BUNDESLIGA/.test(n))return'2부';
  if(/BUNDESLIGA/.test(n))return'1부';
- if(/IRANIAN SUPER LEAGUE|PRIME VOLLEYBALL LEAGUE|LIGA UNA SEGUROS|EXTRALIGA|VOLLEY LEAGUE|FIRST DIVISION/.test(n))return'1부';
+ if(/IRANIAN SUPER LEAGUE|PRIME VOLLEYBALL LEAGUE|LIGA UNA SEGUROS|EXTRALIGA|VOLLEY LEAGUE|FIRST DIVISION|CHINESE VOLLEYBALL SUPER LEAGUE/.test(n))return'1부';
  if(/SECOND DIVISION/.test(n))return'2부';
  return'';
 };

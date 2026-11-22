@@ -81,6 +81,9 @@ test('filtering and gender availability provide grounded country cards',()=>{
   const jp=cards.find(c=>c.code==='JPN');
   assert.equal(jp.flag,'🇯🇵');
   assert.match(dir.cardMarkup(jp),/data-ktd-country="JPN"/);
+  assert.match(dir.cardMarkup(jp),/data-ktd-country-card="JPN"/);
+  assert.match(dir.cardMarkup(jp),/role="button"/);
+  assert.match(dir.cardMarkup(jp),/tabindex="0"/);
   assert.match(dir.cardMarkup(jp),/연도·대회별 명단 보기/);
  }
  const women=api.cardEntries(countries,snapshots,'women');
@@ -208,4 +211,5 @@ test('integration routes preserve the protected teams page and original V-League
  assert.match(js,/KVLVLeagueDraftBridgeV1/);
  assert.match(js,/KVLVLeagueRosterV2/);
  assert.match(js,/sourceIndex\.snapshots/);
+ assert.match(js,/data-ktd-country-card/);
 });
