@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>팀 선수명단 표준 프로토타입 | K-Volley Lab</title>
+  <meta name="description" content="프로·대학·학교 팀부터 40개 국제 국가대표팀의 연도별 대회 명단과 후보 선발 이력을 조회합니다.">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/site-theme-light.css">
+  <link rel="stylesheet" href="assets/css/kvl-teams-directory-v1.css?v=20261120-grid-v1">
+  <link rel="stylesheet" href="assets/css/kvl-international-countries-v1.css?v=20261120-flags-v1">
+  <link rel="stylesheet" href="assets/css/kvl-international-unified-roster-v1.css?v=20261120-type-v3">
+  <link rel="stylesheet" href="assets/css/kvl-vleague-roster-v2.css?v=20261118-1">
+  <link rel="stylesheet" href="assets/css/prototype-team-roster-standard-v1.css?v=20261122-1">
+  <script src="assets/js/unified-nav.js?v=20261118-1" defer></script>
+  <script src="assets/js/player-id-collision-quarantine-v1.js?v=20261118-1" defer></script>
+  <script src="assets/js/kvl-vleague-draft-bridge-v1.js?v=20261118-1" defer></script>
+  <script src="assets/js/kvl-vleague-roster-v2.js?v=20261118-1" defer></script>
+  <script src="assets/js/kvl-international-unified-roster-v1.js?v=20261120-country-v1" defer></script>
+  <script src="assets/js/kvl-international-countries-v1.js?v=20261120-flags-v1" defer></script>
+  <script src="assets/js/kvl-teams-directory-v1.js?v=20261122-coach-v1" defer></script>
+  <script src="assets/js/prototype-team-roster-standard-v1.js?v=20261122-1" defer></script>
+</head>
+<body class="ktd-page">
+  <div class="kvl-prototype-banner">PROTOTYPE · 선수명단 공통 규격 v1 · 운영 페이지 미반영</div>
+  <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
+  <main class="ktd-main" id="main-content">
+    <section class="ktd-hero">
+      <p class="ktd-eyebrow">K-VOLLEY LAB · TEAM DIRECTORY</p>
+      <h1>팀 찾기</h1>
+      <p>현재 운영 팀 페이지를 유지한 채 선수명단 영역만 공통 규격으로 검수하는 프로토타입입니다.</p>
+    </section>
+
+    <nav class="ktd-categories" aria-label="팀 분류 선택" id="ktdCategories">
+      <button type="button" data-ktd-category="pro" aria-pressed="true">프로</button>
+      <button type="button" data-ktd-category="university" aria-pressed="false">대학</button>
+      <button type="button" data-ktd-category="high" aria-pressed="false">고교</button>
+      <button type="button" data-ktd-category="middle" aria-pressed="false">중학</button>
+      <button type="button" data-ktd-category="national" aria-pressed="false">대표팀</button>
+      <button type="button" data-ktd-category="international" aria-pressed="false">국제</button>
+    </nav>
+
+    <section class="ktd-directory" aria-labelledby="ktdHeading">
+      <div class="ktd-heading-row">
+        <div>
+          <p class="ktd-section-eyebrow" id="ktdSectionEyebrow">PRO VOLLEYBALL</p>
+          <h2 id="ktdHeading">프로 팀</h2>
+          <p id="ktdSummary" class="ktd-summary" role="status">최신 공식 선수명단을 불러오는 중입니다.</p>
+        </div>
+        <button class="ktd-refresh" id="ktdRefresh" type="button" aria-label="팀 정보 최신 데이터 다시 불러오기">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.6 6.1M20 4v7h-7"/></svg>
+          새로고침
+        </button>
+      </div>
+
+      <div class="ktd-controls">
+        <div class="ktd-gender" role="group" aria-label="남녀부 선택" id="ktdGenderButtons">
+          <button type="button" data-ktd-gender="men" aria-pressed="true">MEN <span>남자부</span></button>
+          <button type="button" data-ktd-gender="women" aria-pressed="false">WOMEN <span>여자부</span></button>
+        </div>
+        <label class="ktd-search-label"><span class="sr-only">팀 이름 검색</span><input id="ktdSearch" type="search" placeholder="팀 이름 검색" autocomplete="off"></label>
+      </div>
+
+      <div id="ktdRegionFilters" class="ktd-country-regions" role="group" aria-label="대륙별 국가 선택" hidden>
+        <button type="button" data-ktd-region="all" aria-pressed="true">전체</button>
+        <button type="button" data-ktd-region="asia" aria-pressed="false">아시아</button>
+        <button type="button" data-ktd-region="europe" aria-pressed="false">유럽</button>
+        <button type="button" data-ktd-region="north_america" aria-pressed="false">북중미</button>
+        <button type="button" data-ktd-region="south_america" aria-pressed="false">남미</button>
+        <button type="button" data-ktd-region="oceania" aria-pressed="false">오세아니아</button>
+        <button type="button" data-ktd-region="africa" aria-pressed="false">아프리카</button>
+      </div>
+      <p class="ktd-source-note" id="ktdSourceNote">2026–27 V-리그 · 현재 구단 등록 공시 기준</p>
+      <section class="ktd-roster-wrap ktd-country-wrap" id="ktdCountryArea" aria-label="선택한 국가의 대표팀 역사·대회명단" hidden></section>
+      <div id="ktdGrid" class="ktd-grid" aria-live="polite" aria-busy="true"><p class="ktd-loading">팀 정보를 불러오는 중입니다.</p></div>
+    </section>
+
+    <section class="ktd-roster-wrap" id="ktdRosterArea" aria-label="선택한 팀 선수명단" hidden>
+      <div class="ktd-roster-heading">
+        <div><p class="ktd-section-eyebrow">VERIFIED CLUB ROSTER</p><h2 id="ktdRosterHeading">선수명단</h2></div>
+        <button type="button" id="ktdCloseRoster" class="ktd-close" aria-label="선수명단 닫기">닫기 ×</button>
+      </div>
+      <div id="ktdRosterHost" class="ktd-roster-host"></div>
+    </section>
+    <noscript><p>팀 목록은 JavaScript를 사용합니다. <a href="competition-engine.html?competition=v-league-men-2026-27&amp;view=rosters">V-리그 선수명단</a>에서 확인할 수 있습니다.</p></noscript>
+  </main>
+  <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data &amp; Analytics.</footer>
+</body>
+</html>
