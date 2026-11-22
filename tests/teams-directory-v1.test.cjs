@@ -50,7 +50,7 @@ test('Responsive team finder cards use 3 columns on wide PC and 2 vertical colum
  const pro=dir.buildPro(male.participants,menRosters,staff,'men',season);
  assert.equal(pro.length,7);
  const card=dir.cardMarkup(pro.find(x=>x.code==='OKF'));
- assert.match(card,/감독\s*:/,'coach must remain visible');
+ assert.match(card,/감독대행\s*:/,'acting coach must be distinguished from permanent head coach');
  assert.match(card,/선수명단 보기/,'original roster action must remain');
  assert.match(card,/ktd-card-logo/,'club logo remains in card');
 });
@@ -89,7 +89,23 @@ test('all fourteen 2026-27 coaches are sourced and current road coach was promot
  assert.equal(staff.women.KEX.asOf,'2026-10-29');
  assert.ok(staff.women.KEX.source.includes('yna.co.kr'));
  assert.equal(staff.men.KAL.name,'헤난 달 조토');
- assert.equal(staff.men.OKF.name,'신영철');
+ assert.equal(staff.men.OKF.name,'김재헌');
+ assert.equal(staff.men.OKF.role,'acting');
+ assert.equal(staff.men.OKF.asOf,'2026-11-17');
+ assert.ok(staff.men.OKF.source.includes('okfinancialsports.com/volleyball/story/news_content.asp?num=4807'));
+ assert.deepEqual(
+  {name:staff.men.OKF.transition.previousCoach,date:staff.men.OKF.transition.date,kind:staff.men.OKF.transition.kind},
+  {name:'신영철',date:'2026-11-17',kind:'resignation'}
+ );
+ const actual=dir.buildPro(male.participants,menRosters,staff,'men',season);
+ const acting=actual.find(x=>x.code==='OKF');
+ assert.equal(acting.coach,'김재헌');
+ assert.equal(acting.coachRole,'감독대행');
+ assert.equal(acting.coachAsOf,'2026-11-17');
+ assert.equal(acting.coachSource,staff.men.OKF.source);
+ assert.match(dir.cardMarkup(acting),/감독대행\s*:\s*<b>김재헌<\/b>/);
+ assert.doesNotMatch(dir.cardMarkup(acting),/신영철/,'resigned coach must not appear as the current coach');
+ assert.ok(actual.filter(x=>x.code!=='OKF').every(x=>x.coachRole==='감독'),'all remaining club head coach labels unchanged');
  const altered={...staff,season:'2027-28'};
  const men=dir.buildPro(male.participants,menRosters,altered,'men','2026-27');
  assert.ok(men.every(x=>x.coach===''),'new seasons never inherit old coaches silently');
