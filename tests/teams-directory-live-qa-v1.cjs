@@ -23,7 +23,10 @@ async function ready(){
     if(href){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
-     if(html.includes('20261120-grid-v1')&&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp'))return;
+     if(html.includes('20261120-grid-v1')&&html.includes('20261122-coach-v1')&&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
+       const staff=await read('data/team-rosters/v-league/coaches-2026-27.json');
+       if(staff?.men?.OKF?.name==='김재헌'&&staff.men.OKF.role==='acting'&&staff.men.OKF.asOf==='2026-11-17')return;
+      }
     }
    }
    last='HTTP '+r.status+' or new directory marker not yet public';
@@ -118,6 +121,11 @@ async function check(browser,gender,code,player,linked,width){
     'PC horizontal cards retain their 31% logo column: '+JSON.stringify(css));
   }
   assert.ok(css.width<=css.viewport+2,'Mobile layout overflow');
+  if(gender==='men'){
+   const acting=page.locator('.ktd-card[data-team-code="OKF"]');
+   assert.match(await acting.innerText(),/감독대행\s*:\s*김재헌/,'Actual site must show official OKF acting coach');
+   assert.doesNotMatch(await acting.innerText(),/신영철/,'Former head coach must not be shown as current');
+  }
   const club=page.locator('.ktd-card[data-team-code="'+code+'"]').first();
   await club.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
