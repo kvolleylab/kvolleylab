@@ -22,7 +22,7 @@ async function waitForDeployment(){
    const res=await fetch(BASE+'/teams.html?verify='+encodeURIComponent(SHA)+'-'+tries,
     {cache:'no-store',signal:AbortSignal.timeout(16000)});
    const html=res.ok?await res.text():'';
-   if(html.includes('kvl-international-countries-v1.js')&&html.includes('ktdCountryArea')){
+   if(html.includes('kvl-international-countries-v1.js?v=20261122-country-ux-v2')&&html.includes('ktdCountryArea')){
     const country=await getJson('data/international/country-directory-v1.json');
     const roster=await getJson('data/international/country-roster-index-v1.json');
     const clubs=await getJson('data/international/player-club-registry-2026-27-v1.json');
