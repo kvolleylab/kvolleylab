@@ -122,7 +122,8 @@ async function main(){
   });
   assert.ok(logoFraction>=.29&&logoFraction<=.33,'approved one-third logo column');
   const okCard=page.locator('.ktd-card').filter({hasText:'OK저축은행'}).first();
-  assert.match(await okCard.innerText(),/신영철/);
+  assert.match(await okCard.innerText(),/감독대행\s*:\s*김재헌/,'Show official acting role instead of former head coach');
+  assert.doesNotMatch(await okCard.innerText(),/신영철/,'Do not label resigned coach as current');
   await okCard.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),men.OKF.players.length);

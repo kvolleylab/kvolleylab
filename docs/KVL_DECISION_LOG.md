@@ -1,5 +1,17 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-22 · OK저축은행 감독대행 공식 반영 및 V-리그 오늘 경기 우선 표시
+
+Status: USER REQUESTED PRODUCTION / FEATURE BRANCH IMPLEMENTED / RELEASE REQUIRES QA AND PAGES EVIDENCE.
+사용자는 2026-27 V-리그 OK저축은행 신영철 감독의 사퇴와 김재헌 감독대행 체제를 홈페이지에 반영하고, V-리그 페이지의 `오늘 경기`와 `최근 결과` 카드 노출 순서를 바꾸어 `오늘 경기`가 먼저 나오도록 요청했다.
+
+**공식 근거:** OK저축은행 읏맨 배구단이 2026-11-17에 발표한 [구단 공식 소식](https://www.okfinancialsports.com/volleyball/story/news_content.asp?num=4807&page=1)에 따르면 신영철 감독은 사퇴했고, 같은 날 한국전력 경기부터 김재헌 수석코치가 감독대행으로 선수단을 지휘한다. 제3자 기사 [연합뉴스 2026-11-17](https://www.yna.co.kr/view/AKR20261117089800007)에서도 교차 확인. 정식 신임 감독 선임으로 단정하지 않는다.
+
+**변경:** `data/team-rosters/v-league/coaches-2026-27.json`에 OKF 현 감독대행 `김재헌`/`role: acting`/`asOf: 2026-11-17` 및 사퇴한 종전 감독 `신영철`의 변경 이력과 공식 발표 URL 기록. `assets/js/kvl-teams-directory-v1.js`는 OKF 카드만 `감독대행 : 김재헌`으로 표시하고 나머지 13개 남녀 팀 감독 표기는 유지한다. KOVO 선수 공시·로스터 파일과 선수 프로필·고교/대학 데이터를 변경하지 않는다.
+V-리그 남녀부 `competition-engine.html?competition=v-league-(men|women)-2026-27&view=overview`의 공통 `assets/js/kvl-domestic-home-v2.js` 요약에서 종전 `최근 결과 → 오늘/다음 경기` 순서를 `오늘/다음 경기 → 최근 결과`로 변경한다. 경기 선별 로직, 실시간 세트/득점, 경기 데이터/경기ID/상태·경기시간, KOVO 수집, 홈의 오늘 경기/최근 경기 UI 등은 변경하지 않는다. 화면 제목도 이에 맞춰 순서를 표시한다.
+
+기준 main `1d0ffb88c7f0075ae656e5da6e5a98289d8b38cb`. `teams.html`, `competition-engine.html`의 관련 JS 캐시 쿼리만 갱신. 검증·복구는 [2026-11-22 인계](validation/okf-acting-coach-vleague-today-first-v1-20261122.md) 참조. 운영 배포 상태는 GitHub PR 병합·Pages 성공과 동일 SHA 실제 홈페이지 검증 이후 확인한다.
+
 ## 2026-11-21 · Preserve honest waiting states in the live publisher candidate gate
 
 Status: USER REQUESTED REPAIR / IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED.

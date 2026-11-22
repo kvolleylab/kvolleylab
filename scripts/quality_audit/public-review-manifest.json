@@ -2,6 +2,17 @@
   "schema_version": 1,
   "purpose": "Changed public JSON requires reviewed source IDs, PUBLIC + VERIFIED, verified_at and exact SHA-256. Empty does not approve legacy records.",
   "files": {
+    "data/team-rosters/v-league/coaches-2026-27.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "OKF-OFFICIAL-NEWS-20261117-4807"
+      ],
+      "verified_at": "2026-11-22",
+      "sha256": "7a33b62bd21ff2a33bec843fa480648c63ed98e9a2972d0e04fa576f7f02d213",
+      "evidence": "docs/validation/okf-acting-coach-vleague-today-first-v1-20261122.md",
+      "review_note": "2026-11-17 OK저축은행 구단 공식 발표와 연합뉴스 교차 확인. 김재헌은 정식 감독이 아닌 감독대행. 신영철의 공개 사퇴 이력을 보존하고 기존 13개 팀의 시즌별 감독 및 선수 자료는 유지. 공개적으로 발표된 지도자 인사 사실만 포함한다."
+    },
     "data/team-rosters/v-league/index.json": {
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
