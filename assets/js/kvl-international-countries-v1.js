@@ -157,11 +157,11 @@ function render(host,opts){
  let selectedSnapshot=null,alive=true;
  const candidateSets=()=>selection.sets.filter(s=>s.country_code===country.code&&s.gender===gender&&s.year===year);
  host.innerHTML='<div class="ktd-country-panel">'+
-  '<button type="button" class="ktd-country-back" data-country-close>← 국가 목록</button>'+
   '<div class="ktd-country-top"><div class="ktd-country-heading"><div class="ktd-country-flag">'+countryFlagImage(country)+'</div>'+
   '<div><p class="ktd-section-eyebrow">NATIONAL TEAM HISTORY · '+esc(country.code)+'</p>'+
-  '<h2>'+esc(country.name_ko)+'</h2><p>'+esc(country.name_en)+' · '+(gender==='men'?'남자대표팀':'여자대표팀')+'</p></div></div></div>'+
-  '<div class="ktd-country-toolbar"><label class="ktd-country-year-select"><span>연도</span><select data-country-year-select aria-label="연도별 명단 선택"></select></label></div>'+
+  '<h2>'+esc(country.name_ko)+'</h2><p>'+esc(country.name_en)+' · '+(gender==='men'?'남자대표팀':'여자대표팀')+'</p></div></div>'+
+  '<div class="ktd-country-head-actions"><button type="button" class="ktd-country-back" data-country-close>← 국가 목록</button>'+
+  '<label class="ktd-country-year-select"><span>연도</span><select data-country-year-select aria-label="연도별 명단 선택"></select></label></div></div>'+
   '<section data-country-unified class="ktd-country-unified" aria-label="연도별 통합 선수명단" hidden></section>'+
   '<nav data-country-events class="ktd-country-links" aria-label="대회 바로가기"></nav>'+
   '<section class="ktd-country-selection"><h3>후보·선발 이력</h3><div data-country-selection></div></section>'+
@@ -193,7 +193,7 @@ function render(host,opts){
     if(!team||!Array.isArray(team.players))throw Error('대회 원본명단 확인 실패: '+snapshot.snapshot_id);
     return {snapshot,team};
    }));
-   const [clubIndex,master,currentClubs]=await Promise.all([
+   const [clubIndex,master,currentClubs,volleyboxRegistry]=await Promise.all([
     displayYear===2026&&gender==='men'&&refs.some(x=>x.competition_slug==='avc-men-continental-2026')
       ?readJSON('data/competitions/avc-men-continental-2026-clubs-2026-27.json').catch(err=>{
         console.warn('[KVL international: club evidence unavailable]',err);return null;
@@ -204,12 +204,16 @@ function render(host,opts){
        }):Promise.resolve([]),
     readJSON('data/international/player-club-registry-2026-27-v1.json').catch(err=>{
       console.warn('[KVL international: current club registry unavailable]',err);return null;
-    })
+    }),
+    displayYear===2026&&gender==='men'&&refs.some(x=>x.competition_slug==='avc-men-continental-2026')
+      ?readJSON('data/competitions/avc-men-continental-2026-volleybox-links.json').catch(err=>{
+        console.warn('[KVL international: Volleybox evidence unavailable]',err);return null;
+       }):Promise.resolve(null)
    ]);
    if(!alive||ticket!==unifiedTicket||displayYear!==year)return;
    const collision=typeof window==='object'?window.KVLPlayerIdCollisionV1:null;
    const model=ui.build(sourceSets,{
-    country,gender,year:displayYear,clubRegistry:clubIndex,playerClubRegistry:currentClubs,
+    country,gender,year:displayYear,clubRegistry:clubIndex,playerClubRegistry:currentClubs,volleyboxRegistry,
     profileResolver:raw=>verifiedProfileLink(normalizePlayer(raw),gender,country,master,collision)
    });
    unifiedInstance=ui.render(unifiedHost,model);
@@ -261,12 +265,20 @@ function render(host,opts){
   try{
    const db=await readJSON(snap.source_path),team=sourceTeam(snap,db);
    if(!team||!Array.isArray(team.players))throw Error('Missing original tournament roster');
-   const players=team.players.map(normalizePlayer);
+   const players=team.players.map(normalizePlayer).sort((a,b)=>{
+    const an=Number.isInteger(Number(a.number))?Number(a.number):Number.POSITIVE_INFINITY;
+    const bn=Number.isInteger(Number(b.number))?Number(b.number):Number.POSITIVE_INFINITY;
+    return an-bn||String(a.en||a.name||'').localeCompare(String(b.en||b.name||''),'en');
+   });
    const sourceCountChanged=players.length!==snap.player_count;
-   let master=[],clubRegistry=null;
+   let master=[],clubRegistry=null,volleyboxRegistry=null;
    if(snap.competition_slug==='avc-men-continental-2026'&&gender==='men'){
-    try{clubRegistry=await readJSON('data/competitions/avc-men-continental-2026-clubs-2026-27.json')}
-    catch(e){console.warn('[KVL international per-event club registry optional]',e)}
+    try{
+     [clubRegistry,volleyboxRegistry]=await Promise.all([
+      readJSON('data/competitions/avc-men-continental-2026-clubs-2026-27.json'),
+      readJSON('data/competitions/avc-men-continental-2026-volleybox-links.json')
+     ]);
+    }catch(e){console.warn('[KVL international per-event evidence registry optional]',e)}
    }
    if(players.some(p=>ID.test(p.source_player_id||''))){
     try{master=await readJSON('data/master/player_master_international_v1.json')}catch(e){console.warn('[KVL international master optional]',e)}
@@ -281,7 +293,10 @@ function render(host,opts){
     players.map(p=>{
      const link=verifiedProfileLink(p,gender,country,master,collision);
      const profile=p.official_profile?'<a href="'+esc(p.official_profile)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'';
-     const vol=p.volleybox?'<a href="'+esc(p.volleybox)+'" target="_blank" rel="noopener noreferrer" aria-label="'+(p.is_volleybox_search?'Volleybox 검색 결과 열기':'Volleybox 선수 프로필 열기')+'">'+(p.is_volleybox_search?'VB 검색':'VB-&gt;')+'</a>':'';
+     const registeredVolleybox=volleyboxRegistry?.teams?.[country.code]?.[String(p.number)]||'';
+     const volleyboxUrl=/^https:\/\/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(registeredVolleybox)?registeredVolleybox:p.volleybox;
+     const volleyboxSearch=!registeredVolleybox&&p.is_volleybox_search;
+     const vol=volleyboxUrl?'<a href="'+esc(volleyboxUrl)+'" target="_blank" rel="noopener noreferrer" aria-label="'+(volleyboxSearch?'Volleybox 검색 결과 열기':'Volleybox 선수 프로필 열기')+'">'+(volleyboxSearch?'VB 검색':'VB-&gt;')+'</a>':'';
      const registered=clubRegistry?.teams?.[country.code]?.[String(p.number)];
      const verified=registered?.status==='CONFIRMED'&&typeof registered.club==='string'
       &&!!registered.club.trim()&&/^https:\/\//.test(registered.source||'');
