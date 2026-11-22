@@ -271,7 +271,10 @@ function render(host,opts){
     return an-bn||String(a.en||a.name||'').localeCompare(String(b.en||b.name||''),'en');
    });
    const sourceCountChanged=players.length!==snap.player_count;
-   let master=[],clubRegistry=null,volleyboxRegistry=null;
+   let master=[],clubRegistry=null,volleyboxRegistry=null,currentClubs=null;
+   try{
+    currentClubs=await readJSON('data/international/player-club-registry-2026-27-v1.json');
+   }catch(e){console.warn('[KVL international per-event current club registry optional]',e)}
    if(snap.competition_slug==='avc-men-continental-2026'&&gender==='men'){
     try{
      [clubRegistry,volleyboxRegistry]=await Promise.all([
@@ -300,9 +303,14 @@ function render(host,opts){
      const registered=clubRegistry?.teams?.[country.code]?.[String(p.number)];
      const verified=registered?.status==='CONFIRMED'&&typeof registered.club==='string'
       &&!!registered.club.trim()&&/^https:\/\//.test(registered.source||'');
-     const club=verified?registered.club:p.club;
-     const leagueCountry=verified?String(registered.leagueCountry||'').trim():p.club_country;
-     const leagueName=verified?String(registered.leagueName||'').trim():p.club_league;
+     const currentId=(String(volleyboxUrl||'').match(/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p(\d+)/i)||[])[1]||'';
+     const current=currentId&&currentClubs?.players?.[currentId];
+     const currentVerified=current&&['CONFIRMED','REVIEWED'].includes(current.status)
+      &&typeof current.club==='string'&&!!current.club.trim()&&/^https:\/\//.test(current.source||'')
+      &&(!current.dob||!p.dob||current.dob===p.dob);
+     const club=currentVerified?current.club:verified?registered.club:p.club;
+     const leagueCountry=currentVerified?String(current.leagueCountry||'').trim():verified?String(registered.leagueCountry||'').trim():p.club_country;
+     const leagueName=currentVerified?String(current.leagueName||'').trim():verified?String(registered.leagueName||'').trim():p.club_league;
      // Match the year-unified roster's country-only label. Do not infer unknown leagues.
      const countryFormatter=typeof window==='object'?window.KVLInternationalUnifiedRosterV1?.countryLabel:null;
      const countryDisplay=leagueCountry?(typeof countryFormatter==='function'?countryFormatter(leagueCountry):leagueCountry.toUpperCase()):'';
