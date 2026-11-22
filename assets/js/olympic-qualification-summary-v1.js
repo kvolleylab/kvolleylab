@@ -1,5 +1,7 @@
 import {resolveCycle,summaryView} from './olympic-cycle-model-v1.mjs';
 import {mountContinentalSelector} from './continental-selector-v1.js';
+import {mountWorldCupSelector} from './world-cup-selector-v1.js';
+import {mountHostSelector} from './olympic-host-selector-v1.js';
 const root=document.getElementById('olympic-summary');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const destination=s=>{const u=new URL(s.url,location.href);const internal=u.origin===location.origin||u.origin==='https://kvolleylab.com';return {href:internal?u.pathname.slice(1)+u.search+u.hash:u.href,external:!internal};};
@@ -21,6 +23,8 @@ async function load(){
   root.innerHTML=`<div class="oq-overview"><div class="oq-heading"><div><p class="oq-eyebrow">올림픽 출전권</p><h2 id="oq-title">${esc(view.title)}</h2></div><span class="oq-cycle-badge" title="${esc(status)}">${badge}</span></div>${view.known?`<p class="oq-total">남녀 각각 <strong>${view.totalPerGender}개국</strong> 기준</p><div class="oq-quota-grid" aria-label="올림픽 출전권 배분">${view.allocation.map(quota).join('')}</div>`:`<div class="oq-awaiting"><strong>${esc(view.notice)}</strong><p>배정 수량과 참가 경로는 공식 발표를 확인한 뒤 안내합니다.</p></div>`}<div class="oq-korea" aria-label="대한민국 남자대표팀 출전 현황">${view.korea.map((s,i)=>`<span class="oq-korea-${i}">${esc(s)}</span>`).join('')}</div></div>${details(c)}<div class="oq-cycle-links"><details id="olympic-cycle-history"><summary>과거 올림픽 보기</summary><div>${registry.archiveIndex.length?registry.archiveIndex.map(e=>`<a href="?cycle=${encodeURIComponent(e.cycleId)}">${esc(e.label)} · 보관 기록</a>`).join(''):'<p>아직 보관된 지난 올림픽 자료가 없습니다.</p>'}${registry.cycles.map(e=>`<a href="?cycle=${encodeURIComponent(e.id)}">${esc(e.label)}${e.id===registry.activeCycleId?' · 현재 주기':e.year>c.year?' · 다음 주기':''}</a>`).join('')}</div></details><a href="national-team-history-verification.html">기록 확인 기준 ↗</a></div>`;
   root.dataset.cycle=c.id;root.dataset.rules=c.rules.status;
   mountContinentalSelector(root,c);
+  mountWorldCupSelector(root,c);
+  mountHostSelector(root,c);
  }catch{root.innerHTML='<h2>올림픽 출전권 한눈에 보기</h2><p>출전권 자료를 불러오지 못했습니다. 아래 역사 기록은 계속 볼 수 있습니다.</p><button type="button" id="oq-retry">다시 불러오기</button>';root.querySelector('#oq-retry').addEventListener('click',load);}
 }
 load();

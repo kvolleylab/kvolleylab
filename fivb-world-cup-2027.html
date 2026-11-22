@@ -10,77 +10,24 @@
   <link rel="stylesheet" href="assets/css/la28-volleyball-qualification.css?v=20260725-2">
   <link rel="stylesheet" href="assets/css/la28-continental-links.css?v=20260810-2">
   <link rel="stylesheet" href="assets/css/national-team-gender-theme.css?v=20260810-1">
-  <script src="assets/js/unified-nav.js?v=20260810-1" defer></script>
+  <script src="assets/js/unified-nav.js?v=20261117-roadmap-v1" defer></script>
+  <link rel="stylesheet" href="assets/css/world-cup-overview-v1.css?v=20261118-v1">
 </head>
-<body class="la28-page">
+<body class="la28-page wc-page" data-gender="men">
   <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
   <main class="lq-main">
-    <a href="olympic-roadmap.html?cycle=la2028" style="display:inline-flex;margin-bottom:14px;color:#1d7651;font:800 13px Arial,sans-serif;text-decoration:none">← LA28 출전권·대표팀 로드맵</a>
-
+    <a class="wc-back" id="world-cup-return" href="olympic-roadmap.html?cycle=la2028&amp;worldcup=men">← LA28 출전권·대표팀 로드맵</a>
     <section class="lq-hero">
-      <p class="eyebrow">NATIONAL TEAM · 2027 WORLD CUP</p>
-      <h1>2027 FIVB Volleyball World Cup</h1>
-      <p>2027년 대회부터 기존 FIVB Volleyball World Championship 명칭이 FIVB Volleyball World Cup으로 변경됩니다. 남자부와 여자부를 분리해 개최 정보와 LA28 출전 경로를 확인합니다.</p>
-      <div class="lq-chips"><span>남녀 각 32개국</span><span>LA28 출전권 3장</span><span>공식 발표 기준</span></div>
+      <p class="eyebrow">NATIONAL TEAM · FIVB WORLD CUP</p>
+      <h1 id="world-cup-title">2027 FIVB 월드컵</h1>
+      <p id="world-cup-intro">대회 정보와 대한민국의 올림픽 출전 경로를 확인합니다.</p>
+      <div class="lq-chips" id="world-cup-chips"></div>
     </section>
-
-    <section class="lq-section">
-      <div class="nt-gender-tabs" role="tablist" aria-label="성별 선택">
-        <button class="nt-gender-tab men active" type="button" data-target="men" role="tab" aria-selected="true">남자부 <small>Men · Navy</small></button>
-        <button class="nt-gender-tab women" type="button" data-target="women" role="tab" aria-selected="false">여자부 <small>Women · Soft Rose</small></button>
-      </div>
-    </section>
-
-    <section class="lq-section nt-gender-panel" data-gender="men" id="menPanel">
-      <div class="lq-section-head"><div><p class="eyebrow">MEN · 2027 WORLD CUP</p><h2 class="nt-section-title">남자부 대회 개요</h2></div><span class="nt-accent-chip">Navy</span></div>
-      <div class="lq-quota-grid">
-        <article class="nt-accent-card"><strong>POL</strong><h3>개최국</h3><p>남자대회는 폴란드에서 개최됩니다.</p></article>
-        <article class="nt-accent-card"><strong>32</strong><h3>참가국</h3><p>32개 국가대표팀이 참가합니다.</p></article>
-        <article class="nt-accent-card"><strong>3</strong><h3>LA28 출전권</h3><p>이미 출전권을 확보한 국가를 제외한 최종 순위 상위 3개국이 LA28 출전권을 획득합니다.</p></article>
-        <article class="nt-accent-card"><strong>2027</strong><h3>상세 일정</h3><p>조 편성·경기 일정·공식 엔트리는 발표 후 연결합니다.</p></article>
-      </div>
-    </section>
-
-    <section class="lq-section nt-gender-panel nt-hidden" data-gender="women" id="womenPanel">
-      <div class="lq-section-head"><div><p class="eyebrow">WOMEN · 2027 WORLD CUP</p><h2 class="nt-section-title">여자부 대회 개요</h2></div><span class="nt-accent-chip">Soft Rose</span></div>
-      <div class="lq-quota-grid">
-        <article class="nt-accent-card"><strong>USA/CAN</strong><h3>개최국</h3><p>여자대회는 미국과 캐나다가 공동 개최합니다.</p></article>
-        <article class="nt-accent-card"><strong>32</strong><h3>참가국</h3><p>32개 국가대표팀이 참가합니다.</p></article>
-        <article class="nt-accent-card"><strong>3</strong><h3>LA28 출전권</h3><p>이미 출전권을 확보한 국가를 제외한 최종 순위 상위 3개국이 LA28 출전권을 획득합니다.</p></article>
-        <article class="nt-accent-card"><strong>2027</strong><h3>상세 일정</h3><p>조 편성·경기 일정·공식 엔트리는 발표 후 연결합니다.</p></article>
-      </div>
-    </section>
-
-    <section class="lq-section">
-      <div class="lq-section-head"><div><p class="eyebrow">TOURNAMENT STRUCTURE</p><h2>대회 구조</h2></div><span class="status pending">세부 일정 대기</span></div>
-      <div class="lq-table-wrap"><table><thead><tr><th>항목</th><th>현재 확인 내용</th><th>상태</th></tr></thead><tbody>
-        <tr><td>참가 규모</td><td>남녀 각 32개국</td><td><span class="status active">확정</span></td></tr>
-        <tr><td>조 편성</td><td>공식 발표 후 반영</td><td><span class="status pending">대기</span></td></tr>
-        <tr><td>세부 경기일정</td><td>공식 발표 후 한국시간으로 반영</td><td><span class="status pending">대기</span></td></tr>
-        <tr><td>대회별 로스터</td><td>공식 엔트리 발표 후 국가별 연결</td><td><span class="status pending">대기</span></td></tr>
-      </tbody></table></div>
-    </section>
-
-    <section class="lq-section">
-      <div class="lq-section-head"><div><p class="eyebrow">KOREA TRACKER</p><h2>대한민국 진행현황</h2></div><span class="status pending">추적 예정</span></div>
-      <p class="lq-roadmap-intro">대한민국의 2027 World Cup 출전 여부는 2026 대륙선수권 결과와 FIVB World Cup 출전자격 기준에 따라 확정되는 내용을 추적해 반영합니다.</p>
-    </section>
-
-    <section class="lq-section lq-source-box">
-      <div><p class="eyebrow">OFFICIAL SOURCES</p><h2>공식 출처</h2></div>
-      <p>대회 명칭 변경, 개최국, LA28 출전자격은 FIVB 공식 발표를 기준으로 정리합니다.</p>
-      <div class="lq-source-actions">
-        <a href="https://www.fivb.com/the-fivb-volleyball-world-cup-takes-the-sport-into-a-new-era/" target="_blank" rel="noopener">FIVB · World Cup 명칭 변경 발표 ↗</a>
-        <a href="https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/" target="_blank" rel="noopener">FIVB · LA28 출전자격 체계 ↗</a>
-        <a href="https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf" target="_blank" rel="noopener">LA28 공식 출전자격 문서 ↗</a>
-      </div>
-    </section>
+    <div class="wc-page-controls" id="world-cup-controls"></div>
+    <div id="world-cup-content" aria-live="polite"><p role="status">공식 대회 정보를 불러오고 있습니다.</p></div>
+    <noscript><p>이 대회 안내는 JavaScript가 필요합니다. <a href="data/national/fivb-world-cup-2027-v1.json">원본 데이터 보기</a></p></noscript>
   </main>
   <footer class="site-footer">© 2026 K-Volley Lab. Korean Volleyball Data & Analytics.</footer>
-  <script>
-    const tabs=[...document.querySelectorAll('.nt-gender-tab')];
-    const panels={men:document.getElementById('menPanel'),women:document.getElementById('womenPanel')};
-    tabs.forEach(btn=>btn.addEventListener('click',()=>{const target=btn.dataset.target;tabs.forEach(t=>{const on=t===btn;t.classList.toggle('active',on);t.setAttribute('aria-selected',on?'true':'false')});Object.entries(panels).forEach(([key,p])=>p.classList.toggle('nt-hidden',key!==target));}));
-  </script>
+  <script type="module" src="assets/js/world-cup-page-v1.js?v=20261118-v1"></script>
 </body>
 </html>
