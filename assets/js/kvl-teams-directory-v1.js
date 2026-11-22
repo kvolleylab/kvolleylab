@@ -41,7 +41,7 @@
    return {
     code:t.code,name:t.name,fullName:t.fullName||t.name,logo:safeLogo(t.logo)?t.logo:'',
     gender,season,count:roster.players.length,asOf:roster.asOf||'',
-    coach:coach?.name||'',coachAsOf:coach?.asOf||'',coachSource:coach?.source||'',
+    coach:coach?.name||'',coachRole:coach?.role==='acting'?'감독대행':'감독',coachAsOf:coach?.asOf||'',coachSource:coach?.source||'',
     action:'roster',href:teamRoute(gender,season,t.code),type:'pro'
    };
   });
@@ -117,7 +117,7 @@
   const g=t.gender==='women'?'WOMEN':t.gender==='men'?'MEN':'';
   const label=t.type==='pro'?'프로':t.type==='university'?'대학':t.type==='high'?'고교':t.type==='middle'?'중학':t.type==='national'?'대표팀':'국제';
   const count=t.count===null||t.count===undefined?'':'<span class="ktd-card-count">'+esc(t.count)+'명</span>';
-  const meta=t.type==='pro'?'<p class="ktd-card-meta">감독 : <b>'+esc(t.coach||'정보 확인 중')+'</b></p>'+
+  const meta=t.type==='pro'?'<p class="ktd-card-meta">'+esc(t.coachRole||'감독')+' : <b>'+esc(t.coach||'정보 확인 중')+'</b></p>'+
      (t.asOf?'<p class="ktd-card-meta">명단 기준 '+esc(t.asOf)+'</p>':''):
      t.type==='university'?'<p class="ktd-card-meta">'+(t.coach?'감독 : <b>'+esc(t.coach)+'</b>':'2026 대학 U-리그')+'</p>':
      '<p class="ktd-card-meta">'+esc(t.sourceLabel||'연결된 자료 보기')+'</p>';
