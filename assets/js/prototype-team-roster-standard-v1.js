@@ -3,6 +3,54 @@
  */
 (function(){
  'use strict';
+ const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const COUNTRY_ISO2={
+  Italy:'it',IT:'it',Japan:'jp',JP:'jp',Poland:'pl',PL:'pl',Türkiye:'tr',Turkey:'tr',TR:'tr',
+  Germany:'de',DE:'de',Czechia:'cz',CZ:'cz',France:'fr',FR:'fr',Portugal:'pt',PT:'pt',
+  India:'in',IN:'in','South Korea':'kr',Korea:'kr',KR:'kr',Taiwan:'tw',TW:'tw',
+  Iran:'ir',IR:'ir',Oman:'om',OM:'om',Greece:'gr',GR:'gr',Brazil:'br',BR:'br',
+  Argentina:'ar',AR:'ar',Serbia:'rs',RS:'rs',Slovenia:'si',SI:'si',China:'cn',CN:'cn',
+  Canada:'ca',CA:'ca',Belgium:'be',BE:'be',Netherlands:'nl',NL:'nl',Bulgaria:'bg',BG:'bg',
+  Cuba:'cu',CU:'cu','United States':'us',USA:'us',US:'us'
+ };
+ const COUNTRY_NAMES={it:'ITALY',jp:'JAPAN',pl:'POLAND',tr:'TÜRKIYE',de:'GERMANY',cz:'CZECHIA',fr:'FRANCE',pt:'PORTUGAL',in:'INDIA',kr:'SOUTH KOREA',tw:'TAIWAN',ir:'IRAN',om:'OMAN',gr:'GREECE',br:'BRAZIL',ar:'ARGENTINA',rs:'SERBIA',si:'SLOVENIA',cn:'CHINA',ca:'CANADA',be:'BELGIUM',nl:'NETHERLANDS',bg:'BULGARIA',cu:'CUBA',us:'USA'};
+ const iso2=value=>{
+  const raw=String(value||'').trim();
+  if(/^[A-Za-z]{2}$/.test(raw))return raw.toLowerCase();
+  return COUNTRY_ISO2[raw]||'';
+ };
+ const countryName=value=>{
+  const code=iso2(value);
+  if(code&&COUNTRY_NAMES[code])return COUNTRY_NAMES[code];
+  return String(value||'').trim().toUpperCase();
+ };
+ const leagueTier=(league,country)=>{
+  const raw=String(league||'').trim(),n=raw.toUpperCase();
+  if(!raw)return'';
+  if(/\b(A1|SERIE A1)\b|SUPERLEGA|SUPER LEGA/.test(n))return'1부';
+  if(/\b(A2|SERIE A2)\b/.test(n))return'2부';
+  if(/PLUSLIGA/.test(n))return'1부';
+  if(/TAURON 1\. LIGA|PLS 1\. LIGA/.test(n))return'2부';
+  if(/EFELER LIGI/.test(n))return'1부';
+  if(/\b1\. LIG\b/.test(n)&&/TURK|TÜRKIYE/i.test(String(country||'')))return'2부';
+  if(/SV\. ?LEAGUE|SV LEAGUE/.test(n))return'1부';
+  if(/^V-LEAGUE$|^V\.LEAGUE$/.test(n)&&/JAPAN|^JP$/i.test(String(country||'')))return'2부';
+  if(/LIGUE A|SPIKELEAGUE/.test(n))return'1부';
+  if(/LIGUE B/.test(n))return'2부';
+  if(/2\. BUNDESLIGA/.test(n))return'2부';
+  if(/BUNDESLIGA/.test(n))return'1부';
+  if(/IRANIAN SUPER LEAGUE|PRIME VOLLEYBALL LEAGUE|LIGA UNA SEGUROS|EXTRALIGA|VOLLEY LEAGUE|FIRST DIVISION/.test(n))return'1부';
+  if(/SECOND DIVISION/.test(n))return'2부';
+  return'';
+ };
+ const clubMeta=p=>{
+  const country=String(p?.clubCountry||'').trim(),league=String(p?.clubLeague||'').trim();
+  const code=iso2(country),countryText=countryName(country),tier=leagueTier(league,country);
+  const flag=code?'<img class="kvl-proto-league-flag" src="assets/images/flags/4x3/'+esc(code)+'.svg" alt="" loading="lazy">':'';
+  const leagueText=league?league.toUpperCase()+(tier?' ('+tier+')':''):'';
+  return '<span class="kvl-proto-club-team">'+esc(p?.club||'미확인')+'</span>'+
+    '<span class="kvl-proto-club-meta">'+flag+'<span>'+esc(countryText)+(leagueText?' · '+esc(leagueText):'')+'</span></span>';
+ };
  const fmtDate=value=>{
   const raw=String(value||'').trim();
   return /^\d{4}-\d{2}-\d{2}$/.test(raw)?raw.replaceAll('-','.'):(raw||'—');
@@ -74,8 +122,25 @@
    const top=root.querySelector('.kvl-unified-top');
    top?.insertAdjacentHTML('afterend',kpiMarkup(model?.total??model?.rows?.length??0,average(model?.rows||[])));
   }
-  // Preserve the current international roster strengths:
-  // Korean + English names, club/league, VB→ and tournament history.
+  const byKey=new Map((model?.rows||[]).map(p=>[String(p.key),p]));
+  const rows=root.querySelector('[data-kvl-unified-rows]');
+  const paint=()=>{
+   rows?.querySelectorAll?.('[data-kvl-unified-athlete]').forEach(row=>{
+    const p=byKey.get(String(row.dataset.kvlUnifiedAthlete));
+    const club=row.querySelector('.kvl-unified-club');
+    if(p&&club&&!club.dataset.prototypeClubV2){
+     club.innerHTML=clubMeta(p);
+     club.dataset.prototypeClubV2='true';
+    }
+   });
+  };
+  paint();
+  if(rows){
+   const observer=new MutationObserver(paint);
+   observer.observe(rows,{childList:true});
+   root._kvlIntlRosterPrototypeObserver?.disconnect?.();
+   root._kvlIntlRosterPrototypeObserver=observer;
+  }
  }
  function wrapInternational(){
   const api=window.KVLInternationalUnifiedRosterV1;
