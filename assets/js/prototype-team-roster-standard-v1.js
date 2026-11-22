@@ -13,7 +13,39 @@
   Canada:'ca',CA:'ca',Belgium:'be',BE:'be',Netherlands:'nl',NL:'nl',Bulgaria:'bg',BG:'bg',
   Cuba:'cu',CU:'cu','United States':'us',USA:'us',US:'us'
  };
- const COUNTRY_NAMES={it:'ITALY',jp:'JAPAN',pl:'POLAND',tr:'TÜRKIYE',de:'GERMANY',cz:'CZECHIA',fr:'FRANCE',pt:'PORTUGAL',in:'INDIA',kr:'SOUTH KOREA',tw:'TAIWAN',ir:'IRAN',om:'OMAN',gr:'GREECE',br:'BRAZIL',ar:'ARGENTINA',rs:'SERBIA',si:'SLOVENIA',cn:'CHINA',ca:'CANADA',be:'BELGIUM',nl:'NETHERLANDS',bg:'BULGARIA',cu:'CUBA',us:'USA'};
+ const COUNTRY_NAMES={it:'이탈리아',jp:'일본',pl:'폴란드',tr:'튀르키예',de:'독일',cz:'체코',fr:'프랑스',pt:'포르투갈',in:'인도',kr:'대한민국',tw:'대만',ir:'이란',om:'오만',gr:'그리스',br:'브라질',ar:'아르헨티나',rs:'세르비아',si:'슬로베니아',cn:'중국',ca:'캐나다',be:'벨기에',nl:'네덜란드',bg:'불가리아',cu:'쿠바',us:'미국'};
+ const CLUB_KO={
+  'Pallavolo Padova':'파도바',
+  'Cuneo Volley':'쿠네오',
+  'MA Acqua S.Bernardo Cuneo':'쿠네오',
+  'Panionios GSS':'파니오니오스',
+  'ChadorMalu Ardakan':'차도르말루 아르다칸',
+  'PGE Projekt Warszawa':'프로젝트 바르샤바',
+  'Shahrdari Urmia VC':'샤흐다리 우르미아',
+  'Foolad Sirjan Iranian':'풀라드 시르잔',
+  'Mes Rafsanjan':'메스 라프산잔'
+ };
+ const LEAGUE_KO={
+  'SuperLega':'슈퍼레가',
+  'Superlega':'슈퍼레가',
+  'Serie A1':'세리에 A1',
+  'Serie A2':'세리에 A2',
+  'PlusLiga':'플러스리가',
+  'Iranian Super League':'이란 슈퍼리그',
+  'SMS Grup Efeler Ligi':'에펠레르 리기',
+  'SV.LEAGUE':'SV.리그',
+  'SV League':'SV.리그',
+  'V-League':'V-리그',
+  'Ligue A Masculine':'리그 A',
+  'Ligue B Masculine':'리그 B',
+  'Extraliga mužů':'엑스트랄리가',
+  'Prime Volleyball League':'프라임 배구리그',
+  'Liga UNA Seguros':'리가 UNA 세구로스',
+  'Volley League':'발리리그',
+  'First Division Volleyball League':'1부 배구리그'
+ };
+ const clubNameKo=value=>CLUB_KO[String(value||'').trim()]||String(value||'').trim();
+ const leagueNameKo=value=>LEAGUE_KO[String(value||'').trim()]||String(value||'').trim();
  const iso2=value=>{
   const raw=String(value||'').trim();
   if(/^[A-Za-z]{2}$/.test(raw))return raw.toLowerCase();
@@ -22,7 +54,7 @@
  const countryName=value=>{
   const code=iso2(value);
   if(code&&COUNTRY_NAMES[code])return COUNTRY_NAMES[code];
-  return String(value||'').trim().toUpperCase();
+  return String(value||'').trim();
  };
  const leagueTier=(league,country)=>{
   const raw=String(league||'').trim(),n=raw.toUpperCase();
@@ -47,8 +79,8 @@
   const country=String(p?.clubCountry||'').trim(),league=String(p?.clubLeague||'').trim();
   const code=iso2(country),countryText=countryName(country),tier=leagueTier(league,country);
   const flag=code?'<img class="kvl-proto-league-flag" src="assets/images/flags/4x3/'+esc(code)+'.svg" alt="" loading="lazy">':'';
-  const leagueText=league?league.toUpperCase()+(tier?' ('+tier+')':''):'';
-  return '<span class="kvl-proto-club-teamline"><span class="kvl-proto-club-team">'+esc(p?.club||'미확인')+'</span>'+flag+'</span>'+
+  const leagueText=league?leagueNameKo(league)+(tier?' ('+tier+')':''):'';
+  return '<span class="kvl-proto-club-teamline"><span class="kvl-proto-club-team">'+esc(clubNameKo(p?.club||'미확인'))+'</span>'+flag+'</span>'+
     '<span class="kvl-proto-club-meta">'+
       '<span class="kvl-proto-country">'+esc(countryText)+'</span>'+
       (leagueText?'<span class="kvl-proto-separator" aria-hidden="true">·</span><span class="kvl-proto-league">'+esc(leagueText)+'</span>':'')+
@@ -131,6 +163,8 @@
    rows?.querySelectorAll?.('[data-kvl-unified-athlete]').forEach(row=>{
     const p=byKey.get(String(row.dataset.kvlUnifiedAthlete));
     const club=row.querySelector('.kvl-unified-club');
+    const english=row.querySelector('.kvl-unified-name small');
+    if(english)english.hidden=true;
     if(p&&club&&!club.dataset.prototypeClubV2){
      club.innerHTML=clubMeta(p);
      club.dataset.prototypeClubV2='true';
