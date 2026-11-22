@@ -3,7 +3,7 @@
   "kind": "presentation_summary",
   "historyFile": "data/national/men-senior-history-v1.json",
   "updatedAt": "2026-11-23",
-  "scope": "기존 검증 역사 기록을 간결하게 표시하는 요약. 새로운 경기 결과 확인이나 기록 상태 변경이 아님.",
+  "scope": "기존 검증 역사 기록의 표현 요약과 공식 확인 개최지. 경기 결과·참가·출전권 상태는 변경하지 않음.",
   "entries": [
     {
       "eventId": "olympics-2004-men",
@@ -1847,6 +1847,81 @@
       "locator": null,
       "version": null,
       "publishedAt": "2024-06-23"
+    },
+    {
+      "id": "now-avc26_final",
+      "title": "Indonesia triumph in Ahmedabad for first-ever AVC Cup honors",
+      "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/news/indonesia-triumph-in-ahmedabad-for-first-ever-avc-cup-honors",
+      "publisher": "Volleyball World",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": "2026-06-28"
+    },
+    {
+      "id": "now-asian26_jva_overview",
+      "title": "JVA · 2026 아시아 남자선수권 일정·후쿠오카 개최지",
+      "url": "https://www.jva.or.jp/international/2026/asianchampionship_men/",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "개최기간 및 회장: 9월 4일~13일, 후쿠오카현 기타큐슈시립 종합체육관",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_jva_overview",
+      "title": "第20回アジア競技大会（2026/愛知・名古屋）概要",
+      "url": "https://www.jva.or.jp/international/2026/asia_men/",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    }
+  ],
+  "locations": [
+    {
+      "eventId": "kor-m-2026-avc-cup",
+      "competitionId": "avc-men-cup-2026",
+      "label": "인도 아마다바드",
+      "verificationStatus": "confirmed",
+      "verifiedAt": "2026-11-23",
+      "sourceIds": [
+        "now-avc26_final"
+      ]
+    },
+    {
+      "eventId": "kor-m-2026-east-asian-championship",
+      "competitionId": "east-asian-men-2026",
+      "label": "몽골 울란바토르",
+      "verificationStatus": "confirmed",
+      "verifiedAt": "2026-11-23",
+      "sourceIds": [
+        "now-eastasia26_jva_overview"
+      ]
+    },
+    {
+      "eventId": "kor-m-2026-asian-championship",
+      "competitionId": "avc-men-continental-2026",
+      "label": "일본 후쿠오카",
+      "verificationStatus": "confirmed",
+      "verifiedAt": "2026-11-23",
+      "sourceIds": [
+        "now-asian26_jva_overview"
+      ]
+    },
+    {
+      "eventId": "kor-m-2026-asian-games",
+      "competitionId": "asian-games-men-2026",
+      "label": "일본 아이치",
+      "verificationStatus": "confirmed",
+      "verifiedAt": "2026-11-23",
+      "sourceIds": [
+        "now-ag26_jva_overview"
+      ]
     }
   ]
 }

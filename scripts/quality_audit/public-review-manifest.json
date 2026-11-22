@@ -806,12 +806,15 @@
         "oly-jva-2016-all-qualifiers",
         "oly-fivb-2020-qualifier-rules",
         "oly-fivb-paris2024-regulations",
-        "oly-vw-paris2024-qualified"
+        "oly-vw-paris2024-qualified",
+        "now-avc26_final",
+        "now-asian26_jva_overview",
+        "now-ag26_jva_overview"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "0302d744e361edc82c12e0da8bddd7fa986f9dc097466768b50f6613f8f18011",
-      "evidence": "docs/validation/national-history-simple-detail-v1.md",
-      "review_note": "기존 공개 역사 JSON의 검증된 사실을 간결하게 표현한 표시 전용 요약. source IDs 및 참조 필드의 동일성을 대조했다. 2004 경위 등 미확인 상태를 승격하지 않으며 새로운 경기 결과·출전권 사실 확인일이 아니다. 원본 경기 결과·출처·확인 날짜·62개 기록은 변경하지 않는다."
+      "sha256": "4ab090d822aee3301fe3fa88ca6a4f37731188c7d39875a0dbb4e8fd9066ba24",
+      "evidence": "docs/validation/roadmap-typography-metadata-v1.md",
+      "review_note": "기존 경기 요약과 불확실성은 보존. 2026 네 대회 개최지를 기존 대표팀 홈 및 JVA/Volleyball World 공식 자료와 대조해 별도 location 메타데이터로 추가. 후쿠오카는 후쿠오카현 기타큐슈 소재. 원본 62개 역사 기록·경기 결과·참가·출전권 상태·확인일은 변경하지 않음."
     }
   }
 }
