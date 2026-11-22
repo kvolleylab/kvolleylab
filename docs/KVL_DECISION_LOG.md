@@ -894,6 +894,13 @@ Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / STATIC QA PASSED / NO
 관심·메모는 Team Finder에 편집 동선을 추가하지 않고 기존 선수 페이지 개인기록을 읽기 전용으로 집계한다. 로그인하지 않은 경우 `—`, 로그인 계정은 해당 명단의 연결된 KVL Player ID 기준 실제 관심선수/메모선수 수를 표시한다. Base `2022d21e8ff5e4a0d235bbc8a286de4c361462bc`; branch `feature/team-roster-standard-v1-20261122`. 기존 대회 페이지 렌더러와 자동화 데이터는 수정하지 않는다. [검증 기록](validation/team-roster-standard-production-v1-20261122.md).
 
 
+## 2026-11-22 · 월드컵 안내 운영 반영 및 개최국 간편 펼침
+
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자가 “운영반영해”로 PR #365의 월드컵 개선분을 승인하고 개최국 1장도 KVL 안에서 간단히 안내하도록 요청했다. 월드컵 남녀 대회 개요·참가국·출전권 3장·기존 상세 URL 연결을 운영에 반영한다. 개최국 카드에서는 미국 남녀 자동 출전 각 1장, 혼다 센터(애너하임), 배구 기간과 올림픽 개·폐막 기간을 구분해 펼친다. LA28·Volleyball World·IOC 공식 근거와 확인일을 주기 JSON에 저장한다. 역사 62개·필터·대륙선수권 우승국/출전국·기존 URL·공통 메뉴를 보존하며 2032 미확정 주기에 LA28 숫자나 개최국 정보가 섞이지 않도록 한다.
+
+Base `fd090c3638fdd46f8a25bb5fd82c95420ed48cc7`; branch `codex/world-cup-roadmap-v1`. Node 38/38, PC·모바일 390/360px, 기존 필터·연도 접기와 2032 분리 확인. Drive MASTER는 읽기 대조만 수행했으며 정식 대회 Engine/MASTER 등록·자동화는 별도다. 병합·Pages·운영 검증 전까지 배포 완료로 표시하지 않고 PR #365에 최종 증거를 기록한다. [검증·출처·복구](validation/olympic-world-cup-host-release-v1.md).
+
+
 ## 2026-11-22 · 국제 국가상세 통합명단 우선 UX · VNL 예비표기 · 현재 소속 보강
 
 Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / STATIC QA PASSED / BROWSER QA PENDING. 사용자는 기존 국제 국가 카드 디자인은 유지하되 카드 전체를 클릭할 수 있게 하고, 국가 상세 진입 직후 통합 선수명단이 보이도록 요청했다. 기존 연도 버튼은 드롭다운으로 축소하고 “국가별 페이지는 하나로 유지하며…” 안내문과 중복되는 대회별 명단 카드 영역은 기본 화면에서 제거한다. 대신 통합명단 아래에 `대회 바로가기`를 두어 VNL·아시안게임·대륙선수권 등 실제 대회 페이지로 직접 이동할 수 있게 한다. 뒤로가기는 `← 국가 목록`의 단순 텍스트형 버튼으로 통일한다.
