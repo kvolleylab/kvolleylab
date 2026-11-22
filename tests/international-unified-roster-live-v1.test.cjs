@@ -5,6 +5,7 @@ const unified=require('../assets/js/kvl-international-unified-roster-v1.js');
 const intl=require('../assets/js/kvl-international-countries-v1.js');
 const index=read('data/international/country-roster-index-v1.json'),countries=read('data/international/country-directory-v1.json');
 const registry=read('data/competitions/avc-men-continental-2026-clubs-2026-27.json');
+const currentClubs=read('data/international/player-club-registry-2026-27-v1.json');
 const master=read('data/master/player_master_international_v1.json');
 const sourceCache=new Map();
 const source=p=>{if(!sourceCache.has(p))sourceCache.set(p,read(p));return sourceCache.get(p)};
@@ -14,7 +15,7 @@ function scope(code,gender,year=2026,club=true){
  const sets=refs.map(snapshot=>({snapshot,team:intl.sourceTeam(snapshot,source(snapshot.source_path))}));
  for(const x of sets)assert.ok(x.team&&Array.isArray(x.team.players),x.snapshot.snapshot_id);
  const before=JSON.stringify(sets);
- const model=unified.build(sets,{country,gender,year,clubRegistry:club?registry:null,
+ const model=unified.build(sets,{country,gender,year,clubRegistry:club?registry:null,playerClubRegistry:currentClubs,
   profileResolver:raw=>intl.verifiedProfileLink(intl.normalizePlayer(raw),gender,country,master,{isConflict:id=>/^KVL-P-0016(?:2\d|3\d|4[0-5])$/.test(id)})});
  assert.equal(JSON.stringify(sets),before,'unified view must not mutate official source player arrays');
  return model;
@@ -59,6 +60,23 @@ test('Different Fukatsu with same #3 do not merge and exact verified club/Volley
  assert.ok(unverified);assert.equal(unverified.club,'');assert.equal(unverified.clubCountry,'');
  assert.equal(m.rows.find(p=>p.en==='Akihiro Yamauchi').height,204);
  assert.ok(m.rows.filter(x=>x.club).length>=10);
+});
+test('Current international club registry supplements older tournament snapshots without changing source arrays',()=>{
+ assert.equal(currentClubs.season,'2026-27');
+ assert.ok(Object.keys(currentClubs.players).length>=7);
+ for(const row of Object.values(currentClubs.players)){
+  assert.ok(['CONFIRMED','REVIEWED'].includes(row.status));
+  assert.match(row.source,/^https:\/\//);
+  assert.ok(row.club&&row.leagueCountry);
+ }
+ const iran=scope('IRI','men');
+ const amin=iran.rows.find(p=>p.directBox.includes('amin-esmaeilnezhad-p40943'));
+ const mobin=iran.rows.find(p=>p.directBox.includes('mobin-nasri-p72385'));
+ const morteza=iran.rows.find(p=>p.directBox.includes('morteza-sharifi-p12027'));
+ assert.equal(amin?.club,'Hiroshima Thunders');
+ assert.equal(mobin?.club,'Hiroshima Thunders');
+ assert.equal(morteza?.club,'Hebei Baoding Wolves');
+ assert.match(amin?.clubProof||'',/^https:\/\//);
 });
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
  const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
@@ -130,7 +148,7 @@ test('Country and gender boundaries are fail-closed; raw official source count m
  assert.throws(()=>unified.build([{snapshot:{...j,player_count:99},team:t}],
   {country:countries.countries.find(x=>x.code==='JPN'),gender:'men',year:2026}),/count changed/);
 });
-test('Production page only adds unified module and does not remove country cards, per-event roster, KOVO or auth gate',()=>{
+test('Production page keeps country cards, roster-first navigation, KOVO and auth gate',()=>{
  const html=fs.readFileSync(path.join(ROOT,'teams.html'),'utf8'),
    js=fs.readFileSync(path.join(ROOT,'assets/js/kvl-international-countries-v1.js'),'utf8');
  const gate=read('data/member-access-v1.json');
@@ -138,7 +156,8 @@ test('Production page only adds unified module and does not remove country cards
  assert.match(html,/kvl-international-unified-roster-v1\.js/);
  assert.match(html,/kvl-international-unified-roster-v1\.css/);
  assert.match(html,/kvl-vleague-roster-v2\.js/);
- assert.match(js,/data-country-snapshot/);
+ assert.match(js,/data-country-year-select/);
+ assert.match(js,/ktd-country-links/);
  assert.match(js,/data-country-selection/);
  assert.match(js,/data-country-unified/);
  assert.match(js,/KVLInternationalUnifiedRosterV1/);
