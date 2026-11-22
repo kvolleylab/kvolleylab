@@ -166,7 +166,7 @@ async function verifyVLeagueTodayFirst(browser,gender,width){
   await page.waitForFunction(()=>{
    const all=[...document.querySelectorAll('.dv2-division-matches .dv2-summary-body')];
    return all.length===2&&all.every(x=>x.getAttribute('aria-busy')==='false');
-  },{timeout:45000});
+  },null,{timeout:45000});
   const metrics=await page.evaluate(()=>{
    const section=document.querySelector('.dv2-overview-matches'),h=section?.querySelector('#dv2-overview-matches-title');
    const cards=[...section.querySelectorAll('[data-summary-gender]')];
