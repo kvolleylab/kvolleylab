@@ -66,7 +66,16 @@ const countryKo=value=>{
  return code&&COUNTRY_KO[code]?COUNTRY_KO[code]:String(value||'').trim();
 };
 const clubKo=value=>CLUB_KO[String(value||'').trim()]||String(value||'').trim();
-const leagueKo=value=>LEAGUE_KO[String(value||'').trim()]||String(value||'').trim();
+const leagueKo=value=>{
+ const raw=String(value||'').trim(),exact=LEAGUE_KO[raw],n=raw.toUpperCase();
+ if(exact)return exact;
+ if(/SUPERLEGA|SUPER LEGA/.test(n))return'슈퍼레가';
+ if(/SV\.? ?LEAGUE/.test(n))return'SV.리그';
+ if(/PLUSLIGA/.test(n))return'플러스리가';
+ if(/EFELER LIGI/.test(n))return'에펠레르 리기';
+ if(/IRANIAN SUPER LEAGUE/.test(n))return'이란 슈퍼리그';
+ return raw;
+};
 const leagueTier=(league,country)=>{
  const raw=String(league||'').trim(),n=raw.toUpperCase(),c=String(country||'').toUpperCase();
  if(!raw)return'';
