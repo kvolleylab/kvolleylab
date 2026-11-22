@@ -14,6 +14,13 @@ const safeExternal=x=>/^https:\/\/(?:en\.volleyballworld\.com|www\.volleyballwor
 const safeAnySource=x=>/^https:\/\/[a-z0-9.-]+(?:\/[^\s<>"']*)?$/i.test(String(x||''))?String(x):'';
 const norm=x=>String(x||'').trim().normalize('NFKC').toLowerCase().replace(/\s+/g,' ');
 const flagEmoji=iso2=>/^[a-z]{2}$/.test(String(iso2||''))?[...iso2.toUpperCase()].map(c=>String.fromCodePoint(c.charCodeAt(0)-65+0x1F1E6)).join(''):'🏐';
+const countryFlagImage=country=>{
+ const code=String(country?.flag_iso2||'');
+ const emoji=esc(flagEmoji(code));
+ if(!/^[a-z]{2}$/.test(code))return '<span class="ktd-country-flag-fallback" aria-hidden="true">'+emoji+'</span>';
+ return '<img class="ktd-country-flag-image" src="assets/images/flags/4x3/'+esc(code)+'.svg" alt="'+esc(country.name_ko)+' 국기" decoding="async">'+
+  '<span class="ktd-country-flag-fallback" aria-hidden="true" hidden>'+emoji+'</span>';
+};
 const dataCache=new Map();
 const readJSON=async p=>{
  if(!SAFE_SOURCE.test(p)&&p!=='data/master/player_master_international_v1.json')throw Error('Unapproved roster source path: '+p);
@@ -73,7 +80,7 @@ function cardEntries(directory,index,gender,selection){
   const relevant=index.snapshots.filter(s=>s.country_code===c.code&&s.gender===gender);
   const candidates=(selection?.sets||[]).filter(s=>s.country_code===c.code&&s.gender===gender);
   return {code:c.code,name:c.name_ko,en:c.name_en,region:c.region,gender,
-   flag:flagEmoji(c.flag_iso2),snapshots:relevant.length,
+   flag:flagEmoji(c.flag_iso2),flag_iso2:c.flag_iso2,snapshots:relevant.length,
    sourceLabel:relevant.length?gender==='men'?'남자대회 '+relevant.length+'건':'여자대회 '+relevant.length+'건':candidates.length?'후보·선발 자료 '+candidates.length+'건':'선택한 성별의 저장 자료 없음',
    type:'international',action:'country',count:null};
  });
@@ -99,7 +106,10 @@ function normalizePlayer(p){
  const dob=/^\d{4}-\d{2}-\d{2}$/.test(String(p.dob||''))?p.dob:'';
  const official=safeExternal(p.officialProfileUrl||p.vnlProfile||'');
  const volleybox=safeExternal(p.volleybox_url||p.volleybox||'');
+ const clubVerified=p.club?.confirmed===true&&typeof p.club.name==='string'&&!!p.club.name.trim()&&!['미확인','unknown','-'].includes(norm(p.club.name));
  return {name:ko,en:english,number,position,height,dob,source_player_id:p.playerId||p.officialPlayerId||'',
+  club:clubVerified?p.club.name.trim():'',club_country:clubVerified?String(p.club.country||p.club.leagueCountry||'').trim():'',
+  club_league:clubVerified?String(p.club.leagueName||'').trim():'',
   source_entry_status:String(p.entryStatus||''),official_profile:official,volleybox,
   is_volleybox_search:/\/search(?:\?|\/)/.test(volleybox)};
 }
@@ -146,20 +156,69 @@ function render(host,opts){
  let selectedSnapshot=null,alive=true;
  const candidateSets=()=>selection.sets.filter(s=>s.country_code===country.code&&s.gender===gender&&s.year===year);
  host.innerHTML='<div class="ktd-country-panel"><div class="ktd-country-top">'+
-  '<div class="ktd-country-heading"><div class="ktd-country-flag" aria-hidden="true">'+esc(flagEmoji(country.flag_iso2))+'</div>'+
+  '<div class="ktd-country-heading"><div class="ktd-country-flag">'+countryFlagImage(country)+'</div>'+
   '<div><p class="ktd-section-eyebrow">NATIONAL TEAM HISTORY · '+esc(country.code)+'</p>'+
   '<h2>'+esc(country.name_ko)+'</h2><p>'+esc(country.name_en)+' · '+(gender==='men'?'남자대표팀':'여자대표팀')+'</p></div></div>'+
   '<button type="button" class="ktd-close" data-country-close>목록으로 돌아가기 ×</button></div>'+
   '<div class="ktd-country-years" data-country-years aria-label="연도별 명단 선택"></div>'+
   '<p class="ktd-country-note">국가별 페이지는 하나로 유지하며, 연도·대회별 등록·최종·출국 명단을 원본 스냅샷으로 구분합니다.</p>'+
   '<div data-country-events class="ktd-country-events"></div>'+
+  '<section data-country-unified class="ktd-country-unified" aria-label="연도별 통합 선수명단" hidden></section>'+
   '<section class="ktd-country-selection"><h3>후보·선발 이력</h3><div data-country-selection></div></section>'+
   '<section data-country-roster class="ktd-country-roster" hidden aria-live="polite"></section></div>';
+ const onFlagLoadError=event=>{
+  const img=event.target;
+  if(!img?.matches?.('img.ktd-country-flag-image'))return;
+  img.hidden=true;
+  const fallback=img.nextElementSibling;
+  if(fallback?.classList.contains('ktd-country-flag-fallback'))fallback.hidden=false;
+ };
+ host.addEventListener('error',onFlagLoadError,true);
  const yearsHost=host.querySelector('[data-country-years]'),eventsHost=host.querySelector('[data-country-events]');
  const rosterHost=host.querySelector('[data-country-roster]'),selectionHost=host.querySelector('[data-country-selection]');
- let request=0;
+ const unifiedHost=host.querySelector('[data-country-unified]');
+ let request=0,unifiedTicket=0,unifiedInstance=null;
+ async function showUnified(){
+  const ticket=++unifiedTicket,displayYear=year;
+  unifiedInstance?.destroy?.();unifiedInstance=null;unifiedHost.replaceChildren();unifiedHost.hidden=true;
+  const refs=matches.filter(x=>x.year===displayYear);
+  if(!refs.length)return;
+  const ui=typeof window==='object'?window.KVLInternationalUnifiedRosterV1:null;
+  if(!ui){console.warn('[KVL international: unified module unavailable]');return}
+  unifiedHost.hidden=false;
+  unifiedHost.innerHTML='<p class="ktd-loading">원본 대회명단을 대조하고 있습니다.</p>';
+  try{
+   const sourceSets=await Promise.all(refs.map(async snapshot=>{
+    const raw=await readJSON(snapshot.source_path),team=sourceTeam(snapshot,raw);
+    if(!team||!Array.isArray(team.players))throw Error('대회 원본명단 확인 실패: '+snapshot.snapshot_id);
+    return {snapshot,team};
+   }));
+   const [clubIndex,master]=await Promise.all([
+    displayYear===2026&&gender==='men'&&refs.some(x=>x.competition_slug==='avc-men-continental-2026')
+      ?readJSON('data/competitions/avc-men-continental-2026-clubs-2026-27.json').catch(err=>{
+        console.warn('[KVL international: club evidence unavailable]',err);return null;
+       }):Promise.resolve(null),
+    sourceSets.some(x=>x.team.players.some(p=>ID.test(p.playerId||'')))
+      ?readJSON('data/master/player_master_international_v1.json').catch(err=>{
+         console.warn('[KVL international: player ID master unavailable]',err);return [];
+       }):Promise.resolve([])
+   ]);
+   if(!alive||ticket!==unifiedTicket||displayYear!==year)return;
+   const collision=typeof window==='object'?window.KVLPlayerIdCollisionV1:null;
+   const model=ui.build(sourceSets,{
+    country,gender,year:displayYear,clubRegistry:clubIndex,
+    profileResolver:raw=>verifiedProfileLink(normalizePlayer(raw),gender,country,master,collision)
+   });
+   unifiedInstance=ui.render(unifiedHost,model);
+  }catch(err){
+   if(!alive||ticket!==unifiedTicket||displayYear!==year)return;
+   unifiedHost.innerHTML='<p class="ktd-error">통합 명단의 일부 원본 확인에 실패해 잘못된 참가 이력을 만들지 않았습니다. 위의 대회별 명단 보기에서 개별 자료를 확인할 수 있습니다.</p>';
+   console.error('[KVL international: unified roster]',err);
+  }
+ }
  function showYear(){
   selectedSnapshot=null;request++;rosterHost.hidden=true;rosterHost.replaceChildren();
+  showUnified();
   yearsHost.innerHTML=allYears.length?allYears.map(y=>'<button type="button" data-country-year="'+y+'" aria-pressed="'+(y===year)+'">'+y+'</button>').join(''):
    '<span>등록된 대회 연도 없음</span>';
   const rows=matches.filter(s=>s.year===year).sort((a,b)=>a.competition_title.localeCompare(b.competition_title,'ko'));
@@ -186,7 +245,11 @@ function render(host,opts){
    if(!team||!Array.isArray(team.players))throw Error('Missing original tournament roster');
    const players=team.players.map(normalizePlayer);
    const sourceCountChanged=players.length!==snap.player_count;
-   let master=[];
+   let master=[],clubRegistry=null;
+   if(snap.competition_slug==='avc-men-continental-2026'&&gender==='men'){
+    try{clubRegistry=await readJSON('data/competitions/avc-men-continental-2026-clubs-2026-27.json')}
+    catch(e){console.warn('[KVL international per-event club registry optional]',e)}
+   }
    if(players.some(p=>ID.test(p.source_player_id||''))){
     try{master=await readJSON('data/master/player_master_international_v1.json')}catch(e){console.warn('[KVL international master optional]',e)}
    }
@@ -200,9 +263,20 @@ function render(host,opts){
     players.map(p=>{
      const link=verifiedProfileLink(p,gender,country,master,collision);
      const profile=p.official_profile?'<a href="'+esc(p.official_profile)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'';
-     const vol=p.volleybox?'<a href="'+esc(p.volleybox)+'" target="_blank" rel="noopener noreferrer">'+(p.is_volleybox_search?'Volleybox 검색':'Volleybox')+'</a>':'';
+     const vol=p.volleybox?'<a href="'+esc(p.volleybox)+'" target="_blank" rel="noopener noreferrer" aria-label="'+(p.is_volleybox_search?'Volleybox 검색 결과 열기':'Volleybox 선수 프로필 열기')+'">'+(p.is_volleybox_search?'VB 검색':'VB-&gt;')+'</a>':'';
+     const registered=clubRegistry?.teams?.[country.code]?.[String(p.number)];
+     const verified=registered?.status==='CONFIRMED'&&typeof registered.club==='string'
+      &&!!registered.club.trim()&&/^https:\/\//.test(registered.source||'');
+     const club=verified?registered.club:p.club;
+     const leagueCountry=verified?String(registered.leagueCountry||'').trim():p.club_country;
+     const leagueName=verified?String(registered.leagueName||'').trim():p.club_league;
+     // Match the year-unified roster's country-only label. Do not infer unknown leagues.
+     const countryFormatter=typeof window==='object'?window.KVLInternationalUnifiedRosterV1?.countryLabel:null;
+     const countryDisplay=leagueCountry?(typeof countryFormatter==='function'?countryFormatter(leagueCountry):leagueCountry.toUpperCase()):'';
+     const clubLine=club?'<span class="ktd-country-club"><span>'+esc(club)+'</span>'+
+      (countryDisplay?'<span class="ktd-country-club-league"'+(leagueName?' title="'+esc('확인된 리그: '+leagueName)+'"':'')+'> · '+esc(countryDisplay)+'</span>':'')+'</span>':'';
      return '<div class="ktd-country-player"><span class="ktd-country-number">'+esc(p.number??'–')+'</span>'+
-       '<span class="ktd-country-person"><strong>'+esc(p.name)+'</strong>'+(p.en&&norm(p.en)!==norm(p.name)?'<small>'+esc(p.en)+'</small>':'')+
+       '<span class="ktd-country-person"><strong>'+esc(p.name)+'</strong>'+(p.en&&norm(p.en)!==norm(p.name)?'<small>'+esc(p.en)+'</small>':'')+clubLine+
        '<span class="ktd-country-player-links">'+(link?'<a href="'+esc(link)+'">KVL 프로필</a>':'')+profile+vol+'</span></span>'+
        '<span>'+esc(p.position||'–')+'</span><span>'+(p.height?esc(p.height)+'cm':'–')+'</span>'+
        '<span>'+esc(p.source_entry_status||'대회 명단')+'</span></div>';
@@ -229,14 +303,14 @@ function render(host,opts){
  }
  host.onclick=event=>{
   const b=event.target.closest('button');if(!b||!host.contains(b))return;
-  if(b.hasAttribute('data-country-close')){alive=false;onClose?.();return}
+  if(b.hasAttribute('data-country-close')){alive=false;unifiedTicket++;unifiedInstance?.destroy?.();onClose?.();return}
   if(b.hasAttribute('data-country-roster-close')){request++;rosterHost.hidden=true;rosterHost.replaceChildren();return}
   if(b.hasAttribute('data-country-year')){const y=Number(b.dataset.countryYear);if(allYears.includes(y)){year=y;showYear();onYearChange?.(y)}return}
   if(b.hasAttribute('data-country-snapshot')){showSnapshot(b.dataset.countrySnapshot);return}
   if(b.hasAttribute('data-candidate-id')){showCandidate(b.dataset.candidateId)}
  };
  showYear();
- return {year,close:()=>{alive=false;request++;host.onclick=null}};
+ return {year,close:()=>{alive=false;request++;unifiedTicket++;unifiedInstance?.destroy?.();host.onclick=null;host.removeEventListener('error',onFlagLoadError,true)}};
 }
 return {esc,REGIONS,flagEmoji,validateDirectory,validateIndex,validateSelection,yearsFor,cardEntries,filterCountries,sourceTeam,normalizePlayer,verifiedProfileLink,compareSelection,outcomeLabel,render};
 });

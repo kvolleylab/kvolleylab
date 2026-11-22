@@ -9,10 +9,35 @@ test('requested aliases, actual round/venue/time and all 252 season fixtures',()
  for(const gender of ['men','women']){
   const {c,d}=source(gender),before=JSON.stringify(d),options=c.structure.calendarDisplay;
   assert.deepEqual(Object.values(options.teamAliases),expected[gender]);assert.equal(d.matches.length,126);
-  for(const match of d.matches){const result=display.game(match,d,options);assert.match(result.line1,/^[1-6]R \S+ (?:vs|\d+-\d+) \S+$/);assert.match(result.line2,/^\((인천|천안|서울|평택|수원|부산|대전|김천|화성|광주), \d+시\)$/);assert(!result.line1.includes('1경기'));}
+  for(const match of d.matches){
+   const result=display.game(match,d,options);
+   assert.match(result.line1,/^[1-6]R \S+ (?:vs|\d+-\d+) \S+$/);
+   // Official start times can be corrected to a nonzero minute. Check the
+   // exact source time independently rather than assuming every game is hourly.
+   const clock=/^([01]\d|2[0-3]):([0-5]\d)$/.exec(match.time);
+   assert(clock,`${match.id}: expected a valid official HH:mm start time`);
+   const expectedTime=Number(clock[1])+'시'+(Number(clock[2])?Number(clock[2])+'분':'');
+   const locationTime=/^\((인천|천안|서울|평택|수원|부산|대전|김천|화성|광주), (.+)\)$/.exec(result.line2);
+   assert(locationTime,`${match.id}: calendar must preserve the venue city and time layout`);
+   assert.equal(locationTime[2],expectedTime,`${match.id}: calendar must preserve the official minute`);
+   assert(!result.line1.includes('1경기'));
+  }
   const match=d.matches.find(m=>m.date==='2026-11-01');const result=display.game(match,d,options);
   assert.equal(result.line1,gender==='men'?'1R KB 1-3 삼성':'1R 흥국 3-0 SOOP');assert.equal(result.line2,gender==='men'?'(평택, 14시)':'(인천, 16시)');
   assert.match(result.fullLabel,gender==='men'?/KB손해보험 1-3 삼성화재/:/흥국생명 3-0 SOOP/);assert.equal(JSON.stringify(d),before);
+ }
+});
+test('synthetic minute boundaries preserve 14:02, whole hours and half hours for both divisions',()=>{
+ for(const gender of ['men','women']){
+  const {c,d}=source(gender),options=c.structure.calendarDisplay;
+  for(const [time,label] of [['14:00','14시'],['14:02','14시2분'],['14:30','14시30분']]){
+   const match={...d.matches[0],time,venueLabel:'수원체육관'},before=JSON.stringify(match);
+   const result=display.game(match,d,options);
+   assert.equal(display.timeLabel(time),label);
+   assert.equal(result.line2,`(수원, ${label})`);
+   assert(result.fullLabel.endsWith(label+' KST'));
+   assert.equal(JSON.stringify(match),before,'formatting must not rewrite the official match');
+  }
  }
 });
 test('missing/relocated venue, time minutes, unknown teams and postseason are not invented',()=>{

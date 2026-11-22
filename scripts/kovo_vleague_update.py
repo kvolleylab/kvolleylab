@@ -41,6 +41,12 @@ class UpdateError(ValueError):
     pass
 
 
+class DivisionsUnavailable(UpdateError):
+    def __init__(self, failures):
+        self.failures = failures
+        super().__init__("No division passed source and candidate validation")
+
+
 def require(condition, message):
     if not condition:
         raise UpdateError(message)
@@ -92,6 +98,13 @@ def expected_source(record):
     if record.get("live_points_source_url"):
         require(record["status"] == "live" and record["live_points_source_url"] == live_points_url(record),
                 "Live points source conflicts with game identity")
+    require(record.get("status") != "final_points_pending", "Unresolved final points cannot be exported")
+    if record.get("final_points_source_url"):
+        require(record["status"] == "final"
+                and isinstance(record.get("end_time"), str)
+                and re.fullmatch(r"(?:[01]\d|2[0-3]):[0-5]\d", record["end_time"])
+                and record["final_points_source_url"] == live_points_url(record),
+                "Final points source requires official end time and matching game identity")
     if record["phase_id"] in POSTSEASON_PHASES:
         phase = POSTSEASON_PHASES[record["phase_id"]]
         require(record.get("fixture_ready") is True and record.get("stage") == phase["stage"]
@@ -102,18 +115,21 @@ def expected_source(record):
             "Unknown official match state")
 
 
-def validate_snapshot(snapshot):
+def validate_snapshot(snapshot, *, genders=None):
+    genders = set(DIVISIONS if genders is None else genders)
+    require(bool(genders) and genders <= set(DIVISIONS), "Invalid division scope")
     require(snapshot.get("schema_version") == 1 and snapshot.get("season") == SEASON
             and snapshot.get("source") == "KOVO_PUBLIC_STAT_API", "Untrusted source snapshot")
     coverage = snapshot.get("coverage", {})
     require(coverage.get("kind") == "season" and coverage.get("complete") is True
             and coverage.get("phase") == "through_championship"
-            and set(coverage.get("genders", [])) == set(DIVISIONS), "Incomplete source coverage")
+            and set(coverage.get("genders", [])) == genders, "Incomplete source coverage")
     records = snapshot.get("matches")
-    require(isinstance(records, list) and 252 <= len(records) <= 270,
-            "Expected 252 regular-season matches and at most 18 postseason fixtures")
+    require(isinstance(records, list) and 126 * len(genders) <= len(records) <= 135 * len(genders)
+            and all(r.get("gender") in genders for r in records),
+            "Expected a complete regular/postseason schedule for each requested division")
     require(len({m.get("source_key") for m in records}) == len(records), "Duplicate official game identity")
-    for gender in DIVISIONS:
+    for gender in genders:
         require(sum(m.get("gender") == gender and m.get("phase_id") == "201" for m in records) == EXPECTED_GAMES,
                 "Incomplete division schedule")
         for phase_id, phase in POSTSEASON_PHASES.items():
@@ -122,13 +138,14 @@ def validate_snapshot(snapshot):
             require(len(legs) <= phase["max_games"] and len(set(legs)) == len(legs),
                     "Duplicate or excessive postseason series games")
     post_coverage = coverage.get("postseason", [])
-    require(isinstance(post_coverage, list) and len(post_coverage) == 6
+    require(isinstance(post_coverage, list) and len(post_coverage) == 3 * len(genders)
             and {(c.get("gender"), c.get("phase_id")) for c in post_coverage}
-            == {(g, p) for g in DIVISIONS for p in POSTSEASON_PHASES}
+            == {(g, p) for g in genders for p in POSTSEASON_PHASES}
             and all(c.get("complete") is True for c in post_coverage),
             "Postseason source coverage is incomplete")
     pending = snapshot.get("pending_matches", [])
-    require(isinstance(pending, list) and len(pending) <= 18, "Invalid pending postseason list")
+    require(isinstance(pending, list) and len(pending) <= 9 * len(genders)
+            and all(r.get("gender") in genders for r in pending), "Invalid pending postseason list")
     for record in pending:
         require(isinstance(record, dict) and record.get("phase_id") in POSTSEASON_PHASES
                 and record.get("fixture_ready") is False and record.get("status") == "scheduled"
@@ -136,7 +153,7 @@ def validate_snapshot(snapshot):
                 "Unresolved postseason fixture has result data")
         expected_source({**record, "fixture_ready": True})
     all_records = records + pending
-    require(len(all_records) <= 270 and len({r.get("source_key") for r in all_records}) == len(all_records)
+    require(len(all_records) <= 135 * len(genders) and len({r.get("source_key") for r in all_records}) == len(all_records)
             and len({r.get("number") for r in all_records}) == len(all_records),
             "Duplicate or excessive season identities")
     for coverage_row in post_coverage:
@@ -153,7 +170,7 @@ def validate_snapshot(snapshot):
     except (KeyError, ValueError, TypeError) as exc:
         raise UpdateError("Invalid source observation timestamp") from exc
     ranks = snapshot.get("official_standings", [])
-    require(len(ranks) == 2 and {r.get("gender") for r in ranks} == set(DIVISIONS),
+    require(len(ranks) == len(genders) and {r.get("gender") for r in ranks} == genders,
             "Official standings snapshots are incomplete")
     return records
 
@@ -227,7 +244,7 @@ def join_records(originals, snapshot, previous_state=None):
     KVL's per-gender MatchID. Exact round/home/away is unique in this season;
     dates are allowed to change without changing the permanent local ID.
     """
-    records = validate_snapshot(snapshot)
+    records = validate_snapshot(snapshot, genders=originals)
     previous = previous_state or {}
     require(not previous or previous.get("season") == SEASON, "State belongs to another season")
     prior_links = previous.get("links", {})
@@ -296,6 +313,11 @@ def join_records(originals, snapshot, previous_state=None):
             validate_final_match({"id": local["id"], "stage": local["stage"], "status": "final",
                                   "home": {"code": codes["home"]}, "away": {"code": codes["away"]},
                                   "score": record["score"]})
+            score_source = source.get("final_points_source_url") or local.get("scoreSourceUrl")
+            if score_source:
+                require(score_source == live_points_url(source),
+                        "Final points attribution conflicts with game identity")
+                record["score_source_url"] = score_source
         elif source["status"] == "live":
             won = source.get("sets_won", {})
             require(set(won) == {"home", "away"}
@@ -476,6 +498,8 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
             if record["status"] == "final":
                 match["score"] = deepcopy(record["score"])
                 match["scoreVerification"] = True
+                if record.get("score_source_url"):
+                    match["scoreSourceUrl"] = record["score_source_url"]
             if record["status"] == "live":
                 match["liveScore"] = deepcopy(record["live_score"])
                 match["liveSets"] = deepcopy(record["live_sets"])
@@ -553,6 +577,85 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
             "matched": matched, "master_plan": master_plan, "report": report}
 
 
+def prepare_isolated_update(root, originals, previous_state, master_values, collector):
+    """Validate each division independently, then make one guarded MASTER plan.
+
+    A rejected division supplies no replacement scores or new observation time.
+    Authentication, MASTER conflicts, security, and local/Git guards remain
+    transaction-wide failures; only source/candidate errors are isolated.
+    """
+    require(set(originals) == set(DIVISIONS), "Isolation requires both existing division files")
+    previous = previous_state or {}
+    require(not previous or previous.get("season") == SEASON, "State belongs to another season")
+    old_links = previous.get("links", {})
+    require(isinstance(old_links, dict) and all(
+        isinstance(link, dict) and link.get("gender") in DIVISIONS
+        and isinstance(key, str) and re.fullmatch(rf"023:001:{link['gender']}:(?:[1-9]\d{{0,2}}|1000)", key)
+        for key, link in old_links.items()), "Invalid persisted division identity")
+    plans, failures = {}, {}
+    observed_numbers = set()
+    for gender in DIVISIONS:
+        stage = "source"
+        try:
+            snapshot = collector(gender)
+            stage = "candidate"
+            prior = {**previous, "links": {k: deepcopy(v) for k, v in old_links.items()
+                                          if v["gender"] == gender}} if previous else None
+            plan = prepare_update({gender: originals[gender]}, snapshot, prior)
+            quality_audit_gate(root, plan)
+        except (SourceError, UpdateError, StandingsError) as exc:
+            # Enum-only report: never copy raw HTTP bodies or private MASTER data.
+            failures[gender] = {"stage": stage, "error_code": type(exc).__name__}
+            continue
+        numbers = {r["number"] for r in snapshot["matches"] + snapshot.get("pending_matches", [])}
+        require(not observed_numbers & numbers, "Official global game numbers overlap across divisions")
+        observed_numbers.update(numbers)
+        plans[gender] = plan
+    if not plans:
+        raise DivisionsUnavailable(failures)
+    held_numbers = {int(k.rsplit(":", 1)[1]) for k, v in old_links.items() if v["gender"] in failures}
+    require(not observed_numbers & held_numbers, "Official game number conflicts with a preserved division")
+    expected = {DATA_PATHS[g]: deepcopy(value) for g, value in originals.items()}
+    expected[STATE_PATH] = deepcopy(previous_state) if previous_state else None
+    candidates = {DATA_PATHS[g]: deepcopy(value) for g, value in originals.items()}
+    links = deepcopy(old_links)
+    matched, coverage, totals = [], [], {}
+    for gender, plan in plans.items():
+        candidates[DATA_PATHS[gender]] = plan["candidates"][DATA_PATHS[gender]]
+        links = {k: v for k, v in links.items() if v["gender"] != gender}
+        links.update(plan["candidates"][STATE_PATH]["links"])
+        matched.extend(plan["matched"])
+        coverage.extend(plan["report"]["postseason_source_coverage"])
+        totals.update(plan["report"]["divisions"])
+    checked_at = max((p["report"]["checked_at"] for p in plans.values()),
+                     key=lambda s: datetime.fromisoformat(s.replace("Z", "+00:00")))
+    state = {"schema_version": 1, "season": SEASON, "links": links}
+    if state == {k: previous.get(k) for k in state}:
+        state = deepcopy(previous)
+    else:
+        state["updated_at"] = checked_at
+    candidates[STATE_PATH] = state
+    changes = [p for p, value in candidates.items() if value != expected[p]]
+    # Build once from only accepted records. MASTER conflicts are not isolated
+    # or retried: no public write is allowed until the complete plan reads back.
+    master_plan = build_update_plan(master_values, matched) if master_values is not None else None
+    report = {"schema_version": 1, "season": SEASON, "checked_at": checked_at,
+              "status": "PARTIAL_READY" if failures else (
+                  "READY" if master_plan is not None else "SOURCE_AND_SITE_VERIFIED_MASTER_NOT_CHECKED"),
+              "mode": "STAGING_ONLY", "source_coverage": sum(p["report"]["source_coverage"] for p in plans.values()),
+              "verified_divisions": list(plans), "held_divisions": list(failures),
+              "division_failures": failures, "divisions": totals,
+              "division_observed_at": {g: p["report"]["checked_at"] for g, p in plans.items()},
+              "postseason_source_coverage": coverage, "changed_files": changes,
+              "master_checked": master_plan is not None,
+              "master_changed_cells": len(master_plan["changes"]) if master_plan else None,
+              "production_written": False, "master_written": False}
+    if failures:
+        report["error_code"] = "PartialSourceError"
+    return {"candidates": candidates, "expected": expected, "changed_files": changes,
+            "matched": matched, "master_plan": master_plan, "report": report}
+
+
 def check_local_preconditions(root, plan):
     for relative, expected in plan["expected"].items():
         require(relative in ALLOWED_OUTPUTS, "Disallowed output path")
@@ -561,11 +664,40 @@ def check_local_preconditions(root, plan):
         require(current == expected, "Local data changed during collection; rebuild from latest main")
 
 
+def verify_candidate_ui(root, plan, output):
+    """Render the exact in-memory publication candidate before any MASTER write."""
+    candidate_root = Path(output).resolve() / "candidate-ui"
+    for relative, candidate in plan["candidates"].items():
+        write_json(candidate_root / relative, candidate)
+    environment = {**os.environ, "KVL_VLEAGUE_CANDIDATE_ROOT": str(candidate_root)}
+    try:
+        with (Path(output) / "candidate-ui.log").open("w", encoding="utf-8") as log:
+            subprocess.run(["node", "--test", "tests/vleague-auto-update-ui.test.cjs"],
+                           cwd=root, env=environment, stdout=log, stderr=subprocess.STDOUT,
+                           timeout=120, check=True)
+    except (subprocess.SubprocessError, OSError) as exc:
+        raise UpdateError("Exact publication candidate UI verification failed") from exc
+    # Prevent the checked bytes from diverging silently before MASTER mutation.
+    require(all(read_json(candidate_root / p) == value for p, value in plan["candidates"].items()),
+            "Candidate changed during UI verification")
+    return {"status": "PASS", "scope": "exact_publication_candidate_dom_not_live_browser"}
+
+
+def incomplete_live_points(plan):
+    """Report missing terminal points without discarding verified set wins."""
+    return [{"source_key": r["source_key"], "expected_sets": sum(r["live_score"][s] for s in ("home", "away")),
+             "verified_sets": len(r["live_sets"])} for r in plan["matched"]
+            if r["status"] == "live" and len(r["live_sets"]) < sum(r["live_score"][s] for s in ("home", "away"))]
+
+
 def quality_audit_gate(root, plan):
     """Reuse the existing KVL Quality Audit's pure match/standings checks."""
     from quality_audit import checks
     results = []
     for relative in DATA_PATHS.values():
+        if relative not in plan["candidates"] or relative in {
+                DATA_PATHS[g] for g in plan.get("report", {}).get("held_divisions", [])}:
+            continue
         config = read_json(Path(root) / Path(relative).with_name("config.json"))
         data = plan["candidates"][relative]
         results += [checks.matches(config, data, relative), checks.standings(config, data, relative)]
@@ -585,10 +717,20 @@ def publication_gate(plan):
 
     require(set(plan["candidates"]) == ALLOWED_OUTPUTS,
             "Publication requires exactly the three allowlisted JSON outputs")
-    paths = sorted(ALLOWED_OUTPUTS)
+    held = set(plan.get("report", {}).get("held_divisions", []))
+    require(held <= set(DIVISIONS), "Invalid preserved division scope")
+    preserved = {DATA_PATHS[g] for g in held}
+    require(all(plan["candidates"][p] == plan["expected"][p]
+                and p not in plan["changed_files"] for p in preserved),
+            "Unobserved division must remain unchanged")
+    paths = sorted(ALLOWED_OUTPUTS - preserved)
     source_ids = {}
     for gender, relative in DATA_PATHS.items():
+        if gender in held:
+            continue
         source_ids[relative] = sorted({r["source_url"] for r in plan["matched"] if r["gender"] == gender}
+                                      | {r["score_source_url"] for r in plan["matched"]
+                                         if r["gender"] == gender and r.get("score_source_url")}
                                       | {s["sourceUrl"] for r in plan["matched"] if r["gender"] == gender
                                          for s in r.get("live_sets", []) if s.get("sourceUrl")}
                                       | {c["source_url"] for c in plan["report"].get("postseason_source_coverage", []) if c["gender"] == gender}
@@ -603,9 +745,11 @@ def publication_gate(plan):
     entries = {}
     with TemporaryDirectory(prefix="kvl-vleague-publication-") as temporary:
         root = Path(temporary)
-        for relative in paths:
+        for relative in sorted(ALLOWED_OUTPUTS):
             file = root / relative
             write_json(file, plan["candidates"][relative])
+            if relative in preserved:
+                continue
             entries[relative] = {
                 "access_level": "PUBLIC", "record_status": "VERIFIED",
                 "source_ids": source_ids[relative], "verified_at": checked_at,
@@ -614,10 +758,11 @@ def publication_gate(plan):
                 "verification_scope": "Regular season and official postseason fixtures/results through the championship; preserved metadata retains its existing provenance.",
             }
         failures = validate_changed(root, paths, entries)
-        security_results = security(root, paths)
+        security_results = security(root, sorted(ALLOWED_OUTPUTS))
     passed = not failures and security_results[0]["outcome"] == "PASS"
     return {"check": "PUBLIC_VERIFIED_AUTOMATED_EXPORT", "status": "PASS" if passed else "FAIL",
             "checked_at": checked_at, "file_count": len(paths), "rejected_file_count": len(failures),
+            "preserved_unobserved_files": sorted(preserved),
             # Never attach rejected payloads, sensitive finding pointers or a
             # VERIFIED assertion for files that failed the nested-record scan.
             "files": entries if passed else {},
@@ -675,6 +820,15 @@ def report_markdown(report):
         for item in report["live_points_checks"]:
             lines.append(f"| {item['source_key']} | {item['verified_sets']}/{item['completed_sets']} | {item['decision']} |")
         lines += ["", "수집 원본의 점수 필드와 보완 판정은 source-observations.json에 보관합니다. 진행 중 점수는 종료세트로 게시하지 않습니다."]
+    if report.get("held_divisions"):
+        lines += ["", "일부 부문은 검증에 실패했습니다. 해당 부문의 기존 점수·관측시각은 그대로 보존하고, 검증된 부문만 게시 후보로 준비합니다."]
+        for gender in report["held_divisions"]:
+            failure = report.get("division_failures", {}).get(gender, {})
+            lines.append(f"- {gender}: {failure.get('stage', 'unknown')} / {failure.get('error_code', 'FAILED')}")
+    if report.get("incomplete_live_points"):
+        lines += ["", "확인된 세트 승수는 반영하되, 다음 경기의 종료세트 득점은 아직 일부 미확인입니다."]
+        for gap in report["incomplete_live_points"]:
+            lines.append(f"- {gap['source_key']}: {gap['verified_sets']}/{gap['expected_sets']}세트 득점 검증")
     lines += ["", f"MASTER 확인: {'완료' if report.get('master_checked') else '실행환경 인증 미연결 / 미검증'}",
               f"MASTER 변경 셀: {report.get('master_changed_cells', '미확인')}",
               f"운영 파일 쓰기: {report.get('production_written', False)}",
@@ -684,7 +838,7 @@ def report_markdown(report):
         lines += ["", f"자동 갱신 단계: {lifecycle['phase']}",
                   f"갱신 마감(미포함): {lifecycle['ends_at']}",
                   "갱신 마감은 운영상 중단 시각이며, 공식 대회 종료 또는 기록 보관 완료를 의미하지 않습니다."]
-    if report.get("error_code"):
+    if report.get("error_code") and report["error_code"] not in ("PartialSourceError", "IncompleteLivePoints"):
         lines += ["", "검증 또는 연결 실패로 후속 적용을 중단했습니다. MASTER·운영 파일·배포 상태를 재대조해야 합니다.",
                   f"오류 종류: `{report['error_code']}`"]
     return "\n".join(lines) + "\n"
@@ -698,6 +852,8 @@ def main():
     parser.add_argument("--master-snapshot", type=Path, help="Private local snapshot for read-only end-to-end validation")
     parser.add_argument("--check-master", action="store_true", help="Read MASTER using the execution environment's credentials")
     parser.add_argument("--publish", action="store_true", help="Authenticated MASTER update followed by allowlisted local data write")
+    parser.add_argument("--isolate-divisions", action="store_true", help="Preserve a failed division while preparing the other verified division")
+    parser.add_argument("--verify-candidate-ui", action="store_true", help="Check exact candidate DOM before any MASTER mutation")
     args = parser.parse_args()
     root = args.root.resolve()
     report = {"schema_version": 1, "season": SEASON, "status": "FAILED", "mode": "STAGING_ONLY",
@@ -712,8 +868,9 @@ def main():
             report["lifecycle"] = require_update_window(root)
         originals = {gender: read_json(root / relative) for gender, relative in DATA_PATHS.items()}
         previous = read_json(root / STATE_PATH) if (root / STATE_PATH).exists() else None
-        snapshot = (read_json(args.source_file) if args.source_file else
-                    collect_season(live_observations=live_observations))
+        require(not (args.isolate_divisions and args.source_file), "Isolated collection requires fresh per-division reads")
+        snapshot = None if args.isolate_divisions else (
+            read_json(args.source_file) if args.source_file else collect_season(live_observations=live_observations))
         values, client = None, None
         if args.master_snapshot:
             raw = read_json(args.master_snapshot)
@@ -721,8 +878,14 @@ def main():
         elif args.check_master or args.publish:
             client = SheetsClient.from_environment()
             values = client.read_values()
-        plan = prepare_update(originals, snapshot, previous, values)
+        plan = (prepare_isolated_update(root, originals, previous, values,
+                    lambda gender: collect_season(genders=(gender,), live_observations=live_observations))
+                if args.isolate_divisions else prepare_update(originals, snapshot, previous, values))
         report = plan["report"]
+        report["incomplete_live_points"] = incomplete_live_points(plan)
+        if args.isolate_divisions and report["incomplete_live_points"]:
+            report["status"] = "PARTIAL_READY"
+            report.setdefault("error_code", "IncompleteLivePoints")
         report["live_points_checks"] = [
             {"source_key": e["source_key"], "completed_sets": sum(e["schedule"]["wins"].values()),
              "verified_sets": e["selected_sets"], "decision": e["decision"]}
@@ -730,6 +893,8 @@ def main():
         report["quality_audit"] = quality_audit_gate(root, plan)
         report["publication_gate"] = publication_gate(plan)
         require(report["publication_gate"]["status"] == "PASS", "KVL public-export security rejected candidate data")
+        if args.verify_candidate_ui:
+            report["candidate_ui"] = verify_candidate_ui(root, plan, args.output)
         if args.publish:
             ensure_publish_context(root)
             report["lifecycle"] = require_update_window(root, candidates=plan["candidates"])
@@ -755,6 +920,9 @@ def main():
         # Do not put raw MASTER values, authentication exceptions or HTTP bodies
         # into public artifacts. Full source/parser errors remain local exceptions.
         report.update(status="FAILED", error_code=type(exc).__name__)
+        if isinstance(exc, DivisionsUnavailable):
+            report.update(held_divisions=list(exc.failures), division_failures=exc.failures,
+                          verified_divisions=[])
         if isinstance(exc, LifecycleError):
             report["lifecycle_reason_code"] = str(exc)
         write_json(args.output / "report.json", report)

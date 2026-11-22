@@ -9,7 +9,7 @@
   "archiveStatus": "not_archived",
   "archivedAt": null,
   "checkedAt": "2026-11-16",
-  "updatedAt": "2026-11-18",
+  "updatedAt": "2026-11-22",
   "rules": {
     "status": "official_verified",
     "version": "2026-05-12",
@@ -29,9 +29,8 @@
           "fivb-system"
         ],
         "link": {
-          "label": "LA28 공식 대회",
-          "url": "https://la28.org/en/games-plan/olympics/volleyball.html",
-          "checkedAt": "2026-11-17"
+          "url": "#host-country-info",
+          "label": "개최국 정보 보기"
         }
       },
       {
@@ -234,6 +233,36 @@
       "title": "Volleyball World · 2026 아시아선수권 최종 결과",
       "url": "https://en.volleyballworld.com/volleyball/competitions/avc-men-continental/news/japan-triumph-as-asian-champs-and-qualify-for-la-2028",
       "checkedAt": "2026-11-16"
+    },
+    {
+      "id": "la28-games-dates",
+      "title": "LA28 · 개·폐막 일정·개최 이력",
+      "url": "https://la28.org/en/newsroom/LA28_Announces_Games_Dates.html",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "la28-volleyball",
+      "title": "LA28 · 실내배구 경기장",
+      "url": "https://la28.org/en/games-plan/olympics/volleyball.html",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "la28-schedule-v3-1",
+      "title": "LA28 · 공식 경기 일정 v3.1",
+      "url": "https://la28.org/content/dam/latwentyeight/competition-schedule-imagery/uploaded-june-9th-oly-3-1/LA28OlympicGamesCompetitionScheduleByEventV3.1.pdf",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "la28-host-men",
+      "title": "Volleyball World · 미국 남자 자동 출전",
+      "url": "https://en.volleyballworld.com/news/la-2028-men-s-volleyball-who-qualified-so-far",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "la28-host-women",
+      "title": "Volleyball World · 미국 여자 자동 출전",
+      "url": "https://en.volleyballworld.com/news/la-2028-women-s-volleyball-six-down-six-to-go",
+      "checkedAt": "2026-11-22"
     }
   ],
   "verificationNotes": [
@@ -258,5 +287,62 @@
     "dataUrl": "data/national/fivb-world-cup-2027-v1.json",
     "fallbackUrl": "fivb-world-cup-2027.html",
     "olympicLabel": "LA28"
+  },
+  "hostOverview": {
+    "cycleId": "la2028",
+    "verificationStatus": "official_verified",
+    "checkedAt": "2026-11-22",
+    "updatedAt": "2026-11-22",
+    "country": {
+      "code": "USA",
+      "nameKo": "미국",
+      "sourceIds": [
+        "la28-host-men",
+        "la28-host-women"
+      ]
+    },
+    "city": {
+      "nameKo": "로스앤젤레스",
+      "sourceIds": [
+        "la28-games-dates"
+      ]
+    },
+    "ceremonies": {
+      "startDate": "2028-07-14",
+      "endDate": "2028-07-30",
+      "sourceIds": [
+        "la28-games-dates"
+      ]
+    },
+    "volleyball": {
+      "startDate": "2028-07-15",
+      "endDate": "2028-07-30",
+      "sourceIds": [
+        "la28-schedule-v3-1"
+      ]
+    },
+    "venue": {
+      "nameKo": "혼다 센터",
+      "nameEn": "Honda Center",
+      "cityKo": "애너하임",
+      "sourceIds": [
+        "la28-volleyball",
+        "la28-schedule-v3-1"
+      ]
+    },
+    "qualification": {
+      "status": "confirmed",
+      "sourceIds": [
+        "la28-pdf",
+        "la28-host-men",
+        "la28-host-women"
+      ]
+    },
+    "history": {
+      "text": "LA는 1932·1984년에 이어 세 번째 하계올림픽을 개최합니다.",
+      "sourceIds": [
+        "la28-games-dates"
+      ]
+    }
   }
 }

@@ -45,9 +45,17 @@ class SeasonFixture(unittest.TestCase):
 
     def invoke_publisher(self, *, clock=ACTIVE, client=None, arguments=()):
         argv = ["kovo_vleague_update.py", "--root", str(self.root), "--output", str(self.output), "--publish", *arguments]
+        def collect_snapshot(*, genders=None, **_kwargs):
+            snapshot = deepcopy(self.snapshot)
+            if genders is not None:
+                snapshot["coverage"]["genders"] = list(genders)
+                snapshot["coverage"]["postseason"] = [r for r in snapshot["coverage"]["postseason"] if r["gender"] in genders]
+                for key in ("matches", "pending_matches", "official_standings"):
+                    snapshot[key] = [r for r in snapshot.get(key, []) if r["gender"] in genders]
+            return snapshot
         with patch.object(sys, "argv", argv), patch.object(update, "ensure_publish_context"), \
                 patch.object(lifecycle, "utc_now", side_effect=clock if callable(clock) else lambda: clock), \
-                patch.object(update, "collect_season", return_value=deepcopy(self.snapshot)) as collect, \
+                patch.object(update, "collect_season", side_effect=collect_snapshot) as collect, \
                 patch.object(update.SheetsClient, "from_environment", return_value=client) as connect, \
                 redirect_stdout(io.StringIO()), redirect_stderr(io.StringIO()):
             code = update.main()
@@ -505,6 +513,12 @@ class PublisherWindowTests(SeasonFixture):
 
 class ArchivePreparationTests(SeasonFixture):
     def test_actual_updater_report_through_championship_prepares_sanitized_archive(self):
+        self.actual_report_archive()
+
+    def test_actual_isolated_full_report_through_championship_prepares_sanitized_archive(self):
+        self.actual_report_archive(isolated=True)
+
+    def actual_report_archive(self, *, isolated=False):
         # Exercise the publisher's actual report schema against closeout, using
         # synthetic source/MASTER/Pages receipts and an explicitly simulated
         # future clock. No credentials, source requests, or network writes.
@@ -523,12 +537,23 @@ class ArchivePreparationTests(SeasonFixture):
                 return published_at.astimezone(tz) if tz else published_at.replace(tzinfo=None)
 
         client = MemorySheets(self.master_values)
-        with patch.object(update, "datetime", SyntheticFutureClock):
-            code, _, _ = self.invoke_publisher(clock=published_at, client=client)
+        arguments = ("--isolate-divisions", "--verify-candidate-ui") if isolated else ()
+        # This stub supplies only the documented DOM receipt contract; it does
+        # not count as an actual browser or DOM validation of this fixture.
+        with patch.object(update, "datetime", SyntheticFutureClock), \
+                patch.object(update, "verify_candidate_ui", return_value={
+                    "status": "PASS", "scope": "exact_publication_candidate_dom_not_live_browser"}):
+            code, _, _ = self.invoke_publisher(clock=published_at, client=client, arguments=arguments)
         self.assertEqual(code, 0)
         report = update.read_json(self.output / "report.json")
         self.assertEqual(report["mode"], "MASTER_VERIFIED_LOCAL_DATA_READY")
         self.assertTrue(report["master_readback_verified"])
+        self.assertEqual(report["incomplete_live_points"], [])
+        if isolated:
+            self.assertEqual(set(report["verified_divisions"]), set(update.DIVISIONS))
+            self.assertEqual(report["held_divisions"], [])
+            self.assertEqual(report["division_failures"], {})
+            self.assertEqual(set(report["division_observed_at"]), set(update.DIVISIONS))
         self.assertEqual(len(report["postseason_source_coverage"]), 6)
         self.assertTrue(all(d["postseason"]["complete"] for d in report["divisions"].values()))
         self.assertTrue(client.writes)
@@ -552,7 +577,9 @@ class ArchivePreparationTests(SeasonFixture):
         self.assertEqual(result["status"], "ARCHIVE_PREPARED_NOT_ACTIVATED")
         manifest = update.read_json(self.root / result["manifest_path"])
         archived_report = update.read_json(self.root / manifest["receipts"]["publication"]["path"])
-        self.assertNotIn("postseason_source_coverage", archived_report)
+        for field in ("postseason_source_coverage", "incomplete_live_points", "verified_divisions", "held_divisions",
+                      "division_failures", "division_observed_at", "candidate_ui"):
+            self.assertNotIn(field, archived_report)
         for gender in update.DIVISIONS:
             self.assertEqual(archived_report["divisions"][gender]["postseason"],
                              report["divisions"][gender]["postseason"])
@@ -645,6 +672,64 @@ class ArchivePreparationTests(SeasonFixture):
         self.assertEqual(manifest["receipts"]["publication"]["input_sha256"], input_sha)
         for path in (self.root / Path(result["manifest_path"]).parent).rglob("*.json"):
             self.assertNotIn("SYNTHETIC_PRIVATE_DIAGNOSTIC", path.read_text())
+
+    def runtime_receipt_inputs(self):
+        folder = self.inputs()
+        receipt = update.read_json(folder / "publication.json")
+        receipt.update(verified_divisions=list(update.DIVISIONS), held_divisions=[], division_failures={},
+                       division_observed_at={g: receipt["checked_at"] for g in update.DIVISIONS},
+                       incomplete_live_points=[], candidate_ui={
+                           "status": "PASS", "scope": "exact_publication_candidate_dom_not_live_browser"})
+        receipt["publication_gate"]["preserved_unobserved_files"] = []
+        return folder, receipt
+
+    def reject_runtime_receipt(self, mutate, pattern):
+        folder, receipt = self.runtime_receipt_inputs()
+        mutate(receipt)
+        update.write_json(folder / "publication.json", receipt)
+        with self.assertRaisesRegex(lifecycle.LifecycleError, pattern):
+            self.prepare(folder)
+        self.assert_no_partial_archive()
+
+    def test_partial_or_incomplete_runtime_receipts_cannot_become_full_archive(self):
+        mutations = [lambda r: r.update(held_divisions=["FEMALE"]),
+                     lambda r: r.update(verified_divisions=["MALE"]),
+                     lambda r: r.update(division_failures={"FEMALE": {"stage": "source", "error_code": "SourceError"}}),
+                     lambda r: r.update(incomplete_live_points=[{"expected_sets": 2, "verified_sets": 1}]),
+                     lambda r: r["publication_gate"].update(preserved_unobserved_files=[update.DATA_PATHS["FEMALE"]])]
+        for i, mutate in enumerate(mutations):
+            with self.subTest(case=i):
+                # READY alone cannot hide contradictory partial diagnostics.
+                self.reject_runtime_receipt(mutate, "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
+        self.reject_runtime_receipt(lambda r: r.update(status="PARTIAL_READY"), "ARCHIVE_MASTER_VERIFICATION_REQUIRED")
+
+    def test_runtime_division_diagnostic_shapes_are_strict(self):
+        mutations = [lambda r: r.update(verified_divisions=["MALE", "MALE"]),
+                     lambda r: r.update(verified_divisions="MALE,FEMALE"),
+                     lambda r: r.update(verified_divisions=["MALE", {"raw": "SYNTHETIC_PRIVATE_DIAGNOSTIC"}]),
+                     lambda r: r.update(held_divisions={}),
+                     lambda r: r.update(division_failures=[]),
+                     lambda r: r.update(incomplete_live_points=None),
+                     lambda r: r.pop("division_failures"),
+                     lambda r: r.update(division_observed_at={"MALE": r["checked_at"]})]
+        for i, mutate in enumerate(mutations):
+            with self.subTest(case=i):
+                self.reject_runtime_receipt(mutate, "ARCHIVE_(?:COMPLETE_PUBLICATION_REQUIRED|RECEIPT_FIELDS_INVALID)")
+
+    def test_runtime_observation_times_need_timezone_and_cannot_follow_receipt(self):
+        for value in (None, 123, "invalid", "2027-04-20T12:00:00", {"raw": "SYNTHETIC_PRIVATE_DIAGNOSTIC"},
+                      (ARCHIVE_TIME + timedelta(days=1)).isoformat()):
+            with self.subTest(value=value):
+                self.reject_runtime_receipt(lambda r: r["division_observed_at"].update(FEMALE=value),
+                                            "TIMESTAMP_|ARCHIVE_RECEIPT_TIME_INVALID")
+
+    def test_candidate_ui_archive_input_only_accepts_exact_success_scope(self):
+        for value in (None, [], {"status": "FAIL", "scope": "exact_publication_candidate_dom_not_live_browser"},
+                      {"status": "PASS", "scope": "live_browser"},
+                      {"status": "PASS", "scope": "exact_publication_candidate_dom_not_live_browser",
+                       "raw": "SYNTHETIC_PRIVATE_DIAGNOSTIC"}):
+            with self.subTest(value=value):
+                self.reject_runtime_receipt(lambda r: r.update(candidate_ui=value), "ARCHIVE_RECEIPT_FIELDS_INVALID")
 
     def test_failed_promotion_removes_only_our_empty_reservation(self):
         folder = self.inputs()

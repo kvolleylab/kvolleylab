@@ -17,11 +17,14 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from datetime import date, datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+import errno
 import hashlib
 import json
 import math
 from pathlib import Path
 import re
+import socket
 import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlencode, urlsplit
@@ -33,6 +36,7 @@ PAGE_SIZE = 200
 MAX_BYTES = 2_000_000
 MAX_PAGES = 10
 MAX_LIVE_LOOKUPS = 4
+MAX_RETRY_WAIT = 30
 KST = timezone(timedelta(hours=9))
 SEASONS = {
     "2026-27": {
@@ -167,6 +171,7 @@ class PublicClient:
             "X-Service-Name": "user", "User-Agent": "KVolleyLab-VLeague-Source/1.0",
         })
         for attempt in range(self.retries + 1):
+            retry_wait = 2 ** (attempt + 1)
             try:
                 with self.opener.open(request, timeout=self.timeout) as response:
                     require(response.status == 200 and response.geturl() == url,
@@ -182,14 +187,36 @@ class PublicClient:
                 envelope_payload(result)
                 return result
             except HTTPError as exc:
-                if exc.code in (401, 403, 429):
-                    raise SourceError(f"Source denied or rate limited ({exc.code}); no retry") from exc
-                if exc.code < 500 or attempt == self.retries:
+                if exc.code in (401, 403):
+                    raise SourceError(f"Source denied ({exc.code}); no retry") from exc
+                if not (exc.code == 429 or 500 <= exc.code < 600) or attempt == self.retries:
                     raise SourceError(f"Source HTTP error ({exc.code})") from exc
+                retry_after = (exc.headers or {}).get("Retry-After")
+                if retry_after is not None:
+                    try:
+                        if re.fullmatch(r"\d+", retry_after):
+                            requested_wait = int(retry_after)
+                        else:
+                            until = parsedate_to_datetime(retry_after)
+                            require(until.tzinfo is not None, "Source retry time lacks timezone")
+                            requested_wait = max(0, math.ceil(until.timestamp() - time.time()))
+                    except (TypeError, ValueError, OverflowError) as invalid:
+                        raise SourceError("Source retry time is invalid; no retry") from invalid
+                    # Never retry earlier than instructed or wait without a bound.
+                    require(requested_wait <= MAX_RETRY_WAIT,
+                            "Source retry time exceeds allowed wait; deferred")
+                    retry_wait = max(retry_wait, requested_wait)
             except (URLError, TimeoutError, OSError) as exc:
+                reason = exc.reason if isinstance(exc, URLError) else exc
+                transient = (isinstance(reason, (TimeoutError, ConnectionError))
+                             or isinstance(reason, socket.gaierror) and reason.errno == socket.EAI_AGAIN
+                             or isinstance(reason, OSError) and reason.errno in {
+                                 errno.ETIMEDOUT, errno.ECONNRESET, errno.ECONNREFUSED,
+                                 errno.ENETUNREACH, errno.EHOSTUNREACH, errno.EPIPE})
+                require(transient, "Source connection failure is not retryable")
                 if attempt == self.retries:
                     raise SourceError("Source connection failed after bounded retries") from exc
-            self.sleep(2 ** (attempt + 1))
+            self.sleep(retry_wait)
         raise SourceError("Source request did not complete")
 
 
@@ -268,23 +295,52 @@ def live_points_url(match):
     }))
 
 
-def live_game_points(data, match):
+def live_game_points(data, match, *, observation=None):
     payload = envelope_payload(data)
     game = payload.get("game") if isinstance(payload, dict) else None
     require(isinstance(game, dict), "REALTIME_GAME_MISSING")
     expected = {"seasonCode": match["season_id"], "round": match["round"],
                 "gameNum": match["number"], "homeCode": match["home"]["provider_code"],
-                "awayCode": match["away"]["provider_code"], "gameDate": match["date"],
-                "gameStartTime": match["time"]}
-    require(all(type(game.get(k)) is type(v) and game[k] == v for k, v in expected.items()),
-            "REALTIME_IDENTITY_MISMATCH")
+                "awayCode": match["away"]["provider_code"], "gameDate": match["date"]}
+    mismatched = [k for k, v in expected.items()
+                  if type(game.get(k)) is not type(v) or game[k] != v]
+    # The broadcast has no phase/gender/gcode fields. Its allowlisted request
+    # and the normalized schedule supply those invariants; do not infer them
+    # from a team name or accept a different season/phase's broadcast.
+    context_ok = (match.get("phase_id") == "201" and match.get("match_type") == "001"
+                  and match.get("season_id") == "023" and type(match.get("gender")) is str
+                  and match["gender"] in GENDERS
+                  and match.get("source_key") == f"023:001:{match.get('gender')}:{match.get('number')}"
+                  and all(isinstance(expected[k], str)
+                          and re.fullmatch(GENDERS.get(match.get("gender"), "!") + r"\d{3}", expected[k])
+                          for k in ("homeCode", "awayCode")))
+    identity = {"compared_fields": list(expected), "mismatched_fields": mismatched,
+                "schedule_context_valid": context_ok, "start_time_comparison": "INVALID"}
+    if observation is not None:
+        observation["identity"] = identity
+    try:
+        scheduled_time = clock_value(match.get("time"), "schedule start time")
+        broadcast_time = clock_value(game.get("gameStartTime"), "broadcast start time")
+    except SourceError as exc:
+        raise SourceError("REALTIME_IDENTITY_MISMATCH") from exc
+    identity.update(schedule_start_time=scheduled_time, realtime_start_time=broadcast_time,
+                    start_time_comparison="MATCH" if scheduled_time == broadcast_time else "DIFFERENT")
+    require(context_ok and not mismatched, "REALTIME_IDENTITY_MISMATCH")
+    # Start time is mutable fixture metadata: an actual start may replace the
+    # planned time in one official endpoint before the other. A valid difference
+    # is allowed only after every immutable game identity above agrees. Wins,
+    # terminal points and schedule-prefix conflict checks remain independent.
     won = {side: integer(game.get(f"{side}SetPoint"), "live set wins", maximum=3)
            for side in ("home", "away")}
     require(min(won.values()) < 3, "REALTIME_INVALID_COUNTERS")
     current_set = integer(game.get("setIng"), "live set number", minimum=1, maximum=5)
     count = sum(won.values())
-    require(current_set == (count if max(won.values()) == 3 else count + 1),
-            "REALTIME_SET_COUNTER_MISMATCH")
+    expected_set = count if max(won.values()) == 3 else count + 1
+    if observation is not None:
+        # Preserve bounded match diagnostics even when the counter check rejects
+        # the supplement. Never copy the raw game, player, lineup or feed object.
+        observation.update(wins=dict(won), current_set=current_set,
+                           expected_current_set=expected_set)
     points, trailing = [], False
     for n in range(1, 6):
         row = {side: integer(game.get(f"{side}S{n}Point"), "live set points", maximum=199)
@@ -294,15 +350,32 @@ def live_game_points(data, match):
         else:
             require(not trailing, "REALTIME_POINTS_GAP")
             points.append(row)
+    if observation is not None:
+        observation["points"] = [dict(row) for row in points]
+    # During a set break the wins can advance before setIng moves to the next
+    # set. Accept that one-step lag only when the entire completed prefix has
+    # legal terminal scores, its winners equal the broadcast counters and no
+    # next-set rally exists. A tied/deuce/incomplete set or any further lag is
+    # still rejected. Schedule counters are corroborated separately below.
+    between_sets = (max(won.values()) < 3 and count >= 1 and current_set == count
+                    and len(points) == count
+                    and len(verified_live_sets(points, won)) == count)
+    require(current_set == expected_set or between_sets,
+            "REALTIME_SET_COUNTER_MISMATCH")
+    if observation is not None:
+        observation["counter_state"] = "BETWEEN_SETS" if between_sets else "CURRENT"
     return won, points, current_set
 
 
 def supplement_live_points(matches, reader, stamp, observations):
-    """Add missing completed points, never promote wins, final status or ranks.
+    """Add corroborated completed points without inventing wins or finality.
 
     Schedule identity/wins remain authoritative. A supplemental source failure
     cannot block the healthy schedule publisher. Conflicting completed points
     are not merged; an ongoing rally is never certified as a completed set.
+    An ended schedule with a truncated legal prefix is a separate fail-closed
+    case: only a complete agreeing broadcast can finish its validation. The
+    schedule's end marker and winner, never the broadcast alone, authorize final.
     Evidence contains only bounded, validated public match fields and enums.
     """
     today = datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(KST).date().isoformat()
@@ -320,7 +393,8 @@ def supplement_live_points(matches, reader, stamp, observations):
                                  "verified_sets": len(current)},
                     "decision": "SCHEDULE_COMPLETE", "selected_sets": len(current)}
         observations.append(evidence)
-        if match["status"] != "live" or len(current) >= count:
+        pending_final = match["status"] == "final_points_pending"
+        if match["status"] not in {"live", "final_points_pending"} or len(current) >= count:
             continue
         evidence["decision"] = "LOOKUP_LIMIT"
         if lookups >= MAX_LIVE_LOOKUPS:
@@ -334,7 +408,8 @@ def supplement_live_points(matches, reader, stamp, observations):
             evidence["decision"] = "REALTIME_UNAVAILABLE"
             continue
         try:
-            live_won, live_points, current_set = live_game_points(data, match)
+            live_won, live_points, current_set = live_game_points(
+                data, match, observation=evidence["realtime"])
         except SourceError as exc:
             # Never expose response text, arbitrary exception messages or player data.
             evidence["decision"] = str(exc) if str(exc) in {
@@ -342,6 +417,9 @@ def supplement_live_points(matches, reader, stamp, observations):
                 "REALTIME_SET_COUNTER_MISMATCH", "REALTIME_POINTS_GAP"} else "REALTIME_INVALID_FIELDS"
             continue
         evidence["realtime"].update(wins=live_won, points=live_points, current_set=current_set)
+        if pending_final and live_won != won:
+            evidence["decision"] = "FINAL_WIN_COUNTERS_CONFLICT"
+            continue
         if any(live_won[s] < won[s] for s in won):
             evidence["decision"] = "REALTIME_BEHIND_SCHEDULE"
             continue
@@ -355,12 +433,31 @@ def supplement_live_points(matches, reader, stamp, observations):
         if len(candidate) <= len(current):
             evidence["decision"] = "REALTIME_POINTS_INCOMPLETE"
             continue
+        if pending_final:
+            # An ended match must have every legal terminal set, with no extra
+            # rally after its third win. Do not turn an incomplete supplement
+            # into a provisional export of an already-ended source record.
+            try:
+                validate_final_sets(live_points, won)
+            except SourceError:
+                evidence["decision"] = "REALTIME_FINAL_POINTS_INCOMPLETE_OR_INVALID"
+                continue
+            require(match.get("end_time") is not None and len(candidate) == count,
+                    "Final points supplement lost schedule confirmation")
+            match["sets"] = [dict(row) for row in live_points]
+            match["status"] = "final"
+            match["final_points_source_url"] = url
+            evidence.update(decision="FINAL_SUPPLEMENTED", selected_sets=len(candidate))
+            continue
         match["sets"] = [{s: row[s] for s in won} for row in candidate]
         match["live_points_source_url"] = url
         evidence.update(decision="SUPPLEMENTED", selected_sets=len(candidate))
+    require(not any(m["status"] == "final_points_pending" for m in matches),
+            "Final result lacks complete corroborated per-set points")
 
 
-def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="201"):
+def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="201",
+                    allow_final_supplement=False):
     config = SEASONS[season]
     require(phase_id in {"201", *POSTSEASON_PHASES}, "Unapproved schedule phase")
     post = POSTSEASON_PHASES.get(phase_id)
@@ -416,15 +513,26 @@ def normalize_match(raw, *, season, gender, source_url, observed_at, phase_id="2
             require(not trailing, "Gap between observed sets")
             points.append({"home": h, "away": a})
     if end is not None:
-        validate_final_sets(points, won)
-        status = "final"
+        # Keep direct normalization strict. Only the full collector may defer
+        # today's regular-season ended row with a legal but truncated prefix;
+        # it must finish corroboration before returning a source snapshot.
+        today = datetime.fromisoformat(observed_at.replace("Z", "+00:00")).astimezone(KST).date()
+        truncated = (allow_final_supplement is True and phase_id == "201" and day == today
+                     and max(won.values()) == 3 and min(won.values()) < 3
+                     and 0 < len(points) < sum(won.values())
+                     and len(verified_live_sets(points, won)) == len(points))
+        if truncated:
+            status = "final_points_pending"
+        else:
+            validate_final_sets(points, won)
+            status = "final"
     elif points or max(won.values()) > 0:
         require(min(won.values()) < 3, "Both teams have match-winning counters")
         status = "live"
     else:
         status = "scheduled"
     result_marker = raw.get("result")
-    if status == "final":
+    if status in {"final", "final_points_pending"}:
         expected = "W" if won["home"] > won["away"] else "L"
         require(result_marker == expected, "Official winner marker disagrees with set wins")
     elif status == "live":
@@ -491,7 +599,7 @@ def read_postseason_schedule(fetcher, *, season, gender, phase_id, observed_at):
                   "source_url": url}
 
 
-def read_gender_schedule(fetcher, *, season, gender, observed_at):
+def read_gender_schedule(fetcher, *, season, gender, observed_at, allow_final_supplement=False):
     config = SEASONS[season]
     rows, urls, total, pages = [], [], None, None
     for page_number in range(MAX_PAGES):
@@ -512,7 +620,8 @@ def read_gender_schedule(fetcher, *, season, gender, observed_at):
         require(len(content) == min(size, count - page_number * size), "Incomplete schedule page")
         total, pages = count, page_count
         rows.extend(normalize_match(row, season=season, gender=gender,
-                                    source_url=url, observed_at=observed_at) for row in content)
+                                    source_url=url, observed_at=observed_at,
+                                    allow_final_supplement=allow_final_supplement) for row in content)
         urls.append(url)
         if page_number + 1 == pages:
             break
@@ -563,8 +672,8 @@ def normalize_standings(data, *, season, gender, source_url, observed_at):
 
 
 def collect_season(season="2026-27", *, fetcher=None, include_standings=True, now=None,
-                   live_observations=None):
-    """Read both regular seasons and every supported postseason phase.
+                   live_observations=None, genders=None):
+    """Read complete requested divisions and every supported postseason phase.
 
     `fetcher(url)` is injectable for offline tests and must return the unmodified
     official JSON envelope. Official standings contain only teams with played
@@ -572,11 +681,19 @@ def collect_season(season="2026-27", *, fetcher=None, include_standings=True, no
     total with the finished matches before trusting their rank.
     """
     require(season in SEASONS, "Season has no reviewed official mapping")
+    selected_genders = tuple(GENDERS) if genders is None else genders
+    require(type(selected_genders) is tuple and bool(selected_genders)
+            and all(type(g) is str and g in GENDERS for g in selected_genders)
+            and len(set(selected_genders)) == len(selected_genders),
+            "Requested genders must be a nonempty unique approved tuple")
+    require(genders is None or include_standings is True,
+            "Explicit division collection requires official standings")
     reader = fetcher or PublicClient()
     stamp = now or utc_now()
     matches, pending_matches, coverage, postseason_coverage, standings = [], [], [], [], []
-    for gender in GENDERS:
-        observed, covered = read_gender_schedule(reader, season=season, gender=gender, observed_at=stamp)
+    for gender in selected_genders:
+        observed, covered = read_gender_schedule(reader, season=season, gender=gender,
+                                                observed_at=stamp, allow_final_supplement=True)
         matches.extend(observed)
         coverage.append(covered)
         for phase_id in POSTSEASON_PHASES:
@@ -598,7 +715,7 @@ def collect_season(season="2026-27", *, fetcher=None, include_standings=True, no
     return {"schema_version": 1, "season": season, "fetched_at": stamp,
             "source": "KOVO_PUBLIC_STAT_API", "coverage": {
                 "kind": "season", "phase": "through_championship", "complete": True,
-                "genders": list(GENDERS), "details": coverage, "postseason": postseason_coverage,
+                "genders": list(selected_genders), "details": coverage, "postseason": postseason_coverage,
             }, "matches": matches, "pending_matches": pending_matches, "official_standings": standings,
             "content_sha256": hashlib.sha256(json.dumps(stable, ensure_ascii=False,
                 sort_keys=True, separators=(",", ":")).encode()).hexdigest()}

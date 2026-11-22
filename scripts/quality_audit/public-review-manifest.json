@@ -2,6 +2,17 @@
   "schema_version": 1,
   "purpose": "Changed public JSON requires reviewed source IDs, PUBLIC + VERIFIED, verified_at and exact SHA-256. Empty does not approve legacy records.",
   "files": {
+    "data/team-rosters/v-league/coaches-2026-27.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "OKF-OFFICIAL-NEWS-20261117-4807"
+      ],
+      "verified_at": "2026-11-22",
+      "sha256": "7a33b62bd21ff2a33bec843fa480648c63ed98e9a2972d0e04fa576f7f02d213",
+      "evidence": "docs/validation/okf-acting-coach-vleague-today-first-v1-20261122.md",
+      "review_note": "2026-11-17 OK저축은행 구단 공식 발표와 연합뉴스 교차 확인. 김재헌은 정식 감독이 아닌 감독대행. 신영철의 공개 사퇴 이력을 보존하고 기존 13개 팀의 시즌별 감독 및 선수 자료는 유지. 공개적으로 발표된 지도자 인사 사실만 포함한다."
+    },
     "data/team-rosters/v-league/index.json": {
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
@@ -594,20 +605,16 @@
         "world-cup-field",
         "la28-field",
         "asian-result",
-        "men-field",
-        "men-draw",
-        "women-field",
-        "women-draw",
-        "qualification-system",
-        "la28-men",
-        "la28-women",
-        "rename",
-        "qualification-pdf"
+        "la28-games-dates",
+        "la28-volleyball",
+        "la28-schedule-v3-1",
+        "la28-host-men",
+        "la28-host-women"
       ],
-      "verified_at": "2026-11-18",
-      "sha256": "82e718b3dce7a4e369688ef987910383a79a687e976c7f7628e0e7ef41d7c103",
-      "evidence": "docs/validation/world-cup-roadmap-v1.md",
-      "review_note": "공개 공식 자료의 참가국·기간·조 편성·기확보국과 주기별 모듈 연결을 검수했다. 미래 우승·출전권 결과·세부 일정·명단은 미확정 상태를 보존한다. MASTER 등록·자동화 완료를 의미하지 않는다."
+      "verified_at": "2026-11-22",
+      "sha256": "986706730b08264c8fc56941c33b72449b0295e2eab8461555f3b2b55c3fd453",
+      "evidence": "docs/validation/olympic-world-cup-host-release-v1.md",
+      "review_note": "공식 출처로 확인한 월드컵 개요·참가국·출전권 규칙과 LA28 개최국 간편 안내의 공개 표시 범위를 검수했다. 미래 결과·경기 일정·최종 명단의 미확정 상태는 보존한다. 기존 역사·대륙선수권 데이터는 변경하지 않는다."
     },
     "data/olympics/brisbane2032_v1.json": {
       "access_level": "PUBLIC",
@@ -731,10 +738,10 @@
         "rename",
         "qualification-pdf"
       ],
-      "verified_at": "2026-11-18",
+      "verified_at": "2026-11-22",
       "sha256": "7ab92cf215a1341295a83e527c371b676dc4fcbb867c534af4551b29fe5872d3",
-      "evidence": "docs/validation/world-cup-roadmap-v1.md",
-      "review_note": "공개 공식 자료의 참가국·기간·조 편성·기확보국과 주기별 모듈 연결을 검수했다. 미래 우승·출전권 결과·세부 일정·명단은 미확정 상태를 보존한다. MASTER 등록·자동화 완료를 의미하지 않는다."
+      "evidence": "docs/validation/olympic-world-cup-host-release-v1.md",
+      "review_note": "공식 출처로 확인한 월드컵 개요·참가국·출전권 규칙과 LA28 개최국 간편 안내의 공개 표시 범위를 검수했다. 미래 결과·경기 일정·최종 명단의 미확정 상태는 보존한다. 기존 역사·대륙선수권 데이터는 변경하지 않는다."
     }
   }
 }

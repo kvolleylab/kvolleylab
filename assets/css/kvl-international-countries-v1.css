@@ -8,6 +8,26 @@
 .ktd-country-card .ktd-flag-icon{font-size:52px;line-height:1.2;display:block;filter:drop-shadow(0 2px 2px rgba(20,45,70,.13))}
 .ktd-country-card .ktd-card-eyebrow{margin-bottom:7px}
 .ktd-country-card .ktd-card-count{font-size:12px;font-weight:700}
+/* International team directory uses actual local SVG flag images (4:3), not OS-dependent emoji. */
+.ktd-country-card .ktd-card-logo img.ktd-country-flag-image{
+ display:block;width:100%;max-width:112px;max-height:84px;aspect-ratio:4/3;
+ object-fit:contain;background:#fff;border:1px solid #d8e3eb;border-radius:3px;
+ box-shadow:0 3px 9px rgba(10,34,53,.12)
+}
+.ktd-country-flag img.ktd-country-flag-image{
+ display:block;width:100%;max-width:64px;max-height:48px;aspect-ratio:4/3;
+ object-fit:contain;border:1px solid #d8e3eb;border-radius:3px;
+ box-shadow:0 2px 7px rgba(10,34,53,.1)
+}
+.ktd-country-card .ktd-country-flag-image[hidden],
+.ktd-country-card .ktd-country-flag-fallback[hidden],
+.ktd-country-flag .ktd-country-flag-image[hidden],
+.ktd-country-flag .ktd-country-flag-fallback[hidden]{display:none!important}
+.ktd-country-flag-fallback{font-size:42px;line-height:1.2}
+@media(max-width:660px){
+ .ktd-country-card .ktd-card-logo img.ktd-country-flag-image{max-width:90px;max-height:67.5px}
+ .ktd-country-flag img.ktd-country-flag-image{max-width:50px;max-height:37.5px}
+}
 .ktd-country-panel{background:#fff;border:1px solid #dfe7ed;border-radius:19px;padding:22px;box-shadow:0 8px 24px rgba(13,42,70,.05)}
 .ktd-country-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
 .ktd-country-heading{display:flex;align-items:center;gap:13px;min-width:0}
@@ -56,3 +76,68 @@
 
 .ktd-grid[hidden]{display:none!important}
 .ktd-country-wrap{margin:0 0 15px;padding:0;border:0;scroll-margin-top:25px}
+/* KVL PC readability v1 (2026-11-19): compact competition cards, no source/data changes. */
+@media (min-width:821px){
+ .ktd-country-events{grid-template-columns:repeat(auto-fill,minmax(228px,1fr));align-items:stretch}
+ .ktd-country-event{min-width:0;min-height:174px;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;gap:14px;padding:17px 16px}
+ .ktd-country-event>div:first-child{min-width:0}
+ .ktd-country-event strong{display:block;font-size:16px;line-height:1.4;word-break:keep-all}
+ .ktd-country-event p{font-size:13px;line-height:1.55;margin-top:7px}
+ .ktd-country-event small{display:block;font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+ .ktd-country-event .ktd-country-actions{justify-content:flex-start;gap:7px}
+ .ktd-country-event .ktd-country-actions button,.ktd-country-event .ktd-country-actions a{font-size:12px;padding:9px 11px;min-height:38px}
+ .ktd-country-roster-label,.ktd-country-player{grid-template-columns:68px minmax(190px,1fr) 75px 90px 130px;gap:11px;padding:13px 16px;font-size:14px}
+ .ktd-country-roster-label{font-size:12px}
+ .ktd-country-player{min-height:70px}
+ .ktd-country-number{font-size:16px}
+ .ktd-country-person strong{font-size:15px}
+ .ktd-country-person small{font-size:12px}
+ .ktd-country-player-links a{font-size:12px}
+}
+@media (min-width:821px) and (max-width:1000px){
+ .ktd-country-events{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+ .ktd-country-roster-label,.ktd-country-player{grid-template-columns:48px minmax(120px,1fr) 55px 68px 100px;gap:8px;padding:12px 10px}
+}
+/* User readability refinement: align roster and competition copy with 14px KVL PC navigation. */
+@media (min-width:821px){
+ .ktd-country-heading p:last-child,.ktd-country-note,.ktd-country-event p,
+ .ktd-country-event small,.ktd-country-roster-head p,.ktd-country-unverified,
+ .ktd-country-roster-label,.ktd-country-player,.ktd-country-person small,
+ .ktd-country-player-links a,.ktd-country-source-link,
+ .ktd-country-candidate-list>div,.ktd-country-warning{font-size:14px;line-height:1.5}
+ .ktd-country-person strong{font-size:16px;line-height:1.45}
+ .ktd-country-player{min-height:75px}
+ .ktd-country-event .ktd-country-actions button,.ktd-country-event .ktd-country-actions a,
+ .ktd-country-candidate button,.ktd-country-candidate a,.ktd-country-years button{font-size:14px}
+}
+/* PC refined 150%-equivalent (minus 4px vs initial 24/21px) per-competition roster typography, with an internal table scroller. */
+@media (min-width:821px){
+ .ktd-country-roster-table{
+  overflow-x:auto;overflow-y:hidden;max-width:100%;
+  overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#bacbd8 #f2f5f8
+ }
+ .ktd-country-roster-label,.ktd-country-player{
+  min-width:990px;grid-template-columns:85px minmax(420px,1fr) 105px 120px 155px;
+  gap:12px;padding:15px 18px;font-size:17px;line-height:1.45
+ }
+ .ktd-country-roster-label{font-size:17px;min-height:59px}
+ .ktd-country-player{min-height:105px}
+ .ktd-country-number,.ktd-country-person small,.ktd-country-player-links a{font-size:17px}
+ .ktd-country-person strong{font-size:20px;line-height:1.35}
+ .ktd-country-person{gap:6px}
+ .ktd-country-player-links{column-gap:15px;row-gap:5px}
+}
+/* Per-event verified club metadata: a compact line within the athlete field, no extra column. */
+.ktd-country-club{display:block;max-width:100%;font-size:12px;color:#385c76;line-height:1.45;overflow-wrap:anywhere}
+.ktd-country-club-league{color:#738a9a;font-size:.9em;font-weight:700}
+@media(min-width:821px){.ktd-country-club{font-size:17px}.ktd-country-club-league{font-size:16px}}
+@media(max-width:820px){.ktd-country-club{font-size:11px}.ktd-country-club-league{font-size:10px}}
+@media(max-width:375px){.ktd-country-club{font-size:10px}.ktd-country-club-league{font-size:9.5px}}
+
+/* Match KVL common typography inside international country details only. */
+.ktd-country-panel{font-family:inherit}
+.ktd-country-panel button,.ktd-country-panel input{font-family:inherit}
+.ktd-country-roster-label,.ktd-country-number{font-weight:800}
+@media (min-width:821px){
+ .ktd-country-club-league{font-size:17px}
+}

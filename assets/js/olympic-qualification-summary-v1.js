@@ -1,6 +1,7 @@
 import {resolveCycle,summaryView} from './olympic-cycle-model-v1.mjs';
 import {mountContinentalSelector} from './continental-selector-v1.js';
 import {mountWorldCupSelector} from './world-cup-selector-v1.js';
+import {mountHostSelector} from './olympic-host-selector-v1.js';
 const root=document.getElementById('olympic-summary');
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const destination=s=>{const u=new URL(s.url,location.href);const internal=u.origin===location.origin||u.origin==='https://kvolleylab.com';return {href:internal?u.pathname.slice(1)+u.search+u.hash:u.href,external:!internal};};
@@ -23,6 +24,7 @@ async function load(){
   root.dataset.cycle=c.id;root.dataset.rules=c.rules.status;
   mountContinentalSelector(root,c);
   mountWorldCupSelector(root,c);
+  mountHostSelector(root,c);
  }catch{root.innerHTML='<h2>올림픽 출전권 한눈에 보기</h2><p>출전권 자료를 불러오지 못했습니다. 아래 역사 기록은 계속 볼 수 있습니다.</p><button type="button" id="oq-retry">다시 불러오기</button>';root.querySelector('#oq-retry').addEventListener('click',load);}
 }
 load();

@@ -39,6 +39,24 @@ async function run(){
  try{
   const {page,errors}=await openPage(browser,1440,'/teams.html?category=international&gender=men');
   assert.equal(await page.locator('.ktd-country-card').count(),40);
+  const actualFlags=await page.locator('.ktd-country-card img.ktd-country-flag-image').evaluateAll(async images=>{
+   return Promise.all(images.map(async img=>{
+    img.loading='eager';
+    try{await img.decode()}catch{}
+    return {path:new URL(img.src).pathname,loaded:img.naturalWidth>0,alt:img.alt,
+     ratio:img.getBoundingClientRect().width/img.getBoundingClientRect().height,
+     fallbackHidden:img.nextElementSibling?.hidden===true};
+   }));
+  });
+  assert.equal(actualFlags.length,40,'All international country cards need image assets');
+  assert.equal(new Set(actualFlags.map(x=>x.path)).size,40,'Use a unique flag asset per ISO code');
+  assert.ok(actualFlags.every(x=>x.loaded&&x.alt.includes('국기')&&x.fallbackHidden),
+   'Every SVG flag must load locally: '+JSON.stringify(actualFlags.filter(x=>!x.loaded||!x.fallbackHidden)));
+  assert.ok(actualFlags.every(x=>x.path.startsWith('/assets/images/flags/4x3/')&&x.path.endsWith('.svg')),'Only local approved flag SVG URLs are used');
+  assert.ok(actualFlags.every(x=>x.ratio>=1.2&&x.ratio<=1.5),'Keep original 4:3 flag imagery within cards');
+  assert.equal((await page.locator('.ktd-country-card[data-team-code="JPN"] img').getAttribute('src')),
+   'assets/images/flags/4x3/jp.svg');
+  report.cases.push({case:'40 self-hosted SVG country flags loaded, including Japan; no CDN',result:'PASS'});
   assert.match(await page.locator('#ktdHeading').innerText(),/국제 대표팀/);
   assert.equal(await page.locator('#ktdGenderButtons').isVisible(),true);
   await page.locator('[data-ktd-region=asia]').click();
@@ -57,6 +75,11 @@ async function run(){
   report.cases.push({case:'International 40-country directory PC',result:'PASS',...(await screenshot(page,'list-1440'))});
   await page.locator('.ktd-country-card[data-team-code=JPN] [data-ktd-country]').click();
   await page.locator('.ktd-country-panel').waitFor({timeout:10000});
+  const detailFlag=page.locator('.ktd-country-flag img.ktd-country-flag-image');
+  assert.equal(await detailFlag.count(),1);
+  assert.ok((await detailFlag.getAttribute('src')).endsWith('/jp.svg'));
+  await detailFlag.evaluate(async img=>{await img.decode()});
+  assert.equal(await detailFlag.evaluate(img=>img.naturalWidth>0),true,'Detail flag should render as an SVG');
   assert.match(await page.locator('.ktd-country-heading').innerText(),/일본/);
   assert.match(await page.locator('.ktd-country-years').innerText(),/2026/);
   assert.equal(await page.locator('.ktd-country-event').count(),3);
@@ -104,6 +127,18 @@ async function run(){
   report.cases.push({case:'Deep link BRN year 2026 and source-labeled 13-person departure list',result:'PASS'});
   await direct.page.close();
   for(const width of [390,360]){
+   const view=await openPage(browser,width,'/teams.html?category=international&gender=men');
+   assert.equal(await view.page.locator('.ktd-country-card').count(),40);
+   await view.page.locator('#ktdSearch').fill('일본');
+   assert.equal(await view.page.locator('.ktd-country-card').count(),1);
+   const img=view.page.locator('.ktd-country-card img.ktd-country-flag-image');
+   await img.evaluate(async el=>{await el.decode()});
+   assert.equal(await img.evaluate(el=>el.naturalWidth>0),true,'Mobile flag image must load');
+   assert.ok((await img.getAttribute('src')).endsWith('/jp.svg'));
+   report.cases.push({case:'Mobile '+width+'px real flag image and country search',result:'PASS',
+    ...(await screenshot(view.page,'list-flag-'+width))});
+   assert.deepEqual(view.errors,[]);
+   await view.page.close();
    const {page:mobile,errors:mobileErrors}=await openPage(browser,width,'/teams.html?category=international&country=JPN&gender=men&year=2026');
    await mobile.locator('.ktd-country-panel').waitFor({timeout:30000});
    assert.equal(await mobile.locator('#ktdGrid').isVisible(),false,'country details replace long list');

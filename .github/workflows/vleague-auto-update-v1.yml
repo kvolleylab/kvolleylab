@@ -145,7 +145,7 @@ jobs:
         run: python -B scripts/kvl_competition_lifecycle.py --root . --report "$RUNNER_TEMP/kvl-vleague-preview/lifecycle.json" --github-output "$GITHUB_OUTPUT"
       - name: Verify real official full-season data without changing MASTER or site
         if: steps.preview-window.outputs.allow_update == 'true'
-        run: python -B scripts/kovo_vleague_update.py --root . --output "$RUNNER_TEMP/kvl-vleague-preview"
+        run: python -B scripts/kovo_vleague_update.py --root . --isolate-divisions --output "$RUNNER_TEMP/kvl-vleague-preview"
       - name: Render real candidate scores and standings through the existing engine
         if: steps.preview-window.outputs.allow_update == 'true'
         env:
@@ -216,11 +216,17 @@ jobs:
           access_token_scopes: https://www.googleapis.com/auth/spreadsheets
           create_credentials_file: false
           export_environment_variables: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install the existing candidate DOM dependency outside the checkout
+        run: npm install --prefix "$RUNNER_TEMP/kvl-vleague-publish-deps" --no-audit --no-fund jsdom@26.1.0
       - name: Collect fresh data, apply precise MASTER cells, verify readback and generate data
         if: steps.window.outputs.allow_update == 'true'
         env:
           KVL_GOOGLE_ACCESS_TOKEN: ${{ steps.google-auth.outputs.access_token }}
-        run: python -B scripts/kovo_vleague_update.py --root . --publish --output "$RUNNER_TEMP/kvl-vleague-publish"
+          KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-vleague-publish-deps/node_modules/jsdom
+        run: python -B scripts/kovo_vleague_update.py --root . --publish --isolate-divisions --verify-candidate-ui --output "$RUNNER_TEMP/kvl-vleague-publish"
       - name: Commit only approved V-League generated paths
         if: steps.window.outputs.allow_update == 'true'
         shell: bash
@@ -251,8 +257,21 @@ jobs:
             ${{ runner.temp }}/kvl-vleague-publish/source-observations.json
             ${{ runner.temp }}/kvl-vleague-publish/preflight.json
             ${{ runner.temp }}/kvl-vleague-publish/deploy.json
+            ${{ runner.temp }}/kvl-vleague-publish/candidate-ui.log
           retention-days: 7
           if-no-files-found: warn
+      - name: Report held divisions or incomplete points after verified partial publication
+        if: steps.window.outputs.allow_update == 'true'
+        run: |
+          python -B - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads((Path(os.environ['RUNNER_TEMP']) / 'kvl-vleague-publish/report.json').read_text())
+          if report.get('held_divisions'):
+              raise SystemExit('PARTIAL_SOURCE_FAILURE: verified division published; held division requires review')
+          if report.get('incomplete_live_points'):
+              raise SystemExit('LIVE_POINTS_INCOMPLETE: verified set wins published; terminal points remain incomplete')
+          PY
 
   player_master_pilot:
     # Wait for the match publisher before taking a fresh main checkout. The

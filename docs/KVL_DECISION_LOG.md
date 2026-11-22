@@ -1,5 +1,141 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-22 · V-리그 재시도·공식 보완·성별 장애 격리
+
+Status: USER REQUESTED RESILIENCE / FEATURE BRANCH IMPLEMENTED / NOT DEPLOYED.
+기준 main `36ed818f833dce723afa890e5c353cf98d053b4f`. 사용자는 한 번의 오류로
+업데이트가 계속 멈추지 않도록 재시도와 여러 공식 보완 경로를 요청했다.
+오늘 확인된 정각 전용 달력 검사 결함을 고치고, 동일 경기의 예정/실제 시작시각
+차이를 경기 신원과 분리한다. 시즌·단계·성별·경기번호·라운드·날짜·홈/원정 및
+승수·득점 충돌 검증은 유지한다. 공식 일정과 문자중계 외 새 공급자는 추가하지 않는다.
+
+공식 GET의 일시 통신/5xx/429만 최대 두 차례 재시도하며 서버 대기 지시를 지킨다.
+성별마다 완전한 공식 일정·순위·후보를 검증해 실패 부문의 기존 JSON·관측시각·ID
+연결을 보존한다. 검증된 다른 부문은 MASTER의 기존 잠금·수식·CAS·readback을
+통과한 경우만 게시한다. 인증·MASTER·보안·최신 main·배포 검증은 우회하지 않는다.
+검증된 승수는 있으나 종료세트 득점이 일부 미확인인 경우도 별도로 기록한다.
+부분 게시 뒤에는 Actions를 실패 상태로 남겨 기존 알림이 누락되지 않게 한다.
+실제 쓰기 후보에 대해 MASTER 변경 전에 DOM 검사를 수행한다.
+새 runtime 진단은 시즌 보관 입력에서 엄격히 검사하고 공개 archive에서는 제외한다.
+부문 보류·종료세트 누락이 있는 영수증은 정상 시즌 종료 증거로 승격하지 않는다.
+
+선수 MASTER/명단/ID, 국제대회/Cup, 화면 양식, Worker/cron, 비밀키는 변경하지 않는다.
+자세한 회귀·읽기 전용 실제 자료 대조·운영 승인과 다음 실경기 확인 항목은
+[검증 및 인계](validation/vleague-resilience-v1-20261122.md)를 따른다.
+새 PR 병합·운영 배포는 별도 사용자 승인 후 수행하며, 코드 테스트를 실경기 복구 완료로 간주하지 않는다.
+
+## 2026-11-22 · OK저축은행 감독대행 공식 반영 및 V-리그 오늘 경기 우선 표시
+
+Status: USER REQUESTED PRODUCTION / FEATURE BRANCH IMPLEMENTED / RELEASE REQUIRES QA AND PAGES EVIDENCE.
+사용자는 2026-27 V-리그 OK저축은행 신영철 감독의 사퇴와 김재헌 감독대행 체제를 홈페이지에 반영하고, V-리그 페이지의 `오늘 경기`와 `최근 결과` 카드 노출 순서를 바꾸어 `오늘 경기`가 먼저 나오도록 요청했다.
+
+**공식 근거:** OK저축은행 읏맨 배구단이 2026-11-17에 발표한 [구단 공식 소식](https://www.okfinancialsports.com/volleyball/story/news_content.asp?num=4807&page=1)에 따르면 신영철 감독은 사퇴했고, 같은 날 한국전력 경기부터 김재헌 수석코치가 감독대행으로 선수단을 지휘한다. 제3자 기사 [연합뉴스 2026-11-17](https://www.yna.co.kr/view/AKR20261117089800007)에서도 교차 확인. 정식 신임 감독 선임으로 단정하지 않는다.
+
+**변경:** `data/team-rosters/v-league/coaches-2026-27.json`에 OKF 현 감독대행 `김재헌`/`role: acting`/`asOf: 2026-11-17` 및 사퇴한 종전 감독 `신영철`의 변경 이력과 공식 발표 URL 기록. `assets/js/kvl-teams-directory-v1.js`는 OKF 카드만 `감독대행 : 김재헌`으로 표시하고 나머지 13개 남녀 팀 감독 표기는 유지한다. KOVO 선수 공시·로스터 파일과 선수 프로필·고교/대학 데이터를 변경하지 않는다.
+V-리그 남녀부 `competition-engine.html?competition=v-league-(men|women)-2026-27&view=overview`의 공통 `assets/js/kvl-domestic-home-v2.js` 요약에서 종전 `최근 결과 → 오늘/다음 경기` 순서를 `오늘/다음 경기 → 최근 결과`로 변경한다. 경기 선별 로직, 실시간 세트/득점, 경기 데이터/경기ID/상태·경기시간, KOVO 수집, 홈의 오늘 경기/최근 경기 UI 등은 변경하지 않는다. 화면 제목도 이에 맞춰 순서를 표시한다.
+
+기준 main `1d0ffb88c7f0075ae656e5da6e5a98289d8b38cb`. `teams.html`, `competition-engine.html`의 관련 JS 캐시 쿼리만 갱신. 검증·복구는 [2026-11-22 인계](validation/okf-acting-coach-vleague-today-first-v1-20261122.md) 참조. 운영 배포 상태는 GitHub PR 병합·Pages 성공과 동일 SHA 실제 홈페이지 검증 이후 확인한다.
+
+## 2026-11-21 · Preserve honest waiting states in the live publisher candidate gate
+
+Status: USER REQUESTED REPAIR / IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED.
+On base `26842dd922c96219d4f90e0671a62becc05f7709`, repair the candidate UI
+checker that expected VS for an unobserved game after kickoff, blocking the
+other division's valid live update on11/21. Independently verify scheduled,
+waiting, live, pending-final and stale states, exact points and observation
+labels; do not weaken checks or change the honest production display.
+Unmodified failure artifact: before0/6, after6/6. Current final candidate6/6,
+Python292, Node110 and separate synthetic checker22 pass. No source, data,
+MASTER, IDs, roster, standings, international/Cup, workflow, Worker or cron
+changes. Production merge approval and subsequent natural/live verification
+remain required. [Evidence and release gate](validation/vleague-candidate-waiting-gate-v1.md).
+
+## 2026-11-20 · 팀찾기 카드 PC 3열·모바일 2열 반응형 v1
+
+Status: USER APPROVED IMPLEMENTATION / FEATURE BRANCH IMPLEMENTED / RELEASE GATED BY QA.
+사용자가 팀찾기 `teams.html`의 팀·국가 카드 목록에서 PC 한 줄에 **3팀**, 모바일 한 줄에 **2팀** 표시하는 구성을 상담한 뒤 `진행해`로 구현을 승인했다. 중간 PC/태블릿의 좁은 가로폭에서 무리하게 3개를 욱여넣지 않도록 이전 추천대로 브라우저 화면폭 기준 **1280px 이상 3열 가로 카드, 661~1279px 2열 가로 카드, 660px 이하 2열 세로 카드**를 적용한다. 카드 목록에만 한정하고, 국가별 선수 명단 표 자체의 컬럼·폰트·정보량은 변경하지 않는다.
+
+모바일 카드(360/390px) 내부 구조는 기존 로고 31% 좌우 배치에서 **위쪽 로고/국기 → 중앙 팀명·확인된 선수 수/감독·출처 → 하단 선수명단/팀정보 버튼**의 세로 정렬로 변경하고, 로고 60~78px와 약 44px 이상의 터치 가능 버튼을 유지한다. 길이가 긴 구단명·국가명은 강제로 말줄임하지 않고 여러 줄 줄바꿈한다. 기존 실제 KOVO 명단·국기 SVG 40개·감독 및 학교/대회 출처 텍스트·선수/팀 링크·전체 카드 개수·남녀 선택·지역/국가 필터·로그인 접근·상단 홈 이미지 HERO는 보호한다. 카드 행 높이는 각 그리드 행에서 동일하게 확장되며 기존 PC 구단 로고 31% 열 구조는 보존한다.
+
+기준 main `7d574422b98c63e808c61859fe0c760484f9df44`. 구현 범위: `assets/css/kvl-teams-directory-v1.css` 후행 반응형 규칙, `teams.html` CSS 캐시 버전, 팀 디렉터리 단위·Chromium·실운영 QA, 검증 문서. [인계](validation/teams-responsive-grid-v1-20261120.md). GitHub Pages/실제 운영 검증 결과는 확인한 동일 SHA 결과만 기록한다.
+
+## 2026-11-20 · 팀찾기 HERO 홈 배경 이미지 재사용 v1
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / PRODUCTION DEPLOY NOT YET VERIFIED.
+사용자가 `팀찾기` 페이지 상단 메인 카드 이미지를 `홈`의 메인 카드 이미지와 같게 요청했다. 실제 GitHub main `index.html`의 `.home-hero`는 PC `/assets/img/home-hero/kvl-home-hero-pc-v01.webp`, 680px 이하 모바일 `/assets/img/home-hero/kvl-home-hero-mobile-v01.webp`를 `right center/cover` 배경으로 사용한다. `teams.html`의 `.ktd-hero`는 기존에 이미지 없는 텍스트 영역이었다. 신규 이미지 생성 없이 홈의 **현재 운영 실사용 파일 그대로** 팀찾기 상단 카드에 적용한다.
+
+팀찾기 내용은 팀명과 안내 문구 그대로 유지하면서 PC 318px·모바일 264px의 홈 HERO 높이와 PC 44px·모바일 30px 헤더를 이용하며, 어두운 홈 HERO 이미지에 대비되는 흰색 텍스트와 밝은 설명 문구로 표시한다. 기존 `ktd-main` 1180px 영역 안에서 12px 둥근 모서리를 적용하고 `teams.html` 팀 검색·프로/대학/고교/중학/대표팀/국제 분류·팀/선수 명단·현재 운영 회원 접근·KOVO 자동화·홈 `index.html`은 건드리지 않는다. 참고: 홈과 팀찾기의 전체 페이지 레이아웃은 서로 다르므로 배경 원본/cover 규칙만 동일하게 하고 나머지 페이지 UI는 유지한다.
+
+Base main `2929efbf1149d914acd017cb5f0be0c057d5c7e3`. 변경 범위: `assets/css/kvl-teams-directory-v1.css`, `teams.html` 캐시, 해당 팀 디렉터리 unit/Chromium QA와 검증기록. [검증·복구 인계](validation/teams-hero-match-home-hero-v1-20261120.md). 실제 PR/Pages/운영 HTTPS 테스트 통과를 확인한 뒤 배포 상태를 기록한다.
+
+## 2026-11-20 · 홈 오늘 경기와 V-리그 요약의 득점을 숫자로 통일
+
+Status: USER APPROVED RELEASE / IMPLEMENTED / QA PASSED / DEPLOYMENT PENDING.
+사용자가 홈 ‘오늘 경기’ 카드에서 `1세트`, `2세트` 문구를 빼고 득점만 표시하도록 요청했다. 기존 일정표 및 최근 경기 결과와 같은 `20–25 / 25–21` 형태로 홈과 같은 요약 기능의 V-리그 한눈에 보기에도 적용한다. 세트 순서는 유지하며 번호는 툴팁과 접근성 이름에 남긴다. 중앙 세트 승수(0 포함), 진행·종료 확인 중·갱신 지연 상태, KST 관측시각과 공식 검증 조건은 변경하지 않는다.
+
+기준 main `d3b6b8b87d2229f0b7f2d718c23ebc52f07ae073`. 표시 문제와 오늘 자동화 실적을 구분해 [검증 기록](validation/home-live-points-only-v1-20261120.md)에 남긴다. 수집기·MASTER·경기/선수 ID·명단·순위·Cup·국제대회·Worker/cron은 변경하지 않는다. 2026-11-20 사용자가 PR #382 병합·운영 배포를 명시적으로 승인했다. 검증된 head `149d2f263d24c63b2ce36ffd18aa157c0c4dd15e`의 표시 로직을 유지하며 최신 main `82e3567d3234a08d989a4adfc77c7add138479df`의 남녀 최종 결과는 보존한다. 최종 병합·Pages·운영 화면 증거는 [PR #382 배포 기록](https://github.com/kvolleylab/kvolleylab/pull/382)에 누적한다.
+
+## 2026-11-20 · 국제 팀찾기 40개 국가 국기 이미지 적용 v1
+
+Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / PAGES RELEASE REQUIRES QA.
+사용자가 `https://kvolleylab.com/teams.html?category=international&gender=men`의 `팀 찾기 → 국제` 국가 카드에 국가별 국기 이미지를 넣도록 요청했다. 기존 `kvl-international-countries-v1.js`의 KVL 검증 자료 `flag_iso2`와 국기 이모지만 사용한 렌더링을 확인했다. 국가 카드의 기존 **왼쪽 31% 로고 영역**과 국가명·영문명·대회 출처·버튼을 그대로 유지하면서 각 카드에 **정적 로컬 SVG 국기 이미지**를 적용한다. 국가를 선택했을 때 상세 헤더의 국기까지 동일한 파일을 사용한다. 모바일 카드 크기/간격 및 남녀·지역·국가·연도 필터, 국내 프로팀 구단 로고/명단과 회원 접근은 불변.
+
+기존 40개국의 `data/international/country-directory-v1.json`에서 검증된 ISO alpha-2 코드를 그대로 사용해 `assets/images/flags/4x3/*.svg` 40개를 self-hosting으로 추가한다. 소스는 `lipis/flag-icons` 커밋 `ac7e0eb3259eb62aa6100c435607e2fe03896a97`의 해당 파일(별도 MIT 라이선스 동봉)이며, 동일 원본을 사이트 밖 제3자 CDN에 실시간 의존하지 않는다. 국기 로딩 실패 시 기존 이모지 fallback이 보이고, 불법/미확인 코드로 파일 URL을 조합하지 않는다. 등록된 국가 코드 자체/정치·스포츠 출전 명칭을 변경하거나 경기 데이터/MASTER를 추정하지 않는다.
+
+기준 main `07b3fc0420978184ec3c7e5cc0679953bf5a59e8`. 작업·검증 인계: [40개국 국기 이미지 v1](validation/international-country-card-flags-v1-20261120.md). 실제 운영 배포와 Chromium 검증 결과는 동작 증거를 확인한 뒤 별도 기록한다.
+
+## 2026-11-20 · 국제 국가별 선수명단 소속 리그 국가 라벨 통일 v1
+
+Status: USER REQUESTED / BRANCH IMPLEMENTED / NOT DEPLOYED UNTIL VERIFIED.
+사용자가 국가별 대표팀 통합·개별 선수명단에서 일부 소속 표기는 `JAPAN`, 일부는 `JAPAN · SV LEAGUE`처럼 서로 다르게 보이는 문제를 제기했다. 2026-11-19 요청의 핵심은 **구단 소속 리그 국가명 표시**였으므로, 리그명 확인 여부와 무관하게 목록에는 `🇯🇵 JAPAN`처럼 국기와 국가명 대문자만 표시하도록 통일한다. 같은 국가의 실제 소속리그 `SV.League Men` 자료가 있더라도 명단에서 국가명 옆에 가변적으로 덧붙이지 않는다. 출처로 검증된 리그명은 선수 상세정보 및 국가 라벨 툴팁에 보존한다. 해당 국가 자체가 확인되지 않은 선수에게는 국적/소속 리그를 추정하지 않는다.
+
+구현: `assets/js/kvl-international-unified-roster-v1.js`의 공통 `countryLabel`을 국가별 개별 명단에서도 재사용, 비정상 단독 로드에서는 안전한 국가 대문자 fallback. `teams.html` JS 캐시만 변경, 20/17px 서체와 `VB->`, 참가 이력, 원본 선수 및 자동화·회원 기능 불변. 기준 main `b00ffcdb3e91d31fa264306de6dbecc02f868110`; 테스트·복구 기준 [인계](validation/international-roster-country-only-label-v1-20261120.md). 최종 운영 반영/테스트 성공 여부는 실제 PR·Actions/Pages·HTTPS 증거 확인 후 별도 기록한다.
+
+## 2026-11-20 · V-리그 세트 전환 및 종료 직후 공식 득점 보완
+
+Status: USER APPROVED RELEASE / IMPLEMENTED / PR SAFETY QA PASSED / DEPLOYMENT PENDING.
+사용자가11/19 실제 갱신 검증 뒤 남은 누락의 보완을 요청했다. 기준main `5813a04a255b895ac07059989595aefe66fb6d7d`. 문자중계의 세트 번호가 승수보다 한 단계 늦은 세트 사이 상태는 종료 득점·승자·연속성이 모두 맞고 다음세트 득점이 없을 때만 인정한다. 거절 전 검증된 숫자 진단도 남긴다. 실제19:59 artifact에는 원시setIng가 없어 당시 값을 확정하지 않는다.
+
+추가 확인한21:42 자연실행은 종료 표시와 불완전 득점 때문에 보완 전 전체 수집이 중단됐다. 당일 정규리그의 공식 종료시각·3승·승자표시·정상 기존 득점이 확인된 경우에만 같은 경기 문자중계의 완전한3~5세트와 대조한다. 전체 득점·승수·기존 점수가 일치해야 확정하며 실패·충돌은 계속 차단한다. 출처는 공개점수와 배포영수증에 보존한다. 이는 기존11/14 문자중계 보완을 종료 직후 검증에 제한적으로 확장하며 순위·MASTER 검수·선수·ID·Cup·국제대회·Worker/cron은 유지한다. [증거·검증·배포 제한](validation/vleague-set-transition-recovery-v1.md). 2026-11-20 사용자가 검증된 PR #379 병합·운영 배포를 명시적으로 승인했다. 기존 head `8144c636`의 V-리그 CI `44553259328` 성공 후 최신 main `b00ffcdb`의 별도 국제명단 화면 변경을 보존하고 작업 기록 문서 충돌만 정리한다. 코드 배포는 병합·Pages·운영 조회 증거로 확인하며, 실제 다음 경기 연속 검증 전 복구 완료로 판정하지 않는다.
+
+## 2026-11-20 · 국제 국가별 선수명단 글꼴 일치 및 PC 20/17px 조정 v3
+
+Status: USER REQUESTED / IMPLEMENTED ON REVIEW BRANCH / DEPLOYMENT NOT YET VERIFIED.
+사용자는 국제 국가별 통합·개별 선수명단 글씨체가 다른 이유를 문의하고 **PC 선수명 20px, 나머지 선수 정보(영문명·등번호·생년월일·POS·신장·소속팀·Volleybox·표 제목) 17px**로 추가 축소를 요청했다. 기존 운영 코드의 공통 밝은 테마 `assets/css/site-theme-light.css`는 `Arial,"Noto Sans KR",sans-serif`를 사용하지만 `assets/css/kvl-teams-directory-v1.css`와 국제 통합명단은 `Arial,'Malgun Gothic',sans-serif`를 지정한다. 브라우저의 실제 한글 fallback이 달라질 수 있고 통합명단 선수명/헤더에 쓰인 font-weight 900도 차이를 키운다.
+
+초기 Chromium에서 실제 KVL 본문은 `Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif`, 국제명단은 `Arial,"Noto Sans KR",sans-serif`로 확인되어 서체 불일치 재현(CI #44552598891)됐다. 고정 Noto Sans KR 방식은 폐기하고 **국제 국가 패널 및 통합명단이 `font-family:inherit`로 실제 사이트 폰트를 상속**하도록 수정한다. 국제 전용 버튼·검색 입력도 상속하고 통합명단 제목/헤더/등번호의 과도한 굵기는 800으로 조정한다. 기존 글로벌 메뉴와 프로 구단 명단은 변경하지 않는다. 검증된 소속팀·리그 국가/리그명, `VB->`/검색 링크, 원형 대회 참가 이력, 대회별 원본/인원, 모바일 기존 카드·행 구조, 내부 가로 스크롤 및 회원·KOVO 자동화는 보존한다. 기준 main `5813a04a255b895ac07059989595aefe66fb6d7d`. 정적/브라우저/운영 검증 기록은 [v3 QA 인계](validation/international-roster-typography-v3-20261120.md)에 둔다. 운영 배포 여부는 실제 병합과 Pages·실제 HTTPS 확인 후에만 변경한다.
+
+## 2026-11-19 · 국제 국가별 명단 리그 국가와 VB 단축링크 형식 복원
+
+Status: USER REQUESTED REVIEW / FEATURE BRANCH IMPLEMENTATION / NOT DEPLOYED.
+사용자가 국제대회 참가팀 기존 명단을 확인하고 소속팀 바로 옆 리그 국가 표시, Volleybox의 `VB->` 단축 표기를 재요청했다. 기존 AVC 남자 대륙선수권 특화 명단 `assets/js/avc-men-roster-runtime.js`는 이미 `🇮🇹 Italy · SuperLega`와 `VB↗`를 제공하지만, 최신 `teams.html`의 국가별 **연도 통합명단**은 검증된 구단만 노출하고 국가/리그 필드를 누락했으며 'Volleybox' 전체 단어를 사용한다. `docs/KVL_MOBILE_COMPETITION_ROSTER_V1.md`의 일반 규격(PC `Volleybox ↗`, 모바일 `VB↗`)과 사용자의 최신 단축 표기는 구분한다.
+
+이번 화면 정합성 변경은 검증된 소속팀과 함께 저장된 `club.country` 및 `CONFIRMED` AVC 2026-27 registry의 `leagueCountry`/`leagueName`만 재사용하고, 추정 리그나 미확인 소속을 생성하지 않는다. 선택된 구단이 바뀌면 리그 메타데이터도 함께 바꿔 국가 혼합을 방지한다. 국가별 개별 대회 명단에는 확인된 소속·리그만 선수명 아래에 추가하고 원래 표 구성을 보존한다. 웹의 직접 링크는 `VB->`, 검색 링크는 `VB 검색`으로 구분하며 22px/19px PC 글씨, 모바일, 기존 40개 국가·대회별 원본·후보·참가 이력·선수 ID·KOVO 자동화·회원 자료는 불변. 기준 main `a7769a705ef14d353bd136bb0666ee3ef7db1bb2`, [검증 원장](validation/international-club-league-vb-v1-20261119.md). 사용자 운영 반영 승인은 받지 않았으므로 브랜치 QA·PR 검수 후 별도 승인 단계까지 main은 변경하지 않는다.
+
+
+
+## 2026-11-19 · 국제팀 PC 선수명단 글씨 2px 축소 v2
+
+Status: USER REQUESTED / REVIEW IN PROGRESS / RELEASE NOT YET VERIFIED.
+사용자는 직전 PR #368을 홈페이지에 반영해 직접 확인한 후 "2px씩 낮춰"라고 후속 조정을 요청했다. **PC에서 한글 선수명 24→22px, 번호·영문명·생년월일·POS·신장·소속팀·Volleybox·표 헤더 21→19px**만 조정하고 기존 통합·대회별 명단, 작은 참가 점, 내부 스크롤, 여타 기본 서체 및 모바일 스타일은 변경하지 않는다. 2026-11-19 최신 main `eb43ed1f6cacf2507076547c6aa9d04c2a5e4f91`의 PR #368 실제 운영 반영 (GitHub Pages #44482327532 SUCCESS, 팀 디렉터리 운영 QA #44482331714 SUCCESS, 국가별 운영 QA #44482331737 SUCCESS)을 기준으로 한다. CSS 2개·HTML 캐시키·기존 Chromium QA 검증 기준만 수정하며 원본 데이터, 국제/국내 Player_ID, KOVO 수집기, 회원 기능은 불변. [검증/인계](validation/international-roster-font-minus2-v2-20261119.md). 병합·배포 및 운영 QA 증거는 실제 확인 후 별도 기록한다.
+
+
+## 2026-11-19 · 국제 국가별 대회 카드 가로 정렬 및 PC 선수명단 가독성 v1
+
+Status: USER REQUESTED / PR #368 IMPLEMENTED + CHROMIUM QA PASS / NOT DEPLOYED.
+사용자 제공 예시를 기준으로 국제 국가 상세의 대회 카드가 PC에서 가로로 정렬되고 통합 선수명단과 별도 대회명단의 글자·행 간격이 충분히 보이도록 요청했다. 기존 KVL 이름/생년월일/POS/신장/소속팀/Volleybox/대회별 참가 이력과 실제 출처 자료, 남녀·연도·국가 전환·팀 검색 및 KOVO 자동화는 유지한다. 카드에는 확인된 대회만 표시하여 2026 일본 남자 AVC컵을 임의 추가하지 않는다(기존 등록 3개 대회). PC 821px 이상 최대 4열 카드. 2026-11-19 추가 피드백에 따라 왼쪽 메뉴의 실제 기본 글자 크기 14px로 선수 데이터/영문/헤더/출처확인 링크·대회 버튼을 통일하고, 한글 선수 이름은 16px, 행 높이는 통합 73px·대회별 75px로 조정(이 초기 크기안은 아래 150% 확대 요청으로 대체). 모바일 820px 이하 기존 레이아웃 유지. CSS와 `teams.html` 캐시 참조·브라우저 QA 검증 규칙만 수정했다. 과거 구형 팀 디렉터리 QA의 국제 카운트 3개 단언은 기존 승인 국가 40개에 맞게 테스트만 정정했다. 기준 main `add517ea51490305a04595e03631b5411cd13179`, 검토 PR [#368](https://github.com/kvolleylab/kvolleylab/pull/368), [검증·인계](validation/international-roster-pc-readability-v1-20261119.md). 정적 검사 통과. 후속 24/21px 코드에 대한 PR Chromium 검증은 국제 통합명단 #44424948478, 국가별 화면 #44424948624, 팀 디렉터리 #44424948417 모두 **PASS**. 운영 HTTPS 배포·사용자 실계정 확인은 **미실시**. 추가 사용자 의견: 브라우저 150%로 확대했을 때의 가독성을 기준으로 **PC 통합 선수명단 및 대회별 개별 명단의 선수명 24px, 나머지 선수 정보·표 헤더 21px**로 확대한다. 고정 크기 문서 전체 배율은 변경하지 않으며, 통합표 최소 1040px·개별표 최소 990px의 영역 내부 가로 스크롤로 좁은 PC에서도 글자를 작게 만들지 않는다. 기존 모바일 CSS·원본 선수정보·점 표시·Volleybox·링크는 유지한다. PR #368 리뷰 단계만 갱신하며 운영 main 병합은 사용자 별도 승인이 있어야 한다. 사용자 별도 운영 승인 전 병합하지 않는다.
+
+
+## 2026-11-18 · 국제 국가대표팀 대회별 선수명단 통합 + 소형 참가 이력 v1
+
+Status: USER APPROVED / DEPLOYED ON MAIN / PAGES + COUNTRY + TEAM + UNIFIED LIVE QA PASS (2026-11-18 KST).
+사용자 검수 완료 독립 프로토타입 PR #364를 실제 `선수·팀 → 팀 → 국제 → 국가별 연도`에 반영하도록 승인했다. 기존 KVL 선수명단 기본 필드(한글/영문명·생년월일·POS·신장·출처 확인 소속팀·Volleybox·검증된 KVL 프로필)를 줄이거나 삭제하지 않고, 2026 연도별 공개 대회명단의 동일 선수만 정확한 신원 근거(출생일+영문 이름 또는 출생일+동일 Volleybox 프로필 ID)로 통합한다. 등번호만 같거나 생년월일이 없으면 합치지 않는다. 대회별 해당 선수 **공개 명단 등록**은 참가이력 칸에 작은 원으로 표시(중요 VNL·아시안게임 빨강, AVC 및 기타 검정), 실제 코트 출전이나 공식 탈락 판정과 구분한다.
+
+기존 국가 40개국·지역 색인과 대회별 명단 보기, 후보/선발 원장, 프로 및 다른 팀 분류, 기존 회원 접근·KOVO 명단 자동 수집을 모두 보존한다. 2026 일본 남자: VNL16+아시안게임12+AVC 대륙선수권14=원본 등록42건, 동일인 검증 후 26명. 실제 출전하지 않은 2026 일본 AVC컵 카드는 추가하지 않는다. 여자/다른 국가에서 식별 근거가 부족하면 별도 행으로 유지하고 누락은 추정하지 않는다. AVC 2026-27 공식 출처 확인 소속은 실시간 최신 소속으로 단정하지 않는다. 소속 미확인 시 미확인으로 표기한다.
+
+Source of design: `docs/PLAYER_STANDARD.md`, `assets/js/kvl-vleague-roster-v2.js`, PR #364의 독립 HTML, KVL 기존 국제 팀 상세 PR #361. Implementation branch `feature/international-unified-roster-live-v1`, main base `22f67b13b08ff7c1c0632c7c84b2f8fef3d869f5`; verification handoff `docs/validation/international-unified-roster-live-v1-20261118.md`. PR #366은 사용자의 직접 승인으로 squash merge `32343f2f8f23bc80204e0ccc120c531c05007329` 됐으며 GitHub Pages deploy #44325594905 SUCCESS(동일 SHA). 기존 국제 국가별 LIVE QA #44325602295, 기존 팀 페이지 LIVE QA #44325602013도 SUCCESS(동일 SHA). 일본 남자 26명·필드·색점·대회별 버튼·모바일 화면 Chromium 사전 테스트 #44324278001 PASS, 직후 기능 코드 변경 없이 문서만 추가. 통합명단 전용 **실제 운영 HTTPS Chromium** QA #44325602067도 **SUCCESS**(동일 기능 SHA); artifact #14436403456의 운영 화면 PC1440/모바일390·360 및 JSON report.status=PASS, 모든 화면 overflow=0px, 일본 남자 26명, 일본 여자 누락 DOB 불추정, 기존 프로팀 KOVO 현재 명단 연결 확인. 실제 사용자 계정 로그인은 테스트하지 않았으며 테스트 브라우저 내에서만 기존 인증 오버레이를 격리했다. 기존 국가/선수 MASTER·국제대회 원본·KOVO 자동수집기·개인 메모·회원 인증코드 불변. Google Drive 공식 자료의 독립 재대조는 아직 NOT VERIFIED.
+
+
 ## 2026-11-18 · 선수·팀 국제 국가별 역사형 대표팀 명단 및 공식 후보 원장
 
 Status: USER APPROVED / VERIFIED / DEPLOYED ON MAIN / LIVE HTTPS QA PASS (2026-11-18 KST).
@@ -749,10 +885,17 @@ Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 Base `6f1d6bf6cd2975ac6d9fa68912e8318b36cc5cd3`; branch `feature/continental-winners-inline-v1`. 승인 시안 commit `9235092ecc63a704c5354f753ef36a45954ac1e2`. Node 25/25, PC·모바일 390px, 남녀 이동/복귀와 기존 허브 연결 확인. 병합·Pages·운영 확인 전까지 DEPLOYED로 표시하지 않으며 최종 증거는 PR에 기록한다. [검증·한계·복구](validation/continental-winners-inline-v1.md).
 
 
-## 2026-11-18 — FIVB 월드컵 간편 보기 v1 (검토용)
+## 2026-11-22 · 팀 찾기 선수명단 공통 규격 운영 반영 승인
 
-- 로드맵 월드컵 3장 카드에 남녀별 간편 펼침과 기존 월드컵 상세 페이지 왕복 연결을 추가한다.
-- 공식 참가 32개국·한국 출전 경로·추첨 상태를 독립 JSON으로 관리하고 우승·참가·올림픽 출전권을 분리한다. 역사 62개와 대륙선수권은 유지한다.
-- 2032 규정 미발표 시 LA28 수량·월드컵 정보를 가져오지 않는다.
-- 현재는 사용자 검토용이며 운영 반영 승인을 별도로 받는다. 기존 Google Drive MASTER와 대회 Engine 자동화는 변경하지 않았다.
-- 근거 및 검증: [world-cup-roadmap-v1](validation/world-cup-roadmap-v1.md).
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / STATIC QA PASSED / NOT YET DEPLOYED. 사용자는 현재 운영 중인 `teams.html`의 팀 카드·분류·`선수명단 보기` 위치와 디자인을 유지하고, 펼쳐지는 선수명단 영역만 공통 규격으로 정리하는 시안을 승인해 “홈페이지에 반영하자”고 지시했다.
+
+공통 요약은 선수 인원·평균 신장·관심선수·메모선수 4개다. 프로는 KOVO 공시 자동 갱신 현재명단을 그대로 사용하며 빠른 목록을 `NO. / 선수명 / POS / 생년월일 / 신장`으로 통일한다. 국제는 목록에서 한글 선수명을 우선하고, 소속팀·국가·리그도 검증된 한국어 표시명을 우선한다. 국기는 소속팀명 옆, 아래 줄은 `국가 · 리그 (1부/2부)`이며 의미 단위 중간 줄바꿈을 금지한다. 예시는 `파도바 🇮🇹 / 이탈리아 · 슈퍼레가 (1부)`다. 국제 목록의 VB→와 참가이력은 유지하고, 기존 선수 상세의 영문 선수명과 원문 팀·리그 정보는 보존한다. 국제 대회카드의 내부 `원본: data/...` 경로는 사용자 화면에서 숨기되 데이터 근거는 삭제하지 않는다.
+
+관심·메모는 Team Finder에 편집 동선을 추가하지 않고 기존 선수 페이지 개인기록을 읽기 전용으로 집계한다. 로그인하지 않은 경우 `—`, 로그인 계정은 해당 명단의 연결된 KVL Player ID 기준 실제 관심선수/메모선수 수를 표시한다. Base `2022d21e8ff5e4a0d235bbc8a286de4c361462bc`; branch `feature/team-roster-standard-v1-20261122`. 기존 대회 페이지 렌더러와 자동화 데이터는 수정하지 않는다. [검증 기록](validation/team-roster-standard-production-v1-20261122.md).
+
+
+## 2026-11-22 · 월드컵 안내 운영 반영 및 개최국 간편 펼침
+
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자가 “운영반영해”로 PR #365의 월드컵 개선분을 승인하고 개최국 1장도 KVL 안에서 간단히 안내하도록 요청했다. 월드컵 남녀 대회 개요·참가국·출전권 3장·기존 상세 URL 연결을 운영에 반영한다. 개최국 카드에서는 미국 남녀 자동 출전 각 1장, 혼다 센터(애너하임), 배구 기간과 올림픽 개·폐막 기간을 구분해 펼친다. LA28·Volleyball World·IOC 공식 근거와 확인일을 주기 JSON에 저장한다. 역사 62개·필터·대륙선수권 우승국/출전국·기존 URL·공통 메뉴를 보존하며 2032 미확정 주기에 LA28 숫자나 개최국 정보가 섞이지 않도록 한다.
+
+Base `fd090c3638fdd46f8a25bb5fd82c95420ed48cc7`; branch `codex/world-cup-roadmap-v1`. Node 38/38, PC·모바일 390/360px, 기존 필터·연도 접기와 2032 분리 확인. Drive MASTER는 읽기 대조만 수행했으며 정식 대회 Engine/MASTER 등록·자동화는 별도다. 병합·Pages·운영 검증 전까지 배포 완료로 표시하지 않고 PR #365에 최종 증거를 기록한다. [검증·출처·복구](validation/olympic-world-cup-host-release-v1.md).

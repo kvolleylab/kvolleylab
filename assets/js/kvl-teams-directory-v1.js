@@ -41,7 +41,7 @@
    return {
     code:t.code,name:t.name,fullName:t.fullName||t.name,logo:safeLogo(t.logo)?t.logo:'',
     gender,season,count:roster.players.length,asOf:roster.asOf||'',
-    coach:coach?.name||'',coachAsOf:coach?.asOf||'',coachSource:coach?.source||'',
+    coach:coach?.name||'',coachRole:coach?.role==='acting'?'감독대행':'감독',coachAsOf:coach?.asOf||'',coachSource:coach?.source||'',
     action:'roster',href:teamRoute(gender,season,t.code),type:'pro'
    };
   });
@@ -99,9 +99,17 @@
   if(safeLogo(t.logo))return '<img src="'+esc(t.logo)+'" alt="'+esc(t.name)+' 구단·팀 로고" loading="lazy">';
   return '<span class="ktd-monogram" aria-hidden="true">'+esc(short(t.name).slice(0,2)||'팀')+'</span>';
  }
+ function countryFlagMarkup(t){
+  const iso=String(t.flag_iso2||'');
+  const verified=/^[a-z]{2}$/.test(iso);
+  const fallback='<span class="ktd-flag-icon ktd-country-flag-fallback" aria-hidden="true"'+(verified?' hidden':'')+'>'+esc(t.flag||'🏐')+'</span>';
+  if(!verified)return fallback;
+  // Only existing, source-validated ISO alpha-2 codes select self-hosted SVG assets.
+  return '<img class="ktd-country-flag-image" src="assets/images/flags/4x3/'+esc(iso)+'.svg" alt="'+esc(t.name)+' 국기" loading="lazy" decoding="async">'+fallback;
+ }
  function cardMarkup(t){
   if(t.action==='country')return '<article class="ktd-card ktd-country-card" data-team-code="'+esc(t.code)+'">'+
-   '<div class="ktd-card-body"><div class="ktd-card-logo"><span class="ktd-flag-icon" aria-hidden="true">'+esc(t.flag)+'</span></div>'+
+   '<div class="ktd-card-body"><div class="ktd-card-logo">'+countryFlagMarkup(t)+'</div>'+
    '<div class="ktd-card-copy"><div class="ktd-card-eyebrow"><strong>국제</strong> · NATIONAL TEAM</div>'+
    '<div class="ktd-card-name-row"><h3>'+esc(t.name)+'</h3></div>'+
    '<p class="ktd-card-meta">'+esc(t.en||t.code)+'</p><p class="ktd-card-meta">'+esc(t.sourceLabel||'선수단 자료 확인 중')+'</p></div></div>'+
@@ -109,7 +117,7 @@
   const g=t.gender==='women'?'WOMEN':t.gender==='men'?'MEN':'';
   const label=t.type==='pro'?'프로':t.type==='university'?'대학':t.type==='high'?'고교':t.type==='middle'?'중학':t.type==='national'?'대표팀':'국제';
   const count=t.count===null||t.count===undefined?'':'<span class="ktd-card-count">'+esc(t.count)+'명</span>';
-  const meta=t.type==='pro'?'<p class="ktd-card-meta">감독 : <b>'+esc(t.coach||'정보 확인 중')+'</b></p>'+
+  const meta=t.type==='pro'?'<p class="ktd-card-meta">'+esc(t.coachRole||'감독')+' : <b>'+esc(t.coach||'정보 확인 중')+'</b></p>'+
      (t.asOf?'<p class="ktd-card-meta">명단 기준 '+esc(t.asOf)+'</p>':''):
      t.type==='university'?'<p class="ktd-card-meta">'+(t.coach?'감독 : <b>'+esc(t.coach)+'</b>':'2026 대학 U-리그')+'</p>':
      '<p class="ktd-card-meta">'+esc(t.sourceLabel||'연결된 자료 보기')+'</p>';
@@ -337,6 +345,14 @@
    if(state.category!=='international'||!button||!international()?.REGIONS[button.dataset.ktdRegion])return;
    state.region=button.dataset.ktdRegion;if(state.selectedCountry){hideCountry();state.year=''}paint();syncUrl();
   });
+  // Keep the existing country emoji as a graceful fallback if a local flag asset fails.
+  grid.addEventListener('error',event=>{
+   const img=event.target;
+   if(!img||!img.matches?.('img.ktd-country-flag-image'))return;
+   img.hidden=true;
+   const fallback=img.nextElementSibling;
+   if(fallback?.classList.contains('ktd-country-flag-fallback'))fallback.hidden=false;
+  },true);
   grid.addEventListener('click',event=>{
    const countryButton=event.target.closest('[data-ktd-country]');
    if(countryButton){openCountry(countryButton.dataset.ktdCountry);return}

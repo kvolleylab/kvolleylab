@@ -1,5 +1,6 @@
 'use strict';
-// Integration-only: use an actual collector candidate, never fabricated scores.
+// Integration uses an unchanged actual collector candidate. The separate,
+// explicitly synthetic contract cases below are regression tests, not live evidence.
 // jsdom exercises existing DOM/data behavior at desktop/mobile breakpoints; it
 // does not claim to verify pixel layout, browser networking, or a live deployment.
 const test=require('node:test');
@@ -8,6 +9,114 @@ const fs=require('node:fs');
 const path=require('node:path');
 const root=path.resolve(__dirname,'..');
 const candidateRoot=process.env.KVL_VLEAGUE_CANDIDATE_ROOT;
+
+// Independent candidate contract: do not obtain expected values from the
+// production matchSummaryState being tested, or accept both VS and — blindly.
+function expectedSummary(match,now){
+ assert(Number.isFinite(now),'summary clock must be the candidate observation time');
+ if(match.status==='final')return {kind:'final',label:'종료',score:match.score,sets:match.score.sets};
+ const kickoff=match.time?Date.parse(`${match.date}T${match.time}:00+09:00`):null;
+ assert(kickoff===null||Number.isFinite(kickoff),'candidate kickoff must be valid');
+ const regular=/^023:001:(MALE|FEMALE):\d+$/.test(match.officialSourceKey||'');
+ if(match.status==='live'){
+  const score=match.liveScore,observed=Date.parse(score?.observedAt||'');
+  assert(regular&&score&&score.sourceKey===match.officialSourceKey,'live candidate must identify the same official game');
+  const source=new URL(match.source);
+  assert.equal(source.origin,'https://user-api.kovo.co.kr');
+  assert.equal(source.pathname,'/stat/game-schedule');
+  assert(Number.isFinite(observed)&&observed<=now+60000,'live candidate must have a valid observation time');
+  assert.equal(new Date(observed+9*3600000).toISOString().slice(0,10),match.date,'observation must belong to the match day');
+  assert([score.home,score.away].every(n=>Number.isInteger(n)&&n>=0&&n<=3)&&Math.min(score.home,score.away)<3,'live counters must be valid');
+  assert.equal(score.finalPending===true,Math.max(score.home,score.away)===3,'three wins require pending final confirmation');
+  const stale=now-observed>=30*60000;
+  return {kind:stale?'stale':'live',label:stale?'갱신 지연':score.finalPending?'종료 확인 중':'진행 중',
+   score:stale?null:score,sets:match.liveSets||[],observedAt:score.observedAt,historicalScore:stale?score:null};
+ }
+ assert(!match.liveScore&&!match.liveSets?.length,'non-live candidate must not carry live observations');
+ if(match.status==='suspended')return {kind:'waiting',label:'경기 중단',score:null,sets:[]};
+ assert.equal(match.status,'scheduled','unexpected nonfinal candidate status');
+ if(kickoff!==null&&now>=kickoff){
+  const stale=regular&&now-kickoff>=30*60000;
+  return {kind:stale?'stale':'waiting',label:stale?'갱신 지연':'상태 확인 중',score:null,sets:[],missing:stale};
+ }
+ return {kind:'scheduled',label:'예정',score:null,sets:[]};
+}
+
+function assertSummary(anchor,match,now,kind){
+ const expected=expectedSummary(match,now);
+ assert.equal(anchor.querySelector('.dv2-summary-score').textContent,
+  expected.score?`${expected.score.home} : ${expected.score.away}`:expected.kind==='scheduled'?'VS':'—');
+ if(kind==='next'){
+  const badge=anchor.parentElement.querySelector('[data-match-state]');
+  assert(badge,'next match must expose its state');
+  assert.equal(badge.dataset.matchState,expected.kind);
+  const today=new Date(now+9*3600000).toISOString().slice(0,10);
+  assert.equal(badge.textContent,expected.kind==='final'&&match.date!==today?'경기 종료':expected.label);
+ }
+ const points=[...anchor.querySelectorAll('.dv2-summary-sets > span')];
+ assert.deepEqual(points.map(s=>s.textContent),expected.sets.map(s=>`${s.home}–${s.away}`));
+ points.forEach((point,i)=>{
+  assert.equal(point.getAttribute('title'),`${i+1}세트`);
+  assert.equal(point.getAttribute('aria-label'),`${i+1}세트 ${expected.sets[i].home} 대 ${expected.sets[i].away}`);
+ });
+ const detail=anchor.querySelector('.dv2-summary-venue').textContent;
+ if(expected.observedAt){
+  const time=new Date(Date.parse(expected.observedAt)+9*3600000).toISOString().slice(11,16);
+  assert(detail.includes(`${time} KST`),'show the actual KST observation time');
+  if(expected.historicalScore){
+   assert(detail.startsWith('마지막 확인 '));
+   assert(detail.includes(`당시 ${expected.historicalScore.home} : ${expected.historicalScore.away}`));
+  }else{
+   assert(detail.startsWith('세트 승수 · '));
+   if(expected.score.finalPending)assert(detail.includes('최종 결과 미확정'));
+  }
+ }
+ if(expected.missing)assert(detail.includes('최종 관측 없음'));
+ if(expected.kind==='waiting')assert.equal(detail,'공식 경기 상태 확인 중');
+ const setContainer=anchor.querySelector('.dv2-summary-sets');
+ if(setContainer)assert.equal(setContainer.getAttribute('aria-label'),
+  expected.kind==='final'?'세트별 점수':expected.kind==='stale'?'마지막 관측 세트별 점수':'종료 세트별 점수');
+}
+
+// Synthetic time/state boundaries guard the checker itself. These do not enter
+// the official candidate, MASTER, public JSON, or any live acceptance evidence.
+const kickoff=Date.parse('2026-11-21T16:00:00+09:00');
+const unobserved={status:'scheduled',date:'2026-11-21',time:'16:00',officialSourceKey:'023:001:FEMALE:38'};
+for(const [offset,kind,label] of [[-1,'scheduled','예정'],[0,'waiting','상태 확인 중'],[13000,'waiting','상태 확인 중'],[1799999,'waiting','상태 확인 중'],[1800000,'stale','갱신 지연']]){
+ test(`synthetic candidate contract: unobserved kickoff ${offset}ms`,()=>{
+  const expected=expectedSummary(unobserved,kickoff+offset);
+  assert.equal(expected.kind,kind);assert.equal(expected.label,label);
+  assert.equal(expected.score,null);assert.deepEqual(expected.sets,[]);
+ });
+}
+function syntheticLive(home=0,away=2){return {...unobserved,status:'live',source:'https://user-api.kovo.co.kr/stat/game-schedule?gender=2',
+ liveScore:{home,away,sourceKey:unobserved.officialSourceKey,observedAt:new Date(kickoff).toISOString(),...(Math.max(home,away)===3?{finalPending:true}:{})},
+ liveSets:[{home:23,away:25,status:'completed'},{home:21,away:25,status:'completed'}].slice(0,home+away)};}
+for(const [home,away] of [[0,1],[0,2],[1,3]])for(const age of [1799999,1800000]){
+ test(`synthetic candidate contract: ${home}–${away} expires at 30 minutes (${age}ms)`,()=>{
+  const match=syntheticLive(home,away),expected=expectedSummary(match,kickoff+age),stale=age===1800000;
+  assert.equal(expected.kind,stale?'stale':'live');
+  assert.equal(expected.label,stale?'갱신 지연':away===3?'종료 확인 중':'진행 중');
+  assert.deepEqual(expected.score,stale?null:match.liveScore);
+  assert.deepEqual(expected.historicalScore,stale?match.liveScore:null);
+  assert.deepEqual(expected.sets,match.liveSets);
+ });
+}
+for(const [name,edit] of [
+ ['missing live score',m=>delete m.liveScore],
+ ['wrong game',m=>m.liveScore.sourceKey='023:001:MALE:37'],
+ ['wrong origin',m=>m.source='https://example.com/stat/game-schedule'],
+ ['wrong endpoint',m=>m.source='https://user-api.kovo.co.kr/stat/other'],
+ ['invalid time',m=>m.liveScore.observedAt='invalid'],
+ ['future time',m=>m.liveScore.observedAt=new Date(kickoff+60001).toISOString()],
+ ['wrong day',m=>m.liveScore.observedAt='2026-11-20T07:00:00Z'],
+ ['invalid counter',m=>m.liveScore.away=4],
+ ['unmarked third win',m=>m.liveScore.away=3],
+ ['premature finalPending',m=>m.liveScore.finalPending=true],
+ ['scheduled with leftover live score',m=>m.status='scheduled']
+])test(`synthetic candidate contract rejects ${name}`,()=>{
+ const match=syntheticLive();edit(match);assert.throws(()=>expectedSummary(match,kickoff));
+});
 
 if(!candidateRoot){
  test('V-league automatic-update candidate UI integration',{skip:'KVL_VLEAGUE_CANDIDATE_ROOT is not set; no collector candidate was supplied'},()=>{});
@@ -128,13 +237,7 @@ if(!candidateRoot){
       const href=new URL(anchor.href);
       assert.equal(href.searchParams.get('competition'),`v-league-${division}-2026-27`);
       assert.equal(href.searchParams.get('date'),match.date);assert.equal(href.searchParams.get('view'),'schedule');
-      if(match.status==='final'){
-       assert.equal(anchor.querySelector('.dv2-summary-score').textContent,`${match.score.home} : ${match.score.away}`);
-       assert.deepEqual([...anchor.querySelectorAll('.dv2-summary-sets > span')].map(s=>s.textContent),match.score.sets.map(s=>`${s.home}–${s.away}`));
-      }else{
-       const score=match.liveScore;
-       assert.equal(anchor.querySelector('.dv2-summary-score').textContent,score?`${score.home} : ${score.away}`:'VS');
-      }
+      assertSummary(anchor,match,observedAt,kind);
      }
     }
     const peer=gender==='men'?'women':'men';

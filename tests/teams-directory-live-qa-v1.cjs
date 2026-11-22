@@ -18,7 +18,17 @@ async function ready(){
   try{
    const r=await fetch(BASE+'/teams.html?release='+encodeURIComponent(sha)+'-'+i,{cache:'no-store',signal:AbortSignal.timeout(12000)});
    const html=r.ok?await r.text():'';
-   if(html.includes('id="ktdGrid"')&&html.includes('kvl-teams-directory-v1.js'))return;
+   if(html.includes('id="ktdGrid"')&&html.includes('kvl-teams-directory-v1.js')){
+    const href=html.match(/href="(assets\/css\/kvl-teams-directory-v1\.css[^"]*)"/)?.[1];
+    if(href){
+     const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
+     const css=cssResponse.ok?await cssResponse.text():'';
+     if(html.includes('20261120-grid-v1')&&html.includes('20261122-coach-v1')&&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
+       const staff=await read('data/team-rosters/v-league/coaches-2026-27.json');
+       if(staff?.men?.OKF?.name==='김재헌'&&staff.men.OKF.role==='acting'&&staff.men.OKF.asOf==='2026-11-17')return;
+      }
+    }
+   }
    last='HTTP '+r.status+' or new directory marker not yet public';
   }catch(e){last=e.message}
   if(i<17)await wait(10000);
@@ -33,6 +43,55 @@ async function pageFor(browser,width,height){
   route=>route.fulfill({status:200,body:'// QA-only gate interception',contentType:'application/javascript'}));
  return page;
 }
+async function verifyLiveHero(page,width){
+ const meta=await page.evaluate(async()=>{
+  const hero=document.querySelector('.ktd-hero');
+  const styles=getComputedStyle(hero);
+  const match=styles.backgroundImage.match(/url\(["']?([^"')]+)["']?\)/);
+  if(!match)return {decoded:false,asset:'',cssBackground:styles.backgroundImage};
+  const image=new Image();image.src=match[1];
+  try{await image.decode()}catch{}
+  return {
+   asset:new URL(image.src).pathname,
+   decoded:image.naturalWidth>100&&image.naturalHeight>100,
+   backgroundSize:styles.backgroundSize,
+   headingColor:getComputedStyle(hero.querySelector('h1')).color,
+   minHeight:parseFloat(styles.minHeight),
+   viewport:innerWidth,
+   scrollWidth:document.documentElement.scrollWidth
+  };
+ });
+ assert.equal(meta.asset,'/assets/img/home-hero/'+(width<=680?'kvl-home-hero-mobile-v01.webp':'kvl-home-hero-pc-v01.webp'),
+  'Live Team Finder must match Home image for current viewport: '+JSON.stringify(meta));
+ assert.ok(meta.decoded,'Live Home HERO image must load and decode: '+JSON.stringify(meta));
+ assert.equal(meta.backgroundSize,'cover');
+ assert.equal(meta.headingColor,'rgb(255, 255, 255)');
+ assert.ok(meta.scrollWidth<=meta.viewport+2);
+ return meta;
+}
+async function verifyLiveGrid(page,width){
+ const spec=await page.evaluate(()=>{
+  const grid=document.getElementById('ktdGrid'),cards=[...grid.querySelectorAll(':scope > .ktd-card')];
+  const cols=getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
+  return {cols,count:cards.length,viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,
+   cards:cards.slice(0,4).map(c=>({
+    top:c.getBoundingClientRect().top,width:c.getBoundingClientRect().width,
+    bodyDisplay:getComputedStyle(c.querySelector('.ktd-card-body')).display,
+    flexDirection:getComputedStyle(c.querySelector('.ktd-card-body')).flexDirection,
+    logoWidth:c.querySelector('.ktd-card-logo').getBoundingClientRect().width,
+    actionHeight:c.querySelector('.ktd-card-action').getBoundingClientRect().height
+   }))};
+ });
+ const expected=width>=1280?3:2;
+ assert.equal(spec.cols,expected,'Actual operating Team Finder must respect its responsive grid: '+JSON.stringify(spec));
+ assert.ok(spec.cards.slice(0,expected).every(x=>Math.abs(x.top-spec.cards[0].top)<2));
+ assert.ok(spec.cards[expected].top>spec.cards[0].top+20);
+ assert.ok(spec.cards.every(x=>x.actionHeight>=43&&x.width>140));
+ if(width<=660)assert.ok(spec.cards.every(x=>x.bodyDisplay==='flex'&&x.flexDirection==='column'&&x.logoWidth>=x.width*.77),'Mobile card logo must be stacked above team name');
+ else assert.ok(spec.cards.every(x=>x.bodyDisplay==='grid'),'Desktop team cards retain the horizontal format');
+ assert.ok(spec.scrollWidth<=spec.viewport+2);
+ return spec;
+}
 async function check(browser,gender,code,player,linked,width){
  const rosters=await read('data/competitions/v-league-'+gender+'-2026-27/rosters.json');
  const count=Object.values(rosters).reduce((n,t)=>n+t.players.length,0);
@@ -43,6 +102,10 @@ async function check(browser,gender,code,player,linked,width){
   const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
   assert.ok(response?.ok(),'Public page unavailable: '+response?.status());
   await page.locator('.ktd-card').first().waitFor({timeout:30000});
+  const grid=await verifyLiveGrid(page,width);
+  result.notes.push('Live '+width+'px Team Finder grid '+grid.cols+' columns ('+(width<=660?'vertical mobile cards':'horizontal desktop cards')+')');
+  const hero=await verifyLiveHero(page,width);
+  result.notes.push('Live '+width+'px Team Finder HERO reuses Home '+(width<=680?'mobile':'PC')+' image: '+hero.asset);
   assert.equal(await page.locator('.ktd-card').count(),7);
   const summary=await page.locator('#ktdSummary').innerText();
   assert.ok(summary.includes(count+'명'),'Published total must match current KOVO official roster JSON: '+summary);
@@ -50,8 +113,19 @@ async function check(browser,gender,code,player,linked,width){
    const a=el.getBoundingClientRect(),b=el.querySelector('.ktd-card-logo').getBoundingClientRect();
    return {fraction:b.width/a.width,width:document.documentElement.scrollWidth,viewport:innerWidth};
   });
-  assert.ok(css.fraction>=.28&&css.fraction<=.34);
+  if(width<=660){
+   assert.ok(css.fraction>=.77&&css.fraction<=1,
+    'Mobile vertical card image area should be full-width, not the old 31% horizontal slot: '+JSON.stringify(css));
+  }else{
+   assert.ok(css.fraction>=.28&&css.fraction<=.34,
+    'PC horizontal cards retain their 31% logo column: '+JSON.stringify(css));
+  }
   assert.ok(css.width<=css.viewport+2,'Mobile layout overflow');
+  if(gender==='men'){
+   const acting=page.locator('.ktd-card[data-team-code="OKF"]');
+   assert.match(await acting.innerText(),/감독대행\s*:\s*김재헌/,'Actual site must show official OKF acting coach');
+   assert.doesNotMatch(await acting.innerText(),/신영철/,'Former head coach must not be shown as current');
+  }
   const club=page.locator('.ktd-card[data-team-code="'+code+'"]').first();
   await club.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
@@ -81,6 +155,40 @@ async function check(browser,gender,code,player,linked,width){
    overflow:css.width-css.viewport,status:'PASS',screenshot:path.basename(snap)});
  }finally{await page.close()}
 }
+async function verifyVLeagueTodayFirst(browser,gender,width){
+ const page=await pageFor(browser,width,width<=660?844:900);
+ const errors=[];page.on('pageerror',error=>errors.push(error.message));
+ try{
+  const url=BASE+'/competition-engine.html?competition=v-league-'+gender+'-2026-27&view=overview&release='+encodeURIComponent(sha);
+  const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
+  assert.ok(response?.ok(),'V-League overview must be published for '+gender);
+  await page.locator('.dv2-overview-matches .dv2-division-matches').first().waitFor({timeout:45000});
+  await page.waitForFunction(()=>{
+   const all=[...document.querySelectorAll('.dv2-division-matches .dv2-summary-body')];
+   return all.length===2&&all.every(x=>x.getAttribute('aria-busy')==='false');
+  },null,{timeout:45000});
+  const metrics=await page.evaluate(()=>{
+   const section=document.querySelector('.dv2-overview-matches'),h=section?.querySelector('#dv2-overview-matches-title');
+   const cards=[...section.querySelectorAll('[data-summary-gender]')];
+   return {heading:h?.textContent,counts:cards.length,divisions:cards.map(c=>({
+    gender:c.dataset.summaryGender,
+    order:[...c.querySelectorAll('.dv2-summary-slot')].map(x=>x.dataset.kind),
+    hasLoading:c.querySelector('.dv2-summary-loading')!==null
+   })),viewport:innerWidth,width:document.documentElement.scrollWidth};
+  });
+  assert.equal(metrics.heading,'오늘/다음 경기 · 최근 결과');
+  assert.equal(metrics.counts,2,'Men and women summary columns must both render');
+  for(const card of metrics.divisions){
+   assert.deepEqual(card.order,['next','recent'],'Actual '+card.gender+' overview must put today/next before recent');
+   assert.equal(card.hasLoading,false,'Do not report success before the latest records render');
+  }
+  assert.ok(metrics.width<=metrics.viewport+2);
+  assert.deepEqual(errors,[],'V-League overview runtime errors');
+  const file=path.join(OUT,'kvl-teams-live-vleague-summary-'+gender+'-'+width+'.png');
+  await page.screenshot({path:file,fullPage:true});
+  result.views.push({type:'vleague-summary',gender,width,order:metrics.divisions,status:'PASS',screenshot:path.basename(file)});
+ }finally{await page.close()}
+}
 async function main(){
  try{
   await ready();
@@ -93,6 +201,9 @@ async function main(){
    await check(browser,'men','OKF','윤경',true,390);
    await check(browser,'women','RSP','김아중',false,1440);
    await check(browser,'women','RSP','김아중',false,390);
+   // Verify both operational V-League division pages, without altering KOVO live data or the member gate.
+   await verifyVLeagueTodayFirst(browser,'men',1440);
+   await verifyVLeagueTodayFirst(browser,'women',390);
   }finally{await browser.close()}
   result.status='PASS';
   result.notes.push('Real HTTPS page and KOVO JSON loaded; auth overlay disabled only in isolated test browser.');

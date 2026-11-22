@@ -17,6 +17,16 @@ async function setup(gender='men',home=false,failInitial=false,missing=false){
  else{w.KVL_COMPETITION_PAGE_V2={deferRender:true,production:true,collectionRoot:'/data/competitions/'};for(const name of ['config','data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));d=api.normalize(config.assemble(configs[gender],feeds[gender],{slug:configs[gender].slug,canonical:w.location.href}));d.rosters={KEEP:{players:[{id:'immutable-player'}]}};w.KVL_COMPETITION_V2_DATA=d;w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();for(const name of ['kvl-calendar-display-v1','kvl-match-calendar-v1','kvl-domestic-home-v2'])w.eval(read(`assets/js/${name}.js`));w.KVLDomesticHomeV2.apply(d);await w.KVLDomesticHomeV2.matchesReady;}
  return {w,doc:w.document,d,feeds,errors,requests,setNow:value=>now=value,setFail:(value=true)=>fail=value,run:async ms=>{await Promise.all(timers.filter(t=>t.ms===ms).map(t=>t.fn()));await new Promise(r=>setImmediate(r));}};
 }
+function assertNumericPoints(card,count){
+ const points=[...card.querySelectorAll('.set-scores abbr,.dv2-summary-sets>span')];
+ assert.equal(points.length,count);
+ for(const [i,point] of points.entries()){
+  assert.match(point.textContent,/^\d+–\d+$/);
+  const [home,away]=point.textContent.split('–');
+  assert.match(point.getAttribute('title'),new RegExp(`^${i+1}세트(?:$| · )`));
+  assert.equal(point.getAttribute('aria-label'),`${i+1}세트 ${home} 대 ${away}`);
+ }
+}
 test('completed set points require agreement with official live counters, with exact 30 minute expiry',()=>{
  const {feeds}=fixtures(),m=feeds.men.matches.find(m=>m.date==='2026-11-06');assert.equal(api.matchSummaryState(m,start).sets.length,1);assert.equal(api.matchSummaryState(m,start+29*60000).score.away,1);const stale=api.matchSummaryState(m,start+30*60000);assert.equal(stale.score,null);assert.equal(stale.historicalScore.away,1);assert.match(stale.detail,/19:43 KST/);
  for(const invalid of [[{home:25,away:21,status:'completed'}],[{home:21,away:24,status:'completed'}],[{home:21,away:25}],[]]){m.liveSets=invalid;const state=api.matchSummaryState(m,start);assert.equal(state.score.away,1);assert.equal(state.sets.length,0);}
@@ -26,12 +36,13 @@ for(const gender of ['men','women'])test(`${gender}: both summary divisions, sch
  const roster=d.rosters,ids=d.matches.map(m=>m.id);const current=()=>d.matches.find(m=>m.date==='2026-11-06');
  const score=()=>doc.querySelector(`.kvl1180-match-row[data-match-id="${current().id}"] .kvl1180-score`).textContent;
  const expected=gender==='men'?'0-1':'1-0';assert.equal(score(),expected);
- for(const g of ['men','women']){const a=doc.querySelector(`[data-summary-gender=${g}] [data-kind=next]`);assert.match(a.textContent,g==='men'?/0 : 1/:/1 : 0/);assert.match(a.textContent,/1세트/);assert.match(a.textContent,/19:43 KST/);}
+ for(const g of ['men','women']){const a=doc.querySelector(`[data-summary-gender=${g}] [data-kind=next]`);assert.match(a.textContent,g==='men'?/0 : 1/:/1 : 0/);assertNumericPoints(a,1);assert.match(a.textContent,/19:43 KST/);}
  const day=doc.querySelector('[data-dv2-date="2026-11-06"]');assert.match(day.textContent,new RegExp(expected));day.click();assert.match(doc.querySelector('#dv2-day-dialog').textContent,/19:43 KST/);
  for(const [i,points] of [[1,{home:25,away:20}],[2,{home:25,away:22}]]){
    const now=start+i*15*60000;s.setNow(now);
    for(const g of ['men','women']){const m=feeds[g].matches.find(m=>m.date==='2026-11-06');m.liveScore={...m.liveScore,home:i,away:1,observedAt:new Date(now).toISOString()};const initial=g==='men'?[{home:21,away:25},{home:25,away:20}]:[{home:25,away:20},{home:21,away:25}];m.liveSets=[...initial,...(i===2?[points]:[])].map(p=>({...p,status:'completed'}));}
    await s.run(300000);assert.equal(score(),`${i}-1`);
+   for(const g of ['men','women'])assertNumericPoints(doc.querySelector(`[data-summary-gender=${g}] [data-kind=next]`),i+1);
    const setSpans=[...doc.querySelectorAll(`.kvl1180-match-row[data-match-id="${current().id}"] .kvl1180-set-scores>span`)];
    assert.equal(setSpans.length,i+1);
    for(const [n,span] of setSpans.entries()){assert.match(span.textContent,/^\d+-\d+$/);assert.equal(span.getAttribute('title'),`${n+1}세트`);assert.equal(span.getAttribute('aria-label'),`${n+1}세트 ${span.textContent}`);}
@@ -39,14 +50,16 @@ for(const gender of ['men','women'])test(`${gender}: both summary divisions, sch
  }
  assert(s.requests.every(r=>r.options.cache==='no-store'&&r.url.searchParams.has('kvlPoll')));
  s.setFail();s.setNow(start+60*60000);await s.run(300000);await s.run(60000);assert.equal(score(),'—');assert.match(doc.querySelector('#dv2-day-dialog').textContent,/갱신 지연.*당시 2 : 1/s);assert.deepEqual(s.errors,[]);
+ for(const g of ['men','women'])assertNumericPoints(doc.querySelector(`[data-summary-gender=${g}] [data-kind=next]`),3);
  }finally{w.close();}
 });
 test('home renders both first-set observations and retains only labeled historical scores after refresh fails',async()=>{
  const s=await setup('men',true);try{
  const cards=()=>[...s.doc.querySelectorAll('.home-match[data-match-id]')].filter(c=>c.dataset.matchId.endsWith('006'));
- assert.equal(cards().length,2);assert.deepEqual(cards().map(c=>c.querySelector('.match-score').textContent).sort(),['0 : 1','1 : 0']);assert(cards().every(c=>c.textContent.includes('1세트')&&c.textContent.includes('19:43 KST')));
- for(const i of [1,2]){s.setNow(start+i*15*60000);for(const g of ['men','women']){const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');m.liveScore={...m.liveScore,home:i,away:1,observedAt:new Date(start+i*15*60000).toISOString()};const pairs=g==='men'?[[21,25],[25,20]]:[[25,20],[21,25]];if(i===2)pairs.push([25,22]);m.liveSets=pairs.map(([home,away])=>({home,away,status:'completed'}));}await s.run(300000);assert(cards().every(c=>c.querySelector('.match-score').textContent===`${i} : 1`));}
+ assert.equal(cards().length,2);assert.deepEqual(cards().map(c=>c.querySelector('.match-score').textContent).sort(),['0 : 1','1 : 0']);assert(cards().every(c=>c.textContent.includes('19:43 KST')));cards().forEach(c=>assertNumericPoints(c,1));
+ for(const i of [1,2]){s.setNow(start+i*15*60000);for(const g of ['men','women']){const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');m.liveScore={...m.liveScore,home:i,away:1,observedAt:new Date(start+i*15*60000).toISOString()};const pairs=g==='men'?[[21,25],[25,20]]:[[25,20],[21,25]];if(i===2)pairs.push([25,22]);m.liveSets=pairs.map(([home,away])=>({home,away,status:'completed'}));}await s.run(300000);assert(cards().every(c=>c.querySelector('.match-score').textContent===`${i} : 1`));cards().forEach(c=>assertNumericPoints(c,i+1));}
  s.setNow(start+60*60000);s.setFail();await s.run(300000);await s.run(60000);assert(cards().every(c=>c.querySelector('.match-score').textContent==='—'&&c.textContent.includes('갱신 지연')&&c.textContent.includes('당시')));assert.deepEqual(s.errors,[]);
+ cards().forEach(c=>assertNumericPoints(c,3));
  }finally{s.w.close();}
 });
 
@@ -69,20 +82,54 @@ for(const mode of ['home','men','women'])test(`${mode}: missing first observatio
 
 for(const mode of ['home','men','women'])test(`${mode}: partial set prefix and pending end retain central score and expire safely`,async()=>{
  const s=await setup(mode==='women'?'women':'men',mode==='home');try{
- for(const g of ['men','women']){
-  const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');
-  m.liveScore={...m.liveScore,home:1,away:2};
- }
- await s.run(300000);
  const cards=()=>mode==='home'?[...s.doc.querySelectorAll('.home-match[data-match-id]')].filter(c=>c.dataset.matchId.endsWith('006')):[...s.doc.querySelectorAll('[data-summary-gender] [data-kind=next]')];
- assert(cards().every(c=>c.textContent.includes('1 : 2')&&c.textContent.includes('1세트')));
+ for(const home of [0,1]){
+  for(const g of ['men','women']){
+   const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');
+   m.liveScore={...m.liveScore,home,away:2};
+   m.liveSets=[{home:21,away:25,status:'completed'}];
+  }
+  await s.run(300000);
+  assert(cards().every(c=>c.querySelector('.match-score,.dv2-summary-score').textContent===`${home} : 2`));
+  cards().forEach(c=>assertNumericPoints(c,1));
+ }
  for(const g of ['men','women']){
   const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');m.liveScore={...m.liveScore,home:1,away:3,finalPending:true};
  }
  await s.run(300000);
  assert(cards().every(c=>c.textContent.includes('1 : 3')&&c.textContent.includes('종료 확인 중')&&c.textContent.includes('최종 결과 미확정')));
+ cards().forEach(c=>assertNumericPoints(c,1));
  s.setNow(start+30*60000);await s.run(60000);
  assert(cards().every(c=>c.textContent.includes('갱신 지연')&&c.textContent.includes('당시 1 : 3')));
+ assert(cards().every(c=>c.querySelector('.match-score,.dv2-summary-score').textContent==='—'));
+ cards().forEach(c=>assertNumericPoints(c,1));
+ assert.deepEqual(s.errors,[]);
+ }finally{s.w.close();}
+});
+
+for(const mode of ['home','men','women'])test(`${mode}: five completed sets keep numeric points and accessible set order while final confirmation is pending`,async()=>{
+ const s=await setup(mode==='women'?'women':'men',mode==='home');try{
+ const pairs=[[21,25],[25,20],[25,22],[23,25],[15,13]];
+ for(const g of ['men','women']){
+  const m=s.feeds[g].matches.find(m=>m.date==='2026-11-06');
+  m.liveScore={...m.liveScore,home:3,away:2,finalPending:true};
+  m.liveSets=pairs.map(([home,away])=>({home,away,status:'completed'}));
+ }
+ await s.run(300000);
+ const cards=()=>mode==='home'?[...s.doc.querySelectorAll('.home-match[data-match-id]')].filter(c=>c.dataset.matchId.endsWith('006')):[...s.doc.querySelectorAll('[data-summary-gender] [data-kind=next]')];
+ assert.equal(cards().length,2);
+ for(const card of cards()){
+  assertNumericPoints(card,5);
+  assert.deepEqual([...card.querySelectorAll('.set-scores abbr,.dv2-summary-sets>span')].map(p=>p.textContent),pairs.map(p=>p.join('–')));
+  assert.equal(card.querySelector('.match-score,.dv2-summary-score').textContent,'3 : 2');
+  assert.match(card.textContent,/종료 확인 중/);assert.match(card.textContent,/최종 결과 미확정/);
+ }
+ s.setNow(start+30*60000);await s.run(60000);
+ for(const card of cards()){
+  assertNumericPoints(card,5);
+  assert.equal(card.querySelector('.match-score,.dv2-summary-score').textContent,'—');
+  assert.match(card.textContent,/갱신 지연.*당시 3 : 2/s);
+ }
  assert.deepEqual(s.errors,[]);
  }finally{s.w.close();}
 });

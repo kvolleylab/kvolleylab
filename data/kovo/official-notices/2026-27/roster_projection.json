@@ -3441,6 +3441,22 @@
       "total_krw": 200000000
     },
     {
+      "contract_source": "https://kovo.co.kr/news/official-notices/159854",
+      "gender": "여",
+      "last_change_source": "https://kovo.co.kr/news/official-notices/159854",
+      "last_status": "registration",
+      "latest_change_date": "2026-11-20",
+      "name": "김다솔",
+      "number": "11",
+      "option_krw": 10000000,
+      "position": "세터",
+      "registration_source": "https://kovo.co.kr/news/official-notices/159854",
+      "salary_date": "2026-11-20",
+      "salary_krw": 50000000,
+      "team": "정관장",
+      "total_krw": 60000000
+    },
+    {
       "contract_source": "https://kovo.co.kr/news/official-notices/155575",
       "gender": "여",
       "last_change_source": "https://kovo.co.kr/news/official-notices/155575",
@@ -4670,9 +4686,10 @@
       "159206-01",
       "159300-01",
       "159300-02",
-      "159300-03"
+      "159300-03",
+      "159854-01"
     ],
-    "applied_events": 92,
+    "applied_events": 93,
     "blocked_events": [
       {
         "event_id": "157686-01",
@@ -4745,6 +4762,14 @@
         "notice_id": 159741,
         "reason": "not_verified",
         "source_url": "https://kovo.co.kr/news/official-notices/159741"
+      },
+      {
+        "event_id": "159851-01",
+        "kind": "other_player_notice",
+        "name": "이호건",
+        "notice_id": 159851,
+        "reason": "not_verified",
+        "source_url": "https://kovo.co.kr/news/official-notices/159851"
       }
     ],
     "prior_season_events_ignored": 31,
@@ -4865,7 +4890,7 @@
       {
         "gender": "여",
         "team": "정관장",
-        "total": 18
+        "total": 19
       },
       {
         "gender": "여",
@@ -4883,7 +4908,7 @@
         "total": 23
       }
     ],
-    "total": 286,
+    "total": 287,
     "warnings": [
       {
         "name": "이다현",
