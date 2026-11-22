@@ -22,13 +22,14 @@ async function waitForDeployment(){
    const res=await fetch(BASE+'/teams.html?verify='+encodeURIComponent(SHA)+'-'+tries,
     {cache:'no-store',signal:AbortSignal.timeout(16000)});
    const html=res.ok?await res.text():'';
-   if(html.includes('kvl-international-countries-v1.js')&&html.includes('ktdCountryArea')){
+   if(html.includes('kvl-international-countries-v1.js?v=20261122-country-ux-v2')&&html.includes('ktdCountryArea')){
     const country=await getJson('data/international/country-directory-v1.json');
     const roster=await getJson('data/international/country-roster-index-v1.json');
-    if(country.country_count===40&&roster.snapshot_count===89){
+    const clubs=await getJson('data/international/player-club-registry-2026-27-v1.json');
+    if(country.country_count===40&&roster.snapshot_count===89&&clubs.players?.['40943']){
      const flag=await fetch(BASE+'/assets/images/flags/4x3/jp.svg?verify='+encodeURIComponent(SHA),
       {cache:'no-store',signal:AbortSignal.timeout(20000)});
-     if(flag.ok&&(await flag.text()).includes('flag-icons-jp'))return {country,roster};
+     if(flag.ok&&(await flag.text()).includes('flag-icons-jp'))return {country,roster,clubs};
      error='Local Japan flag SVG not yet deployed (HTTP '+flag.status+')';
     }
    }
@@ -85,32 +86,31 @@ async function main(){
   await page.locator('[data-ktd-region=all]').click();
   assert.equal(await page.locator('.ktd-country-card').count(),40);
   REPORT.checks.push({name:'Live source index 40 countries / 89 pointers and filtering',status:'PASS',...(await screenshot(page,'list-1440'))});
-  await page.locator('.ktd-country-card[data-team-code=JPN] [data-ktd-country]').click();
+  assert.equal(await page.locator('.ktd-country-card[data-team-code=JPN]').getAttribute('role'),'button');
+  await page.locator('.ktd-country-card[data-team-code=JPN]').click();
   await page.locator('.ktd-country-panel').waitFor({timeout:30000});
   const detailFlag=page.locator('.ktd-country-flag img.ktd-country-flag-image');
   assert.ok((await detailFlag.getAttribute('src')).endsWith('/jp.svg'));
   await detailFlag.evaluate(async img=>{await img.decode()});
   assert.equal(await detailFlag.evaluate(img=>img.naturalWidth>0),true);
   assert.equal(await page.locator('#ktdGrid').isVisible(),false);
-  assert.equal(await page.locator('.ktd-country-event').count(),3);
-  await page.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();
-  await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-  assert.equal(await page.locator('.ktd-country-player').count(),16);
-  assert.match(await page.locator('.ktd-country-roster').innerText(),/Reserve/);
-  REPORT.checks.push({name:'Live Japan men historical VNL list and Reserve distinction',status:'PASS',...(await screenshot(page,'japan-men-1440'))});
-  await page.locator('[data-country-snapshot="avc-men-continental-2026:JPN"]').click();
-  await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-  assert.equal(await page.locator('.ktd-country-player').count(),14);
-  assert.match(await page.locator('.ktd-country-roster-head').innerText(),/최종 명단/);
+  assert.equal(await page.locator('.ktd-country-event').count(),0);
+  assert.equal(await page.locator('.ktd-country-link').count(),3);
+  assert.equal(await page.locator('[data-country-year-select]').inputValue(),'2026');
+  await page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+  assert.equal(await page.locator('.kvl-unified-row').count(),26);
+  assert.ok(await page.locator('.kvl-unified-reserve').count()>=1,'Reserve should be visible in integrated roster');
+  const quickLinks=await page.locator('.ktd-country-link').evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href')));
+  assert.ok(quickLinks.some(x=>/vnl-men-2026/.test(x||'')),'Live VNL direct link must exist');
+  REPORT.checks.push({name:'Live Japan integrated roster first, reserve badge and compact competition links',status:'PASS',...(await screenshot(page,'japan-men-1440'))});
   await page.locator('[data-country-close]').click();
   await page.locator('[data-ktd-gender=women]').click();
   await page.locator('.ktd-country-card').first().waitFor({timeout:30000});
-  await page.locator('.ktd-country-card[data-team-code=JPN] [data-ktd-country]').click();
+  await page.locator('.ktd-country-card[data-team-code=JPN]').click();
   await page.locator('.ktd-country-panel').waitFor({timeout:30000});
-  await page.locator('[data-country-snapshot="vnl-women-2026:JPN"]').click();
-  await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-  assert.equal(await page.locator('.ktd-country-player').count(),14);
-  REPORT.checks.push({name:'Live Japan women VNL original 14 player list',status:'PASS',...(await screenshot(page,'japan-women-1440'))});
+  await page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+  assert.ok(await page.locator('.kvl-unified-row').count()>=14);
+  REPORT.checks.push({name:'Live Japan women integrated roster loads immediately',status:'PASS',...(await screenshot(page,'japan-women-1440'))});
   await page.locator('[data-ktd-category=pro]').click();
   await page.locator('.ktd-card').first().waitFor({timeout:30000});
   assert.equal(await page.locator('.ktd-card').count(),7);
@@ -118,16 +118,24 @@ async function main(){
   const expected=Object.values(proCounts).reduce((n,t)=>n+t.players.length,0);
   assert.ok((await page.locator('#ktdSummary').innerText()).includes(expected+'명'));
   REPORT.checks.push({name:'Existing pro women 7 clubs and published KOVO roster counts',status:'PASS'});
+  const iri=await pageFor(browser,1440,'category=international&country=IRI&gender=men&year=2026');
+  await iri.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+  const iriBody=await iri.page.locator('.kvl-unified-table').innerText();
+  assert.match(iriBody,/히로시마|Hiroshima Thunders/);
+  assert.match(iriBody,/풀라드 시르잔|Foolad Sirjan Iranian/);
+  assert.match(iriBody,/허베이 바오딩|Hebei Baoding Wolves/);
+  assert.deepEqual(iri.errs,[]);
+  REPORT.checks.push({name:'Live current-club registry reduces Iran unknown affiliations',status:'PASS'});
+  await iri.page.close();
   assert.deepEqual(pc.errs,[],'Live desktop JavaScript errors');
   await page.close();
   const b=await pageFor(browser,1440,'category=international&country=BRN&gender=men&year=2026');
   await b.page.locator('.ktd-country-panel').waitFor({timeout:30000});
-  await b.page.locator('[data-country-snapshot="avc-men-continental-2026:BRN"]').click();
-  await b.page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-  assert.equal(await b.page.locator('.ktd-country-player').count(),13);
-  assert.match(await b.page.locator('.ktd-country-roster-head').innerText(),/출국 명단/);
+  await b.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+  await b.page.locator('[data-kvl-unified-filter="avc-men-continental-2026:BRN"]').click();
+  assert.equal(await b.page.locator('.kvl-unified-row').count(),13);
   assert.deepEqual(b.errs,[]);await b.page.close();
-  REPORT.checks.push({name:'Direct Bahrain link maintains 13-person departure-list status',status:'PASS'});
+  REPORT.checks.push({name:'Direct Bahrain link keeps 13-person continental source filter in integrated roster',status:'PASS'});
   for(const width of [390,360]){
    const list=await pageFor(browser,width,'category=international&gender=men');
    await list.page.locator('.ktd-country-card').first().waitFor({timeout:30000});
@@ -143,10 +151,10 @@ async function main(){
    await list.page.close();
    const m=await pageFor(browser,width,'category=international&country=JPN&gender=men&year=2026');
    await m.page.locator('.ktd-country-panel').waitFor({timeout:30000});
-   await m.page.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();
-   await m.page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-   assert.equal(await m.page.locator('.ktd-country-player').count(),16);
-   REPORT.checks.push({name:'Live country roster on mobile '+width+'px',status:'PASS',...(await screenshot(m.page,'japan-men-'+width))});
+   await m.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+   assert.equal(await m.page.locator('.kvl-unified-row').count(),26);
+   assert.ok(await m.page.locator('.kvl-unified-reserve').count()>=1);
+   REPORT.checks.push({name:'Live integrated country roster on mobile '+width+'px',status:'PASS',...(await screenshot(m.page,'japan-men-'+width))});
    assert.deepEqual(m.errs,[]);await m.page.close();
   }
   REPORT.status='PASS';REPORT.country_count=data.country.country_count;REPORT.snapshots=data.roster.snapshot_count;

@@ -141,3 +141,46 @@
 @media (min-width:821px){
  .ktd-country-club-league{font-size:17px}
 }
+
+/* Country detail UX v2: full-card entry, immediate roster, compact navigation. */
+.ktd-country-card[data-ktd-country-card]{cursor:pointer}
+.ktd-country-card[data-ktd-country-card]:focus-visible{
+ outline:2px solid #cba34b;outline-offset:3px
+}
+.ktd-country-back{
+ appearance:none;border:0;background:transparent;color:#58738a;
+ padding:2px 0 10px;font-size:12px;font-weight:800;cursor:pointer
+}
+.ktd-country-back:hover{color:#173d5b;text-decoration:underline;text-underline-offset:3px}
+.ktd-country-toolbar{
+ display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:13px 0 12px
+}
+.ktd-country-year-select{display:flex;align-items:center;gap:7px;color:#6b8193;font-size:11px;font-weight:800}
+.ktd-country-year-select select{
+ min-width:92px;min-height:38px;padding:7px 30px 7px 11px;border:1px solid #dbe4eb;
+ border-radius:8px;background:#fff;color:#244861;font:800 13px Arial,'Malgun Gothic',sans-serif
+}
+.ktd-country-links{
+ display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+ margin:12px 0 4px;padding:11px 0 0;border-top:1px solid #e5ebf0
+}
+.ktd-country-links-label{font-size:10px;font-weight:900;color:#8799a6;margin-right:3px}
+.ktd-country-link{
+ display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:7px 10px;
+ border:1px solid #dfe7ed;border-radius:8px;background:#f7f9fb;color:#355e78!important;
+ text-decoration:none!important;font-size:11px;font-weight:800
+}
+.ktd-country-link:hover{border-color:#b99a58;background:#fffaf1;color:#183e5a!important}
+@media(max-width:700px){
+ .ktd-country-back{font-size:11px;padding-bottom:8px}
+ .ktd-country-toolbar{justify-content:flex-start;margin:10px 0}
+ .ktd-country-year-select{width:100%}
+ .ktd-country-year-select select{flex:1;max-width:150px}
+ .ktd-country-links{gap:6px}
+ .ktd-country-link{font-size:10px;padding:7px 9px}
+}
+@media(min-width:821px){
+ .ktd-country-back{font-size:14px}
+ .ktd-country-year-select,.ktd-country-links-label,.ktd-country-link{font-size:14px}
+ .ktd-country-year-select select{font-size:14px;min-height:40px}
+}

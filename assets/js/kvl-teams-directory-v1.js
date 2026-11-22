@@ -108,7 +108,7 @@
   return '<img class="ktd-country-flag-image" src="assets/images/flags/4x3/'+esc(iso)+'.svg" alt="'+esc(t.name)+' 국기" loading="lazy" decoding="async">'+fallback;
  }
  function cardMarkup(t){
-  if(t.action==='country')return '<article class="ktd-card ktd-country-card" data-team-code="'+esc(t.code)+'">'+
+  if(t.action==='country')return '<article class="ktd-card ktd-country-card" data-team-code="'+esc(t.code)+'" data-ktd-country-card="'+esc(t.code)+'" role="button" tabindex="0" aria-label="'+esc(t.name)+' 대표팀 명단 보기">'+
    '<div class="ktd-card-body"><div class="ktd-card-logo">'+countryFlagMarkup(t)+'</div>'+
    '<div class="ktd-card-copy"><div class="ktd-card-eyebrow"><strong>국제</strong> · NATIONAL TEAM</div>'+
    '<div class="ktd-card-name-row"><h3>'+esc(t.name)+'</h3></div>'+
@@ -356,8 +356,16 @@
   grid.addEventListener('click',event=>{
    const countryButton=event.target.closest('[data-ktd-country]');
    if(countryButton){openCountry(countryButton.dataset.ktdCountry);return}
+   const countryCard=event.target.closest('[data-ktd-country-card]');
+   if(countryCard){openCountry(countryCard.dataset.ktdCountryCard);return}
    const button=event.target.closest('[data-ktd-roster]');
    if(button)openRoster(button.dataset.ktdRoster);
+  });
+  grid.addEventListener('keydown',event=>{
+   const card=event.target.closest('[data-ktd-country-card]');
+   if(card&&event.target===card&&(event.key==='Enter'||event.key===' ')){
+    event.preventDefault();openCountry(card.dataset.ktdCountryCard);
+   }
   });
   el('ktdSearch').addEventListener('input',event=>{
    if(state.selectedCountry){hideCountry();state.year='';syncUrl()}
