@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "cycleId": "la2028",
+  "year": 2028,
+  "allocationId": "ranking",
+  "checkedAt": "2026-11-22",
+  "updatedAt": "2026-11-22",
+  "verificationStatus": "official_verified",
+  "ruleSourceIds": [
+    "qualification-pdf",
+    "fivb-system"
+  ],
+  "basisLabel": "2028 VNL 예선 종료 시점의 FIVB 세계랭킹",
+  "ruleText": "LA28 출전권을 아직 확보하지 못한 국가에 배정합니다. 출전국이 없는 대륙을 먼저 고려한 뒤, 나머지 미확보국을 세계랭킹순으로 선발합니다.",
+  "rankingNote": "VNL 최종 순위가 아닌 FIVB 세계랭킹을 사용합니다. 현재 랭킹은 2028년 최종 출전국을 뜻하지 않습니다.",
+  "priority": [
+    {
+      "id": "continental_representation",
+      "title": "대륙 대표성 우선",
+      "text": "출전권 확보국이 없는 대륙의 팀을 우선 고려합니다."
+    },
+    {
+      "id": "remaining_ranked",
+      "title": "나머지 미확보국 랭킹순",
+      "text": "이미 확보한 국가는 제외하고 남은 출전권을 배정합니다."
+    }
+  ],
+  "sources": [
+    {
+      "id": "qualification-pdf",
+      "title": "IOC · FIVB LA28 공식 출전 규정·일정표 (2026.05.12판)",
+      "url": "https://stillmed.olympics.com/media/Documents/Olympic-Games/LA28/VVO-LA28-Qualification-System.pdf",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "fivb-system",
+      "title": "FIVB · LA28 출전자격 체계",
+      "url": "https://www.fivb.com/volleyball-and-beach-volleyball-qualification-systems-for-la28-olympic-games-confirmed/",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "id": "fivb-calendar",
+      "title": "FIVB · 2025–2028 국제 캘린더 설명 (2023 발표)",
+      "url": "https://www.fivb.com/all-you-need-to-know-about-the-2025-2028-volleyball-calendar/",
+      "checkedAt": "2026-11-22",
+      "scope": "기존 상세 페이지의 참고 링크 보존; 새 기준일 근거는 qualification-pdf"
+    },
+    {
+      "id": "fivb-rankings",
+      "title": "FIVB · 공식 세계랭킹 안내",
+      "url": "https://www.fivb.com/volleyball/rankings/",
+      "checkedAt": "2026-11-22"
+    }
+  ],
+  "events": [
+    {
+      "gender": "men",
+      "cutoff": {
+        "date": "2028-06-18",
+        "status": "official_date",
+        "sourceIds": [
+          "qualification-pdf"
+        ]
+      },
+      "officialRankingUrl": "https://en.volleyballworld.com/volleyball/world-ranking/men",
+      "result": {
+        "status": "pending",
+        "verificationStatus": "unverified",
+        "qualifiedTeams": [],
+        "sourceIds": [],
+        "confirmedAt": null
+      }
+    },
+    {
+      "gender": "women",
+      "cutoff": {
+        "date": "2028-06-11",
+        "status": "date_tbc",
+        "sourceIds": [
+          "qualification-pdf"
+        ]
+      },
+      "officialRankingUrl": "https://en.volleyballworld.com/volleyball/world-ranking/women",
+      "result": {
+        "status": "pending",
+        "verificationStatus": "unverified",
+        "qualifiedTeams": [],
+        "sourceIds": [],
+        "confirmedAt": null
+      }
+    }
+  ],
+  "relatedLinks": [
+    {
+      "label": "세계랭킹 반영 대회 보기",
+      "url": "fivb-world-ranking-events.html"
+    },
+    {
+      "label": "2027 FIVB 월드컵",
+      "url": "fivb-world-cup-2027.html"
+    },
+    {
+      "label": "2026 대륙선수권",
+      "url": "continental-championships-2026.html"
+    }
+  ],
+  "revisionNote": "기존 상세 페이지에 빠져 있던 대륙 대표성 우선 순서와 남녀별 기준일을 공식 PDF로 보완했다. 현재 순위·포인트·2028 예상 출전국은 입력하지 않는다."
+}

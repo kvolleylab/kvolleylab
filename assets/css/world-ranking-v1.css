@@ -1,0 +1,49 @@
+/* Scoped ranking disclosure and existing ranking detail page. */
+.oq-summary .oq-ranking-trigger{appearance:none;cursor:pointer;text-align:left;font:inherit;width:100%}
+.oq-summary .oq-ranking-trigger[aria-expanded="true"]{background:#fff8e6;border-color:#d6b25e;box-shadow:inset 0 0 0 1px #d6b25e}
+.wr-panel{--wr-accent:#24694e;--wr-soft:#edf6f0;margin-top:12px;padding:19px 20px 13px;border:1px solid #d4e2d8;border-radius:14px;background:#fffffff5;color:#193b60;box-shadow:0 3px 12px #351b0c12}
+.wr-panel[hidden]{display:none!important}
+.wr-panel[data-gender="women"],.wr-page[data-gender="women"]{--wr-accent:#8e315e;--wr-soft:#fff1f6}
+.wr-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.wr-eyebrow{font-size:12px;color:var(--wr-accent);margin:0 0 4px}
+.wr-heading h3,.wr-heading h2{font-size:18px;line-height:1.5;margin:0;color:#193b60;word-break:keep-all}
+.wr-genders{display:flex;gap:4px;background:#eef2f6;padding:3px;border-radius:9px;flex-shrink:0}
+.wr-genders button{border:0;min-width:48px;min-height:40px;padding:7px 12px;border-radius:7px;background:transparent;color:#607185;font:inherit;font-size:14px;cursor:pointer}
+.wr-genders button[aria-pressed="true"]{background:var(--wr-accent);color:#fff;font-weight:700}
+.wr-cutoff{display:flex;align-items:center;flex-wrap:wrap;gap:7px 12px;padding:12px 14px;border:1px solid #dce6e0;border-radius:9px;background:var(--wr-soft);font-size:14px;color:#536b60}
+.wr-cutoff strong{font-size:16px;color:var(--wr-accent)}
+.wr-cutoff>span:last-child{margin-left:auto;font-size:12px}
+.wr-korea{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin-top:13px;font-size:14px;color:#5f6e80;line-height:1.7}
+.wr-korea strong{color:#193b60}.wr-korea>span:last-child{font-size:12px}.wr-korea .is-qualified{color:#8a6320;background:#fff7e4;padding:3px 7px;border-radius:5px}
+.wr-priority{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;padding:0;list-style:none;counter-reset:priority}
+.wr-priority li{counter-increment:priority;position:relative;padding-left:26px;line-height:1.7;min-width:0}
+.wr-priority li:before{content:counter(priority);position:absolute;left:0;top:1px;background:var(--wr-soft);color:var(--wr-accent);width:20px;height:20px;border-radius:5px;text-align:center;font-size:12px;font-weight:700}
+.wr-priority strong{display:block;font-size:14px;color:#29485e}.wr-priority span{font-size:12px;color:#6a7b8b;word-break:keep-all;display:block}
+.wr-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.wr-slot{border:1px solid #e2ded4;border-radius:10px;background:#fafaf8;padding:12px;min-width:0}
+.wr-slot>span{display:flex;align-items:center;gap:6px;font-size:12px;color:#8c784b}
+.wr-slot i{width:9px;height:9px;border:1.5px solid #b39756;border-radius:50%;background:transparent;flex-shrink:0}
+.wr-slot strong{display:block;font-size:14px;color:#7d8691;margin-top:8px;line-height:1.5;word-break:keep-all}
+.wr-slot.is-qualified{background:#fff7e4;border-color:#d6b25e}.wr-slot.is-qualified strong{color:#8a6320}.wr-slot.is-qualified i{background:#d6b25e}
+.wr-note{font-size:12px;line-height:1.8;color:#64748b;word-break:keep-all;margin:10px 0}
+.wr-detail-link,.wr-links a{display:inline-flex;align-items:center;min-height:40px;border:1px solid #d6b25e;border-radius:8px;padding:8px 12px;color:#7c5a1a;background:#fff9e9;text-decoration:none;font-size:14px;font-weight:600;line-height:1.5}
+.wr-detail-link:hover,.wr-links a:hover{border-color:#b39756;background:#f5e4b9}
+.wr-prior{margin-top:13px;padding-top:11px;border-top:1px solid #e9edf1;color:#627185;font-size:14px;line-height:1.7}
+.wr-prior summary,.wr-sources summary{cursor:pointer;width:fit-content;line-height:1.7}.wr-prior p{font-size:12px;margin:10px 0 0;word-break:keep-all}
+.wr-prior-teams{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.wr-prior-teams>span{display:inline-flex;align-items:center;gap:6px;border:1px solid #dfe6eb;padding:5px 9px;border-radius:6px;font-size:14px}.wr-prior-teams small{color:#7b8796;font-size:12px}
+.wr-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-top:12px;color:#7a8999;font-size:12px}.wr-footer>span{white-space:nowrap}.wr-sources{min-width:0}.wr-sources a{display:block;font-size:12px;line-height:1.8;margin-top:8px;color:#486b83;overflow-wrap:anywhere}
+.wr-panel :is(a,button,summary):focus-visible,.wr-page :is(a,button,summary):focus-visible{outline:2px solid #9b741e;outline-offset:3px}
+.wr-retry{border:1px solid #ccd5df;border-radius:7px;background:#f6f8fa;padding:10px;cursor:pointer}
+.wr-page{--wr-accent:#24694e;--wr-soft:#edf6f0;background:#f5f7fa;color:#193b60}
+.wr-page .lq-main{max-width:1180px;padding:24px 20px 56px}
+.wr-back{display:inline-flex;align-items:center;min-height:36px;margin-bottom:12px;color:#64748b;font-size:14px;text-decoration:none}
+.wr-page .lq-hero{padding:25px 28px;border-radius:18px;border-color:#dfe5ec;background:linear-gradient(120deg,#fff 15%,var(--wr-soft));box-shadow:0 4px 18px #18345108}
+.wr-page .lq-hero h1{font-family:inherit;font-size:clamp(24px,3vw,36px);line-height:1.4;word-break:keep-all;color:#193b60}
+.wr-page .lq-hero p{font-family:inherit;font-size:16px;color:#63758a;font-weight:400;line-height:1.8}.wr-page .lq-hero>.eyebrow{font-size:12px;color:var(--wr-accent)}
+.wr-page #ranking-content{padding:24px;margin-top:18px;background:#fff;border:1px solid #dfe5ec;border-radius:18px;box-shadow:0 4px 18px #18345108}
+.wr-page .wr-heading h2{font-size:22px}.wr-page .wr-priority span{font-size:14px}.wr-page .wr-slots{max-width:800px}.wr-page .wr-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.wr-page .wr-links a{background:#fff;border-color:#dce3ea;color:#355e70}
+@media(max-width:680px){
+ .wr-panel{padding:14px 11px 11px;border-radius:11px}.wr-heading{align-items:flex-start;gap:8px}.wr-heading h3{font-size:16px}.wr-genders{gap:2px;padding:2px}.wr-genders button{min-width:40px;padding:6px 8px}.wr-eyebrow{font-size:12px}
+ .wr-cutoff{gap:4px 10px;padding:10px 12px}.wr-cutoff>span:last-child{margin-left:0;width:100%}.wr-korea{gap:4px 8px}.wr-korea strong{width:100%}.wr-priority{grid-template-columns:1fr;gap:8px}.wr-slots{gap:6px}.wr-slot{padding:10px 7px}.wr-slot>span{gap:4px}.wr-detail-link{display:flex;justify-content:center}.wr-footer{gap:6px}.wr-footer>span{font-size:12px}
+ .wr-page .lq-main{padding:16px 12px 36px}.wr-page .lq-hero{padding:20px 17px;border-radius:14px}.wr-page .lq-hero h1{font-size:24px}.wr-page #ranking-content{padding:18px 13px;border-radius:14px}.wr-page .wr-heading h2{font-size:18px}.wr-page .wr-links{display:grid;grid-template-columns:1fr}
+}
