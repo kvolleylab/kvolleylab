@@ -48,3 +48,16 @@ Status: PROTOTYPE / BRANCH ONLY / NOT DEPLOYED
 
 ## Release rule
 Do not merge prototype assets into production. If approved, implement the chosen roster standard in the current production renderers from latest main and run PC/mobile browser QA.
+
+
+## Refinement 2026-11-22 18:48 KST
+- International roster PC cell typography is normalized to the current club-field scale: 17px for NO., Korean/English name, DOB, POS, height, club/league and VB.
+- Club display is two lines:
+  - line 1: club name
+  - line 2: verified self-hosted country flag + COUNTRY + league + known division tier
+- Example from current verified Iran data:
+  - Pallavolo Padova
+  - 🇮🇹 ITALY · SUPERLEGA (1부)
+- ISO2 values such as IT and full country names such as Italy both resolve to local flag assets.
+- Division labels are added only for recognized league names/patterns; unknown leagues are not guessed.
+- Competition cards no longer show internal `원본: data/...` paths in the prototype.
