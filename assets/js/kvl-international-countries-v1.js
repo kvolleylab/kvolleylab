@@ -226,13 +226,21 @@ function render(host,opts){
   if(/AVC.*컵/i.test(title))return'AVC컵';
   return title||'대회 페이지';
  }
+ function eventLinkRank(s){
+  const slug=String(s?.competition_slug||'');
+  if(slug.startsWith('vnl-'))return 10;
+  if(slug.startsWith('asian-games-'))return 20;
+  if(slug.includes('continental'))return 30;
+  if(slug.includes('cup'))return 40;
+  return 50;
+ }
  function showYear(){
   selectedSnapshot=null;request++;rosterHost.hidden=true;rosterHost.replaceChildren();
   yearSelect.innerHTML=allYears.length?allYears.map(y=>'<option value="'+y+'"'+(y===year?' selected':'')+'>'+y+'</option>').join(''):
    '<option value="">연도 없음</option>';
   yearSelect.disabled=!allYears.length;
   showUnified();
-  const rows=matches.filter(s=>s.year===year).sort((a,b)=>eventOrderLabel(a).localeCompare(eventOrderLabel(b),'ko'));
+  const rows=matches.filter(s=>s.year===year).sort((a,b)=>eventLinkRank(a)-eventLinkRank(b)||eventOrderLabel(a).localeCompare(eventOrderLabel(b),'ko'));
   eventsHost.innerHTML=rows.length?
    '<span class="ktd-country-links-label">대회 바로가기</span>'+
    rows.map(s=>'<a href="'+esc(s.competition_url)+'" class="ktd-country-link">'+
