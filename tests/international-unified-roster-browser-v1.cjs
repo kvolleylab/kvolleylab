@@ -38,18 +38,19 @@ async function testApp(){
   const pc=await open(browser,1440,'category=international&gender=men&country=JPN&year=2026');
   const page=pc.page;
   await page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
-  assert.equal(await page.locator('.ktd-country-event').count(),3);
+  assert.equal(await page.locator('.ktd-country-link').count(),3);
+  assert.equal(await page.locator('[data-country-year-select]').inputValue(),'2026');
+  assert.equal(await page.locator('.ktd-country-note').filter({hasText:'국가별 페이지는 하나로 유지'}).count(),0);
+  assert.match(await page.locator('[data-country-close]').innerText(),/국가 목록/);
   assert.equal(await page.locator('.kvl-unified-row').count(),26);
   assert.match(await page.locator('.kvl-unified-count').innerText(),/26명 통합/);
   assert.match(await page.locator('.kvl-unified-count').innerText(),/42건/);
   assert.equal(await page.locator('.kvl-unified-head span').count(),8);
-  // PC readability contract: verified events share a card row and roster data is legible.
+  // PC readability contract: roster is primary; competition navigation stays compact.
   const layout=await page.evaluate(()=>{
-   const cards=[...document.querySelectorAll('.ktd-country-event')];
+   const links=[...document.querySelectorAll('.ktd-country-link')];
    const px=selector=>parseFloat(getComputedStyle(document.querySelector(selector)).fontSize);
-   return {eventCount:cards.length,allCardsSameRow:cards.every(c=>Math.abs(c.getBoundingClientRect().top-cards[0].getBoundingClientRect().top)<2),
-     cardWidth:cards[0].getBoundingClientRect().width,
-     cardTitlePx:px('.ktd-country-event strong'),
+   return {linkCount:links.length,linksCompact:links.every(a=>a.getBoundingClientRect().height<=48),
      rowPx:px('.kvl-unified-row'),namePx:px('.kvl-unified-name strong'),
      dobPx:px('.kvl-unified-dob'),clubPx:px('.kvl-unified-club'),
      enPx:px('.kvl-unified-name small'),headPx:px('.kvl-unified-head'),
@@ -57,9 +58,8 @@ async function testApp(){
      tableViewport:document.querySelector('.kvl-unified-table').clientWidth,
      tableContent:document.querySelector('.kvl-unified-table').scrollWidth};
   });
-  assert.equal(layout.eventCount,3,'Do not invent a Japan AVC Cup entry');
-  assert.ok(layout.allCardsSameRow&&layout.cardWidth>=228,'PC cards must sit across one row: '+JSON.stringify(layout));
-  assert.ok(layout.cardTitlePx>=16,'Keep source competition cards legible: '+JSON.stringify(layout));
+  assert.equal(layout.linkCount,3,'Japan should expose three compact 2026 competition links');
+  assert.ok(layout.linksCompact,'Competition navigation should remain compact: '+JSON.stringify(layout));
   for(const [field,exact] of [['rowPx',17],['namePx',17],['dobPx',17],['clubPx',17],['enPx',17],['headPx',17],['volleyboxPx',17]])
    assert.equal(layout[field],exact,field+' must equal revised PC specification: '+JSON.stringify(layout));
   REPORT.views.push({name:'PC 1440 unified 17px roster fields with Korean-first list',status:'PASS',layout});
@@ -87,7 +87,7 @@ async function testApp(){
     const style=s=>getComputedStyle(document.querySelector(s));
     const base=style('body').fontFamily;
     return {base,unified:style('.kvl-unified').fontFamily,country:style('.ktd-country-panel').fontFamily,
-      eventAction:style('.ktd-country-event button').fontFamily,search:style('.kvl-unified-search input').fontFamily,
+      eventAction:style('.ktd-country-link').fontFamily,search:style('.kvl-unified-search input').fontFamily,
       titleWeight:style('.kvl-unified-name strong').fontWeight,
       leaguePx:parseFloat(style('.kvl-roster-club-meta').fontSize),englishDisplay:style('.kvl-unified-name small').display};
    });
@@ -138,44 +138,15 @@ async function testApp(){
   await page.locator('[data-kvl-unified-close]').click();
   assert.equal(await page.locator('.kvl-unified-detail:not([hidden])').count(),0);
   REPORT.views.push({name:'Original tournament filters 16/12/14, multi 14, search/detail',status:'PASS'});
-  await page.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();
-  await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-  assert.equal(await page.locator('.ktd-country-player').count(),16,'Existing per-competition roster preserved');
-  const searchLink=page.locator('.ktd-country-player').filter({hasText:'후카츠 아키히로'}).first();
-  assert.match(await searchLink.innerText(),/VB 검색/);
-  await page.locator('[data-country-snapshot="avc-men-continental-2026:JPN"]').click();
-  await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-  assert.equal(await page.locator('.ktd-country-player').count(),14,'Verified separate AVC roster remains intact');
-  const nishida=page.locator('.ktd-country-player').filter({hasText:'니시다 유지'}).first();
-  assert.match(await nishida.locator('.ktd-country-club').innerText(),/Osaka Bluteon/);
-  assert.equal((await nishida.locator('.ktd-country-club-league').innerText()).trim(),'· 🇯🇵 JAPAN',
-   'Per-event roster must show same Japan country label, not optional league');
-  assert.equal(await nishida.locator('.ktd-country-club-league').getAttribute('title'),'확인된 리그: SV.League Men');
-  assert.doesNotMatch(await nishida.locator('.ktd-country-club').innerText(),/SV.League Men/,
-   'Source-verified league stays in tooltip instead of the list');
-  assert.equal(await nishida.locator('.ktd-country-player-links a').filter({hasText:'VB->'}).count(),1);
-
-
-  const snapshotType=await page.evaluate(()=>{
-   const px=s=>parseFloat(getComputedStyle(document.querySelector(s)).fontSize);
-   return {name:px('.ktd-country-person strong'),en:px('.ktd-country-person small'),
-     number:px('.ktd-country-number'),link:px('.ktd-country-player-links a'),
-     row:px('.ktd-country-player'),header:px('.ktd-country-roster-label')};
-  });
-  assert.ok(snapshotType.name===20 && ['en','number','link','row','header'].every(k=>snapshotType[k]===17),
-   'Separate tournament roster must use 20px names and 17px facts: '+JSON.stringify(snapshotType));
-  REPORT.views.push({name:'Separate tournament roster 20/17px text with all existing entries',status:'PASS',snapshotType});
-  const perFonts=await page.evaluate(()=>{
-   const px=s=>parseFloat(getComputedStyle(document.querySelector(s)).fontSize);
-   return {site:getComputedStyle(document.body).fontFamily,
-     section:getComputedStyle(document.querySelector('.ktd-country-panel')).fontFamily,
-     league: px('.ktd-country-club-league')};
-  });
-  assert.equal(perFonts.section,perFonts.site,'Per-event roster must use the same KVL font family');
-  assert.equal(perFonts.league,17,'Per-event league country should match 17px metadata');
+  const quickHrefs=await page.locator('.ktd-country-link').evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href')));
+  assert.ok(quickHrefs.some(x=>/vnl-men-2026/.test(x||'')),'VNL must remain directly reachable');
+  assert.ok(quickHrefs.some(x=>/asian-games-men-2026/.test(x||'')),'Asian Games must remain directly reachable');
+  assert.ok(quickHrefs.some(x=>/avc-men-continental-2026/.test(x||'')),'AVC Continental must remain directly reachable');
+  assert.ok(await page.locator('.kvl-unified-reserve').count()>=1,'VNL Reserve athletes must be marked inside the integrated roster');
+  REPORT.views.push({name:'Compact competition links and VNL reserve badge replace redundant source cards',status:'PASS'});
   assert.equal(await page.locator('.kvl-unified-row').count(),26,'Unified table still present');
   assert.match(await page.locator('[data-country-selection]').innerText(),/후보 엔트리/);
-  await page.locator('[data-country-year="2026"]').click();
+  await page.locator('[data-country-year-select]').selectOption('2026');
   await page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
   assert.equal(await page.locator('.kvl-unified-row').count(),26);
   await page.locator('[data-country-close]').click();
@@ -187,16 +158,25 @@ async function testApp(){
   await page.close();
   const wo=await open(browser,1440,'category=international&gender=women&country=JPN&year=2026');
   await wo.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
-  assert.equal(await wo.page.locator('.ktd-country-event').count(),2);
+  assert.equal(await wo.page.locator('.ktd-country-link').count(),2);
   assert.equal(await wo.page.locator('.kvl-unified-count').count(),1);
   assert.ok((await wo.page.locator('.kvl-unified-count').innerText()).includes('26건'));
   assert.ok(await wo.page.locator('.kvl-unified-row').count()>=14);
   assert.deepEqual(wo.errors,[]);
   REPORT.views.push({name:'Japan WOMEN source missing DOB stays unguessed',status:'PASS'});
   await wo.page.close();
+  const iri=await open(browser,1440,'category=international&gender=men&country=IRI&year=2026');
+  await iri.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+  const iriText=await iri.page.locator('.kvl-unified-table').innerText();
+  assert.match(iriText,/히로시마|Hiroshima Thunders/,'Current Hiroshima affiliations should supplement tournament snapshots');
+  assert.match(iriText,/허베이 바오딩|Hebei Baoding Wolves/,'Current Morteza Sharifi club should be available');
+  assert.match(iriText,/풀라드 시르잔|Foolad Sirjan Iranian/,'Current Foolad Sirjan affiliations should be available');
+  assert.deepEqual(iri.errors,[]);
+  REPORT.views.push({name:'Iran current-club registry supplements previously unknown affiliations',status:'PASS'});
+  await iri.page.close();
   const brn=await open(browser,1440,'category=international&gender=men&country=BRN&year=2026');
   await brn.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
-  assert.equal(await brn.page.locator('.ktd-country-event').count(),2);
+  assert.equal(await brn.page.locator('.ktd-country-link').count(),2);
   assert.ok(await brn.page.locator('.kvl-unified-row').count()>=14);
   assert.deepEqual(brn.errors,[]);
   REPORT.views.push({name:'Bahrain mens distinct continental and cup source records',status:'PASS'});

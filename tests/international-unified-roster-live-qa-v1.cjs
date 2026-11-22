@@ -17,9 +17,13 @@ async function waitDeploy(){
   try{
    const r=await fetch(BASE+'/teams.html?release='+SHA+'-'+i,{cache:'no-store',signal:AbortSignal.timeout(16000)});
    const html=r.ok?await r.text():'';
-   if(html.includes('kvl-international-unified-roster-v1.js')&&html.includes('kvl-international-unified-roster-v1.css')){
-    const index=await read('data/international/country-roster-index-v1.json');
-    if(index.snapshot_count===89)return;
+   if(html.includes('kvl-international-unified-roster-v1.js?v=20261122-clubs-v2')
+      &&html.includes('kvl-international-countries-v1.js?v=20261122-country-ux-v2')){
+    const [index,clubs]=await Promise.all([
+      read('data/international/country-roster-index-v1.json'),
+      read('data/international/player-club-registry-2026-27-v1.json')
+    ]);
+    if(index.snapshot_count===89&&clubs.players?.['40943'])return;
    }
    last='New module/roster source not yet visible, HTTP '+r.status;
   }catch(e){last=e.message}
@@ -54,7 +58,10 @@ async function run(){
    const {page,errors}=await getPage(browser,width,'category=international&gender=men&country=JPN&year=2026');
    await page.locator('.kvl-unified-row').first().waitFor({timeout:35000});
    assert.equal(await page.locator('.kvl-unified-row').count(),26);
-   assert.equal(await page.locator('.ktd-country-event').count(),3);
+   assert.equal(await page.locator('.ktd-country-event').count(),0);
+   assert.equal(await page.locator('.ktd-country-link').count(),3);
+   assert.equal(await page.locator('[data-country-year-select]').inputValue(),'2026');
+   assert.ok(await page.locator('.kvl-unified-reserve').count()>=1);
    const target=page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first();
    assert.equal(await target.locator('a.kvl-unified-volleybox').count(),1);
    assert.match(await target.innerText(),/Ziraat Bankkart Ankara/);
@@ -66,19 +73,18 @@ async function run(){
     assert.equal(await page.locator('.kvl-unified-row').count(),16);
     await page.locator('[data-kvl-unified-filter="all"]').click();
     assert.equal(await page.locator('.kvl-unified-row').count(),26);
-    await page.locator('[data-country-snapshot="vnl-men-2026:JPN"]').click();
-    await page.locator('.ktd-country-player').first().waitFor({timeout:30000});
-    assert.equal(await page.locator('.ktd-country-player').count(),16);
+    const quickLinks=await page.locator('.ktd-country-link').evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href')));
+    assert.ok(quickLinks.some(x=>/vnl-men-2026/.test(x||'')));
    }
    assert.deepEqual(errors,[]);
-   result.checks.push({name:'Japan men 26 distinct source-backed players / existing per-event list on '+width+'px',
+   result.checks.push({name:'Japan men integrated roster first / reserve badge / quick competition links on '+width+'px',
     status:'PASS',...(await screenshot(page,'jpn-men-'+width))});
    await page.close();
   }
   const women=await getPage(browser,1440,'category=international&gender=women&country=JPN&year=2026');
   await women.page.locator('.kvl-unified-row').first().waitFor({timeout:35000});
   assert.ok(await women.page.locator('.kvl-unified-row').count()>=14);
-  assert.equal(await women.page.locator('.ktd-country-event').count(),2);
+  assert.equal(await women.page.locator('.ktd-country-link').count(),2);
   assert.deepEqual(women.errors,[]);
   result.checks.push({name:'Japan women original registration retained without guessed DOB',status:'PASS'});
   await women.page.close();

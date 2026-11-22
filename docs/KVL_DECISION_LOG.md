@@ -899,3 +899,14 @@ Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / STATIC QA PASSED / NO
 Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자가 “운영반영해”로 PR #365의 월드컵 개선분을 승인하고 개최국 1장도 KVL 안에서 간단히 안내하도록 요청했다. 월드컵 남녀 대회 개요·참가국·출전권 3장·기존 상세 URL 연결을 운영에 반영한다. 개최국 카드에서는 미국 남녀 자동 출전 각 1장, 혼다 센터(애너하임), 배구 기간과 올림픽 개·폐막 기간을 구분해 펼친다. LA28·Volleyball World·IOC 공식 근거와 확인일을 주기 JSON에 저장한다. 역사 62개·필터·대륙선수권 우승국/출전국·기존 URL·공통 메뉴를 보존하며 2032 미확정 주기에 LA28 숫자나 개최국 정보가 섞이지 않도록 한다.
 
 Base `fd090c3638fdd46f8a25bb5fd82c95420ed48cc7`; branch `codex/world-cup-roadmap-v1`. Node 38/38, PC·모바일 390/360px, 기존 필터·연도 접기와 2032 분리 확인. Drive MASTER는 읽기 대조만 수행했으며 정식 대회 Engine/MASTER 등록·자동화는 별도다. 병합·Pages·운영 검증 전까지 배포 완료로 표시하지 않고 PR #365에 최종 증거를 기록한다. [검증·출처·복구](validation/olympic-world-cup-host-release-v1.md).
+
+
+## 2026-11-22 · 국제 국가상세 통합명단 우선 UX · VNL 예비표기 · 현재 소속 보강
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / STATIC QA PASSED / BROWSER QA PENDING. 사용자는 기존 국제 국가 카드 디자인은 유지하되 카드 전체를 클릭할 수 있게 하고, 국가 상세 진입 직후 통합 선수명단이 보이도록 요청했다. 기존 연도 버튼은 드롭다운으로 축소하고 “국가별 페이지는 하나로 유지하며…” 안내문과 중복되는 대회별 명단 카드 영역은 기본 화면에서 제거한다. 대신 통합명단 아래에 `대회 바로가기`를 두어 VNL·아시안게임·대륙선수권 등 실제 대회 페이지로 직접 이동할 수 있게 한다. 뒤로가기는 `← 국가 목록`의 단순 텍스트형 버튼으로 통일한다.
+
+VNL 원본에서 `Reserve`로 명시된 선수는 통합명단에서 `VNL 예비` 배지로 표시한다. 이는 VNL 대회별 엔트리 상태이며 대표팀 전체의 영구 예비선수·탈락 상태로 해석하지 않는다.
+
+국제 선수의 현재 소속 보강은 과거 대회명단을 수정하지 않고 별도 `data/international/player-club-registry-2026-27-v1.json` overlay로 관리한다. Volleybox ID와 가능한 경우 DOB를 대조하고, 공개 HTTPS 근거와 `CONFIRMED/REVIEWED` 상태가 있는 레코드만 적용한다. 초기 검증 배치는 이란 남자대표팀 7명이며 히로시마·풀라드 시르잔·허베이 바오딩·우르미아 등 현재 소속 근거를 추가했다. 이 7건의 보강은 전체 국제선수의 미확인 소속이 모두 해결됐다는 의미가 아니며, 근거가 없는 선수는 계속 미확인으로 유지한다.
+
+Base `fd090c3638fdd46f8a25bb5fd82c95420ed48cc7`; branch `feature/international-country-roster-ux-v2-20261122`. 원본 89개 roster snapshot·Player ID·VB 링크·회원 접근정책·KOVO 자동화는 변경하지 않는다. [검증 기록](validation/international-country-roster-ux-v2-20261122.md).
