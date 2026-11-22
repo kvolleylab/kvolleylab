@@ -29,8 +29,9 @@
  .ktd-country-flag img.ktd-country-flag-image{max-width:50px;max-height:37.5px}
 }
 .ktd-country-panel{background:#fff;border:1px solid #dfe7ed;border-radius:19px;padding:22px;box-shadow:0 8px 24px rgba(13,42,70,.05)}
-.ktd-country-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
-.ktd-country-heading{display:flex;align-items:center;gap:13px;min-width:0}
+.ktd-country-top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:nowrap}
+.ktd-country-heading{display:flex;align-items:center;gap:13px;min-width:0;flex:1}
+.ktd-country-head-actions{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex:none}
 .ktd-country-flag{width:75px;height:75px;background:#f4f7f9;border:1px solid #dfe7ed;border-radius:16px;display:grid;place-items:center;font-size:42px;flex:none}
 .ktd-country-heading h2{margin:0;font-size:26px;line-height:1.2;color:#193953;letter-spacing:-.045em}
 .ktd-country-heading p:last-child{font-size:13px;color:#7b8fa0;margin:7px 0 0}
@@ -149,12 +150,9 @@
 }
 .ktd-country-back{
  appearance:none;border:0;background:transparent;color:#58738a;
- padding:2px 0 10px;font-size:12px;font-weight:800;cursor:pointer
+ padding:1px 0;font-size:12px;font-weight:800;cursor:pointer;line-height:1.25
 }
 .ktd-country-back:hover{color:#173d5b;text-decoration:underline;text-underline-offset:3px}
-.ktd-country-toolbar{
- display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:13px 0 12px
-}
 .ktd-country-year-select{display:flex;align-items:center;gap:7px;color:#6b8193;font-size:11px;font-weight:800}
 .ktd-country-year-select select{
  min-width:92px;min-height:38px;padding:7px 30px 7px 11px;border:1px solid #dbe4eb;
@@ -172,10 +170,16 @@
 }
 .ktd-country-link:hover{border-color:#b99a58;background:#fffaf1;color:#183e5a!important}
 @media(max-width:700px){
- .ktd-country-back{font-size:11px;padding-bottom:8px}
- .ktd-country-toolbar{justify-content:flex-start;margin:10px 0}
- .ktd-country-year-select{width:100%}
- .ktd-country-year-select select{flex:1;max-width:150px}
+ .ktd-country-panel{padding:16px}
+ .ktd-country-top{align-items:flex-start;gap:8px}
+ .ktd-country-heading{gap:8px}
+ .ktd-country-flag{width:54px;height:54px;border-radius:12px;font-size:34px}
+ .ktd-country-heading h2{font-size:21px}
+ .ktd-country-heading p:last-child{font-size:11px;margin-top:4px}
+ .ktd-country-head-actions{gap:4px;min-width:106px}
+ .ktd-country-back{font-size:11px}
+ .ktd-country-year-select{width:auto;gap:5px}
+ .ktd-country-year-select select{min-width:82px;max-width:92px;min-height:34px;padding:6px 24px 6px 9px;font-size:12px}
  .ktd-country-links{gap:6px}
  .ktd-country-link{font-size:10px;padding:7px 9px}
 }
