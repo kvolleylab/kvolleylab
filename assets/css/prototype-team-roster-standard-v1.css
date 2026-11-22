@@ -155,3 +155,8 @@
  .kvl-roster-standard-prototype.is-international .kvl-proto-club-teamline{gap:5px}
  .kvl-roster-standard-prototype.is-international .kvl-proto-club-meta{gap:0 4px}
 }
+
+/* Korean-first international roster list v4 */
+.kvl-roster-standard-prototype.is-international .kvl-unified-name small{display:none!important}
+.kvl-roster-standard-prototype.is-international .kvl-proto-country{font-weight:700}
+.kvl-roster-standard-prototype.is-international .kvl-proto-league{font-weight:700}
