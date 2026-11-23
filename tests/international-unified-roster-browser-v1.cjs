@@ -187,6 +187,30 @@ async function testApp(){
   assert.deepEqual(iri.errors,[]);
   REPORT.views.push({name:'Iran Mohsen direct Volleybox/current Russia club and Ali Greece club flag',status:'PASS'});
   await iri.page.close();
+  const flagCases=[
+   ['ARG','Club Voleibol Guaguas','club/es.svg'],
+   ['AUS','Bigbank Tartu','club/ee.svg'],
+   ['UKR','SCM Universitatea Craiova','club/ro.svg'],
+   ['CHN','Sporting CP','club/pt.svg'],
+   ['UKR','Hebei Baoding Wolves','4x3/cn.svg'],
+   ['INA','Jakarta Bhayangkara Presisi','4x3/id.svg'],
+   ['KAZ','VK Aktobe','4x3/kz.svg'],
+   ['THA','Nakhon Ratchasima 3M Films VC','4x3/th.svg'],
+   ['UZB','UZTELECOM','4x3/uz.svg'],
+   ['VIE','Biên Phòng MB','4x3/vn.svg']
+  ];
+  for(const [code,club,pathEnd] of flagCases){
+   const view=await open(browser,1440,'category=international&gender=men&country='+code+'&year=2026');
+   await view.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+   const line=view.page.locator('.kvl-roster-club-teamline[title="'+club+'"]').first();
+   await line.waitFor({timeout:30000});
+   const flag=line.locator('.kvl-roster-league-flag');
+   assert.equal(await flag.count(),1,code+' '+club+' should have a club-country flag');
+   assert.ok((await flag.getAttribute('src')).endsWith(pathEnd),code+' '+club+' flag source');
+   assert.equal(await flag.evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true,code+' '+club+' flag must decode');
+   assert.deepEqual(view.errors,[]);await view.page.close();
+  }
+  REPORT.views.push({name:'Club-country flags normalize Spain/Estonia/Romania/Portugal/China and new Asian current clubs',status:'PASS'});
   const brn=await open(browser,1440,'category=international&gender=men&country=BRN&year=2026');
   await brn.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
   assert.equal(await brn.page.locator('.ktd-country-link').count(),2);

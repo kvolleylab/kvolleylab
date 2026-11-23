@@ -1005,6 +1005,12 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 다른 �
 
 과거 대회 원본 소속은 수정하지 않으며, 직접 VB ID와 DOB 및 2026/27 선수 경력/팀 명단을 교차 확인한다. 서로 다른 현재 팀 표기가 충돌하거나 최신 시즌 근거가 불충분한 선수는 제외한다. Ilija Ivović는 KVL 원본 DOB와 Volleybox DOB가 충돌해 제외한다. registry는 202명에서 217명으로 증가한다. [검증 기록](docs/validation/international-current-club-asia-batch3-v1-20261123.md).
 
+## 2026-11-23 · 국제 선수 소속국가 국기·국가명 정규화
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 다른 나라 명단 점검의 3단계로 현재 소속팀 국가가 맞아도 국기 자산 또는 국가명 매핑이 없어 표시가 깨지는 문제를 전수 정리한다. Spain·Romania·Portugal·Estonia는 국제 국가카드의 승인 40개 국기 세트를 변경하지 않고 별도 club-flag SVG로 보완한다. Indonesia·Kazakhstan·Thailand·Uzbekistan·Vietnam은 기존 국제 국기 자산을 roster standard 국가 매핑에 연결한다.
+
+Yurii Synytsia의 Hebei Baoding Wolves 소속국가 문자열 `중국`은 `China`로 정규화한다. 선수 신원·DOB·소속팀은 변경하지 않고 current-club registry 217명을 유지한다. PC 격리 Chromium과 운영 Live QA에서 Spain/Estonia/Romania/Portugal/China 및 신규 아시아 5개국의 실제 SVG decode를 검증한다. [검증 기록](docs/validation/international-club-country-flags-normalize-v1-20261123.md).
+
 ## 2026-11-23 · 아시아선수권 3개년 전체 경기 보완·참가 기록 대조
 
 Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자의 후속 진행 지시에 따라 2019·2021·2023 남자 아시아선수권을 우선 보완하고 기존 MASTER·대표팀 연대기와 참가 대회 누락을 대조한다. AVC 공식 결과집에서 한국 8·7·5경기, 총 20경기와 세트별 점수를 확인했다. 기간과 개최지를 연결하고 기본 펼침은 주요 3행을 유지한다. 2023 중국전은 공식 1–6위전으로 표기하며, 결과 승계는 실제 경기로 중복 집계하지 않는다.
