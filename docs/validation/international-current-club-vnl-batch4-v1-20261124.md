@@ -10,15 +10,19 @@
 | 26700 | Luke Herr | AONS Milon Athens | Greece | https://cev.eu/team/13161-aons-milon-nea-smyrni-athens/player/83370-herr-luke |
 | 216089 | Quintin Greenidge | Hawaii Univ. | USA | https://hawaiiathletics.com/sports/mens-volleyball/roster/2027 |
 | 91503 | Henri Leon | Gas Sales Bluenergy Piacenza | Italy | https://www.gassalespiacenza.it/giocatore/henri-leon/ |
-| 76868 | Thomas Pujol | Alterna Stade Poitevin | France | https://volleybox.net/alterna-stade-poitevin-t1858 |
+| 76868 | Thomas Pujol | ZAKSA Kędzierzyn-Koźle | Poland | https://www.tauronliga.pl/players/id/3264/section/playersByTeam/tour/53.html |
 | 72170 | Alessandro Alberto Bovolenta | Gas Sales Bluenergy Piacenza | Italy | https://en.volleyballworld.com/volleyball/competitions/superlega/players/182409 |
 | 28911 | Paolo Porro | Gas Sales Bluenergy Piacenza | Italy | https://en.volleyballworld.com/volleyball/competitions/superlega/players/172961 |
-| 24845 | Leandro Ausibio Mosca | MA Acqua S.Bernardo Cuneo | Italy | https://cuneovolley.it/prima-squadra/giocatori |
+| 24845 | Leandro Ausibio Mosca | Acqua Sant’Anna Cuneo | Italy | https://cuneovolley.it/novita/leandro-mosca-si-presenta-cuneo-e-il-posto-giusto-per-me-vogliamo-sorprendere |
 
 ## Google Drive MASTER 대조
 - KVL_국제대회_선수마스터_v1은 현재 샘플 행만 있는 템플릿 상태라 이번 8명과 충돌하는 등록값이 없다.
 - KVL_2026_NORCECA_Mens_Continental_Championship_선수명단_MASTER의 Luke Herr는 2026-09-21 확인 당시 2026/27 소속 UNKNOWN으로 기록되어 있다. 이번 배치는 2026-11-24 기준 CEV 2027 European Cups의 AONS Milon ATHENS 현재 선수 페이지로 더 최신 근거를 보강한다.
 - CEV/NORCECA MASTER에 없는 VNL 선수는 Drive에 없는 값을 임의 생성하지 않고 현재 시즌 공개 로스터 근거만 overlay에 사용한다.
+
+## PR 후 최신성 재검수 보정
+- Thomas Pujol: 초기 Volleybox 팀 스냅샷은 Alterna Stade Poitevin으로 남아 있었으나, 2026-09-02 ZAKSA 영입 발표 및 TAURON Liga 2026/27 선수 등록(2026-10-05~2027-03-30)을 확인해 ZAKSA Kędzierzyn-Koźle로 정정.
+- Leandro Mosca: 선수 소속 자체는 Cuneo가 맞지만 2026/27 신규 공식 네이밍이 Acqua Sant’Anna Cuneo임을 구단 2026-10-08 자료에서 재확인해 최신 명칭으로 정정.
 
 ## 보류
 - Cody Hudson (VB p180756): KVL DOB 2005-02-02와 프로필 신원은 맞지만 공개 경력이 Mount Royal Univ. 2024/25에서 끝나 현재 2026/27 소속 근거가 부족해 제외.
