@@ -1001,7 +1001,7 @@ Berkay Bayraktar·Dimitar Dimitrov·Lorenzo Cortesia는 KVL DOB와 Volleybox DOB
 
 ## 2026-11-23 · 국제 남자 현재 소속 아시아권 보강 배치 3
 
-Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 다른 나라 명단을 순서대로 점검하라는 요청의 2단계로, 직접 Volleybox ID가 이미 확인된 아시아권 선수 중 2026/27 현재 소속 근거가 명확한 16명을 current-club overlay에 추가한다. 인도네시아 3명, 카자흐스탄 2명, 카타르 5명, 태국 2명, 우즈베키스탄 2명, 베트남 2명이다.
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 다른 나라 명단을 순서대로 점검하라는 요청의 2단계로, 직접 Volleybox ID가 이미 확인된 아시아권 선수 중 2026/27 현재 소속 근거가 명확한 15명을 current-club overlay에 추가한다. 인도네시아 3명, 카자흐스탄 2명, 카타르 4명, 태국 2명, 우즈베키스탄 2명, 베트남 2명이다.
 
-과거 대회 원본 소속은 수정하지 않으며, 직접 VB ID와 DOB 및 2026/27 선수 경력/팀 명단을 교차 확인한다. 서로 다른 현재 팀 표기가 충돌하거나 최신 시즌 근거가 불충분한 선수는 제외한다. registry는 202명에서 218명으로 증가한다. [검증 기록](docs/validation/international-current-club-asia-batch3-v1-20261123.md).
+과거 대회 원본 소속은 수정하지 않으며, 직접 VB ID와 DOB 및 2026/27 선수 경력/팀 명단을 교차 확인한다. 서로 다른 현재 팀 표기가 충돌하거나 최신 시즌 근거가 불충분한 선수는 제외한다. Ilija Ivović는 KVL 원본 DOB와 Volleybox DOB가 충돌해 제외한다. registry는 202명에서 217명으로 증가한다. [검증 기록](docs/validation/international-current-club-asia-batch3-v1-20261123.md).
 
