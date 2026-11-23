@@ -110,9 +110,10 @@ async function testApp(){
   assert.doesNotMatch(await ishikawa.locator('.kvl-unified-name').innerText(),/Yuki Ishikawa/,'Quick roster list is Korean-first');
   const arai=page.locator('.kvl-unified-row').filter({hasText:'아라이 유다이'}).first();
   assert.match((await arai.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^일본(?: · .+)?$/,'Do not invent a league when the verified source only provides Japan');
-  const unknownClub=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
-  assert.match(await unknownClub.locator('.kvl-unified-club').innerText(),/미확인/);
-  assert.match(await unknownClub.locator('.kvl-roster-club-team').innerText(),/미확인/);
+  const akihiro=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
+  assert.match(await akihiro.locator('.kvl-unified-club').innerText(),/Tokyo Great Bears/);
+  assert.equal((await akihiro.locator('.kvl-roster-club-team').innerText()).trim(),'Tokyo Great Bears');
+  assert.match((await akihiro.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^일본$/);
 
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-major').count(),1);
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-regular').count(),1);
