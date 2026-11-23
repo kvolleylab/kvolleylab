@@ -51,10 +51,11 @@ VNL 폴더의 `01_MASTER`에는 일정·결과 MASTER만 확인되어, 선수 �
 - 잘못된/비허용 URL: 0명.
 
 ### 2026/27 소속팀
-- `data/international/player-club-registry-2026-27-v1.json` 검증 선수: 13명 → 89명.
-- 신규 항목은 exact identity match 및 공개 근거가 있는 경우만 `REVIEWED`로 추가.
-- 최신 11월 Iran 등 기존 `CONFIRMED/REVIEWED` 값은 보존.
-- 레지스트리 89명 모두 선수 ID·DOB·소속팀·HTTPS 공개 출처·허용 status 검사 통과.
+- `data/international/player-club-registry-2026-27-v1.json` 검증 선수: 13명 → 134명.
+- 유럽·남미·NORCECA 후속 MASTER exact match 기반 76명 보강 후, AVC 대륙선수권 `CONFIRMED` + direct Volleybox ID가 함께 있는 45명을 공통 레지스트리에 추가했다.
+- AVC 추가분: 일본 14, 호주 6, 바레인 1, 오만 1, 이란 4, 중국 5, 인도 14.
+- 최신 11월 Iran 등 기존 `CONFIRMED/REVIEWED` 값 3건은 9월 AVC 값으로 되돌리지 않았다.
+- 레지스트리 134명 모두 선수 ID·DOB·소속팀·HTTPS 공개 출처·허용 status 검사 통과.
 
 ### 이란 2026 남자 페이지 확인
 통합 모델을 실제 build하여 등번호 정렬을 확인했다.
@@ -89,7 +90,7 @@ VNL 폴더의 `01_MASTER`에는 일정·결과 MASTER만 확인되어, 선수 �
 - 구형 독립 toolbar 제거: PASS.
 - VNL 선수 수 284명 및 국가별 색인 player_count 일치: PASS.
 - VNL Volleybox: direct 134 / search 150 / bad 0.
-- current club registry: 89 / invalid 0.
+- current club registry: 134 / invalid 0.
 - `teams.html` 캐시 버전 갱신: PASS.
 
 ## 운영 보호
