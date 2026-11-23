@@ -864,12 +864,13 @@
         "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
         "KVL-AVC-M-CONTINENTAL-2026",
         "KVL-ASIAN-GAMES-M-2026",
-        "https://volleybox.net/mohsen-delavari-p222609"
+        "https://volleybox.net/mohsen-delavari-p222609",
+        "VOLLEYBOX-DIRECT-PROFILES-BATCH1-20261123"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "273b9ae3cb5fe8f4ce898e43b5beb0e3335c5da984af452f877fb323b39840b6",
-      "evidence": "docs/validation/iran-player-link-club-flag-fix-v1-20261123.md",
-      "review_note": "2026 VNL 남자 284명 원본 선수 수·대회 참가 상태는 유지. Mohsen Delavari의 검색 링크를 확인된 직접 Volleybox 프로필 p222609로 승격했다. 직접 프로필 135, 검색 유지 149, invalid 0이며 불확실 신원은 추정하지 않는다."
+      "sha256": "1c313b756cf7bfe7a2c8fea0fb835356bf29b1f3264cbf3b82c856c1ae2f843f",
+      "evidence": "docs/validation/international-vb-direct-batch1-v1-20261123.md",
+      "review_note": "2026 VNL 남자 284명 원본 선수 수·참가 상태는 유지. 영문명+DOB exact match 및 직접 Volleybox 프로필의 DOB 대조로 검색 링크 142건을 직접 프로필로 승격했다. 직접 277, 검색 7, invalid 0. DOB 충돌·DOB 미공개·직접 프로필 미확정 7명은 검색 링크를 유지한다."
     }
   }
 }
