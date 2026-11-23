@@ -1018,3 +1018,12 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 기존 62개 이벤트, 대상 외 59개 객체, 기존 22개 요약, 모든 출전권 결과와 CSS를 보존했다. 추가 요약 후 25개, 세부 경기 미수록 완료 기록은 35→32개다. MASTER 3개, 2026 대표팀 대회 4개, 연령별 44개를 대조했으며 VNL 2026이나 U18–U23을 성인 한국 참가 대회로 추가하지 않는다. 2015–2017 월드리그는 후속 수록 후보로 구분하고 2015 최종 순위 충돌을 미확인으로 남긴다. 검증 화면은 배열 점수와 숫자 순위 정정 내역을 모두 처리하도록 복구한다.
 
 Base `d8531b9841c03c1fa5d1ab94fd5e5aa495163413`; branch `feature/roadmap-asian-history-v1`. Node 67/67, 공개 JSON 검토 게이트 PASS, PC 및 모바일 390/360/320px 확인. 필터 62/37/16/17 유지. 병합·Pages·운영 증거는 PR에 기록한다. [출처·대조 범위·미확인 후보·복구](validation/roadmap-asian-history-v1.md).
+
+## 2026-11-24 · 국제 남자 현재 소속 VNL 보강 배치 4
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 국제 대표팀 명단의 남은 ‘소속 미확인’ 선수를 순서대로 검수한다는 기존 사용자 지시를 이어, 직접 Volleybox ID가 이미 확인된 Canada·France·Italy VNL 선수 중 2026/27 현재 소속 근거가 명확한 8명을 current-club overlay에 추가한다.
+
+Brodie Hofer, Luke Herr, Quintin Greenidge, Henri Leon, Thomas Pujol, Alessandro Alberto Bovolenta, Paolo Porro, Leandro Mosca를 반영해 registry 217→225명으로 보강한다. 대회 당시 원본 소속은 수정하지 않는다. Cody Hudson은 2026/27 현재 소속 근거 부족, Domenico Pace는 KVL/구단 공식 DOB(2000-08-02)와 현재 Volleybox DOB(2000-10-02) 충돌로 fail-closed 보류한다. Drive NORCECA MASTER에서 Luke Herr가 2026-09-21 UNKNOWN이던 것을 확인했고, 최신 CEV 2027 current-club 근거로 overlay를 갱신한다.
+
+Base `2271ed94f980dde108beeb754356954b42f4cf67`; branch `feature/international-current-club-vnl-batch4-v1`. 자동 테스트·공개 JSON 검토 게이트·PR 검토 후에만 READY FOR REVIEW로 올리며, 사용자 승인 전에는 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch4-v1-20261124.md).
+
