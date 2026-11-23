@@ -1035,3 +1035,10 @@ Brodie Hofer, Luke Herr, Quintin Greenidge, Henri Leon, Thomas Pujol, Alessandro
 
 Base `2271ed94f980dde108beeb754356954b42f4cf67`; branch `feature/international-current-club-vnl-batch4-v1`. 자동 테스트·공개 JSON 검토 게이트·PR 검토 후에만 READY FOR REVIEW로 올리며, 사용자 승인 전에는 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch4-v1-20261124.md).
 
+## 2026-11-24 · 국제 남자 현재 소속 VNL 보강 배치 5
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용자의 “진행해” 지시에 따라 VNL current-club 잔여량이 큰 국가부터 쿠바·세르비아·미국을 순서대로 검수한다. 직접 Volleybox ID와 KVL DOB가 일치하고 2026/27 공식 리그·구단·대학 또는 최신 공개 로스터에서 현재 소속이 확인되는 28명만 overlay에 REVIEWED로 추가한다.
+
+쿠바 10명, 세르비아 10명, 미국 8명을 반영해 registry 225→253명, VNL current-club 적용 범위 185→최소 213명으로 보강한다. Javier Concepcion·Lazaro Arrechea·Yonder Garcia·Nemanja Mašulović·Jeff Jendryk·Kyle Dagostino는 현재 시즌 근거 부족 또는 계약 종료 후 미확정으로 보류한다. Thiago Suarez는 VolleyballTV의 잘못 섞인 2002 DOB 바이오를 배제하고 CEV 2027 SCM Zalău 공식 roster의 birth year 2004 및 KVL/Volleybox direct identity 일치를 근거로 처리한다. Drive MASTER의 2026-09-21 UNKNOWN은 당시 검수 상태로 보존하고 현재 overlay만 최신화한다. 이번 배치에서 Romania·Brazil·Russia·Serbia·USA 등 current-club 국가의 국기 누락 가능성도 발견해, 통합명단 렌더러의 클럽 국가 국기 맵을 현재 registry 국가 전체로 확장한다.
+
+Base `f7f7f2fb203064572f8184f5b78b1e94d7d40244`; branch `feature/international-current-club-vnl-batch5-v1`. 자동 테스트·공개 JSON review gate·Chromium QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch5-v1-20261124.md).
