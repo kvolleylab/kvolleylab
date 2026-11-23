@@ -16,14 +16,14 @@ const COUNTRY_ISO2={
  Canada:'ca',CA:'ca',Belgium:'be',BE:'be',Netherlands:'nl',NL:'nl',Bulgaria:'bg',BG:'bg',
  Cuba:'cu',CU:'cu','United States':'us',USA:'us',US:'us',Bahrain:'bh',BH:'bh',
  Kuwait:'kw',KW:'kw',Qatar:'qa',QA:'qa',Australia:'au',AU:'au',Finland:'fi',FI:'fi',
- Ukraine:'ua',UA:'ua',Romania:'ro',RO:'ro',Spain:'es',ES:'es',Egypt:'eg',EG:'eg',Russia:'ru',RU:'ru'
+ Ukraine:'ua',UA:'ua',Romania:'ro',RO:'ro',Spain:'es',ES:'es',Egypt:'eg',EG:'eg',Russia:'ru',RU:'ru',Estonia:'ee',EE:'ee'
 };
 const COUNTRY_KO={
  it:'이탈리아',jp:'일본',pl:'폴란드',tr:'튀르키예',de:'독일',cz:'체코',fr:'프랑스',
  pt:'포르투갈',in:'인도',kr:'대한민국',tw:'대만',ir:'이란',om:'오만',gr:'그리스',
  br:'브라질',ar:'아르헨티나',rs:'세르비아',si:'슬로베니아',cn:'중국',ca:'캐나다',
  be:'벨기에',nl:'네덜란드',bg:'불가리아',cu:'쿠바',us:'미국',bh:'바레인',kw:'쿠웨이트',
- qa:'카타르',au:'호주',fi:'핀란드',ua:'우크라이나',ro:'루마니아',es:'스페인',eg:'이집트',ru:'러시아'
+ qa:'카타르',au:'호주',fi:'핀란드',ua:'우크라이나',ro:'루마니아',es:'스페인',eg:'이집트',ru:'러시아',ee:'에스토니아'
 };
 const CLUB_KO={
  'Pallavolo Padova':'파도바',
@@ -156,7 +156,7 @@ function setPlayerIds(root,ids){
 function clubMeta(p){
  const country=String(p?.clubCountry||'').trim(),league=String(p?.clubLeague||'').trim();
  const code=iso2(country),tier=leagueTier(league,country);
- const supplemental={gr:'assets/images/flags/club/gr.svg',ru:'assets/images/flags/club/ru.svg'};
+ const supplemental={gr:'assets/images/flags/club/gr.svg',ru:'assets/images/flags/club/ru.svg',es:'assets/images/flags/club/es.svg',ee:'assets/images/flags/club/ee.svg',ro:'assets/images/flags/club/ro.svg',pt:'assets/images/flags/club/pt.svg'};
  const flagSrc=code?(supplemental[code]||'assets/images/flags/4x3/'+code+'.svg'):'';
  const flag=flagSrc?'<img class="kvl-roster-league-flag" src="'+esc(flagSrc)+'" alt="" loading="lazy" decoding="async">':'';
  const leagueText=league?leagueKo(league)+(tier?' ('+tier+')':''):'';
