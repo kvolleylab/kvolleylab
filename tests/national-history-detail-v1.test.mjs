@@ -42,8 +42,8 @@ test('completed Asian Games connects six Korea results and shows three decisive 
 });
 
 test('every curated summary has a unique event, original evidence and unchanged field basis',()=>{
- assert.equal(summaries.entries.length,25);
- assert.equal(new Set(summaries.entries.map(e=>e.eventId)).size,25);
+ assert.equal(summaries.entries.length,28);
+ assert.equal(new Set(summaries.entries.map(e=>e.eventId)).size,28);
  for(const entry of summaries.entries){
   assert.deepEqual(validateSummaryEntry(entry,db),[],entry.eventId);
   assert.ok(entry.basis.some(b=>b.eventId===entry.eventId&&b.field==='updatedAt'));
@@ -102,7 +102,7 @@ test('all records work without presentation data and unknown future results rema
 
 test('all completed records show facts even without curated summaries, while future results stay pending',()=>{
  const completed=db.events.filter(e=>e.eventStatus==='completed');
- assert.equal(completed.length,59);
+ assert.equal(completed.length,62);
  for(const e of completed)for(const source of [summaries,null])assert.ok(compactEventView(e,db,source).rows.length>0,e.id);
  assert.equal(completed.filter(e=>view(e.id).notice==='세부 경기 기록 미수록').length,32);
  assert.deepEqual(view('kor-m-2028-olympics').rows,[]);
@@ -167,7 +167,7 @@ test('2018 AVC Cup resolves the mislabeled 2022 history row with independent off
  assert.equal(audit.reportedExistingKvlValue,4);assert.equal(audit.officialVerifiedValue,8);
  assert.ok(audit.officialSources.every(id=>e.sourceIds.includes(id)));
  assert.equal(event('kor-m-avc-cup-2022').finalRank,4);
- assert.deepEqual(['all','key','olympic','failure'].map(f=>selectEvents(db.events,f).length),[62,37,16,17]);
+ assert.deepEqual(['all','key','olympic','failure'].map(f=>selectEvents(db.events,f).length),[65,37,16,17]);
 });
 test('record buttons only accept internal HTML competition routes',()=>{
  for(const invalid of ['https://example.com','//example.com','javascript:alert(1)','../private.html','/admin.html','data:bad','a\\b.html','bad page.html'])assert.equal(internalRecordHref(invalid),null,invalid);
@@ -183,7 +183,7 @@ test('calendar weekdays preserve cross-year, partial and Olympic-wide date meani
  assert.match(view('kor-m-2028-olympics').date,/올림픽 전체 기간/);
 });
 test('locations require matching event identity and official sources, with no guessed host',()=>{
- assert.equal(summaries.locations.length,7);
+ assert.equal(summaries.locations.length,10);
  for(const location of summaries.locations){
   assert.equal(view(location.eventId).location,location.label);
   assert.ok(view(location.eventId).locationSources.every(s=>s.access==='official_source_reviewed'));

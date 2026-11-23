@@ -50,9 +50,9 @@ test('a changed historical match invalidates its displayed summary',()=>{
  assert.ok(validateSummaryEntry(entry,copy).includes('basis_changed'));
  assert.ok(!compactEventView(e,copy,summaries).rows.some(r=>r.label==='5·6위전'));
 });
-test('participation audit does not silently insert candidates, youth events or 2026 VNL',()=>{
- assert.deepEqual(['all','key','olympic','failure'].map(f=>selectEvents(db.events,f).length),[62,37,16,17]);
- assert.ok(!db.events.some(e=>e.category==='world-league'&&[2015,2016,2017].includes(e.year)));
+test('participation audit permits verified World League additions, excludes youth events and 2026 VNL',()=>{
+ assert.deepEqual(['all','key','olympic','failure'].map(f=>selectEvents(db.events,f).length),[65,37,16,17]);
+ assert.deepEqual(db.events.filter(e=>e.category==='world-league'&&[2015,2016,2017].includes(e.year)).map(e=>e.year),[2015,2016,2017]);
  assert.ok(!db.events.some(e=>e.year===2026&&e.category==='vnl'));
  assert.ok(db.events.every(e=>e.ageCategory==='senior'));
 });
