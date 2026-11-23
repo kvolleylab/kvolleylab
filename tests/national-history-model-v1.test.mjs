@@ -6,7 +6,7 @@ const db=JSON.parse(readFileSync(new URL('../data/national/men-senior-history-v1
 const record=id=>db.events.find(e=>e.id===id);
 test('normalized dataset has valid identity, scope, source references and chronology',()=>{
  assert.deepEqual(validateData(db),[]);
- assert.equal(db.events.length,62);
+ assert.equal(db.events.length,65);
  for(const e of db.events){assert.ok(e.year>=2000&&e.year<=2028); assert.ok(e.officialName); assert.ok(e.nameKo);assert.ok(e.verifiedAt);for(const o of e.qualificationOutcomes)for(const s of o.sourceIds)assert.ok(db.sources.some(x=>x.id===s));}
 });
 test('Olympic editions distinguish participation and qualification; Tokyo edition retains held year',()=>{

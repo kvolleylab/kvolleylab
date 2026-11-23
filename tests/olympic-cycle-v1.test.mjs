@@ -16,7 +16,7 @@ test('production preserves the reviewed history baseline, CSS and model',()=>{
  for(const [original,file] of Object.entries(mapping)){let content=read(file);if(original==='data/roadmap_v1.json'){const d=JSON.parse(content);assert.equal(d.integration.productionChanged,true);d.integration.productionChanged=false;content=JSON.stringify(d,null,2)+'\n';}assert.equal(createHash('sha256').update(content).digest('hex'),manifest.hashes[original],file);}
  const js=read('assets/js/national-history-roadmap-v1.js').replace("from './national-history-model-v1.mjs'","from './model.mjs'").replace("fetch('data/national/men-senior-history-v1.json')","fetch('data/roadmap_v1.json')").replaceAll('national-team-history-verification.html','verification.html');
  assert.equal(createHash('sha256').update(js).digest('hex'),manifest.hashes['roadmap.js']);
- assert.equal(JSON.parse(history).events.length,62);
+ assert.equal(JSON.parse(history).events.length,65);
 });
 test('LA28 has exactly the independently sourced 1/5/3/3 allocation',()=>{
  assert.deepEqual(validateCycle(la),[]);assert.deepEqual(summaryView(la).allocation.map(q=>q.count),[1,5,3,3]);assert.equal(summaryView(la).totalPerGender,12);

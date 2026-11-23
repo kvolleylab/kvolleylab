@@ -4,9 +4,9 @@
   "hashes": {
     "index.html": "e140caef07fed756cc645b988afce4d5b2496c992e6775be5c9a60d985983cdb",
     "roadmap.css": "e4f7924eaa61eb3b62b8e16a90b39fc7068cbdbd95b065c1d5be058331afca70",
-    "roadmap.js": "fb25aadb641b7b531faad9622cae8e1f1a373b9a126b8b5b09b26bfe9619093e",
+    "roadmap.js": "4ffe073a8c236d1140ebf6c18172c25cf025c1aa085ffe2e67f092f7b973835d",
     "model.mjs": "da193df0a7e9f26eb123d8fb8345f6e068595e66b145a254ef9ec793af113157",
-    "data/roadmap_v1.json": "7af598f2de87c429942e1d062b84ce8b8cd9d81c4795edb0a570eb343c10d39d"
+    "data/roadmap_v1.json": "1b447a24915445b9bae8867c518aa575a94ec2054311c0b4cea77a9887e2985b"
   },
   "reviewedAmendments": [
     {
@@ -49,6 +49,20 @@
         "roadmap.js": "c5022fe2b3b28125d7a3cb263ff87dcc7d347fc89c86e8e158b3e80147ba7c9c"
       },
       "evidence": "docs/validation/roadmap-asian-history-v1.md"
+    },
+    {
+      "date": "2026-11-24",
+      "eventIds": [
+        "kor-m-world-league-2015",
+        "kor-m-world-league-2016",
+        "kor-m-world-league-2017"
+      ],
+      "reason": "Add three verified senior World League events and 26 verified match results. Preserve all previous 62 events and 25 summaries. Explicitly disclose four pending 2017 games and two missing 2015 set-score breakdowns. Renderer changes only country names.",
+      "previousHashes": {
+        "data/roadmap_v1.json": "7af598f2de87c429942e1d062b84ce8b8cd9d81c4795edb0a570eb343c10d39d",
+        "roadmap.js": "fb25aadb641b7b531faad9622cae8e1f1a373b9a126b8b5b09b26bfe9619093e"
+      },
+      "evidence": "docs/validation/roadmap-worldleague-history-v1.md"
     }
   ]
 }
