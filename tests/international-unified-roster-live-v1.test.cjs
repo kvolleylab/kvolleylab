@@ -152,6 +152,53 @@ test('Reviewed VNL current-club batch 4 resolves exact current-season identities
  assert.ok(known>=185,'batch 4 must raise VNL current-club coverage to at least 185');
 });
 
+test('Reviewed VNL current-club batch 5 resolves Cuba Serbia USA current-season identities',()=>{
+ assert.ok(Object.keys(currentClubs.players).length>=253);
+ const expected={
+  '1018':['NOVA Novokuybyshevsk','Russia','Russian Superleague'],
+  '1244':['Rana Verona','Italy','SuperLega'],
+  '4300':['Arago de Sète','France',''],
+  '6607':['Itambé Minas','Brazil','Superliga Masculina'],
+  '6623':['Osaka Bluteon','Japan','SV.League Men'],
+  '8301':['Zenit St. Petersburg','Russia','Russian Superleague'],
+  '24487':['Panionios G.s.s.','Greece','Volley League'],
+  '25001':['Toray Arrows Shizuoka','Japan','SV.League Men'],
+  '25501':['GKS Katowice','Poland','TAURON Liga'],
+  '27585':['İstanbul Gençlik SK','Türkiye','SMS Grup Efeler Ligi'],
+  '27618':['SCM Zalău','Romania','Divizia A1'],
+  '28556':['Altekma SK','Türkiye','SMS Grup Efeler Ligi'],
+  '29104':['Niš','Serbia','Superliga Srbije'],
+  '29105':['Orenburzhye','Russia','Russian Superleague'],
+  '32856':['NOVA Novokuybyshevsk','Russia','Russian Superleague'],
+  '55241':['Alterna Stade Poitevin','France',''],
+  '56669':['Orenburzhye','Russia','Russian Superleague'],
+  '72826':['Acqua Sant’Anna Cuneo','Italy','SuperLega'],
+  '77889':['Gas Sales Bluenergy Piacenza','Italy','SuperLega'],
+  '77890':['Pepperdine University','USA','NCAA'],
+  '89072':['Loyola University Chicago','USA','NCAA'],
+  '113820':['Vero Volley Monza','Italy','SuperLega'],
+  '115237':['SCM Zalău','Romania','Divizia A1'],
+  '135802':['Akedaş Onikişubat Belediyespor','Türkiye','SMS Grup Efeler Ligi'],
+  '142194':['VfB Friedrichshafen','Germany','1. Bundesliga'],
+  '144908':['Hiroshima Thunders','Japan','SV.League Men'],
+  '200230':['Shinshu Matsumoto Tridents','Japan','SV.League Men'],
+  '216308':['Pepperdine University','USA','NCAA']
+ };
+ for(const [id,[club,country,league]] of Object.entries(expected)){
+  const row=currentClubs.players[id];assert.ok(row,'missing current club '+id);
+  assert.equal(row.club,club);assert.equal(row.leagueCountry,country);assert.equal(row.leagueName,league);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
+ for(const id of ['8305','8111','3555','15441','6000','23898']) assert.equal(currentClubs.players[id],undefined,'fail-closed hold '+id);
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ let known=0;
+ for(const team of Object.values(vnl.rosters||{}))for(const p of team.players||[]){
+  const m=String(p.volleybox||'').match(/-p(\d+)\/?$/i),r=m&&currentClubs.players[m[1]];
+  if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
+ }
+ assert.ok(known>=213,'batch 5 must raise VNL current-club coverage to at least 213');
+});
+
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
  const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
  assert.equal(raw.club,'');assert.equal(raw.clubCountry,'');assert.equal(raw.clubLeague,'');
@@ -164,6 +211,16 @@ test('Verified country badge uses a single country-only label regardless of leag
  assert.equal(unified.countryLabel('Japan'),'🇯🇵 JAPAN');
  assert.equal(unified.countryLabel('Italy'),'🇮🇹 ITALY');
  assert.equal(unified.countryLabel('Türkiye'),'🇹🇷 TÜRKIYE');
+ assert.equal(unified.countryLabel('Romania'),'🇷🇴 ROMANIA');
+ assert.equal(unified.countryLabel('Brazil'),'🇧🇷 BRAZIL');
+ assert.equal(unified.countryLabel('Russia'),'🇷🇺 RUSSIA');
+ assert.equal(unified.countryLabel('Serbia'),'🇷🇸 SERBIA');
+ assert.equal(unified.countryLabel('USA'),'🇺🇸 USA');
+ assert.equal(unified.countryLabel('Belgium'),'🇧🇪 BELGIUM');
+ assert.equal(unified.countryLabel('Slovenia'),'🇸🇮 SLOVENIA');
+ assert.equal(unified.countryLabel('Spain'),'🇪🇸 SPAIN');
+ assert.equal(unified.countryLabel('Kazakhstan'),'🇰🇿 KAZAKHSTAN');
+ assert.equal(unified.countryLabel('Vietnam'),'🇻🇳 VIETNAM');
  assert.equal(unified.countryLabel(''), '');
  const confirmedNoLeague=unified.identify({name:'국가만 확인',club:{confirmed:true,name:'Verified Japan Club',country:'Japan'}});
  const confirmedWithLeague=unified.identify({name:'국가와 리그 확인',club:{confirmed:true,name:'Verified Japan Club',country:'Japan',leagueName:'SV.League Men'}});
