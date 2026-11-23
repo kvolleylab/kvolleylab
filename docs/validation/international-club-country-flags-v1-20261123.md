@@ -16,6 +16,7 @@
    - 기존 프로젝트가 사용하는 flag-icons와 동일한 upstream MIT 자산을 사용한다.
 2. `kvl-team-roster-standard-v1.js`
    - Estonia → `ee`, 한국어 `에스토니아` 추가.
+   - 아시아 current-club 확장 대비 `Indonesia/id`, `Thailand/th`, `Kazakhstan/kz`, `Uzbekistan/uz`, `Vietnam/vn` 및 한국어 표시명을 추가한다. 해당 SVG는 기존 40개 국가카드 자산을 재사용한다.
    - club 전용 supplemental flag 경로를 `gr/ru/es/ee/ro/pt`로 확장.
 3. current-club registry
    - Yurii Synytsia의 `중국`을 표준값 `China`로 정규화.
@@ -28,5 +29,6 @@
 
 ## 검증
 - club-only SVG 6개(gr, ru, es, ee, ro, pt)가 존재하고 active content가 없는지 확인.
-- renderer가 각 국가에 올바른 club-only 경로를 사용하는지 확인.
+- renderer가 각 supplemental 국가에 올바른 club-only 경로를 사용하는지 확인.
+- Indonesia·Thailand·Kazakhstan·Uzbekistan·Vietnam은 기존 `4x3` 국기 자산과 ISO2 매핑이 모두 존재하는지 확인.
 - Yurii Synytsia의 leagueCountry가 `China`인지 확인.
