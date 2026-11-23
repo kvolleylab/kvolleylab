@@ -104,6 +104,23 @@ test('Verified country badge uses a single country-only label regardless of leag
   'Japan clubs should show the identical country label regardless of source tournament');
  assert.equal(unified.countryLabel(''),'', 'Missing confirmed country must not be guessed');
 });
+test('2026 VNL direct Volleybox audit keeps only seven unresolved search links',()=>{
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ const players=Object.values(vnl.rosters||{}).flatMap(team=>team.players||[]);
+ const direct=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(p.volleybox||'')));
+ const search=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?search\?q=/i.test(String(p.volleybox||'')));
+ const invalid=players.filter(p=>!direct.includes(p)&&!search.includes(p));
+ assert.equal(players.length,284);
+ assert.equal(direct.length,277);
+ assert.equal(search.length,7);
+ assert.equal(invalid.length,0);
+ assert.deepEqual(search.map(p=>p.en).sort(),[
+  'Berkay Bayraktar','Denislav Bardarov','Dimitar Dimitrov','Julio Cesar Cardenas Morales',
+  'Lorenzo Cortesia','Nivaldo Nadhir Dias Gomez','Pablo Sergio Koukartsev'
+ ].sort());
+ for(const p of direct)assert.equal(p.volleyboxLinkType==='profile'||p.volleyboxLinkType==='direct',true,p.en);
+});
+
 test('No unapproved athlete id reuse and false standalone Volleybox links',()=>{
  assert.equal(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').id,'');
  assert.ok(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').search);
