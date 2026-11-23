@@ -79,7 +79,7 @@ test('Current international club registry supplements older tournament snapshots
  assert.match(amin?.clubProof||'',/^https:\/\//);
 });
 test('Current club batch 3 connects reviewed 2026-27 clubs after direct Volleybox linking',()=>{
- assert.equal(Object.keys(currentClubs.players).length,202);
+ assert.ok(Object.keys(currentClubs.players).length>=202);
  const checks={
   '1222':['Berlin Recycling Volleys','Germany'],
   '45744':['Olympiakós','Greece'],
@@ -102,6 +102,28 @@ test('Current club batch 3 connects reviewed 2026-27 clubs after direct Volleybo
   if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
  }
  assert.equal(total,284);assert.equal(known,177);
+});
+
+test('Reviewed Asian current-club batch 3 resolves only exact Volleybox identities',()=>{
+ const expected={
+  '47158':['Jakarta Bhayangkara Presisi','Indonesia'],
+  '162416':['Arago de Sète','France'],
+  '182668':['VK Aktobe','Kazakhstan'],
+  '131056':['Al Khor S.C.','Qatar'],
+  '104250':['Al Arabi S.C.','Qatar'],
+  '30744':['Police Union','Qatar'],
+  '30765':['Nakhon Ratchasima 3M Films VC','Thailand'],
+  '41808':['Nakhon Ratchasima 3M Films VC','Thailand'],
+  '72544':['UZTELECOM','Uzbekistan'],
+  '131255':['Biên Phòng MB','Vietnam'],
+  '131258':['Biên Phòng MB','Vietnam']
+ };
+ assert.ok(Object.keys(currentClubs.players).length>=217);
+ for(const [id,[club,country]] of Object.entries(expected)){
+  const row=currentClubs.players[id];assert.ok(row,'missing current club '+id);
+  assert.equal(row.club,club);assert.equal(row.leagueCountry,country);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
 });
 
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
@@ -130,18 +152,18 @@ test('Verified country badge uses a single country-only label regardless of leag
   'Japan clubs should show the identical country label regardless of source tournament');
  assert.equal(unified.countryLabel(''),'', 'Missing confirmed country must not be guessed');
 });
-test('2026 VNL direct Volleybox audit keeps only seven unresolved search links',()=>{
+test('2026 VNL direct Volleybox audit keeps only six unresolved search links',()=>{
  const vnl=read('data/competitions/vnl-men-2026/data.json');
  const players=Object.values(vnl.rosters||{}).flatMap(team=>team.players||[]);
  const direct=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(p.volleybox||'')));
  const search=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?search\?q=/i.test(String(p.volleybox||'')));
  const invalid=players.filter(p=>!direct.includes(p)&&!search.includes(p));
  assert.equal(players.length,284);
- assert.equal(direct.length,277);
- assert.equal(search.length,7);
+ assert.equal(direct.length,278);
+ assert.equal(search.length,6);
  assert.equal(invalid.length,0);
  assert.deepEqual(search.map(p=>p.en).sort(),[
-  'Berkay Bayraktar','Denislav Bardarov','Dimitar Dimitrov','Julio Cesar Cardenas Morales',
+  'Berkay Bayraktar','Denislav Bardarov','Dimitar Dimitrov',
   'Lorenzo Cortesia','Nivaldo Nadhir Dias Gomez','Pablo Sergio Koukartsev'
  ].sort());
  for(const p of direct)assert.equal(p.volleyboxLinkType==='profile'||p.volleyboxLinkType==='direct',true,p.en);
