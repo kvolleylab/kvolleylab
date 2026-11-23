@@ -127,6 +127,8 @@ test('No unapproved athlete id reuse and false standalone Volleybox links',()=>{
  assert.equal(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').id,'');
  assert.ok(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').search);
  assert.equal(unified.volleybox('https://volleybox.net/yuki-ishikawa-p705').id,'705');
+ assert.equal(unified.volleybox('https://volleybox.net/zh/wang-bing-syun-p240144').id,'240144');
+ assert.equal(unified.volleybox('https://volleybox.net/zh/wang-bing-syun-p240144').direct,'https://volleybox.net/wang-bing-syun-p240144');
  assert.equal(unified.volleybox('javascript:alert(1)').id,'');
  assert.equal(unified.volleybox('https://volleybox.net.evil.com/x-p123').id,'');
  const sample=unified.identify({name:'선수',en:'Player',dob:'2026-01-01',position:'O',heightCm:190,volleybox:'https://volleybox.net/player-p1'});
