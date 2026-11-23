@@ -191,6 +191,31 @@ test('Country and gender boundaries are fail-closed; raw official source count m
  assert.throws(()=>unified.build([{snapshot:{...j,player_count:99},team:t}],
   {country:countries.countries.find(x=>x.code==='JPN'),gender:'men',year:2026}),/count changed/);
 });
+test('Asian current-club batch 4 adds only direct-ID and DOB-matched 2026-27 clubs',()=>{
+ assert.equal(Object.keys(currentClubs.players).length,228);
+ const checks={
+  '85058':['Pyeongtaek KB Insurance Stars','South Korea'],
+  '47158':['Jakarta Bhayangkara Presisi','Indonesia'],
+  '47156':['Ahmedabad Defenders','India'],
+  '30759':['PSNKK CLUB','Thailand'],
+  '43503':['Diamond Food Fine Chef Samutsakorn','Thailand'],
+  '54151':['Taraz Volley','Kazakhstan'],
+  '17872':['Al Rayyan S.C.','Qatar'],
+  '104250':['Al Arabi S.C.','Qatar'],
+  '41808':['Nakhon Ratchasima 3M Films VC','Thailand'],
+  '72544':['UZTELECOM','Uzbekistan'],
+  '131255':['Biên Phòng MB','Vietnam'],
+  '28336':['Suwon KEPCO Vixtorm','South Korea'],
+  '27151':['Hokkaido Yellow Stars','Japan'],
+  '28819':['Suntory Sunbirds Osaka','Japan']
+ };
+ for(const [id,[club,country]] of Object.entries(checks)){
+  const row=currentClubs.players[id];assert.ok(row,id);assert.equal(row.club,club);assert.equal(row.leagueCountry,country);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
+ assert.equal(currentClubs.players['24417'],undefined,'Ilija Ivovic DOB conflict must remain fail-closed');
+});
+
 test('Club-country normalization keeps local flags for supplemental league countries',()=>{
  const standard=fs.readFileSync(path.join(ROOT,'assets/js/kvl-team-roster-standard-v1.js'),'utf8');
  for(const code of ['gr','ru','es','ee','ro','pt']){
