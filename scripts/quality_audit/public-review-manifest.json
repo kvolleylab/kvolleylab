@@ -828,12 +828,13 @@
         "VOLLEYBOX-CURRENT-CLUB-BATCH3-20261123",
         "VOLLEYBOX-CURRENT-CLUB-ASIA-BATCH3-20261123",
         "USER-REQUEST-CLUB-COUNTRY-FLAGS-20261123",
-        "VNL-CURRENT-CLUB-BATCH4-20261124"
+        "VNL-CURRENT-CLUB-BATCH4-20261124",
+        "VNL-CURRENT-CLUB-BATCH5-20261124"
       ],
       "verified_at": "2026-11-24",
-      "sha256": "927157c1f3d456891e9be00a51e533df9d764a4ee5272c8a2b6ba3d744cccc83",
-      "evidence": "docs/validation/international-current-club-vnl-batch4-v1-20261124.md",
-      "review_note": "현재 소속 공통 레지스트리 217→225명. Canada 3·France 2·Italy 3명의 2026/27 현재 소속을 최신 공식/공개 로스터로 REVIEWED 보강한다. PR 후 최신성 재검수에서 Thomas Pujol의 ZAKSA 이적과 Leandro Mosca 소속팀의 Acqua Sant’Anna Cuneo 공식 네이밍을 반영했다. Cody Hudson은 현재 시즌 근거 부족, Domenico Pace는 KVL/구단 공식 DOB와 Volleybox DOB 충돌로 fail-closed 보류한다."
+      "sha256": "74cf6c8df80cf9ce4b8429eda6c5d9c5e0b0f153fd143cd3d245bb8d339c6085",
+      "evidence": "docs/validation/international-current-club-vnl-batch5-v1-20261124.md",
+      "review_note": "현재 소속 공통 레지스트리 225→253명. Cuba 10·Serbia 10·USA 8명의 2026/27 현재 소속을 official/current public roster로 REVIEWED 보강한다. VNL current-club coverage 185→213. Javier Concepcion, Lazaro Arrechea, Yonder Garcia, Nemanja Mašulović, Jeff Jendryk, Kyle Dagostino는 최신 근거 부족/계약 종료 후 미확정으로 fail-closed 보류. Thiago Suarez는 CEV 공식 2027 roster와 KVL/Volleybox direct identity를 우선하고 잘못 섞인 제3자 바이오는 배제한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
