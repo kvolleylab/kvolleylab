@@ -101,7 +101,7 @@ test('Current club batch 3 connects reviewed 2026-27 clubs after direct Volleybo
   total++;const m=String(p.volleybox||'').match(/-p(\d+)\/?$/i),r=m&&currentClubs.players[m[1]];
   if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
  }
- assert.equal(total,284);assert.equal(known,177);
+ assert.equal(total,284);assert.ok(known>=177,'batch 3 VNL current-club coverage must not regress below 177');
 });
 
 test('Reviewed Asian current-club batch 3 resolves only exact Volleybox identities',()=>{
@@ -143,6 +143,13 @@ test('Reviewed VNL current-club batch 4 resolves exact current-season identities
   assert.equal(row.club,club);assert.equal(row.leagueCountry,country);assert.equal(row.leagueName,league);
   assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
  }
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ let known=0;
+ for(const team of Object.values(vnl.rosters||{}))for(const p of team.players||[]){
+  const m=String(p.volleybox||'').match(/-p(\d+)\/?$/i),r=m&&currentClubs.players[m[1]];
+  if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
+ }
+ assert.ok(known>=185,'batch 4 must raise VNL current-club coverage to at least 185');
 });
 
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
