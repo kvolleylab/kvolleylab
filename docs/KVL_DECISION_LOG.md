@@ -971,4 +971,11 @@ Status: USER REPORTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 
 Base `d0934179edb1d19b25aba7e1916c355d5cdb1d60`; branch `fix/asian-games-roadmap-detail-v1`. 다른 61개 이벤트, 기존 16개 요약, 대회 DB, 상단 출전권 모듈·디자인·올림픽 필터 판정은 보존한다. 해당 이벤트의 공식 6경기 스코어와 결선 3경기 세트 득점만 검증하며 조별리그 세트 득점은 추가하지 않는다. Drive 결과 폴더가 비어 있어 기존 KVL 경기 ID에 연결하고 Drive는 수정하지 않았다. Node 56/56, PC·모바일 390/360/320px, 필터 62/37/16/17 확인. 병합·Pages·운영 검증은 PR에 기록한다. [검증·출처·수정 파일·복구](validation/asian-games-roadmap-detail-v1.md).
 
+## 2026-11-23 · 국제 남자대표팀 선수 메타데이터 3차 전수 정리
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 사용자가 이란 보정 이후 다른 국가도 순서대로 전수 확인하도록 지시했다. 작업 순서는 (1) Volleybox 검색링크 직접 프로필 전환, (2) 2026/27 현재 소속 overlay 보강, (3) 소속국가·국기 정규화로 고정한다.
+
+VNL 남자 284명은 유지하면서 직접 Volleybox 프로필을 135→279로 확대하고 검색링크를 149→5로 축소한다. 공식 VNL DOB와 Volleybox/후속 MASTER DOB가 충돌하는 Domenico Pace, Lorenzo Cortesia, Dimitar Dimitrov, Berkay Bayraktar, Murat Yenipazar는 검색 링크를 유지한다. CEV·CSV·NORCECA·AVC·Asian Games MASTER와 공개 2026/27 시즌 근거를 대조하여 current-club registry를 133→360명으로 확장한다. VNL 현재 소속은 270/284, 전체 2026 남자 통합 약 592명 중 375명을 확인한다. 미확인은 추정하지 않는다.
+
+소속국가 표시는 canonical English로 정규화하고, 기존 국가카드 국기와 별도로 club-country용 pt/ro/es/ee/az/sa SVG를 추가한다. Indonesia/Philippines/Thailand/Vietnam은 기존 4x3 국기를 사용하도록 렌더러 매핑을 추가한다. 현재 registry 360명 기준 표시 가능한 국기 경로 누락 0건을 계약으로 둔다. [검증 기록](docs/validation/international-roster-metadata-batch3-20261123.md).
 
