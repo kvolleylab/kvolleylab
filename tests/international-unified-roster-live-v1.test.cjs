@@ -61,6 +61,25 @@ test('Different Fukatsu with same #3 do not merge and exact verified club/Volley
  assert.equal(m.rows.find(p=>p.en==='Akihiro Yamauchi').height,204);
  assert.ok(m.rows.filter(x=>x.club).length>=10);
 });
+test('2026 men VNL direct Volleybox coverage and unresolved DOB conflicts stay explicit',()=>{
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ const players=Object.values(vnl.rosters).flatMap(team=>team.players||[]);
+ const direct=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(p.volleybox||'')));
+ const search=players.filter(p=>/volleybox\.net\/(?:ko\/)?search\?q=/i.test(String(p.volleybox||'')));
+ assert.equal(players.length,284);
+ assert.equal(direct.length,279);
+ assert.equal(search.length,5);
+ assert.deepEqual(new Set(search.map(p=>p.en)),new Set(['Domenico Pace','Lorenzo Cortesia','Dimitar Dimitrov','Berkay Bayraktar','Murat Yenipazar']));
+});
+test('Current-club registry batch3 keeps normalized country values and full flag coverage metadata',()=>{
+ assert.ok(Object.keys(currentClubs.players).length>=360);
+ assert.ok(Object.values(currentClubs.players).every(p=>!/[가-힣]/.test(String(p.leagueCountry||''))),'leagueCountry must use canonical English names');
+ const standard=fs.readFileSync(path.join(ROOT,'assets/js/kvl-team-roster-standard-v1.js'),'utf8');
+ for(const pair of ["Estonia:'ee'","Azerbaijan:'az'","'Saudi Arabia':'sa'","Indonesia:'id'","Philippines:'ph'","Thailand:'th'","Vietnam:'vn'"])
+  assert.ok(standard.includes(pair),pair);
+ for(const code of ['gr','ru','pt','ro','es','ee','az','sa'])
+  assert.ok(fs.existsSync(path.join(ROOT,'assets/images/flags/club',code+'.svg')),code+' supplemental club flag');
+});
 test('Current international club registry supplements older tournament snapshots without changing source arrays',()=>{
  assert.equal(currentClubs.season,'2026-27');
  assert.ok(Object.keys(currentClubs.players).length>=7);
