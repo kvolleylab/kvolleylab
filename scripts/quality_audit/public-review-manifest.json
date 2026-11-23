@@ -766,12 +766,13 @@
         "DRIVE-1W3JP9qKtdN3qIQf6ImJyZDxF1Dh4ydin",
         "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
         "DRIVE-1NwEjUuvNbFfq5EZ-o8avQQC4XpLzcvnS",
-        "DRIVE-18hlWasoq71_ROFe8F_0f186NAU-iP6d6"
+        "DRIVE-18hlWasoq71_ROFe8F_0f186NAU-iP6d6",
+        "https://volleybox.net/mohsen-delavari-p222609"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "eeb6c21bc88510c2e852b1c55156cd664a2e94ddc3b74cbda994aa53c48b3812",
-      "evidence": "docs/validation/international-roster-order-metadata-v1-20261123.md",
-      "review_note": "2026/27 현재 소속 공통 레지스트리 132명. exact identity + 공개 HTTPS 근거가 있는 CONFIRMED/REVIEWED만 포함하며 최신 11월 값은 9월 값보다 우선한다. AVC Cup/대륙선수권 DOB가 충돌한 Erin Varghese와 Shameemudheen Ammarambath는 공통 레지스트리에서 제외하고 대회별 원본만 유지한다."
+      "sha256": "2034c0e7a105bc647a25827c27a15a83afe65fdac2ee05741ee076f04918f442",
+      "evidence": "docs/validation/iran-player-link-club-flag-fix-v1-20261123.md",
+      "review_note": "2026/27 현재 소속 공통 레지스트리 133명. Mohsen Delavari(p222609)는 동일 DOB(2001-11-03)의 직접 Volleybox 프로필에서 Yaroslavich Yaroslavl·Russia를 확인해 REVIEWED로 추가했다. 기존 exact identity·HTTPS·DOB 충돌 fail-closed 원칙은 유지한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
@@ -827,12 +828,13 @@
         "DRIVE-1W3JP9qKtdN3qIQf6ImJyZDxF1Dh4ydin",
         "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
         "KVL-AVC-M-CONTINENTAL-2026",
-        "KVL-ASIAN-GAMES-M-2026"
+        "KVL-ASIAN-GAMES-M-2026",
+        "https://volleybox.net/mohsen-delavari-p222609"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "343ceef4f035e4f12f815c28ddff5b8c4527968228101d9b45758d99329cd4a9",
-      "evidence": "docs/validation/international-roster-order-metadata-v1-20261123.md",
-      "review_note": "2026 VNL 남자 284명 원본 선수 수·대회 참가 상태는 유지. 후속 2026 대륙대회 MASTER 및 동일 시즌 공개 명단에서 영문명+DOB exact match 또는 동일 검증 Volleybox ID인 경우만 검색 링크를 직접 프로필로 승격했다. 직접 프로필 134, 검색 유지 150, invalid 0. 불확실 신원은 추정하지 않는다."
+      "sha256": "273b9ae3cb5fe8f4ce898e43b5beb0e3335c5da984af452f877fb323b39840b6",
+      "evidence": "docs/validation/iran-player-link-club-flag-fix-v1-20261123.md",
+      "review_note": "2026 VNL 남자 284명 원본 선수 수·대회 참가 상태는 유지. Mohsen Delavari의 검색 링크를 확인된 직접 Volleybox 프로필 p222609로 승격했다. 직접 프로필 135, 검색 유지 149, invalid 0이며 불확실 신원은 추정하지 않는다."
     }
   }
 }
