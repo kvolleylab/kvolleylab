@@ -809,12 +809,13 @@
         "DRIVE-CEV-CSV-NORCECA-EXACT-CLUB-BATCH3-20261123",
         "VOLLEYBOX-CURRENT-CLUB-BATCH3-20261123",
         "VOLLEYBOX-CURRENT-CLUB-ASIA-BATCH3-20261123",
-        "USER-REQUEST-CLUB-COUNTRY-FLAGS-20261123"
+        "USER-REQUEST-CLUB-COUNTRY-FLAGS-20261123",
+        "VNL-CURRENT-CLUB-BATCH4-20261124"
       ],
-      "verified_at": "2026-11-23",
-      "sha256": "0c08896fcb01ac4b56785b7d1bcca6712f97b0753aaeecd9ffd94bddf87e7c12",
-      "evidence": "docs/validation/international-club-country-flags-normalize-v1-20261123.md",
-      "review_note": "현재 소속 공통 레지스트리 217명 유지. Yurii Synytsia의 Hebei Baoding Wolves 소속국가 문자열만 중국→China로 정규화해 공통 국가/국기 매핑을 사용한다. 선수 신원·DOB·소속팀은 변경하지 않는다. Spain/Romania/Portugal/Estonia는 클럽 전용 국기 자산으로 표시한다."
+      "verified_at": "2026-11-24",
+      "sha256": "84da534880732e8969ac2ec4ac8799cd6d179b663649a99ea7f26628377b4a0d",
+      "evidence": "docs/validation/international-current-club-vnl-batch4-v1-20261124.md",
+      "review_note": "현재 소속 공통 레지스트리 217→225명. Canada 3·France 2·Italy 3명의 2026/27 현재 소속을 최신 공식/공개 로스터로 REVIEWED 보강한다. Cody Hudson은 현재 시즌 근거 부족, Domenico Pace는 KVL/구단 공식 DOB와 Volleybox DOB 충돌로 fail-closed 보류한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
