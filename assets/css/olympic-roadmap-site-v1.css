@@ -20,3 +20,14 @@ body.olympic-site>.skip{z-index:2100}
 /* This page starts with its summary; navigation remains in the shared KVL menu. */
 .olympic-summary-page{padding-top:24px}
 @media(max-width:640px){.olympic-summary-page{padding-top:16px}}
+
+/* The national-team timeline spans Olympic cycles; keep long Korean labels readable. */
+.olympic-summary-page .national-journey-title{word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:640px){
+  .olympic-summary-page .national-journey-title{font-size:24px;line-height:1.4}
+  .olympic-summary-page .roadmap .toolbar{display:grid;grid-template-columns:minmax(0,1fr)}
+  .olympic-summary-page .roadmap .filters{grid-template-columns:1fr 1fr 1.7fr 1fr;width:100%;min-width:0}
+  .olympic-summary-page .roadmap .filters button{white-space:normal;word-break:keep-all;line-height:1.4}
+  .olympic-summary-page .roadmap .jump{justify-self:end;padding:4px 3px}
+}
+@media(max-width:370px){.olympic-summary-page .national-journey-title{font-size:22px}}
