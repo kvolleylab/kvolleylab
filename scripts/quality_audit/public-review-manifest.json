@@ -829,12 +829,13 @@
         "VOLLEYBOX-CURRENT-CLUB-ASIA-BATCH3-20261123",
         "USER-REQUEST-CLUB-COUNTRY-FLAGS-20261123",
         "VNL-CURRENT-CLUB-BATCH4-20261124",
-        "VNL-CURRENT-CLUB-BATCH5-20261124"
+        "VNL-CURRENT-CLUB-BATCH5-20261124",
+        "VNL-CURRENT-CLUB-BATCH6-20261124"
       ],
       "verified_at": "2026-11-24",
-      "sha256": "74cf6c8df80cf9ce4b8429eda6c5d9c5e0b0f153fd143cd3d245bb8d339c6085",
-      "evidence": "docs/validation/international-current-club-vnl-batch5-v1-20261124.md",
-      "review_note": "현재 소속 공통 레지스트리 225→253명. Cuba 10·Serbia 10·USA 8명의 2026/27 현재 소속을 official/current public roster로 REVIEWED 보강한다. VNL current-club coverage 185→213. Javier Concepcion, Lazaro Arrechea, Yonder Garcia, Nemanja Mašulović, Jeff Jendryk, Kyle Dagostino는 최신 근거 부족/계약 종료 후 미확정으로 fail-closed 보류. Thiago Suarez는 CEV 공식 2027 roster와 KVL/Volleybox direct identity를 우선하고 잘못 섞인 제3자 바이오는 배제한다."
+      "sha256": "571d5643b01b91b9257b34aa7d9e4d21ca193f56047fab705c20ed2707d11d57",
+      "evidence": "docs/validation/international-current-club-vnl-batch6-v1-20261124.md",
+      "review_note": "현재 소속 공통 레지스트리 253→277명. China 8·Argentina 9·Belgium 7명의 2026/27 current club을 REVIEWED 보강한다. VNL current-club coverage 213→237. China Zhai Wu·Zongshuai Qu는 최신 roster 불일치/부족으로 fail-closed 보류한다. Pablo Sergio Koukartsev는 direct Volleybox p5137/DOB 1993-03-25를 재해결해 current club NEONET Norwid Częstochowa까지 연결한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
@@ -954,12 +955,14 @@
         "KVL-ASIAN-GAMES-M-2026",
         "https://volleybox.net/mohsen-delavari-p222609",
         "VOLLEYBOX-DIRECT-PROFILES-BATCH1-20261123",
-        "https://volleybox.net/julio-cesar-cardenas-p25001"
+        "https://volleybox.net/julio-cesar-cardenas-p25001",
+        "https://volleybox.net/pablo-kukartsev-p5137",
+        "VOLLEYBOX-PABLO-KUKARTSEV-DIRECT-20261124"
       ],
-      "verified_at": "2026-11-23",
-      "sha256": "3fcdd10a250529a1b1b4aaa573f91c80b6b48f4954a50b20c6b81c02b33ba089",
-      "evidence": "docs/validation/international-vb-final-search-cleanup-v1-20261123.md",
-      "review_note": "2026 VNL 남자 284명 원본 선수 수·참가 상태 유지. Julio Cesar Cardenas Morales는 이름+DOB exact match로 검색 링크를 직접 Volleybox p25001로 승격했다. 직접 278, 검색 6, invalid/없음 0. DOB 충돌·DOB 미공개·직접 프로필 미확정 6명은 검색 링크 유지."
+      "verified_at": "2026-11-24",
+      "sha256": "0327a9d855344bf1f47fb3a021326369cdd4b42d6af19e679197cdbe9a912934",
+      "evidence": "docs/validation/international-current-club-vnl-batch6-v1-20261124.md",
+      "review_note": "2026 VNL 남자 284명 원본 선수 수·참가 상태 유지. Pablo Sergio Koukartsev는 direct Volleybox p5137 DOB 1993-03-25가 KVL/VNL과 일치해 search→direct profile로 승격. direct 279, search 5, invalid 0. 나머지 5개 검색 링크는 기존 fail-closed 유지."
     }
   }
 }
