@@ -126,6 +126,25 @@ test('Reviewed Asian current-club batch 3 resolves only exact Volleybox identiti
  }
 });
 
+test('Reviewed VNL current-club batch 4 resolves exact current-season identities',()=>{
+ assert.ok(Object.keys(currentClubs.players).length>=225);
+ const expected={
+  '24845':['MA Acqua S.Bernardo Cuneo','Italy','SuperLega'],
+  '26700':['AONS Milon Athens','Greece','Volley League'],
+  '27593':['Jastrzębie Barkom','Poland','TAURON Liga'],
+  '28911':['Gas Sales Bluenergy Piacenza','Italy','SuperLega'],
+  '72170':['Gas Sales Bluenergy Piacenza','Italy','SuperLega'],
+  '76868':['Alterna Stade Poitevin','France',''],
+  '91503':['Gas Sales Bluenergy Piacenza','Italy','SuperLega'],
+  '216089':['Hawaii Univ.','USA','NCAA']
+ };
+ for(const [id,[club,country,league]] of Object.entries(expected)){
+  const row=currentClubs.players[id];assert.ok(row,'missing current club '+id);
+  assert.equal(row.club,club);assert.equal(row.leagueCountry,country);assert.equal(row.leagueName,league);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
+});
+
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
  const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
  assert.equal(raw.club,'');assert.equal(raw.clubCountry,'');assert.equal(raw.clubLeague,'');
