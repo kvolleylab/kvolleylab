@@ -78,6 +78,32 @@ test('Current international club registry supplements older tournament snapshots
  assert.equal(morteza?.club,'Hebei Baoding Wolves');
  assert.match(amin?.clubProof||'',/^https:\/\//);
 });
+test('Current club batch 3 connects reviewed 2026-27 clubs after direct Volleybox linking',()=>{
+ assert.equal(Object.keys(currentClubs.players).length,202);
+ const checks={
+  '1222':['Berlin Recycling Volleys','Germany'],
+  '45744':['Olympiakós','Greece'],
+  '71582':['Gas Sales Bluenergy Piacenza','Italy'],
+  '23662':['Incheon Korean Air Jumbos','South Korea'],
+  '63523':['Cucine Lube Civitanova','Italy'],
+  '34274':['Sir Sicoma Monini Perugia','Italy'],
+  '101299':['Valsa Group Modena','Italy'],
+  '33775':['Cucine Lube Civitanova','Italy'],
+  '1123':['ACH Volley Ljubljana','Slovenia']
+ };
+ for(const [id,[club,country]] of Object.entries(checks)){
+  const row=currentClubs.players[id];assert.ok(row,id);assert.equal(row.club,club);assert.equal(row.leagueCountry,country);
+  assert.ok(['CONFIRMED','REVIEWED'].includes(row.status));assert.match(row.source,/^https:\/\//);
+ }
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ let known=0,total=0;
+ for(const team of Object.values(vnl.rosters||{}))for(const p of team.players||[]){
+  total++;const m=String(p.volleybox||'').match(/-p(\d+)\/?$/i),r=m&&currentClubs.players[m[1]];
+  if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
+ }
+ assert.equal(total,284);assert.equal(known,177);
+});
+
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
  const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
  assert.equal(raw.club,'');assert.equal(raw.clubCountry,'');assert.equal(raw.clubLeague,'');
