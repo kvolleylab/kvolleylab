@@ -999,3 +999,9 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 국제 �
 
 Yurii Synytsia의 current-club `leagueCountry` 값 `중국`은 표준 영문값 `China`로 정규화한다. 선수/클럽/DOB/source는 변경하지 않는다. [검증 기록](docs/validation/international-club-country-flags-v1-20261123.md).
 
+## 2026-11-23 · 국제 남자 아시아권 현재 소속팀 보강 4차
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 국제 명단 전수 점검의 아시아권 후속 배치로 직접 Volleybox ID와 KVL DOB가 일치하고 2026/27 공개 선수·팀·경기 자료에서 현재 소속을 확인한 26명을 current-club overlay에 추가한다. Registry는 202→228명이다.
+
+인도네시아 7, 태국 7, 카자흐스탄 2, 카타르 3, 우즈베키스탄 2, 베트남 2, 파키스탄 1, 중화 타이베이 2명을 보강한다. Ilija Ivovic(p24417)은 KVL DOB 1990-11-12와 Volleybox DOB 1990-12-11이 충돌하므로 Al Arabi 2026/27 로스터에 이름이 있어도 제외한다. [검증 기록](docs/validation/international-current-clubs-asia-batch4-v1-20261123.md).
+
