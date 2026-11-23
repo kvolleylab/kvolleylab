@@ -4,9 +4,9 @@
   "hashes": {
     "index.html": "e140caef07fed756cc645b988afce4d5b2496c992e6775be5c9a60d985983cdb",
     "roadmap.css": "e4f7924eaa61eb3b62b8e16a90b39fc7068cbdbd95b065c1d5be058331afca70",
-    "roadmap.js": "c5022fe2b3b28125d7a3cb263ff87dcc7d347fc89c86e8e158b3e80147ba7c9c",
+    "roadmap.js": "fb25aadb641b7b531faad9622cae8e1f1a373b9a126b8b5b09b26bfe9619093e",
     "model.mjs": "da193df0a7e9f26eb123d8fb8345f6e068595e66b145a254ef9ec793af113157",
-    "data/roadmap_v1.json": "8ce6bae05f8359f5daa1a8e9bd83fdcec875a49e7852a0d5bf9ba40ffb51a9ef"
+    "data/roadmap_v1.json": "7af598f2de87c429942e1d062b84ce8b8cd9d81c4795edb0a570eb343c10d39d"
   },
   "reviewedAmendments": [
     {
@@ -35,6 +35,20 @@
         "roadmap.js": "2f8e247f3d6ab0955a0b3ac670d1b01626ddafd5e396683f665af3cd5058aa5f"
       },
       "evidence": "docs/validation/roadmap-detail-completion-v1.md"
+    },
+    {
+      "date": "2026-11-23",
+      "eventIds": [
+        "kor-m-asian-championship-2019",
+        "kor-m-asian-championship-2021",
+        "kor-m-asian-championship-2023"
+      ],
+      "reason": "Add 20 official Korea matches, verified dates and locations for three existing Asian Championship records. The other 59 events, all Olympic outcomes and existing 22 summaries are preserved. Renderer only adds country labels.",
+      "previousHashes": {
+        "data/roadmap_v1.json": "8ce6bae05f8359f5daa1a8e9bd83fdcec875a49e7852a0d5bf9ba40ffb51a9ef",
+        "roadmap.js": "c5022fe2b3b28125d7a3cb263ff87dcc7d347fc89c86e8e158b3e80147ba7c9c"
+      },
+      "evidence": "docs/validation/roadmap-asian-history-v1.md"
     }
   ]
 }

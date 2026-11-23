@@ -1011,3 +1011,10 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 다른 �
 
 Yurii Synytsia의 Hebei Baoding Wolves 소속국가 문자열 `중국`은 `China`로 정규화한다. 선수 신원·DOB·소속팀은 변경하지 않고 current-club registry 217명을 유지한다. PC 격리 Chromium과 운영 Live QA에서 Spain/Estonia/Romania/Portugal/China 및 신규 아시아 5개국의 실제 SVG decode를 검증한다. [검증 기록](docs/validation/international-club-country-flags-normalize-v1-20261123.md).
 
+## 2026-11-23 · 아시아선수권 3개년 전체 경기 보완·참가 기록 대조
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자의 후속 진행 지시에 따라 2019·2021·2023 남자 아시아선수권을 우선 보완하고 기존 MASTER·대표팀 연대기와 참가 대회 누락을 대조한다. AVC 공식 결과집에서 한국 8·7·5경기, 총 20경기와 세트별 점수를 확인했다. 기간과 개최지를 연결하고 기본 펼침은 주요 3행을 유지한다. 2023 중국전은 공식 1–6위전으로 표기하며, 결과 승계는 실제 경기로 중복 집계하지 않는다.
+
+기존 62개 이벤트, 대상 외 59개 객체, 기존 22개 요약, 모든 출전권 결과와 CSS를 보존했다. 추가 요약 후 25개, 세부 경기 미수록 완료 기록은 35→32개다. MASTER 3개, 2026 대표팀 대회 4개, 연령별 44개를 대조했으며 VNL 2026이나 U18–U23을 성인 한국 참가 대회로 추가하지 않는다. 2015–2017 월드리그는 후속 수록 후보로 구분하고 2015 최종 순위 충돌을 미확인으로 남긴다. 검증 화면은 배열 점수와 숫자 순위 정정 내역을 모두 처리하도록 복구한다.
+
+Base `d8531b9841c03c1fa5d1ab94fd5e5aa495163413`; branch `feature/roadmap-asian-history-v1`. Node 67/67, 공개 JSON 검토 게이트 PASS, PC 및 모바일 390/360/320px 확인. 필터 62/37/16/17 유지. 병합·Pages·운영 증거는 PR에 기록한다. [출처·대조 범위·미확인 후보·복구](validation/roadmap-asian-history-v1.md).
