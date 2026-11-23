@@ -592,12 +592,24 @@
         "now-ag26_official_schedule",
         "now-ag26_official_qf",
         "now-ag26_official_classification",
-        "now-ag26_official_seventh"
+        "now-ag26_official_seventh",
+        "now-avc26-match-28190",
+        "now-avc26-match-28195",
+        "now-avc26-match-28205",
+        "now-avc26-match-28210",
+        "now-avc26-match-28214",
+        "now-avc26-match-28219",
+        "hist-avc22_semifinal",
+        "hist-avc22_bronze",
+        "hist-avcc23_semifinal",
+        "hist-avcc23_fivb_bronze",
+        "hist-avc_cup_legacy_rankings",
+        "hist-avc_2018_annual_report"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "d1d0ec82a0861a518a22f57f87d1510d3765170719f233d381a38d646afeb933",
-      "evidence": "docs/validation/asian-games-roadmap-detail-v1.md",
-      "review_note": "2026 아시안게임 남자부의 공식 한국 6경기 결과와 결선 3경기 세트 점수를 기존 경기 ID로 연결했다. 최종 7위 및 기존 61개 다른 역사 기록·참가·출전권 상태는 보존. 공개 경기 정보·공식 출처만 포함하며 비공개 명단·개인정보는 포함하지 않는다. 조별리그 세트 득점은 이번 검증 범위 외이며 추가하지 않았다."
+      "sha256": "3f242bddafc870bef41d675c534b80626a6696c8544b6cebd0acc40b0aed3390",
+      "evidence": "docs/validation/roadmap-detail-completion-v1.md",
+      "review_note": "공개 공식 경기 결과 보완: 2026 AVC컵 6경기, 2014 AVC컵 결승, 2018 아시안게임 16강 이후 4경기, 2022 AVC컵·2023 챌린지컵 결선 각 2경기. 2018 AVC컵 4위→8위 공식 근거 정정. 기타 56개 기록 및 기존 17개 요약 보존. 미수록 경기와 일부 출처 직접 요청 실패는 검증 문서에 명시. 비공개 원본·개인정보 없음."
     },
     "data/olympics/la2028_v1.json": {
       "access_level": "PUBLIC",
@@ -820,12 +832,26 @@
         "now-ag26_official_schedule",
         "now-ag26_official_qf",
         "now-ag26_official_classification",
-        "now-ag26_official_seventh"
+        "now-ag26_official_seventh",
+        "hist-avc_games",
+        "hist-avc_cup",
+        "hist-avcc_2024",
+        "now-avc26_preview",
+        "now-avc26-match-28190",
+        "now-avc26-match-28195",
+        "now-avc26-match-28205",
+        "now-avc26-match-28210",
+        "now-avc26-match-28214",
+        "now-avc26-match-28219",
+        "hist-avc22_semifinal",
+        "hist-avc22_bronze",
+        "hist-avcc23_semifinal",
+        "hist-avcc23_fivb_bronze"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "a8b69f1c174f37a8410f044ff2ecea2fd6708b17a0c5feddf35a6fffebeef7be",
-      "evidence": "docs/validation/asian-games-roadmap-detail-v1.md",
-      "review_note": "2026 아시안게임 남자부의 공식 한국 6경기 결과와 결선 3경기 세트 점수를 기존 경기 ID로 연결했다. 최종 7위 및 기존 61개 다른 역사 기록·참가·출전권 상태는 보존. 공개 경기 정보·공식 출처만 포함하며 비공개 명단·개인정보는 포함하지 않는다. 조별리그 세트 득점은 이번 검증 범위 외이며 추가하지 않았다."
+      "sha256": "e601726164cdaf52f6155c3688235f938a71d8059ac35fece60946ab5a2bd1d3",
+      "evidence": "docs/validation/roadmap-detail-completion-v1.md",
+      "review_note": "공개 공식 경기 결과 보완: 2026 AVC컵 6경기, 2014 AVC컵 결승, 2018 아시안게임 16강 이후 4경기, 2022 AVC컵·2023 챌린지컵 결선 각 2경기. 2018 AVC컵 4위→8위 공식 근거 정정. 기타 56개 기록 및 기존 17개 요약 보존. 미수록 경기와 일부 출처 직접 요청 실패는 검증 문서에 명시. 비공개 원본·개인정보 없음."
     },
     "data/competitions/vnl-men-2026/data.json": {
       "access_level": "PUBLIC",
