@@ -1,5 +1,5 @@
 import {validateData} from './national-history-model-v1.mjs';
-import {compactEventView} from './national-history-detail-model-v1.mjs?v=20261123-ag-results-v1';
+import {compactEventView} from './national-history-detail-model-v1.mjs?v=20261123-detail-completion-v1';
 
 const timeline=document.getElementById('timeline');
 const node=(tag,className,text)=>{const el=document.createElement(tag);if(className)el.className=className;if(text)el.textContent=text;return el;};

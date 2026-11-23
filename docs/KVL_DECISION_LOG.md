@@ -972,3 +972,11 @@ Status: USER REPORTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 Base `d0934179edb1d19b25aba7e1916c355d5cdb1d60`; branch `fix/asian-games-roadmap-detail-v1`. 다른 61개 이벤트, 기존 16개 요약, 대회 DB, 상단 출전권 모듈·디자인·올림픽 필터 판정은 보존한다. 해당 이벤트의 공식 6경기 스코어와 결선 3경기 세트 득점만 검증하며 조별리그 세트 득점은 추가하지 않는다. Drive 결과 폴더가 비어 있어 기존 KVL 경기 ID에 연결하고 Drive는 수정하지 않았다. Node 56/56, PC·모바일 390/360/320px, 필터 62/37/16/17 확인. 병합·Pages·운영 검증은 PR에 기록한다. [검증·출처·수정 파일·복구](validation/asian-games-roadmap-detail-v1.md).
 
 
+
+## 2026-11-23 · 대표팀 로드맵 빈 상세 전수 보완
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자는 빈 상세 전수 점검 후 “보완 진행해”를 지시했다. 종료된 대회에 경기 목록이 없더라도 검증된 최종 성적을 기본 펼침에 표시하고 세부 경기 미수록을 구분한다. 미래 대회의 미확정 결과는 생성하지 않는다. 기존 간소화 UI·3행 제한·자료 basis 보호·출처 펼침·상단 올림픽 모듈을 유지한다.
+
+2026 AVC컵 전체 한국 6경기, 2014 AVC컵 결승, 2018 아시안게임 결선 4경기, 2022 AVC컵·2023 챌린지컵 결선 각 2경기 등 15경기를 공식 근거로 연결했다. 2018 AVC컵은 AVC 역대표의 연도 오기를 공식 연감과 별도 순위표로 교차 검증해 4위→8위로 정정하고 이전 값/출처를 보존한다. 기본 요약 공백 40→0개, 완료 기록 59개 모두 표시. 35개 기록은 최종 성적만 확인되며 전체 과거 경기 백필 완료로 표시하지 않는다.
+
+Base `15b1faf33d01b646ff1ac5001da1ef2a9066e3b4`; branch `fix/roadmap-detail-completion-v1`. 62개 ID/순서, 다른 56개 이벤트, 기존 17개 요약 보존. Node 60/60 및 PC·모바일 390/360/320px, 필터 62/37/16/17, 2032 미발표 분리 확인. 일부 AVC 원문은 검색 색인 본문 확인/직접 요청 실패를 명시한다. 병합·Pages·운영 증거는 PR에서 추적한다. [검증·출처·한계·복구](validation/roadmap-detail-completion-v1.md).
