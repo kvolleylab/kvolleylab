@@ -191,6 +191,24 @@ test('Country and gender boundaries are fail-closed; raw official source count m
  assert.throws(()=>unified.build([{snapshot:{...j,player_count:99},team:t}],
   {country:countries.countries.find(x=>x.code==='JPN'),gender:'men',year:2026}),/count changed/);
 });
+test('Club-country normalization keeps local flags for supplemental league countries',()=>{
+ const standard=fs.readFileSync(path.join(ROOT,'assets/js/kvl-team-roster-standard-v1.js'),'utf8');
+ for(const code of ['gr','ru','es','ee','ro','pt']){
+  const file=path.join(ROOT,'assets/images/flags/club',code+'.svg');
+  assert.equal(fs.existsSync(file),true,code);
+  const svg=fs.readFileSync(file,'utf8');assert.match(svg,/^<svg/);assert.match(svg,/viewBox=/);
+  assert.ok(!['<script','<foreignobject','onload=','<iframe'].some(token=>svg.toLowerCase().includes(token)),code);
+  assert.match(standard,new RegExp(code+":'assets/images/flags/club/"+code+"\\.svg'"));
+ }
+ assert.equal(currentClubs.players['28503'].leagueCountry,'China');
+ assert.match(standard,/Estonia:'ee'/);assert.match(standard,/ee:'에스토니아'/);
+ for(const [country,code,ko] of [['Indonesia','id','인도네시아'],['Thailand','th','태국'],['Kazakhstan','kz','카자흐스탄'],['Uzbekistan','uz','우즈베키스탄'],['Vietnam','vn','베트남']]){
+  assert.match(standard,new RegExp(country+":'"+code+"'"));
+  assert.match(standard,new RegExp(code+":'"+ko+"'"));
+  assert.equal(fs.existsSync(path.join(ROOT,'assets/images/flags/4x3',code+'.svg')),true,code);
+ }
+});
+
 test('Production page keeps country cards, roster-first navigation, KOVO and auth gate',()=>{
  const html=fs.readFileSync(path.join(ROOT,'teams.html'),'utf8'),
    js=fs.readFileSync(path.join(ROOT,'assets/js/kvl-international-countries-v1.js'),'utf8');
