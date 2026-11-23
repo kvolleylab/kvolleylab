@@ -761,16 +761,17 @@
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
       "source_ids": [
-        "https://en.volleyballworld.com/volleyball/competitions/svleague-men/players/153539",
-        "https://en.volleyballworld.com/volleyball/competitions/svleague-men/players/182474",
-        "https://scoredium.com/news/ataei-avenges-bangalore-loss-against-another-indian-side/",
-        "https://scoredium.com/news/china-becomes-paradise-for-morteza-sharifi/",
-        "https://volleybox.net/urmia-municipality-vc-t1827?season_id=127"
+        "USER-REQUEST-INTERNATIONAL-ROSTER-20261123",
+        "DRIVE-1SLPvMniXM3W2ivwSliNbrW59lhsvwppC",
+        "DRIVE-1W3JP9qKtdN3qIQf6ImJyZDxF1Dh4ydin",
+        "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
+        "DRIVE-1NwEjUuvNbFfq5EZ-o8avQQC4XpLzcvnS",
+        "DRIVE-18hlWasoq71_ROFe8F_0f186NAU-iP6d6"
       ],
-      "verified_at": "2026-11-22",
-      "sha256": "2dcf850625821a1becc674e5e780081a2945188f13f439e34729539c16a85e76",
-      "evidence": "validation/international-country-roster-ux-v2-20261122.md",
-      "review_note": "2026-27 국제선수 현재 소속 보강용 공개 레지스트리 7건. 공식/최근 공개 근거 6건은 CONFIRMED, Volleybox 현행 팀 명단 근거 1건은 REVIEWED 상태를 유지한다. 과거 대회 명단을 덮어쓰지 않으며 Volleybox ID와 가능한 경우 DOB를 대조하고, 미확인 선수를 팀·국적·등번호로 추정하지 않는다."
+      "verified_at": "2026-11-23",
+      "sha256": "eeb6c21bc88510c2e852b1c55156cd664a2e94ddc3b74cbda994aa53c48b3812",
+      "evidence": "docs/validation/international-roster-order-metadata-v1-20261123.md",
+      "review_note": "2026/27 현재 소속 공통 레지스트리 132명. exact identity + 공개 HTTPS 근거가 있는 CONFIRMED/REVIEWED만 포함하며 최신 11월 값은 9월 값보다 우선한다. AVC Cup/대륙선수권 DOB가 충돌한 Erin Varghese와 Shameemudheen Ammarambath는 공통 레지스트리에서 제외하고 대회별 원본만 유지한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
@@ -815,6 +816,23 @@
       "sha256": "4ab090d822aee3301fe3fa88ca6a4f37731188c7d39875a0dbb4e8fd9066ba24",
       "evidence": "docs/validation/roadmap-typography-metadata-v1.md",
       "review_note": "기존 경기 요약과 불확실성은 보존. 2026 네 대회 개최지를 기존 대표팀 홈 및 JVA/Volleyball World 공식 자료와 대조해 별도 location 메타데이터로 추가. 후쿠오카는 후쿠오카현 기타큐슈 소재. 원본 62개 역사 기록·경기 결과·참가·출전권 상태·확인일은 변경하지 않음."
+    },
+    "data/competitions/vnl-men-2026/data.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-REQUEST-INTERNATIONAL-ROSTER-20261123",
+        "KVL-COMP-000001",
+        "DRIVE-1SLPvMniXM3W2ivwSliNbrW59lhsvwppC",
+        "DRIVE-1W3JP9qKtdN3qIQf6ImJyZDxF1Dh4ydin",
+        "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
+        "KVL-AVC-M-CONTINENTAL-2026",
+        "KVL-ASIAN-GAMES-M-2026"
+      ],
+      "verified_at": "2026-11-23",
+      "sha256": "343ceef4f035e4f12f815c28ddff5b8c4527968228101d9b45758d99329cd4a9",
+      "evidence": "docs/validation/international-roster-order-metadata-v1-20261123.md",
+      "review_note": "2026 VNL 남자 284명 원본 선수 수·대회 참가 상태는 유지. 후속 2026 대륙대회 MASTER 및 동일 시즌 공개 명단에서 영문명+DOB exact match 또는 동일 검증 Volleybox ID인 경우만 검색 링크를 직접 프로필로 승격했다. 직접 프로필 134, 검색 유지 150, invalid 0. 불확실 신원은 추정하지 않는다."
     }
   }
 }

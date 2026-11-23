@@ -73,7 +73,7 @@ function compatible(group,item){
   if(group.vbIds.size&&item.vb.id&&group.vbIds.has(item.vb.id))return true;
   return !!item.en&&group.names.has(norm(item.en));
 }
-function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegistry=null,profileResolver=null}={}){
+function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegistry=null,volleyboxRegistry=null,profileResolver=null}={}){
   if(!country||!/^[A-Z]{3}$/.test(country.code||'')||!['men','women'].includes(gender)
       ||!Number.isInteger(year)||!Array.isArray(sourceSets))throw Error('Invalid KVL unified roster identity scope');
   const groups=[],events=[];
@@ -91,7 +91,11 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegis
       rank:eventOrder(snapshot)});
     const within=new Set();
     for(let idx=0;idx<team.players.length;idx++){
-      const raw=team.players[idx],p=identify(raw);
+      const raw=team.players[idx];
+      const registryBox=snapshot.competition_slug==='avc-men-continental-2026'&&gender==='men'
+        ?volleyboxRegistry?.teams?.[country.code]?.[String(raw?.number)]:'';
+      const directRegistryBox=volleybox(registryBox).direct;
+      const p=identify(directRegistryBox?{...raw,volleybox:directRegistryBox,volleybox_url:directRegistryBox}:raw);
       if(!(p.ko||p.en))throw Error('Missing athlete identity: '+snapshot.snapshot_id+'/'+idx);
       const same=groups.filter(g=>compatible(g,p)&&!g.matches.some(m=>m.id===snapshot.snapshot_id));
       // A source may have two similarly named players: do not select a random match.
@@ -141,12 +145,13 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegis
   for(const g of groups){
     const nums=[...new Set(g.matches.filter(m=>m.number!=null).map(m=>m.number))];
     g.number=nums.length===1?'#'+nums[0]:nums.length>1?'대회별':'—';
+    g.sortNumber=nums.length?Math.min(...nums):Number.POSITIVE_INFINITY;
     g.count=g.matches.length;
     g.evidence=g.count>1?(g.vbIds.size?'생년월일+동일 Volleybox 선수 ID':'동일 영문 성명+생년월일'):'대회별 원본';
     g.names=undefined;g.vbIds=undefined;
     g.clubVariants=[...new Map(g.clubVariants.map(x=>[x.club,x])).values()];
   }
-  groups.sort((a,b)=>b.count-a.count||(a.en||a.ko).localeCompare(b.en||b.ko,'en'));
+  groups.sort((a,b)=>a.sortNumber-b.sortNumber||(a.en||a.ko).localeCompare(b.en||b.ko,'en'));
   return {country,gender,year,events,rows:groups,total:groups.length,
     sourceTotal:events.reduce((n,e)=>n+e.count,0),
     note:'대회 공개 명단 포함 이력이며 경기 출전 기록은 아닙니다. 생년월일·직접 선수 페이지 등 동일인 근거가 부족하면 서로 다른 행으로 유지합니다.'};
