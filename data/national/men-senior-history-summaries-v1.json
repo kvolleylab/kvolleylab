@@ -2412,6 +2412,825 @@
           "value": "2026-11-23"
         }
       ]
+    },
+    {
+      "eventId": "kor-m-asian-championship-2019",
+      "rows": [
+        {
+          "label": "8강",
+          "match": {
+            "opponent": "인도",
+            "score": "3–1"
+          }
+        },
+        {
+          "label": "준결승",
+          "match": {
+            "opponent": "이란",
+            "score": "1–3"
+          }
+        },
+        {
+          "label": "3위 결정전",
+          "match": {
+            "opponent": "일본",
+            "score": "1–3"
+          }
+        }
+      ],
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ",
+        "hist-asian19-bulletin-02",
+        "hist-asian19-bulletin-03",
+        "hist-asian19-bulletin-04",
+        "hist-asian19-bulletin-06",
+        "hist-asian19-bulletin-07",
+        "hist-asian19-bulletin-10",
+        "hist-asian19-jva-overview"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "result",
+          "value": "4위"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "actualParticipation",
+          "value": true
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "finalRank",
+          "value": 4
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "qualificationOutcomes",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "matches",
+          "value": [
+            {
+              "date": "2019-09-13",
+              "stage": "조별리그 D조",
+              "opponent": "PAK",
+              "setScore": "3-0",
+              "setScores": [
+                [
+                  25,
+                  23
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  25,
+                  19
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-02"
+              ],
+              "officialMatchId": 8
+            },
+            {
+              "date": "2019-09-14",
+              "stage": "조별리그 D조",
+              "opponent": "KUW",
+              "setScore": "3-0",
+              "setScores": [
+                [
+                  25,
+                  14
+                ],
+                [
+                  25,
+                  16
+                ],
+                [
+                  25,
+                  11
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-03"
+              ],
+              "officialMatchId": 11
+            },
+            {
+              "date": "2019-09-15",
+              "stage": "조별리그 D조",
+              "opponent": "INA",
+              "setScore": "3-0",
+              "setScores": [
+                [
+                  25,
+                  22
+                ],
+                [
+                  25,
+                  19
+                ],
+                [
+                  25,
+                  20
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-04"
+              ],
+              "officialMatchId": 17
+            },
+            {
+              "date": "2019-09-17",
+              "stage": "2차리그 F조",
+              "opponent": "TPE",
+              "setScore": "3-0",
+              "setScores": [
+                [
+                  25,
+                  21
+                ],
+                [
+                  25,
+                  19
+                ],
+                [
+                  26,
+                  24
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-06"
+              ],
+              "officialMatchId": 32
+            },
+            {
+              "date": "2019-09-18",
+              "stage": "2차리그 F조",
+              "opponent": "JPN",
+              "setScore": "3-2",
+              "setScores": [
+                [
+                  20,
+                  25
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  18,
+                  25
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  16,
+                  14
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-07"
+              ],
+              "officialMatchId": 40
+            },
+            {
+              "date": "2019-09-19",
+              "stage": "8강",
+              "opponent": "IND",
+              "setScore": "3-1",
+              "setScores": [
+                [
+                  25,
+                  20
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  20,
+                  25
+                ],
+                [
+                  25,
+                  21
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-10"
+              ],
+              "officialMatchId": 46
+            },
+            {
+              "date": "2019-09-20",
+              "stage": "준결승",
+              "opponent": "IRI",
+              "setScore": "1-3",
+              "setScores": [
+                [
+                  25,
+                  22
+                ],
+                [
+                  23,
+                  25
+                ],
+                [
+                  22,
+                  25
+                ],
+                [
+                  22,
+                  25
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-10"
+              ],
+              "officialMatchId": 55
+            },
+            {
+              "date": "2019-09-21",
+              "stage": "3위 결정전",
+              "opponent": "JPN",
+              "setScore": "1-3",
+              "setScores": [
+                [
+                  23,
+                  25
+                ],
+                [
+                  17,
+                  25
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  22,
+                  25
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian19-bulletin-10"
+              ],
+              "officialMatchId": 59
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "notes",
+          "value": [
+            "대한민국의 실제 경기 8경기와 세트별 점수를 공식 결과집으로 확인했습니다. 점수는 대한민국 기준입니다.",
+            "2차리그로 승계된 조별리그 결과는 별도 경기로 중복 집계하지 않습니다."
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "startDate",
+          "value": "2019-09-13"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "endDate",
+          "value": "2019-09-21"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "verifiedAt",
+          "value": "2026-11-23"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2019",
+          "field": "updatedAt",
+          "value": "2026-11-23"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-asian-championship-2021",
+      "rows": [
+        {
+          "label": "2차리그 F조",
+          "match": {
+            "opponent": "파키스탄",
+            "score": "0–3"
+          }
+        },
+        {
+          "label": "5–8위전",
+          "match": {
+            "opponent": "카타르",
+            "score": "0–3"
+          }
+        },
+        {
+          "label": "7·8위전",
+          "match": {
+            "opponent": "파키스탄",
+            "score": "0–3"
+          }
+        }
+      ],
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-kva_champ",
+        "hist-asian21-match-2",
+        "hist-asian21-match-16",
+        "hist-asian21-match-23",
+        "hist-asian21-match-31",
+        "hist-asian21-match-39",
+        "hist-asian21-match-45",
+        "hist-asian21-match-53",
+        "hist-asian21-final-bulletin",
+        "hist-asian21-jva-overview"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "result",
+          "value": "8위"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "actualParticipation",
+          "value": true
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "finalRank",
+          "value": 8
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "qualificationOutcomes",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "matches",
+          "value": [
+            {
+              "date": "2021-09-12",
+              "stage": "조별리그 D조",
+              "opponent": "KSA",
+              "setScore": "3-0",
+              "setScores": [
+                [
+                  25,
+                  18
+                ],
+                [
+                  25,
+                  17
+                ],
+                [
+                  25,
+                  20
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian21-match-2"
+              ],
+              "officialMatchId": 2
+            },
+            {
+              "date": "2021-09-13",
+              "stage": "조별리그 D조",
+              "opponent": "KAZ",
+              "setScore": "3-0",
+              "setScores": [
+                [
+                  25,
+                  21
+                ],
+                [
+                  25,
+                  17
+                ],
+                [
+                  25,
+                  16
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian21-match-16"
+              ],
+              "officialMatchId": 16
+            },
+            {
+              "date": "2021-09-14",
+              "stage": "조별리그 D조",
+              "opponent": "TPE",
+              "setScore": "1-3",
+              "setScores": [
+                [
+                  25,
+                  23
+                ],
+                [
+                  21,
+                  25
+                ],
+                [
+                  20,
+                  25
+                ],
+                [
+                  21,
+                  25
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian21-match-23"
+              ],
+              "officialMatchId": 23
+            },
+            {
+              "date": "2021-09-16",
+              "stage": "2차리그 F조",
+              "opponent": "IRI",
+              "setScore": "0-3",
+              "setScores": [
+                [
+                  19,
+                  25
+                ],
+                [
+                  18,
+                  25
+                ],
+                [
+                  20,
+                  25
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian21-match-31"
+              ],
+              "officialMatchId": 31
+            },
+            {
+              "date": "2021-09-17",
+              "stage": "2차리그 F조",
+              "opponent": "PAK",
+              "setScore": "0-3",
+              "setScores": [
+                [
+                  23,
+                  25
+                ],
+                [
+                  22,
+                  25
+                ],
+                [
+                  14,
+                  25
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian21-match-39"
+              ],
+              "officialMatchId": 39
+            },
+            {
+              "date": "2021-09-18",
+              "stage": "5–8위전",
+              "opponent": "QAT",
+              "setScore": "0-3",
+              "setScores": [
+                [
+                  16,
+                  25
+                ],
+                [
+                  30,
+                  32
+                ],
+                [
+                  22,
+                  25
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian21-match-45"
+              ],
+              "officialMatchId": 45
+            },
+            {
+              "date": "2021-09-19",
+              "stage": "7·8위전",
+              "opponent": "PAK",
+              "setScore": "0-3",
+              "setScores": [
+                [
+                  23,
+                  25
+                ],
+                [
+                  15,
+                  25
+                ],
+                [
+                  26,
+                  28
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian21-match-53"
+              ],
+              "officialMatchId": 53
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "notes",
+          "value": [
+            "대한민국의 실제 경기 7경기와 세트별 점수를 공식 결과집으로 확인했습니다. 점수는 대한민국 기준입니다.",
+            "2차리그로 승계된 조별리그 결과는 별도 경기로 중복 집계하지 않습니다."
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "startDate",
+          "value": "2021-09-12"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "endDate",
+          "value": "2021-09-19"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "verifiedAt",
+          "value": "2026-11-23"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2021",
+          "field": "updatedAt",
+          "value": "2026-11-23"
+        }
+      ]
+    },
+    {
+      "eventId": "kor-m-asian-championship-2023",
+      "rows": [
+        {
+          "label": "12강",
+          "match": {
+            "opponent": "인도네시아",
+            "score": "3–2"
+          }
+        },
+        {
+          "label": "1–6위전",
+          "match": {
+            "opponent": "중국",
+            "score": "1–3"
+          }
+        },
+        {
+          "label": "5·6위전",
+          "match": {
+            "opponent": "차이니스 타이베이",
+            "score": "3–1"
+          }
+        }
+      ],
+      "sourceIds": [
+        "hist-avc_champ",
+        "hist-oca_profile",
+        "hist-asian23-bulletin-02",
+        "hist-asian23-bulletin-04",
+        "hist-asian23-bulletin-05",
+        "hist-asian23-bulletin-06",
+        "hist-asian23-bulletin-07",
+        "hist-asian23-bulletin-08"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "result",
+          "value": "5위"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "actualParticipation",
+          "value": true
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "finalRank",
+          "value": 5
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "qualificationOutcomes",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "matches",
+          "value": [
+            {
+              "date": "2023-08-19",
+              "stage": "조별리그 F조",
+              "opponent": "BAN",
+              "setScore": "3-0",
+              "setScores": [
+                [
+                  25,
+                  19
+                ],
+                [
+                  25,
+                  22
+                ],
+                [
+                  25,
+                  19
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian23-bulletin-02"
+              ],
+              "officialMatchId": 5
+            },
+            {
+              "date": "2023-08-21",
+              "stage": "조별리그 F조",
+              "opponent": "PAK",
+              "setScore": "3-1",
+              "setScores": [
+                [
+                  26,
+                  28
+                ],
+                [
+                  25,
+                  20
+                ],
+                [
+                  32,
+                  30
+                ],
+                [
+                  25,
+                  22
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian23-bulletin-04"
+              ],
+              "officialMatchId": 15
+            },
+            {
+              "date": "2023-08-23",
+              "stage": "12강",
+              "opponent": "INA",
+              "setScore": "3-2",
+              "setScores": [
+                [
+                  25,
+                  16
+                ],
+                [
+                  19,
+                  25
+                ],
+                [
+                  22,
+                  25
+                ],
+                [
+                  25,
+                  19
+                ],
+                [
+                  16,
+                  14
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian23-bulletin-05"
+              ],
+              "officialMatchId": 26
+            },
+            {
+              "date": "2023-08-24",
+              "stage": "1–6위전",
+              "opponent": "CHN",
+              "setScore": "1-3",
+              "setScores": [
+                [
+                  25,
+                  21
+                ],
+                [
+                  22,
+                  25
+                ],
+                [
+                  26,
+                  28
+                ],
+                [
+                  18,
+                  25
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian23-bulletin-06"
+              ],
+              "officialMatchId": 32
+            },
+            {
+              "date": "2023-08-25",
+              "stage": "5·6위전",
+              "opponent": "TPE",
+              "setScore": "3-1",
+              "setScores": [
+                [
+                  18,
+                  25
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  25,
+                  14
+                ],
+                [
+                  25,
+                  19
+                ]
+              ],
+              "sourceIds": [
+                "hist-asian23-bulletin-07"
+              ],
+              "officialMatchId": 39
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "notes",
+          "value": [
+            "대한민국의 실제 경기 5경기와 세트별 점수를 공식 결과집으로 확인했습니다. 점수는 대한민국 기준입니다.",
+            "중국전은 공식 결과집의 Ranking 1–6 단계로 표기합니다. 대회는 8월 26일까지 열렸고 대한민국의 최종 경기는 8월 25일입니다."
+          ]
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "startDate",
+          "value": "2023-08-19"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "endDate",
+          "value": "2023-08-26"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "verifiedAt",
+          "value": "2026-11-23"
+        },
+        {
+          "eventId": "kor-m-asian-championship-2023",
+          "field": "updatedAt",
+          "value": "2026-11-23"
+        }
+      ]
     }
   ],
   "sources": [
@@ -2999,6 +3818,270 @@
       "locator": null,
       "version": null,
       "publishedAt": null
+    },
+    {
+      "id": "hist-avc_champ",
+      "title": "AVC Asian Senior Men Volleyball Championship historical rankings",
+      "url": "https://asianvolleyball.net/new/asian-senior-men-volleyball-championship/",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "indexed official text; direct fetch 502",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-kva_champ",
+      "title": "대한배구협회 아시아남자배구선수권 역대성적",
+      "url": "https://www.kva.or.kr/user/usr19Result/searchLeague.do?evtKd=02&gender=M&leagueCd=05",
+      "publisher": "공식 협회·연맹",
+      "verifiedAt": "2026-11-16",
+      "access": "read",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian19-bulletin-02",
+      "title": "AVC · 2019 아시아선수권 공식 결과집 02",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2019/09/ASM-2019-DailyBulletin-02_opt.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.12 · P-4 match 8",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian19-bulletin-03",
+      "title": "AVC · 2019 아시아선수권 공식 결과집 03",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2019/09/ASM-2019-DailyBulletin-03_opt.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.13 · P-4 match 11",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian19-bulletin-04",
+      "title": "AVC · 2019 아시아선수권 공식 결과집 04",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2019/09/ASM-2019-DailyBulletin-04_opt_EDT2-1.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.14 · P-4 match 17",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian19-bulletin-06",
+      "title": "AVC · 2019 아시아선수권 공식 결과집 06",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2019/09/ASM-2019-DailyBulletin-06_opt.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.10 · P-4 match 32",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian19-bulletin-07",
+      "title": "AVC · 2019 아시아선수권 공식 결과집 07",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2019/09/ASM-2019-DailyBulletin-07_opt-1.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.11 · P-2 match 40",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian19-bulletin-10",
+      "title": "AVC · 2019 아시아선수권 공식 결과집 10",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2019/09/ASM-2019-DailyBulletin-10_opt.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF pp.6–7 · final standing and matches 46, 55, 59",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian19-jva-overview",
+      "title": "JVA · 2019 아시아선수권 기간·장소·대회 방식",
+      "url": "https://www.jva.or.jp/international/2019/asianchampionship_men/",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "OVERVIEW · 開催期間 / 開催地 / 競技方法",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-match-2",
+      "title": "AVC · 2021 아시아선수권 공식 경기 기록 2",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/2_KSA_KOR.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.1 · P-2 match 2",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-match-16",
+      "title": "AVC · 2021 아시아선수권 공식 경기 기록 16",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/16_KOR_KAZ.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.1 · P-2 match 16",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-match-23",
+      "title": "AVC · 2021 아시아선수권 공식 경기 기록 23",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/23_TPE_KOR.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.1 · P-2 match 23",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-match-31",
+      "title": "AVC · 2021 아시아선수권 공식 경기 기록 31",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/31_IRI_KOR.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.1 · P-2 match 31",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-match-39",
+      "title": "AVC · 2021 아시아선수권 공식 경기 기록 39",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/M39_PAK_KOR.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.1 · P-2 match 39",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-match-45",
+      "title": "AVC · 2021 아시아선수권 공식 경기 기록 45",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/M45_QAT_KOR.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.1 · P-2 match 45",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-match-53",
+      "title": "AVC · 2021 아시아선수권 공식 경기 기록 53",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/M53_PAK_KOR.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.1 · P-2 match 53",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-final-bulletin",
+      "title": "AVC · 2021 아시아선수권 최종 결과집",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2021/09/MAVC2021_Daily-Bulletin-No.8.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "Final standings · Korea 8",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian21-jva-overview",
+      "title": "JVA · 2021 아시아선수권 기간·장소·대회 방식",
+      "url": "https://www.jva.or.jp/international/2021/asianchampionship_men/",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "OVERVIEW · 開催期間 / 会場 / 競技方法",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian23-bulletin-02",
+      "title": "AVC · 2023 아시아선수권 공식 결과집 02",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2023/08/22-Asian-Sr.-Mens-Volleyball-Championship-Daily-Bulletin-02.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.9 · P-4 match 5",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian23-bulletin-04",
+      "title": "AVC · 2023 아시아선수권 공식 결과집 04",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2023/08/22-Asian-Sr.-Mens-Volleyball-Championship-Daily-Bulletin-04_draft.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.9 · P-4 match 15; official archive filename retains draft",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian23-bulletin-05",
+      "title": "AVC · 2023 아시아선수권 공식 결과집 05",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2023/08/22-Asian-Sr.-Mens-Volleyball-Championship-Daily-Bulletin-05.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.4 · P-4 match 26 / Ranking 1–12",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian23-bulletin-06",
+      "title": "AVC · 2023 아시아선수권 공식 결과집 06",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2023/08/22-Asian-Sr.-Mens-Volleyball-Championship-Daily-Bulletin-06.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.35 · P-4 match 32 / Ranking 1–6",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian23-bulletin-07",
+      "title": "AVC · 2023 아시아선수권 공식 결과집 07",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2023/08/22-Asian-Sr.-Mens-Volleyball-Championship-Daily-Bulletin-07.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.44 · P-4 match 39 / Final 5–6",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "hist-asian23-bulletin-08",
+      "title": "AVC · 2023 아시아선수권 공식 결과집 08",
+      "url": "https://asianvolleyball.net/new/wp-content/uploads/2023/08/22-Asian-Sr.-Mens-Volleyball-Championship-Daily-Bulletin-_08.pdf",
+      "publisher": "Asian Volleyball Confederation",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "PDF p.24 · Final standing / Korea 5",
+      "version": null,
+      "publishedAt": null
     }
   ],
   "locations": [
@@ -3040,6 +4123,36 @@
       "verifiedAt": "2026-11-23",
       "sourceIds": [
         "now-ag26_jva_overview"
+      ]
+    },
+    {
+      "eventId": "kor-m-asian-championship-2019",
+      "competitionId": "kor-m-asian-championship-2019",
+      "label": "이란 테헤란",
+      "verificationStatus": "confirmed",
+      "verifiedAt": "2026-11-23",
+      "sourceIds": [
+        "hist-asian19-jva-overview"
+      ]
+    },
+    {
+      "eventId": "kor-m-asian-championship-2021",
+      "competitionId": "kor-m-asian-championship-2021",
+      "label": "일본 지바·후나바시",
+      "verificationStatus": "confirmed",
+      "verifiedAt": "2026-11-23",
+      "sourceIds": [
+        "hist-asian21-jva-overview"
+      ]
+    },
+    {
+      "eventId": "kor-m-asian-championship-2023",
+      "competitionId": "kor-m-asian-championship-2023",
+      "label": "이란 우르미아",
+      "verificationStatus": "confirmed",
+      "verifiedAt": "2026-11-23",
+      "sourceIds": [
+        "hist-asian23-bulletin-02"
       ]
     }
   ]
