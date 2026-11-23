@@ -13,7 +13,7 @@ const fullDOB=x=>/^\d{4}-\d{2}-\d{2}$/.test(String(x||''))?String(x):'';
 const pos=x=>['O','OPP'].includes(String(x||'').toUpperCase())?'OP':String(x||'').toUpperCase();
 const knownClub=x=>x&&typeof x==='string'&&!['미확인','unknown','-'].includes(norm(x))?x.trim():'';
 const leagueText=x=>typeof x==='string'?x.trim():'';
-const LEAGUE_FLAGS={Japan:'🇯🇵',Italy:'🇮🇹',Poland:'🇵🇱',Türkiye:'🇹🇷',Germany:'🇩🇪',Czechia:'🇨🇿',France:'🇫🇷',Portugal:'🇵🇹',India:'🇮🇳','South Korea':'🇰🇷',Taiwan:'🇹🇼',Iran:'🇮🇷',Oman:'🇴🇲',Greece:'🇬🇷'};
+const LEAGUE_FLAGS={Bahrain:'🇧🇭',Belgium:'🇧🇪',Brazil:'🇧🇷',China:'🇨🇳',Czechia:'🇨🇿',Estonia:'🇪🇪',France:'🇫🇷',Germany:'🇩🇪',Greece:'🇬🇷',India:'🇮🇳',Indonesia:'🇮🇩',Iran:'🇮🇷',Italy:'🇮🇹',Japan:'🇯🇵',Kazakhstan:'🇰🇿',Oman:'🇴🇲',Poland:'🇵🇱',Portugal:'🇵🇹',Qatar:'🇶🇦',Romania:'🇷🇴',Russia:'🇷🇺',Serbia:'🇷🇸',Slovenia:'🇸🇮','South Korea':'🇰🇷',Spain:'🇪🇸',Taiwan:'🇹🇼',Thailand:'🇹🇭',Türkiye:'🇹🇷',USA:'🇺🇸',Ukraine:'🇺🇦',Uzbekistan:'🇺🇿',Vietnam:'🇻🇳'};
 /* A roster's league country is consistent regardless of whether a league name is verified.
     Preserve the exact verified league name in the model and player detail. */
  const countryLabel=country=>{
