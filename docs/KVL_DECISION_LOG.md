@@ -7,7 +7,7 @@ Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / QA PASSED / NOT DEPLOYED.
 
 기준 main `b6e6fa1c9115c82a9bd69dfe20272d1d7242da11`, 브랜치 `fix/international-roster-order-metadata-v1-20261123`. 통합명단과 대회별 개별명단 모두 숫자 등번호 오름차순, 미확인 번호는 뒤에 둔다. 국가 헤더의 기존 별도 `국가 목록` 행과 연도 toolbar를 하나의 우측 조작부로 합치고 모바일에서도 국기·간격·select를 함께 축소한다.
 
-연결 Google Drive의 2026 CEV·CSV 남미·NORCECA·AVC 남자 대륙선수권·아시안게임 MASTER와 현재 GitHub 공개 명단을 교차했다. 영문명+생년월일 exact match 또는 동일 검증 Volleybox ID만 사용했다. VNL 284명은 유지하면서 직접 Volleybox 프로필을 49→134명으로 늘렸고 150명은 근거 부족으로 검색 링크를 유지한다. 현재 소속 레지스트리는 13→134명으로 확장했다. 후속 대륙 MASTER exact match 76명에 더해 AVC 대륙선수권의 CONFIRMED 소속과 direct Volleybox ID가 동시에 있는 일본·호주·바레인·오만·이란·중국·인도 45명을 공통 레지스트리에 승격했으며, 더 최신인 11월 기존 값 3건은 우선 보존한다. 이란의 Mohsen Delavari는 직접 프로필/현 소속을 확정할 근거가 없어 검색·미확인으로 유지한다. 원본 DOB 충돌이 있는 동일 선수 행은 임의 병합하지 않는다.
+연결 Google Drive의 2026 CEV·CSV 남미·NORCECA·AVC 남자 대륙선수권·아시안게임 MASTER와 현재 GitHub 공개 명단을 교차했다. 영문명+생년월일 exact match 또는 동일 검증 Volleybox ID만 사용했다. VNL 284명은 유지하면서 직접 Volleybox 프로필을 49→134명으로 늘렸고 150명은 근거 부족으로 검색 링크를 유지한다. 현재 소속 레지스트리는 13→132명으로 확장했다. 후속 대륙 MASTER exact match 76명에 더해 AVC 대륙선수권의 CONFIRMED 소속과 direct Volleybox ID가 동시에 있고 원본 DOB가 충돌하지 않는 43명을 공통 레지스트리에 승격했으며, 더 최신인 11월 기존 값 3건은 우선 보존한다. 인도 2명은 AVC Cup/대륙선수권 사이 DOB 충돌을 발견해 공통 레지스트리에서는 제외하고 대회별 원본만 유지한다. 이란의 Mohsen Delavari는 직접 프로필/현 소속을 확정할 근거가 없어 검색·미확인으로 유지한다. 원본 DOB 충돌이 있는 동일 선수 행은 임의 병합하지 않는다.
 
 JS 문법, 국가별 선수 수/색인 일치, direct/search URL 규칙, current-club 필수 필드, 이란 실제 통합 build의 등번호 정렬을 검증했다. 운영 main 병합·Pages 배포는 사용자 별도 승인 전 수행하지 않는다. 상세 검증·복구 기준은 [검증 및 인계](validation/international-roster-order-metadata-v1-20261123.md)를 따른다.
 
