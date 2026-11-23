@@ -202,6 +202,11 @@ test('Club-country normalization keeps local flags for supplemental league count
  }
  assert.equal(currentClubs.players['28503'].leagueCountry,'China');
  assert.match(standard,/Estonia:'ee'/);assert.match(standard,/ee:'에스토니아'/);
+ for(const [country,code,ko] of [['Indonesia','id','인도네시아'],['Thailand','th','태국'],['Kazakhstan','kz','카자흐스탄'],['Uzbekistan','uz','우즈베키스탄'],['Vietnam','vn','베트남']]){
+  assert.match(standard,new RegExp(country+":'"+code+"'"));
+  assert.match(standard,new RegExp(code+":'"+ko+"'"));
+  assert.equal(fs.existsSync(path.join(ROOT,'assets/images/flags/4x3',code+'.svg')),true,code);
+ }
 });
 
 test('Production page keeps country cards, roster-first navigation, KOVO and auth gate',()=>{
