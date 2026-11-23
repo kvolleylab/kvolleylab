@@ -786,12 +786,13 @@
         "https://volleybox.net/mohsen-delavari-p222609",
         "DRIVE-CEV-CSV-NORCECA-EXACT-CLUB-BATCH3-20261123",
         "VOLLEYBOX-CURRENT-CLUB-BATCH3-20261123",
-        "VOLLEYBOX-CURRENT-CLUB-ASIA-BATCH3-20261123"
+        "VOLLEYBOX-CURRENT-CLUB-ASIA-BATCH3-20261123",
+        "USER-REQUEST-CLUB-COUNTRY-FLAGS-20261123"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "013c81e1e44533f6034fac28773d1efae7dddb3b43dd718342f1a601a9f8d7c8",
-      "evidence": "docs/validation/international-current-club-asia-batch3-v1-20261123.md",
-      "review_note": "2026/27 현재 소속 공통 레지스트리 217명. 아시아권 직접 Volleybox ID/DOB와 2026/27 선수 경력 또는 현재 팀 명단을 교차 확인한 15명을 REVIEWED로 추가했다. Ilija Ivović는 KVL 원본과 Volleybox DOB 충돌로 제외했으며, 다른 충돌·시즌 불명확 선수도 제외한다."
+      "sha256": "0c08896fcb01ac4b56785b7d1bcca6712f97b0753aaeecd9ffd94bddf87e7c12",
+      "evidence": "docs/validation/international-club-country-flags-normalize-v1-20261123.md",
+      "review_note": "현재 소속 공통 레지스트리 217명 유지. Yurii Synytsia의 Hebei Baoding Wolves 소속국가 문자열만 중국→China로 정규화해 공통 국가/국기 매핑을 사용한다. 선수 신원·DOB·소속팀은 변경하지 않는다. Spain/Romania/Portugal/Estonia는 클럽 전용 국기 자산으로 표시한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
