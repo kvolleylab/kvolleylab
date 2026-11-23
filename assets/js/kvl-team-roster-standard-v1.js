@@ -16,14 +16,14 @@ const COUNTRY_ISO2={
  Canada:'ca',CA:'ca',Belgium:'be',BE:'be',Netherlands:'nl',NL:'nl',Bulgaria:'bg',BG:'bg',
  Cuba:'cu',CU:'cu','United States':'us',USA:'us',US:'us',Bahrain:'bh',BH:'bh',
  Kuwait:'kw',KW:'kw',Qatar:'qa',QA:'qa',Australia:'au',AU:'au',Finland:'fi',FI:'fi',
- Ukraine:'ua',UA:'ua',Romania:'ro',RO:'ro',Spain:'es',ES:'es',Egypt:'eg',EG:'eg'
+ Ukraine:'ua',UA:'ua',Romania:'ro',RO:'ro',Spain:'es',ES:'es',Egypt:'eg',EG:'eg',Russia:'ru',RU:'ru'
 };
 const COUNTRY_KO={
  it:'이탈리아',jp:'일본',pl:'폴란드',tr:'튀르키예',de:'독일',cz:'체코',fr:'프랑스',
  pt:'포르투갈',in:'인도',kr:'대한민국',tw:'대만',ir:'이란',om:'오만',gr:'그리스',
  br:'브라질',ar:'아르헨티나',rs:'세르비아',si:'슬로베니아',cn:'중국',ca:'캐나다',
  be:'벨기에',nl:'네덜란드',bg:'불가리아',cu:'쿠바',us:'미국',bh:'바레인',kw:'쿠웨이트',
- qa:'카타르',au:'호주',fi:'핀란드',ua:'우크라이나',ro:'루마니아',es:'스페인',eg:'이집트'
+ qa:'카타르',au:'호주',fi:'핀란드',ua:'우크라이나',ro:'루마니아',es:'스페인',eg:'이집트',ru:'러시아'
 };
 const CLUB_KO={
  'Pallavolo Padova':'파도바',
@@ -61,7 +61,7 @@ const LEAGUE_KO={
  'SV.LEAGUE':'SV.리그','SV League':'SV.리그','V-League':'V-리그',
  'Ligue A Masculine':'리그 A','Ligue B Masculine':'리그 B','Extraliga mužů':'엑스트랄리가',
  'Prime Volleyball League':'프라임 배구리그','Liga UNA Seguros':'리가 UNA 세구로스',
- 'Volley League':'발리리그','First Division Volleyball League':'1부 배구리그',
+ 'Volley League':'발리리그','Russian Superleague':'러시아 수페르리가','First Division Volleyball League':'1부 배구리그',
  'Chinese Volleyball Super League':'중국 슈퍼리그',
  '1. Bundesliga':'분데스리가','2. Bundesliga':'2. 분데스리가'
 };
@@ -101,7 +101,7 @@ const leagueTier=(league,country)=>{
  if(/LIGUE B/.test(n))return'2부';
  if(/2\. BUNDESLIGA/.test(n))return'2부';
  if(/BUNDESLIGA/.test(n))return'1부';
- if(/IRANIAN SUPER LEAGUE|PRIME VOLLEYBALL LEAGUE|LIGA UNA SEGUROS|EXTRALIGA|VOLLEY LEAGUE|FIRST DIVISION|CHINESE VOLLEYBALL SUPER LEAGUE/.test(n))return'1부';
+ if(/IRANIAN SUPER LEAGUE|RUSSIAN SUPERLEAGUE|PRIME VOLLEYBALL LEAGUE|LIGA UNA SEGUROS|EXTRALIGA|VOLLEY LEAGUE|FIRST DIVISION|CHINESE VOLLEYBALL SUPER LEAGUE/.test(n))return'1부';
  if(/SECOND DIVISION/.test(n))return'2부';
  return'';
 };
@@ -155,8 +155,10 @@ function setPlayerIds(root,ids){
 }
 function clubMeta(p){
  const country=String(p?.clubCountry||'').trim(),league=String(p?.clubLeague||'').trim();
- const code=iso2(country),tier=leagueTier(league,country),flag=code?
-  '<img class="kvl-roster-league-flag" src="assets/images/flags/4x3/'+esc(code)+'.svg" alt="" loading="lazy" decoding="async">':'';
+ const code=iso2(country),tier=leagueTier(league,country);
+ const supplemental={gr:'assets/images/flags/club/gr.svg',ru:'assets/images/flags/club/ru.svg'};
+ const flagSrc=code?(supplemental[code]||'assets/images/flags/4x3/'+code+'.svg'):'';
+ const flag=flagSrc?'<img class="kvl-roster-league-flag" src="'+esc(flagSrc)+'" alt="" loading="lazy" decoding="async">':'';
  const leagueText=league?leagueKo(league)+(tier?' ('+tier+')':''):'';
  return '<span class="kvl-roster-club-teamline" title="'+esc(p?.club||'')+'">'+
    '<span class="kvl-roster-club-team">'+esc(clubKo(p?.club||'미확인'))+'</span>'+flag+'</span>'+
