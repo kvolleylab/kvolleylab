@@ -948,3 +948,12 @@ Base `b25e6880e24538b80abc71588d61867f24474aa3`; branch `feature/national-histor
 Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 운영 중인 출전권 카드 제목 4개를 각각 2px 확대하고, 펼친 대회의 기간·장소를 요일 포함 형식으로 ‘준결승’과 같은 크기로 보이도록 요청했다. PC 제목 16px·모바일 13px, 상세 기간·장소 14px 남색으로 적용한다. 2026 아시아선수권은 공식 JVA의 일정과 후쿠오카현 기타큐슈 개최지 확인을 거쳐 `2026.09.04(금)~09.13(일) 일본 후쿠오카`로 표시한다. 2026 주요 대회 4개 개최지는 별도 검증 메타데이터로 연결하며 미확인 날짜·장소를 추정하지 않는다.
 
 Base `b6e6fa1c9115c82a9bd69dfe20272d1d7242da11`; branch `fix/roadmap-typography-metadata-v1`. 원본 역사 62개와 결과·참가·출전권 상태를 보존한다. Node 55/55 및 PC·모바일 390/360px 글씨 크기·줄바꿈·4개 출전권 카드·기록 필터 검증 완료. 운영 배포 증거는 PR에 기록한다. [검증·출처·복구](validation/roadmap-typography-metadata-v1.md).
+
+## 2026-11-23 · 이란 대표팀 Mohsen 직접 VB·현재 소속 및 Ali 그리스 국기 보정
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 사용자가 이란 대표팀 국가 상세에서 Mohsen Delavari의 Volleybox 검색 링크를 직접 선수 프로필로 바꾸고, 해당 프로필의 현재 소속을 반영하며, Ali Haghparast의 Panionios Betsson 소속 국가 그리스 국기를 바로잡도록 요청했다.
+
+Mohsen은 DOB 2001-11-03과 직접 Volleybox ID p222609를 확인해 VNL 검색 링크를 직접 프로필로 승격하고, current-club overlay에 Yaroslavich Yaroslavl / Russia / Russian Superleague를 REVIEWED로 추가한다. Ali는 기존 Panionios Betsson / Greece 데이터가 맞았으며, 문제는 소속팀 국기 렌더러가 Greece를 gr로 변환하면서 국제 국가카드 전용 40개 SVG 폴더에 존재하지 않는 gr.svg를 참조한 데 있었다. 국제 국가 디렉터리의 40개 국기 세트는 보호하고, 소속팀 전용 Greece/Russia SVG를 별도 경로에 추가한다.
+
+대회 당시 원본 명단의 소속은 변경하지 않고 별도 현재 소속 registry overlay만 갱신한다. VNL 284명은 유지되며 직접 Volleybox 135, 검색 149, invalid 0; current-club registry는 133명이다. [검증 기록](docs/validation/iran-player-link-club-flag-fix-v1-20261123.md).
+
