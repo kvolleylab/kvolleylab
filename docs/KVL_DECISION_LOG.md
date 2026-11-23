@@ -993,3 +993,9 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 국제 �
 
 Registry는 133→202명, VNL 284명 중 현재 소속 overlay 적용 가능 선수는 108→177명으로 증가한다. 대회 당시 원본 club 필드는 수정하지 않으며 미확인 107명은 추정하지 않는다. 국가·국기 정규화는 별도 3단계에서 처리한다. [검증 기록](docs/validation/international-current-clubs-batch3-v1-20261123.md).
 
+## 2026-11-23 · 국제 소속팀 국가·국기 정규화
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 국제 명단 전수 점검의 3단계로 현재 소속 데이터는 맞지만 소속리그 국가 국기가 비는 문제를 보완한다. Spain·Estonia·Romania·Portugal의 club-only SVG를 추가하고 Greece·Russia와 함께 별도 club 자산 경로를 사용한다. 국제 국가 디렉터리의 엄격한 40개 flag asset 집합은 변경하지 않는다.
+
+Yurii Synytsia의 current-club `leagueCountry` 값 `중국`은 표준 영문값 `China`로 정규화한다. 선수/클럽/DOB/source는 변경하지 않는다. [검증 기록](docs/validation/international-club-country-flags-v1-20261123.md).
+
