@@ -41,7 +41,8 @@
 - [Volleyball World 2026 결승](https://en.volleyballworld.com/volleyball/competitions/avc-men-cup/schedule/28219/) 및 개별 ID 28190, 28195, 28205, 28210, 28214: 공식 페이지 본문 직접 열람, 날짜·상대·세트 점수 대조.
 - [OCA 한국 남자팀 공식 소개](https://www.ocagames.com/HZ_Info/AG2022-/en/results/volleyball/athlete-profile-nvvomteam6-kor1-republic-of-korea.htm): 2014 컵 결승, 2018 아시안게임 결선과 역사 최종 순위 직접 열람.
 - [FIVB 2023 챌린지컵](https://www.fivb.com/thailand-qualifies-for-fivb-volleyball-challenger-cup-by-winning-the-2023-avc-challenge-cup/): 한국–베트남 3위전 직접 열람.
-- [AVC 2023 준결승](https://asianvolleyball.net/new/thailand-bahrain-one-step-closer-to-winning-avc-challenge-cup-and-the-final-berth-in-fivb-volleyball-challenger-cup/), [AVC 2022 준결승](https://asianvolleyball.net/new/unbeaten-china-japan-set-up-final-clash-of-titans-in-2022-avc-cup-for-men-in-nakhon-pathom/), [AVC 2022 3위전](https://asianvolleyball.net/new/debutants-bahrain-shut-out-korea-in-stunning-three-sets-to-pick-up-bronze-in-2022-avc-cup-for-men/): 공식 원문의 검색 색인 본문을 확인했다. 직접 HTTP 열람은 502/시간 초과. `indexed_official_text_reviewed`와 retrievalNote로 한계를 기록했다.
+- [AVC 2023 준결승](https://asianvolleyball.net/new/thailand-bahrain-one-step-closer-to-winning-avc-challenge-cup-and-the-final-berth-in-fivb-volleyball-challenger-cup/), [AVC 2022 준결승](https://asianvolleyball.net/new/unbeaten-china-japan-set-up-final-clash-of-titans-in-2022-avc-cup-for-men-in-nakhon-pathom/): 공식 원문의 검색 색인 본문을 확인했다. 직접 HTTP 열람은 502/시간 초과. `indexed_official_text_reviewed`와 retrievalNote로 한계를 기록했다.
+- [AVC 2022 3위전](https://asianvolleyball.net/new/debutants-bahrain-shut-out-korea-in-stunning-three-sets-to-pick-up-bronze-in-2022-avc-cup-for-men/): 공식 페이지 직접 열람으로 바레인전 0–3 및 세트별 점수 확인.
 - 2018 정정용 AVC 역대표와 연감도 공식 검색 색인 본문을 교차 확인했다. PDF 화면/원본 파일 직접 열람 완료로 표시하지 않는다.
 - [대한배구협회 월드리그 역대성적](https://www.kva.or.kr/user/template.do?fileNm=bsns4_10): 수록 중인 2006~2014 순위를 재대조했다. 과거 전체 경기 점수 재검증은 아니다.
 
