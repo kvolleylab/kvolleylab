@@ -125,13 +125,14 @@ async function main(){
   assert.match(iriBody,/풀라드 시르잔|Foolad Sirjan Iranian/);
   assert.match(iriBody,/허베이 바오딩|Hebei Baoding Wolves/);
   const ali=iri.page.locator('.kvl-unified-row').filter({hasText:'알리 하그파라스트'}).first();
-  assert.match(await ali.innerText(),/Panionios Betsson/);
-  assert.match(await ali.locator('.kvl-roster-league-flag').getAttribute('src'),/\/assets\/images\/flags\/club\/gr\.svg$/);
+  assert.equal((await ali.locator('.kvl-roster-club-team').innerText()).trim(),'파니오니오스');
+  assert.equal(await ali.locator('.kvl-roster-club-teamline').getAttribute('title'),'Panionios Betsson');
+  assert.match(await ali.locator('.kvl-roster-league-flag').getAttribute('src'),/assets\/images\/flags\/club\/gr\.svg$/);
   assert.equal(await ali.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   const mohsen=iri.page.locator('.kvl-unified-row').filter({hasText:'모센 델라바리'}).first();
   assert.match(await mohsen.innerText(),/Yaroslavich Yaroslavl/);
   assert.equal(await mohsen.locator('.kvl-unified-volleybox').getAttribute('href'),'https://volleybox.net/mohsen-delavari-p222609');
-  assert.match(await mohsen.locator('.kvl-roster-league-flag').getAttribute('src'),/\/assets\/images\/flags\/club\/ru\.svg$/);
+  assert.match(await mohsen.locator('.kvl-roster-league-flag').getAttribute('src'),/assets\/images\/flags\/club\/ru\.svg$/);
   assert.equal(await mohsen.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.deepEqual(iri.errs,[]);
   REPORT.checks.push({name:'Live Iran Mohsen direct VB/current Russia club and Ali Greece flag',status:'PASS'});
