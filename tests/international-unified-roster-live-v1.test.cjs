@@ -104,6 +104,29 @@ test('Current club batch 3 connects reviewed 2026-27 clubs after direct Volleybo
  assert.equal(total,284);assert.equal(known,177);
 });
 
+test('Reviewed Asian current-club batch 3 resolves only exact Volleybox identities',()=>{
+ const expected={
+  '47158':['Jakarta Bhayangkara Presisi','Indonesia'],
+  '162416':['Arago de Sète','France'],
+  '182668':['VK Aktobe','Kazakhstan'],
+  '131056':['Al Khor S.C.','Qatar'],
+  '104250':['Al Arabi S.C.','Qatar'],
+  '30744':['Police Union','Qatar'],
+  '24417':['Al Arabi S.C.','Qatar'],
+  '30765':['Nakhon Ratchasima 3M Films VC','Thailand'],
+  '41808':['Nakhon Ratchasima 3M Films VC','Thailand'],
+  '72544':['UZTELECOM','Uzbekistan'],
+  '131255':['Biên Phòng MB','Vietnam'],
+  '131258':['Biên Phòng MB','Vietnam']
+ };
+ assert.ok(Object.keys(currentClubs.players).length>=218);
+ for(const [id,[club,country]] of Object.entries(expected)){
+  const row=currentClubs.players[id];assert.ok(row,'missing current club '+id);
+  assert.equal(row.club,club);assert.equal(row.leagueCountry,country);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
+});
+
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
  const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
  assert.equal(raw.club,'');assert.equal(raw.clubCountry,'');assert.equal(raw.clubLeague,'');
