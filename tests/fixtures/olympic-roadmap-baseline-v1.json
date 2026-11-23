@@ -4,8 +4,20 @@
   "hashes": {
     "index.html": "e140caef07fed756cc645b988afce4d5b2496c992e6775be5c9a60d985983cdb",
     "roadmap.css": "e4f7924eaa61eb3b62b8e16a90b39fc7068cbdbd95b065c1d5be058331afca70",
-    "roadmap.js": "27d174c7df48b958eac2cdcba929cd8152c2c762d8394105d8fb1a8ffbb4eb8e",
+    "roadmap.js": "2f8e247f3d6ab0955a0b3ac670d1b01626ddafd5e396683f665af3cd5058aa5f",
     "model.mjs": "da193df0a7e9f26eb123d8fb8345f6e068595e66b145a254ef9ec793af113157",
-    "data/roadmap_v1.json": "108a956e97092720d610d9bb70850ae32ba6d774ce9fea5857c2022a9eeb2b74"
-  }
+    "data/roadmap_v1.json": "9eeb72598b2b56b89e3502498b458211b88c90c04faaba26211462b1ead40bf4"
+  },
+  "reviewedAmendments": [
+    {
+      "date": "2026-11-23",
+      "eventId": "kor-m-2026-asian-games",
+      "reason": "Officially verified completed results connected after user reported an empty detail. Other 61 records unchanged; renderer adds country name labels only.",
+      "previousHashes": {
+        "data/roadmap_v1.json": "108a956e97092720d610d9bb70850ae32ba6d774ce9fea5857c2022a9eeb2b74",
+        "roadmap.js": "27d174c7df48b958eac2cdcba929cd8152c2c762d8394105d8fb1a8ffbb4eb8e"
+      },
+      "evidence": "docs/validation/asian-games-roadmap-detail-v1.md"
+    }
+  ]
 }

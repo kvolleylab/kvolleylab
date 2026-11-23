@@ -1,4 +1,4 @@
-const names={AUS:'호주',IRI:'이란',JPN:'일본',PAK:'파키스탄',KAZ:'카자흐스탄',INA:'인도네시아'};
+const names={AUS:'호주',IRI:'이란',JPN:'일본',PAK:'파키스탄',KAZ:'카자흐스탄',INA:'인도네시아',CHN:'중국',TPE:'차이니스 타이베이',PHI:'필리핀',IND:'인도',QAT:'카타르'};
 const stages={bronze:'3위 결정전',semifinal:'준결승','Top 12 cross match':'12강 교차전','7th-8th classification':'7·8위전'};
 export function internalRecordHref(raw) {
   if(typeof raw!=='string'||!raw||/[\s\\]/.test(raw)||/^[a-z]+:/i.test(raw)||raw.startsWith('//'))return null;
