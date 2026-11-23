@@ -987,3 +987,9 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 사용�
 
 결과는 직접 프로필 277명, 검색 유지 7명, invalid 0명이다. Lorenzo Cortesia·Berkay Bayraktar·Dimitar Dimitrov는 KVL DOB와 Volleybox DOB가 충돌해 검색 링크를 유지한다. Pablo Sergio Koukartsev·Denislav Bardarov는 직접 프로필 후보는 있으나 공개 DOB가 없어 확정하지 않으며 Julio Cesar Cardenas Morales·Nivaldo Nadhir Dias Gomez는 검증 가능한 직접 선수페이지를 확정하지 못했다. 대회 원본의 선수 수·등번호·포지션·Active/Reserve 상태는 변경하지 않는다. 현재 소속팀 보강과 국가·국기 정규화는 다음 단계로 분리한다. [검증 기록](docs/validation/international-vb-direct-batch1-v1-20261123.md).
 
+## 2026-11-23 · 국제 남자 현재 소속팀 보강 3차
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 국제 명단 전수 점검의 2단계로 직접 Volleybox 신원이 확인된 선수의 2026/27 현재 소속을 보강한다. CEV·CSV·NORCECA MASTER의 영문명+DOB exact match 및 확정/REPORTED 소속 52명과, 최신 Volleybox 선수·팀 로스터에서 확인한 미국·캐나다 17명을 current-club overlay에 추가한다.
+
+Registry는 133→202명, VNL 284명 중 현재 소속 overlay 적용 가능 선수는 108→177명으로 증가한다. 대회 당시 원본 club 필드는 수정하지 않으며 미확인 107명은 추정하지 않는다. 국가·국기 정규화는 별도 3단계에서 처리한다. [검증 기록](docs/validation/international-current-clubs-batch3-v1-20261123.md).
+
