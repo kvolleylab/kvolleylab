@@ -23,7 +23,7 @@ async function ready(){
     if(href){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
-     if(html.includes('20261120-grid-v1')&&html.includes('20261122-coach-v1')&&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
+     if(html.includes('20261120-grid-v1')&&html.includes('20261122-country-card-v2')&&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const staff=await read('data/team-rosters/v-league/coaches-2026-27.json');
        if(staff?.men?.OKF?.name==='김재헌'&&staff.men.OKF.role==='acting'&&staff.men.OKF.asOf==='2026-11-17')return;
       }
