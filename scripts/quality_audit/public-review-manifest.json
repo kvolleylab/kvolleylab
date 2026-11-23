@@ -765,20 +765,18 @@
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
       "source_ids": [
-        "USER-REQUEST-INTERNATIONAL-ROSTER-20261123",
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
         "DRIVE-1SLPvMniXM3W2ivwSliNbrW59lhsvwppC",
         "DRIVE-1W3JP9qKtdN3qIQf6ImJyZDxF1Dh4ydin",
         "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
         "DRIVE-1NwEjUuvNbFfq5EZ-o8avQQC4XpLzcvnS",
         "DRIVE-18hlWasoq71_ROFe8F_0f186NAU-iP6d6",
-        "https://volleybox.net/mohsen-delavari-p222609",
-        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
         "VOLLEYBOX-PROFILE-REVIEW-20261123"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "99ce3ee94c4451cf876c9dcb3aa3ca6526d673a6c146e035609781f61dd93dd2",
+      "sha256": "a2cc495ee4a00111af8d4caf26503b16a733945acee903b5ad3c320e54fc8e98",
       "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
-      "review_note": "2026/27 current-club registry 360명. CEV·CSV·NORCECA·AVC·Asian Games MASTER와 직접 Volleybox 2026/27 시즌 근거를 exact identity/DOB 기준으로 보강했다. VNL 284명 중 현재 소속 270명 확인, 전체 2026 남자 통합 592명 중 375명 확인. leagueCountry는 영문 canonical 값으로 정규화하며 근거 없는 소속은 미확인으로 유지한다."
+      "review_note": "2026/27 current-club registry 361명. VNL 284명 중 270명, 실제 2026 남자 국가 통합 모델 586명 중 366명의 현재 소속을 확인한다. HTTPS 근거·DOB 일치 기준을 유지하며 근거 없는 소속은 미확인으로 남긴다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
@@ -833,21 +831,73 @@
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
       "source_ids": [
-        "USER-REQUEST-INTERNATIONAL-ROSTER-20261123",
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
         "KVL-COMP-000001",
         "DRIVE-1SLPvMniXM3W2ivwSliNbrW59lhsvwppC",
         "DRIVE-1W3JP9qKtdN3qIQf6ImJyZDxF1Dh4ydin",
         "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
-        "KVL-AVC-M-CONTINENTAL-2026",
-        "KVL-ASIAN-GAMES-M-2026",
-        "https://volleybox.net/mohsen-delavari-p222609",
-        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
         "VOLLEYBOX-PROFILE-REVIEW-20261123"
       ],
       "verified_at": "2026-11-23",
       "sha256": "305ddb2194eb0f978cebe96098b2d1af1247139360d287a5fafbae521de2ad89",
       "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
-      "review_note": "2026 VNL 남자 284명은 유지. 영문명+DOB exact match, 동일 Volleybox ID, 후속 대륙 MASTER 및 직접 프로필 검수로 검색링크 144건을 직접 선수 프로필로 승격했다. 직접 279, 검색 5, invalid 0. 공식 VNL DOB와 Volleybox/후속 MASTER DOB가 충돌하는 5명은 검색 링크를 유지해 오연결을 방지한다."
+      "review_note": "2026 VNL 남자 284명은 유지. 직접 Volleybox 279, 검색 5, invalid 0. 이름+DOB exact match와 공개 프로필 교차검증만 직접 링크로 승격했으며 DOB 충돌 5명은 검색 링크를 유지한다."
+    },
+    "data/competitions/asian-games-men-2026/rosters.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
+        "DRIVE-18hlWasoq71_ROFe8F_0f186NAU-iP6d6",
+        "KVL-ASIAN-GAMES-M-2026",
+        "VOLLEYBOX-PROFILE-REVIEW-20261123"
+      ],
+      "verified_at": "2026-11-23",
+      "sha256": "6d2cee78e4758287fc73b73427d28f85ea855e767c7d334ba2454f168ff2682e",
+      "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
+      "review_note": "아시안게임 남자 원본 선수 수·등번호·엔트리 상태는 유지. 동일 2026 대회 exact name+DOB로 검증된 직접 Volleybox 메타데이터 11건과 Khizar Hayat 직접 프로필을 보강하고, Naji Mahmoud는 Volleybox 중복 프로필 DOB 충돌 때문에 검색 링크로 fail-closed한다."
+    },
+    "data/competitions/avc-men-continental-2026-rosters.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
+        "DRIVE-1NwEjUuvNbFfq5EZ-o8avQQC4XpLzcvnS",
+        "KVL-AVC-M-CONTINENTAL-2026",
+        "VOLLEYBALLWORLD-AVC-CONTINENTAL-2026",
+        "VOLLEYBOX-PROFILE-REVIEW-20261123"
+      ],
+      "verified_at": "2026-11-23",
+      "sha256": "939c1c4bca064aedf221b16698942433f990776a0b331998dd6fb5ccd1bdb18a",
+      "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
+      "review_note": "AVC 대륙선수권 원본 참가·선수 수는 유지. NZL 4명의 exact DOB 직접 Volleybox 메타데이터를 보강하고, QAT Naji Mahmoud DOB를 공식 1992-12-16으로 정정하며 ambiguous Volleybox direct ID는 검색 링크로 되돌린다."
+    },
+    "data/competition/avc-men-cup-2026-men-rosters.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
+        "KVL-COMP-000003",
+        "VOLLEYBALLWORLD-AVC-MEN-CUP-2026",
+        "VOLLEYBOX-PROFILE-REVIEW-20261123"
+      ],
+      "verified_at": "2026-11-23",
+      "sha256": "05c7752174dfc1977ed1b8aafc009bb3ab0cb3094c5271910f395fd786e74110",
+      "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
+      "review_note": "AVC컵 남자 원본 참가·선수 수는 유지. Liam Chris Smith와 Adam Al Jaradi의 exact DOB 직접 Volleybox 메타데이터를 보강하고 Naji Mahmoud는 공식 DOB와 불일치하는 직접 프로필을 제거해 검색 링크로 유지한다."
+    },
+    "data/competitions/avc-men-continental-2026-volleybox-links.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
+        "KVL-AVC-M-CONTINENTAL-2026",
+        "VOLLEYBOX-PROFILE-REVIEW-20261123"
+      ],
+      "verified_at": "2026-11-23",
+      "sha256": "92630497d39367d64702f4e90b40f06c2d781c6179a1b02fb2adb6923fa60f99",
+      "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
+      "review_note": "AVC 대륙선수권 직접 Volleybox 보조 레지스트리에서 QAT #19 Naji Mahmoud의 ambiguous p131063 override를 제거했다. 공식 DOB와 일치하지 않는 중복 Volleybox 프로필을 직접 연결하지 않는다."
     }
   }
 }
