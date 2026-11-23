@@ -27,18 +27,33 @@ function defaultRows(event) {
   }
   return rows.slice(0,3);
 }
-function compactDates(event) {
-  // Future rows and Tokyo already display their dates/held-year in the header.
-  if(event.eventStatus==='scheduled_confirmed'||event.id==='olympics-2020-men')return '';
-  const start=event.startDate,end=event.endDate;
-  if(start&&end){const from=start.replaceAll('-','.');return start===end?from:`${from}–${end.startsWith(start.slice(0,4))?end.slice(5).replace('-','.'):end.replaceAll('-','.')}`;}
-  if(end)return `${end.replaceAll('-','.')} 종료 · 시작일 확인 중`;
-  return '';
+function calendarDate(value,short=false) {
+  if(typeof value!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return '';
+  const date=new Date(`${value}T00:00:00Z`);
+  if(!Number.isFinite(date.getTime())||date.toISOString().slice(0,10)!==value)return '';
+  return `${(short?value.slice(5):value).replaceAll('-','.')}(${'일월화수목금토'[date.getUTCDay()]})`;
+}
+export function compactDates(event) {
+  const start=calendarDate(event.startDate),end=calendarDate(event.endDate);
+  let label='';
+  if(start&&end)label=event.startDate===event.endDate?start:`${start}~${calendarDate(event.endDate,event.startDate.slice(0,4)===event.endDate.slice(0,4))}`;
+  else if(end)label=`${end} 종료 · 시작일 확인 중`;
+  else if(start)label=`${start} 시작 · 종료일 확인 중`;
+  if(label&&event.dateScope==='games_dates')label+=' (올림픽 전체 기간)';
+  return label;
+}
+function locationView(event,db,summaries) {
+  const entry=summaries?.locations?.find(l=>l.eventId===event.id&&l.competitionId===event.competitionId);
+  if(entry?.verificationStatus==='confirmed'&&entry.label&&entry.verifiedAt&&entry.sourceIds?.length){
+    const sources=entry.sourceIds.map(id=>db.sources.find(s=>s.id===id)||summaries.sources?.find(s=>s.id===id));
+    if(sources.every(s=>s?.access==='official_source_reviewed'&&s.verifiedAt&&/^https:\/\//.test(s.url)))return {location:entry.label,locationSources:sources};
+  }
+  return {location:typeof event.location==='string'?event.location:'',locationSources:[]};
 }
 export function compactEventView(event,db,summaries) {
   const entry=summaries?.schemaVersion===1?summaries.entries?.find(s=>s.eventId===event.id):null;
   const accepted=entry&&validateSummaryEntry(entry,db).length===0?entry:null;
   const rows=accepted?accepted.rows:defaultRows(event),date=compactDates(event);
   const notice=event.verificationStatus==='partial'?'일부 경위 확인 중':accepted?.notice||'';
-  return {date,rows,notice,recordHref:internalRecordHref(event.existingLinks?.kvlHref)||internalRecordHref(accepted?.recordHref),relatedEventIds:accepted?[...new Set(accepted.basis.map(b=>b.eventId))].filter(id=>id!==event.id):[]};
+  return {date,...locationView(event,db,summaries),rows,notice,recordHref:internalRecordHref(event.existingLinks?.kvlHref)||internalRecordHref(accepted?.recordHref),relatedEventIds:accepted?[...new Set(accepted.basis.map(b=>b.eventId))].filter(id=>id!==event.id):[]};
 }
