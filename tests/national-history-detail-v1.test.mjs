@@ -2,14 +2,48 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {compactEventView,compactDates,validateSummaryEntry,internalRecordHref} from '../assets/js/national-history-detail-model-v1.mjs';
+import {selectEvents} from '../assets/js/national-history-model-v1.mjs';
 const db=JSON.parse(readFileSync(new URL('../data/national/men-senior-history-v1.json',import.meta.url)));
 const summaries=JSON.parse(readFileSync(new URL('../data/national/men-senior-history-summaries-v1.json',import.meta.url)));
 const event=(id,data=db)=>data.events.find(e=>e.id===id);
 const view=(id,data=db,copy=summaries)=>compactEventView(event(id,data),data,copy);
 
+test('completed Asian Games connects six Korea results and shows three decisive matches',()=>{
+ const id='kor-m-2026-asian-games',record=event(id),result=view(id);
+ const competition=JSON.parse(readFileSync(new URL('../'+record.existingLinks.matchResultsPath,import.meta.url)));
+ const korea=competition.matches.filter(m=>m.home.code==='KOR'||m.away.code==='KOR');
+ assert.equal(record.eventStatus,'completed');
+ assert.equal(record.finalRank,competition.finalRanking.find(r=>r.code==='KOR').rank);
+ assert.equal(record.matches.length,6);
+ assert.deepEqual(record.existingLinks.matchIds,korea.map(m=>m.id));
+ for(const m of record.matches){
+  const original=korea.find(x=>x.id===m.kvlMatchId);
+  assert.ok(original,m.kvlMatchId);
+  const side=original.home.code==='KOR'?'home':'away',other=side==='home'?'away':'home';
+  assert.equal(m.date,original.date);
+  assert.equal(m.opponent,original[other].code);
+  assert.equal(m.setScore,`${original.score[side]}-${original.score[other]}`);
+  if(m.setScores)assert.deepEqual(m.setScores,original.score.sets.map(s=>[s[side],s[other]]));
+  assert.ok(m.sourceIds.every(sourceId=>db.sources.some(s=>s.id===sourceId&&s.access==='official_source_reviewed')));
+ }
+ assert.deepEqual(result.rows,[
+  {label:'8강',match:{opponent:'이란',score:'2–3'}},
+  {label:'5–8위전',match:{opponent:'인도',score:'1–3'}},
+  {label:'7·8위전',match:{opponent:'카타르',score:'3–0'}}
+ ]);
+ assert.equal(result.date,'2026.09.27(일)~10.03(토)');
+ assert.equal(result.location,'일본 아이치');
+ assert.equal(result.recordHref,'competition-engine.html?competition=asian-games-men-2026');
+ assert.deepEqual(selectEvents([record],'olympic'),[]);
+ assert.deepEqual(selectEvents([record],'failure'),[]);
+ const changed=structuredClone(db);event(id,changed).matches[5].setScore='3-1';
+ assert.ok(validateSummaryEntry(summaries.entries.find(e=>e.eventId===id),changed).includes('basis_changed'));
+ assert.ok(!view(id,changed).rows.some(r=>r.label==='7·8위전'));
+});
+
 test('every curated summary has a unique event, original evidence and unchanged field basis',()=>{
- assert.equal(summaries.entries.length,16);
- assert.equal(new Set(summaries.entries.map(e=>e.eventId)).size,16);
+ assert.equal(summaries.entries.length,17);
+ assert.equal(new Set(summaries.entries.map(e=>e.eventId)).size,17);
  for(const entry of summaries.entries){
   assert.deepEqual(validateSummaryEntry(entry,db),[],entry.eventId);
   assert.ok(entry.basis.some(b=>b.eventId===entry.eventId&&b.field==='updatedAt'));

@@ -1504,6 +1504,206 @@
         }
       ],
       "recordHref": "fivb-world-ranking-la28-2028.html?gender=men"
+    },
+    {
+      "eventId": "kor-m-2026-asian-games",
+      "rows": [
+        {
+          "label": "8강",
+          "match": {
+            "opponent": "이란",
+            "score": "2–3"
+          }
+        },
+        {
+          "label": "5–8위전",
+          "match": {
+            "opponent": "인도",
+            "score": "1–3"
+          }
+        },
+        {
+          "label": "7·8위전",
+          "match": {
+            "opponent": "카타르",
+            "score": "3–0"
+          }
+        }
+      ],
+      "sourceIds": [
+        "now-ag26_jva_results",
+        "now-ag26_jva_overview",
+        "now-ag26_official_schedule",
+        "now-ag26_official_qf",
+        "now-ag26_official_classification",
+        "now-ag26_official_seventh"
+      ],
+      "basis": [
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "result",
+          "value": "7위"
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "eventStatus",
+          "value": "completed"
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "actualParticipation",
+          "value": true
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "finalRank",
+          "value": 7
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "qualificationOutcomes",
+          "value": []
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "matches",
+          "value": [
+            {
+              "date": "2026-09-27",
+              "stage": "조별리그 D조",
+              "opponent": "PHI",
+              "setScore": "3-0",
+              "kvlMatchId": "AG26-M04",
+              "sourceIds": [
+                "now-ag26_official_schedule"
+              ]
+            },
+            {
+              "date": "2026-09-28",
+              "stage": "조별리그 D조",
+              "opponent": "TPE",
+              "setScore": "3-1",
+              "kvlMatchId": "AG26-M15",
+              "sourceIds": [
+                "now-ag26_official_schedule"
+              ]
+            },
+            {
+              "date": "2026-09-29",
+              "stage": "조별리그 D조",
+              "opponent": "CHN",
+              "setScore": "2-3",
+              "kvlMatchId": "AG26-M23",
+              "sourceIds": [
+                "now-ag26_official_schedule"
+              ]
+            },
+            {
+              "date": "2026-10-01",
+              "stage": "8강",
+              "opponent": "IRI",
+              "setScore": "2-3",
+              "kvlMatchId": "AG26-M30",
+              "sourceIds": [
+                "now-ag26_official_qf"
+              ],
+              "setScores": [
+                [
+                  23,
+                  25
+                ],
+                [
+                  25,
+                  18
+                ],
+                [
+                  25,
+                  21
+                ],
+                [
+                  20,
+                  25
+                ],
+                [
+                  12,
+                  15
+                ]
+              ]
+            },
+            {
+              "date": "2026-10-02",
+              "stage": "5–8위전",
+              "opponent": "IND",
+              "setScore": "1-3",
+              "kvlMatchId": "AG26-M39",
+              "sourceIds": [
+                "now-ag26_official_classification"
+              ],
+              "setScores": [
+                [
+                  16,
+                  25
+                ],
+                [
+                  20,
+                  25
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  23,
+                  25
+                ]
+              ]
+            },
+            {
+              "date": "2026-10-03",
+              "stage": "7·8위전",
+              "opponent": "QAT",
+              "setScore": "3-0",
+              "kvlMatchId": "AG26-M45",
+              "sourceIds": [
+                "now-ag26_official_seventh"
+              ],
+              "setScores": [
+                [
+                  25,
+                  20
+                ],
+                [
+                  25,
+                  23
+                ],
+                [
+                  25,
+                  16
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "notes",
+          "value": [
+            "한국은 조별리그 D조 2승 1패로 8강에 진출했다. 이란에 2–3으로 패한 뒤 순위결정전을 거쳐 최종 7위로 마쳤다.",
+            "공식 결과 시스템에서 한국 6경기의 날짜·상대·세트 승수와 결선 3경기의 세트별 득점을 확인하고 기존 KVL 경기 ID로 연결했다.",
+            "조별리그 세트별 득점은 이번 검증 범위에 포함하지 않았으며, 전체 대회 기록은 연결된 대회 페이지에서 확인할 수 있다."
+          ]
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "verifiedAt",
+          "value": "2026-11-23"
+        },
+        {
+          "eventId": "kor-m-2026-asian-games",
+          "field": "updatedAt",
+          "value": "2026-11-23"
+        }
+      ]
     }
   ],
   "sources": [
@@ -1878,6 +2078,61 @@
       "verifiedAt": "2026-11-16",
       "access": "official_source_reviewed",
       "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_jva_results",
+      "title": "第20回アジア競技大会（2026/愛知・名古屋）試合結果",
+      "url": "https://www.jva.or.jp/international/2026/asia_men/?entry=results",
+      "publisher": "Japan Volleyball Association",
+      "verifiedAt": "2026-11-16",
+      "access": "official_source_reviewed",
+      "locator": null,
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_official_schedule",
+      "title": "아이치·나고야 2026 공식 남자배구 경기 결과",
+      "url": "https://results.asiangames2026.org/#/discipline/VVO/schedule/by-event/M.TEAM6-------------",
+      "publisher": "Aichi-Nagoya Asian Games Organising Committee / Bornan",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "남자부 Pool D 및 결선. 한국 6경기 날짜·상대·세트 승수 확인.",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_official_qf",
+      "title": "아이치·나고야 2026 공식 8강 · 대한민국–이란",
+      "url": "https://results.asiangames2026.org/#/discipline/VVO/results/M.TEAM6-------------.QFNL.000400--",
+      "publisher": "Aichi-Nagoya Asian Games Organising Committee / Bornan",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "2026-10-01 한국 2–3 이란; 세트별 득점 확인.",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_official_classification",
+      "title": "아이치·나고야 2026 공식 5–8위전 · 인도–대한민국",
+      "url": "https://results.asiangames2026.org/#/discipline/VVO/results/M.TEAM6-------------.SF5-.000200--",
+      "publisher": "Aichi-Nagoya Asian Games Organising Committee / Bornan",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "2026-10-02 인도 3–1 한국; 세트별 득점 확인.",
+      "version": null,
+      "publishedAt": null
+    },
+    {
+      "id": "now-ag26_official_seventh",
+      "title": "아이치·나고야 2026 공식 7·8위전 · 카타르–대한민국",
+      "url": "https://results.asiangames2026.org/#/discipline/VVO/results/M.TEAM6-------------.SF5-.000400--",
+      "publisher": "Aichi-Nagoya Asian Games Organising Committee / Bornan",
+      "verifiedAt": "2026-11-23",
+      "access": "official_source_reviewed",
+      "locator": "2026-10-03 카타르 0–3 한국; 세트별 득점 확인.",
       "version": null,
       "publishedAt": null
     }
