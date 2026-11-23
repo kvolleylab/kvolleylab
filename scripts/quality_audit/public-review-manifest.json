@@ -867,12 +867,13 @@
         "KVL-AVC-M-CONTINENTAL-2026",
         "KVL-ASIAN-GAMES-M-2026",
         "https://volleybox.net/mohsen-delavari-p222609",
-        "VOLLEYBOX-DIRECT-PROFILES-BATCH1-20261123"
+        "VOLLEYBOX-DIRECT-PROFILES-BATCH1-20261123",
+        "https://volleybox.net/julio-cesar-cardenas-p25001"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "1c313b756cf7bfe7a2c8fea0fb835356bf29b1f3264cbf3b82c856c1ae2f843f",
-      "evidence": "docs/validation/international-vb-direct-batch1-v1-20261123.md",
-      "review_note": "2026 VNL 남자 284명 원본 선수 수·참가 상태는 유지. 영문명+DOB exact match 및 직접 Volleybox 프로필의 DOB 대조로 검색 링크 142건을 직접 프로필로 승격했다. 직접 277, 검색 7, invalid 0. DOB 충돌·DOB 미공개·직접 프로필 미확정 7명은 검색 링크를 유지한다."
+      "sha256": "3fcdd10a250529a1b1b4aaa573f91c80b6b48f4954a50b20c6b81c02b33ba089",
+      "evidence": "docs/validation/international-vb-final-search-cleanup-v1-20261123.md",
+      "review_note": "2026 VNL 남자 284명 원본 선수 수·참가 상태 유지. Julio Cesar Cardenas Morales는 이름+DOB exact match로 검색 링크를 직접 Volleybox p25001로 승격했다. 직접 278, 검색 6, invalid/없음 0. DOB 충돌·DOB 미공개·직접 프로필 미확정 6명은 검색 링크 유지."
     }
   }
 }
