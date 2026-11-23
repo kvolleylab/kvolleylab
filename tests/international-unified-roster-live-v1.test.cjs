@@ -75,7 +75,7 @@ test('Current-club registry batch3 keeps normalized country values and full flag
  assert.ok(Object.keys(currentClubs.players).length>=360);
  assert.ok(Object.values(currentClubs.players).every(p=>!/[가-힣]/.test(String(p.leagueCountry||''))),'leagueCountry must use canonical English names');
  const standard=fs.readFileSync(path.join(ROOT,'assets/js/kvl-team-roster-standard-v1.js'),'utf8');
- for(const pair of ["Estonia:'ee'","Azerbaijan:'az'","'Saudi Arabia':'sa'","Indonesia:'id'","Philippines:'ph'","Thailand:'th'","Vietnam:'vn'"])
+ for(const pair of ["Estonia:'ee'","Azerbaijan:'az'","'Saudi Arabia':'sa'","Indonesia:'id'","Philippines:'ph'","Thailand:'th'","Vietnam:'vn'","'New Zealand':'nz'"])
   assert.ok(standard.includes(pair),pair);
  for(const code of ['gr','ru','pt','ro','es','ee','az','sa'])
   assert.ok(fs.existsSync(path.join(ROOT,'assets/images/flags/club',code+'.svg')),code+' supplemental club flag');
