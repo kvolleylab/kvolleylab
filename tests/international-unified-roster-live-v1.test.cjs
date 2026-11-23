@@ -5,6 +5,7 @@ const unified=require('../assets/js/kvl-international-unified-roster-v1.js');
 const intl=require('../assets/js/kvl-international-countries-v1.js');
 const index=read('data/international/country-roster-index-v1.json'),countries=read('data/international/country-directory-v1.json');
 const registry=read('data/competitions/avc-men-continental-2026-clubs-2026-27.json');
+const volleyboxRegistry=read('data/competitions/avc-men-continental-2026-volleybox-links.json');
 const currentClubs=read('data/international/player-club-registry-2026-27-v1.json');
 const master=read('data/master/player_master_international_v1.json');
 const sourceCache=new Map();
@@ -15,7 +16,7 @@ function scope(code,gender,year=2026,club=true){
  const sets=refs.map(snapshot=>({snapshot,team:intl.sourceTeam(snapshot,source(snapshot.source_path))}));
  for(const x of sets)assert.ok(x.team&&Array.isArray(x.team.players),x.snapshot.snapshot_id);
  const before=JSON.stringify(sets);
- const model=unified.build(sets,{country,gender,year,clubRegistry:club?registry:null,playerClubRegistry:currentClubs,
+ const model=unified.build(sets,{country,gender,year,clubRegistry:club?registry:null,playerClubRegistry:currentClubs,volleyboxRegistry,
   profileResolver:raw=>intl.verifiedProfileLink(intl.normalizePlayer(raw),gender,country,master,{isConflict:id=>/^KVL-P-0016(?:2\d|3\d|4[0-5])$/.test(id)})});
  assert.equal(JSON.stringify(sets),before,'unified view must not mutate official source player arrays');
  return model;
@@ -56,8 +57,9 @@ test('Different Fukatsu with same #3 do not merge and exact verified club/Volley
  assert.ok(o);assert.equal(o.clubCountry,'Italy');assert.ok(o.clubLeague);
  const a=m.rows.find(p=>p.en==='Yudai Arai');
  assert.ok(a);assert.equal(a.clubCountry,'Japan','Asian Games confirmed club country must be reused');
- const unverified=m.rows.find(p=>p.en==='Akihiro Fukatsu');
- assert.ok(unverified);assert.equal(unverified.club,'');assert.equal(unverified.clubCountry,'');
+ const akihiro=m.rows.find(p=>p.en==='Akihiro Fukatsu');
+ assert.ok(akihiro);assert.equal(akihiro.club,'Tokyo Great Bears');assert.equal(akihiro.clubCountry,'Japan');
+ assert.equal(akihiro.directBox,'https://volleybox.net/akihiro-fukatsu-p2818');
  assert.equal(m.rows.find(p=>p.en==='Akihiro Yamauchi').height,204);
  assert.ok(m.rows.filter(x=>x.club).length>=10);
 });
