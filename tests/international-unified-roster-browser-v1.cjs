@@ -110,9 +110,10 @@ async function testApp(){
   assert.doesNotMatch(await ishikawa.locator('.kvl-unified-name').innerText(),/Yuki Ishikawa/,'Quick roster list is Korean-first');
   const arai=page.locator('.kvl-unified-row').filter({hasText:'아라이 유다이'}).first();
   assert.match((await arai.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^일본(?: · .+)?$/,'Do not invent a league when the verified source only provides Japan');
-  const unknownClub=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
-  assert.match(await unknownClub.locator('.kvl-unified-club').innerText(),/미확인/);
-  assert.match(await unknownClub.locator('.kvl-roster-club-team').innerText(),/미확인/);
+  const akihiro=page.locator('.kvl-unified-row').filter({hasText:'후카츠 아키히로'}).first();
+  assert.match(await akihiro.locator('.kvl-unified-club').innerText(),/Tokyo Great Bears/);
+  assert.equal((await akihiro.locator('.kvl-roster-club-team').innerText()).trim(),'Tokyo Great Bears');
+  assert.match((await akihiro.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^일본$/);
 
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-major').count(),1);
   assert.equal(await ishikawa.locator('.kvl-unified-dot.is-regular').count(),1);
@@ -187,6 +188,30 @@ async function testApp(){
   assert.deepEqual(iri.errors,[]);
   REPORT.views.push({name:'Iran Mohsen direct Volleybox/current Russia club and Ali Greece club flag',status:'PASS'});
   await iri.page.close();
+  const flagCases=[
+   ['ARG','Club Voleibol Guaguas','club/es.svg'],
+   ['AUS','Bigbank Tartu','club/ee.svg'],
+   ['SLO','CS Arcada Galați','club/ro.svg'],
+   ['CHN','Sporting CP','club/pt.svg'],
+   ['CUB','Al-Hilal VC','club/sa.svg'],
+   ['PHI','Ordu Sports Club','club/az.svg'],
+   ['INA','Jakarta LavAni Livin Transmedia','4x3/id.svg'],
+   ['THA','Diamond Food Fine Chef Samutsakorn','4x3/th.svg'],
+   ['VIE','Công an TP.HCM','4x3/vn.svg'],
+   ['NZL','Bay of Plenty','4x3/nz.svg']
+  ];
+  for(const [country,clubTitle,expected] of flagCases){
+   const view=await open(browser,1440,'category=international&gender=men&country='+country+'&year=2026');
+   await view.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+   const line=view.page.locator('.kvl-roster-club-teamline[title="'+clubTitle.replace(/"/g,'\\"')+'"]').first();
+   await line.waitFor({timeout:30000});
+   const img=line.locator('.kvl-roster-league-flag');
+   assert.ok((await img.getAttribute('src')).endsWith(expected),country+' '+clubTitle+' flag path');
+   assert.equal(await img.evaluate(async el=>{try{await el.decode()}catch{}return el.naturalWidth>0}),true,country+' flag must decode');
+   assert.deepEqual(view.errors,[]);
+   await view.page.close();
+  }
+  REPORT.views.push({name:'Batch3 club-country flags decode for supplemental and existing Asian mappings',status:'PASS'});
   const brn=await open(browser,1440,'category=international&gender=men&country=BRN&year=2026');
   await brn.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
   assert.equal(await brn.page.locator('.ktd-country-link').count(),2);

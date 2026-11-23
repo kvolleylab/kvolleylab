@@ -5,6 +5,7 @@ const unified=require('../assets/js/kvl-international-unified-roster-v1.js');
 const intl=require('../assets/js/kvl-international-countries-v1.js');
 const index=read('data/international/country-roster-index-v1.json'),countries=read('data/international/country-directory-v1.json');
 const registry=read('data/competitions/avc-men-continental-2026-clubs-2026-27.json');
+const volleyboxRegistry=read('data/competitions/avc-men-continental-2026-volleybox-links.json');
 const currentClubs=read('data/international/player-club-registry-2026-27-v1.json');
 const master=read('data/master/player_master_international_v1.json');
 const sourceCache=new Map();
@@ -15,7 +16,7 @@ function scope(code,gender,year=2026,club=true){
  const sets=refs.map(snapshot=>({snapshot,team:intl.sourceTeam(snapshot,source(snapshot.source_path))}));
  for(const x of sets)assert.ok(x.team&&Array.isArray(x.team.players),x.snapshot.snapshot_id);
  const before=JSON.stringify(sets);
- const model=unified.build(sets,{country,gender,year,clubRegistry:club?registry:null,playerClubRegistry:currentClubs,
+ const model=unified.build(sets,{country,gender,year,clubRegistry:club?registry:null,playerClubRegistry:currentClubs,volleyboxRegistry,
   profileResolver:raw=>intl.verifiedProfileLink(intl.normalizePlayer(raw),gender,country,master,{isConflict:id=>/^KVL-P-0016(?:2\d|3\d|4[0-5])$/.test(id)})});
  assert.equal(JSON.stringify(sets),before,'unified view must not mutate official source player arrays');
  return model;
@@ -56,10 +57,30 @@ test('Different Fukatsu with same #3 do not merge and exact verified club/Volley
  assert.ok(o);assert.equal(o.clubCountry,'Italy');assert.ok(o.clubLeague);
  const a=m.rows.find(p=>p.en==='Yudai Arai');
  assert.ok(a);assert.equal(a.clubCountry,'Japan','Asian Games confirmed club country must be reused');
- const unverified=m.rows.find(p=>p.en==='Akihiro Fukatsu');
- assert.ok(unverified);assert.equal(unverified.club,'');assert.equal(unverified.clubCountry,'');
+ const akihiro=m.rows.find(p=>p.en==='Akihiro Fukatsu');
+ assert.ok(akihiro);assert.equal(akihiro.club,'Tokyo Great Bears');assert.equal(akihiro.clubCountry,'Japan');
+ assert.equal(akihiro.directBox,'https://volleybox.net/akihiro-fukatsu-p2818');
  assert.equal(m.rows.find(p=>p.en==='Akihiro Yamauchi').height,204);
  assert.ok(m.rows.filter(x=>x.club).length>=10);
+});
+test('2026 men VNL direct Volleybox coverage and unresolved DOB conflicts stay explicit',()=>{
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ const players=Object.values(vnl.rosters).flatMap(team=>team.players||[]);
+ const direct=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(p.volleybox||'')));
+ const search=players.filter(p=>/volleybox\.net\/(?:ko\/)?search\?q=/i.test(String(p.volleybox||'')));
+ assert.equal(players.length,284);
+ assert.equal(direct.length,279);
+ assert.equal(search.length,5);
+ assert.deepEqual(new Set(search.map(p=>p.en)),new Set(['Domenico Pace','Lorenzo Cortesia','Dimitar Dimitrov','Berkay Bayraktar','Murat Yenipazar']));
+});
+test('Current-club registry batch3 keeps normalized country values and full flag coverage metadata',()=>{
+ assert.ok(Object.keys(currentClubs.players).length>=361);
+ assert.ok(Object.values(currentClubs.players).every(p=>!/[가-힣]/.test(String(p.leagueCountry||''))),'leagueCountry must use canonical English names');
+ const standard=fs.readFileSync(path.join(ROOT,'assets/js/kvl-team-roster-standard-v1.js'),'utf8');
+ for(const pair of ["Estonia:'ee'","Azerbaijan:'az'","'Saudi Arabia':'sa'","Indonesia:'id'","Philippines:'ph'","Thailand:'th'","Vietnam:'vn'","'New Zealand':'nz'"])
+  assert.ok(standard.includes(pair),pair);
+ for(const code of ['gr','ru','pt','ro','es','ee','az','sa'])
+  assert.ok(fs.existsSync(path.join(ROOT,'assets/images/flags/club',code+'.svg')),code+' supplemental club flag');
 });
 test('Current international club registry supplements older tournament snapshots without changing source arrays',()=>{
  assert.equal(currentClubs.season,'2026-27');
@@ -108,12 +129,42 @@ test('No unapproved athlete id reuse and false standalone Volleybox links',()=>{
  assert.equal(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').id,'');
  assert.ok(unified.volleybox('https://volleybox.net/ko/search?q=Akihiro').search);
  assert.equal(unified.volleybox('https://volleybox.net/yuki-ishikawa-p705').id,'705');
+ assert.equal(unified.volleybox('https://volleybox.net/zh/wang-bing-syun-p240144').id,'240144');
+ assert.equal(unified.volleybox('https://volleybox.net/zh/wang-bing-syun-p240144').direct,'https://volleybox.net/wang-bing-syun-p240144');
  assert.equal(unified.volleybox('javascript:alert(1)').id,'');
  assert.equal(unified.volleybox('https://volleybox.net.evil.com/x-p123').id,'');
  const sample=unified.identify({name:'선수',en:'Player',dob:'2026-01-01',position:'O',heightCm:190,volleybox:'https://volleybox.net/player-p1'});
  assert.equal(sample.position,'OP');
  assert.equal(sample.number,null);
  assert.ok(!sample.sourcePlayerId);
+});
+test('2026 men unified metadata batch3 has stable direct-link and current-club coverage',()=>{
+ const codes=[...new Set(index.snapshots.filter(s=>s.gender==='men'&&s.year===2026).map(s=>s.country_code))];
+ const totals={players:0,source:0,direct:0,search:0,noLink:0,club:0,unknownClub:0};
+ for(const code of codes){
+  const m=scope(code,'men',2026);
+  totals.players+=m.total;totals.source+=m.sourceTotal;
+  totals.direct+=m.rows.filter(p=>p.directBox).length;
+  totals.search+=m.rows.filter(p=>!p.directBox&&p.searchBox).length;
+  totals.noLink+=m.rows.filter(p=>!p.directBox&&!p.searchBox).length;
+  totals.club+=m.rows.filter(p=>p.club).length;
+  totals.unknownClub+=m.rows.filter(p=>!p.club).length;
+ }
+ assert.deepEqual(totals,{players:586,source:796,direct:549,search:8,noLink:29,club:366,unknownClub:220});
+ const tpe=scope('TPE','men',2026);
+ assert.ok(tpe.rows.some(p=>p.directBox==='https://volleybox.net/wang-bing-syun-p240144'),'localized /zh/ profile must canonicalize to direct VB');
+});
+test('Qatar Naji Mahmoud stays fail-closed on ambiguous Volleybox duplicates',()=>{
+ const qat=index.snapshots.filter(s=>s.country_code==='QAT'&&s.gender==='men'&&s.year===2026);
+ const rows=qat.flatMap(s=>source(s.source_path) ? [s] : []);
+ assert.equal(rows.length,3);
+ for(const s of qat){
+  const team=intl.sourceTeam(s,source(s.source_path));
+  const p=team.players.find(x=>/Naji Mahmoud/i.test(String(x.en||x.name_en||x.name||x.officialName||'')));
+  if(!p)continue;
+  assert.equal(p.dob,'1992-12-16');
+  assert.match(String(p.volleybox||p.volleybox_url||''),/volleybox\.net\/ko\/search\?q=Naji\+Mahmoud/);
+ }
 });
 test('All countries, genders and years render their own source matches and never conflate unknown women DOB',()=>{
  const keys=new Set(index.snapshots.map(s=>s.country_code+'/'+s.gender+'/'+s.year));

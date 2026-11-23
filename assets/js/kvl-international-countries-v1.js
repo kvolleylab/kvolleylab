@@ -297,13 +297,13 @@ function render(host,opts){
      const link=verifiedProfileLink(p,gender,country,master,collision);
      const profile=p.official_profile?'<a href="'+esc(p.official_profile)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'';
      const registeredVolleybox=volleyboxRegistry?.teams?.[country.code]?.[String(p.number)]||'';
-     const volleyboxUrl=/^https:\/\/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(registeredVolleybox)?registeredVolleybox:p.volleybox;
+     const volleyboxUrl=/^https:\/\/volleybox\.net\/(?:[a-z]{2}\/)?[a-z0-9-]+-p\d+\/?$/i.test(registeredVolleybox)?registeredVolleybox:p.volleybox;
      const volleyboxSearch=!registeredVolleybox&&p.is_volleybox_search;
      const vol=volleyboxUrl?'<a href="'+esc(volleyboxUrl)+'" target="_blank" rel="noopener noreferrer" aria-label="'+(volleyboxSearch?'Volleybox 검색 결과 열기':'Volleybox 선수 프로필 열기')+'">'+(volleyboxSearch?'VB 검색':'VB-&gt;')+'</a>':'';
      const registered=clubRegistry?.teams?.[country.code]?.[String(p.number)];
      const verified=registered?.status==='CONFIRMED'&&typeof registered.club==='string'
       &&!!registered.club.trim()&&/^https:\/\//.test(registered.source||'');
-     const currentId=(String(volleyboxUrl||'').match(/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p(\d+)/i)||[])[1]||'';
+     const currentId=(String(volleyboxUrl||'').match(/volleybox\.net\/(?:[a-z]{2}\/)?[a-z0-9-]+-p(\d+)/i)||[])[1]||'';
      const current=currentId&&currentClubs?.players?.[currentId];
      const currentVerified=current&&['CONFIRMED','REVIEWED'].includes(current.status)
       &&typeof current.club==='string'&&!!current.club.trim()&&/^https:\/\//.test(current.source||'')

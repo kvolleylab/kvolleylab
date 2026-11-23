@@ -980,3 +980,13 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 2026 AVC컵 전체 한국 6경기, 2014 AVC컵 결승, 2018 아시안게임 결선 4경기, 2022 AVC컵·2023 챌린지컵 결선 각 2경기 등 15경기를 공식 근거로 연결했다. 2018 AVC컵은 AVC 역대표의 연도 오기를 공식 연감과 별도 순위표로 교차 검증해 4위→8위로 정정하고 이전 값/출처를 보존한다. 기본 요약 공백 40→0개, 완료 기록 59개 모두 표시. 35개 기록은 최종 성적만 확인되며 전체 과거 경기 백필 완료로 표시하지 않는다.
 
 Base `15b1faf33d01b646ff1ac5001da1ef2a9066e3b4`; branch `fix/roadmap-detail-completion-v1`. 62개 ID/순서, 다른 56개 이벤트, 기존 17개 요약 보존. Node 60/60 및 PC·모바일 390/360/320px, 필터 62/37/16/17, 2032 미발표 분리 확인. 일부 AVC 원문은 검색 색인 본문 확인/직접 요청 실패를 명시한다. 병합·Pages·운영 증거는 PR에서 추적한다. [검증·출처·한계·복구](validation/roadmap-detail-completion-v1.md).
+
+## 2026-11-23 · 국제 남자대표팀 선수 메타데이터 3차 전수 정리
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 사용자가 이란 보정 이후 다른 국가도 순서대로 전수 확인하도록 지시했다. 작업 순서는 (1) Volleybox 검색·누락 링크 검수, (2) 2026/27 현재 소속 overlay 보강, (3) 소속국가·국기 정규화로 고정한다.
+
+VNL 남자 284명은 유지하면서 직접 Volleybox를 135→279로 확대하고 검색링크를 149→5로 축소한다. DOB 충돌 5명은 검색 링크를 유지한다. Asian Games·AVC 원본에도 exact name+DOB로 검증된 직접 링크를 보강하고, Volleybox locale 경로는 /ko/뿐 아니라 /zh/ 등 2글자 locale을 안전하게 인식한다. Qatar Naji Mahmoud는 공식 DOB 1992-12-16으로 정정하되 서로 다른 DOB의 Volleybox 중복 프로필 때문에 직접 연결하지 않는다. 기존 India 2건의 대회 간 DOB 충돌도 fail-closed 유지한다.
+
+current-club registry는 133→361명으로 확대했다. VNL은 270/284, 실제 KVL 2026 남자 통합 모델은 586명 중 366명의 현재 소속을 확인한다. 실제 통합명단 기준 직접 VB 549, 검색 8, 링크 없음 29이며 미확인 선수·소속은 추정하지 않는다.
+
+소속국가를 canonical English로 정규화하고 club-country용 pt/ro/es/ee/az/sa SVG를 추가한다. Indonesia/Philippines/Thailand/Vietnam/New Zealand는 기존 4x3 국기를 재사용한다. registry 361명 기준 소속국가 국기 경로 누락은 0건이다. [검증 기록](docs/validation/international-roster-metadata-batch3-20261123.md).
