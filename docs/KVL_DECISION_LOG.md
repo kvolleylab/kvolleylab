@@ -993,3 +993,9 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 국제 �
 
 Registry는 133→202명, VNL 284명 중 현재 소속 overlay 적용 가능 선수는 108→177명으로 증가한다. 대회 당시 원본 club 필드는 수정하지 않으며 미확인 107명은 추정하지 않는다. 국가·국기 정규화는 별도 3단계에서 처리한다. [검증 기록](docs/validation/international-current-clubs-batch3-v1-20261123.md).
 
+## 2026-11-23 · 국제 남자 VNL Volleybox 검색링크 최종 정리
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 다른 나라 명단의 Volleybox 링크를 전수 확인하라는 요청에 따라 최신 main의 잔여 검색 링크 7명을 재검수했다. Julio Cesar Cardenas Morales는 KVL DOB 2000-09-04와 Volleybox p25001 DOB가 일치해 직접 프로필로 승격한다.
+
+Berkay Bayraktar·Dimitar Dimitrov·Lorenzo Cortesia는 KVL DOB와 Volleybox DOB가 서로 달라 자동 연결하지 않고, Denislav Bardarov·Pablo Sergio Koukartsev는 Volleybox 후보 프로필에 DOB가 없어 보류한다. Nivaldo Nadhir Dias Gomez는 실내 선수 직접 프로필을 확정하지 못해 검색 링크를 유지한다. 결과는 VNL 284명 유지, 직접 VB 278, 검색 6, invalid 0이다. [검증 기록](docs/validation/international-vb-final-search-cleanup-v1-20261123.md).
+
