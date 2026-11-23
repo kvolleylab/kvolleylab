@@ -771,12 +771,14 @@
         "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
         "DRIVE-1NwEjUuvNbFfq5EZ-o8avQQC4XpLzcvnS",
         "DRIVE-18hlWasoq71_ROFe8F_0f186NAU-iP6d6",
-        "https://volleybox.net/mohsen-delavari-p222609"
+        "https://volleybox.net/mohsen-delavari-p222609",
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
+        "VOLLEYBOX-PROFILE-REVIEW-20261123"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "2034c0e7a105bc647a25827c27a15a83afe65fdac2ee05741ee076f04918f442",
-      "evidence": "docs/validation/iran-player-link-club-flag-fix-v1-20261123.md",
-      "review_note": "2026/27 현재 소속 공통 레지스트리 133명. Mohsen Delavari(p222609)는 동일 DOB(2001-11-03)의 직접 Volleybox 프로필에서 Yaroslavich Yaroslavl·Russia를 확인해 REVIEWED로 추가했다. 기존 exact identity·HTTPS·DOB 충돌 fail-closed 원칙은 유지한다."
+      "sha256": "99ce3ee94c4451cf876c9dcb3aa3ca6526d673a6c146e035609781f61dd93dd2",
+      "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
+      "review_note": "2026/27 current-club registry 360명. CEV·CSV·NORCECA·AVC·Asian Games MASTER와 직접 Volleybox 2026/27 시즌 근거를 exact identity/DOB 기준으로 보강했다. VNL 284명 중 현재 소속 270명 확인, 전체 2026 남자 통합 592명 중 375명 확인. leagueCountry는 영문 canonical 값으로 정규화하며 근거 없는 소속은 미확인으로 유지한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
@@ -838,12 +840,14 @@
         "DRIVE-1R_mM1Amnm0CjYezYvcobn8a3HIiDQVie",
         "KVL-AVC-M-CONTINENTAL-2026",
         "KVL-ASIAN-GAMES-M-2026",
-        "https://volleybox.net/mohsen-delavari-p222609"
+        "https://volleybox.net/mohsen-delavari-p222609",
+        "USER-REQUEST-INTERNATIONAL-ROSTER-BATCH3-20261123",
+        "VOLLEYBOX-PROFILE-REVIEW-20261123"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "273b9ae3cb5fe8f4ce898e43b5beb0e3335c5da984af452f877fb323b39840b6",
-      "evidence": "docs/validation/iran-player-link-club-flag-fix-v1-20261123.md",
-      "review_note": "2026 VNL 남자 284명 원본 선수 수·대회 참가 상태는 유지. Mohsen Delavari의 검색 링크를 확인된 직접 Volleybox 프로필 p222609로 승격했다. 직접 프로필 135, 검색 유지 149, invalid 0이며 불확실 신원은 추정하지 않는다."
+      "sha256": "305ddb2194eb0f978cebe96098b2d1af1247139360d287a5fafbae521de2ad89",
+      "evidence": "docs/validation/international-roster-metadata-batch3-20261123.md",
+      "review_note": "2026 VNL 남자 284명은 유지. 영문명+DOB exact match, 동일 Volleybox ID, 후속 대륙 MASTER 및 직접 프로필 검수로 검색링크 144건을 직접 선수 프로필로 승격했다. 직접 279, 검색 5, invalid 0. 공식 VNL DOB와 Volleybox/후속 MASTER DOB가 충돌하는 5명은 검색 링크를 유지해 오연결을 방지한다."
     }
   }
 }
