@@ -957,3 +957,12 @@ Mohsen은 DOB 2001-11-03과 직접 Volleybox ID p222609를 확인해 VNL 검색 
 
 대회 당시 원본 명단의 소속은 변경하지 않고 별도 현재 소속 registry overlay만 갱신한다. VNL 284명은 유지되며 직접 Volleybox 135, 검색 149, invalid 0; current-club registry는 133명이다. [검증 기록](docs/validation/iran-player-link-club-flag-fix-v1-20261123.md).
 
+## 2026-11-23 · 대표팀 연간 기록과 올림픽 경로 통합
+
+Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자는 매년 대한민국 성인 남자대표팀의 참가 대회를 같은 타임라인에 누적하고 올림픽 출전 경로를 필터로 구분하는 제안에 “그렇게 진행해봐”로 실행을 승인했다. 하단 제목은 `대한민국 남자대표팀 로드맵`, 부제는 `연도별 참가 대회와 올림픽 도전 기록`으로 바꾸고 기본 전체 기록을 유지한다. 기존 ‘올림픽’ 필터를 ‘올림픽 출전 경로’로 명확히 하되 `filter=olympic` 북마크와 판정 모델을 보존한다. 상단 LA28 요약·4개 카드, 과거 실패 이력과 미래 참가 상태는 그대로 유지한다.
+
+이번 승인은 하단 ROAD TO LA28 제목 유지 방침을 대체하며 모바일의 긴 제목·필터 배치에 한해 조정한다. 기존 62개 기록, 원본/요약 JSON 및 renderer/model/CSS는 동일하다. 새 대회 결과 수집 배치가 아니며 모든 과거 참가 대회가 수록된 것으로 표시하지 않는다. 연간 참가 기록과 올림픽 경로는 같은 대회 ID로 관리하고 단순 랭킹 영향만으로 경로에 편입하지 않는다.
+
+Base `31bf24e7968c4ca4137b33617efe9f3089c4cd02`; branch `feature/national-team-journey-v1`. Node 55/55, PC·모바일 390/360/320px, 필터 62/37/16/17, 2026 전체 4개/올림픽 경로 1개, 연도·상세 펼침 및 2032 분리 확인. 배포 증거는 PR에 기록한다. [검증·변경 파일·복구](validation/national-team-journey-v1.md).
+
+
