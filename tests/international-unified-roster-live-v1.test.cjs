@@ -129,12 +129,12 @@ test('Reviewed Asian current-club batch 3 resolves only exact Volleybox identiti
 test('Reviewed VNL current-club batch 4 resolves exact current-season identities',()=>{
  assert.ok(Object.keys(currentClubs.players).length>=225);
  const expected={
-  '24845':['MA Acqua S.Bernardo Cuneo','Italy','SuperLega'],
+  '24845':['Acqua Sant’Anna Cuneo','Italy','SuperLega'],
   '26700':['AONS Milon Athens','Greece','Volley League'],
   '27593':['Jastrzębie Barkom','Poland','TAURON Liga'],
   '28911':['Gas Sales Bluenergy Piacenza','Italy','SuperLega'],
   '72170':['Gas Sales Bluenergy Piacenza','Italy','SuperLega'],
-  '76868':['Alterna Stade Poitevin','France',''],
+  '76868':['ZAKSA Kędzierzyn-Koźle','Poland','TAURON Liga'],
   '91503':['Gas Sales Bluenergy Piacenza','Italy','SuperLega'],
   '216089':['Hawaii Univ.','USA','NCAA']
  };
