@@ -4,9 +4,9 @@
   "hashes": {
     "index.html": "e140caef07fed756cc645b988afce4d5b2496c992e6775be5c9a60d985983cdb",
     "roadmap.css": "e4f7924eaa61eb3b62b8e16a90b39fc7068cbdbd95b065c1d5be058331afca70",
-    "roadmap.js": "2f8e247f3d6ab0955a0b3ac670d1b01626ddafd5e396683f665af3cd5058aa5f",
+    "roadmap.js": "c5022fe2b3b28125d7a3cb263ff87dcc7d347fc89c86e8e158b3e80147ba7c9c",
     "model.mjs": "da193df0a7e9f26eb123d8fb8345f6e068595e66b145a254ef9ec793af113157",
-    "data/roadmap_v1.json": "9eeb72598b2b56b89e3502498b458211b88c90c04faaba26211462b1ead40bf4"
+    "data/roadmap_v1.json": "6cf7e57fc8507c0b8bdfff9a555a9d54e7dad6b6d1ef23c1819b1cdf05827760"
   },
   "reviewedAmendments": [
     {
@@ -18,6 +18,23 @@
         "roadmap.js": "27d174c7df48b958eac2cdcba929cd8152c2c762d8394105d8fb1a8ffbb4eb8e"
       },
       "evidence": "docs/validation/asian-games-roadmap-detail-v1.md"
+    },
+    {
+      "date": "2026-11-23",
+      "eventIds": [
+        "kor-m-avc-cup-2014",
+        "kor-m-asian-games-2018",
+        "kor-m-avc-cup-2018",
+        "kor-m-avc-cup-2022",
+        "kor-m-avc-challenge-2023",
+        "kor-m-2026-avc-cup"
+      ],
+      "reason": "User requested completion after the empty-detail audit. Add 15 sourced matches to five records and correct the mislabeled 2018 AVC Cup rank from 4 to 8. Other 56 events unchanged. Renderer only adds country labels.",
+      "previousHashes": {
+        "data/roadmap_v1.json": "9eeb72598b2b56b89e3502498b458211b88c90c04faaba26211462b1ead40bf4",
+        "roadmap.js": "2f8e247f3d6ab0955a0b3ac670d1b01626ddafd5e396683f665af3cd5058aa5f"
+      },
+      "evidence": "docs/validation/roadmap-detail-completion-v1.md"
     }
   ]
 }
