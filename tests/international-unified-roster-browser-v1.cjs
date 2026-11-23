@@ -196,7 +196,8 @@ async function testApp(){
    ['PHI','Ordu Sports Club','club/az.svg'],
    ['INA','Jakarta LavAni Livin Transmedia','4x3/id.svg'],
    ['THA','Diamond Food Fine Chef Samutsakorn','4x3/th.svg'],
-   ['VIE','Công an TP.HCM','4x3/vn.svg']
+   ['VIE','Công an TP.HCM','4x3/vn.svg'],
+   ['NZL','Bay of Plenty','4x3/nz.svg']
   ];
   for(const [country,clubTitle,expected] of flagCases){
    const view=await open(browser,1440,'category=international&gender=men&country='+country+'&year=2026');
