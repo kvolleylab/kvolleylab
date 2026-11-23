@@ -72,7 +72,7 @@ test('2026 men VNL direct Volleybox coverage and unresolved DOB conflicts stay e
  assert.deepEqual(new Set(search.map(p=>p.en)),new Set(['Domenico Pace','Lorenzo Cortesia','Dimitar Dimitrov','Berkay Bayraktar','Murat Yenipazar']));
 });
 test('Current-club registry batch3 keeps normalized country values and full flag coverage metadata',()=>{
- assert.ok(Object.keys(currentClubs.players).length>=360);
+ assert.ok(Object.keys(currentClubs.players).length>=361);
  assert.ok(Object.values(currentClubs.players).every(p=>!/[가-힣]/.test(String(p.leagueCountry||''))),'leagueCountry must use canonical English names');
  const standard=fs.readFileSync(path.join(ROOT,'assets/js/kvl-team-roster-standard-v1.js'),'utf8');
  for(const pair of ["Estonia:'ee'","Azerbaijan:'az'","'Saudi Arabia':'sa'","Indonesia:'id'","Philippines:'ph'","Thailand:'th'","Vietnam:'vn'","'New Zealand':'nz'"])
@@ -135,6 +135,34 @@ test('No unapproved athlete id reuse and false standalone Volleybox links',()=>{
  assert.equal(sample.position,'OP');
  assert.equal(sample.number,null);
  assert.ok(!sample.sourcePlayerId);
+});
+test('2026 men unified metadata batch3 has stable direct-link and current-club coverage',()=>{
+ const codes=[...new Set(index.snapshots.filter(s=>s.gender==='men'&&s.year===2026).map(s=>s.country_code))];
+ const totals={players:0,source:0,direct:0,search:0,noLink:0,club:0,unknownClub:0};
+ for(const code of codes){
+  const m=scope(code,'men',2026);
+  totals.players+=m.total;totals.source+=m.sourceTotal;
+  totals.direct+=m.rows.filter(p=>p.directBox).length;
+  totals.search+=m.rows.filter(p=>!p.directBox&&p.searchBox).length;
+  totals.noLink+=m.rows.filter(p=>!p.directBox&&!p.searchBox).length;
+  totals.club+=m.rows.filter(p=>p.club).length;
+  totals.unknownClub+=m.rows.filter(p=>!p.club).length;
+ }
+ assert.deepEqual(totals,{players:586,source:796,direct:549,search:8,noLink:29,club:366,unknownClub:220});
+ const tpe=scope('TPE','men',2026);
+ assert.ok(tpe.rows.some(p=>p.directBox==='https://volleybox.net/wang-bing-syun-p240144'),'localized /zh/ profile must canonicalize to direct VB');
+});
+test('Qatar Naji Mahmoud stays fail-closed on ambiguous Volleybox duplicates',()=>{
+ const qat=index.snapshots.filter(s=>s.country_code==='QAT'&&s.gender==='men'&&s.year===2026);
+ const rows=qat.flatMap(s=>source(s.source_path) ? [s] : []);
+ assert.equal(rows.length,3);
+ for(const s of qat){
+  const team=intl.sourceTeam(s,source(s.source_path));
+  const p=team.players.find(x=>/Naji Mahmoud/i.test(String(x.en||x.name_en||x.name||x.officialName||'')));
+  if(!p)continue;
+  assert.equal(p.dob,'1992-12-16');
+  assert.match(String(p.volleybox||p.volleybox_url||''),/volleybox\.net\/ko\/search\?q=Naji\+Mahmoud/);
+ }
 });
 test('All countries, genders and years render their own source matches and never conflate unknown women DOB',()=>{
  const keys=new Set(index.snapshots.map(s=>s.country_code+'/'+s.gender+'/'+s.year));
