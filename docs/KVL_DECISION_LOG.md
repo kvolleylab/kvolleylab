@@ -965,4 +965,10 @@ Status: USER APPROVED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. �
 
 Base `31bf24e7968c4ca4137b33617efe9f3089c4cd02`; branch `feature/national-team-journey-v1`. Node 55/55, PC·모바일 390/360/320px, 필터 62/37/16/17, 2026 전체 4개/올림픽 경로 1개, 연도·상세 펼침 및 2032 분리 확인. 배포 증거는 PR에 기록한다. [검증·변경 파일·복구](validation/national-team-journey-v1.md).
 
+## 2026-11-23 · 종료된 아시안게임 로드맵 경기 상세 연결
+
+Status: USER REPORTED / RELEASE AUTHORIZED / IMPLEMENTED / LOCAL QA VERIFIED. 사용자는 연간 참가 대회 통합 직후 종료된 2026 아시안게임의 펼침 내용이 비어 있다고 지적했다. 기존 대회 결과 DB에 있던 한국 6경기를 공식 결과 시스템과 대조하고, 역사 원본의 빈 matches 및 누락된 간단 요약에 연결한다. 기본 펼침에는 이란전 2–3, 인도전 1–3, 카타르전 3–0을 표시하며 전체 6경기와 공식 출처는 ‘세부 기록·출처’에서 유지한다. 최종 7위는 기존 값 그대로다.
+
+Base `d0934179edb1d19b25aba7e1916c355d5cdb1d60`; branch `fix/asian-games-roadmap-detail-v1`. 다른 61개 이벤트, 기존 16개 요약, 대회 DB, 상단 출전권 모듈·디자인·올림픽 필터 판정은 보존한다. 해당 이벤트의 공식 6경기 스코어와 결선 3경기 세트 득점만 검증하며 조별리그 세트 득점은 추가하지 않는다. Drive 결과 폴더가 비어 있어 기존 KVL 경기 ID에 연결하고 Drive는 수정하지 않았다. Node 56/56, PC·모바일 390/360/320px, 필터 62/37/16/17 확인. 병합·Pages·운영 검증은 PR에 기록한다. [검증·출처·수정 파일·복구](validation/asian-games-roadmap-detail-v1.md).
+
 

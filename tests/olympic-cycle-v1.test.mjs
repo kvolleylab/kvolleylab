@@ -10,7 +10,7 @@ const history=read('data/national/men-senior-history-v1.json');
 const main=s=>s.match(/<main class="roadmap"[\s\S]*?<\/main>/)[0];
 const approved={targetId:'brisbane2032',status:'approved',checkedAt:'2029-01-10',officialBasisIds:['test-final-result'],approveAwaitingRulesNotice:true};
 function completed(){const c=structuredClone(la);c.progressStatus='games_completed';c.sources.push({id:'test-final-result',title:'TEST FIXTURE ONLY',url:'https://example.org/test-fixture-not-evidence'});c.finalOutcome={qualification:'not_qualified',gamesResult:'TEST ONLY — 본선 진출 실패',verifiedAt:'2029-01-10',officialSourceIds:['test-final-result']};return c;}
-test('production preserves history records, CSS and model; only deployment metadata changes',()=>{
+test('production preserves the reviewed history baseline, CSS and model',()=>{
  const manifest=json('tests/fixtures/olympic-roadmap-baseline-v1.json');
  const mapping={'roadmap.css':'assets/css/national-history-roadmap-v1.css','model.mjs':'assets/js/national-history-model-v1.mjs','data/roadmap_v1.json':'data/national/men-senior-history-v1.json'};
  for(const [original,file] of Object.entries(mapping)){let content=read(file);if(original==='data/roadmap_v1.json'){const d=JSON.parse(content);assert.equal(d.integration.productionChanged,true);d.integration.productionChanged=false;content=JSON.stringify(d,null,2)+'\n';}assert.equal(createHash('sha256').update(content).digest('hex'),manifest.hashes[original],file);}

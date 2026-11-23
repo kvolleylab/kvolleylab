@@ -588,12 +588,16 @@
         "oly-jva-2016-all-qualifiers",
         "oly-fivb-2020-qualifier-rules",
         "oly-fivb-paris2024-regulations",
-        "oly-vw-paris2024-qualified"
+        "oly-vw-paris2024-qualified",
+        "now-ag26_official_schedule",
+        "now-ag26_official_qf",
+        "now-ag26_official_classification",
+        "now-ag26_official_seventh"
       ],
-      "verified_at": "2026-11-16",
-      "sha256": "d30bdb9143726ae7817bf28da086feb449a063d173a54d515d834b95a6a37113",
-      "evidence": "docs/validation/olympic-roadmap-production-v1.md",
-      "review_note": "사용자가 승인한 공개용 역사·출전권 자료 및 주기 설정의 공개 적합성과 바이트를 검토했다. 경기 결과·출처·부분 확인 및 미확인 상태는 원본 그대로 유지한다. 2032는 규정 미확정 안내이며 배정 숫자가 없다. 이 파일 단위 VERIFIED는 미확인 역사나 미래 규정을 확정으로 승격하지 않는다. 비공개 메모·연락처·인증정보를 포함하지 않는다."
+      "verified_at": "2026-11-23",
+      "sha256": "d1d0ec82a0861a518a22f57f87d1510d3765170719f233d381a38d646afeb933",
+      "evidence": "docs/validation/asian-games-roadmap-detail-v1.md",
+      "review_note": "2026 아시안게임 남자부의 공식 한국 6경기 결과와 결선 3경기 세트 점수를 기존 경기 ID로 연결했다. 최종 7위 및 기존 61개 다른 역사 기록·참가·출전권 상태는 보존. 공개 경기 정보·공식 출처만 포함하며 비공개 명단·개인정보는 포함하지 않는다. 조별리그 세트 득점은 이번 검증 범위 외이며 추가하지 않았다."
     },
     "data/olympics/la2028_v1.json": {
       "access_level": "PUBLIC",
@@ -811,12 +815,17 @@
         "oly-vw-paris2024-qualified",
         "now-avc26_final",
         "now-asian26_jva_overview",
-        "now-ag26_jva_overview"
+        "now-ag26_jva_overview",
+        "now-ag26_jva_results",
+        "now-ag26_official_schedule",
+        "now-ag26_official_qf",
+        "now-ag26_official_classification",
+        "now-ag26_official_seventh"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "4ab090d822aee3301fe3fa88ca6a4f37731188c7d39875a0dbb4e8fd9066ba24",
-      "evidence": "docs/validation/roadmap-typography-metadata-v1.md",
-      "review_note": "기존 경기 요약과 불확실성은 보존. 2026 네 대회 개최지를 기존 대표팀 홈 및 JVA/Volleyball World 공식 자료와 대조해 별도 location 메타데이터로 추가. 후쿠오카는 후쿠오카현 기타큐슈 소재. 원본 62개 역사 기록·경기 결과·참가·출전권 상태·확인일은 변경하지 않음."
+      "sha256": "a8b69f1c174f37a8410f044ff2ecea2fd6708b17a0c5feddf35a6fffebeef7be",
+      "evidence": "docs/validation/asian-games-roadmap-detail-v1.md",
+      "review_note": "2026 아시안게임 남자부의 공식 한국 6경기 결과와 결선 3경기 세트 점수를 기존 경기 ID로 연결했다. 최종 7위 및 기존 61개 다른 역사 기록·참가·출전권 상태는 보존. 공개 경기 정보·공식 출처만 포함하며 비공개 명단·개인정보는 포함하지 않는다. 조별리그 세트 득점은 이번 검증 범위 외이며 추가하지 않았다."
     },
     "data/competitions/vnl-men-2026/data.json": {
       "access_level": "PUBLIC",
