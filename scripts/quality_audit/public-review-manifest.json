@@ -786,12 +786,13 @@
         "https://volleybox.net/mohsen-delavari-p222609",
         "DRIVE-CEV-CSV-NORCECA-EXACT-CLUB-BATCH3-20261123",
         "VOLLEYBOX-CURRENT-CLUB-BATCH3-20261123",
-        "KVL-CLUB-COUNTRY-NORMALIZATION-20261123"
+        "KVL-CLUB-COUNTRY-NORMALIZATION-20261123",
+        "VOLLEYBOX-ASIA-CURRENT-CLUB-BATCH4-20261123"
       ],
       "verified_at": "2026-11-23",
-      "sha256": "df9bcb373af73e3247e33705973677a459d7e676360bb0a7b7e52e54f4491606",
-      "evidence": "docs/validation/international-club-country-flags-v1-20261123.md",
-      "review_note": "Current-club registry 202명 유지. 소속팀 국가 표시 정규화를 위해 Yurii Synytsia의 leagueCountry `중국`을 `China`로 정규화한다. 선수·클럽·DOB·source는 변경하지 않으며 Spain·Estonia·Romania·Portugal은 club-only local SVG를 별도 추가한다."
+      "sha256": "4164e56284cbf61561020c138ad43716c53666b12b148a10fc13db3f29642f8b",
+      "evidence": "docs/validation/international-current-clubs-asia-batch4-v1-20261123.md",
+      "review_note": "2026/27 current-club registry 228명. 직접 Volleybox ID+DOB가 KVL 원본과 일치하고 2026/27 선수/팀/경기 공개 자료에서 현 소속을 확인한 아시아권 26명을 추가했다. Ilija Ivovic은 KVL/Volleybox DOB 충돌로 제외한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
