@@ -176,7 +176,7 @@ async function testApp(){
   const ali=iri.page.locator('.kvl-unified-row').filter({hasText:'알리 하그파라스트'}).first();
   assert.equal((await ali.locator('.kvl-roster-club-team').innerText()).trim(),'파니오니오스');
   assert.equal(await ali.locator('.kvl-roster-club-teamline').getAttribute('title'),'Panionios GSS','2026 tournament-time club must not be overwritten by later season affiliation');
-  assert.match((await ali.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^그리스$/,'historical source did not verify a league name, so do not backfill one');
+  assert.match((await ali.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^그리스 · 발리리그 \(1부\)$/,'2026 AVC club evidence verifies Panionios GSS and its Volley League');
   assert.match(await ali.locator('.kvl-roster-league-flag').getAttribute('src'),/assets\/images\/flags\/club\/gr\.svg$/);
   assert.equal(await ali.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true,'Greece club flag must decode');
   const mohsen=iri.page.locator('.kvl-unified-row').filter({hasText:'모센 델라바리'}).first();
