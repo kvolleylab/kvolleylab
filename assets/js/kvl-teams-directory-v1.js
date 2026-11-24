@@ -252,7 +252,7 @@
       const index=await readJSON(SOURCES.index);
       const season=index.currentSeason;
       if(!validSeason(season)||!index.seasons?.some(x=>x.season===season&&x.status==='active'))throw Error('활성화된 시즌 정보를 확인할 수 없습니다.');
-      state.proSeasons=(index.seasons||[]).map(x=>x.season).filter(validSeason);
+      state.proSeasons=[season];
       const prefix='v-league-'+state.gender+'-'+season;
       const result=await Promise.all([
        readJSON(sourcePath('data',prefix)),
