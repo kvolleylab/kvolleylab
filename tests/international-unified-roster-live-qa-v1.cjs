@@ -18,7 +18,7 @@ async function waitDeploy(){
    const r=await fetch(BASE+'/teams.html?release='+SHA+'-'+i,{cache:'no-store',signal:AbortSignal.timeout(16000)});
    const html=r.ok?await r.text():'';
    if(html.includes('kvl-international-unified-roster-v1.js?v=20261123-roster-order-v1')
-      &&html.includes('kvl-international-countries-v1.js?v=20261123-country-compact-v1')){
+      &&html.includes('kvl-international-countries-v1.js?v=20261124-season-snapshot-v1')){
     const [index,clubs]=await Promise.all([
       read('data/international/country-roster-index-v1.json'),
       read('data/international/player-club-registry-2026-27-v1.json')
