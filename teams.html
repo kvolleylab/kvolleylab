@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="assets/css/kvl-international-unified-roster-v1.css?v=20261122-reserve-v1">
   <link rel="stylesheet" href="assets/css/kvl-vleague-roster-v2.css?v=20261118-1">
   <link rel="stylesheet" href="assets/css/kvl-team-roster-standard-v1.css?v=20261122-1">
+  <link rel="stylesheet" href="assets/css/kvl-pro-league-roster-v1.css?v=20261124-1">
   <script src="assets/js/unified-nav.js?v=20261118-1" defer></script>
   <script src="assets/js/player-id-collision-quarantine-v1.js?v=20261118-1" defer></script>
   <script src="assets/js/kvl-vleague-draft-bridge-v1.js?v=20261118-1" defer></script>
@@ -20,8 +21,9 @@
   <script src="assets/js/kvl-international-unified-roster-v1.js?v=20261123-roster-order-v1" defer></script>
   <script src="assets/js/kvl-team-roster-standard-v1.js?v=20261123-club-country-flags-v2" defer></script>
   <script type="module" src="assets/js/team-roster-member-summary-v1.mjs?v=20261122-1"></script>
-  <script src="assets/js/kvl-international-countries-v1.js?v=20261123-country-compact-v1" defer></script>
-  <script src="assets/js/kvl-teams-directory-v1.js?v=20261122-country-card-v2" defer></script>
+  <script src="assets/js/kvl-international-countries-v1.js?v=20261124-season-snapshot-v1" defer></script>
+  <script src="assets/js/kvl-pro-league-roster-v1.js?v=20261124-1" defer></script>
+  <script src="assets/js/kvl-teams-directory-v1.js?v=20261124-svleague-v1" defer></script>
 </head>
 <body class="ktd-page">
   <header class="site-header"><a class="site-logo" href="index.html">K-Volley Lab</a><nav class="site-nav"></nav></header>
@@ -60,6 +62,13 @@
           <button type="button" data-ktd-gender="women" aria-pressed="false">WOMEN <span>여자부</span></button>
         </div>
         <label class="ktd-search-label"><span class="sr-only">팀 이름 검색</span><input id="ktdSearch" type="search" placeholder="팀 이름 검색" autocomplete="off"></label>
+      </div>
+      <div id="ktdProLeagueFilters" class="ktd-pro-leagues" role="group" aria-label="프로 리그 선택">
+        <div class="ktd-pro-league-buttons">
+          <button type="button" data-ktd-pro-league="vleague" aria-pressed="true">V-리그</button>
+          <button type="button" data-ktd-pro-league="sv" aria-pressed="false">SV.LEAGUE</button>
+        </div>
+        <label class="ktd-pro-season"><span>시즌</span><select id="ktdProSeasonSelect" aria-label="프로 리그 시즌 선택"></select></label>
       </div>
 
       <div id="ktdRegionFilters" class="ktd-country-regions" role="group" aria-label="대륙별 국가 선택" hidden>
