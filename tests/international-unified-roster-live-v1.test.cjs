@@ -9,18 +9,24 @@ const currentClubs=read('data/international/player-club-registry-2026-27-v1.json
 const master=read('data/master/player_master_international_v1.json');
 const sourceCache=new Map();
 const source=p=>{if(!sourceCache.has(p))sourceCache.set(p,read(p));return sourceCache.get(p)};
-test('Tournament-time club wins over same-year season fallback',()=>{
- const snapshot={snapshot_id:'test-2026:JPN',country_code:'JPN',gender:'men',year:2026,competition_slug:'test-2026',
-  competition_title:'2026 Test',player_count:1,source_status_label:'등록',source_format:'embedded'};
- const team={players:[{number:1,en:'Historical Player',name:'히스토리 선수',dob:'2000-01-01',position:'OH',heightCm:190,
-  volleybox:'https://volleybox.net/historical-player-p999',club:{name:'Historical Club',confirmed:true,country:'Japan',leagueName:'Historical League'}}]};
- const model=unified.build([{snapshot,team}],{country:{code:'JPN'},gender:'men',year:2026,
+test('Tournament-time club wins even when same-year season fallback was seen first',()=>{
+ const vnl={snapshot_id:'vnl-men-2026:JPN',country_code:'JPN',gender:'men',year:2026,competition_slug:'vnl-men-2026',
+  competition_title:'2026 VNL',player_count:1,source_status_label:'등록',source_format:'embedded'};
+ const asian={snapshot_id:'asian-games-men-2026:JPN',country_code:'JPN',gender:'men',year:2026,competition_slug:'asian-games-men-2026',
+  competition_title:'2026 Asian Games',player_count:1,source_status_label:'등록',source_format:'separate'};
+ const base={number:1,en:'Historical Player',name:'히스토리 선수',dob:'2000-01-01',position:'OH',heightCm:190,
+  volleybox:'https://volleybox.net/historical-player-p999'};
+ const sourceSets=[
+  {snapshot:vnl,team:{players:[{...base,club:{name:'미확인',confirmed:false}}]}},
+  {snapshot:asian,team:{players:[{...base,club:{name:'Historical Club',confirmed:true,country:'Japan',leagueName:'Historical League'}}]}}
+ ];
+ const model=unified.build(sourceSets,{country:{code:'JPN'},gender:'men',year:2026,
   playerClubRegistry:{players:{'999':{dob:'2000-01-01',club:'Future Club',leagueCountry:'Italy',leagueName:'SuperLega',
    status:'REVIEWED',source:'https://example.com/future',as_of:'2026-11-24'}}}});
  assert.equal(model.rows[0].club,'Historical Club');
  assert.equal(model.rows[0].clubCountry,'Japan');
  assert.equal(model.rows[0].clubLeague,'Historical League');
- assert.equal(model.rows[0].clubVariants.length,0);
+ assert.ok(model.rows[0].clubVariants.some(x=>x.club==='Future Club'));
 });
 
 test('National-team club overlay is explicitly frozen by roster year',()=>{
