@@ -20,6 +20,7 @@ const safeLogo=x=>{
   if(u.protocol!=='https:')return false;
   if(u.hostname==='www.jtekt-stings.jp')return u.pathname.startsWith('/_next/static/media/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
   if(u.hostname==='images.microcms-assets.io')return u.pathname.startsWith('/assets/99af67a09e884982ae7d419ecde99396/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
+  if(u.hostname==='tokyo-greatbears.com')return u.pathname.startsWith('/_tgb_content/wp-content/uploads/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
   return false;
  }catch{return false}
 };
