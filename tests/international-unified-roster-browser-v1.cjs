@@ -189,6 +189,28 @@ async function testApp(){
   assert.deepEqual(iri.errors,[]);
   REPORT.views.push({name:'Iran Mohsen direct Volleybox/current Russia club and Ali Greece club flag',status:'PASS'});
   await iri.page.close();
+  const bul=await open(browser,1440,'category=international&gender=men&country=BUL&year=2026');
+  await bul.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+  const boris=bul.page.locator('.kvl-unified-row').filter({hasText:'보리스 나체프'}).first();
+  const telkiyski=bul.page.locator('.kvl-unified-row').filter({hasText:'류보슬라프 텔키이스키'}).first();
+  assert.match(await boris.innerText(),/JV Gioia Del Colle/);
+  assert.match(await telkiyski.innerText(),/A\.O\. Foinikas Sýros/);
+  assert.match((await boris.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^이탈리아 · 세리에 A2 \(2부\)$/);
+  assert.match((await telkiyski.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^그리스 · 발리리그 \(1부\)$/);
+  for(const row of [boris,telkiyski]){
+   const flag=row.locator('.kvl-roster-league-flag');assert.equal(await flag.count(),1);
+   assert.equal(await flag.evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
+  }
+  assert.deepEqual(bul.errors,[]);await bul.page.close();
+  const can=await open(browser,1440,'category=international&gender=men&country=CAN&year=2026');
+  await can.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
+  const cody=can.page.locator('.kvl-unified-row').filter({hasText:'코디 허드슨'}).first();
+  assert.match(await cody.innerText(),/Mount Royal University Cougars/);
+  assert.match((await cody.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^캐나다 · Canada West$/);
+  assert.match(await cody.locator('.kvl-roster-league-flag').getAttribute('src'),/\/ca\.svg$/);
+  assert.equal(await cody.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true,'Canada club flag must decode');
+  assert.deepEqual(can.errors,[]);await can.page.close();
+  REPORT.views.push({name:'Batch 8 Bulgaria and Canada current clubs render with verified league-country flags',status:'PASS'});
   const flagCases=[
    ['ARG','Club Voleibol Guaguas','club/es.svg'],
    ['AUS','Bigbank Tartu','club/ee.svg'],

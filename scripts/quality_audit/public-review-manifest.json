@@ -831,12 +831,13 @@
         "VNL-CURRENT-CLUB-BATCH4-20261124",
         "VNL-CURRENT-CLUB-BATCH5-20261124",
         "VNL-CURRENT-CLUB-BATCH6-20261124",
-        "VNL-CURRENT-CLUB-BATCH7-20261124"
+        "VNL-CURRENT-CLUB-BATCH7-20261124",
+        "VNL-CURRENT-CLUB-BATCH8-20261124"
       ],
       "verified_at": "2026-11-24",
-      "sha256": "4d88b6ac0c49b155cbfc1547a5d55d89d69f5e2dc854781c6ffb8946120ef46d",
-      "evidence": "docs/validation/international-current-club-vnl-batch7-v1-20261124.md",
-      "review_note": "현재 소속 공통 레지스트리 277→306명. Türkiye 5·Japan 4·Poland 4·Brazil 4·Slovenia 4·Germany 4·Ukraine 4명의 2026/27 current club을 REVIEWED 보강하고 VNL current-club coverage 237→266으로 확대한다. Murat Yenipazar는 KVL DOB 1993-01-01 vs direct Volleybox/공식 1993-09-23 충돌, Berkay Bayraktar는 VNL DOB 1998-07-03 vs Volleybox 후보 p23861 1998-01-01 충돌로 fail-closed 보류한다."
+      "sha256": "a28ff63407fae7e0105ca65592a4a40246e82678acbe08ea2589412d61c5ebdd",
+      "evidence": "docs/validation/international-current-club-vnl-batch8-v1-20261124.md",
+      "review_note": "현재 소속 공통 레지스트리 306→309명. Boris Nachev→JV Gioia Del Colle, Lyuboslav Telkiyski→A.O. Foinikas Sýros, Cody Hudson→Mount Royal University Cougars 3명의 2026/27 current club을 REVIEWED 보강하고 VNL current-club coverage 266→269/284로 확대한다. direct Volleybox 279 / search 5는 유지한다. 나머지 15명은 current club 근거 부족 또는 DOB/direct identity 충돌로 fail-closed 유지한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
