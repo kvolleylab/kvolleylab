@@ -22,7 +22,7 @@ async function waitForDeployment(){
    const res=await fetch(BASE+'/teams.html?verify='+encodeURIComponent(SHA)+'-'+tries,
     {cache:'no-store',signal:AbortSignal.timeout(16000)});
    const html=res.ok?await res.text():'';
-   if(html.includes('kvl-international-countries-v1.js?v=20261123-country-compact-v1')&&html.includes('ktdCountryArea')){
+   if(html.includes('kvl-international-countries-v1.js?v=20261124-season-snapshot-v1')&&html.includes('ktdCountryArea')){
     const country=await getJson('data/international/country-directory-v1.json');
     const roster=await getJson('data/international/country-roster-index-v1.json');
     const clubs=await getJson('data/international/player-club-registry-2026-27-v1.json');
@@ -126,7 +126,7 @@ async function main(){
   assert.match(iriBody,/허베이 바오딩|Hebei Baoding Wolves/);
   const ali=iri.page.locator('.kvl-unified-row').filter({hasText:'알리 하그파라스트'}).first();
   assert.equal((await ali.locator('.kvl-roster-club-team').innerText()).trim(),'파니오니오스');
-  assert.equal(await ali.locator('.kvl-roster-club-teamline').getAttribute('title'),'Panionios Betsson');
+  assert.equal(await ali.locator('.kvl-roster-club-teamline').getAttribute('title'),'Panionios GSS','2026 tournament-time club must remain frozen on the live page');
   assert.match(await ali.locator('.kvl-roster-league-flag').getAttribute('src'),/assets\/images\/flags\/club\/gr\.svg$/);
   assert.equal(await ali.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   const mohsen=iri.page.locator('.kvl-unified-row').filter({hasText:'모센 델라바리'}).first();
@@ -135,7 +135,7 @@ async function main(){
   assert.match(await mohsen.locator('.kvl-roster-league-flag').getAttribute('src'),/assets\/images\/flags\/club\/ru\.svg$/);
   assert.equal(await mohsen.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.deepEqual(iri.errs,[]);
-  REPORT.checks.push({name:'Live Iran Mohsen direct VB/current Russia club and Ali Greece flag',status:'PASS'});
+  REPORT.checks.push({name:'Live Iran historical club precedence: Ali Panionios GSS; Mohsen season fallback',status:'PASS'});
   await iri.page.close();
   const clubFlagCases=[
    ['ARG','Club Voleibol Guaguas','club/es.svg'],
