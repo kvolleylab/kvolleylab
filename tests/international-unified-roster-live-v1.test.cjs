@@ -199,6 +199,53 @@ test('Reviewed VNL current-club batch 5 resolves Cuba Serbia USA current-season 
  assert.ok(known>=213,'batch 5 must raise VNL current-club coverage to at least 213');
 });
 
+test('Reviewed VNL current-club batch 6 resolves China Argentina Belgium current-season identities',()=>{
+ assert.ok(Object.keys(currentClubs.players).length>=277);
+ const expected={
+  '31':['Montpellier HSC VB','France',''],
+  '93':['Pamesa Teruel','Spain','Superliga Masculina'],
+  '4419':['Jiangsu','China','Chinese League'],
+  '4551':['Sir Susa Scai Perugia','Italy','SuperLega'],
+  '4774':['Guangdong Taishan Green Island','China','Chinese League'],
+  '5137':['NEONET Norwid Częstochowa','Poland','TAURON Liga'],
+  '6568':['Tourcoing Lille Métropole','France',''],
+  '6847':['Alterna Stade Poitevin','France',''],
+  '11018':['Berlin Recycling Volleys','Germany','1. Bundesliga'],
+  '11636':['Lindemans Aalst','Belgium','Lotto Volley League'],
+  '28382':['Sada Cruzeiro Vôlei','Brazil','Superliga Masculina'],
+  '34279':['Golazo Haasrode Leuven','Belgium','Lotto Volley League'],
+  '37205':['Tianjin Food Group','China','Chinese League'],
+  '43519':['Qingdao Xinglun Youyou','China','Chinese League'],
+  '43523':['Jiangsu','China','Chinese League'],
+  '55196':['Lindemans Aalst','Belgium','Lotto Volley League'],
+  '57234':['VK Lvi Praha','Czechia',''],
+  '89363':['Vero Volley Monza','Italy','SuperLega'],
+  '93752':['VfB Friedrichshafen','Germany','1. Bundesliga'],
+  '116649':['Sab Diving Brabo Antwerp Volley','Belgium','Lotto Volley League'],
+  '141393':['Decospan Volley Team Menen','Belgium','Lotto Volley League'],
+  '146462':['Hebei Baoding Wolves','China','Chinese League'],
+  '159389':['Qingdao Xinglun Youyou','China','Chinese League'],
+  '195445':['Tianjin Food Group','China','Chinese League']
+ };
+ for(const [id,[club,country,league]] of Object.entries(expected)){
+  const row=currentClubs.players[id];assert.ok(row,'missing current club '+id);
+  assert.equal(row.club,club);assert.equal(row.leagueCountry,country);assert.equal(row.leagueName,league);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
+ for(const id of ['35907','27738']) assert.equal(currentClubs.players[id],undefined,'fail-closed China hold '+id);
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ const pablo=vnl.rosters.ARG.players.find(p=>p.en==='Pablo Sergio Koukartsev');
+ assert.ok(pablo);assert.equal(pablo.dob,'1993-03-25');
+ assert.equal(pablo.volleybox,'https://volleybox.net/pablo-kukartsev-p5137');
+ assert.equal(pablo.volleyboxLinkType,'profile');
+ let known=0;
+ for(const team of Object.values(vnl.rosters||{}))for(const p of team.players||[]){
+  const m=String(p.volleybox||'').match(/-p(\d+)\/?$/i),r=m&&currentClubs.players[m[1]];
+  if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
+ }
+ assert.ok(known>=237,'batch 6 must raise VNL current-club coverage to at least 237');
+});
+
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
  const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
  assert.equal(raw.club,'');assert.equal(raw.clubCountry,'');assert.equal(raw.clubLeague,'');
@@ -235,19 +282,19 @@ test('Verified country badge uses a single country-only label regardless of leag
   'Japan clubs should show the identical country label regardless of source tournament');
  assert.equal(unified.countryLabel(''),'', 'Missing confirmed country must not be guessed');
 });
-test('2026 VNL direct Volleybox audit keeps only six unresolved search links',()=>{
+test('2026 VNL direct Volleybox audit keeps only five unresolved search links',()=>{
  const vnl=read('data/competitions/vnl-men-2026/data.json');
  const players=Object.values(vnl.rosters||{}).flatMap(team=>team.players||[]);
  const direct=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(p.volleybox||'')));
  const search=players.filter(p=>/^https:\/\/volleybox\.net\/(?:ko\/)?search\?q=/i.test(String(p.volleybox||'')));
  const invalid=players.filter(p=>!direct.includes(p)&&!search.includes(p));
  assert.equal(players.length,284);
- assert.equal(direct.length,278);
- assert.equal(search.length,6);
+ assert.equal(direct.length,279);
+ assert.equal(search.length,5);
  assert.equal(invalid.length,0);
  assert.deepEqual(search.map(p=>p.en).sort(),[
   'Berkay Bayraktar','Denislav Bardarov','Dimitar Dimitrov',
-  'Lorenzo Cortesia','Nivaldo Nadhir Dias Gomez','Pablo Sergio Koukartsev'
+  'Lorenzo Cortesia','Nivaldo Nadhir Dias Gomez'
  ].sort());
  for(const p of direct)assert.equal(p.volleyboxLinkType==='profile'||p.volleyboxLinkType==='direct',true,p.en);
 });

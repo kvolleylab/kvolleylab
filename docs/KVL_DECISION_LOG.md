@@ -1042,3 +1042,12 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용자의 �
 쿠바 10명, 세르비아 10명, 미국 8명을 반영해 registry 225→253명, VNL current-club 적용 범위 185→최소 213명으로 보강한다. Javier Concepcion·Lazaro Arrechea·Yonder Garcia·Nemanja Mašulović·Jeff Jendryk·Kyle Dagostino는 현재 시즌 근거 부족 또는 계약 종료 후 미확정으로 보류한다. Thiago Suarez는 VolleyballTV의 잘못 섞인 2002 DOB 바이오를 배제하고 CEV 2027 SCM Zalău 공식 roster의 birth year 2004 및 KVL/Volleybox direct identity 일치를 근거로 처리한다. Drive MASTER의 2026-09-21 UNKNOWN은 당시 검수 상태로 보존하고 현재 overlay만 최신화한다. 이번 배치에서 Romania·Brazil·Russia·Serbia·USA 등 current-club 국가의 국기 누락 가능성도 발견해, 통합명단 렌더러의 클럽 국가 국기 맵을 현재 registry 국가 전체로 확장한다.
 
 Base `f7f7f2fb203064572f8184f5b78b1e94d7d40244`; branch `feature/international-current-club-vnl-batch5-v1`. 자동 테스트·공개 JSON review gate·Chromium QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch5-v1-20261124.md).
+
+## 2026-11-24 · 국제 남자 현재 소속 VNL 보강 배치 6
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 배치 5 운영 반영 후 사용자의 연속 진행 지시에 따라 current-club 잔여량이 큰 중국·아르헨티나·벨기에를 순서대로 재검수한다. direct Volleybox ID와 KVL DOB가 일치하며 2026/27 최신 팀·리그 로스터에서 현재 소속이 확인되는 24명을 REVIEWED overlay로 추가한다.
+
+중국은 Baoqi Yang, Changli Wang, Hanlin Hu, Hebin Wang, Lei Li, Tianyue Li, Zhihong Xue, Yuantai Yu 8명을 반영하고 Zhai Wu·Zongshuai Qu는 최신 roster가 과거 표기와 엇갈려 fail-closed 보류한다. 아르헨티나는 9명, 벨기에는 7명을 반영한다. Pablo Sergio Koukartsev는 direct Volleybox p5137의 DOB 1993-03-25가 KVL/VNL과 정확히 일치하고 Drive CSV MASTER에도 같은 ID가 기록되어 있어 기존 search 링크를 direct profile로 승격한다.
+
+결과 목표는 current-club registry 253→277명, VNL current-club 213→237명, direct Volleybox 278→279명, search 6→5명이다. Drive AVC/CSV 원본의 과거 검수값은 수정하지 않고 current overlay만 최신화한다. Base `7a4a2b29f0f57bc6d471e9535b47ae84458c29cf`; branch `feature/international-current-club-vnl-batch6-v1`. 자동 테스트·공개 JSON gate·Chromium QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch6-v1-20261124.md).
+
