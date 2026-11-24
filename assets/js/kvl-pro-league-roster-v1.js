@@ -11,14 +11,14 @@ const norm=x=>String(x||'').normalize('NFKC').trim().toLowerCase().replace(/\s+/
 const POS=['OH','OP','MB','S','L'];
 const VB=/^https:\/\/volleybox\.net\/[a-z0-9-]+-p\d+\/?$/i;
 const safeSource=x=>/^https:\/\//.test(String(x||''));
-const safePath=x=>/^data\/team-rosters\/sv-league\/2026-27\/[a-z0-9_-]+\.json$/.test(String(x||''));
+const safePath=x=>/^data\/team-rosters\/sv-league\/\d{4}-\d{2}\/[a-z0-9_-]+\.json$/.test(String(x||''));
 function validateIndex(index){
  if(!index||index.version!=='1.0'||index.league?.id!=='sv-league'||!Array.isArray(index.seasons))return false;
  return index.seasons.every(s=>/^\d{4}-\d{2}$/.test(s.season)&&['men','women'].includes(s.gender)
   &&Array.isArray(s.teams)&&s.teams.every(t=>/^[A-Z0-9_-]{2,30}$/.test(t.code||'')&&t.name&&t.en
    &&Number.isInteger(t.count)&&t.count>=0&&safePath(t.source_path)));
 }
-function validateTeam(team,expected={}){
+const height=p=>Number(p?.height_cm??p?.h??0);\nconst nationality=p=>String(p?.nationality??p?.nat??'').trim();\nconst volleybox=p=>String(p?.volleybox??p?.vb??'').trim();\nfunction validateTeam(team,expected={}){
  if(!team||team.version!=='1.0'||team.league_id!=='sv-league'||!/^\d{4}-\d{2}$/.test(team.season||'')
   ||team.gender!=='men'||!Array.isArray(team.players)||!team.team?.code||!team.team?.name)return false;
  if(expected.code&&team.team.code!==expected.code)return false;
@@ -77,7 +77,7 @@ function render(host,team){
  const rows=host.querySelector('[data-kvl-lr-rows]'),count=host.querySelector('[data-kvl-lr-count]');
  const visible=()=>team.players.filter(p=>(nat==='all'||nat==='foreign'&&!isJapan(p)||nat==='jp'&&isJapan(p))
   &&(pos==='all'||String(p.pos||'').split('/').includes(pos))
-  &&(!query||[p.ko,p.en,p.nat,p.pos].some(x=>norm(x).includes(query))));
+  &&(!query||[p.ko,p.en,nationality(p),p.pos].some(x=>norm(x).includes(query))));
  const row=p=>{
   const badge=p.status==='RECHECK'?'<span class="kvl-lr-recheck" title="'+esc(p.note||'출처 간 소속 표기 재확인')+'">소속 재확인</span>':'';
   const flag='<span class="kvl-lr-flag" aria-hidden="true">'+esc(p.flag||'')+'</span>';
@@ -85,10 +85,10 @@ function render(host,team){
    '<span class="kvl-lr-no">'+esc(p.no)+'</span>'+
    '<span class="kvl-lr-name"><strong>'+esc(title(p))+'</strong>'+(p.ko?'<small>'+esc(p.en)+'</small>':'')+badge+'</span>'+
    '<span class="kvl-lr-dob">—</span><span class="kvl-lr-position">'+esc(p.pos)+'</span>'+
-   '<span class="kvl-lr-height">'+esc(p.h)+'cm</span>'+
-   '<span class="kvl-lr-nationality">'+flag+'<span>'+esc(p.nat)+'</span></span>'+
-   '<span class="kvl-lr-vb"><a href="'+esc(p.vb)+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(p.en)+' Volleybox 선수 프로필 열기">VB-&gt;</a></span>'+
-   '<span class="kvl-lr-mobile-facts">생년월일 — · '+esc(p.pos)+' · '+esc(p.h)+'cm</span></div>';
+   '<span class="kvl-lr-height">'+esc(height(p))+'cm</span>'+
+   '<span class="kvl-lr-nationality">'+flag+'<span>'+esc(nationality(p))+'</span></span>'+
+   '<span class="kvl-lr-vb"><a href="'+esc(volleybox(p))+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(p.en)+' Volleybox 선수 프로필 열기">VB-&gt;</a></span>'+
+   '<span class="kvl-lr-mobile-facts">생년월일 — · '+esc(p.pos)+' · '+esc(height(p))+'cm</span></div>';
  };
  const paint=()=>{
   const list=visible();
