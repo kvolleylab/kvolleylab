@@ -144,9 +144,17 @@ async function main(){
   assert.equal(await page.locator('#ktdProSeasonSelect').inputValue(),'2026-27');
   assert.equal(await page.locator('.ktd-card').count(),12);
   assert.match(await page.locator('#ktdSummary').innerText(),/12개 구단 · 등록 선수 211명/);
+  assert.equal(await page.locator('img.ktd-team-logo-image').count(),12);
+  const svLogoState=await page.locator('img.ktd-team-logo-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
+   img.loading='eager';try{await img.decode()}catch{}
+   return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden};
+  })));
+  assert.ok(svLogoState.every(x=>x.loaded&&!x.hidden),'SV.LEAGUE official logos must load in browser QA: '+JSON.stringify(svLogoState.filter(x=>!x.loaded||x.hidden)));
   const jtekt=page.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first();
   await jtekt.locator('[data-ktd-roster]').click();
   await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
+  assert.equal(await page.locator('.kvl-lr-team-logo img').count(),1);
+  assert.equal(await page.locator('.kvl-lr-team-logo img').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0}),true);
   assert.equal(await page.locator('.kvl-lr-row').count(),16);
   const defalco=page.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first();
   assert.match(await defalco.innerText(),/🇺🇸\s*미국/);
@@ -247,8 +255,11 @@ async function main(){
    await mobile.goto(BASE+'/teams.html?category=pro&gender=men&league=sv&season=2026-27',{waitUntil:'domcontentloaded',timeout:30000});
    await mobile.locator('.ktd-card').first().waitFor({timeout:30000});
    assert.equal(await mobile.locator('.ktd-card').count(),12);
+   assert.equal(await mobile.locator('img.ktd-team-logo-image').count(),12);
+   assert.ok(await mobile.locator('img.ktd-team-logo-image').evaluateAll(imgs=>imgs.every(img=>img.naturalWidth>0&&!img.hidden)),'Mobile SV.LEAGUE logos must load');
    await mobile.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first().locator('[data-ktd-roster]').click();
    await mobile.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
+   assert.equal(await mobile.locator('.kvl-lr-team-logo img').count(),1);
    assert.equal(await mobile.locator('.kvl-lr-row').count(),16);
    assert.match(await mobile.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first().innerText(),/🇺🇸\s*미국/);
    report.scenarios.push({case:'Mobile '+width+'px SV.LEAGUE season roster keeps nationality and direct VB',result:'PASS',...(await snapshot(mobile,'sv-jtekt-'+width))});
