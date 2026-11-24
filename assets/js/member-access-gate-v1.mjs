@@ -1,8 +1,6 @@
-import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
+import {supabase} from './kvl-supabase-browser-v1.mjs?v=20261124-auth-singleton-v1';
 
 const CONFIG_URL='data/member-access-v1.json';
-const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
-const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
 const FUNCTION_NAME='member-access';
 const path=(location.pathname.split('/').pop()||'index.html').toLowerCase();
 
@@ -54,8 +52,7 @@ async function init(){
   if(!config.protectedPaths?.map(x=>x.toLowerCase()).includes(path))return;
   if(config.enabled!==true&&!preview)return;
   document.documentElement.dataset.memberGateMode=preview?'preview':'live';
-  const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
-  try{
+    try{
     const {data,error}=await supabase.auth.getUser();
     if(error||!data.user){showGate(config,'login');return}
     const {data:access,error:fnError}=await supabase.functions.invoke(FUNCTION_NAME,{body:{action:'status'}});

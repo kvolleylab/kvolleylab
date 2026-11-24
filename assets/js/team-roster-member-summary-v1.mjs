@@ -1,8 +1,5 @@
-import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
-const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
-const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
+import {supabase} from './kvl-supabase-browser-v1.mjs?v=20261124-auth-singleton-v1';
 const PRIVATE_FUNCTION='admin-player-workspace';
-const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 function publish(state){
  window.KVLTeamRosterPrivateState=state;
