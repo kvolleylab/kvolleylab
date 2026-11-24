@@ -9,6 +9,12 @@ const currentClubs=read('data/international/player-club-registry-2026-27-v1.json
 const master=read('data/master/player_master_international_v1.json');
 const sourceCache=new Map();
 const source=p=>{if(!sourceCache.has(p))sourceCache.set(p,read(p));return sourceCache.get(p)};
+test('National-team club overlay is explicitly frozen by roster year',()=>{
+ assert.equal(intl.clubSnapshotPathForYear(2026),'data/international/player-club-registry-2026-27-v1.json');
+ assert.equal(intl.clubSnapshotPathForYear(2027),'','2027 must not inherit 2026-27 club affiliations');
+ assert.equal(intl.clubSnapshotPathForYear(2025),'','unmapped historical years stay source-only rather than guessed');
+});
+
 function scope(code,gender,year=2026,club=true){
  const country=countries.countries.find(c=>c.code===code);assert.ok(country);
  const refs=index.snapshots.filter(r=>r.country_code===code&&r.gender===gender&&r.year===year);
