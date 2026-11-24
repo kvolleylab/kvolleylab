@@ -102,7 +102,7 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegis
       let g=same.length===1?same[0]:null;
       if(!g){
         g={key:'p'+groups.length,en:p.en,ko:p.ko,dob:p.dob,position:p.position,height:p.height,
-          number:null,club:'',clubCountry:'',clubLeague:'',clubProof:'',clubAsOf:'',clubVariants:[],names:new Set(p.en?[norm(p.en)]:[]),
+          number:null,club:'',clubCountry:'',clubLeague:'',clubProof:'',clubAsOf:'',clubPriority:0,clubVariants:[],names:new Set(p.en?[norm(p.en)]:[]),
           vbIds:new Set(p.vb.id?[p.vb.id]:[]),directBox:p.vb.direct,searchBox:p.vb.search,
           official:p.official,KVLProfile:'',matches:[],evidence:'',ambiguity:same.length>1};
         groups.push(g);
@@ -117,22 +117,24 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegis
       if(p.ko&&(snapshot.source_format==='team-array'||(!g.ko||g.ko===g.en)))g.ko=p.ko;
       if(p.position&&(snapshot.source_format==='team-array'||!g.position))g.position=p.position;
       if(p.height&&(snapshot.source_format==='team-array'||!g.height))g.height=p.height;
-      let club=p.club,clubCountry=p.clubCountry,clubLeague=p.clubLeague,proof=club?'2026 대회 명단 (확인된 소속)':'',asOf='';
+      let club=p.club,clubCountry=p.clubCountry,clubLeague=p.clubLeague,proof=club?'2026 대회 명단 (확인된 소속)':'',asOf='',clubPriority=club?2:0;
       const registered=gender==='men'&&snapshot.competition_slug==='avc-men-continental-2026'
           &&clubRegistry?.teams?.[country.code]?.[String(p.number)];
       if(registered?.status==='CONFIRMED'&&knownClub(registered.club)&&/^https:\/\//.test(registered.source||'')){
-        club=registered.club;clubCountry=leagueText(registered.leagueCountry);clubLeague=leagueText(registered.leagueName);proof=registered.source;asOf=registered.checkedAt||'2026-09';
+        club=registered.club;clubCountry=leagueText(registered.leagueCountry);clubLeague=leagueText(registered.leagueName);proof=registered.source;asOf=registered.checkedAt||'2026-09';clubPriority=2;
       }
       const current=p.vb.id&&playerClubRegistry?.players?.[p.vb.id];
       if(!club&&current&&['CONFIRMED','REVIEWED'].includes(current.status)&&knownClub(current.club)&&/^https:\/\//.test(current.source||'')){
         if(current.dob&&p.dob&&current.dob!==p.dob)throw Error('Season club snapshot DOB mismatch: '+p.vb.id);
         club=current.club;clubCountry=leagueText(current.leagueCountry);clubLeague=leagueText(current.leagueName);
-        proof=current.source;asOf=current.as_of||'';
+        proof=current.source;asOf=current.as_of||'';clubPriority=1;
       }
       if(club){
-        if(g.club&&norm(g.club)!==norm(club))g.clubVariants.push({club:g.club,source:g.clubProof||'기존 대회 자료'});
-        if(asOf||!g.club){g.club=club;g.clubCountry=clubCountry;g.clubLeague=clubLeague;g.clubProof=proof;g.clubAsOf=asOf}
-        else if(g.club!==club)g.clubVariants.push({club,source:proof});
+        const changed=g.club&&norm(g.club)!==norm(club);
+        if(changed)g.clubVariants.push({club:g.club,source:g.clubProof||'기존 대회 자료'});
+        if(!g.club||clubPriority>g.clubPriority||(clubPriority===g.clubPriority&&asOf&&asOf>g.clubAsOf)){
+          g.club=club;g.clubCountry=clubCountry;g.clubLeague=clubLeague;g.clubProof=proof;g.clubAsOf=asOf;g.clubPriority=clubPriority;
+        }else if(changed)g.clubVariants.push({club,source:proof});
       }
       const profile=typeof profileResolver==='function'?profileResolver(raw,snapshot,p):'';
       if(/^player\.html\?id=KVL-P-\d{6}(?:&scope=national)?$/.test(profile||''))g.KVLProfile=profile;
@@ -148,7 +150,7 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegis
     g.sortNumber=nums.length?Math.min(...nums):Number.POSITIVE_INFINITY;
     g.count=g.matches.length;
     g.evidence=g.count>1?(g.vbIds.size?'생년월일+동일 Volleybox 선수 ID':'동일 영문 성명+생년월일'):'대회별 원본';
-    g.names=undefined;g.vbIds=undefined;
+    g.names=undefined;g.vbIds=undefined;g.clubPriority=undefined;
     g.clubVariants=[...new Map(g.clubVariants.map(x=>[x.club,x])).values()];
   }
   groups.sort((a,b)=>a.sortNumber-b.sortNumber||(a.en||a.ko).localeCompare(b.en||b.ko,'en'));
