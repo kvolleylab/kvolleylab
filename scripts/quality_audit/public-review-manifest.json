@@ -965,6 +965,162 @@
       "sha256": "0327a9d855344bf1f47fb3a021326369cdd4b42d6af19e679197cdbe9a912934",
       "evidence": "docs/validation/international-current-club-vnl-batch6-v1-20261124.md",
       "review_note": "2026 VNL 남자 284명 원본 선수 수·참가 상태 유지. Pablo Sergio Koukartsev는 direct Volleybox p5137 DOB 1993-03-25가 KVL/VNL과 일치해 search→direct profile로 승격. direct 279, search 5, invalid 0. 나머지 5개 검색 링크는 기존 fail-closed 유지."
+    },
+    "data/team-rosters/sv-league/index-v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "47b633d27d3a35b709fc50f00116d896a456effe522e959d5e17423db714bcdb",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 시즌 명단 정리본의 12개 팀·211명·직접 Volleybox 211명·RECHECK 5명을 공개용 인덱스로 검수했다. 공식 SV.LEAGUE 기록의 남자 12팀 구성과 팀 단위만 교차확인하며 선수별 모든 필드를 공식 사실로 승격하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/jtekt.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "c2da7e7c68c9fcf2cd26314d0fcd3a25b449b9c4f2e081b921d215c4727e7541",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/tokyo.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "abda08c2950aa5689411644d94dca0df34cbe7cfc7c7ce05e1ab24642288f083",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/hys.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "d6f8a62fa30b51140b81c90d3fd61cf378ec31b20b53d2dd4dfe96ee718d163b",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/fragolad.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "cdff1c91ac468702eef647f31f319fdfba99792862002d0ddbc38770da5a04db",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/hiroshima.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "6cfcac2cbc910ad7e18f05fbf1fb0f0fa234ff743712a2cec790d860963d5b1c",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/sakai.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "dd785c485ab9ecdb6c1596e60aba8d5a61998c1a373394997762eabf50287a05",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/osaka.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "ab548feb7a1890d257334ae6e0bdd78fe33c189eb0a6f1007f6f932f80ce1119",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/shinshu.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "8aed10183638d3a667c3518d706561850936c6df8d3a0a03e2fc6428cc5f69b5",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/suntory.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "338ef1792d1ac6c5eb7756d10b70a41a4890e952c46f60deb80628dac14d54b9",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/toray.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "2553fa13be09aa3eafede0fe2c598f0c08c4c59211d9d553099f248d6145cb23",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/voreas.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "7a5ac042bc5e9b9ca1cbea827011dd431dd10e465926a4f599b030ce57e5462e",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/sv-league/2026-27/wolfdogs.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
+        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+      ],
+      "verified_at": "2026-11-24",
+      "sha256": "6438fad254b55f6efe5d6ce1e811d480ad4f20c761a817e9da5af327afc01d0f",
+      "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
+      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
     }
   }
 }
