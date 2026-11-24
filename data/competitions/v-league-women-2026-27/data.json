@@ -945,33 +945,33 @@
       "status": "live",
       "officialSourceKey": "023:001:FEMALE:42",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-24T11:49:30+00:00",
+      "updatedAt": "2026-11-24T12:09:33+00:00",
       "liveScore": {
         "home": 1,
         "away": 2,
         "sourceKey": "023:001:FEMALE:42",
-        "observedAt": "2026-11-24T11:49:30+00:00"
+        "observedAt": "2026-11-24T12:09:33+00:00"
       },
       "liveSets": [
         {
           "home": 21,
           "away": 25,
           "status": "completed",
-          "observedAt": "2026-11-24T11:49:30+00:00",
+          "observedAt": "2026-11-24T12:09:33+00:00",
           "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=42&gcode=001&hcode=2003&acode=2005&page=0&size=1"
         },
         {
           "home": 30,
           "away": 28,
           "status": "completed",
-          "observedAt": "2026-11-24T11:49:30+00:00",
+          "observedAt": "2026-11-24T12:09:33+00:00",
           "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=42&gcode=001&hcode=2003&acode=2005&page=0&size=1"
         },
         {
           "home": 16,
           "away": 25,
           "status": "completed",
-          "observedAt": "2026-11-24T11:49:30+00:00",
+          "observedAt": "2026-11-24T12:09:33+00:00",
           "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=1&gnum=42&gcode=001&hcode=2003&acode=2005&page=0&size=1"
         }
       ]
@@ -3296,8 +3296,8 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 20/126경기 종료 · 2026-11-24 20:49 KST 반영",
-  "updatedAt": "2026-11-24T11:49:30+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 20/126경기 종료 · 2026-11-24 21:09 KST 반영",
+  "updatedAt": "2026-11-24T12:09:33+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
