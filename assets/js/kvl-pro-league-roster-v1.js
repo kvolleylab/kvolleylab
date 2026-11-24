@@ -12,6 +12,17 @@ const POS=['OH','OP','MB','S','L'];
 const VB=/^https:\/\/volleybox\.net\/[a-z0-9-]+-p\d+\/?$/i;
 const safeSource=x=>/^https:\/\//.test(String(x||''));
 const safePath=x=>/^data\/team-rosters\/sv-league\/\d{4}-\d{2}\/[a-z0-9_-]+\.json$/.test(String(x||''));
+const safeLogo=x=>{
+ const s=String(x||'');
+ if(/^(?:\/?assets\/)[A-Za-z0-9_.\/-]+\.(?:svg|png|jpe?g|webp)(?:\?[A-Za-z0-9=&_.-]+)?$/.test(s))return true;
+ try{
+  const u=new URL(s);
+  if(u.protocol!=='https:')return false;
+  if(u.hostname==='www.jtekt-stings.jp')return u.pathname.startsWith('/_next/static/media/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
+  if(u.hostname==='images.microcms-assets.io')return u.pathname.startsWith('/assets/99af67a09e884982ae7d419ecde99396/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
+  return false;
+ }catch{return false}
+};
 function validateIndex(index){
  if(!index||index.version!=='1.0'||index.league?.id!=='sv-league'||!Array.isArray(index.seasons))return false;
  return index.seasons.every(s=>/^\d{4}-\d{2}$/.test(s.season)&&['men','women'].includes(s.gender)
@@ -46,15 +57,18 @@ function teamEntries(index,gender,season){
 }
 const title=p=>p.ko||p.en||'선수';
 const isJapan=p=>p.iso2==='jp';
-function render(host,team){
+function render(host,team,display={}){
  if(!host||!validateTeam(team))throw Error('SV.LEAGUE team snapshot invalid');
  let nat='all',pos='all',query='';
  const total=team.players.length,foreign=team.players.filter(p=>!isJapan(p)).length,
   recheck=team.players.filter(p=>p.status==='RECHECK').length;
+ const logo=safeLogo(display.logo)?String(display.logo):'';
  host.innerHTML='<section class="kvl-league-roster" data-kvl-pro-league-roster>'+
-  '<div class="kvl-lr-top"><div><p class="ktd-section-eyebrow">JAPAN · SV.LEAGUE</p>'+
+  '<div class="kvl-lr-top"><div class="kvl-lr-identity">'+
+   (logo?'<div class="kvl-lr-team-logo"><img src="'+esc(logo)+'" alt="'+esc(team.team.name)+' 팀 로고" loading="eager" decoding="async"></div>':'')+
+   '<div><p class="ktd-section-eyebrow">JAPAN · SV.LEAGUE</p>'+
    '<h3>'+esc(team.team.name)+' <small>'+esc(team.team.en)+'</small></h3>'+
-   '<p>'+esc(team.season)+' 시즌 등록 스냅샷 · '+esc(team.as_of)+' 기준</p></div>'+
+   '<p>'+esc(team.season)+' 시즌 등록 스냅샷 · '+esc(team.as_of)+' 기준</p></div></div>'+
    '<div class="kvl-lr-source-links">'+
     (safeSource(team.team.source)?'<a href="'+esc(team.team.source)+'" target="_blank" rel="noopener noreferrer">시즌 명단 출처</a>':'')+
     (safeSource(team.team.volleybox_team)?'<a href="'+esc(team.team.volleybox_team)+'" target="_blank" rel="noopener noreferrer">팀 Volleybox</a>':'')+
