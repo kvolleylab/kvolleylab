@@ -8,12 +8,14 @@ const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const json=p=>JSON.parse(read(p));
 const dir=require('../assets/js/kvl-teams-directory-v1.js');
 const bridge=require('../assets/js/kvl-vleague-draft-bridge-v1.js');
+const proLeague=require('../assets/js/kvl-pro-league-roster-v1.js');
 const season=json('data/team-rosters/v-league/index.json').currentSeason;
 const staff=json('data/team-rosters/v-league/coaches-2026-27.json');
 const male=json('data/competitions/v-league-men-2026-27/data.json');
 const female=json('data/competitions/v-league-women-2026-27/data.json');
 const menRosters=json('data/competitions/v-league-men-2026-27/rosters.json');
 const womenRosters=json('data/competitions/v-league-women-2026-27/rosters.json');
+const svIndex=json('data/team-rosters/sv-league/index-v1.json');
 
 test('Team Finder HERO reuses Home PC and mobile images, without modifying shared Home assets',()=>{
  const home=read('index.html');
@@ -133,6 +135,31 @@ test('all professional cards reuse validated roster v2 with safe draft, school a
   }
  }
 });
+test('SV.LEAGUE 2026-27 is a 12-team immutable season snapshot with 211 direct Volleybox players',()=>{
+ assert.equal(proLeague.validateIndex(svIndex),true);
+ const entries=dir.buildSVLeague(svIndex,'men','2026-27');
+ assert.equal(entries.length,12);
+ assert.equal(dir.totalPlayers(entries),211);
+ assert.equal(dir.buildSVLeague(svIndex,'women','2026-27').length,0,'Do not invent a womens SV.LEAGUE roster in this batch');
+ assert.equal(new Set(entries.map(x=>x.sourcePath)).size,12);
+ let total=0,direct=0,recheck=0;
+ for(const t of entries){
+  const team=json(t.sourcePath);
+  assert.equal(proLeague.validateTeam(team,{code:t.code,season:'2026-27'}),true,t.code);
+  assert.equal(team.players.length,t.count);
+  total+=team.players.length;
+  direct+=team.players.filter(p=>/^https:\/\/volleybox\.net\/[a-z0-9-]+-p\d+\/?$/i.test(p.volleybox||'')).length;
+  recheck+=team.players.filter(p=>p.status==='RECHECK').length;
+  const card=dir.cardMarkup(t);
+  assert.match(card,/SV\.LEAGUE/);
+  assert.ok(card.includes(t.en));
+  assert.match(card,new RegExp('data-ktd-roster="'+t.code+'"'));
+ }
+ assert.equal(total,211);assert.equal(direct,211);assert.equal(recheck,5);
+ assert.equal(json('data/team-rosters/sv-league/2026-27/tokyo.json').players.filter(p=>p.status==='RECHECK').length,4);
+ assert.equal(json('data/team-rosters/sv-league/2026-27/shinshu.json').players.filter(p=>p.status==='RECHECK').length,1);
+});
+
 test('university team cards reuse actual 2026 league roster snapshots, not V-League counts',()=>{
  const s=json('data/master/university_staff_2026.json');
  for(const [gender,size] of [['men',15],['women',6]]){
@@ -177,6 +204,9 @@ test('team page replaces placeholder and only references existing shared roster 
  const html=read('teams.html'),css=read('assets/css/kvl-teams-directory-v1.css');
  assert.ok(html.includes('kvl-teams-directory-v1.js'));
  assert.ok(html.includes('kvl-vleague-roster-v2.js'));
+ assert.ok(html.includes('kvl-pro-league-roster-v1.js'));
+ assert.ok(html.includes('data-ktd-pro-league="sv"'));
+ assert.ok(html.includes('id="ktdProSeasonSelect"'));
  assert.ok(html.includes('kvl-vleague-draft-bridge-v1.js'));
  assert.ok(html.includes('player-id-collision-quarantine-v1.js'));
  for(const c of ['pro','university','high','middle','national','international'])
