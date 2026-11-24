@@ -1067,3 +1067,13 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 배치 7 운�
 
 Cody Hudson의 Canada current club 반영으로 통합명단 내부 country-label emoji 목록에 Canada가 빠진 것을 확인해 `Canada: 🇨🇦`만 최소 보강한다. 기존 club-country flag renderer는 이미 `ca.svg`를 지원하므로 자산 구조는 변경하지 않는다. Base `a3b778559b9c2ac48ff1e2cd7c07805b090258ac`; branch `feature/international-current-club-vnl-batch8-v1`. 자동 테스트·공개 JSON gate·Chromium QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch8-v1-20261124.md).
 
+## 2026-11-24 · SV.LEAGUE 시즌 스냅샷·대표팀 역사 소속 고정
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용자는 2026 국가대표팀 명단의 소속팀이 이후 2027 이적에 따라 바뀌지 않고 당시 연도·대회 기록으로 고정되어야 한다고 확인했고, 동시에 `팀 → 프로`에 해외 프로리그 축을 추가하여 우선 일본 `SV.LEAGUE` 2026-27 남자부를 국제대표팀 계열 명단 UI로 구축하도록 지시했다.
+
+국가대표 명단은 대회 원본의 검증된 소속을 최우선으로 고정하고, 원본 소속이 비어 있을 때만 같은 연도의 시즌 club snapshot을 보완값으로 사용한다. `2026 → player-club-registry-2026-27-v1.json`만 명시적으로 매핑하며 2027 등 미매핑 연도는 2026 registry를 상속하지 않는다. 향후 2027-28 소속은 별도 연도 스냅샷이 생성되어야만 2027 화면에 적용한다.
+
+SV.LEAGUE 원본은 사용자 첨부 `일본_SV리그_남자_2026-27_선수명단_Volleybox_v1.xlsx`이며 2026-11-23 기준 12개 팀 211명, 직접 Volleybox 211명, 소속 재확인 5명을 보존한다. 생년월일은 원본에 없으므로 추정하지 않는다. `팀 → 프로`에는 `V-리그 | SV.LEAGUE` 리그 선택과 시즌 선택을 추가하고, SV 팀 명단은 NO./선수명/생년월일/POS/신장/국적/Volleybox를 표시한다. 국적은 국기+한글 국가명으로 표시하며 전체·외국인·일본인 및 포지션 필터를 제공한다. 5개 출처 충돌은 RECHECK 배지로 유지한다.
+
+Google Drive에서 일본 SV.LEAGUE 2026-27 전용 MASTER는 확인되지 않아 Drive를 수정하지 않고 첨부 XLSX를 이번 v1 원본으로 명시한다. 공식 SV.LEAGUE 기록의 남자 12개 팀 구성과 팀 단위만 교차확인한다. Base `9e8848442889161a1a8c296b63af93f8111732dc`; branch `feature/svleague-team-directory-season-snapshot-v1`. Team Directory/International/Quality Audit QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합·운영 배포하지 않는다. [검증 기록](docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md).
+

@@ -8,6 +8,7 @@
  const SOURCES={
   index:'data/team-rosters/v-league/index.json',
   coaching:'data/team-rosters/v-league/coaches-2026-27.json',
+  svIndex:'data/team-rosters/sv-league/index-v1.json',
   school:['school-ibk-2026','school-presidents-2026','school-iksan-2026','school-samcheok-2026','school-spring-2026']
  };
  const CATEGORIES={
@@ -48,6 +49,24 @@
   if(Object.keys(rosters).filter(x=>Array.isArray(rosters[x]?.players)).length!==7)
    throw Error('Published KOVO club count mismatch');
   return result.sort((a,b)=>a.name.localeCompare(b.name,'ko'));
+ }
+ function buildSVLeague(index,gender,season){
+  if(!index||index.version!=='1.0'||index.league?.id!=='sv-league'||!Array.isArray(index.seasons)
+   ||!['men','women'].includes(gender)||!validSeason(season))throw Error('SV.LEAGUE directory source invalid');
+  const found=index.seasons.find(s=>s.gender===gender&&s.season===season);
+  if(!found)return[];
+  if(!Array.isArray(found.teams))throw Error('SV.LEAGUE season teams missing');
+  const seen=new Set();
+  return found.teams.map((t,order)=>{
+   if(!t||!validCode(t.code)||!String(t.name||'').trim()||!String(t.en||'').trim()||seen.has(t.code)
+      ||!Number.isInteger(t.count)||t.count<0||!/^data\/team-rosters\/sv-league\/\d{4}-\d{2}\/[a-z0-9_-]+\.json$/.test(String(t.source_path||'')))
+    throw Error('Invalid SV.LEAGUE club');
+   seen.add(t.code);
+   return {code:t.code,name:t.name,en:t.en,fullName:t.en,logo:safeLogo(t.logo)?t.logo:'',
+    gender,season,count:t.count,asOf:found.as_of||index.updated_at||'',sourcePath:t.source_path,
+    sourceLabel:'JAPAN · SV.LEAGUE',leagueId:'sv',leagueLabel:'SV.LEAGUE',
+    action:'roster',href:'',type:'pro-sv',order};
+  });
  }
  function buildUniversity(participants,rosters,staff,gender){
   if(!Array.isArray(participants)||!rosters||typeof rosters!=='object')throw Error('University teams unavailable');
@@ -115,10 +134,11 @@
    '<p class="ktd-card-meta">'+esc(t.en||t.code)+'</p><p class="ktd-card-meta">'+esc(t.sourceLabel||'선수단 자료 확인 중')+'</p></div></div>'+
    '<button class="ktd-card-action" type="button" data-ktd-country="'+esc(t.code)+'"><span>연도·대회별 명단 보기</span><span aria-hidden="true">›</span></button></article>';
   const g=t.gender==='women'?'WOMEN':t.gender==='men'?'MEN':'';
-  const label=t.type==='pro'?'프로':t.type==='university'?'대학':t.type==='high'?'고교':t.type==='middle'?'중학':t.type==='national'?'대표팀':'국제';
+  const label=t.type==='pro'?'프로':t.type==='pro-sv'?'SV.LEAGUE':t.type==='university'?'대학':t.type==='high'?'고교':t.type==='middle'?'중학':t.type==='national'?'대표팀':'국제';
   const count=t.count===null||t.count===undefined?'':'<span class="ktd-card-count">'+esc(t.count)+'명</span>';
   const meta=t.type==='pro'?'<p class="ktd-card-meta">'+esc(t.coachRole||'감독')+' : <b>'+esc(t.coach||'정보 확인 중')+'</b></p>'+
      (t.asOf?'<p class="ktd-card-meta">명단 기준 '+esc(t.asOf)+'</p>':''):
+     t.type==='pro-sv'?'<p class="ktd-card-meta">'+esc(t.en||'')+'</p><p class="ktd-card-meta">JAPAN · '+esc(t.season||'')+'</p>':
      t.type==='university'?'<p class="ktd-card-meta">'+(t.coach?'감독 : <b>'+esc(t.coach)+'</b>':'2026 대학 U-리그')+'</p>':
      '<p class="ktd-card-meta">'+esc(t.sourceLabel||'연결된 자료 보기')+'</p>';
   const action=t.action==='roster'?
@@ -147,10 +167,11 @@
    gender:['men','women'].includes(params.get('gender'))?params.get('gender'):'men',
    query:'',entries:[],raw:null,season:'2026-27',token:0,teamFromURL:params.get('team')||'',selected:'',
    region:params.get('region')||'all',countryFromURL:params.get('country')||'',selectedCountry:'',
-   countryIndex:null,selectionIndex:null,year:params.get('year')||''
+   countryIndex:null,selectionIndex:null,year:params.get('year')||'',
+   proLeague:params.get('league')==='sv'?'sv':'vleague',proSeasons:[],requestedSeason:params.get('season')||''
   };
   const rosterArea=el('ktdRosterArea'),rosterHost=el('ktdRosterHost');
-  const countryArea=el('ktdCountryArea'),regionRow=el('ktdRegionFilters');
+  const countryArea=el('ktdCountryArea'),regionRow=el('ktdRegionFilters'),proLeagueRow=el('ktdProLeagueFilters'),proSeasonSelect=el('ktdProSeasonSelect');
   const international=()=>window.KVLInternationalCountriesV1;
   let countryController=null;
   const hideCountry=()=>{
@@ -163,6 +184,8 @@
    p.set('category',state.category);
    if(state.category!=='national')p.set('gender',state.gender);else p.delete('gender');
    if(state.category==='pro'&&state.selected)p.set('team',state.selected);else p.delete('team');
+   if(state.category==='pro'&&state.proLeague==='sv')p.set('league','sv');else p.delete('league');
+   if(state.category==='pro'&&state.proLeague==='sv'&&state.season)p.set('season',state.season);else p.delete('season');
    if(state.category==='international'&&state.selectedCountry)p.set('country',state.selectedCountry);else p.delete('country');
    if(state.category==='international'&&state.region!=='all')p.set('region',state.region);else p.delete('region');
    if(state.category==='international'&&state.selectedCountry&&state.year)p.set('year',String(state.year));else p.delete('year');
@@ -175,6 +198,16 @@
    catRow.querySelectorAll('[data-ktd-category]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdCategory===state.category)));
    genders.hidden=state.category==='national';
    regionRow.hidden=state.category!=='international';
+   if(proLeagueRow){
+    proLeagueRow.hidden=state.category!=='pro';
+    proLeagueRow.querySelectorAll('[data-ktd-pro-league]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdProLeague===state.proLeague)));
+   }
+   if(proSeasonSelect){
+    const values=state.proSeasons.length?state.proSeasons:state.proLeague==='vleague'?[state.season].filter(Boolean):[];
+    const current=values.includes(state.season)?state.season:values[0]||'';
+    proSeasonSelect.innerHTML=values.length?values.map(s=>'<option value="'+esc(s)+'"'+(s===current?' selected':'')+'>'+esc(s)+'</option>').join(''):'<option value="">등록 시즌 없음</option>';
+    proSeasonSelect.disabled=!values.length;
+   }
    regionRow.querySelectorAll('[data-ktd-region]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdRegion===state.region)));
    genders.dataset.gender=state.gender;
    genders.querySelectorAll('[data-ktd-gender]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdGender===state.gender)));
@@ -184,7 +217,7 @@
    controls();
    const list=state.category==='international'&&international()
     ?international().filterCountries(state.entries,state.region,state.query)
-    :state.entries.filter(t=>!state.query||String(t.name||'').toLowerCase().includes(state.query));
+    :state.entries.filter(t=>!state.query||[t.name,t.en,t.fullName].some(v=>String(v||'').toLowerCase().includes(state.query)));
    grid.innerHTML=list.length?list.map(cardMarkup).join(''):
     '<p class="ktd-empty">'+(state.category==='international'?'선택한 지역에서 등록된 대회 참가 국가가 없습니다. 이것이 모든 국가의 미참가를 뜻하지는 않습니다.':'검색 결과가 없습니다.')+'</p>';
    grid.setAttribute('aria-busy','false');
@@ -200,21 +233,39 @@
    try{
     let list=[],raw=null,summary='',sourceNote='';
     if(state.category==='pro'){
-     const index=await readJSON(SOURCES.index);
-     const season=index.currentSeason;
-     if(!validSeason(season)||!index.seasons?.some(x=>x.season===season&&x.status==='active'))throw Error('활성화된 시즌 정보를 확인할 수 없습니다.');
-     const prefix='v-league-'+state.gender+'-'+season;
-     const result=await Promise.all([
-      readJSON(sourcePath('data',prefix)),
-      readJSON(sourcePath('rosters',prefix)),
-      readJSON(SOURCES.coaching).catch(()=>null)
-     ]);
-     const [competition,rosters,staff]=result;
-     list=buildPro(competition.participants,rosters,staff,state.gender,season);
-     raw={participants:competition.participants,rosters,gender:state.gender,season};
-     summary=season+' 시즌 · '+list.length+'개 구단 · 등록 선수 '+totalPlayers(list)+'명';
-     sourceNote='구단 선수 수는 GitHub KOVO 공시 자동 갱신 명단 기준 · 감독은 2026-27 시즌 별도 확인 자료';
-     state.season=season;
+     if(state.proLeague==='sv'){
+      const index=await readJSON(SOURCES.svIndex);
+      const seasons=(index.seasons||[]).filter(x=>x.gender===state.gender).map(x=>x.season);
+      state.proSeasons=[...new Set(seasons)].sort().reverse();
+      const wanted=validSeason(state.requestedSeason)&&state.proSeasons.includes(state.requestedSeason)?state.requestedSeason:state.proSeasons[0]||'2026-27';
+      state.season=wanted;
+      list=buildSVLeague(index,state.gender,wanted);
+      raw={league:'sv',index,gender:state.gender,season:wanted};
+      if(list.length){
+       summary=wanted+' 시즌 · '+list.length+'개 구단 · 등록 선수 '+totalPlayers(list)+'명';
+       sourceNote='사용자 제공 2026-27 SV.LEAGUE 시즌 등록 스냅샷 기준 · 14인 경기 엔트리와 구분 · 직접 Volleybox 211명';
+      }else{
+       summary='현재 SV.LEAGUE는 남자부 2026-27 시즌 명단만 등록되어 있습니다.';
+       sourceNote='여자부 SV.LEAGUE 시즌 명단은 이번 범위에서 생성하지 않습니다.';
+      }
+     }else{
+      const index=await readJSON(SOURCES.index);
+      const season=index.currentSeason;
+      if(!validSeason(season)||!index.seasons?.some(x=>x.season===season&&x.status==='active'))throw Error('활성화된 시즌 정보를 확인할 수 없습니다.');
+      state.proSeasons=[season];
+      const prefix='v-league-'+state.gender+'-'+season;
+      const result=await Promise.all([
+       readJSON(sourcePath('data',prefix)),
+       readJSON(sourcePath('rosters',prefix)),
+       readJSON(SOURCES.coaching).catch(()=>null)
+      ]);
+      const [competition,rosters,staff]=result;
+      list=buildPro(competition.participants,rosters,staff,state.gender,season);
+      raw={league:'vleague',participants:competition.participants,rosters,gender:state.gender,season};
+      summary=season+' 시즌 · '+list.length+'개 구단 · 등록 선수 '+totalPlayers(list)+'명';
+      sourceNote='구단 선수 수는 GitHub KOVO 공시 자동 갱신 명단 기준 · 감독은 2026-27 시즌 별도 확인 자료';
+      state.season=season;
+     }
     }else if(state.category==='university'){
      const slug='university-league-'+state.gender+'-2026';
      const [competition,rosters,staff]=await Promise.all([
@@ -296,34 +347,39 @@
   }
   async function openRoster(code){
    if(state.category!=='pro'||!state.raw)return;
-   const t=state.entries.find(x=>x.code===code);
-   if(!t||!state.raw.rosters?.[code])return;
+   const t=state.entries.find(x=>x.code===code);if(!t)return;
    const token=state.token,gender=state.gender,season=state.season;
+   if(state.raw.league!=='sv'&&!state.raw.rosters?.[code])return;
    state.selected=code;state.teamFromURL='';syncUrl();
    rosterArea.hidden=false;
-   el('ktdRosterHeading').textContent=t.name+' 선수명단';
-   rosterHost.innerHTML='<p class="ktd-loading">검증된 선수 프로필·출신학교 정보를 연결하고 있습니다.</p>';
+   el('ktdRosterHeading').textContent=t.name+' · '+season+' 선수명단';
+   rosterHost.innerHTML='<p class="ktd-loading">'+(state.raw.league==='sv'?'시즌 등록 선수와 국적 정보를 불러오고 있습니다.':'검증된 선수 프로필·출신학교 정보를 연결하고 있습니다.')+'</p>';
    try{
-    // Season roster is always the publisher-owned JSON. The bridge only adds verified display-level fields.
-    const base={competitionId:'KVL-COMP-VLEAGUE-'+(gender==='men'?'M':'W')+'-'+season,
-     participants:state.raw.participants,rosters:state.raw.rosters};
-    let data=base;
-    if(season==='2026-27'&&window.KVLVLeagueDraftBridgeV1){
-     try{
-      const source=await window.KVLVLeagueDraftBridgeV1.load();
-      data=window.KVLVLeagueDraftBridgeV1.reconcileCurrent(base,source);
-     }catch(err){console.warn('[KVL teams: verified draft evidence unavailable]',err)}
-    }
-    if(token!==state.token||state.selected!==code)return;
-    const renderer=window.KVLVLeagueRosterV2;
-    const done=season==='2026-27'&&renderer?.render(rosterHost,data,t,data.rosters[code].players);
-    if(!done){
-     rosterHost.innerHTML='<p class="ktd-empty">현재 시즌 상세 명단은 <a href="'+esc(t.href)+'">V-리그 대회 페이지</a>에서 확인할 수 있습니다.</p>';
+    if(state.raw.league==='sv'){
+     const team=await readJSON(t.sourcePath);
+     if(token!==state.token||state.selected!==code)return;
+     const renderer=window.KVLProLeagueRosterV1;
+     if(!renderer?.validateTeam?.(team,{code,season})||!renderer.render(rosterHost,team))throw Error('SV.LEAGUE roster renderer unavailable');
+    }else{
+     // Season roster is always the publisher-owned JSON. The bridge only adds verified display-level fields.
+     const base={competitionId:'KVL-COMP-VLEAGUE-'+(gender==='men'?'M':'W')+'-'+season,
+      participants:state.raw.participants,rosters:state.raw.rosters};
+     let data=base;
+     if(season==='2026-27'&&window.KVLVLeagueDraftBridgeV1){
+      try{
+       const source=await window.KVLVLeagueDraftBridgeV1.load();
+       data=window.KVLVLeagueDraftBridgeV1.reconcileCurrent(base,source);
+      }catch(err){console.warn('[KVL teams: verified draft evidence unavailable]',err)}
+     }
+     if(token!==state.token||state.selected!==code)return;
+     const renderer=window.KVLVLeagueRosterV2;
+     const done=season==='2026-27'&&renderer?.render(rosterHost,data,t,data.rosters[code].players);
+     if(!done)rosterHost.innerHTML='<p class="ktd-empty">현재 시즌 상세 명단은 <a href="'+esc(t.href)+'">V-리그 대회 페이지</a>에서 확인할 수 있습니다.</p>';
     }
     rosterArea.scrollIntoView({behavior:'smooth',block:'start'});
    }catch(err){
     if(token!==state.token||state.selected!==code)return;
-    rosterHost.innerHTML='<p class="ktd-error">명단을 표시하지 못했습니다. <a href="'+esc(t.href)+'">기존 V-리그 선수명단으로 이동</a></p>';
+    rosterHost.innerHTML='<p class="ktd-error">명단을 표시하지 못했습니다.</p>';
     console.error('[KVL teams roster]',err);
    }
   }
@@ -338,7 +394,18 @@
    const button=event.target.closest('[data-ktd-gender]');
    if(!button||!['men','women'].includes(button.dataset.ktdGender)||state.gender===button.dataset.ktdGender)return;
    state.gender=button.dataset.ktdGender;state.query='';state.teamFromURL='';state.countryFromURL='';state.year='';
+   state.requestedSeason='';el('ktdSearch').value='';load();
+  });
+  proLeagueRow?.addEventListener('click',event=>{
+   const button=event.target.closest('[data-ktd-pro-league]');
+   if(state.category!=='pro'||!button||!['vleague','sv'].includes(button.dataset.ktdProLeague)||state.proLeague===button.dataset.ktdProLeague)return;
+   state.proLeague=button.dataset.ktdProLeague;state.query='';state.selected='';state.teamFromURL='';state.requestedSeason='';
    el('ktdSearch').value='';load();
+  });
+  proSeasonSelect?.addEventListener('change',event=>{
+   const season=String(event.target.value||'');
+   if(state.category!=='pro'||state.proLeague!=='sv'||!validSeason(season)||season===state.season)return;
+   state.requestedSeason=season;state.teamFromURL='';load();
   });
   regionRow.addEventListener('click',event=>{
    const button=event.target.closest('[data-ktd-region]');
@@ -379,5 +446,5 @@
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});
   else start();
  }
- return {SOURCES,CATEGORIES,validSeason,validCode,safeLogo,safeHref,teamRoute,buildPro,buildUniversity,buildSchool,curated,cardMarkup,totalPlayers};
+ return {SOURCES,CATEGORIES,validSeason,validCode,safeLogo,safeHref,teamRoute,buildPro,buildSVLeague,buildUniversity,buildSchool,curated,cardMarkup,totalPlayers};
 });

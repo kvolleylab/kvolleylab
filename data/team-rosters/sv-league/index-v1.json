@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "league": {
+    "id": "sv-league",
+    "name": "SV.LEAGUE",
+    "country": "Japan",
+    "country_ko": "일본"
+  },
+  "updated_at": "2026-11-24",
+  "policy": "Season rosters are immutable snapshots. A later transfer or current-club update must not rewrite an older season roster.",
+  "seasons": [
+    {
+      "season": "2026-27",
+      "gender": "men",
+      "status": "active",
+      "as_of": "2026-11-23",
+      "source_file": "일본_SV리그_남자_2026-27_선수명단_Volleybox_v1.xlsx",
+      "source_note": "사용자 제공 KVL 정리본. Japan Volleyball Data Bank 2026-27 팀별 명단을 기본으로 하고 Tokyo Great Bears는 구단 공식 명단 우선. 211명 모두 직접 Volleybox 선수 프로필 연결. 5명은 출처 간 소속 표기 차이로 RECHECK 유지.",
+      "teams": [
+        {
+          "code": "JTEKT",
+          "name": "JTEKT 아이치",
+          "en": "JTEKT STINGS Aichi",
+          "count": 16,
+          "source_path": "data/team-rosters/sv-league/2026-27/jtekt.json"
+        },
+        {
+          "code": "TOKYO",
+          "name": "도쿄 GB",
+          "en": "Tokyo Great Bears",
+          "count": 20,
+          "source_path": "data/team-rosters/sv-league/2026-27/tokyo.json"
+        },
+        {
+          "code": "HYS",
+          "name": "홋카이도 YS",
+          "en": "Hokkaido Yellow Stars",
+          "count": 22,
+          "source_path": "data/team-rosters/sv-league/2026-27/hys.json"
+        },
+        {
+          "code": "FRAGOLAD",
+          "name": "프라골라드",
+          "en": "Fragolad Kagoshima",
+          "count": 16,
+          "source_path": "data/team-rosters/sv-league/2026-27/fragolad.json"
+        },
+        {
+          "code": "HIROSHIMA",
+          "name": "히로시마",
+          "en": "Hiroshima Thunders",
+          "count": 18,
+          "source_path": "data/team-rosters/sv-league/2026-27/hiroshima.json"
+        },
+        {
+          "code": "SAKAI",
+          "name": "사카이",
+          "en": "Nippon Steel Sakai Blazers",
+          "count": 17,
+          "source_path": "data/team-rosters/sv-league/2026-27/sakai.json"
+        },
+        {
+          "code": "OSAKA",
+          "name": "오사카",
+          "en": "Osaka Bluteon",
+          "count": 15,
+          "source_path": "data/team-rosters/sv-league/2026-27/osaka.json"
+        },
+        {
+          "code": "SHINSHU",
+          "name": "신슈 마쓰모토",
+          "en": "Shinshu Matsumoto Tridents",
+          "count": 18,
+          "source_path": "data/team-rosters/sv-league/2026-27/shinshu.json"
+        },
+        {
+          "code": "SUNTORY",
+          "name": "산토리",
+          "en": "Suntory Sunbirds Osaka",
+          "count": 18,
+          "source_path": "data/team-rosters/sv-league/2026-27/suntory.json"
+        },
+        {
+          "code": "TORAY",
+          "name": "도레이 시즈오카",
+          "en": "Toray Arrows Shizuoka",
+          "count": 18,
+          "source_path": "data/team-rosters/sv-league/2026-27/toray.json"
+        },
+        {
+          "code": "VOREAS",
+          "name": "보레아스 홋카이도",
+          "en": "Voreas Hokkaido",
+          "count": 17,
+          "source_path": "data/team-rosters/sv-league/2026-27/voreas.json"
+        },
+        {
+          "code": "WOLFDOGS",
+          "name": "울프독스 나고야",
+          "en": "WolfDogs Nagoya",
+          "count": 16,
+          "source_path": "data/team-rosters/sv-league/2026-27/wolfdogs.json"
+        }
+      ],
+      "team_count": 12,
+      "player_count": 211,
+      "direct_volleybox_count": 211,
+      "recheck_count": 5
+    }
+  ]
+}

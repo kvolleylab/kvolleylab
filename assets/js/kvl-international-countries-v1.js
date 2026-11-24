@@ -9,7 +9,8 @@ const STAGE_LABEL={candidate_pool:'공식 후보 엔트리',longlist:'공식 등
 const REGISTERED_LABEL={final:'최종 명단',departure:'출국 명단',tournament_registration:'대회 공개 명단'};
 const REGIONS={all:'전체',asia:'아시아',europe:'유럽',north_america:'북중미',south_america:'남미',oceania:'오세아니아',africa:'아프리카'};
 const SAFE_SOURCE=/^data\/(?:competitions|competition)\/[a-z0-9_-]+(?:\/(?:data|rosters))?\.json$/;
-const SAFE_CURRENT_CLUB='data/international/player-club-registry-2026-27-v1.json';
+const CLUB_SNAPSHOT_BY_YEAR=Object.freeze({2026:'data/international/player-club-registry-2026-27-v1.json'});
+const clubSnapshotPathForYear=year=>CLUB_SNAPSHOT_BY_YEAR[Number(year)]||'';
 const SAFE_COMPETITION=/^(?:competition-engine\.html\?competition=[a-z0-9-]+(?:&view=rosters)?|avc-men-cup\.html|international-competition-avc-men-continental-2026\.html)$/;
 const safeExternal=x=>/^https:\/\/(?:en\.volleyballworld\.com|www\.volleyballworld\.com|volleybox\.net|www\.volleybox\.net|asianvolleyball\.net|www\.asianvolleyball\.net|kovo\.co\.kr|www\.kovo\.co\.kr|www\.nikkansports\.com|volleyball\.org\.au)\//.test(String(x||''))?String(x):'';
 const safeAnySource=x=>/^https:\/\/[a-z0-9.-]+(?:\/[^\s<>"']*)?$/i.test(String(x||''))?String(x):'';
@@ -24,7 +25,7 @@ const countryFlagImage=country=>{
 };
 const dataCache=new Map();
 const readJSON=async p=>{
- if(!SAFE_SOURCE.test(p)&&p!=='data/master/player_master_international_v1.json'&&p!==SAFE_CURRENT_CLUB)throw Error('Unapproved roster source path: '+p);
+ if(!SAFE_SOURCE.test(p)&&p!=='data/master/player_master_international_v1.json'&&!Object.values(CLUB_SNAPSHOT_BY_YEAR).includes(p))throw Error('Unapproved roster source path: '+p);
  if(!dataCache.has(p)){
   dataCache.set(p,fetch(p,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Source unavailable '+p+' HTTP '+r.status);return r.json()}).catch(e=>{dataCache.delete(p);throw e}));
  }
@@ -202,9 +203,10 @@ function render(host,opts){
       ?readJSON('data/master/player_master_international_v1.json').catch(err=>{
          console.warn('[KVL international: player ID master unavailable]',err);return [];
        }):Promise.resolve([]),
-    readJSON('data/international/player-club-registry-2026-27-v1.json').catch(err=>{
-      console.warn('[KVL international: current club registry unavailable]',err);return null;
-    }),
+    clubSnapshotPathForYear(displayYear)
+      ?readJSON(clubSnapshotPathForYear(displayYear)).catch(err=>{
+        console.warn('[KVL international: season club snapshot unavailable]',err);return null;
+       }):Promise.resolve(null),
     displayYear===2026&&gender==='men'&&refs.some(x=>x.competition_slug==='avc-men-continental-2026')
       ?readJSON('data/competitions/avc-men-continental-2026-volleybox-links.json').catch(err=>{
         console.warn('[KVL international: Volleybox evidence unavailable]',err);return null;
@@ -272,9 +274,12 @@ function render(host,opts){
    });
    const sourceCountChanged=players.length!==snap.player_count;
    let master=[],clubRegistry=null,volleyboxRegistry=null,currentClubs=null;
-   try{
-    currentClubs=await readJSON('data/international/player-club-registry-2026-27-v1.json');
-   }catch(e){console.warn('[KVL international per-event current club registry optional]',e)}
+   const clubSnapshotPath=clubSnapshotPathForYear(snap.year);
+   if(clubSnapshotPath){
+    try{
+     currentClubs=await readJSON(clubSnapshotPath);
+    }catch(e){console.warn('[KVL international per-event season club snapshot optional]',e)}
+   }
    if(snap.competition_slug==='avc-men-continental-2026'&&gender==='men'){
     try{
      [clubRegistry,volleyboxRegistry]=await Promise.all([
@@ -308,9 +313,10 @@ function render(host,opts){
      const currentVerified=current&&['CONFIRMED','REVIEWED'].includes(current.status)
       &&typeof current.club==='string'&&!!current.club.trim()&&/^https:\/\//.test(current.source||'')
       &&(!current.dob||!p.dob||current.dob===p.dob);
-     const club=currentVerified?current.club:verified?registered.club:p.club;
-     const leagueCountry=currentVerified?String(current.leagueCountry||'').trim():verified?String(registered.leagueCountry||'').trim():p.club_country;
-     const leagueName=currentVerified?String(current.leagueName||'').trim():verified?String(registered.leagueName||'').trim():p.club_league;
+     const sourceClub=verified?registered.club:p.club;
+     const club=sourceClub||(currentVerified?current.club:'');
+     const leagueCountry=verified?String(registered.leagueCountry||'').trim():p.club?String(p.club_country||'').trim():currentVerified?String(current.leagueCountry||'').trim():'';
+     const leagueName=verified?String(registered.leagueName||'').trim():p.club?String(p.club_league||'').trim():currentVerified?String(current.leagueName||'').trim():'';
      // Match the year-unified roster's country-only label. Do not infer unknown leagues.
      const countryFormatter=typeof window==='object'?window.KVLInternationalUnifiedRosterV1?.countryLabel:null;
      const countryDisplay=leagueCountry?(typeof countryFormatter==='function'?countryFormatter(leagueCountry):leagueCountry.toUpperCase()):'';
@@ -357,5 +363,5 @@ function render(host,opts){
  showYear();
  return {year,close:()=>{alive=false;request++;unifiedTicket++;unifiedInstance?.destroy?.();host.onclick=null;host.onchange=null;host.removeEventListener('error',onFlagLoadError,true)}};
 }
-return {esc,REGIONS,flagEmoji,validateDirectory,validateIndex,validateSelection,yearsFor,cardEntries,filterCountries,sourceTeam,normalizePlayer,verifiedProfileLink,compareSelection,outcomeLabel,render};
+return {esc,REGIONS,flagEmoji,clubSnapshotPathForYear,validateDirectory,validateIndex,validateSelection,yearsFor,cardEntries,filterCountries,sourceTeam,normalizePlayer,verifiedProfileLink,compareSelection,outcomeLabel,render};
 });
