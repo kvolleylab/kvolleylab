@@ -6,8 +6,11 @@ on:
     paths:
       - 'teams.html'
       - 'assets/js/kvl-teams-directory-v1.js'
+      - 'assets/js/kvl-pro-league-roster-v1.js'
       - 'assets/css/kvl-teams-directory-v1.css'
+      - 'assets/css/kvl-pro-league-roster-v1.css'
       - 'data/team-rosters/v-league/coaches-2026-27.json'
+      - 'data/team-rosters/sv-league/**'
       - 'tests/teams-directory-live-qa-v1.cjs'
       - '.github/workflows/teams-directory-live-qa-v1.yml'
   workflow_dispatch:
