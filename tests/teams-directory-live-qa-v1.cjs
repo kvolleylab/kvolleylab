@@ -23,8 +23,8 @@ async function ready(){
     if(href){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
-     if(html.includes('20261120-grid-v1')&&html.includes('20261124-svleague-v1')
-        &&html.includes('kvl-pro-league-roster-v1.js?v=20261124-1')
+     if(html.includes('20261120-grid-v1')&&html.includes('20261124-svlogos-v1')
+        &&html.includes('kvl-pro-league-roster-v1.js?v=20261124-svlogos-v1')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -179,10 +179,18 @@ async function verifySVLeague(browser,width){
   assert.equal(await page.locator('#ktdProSeasonSelect').inputValue(),'2026-27');
   assert.equal(await page.locator('.ktd-card').count(),12);
   assert.match(await page.locator('#ktdSummary').innerText(),/12개 구단 · 등록 선수 211명/);
+  assert.equal(await page.locator('img.ktd-team-logo-image').count(),12,'All 12 live SV.LEAGUE cards must use verified team logos');
+  const logoState=await page.locator('img.ktd-team-logo-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
+   img.loading='eager';try{await img.decode()}catch{}
+   return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden};
+  })));
+  assert.ok(logoState.every(x=>x.loaded&&!x.hidden),'Every live SV.LEAGUE logo must decode: '+JSON.stringify(logoState.filter(x=>!x.loaded||x.hidden)));
   const grid=await verifyLiveGrid(page,width);
   const jtekt=page.locator('.ktd-card[data-team-code="JTEKT"]').first();
   await jtekt.locator('[data-ktd-roster]').click();
   await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
+  assert.equal(await page.locator('.kvl-lr-team-logo img').count(),1,'Selected SV.LEAGUE team logo must appear above the roster');
+  assert.equal(await page.locator('.kvl-lr-team-logo img').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0}),true);
   assert.equal(await page.locator('.kvl-lr-row').count(),16);
   const defalco=page.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first();
   assert.match((await defalco.innerText()).replace(/\s+/g,' '),/🇺🇸\s*미국/);
