@@ -203,9 +203,9 @@
     proLeagueRow.querySelectorAll('[data-ktd-pro-league]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdProLeague===state.proLeague)));
    }
    if(proSeasonSelect){
-    const values=state.proSeasons.length?state.proSeasons:[state.season].filter(Boolean);
+    const values=state.proSeasons.length?state.proSeasons:state.proLeague==='vleague'?[state.season].filter(Boolean):[];
     const current=values.includes(state.season)?state.season:values[0]||'';
-    proSeasonSelect.innerHTML=values.map(s=>'<option value="'+esc(s)+'"'+(s===current?' selected':'')+'>'+esc(s)+'</option>').join('');
+    proSeasonSelect.innerHTML=values.length?values.map(s=>'<option value="'+esc(s)+'"'+(s===current?' selected':'')+'>'+esc(s)+'</option>').join(''):'<option value="">등록 시즌 없음</option>';
     proSeasonSelect.disabled=!values.length;
    }
    regionRow.querySelectorAll('[data-ktd-region]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.ktdRegion===state.region)));
