@@ -181,14 +181,19 @@ SV.LEAGUE 2026-27:
 
 출처:
 - JTEKT STINGS Aichi 공식 사이트 2026-27 일정 페이지
-- `https://www.jtekt-stings.jp/`
-- 해당 페이지가 상대팀 경기 카드에 사용하는 공식/운영 로고 자산 URL을 12개 팀에 연결
-- JTEKT 자체 로고는 같은 공식 사이트의 header logo asset 사용
+  - `https://www.jtekt-stings.jp/`
+  - 11개 상대 구단의 경기 카드 로고 자산 사용
+- Tokyo Great Bears 공식 2026-27 경기 일정 페이지
+  - `https://tokyo-greatbears.com/games/games_2026-2027/`
+  - JTEKT STINGS Aichi 상대팀 로고 PNG 사용
+- JTEKT 자체 header SVG는 외부 브라우저 로딩이 차단되어 운영용 자산으로 채택하지 않음
 
 보안/운영 정책:
 - 임의 외부 이미지 URL 허용 금지
-- `www.jtekt-stings.jp/_next/static/media/` 및
-  `images.microcms-assets.io/assets/99af67a09e884982ae7d419ecde99396/`만 SV 로고 원격 asset으로 화이트리스트
+- `www.jtekt-stings.jp/_next/static/media/`
+- `images.microcms-assets.io/assets/99af67a09e884982ae7d419ecde99396/`
+- `tokyo-greatbears.com/_tgb_content/wp-content/uploads/`
+  위 공식 구단 자산 경로만 SV 로고 원격 asset으로 화이트리스트
 - 그 외 `javascript:`, 임의 도메인, 비 HTTPS URL은 기존 `safeLogo`에서 차단
 - 카드 로고 로딩 실패 시 모노그램 폴백
 - 선수명단 상단 로고 로딩 실패 시 팀명 두 글자 폴백
