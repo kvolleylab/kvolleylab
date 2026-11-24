@@ -115,7 +115,8 @@ K-Volley Lab 연결 Drive에서 `SV리그 2026-27` 관련 MASTER를 검색했다
 SV.LEAGUE 2026-27:
 - 12개 팀 카드
 - 기존 Team Finder 3열 PC / 2열 모바일 카드 규칙 재사용
-- 초기 v1은 저장소에 SV 구단 로고 자산이 없으므로 기존 모노그램 폴백 사용
+- 2026-11-24 후속 개선에서 JTEKT STINGS Aichi 공식 2026-27 일정 페이지가 실제 경기 카드에 사용하는 12개 구단 로고 자산을 연결
+- 공식 로고 자산이 로드되지 않으면 기존 모노그램 폴백으로 자동 전환
 - 팀 클릭 시 국제대표팀과 같은 데이터 밀도의 7열 명단
   - NO.
   - 선수명
@@ -173,6 +174,32 @@ SV.LEAGUE 2026-27:
 - Tokyo RECHECK 4명 표시
 - 기존 V-리그 남녀 7팀, 대학/중고/국제 40국 회귀 유지
 - KVL Quality Audit public export gate
+
+## SV.LEAGUE 12개 구단 로고 후속 개선
+
+2026-11-24 후속 요청으로 Team Finder의 SV.LEAGUE 카드와 선수명단 상단에 구단 로고를 추가한다.
+
+출처:
+- JTEKT STINGS Aichi 공식 사이트 2026-27 일정 페이지
+- `https://www.jtekt-stings.jp/`
+- 해당 페이지가 상대팀 경기 카드에 사용하는 공식/운영 로고 자산 URL을 12개 팀에 연결
+- JTEKT 자체 로고는 같은 공식 사이트의 header logo asset 사용
+
+보안/운영 정책:
+- 임의 외부 이미지 URL 허용 금지
+- `www.jtekt-stings.jp/_next/static/media/` 및
+  `images.microcms-assets.io/assets/99af67a09e884982ae7d419ecde99396/`만 SV 로고 원격 asset으로 화이트리스트
+- 그 외 `javascript:`, 임의 도메인, 비 HTTPS URL은 기존 `safeLogo`에서 차단
+- 카드 로고 로딩 실패 시 모노그램 폴백
+- 선수명단 상단 로고 로딩 실패 시 팀명 두 글자 폴백
+- 시즌별 index에 logo URL을 저장하므로 향후 브랜드 변경이 있어도 2026-27 표시를 임의로 덮어쓰지 않는다.
+
+QA 추가:
+- 12팀 모두 서로 다른 verified logo URL
+- 12개 카드 `img.ktd-team-logo-image`
+- PC 1440 / Mobile 390·360 실제 logo decode
+- JTEKT 선수명단 상단 logo decode
+- 기존 211명/RECHECK 5/외국인 필터 회귀 유지
 
 ## 상태
 
