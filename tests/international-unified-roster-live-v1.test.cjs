@@ -298,6 +298,32 @@ test('Reviewed VNL current-club batch 7 resolves seven-country current-season id
  assert.ok(known>=266,'batch 7 must raise VNL current-club coverage to at least 266');
 });
 
+test('Reviewed VNL current-club batch 8 resolves final evidence-backed identities',()=>{
+ assert.ok(Object.keys(currentClubs.players).length>=309);
+ const expected={
+  '28895':['A.O. Foinikas Sýros','Greece','Volley League'],
+  '72294':['JV Gioia Del Colle','Italy','Serie A2'],
+  '180756':['Mount Royal University Cougars','Canada','Canada West']
+ };
+ for(const [id,[club,country,league]] of Object.entries(expected)){
+  const row=currentClubs.players[id];assert.ok(row,'missing current club '+id);
+  assert.equal(row.club,club);assert.equal(row.leagueCountry,country);assert.equal(row.leagueName,league);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
+ assert.equal(currentClubs.players['79752'],undefined,'Denislav Bardarov direct candidate has no public Volleybox DOB and stays fail-closed');
+ assert.equal(currentClubs.players['60269'],undefined,'Dimitar Dimitrov direct candidate DOB conflict must remain fail-closed');
+ assert.equal(currentClubs.players['15441'],undefined,'Nemanja Mašulović 2026/27 current club is not confirmed');
+ assert.equal(currentClubs.players['3191'],undefined,'Murat Yenipazar DOB conflict must remain fail-closed');
+ assert.equal(currentClubs.players['23861'],undefined,'Berkay Bayraktar direct candidate DOB conflict must remain fail-closed');
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ let known=0;
+ for(const team of Object.values(vnl.rosters||{}))for(const p of team.players||[]){
+  const m=String(p.volleybox||'').match(/-p(\d+)\/?$/i),r=m&&currentClubs.players[m[1]];
+  if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
+ }
+ assert.ok(known>=269,'batch 8 must raise VNL current-club coverage to at least 269');
+});
+
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{
  const raw=unified.identify({name:'테스트',en:'Test Player',club:{name:'Some Club',country:'Japan',leagueName:'Test League',confirmed:false}});
  assert.equal(raw.club,'');assert.equal(raw.clubCountry,'');assert.equal(raw.clubLeague,'');
@@ -311,7 +337,7 @@ test('Verified country badge uses a single country-only label regardless of leag
  assert.equal(unified.countryLabel('Italy'),'🇮🇹 ITALY');
  assert.equal(unified.countryLabel('Türkiye'),'🇹🇷 TÜRKIYE');
  assert.equal(unified.countryLabel('Romania'),'🇷🇴 ROMANIA');
- assert.equal(unified.countryLabel('Brazil'),'🇧🇷 BRAZIL');
+ assert.equal(unified.countryLabel('Brazil'),'🇧🇷 BRAZIL');\n assert.equal(unified.countryLabel('Canada'),'🇨🇦 CANADA');
  assert.equal(unified.countryLabel('Russia'),'🇷🇺 RUSSIA');
  assert.equal(unified.countryLabel('Serbia'),'🇷🇸 SERBIA');
  assert.equal(unified.countryLabel('USA'),'🇺🇸 USA');
