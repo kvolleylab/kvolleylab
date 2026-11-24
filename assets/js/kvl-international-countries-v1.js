@@ -313,9 +313,10 @@ function render(host,opts){
      const currentVerified=current&&['CONFIRMED','REVIEWED'].includes(current.status)
       &&typeof current.club==='string'&&!!current.club.trim()&&/^https:\/\//.test(current.source||'')
       &&(!current.dob||!p.dob||current.dob===p.dob);
-     const club=currentVerified?current.club:verified?registered.club:p.club;
-     const leagueCountry=currentVerified?String(current.leagueCountry||'').trim():verified?String(registered.leagueCountry||'').trim():p.club_country;
-     const leagueName=currentVerified?String(current.leagueName||'').trim():verified?String(registered.leagueName||'').trim():p.club_league;
+     const sourceClub=verified?registered.club:p.club;
+     const club=sourceClub||(currentVerified?current.club:'');
+     const leagueCountry=verified?String(registered.leagueCountry||'').trim():p.club?String(p.club_country||'').trim():currentVerified?String(current.leagueCountry||'').trim():'';
+     const leagueName=verified?String(registered.leagueName||'').trim():p.club?String(p.club_league||'').trim():currentVerified?String(current.leagueName||'').trim():'';
      // Match the year-unified roster's country-only label. Do not infer unknown leagues.
      const countryFormatter=typeof window==='object'?window.KVLInternationalUnifiedRosterV1?.countryLabel:null;
      const countryDisplay=leagueCountry?(typeof countryFormatter==='function'?countryFormatter(leagueCountry):leagueCountry.toUpperCase()):'';
