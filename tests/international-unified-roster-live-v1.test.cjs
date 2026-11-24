@@ -56,8 +56,11 @@ test('Different Fukatsu with same #3 do not merge and exact verified club/Volley
  assert.ok(o);assert.equal(o.clubCountry,'Italy');assert.ok(o.clubLeague);
  const a=m.rows.find(p=>p.en==='Yudai Arai');
  assert.ok(a);assert.equal(a.clubCountry,'Japan','Asian Games confirmed club country must be reused');
- const unverified=m.rows.find(p=>p.en==='Akihiro Fukatsu');
- assert.ok(unverified);assert.equal(unverified.club,'');assert.equal(unverified.clubCountry,'');
+ const akihiro=m.rows.find(p=>p.en==='Akihiro Fukatsu');
+ assert.ok(akihiro);assert.equal(akihiro.dob,'1987-07-23');
+ assert.equal(akihiro.directBox,'https://volleybox.net/akihiro-fukatsu-p2818');
+ assert.equal(akihiro.club,'Tokyo Great Bears');assert.equal(akihiro.clubCountry,'Japan');
+ assert.equal(akihiro.clubLeague,'SV.League Men');
  assert.equal(m.rows.find(p=>p.en==='Akihiro Yamauchi').height,204);
  assert.ok(m.rows.filter(x=>x.club).length>=10);
 });
@@ -244,6 +247,55 @@ test('Reviewed VNL current-club batch 6 resolves China Argentina Belgium current
   if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
  }
  assert.ok(known>=237,'batch 6 must raise VNL current-club coverage to at least 237');
+});
+
+test('Reviewed VNL current-club batch 7 resolves seven-country current-season identities',()=>{
+ assert.ok(Object.keys(currentClubs.players).length>=306);
+ const expected={
+  '790':['Aluron CMC Warta Zawiercie','Poland','TAURON Liga'],
+  '2597':['Aluron CMC Warta Zawiercie','Poland','TAURON Liga'],
+  '2691':['ZAKSA Kędzierzyn-Koźle','Poland','TAURON Liga'],
+  '2818':['Tokyo Great Bears','Japan','SV.League Men'],
+  '3633':['PGE Projekt Warszawa','Poland','TAURON Liga'],
+  '4311':['ACH Volley Ljubljana','Slovenia',''],
+  '5231':['SESI Bauru','Brazil','Superliga Masculina'],
+  '5636':['On Hotels Alanya Belediyespor','Türkiye','SMS Grup Efeler Ligi'],
+  '5860':['Sada Cruzeiro Vôlei','Brazil','Superliga Masculina'],
+  '7361':['SESI Bauru','Brazil','Superliga Masculina'],
+  '8347':['JTEKT STINGS Aichi','Japan','SV.League Men'],
+  '10751':['Fenerbahçe Medicana','Türkiye','SMS Grup Efeler Ligi'],
+  '17062':['Epicentr - Podolyany Horodok','Ukraine',''],
+  '17268':['Stilon Gorzów','Poland','TAURON Liga'],
+  '25303':['VK ČEZ Karlovarsko','Czechia','Czech Extraliga'],
+  '26079':['Epicentr - Podolyany Horodok','Ukraine',''],
+  '26358':['Hiroshima Thunders','Japan','SV.League Men'],
+  '28935':['Shinshu Matsumoto Tridents','Japan','SV.League Men'],
+  '29045':['Itas Trentino','Italy','SuperLega'],
+  '33360':['Altekma SK','Türkiye','SMS Grup Efeler Ligi'],
+  '45733':['Fenerbahçe Medicana','Türkiye','SMS Grup Efeler Ligi'],
+  '49188':['VfB Friedrichshafen','Germany','1. Bundesliga'],
+  '52285':['Halkbank Spor Kulübü','Türkiye','SMS Grup Efeler Ligi'],
+  '82735':['Osaka Bluteon','Japan','SV.League Men'],
+  '104246':['ACH Volley Ljubljana','Slovenia',''],
+  '118641':['Halkbank Spor Kulübü','Türkiye','SMS Grup Efeler Ligi'],
+  '147770':['Stal Nysa','Poland','TAURON Liga'],
+  '237253':['OK i-Vent Maribor','Slovenia',''],
+  '275333':['OK Fužinar Ravne','Slovenia','']
+ };
+ for(const [id,[club,country,league]] of Object.entries(expected)){
+  const row=currentClubs.players[id];assert.ok(row,'missing current club '+id);
+  assert.equal(row.club,club);assert.equal(row.leagueCountry,country);assert.equal(row.leagueName,league);
+  assert.equal(row.status,'REVIEWED');assert.match(row.source,/^https:\/\//);
+ }
+ assert.equal(currentClubs.players['3191'],undefined,'Murat Yenipazar DOB conflict must remain fail-closed');
+ assert.equal(currentClubs.players['23861'],undefined,'Berkay Bayraktar direct candidate DOB conflict must remain fail-closed');
+ const vnl=read('data/competitions/vnl-men-2026/data.json');
+ let known=0;
+ for(const team of Object.values(vnl.rosters||{}))for(const p of team.players||[]){
+  const m=String(p.volleybox||'').match(/-p(\d+)\/?$/i),r=m&&currentClubs.players[m[1]];
+  if(r&&['CONFIRMED','REVIEWED'].includes(r.status)&&r.club&&(!r.dob||!p.dob||r.dob===p.dob))known++;
+ }
+ assert.ok(known>=266,'batch 7 must raise VNL current-club coverage to at least 266');
 });
 
 test('Club league-country metadata is shown only for source-confirmed clubs',()=>{

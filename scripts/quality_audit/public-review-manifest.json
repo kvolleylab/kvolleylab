@@ -830,12 +830,13 @@
         "USER-REQUEST-CLUB-COUNTRY-FLAGS-20261123",
         "VNL-CURRENT-CLUB-BATCH4-20261124",
         "VNL-CURRENT-CLUB-BATCH5-20261124",
-        "VNL-CURRENT-CLUB-BATCH6-20261124"
+        "VNL-CURRENT-CLUB-BATCH6-20261124",
+        "VNL-CURRENT-CLUB-BATCH7-20261124"
       ],
       "verified_at": "2026-11-24",
-      "sha256": "571d5643b01b91b9257b34aa7d9e4d21ca193f56047fab705c20ed2707d11d57",
-      "evidence": "docs/validation/international-current-club-vnl-batch6-v1-20261124.md",
-      "review_note": "현재 소속 공통 레지스트리 253→277명. China 8·Argentina 9·Belgium 7명의 2026/27 current club을 REVIEWED 보강한다. VNL current-club coverage 213→237. China Zhai Wu·Zongshuai Qu는 최신 roster 불일치/부족으로 fail-closed 보류한다. Pablo Sergio Koukartsev는 direct Volleybox p5137/DOB 1993-03-25를 재해결해 current club NEONET Norwid Częstochowa까지 연결한다."
+      "sha256": "4d88b6ac0c49b155cbfc1547a5d55d89d69f5e2dc854781c6ffb8946120ef46d",
+      "evidence": "docs/validation/international-current-club-vnl-batch7-v1-20261124.md",
+      "review_note": "현재 소속 공통 레지스트리 277→306명. Türkiye 5·Japan 4·Poland 4·Brazil 4·Slovenia 4·Germany 4·Ukraine 4명의 2026/27 current club을 REVIEWED 보강하고 VNL current-club coverage 237→266으로 확대한다. Murat Yenipazar는 KVL DOB 1993-01-01 vs direct Volleybox/공식 1993-09-23 충돌, Berkay Bayraktar는 VNL DOB 1998-07-03 vs Volleybox 후보 p23861 1998-01-01 충돌로 fail-closed 보류한다."
     },
     "data/national/men-senior-history-summaries-v1.json": {
       "access_level": "PUBLIC",
