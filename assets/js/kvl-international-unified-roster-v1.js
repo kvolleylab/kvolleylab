@@ -124,8 +124,8 @@ function build(sourceSets,{country,gender,year,clubRegistry=null,playerClubRegis
         club=registered.club;clubCountry=leagueText(registered.leagueCountry);clubLeague=leagueText(registered.leagueName);proof=registered.source;asOf=registered.checkedAt||'2026-09';
       }
       const current=p.vb.id&&playerClubRegistry?.players?.[p.vb.id];
-      if(current&&['CONFIRMED','REVIEWED'].includes(current.status)&&knownClub(current.club)&&/^https:\/\//.test(current.source||'')){
-        if(current.dob&&p.dob&&current.dob!==p.dob)throw Error('Current club registry DOB mismatch: '+p.vb.id);
+      if(!club&&current&&['CONFIRMED','REVIEWED'].includes(current.status)&&knownClub(current.club)&&/^https:\/\//.test(current.source||'')){
+        if(current.dob&&p.dob&&current.dob!==p.dob)throw Error('Season club snapshot DOB mismatch: '+p.vb.id);
         club=current.club;clubCountry=leagueText(current.leagueCountry);clubLeague=leagueText(current.leagueName);
         proof=current.source;asOf=current.as_of||'';
       }
@@ -183,7 +183,7 @@ function render(host,model){
     '<div class="kvl-unified-table"><div class="kvl-unified-head" aria-hidden="true"><span>NO.</span><span>선수명</span><span>생년월일</span><span>POS</span><span>신장</span><span>소속팀</span><span>Volleybox</span><span>참가 이력</span></div>'+
     '<div data-kvl-unified-rows></div></div>'+
     '<div class="kvl-unified-detail" data-kvl-unified-detail aria-live="polite" hidden></div>'+
-    '<p class="kvl-unified-note">'+esc(model.note)+' 소속팀은 검증된 2026 대회/시즌 자료 기준이며 현재 실시간 소속으로 단정하지 않습니다.</p></div>';
+    '<p class="kvl-unified-note">'+esc(model.note)+' 소속팀은 해당 연도의 대회 원본을 우선하고, 비어 있을 때만 같은 연도의 시즌 스냅샷으로 보완합니다.</p></div>';
   const list=host.querySelector('[data-kvl-unified-rows]'),count=host.querySelector('[data-kvl-unified-count]'),
     detail=host.querySelector('[data-kvl-unified-detail]');
   const title=x=>x.ko||x.en||'선수';
