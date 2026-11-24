@@ -1051,3 +1051,11 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 배치 5 운�
 
 결과 목표는 current-club registry 253→277명, VNL current-club 213→237명, direct Volleybox 278→279명, search 6→5명이다. Drive AVC/CSV 원본의 과거 검수값은 수정하지 않고 current overlay만 최신화한다. Base `7a4a2b29f0f57bc6d471e9535b47ae84458c29cf`; branch `feature/international-current-club-vnl-batch6-v1`. 자동 테스트·공개 JSON gate·Chromium QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch6-v1-20261124.md).
 
+## 2026-11-24 · 국제 남자 현재 소속 VNL 보강 배치 7
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 배치 6 운영 반영 후 잔여 direct current-club 미확인 선수를 튀르키예→일본→폴란드→브라질→슬로베니아→독일→우크라이나 순으로 검수한다. 최신 2026/27 공식 구단·리그·연맹 및 공개 경기 roster로 확인되는 29명을 current-club overlay에 REVIEWED로 추가해 registry 277→306명, VNL current-club 237→최소 266명을 목표로 한다.
+
+Murat Yenipazar는 KVL DOB 1993-01-01과 direct Volleybox/공식 DOB 1993-09-23 충돌로 보류한다. Berkay Bayraktar는 Ziraat Bankkart current club은 확인되지만 VNL DOB 1998-07-03과 Volleybox 후보 p23861 DOB 1998-01-01이 충돌해 search/direct 승격 및 overlay를 fail-closed 유지한다. Drive MASTER의 과거 검수 시점은 보존하고 current overlay만 최신화한다.
+
+Base `688cb36bcb06b9689ca7d2780eee29477b38fd06`; branch `feature/international-current-club-vnl-batch7-v1`. Node/source regression·public export gate·Chromium PC/mobile QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch7-v1-20261124.md).
+
