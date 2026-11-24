@@ -23,9 +23,16 @@ async function ready(){
     if(href){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
-     if(html.includes('20261120-grid-v1')&&html.includes('20261122-country-card-v2')&&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
-       const staff=await read('data/team-rosters/v-league/coaches-2026-27.json');
-       if(staff?.men?.OKF?.name==='김재헌'&&staff.men.OKF.role==='acting'&&staff.men.OKF.asOf==='2026-11-17')return;
+     if(html.includes('20261120-grid-v1')&&html.includes('20261124-svleague-v1')
+        &&html.includes('kvl-pro-league-roster-v1.js?v=20261124-1')
+        &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
+       const [staff,sv]=await Promise.all([
+        read('data/team-rosters/v-league/coaches-2026-27.json'),
+        read('data/team-rosters/sv-league/index-v1.json')
+       ]);
+       const season=sv?.seasons?.find(x=>x.season==='2026-27'&&x.gender==='men');
+       if(staff?.men?.OKF?.name==='김재헌'&&staff.men.OKF.role==='acting'&&staff.men.OKF.asOf==='2026-11-17'
+          &&season?.team_count===12&&season?.player_count===211&&season?.direct_volleybox_count===211&&season?.recheck_count===5)return;
       }
     }
    }
@@ -155,6 +162,49 @@ async function check(browser,gender,code,player,linked,width){
    overflow:css.width-css.viewport,status:'PASS',screenshot:path.basename(snap)});
  }finally{await page.close()}
 }
+async function verifySVLeague(browser,width){
+ const index=await read('data/team-rosters/sv-league/index-v1.json');
+ const season=index.seasons.find(x=>x.season==='2026-27'&&x.gender==='men');
+ assert.ok(season,'SV.LEAGUE 2026-27 men season snapshot missing');
+ assert.equal(season.team_count,12);assert.equal(season.player_count,211);
+ assert.equal(season.direct_volleybox_count,211);assert.equal(season.recheck_count,5);
+ const page=await pageFor(browser,width,width<=660?844:920);
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ try{
+  const url=BASE+'/teams.html?category=pro&gender=men&league=sv&season=2026-27&release='+encodeURIComponent(sha);
+  const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:30000});
+  assert.ok(response?.ok(),'SV.LEAGUE Team Finder must be published');
+  await page.locator('.ktd-card').first().waitFor({timeout:30000});
+  assert.equal(await page.locator('[data-ktd-pro-league="sv"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('#ktdProSeasonSelect').inputValue(),'2026-27');
+  assert.equal(await page.locator('.ktd-card').count(),12);
+  assert.match(await page.locator('#ktdSummary').innerText(),/12개 구단 · 등록 선수 211명/);
+  const grid=await verifyLiveGrid(page,width);
+  const jtekt=page.locator('.ktd-card[data-team-code="JTEKT"]').first();
+  await jtekt.locator('[data-ktd-roster]').click();
+  await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
+  assert.equal(await page.locator('.kvl-lr-row').count(),16);
+  const defalco=page.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first();
+  assert.match((await defalco.innerText()).replace(/\s+/g,' '),/🇺🇸\s*미국/);
+  assert.equal(await defalco.locator('.kvl-lr-vb a').getAttribute('href'),'https://volleybox.net/torey-defalco-p2330');
+  await page.locator('[data-kvl-lr-nat="foreign"]').click();
+  assert.equal(await page.locator('.kvl-lr-row').count(),3);
+  await page.locator('[data-kvl-lr-pos="OH"]').click();
+  assert.equal(await page.locator('.kvl-lr-row').count(),1);
+  assert.match(await page.locator('.kvl-lr-row').innerText(),/토리 디팔코/);
+  await page.locator('#ktdCloseRoster').click();
+  const tokyo=page.locator('.ktd-card[data-team-code="TOKYO"]').first();
+  await tokyo.locator('[data-ktd-roster]').click();
+  await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
+  assert.equal(await page.locator('.kvl-lr-row').count(),20);
+  assert.equal(await page.locator('.kvl-lr-recheck').count(),4);
+  assert.deepEqual(errors,[],'SV.LEAGUE live runtime JS errors');
+  const snap=path.join(OUT,'kvl-teams-live-svleague-'+width+'.png');
+  await page.screenshot({path:snap,fullPage:true});
+  result.views.push({type:'svleague',width,teamCount:12,playerCount:211,jtekt:16,tokyo:20,recheck:4,
+   columns:grid.cols,status:'PASS',screenshot:path.basename(snap)});
+ }finally{await page.close()}
+}
 async function verifyVLeagueTodayFirst(browser,gender,width){
  const page=await pageFor(browser,width,width<=660?844:900);
  const errors=[];page.on('pageerror',error=>errors.push(error.message));
@@ -201,6 +251,8 @@ async function main(){
    await check(browser,'men','OKF','윤경',true,390);
    await check(browser,'women','RSP','김아중',false,1440);
    await check(browser,'women','RSP','김아중',false,390);
+   await verifySVLeague(browser,1440);
+   await verifySVLeague(browser,390);
    // Verify both operational V-League division pages, without altering KOVO live data or the member gate.
    await verifyVLeagueTodayFirst(browser,'men',1440);
    await verifyVLeagueTodayFirst(browser,'women',390);

@@ -8,6 +8,7 @@ on:
       - 'assets/js/kvl-international-unified-roster-v1.js'
       - 'assets/css/kvl-international-unified-roster-v1.css'
       - 'tests/international-unified-roster-live-v1.test.cjs'
+      - 'tests/international-unified-roster-live-qa-v1.cjs'
       - 'tests/international-unified-roster-browser-v1.cjs'
       - '.github/workflows/international-unified-roster-qa-v1.yml'
   push:
@@ -31,6 +32,7 @@ jobs:
           node --check assets/js/kvl-international-unified-roster-v1.js
           node --check assets/js/kvl-international-countries-v1.js
           node --check tests/international-unified-roster-live-v1.test.cjs
+          node --check tests/international-unified-roster-live-qa-v1.cjs
           node --check tests/international-unified-roster-browser-v1.cjs
           node scripts/build-international-country-index-v1.cjs --check
       - name: Validate all 40-country source pointers, core KVL and pro regressions
