@@ -1059,3 +1059,11 @@ Murat Yenipazar는 KVL DOB 1993-01-01과 direct Volleybox/공식 DOB 1993-09-23 
 
 Base `688cb36bcb06b9689ca7d2780eee29477b38fd06`; branch `feature/international-current-club-vnl-batch7-v1`. Node/source regression·public export gate·Chromium PC/mobile QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch7-v1-20261124.md).
 
+## 2026-11-24 · 국제 남자 현재 소속 VNL 보강 배치 8
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 배치 7 운영 반영 후 남은 current-club 미확인 18명을 쿠바·불가리아부터 다시 검수하고, 기존 이탈리아·캐나다·미국·세르비아·튀르키예·중국 보류 건도 최신 공개 근거로 재확인한다. direct Volleybox ID와 VNL DOB가 일치하고 2026/27 현재 소속 근거가 확보된 Boris Nachev, Lyuboslav Telkiyski, Cody Hudson 3명만 REVIEWED overlay에 추가한다.
+
+결과 목표는 current-club registry 306→309명, VNL current-club coverage 266→269/284명이며 direct Volleybox 279 / search 5는 유지한다. 쿠바 4명은 2026/27 current club 확정 근거가 부족해 계속 미확인으로 둔다. Denislav Bardarov는 Halkbank 소속은 확인되지만 direct Volleybox 후보 p79752의 공개 DOB가 없어 기존 direct-link 검증 기준상 보류하고, Dimitar Dimitrov는 공식 DOB와 Volleybox 후보 DOB 충돌로 보류한다. Nemanja Mašulović는 2026/27 Allianz Milano 잔류가 아니라 departure로 확인되어 새 소속을 추정하지 않는다. Murat Yenipazar, Berkay Bayraktar 등 기존 DOB 충돌도 fail-closed 유지한다.
+
+Cody Hudson의 Canada current club 반영으로 통합명단 내부 country-label emoji 목록에 Canada가 빠진 것을 확인해 `Canada: 🇨🇦`만 최소 보강한다. 기존 club-country flag renderer는 이미 `ca.svg`를 지원하므로 자산 구조는 변경하지 않는다. Base `a3b778559b9c2ac48ff1e2cd7c07805b090258ac`; branch `feature/international-current-club-vnl-batch8-v1`. 자동 테스트·공개 JSON gate·Chromium QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합/운영 배포하지 않는다. [검증 기록](docs/validation/international-current-club-vnl-batch8-v1-20261124.md).
+
