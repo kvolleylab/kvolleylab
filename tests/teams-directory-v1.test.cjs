@@ -201,6 +201,8 @@ test('navigation renders non-pro sections as grounded links and escapes untruste
  assert.equal(dir.safeLogo('/assets/img/team-logos/v-league/2026-27/men/OKF.svg'),true);
  assert.equal(dir.safeLogo('https://images.microcms-assets.io/assets/99af67a09e884982ae7d419ecde99396/06d729a7fb7c4ec3b01c224acba7707b/logo.png'),true);
  assert.equal(dir.safeLogo('https://www.jtekt-stings.jp/_next/static/media/logo-header.test.svg'),true);
+ assert.equal(dir.safeLogo('https://tokyo-greatbears.com/_tgb_content/wp-content/uploads/2024/09/jtekt.png'),true);
+ assert.equal(new URL(entries.find(x=>x.code==='JTEKT').logo).hostname,'tokyo-greatbears.com');
  assert.equal(dir.safeLogo('https://evil.example/assets/99af67a09e884982ae7d419ecde99396/logo.png'),false);
  const malicious={name:'<script>alert(1)</script>',code:'OKF',gender:'men',logo:'javascript:alert(1)',count:17,type:'pro',action:'roster',coach:'<img onerror=alert(1)>'};
  const markup=dir.cardMarkup(malicious);
