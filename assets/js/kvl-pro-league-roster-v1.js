@@ -18,7 +18,10 @@ function validateIndex(index){
   &&Array.isArray(s.teams)&&s.teams.every(t=>/^[A-Z0-9_-]{2,30}$/.test(t.code||'')&&t.name&&t.en
    &&Number.isInteger(t.count)&&t.count>=0&&safePath(t.source_path)));
 }
-const height=p=>Number(p?.height_cm??p?.h??0);\nconst nationality=p=>String(p?.nationality??p?.nat??'').trim();\nconst volleybox=p=>String(p?.volleybox??p?.vb??'').trim();\nfunction validateTeam(team,expected={}){
+const height=p=>Number(p?.height_cm??p?.h??0);
+const nationality=p=>String(p?.nationality??p?.nat??'').trim();
+const volleybox=p=>String(p?.volleybox??p?.vb??'').trim();
+function validateTeam(team,expected={}){
  if(!team||team.version!=='1.0'||team.league_id!=='sv-league'||!/^\d{4}-\d{2}$/.test(team.season||'')
   ||team.gender!=='men'||!Array.isArray(team.players)||!team.team?.code||!team.team?.name)return false;
  if(expected.code&&team.team.code!==expected.code)return false;
@@ -29,8 +32,8 @@ const height=p=>Number(p?.height_cm??p?.h??0);\nconst nationality=p=>String(p?.n
   const key=String(p.no)+'/'+String(p.en||'');
   if(seen.has(key))return false;seen.add(key);
   return p&&Number.isInteger(Number(p.no))&&p.en&&POS.some(x=>String(p.pos||'').split('/').includes(x))
-   &&Number.isInteger(Number(p.h))&&Number(p.h)>150&&Number(p.h)<230
-   &&/^[a-z]{2}$/.test(p.iso2||'')&&p.nat&&VB.test(p.vb||'')
+   &&Number.isInteger(height(p))&&height(p)>150&&height(p)<230
+   &&/^[a-z]{2}$/.test(p.iso2||'')&&nationality(p)&&VB.test(volleybox(p))
    &&['VERIFIED','RECHECK'].includes(p.status);
  });
 }
