@@ -5,8 +5,11 @@ on:
     paths:
       - 'teams.html'
       - 'assets/js/kvl-teams-directory-v1.js'
+      - 'assets/js/kvl-pro-league-roster-v1.js'
       - 'assets/css/kvl-teams-directory-v1.css'
+      - 'assets/css/kvl-pro-league-roster-v1.css'
       - 'data/team-rosters/v-league/coaches-2026-27.json'
+      - 'data/team-rosters/sv-league/**'
       - 'tests/teams-directory-v1.test.cjs'
       - 'tests/teams-directory-browser-qa-v1.cjs'
       - 'tests/teams-directory-live-qa-v1.cjs'
@@ -30,6 +33,7 @@ jobs:
       - name: Verify new team directory JavaScript and unit test syntax
         run: |
           node --check assets/js/kvl-teams-directory-v1.js
+          node --check assets/js/kvl-pro-league-roster-v1.js
           node --check tests/teams-directory-v1.test.cjs
           node --check tests/teams-directory-browser-qa-v1.cjs
           node --check tests/teams-directory-live-qa-v1.cjs
