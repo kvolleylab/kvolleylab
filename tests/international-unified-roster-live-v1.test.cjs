@@ -337,7 +337,8 @@ test('Verified country badge uses a single country-only label regardless of leag
  assert.equal(unified.countryLabel('Italy'),'🇮🇹 ITALY');
  assert.equal(unified.countryLabel('Türkiye'),'🇹🇷 TÜRKIYE');
  assert.equal(unified.countryLabel('Romania'),'🇷🇴 ROMANIA');
- assert.equal(unified.countryLabel('Brazil'),'🇧🇷 BRAZIL');\n assert.equal(unified.countryLabel('Canada'),'🇨🇦 CANADA');
+ assert.equal(unified.countryLabel('Brazil'),'🇧🇷 BRAZIL');
+ assert.equal(unified.countryLabel('Canada'),'🇨🇦 CANADA');
  assert.equal(unified.countryLabel('Russia'),'🇷🇺 RUSSIA');
  assert.equal(unified.countryLabel('Serbia'),'🇷🇸 SERBIA');
  assert.equal(unified.countryLabel('USA'),'🇺🇸 USA');
