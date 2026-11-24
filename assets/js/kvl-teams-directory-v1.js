@@ -24,7 +24,17 @@
  const validSeason=x=>/^\d{4}-\d{2}$/.test(String(x||''));
  const validCode=x=>/^[A-Za-z0-9_-]{2,40}$/.test(String(x||''));
  const teamRoute=(gender,season,code)=>'competition-engine.html?competition=v-league-'+gender+'-'+season+'&view=rosters&team='+encodeURIComponent(code);
- const safeLogo=x=>/^(?:\/?assets\/)[A-Za-z0-9_.\/-]+\.(?:svg|png|jpe?g|webp)(?:\?[A-Za-z0-9=&_.-]+)?$/.test(String(x||''));
+ const safeLogo=x=>{
+  const s=String(x||'');
+  if(/^(?:\\/?assets\\/)[A-Za-z0-9_.\\/-]+\\.(?:svg|png|jpe?g|webp)(?:\\?[A-Za-z0-9=&_.-]+)?$/.test(s))return true;
+  try{
+   const u=new URL(s);
+   if(u.protocol!=='https:')return false;
+   if(u.hostname==='www.jtekt-stings.jp')return u.pathname.startsWith('/_next/static/media/')&&/\\.(?:svg|png|webp)$/i.test(u.pathname);
+   if(u.hostname==='images.microcms-assets.io')return u.pathname.startsWith('/assets/99af67a09e884982ae7d419ecde99396/')&&/\\.(?:svg|png|webp)$/i.test(u.pathname);
+   return false;
+  }catch{return false}
+ };
  const safeHref=x=>/^(?:competition-engine|university-team|university-teams|national-team|national-team-history|international-competition-senior-national-team|competition|vnl)\.html(?:\?[A-Za-z0-9%_.=&-]+)?$/.test(String(x||''));
  const totalPlayers=teams=>teams.reduce((n,t)=>n+(Number(t.count)||0),0);
  function buildPro(participants,rosters,staff,gender,season){
