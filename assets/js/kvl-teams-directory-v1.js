@@ -369,7 +369,7 @@
      const team=await readJSON(t.sourcePath);
      if(token!==state.token||state.selected!==code)return;
      const renderer=window.KVLProLeagueRosterV1;
-     if(!renderer?.validateTeam?.(team,{code,season})||!renderer.render(rosterHost,team))throw Error('SV.LEAGUE roster renderer unavailable');
+     if(!renderer?.validateTeam?.(team,{code,season})||!renderer.render(rosterHost,team,{logo:t.logo}))throw Error('SV.LEAGUE roster renderer unavailable');
     }else{
      // Season roster is always the publisher-owned JSON. The bridge only adds verified display-level fields.
      const base={competitionId:'KVL-COMP-VLEAGUE-'+(gender==='men'?'M':'W')+'-'+season,
