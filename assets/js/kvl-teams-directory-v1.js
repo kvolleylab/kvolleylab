@@ -26,7 +26,7 @@
  const teamRoute=(gender,season,code)=>'competition-engine.html?competition=v-league-'+gender+'-'+season+'&view=rosters&team='+encodeURIComponent(code);
  const safeLogo=x=>{
   const s=String(x||'');
-  if(/^(?:\\/?assets\\/)[A-Za-z0-9_.\\/-]+\\.(?:svg|png|jpe?g|webp)(?:\\?[A-Za-z0-9=&_.-]+)?$/.test(s))return true;
+  if(/^(?:\/?assets\/)[A-Za-z0-9_.\/-]+\.(?:svg|png|jpe?g|webp)(?:\?[A-Za-z0-9=&_.-]+)?$/.test(s))return true;
   try{
    const u=new URL(s);
    if(u.protocol!=='https:')return false;
