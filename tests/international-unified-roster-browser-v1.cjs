@@ -175,8 +175,8 @@ async function testApp(){
   assert.match(iriText,/풀라드 시르잔|Foolad Sirjan Iranian/,'Current Foolad Sirjan affiliations should be available');
   const ali=iri.page.locator('.kvl-unified-row').filter({hasText:'알리 하그파라스트'}).first();
   assert.equal((await ali.locator('.kvl-roster-club-team').innerText()).trim(),'파니오니오스');
-  assert.equal(await ali.locator('.kvl-roster-club-teamline').getAttribute('title'),'Panionios Betsson');
-  assert.match((await ali.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^그리스 · 발리리그 \(1부\)$/);
+  assert.equal(await ali.locator('.kvl-roster-club-teamline').getAttribute('title'),'Panionios GSS','2026 tournament-time club must not be overwritten by later season affiliation');
+  assert.match((await ali.locator('.kvl-roster-club-meta').innerText()).replace(/\s+/g,' ').trim(),/^그리스$/,'historical source did not verify a league name, so do not backfill one');
   assert.match(await ali.locator('.kvl-roster-league-flag').getAttribute('src'),/assets\/images\/flags\/club\/gr\.svg$/);
   assert.equal(await ali.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true,'Greece club flag must decode');
   const mohsen=iri.page.locator('.kvl-unified-row').filter({hasText:'모센 델라바리'}).first();
@@ -187,7 +187,7 @@ async function testApp(){
   assert.match(await mohsen.locator('.kvl-roster-league-flag').getAttribute('src'),/assets\/images\/flags\/club\/ru\.svg$/);
   assert.equal(await mohsen.locator('.kvl-roster-league-flag').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true,'Russia club flag must decode');
   assert.deepEqual(iri.errors,[]);
-  REPORT.views.push({name:'Iran Mohsen direct Volleybox/current Russia club and Ali Greece club flag',status:'PASS'});
+  REPORT.views.push({name:'Iran 2026 source club precedence: Ali Panionios GSS; missing-source Mohsen uses season fallback',status:'PASS'});
   await iri.page.close();
   const bul=await open(browser,1440,'category=international&gender=men&country=BUL&year=2026');
   await bul.page.locator('.kvl-unified-row').first().waitFor({timeout:30000});
