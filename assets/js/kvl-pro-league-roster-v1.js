@@ -65,7 +65,7 @@ function render(host,team,display={}){
  const logo=safeLogo(display.logo)?String(display.logo):'';
  host.innerHTML='<section class="kvl-league-roster" data-kvl-pro-league-roster>'+
   '<div class="kvl-lr-top"><div class="kvl-lr-identity">'+
-   (logo?'<div class="kvl-lr-team-logo"><img src="'+esc(logo)+'" alt="'+esc(team.team.name)+' 팀 로고" loading="eager" decoding="async"></div>':'')+
+   (logo?'<div class="kvl-lr-team-logo"><img src="'+esc(logo)+'" alt="'+esc(team.team.name)+' 팀 로고" loading="eager" decoding="async"><span class="kvl-lr-team-logo-fallback" aria-hidden="true" hidden>'+esc(String(team.team.name||'팀').slice(0,2))+'</span></div>':'')+
    '<div><p class="ktd-section-eyebrow">JAPAN · SV.LEAGUE</p>'+
    '<h3>'+esc(team.team.name)+' <small>'+esc(team.team.en)+'</small></h3>'+
    '<p>'+esc(team.season)+' 시즌 등록 스냅샷 · '+esc(team.as_of)+' 기준</p></div></div>'+
@@ -91,6 +91,12 @@ function render(host,team,display={}){
    '<div data-kvl-lr-rows></div></div>'+
   '<p class="kvl-lr-note">시즌 등록 명단 스냅샷입니다. 14인 경기 엔트리와 구분하며, 생년월일은 이번 원본에 없는 경우 추정하지 않습니다. <b>소속 재확인</b>은 구단 시즌 명단과 Volleybox의 소속 표기가 다른 선수입니다.</p>'+
  '</section>';
+ const logoImage=host.querySelector('.kvl-lr-team-logo img');
+ if(logoImage)logoImage.addEventListener('error',()=>{
+  logoImage.hidden=true;
+  const fallback=logoImage.nextElementSibling;
+  if(fallback?.classList.contains('kvl-lr-team-logo-fallback'))fallback.hidden=false;
+ },{once:true});
  const rows=host.querySelector('[data-kvl-lr-rows]'),count=host.querySelector('[data-kvl-lr-count]');
  const visible=()=>team.players.filter(p=>(nat==='all'||nat==='foreign'&&!isJapan(p)||nat==='jp'&&isJapan(p))
   &&(pos==='all'||String(p.pos||'').split('/').includes(pos))
