@@ -125,8 +125,9 @@
   ];
  }
  function logoMarkup(t){
-  if(safeLogo(t.logo))return '<img src="'+esc(t.logo)+'" alt="'+esc(t.name)+' 구단·팀 로고" loading="lazy">';
-  return '<span class="ktd-monogram" aria-hidden="true">'+esc(short(t.name).slice(0,2)||'팀')+'</span>';
+  const fallback='<span class="ktd-monogram ktd-team-logo-fallback" aria-hidden="true"'+(safeLogo(t.logo)?' hidden':'')+'>'+esc(short(t.name).slice(0,2)||'팀')+'</span>';
+  if(safeLogo(t.logo))return '<img class="ktd-team-logo-image" src="'+esc(t.logo)+'" alt="'+esc(t.name)+' 구단·팀 로고" loading="lazy" decoding="async">'+fallback;
+  return fallback;
  }
  function countryFlagMarkup(t){
   const iso=String(t.flag_iso2||'');
@@ -422,13 +423,13 @@
    if(state.category!=='international'||!button||!international()?.REGIONS[button.dataset.ktdRegion])return;
    state.region=button.dataset.ktdRegion;if(state.selectedCountry){hideCountry();state.year=''}paint();syncUrl();
   });
-  // Keep the existing country emoji as a graceful fallback if a local flag asset fails.
+  // Keep existing monograms/emoji as graceful fallbacks if a verified image asset fails.
   grid.addEventListener('error',event=>{
    const img=event.target;
-   if(!img||!img.matches?.('img.ktd-country-flag-image'))return;
+   if(!img?.matches?.('img.ktd-country-flag-image,img.ktd-team-logo-image'))return;
    img.hidden=true;
    const fallback=img.nextElementSibling;
-   if(fallback?.classList.contains('ktd-country-flag-fallback'))fallback.hidden=false;
+   if(fallback?.classList.contains('ktd-country-flag-fallback')||fallback?.classList.contains('ktd-team-logo-fallback'))fallback.hidden=false;
   },true);
   grid.addEventListener('click',event=>{
    const countryButton=event.target.closest('[data-ktd-country]');
