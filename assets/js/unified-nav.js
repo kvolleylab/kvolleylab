@@ -1,6 +1,6 @@
 (()=>{
-  if(!document.querySelector('script[src*="member-session-v1.mjs"]')){const memberSession=document.createElement('script');memberSession.type='module';memberSession.src='assets/js/member-session-v1.mjs?v=20261116-1';document.head.appendChild(memberSession)}
-  if(!document.querySelector('script[src*="member-access-gate-v1.mjs"]')){const memberGate=document.createElement('script');memberGate.type='module';memberGate.src='assets/js/member-access-gate-v1.mjs?v=20261116-1';document.head.appendChild(memberGate)}
+  if(!document.querySelector('script[src*="member-session-v1.mjs"]')){const memberSession=document.createElement('script');memberSession.type='module';memberSession.src='assets/js/member-session-v1.mjs?v=20261124-auth-singleton-v1';document.head.appendChild(memberSession)}
+  if(!document.querySelector('script[src*="member-access-gate-v1.mjs"]')){const memberGate=document.createElement('script');memberGate.type='module';memberGate.src='assets/js/member-access-gate-v1.mjs?v=20261124-auth-singleton-v1';document.head.appendChild(memberGate)}
   const PRIVATE_REVIEW_MODE=true;
   if(!document.querySelector('link[rel~="icon"]')){
     const iconLink=document.createElement('link');
