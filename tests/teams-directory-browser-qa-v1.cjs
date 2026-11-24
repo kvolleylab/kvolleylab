@@ -256,7 +256,11 @@ async function main(){
    await mobile.locator('.ktd-card').first().waitFor({timeout:30000});
    assert.equal(await mobile.locator('.ktd-card').count(),12);
    assert.equal(await mobile.locator('img.ktd-team-logo-image').count(),12);
-   assert.ok(await mobile.locator('img.ktd-team-logo-image').evaluateAll(imgs=>imgs.every(img=>img.naturalWidth>0&&!img.hidden)),'Mobile SV.LEAGUE logos must load');
+   const mobileLogoState=await mobile.locator('img.ktd-team-logo-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
+    img.loading='eager';try{await img.decode()}catch{}
+    return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden};
+   })));
+   assert.ok(mobileLogoState.every(x=>x.loaded&&!x.hidden),'Mobile SV.LEAGUE logos must load: '+JSON.stringify(mobileLogoState.filter(x=>!x.loaded||x.hidden)));
    await mobile.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first().locator('[data-ktd-roster]').click();
    await mobile.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
    assert.equal(await mobile.locator('.kvl-lr-team-logo img').count(),1);
