@@ -56,8 +56,11 @@ test('Different Fukatsu with same #3 do not merge and exact verified club/Volley
  assert.ok(o);assert.equal(o.clubCountry,'Italy');assert.ok(o.clubLeague);
  const a=m.rows.find(p=>p.en==='Yudai Arai');
  assert.ok(a);assert.equal(a.clubCountry,'Japan','Asian Games confirmed club country must be reused');
- const unverified=m.rows.find(p=>p.en==='Akihiro Fukatsu');
- assert.ok(unverified);assert.equal(unverified.club,'');assert.equal(unverified.clubCountry,'');
+ const akihiro=m.rows.find(p=>p.en==='Akihiro Fukatsu');
+ assert.ok(akihiro);assert.equal(akihiro.dob,'1987-07-23');
+ assert.equal(akihiro.directBox,'https://volleybox.net/akihiro-fukatsu-p2818');
+ assert.equal(akihiro.club,'Tokyo Great Bears');assert.equal(akihiro.clubCountry,'Japan');
+ assert.equal(akihiro.clubLeague,'SV.League Men');
  assert.equal(m.rows.find(p=>p.en==='Akihiro Yamauchi').height,204);
  assert.ok(m.rows.filter(x=>x.club).length>=10);
 });
