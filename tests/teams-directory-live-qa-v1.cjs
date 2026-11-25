@@ -27,6 +27,8 @@ async function ready(){
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
         &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-rsv2-metadata-v1')
         &&html.includes('kvl-vleague-draft-bridge-v1.js?v=20261126-metadata-v1')
+        &&html.includes('kvl-vleague-profile-enrichment-v1.js?v=20261126-profile-v1')
+        &&html.includes('kvl-vleague-roster-v2.js?v=20261126-profile-v1')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -309,7 +311,7 @@ async function verifyKEPMetadata(browser,width){
   assert.equal(await page.locator('.kvl-rs-metadata-warning').count(),0);
   for(const [name,no,high,university,pick] of [
    ['한재원',20,'인하사대부고','','2라운드 3순위'],['여광우',55,'송산고','인하대','1라운드 5순위'],
-   ['옹민혁',14,'광주전자공고','경일대','수련선수 지명'],['이율리',15,'','','수련선수 지명']
+   ['옹민혁',14,'광주전자공고','경일대','수련선수 지명'],['이율리',15,'영생고','중부대','수련선수 지명']
   ]){
    await page.locator('[data-choice="'+no+'/'+name+'"] .kvlrv2-name').click();
    const detail=page.locator('.kvlrv2-detail');
@@ -319,7 +321,18 @@ async function verifyKEPMetadata(browser,width){
    if(!high&&!university)assert.equal(await detail.locator('.kvlrv2-schools').count(),0);
    assert.ok((await detail.locator('.kvlrv2-pick').innerText()).includes(pick));
   }
-  result.notes.push('Live KEP '+width+'px verified four rookie draft entries and known school fields');
+  await page.locator('[data-choice="15/이율리"] .kvlrv2-name').click();
+  assert.match(await page.locator('.kvlrv2-detail').innerText(),/2000-09-14/);
+  await page.locator('[data-choice="1/서재덕"] .kvlrv2-name').click();
+  assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/2011-12 KOVO 신인드래프트/);
+  assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/1라운드 2순위/);
+  assert.match(await page.locator('.kvlrv2-schools').innerText(),/성균관대/);
+  await page.locator('[data-choice="6/하승우"] .kvlrv2-name').click();
+  assert.match(await page.locator('.kvlrv2-detail').innerText(),/1995-06-02/);
+  const snap=path.join(OUT,'kvl-kep-profile-live-'+width+'.png');
+  await page.screenshot({path:snap,fullPage:true});
+  result.notes.push('Live KEP '+width+'px verified four rookie draft entries, veteran draft and education, reviewed DOB');
+  result.views.push({gender:'men',club:'KEP',width,screenshot:path.basename(snap),status:'PASS',profileSupplement:true});
  }finally{await page.close()}
 }
 async function main(){
