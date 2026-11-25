@@ -94,8 +94,8 @@ function render(host,team,display={}){
     POS.map(x=>'<button type="button" data-kvl-lr-pos="'+x+'" aria-pressed="false">'+x+'</button>').join('')+'</div>'+
    '<label class="kvl-lr-search"><span class="sr-only">선수명 검색</span><input type="search" placeholder="선수명 검색" data-kvl-lr-search autocomplete="off"></label>'+
   '</div><p class="kvl-lr-count" data-kvl-lr-count></p>'+
-  '<div class="kvl-lr-table"><div class="kvl-lr-head" aria-hidden="true"><span>NO.</span><span>선수명</span><span>생년월일</span><span>POS</span><span>신장</span><span>국적</span><span>Volleybox</span></div>'+
-   '<div data-kvl-lr-rows></div></div><section class="kvl-lr-detail" data-kvl-lr-detail hidden></section>'+
+  '<div class="kvl-rs-columns"><div class="kvl-lr-table"><div class="kvl-lr-head" aria-hidden="true"><span>NO.</span><span>선수명</span><span>생년월일</span><span>POS</span><span>신장</span><span>국적</span><span>Volleybox</span></div>'+
+   '<div data-kvl-lr-rows></div></div><section class="kvl-lr-detail" data-kvl-lr-detail hidden></section></div>'+
   '<p class="kvl-lr-note">시즌 등록 명단 스냅샷입니다. 14인 경기 엔트리와 구분하며, 생년월일은 이번 원본에 없는 경우 추정하지 않습니다. <b>소속 재확인</b>은 구단 시즌 명단과 Volleybox의 소속 표기가 다른 선수입니다.</p>'+
  '</section>';
  const logoImage=host.querySelector('.kvl-lr-team-logo img');
@@ -112,7 +112,7 @@ function render(host,team,display={}){
   const badge=p.status==='RECHECK'?'<span class="kvl-lr-recheck" title="'+esc(p.note||'출처 간 소속 표기 재확인')+'">소속 재확인</span>':'';
   const flag=flagMarkup(p);
   return '<div class="kvl-lr-row" data-player="'+esc(p.en)+'">'+
-   '<span class="kvl-lr-no">'+esc(p.no)+'</span>'+
+   '<span class="kvl-lr-no">'+'#'+esc(p.no)+'</span>'+
    '<span class="kvl-lr-name"><button type="button" class="kvl-lr-name-button" data-kvl-lr-player="'+esc(volleybox(p))+'" aria-expanded="'+String(selected===volleybox(p))+'"><strong>'+esc(title(p))+'</strong></button>'+badge+'</span>'+
    '<span class="kvl-lr-dob">—</span><span class="kvl-lr-position">'+esc(p.pos)+'</span>'+
    '<span class="kvl-lr-height">'+esc(height(p))+'cm</span>'+
@@ -135,18 +135,19 @@ function render(host,team,display={}){
    '<p>'+esc(team.team.name)+' · '+esc(team.season)+' · #'+esc(p.no)+'</p>'+
    (!p.ko&&translated(p)?'<p class="kvl-lr-transliteration">한글명: 음역 표기 (검수 전)</p>':'')+
    '<a href="'+esc(volleybox(p))+'" target="_blank" rel="noopener noreferrer">VB-&gt;</a>';
-  paint();detail.hidden=false;detail.scrollIntoView({block:'nearest'});
+  paint();detail.hidden=false;if(matchMedia('(max-width:920px)').matches)detail.scrollIntoView({block:'nearest'});
  }
  host.onclick=e=>{
   if(e.target.closest('[data-kvl-lr-close]')){selected='';detail.hidden=true;detail.innerHTML='';paint();return}
   if(e.target.closest('a'))return;
   const player=e.target.closest('[data-kvl-lr-player]');
   if(player){const found=visible().find(p=>volleybox(p)===player.dataset.kvlLrPlayer);if(found)show(found);return}
+  const row=e.target.closest('[data-player]');if(row){const found=visible().find(p=>p.en===row.dataset.player);if(found)show(found);return}
   const n=e.target.closest('[data-kvl-lr-nat]');if(n){nat=n.dataset.kvlLrNat;paint();return}
   const p=e.target.closest('[data-kvl-lr-pos]');if(p){pos=p.dataset.kvlLrPos;paint()}
  };
  host.querySelector('[data-kvl-lr-search]').addEventListener('input',e=>{query=norm(e.target.value);paint()});
- paint();
+ paint();if(team.players.length&&matchMedia('(min-width:921px)').matches)show(team.players[0]);
  return {destroy:()=>{host.onclick=null;host.replaceChildren()}};
 }
 return {validateIndex,validateTeam,teamEntries,render,title,flagPath};

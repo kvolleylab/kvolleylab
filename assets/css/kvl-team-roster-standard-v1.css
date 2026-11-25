@@ -93,3 +93,34 @@
  .ktd-page .kvl-roster-standard.is-pro .kvlrv2-height{grid-area:height;justify-self:end;font-size:11px}
  .ktd-page .kvl-roster-standard.is-international .kvl-roster-kpis{padding:0;margin:10px 0 12px}
 }
+
+/* Team Roster Standard v2 — Team Finder only. */
+.ktd-page .kvl-rs-columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start;padding:0 12px 12px}
+.ktd-page .kvl-rs-columns:has(> [hidden]){grid-template-columns:minmax(0,1fr)}
+.ktd-page .kvl-rs-columns>.kvl-lr-table,.ktd-page .kvl-rs-columns>.kvl-unified-table{margin:0;min-width:0}
+.ktd-page .kvl-rs-columns>.kvl-lr-detail,.ktd-page .kvl-rs-columns>.kvl-unified-detail{margin:0;min-width:0;overflow-wrap:anywhere}
+.ktd-page .kvl-rs-columns .kvl-lr-detail-head,.ktd-page .kvl-rs-columns .kvl-unified-detail-head{background:#173c59;color:#fff;padding:14px;border-radius:8px;align-items:flex-start}
+.ktd-page .kvl-rs-columns .kvl-lr-detail-head h4,.ktd-page .kvl-rs-columns .kvl-unified-detail-head h4{color:#fff;line-height:1.4}
+.ktd-page .kvl-rs-columns .kvl-lr-detail-head small,.ktd-page .kvl-rs-columns .kvl-unified-detail-head small{display:block;color:#c4d7e4;font-size:12px}
+.ktd-page .kvl-rs-columns .kvl-unified-detail-events{grid-template-columns:minmax(0,1fr)}
+.ktd-page .kvl-rs-columns .kvl-lr-row{cursor:pointer}
+.ktd-page .kvl-rs-columns .kvl-lr-row:has([aria-expanded=true]){background:#eaf5f2;box-shadow:inset 3px 0 #28ad98}
+.ktd-page .kvl-rs-pos button[aria-pressed=true]{background:#184565;color:#fff}
+.ktd-page .kvl-rs-flag{width:21px;height:15px;object-fit:cover;vertical-align:middle;flex:none;margin-right:4px;border-radius:2px}
+.ktd-page .kvl-rs-nationality{display:flex;align-items:center;flex-wrap:wrap;min-width:0;word-break:keep-all}
+.ktd-page .kvl-rs-vb{color:#2d718d;font-weight:800;white-space:nowrap}
+.ktd-page .kvl-rs-english{display:block;margin-bottom:5px}
+.ktd-page .kvl-roster-standard.is-pro .kvlrv2-list{overflow-x:auto}
+@media(min-width:921px){
+ .ktd-page .kvl-rs-columns{grid-template-columns:minmax(0,2.5fr) minmax(235px,1fr)}
+ .ktd-page .kvl-rs-columns:has(> [hidden]){grid-template-columns:minmax(0,1fr)}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-columns{grid-template-columns:minmax(0,2.5fr) minmax(235px,1fr)}
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-head,.ktd-page .kvl-roster-standard.is-pro .kvlrv2-row{grid-template-columns:35px minmax(90px,1fr) 85px 35px 49px 78px 58px;gap:5px;min-width:490px;padding-left:8px;padding-right:8px}
+ .ktd-page .kvl-rs-columns .kvl-lr-head,.ktd-page .kvl-rs-columns .kvl-lr-row{grid-template-columns:35px minmax(90px,1fr) 85px 35px 49px 78px 58px;min-width:490px;gap:5px;padding-left:8px;padding-right:8px;font-size:12px;min-height:52px}
+ .ktd-page .kvl-rs-columns .kvl-lr-name strong,.ktd-page .kvl-rs-columns .kvl-lr-nationality,.ktd-page .kvl-rs-columns .kvl-lr-vb a{font-size:12px}
+ .ktd-page .kvl-rs-columns .kvl-unified-head,.ktd-page .kvl-rs-columns .kvl-unified-row{grid-template-columns:35px minmax(95px,1fr) 85px 35px 49px minmax(110px,1fr) 58px 70px;min-width:580px;gap:5px;padding:8px;font-size:12px;min-height:58px}
+ .ktd-page .kvl-roster-standard.is-international .kvl-rs-columns .kvl-unified-row span,.ktd-page .kvl-roster-standard.is-international .kvl-rs-columns .kvl-unified-row strong,.ktd-page .kvl-roster-standard.is-international .kvl-rs-columns .kvl-unified-row a{font-size:12px!important}
+ .ktd-page .kvl-rs-columns .kvl-lr-table,.ktd-page .kvl-rs-columns .kvl-unified-table{overflow-x:auto;overflow-y:hidden}
+}
+@media(max-width:920px){.ktd-page .kvl-rs-columns,.ktd-page .kvl-rs-columns:has(> [hidden]){grid-template-columns:minmax(0,1fr);padding:0 8px 10px}.ktd-page .kvl-roster-standard.is-pro .kvlrv2-head,.ktd-page .kvl-roster-standard.is-pro .kvlrv2-row{grid-template-columns:35px minmax(90px,1fr) 85px 35px 49px 78px 58px;gap:5px}}
+@media(max-width:640px){.ktd-page .kvl-roster-standard.is-pro .kvlrv2-row{grid-template-columns:32px minmax(0,1fr) 72px;grid-template-areas:"num name pos" "num dob height" "num nat vb";gap:4px 6px;min-height:79px}.ktd-page .kvl-rs-nationality{grid-area:nat;font-size:11px}.ktd-page .kvl-rs-vb-cell{grid-area:vb;text-align:right}.ktd-page .kvl-rs-flag{width:18px;height:13px}}

@@ -168,7 +168,9 @@ function dots(person,events){
 }
 function render(host,model){
   if(!host||!model||!Array.isArray(model.events)||!Array.isArray(model.rows))throw Error('Invalid unified roster mount');
-  let filter='all',query='',selected='';
+  let filter='all',pos='all',query='',selected='';
+  const standard=!!host.closest?.('.ktd-page');
+  const positions=['OH','OP','MB','S','L'];
   const events=model.events;
   const filterLabel=id=>events.find(e=>e.id===id)?.title||'';
   const hasData=events.some(e=>e.count>0);
@@ -180,17 +182,18 @@ function render(host,model){
     '<button type="button" data-kvl-unified-filter="all" aria-pressed="true">전체</button>'+
     (events.length>1?'<button type="button" data-kvl-unified-filter="multi" aria-pressed="false">2대회 이상</button>':'')+
     events.map(e=>'<button type="button" data-kvl-unified-filter="'+esc(e.id)+'" aria-pressed="false">'+esc(e.title.replace(/^\d{4}\s*/,'').replace(/(?:남자부|여자부)$/,'').trim())+'</button>').join('')+'</div>'+
+    (standard?'<div class="kvl-unified-filters kvl-rs-pos" role="group" aria-label="포지션 필터">'+['all',...positions].map(x=>'<button type="button" data-rs-pos="'+x+'" aria-pressed="'+(x==='all')+'">'+(x==='all'?'ALL POS':x)+'</button>').join('')+'</div>':'')+
     '<label class="kvl-unified-search"><span class="sr-only">통합 선수명단 검색</span><input type="search" placeholder="선수명 검색" data-kvl-unified-search autocomplete="off"></label></div>'+
     '<p class="kvl-unified-count" data-kvl-unified-count role="status"></p>'+
-    '<div class="kvl-unified-table"><div class="kvl-unified-head" aria-hidden="true"><span>NO.</span><span>선수명</span><span>생년월일</span><span>POS</span><span>신장</span><span>소속팀</span><span>Volleybox</span><span>참가 이력</span></div>'+
+    '<div class="kvl-rs-columns"><div class="kvl-unified-table"><div class="kvl-unified-head" aria-hidden="true"><span>NO.</span><span>선수명</span><span>생년월일</span><span>POS</span><span>신장</span><span>소속팀</span><span>Volleybox</span><span>참가 이력</span></div>'+
     '<div data-kvl-unified-rows></div></div>'+
-    '<div class="kvl-unified-detail" data-kvl-unified-detail aria-live="polite" hidden></div>'+
+    '<div class="kvl-unified-detail" data-kvl-unified-detail aria-live="polite" hidden></div></div>'+
     '<p class="kvl-unified-note">'+esc(model.note)+' 소속팀은 해당 연도의 대회 원본을 우선하고, 비어 있을 때만 같은 연도의 시즌 스냅샷으로 보완합니다.</p></div>';
   const list=host.querySelector('[data-kvl-unified-rows]'),count=host.querySelector('[data-kvl-unified-count]'),
     detail=host.querySelector('[data-kvl-unified-detail]');
   const title=x=>x.ko||x.en||'선수';
   const matches=e=>filter==='all'||filter==='multi'&&e.count>1||e.matches.some(m=>m.id===filter);
-  const filtered=()=>model.rows.filter(p=>matches(p)&&(!query||[p.ko,p.en,p.club,p.clubCountry,p.clubLeague].some(v=>norm(v).includes(query))));
+  const filtered=()=>model.rows.filter(p=>matches(p)&&(pos==='all'||String(p.position||'').match(/OH|OP|MB|\bS\b|\bL\b/g)?.includes(pos))&&(!query||[p.ko,p.en,p.club,p.clubCountry,p.clubLeague].some(v=>norm(v).includes(query))));
   function row(p){
     const name=p.KVLProfile?'<a class="kvl-unified-name-link" href="'+esc(p.KVLProfile)+'"><strong>'+esc(title(p))+'</strong></a>':
       '<strong>'+esc(title(p))+'</strong>';
@@ -202,7 +205,7 @@ function render(host,model){
     const club=p.club?'<span class="kvl-unified-club-name">'+esc(p.club)+'</span>'+(league?'<span class="kvl-unified-club-league"'+(p.clubLeague?' title="'+esc('확인된 리그: '+p.clubLeague)+'"':'')+'> · '+esc(league)+'</span>':''):'<em>미확인</em>';
     const facts='<span class="kvl-unified-mobile-facts">'+esc(p.dob||'생년월일 미확인')+' · '+esc(p.position||'—')+' · '+(p.height?esc(p.height)+'cm':'신장 미확인')+'</span>';
     return '<div class="kvl-unified-row'+(selected===p.key?' is-selected':'')+'" data-kvl-unified-athlete="'+esc(p.key)+'" tabindex="0" role="option" aria-selected="'+(selected===p.key)+'">'+
-      '<span class="kvl-unified-number">'+esc(p.number)+'</span>'+
+      '<span class="kvl-unified-number">'+esc(standard&&/^\d+$/.test(String(p.number))?'#'+p.number:p.number)+'</span>'+
       '<span class="kvl-unified-name">'+name+reserve+(p.en&&norm(p.en)!==norm(title(p))?'<small>'+esc(p.en)+'</small>':'')+'</span>'+
       '<span class="kvl-unified-dob">'+esc(p.dob||'—')+'</span><span class="kvl-unified-pos">'+esc(p.position||'—')+'</span>'+
       '<span class="kvl-unified-height">'+(p.height?esc(p.height)+'cm':'—')+'</span>'+facts+
@@ -237,13 +240,14 @@ function render(host,model){
       (p.official?'<a href="'+esc(p.official)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'')+'</div>';
     paint();
     detail.hidden=false;
-    detail.scrollIntoView({block:'nearest',behavior:'smooth'});
+    if(!standard||matchMedia('(max-width:920px)').matches)detail.scrollIntoView({block:'nearest',behavior:'smooth'});
   }
   host.onclick=e=>{
+    const pb=e.target.closest('[data-rs-pos]');if(pb){pos=pb.dataset.rsPos;host.querySelectorAll('[data-rs-pos]').forEach(x=>x.setAttribute('aria-pressed',String(x===pb)));paint();return}
     const button=e.target.closest('[data-kvl-unified-filter]');
     if(button&&host.contains(button)){filter=button.dataset.kvlUnifiedFilter;selected='';detail.hidden=true;paint();return}
     if(e.target.closest('[data-kvl-unified-close]')){selected='';detail.hidden=true;detail.innerHTML='';paint();return}
-    if(e.target.closest('a'))return;
+    if(standard&&e.target.closest('.kvl-unified-name-link'))e.preventDefault();else if(e.target.closest('a'))return;
     const row=e.target.closest('[data-kvl-unified-athlete]');
     if(row&&host.contains(row))show(row.dataset.kvlUnifiedAthlete);
   };
@@ -253,7 +257,7 @@ function render(host,model){
   };
   host.oninput=e=>{if(e.target.matches('[data-kvl-unified-search]')){query=norm(e.target.value);paint()}};
   if(!hasData)list.innerHTML='<p class="ktd-empty">현재 연도에 확인된 대회명단이 없습니다.</p>';
-  paint();return {destroy:()=>{host.onclick=null;host.oninput=null;host.onkeydown=null}};
+  paint();if(standard&&model.rows.length&&matchMedia('(min-width:921px)').matches)show(model.rows[0].key);return {destroy:()=>{host.onclick=null;host.oninput=null;host.onkeydown=null}};
 }
 return {identify,volleybox,important,compatible,build,dots,render,countryLabel};
 });

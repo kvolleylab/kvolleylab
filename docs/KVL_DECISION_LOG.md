@@ -1112,3 +1112,7 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. SV.LEAGU
 ## 2026-11-26 · SV.LEAGUE 국적 국기 이미지 통일
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 선수 211명 국적 27개 국가·지역 전수 대조. 기존 4x3 및 club SVG 20종 재사용, 기존과 동일한 flag-icons(MIT)에서 il/no/fi/ng/tn/pr/dk 7종 추가. 명단과 클릭 상세에 국기 이미지+한글 국가명 표시. 원본 선수·국적·시즌·VB 불변. 캐시 및 PC·모바일 QA 갱신. 사용자 승인 전 병합 금지. 복구는 본 PR revert.
+
+## 2026-11-26 · Team Roster Standard v2
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 팀 찾기 전용 공통 명단: NO.(#), 선수명(한글), 생년월일, POS, 신장, 국적(SVG), Volleybox 순. 국내 국적 및 포지션 필터, 국제 포지션 및 기존 대회 필터, SV 기존 필터 유지. PC 좌측 명단/우측 상세, 모바일 하단 상세. 국내·국제 이름 클릭은 상세 선택, 상세 내 기존 KVL 프로필 링크 유지. 국제 소속/참가 이력 및 국내 출신학교/드래프트 보존. 미확인 정보 추정 금지. 시즌 원본 및 대회 페이지 변경 금지. Base d4a82529ea3a45194b2032a3d20c1aa2e0bbebd0. 사용자 별도 운영 승인 전 병합 금지. 복구는 본 PR revert.
