@@ -1125,3 +1125,7 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 선수 211명 
 ## 2026-11-26 · Team Roster Standard v2
 
 Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 팀 찾기 V-리그 남녀 공통 명단 NO.(#), 선수명(한글), 생년월일, POS, 신장, 국적(SVG), Volleybox 순. 국내 국적·포지션 필터 및 SV 기존 필터, 국제 포지션·대회 필터. PC 좌측 명단/우측 상세, 모바일 하단 상세. 기존 KVL 프로필은 상세 내 링크로 연결. 출신학교·드래프트·국제 참가 이력·시즌 소속 원본 보존. 국제대표팀의 기존 17px PC 가독성 및 내부 가로 스크롤 유지. 미확인 국적/링크 추정 금지. 여자부 인원 고정값 테스트는 실제 공개 roster별 선수 식별자와 대조하도록 교정. PR #431의 충돌 없는 변경만 최신 main 8cdbdecc5789877fc7f7efd2e00ea871d2c6960a 기준 배포 브랜치에 이전. 사용자 운영 반영 승인 확보. QA 및 배포 증거는 대체 PR에 기록한다. 복구는 대체 PR revert.
+
+## 2026-11-26 · Team Roster Standard v2 글씨 크기 복구
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #432에서 좁아진 좌측 명단을 맞추기 위해 V-리그 12/13px 및 SV 12px을 사용한 문제를 수정한다. PC 821px 이상 V-리그·SV 공통 명단의 기본 필드/헤더 17px, 선수명 20px, 기존 국제대표팀 실표시 17px 및 소속 메타 15px을 보존한다. 우측 상세 패널 유지(921px 이상), 좁은 PC에서는 명단 영역 내부 스크롤, 모바일 820px 이하는 세로 카드와 하단 상세 유지. 선수·팀·시즌 원본, 기존 필터·링크, 로그인 및 대회 화면은 변경하지 않는다. 실제 computed font-size 및 모바일/문서 overflow 검증을 기존 PC·모바일 QA에 추가. Base a00ff5fc7864cba4dbd93b54440992c97df2d4f1; branch fix/team-roster-v2-readable-type-20261126. 사용자 운영 승인 전 병합 금지. 복구는 본 PR revert.
