@@ -1121,6 +1121,34 @@
       "sha256": "6438fad254b55f6efe5d6ce1e811d480ad4f20c761a817e9da5af327afc01d0f",
       "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
       "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 팀 시트의 시즌 등록 스냅샷. 번호·POS·신장·국적·직접 Volleybox 및 RECHECK 상태를 보존하며, 14인 경기 엔트리나 생년월일을 추정하지 않는다."
+    },
+    "data/team-rosters/v-league/profile-enrichment-2026-27-v1.json": {
+      "access_level": "PUBLIC",
+      "record_status": "VERIFIED",
+      "source_ids": [
+        "KVL-SRC-VLEAGUE-2026-27-ROSTER-20261028",
+        "KOVO-2026-27-M-FINAL",
+        "KOVO-2026-27-W-FINAL",
+        "2024-2025_Mediaguidebook_0.all.pdf",
+        "2025-2026_Mediaguidebook_0.all.pdf",
+        "https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=170",
+        "https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=171",
+        "https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=172",
+        "https://www.kbstarsvc.co.kr/player/player_profile.asp?pno=173",
+        "https://www.kepco.co.kr/sports/volley/team/playerList.do",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=172",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=149",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=178",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=162",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=170",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=188",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=198",
+        "https://m.pinkspiders.co.kr/team/player_view.php?idx=169"
+      ],
+      "verified_at": "2026-11-26",
+      "sha256": "2a4e3bb309fc24e521376d88a202d909f0d3b8e7e4950bdfca0c411fc95e15b6",
+      "evidence": "docs/validation/vleague-player-profile-enrichment-v1-20261126.json",
+      "review_note": "188명 공개 선수 정보 보완 파일. 기존 KOVO 공식 등록 자료 및 신인 브리지, 기존 원문확인/두 시즌 일치 미디어가이드 추출, 구단 공식 선수 프로필 29명 재대조. 71개 단일 미검수 추출 및 불일치 항목 보류. 원본 PDF 재전사 또는 신규 시즌 전체 원문 검증으로 승격하지 않음. 기존 ID/등록·확정값 보호 검증 통과. 공개 스포츠 기본 사실·학교·드래프트·출처만 포함. 비공개 메모·인증정보 없음. 파일 해시 검증이며 운영 배포 승인/CI와 별개."
     }
   }
 }
