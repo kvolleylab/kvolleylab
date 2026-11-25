@@ -1104,3 +1104,7 @@ Google Drive에서 일본 SV.LEAGUE 2026-27 전용 MASTER는 확인되지 않아
 ## 2026-11-25 · 팀 카드 로고 모노그램 중복 표시 수정
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #425 병합 후 사용자가 모바일 SV.LEAGUE 팀 카드에서 실제 로고 옆에 JT·도쿄 등 대체 모노그램이 중복 표시되는 문제를 지적했다. 기존 `.ktd-monogram`의 display:grid가 hidden 속성을 덮어쓰는 문제를 공통 팀 카드 CSS에서 수정한다. 정상 로고가 있으면 PC·모바일 모두 대체 모노그램을 숨기고, 이미지 실패 시에만 대체 모노그램을 표시한다. 팀 이름, 기존 3열/2열, 명단 데이터와 원본, 링크 및 필터는 유지한다. CSS 캐시 버전과 사전/운영 QA의 실제 computed display 검증을 갱신한다. Base `8368e7fdf39407cc182bc3be421a69e9767ec451`; branch `fix/team-logo-fallback-visibility-20261125`. 사용자 승인 전 병합 금지. 복구는 수정 PR의 revert로 한정한다.
+
+## 2026-11-25 · 해외 프로팀 명단 한글명 우선 표시
+
+Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. SV.LEAGUE 211명 중 기존 한글명 29명 유지, 나머지 182명은 Volleybox ID와 영문명으로 연결한 표시용 음역 사전으로 보완한다. 음역은 공식 한글명 검수 전 상태로 명시하며 시즌 원본 JSON 및 등록 소속, 선수 링크는 수정하지 않는다. 기본 명단은 한글명만, 선수 이름 클릭 시 하단 상세 영역에 영문명·국적·POS·신장·시즌 소속·VB를 표시하며 양쪽 언어로 검색한다. Base `ed4a00af7e097813b77d4a34581647f6be39d269`. QA·Pages 증거는 PR에 기록한다.
