@@ -23,7 +23,7 @@ async function ready(){
     if(href){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
-     if(html.includes('20261120-grid-v1')&&html.includes('20261124-svlogos-v1')
+     if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261124-svlogos-v1')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
@@ -182,9 +182,9 @@ async function verifySVLeague(browser,width){
   assert.equal(await page.locator('img.ktd-team-logo-image').count(),12,'All 12 live SV.LEAGUE cards must use verified team logos');
   const logoState=await page.locator('img.ktd-team-logo-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
    img.loading='eager';try{await img.decode()}catch{}
-   return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden};
+   return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden,fallbackHidden:img.nextElementSibling?.matches('.ktd-team-logo-fallback[hidden]')&&getComputedStyle(img.nextElementSibling).display==='none'};
   })));
-  assert.ok(logoState.every(x=>x.loaded&&!x.hidden),'Every live SV.LEAGUE logo must decode: '+JSON.stringify(logoState.filter(x=>!x.loaded||x.hidden)));
+  assert.ok(logoState.every(x=>x.loaded&&!x.hidden&&x.fallbackHidden),'Every live SV.LEAGUE logo must decode: '+JSON.stringify(logoState.filter(x=>!x.loaded||x.hidden||!x.fallbackHidden)));
   const grid=await verifyLiveGrid(page,width);
   const jtekt=page.locator('.ktd-card[data-team-code="JTEKT"]').first();
   await jtekt.locator('[data-ktd-roster]').click();
