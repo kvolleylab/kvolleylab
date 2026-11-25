@@ -98,6 +98,28 @@ async function verifyHomeHero(page,expected){
  assert.ok(details.documentWidth<=details.viewport+2,'Team Finder hero cannot cause page overflow');
  return details;
 }
+async function verifyRosterType(page,league){
+ const selectors=league==='vleague'
+  ? {head:'.kvlrv2-head',row:'.kvlrv2-row',name:'.kvlrv2-name strong',number:'.kvlrv2-number',dob:'.kvlrv2-dob',pos:'.kvlrv2-pos',height:'.kvlrv2-height',nationality:'.kvl-rs-nationality',vb:'.kvl-rs-vb-cell',pane:'.kvlrv2-list',detail:'.kvlrv2-detail'}
+  : {head:'.kvl-lr-head',row:'.kvl-lr-row',name:'.kvl-lr-name strong',number:'.kvl-lr-no',dob:'.kvl-lr-dob',pos:'.kvl-lr-position',height:'.kvl-lr-height',nationality:'.kvl-lr-nationality',vb:'.kvl-lr-vb a',pane:'.kvl-lr-table',detail:'.kvl-lr-detail'};
+ const m=await page.evaluate(s=>{
+  const el=k=>document.querySelector(s[k]);
+  const sizes=Object.fromEntries(['head','row','name','number','dob','pos','height','nationality','vb'].map(k=>[k,parseFloat(getComputedStyle(el(k)).fontSize)]));
+  const pane=el('pane'),detail=el('detail');
+  return {sizes,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,paneWidth:pane.clientWidth,paneScroll:pane.scrollWidth,side:detail.getBoundingClientRect().left>=pane.getBoundingClientRect().right-1};
+ },selectors);
+ assert.ok(m.documentWidth<=m.viewport+2,league+' roster must not overflow the page: '+JSON.stringify(m));
+ if(m.viewport>=821){
+  for(const [key,size] of Object.entries(m.sizes))assert.equal(size,key==='name'?20:17,league+' '+key+' must retain readable type: '+JSON.stringify(m));
+  assert.ok(m.paneScroll>=m.paneWidth,league+' roster pane containment');
+  if(m.viewport>=921)assert.ok(m.side,league+' desktop profile remains on the right');
+ }else{
+  assert.ok(m.sizes.name>=11.5&&m.sizes.row>=11,league+' mobile font must not shrink below the prior roster');
+  assert.ok(m.paneScroll<=m.paneWidth+2,league+' mobile roster must fit without horizontal scrolling');
+ }
+ return m;
+}
+
 async function main(){
  const browser=await chromium.launch({headless:true});
  try{
@@ -127,6 +149,7 @@ async function main(){
   await okCard.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),men.OKF.players.length);
+  await verifyRosterType(page,'vleague');
   assert.deepEqual(await page.locator('.kvlrv2-head > span').allTextContents(),['NO.','선수명','생년월일','POS','신장','국적','Volleybox']);
   assert.equal(await page.locator('[data-rs-pos]').count(),6);
   await page.locator('[data-filter="foreign"]').click();
@@ -182,6 +205,7 @@ async function main(){
   assert.equal(flagState.length,16);assert.ok(flagState.every(Boolean));
   assert.match(await defalco.locator('.kvl-lr-flag-image').getAttribute('src'),/\/us\.svg$/);
   await defalco.locator('.kvl-lr-name-button').click();
+  await verifyRosterType(page,'sv');
   assert.equal(await page.locator('[data-kvl-lr-detail] .kvl-lr-flag-image').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
   if(await page.evaluate(()=>innerWidth>920))assert.ok(await page.locator('[data-kvl-lr-detail]').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1));
@@ -212,6 +236,7 @@ async function main(){
   await rsp.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),women.RSP.players.length);
+  await verifyRosterType(page,'vleague');
   const kim=page.locator('.kvlrv2-row').filter({hasText:'김아중'}).first();
   await kim.click();
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/청수고/);
@@ -281,6 +306,7 @@ async function main(){
    await mobile.locator('.ktd-card').filter({hasText:'OK저축은행'}).first().locator('[data-ktd-roster]').click();
    await mobile.locator('.kvlrv2').waitFor({timeout:30000});
    await mobile.locator('.kvlrv2-row').filter({hasText:'윤경'}).first().click();
+   await verifyRosterType(mobile,'vleague');
    const result=await snapshot(mobile,'men-'+width);
    await mobile.goto(BASE+'/teams.html?category=pro&gender=men&league=sv&season=2026-27',{waitUntil:'domcontentloaded',timeout:30000});
    await mobile.locator('.ktd-card').first().waitFor({timeout:30000});
@@ -295,6 +321,7 @@ async function main(){
    await mobile.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
    assert.equal(await mobile.locator('.kvl-lr-team-logo img').count(),1);
    assert.equal(await mobile.locator('.kvl-lr-row').count(),16);
+   await verifyRosterType(mobile,'sv');
    const mobileFlags=await mobile.locator('.kvl-lr-row .kvl-lr-flag-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0})));
    assert.equal(mobileFlags.length,16);assert.ok(mobileFlags.every(Boolean));
    assert.match(await mobile.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first().innerText(),/미국/);
