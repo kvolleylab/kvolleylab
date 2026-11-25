@@ -50,32 +50,37 @@ test('the open homepage switches to the new KST date at midnight without waiting
   for(const gender of ['men','women']){
    const d=sources[slug(gender)];
    d.matches=[
-    game(d,gender+'-previous','2026-11-25','19:00',{status:'final',score,scoreVerification:true}),
-    game(d,gender+'-newday','2026-11-26','19:00',{status:'scheduled'})
+    game(d,gender+'-older','2026-11-24','19:00',{status:'final',score,scoreVerification:true}),
+    game(d,gender+'-today','2026-11-25','19:00',{status:'final',score,scoreVerification:true}),
+    game(d,gender+'-future','2026-11-27','19:00',{status:'scheduled'})
    ];
   }
  }});
  try{
   assert.equal(s.doc.getElementById('home-matches').dataset.kstDay,'2026-11-25');
-  assert.equal(s.doc.querySelector('[data-kind=next] h3').textContent,'다음 경기');
+  assert.equal(s.doc.querySelector('[data-kind=next] h3').textContent,'오늘 경기');
+  for(const gender of ['men','women']){
+   assert.equal(pick(s.doc,'next',gender).dataset.matchId,gender+'-today','Today's verified finished game stays first until KST midnight');
+   assert.equal(pick(s.doc,'recent',gender).dataset.matchId,gender+'-older');
+  }
   assert.equal(s.midnight.length,1,'One KST-midnight timer should be scheduled');
   assert.ok(s.midnight[0].ms>=100&&s.midnight[0].ms<200,
    'Timer must target the next KST date change: '+s.midnight[0].ms);
   s.w.Date.now=()=>Date.parse(t1);
   s.midnight[0].fn();
   assert.equal(s.doc.getElementById('home-matches').dataset.kstDay,'2026-11-26');
-  assert.equal(s.doc.querySelector('[data-kind=next] h3').textContent,'오늘 경기');
+  assert.equal(s.doc.querySelector('[data-kind=next] h3').textContent,'다음 경기');
   assert.deepEqual([...s.doc.querySelectorAll('#home-matches > .match-column')].map(c=>c.dataset.kind),['next','recent']);
   for(const gender of ['men','women']){
-   assert.equal(pick(s.doc,'next',gender).dataset.matchId,gender+'-newday');
-   assert.equal(pick(s.doc,'recent',gender).dataset.matchId,gender+'-previous');
+   assert.equal(pick(s.doc,'next',gender).dataset.matchId,gender+'-future');
+   assert.equal(pick(s.doc,'recent',gender).dataset.matchId,gender+'-today');
   }
   assert.equal(JSON.stringify(s.sources),s.before,'Clock change must not modify source scores');
  }finally{s.close();}
 });
 test('each division selects independently and excludes unverified, partial, cancelled and invalid fixtures',async()=>{
  const s=await setup({edit:sources=>{reset(sources);for(const g of ['men','women']){const d=sources[slug(g)],date=g==='men'?'2026-11-01':'2026-10-30';d.matches=[game(d,g+'-final',date,'14:00',{score,scoreVerification:true,status:'final'}),game(d,g+'-partial','2026-11-02','10:00',{score:{home:2,away:1},scoreVerification:true}),game(d,g+'-unverified','2026-11-02','11:00',{score,scoreVerification:false}),game(d,g+'-cancelled','2026-11-03','10:00',{status:'cancelled'}),game(d,g+'-live','2026-11-02','12:00',{score,scoreVerification:true,status:'live'}),game(d,g+'-invalid','2026-11-31','10:00'),game(d,g+'-unknown','2026-11-03','11:00',{home:{code:'MISSING'}}),game(d,g+'-next','2026-11-04','19:00')];}}});try{
-  for(const g of ['men','women']){assert.equal(pick(s.doc,'recent',g).dataset.matchId,g+'-final');assert.equal(pick(s.doc,'next',g).dataset.matchId,g+'-live');assert.match(pick(s.doc,'next',g).textContent,/상태 확인 중/);assert.equal(pick(s.doc,'next',g).querySelector('.match-score').textContent,'VS');assert.equal(pick(s.doc,'recent',g).querySelectorAll('abbr').length,5);}
+  for(const g of ['men','women']){assert.equal(pick(s.doc,'recent',g).dataset.matchId,g+'-final');assert.equal(pick(s.doc,'next',g).dataset.matchId,g+'-live');assert.match(pick(s.doc,'next',g).textContent,/상태 확인 중/);assert.equal(pick(s.doc,'next',g).querySelector('.match-score').textContent,'—','Unverified post-kickoff game must not show a fake VS or score');assert.equal(pick(s.doc,'recent',g).querySelectorAll('abbr').length,5);}
   assert.equal(JSON.stringify(s.sources),s.before);
  }finally{s.close();}
 });
