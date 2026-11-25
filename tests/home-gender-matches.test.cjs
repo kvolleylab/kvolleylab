@@ -60,7 +60,7 @@ test('the open homepage switches to the new KST date at midnight without waiting
   assert.equal(s.doc.getElementById('home-matches').dataset.kstDay,'2026-11-25');
   assert.equal(s.doc.querySelector('[data-kind=next] h3').textContent,'오늘 경기');
   for(const gender of ['men','women']){
-   assert.equal(pick(s.doc,'next',gender).dataset.matchId,gender+'-today','Today's verified finished game stays first until KST midnight');
+   assert.equal(pick(s.doc,'next',gender).dataset.matchId,gender+'-today',"Today’s verified finished game stays first until KST midnight");
    assert.equal(pick(s.doc,'recent',gender).dataset.matchId,gender+'-older');
   }
   assert.equal(s.midnight.length,1,'One KST-midnight timer should be scheduled');
