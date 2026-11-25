@@ -1129,3 +1129,7 @@ Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. 팀 찾�
 ## 2026-11-26 · Team Roster Standard v2 글씨 크기 복구
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #432에서 좁아진 좌측 명단을 맞추기 위해 V-리그 12/13px 및 SV 12px을 사용한 문제를 수정한다. PC 821px 이상 V-리그·SV 공통 명단의 기본 필드/헤더 17px, 선수명 20px, 기존 국제대표팀 실표시 17px 및 소속 메타 15px을 보존한다. 우측 상세 패널 유지(921px 이상), 좁은 PC에서는 명단 영역 내부 스크롤, 모바일 820px 이하는 세로 카드와 하단 상세 유지. 선수·팀·시즌 원본, 기존 필터·링크, 로그인 및 대회 화면은 변경하지 않는다. 실제 computed font-size 및 모바일/문서 overflow 검증을 기존 PC·모바일 QA에 추가. Base a00ff5fc7864cba4dbd93b54440992c97df2d4f1; branch fix/team-roster-v2-readable-type-20261126. 사용자 운영 승인 전 병합 금지. 복구는 본 PR revert.
+
+## 2026-11-26 · Team Roster Standard v2 서체·굵기 통일
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #433 이후 국내/일본/국제 명단의 글씨체·굵기 차이 수정. 국제대표팀/홈페이지 body의 Arial, Noto Sans KR, sans-serif를 세 종류의 명단 및 상세/버튼이 상속한다. 이름·등번호·헤더·POS·Volleybox·필터 800, 생년월일·신장·기본행·영문명 400, 국적/소속 700으로 공통 의미 기반 굵기를 적용한다. 기존 PC 글씨 크기, 모바일 구조, 우측 프로필, 선수 데이터/링크 보존. 실제 computed font-family/weight를 국내 및 SV PC·모바일과 국제 PC QA에서 검증한다. 팀 찾기 전용 CSS, 캐시 및 QA 변경만 허용. Base 87a194bc632262e08f8f0239ee5b03baaeb800ad. 별도 사용자 운영 승인 전 병합 금지. 복구는 본 PR revert.
