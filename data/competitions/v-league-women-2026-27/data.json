@@ -988,19 +988,27 @@
       "status": "live",
       "officialSourceKey": "023:001:FEMALE:44",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-25T10:44:02+00:00",
+      "updatedAt": "2026-11-25T11:04:22+00:00",
       "liveScore": {
         "home": 0,
-        "away": 1,
+        "away": 2,
         "sourceKey": "023:001:FEMALE:44",
-        "observedAt": "2026-11-25T10:44:02+00:00"
+        "observedAt": "2026-11-25T11:04:22+00:00"
       },
       "liveSets": [
         {
           "home": 23,
           "away": 25,
           "status": "completed",
-          "observedAt": "2026-11-25T10:44:02+00:00"
+          "observedAt": "2026-11-25T11:04:22+00:00",
+          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=44&gcode=001&hcode=2006&acode=2002&page=0&size=1"
+        },
+        {
+          "home": 16,
+          "away": 25,
+          "status": "completed",
+          "observedAt": "2026-11-25T11:04:22+00:00",
+          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=44&gcode=001&hcode=2006&acode=2002&page=0&size=1"
         }
       ]
     },
@@ -3304,8 +3312,8 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 21/126경기 종료 · 2026-11-25 19:44 KST 반영",
-  "updatedAt": "2026-11-25T10:44:02+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 21/126경기 종료 · 2026-11-25 20:04 KST 반영",
+  "updatedAt": "2026-11-25T11:04:22+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
