@@ -181,3 +181,46 @@
  .ktd-page .kvl-roster-standard.is-pro .kvl-rs-nationality{grid-area:nat;font-size:11px}
  .ktd-page .kvl-roster-standard.is-pro .kvl-rs-vb-cell{grid-area:vb;text-align:right}
 }
+
+/* Team Roster Standard v2 typography — all three Team Finder roster types.
+   Inherit the actual site font (Arial, Noto Sans KR, sans-serif), not a
+   separate Korean fallback. Keep existing responsive font sizes. */
+.ktd-page{
+ --kvl-rs-weight-regular:400;
+ --kvl-rs-weight-secondary:700;
+ --kvl-rs-weight-emphasis:800;
+}
+.ktd-page :is(.kvlrv2,.kvl-league-roster,.kvl-unified){
+ font-family:inherit;
+}
+.ktd-page :is(.kvlrv2,.kvl-league-roster,.kvl-unified) :is(button,input,select,a,strong,small,h3,h4,p,span,dt,dd){
+ font-family:inherit;
+}
+.ktd-page :is(.kvlrv2-row,.kvl-lr-row,.kvl-unified-row),
+.ktd-page :is(.kvlrv2-dob,.kvlrv2-height,.kvl-lr-dob,.kvl-lr-height,.kvl-unified-dob,.kvl-unified-height,.kvl-lr-mobile-facts,.kvl-unified-mobile-facts){
+ font-weight:var(--kvl-rs-weight-regular);
+}
+.ktd-page :is(.kvlrv2-head,.kvl-lr-head,.kvl-unified-head,.kvlrv2-number,.kvl-lr-no,.kvl-unified-number,.kvlrv2-pos,.kvl-lr-position,.kvl-unified-pos),
+.ktd-page :is(.kvlrv2-name,.kvl-lr-name,.kvl-unified-name) strong,
+.ktd-page .kvl-roster-standard.is-pro .kvlrv2-name strong,
+.ktd-page .kvl-roster-standard.is-pro .kvlrv2-number,
+.ktd-page .kvl-roster-standard.is-pro .kvlrv2-pos,
+.ktd-page .kvl-roster-standard.is-international .kvl-unified-name strong,
+.ktd-page :is(.kvl-rs-vb,.kvl-rs-vb-cell,.kvl-unified-volleybox),
+.ktd-page .kvl-lr-vb a,
+.ktd-page :is(.kvlrv2-filters,.kvl-lr-controls,.kvl-unified-filters) button{
+ font-weight:var(--kvl-rs-weight-emphasis);
+}
+.ktd-page :is(.kvl-rs-nationality,.kvl-lr-nationality,.kvl-roster-club-team,.kvl-roster-club-meta,.kvl-unified-club-name){
+ font-weight:var(--kvl-rs-weight-secondary);
+}
+.ktd-page :is(.kvlrv2-toolbar,.kvl-lr-search,.kvl-unified-search) input,
+.ktd-page :is(.kvlrv2-name,.kvl-lr-name,.kvl-unified-name) small,
+.ktd-page .kvl-rs-english,
+.ktd-page :is(.kvl-lr-detail-head,.kvl-unified-detail-head) small{
+ font-weight:var(--kvl-rs-weight-regular);
+}
+.ktd-page :is(.kvlrv2-profile-head h3,.kvl-lr-detail-head h4,.kvl-unified-detail-head h4),
+.ktd-page :is(.kvlrv2-profile-link,.kvl-unified-detail-links a,.kvlrv2-facts dd){
+ font-weight:var(--kvl-rs-weight-emphasis);
+}
