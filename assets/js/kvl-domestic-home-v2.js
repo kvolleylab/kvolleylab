@@ -179,8 +179,56 @@ function overviewMatches(d,before){
   const refresh=async()=>{if(refreshing||(document.hidden&&source)||!section.isConnected)return;refreshing=true;try{source=await loadSummaryDivision(d,gender);if(gender===d.gender)syncLiveCompetition(d,source);delete body.dataset.refreshFailed;render();}catch{if(section.isConnected){body.dataset.refreshFailed='true';if(!source)body.innerHTML='<p class="dv2-summary-error" role="status">경기 정보를 불러오지 못했습니다. 위의 전체 일정에서 확인해 주세요.</p>';}}finally{refreshing=false;body.setAttribute('aria-busy','false');}};
   if(source){render();body.setAttribute('aria-busy','false');}else await refresh();
   if(!section.isConnected)return;
-  const clockTimer=setInterval(()=>{if(!section.isConnected){clearInterval(clockTimer);clearInterval(fetchTimer);document.removeEventListener('visibilitychange',refresh);return;}if(!document.hidden){render();if(gender===d.gender){window.KVLCompetitionComponentsV2.refreshLiveMatches?.();window.KVLMatchCalendarV1?.refresh?.(q('[data-dv2-calendar]'),d);}}},60000);
-  const fetchTimer=setInterval(refresh,300000);document.addEventListener('visibilitychange',refresh);
+  // Today/next remains visually first; reselect its match at 00:00 KST, not only on a 60s tick.
+  const kstDay=now=>new Date(now+9*3600000).toISOString().slice(0,10);
+  const untilKstMidnight=now=>{
+   const shifted=now+9*3600000;
+   return Math.max(1,(Math.floor(shifted/86400000)+1)*86400000-shifted+25);
+  };
+  let lastKstDay=kstDay(Date.now()),midnightTimer=null;
+  section.dataset.kstDay=lastKstDay;
+  const rollover=()=>{
+   const next=kstDay(Date.now());
+   if(next===lastKstDay)return false;
+   lastKstDay=next;section.dataset.kstDay=next;
+   render(); // Uses already-loaded season fixtures; publication timing never blocks the date switch.
+   if(!document.hidden)refresh();
+   return true;
+  };
+  const scheduleMidnight=()=>{
+   midnightTimer=setTimeout(()=>{
+    if(!section.isConnected)return;
+    rollover();scheduleMidnight();
+   },untilKstMidnight(Date.now()));
+  };
+  const onVisibility=()=>{
+   if(document.hidden)return;
+   rollover();render();refresh();
+  };
+  const onPageShow=event=>{
+   if(document.hidden)return;
+   if(event.persisted){rollover();render();refresh();}
+   else rollover(); // No extra network request for ordinary initial pageshow.
+  };
+  scheduleMidnight();
+  const clockTimer=setInterval(()=>{
+   if(!section.isConnected){
+    clearInterval(clockTimer);clearInterval(fetchTimer);clearTimeout(midnightTimer);
+    document.removeEventListener('visibilitychange',onVisibility);
+    window.removeEventListener('pageshow',onPageShow);
+    return;
+   }
+   if(!document.hidden){
+    rollover();render();
+    if(gender===d.gender){
+     window.KVLCompetitionComponentsV2.refreshLiveMatches?.();
+     window.KVLMatchCalendarV1?.refresh?.(q('[data-dv2-calendar]'),d);
+    }
+   }
+  },60000);
+  const fetchTimer=setInterval(refresh,300000);
+  document.addEventListener('visibilitychange',onVisibility);
+  window.addEventListener('pageshow',onPageShow);
  }));
 }
 // Refresh matches without replacing the loaded roster/module payloads.
