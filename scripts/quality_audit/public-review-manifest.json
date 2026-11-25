@@ -970,13 +970,13 @@
       "access_level": "PUBLIC",
       "record_status": "VERIFIED",
       "source_ids": [
-        "USER-SOURCE-SVLEAGUE-XLSX-20261124",
-        "SVLEAGUE-OFFICIAL-12-TEAM-CROSSCHECK-20261124"
+        "https://www.jtekt-stings.jp/",
+        "https://tokyo-greatbears.com/games/games_2026-2027/"
       ],
       "verified_at": "2026-11-24",
-      "sha256": "47b633d27d3a35b709fc50f00116d896a456effe522e959d5e17423db714bcdb",
+      "sha256": "251f433ffd1a78a96ee95cfa3b30b47979a4a5a51119fea7d7e5780805af3528",
       "evidence": "docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md",
-      "review_note": "사용자 제공 2026-27 SV.LEAGUE 남자 시즌 명단 정리본의 12개 팀·211명·직접 Volleybox 211명·RECHECK 5명을 공개용 인덱스로 검수했다. 공식 SV.LEAGUE 기록의 남자 12팀 구성과 팀 단위만 교차확인하며 선수별 모든 필드를 공식 사실로 승격하지 않는다."
+      "review_note": "2026-27 SV.LEAGUE 남자부 12팀 시즌 인덱스의 팀 수·선수 수·직접 Volleybox·RECHECK 계약은 유지하고 공개 구단 로고 URL과 출처 메타데이터만 추가했다. 11개 상대팀 로고는 JTEKT STINGS Aichi 공식 일정 페이지의 현행 경기 카드 자산, JTEKT 로고는 Tokyo Great Bears 공식 2026-27 일정의 상대팀 자산으로 검토했다. 허용된 공식 asset 경로 외 임의 외부 URL은 safeLogo에서 차단하며 로딩 실패 시 기존 모노그램으로 fallback한다."
     },
     "data/team-rosters/sv-league/2026-27/jtekt.json": {
       "access_level": "PUBLIC",

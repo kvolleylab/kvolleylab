@@ -24,7 +24,18 @@
  const validSeason=x=>/^\d{4}-\d{2}$/.test(String(x||''));
  const validCode=x=>/^[A-Za-z0-9_-]{2,40}$/.test(String(x||''));
  const teamRoute=(gender,season,code)=>'competition-engine.html?competition=v-league-'+gender+'-'+season+'&view=rosters&team='+encodeURIComponent(code);
- const safeLogo=x=>/^(?:\/?assets\/)[A-Za-z0-9_.\/-]+\.(?:svg|png|jpe?g|webp)(?:\?[A-Za-z0-9=&_.-]+)?$/.test(String(x||''));
+ const safeLogo=x=>{
+  const s=String(x||'');
+  if(/^(?:\/?assets\/)[A-Za-z0-9_.\/-]+\.(?:svg|png|jpe?g|webp)(?:\?[A-Za-z0-9=&_.-]+)?$/.test(s))return true;
+  try{
+   const u=new URL(s);
+   if(u.protocol!=='https:')return false;
+   if(u.hostname==='www.jtekt-stings.jp')return u.pathname.startsWith('/_next/static/media/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
+   if(u.hostname==='images.microcms-assets.io')return u.pathname.startsWith('/assets/99af67a09e884982ae7d419ecde99396/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
+   if(u.hostname==='tokyo-greatbears.com')return u.pathname.startsWith('/_tgb_content/wp-content/uploads/')&&/\.(?:svg|png|webp)$/i.test(u.pathname);
+   return false;
+  }catch{return false}
+ };
  const safeHref=x=>/^(?:competition-engine|university-team|university-teams|national-team|national-team-history|international-competition-senior-national-team|competition|vnl)\.html(?:\?[A-Za-z0-9%_.=&-]+)?$/.test(String(x||''));
  const totalPlayers=teams=>teams.reduce((n,t)=>n+(Number(t.count)||0),0);
  function buildPro(participants,rosters,staff,gender,season){
@@ -115,8 +126,9 @@
   ];
  }
  function logoMarkup(t){
-  if(safeLogo(t.logo))return '<img src="'+esc(t.logo)+'" alt="'+esc(t.name)+' 구단·팀 로고" loading="lazy">';
-  return '<span class="ktd-monogram" aria-hidden="true">'+esc(short(t.name).slice(0,2)||'팀')+'</span>';
+  const fallback='<span class="ktd-monogram ktd-team-logo-fallback" aria-hidden="true"'+(safeLogo(t.logo)?' hidden':'')+'>'+esc(short(t.name).slice(0,2)||'팀')+'</span>';
+  if(safeLogo(t.logo))return '<img class="ktd-team-logo-image" src="'+esc(t.logo)+'" alt="'+esc(t.name)+' 구단·팀 로고" loading="lazy" decoding="async">'+fallback;
+  return fallback;
  }
  function countryFlagMarkup(t){
   const iso=String(t.flag_iso2||'');
@@ -359,7 +371,7 @@
      const team=await readJSON(t.sourcePath);
      if(token!==state.token||state.selected!==code)return;
      const renderer=window.KVLProLeagueRosterV1;
-     if(!renderer?.validateTeam?.(team,{code,season})||!renderer.render(rosterHost,team))throw Error('SV.LEAGUE roster renderer unavailable');
+     if(!renderer?.validateTeam?.(team,{code,season})||!renderer.render(rosterHost,team,{logo:t.logo}))throw Error('SV.LEAGUE roster renderer unavailable');
     }else{
      // Season roster is always the publisher-owned JSON. The bridge only adds verified display-level fields.
      const base={competitionId:'KVL-COMP-VLEAGUE-'+(gender==='men'?'M':'W')+'-'+season,
@@ -412,13 +424,13 @@
    if(state.category!=='international'||!button||!international()?.REGIONS[button.dataset.ktdRegion])return;
    state.region=button.dataset.ktdRegion;if(state.selectedCountry){hideCountry();state.year=''}paint();syncUrl();
   });
-  // Keep the existing country emoji as a graceful fallback if a local flag asset fails.
+  // Keep existing monograms/emoji as graceful fallbacks if a verified image asset fails.
   grid.addEventListener('error',event=>{
    const img=event.target;
-   if(!img||!img.matches?.('img.ktd-country-flag-image'))return;
+   if(!img?.matches?.('img.ktd-country-flag-image,img.ktd-team-logo-image'))return;
    img.hidden=true;
    const fallback=img.nextElementSibling;
-   if(fallback?.classList.contains('ktd-country-flag-fallback'))fallback.hidden=false;
+   if(fallback?.classList.contains('ktd-country-flag-fallback')||fallback?.classList.contains('ktd-team-logo-fallback'))fallback.hidden=false;
   },true);
   grid.addEventListener('click',event=>{
    const countryButton=event.target.closest('[data-ktd-country]');

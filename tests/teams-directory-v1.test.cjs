@@ -142,6 +142,10 @@ test('SV.LEAGUE 2026-27 is a 12-team immutable season snapshot with 211 direct V
  assert.equal(dir.totalPlayers(entries),211);
  assert.equal(dir.buildSVLeague(svIndex,'women','2026-27').length,0,'Do not invent a womens SV.LEAGUE roster in this batch');
  assert.equal(new Set(entries.map(x=>x.sourcePath)).size,12);
+ assert.equal(new Set(entries.map(x=>x.logo)).size,12,'Each 2026-27 SV.LEAGUE club needs its own verified logo asset');
+ assert.ok(entries.every(x=>dir.safeLogo(x.logo)),'All SV.LEAGUE logo URLs must pass the official-asset allowlist');
+ assert.equal(svIndex.seasons.find(x=>x.season==='2026-27'&&x.gender==='men').logo_source_page,'https://www.jtekt-stings.jp/');
+ assert.equal(new URL(entries.find(x=>x.code==='JTEKT').logo).hostname,'tokyo-greatbears.com');
  let total=0,direct=0,recheck=0;
  for(const t of entries){
   const team=json(t.sourcePath);
@@ -153,6 +157,8 @@ test('SV.LEAGUE 2026-27 is a 12-team immutable season snapshot with 211 direct V
   const card=dir.cardMarkup(t);
   assert.match(card,/SV\.LEAGUE/);
   assert.ok(card.includes(t.en));
+  assert.match(card,/ktd-team-logo-image/);
+  assert.ok(card.includes(t.logo));
   assert.match(card,new RegExp('data-ktd-roster="'+t.code+'"'));
  }
  assert.equal(total,211);assert.equal(direct,211);assert.equal(recheck,5);
@@ -194,6 +200,10 @@ test('navigation renders non-pro sections as grounded links and escapes untruste
  for(const entry of [...dir.curated('national'),...dir.curated('international')])assert.ok(dir.safeHref(entry.href));
  assert.equal(dir.safeLogo('javascript:alert(1)'),false);
  assert.equal(dir.safeLogo('/assets/img/team-logos/v-league/2026-27/men/OKF.svg'),true);
+ assert.equal(dir.safeLogo('https://images.microcms-assets.io/assets/99af67a09e884982ae7d419ecde99396/06d729a7fb7c4ec3b01c224acba7707b/logo.png'),true);
+ assert.equal(dir.safeLogo('https://www.jtekt-stings.jp/_next/static/media/logo-header.test.svg'),true);
+ assert.equal(dir.safeLogo('https://tokyo-greatbears.com/_tgb_content/wp-content/uploads/2024/09/jtekt.png'),true);
+ assert.equal(dir.safeLogo('https://evil.example/assets/99af67a09e884982ae7d419ecde99396/logo.png'),false);
  const malicious={name:'<script>alert(1)</script>',code:'OKF',gender:'men',logo:'javascript:alert(1)',count:17,type:'pro',action:'roster',coach:'<img onerror=alert(1)>'};
  const markup=dir.cardMarkup(malicious);
  assert.ok(!markup.includes('<script>'));
