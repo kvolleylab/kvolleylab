@@ -31,8 +31,16 @@ test('source verified 32 registrations and 28 public profile identities',()=>{
 test('current automatic roster snapshots are preserved while adding exactly safe rookie ID links',()=>{
  assert.equal(count(reconciled.M),count(men));
  assert.equal(count(reconciled.W),count(women));
- assert.equal(count(men),149);
- assert.equal(count(women),138);
+ // Current registrations are publisher-owned and change during the season.
+ for(const [g,data] of [['M',men],['W',women]]){
+  const published=rosters[g];
+  assert.deepEqual(Object.keys(data.rosters).sort(),Object.keys(published).sort());
+  for(const code of Object.keys(published)){
+   assert.equal(data.rosters[code].players.length,published[code].players.length,g+'/'+code);
+   const identity=p=>String(p.number)+'/'+String(p.name);
+   assert.deepEqual(data.rosters[code].players.map(identity).sort(),published[code].players.map(identity).sort(),g+'/'+code);
+  }
+ }
  assert.deepEqual(reconciled.M.matches,men.matches);
  assert.deepEqual(reconciled.W.matches,women.matches);
  for(const r of bridge.registered){

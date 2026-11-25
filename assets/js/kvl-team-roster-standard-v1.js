@@ -180,7 +180,8 @@ function decoratePro(host,players){
  }
  setPlayerIds(root,(players||[]).map(p=>p.playerId));
  const head=root.querySelector('.kvlrv2-head');
- if(head)head.innerHTML='<span>NO.</span><span>선수명</span><span>POS</span><span>생년월일</span><span>신장</span>';
+ if(head)head.innerHTML='<span>NO.</span><span>선수명</span><span>생년월일</span><span>POS</span><span>신장</span><span>국적</span><span>Volleybox</span>';
+ if(root.querySelector('[data-rs-pos]'))return;
  const map=new Map((players||[]).map(p=>[String(p.number)+'/'+String(p.name),p]));
  const rows=root.querySelector('[data-rows]');
  const paint=()=>{
