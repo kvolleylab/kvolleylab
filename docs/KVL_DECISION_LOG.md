@@ -1,5 +1,14 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-26 · 오늘 경기 우선 순서 통일 및 KST 자정 전환 v1
+
+Status: USER REPORTED BUG / IMPLEMENTED ON FEATURE BRANCH / PRODUCTION NOT YET APPROVED OR VERIFIED.
+사용자는 V-리그 홈의 `오늘 경기`가 `최근 결과`보다 먼저 보이지 않는 점과 한국시간 자정에 자동으로 날짜가 갱신되지 않는 문제를 지적했다. GitHub main 코드 확인 결과 `competition-engine.html` 남녀 V-리그 한눈에 보기는 이미 `data-kind="next" → "recent"` 순서였으나, 전체 홈 `index.html`에서는 `[true,false]`로 최근 결과가 먼저 나왔으며, 두 화면 모두 60초 간격 tick만 존재해 **00:00 KST에 정확한 일정 날짜 전환 예약이 없었다.** V-리그에서는 60초 tick 외에 5분 fetch, 홈에서도 같은 시간간격 fetch가 있어 자정 이후 잠시 구 날짜가 유지될 수 있었다.
+
+수정 목표: **홈과 V-리그 남녀부 모두 오늘/다음 경기 우선, 최근 결과 두 번째**. 경기 미실시 날에는 거짓으로 `오늘 경기`를 만들지 않고 `다음 경기`를 첫 카드에 표시하며, 날짜의 기준은 `Asia/Seoul` 고정 UTC+9, 서버 갱신시간 또는 사용자 브라우저의 시차와 무관하다. 브라우저가 열려 있으면 **다음 KST 00:00을 `setTimeout`으로 직접 예약**, 자정에 기존 시즌 데이터를 바탕으로 즉시 다시 선택하고 비동기적으로 최신 공식 경기 JSON을 조회한다. 백그라운드/절전/탭 재진입에 대비해 기존 60초/5분 tick과 `visibilitychange`·BFCache `pageshow`를 병행한다.
+
+수정 파일 `index.html`, `assets/js/kvl-domestic-home-v2.js`, `competition-engine.html`의 JS cache, 홈/남녀 V-리그 단위·시계 경계 검증 및 운영 인계. 코치, 선수, KOVO 결과 원본·세트점수·순위·자동 수집기·회원/Supabase·모바일 선수명단·국제대회 동작 등은 변경하지 않는다. 기준 main `d843d4035c8412aa4a70b6abef4129d43da5544e`. [QA 기록](validation/vleague-kst-midnight-today-first-v1-20261126.md)에 자정 경계 재현, 남녀부·홈 순서와 복구 방법 정리. 새 운영 merge·배포는 별도 사용자 승인 후 시행한다.
+
 ## 2026-11-25 · 종료 확인 대기 점수 보존·Pages 확인 재시도 보완
 
 Status: USER REQUESTED / FEATURE BRANCH IMPLEMENTED / LOCAL QA PASSED / NOT DEPLOYED.

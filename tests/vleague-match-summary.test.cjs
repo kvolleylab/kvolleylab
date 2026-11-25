@@ -3,17 +3,29 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {JSDOM}=require(process.env.KVL_JSDOM_PATH||'jsdom');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),json=p=>JSON.parse(read(p));
 const configApi=require('../assets/js/kvl-competition-config-v2.js'),dataApi=require('../assets/js/kvl-competition-data-v2.js');
-function setup({gender='men',now='2026-10-28T03:00:00Z',edit,failPeer=false,wrongSeason=false}={}){
+function setup({gender='men',now='2026-10-28T03:00:00Z',edit,failPeer=false,wrongSeason=false,captureMidnight=false}={}){
  // These unit cases deliberately start before opening day. Operating season
  // records will acquire scores; reset the fixture instead of asserting they do not.
  const sources={},configs={};for(const g of ['men','women']){const base=`data/competitions/v-league-${g}-2026-27/`;sources[g]=json(base+'data.json');configs[g]=json(base+'config.json');sources[g].status='upcoming';for(const m of sources[g].matches){delete m.score;delete m.scoreVerification;m.status='scheduled';}if(edit)edit(sources[g],g);}
  const dom=new JSDOM('<body class="kvl1180-prototype kvl-competition-template-v2"><main data-kvl-shell></main></body>',{url:`https://kvolleylab.com/competition-engine.html?competition=v-league-${gender}-2026-27&view=overview`,runScripts:'outside-only',pretendToBeVisual:true});
- const w=dom.window;w.CSS={escape:s=>String(s).replace(/[^a-zA-Z0-9_-]/g,c=>'\\'+c)};const errors=[];w.addEventListener('error',e=>errors.push(e.error));w.Date.now=()=>Date.parse(now);w.matchMedia=()=>({matches:false});w.HTMLElement.prototype.scrollIntoView=()=>{};w.KVL_COMPETITION_PAGE_V2={deferRender:true,production:true,collectionRoot:'/data/competitions/'};
+ const w=dom.window;
+ const midnight=[];
+ if(captureMidnight){
+  const originalSetTimeout=w.setTimeout.bind(w);
+  w.setTimeout=(fn,ms,...args)=>{
+   if(ms>0&&ms<2000&&String(fn).includes('rollover();scheduleMidnight();')){
+    midnight.push({fn,ms});
+    return 90000+midnight.length;
+   }
+   return originalSetTimeout(fn,ms,...args);
+  };
+ }
+ w.CSS={escape:s=>String(s).replace(/[^a-zA-Z0-9_-]/g,c=>'\\'+c)};const errors=[];w.addEventListener('error',e=>errors.push(e.error));w.Date.now=()=>Date.parse(now);w.matchMedia=()=>({matches:false});w.HTMLElement.prototype.scrollIntoView=()=>{};w.KVL_COMPETITION_PAGE_V2={deferRender:true,production:true,collectionRoot:'/data/competitions/'};
  const requests=[];w.fetch=async url=>{const u=new URL(url),g=u.pathname.includes('-women-')?'women':'men';requests.push(u.pathname);if(failPeer)throw Error('network unavailable');const value=u.pathname.endsWith('config.json')?structuredClone(configs[g]):structuredClone(sources[g]);if(wrongSeason&&value.competition)value.competition.season='2025-26';return {ok:true,json:async()=>value};};
  for(const name of ['config','data','shell','template','components'])w.eval(read(`assets/js/kvl-competition-${name}-v2.js`));
  const d=dataApi.normalize(configApi.assemble(configs[gender],sources[gender],{slug:configs[gender].slug,canonical:w.location.href}));w.KVL_COMPETITION_V2_DATA=d;
  w.KVLCompetitionShellV2.ensureShell();w.KVLCompetitionTemplateV2.apply();w.KVLCompetitionComponentsV2.render();w.eval(read('assets/js/kvl-calendar-display-v1.js'));w.eval(read('assets/js/kvl-match-calendar-v1.js'));w.eval(read('assets/js/kvl-domestic-home-v2.js'));w.KVLDomesticHomeV2.apply(d);
- return {w,doc:w.document,d,requests,errors,ready:w.KVLDomesticHomeV2.matchesReady};
+ return {w,doc:w.document,d,requests,errors,midnight,ready:w.KVLDomesticHomeV2.matchesReady};
 }
 const result={home:3,away:2,sets:[{home:25,away:20},{home:23,away:25},{home:26,away:24},{home:18,away:25},{home:15,away:12}]};
 function game(d,id,date,time,score,extra={}){return {id,date,time,home:{code:d.participants[0].code},away:{code:d.participants[1].code},score,...extra};}
@@ -45,6 +57,46 @@ test('completed five-set results render full set scores and next fixtures for bo
   assert([...doc.querySelectorAll('[data-kind=recent] .dv2-summary-score')].every(e=>e.textContent==='3 : 2'));
   for(const sets of doc.querySelectorAll('.dv2-summary-sets'))assert.deepEqual([...sets.children].map(e=>e.textContent),['25–20','23–25','26–24','18–25','15–12']);
   assert.equal(doc.querySelectorAll('.dv2-summary-today').length,2);assert([...doc.querySelectorAll('[data-kind=next] a')].every(a=>new URL(a.href).searchParams.get('date')==='2026-11-01'));
+ }finally{w.close();}
+});
+test('both V-League division cards switch from next to today exactly at 00:00 KST without replacing verified results',async()=>{
+ const at2359='2026-11-25T14:59:59.900Z',at0000='2026-11-25T15:00:00.025Z';
+ const {w,doc,ready,midnight,errors}=setup({
+  now:at2359,captureMidnight:true,edit:(source,gender)=>{
+   source.status='active';
+   source.matches=[
+    game(source,gender+'-older','2026-11-24','19:00',result,{status:'final',scoreVerification:true,stage:'2라운드'}),
+    game(source,gender+'-today','2026-11-25','19:00',result,{status:'final',scoreVerification:true,stage:'2라운드'}),
+    game(source,gender+'-future','2026-11-27','19:00',null,{status:'scheduled',stage:'2라운드'})
+   ];
+  }
+ });
+ try{
+  await ready;
+  const summary=doc.querySelector('.dv2-overview-matches');
+  assert.equal(summary.dataset.kstDay,'2026-11-25');
+  for(const card of summary.querySelectorAll('[data-summary-gender]')){
+   const slots=[...card.querySelectorAll('.dv2-summary-slot')];
+   assert.deepEqual(slots.map(c=>c.dataset.kind),['next','recent']);
+   assert.equal(slots[0].querySelector('h4').textContent.startsWith('오늘 경기'),true);
+   assert.equal(slots[0].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-today');
+   assert.equal(slots[1].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-older');
+  }
+  assert.equal(midnight.length,2,'Each season data view should schedule an exact midnight rollover');
+  assert.ok(midnight.every(t=>t.ms>=100&&t.ms<200),
+   'Korea midnight must be scheduled directly, not after the one-minute poll: '+JSON.stringify(midnight.map(t=>t.ms)));
+  w.Date.now=()=>Date.parse(at0000);
+  midnight.forEach(t=>t.fn());
+  assert.equal(summary.dataset.kstDay,'2026-11-26');
+  for(const card of summary.querySelectorAll('[data-summary-gender]')){
+   const slots=[...card.querySelectorAll('.dv2-summary-slot')];
+   assert.deepEqual(slots.map(c=>c.dataset.kind),['next','recent']);
+   assert.equal(slots[0].querySelector('h4').textContent.startsWith('다음 경기'),true);
+   assert.equal(slots[0].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-future');
+   assert.equal(slots[1].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-today');
+   assert.equal(slots[1].querySelector('.dv2-summary-score')?.textContent,'3 : 2');
+  }
+  assert.deepEqual(errors,[]);
  }finally{w.close();}
 });
 test('selection uses timestamps, excludes partial/cancelled/postponed/future results, and leaves data unchanged',async()=>{

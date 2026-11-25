@@ -1,0 +1,48 @@
+name: KVL Home and V-League KST Midnight Summary QA
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'competition-engine.html'
+      - 'assets/js/kvl-domestic-home-v2.js'
+      - 'assets/js/kvl-competition-data-v2.js'
+      - 'tests/home-gender-matches.test.cjs'
+      - 'tests/vleague-match-summary.test.cjs'
+      - 'tests/today-match-summary.test.cjs'
+      - '.github/workflows/kvl-vleague-kst-midnight-qa-v1.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'competition-engine.html'
+      - 'assets/js/kvl-domestic-home-v2.js'
+      - '.github/workflows/kvl-vleague-kst-midnight-qa-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  kst-midnight-summary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check match summary source and test syntax
+        run: |
+          node --check assets/js/kvl-domestic-home-v2.js
+          node --check tests/home-gender-matches.test.cjs
+          node --check tests/vleague-match-summary.test.cjs
+          node --check tests/today-match-summary.test.cjs
+      - name: Install isolated test-only DOM runtime
+        run: npm install --prefix "$RUNNER_TEMP/kvl-kst-midnight" --no-audit --no-fund jsdom@26.1.0
+      - name: Verify first-card order, 00:00 KST rollover, verified scores and waiting states
+        env:
+          KVL_JSDOM_PATH: ${{ runner.temp }}/kvl-kst-midnight/node_modules/jsdom
+        run: |
+          node --test tests/home-gender-matches.test.cjs tests/vleague-match-summary.test.cjs tests/today-match-summary.test.cjs
