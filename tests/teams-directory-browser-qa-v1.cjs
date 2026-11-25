@@ -147,9 +147,17 @@ async function main(){
   assert.equal(await page.locator('img.ktd-team-logo-image').count(),12);
   const svLogoState=await page.locator('img.ktd-team-logo-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
    img.loading='eager';try{await img.decode()}catch{}
-   return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden};
+   return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden,fallbackHidden:img.nextElementSibling?.matches('.ktd-team-logo-fallback[hidden]')&&getComputedStyle(img.nextElementSibling).display==='none'};
   })));
-  assert.ok(svLogoState.every(x=>x.loaded&&!x.hidden),'SV.LEAGUE official logos must load in browser QA: '+JSON.stringify(svLogoState.filter(x=>!x.loaded||x.hidden)));
+  assert.ok(svLogoState.every(x=>x.loaded&&!x.hidden&&x.fallbackHidden),'SV.LEAGUE official logos must load in browser QA: '+JSON.stringify(svLogoState.filter(x=>!x.loaded||x.hidden||!x.fallbackHidden)));
+  const failureState=await page.locator('img.ktd-team-logo-image').first().evaluate(img=>{
+   const fallback=img.nextElementSibling;
+   img.dispatchEvent(new Event('error'));
+   const state={imageHidden:getComputedStyle(img).display==='none',fallbackVisible:!fallback.hidden&&getComputedStyle(fallback).display!=='none'};
+   img.hidden=false;fallback.hidden=true;
+   return state;
+  });
+  assert.deepEqual(failureState,{imageHidden:true,fallbackVisible:true},'Only the monogram should display on logo failure');
   const jtekt=page.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first();
   await jtekt.locator('[data-ktd-roster]').click();
   await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
@@ -258,9 +266,9 @@ async function main(){
    assert.equal(await mobile.locator('img.ktd-team-logo-image').count(),12);
    const mobileLogoState=await mobile.locator('img.ktd-team-logo-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{
     img.loading='eager';try{await img.decode()}catch{}
-    return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden};
+    return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden,fallbackHidden:img.nextElementSibling?.matches('.ktd-team-logo-fallback[hidden]')&&getComputedStyle(img.nextElementSibling).display==='none'};
    })));
-   assert.ok(mobileLogoState.every(x=>x.loaded&&!x.hidden),'Mobile SV.LEAGUE logos must load: '+JSON.stringify(mobileLogoState.filter(x=>!x.loaded||x.hidden)));
+   assert.ok(mobileLogoState.every(x=>x.loaded&&!x.hidden&&x.fallbackHidden),'Mobile SV.LEAGUE logos must load: '+JSON.stringify(mobileLogoState.filter(x=>!x.loaded||x.hidden||!x.fallbackHidden)));
    await mobile.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first().locator('[data-ktd-roster]').click();
    await mobile.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
    assert.equal(await mobile.locator('.kvl-lr-team-logo img').count(),1);
