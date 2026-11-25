@@ -165,6 +165,13 @@ async function main(){
   assert.equal(await page.locator('.kvl-lr-team-logo img').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0}),true);
   assert.equal(await page.locator('.kvl-lr-row').count(),16);
   const defalco=page.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first();
+  assert.equal(await page.locator('.kvl-lr-name-button').count(),16);
+  assert.ok((await page.locator('.kvl-lr-name-button').allTextContents()).every(x=>/[가-힣]/.test(x)));
+  assert.doesNotMatch(await defalco.innerText(),/Torey Defalco/i);
+  await defalco.locator('.kvl-lr-name-button').click();
+  assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
+  await page.locator('[data-kvl-lr-close]').click();
+  assert.equal(await page.locator('[data-kvl-lr-detail]').isVisible(),false);
   assert.match(await defalco.innerText(),/🇺🇸\s*미국/);
   assert.equal(await defalco.locator('.kvl-lr-vb a').getAttribute('href'),'https://volleybox.net/torey-defalco-p2330');
   await page.locator('[data-kvl-lr-nat="foreign"]').click();
