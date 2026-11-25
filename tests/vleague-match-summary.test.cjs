@@ -65,8 +65,9 @@ test('both V-League division cards switch from next to today exactly at 00:00 KS
   now:at2359,captureMidnight:true,edit:(source,gender)=>{
    source.status='active';
    source.matches=[
-    game(source,gender+'-recent','2026-11-25','19:00',result,{status:'final',scoreVerification:true,stage:'2라운드'}),
-    game(source,gender+'-today','2026-11-26','19:00',null,{status:'scheduled',stage:'2라운드'})
+    game(source,gender+'-older','2026-11-24','19:00',result,{status:'final',scoreVerification:true,stage:'2라운드'}),
+    game(source,gender+'-today','2026-11-25','19:00',result,{status:'final',scoreVerification:true,stage:'2라운드'}),
+    game(source,gender+'-future','2026-11-27','19:00',null,{status:'scheduled',stage:'2라운드'})
    ];
   }
  });
@@ -78,7 +79,8 @@ test('both V-League division cards switch from next to today exactly at 00:00 KS
    const slots=[...card.querySelectorAll('.dv2-summary-slot')];
    assert.deepEqual(slots.map(c=>c.dataset.kind),['next','recent']);
    assert.equal(slots[0].querySelector('h4').textContent.startsWith('다음 경기'),true);
-   assert.equal(slots[1].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-recent');
+   assert.equal(slots[0].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-future');
+   assert.equal(slots[1].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-older');
   }
   assert.equal(midnight.length,2,'Each season data view should schedule an exact midnight rollover');
   assert.ok(midnight.every(t=>t.ms>=100&&t.ms<200),
@@ -91,7 +93,7 @@ test('both V-League division cards switch from next to today exactly at 00:00 KS
    assert.deepEqual(slots.map(c=>c.dataset.kind),['next','recent']);
    assert.equal(slots[0].querySelector('h4').textContent.startsWith('오늘 경기'),true);
    assert.equal(slots[0].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-today');
-   assert.equal(slots[1].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-recent');
+   assert.equal(slots[1].querySelector('.dv2-summary-game')?.dataset.matchId,card.dataset.summaryGender+'-today');
    assert.equal(slots[1].querySelector('.dv2-summary-score')?.textContent,'3 : 2');
   }
   assert.deepEqual(errors,[]);
