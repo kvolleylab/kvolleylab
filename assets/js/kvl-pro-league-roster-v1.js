@@ -60,6 +60,10 @@ const nameMap=typeof module==='object'&&module.exports?require('./kvl-sv-player-
 const translated=p=>{const id=volleybox(p).match(/-p(\d+)\/?$/)?.[1],entry=nameMap[id];return entry?.en===p.en?entry.ko:''};
 const title=p=>p.ko||translated(p)||p.en||'선수';
 const isJapan=p=>p.iso2==='jp';
+const clubFlags=new Set(['ee','es','ru','ro','il','no','fi','ng','tn','pr','dk']);
+const flagPath=p=>/^[a-z]{2}$/.test(p?.iso2||'')?'assets/images/flags/'+(clubFlags.has(p.iso2)?'club':'4x3')+'/'+p.iso2+'.svg':'';
+const flagMarkup=p=>flagPath(p)?'<img class="kvl-lr-flag-image" src="'+esc(flagPath(p))+'" alt="" decoding="async">':'';
+
 function render(host,team,display={}){
  if(!host||!validateTeam(team))throw Error('SV.LEAGUE team snapshot invalid');
  let nat='all',pos='all',query='',selected='';
@@ -106,7 +110,7 @@ function render(host,team,display={}){
   &&(!query||[title(p),p.en,nationality(p),p.pos].some(x=>norm(x).includes(query))));
  const row=p=>{
   const badge=p.status==='RECHECK'?'<span class="kvl-lr-recheck" title="'+esc(p.note||'출처 간 소속 표기 재확인')+'">소속 재확인</span>':'';
-  const flag='<span class="kvl-lr-flag" aria-hidden="true">'+esc(p.flag||'')+'</span>';
+  const flag=flagMarkup(p);
   return '<div class="kvl-lr-row" data-player="'+esc(p.en)+'">'+
    '<span class="kvl-lr-no">'+esc(p.no)+'</span>'+
    '<span class="kvl-lr-name"><button type="button" class="kvl-lr-name-button" data-kvl-lr-player="'+esc(volleybox(p))+'" aria-expanded="'+String(selected===volleybox(p))+'"><strong>'+esc(title(p))+'</strong></button>'+badge+'</span>'+
@@ -127,7 +131,7 @@ function render(host,team,display={}){
  function show(p){
   selected=volleybox(p);
   detail.innerHTML='<div class="kvl-lr-detail-head"><h4>'+esc(title(p))+' <small>'+esc(p.en)+'</small></h4><button type="button" data-kvl-lr-close>닫기 ×</button></div>'+
-   '<p>'+esc(p.flag||'')+' '+esc(nationality(p))+' · '+esc(p.pos)+' · '+esc(height(p))+'cm · 생년월일 미확인</p>'+
+   '<p>'+flagMarkup(p)+' '+esc(nationality(p))+' · '+esc(p.pos)+' · '+esc(height(p))+'cm · 생년월일 미확인</p>'+
    '<p>'+esc(team.team.name)+' · '+esc(team.season)+' · #'+esc(p.no)+'</p>'+
    (!p.ko&&translated(p)?'<p class="kvl-lr-transliteration">한글명: 음역 표기 (검수 전)</p>':'')+
    '<a href="'+esc(volleybox(p))+'" target="_blank" rel="noopener noreferrer">VB-&gt;</a>';
@@ -145,5 +149,5 @@ function render(host,team,display={}){
  paint();
  return {destroy:()=>{host.onclick=null;host.replaceChildren()}};
 }
-return {validateIndex,validateTeam,teamEntries,render,title};
+return {validateIndex,validateTeam,teamEntries,render,title,flagPath};
 });

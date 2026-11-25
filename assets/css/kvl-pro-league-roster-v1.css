@@ -78,3 +78,6 @@
 .kvl-lr-detail[hidden]{display:none!important}
 .kvl-lr-detail{margin:12px;padding:14px;border:1px solid #dce5ec;border-radius:10px;background:#f8fafc;color:#173b58;font-size:13px}
 .kvl-lr-detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.kvl-lr-detail-head h4{margin:0;overflow-wrap:anywhere}.kvl-lr-detail-head small{display:block;color:#71869a;font-size:12px;font-weight:500}.kvl-lr-detail-head button{border:1px solid #dce5ec;background:white;border-radius:6px;padding:6px 9px;white-space:nowrap;color:inherit;cursor:pointer}.kvl-lr-detail p{margin:7px 0}.kvl-lr-transliteration{font-size:11px;color:#75889a}
+
+.kvl-lr-flag-image{display:inline-block;width:24px;height:18px;object-fit:cover;flex:0 0 auto;vertical-align:middle;border-radius:2px;box-shadow:0 0 0 1px rgba(0,0,0,.09)}
+@media(max-width:820px){.kvl-lr-flag-image{width:19px;height:14px}.kvl-lr-nationality{gap:4px}}
