@@ -263,7 +263,14 @@ function chooseMatch(records,gender,finished,now){
  const picked=window.KVLCompetitionDataV2.selectMatchSummary(rows.map(r=>r.match),now,{requireVerification:true});
  return rows.find(r=>r.match===(finished?picked.recent:picked.next))||null;
 }
-let lastLoaded=null;
+// Date-only rollover is independent of KOVO publishing; Seoul always uses UTC+09.
+const HOME_KST_OFFSET=9*3600000, HOME_DAY_MS=86400000;
+const homeKstDay=now=>new Date(now+HOME_KST_OFFSET).toISOString().slice(0,10);
+const nextHomeMidnightDelay=now=>{
+ const shifted=now+HOME_KST_OFFSET;
+ return Math.max(1,(Math.floor(shifted/HOME_DAY_MS)+1)*HOME_DAY_MS-shifted+25);
+};
+let lastLoaded=null,lastDisplayedKstDay=homeKstDay(Date.now());
 async function loadMatches(){
  const loaded=await Promise.allSettled(feeds.map(async feed=>{
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
@@ -276,7 +283,8 @@ async function loadMatches(){
 function renderMatches(loaded){
  const records=loaded.filter(r=>r.status==='fulfilled').flatMap(({value:{feed,data}})=>(data.matches||[]).filter(m=>[m.home,m.away].every(side=>data.participants?.some(t=>t.code===side?.code))).map(match=>({match,feed,data})));
  const now=Date.now(),selected=[];
- const cards=[true,false].map(finished=>{
+ matchHost.dataset.kstDay=homeKstDay(now);
+ const cards=[false,true].map(finished=>{
   const card=element('article','panel match-column');card.dataset.kind=finished?'recent':'next';
   const today=new Date(now+9*3600000).toISOString().slice(0,10),slots=['men','women'].map(g=>chooseMatch(records,g,false,now)),todayCount=slots.filter(r=>r?.match.date===today).length;
   const title=element('h3','',finished?'최근 경기 결과':todayCount===2?'오늘 경기':todayCount?'오늘 · 다음 경기':'다음 경기');title.id='home-match-'+card.dataset.kind;card.setAttribute('aria-labelledby',title.id);card.append(title);
@@ -293,11 +301,26 @@ function renderMatches(loaded){
  matchSource.append('공식 경기 기록 기준 · 실시간 중계 아님');
  if(loaded.some(r=>r.status==='rejected'||r.refreshFailed))matchSource.append(' · 일부 기록 조회 실패');
 }
-loadMatches().catch(()=>{matchHost.replaceChildren(emptyMatch('men',true,true),emptyMatch('women',true,true));matchHost.setAttribute('aria-busy','false')});
-// Re-evaluate KST midnight and freshness without downloading every minute.
-setInterval(()=>{if(lastLoaded&&!document.hidden)renderMatches(lastLoaded);},60000);
+loadMatches().catch(()=>{matchHost.replaceChildren(emptyMatch('men',false,true),emptyMatch('women',false,true));matchHost.setAttribute('aria-busy','false')});
+// Match dates change at 00:00 Asia/Seoul even when the KOVO feed has not published an update.
+const rolloverHomeDay=()=>{
+ const today=homeKstDay(Date.now());
+ if(today===lastDisplayedKstDay)return false;
+ lastDisplayedKstDay=today;
+ if(lastLoaded)renderMatches(lastLoaded);
+ return true;
+};
+const scheduleHomeMidnight=()=>setTimeout(()=>{
+ const changed=rolloverHomeDay();
+ if(changed&&!document.hidden)loadMatches().catch(()=>{});
+ scheduleHomeMidnight();
+},nextHomeMidnightDelay(Date.now()));
+scheduleHomeMidnight();
+// One-minute fallback and resume handler cover browser timer throttling, sleep and background tabs.
+setInterval(()=>{if(lastLoaded&&!document.hidden){rolloverHomeDay();renderMatches(lastLoaded);}},60000);
 setInterval(()=>{if(!document.hidden)loadMatches().catch(()=>{});},300000);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadMatches().catch(()=>{});});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){rolloverHomeDay();loadMatches().catch(()=>{});}});
+window.addEventListener('pageshow',event=>{if(event.persisted&&!document.hidden){rolloverHomeDay();loadMatches().catch(()=>{});}});
 
 })();
 </script>
