@@ -25,7 +25,7 @@ async function ready(){
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
-        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-rsv2-readable-v1')
+        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-rsv2-type-v2')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -280,9 +280,15 @@ async function verifyRosterType(page,league){
   const el=k=>document.querySelector(s[k]);
   const sizes=Object.fromEntries(['head','row','name','number','dob','pos','height','nationality','vb'].map(k=>[k,parseFloat(getComputedStyle(el(k)).fontSize)]));
   const pane=el('pane'),detail=el('detail');
-  return {sizes,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,paneWidth:pane.clientWidth,paneScroll:pane.scrollWidth,side:detail.getBoundingClientRect().left>=pane.getBoundingClientRect().right-1};
+  const styles={...Object.fromEntries(['head','row','name','number','dob','pos','height','nationality','vb'].map(k=>[k,getComputedStyle(el(k))])),filter:getComputedStyle(document.querySelector(s.row.startsWith('.kvlrv2')?'.kvlrv2-filters button':'.kvl-lr-controls button'))};
+  const weights=Object.fromEntries(Object.entries(styles).map(([k,v])=>[k,v.fontWeight]));
+  const families=Object.fromEntries(Object.entries(styles).map(([k,v])=>[k,v.fontFamily]));
+  const siteFamily=getComputedStyle(document.body).fontFamily;
+  return {sizes,weights,families,siteFamily,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,paneWidth:pane.clientWidth,paneScroll:pane.scrollWidth,side:detail.getBoundingClientRect().left>=pane.getBoundingClientRect().right-1};
  },selectors);
  assert.ok(m.documentWidth<=m.viewport+2,league+' roster must not overflow the page: '+JSON.stringify(m));
+ for(const [key,value] of Object.entries(m.families))assert.equal(value,m.siteFamily,league+' '+key+' font family');
+ assert.deepEqual(m.weights,{head:'800',row:'400',name:'800',number:'800',dob:'400',pos:'800',height:'400',nationality:'700',vb:'800',filter:'800'},league+' actual semantic font weights');
  if(m.viewport>=821){
   for(const [key,size] of Object.entries(m.sizes))assert.equal(size,key==='name'?20:17,league+' '+key+' must retain readable type: '+JSON.stringify(m));
   assert.ok(m.paneScroll>=m.paneWidth,league+' roster pane containment');
