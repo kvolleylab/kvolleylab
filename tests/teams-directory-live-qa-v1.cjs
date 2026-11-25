@@ -25,7 +25,10 @@ async function ready(){
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
-        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-rsv2-type-v2')
+        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-rsv2-metadata-v1')
+        &&html.includes('kvl-vleague-draft-bridge-v1.js?v=20261126-metadata-v1')
+        &&html.includes('kvl-vleague-profile-enrichment-v1.js?v=20261126-profile-v1')
+        &&html.includes('kvl-vleague-roster-v2.js?v=20261126-profile-v1')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -300,6 +303,38 @@ async function verifyRosterType(page,league){
  return m;
 }
 
+async function verifyKEPMetadata(browser,width){
+ const page=await pageFor(browser,width,width<=660?844:900);
+ try{
+  await page.goto(BASE+'/teams.html?category=pro&gender=men&team=KEP&release='+encodeURIComponent(sha),{waitUntil:'domcontentloaded',timeout:30000});
+  await page.locator('.kvlrv2').waitFor({timeout:30000});
+  assert.equal(await page.locator('.kvl-rs-metadata-warning').count(),0);
+  for(const [name,no,high,university,pick] of [
+   ['한재원',20,'인하사대부고','','2라운드 3순위'],['여광우',55,'송산고','인하대','1라운드 5순위'],
+   ['옹민혁',14,'광주전자공고','경일대','수련선수 지명'],['이율리',15,'영생고','중부대','수련선수 지명']
+  ]){
+   await page.locator('[data-choice="'+no+'/'+name+'"] .kvlrv2-name').click();
+   const detail=page.locator('.kvlrv2-detail');
+   assert.equal(await detail.locator('.kvlrv2-profile-head h3').innerText(),name);
+   if(high)assert.ok((await detail.locator('.kvlrv2-schools').innerText()).includes(high));
+   if(university)assert.ok((await detail.locator('.kvlrv2-schools').innerText()).includes(university));
+   if(!high&&!university)assert.equal(await detail.locator('.kvlrv2-schools').count(),0);
+   assert.ok((await detail.locator('.kvlrv2-pick').innerText()).includes(pick));
+  }
+  await page.locator('[data-choice="15/이율리"] .kvlrv2-name').click();
+  assert.match(await page.locator('.kvlrv2-detail').innerText(),/2000-09-14/);
+  await page.locator('[data-choice="1/서재덕"] .kvlrv2-name').click();
+  assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/2011-12 KOVO 신인드래프트/);
+  assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/1라운드 2순위/);
+  assert.match(await page.locator('.kvlrv2-schools').innerText(),/성균관대/);
+  await page.locator('[data-choice="6/하승우"] .kvlrv2-name').click();
+  assert.match(await page.locator('.kvlrv2-detail').innerText(),/1995-06-02/);
+  const snap=path.join(OUT,'kvl-teams-live-kep-profile-'+width+'.png');
+  await page.screenshot({path:snap,fullPage:true});
+  result.notes.push('Live KEP '+width+'px verified four rookie draft entries, veteran draft and education, reviewed DOB');
+  result.views.push({gender:'men',club:'KEP',width,screenshot:path.basename(snap),status:'PASS',profileSupplement:true});
+ }finally{await page.close()}
+}
 async function main(){
  try{
   await ready();
@@ -312,6 +347,8 @@ async function main(){
    await check(browser,'men','OKF','윤경',true,390);
    await check(browser,'women','RSP','김아중',false,1440);
    await check(browser,'women','RSP','김아중',false,390);
+   await verifyKEPMetadata(browser,1440);
+   await verifyKEPMetadata(browser,390);
    await verifySVLeague(browser,1440);
    await verifySVLeague(browser,390);
    // Verify both operational V-League division pages, without altering KOVO live data or the member gate.

@@ -1,0 +1,1772 @@
+{
+  "schema_version": 1,
+  "scope": "V-League 2026-27",
+  "base": "cfbde00a695e189fffb534a2780ed8229df2c91e",
+  "as_of": "2026-11-26",
+  "counts": {
+    "M": {
+      "total": 149,
+      "rows": 89,
+      "school": 80,
+      "high_school": 78,
+      "university": 66,
+      "draft": 63,
+      "dob": 15,
+      "height": 17,
+      "nationality": 10,
+      "official": 21
+    },
+    "W": {
+      "total": 139,
+      "rows": 99,
+      "school": 78,
+      "high_school": 78,
+      "university": 8,
+      "draft": 70,
+      "dob": 2,
+      "height": 15,
+      "nationality": 0,
+      "official": 8
+    }
+  },
+  "archive_note": "2024-25 and 2025-26 KOVO media-guide extracted rows in existing Drive MASTER, not re-extracted from PDF in this pass; exact identity and intra-field conflicts checked. Single unreviewed extracts withheld; direct PDF reinspection not completed in this pass.",
+  "conflicts": [
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 23,
+      "name": "이승준",
+      "field": "career_draft",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "24-25시즌 1라운드 6순위",
+        "2018-2019 3라운드 1순위"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "WRC",
+      "number": 1,
+      "name": "이시몬",
+      "field": "career_draft",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "19-20시즌 2라운드 6순위",
+        "2015년 2라운드 1순위"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 4,
+      "name": "정민수",
+      "field": "university",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "경상대",
+        "경남과기대"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 7,
+      "name": "우스만",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        194,
+        188
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 13,
+      "name": "쇼",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        206,
+        202
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 18,
+      "name": "전진선",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        197,
+        196
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 30,
+      "name": "이태호",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        203,
+        201
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "OKF",
+      "number": 1,
+      "name": "김정호",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "평초고",
+        "평촌고"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 10,
+      "name": "부용찬",
+      "field": "career_draft",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "17-18시즌 1라운드 2순위",
+        "2011년 1라운드 3순위"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "HHC",
+      "number": 11,
+      "name": "강서우",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "일신여상",
+        "일신여자상업고등학교"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "HPS",
+      "number": 1,
+      "name": "김다은",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "일신여상",
+        "일신여자상업고등학교"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "RSP",
+      "number": 3,
+      "name": "염혜선",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "목포여상",
+        "목포여자상업고"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "RSP",
+      "number": 5,
+      "name": "노란",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "한일전산여고",
+        "수원전산여고"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "RSP",
+      "number": 24,
+      "name": "곽선옥",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "중앙여고",
+        "일신여상"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "SOO",
+      "number": 17,
+      "name": "고예림",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "강릉여고",
+        "서울중앙여고"
+      ]
+    }
+  ],
+  "withheld_single_extracts": [
+    {
+      "gender": "M",
+      "team": "KAL",
+      "number": 15,
+      "name": "김관우",
+      "field": "high_school",
+      "value": "천안고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 35,
+          "identity_match": "name+dob+gender",
+          "status": "PlayerID연결완료"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KAL",
+      "number": 15,
+      "name": "김관우",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 1,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 35,
+          "identity_match": "name+dob+gender",
+          "status": "PlayerID연결완료"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KAL",
+      "number": 18,
+      "name": "최준혁",
+      "field": "high_school",
+      "value": "인하부고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 31,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KAL",
+      "number": 18,
+      "name": "최준혁",
+      "field": "university",
+      "value": "인하대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 31,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KAL",
+      "number": 18,
+      "name": "최준혁",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 2,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 31,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KAL",
+      "number": 88,
+      "name": "임재영",
+      "field": "high_school",
+      "value": "인하부고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 36,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KAL",
+      "number": 88,
+      "name": "임재영",
+      "field": "university",
+      "value": "경기대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 36,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 3,
+      "name": "황승빈",
+      "field": "high_school",
+      "value": "문일고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 4,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 3,
+      "name": "황승빈",
+      "field": "university",
+      "value": "인하대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 4,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 17,
+      "name": "이재현",
+      "field": "high_school",
+      "value": "남성고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 5,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 17,
+      "name": "이재현",
+      "field": "university",
+      "value": "인하대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 5,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 17,
+      "name": "이재현",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 5,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 5,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 33,
+      "name": "배준솔",
+      "field": "high_school",
+      "value": "순천제일고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 14,
+          "identity_match": "name+dob+gender",
+          "status": "KVL-P-001513"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 33,
+      "name": "배준솔",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 2,
+        "pick": 3,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 14,
+          "identity_match": "name+dob+gender",
+          "status": "KVL-P-001513"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 71,
+      "name": "송원근",
+      "field": "high_school",
+      "value": "수성고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 18,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 71,
+      "name": "송원근",
+      "field": "university",
+      "value": "인하대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 18,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "WRC",
+      "number": 12,
+      "name": "이유빈",
+      "field": "high_school",
+      "value": "동해광희고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 58,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "WRC",
+      "number": 12,
+      "name": "이유빈",
+      "field": "university",
+      "value": "홍익대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 58,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "WRC",
+      "number": 29,
+      "name": "서원진",
+      "field": "high_school",
+      "value": "제천산업고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 63,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "WRC",
+      "number": 29,
+      "name": "서원진",
+      "field": "university",
+      "value": "인하대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 63,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "WRC",
+      "number": 29,
+      "name": "서원진",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 3,
+        "pick": 6,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 63,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 2,
+      "name": "황택의",
+      "field": "high_school",
+      "value": "속초고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 38,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 2,
+      "name": "황택의",
+      "field": "university",
+      "value": "성균관대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 38,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 10,
+      "name": "나경복",
+      "field": "high_school",
+      "value": "순천제일고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 41,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 10,
+      "name": "나경복",
+      "field": "university",
+      "value": "인하대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 41,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 10,
+      "name": "나경복",
+      "field": "career_draft",
+      "value": {
+        "season": "2015-16",
+        "round": 1,
+        "pick": 1,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 41,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 23,
+      "name": "이준영",
+      "field": "high_school",
+      "value": "인창고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 46,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 23,
+      "name": "이준영",
+      "field": "university",
+      "value": "한양대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 46,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 23,
+      "name": "이준영",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 4,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 46,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 41,
+      "name": "지은우",
+      "field": "high_school",
+      "value": "송림고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 47,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 41,
+      "name": "지은우",
+      "field": "university",
+      "value": "경기대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 47,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KBI",
+      "number": 41,
+      "name": "지은우",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": null,
+        "pick": null,
+        "kind": "trainee"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 47,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 3,
+      "name": "배해찬솔",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 4,
+        "pick": 2,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 85,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 77,
+      "name": "윤하준",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 3,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 99,
+          "identity_match": "name+dob+gender",
+          "status": "PlayerID연결완료"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "OKF",
+      "number": 5,
+      "name": "김도훈",
+      "field": "high_school",
+      "value": "제천산업고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 40,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "OKF",
+      "number": 5,
+      "name": "김도훈",
+      "field": "university",
+      "value": "홍익대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 40,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "OKF",
+      "number": 5,
+      "name": "김도훈",
+      "field": "career_draft",
+      "value": {
+        "season": "2020-21",
+        "round": 3,
+        "pick": 1,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 40,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 3,
+      "name": "박준서",
+      "field": "high_school",
+      "value": "진주동명고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 80,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 3,
+      "name": "박준서",
+      "field": "university",
+      "value": "경희대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 80,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 3,
+      "name": "박준서",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 4,
+        "pick": 6,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 80,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 11,
+      "name": "양수현",
+      "field": "high_school",
+      "value": "속초고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 74,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 11,
+      "name": "양수현",
+      "field": "university",
+      "value": "경기대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 74,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 11,
+      "name": "양수현",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 4,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 74,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 21,
+      "name": "최현민",
+      "field": "high_school",
+      "value": "경북체고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 79,
+          "identity_match": "name+dob+gender",
+          "status": "PlayerID연결완료"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 75,
+      "name": "김요한",
+      "field": "high_school",
+      "value": "인창고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 82,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 75,
+      "name": "김요한",
+      "field": "university",
+      "value": "중부대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 82,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 75,
+      "name": "김요한",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 2,
+        "pick": 6,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 82,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "GSC",
+      "number": 2,
+      "name": "김효임",
+      "field": "high_school",
+      "value": "선명여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 81,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "GSC",
+      "number": 6,
+      "name": "최윤영",
+      "field": "high_school",
+      "value": "일신여상",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 85,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "KEX",
+      "number": 3,
+      "name": "김다은",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 1,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 68,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "KEX",
+      "number": 13,
+      "name": "이지윤",
+      "field": "high_school",
+      "value": "중앙여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 76,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "KEX",
+      "number": 16,
+      "name": "오은채",
+      "field": "high_school",
+      "value": "전주근영여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 96,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "KEX",
+      "number": 17,
+      "name": "김현지",
+      "field": "high_school",
+      "value": "강릉여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 74,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "KEX",
+      "number": 17,
+      "name": "김현지",
+      "field": "career_draft",
+      "value": {
+        "season": "2015-16",
+        "round": 4,
+        "pick": 6,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 74,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "HHC",
+      "number": 2,
+      "name": "이채영",
+      "field": "high_school",
+      "value": "한봄고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 35,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "HHC",
+      "number": 11,
+      "name": "강서우",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 4,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 42,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "HPS",
+      "number": 15,
+      "name": "박민지",
+      "field": "high_school",
+      "value": "수원전산여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 12,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 3,
+      "name": "박은서",
+      "field": "high_school",
+      "value": "수원전산여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 51,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 8,
+      "name": "임명옥",
+      "field": "university",
+      "value": "국제사이버대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 56,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 13,
+      "name": "최정민",
+      "field": "high_school",
+      "value": "한봄고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 60,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 17,
+      "name": "최연진",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 1,
+        "pick": 6,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 64,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 18,
+      "name": "강유정",
+      "field": "high_school",
+      "value": "일신여상",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 65,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 20,
+      "name": "정솔민",
+      "field": "high_school",
+      "value": "전주근영여자고등학교",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 109,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 21,
+      "name": "하예지",
+      "field": "high_school",
+      "value": "선명여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 127,
+          "identity_match": "name+dob+gender",
+          "status": "팀별대조_누락보완"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "IBK",
+      "number": 25,
+      "name": "남은서",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 2,
+        "pick": 2,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 52,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "RSP",
+      "number": 5,
+      "name": "노란",
+      "field": "university",
+      "value": "국제사이버대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 20,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "SOO",
+      "number": 12,
+      "name": "송은채",
+      "field": "career_draft",
+      "value": {
+        "season": "2024-25",
+        "round": 2,
+        "pick": 1,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 75,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "SOO",
+      "number": 15,
+      "name": "박수빈",
+      "field": "career_draft",
+      "value": {
+        "season": "2023-24",
+        "round": 2,
+        "pick": 7,
+        "kind": "regular"
+      },
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 100,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "SOO",
+      "number": 18,
+      "name": "김서영",
+      "field": "high_school",
+      "value": "세화여고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 105,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "SOO",
+      "number": 20,
+      "name": "전하리",
+      "field": "high_school",
+      "value": "원곡고",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 106,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    },
+    {
+      "gender": "W",
+      "team": "SOO",
+      "number": 20,
+      "name": "전하리",
+      "field": "university",
+      "value": "경일대",
+      "evidence": [
+        {
+          "kind": "archived_mediaguide_extract",
+          "season": "2025-2026",
+          "title": "2025-2026_Mediaguidebook_0.all.pdf",
+          "master_tab": "과거시즌_원본",
+          "row": 106,
+          "identity_match": "name+dob+gender",
+          "status": "1차추출"
+        }
+      ],
+      "reason": "single unverified archive extract; original confirmation pending"
+    }
+  ],
+  "withheld_count": 71,
+  "current_official_dob_resolution": [
+    {
+      "name": "하승우",
+      "team": "KEP",
+      "gender": "M",
+      "dob": "1995-06-02",
+      "previous_source": "1995-06-02",
+      "comparison": "1995-06-22",
+      "basis": "current official club profile"
+    },
+    {
+      "name": "정호영",
+      "team": "HPS",
+      "gender": "W",
+      "dob": "2001-08-23",
+      "previous_source": "2001-08-23",
+      "comparison": "2001-08-21",
+      "basis": "current official club profile"
+    },
+    {
+      "name": "표승주",
+      "team": "HPS",
+      "gender": "W",
+      "dob": "1992-08-07",
+      "previous_source": "1992-08-27",
+      "comparison": "1992-08-07",
+      "basis": "current official club profile"
+    }
+  ]
+}

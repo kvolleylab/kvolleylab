@@ -52,18 +52,25 @@ function render(host,d,team,players){
   const p=roster.find(x=>key(x)===selected);
   if(!p){detail.innerHTML='<p class="kvlrv2-empty">선수를 선택해 주세요.</p>';return}
   const academic=schools(p),href=url(p,d,team),draft=p.kvlDraft||null;
+  const career=standard&&!draft?p.kvlCareerDraft:null;
+  const evidence=standard?Object.values(p.kvlProfileEvidence||{}).flat():[];
+  const sources=[...new Map(evidence.map(e=>[e.url||e.title,e])).values()];
+  const careerRank=career?.kind==='trainee'?'수련선수 지명':career?career.round+'라운드 '+career.pick+'순위':'';
+  const measurement=standard&&p.kvlProfileEvidence?.height_cm?.some(e=>e.kind==='reviewed_kovo_draft_registration')?' (드래프트 측정)':'';
   const round=Number.isInteger(draft?.round)?draft.round+'라운드 '+draft.pick+'순위':draft?.kind==='trainee'?'수련선수 지명':'공식 지명';
   detail.innerHTML=`<div class="kvlrv2-profile-head"><small>PLAYER</small><h3>${esc(p.name)}</h3>${standard&&p.en?`<span class="kvl-rs-english">${esc(p.en)}</span>`:''}<span>${esc(team.name)} · ${esc(p.position||'선수')}</span></div>
    <div class="kvlrv2-profile-content"><h4>선수 정보</h4>
    <dl class="kvlrv2-facts"><div><dt>등번호</dt><dd>#${esc(p.number??'—')}</dd></div>
    ${p.dob?`<div><dt>생년월일</dt><dd>${esc(p.dob)}</dd></div>`:''}
-   ${p.heightCm>0?`<div><dt>신장</dt><dd>${esc(p.heightCm)}cm</dd></div>`:''}${standard?`<div><dt>국적</dt><dd>${flag(p)}${esc(p.nationality||'미확인')}</dd></div><div><dt>Volleybox</dt><dd>${vb(p)}</dd></div>`:''}</dl>
+   ${p.heightCm>0?`<div><dt>신장</dt><dd>${esc(p.heightCm)}cm${esc(measurement)}</dd></div>`:''}${standard?`<div><dt>국적</dt><dd>${flag(p)}${esc(p.nationality||'미확인')}</dd></div><div><dt>Volleybox</dt><dd>${vb(p)}</dd></div>`:''}</dl>
    ${academic.length?`<section class="kvlrv2-schools"><h4>출신학교</h4><div class="kvlrv2-school-grid">${academic.map(x=>`<div><small>${esc(x.label)}</small><strong>${esc(x.text)}</strong></div>`).join('')}</div></section>`:''}
    ${draft?`<section class="kvlrv2-pick"><small>2026–27 KOVO 신인드래프트</small><strong>${esc(team.name)} · ${esc(round)}</strong></section>`:''}
+   ${career?`<section class="kvlrv2-pick kvlrv2-career-draft"><small>${esc(career.season)} KOVO 신인드래프트</small><strong>${esc(careerRank)}</strong></section>`:''}
    ${href?`<a class="kvlrv2-profile-link" href="${esc(href)}">선수 프로필 보기</a>`:''}
-   ${official(p.registrationSource)||draft?`<details class="kvlrv2-sources"><summary>공식 출처 보기</summary>
+   ${official(p.registrationSource)||draft||sources.length?`<details class="kvlrv2-sources"><summary>공식 출처 보기</summary>
    ${official(p.registrationSource)?`<a href="${esc(p.registrationSource)}" target="_blank" rel="noopener noreferrer">KOVO 등록 공시</a>`:''}
    ${/^https:\/\/cdn\.kovo\.co\.kr\//.test(draft?.source||'')?`<a href="${esc(draft.source)}" target="_blank" rel="noopener noreferrer">신인드래프트 결과</a>`:''}
+   ${sources.map(e=>e.url&&window.KVLVLeagueProfileEnrichmentV1?.safeSource(e.url)?`<a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${e.kind==='official_club_profile'?'구단 공식 선수 프로필':'검수된 드래프트 자료'}</a>`:e.kind==='archived_mediaguide_extract'?`<span>${esc(e.season)} KOVO 미디어가이드 (검수자료)</span>`:'').join('')}
    </details>`:''}</div>`;
  }
  host.onclick=ev=>{

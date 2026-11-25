@@ -376,17 +376,36 @@
      // Season roster is always the publisher-owned JSON. The bridge only adds verified display-level fields.
      const base={competitionId:'KVL-COMP-VLEAGUE-'+(gender==='men'?'M':'W')+'-'+season,
       participants:state.raw.participants,rosters:state.raw.rosters};
-     let data=base;
-     if(season==='2026-27'&&window.KVLVLeagueDraftBridgeV1){
+     let data=base,metadataWarning='';
+     if(season==='2026-27'){
       try{
-       const source=await window.KVLVLeagueDraftBridgeV1.load();
-       data=window.KVLVLeagueDraftBridgeV1.reconcileCurrent(base,source);
-      }catch(err){console.warn('[KVL teams: verified draft evidence unavailable]',err)}
+       const bridgeApi=window.KVLVLeagueDraftBridgeV1;
+       if(!bridgeApi?.loadForTeamFinder)throw Error('Verified draft bridge unavailable');
+       const reviewed=await bridgeApi.loadForTeamFinder();
+       data=bridgeApi.reconcileCurrent(base,reviewed.bridge);
+       if(!reviewed.educationAvailable)metadataWarning='출신학교 자료 연결에 실패했습니다. 확인된 드래프트 정보는 유지됩니다.';
+      }catch(err){
+       metadataWarning='출신학교·드래프트 자료를 불러오지 못했습니다. 기존 등록 선수명단은 유지됩니다.';
+       console.warn('[KVL teams: verified draft evidence unavailable]',err);
+      }
+      try{
+       const enrichment=window.KVLVLeagueProfileEnrichmentV1;
+       if(!enrichment?.load)throw Error('Reviewed profile source unavailable');
+       data=enrichment.apply(data,await enrichment.load());
+      }catch(err){
+       metadataWarning=(metadataWarning?metadataWarning+' ':'')+'추가 선수정보를 불러오지 못했습니다. 기존 자료는 유지됩니다.';
+       console.warn('[KVL teams: reviewed profile enrichment unavailable]',err);
+      }
      }
      if(token!==state.token||state.selected!==code)return;
      const renderer=window.KVLVLeagueRosterV2;
      const done=season==='2026-27'&&renderer?.render(rosterHost,data,t,data.rosters[code].players);
      if(!done)rosterHost.innerHTML='<p class="ktd-empty">현재 시즌 상세 명단은 <a href="'+esc(t.href)+'">V-리그 대회 페이지</a>에서 확인할 수 있습니다.</p>';
+     else if(metadataWarning){
+      const root=rosterHost.querySelector('.kvlrv2');
+      root.querySelector('.kvlrv2-header').insertAdjacentHTML('afterend','<div class="kvl-rs-metadata-warning" role="status"><span>'+esc(metadataWarning)+'</span><button type="button" data-kvl-rs-metadata-retry>다시 불러오기</button></div>');
+      root.querySelector('[data-kvl-rs-metadata-retry]').addEventListener('click',event=>{event.stopPropagation();openRoster(code)});
+     }
     }
     rosterArea.scrollIntoView({behavior:'smooth',block:'start'});
    }catch(err){

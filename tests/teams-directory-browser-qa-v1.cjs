@@ -126,6 +126,69 @@ async function verifyRosterType(page,league){
  return m;
 }
 
+async function verifyKEPMetadata(browser){
+ const registration='**/data/kovo/official-notices/2026-27/draft_registration_bridge.json';
+ const education='**/data/draft-applicants/2026-27/education-v1.json';
+ const expected=[
+  ['한재원',20,'인하사대부고','','2라운드 3순위'],
+  ['여광우',55,'송산고','인하대','1라운드 5순위'],
+  ['옹민혁',14,'광주전자공고','경일대','수련선수 지명'],
+  ['이율리',15,'영생고','중부대','수련선수 지명']
+ ];
+ for(const width of [1440,390]){
+  const page=await browser.newPage({viewport:{width,height:900}});
+  try{
+   await intercept(page);
+   let regCalls=0,eduCalls=0;
+   await page.route(registration,route=>++regCalls===1?route.fulfill({status:503,body:'temporary test failure'}):route.fallback());
+   await page.route(education,route=>++eduCalls===1?route.fulfill({status:503,body:'temporary test failure'}):route.fallback());
+   await page.goto(BASE+'/teams.html?category=pro&gender=men&team=KEP',{waitUntil:'domcontentloaded',timeout:30000});
+   await page.locator('.kvlrv2').waitFor({timeout:30000});
+   assert.equal(regCalls,2);assert.equal(eduCalls,2);
+   assert.equal(await page.locator('.kvl-rs-metadata-warning').count(),0);
+   assert.equal(await page.locator('[data-filter="rookie"]').innerText(),'신인 등록 4');
+   for(const [name,no,high,university,pick] of expected){
+    await page.locator('[data-choice="'+no+'/'+name+'"] .kvlrv2-name').click();
+    const detail=page.locator('.kvlrv2-detail');
+    assert.equal(await detail.locator('.kvlrv2-profile-head h3').innerText(),name);
+    if(high)assert.ok((await detail.locator('.kvlrv2-schools').innerText()).includes(high),name+' high school');
+    if(university)assert.ok((await detail.locator('.kvlrv2-schools').innerText()).includes(university),name+' university');
+    if(!high&&!university)assert.equal(await detail.locator('.kvlrv2-schools').count(),0);
+    assert.ok((await detail.locator('.kvlrv2-pick').innerText()).includes(pick),name+' draft selection');
+   }
+   await page.locator('[data-choice="15/이율리"] .kvlrv2-name').click();
+   assert.match(await page.locator('.kvlrv2-detail').innerText(),/2000-09-14/);
+   await page.locator('[data-choice="1/서재덕"] .kvlrv2-name').click();
+   assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/2011-12 KOVO 신인드래프트/);
+   assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/1라운드 2순위/);
+   assert.match(await page.locator('.kvlrv2-schools').innerText(),/성균관대/);
+   report.scenarios.push({case:'KEP '+width+'px: temporary reviewed source failure retries; 4 draft/4 school profiles preserved',result:'PASS',...(await snapshot(page,'kep-metadata-'+width))});
+  }finally{await page.close()}
+ }
+ for(const source of ['registration','education']){
+  const page=await browser.newPage({viewport:{width:1440,height:900}});
+  try{
+   await intercept(page);let calls=0;
+   await page.route(source==='registration'?registration:education,route=>++calls<=2?route.fulfill({status:503,body:'two failed test attempts'}):route.fallback());
+   await page.goto(BASE+'/teams.html?category=pro&gender=men&team=KEP',{waitUntil:'domcontentloaded',timeout:30000});
+   await page.locator('.kvlrv2').waitFor({timeout:30000});
+   await page.locator('.kvl-rs-metadata-warning').waitFor();
+   assert.equal(await page.locator('.kvlrv2-row').count(),men.KEP.players.length);
+   if(source==='education'){
+    await page.locator('[data-choice="20/한재원"] .kvlrv2-name').click();
+    assert.match(await page.locator('.kvlrv2-pick').innerText(),/2라운드 3순위/);
+    assert.match(await page.locator('.kvlrv2-schools').innerText(),/인하사대부고/); // Independent reviewed club profile fallback
+   }
+   await page.locator('[data-kvl-rs-metadata-retry]').click();
+   await page.locator('.kvlrv2').waitFor({timeout:30000});
+   assert.equal(await page.locator('.kvl-rs-metadata-warning').count(),0);
+   await page.locator('[data-choice="20/한재원"] .kvlrv2-name').click();
+   assert.match(await page.locator('.kvlrv2-schools').innerText(),/인하사대부고/);
+   assert.match(await page.locator('.kvlrv2-pick').innerText(),/2라운드 3순위/);
+   report.scenarios.push({case:'KEP '+source+' unavailable: explicit warning and successful manual recovery',result:'PASS'});
+  }finally{await page.close()}
+ }
+}
 async function main(){
  const browser=await chromium.launch({headless:true});
  try{
@@ -341,6 +404,7 @@ async function main(){
    report.scenarios.push({case:'Mobile '+width+'px directory and shared roster',result:'PASS',...result});
    await mobile.close();
   }
+  await verifyKEPMetadata(browser);
   report.status='PASS';
   fs.writeFileSync(reportPath,JSON.stringify(report,null,2));
   console.log(JSON.stringify(report,null,2));

@@ -106,6 +106,41 @@ async function load(){
  return fetchPromise;
 }
 
+/* Team Finder-only recovery path. Do not permanently cache a rejected
+   request or an education-only partial success in this page session. */
+let teamFinderPromise=null;
+async function readReviewed(url,validate){
+ let lastError;
+ for(let attempt=0;attempt<2;attempt++){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),6000);
+  try{
+   const response=await fetch(url,{cache:attempt?'reload':'no-store',signal:controller.signal});
+   if(!response.ok)throw Error('HTTP '+response.status+' '+url);
+   const data=await response.json();
+   if(!validate(data))throw Error('Invalid reviewed source '+url);
+   return data;
+  }catch(error){lastError=error}
+  finally{clearTimeout(timer)}
+ }
+ throw lastError;
+}
+function loadForTeamFinder(){
+ if(teamFinderPromise)return teamFinderPromise;
+ const pending=Promise.allSettled([readReviewed(SOURCE,validBridge),readReviewed(EDUCATION_SOURCE,validEducation)]).then(([registration,education])=>{
+  if(registration.status!=='fulfilled')throw registration.reason;
+  if(education.status!=='fulfilled'){
+   console.warn('[KVL teams: verified draft education unavailable after retry]',education.reason);
+   return {bridge:registration.value,educationAvailable:false};
+  }
+  return {bridge:withEducation(registration.value,education.value),educationAvailable:true};
+ });
+ teamFinderPromise=pending;
+ pending.then(result=>{if(!result.educationAvailable&&teamFinderPromise===pending)teamFinderPromise=null},
+  ()=>{if(teamFinderPromise===pending)teamFinderPromise=null});
+ return pending;
+}
+
 function genderOf(data){
  const code=String(data?.competitionId||data?.competition?.competitionId||'');
  const match=code.match(/^KVL-COMP-VLEAGUE-([MW])-2026-27$/);
@@ -277,5 +312,5 @@ function activeProfiles(existing,bridge,men,women){
  });
 }
 
-return {SOURCE,EDUCATION_SOURCE,validBridge,validEducation,withEducation,load,applyCompetition,reconcileCurrent,profilesFrom,activeProfiles,genderOf};
+return {SOURCE,EDUCATION_SOURCE,validBridge,validEducation,withEducation,load,loadForTeamFinder,applyCompetition,reconcileCurrent,profilesFrom,activeProfiles,genderOf};
 });
