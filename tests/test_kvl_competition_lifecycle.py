@@ -578,7 +578,7 @@ class ArchivePreparationTests(SeasonFixture):
         manifest = update.read_json(self.root / result["manifest_path"])
         archived_report = update.read_json(self.root / manifest["receipts"]["publication"]["path"])
         for field in ("postseason_source_coverage", "incomplete_live_points", "verified_divisions", "held_divisions",
-                      "division_failures", "division_observed_at", "candidate_ui"):
+                      "division_failures", "division_observed_at", "candidate_ui", "standings_reconciliation_pending"):
             self.assertNotIn(field, archived_report)
         for gender in update.DIVISIONS:
             self.assertEqual(archived_report["divisions"][gender]["postseason"],
@@ -678,7 +678,7 @@ class ArchivePreparationTests(SeasonFixture):
         receipt = update.read_json(folder / "publication.json")
         receipt.update(verified_divisions=list(update.DIVISIONS), held_divisions=[], division_failures={},
                        division_observed_at={g: receipt["checked_at"] for g in update.DIVISIONS},
-                       incomplete_live_points=[], candidate_ui={
+                       incomplete_live_points=[], standings_reconciliation_pending=[], candidate_ui={
                            "status": "PASS", "scope": "exact_publication_candidate_dom_not_live_browser"})
         receipt["publication_gate"]["preserved_unobserved_files"] = []
         return folder, receipt
@@ -702,6 +702,31 @@ class ArchivePreparationTests(SeasonFixture):
                 # READY alone cannot hide contradictory partial diagnostics.
                 self.reject_runtime_receipt(mutate, "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
         self.reject_runtime_receipt(lambda r: r.update(status="PARTIAL_READY"), "ARCHIVE_MASTER_VERIFICATION_REQUIRED")
+
+    def test_empty_standings_pending_diagnostic_is_not_copied_to_archive(self):
+        folder, receipt = self.runtime_receipt_inputs()
+        update.write_json(folder / "publication.json", receipt)
+        result = self.prepare(folder)
+        manifest = update.read_json(self.root / result["manifest_path"])
+        archived = update.read_json(self.root / manifest["receipts"]["publication"]["path"])
+        self.assertNotIn("standings_reconciliation_pending", archived)
+        self.assertEqual(archived["status"], "READY")
+
+    def test_pending_or_malformed_standings_diagnostics_never_archive(self):
+        values = [["MALE"], ["FEMALE"], ["MALE", "FEMALE"], None, {}, False,
+                  "MALE", [{"raw_master": "SYNTHETIC_PRIVATE_DIAGNOSTIC"}]]
+        for value in values:
+            with self.subTest(value=value):
+                # Even a READY receipt with complete final files must not
+                # promote pending or malformed diagnostics to full verification.
+                self.reject_runtime_receipt(lambda r: r.update(standings_reconciliation_pending=value),
+                                            "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
+
+    def test_existing_archive_verification_rejects_pending_standings(self):
+        manifest = self.create_synthetic_archive()
+        self.change_receipt(manifest, "publication", lambda r: r.update(standings_reconciliation_pending=["MALE"]))
+        with self.assertRaisesRegex(lifecycle.LifecycleError, "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED"):
+            self.evaluate(ARCHIVE_TIME)
 
     def test_runtime_division_diagnostic_shapes_are_strict(self):
         mutations = [lambda r: r.update(verified_divisions=["MALE", "MALE"]),

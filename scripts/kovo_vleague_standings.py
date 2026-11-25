@@ -36,6 +36,12 @@ OFFICIAL_TOTAL_FIELDS = {
 class StandingsError(ValueError):
     """Input cannot be safely used to replace existing published data."""
 
+    def __init__(self, message, *, diagnostic=None):
+        super().__init__(message)
+        # Only the reconciliation code constructs this bounded public evidence.
+        # Callers must not serialize arbitrary exception messages or responses.
+        self.diagnostic = diagnostic
+
 
 def _require(condition, message):
     if not condition:
@@ -147,8 +153,11 @@ def _reconcile_official(snapshot, played_rows):
         _require(code not in observed, "duplicate official standing team")
         for official_key, local_key in OFFICIAL_TOTAL_FIELDS.items():
             total = _nonnegative_integer(official.get(official_key), f"{code} {official_key}")
-            _require(total == derived[code][local_key],
-                     f"official standings mismatch for {code} {official_key}")
+            if total != derived[code][local_key]:
+                raise StandingsError(f"official standings mismatch for {code} {official_key}",
+                                     diagnostic={"code": "OFFICIAL_TOTAL_MISMATCH", "team": code,
+                                                 "field": official_key, "official": total,
+                                                 "derived": derived[code][local_key]})
         rank = _nonnegative_integer(official.get("rank"), f"{code} rank")
         _require(rank > 0, "played team must have a positive official rank")
         observed[code] = rank

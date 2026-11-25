@@ -24,7 +24,8 @@ from urllib.parse import parse_qs, urlsplit
 
 from kovo_vleague_source import (collect_season, SourceError, validate_request_url,
                                 POSTSEASON_PHASES, verified_live_sets, live_points_url)
-from kovo_vleague_standings import calculate_standings, validate_final_match, StandingsError
+from kovo_vleague_standings import (calculate_standings, validate_final_match, StandingsError,
+                                   OFFICIAL_TOTAL_FIELDS)
 from kovo_vleague_master import build_update_plan, apply_update_plan, SheetsClient
 from kvl_competition_lifecycle import LifecycleError, require_update_window, postseason_status
 
@@ -35,6 +36,7 @@ STATE_PATH = "data/kovo/vleague/2026-27/state_v1.json"
 DATA_PATHS = {g: f"data/competitions/v-league-{v}-{SEASON}/data.json" for g, v in DIVISIONS.items()}
 ALLOWED_OUTPUTS = set(DATA_PATHS.values()) | {STATE_PATH}
 KST = timezone(timedelta(hours=9))
+STANDINGS_PENDING_PREFIX = "순위 갱신 대기 · 종료 확인 중 경기 점수만 갱신 · "
 
 
 class UpdateError(ValueError):
@@ -467,6 +469,80 @@ def retained_live_sets(local, source, won, observed_at):
     return current
 
 
+def safe_standings_diagnostic(error):
+    """Return only typed public aggregate evidence, never exception text."""
+    value = getattr(error, "diagnostic", None)
+    if (not isinstance(value, dict) or set(value) != {"code", "team", "field", "official", "derived"}
+            or value.get("code") != "OFFICIAL_TOTAL_MISMATCH"
+            or not isinstance(value.get("team"), str)
+            or not re.fullmatch(r"[A-Z0-9]{2,10}", value["team"])
+            or value.get("field") not in OFFICIAL_TOTAL_FIELDS
+            or any(type(value.get(k)) is not int or not 0 <= value[k] <= 1_000_000
+                   for k in ("official", "derived"))):
+        return None
+    return deepcopy(value)
+
+
+def reconcile_pending_final_standings(original, candidate, official, stamp, previous_state, links, gender):
+    """Recognize one narrow API ordering gap without publishing assumed finals.
+
+    The current official ranks must reconcile *every* total when the one fully
+    observed pending result is included in a disposable calculation. The real
+    candidate stays live and its previous, independently rechecked standings
+    remain unchanged. Any other changed match or malformed rank still blocks.
+    """
+    require(original.get("automation", {}).get("version") == 2
+            and original["automation"].get("standingsSource") == official["source_url"]
+            and candidate["participants"] == original["participants"],
+            "Pending reconciliation requires the existing verified standings identity")
+    require(isinstance(previous_state, dict) and previous_state.get("schema_version") == 1
+            and previous_state.get("season") == SEASON
+            and isinstance(previous_state.get("links"), dict) and previous_state["links"]
+            and {k: v for k, v in previous_state["links"].items() if v.get("gender") == gender}
+            == {k: v for k, v in links.items() if v.get("gender") == gender},
+            "Pending reconciliation requires unchanged persisted match identities")
+    pending = [m for m in candidate["matches"] if m.get("liveScore", {}).get("finalPending") is True]
+    require(len(pending) == 1, "Pending reconciliation requires exactly one observed terminal match")
+    game = pending[0]
+    old_by_id = {m["id"]: m for m in original["matches"]}
+    require(set(old_by_id) == {m["id"] for m in candidate["matches"]}
+            and game["id"] in old_by_id, "Pending reconciliation cannot create match identities")
+    prior = old_by_id[game["id"]]
+    require(game.get("status") == "live" and record_round(game) is not None
+            and game.get("date") == stamp.astimezone(KST).date().isoformat()
+            and prior.get("status") in ("scheduled", "live") and prior.get("score") is None,
+            "Pending reconciliation requires a same-day regular match, never a final correction")
+    # Nothing except this game's already validated live observation may change.
+    volatile = {"status", "liveScore", "liveSets", "updatedAt"}
+    require({k: v for k, v in game.items() if k not in volatile}
+            == {k: v for k, v in prior.items() if k not in volatile}
+            and all(m == old_by_id[m["id"]] for m in candidate["matches"] if m["id"] != game["id"]),
+            "Pending reconciliation cannot mask changed schedules or other results")
+    live, points = game["liveScore"], game.get("liveSets", [])
+    require(all(p.get("status") == "completed" and p.get("observedAt") == live.get("observedAt")
+                for p in points), "Pending reconciliation requires freshly observed terminal points")
+    terminal = validate_final_match({**deepcopy(game), "status": "final",
+                                    "score": {"home": live["home"], "away": live["away"], "sets": points}})
+    # Recheck the preserved rank/order/ratios against unchanged confirmed games.
+    rows = original.get("standings", {}).get("rows")
+    require(isinstance(rows, list) and len(rows) == len(candidate["participants"]),
+            "Pending reconciliation requires a complete preserved standings table")
+    baseline = {"source_url": official["source_url"], "rows": [
+        {"team_code": row["team"]["code"], "rank": row["rank"],
+         **{field: row[key] for field, key in OFFICIAL_TOTAL_FIELDS.items()}}
+        for row in rows if row.get("games", 0) > 0]}
+    preserved = calculate_standings(candidate["participants"], candidate["matches"], official_ranks=baseline)
+    require(preserved["rows"] == rows and preserved["review_required"] is False,
+            "Preserved standings no longer match confirmed results")
+    hypothetical = deepcopy(candidate["matches"])
+    trial = next(m for m in hypothetical if m["id"] == game["id"])
+    trial.update(status="final", score=terminal)
+    future = calculate_standings(candidate["participants"], hypothetical, official_ranks=official)
+    require(future["review_required"] is False,
+            "Official ranks are not exactly the observed pending result ahead")
+    return preserved
+
+
 def prepare_update(originals, snapshot, previous_state=None, master_values=None):
     matched, links, provider_teams = join_records(originals, snapshot, previous_state)
     by_id = {r["match_id"]: r for r in matched}
@@ -513,9 +589,25 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
             if match != before:
                 match["updatedAt"] = snapshot["fetched_at"]
         official = _mapped_official_standings(candidate, snapshot, gender, provider_teams)
-        calculated = calculate_standings(candidate["participants"], candidate["matches"], official_ranks=official)
+        standings_pending, standings_diagnostic = False, None
+        try:
+            calculated = calculate_standings(candidate["participants"], candidate["matches"], official_ranks=official)
+        except StandingsError as error:
+            standings_diagnostic = safe_standings_diagnostic(error)
+            if standings_diagnostic is None:
+                raise
+            try:
+                calculated = reconcile_pending_final_standings(original, candidate, official, stamp,
+                                                               previous_state, links, gender)
+            except (UpdateError, StandingsError, KeyError, TypeError, ValueError):
+                raise error
+            standings_pending = True
         require(calculated.get("review_required") is False, "Standings need review; publication stopped")
-        candidate["standings"] = {"rows": calculated["rows"]}
+        candidate["standings"] = (deepcopy(original["standings"]) if standings_pending
+                                  else {"rows": calculated["rows"]})
+        candidate.pop("standingsReconciliationPending", None)
+        if standings_pending:
+            candidate["standingsReconciliationPending"] = True
         completed = len(calculated["counted_match_ids"])
         regular_complete = completed == EXPECTED_GAMES
         candidate["regularSeasonComplete"] = regular_complete
@@ -547,14 +639,24 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
                                        "standingsSource": official["source_url"],
                                        "regularSeasonOnly": False, "completedMatches": completed,
                                        "postseason": post_summary}
+        if standings_pending:
+            # Do not replace the last verified standings timestamp with this poll.
+            note = original.get("standingsNote", "")
+            if note.startswith(STANDINGS_PENDING_PREFIX):
+                note = note[len(STANDINGS_PENDING_PREFIX):]
+            candidate["standingsNote"] = STANDINGS_PENDING_PREFIX + note
         candidates[DATA_PATHS[gender]] = candidate
         totals[gender] = {"matched": EXPECTED_GAMES, "completed": completed,
-                          "standings_verified": True, "postseason": post_summary,
+                          "standings_verified": not standings_pending, "postseason": post_summary,
                           "final_confirmation_pending": [r["match_id"] for r in matched
                                                          if r["gender"] == gender and r.get("live_score", {}).get("finalPending")],
                           "pending_postseason_fixtures": sum(r["gender"] == gender for r in snapshot.get("pending_matches", [])),
                           "changed_matches": sum(next((m for m in original["matches"] if m["id"] == after["id"]), None) != after
                                                  for after in candidate["matches"])}
+        if standings_diagnostic:
+            totals[gender]["standings_diagnostic"] = standings_diagnostic
+        if standings_pending:
+            totals[gender]["standings_pending_reason"] = "OFFICIAL_RANK_AHEAD_OF_PENDING_FINAL"
     previous_state = previous_state or {}
     state = {"schema_version": 1, "season": SEASON, "links": links}
     if state == {k: previous_state.get(k) for k in state}:
@@ -573,6 +675,9 @@ def prepare_update(originals, snapshot, previous_state=None, master_values=None)
               "changed_files": changes, "master_checked": master_plan is not None,
               "master_changed_cells": len(master_plan["changes"]) if master_plan else None,
               "production_written": False, "master_written": False}
+    report["standings_reconciliation_pending"] = [g for g, v in totals.items() if not v["standings_verified"]]
+    if report["standings_reconciliation_pending"]:
+        report.update(status="PARTIAL_READY", error_code="StandingsReconciliationPending")
     return {"candidates": candidates, "expected": originals_by_path, "changed_files": changes,
             "matched": matched, "master_plan": master_plan, "report": report}
 
@@ -606,6 +711,9 @@ def prepare_isolated_update(root, originals, previous_state, master_values, coll
         except (SourceError, UpdateError, StandingsError) as exc:
             # Enum-only report: never copy raw HTTP bodies or private MASTER data.
             failures[gender] = {"stage": stage, "error_code": type(exc).__name__}
+            diagnostic = safe_standings_diagnostic(exc)
+            if diagnostic:
+                failures[gender]["standings_diagnostic"] = diagnostic
             continue
         numbers = {r["number"] for r in snapshot["matches"] + snapshot.get("pending_matches", [])}
         require(not observed_numbers & numbers, "Official global game numbers overlap across divisions")
@@ -650,6 +758,9 @@ def prepare_isolated_update(root, originals, previous_state, master_values, coll
               "master_checked": master_plan is not None,
               "master_changed_cells": len(master_plan["changes"]) if master_plan else None,
               "production_written": False, "master_written": False}
+    report["standings_reconciliation_pending"] = [g for g, v in totals.items() if not v["standings_verified"]]
+    if report["standings_reconciliation_pending"]:
+        report.update(status="PARTIAL_READY", error_code="StandingsReconciliationPending")
     if failures:
         report["error_code"] = "PartialSourceError"
     return {"candidates": candidates, "expected": expected, "changed_files": changes,
@@ -757,6 +868,11 @@ def publication_gate(plan):
                 "verification_method": "automated official-season schedule/final-score and standings reconciliation; public-export security checks",
                 "verification_scope": "Regular season and official postseason fixtures/results through the championship; preserved metadata retains its existing provenance.",
             }
+            gender = next((g for g, path in DATA_PATHS.items() if path == relative), None)
+            if gender in plan["report"].get("standings_reconciliation_pending", []):
+                entries[relative].update(
+                    verification_method="official match observations and exact pending-result rank reconciliation; prior verified standings preserved; public-export security checks",
+                    verification_scope="Fresh live/finalPending points only. Standings, their prior verification time and confirmed results are preserved; no new final result or rank is asserted.")
         failures = validate_changed(root, paths, entries)
         security_results = security(root, sorted(ALLOWED_OUTPUTS))
     passed = not failures and security_results[0]["outcome"] == "PASS"
@@ -810,7 +926,8 @@ def report_markdown(report):
              "| 부문 | 정규 연결 | 정규 종료 | 포스트시즌 연결/종료 | 순위 대조 |", "|---|---:|---:|---:|---|"]
     for gender, values in report.get("divisions", {}).items():
         post = values.get("postseason", {})
-        lines.append(f"| {'남자' if gender == 'MALE' else '여자'} | {values['matched']} | {values['completed']} | {post.get('matched', 0)}/{post.get('completed', 0)} | 통과 |")
+        rank_status = "이전 순위 보존 · 종료 확인 대기" if not values.get("standings_verified") else "통과"
+        lines.append(f"| {'남자' if gender == 'MALE' else '여자'} | {values['matched']} | {values['completed']} | {post.get('matched', 0)}/{post.get('completed', 0)} | {rank_status} |")
     if report.get("postseason_source_coverage"):
         waiting = sum(c.get("fixture_state") == "not_published" for c in report["postseason_source_coverage"])
         lines += ["", f"포스트시즌 공식 경로 확인: {len(report['postseason_source_coverage'])}개 · 아직 개별 편성 전: {waiting}개",
@@ -829,6 +946,9 @@ def report_markdown(report):
         lines += ["", "확인된 세트 승수는 반영하되, 다음 경기의 종료세트 득점은 아직 일부 미확인입니다."]
         for gap in report["incomplete_live_points"]:
             lines.append(f"- {gap['source_key']}: {gap['verified_sets']}/{gap['expected_sets']}세트 득점 검증")
+    if report.get("standings_reconciliation_pending"):
+        lines += ["", "공식 순위가 종료 확인 대기 경기의 결과를 먼저 반영했습니다. 검증된 경기 관측만 갱신하며 이전 확정 순위와 검증시각은 보존합니다.",
+                  "순위 대조 대기: " + ", ".join(report["standings_reconciliation_pending"])]
     lines += ["", f"MASTER 확인: {'완료' if report.get('master_checked') else '실행환경 인증 미연결 / 미검증'}",
               f"MASTER 변경 셀: {report.get('master_changed_cells', '미확인')}",
               f"운영 파일 쓰기: {report.get('production_written', False)}",
@@ -838,7 +958,7 @@ def report_markdown(report):
         lines += ["", f"자동 갱신 단계: {lifecycle['phase']}",
                   f"갱신 마감(미포함): {lifecycle['ends_at']}",
                   "갱신 마감은 운영상 중단 시각이며, 공식 대회 종료 또는 기록 보관 완료를 의미하지 않습니다."]
-    if report.get("error_code") and report["error_code"] not in ("PartialSourceError", "IncompleteLivePoints"):
+    if report.get("error_code") and report["error_code"] not in ("PartialSourceError", "IncompleteLivePoints", "StandingsReconciliationPending"):
         lines += ["", "검증 또는 연결 실패로 후속 적용을 중단했습니다. MASTER·운영 파일·배포 상태를 재대조해야 합니다.",
                   f"오류 종류: `{report['error_code']}`"]
     return "\n".join(lines) + "\n"
