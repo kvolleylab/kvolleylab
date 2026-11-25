@@ -24,7 +24,7 @@ async function ready(){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
-        &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1')
+        &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -137,6 +137,14 @@ async function check(browser,gender,code,player,linked,width){
   await club.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),rosters[code].players.length);
+  assert.deepEqual(await page.locator('.kvlrv2-head > span').allTextContents(),['NO.','선수명','생년월일','POS','신장','국적','Volleybox']);
+  assert.equal(await page.locator('[data-rs-pos]').count(),6);
+  await page.locator('[data-filter="foreign"]').click();
+  assert.ok((await page.locator('.kvlrv2-row .kvl-rs-nationality').allTextContents()).every(x=>x!=='대한민국'&&x!=='미확인'));
+  await page.locator('[data-filter="all"]').click();
+  await page.locator('[data-rs-pos="OH"]').click();
+  assert.ok((await page.locator('.kvlrv2-row .kvlrv2-pos').allTextContents()).every(x=>x.includes('OH')));
+  await page.locator('[data-rs-pos="all"]').click();
   const row=page.locator('.kvlrv2-row').filter({hasText:player}).first();
   await row.click();
   const body=await page.locator('.kvlrv2-detail').innerText();
@@ -148,6 +156,8 @@ async function check(browser,gender,code,player,linked,width){
    const href=await link.getAttribute('href');
    assert.ok(href.includes('KVL-P-000008'));
    await link.click();
+   assert.ok(await page.locator('.kvlrv2-detail').isVisible());
+   await page.locator('.kvlrv2-detail .kvlrv2-profile-link').click();
    await page.locator('.pd-title').waitFor({timeout:30000});
    assert.equal((await page.locator('.pd-title').innerText()).trim(),player);
    const profile=await page.locator('#playerArea').innerText();
@@ -202,6 +212,7 @@ async function verifySVLeague(browser,width){
   await defalco.locator('.kvl-lr-name-button').click();
   assert.equal(await page.locator('[data-kvl-lr-detail] .kvl-lr-flag-image').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
+  if(await page.evaluate(()=>innerWidth>920))assert.ok(await page.locator('[data-kvl-lr-detail]').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1));
   await page.locator('[data-kvl-lr-close]').click();
   assert.equal(await page.locator('[data-kvl-lr-detail]').isVisible(),false);
   assert.match((await defalco.innerText()).replace(/\s+/g,' '),/미국/);
