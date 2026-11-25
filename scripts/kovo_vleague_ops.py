@@ -44,6 +44,7 @@ UPDATER_CODES = {
     "LifecycleError": "LIFECYCLE_VALIDATION_FAILED",
     "PartialSourceError": "PARTIAL_SOURCE_FAILURE", "DivisionsUnavailable": "SOURCE_VALIDATION_FAILED",
     "IncompleteLivePoints": "LIVE_POINTS_INCOMPLETE",
+    "StandingsReconciliationPending": "STANDINGS_RECONCILIATION_PENDING",
 }
 LIFECYCLE_CODES = {"LIFECYCLE_VALIDATION_FAILED", "UPDATE_WINDOW_CLOSED", "UPDATE_WINDOW_NOT_STARTED",
                    "VERIFIED_ARCHIVE", "SCHEDULE_OUTSIDE_REVIEWED_UPDATE_WINDOW"}
@@ -56,6 +57,7 @@ SAFE_CODES = {
     "BUILD_FAILED", "BUILD_TIMEOUT", "SITE_NOT_VERIFIED", "BUILD_RESPONSE_INVALID",
     "SOURCE_VALIDATION_FAILED", "UPDATE_VALIDATION_FAILED", "STANDINGS_VALIDATION_FAILED",
     "MASTER_SYNC_FAILED", "UPDATER_FAILED", "REPORT_INVALID", "RUN_URL_INVALID", "PARTIAL_SOURCE_FAILURE", "LIVE_POINTS_INCOMPLETE",
+    "STANDINGS_RECONCILIATION_PENDING",
     "ISSUE_LOOKUP_LIMIT", "DUPLICATE_TRACKING_ISSUES", "INVALID_WAIT_LIMIT",
 } | LIFECYCLE_CODES
 
@@ -278,8 +280,42 @@ def latest_build(client, *, timeout=20):
         raise
     require(isinstance(build, dict) and build.get("status") in ("built", "building", "queued", "errored"),
             "BUILD_RESPONSE_INVALID")
-    valid_sha(build.get("commit"))
+    require(isinstance(build.get("commit"), str)
+            and re.fullmatch(r"[0-9a-f]{40}", build["commit"]), "BUILD_RESPONSE_INVALID")
     return build
+
+
+def read_build_with_retry(client, *, deadline, sleeper, clock):
+    """Retry only the fixed read endpoint; never repeat an ambiguous POST."""
+    for attempt in range(3):
+        remaining = deadline - clock()
+        require(remaining > 0, "BUILD_TIMEOUT")
+        try:
+            return latest_build(client, timeout=min(20, remaining))
+        except OpsError as exc:
+            transient = exc.code in {"NETWORK_ERROR", "RESPONSE_INVALID", "BUILD_RESPONSE_INVALID"} \
+                or (type(exc.http_status) is int and 500 <= exc.http_status <= 599)
+            if not transient or attempt == 2 or clock() >= deadline:
+                raise
+            # Preserve a safe operational trace without API bodies or credentials.
+            print(json.dumps({"event": "PAGES_BUILD_READ_RETRY", "attempt": attempt + 1,
+                              "error_code": exc.code}))
+            delay = min(2 ** attempt, deadline - clock())
+            if delay <= 0:
+                raise
+            sleeper(delay)
+
+
+def validate_build_request(response, expected_sha):
+    # GitHub identifies builds both by /latest and by a numeric build ID.
+    # This URL is validated as an acknowledgement only, never followed. Actual
+    # success still requires the fixed GET's exact commit and both public files.
+    require(isinstance(response, dict) and response.get("status") in ("queued", "building", "built")
+            and isinstance(response.get("url"), str)
+            and re.fullmatch(re.escape(API + PREFIX + "/pages/builds/") + r"(?:latest|[1-9]\d*)",
+                             response["url"]), "BUILD_RESPONSE_INVALID")
+    if "commit" in response:
+        require(response["commit"] == expected_sha, "BUILD_RESPONSE_INVALID")
 
 
 def verify_public(expected, expected_sha, reader, *, timeout=20, nonce=None):
@@ -328,16 +364,28 @@ def deploy(root, expected_sha, *, client=None, environment=None, public_reader=r
     client = client or GitHubClient.from_environment(env)
     preflight(root, client=client, environment=env, expected_sha=expected_sha)
     expected = expected_data(root)
-    build = latest_build(client)
-    outcomes = verify_public(expected, expected_sha, public_reader)
+    deadline = clock() + timeout
+    build = read_build_with_retry(client, deadline=deadline, sleeper=sleeper, clock=clock)
+    remaining = deadline - clock()
+    require(remaining > 0, "BUILD_TIMEOUT")
+    outcomes = verify_public(expected, expected_sha, public_reader, timeout=min(20, remaining / 2))
     if build and build["status"] == "built" and build["commit"] == expected_sha and all(v is True for v in outcomes.values()):
-        require(remote_head(client) == expected_sha, "MAIN_HEAD_CHANGED")
+        require(clock() < deadline, "SITE_NOT_VERIFIED")
+        require(remote_head(client, timeout=min(20, deadline - clock())) == expected_sha, "MAIN_HEAD_CHANGED")
+        require(clock() < deadline, "SITE_NOT_VERIFIED")
         return deployment_receipt(root, expected, expected_sha, False)
 
     current_in_progress = bool(build and build["commit"] == expected_sha
                                and build["status"] in ("building", "queued"))
     same_built = bool(build and build["commit"] == expected_sha and build["status"] == "built")
     request_build = not current_in_progress and (not same_built or any(v is False for v in outcomes.values()))
+    if request_build and (not build or build["commit"] != expected_sha):
+        # A branch-triggered build can start between our first GET and POST.
+        # Recheck once, but keep deliberate rebuilds of a known failed/stale
+        # expected commit distinct from this race.
+        build = read_build_with_retry(client, deadline=deadline, sleeper=sleeper, clock=clock)
+        if build and build["commit"] == expected_sha and build["status"] in ("queued", "building", "built"):
+            request_build = False
     previous_error = canonical({key: build.get(key) for key in
                                 ("url", "created_at", "updated_at", "commit", "status")}) \
         if build and build["status"] == "errored" else None
@@ -347,13 +395,12 @@ def deploy(root, expected_sha, *, client=None, environment=None, public_reader=r
         check_context(env)
         require(remote_head(client) == expected_sha, "MAIN_HEAD_CHANGED")
         require_deployment_window(root)
-        response = client.request("POST", PREFIX + "/pages/builds")
-        require(isinstance(response, dict) and response.get("status") in ("queued", "building")
-                and response.get("url") == API + PREFIX + "/pages/builds/latest", "BUILD_RESPONSE_INVALID")
-    deadline = clock() + timeout
+        remaining = deadline - clock()
+        require(remaining > 0, "BUILD_TIMEOUT")
+        response = client.request("POST", PREFIX + "/pages/builds", timeout=min(20, remaining))
+        validate_build_request(response, expected_sha)
     while clock() < deadline:
-        remaining = min(20, max(0.1, deadline - clock()))
-        build = latest_build(client, timeout=remaining)
+        build = read_build_with_retry(client, deadline=deadline, sleeper=sleeper, clock=clock)
         if build and build["commit"] == expected_sha:
             if build["status"] == "errored":
                 observed_error = canonical({key: build.get(key) for key in
@@ -370,6 +417,7 @@ def deploy(root, expected_sha, *, client=None, environment=None, public_reader=r
                 outcomes = verify_public(expected, expected_sha, public_reader,
                                          timeout=min(10, max(0.1, (deadline-clock()) / 2)))
                 if all(value is True for value in outcomes.values()):
+                    require(clock() < deadline, "SITE_NOT_VERIFIED")
                     return deployment_receipt(root, expected, expected_sha, request_build)
         remaining = deadline - clock()
         if remaining <= 0:
@@ -404,7 +452,7 @@ def safe_failure(report, ops_report=None):
                   if type(group.get(key)) is int and 0 <= group[key] <= 126}
         if values:
             summary["counts"][gender] = values
-    if code in ("PARTIAL_SOURCE_FAILURE", "LIVE_POINTS_INCOMPLETE"):
+    if code in ("PARTIAL_SOURCE_FAILURE", "LIVE_POINTS_INCOMPLETE", "STANDINGS_RECONCILIATION_PENDING"):
         held = report.get("held_divisions", [])
         summary["held_divisions"] = [g for g in ("MALE", "FEMALE") if isinstance(held, list) and g in held]
         summary["site_deployment_verified"] = (ops_report or {}).get("status") == "DEPLOYED_VERIFIED"
@@ -418,6 +466,9 @@ def safe_failure(report, ops_report=None):
             and re.fullmatch(r"023:001:(?:MALE|FEMALE):(?:[1-9]\d{0,2}|1000)", item["source_key"])
             and type(item.get("expected_sets")) is int and type(item.get("verified_sets")) is int
             and 0 <= item["verified_sets"] < item["expected_sets"] <= 5]
+        pending = report.get("standings_reconciliation_pending", [])
+        summary["standings_reconciliation_pending"] = [
+            g for g in ("MALE", "FEMALE") if isinstance(pending, list) and g in pending]
     return summary
 
 
@@ -439,6 +490,10 @@ def issue_body(summary, run_url, fingerprint):
                   "Pages 게시 확인: " + str(summary.get("site_deployment_verified", False)).lower()]
         for item in summary["incomplete_live_points"]:
             lines.append(f"- {item['source_key']}: {item['verified_sets']}/{item['expected_sets']}세트 득점 검증")
+    if summary.get("standings_reconciliation_pending"):
+        lines += ["공식 순위 대조가 대기 중입니다. 경기 점수 게시와 순위 확정을 구분하며 기존 확정 순위를 유지합니다.",
+                  "순위 대조 대기 부문: " + ", ".join(summary["standings_reconciliation_pending"]),
+                  "Pages 게시 확인: " + str(summary.get("site_deployment_verified", False)).lower()]
     lines += ["",
              f"MASTER 변경 기록: {str(summary['master_written']).lower()}",
              f"MASTER 읽기 대조 완료: {str(summary['master_readback_verified']).lower()}",

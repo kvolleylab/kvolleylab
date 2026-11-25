@@ -271,6 +271,11 @@ jobs:
               raise SystemExit('PARTIAL_SOURCE_FAILURE: verified division published; held division requires review')
           if report.get('incomplete_live_points'):
               raise SystemExit('LIVE_POINTS_INCOMPLETE: verified set wins published; terminal points remain incomplete')
+          pending_standings = report.get('standings_reconciliation_pending', [])
+          if not isinstance(pending_standings, list) or any(g not in ('MALE', 'FEMALE') for g in pending_standings):
+              raise SystemExit('STANDINGS_RECONCILIATION_PENDING: invalid reconciliation diagnostic requires review')
+          if pending_standings:
+              raise SystemExit('STANDINGS_RECONCILIATION_PENDING: verified match observations published; standings reconciliation remains pending')
           PY
 
   player_master_pilot:

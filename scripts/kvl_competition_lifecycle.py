@@ -346,6 +346,9 @@ def require_complete_publication_diagnostics(receipt, genders):
     require(isinstance(receipt, dict), "ARCHIVE_RECEIPT_FIELDS_INVALID")
     missing = receipt.get("incomplete_live_points", [])
     require(isinstance(missing, list) and not missing, "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
+    pending_standings = receipt.get("standings_reconciliation_pending", [])
+    require(isinstance(pending_standings, list) and not pending_standings,
+            "ARCHIVE_COMPLETE_PUBLICATION_REQUIRED")
     isolation_fields = {"verified_divisions", "held_divisions", "division_failures", "division_observed_at"}
     if isolation_fields & set(receipt):
         require(isolation_fields <= set(receipt), "ARCHIVE_RECEIPT_FIELDS_INVALID")
@@ -575,7 +578,7 @@ def prepare_archive(root, official_completion_path, publication_receipt_path, de
                             "master_readback_verified", "quality_audit", "publication_gate", "lifecycle",
                             "postseason_source_coverage", "live_points_checks", "incomplete_live_points",
                             "verified_divisions", "held_divisions", "division_failures", "division_observed_at",
-                            "candidate_ui"},
+                            "candidate_ui", "standings_reconciliation_pending"},
             "deployment": {"status", "expected_sha", "built_sha", "build_requested", "verified_files", "verified_at",
                            "verified_file_sha256", "verified_payload_sha256"},
         }

@@ -89,6 +89,27 @@ class ResilienceWorkflowTests(unittest.TestCase):
                 path.write_text(json.dumps({"held_divisions": [], "incomplete_live_points": []}))
                 exec(code, {})
 
+    def test_pending_standings_fail_after_publication_without_echoing_raw_values(self):
+        block = self.jobs["publish"].split("- name: Report held divisions or incomplete points after verified partial publication", 1)[1]
+        script = re.search(r"python -B - <<'PY'\n(.*?)\n          PY", block, re.S)
+        code = compile(textwrap.dedent(script.group(1)), "workflow-standings-pending", "exec")
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "kvl-vleague-publish/report.json"
+            path.parent.mkdir()
+            with patch.dict(os.environ, {"RUNNER_TEMP": directory}):
+                for pending in ([], ["MALE"], ["FEMALE"], ["MALE", "FEMALE"],
+                                None, {}, False, "PRIVATE_DIAGNOSTIC", [{"raw_master": "PRIVATE_DIAGNOSTIC"}]):
+                    with self.subTest(pending=pending):
+                        path.write_text(json.dumps({"status": "PARTIAL_READY" if pending else "READY",
+                            "held_divisions": [], "incomplete_live_points": [],
+                            "standings_reconciliation_pending": pending}))
+                        if pending == []:
+                            exec(code, {})
+                        else:
+                            with self.assertRaisesRegex(SystemExit, "STANDINGS_RECONCILIATION_PENDING") as caught:
+                                exec(code, {})
+                            self.assertNotIn("PRIVATE_DIAGNOSTIC", str(caught.exception))
+
     def test_terminal_partial_failure_reaches_the_existing_deduplicated_notifier(self):
         expression = condition(self.jobs["notify_failure"])
         base = trusted_context(**{"inputs.publish": True, "inputs.match_only": True,

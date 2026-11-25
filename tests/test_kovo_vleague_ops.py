@@ -36,6 +36,7 @@ class FakeClient:
                       "cname": "kvolleylab.com"}
         self.repository = {"full_name": ops.REPOSITORY, "default_branch": "main"}
         self.issues = []
+        self.build_response = {"status": "queued", "url": ops.API + ops.PREFIX + "/pages/builds/latest"}
 
     def request(self, method, path, payload=None, *, timeout=20):
         ops.validate_endpoint(method, path)
@@ -52,7 +53,8 @@ class FakeClient:
             if isinstance(value, Exception): raise value
             return value
         if method == "POST" and path == ops.PREFIX + "/pages/builds":
-            return {"status": "queued", "url": ops.API + ops.PREFIX + "/pages/builds/latest"}
+            if isinstance(self.build_response, Exception): raise self.build_response
+            return deepcopy(self.build_response)
         if method == "GET" and "/issues?" in path: return self.issues
         if method == "POST" and path == ops.PREFIX + "/issues":
             result = {"number": 777, "state": "open", **payload}
@@ -91,9 +93,10 @@ class DeploymentTests(unittest.TestCase):
         return deepcopy(self.expected[urlsplit(url).path.lstrip("/")])
 
     def run_deploy(self, client, reader=None, **options):
+        limits = {"timeout": 30, "interval": 5, **options}
         return ops.deploy(self.root, SHA, client=client, environment=ENV,
-                          public_reader=reader or self.live, timeout=30, interval=5,
-                          sleeper=self.clock.sleep, clock=self.clock, **options)
+                          public_reader=reader or self.live, sleeper=self.clock.sleep,
+                          clock=self.clock, **limits)
 
     def test_preflight_reads_only_and_requires_current_branch_pages(self):
         client = FakeClient()
@@ -189,7 +192,8 @@ class DeploymentTests(unittest.TestCase):
         result = self.run_deploy(client, eventually_current)
         self.assertEqual(result["status"], "DEPLOYED_VERIFIED")
         self.assertGreaterEqual(self.clock.value, 5)
-        self.assertEqual(len(client.writes()), 1)
+        # The expected build appeared on the second GET; only CDN polling is needed.
+        self.assertEqual(len(client.writes()), 0)
 
     def test_existing_in_progress_expected_build_is_not_duplicated(self):
         client = FakeClient(builds=[{"status": "queued", "commit": SHA}, {"status": "built", "commit": SHA}])
@@ -209,7 +213,9 @@ class DeploymentTests(unittest.TestCase):
             self.assertEqual(client.writes(), [])
 
     def test_build_failure_does_not_claim_site_was_updated(self):
-        client = FakeClient(builds=[{"status": "built", "commit": OTHER}, {"status": "errored", "commit": SHA}])
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER},
+                                    {"status": "built", "commit": OTHER},
+                                    {"status": "errored", "commit": SHA}])
         with self.assertRaisesRegex(ops.OpsError, "BUILD_FAILED"): self.run_deploy(client)
 
     def test_public_unavailable_does_not_force_rebuild_of_same_successful_sha(self):
@@ -222,12 +228,190 @@ class DeploymentTests(unittest.TestCase):
         self.assertEqual(ops.canonical({"b": [1, 2], "a": 3}), ops.canonical({"a": 3, "b": [1, 2]}))
         self.assertNotEqual(ops.canonical({"value": True}), ops.canonical({"value": 1}))
 
+    def test_build_acknowledgement_accepts_only_same_repo_build_resource_variants(self):
+        for suffix in ("latest", "5472601"):
+            for status in ("queued", "building", "built"):
+                with self.subTest(suffix=suffix, status=status):
+                    client = FakeClient(builds=[{"status": "built", "commit": OTHER}] * 2
+                                        + [{"status": "built", "commit": SHA}])
+                    client.build_response = {"url": ops.API + ops.PREFIX + "/pages/builds/" + suffix,
+                                             "status": status}
+                    result = self.run_deploy(client)
+                    self.assertEqual(result["status"], "DEPLOYED_VERIFIED")
+                    self.assertEqual(result["built_sha"], SHA)
+                    self.assertEqual(len(client.writes()), 1)
+                    # A numeric acknowledgement is never followed with credentials.
+                    self.assertFalse(any(x[1].endswith("/5472601") for x in client.calls))
+
+    def test_unsafe_or_malformed_acknowledgement_is_not_hidden_by_eventual_success(self):
+        base = ops.API + ops.PREFIX + "/pages/builds/"
+        urls = ["https://evil.example/latest", base.replace("https:", "http:") + "latest",
+                base.replace("api.github.com", "api.github.com.evil.example") + "latest",
+                base.replace("api.github.com", "user@api.github.com") + "latest",
+                base.replace("api.github.com", "api.github.com:443") + "latest",
+                base.replace(ops.REPOSITORY, "other/repo") + "latest", base + "0", base + "01",
+                base + "latest?token=SECRET", base + "latest#SECRET", base + "%31", base + "1/", None]
+        for url in urls:
+            with self.subTest(url=url):
+                client = FakeClient(builds=[{"status": "built", "commit": OTHER}] * 2
+                                    + [{"status": "built", "commit": SHA}])
+                client.build_response = {"url": url, "status": "queued"}
+                with self.assertRaisesRegex(ops.OpsError, "^BUILD_RESPONSE_INVALID$") as found:
+                    self.run_deploy(client)
+                self.assertEqual(len(client.writes()), 1)
+                self.assertNotIn("SECRET", str(found.exception))
+
+    def test_acknowledged_built_status_is_not_proof_of_expected_commit_or_public_data(self):
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER}])
+        client.build_response = {"url": ops.API + ops.PREFIX + "/pages/builds/12", "status": "built"}
+        with self.assertRaisesRegex(ops.OpsError, "BUILD_TIMEOUT"):
+            self.run_deploy(client)
+        self.assertEqual(len(client.writes()), 1)
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER}] * 2
+                            + [{"status": "built", "commit": SHA}])
+        client.build_response = {"url": ops.API + ops.PREFIX + "/pages/builds/12", "status": "built"}
+        with self.assertRaisesRegex(ops.OpsError, "SITE_NOT_VERIFIED"):
+            self.run_deploy(client, lambda url, timeout=20: {"old": True})
+
+    def test_acknowledgement_with_wrong_optional_commit_is_rejected(self):
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER}])
+        client.build_response["commit"] = OTHER
+        with self.assertRaisesRegex(ops.OpsError, "BUILD_RESPONSE_INVALID"):
+            self.run_deploy(client)
+        self.assertEqual(len(client.writes()), 1)
+
+    def test_transient_latest_read_retries_are_bounded_and_safely_recorded(self):
+        client = FakeClient(builds=[{"status": "building"}, ops.OpsError("NETWORK_ERROR"),
+                                    {"status": "built", "commit": SHA}])
+        with redirect_stdout(io.StringIO()) as output:
+            result = self.run_deploy(client)
+        self.assertEqual(result["status"], "DEPLOYED_VERIFIED")
+        self.assertEqual(client.writes(), [])
+        self.assertEqual(self.clock.value, 3)
+        events = [json.loads(x) for x in output.getvalue().splitlines()]
+        self.assertEqual([x["error_code"] for x in events], ["BUILD_RESPONSE_INVALID", "NETWORK_ERROR"])
+        self.assertEqual([x["attempt"] for x in events], [1, 2])
+
+    def test_persistent_malformed_latest_fails_after_three_reads_without_post(self):
+        client = FakeClient(builds=[{"status": "SECRET", "commit": SHA}])
+        with redirect_stdout(io.StringIO()) as output:
+            with self.assertRaisesRegex(ops.OpsError, "BUILD_RESPONSE_INVALID"):
+                self.run_deploy(client)
+        self.assertEqual(sum(x[1].endswith("/pages/builds/latest") for x in client.calls), 3)
+        self.assertEqual(client.writes(), [])
+        self.assertNotIn("SECRET", output.getvalue())
+
+    def test_authentication_redirects_and_unsafe_errors_are_not_retried(self):
+        for code in ("HTTP_401", "HTTP_403", "HTTP_429", "REDIRECT_BLOCKED", "INVALID_ENDPOINT", "RESPONSE_TOO_LARGE"):
+            with self.subTest(code=code):
+                client = FakeClient(builds=[ops.OpsError(code), {"status": "built", "commit": SHA}])
+                with self.assertRaisesRegex(ops.OpsError, code):
+                    self.run_deploy(client)
+                self.assertEqual(sum(x[1].endswith("/pages/builds/latest") for x in client.calls), 1)
+                self.assertEqual(client.writes(), [])
+
+    def test_latest_read_retry_respects_shared_deploy_deadline(self):
+        client = FakeClient(builds=[ops.OpsError("NETWORK_ERROR")])
+        with redirect_stdout(io.StringIO()):
+            with self.assertRaisesRegex(ops.OpsError, "BUILD_TIMEOUT"):
+                self.run_deploy(client, timeout=1)
+        self.assertEqual(self.clock.value, 1)
+        self.assertEqual(client.writes(), [])
+
+    def test_post_is_never_repeated_after_network_uncertainty(self):
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER}] * 2
+                            + [{"status": "built", "commit": SHA}])
+        client.build_response = ops.OpsError("NETWORK_ERROR")
+        with self.assertRaisesRegex(ops.OpsError, "NETWORK_ERROR"):
+            self.run_deploy(client)
+        self.assertEqual(len(client.writes()), 1)
+
+    def test_spent_read_budget_cannot_start_a_build_request(self):
+        client = FakeClient(builds=[{"status": "built", "commit": SHA}])
+        def slow_stale(url, *, timeout=20):
+            self.clock.value += 16
+            return {"old": True}
+        with self.assertRaisesRegex(ops.OpsError, "BUILD_TIMEOUT"):
+            self.run_deploy(client, slow_stale)
+        self.assertEqual(client.writes(), [])
+
+    def test_matching_initial_public_reads_after_deadline_do_not_get_success_receipt(self):
+        client = FakeClient()
+        def slow_matching(url, *, timeout=20):
+            self.clock.value += 16
+            return self.live(url, timeout=timeout)
+        with self.assertRaisesRegex(ops.OpsError, "SITE_NOT_VERIFIED"):
+            self.run_deploy(client, slow_matching)
+        self.assertEqual(self.clock.value, 32)
+        self.assertEqual(client.writes(), [])
+
+    def test_matching_polled_public_reads_after_deadline_do_not_get_success_receipt(self):
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER}] * 2
+                            + [{"status": "built", "commit": SHA}])
+        calls = []
+        def stale_then_slow_matching(url, *, timeout=20):
+            calls.append(url)
+            if len(calls) <= 2:
+                return {"old": True}
+            self.clock.value += 16
+            return self.live(url, timeout=timeout)
+        with self.assertRaisesRegex(ops.OpsError, "SITE_NOT_VERIFIED"):
+            self.run_deploy(client, stale_then_slow_matching)
+        self.assertEqual(self.clock.value, 32)
+        self.assertEqual(len(client.writes()), 1)
+
+    def test_existing_branch_build_wins_pre_post_race_without_duplicate_build(self):
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER},
+                                    {"status": "queued", "commit": SHA},
+                                    {"status": "built", "commit": SHA}])
+        result = self.run_deploy(client)
+        self.assertEqual(result["status"], "DEPLOYED_VERIFIED")
+        self.assertFalse(result["build_requested"])
+        self.assertEqual(client.writes(), [])
+
+    def test_temporary_response_during_build_poll_keeps_one_request_and_exact_verification(self):
+        client = FakeClient(builds=[{"status": "built", "commit": OTHER}] * 2
+                            + [{"status": "queued"}, ops.OpsError("HTTP_ERROR", http_status=503),
+                               {"status": "built", "commit": SHA}])
+        with redirect_stdout(io.StringIO()):
+            result = self.run_deploy(client)
+        self.assertEqual(result["status"], "DEPLOYED_VERIFIED")
+        self.assertEqual(len(client.writes()), 1)
+
 
 class NotificationTests(unittest.TestCase):
     def report(self):
         return {"error_code": "MasterError", "master_written": True, "master_readback_verified": True,
                 "production_written": True, "raw_master": "PRIVATE SECRET", "error": "token=SECRET",
                 "divisions": {"MALE": {"matched": 126, "completed": 1, "changed_matches": 1, "raw": "PRIVATE"}}}
+
+    def test_standings_pending_alert_retains_only_gender_enums_and_verified_site_status(self):
+        report = {"error_code": "StandingsReconciliationPending", "production_written": True,
+                  "master_readback_verified": True,
+                  "standings_reconciliation_pending": ["MALE", "MALE", "token=SECRET", {"FEMALE": "SECRET"}],
+                  "standings_error": {"raw": "PRIVATE"}}
+        summary = ops.safe_failure(report, {"status": "DEPLOYED_VERIFIED"})
+        self.assertEqual(summary["reason_code"], "STANDINGS_RECONCILIATION_PENDING")
+        self.assertEqual(summary["standings_reconciliation_pending"], ["MALE"])
+        self.assertFalse(summary["master_may_be_ahead"])
+        body = ops.issue_body(summary, RUN, "synthetic")
+        self.assertIn("기존 확정 순위를 유지", body)
+        self.assertIn("Pages 게시 확인: true", body)
+        self.assertNotIn("SECRET", body + json.dumps(summary))
+        self.assertNotIn("PRIVATE", body + json.dumps(summary))
+
+    def test_pending_standings_preview_or_failed_pages_cannot_claim_success(self):
+        report = {"error_code": "StandingsReconciliationPending", "production_written": True,
+                  "standings_reconciliation_pending": ["FEMALE"]}
+        summary = ops.safe_failure(report)
+        self.assertIn("Pages 게시 확인: false", ops.issue_body(summary, RUN, "synthetic"))
+        summary = ops.safe_failure(report, {"error_code": "BUILD_RESPONSE_INVALID"})
+        self.assertEqual(summary["reason_code"], "BUILD_RESPONSE_INVALID")
+        self.assertNotIn("site_deployment_verified", summary)
+        for pending in ("MALE", {"MALE": "SECRET"}, None, [True, 1, "SECRET"]):
+            summary = ops.safe_failure({**report, "standings_reconciliation_pending": pending})
+            self.assertEqual(summary["standings_reconciliation_pending"], [])
+            self.assertNotIn("SECRET", json.dumps(summary))
 
     def test_late_deadline_failure_preserves_partial_write_facts_and_requires_review(self):
         report = {**self.report(), "error_code": "LifecycleError", "lifecycle_reason_code": "UPDATE_WINDOW_CLOSED",
