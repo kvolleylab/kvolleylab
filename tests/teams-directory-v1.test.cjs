@@ -151,7 +151,7 @@ test('SV.LEAGUE 2026-27 is a 12-team immutable season snapshot with 211 direct V
   const team=json(t.sourcePath);
   assert.equal(proLeague.validateTeam(team,{code:t.code,season:'2026-27'}),true,t.code);
   assert.equal(team.players.length,t.count);
-  for(const p of team.players){assert.match(proLeague.title(p),/[가-힣]/,p.en);if(p.ko)assert.equal(proLeague.title(p),p.ko);}
+  for(const p of team.players){assert.match(proLeague.title(p),/[가-힣]/,p.en);if(p.ko)assert.equal(proLeague.title(p),p.ko);assert.match(read(proLeague.flagPath(p)),/<svg/,p.iso2);}
   total+=team.players.length;
   direct+=team.players.filter(p=>/^https:\/\/volleybox\.net\/[a-z0-9-]+-p\d+\/?$/i.test(p.volleybox||'')).length;
   recheck+=team.players.filter(p=>p.status==='RECHECK').length;

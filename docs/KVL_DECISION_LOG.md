@@ -1108,3 +1108,7 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #425 병합
 ## 2026-11-25 · 해외 프로팀 명단 한글명 우선 표시
 
 Status: USER REQUESTED / RELEASE AUTHORIZED / IMPLEMENTED / QA PENDING. SV.LEAGUE 211명 중 기존 한글명 29명 유지, 나머지 182명은 Volleybox ID와 영문명으로 연결한 표시용 음역 사전으로 보완한다. 음역은 공식 한글명 검수 전 상태로 명시하며 시즌 원본 JSON 및 등록 소속, 선수 링크는 수정하지 않는다. 기본 명단은 한글명만, 선수 이름 클릭 시 하단 상세 영역에 영문명·국적·POS·신장·시즌 소속·VB를 표시하며 양쪽 언어로 검색한다. Base `ed4a00af7e097813b77d4a34581647f6be39d269`. QA·Pages 증거는 PR에 기록한다.
+
+## 2026-11-26 · SV.LEAGUE 국적 국기 이미지 통일
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 선수 211명 국적 27개 국가·지역 전수 대조. 기존 4x3 및 club SVG 20종 재사용, 기존과 동일한 flag-icons(MIT)에서 il/no/fi/ng/tn/pr/dk 7종 추가. 명단과 클릭 상세에 국기 이미지+한글 국가명 표시. 원본 선수·국적·시즌·VB 불변. 캐시 및 PC·모바일 QA 갱신. 사용자 승인 전 병합 금지. 복구는 본 PR revert.
