@@ -329,7 +329,7 @@ async function verifyKEPMetadata(browser,width){
   assert.match(await page.locator('.kvlrv2-schools').innerText(),/성균관대/);
   await page.locator('[data-choice="6/하승우"] .kvlrv2-name').click();
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/1995-06-02/);
-  const snap=path.join(OUT,'kvl-kep-profile-live-'+width+'.png');
+  const snap=path.join(OUT,'kvl-teams-live-kep-profile-'+width+'.png');
   await page.screenshot({path:snap,fullPage:true});
   result.notes.push('Live KEP '+width+'px verified four rookie draft entries, veteran draft and education, reviewed DOB');
   result.views.push({gender:'men',club:'KEP',width,screenshot:path.basename(snap),status:'PASS',profileSupplement:true});
