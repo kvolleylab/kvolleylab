@@ -100,3 +100,51 @@ test('the published Competition V2 production validator accepts enriched current
  assert.deepEqual(apiData.validate(reconciled.M,{production:true}),[]);
  assert.deepEqual(apiData.validate(reconciled.W,{production:true}),[]);
 });
+
+const supplement=require('../assets/js/kvl-vleague-profile-enrichment-v1.js');
+const registry=json('data/team-rosters/v-league/profile-enrichment-2026-27-v1.json');
+test('reviewed display supplements preserve all published roster identities and existing fields',()=>{
+ assert.ok(supplement.validate(registry));
+ for(const g of ['M','W']){
+  const before=structuredClone(reconciled[g]),after=supplement.apply(reconciled[g],registry);
+  assert.deepEqual(reconciled[g],before);
+  assert.equal(count(after),count(before));
+  for(const code of Object.keys(before.rosters)){
+   const originals=before.rosters[code].players,players=after.rosters[code].players;
+   assert.equal(originals.length,players.length);
+   originals.forEach((p,i)=>{
+    const q=players[i];
+    for(const field of ['number','name','playerId','registrationSource','position','volleybox','kvlDraft'])assert.deepEqual(q[field],p[field],p.name+' '+field);
+    for(const field of ['dob','heightCm','nationalityCode','nationality','kvlHighSchool','kvlUniversity'])if(p[field])assert.equal(q[field],p[field],p.name+' '+field);
+   });
+  }
+  const rr=Object.values(after.rosters).flatMap(t=>t.players);
+  assert.equal(rr.filter(p=>p.kvlProfileEvidence?.dob).length,registry.counts[g].dob);
+  assert.equal(rr.filter(p=>p.kvlProfileEvidence?.height_cm).length,registry.counts[g].height);
+  assert.equal(rr.filter(p=>p.kvlProfileEvidence?.nationality_code).length,registry.counts[g].nationality);
+ }
+ const m=supplement.apply(reconciled.M,registry),w=supplement.apply(reconciled.W,registry);
+ const ha=m.rosters.KEP.players.find(p=>p.name==='하승우');
+ assert.equal(ha.dob,'1995-06-02');assert.equal(ha.dobStatus,'source-conflict');
+ const lee=m.rosters.KEP.players.find(p=>p.name==='이율리');
+ assert.equal(lee.kvlHighSchool,'영생고');assert.equal(lee.kvlUniversity,'중부대');assert.equal(lee.dob,'2000-09-14');assert.equal(lee.playerId,null);
+ const seo=m.rosters.KEP.players.find(p=>p.name==='서재덕');
+ assert.equal(seo.kvlCareerDraft.season,'2011-12');assert.equal(seo.kvlCareerDraft.round,1);assert.equal(seo.kvlCareerDraft.pick,2);assert.equal(seo.kvlDraft,undefined);
+ assert.equal(w.rosters.HPS.players.find(p=>p.name==='정호영').dob,'2001-08-23');
+ assert.equal(w.rosters.HPS.players.find(p=>p.name==='표승주').dob,'1992-08-07');
+});
+test('supplements fail closed on invalid source, changed identity or registration; never overwrite a confirmed DOB',()=>{
+ const invalid=structuredClone(registry);const row=invalid.records.find(r=>r.fields.high_school);
+ row.evidence.high_school=[{kind:'archived_mediaguide_extract',season:'2025-2026',row:4,identity_match:'name+dob+gender',status:'1차추출'}];
+ assert.equal(supplement.validate(invalid),false);
+ const changed=structuredClone(reconciled.M);
+ const ha=changed.rosters.KEP.players.find(p=>p.name==='하승우');
+ ha.registrationSource='https://kovo.co.kr/news/official-notices/000001';
+ assert.equal(supplement.apply(changed,registry).rosters.KEP.players.find(p=>p.name==='하승우').dob,null);
+ const same=structuredClone(reconciled.M),target=same.rosters.KEP.players.find(p=>p.name==='하승우');
+ target.dob='1995-06-22';
+ assert.equal(supplement.apply(same,registry).rosters.KEP.players.find(p=>p.name==='하승우').dob,'1995-06-22');
+ const idChanged=structuredClone(reconciled.M);
+ idChanged.rosters.KEP.players.find(p=>p.name==='이율리').playerId='KVL-P-999999';
+ assert.equal(supplement.apply(idChanged,registry).rosters.KEP.players.find(p=>p.name==='이율리').kvlHighSchool,undefined);
+});
