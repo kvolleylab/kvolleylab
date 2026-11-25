@@ -133,7 +133,7 @@ async function verifyKEPMetadata(browser){
   ['한재원',20,'인하사대부고','','2라운드 3순위'],
   ['여광우',55,'송산고','인하대','1라운드 5순위'],
   ['옹민혁',14,'광주전자공고','경일대','수련선수 지명'],
-  ['이율리',15,'','','수련선수 지명']
+  ['이율리',15,'영생고','중부대','수련선수 지명']
  ];
  for(const width of [1440,390]){
   const page=await browser.newPage({viewport:{width,height:900}});
@@ -156,7 +156,13 @@ async function verifyKEPMetadata(browser){
     if(!high&&!university)assert.equal(await detail.locator('.kvlrv2-schools').count(),0);
     assert.ok((await detail.locator('.kvlrv2-pick').innerText()).includes(pick),name+' draft selection');
    }
-   report.scenarios.push({case:'KEP '+width+'px: temporary reviewed source failure retries; 4 draft/3 school profiles preserved',result:'PASS',...(await snapshot(page,'kep-metadata-'+width))});
+   await page.locator('[data-choice="15/이율리"] .kvlrv2-name').click();
+   assert.match(await page.locator('.kvlrv2-detail').innerText(),/2000-09-14/);
+   await page.locator('[data-choice="1/서재덕"] .kvlrv2-name').click();
+   assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/2011-12 KOVO 신인드래프트/);
+   assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/1라운드 2순위/);
+   assert.match(await page.locator('.kvlrv2-schools').innerText(),/성균관대/);
+   report.scenarios.push({case:'KEP '+width+'px: temporary reviewed source failure retries; 4 draft/4 school profiles preserved',result:'PASS',...(await snapshot(page,'kep-metadata-'+width))});
   }finally{await page.close()}
  }
  for(const source of ['registration','education']){
@@ -171,7 +177,7 @@ async function verifyKEPMetadata(browser){
    if(source==='education'){
     await page.locator('[data-choice="20/한재원"] .kvlrv2-name').click();
     assert.match(await page.locator('.kvlrv2-pick').innerText(),/2라운드 3순위/);
-    assert.equal(await page.locator('.kvlrv2-schools').count(),0);
+    assert.match(await page.locator('.kvlrv2-schools').innerText(),/인하사대부고/); // Independent reviewed club profile fallback
    }
    await page.locator('[data-kvl-rs-metadata-retry]').click();
    await page.locator('.kvlrv2').waitFor({timeout:30000});
