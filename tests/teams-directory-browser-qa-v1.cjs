@@ -168,11 +168,15 @@ async function main(){
   assert.equal(await page.locator('.kvl-lr-name-button').count(),16);
   assert.ok((await page.locator('.kvl-lr-name-button').allTextContents()).every(x=>/[가-힣]/.test(x)));
   assert.doesNotMatch(await defalco.innerText(),/Torey Defalco/i);
+  const flagState=await page.locator('.kvl-lr-row .kvl-lr-flag-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0})));
+  assert.equal(flagState.length,16);assert.ok(flagState.every(Boolean));
+  assert.match(await defalco.locator('.kvl-lr-flag-image').getAttribute('src'),/\/us\.svg$/);
   await defalco.locator('.kvl-lr-name-button').click();
+  assert.equal(await page.locator('[data-kvl-lr-detail] .kvl-lr-flag-image').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
   await page.locator('[data-kvl-lr-close]').click();
   assert.equal(await page.locator('[data-kvl-lr-detail]').isVisible(),false);
-  assert.match(await defalco.innerText(),/🇺🇸\s*미국/);
+  assert.match(await defalco.innerText(),/미국/);
   assert.equal(await defalco.locator('.kvl-lr-vb a').getAttribute('href'),'https://volleybox.net/torey-defalco-p2330');
   await page.locator('[data-kvl-lr-nat="foreign"]').click();
   assert.equal(await page.locator('.kvl-lr-row').count(),3);
@@ -280,7 +284,9 @@ async function main(){
    await mobile.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
    assert.equal(await mobile.locator('.kvl-lr-team-logo img').count(),1);
    assert.equal(await mobile.locator('.kvl-lr-row').count(),16);
-   assert.match(await mobile.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first().innerText(),/🇺🇸\s*미국/);
+   const mobileFlags=await mobile.locator('.kvl-lr-row .kvl-lr-flag-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0})));
+   assert.equal(mobileFlags.length,16);assert.ok(mobileFlags.every(Boolean));
+   assert.match(await mobile.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first().innerText(),/미국/);
    report.scenarios.push({case:'Mobile '+width+'px SV.LEAGUE season roster keeps nationality and direct VB',result:'PASS',...(await snapshot(mobile,'sv-jtekt-'+width))});
    await mobile.goto(BASE+'/teams.html?category=international&gender=men',{waitUntil:'domcontentloaded',timeout:30000});
    await mobile.locator('.ktd-country-card').first().waitFor({timeout:30000});
