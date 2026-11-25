@@ -3,15 +3,26 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const {JSDOM}=require(process.env.KVL_JSDOM_PATH||'jsdom');
 const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const slug=g=>'v-league-'+g+'-2026-27';
-async function setup({now='2026-11-02T12:00:00Z',edit,fail=()=>false}={}){
+async function setup({now='2026-11-02T12:00:00Z',edit,fail=()=>false,captureMidnight=false}={}){
  const sources={};for(const g of ['men','women'])for(const s of ['university-league-'+g+'-2026','kovo-cup-'+g+'-2026',slug(g)])sources[s]=JSON.parse(fs.readFileSync(path.join(root,'data/competitions',s,'data.json'),'utf8'));
  if(edit)edit(sources);const before=JSON.stringify(sources),requests=[];
- const dom=new JSDOM(html,{url:'https://kvolleylab.com/',runScripts:'outside-only'}),w=dom.window;
+ const dom=new JSDOM(html,{url:'https://kvolleylab.com/',runScripts:'outside-only',pretendToBeVisual:true}),w=dom.window;
+ const midnight=[];
+ if(captureMidnight){
+  const original=w.setTimeout.bind(w);
+  w.setTimeout=(fn,ms,...args)=>{
+   if(ms>0&&ms<2000&&String(fn).includes('rolloverHomeDay')){
+    midnight.push({fn,ms});
+    return 90000+midnight.length;
+   }
+   return original(fn,ms,...args);
+  };
+ }
  w.Date.now=()=>Date.parse(now);w.fetch=async url=>{const s=url.split('/')[3];requests.push(s);if(fail(s))throw Error('offline');return {ok:true,json:async()=>sources[s]};};
  const ready=new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('home did not finish loading')),2000);const observer=new w.MutationObserver(()=>{if(w.document.querySelector('#home-matches').getAttribute('aria-busy')==='false'){clearTimeout(timer);observer.disconnect();resolve();}});observer.observe(w.document.querySelector('#home-matches'),{attributes:true});});
  w.eval(fs.readFileSync(path.join(root,'assets/js/kvl-competition-data-v2.js'),'utf8'));
  for(const script of w.document.querySelectorAll('script:not([src])'))w.eval(script.textContent);
- await ready;return {w,doc:w.document,sources,before,requests,close:()=>w.close()};
+ await ready;return {w,doc:w.document,sources,before,requests,midnight,close:()=>w.close()};
 }
 const score={home:3,away:2,sets:[{home:25,away:20},{home:23,away:25},{home:25,away:22},{home:20,away:25},{home:15,away:12}]};
 function game(d,id,date,time,extra={}){return {id,date,time,home:{code:d.participants[0].code},away:{code:d.participants[1].code},...extra};}
@@ -20,7 +31,9 @@ const pick=(doc,kind,g)=>doc.querySelector(`[data-kind="${kind}"] [data-gender="
 test('operating feeds render both divisions in two cards with exact scores, logos and dated links',async()=>{
  const s=await setup({now:'2026-11-03T14:00:00Z'});try{
   assert.equal(s.requests.length,6);assert.equal(s.doc.querySelectorAll('.match-column').length,2);
-  assert.deepEqual([...s.doc.querySelectorAll('[data-match-id]')].map(n=>n.dataset.matchId),['VL2627-M-002','VL2627-W-002','VL2627-M-003','VL2627-W-003']);
+  assert.deepEqual([...s.doc.querySelectorAll('#home-matches > .match-column')].map(c=>c.dataset.kind),
+   ['next','recent'],'Homepage must put today/next before recent results');
+  assert.deepEqual([...s.doc.querySelectorAll('[data-match-id]')].map(n=>n.dataset.matchId),['VL2627-M-003','VL2627-W-003','VL2627-M-002','VL2627-W-002']);
   for(const g of ['men','women'])for(const kind of ['recent','next']){const row=pick(s.doc,kind,g),url=new URL(row.href);assert.equal(url.searchParams.get('competition'),slug(g));assert.equal(url.searchParams.get('view'),'schedule');assert.equal(url.searchParams.get('date'),kind==='recent'?'2026-11-01':'2026-11-03');assert.equal(row.querySelectorAll('img').length,2);for(const img of row.querySelectorAll('img'))assert(fs.existsSync(path.join(root,new URL(img.src).pathname)));}
   assert.match(pick(s.doc,'recent','women').textContent,/흥국생명.*3 : 0.*SOOP/s);
   assert.deepEqual([...pick(s.doc,'recent','women').querySelectorAll('abbr')].map(n=>n.textContent),['25–20','25–20','25–22']);
@@ -28,6 +41,36 @@ test('operating feeds render both divisions in two cards with exact scores, logo
   for(const g of ['men','women']){const match=s.sources[slug(g)].matches.find(m=>m.id==='VL2627-'+(g==='men'?'M':'W')+'-003');assert.equal(pick(s.doc,'next',g).querySelector('.match-score').textContent,`${match.score.home} : ${match.score.away}`);assert.match(pick(s.doc,'next',g).textContent,/종료/);}
   assert.equal(s.doc.querySelectorAll('#match-source a').length,1);assert.match(s.doc.querySelector('#match-source').textContent,/KOVO 공식 홈페이지/);assert(!s.doc.querySelector('#match-source').textContent.includes('U-리그 공식 자료'));
   assert.equal(JSON.stringify(s.sources),s.before);
+ }finally{s.close();}
+});
+test('the open homepage switches to the new KST date at midnight without waiting for the feed poll',async()=>{
+ const t0='2026-11-25T14:59:59.900Z',t1='2026-11-25T15:00:00.025Z';
+ const s=await setup({now:t0,captureMidnight:true,edit:sources=>{
+  reset(sources);
+  for(const gender of ['men','women']){
+   const d=sources[slug(gender)];
+   d.matches=[
+    game(d,gender+'-previous','2026-11-25','19:00',{status:'final',score,scoreVerification:true}),
+    game(d,gender+'-newday','2026-11-26','19:00',{status:'scheduled'})
+   ];
+  }
+ }});
+ try{
+  assert.equal(s.doc.getElementById('home-matches').dataset.kstDay,'2026-11-25');
+  assert.equal(s.doc.querySelector('[data-kind=next] h3').textContent,'다음 경기');
+  assert.equal(s.midnight.length,1,'One KST-midnight timer should be scheduled');
+  assert.ok(s.midnight[0].ms>=100&&s.midnight[0].ms<200,
+   'Timer must target the next KST date change: '+s.midnight[0].ms);
+  s.w.Date.now=()=>Date.parse(t1);
+  s.midnight[0].fn();
+  assert.equal(s.doc.getElementById('home-matches').dataset.kstDay,'2026-11-26');
+  assert.equal(s.doc.querySelector('[data-kind=next] h3').textContent,'오늘 경기');
+  assert.deepEqual([...s.doc.querySelectorAll('#home-matches > .match-column')].map(c=>c.dataset.kind),['next','recent']);
+  for(const gender of ['men','women']){
+   assert.equal(pick(s.doc,'next',gender).dataset.matchId,gender+'-newday');
+   assert.equal(pick(s.doc,'recent',gender).dataset.matchId,gender+'-previous');
+  }
+  assert.equal(JSON.stringify(s.sources),s.before,'Clock change must not modify source scores');
  }finally{s.close();}
 });
 test('each division selects independently and excludes unverified, partial, cancelled and invalid fixtures',async()=>{
