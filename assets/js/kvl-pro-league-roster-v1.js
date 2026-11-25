@@ -60,7 +60,7 @@ const nameMap=typeof module==='object'&&module.exports?require('./kvl-sv-player-
 const translated=p=>{const id=volleybox(p).match(/-p(\d+)\/?$/)?.[1],entry=nameMap[id];return entry?.en===p.en?entry.ko:''};
 const title=p=>p.ko||translated(p)||p.en||'선수';
 const isJapan=p=>p.iso2==='jp';
-const clubFlags=new Set(['ee','es','ru','ro']);
+const clubFlags=new Set(['ee','es','ru','ro','il','no','fi','ng','tn','pr','dk']);
 const flagPath=p=>/^[a-z]{2}$/.test(p?.iso2||'')?'assets/images/flags/'+(clubFlags.has(p.iso2)?'club':'4x3')+'/'+p.iso2+'.svg':'';
 const flagMarkup=p=>flagPath(p)?'<img class="kvl-lr-flag-image" src="'+esc(flagPath(p))+'" alt="" decoding="async">':'';
 
