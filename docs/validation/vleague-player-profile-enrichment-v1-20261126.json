@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "scope": "V-League 2026-27",
+  "base": "cfbde00a695e189fffb534a2780ed8229df2c91e",
+  "as_of": "2026-11-26",
+  "counts": {
+    "M": {
+      "total": 149,
+      "archive_school": 86,
+      "archive_draft": 77,
+      "official": 23,
+      "dob": 15,
+      "height": 17,
+      "nationality": 10,
+      "school": 98,
+      "draft": 77,
+      "rows": 107
+    },
+    "W": {
+      "total": 139,
+      "archive_school": 89,
+      "archive_draft": 76,
+      "official": 0,
+      "dob": 0,
+      "height": 15,
+      "nationality": 0,
+      "school": 89,
+      "draft": 76,
+      "rows": 111
+    }
+  },
+  "archive_note": "2024-25 and 2025-26 KOVO media-guide extracted rows in existing Drive MASTER, not re-extracted from PDF in this pass; exact identity and intra-field conflicts checked.",
+  "conflicts": [
+    {
+      "gender": "M",
+      "team": "HDC",
+      "number": 23,
+      "name": "이승준",
+      "field": "career_draft",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "24-25시즌 1라운드 6순위",
+        "2018-2019 3라운드 1순위"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "WRC",
+      "number": 1,
+      "name": "이시몬",
+      "field": "career_draft",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "19-20시즌 2라운드 6순위",
+        "2015년 2라운드 1순위"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 4,
+      "name": "정민수",
+      "field": "university",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "경상대",
+        "경남과기대"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 7,
+      "name": "우스만",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        194,
+        188
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 13,
+      "name": "쇼",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        206,
+        202
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 18,
+      "name": "전진선",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        197,
+        196
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "KEP",
+      "number": 30,
+      "name": "이태호",
+      "field": "height_cm",
+      "reason": "existing/current club measurements differ; keep registered snapshot",
+      "candidates": [
+        203,
+        201
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "OKF",
+      "number": 1,
+      "name": "김정호",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "평초고",
+        "평촌고"
+      ]
+    },
+    {
+      "gender": "M",
+      "team": "SFB",
+      "number": 10,
+      "name": "부용찬",
+      "field": "career_draft",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "17-18시즌 1라운드 2순위",
+        "2011년 1라운드 3순위"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "HHC",
+      "number": 11,
+      "name": "강서우",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "일신여상",
+        "일신여자상업고등학교"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "HPS",
+      "number": 1,
+      "name": "김다은",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "일신여상",
+        "일신여자상업고등학교"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "RSP",
+      "number": 3,
+      "name": "염혜선",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "목포여상",
+        "목포여자상업고"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "RSP",
+      "number": 5,
+      "name": "노란",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "한일전산여고",
+        "수원전산여고"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "RSP",
+      "number": 24,
+      "name": "곽선옥",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "중앙여고",
+        "일신여상"
+      ]
+    },
+    {
+      "gender": "W",
+      "team": "SOO",
+      "number": 17,
+      "name": "고예림",
+      "field": "high_school",
+      "reason": "archive source disagreement",
+      "candidates": [
+        "강릉여고",
+        "서울중앙여고"
+      ]
+    }
+  ]
+}
