@@ -25,6 +25,7 @@ async function ready(){
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
+        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-rsv2-readable-v1')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -137,6 +138,7 @@ async function check(browser,gender,code,player,linked,width){
   await club.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),rosters[code].players.length);
+  await verifyRosterType(page,'vleague');
   assert.deepEqual(await page.locator('.kvlrv2-head > span').allTextContents(),['NO.','선수명','생년월일','POS','신장','국적','Volleybox']);
   assert.equal(await page.locator('[data-rs-pos]').count(),6);
   await page.locator('[data-filter="foreign"]').click();
@@ -210,6 +212,7 @@ async function verifySVLeague(browser,width){
   assert.equal(flagState.length,16);assert.ok(flagState.every(Boolean));
   assert.match(await defalco.locator('.kvl-lr-flag-image').getAttribute('src'),/\/us\.svg$/);
   await defalco.locator('.kvl-lr-name-button').click();
+  await verifyRosterType(page,'sv');
   assert.equal(await page.locator('[data-kvl-lr-detail] .kvl-lr-flag-image').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
   if(await page.evaluate(()=>innerWidth>920))assert.ok(await page.locator('[data-kvl-lr-detail]').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1));
@@ -269,6 +272,28 @@ async function verifyVLeagueTodayFirst(browser,gender,width){
   result.views.push({type:'vleague-summary',gender,width,order:metrics.divisions,status:'PASS',screenshot:path.basename(file)});
  }finally{await page.close()}
 }
+async function verifyRosterType(page,league){
+ const selectors=league==='vleague'
+  ? {head:'.kvlrv2-head',row:'.kvlrv2-row',name:'.kvlrv2-name strong',number:'.kvlrv2-number',dob:'.kvlrv2-dob',pos:'.kvlrv2-pos',height:'.kvlrv2-height',nationality:'.kvl-rs-nationality',vb:'.kvl-rs-vb-cell',pane:'.kvlrv2-list',detail:'.kvlrv2-detail'}
+  : {head:'.kvl-lr-head',row:'.kvl-lr-row',name:'.kvl-lr-name strong',number:'.kvl-lr-no',dob:'.kvl-lr-dob',pos:'.kvl-lr-position',height:'.kvl-lr-height',nationality:'.kvl-lr-nationality',vb:'.kvl-lr-vb a',pane:'.kvl-lr-table',detail:'.kvl-lr-detail'};
+ const m=await page.evaluate(s=>{
+  const el=k=>document.querySelector(s[k]);
+  const sizes=Object.fromEntries(['head','row','name','number','dob','pos','height','nationality','vb'].map(k=>[k,parseFloat(getComputedStyle(el(k)).fontSize)]));
+  const pane=el('pane'),detail=el('detail');
+  return {sizes,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,paneWidth:pane.clientWidth,paneScroll:pane.scrollWidth,side:detail.getBoundingClientRect().left>=pane.getBoundingClientRect().right-1};
+ },selectors);
+ assert.ok(m.documentWidth<=m.viewport+2,league+' roster must not overflow the page: '+JSON.stringify(m));
+ if(m.viewport>=821){
+  for(const [key,size] of Object.entries(m.sizes))assert.equal(size,key==='name'?20:17,league+' '+key+' must retain readable type: '+JSON.stringify(m));
+  assert.ok(m.paneScroll>=m.paneWidth,league+' roster pane containment');
+  if(m.viewport>=921)assert.ok(m.side,league+' desktop profile remains on the right');
+ }else{
+  assert.ok(m.sizes.name>=11.5&&m.sizes.row>=11,league+' mobile font must not shrink below the prior roster');
+  assert.ok(m.paneScroll<=m.paneWidth+2,league+' mobile roster must fit without horizontal scrolling');
+ }
+ return m;
+}
+
 async function main(){
  try{
   await ready();
