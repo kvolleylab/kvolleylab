@@ -1077,3 +1077,6 @@ SV.LEAGUE 원본은 사용자 첨부 `일본_SV리그_남자_2026-27_선수명�
 
 Google Drive에서 일본 SV.LEAGUE 2026-27 전용 MASTER는 확인되지 않아 Drive를 수정하지 않고 첨부 XLSX를 이번 v1 원본으로 명시한다. 공식 SV.LEAGUE 기록의 남자 12개 팀 구성과 팀 단위만 교차확인한다. Base `9e8848442889161a1a8c296b63af93f8111732dc`; branch `feature/svleague-team-directory-season-snapshot-v1`. Team Directory/International/Quality Audit QA 후 READY FOR REVIEW로 올리며 사용자 별도 승인 전 main 병합·운영 배포하지 않는다. [검증 기록](docs/validation/team-directory-svleague-season-snapshot-v1-20261124.md).
 
+## 2026-11-25 · 팀 카드 로고 모노그램 중복 표시 수정
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #425 병합 후 사용자가 모바일 SV.LEAGUE 팀 카드에서 실제 로고 옆에 JT·도쿄 등 대체 모노그램이 중복 표시되는 문제를 지적했다. 기존 `.ktd-monogram`의 display:grid가 hidden 속성을 덮어쓰는 문제를 공통 팀 카드 CSS에서 수정한다. 정상 로고가 있으면 PC·모바일 모두 대체 모노그램을 숨기고, 이미지 실패 시에만 대체 모노그램을 표시한다. 팀 이름, 기존 3열/2열, 명단 데이터와 원본, 링크 및 필터는 유지한다. CSS 캐시 버전과 사전/운영 QA의 실제 computed display 검증을 갱신한다. Base `8368e7fdf39407cc182bc3be421a69e9767ec451`; branch `fix/team-logo-fallback-visibility-20261125`. 사용자 승인 전 병합 금지. 복구는 수정 PR의 revert로 한정한다.
