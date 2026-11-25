@@ -985,40 +985,29 @@
       },
       "venueLabel": "화성종합실내체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:FEMALE:44",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-25T11:44:28+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-25T12:04:17+00:00",
+      "score": {
         "home": 0,
         "away": 3,
-        "sourceKey": "023:001:FEMALE:44",
-        "observedAt": "2026-11-25T11:44:28+00:00",
-        "finalPending": true
+        "sets": [
+          {
+            "home": 23,
+            "away": 25
+          },
+          {
+            "home": 16,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 23,
-          "away": 25,
-          "status": "completed",
-          "observedAt": "2026-11-25T11:44:28+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=44&gcode=001&hcode=2006&acode=2002&page=0&size=1"
-        },
-        {
-          "home": 16,
-          "away": 25,
-          "status": "completed",
-          "observedAt": "2026-11-25T11:44:28+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=44&gcode=001&hcode=2006&acode=2002&page=0&size=1"
-        },
-        {
-          "home": 22,
-          "away": 25,
-          "status": "completed",
-          "observedAt": "2026-11-25T11:44:28+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=44&gcode=001&hcode=2006&acode=2002&page=0&size=1"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-W-023",
@@ -3106,6 +3095,27 @@
       {
         "rank": 1,
         "team": {
+          "code": "KEX",
+          "name": "한국도로공사",
+          "fullName": "한국도로공사",
+          "en": "KEX"
+        },
+        "poolId": "LEAGUE",
+        "games": 7,
+        "wins": 6,
+        "losses": 1,
+        "points": 18,
+        "setWins": 18,
+        "setLosses": 6,
+        "pointsFor": 576,
+        "pointsAgainst": 508,
+        "setRatio": "3.000",
+        "pointRatio": "1.134",
+        "statusLabel": "1위"
+      },
+      {
+        "rank": 2,
+        "team": {
           "code": "GSC",
           "name": "GS칼텍스",
           "fullName": "GS칼텍스",
@@ -3122,27 +3132,6 @@
         "pointsAgainst": 450,
         "setRatio": "3.200",
         "pointRatio": "1.153",
-        "statusLabel": "1위"
-      },
-      {
-        "rank": 2,
-        "team": {
-          "code": "KEX",
-          "name": "한국도로공사",
-          "fullName": "한국도로공사",
-          "en": "KEX"
-        },
-        "poolId": "LEAGUE",
-        "games": 6,
-        "wins": 5,
-        "losses": 1,
-        "points": 15,
-        "setWins": 15,
-        "setLosses": 6,
-        "pointsFor": 501,
-        "pointsAgainst": 447,
-        "setRatio": "2.500",
-        "pointRatio": "1.121",
         "statusLabel": "2위"
       },
       {
@@ -3154,16 +3143,16 @@
           "en": "IBK"
         },
         "poolId": "LEAGUE",
-        "games": 6,
+        "games": 7,
         "wins": 4,
-        "losses": 2,
+        "losses": 3,
         "points": 12,
         "setWins": 14,
-        "setLosses": 8,
-        "pointsFor": 533,
-        "pointsAgainst": 502,
-        "setRatio": "1.750",
-        "pointRatio": "1.062",
+        "setLosses": 11,
+        "pointsFor": 594,
+        "pointsAgainst": 577,
+        "setRatio": "1.273",
+        "pointRatio": "1.029",
         "statusLabel": "3위"
       },
       {
@@ -3320,14 +3309,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 21/126경기 종료 · 2026-11-25 20:44 KST 반영",
-  "updatedAt": "2026-11-25T11:44:28+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 22/126경기 종료 · 2026-11-25 21:04 KST 반영",
+  "updatedAt": "2026-11-25T12:04:17+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 21,
+    "completedMatches": 22,
     "postseason": {
       "matched": 0,
       "completed": 0,
