@@ -202,3 +202,7 @@
  .ktd-page .ktd-grid .ktd-card .ktd-card-meta{font-size:10px}
  .ktd-page .ktd-grid .ktd-card .ktd-card-action{font-size:10.5px;padding:9px 5px}
 }
+
+/* Team logo fallback: author display styles must not override the hidden attribute. */
+.ktd-page .ktd-card-logo .ktd-team-logo-fallback[hidden],
+.ktd-page .ktd-card-logo .ktd-team-logo-image[hidden]{display:none!important}
