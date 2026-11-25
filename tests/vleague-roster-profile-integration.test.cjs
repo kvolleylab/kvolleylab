@@ -48,6 +48,9 @@ test('current automatic roster snapshots are preserved while adding exactly safe
   const p=out.rosters[r.team_code].players.find(p=>p.name===r.name&&Number(p.number)===r.number);
   assert.ok(p,r.name);
   assert.equal(p.registrationSource,r.registration_source_url);
+  assert.deepEqual([p.kvlDraft?.round,p.kvlDraft?.pick,p.kvlDraft?.kind],[r.draft_round,r.draft_pick,r.draft_kind],r.name+' draft metadata');
+  assert.equal(p.kvlHighSchool,r.education?.high_school,r.name+' high school');
+  assert.equal(p.kvlUniversity,r.education?.university,r.name+' university');
   if(r.player_id)assert.equal(p.playerId,r.player_id,r.name);
   else assert.equal(p.playerId,null,r.name+' must not invent an ID');
   assert.equal(original.players.some(x=>x.playerId===r.player_id&&r.player_id!=null),false);
