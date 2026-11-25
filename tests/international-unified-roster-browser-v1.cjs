@@ -46,6 +46,14 @@ async function testApp(){
   assert.match(await page.locator('.kvl-unified-count').innerText(),/26명 통합/);
   assert.match(await page.locator('.kvl-unified-count').innerText(),/42건/);
   assert.equal(await page.locator('.kvl-unified-head span').count(),8);
+  const typography=await page.evaluate(()=>{
+   const selectors={head:'.kvl-unified-head',row:'.kvl-unified-row',name:'.kvl-unified-name strong',number:'.kvl-unified-number',dob:'.kvl-unified-dob',pos:'.kvl-unified-pos',height:'.kvl-unified-height',club:'.kvl-roster-club-team',vb:'.kvl-unified-volleybox',filter:'.kvl-unified-filters button'};
+   const pairs=Object.entries(selectors).map(([key,s])=>[key,getComputedStyle(document.querySelector(s))]);
+   return {base:getComputedStyle(document.body).fontFamily,weights:Object.fromEntries(pairs.map(([k,v])=>[k,v.fontWeight])),families:Object.fromEntries(pairs.map(([k,v])=>[k,v.fontFamily]))};
+  });
+  assert.ok(Object.values(typography.families).every(x=>x===typography.base),'International roster uses site typeface');
+  assert.deepEqual(typography.weights,{head:'800',row:'400',name:'800',number:'800',dob:'400',pos:'800',height:'400',club:'700',vb:'800',filter:'800'},'International roster semantic font weights match professional rosters');
+
   // PC readability contract: roster is primary; competition navigation stays compact.
   const layout=await page.evaluate(()=>{
    const links=[...document.querySelectorAll('.ktd-country-link')];
