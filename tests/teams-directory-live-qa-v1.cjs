@@ -24,7 +24,7 @@ async function ready(){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
-        &&html.includes('kvl-pro-league-roster-v1.js?v=20261124-svlogos-v1')
+        &&html.includes('kvl-pro-league-roster-v1.js?v=20261125-ko-v1')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -193,6 +193,13 @@ async function verifySVLeague(browser,width){
   assert.equal(await page.locator('.kvl-lr-team-logo img').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0}),true);
   assert.equal(await page.locator('.kvl-lr-row').count(),16);
   const defalco=page.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first();
+  assert.equal(await page.locator('.kvl-lr-name-button').count(),16);
+  assert.ok((await page.locator('.kvl-lr-name-button').allTextContents()).every(x=>/[가-힣]/.test(x)));
+  assert.doesNotMatch(await defalco.innerText(),/Torey Defalco/i);
+  await defalco.locator('.kvl-lr-name-button').click();
+  assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
+  await page.locator('[data-kvl-lr-close]').click();
+  assert.equal(await page.locator('[data-kvl-lr-detail]').isVisible(),false);
   assert.match((await defalco.innerText()).replace(/\s+/g,' '),/🇺🇸\s*미국/);
   assert.equal(await defalco.locator('.kvl-lr-vb a').getAttribute('href'),'https://volleybox.net/torey-defalco-p2330');
   await page.locator('[data-kvl-lr-nat="foreign"]').click();
