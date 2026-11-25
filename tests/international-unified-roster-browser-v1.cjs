@@ -134,6 +134,8 @@ async function testApp(){
   await page.locator('[data-kvl-unified-search]').fill('');
   await page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first().locator('.kvl-unified-club').click();
   await page.locator('.kvl-unified-detail:not([hidden])').waitFor({timeout:10000});
+  assert.ok(await page.locator('.kvl-unified-detail').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1),'desktop profile must sit beside the roster');
+  assert.match(await page.locator('.kvl-unified-detail').innerText(),/Yuki Ishikawa/);
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/VNL/);
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/대륙선수권/);
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/SMS Grup Efeler Ligi/,'Detailed profile keeps source-verified league name');
@@ -146,6 +148,11 @@ async function testApp(){
   assert.ok(quickHrefs.some(x=>/avc-men-continental-2026/.test(x||'')),'AVC Continental must remain directly reachable');
   assert.ok(await page.locator('.kvl-unified-reserve').count()>=1,'VNL Reserve athletes must be marked inside the integrated roster');
   REPORT.views.push({name:'Compact competition links and VNL reserve badge replace redundant source cards',status:'PASS'});
+  assert.equal(await page.locator('[data-rs-pos]').count(),6);
+  await page.locator('[data-rs-pos="OH"]').click();
+  const oh=await page.locator('.kvl-unified-pos').allTextContents();
+  assert.ok(oh.length>0&&oh.every(x=>x.includes('OH')),'position filter preserves only OH');
+  await page.locator('[data-rs-pos="all"]').click();
   assert.equal(await page.locator('.kvl-unified-row').count(),26,'Unified table still present');
   assert.match(await page.locator('[data-country-selection]').innerText(),/후보 엔트리/);
   await page.locator('[data-country-year-select]').selectOption('2026');
