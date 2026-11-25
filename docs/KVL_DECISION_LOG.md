@@ -1133,3 +1133,7 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #432에서 
 ## 2026-11-26 · Team Roster Standard v2 서체·굵기 통일
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. PR #433 이후 국내/일본/국제 명단의 글씨체·굵기 차이 수정. 국제대표팀/홈페이지 body의 Arial, Noto Sans KR, sans-serif를 세 종류의 명단 및 상세/버튼이 상속한다. 이름·등번호·헤더·POS·Volleybox·필터 800, 생년월일·신장·기본행·영문명 400, 국적/소속 700으로 공통 의미 기반 굵기를 적용한다. 기존 PC 글씨 크기, 모바일 구조, 우측 프로필, 선수 데이터/링크 보존. 실제 computed font-family/weight를 국내 및 SV PC·모바일과 국제 PC QA에서 검증한다. 팀 찾기 전용 CSS, 캐시 및 QA 변경만 허용. Base 87a194bc632262e08f8f0239ee5b03baaeb800ad. 별도 사용자 운영 승인 전 병합 금지. 복구는 본 PR revert.
+
+## 2026-11-26 · 팀 명단 출신학교·드래프트 상세 보호 및 자료 재시도
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용자 상세 프로필 누락 지적. 최신 main cfbde00a695e189fffb534a2780ed8229df2c91e 확인 결과 기존 renderer와 원본 정보는 삭제되지 않았으며 32명 드래프트 등록, 31명 출신학교 원본 연결 확인. 한국전력 한재원 2R 3순위/인하사대부고, 여광우 1R 5순위/송산고·인하대, 옹민혁 수련/광주전자공고·경일대, 이율리 수련/학교 미확인. 실제 사이트 도구 접근 실패로 사용자 화면의 정확한 원인은 미확정. 기존 loader의 실패 Promise/부분 성공 영구 캐시 위험을 Team Finder 전용 loader로 해소한다. 등록·교육 원본 병렬 조회, 각 최대 2회(6초 제한), 스키마 검증, 일부 자료 실패 시 검증된 데이터만 표시하고 재조회 안내. 성공한 전체 결과만 캐시. 시즌 등록·출신학교·드래프트 원본과 ID, Competition Engine 기존 loader, 타 리그, 디자인은 변경하지 않는다. 전수 32명 metadata 및 KEP PC/모바일 정상·일시 실패·재시도 후 복구 검증 추가. 사용자 별도 운영 승인 전 병합 금지. 복구는 본 PR revert.
