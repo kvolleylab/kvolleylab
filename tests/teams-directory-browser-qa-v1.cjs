@@ -127,6 +127,14 @@ async function main(){
   await okCard.locator('[data-ktd-roster]').click();
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),men.OKF.players.length);
+  assert.deepEqual(await page.locator('.kvlrv2-head > span').allTextContents(),['NO.','선수명','생년월일','POS','신장','국적','Volleybox']);
+  assert.equal(await page.locator('[data-rs-pos]').count(),6);
+  await page.locator('[data-filter="foreign"]').click();
+  assert.ok((await page.locator('.kvlrv2-row .kvl-rs-nationality').allTextContents()).every(x=>x!=='대한민국'&&x!=='미확인'));
+  await page.locator('[data-filter="all"]').click();
+  await page.locator('[data-rs-pos="OH"]').click();
+  assert.ok((await page.locator('.kvlrv2-row .kvlrv2-pos').allTextContents()).every(x=>x.includes('OH')));
+  await page.locator('[data-rs-pos="all"]').click();
   await page.locator('.kvlrv2-row').filter({hasText:'윤경'}).first().click();
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/남성고/);
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/인하대/);
@@ -134,6 +142,8 @@ async function main(){
   const link=page.locator('.kvlrv2-row').filter({hasText:'윤경'}).first().locator('.kvlrv2-name-link');
   assert.equal(await link.count(),1);
   await link.click();
+   assert.ok(await page.locator('.kvlrv2-detail').isVisible());
+   await page.locator('.kvlrv2-detail .kvlrv2-profile-link').click();
   await page.locator('.pd-title').waitFor({timeout:30000});
   assert.equal((await page.locator('.pd-title').innerText()).trim(),'윤경');
   assert.match(await page.locator('#playerArea').innerText(),/OK저축은행/);
@@ -174,6 +184,7 @@ async function main(){
   await defalco.locator('.kvl-lr-name-button').click();
   assert.equal(await page.locator('[data-kvl-lr-detail] .kvl-lr-flag-image').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
+  if(await page.evaluate(()=>innerWidth>920))assert.ok(await page.locator('[data-kvl-lr-detail]').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1));
   await page.locator('[data-kvl-lr-close]').click();
   assert.equal(await page.locator('[data-kvl-lr-detail]').isVisible(),false);
   assert.match(await defalco.innerText(),/미국/);
