@@ -388,6 +388,14 @@
        metadataWarning='출신학교·드래프트 자료를 불러오지 못했습니다. 기존 등록 선수명단은 유지됩니다.';
        console.warn('[KVL teams: verified draft evidence unavailable]',err);
       }
+      try{
+       const enrichment=window.KVLVLeagueProfileEnrichmentV1;
+       if(!enrichment?.load)throw Error('Reviewed profile source unavailable');
+       data=enrichment.apply(data,await enrichment.load());
+      }catch(err){
+       metadataWarning=(metadataWarning?metadataWarning+' ':'')+'추가 선수정보를 불러오지 못했습니다. 기존 자료는 유지됩니다.';
+       console.warn('[KVL teams: reviewed profile enrichment unavailable]',err);
+      }
      }
      if(token!==state.token||state.selected!==code)return;
      const renderer=window.KVLVLeagueRosterV2;
