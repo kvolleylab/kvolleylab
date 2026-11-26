@@ -40,17 +40,27 @@ function render(host,d,team,players){
  <div class="kvlrv2-players" data-rows role="listbox" aria-label="선수 선택"></div></section>
  <aside class="kvlrv2-detail" data-detail aria-live="polite" aria-label="선수 상세정보"></aside></div></div>`;
  const list=host.querySelector('[data-rows]'),detail=host.querySelector('[data-detail]');
+ const popup=standard?window.KVLTeamRosterStandardV1?.createProfilePopup(host,detail,{dismiss}):null;
+ const desktop=()=>!!popup?.isDesktop();
  const key=p=>String(p.number)+'/'+p.name;
- let filter='all',pos='all',search='',selected=key(roster.find(p=>p.kvlDraft)||roster[0]||{});
+ let filter='all',pos='all',search='',selected=desktop()?'':key(roster.find(p=>p.kvlDraft)||roster[0]||{});
+ function dismiss(){
+  const previous=selected;popup?.close();selected='';show();
+  const row=[...list.querySelectorAll('[data-choice]')].find(el=>el.dataset.choice===previous);
+  row?.focus({preventScroll:true});
+ }
  function show(){
   const data=roster.filter(p=>filter==='all'||filter==='rookie'&&p.kvlDraft||filter==='foreign'&&country(p)&&country(p)!=='kr'||filter==='kr'&&country(p)==='kr').filter(p=>matchesPos(p,pos))
    .filter(p=>!search||norm(p.name).includes(norm(search))||norm(p.en).includes(norm(search))||String(p.number)===search);
-  if(!data.some(p=>key(p)===selected))selected=data.length?key(data[0]):'';
+  if(!data.some(p=>key(p)===selected))selected=!desktop()&&data.length?key(data[0]):'';
+  const scrollTop=list.scrollTop;
   list.innerHTML=data.length?data.map(p=>`<div role="option" tabindex="0" class="kvlrv2-row${key(p)===selected?' is-selected':''}" data-choice="${esc(key(p))}" aria-selected="${key(p)===selected}">
   <span class="kvlrv2-number">${standard&&p.number!=null?'#':''}${esc(p.number??'—')}</span><span class="kvlrv2-name">${url(p,d,team)?`<a class="kvlrv2-name-link" href="${esc(url(p,d,team))}" aria-label="${esc(p.name)} 선수 프로필 보기"><strong>${esc(p.name)}</strong></a>`:`<strong>${esc(p.name)}</strong>`}${!standard&&p.en?`<small>${esc(p.en)}</small>`:''}</span>
   ${standard?`<span class="kvlrv2-dob">${esc(p.dob||'—')}</span><span class="kvlrv2-pos">${esc(p.position||'—')}</span><span class="kvlrv2-height">${p.heightCm>0?esc(p.heightCm)+'cm':'—'}</span><span class="kvl-rs-nationality">${flag(p)}${esc(p.nationality||'미확인')}</span><span class="kvl-rs-vb-cell">${vb(p)}</span>`:`<span>${esc(p.position||'—')}</span><span>${p.heightCm>0?esc(p.heightCm)+'cm':'—'}</span>`}</div>`).join(''):'<p class="kvlrv2-empty">검색 결과가 없습니다.</p>';
+  list.scrollTop=scrollTop;
   const p=roster.find(x=>key(x)===selected);
-  if(!p){detail.innerHTML='<p class="kvlrv2-empty">선수를 선택해 주세요.</p>';return}
+  if(!p){detail.hidden=desktop();detail.innerHTML='<p class="kvlrv2-empty">선수를 선택해 주세요.</p>';popup?.sync();return}
+  detail.hidden=false;
   const academic=schools(p),href=url(p,d,team),draft=p.kvlDraft||null;
   const career=standard&&!draft?p.kvlCareerDraft:null;
   const evidence=standard?Object.values(p.kvlProfileEvidence||{}).flat():[];
@@ -58,7 +68,7 @@ function render(host,d,team,players){
   const careerRank=career?.kind==='trainee'?'수련선수 지명':career?career.round+'라운드 '+career.pick+'순위':'';
   const measurement=standard&&p.kvlProfileEvidence?.height_cm?.some(e=>e.kind==='reviewed_kovo_draft_registration')?' (드래프트 측정)':'';
   const round=Number.isInteger(draft?.round)?draft.round+'라운드 '+draft.pick+'순위':draft?.kind==='trainee'?'수련선수 지명':'공식 지명';
-  detail.innerHTML=`<div class="kvlrv2-profile-head"><small>PLAYER</small><h3>${esc(p.name)}</h3>${standard&&p.en?`<span class="kvl-rs-english">${esc(p.en)}</span>`:''}<span>${esc(team.name)} · ${esc(p.position||'선수')}</span></div>
+  detail.innerHTML=`<div class="kvlrv2-profile-head"><small>PLAYER</small>${popup?`<button type="button" class="kvl-rs-profile-close" data-kvl-rs-close>닫기 ×</button>`:''}<h3>${esc(p.name)}</h3>${standard&&p.en?`<span class="kvl-rs-english">${esc(p.en)}</span>`:''}<span>${esc(team.name)} · ${esc(p.position||'선수')}</span></div>
    <div class="kvlrv2-profile-content"><h4>선수 정보</h4>
    <dl class="kvlrv2-facts"><div><dt>등번호</dt><dd>#${esc(p.number??'—')}</dd></div>
    ${p.dob?`<div><dt>생년월일</dt><dd>${esc(p.dob)}</dd></div>`:''}
@@ -72,14 +82,16 @@ function render(host,d,team,players){
    ${/^https:\/\/cdn\.kovo\.co\.kr\//.test(draft?.source||'')?`<a href="${esc(draft.source)}" target="_blank" rel="noopener noreferrer">신인드래프트 결과</a>`:''}
    ${sources.map(e=>e.url&&window.KVLVLeagueProfileEnrichmentV1?.safeSource(e.url)?`<a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${e.kind==='official_club_profile'?'구단 공식 선수 프로필':'검수된 드래프트 자료'}</a>`:e.kind==='archived_mediaguide_extract'?`<span>${esc(e.season)} KOVO 미디어가이드 (검수자료)</span>`:'').join('')}
    </details>`:''}</div>`;
+  popup?.sync();
  }
  host.onclick=ev=>{
+  if(ev.target.closest('[data-kvl-rs-close]')){dismiss();return}
   // The name link navigates; the surrounding row only selects this athlete.
   if(ev.target.closest('.kvl-rs-vb')||(!standard&&ev.target.closest('.kvlrv2-name-link')))return;
   if(standard&&ev.target.closest('.kvlrv2-name-link'))ev.preventDefault();
   const pb=ev.target.closest('[data-rs-pos]');if(pb){pos=pb.dataset.rsPos;host.querySelectorAll('[data-rs-pos]').forEach(x=>x.setAttribute('aria-pressed',String(x===pb)));show();return}
   const row=ev.target.closest('[data-choice]');
-  if(row&&host.contains(row)){selected=row.dataset.choice;show();if(typeof matchMedia==='function'&&matchMedia('(max-width:680px)').matches)detail.scrollIntoView({block:'start',behavior:'smooth'});return}
+  if(row&&host.contains(row)){selected=row.dataset.choice;show();if(!desktop()&&typeof matchMedia==='function'&&matchMedia('(max-width:680px)').matches)detail.scrollIntoView({block:'start',behavior:'smooth'});return}
   const btn=ev.target.closest('[data-filter]');
   if(btn&&host.contains(btn)){filter=btn.dataset.filter;host.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===btn)));show()}
  };
