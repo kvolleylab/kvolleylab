@@ -105,6 +105,12 @@ function render(host,team,display={}){
   if(fallback?.classList.contains('kvl-lr-team-logo-fallback'))fallback.hidden=false;
  },{once:true});
  const rows=host.querySelector('[data-kvl-lr-rows]'),count=host.querySelector('[data-kvl-lr-count]'),detail=host.querySelector('[data-kvl-lr-detail]');
+ const popup=host.closest?.('.ktd-page')?globalThis.KVLTeamRosterStandardV1?.createProfilePopup(host,detail,{dismiss}):null;
+ const desktop=()=>!!popup?.isDesktop();
+ function dismiss(){
+  const previous=selected;popup?.close();selected='';detail.hidden=true;detail.innerHTML='';paint();popup?.sync();
+  if(desktop())[...rows.querySelectorAll('[data-kvl-lr-player]')].find(x=>x.dataset.kvlLrPlayer===previous)?.focus({preventScroll:true});
+ }
  const visible=()=>team.players.filter(p=>(nat==='all'||nat==='foreign'&&!isJapan(p)||nat==='jp'&&isJapan(p))
   &&(pos==='all'||String(p.pos||'').split('/').includes(pos))
   &&(!query||[title(p),p.en,nationality(p),p.pos].some(x=>norm(x).includes(query))));
@@ -122,7 +128,7 @@ function render(host,team,display={}){
  };
  const paint=()=>{
   const list=visible();
-  if(!list.some(p=>volleybox(p)===selected)){selected='';detail.hidden=true;detail.innerHTML=''}
+  if(!list.some(p=>volleybox(p)===selected)){selected='';detail.hidden=true;detail.innerHTML='';popup?.sync()}
   rows.innerHTML=list.length?list.map(row).join(''):'<p class="ktd-empty">해당 조건의 선수가 없습니다.</p>';
   count.textContent=list.length+'명 표시 · 시즌 등록 '+total+'명';
   host.querySelectorAll('[data-kvl-lr-nat]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.kvlLrNat===nat)));
@@ -135,20 +141,20 @@ function render(host,team,display={}){
    '<p>'+esc(team.team.name)+' · '+esc(team.season)+' · #'+esc(p.no)+'</p>'+
    (!p.ko&&translated(p)?'<p class="kvl-lr-transliteration">한글명: 음역 표기 (검수 전)</p>':'')+
    '<a href="'+esc(volleybox(p))+'" target="_blank" rel="noopener noreferrer">VB-&gt;</a>';
-  paint();detail.hidden=false;if(matchMedia('(max-width:920px)').matches)detail.scrollIntoView({block:'nearest'});
+  paint();detail.hidden=false;popup?.sync();if(!desktop()&&matchMedia('(max-width:920px)').matches)detail.scrollIntoView({block:'nearest'});
  }
  host.onclick=e=>{
-  if(e.target.closest('[data-kvl-lr-close]')){selected='';detail.hidden=true;detail.innerHTML='';paint();return}
+  if(e.target.closest('[data-kvl-lr-close]')){dismiss();return}
   if(e.target.closest('a'))return;
   const player=e.target.closest('[data-kvl-lr-player]');
   if(player){const found=visible().find(p=>volleybox(p)===player.dataset.kvlLrPlayer);if(found)show(found);return}
-  const row=e.target.closest('[data-player]');if(row){const found=visible().find(p=>p.en===row.dataset.player);if(found)show(found);return}
+  const row=e.target.closest('[data-player]');if(row){const id=row.querySelector('[data-kvl-lr-player]')?.dataset.kvlLrPlayer;const found=visible().find(p=>volleybox(p)===id);if(found)show(found);return}
   const n=e.target.closest('[data-kvl-lr-nat]');if(n){nat=n.dataset.kvlLrNat;paint();return}
   const p=e.target.closest('[data-kvl-lr-pos]');if(p){pos=p.dataset.kvlLrPos;paint()}
  };
  host.querySelector('[data-kvl-lr-search]').addEventListener('input',e=>{query=norm(e.target.value);paint()});
- paint();if(team.players.length&&matchMedia('(min-width:921px)').matches)show(team.players[0]);
- return {destroy:()=>{host.onclick=null;host.replaceChildren()}};
+ paint();popup?.sync();if(!popup&&team.players.length&&matchMedia('(min-width:921px)').matches)show(team.players[0]);
+ return {destroy:()=>{popup?.destroy();host.onclick=null;host.replaceChildren()}};
 }
 return {validateIndex,validateTeam,teamEntries,render,title,flagPath};
 });
