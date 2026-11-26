@@ -190,7 +190,7 @@
    countryController?.close?.();countryController=null;state.selectedCountry='';
    countryArea.hidden=true;countryArea.replaceChildren();grid.hidden=false;
   };
-  const hideRoster=()=>{state.selected='';rosterArea.hidden=true;rosterHost.replaceChildren()};
+  const hideRoster=()=>{window.KVLTeamRosterStandardV1?.destroyProfilePopup(rosterHost);state.selected='';rosterArea.hidden=true;rosterHost.replaceChildren()};
   function syncUrl(){
    const p=new URLSearchParams(location.search);
    p.set('category',state.category);
@@ -365,6 +365,7 @@
    state.selected=code;state.teamFromURL='';syncUrl();
    rosterArea.hidden=false;
    el('ktdRosterHeading').textContent=t.name+' · '+season+' 선수명단';
+   window.KVLTeamRosterStandardV1?.destroyProfilePopup(rosterHost);
    rosterHost.innerHTML='<p class="ktd-loading">'+(state.raw.league==='sv'?'시즌 등록 선수와 국적 정보를 불러오고 있습니다.':'검증된 선수 프로필·출신학교 정보를 연결하고 있습니다.')+'</p>';
    try{
     if(state.raw.league==='sv'){

@@ -3,6 +3,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const assert=require('node:assert/strict');
 const {chromium}=require(process.env.KVL_PLAYWRIGHT_PATH||'playwright');
+const {closeProPopup,verifyProPopup}=require('./team-roster-popup-qa-v3.cjs');
 const {verifyRosterScrollChain,verifyDesktopRosterContainment}=require('./teams-directory-scroll-qa-v1.cjs');
 const ROOT=path.resolve(__dirname,'..');
 const OUT=process.env.RUNNER_TEMP||'/tmp';
@@ -118,8 +119,12 @@ async function verifyRosterType(page,league){
  assert.deepEqual(m.weights,{head:'800',row:'400',name:'800',number:'800',dob:'400',pos:'800',height:'400',nationality:'700',vb:'800',filter:'800'},league+' actual semantic font weights');
  if(m.viewport>=821){
   for(const [key,size] of Object.entries(m.sizes))assert.equal(size,key==='name'?20:17,league+' '+key+' must retain readable type: '+JSON.stringify(m));
-  assert.ok(m.paneScroll>=m.paneWidth,league+' roster pane containment');
-  if(m.viewport>=921)assert.ok(m.side,league+' desktop profile remains on the right');
+  assert.ok(m.paneScroll<=m.paneWidth+2,league+' full-width table without horizontal scroll: '+JSON.stringify(m));
+  const fit=await page.evaluate(s=>{
+   const pane=document.querySelector(s.pane),bounds=pane.getBoundingClientRect();
+   return [...document.querySelectorAll(s.row)].every(row=>[...row.children].filter(e=>getComputedStyle(e).display!=='none').every(e=>{const r=e.getBoundingClientRect();return r.left>=bounds.left-2&&r.right<=bounds.right+2&&e.scrollWidth<=e.clientWidth+2}));
+  },selectors);
+  assert.ok(fit,league+' every visible roster field must fit');
  }else{
   assert.ok(m.sizes.name>=11.5&&m.sizes.row>=11,league+' mobile font must not shrink below the prior roster');
   assert.ok(m.paneScroll<=m.paneWidth+2,league+' mobile roster must fit without horizontal scrolling');
@@ -149,6 +154,7 @@ async function verifyKEPMetadata(browser){
    assert.equal(await page.locator('.kvl-rs-metadata-warning').count(),0);
    assert.equal(await page.locator('[data-filter="rookie"]').innerText(),'신인 등록 4');
    for(const [name,no,high,university,pick] of expected){
+    await closeProPopup(page);
     await page.locator('[data-choice="'+no+'/'+name+'"] .kvlrv2-name').click();
     const detail=page.locator('.kvlrv2-detail');
     assert.equal(await detail.locator('.kvlrv2-profile-head h3').innerText(),name);
@@ -157,8 +163,10 @@ async function verifyKEPMetadata(browser){
     if(!high&&!university)assert.equal(await detail.locator('.kvlrv2-schools').count(),0);
     assert.ok((await detail.locator('.kvlrv2-pick').innerText()).includes(pick),name+' draft selection');
    }
+   await closeProPopup(page);
    await page.locator('[data-choice="15/이율리"] .kvlrv2-name').click();
    assert.match(await page.locator('.kvlrv2-detail').innerText(),/2000-09-14/);
+   await closeProPopup(page);
    await page.locator('[data-choice="1/서재덕"] .kvlrv2-name').click();
    assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/2011-12 KOVO 신인드래프트/);
    assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/1라운드 2순위/);
@@ -176,13 +184,16 @@ async function verifyKEPMetadata(browser){
    await page.locator('.kvl-rs-metadata-warning').waitFor();
    assert.equal(await page.locator('.kvlrv2-row').count(),men.KEP.players.length);
    if(source==='education'){
+    await closeProPopup(page);
     await page.locator('[data-choice="20/한재원"] .kvlrv2-name').click();
     assert.match(await page.locator('.kvlrv2-pick').innerText(),/2라운드 3순위/);
     assert.match(await page.locator('.kvlrv2-schools').innerText(),/인하사대부고/); // Independent reviewed club profile fallback
    }
+   await closeProPopup(page);
    await page.locator('[data-kvl-rs-metadata-retry]').click();
    await page.locator('.kvlrv2').waitFor({timeout:30000});
    assert.equal(await page.locator('.kvl-rs-metadata-warning').count(),0);
+   await closeProPopup(page);
    await page.locator('[data-choice="20/한재원"] .kvlrv2-name').click();
    assert.match(await page.locator('.kvlrv2-schools').innerText(),/인하사대부고/);
    assert.match(await page.locator('.kvlrv2-pick').innerText(),/2라운드 3순위/);
@@ -228,12 +239,14 @@ async function main(){
   await page.locator('[data-rs-pos="OH"]').click();
   assert.ok((await page.locator('.kvlrv2-row .kvlrv2-pos').allTextContents()).every(x=>x.includes('OH')));
   await page.locator('[data-rs-pos="all"]').click();
+  report.scenarios.push({case:'Domestic PC common popup controls',result:'PASS',...(await verifyProPopup(page,'vleague',page.locator('.kvlrv2-row').filter({hasText:'윤경'}).first()))});
   await page.locator('.kvlrv2-row').filter({hasText:'윤경'}).first().click();
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/남성고/);
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/인하대/);
   report.scenarios.push({case:'Pro MEN seven current clubs and 2026-27 verified roster',count:sum(men),result:'PASS',...(await snapshot(page,'men-1440'))});
   const link=page.locator('.kvlrv2-row').filter({hasText:'윤경'}).first().locator('.kvlrv2-name-link');
   assert.equal(await link.count(),1);
+  await closeProPopup(page);
   await link.click();
    assert.ok(await page.locator('.kvlrv2-detail').isVisible());
    await page.locator('.kvlrv2-detail .kvlrv2-profile-link').click();
@@ -274,11 +287,13 @@ async function main(){
   const flagState=await page.locator('.kvl-lr-row .kvl-lr-flag-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0})));
   assert.equal(flagState.length,16);assert.ok(flagState.every(Boolean));
   assert.match(await defalco.locator('.kvl-lr-flag-image').getAttribute('src'),/\/us\.svg$/);
+  report.scenarios.push({case:'SV PC common popup controls',result:'PASS',...(await verifyProPopup(page,'sv',defalco))});
   await defalco.locator('.kvl-lr-name-button').click();
   await verifyRosterType(page,'sv');
   assert.equal(await page.locator('[data-kvl-lr-detail] .kvl-lr-flag-image').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
-  if(await page.evaluate(()=>innerWidth>920))assert.ok(await page.locator('[data-kvl-lr-detail]').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1));
+  if(await page.evaluate(()=>innerWidth>=821))assert.ok(await page.locator('.kvl-roster-profile-dialog').evaluate(el=>el.matches(':modal')));
+  else assert.ok(await page.locator('.kvl-rs-columns > .kvl-lr-detail:not([hidden])').isVisible());
   await page.locator('[data-kvl-lr-close]').click();
   assert.equal(await page.locator('[data-kvl-lr-detail]').isVisible(),false);
   assert.match(await defalco.innerText(),/미국/);
@@ -313,6 +328,7 @@ async function main(){
   assert.equal(await page.locator('.kvlrv2-school-grid>div').count(),1);
   assert.equal(await kim.locator('.kvlrv2-name-link').count(),0,'unverified player must not link to guessed ID');
   report.scenarios.push({case:'Pro WOMEN seven current clubs and unverified ID protection',count:sum(women),result:'PASS',...(await snapshot(page,'women-1440'))});
+  await closeProPopup(page);
   // Preserve two horizontal cards on medium PC/tablet rather than shrinking into three columns.
   const mid=await browser.newPage({viewport:{width:1024,height:850}});
   await intercept(mid);
@@ -377,6 +393,8 @@ async function main(){
    await mobile.locator('.kvlrv2').waitFor({timeout:30000});
    await mobile.locator('.kvlrv2-row').filter({hasText:'윤경'}).first().click();
    await verifyRosterType(mobile,'vleague');
+   assert.ok(await mobile.locator('.kvlrv2-columns > .kvlrv2-detail').isVisible(),'Mobile domestic inline detail remains');
+   assert.equal(await mobile.locator('.kvl-roster-profile-dialog').evaluate(el=>el.open),false);
    const result=await snapshot(mobile,'men-'+width);
    await mobile.goto(BASE+'/teams.html?category=pro&gender=men&league=sv&season=2026-27',{waitUntil:'domcontentloaded',timeout:30000});
    await mobile.locator('.ktd-card').first().waitFor({timeout:30000});
@@ -392,6 +410,9 @@ async function main(){
    assert.equal(await mobile.locator('.kvl-lr-team-logo img').count(),1);
    assert.equal(await mobile.locator('.kvl-lr-row').count(),16);
    await verifyRosterType(mobile,'sv');
+   await mobile.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first().locator('.kvl-lr-name-button').click();
+   assert.ok(await mobile.locator('.kvl-rs-columns > .kvl-lr-detail').isVisible(),'Mobile SV inline detail remains');
+   await mobile.locator('[data-kvl-lr-close]').click();
    const mobileFlags=await mobile.locator('.kvl-lr-row .kvl-lr-flag-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0})));
    assert.equal(mobileFlags.length,16);assert.ok(mobileFlags.every(Boolean));
    assert.match(await mobile.locator('.kvl-lr-row').filter({hasText:'토리 디팔코'}).first().innerText(),/미국/);
@@ -404,6 +425,18 @@ async function main(){
    assert.deepEqual(mobileErrors,[]);
    report.scenarios.push({case:'Mobile '+width+'px directory and shared roster',result:'PASS',...result});
    await mobile.close();
+  }
+  for(const width of [900,821]){
+   for(const [league,url,rowSelector,name] of [['vleague','category=pro&gender=men&team=KEP','.kvlrv2-row','서재덕'],['sv','category=pro&gender=men&league=sv&team=JTEKT&season=2026-27','.kvl-lr-row','토리 디팔코']]){
+    const small=await browser.newPage({viewport:{width,height:900}});
+    try{
+     await intercept(small);
+     await small.goto(BASE+'/teams.html?'+url,{waitUntil:'domcontentloaded',timeout:30000});
+     await small.locator(rowSelector).first().waitFor({timeout:30000});
+     await verifyRosterType(small,league);
+     report.scenarios.push({case:league+' '+width+'px full-width common popup',result:'PASS',...(await verifyProPopup(small,league,small.locator(rowSelector).filter({hasText:name}).first()))});
+    }finally{await small.close()}
+   }
   }
   await verifyKEPMetadata(browser);
   // Native touch tests on the actual candidate page and its existing data.
