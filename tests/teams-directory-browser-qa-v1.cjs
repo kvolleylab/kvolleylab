@@ -3,6 +3,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const assert=require('node:assert/strict');
 const {chromium}=require(process.env.KVL_PLAYWRIGHT_PATH||'playwright');
+const {verifyRosterScrollChain,verifyDesktopRosterContainment}=require('./teams-directory-scroll-qa-v1.cjs');
 const ROOT=path.resolve(__dirname,'..');
 const OUT=process.env.RUNNER_TEMP||'/tmp';
 const BASE='https://kvolleylab.com';
@@ -405,6 +406,23 @@ async function main(){
    await mobile.close();
   }
   await verifyKEPMetadata(browser);
+  // Native touch tests on the actual candidate page and its existing data.
+  for(const [gender,team,width] of [['men','KEP',390],['women','RSP',360]]){
+   const touch=await browser.newPage({viewport:{width,height:820},deviceScaleFactor:1,isMobile:true,hasTouch:true});
+   try{
+    await intercept(touch);
+    await touch.goto(BASE+'/teams.html?category=pro&gender='+gender+'&team='+team,{waitUntil:'domcontentloaded',timeout:30000});
+    const evidence=await verifyRosterScrollChain(touch);
+    report.scenarios.push({case:'Native mobile roster swipe chain '+gender+' '+width+'px',result:'PASS',evidence});
+   }finally{await touch.close();}
+  }
+  const desktop=await browser.newPage({viewport:{width:1440,height:900}});
+  try{
+   await intercept(desktop);
+   await desktop.goto(BASE+'/teams.html?category=pro&gender=men&team=KEP',{waitUntil:'domcontentloaded',timeout:30000});
+   await desktop.locator('.kvlrv2-players .kvlrv2-row').first().waitFor();
+   report.scenarios.push({case:'Desktop roster scroll containment retained',result:'PASS',evidence:await verifyDesktopRosterContainment(desktop)});
+  }finally{await desktop.close();}
   report.status='PASS';
   fs.writeFileSync(reportPath,JSON.stringify(report,null,2));
   console.log(JSON.stringify(report,null,2));
