@@ -1147,3 +1147,7 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 2026-27 남자
 ## 2026-11-26 · 팀 찾기 모바일 선수명단 스크롤 연결 v1
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 모바일 선수명단 상·하단에서 같은 명단 영역을 다시 밀어도 바깥 페이지로 스크롤이 이어지지 않는 문제를 확인했다. 기존 `.kvlrv2-players`의 `overscroll-behavior:contain`이 원인이므로 팀 찾기 공통 CSS에만 모바일(920px 이하 또는 터치 포인터) 세로 방향 `overscroll-behavior-y:auto`를 적용한다. 내부 최대높이 460px, 세로 카드/PC 가로 명단, PC 스크롤 제한·가로 방향 containment, 프로필 선택·검색·필터·선수 데이터 및 경쟁대회 페이지는 유지. 네이티브 Chromium 터치 입력으로 명단 중간 내부 스크롤과 양 끝의 상위 페이지 스크롤을 검증하고, PC의 기존 640px/contain 정책도 확인한다. 실제 공개 페이지는 승인 배포 후 live QA로 확인. Base main ad27c3dcc9ba8f657bb6335759dbbe152eadc2fb. Branch fix/team-roster-mobile-scroll-chain-20261126. 별도 사용자 운영 승인 전 병합 금지. 복구는 본 PR revert.
+
+## 2026-11-26 · 국제대표팀 PC 전체폭 명단 및 선수 상세 팝업
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 팀 찾기 국제대표팀의 PC 우측 상세 영역을 제거해 기존 8열(등번호/선수명/생년월일/POS/신장/소속팀/Volleybox/참가 이력)이 가로 스크롤 없이 보이도록 한다. PC 821px 이상에서 기존 17px/15px 글자 크기와 서체 유지, 긴 소속팀/리그명은 줄바꿈, 참가 이력은 필요할 때 줄바꿈. 첫 진입 팝업 없음. 선수 행/이름 클릭 및 키보드 Enter/Space로 기존 상세 콘텐츠를 재사용하는 520px 내외 native dialog, 닫기/Escape/바깥 클릭 및 선택 행 포커스 복구. 모바일 기존 인라인 상세, V-리그/SV리그 및 원본 선수·시즌 소속·참가 이력·VB/KVL 연결·필터·로그인 유지. PC 1440/900/821 및 모바일 390/360 브라우저 검증과 운영 HTTPS QA 추가. Base main 5516b36ef1701b91d8bc29303d25ff624e287ae9. 별도 운영 승인 전 병합 금지. 복구는 본 PR revert.

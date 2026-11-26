@@ -31,6 +31,57 @@ async function shot(page,name){
  await page.screenshot({path:file,fullPage:true});
  return {screenshot:path.basename(file),overflow:x.scrollWidth-x.width};
 }
+async function verifyFullWidthRoster(page){
+ const m=await page.locator('.kvl-unified-table').evaluate(table=>{
+  const outer=table.getBoundingClientRect(),rows=[...table.querySelectorAll('.kvl-unified-row')];
+  const contained=el=>{
+   const rect=el.getBoundingClientRect();
+   return rect.left>=outer.left-2&&rect.right<=outer.right+2&&el.scrollWidth<=el.clientWidth+2;
+  };
+  return {tableWidth:table.clientWidth,scrollWidth:table.scrollWidth,viewport:innerWidth,
+   documentWidth:document.documentElement.scrollWidth,rows:rows.length,
+   allVisible:rows.every(row=>[...row.children].filter(e=>getComputedStyle(e).display!=='none').every(contained)),
+   clubVisible:rows.every(row=>contained(row.querySelector('.kvl-unified-club'))),
+   vbVisible:rows.every(row=>contained(row.querySelector('.kvl-unified-vb')))};
+ });
+ assert.ok(m.rows>0&&m.allVisible&&m.clubVisible&&m.vbVisible,'All eight roster fields must fit: '+JSON.stringify(m));
+ assert.ok(m.scrollWidth<=m.tableWidth+2&&m.documentWidth<=m.viewport+2,'No desktop horizontal roster/page scroll: '+JSON.stringify(m));
+ return m;
+}
+async function verifyDesktopPopup(page,row){
+ const dialog=page.locator('.kvl-unified-profile-dialog');
+ assert.equal(await dialog.count(),1);
+ assert.equal(await dialog.evaluate(el=>el.open),false,'Do not auto-open a profile');
+ const before=await verifyFullWidthRoster(page);
+ const href=await row.locator('.kvl-unified-volleybox').getAttribute('href');
+ await row.locator('.kvl-unified-name').click();
+ await dialog.waitFor({state:'visible'});
+ const popup=await dialog.evaluate(el=>{
+  const r=el.getBoundingClientRect();
+  return {modal:el.matches(':modal'),width:r.width,height:r.height,left:r.left,right:r.right,top:r.top,bottom:r.bottom,vw:innerWidth,vh:innerHeight};
+ });
+ assert.ok(popup.modal&&popup.width<=522&&popup.left>=0&&popup.right<=popup.vw&&popup.top>=0&&popup.bottom<=popup.vh,'Small modal within viewport: '+JSON.stringify(popup));
+ assert.match(await dialog.innerText(),/Yuki Ishikawa/);
+ assert.match(await dialog.innerText(),/SMS Grup Efeler Ligi/);
+ assert.match(await dialog.innerText(),/VNL/);
+ assert.equal(await dialog.locator('a[aria-label="Volleybox 선수 프로필 열기"]').getAttribute('href'),href);
+ assert.equal(await page.locator('.kvl-unified-table').evaluate(el=>el.clientWidth),before.tableWidth,'Opening profile must not shrink roster');
+ await page.keyboard.press('Escape');
+ await dialog.waitFor({state:'hidden'});
+ assert.ok(await row.evaluate(el=>document.activeElement===el),'Restore row focus on Escape');
+ await row.press('Enter');
+ await dialog.waitFor({state:'visible'});
+ await dialog.locator('[data-kvl-unified-close]').click();
+ await dialog.waitFor({state:'hidden'});
+ await row.locator('.kvl-unified-name').click();
+ await dialog.waitFor({state:'visible'});
+ await page.mouse.click(10,10);
+ await dialog.waitFor({state:'hidden'});
+ assert.equal(await page.locator('.kvl-unified-detail:not([hidden])').count(),0);
+ assert.equal(await row.locator('.kvl-unified-volleybox').getAttribute('href'),href,'Original VB direct link unchanged');
+ return {before,popup};
+}
+
 async function testApp(){
  let browser;
  try{
@@ -70,9 +121,9 @@ async function testApp(){
   assert.ok(layout.linksCompact,'Competition navigation should remain compact: '+JSON.stringify(layout));
   for(const [field,exact] of [['rowPx',17],['namePx',17],['dobPx',17],['clubPx',17],['enPx',17],['headPx',17],['volleyboxPx',17]])
    assert.equal(layout[field],exact,field+' must equal revised PC specification: '+JSON.stringify(layout));
-  REPORT.views.push({name:'PC 1440 unified 17px roster fields with Korean-first list',status:'PASS',layout});
+  REPORT.views.push({name:'PC 1440 unified 17px roster fields with Korean-first list',status:'PASS',layout,fit:await verifyFullWidthRoster(page)});
   // Match the actual KVL desktop menu font and prevent desktop-to-tablet fallback to tiny type.
-  for(const width of [900]){
+  for(const width of [900,821]){
    const tablet=await open(browser,width,'category=international&gender=men&country=JPN&year=2026');
    const t=tablet.page;
    await t.locator('.kvl-unified-row').first().waitFor({timeout:30000});
@@ -87,10 +138,11 @@ async function testApp(){
    });
    assert.ok([type.name,type.row,type.en,type.dob,type.club,type.volleybox,type.head].every(v=>v===17),
       '900px PC/tablet must retain exact 17px roster type: '+JSON.stringify(type));
-   assert.ok(type.tableScroll>type.tableWidth,'900px table must scroll internally instead of shrinking text: '+JSON.stringify(type));
+   assert.ok(type.tableScroll<=type.tableWidth+2,'Desktop table must fit without horizontal scroll: '+JSON.stringify(type));
+   const fit=await verifyFullWidthRoster(t);
    assert.ok(type.width<=type.viewport+2,'900px document should not overflow: '+JSON.stringify(type));
    assert.deepEqual(tablet.errors,[]);
-   REPORT.views.push({name:'900px 17px roster fonts with contained roster scroll',status:'PASS',type});
+   REPORT.views.push({name:width+'px 17px roster fonts without horizontal scroll',status:'PASS',type,fit});
    const fonts=await t.evaluate(()=>{
     const style=s=>getComputedStyle(document.querySelector(s));
     const base=style('body').fontFamily;
@@ -142,7 +194,7 @@ async function testApp(){
   await page.locator('[data-kvl-unified-search]').fill('');
   await page.locator('.kvl-unified-row').filter({hasText:'이시카와 유키'}).first().locator('.kvl-unified-club').click();
   await page.locator('.kvl-unified-detail:not([hidden])').waitFor({timeout:10000});
-  assert.ok(await page.locator('.kvl-unified-detail').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1),'desktop profile must sit beside the roster');
+  assert.ok(await page.locator('.kvl-unified-profile-dialog').evaluate(el=>el.matches(':modal')),'Desktop profile opens as a modal');
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/Yuki Ishikawa/);
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/VNL/);
   assert.match(await page.locator('.kvl-unified-detail').innerText(),/대륙선수권/);
@@ -150,6 +202,7 @@ async function testApp(){
   await page.locator('[data-kvl-unified-close]').click();
   assert.equal(await page.locator('.kvl-unified-detail:not([hidden])').count(),0);
   REPORT.views.push({name:'Original tournament filters 16/12/14, multi 14, search/detail',status:'PASS'});
+  REPORT.views.push({name:'Desktop popup, no horizontal scroll, Escape, close, backdrop and focus restore',status:'PASS',...(await verifyDesktopPopup(page,ishikawa))});
   const quickHrefs=await page.locator('.ktd-country-link').evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href')));
   assert.ok(quickHrefs.some(x=>/vnl-men-2026/.test(x||'')),'VNL must remain directly reachable');
   assert.ok(quickHrefs.some(x=>/asian-games-men-2026/.test(x||'')),'Asian Games must remain directly reachable');
@@ -267,6 +320,10 @@ async function testApp(){
    assert.equal(await row.locator('a.kvl-unified-volleybox').count(),1);
    assert.equal(await row.locator('.kvl-unified-dot.is-major').count(),1);
    assert.equal(await row.locator('.kvl-unified-dot.is-regular').count(),1);
+   await row.locator('.kvl-unified-name').click();
+   assert.ok(await m.page.locator('.kvl-rs-columns > .kvl-unified-detail:not([hidden])').isVisible(),'Mobile keeps inline detail');
+   assert.equal(await m.page.locator('.kvl-unified-profile-dialog').evaluate(el=>el.open),false);
+   await m.page.locator('[data-kvl-unified-close]').click();
    assert.deepEqual(m.errors,[]);
    REPORT.views.push({name:'Mobile '+width+'px keeps player data and dots',status:'PASS',...(await shot(m.page,'jpn-men-'+width))});
    await m.page.close();

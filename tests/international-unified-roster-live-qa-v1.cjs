@@ -17,8 +17,9 @@ async function waitDeploy(){
   try{
    const r=await fetch(BASE+'/teams.html?release='+SHA+'-'+i,{cache:'no-store',signal:AbortSignal.timeout(16000)});
    const html=r.ok?await r.text():'';
-   if(html.includes('kvl-international-unified-roster-v1.js?v=20261123-roster-order-v1')
-      &&html.includes('kvl-international-countries-v1.js?v=20261124-season-snapshot-v1')){
+   if(html.includes('kvl-international-unified-roster-v1.js?v=20261126-international-popup-v1')
+      &&html.includes('kvl-international-countries-v1.js?v=20261124-season-snapshot-v1')
+      &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-international-popup-v1')){
     const [index,clubs]=await Promise.all([
       read('data/international/country-roster-index-v1.json'),
       read('data/international/player-club-registry-2026-27-v1.json')
@@ -46,6 +47,57 @@ async function screenshot(page,id){
  await page.screenshot({path:path.join(OUT,filename),fullPage:true});
  return {screenshot:filename,overflow:dims.scroll-dims.viewport};
 }
+async function verifyFullWidthRoster(page){
+ const m=await page.locator('.kvl-unified-table').evaluate(table=>{
+  const outer=table.getBoundingClientRect(),rows=[...table.querySelectorAll('.kvl-unified-row')];
+  const contained=el=>{
+   const rect=el.getBoundingClientRect();
+   return rect.left>=outer.left-2&&rect.right<=outer.right+2&&el.scrollWidth<=el.clientWidth+2;
+  };
+  return {tableWidth:table.clientWidth,scrollWidth:table.scrollWidth,viewport:innerWidth,
+   documentWidth:document.documentElement.scrollWidth,rows:rows.length,
+   allVisible:rows.every(row=>[...row.children].filter(e=>getComputedStyle(e).display!=='none').every(contained)),
+   clubVisible:rows.every(row=>contained(row.querySelector('.kvl-unified-club'))),
+   vbVisible:rows.every(row=>contained(row.querySelector('.kvl-unified-vb')))};
+ });
+ assert.ok(m.rows>0&&m.allVisible&&m.clubVisible&&m.vbVisible,'All eight roster fields must fit: '+JSON.stringify(m));
+ assert.ok(m.scrollWidth<=m.tableWidth+2&&m.documentWidth<=m.viewport+2,'No desktop horizontal roster/page scroll: '+JSON.stringify(m));
+ return m;
+}
+async function verifyDesktopPopup(page,row){
+ const dialog=page.locator('.kvl-unified-profile-dialog');
+ assert.equal(await dialog.count(),1);
+ assert.equal(await dialog.evaluate(el=>el.open),false,'Do not auto-open a profile');
+ const before=await verifyFullWidthRoster(page);
+ const href=await row.locator('.kvl-unified-volleybox').getAttribute('href');
+ await row.locator('.kvl-unified-name').click();
+ await dialog.waitFor({state:'visible'});
+ const popup=await dialog.evaluate(el=>{
+  const r=el.getBoundingClientRect();
+  return {modal:el.matches(':modal'),width:r.width,height:r.height,left:r.left,right:r.right,top:r.top,bottom:r.bottom,vw:innerWidth,vh:innerHeight};
+ });
+ assert.ok(popup.modal&&popup.width<=522&&popup.left>=0&&popup.right<=popup.vw&&popup.top>=0&&popup.bottom<=popup.vh,'Small modal within viewport: '+JSON.stringify(popup));
+ assert.match(await dialog.innerText(),/Yuki Ishikawa/);
+ assert.match(await dialog.innerText(),/SMS Grup Efeler Ligi/);
+ assert.match(await dialog.innerText(),/VNL/);
+ assert.equal(await dialog.locator('a[aria-label="Volleybox 선수 프로필 열기"]').getAttribute('href'),href);
+ assert.equal(await page.locator('.kvl-unified-table').evaluate(el=>el.clientWidth),before.tableWidth,'Opening profile must not shrink roster');
+ await page.keyboard.press('Escape');
+ await dialog.waitFor({state:'hidden'});
+ assert.ok(await row.evaluate(el=>document.activeElement===el),'Restore row focus on Escape');
+ await row.press('Enter');
+ await dialog.waitFor({state:'visible'});
+ await dialog.locator('[data-kvl-unified-close]').click();
+ await dialog.waitFor({state:'hidden'});
+ await row.locator('.kvl-unified-name').click();
+ await dialog.waitFor({state:'visible'});
+ await page.mouse.click(10,10);
+ await dialog.waitFor({state:'hidden'});
+ assert.equal(await page.locator('.kvl-unified-detail:not([hidden])').count(),0);
+ assert.equal(await row.locator('.kvl-unified-volleybox').getAttribute('href'),href,'Original VB direct link unchanged');
+ return {before,popup};
+}
+
 async function run(){
  let browser;
  try{
@@ -54,7 +106,7 @@ async function run(){
   assert.equal(gate.enabled,true);
   assert.ok(gate.protectedPaths.includes('teams.html'));
   browser=await chromium.launch({headless:true});
-  for(const width of [1440,390,360]){
+  for(const width of [1440,900,390,360]){
    const {page,errors}=await getPage(browser,width,'category=international&gender=men&country=JPN&year=2026');
    await page.locator('.kvl-unified-row').first().waitFor({timeout:35000});
    assert.equal(await page.locator('.kvl-unified-row').count(),26);
@@ -68,6 +120,13 @@ async function run(){
    assert.match(await target.innerText(),/1995-12-11/);
    assert.equal(await target.locator('.kvl-unified-dot.is-major').count(),1);
    assert.equal(await target.locator('.kvl-unified-dot.is-regular').count(),1);
+   if(width>=821){
+    result.checks.push({name:'Desktop all fields visible and profile popup '+width+'px',status:'PASS',...(await verifyDesktopPopup(page,target))});
+   }else{
+    await target.locator('.kvl-unified-name').click();
+    assert.ok(await page.locator('.kvl-rs-columns > .kvl-unified-detail:not([hidden])').isVisible());
+    await page.locator('[data-kvl-unified-close]').click();
+   }
    if(width===1440){
     await page.locator('[data-kvl-unified-filter="vnl-men-2026:JPN"]').click();
     assert.equal(await page.locator('.kvl-unified-row').count(),16);
