@@ -3,6 +3,7 @@
    actual production authentication and its protectedPaths are not modified. */
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.KVL_PLAYWRIGHT_PATH||'playwright');
+const {verifyRosterScrollChain}=require('./teams-directory-scroll-qa-v1.cjs');
 const BASE='https://kvolleylab.com',OUT=process.env.RUNNER_TEMP||'/tmp';
 const sha=process.env.GITHUB_SHA||'unknown',wait=ms=>new Promise(r=>setTimeout(r,ms));
 const result={status:'RUNNING',origin:BASE,sha,privateReviewAuth:'test-only access overlay stub',views:[],notes:[]};
@@ -25,7 +26,7 @@ async function ready(){
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
-        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-rsv2-metadata-v1')
+        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-mobile-scroll-v1')
         &&html.includes('kvl-vleague-draft-bridge-v1.js?v=20261126-metadata-v1')
         &&html.includes('kvl-vleague-profile-enrichment-v1.js?v=20261126-profile-v1')
         &&html.includes('kvl-vleague-roster-v2.js?v=20261126-profile-v1')
@@ -46,8 +47,8 @@ async function ready(){
  }
  throw Error('GitHub Pages new teams directory not published: '+last);
 }
-async function pageFor(browser,width,height){
- const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+async function pageFor(browser,width,height,touch=false){
+ const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1,...(touch?{isMobile:true,hasTouch:true}:{})});
  // An unauthenticated browser is normally shown the existing private-review login dialog.
  // This interception is confined to QA's browser only, not the deployed site.
  await page.route('https://kvolleylab.com/assets/js/member-access-gate-v1.mjs*',
@@ -349,6 +350,12 @@ async function main(){
    await check(browser,'women','RSP','김아중',false,390);
    await verifyKEPMetadata(browser,1440);
    await verifyKEPMetadata(browser,390);
+   const touch=await pageFor(browser,390,820,true);
+   try{
+    await touch.goto(BASE+'/teams.html?category=pro&gender=men&team=KEP&release='+encodeURIComponent(sha),{waitUntil:'domcontentloaded',timeout:30000});
+    const evidence=await verifyRosterScrollChain(touch);
+    result.views.push({type:'native-mobile-roster-scroll-chain',width:390,status:'PASS',evidence});
+   }finally{await touch.close();}
    await verifySVLeague(browser,1440);
    await verifySVLeague(browser,390);
    // Verify both operational V-League division pages, without altering KOVO live data or the member gate.
