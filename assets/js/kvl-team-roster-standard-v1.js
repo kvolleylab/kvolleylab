@@ -254,8 +254,55 @@ function wrapInternational(){
  api.__kvlTeamRosterStandardV1=true;
 }
 
+// Common desktop profile shell. Content remains owned by the original renderer.
+const profilePopups=new WeakMap();
+function destroyProfilePopup(host){profilePopups.get(host)?.destroy()}
+function createProfilePopup(host,detail,{dismiss,legacyClass=''}={}){
+ if(!host?.closest?.('.ktd-page')||!detail?.parentElement)return null;
+ destroyProfilePopup(host);
+ const doc=host.ownerDocument,desktop=doc.defaultView?.matchMedia('(min-width:821px)');
+ const dialog=doc.createElement('dialog');
+ if(!desktop||typeof dialog.showModal!=='function')return null;
+ const columns=detail.parentElement;
+ dialog.className='kvl-roster-profile-dialog'+(legacyClass?' '+legacyClass:'');
+ dialog.setAttribute('aria-label','선수 상세 프로필');
+ columns.appendChild(dialog);
+ const isDesktop=()=>desktop.matches;
+ const close=()=>{if(dialog.open)dialog.close()};
+ function sync(){
+  if(!host.isConnected&&dialog.open){close();return}
+  if(isDesktop()){
+   if(detail.parentElement!==dialog)dialog.appendChild(detail);
+   if(!detail.hidden&&!dialog.open)dialog.showModal();
+   if(detail.hidden)close();
+  }else{
+   close();
+   if(detail.parentElement!==columns)columns.insertBefore(detail,dialog);
+  }
+ }
+ const cancel=e=>{e.preventDefault();dismiss?.()};
+ const backdrop=e=>{
+  if(e.target!==dialog||!dialog.open)return;
+  const r=dialog.getBoundingClientRect();
+  if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dismiss?.();
+ };
+ dialog.addEventListener('cancel',cancel);
+ dialog.addEventListener('click',backdrop);
+ desktop.addEventListener('change',sync);
+ const api={dialog,isDesktop,close,sync,destroy(){
+  close();
+  desktop.removeEventListener('change',sync);
+  dialog.removeEventListener('cancel',cancel);dialog.removeEventListener('click',backdrop);
+  if(detail.parentElement===dialog&&dialog.parentElement===columns)columns.insertBefore(detail,dialog);
+  dialog.remove();
+  if(profilePopups.get(host)===api)profilePopups.delete(host);
+ }};
+ profilePopups.set(host,api);
+ return api;
+}
+
 wrapPro();
 wrapInternational();
 window.addEventListener('kvl:team-roster-private-ready',()=>document.querySelectorAll('.kvl-roster-standard').forEach(updatePrivateKpis));
-window.KVLTeamRosterStandardV1={decoratePro,decorateInternational,clubKo,leagueKo,countryKo,leagueTier};
+window.KVLTeamRosterStandardV1={decoratePro,decorateInternational,clubKo,leagueKo,countryKo,leagueTier,createProfilePopup,destroyProfilePopup};
 })();
