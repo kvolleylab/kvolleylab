@@ -1151,3 +1151,7 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 모바일 선�
 ## 2026-11-26 · 국제대표팀 PC 전체폭 명단 및 선수 상세 팝업
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 팀 찾기 국제대표팀의 PC 우측 상세 영역을 제거해 기존 8열(등번호/선수명/생년월일/POS/신장/소속팀/Volleybox/참가 이력)이 가로 스크롤 없이 보이도록 한다. PC 821px 이상에서 기존 17px/15px 글자 크기와 서체 유지, 긴 소속팀/리그명은 줄바꿈, 참가 이력은 필요할 때 줄바꿈. 첫 진입 팝업 없음. 선수 행/이름 클릭 및 키보드 Enter/Space로 기존 상세 콘텐츠를 재사용하는 520px 내외 native dialog, 닫기/Escape/바깥 클릭 및 선택 행 포커스 복구. 모바일 기존 인라인 상세, V-리그/SV리그 및 원본 선수·시즌 소속·참가 이력·VB/KVL 연결·필터·로그인 유지. PC 1440/900/821 및 모바일 390/360 브라우저 검증과 운영 HTTPS QA 추가. Base main 5516b36ef1701b91d8bc29303d25ff624e287ae9. 별도 운영 승인 전 병합 금지. 복구는 본 PR revert.
+
+## 2026-11-27 · Team Roster Standard v3 공통 선수 상세 팝업
+
+Status: USER APPROVED DESIGN / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용자가 국제대표팀과 국내·해외 프로팀의 디자인·조작을 통일하고 상세 콘텐츠만 분류별로 구성하기로 결정. 기존 PR #438의 821px 이상 전체폭·520px native dialog를 공통 모듈 `KVLTeamRosterStandardV1.createProfilePopup`으로 재사용. 세 렌더러의 원본 상세 콘텐츠·링크 유지, 첫 진입 자동 팝업 없음, 클릭·Enter·닫기·Esc·바깥 클릭·포커스 복귀 공통. V-리그/ SV 7열, 국제 8열·17px 기존 가독성 유지, 가로 스크롤 제거. 모바일 인라인 상세 및 기존 상하 스크롤 연결 유지. V-리그 학교·신인/과거 드래프트·등록 공시, SV 시즌 소속/국적/VB·RECHECK, 국제 연도별 소속/참가 기록을 별도 정보로 유지. Team Finder에만 적용; 대회 페이지·원본 JSON·ID·Drive MASTER·회원/메모 데이터 변경 없음. 검증 PC 1440/900/821, 모바일 390/360, 기존 필터/링크/데이터·실제 Pages QA. Base d369c38b6c7f384434c16e4c81b49bfba2f3d1d2. 별도 운영 반영 승인 전 병합 금지. 복구는 본 PR revert.
