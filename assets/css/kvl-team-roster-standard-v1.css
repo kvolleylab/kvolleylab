@@ -234,3 +234,49 @@
 @media(max-width:920px), (hover:none) and (pointer:coarse){
  .ktd-page .kvlrv2-players{overscroll-behavior-y:auto}
 }
+
+/* International Team Finder desktop: the full-width table is primary.
+   The existing detail content lives in a native dialog, not a second column. */
+.ktd-page .kvl-unified-profile-dialog:not([open]){display:none}
+@media(min-width:821px){
+ .ktd-page .kvl-roster-standard.is-international .kvl-rs-columns{
+  grid-template-columns:minmax(0,1fr);
+ }
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-table{
+  width:100%;min-width:0;overflow-x:visible;overflow-y:visible;overscroll-behavior-x:auto;
+ }
+ .ktd-page .kvl-roster-standard.is-international :is(.kvl-unified-head,.kvl-unified-row){
+  min-width:0;width:100%;
+  grid-template-columns:48px minmax(0,1.05fr) 108px 44px 65px minmax(0,1.5fr) 86px minmax(68px,.48fr);
+  gap:8px;padding-left:12px;padding-right:12px;
+ }
+ .ktd-page .kvl-roster-standard.is-international :is(.kvl-unified-head,.kvl-unified-row)>span{
+  min-width:0;overflow-wrap:anywhere;
+ }
+ .ktd-page .kvl-roster-standard.is-international :is(.kvl-roster-club-team,.kvl-roster-country,.kvl-roster-league){
+  min-width:0;max-width:100%;white-space:normal;word-break:normal;overflow-wrap:anywhere;
+ }
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-reserve{max-width:100%;white-space:normal}
+ .ktd-page .kvl-roster-standard.is-international .kvl-unified-dots{flex-wrap:wrap;gap:5px}
+ .ktd-page .kvl-unified-profile-dialog{
+  position:fixed;inset:0;margin:auto;padding:0;
+  width:520px;max-width:calc(100vw - 48px);max-height:85vh;max-height:85dvh;
+  overflow:auto;overscroll-behavior:contain;
+  border:1px solid #dce8ed;border-radius:14px;background:#f8fbfd;color:#173a57;
+  box-shadow:0 18px 64px #102d4540;font-family:inherit;
+ }
+ .ktd-page .kvl-unified-profile-dialog::backdrop{background:rgba(14,34,52,.42)}
+ .ktd-page .kvl-unified-profile-dialog>.kvl-unified-detail{margin:0;border:0;min-width:0;overflow-wrap:anywhere}
+ .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-head h4{min-width:0;overflow-wrap:anywhere}
+ .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-head button{
+  flex:none;white-space:nowrap;background:#fff;color:#173a57;cursor:pointer
+ }
+ .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-events{grid-template-columns:minmax(0,1fr)}
+ .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-links a{overflow-wrap:anywhere}
+}
+@media(min-width:821px) and (max-width:1000px){
+ .ktd-page .kvl-roster-standard.is-international :is(.kvl-unified-head,.kvl-unified-row){
+  grid-template-columns:40px minmax(0,1.05fr) 104px 40px 62px minmax(0,1.5fr) 80px minmax(64px,.48fr);
+  gap:5px;padding-left:8px;padding-right:8px;
+ }
+}
