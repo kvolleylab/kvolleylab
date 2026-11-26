@@ -237,7 +237,7 @@
 
 /* International Team Finder desktop: the full-width table is primary.
    The existing detail content lives in a native dialog, not a second column. */
-.ktd-page .kvl-unified-profile-dialog:not([open]){display:none}
+.ktd-page .kvl-roster-profile-dialog:not([open]){display:none}
 @media(min-width:821px){
  .ktd-page .kvl-roster-standard.is-international .kvl-rs-columns{
   grid-template-columns:minmax(0,1fr);
@@ -258,25 +258,83 @@
  }
  .ktd-page .kvl-roster-standard.is-international .kvl-unified-reserve{max-width:100%;white-space:normal}
  .ktd-page .kvl-roster-standard.is-international .kvl-unified-dots{flex-wrap:wrap;gap:5px}
- .ktd-page .kvl-unified-profile-dialog{
+ .ktd-page .kvl-roster-profile-dialog{
   position:fixed;inset:0;margin:auto;padding:0;
   width:520px;max-width:calc(100vw - 48px);max-height:85vh;max-height:85dvh;
   overflow:auto;overscroll-behavior:contain;
   border:1px solid #dce8ed;border-radius:14px;background:#f8fbfd;color:#173a57;
   box-shadow:0 18px 64px #102d4540;font-family:inherit;
  }
- .ktd-page .kvl-unified-profile-dialog::backdrop{background:rgba(14,34,52,.42)}
- .ktd-page .kvl-unified-profile-dialog>.kvl-unified-detail{margin:0;border:0;min-width:0;overflow-wrap:anywhere}
- .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-head h4{min-width:0;overflow-wrap:anywhere}
- .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-head button{
+ .ktd-page .kvl-roster-profile-dialog::backdrop{background:rgba(14,34,52,.42)}
+ .ktd-page .kvl-roster-profile-dialog>.kvl-unified-detail{margin:0;border:0;min-width:0;overflow-wrap:anywhere}
+ .ktd-page .kvl-roster-profile-dialog .kvl-unified-detail-head h4{min-width:0;overflow-wrap:anywhere}
+ .ktd-page .kvl-roster-profile-dialog .kvl-unified-detail-head button{
   flex:none;white-space:nowrap;background:#fff;color:#173a57;cursor:pointer
  }
- .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-events{grid-template-columns:minmax(0,1fr)}
- .ktd-page .kvl-unified-profile-dialog .kvl-unified-detail-links a{overflow-wrap:anywhere}
+ .ktd-page .kvl-roster-profile-dialog .kvl-unified-detail-events{grid-template-columns:minmax(0,1fr)}
+ .ktd-page .kvl-roster-profile-dialog .kvl-unified-detail-links a{overflow-wrap:anywhere}
 }
 @media(min-width:821px) and (max-width:1000px){
  .ktd-page .kvl-roster-standard.is-international :is(.kvl-unified-head,.kvl-unified-row){
   grid-template-columns:40px minmax(0,1.05fr) 104px 40px 62px minmax(0,1.5fr) 80px minmax(64px,.48fr);
+  gap:5px;padding-left:8px;padding-right:8px;
+ }
+}
+
+/* Team Finder roster standard v3 — the approved international dialog shell
+   is shared by domestic, overseas and national-team renderers. */
+.ktd-page .kvlrv2-detail[hidden]{display:none!important}
+.ktd-page .kvl-rs-profile-close{display:none}
+@media(min-width:821px){
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-columns,
+ .ktd-page .kvl-league-roster .kvl-rs-columns{
+  grid-template-columns:minmax(0,1fr);
+ }
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-list,
+ .ktd-page .kvl-league-roster .kvl-lr-table{
+  width:100%;min-width:0;overflow-x:hidden;
+ }
+ .ktd-page .kvl-roster-standard.is-pro :is(.kvlrv2-head,.kvlrv2-row),
+ .ktd-page .kvl-league-roster .kvl-rs-columns :is(.kvl-lr-head,.kvl-lr-row){
+  min-width:0;width:100%;
+  grid-template-columns:48px minmax(0,1.35fr) 116px 48px 76px minmax(0,1fr) 92px;
+  gap:8px;padding-left:12px;padding-right:12px;
+ }
+ .ktd-page .kvl-roster-standard.is-pro .kvlrv2-players{
+  min-width:0;width:100%;overflow-x:hidden;
+ }
+ .ktd-page :is(.kvlrv2-head,.kvlrv2-row,.kvl-lr-head,.kvl-lr-row)>span{
+  min-width:0;overflow-wrap:anywhere;
+ }
+ .ktd-page .kvl-league-roster .kvl-lr-nationality{flex-wrap:wrap}
+ .ktd-page .kvl-league-roster .kvl-lr-recheck{max-width:100%;white-space:normal}
+ .ktd-page .kvl-roster-profile-dialog>:is(.kvlrv2-detail,.kvl-lr-detail,.kvl-unified-detail){
+  position:static;margin:0;padding:15px;border:0;border-radius:0;
+  min-width:0;background:#f8fbfd;overflow:visible;overflow-wrap:anywhere;
+ }
+ .ktd-page .kvl-roster-profile-dialog :is(.kvlrv2-profile-head,.kvl-lr-detail-head,.kvl-unified-detail-head){
+  background:#173c59;color:#fff;padding:14px;border-radius:8px;min-height:0;
+ }
+ .ktd-page .kvl-roster-profile-dialog .kvlrv2-profile-head{position:relative;padding-right:96px}
+ .ktd-page .kvl-roster-profile-dialog :is(.kvlrv2-profile-head h3,.kvl-lr-detail-head h4,.kvl-unified-detail-head h4){
+  font-size:20px;font-weight:800;line-height:1.4;color:#fff;min-width:0;overflow-wrap:anywhere;
+ }
+ .ktd-page .kvl-roster-profile-dialog :is(.kvl-lr-detail-head,.kvl-unified-detail-head) small,
+ .ktd-page .kvl-roster-profile-dialog .kvl-rs-english{display:block;font-size:12px;color:#c4d7e4;line-height:1.5}
+ .ktd-page .kvl-roster-profile-dialog :is(.kvl-rs-profile-close,.kvl-lr-detail-head button,.kvl-unified-detail-head button){
+  display:inline-flex;align-items:center;justify-content:center;flex:none;white-space:nowrap;
+  background:#fff;color:#173a57;border:1px solid #dbe6ee;border-radius:8px;
+  padding:6px 10px;font:inherit;font-size:16px;min-height:36px;cursor:pointer;
+ }
+ .ktd-page .kvl-roster-profile-dialog .kvl-rs-profile-close{position:absolute;right:14px;top:14px}
+ .ktd-page .kvl-roster-profile-dialog .kvlrv2-profile-content{padding:15px 0 0}
+ .ktd-page .kvl-roster-profile-dialog .kvl-lr-detail>p{font-size:17px;line-height:1.5;margin:12px 0}
+ .ktd-page .kvl-roster-profile-dialog .kvl-lr-detail>a{font-size:17px;font-weight:800;color:#237b85}
+}
+@media(min-width:821px) and (max-width:1000px){
+ .ktd-page .kvl-roster-standard.is-pro :is(.kvlrv2-head,.kvlrv2-row),
+ .ktd-page .kvl-league-roster .kvl-rs-columns :is(.kvl-lr-head,.kvl-lr-row){
+  grid-template-columns:40px minmax(0,1.35fr) 108px 40px 66px minmax(0,1fr) 80px;
   gap:5px;padding-left:8px;padding-right:8px;
  }
 }
