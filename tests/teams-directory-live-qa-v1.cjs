@@ -26,7 +26,7 @@ async function ready(){
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
-        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-mobile-scroll-v1')
+        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-international-popup-v1')
         &&html.includes('kvl-vleague-draft-bridge-v1.js?v=20261126-metadata-v1')
         &&html.includes('kvl-vleague-profile-enrichment-v1.js?v=20261126-profile-v1')
         &&html.includes('kvl-vleague-roster-v2.js?v=20261126-profile-v1')
