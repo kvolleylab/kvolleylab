@@ -1024,47 +1024,33 @@
       },
       "venueLabel": "수원체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:FEMALE:46",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-26T12:14:31+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-26T12:34:09+00:00",
+      "score": {
         "home": 3,
         "away": 1,
-        "sourceKey": "023:001:FEMALE:46",
-        "observedAt": "2026-11-26T12:14:31+00:00",
-        "finalPending": true
+        "sets": [
+          {
+            "home": 21,
+            "away": 25
+          },
+          {
+            "home": 25,
+            "away": 21
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 25,
+            "away": 23
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 21,
-          "away": 25,
-          "status": "completed",
-          "observedAt": "2026-11-26T12:14:31+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=46&gcode=001&hcode=2001&acode=2008&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 21,
-          "status": "completed",
-          "observedAt": "2026-11-26T12:14:31+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=46&gcode=001&hcode=2001&acode=2008&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 23,
-          "status": "completed",
-          "observedAt": "2026-11-26T12:14:31+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=46&gcode=001&hcode=2001&acode=2008&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 23,
-          "status": "completed",
-          "observedAt": "2026-11-26T12:14:31+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=46&gcode=001&hcode=2001&acode=2008&page=0&size=1"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-W-024",
@@ -3195,6 +3181,27 @@
       {
         "rank": 4,
         "team": {
+          "code": "HHC",
+          "name": "현대건설",
+          "fullName": "현대건설",
+          "en": "HHC"
+        },
+        "poolId": "LEAGUE",
+        "games": 7,
+        "wins": 3,
+        "losses": 4,
+        "points": 9,
+        "setWins": 10,
+        "setLosses": 14,
+        "pointsFor": 539,
+        "pointsAgainst": 558,
+        "setRatio": "0.714",
+        "pointRatio": "0.966",
+        "statusLabel": "4위"
+      },
+      {
+        "rank": 5,
+        "team": {
           "code": "RSP",
           "name": "정관장",
           "fullName": "정관장",
@@ -3211,10 +3218,10 @@
         "pointsAgainst": 534,
         "setRatio": "0.769",
         "pointRatio": "0.948",
-        "statusLabel": "4위"
+        "statusLabel": "5위"
       },
       {
-        "rank": 5,
+        "rank": 6,
         "team": {
           "code": "HPS",
           "name": "흥국생명",
@@ -3232,27 +3239,6 @@
         "pointsAgainst": 478,
         "setRatio": "0.667",
         "pointRatio": "0.939",
-        "statusLabel": "5위"
-      },
-      {
-        "rank": 6,
-        "team": {
-          "code": "HHC",
-          "name": "현대건설",
-          "fullName": "현대건설",
-          "en": "HHC"
-        },
-        "poolId": "LEAGUE",
-        "games": 6,
-        "wins": 2,
-        "losses": 4,
-        "points": 6,
-        "setWins": 7,
-        "setLosses": 13,
-        "pointsFor": 443,
-        "pointsAgainst": 466,
-        "setRatio": "0.538",
-        "pointRatio": "0.951",
         "statusLabel": "6위"
       },
       {
@@ -3264,16 +3250,16 @@
           "en": "SOO"
         },
         "poolId": "LEAGUE",
-        "games": 6,
+        "games": 7,
         "wins": 0,
-        "losses": 6,
+        "losses": 7,
         "points": 1,
-        "setWins": 5,
-        "setLosses": 18,
-        "pointsFor": 470,
-        "pointsAgainst": 544,
-        "setRatio": "0.278",
-        "pointRatio": "0.864",
+        "setWins": 6,
+        "setLosses": 21,
+        "pointsFor": 562,
+        "pointsAgainst": 640,
+        "setRatio": "0.286",
+        "pointRatio": "0.878",
         "statusLabel": "7위"
       }
     ]
@@ -3346,14 +3332,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 22/126경기 종료 · 2026-11-26 21:14 KST 반영",
-  "updatedAt": "2026-11-26T12:14:31+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 23/126경기 종료 · 2026-11-26 21:34 KST 반영",
+  "updatedAt": "2026-11-26T12:34:09+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 22,
+    "completedMatches": 23,
     "postseason": {
       "matched": 0,
       "completed": 0,
