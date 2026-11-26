@@ -3,6 +3,7 @@
    actual production authentication and its protectedPaths are not modified. */
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const {chromium}=require(process.env.KVL_PLAYWRIGHT_PATH||'playwright');
+const {closeProPopup,verifyProPopup}=require('./team-roster-popup-qa-v3.cjs');
 const {verifyRosterScrollChain}=require('./teams-directory-scroll-qa-v1.cjs');
 const BASE='https://kvolleylab.com',OUT=process.env.RUNNER_TEMP||'/tmp';
 const sha=process.env.GITHUB_SHA||'unknown',wait=ms=>new Promise(r=>setTimeout(r,ms));
@@ -25,11 +26,12 @@ async function ready(){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
      if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
-        &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2')
-        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-international-popup-v1')
+        &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2-common-v3')
+        &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-international-popup-v1-common-v3')
         &&html.includes('kvl-vleague-draft-bridge-v1.js?v=20261126-metadata-v1')
         &&html.includes('kvl-vleague-profile-enrichment-v1.js?v=20261126-profile-v1')
-        &&html.includes('kvl-vleague-roster-v2.js?v=20261126-profile-v1')
+        &&html.includes('kvl-vleague-roster-v2.js?v=20261126-profile-v1-common-v3'
+        )&&html.includes('kvl-team-roster-standard-v1.js?v=20261123-club-country-flags-v2-rsv2-common-v3')
         &&css.includes('Team directory density v1')&&css.includes('kvl-home-hero-pc-v01.webp')&&css.includes('kvl-home-hero-mobile-v01.webp')){
        const [staff,sv]=await Promise.all([
         read('data/team-rosters/v-league/coaches-2026-27.json'),
@@ -152,7 +154,9 @@ async function check(browser,gender,code,player,linked,width){
   assert.ok((await page.locator('.kvlrv2-row .kvlrv2-pos').allTextContents()).every(x=>x.includes('OH')));
   await page.locator('[data-rs-pos="all"]').click();
   const row=page.locator('.kvlrv2-row').filter({hasText:player}).first();
+  if(width>=821)result.views.push({type:'domestic-common-popup',gender,width,status:'PASS',...(await verifyProPopup(page,'vleague',row))});
   await row.click();
+  if(width<821)assert.ok(await page.locator('.kvlrv2-columns > .kvlrv2-detail').isVisible());
   const body=await page.locator('.kvlrv2-detail').innerText();
   assert.ok(body.includes(gender==='men'?'남성고':'청수고'));
   if(gender==='men')assert.ok(body.includes('인하대'));
@@ -161,6 +165,7 @@ async function check(browser,gender,code,player,linked,width){
   if(linked){
    const href=await link.getAttribute('href');
    assert.ok(href.includes('KVL-P-000008'));
+   await closeProPopup(page);
    await link.click();
    assert.ok(await page.locator('.kvlrv2-detail').isVisible());
    await page.locator('.kvlrv2-detail .kvlrv2-profile-link').click();
@@ -215,11 +220,13 @@ async function verifySVLeague(browser,width){
   const flagState=await page.locator('.kvl-lr-row .kvl-lr-flag-image').evaluateAll(async imgs=>Promise.all(imgs.map(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0})));
   assert.equal(flagState.length,16);assert.ok(flagState.every(Boolean));
   assert.match(await defalco.locator('.kvl-lr-flag-image').getAttribute('src'),/\/us\.svg$/);
+  if(width>=821)result.views.push({type:'sv-common-popup',width,status:'PASS',...(await verifyProPopup(page,'sv',defalco))});
   await defalco.locator('.kvl-lr-name-button').click();
   await verifyRosterType(page,'sv');
   assert.equal(await page.locator('[data-kvl-lr-detail] .kvl-lr-flag-image').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0}),true);
   assert.match(await page.locator('[data-kvl-lr-detail]').innerText(),/Torey Defalco/i);
-  if(await page.evaluate(()=>innerWidth>920))assert.ok(await page.locator('[data-kvl-lr-detail]').evaluate(el=>el.getBoundingClientRect().left>=el.previousElementSibling.getBoundingClientRect().right-1));
+  if(await page.evaluate(()=>innerWidth>=821))assert.ok(await page.locator('.kvl-roster-profile-dialog').evaluate(el=>el.matches(':modal')));
+  else assert.ok(await page.locator('.kvl-rs-columns > .kvl-lr-detail:not([hidden])').isVisible());
   await page.locator('[data-kvl-lr-close]').click();
   assert.equal(await page.locator('[data-kvl-lr-detail]').isVisible(),false);
   assert.match((await defalco.innerText()).replace(/\s+/g,' '),/미국/);
@@ -295,8 +302,12 @@ async function verifyRosterType(page,league){
  assert.deepEqual(m.weights,{head:'800',row:'400',name:'800',number:'800',dob:'400',pos:'800',height:'400',nationality:'700',vb:'800',filter:'800'},league+' actual semantic font weights');
  if(m.viewport>=821){
   for(const [key,size] of Object.entries(m.sizes))assert.equal(size,key==='name'?20:17,league+' '+key+' must retain readable type: '+JSON.stringify(m));
-  assert.ok(m.paneScroll>=m.paneWidth,league+' roster pane containment');
-  if(m.viewport>=921)assert.ok(m.side,league+' desktop profile remains on the right');
+  assert.ok(m.paneScroll<=m.paneWidth+2,league+' full-width table without horizontal scroll: '+JSON.stringify(m));
+  const fit=await page.evaluate(s=>{
+   const pane=document.querySelector(s.pane),bounds=pane.getBoundingClientRect();
+   return [...document.querySelectorAll(s.row)].every(row=>[...row.children].filter(e=>getComputedStyle(e).display!=='none').every(e=>{const r=e.getBoundingClientRect();return r.left>=bounds.left-2&&r.right<=bounds.right+2&&e.scrollWidth<=e.clientWidth+2}));
+  },selectors);
+  assert.ok(fit,league+' every visible roster field must fit');
  }else{
   assert.ok(m.sizes.name>=11.5&&m.sizes.row>=11,league+' mobile font must not shrink below the prior roster');
   assert.ok(m.paneScroll<=m.paneWidth+2,league+' mobile roster must fit without horizontal scrolling');
@@ -314,6 +325,7 @@ async function verifyKEPMetadata(browser,width){
    ['한재원',20,'인하사대부고','','2라운드 3순위'],['여광우',55,'송산고','인하대','1라운드 5순위'],
    ['옹민혁',14,'광주전자공고','경일대','수련선수 지명'],['이율리',15,'영생고','중부대','수련선수 지명']
   ]){
+   await closeProPopup(page);
    await page.locator('[data-choice="'+no+'/'+name+'"] .kvlrv2-name').click();
    const detail=page.locator('.kvlrv2-detail');
    assert.equal(await detail.locator('.kvlrv2-profile-head h3').innerText(),name);
@@ -322,12 +334,15 @@ async function verifyKEPMetadata(browser,width){
    if(!high&&!university)assert.equal(await detail.locator('.kvlrv2-schools').count(),0);
    assert.ok((await detail.locator('.kvlrv2-pick').innerText()).includes(pick));
   }
+  await closeProPopup(page);
   await page.locator('[data-choice="15/이율리"] .kvlrv2-name').click();
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/2000-09-14/);
+  await closeProPopup(page);
   await page.locator('[data-choice="1/서재덕"] .kvlrv2-name').click();
   assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/2011-12 KOVO 신인드래프트/);
   assert.match(await page.locator('.kvlrv2-career-draft').innerText(),/1라운드 2순위/);
   assert.match(await page.locator('.kvlrv2-schools').innerText(),/성균관대/);
+  await closeProPopup(page);
   await page.locator('[data-choice="6/하승우"] .kvlrv2-name').click();
   assert.match(await page.locator('.kvlrv2-detail').innerText(),/1995-06-02/);
   const snap=path.join(OUT,'kvl-teams-live-kep-profile-'+width+'.png');
