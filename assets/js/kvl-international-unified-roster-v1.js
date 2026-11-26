@@ -191,47 +191,17 @@ function render(host,model){
     '<p class="kvl-unified-note">'+esc(model.note)+' 소속팀은 해당 연도의 대회 원본을 우선하고, 비어 있을 때만 같은 연도의 시즌 스냅샷으로 보완합니다.</p></div>';
   const list=host.querySelector('[data-kvl-unified-rows]'),count=host.querySelector('[data-kvl-unified-count]'),
     detail=host.querySelector('[data-kvl-unified-detail]');
-  // Only Team Finder's desktop layout uses a modal. Move the same detail node,
-  // rather than duplicate player data or links; mobile keeps its inline panel.
-  const columns=detail.parentElement;
-  const desktop=standard&&typeof matchMedia==='function'?matchMedia('(min-width:821px)'):null;
-  const dialog=desktop?host.ownerDocument.createElement('dialog'):null;
-  const popup=dialog&&typeof dialog.showModal==='function'?dialog:null;
-  if(popup){
-    popup.className='kvl-unified-profile-dialog';
-    popup.setAttribute('aria-label','선수 상세 프로필');
-    columns.appendChild(popup);
-  }
-  const isDesktop=()=>!!(popup&&desktop.matches);
-  function closePopup(){if(popup?.open)popup.close()}
-  function syncDetailMode(){
-    if(!popup)return;
-    if(isDesktop()){
-      if(detail.parentElement!==popup)popup.appendChild(detail);
-      if(selected&&!detail.hidden&&!popup.open)popup.showModal();
-    }else{
-      closePopup();
-      if(detail.parentElement!==columns)columns.insertBefore(detail,popup);
-    }
-  }
+  // Use the common Team Finder modal without changing the historical data renderer.
+  const popup=standard?globalThis.KVLTeamRosterStandardV1?.createProfilePopup(host,detail,{dismiss,legacyClass:'kvl-unified-profile-dialog'}):null;
+  const isDesktop=()=>!!popup?.isDesktop();
   function clearSelection(){
-    closePopup();
-    selected='';detail.hidden=true;detail.innerHTML='';
-  }
-  function restoreRowFocus(key){
-    if(!key)return;
-    const row=[...list.querySelectorAll('[data-kvl-unified-athlete]')].find(x=>x.dataset.kvlUnifiedAthlete===key);
-    row?.focus({preventScroll:true});
+    popup?.close();selected='';detail.hidden=true;detail.innerHTML='';popup?.sync();
   }
   function dismiss(){
-    const key=selected,restore=isDesktop();
+    const previous=selected,restore=isDesktop();
     clearSelection();paint();
-    if(restore)restoreRowFocus(key);
+    if(restore)[...list.querySelectorAll('[data-kvl-unified-athlete]')].find(x=>x.dataset.kvlUnifiedAthlete===previous)?.focus({preventScroll:true});
   }
-  const onCancel=e=>{e.preventDefault();dismiss()};
-  const onModeChange=()=>syncDetailMode();
-  popup?.addEventListener('cancel',onCancel);
-  if(popup)desktop.addEventListener('change',onModeChange);
   const title=x=>x.ko||x.en||'선수';
   const matches=e=>filter==='all'||filter==='multi'&&e.count>1||e.matches.some(m=>m.id===filter);
   const filtered=()=>model.rows.filter(p=>matches(p)&&(pos==='all'||String(p.position||'').match(/OH|OP|MB|\bS\b|\bL\b/g)?.includes(pos))&&(!query||[p.ko,p.en,p.club,p.clubCountry,p.clubLeague].some(v=>norm(v).includes(query))));
@@ -281,7 +251,7 @@ function render(host,model){
       (p.official?'<a href="'+esc(p.official)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'')+'</div>';
     paint();
     detail.hidden=false;
-    syncDetailMode();
+    popup?.sync();
     if(!isDesktop())detail.scrollIntoView({block:'nearest',behavior:'smooth'});
   }
   host.onclick=e=>{
@@ -289,11 +259,6 @@ function render(host,model){
     const button=e.target.closest('[data-kvl-unified-filter]');
     if(button&&host.contains(button)){filter=button.dataset.kvlUnifiedFilter;clearSelection();paint();return}
     if(e.target.closest('[data-kvl-unified-close]')){dismiss();return}
-    if(popup?.open&&e.target===popup){
-      const r=popup.getBoundingClientRect();
-      if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dismiss();
-      return;
-    }
     if(standard&&e.target.closest('.kvl-unified-name-link'))e.preventDefault();else if(e.target.closest('a'))return;
     const row=e.target.closest('[data-kvl-unified-athlete]');
     if(row&&host.contains(row))show(row.dataset.kvlUnifiedAthlete);
@@ -304,10 +269,9 @@ function render(host,model){
   };
   host.oninput=e=>{if(e.target.matches('[data-kvl-unified-search]')){query=norm(e.target.value);paint()}};
   if(!hasData)list.innerHTML='<p class="ktd-empty">현재 연도에 확인된 대회명단이 없습니다.</p>';
-  paint();syncDetailMode();
+  paint();popup?.sync();
   return {destroy:()=>{
-    closePopup();
-    if(popup){desktop.removeEventListener('change',onModeChange);popup.removeEventListener('cancel',onCancel)}
+    popup?.destroy();
     host.onclick=null;host.oninput=null;host.onkeydown=null;
   }};
 }
