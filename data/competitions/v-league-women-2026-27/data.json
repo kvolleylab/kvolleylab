@@ -1067,32 +1067,29 @@
       },
       "venueLabel": "인천 삼산월드체육관",
       "localTimeLabel": "한국 현지 19:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:FEMALE:48",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=2&page=0&size=200",
-      "updatedAt": "2026-11-27T11:39:58+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-27T11:59:51+00:00",
+      "score": {
         "home": 0,
-        "away": 2,
-        "sourceKey": "023:001:FEMALE:48",
-        "observedAt": "2026-11-27T11:39:58+00:00"
+        "away": 3,
+        "sets": [
+          {
+            "home": 19,
+            "away": 25
+          },
+          {
+            "home": 22,
+            "away": 25
+          },
+          {
+            "home": 29,
+            "away": 31
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 19,
-          "away": 25,
-          "status": "completed",
-          "observedAt": "2026-11-27T11:39:58+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=48&gcode=001&hcode=2004&acode=2005&page=0&size=1"
-        },
-        {
-          "home": 22,
-          "away": 25,
-          "status": "completed",
-          "observedAt": "2026-11-27T11:39:58+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=48&gcode=001&hcode=2004&acode=2005&page=0&size=1"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-W-025",
@@ -3140,6 +3137,27 @@
       {
         "rank": 1,
         "team": {
+          "code": "GSC",
+          "name": "GS칼텍스",
+          "fullName": "GS칼텍스",
+          "en": "GSC"
+        },
+        "poolId": "LEAGUE",
+        "games": 7,
+        "wins": 6,
+        "losses": 1,
+        "points": 18,
+        "setWins": 19,
+        "setLosses": 5,
+        "pointsFor": 600,
+        "pointsAgainst": 520,
+        "setRatio": "3.800",
+        "pointRatio": "1.154",
+        "statusLabel": "1위"
+      },
+      {
+        "rank": 2,
+        "team": {
           "code": "KEX",
           "name": "한국도로공사",
           "fullName": "한국도로공사",
@@ -3156,27 +3174,6 @@
         "pointsAgainst": 508,
         "setRatio": "3.000",
         "pointRatio": "1.134",
-        "statusLabel": "1위"
-      },
-      {
-        "rank": 2,
-        "team": {
-          "code": "GSC",
-          "name": "GS칼텍스",
-          "fullName": "GS칼텍스",
-          "en": "GSC"
-        },
-        "poolId": "LEAGUE",
-        "games": 6,
-        "wins": 5,
-        "losses": 1,
-        "points": 15,
-        "setWins": 16,
-        "setLosses": 5,
-        "pointsFor": 519,
-        "pointsAgainst": 450,
-        "setRatio": "3.200",
-        "pointRatio": "1.153",
         "statusLabel": "2위"
       },
       {
@@ -3251,16 +3248,16 @@
           "en": "HPS"
         },
         "poolId": "LEAGUE",
-        "games": 6,
+        "games": 7,
         "wins": 2,
-        "losses": 4,
+        "losses": 5,
         "points": 6,
         "setWins": 8,
-        "setLosses": 12,
-        "pointsFor": 449,
-        "pointsAgainst": 478,
-        "setRatio": "0.667",
-        "pointRatio": "0.939",
+        "setLosses": 15,
+        "pointsFor": 519,
+        "pointsAgainst": 559,
+        "setRatio": "0.533",
+        "pointRatio": "0.928",
         "statusLabel": "6위"
       },
       {
@@ -3354,14 +3351,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 23/126경기 종료 · 2026-11-27 20:39 KST 반영",
-  "updatedAt": "2026-11-27T11:39:58+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 24/126경기 종료 · 2026-11-27 20:59 KST 반영",
+  "updatedAt": "2026-11-27T11:59:51+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=2&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 23,
+    "completedMatches": 24,
     "postseason": {
       "matched": 0,
       "completed": 0,
