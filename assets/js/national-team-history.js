@@ -53,11 +53,14 @@
     if(scope!=='age'||!['men','women'].includes(value)||value===ageGender)return;
     clearTarget();
     ageGender=value;
+    // National-team home resets dependent filters when switching division.
+    ageLevel='all';
     const url=new URL(location.href);
     if(value==='women')url.searchParams.set('gender','women');else url.searchParams.delete('gender');
     url.searchParams.delete('event');
+    url.searchParams.delete('level');
     history.replaceState(history.state,'',url);
-    yearFilter.value='all';fillYears();updateAgeGender();coverage();render();
+    yearFilter.value='all';fillYears();syncAgeTabs();updateAgeGender();coverage();render();
   }
   function setup(){
     if(scope==='age'){
