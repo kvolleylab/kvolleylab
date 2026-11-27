@@ -16,3 +16,19 @@
 .kvl-cpp-private button,.kvl-cpp-private a{border:1px solid #dce8ed;border-radius:8px;background:white;color:#173a57;padding:9px 12px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
 .kvl-cpp-private button[aria-pressed=true]{background:#e2ecfb;color:#1d4ed8}
 .kvl-cpp-private button:disabled{opacity:.6;cursor:wait}
+
+.kvl-cpp-note-editor{margin:12px 0;border:1px solid #dce8ed;border-radius:8px;background:white;color:#173a57;padding:12px;overflow-wrap:anywhere}
+.kvl-cpp-note-editor>summary{font-size:16px;font-weight:800;cursor:pointer}
+.kvl-cpp-note-list{display:grid;gap:8px;margin:10px 0}
+.kvl-cpp-note-item{border:1px solid #dce8ed;border-radius:6px;padding:10px;display:grid;gap:5px}
+.kvl-cpp-note-item small{color:#526f85;font-size:12px}
+.kvl-cpp-note-item p{white-space:pre-wrap;max-height:180px;overflow:auto;margin:0!important;font-size:14px!important}
+.kvl-cpp-note-form{display:grid;gap:10px}
+.kvl-cpp-note-form[hidden]{display:none!important}
+.kvl-cpp-note-form label{display:grid;gap:4px;font-size:13px;font-weight:700}
+.kvl-cpp-note-form input,.kvl-cpp-note-form textarea{box-sizing:border-box;min-width:0;width:100%;font:inherit;font-size:16px;color:#173a57;background:#fff;border:1px solid #bdcfda;border-radius:6px;padding:9px}
+.kvl-cpp-note-form textarea{resize:vertical}
+.kvl-cpp-note-buttons{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.kvl-cpp-note-editor button{background:white;color:#173a57;border:1px solid #bdcfda;border-radius:6px;padding:8px 12px;font:inherit;cursor:pointer}
+.kvl-cpp-note-editor button[type=submit]{background:#173c59;color:white;font-weight:700}
+.kvl-cpp-note-status{font-size:13px;line-height:1.5;color:#526f85}
