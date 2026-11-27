@@ -79,6 +79,9 @@ async function run(){
     if(width>=700)assert(measurements.tableWidth>=measurements.rosterWidth-6,'Desktop table must use the whole detail panel: '+JSON.stringify(measurements));
     if(width>=700)assert(measurements.headerRowWidth>=measurements.rosterWidth-8,'Desktop header cells must fill the panel: '+JSON.stringify(measurements));
     if(width<700)assert.equal(measurements.mobileRowDisplay,'grid','Mobile roster must stack into cards');
+    // Capture the actual HERO as users first see it, rather than after the roster expands and scrolls.
+    await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+    await page.waitForTimeout(100);
     const png=path.join(OUT,'kvl-national-age-'+width+'.png');
     await page.screenshot({path:png,fullPage:false});
     await page.locator('.kvl-age-hero-action').click();
