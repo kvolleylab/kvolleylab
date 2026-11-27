@@ -123,7 +123,7 @@ test('age CSS is scoped and mobile roster uses stacked view rather than 690px sc
   assert(css.includes('@media(max-width:700px)'));
   assert(css.includes('grid-template-areas:"number player position"'));
   assert(css.includes('overflow:visible'));
-  assert(html.includes('20261127-age-v1'));
+  assert(html.includes('20261127-hero-approved-v2'));
 });
 
 test('national ID-link status observer is idempotent when roster DOM does not change',()=>{
@@ -132,4 +132,23 @@ test('national ID-link status observer is idempotent when roster DOM does not ch
   assert(status.includes('if(summary.textContent!==next)summary.textContent=next;'));
   assert(html.includes('20261127-observer-v1'));
   assert(read('player-cohort.html').includes('20261127-observer-v1'));
+});
+
+test('approved HERO is an accessible live link over the original reference image, using exact KVL media canvases',()=>{
+ const html=read('national-team-history.html');
+ const css=read('assets/css/national-age-history-v1.css');
+ const pc=read('assets/img/national-team/age-hero-approved-pc-v1.svg');
+ const mobile=read('assets/img/national-team/age-hero-approved-mobile-v1.svg');
+ assert(html.includes('id="ageHero"'));
+ assert(html.includes('href="#ageLevelTabs"'));
+ assert(html.includes('class="kvl-age-hero-action"'));
+ assert.match(pc,/width="2108" height="406"/);
+ assert.match(mobile,/width="1258" height="406"/);
+ assert(pc.includes('data:image/webp;base64,'));
+ assert(mobile.includes('data:image/webp;base64,'));
+ assert(css.includes('aspect-ratio:1197 / 304'),'Desktop should use approved source ratio, without cropping title');
+ assert(css.includes('object-fit:fill'),'Desktop should display the entire reference composition');
+ assert(css.includes('object-position:right center'),'Mobile should prioritize Korean player/flag');
+ assert(css.includes('body.nt-age-mode .age-level-tabs button.active'));
+ assert(css.includes('kvl-age-hero-action:focus-visible'));
 });
