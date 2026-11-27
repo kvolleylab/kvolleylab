@@ -139,7 +139,7 @@
   return '<img class="ktd-country-flag-image" src="assets/images/flags/4x3/'+esc(iso)+'.svg" alt="'+esc(t.name)+' 국기" loading="lazy" decoding="async">'+fallback;
  }
  function cardMarkup(t){
-  if(t.action==='country')return '<article class="ktd-card ktd-country-card" data-team-code="'+esc(t.code)+'" data-ktd-country-card="'+esc(t.code)+'" role="button" tabindex="0" aria-label="'+esc(t.name)+' 대표팀 명단 보기">'+
+  if(t.action==='country')return '<article class="ktd-card ktd-country-card" data-ktd-card-click data-team-code="'+esc(t.code)+'" data-ktd-country-card="'+esc(t.code)+'" role="button" tabindex="0" aria-label="'+esc(t.name)+' 대표팀 명단 보기">'+
    '<div class="ktd-card-body"><div class="ktd-card-logo">'+countryFlagMarkup(t)+'</div>'+
    '<div class="ktd-card-copy"><div class="ktd-card-eyebrow"><strong>국제</strong> · NATIONAL TEAM</div>'+
    '<div class="ktd-card-name-row"><h3>'+esc(t.name)+'</h3></div>'+
@@ -156,7 +156,7 @@
   const action=t.action==='roster'?
    '<button class="ktd-card-action" type="button" data-ktd-roster="'+esc(t.code)+'"><span>선수명단 보기</span><span aria-hidden="true">›</span></button>':
    '<a class="ktd-card-action" href="'+esc(safeHref(t.href)?t.href:'teams.html')+'"><span>'+(t.type==='university'?'팀 정보 보기':t.type==='high'||t.type==='middle'?'대회 기록 보기':'관련 자료 보기')+'</span><span aria-hidden="true">›</span></a>';
-  return '<article class="ktd-card" data-gender="'+esc(t.gender||'')+'" data-team-code="'+esc(t.code||'')+'">'+
+  return '<article class="ktd-card" data-ktd-card-click data-gender="'+esc(t.gender||'')+'" data-team-code="'+esc(t.code||'')+'">'+
     '<div class="ktd-card-body"><div class="ktd-card-logo">'+logoMarkup(t)+'</div><div class="ktd-card-copy">'+
     '<div class="ktd-card-eyebrow"><strong>'+esc(label)+'</strong>'+(g?' · '+g:'')+'</div>'+
     '<div class="ktd-card-name-row"><h3>'+esc(t.name)+'</h3>'+count+'</div>'+meta+
@@ -452,18 +452,28 @@
    const fallback=img.nextElementSibling;
    if(fallback?.classList.contains('ktd-country-flag-fallback')||fallback?.classList.contains('ktd-team-logo-fallback'))fallback.hidden=false;
   },true);
+  // The same visible native action is the source of truth for every team card.
+  // A click on the logo, name, metadata or card background forwards once to it;
+  // a click on the actual button/link keeps its original behavior.
   grid.addEventListener('click',event=>{
-   const countryButton=event.target.closest('[data-ktd-country]');
-   if(countryButton){openCountry(countryButton.dataset.ktdCountry);return}
-   const countryCard=event.target.closest('[data-ktd-country-card]');
-   if(countryCard){openCountry(countryCard.dataset.ktdCountryCard);return}
-   const button=event.target.closest('[data-ktd-roster]');
-   if(button)openRoster(button.dataset.ktdRoster);
+   const card=event.target.closest('[data-ktd-card-click]');
+   if(!card||!grid.contains(card)||event.defaultPrevented)return;
+   const action=card.querySelector('.ktd-card-action');
+   if(!action)return;
+   if(action.contains(event.target)){
+    if(action.hasAttribute('data-ktd-country'))openCountry(action.dataset.ktdCountry);
+    else if(action.hasAttribute('data-ktd-roster'))openRoster(action.dataset.ktdRoster);
+    return; // Native anchors retain their existing destination/default action.
+   }
+   if(event.target.closest('a,button,input,select,textarea,summary,[contenteditable="true"]'))return;
+   action.click();
   });
   grid.addEventListener('keydown',event=>{
+   // Preserve existing country-card keyboard access. Other cards use their
+   // native action button/link as the keyboard focus target.
    const card=event.target.closest('[data-ktd-country-card]');
    if(card&&event.target===card&&(event.key==='Enter'||event.key===' ')){
-    event.preventDefault();openCountry(card.dataset.ktdCountryCard);
+    event.preventDefault();card.querySelector('.ktd-card-action')?.click();
    }
   });
   el('ktdSearch').addEventListener('input',event=>{
