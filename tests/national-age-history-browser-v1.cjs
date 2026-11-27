@@ -138,6 +138,9 @@ async function run(){
     await page.locator('#ageLevelTabs button[data-level="U23"]').click();
     assert(await page.locator('.event-card').count()>=1,'U23 filter must show real event');
     await page.locator('[data-age-gender="women"]').click();
+    assert.equal(await page.locator('#ageLevelTabs [data-level="all"]').getAttribute('aria-pressed'),'true',
+      'Switching division must reset age filter just like national home');
+    assert(!new URL(page.url()).searchParams.has('level'),'Stale age filter must leave the URL');
     assert.equal(await page.locator('.event-card').count(),0,'Missing women records must never show male athletes');
     assert(await page.locator('#ageGenderNotice').isVisible());
     // The existing age-chip component animates background colors for 160 ms.
