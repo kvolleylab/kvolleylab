@@ -143,7 +143,9 @@ test('approved HERO is an accessible live link over the original reference image
  assert(html.includes('href="#ageLevelTabs"'));
  assert(html.includes('class="kvl-age-hero-action"'));
  assert.match(pc,/width="2108" height="406"/);
+ assert.match(pc,/<svg[^>]+preserveAspectRatio="none"/,'PC HERO must not letterbox inside actual card');
  assert.match(mobile,/width="1258" height="406"/);
+ assert.match(mobile,/<svg[^>]+preserveAspectRatio="none"/);
  assert(pc.includes('data:image/webp;base64,'));
  assert(mobile.includes('data:image/webp;base64,'));
  assert(css.includes('aspect-ratio:1197 / 304'),'Desktop should use approved source ratio, without cropping title');
