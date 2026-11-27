@@ -36,7 +36,7 @@ async function run(){
       throw Error('Events did not render: '+JSON.stringify(diagnostic)+' | PAGE ERRORS='+JSON.stringify(errors)+' | REQUESTS='+JSON.stringify(requests.slice(0,35))+' | CAUSE='+error.message);
     }
     assert(await page.locator('.event-card').count()>=20,'Historical age events must display');
-    assert(await page.locator('h1').innerText().then(x=>x.includes('남자 연령별')),'Men heading is wrong');
+    assert.equal((await page.locator('h1').innerText()).trim(),'대한민국 연령별 대표팀','Approved HERO title must not be split by gender');
     assert(await page.locator('#ageGenderSwitch').isVisible(),'Gender switch hidden');
     const hero=page.locator('#ageHero');
     assert(await hero.isVisible(),'Approved HERO must be present');
