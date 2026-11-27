@@ -1164,3 +1164,10 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 모든 팀 찾
 ## 2026-11-27 · 공통 선수 프로필 v1 — 표시 모듈 1차
 
 Status: USER REQUESTED / PARTIAL IMPLEMENTATION / QA PENDING / NOT DEPLOYED. 선수 찾기와 Team Finder 국내/V리그, SV, 국제의 이름·영문명·POS·신장·DOB 표시를 공통 summary renderer로 연결한다. 선수 찾기의 기존 전체 프로필 iframe은 접힌 상세 영역에 보존하고 기존 개인 기능 API를 재사용한다. 팀별 원본 정보·출처·시즌 소속·기존 ID는 변경하지 않는다. 공통 identity resolution, 팀 팝업 내 개인 기능 쓰기, 데이터 대조 및 브라우저 검증은 미완료. Drive MASTER 검색 접근만 확인, 선수별 원본 대조 NOT VERIFIED. Base a027ad56d59e10edb7913672c0992b71531fd532; branch feature/common-player-profile-v1-20261127. Draft PR only; 사용자 별도 운영 승인 전 병합 금지. 복구: PR 미병합 상태 유지 또는 해당 PR revert.
+
+
+## 2026-11-27 · 공통 선수 프로필 v1 — 공통 메모 및 신원 검증 3차
+
+Status: USER REQUESTED / IMPLEMENTED IN DRAFT / PARTIALLY VERIFIED / NOT DEPLOYED. 동일한 `kvl-common-profile-notes-v1.mjs` 편집기를 선수 찾기 및 Team Finder의 확인된 ID에 적용한다. 팝업 내 목록·신규·수정은 기존 관리자 전용 `admin-player-workspace` API와 player_id, expected_revision을 재사용하며 서버·DB 스키마 및 개인 기록은 변경하지 않는다. 세션 변경 시 편집기를 제거하고 저장 실패 시 입력 내용을 유지한다. 기존 26개 충돌 ID와 카탈로그 중복 제거 전 원본 신원 충돌을 추가 검사한다. 확인된 드래프트 등록 브리지만 DOB 누락 시 기존 공식 연결 증거로 인정하며 DOB/VB 불일치는 차단한다.
+
+검증: 실제 브랜치 소스·JSON을 JS 테스트 격리 환경에서 실행(브라우저 및 Supabase 실계정 아님). 카탈로그 871명, 중복 원본 충돌 보호 28 ID(기존 26 포함). 공식 등록 브리지 및 프로필 보완 적용 후 V-리그 남 149 중 117 연결 / 26 충돌 / 4 미등록 ID / 2 미확인, 여 139 중 131 연결 / 0 충돌 / 5 미등록 ID / 3 미확인. 합계 248/288 연결, 40 보류. 신원·escape 11/11, 가짜 DOM 및 API 기반 메모 동작 9/9, 수정 JS 8개 문법 컴파일 8/8. 실제 SV 및 국제 전수 검증, 실제 PC·모바일, 실계정 end-to-end, Google Drive MASTER 원본 대조, main 최신 변경 충돌 확인은 미완료. PR #442 Draft 유지. 운영 승인 전 병합 금지. 복구는 미병합 유지 또는 추후 PR revert.
