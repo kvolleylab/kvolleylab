@@ -9,3 +9,10 @@
 .kvl-cpp-facts dt{font-size:12px;color:#526f85;margin:0 0 5px}
 .kvl-cpp-facts dd{font-size:16px;font-weight:700;line-height:1.4;margin:0;overflow-wrap:anywhere}
 @media(max-width:420px){.kvl-cpp-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.kvl-cpp-connection{padding:12px 0;font-size:14px;color:#526f85;line-height:1.5}
+.kvl-cpp-connection a{color:#237b85;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.kvl-cpp-private{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.kvl-cpp-private button,.kvl-cpp-private a{border:1px solid #dce8ed;border-radius:8px;background:white;color:#173a57;padding:9px 12px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.kvl-cpp-private button[aria-pressed=true]{background:#e2ecfb;color:#1d4ed8}
+.kvl-cpp-private button:disabled{opacity:.6;cursor:wait}
