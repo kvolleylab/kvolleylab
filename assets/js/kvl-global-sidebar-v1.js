@@ -68,7 +68,6 @@
     group('national',icon.flag,'국가대표팀',[
       link('national-home','national-team.html',null,'대표팀 홈'),
       link('national-roadmap','olympic-roadmap.html',null,'올림픽·대표팀 로드맵'),
-      link('national-senior','national-team-history.html?scope=senior',null,'성인 대표팀'),
       link('national-age','national-team-history.html?scope=age',null,'연령별 대표팀')
     ]),
     group('domestic',icon.domestic,'국내대회',[

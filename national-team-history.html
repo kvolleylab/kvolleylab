@@ -3,35 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>국가대표 히스토리 | K-Volley Lab</title>
+  <title>대한민국 연령별 대표팀 기록 | K-Volley Lab</title>
+  <meta name="description" content="대한민국 남자 연령별 국가대표팀의 역대 대회 성적, 당시 선수명단, 세대별 기록을 확인하세요. 여자 연령별 대표팀 자료는 검증 후 추가합니다." />
   <link rel="stylesheet" href="assets/css/site-theme-light.css" />
   <link rel="stylesheet" href="assets/css/national-team-history.css?v=20260903-2" />
+  <link rel="stylesheet" href="assets/css/national-age-history-v1.css?v=20261127-age-v1" />
   <link rel="stylesheet" href="assets/css/national-player-link-status-v1.css?v=20260903-1" />
   <script src="assets/js/unified-nav.js" defer></script>
-  <script src="assets/js/national-team-history.js?v=20260903-3" defer></script>
+  <script src="assets/js/national-team-history.js?v=20261127-age-v1" defer></script>
   <script src="assets/js/player-link-canonical-v1.js?v=20260903-1" defer></script>
-  <script src="assets/js/national-player-link-status-v1.js?v=20260903-1" defer></script>
+  <script src="assets/js/national-player-link-status-v1.js?v=20261127-observer-v1" defer></script>
 </head>
 <body>
 <header><div class="logo">K-Volley Lab</div></header>
 <main class="nt-history-wrap">
-  <div class="eyebrow">National Team History</div>
-  <h1>대한민국 남자 대표팀 히스토리</h1>
-  <p class="lead">성인대표부터 연령별 대표팀까지 연도·대회·선수 명단을 Player Master와 연결해 추적합니다.</p>
+  <nav class="nt-history-breadcrumb" aria-label="현재 위치"><a href="national-team.html">대표팀 홈</a><span aria-hidden="true">›</span><span id="historyBreadcrumbCurrent">연령별 대표팀</span></nav>
+  <div class="nt-history-intro">
+    <div class="eyebrow">KOREA NATIONAL TEAM · HISTORY</div>
+    <h1>대한민국 연령별 대표팀</h1>
+    <p class="lead">대회별 성적과 당시 선수명단을 연도·연령대로 확인하고, 선수 프로필과 세대별 기록으로 이어집니다.</p>
+  </div>
+  <div id="ageGenderSwitch" class="nt-age-gender-switch" role="group" aria-label="연령별 대표팀 성별 선택" hidden>
+    <button type="button" data-age-gender="men" aria-pressed="true">남자대표팀</button>
+    <button type="button" data-age-gender="women" aria-pressed="false">여자대표팀</button>
+  </div>
+  <p id="ageGenderNotice" class="nt-age-notice" role="status" hidden>여자 연령별 대표팀 기록은 공식 자료 검증 후 제공됩니다. 자료가 없다는 것은 미출전 또는 미선발을 뜻하지 않습니다.</p>
 
   <section class="toolbar" aria-label="대표팀 필터">
     <label>연도<select id="yearFilter"><option value="all">전체</option></select></label>
     <label>단계<select id="levelFilter"><option value="all">전체</option></select></label>
-    <a class="cohort-cta" href="player-cohort.html?country=KOR&gender=M&birth_year=2005">2005년생 세대 보기</a>
+    <a id="cohortCta" class="cohort-cta" href="player-cohort.html?country=KOR&gender=M&birth_year=2005">대표팀 세대추적 ↗</a>
   </section>
 
   <section class="summary-grid" id="summaryGrid"></section>
   <section id="eventList" class="event-list" aria-live="polite"></section>
 
-  <section class="coverage-panel">
-    <h2>DB 구축 현황</h2>
+  <section class="coverage-panel" id="coveragePanel">
+    <h2>자료 구축 현황</h2>
     <div id="coverageList"></div>
-    <p class="small">확인된 공식자료부터 순차적으로 추가하며, 미확인 데이터는 확정값으로 표시하지 않습니다.</p>
+    <p class="small">확인된 자료만 표시하며, 출전 여부 미확인·명단 미구축·대회 취소를 구분합니다. 과거 명단의 소속팀은 당시 기준입니다.</p>
   </section>
 </main>
 </body>
