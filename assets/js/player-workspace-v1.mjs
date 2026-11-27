@@ -103,10 +103,10 @@ async function refreshPrivateState(){
 }
 async function toggleBookmark(id){
  if(!memberReady)return $('accountDialog').showModal();
- const button=document.querySelector('[data-save-player="'+CSS.escape(id)+'"]');if(button)button.disabled=true;
+ const selector='[data-save-player="'+CSS.escape(id)+'"]';if(document.querySelector(selector+':disabled'))return;document.querySelectorAll(selector).forEach(b=>b.disabled=true);
  try{
   const result=await privateApi('toggle_bookmark',{player_id:id});
-  result.saved?bookmarks.add(id):bookmarks.delete(id);updateMemberBadges();renderSearch();
+  result.saved?bookmarks.add(id):bookmarks.delete(id);updateMemberBadges();renderSearch();const panel=$('profileContent').querySelector(selector);if(panel&&byId.has(id))panel.outerHTML=saveButton(byId.get(id));
  }catch(err){console.warn(err)}
  finally{document.querySelectorAll('[data-save-player="'+CSS.escape(id)+'"]').forEach(b=>b.disabled=false)}
 }
