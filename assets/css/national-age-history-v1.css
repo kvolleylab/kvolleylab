@@ -1,0 +1,106 @@
+/* KVL national age-team history — scoped to age view; existing cohort/senior styles remain untouched. */
+body.nt-age-mode{--nt-bg:#f4f7fb;--nt-deep:#eef3f8;--nt-panel:#fff;--nt-line:#dce4ed;--nt-gold:#956b18;--nt-mint:#147d73;--nt-text:#172033;--nt-muted:#586a7f}
+body.nt-age-mode .nt-history-wrap{box-sizing:border-box;max-width:1180px;padding:28px 20px 80px;color:#172033}
+body.nt-age-mode .nt-history-breadcrumb{display:flex;align-items:center;gap:10px;color:#75869a;font-size:12px;font-weight:700;margin:0 0 15px}
+body.nt-age-mode .nt-history-breadcrumb a{color:#4d6682;text-decoration:none}
+body.nt-age-mode .nt-history-breadcrumb a:hover{color:#8b6415;text-decoration:underline}
+body.nt-age-mode .nt-history-intro{position:relative;overflow:hidden;padding:27px 30px 28px;background:#fff;border:1px solid #dce4ed;border-top:4px solid #c4a14e;border-radius:15px;box-shadow:0 8px 24px rgba(19,39,58,.055)}
+body.nt-age-mode .nt-history-intro::before{content:"KOR";position:absolute;right:27px;bottom:12px;font-size:76px;font-weight:900;letter-spacing:.02em;color:rgba(17,53,91,.04);pointer-events:none}
+body.nt-age-mode .nt-history-intro .eyebrow{font-size:10px;letter-spacing:.18em;color:#9a6d12!important}
+body.nt-age-mode .nt-history-intro h1{position:relative;font-size:clamp(25px,3vw,35px);line-height:1.24;margin:10px 0 9px}
+body.nt-age-mode .nt-history-intro .lead{position:relative;font-size:14px;line-height:1.7;margin:0;max-width:780px}
+body.nt-age-mode .nt-age-gender-switch{display:inline-flex;gap:4px;margin:19px 0 3px;padding:4px;background:#e9eef4;border-radius:10px}
+body.nt-age-mode .nt-age-gender-switch[hidden],body.nt-age-mode .nt-age-notice[hidden],body.nt-age-mode #cohortCta[hidden]{display:none!important}
+body.nt-age-mode .nt-age-gender-switch button{min-height:42px;min-width:115px;padding:9px 18px;border:0;background:transparent;color:#5d7187;border-radius:7px;font-size:14px;font-weight:800;cursor:pointer}
+body.nt-age-mode .nt-age-gender-switch button[aria-pressed="true"]{background:#224e7e;color:#fff;box-shadow:0 3px 9px rgba(20,50,80,.15)}
+body.nt-age-mode .nt-age-gender-switch button:hover:not([aria-pressed="true"]){background:#f7f9fc}
+body.nt-age-mode .nt-age-notice{margin:14px 0;padding:14px 17px;border:1px solid #d9e2ec;border-left:4px solid #8497ad;border-radius:10px;background:#f7f9fc;color:#44566b;font-size:13px;line-height:1.55}
+body.nt-age-mode .age-level-tabs{width:100%;display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:0;border:0;background:transparent;border-radius:0;margin:15px 0 5px;overflow:visible}
+body.nt-age-mode .age-level-tabs button{min-width:68px;min-height:38px;height:auto;padding:9px 15px;border:1px solid #d8e1eb;border-radius:9px;background:#fff;color:#617287;font-size:13px;font-weight:800}
+body.nt-age-mode .age-level-tabs button:hover{border-color:#a2b4c5;color:#244e7b}
+body.nt-age-mode .age-level-tabs button.active{background:#224e7e!important;border-color:#224e7e!important;color:#fff!important;box-shadow:none}
+body.nt-age-mode .toolbar{display:flex;justify-content:space-between;align-items:center;gap:13px;margin:13px 0 18px}
+body.nt-age-mode .toolbar label{display:flex;align-items:center;gap:10px;font-size:12px;color:#596e83}
+body.nt-age-mode .toolbar label[hidden]{display:none!important}
+body.nt-age-mode .toolbar select{min-width:145px;min-height:40px;padding:9px 13px;background:#fff;border:1px solid #d4dfe9;border-radius:8px;color:#21354b;font-size:13px}
+body.nt-age-mode .cohort-cta{padding:0 16px;min-height:40px;border:1px solid #d6b25e;border-radius:9px;color:#8d6518;font-size:12px;background:#fff}
+body.nt-age-mode .cohort-cta:hover{background:#fff9eb}
+body.nt-age-mode .summary-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 22px;gap:10px}
+body.nt-age-mode .summary-card{min-width:0;padding:17px 18px;background:#fff;border:1px solid #dce4ed;border-radius:12px;box-shadow:none}
+body.nt-age-mode .summary-card strong{color:#234f7b;font-size:22px;letter-spacing:-.3px;line-height:1.25;overflow-wrap:anywhere}
+body.nt-age-mode .summary-card span{display:block;margin-top:5px;color:#718092;font-size:11px;font-weight:650}
+body.nt-age-mode .event-list{gap:12px}
+body.nt-age-mode .event-card{padding:0;min-width:0;background:#fff;border:1px solid #dce4ed;border-radius:13px;overflow:hidden;box-shadow:0 5px 16px rgba(20,49,75,.035)}
+body.nt-age-mode .event-card.is-target{border-color:#c3a04e;box-shadow:0 0 0 2px rgba(195,160,78,.17)}
+body.nt-age-mode .event-head{display:flex;align-items:start;gap:13px;padding:19px 20px 0}
+body.nt-age-mode .event-head h2{font-size:18px;letter-spacing:-.35px;line-height:1.4;color:#183653;margin:6px 0 0}
+body.nt-age-mode .event-head .eyebrow{color:#53718f!important;font-size:10px;letter-spacing:.08em}
+body.nt-age-mode .result-badge{flex:none;padding:7px 11px;font-size:12px;font-weight:850;border:1px solid #e5d6ad;border-radius:7px;background:#fff8e9;color:#986a14;white-space:nowrap}
+body.nt-age-mode .event-meta{display:flex;gap:7px 18px;align-items:center;margin:12px 20px 16px;color:#607185;font-size:12px;line-height:1.55}
+body.nt-age-mode .nt-age-quality{color:#617484;background:#f1f4f8;padding:3px 8px;border-radius:5px;font-size:11px}
+body.nt-age-mode .nt-age-roster-details{margin:0 20px;border:1px solid #dfe6ee;border-radius:10px;overflow:hidden;background:#fbfcfe}
+body.nt-age-mode .nt-age-roster-details>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;padding:12px 15px;color:#294e73;font-weight:800;font-size:13px;cursor:pointer;background:#f7f9fc}
+body.nt-age-mode .nt-age-roster-details>summary::-webkit-details-marker{display:none}
+body.nt-age-mode .nt-age-roster-details>summary span{font-size:19px;line-height:1;transition:transform .18s}
+body.nt-age-mode .nt-age-roster-details[open]>summary span{transform:rotate(180deg)}
+body.nt-age-mode .nt-age-roster-details>summary:hover{background:#eef3f8}
+body.nt-age-mode .nt-age-roster-details .table-scroll{overflow-x:auto;border:0;border-top:1px solid #e1e7ee;border-radius:0;background:#fff}
+body.nt-age-mode .nt-roster-caption{font-size:0;line-height:0;height:0;padding:0;margin:0;position:absolute;overflow:hidden}
+body.nt-age-mode .nt-age-roster-details table{min-width:690px;width:100%;border-collapse:collapse;background:#fff}
+body.nt-age-mode .nt-age-roster-details th{background:#f2f6f9;color:#536b83;font-size:11px;white-space:nowrap}
+body.nt-age-mode .nt-age-roster-details td{font-size:12px;color:#283c52;line-height:1.45}
+body.nt-age-mode .nt-age-roster-details th,body.nt-age-mode .nt-age-roster-details td{padding:10px 12px;border-color:#e7edf2}
+body.nt-age-mode .nt-age-roster-details td:nth-child(2){font-weight:750;font-size:13px}
+body.nt-age-mode .nt-age-roster-details td a{color:#1d5c91;text-decoration:none}
+body.nt-age-mode .nt-age-roster-details td a:hover{text-decoration:underline}
+body.nt-age-mode .nt-age-roster-details td .cohort-link{color:#946d22;font-size:11px}
+body.nt-age-mode .event-card>.small{margin:11px 20px 0;font-size:11px;line-height:1.6;color:#718092!important}
+body.nt-age-mode .event-card>.source-row{margin:16px 20px 16px;padding-top:12px;border-top:1px solid #ecf0f4;color:#8491a0;font-size:11px;line-height:1.65}
+body.nt-age-mode .event-card>.source-row a{color:#496b8b}
+body.nt-age-mode .empty{background:#fff;border-color:#dce5ee;color:#607185;line-height:1.6}
+body.nt-age-mode .coverage-panel{margin-top:24px;padding:19px 20px;background:#fff;border:1px solid #dce4ed;border-radius:13px;box-shadow:none}
+body.nt-age-mode .coverage-panel h2{font-size:16px;letter-spacing:-.2px;color:#25435e;margin:0 0 9px}
+body.nt-age-mode .coverage-row{border-color:#edf1f5;font-size:12px;color:#586a7e}
+body.nt-age-mode .coverage-row b{color:#274e76}
+body.nt-age-mode .coverage-panel .small{font-size:11px;line-height:1.55;color:#748396!important}
+body.nt-age-mode a:focus-visible,body.nt-age-mode button:focus-visible,body.nt-age-mode summary:focus-visible,body.nt-age-mode select:focus-visible{outline:3px solid #c49b48;outline-offset:2px}
+@media(max-width:820px){
+ body.nt-age-mode .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body.nt-age-mode .age-level-tabs{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:thin;padding-bottom:4px}
+ body.nt-age-mode .age-level-tabs button{flex:0 0 auto}
+}
+@media(max-width:700px){
+ body.nt-age-mode .nt-history-wrap{padding:22px 14px 64px}
+ body.nt-age-mode .nt-history-intro{padding:21px 18px}
+ body.nt-age-mode .nt-history-intro::before{font-size:48px;right:15px;bottom:5px}
+ body.nt-age-mode .nt-history-intro .lead{font-size:12px;max-width:95%}
+ body.nt-age-mode .nt-age-gender-switch{display:flex;width:100%;margin-top:14px}
+ body.nt-age-mode .nt-age-gender-switch button{flex:1;min-width:0}
+ body.nt-age-mode .toolbar{flex-wrap:wrap;align-items:stretch}
+ body.nt-age-mode .toolbar label{flex:1}
+ body.nt-age-mode .toolbar label select{flex:1;min-width:0}
+ body.nt-age-mode .cohort-cta{width:100%;justify-content:center}
+ body.nt-age-mode .summary-card{padding:13px}
+ body.nt-age-mode .summary-card strong{font-size:19px}
+ body.nt-age-mode .event-head{flex-direction:row;align-items:start;padding:17px 14px 0}
+ body.nt-age-mode .event-head h2{font-size:15px}
+ body.nt-age-mode .result-badge{font-size:11px;padding:6px 8px}
+ body.nt-age-mode .event-meta{margin:10px 14px 13px;gap:5px 12px;font-size:11px}
+ body.nt-age-mode .nt-age-roster-details{margin:0 12px}
+ body.nt-age-mode .nt-age-roster-details .table-scroll{overflow:visible}
+ body.nt-age-mode .nt-age-roster-details table,body.nt-age-mode .nt-age-roster-details tbody{display:block;min-width:0;width:100%}
+ body.nt-age-mode .nt-age-roster-details thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+ body.nt-age-mode .nt-age-roster-details tbody tr{display:grid;grid-template-columns:34px minmax(0,1fr) 55px;grid-template-areas:"number player position" ". birth height" ". club club" ". cohort cohort";gap:5px 9px;padding:11px 12px;border-bottom:1px solid #e4ebf1}
+ body.nt-age-mode .nt-age-roster-details tbody tr:last-child{border-bottom:0}
+ body.nt-age-mode .nt-age-roster-details tbody td{display:block;min-width:0;padding:0!important;border:0!important;background:transparent!important;font-size:11px;color:#657689}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(1){grid-area:number;font-size:12px;font-weight:900;color:#496b8b;align-self:center}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(2){grid-area:player;font-size:14px;color:#243a54;align-self:center;overflow-wrap:anywhere}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(3){grid-area:birth}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(4){grid-area:position;justify-self:end;color:#2e587d;font-weight:900;font-size:12px;align-self:center}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(5){grid-area:height}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(6){grid-area:club}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(7){grid-area:cohort}
+ body.nt-age-mode .nt-age-roster-details tbody td:nth-child(6):before{content:"당시 소속 · ";color:#91a0ae}
+ body.nt-age-mode .event-card>.small{margin:11px 14px 0}
+ body.nt-age-mode .event-card>.source-row{margin:14px 14px 15px}
+}
