@@ -17,7 +17,8 @@ async function privateApi(action,payload={}){const {data,error}=await supabase.f
 function updateMemberBadges(){$('savedBadge').textContent=bookmarks.size?String(bookmarks.size):'';$('notesBadge').textContent=notes.length?String(notes.length):'';if(memberReady){$('memberSummary').hidden=false;$('memberSummary').innerHTML=`<div><h2>내 선수 기록</h2><p>관심선수와 개인 메모가 이 페이지에 바로 연결됩니다.</p></div><div class="member-metrics"><button type="button" data-view="tracking"><strong>${bookmarks.size}</strong>관심선수</button><button type="button" data-view="notes"><strong>${notes.length}</strong>메모</button></div>`;}}
 function playerAffiliation(p){return p?.school||p?.team||'소속 미확인'}
 function compareButton(p){return p.limited||window.KVLPlayerIdCollisionV1?.isConflict(p.id)?'':`<button class="compare-button" type="button" data-compare-id="${e(p.id)}" data-compare-name="${e(p.name)}">비교 추가</button>`}
-function saveButton(p,iconOnly=false){if(window.KVLPlayerIdCollisionV1?.isConflict(p.id))return '';const saved=bookmarks.has(p.id);return `<button class="save-button ${iconOnly?'icon-only':''} ${saved?'saved':''}" type="button" data-save-player="${e(p.id)}" aria-pressed="${saved?'true':'false'}" aria-label="${e(p.name)} ${saved?'관심선수 해제':'관심선수 등록'}">${icon('bookmark')}${iconOnly?'':(saved?'관심선수':'관심선수')}</button>`}
+function privateIdentityBlocked(id){return !!(window.KVLPlayerIdCollisionV1?.isConflict(id)||window.KVLCommonProfileBlockedIds?.has(id))}
+function saveButton(p,iconOnly=false){if(privateIdentityBlocked(p.id))return '';const saved=bookmarks.has(p.id);return `<button class="save-button ${iconOnly?'icon-only':''} ${saved?'saved':''}" type="button" data-save-player="${e(p.id)}" aria-pressed="${saved?'true':'false'}" aria-label="${e(p.name)} ${saved?'관심선수 해제':'관심선수 등록'}">${icon('bookmark')}${iconOnly?'':(saved?'관심선수':'관심선수')}</button>`}
 function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(x=>{x.innerHTML=icon(x.dataset.icon)})}
 function getFilters(){const data=new FormData($('filters')),filters=Object.fromEntries(data);delete filters.grade;return {...filters,q:$('playerSearch').value,grades:data.getAll('grade')}}
 function updateGradeCaption(){const grades=getFilters().grades;$('gradeSelection').textContent=grades.length?grades.join('·')+'학년':'전체 학년';document.querySelector('[data-all-grades]').hidden=!grades.length}
@@ -100,6 +101,7 @@ async function refreshPrivateState(){
  }catch(err){memberReady=false;$('accountButton').innerHTML=icon('lock')+' 로그인 확인 필요';$('accountDialogBody').innerHTML='<p>개인 기록을 불러오지 못했습니다. 다시 로그인한 뒤 확인해 주세요.</p>';console.warn('Private player workspace unavailable',err)}
 }
 async function toggleBookmark(id){
+ if(privateIdentityBlocked(id))return;
  if(!memberReady)return $('accountDialog').showModal();
  const selector='[data-save-player="'+CSS.escape(id)+'"]';if(document.querySelector(selector+':disabled'))return;document.querySelectorAll(selector).forEach(b=>b.disabled=true);
  try{
@@ -112,6 +114,7 @@ function notePlayerMeta(id){
  const p=byId.get(id);return [p?.name,playerAffiliation(p),p?.rawPosition].filter(Boolean).join(' · ');
 }
 function openPlayerNote(id){
+ if(privateIdentityBlocked(id))return;
  if(!memberReady)return $('accountDialog').showModal();
  $('memberNoteId').value='';$('memberNoteRevision').value='';$('memberNotePlayer').value=id;$('memberNoteSeason').value='2026-27';$('memberNoteTitleInput').value='';$('memberNoteBody').value='';$('memberNoteAudit').hidden=true;$('memberNoteError').textContent='';$('memberDeleteNote').hidden=true;
  $('memberNoteTitle').textContent=(byId.get(id)?.name||'선수')+' · 메모';$('memberNotePlayerMeta').textContent=notePlayerMeta(id);$('memberNoteDialog').showModal();$('memberNoteTitleInput').focus();
