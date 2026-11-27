@@ -140,6 +140,9 @@ async function run(){
     await page.locator('[data-age-gender="women"]').click();
     assert.equal(await page.locator('.event-card').count(),0,'Missing women records must never show male athletes');
     assert(await page.locator('#ageGenderNotice').isVisible());
+    // The existing age-chip component animates background colors for 160 ms.
+    // Compare settled colors to the reference, not a frame mid-transition.
+    await page.waitForTimeout(250);
     const womenAppearance=await page.__kvlActualStyle('women');
     const {pseudo:womenPseudo,activeLevel:womenLevel,kpiColor:womenKpi,genderOnBody:womenBody,...womenButton}=womenAppearance;
     assert.deepEqual(womenButton,page.__kvlRefStyles.women,'Women switch must match home rose style on '+width);
