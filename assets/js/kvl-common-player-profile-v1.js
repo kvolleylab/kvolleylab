@@ -2,7 +2,7 @@
 (function(root){
 'use strict';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fact=(label,value,link)=>'<div><dt>'+esc(label)+'</dt><dd'+(label==='국적'?' data-nationality':'')+'>'+ (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+esc(value)+'</a>':esc(value||'미확인'))+'</dd></div>';
+const fact=(label,value,link)=>'<div><dt>'+esc(label)+'</dt><dd'+(label==='국적'?' data-nationality':'')+'>'+ (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer"'+(label==='Volleybox'?' aria-label="Volleybox 선수 프로필 열기"':'')+'>'+esc(value)+'</a>':esc(value||'미확인'))+'</dd></div>';
 const safeUrl=v=>/^https:\/\/[a-z0-9.-]+(?:\/|$)[^\s<>"']*$/i.test(String(v||''))?String(v):'';
 const vbUrl=v=>/^https:\/\/(?:(?:www|women)\.)?volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(v||''))?String(v):'';
 const countryText=v=>({KOR:'대한민국',JPN:'일본',USA:'미국',IRI:'이란',CHN:'중국',BRA:'브라질',CAN:'캐나다',FRA:'프랑스',POL:'폴란드',ITA:'이탈리아',GER:'독일',ARG:'아르헨티나',TUR:'튀르키예',SRB:'세르비아',AUS:'호주',NED:'네덜란드',BEL:'벨기에',BUL:'불가리아',SLO:'슬로베니아',CUB:'쿠바',UKR:'우크라이나',THA:'태국',VIE:'베트남',TPE:'대만',KAZ:'카자흐스탄',PHI:'필리핀',INA:'인도네시아',Korea:'대한민국','South Korea':'대한민국',Japan:'일본'})[String(v||'')]||v;
