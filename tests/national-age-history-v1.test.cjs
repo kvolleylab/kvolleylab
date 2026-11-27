@@ -99,7 +99,7 @@ test('women tab shows unbuilt-data state and cannot expose men records; return r
     s.doc.querySelector('[data-age-gender="men"]').click();
     assert(s.doc.querySelectorAll('.event-card').length>=20);
     assert.equal(new URL(s.w.location.href).searchParams.has('gender'),false);
-    assert(!s.doc.querySelector('#ageGenderNotice').hidden===true);
+    assert(s.doc.querySelector('#ageGenderNotice').hidden,'Return to men must hide the women-only notice');
     assert(s.doc.querySelector('#yearFilter').options.length>1);
   }finally{s.close();}
 });
