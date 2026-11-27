@@ -63,6 +63,14 @@ async function editor(pane){
  const e=pane.locator('[data-cpp-note-editor]');await e.waitFor({timeout:30000});await e.locator('summary').click();
  await e.locator('form:not([hidden])').waitFor({timeout:30000});return e;
 }
+async function profileDesign(pane){
+ return pane.locator('.kvl-cpp-summary').evaluate(el=>{
+  const props=(node,keys)=>Object.fromEntries(keys.map(k=>[k,getComputedStyle(node)[k]]));
+  const head=el.querySelector('.kvl-cpp-name'),name=head.querySelector('h3'),fact=el.querySelector('.kvl-cpp-facts>div'),value=fact.querySelector('dd'),close=head.querySelector('.kvl-cpp-close');
+  const dialog=el.closest('dialog');
+  return {header:props(head,['backgroundColor','borderRadius','paddingTop','paddingLeft']),name:props(name,['fontFamily','fontSize','fontWeight','lineHeight','color']),row:props(fact,['display','paddingTop','paddingBottom','borderBottomColor']),value:props(value,['fontFamily','fontSize','fontWeight','color','textAlign']),close:props(close,['backgroundColor','borderRadius','fontSize','minHeight']),shell:dialog?{width:Math.round(dialog.getBoundingClientRect().width),...props(dialog,['backgroundColor','borderRadius','maxHeight'])}:null};
+ });
+}
 async function fits(page){
  const size=await page.evaluate(()=>({w:innerWidth,scroll:document.documentElement.scrollWidth}));
  assert.ok(size.scroll<=size.w+2,'page overflow '+JSON.stringify(size));
@@ -76,6 +84,8 @@ async function fits(page){
    await intercept(ctx);const page=await ctx.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
    let pane=await openTeam(page);
    assert.match(await pane.locator('.kvl-cpp-summary').innerText(),/1995-06-02/);
+   const teamDesign=await profileDesign(pane);
+   assert.equal(await pane.locator('.kvl-cpp-name').count(),1);
    const bookmark=pane.locator('[data-cpp-bookmark="'+ID+'"]');
    await bookmark.waitFor({timeout:30000});await bookmark.click();await page.waitForFunction(id=>document.querySelector('[data-cpp-bookmark="'+id+'"]')?.getAttribute('aria-pressed')==='true',ID);
    let e=await editor(pane);await e.getByLabel('메모 제목').fill('QA 교차 저장');await e.getByLabel('관찰 메모').fill('QA-only first version');
@@ -84,6 +94,14 @@ async function fits(page){
    await page.goto(PLAYERS,{waitUntil:'domcontentloaded'});
    pane=page.locator('#profileDialog[open]');await pane.waitFor({timeout:30000});
    assert.match(await pane.locator('.kvl-cpp-summary').innerText(),/1995-06-02/);
+   const playerDesign=await profileDesign(pane);
+   const {shell:teamShell,...teamContent}=teamDesign,{shell:playerShell,...playerContent}=playerDesign;
+   assert.deepEqual(playerContent,teamContent,'shared team/player profile visual properties');
+   if(width===1440)assert.deepEqual(playerShell,teamShell,'same desktop dialog shell');
+   assert.equal(await pane.locator('.kvl-cpp-name').count(),1);
+   assert.equal(await pane.locator('iframe').count(),0,'no nested profile page');
+   assert.ok(await pane.locator('.kvl-cpp-section h4').count()>=2,'rich direct detail sections');
+   assert.match(await pane.locator('.kvl-cpp-full-link').getAttribute('href'),/player\.html\?id=/);
    assert.equal(await pane.locator('[data-save-player="'+ID+'"]').getAttribute('aria-pressed'),'true');
    e=await editor(pane);await e.getByText('QA-only first version',{exact:true}).waitFor({timeout:30000});
    await e.getByRole('button',{name:'수정',exact:true}).click();await e.getByLabel('관찰 메모').fill('QA-only updated version');
@@ -95,7 +113,7 @@ async function fits(page){
    await page.waitForFunction(()=>window.KVLTeamRosterPrivateState?.ready===true);
    assert.equal(await page.locator('[data-cpp-note-editor]').count(),0,'signed-out page must not mount private notes');
    assert.equal(await page.locator('[data-cpp-bookmark]').count(),0,'signed-out page must not mount bookmark control');
-   assert.deepEqual(errors,[]);report.push({width,sharedDOB:true,bookmark:true,noteRoundTrip:true,signedOut:true});
+   assert.deepEqual(errors,[]);report.push({width,sharedDOB:true,sharedDesign:true,nativeDetails:true,bookmark:true,noteRoundTrip:true,signedOut:true});
    await ctx.close();
   }
   fs.writeFileSync(path.join(OUT,'kvl-common-profile-browser-report.json'),JSON.stringify({status:'PASS',report},null,2));console.log(report);
