@@ -1,4 +1,5 @@
 import {supabase} from './kvl-supabase-browser-v1.mjs?v=20261124-auth-singleton-v1';
+import {mountProfileNotes} from './kvl-common-profile-notes-v1.mjs?v=20261127-1';
 const PRIVATE_FUNCTION='admin-player-workspace';
 
 function publish(state){
@@ -36,13 +37,17 @@ function renderActions(){
   const id=panel.dataset.kvlCppId;
   if(!/^KVL-P-\d{6}$/.test(id)||window.KVLPlayerIdCollisionV1?.isConflict(id))return;
   panel.querySelector('.kvl-cpp-private')?.remove();
-  if(!state?.authenticated)return;
+  if(!state?.authenticated){panel.querySelector('[data-cpp-note-editor]')?.remove();return;}
   const wrap=document.createElement('div');wrap.className='kvl-cpp-private';
   const button=document.createElement('button');button.type='button';button.dataset.cppBookmark=id;button.disabled=pending.has(id);
   const saved=state.bookmarks.has(id);button.setAttribute('aria-pressed',String(saved));button.textContent=saved?'관심 선수 해제':'관심 선수 등록';
-  const note=document.createElement('a');note.href='players.html?notePlayer='+encodeURIComponent(id);note.textContent=state.notePlayers.has(id)?'메모 추가 · 기존 메모 보기':'내 메모 작성';
-  if(state.notePlayers.has(id)){const existing=document.createElement('a');existing.href='players.html?id='+encodeURIComponent(id);existing.textContent='선수 메모 확인';wrap.append(existing);}
-  wrap.prepend(button,note);panel.append(wrap);
+  wrap.append(button);panel.insertBefore(wrap,panel.querySelector('[data-cpp-note-editor]'));
+  mountProfileNotes(panel,id,{onChange:async()=>{
+   const data=await privateApi('list_notes');
+   if(window.KVLTeamRosterPrivateState!==state||!state.authenticated)return;
+   state.notePlayers=new Set((data.items||[]).map(x=>x.player_id).filter(Boolean));
+   publish(state);
+  }});
  });
 }
 window.addEventListener('kvl:common-profile-linked',renderActions);
