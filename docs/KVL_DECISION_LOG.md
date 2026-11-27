@@ -1155,3 +1155,7 @@ Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 팀 찾기 국
 ## 2026-11-27 · Team Roster Standard v3 공통 선수 상세 팝업
 
 Status: USER APPROVED DESIGN / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용자가 국제대표팀과 국내·해외 프로팀의 디자인·조작을 통일하고 상세 콘텐츠만 분류별로 구성하기로 결정. 기존 PR #438의 821px 이상 전체폭·520px native dialog를 공통 모듈 `KVLTeamRosterStandardV1.createProfilePopup`으로 재사용. 세 렌더러의 원본 상세 콘텐츠·링크 유지, 첫 진입 자동 팝업 없음, 클릭·Enter·닫기·Esc·바깥 클릭·포커스 복귀 공통. V-리그/ SV 7열, 국제 8열·17px 기존 가독성 유지, 가로 스크롤 제거. 모바일 인라인 상세 및 기존 상하 스크롤 연결 유지. V-리그 학교·신인/과거 드래프트·등록 공시, SV 시즌 소속/국적/VB·RECHECK, 국제 연도별 소속/참가 기록을 별도 정보로 유지. Team Finder에만 적용; 대회 페이지·원본 JSON·ID·Drive MASTER·회원/메모 데이터 변경 없음. 검증 PC 1440/900/821, 모바일 390/360, 기존 필터/링크/데이터·실제 Pages QA. Base d369c38b6c7f384434c16e4c81b49bfba2f3d1d2. 별도 운영 반영 승인 전 병합 금지. 복구는 본 PR revert.
+
+## 2026-11-27 · 팀 찾기 공통 카드 전체 클릭 규칙
+
+Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 모든 팀 찾기 카드는 로고·팀명·메타·빈 공간·기존 하단 버튼 클릭 시 기존 native action 하나로 연결한다. V-리그 남녀부/SV는 기존 선택 팀 선수명단 렌더러와 URL, 국제대표팀은 기존 연도별 명단, 대학·중고·대표팀 등 기존 링크형 카드는 원래 연결 목적지(명단이 없는 카테고리에는 새 명단을 생성하지 않음)를 유지. 기존 키보드 조작 유지, 별도 중복 클릭/경로 분기 금지. 데이터·선수 ID·v3 프로필·디자인·카드 3열/2열·모바일 스크롤·대회 페이지·회원 기능 변경 없음. PC 로고/팀명/메타·기존 버튼 키보드, 모바일 390/360px 실제 터치 및 원래 링크 이동, 운영 HTTPS 확인을 QA에 추가. Base b27a10006dae7547a004c7ae82c88de11aab6c25. 별도 운영 반영 승인 전 병합 금지. 복구는 본 PR revert.
