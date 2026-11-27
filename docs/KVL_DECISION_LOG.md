@@ -1159,3 +1159,8 @@ Status: USER APPROVED DESIGN / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용�
 ## 2026-11-27 · 팀 찾기 공통 카드 전체 클릭 규칙
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 모든 팀 찾기 카드는 로고·팀명·메타·빈 공간·기존 하단 버튼 클릭 시 기존 native action 하나로 연결한다. V-리그 남녀부/SV는 기존 선택 팀 선수명단 렌더러와 URL, 국제대표팀은 기존 연도별 명단, 대학·중고·대표팀 등 기존 링크형 카드는 원래 연결 목적지(명단이 없는 카테고리에는 새 명단을 생성하지 않음)를 유지. 기존 키보드 조작 유지, 별도 중복 클릭/경로 분기 금지. 데이터·선수 ID·v3 프로필·디자인·카드 3열/2열·모바일 스크롤·대회 페이지·회원 기능 변경 없음. PC 로고/팀명/메타·기존 버튼 키보드, 모바일 390/360px 실제 터치 및 원래 링크 이동, 운영 HTTPS 확인을 QA에 추가. Base b27a10006dae7547a004c7ae82c88de11aab6c25. 별도 운영 반영 승인 전 병합 금지. 복구는 본 PR revert.
+
+
+## 2026-11-27 · 공통 선수 프로필 v1 — 표시 모듈 1차
+
+Status: USER REQUESTED / PARTIAL IMPLEMENTATION / QA PENDING / NOT DEPLOYED. 선수 찾기와 Team Finder 국내/V리그, SV, 국제의 이름·영문명·POS·신장·DOB 표시를 공통 summary renderer로 연결한다. 선수 찾기의 기존 전체 프로필 iframe은 접힌 상세 영역에 보존하고 기존 개인 기능 API를 재사용한다. 팀별 원본 정보·출처·시즌 소속·기존 ID는 변경하지 않는다. 공통 identity resolution, 팀 팝업 내 개인 기능 쓰기, 데이터 대조 및 브라우저 검증은 미완료. Drive MASTER 검색 접근만 확인, 선수별 원본 대조 NOT VERIFIED. Base a027ad56d59e10edb7913672c0992b71531fd532; branch feature/common-player-profile-v1-20261127. Draft PR only; 사용자 별도 운영 승인 전 병합 금지. 복구: PR 미병합 상태 유지 또는 해당 PR revert.
