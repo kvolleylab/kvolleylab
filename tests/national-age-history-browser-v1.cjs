@@ -36,8 +36,28 @@ async function run(){
       throw Error('Events did not render: '+JSON.stringify(diagnostic)+' | PAGE ERRORS='+JSON.stringify(errors)+' | REQUESTS='+JSON.stringify(requests.slice(0,35))+' | CAUSE='+error.message);
     }
     assert(await page.locator('.event-card').count()>=20,'Historical age events must display');
-    assert(await page.locator('h1').innerText().then(x=>x.includes('남자 연령별')),'Men heading is wrong');
+    assert.equal((await page.locator('h1').innerText()).trim(),'대한민국 연령별 대표팀','Approved HERO title must not be split by gender');
     assert(await page.locator('#ageGenderSwitch').isVisible(),'Gender switch hidden');
+    const hero=page.locator('#ageHero');
+    assert(await hero.isVisible(),'Approved HERO must be present');
+    const heroMetrics=await page.evaluate(async()=>{
+      const el=document.querySelector('#ageHero'),img=el.querySelector('img');
+      await img.decode();
+      const rect=el.getBoundingClientRect();
+      return {width:rect.width,height:rect.height,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
+        currentSrc:img.currentSrc,objectFit:getComputedStyle(img).objectFit};
+    });
+    assert(heroMetrics.naturalWidth>0&&heroMetrics.naturalHeight>0,'HERO must decode in real browser');
+    if(width>=701){
+      assert(Math.abs(heroMetrics.width/heroMetrics.height-1197/304)<.05,
+        'Desktop approved reference should not crop top/bottom: '+JSON.stringify(heroMetrics));
+      assert(heroMetrics.currentSrc.includes('age-hero-approved-pc-v1.svg'));
+    }else{
+      assert(heroMetrics.currentSrc.includes('age-hero-approved-mobile-v1.svg'));
+      assert(heroMetrics.height>=225&&heroMetrics.height<=250,'Mobile hero must preserve readable copy');
+      assert(await page.locator('.kvl-age-hero-live-copy h1').isVisible());
+    }
+    assert(await page.locator('.kvl-age-hero-action').isVisible(),'Visual roadmap CTA is a real link');
     const menu=page.locator('.kvl-global-sidebar');
     await menu.waitFor({timeout:20000});
     const links=await menu.locator('a.kvl-global-sub-link').allTextContents();
@@ -59,8 +79,13 @@ async function run(){
     if(width>=700)assert(measurements.tableWidth>=measurements.rosterWidth-6,'Desktop table must use the whole detail panel: '+JSON.stringify(measurements));
     if(width>=700)assert(measurements.headerRowWidth>=measurements.rosterWidth-8,'Desktop header cells must fill the panel: '+JSON.stringify(measurements));
     if(width<700)assert.equal(measurements.mobileRowDisplay,'grid','Mobile roster must stack into cards');
+    // Capture the actual HERO as users first see it, rather than after the roster expands and scrolls.
+    await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+    await page.waitForTimeout(100);
     const png=path.join(OUT,'kvl-national-age-'+width+'.png');
     await page.screenshot({path:png,fullPage:false});
+    await page.locator('.kvl-age-hero-action').click();
+    assert.equal(new URL(page.url()).hash,'#ageLevelTabs','Roadmap button must take the user to functional age filters');
     await page.locator('#ageLevelTabs button[data-level="U23"]').click();
     assert(await page.locator('.event-card').count()>=1,'U23 filter must show real event');
     await page.locator('[data-age-gender="women"]').click();
@@ -69,7 +94,7 @@ async function run(){
     await page.locator('[data-age-gender="men"]').click();
     assert(await page.locator('.event-card').count()>=1);
     assert.deepEqual(errors,[],'Browser JavaScript exceptions: '+errors.join(' / '));
-    record.views.push({viewport:width+'x'+height,events:'>=20',status:'PASS',metrics:measurements,screenshot:path.basename(png)});
+    record.views.push({viewport:width+'x'+height,events:'>=20',status:'PASS',metrics:measurements,hero:heroMetrics,screenshot:path.basename(png)});
    }finally{await page.close()}
   }
   record.status='PASS';write();console.log(JSON.stringify(record,null,2));

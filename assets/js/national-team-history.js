@@ -42,7 +42,7 @@
     if(notice)notice.hidden=ageGender!=='women';
     document.querySelectorAll('[data-age-gender]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ageGender===ageGender)));
     const title=document.querySelector('.nt-history-wrap h1'),lead=document.querySelector('.nt-history-wrap .lead');
-    if(title)title.textContent='대한민국 '+(ageGender==='women'?'여자':'남자')+' 연령별 대표팀';
+    if(title)title.textContent='대한민국 연령별 대표팀'; // Age-specific gender is shown by the selected functional toggle.
     if(lead)lead.textContent=ageGender==='women'?'공식 자료가 검증된 대회와 명단을 차례로 연결합니다. 아직 구축되지 않은 기록은 미출전과 구분합니다.':'연도와 연령대를 선택해 역대 출전대회, 그 당시 선수명단과 성적을 확인하세요.';
     document.title=(ageGender==='women'?'여자':'남자')+' 연령별 대표팀 | K-Volley Lab';
     const cta=document.getElementById('cohortCta');

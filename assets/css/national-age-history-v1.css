@@ -115,3 +115,139 @@ body.nt-age-mode a:focus-visible,body.nt-age-mode button:focus-visible,body.nt-a
  body.nt-age-mode .event-card>.small{margin:11px 14px 0}
  body.nt-age-mode .event-card>.source-row{margin:14px 14px 15px}
 }
+
+
+/* 2026-11-27 approved screenshot HERO: exact reference composition, not an alternate photo.
+   Source artwork is 3.94:1. The KVL 2108x406/1258x406 assets are rendered responsively.
+   Desktop restores the approved screenshot's proportions; no center-crop of the text/U stages. */
+.kvl-age-hero-media,.kvl-age-hero-action{display:none}
+body.nt-age-mode .kvl-age-reference-hero{
+  position:relative;display:block;width:100%;aspect-ratio:1197 / 304;min-height:0;
+  padding:0!important;border:0!important;border-radius:17px;overflow:hidden;
+  background:#07182d!important;box-shadow:0 12px 28px rgba(7,24,45,.15)!important;
+}
+body.nt-age-mode .kvl-age-reference-hero::before{display:none}
+body.nt-age-mode .kvl-age-hero-media{
+  display:block;position:absolute;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+body.nt-age-mode .kvl-age-hero-media img{
+  display:block;width:100%;height:100%;object-fit:fill;object-position:center;border:0;
+}
+body.nt-age-mode .kvl-age-hero-live-copy{
+  position:absolute;width:1px;height:1px;overflow:hidden;white-space:nowrap;
+  clip-path:inset(50%);padding:0;margin:0;
+}
+body.nt-age-mode .kvl-age-hero-action{
+  display:block;position:absolute;z-index:2;left:4.4%;top:63.7%;width:18.6%;height:14.6%;
+  border-radius:10px;color:transparent;text-decoration:none;
+  background:transparent;border:1px solid transparent;
+}
+body.nt-age-mode .kvl-age-hero-action span{font-size:0}
+body.nt-age-mode .kvl-age-hero-action:hover{
+  background:rgba(227,180,75,.11);border-color:rgba(249,209,112,.65);
+  box-shadow:0 0 0 3px rgba(249,209,112,.12);
+}
+body.nt-age-mode .kvl-age-hero-action:focus-visible{
+  outline:3px solid #ffe3a3;outline-offset:3px;background:rgba(227,180,75,.13);
+}
+/* Existing functional controls recreate the approved screenshot, rather than being painted into the banner. */
+body.nt-age-mode .nt-age-gender-switch{
+  display:inline-flex;width:auto;gap:10px;margin:21px 0 3px;
+  padding:0;border:0;border-radius:0;background:transparent;
+}
+body.nt-age-mode .nt-age-gender-switch button{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-width:198px;min-height:46px;padding:9px 23px;
+  background:#e7edf6;color:#526582;border:1px solid #dfe6ef;border-radius:11px;
+  font-size:14px;font-weight:850;box-shadow:0 4px 10px rgba(27,51,76,.045);
+}
+body.nt-age-mode .nt-age-gender-switch button[data-age-gender="men"]::before{content:"♂";font-size:23px;font-weight:600}
+body.nt-age-mode .nt-age-gender-switch button[data-age-gender="women"]::before{content:"♀";font-size:23px;font-weight:600}
+body.nt-age-mode .nt-age-gender-switch button[aria-pressed="true"]{
+  background:linear-gradient(180deg,#224e7c,#091d36)!important;color:#fff!important;
+  border:2px solid #d3a83e!important;box-shadow:0 5px 13px rgba(13,34,61,.2);
+}
+body.nt-age-mode .age-level-tabs{gap:10px;margin:16px 0 9px}
+body.nt-age-mode .age-level-tabs button{
+  min-width:75px;min-height:41px;padding:9px 18px;border-radius:10px;
+  background:linear-gradient(180deg,#fff,#f4f7fb);border:1px solid #d7e0ea;
+  color:#3b5572;box-shadow:0 4px 9px rgba(15,46,79,.07);
+}
+body.nt-age-mode .age-level-tabs button.active{
+  background:linear-gradient(180deg,#254e7c,#0a1e39)!important;
+  border:2px solid #d0a540!important;color:#fff!important;
+}
+body.nt-age-mode .summary-grid{gap:14px}
+body.nt-age-mode .summary-card{
+  display:grid;grid-template-columns:43px minmax(0,1fr);
+  grid-template-rows:auto auto;column-gap:11px;align-content:center;align-items:center;
+  min-height:87px;padding:16px 19px;border-radius:15px;
+  box-shadow:0 6px 18px rgba(27,48,73,.07)!important;
+}
+body.nt-age-mode .summary-card::before{
+  content:"";grid-column:1;grid-row:1 / span 2;width:35px;height:35px;
+  background-position:center;background-repeat:no-repeat;background-size:contain;
+}
+body.nt-age-mode .summary-card:nth-child(1)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='M8 4h8v8a4 4 0 0 1-8 0V4Z M8 6H5v3a4 4 0 0 0 3 4 M16 6h3v3a4 4 0 0 1-3 4 M12 16v4 M8 21h8'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card:nth-child(2)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6'%3E%3Ccircle cx='9' cy='8' r='3.1'/%3E%3Cpath d='M3 20v-2a6 6 0 0 1 12 0v2 M17 5a3 3 0 0 1 0 6 M18 14a5 5 0 0 1 3 4v2'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card:nth-child(3)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='m12 2 9 5-9 5-9-5 9-5Z M3 12l9 5 9-5 M3 17l9 5 9-5'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card:nth-child(4)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M7 2v6M17 2v6M3 10h18'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card strong{grid-column:2;grid-row:1;font-size:23px;line-height:1.12;color:#17395c}
+body.nt-age-mode .summary-card span{grid-column:2;grid-row:2;margin-top:5px;font-size:11px;font-weight:700}
+@media(max-width:700px){
+  body.nt-age-mode .kvl-age-reference-hero{
+    aspect-ratio:auto;height:238px;min-height:238px;border-radius:14px;
+  }
+  body.nt-age-mode .kvl-age-hero-media img{
+    object-fit:cover;object-position:right center;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy{
+    position:absolute;z-index:1;top:19px;left:17px;right:78px;
+    width:auto;height:auto;overflow:visible;white-space:normal;clip-path:none;
+    text-align:left;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy .eyebrow{
+    color:#edc76b!important;font-size:8px;letter-spacing:.12em;
+    line-height:1.55;text-shadow:0 1px 3px #07182d;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy h1{
+    color:#fff!important;font-size:clamp(20px,5.3vw,27px)!important;
+    margin:9px 0 8px;line-height:1.27;letter-spacing:-.5px;
+    text-shadow:0 2px 4px #07182d;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy .lead{
+    color:#eaf1fb!important;font-size:11px;line-height:1.5;
+    max-width:95%;text-shadow:0 1px 2px #07182d;
+  }
+  body.nt-age-mode .kvl-age-hero-action{
+    display:flex;align-items:center;justify-content:center;left:17px;top:auto;
+    bottom:17px;width:auto;height:38px;padding:0 14px;
+    border:1.5px solid #e6bf69;border-radius:8px;
+    background:rgba(7,24,45,.58);box-shadow:0 2px 11px rgba(0,0,0,.16);
+    color:#ffe1a0;
+  }
+  body.nt-age-mode .kvl-age-hero-action span{font-size:11px;font-weight:850}
+  body.nt-age-mode .nt-age-gender-switch{
+    display:flex;width:100%;gap:8px;margin:15px 0 3px;
+  }
+  body.nt-age-mode .nt-age-gender-switch button{
+    flex:1;min-width:0;min-height:43px;padding:8px 7px;font-size:12px;gap:5px;
+  }
+  body.nt-age-mode .nt-age-gender-switch button::before{font-size:19px!important}
+  body.nt-age-mode .age-level-tabs{
+    display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;
+    margin-top:12px;padding:3px 1px 9px;
+  }
+  body.nt-age-mode .age-level-tabs button{
+    min-width:62px;min-height:38px;padding:7px 12px;
+  }
+  body.nt-age-mode .summary-grid{gap:9px}
+  body.nt-age-mode .summary-card{
+    grid-template-columns:32px minmax(0,1fr);
+    min-height:78px;padding:12px 10px;column-gap:7px;
+  }
+  body.nt-age-mode .summary-card::before{width:29px;height:29px}
+  body.nt-age-mode .summary-card strong{font-size:17px}
+  body.nt-age-mode .summary-card span{font-size:10px;line-height:1.3}
+}
