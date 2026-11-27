@@ -1,5 +1,6 @@
 /* KVL national age-team history — scoped to age view; existing cohort/senior styles remain untouched. */
-body.nt-age-mode{--nt-bg:#f4f7fb;--nt-deep:#eef3f8;--nt-panel:#fff;--nt-line:#dce4ed;--nt-gold:#956b18;--nt-mint:#147d73;--nt-text:#172033;--nt-muted:#586a7f}
+body.nt-age-mode{--nt-bg:#f4f7fb;--nt-deep:#eef3f8;--nt-panel:#fff;--nt-line:#dce4ed;--nt-gold:#956b18;--nt-mint:#147d73;--nt-text:#172033;--nt-muted:#586a7f;--team:#234e83;--team-soft:#edf4fb;--team-border:#cadbed}
+body.nt-age-mode[data-gender="women"]{--team:#8e315e;--team-soft:#fff1f6;--team-border:#e4bed0}
 body.nt-age-mode .nt-history-wrap{box-sizing:border-box;max-width:1180px;padding:28px 20px 80px;color:#172033}
 body.nt-age-mode .nt-history-breadcrumb{display:flex;align-items:center;gap:10px;color:#75869a;font-size:12px;font-weight:700;margin:0 0 15px}
 body.nt-age-mode .nt-history-breadcrumb a{color:#4d6682;text-decoration:none}
@@ -151,32 +152,51 @@ body.nt-age-mode .kvl-age-hero-action:hover{
 body.nt-age-mode .kvl-age-hero-action:focus-visible{
   outline:3px solid #ffe3a3;outline-offset:3px;background:rgba(227,180,75,.13);
 }
-/* Existing functional controls recreate the approved screenshot, rather than being painted into the banner. */
+/* Match the existing national-team-home-v2 .gender-switch system exactly:
+   transparent inactive tabs, single team-color selected tab, no decorative
+   gold outline / gradient / gender glyphs. Men = navy, women = rose. */
 body.nt-age-mode .nt-age-gender-switch{
-  display:inline-flex;width:auto;gap:10px;margin:21px 0 3px;
-  padding:0;border:0;border-radius:0;background:transparent;
+  display:flex;width:max-content;max-width:100%;gap:4px;margin:21px 0 3px;
+  padding:4px;border:0;border-radius:10px;background:#e7edf3;
 }
 body.nt-age-mode .nt-age-gender-switch button{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  min-width:198px;min-height:46px;padding:9px 23px;
-  background:#e7edf6;color:#526582;border:1px solid #dfe6ef;border-radius:11px;
-  font-size:14px;font-weight:850;box-shadow:0 4px 10px rgba(27,51,76,.045);
+  display:inline-flex;align-items:center;justify-content:center;gap:0;
+  min-width:0;min-height:42px;padding:11px 25px;
+  background:transparent!important;color:#617185!important;
+  border:0!important;border-radius:7px;
+  box-shadow:none!important;font-size:14px;font-weight:800;line-height:normal;
 }
-body.nt-age-mode .nt-age-gender-switch button[data-age-gender="men"]::before{content:"♂";font-size:23px;font-weight:600}
-body.nt-age-mode .nt-age-gender-switch button[data-age-gender="women"]::before{content:"♀";font-size:23px;font-weight:600}
+body.nt-age-mode .nt-age-gender-switch button::before{
+  content:none!important;display:none!important;
+}
+body.nt-age-mode .nt-age-gender-switch button:hover:not([aria-pressed="true"]){
+  background:rgba(255,255,255,.48)!important;color:var(--team)!important;
+}
 body.nt-age-mode .nt-age-gender-switch button[aria-pressed="true"]{
-  background:linear-gradient(180deg,#224e7c,#091d36)!important;color:#fff!important;
-  border:2px solid #d3a83e!important;box-shadow:0 5px 13px rgba(13,34,61,.2);
+  background:var(--team)!important;color:#fff!important;border:0!important;
+  box-shadow:0 3px 7px rgba(24,51,76,.1)!important;
 }
-body.nt-age-mode .age-level-tabs{gap:10px;margin:16px 0 9px}
+body.nt-age-mode .nt-age-gender-switch button:focus-visible,
+body.nt-age-mode .age-level-tabs button:focus-visible,
+body.nt-age-mode .toolbar select:focus-visible{
+  outline:3px solid var(--team)!important;outline-offset:2px;
+}
+/* Age filters use the shared flat filter-chip language; the active tab
+   inherits the current division's identity, rather than staying navy. */
+body.nt-age-mode .age-level-tabs{gap:7px;margin:16px 0 9px}
 body.nt-age-mode .age-level-tabs button{
-  min-width:75px;min-height:41px;padding:9px 18px;border-radius:10px;
-  background:linear-gradient(180deg,#fff,#f4f7fb);border:1px solid #d7e0ea;
-  color:#3b5572;box-shadow:0 4px 9px rgba(15,46,79,.07);
+  min-width:68px;min-height:38px;height:auto;padding:9px 15px;
+  border:1px solid #d8e1eb;border-radius:9px;
+  background:#fff!important;color:#617287!important;box-shadow:none!important;
+  font-size:13px;font-weight:800;
 }
-body.nt-age-mode .age-level-tabs button.active{
-  background:linear-gradient(180deg,#254e7c,#0a1e39)!important;
-  border:2px solid #d0a540!important;color:#fff!important;
+body.nt-age-mode .age-level-tabs button:hover:not([aria-pressed="true"]){
+  background:var(--team-soft)!important;color:var(--team)!important;border-color:var(--team-border);
+}
+body.nt-age-mode .age-level-tabs button.active,
+body.nt-age-mode .age-level-tabs button[aria-pressed="true"]{
+  background:var(--team)!important;border:1px solid var(--team)!important;
+  color:#fff!important;box-shadow:none!important;
 }
 body.nt-age-mode .summary-grid{gap:14px}
 body.nt-age-mode .summary-card{
@@ -229,12 +249,13 @@ body.nt-age-mode .summary-card span{grid-column:2;grid-row:2;margin-top:5px;font
   }
   body.nt-age-mode .kvl-age-hero-action span{font-size:11px;font-weight:850}
   body.nt-age-mode .nt-age-gender-switch{
-    display:flex;width:100%;gap:8px;margin:15px 0 3px;
+    width:100%;max-width:280px;gap:2px;margin:15px 0 3px;padding:3px;
+    background:#e7edf3;border-radius:10px;
   }
   body.nt-age-mode .nt-age-gender-switch button{
-    flex:1;min-width:0;min-height:43px;padding:8px 7px;font-size:12px;gap:5px;
+    flex:1;min-width:0;min-height:39px;padding:9px 7px;
+    font-size:12px;gap:0;border-radius:7px;
   }
-  body.nt-age-mode .nt-age-gender-switch button::before{font-size:19px!important}
   body.nt-age-mode .age-level-tabs{
     display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;
     margin-top:12px;padding:3px 1px 9px;
@@ -250,4 +271,31 @@ body.nt-age-mode .summary-card span{grid-column:2;grid-row:2;margin-top:5px;font
   body.nt-age-mode .summary-card::before{width:29px;height:29px}
   body.nt-age-mode .summary-card strong{font-size:17px}
   body.nt-age-mode .summary-card span{font-size:10px;line-height:1.3}
+}
+
+/* Division-specific accent consistency with the main national-team page.
+   Approved gold HERO artwork remains unchanged when switching gender. */
+body.nt-age-mode .summary-card strong{color:var(--team)}
+body.nt-age-mode .nt-age-quality,
+body.nt-age-mode .nt-age-roster-details>summary{
+  color:var(--team);
+}
+body.nt-age-mode .nt-age-roster-details>summary:hover{background:var(--team-soft)}
+body.nt-age-mode .nt-age-roster-details td a:not(.cohort-link){color:var(--team)}
+body.nt-age-mode .event-card>.source-row a,
+body.nt-age-mode .cohort-cta{color:var(--team)}
+body.nt-age-mode .event-card.is-target{border-color:var(--team-border);box-shadow:0 0 0 2px var(--team-soft)}
+body.nt-age-mode .toolbar select:focus{border-color:var(--team)}
+body.nt-age-mode[data-gender="women"] .nt-age-notice{
+  border-color:#e4bed0;border-left-color:var(--team);
+  background:var(--team-soft);color:#79304f;
+}
+body.nt-age-mode[data-gender="women"] .empty{
+  border-color:#e4bed0;background:var(--team-soft);color:#79304f;
+}
+body.nt-age-mode[data-gender="women"] .result-badge{
+  border-color:#e4bed0;background:var(--team-soft);color:var(--team);
+}
+body.nt-age-mode[data-gender="women"] .nt-age-roster-details>summary{
+  background:var(--team-soft);
 }
