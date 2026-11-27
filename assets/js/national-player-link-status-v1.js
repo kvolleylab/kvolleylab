@@ -28,7 +28,9 @@
         row.dataset.idPendingRow='true';
         coverage.appendChild(row);
       }
-      row.innerHTML=`<span>Player ID 연결대기</span><b data-status="research_queue">${queue.size}명</b>`;
+      // Avoid the childList observer repeatedly rewriting its own row.
+      if(row.querySelector('b')?.textContent!==String(queue.size)+'명')
+        row.innerHTML=`<span>Player ID 연결대기</span><b data-status="research_queue">${queue.size}명</b>`;
     }
   }
   function applyCohort(){
@@ -44,7 +46,8 @@
     const year=Number(document.getElementById('birthYearFilter')?.value||0);
     if(summary&&year){
       const pending=[...queue.values()].filter(x=>Number(String(x.birth_date||'').slice(0,4))===year).length;
-      summary.textContent=summary.textContent.replace(/ · ID 연결대기 \d+명$/,'')+(pending?` · ID 연결대기 ${pending}명`:'');
+      const next=summary.textContent.replace(/ · ID 연결대기 \d+명$/,'')+(pending?` · ID 연결대기 ${pending}명`:'');
+      if(summary.textContent!==next)summary.textContent=next;
     }
   }
   const apply=()=>{applyHistory();applyCohort();};

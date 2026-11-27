@@ -1,5 +1,13 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-27 · 국가대표팀 성인 중복 메뉴 정리 및 연령별 기록 활성화 v1
+
+Status: USER REQUESTED / IMPLEMENTED ON FEATURE BRANCH / NOT DEPLOYED.
+사용자는 국가대표팀의 `성인 대표팀`과 `연령별 대표팀` 메뉴가 미활성 상태여서 운영 필요성을 문의한 뒤, 성인 중복 메뉴는 숨기고 연령별 대표팀 기록을 활성화하는 방향으로 진행을 지시했다. 기존 운영 `national-team.html`이 성인 대표팀 최신 대회·명단 역할을 맡고, `olympic-roadmap.html`이 장기 역사형 기록을 제공하므로 사이드바의 독립 `성인 대표팀` 메뉴만 제외한다. 기존 성인 히스토리 URL은 보존한다. 연령별은 기존 자료(2010~2025 일부 등록 기록)를 활용해 U16~U23 필터·연도·남녀 선택·대회·선수/세대 링크·당시 소속 및 검증 상태로 읽기 편하게 구성한다. 여자부는 현재 등록된 자료가 없음을 분명하게 안내하며 미참가로 단정하지 않는다.
+
+기준 main `d41bea478d850806b2f51d4d1932357ec45b7f28`, 브랜치 `feature/national-age-history-menu-v1-20261127`. 기존 경기/선수 원장·ID·Supabase·개인 메모·로드맵·대회 JSON 쓰기는 변경하지 않는다. 원본 MASTER의 Google Drive 직접 대조는 NOT VERIFIED, UI 및 소스 불변 테스트/브라우저 증거를 PR에서 확인. 운영 병합과 배포는 명시적 별도 승인 전까지 금지. [검증·영향·복구](validation/national-age-history-navigation-v1-20261127.md).
+
+
 ## 2026-11-26 · 오늘 경기 우선 순서 통일 및 KST 자정 전환 v1
 
 Status: USER REPORTED BUG / IMPLEMENTED ON FEATURE BRANCH / PRODUCTION NOT YET APPROVED OR VERIFIED.
