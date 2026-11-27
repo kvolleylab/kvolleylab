@@ -11,6 +11,8 @@ on:
       - 'assets/js/national-player-link-status-v1.js'
       - 'player-cohort.html'
       - 'assets/css/national-age-history-v1.css'
+      - 'assets/img/national-team/age-hero-approved-pc-v1.svg'
+      - 'assets/img/national-team/age-hero-approved-mobile-v1.svg'
       - 'tests/national-age-history-v1.test.cjs'
       - 'tests/national-age-history-browser-v1.cjs'
       - '.github/workflows/kvl-national-age-qa-v1.yml'
