@@ -56,3 +56,6 @@ html[data-kvl-auth="admin"] .private-label{color:#456b89}
   .note-header{display:grid;gap:8px}.note-header .note-date{text-align:left}
   .note-actions{justify-content:flex-end}
 }
+
+/* Common profile summary first; legacy full detail remains available. */
+.profile-dialog{width:min(520px,calc(100vw - 24px));height:auto;max-height:85dvh;overflow:auto;background:#f8fbfd}.profile-dialog #profileContent{height:auto;display:block;padding:15px}.profile-dialog .dialog-top{padding:0 0 12px}.profile-dialog .kvl-cpp-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.profile-dialog .kvl-cpp-full summary{cursor:pointer;padding:12px 0;font-weight:700}.profile-dialog .kvl-cpp-full .profile-frame{height:65dvh;min-height:300px;width:100%}
