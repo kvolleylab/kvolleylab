@@ -38,6 +38,7 @@
     const switcher=document.getElementById('ageGenderSwitch'),notice=document.getElementById('ageGenderNotice');
     if(scope!=='age')return;
     document.body.classList.add('nt-age-mode');
+    document.body.dataset.gender=ageGender;
     if(switcher)switcher.hidden=false;
     if(notice)notice.hidden=ageGender!=='women';
     document.querySelectorAll('[data-age-gender]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ageGender===ageGender)));
