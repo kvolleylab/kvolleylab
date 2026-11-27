@@ -80,6 +80,7 @@ test('14 professional club cards read their counts from publisher-owned rosters,
    assert.ok(t.coach&&t.coachSource.startsWith('https://'));
    assert.ok(t.href.includes('team='+t.code));
    assert.match(dir.cardMarkup(t),new RegExp('data-ktd-roster="'+t.code+'"'));
+   assert.match(dir.cardMarkup(t),/data-ktd-card-click/,'Every V-League card uses the shared whole-card action');
   }
  }
  assert.equal(JSON.stringify({male,menRosters,female,womenRosters}),before,'directory must not mutate official rosters');
@@ -161,6 +162,7 @@ test('SV.LEAGUE 2026-27 is a 12-team immutable season snapshot with 211 direct V
   assert.match(card,/ktd-team-logo-image/);
   assert.ok(card.includes(t.logo));
   assert.match(card,new RegExp('data-ktd-roster="'+t.code+'"'));
+  assert.match(card,/data-ktd-card-click/,'SV cards use the same whole-card action');
  }
  assert.equal(total,211);assert.equal(direct,211);assert.equal(recheck,5);
  assert.equal(json('data/team-rosters/sv-league/2026-27/tokyo.json').players.filter(p=>p.status==='RECHECK').length,4);
@@ -226,4 +228,16 @@ test('team page replaces placeholder and only references existing shared roster 
  assert.ok(!html.includes('분류해 제공할 예정입니다'));
  assert.match(css,/grid-template-columns:31%/);
  assert.match(css,/\.ktd-gender\[hidden\]/);
+});
+
+test('Whole-card action retains the original native destination for every team type',()=>{
+ for(const type of ['university','high','middle','national','international']){
+  const html=dir.cardMarkup({type,code:'TEST',name:'검증팀',action:'link',href:'competition-engine.html?competition=university-league-women-2026&view=rosters&team=TEST'});
+  assert.match(html,/data-ktd-card-click/);
+  assert.match(html,/<a class="ktd-card-action" href="competition-engine\.html\?competition=university-league-women-2026&amp;view=rosters&amp;team=TEST"/);
+ }
+ const country=dir.cardMarkup({type:'international',code:'JPN',name:'일본',action:'country'});
+ assert.match(country,/data-ktd-card-click/);
+ assert.match(country,/data-ktd-country="JPN"/);
+ assert.match(country,/role="button" tabindex="0"/);
 });
