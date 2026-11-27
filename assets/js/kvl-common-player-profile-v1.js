@@ -1,4 +1,4 @@
-/* KVL common profile presentation v1. No identity resolution or private writes. */
+/* KVL common profile presentation and fail-closed identity resolution v1. No private writes. */
 (function(root){
 'use strict';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -12,9 +12,22 @@ function summary(p){
 const validId=id=>/^KVL-P-\d{6}$/.test(String(id||''));
 const key=v=>String(v||'').normalize('NFKC').trim().toLowerCase().replace(/\s+/g,' ');
 const vbKey=v=>String(v||'').match(/^https:\/\/(?:www\.)?volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p(\d+)\/?$/i)?.[1]||'';
+function conflictingIds(records){
+ const blocked=new Set(),groups=new Map();
+ for(const p of records||[]){if(!validId(p.playerId))continue;const group=groups.get(p.playerId)||[];group.push(p);groups.set(p.playerId,group)}
+ for(const [id,group] of groups){
+  for(let i=0;i<group.length;i++)for(let j=i+1;j<group.length;j++){
+   const a=group[i],b=group[j];
+   const sharedName=(key(a.nameKo)&&key(a.nameKo)===key(b.nameKo))||(key(a.nameEn)&&key(a.nameEn)===key(b.nameEn));
+   const bothNamed=!!(key(a.nameKo)||key(a.nameEn))&&!!(key(b.nameKo)||key(b.nameEn));
+   if((a.gender&&b.gender&&a.gender!==b.gender)||(a.birthDate&&b.birthDate&&a.birthDate!==b.birthDate)||(bothNamed&&!sharedName)||(vbKey(a.volleybox)&&vbKey(b.volleybox)&&vbKey(a.volleybox)!==vbKey(b.volleybox)))blocked.add(id);
+  }
+ }
+ return blocked;
+}
 function resolve(catalog,ref){
  if(!Array.isArray(catalog)||!ref)return null;
- const blocked=id=>root.KVLPlayerIdCollisionV1?.isConflict(id)||!root.KVLPlayerIdCollisionV1;
+ const blocked=id=>root.KVLPlayerIdCollisionV1?.isConflict(id)||!root.KVLPlayerIdCollisionV1||root.KVLCommonProfileBlockedIds?.has(id);
  const nameMatch=p=>!!((key(ref.name)&&key(ref.name)===key(p.nameKo))||(key(ref.en)&&key(ref.en)===key(p.nameEn)));
  let matches=[];
  if(ref.id){
@@ -27,6 +40,7 @@ function resolve(catalog,ref){
  const p=matches[0];
  if(!validId(p.playerId)||blocked(p.playerId)||!nameMatch(p)||!ref.gender||ref.gender!==p.gender)return null;
  if(ref.dob&&p.birthDate&&ref.dob!==p.birthDate)return null;
+ if(vbKey(ref.vb)&&vbKey(p.volleybox)&&vbKey(ref.vb)!==vbKey(p.volleybox))return null;
  if(!ref.id&&(!vbKey(p.volleybox)||!key(ref.en)||key(ref.en)!==key(p.nameEn)))return null;
  if(ref.id&&!ref.verified&&(!ref.dob||!p.birthDate||ref.dob!==p.birthDate))return null;
  return p;
@@ -49,5 +63,5 @@ function attach(detail,ref){
   root.dispatchEvent(new CustomEvent('kvl:common-profile-linked',{detail:{id:p.playerId}}));
  }).catch(()=>{if(status.isConnected)status.textContent='공통 선수 정보 조회 실패 · 원본 명단 정보 유지'});
 }
-root.KVLCommonPlayerProfileV1=Object.freeze({summary,resolve,idFromHref,attach});
+root.KVLCommonPlayerProfileV1=Object.freeze({summary,resolve,conflictingIds,idFromHref,attach});
 })(globalThis);
