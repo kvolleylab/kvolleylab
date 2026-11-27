@@ -1,5 +1,13 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-27 · 연령별 대표팀 HERO 첫 번째 승인 시안 동일 적용 v2
+
+Status: USER APPROVED DESIGN / IMPLEMENTED ON FIX BRANCH / PENDING QA & PAGES VERIFICATION.
+사용자는 첫 번째 시안 스크린샷과 **동일한** HERO를 홈페이지에서 직접 보여달라고 요청했고, 이전에 생성한 다른 이미지와 카드 가로세로 비율이 다르다고 지적했다. 기존 홈 카드의 이미지 자산 픽셀 PC `2108×406`, 모바일 `1258×406`을 유지하되, PC의 실제 HERO 표시 비율은 사용자 승인 시안 약 `1197×304`에 일치시키고 글씨·선수·태극기·U16→U23 상승 곡선이 **모두 보여야 한다**. 모바일은 별도 이미지를 쓰고 제목/CTA를 실제 HTML으로 표시. 이미지 안 버튼처럼 보이는 `연령별 로드맵 보기`는 `#ageLevelTabs`로 이동하는 작동 가능한 클릭 영역. 아래 남녀 선택/U 필터·통계 카드 스타일도 선택 시안과 통일. 경기·선수 데이터/회원 원장은 변경하지 않는다.
+
+기준 main `c5455085ed13f1bb95edae8a0781476a32d45735`; [검증·복구](validation/national-age-hero-approved-v2-20261127.md). 2026-11-27의 최신 사용자 운영 반영 요청을 이번 변경의 명시 승인으로 간주하되, 실제 검증 성공과 운영 배포 결과를 PR 기록으로 남긴다.
+
+
 ## 2026-11-27 · 국가대표팀 성인 중복 메뉴 정리 및 연령별 기록 활성화 v1
 
 Status: USER REQUESTED / IMPLEMENTED ON FEATURE BRANCH / NOT DEPLOYED.
