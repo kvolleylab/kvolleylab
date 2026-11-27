@@ -2,7 +2,7 @@
 (function(root){
 'use strict';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fact=(label,value,link)=>'<div><dt>'+esc(label)+'</dt><dd>'+ (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+esc(value)+'</a>':esc(value||'미확인'))+'</dd></div>';
+const fact=(label,value,link)=>'<div><dt>'+esc(label)+'</dt><dd'+(label==='국적'?' data-nationality':'')+'>'+ (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+esc(value)+'</a>':esc(value||'미확인'))+'</dd></div>';
 const safeUrl=v=>/^https:\/\/[a-z0-9.-]+(?:\/|$)[^\s<>"']*$/i.test(String(v||''))?String(v):'';
 const vbUrl=v=>/^https:\/\/(?:(?:www|women)\.)?volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(v||''))?String(v):'';
 function summary(p){
@@ -19,6 +19,8 @@ function mountSummary(detail,p,header){
  previous.insertAdjacentHTML('beforebegin',summary(p));
  const panel=previous.previousElementSibling;
  const close=previous.querySelector('button');
+ const flag=detail.querySelector('.kvl-rs-flag,.kvl-lr-flag-image');
+ if(flag){const copy=flag.cloneNode(true);copy.classList.add('kvl-cpp-nationality-flag');panel.querySelector('[data-nationality]')?.prepend(copy);}
  if(close){close.classList.add('kvl-cpp-close');panel.querySelector('.kvl-cpp-name').append(close)}
  previous.remove();detail.classList.add('kvl-cpp-detail');
  return panel;
@@ -94,8 +96,10 @@ function attach(detail,ref){
   const p=resolve(catalog,ref);
   if(!p){status.textContent='공통 선수 ID 미확인 · 원본 명단 정보 유지';return}
   // Master identity fields fill gaps only. A roster's measured height, registration position and season affiliation are never replaced.
-  const merged={...ref,name:p.nameKo||ref.name||p.nameEn,en:p.nameEn||ref.en,dob:p.birthDate||ref.dob,height:ref.height||p.height,position:ref.position||p.rawPosition,nationality:ref.nationality||p.nationality};
+  const merged={...ref,name:p.nameKo||ref.name||p.nameEn,en:p.nameEn||ref.en,dob:p.birthDate||ref.dob,height:ref.height||p.height,position:ref.position||p.rawPosition,nationality:ref.nationality||p.nationality,vb:ref.vb||p.volleybox};
   const close=panel.querySelector('.kvl-cpp-close');const flag=panel.querySelector('.kvl-cpp-nationality-flag');panel.insertAdjacentHTML('beforebegin',summary(merged));const next=panel.previousElementSibling;if(close)next.querySelector('.kvl-cpp-name').append(close);if(flag)next.querySelector('.kvl-cpp-facts dd[data-nationality]')?.prepend(flag);panel.remove();
+  const extra=details(p,{omit:ref.omitDetails||[]});if(extra){detail.insertAdjacentHTML('beforeend',extra);}
+  detail.append(status);
   status.replaceChildren();
   const link=document.createElement('a');link.href='players.html?id='+encodeURIComponent(p.playerId);link.textContent='공통 선수 프로필';status.append(link);
   status.dataset.kvlCppId=p.playerId;
