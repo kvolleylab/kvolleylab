@@ -264,7 +264,7 @@ function createProfilePopup(host,detail,{dismiss,legacyClass=''}={}){
  const dialog=doc.createElement('dialog');
  if(!desktop||typeof dialog.showModal!=='function')return null;
  const columns=detail.parentElement;
- dialog.className='kvl-roster-profile-dialog'+(legacyClass?' '+legacyClass:'');
+ dialog.className='kvl-roster-profile-dialog kvl-cpp-dialog'+(legacyClass?' '+legacyClass:'');
  dialog.setAttribute('aria-label','선수 상세 프로필');
  columns.appendChild(dialog);
  const isDesktop=()=>desktop.matches;
