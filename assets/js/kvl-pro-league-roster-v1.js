@@ -142,6 +142,7 @@ function render(host,team,display={}){
    (!p.ko&&translated(p)?'<p class="kvl-lr-transliteration">한글명: 음역 표기 (검수 전)</p>':'')+
    '<a href="'+esc(volleybox(p))+'" target="_blank" rel="noopener noreferrer">VB-&gt;</a>';
   if(popup&&globalThis.KVLCommonPlayerProfileV1){const head=detail.querySelector('.kvl-lr-detail-head');if(head){head.querySelector('h4')?.remove();head.insertAdjacentHTML('afterend',globalThis.KVLCommonPlayerProfileV1.summary({name:title(p),en:p.en,affiliation:team.team.name,affiliationLabel:'시즌 소속 · '+team.season,position:p.pos,height:height(p),nationality:nationality(p),number:p.no}));for(const paragraph of [...detail.querySelectorAll(':scope > p')].slice(0,2))paragraph.remove();}}
+  if(popup)globalThis.KVLCommonPlayerProfileV1?.attach(detail,{name:title(p),en:p.en,gender:'M',vb:volleybox(p),position:p.pos,height:height(p),nationality:nationality(p),number:p.no,affiliation:team.team.name,affiliationLabel:'시즌 소속 · '+team.season});
   paint();detail.hidden=false;popup?.sync();if(!desktop()&&matchMedia('(max-width:920px)').matches)detail.scrollIntoView({block:'nearest'});
  }
  host.onclick=e=>{
