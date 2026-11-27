@@ -125,3 +125,11 @@ test('age CSS is scoped and mobile roster uses stacked view rather than 690px sc
   assert(css.includes('overflow:visible'));
   assert(html.includes('20261127-age-v1'));
 });
+
+test('national ID-link status observer is idempotent when roster DOM does not change',()=>{
+  const status=read('assets/js/national-player-link-status-v1.js');
+  assert(status.includes("if(row.querySelector('b')?.textContent!==String(queue.size)+'명')"));
+  assert(status.includes('if(summary.textContent!==next)summary.textContent=next;'));
+  assert(html.includes('20261127-observer-v1'));
+  assert(read('player-cohort.html').includes('20261127-observer-v1'));
+});
