@@ -48,13 +48,16 @@ body.nt-age-mode .nt-age-roster-details .table-scroll{overflow-x:auto;border:0;b
 body.nt-age-mode .nt-roster-caption{font-size:0;line-height:0;height:0;padding:0;margin:0;position:absolute;overflow:hidden}
 body.nt-age-mode .nt-age-roster-details .table-scroll{width:100%}
 body.nt-age-mode .nt-age-roster-details table{min-width:690px;width:100%!important;table-layout:fixed;border-collapse:collapse;background:#fff}
-body.nt-age-mode .nt-age-roster-details th:nth-child(1){width:7%}
-body.nt-age-mode .nt-age-roster-details th:nth-child(2){width:20%}
-body.nt-age-mode .nt-age-roster-details th:nth-child(3){width:15%}
-body.nt-age-mode .nt-age-roster-details th:nth-child(4){width:9%}
-body.nt-age-mode .nt-age-roster-details th:nth-child(5){width:9%}
-body.nt-age-mode .nt-age-roster-details th:nth-child(6){width:24%}
-body.nt-age-mode .nt-age-roster-details th:nth-child(7){width:16%}
+/* Desktop table rows occupy the full panel instead of shrinking to intrinsic cell widths. */
+@media(min-width:701px){
+ body.nt-age-mode .nt-age-roster-details table,
+ body.nt-age-mode .nt-age-roster-details thead,
+ body.nt-age-mode .nt-age-roster-details tbody{display:block;width:100%!important}
+ body.nt-age-mode .nt-age-roster-details thead tr,
+ body.nt-age-mode .nt-age-roster-details tbody tr{display:grid;width:100%;grid-template-columns:7% 20% 15% 9% 9% 24% 16%;align-items:center}
+ body.nt-age-mode .nt-age-roster-details th,
+ body.nt-age-mode .nt-age-roster-details td{min-width:0;overflow-wrap:anywhere}
+}
 body.nt-age-mode .nt-age-roster-details th{background:#f2f6f9;color:#536b83;font-size:11px;white-space:nowrap}
 body.nt-age-mode .nt-age-roster-details td{font-size:12px;color:#283c52;line-height:1.45}
 body.nt-age-mode .nt-age-roster-details th,body.nt-age-mode .nt-age-roster-details td{padding:10px 12px;border-color:#e7edf2}
