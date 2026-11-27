@@ -60,7 +60,10 @@
     url.searchParams.delete('event');
     url.searchParams.delete('level');
     history.replaceState(history.state,'',url);
-    yearFilter.value='all';fillYears();syncAgeTabs();updateAgeGender();coverage();render();
+    yearFilter.value='all';fillYears();syncAgeTabs();
+    // Keep the reset '전체' chip visible on mobile after a previously scrolled U23 tab.
+    const tabs=document.getElementById('ageLevelTabs');if(tabs)tabs.scrollLeft=0;
+    updateAgeGender();coverage();render();
   }
   function setup(){
     if(scope==='age'){
