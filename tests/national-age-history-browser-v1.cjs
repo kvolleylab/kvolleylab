@@ -51,9 +51,11 @@ async function run(){
     const measurements=await page.evaluate(()=>({
      viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
      rosterWidth:document.querySelector('.nt-age-roster-details')?.getBoundingClientRect().width,
+     tableWidth:document.querySelector('.nt-age-roster-details table')?.getBoundingClientRect().width,
      mobileRowDisplay:getComputedStyle(document.querySelector('.nt-age-roster-details tbody tr')).display
     }));
     assert(measurements.documentWidth<=width+2,'Horizontal viewport overflow '+width+': '+JSON.stringify(measurements));
+    if(width>=700)assert(measurements.tableWidth>=measurements.rosterWidth-6,'Desktop table must use the whole detail panel: '+JSON.stringify(measurements));
     if(width<700)assert.equal(measurements.mobileRowDisplay,'grid','Mobile roster must stack into cards');
     const png=path.join(OUT,'kvl-national-age-'+width+'.png');
     await page.screenshot({path:png,fullPage:false});
