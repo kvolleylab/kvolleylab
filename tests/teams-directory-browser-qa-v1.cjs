@@ -227,7 +227,8 @@ async function main(){
   const okCard=page.locator('.ktd-card').filter({hasText:'OK저축은행'}).first();
   assert.match(await okCard.innerText(),/감독대행\s*:\s*김재헌/,'Show official acting role instead of former head coach');
   assert.doesNotMatch(await okCard.innerText(),/신영철/,'Do not label resigned coach as current');
-  await okCard.locator('[data-ktd-roster]').click();
+  await okCard.locator('.ktd-card-logo').click();
+  await page.waitForURL(u=>u.searchParams.get('team')==='OKF');
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),men.OKF.players.length);
   await verifyRosterType(page,'vleague');
@@ -275,7 +276,8 @@ async function main(){
   });
   assert.deepEqual(failureState,{imageHidden:true,fallbackVisible:true},'Only the monogram should display on logo failure');
   const jtekt=page.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first();
-  await jtekt.locator('[data-ktd-roster]').click();
+  await jtekt.locator('.ktd-card-copy h3').click();
+  await page.waitForURL(u=>u.searchParams.get('team')==='JTEKT');
   await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvl-lr-team-logo img').count(),1);
   assert.equal(await page.locator('.kvl-lr-team-logo img').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0}),true);
@@ -306,7 +308,8 @@ async function main(){
   report.scenarios.push({case:'SV.LEAGUE 2026-27 JTEKT nationality / foreign / position filters',result:'PASS',...(await snapshot(page,'sv-jtekt-1440'))});
   await page.locator('#ktdCloseRoster').click();
   const tokyo=page.locator('.ktd-card').filter({hasText:'도쿄 GB'}).first();
-  await tokyo.locator('[data-ktd-roster]').click();
+  await tokyo.locator('[data-ktd-roster]').press('Enter');
+  await page.waitForURL(u=>u.searchParams.get('team')==='TOKYO');
   await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvl-lr-row').count(),20);
   assert.equal(await page.locator('.kvl-lr-recheck').count(),4,'Tokyo source conflicts stay visibly marked instead of silently resolved');
@@ -318,7 +321,8 @@ async function main(){
   const road=page.locator('.ktd-card').filter({hasText:'한국도로공사'}).first();
   assert.match(await road.innerText(),/김영래/);
   const rsp=page.locator('.ktd-card').filter({hasText:'정관장'}).first();
-  await rsp.locator('[data-ktd-roster]').click();
+  await rsp.locator('.ktd-card-meta').first().click();
+  await page.waitForURL(u=>u.searchParams.get('team')==='RSP');
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),women.RSP.players.length);
   await verifyRosterType(page,'vleague');
@@ -376,7 +380,7 @@ async function main(){
   assert.deepEqual(errors,[],'desktop JS page errors');
   await page.close();
   for(const width of [390,360]){
-   const mobile=await browser.newPage({viewport:{width,height:820}});
+   const mobile=await browser.newPage({viewport:{width,height:820},hasTouch:true});
    await intercept(mobile);
    const mobileErrors=[];mobile.on('pageerror',e=>mobileErrors.push(e.message));
    await mobile.goto(BASE+'/teams.html?category=pro&gender=men',{waitUntil:'domcontentloaded',timeout:30000});
@@ -389,7 +393,8 @@ async function main(){
     layout:await verifyDirectoryColumns(mobile,2,'mobile')});
    const summary=await mobile.locator('#ktdSummary').innerText();
    assert.match(summary,/등록 선수/);
-   await mobile.locator('.ktd-card').filter({hasText:'OK저축은행'}).first().locator('[data-ktd-roster]').click();
+   await mobile.locator('.ktd-card').filter({hasText:'OK저축은행'}).first().locator('.ktd-card-logo').tap();
+   await mobile.waitForURL(u=>u.searchParams.get('team')==='OKF');
    await mobile.locator('.kvlrv2').waitFor({timeout:30000});
    await mobile.locator('.kvlrv2-row').filter({hasText:'윤경'}).first().click();
    await verifyRosterType(mobile,'vleague');
@@ -405,7 +410,8 @@ async function main(){
     return {src:img.src,loaded:img.naturalWidth>0&&img.naturalHeight>0,hidden:img.hidden,fallbackHidden:img.nextElementSibling?.matches('.ktd-team-logo-fallback[hidden]')&&getComputedStyle(img.nextElementSibling).display==='none'};
    })));
    assert.ok(mobileLogoState.every(x=>x.loaded&&!x.hidden&&x.fallbackHidden),'Mobile SV.LEAGUE logos must load: '+JSON.stringify(mobileLogoState.filter(x=>!x.loaded||x.hidden||!x.fallbackHidden)));
-   await mobile.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first().locator('[data-ktd-roster]').click();
+   await mobile.locator('.ktd-card').filter({hasText:'JTEKT 아이치'}).first().locator('.ktd-card-copy h3').tap();
+   await mobile.waitForURL(u=>u.searchParams.get('team')==='JTEKT');
    await mobile.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
    assert.equal(await mobile.locator('.kvl-lr-team-logo img').count(),1);
    assert.equal(await mobile.locator('.kvl-lr-row').count(),16);
@@ -438,6 +444,18 @@ async function main(){
     }finally{await small.close()}
    }
   }
+  // A team card with a normal link follows that same link from its body.
+  const linked=await browser.newPage({viewport:{width:1440,height:900}});
+  try{
+   await intercept(linked);
+   await linked.goto(BASE+'/teams.html?category=university&gender=women',{waitUntil:'domcontentloaded',timeout:30000});
+   const card=linked.locator('.ktd-card').first();
+   await card.waitFor();
+   const href=await card.locator('a.ktd-card-action').getAttribute('href');
+   await card.locator('h3').click();
+   await linked.waitForURL(new URL(href,BASE+'/').href);
+   report.scenarios.push({case:'University card body follows original team link',result:'PASS'});
+  }finally{await linked.close()}
   await verifyKEPMetadata(browser);
   // Native touch tests on the actual candidate page and its existing data.
   for(const [gender,team,width] of [['men','KEP',390],['women','RSP',360]]){

@@ -25,7 +25,7 @@ async function ready(){
     if(href){
      const cssResponse=await fetch(BASE+'/'+href,{cache:'no-store',signal:AbortSignal.timeout(12000)});
      const css=cssResponse.ok?await cssResponse.text():'';
-     if(html.includes('20261120-grid-v1-logo-hide-20261125')&&html.includes('20261124-svlogos-v1')
+     if(html.includes('20261120-grid-v1-logo-hide-20261125-card-click-v1')&&html.includes('20261124-svlogos-v1-metadata-v1-profile-v1-common-v3-card-click-v1')
         &&html.includes('kvl-pro-league-roster-v1.js?v=20261126-flags-v1-rsv2-common-v3')
         &&html.includes('kvl-team-roster-standard-v1.css?v=20261126-international-popup-v1-common-v3')
         &&html.includes('kvl-vleague-draft-bridge-v1.js?v=20261126-metadata-v1')
@@ -141,7 +141,8 @@ async function check(browser,gender,code,player,linked,width){
    assert.doesNotMatch(await acting.innerText(),/신영철/,'Former head coach must not be shown as current');
   }
   const club=page.locator('.ktd-card[data-team-code="'+code+'"]').first();
-  await club.locator('[data-ktd-roster]').click();
+  await club.locator(width<821?'.ktd-card-logo':'.ktd-card-copy h3').click();
+  await page.waitForURL(u=>u.searchParams.get('team')===code);
   await page.locator('.kvlrv2').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvlrv2-row').count(),rosters[code].players.length);
   await verifyRosterType(page,'vleague');
@@ -208,7 +209,8 @@ async function verifySVLeague(browser,width){
   assert.ok(logoState.every(x=>x.loaded&&!x.hidden&&x.fallbackHidden),'Every live SV.LEAGUE logo must decode: '+JSON.stringify(logoState.filter(x=>!x.loaded||x.hidden||!x.fallbackHidden)));
   const grid=await verifyLiveGrid(page,width);
   const jtekt=page.locator('.ktd-card[data-team-code="JTEKT"]').first();
-  await jtekt.locator('[data-ktd-roster]').click();
+  await jtekt.locator('.ktd-card-logo').click();
+  await page.waitForURL(u=>u.searchParams.get('team')==='JTEKT');
   await page.locator('[data-kvl-pro-league-roster]').waitFor({timeout:30000});
   assert.equal(await page.locator('.kvl-lr-team-logo img').count(),1,'Selected SV.LEAGUE team logo must appear above the roster');
   assert.equal(await page.locator('.kvl-lr-team-logo img').evaluate(async img=>{try{await img.decode()}catch{}return img.naturalWidth>0&&img.naturalHeight>0}),true);
