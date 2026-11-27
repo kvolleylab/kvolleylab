@@ -38,6 +38,7 @@
     const switcher=document.getElementById('ageGenderSwitch'),notice=document.getElementById('ageGenderNotice');
     if(scope!=='age')return;
     document.body.classList.add('nt-age-mode');
+    document.body.dataset.gender=ageGender;
     if(switcher)switcher.hidden=false;
     if(notice)notice.hidden=ageGender!=='women';
     document.querySelectorAll('[data-age-gender]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.ageGender===ageGender)));
@@ -52,11 +53,17 @@
     if(scope!=='age'||!['men','women'].includes(value)||value===ageGender)return;
     clearTarget();
     ageGender=value;
+    // National-team home resets dependent filters when switching division.
+    ageLevel='all';
     const url=new URL(location.href);
     if(value==='women')url.searchParams.set('gender','women');else url.searchParams.delete('gender');
     url.searchParams.delete('event');
+    url.searchParams.delete('level');
     history.replaceState(history.state,'',url);
-    yearFilter.value='all';fillYears();updateAgeGender();coverage();render();
+    yearFilter.value='all';fillYears();syncAgeTabs();
+    // Keep the reset '전체' chip visible on mobile after a previously scrolled U23 tab.
+    const tabs=document.getElementById('ageLevelTabs');if(tabs)tabs.scrollLeft=0;
+    updateAgeGender();coverage();render();
   }
   function setup(){
     if(scope==='age'){
