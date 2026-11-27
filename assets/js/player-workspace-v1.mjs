@@ -85,7 +85,23 @@ function renderNotes(){
 function setQueryURL(){const url=new URL(location.href),f=getFilters();for(const k of ['q','level','gender','position','school','type','draftSeason','draft']){const value=f[k]||'';value?url.searchParams.set(k,value):url.searchParams.delete(k)}url.searchParams.delete('grade');for(const g of f.grades)url.searchParams.append('grade',g);url.searchParams.set('layout',layout);history.replaceState(null,'',url)}
 function restoreFilters(){const form=$('filters');$('playerSearch').value=params.get('q')||'';for(const k of ['level','gender','position','type','draftSeason'])if(params.get(k))form.elements[k].value=params.get(k);form.elements.draft.checked=['1','eligible'].includes(params.get('draft'));syncDependentFilters();let school=params.get('school')||'';if(school.startsWith('code:'))school=players.find(p=>p.schoolCode===school.slice(5))?.school||'';if(school.startsWith('name:'))school=school.slice(5);if(school)form.elements.school.value=school;for(const c of form.querySelectorAll('[name="grade"]'))c.checked=!c.disabled&&params.getAll('grade').includes(c.value);updateGradeCaption();if([...form.elements].some(x=>['school','draftSeason','type'].includes(x.name)&&x.value)||form.elements.draft.checked||params.has('grade')){$('extraFilters').hidden=false;$('moreFilters').setAttribute('aria-expanded','true')}}
 function resetFilters(){$('filters').reset();$('playerSearch').value='';syncDependentFilters();limit=pageSize();renderSearch()}
-function openProfile(id){const p=byId.get(id);if(!p)return;lastFocus=document.activeElement;const href=profileHref(id);$('profileContent').innerHTML=`<div class="dialog-top"><h2 id="profileName">${e(p.name)} · 선수 프로필</h2><div class="profile-dialog-actions"><a href="${e(href)}">전체 화면</a><button class="close-button" data-close="profileDialog" aria-label="선수 프로필 닫기">×</button></div></div>${globalThis.KVLCommonPlayerProfileV1?.summary({name:p.name,en:p.nameEn,affiliation:p.team||p.school,position:p.rawPosition,height:p.height,dob:p.birthDate,nationality:p.nationality})||''}<div class="kvl-cpp-actions">${saveButton(p)}${compareButton(p)}</div><div class="kvl-cpp-note-host"></div><details class="kvl-cpp-full"><summary>전체 이력 및 출처 보기</summary><iframe class="profile-frame" title="${e(p.name)} 선수 프로필" src="${e(href+'&embed=1')}" loading="lazy"></iframe></details>`;if(memberReady)mountProfileNotes($('profileContent').querySelector('.kvl-cpp-note-host'),p.id,{onChange:refreshPrivateState});$('profileDialog').showModal();$('profileDialog').scrollTop=0}
+function openProfile(id){
+ const p=byId.get(id);if(!p)return;lastFocus=document.activeElement;
+ const href=profileHref(id),api=globalThis.KVLCommonPlayerProfileV1;
+ if(!api){location.assign(href);return}
+ const affiliation=p.clubTeam||p.team||p.school;
+ const affiliationLabel=p.level==='professional'?'시즌 소속':p.level==='international'||p.level==='national'?'대표팀':'등록 소속';
+ const blocked=privateIdentityBlocked(p.id);
+ $('profileContent').innerHTML=api.summary({name:p.name,en:p.nameEn,affiliation,affiliationLabel,number:p.jersey,position:p.rawPosition,height:p.height,dob:p.birthDate,nationality:p.nationality,vb:p.volleybox})
+  +api.details(p,{draftRows:blocked?[]:draftRows})
+  +'<div class="kvl-cpp-actions">'+saveButton(p)+compareButton(p)+'</div><div class="kvl-cpp-note-host"></div>'
+  +'<div class="kvl-cpp-footer"><a class="kvl-cpp-full-link" href="'+e(href)+'">전체 선수 프로필 및 상세 이력 보기</a></div>';
+ const header=$('profileContent').querySelector('.kvl-cpp-name');
+ header.querySelector('h3').id='profileName';
+ const close=document.createElement('button');close.type='button';close.className='kvl-cpp-close';close.dataset.close='profileDialog';close.setAttribute('aria-label','선수 프로필 닫기');close.textContent='닫기 ×';header.append(close);
+ if(memberReady&&!blocked)mountProfileNotes($('profileContent').querySelector('.kvl-cpp-note-host'),p.id,{onChange:refreshPrivateState});
+ $('profileDialog').showModal();$('profileDialog').scrollTop=0;
+}
 function closeProfile(){$('profileDialog').close();$('profileContent').innerHTML='';lastFocus?.focus({preventScroll:true})}
 function updateAccountUI(){
  if(!memberReady)return;
