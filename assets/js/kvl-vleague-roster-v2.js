@@ -82,6 +82,7 @@ function render(host,d,team,players){
    ${/^https:\/\/cdn\.kovo\.co\.kr\//.test(draft?.source||'')?`<a href="${esc(draft.source)}" target="_blank" rel="noopener noreferrer">신인드래프트 결과</a>`:''}
    ${sources.map(e=>e.url&&window.KVLVLeagueProfileEnrichmentV1?.safeSource(e.url)?`<a href="${esc(e.url)}" target="_blank" rel="noopener noreferrer">${e.kind==='official_club_profile'?'구단 공식 선수 프로필':'검수된 드래프트 자료'}</a>`:e.kind==='archived_mediaguide_extract'?`<span>${esc(e.season)} KOVO 미디어가이드 (검수자료)</span>`:'').join('')}
    </details>`:''}</div>`;
+  if(standard&&globalThis.KVLCommonPlayerProfileV1){const head=detail.querySelector('.kvlrv2-profile-head');if(head){head.insertAdjacentHTML('afterend',globalThis.KVLCommonPlayerProfileV1.summary({name:p.name,en:p.en,affiliation:team.name,affiliationLabel:'시즌 소속',position:p.position,height:p.heightCm,dob:p.dob}));head.querySelector('h3')?.remove();head.querySelector('.kvl-rs-english')?.remove();head.querySelector(':scope > span')?.remove();for(const node of detail.querySelectorAll('.kvlrv2-facts > div'))if(['신장','생년월일'].includes(node.querySelector('dt')?.textContent)&&!(node.querySelector('dd')?.textContent||'').includes('측정')){if(node.querySelector('dt')?.textContent==='생년월일'||!measurement)node.remove()}}}
   popup?.sync();
  }
  host.onclick=ev=>{
