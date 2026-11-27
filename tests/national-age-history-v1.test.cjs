@@ -124,7 +124,7 @@ test('age CSS is scoped and mobile roster uses stacked view rather than 690px sc
   assert(css.includes('@media(max-width:700px)'));
   assert(css.includes('grid-template-areas:"number player position"'));
   assert(css.includes('overflow:visible'));
-  assert(html.includes('20261127-hero-approved-v2'));
+  assert(html.includes('20261127-gender-parity-v1'));
 });
 
 test('national ID-link status observer is idempotent when roster DOM does not change',()=>{
@@ -154,4 +154,26 @@ test('approved HERO is an accessible live link over the original reference image
  assert(css.includes('object-position:right center'),'Mobile should prioritize Korean player/flag');
  assert(css.includes('body.nt-age-mode .age-level-tabs button.active'));
  assert(css.includes('kvl-age-hero-action:focus-visible'));
+});
+
+test('gender theme follows the same navy/rose tokens and flat switch as national-team home',async()=>{
+  const homeCss=read('assets/css/national-team-home-v2.css');
+  const ageCss=read('assets/css/national-age-history-v1.css');
+  assert.match(homeCss,/--team:#234e83;--team-soft:#edf4fb/,'National home defines navy men');
+  assert.match(homeCss,/--team:#8e315e;--team-soft:#fff1f6/,'National home defines rose women');
+  assert(ageCss.includes('--team:#234e83;--team-soft:#edf4fb'));
+  assert(ageCss.includes('--team:#8e315e;--team-soft:#fff1f6'));
+  assert(ageCss.includes('background:var(--team)!important'));
+  assert(ageCss.includes('content:none!important'),'Gender glyphs must not replace shared control');
+  const s=await page('?scope=age&gender=women');
+  try{
+    assert.equal(s.doc.body.dataset.gender,'women');
+    assert.equal(s.doc.querySelector('[data-age-gender=women]').getAttribute('aria-pressed'),'true');
+    assert.equal(s.doc.querySelector('#ageGenderNotice').hidden,false);
+    assert.equal(s.doc.querySelectorAll('.event-card').length,0,'Unbuilt women data stays empty');
+    s.doc.querySelector('[data-age-gender=men]').click();
+    assert.equal(s.doc.body.dataset.gender,'men');
+    assert.equal(s.doc.querySelector('[data-age-gender=men]').getAttribute('aria-pressed'),'true');
+    assert.equal(s.doc.querySelectorAll('.event-card').length>=20,true);
+  } finally {s.close();}
 });
