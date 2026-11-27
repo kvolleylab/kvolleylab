@@ -140,6 +140,8 @@ async function run(){
     await page.locator('[data-age-gender="women"]').click();
     assert.equal(await page.locator('#ageLevelTabs [data-level="all"]').getAttribute('aria-pressed'),'true',
       'Switching division must reset age filter just like national home');
+    if(width<700)assert((await page.locator('#ageLevelTabs').evaluate(el=>el.scrollLeft))<=1,
+      'Reset age filter must return mobile horizontal scroller to the first chip');
     assert(!new URL(page.url()).searchParams.has('level'),'Stale age filter must leave the URL');
     assert.equal(await page.locator('.event-card').count(),0,'Missing women records must never show male athletes');
     assert(await page.locator('#ageGenderNotice').isVisible());
