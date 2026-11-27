@@ -128,6 +128,7 @@ test('age CSS is scoped and mobile roster uses stacked view rather than 690px sc
   assert(css.includes('grid-template-areas:"number player position"'));
   assert(css.includes('overflow:visible'));
   assert(html.includes('20261127-gender-parity-v1'));
+  assert(html.includes('assets/js/national-team-history.js?v=20261127-gender-parity-v1'));
 });
 
 test('national ID-link status observer is idempotent when roster DOM does not change',()=>{
