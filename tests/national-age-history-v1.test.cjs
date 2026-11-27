@@ -89,7 +89,10 @@ test('age tabs filter URL and do not duplicate player snapshots',async()=>{
 test('women tab shows unbuilt-data state and cannot expose men records; return restores men',async()=>{
   const s=await page('?scope=age');
   try{
+    s.doc.querySelector('#ageLevelTabs [data-level="U23"]').click();
     s.doc.querySelector('[data-age-gender="women"]').click();
+    assert.equal(s.doc.querySelector('#ageLevelTabs [data-level="all"]').getAttribute('aria-pressed'),'true');
+    assert.equal(new URL(s.w.location.href).searchParams.has('level'),false);
     assert.equal(s.doc.querySelectorAll('.event-card').length,0);
     assert(s.doc.querySelector('#ageGenderNotice').hidden===false);
     assert(s.doc.querySelector('#eventList .empty').textContent.includes('미출전'));
