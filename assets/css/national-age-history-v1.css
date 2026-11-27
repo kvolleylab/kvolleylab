@@ -1,5 +1,6 @@
 /* KVL national age-team history — scoped to age view; existing cohort/senior styles remain untouched. */
-body.nt-age-mode{--nt-bg:#f4f7fb;--nt-deep:#eef3f8;--nt-panel:#fff;--nt-line:#dce4ed;--nt-gold:#956b18;--nt-mint:#147d73;--nt-text:#172033;--nt-muted:#586a7f}
+body.nt-age-mode{--nt-bg:#f4f7fb;--nt-deep:#eef3f8;--nt-panel:#fff;--nt-line:#dce4ed;--nt-gold:#956b18;--nt-mint:#147d73;--nt-text:#172033;--nt-muted:#586a7f;--team:#234e83;--team-soft:#edf4fb;--team-border:#cadbed}
+body.nt-age-mode[data-gender="women"]{--team:#8e315e;--team-soft:#fff1f6;--team-border:#e4bed0}
 body.nt-age-mode .nt-history-wrap{box-sizing:border-box;max-width:1180px;padding:28px 20px 80px;color:#172033}
 body.nt-age-mode .nt-history-breadcrumb{display:flex;align-items:center;gap:10px;color:#75869a;font-size:12px;font-weight:700;margin:0 0 15px}
 body.nt-age-mode .nt-history-breadcrumb a{color:#4d6682;text-decoration:none}
@@ -114,4 +115,187 @@ body.nt-age-mode a:focus-visible,body.nt-age-mode button:focus-visible,body.nt-a
  body.nt-age-mode .nt-age-roster-details tbody td:nth-child(6):before{content:"당시 소속 · ";color:#91a0ae}
  body.nt-age-mode .event-card>.small{margin:11px 14px 0}
  body.nt-age-mode .event-card>.source-row{margin:14px 14px 15px}
+}
+
+
+/* 2026-11-27 approved screenshot HERO: exact reference composition, not an alternate photo.
+   Source artwork is 3.94:1. The KVL 2108x406/1258x406 assets are rendered responsively.
+   Desktop restores the approved screenshot's proportions; no center-crop of the text/U stages. */
+.kvl-age-hero-media,.kvl-age-hero-action{display:none}
+body.nt-age-mode .kvl-age-reference-hero{
+  position:relative;display:block;width:100%;aspect-ratio:1197 / 304;min-height:0;
+  padding:0!important;border:0!important;border-radius:17px;overflow:hidden;
+  background:#07182d!important;box-shadow:0 12px 28px rgba(7,24,45,.15)!important;
+}
+body.nt-age-mode .kvl-age-reference-hero::before{display:none}
+body.nt-age-mode .kvl-age-hero-media{
+  display:block;position:absolute;inset:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+body.nt-age-mode .kvl-age-hero-media img{
+  display:block;width:100%;height:100%;object-fit:fill;object-position:center;border:0;
+}
+body.nt-age-mode .kvl-age-hero-live-copy{
+  position:absolute;width:1px;height:1px;overflow:hidden;white-space:nowrap;
+  clip-path:inset(50%);padding:0;margin:0;
+}
+body.nt-age-mode .kvl-age-hero-action{
+  display:block;position:absolute;z-index:2;left:4.4%;top:63.7%;width:18.6%;height:14.6%;
+  border-radius:10px;color:transparent;text-decoration:none;
+  background:transparent;border:1px solid transparent;
+}
+body.nt-age-mode .kvl-age-hero-action span{font-size:0}
+body.nt-age-mode .kvl-age-hero-action:hover{
+  background:rgba(227,180,75,.11);border-color:rgba(249,209,112,.65);
+  box-shadow:0 0 0 3px rgba(249,209,112,.12);
+}
+body.nt-age-mode .kvl-age-hero-action:focus-visible{
+  outline:3px solid #ffe3a3;outline-offset:3px;background:rgba(227,180,75,.13);
+}
+/* Match the existing national-team-home-v2 .gender-switch system exactly:
+   transparent inactive tabs, single team-color selected tab, no decorative
+   gold outline / gradient / gender glyphs. Men = navy, women = rose. */
+body.nt-age-mode .nt-age-gender-switch{
+  display:flex;width:max-content;max-width:100%;gap:4px;margin:21px 0 3px;
+  padding:4px;border:0;border-radius:10px;background:#e7edf3;
+}
+body.nt-age-mode .nt-age-gender-switch button{
+  display:inline-flex;align-items:center;justify-content:center;gap:0;
+  min-width:0;min-height:42px;padding:11px 25px;
+  background:transparent!important;color:#617185!important;
+  border:0!important;border-radius:7px;
+  box-shadow:none!important;font-size:14px;font-weight:800;line-height:normal;
+}
+body.nt-age-mode .nt-age-gender-switch button::before{
+  content:none!important;display:none!important;
+}
+body.nt-age-mode .nt-age-gender-switch button:hover:not([aria-pressed="true"]){
+  background:rgba(255,255,255,.48)!important;color:var(--team)!important;
+}
+body.nt-age-mode .nt-age-gender-switch button[aria-pressed="true"]{
+  background:var(--team)!important;color:#fff!important;border:0!important;
+  box-shadow:0 3px 7px rgba(24,51,76,.1)!important;
+}
+body.nt-age-mode .nt-age-gender-switch button:focus-visible,
+body.nt-age-mode .age-level-tabs button:focus-visible,
+body.nt-age-mode .toolbar select:focus-visible{
+  outline:3px solid var(--team)!important;outline-offset:2px;
+}
+/* Age filters use the shared flat filter-chip language; the active tab
+   inherits the current division's identity, rather than staying navy. */
+body.nt-age-mode .age-level-tabs{gap:7px;margin:16px 0 9px}
+body.nt-age-mode .age-level-tabs button{
+  min-width:68px;min-height:38px;height:auto;padding:9px 15px;
+  border:1px solid #d8e1eb;border-radius:9px;
+  background:#fff!important;color:#617287!important;box-shadow:none!important;
+  font-size:13px;font-weight:800;
+}
+body.nt-age-mode .age-level-tabs button:hover:not([aria-pressed="true"]){
+  background:var(--team-soft)!important;color:var(--team)!important;border-color:var(--team-border);
+}
+body.nt-age-mode .age-level-tabs button.active,
+body.nt-age-mode .age-level-tabs button[aria-pressed="true"]{
+  background:var(--team)!important;border:1px solid var(--team)!important;
+  color:#fff!important;box-shadow:none!important;
+}
+body.nt-age-mode .summary-grid{gap:14px}
+body.nt-age-mode .summary-card{
+  display:grid;grid-template-columns:43px minmax(0,1fr);
+  grid-template-rows:auto auto;column-gap:11px;align-content:center;align-items:center;
+  min-height:87px;padding:16px 19px;border-radius:15px;
+  box-shadow:0 6px 18px rgba(27,48,73,.07)!important;
+}
+body.nt-age-mode .summary-card::before{
+  content:"";grid-column:1;grid-row:1 / span 2;width:35px;height:35px;
+  background-position:center;background-repeat:no-repeat;background-size:contain;
+}
+body.nt-age-mode .summary-card:nth-child(1)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='M8 4h8v8a4 4 0 0 1-8 0V4Z M8 6H5v3a4 4 0 0 0 3 4 M16 6h3v3a4 4 0 0 1-3 4 M12 16v4 M8 21h8'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card:nth-child(2)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6'%3E%3Ccircle cx='9' cy='8' r='3.1'/%3E%3Cpath d='M3 20v-2a6 6 0 0 1 12 0v2 M17 5a3 3 0 0 1 0 6 M18 14a5 5 0 0 1 3 4v2'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card:nth-child(3)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6' stroke-linejoin='round'%3E%3Cpath d='m12 2 9 5-9 5-9-5 9-5Z M3 12l9 5 9-5 M3 17l9 5 9-5'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card:nth-child(4)::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ca9b31' stroke-width='1.6'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M7 2v6M17 2v6M3 10h18'/%3E%3C/svg%3E")}
+body.nt-age-mode .summary-card strong{grid-column:2;grid-row:1;font-size:23px;line-height:1.12;color:#17395c}
+body.nt-age-mode .summary-card span{grid-column:2;grid-row:2;margin-top:5px;font-size:11px;font-weight:700}
+@media(max-width:700px){
+  body.nt-age-mode .kvl-age-reference-hero{
+    aspect-ratio:auto;height:238px;min-height:238px;border-radius:14px;
+  }
+  body.nt-age-mode .kvl-age-hero-media img{
+    object-fit:cover;object-position:right center;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy{
+    position:absolute;z-index:1;top:19px;left:17px;right:78px;
+    width:auto;height:auto;overflow:visible;white-space:normal;clip-path:none;
+    text-align:left;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy .eyebrow{
+    color:#edc76b!important;font-size:8px;letter-spacing:.12em;
+    line-height:1.55;text-shadow:0 1px 3px #07182d;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy h1{
+    color:#fff!important;font-size:clamp(20px,5.3vw,27px)!important;
+    margin:9px 0 8px;line-height:1.27;letter-spacing:-.5px;
+    text-shadow:0 2px 4px #07182d;
+  }
+  body.nt-age-mode .kvl-age-hero-live-copy .lead{
+    color:#eaf1fb!important;font-size:11px;line-height:1.5;
+    max-width:95%;text-shadow:0 1px 2px #07182d;
+  }
+  body.nt-age-mode .kvl-age-hero-action{
+    display:flex;align-items:center;justify-content:center;left:17px;top:auto;
+    bottom:17px;width:auto;height:38px;padding:0 14px;
+    border:1.5px solid #e6bf69;border-radius:8px;
+    background:rgba(7,24,45,.58);box-shadow:0 2px 11px rgba(0,0,0,.16);
+    color:#ffe1a0;
+  }
+  body.nt-age-mode .kvl-age-hero-action span{font-size:11px;font-weight:850}
+  body.nt-age-mode .nt-age-gender-switch{
+    width:100%;max-width:280px;gap:2px;margin:15px 0 3px;padding:3px;
+    background:#e7edf3;border-radius:10px;
+  }
+  body.nt-age-mode .nt-age-gender-switch button{
+    flex:1;min-width:0;min-height:39px;padding:9px 7px;
+    font-size:12px;gap:0;border-radius:7px;
+  }
+  body.nt-age-mode .age-level-tabs{
+    display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;
+    margin-top:12px;padding:3px 1px 9px;
+  }
+  body.nt-age-mode .age-level-tabs button{
+    min-width:62px;min-height:38px;padding:7px 12px;
+  }
+  body.nt-age-mode .summary-grid{gap:9px}
+  body.nt-age-mode .summary-card{
+    grid-template-columns:32px minmax(0,1fr);
+    min-height:78px;padding:12px 10px;column-gap:7px;
+  }
+  body.nt-age-mode .summary-card::before{width:29px;height:29px}
+  body.nt-age-mode .summary-card strong{font-size:17px}
+  body.nt-age-mode .summary-card span{font-size:10px;line-height:1.3}
+}
+
+/* Division-specific accent consistency with the main national-team page.
+   Approved gold HERO artwork remains unchanged when switching gender. */
+body.nt-age-mode .summary-card strong{color:var(--team)}
+body.nt-age-mode .nt-age-quality,
+body.nt-age-mode .nt-age-roster-details>summary{
+  color:var(--team);
+}
+body.nt-age-mode .nt-age-roster-details>summary:hover{background:var(--team-soft)}
+body.nt-age-mode .nt-age-roster-details td a:not(.cohort-link){color:var(--team)}
+body.nt-age-mode .event-card>.source-row a,
+body.nt-age-mode .cohort-cta{color:var(--team)}
+body.nt-age-mode .event-card.is-target{border-color:var(--team-border);box-shadow:0 0 0 2px var(--team-soft)}
+body.nt-age-mode .toolbar select:focus{border-color:var(--team)}
+body.nt-age-mode[data-gender="women"] .nt-age-notice{
+  border-color:#e4bed0;border-left-color:var(--team);
+  background:var(--team-soft);color:#79304f;
+}
+body.nt-age-mode[data-gender="women"] .empty{
+  border-color:#e4bed0;background:var(--team-soft);color:#79304f;
+}
+body.nt-age-mode[data-gender="women"] .result-badge{
+  border-color:#e4bed0;background:var(--team-soft);color:var(--team);
+}
+body.nt-age-mode[data-gender="women"] .nt-age-roster-details>summary{
+  background:var(--team-soft);
 }

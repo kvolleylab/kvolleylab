@@ -1,5 +1,21 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-27 · 연령별 대표팀 남녀 버튼 공통화와 여자 로즈 테마 v1
+
+Status: USER REQUESTED / IMPLEMENTED ON FIX BRANCH / PENDING QA / NOT DEPLOYED.
+사용자는 PR #443 운영 이후 연령별 대표팀의 남녀 버튼이 다른 페이지와 달라 공통 양식으로 바로잡고, 여자대표팀 고유색을 적용하라고 요청했다. 국가대표팀 홈 `.gender-switch`의 세그먼트 버튼(14px/42px, 모바일 12px/39px, 선택 팀색)을 기준으로 연령별 페이지를 정렬한다. 남자 네이비 `#234e83`·여자 로즈 `#8e315e`, 보조색 `#edf4fb`/`#fff1f6`. 기존 금색 테두리/그라데이션/♂♀ 글리프 제거. 선택 성별이 U16~U23 필터, KPI, 안내/링크 강조에도 이어지게 `body[data-gender]`를 도입한다. 성별을 바꾸면 대표팀 홈과 동일하게 연령 필터를 `전체`로 초기화하며, CSS와 JS 캐시 버전을 함께 갱신한다.
+
+기준 main `c69b1e72e1be3946a5f9a8a84114afbc9c01e6dc`, 브랜치 `fix/national-age-gender-parity-v1-20261127`. 기존 승인 HERO(파일·비율·CTA), 원본 역사 DB, 선수 ID, 경기 데이터, 회원·개인 메모 불변. PC·모바일에서 실제 대표팀 홈의 버튼 computed style과 직접 비교하는 회귀 검증을 추가. [QA·배포경계](validation/national-age-gender-parity-v1-20261127.md). 별도 병합 승인 전에는 운영 반영 금지.
+
+
+## 2026-11-27 · 연령별 대표팀 HERO 첫 번째 승인 시안 동일 적용 v2
+
+Status: USER APPROVED DESIGN / IMPLEMENTED ON FIX BRANCH / PENDING QA & PAGES VERIFICATION.
+사용자는 첫 번째 시안 스크린샷과 **동일한** HERO를 홈페이지에서 직접 보여달라고 요청했고, 이전에 생성한 다른 이미지와 카드 가로세로 비율이 다르다고 지적했다. 기존 홈 카드의 이미지 자산 픽셀 PC `2108×406`, 모바일 `1258×406`을 유지하되, PC의 실제 HERO 표시 비율은 사용자 승인 시안 약 `1197×304`에 일치시키고 글씨·선수·태극기·U16→U23 상승 곡선이 **모두 보여야 한다**. 모바일은 별도 이미지를 쓰고 제목/CTA를 실제 HTML으로 표시. 이미지 안 버튼처럼 보이는 `연령별 로드맵 보기`는 `#ageLevelTabs`로 이동하는 작동 가능한 클릭 영역. 아래 남녀 선택/U 필터·통계 카드 스타일도 선택 시안과 통일. 경기·선수 데이터/회원 원장은 변경하지 않는다.
+
+기준 main `c5455085ed13f1bb95edae8a0781476a32d45735`; [검증·복구](validation/national-age-hero-approved-v2-20261127.md). 2026-11-27의 최신 사용자 운영 반영 요청을 이번 변경의 명시 승인으로 간주하되, 실제 검증 성공과 운영 배포 결과를 PR 기록으로 남긴다.
+
+
 ## 2026-11-27 · 국가대표팀 성인 중복 메뉴 정리 및 연령별 기록 활성화 v1
 
 Status: USER REQUESTED / IMPLEMENTED ON FEATURE BRANCH / NOT DEPLOYED.
@@ -1186,3 +1202,8 @@ Status: USER REQUESTED / IMPLEMENTED IN DRAFT / PARTIALLY VERIFIED / NOT DEPLOYE
 Status: IMPLEMENTED IN DRAFT / PARTIAL QA / NOT DEPLOYED. 최신 main c5455085ed13f1bb95edae8a0781476a32d45735의 27개 후속 커밋을 개발 브랜치에 병합(35838e276cd37bc884437c099f5f0d15d06081a3). 유일한 겹침인 결정 기록은 양쪽 추가 내용을 보존했다. 운영 main에는 쓰지 않았다. 실제 배포 데이터 기반 격리 JS 검증: V-리그 288명 중 251 연결(M118/149, W133/139), 37 보류(26 충돌, 9 ID 없음, 2 DOB 미확인). 하승우·정호영·표승주의 기존 검수된 공식 구단 DOB overlay를 동일한 선수 카탈로그에 누락 필드만 적용한다. 원본 MASTER·등록 기록·DB·회원 기록 불변. SV 12팀 211명 중 23 연결, 185 직접 VB ID 미발견, 3 불일치/중복 후보. 국제 40개국·89 스냅샷·64 국가/성별/연도 그룹·통합 명단 1,007행: 남 188/587, 여 0/420, 전체 188/1,007. 국제 계산은 전체 카탈로그와 일치함을 확인한 국제 MASTER 221행 및 VB 후보 29행의 재구성 부분집합으로 수행; 실제 브라우저 테스트 아님. 연결 보류는 원본 명단 유지 및 개인 기록 쓰기 차단; 신규 ID 발급 또는 충돌 ID 마이그레이션은 별도 검수/승인 과제.
 
 기존 팀 popup 및 auth 브라우저 QA의 선택자/세션 mock을 새 계약에 맞게 조정. PR 전용 `tests/common-player-profile-browser-v1.cjs` 및 `.github/workflows/common-player-profile-qa-v1.yml` 추가: 1440/390px 동일 DOB, 관심 선수, mock API 메모 작성·교차 수정·재조회, 비로그인 개인 기능 미노출, 화면 overflow, screenshot. 실제 개인 계정·Supabase 기록에는 접근/쓰기하지 않음. 브라우저 실행 결과, 실제 관리자 실계정 검증 및 Google Drive MASTER 대조는 미완료. PR #442 Draft 유지, 별도 운영 반영 승인 전 병합 금지. 복구는 미병합 유지, 배포 후에는 해당 PR revert.
+
+
+## 2026-11-28 · 공통 선수 프로필 v1 — 팀 팝업 디자인 우선 및 실제 브라우저 QA 보완
+
+Status: IMPLEMENTED IN DRAFT / QA PENDING / NOT DEPLOYED. 사용자 요청에 따라 팀 찾기의 네이비 헤더/520px PC 팝업/정보 행 디자인을 선수 찾기에 적용하고 iframe 제거. 확인된 기본정보, 등번호·시즌, 학교, 드래프트, 소속·대표팀·수상 이력, 공식 링크를 직접 표시. 팀 모바일의 기존 인라인 상세 유지, 선수 모바일의 동일 콘텐츠 팝업 유지. 공통 신원 연결 및 메모 권한·기존 보호 ID 정책 유지. 실제 Chromium 실행 46018947108에서 닫기 버튼 15/16px 불일치 검출, 국제 46018947073에서 VB 접근성 라벨 누락, 팀 46018947061에서 공통 카탈로그 초기 요청과 팀 메타데이터 재시도 경쟁 확인. 16px 공통 적용, 기존 VB 링크 접근성 라벨 보존, 팀 카탈로그 지연 로드 및 검수 데이터 요청 공유로 수정. 기존 V리그 연동/선수 드래프트/관리자 인증 QA는 해당 이전 head에서 통과했으나 최신 head로 재검증 필요. 최신 main의 국가대표 메뉴 변경은 병합하되 운영 main에는 쓰지 않음. 실제 브라우저 최종 성공, 실계정 검수 및 별도 운영 승인 전 병합 금지. PR #442 Draft 유지.

@@ -89,11 +89,15 @@ test('age tabs filter URL and do not duplicate player snapshots',async()=>{
 test('women tab shows unbuilt-data state and cannot expose men records; return restores men',async()=>{
   const s=await page('?scope=age');
   try{
+    s.doc.querySelector('#ageLevelTabs [data-level="U23"]').click();
     s.doc.querySelector('[data-age-gender="women"]').click();
+    assert.equal(s.doc.querySelector('#ageLevelTabs [data-level="all"]').getAttribute('aria-pressed'),'true');
+    assert.equal(new URL(s.w.location.href).searchParams.has('level'),false);
     assert.equal(s.doc.querySelectorAll('.event-card').length,0);
     assert(s.doc.querySelector('#ageGenderNotice').hidden===false);
     assert(s.doc.querySelector('#eventList .empty').textContent.includes('미출전'));
-    assert(s.doc.querySelector('h1').textContent.includes('여자'));
+    assert.equal(s.doc.querySelector('h1').textContent,'대한민국 연령별 대표팀');
+    assert.equal(s.doc.querySelector('[data-age-gender="women"]').getAttribute('aria-pressed'),'true');
     assert.equal(new URL(s.w.location.href).searchParams.get('gender'),'women');
     assert(s.doc.querySelector('#cohortCta').hidden);
     s.doc.querySelector('[data-age-gender="men"]').click();
@@ -123,7 +127,8 @@ test('age CSS is scoped and mobile roster uses stacked view rather than 690px sc
   assert(css.includes('@media(max-width:700px)'));
   assert(css.includes('grid-template-areas:"number player position"'));
   assert(css.includes('overflow:visible'));
-  assert(html.includes('20261127-age-v1'));
+  assert(html.includes('20261127-gender-parity-v1'));
+  assert(html.includes('assets/js/national-team-history.js?v=20261127-gender-parity-v1'));
 });
 
 test('national ID-link status observer is idempotent when roster DOM does not change',()=>{
@@ -132,4 +137,47 @@ test('national ID-link status observer is idempotent when roster DOM does not ch
   assert(status.includes('if(summary.textContent!==next)summary.textContent=next;'));
   assert(html.includes('20261127-observer-v1'));
   assert(read('player-cohort.html').includes('20261127-observer-v1'));
+});
+
+test('approved HERO is an accessible live link over the original reference image, using exact KVL media canvases',()=>{
+ const html=read('national-team-history.html');
+ const css=read('assets/css/national-age-history-v1.css');
+ const pc=read('assets/img/national-team/age-hero-approved-pc-v1.svg');
+ const mobile=read('assets/img/national-team/age-hero-approved-mobile-v1.svg');
+ assert(html.includes('id="ageHero"'));
+ assert(html.includes('href="#ageLevelTabs"'));
+ assert(html.includes('class="kvl-age-hero-action"'));
+ assert.match(pc,/width="2108" height="406"/);
+ assert.match(pc,/<svg[^>]+preserveAspectRatio="none"/,'PC HERO must not letterbox inside actual card');
+ assert.match(mobile,/width="1258" height="406"/);
+ assert.match(mobile,/<svg[^>]+preserveAspectRatio="none"/);
+ assert(pc.includes('data:image/webp;base64,'));
+ assert(mobile.includes('data:image/webp;base64,'));
+ assert(css.includes('aspect-ratio:1197 / 304'),'Desktop should use approved source ratio, without cropping title');
+ assert(css.includes('object-fit:fill'),'Desktop should display the entire reference composition');
+ assert(css.includes('object-position:right center'),'Mobile should prioritize Korean player/flag');
+ assert(css.includes('body.nt-age-mode .age-level-tabs button.active'));
+ assert(css.includes('kvl-age-hero-action:focus-visible'));
+});
+
+test('gender theme follows the same navy/rose tokens and flat switch as national-team home',async()=>{
+  const homeCss=read('assets/css/national-team-home-v2.css');
+  const ageCss=read('assets/css/national-age-history-v1.css');
+  assert.match(homeCss,/--team:#234e83;--team-soft:#edf4fb/,'National home defines navy men');
+  assert.match(homeCss,/--team:#8e315e;--team-soft:#fff1f6/,'National home defines rose women');
+  assert(ageCss.includes('--team:#234e83;--team-soft:#edf4fb'));
+  assert(ageCss.includes('--team:#8e315e;--team-soft:#fff1f6'));
+  assert(ageCss.includes('background:var(--team)!important'));
+  assert(ageCss.includes('content:none!important'),'Gender glyphs must not replace shared control');
+  const s=await page('?scope=age&gender=women');
+  try{
+    assert.equal(s.doc.body.dataset.gender,'women');
+    assert.equal(s.doc.querySelector('[data-age-gender=women]').getAttribute('aria-pressed'),'true');
+    assert.equal(s.doc.querySelector('#ageGenderNotice').hidden,false);
+    assert.equal(s.doc.querySelectorAll('.event-card').length,0,'Unbuilt women data stays empty');
+    s.doc.querySelector('[data-age-gender=men]').click();
+    assert.equal(s.doc.body.dataset.gender,'men');
+    assert.equal(s.doc.querySelector('[data-age-gender=men]').getAttribute('aria-pressed'),'true');
+    assert.equal(s.doc.querySelectorAll('.event-card').length>=20,true);
+  } finally {s.close();}
 });

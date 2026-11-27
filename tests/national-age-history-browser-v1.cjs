@@ -36,8 +36,77 @@ async function run(){
       throw Error('Events did not render: '+JSON.stringify(diagnostic)+' | PAGE ERRORS='+JSON.stringify(errors)+' | REQUESTS='+JSON.stringify(requests.slice(0,35))+' | CAUSE='+error.message);
     }
     assert(await page.locator('.event-card').count()>=20,'Historical age events must display');
-    assert(await page.locator('h1').innerText().then(x=>x.includes('남자 연령별')),'Men heading is wrong');
+    assert.equal((await page.locator('h1').innerText()).trim(),'대한민국 연령별 대표팀','Approved HERO title must not be split by gender');
     assert(await page.locator('#ageGenderSwitch').isVisible(),'Gender switch hidden');
+    // Compare computed presentation against the actual KVL national-team home,
+    // rather than guessing from a mockup or reusing its full unrelated CSS.
+    const reference=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
+    await serve(reference,[]);
+    try{
+      await reference.goto(BASE+'/national-team.html',{waitUntil:'domcontentloaded',timeout:30000});
+      await reference.locator('.gender-switch button').first().waitFor({state:'attached',timeout:10000});
+      const referenceStyle=async gender=>{
+        await reference.evaluate(gender=>{
+          document.querySelector('.nt-page').dataset.gender=gender;
+          document.querySelectorAll('.gender-switch button').forEach(b=>
+            b.setAttribute('aria-pressed',String(b.dataset.gender===gender)));
+        },gender);
+        return reference.evaluate(gender=>{
+          const switcher=document.querySelector('.gender-switch');
+          const b=switcher.querySelector('button[data-gender="'+gender+'"]');
+          const st=getComputedStyle(b),wrap=getComputedStyle(switcher);
+          return {background:st.backgroundColor,color:st.color,minHeight:st.minHeight,
+            fontSize:st.fontSize,fontWeight:st.fontWeight,borderRadius:st.borderRadius,
+            paddingLeft:st.paddingLeft,paddingRight:st.paddingRight,
+            switchBackground:wrap.backgroundColor};
+        },gender);
+      };
+      const actualStyle=gender=>page.evaluate(gender=>{
+        const switcher=document.querySelector('#ageGenderSwitch');
+        const b=switcher.querySelector('button[data-age-gender="'+gender+'"]');
+        const st=getComputedStyle(b),wrap=getComputedStyle(switcher);
+        const label=getComputedStyle(b,'::before').content;
+        return {background:st.backgroundColor,color:st.color,minHeight:st.minHeight,
+          fontSize:st.fontSize,fontWeight:st.fontWeight,borderRadius:st.borderRadius,
+          paddingLeft:st.paddingLeft,paddingRight:st.paddingRight,
+          switchBackground:wrap.backgroundColor,pseudo:label,
+          activeLevel:getComputedStyle(document.querySelector('#ageLevelTabs [aria-pressed="true"]')).backgroundColor,
+          kpiColor:getComputedStyle(document.querySelector('.summary-card strong')).color,
+          genderOnBody:document.body.dataset.gender};
+      },gender);
+      const menReference=await referenceStyle('men');
+      const ageMen=await actualStyle('men');
+      const {pseudo:menPseudo,activeLevel:menLevel,kpiColor:menKpi,genderOnBody:menBody,...menAppearance}=ageMen;
+      assert.deepEqual(menAppearance,menReference,'Men switch must match national home on '+width);
+      assert.equal(menBody,'men');
+      assert.equal(menLevel,menReference.background);
+      assert.equal(menKpi,menReference.background);
+      assert(!menPseudo.includes('♂'),'Gender switch must not add extra glyph');
+      // Save the reference style to compare after switching later in the test.
+      page.__kvlRefStyles={men:menReference,women:await referenceStyle('women')};
+      page.__kvlActualStyle=actualStyle;
+    }finally{await reference.close();}
+
+    const hero=page.locator('#ageHero');
+    assert(await hero.isVisible(),'Approved HERO must be present');
+    const heroMetrics=await page.evaluate(async()=>{
+      const el=document.querySelector('#ageHero'),img=el.querySelector('img');
+      await img.decode();
+      const rect=el.getBoundingClientRect();
+      return {width:rect.width,height:rect.height,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
+        currentSrc:img.currentSrc,objectFit:getComputedStyle(img).objectFit};
+    });
+    assert(heroMetrics.naturalWidth>0&&heroMetrics.naturalHeight>0,'HERO must decode in real browser');
+    if(width>=701){
+      assert(Math.abs(heroMetrics.width/heroMetrics.height-1197/304)<.05,
+        'Desktop approved reference should not crop top/bottom: '+JSON.stringify(heroMetrics));
+      assert(heroMetrics.currentSrc.includes('age-hero-approved-pc-v1.svg'));
+    }else{
+      assert(heroMetrics.currentSrc.includes('age-hero-approved-mobile-v1.svg'));
+      assert(heroMetrics.height>=225&&heroMetrics.height<=250,'Mobile hero must preserve readable copy');
+      assert(await page.locator('.kvl-age-hero-live-copy h1').isVisible());
+    }
+    assert(await page.locator('.kvl-age-hero-action').isVisible(),'Visual roadmap CTA is a real link');
     const menu=page.locator('.kvl-global-sidebar');
     await menu.waitFor({timeout:20000});
     const links=await menu.locator('a.kvl-global-sub-link').allTextContents();
@@ -59,17 +128,48 @@ async function run(){
     if(width>=700)assert(measurements.tableWidth>=measurements.rosterWidth-6,'Desktop table must use the whole detail panel: '+JSON.stringify(measurements));
     if(width>=700)assert(measurements.headerRowWidth>=measurements.rosterWidth-8,'Desktop header cells must fill the panel: '+JSON.stringify(measurements));
     if(width<700)assert.equal(measurements.mobileRowDisplay,'grid','Mobile roster must stack into cards');
+    // Capture the actual HERO as users first see it, rather than after the roster expands and scrolls.
+    await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+    await page.waitForTimeout(100);
     const png=path.join(OUT,'kvl-national-age-'+width+'.png');
     await page.screenshot({path:png,fullPage:false});
+    await page.locator('.kvl-age-hero-action').click();
+    assert.equal(new URL(page.url()).hash,'#ageLevelTabs','Roadmap button must take the user to functional age filters');
     await page.locator('#ageLevelTabs button[data-level="U23"]').click();
     assert(await page.locator('.event-card').count()>=1,'U23 filter must show real event');
     await page.locator('[data-age-gender="women"]').click();
+    assert.equal(await page.locator('#ageLevelTabs [data-level="all"]').getAttribute('aria-pressed'),'true',
+      'Switching division must reset age filter just like national home');
+    if(width<700)assert((await page.locator('#ageLevelTabs').evaluate(el=>el.scrollLeft))<=1,
+      'Reset age filter must return mobile horizontal scroller to the first chip');
+    assert(!new URL(page.url()).searchParams.has('level'),'Stale age filter must leave the URL');
     assert.equal(await page.locator('.event-card').count(),0,'Missing women records must never show male athletes');
     assert(await page.locator('#ageGenderNotice').isVisible());
+    // The existing age-chip component animates background colors for 160 ms.
+    // Compare settled colors to the reference, not a frame mid-transition.
+    await page.waitForTimeout(250);
+    const womenAppearance=await page.__kvlActualStyle('women');
+    const {pseudo:womenPseudo,activeLevel:womenLevel,kpiColor:womenKpi,genderOnBody:womenBody,...womenButton}=womenAppearance;
+    assert.deepEqual(womenButton,page.__kvlRefStyles.women,'Women switch must match home rose style on '+width);
+    assert.equal(womenBody,'women','Gender must update the page theme');
+    assert.equal(womenLevel,page.__kvlRefStyles.women.background,'Age filter must inherit rose');
+    assert.equal(womenKpi,page.__kvlRefStyles.women.background,'KPI accent must inherit rose');
+    assert.notEqual(page.__kvlRefStyles.men.background,page.__kvlRefStyles.women.background,'Blue and rose must not match');
+    assert(!womenPseudo.includes('♀'),'Gender switch must not add extra glyph');
+    const womenNotice=await page.locator('#ageGenderNotice').evaluate(el=>{
+      const style=getComputedStyle(el);
+      return {border:style.borderLeftColor,background:style.backgroundColor};
+    });
+    assert.equal(womenNotice.border,page.__kvlRefStyles.women.background,'Women notice uses rose border');
+    await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
+    await page.waitForTimeout(80);
+    await page.screenshot({path:path.join(OUT,'kvl-national-age-women-'+width+'.png'),fullPage:false});
+
     await page.locator('[data-age-gender="men"]').click();
     assert(await page.locator('.event-card').count()>=1);
+    assert.equal((await page.__kvlActualStyle('men')).genderOnBody,'men','Returning to men must restore navy theme');
     assert.deepEqual(errors,[],'Browser JavaScript exceptions: '+errors.join(' / '));
-    record.views.push({viewport:width+'x'+height,events:'>=20',status:'PASS',metrics:measurements,screenshot:path.basename(png)});
+    record.views.push({viewport:width+'x'+height,events:'>=20',status:'PASS',metrics:measurements,hero:heroMetrics,screenshot:path.basename(png)});
    }finally{await page.close()}
   }
   record.status='PASS';write();console.log(JSON.stringify(record,null,2));
