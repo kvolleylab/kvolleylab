@@ -93,7 +93,8 @@ test('women tab shows unbuilt-data state and cannot expose men records; return r
     assert.equal(s.doc.querySelectorAll('.event-card').length,0);
     assert(s.doc.querySelector('#ageGenderNotice').hidden===false);
     assert(s.doc.querySelector('#eventList .empty').textContent.includes('미출전'));
-    assert(s.doc.querySelector('h1').textContent.includes('여자'));
+    assert.equal(s.doc.querySelector('h1').textContent,'대한민국 연령별 대표팀');
+    assert.equal(s.doc.querySelector('[data-age-gender="women"]').getAttribute('aria-pressed'),'true');
     assert.equal(new URL(s.w.location.href).searchParams.get('gender'),'women');
     assert(s.doc.querySelector('#cohortCta').hidden);
     s.doc.querySelector('[data-age-gender="men"]').click();
