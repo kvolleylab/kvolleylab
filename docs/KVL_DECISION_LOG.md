@@ -1,5 +1,13 @@
 # K-Volley Lab — Decision Log & Session Handoff
 
+## 2026-11-27 · 연령별 대표팀 남녀 버튼 공통화와 여자 로즈 테마 v1
+
+Status: USER REQUESTED / IMPLEMENTED ON FIX BRANCH / PENDING QA / NOT DEPLOYED.
+사용자는 PR #443 운영 이후 연령별 대표팀의 남녀 버튼이 다른 페이지와 달라 공통 양식으로 바로잡고, 여자대표팀 고유색을 적용하라고 요청했다. 국가대표팀 홈 `.gender-switch`의 세그먼트 버튼(14px/42px, 모바일 12px/39px, 선택 팀색)을 기준으로 연령별 페이지를 정렬한다. 남자 네이비 `#234e83`·여자 로즈 `#8e315e`, 보조색 `#edf4fb`/`#fff1f6`. 기존 금색 테두리/그라데이션/♂♀ 글리프 제거. 선택 성별이 U16~U23 필터, KPI, 안내/링크 강조에도 이어지게 `body[data-gender]`를 도입한다.
+
+기준 main `c69b1e72e1be3946a5f9a8a84114afbc9c01e6dc`, 브랜치 `fix/national-age-gender-parity-v1-20261127`. 기존 승인 HERO(파일·비율·CTA), 원본 역사 DB, 선수 ID, 경기 데이터, 회원·개인 메모 불변. PC·모바일에서 실제 대표팀 홈의 버튼 computed style과 직접 비교하는 회귀 검증을 추가. [QA·배포경계](validation/national-age-gender-parity-v1-20261127.md). 별도 병합 승인 전에는 운영 반영 금지.
+
+
 ## 2026-11-27 · 연령별 대표팀 HERO 첫 번째 승인 시안 동일 적용 v2
 
 Status: USER APPROVED DESIGN / IMPLEMENTED ON FIX BRANCH / PENDING QA & PAGES VERIFICATION.
