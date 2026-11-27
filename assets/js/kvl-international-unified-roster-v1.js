@@ -249,8 +249,15 @@ function render(host,model){
       '<div class="kvl-unified-detail-links">'+(p.KVLProfile?'<a href="'+esc(p.KVLProfile)+'">KVL 프로필</a>':'')+
       (p.directBox?'<a href="'+esc(p.directBox)+'" target="_blank" rel="noopener noreferrer" aria-label="Volleybox 선수 프로필 열기">VB-&gt;</a>':'')+
       (p.official?'<a href="'+esc(p.official)+'" target="_blank" rel="noopener noreferrer">공식 프로필</a>':'')+'</div>';
-    if(standard&&globalThis.KVLCommonPlayerProfileV1){const head=detail.querySelector('.kvl-unified-detail-head');if(head){head.querySelector('h4')?.remove();head.insertAdjacentHTML('afterend',globalThis.KVLCommonPlayerProfileV1.summary({name:title(p),en:p.en,position:p.position,height:p.height,dob:p.dob}));const evidence=detail.querySelector(':scope > p');if(evidence)evidence.textContent=p.evidence||'';}}
-    if(standard){const api=globalThis.KVLCommonPlayerProfileV1;api?.attach(detail,{id:api.idFromHref(p.KVLProfile),verified:!!p.KVLProfile,name:title(p),en:p.en,gender:model.gender==='men'?'M':'W',dob:p.dob,position:p.position,height:p.height,vb:p.directBox});}
+    if(standard&&globalThis.KVLCommonPlayerProfileV1){
+      const api=globalThis.KVLCommonPlayerProfileV1;
+      const ref={id:api.idFromHref(p.KVLProfile),verified:!!p.KVLProfile,name:title(p),en:p.en,gender:model.gender==='men'?'M':'W',dob:p.dob,position:p.position,height:p.height,vb:p.directBox,nationality:model.country?.name_ko||model.country?.name_en,omitDetails:['national','sources']};
+      if(api.mountSummary(detail,ref,'.kvl-unified-detail-head')){
+        const evidence=detail.querySelector(':scope > p');if(evidence)evidence.textContent=p.evidence||'';
+        for(const link of detail.querySelectorAll('.kvl-unified-detail-links a'))if(p.directBox&&link.getAttribute('href')===p.directBox)link.remove();
+        api.attach(detail,ref);
+      }
+    }
     paint();
     detail.hidden=false;
     popup?.sync();
