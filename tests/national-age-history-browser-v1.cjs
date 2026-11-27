@@ -7,8 +7,9 @@ const mime={'.js':'application/javascript','.mjs':'application/javascript','.jso
 const record={status:'RUNNING',views:[],sha:process.env.GITHUB_SHA||'local',errors:[]};
 const out=path.join(OUT,'kvl-age-history-browser-report.json');
 function write(){fs.writeFileSync(out,JSON.stringify(record,null,2))}
-async function serve(page){
+async function serve(page,requests){
  await page.route('https://kvolleylab.com/**',route=>{
+  requests.push(route.request().url());
   const url=new URL(route.request().url());
   const file=path.resolve(ROOT,'.'+decodeURIComponent(url.pathname));
   if(!file.startsWith(ROOT+path.sep))return route.fulfill({status:403,body:''});
@@ -23,13 +24,17 @@ async function run(){
  try{
   for(const {width,height} of [{width:1440,height:900},{width:390,height:844}]){
    const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:1});
-   const errors=[];
+   const errors=[],requests=[];
    page.on('pageerror',e=>errors.push(e.message));
-   await serve(page);
+   await serve(page,requests);
    try{
     const response=await page.goto(BASE+'/national-team-history.html?scope=age',{waitUntil:'domcontentloaded',timeout:30000});
     assert(response&&response.ok(),'History page must load');
-    await page.locator('.event-card').first().waitFor({timeout:30000});
+    try{await page.locator('.event-card').first().waitFor({timeout:12000});}
+    catch(error){
+      const diagnostic=await page.evaluate(()=>({url:location.href,ready:document.readyState,body:document.body.className,eventList:document.querySelector('#eventList')?.textContent?.slice(0,550),scripts:[...document.scripts].map(x=>x.src).filter(Boolean)}));
+      throw Error('Events did not render: '+JSON.stringify(diagnostic)+' | PAGE ERRORS='+JSON.stringify(errors)+' | REQUESTS='+JSON.stringify(requests.slice(0,35))+' | CAUSE='+error.message);
+    }
     assert(await page.locator('.event-card').count()>=20,'Historical age events must display');
     assert(await page.locator('h1').innerText().then(x=>x.includes('남자 연령별')),'Men heading is wrong');
     assert(await page.locator('#ageGenderSwitch').isVisible(),'Gender switch hidden');
