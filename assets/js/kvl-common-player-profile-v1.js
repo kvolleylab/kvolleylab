@@ -5,12 +5,13 @@ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const fact=(label,value,link)=>'<div><dt>'+esc(label)+'</dt><dd'+(label==='국적'?' data-nationality':'')+'>'+ (link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">'+esc(value)+'</a>':esc(value||'미확인'))+'</dd></div>';
 const safeUrl=v=>/^https:\/\/[a-z0-9.-]+(?:\/|$)[^\s<>"']*$/i.test(String(v||''))?String(v):'';
 const vbUrl=v=>/^https:\/\/(?:(?:www|women)\.)?volleybox\.net\/(?:ko\/)?[a-z0-9-]+-p\d+\/?$/i.test(String(v||''))?String(v):'';
+const countryText=v=>({KOR:'대한민국',JPN:'일본',USA:'미국',IRI:'이란',CHN:'중국',BRA:'브라질',CAN:'캐나다',FRA:'프랑스',POL:'폴란드',ITA:'이탈리아',GER:'독일',ARG:'아르헨티나',TUR:'튀르키예',SRB:'세르비아',AUS:'호주',NED:'네덜란드',BEL:'벨기에',BUL:'불가리아',SLO:'슬로베니아',CUB:'쿠바',UKR:'우크라이나',THA:'태국',VIE:'베트남',TPE:'대만',KAZ:'카자흐스탄',PHI:'필리핀',INA:'인도네시아',Korea:'대한민국','South Korea':'대한민국',Japan:'일본'})[String(v||'')]||v;
 function summary(p){
  const height=Number(p.height)>0?String(p.height)+' cm':'키 확인 불가';
  return '<section class="kvl-cpp-summary"><div class="kvl-cpp-name"><small class="kvl-cpp-kicker">PLAYER</small><h3>'+esc(p.name||'선수')+'</h3>'+ (p.en&&p.en!==p.name?'<span class="kvl-cpp-english">'+esc(p.en)+'</span>':'')+
  (p.affiliation?'<p class="kvl-cpp-affiliation">'+esc(p.affiliationLabel||'자료 기준 소속')+' · '+esc(p.affiliation)+'</p>':'')+'</div>'+
  '<section class="kvl-cpp-section"><h4>선수 정보</h4><dl class="kvl-cpp-facts">'+
- (p.number!=null&&p.number!==''?fact('등번호','#'+p.number):'')+fact('포지션',p.position)+fact('신장',height+(p.heightNote||''))+fact('생년월일',p.dob)+fact('국적',p.nationality)+
+ (p.number!=null&&p.number!==''?fact('등번호','#'+p.number):'')+fact('포지션',p.position)+fact('신장',height+(p.heightNote||''))+fact('생년월일',p.dob)+fact('국적',countryText(p.nationality))+
  (vbUrl(p.vb)?fact('Volleybox','VB →',vbUrl(p.vb)):'')+'</dl></section></section>';
 }
 /* Use the approved team header's own dismiss action, not a second header. */
@@ -38,15 +39,15 @@ function details(p,{draftRows=[],omit=[]}={}){
  const history=(Array.isArray(p.rosterHistory)?p.rosterHistory:[]).map(x=>[x.competition_start||x.competition_date||'',x.competition_name||x.competition_id||'',x.school_name||x.team_name||'',x.jersey_number==null||x.jersey_number===''?'':'#'+x.jersey_number,x.position_primary||x.position||'',x.height_cm?x.height_cm+' cm':''].filter(Boolean).join(' · ')).filter(Boolean);
  const list=values=>'<div class="kvl-cpp-history">'+[...new Set(values)].map(t=>'<p>'+esc(t)+'</p>').join('')+'</div>';
  if(history.length&&!skip.has('history'))parts.push(section('등록·소속 이력',list(history)));
- const national=[...(p.highlights||[]).filter(h=>h.kind==='national'&&h.verification==='verified_official').map(h=>[h.date,h.event||h.label].filter(Boolean).join(' · ')),...(p.nationalHistory||[]).map(h=>typeof h==='string'?h:[h.year,h.team,h.competition].filter(Boolean).join(' · '))].filter(Boolean);
+ const national=[...(Array.isArray(p.highlights)?p.highlights:[]).filter(h=>h.kind==='national'&&h.verification==='verified_official').map(h=>[h.date,h.event||h.label].filter(Boolean).join(' · ')),...(Array.isArray(p.nationalHistory)?p.nationalHistory:[]).filter(Boolean).map(h=>typeof h==='string'?h:[h.year,h.team,h.competition].filter(Boolean).join(' · '))].filter(Boolean);
  if(national.length&&!skip.has('national'))parts.push(section('국가대표 이력',list(national)));
- const awards=(p.awards||[]).map(a=>typeof a==='string'?a:[a.year,a.competition,a.title||a.award].filter(Boolean).join(' · ')).filter(Boolean);
+ const awards=(Array.isArray(p.awards)?p.awards:[]).filter(Boolean).map(a=>typeof a==='string'?a:[a.year,a.competition,a.title||a.award].filter(Boolean).join(' · ')).filter(Boolean);
  if(awards.length&&!skip.has('awards'))parts.push(section('수상 경력',list(awards)));
  const apps=draftRows.filter(r=>r.player_id===(p.playerId||p.id)&&r.application_status==='confirmed').map(r=>{
  const pick=r.selection||{};return [r.season,'공식 참가 신청',pick.team,Number.isInteger(pick.round)&&Number.isInteger(pick.pick)?pick.round+'라운드 '+pick.pick+'순위':''].filter(Boolean).join(' · ');
  });
  if(apps.length&&!skip.has('applications'))parts.push(section('드래프트 참가 이력',list(apps)));
- const links=[['공식 등록 공시',safeUrl(p.sourceRef?.registration_source)],['FIVB / VNL',safeUrl(p.publicLinks?.fivb_profile)],['KOVO 프로필',safeUrl(p.publicLinks?.kovo_profile)]].filter(x=>x[1]);
+ const links=[['공식 등록 공시',safeUrl(p.sourceRef?.registration_source)],['드래프트 공식 결과',safeUrl(p.careerDraft?.source)],['FIVB / VNL',safeUrl(p.publicLinks?.fivb_profile)],['KOVO 프로필',safeUrl(p.publicLinks?.kovo_profile)]].filter(x=>x[1]);
  if(links.length&&!skip.has('sources'))parts.push(section('공식 출처','<div class="kvl-cpp-source-links">'+links.map(([label,url])=>'<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>').join('')+'</div>'));
  return parts.join('');
 }
