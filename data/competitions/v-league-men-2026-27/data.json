@@ -1149,33 +1149,41 @@
       "status": "live",
       "officialSourceKey": "023:001:MALE:49",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-28T07:04:44+00:00",
+      "updatedAt": "2026-11-28T07:24:14+00:00",
       "liveScore": {
-        "home": 2,
+        "home": 3,
         "away": 1,
         "sourceKey": "023:001:MALE:49",
-        "observedAt": "2026-11-28T07:04:44+00:00"
+        "observedAt": "2026-11-28T07:24:14+00:00",
+        "finalPending": true
       },
       "liveSets": [
         {
           "home": 25,
           "away": 17,
           "status": "completed",
-          "observedAt": "2026-11-28T07:04:44+00:00",
+          "observedAt": "2026-11-28T07:24:14+00:00",
           "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
         },
         {
           "home": 25,
           "away": 23,
           "status": "completed",
-          "observedAt": "2026-11-28T07:04:44+00:00",
+          "observedAt": "2026-11-28T07:24:14+00:00",
           "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
         },
         {
           "home": 26,
           "away": 28,
           "status": "completed",
-          "observedAt": "2026-11-28T07:04:44+00:00",
+          "observedAt": "2026-11-28T07:24:14+00:00",
+          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
+        },
+        {
+          "home": 25,
+          "away": 21,
+          "status": "completed",
+          "observedAt": "2026-11-28T07:24:14+00:00",
           "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
         }
       ]
@@ -3419,8 +3427,8 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 24/126경기 종료 · 2026-11-28 16:04 KST 반영",
-  "updatedAt": "2026-11-28T07:04:44+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 24/126경기 종료 · 2026-11-28 16:24 KST 반영",
+  "updatedAt": "2026-11-28T07:24:14+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
