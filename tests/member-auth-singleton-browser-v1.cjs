@@ -7,7 +7,7 @@ const stub=`
 export function createClient(){
   globalThis.__kvlSupabaseCreateCount=(globalThis.__kvlSupabaseCreateCount||0)+1;
   const mode=new URL(location.href).searchParams.get('authcase')||'signed';
-  const user={email:'admin@example.test'};
+  const user={id:'kvl-test-admin',email:'admin@example.test'};
   let signedIn=mode!=='wrong';
   let getUserCalls=0;
   return {
@@ -20,7 +20,7 @@ export function createClient(){
         }
         return signedIn?{data:{user},error:null}:{data:{user:null},error:{message:'No active session'}};
       },
-      getSession:async()=>({data:{session:signedIn?{access_token:'test-access',refresh_token:'test-refresh'}:null},error:null}),
+      getSession:async()=>({data:{session:signedIn?{user,access_token:'test-access',refresh_token:'test-refresh'}:null},error:null}),
       onAuthStateChange:()=>({data:{subscription:{unsubscribe(){}}}}),
       signInWithPassword:async({password})=>{
         if(password==='wrong-password'){
@@ -28,7 +28,7 @@ export function createClient(){
           return {data:{user:null,session:null},error:{code:'invalid_credentials',message:'Invalid login credentials'}};
         }
         signedIn=true;
-        return {data:{user,session:{access_token:'test-access',refresh_token:'test-refresh'}},error:null};
+        return {data:{user,session:{user,access_token:'test-access',refresh_token:'test-refresh'}},error:null};
       },
       signOut:async()=>{signedIn=false;return {error:null}}
     },

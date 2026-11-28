@@ -1,0 +1,60 @@
+/* Shared team roster profile design. Both entry points use the same shell, header and detail rows. */
+dialog#profileDialog.kvl-cpp-dialog,.ktd-page dialog.kvl-cpp-dialog{
+ position:fixed;inset:0;margin:auto;padding:0;width:min(520px,calc(100vw - 24px));max-width:calc(100vw - 24px);height:auto;max-height:85vh;max-height:85dvh;overflow:auto;overscroll-behavior:contain;border:1px solid #dce8ed;border-radius:14px;background:#f8fbfd;color:#173a57;box-shadow:0 18px 64px #102d4540;font-family:Arial,"Noto Sans KR",sans-serif
+}
+dialog.kvl-cpp-dialog::backdrop{background:rgba(14,34,52,.42)}
+.kvl-cpp-detail,.profile-dialog #profileContent.kvl-cpp-detail,.ktd-page .kvl-roster-profile-dialog>.kvl-cpp-detail{box-sizing:border-box;display:block;min-width:0;height:auto;margin:0;padding:15px;background:#f8fbfd;color:#173a57;font-family:Arial,"Noto Sans KR",sans-serif;overflow-wrap:anywhere}
+.kvl-cpp-detail[hidden]{display:none!important}
+.kvl-cpp-summary{color:#173a57;min-width:0;overflow-wrap:anywhere;padding:0}
+.kvl-cpp-name{position:relative;padding:14px 96px 14px 14px;min-height:0;background:#173c59;color:#fff;border-radius:8px}
+.kvl-cpp-name .kvl-cpp-kicker{display:block;font-size:10px;letter-spacing:.13em;color:#e4c57c;font-weight:900;margin:0 0 5px}
+.kvl-cpp-name h3{font-size:20px!important;line-height:1.4;margin:0!important;color:#fff!important;font-weight:800}
+.kvl-cpp-name .kvl-cpp-english{display:block;font-size:12px;color:#c4d7e4;line-height:1.5;margin-top:3px}
+.kvl-cpp-name .kvl-cpp-affiliation{color:#dbe7ef;font-size:13px;line-height:1.5;margin:7px 0 0!important}
+.kvl-cpp-name .kvl-cpp-close,.ktd-page .kvl-cpp-name .kvl-rs-profile-close{position:absolute;top:14px;right:14px;display:inline-flex;align-items:center;justify-content:center;min-height:36px;white-space:nowrap;background:#fff;color:#173a57;border:1px solid #dbe6ee;border-radius:8px;padding:6px 10px;font:inherit;font-size:16px!important;cursor:pointer}
+.kvl-cpp-section{padding:14px 0 5px;border-bottom:1px solid #e1e9ef;min-width:0}
+.kvl-cpp-section h4{font-size:14px;font-weight:800;line-height:1.4;color:#1d4566;margin:0 0 8px!important}
+.kvl-cpp-facts{display:block;margin:0;padding:0}
+.kvl-cpp-facts>div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #e9eef3;min-width:0}
+.kvl-cpp-facts>div:last-child{border-bottom:0}
+.kvl-cpp-facts dt{flex:0 0 36%;color:#526f85;font-size:13px;line-height:1.5;margin:0}
+.kvl-cpp-facts dd{flex:1;min-width:0;color:#173a59;font-size:15px;font-weight:700;line-height:1.5;text-align:right;margin:0;overflow-wrap:anywhere}
+.kvl-cpp-facts dd[data-nationality] img{display:inline-block;width:20px;height:15px;object-fit:cover;vertical-align:middle;margin-right:6px}
+.kvl-cpp-facts dd a,.kvl-cpp-source-links a{color:#237b85;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.kvl-cpp-history{display:grid;gap:0}
+.kvl-cpp-history p{margin:0!important;padding:9px 0;border-bottom:1px solid #e9eef3;font-size:14px!important;line-height:1.6;color:#173a57}
+.kvl-cpp-history p:last-child{border:0}
+.kvl-cpp-pick{padding:12px;border:1px solid #eddaab;border-radius:9px;background:#f8f0df;display:grid;gap:5px;margin:12px 0}
+.kvl-cpp-pick small{font-size:12px;color:#956e22}
+.kvl-cpp-pick strong{font-size:15px;color:#765522;line-height:1.5}
+.kvl-cpp-source-links{display:flex;flex-wrap:wrap;gap:10px;padding:6px 0 10px;font-size:14px}
+.kvl-cpp-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0}
+.kvl-cpp-actions button,.kvl-cpp-footer a{border:1px solid #dce8ed;border-radius:8px;background:white;color:#173a57;padding:9px 12px;font:inherit;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer}
+.kvl-cpp-actions button[aria-pressed=true]{background:#e2ecfb;color:#1d4ed8}
+.kvl-cpp-actions button svg{width:16px;height:16px}
+.kvl-cpp-footer{margin-top:12px}
+.kvl-cpp-footer a{display:block;text-align:center;background:#194b73;color:#fff}
+.ktd-page .kvl-cpp-detail .kvlrv2-profile-content{padding:12px 0 0}
+@media(max-width:420px){.kvl-cpp-detail,.profile-dialog #profileContent.kvl-cpp-detail{padding:12px}.kvl-cpp-name h3{font-size:20px!important}.kvl-cpp-facts dd{font-size:14px}}
+.kvl-cpp-connection{padding:12px 0;font-size:14px;color:#526f85;line-height:1.5}
+.kvl-cpp-connection a{color:#237b85;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.kvl-cpp-private{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.kvl-cpp-private button,.kvl-cpp-private a{border:1px solid #dce8ed;border-radius:8px;background:white;color:#173a57;padding:9px 12px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.kvl-cpp-private button[aria-pressed=true]{background:#e2ecfb;color:#1d4ed8}
+.kvl-cpp-private button:disabled{opacity:.6;cursor:wait}
+
+.kvl-cpp-note-editor{margin:12px 0;border:1px solid #dce8ed;border-radius:8px;background:white;color:#173a57;padding:12px;overflow-wrap:anywhere}
+.kvl-cpp-note-editor>summary{font-size:16px;font-weight:800;cursor:pointer}
+.kvl-cpp-note-list{display:grid;gap:8px;margin:10px 0}
+.kvl-cpp-note-item{border:1px solid #dce8ed;border-radius:6px;padding:10px;display:grid;gap:5px}
+.kvl-cpp-note-item small{color:#526f85;font-size:12px}
+.kvl-cpp-note-item p{white-space:pre-wrap;max-height:180px;overflow:auto;margin:0!important;font-size:14px!important}
+.kvl-cpp-note-form{display:grid;gap:10px}
+.kvl-cpp-note-form[hidden]{display:none!important}
+.kvl-cpp-note-form label{display:grid;gap:4px;font-size:13px;font-weight:700}
+.kvl-cpp-note-form input,.kvl-cpp-note-form textarea{box-sizing:border-box;min-width:0;width:100%;font:inherit;font-size:16px;color:#173a57;background:#fff;border:1px solid #bdcfda;border-radius:6px;padding:9px}
+.kvl-cpp-note-form textarea{resize:vertical}
+.kvl-cpp-note-buttons{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.kvl-cpp-note-editor button{background:white;color:#173a57;border:1px solid #bdcfda;border-radius:6px;padding:8px 12px;font:inherit;cursor:pointer}
+.kvl-cpp-note-editor button[type=submit]{background:#173c59;color:white;font-weight:700}
+.kvl-cpp-note-status{font-size:13px;line-height:1.5;color:#526f85}

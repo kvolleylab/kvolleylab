@@ -1183,3 +1183,27 @@ Status: USER APPROVED DESIGN / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 사용�
 ## 2026-11-27 · 팀 찾기 공통 카드 전체 클릭 규칙
 
 Status: USER REQUESTED / IMPLEMENTED / QA PENDING / NOT DEPLOYED. 모든 팀 찾기 카드는 로고·팀명·메타·빈 공간·기존 하단 버튼 클릭 시 기존 native action 하나로 연결한다. V-리그 남녀부/SV는 기존 선택 팀 선수명단 렌더러와 URL, 국제대표팀은 기존 연도별 명단, 대학·중고·대표팀 등 기존 링크형 카드는 원래 연결 목적지(명단이 없는 카테고리에는 새 명단을 생성하지 않음)를 유지. 기존 키보드 조작 유지, 별도 중복 클릭/경로 분기 금지. 데이터·선수 ID·v3 프로필·디자인·카드 3열/2열·모바일 스크롤·대회 페이지·회원 기능 변경 없음. PC 로고/팀명/메타·기존 버튼 키보드, 모바일 390/360px 실제 터치 및 원래 링크 이동, 운영 HTTPS 확인을 QA에 추가. Base b27a10006dae7547a004c7ae82c88de11aab6c25. 별도 운영 반영 승인 전 병합 금지. 복구는 본 PR revert.
+
+
+## 2026-11-27 · 공통 선수 프로필 v1 — 표시 모듈 1차
+
+Status: USER REQUESTED / PARTIAL IMPLEMENTATION / QA PENDING / NOT DEPLOYED. 선수 찾기와 Team Finder 국내/V리그, SV, 국제의 이름·영문명·POS·신장·DOB 표시를 공통 summary renderer로 연결한다. 선수 찾기의 기존 전체 프로필 iframe은 접힌 상세 영역에 보존하고 기존 개인 기능 API를 재사용한다. 팀별 원본 정보·출처·시즌 소속·기존 ID는 변경하지 않는다. 공통 identity resolution, 팀 팝업 내 개인 기능 쓰기, 데이터 대조 및 브라우저 검증은 미완료. Drive MASTER 검색 접근만 확인, 선수별 원본 대조 NOT VERIFIED. Base a027ad56d59e10edb7913672c0992b71531fd532; branch feature/common-player-profile-v1-20261127. Draft PR only; 사용자 별도 운영 승인 전 병합 금지. 복구: PR 미병합 상태 유지 또는 해당 PR revert.
+
+
+## 2026-11-27 · 공통 선수 프로필 v1 — 공통 메모 및 신원 검증 3차
+
+Status: USER REQUESTED / IMPLEMENTED IN DRAFT / PARTIALLY VERIFIED / NOT DEPLOYED. 동일한 `kvl-common-profile-notes-v1.mjs` 편집기를 선수 찾기 및 Team Finder의 확인된 ID에 적용한다. 팝업 내 목록·신규·수정은 기존 관리자 전용 `admin-player-workspace` API와 player_id, expected_revision을 재사용하며 서버·DB 스키마 및 개인 기록은 변경하지 않는다. 세션 변경 시 편집기를 제거하고 저장 실패 시 입력 내용을 유지한다. 기존 26개 충돌 ID와 카탈로그 중복 제거 전 원본 신원 충돌을 추가 검사한다. 확인된 드래프트 등록 브리지만 DOB 누락 시 기존 공식 연결 증거로 인정하며 DOB/VB 불일치는 차단한다.
+
+검증: 실제 브랜치 소스·JSON을 JS 테스트 격리 환경에서 실행(브라우저 및 Supabase 실계정 아님). 카탈로그 871명, 중복 원본 충돌 보호 28 ID(기존 26 포함). 공식 등록 브리지 및 프로필 보완 적용 후 V-리그 남 149 중 117 연결 / 26 충돌 / 4 미등록 ID / 2 미확인, 여 139 중 131 연결 / 0 충돌 / 5 미등록 ID / 3 미확인. 합계 248/288 연결, 40 보류. 신원·escape 11/11, 가짜 DOM 및 API 기반 메모 동작 9/9, 수정 JS 8개 문법 컴파일 8/8. 실제 SV 및 국제 전수 검증, 실제 PC·모바일, 실계정 end-to-end, Google Drive MASTER 원본 대조, main 최신 변경 충돌 확인은 미완료. PR #442 Draft 유지. 운영 승인 전 병합 금지. 복구는 미병합 유지 또는 추후 PR revert.
+
+
+## 2026-11-27 · 공통 선수 프로필 v1 — 데이터 교차 감사 및 최신 main 동기화
+
+Status: IMPLEMENTED IN DRAFT / PARTIAL QA / NOT DEPLOYED. 최신 main c5455085ed13f1bb95edae8a0781476a32d45735의 27개 후속 커밋을 개발 브랜치에 병합(35838e276cd37bc884437c099f5f0d15d06081a3). 유일한 겹침인 결정 기록은 양쪽 추가 내용을 보존했다. 운영 main에는 쓰지 않았다. 실제 배포 데이터 기반 격리 JS 검증: V-리그 288명 중 251 연결(M118/149, W133/139), 37 보류(26 충돌, 9 ID 없음, 2 DOB 미확인). 하승우·정호영·표승주의 기존 검수된 공식 구단 DOB overlay를 동일한 선수 카탈로그에 누락 필드만 적용한다. 원본 MASTER·등록 기록·DB·회원 기록 불변. SV 12팀 211명 중 23 연결, 185 직접 VB ID 미발견, 3 불일치/중복 후보. 국제 40개국·89 스냅샷·64 국가/성별/연도 그룹·통합 명단 1,007행: 남 188/587, 여 0/420, 전체 188/1,007. 국제 계산은 전체 카탈로그와 일치함을 확인한 국제 MASTER 221행 및 VB 후보 29행의 재구성 부분집합으로 수행; 실제 브라우저 테스트 아님. 연결 보류는 원본 명단 유지 및 개인 기록 쓰기 차단; 신규 ID 발급 또는 충돌 ID 마이그레이션은 별도 검수/승인 과제.
+
+기존 팀 popup 및 auth 브라우저 QA의 선택자/세션 mock을 새 계약에 맞게 조정. PR 전용 `tests/common-player-profile-browser-v1.cjs` 및 `.github/workflows/common-player-profile-qa-v1.yml` 추가: 1440/390px 동일 DOB, 관심 선수, mock API 메모 작성·교차 수정·재조회, 비로그인 개인 기능 미노출, 화면 overflow, screenshot. 실제 개인 계정·Supabase 기록에는 접근/쓰기하지 않음. 브라우저 실행 결과, 실제 관리자 실계정 검증 및 Google Drive MASTER 대조는 미완료. PR #442 Draft 유지, 별도 운영 반영 승인 전 병합 금지. 복구는 미병합 유지, 배포 후에는 해당 PR revert.
+
+
+## 2026-11-28 · 공통 선수 프로필 v1 — 팀 팝업 디자인 우선 및 실제 브라우저 QA 보완
+
+Status: IMPLEMENTED IN DRAFT / QA PENDING / NOT DEPLOYED. 사용자 요청에 따라 팀 찾기의 네이비 헤더/520px PC 팝업/정보 행 디자인을 선수 찾기에 적용하고 iframe 제거. 확인된 기본정보, 등번호·시즌, 학교, 드래프트, 소속·대표팀·수상 이력, 공식 링크를 직접 표시. 팀 모바일의 기존 인라인 상세 유지, 선수 모바일의 동일 콘텐츠 팝업 유지. 공통 신원 연결 및 메모 권한·기존 보호 ID 정책 유지. 실제 Chromium 실행 46018947108에서 닫기 버튼 15/16px 불일치 검출, 국제 46018947073에서 VB 접근성 라벨 누락, 팀 46018947061에서 공통 카탈로그 초기 요청과 팀 메타데이터 재시도 경쟁 확인. 16px 공통 적용, 기존 VB 링크 접근성 라벨 보존, 팀 카탈로그 지연 로드 및 검수 데이터 요청 공유로 수정. 기존 V리그 연동/선수 드래프트/관리자 인증 QA는 해당 이전 head에서 통과했으나 최신 head로 재검증 필요. 최신 main의 국가대표 메뉴 변경은 병합하되 운영 main에는 쓰지 않음. 실제 브라우저 최종 성공, 실계정 검수 및 별도 운영 승인 전 병합 금지. PR #442 Draft 유지.

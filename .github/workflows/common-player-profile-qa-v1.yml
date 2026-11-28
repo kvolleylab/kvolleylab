@@ -1,0 +1,51 @@
+name: KVL Common Player Profile Browser QA
+on:
+  pull_request:
+    paths:
+      - 'players.html'
+      - 'teams.html'
+      - 'assets/js/kvl-common-player-profile-v1.js'
+      - 'assets/js/kvl-common-profile-notes-v1.mjs'
+      - 'assets/js/player-workspace-v1.mjs'
+      - 'assets/js/team-roster-member-summary-v1.mjs'
+      - 'assets/js/player-search-v2.js'
+      - 'assets/css/kvl-common-player-profile-v1.css'
+      - 'tests/common-player-profile-browser-v1.cjs'
+      - '.github/workflows/common-player-profile-qa-v1.yml'
+permissions:
+  contents: read
+jobs:
+  profile-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check syntax
+        run: |
+          node --check assets/js/kvl-common-player-profile-v1.js
+          node --check assets/js/kvl-common-profile-notes-v1.mjs
+          node --check assets/js/player-search-v2.js
+          node --check assets/js/player-workspace-v1.mjs
+          node --check assets/js/team-roster-member-summary-v1.mjs
+          node --check tests/common-player-profile-browser-v1.cjs
+      - name: Install isolated Chromium
+        run: |
+          npm install --prefix "$RUNNER_TEMP/kvl-cpp-browser" --no-audit --no-fund playwright@1.56.1
+          node "$RUNNER_TEMP/kvl-cpp-browser/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Verify desktop and mobile shared profile and mock private note round trip
+        env:
+          KVL_PLAYWRIGHT_PATH: ${{ runner.temp }}/kvl-cpp-browser/node_modules/playwright
+        run: node tests/common-player-profile-browser-v1.cjs
+      - name: Upload mock-only QA screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kvl-common-profile-browser-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/kvl-common-profile-*.png
+            ${{ runner.temp }}/kvl-common-profile-browser-report.json
+          retention-days: 14
+          if-no-files-found: ignore

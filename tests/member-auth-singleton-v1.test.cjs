@@ -33,6 +33,6 @@ test('teams and login bust old auth module caches',()=>{
  assert.match(nav,/member-session-v1\.mjs\?v=20261124-auth-singleton-v1/);
  assert.match(nav,/member-access-gate-v1\.mjs\?v=20261124-auth-singleton-v1/);
  assert.match(teams,/unified-nav\.js\?v=20261124-auth-singleton-v1/);
- assert.match(teams,/team-roster-member-summary-v1\.mjs\?v=20261124-auth-singleton-v1/);
+ assert.match(teams,/team-roster-member-summary-v1\.mjs\?v=20261127-cpp3/);
  assert.match(login,/member-login-v1\.mjs\?v=20261124-invalid-password-v1/);
 });

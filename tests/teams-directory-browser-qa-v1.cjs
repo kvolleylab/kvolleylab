@@ -157,7 +157,7 @@ async function verifyKEPMetadata(browser){
     await closeProPopup(page);
     await page.locator('[data-choice="'+no+'/'+name+'"] .kvlrv2-name').click();
     const detail=page.locator('.kvlrv2-detail');
-    assert.equal(await detail.locator('.kvlrv2-profile-head h3').innerText(),name);
+    assert.equal(await detail.locator('.kvl-cpp-name h3').innerText(),name);
     if(high)assert.ok((await detail.locator('.kvlrv2-schools').innerText()).includes(high),name+' high school');
     if(university)assert.ok((await detail.locator('.kvlrv2-schools').innerText()).includes(university),name+' university');
     if(!high&&!university)assert.equal(await detail.locator('.kvlrv2-schools').count(),0);

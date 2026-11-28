@@ -1,14 +1,12 @@
 // Approved B workspace UI, connected to the unchanged production data pipeline.
-import {createClient} from '../vendor/supabase-js-2.84.0.mjs';
+import {supabase} from './kvl-supabase-browser-v1.mjs?v=20261124-auth-singleton-v1';
+import {mountProfileNotes} from './kvl-common-profile-notes-v1.mjs?v=20261127-1';
 import {LEVELS,searchPlayers,escapeHTML as e} from './player-workspace-core.mjs?v=20261111-pro-1';
 import {loadDraftIndex,loadDraftSeason,validateAgainstCatalog} from './draft-history-v1.mjs';
 const $=id=>document.getElementById(id),params=new URLSearchParams(location.search);
 const paths={cards:'<rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>',bookmark:'<path d="M6 3h12v18l-6-4-6 4z"/>',note:'<path d="M14 4H5v17h14v-9M8 9h3M8 13h3M8 17h7m-1-7 7-7-3-3-7 7v3z"/>',arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',down:'<path d="m6 9 6 6 6-6"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/>',user:'<circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/>',sliders:'<path d="M3 6h7m4 0h7M3 12h12m4 0h2M3 18h3m4 0h11M10 3v6M15 9v6M6 15v6"/>',flask:'<path d="M9 3h6M10 3v7L4 20h16l-6-10V3M8 14h8"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/>',plus:'<path d="M12 4v16M4 12h16"/>',shirt:'<path d="m5 5 5-2c0 3 4 3 4 0l5 2 4 7-5 3v9H6v-9l-5-3z" transform="translate(1 1) scale(.9)"/><path d="M10 12h4M12 12v6"/>',check:'<path d="m5 12 4 4L19 6"/>'};
 const icon=n=>`<svg viewBox="0 0 24 24" aria-hidden="true">${paths[n]||paths.user}</svg>`;
-const SUPABASE_URL='https://byaukvbwdhextiqycrds.supabase.co';
-const SUPABASE_KEY='sb_publishable_DKeCLeLwQ3xEpgsRzbU7qA_oFKjc6HM';
 const PRIVATE_FUNCTION='admin-player-workspace';
-const supabase=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 let players=[],byId=new Map(),draftRows=[],draftIndex=null,draftLoadFailed=false,limit=12,layout=params.get('layout')==='compact'?'compact':'cards',view='search',lastFocus=null;
 let bookmarks=new Set(),notes=[],memberReady=false,noteQuery='',noteSeason='';
 const UI_KEY='kvl-player-workspace-public-ui-v1';
@@ -19,7 +17,8 @@ async function privateApi(action,payload={}){const {data,error}=await supabase.f
 function updateMemberBadges(){$('savedBadge').textContent=bookmarks.size?String(bookmarks.size):'';$('notesBadge').textContent=notes.length?String(notes.length):'';if(memberReady){$('memberSummary').hidden=false;$('memberSummary').innerHTML=`<div><h2>내 선수 기록</h2><p>관심선수와 개인 메모가 이 페이지에 바로 연결됩니다.</p></div><div class="member-metrics"><button type="button" data-view="tracking"><strong>${bookmarks.size}</strong>관심선수</button><button type="button" data-view="notes"><strong>${notes.length}</strong>메모</button></div>`;}}
 function playerAffiliation(p){return p?.school||p?.team||'소속 미확인'}
 function compareButton(p){return p.limited||window.KVLPlayerIdCollisionV1?.isConflict(p.id)?'':`<button class="compare-button" type="button" data-compare-id="${e(p.id)}" data-compare-name="${e(p.name)}">비교 추가</button>`}
-function saveButton(p,iconOnly=false){if(window.KVLPlayerIdCollisionV1?.isConflict(p.id))return '';const saved=bookmarks.has(p.id);return `<button class="save-button ${iconOnly?'icon-only':''} ${saved?'saved':''}" type="button" data-save-player="${e(p.id)}" aria-pressed="${saved?'true':'false'}" aria-label="${e(p.name)} ${saved?'관심선수 해제':'관심선수 등록'}">${icon('bookmark')}${iconOnly?'':(saved?'관심선수':'관심선수')}</button>`}
+function privateIdentityBlocked(id){return !!(window.KVLPlayerIdCollisionV1?.isConflict(id)||window.KVLCommonProfileBlockedIds?.has(id))}
+function saveButton(p,iconOnly=false){if(privateIdentityBlocked(p.id))return '';const saved=bookmarks.has(p.id);return `<button class="save-button ${iconOnly?'icon-only':''} ${saved?'saved':''}" type="button" data-save-player="${e(p.id)}" aria-pressed="${saved?'true':'false'}" aria-label="${e(p.name)} ${saved?'관심선수 해제':'관심선수 등록'}">${icon('bookmark')}${iconOnly?'':(saved?'관심선수':'관심선수')}</button>`}
 function hydrateIcons(root=document){root.querySelectorAll('[data-icon]').forEach(x=>{x.innerHTML=icon(x.dataset.icon)})}
 function getFilters(){const data=new FormData($('filters')),filters=Object.fromEntries(data);delete filters.grade;return {...filters,q:$('playerSearch').value,grades:data.getAll('grade')}}
 function updateGradeCaption(){const grades=getFilters().grades;$('gradeSelection').textContent=grades.length?grades.join('·')+'학년':'전체 학년';document.querySelector('[data-all-grades]').hidden=!grades.length}
@@ -86,7 +85,23 @@ function renderNotes(){
 function setQueryURL(){const url=new URL(location.href),f=getFilters();for(const k of ['q','level','gender','position','school','type','draftSeason','draft']){const value=f[k]||'';value?url.searchParams.set(k,value):url.searchParams.delete(k)}url.searchParams.delete('grade');for(const g of f.grades)url.searchParams.append('grade',g);url.searchParams.set('layout',layout);history.replaceState(null,'',url)}
 function restoreFilters(){const form=$('filters');$('playerSearch').value=params.get('q')||'';for(const k of ['level','gender','position','type','draftSeason'])if(params.get(k))form.elements[k].value=params.get(k);form.elements.draft.checked=['1','eligible'].includes(params.get('draft'));syncDependentFilters();let school=params.get('school')||'';if(school.startsWith('code:'))school=players.find(p=>p.schoolCode===school.slice(5))?.school||'';if(school.startsWith('name:'))school=school.slice(5);if(school)form.elements.school.value=school;for(const c of form.querySelectorAll('[name="grade"]'))c.checked=!c.disabled&&params.getAll('grade').includes(c.value);updateGradeCaption();if([...form.elements].some(x=>['school','draftSeason','type'].includes(x.name)&&x.value)||form.elements.draft.checked||params.has('grade')){$('extraFilters').hidden=false;$('moreFilters').setAttribute('aria-expanded','true')}}
 function resetFilters(){$('filters').reset();$('playerSearch').value='';syncDependentFilters();limit=pageSize();renderSearch()}
-function openProfile(id){const p=byId.get(id);if(!p)return;lastFocus=document.activeElement;const href=profileHref(id);$('profileContent').innerHTML=`<div class="dialog-top"><h2 id="profileName">${e(p.name)} · 선수 프로필</h2><div class="profile-dialog-actions"><a href="${e(href)}">전체 화면</a><button class="close-button" data-close="profileDialog" aria-label="선수 프로필 닫기">×</button></div></div><iframe class="profile-frame" title="${e(p.name)} 선수 프로필" src="${e(href+'&embed=1')}"></iframe>`;$('profileDialog').showModal();$('profileDialog').scrollTop=0}
+function openProfile(id){
+ const p=byId.get(id);if(!p)return;lastFocus=document.activeElement;
+ const href=profileHref(id),api=globalThis.KVLCommonPlayerProfileV1;
+ if(!api){location.assign(href);return}
+ const affiliation=p.clubTeam||p.team||p.school;
+ const affiliationLabel=p.level==='professional'?'시즌 소속':p.level==='international'||p.level==='national'?'대표팀':'등록 소속';
+ const blocked=privateIdentityBlocked(p.id);
+ $('profileContent').innerHTML=api.summary({name:p.name,en:p.nameEn,affiliation,affiliationLabel,number:p.jersey,position:p.rawPosition,height:p.height,dob:p.birthDate,nationality:p.nationality,vb:p.volleybox})
+  +api.details(p,{draftRows:blocked?[]:draftRows})
+  +'<div class="kvl-cpp-actions">'+saveButton(p)+compareButton(p)+'</div><div class="kvl-cpp-note-host"></div>'
+  +'<div class="kvl-cpp-footer"><a class="kvl-cpp-full-link" href="'+e(href)+'">전체 선수 프로필 및 상세 이력 보기</a></div>';
+ const header=$('profileContent').querySelector('.kvl-cpp-name');
+ header.querySelector('h3').id='profileName';
+ const close=document.createElement('button');close.type='button';close.className='kvl-cpp-close';close.dataset.close='profileDialog';close.setAttribute('aria-label','선수 프로필 닫기');close.textContent='닫기 ×';header.append(close);
+ if(memberReady&&!blocked)mountProfileNotes($('profileContent').querySelector('.kvl-cpp-note-host'),p.id,{onChange:refreshPrivateState});
+ $('profileDialog').showModal();$('profileDialog').scrollTop=0;
+}
 function closeProfile(){$('profileDialog').close();$('profileContent').innerHTML='';lastFocus?.focus({preventScroll:true})}
 function updateAccountUI(){
  if(!memberReady)return;
@@ -102,11 +117,12 @@ async function refreshPrivateState(){
  }catch(err){memberReady=false;$('accountButton').innerHTML=icon('lock')+' 로그인 확인 필요';$('accountDialogBody').innerHTML='<p>개인 기록을 불러오지 못했습니다. 다시 로그인한 뒤 확인해 주세요.</p>';console.warn('Private player workspace unavailable',err)}
 }
 async function toggleBookmark(id){
+ if(privateIdentityBlocked(id))return;
  if(!memberReady)return $('accountDialog').showModal();
- const button=document.querySelector('[data-save-player="'+CSS.escape(id)+'"]');if(button)button.disabled=true;
+ const selector='[data-save-player="'+CSS.escape(id)+'"]';if(document.querySelector(selector+':disabled'))return;document.querySelectorAll(selector).forEach(b=>b.disabled=true);
  try{
   const result=await privateApi('toggle_bookmark',{player_id:id});
-  result.saved?bookmarks.add(id):bookmarks.delete(id);updateMemberBadges();renderSearch();
+  result.saved?bookmarks.add(id):bookmarks.delete(id);updateMemberBadges();renderSearch();const panel=$('profileContent').querySelector(selector);if(panel&&byId.has(id))panel.outerHTML=saveButton(byId.get(id));
  }catch(err){console.warn(err)}
  finally{document.querySelectorAll('[data-save-player="'+CSS.escape(id)+'"]').forEach(b=>b.disabled=false)}
 }
@@ -114,6 +130,7 @@ function notePlayerMeta(id){
  const p=byId.get(id);return [p?.name,playerAffiliation(p),p?.rawPosition].filter(Boolean).join(' · ');
 }
 function openPlayerNote(id){
+ if(privateIdentityBlocked(id))return;
  if(!memberReady)return $('accountDialog').showModal();
  $('memberNoteId').value='';$('memberNoteRevision').value='';$('memberNotePlayer').value=id;$('memberNoteSeason').value='2026-27';$('memberNoteTitleInput').value='';$('memberNoteBody').value='';$('memberNoteAudit').hidden=true;$('memberNoteError').textContent='';$('memberDeleteNote').hidden=true;
  $('memberNoteTitle').textContent=(byId.get(id)?.name||'선수')+' · 메모';$('memberNotePlayerMeta').textContent=notePlayerMeta(id);$('memberNoteDialog').showModal();$('memberNoteTitleInput').focus();
@@ -125,7 +142,7 @@ function openNote(id){
  $('memberNoteTitle').textContent=(byId.get(n.player_id)?.name||'선수')+' · 메모';$('memberNotePlayerMeta').textContent=notePlayerMeta(n.player_id);$('memberNoteDialog').showModal();
 }
 $('accountButton').innerHTML=icon('user')+' 로그인 정보';$('accountButton').addEventListener('click',()=>$('accountDialog').showModal());
-document.addEventListener('click',ev=>{const t=ev.target.closest('button,a');if(!t)return;if(t.dataset.close){t.dataset.close==='profileDialog'?closeProfile():$(t.dataset.close).close();return}if(t.dataset.savePlayer){toggleBookmark(t.dataset.savePlayer);return}if(t.dataset.notePlayer){openPlayerNote(t.dataset.notePlayer);return}if(t.dataset.editNote){openNote(t.dataset.editNote);return}if(t.hasAttribute('data-account-open')){$('accountDialog').showModal();return}if(t.dataset.view){changeView(t.dataset.view,true);return}if(t.dataset.layout){setLayout(t.dataset.layout);return}if(t.dataset.quick){$('filters').elements.level.value=t.dataset.quick;syncDependentFilters();limit=pageSize();changeView('search',true);return}if(t.dataset.profile){if(ev.ctrlKey||ev.metaKey||ev.shiftKey||ev.altKey||ev.button!==0)return;ev.preventDefault();openProfile(t.dataset.profile);return}if(t.hasAttribute('data-all-grades')){document.querySelectorAll('[name="grade"]').forEach(c=>c.checked=false);updateGradeCaption();limit=pageSize();renderSearch()}if(t.hasAttribute('data-reset-filters'))resetFilters()});
+document.addEventListener('click',ev=>{const t=ev.target.closest('button,a');if(!t)return;if(t.dataset.close){t.dataset.close==='profileDialog'?closeProfile():$(t.dataset.close).close();return}if(t.dataset.savePlayer){toggleBookmark(t.dataset.savePlayer);return}if(t.dataset.notePlayer){if($('profileDialog').open)closeProfile();openPlayerNote(t.dataset.notePlayer);return}if(t.dataset.editNote){openNote(t.dataset.editNote);return}if(t.hasAttribute('data-account-open')){$('accountDialog').showModal();return}if(t.dataset.view){changeView(t.dataset.view,true);return}if(t.dataset.layout){setLayout(t.dataset.layout);return}if(t.dataset.quick){$('filters').elements.level.value=t.dataset.quick;syncDependentFilters();limit=pageSize();changeView('search',true);return}if(t.dataset.profile){if(ev.ctrlKey||ev.metaKey||ev.shiftKey||ev.altKey||ev.button!==0)return;ev.preventDefault();openProfile(t.dataset.profile);return}if(t.hasAttribute('data-all-grades')){document.querySelectorAll('[name="grade"]').forEach(c=>c.checked=false);updateGradeCaption();limit=pageSize();renderSearch()}if(t.hasAttribute('data-reset-filters'))resetFilters()});
 for(const dialog of document.querySelectorAll('dialog')){let pressed=false;const outside=ev=>{const r=dialog.getBoundingClientRect();return ev.target===dialog&&(ev.clientX<r.left||ev.clientX>=r.right||ev.clientY<r.top||ev.clientY>=r.bottom)};dialog.addEventListener('pointerdown',ev=>pressed=ev.button===0&&outside(ev));dialog.addEventListener('pointercancel',()=>pressed=false);dialog.addEventListener('click',ev=>{const close=pressed&&outside(ev);pressed=false;if(close)dialog.id==='profileDialog'?closeProfile():dialog.close()})}
 $('profileDialog').addEventListener('cancel',ev=>{ev.preventDefault();closeProfile()});
 $('memberNoteForm').addEventListener('submit',async ev=>{
