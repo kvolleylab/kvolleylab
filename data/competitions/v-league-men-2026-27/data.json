@@ -1146,47 +1146,33 @@
       },
       "venueLabel": "부산 강서체육관",
       "localTimeLabel": "한국 현지 14:00 KST",
-      "status": "live",
+      "status": "final",
       "officialSourceKey": "023:001:MALE:49",
       "source": "https://user-api.kovo.co.kr/stat/game-schedule?gcode=001&seasonCode=023&leagueCode=201&gender=1&page=0&size=200",
-      "updatedAt": "2026-11-28T07:24:14+00:00",
-      "liveScore": {
+      "updatedAt": "2026-11-28T07:42:17+00:00",
+      "score": {
         "home": 3,
         "away": 1,
-        "sourceKey": "023:001:MALE:49",
-        "observedAt": "2026-11-28T07:24:14+00:00",
-        "finalPending": true
+        "sets": [
+          {
+            "home": 25,
+            "away": 17
+          },
+          {
+            "home": 25,
+            "away": 23
+          },
+          {
+            "home": 26,
+            "away": 28
+          },
+          {
+            "home": 25,
+            "away": 21
+          }
+        ]
       },
-      "liveSets": [
-        {
-          "home": 25,
-          "away": 17,
-          "status": "completed",
-          "observedAt": "2026-11-28T07:24:14+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 23,
-          "status": "completed",
-          "observedAt": "2026-11-28T07:24:14+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
-        },
-        {
-          "home": 26,
-          "away": 28,
-          "status": "completed",
-          "observedAt": "2026-11-28T07:24:14+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
-        },
-        {
-          "home": 25,
-          "away": 21,
-          "status": "completed",
-          "observedAt": "2026-11-28T07:24:14+00:00",
-          "sourceUrl": "https://user-api.kovo.co.kr/stat/real-time?season=023&round=2&gnum=49&gcode=001&hcode=1008&acode=1006&page=0&size=1"
-        }
-      ]
+      "scoreVerification": true
     },
     {
       "id": "VL2627-M-026",
@@ -3241,16 +3227,16 @@
           "en": "KEP"
         },
         "poolId": "LEAGUE",
-        "games": 7,
+        "games": 8,
         "wins": 5,
-        "losses": 2,
+        "losses": 3,
         "points": 15,
-        "setWins": 17,
-        "setLosses": 11,
-        "pointsFor": 645,
-        "pointsAgainst": 644,
-        "setRatio": "1.545",
-        "pointRatio": "1.002",
+        "setWins": 18,
+        "setLosses": 14,
+        "pointsFor": 734,
+        "pointsAgainst": 745,
+        "setRatio": "1.286",
+        "pointRatio": "0.985",
         "statusLabel": "2위"
       },
       {
@@ -3325,16 +3311,16 @@
           "en": "OKF"
         },
         "poolId": "LEAGUE",
-        "games": 6,
-        "wins": 1,
+        "games": 7,
+        "wins": 2,
         "losses": 5,
-        "points": 5,
-        "setWins": 10,
-        "setLosses": 16,
-        "pointsFor": 562,
-        "pointsAgainst": 612,
-        "setRatio": "0.625",
-        "pointRatio": "0.918",
+        "points": 8,
+        "setWins": 13,
+        "setLosses": 17,
+        "pointsFor": 663,
+        "pointsAgainst": 701,
+        "setRatio": "0.765",
+        "pointRatio": "0.946",
         "statusLabel": "6위"
       },
       {
@@ -3427,14 +3413,14 @@
   },
   "activeOverviewNote": "KOVO 공식 경기 결과와 순위를 대조해 반영합니다.",
   "regularSeasonComplete": false,
-  "standingsNote": "KOVO 공식 결과·순위 대조 · 24/126경기 종료 · 2026-11-28 16:24 KST 반영",
-  "updatedAt": "2026-11-28T07:24:14+00:00",
+  "standingsNote": "KOVO 공식 결과·순위 대조 · 25/126경기 종료 · 2026-11-28 16:42 KST 반영",
+  "updatedAt": "2026-11-28T07:42:17+00:00",
   "automation": {
     "version": 2,
     "source": "KOVO_PUBLIC_STAT_API",
     "standingsSource": "https://user-api.kovo.co.kr/stat/league/team-rank?seasonCode=023&leagueCode=201&gender=1&round=0&page=0&size=30",
     "regularSeasonOnly": false,
-    "completedMatches": 24,
+    "completedMatches": 25,
     "postseason": {
       "matched": 0,
       "completed": 0,
